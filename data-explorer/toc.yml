@@ -22,8 +22,6 @@ items:
     href: web-query-data.md
 - name: Tutorials
   items:
-  - name: Write queries
-    href: write-queries.md
   - name: E2E programmatic Blob ingestion
     items:
       - name: C#

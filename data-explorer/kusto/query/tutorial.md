@@ -12,549 +12,744 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The best way to learn the Kusto Query Language is to look at some basic queries to get a feel for the language. Follow along in this tutorial by running the example queries on this [database with sample data](https://help.kusto.windows.net/Samples). We will mostly use the `StormEvents` table which provides information about past storms in the United States.
+In this tutorial, you'll learn how to use the [Kusto Query Language (KQL)](./kusto/query/index.md) to retrieve, manipulate, and visualize your data stored in Azure Data Explorer. You'll learn about the essential operators and functions needed to effectively work with your data, as well as how to join tables and define variables to make your queries more efficient and reusable.
 
-## Learn common operators
+To follow along, use the buttons above each example query to automatically run them. The examples in this tutorial use the `StormEvents` table, which is located in the [Sample database](https://help.kusto.windows.net/Samples) of the publicly available and free **help** cluster.
 
-A Kusto query consists of a data source (usually a table name) followed by one or more pairs of the pipe character (`|`) and some tabular operator. This section reviews some of the common [query operators](queries.md).
+By the end of this tutorial, you'll have a solid foundation in KQL and be able to start uncovering valuable insights in your data.
 
-### count 
+## Prerequisites
 
-[count](./countoperator.md): returns the number of rows in the table.
+- A Microsoft or Azure account to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
+- Familiarity with database structures like tables, columns, and rows
 
-Let's use the [count](./countoperator.md) operator to check the size of the `StormEvents` table:
+## Introduction to KQL queries
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
+A KQL query is a read-only request to retrieve and process data in Azure Data Explorer. These queries consist of one or more query statements and return data in tabular or graphical format.
+
+### Tabular expression statements
+
+The most common type of query statement is a tabular expression statement. These statements are used to manipulate data in tables or tabular datasets. They consist of one or more operators, separated by a pipe (`|`), and process the data sequentially. Each operator begins with a tabular input and returns a tabular output.
+
+The order of the operators is important, as the data flows from one operator to the next and is transformed at each step. Think of it like a funnel where the data starts as an entire table and is refined as it passes through each operator, until you're left with a final output at the end.
+
+Read the following query, and then we'll go through it step by step.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKaCJG4HENZENKklVsLVVUHLz8Q/ydHFUAkol55fmlQAA2ZnM/XgAAAA=" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents 
+| where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
+| where State == "FLORIDA"
+| count
+```
+
+|Count|
+|--|
+|28|
+
+1. The `StormEvents` table is filtered by the `where` operator to include rows with `StartTime` values within the specified date range.
+1. The filtered table is then further filtered by another `where` operator to include rows with a `State` value of "FLORIDA".
+1. The final table is passed to the `count` operator, which returns a new table with a single column, `Count`, containing the number of rows in the table.
+
+## Get started with common operators
+
+Let's learn some common query operators using the `StormEvents` table. These operators are key to understanding KQL and will be used in many of your queries.
+
+### count
+
+Let's begin by using the [count](kusto/query/countoperator.md) operator to find the number of storm records in our table.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA" target="_blank">Run the query</a>
+
+```Kusto
 StormEvents | count
 ```
 
-Here's the output:
-
 |Count|
-|-----|
+|--|
 |59066|
+
+### take
+
+To get a sense of the data in our table, let's use the [take](kusto/query/takeoperator.md) operator to view a sample of records. This operator returns a specified number of random rows from the table, which can be useful for previewing the data and becoming familiar with it.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents | take 5
+```
+
+The following table shows only 6 of the 22 returned columns. To see the full output, run the query.
+
+|StartTime|EndTime|EpisodeId|EventId|State|EventType|...|
+|--|--|--|--|--|--|--|
+|2007-09-20T21:57:00Z|2007-09-20T22:05:00Z|11078|60913|FLORIDA|Tornado|...|
+|2007-12-20T07:50:00Z|2007-12-20T07:53:00Z|12554|68796|MISSISSIPPI|Thunderstorm Wind|...|
+|2007-12-30T16:00:00Z|2007-12-30T16:05:00Z|11749|64588|GEORGIA|Thunderstorm Wind|...|
+|2007-09-29T08:11:00Z|2007-09-29T08:11:00Z|11091|61032|ATLANTIC SOUTH|Waterspout|...|
+|2007-09-18T20:00:00Z|2007-09-19T18:00:00Z|11074|60904|FLORIDA|Heavy Rain|...|
 
 ### project
 
-[project](./projectoperator.md): selects a subset of columns.
+Let's use the [project](kusto/query/projectoperator.md) operator to simplify our view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
 
-Use [project](./projectoperator.md) to pick the columns you want to include in the query result. See the following example, which uses both the [project](./projectoperator.md)
-and the [take](./takeoperator.md) operators.
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMDQAMQuK8rNSk0sUgksSS1J1FMBqQioLgEyXxNzE9NSAovyC1KKSSgBtBl0/QgAAAA==" target="_blank">Run the query</a>
 
-### take 
-
-[take](./takeoperator.md): shows *n* rows.
-
-Let's see some data. Here is what's in a random sample of five rows:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
+```Kusto
 StormEvents
-| take 5
-| project  StartTime, EndTime, EventType, State, EventNarrative  
+| take 10
+| project State, EventType, DamageProperty
 ```
 
-Here's the output:
+|State|EventType|DamageProperty|
+|--|--|--|
+|ATLANTIC SOUTH|Waterspout|0|
+|FLORIDA|Heavy Rain|0|
+|FLORIDA|Tornado|6200000|
+|GEORGIA|Thunderstorm Wind|2000|
+|MISSISSIPPI|Thunderstorm Wind|20000|
+|MISSISSIPPI|Tornado|450000|
+|MISSISSIPPI|Thunderstorm Wind|60000|
+|MISSISSIPPI|Hail|0|
+|AMERICAN SAMOA|Flash Flood|250000|
+|KENTUCKY|Flood|1000|
 
-|StartTime|EndTime|EventType|State|EventNarrative|
-|---|---|---|---|---|
-|2007-09-18 20:00:00.0000000|2007-09-19 18:00:00.0000000|Heavy Rain|FLORIDA|As much as 9 inches of rain fell in a 24-hour period across parts of coastal Volusia County.|
-|2007-09-20 21:57:00.0000000|2007-09-20 22:05:00.0000000|Tornado|FLORIDA|A tornado touched down in the Town of Eustis at the northern end of West Crooked Lake. The tornado quickly intensified to EF1 strength as it moved north northwest through Eustis. The track was just under two miles long and had a maximum width of 300 yards.  The tornado destroyed 7 homes. Twenty seven homes received major damage and 81 homes reported minor damage. There were no serious injuries and property damage was set at $6.2 million.|
-|2007-09-29 08:11:00.0000000|2007-09-29 08:11:00.0000000|Waterspout|ATLANTIC SOUTH|A waterspout formed in the Atlantic southeast of Melbourne Beach and briefly moved toward shore.|
-|2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|Thunderstorm Wind|MISSISSIPPI|Numerous large trees were blown down with some down on power lines. Damage occurred in eastern Adams county.|
-|2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|Thunderstorm Wind|GEORGIA|The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206. The cost of tree removal was estimated.|
+### distinct
 
-But [take](./takeoperator.md) shows rows from the table in no particular order, so let's sort them.
+It appears that there are multiple types of storms based on the results of our previous query. Let's use the [distinct](kusto/query/distinctoperator.md) operator to list all of the unique storm types.
 
-> [!NOTE]
-> [limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRSMksLsnMSy5RAIuEVBakAgD24XVdIAAAAA==" target="_blank">Run the query</a>
 
-### top
-
-[top](./topoperator.md): shows *n* rows ordered by given column.
-
-Use the `by` keyword to indicate the column on which you want to base the order of the results. Then, specify whether to order in ascending order (`asc`) or descending order (`desc`).
-
-Show the first *n* rows, ordered by the StartTime column:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| top 5 by StartTime desc
-| project  StartTime, EndTime, EventType, State, EventNarrative  
+```Kusto
+StormEvents | distinct EventType
 ```
 
-Here's the output:
+There are 46 types of storms in our table.
 
-|StartTime|EndTime|EventType|State|EventNarrative|
-|---|---|---|---|---|
-|2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|North to northeast winds gusting to around 58 mph were reported in the mountains of Ventura county.|
-|2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|The Warm Springs RAWS sensor reported northerly winds gusting to 58 mph.|
-|2007-12-31 22:30:00.0000000|2007-12-31 23:59:00.0000000|Winter Storm|MICHIGAN|This heavy snow event continued into the early morning hours on New Year's Day.|
-|2007-12-31 22:30:00.0000000|2007-12-31 23:59:00.0000000|Winter Storm|MICHIGAN|This heavy snow event continued into the early morning hours on New Year's Day.|
-|2007-12-31 22:30:00.0000000|2007-12-31 23:59:00.0000000|Winter Storm|MICHIGAN|This heavy snow event continued into the early morning hours on New Year's Day.|
-
-### sort
-
-[sort](./sortoperator.md): orders results by the given column.
-
-Achieve the same result as above by using [sort](./sortoperator.md) followed by [take](./takeoperator.md):
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| sort by StartTime desc
-| take 5
-| project  StartTime, EndTime, EventType, State, EventNarrative
-```
+|EventType|
+|--|
+|Thunderstorm Wind|
+|Hail|
+|Flash Flood|
+|Drought|
+|Winter Weather|
+|Winter Storm|
+|Heavy Snow|
+|High Wind|
+|Frost/Freeze|
+|Flood|
+|...|
 
 ### where
 
-[where](./whereoperator.md): filters by Boolean expression.
+The [where](kusto/query/whereoperator.md) operator filters rows of data based on certain criteria. Let's look for storm events in a specific `State` of a specific `EventType`.
 
-Let's see only `flood` events in `California` in Feb-2007:
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVAPcY1wDFZXSMxLUQArCqksgEi45eTnp6iDtBQU5WelJpeANBWVhGTmpuoouOalQBhgg3QQWnUUXBJzE9NTA4ryC1KLSioBBDYIBX4AAAA=" target="_blank">Run the query</a>
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
+```Kusto
 StormEvents
-| where StartTime >= datetime(2007-02-01) and StartTime < datetime(2007-03-01)
-| where EventType == 'Flood' and State == 'CALIFORNIA'
-| project StartTime, EndTime , State , EventType , EpisodeNarrative
+| where State == 'TEXAS' and EventType == 'Flood'
+| project StartTime, EndTime, State, EventType, DamageProperty
 ```
 
-Here's the output:
+There are 146 events that match these conditions. Here's a sample of 5 of them.
 
-|StartTime|EndTime|State|EventType|EpisodeNarrative|
-|---|---|---|---|---|
-|2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to western Kern County in the early morning hours of the 19th. Minor flooding was reported across State Highway 166 near Taft.|
+|StartTime|EndTime|State|EventType|DamageProperty|
+|--|--|--|--|--|
+|2007-01-13T08:45:00Z|2007-01-13T10:30:00Z|TEXAS|Flood|0|
+|2007-01-13T09:30:00Z|2007-01-13T21:00:00Z|TEXAS|Flood|0|
+|2007-01-13T09:30:00Z|2007-01-13T21:00:00Z|TEXAS|Flood|0|
+|2007-01-15T22:00:00Z|2007-01-16T22:00:00Z|TEXAS|Flood|20000|
+|2007-03-12T02:30:00Z|2007-03-12T06:45:00Z|TEXAS|Flood|0|
+|...|...|...|...|...|
+
+### sort
+
+To view the top five floods in Texas that caused the most damage, let's use the [sort](kusto/query/sortoperator.md) operator to arrange the rows in descending order based on the `DamageProperty` column and `take` to display only the top five rows.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12NPQsCMRBEe8H/MF2atJZXCMZauBS28bL4mWzYLCcBf7zkrhDsHszMm1FZkpspa91uPnjfSAijBiUMA4x35/1oEHLEUvKtrMHxxRxNn1QWxaXhEFK40km4kGhDpDr1WMOTsOtUhB80abeL+nsiC5fjCsuj/X3YP90XMW6LAacAAAA=" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents
+| where State == 'TEXAS' and EventType == 'Flood'
+| sort by DamageProperty desc
+| take 5
+| project StartTime, EndTime, State, EventType, DamageProperty
+```
+
+|StartTime|EndTime|State|EventType|DamageProperty|
+|--|--|--|--|--|
+|2007-08-18T21:30:00Z|2007-08-19T23:00:00Z|TEXAS|Flood|5000000|
+|2007-06-27T00:00:00Z|2007-06-27T12:00:00Z|TEXAS|Flood|1200000|
+|2007-06-28T18:00:00Z|2007-06-28T23:00:00Z|TEXAS|Flood|1000000|
+|2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|TEXAS|Flood|750000|
+|2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
+
+> [!NOTE]
+> The order of operations is important. Try putting `take 5` before `sort`. You'll get different results.
+
+### top
+
+The [top](kusto/query/topoperator.md) operator returns the first *n* rows sorted by the specified column.
+
+The following query will return the same results as the previous example in the `sort` section but with one less operator.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVAPcY1wDFZXSMxLUQArCqksgEi45eTnp6iDtJTkFyiYKiRVKrgk5iampwYU5RekFpVUgqQKivKzUpNLQOYVlYRk5qbqKLjmpUAYYDt0EKbqoOkHAAycFF+ZAAAA" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents
+| where State == 'TEXAS' and EventType == 'Flood'
+| top 5 by DamageProperty
+| project StartTime, EndTime, State, EventType, DamageProperty
+```
+
+|StartTime|EndTime|State|EventType|DamageProperty|
+|--|--|--|--|--|
+|2007-08-18T21:30:00Z|2007-08-19T23:00:00Z|TEXAS|Flood|5000000|
+|2007-06-27T00:00:00Z|2007-06-27T12:00:00Z|TEXAS|Flood|1200000|
+|2007-06-28T18:00:00Z|2007-06-28T23:00:00Z|TEXAS|Flood|1000000|
+|2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|TEXAS|Flood|750000|
+|2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
 
 ### extend
 
-[extend](./extendoperator.md): computes derived columns.
+Use the [extend](kusto/query/extendoperator.md) operator to add computed columns to a table.
 
-Create a new column by computing a value in every row:
+Let's extend the table showing the top five floods in Texas to include a `Duration` column by calculating the difference between the `StartTime` and `EndTime` columns.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OvQ7CMAyEdyTewVuWMDJ2QGr5WQJSKzGHxoIiEkeuKVTi4WmooBKbfXeffaUQ%2b6LDIO189oLHBRnhs1d9RMgyUOsbkVNgg4NSrIzicVVud2ZT7Y1KnFCEJZx6yK23ZzwwRWTpwWFbJx%2bfggOf39lKQwEyKIKrGo%2bwSEdZ0pyCkemKtUyi%2fib1j9ZjDz311H9%2fBys2LTk0lhPT4RvwA3pn6AAAAA%3d%3d" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents
+| where State == 'TEXAS' and EventType == 'Flood'
+| top 5 by DamageProperty desc
+| extend Duration = EndTime - StartTime
+| project StartTime, EndTime, Duration, DamageProperty
+```
+
+|StartTime|EndTime|Duration|DamageProperty|
+|--|--|--|--|
+|2007-08-18T21:30:00Z|2007-08-19T23:00:00Z|1.01:30:00|5000000|
+|2007-06-27T00:00:00Z|2007-06-27T12:00:00Z|12:00:00|1200000|
+|2007-06-28T18:00:00Z|2007-06-28T23:00:00Z|05:00:00|1000000|
+|2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|08:00:00|750000|
+|2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|03:00:00|750000|
+
+With the computed `Duration` column, it stands out that the flood that caused the most damage was also the longest flood.
+
+## Find insights with aggregation functions
+
+Aggregation functions allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, minimum, or average value.
+
+In the following examples, we'll use the [summarize](kusto/query/summarizeoperator.md) operator together with aggregation functions to find insights in our data, and the [render](kusto/query/renderoperator.md) operator to visualize the results.
+
+### count()
+
+Use `summarize` with the [count](kusto/query/count-aggfunction.md) aggregation function to find the number of events by state.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIyS9JzAkGyRYr2Cok55fmlWhoKiRVKgSXJJakAgChqbNHNwAAAA==" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents
+| summarize TotalStorms = count() by State
+```
+
+|State|TotalStorms|
+|--|--|
+|TEXAS|4701|
+|KANSAS|3166|
+|IOWA|2337|
+|ILLINOIS|2022|
+|MISSOURI|2016|
+|GEORGIA|1983|
+|MINNESOTA|1881|
+|WISCONSIN|1850|
+|NEBRASKA|1766|
+|NEWYORK|1750|
+|...|...|
+
+Then, use `render` to visualize the output.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIyS9JzAkGyRYr2Cok55fmlWhoKiRVKgSXJJakgtQWpealpBYpJCUWJWckFpUAAFJrtYhKAAAA" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents
+| summarize TotalStorms = count() by State
+| render barchart
+```
+
+:::image type="content" source="media/write-queries/total-storms-by-state-bar-chart.png" alt-text="Screenshot of total storms by state bar chart created with the render operator. ":::
+
+### countif()
+
+It's possible to use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
+
+Let's add the [countif()](kusto/query/countif-aggfunction.md) function to our query to add a column showing the count of storms that caused damage. Then, we'll `extend` our table with a calculation between the `TotalStorms` and `StormsWithCropDamage` columns to find the percentage of storms that caused damage.
+
+Finally, use the `top` operator to identify states with the most crop damage from storms.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OwQrCMBBE74X+wxwTKVgFj3pR70IFz2m7aqFJSrIVFT/ehKAIdY+zM/OmYuv0/kaGfZ694EetleuehDxDuKNl1VfR47FGY0fDQhbpl+RTx9ets8NOaXWhj6k7iyTEl8cGpUyh+hFyiinC6M5kWhzINYE/KUoBF+paIdi2dqx7Ev+oEnN8DT+TJWZYlKUssJQRyHbAKk2YlrwBwRSpiQoBAAA=" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-| limit 5
-| extend Duration = EndTime - StartTime 
-| project StartTime, EndTime, Duration, EventType, State
+| summarize 
+    TotalStorms = count(),
+    StormsWithCropDamage = countif(DamageCrops > 0)
+    by State
+| extend PercentWithCropDamage = 
+    round((todouble(StormsWithCropDamage) / todouble(TotalStorms) * 100), 2)
+| top 5 by StormsWithCropDamage
 ```
 
-Here's the output:
+|State|TotalStorms|StormsWithCropDamage|PercentWithCropDamage|
+|--|--|--|--|
+|IOWA|2337|359|15.36|
+|NEBRASKA|1766|201|11.38|
+|MISSISSIPPI|1218|105|8.62|
+|NORTH CAROLINA|1721|82|4.76|
+|MISSOURI|2016|78|3.87|
 
-|StartTime|EndTime|Duration|EventType|State|
-|---|---|---|---|---|
-|2007-09-18 20:00:00.0000000|2007-09-19 18:00:00.0000000|22:00:00|Heavy Rain|FLORIDA|
-|2007-09-20 21:57:00.0000000|2007-09-20 22:05:00.0000000|00:08:00|Tornado|FLORIDA|
-|2007-09-29 08:11:00.0000000|2007-09-29 08:11:00.0000000|00:00:00|Waterspout|ATLANTIC SOUTH|
-|2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|00:03:00|Thunderstorm Wind|MISSISSIPPI|
-|2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|00:05:00|Thunderstorm Wind|GEORGIA|
+> [!NOTE]
+> The `todouble()` function is used to cast the integer values returned by the `count()` and `countif()` aggregation functions to doubles before performing division. Without the `todouble()` function, the division would be an integer division, resulting in a truncated result.
 
-It's possible to reuse a column name and assign a calculation result to the same column.
+### min(), max(), and avg()
 
-Example:
+Let's learn more about types of storms that cause crop damage using the `min()`, `max()`, and `avg()` aggregation functions.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-print x=1
-| extend x = x + 1, y = x
-| extend x = x + 1
-```
+We'll filter out rows with no damaged crops, calculate the minimum, maximum, and average crop damage for each event type, and sort the result by the average damage.
 
-Here's the output:
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVXBJzE1MT3Uuyi8oVrBTMABJFJfm5iYWZVal8nIpAIFvYgVIGqLQNjexQgNJj6aOAlRVZh6yqsw8rKocy9KRVCWWpaOogqhJqlQAOzKksiAV7Jz8ohKQIIpeANxkeM/MAAAA" target="_blank">Run the query</a>
 
-|x|y|
-|---|---|
-|3|1|
-
-[Scalar expressions](./scalar-data-types/index.md) can include all the usual operators (`+`, `-`, `*`, `/`, `%`), and a range of useful functions are available.
-
-### summarize
-
-[summarize](./summarizeoperator.md): produces a table that aggregates the content of the input table.
-
-Count the number of events that occur in each state:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| summarize event_count = count() by State
+| where DamageCrops > 0
+| summarize
+    MaxCropDamage=max(DamageCrops), 
+    MinCropDamage=min(DamageCrops), 
+    AvgCropDamage=avg(DamageCrops)
+    by EventType
+| sort by AvgCropDamage
 ```
 
-[summarize](./summarizeoperator.md) groups together rows that have the same values in the `by` clause, and then it uses an aggregation function (for example, `count`) to combine each group in a single row. In this case, there's a row for each state and a column for the count of rows in that state.
-
-A range of [aggregation functions](aggregation-functions.md) are available. Use several aggregation functions in one `summarize` operator to produce several computed columns. For example, get the count of storms per state and the sum of unique types of storm per state. Then, use [top](./topoperator.md) to get the most storm-affected states:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents 
-| summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State
-| top 5 by StormCount desc
-```
-
-Here's the output:
-
-|State|StormCount|TypeOfStorms|
-|---|---|---|
-|TEXAS|4701|27|
-|KANSAS|3166|21|
-|IOWA|2337|19|
-|ILLINOIS|2022|23|
-|MISSOURI|2016|20|
-
-In the results of a `summarize` operator:
-
-* Each column is named in `by`.
-* Each computed expression has a column.
-* Each combination of `by` values has a row.
-
-### render
-
-[render](./renderoperator.md): displays various types of charts and tables.
-
-Strictly speaking, `render` is a feature of the client rather than part of the query language. Still, it's integrated into the language, and it's useful for envisioning your results.
-
-Project two columns and use them as the x-axis and the y-axis of a chart:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents 
-| summarize event_count=count(), mid = avg(BeginLat) by State 
-| sort by mid
-| where event_count > 1800
-| project State, event_count
-| render columnchart
-```
-
-:::image type="content" source="images/tutorial/event-counts-state.png" alt-text="Screenshot that shows a column chart of storm event counts by state.":::
-
-We did not include `mid` in the `project` operation. This way the `mid` data is not visually represented in the chart, yet we still display the states in order based on their `mid` values.
-
-## Aggregate by scalar values
-
-When aggregating by scalar values, like numbers and time values, use the [bin()](./binfunction.md) function to group rows into distinct sets of data.
+|EventType|MaxCropDamage|MinCropDamage|AvgCropDamage|
+|--|--|--|--|
+|Frost/Freeze|568600000|3000|9106087.5954198465|
+|Wildfire|21000000|10000|7268333.333333333|
+|Drought|700000000|2000|6763977.8761061952|
+|Flood|500000000|1000|4844925.23364486|
+|Thunderstorm Wind|22000000|100|920328.36538461538|
+|Hail|24000000|100|416890.56603773584|
+|Flash Flood|5000000|300|266778.60962566844|
+|High Wind|1000000|1000|209800|
+|Cold/Wind Chill|500000|100000|200000|
+|Heavy Rain|1150000|5000|171000|
+|...|...|...|...|
 
 ### bin()
 
-[bin()](./binfunction.md): rounds values down to an integer multiple of a given bin size.
+Instead of grouping rows by a specific column value, we can use the [bin()](kusto/query/binfunction.md) function to divide the data into distinct ranges based on numeric or time values.
 
-The following query determines the storm event count per day.
+The following example finds the event count of storms that caused crop damage for each week in 2007.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKWCKW2hqgkwqLs3NTSzKrEpVAJvunF+aV6Jgq5AMojU0FZIqFZIy8zTgNukoGKZoAgCRt8vYjQAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-| where StartTime > datetime(2007-02-14) and StartTime < datetime(2007-02-21)
-| summarize event_count = count() by bin(StartTime, 1d)
+| where StartTime between (datetime(2007-01-01) .. datetime(2007-12-31)) 
+    and DamageCrops > 0
+| summarize EventCount = count() by bin(StartTime, 7d)
 ```
 
-The query reduces all the timestamps to intervals of one day:
-
-|StartTime|event_count|
+|StartTime|EventCount|
 |---|---|
-|2007-02-14 00:00:00.0000000|180|
-|2007-02-15 00:00:00.0000000|66|
-|2007-02-16 00:00:00.0000000|164|
-|2007-02-17 00:00:00.0000000|103|
-|2007-02-18 00:00:00.0000000|22|
-|2007-02-19 00:00:00.0000000|52|
-|2007-02-20 00:00:00.0000000|60|
+|2007-01-01T00:00:00Z|16|
+|2007-01-08T00:00:00Z|20|
+|2007-01-29T00:00:00Z|8|
+|2007-02-05T00:00:00Z|1|
+|2007-02-12T00:00:00Z|3|
+|2007-02-19T00:00:00Z|4|
+|2007-02-26T00:00:00Z|3|
+|2007-03-05T00:00:00Z|1|
+|2007-03-19T00:00:00Z|2|
+|2007-03-26T00:00:00Z|2|
+|...|...|
 
-The [bin()](./binfunction.md) function is the same as the [floor()](./floorfunction.md) function in many languages. It simply reduces every value to the nearest multiple of the modulus that you supply. This allows [summarize](./summarizeoperator.md) to assign the rows to groups.
+Add `| render timechart` to the end of the query to visualize the results.
 
-<a name="displaychartortable"></a>
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOQQ6CMBBF95ziL9tESIsLVroBT4AXKHQiXbSYYZBoPLzFhYmTSSZ5P5P3e5k5Xh6UZCne2CZiQi+O5RoiYSDZiBKUd0KSiaqNaUpj82pUFf65rcuj1RoF8rjk0bnobtTyfF9whsmGZY3RcXgRvtJ2XpPghHG/SmN4YghJ/Roc0Hid35iSJ8auGqecfQAkVosYtwAAAA==" target="_blank">Run the query</a>
 
-## Visualize time series data
+:::image type="content" source="media/write-queries/crop-damage-by-week-time-chart.png" alt-text="Screenshot of the crop damage by week time chart rendered by the previous query.":::
 
-This section uses our knowledge of [summarize](#summarize), [render](#render), and bin()](#bin())  to display various types of time series.
+> [!NOTE]
+> `bin()` is similar to the `floor()` function in other programming languages. It reduces every value to the nearest multiple of the modulus that you supply and allows `summarize` to assign the rows to groups.
 
-Let's start with a simple timechart of event count by StartTime:
+### sum()
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+The results of the previous queries revealed that Freeze/Frost events tend to cause the most damage on average, but the chart showed that most events that cause some level of crop damage occur during the summer months.
+
+To further investigate this, modify the last query to use the [sum()](kusto/query/sum-aggfunction.md) function instead of the `count()` function. This will allow us to see the total number of damaged crops, rather than just the number of events that caused some damage.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wxwTsCWth570on5B/YHULLaHpGWzWhQ/3gRBdNjTm2FnepnZn+4UJJbFC+tITOjFspwnTxhIVqIA5ayQJKJaY7rKNOk06hr/vGmrbaM1ygJJNjgcrbdXOvC8ROxhcke8eW95ehIy/gSwy1j9pDWGB4YpqO+YDTqn8wOm4IiRay9jMt/qYo/IxAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-| summarize event_count=count() by bin(StartTime, 1d)
+| where StartTime between (datetime(2007-01-01) .. datetime(2007-12-31)) 
+    and DamageCrops > 0
+| summarize CropDamage = sum(DamageCrops) by bin(StartTime, 7d)
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/time-series-start-bin.png" alt-text="Screenshot of a line chart of events binned by time.":::
+:::image type="content" source="media/write-queries/sum-crop-damage-by-week.png" alt-text="Screenshot of time chart showing crop damage by week.":::
 
-### Multiple series
+Now we can see a peak in crop damage in January, which probably was due to Freeze/Frost.
 
-Use multiple values in a `summarize by` clause to create a separate row for each combination of values:
+### dcount()
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
+Check how many unique storm types there are by state using [dcount()](kusto/query/dcount-aggfunction.md).
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoLs3NTSzKrEpVCAbJhFQWpBYr2CqkJOeX5pVogBWCxDQVkiqBKhJLUsGa8otKIAIwLQAdj1AoVwAAAA==" target="_blank">Run the query</a>
+
+```Kusto
 StormEvents 
-| where StartTime > datetime(2007-06-04) and StartTime < datetime(2007-06-10) 
-| where Source in ("Source","Public","Emergency Manager","Trained Spotter","Law Enforcement")
-| summarize count() by bin(StartTime, 10h), Source
+| summarize StormTypes = dcount(EventType) by State
+| sort by StormTypes
 ```
 
-:::image type="content" source="images/tutorial/table-count-source.png" alt-text="Screenshot that shows a table count by source.":::
+|State|StormTypes|
+|--|--|
+|TEXAS|27|
+|CALIFORNIA|26|
+|PENNSYLVANIA|25|
+|GEORGIA|24|
+|ILLINOIS|23|
+|...|...|
 
-Just add the `render` term to the preceding example: `| render timechart`.
+It seems some states experience more types of storms than others. Could it be that an increase in storm types is correlated with an increase in damages or deaths?
 
-:::image type="content" source="images/tutorial/line-count-source.png" alt-text="Screenshot that shows a line chart count by source.":::
+Let's check.
 
-Notice that `render timechart` uses the first column as the x-axis, and then displays the other columns as separate lines.
+The following query gets the distinct count of storm types and uses [sum()](kusto/query/sum-aggfunction.md) to calculate the damage per state. Then, it renders a scatter chart to visualize the data points.
 
-### Daily average cycle
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NPQ7CMAxG90q9g8dG9AqdgB2pvYBJLX5E4shxKwX18CRkiTd/fv7erCzuupPX2HcHxM05lNeX+g7yzOW6pEARJlgtb16HP1wyM1ZoYcXPBR0+KFO5YajLTTiQaDJwatJzTqOpn/eUDahUzEH4TVYb5dg2F0TIryQQLaqS2CeK/gAUuA+1vwAAAA==" target="_blank">Run the query</a>
 
-Let's explore how activity varies over the average day.
-
-Count events by the time modulo one day, binned into hours. Here, we use `floor` instead of `bin`:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend hour = floor(StartTime % 1d , 1h)
-| summarize event_count=count() by hour
-| sort by hour asc
-| render timechart
+| summarize
+    StormTypes = dcount(EventType),
+    TotalDamage = sum(DamageProperty) + sum(DamageCrops)
+    by State
+| project StormTypes, TotalDamage
+| render scatterchart
 ```
 
-:::image type="content" source="images/tutorial/time-count-hour.png" alt-text="Screenshot that shows a timechart count by hour.":::
+:::image type="content" source="media/write-queries/damage-by-storm-type-count-scatter-chart.png" alt-text="Screenshot of scatter chart showing property damage by storm type count.":::
 
-Currently, `render` doesn't label durations properly, but we could use `| render columnchart` instead:
+We don't see strong correlation.
 
-:::image type="content" source="images/tutorial/column-count-hour.png" alt-text="Screenshot that shows a column chart count by hour.":::
+Let's check the relationship between storm types and total deaths.
 
-### Compare multiple daily series
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NsQ6DMAxEdyT+wSOo/EI3OnSGH3ATS4CaBDlHJap+fBOyxNvdPd9NCOoeH/GIbfOjeDjHun6lbSjdlNP53CXSnawJh0d3wdnrhwLNAfwehbFkKjV0RYyrikFPt8p7elvc8vo60wRD8vSuYUtJtTnU1RlR8VaUomFA1Cys+ANUUMvywAAAAA==" target="_blank">Run the query</a>
 
-The following query shows how storm activity varies over the time of day in different states.
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend hour= floor( StartTime % 1d , 1h)
-| where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
-| summarize event_count=count() by hour, State
-| render timechart
+| summarize
+    StormTypes = dcount(EventType),
+    TotalDeaths = sum(DeathsDirect) + sum(DeathsIndirect)
+    by State
+| project StormTypes, TotalDeaths
+| render scatterchart
 ```
 
-:::image type="content" source="images/tutorial/time-hour-state.png" alt-text="Screenshot of a timechart by hour and state.":::
+:::image type="content" source="media/write-queries/deaths-by-storm-type-scatter-chart-NOWHERE.png" alt-text="Screenshot of deaths by storm type count scatter chart.":::
 
-Divide by `1h` to turn the x-axis into an hour number instead of a duration:
+Based on the chart, it seems that there may be a relationship worth exploring between the number of storm types and deaths.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+### make_set()
+
+The [make_set()](kusto/query/makeset-aggfunction.md) operator is a way to take a bunch of rows in a table and turn them into an array of unique values.
+
+The following query uses `make_set()` to create an array of the event types that cause deaths in each state. The resulting table is then sorted by the number of storm types in each array.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NMQ7CMAxFdyTu4LGVGLgATGVgLhJjZeCLBEhSOS4oiMODC2Lq+vz8fqtJwuaOqHk+e9HDQUANWF1uvOCotKYlJfmxbTz9qfl5CIHFP0GthXalR957dV+bVhT4ii5Dq3HD7jUdysdmhQV6SRfrjWAxWRl3kqj9sQiX7oZ4VldNyfUbAcrl9NEAAAA=" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents
+| where DeathsDirect > 0 or DeathsIndirect > 0
+| summarize StormTypesWithDeaths = make_set(EventType) by State
+| project State, StormTypesWithDeaths
+| sort by array_length(StormTypesWithDeaths)
+```
+
+|State|StormTypesWithDeaths|
+|--|--|
+|CALIFORNIA|["Thunderstorm Wind","High Surf","Cold/Wind Chill","Strong Wind","Rip Current","Heat","Excessive Heat","Wildfire","Dust Storm","Astronomical Low Tide","Dense Fog","Winter Weather"]|
+|TEXAS|["Flash Flood","Thunderstorm Wind","Tornado","Lightning","Flood","Ice Storm","Winter Weather","Rip Current","Excessive Heat","Dense Fog","Hurricane (Typhoon)","Cold/Wind Chill"]|
+|OKLAHOMA|["Flash Flood","Tornado","Cold/Wind Chill","Winter Storm","Heavy Snow","Excessive Heat","Heat","Ice Storm","Winter Weather","Dense Fog"]|
+|NEW YORK|["Flood","Lightning","Thunderstorm Wind","Flash Flood","Winter Weather","Ice Storm","Extreme Cold/Wind Chill","Winter Storm","Heavy Snow"]|
+|KANSAS|["Thunderstorm Wind","Heavy Rain","Tornado","Flood","Flash Flood","Lightning","Heavy Snow","Winter Weather","Blizzard"]|
+|...|...|
+
+### case()
+
+The [case()](kusto/query/casefunction.md) function groups data into buckets based on specified conditions. The function returns the corresponding result expression for the first satisfied predicate, or the final else expression if none of the predicates are satisfied.
+
+In this example, we group states based on the number of storm-related injuries their citizens sustained.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlXwzMsqLcpMLXbOL80rUbAFyWjAxFwyi1KTSzQVkioVgksSS1JBOlMrSlLzUuDanEqTs1NB+pITi1MVNHi5FPACVNvsFEwNdAhpUfJJLEpPVSKoDt1oQyKM9k1NySzNJd1sIowOzk3MySFsspJfvkIm1HQlfIo1wdGWX1QCjw2FxOJkAHJXMdXXAQAA" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents
+| summarize InjuriesCount = sum(InjuriesDirect) by State
+| extend InjuriesBucket = case (
+                              InjuriesCount > 50,
+                              "Large",
+                              InjuriesCount > 10,
+                              "Medium",
+                              InjuriesCount > 0,
+                              "Small",
+                              "No injuries"
+                          )
+| sort by State asc
+```
+
+|State|InjuriesCount|InjuriesBucket|
+|--|--|--|
+|ALABAMA|494|Large|
+|ALASKA|0|No injuries|
+|AMERICAN SAMOA|0|No injuries|
+|ARIZONA|6|Small|
+|ARKANSAS|54|Large|
+|ATLANTIC NORTH|15|Medium|
+|ATLANTIC SOUTH|2|Small|
+|CALIFORNIA|221|Large|
+|COLORADO|22|Medium|
+|CONNECTICUT|1|Small|
+
+Let's create a pie chart to visualize the proportion of states that experienced storms resulting in a large, medium, or small number of injuries.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRvQ6CMBCAdxPe4cIEiYMOjjigDibqwhPUctEqLeZ6NWJ8eC3+JBgD2LG972vTL+OS9OKMhm0wuIF1WgtSV4SlOThSaGelMwyJP4nee3NFKDmGbQUZC0ZP4oXR5B8sdfKInpPCIkTBAFpX87YpTEbDLiRcCdph2Dn3rR73UK8xV07/7+6hzrQoim5zuClBvexh23D8I1v1/P20qusk0r8uqnM183iUHtWQ4KRQ7gXxHQoTE4gQAgAA" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-| extend hour= floor( StartTime % 1d , 1h)/ 1h
-| where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
-| summarize event_count=count() by hour, State
-| render columnchart
+| summarize InjuriesCount = sum(InjuriesDirect) by State
+| extend InjuriesBucket = case (
+                              InjuriesCount > 50,
+                              "Large",
+                              InjuriesCount > 10,
+                              "Medium",
+                              InjuriesCount > 0,
+                              "Small",
+                              "No injuries"
+                          )
+| summarize InjuryBucketByState=count() by InjuriesBucket
+| render piechart 
 ```
 
-:::image type="content" source="images/tutorial/column-hour-state.png" alt-text="Screenshot that shows a column chart by hour and state.":::
+:::image type="content" source="media/write-queries/injuries-bucket-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
 
-### Plot a distribution
+## Join data from multiple tables
 
-The following query calculates how many storms there are of different lengths.
+The [join](kusto/query/joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns and perform analysis on a combined data set.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+### Cross-table joins
+
+We have access to another table in the sample database called `PopulationData`. Use `take` to see what data this table contains.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwvILyjNSSzJzM9zSSxJVKhRKEnMTlUwNAAAWLY+MRgAAAA=" target="_blank">Run the query</a>
+
+```kusto
+PopulationData | take 10
+```
+
+|State|Population|
+|--|--|
+|ALABAMA|4918690|
+|ALASKA|727951|
+|ARIZONA|7399410|
+|ARKANSAS|3025880|
+|CALIFORNIA|39562900|
+|COLORADO|5826180|
+|CONNECTICUT|3559050|
+|DELAWARE|982049|
+|DISTRICT OF COLUMBIA|709951|
+|FLORIDA|21711200|
+|...|...|
+
+The table contains a `State` column just like the one in the `StormEvents` table, and one more column showing the population of that state.
+
+Let's join the `PopulationData` table with `StormEvents` on the `State` column to find the total property damage caused by storms per capita by state.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOQQrCQAxF94J3yFJB8ASzsu4LPUHUIKlOMqYZodLDt2MRpeAy//NefuNq8fgk8W69GqDLMaLxi6A2TWTeVxjxShBKtZmPT7WFUw+No1NBW2WBG8slsAhZFn7kSaMp39FZpUJHUPkCybSls8/BbvGwJjtg4gkJyyn7H+l7s5qXJX8EI25L+sbiAAAA" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-| extend  duration = EndTime - StartTime
-| where duration > 0s
-| where duration < 3h
-| summarize event_count = count()
-    by bin(duration, 5m)
-| sort by duration asc
-| render timechart
+| summarize PropertyDamage = sum(DamageProperty) by State
+| join kind=innerunique PopulationData on State
+| project State, PropertyDamagePerCapita = PropertyDamage / Population
+| sort by PropertyDamagePerCapita
 ```
 
-:::image type="content" source="images/tutorial/event-count-duration.png" alt-text="Screenshot of timechart results for event count by duration.":::
+Add `| render columnchart` to the query to visualize the result.
 
-Or, use `| render columnchart`:
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOQQrCQAxF94J3yFJB8ARdWfeFniC2QVM7yZhmhIqHt2MRpeAy+Xk/r3a1cLyT+LBePWFIIaDxg6AyjWQ+lhjwTFDkaDMPn2gLpxFqR6eMdsoCV5a2YBGyJHxLU43G1KOzSomOoPIFomlHjc+L3eJhRXbAyBNSLFX2P6VvZzXPJn8K8omRtGTQaJ+CNBc0fwFjx28n+AAAAA==" target="_blank">Run the query</a>
 
-:::image type="content" source="images/tutorial/column-event-count-duration.png" alt-text="Screenshot of a column chart for event count timechart by duration.":::
+:::image type="content" source="media/write-queries/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
 
-### Percentiles
+### Join query results
 
-Let's check what ranges of durations we find in different percentages of storms.
+Joins can be done based off of query results from the same table as well.
 
-To get this information, use the preceding query from [Plot a distribution](#plot-a-distribution), but replace `render` with:
+Say you want to create a list of states in which both lightning and avalanche events occurred. Use the join operator to merge the rows of two tables—one containing data on lightning events and the other containing data on avalanche events—based on the `State` column.
 
-```kusto
-| summarize percentiles(duration, 5, 20, 50, 80, 95)
-```
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZR8MtMzSvIy89KVgAqy8jPzFLIz81JsM/PyUosUNLgUgCAYYYgCWAC7SY5liTmJeckZqUpgRZpgMj8PqD2xJFVBAWh8SmZxSWZecglECABlvNsfnAAAAA==" target="_blank">Run the query</a>
 
-In this case, we didn't use a `by` clause, so the output is a single row:
-
-:::image type="content" source="images/tutorial/summarize-percentiles-duration.png" lightbox="images/tutorial/summarize-percentiles-duration.png" alt-text="Screenshot of a table of results for summarize percentiles by duration.":::
-
-The output shows that:
-
-* 5% of storms have a duration of less than 5 minutes.
-* 50% of storms lasted less than 1 hour and 25 minutes.
-* 95% of storms lasted less than 2 hours and 50 minutes.
-
-To get a separate breakdown for each state, use the `state` column separately with both `summarize` operators:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| extend  duration = EndTime - StartTime
-| where duration > 0s
-| where duration < 3h
-| summarize event_count = count()
-    by bin(duration, 5m), State
-| sort by duration asc
-| summarize percentiles(duration, 5, 20, 50, 80, 95) by State
-```
-
-:::image type="content" source="images/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state.":::
-
-### Percentages
-
-Using the StormEvents table, calculate the percentage of direct injuries from all injuries:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| where (InjuriesDirect > 0) and (InjuriesIndirect > 0) 
-| extend Percentage = (  100 * InjuriesDirect / (InjuriesDirect + InjuriesIndirect) )
-| project StartTime, InjuriesDirect, InjuriesIndirect, Percentage
-```
-
-The query removes zero count entries:
-
-|StartTime|InjuriesDirect|InjuriesIndirect|Percentage
-|---|---|---|---|
-|2007-05-01T16:50:00Z|1|1|50|
-|2007-08-10T21:25:00Z|7|2|77|
-|2007-08-23T12:05:00Z|7|22|24|
-|2007-08-23T14:20:00Z|3|2|60|
-|2007-09-10T13:45:00Z|4|1|80|
-|2007-12-06T08:30:00Z|3|3|50|
-|2007-12-08T12:00:00Z|1|1|50|
-
-## Join data from two tables
-
-This section covers how to join data across tables.
-
-[join](joinoperator.md): merges the rows of two tables by matching values of the specified column(s) from each table.
-
-#### Example: find states with two specific storm events
-
-Find two specific event types and in which state each of them happened by pulling storm events with the first `EventType` and the second `EventType`, and then join the two sets on `State`:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | where EventType == "Lightning"
-| join (
+| join kind=inner (
     StormEvents 
     | where EventType == "Avalanche"
-) on State  
+    )
+    on State  
 | distinct State
 ```
 
-:::image type="content" source="images/tutorial/join-events-lightning-avalanche.png" alt-text="Screenshot that shows joining the events lightning and avalanche.":::
+|State|
+|--|
+|OREGON|
+|UTAH|
+|WYOMING|
+|WASHINGTON|
+|COLORADO|
+|IDAHO|
+|NEVADA|
 
-#### Example: calculate user session length
+## Define variables with let statements
 
-This example doesn't use the `StormEvents` table.
+Let statements are used to define variables within a query. Defining variables can improve the readability, reusability, and exploratory potential of your queries.
 
-Assume you have data that includes events which mark the start and end of each user session with a unique ID.
+### Readability
 
-How would you find out how long each user session lasts?
+Defining variables can help clarify the purpose and function of different parts of a query.
 
-Use `extend` to provide an alias for the two timestamps, and then compute the session duration:
+In the following query, a let statement separates out the parts of the query expression in the previous `join` example. This separation highlights the overall purpose of the query, which is to find the distinct states where both lightning and avalanche events occurred.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WOsQ6DMBBDd77C4jeqDB26sZUfiOBErg1OlZyoKvHxRCAxtFM338l+dhRDp1MwKqe7pTwXOOzitgitYMU7SBbsZ/95CZxDe2baSxMr47r46DkE+YNxZirje0Oz4pGUeCpHp6Tkn4rE2uFNqnXUYsrBjscGj91by9QAAAA=" target="_blank">Run the query</a>
+
 ```kusto
-Events
-| where eventName == "session_started"
-| project start_time = timestamp, stop_time, country, session_id
-| join ( Events
-    | where eventName == "session_ended"
-    | project stop_time = timestamp, session_id
-    ) on session_id
-| extend duration = stop_time - start_time
-| project start_time, stop_time, country, duration
-| take 10
-```
-
-:::image type="content" source="images/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
-
->[!TIP]
-> It's a good practice to use `project` to select just the relevant columns before you perform the join. In the above example, we also rename the `timestamp` column in the same clause.
-
-## Assign a result to a variable
-
-Use [let](./letstatement.md) to make queries easier to read and manage.
-
-[let](./letstatement.md): sets a variable name equal to an expression or a function.
-
-Here we separate out the parts of the query expression in the first `join` example with `let`. The results are unchanged.
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-let LightningStorms = 
-    StormEvents
-    | where EventType == "Lightning";
-let AvalancheStorms = 
-    StormEvents
-    | where EventType == "Avalanche";
+let LightningStorms = StormEvents | where EventType == "Lightning";
+let AvalancheStorms = StormEvents | where EventType == "Avalanche";
 LightningStorms 
-| join (AvalancheStorms) on State
+| join kind=inner AvalancheStorms on State
 | distinct State
 ```
 
-> [!TIP]
-> In Kusto Explorer, to execute the entire query, don't add blank lines between parts of the query.
-> Any two statements must be separated by a semicolon.
+|State|
+|--|
+|OREGON|
+|UTAH|
+|WYOMING|
+|WASHINGTON|
+|COLORADO|
+|IDAHO|
+|NEVADA|
 
-## Query across databases
+### Reusability
 
-To access a table in a different database, use the following syntax:
+Defining variables allows you to reuse them multiple times within a query.
 
-```kusto
-database("<database name>").<table name>
+In the following query, a list of `WindStorms` is defined and used to filter the `StormEvents` table. To add another type of wind storm to the query, just add it to the list of `WindStorms`.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12PwQqDQAxE735F8KTgH5QeC17sRaGHUkrQ4G6pScmuFqEfX7vais1tMm+G5E4eTpab0ot2DvbQjIydrZNzBNPElShjI3EGizY9N6Tug4dgnM1GIexE+AfmvaqtkekL5LY1m0TpVbhdVkuqQLVMsLJhfUl3UTjwMBB7F73gaUgJgqzGB4FlSNY3UhCdzSOqorcDgUF3RR432FT0ULlR7deq7C/4Bhq91F4hAQAA" target="_blank">Run the query</a>
+
+```Kusto
+let WindStorms = dynamic([
+    "Tornado", 
+    "Thunderstorm Wind",
+    "Monsoon", 
+    "Hurricane",
+    "High Wind",
+    "Strong Wind", 
+    "Marine High Wind"
+    ]);
+StormEvents
+| where EventType in (WindStorms) or EventNarrative has_any (WindStorms)
+| project EpisodeId, EventType, EventNarrative
 ```
 
-The following examples require the `Logs` table to be in your default database.
+|EpisodeId|EventType|EventNarrative|
+|--|--|--|
+|829|Thunderstorm Wind|Sheriff reported a couple of trees down near Elijah Clark State Park.|
+|...|...|...|
+|10020|Drought|The southwest monsoon brought surges of moisture to western Colorado resulting in periodic outbreaks of showers and thunderstorms. This resulted in some improvement across extreme southwest Colorado where moderate drought lost its grip. However, abnormally dry conditions and water supply concerns persisted across the area due to long-term dryness and above normal temperatures.|
+|...|...|...|
+|10942|Flash Flood|Heavy rain associated with Hurricane Humberto caused flooded service roads along I-10 between Vidor and Orange.|
+|...|...|...|
 
-Now, let's say we want to correlate data in two databases named `Diagnostics` and `Telemetry`.
+### Exploratory potential
 
-If `Diagnostics` is your default database, use the following query:
+Defining variables allows you to modify and experiment with different values in your query.
 
-```kusto
-Logs | join database("Telemetry").Metrics on Request MachineId | ...
-```
+In the following example, the variables `MinDamage` and `EventLocation` are used to filter the `StormEvents` table. Explore different scenarios by changing the values of these variables and rerunning the query.
 
-If `Telemetry` is your default database, use the following query:
-
-```kusto
-union Requests, database("Diagnostics").Logs | ...
-```
-
-The preceding two queries assume that both databases are in the cluster you're currently connected to.
-
-If the database is in a remote cluster, access it using the following syntax:
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA11OzQqCQBC++xSDJ8VLl06ygViBYD9kL7DVooK7K+NobPTwrW7/c/v+pxEEm1otueSlAAbz2Xix11h+NQhFuT5zqrWymp8mebbeHbZZ4sdeQRrlZOm8O1wrgQIK4mRb2G/0LbuVFHXbQfREe4sEkoEF+zxiE10vJcf69kox1L26BHwog79g9N0bhnAybv5o2qlII42cMz0Abpac3PAAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-cluster("<cluster name>").database("<database name>").<table name>
+let MinDamage = 500000;
+let EventLocation = "CALIFORNIA";
+StormEvents
+| where State == EventLocation
+| where DamageCrops + DamageProperty >= MinDamage
+| summarize Damage=round(avg(DamageProperty + DamageCrops)) by EventType
+| sort by Damage
 ```
 
-For instance, if the `Telemetry` database was in a cluster named *TelemetryCluster.kusto.windows.net*, to access it, use this query:
-
-```kusto
-Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
-```
-
-> [!NOTE]
-> When the cluster is specified, the database is mandatory.
-
-For more information about combining data from several databases in a query, see [cross-database queries](cross-cluster-or-database-queries.md).
+|EventType|Damage|
+|--|--|
+|Wildfire|97707143|
+|Frost/Freeze|54662917|
+|Debris Flow|48000000|
+|High Wind|15000000|
+|Thunderstorm Wind|4000000|
+|Drought|2000000|
+|Flash Flood|500000|
+|Flood|500000|
+|Dust Storm|500000|
 
 ## Next steps
 
-* View code samples for the [Kusto Query Language](samples.md?pivots=azuredataexplorer).
+- Read more about the [Kusto Query Language](./kusto/query/index.md)
+- Learn how to perform [cross-database and cross-cluster queries](./kusto/query/cross-cluster-or-database-queries.md)
 
 ::: zone-end
 

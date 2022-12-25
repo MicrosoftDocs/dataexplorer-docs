@@ -189,7 +189,7 @@ range x from -2 to 2 step 0.1
 | render linechart with  (ycolumns = sin, cos, series = x_sign, sum_sign)
 ```
 
-[Rendering examples in the tutorial](./tutorial.md#displaychartortable)
+See more examples of `render` in the [tutorial](tutorial.md).
 
 [Anomaly detection](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
 
