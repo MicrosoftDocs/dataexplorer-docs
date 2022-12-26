@@ -1,9 +1,9 @@
 ---
 title: The case-insensitive hassuffix string operator - Azure Data Explorer
-description: This article describes the case-insensitive hassuffix string operator in Azure Data Explorer.
+description:  Learn how to use the hassuffix operator to filter data with a case-insensitive suffix string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2021
+ms.date: 12/18/2022
 ---
 # hassuffix operator
 
@@ -19,12 +19,12 @@ The following table provides a comparison of the `hassuffix` operators:
 |[`!hassuffix_cs`](not-hassuffix-cs-operator.md) |RHS isn't a term suffix in LHS |Yes |`"North America" !hassuffix_cs "icA"`|
 
 > [!NOTE]
-> The following abbreviations are used in the table above:
+> The following abbreviations are used in the above table:
 >
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
