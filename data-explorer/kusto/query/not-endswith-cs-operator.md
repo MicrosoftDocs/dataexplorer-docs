@@ -8,15 +8,9 @@ ms.date: 12/26/2022
 # !endswith_cs operator
 
 Filters a record set for data that doesn't contain a case-insensitive ending string.
+Filters a record set for data that doesn't contain a case-insensitive ending string.
 
-The following table provides a comparison of the `endswith` operators:
-
-|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
-|-----------|--------------|----------------|-------------------------|
-|[`endswith`](endswith-operator.md) |RHS is a closing subsequence of LHS |No |`"Fabrikam" endswith "Kam"`|
-|[`!endswith`](not-endswith-operator.md) |RHS isn't a closing subsequence of LHS |No |`"Fabrikam" !endswith "brik"`|
-|[`endswith_cs`](endswith-cs-operator.md) |RHS is a closing subsequence of LHS |Yes |`"Fabrikam" endswith_cs "kam"`|
-|[`!endswith_cs`](not-endswith-cs-operator.md) |RHS isn't a closing subsequence of LHS |Yes |`"Fabrikam" !endswith_cs "brik"`|
+[!INCLUDE [endswith-operator-comparison](../../includes/endswith-operator-comparison.md)]
 
 > [!NOTE]
 > The following abbreviations are used in the above table:
@@ -28,20 +22,21 @@ For more information about other operators and to determine which operator is mo
 
 ## Performance tips
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator, for example, `endswith_cs`, not `endswith`. For best practices, see [Query best practices](best-practices.md).
+For faster results, use the case-sensitive version of an operator. For example, use `endswith_cs` instead of `endswith`.
 
 ## Syntax
 
 *T* `|` `where` *col* `!endswith_cs` `(`*expression*`)`  
 
-## Arguments
+## Parameters
 
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check;| The tabular input whose records are to be filtered. |
+| *col* | string | &check; | The column to filter. |
+| *expression* | string | &check; | The expression used to filter. |
 
 ## Returns
 
@@ -49,16 +44,26 @@ Rows in *T* for which the predicate is `true`.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVYAI2Sbnl+aVaGgqJFUqBJcklqQC1ZRnpBalQngKiql5KcXlmSUZ8cnFCkqOSgAvfsIqTgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-    | summarize event_count=count() by State
-    | where State !endswith_cs "AS"
-    | count
+| summarize Events=count() by State
+| where State !endswith_cs "A"
 ```
 
-**Output**
+The following table only shows the first 10 results. To see the full output, run the query.
 
-|Count|
-|-----|
-|64|
+|State| Events|
+|--|--|
+|TEXAS| 4701|
+|KANSAS| 3166|
+|ILLINOIS| 2022|
+|MISSOURI| 2016|
+|WISCONSIN| 1850|
+|NEW YORK| 1750|
+|COLORADO| 1654|
+|MICHIGAN| 1637|
+|KENTUCKY| 1391|
+|OHIO| 1233|
