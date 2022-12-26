@@ -19,7 +19,7 @@ The following table provides a comparison of the `hassuffix` operators:
 |[`!hassuffix_cs`](not-hassuffix-cs-operator.md) |RHS isn't a term suffix in LHS |Yes |`"North America" !hassuffix_cs "icA"`|
 
 > [!NOTE]
-> The following abbreviations are used in the previous table:
+> The following abbreviations are used in the above table:
 >
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
