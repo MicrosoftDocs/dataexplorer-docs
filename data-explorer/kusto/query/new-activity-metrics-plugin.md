@@ -1,9 +1,9 @@
 ---
 title: new_activity_metrics plugin - Azure Data Explorer
-description: This article describes new_activity_metrics plugin in Azure Data Explorer.
+description: Learn how to use the new_activity_metrics plugin to calculate activity metrics. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/24/2022
+ms.date: 12/26/2022
 ---
 # new_activity_metrics plugin
 
@@ -18,11 +18,11 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 ## Arguments
 
 * *TabularExpression*: The tabular expression that serves as input.
-* *IdColumn*: The name of the column with ID values that represent user activity. 
+* *IdColumn*: The name of the column with ID values that represent user activity.
 * *TimelineColumn*: The name of the column that represents the timeline.
 * *Start*: Scalar with value of the analysis start period.
 * *End*: Scalar with value of the analysis end period.
-* *Window*: Scalar with value of the analysis window period. Can be either a numeric, datetime, or timestamp value, or a string that is one of `week`, `month` or `year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) accordingly. 
+* *Window*: Scalar with value of the analysis window period. Can be either a numeric, datetime, or timestamp value, or a string that is one of `week`, `month` or `year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) accordingly.
 * *Cohort*: (optional) a scalar constant indicating specific cohort. If not provided, all cohorts corresponding to the analysis time window are calculated and returned.
 * *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
 * *Lookback*: (optional) a tabular expression with a set of IDs that belong to the 'look back' period.
@@ -42,24 +42,20 @@ Output table schema is:
 |---|---|---|---|---|---|---|---|---|---|
 |type: as of *TimelineColumn*|same|long|long|double|double|double|..|..|..|
 
-* `from_TimelineColumn` - the cohort of new users. Metrics in this record refer to all users who were first seen in this period. The decision on 
-*first seen* takes into account all previous periods in the analysis period. 
-* `to_TimelineColumn` - the period being compared to. 
-* `dcount_new_values` - the number of distinct users in `to_TimelineColumn` that weren't seen in *all* periods prior to and including `from_TimelineColumn`. 
+* `from_TimelineColumn` - the cohort of new users. Metrics in this record refer to all users who were first seen in this period. The decision on *first seen* takes into account all previous periods in the analysis period.
+* `to_TimelineColumn` - the period being compared to.
+* `dcount_new_values` - the number of distinct users in `to_TimelineColumn` that weren't seen in *all* periods prior to and including `from_TimelineColumn`.
 * `dcount_retained_values` - out of all new users, first seen in `from_TimelineColumn`, the number of distinct users that were seen in `to_TimelineCoumn`.
 * `dcount_churn_values` - out of all new users, first seen in `from_TimelineColumn`, the number of distinct users that weren't seen in `to_TimelineCoumn`.
 * `retention_rate` - the percent of `dcount_retained_values` out of the cohort (users first seen in `from_TimelineColumn`).
 * `churn_rate` - the percent of `dcount_churn_values` out of the cohort (users first seen in `from_TimelineColumn`).
 
-**Notes**
-
-For definitions of `Retention Rate` and `Churn Rate` - refer to **Notes** section in 
-[activity_metrics plugin](./activity-metrics-plugin.md) documentation.
-
+>[!NOTE]
+>For definitions of `Retention Rate` and `Churn Rate` - refer to **Notes** section in [activity_metrics plugin](./activity-metrics-plugin.md) documentation.
 
 ## Examples
 
-The following sample data set shows which users seen on which days. The table was generated based on a source `Users` table, as follows: 
+The following sample data set shows which users seen on which days. The table was generated based on a source `Users` table, as follows:
 
 ```kusto
 Users | summarize tostring(make_set(user)) by bin(Timestamp, 1d) | order by Timestamp asc;
@@ -73,7 +69,7 @@ Users | summarize tostring(make_set(user)) by bin(Timestamp, 1d) | order by Time
 |2019-11-04 00:00:00.0000000|[0,1,2,3]|
 |2019-11-05 00:00:00.0000000|[0,1,2,3,4]|
 
-The output of the plugin for the original table is the following: 
+The output of the plugin for the original table is the following:
 
 ```kusto
 let StartDate = datetime(2019-11-01 00:00:00);
@@ -97,19 +93,19 @@ Users
 |10|2019-11-02 00:00:00.0000000|2019-11-05 00:00:00.0000000|0|1|1|0.5|0.5|
 |11|2019-11-02 00:00:00.0000000|2019-11-06 00:00:00.0000000|0|0|2|0|1|
 
-Following is an analysis of a few records from the output: 
+Following is an analysis of a few records from the output:
 
 * Record `R=3`, `from_TimelineColumn` = `2019-11-01`,  `to_TimelineColumn` = `2019-11-03`:
-    * The users considered for this record are all new users seen on 11/1. Since this is the first period, these are all users in that bin – [0,2,3,4]
-    * `dcount_new_values` – the number of users on 11/3 who weren't seen on 11/1. This includes a single user – `5`.
-    * `dcount_retained_values` – out of all new users on 11/1, how many were retained until 11/3? There are three values (`[0,2,4]`), while `count_churn_values` is one (user=`3`).
-    * `retention_rate` = 0.75 – the three retained users out of the four new users who were first seen in 11/1.
+  * The users considered for this record are all new users seen on 11/1. Since this is the first period, these are all users in that bin – [0,2,3,4]
+  * `dcount_new_values` – the number of users on 11/3 who weren't seen on 11/1. This includes a single user – `5`.
+  * `dcount_retained_values` – out of all new users on 11/1, how many were retained until 11/3? There are three values (`[0,2,4]`), while `count_churn_values` is one (user=`3`).
+  * `retention_rate` = 0.75 – the three retained users out of the four new users who were first seen in 11/1.
 
 * Record `R=9`, `from_TimelineColumn` = `2019-11-02`,  `to_TimelineColumn` = `2019-11-04`:
-    * This record focuses on the new users who were first seen on 11/2 – users `1` and `5`. 
-    * `dcount_new_values` – the number of users on 11/4 who weren't seen through all periods `T0 .. from_Timestamp`. Meaning, users who are seen on 11/4 but who weren't seen on either 11/1 or 11/2 – there are no such users. 
-    * `dcount_retained_values` – out of all new users on 11/2 (`[1,5]`), how many were retained until 11/4? There's one such user (`[1]`), `while count_churn_values` is one (user `5`). 
-    * `retention_rate` is 0.5 – the single user that was retained on 11/4 out of the two new ones on 11/2. 
+  * This record focuses on the new users who were first seen on 11/2 – users `1` and `5`.
+  * `dcount_new_values` – the number of users on 11/4 who weren't seen through all periods `T0 .. from_Timestamp`. Meaning, users who are seen on 11/4 but who weren't seen on either 11/1 or 11/2 – there are no such users.
+  * `dcount_retained_values` – out of all new users on 11/2 (`[1,5]`), how many were retained until 11/4? There's one such user (`[1]`), `while count_churn_values` is one (user `5`).
+  * `retention_rate` is 0.5 – the single user that was retained on 11/4 out of the two new ones on 11/2.
 
 ### Weekly retention rate, and churn rate (single week)
 
@@ -137,7 +133,6 @@ range Day from _start to _end  step 1d
 |2017-05-01 00:00:00.0000000|2017-05-15 00:00:00.0000000|0.031638418079096|0.968361581920904|
 |2017-05-01 00:00:00.0000000|2017-05-22 00:00:00.0000000|0|1|
 |2017-05-01 00:00:00.0000000|2017-05-29 00:00:00.0000000|0|1|
-
 
 ### Weekly retention rate, and churn rate (complete matrix)
 
@@ -176,12 +171,11 @@ range Day from _start to _end  step 1d
 |2017-05-22 00:00:00.0000000|2017-05-29 00:00:00.0000000|0.621835443037975|0.378164556962025|
 |2017-05-29 00:00:00.0000000|2017-05-29 00:00:00.0000000|1|0|
 
-
 ### Weekly retention rate with lookback period
 
-The following query calculates the retention rate of `New Users` cohort when taking into 
+The following query calculates the retention rate of `New Users` cohort when taking into
 consideration `lookback` period: a tabular query with set of Ids that are used to define
-the `New Users` cohort (all IDs that don't appear in this set are `New Users`). The 
+the `New Users` cohort (all IDs that don't appear in this set are `New Users`). The
 query examines the retention behavior of the `New Users` during the analysis period.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->

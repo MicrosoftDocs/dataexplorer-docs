@@ -1,13 +1,13 @@
 ---
 title: The case-sensitive !endswith_cs string operator - Azure Data Explorer
-description: This article describes the case-sensitive !endswith_cs string operator in Azure Data Explorer.
+description: Learn how to use the !endswith_cs string operator to filter data that doesn't contain a case-insensitive string. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/30/2021
+ms.date: 12/26/2022
 ---
 # !endswith_cs operator
 
-Filters a record set for data that does not contain a case-insensitive ending string.
+Filters a record set for data that doesn't contain a case-insensitive ending string.
 
 The following table provides a comparison of the `endswith` operators:
 
@@ -19,12 +19,12 @@ The following table provides a comparison of the `endswith` operators:
 |[`!endswith_cs`](not-endswith-cs-operator.md) |RHS isn't a closing subsequence of LHS |Yes |`"Fabrikam" !endswith_cs "brik"`|
 
 > [!NOTE]
-> The following abbreviations are used in the table above:
+> The following abbreviations are used in the above table:
 >
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 ## Performance tips
 
