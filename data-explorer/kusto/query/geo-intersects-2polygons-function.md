@@ -45,7 +45,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[LinearRingShell, LinearRingHole
 
 > [!TIP]
 >
-> * Using literal Polygon or a MultiPolygon may result in better performance.
+> Use literal LineString or MultiLineString for better performance.
 
 ## Examples
 
