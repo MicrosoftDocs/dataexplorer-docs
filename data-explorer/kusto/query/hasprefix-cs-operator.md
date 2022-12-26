@@ -9,7 +9,7 @@ ms.date: 12/25/2022
 
 Filters a record set for data with a case-sensitive starting string.
 
-`has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
+For best performance, use strings of three characters or more. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
 [!INCLUDE [has-prefix-operator-comparison](../../includes/has-prefix-operator-comparison.md)]
 
