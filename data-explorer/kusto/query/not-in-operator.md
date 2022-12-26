@@ -9,7 +9,7 @@ ms.date: 10/01/2021
 
 Filters a record set for data without a case-insensitive string.
 
-The following table provides a comparison of the `has` operators:.
+The following table provides a comparison of the `in` operators:.
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|

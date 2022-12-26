@@ -9,7 +9,7 @@ ms.date: 12/18/2022
 
 Filters a record set for data with a case-sensitive prefix string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
-The following table provides a comparison of the `has` operators:
+The following table provides a comparison of the `hasprefix` operator:
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
