@@ -19,7 +19,7 @@ The following table provides a comparison of the `hasprefix` operators:
 |[`!hasprefix_cs`](not-hasprefix-cs-operator.md) |RHS isn't a term prefix in LHS |Yes |`"North America" !hasprefix_cs "CA"`|
 
 > [!NOTE]
-> The following abbreviations are used in the previous table:
+> The following abbreviations are used in the above table:
 >
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
