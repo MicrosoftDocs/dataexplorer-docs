@@ -12,20 +12,27 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-In this tutorial, you'll learn how to use the [Kusto Query Language (KQL)](index.md) to retrieve, manipulate, and visualize your data stored in Azure Data Explorer. You'll learn about the essential operators and functions needed to effectively work with your data, as well as how to join tables and define variables to make your queries more efficient and reusable.
+This tutorial will introduce you to the [Kusto Query Language (KQL)](index.md) and show you how to write KQL queries to retrieve, manipulate, and visualize your data stored in Azure Data Explorer.
 
-To follow along, use the buttons above each example query to automatically run them. The examples in this tutorial use the `StormEvents` table, which is located in the [Sample database](https://help.kusto.windows.net/Samples) of the publicly available and free **help** cluster.
+To follow along, use the buttons above each example query to run them automatically. The examples in this tutorial use the `StormEvents` table, which is located in the [Sample database](https://help.kusto.windows.net/Samples) of the publicly available and free **help** cluster. If you want to experiment with your own data, [add your own cluster](../../web-query-data.md#add-clusters) to the Azure Data Explorer web UI.
 
-By the end of this tutorial, you'll have a solid foundation in KQL and be able to start uncovering valuable insights in your data.
+In this tutorial, you'll get a chance to:
+
+> [!div class="checklist"]
+>
+> * Get started with common operators
+> * Find insights wth aggregation functions
+> * Join data from multiple tables
+> * Define variables with let statements
 
 ## Prerequisites
 
-- A Microsoft or Azure account to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
-- Familiarity with database structures like tables, columns, and rows
+* A Microsoft or Azure account to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
+* Familiarity with database structures like tables, columns, and rows
 
 ## Introduction to KQL queries
 
-A KQL query is a read-only request to retrieve and process data in Azure Data Explorer. These queries consist of one or more query statements and return data in tabular or graphical format.
+A [Kusto Query Language (KQL)](index.md) query is a read-only request to retrieve and process data in Azure Data Explorer. These queries consist of one or more query statements and return data in tabular or graphical format.
 
 ### Tabular expression statements
 
@@ -33,7 +40,7 @@ The most common type of query statement is a tabular expression statement. These
 
 The order of the operators is important, as the data flows from one operator to the next and is transformed at each step. Think of it like a funnel where the data starts as an entire table and is refined as it passes through each operator, until you're left with a final output at the end.
 
-Read the following query, and then we'll go through it step by step.
+Read the following query, and then we'll go through it step-by-step.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKaCJG4HENZENKklVsLVVUHLz8Q/ydHFUAkol55fmlQAA2ZnM/XgAAAA=" target="_blank">Run the query</a>
@@ -48,6 +55,8 @@ StormEvents
 |Count|
 |--|
 |28|
+
+The query takes the following actions in order:
 
 1. The `StormEvents` table is filtered by the `where` operator to include rows with `StartTime` values within the specified date range.
 1. The filtered table is then further filtered by another `where` operator to include rows with a `State` value of "FLORIDA".
@@ -74,7 +83,7 @@ StormEvents | count
 
 ### take
 
-To get a sense of the data in our table, let's use the [take](./takeoperator.md) operator to view a sample of records. This operator returns a specified number of random rows from the table, which can be useful for previewing the data and becoming familiar with it.
+To get a sense of the data in our table, let's use the [take](./takeoperator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the data and becoming familiar with it.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d" target="_blank">Run the query</a>
@@ -172,16 +181,16 @@ There are 146 events that match these conditions. Here's a sample of 5 of them.
 
 ### sort
 
-To view the top five floods in Texas that caused the most damage, let's use the [sort](./sortoperator.md) operator to arrange the rows in descending order based on the `DamageProperty` column and `take` to display only the top five rows.
+To view the top five floods in Texas that caused the most damage, let's use the [sort](./sortoperator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
 
+<!-- TODO: Update query link. -->
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12NPQsCMRBEe8H/MF2atJZXCMZauBS28bL4mWzYLCcBf7zkrhDsHszMm1FZkpspa91uPnjfSAijBiUMA4x35/1oEHLEUvKtrMHxxRxNn1QWxaXhEFK40km4kGhDpDr1WMOTsOtUhB80abeL+nsiC5fjCsuj/X3YP90XMW6LAacAAAA=" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
 | where State == 'TEXAS' and EventType == 'Flood'
-| sort by DamageProperty desc
-| take 5
+| sort by DamageProperty
 | project StartTime, EndTime, State, EventType, DamageProperty
 ```
 
@@ -200,7 +209,7 @@ StormEvents
 
 The [top](./topoperator.md) operator returns the first *n* rows sorted by the specified column.
 
-The following query will return the same results as the previous example in the `sort` section but with one less operator.
+The following query will return the top 5 Texas floods that caused the most damaged property.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVAPcY1wDFZXSMxLUQArCqksgEi45eTnp6iDtJTkFyiYKiRVKrgk5iampwYU5RekFpVUgqQKivKzUpNLQOYVlYRk5qbqKLjmpUAYYDt0EKbqoOkHAAycFF+ZAAAA" target="_blank">Run the query</a>
@@ -220,11 +229,7 @@ StormEvents
 |2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|TEXAS|Flood|750000|
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
 
-### extend
-
-Use the [extend](./extendoperator.md) operator to add computed columns to a table.
-
-Let's extend the table showing the top five floods in Texas to include a `Duration` column by calculating the difference between the `StartTime` and `EndTime` columns.
+Use `project` to include a computed `Duration` column by calculating the difference between the `StartTime` and `EndTime` columns. Alternatively, the [extend](./extendoperator.md) operator could add computed columns to the end of a table. In this case, we're only interested in certain columns, so `project` is a better option.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OvQ7CMAyEdyTewVuWMDJ2QGr5WQJSKzGHxoIiEkeuKVTi4WmooBKbfXeffaUQ%2b6LDIO189oLHBRnhs1d9RMgyUOsbkVNgg4NSrIzicVVud2ZT7Y1KnFCEJZx6yK23ZzwwRWTpwWFbJx%2bfggOf39lKQwEyKIKrGo%2bwSEdZ0pyCkemKtUyi%2fib1j9ZjDz311H9%2fBys2LTk0lhPT4RvwA3pn6AAAAA%3d%3d" target="_blank">Run the query</a>
@@ -233,8 +238,7 @@ Let's extend the table showing the top five floods in Texas to include a `Durati
 StormEvents
 | where State == 'TEXAS' and EventType == 'Flood'
 | top 5 by DamageProperty desc
-| extend Duration = EndTime - StartTime
-| project StartTime, EndTime, Duration, DamageProperty
+| project StartTime, EndTime, Duration = EndTime - StartTime, DamageProperty
 ```
 
 |StartTime|EndTime|Duration|DamageProperty|
@@ -279,7 +283,7 @@ StormEvents
 |NEWYORK|1750|
 |...|...|
 
-Then, use `render` to visualize the output.
+Visualize the output in a bar chart using the [render](./renderoperator.md) operator.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIyS9JzAkGyRYr2Cok55fmlWhoKiRVKgSXJJakgtQWpealpBYpJCUWJWckFpUAAFJrtYhKAAAA" target="_blank">Run the query</a>
@@ -296,7 +300,7 @@ StormEvents
 
 It's possible to use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
 
-Let's add the [countif()](./countif-aggfunction.md) function to our query to add a column showing the count of storms that caused damage. Then, we'll `extend` our table with a calculation between the `TotalStorms` and `StormsWithCropDamage` columns to find the percentage of storms that caused damage.
+Use the [countif()](./countif-aggfunction.md) function to add a column with the count of storms that caused damage. The function returns the count of rows where the predicate passed as an argument is `true`. Then, use `extend` to add a column with the calculation between the `TotalStorms` and `StormsWithCropDamage` to find the percentage of storms that caused damage.
 
 Finally, use the `top` operator to identify states with the most crop damage from storms.
 
@@ -323,7 +327,7 @@ StormEvents
 |MISSOURI|2016|78|3.87|
 
 > [!NOTE]
-> The `todouble()` function is used to cast the integer values returned by the `count()` and `countif()` aggregation functions to doubles before performing division. Without the `todouble()` function, the division would be an integer division, resulting in a truncated result.
+> The [todouble() function](todoublefunction.md) is used to cast the integer values returned by the `count()` and `countif()` aggregation functions to doubles before performing division. Without the `todouble()` function, the division would be an integer division, resulting in a truncated result.
 
 ### min(), max(), and avg()
 
@@ -363,7 +367,7 @@ StormEvents
 
 Instead of grouping rows by a specific column value, we can use the [bin()](./binfunction.md) function to divide the data into distinct ranges based on numeric or time values.
 
-The following example finds the event count of storms that caused crop damage for each week in 2007.
+This example counts the number of storms that caused crop damage for each week in 2007. The `7d` argument represents a week, as the function requires a valid [timespan](scalar-data-types/timespan.md) value.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKWCKW2hqgkwqLs3NTSzKrEpVAJvunF+aV6Jgq5AMojU0FZIqFZIy8zTgNukoGKZoAgCRt8vYjQAAAA==" target="_blank">Run the query</a>
@@ -401,7 +405,7 @@ Add `| render timechart` to the end of the query to visualize the results.
 
 ### sum()
 
-The results of the previous queries revealed that Freeze/Frost events tend to cause the most damage on average, but the chart showed that most events that cause some level of crop damage occur during the summer months.
+The results of the [min(), max(), and avg() query](#min-max-and-avg) revealed that Freeze/Frost events tend to cause the most damage on average, but the [time chart from the bin() query](#bin) showed that most events that cause some level of crop damage occur during the summer months.
 
 To further investigate this, modify the last query to use the [sum()](./sum-aggfunction.md) function instead of the `count()` function. This will allow us to see the total number of damaged crops, rather than just the number of events that caused some damage.
 
@@ -422,7 +426,7 @@ Now we can see a peak in crop damage in January, which probably was due to Freez
 
 ### dcount()
 
-Check how many unique storm types there are by state using [dcount()](./dcount-aggfunction.md).
+Approximate how many unique storm types there are by state using [dcount()](./dcount-aggfunction.md).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoLs3NTSzKrEpVCAbJhFQWpBYr2CqkJOeX5pVogBWCxDQVkiqBKhJLUsGa8otKIAIwLQAdj1AoVwAAAA==" target="_blank">Run the query</a>
@@ -573,6 +577,8 @@ StormEvents
 ## Join data from multiple tables
 
 The [join](./joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns and perform analysis on a combined data set.
+
+Like `join`, the [lookup](lookupoperator.md) operator also combines rows from tables based on matching values in specified columns. However, there are several differences to consider, such as how each operator handles repeated columns, the types of lookups supported, performance considerations, and the size of the tables being joined.
 
 ### Cross-table joins
 
@@ -748,8 +754,10 @@ StormEvents
 
 ## Next steps
 
-- Read more about the [Kusto Query Language](index.md)
-- Learn how to perform [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md)
+* Read more about the [Kusto Query Language](index.md)
+* Learn how to perform [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md)
+* Get a comprehensive understanding by reading the [white paper](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-explorer/Azure_Data_Explorer_white_paper.pdf)
+* Learn how to [ingest data](../../ingest-sample-data.md)
 
 ::: zone-end
 
