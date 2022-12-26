@@ -31,7 +31,8 @@ In that case, the numerical scalar will be broadcasted to a vector whose length 
 ## Returns
 
 Returns a value of type `real` whose value is the sum over the product of each element of *series1* with the corresponding element of *series2*.
-Any non-numeric element of the input series or non-existing element (arrays of different sizes) will be ignored.
+In case both series length isn't equal, the longer series will be truncated to the length of the shorter one.
+Any non-numeric element of the input series will be ignored.
 
 > [!NOTE]
 > If one or both input arrays are empty, the result will be `null`.
