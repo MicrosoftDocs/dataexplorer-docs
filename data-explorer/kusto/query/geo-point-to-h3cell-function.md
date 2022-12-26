@@ -32,7 +32,7 @@ The H3 Cell token string value of a given geographic location. If the coordinate
 > * H3 Cell has a unique hexagon shape and this leads some unique properties:
 > * Hexagons have 6 neighbors
 > * Hexagons allow us to approximate radiuses easily and all neighbors are equidistant
-> * Hexagons are visually pleasant to look at
+> * Hexagons are visually pleasant
 > * In some rare cases the shape is pentagon.
 > * H3 Cell has a rectangular area on a plane surface.
 > * Invoking the [geo_h3cell_to_central_point()](geo-h3cell-to-central-point-function.md) function on an H3 Cell token string that was calculated on longitude x and latitude y won't necessarily return x and y.
