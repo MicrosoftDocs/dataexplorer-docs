@@ -43,6 +43,7 @@ Requires [Database viewer permission](../management/access-control/role-based-au
 | `RowOrderPolicy`           | String   | The table's effective row order policy, serialized as JSON.                                     |
 
 `*` *Taking into account policies of parent entities (such as database/cluster).*
+
 `**` *Values may be up to 15 minutes old, as they are taken from a cached summary of the table's extents.*
 
 **Output example**
