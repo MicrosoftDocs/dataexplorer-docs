@@ -36,7 +36,7 @@ Rows in *T* for which the predicate is `true`
 
 > [!NOTE]
 >
-> * The expression list can produce up to `10,000` values.
+> * The expression list can produce up to 10,000 values.
 > * For tabular expressions, the first column of the result set is selected.
 
 ## Examples
