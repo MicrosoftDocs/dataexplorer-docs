@@ -18,13 +18,13 @@ In this tutorial, you'll learn how to:
 
 > [!div class="checklist"]
 >
-> * Get started with common operators
-> * Find insights with aggregation functions
-> * Join data from multiple tables
-> * Define variables
-> * Calculate percentages
-> * Calculate correlation coefficients
-> * Cluster geospacial data
+> * [Get started with common operators](#get-started-with-common-operators)
+> * [Find insights with aggregation functions](#find-insights-with-aggregation-functions)
+> * [Join data from multiple tables](#join-data-from-multiple-tables)
+> * [Define variables](#define-variables)
+> * [Calculate percentages](#calculate-percentages)
+> * [Calculate correlation coefficients](#calculate-correlation-coefficients)
+> * [Perform geospacial clustering](#perform-geospacial-clustering)
 
 To follow along, use the buttons above each example query to run them. The examples use the `StormEvents` table, which is in the [Sample database](https://help.kusto.windows.net/Samples) of the publicly available and free **help** cluster. To experiment with your own data, [add your cluster](../../web-query-data.md#add-clusters) to the Azure Data Explorer web UI.
 
