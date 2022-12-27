@@ -3,7 +3,7 @@ title: Scalar Functions - Azure Data Explorer
 description: This article describes Scalar Functions in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/18/2021
+ms.date: 11/10/2022
 ---
 # Scalar function types at a glance
 
@@ -38,7 +38,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[ago()](agofunction.md)|Subtracts the given timespan from the current UTC clock time.|
 |[datetime_add()](datetime-addfunction.md)|Calculates a new datetime from a specified datepart multiplied by a specified amount, added to a specified datetime.|
 |[datetime_diff()](datetime-difffunction.md)|Returns the end of the year containing the date, shifted by an offset, if provided.|
-|[datetime_local_to_utc()](datetime-local-to-utc-function.md) |  Converts local datetime to UTC datetime using [a time-zone specification](../query/timezone.md). 
+|[datetime_local_to_utc()](datetime-local-to-utc-function.md) |  Converts local datetime to UTC datetime using [a time-zone specification](../query/timezone.md).
 |[datetime_part()](datetime-partfunction.md)|Extracts the requested date part as an integer value.|
 | [datetime_utc_to_local()](datetime-utc-to-local-function.md) | Converts UTC datetimgoe to local datetime using a [time-zone specification](../query/timezone.md).
 |[dayofmonth()](dayofmonthfunction.md)|Returns the integer number representing the day number of the given month.|
@@ -313,6 +313,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[parse_ipv6_mask()](parse-ipv6-maskfunction.md)|Converts IPv6 or IPv4 string and netmask to a canonical IPv6 string representation.|
 |[format_ipv4()](format-ipv4-function.md)|Parses input with a netmask and returns string representing IPv4 address.|
 |[format_ipv4_mask()](format-ipv4-mask-function.md)|Parses input with a netmask and returns string representing IPv4 address as CIDR notation.|
+|[ipv6_is_in_range()](ipv6-is-in-range-function.md)|Checks if an IPv6 string address is in IPv6-prefix notation range.|
+|[ipv6_is_in_any_range()](ipv6-is-in-any-range-function.md)|Checks if an IPv6 string address is in any of the IPv6-prefix notation ranges.|
 
 ## IPv4 text match functions
 

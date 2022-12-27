@@ -1,9 +1,9 @@
 ---
 title: geo_point_in_polygon() - Azure Data Explorer
-description: This article describes geo_point_in_polygon() in Azure Data Explorer.
+description: Learn how to use the geo_point_in_polygon() function to check if the geospatial coordinates are inside a polygon or a multipolygon on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 11/13/2022
+ms.date: 12/14/2022
 ---
 # geo_point_in_polygon()
 
@@ -11,7 +11,7 @@ Calculates whether the geospatial coordinates are inside a polygon or a multipol
 
 ## Syntax
 
-`geo_point_in_polygon(`*longitude*`, `*latitude*`, `*polygon*`)`
+`geo_point_in_polygon(`*longitude*`,`*latitude*`,`*polygon*`)`
 
 ## Arguments
 
@@ -24,15 +24,16 @@ Calculates whether the geospatial coordinates are inside a polygon or a multipol
 Indicates whether the geospatial coordinates are inside a polygon. If the coordinates or polygon is invalid, the query will produce a null result.
 
 > [!NOTE]
+>
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
 > * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used for measurements on Earth is a sphere. Polygon edges are [geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere.
 > * If input polygon edges are straight cartesian lines, consider using [geo_polygon_densify()](geo-polygon-densify-function.md) to convert planar edges to geodesics.
 
 **Polygon definition and constraints**
 
-dynamic({"type": "Polygon","coordinates": [ LinearRingShell, LinearRingHole_1 ,..., LinearRingHole_N ]})
+dynamic({"type": "Polygon","coordinates": [ LinearRingShell, LinearRingHole_1, ..., LinearRingHole_N ]})
 
-dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHole_1 ,..., LinearRingHole_N ] ,..., [LinearRingShell, LinearRingHole_1 ,..., LinearRingHole_M]]})
+dynamic({"type": "MultiPolygon","coordinates": [[LinearRingShell, LinearRingHole_1, ..., LinearRingHole_N ], ..., [LinearRingShell, LinearRingHole_1, ..., LinearRingHole_M]]})
 
 * LinearRingShell is required and defined as a `counterclockwise` ordered array of coordinates [[lng_1,lat_1],...,[lng_i,lat_i],...,[lng_j,lat_j],...,[lng_1,lat_1]]. There can be only one shell.
 * LinearRingHole is optional and defined as a `clockwise` ordered array of coordinates [[lng_1,lat_1],...,[lng_i,lat_i],...,[lng_j,lat_j],...,[lng_1,lat_1]]. There can be any number of interior rings and holes.
@@ -44,8 +45,9 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 * Polygon doesn't necessarily contain its vertices. Point containment in polygon is defined so that if the Earth is subdivided into polygons, every point is contained by exactly one polygon.
 
 > [!TIP]
+>
 > * Using literal Polygon or a MultiPolygon may result in better performance.
-> * If you want to know if any of the polygons contains a point, try the following steps: Fold the collection of polygons into one multipolygon. Then query this multipolygon. This may improve performance. See the example below. 
+> * If you want to know if any of the polygons contains a point, try the following steps: Fold the collection of polygons into one multipolygon. Then query this multipolygon. This may improve performance. See the following example.
 
 ## Examples
 

@@ -26,7 +26,7 @@ For general information about ingesting into Azure Data Explorer from IoT Hub, s
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Create [a cluster and database](create-cluster-database-portal.md).
-* [A sample app](https://github.com/Azure-Samples/azure-iot-samples-csharp) and documentation for simulating a device.
+* [A sample app](https://github.com/Azure/azure-iot-sdk-csharp) and documentation for simulating a device.
 * [.NET SDK](https://dotnet.microsoft.com/download) to compile and run the sample app.
 
 ## Create an Iot Hub
@@ -69,15 +69,15 @@ Now you connect to the IoT Hub from Azure Data Explorer. When this connection is
 
     :::image type="content" source="media/ingest-data-iot-hub/select-database.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing a list of databases with testdb selected.":::
 
-1. Select **Data ingestion** and **Add data connection**.
+1. Select **Data connections** and **Add data connection**. From the dropdown, select **IoT Hub**.
 
-    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-connection.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data Ingestion window with the Add data connection tab selected.":::
+    :::image type="content" source="media/ingest-data-iot-hub/add-data-connection.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data Ingestion window with the Add data connection tab selected.":::
 
 ### Create a data connection
 
 * Fill out the form with the following information.
 
-    :::image type="content" source="media/ingest-data-iot-hub/data-connection-pane.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data connection form.":::
+    :::image type="content" source="media/ingest-data-iot-hub/create-data-connection.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data connection form.":::
 
     |**Setting** | **Field description**|
     |---|---|
@@ -107,12 +107,12 @@ For this article, you use static routing, where you specify the table name, data
 
 1. Fill out the following routing settings:
 
-    :::image type="content" source="media/ingest-data-iot-hub/default-routing-settings.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the default routing settings in the Target table form.":::
+    :::image type="content" source="media/ingest-data-iot-hub/table-routing-settings.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the default routing settings in the Target table form.":::
 
      **Setting** | **Suggested value** | **Field description**
     |---|---|---|
     | Table name | *TestTable* | The table you created in **testdb**. |
-    | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, and W3CLOG.|
+    | Data format | *JSON* | Supported formats are AVRO, CSV, JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHE AVRO, and W3CLOG.|
     | Mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **testdb**, which maps incoming data to the column names and data types of **testdb**. If not specified, an [identity data mapping](kusto/management/mappings.md#identity-mapping) derived from the table's schema is used. |
     | | |
 
@@ -120,6 +120,7 @@ For this article, you use static routing, where you specify the table name, data
     > In case of a [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover), you must recreate the data connection.
 
     > [!NOTE]
+    > * The JSON data format will be parsed as multijson by default. Select **Ignore format errors** to ingest the data in strict JSON format.
     > * You don't have to specify all **Default routing settings**. Partial settings are also accepted.
     > * Only events enqueued after you create the data connection are ingested.
 
@@ -165,7 +166,7 @@ With the app generating data, you can now see the data flow from the IoT hub to 
 
 1. In the Azure portal, under your IoT hub, you see the spike in activity while the app is running.
 
-    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-metrics.png" alt-text="Screenshot of the Azure Portal UI under your I o T hub, showing the spike in activity while the app is running .":::
+    :::image type="content" source="media/ingest-data-iot-hub/iot-hub-metrics.png" alt-text="Screenshot of the Azure portal UI under your I o T hub, showing the spike in activity while the app is running .":::
 
 1. To check how many messages have made it to the database so far, run the following query in your test database.
 
