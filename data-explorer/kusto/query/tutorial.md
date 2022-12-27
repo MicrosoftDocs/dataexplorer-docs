@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Write Kusto queries'
+title: 'Tutorial: Write KQL queries'
 description: This tutorial describes how to write queries in the Kusto Query Language to meet common query needs.
 ms.reviewer: alexans
 ms.topic: reference
@@ -8,7 +8,7 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 
-# Tutorial: Write Kusto queries
+# Tutorial: Write KQL queries
 
 ::: zone pivot="azuredataexplorer"
 
@@ -60,7 +60,7 @@ StormEvents
 |--|
 |28|
 
-The query takes the following actions in order:
+The query performs these actions in order:
 
 1. The `StormEvents` table is filtered by the `where` operator to include rows with `StartTime` values within the specified date range.
 1. The filtered table is then further filtered by another `where` operator to include rows with a `State` value of "FLORIDA".
