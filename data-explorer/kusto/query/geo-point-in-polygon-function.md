@@ -124,7 +124,7 @@ let Locations = datatable(longitude:real, latitude:real)
     ];
 Polygons
 | project polygonPartition = tostring(pack("description", description, "polygon", polygon))
-| partition hint.materialized=true by polygonPartition
+| partition hint.materialized=true hint.strategy=native by polygonPartition
 {   
      Locations
      | extend description = parse_json(toscalar(polygonPartition)).description
