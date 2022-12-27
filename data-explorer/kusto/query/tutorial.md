@@ -259,7 +259,7 @@ With the computed `Duration` column, it stands out that the flood that caused th
 
 ## Find insights with aggregation functions
 
-Aggregation functions allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, minimum, or average value.
+[Aggregation functions](aggregation-functions.md) allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, minimum, or average value.
 
 In the following examples, we'll use the [summarize](./summarizeoperator.md) operator together with aggregation functions to find insights in the data, and the [render](./renderoperator.md) operator to visualize the results.
 
