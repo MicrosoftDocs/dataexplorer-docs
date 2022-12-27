@@ -71,7 +71,7 @@ Let's learn some common query operators using the `StormEvents` table. These ope
 
 ### count
 
-Let's begin by using the [count](./countoperator.md) operator to find the number of storm records in our table.
+Begin by using the [count](./countoperator.md) operator to find the number of storm records in the table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA" target="_blank">Run the query</a>
@@ -86,7 +86,7 @@ StormEvents | count
 
 ### take
 
-To get a sense of the data in our table, let's use the [take](./takeoperator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the data and becoming familiar with it.
+To get a sense of the data, use the [take](./takeoperator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the data and becoming familiar with it.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d" target="_blank">Run the query</a>
@@ -107,7 +107,7 @@ The following table shows only 6 of the 22 returned columns. To see the full out
 
 ### project
 
-Let's use the [project](./projectoperator.md) operator to simplify our view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
+Use the [project](./projectoperator.md) operator to simplify the view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMDQAMQuK8rNSk0sUgksSS1J1FMBqQioLgEyXxNzE9NSAovyC1KKSSgBtBl0/QgAAAA==" target="_blank">Run the query</a>
@@ -133,7 +133,7 @@ StormEvents
 
 ### distinct
 
-It appears that there are multiple types of storms based on the results of our previous query. Let's use the [distinct](./distinctoperator.md) operator to list all of the unique storm types.
+It appears that there are multiple types of storms based on the results of the previous query. Use the [distinct](./distinctoperator.md) operator to list all of the unique storm types.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRSMksLsnMSy5RAIuEVBakAgD24XVdIAAAAA==" target="_blank">Run the query</a>
@@ -142,7 +142,7 @@ It appears that there are multiple types of storms based on the results of our p
 StormEvents | distinct EventType
 ```
 
-There are 46 types of storms in our table.
+There are 46 types of storms in the table.
 
 |EventType|
 |--|
@@ -160,7 +160,9 @@ There are 46 types of storms in our table.
 
 ### where
 
-The [where](./whereoperator.md) operator filters rows of data based on certain criteria. Let's look for storm events in a specific `State` of a specific `EventType`.
+The [where](./whereoperator.md) operator filters rows of data based on certain criteria. 
+
+The following query looks for storm events in a specific `State` of a specific `EventType`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVAPcY1wDFZXSMxLUQArCqksgEi45eTnp6iDtBQU5WelJpeANBWVhGTmpuoouOalQBhgg3QQWnUUXBJzE9NTA4ryC1KLSioBBDYIBX4AAAA=" target="_blank">Run the query</a>
@@ -184,7 +186,7 @@ There are 146 events that match these conditions. Here's a sample of 5 of them.
 
 ### sort
 
-To view the top five floods in Texas that caused the most damage, let's use the [sort](./sortoperator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
+To view the top five floods in Texas that caused the most damage, use the [sort](./sortoperator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
 
 <!-- TODO: Update query link. -->
 > [!div class="nextstepaction"]
@@ -258,7 +260,7 @@ With the computed `Duration` column, it stands out that the flood that caused th
 
 Aggregation functions allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, minimum, or average value.
 
-In the following examples, we'll use the [summarize](./summarizeoperator.md) operator together with aggregation functions to find insights in our data, and the [render](./renderoperator.md) operator to visualize the results.
+In the following examples, we'll use the [summarize](./summarizeoperator.md) operator together with aggregation functions to find insights in the data, and the [render](./renderoperator.md) operator to visualize the results.
 
 ### count()
 
@@ -329,9 +331,9 @@ StormEvents
 
 ### min(), max(), and avg()
 
-Let's learn more about types of storms that cause crop damage using the `min()`, `max()`, and `avg()` aggregation functions.
+Learn more about types of storms that cause crop damage using the `min()`, `max()`, and `avg()` aggregation functions.
 
-We'll filter out rows with no damaged crops, calculate the minimum, maximum, and average crop damage for each event type, and sort the result by the average damage.
+Filter out rows with no damaged crops, calculate the minimum, maximum, and average crop damage for each event type, and sort the result by the average damage.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVXBJzE1MT3Uuyi8oVrBTMABJFJfm5iYWZVal8nIpAIFvYgVIGqLQNjexQgNJj6aOAlRVZh6yqsw8rKocy9KRVCWWpaOogqhJqlQAOzKksiAV7Jz8ohKQIIpeANxkeM/MAAAA" target="_blank">Run the query</a>
@@ -363,7 +365,7 @@ StormEvents
 
 ### bin()
 
-Instead of grouping rows by a specific column value, we can use the [bin()](./binfunction.md) function to divide the data into distinct ranges based on numeric or time values.
+Instead of grouping rows by a specific column value, use the [bin()](./binfunction.md) function to divide the data into distinct ranges based on numeric or time values.
 
 This example counts the number of storms that caused crop damage for each week in 2007. The `7d` argument represents a week, as the function requires a valid [timespan](scalar-data-types/timespan.md) value.
 
@@ -420,7 +422,7 @@ StormEvents
 
 :::image type="content" source="images/tutorial/sum-crop-damage-by-week.png" alt-text="Screenshot of time chart showing crop damage by week.":::
 
-Now we can see a peak in crop damage in January, which probably was due to Freeze/Frost.
+Now you can see a peak in crop damage in January, which probably was due to Freeze/Frost.
 
 ### dcount()
 
@@ -474,7 +476,7 @@ StormEvents
 
 The [case()](./casefunction.md) function groups data into buckets based on specified conditions. The function returns the corresponding result expression for the first satisfied predicate, or the final else expression if none of the predicates are satisfied.
 
-In this example, we group states based on the number of storm-related injuries their citizens sustained.
+This example groups states based on the number of storm-related injuries their citizens sustained.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlXwzMsqLcpMLXbOL80rUbAFyWjAxFwyi1KTSzQVkioVgksSS1JBOlMrSlLzUuDanEqTs1NB+pITi1MVNHi5FPACVNvsFEwNdAhpUfJJLEpPVSKoDt1oQyKM9k1NySzNJd1sIowOzk3MySFsspJfvkIm1HQlfIo1wdGWX1QCjw2FxOJkAHJXMdXXAQAA" target="_blank">Run the query</a>
@@ -507,7 +509,7 @@ StormEvents
 |COLORADO|22|Medium|
 |CONNECTICUT|1|Small|
 
-Let's create a pie chart to visualize the proportion of states that experienced storms resulting in a large, medium, or small number of injuries.
+Create a pie chart to visualize the proportion of states that experienced storms resulting in a large, medium, or small number of injuries.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRvQ6CMBCAdxPe4cIEiYMOjjigDibqwhPUctEqLeZ6NWJ8eC3+JBgD2LG972vTL+OS9OKMhm0wuIF1WgtSV4SlOThSaGelMwyJP4nee3NFKDmGbQUZC0ZP4oXR5B8sdfKInpPCIkTBAFpX87YpTEbDLiRcCdph2Dn3rR73UK8xV07/7+6hzrQoim5zuClBvexh23D8I1v1/P20qusk0r8uqnM183iUHtWQ4KRQ7gXxHQoTE4gQAgAA" target="_blank">Run the query</a>
@@ -563,7 +565,7 @@ PopulationData | take 10
 
 The table contains a `State` column just like the one in the `StormEvents` table, and one more column showing the population of that state.
 
-Let's join the `PopulationData` table with `StormEvents` on the `State` column to find the total property damage caused by storms per capita by state.
+Join the `PopulationData` table with `StormEvents` on the `State` column to find the total property damage caused by storms per capita by state.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOQQrCQAxF94J3yFJB8ASzsu4LPUHUIKlOMqYZodLDt2MRpeAy//NefuNq8fgk8W69GqDLMaLxi6A2TWTeVxjxShBKtZmPT7WFUw+No1NBW2WBG8slsAhZFn7kSaMp39FZpUJHUPkCybSls8/BbvGwJjtg4gkJyyn7H+l7s5qXJX8EI25L+sbiAAAA" target="_blank">Run the query</a>
