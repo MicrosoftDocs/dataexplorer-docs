@@ -57,11 +57,11 @@ The *format* parameter should include one or more of the following elements:
 |`yyyy`| The year as a four-digit number.| 0001-01-01T00:00:00 -> 0001, 0900-01-01T00:00:00 -> 0900, 1900-01-01T00:00:00 -> 1900, 2009-06-15T13:45:30 -> 2009
 |`tt`| AM / PM hours| 2009-06-15T13:45:09 -> PM
 
-### Supported delimeters
+### Supported delimiters
 
-The format specifier can include the following delimeters:
+The format specifier can include the following delimiters:
 
-|Delimeter|Comment|
+|Delimiter|Comment|
 |---------|-------|
 |`' '`| Space|
 |`'/'`||
