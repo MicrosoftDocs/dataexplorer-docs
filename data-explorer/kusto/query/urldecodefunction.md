@@ -7,7 +7,7 @@ ms.date: 12/27/2022
 ---
 # url_decode()
 
-The function converts encoded URL into a to regular URL representation.
+The function converts encoded URL into a regular URL representation.
 
 For more details information about URL encoding and decoding, see [Percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding).
 
