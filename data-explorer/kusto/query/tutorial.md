@@ -30,7 +30,7 @@ To follow along, use the buttons above each example query to run them. The examp
 
 ## Prerequisites
 
-* A Microsoft or Azure account to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
+* A Microsoft account or Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
 * Familiarity with database structures like tables, columns, and rows
 
 ## Introduction to KQL queries
