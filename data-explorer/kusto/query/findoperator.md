@@ -93,11 +93,7 @@ A column that is referenced explicitly by the predicate and appears in multiple 
 When using `project` *ColumnName*[`:`*ColumnType*] [`,` *ColumnName*[`:`*ColumnType*], ...][`,` `pack_all()`]:
 * The result table will include the columns specified in the list. If a source table doesn't contain a certain column, the values in the corresponding rows will be null.
 * When specifying a *ColumnType* with a *ColumnName*, this column in the "result" will have the given type, and the values will be cast to that type if needed. The casting won't have an effect on the column type when evaluating the *Predicate*.
-* When `pack_all()` is used, the rest of the columns will be packed into a property bag and will appear in an additional `pack_` column.
-
-**pack_ column**
-
-This column will contain a property bag with the data from all the columns that doesn't appear in the output schema. The source column name will serve as the property name and the column value will serve as the property value.
+* When `pack_all()` is used, all the columns, including the projected columns, are packed into a property bag and appear in an additional column, by default 'column1'. In the property bag, the source column name serves as the property name and the column's value serves as the property value.
 
 ## Predicate syntax
 
