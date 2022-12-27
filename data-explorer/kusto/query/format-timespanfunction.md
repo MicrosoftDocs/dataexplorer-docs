@@ -44,11 +44,11 @@ Formats a timespan according to the provided format.
 |`s`| The number of whole seconds in the time interval that aren't included as part of hours, days, or minutes. Single-digit seconds don't have a leading zero.| 15.13:45:09 -> 9
 |`ss`|The number of whole seconds in the time interval that aren't included as part of hours, days, or minutes. Single-digit seconds have a leading zero.| 15.13:45:09 -> 09
 
-### Supported delimeters
+### Supported delimiters
 
-The format specifier can include following delimeters:
+The format specifier can include following delimiters:
 
-|Delimeter|Comment|
+|Delimiter|Comment|
 |---------|-------|
 |`' '`| Space|
 |`'/'`||
