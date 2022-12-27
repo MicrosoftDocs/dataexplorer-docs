@@ -26,7 +26,7 @@ In this tutorial, you'll get a chance to:
 > * Define variables with let statements
 > * Calculate percentages
 > * Calculate correlation coefficients
-> * Explore geospacial clustering
+> * Perform geospacial clustering
 
 ## Prerequisites
 
@@ -846,7 +846,7 @@ In this section, we'll demonstrate how to use the [geo_point_to_s2cell](geo-poin
 
 ### Cluster storm events by type
 
-The following query filters for all storm events of the "Tornado" event type, projects the longitude and latitude for each event, and filters out any null values for these fields. It then groups the events into clusters based on their longitude and latitude using the geo_point_to_s2cell function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a map to visualize the results.
+The following query filters for all storm events of the "Tornado" event type, projects the longitude and latitude for each event, and filters out any null values for these fields. It then groups the events into clusters based on their longitude and latitude using the [geo_point_to_s2cell](geo-point-to-s2cell-function.md) function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a map to visualize the results.
 
 ```kusto
 StormEvents
