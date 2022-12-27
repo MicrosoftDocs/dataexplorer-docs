@@ -18,6 +18,7 @@ In this tutorial, you'll learn how to:
 
 > [!div class="checklist"]
 >
+> * [Understand the structure of a KQL query](#understand-the-structure-of-a-kql-query)
 > * [Get started with common operators](#get-started-with-common-operators)
 > * [Find insights with aggregation functions](#find-insights-with-aggregation-functions)
 > * [Join data from multiple tables](#join-data-from-multiple-tables)
@@ -33,7 +34,7 @@ To follow along, use the buttons above each example query to run them. The examp
 * A Microsoft account or Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
 * Familiarity with database structures like tables, columns, and rows
 
-## Introduction to KQL queries
+## Understand the structure of a KQL query
 
 A [Kusto Query Language (KQL)](index.md) query is a read-only request to retrieve and process data in Azure Data Explorer. These queries consist of one or more query statements and return data in tabular or graphical format.
 
