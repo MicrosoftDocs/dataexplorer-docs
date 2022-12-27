@@ -12,21 +12,21 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-This tutorial will introduce you to the [Kusto Query Language (KQL)](index.md) and show you how to write KQL queries to retrieve, manipulate, and visualize your data stored in Azure Data Explorer.
+Welcome to this tutorial on the [Kusto Query Language (KQL)](index.md), the language used to write queries in Azure Data Explorer.
 
-To follow along, use the buttons above each example query to run them automatically. The examples in this tutorial use the `StormEvents` table, which is located in the [Sample database](https://help.kusto.windows.net/Samples) of the publicly available and free **help** cluster. If you want to experiment with your own data, [add your own cluster](../../web-query-data.md#add-clusters) to the Azure Data Explorer web UI.
-
-In this tutorial, you'll get a chance to:
+In this tutorial, you'll learn how to:
 
 > [!div class="checklist"]
 >
 > * Get started with common operators
-> * Find insights wth aggregation functions
+> * Find insights with aggregation functions
 > * Join data from multiple tables
-> * Define variables with let statements
+> * Define variables
 > * Calculate percentages
 > * Calculate correlation coefficients
-> * Perform geospacial clustering
+> * Cluster geospacial data
+
+To follow along, use the buttons above each example query to run them automatically. The examples in this tutorial use the `StormEvents` table, which is located in the [Sample database](https://help.kusto.windows.net/Samples) of the publicly available and free **help** cluster. If you want to experiment with your own data, [add your own cluster](../../web-query-data.md#add-clusters) to the Azure Data Explorer web UI.
 
 ## Prerequisites
 
@@ -655,9 +655,9 @@ StormEvents
 |IDAHO|
 |NEVADA|
 
-## Define variables with let statements
+## Define variables
 
-Let statements are used to define variables within a query. Defining variables can improve the readability, reusability, and exploratory potential of your queries.
+[Let statements](letstatement.md) are used to define variables within a query. Defining variables can improve the readability, reusability, and exploratory potential of your queries.
 
 ### Readability
 
