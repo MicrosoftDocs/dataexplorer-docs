@@ -26,6 +26,7 @@ In this tutorial, you'll get a chance to:
 > * Define variables with let statements
 > * Calculate percentages
 > * Calculate correlation coefficients
+> * Explore geospacial clustering
 
 ## Prerequisites
 
@@ -751,6 +752,8 @@ StormEvents
 
 ## Calculate percentages
 
+Calculating percentages is a useful tool for understanding and interpreting data. In this section, we'll explore two common scenarios for calculating percentages and provide step-by-step explanations.
+
 ### Calculate percentage based on two columns
 
 To find the percentage of storm events that caused crop damage in each state, use the `count()` and `countif()` functions to count the total number of storms and the number of storms that caused crop damage in each state.
@@ -758,9 +761,6 @@ To find the percentage of storm events that caused crop damage in each state, us
 Then, use the [extend](extendoperator.md) operator to calculate the percentage of storms that caused crop damage in each state by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
 
 To ensure that you get a decimal result, use the [todouble()](todoublefunction.md) function to convert at least one of the count values, which are integers, to a double before performing the division.
-
-> [!NOTE]
-> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](todoublefunction.md). This will ensure that you don't get truncated results due to integer division.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPPQ+CQAyGdxL+Q8c7QyK666QDGwkmzgdXlYS7mlKMGH+8wEWns2Pfjz6thNgdH+ilT5M39INzhtsXQprANCcS01Wzpy98JUYQdtDQ4EXpLFiCem7lVjLdkWU8GGeuP2N7UWHxlWEPuQ7ZeoSldD6NT0FvoURuJppoXwjx1GqVErI01B2qfwAa1jH+FWzyXGew1cvDxBIw4iUfrI4MCiABAAA=" target="_blank">Run the query</a>
@@ -785,7 +785,10 @@ StormEvents
 |VIRGINIA|1647|622|37.77|
 |...|...|...|...|
 
-### Calculate percentage based on total table size
+> [!NOTE]
+> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](todoublefunction.md). This will ensure that you don't get truncated results due to integer division.
+
+### Calculate percentage from table size
 
 To compare the number of storms by event type to the total number of storms in the database, you'll need to first save the total number of storms in the database as a variable..
 
@@ -834,6 +837,49 @@ StormEvents
 |0.64199107528146893|
 
 A coefficient of 0.6419 suggests that there is a connection between the state population and the property damage caused by storms.
+
+## Perform geospacial clustering
+
+Geospatial clustering is a way to organize and analyze data based on geographical location. KQL offers multiple methods for performing [geospatial clustering](geospatial-grid-systems.md), as well as tools for [geospacial visualizations](geospatial-visualizations.md).
+
+In this section, we'll demonstrate how to use the [geo_point_to_s2cell](geo-point-to-s2cell-function.md) and [geo_s2cell_to_central_point](geo-s2cell-to-central-point-function.md) functions to group storms into clusters based on their geographical location.
+
+### Cluster storm events by type
+
+The following query filters for all storm events of the "Tornado" event type, projects the longitude and latitude for each event, and filters out any null values for these fields. It then groups the events into clusters based on their longitude and latitude using the geo_point_to_s2cell function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a map to visualize the results.
+
+```kusto
+StormEvents
+| where EventType == "Tornado"
+| project BeginLon, BeginLat
+| where isnotnull(BeginLat) and isnotnull(BeginLon)
+| summarize count_summary=count() by hash = geo_point_to_s2cell(BeginLon, BeginLat, 4)
+| project geo_s2cell_to_central_point(hash), count_summary
+| extend Events = "count"
+| render piechart with (kind = map)
+```
+
+:::image type="content" source="images/tutorial/tornado-geospacial-map.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospacial map of tornado storms.":::
+
+### Cluster storm events in a specific region
+
+To identify the distribution of storms within a specific region of interest, use a polygon to define the region and the geo_point_in_polygon function to filter for storm events that occur within it. The following query defines a polygon representing the southern California region and filters for storm events within this region, projecting the longitude and latitude for each event. It then groups the events into clusters using the geo_point_to_s2cell function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a pie chart map.
+
+```kusto
+let southern_california = dynamic({
+    "type": "Polygon",
+    "coordinates": [[[-119.5, 34.5], [-115.5, 34.5], [-115.5, 32.5], [-119.5, 32.5], [-119.5, 34.5]]
+    ]});
+StormEvents
+| where geo_point_in_polygon(BeginLon, BeginLat, southern_california)
+| project BeginLon, BeginLat
+| summarize count_summary = count() by hash = geo_point_to_s2cell(BeginLon, BeginLat, 8)
+| project geo_s2cell_to_central_point(hash), count_summary
+| extend Events = "count"
+| render piechart with (kind = map)
+```
+
+:::image type="content" source="images/tutorial/southern-california-geospacial-mnap.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospacial map of southern california storms.":::
 
 ## Next steps
 
