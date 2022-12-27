@@ -749,7 +749,7 @@ StormEvents
 > [!NOTE]
 > When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](todoublefunction.md). This will ensure that you don't get truncated results due to integer division.
 
-### Calculate percentage from table size
+### Calculate percentage based on table size
 
 To compare the number of storms by event type to the total number of storms in the database, you'll need to first save the total number of storms in the database as a variable..
 
