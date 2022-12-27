@@ -26,7 +26,7 @@ In this tutorial, you'll learn how to:
 > * Calculate correlation coefficients
 > * Cluster geospacial data
 
-To follow along, use the buttons above each example query to run them automatically. The examples in this tutorial use the `StormEvents` table, which is located in the [Sample database](https://help.kusto.windows.net/Samples) of the publicly available and free **help** cluster. If you want to experiment with your own data, [add your own cluster](../../web-query-data.md#add-clusters) to the Azure Data Explorer web UI.
+To follow along, use the buttons above each example query to run them. The examples use the `StormEvents` table, which is in the [Sample database](https://help.kusto.windows.net/Samples) of the publicly available and free **help** cluster. To experiment with your own data, [add your cluster](../../web-query-data.md#add-clusters) to the Azure Data Explorer web UI.
 
 ## Prerequisites
 
