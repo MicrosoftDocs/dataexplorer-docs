@@ -27,7 +27,7 @@ In this tutorial, you'll learn how to:
 > * [Calculate correlation coefficients](#calculate-correlation-coefficients)
 > * [Perform geospacial clustering](#perform-geospacial-clustering)
 
-Select the button above each example to run the query. The examples use the `StormEvents` table in the [Sample database](https://help.kusto.windows.net/Samples) of the publicly available and free **help** cluster. To use your own data, [add your cluster](../../web-query-data.md#add-clusters) to the Azure Data Explorer web UI.
+Select the button above each example to run the query. The examples use the `StormEvents` table in the [Sample database](https://help.kusto.windows.net/Samples) of the free **help** cluster. To use your own data, [add your cluster](../../web-query-data.md#add-clusters) to the Azure Data Explorer web UI.
 
 ## Prerequisites
 
@@ -749,7 +749,7 @@ StormEvents
 > [!NOTE]
 > When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](todoublefunction.md). This will ensure that you don't get truncated results due to integer division.
 
-### Calculate percentage based on table size
+### Calculate percentage using a variable
 
 To compare the number of storms by event type to the total number of storms in the database, you'll need to first save the total number of storms in the database as a variable..
 
