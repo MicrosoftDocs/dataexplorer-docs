@@ -68,7 +68,7 @@ The query performs these actions in order:
 
 ## Get started with common operators
 
-Let's learn some common query operators using the `StormEvents` table. These operators are key to understanding KQL and will be used in many of your queries.
+In this section, you'll learn some common query operators using the `StormEvents` table. These operators are key to understanding KQL and will be used in many of your queries.
 
 ### count
 
@@ -189,9 +189,8 @@ There are 146 events that match these conditions. Here's a sample of 5 of them.
 
 To view the top five floods in Texas that caused the most damage, use the [sort](./sortoperator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
 
-<!-- TODO: Update query link. -->
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12NPQsCMRBEe8H/MF2atJZXCMZauBS28bL4mWzYLCcBf7zkrhDsHszMm1FZkpspa91uPnjfSAijBiUMA4x35/1oEHLEUvKtrMHxxRxNn1QWxaXhEFK40km4kGhDpDr1WMOTsOtUhB80abeL+nsiC5fjCsuj/X3YP90XMW6LAacAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1FOcXlSgkVSq4JOYmpqcGFOUXpBaVVAIlCorys1KTS0CGFZWEZOam6ii45qVAGGALdBBG6qBpBwDYBhI8lQAAAA==" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
@@ -207,6 +206,7 @@ StormEvents
 |2007-06-28T18:00:00Z|2007-06-28T23:00:00Z|TEXAS|Flood|1000000|
 |2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|TEXAS|Flood|750000|
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
+|...|...|...|...|...|
 
 > [!NOTE]
 > The order of operations is important. Try putting `take 5` before `sort`. You'll get different results.
@@ -357,11 +357,6 @@ StormEvents
 |Drought|700000000|2000|6763977.8761061952|
 |Flood|500000000|1000|4844925.23364486|
 |Thunderstorm Wind|22000000|100|920328.36538461538|
-|Hail|24000000|100|416890.56603773584|
-|Flash Flood|5000000|300|266778.60962566844|
-|High Wind|1000000|1000|209800|
-|Cold/Wind Chill|500000|100000|200000|
-|Heavy Rain|1150000|5000|171000|
 |...|...|...|...|
 
 ### bin()
@@ -387,11 +382,6 @@ StormEvents
 |2007-01-29T00:00:00Z|8|
 |2007-02-05T00:00:00Z|1|
 |2007-02-12T00:00:00Z|3|
-|2007-02-19T00:00:00Z|4|
-|2007-02-26T00:00:00Z|3|
-|2007-03-05T00:00:00Z|1|
-|2007-03-19T00:00:00Z|2|
-|2007-03-26T00:00:00Z|2|
 |...|...|
 
 Add `| render timechart` to the end of the query to visualize the results.
@@ -408,7 +398,7 @@ Add `| render timechart` to the end of the query to visualize the results.
 
 The results of the [min(), max(), and avg() query](#min-max-and-avg) revealed that Freeze/Frost events tend to cause the most damage on average, but the [time chart from the bin() query](#bin) showed that most events that cause some level of crop damage occur during the summer months.
 
-To further investigate this, modify the last query to use the [sum()](./sum-aggfunction.md) function instead of the `count()` function. This will allow us to see the total number of damaged crops, rather than just the number of events that caused some damage.
+To check the total number of damaged crops, rather than just the number of events that caused some damage, modify the last query to use the [sum()](./sum-aggfunction.md) function instead of the `count()` function.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wxwTsCWth570on5B/YHULLaHpGWzWhQ/3gRBdNjTm2FnepnZn+4UJJbFC+tITOjFspwnTxhIVqIA5ayQJKJaY7rKNOk06hr/vGmrbaM1ygJJNjgcrbdXOvC8ROxhcke8eW95ehIy/gSwy1j9pDWGB4YpqO+YDTqn8wOm4IiRay9jMt/qYo/IxAAAAA==" target="_blank">Run the query</a>
@@ -505,10 +495,7 @@ StormEvents
 |ARIZONA|6|Small|
 |ARKANSAS|54|Large|
 |ATLANTIC NORTH|15|Medium|
-|ATLANTIC SOUTH|2|Small|
-|CALIFORNIA|221|Large|
-|COLORADO|22|Medium|
-|CONNECTICUT|1|Small|
+|...|...|...|
 
 Create a pie chart to visualize the proportion of states that experienced storms resulting in a large, medium, or small number of injuries.
 
@@ -557,11 +544,6 @@ PopulationData | take 10
 |ARIZONA|7399410|
 |ARKANSAS|3025880|
 |CALIFORNIA|39562900|
-|COLORADO|5826180|
-|CONNECTICUT|3559050|
-|DELAWARE|982049|
-|DISTRICT OF COLUMBIA|709951|
-|FLORIDA|21711200|
 |...|...|
 
 The table contains a `State` column just like the one in the `StormEvents` table, and one more column showing the population of that state.
@@ -622,8 +604,6 @@ StormEvents
 
 ### Readability
 
-Defining variables can help clarify the purpose and function of different parts of a query.
-
 In the following query, a let statement separates out the parts of the query expression in the previous `join` example. This separation highlights the overall purpose of the query, which is to find the distinct states where both lightning and avalanche events occurred.
 
 > [!div class="nextstepaction"]
@@ -649,9 +629,7 @@ LightningStorms
 
 ### Reusability
 
-Defining variables allows you to reuse them multiple times within a query.
-
-In the following query, a list of `WindStorms` is defined and used to filter the `StormEvents` table. To add another type of wind storm to the query, just add it to the list of `WindStorms`.
+In the following query, a list of `WindStorms` is defined and used multiple times within the query to filter the `StormEvents` table. To add another type of wind storm to the query, just add it to the list of `WindStorms`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12PwQqDQAxE735F8KTgH5QeC17sRaGHUkrQ4G6pScmuFqEfX7vais1tMm+G5E4eTpab0ot2DvbQjIydrZNzBNPElShjI3EGizY9N6Tug4dgnM1GIexE+AfmvaqtkekL5LY1m0TpVbhdVkuqQLVMsLJhfUl3UTjwMBB7F73gaUgJgqzGB4FlSNY3UhCdzSOqorcDgUF3RR432FT0ULlR7deq7C/4Bhq91F4hAQAA" target="_blank">Run the query</a>
@@ -682,8 +660,6 @@ StormEvents
 
 ### Exploratory potential
 
-Defining variables allows you to modify and experiment with different values in your query.
-
 In the following example, the variables `MinDamage` and `EventLocation` are used to filter the `StormEvents` table. Explore different scenarios by changing the values of these variables and rerunning the query.
 
 > [!div class="nextstepaction"]
@@ -706,14 +682,11 @@ StormEvents
 |Debris Flow|48000000|
 |High Wind|15000000|
 |Thunderstorm Wind|4000000|
-|Drought|2000000|
-|Flash Flood|500000|
-|Flood|500000|
-|Dust Storm|500000|
+|...|...|
 
 ## Calculate percentages
 
-Calculating percentages is a useful tool for understanding and interpreting data. In this section, we'll explore two common scenarios for calculating percentages and provide step-by-step explanations.
+This section covers two common methods for calculating percentages.
 
 ### Calculate percentage based on two columns
 
@@ -753,7 +726,7 @@ StormEvents
 
 To compare the number of storms by event type to the total number of storms in the database, you'll need to first save the total number of storms in the database as a variable..
 
-Since tabular expression statements return tabular results, use the [toscalar()](toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the subsequent calculation.
+Since [tabular expression statements](#tabular-expression-statements) return tabular results, use the [toscalar()](toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the subsequent calculation.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wx4TKRrP4km8F+wPpHERJemWzUao+PG2UWg8zuPNMB4FOhLrL0IcIhxBKDrrLatMzk8cJMIbYgrB8v2F4CgNorQ+1FWh1FXpZHZaxHnxV4B++vJuGnHRR6YHOllhU/QaaJHdnOwN86srpd6jWg0Nu7/rG9gbszUfSEMd+dIAAAA=" target="_blank">Run the query</a>
@@ -802,8 +775,6 @@ A coefficient of 0.6419 suggests that there is a connection between the state po
 ## Perform geospacial clustering
 
 Geospatial clustering is a way to organize and analyze data based on geographical location. KQL offers multiple methods for performing [geospatial clustering](geospatial-grid-systems.md), as well as tools for [geospacial visualizations](geospatial-visualizations.md).
-
-In this section, we'll demonstrate how to use the [geo_point_to_s2cell](geo-point-to-s2cell-function.md) and [geo_s2cell_to_central_point](geo-s2cell-to-central-point-function.md) functions to group storms into clusters based on their geographical location.
 
 ### Cluster storm events by type
 
