@@ -24,6 +24,8 @@ In this tutorial, you'll get a chance to:
 > * Find insights wth aggregation functions
 > * Join data from multiple tables
 > * Define variables with let statements
+> * Calculate percentages
+> * Calculate correlation coefficients
 
 ## Prerequisites
 
@@ -300,12 +302,12 @@ StormEvents
 
 It's possible to use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
 
-Use the [countif()](./countif-aggfunction.md) function to add a column with the count of storms that caused damage. The function returns the count of rows where the predicate passed as an argument is `true`. Then, use `extend` to add a column with the calculation between the `TotalStorms` and `StormsWithCropDamage` to find the percentage of storms that caused damage.
+Use the [countif()](./countif-aggfunction.md) function to add a column with the count of storms that caused damage. The function returns the count of rows where the predicate passed as an argument is `true`.
 
-Finally, use the `top` operator to identify states with the most crop damage from storms.
+Use the `top` operator to identify states with the most crop damage from storms.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OwQrCMBBE74X+wxwTKVgFj3pR70IFz2m7aqFJSrIVFT/ehKAIdY+zM/OmYuv0/kaGfZ694EetleuehDxDuKNl1VfR47FGY0fDQhbpl+RTx9ets8NOaXWhj6k7iyTEl8cGpUyh+hFyiinC6M5kWhzINYE/KUoBF+paIdi2dqx7Ev+oEnN8DT+TJWZYlKUssJQRyHbAKk2YlrwBwRSpiQoBAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlXg5VIAgpD8ksScYJCaYgVbheT80rwSDU0diBxEODyzJMO5KL/AJTE3MT0VpigzTQMiAJIqVrBTMNCEaEqqBOpLLEkFWVaSX6BgChHBNAkACdZZQZkAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -313,21 +315,16 @@ StormEvents
     TotalStorms = count(),
     StormsWithCropDamage = countif(DamageCrops > 0)
     by State
-| extend PercentWithCropDamage = 
-    round((todouble(StormsWithCropDamage) / todouble(TotalStorms) * 100), 2)
 | top 5 by StormsWithCropDamage
 ```
 
-|State|TotalStorms|StormsWithCropDamage|PercentWithCropDamage|
+|State|TotalStorms|StormsWithCropDamage|
 |--|--|--|--|
-|IOWA|2337|359|15.36|
-|NEBRASKA|1766|201|11.38|
-|MISSISSIPPI|1218|105|8.62|
-|NORTH CAROLINA|1721|82|4.76|
-|MISSOURI|2016|78|3.87|
-
-> [!NOTE]
-> The [todouble() function](todoublefunction.md) is used to cast the integer values returned by the `count()` and `countif()` aggregation functions to doubles before performing division. Without the `todouble()` function, the division would be an integer division, resulting in a truncated result.
+|IOWA|2337|359|
+|NEBRASKA|1766|201|
+|MISSISSIPPI|1218|105|
+|NORTH CAROLINA|1721|82|
+|MISSOURI|2016|78|
 
 ### min(), max(), and avg()
 
@@ -751,6 +748,92 @@ StormEvents
 |Flash Flood|500000|
 |Flood|500000|
 |Dust Storm|500000|
+
+## Calculate percentages
+
+### Calculate percentage based on two columns
+
+To find the percentage of storm events that caused crop damage in each state, use the `count()` and `countif()` functions to count the total number of storms and the number of storms that caused crop damage in each state.
+
+Then, use the [extend](extendoperator.md) operator to calculate the percentage of storms that caused crop damage in each state by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
+
+To ensure that you get a decimal result, use the [todouble()](todoublefunction.md) function to convert at least one of the count values, which are integers, to a double before performing the division.
+
+> [!NOTE]
+> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](todoublefunction.md). This will ensure that you don't get truncated results due to integer division.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPPQ+CQAyGdxL+Q8c7QyK666QDGwkmzgdXlYS7mlKMGH+8wEWns2Pfjz6thNgdH+ilT5M39INzhtsXQprANCcS01Wzpy98JUYQdtDQ4EXpLFiCem7lVjLdkWU8GGeuP2N7UWHxlWEPuQ7ZeoSldD6NT0FvoURuJppoXwjx1GqVErI01B2qfwAa1jH+FWzyXGew1cvDxBIw4iUfrI4MCiABAAA=" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| summarize 
+    TotalStormsInState = count(),
+    StormsWithPropertyDamage = countif(DamageProperty > 0)
+    by State
+| extend PercentWithPropertyDamage = 
+    round((todouble(StormsWithPropertyDamage) / TotalStormsInState * 100), 2)
+| sort by StormsWithPropertyDamage
+```
+
+|State|TotalStorms|StormsWithCropDamage|PercentWithCropDamage|
+|--|--|--|--|
+|TEXAS|4701|1205|25.63|
+|IOWA|2337|1062|45.44|
+|OHIO|1233|730|59.21|
+|GEORGIA|1983|666|33.59|
+|VIRGINIA|1647|622|37.77|
+|...|...|...|...|
+
+### Calculate percentage based on total table size
+
+To compare the number of storms by event type to the total number of storms in the database, you'll need to first save the total number of storms in the database as a variable..
+
+Since tabular expression statements return tabular results, use the [toscalar()](toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the subsequent calculation.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wx4TKRrP4km8F+wPpHERJemWzUao+PG2UWg8zuPNMB4FOhLrL0IcIhxBKDrrLatMzk8cJMIbYgrB8v2F4CgNorQ+1FWh1FXpZHZaxHnxV4B++vJuGnHRR6YHOllhU/QaaJHdnOwN86srpd6jWg0Nu7/rG9gbszUfSEMd+dIAAAA=" target="_blank">Run the query</a>
+
+```kusto
+let TotalStorms = toscalar(StormEvents | summarize count());
+StormEvents
+| summarize EventCount = count() by EventType
+| project EventType, EventCount, Percentage = todouble(EventCount) / TotalStorms * 100.0
+```
+
+|EventType|EventCount|Percentage|
+|--|--|--|
+|Thunderstorm Wind|13015|22.034673077574237|
+|Hail|12711|21.519994582331627|
+|Flash Flood|3688|6.2438627975485055|
+|Drought|3616|6.1219652592015716|
+|Winter Weather|3349|5.669928554498358|
+|...|...|...|
+
+## Calculate correlation coefficients
+
+To determine if there is a relationship between the population of a state and the amount of damage caused by storms, use the [series_pearson_correlation](series-pearson-correlationfunction.md) function.
+
+This query calculates the total amount of property damage caused by storms in each state and joins it with population data. The resulting columns are converted into series and the correlation coefficient is calculated.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA31QQQ6CQAy8m/iHHiHxC57UuwkPIBWKKbot6RajxscrEgWVeGxnpjPTzNXC5kTicT67QWxDQOMrwda0IfPLGgPuCZYdlPTDC0phd4HM0amT1soCB5ZyySJksNWmPaKzyhodQWWgNqY1Ff7lsRhJ/mXJyJjiI1HAA+VHjp58EtLxpSn2G0w7Hzo7SQkrNaN+vVKqKi748ZWu+PNC3hBaVMmLgZdMBfs1T8edp23umV6O3ocBAAA=" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| summarize PropertyDamage = sum(DamageProperty) by State
+| join kind=inner PopulationData on State
+| project PropertyDamage, Population
+| summarize PropertyDamageSeries = make_list(PropertyDamage), PopulationSeries = make_list(Population)
+| extend CorrelationCoefficient = series_pearson_correlation(PropertyDamageSeries, PopulationSeries)
+| project CorrelationCoefficient
+```
+
+|CorrelationCoefficient|
+|--|
+|0.64199107528146893|
+
+A coefficient of 0.6419 suggests that there is a connection between the state population and the property damage caused by storms.
 
 ## Next steps
 
