@@ -780,6 +780,9 @@ Geospatial clustering is a way to organize and analyze data based on geographica
 
 The following query filters for all storm events of the "Tornado" event type. It then groups the events into clusters based on their longitude and latitude using the [geo_point_to_s2cell](geo-point-to-s2cell-function.md) function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a map to visualize the clusters.
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2VQsU7DQAzd+QorU07KhFhvqdSNje7RcbV6B4l98jktQXw8TtJCEZuf/d7zs1+UZdyfkbQ+fMEloSCs8DAXBO+hObBQOHJj4yL8hlFhh6dMz0zdtQr6o82VWGkahvY2chDo+K/P5ExTp3EMkj8RIk+k/YZnv6LWwesMKdQEHk7IfeFsHOW+Pka8c/qN0cGTu8u5iDbuoop2lYRhs2kXX9f93WtS/FC0uNtHbG+zEpbjxfooUDLGFEThkjVB+56N7WEMxX0DtXW+QEsBAAA=" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
 | where EventType == "Tornado"
@@ -798,6 +801,9 @@ StormEvents
 To look within a specific region of interest, use a polygon to define the region and the [geo_point_in_polygon](geo-point-in-polygon-function.md) function to filter for events that occur within that region.
 
 The following query defines a polygon representing the southern California region and filters for storm events within this region. It then groups the events into clusters using the [geo_point_to_s2cell](geo-point-to-s2cell-function.md) function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a map to visualize the clusters.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21QTU+EQAy98yuaOUGCm+wqiavZi4k3DyYeCSHj0IVRmJKZ4oof/90CiR+ROfW17/W9TosMgQZu0LvS6NYeyTur4QDV6HRnTfwegTzFY4/qCtQ9tWNNTqVL2xD5yjrNGGSa5/nZdrvfZCmcX2yyIoUJZ6t49433q3jiF7NJ8ZlcRw9Mvrt9Qcch+oCT5EWokcqerOPSOinmYPEN1tbdkUthqTSnaxcmsqX39ISG4b9EhmHoOu3tG4KhQSwWPMrPzDhO4HGERodGOj9BmMqwM9i2qzkuf7tOooU7qYxc5nW7rImnvUn611mk+MroKli+QXzVTFAy8dJHD71F02jPcLLcQPxshX2ATvfJF6/vcb7pAQAA" target="_blank">Run the query</a>
 
 ```kusto
 let southern_california = dynamic({
