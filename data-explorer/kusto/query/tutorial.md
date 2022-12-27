@@ -724,7 +724,7 @@ StormEvents
 
 ### Calculate percentage using a variable
 
-To compare the number of storms by event type to the total number of storms in the database, you'll need to first save the total number of storms in the database as a variable..
+To compare the number of storms by event type to the total number of storms in the database, you'll need to first save the total number of storms in the database as a variable.
 
 Since [tabular expression statements](#tabular-expression-statements) return tabular results, use the [toscalar()](toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the subsequent calculation.
 
