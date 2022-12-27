@@ -444,48 +444,6 @@ StormEvents
 |ILLINOIS|23|
 |...|...|
 
-It seems some states experience more types of storms than others. Could it be that an increase in storm types is correlated with an increase in damages or deaths?
-
-Let's check.
-
-The following query gets the distinct count of storm types and uses [sum()](./sum-aggfunction.md) to calculate the damage per state. Then, it renders a scatter chart to visualize the data points.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NPQ7CMAxG90q9g8dG9AqdgB2pvYBJLX5E4shxKwX18CRkiTd/fv7erCzuupPX2HcHxM05lNeX+g7yzOW6pEARJlgtb16HP1wyM1ZoYcXPBR0+KFO5YajLTTiQaDJwatJzTqOpn/eUDahUzEH4TVYb5dg2F0TIryQQLaqS2CeK/gAUuA+1vwAAAA==" target="_blank">Run the query</a>
-
-```kusto
-StormEvents
-| summarize
-    StormTypes = dcount(EventType),
-    TotalDamage = sum(DamageProperty) + sum(DamageCrops)
-    by State
-| project StormTypes, TotalDamage
-| render scatterchart
-```
-
-:::image type="content" source="images/tutorial/damage-by-storm-type-count-scatter-chart.png" alt-text="Screenshot of scatter chart showing property damage by storm type count.":::
-
-We don't see strong correlation.
-
-Let's check the relationship between storm types and total deaths.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NsQ6DMAxEdyT+wSOo/EI3OnSGH3ATS4CaBDlHJap+fBOyxNvdPd9NCOoeH/GIbfOjeDjHun6lbSjdlNP53CXSnawJh0d3wdnrhwLNAfwehbFkKjV0RYyrikFPt8p7elvc8vo60wRD8vSuYUtJtTnU1RlR8VaUomFA1Cys+ANUUMvywAAAAA==" target="_blank">Run the query</a>
-
-```kusto
-StormEvents
-| summarize
-    StormTypes = dcount(EventType),
-    TotalDeaths = sum(DeathsDirect) + sum(DeathsIndirect)
-    by State
-| project StormTypes, TotalDeaths
-| render scatterchart
-```
-
-:::image type="content" source="images/tutorial/deaths-by-storm-type-scatter-chart-NOWHERE.png" alt-text="Screenshot of deaths by storm type count scatter chart.":::
-
-Based on the chart, it seems that there may be a relationship worth exploring between the number of storm types and deaths.
-
 ### make_set()
 
 The [make_set()](./makeset-aggfunction.md) operator is a way to take a bunch of rows in a table and turn them into an array of unique values.
