@@ -690,11 +690,11 @@ This section covers two common methods for calculating percentages.
 
 ### Calculate percentage based on two columns
 
-To find the percentage of storm events that caused crop damage in each state, use the `count()` and `countif()` functions to count the total number of storms and the number of storms that caused crop damage in each state.
+To find the percentage of storm events that caused crop damage in each state, use `count()` and `countif()` to count the total number of storms and the number of storms that caused crop damage in each state.
 
-Then, use the [extend](extendoperator.md) operator to calculate the percentage of storms that caused crop damage in each state by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
+Then, use [extend](extendoperator.md) to calculate the percentage of storms that caused crop damage in each state by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
 
-To ensure that you get a decimal result, use the [todouble()](todoublefunction.md) function to convert at least one of the count values, which are integers, to a double before performing the division.
+To ensure that you get a decimal result, use the [todouble()](todoublefunction.md) function to convert at least one of the integer count values to a double before performing the division.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPPQ+CQAyGdxL+Q8c7QyK666QDGwkmzgdXlYS7mlKMGH+8wEWns2Pfjz6thNgdH+ilT5M39INzhtsXQprANCcS01Wzpy98JUYQdtDQ4EXpLFiCem7lVjLdkWU8GGeuP2N7UWHxlWEPuQ7ZeoSldD6NT0FvoURuJppoXwjx1GqVErI01B2qfwAa1jH+FWzyXGew1cvDxBIw4iUfrI4MCiABAAA=" target="_blank">Run the query</a>
@@ -722,11 +722,11 @@ StormEvents
 > [!NOTE]
 > When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](todoublefunction.md). This will ensure that you don't get truncated results due to integer division.
 
-### Calculate percentage using a variable
+### Calculate percentage based on table size
 
 To compare the number of storms by event type to the total number of storms in the database, you'll need to first save the total number of storms in the database as a variable.
 
-Since [tabular expression statements](#tabular-expression-statements) return tabular results, use the [toscalar()](toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the subsequent calculation.
+Since [tabular expression statements](#tabular-expression-statements) return tabular results, use the [toscalar()](toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the percentage calculation.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wx4TKRrP4km8F+wPpHERJemWzUao+PG2UWg8zuPNMB4FOhLrL0IcIhxBKDrrLatMzk8cJMIbYgrB8v2F4CgNorQ+1FWh1FXpZHZaxHnxV4B++vJuGnHRR6YHOllhU/QaaJHdnOwN86srpd6jWg0Nu7/rG9gbszUfSEMd+dIAAAA=" target="_blank">Run the query</a>
@@ -819,8 +819,8 @@ StormEvents
 
 * Read more about the [Kusto Query Language](index.md)
 * Learn how to perform [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md)
-* Get a comprehensive understanding by reading the [white paper](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-explorer/Azure_Data_Explorer_white_paper.pdf)
 * Learn how to [ingest data](../../ingest-sample-data.md)
+* Get a comprehensive understanding by reading the [white paper](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-explorer/Azure_Data_Explorer_white_paper.pdf)
 
 ::: zone-end
 
