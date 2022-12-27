@@ -103,11 +103,11 @@ let allRoads=toscalar(
     ManhattanRoads
     | project road_coordinates=features.geometry.coordinates
     | summarize make_list(road_coordinates)
-    | project multiline = pack("type","MultiLineString", "coordinates", list_road_coordinates));
+    | project multiline = bag_pack("type","MultiLineString", "coordinates", list_road_coordinates));
 nyc_taxi
 | project pickup_longitude, pickup_latitude
 | where pickup_longitude != 0 and pickup_latitude != 0
-| where geo_distance_point_to_line(pickup_longitude, pickup_latitude, todynamic(allRoads)) > 10000
+| where geo_distance_point_to_line(pickup_longitude, pickup_latitude, parse_json(allRoads)) > 10000
 | take 10
 | render scatterchart with (kind=map)
 ```
