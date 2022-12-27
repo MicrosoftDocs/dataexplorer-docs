@@ -807,7 +807,7 @@ In this section, we'll demonstrate how to use the [geo_point_to_s2cell](geo-poin
 
 ### Cluster storm events by type
 
-The following query filters for all storm events of the "Tornado" event type, projects the longitude and latitude for each event, and filters out any null values for these fields. It then groups the events into clusters based on their longitude and latitude using the [geo_point_to_s2cell](geo-point-to-s2cell-function.md) function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a map to visualize the results.
+The following query filters for all storm events of the "Tornado" event type. It then groups the events into clusters based on their longitude and latitude using the [geo_point_to_s2cell](geo-point-to-s2cell-function.md) function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a map to visualize the clusters.
 
 ```kusto
 StormEvents
@@ -824,7 +824,9 @@ StormEvents
 
 ### Cluster storm events in a specific region
 
-To identify the distribution of storms within a specific region of interest, use a polygon to define the region and the geo_point_in_polygon function to filter for storm events that occur within it. The following query defines a polygon representing the southern California region and filters for storm events within this region, projecting the longitude and latitude for each event. It then groups the events into clusters using the geo_point_to_s2cell function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a pie chart map.
+To look within a specific region of interest, use a polygon to define the region and the [geo_point_in_polygon](geo-point-in-polygon-function.md) function to filter for events that occur within that region.
+
+The following query defines a polygon representing the southern California region and filters for storm events within this region. It then groups the events into clusters using the [geo_point_to_s2cell](geo-point-to-s2cell-function.md) function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a map to visualize the clusters.
 
 ```kusto
 let southern_california = dynamic({
