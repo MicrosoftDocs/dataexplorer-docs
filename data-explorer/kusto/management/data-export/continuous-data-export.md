@@ -97,7 +97,8 @@ Use the [`.show continuous export failures`](show-continuous-failures.md) comman
 * Continuous export can't be configured on a table with [row level security policy](../../management/rowlevelsecuritypolicy.md), or a table with [restricted view access policy](../restrictedviewaccesspolicy.md).
 * Continuous export cannot be created on [follower databases](../../../follower.md) since follower databases are read-only and continuous export requires write operations.  
 * Continuous export will only work if records in source table are ingested to the table directly (either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export may not process these records. See the limitations described in the [Database Cursors](../databasecursor.md#restrictions) page.
-* Continuous export doesn't support cross-database and cross-cluster calls.
+* Continuous export supports cross-database calls, only when configured with a managed identity.
+* Continuous export doesn't support cross-cluster calls.
 * Continuous export isn't designed to work over [materialized views](../materialized-views/materialized-view-overview.md), since a materialized view may be updated, while data exported to storage is always append only and never updated.
 * Continuous export isn't designed for low-latency streaming data out of Azure Data Explorer.
 * By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes in the cluster.

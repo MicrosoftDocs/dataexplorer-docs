@@ -1,9 +1,9 @@
 ---
 title: hll_merge() (aggregation function) - Azure Data Explorer
-description: Learn how to use the hll_merge() aggregation function to merge HLL results into a single HLL value in Azure Data Explorer.
+description: Learn how to use the hll_merge() function to merge HLL results into a single HLL value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/20/2022
+ms.date: 12/19/2022
 ---
 # hll_merge() (aggregation function)
 
@@ -34,7 +34,8 @@ The function returns the merged `hll` values of `*Expr*` across the group.
 
 The following example shows `HLL` results across a group merged into a single `HLL` value.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVcjIyQlKLVawBTE0XBJzE9NTA4ryC1KLSio1FZIqFZIy8zSCSxKLSkIyc1N1DA1yNdG1+6YWpaemQEyIzwVxNCCGagIAlijQ1HQAAAA=)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVcjIyQlKLVawBTE0XBJzE9NTA4ryC1KLSio1FZIqFZIy8zSCSxKLSkIyc1N1DA1yNdG1+6YWpaemQEyIzwVxNCCGagIAlijQ1HQAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -44,7 +45,7 @@ StormEvents
 
 **Results**
 
-The results show only the first 5 results in the array.
+The results show only the first five results in the array.
 
 |hllMerged|
 |--|

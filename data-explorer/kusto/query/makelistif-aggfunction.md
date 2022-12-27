@@ -1,13 +1,13 @@
 ---
 title: make_list_if() (aggregation function) - Azure Data Explorer
-description: Learn how to use the make_list_if() aggregation function to creates a `dynamic` JSON object (array) in Azure Data Explorer.
+description: Learn how to use the make_list_if() aggregation function to create a dynamic JSON object of expression values where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/20/2022
+ms.date: 11/16/2022
 ---
 # make_list_if() (aggregation function)
 
-Creates a `dynamic` JSON object (array) of all the values of *Expr* in the group, for which *Predicate* evaluates to `true`.
+Creates a `dynamic` JSON object (array) of *Expr* values in the group for which *Predicate* evaluates to `true`.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
@@ -25,7 +25,7 @@ Creates a `dynamic` JSON object (array) of all the values of *Expr* in the group
 
 ## Returns
 
-Returns a `dynamic` JSON object (array) of all the values of *Expr* in the group, for which *Predicate* evaluates to `true`.
+Returns a `dynamic` JSON object (array) of *Expr* vlaues in the group for which *Predicate* evaluates to `true`.
 If the input to the `summarize` operator is not sorted, the order of elements in the resulting array is undefined.
 If the input to the `summarize` operator is sorted, the order of elements in the resulting array tracks that of the input.
 
@@ -33,7 +33,8 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 The following example shows a list of names with more than 4 letters.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXNMQvCMBCG4T2/4uhkIIuiqJW6Ck4i3URCitc0eEkgSQfFH++RctPzDvcRFuihg5cpfAPhKhiPbS7JBas4f3Qc9eBSmVqKwUrxEADQXOMUGgVHVXUzM7HWh4UXjMkih81uCXd+Ftl78TyJXvwgz96b5L4I3rxRk8tFu7FuK+BxwlAh4Qxb+Qd6P2/WpQAAAA==)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXNMQvCMBCG4T2/4uhkIIuiqJW6Ck4i3URCitc0eEkgSQfFH++RctPzDvcRFuihg5cpfAPhKhiPbS7JBas4f3Qc9eBSmVqKwUrxEADQXOMUGgVHVXUzM7HWh4UXjMkih81uCXd+Ftl78TyJXvwgz96b5L4I3rxRk8tFu7FuK+BxwlAh4Qxb+Qd6P2/WpQAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 let T = datatable(name:string, day_of_birth:long)

@@ -188,7 +188,7 @@ Create a table to receive the streaming ingestion data and define its related po
 1. Copy one of the following commands into the **Query pane** and select **Run**. This defines the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) on the table you created or on the database that contains the table.
 
     > [!TIP]
-    > A policy that is defined at the database level applies to all existing and future tables in the database.
+    > A policy that is defined at the database level applies to all existing and future tables in the database. When you enable the policy at the database level, there is no need to enable it per table.
 
     * To define the policy on the table you created, use:
 
@@ -319,11 +319,13 @@ namespace StreamingIngestion
 ### [Python](#tab/python)
 
 ```python
-from azure.kusto.data import KustoConnectionStringBuilder
+from azure.kusto.data import (
+    KustoConnectionStringBuilder,
+    DataFormat
+)
 
 from azure.kusto.ingest import (
     IngestionProperties,
-    DataFormat,
     KustoStreamingIngestClient
 )
 

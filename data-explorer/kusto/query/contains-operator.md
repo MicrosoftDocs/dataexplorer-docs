@@ -1,9 +1,9 @@
 ---
 title: The case-insensitive contains string operator - Azure Data Explorer
-description: This article describes the case-insensitive contains string operator in Azure Data Explorer.
+description: Learn how to use the contains operator to filter a record set for data containing a case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2021
+ms.date: 11/27/2022
 ---
 # contains operator
 
@@ -30,32 +30,33 @@ Case-insensitive operators are currently supported only for ASCII-text. For non-
 
 ## Performance tips
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For better performance, try the case-sensitive version of an operator, for example, `contains_cs`, not `contains`.
+For better performance, try the case-sensitive version of an operator. For example, use `contains_cs` instead of `contains`.
 
 If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for better performance, try `has` or `in`. Also, `has` works faster than `contains`, `startswith`, or `endswith`, however it isn't as precise and could provide unwanted records.
 
-For best practices, see [Query best practices](best-practices.md).
-
 ## Syntax
 
-*T* `|` `where` *col* `contains` `(`*expression*`)`
+*T* `|` `where` *col* `contains_cs` `(`*string*`)`
 
-## Arguments
+## Parameters
 
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The tabular input whose records are to be filtered. |
+| *col* | string | &check; | The name of the column to check for *string*. |
+| *string* | string | &check; | The case-sensitive string by which to filter the data. |
 
 ## Returns
 
-Rows in *T* for which the predicate is `true`.
+Rows in *T* for which *string* is in *col*.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1KhYgoJOfnlSRm5hUrKKXm5SmhKEAyScFOwdAAKllQlJ+VmlwC0a+DrAqqoCg1LyW1SKEkMSknFQAo0zcjqgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
     | summarize event_count=count() by State
@@ -64,8 +65,6 @@ StormEvents
     | project State, event_count
     | render table
 ```
-
-**Output**
 
 |State|event_count|
 |-----|-----------|
