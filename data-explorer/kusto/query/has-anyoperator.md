@@ -32,16 +32,13 @@ For faster results, use the case-sensitive version of an operator. For example, 
 | *tabular_expr* | string | | A tabular expression that has a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used.|
 
 > [!NOTE]
-> At least one *scalar_expr* or a single *tabular_expr* is required.
+>
+> * At least one *scalar_expr* or a single *tabular_expr* is required.
+> * The *scalar_expr* list can include up to 10,000 values.
 
 ## Returns
 
-Rows in *T* for which the predicate is `true`
-
-> [!NOTE]
->
-> * The expression list can produce up to 10,000 values.
-> * For tabular expressions, the first column of the result set is selected.
+Rows in *T* for which the predicate is `true`.
 
 ## Examples
 
