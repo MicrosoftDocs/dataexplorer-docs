@@ -3,30 +3,13 @@ title: The case-insensitive in~ string operator - Azure Data Explorer
 description: Learn how to use the in~ operator to filter data with a case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/20/2022
+ms.date: 12/28/2022
 ---
 # in~ operator
 
 Filters a record set for data with a case-insensitive string.
 
-The following table provides a comparison of the `in` operators:
-
-|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
-|-----------|--------------|----------------|-------------------------|
-|[`in`](in-cs-operator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
-|[`!in`](not-in-cs-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "abc")` |
-|[`in~`](inoperator.md) |Equals to any of the elements |No | `"Abc" in~ ("123", "345", "abc")` |
-|[`!in~`](not-in-operator.md) |Not equals to any of the elements |No | `"bCa" !in~ ("123", "345", "ABC")` |
-
-> [!NOTE]
->
-> * In tabular expressions, the first column of the result set is selected.
-> * The expression list can produce up to `1,000,000` values.
-> * Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
-
-For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
-
-Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
+[!INCLUDE [in-operator-comparison](../../includes/in-operator-comparison.md)]
 
 ## Performance tips
 
@@ -38,15 +21,20 @@ If you're testing for the presence of a symbol or alphanumeric word that is boun
 
 ## Syntax
 
-*T* `|` `where` *col* `in~` `(` *list of scalar expressions* `)`
-*T* `|` `where` *col* `in~` `(` *tabular expression* `)`
+*T* `|` `where` *col* `in~` `(`*scalar_expr*`,` [*scalar_expr_2*`,` *scalar_expr3*`,` ... ]`)`
+*T* `|` `where` *col* `in~` `(`*tabular_expr*`)`
 
-## Arguments
+## Parameters
 
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *list of expressions* - A comma-separated list of tabular, scalar, or literal expressions.
-* *tabular expression* - A tabular expression that has a set of values. If the expression has multiple columns, the first column is used.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The tabular input whose records are to be filtered.|
+| *col* | string | &check; | The column used to filter the records.|
+| *scalar_expr* | scalar | | An expression or list of expressions to search for in *col*.|
+| *tabular_expr* | string | | The name of a tabular expression that has a set of values. If the tabular expression has multiple columns, the first column is used.|
+
+> [!NOTE]
+> At least one *scalar_expr* or a single *tabular_expr* is required.
 
 ## Returns
 
@@ -54,7 +42,9 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMq1PQUHLz8Q/ydHFU0lFQSk/NL0rPTAQx/VzDFSL9g7yVNEG6kvNL80oAl8ORJUoAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents 
 | where State in~ ("FLORIDA", "georgia", "NEW YORK") 

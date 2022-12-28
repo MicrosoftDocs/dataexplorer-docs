@@ -3,7 +3,7 @@ title: The case-insensitive has_any string operator - Azure Data Explorer
 description: Learn how to use the has_any operator to filter data with any set of case-insensitive strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 12/28/2022
 ---
 # has_any operator
 
@@ -19,15 +19,20 @@ For faster results, use the case-sensitive version of an operator. For example, 
 
 ## Syntax
 
-*T* `|` `where` *Column* `has_any` `(`*Expression*`,` [*Expression_2*, ...]`)`
+*T* `|` `where` *col* `has_any` `(`*scalar_expr*`,` [*scalar_expr_2*`,` *scalar_expr3*`,` ... ]`)`
+*T* `|` `where` *col* `has_any` `(`*tabular_expr*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
-| *Column* | string | &check; | The column to filter.|
-| *Expression* | scalar or tabular | &check; | An expression or list of expressions for which to search.|
+| *col* | string | &check; | The column used to filter the records.|
+| *scalar_expr* | scalar | | An expression or list of expressions to search for in *col*.|
+| *tabular_expr* | string | | The name of a tabular expression that has a set of values. If the tabular expression has multiple columns, the first column is used.|
+
+> [!NOTE]
+> At least one *scalar_expr* or a single *tabular_expr* is required.
 
 ## Returns
 
