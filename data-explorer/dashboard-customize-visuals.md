@@ -120,7 +120,7 @@ To render a Plotly visual, the query must generate a table with a single string 
 * Dynamically create the string in Python using the [Plotly package](https://plotly.com/python/getting-started/). This process uses the [python() plugin](kusto/query/pythonplugin.md).
 * Retrieve the string from a table that stores pre-cooked Plotly JSON templates. Update the required data fields using KQL string manipulation functions.
 
-Here is the KQL query with inline Python for creating the 3D scatter chart above:
+The following KQL query uses inline Python to create the 3D scatter chart above:
 
 ~~~kusto
 OccupancyDetection
