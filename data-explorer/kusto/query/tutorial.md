@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-Welcome to this tutorial on the [Kusto Query Language (KQL)](index.md), the language used to write queries in Azure Data Explorer.
+[Kusto Query Language (KQL)](index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/en-in/products/monitor/#overview), and [Azure Sentinel](https://azure.microsoft.com/en-us/products/microsoft-sentinel/).
 
 In this tutorial, you'll learn how to:
 
@@ -27,7 +27,7 @@ In this tutorial, you'll learn how to:
 > * [Calculate correlation coefficients](#calculate-correlation-coefficients)
 > * [Perform geospacial clustering](#perform-geospacial-clustering)
 
-Select the button above each example to run the query. The examples use the `StormEvents` table in the [Samples database](https://help.kusto.windows.net/Samples) of the free **help** cluster. To use your own data, [add your cluster](../../web-query-data.md#add-clusters) to the Azure Data Explorer web UI.
+The examples in the tutorial all use the `StormEvents` table, which is publicly available in the [Samples database](https://help.kusto.windows.net/Samples) of the **help** cluster. To continue exploring with your own data, [create your own free cluster](../../start-for-free-web-ui.md).
 
 ## Prerequisites
 
@@ -40,7 +40,9 @@ A [Kusto Query Language (KQL)](index.md) query is a read-only request to retriev
 
 ### Tabular expression statements
 
-The most common type of query statement is a tabular expression statement. These statements are used to manipulate data in tables or tabular datasets. They consist of one or more operators, separated by a pipe (`|`), and process the data sequentially. Each operator begins with a tabular input and returns a tabular output.
+The most common type of [query statement](statements.md?pivots=azuredataexplorer) is a tabular expression statement. A tabular expression statement is used to manipulate data in tables or tabular datasets.
+
+The tabular expression statement begins with a tabular input, and is followed by one or more operators separated by a pipe (`|`). The operators process data sequentially, beginning with a tabular input and returning a tabular output.
 
 The order of the operators is important, as the data flows from one operator to the next and is transformed at each step. Think of it like a funnel where the data starts as an entire table and is refined as it passes through each operator, until you're left with a final output at the end.
 
@@ -55,6 +57,8 @@ StormEvents
 | where State == "FLORIDA"
 | count
 ```
+
+**Output**
 
 |Count|
 |--|
@@ -75,11 +79,14 @@ In this section, you'll learn some common query operators using the `StormEvents
 Begin by using the [count](./countoperator.md) operator to find the number of storm records in the table.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUUjOL80rAQA76pZjFAAAAA==" target="_blank">Run the query</a>
 
 ```Kusto
-StormEvents | count
+StormEvents 
+| count
 ```
+
+**Output**
 
 |Count|
 |--|
@@ -87,13 +94,14 @@ StormEvents | count
 
 ### take
 
-To get a sense of the data, use the [take](./takeoperator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the data and becoming familiar with it.
+To get a sense of the data, use the [take](./takeoperator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the general data structure and contents.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUShJzE5VMAUAP49+9hUAAAA=" target="_blank">Run the query</a>
 
 ```Kusto
-StormEvents | take 5
+StormEvents 
+| take 5
 ```
 
 The following table shows only 6 of the 22 returned columns. To see the full output, run the query.
@@ -118,6 +126,8 @@ StormEvents
 | take 10
 | project State, EventType, DamageProperty
 ```
+
+**Output**
 
 |State|EventType|DamageProperty|
 |--|--|--|
@@ -199,6 +209,8 @@ StormEvents
 | project StartTime, EndTime, State, EventType, DamageProperty
 ```
 
+**Output**
+
 |StartTime|EndTime|State|EventType|DamageProperty|
 |--|--|--|--|--|
 |2007-08-18T21:30:00Z|2007-08-19T23:00:00Z|TEXAS|Flood|5000000|
@@ -227,6 +239,8 @@ StormEvents
 | project StartTime, EndTime, State, EventType, DamageProperty
 ```
 
+**Output**
+
 |StartTime|EndTime|State|EventType|DamageProperty|
 |--|--|--|--|--|
 |2007-08-18T21:30:00Z|2007-08-19T23:00:00Z|TEXAS|Flood|5000000|
@@ -246,6 +260,8 @@ StormEvents
 | top 5 by DamageProperty desc
 | project StartTime, EndTime, Duration = EndTime - StartTime, DamageProperty
 ```
+
+**Output**
 
 |StartTime|EndTime|Duration|DamageProperty|
 |--|--|--|--|
@@ -274,6 +290,8 @@ Use `summarize` with the [count](./count-aggfunction.md) aggregation function to
 StormEvents
 | summarize TotalStorms = count() by State
 ```
+
+**Output**
 
 |State|TotalStorms|
 |--|--|
@@ -322,6 +340,8 @@ StormEvents
 | top 5 by StormsWithCropDamage
 ```
 
+**Output**
+
 |State|TotalStorms|StormsWithCropDamage|
 |--|--|--|--|
 |IOWA|2337|359|
@@ -350,6 +370,8 @@ StormEvents
 | sort by AvgCropDamage
 ```
 
+**Output**
+
 |EventType|MaxCropDamage|MinCropDamage|AvgCropDamage|
 |--|--|--|--|
 |Frost/Freeze|568600000|3000|9106087.5954198465|
@@ -374,6 +396,8 @@ StormEvents
     and DamageCrops > 0
 | summarize EventCount = count() by bin(StartTime, 7d)
 ```
+
+**Output**
 
 |StartTime|EventCount|
 |---|---|
@@ -428,6 +452,8 @@ StormEvents
 | sort by StormTypes
 ```
 
+**Output**
+
 |State|StormTypes|
 |--|--|
 |TEXAS|27|
@@ -453,6 +479,8 @@ StormEvents
 | project State, StormTypesWithDeaths
 | sort by array_length(StormTypesWithDeaths)
 ```
+
+**Output**
 
 |State|StormTypesWithDeaths|
 |--|--|
@@ -486,6 +514,8 @@ StormEvents
                           )
 | sort by State asc
 ```
+
+**Output**
 
 |State|InjuriesCount|InjuriesBucket|
 |--|--|--|
@@ -536,6 +566,8 @@ We have access to another table in the sample database called `PopulationData`. 
 ```kusto
 PopulationData | take 10
 ```
+
+**Output**
 
 |State|Population|
 |--|--|
@@ -588,6 +620,8 @@ StormEvents
 | distinct State
 ```
 
+**Output**
+
 |State|
 |--|
 |OREGON|
@@ -616,6 +650,8 @@ LightningStorms
 | join kind=inner AvalancheStorms on State
 | distinct State
 ```
+
+**Output**
 
 |State|
 |--|
@@ -649,6 +685,8 @@ StormEvents
 | project EpisodeId, EventType, EventNarrative
 ```
 
+**Output**
+
 |EpisodeId|EventType|EventNarrative|
 |--|--|--|
 |829|Thunderstorm Wind|Sheriff reported a couple of trees down near Elijah Clark State Park.|
@@ -674,6 +712,8 @@ StormEvents
 | summarize Damage=round(avg(DamageProperty + DamageCrops)) by EventType
 | sort by Damage
 ```
+
+**Output**
 
 |EventType|Damage|
 |--|--|
@@ -710,6 +750,8 @@ StormEvents
 | sort by StormsWithPropertyDamage
 ```
 
+**Output**
+
 |State|TotalStorms|StormsWithCropDamage|PercentWithCropDamage|
 |--|--|--|--|
 |TEXAS|4701|1205|25.63|
@@ -738,6 +780,8 @@ StormEvents
 | project EventType, EventCount, Percentage = todouble(EventCount) / TotalStorms * 100.0
 ```
 
+**Output**
+
 |EventType|EventCount|Percentage|
 |--|--|--|
 |Thunderstorm Wind|13015|22.034673077574237|
@@ -765,6 +809,8 @@ StormEvents
 | extend CorrelationCoefficient = series_pearson_correlation(PropertyDamageSeries, PopulationSeries)
 | project CorrelationCoefficient
 ```
+
+**Output**
 
 |CorrelationCoefficient|
 |--|
