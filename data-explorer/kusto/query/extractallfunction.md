@@ -49,6 +49,8 @@ print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 | extend guid_bytes = extract_all(@"([\da-f]{2})", Id) 
 ```
 
+**Output**
+
 |ID|guid_bytes|
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|["82","b8","be","2d","df","a7","4b","d1","8f","63","24","ad","26","d3","14","49"]|
@@ -64,6 +66,8 @@ The following query uses a regular expression with three capturing groups to spl
 print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 | extend guid_bytes = extract_all(@"(\w)(\w+)(\w)", Id)
 ```
+
+**Output**
 
 |ID|guid_bytes|
 |---|---|
@@ -85,6 +89,8 @@ print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 | extend guid_bytes = extract_all(@"(\w)(\w+)(\w)", dynamic([1,3]), Id) 
 ```
 
+**Output**
+
 |ID|guid_bytes|
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|[["8","d"],["d","7"],["4","1"],["8","3"],["2","9"]]|
@@ -100,6 +106,8 @@ The *captureGroups* in the following query uses both capture group indexes and n
 print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 | extend guid_bytes = extract_all(@"(?P<first>\w)(?P<middle>\w+)(?P<last>\w)", dynamic(['first',2,'last']), Id) 
 ```
+
+**Output**
 
 |ID|guid_bytes|
 |---|---|
