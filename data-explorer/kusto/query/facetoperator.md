@@ -39,6 +39,8 @@ StormEvents
   )
 ```
 
+**Output**
+
 |StartTime|Source|EpisodeId|EventType|
 |---|---|---|---|
 |2007-01-04 12:00:00.0000000|COOP Observer|2192|Heavy Snow|
