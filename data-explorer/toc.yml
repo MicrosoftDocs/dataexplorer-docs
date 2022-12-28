@@ -221,6 +221,14 @@ items:
         href: data-factory-template.md
       - name: Run control commands using Azure Data Factory
         href: data-factory-command-activity.md
+    - name: Azure Cosmos DB
+      items:
+      - name: Azure Cosmos DB data feed connection
+        displayName: ingest
+        href: ingest-data-cosmos-db-connection.md
+      - name: Get latest Azure Cosmos DB documents
+        displayName: ingest data, ingestion
+        href: ingest-data-cosmos-db-queries.md
     - name: Using SDKs
       items:
       - name: .NET SDK
@@ -425,7 +433,7 @@ items:
       - name: Integrate Azure Data Explorer capabilities overview
         displayName: monaco web UI
         href: kusto/api/monaco/monaco-overview.md
-      - name: Embed the web UI in an iframe
+      - name: Embed the web UI in an IFrame
         displayName: monaco web UI
         href: kusto/api/monaco/host-web-ux-in-iframe.md
       - name: Integrate the Monaco Editor with Kusto query support
