@@ -627,6 +627,9 @@ items:
     - name: factorial_fl()
       displayName: functions library, statistics
       href: kusto/functions-library/factorial-fl.md
+    - name: get_packages_version_fl()
+      displayName: functions library, python, version, package
+      href: kusto/functions-library/get-packages-version-fl.md
     - name: kmeans_fl()
       displayName: functions library, clustering, K-Means
       href: kusto/functions-library/kmeans-fl.md
