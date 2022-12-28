@@ -1,9 +1,9 @@
 ---
 title: indexof() - Azure Data Explorer 
-description: This article describes indexof() in Azure Data Explorer.
+description: Learn how to use the indexof() function to report the zero-based index position of the input string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/19/2022
 ---
 # indexof()
 
@@ -34,6 +34,7 @@ Returns -1 if the string isn't found in the input.
 For irrelevant inputs (*occurrence* < 0 or  *length* < -1) - returns *null*.
 
 ## Examples
+
 ```kusto
 print
  idx1 = indexof("abcdefg","cde")    // lookup found in input string
@@ -46,6 +47,8 @@ print
  , idx8 = indexof("abcdefgabcdefg", "cde", 1, 10, 2)   // lookup found in input range
  , idx9 = indexof("abcdefgabcdefg", "cde", 1, -1, 3)   // the third occurrence of lookup is not in researched range
 ```
+
+**Output**
 
 |idx1|idx2|idx3|idx4|idx5|idx6|idx7|idx8|idx9|
 |----|----|----|----|----|----|----|----|----|
