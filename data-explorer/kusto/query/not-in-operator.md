@@ -31,7 +31,7 @@ If you're testing for the presence of a symbol or alphanumeric word that is boun
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
 | *col* | string | &check; | The column used to filter the records.|
 | *scalar_expr* | scalar | | An expression or list of expressions to search for in *col*.|
-| *tabular_expr* | string | | A tabular expression that has a set of values. If the tabular expression has multiple columns, the first column is used.|
+| *tabular_expr* | string | | A tabular expression that has a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used.|
 
 > [!NOTE]
 > At least one *scalar_expr* or a single *tabular_expr* is required.

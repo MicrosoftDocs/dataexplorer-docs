@@ -29,7 +29,7 @@ For faster results, use the case-sensitive version of an operator. For example, 
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
 | *col* | string | &check; | The column used to filter the records.|
 | *scalar_expr* | scalar | | An expression or list of expressions to search for in *col*.|
-| *tabular_expr* | string | | A tabular expression that has a set of values. If the tabular expression has multiple columns, the first column is used.|
+| *tabular_expr* | string | | A tabular expression that has a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used.|
 
 > [!NOTE]
 > At least one *scalar_expr* or a single *tabular_expr* is required.
