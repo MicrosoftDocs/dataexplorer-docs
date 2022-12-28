@@ -21,15 +21,20 @@ For more information about other operators and to determine which operator is mo
 
 ## Syntax
 
-*T* `|` `where` *Column* `has_all` `(`*expression*`,` [*expression_2*, ...]`)`
+*T* `|` `where` *col* `has_all` `(`*scalar_expr*`,` [*scalar_expr_2*`,` *scalar_expr3*`,` ... ]`)`
+*T* `|` `where` *col* `has_all` `(`*tabular_expr*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
-| *Column* | string | &check; | The column to filter.|
-| *expression* | scalar or tabular | &check; | An expression or list of expressions for which to search.|
+| *col* | string | &check; | The column used to filter the records.|
+| *scalar_expr* | scalar | | An expression or list of expressions to search for in *col*.|
+| *tabular_expr* | string | | A tabular expression that has a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used.|
+
+> [!NOTE]
+> At least one *scalar_expr* or a single *tabular_expr* is required.
 
 ## Returns
 
