@@ -49,7 +49,7 @@ Enter the following policy alter-merge command for the database level:
 > [!NOTE]
 > To override the existing policy, use the `alter` command instead of the `alter-merge` command.
 
-## Grant correct external resource permissions
+## Grant correct permissions to the external resource
 
 When accessing external storage using an external table, correct permissions must be provided. In this example, We demonstrate creation of Azure Storage external tables with managed identities, and therefore require to grant the managed identity with the correct Azure Storage RBAC permissions.
 
