@@ -71,7 +71,7 @@ In the calculator, enter estimates for the following fields:
 
 ### Auto-select engine instances
 
-If you want to individually configure the remaining components, disable the **AUTO-SELECT ENGINE INSTANCES** toggle. When enabled, the calculator will select the most optimal SKU based on the ingestion inputs.
+If you want to individually configure the remaining components, turn off **AUTO-SELECT ENGINE INSTANCES**. When turned on, the calculator selects the most optimal SKU based on the ingestion inputs.
 
 :::image type="content" source="media/pricing/auto-select-engine-instances.png" alt-text="Image of auto select engine instances toggle.":::
 
@@ -93,21 +93,9 @@ The following are the engine **Workload** options:
   * Suited for workloads that require caching large data sizes
   * In some SKUs, premium managed disk storage is attached to the engine node instead of Local SSD for hot data storage
 
-#### When auto-select is enabled
+To get an estimate for **Engine instances**:
 
-If you left the [auto-select engine instances](#auto-select-engine-instances) toggle enabled:
-
-1. Choose between the [workload options](#workload-options). The engine **Instance** will adjust accordingly.
-1. Specify the number of hours, days, or months you’d like to run the engine.
-1. (Optional) Select a **Savings Options** plan.
-
-#### When auto-select is disabled
-
-If you disabled the [auto-select engine instances](#auto-select-engine-instances) toggle:
-
-1. Choose between the [workload options](#workload-options).
-1. Choose the **VM Series**.
-1. Choose the specific engine **Instance**.
+1. Choose between the [workload options](#workload-options). The engine **Instance** will adjust accordingly. If you turned off **AUTO-SELECT ENGINE INSTANCES**, then choose the specific engine **Instance** and the **VM Series**.
 1. Specify the number of hours, days, or months you’d like to run the engine.
 1. (Optional) Select a **Savings Options** plan.
 
@@ -131,7 +119,7 @@ The storage component is the persistent layer where all the data is stored compr
 
 To get an estimate for **Storage and transactions**:
 
-* If you need [availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support), enable the **AVAILABILITY ZONE** toggle. If enabled, storage will be deployed as ZRS. Otherwise, storage will be deployed as LRS.
+* If you need [availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support), turn on **AVAILABILITY ZONE**. When turned on, storage will be deployed as ZRS. Otherwise, storage will be deployed as LRS.
 
 :::image type="content" source="media/pricing/availability-zone-toggle.png" alt-text="Image of availability zone toggle.":::
 
