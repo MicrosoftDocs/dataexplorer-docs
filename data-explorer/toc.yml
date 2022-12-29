@@ -330,6 +330,22 @@ items:
       href: k2bridge.md
   - name: Secure
     items:
+    - name: Access control
+      href: kusto/management/access-control/index.md
+      items:
+        - name: Identities
+          href: kusto/management/access-control/principals-and-identity-providers.md
+        - name: Azure Active Directory
+          displayName: AAD, Azure AD
+          href: kusto/management/access-control/aad.md
+        - name: Role-based access control
+          href: kusto/management/access-control/role-based-authorization.md
+          displayName: RBAC, role based access control
+        - name: Allow cross-tenant queries and commands
+          href: cross-tenant-query-and-commands.md
+        - name: How-To Azure Active Directory authentication
+          displayName: AAD, Azure AD
+          href: kusto/management/access-control/how-to-authenticate-with-aad.md
     - name: Isolated compute
       href: isolated-compute.md
     - name: Network isolation (VNet)
