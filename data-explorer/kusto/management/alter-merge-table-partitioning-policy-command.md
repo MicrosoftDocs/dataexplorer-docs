@@ -24,7 +24,7 @@ This command requires [database admin](access-control/role-based-authorization.m
 
 ### Example
 
-Delete the policy at the table level:
+Alter merge the policy at the table level:
 
 ```kusto
 .alter-merge table MyTable policy partitioning '{"EffectiveDateTime":"2023-01-01"}'

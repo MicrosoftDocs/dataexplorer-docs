@@ -1,9 +1,9 @@
 ---
 title: hash_many() - Azure Data Explorer
-description: This article describes hash_many() in Azure Data Explorer.
+description: Learn how to use the hash_many() function to return a combined hash value of multiple values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/24/2022
+ms.date: 12/18/2022
 ---
 # hash_many()
 
@@ -33,6 +33,8 @@ The [hash()](hashfunction.md) function is applied to each of the specified scala
 print value1 = "Hello", value2 = "World"
 | extend combined = hash_many(value1, value2)
 ```
+
+**Output**
 
 |value1|value2|combined|
 |---|---|---|

@@ -221,6 +221,14 @@ items:
         href: data-factory-template.md
       - name: Run control commands using Azure Data Factory
         href: data-factory-command-activity.md
+    - name: Azure Cosmos DB
+      items:
+      - name: Azure Cosmos DB data feed connection
+        displayName: ingest
+        href: ingest-data-cosmos-db-connection.md
+      - name: Get latest Azure Cosmos DB documents
+        displayName: ingest data, ingestion
+        href: ingest-data-cosmos-db-queries.md
     - name: Using SDKs
       items:
       - name: .NET SDK
@@ -256,8 +264,6 @@ items:
     - name: JSON formatted data
       displayName: ingest data, ingestion
       href: ingest-json-formats.md
-    - name: Ingestion FAQ
-      href: kusto/management/ingestion-faq.yml  
   - name: Query data
     items:
     - name: Evaluate query performance in your cluster
@@ -427,7 +433,7 @@ items:
       - name: Integrate Azure Data Explorer capabilities overview
         displayName: monaco web UI
         href: kusto/api/monaco/monaco-overview.md
-      - name: Embed the web UI in an iframe
+      - name: Embed the web UI in an IFrame
         displayName: monaco web UI
         href: kusto/api/monaco/host-web-ux-in-iframe.md
       - name: Integrate the Monaco Editor with Kusto query support
@@ -443,6 +449,8 @@ items:
         href: manage-cluster-choose-sku.md
       - name: Automatic stop of inactive clusters
         href: auto-stop-clusters.md
+      - name: Manage cluster permissions
+        href: manage-cluster-permissions.md
       - name: Manage cluster horizontal scaling
         href: manage-cluster-horizontal-scaling.md
       - name: Manage cluster vertical scaling
@@ -589,10 +597,15 @@ items:
   items:
   - name: API
     href: kusto/api/toc.yml
-  - name: Ingestion
+  - name: Troubleshoot ingestion
     items:
     - name: Ingestion error codes
       href: error-codes.md
+    - name: Ingestion behavior of invalid data
+      href: ingest-invalid-data.md
+      displayName: Failure, error code
+    - name: Ingestion FAQ
+      href: kusto/management/ingestion-faq.yml  
   - name: Azure CLI Kusto
     href: /cli/azure/kusto
   - name: PowerShell Kusto

@@ -1,9 +1,9 @@
 ---
 title: hash_combine() - Azure Data Explorer
-description: This article describes hash_combine() in Azure Data Explorer.
+description: learn how to use the hash_combine() function to combine hash values of two or more hashes.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/19/2019
+ms.date: 12/18/2022
 ---
 # hash_combine()
 
@@ -31,6 +31,8 @@ print value1 = "Hello", value2 = "World"
 | extend h1 = hash(value1), h2=hash(value2)
 | extend combined = hash_combine(h1, h2)
 ```
+
+**Output**
 
 |value1|value2|h1|h2|combined|
 |---|---|---|---|---|

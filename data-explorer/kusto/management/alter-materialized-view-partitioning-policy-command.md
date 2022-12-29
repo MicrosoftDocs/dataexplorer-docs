@@ -15,17 +15,39 @@ This command requires [database admin](access-control/role-based-authorization.m
 
 ## Syntax
 
-`.alter` `materialized-view` *MaterializedViewName* `policy` `partitioning` *ArrayOfPolicyObjects*
+`.alter` `materialized-view` *MaterializedViewName* `policy` `partitioning` *PolicyObject*
 
 ## Arguments
 
-*MaterializedViewName* - Specify the name of the materialized view. 
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined.
+*MaterializedViewName* - Specify the name of the materialized view.
+*PolicyObject* - Define a policy object, see also [partitioning policy](partitioningpolicy.md).
 
 ### Example
 
-Change the policy at the materialized-view level:
+Set a policy on the materialized view with two kinds of partition keys:
 
-```kusto
-.alter materialized-view MyMaterializedView policy partitioning '{"EffectiveDateTime":"2023-01-01"}'
-```
+~~~kusto
+.alter materialized-view [materialized_view_table_name] policy partitioning ```
+{
+  "PartitionKeys": [
+    {
+      "ColumnName": "my_string_column",
+      "Kind": "Hash",
+      "Properties": {
+        "Function": "XxHash64",
+        "MaxPartitionCount": 128,
+        "PartitionAssignmentMode": "Uniform"
+      }
+    },
+    {
+      "ColumnName": "my_datetime_column",
+      "Kind": "UniformRange",
+      "Properties": {
+        "Reference": "1970-01-01T00:00:00",
+        "RangeSize": "1.00:00:00",
+        "OverrideCreationTime": false
+      }
+    }
+  ]
+}```
+~~~

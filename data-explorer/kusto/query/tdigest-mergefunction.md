@@ -32,7 +32,8 @@ The result for merging the columns `*Expr1*`, `*Expr2*`, ... `*ExprN*` to one `t
 
 ## Example
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02OSwrDMBBD9z3FLG2aRXKA3qNdhZAoxiX+YE/BDj18h7Ym2Wmk0UNp8gZUaE3B0UAcaOgpM6IclzehMPxClW7yc5VMvPxybkp2B/FiDTLfJf1LVXTX9ONkVy3FmMITM5NDMliOdPwaqtEOwLkUkWZ4thvGBv1xOlnVS6dGhFVtwRutP5Qlo27WAAAA)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02OSwrDMBBD9z3FLG2aRXKA3qNdhZAoxiX+YE/BDj18h7Ym2Wmk0UNp8gZUaE3B0UAcaOgpM6IclzehMPxClW7yc5VMvPxybkp2B/FiDTLfJf1LVXTX9ONkVy3FmMITM5NDMliOdPwaqtEOwLkUkWZ4thvGBv1xOlnVS6dGhFVtwRutP5Qlo27WAAAA" target="_blank">Run the query</a>
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -42,6 +43,8 @@ range x from 1 to 10 step 1
 | project merged = tdigest_merge(tdigestX, tdigestY)
 | project percentile_tdigest(merged, 100, typeof(long))
 ```
+
+**Output**
 
 |percentile_tdigest_merged|
 |---|
