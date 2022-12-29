@@ -73,7 +73,7 @@ In the calculator, enter estimates for the following fields:
 
 If you want to individually configure the remaining components, turn off **AUTO-SELECT ENGINE INSTANCES**. When turned on, the calculator selects the most optimal SKU based on the ingestion inputs.
 
-:::image type="content" source="media/pricing/auto-select-engine-instances.png" alt-text="Image of auto select engine instances toggle.":::
+:::image type="content" source="media/pricing/auto-select-engine-instances.png" alt-text="Screenshot of the auto select engine instances toggle.":::
 
 ### Engine instances
 
@@ -121,7 +121,7 @@ To get an estimate for **Storage and transactions**:
 
 * If you need [availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support), turn on **AVAILABILITY ZONE**. When turned on, storage will be deployed as ZRS. Otherwise, storage will be deployed as LRS.
 
-:::image type="content" source="media/pricing/availability-zone-toggle.png" alt-text="Image of availability zone toggle.":::
+:::image type="content" source="media/pricing/availability-zone-toggle.png" alt-text="Screenshot of the availability zone toggle.":::
 
 ### Networking
 
@@ -161,7 +161,7 @@ Choose a support plan:
 * Save the estimate for future reference
 * Share the estimate – sign-in is required
 
-## Next Steps
+## Next steps
 
 * [Create a free Azure Data Explorer cluster](./start-for-free-web-ui.md)
 * [Start-for-free cluster](./start-for-free.md)
