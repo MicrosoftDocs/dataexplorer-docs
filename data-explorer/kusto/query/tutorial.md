@@ -227,7 +227,7 @@ StormEvents
 
 The [top](./topoperator.md) operator returns the first *n* rows sorted by the specified column.
 
-The following query will return the top 5 Texas floods that caused the most damaged property.
+The following query will return the five Texas floods that caused the most damaged property.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVAPcY1wDFZXSMxLUQArCqksgEi45eTnp6iDtJTkFyiYKiRVKrgk5iampwYU5RekFpVUgqQKivKzUpNLQOYVlYRk5qbqKLjmpUAYYDt0EKbqoOkHAAycFF+ZAAAA" target="_blank">Run the query</a>
@@ -249,7 +249,10 @@ StormEvents
 |2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|TEXAS|Flood|750000|
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
 
-Use `project` to include a computed `Duration` column by calculating the difference between the `StartTime` and `EndTime` columns. Alternatively, the [extend](./extendoperator.md) operator could add computed columns to the end of a table. In this case, we're only interested in certain columns, so `project` is a better option.
+The following query uses `project` to create a computed `Duration` column that calculates the difference between the `StartTime` and `EndTime`. 
+
+> [!TIP]
+> The [extend](./extendoperator.md) operator could also add computed columns, although these columns are added to the end of a table. In the example scenario, we don't want to see all columns with an appended column, so using `project` is a better choice.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OvQ7CMAyEdyTewVuWMDJ2QGr5WQJSKzGHxoIiEkeuKVTi4WmooBKbfXeffaUQ%2b6LDIO189oLHBRnhs1d9RMgyUOsbkVNgg4NSrIzicVVud2ZT7Y1KnFCEJZx6yK23ZzwwRWTpwWFbJx%2bfggOf39lKQwEyKIKrGo%2bwSEdZ0pyCkemKtUyi%2fib1j9ZjDz311H9%2fBys2LTk0lhPT4RvwA3pn6AAAAA%3d%3d" target="_blank">Run the query</a>
@@ -271,13 +274,13 @@ StormEvents
 |2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|08:00:00|750000|
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|03:00:00|750000|
 
-With the computed `Duration` column, it stands out that the flood that caused the most damage was also the longest flood.
+If you take a look at the computed `Duration` column, you may notice that the flood that caused the most damage was also the longest flood.
 
 ## Find insights with aggregation functions
 
 [Aggregation functions](aggregation-functions.md) allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, minimum, or average value.
 
-In the following examples, we'll use the [summarize](./summarizeoperator.md) operator together with aggregation functions to find insights in the data, and the [render](./renderoperator.md) operator to visualize the results.
+In the following examples, we'll use the [summarize](./summarizeoperator.md) operator together with aggregation functions to find insights in the data. Then we'll use the [render](./renderoperator.md) operator to visualize the results.
 
 ### count()
 
@@ -322,11 +325,9 @@ StormEvents
 
 ### countif()
 
-It's possible to use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
+Use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
 
-Use the [countif()](./countif-aggfunction.md) function to add a column with the count of storms that caused damage. The function returns the count of rows where the predicate passed as an argument is `true`.
-
-Use the `top` operator to identify states with the most crop damage from storms.
+The following example uses the [countif()](./countif-aggfunction.md) function to add a column with the count of storms that caused damage. The function returns the count of rows where the predicate passed as an argument is `true`. Then the `top` operator further filters to show states with the most crop damage from storms.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlXg5VIAgpD8ksScYJCaYgVbheT80rwSDU0diBxEODyzJMO5KL/AJTE3MT0VpigzTQMiAJIqVrBTMNCEaEqqBOpLLEkFWVaSX6BgChHBNAkACdZZQZkAAAA=" target="_blank">Run the query</a>
@@ -465,7 +466,7 @@ StormEvents
 
 ### make_set()
 
-The [make_set()](./makeset-aggfunction.md) operator is a way to take a bunch of rows in a table and turn them into an array of unique values.
+The [make_set()](./makeset-aggfunction.md) operator is a way to take a selection of rows in a table and turn them into an array of unique values.
 
 The following query uses `make_set()` to create an array of the event types that cause deaths in each state. The resulting table is then sorted by the number of storm types in each array.
 
@@ -558,7 +559,7 @@ Like `join`, the [lookup](lookupoperator.md) operator also combines rows from ta
 
 ### Cross-table joins
 
-We have access to another table in the sample database called `PopulationData`. Use `take` to see what data this table contains.
+There is a separate table in the sample database called `PopulationData`. Use `take` to see what data this table contains.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwvILyjNSSzJzM9zSSxJVKhRKEnMTlUwNAAAWLY+MRgAAAA=" target="_blank">Run the query</a>
@@ -766,7 +767,7 @@ StormEvents
 
 ### Calculate percentage based on table size
 
-To compare the number of storms by event type to the total number of storms in the database, you'll need to first save the total number of storms in the database as a variable.
+To compare the number of storms by event type to the total number of storms in the database, first save the total number of storms in the database as a variable.
 
 Since [tabular expression statements](#tabular-expression-statements) return tabular results, use the [toscalar()](toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the percentage calculation.
 
@@ -816,7 +817,7 @@ StormEvents
 |--|
 |0.64199107528146893|
 
-A coefficient of 0.6419 suggests that there is a connection between the state population and the property damage caused by storms.
+A coefficient of 0.6419 suggests that there is a weak connection between the state population and the property damage caused by storms.
 
 ## Perform geospacial clustering
 
