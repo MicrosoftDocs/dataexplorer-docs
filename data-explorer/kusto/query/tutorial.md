@@ -25,7 +25,7 @@ In this tutorial, you'll learn how to:
 > * [Define variables](#define-variables)
 > * [Calculate percentages](#calculate-percentages)
 > * [Calculate correlation coefficients](#calculate-correlation-coefficients)
-> * [Perform geospacial clustering](#perform-geospacial-clustering)
+> * [Perform geospatial clustering](#perform-geospatial-clustering)
 
 The examples in the tutorial all use the `StormEvents` table, which is publicly available in the [Samples database](https://help.kusto.windows.net/Samples) of the **help** cluster. To continue exploring with your own data, [create your own free cluster](../../start-for-free-web-ui.md).
 
@@ -219,9 +219,6 @@ StormEvents
 |2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|TEXAS|Flood|750000|
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
 |...|...|...|...|...|
-
-> [!NOTE]
-> The order of operations is important. Try putting `take 5` before `sort`. You'll get different results.
 
 ### top
 
