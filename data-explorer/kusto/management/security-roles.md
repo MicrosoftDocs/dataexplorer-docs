@@ -30,7 +30,7 @@ The following table describes the level of access granted for each role and show
 |--|--|--|--|--|--|
 |`admins` | View, modify, and remove the object and subobjects.|&check;|&check;|&check;|&check;|
 |`users` | View the object and create new subobjects.|&check;||||
-|`viewers` | View the object if [RestrictedViewAccess](restrictedviewaccesspolicy.md) isn't enabled.|&check;||||
+|`viewers` | View the object if [RestrictedViewAccess](restrictedviewaccesspolicy.md) isn't turned on.|&check;||||
 |`unrestrictedviewers`| View the object even with [RestrictedViewAccess](restrictedviewaccesspolicy.md). Use in addition to the `admins`, `viewers` or `users` roles. |&check;||||
 |`ingestors` | Ingest data to the object without access to query. |&check;|&check;|||
 |`monitors` | View metadata such as schemas, operations, and permissions.|&check;||||
