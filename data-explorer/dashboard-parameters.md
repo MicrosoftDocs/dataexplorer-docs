@@ -3,7 +3,7 @@ title: Parameters in Azure Data Explorer dashboards
 description: Use parameters as a building block for dashboard filters.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 05/23/2022
+ms.date: 11/14/2022
 ---
 
 # Use parameters in Azure Data Explorer dashboards
@@ -220,7 +220,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
     ``` kusto
     EventsAll
     | where Type has (_event)
-    | summarize count(Id) by Type, bin(CreatedAt,7d)
+    | summarize count() by Type, bin(CreatedAt,7d)
     ```
 
     The new parameter shows up in the parameter list at the top of the dashboard.
@@ -250,7 +250,7 @@ Query-based parameter values are derived at dashboard load time by executing the
     ``` kusto
     EventsAll
     | where Type in (_event) or isempty(_events)
-    | summarize count(Id) by Type, bin(CreatedAt,7d)
+    | summarize count() by Type, bin(CreatedAt,7d)
     ```
 
     > [!NOTE]

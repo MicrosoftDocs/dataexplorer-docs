@@ -1,6 +1,6 @@
 ---
 title: The case-insensitive hasprefix string operator - Azure Data Explorer
-description: This article describes the case-insensitive hasprefix string operator in Azure Data Explorer.
+description: Learn how to use the hasprefix operator to filter data with a case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/25/2022
@@ -15,10 +15,9 @@ For best performance, use strings of three characters or more. `has` searches fo
 
 ## Performance tips
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator, for example, `hasprefix_cs`, not `hasprefix`. For best practices, see [Query best practices](best-practices.md).
+For faster results, use the case-sensitive version of an operator. For example, use `hasprefix_cs` instead of `hasprefix`.
 
 ## Syntax
 
