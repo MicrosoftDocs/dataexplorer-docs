@@ -178,7 +178,7 @@ The main contributors that can impact a materialized view health are:
 * **Materialized view definition**: The materialized view definition must be defined according to query best practices for best query performance. For more information, see [create command performance tips](materialized-view-create.md#performance-tips).
 
 * **Materialized view workload group limits**: By default materialized views are limited by the maximum amount of memory a query can allocate and by the percentage of nodes/threads on each node to fan out query execution to.
-You can increase resources by altering the [materialize-views workload limits](../workload-groups.md#materializedviews-workload-group).
+You can increase resources by altering the [materialize-views workload group limits](../workload-groups.md#materialized-views-workload-group).
 
 ## Materialized view over materialized view
 
