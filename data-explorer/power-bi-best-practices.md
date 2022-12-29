@@ -36,7 +36,7 @@ When working with terabytes of fresh raw data, follow these guidelines to keep P
 
 ## Tips for using the Azure Data Explorer connector for Power BI to query data
 
-The following section includes tips and tricks for using Kusto query language with Power BI. Use the [Azure Data Explorer connector for Power BI](power-bi-data-connector.md#connectortabconnector) to import data to Power BI.
+The following section includes tips and tricks for using Kusto query language with Power BI. Use the [Azure Data Explorer connector for Power BI](power-bi-data-connector.md?tabs=connector) to import data to Power BI.
 
 ### Complex queries in Power BI
 
