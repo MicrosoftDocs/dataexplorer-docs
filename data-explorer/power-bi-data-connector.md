@@ -3,14 +3,14 @@ title: Use data from Azure Data Explorer in Power BI
 description: Learn how to use Azure Data Explorer data in Power BI.
 ms.reviewer: danyhoter
 ms.topic: how-to
-ms.date: 12/13/2022
+ms.date: 12/29/2022
 
 #Customer intent: As a data analyst, I want to understand connection options in Power BI so I can choose the option most appropriate to my scenario.
 ---
 
 # Use Azure Data Explorer data in Power BI
 
-In this article, you'll learn about the different ways in which you can connect Azure Data Explorer as a data source to Power BI. Once connected, you can proceed to build Power BI reports and visualizations.
+In this article, you'll learn about the different ways in which you can connect Azure Data Explorer as a data source to Power BI. Once connected, you can proceed to build Power BI reports.
 
 ## Prerequisites
 
@@ -23,14 +23,12 @@ Power BI supports *Import* and *DirectQuery* connectivity modes. When building P
 
 Use **Import** mode when:
 
-* Your data set is small.
-* You don't need near real-time data.
-* Your data is already aggregated or you perform [aggregation in Kusto](./kusto/query/aggregation-functions.md).
+* Your data set is small and you don't need near real-time data.
+* You perform [aggregation in Kusto](./kusto/query/aggregation-functions.md).
 
 Use **DirectQuery** mode when:
 
-* Your data set is very large.
-* You need near real-time data.
+* Your data set is very large or you need near real-time data.
 
 For more information on connectivity modes, see [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about).
 
@@ -43,7 +41,7 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 
 To demonstrate how to use Azure Data Explorer data in Power BI, we'll be using the StormEvents table from our [help cluster](https://help.kusto.windows.net/) as an example database for the following steps.
 
-# [Web UI](#tab/web-ui/)
+## [Web UI](#tab/web-ui/)
 
 1. In the Azure Data Explorer web UI, on the left menu, select **Query**, and then select the database with your data.
 1. Create a query and select it. For example, the following query from the **Samples** > **StormEvents** table, returns storm events that caused the most crop damage:
@@ -71,12 +69,11 @@ To demonstrate how to use Azure Data Explorer data in Power BI, we'll be using t
 
     :::image type="content" source="media/power-bi-data-connector/connectivity-mode-web-ui.png" alt-text="Screenshot of the Query Settings window, showing applied steps with the settings cog highlighted.":::
 
-
 1. On the **Home** tab, select **Close & Apply**.
 
     :::image type="content" source="media/power-bi-data-connector/close-apply.png" alt-text="Screenshot of the Home tab with the Close & Apply option highlighted.":::
 
-# [Connector](#tab/connector/)
+## [Connector](#tab/connector/)
 
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Get Data** > **More**.
@@ -94,27 +91,24 @@ To demonstrate how to use Azure Data Explorer data in Power BI, we'll be using t
     | Setting | Field description | Sample value |
     |---|---|---|
     | Cluster | The URL for the help cluster. For other clusters, the URL is in the form *https://\<ClusterName\>.\<Region\>.kusto.windows.net*. | *https://help.kusto.windows.net* |
-    | Database | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. | Leave blank |
-    | Table name | The name of a table in the database, or a query like <code>StormEvents \| take 1000</code>. We'll select this in a later step. | Leave blank |
-    | Advanced options | Options for your queries, such as result set size. |  Leave blank |
+    | Database | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. | Leave blank (Optional) |
+    | Table name | The name of a table in the database, or a query like <code>StormEvents \| take 1000</code>. We'll select this in a later step. | Leave blank (Optional) |
+    | Advanced options | Options for your queries, such as result set size. |  Leave blank (Optional) |
     | Data connectivity mode | Determines whether Power BI imports the data or connects directly to the data source. You can use either option with this connector. For more information, see [Connectivity modes](#connectivity-modes). | *DirectQuery* |
 
     **Advanced options**
 
     | Setting | Field description | Sample value |
     |---|---|---|
-    | Limit query result record number| The maximum number of records to return in the result |`300000` |
-    | Limit query result data size | The maximum data size in bytes to return in the result | `4194304` |
+    | Limit query result record number| The maximum number of records to return in the result |`1000000` |
+    | Limit query result data size | The maximum data size in bytes to return in the result | `100000000` |
     | Disable result set truncation | Enable/disable result truncation by using the notruncation request option | `true` |
     | Additional set statements | Sets query options for the duration of the query. Query options control how a query executes and returns results. | `set query_datascope=hotcache` |
 
-1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents**, and then select **Transform Data**.
+1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents**, and then select **Load Data**.
+    Optionally, if you want to shape your data first, select **Transform data** to launch Power Query Editor. For more information, see [Shape data](/power-bi/fundamentals/desktop-getting-started?source=recommendations&branch=main#shape-data).
 
-    :::image type="content" source="media/power-bi-data-connector/select-table.png" alt-text="Screenshot of Navigator screen, showing that the StormEvents table is selected. The Transform Data button is highlighted.":::
-
-1. On the **Home** tab, select **Close & Apply**.
-
-    :::image type="content" source="media/power-bi-data-connector/close-apply.png" alt-text="Screenshot of the Home tab with the Close & Apply option highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/select-table.png" alt-text="Screenshot of Navigator screen, showing that the StormEvents table is selected. The Load button is highlighted.":::
 
 [Tips for using the Azure Data Explorer connector for Power BI to query data](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data).
 
@@ -122,5 +116,4 @@ To demonstrate how to use Azure Data Explorer data in Power BI, we'll be using t
 
 ## Next steps
 
-- [Create reports and dashboards in Power BI](/power-bi/create-reports/)
-
+[Create reports and dashboards in Power BI](/power-bi/create-reports/).
