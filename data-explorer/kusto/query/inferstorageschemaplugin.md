@@ -7,7 +7,7 @@ ms.date: 12/28/2022
 ---
 # infer_storage_schema plugin
 
-This plug-in infers schema of external data, and returns it as CSL schema string. The string can be used when [creating external tables](../management/external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table). The plug-in is invoked with the [`evaluate`](evaluateoperator.md) operator.
+This plugin infers schema of external data, and returns it as CSL schema string. The string can be used when [creating external tables](../management/external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table). The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
 
