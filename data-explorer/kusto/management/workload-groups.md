@@ -52,7 +52,7 @@ You can't:
 
 You can [monitor](#monitoring) what gets classified to the `internal` workload group, and statistics of those requests.
 
-### MaterializedViews workload group
+### Materialized-Views workload group
 
 The `materialized-views` workload group is populated with [materialized-views](materialized-views/materialized-view-overview.md) requests only.
 
@@ -60,7 +60,7 @@ You can't:
 
 * Change the criteria used for routing these requests.
 
-You can change only the following values under the workload group's [request limits policy](#request-limits-policy.md):
+You can change only the following values under the workload group's [request limits policy](request-limits-policy.md):
 
 * MaxMemoryPerQueryPerNode
 * MaxMemoryPerIterator
