@@ -51,7 +51,7 @@ Enter the following policy alter-merge command for the database level:
 
 ## Grant correct permissions to the external resource
 
-When accessing external storage using an external table, correct permissions must be provided. In this example, We demonstrate creation of Azure Storage external tables with managed identities, and therefore require to grant the managed identity with the correct Azure Storage RBAC permissions.
+When accessing an external resource, the correct permissions must be provided to the managed identity. In this example, we demonstrate the creation of an Azure Storage External Table with a managed identity, and therefore need to grant the managed identity with the correct Azure Storage RBAC permissions.
 
 For external table query operations, the managed identity must be granted with `Storage Blob Data Reader` permissions. For external table used for export operations, the managed identity must be granted `Storage Blob Data Contributor` permissions. Add these permissions by following [Azure Storage - Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal#assign-an-azure-role).
 
