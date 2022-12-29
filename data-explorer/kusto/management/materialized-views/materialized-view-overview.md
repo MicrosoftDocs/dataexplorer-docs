@@ -177,6 +177,9 @@ The main contributors that can impact a materialized view health are:
 
 * **Materialized view definition**: The materialized view definition must be defined according to query best practices for best query performance. For more information, see [create command performance tips](materialized-view-create.md#performance-tips).
 
+* **Materialized view workload group limits**: By default materialized views are limited by the maximum amount of memory a query can allocate and by the percentage of nodes/threads on each node to fan out query execution to.
+You can increase resources by altering the [materialize-views workload limits](../workload-groups.md#materializedviews-workload-group).
+
 ## Materialized view over materialized view
 
 A materialized view can be created over another materialized view if the source materialized view is a deduplication view. Specifically, the aggregation of the source materialized view must be `take_any(*)` in order to deduplicate source records. The second materialized view can use any [supported aggregation functions](materialized-view-create.md#supported-aggregation-functions). For specific information on how to create a materialized view over a materialized view, see [`.create materialized-view` command](materialized-view-create.md#create-materialized-view-over-materialized-view).
