@@ -28,7 +28,7 @@ Use **Import** mode when:
 
 Use **DirectQuery** mode when:
 
-* Your data set is very large or you need near real-time data.
+* Your data set is large or you need near real-time data.
 
 For more information on connectivity modes, see [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about).
 
@@ -39,7 +39,7 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 * Starting in Azure Data Explorer web UI and then pasting the data in Power BI Desktop.
 * Starting directly in Power BI Desktop and then adding the Azure Data Explorer connector.
 
-To demonstrate how to use Azure Data Explorer data in Power BI, we'll be using the StormEvents table from our [help cluster](https://help.kusto.windows.net/) as an example database for the following steps.
+In the following steps, we'll be using the StormEvents table from our [help cluster](https://help.kusto.windows.net/) to demonstrate how to use Azure Data explorer data in Power BI.
 
 ## [Web UI](#tab/web-ui/)
 
@@ -91,9 +91,9 @@ To demonstrate how to use Azure Data Explorer data in Power BI, we'll be using t
     | Setting | Field description | Sample value |
     |---|---|---|
     | Cluster | The URL for the help cluster. For other clusters, the URL is in the form *https://\<ClusterName\>.\<Region\>.kusto.windows.net*. | *https://help.kusto.windows.net* |
-    | Database | A database that is hosted on the cluster you're connecting to. We'll select this in a later step. | Leave blank (Optional) |
-    | Table name | The name of a table in the database, or a query like <code>StormEvents \| take 1000</code>. We'll select this in a later step. | Leave blank (Optional) |
-    | Advanced options | Options for your queries, such as result set size. |  Leave blank (Optional) |
+    | Database | A database that is hosted on the cluster you're connecting to. You can optionally select a database in a later step. | Leave blank |
+    | Table name | The name of a table in the database, or a query like <code>StormEvents \| take 1000</code>. You can optionally select a table name in a later step. | Leave blank |
+    | Advanced options | Optionally, you can select options for your queries, such as result set size. |  Leave blank |
     | Data connectivity mode | Determines whether Power BI imports the data or connects directly to the data source. You can use either option with this connector. For more information, see [Connectivity modes](#connectivity-modes). | *DirectQuery* |
 
     **Advanced options**
@@ -106,6 +106,7 @@ To demonstrate how to use Azure Data Explorer data in Power BI, we'll be using t
     | Additional set statements | Sets query options for the duration of the query. Query options control how a query executes and returns results. | `set query_datascope=hotcache` |
 
 1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents**, and then select **Load Data**.
+
     Optionally, if you want to shape your data first, select **Transform data** to launch Power Query Editor. For more information, see [Shape data](/power-bi/fundamentals/desktop-getting-started?source=recommendations&branch=main#shape-data).
 
     :::image type="content" source="media/power-bi-data-connector/select-table.png" alt-text="Screenshot of Navigator screen, showing that the StormEvents table is selected. The Load button is highlighted.":::
