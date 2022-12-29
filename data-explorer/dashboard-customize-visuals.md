@@ -135,7 +135,9 @@ OccupancyDetection
     result = pd.DataFrame(data = [plotly_obj], columns = ["plotly"])
 ```)
 ~~~
-Note that for best performance make sure that the python() plugin image contains the latest versions of both the Python engine (currently 3.10.8) and plotly package (currently 5.11.0). These can be checked by [get_packages_version_fl()](kusto/functions-library/get-packages-version-fl.md).
+
+> [!NOTE]
+> For best performance, make sure that the python plugin image contains the latest versions of both the Python engine (currently 3.10.8) and Plotly package (currently 5.11.0). These versions can be checked with the [get_packages_version_fl()](kusto/functions-library/get-packages-version-fl.md) function.
 
 Plotly visuals are useful for advanced charting including geographic, scientific, machine learning, 3d, animation and many other chart types. For more information, see [Plotly](https://plotly.com/python/).
 
