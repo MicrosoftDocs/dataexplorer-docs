@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-[Kusto Query Language (KQL)](index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/en-in/products/monitor/#overview), and [Azure Sentinel](https://azure.microsoft.com/en-us/products/microsoft-sentinel/).
+[Kusto Query Language (KQL)](index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), and [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/).
 
 In this tutorial, you'll learn how to:
 
