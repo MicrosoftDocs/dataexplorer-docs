@@ -559,7 +559,7 @@ Like `join`, the [lookup](lookupoperator.md) operator also combines rows from ta
 
 ### Cross-table joins
 
-There is a separate table in the sample database called `PopulationData`. Use `take` to see what data this table contains.
+There's a separate table in the sample database called `PopulationData`. Use `take` to see what data this table contains.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwvILyjNSSzJzM9zSSxJVKhRKEnMTlUwNAAAWLY+MRgAAAA=" target="_blank">Run the query</a>
@@ -794,7 +794,7 @@ StormEvents
 
 ## Calculate correlation coefficients
 
-To determine if there is a relationship between the population of a state and the amount of damage caused by storms, use the [series_pearson_correlation](series-pearson-correlationfunction.md) function.
+To determine if there's a relationship between the population of a state and the amount of damage caused by storms, use the [series_pearson_correlation](series-pearson-correlationfunction.md) function.
 
 This query calculates the total amount of property damage caused by storms in each state and joins it with population data. The resulting columns are converted into series and the correlation coefficient is calculated.
 
@@ -817,11 +817,11 @@ StormEvents
 |--|
 |0.64199107528146893|
 
-A coefficient of 0.6419 suggests that there is a weak connection between the state population and the property damage caused by storms.
+A coefficient of 0.6419 suggests that there's a weak connection between the state population and the property damage caused by storms.
 
-## Perform geospacial clustering
+## Perform geospatial clustering
 
-Geospatial clustering is a way to organize and analyze data based on geographical location. KQL offers multiple methods for performing [geospatial clustering](geospatial-grid-systems.md), as well as tools for [geospacial visualizations](geospatial-visualizations.md).
+Geospatial clustering is a way to organize and analyze data based on geographical location. KQL offers multiple methods for performing [geospatial clustering](geospatial-grid-systems.md), as well as tools for [geospatial visualizations](geospatial-visualizations.md).
 
 ### Cluster storm events by type
 
@@ -841,7 +841,7 @@ StormEvents
 | render piechart with (kind = map)
 ```
 
-:::image type="content" source="images/tutorial/tornado-geospacial-map.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospacial map of tornado storms.":::
+:::image type="content" source="images/tutorial/tornado-geospacial-map.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of tornado storms.":::
 
 ### Cluster storm events in a specific region
 
@@ -866,7 +866,7 @@ StormEvents
 | render piechart with (kind = map)
 ```
 
-:::image type="content" source="images/tutorial/southern-california-geospacial-mnap.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospacial map of southern california storms.":::
+:::image type="content" source="images/tutorial/southern-california-geospacial-mnap.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of southern California storms.":::
 
 ## Next steps
 
