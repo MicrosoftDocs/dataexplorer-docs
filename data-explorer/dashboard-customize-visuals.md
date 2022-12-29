@@ -137,7 +137,7 @@ OccupancyDetection
 ~~~
 Note that for best performance make sure that the python() plugin image contains the latest versions of both the Python engine (currently 3.10.8) and plotly package (currently 5.11.0). These can be checked by [get_packages_version_fl()](kusto/functions-library/get-packages-version-fl.md).
 
-Plotly visuals are useful for advanced charting including geographic, scientific, machine learning, 3d, animation and many other chart types, as described [here.](https://plotly.com/python/)
+Plotly visuals are useful for advanced charting including geographic, scientific, machine learning, 3d, animation and many other chart types. For more information, see [Plotly](https://plotly.com/python/).
 
 ## Customize visuals
 
