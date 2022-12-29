@@ -1,9 +1,9 @@
 ---
-title: "The has_any_index operator - Azure Data Explorer"
-description: "This article describes the has_any_index in Azure Data Explorer."
+title: The has_any_index operator - Azure Data Explorer
+description: Learn how to use the has_any_index operator to search the input string for items specified in the array.
 ms.reviewer: atefsawaed
 ms.topic: reference
-ms.date: 12/22/2021
+ms.date: 12/18/2022
 ---
 # has_any_index()
 
@@ -33,6 +33,8 @@ print
  , idx4 = has_any_index("Example number 2", range(1, 3, 1)) // Lookup array of integers
  , idx5 = has_any_index("this is an example", dynamic([]))  // Empty lookup array
 ```
+
+**Output**
 
 |idx1|idx2|idx3|idx4|idx5|
 |----|----|----|----|----|

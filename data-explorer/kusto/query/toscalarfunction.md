@@ -31,10 +31,45 @@ If the result is a tabular, then the first column and first row will be taken fo
 > [!TIP]
 > You can use a [let statement](letstatement.md) for readability of the query when using `toscalar()`.
 
-**Notes**
+## Limitations
 
-`toscalar()` can be calculated a constant number of times during the query execution.
-The `toscalar()` function can't be applied on row-level (for-each-row scenario).
+`toscalar()` can't be applied on a scenario that applies the function on each row. This is because the function can only be calculated a constant number of times during the query execution.
+Usually, when this limitation is hit, the following error will be returned: `can't use '<column name>' as it is defined outside its row-context scope.`
+
+In the following example, the query fails with the error:
+
+> `'toscalar': can't use 'x' as it is defined outside its row-context scope.` 
+
+```kusto
+let _dataset1 = datatable(x:long)[1,2,3,4,5];
+let _dataset2 = datatable(x:long, y:long) [ 1, 2, 3, 4, 5, 6];
+let tg = (x_: long)
+{
+    toscalar(_dataset2| where x == x_ | project y);
+};
+_dataset1
+| extend y = tg(x)
+```
+
+This failure can be mitigated by using the `join` operator, as in the following example:
+
+```kusto
+let _dataset1 = datatable(x: long)[1, 2, 3, 4, 5];
+let _dataset2 = datatable(x: long, y: long) [1, 2, 3, 4, 5, 6];
+_dataset1
+| join (_dataset2) on x 
+| project x, y
+```
+
+**Output**
+
+|x|y|
+|---|---|
+|1|2|
+|3|4|
+|5|6|
+
+
 
 ## Examples
 
@@ -46,6 +81,8 @@ let End = toscalar(range x from 1 to 9 step 1 | count);
 let Step = toscalar(2);
 range z from Start to End step Step | extend start=Start, end=End, step=Step
 ```
+
+**Output**
 
 |z|start|end|step|
 |---|---|---|---|
@@ -65,6 +102,8 @@ let g2 = new_guid();
 range x from 1 to 2 step 1
 | extend x=g1, y=g2
 ```
+
+**Output**
 
 |x|y|
 |---|---|

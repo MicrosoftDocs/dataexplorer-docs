@@ -44,18 +44,23 @@ print condition=dynamic([true,false,true]), if_true=dynamic([1,2,3]), if_false=d
 | extend res=array_iif(condition, if_true, if_false)
 ```
 
+**Output**
+
 |condition|if_true|if_false|res|
 |---|---|---|---|
 |[true, false, true]|[1, 2, 3]|[4, 5, 6]|[1, 5, 3]|
 
 ### Numeric condition values
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOz0vJLMnMz7NNqcxLzM1M1og21DHQMTWI1dRRyEyLLykqTbVVqkwtVgJz0xJzioH8vHwlBa4ahdSKktS8FIWi1GLbxKKixMr4zMw0DbiJcP0InZoAPCLjbHUAAAA=)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOz0vJLMnMz7NNqcxLzM1M1og21DHQMTWI1dRRyEyLLykqTbVVqkwtVgJz0xJzioH8vHwlBa4ahdSKktS8FIWi1GLbxKKixMr4zMw0DbiJcP0InZoAPCLjbHUAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 print condition=dynamic([1,0,50]), if_true="yes", if_false="no" 
 | extend res=array_iif(condition, if_true, if_false)
 ```
+
+**Output**
 
 |condition|if_true|if_false|res|
 |---|---|---|---|
@@ -63,12 +68,15 @@ print condition=dynamic([1,0,50]), if_true="yes", if_false="no"
 
 ### Non-numeric and non-boolean condition values
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WNwQrDIBBE7/2KxZOBFIx3v6SUsMS1LOhadFMa6MdXekhhYAYej3k2FoWtSmTlKiEegoU3ezO9FoKugz/ghXknM0NEJeVC1rjlOuKd92aaQfac76M5rdp2CstvJsydgrt8gN5KEqFRD9gaHitzsufp6f2t6QsxYYlomAAAAA==)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WNwQrDIBBE7/2KxZOBFIx3v6SUsMS1LOhadFMa6MdXekhhYAYej3k2FoWtSmTlKiEegoU3ezO9FoKugz/ghXknM0NEJeVC1rjlOuKd92aaQfac76M5rdp2CstvJsydgrt8gN5KEqFRD9gaHitzsufp6f2t6QsxYYlomAAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 print condition=dynamic(["some string value", datetime("01-01-2022"), null]), if_true=1, if_false=0
 | extend res=array_iif(condition, if_true, if_false)
 ```
+
+**Output**
 
 |condition|if_true|if_false|res|
 |---|---|---|---|
@@ -76,12 +84,15 @@ print condition=dynamic(["some string value", datetime("01-01-2022"), null]), if
 
 ### Mismatched array lengths
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOz0vJLMnMz7NNqcxLzM1M1oguKSpN1YETsZo6Cplp8SAmQomhjhFUPC0xpxhJwljHJFZTgatGIbWiJDUvRaEotdg2sagosTI+MzNNA24Z3EiEGZoACxaCE5AAAAA=)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOz0vJLMnMz7NNqcxLzM1M1oguKSpN1YETsZo6Cplp8SAmQomhjhFUPC0xpxhJwljHJFZTgatGIbWiJDUvRaEotdg2sagosTI+MzNNA24Z3EiEGZoACxaCE5AAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 print condition=dynamic([true,true,true]), if_true=dynamic([1,2]), if_false=dynamic([3,4]) 
 | extend res=array_iif(condition, if_true, if_false)
 ```
+
+**Output**
 
 |condition|if_true|if_false|res|
 |---|---|---|---|
