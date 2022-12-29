@@ -11,9 +11,6 @@ Azure Data Explorer uses a role-based access control (RBAC) model in which [prin
 
 Roles are defined within the scope of a cluster, database, table, materialized view, or function. If defined within the scope of a cluster, the role applies to all databases in the cluster. If defined within the scope of a database, the role applies to all tables in the database.
 
-> [!NOTE]
-> Cluster level roles can only be assigned through the [Azure portal](../../../manage-cluster-permissions.md).
-
 ## Roles and permissions
 
 The following table outlines the roles and permissions available at each scope.
