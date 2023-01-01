@@ -302,17 +302,14 @@ items:
         href: dashboard-customize-visuals.md
     - name: Power BI
       items:
+      - name: Use data in Power BI 
+        displayName: Imported query
+        href: power-bi-data-connector.md
       - name: Power BI best practices
         href: power-bi-best-practices.md
-      - name: Connector
-        displayName: Power BI
-        href: power-bi-connector.md
       - name: Dynamic M query parameters
         displayName: Power BI
         href: power-bi-dynamic-m.md
-      - name: Imported query
-        displayName: Power BI
-        href: power-bi-imported-query.md
       - name: SQL query
         displayName: Power BI
         href: power-bi-sql-query.md
@@ -748,8 +745,8 @@ items:
     items:
     - name: Pricing page
       href: https://azure.microsoft.com/pricing/details/data-explorer/
-    - name: Cost estimator
-      href: https://aka.ms/adecostestimator
+    - name: Pricing calculator
+      href: pricing-calculator.md
     - name: Reserved capacity
       href: pricing-reserved-capacity.md
   - name: Service updates

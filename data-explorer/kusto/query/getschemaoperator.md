@@ -23,6 +23,8 @@ StormEvents
 | getschema
 ```
 
+**Output**
+
 |ColumnName|ColumnOrdinal|DataType|ColumnType|
 |---|---|---|---|
 |StartTime|0|System.DateTime|datetime|

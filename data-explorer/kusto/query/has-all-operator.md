@@ -13,11 +13,9 @@ For more information about other operators and to determine which operator is mo
 
 ## Performance tips
 
-* For faster results, use the case-sensitive version of an operator. For example, use `has_cs` instead of `has`.
-* For best practices, see [Query best practices](best-practices.md).
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
+For faster results, use the case-sensitive version of an operator. For example, use `has_cs` instead of `has`.
 
 ## Syntax
 

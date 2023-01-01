@@ -1,6 +1,6 @@
 ---
 title: ipv4_is_in_any_range() - Azure Data Explorer
-description: This article describes ipv4_is_in_any_range() in Azure Data Explorer.
+description: Learn how to use the ipv4_is_in_any_range() function to check if the IPv4 string address is in any of the IPv4 address ranges.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/14/2022
@@ -59,6 +59,8 @@ let IPs=datatable(IP:string) [
 IPs
 | extend IsLocal=ipv4_is_in_any_range(IP, LocalNetworks)
 ```
+
+**Output**
 
 |IP|IsLocal|
 |---|---|
