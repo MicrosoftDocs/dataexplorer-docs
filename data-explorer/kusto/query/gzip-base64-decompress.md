@@ -22,7 +22,7 @@ Decodes the input string from base64 and performs gzip decompression.
 > [!NOTE]
 >
 > * This function checks mandatory gzip header fields (ID1, ID2, and CM) and returns an empty output if any of these fields have incorrect values.
-> * FLG is expected to be zero.
+> * The FLG byte is expected to be zero.
 > * Optional header fields are not supported.
 
 ## Returns
