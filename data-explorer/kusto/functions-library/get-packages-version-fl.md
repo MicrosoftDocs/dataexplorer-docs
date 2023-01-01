@@ -19,7 +19,7 @@ The function accepts a dynamic array containing the names of the packages to che
 
 `T | invoke get_packages_version_fl(`*packages*`)`
   
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
