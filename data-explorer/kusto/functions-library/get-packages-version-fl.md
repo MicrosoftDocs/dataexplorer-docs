@@ -7,7 +7,7 @@ ms.date: 12/27/2022
 ---
 # get_packages_version_fl()
 
-The function `get_packages_version_fl()` is used to retrieve the versions of the Python engine and packages of the [inline python() plugin](../query/pythonplugin.md).
+Retrieves the versions of the Python engine and packages of the [inline python() plugin](../query/pythonplugin.md).
 The function accepts a dynamic array containing the names of the packages to check, and returns their respective versions and the Python engine version.
 
 > [!NOTE]
