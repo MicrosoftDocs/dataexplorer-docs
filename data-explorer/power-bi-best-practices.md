@@ -44,4 +44,4 @@ To learn about tips and tricks for using Kusto query language in Power BI report
 
 ## Next steps
 
-[Visualize data using the Azure Data Explorer connector for Power BI](power-bi-data-connector.md?tabs=connector)
+[Use Azure Data Explorer data in Power BI](#power-bi-data-connector).
