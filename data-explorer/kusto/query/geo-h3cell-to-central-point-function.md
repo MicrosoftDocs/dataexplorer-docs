@@ -1,6 +1,6 @@
 ---
 title: geo_h3cell_to_central_point() - Azure Data Explorer
-description: This article describes geo_h3cell_to_central_point() in Azure Data Explorer.
+description: Learn how to use the geo_h3cell_to_central_point() function to calculate the geospatial coordinates that represent the center of an H3 cell.
 ms.reviewer: mbrichko
 ms.topic: reference
 ms.date: 06/03/2021
@@ -33,6 +33,8 @@ The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html
 print h3cell = geo_h3cell_to_central_point("862a1072fffffff")
 ```
 
+**Output**
+
 |h3cell|
 |---|
 |{<br>"type": "Point",<br>"coordinates": [-74.016008479792447, 40.7041679083504]<br>}|
@@ -44,6 +46,8 @@ The following example returns the longitude of the H3 Cell center point:
 print longitude = geo_h3cell_to_central_point("862a1072fffffff").coordinates[0]
 ```
 
+**Output**
+
 |longitude|
 |---|
 |-74.0160084797924|
@@ -54,6 +58,8 @@ The following example returns a null result because of the invalid H3 cell token
 ```kusto
 print h3cell = geo_h3cell_to_central_point("1")
 ```
+
+**Output**
 
 |h3cell|
 |---|

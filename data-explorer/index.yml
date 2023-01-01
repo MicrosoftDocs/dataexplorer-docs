@@ -136,7 +136,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Power BI connector
-            url: power-bi-connector.md
+            url: power-bi-data-connector.md?tabs=connector
           - text: Grafana
             url: grafana.md
           - text: ODBC connector
