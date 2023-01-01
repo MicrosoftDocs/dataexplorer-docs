@@ -1,6 +1,6 @@
 ---
 title: mv-apply operator - Azure Data Explorer
-description: Learn how to use the mv-apply operator to apply a subquery to each record.
+description: Learn how to use the mv-apply operator to apply a subquery to each record and union the results of each subquery.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/26/2022
@@ -102,10 +102,7 @@ and *SubQuery* has the same syntax of any query statement.
   applied to each array-expanded subtable.
 
 >[!NOTE]
-> Unlike the [`mv-expand`](./mvexpandoperator.md) operator, the `mv-apply` operator
-  does not support `bagexpand=array` expansion. If the expression to be expanded
-  is a property bag and not an array, it is possible to use an inner `mv-expand`
-  operator (see example below).
+> Unlike the [`mv-expand`](./mvexpandoperator.md) operator, the `mv-apply` operator doesn't support `bagexpand=array` expansion. If the expression to be expanded is a property bag and not an array, you can use an inner `mv-expand` operator (see example below).
 
 ## Examples
 

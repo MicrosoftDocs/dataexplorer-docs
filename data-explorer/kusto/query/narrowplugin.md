@@ -7,7 +7,7 @@ ms.date: 12/26/2022
 ---
 # narrow plugin
 
-The `narrow` plugin "unpivots" a wide table into a table with just three columns:
+The `narrow` plugin "unpivots" a wide table into a table with three columns:
 
 * Row number
 * Column type

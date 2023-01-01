@@ -167,7 +167,7 @@ datatable (a:int, b:dynamic, c:dynamic)
 
 ### Convert output
 
-To force the output of a mv-expand to a certain type (default is dynamic), use `to typeof`:
+To force the output of an mv-expand to a certain type (default is dynamic), use `to typeof`:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
