@@ -9,14 +9,14 @@ ms.date: 12/01/2022
 
 Use the `.dup-next-ingest` command for on-demand troubleshooting of your data ingestion pull flow.
 
-`.dup-next-ingest` should be run before the ingestion you wish to watch. After running the command, the successfully downloaded ingestion source file(s) and a file containing metadata on the ingestion request will be uploaded to the specified storage container. Run the command before each ingestion you wish to watch, since it will only watch the very next ingestion.
+Run `.dup-next-ingest` before the ingestion you wish to watch. After running the command, the successfully downloaded ingestion source file(s) and a file containing metadata on the ingestion request will be uploaded to the specified storage container. Since this command only watches one subsequent ingestion, run this command each time you want to watch the next ingestion.
 
 The file uploads to the storage container and the ingestion are performed by the same node. If there are admin node changes between running the command and the next ingestion, you'll need to rerun the command since the duplication configuration isn't persisted. Watch the storage container to know when the duplication is completed.
 
 > [!NOTE]
 >
-> * This command run in the context of a specific database
-> * Azure blob containers are the only storage containers currently supported
+> * This command run in the context of a specific database.
+> * Supported storage is Azure blob containers.
 
 ## Permissions
 
@@ -37,7 +37,7 @@ This command requires [database admin](access-control/role-based-authorization.m
 
 The provided *TableName* and *StorageContainerPath* will be returned along with an *IngestionCommandFilePath*, which is the location of the ingestion file request within the blob container.
 
-Upon the next pull data ingestion, the ingestion source file(s) and another file containing metadata will be uploaded to the blob container.
+Upon the next pull data ingestion, the ingestion source file(s) and a file containing metadata will be uploaded to the blob container.
 
 ## Example
 

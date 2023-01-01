@@ -9,14 +9,14 @@ ms.date: 12/01/2022
 
 Use the `.dup-next-failed-ingest` command for ad-hoc troubleshooting of your data ingestion flows.
 
-`.dup-next-failed-ingest` will watch the following ingestion for an ingestion failure. If the ingestion fails, the successfully downloaded ingestion source file(s) and a file containing metadata on the ingestion request will be uploaded to the specified storage container. Run the command before each ingestion you wish to watch, since it will only watch the very next ingestion.
+`.dup-next-failed-ingest` will watch the next ingestion for an ingestion failure. If the next ingestion fails, the successfully downloaded ingestion source file(s) and a file containing metadata on the ingestion request will be uploaded to the specified storage container. Since this command only watches one subsequent ingestion, run this command each time you want to watch the next ingestion.
 
 The file uploads to the storage container and the ingestion are performed by the same cluster node. The command takes effect on a single ingest operation and has no persistent state, so if the admin node changes between the command execution and the next ingestion, you'll need to rerun the command. Watch the storage container to know when the duplication is completed.
 
 > [!NOTE]
 >
-> * This command run in the context of a specific database
-> * Azure blob containers are the only storage containers currently supported
+> * This command runs in the context of a specific database.
+> * Supported storage is Azure blob containers.
 
 ## Permissions
 
@@ -31,13 +31,13 @@ This command requires [database admin](access-control/role-based-authorization.m
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*TableName* | string | &check; | The name of the table from which the next ingestion will be duplicated.|
-|*StorageContainerPath*| string | &check; | The path to the blob container that will store the duplication. We recommend prefacing the path with "h@" to hide sensitive information. To learn more, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals)|
+|*StorageContainerPath*| string | &check; | The path to the blob container that will store the duplication. We recommend prefacing the path with "h@" to hide sensitive information. To learn more, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals). |
 
 ## Returns
 
-The provided *TableName* and *StorageContainerPath* will be returned along with an *IngestionCommandFilePath*, which is the location of the ingestion file request within the blob container.
+The provided *TableName*, *StorageContainerPath*, and *IngestionCommandFilePath*. The ingesiton command file path is the location of the ingestion file request within the blob container.
 
-Upon the next pull data ingestion, the ingestion source file(s) and another file containing metadata will be uploaded to the blob container.
+Upon the next pull data ingestion, the ingestion source file(s) and a file containing metadata will be uploaded to the blob container.
 
 ## Example
 
