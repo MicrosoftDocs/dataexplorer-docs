@@ -221,6 +221,22 @@ The `Result` dimension can have one of the following values:
 * **SourceTableSchemaChange**: The schema of the source table has changed in a way that is not compatible with the materialized view definition (materialized view query does not match the materialized view schema). The materialized view is automatically disabled as a result.
 * **InsufficientCapacity**: The cluster does not have sufficient capacity to materialized the materialized view. This can either indicate missing [ingestion capacity](../capacitypolicy.md#ingestion-capacity) or missing [materialized views capacity](../capacitypolicy.md#materialized-views-capacity-policy). Insufficient capacity failures can be transient, but if they reoccur often it is recommended to scale out the cluster and/or increase relevant capacity in policy.
 * **InsufficientResources:** The cluster doesn't have sufficient resources (CPU/memory) to materialized the materialized view. This failure may also be a transient one, but if it reoccurs often a scale out/up is required.
+ * If the materialization process hits memory limit, the [$materialized-views workload group](../workload-groups.md#materialized-views-workload-group) limits can be modified and increased to support a higher amount of memory or CPU for the materialization process to consume.
+
+    ~~~kusto
+    .alter-merge workload_group ['$materialized-views'] ```
+    {
+      "RequestLimitsPolicy": {
+        "MaxMemoryPerQueryPerNode": {
+          "IsRelaxable": false,
+          "Value": 68719476736
+        }
+      }
+    } ```
+    ~~~
+
+    > [!NOTE]
+    > It is not recommended to set the amount of memory for materialization process to more than 50% of the total amount of memory on the node.
 
 ### Track resource consumption
 
