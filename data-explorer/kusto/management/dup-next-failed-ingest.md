@@ -35,7 +35,7 @@ This command requires [database admin](access-control/role-based-authorization.m
 
 ## Returns
 
-The provided *TableName*, *StorageContainerPath*, and *IngestionCommandFilePath*. The ingesiton command file path is the location of the ingestion file request within the blob container.
+The provided *TableName*, *StorageContainerPath*, and *IngestionCommandFilePath*. The ingestion command file path is the location of the ingestion file request within the blob container.
 
 Upon the next pull data ingestion, the ingestion source file(s) and a file containing metadata will be uploaded to the blob container.
 
