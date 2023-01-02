@@ -166,7 +166,7 @@ When querying the entire view, the materialized part is combined with the `delta
 The main contributors that can impact a materialized view health are:
 
 * **Cluster resources:** Like any other process running on the cluster, materialized views consume resources (CPU, memory) from the cluster. If the cluster is overloaded, adding materialized views to it may cause a degradation in the cluster's performance. Monitor your cluster's health using [cluster health metrics](../../../using-metrics.md#cluster-metrics). [Optimized autoscale](../../../manage-cluster-horizontal-scaling.md#optimized-autoscale) currently doesn't take materialized views health under consideration as part of autoscale rules.
-  * By default, the [materialization process](#how-materialized-views-work) is limited by the amount of memory and CPU it can consume. These limits are defined, and can be changed, in the [materialized views workload group](../workload-groups.md#materialized-views-workload-group).
+  * The [materialization process](#how-materialized-views-work) is limited by the amount of memory and CPU it can consume. These limits are defined, and can be changed, in the [materialized views workload group](../workload-groups.md#materialized-views-workload-group).
   
 * **Overlap with materialized data:** During materialization, all new records ingested to the source table since the last materialization (the delta) are processed and materialized into the view. The higher the intersection between new records and already materialized records is, the worse the performance of the materialized view will be. A materialized view works best if the number of records being updated (for example, in `arg_max` view) is a small subset of the source table. If all or most of the materialized view records need to be updated in every materialization cycle, then the materialized view might not perform well.
 
@@ -221,14 +221,14 @@ The `Result` dimension can have one of the following values:
 * **SourceTableSchemaChange**: The schema of the source table has changed in a way that is not compatible with the materialized view definition (materialized view query does not match the materialized view schema). The materialized view is automatically disabled as a result.
 * **InsufficientCapacity**: The cluster does not have sufficient capacity to materialized the materialized view. This can either indicate missing [ingestion capacity](../capacitypolicy.md#ingestion-capacity) or missing [materialized views capacity](../capacitypolicy.md#materialized-views-capacity-policy). Insufficient capacity failures can be transient, but if they reoccur often it is recommended to scale out the cluster and/or increase relevant capacity in policy.
 * **InsufficientResources:** The cluster doesn't have sufficient resources (CPU/memory) to materialized the materialized view. This failure may also be a transient one, but if it reoccurs often a scale out/up is required.
- * If the materialization process hits memory limit, the [$materialized-views workload group](../workload-groups.md#materialized-views-workload-group) limits can be modified and increased to support a higher amount of memory or CPU for the materialization process to consume.
+  * If the materialization process hits memory limits, the [$materialized-views workload group](../workload-groups.md#materialized-views-workload-group) limits can be modified and increased to support a higher amount of memory or CPU for the materialization process to consume.
+   For example, the following command will alter the materialized views workload group to use a max of 64GB of memory per node during materialization (default is 15GB):
 
     ~~~kusto
     .alter-merge workload_group ['$materialized-views'] ```
     {
       "RequestLimitsPolicy": {
         "MaxMemoryPerQueryPerNode": {
-          "IsRelaxable": false,
           "Value": 68719476736
         }
       }
