@@ -55,7 +55,7 @@ datatable(lng:real, lat:real)
 | summarize geohash_polygon_lst = make_list(geohash_polygon)
 | project bag_pack(
     "type", "Feature",
-    "geometry", bag_("type", "GeometryCollection", "geometries", geohash_polygon_lst),
+    "geometry", bag_pack("type", "GeometryCollection", "geometries", geohash_polygon_lst),
     "properties", bag_pack("name", "Geohash polygons collection"))
 ```
 
