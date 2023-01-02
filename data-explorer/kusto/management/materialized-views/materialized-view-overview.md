@@ -223,6 +223,7 @@ The `Result` dimension can have one of the following values:
 * **InsufficientResources:** The cluster doesn't have sufficient resources (CPU/memory) to materialized the materialized view. This failure may also be a transient one, but if it reoccurs often a scale out/up is required.
 
   * If the materialization process hits memory limits, the [$materialized-views workload group](../workload-groups.md#materialized-views-workload-group) limits can be modified and increased to support a higher amount of memory or CPU for the materialization process to consume.
+  
    For example, the following command will alter the materialized views workload group to use a max of 64GB of memory per node during materialization (default is 15GB):
 
     ~~~kusto
