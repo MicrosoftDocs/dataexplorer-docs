@@ -3,7 +3,7 @@ title: binomial_test_fl() - Azure Data Explorer
 description: This article describes the binomial_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/08/2021
+ms.date: 11/08/2022
 ---
 # binomial_test_fl()
 
@@ -37,7 +37,7 @@ For ad hoc usage, embed its code using the [let statement](../query/letstatement
 ```kusto
 let binomial_test_fl = (tbl:(*), successes:string, trials:string, p_value:string, success_prob:real=0.5, alt_hypotheis:string='two-sided')
 {
-    let kwargs = pack('successes', successes, 'trials', trials, 'p_value', p_value, 'success_prob', success_prob, 'alt_hypotheis', alt_hypotheis);
+    let kwargs = bag_pack('successes', successes, 'trials', trials, 'p_value', p_value, 'success_prob', success_prob, 'alt_hypotheis', alt_hypotheis);
     let code = ```if 1:
         from scipy import stats
         
@@ -77,7 +77,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Binomial test")
 binomial_test_fl(tbl:(*), successes:string, trials:string, p_value:string, success_prob:real=0.5, alt_hypotheis:string='two-sided')
 {
-    let kwargs = pack('successes', successes, 'trials', trials, 'p_value', p_value, 'success_prob', success_prob, 'alt_hypotheis', alt_hypotheis);
+    let kwargs = bag_pack('successes', successes, 'trials', trials, 'p_value', p_value, 'success_prob', success_prob, 'alt_hypotheis', alt_hypotheis);
     let code = ```if 1:
         from scipy import stats
         

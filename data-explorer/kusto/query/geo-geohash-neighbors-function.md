@@ -61,7 +61,7 @@ print cells = array_concat(pack_array(geohash), geo_geohash_neighbors(geohash))
 | mv-expand cells to typeof(string)
 | project polygons = geo_geohash_to_polygon(cells)
 | summarize arr = make_list(polygons)
-| project geojson = pack("type", "Feature","geometry", pack("type", "GeometryCollection", "geometries", arr), "properties", pack("name", "polygons"))
+| project geojson = bag_pack("type", "Feature","geometry", bag_pack("type", "GeometryCollection", "geometries", arr), "properties", bag_pack("name", "polygons"))
 ```
 
 **Output**

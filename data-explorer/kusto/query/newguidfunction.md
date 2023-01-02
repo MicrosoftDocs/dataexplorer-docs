@@ -1,9 +1,9 @@
 ---
 title: new_guid() - Azure Data Explorer
-description: This article describes new_guid() in Azure Data Explorer.
+description: Learn how to use the new_guid() function to return a random GUID (Globally Unique Identifier).
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/26/2022
 ---
 # new_guid()
 
