@@ -1,26 +1,53 @@
 ---
 title: binary_xor() - Azure Data Explorer
-description: This article describes binary_xor() in Azure Data Explorer.
+description: Learn how to use the binary_xor() function to perform the bitwise xor operation on a pair of values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 11/22/2022
 ---
 # binary_xor()
 
 Returns a result of the bitwise `xor` operation of the two values.
 
-```kusto
-binary_xor(x,y)
-```
-
 ## Syntax
 
-`binary_xor(`*num1*`,` *num2* `)`
+`binary_xor(`*value1*`,`*value2*`)`
 
-## Arguments
+## Parameters
 
-* *num1*, *num2*: long numbers.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value1* | int | &check; | The left-side value of the XOR operation. |
+| *value2* | int | &check; | The right-side value of the XOR operation. |
 
 ## Returns
 
-Returns logical XOR operation on a pair of numbers: num1 ^ num2.
+Returns logical XOR operation on a pair of numbers: value1 ^ value2.
+
+## Examples
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr0UjKzEssqoyvyC/SMNQx1NQEAKWP8zEWAAAA" target="_blank">Run the query</a>
+
+```kusto
+binary_xor(1,1)
+```
+
+**Output**
+
+|Result|
+|------|
+|0 |
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr0UjKzEssqoyvyC/SMNQx0tQEAPwxtTMWAAAA" target="_blank">Run the query</a>
+
+```kusto
+binary_xor(1,2)
+```
+
+**Output**
+
+|Result|
+|------|
+|3 |

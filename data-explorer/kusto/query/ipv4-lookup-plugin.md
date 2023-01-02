@@ -1,9 +1,9 @@
 ---
 title: ipv4_lookup plugin - Azure Data Explorer
-description: This article describes ipv4_lookup plugin in Azure Data Explorer.
+description: Learn how to use the ipv4_lookup plugin to look up an IPv4 value in a lookup table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/24/2022
+ms.date: 12/21/2022
 ---
 # ipv4_lookup plugin
 
@@ -31,9 +31,9 @@ T | evaluate ipv4_lookup(LookupTable, SourceIPv4Key, IPv4LookupKey, ExtraKey1, E
 * *return_unmatched*: A boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).
 
 ### IP-prefix notation
- 
+
 IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character.
-The IP address to the left of the slash (`/`) is the base IP address. The number (1 to 32) to the right of the slash (`/`) is the number of contiguous 1 bit in the netmask. 
+The IP address to the left of the slash (`/`) is the base IP address. The number (0 to 32) to the right of the slash (`/`) is the number of contiguous 1 bit in the netmask.
 
 For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24 contiguous bits or 255.255.255.0 in dotted decimal format.
 
@@ -46,6 +46,7 @@ If the *return_unmatched* argument is set to `true`, the resulting table will in
 If the *return_unmatched* argument is set to `false`, or omitted (the default value of `false` is used), the resulting table will have as many records as matching results. This variant of lookup has better performance compared to `return_unmatched=true` execution.
 
 > [!NOTE]
+>
 > * This plugin covers the scenario of IPv4-based join, assuming a small lookup table size (100K-200K rows), with the input table optionally having a larger size.
 > * The performance of the plugin will depend on the sizes of the lookup and data source tables, the number of columns, and number of matching records.
 
@@ -74,6 +75,8 @@ let IPs = datatable(ip:string)
 IPs
 | evaluate ipv4_lookup(IP_Data, ip, network)
 ```
+
+**Output**
 
 |ip|network|continent_code|continent_name|country_iso_code|country_name|
 |---|---|---|---|---|---|
@@ -105,6 +108,8 @@ IPs
 | evaluate ipv4_lookup(IP_Data, ip, network, return_unmatched = true)
 ```
 
+**Output**
+
 |ip|network|continent_code|continent_name|country_iso_code|country_name|
 |---|---|---|---|---|---|
 |2.20.183.12|2.20.183.0/24|EU|Europe|GB|United Kingdom|
@@ -127,6 +132,8 @@ IPs
 | evaluate ipv4_lookup(IP_Data, ip, network, return_unmatched = true)
 ```
 
+**Output**
+
 |ip|network|geoname_id|continent_code|continent_name|country_iso_code|country_name|is_anonymous_proxy|is_satellite_provider|
 |---|---|---|---|---|---|---|---|---|
 |2.20.183.12|2.20.183.0/24|2635167|EU|Europe|GB|United Kingdom|0|0|
@@ -148,6 +155,8 @@ let IPs = datatable(ip:string, continent_name:string, country_iso_code:string)
 IPs
 | evaluate ipv4_lookup(IP_Data, ip, network, continent_name, country_iso_code)
 ```
+
+**Output**
 
 |ip|continent_name|country_iso_code|network|geoname_id|continent_code|country_name|is_anonymous_proxy|is_satellite_provider|
 |---|---|---|---|---|---|---|---|---|

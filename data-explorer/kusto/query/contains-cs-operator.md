@@ -1,9 +1,9 @@
 ---
 title: The case-sensitive contains_cs string operator - Azure Data Explorer
-description: This article describes the case-sensitive contains_cs string operator in Azure Data Explorer.
+description: Learn how to use the contains_cs operator to filter a record set for data containing a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2021
+ms.date: 11/27/2022
 ---
 # contains_cs operator
 
@@ -28,36 +28,37 @@ For further information about other operators and to determine which operator is
 
 ## Performance tips
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
-For faster results, use the case-sensitive version of an operator, for example, `contains_cs`, not `contains`.
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+
+For faster results, use the case-sensitive version of an operator. For example, use `contains_cs` instead of `contains`.
 
 If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. Also, `has` works faster than `contains`, `startswith`, or `endswith`, however it isn't as precise and could provide unwanted records.
 
-For best practices, see [Query best practices](best-practices.md).
-
 ## Syntax
 
-*T* `|` `where` *col* `contains_cs` `(`*expression*`)`
+*T* `|` `where` *col* `contains_cs` `(`*string*`)`
 
-## Arguments
+## Parameters
 
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The tabular input whose records are to be filtered. |
+| *col* | string | &check; | The name of the column to check for *string*. |
+| *string* | string | &check; | The case-sensitive string by which to filter the data. |
 
 ## Returns
 
-Rows in *T* for which the predicate is `true`.
+Rows in *T* for which *string* is in *col*.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1KhYgoJOfnlSRm5hXHJxcrKDkGKwEAd3al+FsAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
     | summarize event_count=count() by State
     | where State contains_cs "AS"
-    | count
 ```
 
 **Output**

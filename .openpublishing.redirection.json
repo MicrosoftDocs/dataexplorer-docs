@@ -344,6 +344,16 @@
       "source_path": "data-explorer/kusto/query/packdictionaryfunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/packfunction",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/power-bi-connector.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/power-bi-imported-query.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": false
     }
   ]
 }

@@ -19,6 +19,8 @@ EXPLAIN
 SELECT COUNT_BIG(*) as C FROM StormEvents 
 ```
 
+**Output**
+
 |Query|
 |---|
 |StormEvents<br>\| summarize C=count()<br>\| project C|

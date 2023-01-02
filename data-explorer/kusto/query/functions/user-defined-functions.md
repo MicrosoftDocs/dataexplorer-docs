@@ -100,6 +100,8 @@ let MyFilter = (T:(x:long), v:long) {
 MyFilter((range x from 1 to 10 step 1), 9)
 ```
 
+**Output**
+
 |x|
 |---|
 |9|
@@ -114,6 +116,8 @@ let MyDistinct = (T:(*)) {
 };
 MyDistinct((range x from 1 to 3 step 1))
 ```
+
+**Output**
 
 |x|
 |---|
@@ -265,6 +269,8 @@ union
   (print x=f(12, c=7))    // "12-b.default-7"
 ```
 
+**Output**
+
 |x|
 |---|
 |12-b.default-7|
@@ -337,4 +343,4 @@ For completeness, here are some commonly requested features for user-defined fun
 
 1. Function overloading: There's currently no way to overload a function (a way to create multiple functions with the same name and different input schema).
 
-1. Default values: The default value for a scalar parameter to a function must be a scalar literal (constant). Furthermore, stored functions can't have a default value of type `dynamic`.
+1. Default values: The default value for a scalar parameter to a function must be a scalar literal (constant).

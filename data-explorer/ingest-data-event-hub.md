@@ -19,7 +19,7 @@ ms.date: 09/11/2022
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
 
-Azure Data Explorer offers ingestion (data loading) from Azure Event Hubs, a big data streaming platform and event ingestion service. [Event hubs](/azure/event-hubs/event-hubs-about) can process millions of events per second in near real time. In this article, you create an event hub, connect to it from Azure Data Explorer and see data flow through the system.
+Azure Data Explorer offers ingestion (data loading) from Azure Event Hubs, which is a big data streaming platform and event ingestion service. [Event hubs](/azure/event-hubs/event-hubs-about) can process millions of events per second in near real time. In this article, you create an event hub, connect to it from Azure Data Explorer and see data flow through the system.
 
 For general information about ingesting into Azure Data Explorer from event hub, see [Connect to event hub](ingest-data-event-hub-overview.md).
 
@@ -173,6 +173,13 @@ For this article, you use static routing, where you specify the table name, data
 [!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-event-hub-overview.md#event-system-properties-mapping) in the table schema and mapping.
+
+### Event retrieval start date
+
+Event Hubs data connection can retrieve Event Hubs events created after the **Event retrieval start date**. Only events retained by Event Hubs [retention period](https://learn.microsoft.com/azure/event-hubs/event-hubs-features#event-retention) can be retrieved. You can use this field to ingest historical events from Event Hubs. For example, to ingest data that existed in your event hub prior to creating the data connection, or for testing purposes.
+
+The value must be specified as a time value in Coordinated Universal Time (UTC). If no value is specified, the default time is the time at which the data connection is created.
+Changing the default time might cause ingestion latency while older records are ingested. For existing data connections, this might ingest events previously ingested.
 
 ## Copy the connection string
 

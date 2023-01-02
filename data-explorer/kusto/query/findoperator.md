@@ -1,9 +1,9 @@
 ---
 title: find operator - Azure Data Explorer
-description: This article describes find operator in Azure Data Explorer.
+description: Learn how to use the find operator to find rows that match a predicate across a set of tables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/14/2022
+ms.date: 12/12/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -50,9 +50,10 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 After wildcard matching, if the query references tables from more than one database (including the default database), the value of this column will have a table name qualified with the database. Similarly *cluster* and *database* qualifications will be present in the value if more than one cluster is referenced.
 * *Predicate*: A `boolean` [expression](./scalar-data-types/bool.md) over the columns of the input tables *Table* [`,` *Table*, ...]. It's evaluated for each row in each input table. For more information, see  [predicate-syntax details](./findoperator.md#predicate-syntax).
 * `Table`: Optional. By default, *find* will look in all the tables in the current database, for:
-    *  The name of a table, such as `Events`
-    *  A query expression, such as `(Events | where id==42)`
-    *  A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin with `E`.
+
+  * The name of a table, such as `Events`
+  * A query expression, such as `(Events | where id==42)`
+  * A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin with `E`.
 * `project-smart` | `project`: If not specified, `project-smart` will be used by default. For more information, see [output-schema details](./findoperator.md#output-schema).
 
 ::: zone-end
@@ -62,9 +63,10 @@ After wildcard matching, if the query references tables from more than one datab
 * `withsource=`*ColumnName*: Optional. By default, the output will include a column called *source_* whose values indicate which source table contributed each row. If specified, *ColumnName* will be used instead of *source_*.
 * *Predicate*: A `boolean` [expression](./scalar-data-types/bool.md) over the columns of the input tables *Table* [`,` *Table*, ...]. It's evaluated for each row in each input table. For more information, see  [predicate-syntax details](./findoperator.md#predicate-syntax).
 * `Table`: Optional. By default *find* will search all tables for:
-    *  The name of a table, such as `Events` 
-    *  A query expression, such as `(Events | where id==42)`
-    *  A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables whose names begin with `E`.
+
+  * The name of a table, such as `Events`
+  * A query expression, such as `(Events | where id==42)`
+  * A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables whose names begin with `E`.
 * `project-smart` | `project`: If not specified `project-smart` will be used by default. For more information, see [output-schema details](./findoperator.md#output-schema).
 
 ::: zone-end
@@ -83,7 +85,8 @@ The find operator output will always include a *source_* column with the source 
 
 Source tables that don't contain any column used by the predicate evaluation, will be filtered out.
 
-When using `project-smart`, the columns that will appear in the output will be:
+When you use `project-smart`, the columns that will appear in the output will be:
+
 * Columns that appear explicitly in the predicate.
 * Columns that are common to all the filtered tables.
 
@@ -93,11 +96,7 @@ A column that is referenced explicitly by the predicate and appears in multiple 
 When using `project` *ColumnName*[`:`*ColumnType*] [`,` *ColumnName*[`:`*ColumnType*], ...][`,` `pack_all()`]:
 * The result table will include the columns specified in the list. If a source table doesn't contain a certain column, the values in the corresponding rows will be null.
 * When specifying a *ColumnType* with a *ColumnName*, this column in the "result" will have the given type, and the values will be cast to that type if needed. The casting won't have an effect on the column type when evaluating the *Predicate*.
-* When `pack_all()` is used, the rest of the columns will be packed into a property bag and will appear in an additional `bag_pack` column.
-
-**pack_ column**
-
-This column will contain a property bag with the data from all the columns that doesn't appear in the output schema. The source column name will serve as the property name and the column value will serve as the property value.
+* When `pack_all()` is used, all the columns, including the projected columns, are packed into a property bag and appear in an additional column, by default 'column1'. In the property bag, the source column name serves as the property name and the column's value serves as the property value.
 
 ## Predicate syntax
 
@@ -109,7 +108,7 @@ For a summary of some filtering functions, see [where operator](./whereoperator.
 
 * If the `project` clause references a column that appears in multiple tables and has multiple types, a type must follow this column reference in the project clause
 * If a column appears in multiple tables and has multiple types and `project-smart` is in use, there will be a corresponding column for each type in the `find`'s result, as described in [union](./unionoperator.md)
-* When using *project-smart*, changes in the predicate, in the source tables set, or in the tables schema, may result in a change to the output schema. If a constant result schema is needed, use *project* instead
+* When you use *project-smart*, changes in the predicate, in the source tables set, or in the tables schema, may result in a change to the output schema. If a constant result schema is needed, use *project* instead
 * `find` scope can't include [functions](../management/functions.md). To include a function in the find scope, define a [let statement](./letstatement.md) with [view keyword](./letstatement.md).
 
 ## Performance tips
@@ -121,7 +120,7 @@ If tabular expression, the find operator falls back to a `union` query that can 
 * Search in specific columns rather than a full text search.
 * It's better not to reference columns that appear in multiple tables and have multiple types. If the predicate is valid when resolving such columns type for more than one type, the query will fall back to union.
 For example, see [examples of cases where find will act as a union](./findoperator.md#examples-of-cases-where-find-will-act-as-union).
- 
+
 ## Examples
 
 ::: zone pivot="azuredataexplorer"
@@ -219,6 +218,8 @@ find in (EventsTable1, EventsTable2)
      project EventText, Version, EventName, pack_all()
 ```
 
+**Output**
+
 |source_|EventText|Version|EventName|pack_
 |---|---|---|---|---|
 |EventsTable1|Some Text2|v1.0.0||{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error"}
@@ -229,6 +230,8 @@ find in (EventsTable1, EventsTable2)
 ```kusto
 find Version == 'v1.0.0' or EventName == 'Event1' project Session_Id, EventText, Version, EventName
 ```
+
+**Output**
 
 |source_|Session_Id|EventText|Version|EventName|
 |---|---|---|---|---|
@@ -244,6 +247,8 @@ Note: in practice, *EventsTable1* rows will be filtered with ```Version == 'v1.0
 find Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'
 ```
 
+**Output**
+
 |source_|Session_Id|Level|EventText|pack_|
 |---|---|---|---|---|
 |EventsTable1|acbd207d-51aa-4df7-bfa7-be70eb68f04e|Information|Some Text1|{"Version":"v1.0.0"}
@@ -256,6 +261,8 @@ find Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'
 ```kusto
 find Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e' project pack_all()
 ```
+
+**Output**
 
 |source_|pack_|
 |---|---|

@@ -84,13 +84,15 @@ The default call without any options specified is equal to 'identity' option.
 |DatabaseAccessMode  |String |How the cluster is attached to the database. For example, if the database is attached in ReadOnly mode then the cluster will fail all requests to modify the database in any way. 
 |PrettyName |String |The database's pretty name.
 |DatabaseId |Guid |The database's unique ID.
-|OriginalSize |Real | The database's extents total original size.
-|ExtentSize |Real | The database's extents total size (data + indices).
-|CompressedSize |Real | The database's extents total data compressed size.
-|IndexSize |Real | The database's extents total index size.
-|RowCount |Long | The database's extents total row count.
-|HotOriginalSize |Real | The database's hot extents total original size.
-|HotExtentSize |Real | The database's hot extents total size (data + indices).
-|HotCompressedSize |Real | The database's hot extents total data compressed size.
-|HotIndexSize |Real | The database's hot extents total index size.
-|HotRowCount |Long | The database's hot extents total row count.
+|OriginalSize |Real | The database's extents total original size`*`.
+|ExtentSize |Real | The database's extents total size (data + indices)`*`.
+|CompressedSize |Real | The database's extents total data compressed size`*`.
+|IndexSize |Real | The database's extents total index size`*`.
+|RowCount |Long | The database's extents total row count`*`.
+|HotOriginalSize |Real | The database's hot extents total original size`*`.
+|HotExtentSize |Real | The database's hot extents total size (data + indices)`*`.
+|HotCompressedSize |Real | The database's hot extents total data compressed size`*`.
+|HotIndexSize |Real | The database's hot extents total index size`*`.
+|HotRowCount |Long | The database's hot extents total row count`*`.
+
+`*` *Values may be up to 15 minutes old, as they are taken from a cached summary of the database's extents.*

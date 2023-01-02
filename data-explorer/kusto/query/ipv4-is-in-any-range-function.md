@@ -1,6 +1,6 @@
 ---
 title: ipv4_is_in_any_range() - Azure Data Explorer
-description: This article describes ipv4_is_in_any_range() in Azure Data Explorer.
+description: Learn how to use the ipv4_is_in_any_range() function to check if the IPv4 string address is in any of the IPv4 address ranges.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/14/2022
@@ -29,7 +29,7 @@ ipv4_is_in_any_range('192.168.1.1', '192.168.2.1/24', '10.0.0.1/8', '127.1.0.1/1
 
 ## IP-prefix notation
 
-IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character. The IP address to the LEFT of the slash (`/`) is the base IP address. The number (1 to 32) to the RIGHT of the slash (`/`) is the number of contiguous 1 bit in the netmask.
+IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character. The IP address to the LEFT of the slash (`/`) is the base IP address. The number (0 to 32) to the RIGHT of the slash (`/`) is the number of contiguous 1 bit in the netmask.
 
 For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24 contiguous bits or 255.255.255.0 in dotted decimal format.
 
@@ -59,6 +59,8 @@ let IPs=datatable(IP:string) [
 IPs
 | extend IsLocal=ipv4_is_in_any_range(IP, LocalNetworks)
 ```
+
+**Output**
 
 |IP|IsLocal|
 |---|---|

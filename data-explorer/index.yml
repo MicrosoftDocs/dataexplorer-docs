@@ -26,11 +26,13 @@ landingContent:
         links:
           - text: Start for free
             url: start-for-free.md
+          - text: Kusto Detective Agency
+            url: https://detective.kusto.io/
       - linkListType: video
         links:
           - text: What is Azure Data Explorer? (19:47)
             url: https://youtu.be/D_AJk2lAepw
-
+          
   # Card
   - title: Training
     linkLists: 
@@ -134,7 +136,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Power BI connector
-            url: power-bi-connector.md
+            url: power-bi-data-connector.md?tabs=connector
           - text: Grafana
             url: grafana.md
           - text: ODBC connector

@@ -1,9 +1,9 @@
 ---
 title: geo_h3cell_rings() - Azure Data Explorer
-description: This article describes geo_h3cell_rings() in Azure Data Explorer.
+description: Learn how to use the geo_h3cell_rings() function to calculate the H3 cell rings.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 12/14/2022
 ---
 # geo_h3cell_rings()
 
@@ -13,7 +13,7 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 
 ## Syntax
 
-`geo_h3cell_rings(`*h3cell*`, `*distance*`)`
+`geo_h3cell_rings(`*h3cell*`,`*distance*`)`
 
 ## Arguments
 
@@ -25,6 +25,7 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 An ordered array of ring arrays where 1st ring contains the original cell, 2nd ring contains neighboring cells, and so on. If either the H3 Cell or distance is invalid, the query will produce a null result.
 
 > [!NOTE]
+>
 > * For H3 Cell immidiate neighbors only, please see [geo_h3cell_neighbors()](geo-h3cell-neighbors-function.md).
 > * A cell might be not present in the ring if pentagonal distortion was encountered.
 
@@ -37,6 +38,8 @@ The following example produces rings up to distance 2.
 print rings = geo_h3cell_rings('861f8894fffffff', 2)
 ```
 
+**Output**
+
 |rings|
 |---|
 |[<br> ["861f8894fffffff"],<br> ["861f88947ffffff","861f8895fffffff","861f88867ffffff","861f8d497ffffff","861f8d4b7ffffff","861f8896fffffff"],<br> ["861f88967ffffff","861f88977ffffff","861f88957ffffff","861f8882fffffff","861f88877ffffff","861f88847ffffff","861f8886fffffff","861f8d49fffffff","861f8d487ffffff","861f8d4a7ffffff","861f8d59fffffff","861f8d597ffffff"]<br> ]|
@@ -47,6 +50,8 @@ The following example produces all cells at level 1 (all neighbors).
 ```kusto
 print neighbors = geo_h3cell_rings('861f8894fffffff', 1)[1]
 ```
+
+**Output**
 
 |neighbors|
 |---|
@@ -62,6 +67,8 @@ print rings = geo_h3cell_rings('861f8894fffffff', 1)
   summarize cells = make_list(rings)
 )
 ```
+
+**Output**
 
 |cells|
 |---|
@@ -85,10 +92,11 @@ print rings = geo_h3cell_rings('861f8894fffffff', 1)
     "properties", bag_pack("name", "H3 polygons collection"))
 ```
 
+**Output**
+
 |geojson|
 |---|
 |{ "type": "Feature", "geometry": { "type": "GeometryCollection", "geometries": [ ... ... ... ]}, "properties": { "name": "H3 polygons collection" }}|
-
 
 The following example returns true because of the invalid cell.
 
@@ -96,6 +104,8 @@ The following example returns true because of the invalid cell.
 ```kusto
 print is_null = isnull(geo_h3cell_rings('abc', 3))
 ```
+
+**Output**
 
 |is_null|
 |---|
@@ -107,6 +117,8 @@ The following example returns true because of the invalid distance.
 ```kusto
 print is_null = isnull(geo_h3cell_rings('861f8894fffffff', 150))
 ```
+
+**Output**
 
 |is_null|
 |---|

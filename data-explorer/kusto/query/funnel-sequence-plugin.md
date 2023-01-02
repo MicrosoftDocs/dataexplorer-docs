@@ -1,65 +1,64 @@
 ---
 title: funnel_sequence plugin - Azure Data Explorer
-description: This article describes funnel_sequence plugin in Azure Data Explorer.
+description: Learn how to use the funnel_sequence plugin to learn how to calculate the distinct count of users who have taken a sequence of states, and the distribution of previous/next states that have led to/were followed by the sequence.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/24/2022
+ms.date: 12/18/2022
 ---
 # funnel_sequence plugin
 
 Calculates distinct count of users who have taken a sequence of states, and the distribution of previous/next states that have led to/were followed by the sequence. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
-```kusto
-T | evaluate funnel_sequence(id, datetime_column, startofday(ago(30d)), startofday(now()), 10m, 1d, state_column, dynamic(['S1', 'S2', 'S3']))
-```
-
 ## Syntax
 
 *T* `| evaluate` `funnel_sequence(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *MaxSequenceStepWindow*, *Step*, *StateColumn*, *Sequence*`)`
 
-## Arguments
+## Parameters
 
-* *T*: the input tabular expression.
-* *IdColum*: column reference, must be present in the source expression.
-* *TimelineColumn*: column reference representing timeline, must be present in the source expression.
-* *Start*: scalar constant value of the analysis start period.
-* *End*: scalar constant value of the analysis end period.
-* *MaxSequenceStepWindow*: scalar constant value of the max allowed timespan between two sequential steps in the sequence.
-* *Step*: scalar constant value of the analysis step period (bin).
-* *StateColumn*: column reference representing the state, must be present in the source expression.
-* *Sequence*: a constant dynamic array with the sequence values (values are looked up in `StateColumn`).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The input tabular expression. |
+| *IdColum* | string | &check; | The column reference representing the ID. This column must be present in *T*.|
+| *TimelineColumn* | string | &check; | The column reference representing the timeline. This column must be present in *T*.|
+| *Start* | datetime, timespan, or long | &check; | The analysis start period.|
+| *End* | datetime, timespan, or long | &check; | The analysis end period.|
+| *MaxSequenceStepWindow* | datetime, timespan, or long | &check; | The value of the max allowed timespan between two sequential steps in the sequence.|
+| *Step* | datetime, timespan, or long | &check; | The analysis step period, or bin. |
+| *StateColumn* | string | &check; | The column reference representing the state. This column must be present in *T*.|
+| *Sequence* | dynamic | &check; | An array with the sequence values that are looked up in `StateColumn`.|
 
 ## Returns
 
 Returns three output tables, which are useful for constructing a sankey diagram for the analyzed sequence:
 
 * Table #1 - prev-sequence-next `dcount`
-    - TimelineColumn: the analyzed time window
-    - prev: the prev state (may be empty if there were any users that only had events for the searched sequence, but not any events prior to it). 
-    - next: the next state (may be empty if there were any users that only had events for the searched sequence, but not any events that followed it). 
-    - `dcount`: distinct count of `IdColumn` in time window that transitioned `prev` --> `Sequence` --> `next`. 
-    - samples: an array of IDs (from `IdColumn`) corresponding to the row's sequence (a maximum of 128 IDs are returned). 
+  * TimelineColumn: the analyzed time window
+  * prev: the prev state (may be empty if there were any users that only had events for the searched sequence, but not any events prior to it).
+  * next: the next state (may be empty if there were any users that only had events for the searched sequence, but not any events that followed it).
+  * `dcount`: distinct count of `IdColumn` in time window that transitioned `prev` --> `Sequence` --> `next`.
+  * samples: an array of IDs (from `IdColumn`) corresponding to the row's sequence (a maximum of 128 IDs are returned).
 
 * Table #2 - prev-sequence `dcount`
-    - TimelineColumn: the analyzed time window
-    - prev: the prev state (may be empty if there were any users that only had events for the searched sequence, but not any events prior to it). 
-    - `dcount`: distinct count of `IdColumn` in time window that transitioned `prev` --> `Sequence` --> `next`. 
-    - samples: an array of IDs (from `IdColumn`) corresponding to the row's sequence (a maximum of 128 IDs are returned). 
+  * TimelineColumn: the analyzed time window
+  * prev: the prev state (may be empty if there were any users that only had events for the searched sequence, but not any events prior to it).
+  * `dcount`: distinct count of `IdColumn` in time window that transitioned `prev` --> `Sequence` --> `next`.
+  * samples: an array of IDs (from `IdColumn`) corresponding to the row's sequence (a maximum of 128 IDs are returned).
 
 * Table #3 - sequence-next `dcount`
-    - TimelineColumn: the analyzed time window
-    - next: the next state (may be empty if there were any users that only had events for the searched sequence, but not any events that followed it). 
-    - `dcount`: distinct count of `IdColumn` in time window that transitioned `prev` --> `Sequence` --> `next`.
-    - samples: an array of IDs (from `IdColumn`) corresponding to the row's sequence (a maximum of 128 IDs are returned). 
-
+  * TimelineColumn: the analyzed time window
+  * next: the next state (may be empty if there were any users that only had events for the searched sequence, but not any events that followed it).
+  * `dcount`: distinct count of `IdColumn` in time window that transitioned `prev` --> `Sequence` --> `next`.
+  * samples: an array of IDs (from `IdColumn`) corresponding to the row's sequence (a maximum of 128 IDs are returned).
 
 ## Examples
 
-### Exploring Storm Events 
+### Exploring storm events
 
 The following query looks at the table StormEvents (weather statistics for 2007) and shows which events happened before/after all Tornado events occurred in 2007.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OuwrCQBBFe79iOhOI5CE+SGNlIdiIAQsRGbMTXUxm4+5EEPx4VxFRYYrhcC73xjEsjTlrPoJhWIuxzfxKLA6coGgnunQ59OIYVmkOmxMKnLBtiR0cqDKWoDCWURmgZ2z2MrM/Eysh+y9+dfXuHmLdoRBUHTPVe0eXjrikYN5qZxQtVOTXoZVCNxSB8qr4L8iSZDJIUn/hL51+aKqi4Xjk86+y4tY+8zfGRpfBtv9e1d+F4QP9Gyd+DAEAAA==" target="_blank">Run the query</a>
+
 ```kusto
 // Looking on StormEvents statistics: 
 // Q1: What happens before Tornado event?
@@ -71,7 +70,6 @@ StormEvents
 Result includes three tables:
 
 * Table #1: All possible variants of what happened before and after the sequence. For example, the second line means that there were 87 different events that had following sequence: `Hail` -> `Tornado` -> `Hail`
-
 
 |`StartTime`|`prev`|`next`|`dcount`|
 |---|---|---|---|
@@ -156,11 +154,21 @@ Result includes three tables:
 Now, let's try to find out how the following sequence continues:  
 `Hail` -> `Tornado` -> `Thunderstorm Wind`
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRSC1LzClNLElVSCvNy0vNiS9OLSxNzUtO1eBSQAWuBZnF+Smpnik66DLBJYlFJSGZuakYMilAg0uAEhpGBgbmugaGQKSJV5EFLkWGmNYam5liCoL9FVJZkKqjgGFPZV5ibmayRrS6R2JmjrqOgnpIflFeYko+mJlRmpeSWlQMChuF8My8FPVYTWQDNAHldk1eNgEAAA==" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-| evaluate funnel_sequence(EpisodeId, StartTime, datetime(2007-01-01), datetime(2008-01-01), 1d,365d, EventType, 
-dynamic(['Hail', 'Tornado', 'Thunderstorm Wind']))
+| evaluate funnel_sequence(
+               EpisodeId,
+               StartTime,
+               datetime(2007-01-01),
+               datetime(2008-01-01),
+               1d,
+               365d,
+               EventType, 
+               dynamic(['Hail', 'Tornado', 'Thunderstorm Wind'])
+           )
 ```
 
 Skipping `Table #1` and `Table #2`, and looking at `Table #3`, we can conclude that sequence `Hail` -> `Tornado` -> `Thunderstorm Wind` in 92 events ended with this sequence, continued as `Hail` in 41 events, and turned back to `Tornado` in 14.

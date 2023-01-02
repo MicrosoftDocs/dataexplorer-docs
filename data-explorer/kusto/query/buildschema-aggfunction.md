@@ -1,9 +1,9 @@
 ---
 title: buildschema() (aggregation function) - Azure Data Explorer
-description: Learn how to use the buildschema() aggregation function to build a table schema from a dynamic expression in Azure Data Explorer.
+description: Learn how to use the buildschema() function to build a table schema from a dynamic expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 11/23/2022
 ---
 # buildschema() (aggregation function)
 
@@ -15,7 +15,7 @@ Builds the minimal schema that admits all values of *DynamicExpr*.
 
 `buildschema` `(`*DynamicExpr*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
@@ -40,7 +40,8 @@ The following example builds a schema based on:
 * `{"x":"somevalue", "z":[1, 2, 3]}`
 * `{"y":{"w":"zzz"}, "t":["aa", "bb"], "z":["foo"]}`
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOQQrCMBBF9z3F8FctBEGLm1ylZDFpIgYSA7ZVm9q7O2p3nVkN/73POB5lbfT1g+PkNbn5xin0DXUVyWxnveAFfVSEGbo9nNdG7WMMOflfDQQs0J0IJ0Wt2eNSs+ApTikFq+Cj4GD+mtbCbAW45AzRK1O9aZhS4nsonuwUohv6q0/8/7v5AOnXbR3IAAAA)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOQQrCMBBF9z3F8FctBEGLm1ylZDFpIgYSA7ZVm9q7O2p3nVkN/73POB5lbfT1g+PkNbn5xin0DXUVyWxnveAFfVSEGbo9nNdG7WMMOflfDQQs0J0IJ0Wt2eNSs+ApTikFq+Cj4GD+mtbCbAW45AzRK1O9aZhS4nsonuwUohv6q0/8/7v5AOnXbR3IAAAA" target="_blank">Run the query</a>
 
 ```kusto
 datatable(value: dynamic) [

@@ -602,6 +602,10 @@ items:
     href: ipv4-netmask-suffix-function.md
   - name: ipv6_compare()
     href: ipv6-comparefunction.md
+  - name: ipv6_is_in_range()
+    href: ipv6-is-in-range-function.md
+  - name: ipv6_is_in_any_range()
+    href: ipv6-is-in-any-range-function.md
   - name: ipv6_is_match()
     href: ipv6-is-matchfunction.md
   - name: isascii()
@@ -636,8 +640,6 @@ items:
     href: loggammafunction.md
   - name: make_datetime()
     href: make-datetimefunction.md
-  - name: make_string()
-    href: makestringfunction.md
   - name: make_timespan()
     href: make-timespanfunction.md
   - name: max_of()
@@ -758,8 +760,6 @@ items:
     href: tanfunction.md
   - name: tdigest_merge()
     href: tdigest-mergefunction.md
-  - name: to_utf8()
-    href: toutf8function.md
   - name: tobool()
     href: toboolfunction.md
   - name: todatetime()
@@ -768,8 +768,8 @@ items:
     href: todecimalfunction.md
   - name: todouble(), toreal()
     href: todoublefunction.md
-  - name: todynamic(), parse_json()
-    displayName: toobject(), parsejson()
+  - name: parse_json()
+    displayName: toobject(), parsejson(), todynamic()
     href: parsejsonfunction.md
   - name: toguid()
     href: toguidfunction.md
@@ -798,6 +798,10 @@ items:
     href: trimendfunction.md
   - name: trim_start()
     href: trimstartfunction.md
+  - name: unicode_codepoints_from_string()
+    href: unicode-codepoints-from-string-function.md
+  - name: unicode_codepoints_to_string()
+    href: unicode-codepoints-to-string-function.md
   - name: unixtime_microseconds_todatetime()
     href: unixtime-microseconds-todatetimefunction.md
   - name: unixtime_milliseconds_todatetime()

@@ -1,9 +1,9 @@
 ---
 title: The case-insensitive has_all string operator - Azure Data Explorer
-description: This article describes the case-insensitive has_all string operator in Azure Data Explorer.
+description: Learn how to use the has_all string operator to filter a record set for data with one or more case-insensitive search strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/22/2021
+ms.date: 12/18/2022
 ---
 # has_all operator
 
@@ -13,16 +13,15 @@ For more information about other operators and to determine which operator is mo
 
 ## Performance tips
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator, for example, `has_cs`, not `has`. For best practices, see [Query best practices](best-practices.md).
+For faster results, use the case-sensitive version of an operator. For example, use `has_cs` instead of `has`.
 
 ## Syntax
 
-*T* `|` `where` *Column* `has_all` `(`*list of scalar expressions*`)`   
+*T* `|` `where` *Column* `has_all` `(`*list of scalar expressions*`)`
 *T* `|` `where` *Column* `has_all` `(`*tabular expression*`)`
- 
+
 ## Arguments
 
 * *T*: Tabular input whose records are to be filtered.
