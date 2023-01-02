@@ -53,10 +53,10 @@ datatable(lng:real, lat:real)
 | project geohash = geo_point_to_geohash(lng, lat, 5)
 | project geohash_polygon = geo_geohash_to_polygon(geohash)
 | summarize geohash_polygon_lst = make_list(geohash_polygon)
-| project pack(
+| project bag_pack(
     "type", "Feature",
-    "geometry", pack("type", "GeometryCollection", "geometries", geohash_polygon_lst),
-    "properties", pack("name", "Geohash polygons collection"))
+    "geometry", bag_pack("type", "GeometryCollection", "geometries", geohash_polygon_lst),
+    "properties", bag_pack("name", "Geohash polygons collection"))
 ```
 
 **Output**

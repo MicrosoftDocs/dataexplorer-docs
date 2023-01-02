@@ -3,7 +3,7 @@ title: levene_test_fl() - Azure Data Explorer
 description: This article describes the levene_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 07/20/2021
+ms.date: 11/08/2022
 ---
 # levene_test_fl()
 
@@ -37,7 +37,7 @@ For ad hoc usage, embed its code using the [let statement](../query/letstatement
 ~~~kusto
 <!-- let levene_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string)
 {
-    let kwargs = pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value);
+    let kwargs = bag_pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value);
     let code = ```if 1:
         from scipy import stats
         data1 = kargs["data1"]
@@ -74,7 +74,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Levene Test")
 levene_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string)
 {
-    let kwargs = pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value);
+    let kwargs = bag_pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value);
     let code = ```if 1:
         from scipy import stats
         data1 = kargs["data1"]
