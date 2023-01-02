@@ -53,10 +53,10 @@ datatable(lng:real, lat:real)
 | project h3_hash = geo_point_to_h3cell(lng, lat, 6)
 | project h3_hash_polygon = geo_h3cell_to_polygon(h3_hash)
 | summarize h3_hash_polygon_lst = make_list(h3_hash_polygon)
-| project pack(
+| project bag_pack(
     "type", "Feature",
-    "geometry", pack("type", "GeometryCollection", "geometries", h3_hash_polygon_lst),
-    "properties", pack("name", "H3 polygons collection"))
+    "geometry", bag_pack("type", "GeometryCollection", "geometries", h3_hash_polygon_lst),
+    "properties", bag_pack("name", "H3 polygons collection"))
 ```
 
 **Output**

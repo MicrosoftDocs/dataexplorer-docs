@@ -3,7 +3,7 @@ title: kmeans_fl() - Azure Data Explorer
 description: This article describes the kmeans_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 10/18/2020
+ms.date: 11/08/2022
 ---
 # kmeans_fl()
 
@@ -35,7 +35,7 @@ For ad hoc usage, embed the code using the [let statement](../query/letstatement
 ~~~kusto
 let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
 {
-    let kwargs = pack('k', k, 'features', features, 'cluster_col', cluster_col);
+    let kwargs = bag_pack('k', k, 'features', features, 'cluster_col', cluster_col);
     let code = ```if 1:
         
         from sklearn.cluster import KMeans
@@ -76,7 +76,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create function with (folder = "Packages\\ML", docstring = "K-Means clustering")
 kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 {
-    let kwargs = pack('k', k, 'features', features, 'cluster_col', cluster_col);
+    let kwargs = bag_pack('k', k, 'features', features, 'cluster_col', cluster_col);
     let code = ```if 1:
         
         from sklearn.cluster import KMeans

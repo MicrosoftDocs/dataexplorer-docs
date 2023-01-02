@@ -160,7 +160,7 @@ Cast functions are:
 
 Several functions enable you to create new `dynamic` objects:
 
-* [pack()](../packfunction.md) creates a property bag from name/value pairs.
+* [bag_pack()](../packfunction.md) creates a property bag from name/value pairs.
 * [pack_array()](../packarrayfunction.md) creates an array from name/value pairs.
 * [range()](../rangefunction.md) creates an array with an arithmetic series of numbers.
 * [zip()](../zipfunction.md) pairs "parallel" values from two arrays into a single array.
