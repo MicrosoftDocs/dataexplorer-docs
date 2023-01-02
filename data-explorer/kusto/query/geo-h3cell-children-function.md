@@ -3,7 +3,7 @@ title: geo_h3cell_children() - Azure Data Explorer
 description: Learn how to use the geo_h3cell_children() function to calculate the H3 cell children.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 12/14/2022
+ms.date: 01/02/2023
 ---
 # geo_h3cell_children()
 
@@ -63,10 +63,10 @@ print children = geo_h3cell_children('862a1072fffffff')
 | mv-expand children to typeof(string)
 | project child = geo_h3cell_to_polygon(children)
 | summarize h3_hash_polygon_lst = make_list(child)
-| project geojson = pack(
+| project geojson = bag_pack(
     "type", "Feature",
-    "geometry", pack("type", "GeometryCollection", "geometries", h3_hash_polygon_lst),
-    "properties", pack("name", "H3 polygons collection"))
+    "geometry", bag_pack("type", "GeometryCollection", "geometries", h3_hash_polygon_lst),
+    "properties", bag_pack("name", "H3 polygons collection"))
 ```
 
 **Output**

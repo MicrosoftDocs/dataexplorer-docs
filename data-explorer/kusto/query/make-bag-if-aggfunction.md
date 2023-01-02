@@ -47,7 +47,7 @@ let T = datatable(prop:string, value:string, predicate:bool)
     "prop03", "val_c", true
 ];
 T
-| extend p = pack(prop, value)
+| extend p = bag_pack(prop, value)
 | summarize dict=make_bag_if(p, predicate)
 ```
 
@@ -70,7 +70,7 @@ let T = datatable(prop:string, value:string, predicate:bool)
     "prop03", "val_c", true
 ];
 T
-| extend p = pack(prop, value)
+| extend p = bag_pack(prop, value)
 | summarize bag=make_bag_if(p, predicate)
 | evaluate bag_unpack(bag)
 ```

@@ -90,7 +90,7 @@ When you use `project-smart`, the columns that will appear in the output will be
 * Columns that appear explicitly in the predicate.
 * Columns that are common to all the filtered tables.
 
-The rest of the columns will be packed into a property bag and will appear in an additional `pack_` column.
+The rest of the columns will be packed into a property bag and will appear in an additional `pack` column.
 A column that is referenced explicitly by the predicate and appears in multiple tables with multiple types, will have a different column in the result schema for each such type. Each of the column names will be constructed from the original column name and type, separated by an underscore.
 
 When using `project` *ColumnName*[`:`*ColumnType*] [`,` *ColumnName*[`:`*ColumnType*], ...][`,` `pack_all()`]:
