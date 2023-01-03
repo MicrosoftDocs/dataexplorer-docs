@@ -39,11 +39,7 @@ Create series of specified aggregated values along a specified axis.
 
 |Name|Description|
 |--|--|
-|`kind` |Produces default result when the input of make-series operator is empty. Value: `nonempty`|  
-  |`kind` |Produces default result when the input of make-series operator is empty. Value: `nonempty`|  
-|`kind` |Produces default result when the input of make-series operator is empty. Value: `nonempty`|  
-|`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. See [shuffle query](shufflequery.md) |  
-  |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. See [shuffle query](shufflequery.md) |  
+|`kind` |Produces default result when the input of make-series operator is empty. Value: `nonempty`|   
 |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. See [shuffle query](shufflequery.md) |  
 
 > [!NOTE]
