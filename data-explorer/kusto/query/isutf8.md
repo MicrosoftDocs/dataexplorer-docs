@@ -9,22 +9,25 @@ ms.date: 12/21/2022
 
 Returns `true` if the argument is a valid utf8 string.
 
-```kusto
-isutf8("some string") == true
-```
-
 ## Syntax
 
-`isutf8(`[*value*]`)`
+`isutf8(`*value*`)`
+
+## Parameters
+
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+|*value*|string|&check;| The value to check if a valid utf8 string.|
 
 ## Returns
 
-Indicates whether the argument is a valid utf8 string.
+A boolean value indicating whether *value* is a valid utf8 string.
 
 ## Example
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNLC4tSbPQUCrOz01VKC4BSqUraQIA1zBdDCIAAAA=" target="_blank">Run the query</a>
+
 ```kusto
-T
-| where isutf8(fieldName)
-| count
+print result=isutf8("some string")
 ```
