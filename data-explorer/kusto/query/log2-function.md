@@ -11,16 +11,33 @@ ms.date: 08/11/2019
 
 ## Syntax
 
-`log2(`*x*`)`
+`log2(`*number*`)`
 
-## Arguments
+## Parameters
 
-* *x*: A real number > 0.
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*number*| real | &check; | The number for which to calculate the base-2 logarithm.|
 
 ## Returns
 
 * The logarithm is the base-2 logarithm: the inverse of the exponential function (exp) with base 2.
-* `null` if the argument is negative or null or can't be converted to a `real` value. 
+* `null` if the argument is negative or null or can't be converted to a `real` value.
+
+## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNyU830jDVBAAnF4/MFAAAAA==" target="_blank">Run the query</a>
+
+```kusto
+print result=log2(5)
+```
+
+**Output**
+
+|result|
+|--|
+|2.3219280948873622|
 
 ## See also
 
