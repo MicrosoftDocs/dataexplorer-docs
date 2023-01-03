@@ -7,7 +7,7 @@ ms.date: 01/03/2023
 ---
 # isfinite()
 
-Returns whether the input is a finite value, meaning it is neither infinite nor NaN.
+Returns whether the input is a finite value, meaning it's neither infinite nor NaN.
 
 ## Syntax
 

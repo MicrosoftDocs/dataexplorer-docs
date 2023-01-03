@@ -32,6 +32,8 @@ A boolean value indicating whether *value* is a valid ascii string.
 print result=isascii("some string")
 ```
 
+**Output**
+
 |result|
 |--|
 |true|
