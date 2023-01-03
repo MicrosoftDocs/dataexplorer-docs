@@ -3,7 +3,7 @@ title: make-series operator - Azure Data Explorer
 description: This article describes make-series operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/30/2021
+ms.date: 01/03/2023
 ms.localizationpriority: high
 ---
 # make-series operator
