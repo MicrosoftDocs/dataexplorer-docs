@@ -7,7 +7,7 @@ ms.date: 12/21/2022
 ---
 # isutf8()
 
-Returns `true` if the argument is a valid utf8 string.
+Returns `true` if the argument is a valid UTF8 string.
 
 ## Syntax
 
@@ -17,11 +17,11 @@ Returns `true` if the argument is a valid utf8 string.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-|*value*|string|&check;| The value to check if a valid utf8 string.|
+|*value*|string|&check;| The value to check if a valid UTF8 string.|
 
 ## Returns
 
-A boolean value indicating whether *value* is a valid utf8 string.
+A boolean value indicating whether *value* is a valid UTF8 string.
 
 ## Example
 

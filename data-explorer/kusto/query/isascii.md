@@ -7,7 +7,7 @@ ms.date: 01/03/2023
 ---
 # isascii()
 
-Returns `true` if the argument is a valid ascii string.
+Returns `true` if the argument is a valid ASCII string.
 
 ## Syntax
 
@@ -17,11 +17,11 @@ Returns `true` if the argument is a valid ascii string.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-|*value*|string|&check;| The value to check if a valid ascii string.|
+|*value*|string|&check;| The value to check if a valid ASCII string.|
 
 ## Returns
 
-A boolean value indicating whether *value* is a valid ascii string.
+A boolean value indicating whether *value* is a valid ASCII string.
 
 ## Example
 
