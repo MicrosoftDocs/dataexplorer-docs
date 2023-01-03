@@ -74,8 +74,7 @@ The following example triggers a query every minute, and sends an email based on
 
 :::image type="content" source="media/flow/flow-run-query-list-results-2-inline.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query action." lightbox="media/flow/flow-run-query-list-results-2.png":::
 
-> [!Note]
-> If the column has several records, the connector will run for each record in the column.
+[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
 
 ### Run KQL query and render a chart
 
@@ -88,8 +87,7 @@ In this example, the results of the query are returned as a timechart.
 
 :::image type="content" source="media/flow/flow-run-query.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query and render a chart action.":::
 
-> [!IMPORTANT]
-> In the **Cluster Name** field, enter the cluster URL.
+[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
 
 ### Run async control command
 
@@ -98,6 +96,12 @@ This action runs control command in async mode and returns its ID, state and sta
 The following example triggers an async command to copy the sample 10 records from 'TransformedSysLogs' table to 'TargetTable'.
 
 :::image type="content" source="media/flow/flow-run-async-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run async control command action.":::
+
+#### Timeout
+
+If your async flow takes longer than 60 seconds to run, it will fail and return a "RequestTimeout" exception.
+
+To avoid this issue, optimize your query to run more efficiently or break your query into smaller chunks. For more information, see [Query best practices](../kusto/query/best-practices.md).
 
 ### Run control command and render a chart
 
@@ -116,19 +120,17 @@ Use this action to run a [control command](kusto/management/index.md) and get th
 
 :::image type="content" source="media/flow/flow-run-control-command.png" alt-text="Screenshot of Run control command and render a chart in recurrence pane.":::
 
-> [!IMPORTANT]
-> In the **Cluster Name** field, enter the cluster URL
+[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
 
 ### Run show control command
 
 This action runs the show control command and returns the result that can be used in the following connectors.
 
-> [!Note]
-> This action is specifically for running any of the **.show** commands, there are different actions given above to run other type of commands in sync or async mode.
-
 The following example executes the **.show operation** command to find the status of an async command using an operation ID returned by an async command execution.
 
 :::image type="content" source="media/flow/flow-run-show-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show control command action.":::
+
+[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
 
 ### Email Kusto query results
 
@@ -214,16 +216,6 @@ To check if your flow works, check the flow's run history:
 To see why a run failed, select the run start time. The flow appears, and the step of the flow that failed is indicated by a red exclamation point. Expand the failed step to view its details. The **Details** pane on the right contains information about the failure so that you can troubleshoot it.
 
 :::image type="content" source="media/flow/flow-error.png" alt-text="Screenshot of flow run, showing an error message.":::
-
-## Timeout exceptions
-
-Your flow can fail and return a "RequestTimeout" exception if it runs for more than 90 seconds.
-
-:::image type="content" source="media/flow/flow-request-timeout.png" alt-text="Screenshot of the flow request timeout exception error.":::
-
-To fix a timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](kusto/query/best-practices.md).
-
-The same query might run successfully in Azure Data Explorer, where the time isn't limited and can be changed.
 
 ## Limitations
 
