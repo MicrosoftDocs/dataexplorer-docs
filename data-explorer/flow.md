@@ -68,7 +68,7 @@ This section describes the capabilities and parameters for each action and provi
 
 Use this action to query the specified cluster. The actions that are added after the action iterate over each line of the results of the query.
 
-[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
+If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
 
 #### Example
 
@@ -83,7 +83,7 @@ The following flow triggers a query every minute. The query checks the number of
 
 Use this action to visualize a KQL query result as a table or chart. For example, use this flow to receive daily reports by email.
 
-[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
+If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
 
 #### Example
 
@@ -95,7 +95,7 @@ The following flow will present the query results as a timechart.
 
 Use this action to run a [control command](kusto/management/index.md) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action. It's important to note that KQL commands can run for a maximum of 1 hour.
 
-If your async command takes more than 60 seconds to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
+If the async control command takes more than 60 seconds to run, it will fail with a "RequestTimeout" exception.
 
 #### Example
 
@@ -107,7 +107,7 @@ The following flow triggers an async command to copy 10 records from the 'Transf
 
 Use this action to run a [control command](kusto/management/index.md) and display the result as a chart. The chart options include an HTML table, pie chart, time chart, and bar chart.
 
-[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
+If the control command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
 
 :::image type="content" source="media/flow/flow-run-control-command.png" alt-text="Screenshot of Run control command and render a chart in recurrence pane.":::
 
@@ -115,7 +115,7 @@ Use this action to run a [control command](kusto/management/index.md) and displa
 
 This action runs the show control command and returns the result that can be used in the following connectors.
 
-[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
+If the control command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
 
 #### Example
 
