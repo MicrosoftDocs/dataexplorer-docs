@@ -93,9 +93,9 @@ The following flow will present the query results as a timechart.
 
 ### Run async control command
 
-Use this action to run a [control command](kusto/management/index.md) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action. It's important to note that KQL commands can run for a maximum of 1 hour.
+Use this action to run a [control command](kusto/management/index.md) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action.
 
-If the async control command takes more than 60 seconds to run, it will fail with a "RequestTimeout" exception.
+If the async control command takes more than 60 minutes to run, it will fail with a "RequestTimeout" exception.
 
 #### Example
 
@@ -211,6 +211,8 @@ To see why a run failed, select the run start time. The flow appears, and the st
 ## Limitations
 
 - The maximum number of records per request is 50,000 and the maximum data size per request is 32 MB. These limits can't be changed.
+- Synchronous requests have a timeout of 8 minutes.
+- Asynchronous requests have a timeout of 60 minutes.
 - The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschemaoperator.md). For example, the [fork](kusto/query/forkoperator.md), [facet](kusto/query/facetoperator.md), and [evaluate](kusto/query/evaluateoperator.md) operators aren't supported.
 - Flows work best on Microsoft Edge and Google Chrome.
 
