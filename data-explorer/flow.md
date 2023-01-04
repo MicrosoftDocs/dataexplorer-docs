@@ -93,9 +93,9 @@ The following flow will present the query results as a timechart.
 
 ### Run async control command
 
-Use this action to run a [control command](kusto/management/index.md) asynchronously, which means it continues to run in the background. When the command is complete, the action returns an ID, state, and status. It's important to note that KQL commands can only run for a maximum of 1 hour. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action.
+Use this action to run a [control command](kusto/management/index.md) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action. It's important to note that KQL commands can run for a maximum of 1 hour.
 
-If your async flow takes more than 60 seconds to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
+If your async command takes more than 60 seconds to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
 
 #### Example
 
