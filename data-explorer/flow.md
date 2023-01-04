@@ -64,9 +64,9 @@ This section describes the capabilities and parameters for each action and provi
 ### Run KQL query
 
 > [!Note]
-> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
+> If your query starts with a dot, it's a [control command](kusto/management/index.md)). Use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
 
-This action sends a query to the specified cluster. The actions that are added afterwards iterate over each line of the results of the query.
+Use this action to query the specified cluster. The actions that are added after the action iterate over each line of the results of the query.
 
 The following example triggers a query every minute, and sends an email based on the query results. The query checks the number of records in the table, and then sends an email only if the number of records is greater than 0.
 
@@ -77,7 +77,7 @@ The following example triggers a query every minute, and sends an email based on
 ### Run KQL query and render a chart
 
 > [!Note]
-> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
+> If your query starts with a dot, it's a [control command](kusto/management/index.md)). Use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
 
 Use this action to visualize a KQL query result as a table or chart. For example, use this flow to receive daily reports by email.
 
@@ -89,9 +89,9 @@ In this example, the results of the query are returned as a timechart.
 
 ### Run async control command
 
-This action runs control command in async mode and returns its ID, state and status on completion. 'async' keyword is mandatory. It's always recommended to execute control commands in async mode so they keep running in the background. KQL commands can run for maximum of 1 hour. Also, you get an operation ID of the async command after execution that can be used with [.show operations OPERATION_ID_RETURNED_BY_CMD](kusto/management/operations.md) command to get the status and details of that async command.
+Use this action to run a [control command](kusto/management/index.md) asynchronously, which means it continues to run in the background. When the command is complete, the action returns an ID, state, and status. It's important to note that KQL commands can only run for a maximum of 1 hour.
 
-The following example triggers an async command to copy the sample 10 records from 'TransformedSysLogs' table to 'TargetTable'.
+For example, the following command triggers an async command to copy 10 records from the 'TransformedSysLogs' table to the 'TargetTable'. The 'async' keyword is required in the query. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action.
 
 :::image type="content" source="media/flow/flow-run-async-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run async control command action.":::
 
@@ -103,18 +103,7 @@ To avoid this issue, optimize your query to run more efficiently or break your q
 
 ### Run control command and render a chart
 
-Use this action to run a [control command](kusto/management/index.md) and get the result as a chart of your choice.
-
-1. Specify the cluster URL. For example, `https://clusterName.eastus.kusto.windows.net`.
-1. Enter the name of the database.
-1. Specify the control command:
-    - Select dynamic content from the apps and connectors used in the flow.
-    - Add an expression to access, convert, and compare values.
-1. To send the results of this action by email as a table or a chart, specify the chart type. This can be:
-    - An HTML table.
-    - A pie chart.
-    - A time chart.
-    - A bar chart.
+Use this action to run a [control command](kusto/management/index.md) and display the result as a chart. The chart options include an HTML table, pie chart, time chart, and bar chart.
 
 :::image type="content" source="media/flow/flow-run-control-command.png" alt-text="Screenshot of Run control command and render a chart in recurrence pane.":::
 
@@ -130,7 +119,7 @@ The following example executes the **.show operation** command to find the statu
 
 [!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
 
-### Email Kusto query results
+### Email KQL query results
 
 You can include a step in any flow to send reports by email, to any email address.
 
