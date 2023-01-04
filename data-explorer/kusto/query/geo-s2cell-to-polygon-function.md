@@ -52,10 +52,10 @@ datatable(lng:real, lat:real)
 | project s2_hash = geo_point_to_s2cell(lng, lat, 10)
 | project s2_hash_polygon = geo_s2cell_to_polygon(s2_hash)
 | summarize s2_hash_polygon_lst = make_list(s2_hash_polygon)
-| project pack(
+| project bag_pack(
     "type", "Feature",
-    "geometry", pack("type", "GeometryCollection", "geometries", s2_hash_polygon_lst),
-    "properties", pack("name", "S2 Cell polygons collection"))
+    "geometry", bag_pack("type", "GeometryCollection", "geometries", s2_hash_polygon_lst),
+    "properties", bag_pack("name", "S2 Cell polygons collection"))
 ```
 
 **Output**

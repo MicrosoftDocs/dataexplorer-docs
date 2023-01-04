@@ -69,7 +69,7 @@ Polygons
 | project polygon = features.geometry
 | project simplified = geo_polygon_simplify(polygon, 1000)
 | summarize lst = make_list(simplified)
-| project geojson = pack("type", "Feature","geometry", pack("type", "GeometryCollection", "geometries", lst), "properties", pack("name", "polygons"))
+| project geojson = bag_pack("type", "Feature","geometry", bag_pack("type", "GeometryCollection", "geometries", lst), "properties", bag_pack("name", "polygons"))
 ```
 
 **Output**

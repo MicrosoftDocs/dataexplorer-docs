@@ -3,7 +3,7 @@ title: series_uv_anomalies_fl() - Azure Data Explorer
 description: This article describes the series_uv_anomalies_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/07/2022
+ms.date: 11/14/2022
 ---
 # series_uv_anomalies_fl()
 
@@ -50,7 +50,7 @@ let series_uv_anomalies_fl=(tbl:(*), y_series:string, sensitivity:int=85, tsid:s
 {
     let uri = 'https://YOUR-AD-RESOURCE-NAME.cognitiveservices.azure.com/anomalydetector/v1.0/timeseries/entire/detect';
     let headers=dynamic({'Ocp-Apim-Subscription-Key': h'YOUR-KEY'});
-    let kwargs = pack('y_series', y_series, 'sensitivity', sensitivity);
+    let kwargs = bag_pack('y_series', y_series, 'sensitivity', sensitivity);
     let code = ```if 1:
         import json
         y_series = kargs["y_series"]
@@ -101,7 +101,7 @@ series_uv_anomalies_fl(tbl:(*), y_series:string, sensitivity:int=85, tsid:string
 {
     let uri = 'https://YOUR-AD-RESOURCE-NAME.cognitiveservices.azure.com/anomalydetector/v1.0/timeseries/entire/detect';
     let headers=dynamic({'Ocp-Apim-Subscription-Key': h'YOUR-KEY'});
-    let kwargs = pack('y_series', y_series, 'sensitivity', sensitivity);
+    let kwargs = bag_pack('y_series', y_series, 'sensitivity', sensitivity);
     let code = ```if 1:
         import json
         y_series = kargs["y_series"]

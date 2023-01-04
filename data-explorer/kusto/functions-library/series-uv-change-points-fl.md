@@ -3,7 +3,7 @@ title: series_uv_change_points_fl() - Azure Data Explorer
 description: This article describes the series_uv_change_points_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 02/22/2022
+ms.date: 11/08/2022
 ---
 # series_uv_change_points_fl()
 
@@ -51,7 +51,7 @@ let series_uv_change_points_fl=(tbl:(*), y_series:string, score_threshold:real=0
 {
     let uri = 'https://YOUR-AD-RESOURCE-NAME.cognitiveservices.azure.com/anomalydetector/v1.0/timeseries/changepoint/detect';
     let headers=dynamic({'Ocp-Apim-Subscription-Key': h'YOUR-KEY'});
-    let kwargs = pack('y_series', y_series, 'score_threshold', score_threshold, 'trend_window', trend_window);
+    let kwargs = bag_pack('y_series', y_series, 'score_threshold', score_threshold, 'trend_window', trend_window);
     let code = ```if 1:
         import json
         y_series = kargs["y_series"]
@@ -104,7 +104,7 @@ series_uv_change_points_fl(tbl:(*), y_series:string, score_threshold:real=0.9, t
 {
     let uri = 'https://YOUR-AD-RESOURCE-NAME.cognitiveservices.azure.com/anomalydetector/v1.0/timeseries/changepoint/detect';
     let headers=dynamic({'Ocp-Apim-Subscription-Key': h'YOUR-KEY'});
-    let kwargs = pack('y_series', y_series, 'score_threshold', score_threshold, 'trend_window', trend_window);
+    let kwargs = bag_pack('y_series', y_series, 'score_threshold', score_threshold, 'trend_window', trend_window);
     let code = ```if 1:
         import json
         y_series = kargs["y_series"]
