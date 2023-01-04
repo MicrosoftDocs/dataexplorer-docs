@@ -1,9 +1,9 @@
 ---
 title: The case-sensitive !in string operator - Azure Data Explorer
-description: This article describes the case-sensitive !in string operator in Azure Data Explorer.
+description: Learn how to use the !in string operator to filter data without a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/19/2021
+ms.date: 01/04/2023
 ---
 # !in operator
 
@@ -24,7 +24,7 @@ The following table provides a comparison of the `in` operators:
 > * The expression list can produce up to `1,000,000` values.
 > * Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 ## Performance tips
 

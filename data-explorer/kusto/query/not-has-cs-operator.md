@@ -1,13 +1,13 @@
 ---
-title: "The case-sensitive !has_cs string operator - Azure Data Explorer"
-description: "This article describes the case-sensitive !has_cs string operator in Azure Data Explorer."
+title: The case-sensitive !has_cs string operator - Azure Data Explorer
+description: Learn how to use the !has_cs string operator to filter data that doesn't have a matching case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2021
+ms.date: 01/04/2023
 ---
 # !has_cs operator
 
-Filters a record set for data that does not have a matching case-sensitive string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
+Filters a record set for data that doesn't have a matching case-sensitive string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
 [!INCLUDE [has-operator-comparison](../../includes/has-operator-comparison.md)]
 

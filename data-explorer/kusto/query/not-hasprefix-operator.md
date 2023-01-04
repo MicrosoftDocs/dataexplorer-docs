@@ -1,13 +1,13 @@
 ---
-title: "The case-insensitive !hasprefix string operator - Azure Data Explorer"
-description: "This article describes the case-insensitive !hasprefix operator in Azure Data Explorer."
+title: The case-insensitive !hasprefix string operator - Azure Data Explorer
+description: Learn how to use the !hasprefix operator to filter data that doesn't include a case-insensitive prefix.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2021
+ms.date: 01/04/2023
 ---
 # !hasprefix operators
 
-Filters a record set for data that does not include a case-insensitive starting string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
+Filters a record set for data that doesn't include a case-insensitive starting string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
 The following table provides a comparison of the `hasprefix` operators:
 
@@ -19,12 +19,12 @@ The following table provides a comparison of the `hasprefix` operators:
 |[`!hasprefix_cs`](not-hasprefix-cs-operator.md) |RHS isn't a term prefix in LHS |Yes |`"North America" !hasprefix_cs "CA"`|
 
 > [!NOTE]
-> The following abbreviations are used in the table above:
+> The following abbreviations are used in the above table:
 >
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 
-For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
@@ -38,7 +38,7 @@ If you're testing for the presence of a symbol or alphanumeric word that is boun
 
 ## Syntax
 
-*T* `|` `where` *Column* `!hasprefix` `(`*Expression*`)`   
+*T* `|` `where` *Column* `!hasprefix` `(`*Expression*`)`
 
 ## Arguments
 
