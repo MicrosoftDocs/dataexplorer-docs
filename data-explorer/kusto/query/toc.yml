@@ -1304,3 +1304,9 @@ items:
       href: ../tools/kusto-explorer-troubleshooting.md
   - name: Kusto.Cli
     href: ../tools/kusto-cli.md
+  - name: Kusto emulator
+    items:
+    - name: Kusto emulator overview
+      href: ../../kusto-emulator-overview.md
+    - name: Install the Kusto emulator
+      href: ../../kusto-emulator-install.md
