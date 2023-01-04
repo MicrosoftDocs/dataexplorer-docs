@@ -59,7 +59,7 @@ When you select the Azure Data Explorer connector, you can choose one of the fol
 - [Run control command and render a chart](#run-control-command-and-render-a-chart)
 - [Run show control command](#run-show-control-command)
 
-This section describes the capabilities and parameters for each action and provides an example showing how to add an [email](#email-kusto-query-results) action to any flow.
+This section describes the capabilities and parameters for each action and provides an example showing how to add an [email](#email-kql-query-results) action to any flow.
 
 ### Run KQL query
 
