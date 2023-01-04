@@ -92,7 +92,7 @@ items:
       href: business-continuity-create-solution.md
   - name: Tools and integrations overview
     href: tools-integrations-overview.md
-- name: Explore Data
+- name: Explore data
   items:
   - name: Get data
     items:
@@ -531,51 +531,51 @@ items:
       - name: Integrate the Monaco Editor with Kusto query support
         displayName: monaco monaco-kusto
         href: kusto/api/monaco/monaco-kusto.md
-- name: Integrate
-  items:
-  - name: Orchestrate
+  - name: Integrate
     items:
-    - name: Power Automate
+    - name: Orchestrate
       items:
-      - name: Power Automate connector
-        href: flow.md
-        displayName: Microsoft Flow, flow, flow connector
-      - name: Power Automate connector usage examples
-        href: flow-usage.md
-        displayName: Microsoft Flow, flow, flow connector
-    - name: Logic Apps
-      href: kusto/tools/logicapps.md
-  - name: Azure Cosmos DB
-    href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
-  - name: Telegraf
-    href: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
-  - name: Apache Spark Connector
-    href: spark-connector.md
-    displayName: databricks
-  - name: Connect from Azure Synapse Apache Spark
-    href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
-  - name: Notebooks
-    items:
-    - name: Analyze data in Jupyter Notebooks & Kqlmagic
-      href: kqlmagic.md
-    - name: Azure Data Studio
+      - name: Power Automate
+        items:
+        - name: Power Automate connector
+          href: flow.md
+          displayName: Microsoft Flow, flow, flow connector
+        - name: Power Automate connector usage examples
+          href: flow-usage.md
+          displayName: Microsoft Flow, flow, flow connector
+      - name: Logic Apps
+        href: kusto/tools/logicapps.md
+    - name: Azure Cosmos DB
+      href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
+    - name: Telegraf
+      href: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
+    - name: Apache Spark Connector
+      href: spark-connector.md
+      displayName: databricks
+    - name: Connect from Azure Synapse Apache Spark
+      href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
+    - name: Notebooks
       items:
-      - name: Kusto extension overview
-        displayName: Azure Data Studio
-        href: /sql/azure-data-studio/extensions/kusto-extension?context=/azure/data-explorer/context/context
-      - name: Use Kusto extension
-        displayName: Azure Data Studio
-        href: /sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context
-      - name: Use Kqlmagic
-        displayName: Azure Data Studio
-        href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
-  - name: Azure Pipelines
-    href: devops.md
-  - name: Sync Kusto
-    href: kusto/tools/synckusto.md
-  - name: Migrate TSI to Azure Data Explorer
-    href: /azure/time-series-insights/migration-to-adx
-    displayName: Time Series Insights
+      - name: Analyze data in Jupyter Notebooks & Kqlmagic
+        href: kqlmagic.md
+      - name: Azure Data Studio
+        items:
+        - name: Kusto extension overview
+          displayName: Azure Data Studio
+          href: /sql/azure-data-studio/extensions/kusto-extension?context=/azure/data-explorer/context/context
+        - name: Use Kusto extension
+          displayName: Azure Data Studio
+          href: /sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context
+        - name: Use Kqlmagic
+          displayName: Azure Data Studio
+          href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
+    - name: Azure Pipelines
+      href: devops.md
+    - name: Sync Kusto
+      href: kusto/tools/synckusto.md
+    - name: Migrate TSI to Azure Data Explorer
+      href: /azure/time-series-insights/migration-to-adx
+      displayName: Time Series Insights
 - name: Kusto Query Language
   href: kusto/query/toc.yml
 - name: Management commands
