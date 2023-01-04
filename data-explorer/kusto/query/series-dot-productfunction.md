@@ -3,7 +3,7 @@ title: series_dot_product() - Azure Data Explorer
 description: This article describes series_dot_product() in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 12/12/2022
+ms.date: 1/17/2023
 ---
 # series_dot_product()
 
@@ -17,12 +17,13 @@ The function `series_dot_product()` takes two numeric series as input, and calcu
 
 **Alternate Syntax**
 
-`series_dot_product(`*series*`,` *numeric*`)`
+`series_dot_product(`*series*`, `*numeric*`)`
+`series_dot_product(`*numeric*`, `*series*`)`
 
-The alternate syntax describes that one of the function parameters can be a numerical scalar.
+The alternate syntax describes that one of the function arguments can be a numerical scalar.
 In that case, the numerical scalar will be broadcasted to a vector whose length is the other series containing that scalar.
 
-## Parameters
+## Arguments
 
 | Name | Type | Required | Description |
 |--|--|--|--|
