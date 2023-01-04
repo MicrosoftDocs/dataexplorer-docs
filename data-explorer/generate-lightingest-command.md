@@ -16,8 +16,8 @@ This article shows you how to create a new table, create schema mapping, and gen
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* [A cluster and database](create-cluster-database-portal.md).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* Access to an Azure Data Explorer cluster and database. If needed, [create a free cluster and database](start-for-free-web-ui.md).
 * [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 * LightIngest - download it as part of the [Microsoft.Azure.Kusto.Tools NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/). For installation instructions, see [Install LightIngest](lightingest.md#install-lightingest).
 

@@ -14,7 +14,8 @@ In this article, you'll learn about the different ways in which you can connect 
 
 ## Prerequisites
 
-* A [Microsoft account](https://account.microsoft.com/account/Account), or an Azure Active Directory user identity.
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* Access to an Azure Data Explorer cluster and database. If needed, [create a free cluster and database](start-for-free-web-ui.md).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started).
 
 ## Connectivity modes
