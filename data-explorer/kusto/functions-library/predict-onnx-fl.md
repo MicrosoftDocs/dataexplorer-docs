@@ -40,7 +40,7 @@ For ad hoc usage, embed the code using the [let statement](../query/letstatement
 let predict_onnx_fl=(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
-    let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
+    let kwargs = bag_pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
     let code = ```if 1:
     
     import binascii
@@ -92,7 +92,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 predict_onnx_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
-    let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
+    let kwargs = bag_pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
     let code = ```if 1:
     
     import binascii

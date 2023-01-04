@@ -346,6 +346,16 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/power-bi-connector.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/power-bi-imported-query.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": false
+    },    
+    {
       "source_path": "data-explorer/kusto/query/toutf8function.md",
       "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-from-string-function",
       "redirect_document_id": true
