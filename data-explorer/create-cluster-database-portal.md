@@ -14,6 +14,7 @@ adobe-target: true
 
 > [!div class="op_single_selector"]
 >
+> * [Web UI free cluster](start-for-free-web-ui.md)
 > - [Portal](create-cluster-database-portal.md)
 > - [CLI](create-cluster-database-cli.md)
 > - [PowerShell](create-cluster-database-powershell.md)

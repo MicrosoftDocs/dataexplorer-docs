@@ -9,6 +9,8 @@ ms.date: 09/06/2022
 # Create an Azure Data Explorer cluster and database using Go
 
 > [!div class="op_single_selector"]
+>
+> * [Web UI free cluster](start-for-free-web-ui.md)
 > * [Portal](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
