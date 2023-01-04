@@ -366,9 +366,9 @@
       "redirect_document_id": true
     },
     {
-      "source_path": "data-explorer/kusto/query/visualize-power-bi.md",
+      "source_path": "data-explorer/visualize-power-bi.md",
       "redirect_url": "/azure/data-explorer/power-bi-data-connector",
-      "redirect_document_id": true
+      "redirect_document_id": false
     }
   ]
 }
