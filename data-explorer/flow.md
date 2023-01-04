@@ -66,7 +66,7 @@ This section describes the capabilities and parameters for each action and provi
 > [!NOTE]
 > If your query starts with a dot, it's a [control command](kusto/management/index.md). Use [Run async control command](#run-async-control-command).
 
-Use this action to query the specified cluster. The actions that are added after the action iterate over each line of the results of the query.
+Use this action to query the specified cluster. The actions that are added afterwards iterate over each line of the results of the query.
 
 If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
 
