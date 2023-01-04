@@ -25,7 +25,7 @@ In this article, you create an Azure Data Explorer cluster and database using [G
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * Install an appropriate version of Go. For more information regarding supported releases, see the [Azure Go SDK](https://github.com/Azure/azure-sdk-for-go).
 

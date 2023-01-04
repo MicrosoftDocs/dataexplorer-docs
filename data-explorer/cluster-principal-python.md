@@ -3,7 +3,7 @@ title: 'Add cluster principals for Azure Data Explorer by using Python'
 description: In this article, you learn how to add cluster principals for Azure Data Explorer by using Python.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 09/11/2022
+ms.date: 01/04/2023
 ---
 
 # Add cluster principals for Azure Data Explorer by using Python
@@ -18,7 +18,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md).
+* Access to an Azure Data Explorer cluster and database. If needed, [create a free cluster and database](start-for-free-web-ui.md).
 
 ## Install Python package
 

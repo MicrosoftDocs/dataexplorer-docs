@@ -13,13 +13,13 @@ ms.date: 09/11/2022
 > * [Python](database-principal-python.md)
 > * [Azure Resource Manager template](database-principal-resource-manager.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. In this article, you add database principals for Azure Data Explorer by using C#.
+In this article, you'll use C# to add database principals for Azure Data Explorer.
 
 ## Prerequisites
 
 * Visual Studio 2019, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md).
+* Access to an Azure Data Explorer cluster and database. If needed, [create a free cluster and database](start-for-free-web-ui.md).
 
 ## Install C# NuGet
 

@@ -3,7 +3,7 @@ title: 'Add database principals for Azure Data Explorer by using Python'
 description: In this article, you learn how to add database principals for Azure Data Explorer by using Python.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 09/11/2022
+ms.date: 01/04/2023
 ---
 
 # Add database principals for Azure Data Explorer by using Python
@@ -13,12 +13,12 @@ ms.date: 09/11/2022
 > * [Python](database-principal-python.md)
 > * [Azure Resource Manager template](database-principal-resource-manager.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. In this article, you add database principals for Azure Data Explorer by using Python.
+In this article, you'll use Python to add database principals for Azure Data Explorer.
 
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md).
+* Access to an Azure Data Explorer cluster and database. If needed, [create a free cluster and database](start-for-free-web-ui.md).
 
 ## Install Python package
 
