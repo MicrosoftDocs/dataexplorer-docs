@@ -22,6 +22,7 @@ The function `series_dot_product()` takes two numeric series as input, and calcu
 
 The alternate syntax describes that one of the function arguments can be a numerical scalar.
 In that case, the numerical scalar will be broadcasted to a vector whose length is the other series containing that scalar.
+For example, `series_dot_product([1, 2, 3], 10)` will be treated as `series_dot_product([1, 2, 3], [10, 10, 10])`.
 
 ## Arguments
 
