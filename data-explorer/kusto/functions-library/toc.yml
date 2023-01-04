@@ -14,6 +14,9 @@ items:
 - name: factorial_fl()
   displayName: functions library, statistics
   href: factorial-fl.md
+- name: get_packages_version_fl()
+  displayName: functions library, python, version, package
+  href: get-packages-version-fl.md
 - name: kmeans_fl()
   displayName: functions library, clustering, K-Means
   href: kmeans-fl.md
