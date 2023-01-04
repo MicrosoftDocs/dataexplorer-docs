@@ -37,13 +37,14 @@ permissions to perform this operation on the resource. This is called an
 
 ### Arguments
 
-* *Verb* indicates the kind of action to perform: `.show`, `.add`, `.drop`, and `.set`.
+* *Verb* indicates the kind of action to perform: `.add`, `.drop`, `.set` and `.show`.
 
     |*Verb* |Description                                  |
     |-------|---------------------------------------------|
     |`.add` |Adds one or more principals to the role.     |
     |`.drop`|Removes one or more principals from the role.|
     |`.set` |Sets the role to the specific list of principals, removing all previous ones (if any).|
+    |`.show`|Shows the list of principals and their roles.|
 
 * *SecurableObjectType* is the kind of object whose role is specified.
 
