@@ -63,61 +63,65 @@ This section describes the capabilities and parameters for each action and provi
 
 ### Run KQL query
 
-> [!Note]
+> [!NOTE]
 > If your query starts with a dot, it's a [control command](kusto/management/index.md)). Use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
 
 Use this action to query the specified cluster. The actions that are added after the action iterate over each line of the results of the query.
 
-The following example triggers a query every minute, and sends an email based on the query results. The query checks the number of records in the table, and then sends an email only if the number of records is greater than 0.
+[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
+
+#### Example
+
+The following flow triggers a query every minute. The query checks the number of records in the table, and then sends an email only if the number of records is greater than 0.
 
 :::image type="content" source="media/flow/flow-run-query-list-results-2-inline.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query action." lightbox="media/flow/flow-run-query-list-results-2.png":::
 
-[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
-
 ### Run KQL query and render a chart
 
-> [!Note]
+> [!NOTE]
 > If your query starts with a dot, it's a [control command](kusto/management/index.md)). Use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
 
 Use this action to visualize a KQL query result as a table or chart. For example, use this flow to receive daily reports by email.
 
-In this example, the results of the query are returned as a timechart.
+[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
+
+#### Example
+
+The following flow will present the query results as a timechart.
 
 :::image type="content" source="media/flow/flow-run-query.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query and render a chart action.":::
 
-[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
-
 ### Run async control command
 
-Use this action to run a [control command](kusto/management/index.md) asynchronously, which means it continues to run in the background. When the command is complete, the action returns an ID, state, and status. It's important to note that KQL commands can only run for a maximum of 1 hour.
+Use this action to run a [control command](kusto/management/index.md) asynchronously, which means it continues to run in the background. When the command is complete, the action returns an ID, state, and status. It's important to note that KQL commands can only run for a maximum of 1 hour. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action.
 
-For example, the following command triggers an async command to copy 10 records from the 'TransformedSysLogs' table to the 'TargetTable'. The 'async' keyword is required in the query. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action.
+If your async flow takes more than 60 seconds to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
+
+#### Example
+
+The following flow triggers an async command to copy 10 records from the 'TransformedSysLogs' table to the 'TargetTable'. Note that the 'async' keyword is required in the query.
 
 :::image type="content" source="media/flow/flow-run-async-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run async control command action.":::
-
-#### Timeout
-
-If your async flow takes longer than 60 seconds to run, it will fail and return a "RequestTimeout" exception.
-
-To avoid this issue, optimize your query to run more efficiently or break your query into smaller chunks. For more information, see [Query best practices](kusto/query/best-practices.md).
 
 ### Run control command and render a chart
 
 Use this action to run a [control command](kusto/management/index.md) and display the result as a chart. The chart options include an HTML table, pie chart, time chart, and bar chart.
 
-:::image type="content" source="media/flow/flow-run-control-command.png" alt-text="Screenshot of Run control command and render a chart in recurrence pane.":::
-
 [!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
+
+:::image type="content" source="media/flow/flow-run-control-command.png" alt-text="Screenshot of Run control command and render a chart in recurrence pane.":::
 
 ### Run show control command
 
 This action runs the show control command and returns the result that can be used in the following connectors.
 
-The following example executes the **.show operation** command to find the status of an async command using an operation ID returned by an async command execution.
+[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
+
+#### Example
+
+The following flow runs the [.show operation](kusto/management/operations.md) command to find the status of an async command using an operation ID returned by an async command execution.
 
 :::image type="content" source="media/flow/flow-run-show-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show control command action.":::
-
-[!INCLUDE [power-automate-sync-timeout.md](includes/power-automate-sync-timeout.md)]
 
 ### Email KQL query results
 
@@ -206,6 +210,7 @@ To see why a run failed, select the run start time. The flow appears, and the st
 
 ## Limitations
 
+- The maximum number of records per request is 50,000 and the maximum data size per request is 32 MB. These limits can't be changed.
 - The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschemaoperator.md). For example, the [fork](kusto/query/forkoperator.md), [facet](kusto/query/facetoperator.md), and [evaluate](kusto/query/evaluateoperator.md) operators aren't supported.
 - Flows work best on Microsoft Edge and Google Chrome.
 
