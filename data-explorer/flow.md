@@ -64,7 +64,7 @@ This section describes the capabilities and parameters for each action and provi
 ### Run KQL query
 
 > [!NOTE]
-> If your query starts with a dot, it's a [control command](kusto/management/index.md)). Use [Run async control command](#run-async-control-command).
+> If your query starts with a dot, it's a [control command](kusto/management/index.md). Use [Run async control command](#run-async-control-command).
 
 Use this action to query the specified cluster. The actions that are added after the action iterate over each line of the results of the query.
 
@@ -79,7 +79,7 @@ The following flow triggers a query every minute. The query checks the number of
 ### Run KQL query and render a chart
 
 > [!NOTE]
-> If your query starts with a dot, it's a [control command](kusto/management/index.md)). Use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
+> If your query starts with a dot, it's a [control command](kusto/management/index.md). Use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
 
 Use this action to visualize a KQL query result as a table or chart. For example, use this flow to receive daily reports by email.
 
