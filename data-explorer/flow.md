@@ -61,8 +61,6 @@ When you select the Azure Data Explorer connector, you can choose one of the fol
 
 This section describes the capabilities and parameters for each action and provides an example showing how to add an [email](#email-kusto-query-results) action to any flow.
 
-:::image type="content" source="media/flow/flow-action-list.png" alt-text="Screenshot of Azure Data Explorer connector actions.":::
-
 ### Run KQL query
 
 > [!Note]
@@ -219,7 +217,6 @@ To see why a run failed, select the run start time. The flow appears, and the st
 
 ## Limitations
 
-- Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and a time of 90 seconds to run.
 - The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschemaoperator.md). For example, the [fork](kusto/query/forkoperator.md), [facet](kusto/query/facetoperator.md), and [evaluate](kusto/query/evaluateoperator.md) operators aren't supported.
 - Flows work best on Microsoft Edge and Google Chrome.
 
