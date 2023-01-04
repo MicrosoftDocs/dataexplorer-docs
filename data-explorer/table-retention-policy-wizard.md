@@ -16,7 +16,7 @@ In this article, you can define and assign a retention policy and a cache policy
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md).
+* Access to an Azure Data Explorer cluster and database. If needed, [create a free cluster and database](start-for-free-web-ui.md).
 
 ## Define and assign a table retention policy
 

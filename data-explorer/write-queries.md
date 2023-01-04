@@ -13,17 +13,7 @@ In this article, you learn how to use the query language in Azure Data Explorer 
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md).
-
-You can run the queries in this article in one of two ways:
-
-* On the Azure Data Explorer *help cluster* that we have set up to aid learning.
-    [Sign in to the cluster](https://dataexplorer.azure.com/clusters/help/databases/samples) with an organizational email account that is a member of Azure Active directory.
-
-* On your own cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
-
-    [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
+* A Microsoft account or an Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
 
 ## Overview of the query language
 
