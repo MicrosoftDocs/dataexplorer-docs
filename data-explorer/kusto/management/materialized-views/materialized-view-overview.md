@@ -238,7 +238,7 @@ The `Result` dimension can have one of the following values:
     ~~~
 
     > [!NOTE]
-    > It is not recommended to set the amount of memory for materialization process to more than 50% of the total amount of memory on the node.
+    > We recommend that you set the materialization process memory to less than 50% of the total node memory.
 
 ### Track resource consumption
 
