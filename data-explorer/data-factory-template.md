@@ -26,7 +26,7 @@ You create the *Bulk Copy from Database to Azure Data Explorer* template by usin
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Access to an Azure Data Explorer cluster and database. If necessary, create [a cluster and database](create-cluster-database-portal.md).
+* Access to an Azure Data Explorer cluster and database. If necessary, [create a cluster and database](create-cluster-database-portal.md).
 * Access to a data factory. If necessary, [create a data factory](data-factory-load-data.md#create-a-data-factory).
 * A source of data.
 

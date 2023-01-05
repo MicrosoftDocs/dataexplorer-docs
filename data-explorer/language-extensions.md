@@ -16,7 +16,7 @@ The language extensions feature allows you to use language extension plugins to 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Access to an Azure Data Explorer cluster and database. If necessary, create [a cluster and database](create-cluster-database-portal.md).
+* Access to an Azure Data Explorer cluster and database. If necessary, [create a cluster and database](create-cluster-database-portal.md).
 
 ## Enable language extensions on your cluster
 

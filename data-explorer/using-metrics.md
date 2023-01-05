@@ -16,7 +16,7 @@ For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Access to an Azure Data Explorer cluster and database. If necessary, create [a cluster and database](create-cluster-database-portal.md).
+* Access to an Azure Data Explorer cluster and database. If necessary, [create a cluster and database](create-cluster-database-portal.md).
 
 ## Use metrics to monitor your Azure Data Explorer resources
 

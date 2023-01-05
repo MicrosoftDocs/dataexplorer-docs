@@ -25,7 +25,7 @@ For general information about ingesting into Azure Data Explorer from IoT Hub, s
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Access to an Azure Data Explorer cluster and database. If necessary, create [a cluster and database](create-cluster-database-portal.md).
+* Access to an Azure Data Explorer cluster and database. If necessary, [create a cluster and database](create-cluster-database-portal.md).
 * [A sample app](https://github.com/Azure/azure-iot-sdk-csharp) and documentation for simulating a device.
 * [.NET SDK](https://dotnet.microsoft.com/download) to compile and run the sample app.
 

@@ -33,7 +33,7 @@ The function `series_uv_anomalies_fl()` detects anomalies in time series by call
 ### Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Access to an Azure Data Explorer cluster and database. If necessary, create [a cluster and database](../../create-cluster-database-portal.md).
+* Access to an Azure Data Explorer cluster and database. If necessary, [create a cluster and database](../../create-cluster-database-portal.md).
 * [Enable the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. This is necessary because this function contains inline Python.
 * [Create an Anomaly Detector resource and obtain its key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
 * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster to access the anomaly detection service endpoint.
