@@ -58,7 +58,7 @@ You can [monitor](#monitoring) what gets classified to the `internal` workload g
 
 ### Materialized-Views workload group
 
-The `$materialized-views` applies to materialized views materialization process [(see how materialized views work)](materialized-views/materialized-view-overview.md) 
+The `$materialized-views` applies to materialized views materialization process [(see how materialized views work)](materialized-views/materialized-view-overview.md/#how-materialized-views-work)
 
 You can't:
 
