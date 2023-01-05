@@ -40,7 +40,7 @@ The function `series_uv_change_points_fl()` finds change points in time series b
 * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster to access the anomaly detection service endpoint.
 * Modify the [callout policy](../management/calloutpolicy.md) for type `webapi` to access the anomaly detection service endpoint.
 
-In the following function example, replace 'YOUR-AD-RESOURCE-NAME' in the uri and 'YOUR-KEY' in the 'Ocp-Apim-Subscription-Key' of the header with your Anomaly Detector resource name and key.
+In the following function example, replace `YOUR-AD-RESOURCE-NAME` in the uri and `YOUR-KEY` in the `Ocp-Apim-Subscription-Key` of the header with your Anomaly Detector resource name and key.
 
 ## [Ad hoc](#tab/adhoc)
 
