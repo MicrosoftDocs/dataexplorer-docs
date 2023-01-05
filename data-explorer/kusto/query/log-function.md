@@ -1,13 +1,13 @@
 ---
 title: log() - Azure Data Explorer
-description: This article describes log() in Azure Data Explorer.
+description: Learn how to use the log() function to return the natural logarithm of the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2019
+ms.date: 12/26/2022
 ---
 # log()
 
-`log()` returns the natural logarithm function.  
+The natural logarithm is the base-e logarithm: the inverse of the natural exponential function (exp).  
 
 ## Syntax
 
@@ -19,10 +19,10 @@ ms.date: 08/11/2019
 
 ## Returns
 
-* The natural logarithm is the base-e logarithm: the inverse of the natural exponential function (exp).
-* `null` if the argument is negative or null or can't be converted to a `real` value. 
+* `log()` returns the natural logarithm of the input.
+* `null` if the argument is negative or null or can't be converted to a `real` value.
 
 ## See also
 
 * For common (base-10) logarithms, see [log10()](log10-function.md).
-* For base-2 logarithms, see [log2()](log2-function.md)
+* For base-2 logarithms, see [log2()](log2-function.md).
