@@ -12,7 +12,7 @@ Parses a file path `string` and returns a [`dynamic`](./scalar-data-types/dynami
 * RootPath
 * DirectoryPath
 * DirectoryName
-* FileName
+* Filename
 * Extension
 * AlternateDataStreamName
 
