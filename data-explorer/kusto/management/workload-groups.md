@@ -16,7 +16,10 @@ Workload groups are defined at the cluster level. Up to 10 custom workload group
 
 ## Built-in workload groups
 
-There are three pre-defined workload groups: [the `internal` workload group](#internal-workload-group), [the `default` workload group](#default-workload-group) and [the `$materialized-views` workload group](#materialized-views-workload-group).
+The pre-defined workload groups are:
+* [`internal` workload group](#internal-workload-group)
+* [`default` workload group](#default-workload-group) 
+* [`$materialized-views` workload group](#materialized-views-workload-group)
 
 ### Default workload group
 
