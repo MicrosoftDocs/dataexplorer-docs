@@ -1,6 +1,6 @@
 ---
 title: materialize() - Azure Data Explorer
-description: Learn how to use the materialize() function to capture the value of a tabular expression.
+description: Learn how to use the materialize() function to capture the value of a tabular expression for reuse.
 ms.reviewer: zivc
 ms.topic: reference
 ms.date: 12/26/2022
