@@ -53,6 +53,7 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 |`tags` | string | A JSON string that represents a list of [tags](../extents-overview.md#extent-tagging) to associate with the created extent. |
 |`docstring` | string | A description used to document the table.|
 |`distributed` | bool | If `true`, the command will ingest from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips) below.|
+|`persistDetails` |A Boolean value that, if specified, indicates that the command should persist the detailed results for retrieval by the [.show operation details](../operations.md#show-operation-details) command. Defaults to `false`. |`with (persistDetails=true)`|
 
 ## Schema considerations
 
@@ -81,7 +82,7 @@ Create a new table called :::no-loc text="RecentErrors"::: in the database that 
    | where Level == "Error" and Timestamp > now() - time(1h)
 ```
 
-Create a new table called "OldExtents" in the database that has a single column, "ExtentId", and holds the extent IDs of all extents in the database that has been created more than 30 days earlier. The database has an existing table named "MyExtents". Since the dataset is expected to be bigger than 1 GB (more than ~1 million rows) use the *distributed* flag.
+Create a new table called "OldExtents" in the database that has a single column, "ExtentId", and holds the extent IDs of all extents in the database that has been created more than 30 days earlier. The database has an existing table named "MyExtents". Since the dataset is expected to be bigger than 1 GB (more than ~1 million rows) use the *distributed* flag
 
 ```kusto
 .set async OldExtents with(distributed=true) <|

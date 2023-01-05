@@ -40,6 +40,8 @@ If creation is successful, result will be a [datetime](./scalar-data-types/datet
 print year_month_day = make_datetime(2017,10,01)
 ```
 
+**Output**
+
 |year_month_day|
 |---|
 |2017-10-01 00:00:00.0000000|
@@ -48,6 +50,8 @@ print year_month_day = make_datetime(2017,10,01)
 print year_month_day_hour_minute = make_datetime(2017,10,01,12,10)
 ```
 
+**Output**
+
 |year_month_day_hour_minute|
 |---|
 |2017-10-01 12:10:00.0000000|
@@ -55,6 +59,8 @@ print year_month_day_hour_minute = make_datetime(2017,10,01,12,10)
 ```kusto
 print year_month_day_hour_minute_second = make_datetime(2017,10,01,12,11,0.1234567)
 ```
+
+**Output**
 
 |year_month_day_hour_minute_second|
 |---|

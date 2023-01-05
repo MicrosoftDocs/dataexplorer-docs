@@ -46,7 +46,7 @@ let T = datatable(prop:string, value:string)
     "prop03", "val_c",
 ];
 T
-| extend p = pack(prop, value)
+| extend p = bag_pack(prop, value)
 | summarize dict=make_bag(p)
 ```
 
@@ -69,7 +69,7 @@ let T = datatable(prop:string, value:string)
     "prop03", "val_c",
 ];
 T
-| extend p = pack(prop, value)
+| extend p = bag_pack(prop, value)
 | summarize bag=make_bag(p)
 | evaluate bag_unpack(bag)
 ```
