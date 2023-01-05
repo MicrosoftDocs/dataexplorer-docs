@@ -42,7 +42,7 @@ Notice the two commands are idempotent. When first run, they create the tables, 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Access to a cluster and database. If needed, create [a cluster and database](create-cluster-database-portal.md).
+* Access to a cluster and database. If necessary, create [a cluster and database](create-cluster-database-portal.md).
 
 ## Security
 
