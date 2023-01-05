@@ -19,7 +19,7 @@ isempty("") == true
 
 ## Returns
 
-Indicates whether the argument is an empty string or isnull.
+Indicates whether the argument is an empty string or is null.
 
 |x|isempty(x)
 |---|---
