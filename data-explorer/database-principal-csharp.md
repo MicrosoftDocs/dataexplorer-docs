@@ -17,7 +17,7 @@ In this article, you'll use C# to add database principals for Azure Data Explore
 
 ## Prerequisites
 
-* Visual Studio 2019, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
+* [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Access to an Azure Data Explorer cluster and database. If needed, [create a free cluster and database](start-for-free-web-ui.md).
 

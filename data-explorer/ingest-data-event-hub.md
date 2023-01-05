@@ -29,7 +29,7 @@ For general information about ingesting into Azure Data Explorer from event hub,
 * Access to a cluster and database. If necessary, create [a cluster and database](create-cluster-database-portal.md).
 * We recommend using a [user assigned managed identity](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity) or [system assigned managed identity](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) for the data connection (optional).
 * [A sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub. Download the sample app to your system.
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) to run the sample app.
+* [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/) to run the sample app.
 
 ## Sign in to the Azure portal
 
