@@ -1,9 +1,9 @@
 ---
 title: bag_pack() - Azure Data Explorer
-description: This article describes bag_pack() function in Azure Data Explorer.
+description: Learn how to use the bag_pack() function to create a dynamic JSON object from a list of keys and values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/02/2022
+ms.date: 01/05/2023
 ---
 # bag_pack()
 

@@ -1,13 +1,13 @@
 ---
 title: The !between operator - Azure Data Explorer
-description: This article describes the !between operator in Azure Data Explorer.
+description: Learn how to use the !between operator to match the input that is outside of the inclusive range.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/05/2023
 ---
 # !between operator
 
-Matches the input that is outside the inclusive range.
+Matches the input that is outside of the inclusive range.
 
 ```kusto
 Table1 | where Num1 !between (1 .. 10)
@@ -15,14 +15,14 @@ Table1 | where Time !between (datetime(2017-01-01) .. datetime(2017-01-01))
 ```
 
 `!between` can operate on any numeric, datetime, or timespan expression.
- 
+
 ## Syntax
 
-*T* `|` `where` *expr* `!between` `(`*leftRange*` .. `*rightRange*`)`   
- 
+*T* `|` `where` *expr* `!between` `(`*leftRange*` .. `*rightRange*`)`
+
 If *expr* expression is datetime - another syntactic sugar syntax is provided:
 
-*T* `|` `where` *expr* `!between` `(`*leftRangeDateTime*` .. `*rightRangeTimespan*`)`   
+*T* `|` `where` *expr* `!between` `(`*leftRangeDateTime*` .. `*rightRangeTimespan*`)`
 
 ## Arguments
 
@@ -37,7 +37,7 @@ Rows in *T* for which the predicate of (*expr* < *leftRange* or *expr* > *rightR
 
 ## Examples  
 
-### Filter numeric values   
+### Filter numeric values
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

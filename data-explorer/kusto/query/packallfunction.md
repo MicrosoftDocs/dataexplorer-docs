@@ -1,9 +1,9 @@
 ---
 title: pack_all() - Azure Data Explorer
-description: This article describes pack_all() in Azure Data Explorer.
+description: Learn how to use the pack_all() function to create a dynamic object from all the columns of the tabular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/24/2021
+ms.date: 01/05/2023
 ---
 # pack_all()
 
@@ -22,14 +22,14 @@ Creates a `dynamic` object (property bag) from all the columns of the tabular ex
 
 ## Examples
 
-Given a table SmsMessages 
+Given a table SmsMessages
 
 |SourceNumber |TargetNumber| CharsCount
 |---|---|---
-|555-555-1234 |555-555-1212 | 46 
-|555-555-1234 |555-555-1213 | 50 
-|555-555-1313 | | 42 
-| |555-555-3456 | 74 
+|555-555-1234 |555-555-1212 | 46
+|555-555-1234 |555-555-1213 | 50
+|555-555-1313 | | 42
+| |555-555-3456 | 74
 
 The following query:
 
@@ -55,4 +55,4 @@ Returns:
 | |555-555-3456 | 74 | {"SourceNumber":"", "TargetNumber":"555-555-3456", "CharsCount": 74} | {"TargetNumber":"555-555-3456", "CharsCount": 74}
 
 > [!NOTE]
-> There is a difference between the *Packed* and the *PackedIgnoreNullEmpty* columns in the last two rows of the above example. These two rows included empty values that were ignored by *pack_all(true)*.   
+> There is a difference between the *Packed* and the *PackedIgnoreNullEmpty* columns in the last two rows of the above example. These two rows included empty values that were ignored by *pack_all(true)*.

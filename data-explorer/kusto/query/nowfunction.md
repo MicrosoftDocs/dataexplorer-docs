@@ -1,9 +1,9 @@
 ---
 title: now() - Azure Data Explorer
-description: This article describes now() in Azure Data Explorer.
+description: Learn how to use the now() function to return the current UTC time.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/05/2023
 ---
 # now()
 
@@ -28,7 +28,7 @@ now(-2d)
 
 The current UTC clock time as a `datetime`.
 
-`now()` + *offset* 
+`now()` + *offset*
 
 ## Example
 

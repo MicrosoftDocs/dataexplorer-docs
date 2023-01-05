@@ -1,9 +1,9 @@
 ---
 title: pack_array() - Azure Data Explorer
-description: This article describes pack_array() in Azure Data Explorer.
+description: Learn how to use the pack_array() function to pack all input values into a dynamic array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/05/2023
 ---
 # pack_array()
 
@@ -22,7 +22,7 @@ Packs all input values into a dynamic array.
 
 ## Returns
 
-Dynamic array which includes the values of Expr1, Expr2, ... , ExprN.
+Dynamic array that includes the values of Expr1, Expr2, ... , ExprN.
 
 ## Example
 
