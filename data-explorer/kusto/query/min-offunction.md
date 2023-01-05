@@ -1,9 +1,9 @@
 ---
 title: min_of() - Azure Data Explorer
-description: This article describes min_of() in Azure Data Explorer.
+description: Learn how to use the min_of() function to return the minimum value of all argument expressions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/26/2022
 ---
 # min_of()
 
@@ -21,9 +21,9 @@ min_of(10, 1, -3, 17) == -3
 
 * *expr_i*: A scalar expression, to be evaluated.
 
-- All arguments must be of the same type.
-- Maximum of 64 arguments is supported.
-- Non-null values take precedence to null values.
+* All arguments must be of the same type.
+* Maximum of 64 arguments is supported.
+* Non-null values take precedence to null values.
 
 ## Returns
 
@@ -31,7 +31,7 @@ The minimum value of all argument expressions.
 
 ## Examples
 
-Find the maximum value in an array: 
+Find the maximum value in an array:
 
 <!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto
@@ -63,6 +63,6 @@ int(null), int(null)]
 |---|
 |2|
 |1|
-|3| 
-|1| 
-|(null) |
+|3|
+|1|
+|(null)|
