@@ -13,7 +13,7 @@ Creates a `dynamic` array of the set of distinct values that *expr* takes in rec
 
 ## Syntax
 
-`make_set_if` `(`*expr*`,` *predicate* [`,` *maxSize*]`)`
+`make_set_if(`*expr*`,` *predicate* [`,` *maxSize*]`)`
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Finds the maximum value the expression in the group.
 
 ## Syntax
 
-`max` `(`*expr*`)`
+`max(`*expr*`)`
 
 ## Parameters
 

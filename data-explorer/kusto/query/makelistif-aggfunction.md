@@ -13,7 +13,7 @@ Creates a `dynamic` array of *expr* values in the group for which *predicate* ev
 
 ## Syntax
 
-`make_list_if` `(`*expr*`,` *predicate* [`,` *maxSize*]`)`
+`make_list_if(`*expr*`,` *predicate* [`,` *maxSize*]`)`
 
 ## Parameters
 

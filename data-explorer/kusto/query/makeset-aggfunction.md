@@ -15,7 +15,7 @@ Creates a `dynamic` array of the set of distinct values that *expr* takes in the
 
 ## Syntax
 
- `make_set` `(`*expr* [`,` *maxSize*]`)`
+ `make_set(`*expr* [`,` *maxSize*]`)`
 
 ## Arguments
 

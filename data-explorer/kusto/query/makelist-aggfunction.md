@@ -16,7 +16,7 @@ Creates a `dynamic` array of all the values of *expr* in the group.
 
 ## Syntax
 
-`make_list` `(`*expr* [`,` *maxSize*]`)`
+`make_list(`*expr* [`,` *maxSize*]`)`
 
 ## Parameters
 

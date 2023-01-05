@@ -15,7 +15,7 @@ See also - [max()](max-aggfunction.md) function, which returns the maximum value
 
 ## Syntax
 
-`maxif` `(`*expr*`,`*predicate*`)`
+`maxif(`*expr*`,`*predicate*`)`
 
 ## Arguments
 

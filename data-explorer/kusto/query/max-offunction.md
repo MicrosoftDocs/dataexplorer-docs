@@ -11,7 +11,7 @@ Returns the maximum value of all argument expressions.
 
 ## Syntax
 
-`max_of` `(`*arg*`,` *arg_2*`,` [ *arg_3*`,` ... ]`)`
+`max_of(`*arg*`,` *arg_2*`,` [ *arg_3*`,` ... ]`)`
 
 ## Parameters
 
