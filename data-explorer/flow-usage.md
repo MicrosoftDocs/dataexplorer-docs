@@ -98,7 +98,7 @@ Visualize this information as a pie chart, and email it to the team.
 
     :::image type="content" source="media/flow-usage/flow-email-multiple-attachments.png" alt-text="Screenshot of emailing multiple attachments.":::
 
-    For more information about creating an email action, see [Email Kusto query results](flow.md#email-kql-query-results).
+    For more information about creating an email action, see [Email Kusto query results](flow.md#email-kusto-query-results).
 
 Results:
 
