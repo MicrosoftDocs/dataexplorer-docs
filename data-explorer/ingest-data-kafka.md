@@ -18,7 +18,7 @@ For more information, see the connector [Git repo](https://github.com/Azure/kafk
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Access to a cluster and database with the default cache and retention policies. If necessary, create [a cluster and database](create-cluster-database-portal.md).
+* Access to an Azure Data Explorer cluster and database with the default cache and retention policies. If necessary, create [a cluster and database](create-cluster-database-portal.md).
 * [Azure CLI](/cli/azure/install-azure-cli).
 * [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
 
