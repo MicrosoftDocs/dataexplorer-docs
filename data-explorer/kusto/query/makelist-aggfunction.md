@@ -1,9 +1,9 @@
 ---
 title: make_list() (aggregation function) - Azure Data Explorer
-description: This article describes make_list() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the make_list() function to create a dynamic JSON object array of all the values of the expressions in the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/09/2022
+ms.date: 12/26/2022
 adobe-target: true
 ---
 # make_list() (aggregation function)

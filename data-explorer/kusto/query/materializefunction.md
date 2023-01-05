@@ -1,9 +1,9 @@
 ---
 title: materialize() - Azure Data Explorer
-description: This article describes materialize() function in Azure Data Explorer.
+description: Learn how to use the materialize() function to capture the value of a tabular expression for reuse.
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 10/31/2022
+ms.date: 12/26/2022
 ---
 # materialize()
 
@@ -53,6 +53,8 @@ _detailed_data
 | project State, EventType, EventPercentage, Events
 | top 10 by EventPercentage
 ```
+
+**Output**
 
 |State|EventType|EventPercentage|Events|
 |---|---|---|---|
@@ -127,7 +129,7 @@ To use the `let` statement with a value that you use more than once, use the [ma
 The filter on `Text` is mutual and can be pushed to the materialize expression.
 The query only needs columns `Timestamp`, `Text`, `Resource1`, and `Resource2`. Project these columns inside the materialized expression.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->    
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
     let materializedData = materialize(Table
     | where Timestamp > ago(1d)
@@ -151,9 +153,9 @@ If the filters aren't identical, as in the following query:
     | summarize dcount(Resource2))
  ```
 
-When the combined filter reduces the materialized result drastically, combine both filters on the materialized result by a logical `or` expression as in the query below. However, keep the filters in each union leg to preserve the semantics of the query.
+When the combined filter reduces the materialized result drastically, combine both filters on the materialized result by a logical `or` expression as in the following query. However, keep the filters in each union leg to preserve the semantics of the query.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->     
+<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
     let materializedData = materialize(Table
     | where Timestamp > ago(1d)

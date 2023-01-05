@@ -12,7 +12,7 @@ Parses a file path `string` and returns a [`dynamic`](./scalar-data-types/dynami
 * RootPath
 * DirectoryPath
 * DirectoryName
-* FileName
+* Filename
 * Extension
 * AlternateDataStreamName
 
@@ -49,6 +49,8 @@ datatable(p:string)
 | extend path_parts = parse_path(p)
 
 ```
+
+**Output**
 
 |p|path_parts
 |---|---

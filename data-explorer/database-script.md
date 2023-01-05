@@ -14,6 +14,7 @@ You can run a Kusto Query Language script to configure your database during Azur
 * `.create-merge`
 * `.alter`
 * `.alter-merge`
+* `.add`
 
 In general, we recommended using the idempotent version of commands so that if they're called more than once with the same input parameters, they have no additional effect. In other words, running the command multiple times has the same effect as running it once. For example, where possible, we recommend using the idempotent command `.create-or-alter` over the regular `.create` command.
 
