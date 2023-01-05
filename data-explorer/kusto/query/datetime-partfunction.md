@@ -46,7 +46,8 @@ An integer representing the extracted part.
 
 ## Example
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XPTQqDMBAF4L2nCK4UtCTaVrD0DF13JcGMGKqJTSPF29efRgPG7XvfzDANaMQ0uiNGNWjeQpBgksUExylGmOQ4yXF6yq6Xc5qQ8Ia8TnGhkTcAVdZU0VGlA39K/WhcGEbeux8jcKB/YVwrha73ao6N+QK8HtXTeXPqClkV9m1Ghz0cQ6s/WrdWxtayd7ApXT/gotfgeGHOjfpAKQXbqyXfdjUNP6JWuflSyWO/lsYLKg751i36B5qEtWAcAgAA)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XPTQqDMBAF4L2nCK4UtCTaVrD0DF13JcGMGKqJTSPF29efRgPG7XvfzDANaMQ0uiNGNWjeQpBgksUExylGmOQ4yXF6yq6Xc5qQ8Ia8TnGhkTcAVdZU0VGlA39K/WhcGEbeux8jcKB/YVwrha73ao6N+QK8HtXTeXPqClkV9m1Ghz0cQ6s/WrdWxtayd7ApXT/gotfgeGHOjfpAKQXbqyXfdjUNP6JWuflSyWO/lsYLKg751i36B5qEtWAcAgAA" target="_blank">Run the query</a>
 
 ```kusto
 let dt = datetime(2017-10-30 01:02:03.7654321); 
@@ -64,6 +65,8 @@ millisecond = datetime_part("millisecond", dt),
 microsecond = datetime_part("microsecond", dt),
 nanosecond = datetime_part("nanosecond", dt)
 ```
+
+**Output**
 
 |year|quarter|month|weekOfYear|day|dayOfYear|hour|minute|second|millisecond|microsecond|nanosecond|
 |---|---|---|---|---|---|---|---|---|---|---|---|

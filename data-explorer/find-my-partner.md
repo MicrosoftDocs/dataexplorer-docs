@@ -3,7 +3,7 @@ title: Find an Azure Data Explorer partner
 description: Learn about our partners and how they can help you with Azure Data Explorer.
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 12/01/2022
+ms.date: 12/20/2022
 ---
 # Find an Azure Data Explorer partner
 
@@ -27,6 +27,32 @@ Partner
 | ISV | Independent Software Vendor | A company that develops and sells software products. |
 | SI | System Integrator | A company that provides services to help customers implement and integrate software products. |
 | MSSP | Managed Security Service Provider | A company that provides security services to customers. |
+
+## AIT GmbH & Co. KG
+
+:::image type="icon" source="media/findmypartner/ait-white-logo.jpg":::
+
+We develop and design sophisticated, forward-looking software solutions based on the latest Microsoft technologies and advise our customers on the development process, architecture and software design.
+
+**Partner type**
+
+- Custom Software Development
+- System Integrator
+
+**Focus geography**
+
+- Primarily Germany
+- EMEA
+- US
+
+**Contact**
+
+- [ait.vertrieb@aitgmbh.de](mailto:ait.vertrieb@aitgmbh.de)
+
+**Additional information**
+
+- [AIT GmbH & Co. KG website](https://www.aitgmbh.de/)
+- [Microsoft partner site for AIT GmbH & Co. KG](https://appsource.microsoft.com/marketplace/partner-dir/c9febb40-e205-4f30-8d0b-c00039a9f4fc/overview)
 
 ## AM Squared Systems
 
@@ -84,6 +110,31 @@ beanTech is the IT partner that can help you manage the entire data chain in the
 - [https://www.beantech.it/case-studies/analisi-dati-raccolti-dallimpianto-turbine-remote-monitoring-per-fincantieri/](https://www.beantech.it/case-studies/analisi-dati-raccolti-dallimpianto-turbine-remote-monitoring-per-fincantieri/)
 - [https://www.beantech.it/case-studies/fameccanica/](https://www.beantech.it/case-studies/fameccanica/)
 
+## Data Addiction Pty Ltd
+
+:::image type="icon" source="media/findmypartner/data-addiction-logo.png":::
+
+Data Addiction is a specialist provider of Microsoft Data and AI, and Dynamics 365 solutions in Australia and New Zealand.
+
+**Partner type**
+
+- System Integrator
+- Specialist in Microsoft Data & AI and Dynamics 365
+
+**Focus geography**
+
+- Australia
+- New Zealand
+
+**Contact**
+
+- [ben.johnson@dataaddiction.com.au](mailto:ben.johnson@dataaddiction.com.au)
+
+**Additional information**
+
+- [Data Addiction Pty Ltd website](https://www.dataaddiction.com.au/)
+- [Microsoft partner site for Data Addiction Pty Ltd](https://appsource.microsoft.com/marketplace/partner-dir/ba43003a-491b-4811-8473-d6fcde34296d/overview)
+
 ## Data Mastery
 
 :::image type="icon" source="media/findmypartner/data-mastery-logo.png":::
@@ -111,31 +162,6 @@ Data Mastery help businesses harness the power of their data and make data-drive
 
 - [https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-fortinet-logs](https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-fortinet-logs)
 - [https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-palo-alto-web-traffic-logs](https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-palo-alto-web-traffic-logs)
-
-## Data#3 Ltd
-
-:::image type="icon" source="media/findmypartner/data-3-logo.png":::
-
-As Australia's largest Microsoft partner, we have helped countless clients progress their data and analytics initiatives. We have created a framework that takes best-in-class approaches, methodologies and architectures to help solve complex data analytics problems.
-
-**Partner type**
-
-- System integrator
-- Managed service provider
-- Licensing Solutions Provider
-
-**Focus geography**
-
-- Australia
-
-**Contact**
-
-- [https://www.data3.com/contact/](https://www.data3.com/contact/)
-
-**Additional information**
-
-- [Data#3 Ltd website](https://www.data3.com/solutions/data-and-analytics/business-analytics)
-- [Microsoft partner site for Data#3 Ltd](https://appsource.microsoft.com/marketplace/partner-dir/aee1d42e-29d0-401f-b3a7-4dfa337692cc/overview)
 
 ## Device Insight GmbH
 
@@ -240,6 +266,32 @@ We build up our customer's data platforms powered with Azure data services. Our 
 - [iLink Systems website](https://www.ilink-digital.com)
 - [Microsoft partner site for iLink Systems](https://appsource.microsoft.com/marketplace/partner-dir/a8e5d571-43e8-4c3c-96be-344156cf6887/overview)
 
+## Insight
+
+:::image type="icon" source="media/findmypartner/insight-logo.jpg":::
+
+Insight is ready to help you get more value from your data at any scale. Harnessing the power of Azure Data Explorer, Insight can drive real-time intelligence discovery and delivery over your log, IoT, web-click or other large-scale, fast-paced data with a secure, cost-effective solution.
+
+**Partner type**
+
+- global solutions integrator
+- SI
+
+**Focus geography**
+
+- North America
+- EMEA
+- APAC
+
+**Contact**
+
+- [alliances@insight.com](mailto:alliances@insight.com)
+
+**Additional information**
+
+- [Insight website](https://www.insight.com)
+- [Microsoft partner site for Insight](https://appsource.microsoft.com/marketplace/partner-dir/7c70c055-d83e-420c-8645-615d9b242d59/overview)
+
 ## Intelligent Spaces Limited
 
 :::image type="icon" source="media/findmypartner/elasta-cloud-intelligent-spaces-logo.png":::
@@ -292,7 +344,7 @@ LINKIT serves more than 100 customers in the Netherlands and Germany, providing 
 
 :::image type="icon" source="media/findmypartner/maq-software-logo.png":::
 
-As 2021 Microsoft Power BI Partner of the Year, we engage with leading companies to accelerate their business intelligence and analytics initiatives. Our solutions enable our clients to improve their operations, reduce costs, increase sales, and build stronger customer relationships. Our clients consistently recognize us for providing architecture and governance frameworks, implementing best practices to optimize reports, and building team capability through training programs. Our innovative tools and 33 certified visuals expand Power BI capabilities to save time for decision makers. 
+As 2021 Microsoft Power BI Partner of the Year, we engage with leading companies to accelerate their business intelligence and analytics initiatives. Our solutions enable our clients to improve their operations, reduce costs, increase sales, and build stronger customer relationships. Our clients consistently recognize us for providing architecture and governance frameworks, implementing best practices to optimize reports, and building team capability through training programs. Our innovative tools and 33 certified visuals expand Power BI capabilities to save time for decision makers.
 As a premier supplier to Microsoft for two decades, our clients benefit from our extensive insights on the platform and engineering practices. As a Microsoft Managed Partner, our clients benefit from our breadth and depth of expertise. With globally integrated teams in Redmond, Washington, and three locations in India, we deliver solutions with increased velocity and technical intensity. Inc. magazine has recognized us for sustained growth by listing us on the Inc. 5000 list ten times – a rare honor.
 
 **Partner type**
@@ -305,7 +357,7 @@ As a premier supplier to Microsoft for two decades, our clients benefit from our
 
 **Contact**
 
-- [msaccount@maqsoftware.com](mailto:msaccount@maqsoftware.com)
+- [engage@maqsoftware.com](mailto:engage@maqsoftware.com)
 
 **Additional information**
 
@@ -346,37 +398,6 @@ Mesh Systems is an IoT Solutions Provider that develops, operates, and manages e
 **Success stories**
 
 - [https://meshsystems.com/case-study/bunn](https://meshsystems.com/case-study/bunn)
-
-## Neal Analytics
-
-:::image type="icon" source="media/findmypartner/neal-analytics-logo.png":::
-
-Neal Analytics is an award-winning Data & AI consulting partner of Microsoft. With 6 different advanced specializations in Azure & 4 Partner of the Year awards & finalist finishes, Neal has a proven track record of success you can trust for all your Azure deployment needs. 
-
-Neal has worked extensively with Azure Data Explorer and maintains a trained bench of consultants who can leverage this expertise to assist you in your customer scenario. Neal is also a partner in Microsoft's Solution Assessment program, and if your organization qualifies this program will assist us in standing up a landing zone featuring Azure Data Explorer to help you get started with your ADX project.
-
-**Partner type**
-
-- System Integrator
-- ISV
-
-**Focus geography**
-
-- US
-- Canada
-- LATAM
-- EMEA
-- Middle East
-- APAC
-
-**Contact**
-
-- [Davidb@nealanalytics.com](mailto:Davidb@nealanalytics.com)
-
-**Additional information**
-
-- [Neal Analytics website](https://nealanalytics.com/)
-- [Microsoft partner site for Neal Analytics](https://appsource.microsoft.com/marketplace/partner-dir/4fd354cb-e69d-49f6-b954-daf93d5cef95/overview)
 
 ## Niels Berglund
 
@@ -511,7 +532,7 @@ Tricloud provides an end-to-end Industrial IoT Platform based on Azure IoT and A
 
 :::image type="icon" source="media/findmypartner/uptake-logo.png":::
 
-Uptake provides our customers with the scalable, secure ability to connect their machines, people and data together to accelerate and unlock AI-enabled industrial intelligence to optimize costs, manage risks and increase revenue assurance. 
+Uptake provides our customers with the scalable, secure ability to connect their machines, people and data together to accelerate and unlock AI-enabled industrial intelligence to optimize costs, manage risks and increase revenue assurance.
 
 Uptake is the intelligence system for industrial assets. With the power of data acquisition and artificial intelligence, Uptake gives all departments — maintenance, reliability, and operations teams — a single, shared, and contextualized view of every asset in an operation. Driven by powerful data science models and cloud computing, our products deliver insights to customers that help them predict and prevent asset failure, mitigate risk, optimize maintenance strategy and asset performance, reduce costs, assure productivity, and enhance safety. With 48+ patents and recognized for leadership in Industrial AI by Gartner, the World Economic Forum, CNBC, and Forbes, Uptake is headquartered in Chicago with presence in Canada, South America, Europe, India, and Australia.
 
