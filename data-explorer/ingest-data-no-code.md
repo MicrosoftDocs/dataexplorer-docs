@@ -28,7 +28,7 @@ In this tutorial, you'll learn how to:
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md). In this tutorial, the database name is *TestDatabase*.
+* Access to a cluster and database. If necessary, create [a cluster and database](create-cluster-database-portal.md). In this tutorial, the database name is *TestDatabase*.
 
 ## Azure Monitor data provider: diagnostic metrics and logs and activity logs
 

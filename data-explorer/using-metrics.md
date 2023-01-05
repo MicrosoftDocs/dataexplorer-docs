@@ -16,7 +16,7 @@ For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* Access to a cluster and database. If necessary, create [a cluster and database](create-cluster-database-portal.md).
 
 ## Use metrics to monitor your Azure Data Explorer resources
 
@@ -46,12 +46,18 @@ The **Resource** and **Metric Namespace** pickers are pre-selected for your Azur
 The Azure Data Explorer metrics give insight into both overall performance and use of your resources, as well as information about specific actions, such as ingestion or query. The metrics in this article have been grouped by usage type. 
 
 The types of metrics are: 
-* [Cluster metrics](#cluster-metrics) 
-* [Export metrics](#export-metrics) 
-* [Ingestion metrics](#ingestion-metrics) 
-* [Streaming ingest metrics](#streaming-ingest-metrics)
-* [Query metrics](#query-metrics) 
-* [Materialized view metrics](#materialized-view-metrics)
+- [Monitor Azure Data Explorer performance, health, and usage with metrics](#monitor-azure-data-explorer-performance-health-and-usage-with-metrics)
+  - [Prerequisites](#prerequisites)
+  - [Use metrics to monitor your Azure Data Explorer resources](#use-metrics-to-monitor-your-azure-data-explorer-resources)
+  - [Work in the metrics pane](#work-in-the-metrics-pane)
+  - [Supported Azure Data Explorer metrics](#supported-azure-data-explorer-metrics)
+  - [Cluster metrics](#cluster-metrics)
+  - [Export metrics](#export-metrics)
+  - [Ingestion metrics](#ingestion-metrics)
+  - [Streaming ingest metrics](#streaming-ingest-metrics)
+  - [Query metrics](#query-metrics)
+  - [Materialized view metrics](#materialized-view-metrics)
+  - [Next steps](#next-steps)
 
 For an alphabetical list of Azure Monitor's metrics for Azure Data Explorers, see [supported Azure Data Explorer cluster metrics](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters).
 

@@ -15,9 +15,9 @@ ms.date: 09/15/2019
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* Access to a cluster and database. If necessary, create [a cluster and database](create-cluster-database-portal.md).
 * A source of data.
-* [A data factory](data-factory-load-data.md#create-a-data-factory).
+* Access to a data factory. If necessary, [create a data factory](data-factory-load-data.md#create-a-data-factory).
 
 ## Create a new pipeline
 

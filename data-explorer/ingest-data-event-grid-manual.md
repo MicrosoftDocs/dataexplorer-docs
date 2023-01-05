@@ -18,13 +18,15 @@ Azure Data Explorer offers continuous ingestion from Azure Storage (Azure Blob s
 
 In this article, you learn how to create manually the resources needed for Event Grid Ingestion: Event Grid subscription, event hub namespace, and event hub. event hub namespace and event hub creation are described in the [Prerequisites](#prerequisites). To use automatic creation of these resources while defining the Event Grid ingestion, see [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md).
 
+> [!NOTE]
+> An Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
+
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
-* [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
-* Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
-* [An event hub namespace and event hub](/azure/event-hubs/event-hubs-create).
+* Access to a cluster and database. If necessary, create [a cluster and database](create-cluster-database-portal.md).
+* A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+* An [Event Hubs namespace and event hub](/azure/event-hubs/event-hubs-create).
 
 > [!NOTE]
 > For best performance, create all resources in the same region as the Azure Data Explorer cluster.
