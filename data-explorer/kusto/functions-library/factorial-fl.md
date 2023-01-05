@@ -24,11 +24,11 @@ The function `factorial_fl()`calculates [factorial](https://en.wikipedia.org/wik
 
 ## Usage
 
-`factorial_fl()` is a user-defined function. You can either embed its code as a temporary query or you can define it as a stored function in your database. See the following tabs for more examples.
+`factorial_fl()` is a user-defined function. You can either embed its code as an inline query or you can define it as a stored function in your database. See the following tabs for more examples.
 
-# [Temporary](#tab/temporary)
+# [Inline](#tab/Inline)
 
-For temporary use, embed its code using a [let statement](../query/letstatement.md). No permission is required.
+For inline use, embed its code using a [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

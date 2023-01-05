@@ -26,14 +26,14 @@ The function `series_rate_fl()` calculates the average rate of metric increase p
 
 ## Usage
 
-`series_rate_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a temporary query or you can define it as a stored function in your database. See the following tabs for more examples.
+`series_rate_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as an inline query or you can define it as a stored function in your database. See the following tabs for more examples.
 
 > [!NOTE]
 > [series_metric_fl()](series-metric-fl.md) is used as a part of the function and must be installed or embedded.
 
-# [Temporary](#tab/temporary)
+# [Inline](#tab/Inline)
 
-For temporary use, embed its code using the [let statement](../query/letstatement.md). No permission is required.
+For inline use, embed its code using the [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

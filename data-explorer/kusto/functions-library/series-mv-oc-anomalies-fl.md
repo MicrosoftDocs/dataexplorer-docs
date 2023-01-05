@@ -28,11 +28,11 @@ The function `series_mv_oc_anomalies_fl()` detects multivariate anomalies in ser
 
 ## Usage
 
-`series_mv_oc_anomalies_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a temporary query or you can define it as a stored function in your database. See the following tabs for more examples.
+`series_mv_oc_anomalies_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as an inline query or you can define it as a stored function in your database. See the following tabs for more examples.
 
-### [Temporary](#tab/temporary)
+### [Inline](#tab/Inline)
 
-For temporary use, embed its code using [let statement](../query/letstatement.md). No permission is required.
+For inline use, embed its code using [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

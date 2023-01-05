@@ -29,7 +29,7 @@ The function `series_fbprophet_forecast_fl()` takes an expression containing a t
 
 ## Usage
 
-`series_fbprophet_forecast_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a temporary query or you can define it as a stored function in your database. See the following tabs for more examples.
+`series_fbprophet_forecast_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as an inline query or you can define it as a stored function in your database. See the following tabs for more examples.
 
 The `fbprophet` package isn't included in the Python image. To install and use this package, do the following steps:
 
@@ -38,9 +38,9 @@ The `fbprophet` package isn't included in the Python image. To install and use t
 1. Create a SAS token with read access to your zip file. To create a SAS token, see [get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
 1. In the example below, replace the URL reference in the `external_artifacts` parameter with your file path and its SAS token.
 
-# [Temporary](#tab/temporary)
+# [Inline](#tab/Inline)
 
-For temporary use, embed its code using [let statement](../query/letstatement.md). No permission is required.
+For inline use, embed its code using [let statement](../query/letstatement.md). No permission is required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
