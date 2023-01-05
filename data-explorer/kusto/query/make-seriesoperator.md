@@ -1,9 +1,9 @@
 ---
 title: make-series operator - Azure Data Explorer
-description: This article describes make-series operator in Azure Data Explorer.
+description: Learn how to use the make-series operator to create a series of specified aggregated values along a specified axis. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/30/2021
+ms.date: 12/26/2022
 ms.localizationpriority: high
 ---
 # make-series operator
@@ -18,22 +18,22 @@ T | make-series sum(amount) default=0, avg(price) default=0 on timestamp from da
 
 *T* `| make-series` [*MakeSeriesParameters*]
       [*Column* `=`] *Aggregation* [`default` `=` *DefaultValue*] [`,` ...]
-    `on` *AxisColumn* [`from` *start*] [`to` *end*] `step` *step* 
+    `on` *AxisColumn* [`from` *start*] [`to` *end*] `step` *step*
     [`by`
       [*Column* `=`] *GroupExpression* [`,` ...]]
 
 ## Arguments
 
 * *Column:* Optional name for a result column. Defaults to a name derived from the expression.
-* *DefaultValue:* Default value that will be used instead of absent values. If there is no row with specific values of *AxisColumn* and *GroupExpression*, then in the results the corresponding element of the array will be assigned a *DefaultValue*. If *DefaultValue* is omitted, then 0 is assumed. 
+* *DefaultValue:* Default value that will be used instead of absent values. If there's no row with specific values of *AxisColumn* and *GroupExpression*, then in the results the corresponding element of the array will be assigned a *DefaultValue*. If *DefaultValue* is omitted, then 0 is assumed.
 * *Aggregation:* A call to an [aggregation function](make-seriesoperator.md#list-of-aggregation-functions) such as `count()` or `avg()`, with column names as arguments. See the [list of aggregation functions](make-seriesoperator.md#list-of-aggregation-functions). Only aggregation functions that return numeric results can be used with the `make-series` operator.
 * AxisColumn: A column on which the series will be ordered, usually of type `datetime` or `timespan`, but all numeric types are also accepted.
-* *start*: (optional) The low bound value of the *AxisColumn* for each of the series to be built. *start*, *end*, and *step* are used to build an array of *AxisColumn* values within a given range and using specified *step*. All *Aggregation* values are ordered respectively to this array. This *AxisColumn* array is also the last output column in the output that has the same name as *AxisColumn*. If a *start* value is not specified, the start is the first bin (step) which has data in each series.
-* *end*: (optional) The high bound (non-inclusive) value of the *AxisColumn*. The last index of the time series is smaller than this value (and will be *start* plus integer multiple of *step* that is smaller than *end*). If *end* value is not provided, it will be the upper bound of the last bin (step) which has data per each series.
-* *step*: The difference between two consecutive elements of the *AxisColumn* array (that is, the bin size). For a list of possible time intervals, see [timespan](./scalar-data-types/timespan.md). 
-* *GroupExpression:* An expression over the columns that provides a set of distinct values. Typically it's a column name that already provides a restricted set of values. 
+* *start*: (optional) The low bound value of the *AxisColumn* for each of the series to be built. *start*, *end*, and *step* are used to build an array of *AxisColumn* values within a given range and using specified *step*. All *Aggregation* values are ordered respectively to this array. This *AxisColumn* array is also the last output column in the output that has the same name as *AxisColumn*. If a *start* value isn't specified, the start is the first bin (step) which has data in each series.
+* *end*: (optional) The high bound (non-inclusive) value of the *AxisColumn*. The last index of the time series is smaller than this value (and will be *start* plus integer multiple of *step* that is smaller than *end*). If *end* value isn't provided, it will be the upper bound of the last bin (step) which has data per each series.
+* *step*: The difference between two consecutive elements of the *AxisColumn* array (that is, the bin size). For a list of possible time intervals, see [timespan](./scalar-data-types/timespan.md).
+* *GroupExpression:* An expression over the columns that provides a set of distinct values. Typically it's a column name that already provides a restricted set of values.
 * *MakeSeriesParameters*: Zero or more (space-separated) parameters in the form of *Name* `=` *Value*
-	that control the behavior. The following parameters are supported: 
+that control the behavior. The following parameters are supported:
   
   |Name  |Description  |
   |---|---|
@@ -57,15 +57,15 @@ The generated series from the alternate syntax differs from the main syntax in t
 * The *stop* value is inclusive.
 * Binning the index axis is generated with bin() and not bin_at(), which means that *start* may not be included in the generated series.
 
-It is recommended to use the main syntax of make-series and not the alternate syntax.
+It's recommended to use the main syntax of make-series and not the alternate syntax.
 
 ## Returns
 
-The input rows are arranged into groups having the same values of the `by` expressions and the `bin_at(`*AxisColumn*`, `*step*`, `*start*`)` expression. Then the specified aggregation functions are computed over each group, producing a row for each group. The result contains the `by` columns, *AxisColumn* column and also at least one column for each computed aggregate. (Aggregations over multiple columns or non-numeric results are not supported.)
+The input rows are arranged into groups having the same values of the `by` expressions and the `bin_at(`*AxisColumn*`,`*step*`,`*start*`)` expression. Then the specified aggregation functions are computed over each group, producing a row for each group. The result contains the `by` columns, *AxisColumn* column and also at least one column for each computed aggregate. (Aggregations over multiple columns or non-numeric results aren't supported.)
 
-This intermediate result has as many rows as there are distinct combinations of `by` and `bin_at(`*AxisColumn*`, `*step*`, `*start*`)` values.
+This intermediate result has as many rows as there are distinct combinations of `by` and `bin_at(`*AxisColumn*`,`*step*`,`*start*`)` values.
 
-Finally the rows from the intermediate result arranged into groups having the same values of the `by` expressions and all aggregated values are arranged into arrays (values of `dynamic` type). For each aggregation, there is one column containing its array with the same name. The last column is an array containing the values of *AxisColumn* binned according to the specified *step*.
+Finally the rows from the intermediate result arranged into groups having the same values of the `by` expressions and all aggregated values are arranged into arrays (values of `dynamic` type). For each aggregation, there's one column containing its array with the same name. The last column is an array containing the values of *AxisColumn* binned according to the specified *step*.
 
 > [!NOTE]
 >
@@ -108,7 +108,7 @@ Finally the rows from the intermediate result arranged into groups having the sa
 |[series_stats_dynamic()](series-stats-dynamicfunction.md)|Return multiple columns with the common statistics (min/max/variance/stdev/average)|
 |[series_stats()](series-statsfunction.md)|Generates a dynamic value with the common statistics (min/max/variance/stdev/average)|
 
-For a complete list of series analysis functions see: [Series processing functions](scalarfunctions.md#series-processing-functions)
+For a complete list of series analysis functions, see: [Series processing functions](scalarfunctions.md#series-processing-functions)
 
 ## List of series interpolation functions
 
@@ -119,7 +119,7 @@ For a complete list of series analysis functions see: [Series processing functio
 |[series_fill_forward()](series-fill-forwardfunction.md)|Performs forward fill interpolation of missing values in a series|
 |[series_fill_linear()](series-fill-linearfunction.md)|Performs linear interpolation of missing values in a series|
 
-* Note: Interpolation functions by default assume `null` as a missing value. Therefore specify `default=`*double*(`null`) in `make-series` if you intend to use interpolation functions for the series. 
+* Note: Interpolation functions by default assume `null` as a missing value. Therefore specify `default=`*double*(`null`) in `make-series` if you intend to use interpolation functions for the series.
 
 ## Examples
   
@@ -161,7 +161,6 @@ data
 |avg_metric|timestamp|
 |---|---|
 |[ 4.0, 3.0, 5.0, 0.0, 10.5, 4.0, 3.0, 8.0, 6.5 ]|[ "2017-01-01T00:00:00.0000000Z", "2017-01-02T00:00:00.0000000Z", "2017-01-03T00:00:00.0000000Z", "2017-01-04T00:00:00.0000000Z", "2017-01-05T00:00:00.0000000Z", "2017-01-06T00:00:00.0000000Z", "2017-01-07T00:00:00.0000000Z", "2017-01-08T00:00:00.0000000Z", "2017-01-09T00:00:00.0000000Z" ]|  
-
 
 When the input to `make-series` is empty, the default behavior of `make-series` produces an empty result as well.
 
