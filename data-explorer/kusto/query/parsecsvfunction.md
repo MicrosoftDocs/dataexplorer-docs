@@ -63,7 +63,7 @@ print result=parse_csv('aa,"b,b,b",cc,"Escaping quotes: ""Title""","line1\nline2
 
 |result|
 |---|
-|[<br>  "aa",<br>  "b,b,b",<br>  "cc",<br>  "Escaping quotes: "\Title\"",<br>  "line1\nline2"<br>]|
+|[<br>  "aa",<br>  "b,b,b",<br>  "cc",<br>  "Escaping quotes: \"Title\"",<br>  "line1\nline2"<br>]|
 
 ### CSV with multiple records
 
