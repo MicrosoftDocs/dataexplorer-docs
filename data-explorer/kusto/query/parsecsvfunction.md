@@ -1,9 +1,9 @@
 ---
 title: parse_csv() - Azure Data Explorer
-description: This article describes parse_csv() in Azure Data Explorer.
+description: Learn how to use the parse_csv() function to split a given string representing a single record of comma-separated values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/08/2023
 ---
 # parse_csv()
 
@@ -25,10 +25,9 @@ parse_csv("aaa,bbb,ccc") == ["aaa","bbb","ccc"]
 
 A string array that contains the split values.
 
-**Notes**
-
-Embedded line feeds, commas, and quotes may be escaped using the double quotation mark ('"'). 
-This function doesn't support multiple records per row (only the first record is taken).
+> [!NOTE]
+> Embedded line feeds, commas, and quotes may be escaped using the double quotation mark ('"').
+> This function doesn't support multiple records per row (only the first record is taken).
 
 ## Examples
 
@@ -39,7 +38,7 @@ print result=parse_csv('aa,"b,b,b",cc,"Escaping quotes: ""Title""","line1\nline2
 
 |result|
 |---|
-|[<br>  "aa",<br>  "b,b,b",<br>  "cc",<br>  "Escaping quotes: \"Title\"",<br>  "line1\nline2"<br>]|
+|[<br>  "aa",<br>  "b,b,b",<br>  "cc",<br>  "Escaping quotes: "\Title\"",<br>  "line1\nline2"<br>]|
 
 CSV payload with multiple records:
 

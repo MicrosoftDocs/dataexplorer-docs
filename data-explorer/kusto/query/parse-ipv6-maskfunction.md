@@ -1,12 +1,12 @@
 ---
 title: parse_ipv6_mask() - Azure Data Explorer
-description: This article describes parse_ipv6_mask() function in Azure Data Explorer.
+description: Learn how to use the parse_ipv6_mask() function to convert IPv6 or IPv4 strings and netmask to a canonical IPv6 string representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 01/08/2023
 ---
 # parse_ipv6_mask()
- 
+
 Converts IPv6/IPv4 string and netmask to a canonical IPv6 string representation.
 
 ```kusto
@@ -16,7 +16,7 @@ parse_ipv6_mask(":fe80::85d:e82c:9446:7994", 120) == 'fe80:0000:0000:0000:085d:e
 
 ## Syntax
 
-`parse_ipv6_mask(`*`Expr`*`, `*`PrefixMask`*`)`
+`parse_ipv6_mask(`*`Expr`*`,`*`PrefixMask`*`)`
 
 ## Arguments
 
@@ -62,4 +62,3 @@ datatable(ip_string:string, netmask:long)
 |fe80::85d:e82c:9446:7994/120|124|fe80:0000:0000:0000:085d:e82c:9446:7900|
 |::192.168.255.255|128|0000:0000:0000:0000:0000:ffff:c0a8:ffff|
 |::192.168.255.255/24|128|0000:0000:0000:0000:0000:ffff:c0a8:ff00|
-

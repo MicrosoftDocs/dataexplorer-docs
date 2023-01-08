@@ -1,13 +1,13 @@
 ---
 title: parse_user_agent() - Azure Data Explorer
-description: This article describes parse_user_agent() in Azure Data Explorer.
+description: Learn how to use the parse_user_agent() to return a dynamic object that contains information about the user-agent.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 01/08/2023
 ---
 # parse_user_agent()
 
-Interprets a user-agent string, which identifies the user's browser and provides certain system details to servers hosting the websites the user visits. The result is returned as [`dynamic`](./scalar-data-types/dynamic.md). 
+Interprets a user-agent string, which identifies the user's browser and provides certain system details to servers hosting the websites the user visits. The result is returned as [`dynamic`](./scalar-data-types/dynamic.md).
 
 ## Syntax
 
@@ -17,17 +17,17 @@ Interprets a user-agent string, which identifies the user's browser and provides
 
 * *user-agent-string*: An expression of type `string`, representing a user-agent string.
 
-* *look-for*: An expression of type `string` or `dynamic`, representing what the function should be looking for in the user-agent string (parsing target). 
-The possible options: "browser", "os", "device". If only a single parsing target is required it can be passed a `string` parameter.
-If two or three are required they can be passed as a `dynamic array`.
+* *look-for*: An expression of type `string` or `dynamic`, representing what the function should be looking for in the user-agent string (parsing target).
+The possible options: "browser", "os", "device". If only a single parsing target is required, it can be passed a `string` parameter.
+If two or three are required, they can be passed as a `dynamic array`.
 
 ## Returns
 
 An object of type `dynamic` that contains the information about the requested parsing targets.
 
-Browser: Family, MajorVersion, MinorVersion, Patch                 
+Browser: Family, MajorVersion, MinorVersion, Patch
 
-OperatingSystem: Family, MajorVersion, MinorVersion, Patch, PatchMinor             
+OperatingSystem: Family, MajorVersion, MinorVersion, Patch, PatchMinor
 
 Device: Family, Brand, Model
 
@@ -35,7 +35,7 @@ Device: Family, Brand, Model
 > The function implementation is built on regex checks of the input string against a huge number of predefined patterns. Therefore the expected time and CPU consumption is high.
 When the function is used in a query, make sure it runs in a distributed manner on multiple machines.
 If queries with this function are frequently used, you may want to pre-create the results via [update policy](../management/updatepolicy.md), but you need to take into account that using this function inside the update policy will increase the ingestion latency.
- 
+
 ## Example
 
 ```kusto
