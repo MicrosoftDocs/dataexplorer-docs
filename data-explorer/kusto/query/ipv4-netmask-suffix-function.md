@@ -19,11 +19,7 @@ Returns the value of the IPv4 netmask suffix from an IPv4 string address.
 |--|--|--|--|
 |*ip*| string | &check;| An expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).|
 
-### IP-prefix notation
-
-IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character. The IP address to the left of the slash (`/`) is the base IP address. The number (0 to 32) to the right of the slash (`/`) is the number of contiguous 1 bit in the netmask.
-
-For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24 contiguous bits or 255.255.255.0 in dotted decimal format.
+[!INCLUDE [ipv4-prefix-notation](../../includes/ipv4-prefix-notation.md)]
 
 ## Returns
 
