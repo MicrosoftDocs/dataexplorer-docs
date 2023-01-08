@@ -61,7 +61,7 @@ The **Ingest data** window opens with the **Destination** tab selected.
 
 1. Under **Data Connection**, fill in the following fields:
 
-    :::image type="content" source="media/event-hub-wizard/project-details.png" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
+    :::image type="content" source="media/event-hub-wizard/project-details.jpg" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
