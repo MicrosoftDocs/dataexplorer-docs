@@ -1,9 +1,9 @@
 ---
 title: parse-kv operator - Azure Data Explorer
-description: This article describes the parse-kv operator in Azure Data Explorer.
+description: Learn how to use the parse-kv operator to represent structured information extracted from a string expression in a key/value form.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/10/2022
+ms.date: 01/08/2023
 ---
 
 # parse-kv operator
@@ -11,6 +11,7 @@ ms.date: 07/10/2022
 Extracts structured information from a string expression and represents the information in a key/value form.
 
 The following extraction modes are supported:
+
 * [**Specified delimeter**](#specified-delimeter): Extraction based on specified delimiters that dictate how keys/values and pairs are separated from each other.
 * [**Non-specified delimeter**](#non-specified-delimiter): Extraction with no need to specify delimiters. Any non-alphanumeric character is considered a delimiter.
 * [**Regex**](#regex): Extraction based on [RE2](re2.md) regular expression.
@@ -44,6 +45,7 @@ The following extraction modes are supported:
 The original input tabular expression *T*, extended with columns per specified keys to extract.
 
 > [!NOTE]
+>
 > * If a key doesn't appear in a record, the corresponding column value will either be `null` or an empty string, depending on the column type.
 > * Only keys that are listed in the operator are extracted.
 > * The first appearance of a key is extracted, and subsequent values are ignored.

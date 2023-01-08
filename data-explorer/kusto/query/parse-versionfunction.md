@@ -1,13 +1,13 @@
 ---
 title: parse_version() - Azure Data Explorer
-description: This article describes parse_version() in Azure Data Explorer.
+description: Learn how to use the parse_version() function to convert the input string representation of the version to a comparable decimal number,
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/08/2023
 ---
 # parse_version()
 
-Converts the input string representation of version to a comparable decimal number.
+Converts the input string representation of the version to a comparable decimal number.
 
 ```kusto
 parse_version("0.0.0.1")
@@ -22,6 +22,7 @@ parse_version("0.0.0.1")
 * *`Expr`*: A scalar expression of type `string` that specifies the version to be parsed.
 
 > [!NOTE]
+>
 > * Input string must contain from one to four version parts, represented as numbers and separated with dots ('.').
 > * Each part of version may contain up to eight digits, with the max value at 99999999.
 > * If the number of parts is less than four, all the missing parts are considered as trailing (`1.0` == `1.0.0.0`).
