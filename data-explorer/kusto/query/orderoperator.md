@@ -3,7 +3,7 @@ title: order operator  - Azure Data Explorer
 description: This article describes order operator  in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 01/08/2023
 ---
 # order operator
 
