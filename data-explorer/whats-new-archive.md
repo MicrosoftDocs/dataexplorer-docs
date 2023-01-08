@@ -9,6 +9,18 @@ ms.date: 07/06/2022
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
 
+## December 2021
+
+| Article title | Description |
+|--|--|
+| [Use parameters in dashboards](dashboard-parameters.md) | Updated article. Added new section for cross-filters as dashboard parameters. |
+
+**Functions library**
+
+| Article title | Description |
+|--|--|
+| [time_window_rolling_avg_fl()](kusto/functions-library/time-window-rolling-avg-fl.md) | New Article. Describes the function that calculates the rolling average of a metric over a constant duration time window. |
+
 ## November 2021
 
 | Article title | Description |
@@ -321,7 +333,7 @@ Article title | Description
 [.disable plugin](kusto/management/disable-plugin.md) | New article. Disables a plugin.
 [.enable plugin](kusto/management/enable-plugin.md) | New article. Enables a plugin.
 [.show plugins](kusto/management/show-plugins.md) | New article. Lists all plugins of the cluster.
-| [Cluster follower commands](kusto/management/cluster-follower.md) | Updated article. Syntax changed, added `.alter follower database prefetch-extents`. |
+| [Follower commands](kusto/management/cluster-follower.md) | Updated article. Syntax changed, added `.alter follower database prefetch-extents`. |
 
 **Functions library**
 

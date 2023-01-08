@@ -148,7 +148,7 @@ In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mod
 
 ### To create a persistent database
 
-In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mode), run the following command to create a volatile database:
+In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mode), run the following command to create a persistent database:
 
 ```kusto
 .create database <YourDatabaseName> persist (

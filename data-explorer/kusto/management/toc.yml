@@ -426,6 +426,8 @@ items:
     items:
     - name: Using sandboxes
       href: ../concepts/sandboxes.md
+    - name: Using sandboxes in non-modern sku
+      href: ../concepts/sandboxes-in-non-modern-skus.md
     - name: Sandbox policy
       href: sandboxpolicy.md
     - name: .alter cluster sandbox policy command
@@ -518,12 +520,16 @@ items:
       href: data-ingestion/streaming-ingestion-schema-changes.md
     - name: Clear schema cache for streaming ingestion
       href: data-ingestion/clear-schema-cache-command.md
-  - name: Ingestion failures
-    items:
-    - name: Ingestion failures
-      href: ingestionfailures.md
-    - name: Streaming ingestion failures
-      href: streamingingestionfailures.md   
+  - name: .dup-next-ingest
+    href: dup-next-ingest.md
+    displayName: duplicate, ingestion, troubleshoot
+  - name: .dup-next-failed-ingest
+    displayName: duplicate, failure, ingestion, troubleshoot
+    href: dup-next-failed-ingest.md
+  - name: .show ingestion failures
+    href: ingestionfailures.md
+  - name: .show streaming ingestion failures
+    href: streamingingestionfailures.md   
 - name: Data export
   href: data-export/index.md
   items:
@@ -629,7 +635,8 @@ items:
         href: show-extents.md
     - name: Extent containers clean commands
       href: clean-extent-containers.md
-  - name: Cluster follower
+  - name: Follower commands
+    displayName: Cluster commands, database commands, materialized view commands, table commands 
     href: cluster-follower.md
   - name: Data purge
     href: ../concepts/data-purge.md

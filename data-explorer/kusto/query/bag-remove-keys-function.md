@@ -26,7 +26,8 @@ Returns a `dynamic` property bag without specified keys and their values.
 
 ## Examples
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcy8gtISq5TKvMTczGRNrmguBSCAcjWq1bNTKw3VFawUDI2MdUAyCiARI3UrBfXEpGT1Wk0dHOrVyxJzSlPVdcDqjYHqTYz0DEDKY7lqFFIrSlLzUhSKUotLc0pskxLT44tSc/PLUuOBaoshLtKBmxkNsRFikol6rKYmAD1YmXe9AAAA)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcy8gtISq5TKvMTczGRNrmguBSCAcjWq1bNTKw3VFawUDI2MdUAyCiARI3UrBfXEpGT1Wk0dHOrVyxJzSlPVdcDqjYHqTYz0DEDKY7lqFFIrSlLzUhSKUotLc0pskxLT44tSc/PLUuOBaoshLtKBmxkNsRFikol6rKYmAD1YmXe9AAAA" target="_blank">Run the query</a>
 
 ```kusto
 datatable(input:dynamic)
@@ -37,6 +38,8 @@ datatable(input:dynamic)
 | extend result=bag_remove_keys(input, dynamic(['key2', 'key4']))
 ```
 
+**Output**
+
 |input|result|
 |---|---|
 |{<br>  "key1": 123,<br>  "key2": "abc"<br>}|{<br>  "key1": 123<br>}|
@@ -44,7 +47,8 @@ datatable(input:dynamic)
 
 ### Remove inner properties of dynamic values using JSONPath notation
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2O3QqDMAyF7/sUuRjEQpFW74Q9iRSpNgyZf2gVnfPd19JtydWXk5wTa5zvuqOkHabVFfYYTN82nJUMfH0xOfFJh8ICVJYLCJB5OHGax0khFICmbtArYRAk3I8XXnE191wqKQVkUuqLC6bZG2h3NFiYaVk7d6/No5qpHzeq/MUSvxH//BJvaQhNY+DPV3P+AU1I1W7BAAAA)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2O3QqDMAyF7/sUuRjEQpFW74Q9iRSpNgyZf2gVnfPd19JtydWXk5wTa5zvuqOkHabVFfYYTN82nJUMfH0xOfFJh8ICVJYLCJB5OHGax0khFICmbtArYRAk3I8XXnE191wqKQVkUuqLC6bZG2h3NFiYaVk7d6/No5qpHzeq/MUSvxH//BJvaQhNY+DPV3P+AU1I1W7BAAAA" target="_blank">Run the query</a>
 
 ```kusto
 datatable(input:dynamic)
@@ -53,6 +57,8 @@ datatable(input:dynamic)
 ]
 | extend result=bag_remove_keys(input, dynamic(['$.key2.prop1', 'key3']))
 ```
+
+**Output**
 
 |input|result|
 |---|---|
