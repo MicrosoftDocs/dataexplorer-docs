@@ -5,7 +5,6 @@ ms.date: 01/08/2023
 
 ## IP-prefix notation
 
-IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character.
-The IP address to the LEFT of the slash (`/`) is the base IP address. The integer, 0 to 32, to the RIGHT of the slash (`/`) is the number of contiguous 1 bit in the netmask.
+IP-prefix notation is a way of writing an IP address that includes a netmask. To use IP-prefix notation, write the base IP address followed by a slash (`/`) and an integer between 0 and 32. This integer represents the number of contiguous 1 bits in the netmask.
 
-For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24 contiguous bits or 255.255.255.0 in dotted decimal format.
+For example, the IP-prefix notation 192.168.2.0/24 would have a netmask with 24 contiguous 1 bits, or a netmask of 255.255.255.0 in dotted decimal format.
