@@ -275,12 +275,12 @@ Notice that `render timechart` uses the first column as the x-axis, and then dis
 
 How does activity vary over the average day?
 
-Count events by the time modulo one day, binned into hours. Here, we use `floor` instead of `bin`:
+Count events by the time modulo one day, binned into hours.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend hour = floor(StartTime % 1d , 1h)
+| extend hour =bin(StartTime % 1d , 1h)
 | summarize event_count=count() by hour
 | sort by hour asc
 | render timechart
@@ -299,7 +299,7 @@ How does activity vary over the time of day in different states?
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend hour= floor( StartTime % 1d , 1h)
+| extend hour=bin( StartTime % 1d , 1h)
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
 | summarize event_count=count() by hour, State
 | render timechart
@@ -312,7 +312,7 @@ Divide by `1h` to turn the x-axis into an hour number instead of a duration:
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend hour= floor( StartTime % 1d , 1h)/ 1h
+| extend hour=bin( StartTime % 1d , 1h)/ 1h
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
 | summarize event_count=count() by hour, State
 | render columnchart

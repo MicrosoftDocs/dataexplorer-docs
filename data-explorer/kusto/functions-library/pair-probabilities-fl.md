@@ -62,8 +62,8 @@ probAB
        , P_BIA = P_AB/P_A                               // conditional probability of B on A
 | extend Lift_AB = P_AB/(P_A * P_B)                     // lift metric
        , Jaccard_AB = P_AB/P_AUB                        // Jaccard similarity index
-| project _A, _B, _scope, floor(P_A, 0.00001), floor(P_B, 0.00001), floor(P_AB, 0.00001), floor(P_AUB, 0.00001), floor(P_AIB, 0.00001)
-, floor(P_BIA, 0.00001), floor(Lift_AB, 0.00001), floor(Jaccard_AB, 0.00001)
+| project _A, _B, _scope,bin(P_A, 0.00001),bin(P_B, 0.00001),bin(P_AB, 0.00001),bin(P_AUB, 0.00001),bin(P_AIB, 0.00001)
+,bin(P_BIA, 0.00001),bin(Lift_AB, 0.00001),bin(Jaccard_AB, 0.00001)
 | sort by _scope, _A, _B
 };
 //
@@ -120,8 +120,8 @@ probAB
        , P_BIA = P_AB/P_A                               // conditional probability of B on A
 | extend Lift_AB = P_AB/(P_A * P_B)                     // lift metric
        , Jaccard_AB = P_AB/P_AUB                        // Jaccard similarity index
-| project _A, _B, _scope, floor(P_A, 0.00001), floor(P_B, 0.00001), floor(P_AB, 0.00001), floor(P_AUB, 0.00001), floor(P_AIB, 0.00001)
-, floor(P_BIA, 0.00001), floor(Lift_AB, 0.00001), floor(Jaccard_AB, 0.00001)
+| project _A, _B, _scope,bin(P_A, 0.00001),bin(P_B, 0.00001),bin(P_AB, 0.00001),bin(P_AUB, 0.00001),bin(P_AIB, 0.00001)
+,bin(P_BIA, 0.00001),bin(Lift_AB, 0.00001),bin(Jaccard_AB, 0.00001)
 | sort by _scope, _A, _B
 };
 ```

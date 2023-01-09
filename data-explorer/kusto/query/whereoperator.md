@@ -38,7 +38,7 @@ Rows in *T* for which *Predicate* is `true`.
 
 * **Use simple comparisons** between column names and constants. ('Constant' means constant over the table - so `now()` and `ago()` are OK, and so are scalar values assigned using a [`let` statement](./letstatement.md).)
 
-    For example, prefer `where Timestamp >= ago(1d)` to `where floor(Timestamp, 1d) == ago(1d)`.
+    For example, prefer `where Timestamp >= ago(1d)` to `where bin(Timestamp, 1d) == ago(1d)`.
 
 * **Simplest terms first**: If you have multiple clauses conjoined with `and`, put first the clauses that involve just one column. So `Timestamp > ago(1d) and OpId == EventId` is better than the other way around.
 
