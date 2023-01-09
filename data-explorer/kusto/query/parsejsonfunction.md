@@ -9,7 +9,7 @@ ms.date: 11/13/2022
 
 Interprets a `string` as a JSON value and returns the value as `dynamic`. If possible, the value is converted into relevant [data types](scalar-data-types/index.md).  For strict parsing with no data type conversion, use [extract()](extractfunction.md) or [extractjson()](extractjsonfunction.md) functions.
 
-This function is better than [extractjson() function](./extractjsonfunction.md) when you need to extract more than one element of a JSON compound object. Prefer using [dynamic()](./scalar-data-types/dynamic.md) when possible.
+It's better to use the parse_json() function over the [extractjson(), extract_json()](./extractjsonfunction.md) functions when you need to extract more than one element of a JSON compound object. Use [dynamic()](./scalar-data-types/dynamic.md) when possible.
 
 > **Deprecated aliases:** parsejson(), toobject(), todynamic()
 
