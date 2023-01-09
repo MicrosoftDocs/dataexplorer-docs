@@ -407,7 +407,7 @@ items:
     href: beta-invfunction.md
   - name: beta_pdf()
     href: beta-pdffunction.md
-  - name: bin()
+  - name: bin(), floor()
     href: binfunction.md
   - name: bin_at()
     href: binatfunction.md
@@ -526,8 +526,6 @@ items:
     href: extractallfunction.md
   - name: extract_json(), extractjson()
     href: extractjsonfunction.md
-  - name: floor()
-    href: floorfunction.md
   - name: format_bytes()
     href: format-bytesfunction.md
   - name: format_datetime()
