@@ -1,9 +1,9 @@
 ---
 title: make_datetime() - Azure Data Explorer
-description: This article describes make_datetime() in Azure Data Explorer.
+description: Learn how to use the make_datetime() function to create a datetime scalar value from the specified date and time.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/26/2022
 ---
 # make_datetime()
 
@@ -15,11 +15,11 @@ make_datetime(2017,10,01,12,10) == datetime(2017-10-01 12:10)
 
 ## Syntax
 
-`make_datetime(`*year*,*month*,*day*`)`
+`make_datetime(`*year*, *month*, *day*`)`
 
-`make_datetime(`*year*,*month*,*day*,*hour*,*minute*`)`
+`make_datetime(`*year*, *month*, *day*, *hour*, *minute*`)`
 
-`make_datetime(`*year*,*month*,*day*,*hour*,*minute*,*second*`)`
+`make_datetime(`*year*, *month*, *day*, *hour*, *minute*, *second*`)`
 
 ## Arguments
 
@@ -33,7 +33,7 @@ make_datetime(2017,10,01,12,10) == datetime(2017-10-01 12:10)
 ## Returns
 
 If creation is successful, result will be a [datetime](./scalar-data-types/datetime.md) value, otherwise, result will be null.
- 
+
 ## Example
 
 ```kusto
@@ -46,9 +46,6 @@ print year_month_day = make_datetime(2017,10,01)
 |---|
 |2017-10-01 00:00:00.0000000|
 
-
-
-
 ```kusto
 print year_month_day_hour_minute = make_datetime(2017,10,01,12,10)
 ```
@@ -59,9 +56,6 @@ print year_month_day_hour_minute = make_datetime(2017,10,01,12,10)
 |---|
 |2017-10-01 12:10:00.0000000|
 
-
-
-
 ```kusto
 print year_month_day_hour_minute_second = make_datetime(2017,10,01,12,11,0.1234567)
 ```
@@ -71,4 +65,3 @@ print year_month_day_hour_minute_second = make_datetime(2017,10,01,12,11,0.12345
 |year_month_day_hour_minute_second|
 |---|
 |2017-10-01 12:11:00.1234567|
-

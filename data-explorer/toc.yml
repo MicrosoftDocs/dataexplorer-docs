@@ -169,7 +169,7 @@ items:
         href: data-factory-command-activity.md
     - name: Azure Cosmos DB
       items:
-      - name: Azure Cosmos DB data feed connection
+      - name: Azure Cosmos DB data connection
         displayName: ingest
         href: ingest-data-cosmos-db-connection.md
       - name: Get latest Azure Cosmos DB documents
