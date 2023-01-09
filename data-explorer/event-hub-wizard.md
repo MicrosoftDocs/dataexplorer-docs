@@ -1,13 +1,14 @@
 ---
 title: Ingest data from Azure Event Hubs into Azure Data Explorer using the ingestion wizard
-description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Azure Event Hubs using the ingestion wizard.
+description: Learn how to ingest (load) data into Azure Data Explorer from Azure Event Hubs using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 09/20/2022
+ms.date: 01/09/2023
 ---
 # Use the ingestion wizard to create an Azure Event Hubs data connection for Azure Data Explorer
 
 > [!div class="op_single_selector"]
+>
 > * [Portal](ingest-data-event-hub.md)
 > * [Ingestion wizard](event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
@@ -69,7 +70,9 @@ The **Ingest data** window opens with the **Destination** tab selected.
     | Event hub namespace |  | The name that identifies your namespace. |
     | Event hub |  | The event hub you wish to use. |
     | Consumer group |  | The consumer group defined in your event hub. |
+    | Compression | | The compression type of the event hub messages payload.|
     | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
+    |Event retrieval start date| Coordinated Universal Time (UTC) | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created. |
 
 1. Select **Next: Schema**.
 

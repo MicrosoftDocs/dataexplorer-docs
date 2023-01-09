@@ -1,19 +1,19 @@
 ---
-title: bin() - Azure Data Explorer
-description: Learn how to use the bin() function to round values down to an integer multiple of a given bin size. 
+title: bin(), floor() - Azure Data Explorer
+description: Learn how to use the bin(), floor() function to round values down to an integer multiple of a given bin size. 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/23/2022
 adobe-target: true
 ---
-# bin()
+# bin(), floor()
 
 Rounds values down to an integer multiple of a given bin size.
 
 Used frequently in combination with [`summarize by ...`](./summarizeoperator.md).
 If you have a scattered set of values, they'll be grouped into a smaller set of specific values.
 
-Alias to `floor()` function.
+> The `bin()` and `floor()` functions are equivalent
 
 ## Syntax
 

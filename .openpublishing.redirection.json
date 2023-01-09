@@ -364,6 +364,31 @@
       "source_path": "data-explorer/kusto/query/makestringfunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-to-string-function",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/visualize-power-bi.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/floorfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/binfunction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/sortoperator.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/orderoperator",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/iiffunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/ifffunction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/getmonthfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/monthofyearfunction",
+      "redirect_document_id": true
     }
   ]
 }

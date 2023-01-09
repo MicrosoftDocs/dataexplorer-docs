@@ -117,9 +117,9 @@ StormEvents
 | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative
 ```
 
-### sort
+### order, sort
 
-[**sort**](kusto/query/sortoperator.md): Sort the rows of the input table into order by one or more columns.
+[**order, sort**](kusto/query/orderoperator.md): Sort the rows of the input table into order by one or more columns.
 
 The following query sorts the data in descending order by `DamageProperty`.
 
@@ -324,7 +324,7 @@ This query uses a **let** statement, which binds a name (in this case `MyData`) 
 
 ### parse_json()
 
-[**parse_json()**](kusto/query/parsejsonfunction.md): Interprets a string as a JSON value, and returns the value as dynamic. It's superior to using the **extractjson()** function when you need to extract more than one element of a compound JSON object.
+[**parse_json()**](kusto/query/parsejsonfunction.md): Interprets a string as a JSON value, and returns the value as dynamic. It's better than using the **extract_json(), extractjson()** functions when you need to extract more than one element of a compound JSON object.
 
 The following query extracts the JSON elements from an array.
 
