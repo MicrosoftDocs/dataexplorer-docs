@@ -23,12 +23,7 @@ Matches two IPv6 or IPv4 network address strings. The two IPv6/IPv4 strings are 
 | *ip1*, *ip2*| string | &check; | An expression representing an IPv6 or IPv4 address. IPv6 and IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).|
 | *prefix*| int | | An integer from 0 to 128 representing the number of most-significant bits that are taken into account.|
 
-## IP-prefix notation
-
-IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character.
-The IP address to the LEFT of the slash (`/`) is the base IP address. The number (0 to 128) to the RIGHT of the slash (`/`) is the number of contiguous 1 bit in the netmask.
-
-For example, fe80::85d:e82c:9446:7994/120 will have an associated net/subnetmask containing 120 contiguous bits.
+[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 ## Returns
 

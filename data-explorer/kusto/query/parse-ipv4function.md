@@ -7,28 +7,19 @@ ms.date: 01/08/2023
 ---
 # parse_ipv4()
 
-Converts IPv4 string to long (signed 64-bit) number representation in big-endian order.
-
-```kusto
-parse_ipv4("127.0.0.1") == 2130706433
-parse_ipv4('192.1.168.1') < parse_ipv4('192.1.168.2') == true
-tohex(parse_ipv4('127.2.3.4')) == '7f020304'
-```
+Converts IPv4 string to a signed 64-bit wide long number representation in big-endian order.
 
 ## Syntax
 
-`parse_ipv4(`*`Expr`*`)`
+`parse_ipv4(`*ip*`)`
 
-## Arguments
+## Parameters
 
-* *`Expr`*: String expression representing IPv4 that will be converted to long. String may include net-mask using [IP-prefix notation](#ip-prefix-notation).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ip* | string | &check; | The IPv4 that will be converted to long. The value may include net-mask using [IP-prefix notation](#ip-prefix-notation).|
 
-## IP-prefix notation
-
-IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character.
-The IP address to the LEFT of the slash (`/`) is the base IP address. The number (0 to 32) to the RIGHT of the slash (/) is the number of contiguous 1 bit in the netmask.
-
-For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24 contiguous bits or 255.255.255.0 in dotted decimal format.
+[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 ## Returns
 
@@ -37,13 +28,13 @@ If conversion isn't successful, the result will be `null`.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcyC+OKSosy8dCsFCK3JFc2lAATqhpZGeoZmFnqGeobqOihcfSMTkIiRqakeEtY3NlTniuWqUUitKEnNS1EAmpyTn5euYKtQkFhUnBqfWVBmgrBOEwD8UomugwAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-datatable(ip_string:string)
+datatable(ip_string: string)
 [
- '192.168.1.1',
- '192.168.1.1/24',
- '255.255.255.255/31'
+    '192.168.1.1', '192.168.1.1/24', '255.255.255.255/31'
 ]
 | extend ip_long = parse_ipv4(ip_string)
 ```

@@ -1,13 +1,13 @@
 ---
 title: The case-sensitive !startswith_cs string operator - Azure Data Explorer
-description: This article describes the case-sensitive !startswith_cs string operator in Azure Data Explorer.
+description: Learn how to use the !startswith_cs string operator to filter records for data that doesn't start with a case-sensitive search string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/19/2021
+ms.date: 01/09/2023
 ---
 # !startswith_cs operators
 
-Filters a record set for data that does not start with a case-sensitive search string.
+Filters a record set for data that doesn't start with a case-sensitive search string.
 
 The following table provides a comparison of the `startswith` operators:
 
@@ -19,12 +19,12 @@ The following table provides a comparison of the `startswith` operators:
 |[`!startswith_cs`](not-startswith-cs-operator.md) |RHS isn't an initial subsequence of LHS |Yes |`"Fabrikam" !startswith_cs "fab"`|
 
 > [!NOTE]
-> The following abbreviations are used in the table above:
+> The following abbreviations are used in the above table:
 >
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 ## Performance tips
 
