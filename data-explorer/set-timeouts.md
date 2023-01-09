@@ -30,4 +30,29 @@ This section will describe how to configure a custom query timeout and admin com
 1. Under the **Admin command timeout (in minutes)** setting, use the slider to choose the desired admin command timeout length.
 1. The changes will be saved automatically.
 
-:::image type="content" source="media/set-timeouts/set-timeouts-web-ui.png" alt-text="Screenshot of the settings in the Azure Data Explorer web UI that control timeout length.":::
+:::image type="content" source="media/set-timeouts/web-ui-set-timeouts.png" alt-text="Screenshot of the settings in the Azure Data Explorer web UI that control timeout length.":::
+
+## Kusto.Explorer
+
+This section will describe how to configure a custom query timeout and admin command timeout in the Kusto.Explorer.
+
+### Prerequisites
+
+* Download and install the [Kusto.Explorer tool](tools/../kusto/tools/kusto-explorer.md#installing-kustoexplorer).
+* Access to an Azure Data Explorer cluster and database. If needed, [create a free cluster and database](start-for-free-web-ui.md).
+
+### Set timeout length
+
+1. Open the Kusto.Explorer tool.
+1. In the top menu, select the **Tools** tab.
+1. On the right-hand side, select **Options**.
+
+    :::image type="content" source="media/set-timeouts/kusto-explorer-options-widget.png" alt-text="Screenshot showing the options widget in the Kusto.Explorer tool.":::
+
+1. In the left menu, select **Connections**.
+1. In the **Query Server Timeout** setting, enter the desired timeout length.
+1. Under the **Admin Command Server Timeout** setting, enter the desired timeout length.
+
+    :::image type="content" source="media/set-timeouts/kusto-explorer-set-timeouts.png" alt-text="Screenshot showing settings that control the timeout length in Kusto.Explorer.":::
+
+1. Select **OK** to save the changes.
