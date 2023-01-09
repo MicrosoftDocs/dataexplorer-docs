@@ -1,6 +1,6 @@
 ---
 title: parse_ipv6_mask() - Azure Data Explorer
-description: This article describes parse_ipv6_mask() function in Azure Data Explorer.
+description: Learn how to use the parse_ipv6_mask() function to convert IPv6 or IPv4 strings and netmask to a canonical IPv6 string representation.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/08/2023

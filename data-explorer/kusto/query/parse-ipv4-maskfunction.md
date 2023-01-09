@@ -1,6 +1,6 @@
 ---
 title: parse_ipv4_mask() - Azure Data Explorer
-description: This article describes parse_ipv4_mask() function in Azure Data Explorer.
+description: Learn how to use the parse_ipv4_mask() function to convert an IPv4 input string and netmask to a 64-bit wide long number in big-endian order.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/08/2023
