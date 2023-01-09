@@ -122,7 +122,7 @@ StormEvents
 let Lightning_By_State = materialize(StormEvents | summarize lightning_events = countif(EventType == 'Lightning') by State);
 let Top_5_States = Lightning_By_State | top 5 by lightning_events | project State; 
 Lightning_By_State
-| extend State = iif(State in (Top_5_States), State, "Other")
+| extend State = iff(State in (Top_5_States), State, "Other")
 | summarize sum(lightning_events) by State 
 ```
 
