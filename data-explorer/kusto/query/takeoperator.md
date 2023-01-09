@@ -3,7 +3,7 @@ title: take operator, limit operator - Azure Data Explorer
 description: Learn how to use the take operator and limit operator to return a specified number of rows.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/09/2023
 ---
 # take operator, limit operator
 
@@ -12,7 +12,7 @@ Return up to the specified number of rows.
 There is no guarantee which records are returned, unless
 the source data is sorted.
 
-> The `take` operator and `limit` operator are equivalent
+> The `take` and `limit` operators are equivalent
 
 > [!NOTE]
 > `take` is a simple, quick, and efficient way to view a small sample of records when browsing data interactively, but be aware that it doesn't guarantee any consistency in its results when executing multiple times, even if the data set hasn't changed.
