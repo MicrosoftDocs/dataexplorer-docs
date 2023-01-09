@@ -312,8 +312,7 @@ items:
       - name: Dynamic M query parameters
         displayName: Power BI
         href: power-bi-dynamic-m.md
-      - name: SQL query
-        displayName: Power BI
+      - name: Query with SQL in Power BI
         href: power-bi-sql-query.md
     - name: Excel
       items:
