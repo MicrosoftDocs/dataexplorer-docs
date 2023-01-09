@@ -3,39 +3,40 @@ title: T-SQL - Azure Data Explorer
 description: This article describes T-SQL in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/09/2023
 ---
 # T-SQL support
 
-[Kusto query language (KQL)](../../query/index.md) is the preferred query language.
-T-SQL support, however, is useful for tools that can't be easily converted to use KQL.  
-T-SQL support is also useful for casual use by people familiar with SQL.
+Azure Data Explorer supports the use of T-SQL in addition to its primary query language, [Kusto query language (KQL)](../../query/index.md). While KQL is the recommended query language, T-SQL can be useful for tools that are unable to use KQL or for users who are already familiar with SQL.
 
-Kusto can interpret and run T-SQL queries with some language limitations.
+It's important to note that Kusto only supports T-SQL `select` statements and doesn't support DDL commands, such as `CREATE`, `ALTER`, or `DROP`. For more information about the limitations of using T-SQL with Kusto, see the section on [SQL known issues](./sqlknownissues.md).
 
-> [!NOTE]
-> Kusto doesn't support DDL commands. Only T-SQL `select` statements are supported. 
-> For more information about the main differences with regards to T-SQL, 
-> see [SQL known issues](./sqlknownissues.md).
+## Query with T-SQL
 
-## Querying from Kusto.Explorer with T-SQL
+To run a T-SQL query in Azure Data Explorer, begin the query with an empty T-SQL comment line: `--`. The `--` syntax tells Azure Data Explorer to interpret the following query as T-SQL and not KQL.
 
-The Kusto.Explorer tool supports T-SQL queries to Kusto.
-To instruct Kusto.Explorer to execute a query, begin the query with an empty T-SQL comment line (`--`). 
-For example:
+### Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9PV5SpOzUlNLlHQUkgrys9VCC7JL8p1LUvNKykGAE+HDTgcAAAA" target="_blank">Run the query</a>
 
 ```sql
 --
 select * from StormEvents
 ```
 
-## From T-SQL to Kusto query language
+## T-SQL to Kusto query language
 
-Kusto supports translating T-SQL queries to Kusto query language (KQL). 
-This translation can help people familiar with SQL to better understand KQL.
-To get back the equivalent KQL from some T-SQL `select` statement, add `explain` before the query.
+Kusto supports the ability to translate T-SQL queries into its own query language, KQL. This translation feature can be helpful for users who are familiar with SQL and want to learn more about KQL.
 
-For example, the following T-SQL query:
+To get the equivalent KQL for a T-SQL `select` statement, add the keyword `explain` before the query. The output will be the KQL version of the query, which can be useful for understanding the corresponding KQL syntax and concepts.
+
+Remember to preface T-SQL queries with a T-SQL comment line, `--`, to tell Azure Data Explorer to interpret the following query as T-SQL and not KQL.
+
+### Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwXBQQqAIBAF0P2cYpYVCHWH2gedwPQXgToyDpG37z3nCF9N/inUkBCMTeqwzCNPdKlkPkw0by+KNRKNUD47rz77G7tKhVrniBZ+iyMp/UkAAAA=" target="_blank">Run the query</a>
 
 ```sql
 --
@@ -45,10 +46,33 @@ from StormEvents
 order by DamageProperty desc
 ```
 
-produces this output:
+**Output**
 
 ```kusto
 StormEvents
+| project
+    StartTime,
+    EndTime,
+    EpisodeId,
+    EventId,
+    State,
+    EventType,
+    InjuriesDirect,
+    InjuriesIndirect,
+    DeathsDirect,
+    DeathsIndirect,
+    DamageProperty,
+    DamageCrops,
+    Source,
+    BeginLocation,
+    EndLocation,
+    BeginLat,
+    BeginLon,
+    EndLat,
+    EndLon,
+    EpisodeNarrative,
+    EventNarrative,
+    StormSummary
 | sort by DamageProperty desc nulls first
-| take 10
+| take int(10)
 ```
