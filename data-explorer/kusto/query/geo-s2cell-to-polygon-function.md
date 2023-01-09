@@ -1,9 +1,9 @@
 ---
 title: geo_s2cell_to_polygon() - Azure Data Explorer
-description: This article describes geo_s2cell_to_polygon() in Azure Data Explorer.
+description: Learn how to use the geo_s2cell_to_polygon() function to calculate the polygon that represents the S2 Cell rectangular area.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 06/03/2021
+ms.date: 12/14/2022
 ---
 # geo_s2cell_to_polygon()
 
@@ -33,6 +33,8 @@ Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynam
 print s2cellPolygon = geo_s2cell_to_polygon("89c259")
 ```
 
+**Output**
+
 |s2cellPolygon|
 |---|
 |{<br>"type": "Polygon",<br>"coordinates": [[[-74.030012249838478, 40.8012684339439], [-74.030012249838478, 40.7222262918358], [-73.935982114337421, 40.708880489804564], [-73.935982114337421, 40.787917134506841], [-74.030012249838478, 40.8012684339439]]]<br>}|
@@ -50,11 +52,13 @@ datatable(lng:real, lat:real)
 | project s2_hash = geo_point_to_s2cell(lng, lat, 10)
 | project s2_hash_polygon = geo_s2cell_to_polygon(s2_hash)
 | summarize s2_hash_polygon_lst = make_list(s2_hash_polygon)
-| project pack(
+| project bag_pack(
     "type", "Feature",
-    "geometry", pack("type", "GeometryCollection", "geometries", s2_hash_polygon_lst),
-    "properties", pack("name", "S2 Cell polygons collection"))
+    "geometry", bag_pack("type", "GeometryCollection", "geometries", s2_hash_polygon_lst),
+    "properties", bag_pack("name", "S2 Cell polygons collection"))
 ```
+
+**Output**
 
 |Column1|
 |---|
@@ -66,6 +70,8 @@ The following example returns a null result because of the invalid s2cell token 
 ```kusto
 print s2cellPolygon = geo_s2cell_to_polygon("a")
 ```
+
+**Output**
 
 |s2cellPolygon|
 |---|

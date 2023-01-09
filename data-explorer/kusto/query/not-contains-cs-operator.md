@@ -1,14 +1,14 @@
 ---
 title: The case-sensitive !contains_cs string operator - Azure Data Explorer
-description: This article describes the case-sensitive !contains_cs string operator in Azure Data Explorer.
+description: Learn how to use the !contains_cs string operator to filter data that doesn't include a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2021
+ms.date: 12/26/2022
 ---
 
 # !contains_cs operator
 
-Filters a record set for data that does not include a case-sensitive string. `contains` searches for characters rather than [terms](datatypes-string-operators.md#what-is-a-term) of three or more characters. The query scans the values in the column, which is slower than looking up a term in a term index.
+Filters a record set for data that doesn't include a case-sensitive string. `contains` searches for characters rather than [terms](datatypes-string-operators.md#what-is-a-term) of three or more characters. The query scans the values in the column, which is slower than looking up a term in a term index.
 
 The following table provides a comparison of the `contains` operators:
 
@@ -20,29 +20,26 @@ The following table provides a comparison of the `contains` operators:
 |[`!contains_cs`](not-contains-cs-operator.md)   |RHS doesn't occur in LHS |Yes |`"Fabrikam" !contains_cs "Kam"`|
 
 > [!NOTE]
-> The following abbreviations are used in the table above:
+> The following abbreviations are used in the above table:
 >
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 ## Performance tips
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator, for example, `contains_cs`, not `contains`.
+For faster results, use the case-sensitive version of an operator. For example, use `contains_cs` instead of `contains`.
 
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. Also, `has` works faster than `contains`, `startswith`, or `endswith`, however it is not as precise and could provide unwanted records.
-
-For best practices, see [Query best practices](best-practices.md).
+If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. Also, `has` works faster than `contains`, `startswith`, or `endswith`, however it isn't as precise and could provide unwanted records.
 
 ## Syntax
 
 ### Case-sensitive syntax
 
-*T* `|` `where` *Column* `!contains_cs` `(`*Expression*`)` 
+*T* `|` `where` *Column* `!contains_cs` `(`*Expression*`)`
 
 ## Arguments
 

@@ -3,7 +3,7 @@ title: series_shapes_fl() - Azure Data Explorer
 description: This article describes the series_shapes_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 08/23/2022
+ms.date: 11/08/2022
 ---
 # series_shapes_fl()
 
@@ -65,10 +65,10 @@ let series_shapes_fl=(series:dynamic, advanced:bool=false)
 //  filter for jumps that are not close to the series edges and the right slope has the same direction
     let norm_rslope = abs(rslope/norm_range);
     let jump_score = iff((sign_jump*rslope >= 0.0 or norm_rslope < 0.02) and split_idx between((0.1*n)..(0.9*n)), jump_score1, 0.0);
-    let res = iff(advanced, pack("n", n, "low_pct", low_pct, "high_pct", high_pct, "norm_range", norm_range, "slope", slope, "rsquare", rsquare, "rel_slope", rel_slope, "norm_slope", norm_slope,
+    let res = iff(advanced, bag_pack("n", n, "low_pct", low_pct, "high_pct", high_pct, "norm_range", norm_range, "slope", slope, "rsquare", rsquare, "rel_slope", rel_slope, "norm_slope", norm_slope,
                               "trend_score", trend_score, "split_idx", split_idx, "jump", jump, "rsquare2", rsquare2, "last_left", last_left, "first_right", first_right, "rel_jump", rel_jump,
                               "lslope", lslope, "rslope", rslope, "norm_rslope", norm_rslope, "norm_jump", norm_jump, "jump_score", jump_score)
-                              , pack("trend_score", trend_score, "jump_score", jump_score));
+                              , bag_pack("trend_score", trend_score, "jump_score", jump_score));
     res
 }
 ;
@@ -131,10 +131,10 @@ series_shapes_fl(series:dynamic, advanced:bool=false)
 //  filter for jumps that are not close to the series edges and the right slope has the same direction
     let norm_rslope = abs(rslope/norm_range);
     let jump_score = iff((sign_jump*rslope >= 0.0 or norm_rslope < 0.02) and split_idx between((0.1*n)..(0.9*n)), jump_score1, 0.0);
-    let res = iff(advanced, pack("n", n, "low_pct", low_pct, "high_pct", high_pct, "norm_range", norm_range, "slope", slope, "rsquare", rsquare, "rel_slope", rel_slope, "norm_slope", norm_slope,
+    let res = iff(advanced, bag_pack("n", n, "low_pct", low_pct, "high_pct", high_pct, "norm_range", norm_range, "slope", slope, "rsquare", rsquare, "rel_slope", rel_slope, "norm_slope", norm_slope,
                               "trend_score", trend_score, "split_idx", split_idx, "jump", jump, "rsquare2", rsquare2, "last_left", last_left, "first_right", first_right, "rel_jump", rel_jump,
                               "lslope", lslope, "rslope", rslope, "norm_rslope", norm_rslope, "norm_jump", norm_jump, "jump_score", jump_score)
-                              , pack("trend_score", trend_score, "jump_score", jump_score));
+                              , bag_pack("trend_score", trend_score, "jump_score", jump_score));
     res
 }
 ```
