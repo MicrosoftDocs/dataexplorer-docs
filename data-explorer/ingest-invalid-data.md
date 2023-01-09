@@ -43,3 +43,4 @@ The following table shows cases where ingestion succeeds without an error, silen
 * [Data ingestion](ingest-data-overview.md)
 * [Ingestion failures](kusto/management/ingestionfailures.md)
 * [Encoding policy](kusto/management/encoding-policy.md)
+* [Duplicate next ingestion failure](kusto/management/dup-next-failed-ingest.md)

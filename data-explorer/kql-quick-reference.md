@@ -22,7 +22,7 @@ This article shows you a list of functions and their descriptions to help get yo
 | [distinct](kusto/query/distinctoperator.md)                | Produces a table with the distinct combination of the provided columns of the input table | `distinct [ColumnName], [ColumnName]` |
 | **Date/Time**                                   |**_Operations that use date and time functions_**               |                          |
 |[ago](kusto/query/agofunction.md)                           | Returns the time offset relative to the time the query executes. For example, `ago(1h)` is one hour before the current clock's reading. | `ago(a_timespan)` |
-| [format_datetime](kusto/query/format-datetimefunction.md)  | Returns data in [various date formats](kusto/query/format-datetimefunction.md#supported-formats). | `format_datetime(datetime , format)` |
+| [format_datetime](kusto/query/format-datetimefunction.md)  | Returns data in [various date formats](kusto/query/format-datetimefunction.md#supported-format-elements). | `format_datetime(datetime , format)` |
 | [bin](kusto/query/binfunction.md)                          | Rounds all values in a timeframe and groups them | `bin(value,roundTo)` |
 | **Create/Remove Columns**                   |**_Add or remove columns in a table_** |                                                    |
 | [print](kusto/query/printoperator.md)                      | Outputs a single row with one or more scalar expressions | `print [ColumnName =] ScalarExpression [',' ...]` |

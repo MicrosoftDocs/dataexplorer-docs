@@ -3,7 +3,7 @@ title: Write queries for Azure Data Explorer
 description: In this how-to, you learn how to perform basic and more advanced queries for Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: tutorial
-ms.date: 11/09/2022
+ms.date: 11/14/2022
 ms.localizationpriority: high
 ---
 
@@ -803,7 +803,7 @@ This section includes elements and queries that demonstrate how easy it is to pe
 
 ### activity_counts_metrics plugin
 
-[**activity_counts_metrics plugin**](kusto/query/activity-counts-metrics-plugin.md): Calculates useful activity metrics (total count values, distinct count values, distinct count of new values, and aggregated distinct count). Metrics are calculated for each time window, then they are compared, and aggregated to and with all previous time windows.
+[**activity_counts_metrics plugin**](kusto/query/activity-counts-metrics-plugin.md): Calculates useful activity metrics (total count values, distinct count values, distinct count of new values, and aggregated distinct count). Metrics are calculated for each time window, then they're compared, and aggregated to and with all previous time windows.
 
 The following query analyzes user adoption by calculating daily activity counts.
 
