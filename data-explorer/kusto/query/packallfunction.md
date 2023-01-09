@@ -1,6 +1,6 @@
 ---
 title: pack_all() - Azure Data Explorer
-description: This article describes pack_all() in Azure Data Explorer.
+description: Learn how to use the pack_all() function to create a dynamic object from all the columns of the tabular expression.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/08/2023
@@ -57,4 +57,4 @@ datatable(SourceNumber:string,TargetNumber:string,CharsCount:long)
 | |555-555-3456 | 74 | {"SourceNumber":"", "TargetNumber":"555-555-3456", "CharsCount": 74} | {"TargetNumber":"555-555-3456", "CharsCount": 74}
 
 > [!NOTE]
-> There is a difference between the *Packed* and the *PackedIgnoreNullEmpty* columns in the last two rows of the above example. These two rows included empty values that were ignored by *pack_all(true)*.   
+> There is a difference between the *Packed* and the *PackedIgnoreNullEmpty* columns in the last two rows of the above example. These two rows included empty values that were ignored by *pack_all(true)*.
