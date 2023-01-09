@@ -3,13 +3,13 @@ title: order operator, sort operator - Azure Data Explorer
 description: Learn how to use the order operator and the sort operator to sort the rows of the input table by on or more columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 01/09/2023
 ---
 # order operator, sort operator
 
 Sort the rows of the input table into order by one or more columns.
 
-> The `order` operator and `sort` operator are equivalent
+> The `order` and `sort` operators are equivalent
 
 ## Syntax
 
