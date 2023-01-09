@@ -146,7 +146,7 @@ items:
     href: mv-applyoperator.md
   - name: mv-expand operator
     href: mvexpandoperator.md
-  - name: order operator
+  - name: order operator, sort operator
     href: orderoperator.md
   - name: project operator
     href: projectoperator.md
@@ -187,8 +187,6 @@ items:
   - name: shuffle query
     displayName: hint.shufflekey, hint.strategy, shufflekey, hint, strategy
     href: shufflequery.md
-  - name: sort operator
-    href: sortoperator.md
   - name: summarize operator
     items:
     - name: summarize operator overview
@@ -205,7 +203,7 @@ items:
     href: tophittersoperator.md
   - name: union operator
     href: unionoperator.md
-  - name: where operator
+  - name: where operator, filter operator
     href: whereoperator.md
 - name: Special functions
   items:
@@ -341,7 +339,7 @@ items:
     href: around-function.md
   - name: array_concat()
     href: arrayconcatfunction.md
-  - name: array_iif()
+  - name: array_iif(), array_iff()
     href: arrayifffunction.md
   - name: array_index_of()
     href: arrayindexoffunction.md
@@ -538,8 +536,6 @@ items:
     href: format-timespanfunction.md
   - name: gamma()
     href: gammafunction.md
-  - name: getmonth()
-    href: getmonthfunction.md
   - name: gettype()
     href: gettypefunction.md
   - name: getyear()
@@ -576,10 +572,8 @@ items:
     href: hllmergefunction.md
   - name: hourofday()
     href: hourofdayfunction.md
-  - name: iff()
+  - name: iff(), iif()
     href: ifffunction.md
-  - name: iif()
-    href: iiffunction.md
   - name: indexof()
     href: indexoffunction.md
   - name: indexof_regex()
@@ -644,7 +638,7 @@ items:
     href: max-offunction.md
   - name: min_of()
     href: min-offunction.md
-  - name: monthofyear()
+  - name: monthofyear(), getmonth()
     href: monthofyearfunction.md
   - name: new_guid()
     href: newguidfunction.md
@@ -1302,3 +1296,9 @@ items:
       href: ../tools/kusto-explorer-troubleshooting.md
   - name: Kusto.Cli
     href: ../tools/kusto-cli.md
+  - name: Kusto emulator
+    items:
+    - name: Kusto emulator overview
+      href: ../../kusto-emulator-overview.md
+    - name: Install the Kusto emulator
+      href: ../../kusto-emulator-install.md

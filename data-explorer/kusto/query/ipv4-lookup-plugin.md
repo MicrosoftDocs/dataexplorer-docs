@@ -24,12 +24,7 @@ The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns ro
 | *ExtraKey1* .. *ExtraKeyN* | string | | Additional column references that are used for lookup matches. Similar to `join` operation: records with equal values will be considered matching. Column name references must exist both is source table `T` and `LookupTable`.|
 | *return_unmatched* | bool | | A boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).|
 
-### IP-prefix notation
-
-IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character.
-The IP address to the left of the slash (`/`) is the base IP address. The number (0 to 32) to the right of the slash (`/`) is the number of contiguous 1 bit in the netmask.
-
-For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24 contiguous bits or 255.255.255.0 in dotted decimal format.
+[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 ## Returns
 
