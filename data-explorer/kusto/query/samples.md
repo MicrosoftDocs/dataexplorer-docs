@@ -127,47 +127,47 @@ Add code to count the durations in conveniently sized bins. In this example, bec
 
 ```kusto
 Logs
-| filter ActivityId == "ActivityId with Blablabla"
+| where ActivityId == "ActivityId with Blablabla"
 | summarize max(Timestamp), min(Timestamp)
 | extend Duration = max_Timestamp - min_Timestamp
 
 wabitrace
-| filter Timestamp >= datetime(2015-01-12 11:00:00Z)
-| filter Timestamp < datetime(2015-01-12 13:00:00Z)
-| filter EventText like "NotifyHadoopApplicationJobPerformanceCounters"
+| where Timestamp >= datetime(2015-01-12 11:00:00Z)
+| where Timestamp < datetime(2015-01-12 13:00:00Z)
+| where EventText like "NotifyHadoopApplicationJobPerformanceCounters"
 | extend Tenant = extract("tenantName=([^,]+),", 1, EventText)
 | extend Environment = extract("environmentName=([^,]+),", 1, EventText)
 | extend UnitOfWorkId = extract("unitOfWorkId=([^,]+),", 1, EventText)
 | extend TotalLaunchedMaps = extract("totalLaunchedMaps=([^,]+),", 1, EventText, typeof(real))
 | extend MapsSeconds = extract("mapsMilliseconds=([^,]+),", 1, EventText, typeof(real)) / 1000
 | extend TotalMapsSeconds = MapsSeconds  / TotalLaunchedMaps
-| filter Tenant == 'DevDiv' and Environment == 'RollupDev2'
-| filter TotalLaunchedMaps > 0
+| where Tenant == 'DevDiv' and Environment == 'RollupDev2'
+| where TotalLaunchedMaps > 0
 | summarize sum(TotalMapsSeconds) by UnitOfWorkId
 | extend JobMapsSeconds = sum_TotalMapsSeconds * 1
 | project UnitOfWorkId, JobMapsSeconds
 | join (
 wabitrace
-| filter Timestamp >= datetime(2015-01-12 11:00:00Z)
-| filter Timestamp < datetime(2015-01-12 13:00:00Z)
-| filter EventText like "NotifyHadoopApplicationJobPerformanceCounters"
+| where Timestamp >= datetime(2015-01-12 11:00:00Z)
+| where Timestamp < datetime(2015-01-12 13:00:00Z)
+| where EventText like "NotifyHadoopApplicationJobPerformanceCounters"
 | extend Tenant = extract("tenantName=([^,]+),", 1, EventText)
 | extend Environment = extract("environmentName=([^,]+),", 1, EventText)
 | extend UnitOfWorkId = extract("unitOfWorkId=([^,]+),", 1, EventText)
 | extend TotalLaunchedReducers = extract("totalLaunchedReducers=([^,]+),", 1, EventText, typeof(real))
 | extend ReducesSeconds = extract("reducesMilliseconds=([^,]+)", 1, EventText, typeof(real)) / 1000
 | extend TotalReducesSeconds = ReducesSeconds / TotalLaunchedReducers
-| filter Tenant == 'DevDiv' and Environment == 'RollupDev2'
-| filter TotalLaunchedReducers > 0
+| where Tenant == 'DevDiv' and Environment == 'RollupDev2'
+| whereTotalLaunchedReducers > 0
 | summarize sum(TotalReducesSeconds) by UnitOfWorkId
 | extend JobReducesSeconds = sum_TotalReducesSeconds * 1
 | project UnitOfWorkId, JobReducesSeconds )
 on UnitOfWorkId
 | join (
 wabitrace
-| filter Timestamp >= datetime(2015-01-12 11:00:00Z)
-| filter Timestamp < datetime(2015-01-12 13:00:00Z)
-| filter EventText like "NotifyHadoopApplicationJobPerformanceCounters"
+| where Timestamp >= datetime(2015-01-12 11:00:00Z)
+| whereTimestamp < datetime(2015-01-12 13:00:00Z)
+| where EventText like "NotifyHadoopApplicationJobPerformanceCounters"
 | extend Tenant = extract("tenantName=([^,]+),", 1, EventText)
 | extend Environment = extract("environmentName=([^,]+),", 1, EventText)
 | extend JobName = extract("jobName=([^,]+),", 1, EventText)
@@ -182,7 +182,7 @@ wabitrace
 | extend TotalMapsSeconds = MapsSeconds  / TotalLaunchedMaps
 | extend TotalReducesSeconds = (ReducesSeconds / TotalLaunchedReducers / ReducesSeconds) * ReducesSeconds
 | extend CalculatedDuration = (TotalMapsSeconds + TotalReducesSeconds) * time(1s)
-| filter Tenant == 'DevDiv' and Environment == 'RollupDev2')
+| where Tenant == 'DevDiv' and Environment == 'RollupDev2')
 on UnitOfWorkId
 | extend MapsFactor = TotalMapsSeconds / JobMapsSeconds
 | extend ReducesFactor = TotalReducesSeconds / JobReducesSeconds

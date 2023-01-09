@@ -54,7 +54,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hourofday()](hourofdayfunction.md)|Returns the integer number representing the hour number of the given date.|
 |[make_datetime()](make-datetimefunction.md)|Creates a datetime scalar value from the specified date and time.|
 |[make_timespan()](make-timespanfunction.md)|Creates a timespan scalar value from the specified time period.|
-|[monthofyear(), getmonth()](monthofyearfunction.md)|Return the integer number that represents the month number of the given year.|
+|[monthofyear()](monthofyearfunction.md)|Returns the integer number that represents the month number of the given year.|
 |[now()](nowfunction.md)|Returns the current UTC clock time, optionally offset by a given timespan.|
 |[startofday()](startofdayfunction.md)|Returns the start of the day containing the date, shifted by an offset, if provided.|
 |[startofmonth()](startofmonthfunction.md)|Returns the start of the month containing the date, shifted by an offset, if provided.|

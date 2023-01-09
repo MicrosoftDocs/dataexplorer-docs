@@ -203,7 +203,8 @@ items:
     href: tophittersoperator.md
   - name: union operator
     href: unionoperator.md
-  - name: where operator, filter operator
+  - name: where operator
+    displayName: filter operator
     href: whereoperator.md
 - name: Special functions
   items:
@@ -638,7 +639,8 @@ items:
     href: max-offunction.md
   - name: min_of()
     href: min-offunction.md
-  - name: monthofyear(), getmonth()
+  - name: monthofyear()
+    displayName: getmonth()
     href: monthofyearfunction.md
   - name: new_guid()
     href: newguidfunction.md
