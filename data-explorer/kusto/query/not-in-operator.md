@@ -1,9 +1,9 @@
 ---
 title: The case-insensitive !in~ string operator - Azure Data Explorer
-description: Learn how to use the !in~ string operator to filter data without a case-insensitive string.
+description: Learn how to use the !in~ string operator to filter records for data without a case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 01/09/2023
 ---
 # !in~ operator
 

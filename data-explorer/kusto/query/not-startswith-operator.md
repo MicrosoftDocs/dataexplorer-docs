@@ -1,9 +1,9 @@
 ---
 title: The case-insensitive !startswith string operators - Azure Data Explorer
-description: Learn how to use the !startswith string operator to filter data that doesn't start with a case-insensitive search string.
+description: Learn how to use the !startswith string operator to filter records for data that doesn't start with a case-insensitive search string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 01/09/2023
 ---
 # !startswith operator
 
