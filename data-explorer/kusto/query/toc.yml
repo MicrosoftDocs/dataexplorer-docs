@@ -341,7 +341,7 @@ items:
     href: around-function.md
   - name: array_concat()
     href: arrayconcatfunction.md
-  - name: array_iif()
+  - name: array_iif(), array_iff()
     href: arrayifffunction.md
   - name: array_index_of()
     href: arrayindexoffunction.md
@@ -538,8 +538,6 @@ items:
     href: format-timespanfunction.md
   - name: gamma()
     href: gammafunction.md
-  - name: getmonth()
-    href: getmonthfunction.md
   - name: gettype()
     href: gettypefunction.md
   - name: getyear()
@@ -576,10 +574,8 @@ items:
     href: hllmergefunction.md
   - name: hourofday()
     href: hourofdayfunction.md
-  - name: iff()
+  - name: iff(), iif()
     href: ifffunction.md
-  - name: iif()
-    href: iiffunction.md
   - name: indexof()
     href: indexoffunction.md
   - name: indexof_regex()
@@ -644,7 +640,7 @@ items:
     href: max-offunction.md
   - name: min_of()
     href: min-offunction.md
-  - name: monthofyear()
+  - name: monthofyear(), getmonth()
     href: monthofyearfunction.md
   - name: new_guid()
     href: newguidfunction.md
