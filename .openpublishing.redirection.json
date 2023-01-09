@@ -366,6 +366,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/kusto/query/floorfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/binfunction",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/kusto/query/iiffunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/ifffunction",
       "redirect_document_id": true
