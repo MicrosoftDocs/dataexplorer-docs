@@ -7,9 +7,9 @@ ms.date: 01/09/2021
 ---
 # SQL to Kusto cheat sheet
 
-If you're familiar with SQL and want to learn how to query data using KQL, use Azure Data Explorer to translate SQL queries into KQL.
+If you're familiar with SQL and want to learn KQL, you can use Azure Data Explorer to translate SQL queries into KQL.
 
-To translate an SQL query, preface the SQL query with a comment line, `--`, and the keyword `explain`. The output will be the equivalent KQL version of the query, which can help you learn the KQL syntax and concepts.
+To translate an SQL query, preface the SQL query with a comment line, `--`, and the keyword `explain`. The output will show the KQL version of the query, which can help you understand the KQL syntax and concepts.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9PV5XKNCPBx9PRT4Ap29XF1DlFw9g/1C4l38nTX0NJUSCxWcFZwC/L3VQguyS/KdS1LzSspBgDZdzUzNQAAAA==" target="_blank">Run the query</a>
@@ -57,4 +57,4 @@ Having |<code>SELECT COUNT(\*) FROM dependencies<br>GROUP BY name<br>HAVING COUN
 
 ## Next steps
 
-In addition to using KQL, you can also query Azure Data Explorer using a subset of the [T-SQL](../api/tds/t-sql.md) language. T-SQL provides a subset of SQL features and is not fully supported in Azure Data Explorer. For a list of unsupported features, see the list of [SQL known issues](../api/tds/sqlknownissues.md).
+* Use [T-SQL](../api/tds/t-sql.md) to query data
