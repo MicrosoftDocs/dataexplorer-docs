@@ -9,18 +9,15 @@ ms.date: 01/08/2023
 
 Converts IPv6 or IPv4 string to a canonical IPv6 string representation.
 
-```kusto
-parse_ipv6("127.0.0.1") == '0000:0000:0000:0000:0000:ffff:7f00:0001'
-parse_ipv6(":fe80::85d:e82c:9446:7994") == 'fe80:0000:0000:0000:085d:e82c:9446:7994'
-```
-
 ## Syntax
 
-`parse_ipv6(`*`Expr`*`)`
+`parse_ipv6(`*ip*`)`
 
-## Arguments
+## Parameters
 
-* *`Expr`*: String expression representing IPv6/IPv4 network address that will be converted to canonical IPv6 representation. String may include net-mask using [IP-prefix notation](#ip-prefix-notation).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ip* | string | &check; | The IPv6/IPv4 network address that will be converted to canonical IPv6 representation. The value may include net-mask using [IP-prefix notation](#ip-prefix-notation).|
 
 [!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
@@ -31,15 +28,15 @@ If conversion isn't successful, the result will be an empty string.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcyCMhMrheKSosy8dE2uaC4FIFA3tDTSMzSz0DMyNQVhdR0MIX0jE5AolAdXyBXLVaOQWlGSmpeiADTZTMFWoSCxqDg1HsQB26UJANsJke17AAAA" target="_blank">Run the query</a>
+
 ```kusto
-datatable(ipv4:string)
+datatable(ipv4: string)
 [
- '192.168.255.255',
- '192.168.255.255/24',
- '255.255.255.255'
+    '192.168.255.255', '192.168.255.255/24', '255.255.255.255'
 ]
-| extend ipv6 = parse_ipv6(ip_string)
+| extend ipv6 = parse_ipv6(ipv4)
 ```
 
 **Output**
