@@ -3,7 +3,7 @@ title: series_fit_lowess_fl() - Azure Data Explorer
 description: This article describes the series_fit_lowess_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/29/2020
+ms.date: 11/08/2022
 no-loc: LOWESS
 ---
 # series_fit_lowess_fl()
@@ -38,7 +38,7 @@ For ad hoc usage, embed its code using [let statement](../query/letstatement.md)
 ```kusto
 let series_fit_lowess_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_size:int=5, x_series:string='', x_istime:bool=False)
 {
-    let kwargs = pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_size', fit_size, 'x_series', x_series, 'x_istime', x_istime);
+    let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_size', fit_size, 'x_series', x_series, 'x_istime', x_istime);
     let code=
         '\n'
         'y_series = kargs["y_series"]\n'
@@ -93,7 +93,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Fits a local polynomial using LOWESS method to a series")
 series_fit_lowess_fl(tbl:(*), y_series:string, y_fit_series:string, fit_size:int=5, x_series:string='', x_istime:bool=False)
 {
-    let kwargs = pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_size', fit_size, 'x_series', x_series, 'x_istime', x_istime);
+    let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_size', fit_size, 'x_series', x_series, 'x_istime', x_istime);
     let code=
         '\n'
         'y_series = kargs["y_series"]\n'

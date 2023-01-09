@@ -3,7 +3,7 @@ title: predict_fl() - Azure Data Explorer
 description: This article describes the predict_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 09/09/2020
+ms.date: 11/08/2022
 ---
 # predict_fl()
 
@@ -40,7 +40,7 @@ For ad hoc usage, embed the code using the [let statement](../query/letstatement
 let predict_fl=(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
-    let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
+    let kwargs = bag_pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
     let code = ```if 1:
         
         import pickle
@@ -87,7 +87,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 predict_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
-    let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
+    let kwargs = bag_pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
     let code = ```if 1:
         
         import pickle

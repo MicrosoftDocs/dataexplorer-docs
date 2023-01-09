@@ -117,3 +117,7 @@ The following SKU series are available for Azure Data Explorer cluster VMs. The 
 ### Cache size
 
 Azure Data Explorer reserves a portion of the disk size shown in each of the Azure compute [SKU](#sku-options) specifications to be used for cluster operations. The exact cache size for each SKU is available in the [SKU selection section in the portal](https://ms.portal.azure.com/#create/Microsoft.AzureKusto).
+
+## Next steps
+
+* Learn how to use the [pricing calculator](pricing-calculator.md)

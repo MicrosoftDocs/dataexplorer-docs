@@ -1,9 +1,9 @@
 ---
 title: parse_command_line() - Azure Data Explorer
-description: This article describes parse_command_line() in Azure Data Explorer.
+description: Learn how to use the parse_command_line() function to parse a unicode command-line string.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 06/28/2020
+ms.date: 01/08/2023
 ---
 # parse_command_line()
 
@@ -11,7 +11,7 @@ Parses a Unicode command-line string and returns a dynamic array of the command-
 
 ## Syntax
 
-`parse_command_line(`*command_line*,*parser_type*`)`
+`parse_command_line(`*command_line*, *parser_type*`)`
 
 ## Arguments
 
@@ -28,6 +28,8 @@ A dynamic array of the command-line arguments.
 ```kusto
 print parse_command_line("echo \"hello world!\"", "windows")
 ```
+
+**Output**
 
 |Result|
 |---|

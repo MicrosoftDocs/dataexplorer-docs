@@ -1,13 +1,13 @@
 ---
 title: max_of() - Azure Data Explorer
-description: This article describes max_of() in Azure Data Explorer.
+description: Learn how to use the max_of() function to return the maximum value of all argument expressions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/26/2022
 ---
 # max_of()
 
-Returns the maximum value of several evaluated numeric expressions.
+Returns the maximum value of all argument expressions.
 
 ```kusto
 max_of(10, 1, -3, 17) == 17
@@ -21,9 +21,9 @@ max_of(10, 1, -3, 17) == 17
 
 * *expr_i*: A scalar expression, to be evaluated.
 
-- All arguments must be of the same type.
-- Maximum of 64 arguments is supported.
-- Non-null values take precedence to null values.
+* All arguments must be of the same type.
+* Maximum of 64 arguments is supported.
+* Non-null values take precedence to null values.
 
 ## Returns
 
@@ -31,12 +31,14 @@ The maximum value of all argument expressions.
 
 ## Examples
 
-Find the maximum value in an array: 
+Find the maximum value in an array:
 
 <!-- csl: https://help.kusto.windows.net/Samples  -->
 ```kusto
 print result = max_of(10, 1, -3, 17) 
 ```
+
+**Output**
 
 |result|
 |---|
@@ -55,10 +57,12 @@ int(null), int(null)]
 | project max_of(A, B)
 ```
 
+**Output**
+
 |result|
 |---|
 |6|
-|8| 
-|2| 
+|8|
+|2|
 |1|
 |(null)|

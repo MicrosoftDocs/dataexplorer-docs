@@ -1,9 +1,9 @@
 ---
 title: parse_ipv4() - Azure Data Explorer
-description: This article describes parse_ipv4() in Azure Data Explorer.
+description: Learn how to use the parse_ipv4() function to convert an IPv4 string to a long number in big-endian order.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 01/08/2023
 ---
 # parse_ipv4()
 
@@ -34,7 +34,7 @@ For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24
 
 If conversion is successful, the result will be a long number.
 If conversion isn't successful, the result will be `null`.
- 
+
 ## Example
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -47,6 +47,8 @@ datatable(ip_string:string)
 ]
 | extend ip_long = parse_ipv4(ip_string)
 ```
+
+**Output**
 
 |ip_string|ip_long|
 |---|---|
