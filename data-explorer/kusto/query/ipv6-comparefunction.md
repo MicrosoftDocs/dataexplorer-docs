@@ -23,7 +23,7 @@ Compares two IPv6 or IPv4 network address strings. The two IPv6 strings are pars
 | *ip1*, *ip2*| string | &check; | An expression representing an IPv6 or IPv4 address. IPv6 and IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).|
 | *prefix*| int | | An integer from 0 to 128 representing the number of most significant bits that are taken into account.|
 
-[!INCLUDE [ipv6-prefix-notation](../../includes/ipv6-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 ## Returns
 

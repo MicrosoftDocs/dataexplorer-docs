@@ -26,7 +26,7 @@ Checks whether IPv4 string address is in any of the specified IPv4 address range
 > [!NOTE]
 > Either one or more *IPv4Range* strings or an *IPv4Ranges* dynamic array is required.
 
-[!INCLUDE [ipv4-prefix-notation](../../includes/ipv4-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 ## Returns
 

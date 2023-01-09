@@ -20,7 +20,7 @@ Checks if IPv4 string address is in IPv4-prefix notation range.
 | *Ipv4Address*| string | &check; | An expression representing an IPv4 address.|
 | *Ipv4Range*| string | &check; | An IPv4 range or list of IPv4 ranges written with [IP-prefix notation](#ip-prefix-notation).|
 
-[!INCLUDE [ipv4-prefix-notation](../../includes/ipv4-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 
 ## Returns

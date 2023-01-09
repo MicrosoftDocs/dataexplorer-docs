@@ -26,7 +26,7 @@ Checks whether an IPv6 string address is in any of the specified IPv6 address ra
 > [!NOTE]
 > Either one or more *IPv6Range* strings or an *IPv6Ranges* dynamic array is required.
 
-[!INCLUDE [ipv6-prefix-notation](../../includes/ipv6-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 ## Returns
 

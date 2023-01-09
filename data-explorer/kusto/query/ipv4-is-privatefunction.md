@@ -38,7 +38,7 @@ ipv4_is_private("127.0.0.1") == false
 |--|--|--|--|
 |*ip*| string| &check; | An expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).|
 
-[!INCLUDE [ipv4-prefix-notation](../../includes/ipv4-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 ## Returns
 

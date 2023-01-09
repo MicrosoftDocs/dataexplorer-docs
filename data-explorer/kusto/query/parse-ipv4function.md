@@ -23,7 +23,7 @@ tohex(parse_ipv4('127.2.3.4')) == '7f020304'
 
 * *`Expr`*: String expression representing IPv4 that will be converted to long. String may include net-mask using [IP-prefix notation](#ip-prefix-notation).
 
-[!INCLUDE [ipv4-prefix-notation](../../includes/ipv4-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 ## Returns
 

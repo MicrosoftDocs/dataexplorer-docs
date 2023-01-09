@@ -20,7 +20,7 @@ Checks if an IPv6 string address is in the IPv6-prefix notation range.
 | *Ipv6Address* | string | &check; | An expression representing an IPv6 address.|
 | *Ipv6Range*| string | &check; | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).|
 
-[!INCLUDE [ipv6-prefix-notation](../../includes/ipv6-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 ## Returns
 
