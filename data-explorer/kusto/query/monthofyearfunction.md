@@ -9,7 +9,7 @@ ms.date: 02/13/2020
 
 Returns the integer number represents the month number of the given year.
 
-> The monthofyear() and getmonth() functions are equivalent.
+> The `monthofyear()` and `getmonth()` functions are equivalent
 
 ## Syntax
 
