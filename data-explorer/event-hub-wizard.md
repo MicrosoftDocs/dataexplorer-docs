@@ -3,7 +3,7 @@ title: Ingest data from Azure Event Hubs into Azure Data Explorer using the inge
 description: Learn how to ingest (load) data into Azure Data Explorer from Azure Event Hubs using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 01/08/2023
+ms.date: 01/09/2023
 ---
 # Use the ingestion wizard to create an Azure Event Hubs data connection for Azure Data Explorer
 
@@ -61,7 +61,7 @@ The **Ingest data** window opens with the **Destination** tab selected.
 
 1. Under **Data Connection**, fill in the following fields:
 
-    :::image type="content" source="media/event-hub-wizard/project-details.jpg" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
+    :::image type="content" source="media/event-hub-wizard/project-details.png" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
 
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
