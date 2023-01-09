@@ -6,7 +6,7 @@ ms.topic: reference
 ms.date: 11/24/2022
 ---
 # where operator
-.
+
 Filters a table to the subset of rows that satisfy a predicate.
 
 > The `where` and `filter` operators are equivalent
