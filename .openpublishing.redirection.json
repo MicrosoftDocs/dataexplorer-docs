@@ -371,7 +371,7 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "data-explorer/kusto/query/binfunction.md",
+      "source_path": "data-explorer/kusto/query/floorfunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/binfunction",
       "redirect_document_id": true
     },
