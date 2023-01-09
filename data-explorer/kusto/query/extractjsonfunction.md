@@ -1,11 +1,11 @@
 ---
-title: extract_json(), extractjson() - Azure Data Explorer
-description: Learn how to use the extract_json() and extractjson() functions to get a specified element out of a JSON text using a path expression.
+title: extract_json() - Azure Data Explorer
+description: Learn how to use the extract_json() function to get a specified element out of a JSON text using a path expression.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/12/2022
 ---
-# extract_json(), extractjson()
+# extract_json()
 
 Get a specified element out of a JSON text using a path expression.
 
@@ -47,7 +47,7 @@ T
 
 **Performance tips**
 
-* Apply where-clauses before using `extract_json()` or `extractjson()`
+* Apply where-clauses before using `extract_json()`.
 * Consider using a regular expression match with [extract](extractfunction.md) instead. This can run very much faster, and is effective if the JSON is produced from a template.
 * Use `parse_json()` if you need to extract more than one value from the JSON.
 * Consider having the JSON parsed at ingestion by declaring the type of the column to be dynamic.
