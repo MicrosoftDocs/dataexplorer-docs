@@ -1,6 +1,6 @@
 ---
 title: make-series operator - Azure Data Explorer
-description: This article describes make-series operator in Azure Data Explorer.
+description: Learn how to use the make-series operator to create a series of specified aggregated values along a specified axis. 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/03/2023
@@ -14,7 +14,7 @@ Create series of specified aggregated values along a specified axis.
 
 *T* `| make-series` [*MakeSeriesParameters*]
       [*Column* `=`] *Aggregation* [`default` `=` *DefaultValue*] [`,` ...]
-    `on` *AxisColumn* [`from` *start*] [`to` *end*] `step` *step* 
+    `on` *AxisColumn* [`from` *start*] [`to` *end*] `step` *step*
     [`by`
       [*Column* `=`] *GroupExpression* [`,` ...]]
 
@@ -59,15 +59,15 @@ The generated series from the alternate syntax differs from the main syntax in t
 * The *stop* value is inclusive.
 * Binning the index axis is generated with bin() and not bin_at(), which means that *start* may not be included in the generated series.
 
-It is recommended to use the main syntax of make-series and not the alternate syntax.
+It's recommended to use the main syntax of make-series and not the alternate syntax.
 
 ## Returns
 
-The input rows are arranged into groups having the same values of the `by` expressions and the `bin_at(`*AxisColumn*`, `*step*`, `*start*`)` expression. Then the specified aggregation functions are computed over each group, producing a row for each group. The result contains the `by` columns, *AxisColumn* column and also at least one column for each computed aggregate. (Aggregations over multiple columns or non-numeric results are not supported.)
+The input rows are arranged into groups having the same values of the `by` expressions and the `bin_at(`*AxisColumn*`,`*step*`,`*start*`)` expression. Then the specified aggregation functions are computed over each group, producing a row for each group. The result contains the `by` columns, *AxisColumn* column and also at least one column for each computed aggregate. (Aggregations over multiple columns or non-numeric results aren't supported.)
 
-This intermediate result has as many rows as there are distinct combinations of `by` and `bin_at(`*AxisColumn*`, `*step*`, `*start*`)` values.
+This intermediate result has as many rows as there are distinct combinations of `by` and `bin_at(`*AxisColumn*`,`*step*`,`*start*`)` values.
 
-Finally the rows from the intermediate result arranged into groups having the same values of the `by` expressions and all aggregated values are arranged into arrays (values of `dynamic` type). For each aggregation, there is one column containing its array with the same name. The last column is an array containing the values of *AxisColumn* binned according to the specified *step*.
+Finally the rows from the intermediate result arranged into groups having the same values of the `by` expressions and all aggregated values are arranged into arrays (values of `dynamic` type). For each aggregation, there's one column containing its array with the same name. The last column is an array containing the values of *AxisColumn* binned according to the specified *step*.
 
 > [!NOTE]
 >
@@ -110,7 +110,7 @@ Finally the rows from the intermediate result arranged into groups having the sa
 |[series_stats_dynamic()](series-stats-dynamicfunction.md)|Return multiple columns with the common statistics (min/max/variance/stdev/average)|
 |[series_stats()](series-statsfunction.md)|Generates a dynamic value with the common statistics (min/max/variance/stdev/average)|
 
-For a complete list of series analysis functions see: [Series processing functions](scalarfunctions.md#series-processing-functions)
+For a complete list of series analysis functions, see: [Series processing functions](scalarfunctions.md#series-processing-functions)
 
 ## List of series interpolation functions
 
@@ -121,7 +121,7 @@ For a complete list of series analysis functions see: [Series processing functio
 |[series_fill_forward()](series-fill-forwardfunction.md)|Performs forward fill interpolation of missing values in a series|
 |[series_fill_linear()](series-fill-linearfunction.md)|Performs linear interpolation of missing values in a series|
 
-* Note: Interpolation functions by default assume `null` as a missing value. Therefore specify `default=`*double*(`null`) in `make-series` if you intend to use interpolation functions for the series. 
+* Note: Interpolation functions by default assume `null` as a missing value. Therefore specify `default=`*double*(`null`) in `make-series` if you intend to use interpolation functions for the series.
 
 ## Examples
   

@@ -1,13 +1,13 @@
 ---
 title: log10() - Azure Data Explorer
-description: This article describes log10() in Azure Data Explorer.
+description: Learn how to use the log10() function to return the common (base-10) logarithm of the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2019
+ms.date: 01/05/2023
 ---
 # log10()
 
-`log10()` returns the common (base-10) logarithm function.  
+`log10()` returns the common (base-10) logarithm of the input.
 
 ## Syntax
 

@@ -1,6 +1,6 @@
 ---
 title: make_datetime() - Azure Data Explorer
-description: This article describes make_datetime() in Azure Data Explorer.
+description: Learn how to use the make_datetime() function to create a datetime scalar value from the specified date and time.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/03/2023
@@ -11,11 +11,11 @@ Creates a [datetime](./scalar-data-types/datetime.md) scalar value between the s
 
 ## Syntax
 
-`make_datetime(`*year*,*month*,*day*`)`
+`make_datetime(`*year*, *month*, *day*`)`
 
-`make_datetime(`*year*,*month*,*day*,*hour*,*minute*`)`
+`make_datetime(`*year*, *month*, *day*, *hour*, *minute*`)`
 
-`make_datetime(`*year*,*month*,*day*,*hour*,*minute*,*second*`)`
+`make_datetime(`*year*, *month*, *day*, *hour*, *minute*, *second*`)`
 
 ## Parameters
 

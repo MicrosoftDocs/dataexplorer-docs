@@ -1,13 +1,13 @@
 ---
 title: max() (aggregation function) - Azure Data Explorer
-description: This article describes max() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the max() function to find the maximum value of the expression in the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/05/2022
+ms.date: 12/26/2022
 ---
 # max() (aggregation function)
 
-Finds the maximum value across the group.
+Finds the maximum value the expression in the group.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
