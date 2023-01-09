@@ -180,9 +180,10 @@ You can use one of the following methods to embed custom properties into the dat
 * Use Azure Stream Analytics to [process events from the event hub and embed the custom properties](/azure/event-hubs/process-data-azure-stream-analytics) in the event data. From Azure Stream Analytics you can ingest the data natively using the [Azure Data Explorer output connector](/azure/stream-analytics/azure-database-explorer-output), or route the data into another event hub and from there into your cluster.
 * Use [Azure Functions](/azure/azure-functions/functions-overview) to add the custom properties and then ingest the data.
 
-## Event Hubs connection
+## Cross-region Event Hub data connection
 
 For best performance, create all the following resources in the same region as the cluster.
+If there is no other alternative, consider using [Premium](/azure/event-hubs/event-hubs-premium-overview) or [Dedicated](/azure/event-hubs/event-hubs-dedicated-overview) Event Hub tiers. Event Hub tiers comparison can be found [here](/azure/event-hubs/compare-tiers).
 
 ### Create an event hub
 
