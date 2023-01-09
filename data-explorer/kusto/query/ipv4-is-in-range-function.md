@@ -20,11 +20,8 @@ Checks if IPv4 string address is in IPv4-prefix notation range.
 | *Ipv4Address*| string | &check; | An expression representing an IPv4 address.|
 | *Ipv4Range*| string | &check; | An IPv4 range or list of IPv4 ranges written with [IP-prefix notation](#ip-prefix-notation).|
 
-## IP-prefix notation
+[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
-IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character. The IP address to the LEFT of the slash (`/`) is the base IP address. The number (0 to 32) to the RIGHT of the slash (`/`) is the number of contiguous 1 bit in the netmask.
-
-For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24 contiguous bits or 255.255.255.0 in dotted decimal format.
 
 ## Returns
 

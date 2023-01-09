@@ -41,6 +41,6 @@ T | take 5
 
 ## See also
 
-* [sort operator](sortoperator.md)
+* [order operator, sort operator](orderoperator.md)
 * [top operator](topoperator.md)
 * [top-nested operator](topnestedoperator.md)
