@@ -50,12 +50,11 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[endofyear()](endofyearfunction.md)|Returns the end of the year containing the date, shifted by an offset, if provided.|
 |[format_datetime()](format-datetimefunction.md)|Formats a datetime parameter based on the format pattern parameter.|
 |[format_timespan()](format-timespanfunction.md)|Formats a format-timespan parameter based on the format pattern parameter.|
-|[getmonth()](getmonthfunction.md)|Get the month number (1-12) from a datetime.|
 |[getyear()](getyearfunction.md)|Returns the year part of the datetime argument.|
 |[hourofday()](hourofdayfunction.md)|Returns the integer number representing the hour number of the given date.|
 |[make_datetime()](make-datetimefunction.md)|Creates a datetime scalar value from the specified date and time.|
 |[make_timespan()](make-timespanfunction.md)|Creates a timespan scalar value from the specified time period.|
-|[monthofyear()](monthofyearfunction.md)|Returns the integer number represents the month number of the given year.|
+|[monthofyear(), getmonth()](monthofyearfunction.md)|Return the integer number that represents the month number of the given year.|
 |[now()](nowfunction.md)|Returns the current UTC clock time, optionally offset by a given timespan.|
 |[startofday()](startofdayfunction.md)|Returns the start of the day containing the date, shifted by an offset, if provided.|
 |[startofmonth()](startofmonthfunction.md)|Returns the start of the month containing the date, shifted by an offset, if provided.|
@@ -181,7 +180,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[bin()](binfunction.md)|Rounds values down to an integer multiple of a given bin size.|
 |[bin_at()](binatfunction.md)|Rounds values down to a fixed-size "bin", with control over the bin's starting point. (See also bin function.)|
 |[ceiling()](ceilingfunction.md)|Calculates the smallest integer greater than, or equal to, the specified numeric expression.|
-|[floor()](floorfunction.md)|Rounds values down to an integer multiple of a given bin size.|
+|[floor()](binfunction.md)|Rounds values down to an integer multiple of a given bin size.|
 
 ## Conditional functions
 
@@ -189,7 +188,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[case()](casefunction.md)|Evaluates a list of predicates and returns the first result expression whose predicate is satisfied.|
 |[coalesce()](coalescefunction.md)|Evaluates a list of expressions and returns the first non-null (or non-empty for string) expression.|
-|[iif()/iff()](iiffunction.md)|Evaluates the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
+|[iif(), iff()](iiffunction.md)|Evaluate the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
 |[max_of()](max-offunction.md)|Returns the maximum value of several evaluated numeric expressions.|
 |[min_of()](min-offunction.md)|Returns the minimum value of several evaluated numeric expressions.|
 
@@ -261,7 +260,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[countof()](countoffunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
 |[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
-|[extractjson()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
+|[extract_json(), extractjson()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
 |[has_any_index()](has-any-index-function.md)|Searches the string for items specified in the array and returns the position of the first item found in the string.|
 |[indexof()](indexoffunction.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
 |[isempty()](isemptyfunction.md)|Returns true if the argument is an empty string or is null.|

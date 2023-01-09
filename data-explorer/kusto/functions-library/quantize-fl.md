@@ -3,7 +3,7 @@ title: quantize_fl() - Azure Data Explorer
 description: This article describes the quantize_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 09/08/2020
+ms.date: 11/08/2022
 ---
 # quantize_fl()
 
@@ -37,7 +37,7 @@ For ad hoc usage, embed its code using the [let statement](../query/letstatement
 ~~~kusto
 let quantize_fl=(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic=dynamic(null))
 {
-    let kwargs = pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
+    let kwargs = bag_pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
     let code = ```if 1:
         
         from sklearn.preprocessing import KBinsDiscretizer
@@ -83,7 +83,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create function with (folder = "Packages\\ML", docstring = "Binning metric columns")
 quantize_fl(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic)
 {
-    let kwargs = pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
+    let kwargs = bag_pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
     let code = ```if 1:
         
         from sklearn.preprocessing import KBinsDiscretizer

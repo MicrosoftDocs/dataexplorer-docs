@@ -3,7 +3,7 @@ title: series_downsample_fl() - Azure Data Explorer
 description: This article describes the series_downsample_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/25/2020
+ms.date: 11/08/2022
 ---
 # series_downsample_fl()
 
@@ -44,7 +44,7 @@ let series_downsample_fl=(tbl:(*), t_col:string, y_col:string, ds_t_col:string, 
     (extend rid=row_number()-1
     | where rid % sampling_factor == ceiling(sampling_factor/2.0)-1                    //  sub-sampling
     | summarize _t_ = make_list(_t_), _y_ = make_list(_y_))
-    | extend cols = pack(ds_t_col, _t_, ds_y_col, _y_)
+    | extend cols = bag_pack(ds_t_col, _t_, ds_y_col, _y_)
     | project-away _t_, _y_
     | evaluate bag_unpack(cols)
 }
@@ -73,7 +73,7 @@ series_downsample_fl(tbl:(*), t_col:string, y_col:string, ds_t_col:string, ds_y_
     (extend rid=row_number()-1
     | where rid % sampling_factor == ceiling(sampling_factor/2.0)-1                    //  sub-sampling
     | summarize _t_ = make_list(_t_), _y_ = make_list(_y_))
-    | extend cols = pack(ds_t_col, _t_, ds_y_col, _y_)
+    | extend cols = bag_pack(ds_t_col, _t_, ds_y_col, _y_)
     | project-away _t_, _y_
     | evaluate bag_unpack(cols)
 }

@@ -1,9 +1,9 @@
 ---
 title: geo_s2cell_to_central_point() - Azure Data Explorer
-description: This article describes geo_s2cell_to_central_point() in Azure Data Explorer.
+description: Learn how to use the geo_s2cell_to_central_point() function to calculate the geospatial coordinates that represent the center of an S2 cell.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 01/27/2020
+ms.date: 12/14/2022
 ---
 # geo_s2cell_to_central_point()
 
@@ -35,6 +35,8 @@ print point = geo_s2cell_to_central_point("1234567")
 | extend longitude = coordinates[0], latitude = coordinates[1]
 ```
 
+**Output**
+
 |point|coordinates|longitude|latitude|
 |---|---|---|---|
 |{<br>  "type": "Point",<br>  "coordinates": [<br>    9.86830731850408,<br>    27.468392925827604<br>  ]<br>}|[<br>  9.86830731850408,<br>  27.468392925827604<br>]|9.86830731850408|27.4683929258276|
@@ -45,6 +47,8 @@ The following example returns a null result because of the invalid S2 cell token
 ```kusto
 print point = geo_s2cell_to_central_point("a")
 ```
+
+**Output**
 
 |point|
 |---|
