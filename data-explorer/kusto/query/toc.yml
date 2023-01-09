@@ -205,7 +205,7 @@ items:
     href: tophittersoperator.md
   - name: union operator
     href: unionoperator.md
-  - name: where operator
+  - name: where operator, filter operator
     href: whereoperator.md
 - name: Special functions
   items:
