@@ -376,6 +376,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/kusto/query/sortoperator.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/orderoperator",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/kusto/query/iiffunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/ifffunction",
       "redirect_document_id": true

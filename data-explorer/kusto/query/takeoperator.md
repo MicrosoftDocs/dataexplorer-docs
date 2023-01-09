@@ -37,9 +37,8 @@ Methods for implementing paging include:
    the results of a Kusto query.
 * Use pagination in [Stored query results](../management/stored-query-results.md#pagination) .
 
-
 ## See also
 
-* [sort operator](sortoperator.md)
+* [order operator, sort operator](orderoperator.md)
 * [top operator](topoperator.md)
 * [top-nested operator](topnestedoperator.md)
