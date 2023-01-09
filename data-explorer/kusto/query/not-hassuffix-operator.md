@@ -1,9 +1,9 @@
 ---
 title: The case-insensitive !hassuffix string operator - Azure Data Explorer
-description: Learn how to use the !hassuffix string operator to filter data that doesn't have a case-insensitive suffix.
+description: Learn how to use the !hassuffix string operator to filter records for data that doesn't have a case-insensitive suffix.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/04/2023
+ms.date: 01/09/2023
 ---
 # !hassuffix operator
 

@@ -1,9 +1,9 @@
 ---
 title: The case-insensitive !endswith string operator - Azure Data Explorer
-description: Learn how to use the !endswith string operator to filter data that excludes a case-insensitive ending string.
+description: Learn how to use the !endswith string operator to filter records for data that excludes a case-insensitive ending string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/04/2023
+ms.date: 01/09/2023
 ---
 # !endswith operator
 

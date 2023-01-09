@@ -1,9 +1,9 @@
 ---
 title: The case-sensitive !hasprefix_cs string operator - Azure Data Explorer
-description: Learn how to use the !hasprefix_cs string operator to filter data that doesn't have a case-sensitive prefix.
+description: Learn how to use the !hasprefix_cs string operator to filter records for data that doesn't have a case-sensitive prefix.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/04/2023
+ms.date: 01/09/2023
 ---
 # !hasprefix_cs operator
 

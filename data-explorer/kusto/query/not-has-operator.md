@@ -1,9 +1,9 @@
 ---
 title: The case-insensitive !has string operators - Azure Data Explorer
-description: Learn how to use the !has string operator to filter data that doesn't have a matching case-insensitive string.
+description: Learn how to use the !has string operator to filter records for data that doesn't have a matching case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/04/2023
+ms.date: 01/09/2023
 ---
 # !has operator
 
