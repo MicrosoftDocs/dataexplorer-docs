@@ -3,7 +3,7 @@ title: SQL to Kusto query translation - Azure Data Explorer
 description: This article describes SQL to Kusto query translation in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/09/2021
+ms.date: 01/09/2023
 ---
 # SQL to Kusto cheat sheet
 
