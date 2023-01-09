@@ -376,6 +376,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/kusto/query/limitoperator.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/takeoperator",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/kusto/query/orderoperator.md",
       "redirect_url": "/azure/data-explorer/kusto/query/sortoperator",
       "redirect_document_id": true
