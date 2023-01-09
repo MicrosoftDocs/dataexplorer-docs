@@ -48,7 +48,7 @@ An aggregation function performs a calculation on a set of values, and returns a
 | [hll()](hll-aggfunction.md) | Returns the HyperLogLog (HLL) results of the group elements, an intermediate value of the `dcount` approximation. |
 | [hll_merge()](hll-merge-aggfunction.md) | Returns a value for merged HLL results. |
 | [max()](max-aggfunction.md), [maxif()](maxif-aggfunction.md) | Returns the maximum value across the group without/with a predicate. |
-| [tdigest_merge(), merge_tdigest()](tdigest-merge-aggfunction.md) | Return the merged `tdigest` value across the group, is an alias of `tdigest_merge`. |
+| [tdigest_merge(), merge_tdigest()](tdigest-merge-aggfunction.md) | Return the merged `tdigest` value across the group. |
 | [min()](min-aggfunction.md), [minif()](minif-aggfunction.md) | Returns the minimum value across the group without/with a predicate. |
 | [percentile()](percentiles-aggfunction.md) | Returns a percentile estimation of the group. |
 | [percentiles()](percentiles-aggfunction.md) | Returns percentile estimations of the group. |
