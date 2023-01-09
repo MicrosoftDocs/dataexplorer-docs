@@ -1,9 +1,9 @@
 ---
 title: lookup operator - Azure Data Explorer
-description: This article describes lookup operator in Azure Data Explorer.
+description: Learn how to use the lookup operator to extend columns of a fact table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2020
+ms.date: 12/26/2022
 ---
 # lookup operator
 
@@ -15,13 +15,13 @@ FactTable | lookup kind=leftouter (DimensionTable) on CommonColumn, $left.Col1 =
 
 Here, the result is a table that extends the `FactTable` (`$left`) with data from `DimensionTable` (referenced by `$right`)
  by performing a lookup of each pair (`CommonColumn`,`Col`) from the former table
-with each pair (`CommonColumn1`,`Col2`) in the latter table. 
-For the differences between fact and dimension tables, see [fact and dimension tables](../concepts/fact-and-dimension-tables.md). 
+with each pair (`CommonColumn1`,`Col2`) in the latter table.
+For the differences between fact and dimension tables, see [fact and dimension tables](../concepts/fact-and-dimension-tables.md).
 
 The `lookup` operator performs an operation similar to the [join operator](joinoperator.md)
 with the following differences:
 
-* The result does not repeat columns from the `$right` table that are the basis
+* The result doesn't repeat columns from the `$right` table that are the basis
   for the join operation.
 * Only two kinds of lookup are supported, `leftouter` and `inner`,
   with `leftouter` being the default.
@@ -29,14 +29,13 @@ with the following differences:
   is the larger (facts) table, and the `$right` table is the smaller (dimensions)
   table. This is exactly opposite to the assumption used by the `join` operator.
 * The `lookup` operator automatically broadcasts the `$right` table to the `$left`
-  table (essentially, behaves as if `hint.broadcast` was specified). Note that
-  this limits the size of the `$right` table.
+  table (essentially, behaves as if `hint.broadcast` was specified). This limits the size of the `$right` table.
 
 > [!NOTE]
 > If the right side of the lookup is larger than several tens of MBs, the query will fail.
-> 
+>
 > You can run the following query to estimate the size of the right side in bytes:
-> 
+>
 > ```kusto
 > rightSide
 > | summarize sum(estimate_data_size(*))
@@ -63,7 +62,7 @@ with the following differences:
   |Equality by name |*ColumnName*                                    |`where` *LeftTable*.*ColumnName* `==` *RightTable*.*ColumnName*|
   |Equality by value|`$left.`*LeftColumn* `==` `$right.`*RightColumn*|`where` `$left.`*LeftColumn* `==` `$right.`*RightColumn        |
 
-  > [!Note] 
+  > [!Note]
   > In case of 'equality by value', the column names *must* be qualified with the applicable owner table denoted by `$left` and `$right` notations.
 
 * `kind`: An optional instruction on how to treat rows in *LeftTable* that
@@ -71,7 +70,7 @@ with the following differences:
   all those rows will appear in the output with null values used for the
   missing values of *RightTable* columns added by the operator. If `inner`
   is used, such rows are omitted from the output. (Other kinds
-  of join are not supported by the `lookup` operator.)
+  of join aren't supported by the `lookup` operator.)
   
 ## Returns
 
@@ -79,16 +78,15 @@ A table with:
 
 * A column for every column in each of the two tables, including the matching keys.
   The columns of the right side will be automatically renamed if there are name conflicts.
-* A row for every match between the input tables. A match is a row selected from one table that has the same value for all the `on` fields as a row in the other table. 
+* A row for every match between the input tables. A match is a row selected from one table that has the same value for all the `on` fields as a row in the other table.
 * The Attributes (lookup keys) will appear only once in the output table.
+* `kind` unspecified, `kind=leftouter`
 
- * `kind` unspecified, `kind=leftouter`
+  In addition to the inner matches, there's a row for every row on the left (and/or right), even if it has no match. In that case, the unmatched output cells contain nulls.
 
-     In addition to the inner matches, there's a row for every row on the left (and/or right), even if it has no match. In that case, the unmatched output cells contain nulls.
+* `kind=inner`
 
- * `kind=inner`
-
-     There's a row in the output for every combination of matching rows from left and right.
+  There's a row in the output for every combination of matching rows from left and right.
 
 ## Examples
 
