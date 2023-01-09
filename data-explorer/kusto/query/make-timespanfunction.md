@@ -1,9 +1,9 @@
 ---
 title: make_timespan() - Azure Data Explorer
-description: This article describes make_timespan() in Azure Data Explorer.
+description: Learn how to use the make_timespan() function to create a timespan scalar value from the specified time period.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/26/2022
 ---
 # make_timespan()
 
@@ -15,11 +15,11 @@ make_timespan(1,12,30,55.123) == time(1.12:30:55.123)
 
 ## Syntax
 
-`make_timespan(`*hour*,*minute*`)`
+`make_timespan(`*hour*, *minute*`)`
 
-`make_timespan(`*hour*,*minute*,*second*`)`
+`make_timespan(`*hour*, *minute*, *second*`)`
 
-`make_timespan(`*day*,*hour*,*minute*,*second*`)`
+`make_timespan(`*day*, *hour*, *minute*, *second*`)`
 
 ## Arguments
 
@@ -31,7 +31,7 @@ make_timespan(1,12,30,55.123) == time(1.12:30:55.123)
 ## Returns
 
 If creation is successful, result will be a [timespan](./scalar-data-types/timespan.md) value, otherwise, result will be null.
- 
+
 ## Example
 
 ```kusto
@@ -39,8 +39,8 @@ print ['timespan'] = make_timespan(1,12,30,55.123)
 
 ```
 
+**Output**
+
 |timespan|
 |---|
 |1.12:30:55.1230000|
-
-

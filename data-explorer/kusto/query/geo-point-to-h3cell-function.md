@@ -1,19 +1,19 @@
 ---
 title: geo_point_to_h3cell() - Azure Data Explorer
-description: This article describes geo_point_to_h3cell() in Azure Data Explorer.
+description: Learn how to use the geo_point_to_h3cell() function to calculate the H3 Cell token string value of a geographic location.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 12/14/2022
 ---
 # geo_point_to_h3cell()
 
-Calculates the H3 Cell token string value for a geographic location.
+Calculates the H3 Cell token string value of a geographic location.
 
 Read more about [H3 Cell](https://eng.uber.com/h3/).
 
 ## Syntax
 
-`geo_point_to_h3cell(`*longitude*`, `*latitude*`, `*resolution*`)`
+`geo_point_to_h3cell(`*longitude*`,`*latitude*`,`*resolution*`)`
 
 ## Arguments
 
@@ -30,9 +30,9 @@ The H3 Cell token string value of a given geographic location. If the coordinate
 > * H3 Cell can be a useful geospatial clustering tool.
 > * H3 Cell has 16 levels of hierarchy with area coverage ranging from 4,250,547km² at the highest level 0 to 0.9m² at the lowest level 15.
 > * H3 Cell has a unique hexagon shape and this leads some unique properties:
->   - Hexagons have 6 neighbors
->   - Hexagons allow us to approximate radiuses easily and all neighbors are equidistant
->   - Hexagons are visually pleasant to look at
+> * Hexagons have 6 neighbors
+> * Hexagons allow us to approximate radiuses easily and all neighbors are equidistant
+> * Hexagons are visually pleasant
 > * In some rare cases the shape is pentagon.
 > * H3 Cell has a rectangular area on a plane surface.
 > * Invoking the [geo_h3cell_to_central_point()](geo-h3cell-to-central-point-function.md) function on an H3 Cell token string that was calculated on longitude x and latitude y won't necessarily return x and y.
@@ -72,6 +72,8 @@ For comparison with other available grid systems. see [geospatial clustering wit
 print h3cell = geo_point_to_h3cell(-74.04450446039874, 40.689250859314974, 6)
 ```
 
+**Output**
+
 |h3cell|
 |---|
 |862a1072fffffff|
@@ -91,6 +93,8 @@ datatable(location_id:string, longitude:real, latitude:real)
             by h3cell = geo_point_to_h3cell(longitude, latitude, 5)  // H3 Cell of the group
 ```
 
+**Output**
+
 |h3cell|count|locations|
 |---|---|---|
 |852a100bfffffff|2|[<br>  "A",<br>  "B"<br>]|
@@ -103,6 +107,8 @@ The following example produces an empty result because of the invalid coordinate
 print h3cell = geo_point_to_h3cell(300,1,8)
 ```
 
+**Output**
+
 |h3cell|
 |---|
 ||
@@ -114,6 +120,8 @@ The following example produces an empty result because of the invalid level inpu
 print h3cell = geo_point_to_h3cell(1,1,16)
 ```
 
+**Output**
+
 |h3cell|
 |---|
 ||
@@ -124,6 +132,8 @@ The following example produces an empty result because of the invalid level inpu
 ```kusto
 print h3cell = geo_point_to_h3cell(1,1,int(null))
 ```
+
+**Output**
 
 |h3cell|
 |---|

@@ -1,24 +1,24 @@
 ---
 title: geo_point_to_geohash() - Azure Data Explorer
-description: This article describes geo_point_to_geohash() in Azure Data Explorer.
+description: Learn how to use the geo_point_to_geohash() function to calculate the geohash string value of a geographic location.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 12/14/2022
 ---
 # geo_point_to_geohash()
 
-Calculates the geohash string value for a geographic location.
+Calculates the geohash string value of a geographic location.
 
 Read more about [geohash](https://en.wikipedia.org/wiki/Geohash).  
 
 ## Syntax
 
-`geo_point_to_geohash(`*longitude*`, `*latitude*`, `[*accuracy*]`)`
+`geo_point_to_geohash(`*longitude*`,`*latitude*`,`[*accuracy*]`)`
 
 ## Arguments
 
-* *longitude*: Longitude value of a geographic location. Longitude x will be considered valid if x is a real number and is in the range [-180, +180]. 
-* *latitude*: Latitude value of a geographic location. Latitude y will be considered valid if y is a real number and y is in the range [-90, +90]. 
+* *longitude*: Longitude value of a geographic location. Longitude x will be considered valid if x is a real number and is in the range [-180, +180].
+* *latitude*: Latitude value of a geographic location. Latitude y will be considered valid if y is a real number and y is in the range [-90, +90].
 * *accuracy*: An optional `int` that defines the requested accuracy. Supported values are in the range [1,18]. If unspecified, the default value `5` is used.
 
 ## Returns
@@ -81,6 +81,8 @@ StormEvents
 print geohash = geo_point_to_geohash(139.806115, 35.554128, 12)  
 ```
 
+**Output**
+
 | geohash      |
 |--------------|
 | xn76m27ty9g4 |
@@ -89,6 +91,8 @@ print geohash = geo_point_to_geohash(139.806115, 35.554128, 12)
 ```kusto
 print geohash = geo_point_to_geohash(-80.195829, 25.802215, 8)
 ```
+
+**Output**
 
 |geohash|
 |---|
@@ -109,6 +113,8 @@ datatable(location_id:string, longitude:real, latitude:real)
             by geohash = geo_point_to_geohash(longitude, latitude)    // geohash of the group
 ```
 
+**Output**
+
 | geohash | count | locations  |
 |---------|-------|------------|
 | c23n8   | 2     | ["A", "B"] |
@@ -121,6 +127,8 @@ The following example produces an empty result because of the invalid coordinate
 print geohash = geo_point_to_geohash(200,1,8)
 ```
 
+**Output**
+
 | geohash |
 |---------|
 |         |
@@ -131,6 +139,8 @@ The following example produces an empty result because of the invalid accuracy i
 ```kusto
 print geohash = geo_point_to_geohash(1,1,int(null))
 ```
+
+**Output**
 
 | geohash |
 |---------|

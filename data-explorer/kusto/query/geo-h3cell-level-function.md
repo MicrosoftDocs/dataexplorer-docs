@@ -1,9 +1,9 @@
 ---
 title: geo_h3cell_level() - Azure Data Explorer
-description: This article describes geo_h3cell_level() in Azure Data Explorer.
+description: Learn how to use the geo_h3cell_level() function to calculate the H3 cell resolution.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 12/14/2022
 ---
 # geo_h3cell_level()
 
@@ -30,20 +30,22 @@ An Integer that represents H3 Cell level. Valid level is in range [0, 15]. If th
 print cell_res = geo_h3cell_level('862a1072fffffff')
 ```
 
+**Output**
+
 |cell_res|
 |---|
 |6|
-
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print cell_res = geo_h3cell_level(geo_point_to_h3cell(1,1,10))
 ```
 
+**Output**
+
 |cell_res|
 |---|
 |10|
-
 
 The following example returns true because of the invalid H3 Cell token input.
 
@@ -51,6 +53,8 @@ The following example returns true because of the invalid H3 Cell token input.
 ```kusto
 print invalid_res = isnull(geo_h3cell_level('abc'))
 ```
+
+**Output**
 
 |invalid_res|
 |---|
