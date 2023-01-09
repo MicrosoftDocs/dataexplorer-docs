@@ -282,6 +282,8 @@ items:
       href: debug-inline-python.md
     - name: Query data using Python
       href: python-query-data.md
+    - name: Query data using T-SQL
+      href: kusto/api/tds/t-sql.md
     - name: Time Series Analysis and Machine Learning
       items:
       - name: Time series analysis
