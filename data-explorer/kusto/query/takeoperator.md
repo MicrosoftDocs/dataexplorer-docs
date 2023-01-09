@@ -39,6 +39,6 @@ Methods for implementing paging include:
 
 ## See also
 
-* [order operator, sort operator](orderoperator.md)
+* [sort operator](sortoperator.md)
 * [top operator](topoperator.md)
 * [top-nested operator](topnestedoperator.md)
