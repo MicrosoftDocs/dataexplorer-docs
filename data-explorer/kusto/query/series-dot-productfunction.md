@@ -28,7 +28,7 @@ For example, `series_dot_product([1, 2, 3], 10)` will be treated as `series_dot_
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series1, series2* | dynamic arrays |  &check | Input arrays with numeric data, to be element-wise multiplied and then summed into a double type value.
+| *series1, series2* | dynamic arrays |  &check | Input arrays with numeric data, to be element-wise multiplied and then summed into a value of type 'real'.
 
 ## Returns
 
