@@ -11,8 +11,6 @@ Filters a record set for data with a case-sensitive ending string.
 
 [!INCLUDE [endswith-operator-comparison](../../includes/endswith-operator-comparison.md)]
 
-For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
-
 ## Performance tips
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
