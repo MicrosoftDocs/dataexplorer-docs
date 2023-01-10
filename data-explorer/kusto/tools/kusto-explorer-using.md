@@ -30,7 +30,7 @@ Search++ mode enables you to search for a term using search syntax across one or
 
 Kusto.Explorer includes a powerful script mode that enables you to write, edit, and run ad-hoc queries. The script mode comes with syntax highlighting and IntelliSense, so you can quickly ramp-up your knowledge of the Kusto Query Language.
 
-This section describes how to run basic queries in Kusto.Explorer and how to add parameters to your queries.
+This section describes how to run basic queries in Kusto. Explorer and how to add parameters to your queries.
 
 ## Basic queries
 
@@ -50,7 +50,7 @@ Here are some more example queries:
 
 ```kusto
 // Take 10 lines from the table. Useful to get familiar with the data
-StormEvents | limit 10 
+StormEvents | take 10 
 ```
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -60,7 +60,7 @@ StormEvents | limit 10
 // and take sample of 10 lines
 StormEvents 
 | where EventType == 'Flood' and State =~ 'California'
-| limit 10
+| take 10
 ```
 
 :::image type="content" source="images/kusto-explorer-using/basic-query.png" alt-text="Kusto Explorer basic query.":::
@@ -77,6 +77,7 @@ Learn more about [Kusto Query Language](../query/index.md).
 
 > [!NOTE]
 > There are two types of query parametrization techniques in Kusto:
+>
 > * [Language-integrated query parametrization](../query/queryparametersstatement.md) is implemented as part
 > of the query engine and is meant to be used by applications that query the service programmatically. This method is not described in this document.
 >

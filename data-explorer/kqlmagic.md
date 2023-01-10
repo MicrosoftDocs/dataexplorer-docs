@@ -57,7 +57,7 @@ Query data using the [render operator](kusto/query/renderoperator.md) and visual
 StormEvents
 | summarize statecount=count() by State
 | sort by statecount 
-| limit 10
+|take10
 | render piechart title="My Pie Chart by State"
 ```
 
@@ -90,7 +90,7 @@ If you don't like the default color palette, customize the charts using palette 
     StormEvents
     | summarize statecount=count() by State
     | sort by statecount
-    | limit 10
+    |take10
     | render piechart title="My Pie Chart by State"
     ```
 
@@ -135,7 +135,7 @@ In many analytics scenarios, you may want to create reusable notebooks that cont
     StormEvents
     | summarize max(DamageProperty) by State
     | order by max_DamageProperty desc
-    | limit 10
+    |take10
     ```
 
 1. Run a query to extract the top state and set it into a Python variable:
