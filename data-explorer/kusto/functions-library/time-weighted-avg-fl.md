@@ -29,11 +29,11 @@ This type of aggregation is required for use cases where the metric values are e
 
 ## Usage
 
-`time_weighted_avg_fl()` is a user-defined function. You can either embed its code as an inline query or you can define it as a stored function in your database. See the following tabs for more examples.
+`time_weighted_avg_fl()` is a user-defined function. You can either embed its code as a query-defined function or you can define it as a stored function in your database. See the following tabs for more examples.
 
-# [Inline](#tab/Inline)
+# [Query-defined](#tab/query-defined)
 
-For inline use, embed its code using a [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

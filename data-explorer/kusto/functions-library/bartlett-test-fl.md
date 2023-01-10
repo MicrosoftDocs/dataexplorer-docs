@@ -24,14 +24,13 @@ The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipe
 * *test_statistic*: The name of the column to store test statistic value for the results.
 * *p_value*: The name of the column to store p-value for the results.
 
-
 ## Usage
 
-`bartlett_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as an inline query or you can define it as a stored function in your database. See the following tabs for more examples.
+`bartlett_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can define it as a stored function in your database. See the following tabs for more examples.
 
-# [Inline](#tab/Inline)
+# [Query-defined](#tab/query-defined)
 
-For inline use, embed its code using the [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ~~~kusto

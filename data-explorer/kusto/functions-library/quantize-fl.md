@@ -27,11 +27,11 @@ The function `quantize_fl()` bins metric columns. It quantizes metric columns to
 
 ## Usage
 
-`quantize_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as an inline query or you can define it as a stored function in your database. See the following tabs for more examples.
+`quantize_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can define it as a stored function in your database. See the following tabs for more examples.
 
-# [Inline](#tab/Inline)
+# [Query-defined](#tab/query-defined)
 
-For inline use, embed its code using the [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto

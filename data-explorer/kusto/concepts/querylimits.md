@@ -196,7 +196,7 @@ control commands. This value can be increased if needed (capped at one hour).
 ## Limit on query CPU resource usage
 
 Kusto lets you run queries and use as much CPU resources as the cluster has.
-It attempts to do a fair round-robin between queries if more than one is running. This method yields the best performance for inline queries.
+It attempts to do a fair round-robin between queries if more than one is running. This method yields the best performance for query-defined functions.
 At other times, you may want to limit the CPU resources used for a particular
 query. If you run a "background job", for example, the system might tolerate higher
 latencies to give concurrent inline queries high priority.

@@ -50,7 +50,7 @@ cluster('help.kusto.windows.net').database('Samples').StormEvents | count
 
 ### Use cluster() inside let statements
 
-The same query as above can be rewritten to use inline function (let statement) that
+The query above can be rewritten as a query-defined function (let statement) that
 receives a parameter `clusterName` - which is passed into the cluster() function.
 
 ```kusto
