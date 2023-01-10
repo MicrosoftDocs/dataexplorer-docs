@@ -3,7 +3,7 @@ title: wilcoxon_test_fl() - Azure Data Explorer
 description: This article describes the wilcoxon_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 07/20/2021
+ms.date: 11/08/2022
 ---
 # wilcoxon_test_fl()
 
@@ -36,7 +36,7 @@ To use a query-defined function, embed the code using the [let statement](../que
 ~~~kusto
 <!-- let wilcoxon_test_fl = (tbl:(*), data:string, test_statistic:string, p_value:string)
 {
-    let kwargs = pack('data', data, 'test_statistic', test_statistic, 'p_value', p_value);
+    let kwargs = bag_pack('data', data, 'test_statistic', test_statistic, 'p_value', p_value);
     let code = ```if 1:
         from scipy import stats
         data = kargs["data"]
@@ -72,7 +72,7 @@ To store the function, see [`.create function`](../management/create-function.md
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Wilcoxon Test")
 wilcoxon_test_fl(tbl:(*), data:string, test_statistic:string, p_value:string)
 {
-    let kwargs = pack('data', data, 'test_statistic', test_statistic, 'p_value', p_value);
+    let kwargs = bag_pack('data', data, 'test_statistic', test_statistic, 'p_value', p_value);
     let code = ```if 1:
         from scipy import stats
         data = kargs["data"]

@@ -3,7 +3,7 @@ title: series_fit_poly_fl() - Azure Data Explorer
 description: This article describes the series_fit_poly_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 09/08/2020
+ms.date: 11/08/2022
 ---
 # series_fit_poly_fl()
 
@@ -43,7 +43,7 @@ To use a query-defined function, embed the code using the [let statement](../que
 ```kusto
 let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
 {
-    let kwargs = pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
+    let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
     let code=
         '\n'
         'y_series = kargs["y_series"]\n'
@@ -99,7 +99,7 @@ To store the function, see [`.create function`](../management/create-function.md
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Fit a polynomial of a specified degree to a series")
 series_fit_poly_fl(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=false)
 {
-    let kwargs = pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
+    let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
     let code=
         '\n'
         'y_series = kargs["y_series"]\n'

@@ -3,7 +3,7 @@ title: two_sample_t_test_fl() - Azure Data Explorer
 description: This article describes the two_sample_t_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 07/20/2021
+ms.date: 11/08/2022
 ---
 # two_sample_t_test_fl()
 
@@ -38,7 +38,7 @@ To use a query-defined function, embed the code using the [let statement](../que
 ```kusto
 let two_sample_t_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string, equal_var:bool=true)
 {
-    let kwargs = pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value, 'equal_var', equal_var);
+    let kwargs = bag_pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value, 'equal_var', equal_var);
     let code =
         'from scipy import stats\n'
         'import pandas\n'
@@ -79,7 +79,7 @@ To store the function, see [`.create function`](../management/create-function.md
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Two-Sample t-Test")
 two_sample_t_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string, equal_var:bool=true)
 {
-    let kwargs = pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value, 'equal_var', equal_var);
+    let kwargs = bag_pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value, 'equal_var', equal_var);
     let code =
         'from scipy import stats\n'
         'import pandas\n'

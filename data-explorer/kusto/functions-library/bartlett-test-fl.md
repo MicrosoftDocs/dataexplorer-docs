@@ -3,7 +3,7 @@ title: bartlett_test_fl() - Azure Data Explorer
 description: This article describes the bartlett_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 07/20/2021
+ms.date: 11/08/2022
 ---
 # bartlett_test_fl()
 
@@ -36,7 +36,7 @@ To use a query-defined function, embed the code using the [let statement](../que
 ~~~kusto
 let bartlett_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string)
 {
-    let kwargs = pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value);
+    let kwargs = bag_pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value);
     let code = ```if 1:
         from scipy import stats
         data1 = kargs["data1"]
@@ -73,7 +73,7 @@ To store the function, see [`.create function`](../management/create-function.md
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Bartlett Test")
 bartlett_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string)
 {
-    let kwargs = pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value);
+    let kwargs = bag_pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value);
     let code = ```if 1:
         from scipy import stats
         data1 = kargs["data1"]

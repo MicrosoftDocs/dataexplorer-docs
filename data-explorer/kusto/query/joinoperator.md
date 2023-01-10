@@ -1,9 +1,9 @@
 ---
 title: join operator - Azure Data Explorer
-description: This article describes join operator in Azure Data Explorer.
+description: Learn how to use the join operator to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/03/2022
+ms.date: 12/22/2022
 ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
@@ -207,6 +207,8 @@ let Y = datatable(Key:string, Value2:long)
 X | join Y on Key
 ```
 
+**Output**
+
 |Key|Value1|Key1|Value2|
 |---|---|---|---|
 |b|2|b|10|
@@ -238,6 +240,8 @@ let Y = datatable(Key:string, Value2:long)
 X | join kind=inner Y on Key
 ```
 
+**Output**
+
 |Key|Value1|Key1|Value2|
 |---|---|---|---|
 |b|3|b|10|
@@ -246,11 +250,12 @@ X | join kind=inner Y on Key
 |c|4|c|30|
 
 > [!NOTE]
+>
 > * (b,10) from the right side, was joined twice: with both (b,2) and (b,3) on the left.
 > * (c,4) on the left side, was joined twice: with both (c,20) and (c,30) on the right.
 
 ### Innerunique-join flavor
- 
+
 Use **innerunique-join flavor** to deduplicate keys from the left side. The result will be a row in the output from every combination of deduplicated left keys and right keys.
 
 > [!NOTE]
@@ -275,6 +280,8 @@ t1
 on key
 ```
 
+**Output**
+
 |key|value|key1|value1|
 |---|---|---|---|
 |1|val1.1|1|val1.3|
@@ -297,6 +304,8 @@ t1
 on key
 ```
 
+**Output**
+
 |key|value|key1|value1|
 |---|---|---|---|
 |1|val1.2|1|val1.3|
@@ -305,7 +314,7 @@ on key
 * Kusto is optimized to push filters that come after the `join`, towards the appropriate join side, left or right, when possible.
 
 * Sometimes, the flavor used is **innerunique** and the filter is propagated to the left side of the join. The flavor will be automatically propagated and the keys that apply to that filter will always appear in the output.
-    
+
 * Use the example above and add a filter `where value == "val1.2" `. It will always give the second result and will never give the first result for the datasets:
 
 ```kusto
@@ -325,6 +334,8 @@ t1
 on key
 | where value == "val1.2"
 ```
+
+**Output**
 
 |key|value|key1|value1|
 |---|---|---|---|
@@ -352,6 +363,8 @@ let Y = datatable(Key:string, Value2:long)
 ];
 X | join kind=leftouter Y on Key
 ```
+
+**Output**
 
 |Key|Value1|Key1|Value2|
 |---|---|---|---|
@@ -383,6 +396,8 @@ let Y = datatable(Key:string, Value2:long)
 X | join kind=rightouter Y on Key
 ```
 
+**Output**
+
 |Key|Value1|Key1|Value2|
 |---|---|---|---|
 |b|2|b|10|
@@ -412,6 +427,8 @@ let Y = datatable(Key:string, Value2:long)
 ];
 X | join kind=fullouter Y on Key
 ```
+
+**Output**
 
 |Key|Value1|Key1|Value2|
 |---|---|---|---|
@@ -444,6 +461,8 @@ let Y = datatable(Key:string, Value2:long)
 X | join kind=leftanti Y on Key
 ```
 
+**Output**
+
 |Key|Value1|
 |---|---|
 |a|1|
@@ -472,6 +491,8 @@ let Y = datatable(Key:string, Value2:long)
 ];
 X | join kind=rightanti Y on Key
 ```
+
+**Output**
 
 |Key|Value2|
 |---|---|
@@ -502,6 +523,8 @@ let Y = datatable(Key:string, Value2:long)
 X | join kind=leftsemi Y on Key
 ```
 
+**Output**
+
 |Key|Value1|
 |---|---|
 |b|2|
@@ -529,6 +552,8 @@ let Y = datatable(Key:string, Value2:long)
 ];
 X | join kind=rightsemi Y on Key
 ```
+
+**Output**
 
 |Key|Value2|
 |---|---|
