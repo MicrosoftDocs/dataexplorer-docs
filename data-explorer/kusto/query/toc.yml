@@ -748,9 +748,11 @@ items:
     href: substringfunction.md
   - name: tan()
     href: tanfunction.md
-  - name: tdigest_merge(), merge_tdigest()
-    href: tdigest-mergefunction.md
-  - name: tobool(), toboolean()
+  - name: merge_tdigest()
+    displayName: tdigest_merge()
+    href: merge-tdigestfunction.md
+  - name: tobool()
+    displayName: toboolean()
     href: toboolfunction.md
   - name: todatetime()
     href: todatetimefunction.md
