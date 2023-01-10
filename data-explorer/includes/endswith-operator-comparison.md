@@ -14,5 +14,3 @@ The following table compares the `endswith` operators using the abbreviations pr
 |[`!endswith`](../kusto/query/not-endswith-operator.md) |RHS isn't a closing subsequence of LHS |No |`"Fabrikam" !endswith "brik"`|
 |[`endswith_cs`](../kusto/query/endswith-cs-operator.md) |RHS is a closing subsequence of LHS |Yes |`"Fabrikam" endswith_cs "kam"`|
 |[`!endswith_cs`](../kusto/query/not-endswith-cs-operator.md) |RHS isn't a closing subsequence of LHS |Yes |`"Fabrikam" !endswith_cs "brik"`|
-
-For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
