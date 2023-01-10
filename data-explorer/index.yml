@@ -39,7 +39,9 @@ landingContent:
       - linkListType: learn
         links:
           - text: "Free Pluralsight training: Azure Data Explorer"
-            url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer          
+            url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer
+          - text: "Learning path: Data analysis in Azure Data Explorer with Kusto Query Language"
+            url: /training/paths/data-analysis-data-explorer-kusto-query-language/
           - text: "Training module: Introduction to Azure Data Explorer"
             url:  /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
           - text: "Training module: Write your first query with Kusto Query Language"
