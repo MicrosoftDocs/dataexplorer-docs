@@ -27,7 +27,7 @@ The function `levene_test_fl()` performs the [Levene Test](https://en.wikipedia.
 
 ## Usage
 
-`levene_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can define it as a stored function in your database. See the following tabs for more examples.
+`levene_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
 # [Query-defined](#tab/query-defined)
 

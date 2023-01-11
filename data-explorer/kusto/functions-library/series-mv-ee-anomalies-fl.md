@@ -28,7 +28,7 @@ The function `series_mv_ee_anomalies_fl()` detects multivariate anomalies in ser
 
 ## Usage
 
-`series_mv_ee_anomalies_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can define it as a stored function in your database. See the following tabs for more examples.
+`series_mv_ee_anomalies_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
 ### [Query-defined](#tab/query-defined)
 

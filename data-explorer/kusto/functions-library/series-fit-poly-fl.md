@@ -33,7 +33,7 @@ The function `series_fit_poly_fl()` applies a polynomial regression on a series.
 
 ## Usage
 
-`series_fit_poly_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can define it as a stored function in your database. See the following tabs for more examples.
+`series_fit_poly_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
 # [Query-defined](#tab/query-defined)
 

@@ -30,7 +30,7 @@ This type of rolling window calculation is required for use cases where the metr
 
 ## Usage
 
-`time_window_rolling_avg_fl()` is a user-defined function. You can either embed its code as a query-defined function or you can define it as a stored function in your database. See the following tabs for more examples.
+`time_window_rolling_avg_fl()` is a user-defined function. You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
 # [Query-defined](#tab/query-defined)
 

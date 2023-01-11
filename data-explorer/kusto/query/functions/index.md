@@ -20,6 +20,6 @@ kinds of functions:
   * Stored functions: are user-defined functions that are stored and managed database schema entities (such as tables).
 For more information on how to create and manage stored functions, see [Stored functions management overview](../../management/functions.md).
 
-  * Query-defined functions: are user-defined functions that are defined and used within the scope of a single query. The definition of such functions is done through a let statement. For more information on how to create query-defined functions, see [Create a user defined function](/azure/data-explorer/kusto/query/letstatement?branch=pr-en-us-3680#create-a-user-defined-function-with-scalar-calculation).
+  * Query-defined functions: are user-defined functions that are defined and used within the scope of a single query. The definition of such functions is done through a let statement. For more information on how to create query-defined functions, see [Create a user defined function](../letstatement.md#create-a-user-defined-function-with-scalar-calculation).
 
     For more information on user-defined functions, see [User-defined functions](./user-defined-functions.md).

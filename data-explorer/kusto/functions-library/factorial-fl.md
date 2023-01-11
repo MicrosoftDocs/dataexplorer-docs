@@ -24,7 +24,7 @@ The function `factorial_fl()`calculates [factorial](https://en.wikipedia.org/wik
 
 ## Usage
 
-`factorial_fl()` is a user-defined function. You can either embed its code as a query-defined function or you can define it as a stored function in your database. See the following tabs for more examples.
+`factorial_fl()` is a user-defined function. You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
 # [Query-defined](#tab/query-defined)
 

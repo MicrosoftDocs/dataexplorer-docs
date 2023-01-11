@@ -39,7 +39,7 @@ The function `pair_probabilities_fl()`calculates the following probabilities and
 
 ## Usage
 
-`pair_probabilities_fl` is a user-defined function. You can either embed its code as a query-defined function or you can define it as a stored function in your database. See the following tabs for more examples.
+`pair_probabilities_fl` is a user-defined function. You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
 # [Query-defined](#tab/query-defined)
 

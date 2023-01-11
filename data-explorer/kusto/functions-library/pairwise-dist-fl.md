@@ -35,7 +35,7 @@ The output of the function is pairwise distances between entities under the same
 
 ## Usage
 
-`pairwise_dist_fl` is a user-defined function. You can either embed its code as a query-defined function or you can define it as a stored function in your database. See the following tabs for more examples.
+`pairwise_dist_fl` is a user-defined function. You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
 # [Query-defined](#tab/query-defined)
 
