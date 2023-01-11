@@ -15,11 +15,11 @@ Roles are defined for a specific cluster, database, table, materialized view, or
 
 The following table outlines the roles and permissions available at each scope.
 
-The 'Permissions' column displays the access granted to each role. The 'Dependencies' column lists any required roles for the listed access. The 'Manage' column offers ways to add or remove role principals.
+The **Permissions** column displays the access granted to each role. The **Dependencies** column lists roles required to obtain the given role. The **Manage** column offers ways to add or remove role principals.
 
 |Scope|Role|Permissions|Dependencies|Manage|
 |--|--|--|--|
-|Cluster|AllDatabasesAdmin |Full permission to all databases in the cluster. May show and alter certain cluster-level policies. Includes all lower `AllDatabases` permissions. ||[Azure portal](../../../manage-cluster-permissions.md)|
+|Cluster|AllDatabasesAdmin |Full permission to all databases in the cluster. May show and alter certain cluster-level policies. Includes all permissions. ||[Azure portal](../../../manage-cluster-permissions.md)|
 |Cluster|AllDatabasesViewer |Read all data and metadata of any database in the cluster. ||[Azure portal](../../../manage-cluster-permissions.md)|
 |Cluster|AllDatabasesMonitor |Execute `.show` commands in the context of any database in the cluster.||[Azure portal](../../../manage-cluster-permissions.md)|
 |Database|admin|Full permission in the scope of a particular database. Includes all lower level permissions.  ||[Azure portal](../../../manage-database-permissions.md) or [management commands](../security-roles.md)|

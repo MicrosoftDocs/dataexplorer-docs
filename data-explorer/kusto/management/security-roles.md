@@ -13,7 +13,7 @@ ms.date: 09/07/2022
 > * [Azure Data Explorer role-based access control](../management/access-control/role-based-authorization.md)
 > * [Principals and identity providers](./access-control/principals-and-identity-providers.md)
 
-Azure Data Explorer uses a role-based access control (RBAC) model in which principals—users, groups, and apps—get access to resources according to the security roles they're assigned.
+Azure Data Explorer uses a role-based access control (RBAC) model in which principals get access to resources according to the security roles they're assigned.
 
 When a principal attempts an operation, the system performs an authorization check to make sure the principal is associated with at least one security role that grants permissions to perform the operation. Failing an authorization check aborts the operation.
 
@@ -30,15 +30,15 @@ The following table describes the level of access granted for each role and show
 |--|--|--|--|--|--|
 |`admins` | View, modify, and remove the object and subobjects.|&check;|&check;|&check;|&check;|
 |`users` | View the object and create new subobjects.|&check;||||
-|`viewers` | View the object if [RestrictedViewAccess](restrictedviewaccesspolicy.md) isn't turned on.|&check;||||
-|`unrestrictedviewers`| View the object even with [RestrictedViewAccess](restrictedviewaccesspolicy.md). Use in addition to the `admins`, `viewers` or `users` roles. |&check;||||
+|`viewers` | View the object where [RestrictedViewAccess](restrictedviewaccesspolicy.md) isn't turned on.|&check;||||
+|`unrestrictedviewers`| View the object even where [RestrictedViewAccess](restrictedviewaccesspolicy.md) is turned on. The principal must also have `admins`, `viewers` or `users` permissions. |&check;||||
 |`ingestors` | Ingest data to the object without access to query. |&check;|&check;|||
 |`monitors` | View metadata such as schemas, operations, and permissions.|&check;||||
 
 For a full description of the security roles at each scope, see [Azure Data Explorer role-based access control](access-control/role-based-authorization.md).
 
 > [!TIP]
-> There are three cluster level security roles—AllDatabasesAdmin, AllDatabasesViewer, and AllDatabasesMonitor—that can only be configured in the Azure portal. To learn more, see [manage cluster permissions](../../manage-cluster-permissions.md).
+> There are three cluster level security roles (AllDatabasesAdmin, AllDatabasesViewer, and AllDatabasesMonitor) that can only be configured in the Azure portal. To learn more, see [manage cluster permissions](../../manage-cluster-permissions.md).
 
 ## List all principals
 
@@ -52,13 +52,13 @@ The `.show` management command lists the principals that are set on the securabl
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *ObjectType* | string | &check; | The type of object: `database`, `table`, `materialized-view` or `function`.
+| *ObjectType* | string | &check; | The type of object. The valid values are `database`, `table`, `materialized-view` or `function`.
 | *ObjectName* | string | &check; | The name of the object for which to list principals.|
 
 ### Example
 
-The following control command lists all security principals that have some
-access to the table `StormEvents` in the database:
+The following control command lists all security principals that have
+access to the `StormEvents` table:
 
 ```kusto
 .show table StormEvents principals
@@ -70,7 +70,7 @@ Example result:
 |---|---|---|---|---|
 |Database Apsty Admin |Azure AD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
 
-## Commands overview
+## Management commands overview
 
 This section describes how to use the commands `.add`, `.drop`, and `.set` to control the principals and their security roles.
 
