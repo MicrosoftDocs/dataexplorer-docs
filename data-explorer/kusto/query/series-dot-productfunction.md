@@ -15,14 +15,17 @@ The function `series_dot_product()` takes two numeric series as input, and calcu
 
 `series_dot_product(`*series1*`,` *series2*`)`
 
-**Alternate Syntax**
+## Alternate Syntax
 
 `series_dot_product(`*series*`, `*numeric*`)`
 `series_dot_product(`*numeric*`, `*series*`)`
 
-The alternate syntax describes that one of the function arguments can be a numerical scalar.
-In that case, the numerical scalar will be broadcasted to a vector whose length is the other series containing that scalar.
-For example, `series_dot_product([1, 2, 3], 10)` will be treated as `series_dot_product([1, 2, 3], [10, 10, 10])`.
+> [!NOTE]
+> The alternate syntax shows that one of the two function arguments can be a numerical scalar.
+>
+> This numerical scalar will be broadcasted to a vector whose length equals the length of the corresponding numeric series.
+>
+> For example, `series_dot_product([1, 2, 3], 10)` will be treated as `series_dot_product([1, 2, 3], [10, 10, 10])`.
 
 ## Arguments
 
