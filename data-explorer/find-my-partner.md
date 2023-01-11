@@ -557,11 +557,11 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 
 **Success stories**
 
-- [https://explore.uptake.com/c/case-study-capital-power?x=6bRGL0](https://explore.uptake.com/c/case-study-capital-power?x=6bRGL0)
-- [https://explore.uptake.com/c/uptake-chevron-timeseriesdata?x=krx5TU](https://explore.uptake.com/c/uptake-chevron-timeseriesdata?x=krx5TU)
-- [https://explore.uptake.com/c/case-study-ensign?x=BEdWTc](https://explore.uptake.com/c/case-study-ensign?x=BEdWTc)
-- [https://explore.uptake.com/c/case-Study-enerplus?x=DBxBPq](https://explore.uptake.com/c/case-Study-enerplus?x=DBxBPq)
-- [https://explore.uptake.com/c/case-study-davey-textiles?x=ri4YdG](https://explore.uptake.com/c/case-study-davey-textiles?x=ri4YdG)
+- [https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization](https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization)
+- [https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion](https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion)
+- [https://www.uptake.com/resources/ensign-establishes-a-single-source-of-truth-for-their-data](https://www.uptake.com/resources/ensign-establishes-a-single-source-of-truth-for-their-data)
+- [https://www.uptake.com/resources/enerplus-uses-insights-from-uptake-fusion-for-data-driven-decision-making](https://www.uptake.com/resources/enerplus-uses-insights-from-uptake-fusion-for-data-driven-decision-making)
+- [https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring](https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring)
 
 ## Zure Ltd
 

@@ -81,7 +81,7 @@ table('StormEvent') | count
 
 ### Use table() inside let statements
 
-The same query as above can be rewritten to use inline function (let statement) that receives a parameter `tableName` - which is passed into the table() function.
+The query above can be rewritten as a query-defined function (let statement) that receives a parameter `tableName` - which is passed into the table() function.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
