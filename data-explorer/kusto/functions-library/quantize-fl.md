@@ -3,7 +3,7 @@ title: quantize_fl() - Azure Data Explorer
 description: This article describes the quantize_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 09/08/2020
+ms.date: 11/08/2022
 ---
 # quantize_fl()
 
@@ -27,17 +27,17 @@ The function `quantize_fl()` bins metric columns. It quantizes metric columns to
 
 ## Usage
 
-`quantize_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`quantize_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
 let quantize_fl=(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic=dynamic(null))
 {
-    let kwargs = pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
+    let kwargs = bag_pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
     let code = ```if 1:
         
         from sklearn.preprocessing import KBinsDiscretizer
@@ -72,9 +72,9 @@ union
 | invoke quantize_fl(3, pack_array('x'), pack_array('x_bin'), dynamic(null))
 ~~~
 
-# [Persistent](#tab/persistent)
+# [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
@@ -83,7 +83,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create function with (folder = "Packages\\ML", docstring = "Binning metric columns")
 quantize_fl(tbl:(*), num_bins:int, in_cols:dynamic, out_cols:dynamic, labels:dynamic)
 {
-    let kwargs = pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
+    let kwargs = bag_pack('num_bins', num_bins, 'in_cols', in_cols, 'out_cols', out_cols, 'labels', labels);
     let code = ```if 1:
         
         from sklearn.preprocessing import KBinsDiscretizer

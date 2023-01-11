@@ -3,7 +3,7 @@ title: series_downsample_fl() - Azure Data Explorer
 description: This article describes the series_downsample_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/25/2020
+ms.date: 11/08/2022
 ---
 # series_downsample_fl()
 
@@ -27,11 +27,11 @@ The function `series_downsample_fl()` [downsamples a time series by an integer f
 
 ## Usage
 
-`series_downsample_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`series_downsample_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -44,7 +44,7 @@ let series_downsample_fl=(tbl:(*), t_col:string, y_col:string, ds_t_col:string, 
     (extend rid=row_number()-1
     | where rid % sampling_factor == ceiling(sampling_factor/2.0)-1                    //  sub-sampling
     | summarize _t_ = make_list(_t_), _y_ = make_list(_y_))
-    | extend cols = pack(ds_t_col, _t_, ds_y_col, _y_)
+    | extend cols = bag_pack(ds_t_col, _t_, ds_y_col, _y_)
     | project-away _t_, _y_
     | evaluate bag_unpack(cols)
 }
@@ -55,9 +55,9 @@ demo_make_series1
 | render timechart with(xcolumn=coarse_TimeStamp, ycolumns=coarse_num)
 ```
 
-# [Persistent](#tab/persistent)
+# [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
@@ -73,7 +73,7 @@ series_downsample_fl(tbl:(*), t_col:string, y_col:string, ds_t_col:string, ds_y_
     (extend rid=row_number()-1
     | where rid % sampling_factor == ceiling(sampling_factor/2.0)-1                    //  sub-sampling
     | summarize _t_ = make_list(_t_), _y_ = make_list(_y_))
-    | extend cols = pack(ds_t_col, _t_, ds_y_col, _y_)
+    | extend cols = bag_pack(ds_t_col, _t_, ds_y_col, _y_)
     | project-away _t_, _y_
     | evaluate bag_unpack(cols)
 }

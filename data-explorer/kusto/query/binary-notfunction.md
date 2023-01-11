@@ -25,11 +25,14 @@ Returns logical NOT operation on a number: value.
 
 ## Example
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzEssqozPyy/RMDQw0AQAChXSgRUAAAA=)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzEssqozPyy/RMDQw0AQAChXSgRUAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 binary_not(100)
 ```
+
+**Output**
 
 |result|
 |------|

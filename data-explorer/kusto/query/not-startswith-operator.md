@@ -1,18 +1,18 @@
 ---
 title: The case-insensitive !startswith string operators - Azure Data Explorer
-description: This article describes the case-insensitive !startswith string operator in Azure Data Explorer.
+description: Learn how to use the !startswith string operator to filter records for data that doesn't start with a case-insensitive search string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/01/2021
+ms.date: 01/09/2023
 ---
 # !startswith operator
 
-Filters a record set retrieving data that does not start a case-insensitive search string.
+Filters a record set for data that doesn't start with a case-insensitive search string.
 
 The following table provides a comparison of the `startswith` operators:
 
 > [!NOTE]
-> The following abbreviations are used in the table below:
+> The following abbreviations are used in the following table:
 >
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
@@ -25,25 +25,22 @@ The following table provides a comparison of the `startswith` operators:
 |[`!startswith_cs`](not-startswith-cs-operator.md) |RHS isn't an initial subsequence of LHS |Yes |`"Fabrikam" !startswith_cs "fab"`|
 
 > [!NOTE]
-> The following abbreviations are used in the table above:
+> The following abbreviations are used in the above table:
 >
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
 ## Performance tips
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator, for example, `hassuffix_cs`, not `hassuffix`. 
+For faster results, use the case-sensitive version of an operator. For example, use `hassuffix_cs` instead of `hassuffix`.
 
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. 
-
-For best practices, see [Query best practices](best-practices.md).
+If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`.
 
 ## Syntax
 

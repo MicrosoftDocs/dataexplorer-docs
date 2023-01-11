@@ -1,9 +1,9 @@
 ---
 title: endofweek() - Azure Data Explorer
-description: This article describes endofweek() in Azure Data Explorer.
+description: Learn how to use the endofweek() function to return a datetime representing the end of the week for the given date value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/11/2022
 ---
 # endofweek()
 
@@ -13,24 +13,30 @@ Last day of the week is considered to be a Saturday.
 
 ## Syntax
 
-`endofweek(`*date* [`,`*offset*]`)`
+`endofweek(`*date* [, *offset*]`)`
 
-## Arguments
+## Parameters
 
-* `date`: The input date.
-* `offset`: An optional number of offset weeks from the input date (integer, default - 0).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *date* | datetime | &check;| The date used to find the end of the week. |
+| *offset* | int | | The number of offset weeks from *date*. Default is 0. |
 
 ## Returns
 
-A datetime representing the end of the week for the given *date* value, with the offset, if specified.
+A datetime representing the end of the week for the given *date* value, with the *offset*, if specified.
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy3MMQqAMBBE0d5TTKmgkLURBEsPImYiKmYlLth4eA0Ir/nNT1NcCA3hoiEkPdAITCG4jCekwIMz6cbZcJP7GD0GMHoNOUs/GW09WLZOusbJB+L6rKvqf1y9enVBc2YAAAA=" target="_blank">Run the query</a>
 
 ```kusto
   range offset from -1 to 1 step 1
  | project weekEnd = endofweek(datetime(2017-01-01 10:10:17), offset)  
-
 ```
+
+**Output**
 
 |weekEnd|
 |---|

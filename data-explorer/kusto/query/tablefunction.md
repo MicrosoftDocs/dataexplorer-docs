@@ -73,13 +73,15 @@ table('StormEvent')
 table('StormEvent') | count
 ```
 
+**Output**
+
 |Count|
 |---|
 |59066|
 
 ### Use table() inside let statements
 
-The same query as above can be rewritten to use inline function (let statement) that receives a parameter `tableName` - which is passed into the table() function.
+The query above can be rewritten as a query-defined function (let statement) that receives a parameter `tableName` - which is passed into the table() function.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -89,6 +91,8 @@ let foo = (tableName:string)
 };
 foo('help')
 ```
+
+**Output**
 
 |Count|
 |---|
@@ -130,6 +134,8 @@ let _choose = (_selector:string)
 _choose('T2')
 
 ```
+
+**Output**
 
 |x|
 |---|

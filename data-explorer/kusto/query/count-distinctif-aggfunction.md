@@ -14,7 +14,8 @@ Conditionally counts unique values specified by the scalar expression per summar
 If you only need an estimation of unique values count, we recommend using the less resource-consuming [dcountif](dcountif-aggfunction.md) aggregation function.
 
 > [!NOTE]
-> This function is limited to 100M unique values. An attempt to apply the function on an expression returning too many values will produce a runtime error (HRESULT: 0x80DA0012).
+> * This function is limited to 100M unique values. An attempt to apply the function on an expression returning too many values will produce a runtime error (HRESULT: 0x80DA0012).
+> * Function performance can be degraded when operating on multiple data sources from different clusters.
 
 ## Syntax
 
@@ -35,7 +36,8 @@ Integer value indicating the number of unique values of *expr* per summary group
 
 This example shows how many types of death-causing storm events happened in each state. Only storm events with a nonzero count of deaths will be counted.
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NsQ6CQBAFe79iS4gWNJZQoYk1Wpv1WMMm3h3cvdNA/HgRSi3fzCSvgQ/28BSHuHlTTNZy0Eno4nRIcmTwY7Wl8cnh2mqEOgO9Zws/j73ssloYXaw1iAFtaZ0n1y4gr4qcbiM1YMh88uok/DmgiorZwve0/+Y/wQetTCWoqwAAAA==)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NsQ6CQBAFe79iS4gWNJZQoYk1Wpv1WMMm3h3cvdNA/HgRSi3fzCSvgQ/28BSHuHlTTNZy0Eno4nRIcmTwY7Wl8cnh2mqEOgO9Zws/j73ssloYXaw1iAFtaZ0n1y4gr4qcbiM1YMh88uok/DmgiorZwve0/+Y/wQetTCWoqwAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -43,6 +45,8 @@ StormEvents
 | where UniqueFatalEvents > 0
 | top 5 by UniqueFatalEvents
 ```
+
+**Output**
 
 | State           | UniqueFatalEvents |
 | --------------- | ----------------- |

@@ -25,11 +25,14 @@ Returns a [GUID](./scalar-data-types/guid.md) decoded from a base64 string.
 
 ## Example
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQgszcxLVbBVSEosTjUziU9JTc5PSY0vyU8vzUzRUPIqSCpwdS61SAmtNA8oM01PSvWKcHS0tVXSBAA/Uk1CPgAAAA==)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQgszcxLVbBVSEosTjUziU9JTc5PSY0vyU8vzUzRUPIqSCpwdS61SAmtNA8oM01PSvWKcHS0tVXSBAA/Uk1CPgAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 print Quine = base64_decode_toguid("JpbpECu8dUy7Pv5gbeJXAA==")  
 ```
+
+**Output**
 
 |Quine|
 |-----|
@@ -37,7 +40,8 @@ print Quine = base64_decode_toguid("JpbpECu8dUy7Pv5gbeJXAA==")
 
 If you try to decode an invalid base64 string, "null" will be returned:
 
-[**Run the query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUXDNLSipVLBVSEosTjUziU9JTc5PSY0vyU8vzUzRUEpMSk4xNDI2VNIEADTfymYuAAAA)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUXDNLSipVLBVSEosTjUziU9JTc5PSY0vyU8vzUzRUEpMSk4xNDI2VNIEADTfymYuAAAA" target="_blank">Run the query</a>
 
 ```kusto
 print Empty = base64_decode_toguid("abcd1231")

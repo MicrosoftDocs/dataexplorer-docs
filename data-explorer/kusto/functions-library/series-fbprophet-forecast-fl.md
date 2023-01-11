@@ -3,7 +3,7 @@ title: series_fbprophet_forecast_fl() - Azure Data Explorer
 description: This article describes the series_fbprophet_forecast_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/01/2021
+ms.date: 11/08/2022
 ---
 # series_fbprophet_forecast_fl()
 
@@ -29,7 +29,7 @@ The function `series_fbprophet_forecast_fl()` takes an expression containing a t
 
 ## Usage
 
-`series_fbprophet_forecast_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`series_fbprophet_forecast_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
 The `fbprophet` package isn't included in the Python image. To install and use this package, do the following steps:
 
@@ -38,15 +38,15 @@ The `fbprophet` package isn't included in the Python image. To install and use t
 1. Create a SAS token with read access to your zip file. To create a SAS token, see [get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
 1. In the example below, replace the URL reference in the `external_artifacts` parameter with your file path and its SAS token.
 
-# [Ad hoc](#tab/adhoc)
+# [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
 let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_pred_series:string, points:int=0, y_pred_low_series:string='', y_pred_high_series:string='')
 {
-    let kwargs = pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
+    let kwargs = bag_pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
     let code = ```if 1:
         from sandbox_utils import Zipackage
         Zipackage.install("fbprophet.zip")
@@ -89,7 +89,7 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
     tbl
      | evaluate python(typeof(*), code, kwargs
 //  fbprophet v0.7.1 for Python 3.6.5, SAS key till 3/26/2030
-, external_artifacts=pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
+, external_artifacts=bag_pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
 };
 //
 //  Forecasting 3 time series using fbprophet, compare to forecasting using the native function series_decompose_forecast()
@@ -106,9 +106,9 @@ demo_make_series2
 | render timechart 
 ~~~
 
-# [Persistent](#tab/persistent)
+# [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One time installation
 
@@ -117,7 +117,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Time Series Forecast using Facebook fbprophet package")
 series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_series:string, points:int=0, y_pred_low_series:string='', y_pred_high_series:string='')
 {
-    let kwargs = pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
+    let kwargs = bag_pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
     let code = ```if 1:
         from sandbox_utils import Zipackage
         Zipackage.install("fbprophet.zip")
@@ -160,7 +160,7 @@ series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_
     tbl
      | evaluate python(typeof(*), code, kwargs
 //  fbprophet v0.7.1 for Python 3.6.5, SAS key till 3/26/2030
-, external_artifacts=pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
+, external_artifacts=bag_pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
 }
 ~~~
 

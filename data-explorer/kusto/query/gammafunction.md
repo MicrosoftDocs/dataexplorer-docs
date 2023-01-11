@@ -1,23 +1,28 @@
 ---
 title: gamma() - Azure Data Explorer
-description: This article describes gamma() in Azure Data Explorer.
+description: Learn how to use the gamma() function to compute the gamma of the input parameter.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/13/2022
 ---
 # gamma()
 
-Computes [gamma function](https://en.wikipedia.org/wiki/Gamma_function)
+Computes the gamma function for the provided *number*.
 
 ## Syntax
 
-`gamma(`*x*`)`
+`gamma(`*number*`)`
 
-## Arguments
+## Parameters
 
-* *x*: Parameter for the gamma function
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *number* | real | &check; | The number used to calculate the gamma function. |
 
 ## Returns
 
-* Gamma function of x.
-* For computing log-gamma function, see [loggamma()](loggammafunction.md).
+Gamma function of *number*.
+
+## See also
+
+For computing log-gamma function, see [loggamma()](loggammafunction.md).

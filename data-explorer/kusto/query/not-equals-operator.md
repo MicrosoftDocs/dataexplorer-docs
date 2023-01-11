@@ -1,13 +1,13 @@
 ---
 title: The case-insensitive !~ (not equals) string operator - Azure Data Explorer
-description: This article describes the case-insensitive !~ (not equals) string operator in Azure Data Explorer.
+description: Learn how to use the !~ (not equals) string operator to filter records for data that doesn't match a case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/30/2021
+ms.date: 01/09/2023
 ---
 # !~ (not equals) operator
 
-Filters a record set for data that does not match a case-insensitive string.
+Filters a record set for data that doesn't match a case-insensitive string.
 
 The following table provides a comparison of the `==` (equals) operators:
 
@@ -18,24 +18,21 @@ The following table provides a comparison of the `==` (equals) operators:
 |[`=~`](equals-operator.md) |Equals |No |`"abc" =~ "ABC"`|
 |[`!~`](not-equals-operator.md) |Not equals |No |`"aBc" !~ "xyz"`|
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
 ## Performance tips
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator, for example, `==`, not `=~`.
+For faster results, use the case-sensitive version of an operator. For example, use `==` instead of `=`.
 
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. 
-
-For best practices, see [Query best practices](best-practices.md).
+If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`.
 
 ## Syntax
 
-*T* `|` `where` *col* `!~` `(`*expression*`)` 
+*T* `|` `where` *col* `!~` `(`*expression*`)`
 
 ## Arguments
 

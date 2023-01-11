@@ -28,7 +28,7 @@ Search++ mode enables you to search for a term using search syntax across one or
 
 ## Query mode
 
-Kusto.Explorer includes a powerful script mode that enables you to write, edit, and run ad-hoc queries. The script mode comes with syntax highlighting and IntelliSense, so you can quickly ramp-up your knowledge of the Kusto Query Language.
+Kusto.Explorer includes a powerful script mode that enables you to write, edit, and run inline queries. The script mode comes with syntax highlighting and IntelliSense, so you can quickly ramp-up your knowledge of the Kusto Query Language.
 
 This section describes how to run basic queries in Kusto.Explorer and how to add parameters to your queries.
 
@@ -142,10 +142,10 @@ The easiest way to create a deep-link is to author your query in Kusto.Explorer 
         
 When copied to an email, the deep link is displayed in small font. For example:
 
-https://help.kusto.windows.net/Samples [[Click to run query](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] 
+https://help.kusto.windows.net/Samples [[Run the query](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)]
 
 The first link opens Kusto.Explorer and sets the cluster and database context appropriately.
-The second link (`Click to run query`) is the deep link. If you move the link to an email message and press CTRL+K, you can see the actual URL:
+The second link (`Run the query`) is the deep link. If you move the link to an email message and press CTRL+K, you can see the actual URL:
 
 https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
 
