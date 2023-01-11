@@ -29,7 +29,7 @@ Azure Data Explorer only supports Security Group (SG) principals and not Distrib
 
 The syntax for referencing Azure AD principals is outlined in the following table.
 
-If you reference a principal using only a User Principal Name (UPN), the query engine will attempt to resolve the tenant details from the UPN. If the resolution fails, you must provide the tenant information explicitly.
+If you reference a principal using only a User Principal Name (UPN), the query engine will attempt to resolve the tenant details from the UPN. If the resolution fails, provide the tenant information explicitly.
 
 | Type of Principal | Tenant Identifier | Syntax |
 |--|--|--|
