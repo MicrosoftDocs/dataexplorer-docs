@@ -35,7 +35,7 @@ The function accepts a table containing the column to calculate on and an option
 For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
 
 ```kusto
-let percentiles_linear_fl=(tbl:(*), val_col:string, pct_arr:dynamic, aggr_col:string)
+let percentiles_linear_fl=(tbl:(*), val_col:string, pct_arr:dynamic, aggr_col:string='')
 {
     tbl
     | extend _vals = column_ifexists(val_col, 0.0)
@@ -74,7 +74,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 
 ```kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Calculate linear interpolated percentiles (identical to Excel's PERCENTILE.INC)")
-percentiles_linear_fl(tbl:(*), val_col:string, pct_arr:dynamic, aggr_col:string)
+percentiles_linear_fl(tbl:(*), val_col:string, pct_arr:dynamic, aggr_col:string='')
 {
     tbl
     | extend _vals = column_ifexists(val_col, 0.0)

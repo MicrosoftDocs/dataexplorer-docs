@@ -7,7 +7,7 @@ ms.date: 09/06/2022
 ---
 # User-defined functions
 
-**User-defined functions** are reusable subqueries that can be defined as part of the query itself (**ad-hoc functions**), or persisted as part of the database metadata (**stored functions**). User-defined functions are invoked through a **name**, are provided with zero or more **input arguments** (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function **body**.
+**User-defined functions** are reusable subqueries that can be defined as part of the query itself (**query-defined functions**), or stored as part of the database metadata (**stored functions**). User-defined functions are invoked through a **name**, are provided with zero or more **input arguments** (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function **body**.
 
 A user-defined function belongs to one of two categories:
 
@@ -100,6 +100,8 @@ let MyFilter = (T:(x:long), v:long) {
 MyFilter((range x from 1 to 10 step 1), 9)
 ```
 
+**Output**
+
 |x|
 |---|
 |9|
@@ -114,6 +116,8 @@ let MyDistinct = (T:(*)) {
 };
 MyDistinct((range x from 1 to 3 step 1))
 ```
+
+**Output**
 
 |x|
 |---|
@@ -264,6 +268,8 @@ union
   (print x=f(c=7, a=12)), // "12-b.default-7"
   (print x=f(12, c=7))    // "12-b.default-7"
 ```
+
+**Output**
 
 |x|
 |---|

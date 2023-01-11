@@ -3,12 +3,24 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 01/01/2023
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## December 2022
+
+**General**
+
+| Article title | Description |
+|--|--|
+|[Find an Azure Data Explorer partner](find-my-partner.md) | New article. Describes the Azure Data Explorer Find My Partner Program.|
+|[Manage Azure Data Explorer cluster permissions](manage-cluster-permissions.md)| New article. Describes how to manage role-based access controls for clusters.|
+|[Ingestion behavior of invalid data](ingest-invalid-data.md) | New article. Describes the possible outcomes of ingesting invalid data|
+|[Use data from Azure Data Explorer in Power BI](power-bi-data-connector.md)| New article. Describes how to use data from Azure Data Explorer in Power BI.|
+| - [Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)](ingest-data-cosmos-db-connection.md) <br/> - [Get latest versions of Azure Cosmos DB documents (Preview)](ingest-data-cosmos-db-queries.md) | New articles. Describes how to load data and get the latest versions of Azure Cosmos DB documents.|
+|[Configure a database using a Kusto Query Language script](database-script.md)| Updated article. Database scripts supports `.add` verb.|
 ## November 2022
 
 **Functions library**
@@ -190,15 +202,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [Azure Data Explorer API overview](kusto/api/index.md) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.
-
-## December 2021
-
-| Article title | Description |
-|--|--|
-| [Use parameters in dashboards](dashboard-parameters.md) | Updated article. Added new section for cross-filters as dashboard parameters. |
-
-**Functions library**
-
-| Article title | Description |
-|--|--|
-| [time_window_rolling_avg_fl()](kusto/functions-library/time-window-rolling-avg-fl.md) | New Article. Describes the function that calculates the rolling average of a metric over a constant duration time window. |

@@ -521,6 +521,12 @@ items:
       href: data-ingestion/streaming-ingestion-schema-changes.md
     - name: Clear schema cache for streaming ingestion
       href: data-ingestion/clear-schema-cache-command.md
+  - name: .dup-next-ingest
+    href: dup-next-ingest.md
+    displayName: duplicate, ingestion, troubleshoot
+  - name: .dup-next-failed-ingest
+    displayName: duplicate, failure, ingestion, troubleshoot
+    href: dup-next-failed-ingest.md
   - name: .show ingestion failures
     href: ingestionfailures.md
   - name: .show streaming ingestion failures
