@@ -82,7 +82,7 @@ PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-1234567
 
 ## Add Principals
 
-After updating the `trustedExternalTenants` property, give access to principals from the approved tenants using the `.add` command. For more information, see [referencing Azure AD principals](./kusto/management/access-control/principals-and-identity-providers.md#referencing-azure-ad-principals).
+After updating the `trustedExternalTenants` property, you must give access to principals from the approved tenants. Use the Azure portal to give a principal [cluster level permissions](manage-cluster-permissions.md) or [database permissions](manage-database-permissions.md). Alternatively, to give access to a database, table, function, or materialized view level, use [management commands](kusto/management/security-roles.md).
 
 ## Limitations
 

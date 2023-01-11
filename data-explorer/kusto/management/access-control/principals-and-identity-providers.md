@@ -1,23 +1,22 @@
 ---
-title: Security principals - Azure Data Explorer
-description: This article describes security principals and identity providers in Azure Data Explorer.
+title: Referencing security principals - Azure Data Explorer
+description: This article describes how to reference security principals and identity providers in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 12/08/2022
 ---
-# Security principals
+# Referencing security principals
 
-The Azure Data Explorer authorization model supports several identity providers (IdPs) and principal types.
-This article reviews identity providers and their supported principal types, and demonstrates how to reference these principals when assigning [security roles](../../management/security-roles.md) with management commands.
+The Azure Data Explorer authorization model allows for the use of Azure Active Directory (Azure AD) user identities and Microsoft Accounts (MSAs) as security principals. This article provides an overview of the supported principal types for both Azure AD and MSAs, and demonstrates how to properly reference these principals when assigning security roles using [management commands](../security-roles.md).
 
 ## Azure Active Directory
 
-The recommended way to access Azure Data Explorer is by authenticating to the Azure Active Directory (Azure AD) service. Azure AD is an identity provider capable of authenticating security principals and coordinating with other identity providers, such as Microsoft's Active Directory.
+The recommended way to access Azure Data Explorer is by authenticating to the Azure AD service. Azure AD is an identity provider capable of authenticating security principals and coordinating with other identity providers, such as Microsoft's Active Directory.
 
 Azure AD supports the following authentication scenarios:
 
-* **Interactive sign-in**: Used to authenticate human principals.
-* **Non-interactive sign-in**: Used to authenticate services and applications.
+* **User authentication** (interactive sign-in): Used to authenticate human principals.
+* **Application authentication** (non-interactive sign-in): Used to authenticate services and applications that have to run or authenticate without user interaction.
 
 > [!NOTE]
 > Azure AD does not allow authentication of service accounts that are by definition on-premises AD entities. The Azure AD equivalent of an AD service account is the Azure AD application.
@@ -28,24 +27,26 @@ Azure Data Explorer only supports Security Group (SG) principals and not Distrib
 
 ### Referencing Azure AD principals
 
-A principal can be referenced using their object ID or User Principal Name (UPN), which is a username and domain in email address format. For example, `abbiatkins@fabrikam.com`.
+The syntax for referencing Azure AD principals is outlined in the following table. If you specify a User Principal Name (UPN) without tenant information, the system will attempt to resolve the tenant details from the UPN. If the resolution fails, provide the tenant information explicitly.
 
-To identify a principal, we also need to know the Azure AD tenant to which the principal belongs. In some cases, the UPN contains the tenant information. In these cases, the tenant will be resolved from the UPN. In other cases, the tenant ID or name must be explicitly provided.
-
-| Azure AD Tenant | Type | Syntax |
+| Type of Principal | Tenant Identifier | Syntax |
 |--|--|--|
-| Implicit (UPN) | User | `aaduser=`*UserEmailAddress* |
-| Explicit (ID) | User | `aaduser=`*UserEmailAddress*`;`*TenantId* or `aaduser=`*ObjectID*`;`*TenantId* |
-| Explicit (Name) | User | `aaduser=`*UserEmailAddress*`;`*TenantName* or `aaduser=`*ObjectID*`;`*TenantName* |
-| Implicit (UPN) | Group | `aadgroup=`*GroupEmailAddress* |
-| Explicit (ID) | Group | `aadgroup=`*GroupObjectId*`;`*TenantId* or`aadgroup=`*GroupDisplayName*`;`*TenantId* |
-| Explicit (Name) | Group | `aadgroup=`*GroupObjectId*`;`*TenantName* or`aadgroup=`*GroupDisplayName*`;`*TenantName* |
-| Explicit (UPN) | App | `aadapp`=*ApplicationDisplayName*`;`*TenantId* |
-| Explicit (Name) | App | `aadapp=`*ApplicationId*`;`*TenantName* |
+| User  | Implicit (UPN)  | `aaduser`=*UserEmailAddress*|
+| User  | Explicit (ID)   | `aaduser`=*UserEmailAddress*;*TenantId*|
+| User  | Explicit (ID)   | `aaduser`=*ObjectID*;*TenantId*|
+| User  | Explicit (Name) | `aaduser`=*UserEmailAddress*;*TenantName*|  
+| User  | Explicit (Name) | `aaduser`=*ObjectID*;*TenantName*|
+| Group | Implicit (UPN)  | `aadgroup`=*GroupEmailAddress*|
+| Group | Explicit (ID)   | `aadgroup`=*GroupObjectId*;*TenantId*|
+| Group | Explicit (ID)   | `aadgroup`=*GroupDisplayName*;*TenantId*|
+| Group | Explicit (Name) | `aadgroup`=*GroupObjectId*;*TenantName*|
+| Group | Explicit (Name) | `aadgroup`=*GroupDisplayName*;*TenantName*|
+| App   | Explicit (UPN)  | `aadapp`=*ApplicationDisplayName*;*TenantId*
+| App   | Explicit (Name) | `aadapp`=*ApplicationId*;*TenantName*|
 
 ### Examples
 
-The following example uses the user UPN to define a principal the user role on the `Test` database. The tenant information is not specified, so the query engine will attempt to resolve the Azure AD tenant using the UPN.
+The following example uses the user UPN to define a principal the user role on the `Test` database. The tenant information isn't specified, so the query engine will attempt to resolve the Azure AD tenant using the UPN.
 
 ```kusto
 .add database Test users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
@@ -66,8 +67,6 @@ The following example uses an app ID and tenant name to assign the app the user 
 ## Microsoft Accounts (MSAs)
 
 Azure Data Explorer supports user authentication for Microsoft Accounts (MSAs). MSAs are all of the Microsoft-managed non-organizational user accounts. For example, `hotmail.com`, `live.com`, `outlook.com`.
-
-If a User Principal Name (UPN)—a username and domain in email address format—contains an MSA in the domain section, the user can be authenticated. Unlike with [Azure AD principals](#referencing-azure-ad-principals), there won't be an attempt to resolve the tenant information from the UPN.
 
 ### Referencing MSA principals
 
