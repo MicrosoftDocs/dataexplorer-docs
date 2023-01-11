@@ -15,6 +15,6 @@ The following table compares the `hasprefix` operators using the abbreviations p
 |[`hasprefix_cs`](../kusto/query/hasprefix-cs-operator.md) |RHS is a term prefix in LHS |Yes |`"North America" hasprefix_cs "Ame"`|
 |[`!hasprefix_cs`](../kusto/query/not-hasprefix-cs-operator.md) |RHS isn't a term prefix in LHS |Yes |`"North America" !hasprefix_cs "CA"`|
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](../kusto/query/datatypes-string-operators.md).
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](../kusto/query/datatypes-string-operators.md).
 
 Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](../kusto/query/tolowerfunction.md) function.

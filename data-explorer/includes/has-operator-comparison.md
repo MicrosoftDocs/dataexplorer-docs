@@ -15,6 +15,6 @@ The following table compares the `has` operators using the abbreviations provide
 |[`has_cs`](../kusto/query/has-cs-operator.md) |RHS is a whole term in LHS |Yes |`"North America" has_cs "America"`|
 |[`!has_cs`](../kusto/query/not-has-cs-operator.md) |RHS isn't a full term in LHS |Yes |`"North America" !has_cs "amer"`|
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](../kusto/query/datatypes-string-operators.md).
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](../kusto/query/datatypes-string-operators.md).
 
 Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](../kusto/query/tolowerfunction.md) function.
