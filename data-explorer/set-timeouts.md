@@ -56,3 +56,19 @@ This section will describe how to configure a custom query timeout and admin com
     :::image type="content" source="media/set-timeouts/kusto-explorer-set-timeouts.png" alt-text="Screenshot showing settings that control the timeout length in Kusto.Explorer.":::
 
 1. Select **OK** to save the changes.
+
+## Kusto.Cli
+
+This section will describe how to configure a custom server timeout in the Kusto.Cli.
+
+### Prerequisites
+
+* Install the [Kusto.Cli](kusto/tools/kusto-cli.md) by downloading the package [Microsoft.Azure.Kusto.Tools](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
+
+### Set timeout length
+
+Run the following command with the desired timeout length as a valid [timespan](kusto/query/scalar-data-types/timespan.md) value.
+
+```dotnet
+Kusto.Cli.exe <ConnectionString> #crp servertimeout=<timespan>
+```
