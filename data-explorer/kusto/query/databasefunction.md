@@ -47,7 +47,7 @@ database('Samples').StormEvents | count
 
 ### Use database() inside let statements
 
-The same query as above can be rewritten to use inline function (let statement) that
+The query above can be rewritten as a query-defined function (let statement) that
 receives a parameter `dbName` - which is passed into the database() function.
 
 ```kusto
