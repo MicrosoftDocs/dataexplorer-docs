@@ -1,6 +1,6 @@
 ---
 title: parse-where operator - Azure Data Explorer
-description: Learn how to use the parse-where operator to parse the value of a string expression into one or more columns.
+description: Learn how to use the parse-where operator to parse the value of a string expression into one or more calculated columns.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 10/10/2021
