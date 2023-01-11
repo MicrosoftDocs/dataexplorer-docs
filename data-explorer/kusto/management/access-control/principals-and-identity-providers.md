@@ -27,19 +27,21 @@ Azure Data Explorer only supports Security Group (SG) principals and not Distrib
 
 ### Referencing Azure AD principals
 
-The syntax for referencing Azure AD principals is outlined in the following table. If you specify a User Principal Name (UPN) without tenant information, the system will attempt to resolve the tenant details from the UPN. If the resolution fails, provide the tenant information explicitly.
+The syntax for referencing Azure AD principals is outlined in the following table.
+
+If you reference a principal using only a User Principal Name (UPN), the query engine will attempt to resolve the tenant details from the UPN. If the resolution fails, you must provide the tenant information explicitly.
 
 | Type of Principal | Tenant Identifier | Syntax |
 |--|--|--|
 | User  | Implicit (UPN)  | `aaduser`=*UserEmailAddress*|
 | User  | Explicit (ID)   | `aaduser`=*UserEmailAddress*;*TenantId*|
-| User  | Explicit (ID)   | `aaduser`=*ObjectID*;*TenantId*|
 | User  | Explicit (Name) | `aaduser`=*UserEmailAddress*;*TenantName*|  
+| User  | Explicit (ID)   | `aaduser`=*ObjectID*;*TenantId*|
 | User  | Explicit (Name) | `aaduser`=*ObjectID*;*TenantName*|
 | Group | Implicit (UPN)  | `aadgroup`=*GroupEmailAddress*|
 | Group | Explicit (ID)   | `aadgroup`=*GroupObjectId*;*TenantId*|
-| Group | Explicit (ID)   | `aadgroup`=*GroupDisplayName*;*TenantId*|
 | Group | Explicit (Name) | `aadgroup`=*GroupObjectId*;*TenantName*|
+| Group | Explicit (ID)   | `aadgroup`=*GroupDisplayName*;*TenantId*|
 | Group | Explicit (Name) | `aadgroup`=*GroupDisplayName*;*TenantName*|
 | App   | Explicit (UPN)  | `aadapp`=*ApplicationDisplayName*;*TenantId*
 | App   | Explicit (Name) | `aadapp`=*ApplicationId*;*TenantName*|
