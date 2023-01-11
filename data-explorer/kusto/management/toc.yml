@@ -599,6 +599,22 @@ items:
     href: queries.md
   - name: Streaming ingestion statistics
     href: streamingingestionstatistics.md
+- name: Access control
+  href: access-control/index.md
+  items:
+  - name: Identities
+    href: access-control/principals-and-identity-providers.md
+  - name: Azure Active Directory
+    displayName: AAD, Azure AD
+    href: access-control/aad.md
+  - name: Role-based access control
+    href: access-control/role-based-authorization.md
+    displayName: RBAC, security roles, principals
+  - name: Allow cross-tenant queries and commands
+    href: ../../cross-tenant-query-and-commands.md
+  - name: How-To Azure Active Directory authentication
+    displayName: AAD, Azure AD
+    href: access-control/how-to-authenticate-with-aad.md
 - name: Advanced data management
   items:
   - name: Extents (data shards)
