@@ -43,7 +43,7 @@ If you reference a principal using only a User Principal Name (UPN), the query e
 | Group | Explicit (Name) | `aadgroup`=*GroupObjectId*;*TenantName*|
 | Group | Explicit (ID)   | `aadgroup`=*GroupDisplayName*;*TenantId*|
 | Group | Explicit (Name) | `aadgroup`=*GroupDisplayName*;*TenantName*|
-| App   | Explicit (UPN)  | `aadapp`=*ApplicationDisplayName*;*TenantId*
+| App   | Explicit (ID)  | `aadapp`=*ApplicationDisplayName*;*TenantId*
 | App   | Explicit (Name) | `aadapp`=*ApplicationId*;*TenantName*|
 
 ### Examples
