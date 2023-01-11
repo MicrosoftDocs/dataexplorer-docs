@@ -1,15 +1,15 @@
 ---
-title: order operator  - Azure Data Explorer
-description: This article describes order operator  in Azure Data Explorer.
+title: order operator, sort operator - Azure Data Explorer
+description: Learn how to use the order operator and the sort operator to sort the rows of the input table by on or more columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 01/09/2023
 ---
-# order operator
+# order operator, sort operator
 
 Sort the rows of the input table into order by one or more columns.
 
-**Alias**: [sort](sortoperator.md)
+> The `order` and `sort` operators are equivalent
 
 ## Syntax
 
@@ -18,19 +18,19 @@ Sort the rows of the input table into order by one or more columns.
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| *T* | string | &check; | Tabular input to sort. |
-| *column* | string | &check; | Column of *T* by which to sort. The type of the column values must be numeric, date, time or string.|
+|--|--|--|--|
+| *T* | string | &check; | The tabular input to sort. |
+| *column* | scalar | &check; | The column of *T* by which to sort. The type of the column values must be numeric, date, time or string.|
 | `asc` or `desc` | string | | `asc` sorts into ascending order, low to high. Default is `desc`, high to low. |
 | `nulls first` or `nulls last`  | string | | `nulls first` will place the null values at the beginning and `nulls last` will place the null values at the end. Default for `asc` is `nulls first`. Default for `desc` is `nulls last`.|
 
 ## Returns
 
-Copy of input table sorted in either ascending or descending order based on the provided column.
+A copy of the input table sorted in either ascending or descending order based on the provided column.
 
 ## Example
 
-Show storm events by state in alphabetical order with the most recent storms in each state appearing first.
+The following example shows storm events by state in alphabetical order with the most recent storms in each state appearing first.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRyC9KSS1SSKpUCC5JLElVSCxO1gExi0pCMnNTFVJSi5MBfa8LRzAAAAA=" target="_blank">Run the query</a>

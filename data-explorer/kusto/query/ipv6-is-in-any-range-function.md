@@ -26,12 +26,7 @@ Checks whether an IPv6 string address is in any of the specified IPv6 address ra
 > [!NOTE]
 > Either one or more *IPv6Range* strings or an *IPv6Ranges* dynamic array is required.
 
-## IP-prefix notation
-
-IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character.
-The IP address to the LEFT of the slash (`/`) is the base IP address. The number (0 to 128) to the RIGHT of the slash (`/`) is the number of contiguous 1 bit in the netmask.
-
-For example, fe80::85d:e82c:9446:7994/120 will have an associated net/subnetmask containing 120 contiguous bits.
+[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 ## Returns
 
