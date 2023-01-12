@@ -29,22 +29,18 @@ Azure Data Explorer only supports Security Group (SG) principals and not Distrib
 
 The syntax for referencing Azure AD principals is outlined in the following table.
 
-If you reference a principal using only a User Principal Name (UPN), the query engine will attempt to resolve the tenant details from the UPN. If the resolution fails, provide the tenant information explicitly.
+If you implicitly reference a principal using only a User Principal Name (UPN), the query engine will attempt to resolve the tenant details from the UPN. If the resolution fails, provide the UPN with tenant information explicitly.
 
 | Type of Principal | Tenant Identifier | Syntax |
 |--|--|--|
-| User  | Implicit (UPN)  | `aaduser`=*UserEmailAddress*|
-| User  | Explicit (ID)   | `aaduser`=*UserEmailAddress*;*TenantId*|
-| User  | Explicit (Name) | `aaduser`=*UserEmailAddress*;*TenantName*|  
-| User  | Explicit (ID)   | `aaduser`=*ObjectID*;*TenantId*|
-| User  | Explicit (Name) | `aaduser`=*ObjectID*;*TenantName*|
-| Group | Implicit (UPN)  | `aadgroup`=*GroupEmailAddress*|
-| Group | Explicit (ID)   | `aadgroup`=*GroupObjectId*;*TenantId*|
-| Group | Explicit (Name) | `aadgroup`=*GroupObjectId*;*TenantName*|
-| Group | Explicit (ID)   | `aadgroup`=*GroupDisplayName*;*TenantId*|
-| Group | Explicit (Name) | `aadgroup`=*GroupDisplayName*;*TenantName*|
-| App   | Explicit (ID)  | `aadapp`=*ApplicationDisplayName*;*TenantId*
-| App   | Explicit (Name) | `aadapp`=*ApplicationId*;*TenantName*|
+| User | Implicit (UPN) | `aaduser`=*UserEmailAddress* |
+| User | Explicit (ID) | UPN with tenant ID: `aaduser`=*UserEmailAddress*;*TenantId*<br />or<br />Object ID with tenant ID: `aaduser`=*ObjectID*;*TenantId* | 
+| User | Explicit (Name) | UPN with tenant name: `aaduser`=*UserEmailAddress*;*TenantName*<br />or<br />Object ID with tenant name: `aaduser`=*ObjectID*;*TenantName* |
+| Group | Implicit (UPN) | `aadgroup`=*GroupEmailAddress* |
+| Group | Explicit (ID) | UPN with tenant ID: `aadgroup`=*GroupObjectId*;*TenantId*<br />or<br />Object ID with tenant ID: `aadgroup`=*GroupDisplayName*;*TenantId* |
+| Group | Explicit (Name) | UPN with tenant name: `aadgroup`=*GroupObjectId*;*TenantName*<br />or<br />Object ID with tenant name: `aadgroup`=*GroupDisplayName*;*TenantName* |
+| App | Explicit (ID) | `aadapp`=*ApplicationDisplayName*;*TenantId* |
+| App | Explicit (Name) | `aadapp`=*ApplicationId*;*TenantName* |
 
 ### Examples
 
