@@ -29,7 +29,7 @@ Azure Data Explorer only supports Security Group (SG) principals and not Distrib
 
 The syntax for referencing Azure AD user, group, or application principals is outlined in the following table.
 
-If you implicitly reference a principal using only a [User Principal Name (UPN)](azure/active-directory/hybrid/plan-connect-userprincipalname#what-is-userprincipalname) the query engine will attempt to resolve the tenant details from the UPN. If the resolution fails, specify the principal explicitly using the UPN or object ID with the tenant ID or name.
+If you implicitly reference a principal using only a [User Principal Name (UPN)](/azure/active-directory/hybrid/plan-connect-userprincipalname#what-is-userprincipalname) the query engine will attempt to resolve the tenant details from the UPN. If the resolution fails, specify the principal explicitly using the UPN or object ID with the tenant ID or name.
 
 | Type of Principal | Tenant Identifier | Syntax |
 |--|--|--|
