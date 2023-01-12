@@ -142,7 +142,7 @@ print "This is an example for using 'external_artifacts'"
   
 ### Example
 
-    ```kusto
+```kusto
     let script = 
         externaldata(script:string)
         [h'https://kustoscriptsamples.blob.core.windows.net/samples/python/sample_script.py']
