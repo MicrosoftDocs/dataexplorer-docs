@@ -1,6 +1,6 @@
 ---
 title: parse_url() - Azure Data Explorer
-description: Learn how to use the parse_url() function to parse an obsolete URL string.
+description: Learn how to use the parse_url() function to parse a URL string.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/08/2023

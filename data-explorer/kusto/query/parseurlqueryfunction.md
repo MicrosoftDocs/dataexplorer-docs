@@ -17,10 +17,10 @@ Returns a `dynamic` object that contains the query parameters.
 
 ## Arguments
 
-*query*: A string represents a url query.
+*query*: A string representing a URL query.
 
 > [!NOTE]
-> Input format should follow URL query standards (key=value& ...)
+> The input format should follow URL query standards (key=value& ...).
 
 ## Returns
 
