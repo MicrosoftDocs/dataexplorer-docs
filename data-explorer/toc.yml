@@ -35,8 +35,6 @@ items:
   - name: Explore the samples gallery
     href: web-ui-samples-gallery.md
     displayName: Azure Data Explorer web UI
-  - name: Query data with Azure Data Explorer web UI
-    href: web-query-data.md
 - name: Tutorials
   items:
   - name: Write queries
@@ -53,6 +51,9 @@ items:
   items:
   - name: EngineV3
     href: engine-v3.md
+  - name: Azure Data Explorer web UI overview
+    displayName: Kusto Web Explorer, KWE
+    href: web-ui-overview.md
   - name: Security
     items:
     - name: Security overview
@@ -81,6 +82,8 @@ items:
     - name: Formats for data ingestion
       displayName: supported data formats
       href: ingestion-supported-formats.md
+    - name: Ingestion wizard
+      href: ingest-data-wizard.md
     - name: Ingest JSON data using the wizard
       displayName: ingest data, ingestion wizard, one click, local file, existing table
       href: ingestion-wizard-existing-table.md
@@ -212,19 +215,12 @@ items:
       href: ingest-json-formats.md
   - name: Query data
     items:
-    - name: Azure Data Explorer web UI
-      items:
-      - name: Azure Data Explorer web UI overview
-        displayName: Kusto Web Explorer, KWE
-        href: web-ui-overview.md
-      - name: Ingestion wizard
-        href: ingest-data-wizard.md
-      - name: Azure Data Explorer web UI keyboard shortcuts
-        href: web-ui-query-keyboard-shortcuts.md
     - name: Evaluate query performance in your cluster
       href: kusto/api/load-test-cluster.md
     - name: Optimize for high concurrency
       href: high-concurrency.md
+    - name: Query data in Azure Data Explorer web UI
+      href: web-query-data.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
@@ -586,6 +582,8 @@ items:
   items:
   - name: API
     href: kusto/api/toc.yml
+  - name: Azure Data Explorer web UI keyboard shortcuts
+    href: web-ui-query-keyboard-shortcuts.md
   - name: Troubleshoot ingestion
     items:
     - name: Ingestion error codes
