@@ -3,7 +3,7 @@ title: Project operator - Azure Data Explorer
 description: This article describes Project operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 01/12/2023
 ---
 # project operator
 
@@ -23,9 +23,9 @@ or
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Tabular input for which to project certain columns. |
-| *ColumnName* | string | | Name of column to appear in the output. |
-| *Expression* | string | | Scalar expression to perform over the input. |
+| *T* | string | &check; | The tabular input for which to project certain columns. |
+| *ColumnName* | string | | A column name or comma-separated list of column names to appear in the output. |
+| *Expression* | string | | The scalar expression to perform over the input. |
 
 * Either *ColumnName* or *Expression* must be specified.
 * If there is no *Expression*, then a column of *ColumnName* must appear in the input.
