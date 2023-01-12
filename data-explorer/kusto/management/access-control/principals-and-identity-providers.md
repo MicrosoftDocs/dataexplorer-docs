@@ -7,7 +7,7 @@ ms.date: 12/08/2022
 ---
 # Referencing security principals
 
-The Azure Data Explorer authorization model allows for the use of Azure Active Directory (Azure AD) user identities and Microsoft Accounts (MSAs) as security principals. This article provides an overview of the supported principal types for both Azure AD and MSAs, and demonstrates how to properly reference these principals when assigning security roles using [management commands](../security-roles.md).
+The Azure Data Explorer authorization model allows for the use of Azure Active Directory (Azure AD) user and application identities and Microsoft Accounts (MSAs) as security principals. This article provides an overview of the supported principal types for both Azure AD and MSAs, and demonstrates how to properly reference these principals when assigning security roles using [management commands](../security-roles.md).
 
 ## Azure Active Directory
 
