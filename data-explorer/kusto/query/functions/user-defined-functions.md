@@ -7,7 +7,7 @@ ms.date: 09/06/2022
 ---
 # User-defined functions
 
-**User-defined functions** are reusable subqueries that can be defined as part of the query itself (**ad-hoc functions**), or persisted as part of the database metadata (**stored functions**). User-defined functions are invoked through a **name**, are provided with zero or more **input arguments** (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function **body**.
+**User-defined functions** are reusable subqueries that can be defined as part of the query itself (**query-defined functions**), or stored as part of the database metadata (**stored functions**). User-defined functions are invoked through a **name**, are provided with zero or more **input arguments** (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function **body**.
 
 A user-defined function belongs to one of two categories:
 

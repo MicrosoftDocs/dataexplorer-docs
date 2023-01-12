@@ -1,15 +1,15 @@
 ---
-title: where operator in Kusto query language - Azure Data Explorer
-description: This article describes the where operator in Azure Data Explorer.
+title: where operator, filter operator - Azure Data Explorer
+description: Learn how to use the where and filter operators to filter a table to the subset of rows that satisfy a predicate.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/24/2022
 ---
-# where operator
+# where operator, filter operator
 
 Filters a table to the subset of rows that satisfy a predicate.
 
-**Alias** `filter`
+> The `where` and `filter` operators are equivalent
 
 ## Syntax
 

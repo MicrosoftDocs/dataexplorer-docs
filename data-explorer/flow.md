@@ -61,72 +61,65 @@ When you select the Azure Data Explorer connector, you can choose one of the fol
 
 This section describes the capabilities and parameters for each action and provides an example showing how to add an [email](#email-kusto-query-results) action to any flow.
 
-:::image type="content" source="media/flow/flow-action-list.png" alt-text="Screenshot of Azure Data Explorer connector actions.":::
-
 ### Run KQL query
 
-> [!Note]
-> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
+> [!NOTE]
+> If your query starts with a dot, it's a [control command](kusto/management/index.md). Use [Run async control command](#run-async-control-command).
 
-This action sends a query to the specified cluster. The actions that are added afterwards iterate over each line of the results of the query.
+Use this action to query the specified cluster. The actions that are added afterwards iterate over each line of the results of the query.
 
-The following example triggers a query every minute, and sends an email based on the query results. The query checks the number of records in the table, and then sends an email only if the number of records is greater than 0.
+If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
+
+#### Example
+
+The following flow triggers a query every minute. The query checks the number of records in the table, and then sends an email only if the number of records is greater than 0.
 
 :::image type="content" source="media/flow/flow-run-query-list-results-2-inline.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query action." lightbox="media/flow/flow-run-query-list-results-2.png":::
 
-> [!Note]
-> If the column has several records, the connector will run for each record in the column.
-
 ### Run KQL query and render a chart
 
-> [!Note]
-> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
+> [!NOTE]
+> If your query starts with a dot, it's a [control command](kusto/management/index.md). Use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
 
 Use this action to visualize a KQL query result as a table or chart. For example, use this flow to receive daily reports by email.
 
-In this example, the results of the query are returned as a timechart.
+If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
+
+#### Example
+
+The following flow will present the query results as a timechart.
 
 :::image type="content" source="media/flow/flow-run-query.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query and render a chart action.":::
 
-> [!IMPORTANT]
-> In the **Cluster Name** field, enter the cluster URL.
-
 ### Run async control command
 
-This action runs control command in async mode and returns its ID, state and status on completion. 'async' keyword is mandatory. It's always recommended to execute control commands in async mode so they keep running in the background. KQL commands can run for maximum of 1 hour. Also, you get an operation ID of the async command after execution that can be used with [.show operations OPERATION_ID_RETURNED_BY_CMD](kusto/management/operations.md) command to get the status and details of that async command.
+Use this action to run a [control command](kusto/management/index.md) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action.
 
-The following example triggers an async command to copy the sample 10 records from 'TransformedSysLogs' table to 'TargetTable'.
+If the async control command takes more than 60 minutes to run, it will fail with a "RequestTimeout" exception.
+
+#### Example
+
+The following flow triggers an async command to copy 10 records from the 'TransformedSysLogs' table to the 'TargetTable'. Note that the 'async' keyword is required in the query.
 
 :::image type="content" source="media/flow/flow-run-async-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run async control command action.":::
 
 ### Run control command and render a chart
 
-Use this action to run a [control command](kusto/management/index.md) and get the result as a chart of your choice.
+Use this action to run a [control command](kusto/management/index.md) and display the result as a chart. The chart options include an HTML table, pie chart, time chart, and bar chart.
 
-1. Specify the cluster URL. For example, `https://clusterName.eastus.kusto.windows.net`.
-1. Enter the name of the database.
-1. Specify the control command:
-    - Select dynamic content from the apps and connectors used in the flow.
-    - Add an expression to access, convert, and compare values.
-1. To send the results of this action by email as a table or a chart, specify the chart type. This can be:
-    - An HTML table.
-    - A pie chart.
-    - A time chart.
-    - A bar chart.
+If the control command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
 
 :::image type="content" source="media/flow/flow-run-control-command.png" alt-text="Screenshot of Run control command and render a chart in recurrence pane.":::
-
-> [!IMPORTANT]
-> In the **Cluster Name** field, enter the cluster URL
 
 ### Run show control command
 
 This action runs the show control command and returns the result that can be used in the following connectors.
 
-> [!Note]
-> This action is specifically for running any of the **.show** commands, there are different actions given above to run other type of commands in sync or async mode.
+If the control command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
 
-The following example executes the **.show operation** command to find the status of an async command using an operation ID returned by an async command execution.
+#### Example
+
+The following flow runs the [.show operation](kusto/management/operations.md) command to find the status of an async command using an operation ID returned by an async command execution.
 
 :::image type="content" source="media/flow/flow-run-show-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show control command action.":::
 
@@ -215,19 +208,11 @@ To see why a run failed, select the run start time. The flow appears, and the st
 
 :::image type="content" source="media/flow/flow-error.png" alt-text="Screenshot of flow run, showing an error message.":::
 
-## Timeout exceptions
-
-Your flow can fail and return a "RequestTimeout" exception if it runs for more than 90 seconds.
-
-:::image type="content" source="media/flow/flow-request-timeout.png" alt-text="Screenshot of the flow request timeout exception error.":::
-
-To fix a timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](kusto/query/best-practices.md).
-
-The same query might run successfully in Azure Data Explorer, where the time isn't limited and can be changed.
-
 ## Limitations
 
-- Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and a time of 90 seconds to run.
+- The maximum number of records per request is 50,000 and the maximum data size per request is 32 MB. These limits can't be changed.
+- Synchronous requests have a timeout of 8 minutes.
+- Asynchronous requests have a timeout of 60 minutes.
 - The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschemaoperator.md). For example, the [fork](kusto/query/forkoperator.md), [facet](kusto/query/facetoperator.md), and [evaluate](kusto/query/evaluateoperator.md) operators aren't supported.
 - Flows work best on Microsoft Edge and Google Chrome.
 
