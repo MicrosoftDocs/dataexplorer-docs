@@ -1,13 +1,13 @@
 ---
 title: parse_version() - Azure Data Explorer
-description: This article describes parse_version() in Azure Data Explorer.
+description: Learn how to use the parse_version() function to convert the input string representation of the version to a comparable decimal number,
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/08/2023
 ---
 # parse_version()
 
-Converts the input string representation of version to a comparable decimal number.
+Converts the input string representation of the version to a comparable decimal number.
 
 ## Syntax
 

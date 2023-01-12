@@ -84,7 +84,7 @@ A table with as many rows as there are in all the input tables.
 1. `union` scope can include [let statements](./letstatement.md) if those are 
 attributed with [view keyword](./letstatement.md)
 2. `union` scope will not include [functions](../management/functions.md). To include a function in the union scope, define a [let statement](./letstatement.md) with [view keyword](./letstatement.md)
-3. If the `union` input is [tables](../management/tables.md) (as opposed to [tabular expressions](./tabularexpressionstatements.md)), and the `union` is followed by a [where operator](./whereoperator.md), for better performance, consider replacing both with [find](./findoperator.md). Note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
+3. If the `union` input is [tables](../management/tables.md) (as opposed to [tabular expressions](./tabularexpressionstatements.md)), and the `union` is followed by a [where operator, filter operator](./whereoperator.md), for better performance, consider replacing both with [find](./findoperator.md). Note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
 4. `isfuzzy=true` only applies to the `union` sources resolution phase. Once the set of source tables is determined, possible additional query failures will not be suppressed.
 5. When using `outer union`, the result has all the columns that occur in any of the inputs, one column for each name and type occurrences. This means that if a column appears in multiple tables and has multiple types, it will have a corresponding column for each type in the `union`'s result. This column name will be suffixed with a '_' followed by the origin column [type](./scalar-data-types/index.md).
 6. There is no guarantee of the order in which the union legs will appear (but if each leg has an `order by` operator, then each leg will be sorted).
@@ -99,7 +99,7 @@ attributed with [view keyword](./letstatement.md)
 2. `union` scope will not include functions. To include 
 function in the union scope - define a [let statement](./letstatement.md) 
 with [view keyword](./letstatement.md)
-3. If the `union` input is tables (as oppose to [tabular expressions](./tabularexpressionstatements.md)), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./findoperator.md) for better performance. Please note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
+3. If the `union` input is tables (as oppose to [tabular expressions](./tabularexpressionstatements.md)), and the `union` is followed by a [where operator, filter operator](./whereoperator.md), consider replacing both with [find](./findoperator.md) for better performance. Please note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
 4. `isfuzzy=` `true` applies only to the phase of the `union` sources resolution. Once the set of source tables was determined, possible additional query failures will not be suppressed.
 5. When using `outer union`, the result has all the columns that occur in any of the inputs, one column for each name and type occurrences. This means that if a column appears in multiple tables and has multiple types, it will have a corresponding column for each type in the `union`'s result. This column name will be suffixed with a '_' followed by the origin column [type](./scalar-data-types/index.md).
 6. Any two statements must be separated by a semicolon.

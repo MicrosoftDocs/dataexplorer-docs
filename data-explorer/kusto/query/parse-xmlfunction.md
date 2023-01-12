@@ -1,6 +1,6 @@
 ---
 title: parse_xml() - Azure Data Explorer
-description: This article describes parse_xml() in Azure Data Explorer.
+description: Learn how to use the parse_xml() function to return a dynamic object that is determined by the value of XML.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/08/2023
@@ -26,7 +26,7 @@ An object of type [dynamic](./scalar-data-types/dynamic.md) that is determined b
 The conversion is done as follows:
 
 XML                                |JSON                                            |Access
------------------------------------|------------------------------------------------|--------------         
+-----------------------------------|------------------------------------------------|--------------
 `<e/>`                             | { "e": null }                                  | o.e
 `<e>text</e>`	                   | { "e": "text" }	                            | o.e
 `<e name="value" />`               | { "e":{"@name": "value"} }	                    | o.e["@name"]

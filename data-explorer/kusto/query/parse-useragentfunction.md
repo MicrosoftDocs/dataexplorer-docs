@@ -1,13 +1,13 @@
 ---
 title: parse_user_agent() - Azure Data Explorer
-description: This article describes parse_user_agent() in Azure Data Explorer.
+description: Learn how to use the parse_user_agent() to return a dynamic object that contains information about the user-agent.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/08/2023
 ---
 # parse_user_agent()
 
-Interprets a user-agent string, which identifies the user's browser and provides certain system details to servers hosting the websites the user visits. The result is returned as [`dynamic`](./scalar-data-types/dynamic.md). 
+Interprets a user-agent string, which identifies the user's browser and provides certain system details to servers hosting the websites the user visits. The result is returned as [`dynamic`](./scalar-data-types/dynamic.md).
 
 ## Syntax
 
@@ -24,9 +24,9 @@ Interprets a user-agent string, which identifies the user's browser and provides
 
 An object of type `dynamic` that contains the information about the requested parsing targets.
 
-Browser: Family, MajorVersion, MinorVersion, Patch                 
+Browser: Family, MajorVersion, MinorVersion, Patch
 
-OperatingSystem: Family, MajorVersion, MinorVersion, Patch, PatchMinor             
+OperatingSystem: Family, MajorVersion, MinorVersion, Patch, PatchMinor
 
 Device: Family, Brand, Model
 

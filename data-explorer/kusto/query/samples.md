@@ -1633,7 +1633,7 @@ Nested objects are objects that contain other objects in an array or in a map of
 
 ### Work with JSON strings
 
-Use `extractjson` to access a specific JSON element in a known path. This function requires a path expression that uses the following conventions:
+Use `extractjson` or `extract_json()` to access a specific JSON element in a known path. This function requires a path expression that uses the following conventions:
 
 - Use _$_ to refer to the root folder.
 - Use the bracket or dot notation to refer to indexes and elements as illustrated in the following examples.
