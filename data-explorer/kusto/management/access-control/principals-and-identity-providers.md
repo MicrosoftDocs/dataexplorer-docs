@@ -29,18 +29,18 @@ Azure Data Explorer only supports Security Group (SG) principals and not Distrib
 
 The syntax for referencing Azure AD user, group, or application principals is outlined in the following table.
 
-If you implicitly reference a principal using only a User Principal Name (UPN), the query engine will attempt to resolve the tenant details from the UPN. If the resolution fails, specify the principal explicitly using the UPN or object ID with the tenant ID or name.
+If you implicitly reference a principal using only a [User Principal Name (UPN)](azure/active-directory/hybrid/plan-connect-userprincipalname#what-is-userprincipalname) the query engine will attempt to resolve the tenant details from the UPN. If the resolution fails, specify the principal explicitly using the UPN or object ID with the tenant ID or name.
 
 | Type of Principal | Tenant Identifier | Syntax |
 |--|--|--|
-| User | Implicit (UPN) | `aaduser`=*UserEmailAddress* |
-| User | Explicit (ID) | `aaduser`=*UserEmailAddress*;*TenantId*<br />or<br />`aaduser`=*ObjectID*;*TenantId* |
-| User | Explicit (Name) |`aaduser`=*UserEmailAddress*;*TenantName*<br />or<br />`aaduser`=*ObjectID*;*TenantName* |
+| User | Implicit (UPN) | `aaduser`=*UPN* |
+| User | Explicit (ID) | `aaduser`=*UPN*;*TenantId*<br />or<br />`aaduser`=*ObjectID*;*TenantId* |
+| User | Explicit (Name) |`aaduser`=*UPN*;*TenantName*<br />or<br />`aaduser`=*ObjectID*;*TenantName* |
 | Group | Implicit (UPN) | `aadgroup`=*GroupEmailAddress* |
 | Group | Explicit (ID) | `aadgroup`=*GroupDisplayName*;*TenantId*<br />or<br />`aadgroup`=*GroupObjectId*;*TenantId* |
 | Group | Explicit (Name) |`aadgroup`=*GroupDisplayName*;*TenantName*<br />or<br />`aadgroup`=*GroupObjectId*;*TenantName* |
-| App | Explicit (ID) | `aadapp`=*ApplicationDisplayName*;*TenantId* |
-| App | Explicit (Name) | `aadapp`=*ApplicationId*;*TenantName* |
+| App | Explicit (ID) | `aadapp`=*ApplicationDisplayName*;*TenantId*<br />or<br />`aadapp`=*ApplicationId*;*TenantId*|
+| App | Explicit (Name) | `aadapp`=*ApplicationId*;*TenantName*<br />or<br />`aadapp`=*ApplicationDisplayName*;*TenantName* |
 
 ### Examples
 
@@ -70,7 +70,7 @@ Azure Data Explorer supports user authentication for Microsoft Accounts (MSAs). 
 
 | IdP | Type | Syntax |
 |--|--|--|
-| Live.com | User | `msauser=`*UserEmailAddress* |
+| Live.com | User | `msauser=`*UPN* |
 
 ### Example
 
