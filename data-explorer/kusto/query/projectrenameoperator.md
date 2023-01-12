@@ -1,9 +1,9 @@
 ---
 title: project-rename operator - Azure Data Explorer
-description: This article describes project-rename operator in Azure Data Explorer.
+description: Learn how to use the project-rename operator to rename columns in the result output.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/12/2023
 ---
 # project-rename operator
 
@@ -20,8 +20,8 @@ T | project-rename new_column_name = column_name
 ## Arguments
 
 * *T*: The input table.
-* *NewColumnName:* The new name of a column. 
-* *ExistingColumnName:* The existing name of a column. 
+* *NewColumnName:* The new name of a column.
+* *ExistingColumnName:* The existing name of a column.
 
 ## Returns
 
