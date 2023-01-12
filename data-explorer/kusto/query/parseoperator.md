@@ -25,7 +25,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 
 ### Supported kind values
 
-|text|description|
+|Text|Description|
 |--|--|
 | `simple` | This is the default value. *StringConstant* is a regular string value and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types.|
 | `regex` | *StringConstant* may be a regular expression and the match is strict. All string delimiters, which can be a regex for this mode, should appear in the parsed string, and all extended columns must match the required types.|
