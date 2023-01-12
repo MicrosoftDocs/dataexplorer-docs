@@ -167,7 +167,7 @@ Traces
 
 |resourceName|totalSlices|
 |--|--|
-||||
+||
 
 ### `parse-where` with case-insensitive regex flag
 

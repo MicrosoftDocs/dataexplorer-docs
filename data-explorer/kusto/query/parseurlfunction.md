@@ -38,13 +38,4 @@ print Result=parse_url("scheme://username:password@host:1234/this/is/a/path?k1=v
 
 |Result|
 |--|
-|{
-  "Scheme":"scheme",
-  "Host":"host",
-  "Port":"1234",
-  "Path":"this/is/a/path",
-  "Username":"username",
-  "Password":"password",
-  "Query Parameters":"{"k1":"v1", "k2":"v2"}",
-  "Fragment":"fragment"
- }|
+|{"Scheme":"scheme", "Host":"host", "Port":"1234", "Path":"this/is/a/path", "Username":"username", "Password":"password", "Query Parameters":"{"k1":"v1", "k2":"v2"}", "Fragment":"fragment"}|

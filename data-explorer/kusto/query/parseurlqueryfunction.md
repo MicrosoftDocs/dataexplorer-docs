@@ -38,9 +38,7 @@ print Result=parse_urlquery("k1=v1&k2=v2&k3=v3")
 
 |Result|
 |--|
-|{
-  "Query Parameters":"{"k1":"v1", "k2":"v2", "k3":"v3"}",
- }|
+|{ "Query Parameters":"{"k1":"v1", "k2":"v2", "k3":"v3"}" }|
 
 The following example uses a function to extract specific query parameters.
 
