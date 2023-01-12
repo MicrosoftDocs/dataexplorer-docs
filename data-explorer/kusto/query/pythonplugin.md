@@ -153,7 +153,7 @@ print "This is an example for using 'external_artifacts'"
         toscalar(script), 
         bag_pack('gain', 100, 'cycles', 4))
     | render linechart 
-    ```
+ ```
 
 ## Using External Artifacts
 
