@@ -50,7 +50,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. Fill out the basic cluster details with the following information.
 
-    :::image type="content" source="media/create-cluster-database-portal/create-cluster-form.png" alt-text="Screenshot of the cluster form.":::
+    :::image type="content" source="media/create-cluster-database-portal/create-cluster-form.png" alt-text="Screenshot of the Azure portal create Azure Data Explorer cluster form.":::
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -60,7 +60,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
     | Region | *West US* or *West US 2* | Select *West US* or *West US 2* (if using availability zones) for this quickstart. For a production system, select the region that best meets your needs.
     | Workload | *Dev/Test* | Select *Dev/Test* for this quickstart. For a production system, select the specification that best meets your needs.
     | Compute specifications | *Dev(No SLA)_Standard_E2a_v4* | Select *Dev(No SLA)_Standard_E2a_v4* for this quickstart. For a production system, select the specification that best meets your needs.
-    | Availability zones | *1*, *2*, or *3* | Place the cluster instances in one or more availability zones in the same region (optional). [Azure Availability Zones](/azure/availability-zones/az-overview) are unique physical locations within the same Azure region. They protect an Azure Data Explorer cluster from loss data. The cluster nodes are created, by default, in the same data center. When you select several availability zones you can eliminate a single point of failure and ensure high availability. **Deployment to availability zones is possible only when creating the cluster, and can't be modified later.**
+    | Availability zones | On | Turning on this feature will distribute the cluster across multiple physical locations within a region for added protection. By default, this feature is enabled if zones are supported in the region. If less than 3 zones are available, the portal will display the number of supported zones. Note that deployment to availability zones is possible only when creating the cluster, and can't be modified later. Read more about [Azure Availability Zones](/azure/availability-zones/az-overview).
     | | | |
 
 1. Select **Review + create** to review your cluster details, and on the next screen select **Create** to provision the cluster. Provisioning typically takes about 10 minutes.
