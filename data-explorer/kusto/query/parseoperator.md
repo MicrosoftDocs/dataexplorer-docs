@@ -29,7 +29,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 |--|--|
 | `simple` | This is the default value. *StringConstant* is a regular string value and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types.|
 | `regex` | *StringConstant* may be a regular expression and the match is strict. All string delimiters, which can be a regex for this mode, should appear in the parsed string, and all extended columns must match the required types.|
-| `flags` | Flags to be used in regex mode like `U` (Ungreedy), `m` (multi-line mode), `s` (match new line `\n`), `i` (case-insensitive) in [RE2 flags](re2.md).|
+| `flags` | Flags to be used in regex mode like `U` (Ungreedy), `m` (multi-line mode), `s` (match new line `\n`), `i` (case-insensitive). More flags can be found in [RE2 flags](re2.md).|
 | `relaxed` | *StringConstant* is a regular string value and the match is relaxed. All string delimiters should appear in the parsed string, but extended columns may partially match the required types. Extended columns that didn't match the required types will get the value `null`.|
 
 ## Returns
