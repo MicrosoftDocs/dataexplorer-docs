@@ -77,4 +77,4 @@ If you no longer need the report you created for this article, delete the Power 
 
 ## Next steps
 
-[Visualize data using the Azure Data Explorer connector for Power BI](power-bi-connector.md)
+[Visualize data using the Azure Data Explorer connector for Power BI](/azure/data-explorer/power-bi-data-connector)
