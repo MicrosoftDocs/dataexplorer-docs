@@ -98,7 +98,7 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 >   * When using an `arg_max(Timestamp, *)` aggregation and when `autoUpdateSchema` is false, changes to the source table can also lead to schema mismatches.
 >     * Avoid this failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)`, or by using the `autoUpdateSchema` option.
 > * Using `autoUpdateSchema` may lead to irreversible data loss when columns in the source table are dropped.
-> * Monitor automatic disable of materialized views using the [MaterializedViewResult metric](materialized-view-overview.md#materializedviewresult-metric).
+> * Monitor automatic disable of materialized views using the [MaterializedViewResult metric](materialized-views-monitoring.md#materializedviewresult-metric).
 > * After fixing incompatibility issues, the view should be explicitly re-enabled using the [enable materialized view](materialized-view-enable-disable.md) command.
 
 ### Create materialized view over materialized view
