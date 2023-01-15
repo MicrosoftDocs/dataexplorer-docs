@@ -608,7 +608,7 @@ items:
     displayName: AAD, Azure AD
     href: access-control/aad.md
   - name: Role-based access control
-    href: access-control/role-based-authorization.md
+    href: access-control/role-based-access-control.md
     displayName: RBAC, security roles, principals
   - name: Allow cross-tenant queries and commands
     href: ../../cross-tenant-query-and-commands.md
