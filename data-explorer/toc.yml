@@ -530,7 +530,7 @@ items:
         href: connector-overview.md
       - name: Apache Spark 
         href: spark-connector.md
-      - name: Kafka
+      - name: Apache Kafka
         displayName: ingest data, ingestion
         href: ingest-data-kafka.md
       - name: Logstash

@@ -54,7 +54,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 
 * **Description:** [The Azure Data Explorer Logstash plugin](ingest-data-logstash.md) enables you to process events from Logstash into an Azure Data Explorer database for later analysis.
 * **Type:** Ingestion
-* **Ingestion type supported:** Batch
+* **Ingestion type supported:** Batching
 * **Functionality:** Logs
 * **Underlying SDK:** Java
 * **Repository:** Microsoft Azure - https://github.com/Azure/logstash-output-kusto/
