@@ -231,14 +231,14 @@ The `Result` dimension can have one of the following values:
     {
       "RequestLimitsPolicy": {
         "MaxMemoryPerQueryPerNode": {
-          "Value": 68719476736
+          "Value": 68719241216
         }
       }
     } ```
     ~~~
 
     > [!NOTE]
-    > We recommend that you set the materialization process memory to less than 50% of the total node memory.
+    > MaxMemoryPerQueryPerNode cannot be set to over 50% of the total memory of each node.
 
 ### Track resource consumption
 
