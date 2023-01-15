@@ -18,7 +18,7 @@ The diagnosis process is complex and lengthy, and done by domain experts. The pr
 
 Since these diagnosis scenarios are common in Azure Data Explorer, machine learning plugins are available to make the diagnosis phase easier, and shorten the duration of the RCA.
 
-Azure Data Explorer has three Machine Learning plugins: [`autocluster`](kusto/query/autoclusterplugin.md), [`basket`](kusto/query/basketplugin.md), and [`diffpatterns`](kusto/query/diffpatternsplugin.md). All plugins implement clustering algorithms. The `autocluster` and `basket` plugins cluster a single record set, and the `diffpatterns` plugin clusters the differences between two record sets.
+Azure Data Explorer has three Machine Learning plugins: [`autocluster`](autoclusterplugin.md), [`basket`](basketplugin.md), and [`diffpatterns`](diffpatternsplugin.md). All plugins implement clustering algorithms. The `autocluster` and `basket` plugins cluster a single record set, and the `diffpatterns` plugin clusters the differences between two record sets.
 
 ## Clustering a single record set
 
@@ -42,7 +42,7 @@ demo_clustering1
 | render timechart with(title="Service exceptions over a week, 10 minutes resolution")
 ```
 
-![Service exceptions timechart.](media/machine-learning-clustering/service-exceptions-timechart.png)
+![Service exceptions timechart.](../../media/machine-learning-clustering/service-exceptions-timechart.png)
 
 The service exception count correlates with the overall service traffic. You can clearly see the daily pattern for business days, Monday to Friday. There's a rise in service exception counts at mid-day, and drops in counts during the night. Flat low counts are visible over the weekend. Exception spikes can be detected using [time series anomaly detection](anomaly-detection.md#time-series-anomaly-detection) in Azure Data Explorer.
 
@@ -58,7 +58,7 @@ demo_clustering1
 | render timechart with(title="Zoom on the 2nd spike, 1 minute resolution")
 ```
 
-![Focus on spike timechart.](media/machine-learning-clustering/focus-spike-timechart.png)
+![Focus on spike timechart.](../../media/machine-learning-clustering/focus-spike-timechart.png)
 
 You'll see a narrow two-minute spike from 15:00 to 15:02. In the following query, count the exceptions in this two-minute window:
 
@@ -115,7 +115,7 @@ demo_clustering1
 
 ### Use autocluster() for single record set clustering
 
-Even though there are less than a thousand exceptions, it's still hard to find common segments, since there are multiple values in each column. You can use the [`autocluster()`](kusto/query/autoclusterplugin.md) plugin to instantly extract a short list of common segments and find the interesting clusters within the spike's two minutes, as seen in the following query:
+Even though there are less than a thousand exceptions, it's still hard to find common segments, since there are multiple values in each column. You can use the [`autocluster()`](autoclusterplugin.md) plugin to instantly extract a short list of common segments and find the interesting clusters within the spike's two minutes, as seen in the following query:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQrCMBRF937FG5OhJYkoovQfBN1DbC8aTNqSvlgHP94IQkf3c+65AUzRD3aCe1hue8dgHyGM0rta7WuzIb09KCWPVfii7vUPNQXtEUfbhTwzkh9uunrTckcCnRI6P+NSvDO7ONEVvACDWD80zRqRRcTThVxa5DKPv00hP81KL1+4AAAA" target="_blank">Run the query</a>
@@ -142,7 +142,7 @@ Autocluster uses a proprietary algorithm for mining multiple dimensions and extr
 
 ### Use basket() for single record set clustering
 
-You can also use the [`basket()`](kusto/query/basketplugin.md) plugin as seen in the following query:
+You can also use the [`basket()`](basketplugin.md) plugin as seen in the following query:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQ6CMBgGd57iH9sB0tZojMZ3MNG9KfBFG1og7Y84+PDWidH9LncBTNGPdoYbLF96x2AfIYzSh1oda7MjvT8pJc9V+KHu/Q81Be0RJ9uFJTOSHx+6+tD6RAJdEzqfcS/ejV2cqQWvwCi2h6bZIrKIeLmwlBa1Lg9gIb9KJv2TswAAAA==" target="_blank">Run the query</a>
@@ -177,7 +177,7 @@ Both plugins are powerful and easy to use. Their limitation is that they cluster
 
 ## Clustering the difference between two records sets
 
-The [`diffpatterns()`](kusto/query/diffpatternsplugin.md) plugin overcomes the limitation of `autocluster` and `basket`. `Diffpatterns` takes two record sets and extracts the main segments that are different. One set usually contains the anomalous record set being investigated. One is analyzed by `autocluster` and `basket`. The other set contains the reference record set, the baseline.
+The [`diffpatterns()`](diffpatternsplugin.md) plugin overcomes the limitation of `autocluster` and `basket`. `Diffpatterns` takes two record sets and extracts the main segments that are different. One set usually contains the anomalous record set being investigated. One is analyzed by `autocluster` and `basket`. The other set contains the reference record set, the baseline.
 
 In the query below, `diffpatterns` finds interesting clusters within the spike's two minutes, which are different from the clusters within the baseline. The baseline window is defined as the eight minutes before 15:00, when the spike started. You extend by a binary column (AB), and specify whether a specific record belongs to the baseline or to the anomalous set. `Diffpatterns` implements a supervised learning algorithm, where the two class labels were generated by the anomalous versus the baseline flag (AB).
 
@@ -222,7 +222,7 @@ and ServiceHost == "e7f60c5d-4944-42b3-922a-92e98a8e7dec", "Problem", "Normal")
 | render timechart
 ```
 
-![Validating `diffpattern` segment timechart.](media/machine-learning-clustering/validating-diffpattern-timechart.png)
+![Validating `diffpattern` segment timechart.](../../media/machine-learning-clustering/validating-diffpattern-timechart.png)
 
 This chart allows us to see that the spike on Tuesday afternoon was because of exceptions from this specific segment, discovered by using the `diffpatterns` plugin.
 

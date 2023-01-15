@@ -394,6 +394,26 @@
       "source_path": "data-explorer/kusto/query/getmonthfunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/monthofyearfunction",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/machine-learning-and-tsa.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/time-series-analysis",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/time-series-analysis.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/time-series-analysis",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/anomaly-detection.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/anomaly-detection",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/machine-learning-clustering.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/machine-learning-clustering",
+      "redirect_document_id": true
     }
   ]
 }

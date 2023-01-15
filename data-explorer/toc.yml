@@ -32,9 +32,11 @@ items:
     href: create-cluster-database-portal.md
   - name: Ingest sample data
     href: ingest-sample-data.md
+    displayName: Azure Data Explorer web UI
+  - name: Query data in Azure Data Explorer web UI
+    href: web-query-data.md
   - name: Explore the samples gallery
     href: web-ui-samples-gallery.md
-    displayName: Azure Data Explorer web UI
 - name: Tutorials
   items:
   - name: Write queries
@@ -82,11 +84,11 @@ items:
     - name: Formats for data ingestion
       displayName: supported data formats
       href: ingestion-supported-formats.md
-    - name: Ingestion wizard
-      href: ingest-data-wizard.md
     - name: Ingest JSON data using the wizard
       displayName: ingest data, ingestion wizard, one click, local file, existing table
       href: ingestion-wizard-existing-table.md
+    - name: Ingestion wizard
+      href: ingest-data-wizard.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -215,32 +217,30 @@ items:
       href: ingest-json-formats.md
   - name: Query data
     items:
+    - name: Azure Data Explorer web UI
+      items:
+        - name: Customize settings
+          href: web-customize-settings.md
+        - name: Results grid
+          href: web-results-grid.md
+        - name: Share queries
+          href: web-share-queries.md
     - name: Evaluate query performance in your cluster
       href: kusto/api/load-test-cluster.md
     - name: Optimize for high concurrency
       href: high-concurrency.md
-    - name: Query data in Azure Data Explorer web UI
-      href: web-query-data.md
+    - name: Query cold data with hot windows
+      href: hot-windows.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
       href: query-monitor-data.md
     - name: Query data in Power Apps application
       href: power-apps-connector.md
-    - name: Query cold data with hot windows
-      href: hot-windows.md
-    - name: Debug KQL inline Python
-      href: debug-inline-python.md
     - name: Query data using Python
       href: python-query-data.md
-    - name: Time Series Analysis and Machine Learning
-      items:
-      - name: Time series analysis
-        href: time-series-analysis.md
-      - name: Anomaly detection and forecasting
-        href: anomaly-detection.md
-      - name: Machine learning
-        href: machine-learning-clustering.md
+    - name: Debug KQL inline Python
+      href: debug-inline-python.md
   - name: Visualize data
     items:
     - name: Data visualization overview
@@ -582,8 +582,17 @@ items:
   items:
   - name: API
     href: kusto/api/toc.yml
+  - name: Azure CLI Kusto
+    href: /cli/azure/kusto
   - name: Azure Data Explorer web UI keyboard shortcuts
     href: web-ui-query-keyboard-shortcuts.md
+  - name: Azure Policy built-ins
+    displayName: samples, policies, definitions
+    href: policy-reference.md
+  - name: Functions library
+    href: kusto/functions-library/toc.yml
+  - name: PowerShell Kusto
+    href: /powershell/module/az.kusto/#kusto
   - name: Troubleshoot ingestion
     items:
     - name: Ingestion error codes
@@ -593,15 +602,6 @@ items:
       displayName: Failure, error code
     - name: Ingestion FAQ
       href: kusto/management/ingestion-faq.yml  
-  - name: Azure CLI Kusto
-    href: /cli/azure/kusto
-  - name: PowerShell Kusto
-    href: /powershell/module/az.kusto/#kusto
-  - name: Functions library
-    href: kusto/functions-library/toc.yml
-  - name: Azure Policy built-ins
-    displayName: samples, policies, definitions
-    href: policy-reference.md
 - name: Resources
   items:
   - name: Forums
