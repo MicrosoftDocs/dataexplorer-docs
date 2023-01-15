@@ -13,7 +13,7 @@ The function accepts a table containing the source and the baseline time series,
 > [!NOTE]
 >
 > * `plotly_anomaly_fl()` is a [user-defined function](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
-> * Consider using ADX native [`" | render anomalychart"`](../query/renderoperator.md#syntax) method instead.
+> * Consider using ADX native [`" | render anomalychart"`](../query/renderoperator.md#syntax) method for rendering a non-interactive anomaly chart.
 
 ## Prerequisite
 
