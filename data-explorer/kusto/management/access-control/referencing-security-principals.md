@@ -23,13 +23,13 @@ Azure AD supports the following authentication scenarios:
 > * Azure AD does not allow authentication of service accounts that are by definition on-premises AD entities. The Azure AD equivalent of an AD service account is the Azure AD application.
 > * Azure Data Explorer only supports Security Group (SG) principals and not Distribution Group (DG) principals. An attempt to set up access for a DG on the cluster will result in an error.
 
-### Referencing Azure AD principals
+### Referencing Azure AD principals and groups
 
-The syntax for referencing Azure AD user, group, or application principals is outlined in the following table.
+The syntax for referencing Azure AD user and application principals and groups is outlined in the following table.
 
-If you implicitly reference a principal using only a [User Principal Name (UPN)](/azure/active-directory/hybrid/plan-connect-userprincipalname#what-is-userprincipalname) the query engine will attempt to resolve the tenant details from the UPN. If the resolution fails, specify the principal explicitly using the UPN or object ID with the tenant ID or name.
+If you implicitly reference a user principal using only a [User Principal Name (UPN)](/azure/active-directory/hybrid/plan-connect-userprincipalname#what-is-userprincipalname) the query engine will attempt to resolve the tenant details from the UPN. If the resolution fails, specify the user principal explicitly using the UPN or object ID with the tenant ID or name.
 
-| Type of Principal | Tenant Identifier | Syntax |
+| Type of Entity | Tenant Identifier | Syntax |
 |--|--|--|
 | User | Implicit (UPN) | `aaduser`=*UPN* |
 | User | Explicit (ID) | `aaduser`=*UPN*;*TenantId*<br />or<br />`aaduser`=*ObjectID*;*TenantId* |
