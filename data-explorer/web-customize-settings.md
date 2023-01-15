@@ -7,7 +7,7 @@ ms.date: 01/15/2023
 
 # Customize settings in the Azure Data Explorer web UI
 
-In the **Settings** tab you can:
+This document will guide you through the process of customizing settings in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home). In the **Settings** tab you can:
 
 - [Customize settings in the Azure Data Explorer web UI](#customize-settings-in-the-azure-data-explorer-web-ui)
   - [Export and import environment settings](#export-and-import-environment-settings)
@@ -68,17 +68,17 @@ Error level color scheme in **Light** mode | Error level color scheme in **Dark*
 
 For highlighted error levels, the column must be of type int, long, or string.
 
-* If the column is of type `long` or `int`:
-  * The column name must be *Level*
-  * Values may only include numbers between 1 and 5.
-* If the column is of type `string`:
-  * The column name can optionally be *Level* to improve performance.
-  * The column can only include the following values:
-    * critical, crit, fatal, assert, high
-    * error, e
-    * warning, w, monitor
-    * information
-    * verbose, verb, d
+- If the column is of type `long` or `int`:
+  - The column name must be *Level*
+  - Values may only include numbers between 1 and 5.
+- If the column is of type `string`:
+  - The column name can optionally be *Level* to improve performance.
+  - The column can only include the following values:
+    - critical, crit, fatal, assert, high
+    - error, e
+    - warning, w, monitor
+    - information
+    - verbose, verb, d
 
 ## Change datetime to specific time zone
 
