@@ -7,9 +7,11 @@ ms.date: 01/15/2023
 
 # Share queries from Azure Data Explorer web UI
 
-Many times, you want to share the queries you create.
+This document will guide you through the process of sharing queries from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home).
 
-1. In the query window, select the first query you copied in.
+## Get started
+
+1. In the query window, select the query you want to share.
 
 1. At the top of the query window, select **Share**.
 

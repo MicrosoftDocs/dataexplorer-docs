@@ -7,7 +7,7 @@ ms.date: 01/15/2023
 
 # Azure Data Explorer web UI results grid
 
-This document will highlight how to use the results grid to customize your Azure Data Explorer web UI results and do further analysis.
+This guide will teach you how to work with your [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) results using the results grid feature. You'll use the results grid to make your data analysis more efficient and effective, and learn how to customize and manipulate your results to gain deeper insights and uncover hidden patterns in your data.
 
 ## Expand a cell
 
