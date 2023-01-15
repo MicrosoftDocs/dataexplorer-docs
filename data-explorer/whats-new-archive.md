@@ -54,9 +54,9 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Role-based Authorization in Kusto](kusto/management/access-control/role-based-authorization.md) | Updated article. Materialized views rename source table.
+| [Role-based Authorization in Kusto](kusto/management/access-control/role-based-access-control.md) | Updated article. Materialized views rename source table.
 | [Cache policy (hot and cold cache)](kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
-| [Role-based Authorization in Kusto](kusto/management/access-control/role-based-authorization.md)| Updated article. Using the AllDatabasesMonitor role.
+| [Role-based Authorization in Kusto](kusto/management/access-control/role-based-access-control.md)| Updated article. Using the AllDatabasesMonitor role.
 
 ## September 2021
 

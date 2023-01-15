@@ -9,7 +9,7 @@ ms.date: 12/29/2020
 
 Creates a new empty table based on existing table. This command must run in the context of a specific database.
 
-Requires [Database admin permission](access-control/role-based-authorization.md).
+Requires [Database admin permission](access-control/role-based-access-control.md).
 
 > [!NOTE]
 > All properties of the source table are copied to the new table, with the following exceptions:

@@ -11,7 +11,7 @@ Changes the name of an existing table.
 
 The `.rename tables` command changes the name of a number of tables in the database as a single transaction.
 
-Requires [Database  admin permission](../management/access-control/role-based-authorization.md).
+Requires [Database  admin permission](./access-control/role-based-access-control.md).
 
 **Syntax**
 

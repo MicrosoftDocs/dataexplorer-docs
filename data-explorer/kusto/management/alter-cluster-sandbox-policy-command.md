@@ -12,7 +12,7 @@ Examples of these flows are user-defined scripts that run using the [Python plug
 
 Sandbox policies are managed at cluster-level and affect all the nodes in the cluster.
 
-To alter the policies, you'll need [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
+To alter the policies, you'll need [AllDatabasesAdmin](./access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

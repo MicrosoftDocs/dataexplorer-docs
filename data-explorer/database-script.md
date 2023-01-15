@@ -49,7 +49,7 @@ Notice the two commands are idempotent. When first run, they create the tables, 
 The principal, such as a user or service principal, used to deploy a script must have the following security roles:
 
 * [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role on the cluster
-* [Admin](./kusto/management/access-control/role-based-authorization.md) role on the database
+* [Admin](./kusto/management/access-control/role-based-access-control.md) role on the database
 
 > [!IMPORTANT]
 > The principal provisioning the cluster automatically gets the `All Databases Admin` role on the cluster.

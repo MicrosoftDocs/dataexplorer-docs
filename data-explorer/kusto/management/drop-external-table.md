@@ -9,7 +9,7 @@ ms.date: 05/20/2021
 
 Drops an external table.
 
-The external table definition can't be restored following this operation. Requires [database admin permission](../management/access-control/role-based-authorization.md).
+The external table definition can't be restored following this operation. Requires [database admin permission](./access-control/role-based-access-control.md).
 
 This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
 

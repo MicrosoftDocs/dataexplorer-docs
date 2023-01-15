@@ -7,7 +7,7 @@ ms.date: 11/29/2021
 ---
 # .alter-merge capacity policy
 
-Enables or disables a cluster's [capacity policy](capacitypolicy.md). The policy is used to control the computational resources for data management operations on the cluster. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
+Enables or disables a cluster's [capacity policy](capacitypolicy.md). The policy is used to control the computational resources for data management operations on the cluster. This command requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permission.
 
 ## Syntax
 

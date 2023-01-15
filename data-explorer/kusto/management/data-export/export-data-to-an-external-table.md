@@ -11,7 +11,7 @@ You can export data by defining an [external table](../show-external-tables.md) 
  The table properties are specified when [creating the external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table).
  The export command references the external table by name.
 
-The command requires [table admin or database admin permission](../access-control/role-based-authorization.md).
+The command requires [table admin or database admin permission](../access-control/role-based-access-control.md).
 
 ## Syntax
 

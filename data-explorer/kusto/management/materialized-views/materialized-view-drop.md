@@ -9,7 +9,7 @@ ms.date: 08/30/2020
 
 Drops a materialized view.
 
-Requires [Database Admin](../access-control/role-based-authorization.md) or materialized view admin permissions.
+Requires [Database Admin](../access-control/role-based-access-control.md) or materialized view admin permissions.
 
 ## Syntax
 

@@ -11,7 +11,7 @@ Delete the cluster sandbox policy. Azure Data Explorer runs specified plugins wi
 
 Sandbox policies are managed at cluster-level and affect all the nodes in the cluster.
 
-To alter the policies, you'll need [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions. 
+To alter the policies, you'll need [AllDatabasesAdmin](./access-control/role-based-access-control.md) permissions. 
 
 ## Syntax
 

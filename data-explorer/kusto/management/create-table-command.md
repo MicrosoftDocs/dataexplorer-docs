@@ -11,7 +11,7 @@ Creates a new empty table.
 
 The command must run in context of a specific database.
 
-Requires [Database user permission](../management/access-control/role-based-authorization.md).
+Requires [Database user permission](./access-control/role-based-access-control.md).
 
 **Syntax**
 

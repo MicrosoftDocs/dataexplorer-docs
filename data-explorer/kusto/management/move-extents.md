@@ -10,7 +10,7 @@ ms.date: 07/02/2020
 
 This command runs in the context of a specific database. It moves the specified extents from the source table to the destination table.
 
-The command requires [Table admin permission](../management/access-control/role-based-authorization.md) for the source and destination tables.
+The command requires [Table admin permission](./access-control/role-based-access-control.md) for the source and destination tables.
 
 > [!NOTE]
 > * For more information on extents, see [Extents (data shards) overview](extents-overview.md).

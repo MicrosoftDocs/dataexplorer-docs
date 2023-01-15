@@ -9,7 +9,7 @@ ms.date: 07/19/2022
 
 Displays table data statistics estimation by table column and storage engine version.
 
-This command requires [Database monitor permission](../management/access-control/role-based-authorization.md).
+This command requires [Database monitor permission](./access-control/role-based-access-control.md).
 
 > [!NOTE]
 > This command only returns statistics for data stored in columnar stores. Row store data statistics are not returned.

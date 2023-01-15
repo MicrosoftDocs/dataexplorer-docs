@@ -13,7 +13,7 @@ Sandboxes run on the nodes of the Kusto engine. Some of their limitations are de
 
 Sandbox policies are managed at cluster-level and affect all the nodes in the cluster.
 
-To alter the policies, you'll need [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
+To alter the policies, you'll need [AllDatabasesAdmin](./access-control/role-based-access-control.md) permissions.
 
 ## The policy object
 

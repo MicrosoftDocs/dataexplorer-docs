@@ -15,7 +15,7 @@ Cluster owners can protect their cluster from queries and commands from other te
 Permissions can be set using the portal, the [ARM Templates](/azure/templates/microsoft.kusto/clusters?tabs=json#trustedexternaltenant-object), [AZ CLI](/cli/azure/kusto/cluster#az-kusto-cluster-update-optional-parameters), [PowerShell](/powershell/module/az.kusto/new-azkustocluster), or the [Azure Resource Explorer](https://resources.azure.com/). See also [Azure Data Explorer cluster request body](/rest/api/azurerekusto/clusters/createorupdate#request-body).
 
 > [!NOTE]
-> The principal who will run queries or commands must also have a relevant database role. See also [role-based access control](./kusto/management/access-control/role-based-authorization.md). Validation of correct roles takes place after validation of trusted external tenants.
+> The principal who will run queries or commands must also have a relevant database role. See also [role-based access control](./kusto/management/access-control/role-based-access-control.md). Validation of correct roles takes place after validation of trusted external tenants.
 
 ## [Portal](#tab/portal)
 

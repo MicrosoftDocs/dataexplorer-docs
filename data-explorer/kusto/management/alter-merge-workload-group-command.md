@@ -7,7 +7,7 @@ ms.date: 01/13/2022
 ---
 # .alter-merge workload_group
 
-Alters a workload group. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
+Alters a workload group. This command requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permission.
 
 For more information, see [Workload groups](workload-groups.md). To show the current workload group settings, use the [`.show` command](show-workload-group-command.md).
 

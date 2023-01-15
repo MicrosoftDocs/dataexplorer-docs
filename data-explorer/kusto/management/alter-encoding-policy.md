@@ -13,7 +13,7 @@ Alters the encoding policy. For an overview of the encoding policy, see [Encodin
 > Encoding policy changes do not affect data that has already been ingested.
 > Only new ingestion operations will be performed according to the new policy.
 
-This command requires [table/database admin](access-control/role-based-authorization.md) permission.
+This command requires [table/database admin](access-control/role-based-access-control.md) permission.
 
 ## Syntax
 

@@ -43,7 +43,7 @@ The extents and the tags to drop are specified using a Kusto query. It returns a
 > * `CslCommandGenerator.GenerateExtentTagsDropByRegexCommand(string tableName, string regex)`
 > * `CslCommandGenerator.GenerateExtentTagsDropBySubstringCommand(string tableName, string substring)`
 
-Requires [Table admin permission](../management/access-control/role-based-authorization.md) for all involved source and destination tables.
+Requires [Table admin permission](./access-control/role-based-access-control.md) for all involved source and destination tables.
 
 ### Syntax for .drop extent tags in query
 

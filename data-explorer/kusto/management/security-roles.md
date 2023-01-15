@@ -10,7 +10,7 @@ ms.date: 09/07/2022
 > [!IMPORTANT]
 > Before altering authorization rules on your cluster(s), read the following:
 >
-> * [Azure Data Explorer role-based access control](../management/access-control/role-based-authorization.md)
+> * [Azure Data Explorer role-based access control](./access-control/role-based-access-control.md)
 > * [Principals and identity providers](./access-control/principals-and-identity-providers.md)
 
 Azure Data Explorer uses a role-based access control (RBAC) model in which principals get access to resources according to the security roles they're assigned.
@@ -35,7 +35,7 @@ The following table describes the level of access granted for each role and show
 |`ingestors` | Ingest data to the object without access to query. |&check;|&check;|||
 |`monitors` | View metadata such as schemas, operations, and permissions.|&check;||||
 
-For a full description of the security roles at each scope, see [Azure Data Explorer role-based access control](access-control/role-based-authorization.md).
+For a full description of the security roles at each scope, see [Azure Data Explorer role-based access control](access-control/role-based-access-control.md).
 
 > [!TIP]
 > There are three cluster level security roles (AllDatabasesAdmin, AllDatabasesViewer, and AllDatabasesMonitor) that can only be configured in the Azure portal. To learn more, see [manage cluster permissions](../../manage-cluster-permissions.md).

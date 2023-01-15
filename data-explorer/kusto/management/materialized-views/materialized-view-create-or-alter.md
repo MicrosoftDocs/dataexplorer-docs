@@ -15,7 +15,7 @@ The command has the following limitations:
 
 * See limitations in [alter materialized view limitations](materialized-view-alter.md#alter-materialized-view-limitations).
 * The `backfill` property isn't supported if the materialized view already exists. If the materialized view already exists, it cannot be backfilled.
-* You must either be the [database user](../access-control/role-based-authorization.md) who created the materialized view or have [database admin permission](../access-control/role-based-authorization.md) to run this command.
+* You must either be the [database user](../access-control/role-based-access-control.md) who created the materialized view or have [database admin permission](../access-control/role-based-access-control.md) to run this command.
 
 ## Syntax
 
