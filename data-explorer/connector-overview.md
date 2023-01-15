@@ -5,7 +5,7 @@ ms.reviewer: aksdi
 ms.topic: reference
 ms.date: 01/15/2023
 ---
-## OSS Connectors Overview
+# OSS Connectors Overview
 
 The following table summarizes the available connectors in Azure Data Explorer and their capabilities:
 
