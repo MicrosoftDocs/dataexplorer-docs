@@ -19,11 +19,9 @@ Azure AD supports the following authentication scenarios:
 * **Application authentication** (non-interactive sign-in): Used to authenticate services and applications that have to run or authenticate without user interaction.
 
 > [!NOTE]
-> Azure AD does not allow authentication of service accounts that are by definition on-premises AD entities. The Azure AD equivalent of an AD service account is the Azure AD application.
-
-### Azure AD group principals
-
-Azure Data Explorer only supports Security Group (SG) principals and not Distribution Group (DG) principals. An attempt to set up access for a DG on the cluster will result in an error.
+>
+> * Azure AD does not allow authentication of service accounts that are by definition on-premises AD entities. The Azure AD equivalent of an AD service account is the Azure AD application.
+> * Azure Data Explorer only supports Security Group (SG) principals and not Distribution Group (DG) principals. An attempt to set up access for a DG on the cluster will result in an error.
 
 ### Referencing Azure AD principals
 
