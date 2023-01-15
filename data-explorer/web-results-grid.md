@@ -5,11 +5,11 @@ ms.topic: how-to
 ms.date: 01/15/2023
 ---
 
-## Azure Data Explorer web UI results grid
+# Azure Data Explorer web UI results grid
 
 This document will highlight how to use the results grid to customize your Azure Data Explorer web UI results and do further analysis.
 
-### Expand a cell
+## Expand a cell
 
 Expanding cells are useful to view long strings or dynamic fields such as JSON.
 
@@ -21,7 +21,7 @@ Expanding cells are useful to view long strings or dynamic fields such as JSON.
 
     :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="Screenshot highlighting the icon to change the reading pane to expanded view mode in the Azure Data Explorer web UI query results.":::
 
-### Expand a row
+## Expand a row
 
 When working with a table with dozens of columns, expand the entire row to be able to easily see an overview of the different columns and their content.
 
@@ -31,7 +31,7 @@ When working with a table with dozens of columns, expand the entire row to be ab
 
 1. Within the expanded row, some columns are expanded (arrow pointing down), and some columns are collapsed (arrow pointing right). Click on these arrows to toggle between these two modes.
 
-### Group column by results
+## Group column by results
 
 Within the results, you can group results by any column.
 
@@ -55,7 +55,7 @@ Within the results, you can group results by any column.
 
     :::image type="content" source="media/web-query-data/reset-columns.png" alt-text="Screenshot of the reset columns setting highlighted in the column dropdown menu.":::
 
-#### Use value aggregation
+### Use value aggregation
 
 After you've grouped by a column, you can then use the value aggregation function to calculate simple statistics per group.
 
@@ -64,13 +64,13 @@ After you've grouped by a column, you can then use the value aggregation functio
 
     :::image type="content" source="media/web-query-data/aggregate.png" alt-text="Screenshot of aggregate results when grouping column by results in the Azure Data Explorer web U I. ":::
 
-### Hide empty columns
+## Hide empty columns
 
 You can hide/unhide empty columns by toggling the **eye** icon on the results grid menu.
 
 :::image type="content" source="media/web-query-data/hide-empty-columns.png" alt-text="Screenshot of eye icon to hide results grid in the Azure Data Explorer web U I.":::
 
-### Filter columns
+## Filter columns
 
 You can use one or more operators to filter the results of a column.
 
@@ -87,7 +87,7 @@ You can use one or more operators to filter the results of a column.
 
     :::image type="content" source="media/web-query-data/filter-column.gif" alt-text="GIF showing how to filter on a column in the Azure Data Explorer web U I.":::
 
-### Run cell statistics
+## Run cell statistics
 
 1. Run the following query.
 
@@ -103,7 +103,7 @@ You can use one or more operators to filter the results of a column.
 
     :::image type="content" source="media/web-query-data/select-stats.png" alt-text="Screenshot of a table with selected functions.":::
 
-### Filter to query from grid
+## Filter to query from grid
 
 Another easy way to filter the grid is to add a filter operator to the query directly from the grid.
 
@@ -117,7 +117,7 @@ Another easy way to filter the grid is to add a filter operator to the query dir
 
     :::image type="content" source="media/web-query-data/add-query-from-filter.png" alt-text="Screenshot of the query editor showing query clause added from filtering on the grid in Azure Data Explorer web U I.":::
 
-### Pivot
+## Pivot
 
 The pivot mode feature is similar to Excel’s pivot table, enabling you to do advanced analysis in the grid itself.
 
@@ -135,7 +135,7 @@ Pivoting allows you to take a columns value and turn them into columns. For exam
 
     :::image type="content" source="media/web-query-data/pivot-table.png" alt-text="Screenshot of results in a pivot table.":::
 
-### Search in the results grid
+## Search in the results grid
 
 You can look for a specific expression within a result table.
 

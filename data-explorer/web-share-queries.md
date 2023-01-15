@@ -5,7 +5,7 @@ ms.topic: how-to
 ms.date: 01/15/2023
 ---
 
-## Share queries from Azure Data Explorer web UI
+# Share queries from Azure Data Explorer web UI
 
 Many times, you want to share the queries you create.
 
@@ -23,7 +23,7 @@ The following options are available in the drop-down:
 * [Pin to dashboard](#pin-to-dashboard)
 * [Query to Power BI](power-bi-data-connector.md)
 
-### Provide a deep link
+## Provide a deep link
 
 You can provide a deep link so that other users with access to the cluster can run the queries.
 
@@ -35,7 +35,7 @@ You can provide a deep link so that other users with access to the cluster can r
 
     :::image type="content" source="media/web-query-data/shared-query.png" alt-text="Screenshot of a shared query deep link.":::
 
-### Pin to dashboard
+## Pin to dashboard
 
 When you complete data exploration using queries in the Azure Data Explorer web UI and find the data you need, you can pin it to a dashboard for continuous monitoring.
 
