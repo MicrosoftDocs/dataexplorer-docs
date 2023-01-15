@@ -9,14 +9,9 @@ ms.date: 01/15/2023
 
 This document will guide you through the process of customizing settings in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home). In the **Settings** tab you can:
 
-- [Customize settings in the Azure Data Explorer web UI](#customize-settings-in-the-azure-data-explorer-web-ui)
-  - [Export and import environment settings](#export-and-import-environment-settings)
-    - [Export environment settings](#export-environment-settings)
-    - [Import environment settings](#import-environment-settings)
-  - [Highlight error levels](#highlight-error-levels)
-    - [Enable error level highlighting](#enable-error-level-highlighting)
-    - [Column requirements for highlighting](#column-requirements-for-highlighting)
-  - [Change datetime to specific time zone](#change-datetime-to-specific-time-zone)
+* [Export and import environment settings](#export-and-import-environment-settings)
+* [Highlight error levels](#highlight-error-levels)
+* [Change datetime to specific time zone](#change-datetime-to-specific-time-zone)
 
 Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
 
