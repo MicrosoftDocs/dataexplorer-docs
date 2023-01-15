@@ -83,6 +83,8 @@ items:
     - name: Data ingestion overview
       displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
       href: ingest-data-overview.md
+    - name: Data ingestion properties
+      href: ingestion-properties.md
     - name: Azure Cosmos DB
       items:
       - name: Azure Cosmos DB data connection
@@ -107,8 +109,6 @@ items:
     - name: Cross-tenant data connection
       displayName: event hub, event grid
       href: ingest-data-cross-tenant.md
-    - name: Data ingestion properties
-      href: ingestion-properties.md
     - name: Event Grid
       items:
       - name: Event Grid data connection
