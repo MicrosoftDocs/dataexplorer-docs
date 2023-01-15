@@ -398,7 +398,7 @@
     {
       "source_path": "data-explorer/kusto/query/machine-learning-and-tsa.md",
       "redirect_url": "/azure/data-explorer/kusto/query/time-series-analysis",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path": "data-explorer/time-series-analysis.md",
