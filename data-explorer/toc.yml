@@ -199,18 +199,6 @@ items:
     - name: Azure Stream Analytics
       href: stream-analytics-connector.md
       displayName: ingest data, ingestion
-    - name: OpenTelemetry
-      href: open-telemetry-connector.md
-      displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion
-    - name: Kafka
-      displayName: ingest data, ingestion
-      href: ingest-data-kafka.md
-    - name: Telegraf
-      displayName: ingest data, ingestion
-      href: ingest-data-telegraf.md
-    - name: Logstash
-      displayName: ingest data, ingestion
-      href: ingest-data-logstash.md
     - name: JSON formatted data
       displayName: ingest data, ingestion
       href: ingest-json-formats.md
@@ -535,6 +523,24 @@ items:
     items:
     - name: Tools and integrations overview
       href: tools-integrations-overview.md
+    - name: Connectors
+      items:
+      - name: Connectors overview
+        href: connector-overview.md
+      - name: Apache Spark 
+        href: spark-connector.md
+      - name: Kafka
+        displayName: ingest data, ingestion
+        href: ingest-data-kafka.md
+      - name: Logstash
+        displayName: ingest data, ingestion
+        href: ingest-data-logstash.md    
+      - name: OpenTelemetry
+        href: open-telemetry-connector.md 
+        displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion
+      - name: Telegraf
+        displayName: ingest data, ingestion
+        href: ingest-data-telegraf.md
     - name: Orchestrate
       items:
       - name: Power Automate
@@ -549,10 +555,6 @@ items:
         href: kusto/tools/logicapps.md
     - name: Azure Cosmos DB
       href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
-    - name: Telegraf
-      href: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
-    - name: Apache Spark Connector
-      href: spark-connector.md
       displayName: databricks
     - name: Connect from Azure Synapse Apache Spark
       href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
