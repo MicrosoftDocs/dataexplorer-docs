@@ -56,20 +56,19 @@ You can't:
 You can [monitor](#monitoring) what gets classified to the `internal` workload group, and statistics of those requests.
 
 
-### Materialized-Views workload group
+### Materialized views workload group
 
-The `$materialized-views` applies to materialized views materialization process [(see how materialized views work)](materialized-views/materialized-view-overview.md/#how-materialized-views-work)
+The `$materialized-views` applies to materialized views materialization process. For more information on how materialized views work, see [materialized views overview](materialized-views/materialized-view-overview.md/#how-materialized-views-work).
 
-You can't:
-
-* Change the criteria used for routing these requests.
-
-You can change only the following values under the workload group's [request limits policy](request-limits-policy.md):
+You can change the following values under the workload group's [request limits policy](request-limits-policy.md):
 
 * MaxMemoryPerQueryPerNode
 * MaxMemoryPerIterator
 * MaxFanoutThreadsPercentage
 * MaxFanoutNodesPercentage
+
+> [!NOTE]
+> You can't change the criteria used for routing these requests.
 
 
 ## Request classification
