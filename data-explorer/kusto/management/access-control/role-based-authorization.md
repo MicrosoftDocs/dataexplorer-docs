@@ -12,7 +12,7 @@ Azure Data Explorer uses a role-based access control (RBAC) model in which [prin
 Roles are defined for a specific cluster, database, table, materialized view, or function. When defined for a cluster, the role applies to all databases in the cluster. When defined for a database, the role applies to all tables in the database.
 
 > [!NOTE]
-> ARM permissions, such as being a subscription owner or a cluster owner, grant access to Azure Data Explorer resources in the control plane. To access the data within Azure Data Explorer, the separate data plane permissions described in this document are required.
+> ARM permissions, such as being a subscription owner or a cluster owner, grant access to resources in the control plane. To access data within Azure Data Explorer, the separate data plane permissions described in this document are required.
 
 ## Roles and permissions
 
