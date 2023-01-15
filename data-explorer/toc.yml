@@ -526,6 +526,7 @@ items:
     - name: Connectors
       items:
       - name: Connectors overview
+        displayName: connect, integrate, integration
         href: connector-overview.md
       - name: Apache Spark 
         href: spark-connector.md

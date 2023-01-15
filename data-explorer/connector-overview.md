@@ -11,23 +11,12 @@ The following table summarizes the available connectors in Azure Data Explorer a
 
 | Name of connector |Underlying SDK | Ingestion | Export |Streaming| Batching | Functionality |
 |---|---|---|---|---|---|---|
-| [Apache Spark](#apache-spark) | Java | &check; | &check; | &check; | &check; | Telemetry |
 | [Apache Kafka](#apache-kafka) | Java | &check; | &cross; | &check; | &check; | Telemetry |
+| [Apache Log4J 2](#apache-log4j-2) | Java | &check; | &cross; | &check; | &cross; | Logs |
+| [Apache Spark](#apache-spark) | Java | &check; | &check; | &check; | &check; | Telemetry |
 | [Logstash](#logstash) | Java | &check; | &cross; | &cross; | &check; | Logs |
 | [Open Telemetry](#open-telemetry) | Go | &check; | &cross; | &check; | &check; | Traces, Metrics, Logs |
 | [Telegraf](#telegraf) | Go | &check; | &cross; | &check; | &check; | Metrics, Logs |
-| [Apache Log4J 2](#apache-log4j-2) | Java | &check; | &cross; | &check; | &cross; | Logs |
-
-## Apache Spark
-
-* **Description:** The [Azure Data Explorer connector for Spark](spark-connector.md) is an open source project that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. Using Azure Data Explorer and Apache Spark, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, Azure Data Explorer becomes a valid data store for standard Spark source and sink operations, such as write, read, and writeStream.
-* **Type:** Ingestion, Export
-* **Ingestion type supported:** Streaming, Batching
-* **Functionality:** Telemetry
-* **Underlying SDK:** Java
-* **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-spark/
-* **Documentation:** [Azure Data Explorer Connector for Apache Spark](spark-connector.md)
-* **Community Blog:** [Data pre-processing for Azure Data Explorer with Apache Spark](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/data-pre-processing-for-azure-data-explorer-with-apache-spark/ba-p/2727993/)
 
 ## Apache Kafka
 
@@ -39,6 +28,27 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Repository:** Microsoft Azure - https://github.com/Azure/kafka-sink-azure-kusto/
 * **Documentation:** [Ingest data from Apache Kafka into Azure Data Explorer](ingest-data-kafka.md)
 * **Community Blog:** [Kafka ingestion into Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/kafka-ingestion-into-azure-data-explorer-part-1/ba-p/1452439)
+
+## Apache Log4J 2
+
+* **Description:** Apache Log4J 2 sink for Azure Data Explorer allows you to easily stream your log data to Azure Data Explorer, where you can analyze, visualize, and alert on your logs in real time.
+* **Type:** Ingestion
+* **Ingestion type supported:** Streaming
+* **Functionality:** Logs
+* **Underlying SDK:** Java
+* **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-log4j
+* **Community Blog:** [Getting started with Apache Log4j and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-apache-log4j-and-azure-data-explorer/ba-p/3705242)
+
+## Apache Spark
+
+* **Description:** The [Azure Data Explorer connector for Spark](spark-connector.md) is an open source project that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. Using Azure Data Explorer and Apache Spark, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, Azure Data Explorer becomes a valid data store for standard Spark source and sink operations, such as write, read, and writeStream.
+* **Type:** Ingestion, Export
+* **Ingestion type supported:** Streaming, Batching
+* **Functionality:** Telemetry
+* **Underlying SDK:** Java
+* **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-spark/
+* **Documentation:** [Azure Data Explorer Connector for Apache Spark](spark-connector.md)
+* **Community Blog:** [Data pre-processing for Azure Data Explorer with Apache Spark](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/data-pre-processing-for-azure-data-explorer-with-apache-spark/ba-p/2727993/)
 
 ## Logstash
 
@@ -73,12 +83,3 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Documentation:** [Ingest data from Telegraf into Azure Data Explorer](ingest-data-telegraf.md)
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
 
-## Apache Log4J 2
-
-* **Description:** Apache Log4J 2 sink for Azure Data Explorer allows you to easily stream your log data to Azure Data Explorer, where you can analyze, visualize, and alert on your logs in real time.
-* **Type:** Ingestion
-* **Ingestion type supported:** Streaming
-* **Functionality:** Logs
-* **Underlying SDK:** Java
-* **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-log4j
-* **Community Blog:** [Getting started with Apache Log4j and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-apache-log4j-and-azure-data-explorer/ba-p/3705242)
