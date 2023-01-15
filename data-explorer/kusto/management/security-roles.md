@@ -103,7 +103,7 @@ This section describes how to use the commands `.add`, `.drop`, and `.set` to co
 
 ## Managing database security roles
 
-This section contains examples for the commands used to control database permissions. To learn how to construct the commands, see the [commands overview](#commands-overview). Databases allow for all [security roles](#security-roles).
+This section contains examples for the commands used to control database permissions. To learn how to construct the commands, see the [commands overview](#management-commands-overview). Databases allow for all [security roles](#security-roles).
 
 ### .add
 
@@ -149,7 +149,7 @@ Drop security roles:
 
 ## Managing table security roles
 
-This section contains examples for the commands used to control table permissions. To learn how to construct the commands, see [commands overview](#commands-overview).
+This section contains examples for the commands used to control table permissions. To learn how to construct the commands, see [commands overview](#management-commands-overview).
 
 Tables only allow for principals to receive the `admins` or `ingestors` roles.
 
@@ -199,7 +199,7 @@ Drop security roles:
 
 ## Managing materialized view security roles
 
-This section contains examples for the commands used to control materialized view permissions. To learn how to construct the commands, see [commands overview](#commands-overview). Principals must be given the role of `admins`, which means they'll have full permission to alter or delete the view.
+This section contains examples for the commands used to control materialized view permissions. To learn how to construct the commands, see [commands overview](#management-commands-overview). Principals must be given the role of `admins`, which means they'll have full permission to alter or delete the view.
 
 ### .add
 
@@ -233,7 +233,7 @@ Remove all existing `admins` on the `SampleView` materialized view:
 
 ## Managing function security roles
 
-This section contains examples for the commands used to control function permissions. To learn how to construct the commands, see [commands overview](#commands-overview). Principals must be given the role of `admins`, which means they'll have full permission to alter or delete the function.
+This section contains examples for the commands used to control function permissions. To learn how to construct the commands, see [commands overview](#management-commands-overview). Principals must be given the role of `admins`, which means they'll have full permission to alter or delete the function.
 
 ### .add
 

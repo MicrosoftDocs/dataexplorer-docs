@@ -40,5 +40,5 @@ The **Permissions** column displays the access granted to each role. The **Depen
 
 * To set cluster level permissions, see [manage cluster permissions](../../../manage-cluster-permissions.md).
 * To set permissions for a database, use the [Azure portal](../../../manage-database-permissions.md) or [use management commands](../security-roles.md#managing-database-security-roles)
-* To set permissions for a table, function, or materialized view, [use management commands](../security-roles.md#commands-overview).
+* To set permissions for a table, function, or materialized view, [use management commands](../security-roles.md#management-commands-overview).
 * To grant a principal from a different tenant access to your cluster, see [Allow cross-tenant queries and commands](../../../cross-tenant-query-and-commands.md).
