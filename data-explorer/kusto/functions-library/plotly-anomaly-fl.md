@@ -91,9 +91,9 @@ demo_make_series2
                            chart_title='Anomaly chart using plotly_anomaly_fl()', series_name=s_name, y_name='# of requests')
 ```
 
-### [Persistent](#tab/persistent)
+### [Stored](#tab/persistent)
 
-For persistent usage, use [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One time installation
 
