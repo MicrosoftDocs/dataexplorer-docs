@@ -382,7 +382,7 @@
     },
     {
       "source_path": "data-explorer/kusto/query/orderoperator.md",
-      "redirect_url": "/azure/data-explorer/kusto/query/sortoperator",
+      "redirect_url": "/azure/data-explorer/kusto/query/sort-operator",
       "redirect_document_id": true
     },
     {

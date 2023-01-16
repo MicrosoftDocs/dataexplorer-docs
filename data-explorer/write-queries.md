@@ -129,7 +129,7 @@ StormEvents
 
 ### sort
 
-[**sort**](kusto/query/sortoperator.md): Sort the rows of the input table into order by one or more columns.
+[**sort**](kusto/query/sort-operator.md): Sort the rows of the input table into order by one or more columns.
 
 The following query sorts the data in descending order by `DamageProperty`.
 

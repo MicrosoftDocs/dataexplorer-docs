@@ -146,7 +146,7 @@ items:
     href: mvexpandoperator.md
   - name: sort operator
     displayName: order operator
-    href: sortoperator.md
+    href: sort-operator.md
   - name: project operator
     href: projectoperator.md
   - name: project-away operator
