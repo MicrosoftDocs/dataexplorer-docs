@@ -17,6 +17,11 @@ Select the settings icon :::image type="icon" source="media/web-query-data/setti
 
 :::image type="content" source="media/web-query-data/settings.png" alt-text="Screenshot of the Settings window.":::
 
+## Prerequisites
+
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home).
+
 ## Export and import environment settings
 
 The export and import actions help you protect your work environment and relocate it to other browsers and devices. The export action will export all your settings, cluster connections, and query tabs to a JSON file that can be imported into a different browser or device.

@@ -7,7 +7,12 @@ ms.date: 01/15/2023
 
 # Share queries from Azure Data Explorer web UI
 
-This document will guide you through the process of sharing queries from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home).
+This article will walk you through the process of sharing queries from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home). By the end of this guide, you'll know how to share a query with a colleague, pin it to a dashboard, or even connect it to Power BI.
+
+## Prerequisites
+
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* Access to an Azure Data Explorer cluster and database. You may use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-database-portal.md).
 
 ## Get started
 
