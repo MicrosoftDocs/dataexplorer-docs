@@ -110,7 +110,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[prev()](prevfunction.md)|For the serialized row set, returns a value of a specified column from the earlier row according to the offset.|
 |[row_cumsum()](rowcumsumfunction.md)|Calculates the cumulative sum of a column.|
 |[row_number()](rownumberfunction.md)|Returns a row's number in the serialized row set - consecutive numbers starting from a given index or from 1 by default.|
-|[row_rank()](rowrankfunction.md)|Returns a row's rank in the serialized row set.|
+|[row_rank_dense()](rowrankdensefunction.md)|Returns a row's dense rank in the serialized row set.|
+|[row_rank_min()](rowrankminfunction.md)|Returns a row's minimal rank in the serialized row set.|
 
 ## Flow control functions
 
