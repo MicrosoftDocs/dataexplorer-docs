@@ -752,7 +752,7 @@ items:
     href: tanfunction.md
   - name: merge_tdigest()
     displayName: tdigest_merge()
-    href: merge-tdigestfunction.md
+    href: merge-tdigest-function.md
   - name: tobool()
     displayName: toboolean()
     href: toboolfunction.md
