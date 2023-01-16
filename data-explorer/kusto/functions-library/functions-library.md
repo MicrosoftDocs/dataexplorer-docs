@@ -25,6 +25,15 @@ The user-defined functions code is given in the articles.  It can be used within
 | [predict_fl()](predict-fl.md) | Predict using an existing trained machine learning model. |
 | [predict_onnx_fl()](predict-onnx-fl.md) | Predict using an existing trained machine learning model in ONNX format. |
 
+## Plotly functions
+
+The following section contains functions for rendering interactive [Plotly charts](https://plotly.com/python/).
+
+| Function Name | Description |
+|--|--|
+| [plotly_anomaly_fl()](plotly-anomaly-fl.md) | Render anomaly chart using a Plotly template. |
+| [plotly_scatter3d_fl()](plotly-scatter3d-fl.md) | Render 3D scatter chart using a Plotly template. |
+
 ## PromQL functions
 
 The following section contains common [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) functions. These functions can be used for analysis of metrics ingested to Azure Data Explorer by the [Prometheus](https://prometheus.io/) monitoring system. All functions assume that metrics in Azure Data Explorer are structured using the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/).
