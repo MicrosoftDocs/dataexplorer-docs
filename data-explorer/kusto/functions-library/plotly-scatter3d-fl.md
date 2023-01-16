@@ -44,7 +44,7 @@ plotly_scatter3d_fl(tbl:(*), x_col:string, y_col:string, z_col:string, aggr_col:
 
 `plotly_scatter3d_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-### [Ad hoc](#tab/adhoc)
+### [Query-defined](#tab/adhoc)
 
 For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
 
