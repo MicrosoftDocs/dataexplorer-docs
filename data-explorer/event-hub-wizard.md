@@ -24,13 +24,10 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 * An [event hub](ingest-data-event-hub.md#create-an-event-hub) with data for ingestion.
 
 > [!NOTE]
-> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
-
-> [!NOTE]
-> The cluster and event hub should be associated with the same tenants, for different tenants please use [SDKs](./data-connection-event-hub-csharp.md)
-
-> [!NOTE]
-> To use the ingestion wizard, you must have at least [database user level permissions](kusto/management/access-control/role-based-authorization.md).
+>
+>* To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
+>* The cluster and event hub should be associated with the same tenants, for different tenants please use [SDKs](./data-connection-event-hub-csharp.md)
+>* To use the ingestion wizard, you must have at least [database user level permissions](kusto/management/access-control/role-based-authorization.md).
 
 ## Ingest data
 
@@ -76,6 +73,8 @@ The **Ingest data** window opens with the **Destination** tab selected.
 
 1. Select **Next: Schema**.
 
+[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
+
 ## Schema tab
 
 Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects. Supported formats are CSV, JSON, PSV, SCsv, SOHsv TSV, TXT, and TSVE.
@@ -104,8 +103,6 @@ For information on schema mapping with CSV-formatted data, see [Edit the schema]
 In the **Continuous ingestion from Event Hub established** window, all steps will be marked with green check marks when establishment finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, undo changes made using **Tools**, or **Monitor** the Event Hubs connections and data.
 
 :::image type="content" source="media/event-hub-wizard/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hubs with the ingestion wizard.":::
-
-[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
 
 ## Next steps
 
