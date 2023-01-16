@@ -144,7 +144,9 @@ demo_make_series2
 
 ---
 
-The output is a Plotly Json string to be rendered in ADX dashboard as Plotly Visual:
+The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards (Preview)](../../azure-data-explorer-dashboards.md).
+
+The following image shows a sample anomaly chart using the above function:
 
 ![Anomaly chart of the sample data set.](images\plotly-anomaly-fl\plotly-anomaly-chart.png)
 
