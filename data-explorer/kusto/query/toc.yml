@@ -337,7 +337,8 @@ items:
     href: around-function.md
   - name: array_concat()
     href: arrayconcatfunction.md
-  - name: array_iif(), array_iff()
+  - name: array_iff()
+    displayName: array_iif()
     href: arrayifffunction.md
   - name: array_index_of()
     href: arrayindexoffunction.md
@@ -403,7 +404,8 @@ items:
     href: beta-invfunction.md
   - name: beta_pdf()
     href: beta-pdffunction.md
-  - name: bin(), floor()
+  - name: bin()
+    displayName: floor()
     href: binfunction.md
   - name: bin_at()
     href: binatfunction.md

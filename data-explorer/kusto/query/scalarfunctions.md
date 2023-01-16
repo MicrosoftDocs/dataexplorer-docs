@@ -73,7 +73,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[array_concat()](arrayconcatfunction.md)|Concatenates a number of dynamic arrays to a single array.|
-|[array_iif(), array_iff()](arrayifffunction.md)|Apply element-wise iif function on arrays.|
+|[array_iff()](arrayifffunction.md)|Applies element-wise iif function on arrays.|
 |[array_index_of()](arrayindexoffunction.md)|Searches the array for the specified item, and returns its position.|
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
 |[array_reverse()](array-reverse-function.md)|Reverses the order of the elements in a dynamic array.|
@@ -180,7 +180,6 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[bin()](binfunction.md)|Rounds values down to an integer multiple of a given bin size.|
 |[bin_at()](binatfunction.md)|Rounds values down to a fixed-size "bin", with control over the bin's starting point. (See also bin function.)|
 |[ceiling()](ceilingfunction.md)|Calculates the smallest integer greater than, or equal to, the specified numeric expression.|
-|[floor()](binfunction.md)|Rounds values down to an integer multiple of a given bin size.|
 
 ## Conditional functions
 
