@@ -18,7 +18,7 @@ The function accepts a table containing the source and the baseline time series,
 
 ## Prerequisite
 
-This function extracts the required 'anomaly' template from PlotlyTemplate table. You should copy that table from the Samples database to your database by running (from your database):
+Extract the required 'anomaly' template from the publicly available `PlotlyTemplate` table. Copy this table from the Samples database to your database by running the following KQL command from your target database:
 
 ```kusto
 .set PlotlyTemplate <| cluster('help.kusto.windows.net').database('Samples').PlotlyTemplate
