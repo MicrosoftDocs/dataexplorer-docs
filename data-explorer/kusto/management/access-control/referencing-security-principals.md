@@ -27,7 +27,7 @@ Azure AD supports the following authentication scenarios:
 
 The syntax for referencing Azure AD user and application principals and groups is outlined in the following table.
 
-When you reference a principal using [User Principal Name (UPN) format](/azure/active-directory/hybrid/plan-connect-userprincipalname#upn-format), the engine will infer the Azure AD tenant from the domain name and try to find the principal. For example, if the UPN is `abbiatkins@fabrikam.com`, the tenant is assumed to be `fabrikam`. If the principal isn't found, specify the principal more explicitly by using the UPN or object ID with the tenant ID or name.
+When you reference a principal using [User Principal Name (UPN) format](/azure/active-directory/hybrid/plan-connect-userprincipalname#upn-format), the engine will infer the Azure AD tenant from the domain name and try to find the principal. For example, if the UPN is `abbiatkins@fabrikam.com`, the implicit tenant is `fabrikam`. If the principal isn't found, specify the principal more explicitly by providing the tenant ID or name along with the UPN or object ID.
 
 | Type of Entity | Tenant Identifier | Syntax |
 |--|--|--|
