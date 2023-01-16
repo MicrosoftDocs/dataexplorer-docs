@@ -653,7 +653,7 @@ Fruits
                             iff( _bin + 7d - 1d < _start, _start,
                                 iff( _bin + 7d - 1d < _bin, _bin,  _bin + 7d - 1d)))  // #2
 | extend _range = range(_bin, _endRange, 1d) // #3
-| mv-expand _range to typeof(datetime) limit 1000000 // #4
+| mv-expand _range to typeof(datetime) take 1000000 // #4
 | summarize min(Price), max(Price), sum(Price) by Timestamp=bin_at(_range, 1d, _start) ,  Fruit // #5
 | where Timestamp >= _start + 7d; // #6
 

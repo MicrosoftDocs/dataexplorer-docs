@@ -17,7 +17,7 @@ For example, if you have a stored function as described in the table, you can ex
 
 |Name |Parameters|Body|Folder|DocString
 |---|---|---|---|---|
-|MyFunction |(myLimit: long)| {StormEvents &#124; limit myLimit}|MyFolder|Demo function with parameter|
+|MyFunction |(myLimit: long)| {StormEvents &#124; take myLimit}|MyFolder|Demo function with parameter|
 
 ```csharp
   using (var connection = new SqlConnection(csb.ToString()))
@@ -67,7 +67,7 @@ For example:
       command.Parameters.Add(query);
       var parameter = new SqlParameter("mylimit", SqlDbType.Int);
       command.Parameters.Add(parameter);
-      query.Value = "StormEvents | limit myLimit";
+      query.Value = "StormEvents | take myLimit";
       parameter.Value = 3;
       using (var reader = await command.ExecuteReaderAsync())
       {

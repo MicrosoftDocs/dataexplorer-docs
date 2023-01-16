@@ -120,7 +120,7 @@ Create a new column by computing a value in every row:
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| limit 5
+| take 5
 | extend Duration = EndTime - StartTime 
 | project StartTime, EndTime, Duration, EventType, State
 ```

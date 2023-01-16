@@ -57,7 +57,7 @@ let _data = range Timeline from 1 to 10000 step 1
 // Look on few lines of the data
 _data
 | order by Timeline asc, Id asc
-| limit 20
+| take 20
 ```
 
 **Output**
