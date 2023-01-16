@@ -394,6 +394,11 @@
       "source_path": "data-explorer/kusto/query/getmonthfunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/monthofyearfunction",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/tdigest-mergefunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/merge-tdigest-function",
+      "redirect_document_id": true
     }
   ]
 }

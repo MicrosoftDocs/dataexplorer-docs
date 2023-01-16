@@ -193,7 +193,7 @@ let interval = 1d;
 let stime = datetime(2017-01-01);
 let etime = datetime(2017-01-10);
 data
-| limit 0
+| take 0
 | make-series avg(metric) default=1.0 on timestamp from stime to etime step interval 
 | count 
 ```
@@ -231,7 +231,7 @@ let interval = 1d;
 let stime = datetime(2017-01-01);
 let etime = datetime(2017-01-10);
 data
-| limit 0
+| take 0
 | make-series kind=nonempty avg(metric) default=1.0 on timestamp from stime to etime step interval 
 ```
 

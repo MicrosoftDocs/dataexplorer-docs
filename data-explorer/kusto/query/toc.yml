@@ -192,7 +192,8 @@ items:
       href: summarizeoperator.md
     - name: Using hll() and tdigest()
       href: usinghlltdigest.md
-  - name: take operator, limit operator
+  - name: take operator
+    displayName: limit operator
     href: takeoperator.md
   - name: top operator
     href: topoperator.md
@@ -755,10 +756,11 @@ items:
     href: substringfunction.md
   - name: tan()
     href: tanfunction.md
-  - name: tdigest_merge()
-    displayName: merge_tdigest()
-    href: tdigest-mergefunction.md
-  - name: tobool(), toboolean()
+  - name: merge_tdigest()
+    displayName: tdigest_merge()
+    href: merge-tdigest-function.md
+  - name: tobool()
+    displayName: toboolean()
     href: toboolfunction.md
   - name: todatetime()
     href: todatetimefunction.md
