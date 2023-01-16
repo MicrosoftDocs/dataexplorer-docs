@@ -853,7 +853,7 @@ range _day from _start to _end step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+100*r-1), 1)
-| mv-expand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) take 1000000
 // Calculate DAU/WAU ratio
 | evaluate activity_engagement(['id'], _day, _start, _end, 1d, 7d)
 | project _day, Dau_Wau=activity_ratio*100
@@ -881,7 +881,7 @@ range _day from _start to _end step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1)
-| mv-expand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) take 1000000
 | where _day > datetime(2017-01-02)
 | project _day, id
 // Calculate weekly retention rate
@@ -908,7 +908,7 @@ range Day from _start to _end step 1d
 | extend d = tolong((Day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1)
-| mv-expand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) take 1000000
 // Take only the first week cohort (last parameter)
 | evaluate new_activity_metrics(['id'], Day, _start, _end, 7d, _start)
 | project from_Day, to_Day, retention_rate, churn_rate
