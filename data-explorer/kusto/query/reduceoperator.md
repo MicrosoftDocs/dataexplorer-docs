@@ -1,13 +1,13 @@
 ---
 title: reduce operator - Azure Data Explorer
-description: This article describes reduce operator in Azure Data Explorer.
+description: Learn how to use the reduce operator to group a set of strings together based on value similarity.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 01/15/2023
 ---
 # reduce operator
 
-Groups a set of strings together based on values similarity.
+Groups a set of strings together based on value similarity.
 
 ```kusto
 T | reduce by LogMessage with threshold=0.1
@@ -19,7 +19,7 @@ and a **representative** of the group (one of the original values in the group).
 
 ## Syntax
 
-*T* `|` `reduce` [`kind` `=` *ReduceKind*] `by` *Expr* [`with` [`threshold` `=` *Threshold*] [`,` `characters` `=` *Characters*] ]
+*T* `|` `reduce` [`kind` `=` *ReduceKind*] `by` *Expr* [`with` [`threshold` `=` *Threshold*] [`,` `characters` `=` *Characters*]]
 
 ## Arguments
 
@@ -40,7 +40,7 @@ is one value from the input that falls into this group.
 
 If `[kind=source]` is specified, the operator will append the `Pattern` column to the existing rows in the table (instead of aggregating by `Pattern`).
 
-For example, the result of `reduce by city` might include: 
+For example, the result of `reduce by city` might include:
 
 |Pattern     |Count |Representative|
 |------------|------|--------------|
@@ -86,6 +86,5 @@ Trace | take 10000
 
 [autocluster](./autoclusterplugin.md)
 
-**Notes**
-
-The implementation of `reduce` operator is largely based on the paper [A Data Clustering Algorithm for Mining Patterns From Event Logs](https://ristov.github.io/publications/slct-ipom03-web.pdf), by Risto Vaarandi.
+> [!NOTE]
+> The implementation of `reduce` operator is largely based on the paper [A Data Clustering Algorithm for Mining Patterns From Event Logs](https://ristov.github.io/publications/slct-ipom03-web.pdf), by Risto Vaarandi.
