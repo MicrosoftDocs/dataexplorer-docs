@@ -45,7 +45,7 @@ Extract the required 'anomaly' template from the publicly available `PlotlyTempl
 
 ## Usage
 
-`plotly_anomaly_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
+`plotly_anomaly_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for examples.
 
 ### [Query-defined](#tab/adhoc)
 
