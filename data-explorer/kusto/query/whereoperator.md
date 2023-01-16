@@ -1,11 +1,11 @@
 ---
-title: where operator, filter operator - Azure Data Explorer
-description: Learn how to use the where and filter operators to filter a table to the subset of rows that satisfy a predicate.
+title: where operator - Azure Data Explorer
+description: Learn how to use the where operator to filter a table to the subset of rows that satisfy a predicate.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/24/2022
 ---
-# where operator, filter operator
+# where operator
 
 Filters a table to the subset of rows that satisfy a predicate.
 
