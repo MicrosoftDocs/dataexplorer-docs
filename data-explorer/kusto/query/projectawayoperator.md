@@ -1,13 +1,13 @@
 ---
 title: project-away operator - Azure Data Explorer
-description: This article describes project-away operator in Azure Data Explorer.
+description: Learn how to use the project-away operator to select columns from the input table to exclude from the output table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 01/12/2023
 ---
 # project-away operator
 
-Select what columns from the input to exclude from the output.
+Select what columns from the input table to exclude from the output table.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Select what columns from the input to exclude from the output.
 
 ## Returns
 
-A table with columns that were not named as arguments. Contains same number of rows as the input table.
+A table with columns that weren't named as arguments. Contains same number of rows as the input table.
 
 > [!TIP]
 > You can `project-away` any columns that are present in the original table or that were computed as part of the query.
