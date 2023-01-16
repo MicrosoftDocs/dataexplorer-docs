@@ -40,6 +40,7 @@ If the query effectively (after wildcard matching) references tables from more t
 Similarly __cluster and database__ qualifications will be present in the value if more than one cluster is referenced. 
 * `isfuzzy=` `true` | `false`: If `isfuzzy` is set to `true` - allows fuzzy resolution of union legs. `Fuzzy` applies to the set of `union` sources. It means that while analyzing the query and preparing for execution, the set of union sources is reduced to the set of table references that exist and are accessible at the time. If at least one such table was found, any resolution failure will yield a warning in the query status results (one for each missing reference), but will not prevent the query execution; if no resolutions were successful - the query will return an error.
 The default is `isfuzzy=` `false`.
+* `best_effort` client request property: If `best_effort` is set to `true` - allows fuzzy resolution and connectivity issues of union legs. For more information, see [Client request properties](../../../netfx/request-properties.md).
 * *UnionParameters*: Zero or more (space-separated) parameters in the form of
   *Name* `=` *Value* that control the behavior
   of the row-match operation and execution plan. The following parameters are supported: 
