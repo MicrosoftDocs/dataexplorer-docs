@@ -521,7 +521,8 @@ items:
   - name: extract_all()
     displayName: extractall()
     href: extractallfunction.md
-  - name: extract_json(), extractjson()
+  - name: extract_json()
+    displayName: extractjson()
     href: extractjsonfunction.md
   - name: format_bytes()
     href: format-bytesfunction.md
@@ -571,7 +572,8 @@ items:
     href: hllmergefunction.md
   - name: hourofday()
     href: hourofdayfunction.md
-  - name: iff(), iif()
+  - name: iff()
+    displayName: iif()
     href: ifffunction.md
   - name: indexof()
     href: indexoffunction.md

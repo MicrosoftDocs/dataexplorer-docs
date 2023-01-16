@@ -649,7 +649,7 @@ let _start = datetime(2018-09-24);
 let _end = _start + 13d;
 Fruits
 | extend _bin = bin_at(Timestamp, 1d, _start) // #1
-| extend _endRange = iif(_bin + 7d > _end, _end,
+| extend _endRange = iff(_bin + 7d > _end, _end,
                             iff( _bin + 7d - 1d < _start, _start,
                                 iff( _bin + 7d - 1d < _bin, _bin,  _bin + 7d - 1d)))  // #2
 | extend _range = range(_bin, _endRange, 1d) // #3
@@ -1643,7 +1643,7 @@ Use brackets for indexes and dots to separate elements:
 ```kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report
-| extend status = extractjson("$.hosts[0].status", hosts_report)
+| extend status = extract_json("$.hosts[0].status", hosts_report)
 ```
 
 This example is similar, but it uses only the brackets notation:
@@ -1651,7 +1651,7 @@ This example is similar, but it uses only the brackets notation:
 ```kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report
-| extend status = extractjson("$['hosts'][0]['status']", hosts_report)
+| extend status = extract_json("$['hosts'][0]['status']", hosts_report)
 ```
 
 For only one element, you can use only the dot notation:
