@@ -138,8 +138,6 @@ items:
       href: broadcastjoin.md
     - name: Time window join
       href: join-timewindow.md
-  - name: limit operator
-    href: limitoperator.md
   - name: lookup operator
     href: lookupoperator.md
   - name: mv-apply operator
@@ -193,7 +191,7 @@ items:
       href: summarizeoperator.md
     - name: Using hll() and tdigest()
       href: usinghlltdigest.md
-  - name: take operator
+  - name: take operator, limit operator
     href: takeoperator.md
   - name: top operator
     href: topoperator.md
@@ -751,9 +749,9 @@ items:
     href: substringfunction.md
   - name: tan()
     href: tanfunction.md
-  - name: tdigest_merge()
+  - name: tdigest_merge(), merge_tdigest()
     href: tdigest-mergefunction.md
-  - name: tobool()
+  - name: tobool(), toboolean()
     href: toboolfunction.md
   - name: todatetime()
     href: todatetimefunction.md
@@ -906,7 +904,7 @@ items:
     href: take-anyif-aggfunction.md        
   - name: tdigest()
     href: tdigest-aggfunction.md
-  - name: tdigest_merge()
+  - name: tdigest_merge(), merge_tdigest()
     href: tdigest-merge-aggfunction.md
   - name: variance()
     href: variance-aggfunction.md
