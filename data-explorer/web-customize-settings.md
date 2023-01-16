@@ -7,20 +7,18 @@ ms.date: 01/15/2023
 
 # Customize settings in the Azure Data Explorer web UI
 
-This document will guide you through the process of customizing settings in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home). In the **Settings** tab you can:
-
-* [Export and import environment settings](#export-and-import-environment-settings)
-* [Highlight error levels](#highlight-error-levels)
-* [Change datetime to specific time zone](#change-datetime-to-specific-time-zone)
-
-Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
-
-:::image type="content" source="media/web-query-data/settings.png" alt-text="Screenshot of the Settings window.":::
+This article will guide you through the process of customizing settings in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home). You'll learn how to export and import environment settings, highlight error levels, and change datetime to specific time zone. This can help you protect your work environment and relocate it to other browsers and devices, as well as make it easier to identify errors.
 
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home).
+
+## Get started
+
+Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
+
+:::image type="content" source="media/web-query-data/settings.png" alt-text="Screenshot of the Settings window.":::
 
 ## Export and import environment settings
 
