@@ -7,8 +7,9 @@ ms.date: 01/15/2023
 ---
 # plotly_anomaly_fl()
 
-The function `plotly_anomaly_fl()` creates an interactive anomaly chart to be rendered in [ADX dashboard](../../azure-data-explorer-dashboards.md) by customizing a pre-prepared [plotly](https://plotly.com/python/) template.
-The function accepts a table containing the source and the baseline time series, list of positive and negative anomalies with their respective size, and chart labeling strings, and returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/) that can be rendered in a dashboard tile as explained [here](../../dashboard-customize-visuals.md#plotly-preview).
+The function `plotly_anomaly_fl()` allows you to customize a [plotly](https://plotly.com/python/) template to create an interactive anomaly chart.  
+
+The function accepts a table containing the source and the baseline time series, lists of positive and negative anomalies with their respective sizes, and chart labeling string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/) to be rendered in an [Azure Data Explorer dashboard](../../azure-data-explorer-dashboards.md) tile. For more information, see [Plotly visual in dashboards](../../dashboard-customize-visuals.md#plotly-preview).
 
 > [!NOTE]
 >
