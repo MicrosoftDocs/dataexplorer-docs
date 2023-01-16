@@ -49,7 +49,7 @@ Extract the required 'anomaly' template from the publicly available `PlotlyTempl
 
 ### [Query-defined](#tab/adhoc)
 
-For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
 ```kusto
 let plotly_anomaly_fl=(tbl:(*), time_col:string, val_col:string, baseline_col:string, time_high_col:string , val_high_col:string, time_low_col:string , val_low_col:string,
