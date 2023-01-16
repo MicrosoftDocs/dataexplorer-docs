@@ -119,7 +119,7 @@ items:
       href: materialized-views/materialized-view-overview.md
     - name: Materialized views limitations
       href: materialized-views/materialized-views-limitations.md
-    - name: Materialized views monitoring
+    - name: Monitor materialized views
       href: materialized-views/materialized-views-monitoring.md
     - name: Materialized views policies
       href: materialized-views/materialized-view-policies.md
