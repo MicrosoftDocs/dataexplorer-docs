@@ -144,8 +144,9 @@ items:
     href: mv-applyoperator.md
   - name: mv-expand operator
     href: mvexpandoperator.md
-  - name: order operator, sort operator
-    href: orderoperator.md
+  - name: sort operator
+    displayName: order operator
+    href: sort-operator.md
   - name: project operator
     href: projectoperator.md
   - name: project-away operator
@@ -202,7 +203,8 @@ items:
     href: tophittersoperator.md
   - name: union operator
     href: unionoperator.md
-  - name: where operator, filter operator
+  - name: where operator
+    displayName: filter operator
     href: whereoperator.md
 - name: Special functions
   items:
@@ -338,7 +340,8 @@ items:
     href: around-function.md
   - name: array_concat()
     href: arrayconcatfunction.md
-  - name: array_iif(), array_iff()
+  - name: array_iff()
+    displayName: array_iif()
     href: arrayifffunction.md
   - name: array_index_of()
     href: arrayindexoffunction.md
@@ -404,7 +407,8 @@ items:
     href: beta-invfunction.md
   - name: beta_pdf()
     href: beta-pdffunction.md
-  - name: bin(), floor()
+  - name: bin()
+    displayName: floor()
     href: binfunction.md
   - name: bin_at()
     href: binatfunction.md
@@ -639,7 +643,8 @@ items:
     href: max-offunction.md
   - name: min_of()
     href: min-offunction.md
-  - name: monthofyear(), getmonth()
+  - name: monthofyear()
+    displayName: getmonth()
     href: monthofyearfunction.md
   - name: new_guid()
     href: newguidfunction.md
@@ -751,7 +756,8 @@ items:
     href: substringfunction.md
   - name: tan()
     href: tanfunction.md
-  - name: tdigest_merge(), merge_tdigest()
+  - name: tdigest_merge()
+    displayName: merge_tdigest()
     href: tdigest-mergefunction.md
   - name: tobool(), toboolean()
     href: toboolfunction.md

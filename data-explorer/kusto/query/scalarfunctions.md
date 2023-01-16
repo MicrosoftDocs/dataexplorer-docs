@@ -54,7 +54,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hourofday()](hourofdayfunction.md)|Returns the integer number representing the hour number of the given date.|
 |[make_datetime()](make-datetimefunction.md)|Creates a datetime scalar value from the specified date and time.|
 |[make_timespan()](make-timespanfunction.md)|Creates a timespan scalar value from the specified time period.|
-|[monthofyear(), getmonth()](monthofyearfunction.md)|Return the integer number that represents the month number of the given year.|
+|[monthofyear()](monthofyearfunction.md)|Returns the integer number that represents the month number of the given year.|
 |[now()](nowfunction.md)|Returns the current UTC clock time, optionally offset by a given timespan.|
 |[startofday()](startofdayfunction.md)|Returns the start of the day containing the date, shifted by an offset, if provided.|
 |[startofmonth()](startofmonthfunction.md)|Returns the start of the month containing the date, shifted by an offset, if provided.|
@@ -73,7 +73,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[array_concat()](arrayconcatfunction.md)|Concatenates a number of dynamic arrays to a single array.|
-|[array_iif(), array_iff()](arrayifffunction.md)|Apply element-wise iif function on arrays.|
+|[array_iff()](arrayifffunction.md)|Applies element-wise iif function on arrays.|
 |[array_index_of()](arrayindexoffunction.md)|Searches the array for the specified item, and returns its position.|
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
 |[array_reverse()](array-reverse-function.md)|Reverses the order of the elements in a dynamic array.|
@@ -180,7 +180,6 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[bin()](binfunction.md)|Rounds values down to an integer multiple of a given bin size.|
 |[bin_at()](binatfunction.md)|Rounds values down to a fixed-size "bin", with control over the bin's starting point. (See also bin function.)|
 |[ceiling()](ceilingfunction.md)|Calculates the smallest integer greater than, or equal to, the specified numeric expression.|
-|[floor()](binfunction.md)|Rounds values down to an integer multiple of a given bin size.|
 
 ## Conditional functions
 

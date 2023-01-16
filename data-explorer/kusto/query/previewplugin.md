@@ -1,9 +1,9 @@
 ---
 title: preview plugin - Azure Data Explorer
-description: This article describes preview plugin in Azure Data Explorer.
+description: Learn how to use the preview plugin to return two tables, one with the specified number of rows, and the other with the total number of records. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/12/2023
 ---
 # preview plugin
 
@@ -20,6 +20,7 @@ T | evaluate preview(50)
 ## Returns
 
 The `preview` plugin returns two result tables:
+
 * A table with up to the specified number of rows.
   For example, the sample query above is equivalent to running `T | take 50`.
 * A table with a single row/column, holding the number of records in the
