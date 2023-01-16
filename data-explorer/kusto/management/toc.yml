@@ -499,7 +499,7 @@ items:
       href: show-query-weak-consistency-policy.md
 - name: Security roles
   href: security-roles.md
-  displayName: RBAC, role based access control
+  displayName: RBAC, role-based access control
 - name: Data ingestion
   items:
   - name: Ingest from storage
