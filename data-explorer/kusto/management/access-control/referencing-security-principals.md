@@ -27,18 +27,20 @@ Azure AD supports the following authentication scenarios:
 
 The syntax for referencing Azure AD user and application principals and groups is outlined in the following table.
 
-When you reference a principal using [User Principal Name (UPN) format](/azure/active-directory/hybrid/plan-connect-userprincipalname#upn-format), the engine will infer the Azure AD tenant from the domain name and try to find the principal. For example, if the UPN is `abbiatkins@fabrikam.com`, the implicit tenant is `fabrikam`. If the principal isn't found, specify the principal more explicitly by providing the tenant ID or name along with the UPN or object ID.
+If you only use a [User Principal Name (UPN)](/azure/active-directory/hybrid/plan-connect-userprincipalname#what-is-userprincipalname) to reference a user, the engine will infer the tenant from the domain name and try to find the principal. If the principal isn't found, explicitly specify the tenant ID or name in addition to the user's UPN or object ID.
 
-| Type of Entity | Tenant Identifier | Syntax |
+Similarly, you can reference a group with the group email address in [UPN format](/azure/active-directory/hybrid/plan-connect-userprincipalname#upn-format) and imply the tenant. If the group isn't found, explicitly specify the tenant ID or name in addition to the group display name or object ID.
+
+| Type of Entity | Azure AD Tenant | Syntax |
 |--|--|--|
-| User | Implicit (UPN) | `aaduser`=*UPN* |
-| User | Explicit (ID) | `aaduser`=*UPN*;*TenantId*<br />or<br />`aaduser`=*ObjectID*;*TenantId* |
-| User | Explicit (Name) |`aaduser`=*UPN*;*TenantName*<br />or<br />`aaduser`=*ObjectID*;*TenantName* |
-| Group | Implicit (UPN) | `aadgroup`=*GroupUPN* |
-| Group | Explicit (ID) | `aadgroup`=*GroupDisplayName*;*TenantId*<br />or<br />`aadgroup`=*GroupObjectId*;*TenantId* |
-| Group | Explicit (Name) |`aadgroup`=*GroupDisplayName*;*TenantName*<br />or<br />`aadgroup`=*GroupObjectId*;*TenantName* |
-| App | Explicit (ID) | `aadapp`=*ApplicationDisplayName*;*TenantId*<br />or<br />`aadapp`=*ApplicationId*;*TenantId*|
-| App | Explicit (Name) | `aadapp`=*ApplicationId*;*TenantName*<br />or<br />`aadapp`=*ApplicationDisplayName*;*TenantName* |
+| User | Implicit | `aaduser`=*UPN* |
+| User | Explicit | `aaduser`=*UPN*;*TenantId*<br />or<br />`aaduser`=*ObjectID*;*TenantId* |
+| User | Explicit |`aaduser`=*UPN*;*TenantName*<br />or<br />`aaduser`=*ObjectID*;*TenantName* |
+| Group | Implicit | `aadgroup`=*GroupEmailAddress* |
+| Group | Explicit | `aadgroup`=*GroupDisplayName*;*TenantId*<br />or<br />`aadgroup`=*GroupObjectId*;*TenantId* |
+| Group | Explicit |`aadgroup`=*GroupDisplayName*;*TenantName*<br />or<br />`aadgroup`=*GroupObjectId*;*TenantName* |
+| App | Explicit | `aadapp`=*ApplicationDisplayName*;*TenantId*<br />or<br />`aadapp`=*ApplicationId*;*TenantId*|
+| App | Explicit | `aadapp`=*ApplicationDisplayName*;*TenantName*<br />or<br />`aadapp`=*ApplicationId*;*TenantName*|
 
 ### Examples
 
