@@ -1240,8 +1240,10 @@ items:
     href: rowcumsumfunction.md
   - name: row_number()
     href: rownumberfunction.md
-  - name: row_rank()
-    href: rowrankfunction.md
+  - name: row_rank_dense()
+    href: rowrankdensefunction.md
+  - name: row_rank_min()
+    href: rowrankminfunction.md
   - name: row_window_session()
     href: row-window-session-function.md
 - name: Limits and Errors
