@@ -187,7 +187,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[case()](casefunction.md)|Evaluates a list of predicates and returns the first result expression whose predicate is satisfied.|
 |[coalesce()](coalescefunction.md)|Evaluates a list of expressions and returns the first non-null (or non-empty for string) expression.|
-|[iif(), iff()](ifffunction.md)|Evaluate the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
+|[iff()](iiffunction.md)|Evaluate the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
 |[max_of()](max-offunction.md)|Returns the maximum value of several evaluated numeric expressions.|
 |[min_of()](min-offunction.md)|Returns the minimum value of several evaluated numeric expressions.|
 
@@ -259,7 +259,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[countof()](countoffunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
 |[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
-|[extract_json(), extractjson()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
+|[extract_json()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
 |[has_any_index()](has-any-index-function.md)|Searches the string for items specified in the array and returns the position of the first item found in the string.|
 |[indexof()](indexoffunction.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
 |[isempty()](isemptyfunction.md)|Returns true if the argument is an empty string or is null.|
