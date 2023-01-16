@@ -14,7 +14,7 @@ This article will guide you through the process of customizing settings in the [
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home).
 
-## Get started
+## Go to the settings
 
 Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
 
