@@ -5,7 +5,7 @@ description: This article describes the row_rank() function in Azure Data Explor
 ms.reviewer: royo
 
 ms.topic: reference
-ms.date: 01/28/2021
+ms.date: 01/16/2023
 ---
 # row_rank()
 
