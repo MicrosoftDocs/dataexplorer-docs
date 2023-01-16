@@ -71,7 +71,7 @@ Use the following steps to create a table and apply a table mapping:
     > We recommend using the following timestamp columns:
     >
     > - **_ts**: Use this column to reconcile data with Cosmos DB.
-    > - **_timestamp**:  Use this column to run efficient time filters in your Kusto queries. For more information, see [Query best practice](/azure/data-explorer/kusto/query/best-practices).
+    > - **_timestamp**:  Use this column to run efficient time filters in your Kusto queries. For more information, see [Query best practice](./kusto/query/best-practices.md).
 
     ~~~kusto
     .create table TestTable ingestion json mapping "DocumentMapping"
