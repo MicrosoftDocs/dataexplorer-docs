@@ -103,7 +103,7 @@ Here's the output:
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|North to northeast winds gusting to around 58 mph were reported in the mountains of Ventura county.|
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|The Warm Springs RAWS sensor reported northerly winds gusting to 58 mph.|
 
-You can achieve the same result by using  either [sort](./sortoperator.md), and then [take](./takeoperator.md):
+You can achieve the same result by using  either [sort](./sort-operator.md), and then [take](./takeoperator.md):
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -557,7 +557,7 @@ AzureActivity
 
 ## Select a subset of columns: *project*
 
-Use [project](./projectoperator.md) to include only the columns you want. Building on the preceding example, let's take the output to certain columns:
+Use [project](./projectoperator.md) to include only the columns you want. Building on the preceding example, let's limit the output to certain columns:
 
 ```kusto
 AzureActivity
