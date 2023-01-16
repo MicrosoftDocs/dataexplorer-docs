@@ -84,7 +84,7 @@ let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
             project d = generic_dist(pack_array(a), pack_array(a1))
             | summarize d = make_list(d)
         )
-        | extend dist =bin((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
+        | extend dist = bin((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
         | project-away d
         | where entity != entity1
         | sort by _partition asc, entity asc, dist asc
@@ -174,7 +174,7 @@ let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
             project d = generic_dist(pack_array(a), pack_array(a1))
             | summarize d = make_list(d)
         )
-        | extend dist =bin((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
+        | extend dist = bin((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
         | project-away d
         | where entity != entity1
         | sort by _partition asc, entity asc, dist asc

@@ -41,7 +41,7 @@ Returns a dynamic array of the values taken either from the *when_true* or *when
 
 ```kusto
 print condition=dynamic([true,false,true]), if_true=dynamic([1,2,3]), if_false=dynamic([4,5,6]) 
-| extend res=array_iff(condition, if_true, if_false)
+| extend res= array_iff(condition, if_true, if_false)
 ```
 
 **Output**
@@ -57,7 +57,7 @@ print condition=dynamic([true,false,true]), if_true=dynamic([1,2,3]), if_false=d
 
 ```kusto
 print condition=dynamic([1,0,50]), if_true="yes", if_false="no" 
-| extend res=array_iff(condition, if_true, if_false)
+| extend res= array_iff(condition, if_true, if_false)
 ```
 
 **Output**
@@ -73,7 +73,7 @@ print condition=dynamic([1,0,50]), if_true="yes", if_false="no"
 
 ```kusto
 print condition=dynamic(["some string value", datetime("01-01-2022"), null]), if_true=1, if_false=0
-| extend res=array_iff(condition, if_true, if_false)
+| extend res= array_iff(condition, if_true, if_false)
 ```
 
 **Output**
@@ -89,7 +89,7 @@ print condition=dynamic(["some string value", datetime("01-01-2022"), null]), if
 
 ```kusto
 print condition=dynamic([true,true,true]), if_true=dynamic([1,2]), if_false=dynamic([3,4]) 
-| extend res=array_iff(condition, if_true, if_false)
+| extend res= array_iff(condition, if_true, if_false)
 ```
 
 **Output**
