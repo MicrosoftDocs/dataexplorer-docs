@@ -1,6 +1,6 @@
 ---
 title: Query results cache - Azure Data Explorer
-description: Learn how to use Query results cache functionality to get cached results.
+description: Learn how to use the query results cache functionality to get cached results.
 ms.reviewer: amitof
 ms.topic: reference
 ms.date: 01/12/2023

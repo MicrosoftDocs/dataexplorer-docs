@@ -1,6 +1,6 @@
 ---
 title: Query parameters declaration statement - Azure Data Explorer
-description: Learn how to use the Query parameters declaration statement to parameterize queries and protect against injection attacks.
+description: Learn how to use the query parameters declaration statement to parameterize queries and protect against injection attacks.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/12/2023

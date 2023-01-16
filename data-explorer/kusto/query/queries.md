@@ -1,6 +1,6 @@
 ---
 title: Queries - Azure Data Explorer
-description: Learn how to use Queries to explore and process data in the context of databases. 
+description: Learn how to use queries to explore and process data in the context of databases. 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/12/2023
