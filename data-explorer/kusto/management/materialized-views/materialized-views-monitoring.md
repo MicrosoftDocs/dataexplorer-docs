@@ -5,7 +5,7 @@ ms.reviewer: yifats
 ms.topic: reference
 ms.date: 01/15/2023
 ---
-# Materialized views monitoring
+# Monitor materialized views
 
 Monitor the materialized view's health in the following ways:
 
