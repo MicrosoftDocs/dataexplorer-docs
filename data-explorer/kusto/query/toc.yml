@@ -754,7 +754,8 @@ items:
     href: substringfunction.md
   - name: tan()
     href: tanfunction.md
-  - name: tdigest_merge(), merge_tdigest()
+  - name: tdigest_merge()
+    displayName: merge_tdigest()
     href: tdigest-mergefunction.md
   - name: tobool(), toboolean()
     href: toboolfunction.md
