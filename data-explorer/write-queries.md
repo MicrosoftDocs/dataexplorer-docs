@@ -127,9 +127,9 @@ StormEvents
 | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative
 ```
 
-### order, sort
+### sort
 
-[**order, sort**](kusto/query/orderoperator.md): Sort the rows of the input table into order by one or more columns.
+[**sort**](kusto/query/sort-operator.md): Sort the rows of the input table into order by one or more columns.
 
 The following query sorts the data in descending order by `DamageProperty`.
 
@@ -254,7 +254,7 @@ The following query counts events by the time modulo one day, binned into hours,
 
 ```Kusto
 StormEvents
-| extend hour = floor(StartTime % 1d , 1h)
+| extend hour = bin(StartTime % 1d , 1h)
 | summarize event_count=count() by hour
 | sort by hour asc
 | render timechart
@@ -267,7 +267,7 @@ The following query compares multiple daily series on a time chart.
 
 ```Kusto
 StormEvents
-| extend hour= floor( StartTime % 1d , 1h)
+| extend hour= bin( StartTime % 1d , 1h)
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
 | summarize event_count=count() by hour, State
 | render timechart
