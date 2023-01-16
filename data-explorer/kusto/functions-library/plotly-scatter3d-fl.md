@@ -17,7 +17,7 @@ The function accepts a table containing the records to be rendered, the names of
 
 ## Prerequisite
 
-This function extracts the required 'scatter3d' template from PlotlyTemplate table. You should copy that table from the Samples database to your database by running (from your database):
+Extract the required 'scatter3d' template from the publicly available `PlotlyTemplate` table. Copy this table from the Samples database to your database by running the following KQL command from your target database: 
 
 ```kusto
 .set PlotlyTemplate <| cluster('help.kusto.windows.net').database('Samples').PlotlyTemplate
