@@ -40,7 +40,7 @@ let dt = datatable(v:string)
 dt | project v1=v, _key=1 
 | join kind=inner (dt | project v2=v, _key = 1) on _key | where v1 != v2
 | summarize v1 = max(v1),v2 = min(v2) by (hash(v1) + hash(v2)) // removing duplications
-| project v1, v2, higher_version = iif(parse_version(v1) > parse_version(v2), v1, v2)
+| project v1, v2, higher_version = iff(parse_version(v1) > parse_version(v2), v1, v2)
 
 ```
 
