@@ -120,4 +120,7 @@ Another option is to select **Clear local state** from the **Settings** > **Gene
 
 ## Next steps
 
-[Write queries for Azure Data Explorer](write-queries.md)
+* [Work with the results grid](web-results-grid.md)
+* [Customize your Azure Data Explorer settings](web-customize-settings.md)
+* [Write queries for Azure Data Explorer](write-queries.md)
+* [Share your queries](web-share-queries.md)
