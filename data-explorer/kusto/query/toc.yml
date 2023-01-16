@@ -571,7 +571,8 @@ items:
     href: hllmergefunction.md
   - name: hourofday()
     href: hourofdayfunction.md
-  - name: iff(), iif()
+  - name: iff()
+    displayName: iif()
     href: ifffunction.md
   - name: indexof()
     href: indexoffunction.md
