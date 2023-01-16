@@ -1,13 +1,13 @@
 ---
 title: project-away operator - Azure Data Explorer
-description: Learn how to use the project-away operator to select columns from the input to exclude from the output.
+description: Learn how to use the project-away operator to select columns from the input table to exclude from the output table.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/12/2023
 ---
 # project-away operator
 
-Select what columns from the input to exclude from the output.
+Select what columns from the input table to exclude from the output table.
 
 ## Syntax
 

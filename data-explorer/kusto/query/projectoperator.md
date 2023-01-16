@@ -1,6 +1,6 @@
 ---
 title: Project operator - Azure Data Explorer
-description: Learn how to use the Project operator to select columns to include, rename or drop, and insert new computed columns.
+description: Learn how to use the project operator to select columns to include, rename or drop, and to insert new computed columns in the output table.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/12/2023
