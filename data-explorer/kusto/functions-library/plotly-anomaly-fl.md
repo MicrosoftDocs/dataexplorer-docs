@@ -34,7 +34,7 @@ Extract the required 'anomaly' template from the publicly available `PlotlyTempl
 |--|--|--|--|
 | *time_col* | string | &check; | The name of the column containing the dynamic array of the time points of the original time series|
 | *val_col* | string | &check; | The name of the column containing the values of the original time series|
-| *baseline_col* | string | &check; | The name of the column containing the values of the baseline time series (usually anomalies are detected by large value offset from the expected baseline value)|
+| *baseline_col* | string | &check; | The name of the column containing the values of the baseline time series. Anomalies are usually detected by large value offset from the expected baseline value. |
 | *time_high_col* | string | &check; | The name of the column containing the time points of high (above the baseline) anomalies |
 | *val_high_col* | string | &check; | The name of the column containing the values of the high anomalies|
 | *time_low_col* | string | &check; | The name of the column containing the time points of low anomalies|
