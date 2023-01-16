@@ -27,13 +27,14 @@ Azure AD supports the following authentication scenarios:
 
 The syntax for referencing Azure AD user and application principals and groups is outlined in the following table.
 
-If you implicitly reference a user principal using only a [User Principal Name (UPN)](/azure/active-directory/hybrid/plan-connect-userprincipalname#what-is-userprincipalname) the query engine will attempt to resolve the tenant details from the UPN. If the resolution fails, specify the user principal explicitly using the UPN or object ID with the tenant ID or name.
+When you reference a principal using [User Principal Name (UPN) format](/azure/active-directory/hybrid/plan-connect-userprincipalname#upn-format), the engine will infer the Azure AD tenant from the domain name and try to find the principal. For example, if the UPN is `abbiatkins@fabrikam.com`, the tenant is assumed to be `fabrikam`. If the principal isn't found, specify the principal more explicitly by using the UPN or object ID with the tenant ID or name.
 
 | Type of Entity | Tenant Identifier | Syntax |
 |--|--|--|
 | User | Implicit (UPN) | `aaduser`=*UPN* |
 | User | Explicit (ID) | `aaduser`=*UPN*;*TenantId*<br />or<br />`aaduser`=*ObjectID*;*TenantId* |
 | User | Explicit (Name) |`aaduser`=*UPN*;*TenantName*<br />or<br />`aaduser`=*ObjectID*;*TenantName* |
+| Group | Implicit (UPN) | `aadgroup`=*GroupUPN* |
 | Group | Explicit (ID) | `aadgroup`=*GroupDisplayName*;*TenantId*<br />or<br />`aadgroup`=*GroupObjectId*;*TenantId* |
 | Group | Explicit (Name) |`aadgroup`=*GroupDisplayName*;*TenantName*<br />or<br />`aadgroup`=*GroupObjectId*;*TenantName* |
 | App | Explicit (ID) | `aadapp`=*ApplicationDisplayName*;*TenantId*<br />or<br />`aadapp`=*ApplicationId*;*TenantId*|
