@@ -148,9 +148,9 @@ The output is a Plotly JSON string that can be rendered in an Azure Data Explore
 
 The following image shows a sample anomaly chart using the above function:
 
-![Anomaly chart of the sample data set.](images\plotly-anomaly-fl\plotly-anomaly-chart.png)
+![Screenshot of anomaly chart of the sample data set.](images\plotly-anomaly-fl\plotly-anomaly-chart.png)
 
 You can zoom in and hover over anomalies:
 
-![Zoom in anomalous region.](images\plotly-anomaly-fl\plotly-anomaly-chart-zooming.png)
-![Hover over anomaly.](images\plotly-anomaly-fl\plotly-anomaly-chart-zoomed.png)
+![Screenshot of zoom in anomalous region.](images\plotly-anomaly-fl\plotly-anomaly-chart-zooming.png)
+![Screenshot of hover over anomaly.](images\plotly-anomaly-fl\plotly-anomaly-chart-zoomed.png)

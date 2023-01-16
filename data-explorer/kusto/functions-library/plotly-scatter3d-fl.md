@@ -46,7 +46,7 @@ plotly_scatter3d_fl(tbl:(*), x_col:string, y_col:string, z_col:string, aggr_col:
 
 ### [Query-defined](#tab/adhoc)
 
-For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
 ```kusto
 let plotly_scatter3d_fl=(tbl:(*), x_col:string, y_col:string, z_col:string, aggr_col:string='', chart_title:string='3D Scatter chart')
@@ -81,9 +81,9 @@ Iris
 | invoke plotly_scatter3d_fl(x_col='SepalLength', y_col='PetalLength', z_col='SepalWidth', aggr_col='Class', chart_title='3D scatter chart using plotly_scatter3d_fl()')
 ```
 
-### [Persistent](#tab/persistent)
+### [Stored](#tab/persistent)
 
-For persistent usage, use [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One time installation
 
@@ -129,8 +129,8 @@ Iris
 
 The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards (Preview)](../../azure-data-explorer-dashboards.md).
 
-![3D scatter chart of a sample data set.](images\plotly-scatter3d-fl\plotly-scatter3d-chart.png)
+![Screenshot of 3D scatter chart of a sample data set.](images\plotly-scatter3d-fl\plotly-scatter3d-chart.png)
 
 You can rotate, zoom and hover over specific records:
 
-![Rotated 3D scatter chart of a sample data set.](images\plotly-scatter3d-fl\plotly-scatter3d-chart-rotated.png)
+![Screenshot of rotated 3D scatter chart of a sample data set.](images\plotly-scatter3d-fl\plotly-scatter3d-chart-rotated.png)
