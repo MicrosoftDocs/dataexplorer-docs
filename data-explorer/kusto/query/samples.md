@@ -158,7 +158,7 @@ wabitrace
 | extend ReducesSeconds = extract("reducesMilliseconds=([^,]+)", 1, EventText, typeof(real)) / 1000
 | extend TotalReducesSeconds = ReducesSeconds / TotalLaunchedReducers
 | where Tenant == 'DevDiv' and Environment == 'RollupDev2'
-| whereTotalLaunchedReducers > 0
+| where TotalLaunchedReducers > 0
 | summarize sum(TotalReducesSeconds) by UnitOfWorkId
 | extend JobReducesSeconds = sum_TotalReducesSeconds * 1
 | project UnitOfWorkId, JobReducesSeconds )
@@ -166,7 +166,7 @@ on UnitOfWorkId
 | join (
 wabitrace
 | where Timestamp >= datetime(2015-01-12 11:00:00Z)
-| whereTimestamp < datetime(2015-01-12 13:00:00Z)
+| where Timestamp < datetime(2015-01-12 13:00:00Z)
 | where EventText like "NotifyHadoopApplicationJobPerformanceCounters"
 | extend Tenant = extract("tenantName=([^,]+),", 1, EventText)
 | extend Environment = extract("environmentName=([^,]+),", 1, EventText)
