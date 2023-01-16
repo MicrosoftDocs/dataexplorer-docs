@@ -1643,7 +1643,7 @@ Use brackets for indexes and dots to separate elements:
 ```kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report
-| extend status = extractjson("$.hosts[0].status", hosts_report)
+| extend status = extract_json("$.hosts[0].status", hosts_report)
 ```
 
 This example is similar, but it uses only the brackets notation:
@@ -1651,7 +1651,7 @@ This example is similar, but it uses only the brackets notation:
 ```kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report
-| extend status = extractjson("$['hosts'][0]['status']", hosts_report)
+| extend status = extract_json("$['hosts'][0]['status']", hosts_report)
 ```
 
 For only one element, you can use only the dot notation:

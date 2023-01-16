@@ -520,7 +520,8 @@ items:
   - name: extract_all()
     displayName: extractall()
     href: extractallfunction.md
-  - name: extract_json(), extractjson()
+  - name: extract_json()
+    displayName: extractjson()
     href: extractjsonfunction.md
   - name: format_bytes()
     href: format-bytesfunction.md
