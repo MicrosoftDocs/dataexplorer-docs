@@ -99,7 +99,7 @@ Splunk has an `eval` function, but it's not comparable to the `eval` operator in
 | Product | Operator | Example |
 |:---|:---|:---|
 | Splunk | `eval` |  `Event.Rule=330009.2`<br />&#124; `eval state= if(Data.Exception = "0", "success", "error")` |
-| Kusto | `extend` | `Office_Hub_OHubBGTaskError`<br />&#124; `extend state = iif(Data_Exception == 0,"success" ,"error")` |
+| Kusto | `extend` | `Office_Hub_OHubBGTaskError`<br />&#124; `extend state = iff(Data_Exception == 0,"success" ,"error")` |
 
 ### Rename
 

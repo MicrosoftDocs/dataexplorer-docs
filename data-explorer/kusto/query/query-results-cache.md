@@ -1,9 +1,9 @@
 ---
 title: Query results cache - Azure Data Explorer
-description: This article describes Query results cache functionality in Azure Data Explorer.
+description: Learn how to use the query results cache functionality to get cached results.
 ms.reviewer: amitof
 ms.topic: reference
-ms.date: 06/16/2020
+ms.date: 01/12/2023
 ---
 # Query results cache
 
@@ -31,20 +31,20 @@ The query results cache returns results only for queries that are considered "id
 * The two queries have the same representation (as UTF-8 strings).
 * The two queries are made to the same database.
 * The two queries share the same [client request properties](../api/netfx/request-properties.md). The following properties are ignored for caching purposes:
-   * [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id)
-   * [Application](../api/netfx/request-properties.md#application-x-ms-app)
-   * [User](../api/netfx/request-properties.md#user-x-ms-user)
+  * [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id)
+  * [Application](../api/netfx/request-properties.md#application-x-ms-app)
+  * [User](../api/netfx/request-properties.md#user-x-ms-user)
 
 ### Incompatible queries
 
-The query results will not be cached if any of the following conditions is true:
- 
+The query results won't be cached if any of the following conditions is true:
+
 * The query references a table that has the [RestrictedViewAccess](../management/restrictedviewaccesspolicy.md) policy enabled.
 * The query references a table that has the [RowLevelSecurity](../management/rowlevelsecuritypolicy.md) policy enabled.
 * The query uses any of the following functions:
-    * [current_principal](current-principalfunction.md)
-    * [current_principal_details](current-principal-detailsfunction.md)
-    * [current_principal_is_member_of](current-principal-ismemberoffunction.md)
+  * [current_principal](current-principalfunction.md)
+  * [current_principal_details](current-principal-detailsfunction.md)
+  * [current_principal_is_member_of](current-principal-ismemberoffunction.md)
 * The query accesses an [external table](schema-entities/externaltables.md) or an [external data](externaldata-operator.md).
 * The query uses the [evaluate plugin](evaluateoperator.md) operator.
 
@@ -60,14 +60,15 @@ If a cached result satisfying the time constraints couldn't be found, or there i
 How does the service indicate that the query results are being served from the cache?
 When responding to a query, Kusto sends another [ExtendedProperties](../api/rest/response.md) response table that includes a `Key` column and a `Value` column.
 Cached query results will have another row appended to that table:
+
 * The row's `Key` column will contain the string `ServerCache`
 * The row's `Value` column will contain a property bag with two fields:
-   * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id).
-   * `OriginalStartedOn` - Specifies the original request's execution start time.
+  * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id).
+  * `OriginalStartedOn` - Specifies the original request's execution start time.
 
 ## Distribution
 
-The cache is not shared by cluster nodes. Every node has a dedicated cache in its own private storage. If two identical queries land on different nodes, the query will be executed and cached on both nodes. This process can happen if [weak consistency](../concepts/queryconsistency.md) is used. By setting query consistency to `affinitizedweakconsistency`, you can have weakly consistency queries that are identical land on the same query head, and thus increase the cache hit rate.
+The cache isn't shared by cluster nodes. Every node has a dedicated cache in its own private storage. If two identical queries land on different nodes, the query will be executed and cached on both nodes. This process can happen if [weak consistency](../concepts/queryconsistency.md) is used. By setting query consistency to `affinitizedweakconsistency`, you can have weakly consistency queries that are identical land on the same query head, and thus increase the cache hit rate.
 
 ## Management
 
