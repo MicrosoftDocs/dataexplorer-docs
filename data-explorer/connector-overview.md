@@ -13,7 +13,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 |---|---|---|---|---|---|---|
 | [Apache Kafka](#apache-kafka) | Java | &check; | &cross; | &check; | &check; | Telemetry |
 | [Apache Log4J 2](#apache-log4j-2) | Java | &check; | &cross; | &check; | &cross; | Logs |
-| [Apache Spark](#apache-spark) | Java | &check; | &check; | &check; | &check; | Telemetry |
+| [Apache Spark](#apache-spark) | Java | &check; | &check; | &cross; | &check; | Telemetry |
 | [Logstash](#logstash) | Java | &check; | &cross; | &cross; | &check; | Logs |
 | [Open Telemetry](#open-telemetry) | Go | &check; | &cross; | &check; | &check; | Traces, Metrics, Logs |
 | [Telegraf](#telegraf) | Go | &check; | &cross; | &check; | &check; | Metrics, Logs |
