@@ -3,7 +3,7 @@ title: reduce operator - Azure Data Explorer
 description: This article describes reduce operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/17/2023
+ms.date: 1/17/2023
 ---
 # reduce operator
 

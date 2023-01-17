@@ -3,7 +3,7 @@ title: replace_regex() - Azure Data Explorer
 description: This article describes replace_regex() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/17/2023
+ms.date: 1/17/2023
 ---
 # replace_regex()
 
