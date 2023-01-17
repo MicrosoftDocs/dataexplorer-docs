@@ -1,13 +1,13 @@
 ---
 title: project-reorder operator - Azure Data Explorer
-description: This article describes project-reorder operator in Azure Data Explorer.
+description: Learn how to use the project-reorder operator to reorder columns in the output table.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/16/2023
 ---
 # project-reorder operator
 
-Reorders columns in the result output.
+Reorders columns in the output table.
 
 ## Syntax
 

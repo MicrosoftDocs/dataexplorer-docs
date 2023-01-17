@@ -160,7 +160,7 @@ Since the collected metrics object is a complex type, the *fields* and *tags* co
     }
 
     // Create destination table with above query's results schema (if it doesn't exist already)
-    .set-or-append TargetTableName <| Transform_TargetTableName() | limit 0
+    .set-or-append TargetTableName <| Transform_TargetTableName() | take 0
 
     // Apply update policy on destination table
     .alter table TargetTableName policy update
