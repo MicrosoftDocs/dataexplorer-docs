@@ -116,7 +116,7 @@ The query editor has two modes. The query builder mode and raw mode. Use the que
     **Filter**
     1. Click **+** to right of **Where (filter)** to select from the drop-down one or more columns in your table. 
     1. For each filter, define the value(s) by using the applicable operator. 
-    This selection is similar to using the [where operator, filter operator](kusto/query/whereoperator.md) in Kusto query language.
+    This selection is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto query language.
 
     **Value selection**
     1. Click **+** to right of **value columns** to select from the drop-down the value columns that will be displayed in the panel.
