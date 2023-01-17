@@ -96,8 +96,8 @@ var resourceManagementClient = new KustoManagementClient(serviceCreds){
     SubscriptionId = followerSubscriptionId
 };
 
-var followerResourceGroupName = "followerResouceGroup";
-var leaderResourceGroup = "leaderResouceGroup";
+var followerResourceGroupName = "followerResourceGroup";
+var leaderResourceGroup = "leaderResourceGroup";
 var leaderClusterName = "leader";
 var followerClusterName = "follower";
 var attachedDatabaseConfigurationName = "uniqueNameForAttachedDatabaseConfiguration";
@@ -175,8 +175,8 @@ credentials = ServicePrincipalCredentials(
     )
 kusto_management_client = KustoManagementClient(credentials, follower_subscription_id)
 
-follower_resource_group_name = "followerResouceGroup"
-leader_resouce_group_name = "leaderResouceGroup"
+follower_resource_group_name = "followerResourceGroup"
+leader_resouce_group_name = "leaderResourceGroup"
 follower_cluster_name = "follower"
 leader_cluster_name = "leader"
 attached_database_Configuration_name = "uniqueNameForAttachedDatabaseConfiguration"
@@ -213,11 +213,11 @@ Install : Az.Kusto
 ```Powershell
 $FollowerClustername = 'follower'
 $FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
-$FollowerResourceGroupName = 'followerResouceGroup'
+$FollowerResourceGroupName = 'followerResourceGroup'
 $DatabaseName = "db"  ## Can be specific database name or * for all databases
 $LeaderClustername = 'leader'
 $LeaderClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
-$LeaderClusterResourceGroup = 'leaderResouceGroup'
+$LeaderClusterResourceGroup = 'leaderResourceGroup'
 $DefaultPrincipalsModificationKind = 'Union'
 ##Construct the LeaderClusterResourceId and Location
 $getleadercluster = Get-AzKustoCluster -Name $LeaderClustername -ResourceGroupName $LeaderClusterResourceGroup -SubscriptionId $LeaderClusterSubscriptionID -ErrorAction Stop
@@ -466,7 +466,7 @@ var resourceManagementClient = new KustoManagementClient(serviceCreds){
 };
 
 var leaderResourceGroupName = "testrg";
-var followerResourceGroupName = "followerResouceGroup";
+var followerResourceGroupName = "followerResourceGroup";
 var leaderClusterName = "leader";
 var followerClusterName = "follower";
 //The cluster and database that are created as part of the Prerequisites
@@ -504,7 +504,7 @@ credentials = ServicePrincipalCredentials(
     )
 kusto_management_client = KustoManagementClient(credentials, follower_subscription_id)
 
-follower_resource_group_name = "followerResouceGroup"
+follower_resource_group_name = "followerResourceGroup"
 follower_cluster_name = "follower"
 attached_database_configurationName = "uniqueName"
 
@@ -565,7 +565,7 @@ Install : Az.Kusto
 ```powershell
 $FollowerClustername = 'follower'
 $FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
-$FollowerResourceGroupName = 'followerResouceGroup'
+$FollowerResourceGroupName = 'followerResourceGroup'
 $DatabaseName = "sanjn"  ## Can be specific database name or * for all databases
 
 ##Construct the Configuration name
