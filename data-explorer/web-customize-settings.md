@@ -90,3 +90,7 @@ You can change the displayed datetime values to reflect a specific time zone. Th
 The selected time zone will then be visible in the results grid menu bar.
 
 :::image type="content" source="media/web-query-data/query-time-utc.png" alt-text="Screenshot of Query time changed to UTC in results grid menu.":::
+
+## Next steps
+
+Learn how to [run queries in the Azure Data Explorer web UI](web-query-data.md).

@@ -9,6 +9,8 @@ ms.date: 01/15/2023
 
 This guide will teach you how to work with your [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) results using the results grid feature. You'll use the results grid to make your data analysis more efficient and effective, and learn how to customize and manipulate your results to gain deeper insights and uncover hidden patterns in your data.
 
+To learn how to run queries, see [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md).
+
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.

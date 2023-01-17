@@ -9,6 +9,8 @@ ms.date: 01/15/2023
 
 This article will walk you through the process of sharing queries from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home). By the end of this guide, you'll know how to share a query with a colleague, pin it to a dashboard, or even connect it to Power BI.
 
+To learn how to run queries, see [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md).
+
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
