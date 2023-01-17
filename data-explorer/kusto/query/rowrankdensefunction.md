@@ -16,7 +16,7 @@ The row rank starts by default at `1` for the first row, and is incremented by `
 
 `row_rank_dense` `(` *Term* `)`
 
-* *Term* is is an expression indicating the value to consider for the rank. The rank is increased whenever the *Term* changes.
+* *Term* is an expression indicating the value to consider for the rank. The rank is increased whenever the *Term* changes.
   
 ## Returns
 
