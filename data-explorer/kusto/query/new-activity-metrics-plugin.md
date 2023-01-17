@@ -124,7 +124,7 @@ range Day from _start to _end  step 1d
 | extend d = tolong((Day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1) 
-| mv-expand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) take 1000000
 // Take only the first week cohort (last parameter)
 | evaluate new_activity_metrics(['id'], Day, _start, _end, 7d, _start)
 | project from_Day, to_Day, retention_rate, churn_rate
@@ -153,7 +153,7 @@ range Day from _start to _end  step 1d
 | extend d = tolong((Day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1) 
-| mv-expand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) take 1000000
 // Last parameter is omitted - 
 | evaluate new_activity_metrics(['id'], Day, _start, _end, 7d)
 | project from_Day, to_Day, retention_rate, churn_rate
@@ -196,7 +196,7 @@ let _data = range Day from _lookback to _end  step 1d
 | extend d = tolong((Day - _lookback)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1) 
-| mv-expand id=_users to typeof(long) limit 1000000;
+| mv-expand id=_users to typeof(long) take 1000000;
 //
 let lookback_data = _data | where Day < _start | project Day, id;
 _data

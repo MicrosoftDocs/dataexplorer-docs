@@ -3,28 +3,13 @@ title: The case-sensitive !startswith_cs string operator - Azure Data Explorer
 description: Learn how to use the !startswith_cs string operator to filter records for data that doesn't start with a case-sensitive search string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/09/2023
+ms.date: 01/11/2023
 ---
 # !startswith_cs operators
 
 Filters a record set for data that doesn't start with a case-sensitive search string.
 
-The following table provides a comparison of the `startswith` operators:
-
-|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
-|-----------|--------------|----------------|-------------------------|
-|[`startswith`](startswith-operator.md) |RHS is an initial subsequence of LHS |No |`"Fabrikam" startswith "fab"`|
-|[`!startswith`](not-startswith-operator.md) |RHS isn't an initial subsequence of LHS |No |`"Fabrikam" !startswith "kam"`|
-|[`startswith_cs`](startswith-cs-operator.md)  |RHS is an initial subsequence of LHS |Yes |`"Fabrikam" startswith_cs "Fab"`|
-|[`!startswith_cs`](not-startswith-cs-operator.md) |RHS isn't an initial subsequence of LHS |Yes |`"Fabrikam" !startswith_cs "fab"`|
-
-> [!NOTE]
-> The following abbreviations are used in the above table:
->
-> * RHS = right hand side of the expression
-> * LHS = left hand side of the expression
-
-For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+[!INCLUDE [startswith-operator-comparison](../../includes/startswith-operator-comparison.md)]
 
 ## Performance tips
 

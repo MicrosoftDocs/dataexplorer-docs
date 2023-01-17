@@ -1,13 +1,14 @@
 ---
 title: parse_path() - Azure Data Explorer
-description: This article describes parse_path() in Azure Data Explorer.
+description: Learn how to use the parse_path() function to parse a file path.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/08/2023
 ---
 # parse_path()
 
 Parses a file path `string` and returns a [`dynamic`](./scalar-data-types/dynamic.md) object that contains the following parts of the path:
+
 * Scheme
 * RootPath
 * DirectoryPath
@@ -17,6 +18,7 @@ Parses a file path `string` and returns a [`dynamic`](./scalar-data-types/dynami
 * AlternateDataStreamName
 
 In addition to the simple paths with both types of slashes, the function supports paths with:
+
 * Schemas. For example, "file://..."
 * Shared paths. For example, "\\shareddrive\users..."
 * Long paths. For example, "\\?\C:...""
