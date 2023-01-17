@@ -16,14 +16,14 @@ Materialized views always return an up-to-date result of the aggregation query (
 > * Review the materialized views [use cases](#materialized-views-use-cases) to decide whether materialized views are suitable for you.
 > * Materialized views have some [limitations](materialized-views-limitations.md). Review the [performance considerations](#performance-considerations) before working with the feature.
 > * Consider using [update policies](../updatepolicy.md) where appropriate - see [How to choose between materialized views and update policies?](#how-to-choose-between-materialized-views-and-update-policies) for more details.
+> * Monitor the health of your materialized views based on the recommendations in the [materialized views monitoring](materialized-views-monitoring.md) page.
 
 Use the following commands to manage materialized views:
 
 * [`.create materialized-view`](materialized-view-create.md)
-* [`.alter materialized-view`](materialized-view-alter.md)
 * [`.drop materialized-view`](materialized-view-drop.md)
 * [`.disable | .enable materialized-view`](materialized-view-enable-disable.md)
-* [`.show materialized-views commands`](materialized-view-show-commands.md)
+* [`.show materialized-views`](materialized-view-show-commands.md)
 
 ## Why use materialized views?
 
@@ -81,7 +81,7 @@ A materialized view is made of two components:
 * A *delta* - the newly ingested records in the source table that haven't yet been processed.
 
 Querying the materialized view combines the materialized part with the delta part, providing an up-to-date result of the aggregation query. The offline materialization process ingests new records from the *delta* to the materialized table, and replaces existing records. The replacement is done by rebuilding extents that hold records to replace. If records in the *delta* constantly intersect with all data shards in the *materialized* part, each materialization cycle will require rebuilding the entire *materialized* part, and may not keep up with the ingestion rate. In that case, the view will become unhealthy and the *delta* will constantly grow.
-The [monitoring](#materialized-views-monitoring) section explains how to troubleshoot such situations.
+The [materialized views monitoring](materialized-views-monitoring.md) page explains how to troubleshoot such situations.
 
 ## Materialized views queries
 
@@ -184,56 +184,11 @@ A materialized view can be created over another materialized view if the source 
 > [!TIP]
 > When querying a materialized view that is defined over another materialized view, we recommend querying the materialized part only using the `materialized_view()` function. Querying the entire view will not be performant when both views aren't fully materialized. For more information, see [materialized views queries](#materialized-views-queries).
 
-## Materialized views monitoring
-
-Monitor the materialized view's health in the following ways:
-
-* Monitor [materialized view metrics](../../../using-metrics.md#materialized-view-metrics) in the Azure portal.
-  * The materialized view age metric (`MaterializedViewAgeSeconds`) can be used to monitor the freshness of the view. This should be the primary metric to monitor.
-* Monitor the `IsHealthy` property returned from [`.show materialized-view`](materialized-view-show-commands.md#show-materialized-view).
-* Check for failures using [`.show materialized-view failures`](materialized-view-show-commands.md#show-materialized-view-failures).
-
-> [!NOTE]
-> Materialization never skips any data, even if there are constant failures. The view is always guaranteed to return the most up-to-date snapshot of the query, based on all records in the source table. Constant failures will significantly degrade query performance, but won't cause incorrect results in view queries.
-
-### Troubleshooting unhealthy materialized views
-
-The `MaterializedViewHealth` metric indicates whether a materialized view is healthy. Before a materialized view becomes unhealthy, its age, noted by the `MaterializedViewAgeSeconds` metric, will gradually increase.
-
-A materialized view can become unhealthy for any or all of the following reasons:
-
-* The materialization process is failing. The [MaterializedViewResult metric](#materializedviewresult-metric) and the [.show materialized-view failures](materialized-view-show-commands.md#show-materialized-view-failures) command can help identify the root cause of the failure.
-* The cluster doesn't have sufficient capacity to materialize all incoming data on-time. In this case, there may not be failures in execution. However, the view's age will gradually increase, since it is not able to keep up with the ingestion rate. There could be several root causes for this situation:
-  * Materialization is slow because there are too many extents to rebuild in each materialization cycle. To learn more about why extents rebuilds impact the view's performance, see [how materialized views work](#how-materialized-views-work). The number of extents rebuilt in each cycle is provided in the `MaterializedViewExtentsRebuild` metric. The following solutions may help:
-      * Increasing the extents rebuilt concurrency in the [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy).
-      * Moving the cluster to [Engine V3](../../../engine-v3.md) should significantly improve performance of rebuild extents.
-   * There are additional materialized views in the cluster, and the cluster doesn't have sufficient capacity to run all views. See [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy) to change the default settings for number of materialized views executed concurrently.
-
-#### MaterializedViewResult metric
-
-The `MaterializedViewResult` metric provides information about the result of a materialization cycle, and can be used to identify issues in the materialized view health status. The metric includes the `Database` and `MaterializedViewName` as well as a `Result` dimension. 
-
-The `Result` dimension can have one of the following values:
-  
-* **Success**: Materialization completed successfully.
-* **SourceTableNotFound**: Source table of the materialization view was dropped. The materialized view is automatically disabled as a result.
-* **SourceTableSchemaChange**: The schema of the source table has changed in a way that is not compatible with the materialized view definition (materialized view query does not match the materialized view schema). The materialized view is automatically disabled as a result.
-* **InsufficientCapacity**: The cluster does not have sufficient capacity to materialized the materialized view. This can either indicate missing [ingestion capacity](../capacitypolicy.md#ingestion-capacity) or missing [materialized views capacity](../capacitypolicy.md#materialized-views-capacity-policy). Insufficient capacity failures can be transient, but if they reoccur often it is recommended to scale out the cluster and/or increase relevant capacity in policy.
-* **InsufficientResources:** The cluster doesn't have sufficient resources (CPU/memory) to materialized the materialized view. This failure may also be a transient one, but if it reoccurs often a scale out/up is required.
-
-### Track resource consumption
-
-**Materialized views resource consumption:** the resources consumed by the materialized views materialization process can be tracked using the [`.show commands-and-queries`](../commands-and-queries.md#show-commands-and-queries) command. Filter the records for a specific view using the following (replace `DatabaseName` and `ViewName`):
-
-<!-- csl -->
-```
-.show commands-and-queries 
-| where Database  == "DatabaseName" and ClientActivityId startswith "DN.MaterializedViews;ViewName;"
-```
-
 ## Next steps
 
+* [Materialized views limitations and known issues](materialized-views-limitations.md)
+* [Materialized views monitoring](materialized-views-monitoring.md)
 * [`.create materialized view`](materialized-view-create.md)
 * [`.alter materialized-view`](materialized-view-alter.md)
-* [Materialized views show commands](materialized-view-show-commands.md)
+* [`.show materialized-views`](materialized-view-show-commands.md)
 * [Materialized views policies](materialized-view-policies.md)
