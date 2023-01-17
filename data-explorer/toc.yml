@@ -114,24 +114,24 @@ items:
       - name: Event Grid data connection
         displayName: ingest
         href: ingest-data-event-grid-overview.md
-      - name: Azure portal
-        displayName: Event Grid, ingest, data connection
-        href: ingest-data-event-grid.md
-      - name: Azure Resource Manager template
-        displayName: Event Grid, ingest, data connection
-        href: data-connection-event-grid-resource-manager.md
-      - name: C#
-        displayName: Event Grid, ingest, data connection
-        href: data-connection-event-grid-csharp.md
       - name: Ingestion wizard
         displayName: Event Grid, ingest data, ingestion, one click, csv file
         href: ingestion-wizard-new-table.md
-      - name: Manually create resources in Azure portal
-        displayName: Manually create resources for Event Grid ingestion, Ingest
-        href: ingest-data-event-grid-manual.md
+      - name: Azure portal
+        displayName: Event Grid, ingest, data connection
+        href: ingest-data-event-grid.md
+      - name: C#
+        displayName: Event Grid, ingest, data connection
+        href: data-connection-event-grid-csharp.md
       - name: Python
         displayName: Event Grid, ingest, data connection
         href: data-connection-event-grid-python.md
+      - name: Azure Resource Manager template
+        displayName: Event Grid, ingest, data connection
+        href: data-connection-event-grid-resource-manager.md
+      - name: Manually create resources in Azure portal
+        displayName: Manually create resources for Event Grid ingestion, Ingest
+        href: ingest-data-event-grid-manual.md
     - name: Event Hubs
       items:
       - name: Event Hubs data connection
@@ -140,26 +140,26 @@ items:
       - name: Azure portal
         displayName: Event hub, ingest, data connection
         href: ingest-data-event-hub.md
-      - name: Azure Resource Manager template
-        displayName: Event hub, ingest, data connection
-        href: data-connection-event-hub-resource-manager.md
-      - name: C#
-        displayName: Event hub, ingest, data connection
-        href: data-connection-event-hub-csharp.md
       - name: Ingestion wizard
         displayName: Event hub, ingest, data connection
         href: event-hub-wizard.md
+      - name: C#
+        displayName: Event hub, ingest, data connection
+        href: data-connection-event-hub-csharp.md
       - name: Python
         displayName: Event hub, ingest
         href: data-connection-event-hub-python.md
+      - name: Azure Resource Manager template
+        displayName: Event hub, ingest, data connection
+        href: data-connection-event-hub-resource-manager.md
     - name: Formats for data ingestion
       displayName: supported data formats
       href: ingestion-supported-formats.md
-    - name: Ingestion wizard
-      href: ingest-data-wizard.md
     - name: Ingest JSON data using the wizard
       displayName: ingest data, ingestion wizard, one click, local file, existing table
       href: ingestion-wizard-existing-table.md
+    - name: Ingestion wizard
+      href: ingest-data-wizard.md
     - name: IoT Hub
       items:
       - name: IoT Hub data connection
@@ -168,15 +168,15 @@ items:
       - name: Azure portal
         displayName: IoT Hub, ingest, data connection
         href: ingest-data-iot-hub.md
-      - name: Azure Resource Manager template
-        displayName: IoT Hub, ingest, data connection
-        href: data-connection-iot-hub-resource-manager.md
       - name: C#
         displayName: IoT Hub, ingest, data connection
         href: data-connection-iot-hub-csharp.md
       - name: Python
         displayName: IoT Hub, ingest, data connection
         href: data-connection-iot-hub-python.md
+      - name: Azure Resource Manager template
+        displayName: IoT Hub, ingest, data connection
+        href: data-connection-iot-hub-resource-manager.md
     - name: JSON formatted data
       displayName: ingest data, ingestion
       href: ingest-json-formats.md
@@ -207,18 +207,18 @@ items:
       - name: .NET SDK
         displayName: ingest data, ingestion
         href: net-sdk-ingest-data.md
+      - name: Python
+        displayName: ingest data, ingestion
+        href: python-ingest-data.md
+      - name: Node SDK
+        displayName: ingest data, ingestion
+        href: node-ingest-data.md
       - name: Go SDK
         displayName: ingest data, ingestion
         href: go-ingest-data.md
       - name: Java SDK
         displayName: ingest data, ingestion
         href: java-ingest-data.md
-      - name: Node SDK
-        displayName: ingest data, ingestion
-        href: node-ingest-data.md
-      - name: Python
-        displayName: ingest data, ingestion
-        href: python-ingest-data.md
   - name: Query data
     items:
     - name: Azure Data Explorer web UI
