@@ -13,7 +13,7 @@ ms.date: 09/14/2022
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Access to an Azure Data Explorer cluster and database. If necessary, [create a free cluster and database](start-for-free-web-ui.md).
+* An Azure Data Explorer cluster and database. [Create a free cluster and database](start-for-free-web-ui.md).
 * [Tableau Desktop](https://www.tableau.com/products/desktop/download) full or trial version.
 * [Connect to Azure Data Explorer with ODBC](connect-odbc.md) using the SQL Server ODBC driver, to connect to Azure Data Explorer from Tableau.
 * To follow along with the example, [ingest the StormEvents sample data](ingest-sample-data.md).

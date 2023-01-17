@@ -18,7 +18,7 @@ In this article, you'll use an Azure Resource Manager (ARM) template to add data
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Access to an Azure Data Explorer cluster and database. If necessary, [create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 
 ## Azure Resource Manager template for adding a database principal
 

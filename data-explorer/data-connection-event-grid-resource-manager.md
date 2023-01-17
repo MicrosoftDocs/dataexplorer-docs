@@ -21,7 +21,7 @@ In this article, you create an Event Grid data connection for Azure Data Explore
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Access to an Azure Data Explorer cluster and database. If necessary, [create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * [Table and column mapping](ingest-data-event-grid.md#create-a-target-table-in-azure-data-explorer).
 * An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
 * [A storage account with an Event Grid subscription](ingest-data-event-grid.md).
