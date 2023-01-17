@@ -242,9 +242,11 @@ items:
     - name: Query data in Power Apps application
       href: power-apps-connector.md
     - name: Query data using Python
-      href: python-query-data.md
-    - name: Debug KQL inline Python
-      href: debug-inline-python.md
+      items:
+        - name: Azure Data Explorer Python library
+          href: python-query-data.md
+        - name: Debug Kusto Query Language inline Python
+          href: debug-inline-python.md
   - name: Visualize data
     items:
     - name: Data visualization overview
