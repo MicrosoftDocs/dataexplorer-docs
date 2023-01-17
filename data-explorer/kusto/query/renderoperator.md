@@ -179,9 +179,7 @@ The data from these measurements is found in a table with one record per measure
 
 Using the `render` operator and the `timechart` visualization, you can render time graphs of each measurement in a different panel over time, with each line representing a different device by its longitute/latitude position.
 
-
-
-## Example: render linechart 
+## Example: render linechart
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -192,9 +190,10 @@ range x from -2 to 2 step 0.1
 | render linechart with  (ycolumns = sin, cos, series = x_sign, sum_sign)
 ```
 
-[Rendering examples in the tutorial](./tutorial.md#displaychartortable)
+## See also
 
-[Anomaly detection](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
+* [Rendering examples in the tutorial](./tutorial.md#displaychartortable)
+* [Anomaly detection](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
 
 ::: zone-end
 
@@ -223,6 +222,8 @@ InsightsMetrics
 | render timechart
 ```
 
-[Rendering examples in the tutorial](./tutorial.md?pivots=azuremonitor#display-a-chart-or-table-render-1)
+## See also
+
+* [Rendering examples in the tutorial](./tutorial.md?pivots=azuremonitor#display-a-chart-or-table-render-1)
 
 ::: zone-end
