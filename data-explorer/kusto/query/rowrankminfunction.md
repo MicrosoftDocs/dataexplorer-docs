@@ -16,7 +16,7 @@ The rank is the minimal row number that the current row's *Term* appears in.
 
 `row_rank_min` `(` *Term* `)`
 
-* *Term* is is an expression indicating the value to consider for the rank. The rank is the minimal row number for *Term*.
+* *Term* is an expression indicating the value to consider for the rank. The rank is the minimal row number for *Term*.
   
 ## Returns
 
