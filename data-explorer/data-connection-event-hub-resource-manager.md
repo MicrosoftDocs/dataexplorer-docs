@@ -22,7 +22,7 @@ In this article, you create an Event Hubs data connection for Azure Data Explore
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
-* [Table and column mapping](ingest-data-event-hub.md#create-a-target-table-in-azure-data-explorer).
+* A [table and column mapping](ingest-data-event-hub.md#create-a-target-table-in-azure-data-explorer).
 * An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
 
 ## Azure Resource Manager template for adding an Event Hubs data connection

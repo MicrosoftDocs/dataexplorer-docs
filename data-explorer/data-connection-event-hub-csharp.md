@@ -24,7 +24,7 @@ In this article, you create an Event Hubs data connection for Azure Data Explore
 * [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
-* [Table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
+* A [table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 * An [event hub](ingest-data-event-hub.md#create-an-event-hub) with data for ingestion.
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](includes/data-explorer-data-connection-install-nuget-csharp.md)]

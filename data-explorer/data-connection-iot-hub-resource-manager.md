@@ -21,7 +21,7 @@ In this article, you create an IoT Hub data connection for Azure Data Explorer b
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
-* [Table and column mapping](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer).
+* A [table and column mapping](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer).
 * An [IoT Hub](ingest-data-iot-hub.md#create-an-iot-hub) with a shared access policy configured.
 
 ## Azure Resource Manager template for adding an Iot Hub data connection
