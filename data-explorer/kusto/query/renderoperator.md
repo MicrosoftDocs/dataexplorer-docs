@@ -111,8 +111,8 @@ Instructs the user agent to render the results of the query in a particular way.
 
 #### `kind` property
 
-Some visualizations can be further elaborated by providing the `kind` property.
-These are:
+This visualization can be further elaborated by providing the `kind` property.
+The possible values of this property are:
 
 |*Visualization*|`kind`             |Description                        |
 |---------------|-------------------|-----------------------------------|

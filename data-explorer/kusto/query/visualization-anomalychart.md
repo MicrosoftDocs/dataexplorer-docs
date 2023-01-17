@@ -3,7 +3,7 @@ title: Anomaly chart visualization - Azure Data Explorer
 description: This article describes the anomaly chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/03/2022
+ms.date: 01/17/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -39,12 +39,38 @@ Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your
     |`xtitle`      |The title of the x-axis (of type `string`).                                       |
     |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
     |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
-    |`ysplit`      |How to split multiple the visualization. For more information, see [Multiple y-axes](#multiple-y-axes).   |
+    |`ysplit`      |How to split multiple the visualization. For more information, see [Multiple y-axes](#multiple-y-axes).                             |
     |`ytitle`      |The title of the y-axis (of type `string`).                                       |
     |`anomalycolumns`| Comma-delimited list of columns, which will be considered as anomaly series and displayed as points on the chart|
 
+### Multiple y-axes
+
+This visualization supports splitting into multiple y-axis values:
+
+|`ysplit`  |Description                                                       |
+|----------|------------------------------------------------------------------|
+|`none`    |A single y-axis is displayed for all series data. (Default)       |
+|`axes`    |A single chart is displayed with multiple y-axes (one per series).|
+|`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
+ 
+
 ## Example
 
+
+<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WR3W7CMAyF73mKI25KpRbaTmjSUJ8CpF1WoXVptPxUifmb9vBLoGO7GFeR7ePv2I4ihpamYdToBBNLTYuqKF/zosyLdbqZqagQl/8UVV68oKreimLSdVFUDZtZR9o2WnxQ48lJ8tXsCzHM7yHMUdfidFiEN4U12AXoloUe0Turp4nYTsaeaYzs/RVedgis80CObkFdI9ltywTAagV4UtQyRKiZgyLEaTGZ9taFQqtIGHI4SX8USn4KltYEJF2YTIeFMFaHPPkMvrWOMuxFoEpDaVjujmo6aq0erafmIY+7ZCiX6wx5mSGJHb3kJA1sF8jB8q69toNwjLPkYfGTseqoja//eLNkRXXyTnuIcVyCneh72cL2YQdtDQ8ZHvIkDcsfPWH+3AvPvObx0FMXD/RLhfDYW9VhtNKwj/8U69M1b2S//AbRUQMWQQIAAA==" target="_blank">Run the query</a>
+
+```kusto
+let min_t = datetime(2017-01-05);
+let max_t = datetime(2017-02-03 22:00);
+let dt = 2h;
+demo_make_series2
+| make-series num=avg(num) on TimeStamp from min_t to max_t step dt by sid 
+| where sid == 'TS1'   //  select a single time series for a cleaner visualization
+| extend (anomalies, score, baseline) = series_decompose_anomalies(num, 1.5, -1, 'linefit')
+| render anomalychart with(anomalycolumns=anomalies, title='Web app. traffic of a month, anomalies') //use "| render anomalychart with anomalycolumns=anomalies" to render the anomalies as bold points on the series charts.
+```
+
+:::image type="content" source="images/visualization-anomalychart/anomaly-chart.png" alt-text="Screenshot of anomaly chart output.":::
 
 ::: zone-end
 

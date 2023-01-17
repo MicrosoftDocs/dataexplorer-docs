@@ -3,7 +3,7 @@ title: Area chart visualization - Azure Data Explorer
 description: This article describes the area chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/03/2022
+ms.date: 01/17/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -40,7 +40,7 @@ Area graph. First column is the x-axis and should be a numeric column. Other num
   |`xtitle`      |The title of the x-axis (of type `string`).                                       |
   |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
   |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
-  |`ysplit`      |How to split multiple the visualization. For more information, see [Multiple y-axes](#multiple-y-axes).                             |
+
   |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
 
@@ -58,8 +58,8 @@ Area graph. First column is the x-axis and should be a numeric column. Other num
 
 ### `kind` property
 
-Some visualizations can be further elaborated by providing the `kind` property.
-These are:
+This visualization can be further elaborated by providing the `kind` property.
+The possible values of this property are:
 
 | `kind` value       | Description                                                                      |
 |--------------|----------------------------------------------------------------------------------|

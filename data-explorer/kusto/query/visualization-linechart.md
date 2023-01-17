@@ -41,6 +41,16 @@ Line graph. First column is x-axis, and should be a numeric column. Other numeri
     |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
     |`ysplit`      |How to split multiple the visualization. For more information, see [Multiple y-axes](#multiple-y-axes).                             |
     |`ytitle`      |The title of the y-axis (of type `string`).                                       |
+
+### Multiple y-axes
+
+This visualization supports splitting into multiple y-axis values:
+
+|`ysplit`  |Description                                                       |
+|----------|------------------------------------------------------------------|
+|`none`    |A single y-axis is displayed for all series data. (Default)       |
+|`axes`    |A single chart is displayed with multiple y-axes (one per series).|
+|`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
     
 ## Example
 

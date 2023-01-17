@@ -40,7 +40,6 @@ Interactive navigation over the events time-line (pivoting on time axis)
     |`xtitle`      |The title of the x-axis (of type `string`).                                       |
     |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
     |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
-    |`ysplit`      |How to split multiple the visualization. For more information, see [Multiple y-axes](#multiple-y-axes).                             |
     |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
 ## Example

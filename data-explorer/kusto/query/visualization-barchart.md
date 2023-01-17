@@ -40,7 +40,6 @@ First column is the x-axis and can be text, datetime or numeric. Other columns a
   |`xtitle`      |The title of the x-axis (of type `string`).                                       |
   |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
   |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
-  |`ysplit`      |How to split multiple the visualization. For more information, see [Multiple y-axes](#multiple-y-axes).                             |
   |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
 ::: zone-end
@@ -57,8 +56,8 @@ First column is the x-axis and can be text, datetime or numeric. Other columns a
 
 ### `kind` property
 
-Some visualizations can be further elaborated by providing the `kind` property.
-These are:
+This visualization can be further elaborated by providing the `kind` property.
+The possible values of this property are:
 
 | `kind` value | Description                                                        |
 |--------------|--------------------------------------------------------------------|
