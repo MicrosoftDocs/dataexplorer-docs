@@ -11,7 +11,7 @@ Reorders columns in the output table.
 
 ## Syntax
 
-*T* `| project-reorder` *ColumnNameOrPattern* [`asc` | `desc`] [`granny-asc` | `granny-desc`] [`,` ...]
+*T* `| project-reorder` *ColumnNameOrPattern* [`asc` | `desc` | `granny-asc` | `granny-desc`] [`,` ...]
 
 ## Parameters
 
