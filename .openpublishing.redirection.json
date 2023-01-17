@@ -399,6 +399,11 @@
       "source_path": "data-explorer/kusto/query/tdigest-mergefunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/merge-tdigest-function",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/rowrankfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/rowrankdensefunction",
+      "redirect_document_id": true
     }
   ]
 }
