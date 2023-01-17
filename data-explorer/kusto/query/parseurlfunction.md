@@ -1,13 +1,15 @@
 ---
 title: parse_url() - Azure Data Explorer
-description: This article describes parse_url() in Azure Data Explorer.
+description: Learn how to use the parse_url() function to parse a URL string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/12/2021
+ms.date: 01/08/2023
 ---
 # parse_url()
 
 Parses an absolute URL `string` and returns a `dynamic` object contains URL parts.
+
+> **Deprecated aliases:** parseurl()
 
 ## Syntax
 

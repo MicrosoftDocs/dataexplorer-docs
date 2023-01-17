@@ -91,8 +91,8 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         ADX_TENANT_ID=[SERVICE_PRINCIPAL_TENANT_ID]
         ```
 
-        [!NOTE]
-        > When using a managed identity, the ADX_CLIENT_ID value is the client ID of the managed identity, and the ADX_CLIENT_ID is not needed. ADX_CLIENT_ID is only required if you use an Azure Active Directory (Azure AD) service principal.
+        > [!NOTE]
+        > When using a managed identity, the ADX_CLIENT_ID value is the client ID of the managed identity, located in the generated "[_MC_xxxx_]" resource group. For more information, see [MC_ resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks). The ADX_SECRET_ID is only required if you use an Azure Active Directory (Azure AD) service principal.
 
     1. Optionally, enable Application Insights telemetry. If you're using Application Insights for the first time, [create an Application Insights resource](/azure/azure-monitor/app/create-new-resource). [Copy the instrumentation key](/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) to a variable.
 

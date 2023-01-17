@@ -1,9 +1,9 @@
 ---
 title: array_concat() - Azure Data Explorer
-description: This article describes array_concat() in Azure Data Explorer.
+description: Learn how to use the array_concat() function to concatenate many dynamic arrays to a single array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 11/20/2022
 ---
 # array_concat()
 
@@ -11,19 +11,25 @@ Concatenates many dynamic arrays to a single array.
 
 ## Syntax
 
-`array_concat(`*arr1*`[`, `*arr2*, ...]`)`
+`array_concat(`*arr*`[`, `*arr2*, ...]`)`
 
-## Arguments
+## Parameters
 
-* *arr1...arrN*: Input arrays to be concatenated into a dynamic array. All arguments must be dynamic arrays (see [pack_array](packarrayfunction.md)).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *arr1...arrN* | dynamic | &check; | The arrays to concatenate into a dynamic array.|
 
 ## Returns
 
-Dynamic array of arrays with arr1, arr2, ... , arrN.
+Returns a dynamic array of arrays with arr1, arr2, ... , arrN.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+The following example shows concatenated arrays.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13LMQ6DMAxG4b1S7/CPBGUJnXsWZKUuEogkcj3EiMMTmCrWT+8JpYlR8ZW8IkAzXvgpF4TnYwdX5fSB4d2SHsOfbc3sZhQaForLSCJkXfXmN+dBw91h7vyK5Jmj4uIx5hRJOwrn4Q5bQXxcmgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2
@@ -32,8 +38,14 @@ range x from 1 to 3 step 1
 | project array_concat(a1, a2)
 ```
 
+**Output**
+
 |Column1|
 |---|
 |[1,2,4,1,2]|
 |[2,4,8,2,4]|
 |[3,6,12,3,6]|
+
+## See also
+
+* [pack_array()](packarrayfunction.md)

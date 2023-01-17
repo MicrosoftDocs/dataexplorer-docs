@@ -1,33 +1,32 @@
 ---
 title: isfinite() - Azure Data Explorer
-description: This article describes isfinite() in Azure Data Explorer.
+description: Learn how to use the isfinite() function to check if the input is a finite value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/03/2023
 ---
 # isfinite()
 
-Returns whether input is a finite value (is neither infinite nor NaN).
+Returns whether the input is a finite value, meaning it's neither infinite nor NaN.
 
 ## Syntax
 
-`isfinite(`*x*`)`
+`isfinite(`*number*`)`
 
-## Arguments
+## Parameters
 
-* *x*: A real number.
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+|*number*|real|&check;| The value to check if finite.|
 
 ## Returns
 
-A non-zero value (true) if x is finite; and zero (false) otherwise.
-
-## See also
-
-* For checking if value is null, see [isnull()](isnullfunction.md).
-* For checking if value is infinite, see [isinf()](isinffunction.md).
-* For checking if value is NaN (Not-a-Number), see [isnan()](isnanfunction.md).
+`true` if x is finite and `false` otherwise.
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1XQNVQoyVcwVCguSS1QMOTlqlFIrShJzUtRqFSwVTDQM0ASScksA4oZ6hloVehXIolnFqdl5mWWpNrCGBpAlZoAbqyHpGYAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 range x from -1 to 1 step 1
@@ -36,8 +35,16 @@ range x from -1 to 1 step 1
 | extend isfinite=isfinite(div)
 ```
 
+**Output**
+
 |x|y|div|isfinite|
 |---|---|---|---|
 |-1|0|-∞|0|
 |0|0|NaN|0|
 |1|0|∞|0|
+
+## See also
+
+* To check if a value is null, see [isnull()](isnullfunction.md).
+* To check if a value is infinite, see [isinf()](isinffunction.md).
+* To check if a value is NaN (Not-a-Number), see [isnan()](isnanfunction.md).

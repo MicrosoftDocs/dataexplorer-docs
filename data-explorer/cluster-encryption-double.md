@@ -60,7 +60,7 @@ Set up a managed identity using the Azure Data Explorer C# client:
     var resourceGroupName = "testrg";
     var clusterName = "mykustocluster";
     var location = "East US";
-    var skuName = "Standard_D13_v2";
+    var skuName = "Standard_E8ads_v5";
     var tier = "Standard";
     var capacity = 5;
     var sku = new AzureSku(skuName, tier, capacity);
@@ -106,9 +106,9 @@ Add the 'EnableDoubleEncryption' type to tell Azure to enable infrastructure enc
 
 ---
 
-## Considerations
+## Limitations
 
-The following considerations apply to the encryption of [selected volumes](kusto/concepts/sandboxes.md#virtual-machine-sizes):
+The following limitations apply to the encryption of [selected volumes](kusto/concepts/sandboxes-in-non-modern-skus.md#virtual-machine-sizes):
 
 * Performance impact of up to a single digit
 * Can't be used with sandboxes

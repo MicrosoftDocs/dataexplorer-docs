@@ -3,7 +3,7 @@ title: 'Ingest data from event hub into Azure Data Explorer'
 description: 'In this article, you learn how to ingest (load) data into Azure Data Explorer from event hub.'
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 03/15/2022
+ms.date: 09/11/2022
 
 # Customer intent: As a database administrator, I want to ingest data into Azure Data Explorer from an event hub, so I can analyze streaming data.
 ---
@@ -12,14 +12,14 @@ ms.date: 03/15/2022
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [One-click](one-click-event-hub.md)
+> * [Ingestion wizard](./event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
 
 [!INCLUDE [data-connector-intro](includes/data-connector-intro.md)]
 
-Azure Data Explorer offers ingestion (data loading) from Azure Event Hubs, a big data streaming platform and event ingestion service. [Event hubs](/azure/event-hubs/event-hubs-about) can process millions of events per second in near real time. In this article, you create an event hub, connect to it from Azure Data Explorer and see data flow through the system.
+Azure Data Explorer offers ingestion (data loading) from Azure Event Hubs, which is a big data streaming platform and event ingestion service. [Event hubs](/azure/event-hubs/event-hubs-about) can process millions of events per second in near real time. In this article, you create an event hub, connect to it from Azure Data Explorer and see data flow through the system.
 
 For general information about ingesting into Azure Data Explorer from event hub, see [Connect to event hub](ingest-data-event-hub-overview.md).
 
@@ -128,6 +128,8 @@ Fill out the form with the following information, and then select **Create**.
 | Compression | *None* | The compression type of the event hub messages payload. Supported compression types: *None, Gzip*.|
 | Managed Identity (recommended) | System-assigned | The managed identity used by the Data Explorer cluster for access to read from the event hub. We recommend using managed identities to control access to your event hub.<br /><br />**Note**:<br />When the data connection is created:<br/>\* *System-assigned* identities are automatically created if they don't exist<br />\* The managed identity is automatically assigned the *Azure Event Hubs Data Receiver* role and is added to your Data Explorer cluster. We recommend verifying that the role was assigned and that the identity was added to the cluster. |
 
+[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
+
 > [!NOTE]
 > If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
 
@@ -171,6 +173,13 @@ For this article, you use static routing, where you specify the table name, data
 [!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include [system properties](ingest-data-event-hub-overview.md#event-system-properties-mapping) in the table schema and mapping.
+
+### Event retrieval start date
+
+Event Hubs data connection can retrieve Event Hubs events created after the **Event retrieval start date**. Only events retained by Event Hubs [retention period](https://learn.microsoft.com/azure/event-hubs/event-hubs-features#event-retention) can be retrieved. You can use this field to ingest historical events from Event Hubs. For example, to ingest data that existed in your event hub prior to creating the data connection, or for testing purposes.
+
+The value must be specified as a time value in Coordinated Universal Time (UTC). If no value is specified, the default time is the time at which the data connection is created.
+Changing the default time might cause ingestion latency while older records are ingested. For existing data connections, this might ingest events previously ingested.
 
 ## Copy the connection string
 

@@ -20,18 +20,14 @@ items:
     items:
     - name: Request classification policy
       href: request-classification-policy.md
-    - name: Request classification commands
-      items:
-      - name: Request classification policy commands
-        href: ./show-cluster-policy-request-classification-command.md
-      - name: .alter cluster request classification policy commands
-        href: alter-cluster-policy-request-classification-command.md
-      - name: .alter-merge cluster request classification policy commands
-        href: alter-merge-cluster-policy-request-classification-command.md
-      - name: .delete cluster request classification policy commands
-        href: delete-cluster-policy-request-classification-command.md
-      - name: .show cluster request classification policy commands
-        href: show-cluster-policy-request-classification-command.md
+    - name: .alter cluster request classification policy commands
+      href: alter-cluster-policy-request-classification-command.md
+    - name: .alter-merge cluster request classification policy commands
+      href: alter-merge-cluster-policy-request-classification-command.md
+    - name: .delete cluster request classification policy commands
+      href: delete-cluster-policy-request-classification-command.md
+    - name: .show cluster request classification policy commands
+      href: show-cluster-policy-request-classification-command.md
   - name: Request limits policy
     href: request-limits-policy.md
   - name: Request rate limit policy
@@ -121,36 +117,40 @@ items:
     items:
     - name: Materialized views overview
       href: materialized-views/materialized-view-overview.md
-    - name: ".create materialized-view"
-      href: materialized-views/materialized-view-create.md
+    - name: Materialized views limitations
+      href: materialized-views/materialized-views-limitations.md
+    - name: Monitor materialized views
+      href: materialized-views/materialized-views-monitoring.md
+    - name: Materialized views policies
+      href: materialized-views/materialized-view-policies.md
+    - name: Materialized views data purge
+      href: materialized-views/materialized-view-purge.md
     - name: ".alter materialized-view"
       href: materialized-views/materialized-view-alter.md
-    - name: ".create-or-alter materialized-view"
-      href: materialized-views/materialized-view-create-or-alter.md
+    - name: ".alter materialized-view autoUpdateSchema"
+      href: materialized-views/materialized-view-alter-autoUpdateSchema.md
     - name: ".alter materialized-view docstring"
       href: materialized-views/materialized-view-alter-docstring.md
     - name: ".alter materialized-view folder"
       href: materialized-views/materialized-view-alter-folder.md
     - name: ".alter materialized-view lookback"
       href: materialized-views/materialized-view-alter-lookback.md
-    - name: ".alter materialized-view autoUpdateSchema"
-      href: materialized-views/materialized-view-alter-autoUpdateSchema.md
-    - name: ".show materialized-view commands"
-      href: materialized-views/materialized-view-show-commands.md
-    - name: ".show materialized-view details"
-      href: materialized-views/materialized-view-show-details-command.md
-    - name: ".rename materialized-view"
-      href: materialized-views/materialized-view-rename.md
-    - name: ".drop materialized-view"
-      href: materialized-views/materialized-view-drop.md
     - name: ".clear materialized-view data"
       href: materialized-views/materialized-view-clear-data.md
+    - name: ".create materialized-view"
+      href: materialized-views/materialized-view-create.md
+    - name: ".create-or-alter materialized-view"
+      href: materialized-views/materialized-view-create-or-alter.md
     - name: ".disable | .enable materialized-view"
       href: materialized-views/materialized-view-enable-disable.md    
-    - name: Materialized views policies
-      href: materialized-views/materialized-view-policies.md
-    - name: Materialized views data purge
-      href: materialized-views/materialized-view-purge.md
+    - name: ".drop materialized-view"
+      href: materialized-views/materialized-view-drop.md
+    - name: ".rename materialized-view"
+      href: materialized-views/materialized-view-rename.md
+    - name: ".show materialized-views"
+      href: materialized-views/materialized-view-show-commands.md
+    - name: ".show materialized-views details"
+      href: materialized-views/materialized-view-show-details-command.md
   - name: Stored query results
     displayName: .set stored query, .show stored query, .drop stored query
     href: stored-query-results.md
@@ -169,7 +169,21 @@ items:
     - name: ".alter-merge column-docstrings"
       href: alter-merge-table-column.md
   - name: Data mappings
-    href: mappings.md
+    items:
+    - name: Data mappings overview
+      href: mappings.md
+    - name: "CSV mapping"
+      href: csv-mapping.md
+    - name: "JSON mapping"
+      href: json-mapping.md
+    - name: "ARVO mapping"
+      href: avro-mapping.md
+    - name: "Parquet mapping"
+      href: parquet-mapping.md
+    - name: "ORC mapping"
+      href: orc-mapping.md
+    - name: "W3CLOGFILE mapping"
+      href: w3c-log-file-mapping.md
   - name: Functions
     items:
     - name: Stored functions management overview
@@ -414,6 +428,8 @@ items:
     items:
     - name: Using sandboxes
       href: ../concepts/sandboxes.md
+    - name: Using sandboxes in non-modern sku
+      href: ../concepts/sandboxes-in-non-modern-skus.md
     - name: Sandbox policy
       href: sandboxpolicy.md
     - name: .alter cluster sandbox policy command
@@ -491,8 +507,12 @@ items:
     displayName:  .ingest into, pull data, pulling ingestion
     href: data-ingestion/ingest-from-storage.md
   - name: Ingest from query
-    displayName:  .set, .append, .set-or-append, .set-or-replace
-    href: data-ingestion/ingest-from-query.md
+    items: 
+    - name: Ingest from query
+      displayName:  .set, .append, .set-or-append, .set-or-replace
+      href: data-ingestion/ingest-from-query.md
+    - name: cancel operation command
+      href: cancel-operation-command.md
   - name: Inline ingestion
     displayName:  .ingest inline
     href: data-ingestion/ingest-inline.md
@@ -502,6 +522,16 @@ items:
       href: data-ingestion/streaming-ingestion-schema-changes.md
     - name: Clear schema cache for streaming ingestion
       href: data-ingestion/clear-schema-cache-command.md
+  - name: .dup-next-ingest
+    href: dup-next-ingest.md
+    displayName: duplicate, ingestion, troubleshoot
+  - name: .dup-next-failed-ingest
+    displayName: duplicate, failure, ingestion, troubleshoot
+    href: dup-next-failed-ingest.md
+  - name: .show ingestion failures
+    href: ingestionfailures.md
+  - name: .show streaming ingestion failures
+    href: streamingingestionfailures.md   
 - name: Data export
   href: data-export/index.md
   items:
@@ -607,19 +637,10 @@ items:
         href: show-extents.md
     - name: Extent containers clean commands
       href: clean-extent-containers.md
-  - name: Cluster follower
+  - name: Follower commands
+    displayName: Cluster commands, database commands, materialized view commands, table commands 
     href: cluster-follower.md
   - name: Data purge
     href: ../concepts/data-purge.md
   - name: Data soft delete
     href: ../concepts/data-soft-delete.md
-- name: Errors and failures
-  items:
-  - name: Ingestion FAQ
-    href: Ingestion-faq.yml
-  - name: Ingestion error codes
-    href: ../../error-codes.md
-  - name: Ingestion failures
-    href: ingestionfailures.md
-  - name: Streaming ingestion failures
-    href: streamingingestionfailures.md

@@ -20,7 +20,7 @@ Alters a table [partitioning policy](partitioningpolicy.md). The partitioning po
 
 ### Example
 
-Delete the policy at the table level:
+Alter merge the policy at the table level:
 
 ```kusto
 .alter-merge table MyTable policy partitioning '{"EffectiveDateTime":"2023-01-01"}'

@@ -1,9 +1,9 @@
 ---
 title: String operators - Azure Data Explorer
-description: This article describes String operators in Azure Data Explorer.
+description: Learn about query operators for searching string data types.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/05/2021
+ms.date: 11/24/2022
 ---
 # String operators
 
@@ -67,7 +67,7 @@ Operators with an `_cs` suffix are case sensitive.
 |[`!hassuffix`](not-hassuffix-operator.md) |RHS isn't a term suffix in LHS |No |`"North America" !hassuffix "americ"`|
 |[`hassuffix_cs`](hassuffix-cs-operator.md)  |RHS is a term suffix in LHS |Yes |`"North America" hassuffix_cs "ica"`|
 |[`!hassuffix_cs`](not-hassuffix-cs-operator.md) |RHS isn't a term suffix in LHS |Yes |`"North America" !hassuffix_cs "icA"`|
-|[`in`](in-cs-operator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
+|[`in`](in-cs-operator.md) |Equals to any of the elements |Yes |`"abc" in ("123", "345", "abc")`|
 |[`!in`](not-in-cs-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "abc")` |
 |[`in~`](inoperator.md) |Equals to any of the elements |No | `"Abc" in~ ("123", "345", "abc")` |
 |[`!in~`](not-in-operator.md) |Not equals to any of the elements |No | `"bCa" !in~ ("123", "345", "ABC")` |

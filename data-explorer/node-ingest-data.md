@@ -3,7 +3,7 @@ title: 'Ingest data using the Azure Data Explorer Node library'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Node.js.
 ms.reviewer: mblythe
 ms.topic: how-to
-ms.date: 02/07/2022
+ms.date: 09/14/2022
 
 # Customer intent: As a Node.js developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -23,7 +23,7 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. You don't require an Azure subscription. 
 * Create [a cluster and database](create-cluster-database-portal.md).
 * [Node.js](https://nodejs.org/en/download/) installed on your development computer
 
@@ -77,7 +77,7 @@ const destTableMapping = "StormEvents_CSV_Mapping";
 
 ## Set source file information
 
-Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncei.noaa.gov/).
+Import more classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncei.noaa.gov/).
 
 ```javascript
 const container = "samplefiles";
@@ -125,7 +125,7 @@ const defaultProps  = new IngestionProperties({
 });
 
 const ingestClient = new KustoIngestClient(kcsbIngest, defaultProps);
-// All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
+// All ingestion properties are documented here: https://learn.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
 
 const blobDesc = new BlobDescriptor(blobPath, 10);
 try {

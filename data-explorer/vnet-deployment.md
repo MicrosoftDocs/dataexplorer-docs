@@ -52,10 +52,9 @@ The total number of IP addresses:
 | **Total** | **#engine_instances + 9** |
 
 > [!IMPORTANT]
-> Subnet size must be planned in advance since it can't be changed after Azure Data Explorer is deployed. Therefore, reserve needed subnet size accordingly.
-
-> [!NOTE]
-> Please don't deploy any Azure Resource or Service in the Subnet which is planned to deploy the Azure Data Exploer. Azure Data Explorer also won't resume from suspended if any service or resource running in the subnet.
+>
+> - Make sure that you plan the subnet size before deploying Azure Data Explorer. Once deployed, the subnet size cannot be changed.
+> - Make sure that you don't deploy any other Azure resources or services in the Subnet where you plan to deploy Azure Data Explorer. Doing so will prevent Azure Data Explorer starting when resuming from a suspended state.
 
 ## Service endpoints for connecting to Azure Data Explorer
 
@@ -76,9 +75,12 @@ Create a [private endpoint](/azure/private-link/private-endpoint-overview) to re
 
 ### Configure Network Security Group rules using subnet delegation
 
-We recommend that you use [subnet delegation](/azure/virtual-network/subnet-delegation-overview) for your cluster's deployment. To do so, you must delegate the subnet to *Microsoft.Kusto/clusters* before creating the cluster in the subnet.
+[Subnet delegation](/azure/virtual-network/subnet-delegation-overview) is the default method for configuring Network Security Group rules for Azure Data Explorer clusters deployed into a subnet in your virtual network. When using subnet delegation, you must delegate the subnet to *Microsoft.Kusto/clusters* before creating the cluster in the subnet.
 
 By enabling subnet delegation on the cluster's subnet, you enable the service to define its pre-conditions for deployment in the form of Network Intent Policies. When creating the cluster in the subnet, the NSG configurations mentioned in the following sections are automatically created for you.
+
+> [!WARNING]
+> Changing your subnet delegation configuration will eventually disrupt the normal operation of your cluster. For example, after stopping the cluster you may not be able to start your cluster, run management commands, or apply health monitoring on your cluster.
 
 ### Configure Network Security Group rules manually
 

@@ -1,13 +1,13 @@
 ---
 title: rank_tdigest() - Azure Data Explorer
-description: This article describes rank_tdigest() in Azure Data Explorer.
+description: Learn how to use the rank_tdigest() function to calculate the approximate rank of the value in a set.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/10/2019
 ---
 # rank_tdigest()
 
-Calculates the approximate rank of the value in a set. 
+Calculates the approximate rank of the value in a set.
 Rank of value `v` in a set `S` is defined as count of members of `S` that are smaller or equal to `v`, `S` is represented by its `tdigest`.
 
 ## Syntax
@@ -23,9 +23,8 @@ Rank of value `v` in a set `S` is defined as count of members of `S` that are sm
 
 The rank foreach value in a data set.
 
-**Tips**
-
-1) The values that you want to get its rank must be of the same type as the `tdigest`.
+>[!TIP]
+>The values that you want to get its rank must be of the same type as the `tdigest`.
 
 ## Examples
 
@@ -37,6 +36,8 @@ range x from 1 to 1000 step 1
 | summarize t_x=tdigest(x)
 | project rank_of_685=rank_tdigest(t_x, 685)
 ```
+
+**Output**
 
 |`rank_of_685`|
 |-------------|
@@ -52,6 +53,8 @@ StormEvents
 
 ```
 
+**Output**
+
 |`rank_of_4490`|
 |--------------|
 |`50207`       |
@@ -66,10 +69,11 @@ StormEvents
 
 ```
 
+**Output**
+
 |`Column1`         |
 |------------------|
 |`85.0015237192293`|
-
 
 The percentile 85 of the damage properties costs is 4490$:
 
@@ -81,8 +85,8 @@ StormEvents
 
 ```
 
+**Output**
+
 |`percentile_tdigest_tdigestRes`|
 |-------------------------------|
 |`4490`                         |
-
-

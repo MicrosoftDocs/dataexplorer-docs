@@ -1,9 +1,9 @@
 ---
 title: min() (aggregation function) - Azure Data Explorer
-description: This article describes min() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the min() function to find the minimum value in a group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/05/2022
+ms.date: 12/26/2022
 ---
 # min() (aggregation function)
 
@@ -32,7 +32,8 @@ Returns the minimum value of *Expr* across the group.
 
 This example returns the first record in a table.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVXDLLCouAYvb5mbmaQSXJBaVhGTmpmoCAMaAOl8xAAAA)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVXDLLCouAYvb5mbmaQSXJBaVhGTmpmoCAMaAOl8xAAAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents

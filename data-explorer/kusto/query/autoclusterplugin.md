@@ -1,9 +1,9 @@
 ---
 title: autocluster plugin - Azure Data Explorer
-description: This article describes autocluster plugin in Azure Data Explorer.
+description: Learn how to use the autocluster plugin to find common patterns in data. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/23/2022
+ms.date: 11/07/2022
 ---
 # autocluster plugin
 
@@ -62,6 +62,8 @@ StormEvents
 | evaluate autocluster(0.6)
 ```
 
+**Output**
+
 |SegmentId|Count|Percent|State|EventType|Damage|
 |---|---|---|---|---|---|---|---|---|
 |0|2278|38.7||Hail|NO
@@ -78,6 +80,8 @@ StormEvents
 | project State , EventType , Damage
 | evaluate autocluster(0.2, '~', '~', '*')
 ```
+
+**Output**
 
 |SegmentId|Count|Percent|State|EventType|Damage|
 |---|---|---|---|---|---|---|---|---|

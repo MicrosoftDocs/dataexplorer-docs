@@ -3,7 +3,7 @@ title: .alter-merge table update policy command - Azure Data Explorer
 description: This article describes the .alter-merge table update policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 09/27/2022
 ---
 # .alter-merge table update policy
 
@@ -12,6 +12,7 @@ Change the table update policy. The [update policy](updatepolicy.md) instructs A
 > [!NOTE]
 > The source table and the table for which the update policy is defined must be in the same database.
 > The update policy function schema and the target table schema must match in their column names, types, and order.
+> If the policy already defined on the table, the PolicyObjects specified in the command are added to the array of PolicyObjects in the existing policy.
 
 ## Syntax
 
@@ -30,8 +31,19 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-Change the update policy for a table:
+Change the update policy for a table (using [multi-line string literals](../query/scalar-data-types/string.md#multi-line-string-literals)):
 
-```kusto
-.alter-merge table MyDatabase.MyTable policy update @'[{"IsEnabled": true, "Source": "MyTableX", "Query": "MyOtherTable", "IsTransactional": true, "PropagateIngestionProperties": false}]'
+````kusto
+.alter-merge table MyDatabase.MyTable policy update
 ```
+[
+    {
+        "IsEnabled": true,
+        "Source": "MyTableX",
+        "Query": "MyOtherTable",
+        "IsTransactional": true,
+        "PropagateIngestionProperties": false
+    }
+]
+```
+````

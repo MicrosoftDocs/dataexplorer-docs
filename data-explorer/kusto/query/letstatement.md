@@ -1,9 +1,9 @@
 ---
 title: Let statement - Azure Data Explorer
-description: This article describes the Let statement in Azure Data Explorer.
+description: Learn how to use the Let statement to set a variable name to define an expression or a function.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2021
+ms.date: 12/26/2022
 ms.localizationpriority: high
 ---
 # Let statement
@@ -12,39 +12,43 @@ Use the `let` statement to set a variable name equal to an expression or a funct
 
 `let` statements are useful for:
 
-* Breaking up a complex expression into multiple parts, each represented by a variable. 
+* Breaking up a complex expression into multiple parts, each represented by a variable.
 * Defining constants outside of the query body for readability.
 * Defining a variable once and using it multiple times within a query.
 
 If the variable previously represented another value, for example in nested statements, the innermost `let` statement applies.
 
-## Syntax
+To optimize multiple uses of the `let` statement within a single query, see [Optimize queries that use named expressions](../../named-expressions.md).
 
-**Syntax for scalar or tabular expressions**
+## Syntax: Scalar or tabular expressions
 
-`let` *Name* `=` *ScalarExpression* 
+`let` *Name* `=` *ScalarExpression*
 
-`let` *Name* `=` *TabularExpression* 
+`let` *Name* `=` *TabularExpression*
 
-|Field  |Definition  |Example  |
+### Arguments
+
+|Argument  |Description  |Example  |
 |---------|---------|---------|
-|*Name*   | The variable name, must be valid. | You can escape the name, for example `["Name with spaces"]` |
+|*Name*   | The variable name must be valid. | You can escape the name, for example `["Name with spaces"]` |
 |*ScalarExpression* | An expression with a scalar result.| `let one=1;`  |
 |*TabularExpression*  | An expression with a tabular result. |  `let RecentLog = Logs  \| where Timestamp > ago(1h)`  |
 
-**Syntax of view or function**
+## Syntax: View or function
 
 `let` *Name* `=` [`view`] `(` [*TabularArgName* `:` `(` `*` `)` `,`   [*ArgName* `:` *ArgType* ]`,` ... ]  `)` `{` *FunctionBody* `}`
 
-`let` *Name* `=` [`view`] `(` [  [*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ] `)` ] `,` [  [*ArgName* `:` *ArgType* , ...]  ] `)` `{` *FunctionBody* `}
+`let` *Name* `=` [`view`] `(` [[*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ] `)` ] `,` [[*ArgName* `:` *ArgType, ...]] `)` `{` *FunctionBody* `}
 
-|Field  |Definition  |
+### Arguments
+
+|Argument |Description  |
 |---------|---------|
-|*FunctionBody* | An expression that yields a user defined function. | 
-|*view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. | 
-| *TabularArgName*| The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. | 
-| *AttributeName* : *AttributeType*| The name and type of the attribute. Part of the table schema definition, which includes a set of attributes with their types. |  
-|*ArgName* | The name of the scalar argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked.  | 
+|*FunctionBody* | An expression that yields a user defined function. |
+|*view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. |
+| *TabularArgName*| The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. |
+| *AttributeName*: *AttributeType*| The name and type of the attribute. Part of the table schema definition, which includes a set of attributes with their types. |  
+|*ArgName* | The name of the scalar argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked.  |
 |*ArgType* | The type of the scalar argument. Currently the following are supported for user defined functions: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).|  
 
 > [!NOTE]
@@ -57,7 +61,6 @@ If the variable previously represented another value, for example in nested stat
 ## Examples
 
 ### Define scalar values
-
 
 The following example uses a scalar expression statement.
 
@@ -80,7 +83,7 @@ let ['some number'] = 20;
 range y from 0 to ['some number'] step 5
 ```
 
-### Create user defined function with scalar calculation
+### Create a user defined function with scalar calculation
 
 This example uses the let statement with arguments for scalar calculation. The query defines function `MultiplyByN` for multiplying two numbers.
 
@@ -101,7 +104,7 @@ range x from 1 to 5 step 1
 |4|20|
 |5|25|
 
-### Create user defined function that trims input
+### Create a user defined function that trims input
 
 The following example removes leading and trailing ones from the input.
 
@@ -140,7 +143,7 @@ foo2(2) | count
 |---|
 |50|
 
-### Create a view or virtual table 
+### Create a view or virtual table
 
 This example shows you how to use a let statement to create a [`view` or virtual table](schema-entities/views.md).
 
@@ -160,7 +163,7 @@ search MyColumn == 5
 
 ### Use a materialize function
 
-The [`materialize()`](materializefunction.md) function lets you cache subquery results during the time of query execution. When you use the `materialize()` function, the data is cached and any subsequent invocation of the result uses cached data.
+The [`materialize()`](materializefunction.md) function lets you cache subquery results during the time of query execution. When you use the `materialize()` function, the data is cached, and any subsequent invocation of the result uses cached data.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

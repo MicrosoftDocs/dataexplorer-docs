@@ -29,7 +29,7 @@ The merge policy contains the following properties:
     * Maximum allowed row count of the merged extent.
     * Applies to Merge operations, not Rebuild.  
 * **OriginalSizeMBUpperBoundForMerge**:
-    * Defaults to 0 (unlimited).
+    * Defaults to 30,000.
     * Maximum allowed original size (in MBs) of the merged extent.
     * Applies to Merge operations, not Rebuild.  
 * **MaxExtentsToMerge**:
@@ -70,10 +70,10 @@ The following example shows the default policy:
 ```json
 {
   "RowCountUpperBoundForMerge": 16000000,
-  "OriginalSizeMBUpperBoundForMerge": 0,
+  "OriginalSizeMBUpperBoundForMerge": 30000,
   "MaxExtentsToMerge": 100,
   "LoopPeriod": "01:00:00",
-  "MaxRangeInHours": 8,
+  "MaxRangeInHours": 24,
   "AllowRebuild": true,
   "AllowMerge": true,
   "Lookback": {

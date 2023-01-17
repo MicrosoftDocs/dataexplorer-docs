@@ -3,11 +3,11 @@ title: User-defined functions - Azure Data Explorer
 description: This article describes user-defined functions (scalar and views) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/17/2021
+ms.date: 09/06/2022
 ---
 # User-defined functions
 
-**User-defined functions** are reusable subqueries that can be defined as part of the query itself (**ad-hoc functions**), or persisted as part of the database metadata (**stored functions**). User-defined functions are invoked through a **name**, are provided with zero or more **input arguments** (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function **body**.
+**User-defined functions** are reusable subqueries that can be defined as part of the query itself (**query-defined functions**), or stored as part of the database metadata (**stored functions**). User-defined functions are invoked through a **name**, are provided with zero or more **input arguments** (which can be scalar or tabular), and produce a single value (which can be scalar or tabular) based on the function **body**.
 
 A user-defined function belongs to one of two categories:
 
@@ -17,6 +17,8 @@ A user-defined function belongs to one of two categories:
 The function's input arguments and output determine whether it's scalar or tabular, which then establishes how it might be used.
 
  See [Stored functions](../schema-entities/stored-functions.md) to create and manage entities that allow the reuse of Kusto queries or query parts.
+
+To optimize multiple uses of the user-defined functions within a single query, see [Optimize queries that use named expressions](../../../named-expressions.md).
 
 ## Scalar function
 
@@ -98,6 +100,8 @@ let MyFilter = (T:(x:long), v:long) {
 MyFilter((range x from 1 to 10 step 1), 9)
 ```
 
+**Output**
+
 |x|
 |---|
 |9|
@@ -112,6 +116,8 @@ let MyDistinct = (T:(*)) {
 };
 MyDistinct((range x from 1 to 3 step 1))
 ```
+
+**Output**
 
 |x|
 |---|
@@ -212,7 +218,7 @@ let T=(){
 union T, (T())
 ```
 
-A user-defined function that takes one or more scalar arguments can be invoked by using the table name and a concrete argument list in parentheses:
+A user-defined function that takes one or more scalar arguments can be invoked by using the function name and a concrete argument list in parentheses:
 
 ```kusto
 let f=(a:string, b:string) {
@@ -221,7 +227,7 @@ let f=(a:string, b:string) {
 print f("hello", "world")
 ```
 
-A user-defined function that takes one or more table arguments (with any number of scalar arguments) and can be invoked using the table name and a concrete argument list in parentheses:
+A user-defined function that takes one or more table arguments (with any number of scalar arguments) and can be invoked using the function name and a concrete argument list in parentheses:
 
 ```kusto
 let MyFilter = (T:(x:long), v:long) {
@@ -262,6 +268,8 @@ union
   (print x=f(c=7, a=12)), // "12-b.default-7"
   (print x=f(12, c=7))    // "12-b.default-7"
 ```
+
+**Output**
 
 |x|
 |---|
@@ -335,4 +343,4 @@ For completeness, here are some commonly requested features for user-defined fun
 
 1. Function overloading: There's currently no way to overload a function (a way to create multiple functions with the same name and different input schema).
 
-1. Default values: The default value for a scalar parameter to a function must be a scalar literal (constant). Furthermore, stored functions can't have a default value of type `dynamic`.
+1. Default values: The default value for a scalar parameter to a function must be a scalar literal (constant).

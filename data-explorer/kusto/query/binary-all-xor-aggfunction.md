@@ -1,33 +1,37 @@
 ---
 title: binary_all_xor() (aggregation function) - Azure Data Explorer
-description: This article describes binary_all_xor() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the binary_all_xor() function to aggregate values using the binary XOR operation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/06/2020
+ms.date: 11/20/2022
 ---
 # binary_all_xor() (aggregation function)
 
-Accumulates values using the binary `XOR` operation per summarization group (or in total, if summarization is done without grouping).
+Accumulates values using the binary `XOR` operation for each summarization group, or in total if a group is not specified.
 
-* Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
+[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
-`binary_all_xor` `(`*Expr*`)`
+`binary_all_xor` `(`*expr*`)`
 
-## Arguments
+## Parameters
 
-* *Expr*: long number.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *expr* | long | &check; | The value used for the binary `XOR`  calculation. |
 
 ## Returns
 
-Returns a value that is aggregated using the binary `XOR` operation over records per summarization group (or in total, if summarization is done without grouping).
+Returns a value that is aggregated using the binary `XOR` operation over records for each summarization group, or in total if a group is not specified.
 
 ## Example
 
-Producing 'cafe-food' using binary `XOR` operations:
+The following example produces `CAFEF00D` using binary `XOR` operations:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0Ta5oLgUFgwoTExMDENYB8wxdIRDCszRwdHJyNLCE8AwMDJwMDUwddbhiuWoUiktzcxOLMqtSFYpSi0tzShRsFUrySwsKUos0SvIzUis0kjLzEosq4xNzcuIr8otA9mpqagIAuXol8IgAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 datatable(num:long)
 [
@@ -39,6 +43,8 @@ datatable(num:long)
 | summarize result = toupper(tohex(binary_all_xor(num)))
 ```
 
-|result|
-|---|
+**Output**
+
+|results|
+|--|
 |CAFEF00D|

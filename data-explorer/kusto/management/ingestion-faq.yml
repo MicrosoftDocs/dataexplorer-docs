@@ -45,12 +45,15 @@ sections:
       - question: Where can I view insights about ingestion?
         answer: |
           You can use the portal's [Azure Monitor Insights](/azure/azure-monitor/app/app-insights-overview) to help you understand how Azure Data Explorer is performing and how it's being used.
-          The Insight view is based on [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md) that can be streamed to a Log Analytics workspace.  
+          The Insight view is based on [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md) that can be streamed to a Log Analytics workspace. 
+          Use the [.dup-next-ingest](dup-next-ingest.md) command to duplicate the next ingestion into a storage container and review the details and metadata of the ingestion.
       - question: Where do I check ingestion errors?
         answer: |
           The full ingestion process can be monitored using ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md). 
           Ingestion failures can be monitored using the `IngestionResult` metric or the `FailedIngestion` diagnostic log.
           The [`.show ingestion failures`](ingestionfailures.md) command shows ingestion failures that occur specifically in the Kusto Data Engine, and is not recommended for monitoring errors. 
+          The [`.dup-next-failed-ingest`](dup-next-failed-ingest.md) command provides information on the next failed ingestion by uploading ingestion files and metadata to a storage container. 
+          This can be useful for checking an ingestion flow, though is not advised for steady monitoring.
       - question: What can I do if I find many retry errors?
         answer: |
           [Metrics](../../using-metrics.md) that include the `RetryAttemptsExceeded` metric status many times indicate that ingestion exceeded the retry attempt limit or time-span limit following a recurring transient error. 
@@ -67,8 +70,13 @@ sections:
           To efficiently ingest large quantities of historical data, use [LightIngest](../../lightingest.md). 
           For ease of use, try the LightIngest [wizard](../../generate-lightingest-command.md). 
           To improve performance for many small files, adjust the [batching policy](batchingpolicy.md), change batching conditions and address [latencies](batchingpolicy.md#batching-latencies). 
-          Use the batching policy [wizard](../../one-click-table-batching-policy.md) to quickly change policy settings. 
+          Use the batching policy [wizard](../../table-batching-policy-wizard.md) to quickly change policy settings. 
           To improve ingestion performance when ingesting extremely large data files, use [Azure Data Factory](/azure/data-factory/) (ADF), a cloud-based data integration service. 
+  - name: Ingesting invalid data
+    questions:
+      - question: What happens when invalid data is ingested?
+        answer: |
+          Malformed data, unparsable, too large or not conforming to schema, might fail to be ingested properly. For more information, see [Ingestion of invalid data](../../ingest-invalid-data.md). 
   - name: SDKs and connectors
     questions:     
       - question: How can I improve ingestion with SDKs?
@@ -77,4 +85,4 @@ sections:
           Try incrementally decreasing the size of data ingested in the table or database batching policy down towards 250 MB and check if there is an improvement.
       - question: How can I tune Kusto Kafka Sink for better ingestion performance?
         answer: |
-          [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) users should [tune the connector](../../ingest-data-kafka.md) to work together with the [ingestion batching policy](batchingpolicy.md) by tuning batching time, size, and item number. 
+          [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) users should [tune the connector](../../ingest-data-kafka.md) to work together with the [ingestion batching policy](batchingpolicy.md) by tuning batching time, size, and item number.

@@ -1,9 +1,9 @@
 ---
 title: array_reverse() - Azure Data Explorer
-description: This article describes array_reverse() in Azure Data Explorer.
+description: Learn how to use the array_reverse() function to reverse the order of the elements in a dynamic array.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 11/20/2022
 ---
 # array_reverse()
 
@@ -11,23 +11,31 @@ Reverses the order of the elements in a dynamic array.
 
 ## Syntax
 
-`array_reverse(`*array*`)`
+`array_reverse(`*value*`)`
 
-## Arguments
+## Parameters
 
-*array*: Input array to reverse.
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*value*| dynamic | &check;| The array to reverse.|
 
 ## Returns
 
-An array that contains exactly the same elements as the input array, but in reverse order.
+Returns an array that contains the same elements as the input array in reverse order.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+This example shows an array of words reversed.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1ohWKsnILFbSUVCCkIl5IDK1IjG3ICdVKVZTgZerRqGgKD8rNblEISi1uDSnxBaoP7Eyvii1LLWoOFUDyNMEAKks9PlYAAAA" target="_blank">Run the query</a>
+
 ```kusto
 print arr=dynamic(["this", "is", "an", "example"]) 
 | project Result=array_reverse(arr)
 ```
+
+**Output**
 
 |Result|
 |---|

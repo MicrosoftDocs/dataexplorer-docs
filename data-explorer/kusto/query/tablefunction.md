@@ -56,6 +56,14 @@ table('StormEvent')
 
 ::: zone-end
 
+## Returns
+
+`table(T)` returns:
+
+* Data from table *T* if a table named *T* exists.
+* Data returned by function *T* if a table named *T* doesn't exist but a function named *T* exists. Function *T* must take no arguments and must return a tabular result.
+* A semantic error is raised if there's no table named *T* and no function named *T*.
+
 ## Examples
 
 ### Use table() to access table of the current database
@@ -65,13 +73,15 @@ table('StormEvent')
 table('StormEvent') | count
 ```
 
+**Output**
+
 |Count|
 |---|
 |59066|
 
 ### Use table() inside let statements
 
-The same query as above can be rewritten to use inline function (let statement) that receives a parameter `tableName` - which is passed into the table() function.
+The query above can be rewritten as a query-defined function (let statement) that receives a parameter `tableName` - which is passed into the table() function.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -81,6 +91,8 @@ let foo = (tableName:string)
 };
 foo('help')
 ```
+
+**Output**
 
 |Count|
 |---|
@@ -122,6 +134,8 @@ let _choose = (_selector:string)
 _choose('T2')
 
 ```
+
+**Output**
 
 |x|
 |---|

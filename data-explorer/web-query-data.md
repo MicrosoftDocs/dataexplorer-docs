@@ -3,7 +3,7 @@ title: 'Quickstart: Query data in the Azure Data Explorer web UI'
 description: In this quickstart, you learn how to query and share data in the Azure Data Explorer web UI.
 ms.reviewer: olgolden
 ms.topic: quickstart
-ms.date: 06/22/2022
+ms.date: 09/07/2022
 ms.custom: mode-portal
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
@@ -18,7 +18,7 @@ In this quickstart, you'll be working in the stand-alone Azure Data Explorer web
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [a cluster and database](create-cluster-database-portal.md), or use the Azure Data Explorer help cluster.
 
 ## Sign in to the application
@@ -118,8 +118,8 @@ You can now run queries on both clusters (assuming you have data in your test cl
     > [!NOTE]
     > Blank lines in the query expression can affect which part of the query is executed.
     >
-    > - If no text selected, it's assumed that the query or command is separated by empty lines.
-    > - If text is selected, the selected text is run.
+    > * If no text selected, it's assumed that the query or command is separated by empty lines.
+    > * If text is selected, the selected text is run.
 
 ## Work with the results grid
 
@@ -283,11 +283,11 @@ Many times, you want to share the queries you create.
 
 The following options are available in the drop-down:
 
-- Link to clipboard
-- [Link query to clipboard](#provide-a-deep-link)
-- Link, query, results to clipboard
-- [Pin to dashboard](#pin-to-dashboard)
-- [Query to Power BI](power-bi-imported-query.md)
+* Link to clipboard
+* [Link query to clipboard](#provide-a-deep-link)
+* Link, query, results to clipboard
+* [Pin to dashboard](#pin-to-dashboard)
+* [Query to Power BI](power-bi-data-connector.md)
 
 ### Provide a deep link
 
@@ -331,11 +331,11 @@ To export the query results to a CSV file, select **File** > **Export to CSV**.
 
 In the **Settings** tab you can:
 
-- [Export environment settings](#export-environment-settings)
-- [Import environment settings](#import-environment-settings)
-- [Highlight error levels](#highlight-error-levels)
-- [Clear local state](#clean-up-resources)
-- [Change datetime to specific time zone](#change-datetime-to-specific-time-zone)
+* [Export environment settings](#export-environment-settings)
+* [Import environment settings](#import-environment-settings)
+* [Highlight error levels](#highlight-error-levels)
+* [Clear local state](#clean-up-resources)
+* [Change datetime to specific time zone](#change-datetime-to-specific-time-zone)
 
 Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
 
@@ -387,17 +387,17 @@ Error level color scheme in **Light** mode | Error level color scheme in **Dark*
 
 For highlighted error levels, the column must be of type int, long, or string.
 
-- If the column is of type `long` or `int`:
-  - The column name must be *Level*
-  - Values may only include numbers between 1 and 5.
-- If the column is of type `string`:
-  - The column name can optionally be *Level* to improve performance.
-  - The column can only include the following values:
-    - critical, crit, fatal, assert, high
-    - error, e
-    - warning, w, monitor
-    - information
-    - verbose, verb, d
+* If the column is of type `long` or `int`:
+  * The column name must be *Level*
+  * Values may only include numbers between 1 and 5.
+* If the column is of type `string`:
+  * The column name can optionally be *Level* to improve performance.
+  * The column can only include the following values:
+    * critical, crit, fatal, assert, high
+    * error, e
+    * warning, w, monitor
+    * information
+    * verbose, verb, d
 
 ### Change datetime to specific time zone
 

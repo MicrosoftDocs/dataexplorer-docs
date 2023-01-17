@@ -179,13 +179,13 @@ public static System.Data.IDataReader QueryKusto(
 
 ## ClientRequestProperties options
 
-<!-- The following text can be reproduced by running: Kusto.Cli.exe -focus -execute:"#crp -doc" -->
+<!-- The following text can be re-produced by running: Kusto.Cli.exe -focus -execute:"#crp -doc" -->
 
 * `client_max_redirect_count` (*OptionClientMaxRedirectCount*): If set and positive, indicates the maximum number of HTTP redirects that the client will process. [Long]
 * `deferpartialqueryfailures` (*OptionDeferPartialQueryFailures*): If true, disables reporting partial query failures as part of the result set. [Boolean]
 * `materialized_view_shuffle` (*OptionMaterializedViewShuffleQuery*): A hint to use shuffle strategy for materialized views that are referenced in the query.
 The property is an array of materialized views names and the shuffle keys to use.
-examples: 'dynamic([ { "Name": "V1", "Keys" : [ "K1", "K2" ] } ])' (shuffle view V1 by K1, K2)
+examples: 'dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])' (shuffle view V1 by K1, K2)
 or 'dynamic([ { "Name": "V1" } ])' (shuffle view V1 by all keys) [dynamic]
 * `max_memory_consumption_per_query_per_node` (*OptionMaxMemoryConsumptionPerQueryPerNode*): Overrides the default maximum amount of memory a whole query may allocate per node. [UInt64]
 * `maxmemoryconsumptionperiterator` (*OptionMaxMemoryConsumptionPerIterator*): Overrides the default maximum amount of memory a query operator may allocate. [UInt64]
@@ -197,7 +197,7 @@ or 'dynamic([ { "Name": "V1" } ])' (shuffle view V1 by all keys) [dynamic]
 * `query_bin_auto_size` (*QueryBinAutoSize*): When evaluating the bin_auto() function, the bin size value to use. [LiteralExpression]
 * `query_cursor_after_default` (*OptionQueryCursorAfterDefault*): The default parameter value of the cursor_after() function when called without parameters. [string]
 * `query_cursor_before_or_at_default` (*OptionQueryCursorBeforeOrAtDefault*): The default parameter value of the cursor_before_or_at() function when called without parameters. [string]
-* `query_cursor_current` (*OptionQueryCursorCurrent*): Overrides the cursor value returned by the cursor_current() or current_cursor() functions. [string]
+* `query_cursor_current` (*OptionQueryCursorCurrent*): Overrides the cursor value returned by the cursor_current() function. [string]
 * `query_cursor_disabled` (*OptionQueryCursorDisabled*): Disables usage of cursor functions in the context of the query. [boolean]
 * `query_cursor_scoped_tables` (*OptionQueryCursorScopedTables*): List of table names that should be scoped to cursor_after_default .. cursor_before_or_at_default (upper bound is optional). [dynamic]
 * `query_datascope` (*OptionQueryDataScope*): Controls the query's datascope -- whether the query applies to all data or just part of it. ['default', 'all', or 'hotcache']
@@ -221,18 +221,19 @@ in the query hierarchy for each subgroup of nodes; the size of the subgroup is s
 * `query_results_progressive_row_count` (*OptionProgressiveQueryMinRowCountPerUpdate*): Hint for Kusto as to how many records to send in each update (takes effect only if OptionResultsProgressiveEnabled is set)
 * `query_results_progressive_update_period` (*OptionProgressiveProgressReportPeriod*): Hint for Kusto as to how often to send progress frames (takes effect only if OptionResultsProgressiveEnabled is set)
 * `query_take_max_records` (*OptionTakeMaxRecords*): Enables limiting query results to this number of records. [Long]
-* `query_weakconsistency_session_id` (*OptionQueryWeakConsistencySessionId*): Sets the query weak consistency session id. Takes effect when 'queryconsistency' mode is set to 'weakconsistency_by_session_id'. [String]
+* `query_weakconsistency_session_id` (*OptionQueryWeakConsistencySessionId*): Sets the query weak consistency session ID. Takes effect when 'queryconsistency' mode is set to 'weakconsistency_by_session_id'. [String]
 * `queryconsistency` (*OptionQueryConsistency*): Controls query consistency: ['strongconsistency', 'weakconsistency', 'weakconsistency_by_query', 'weakconsistency_by_database', or 'weakconsistency_by_session_id']
-* `request_app_name` (*OptionRequestAppName*): Request application name to be used in the reporting (e.g. show queries). [String]
+* `request_app_name` (*OptionRequestAppName*): Request application name to be used in the reporting (for example, show queries). [String]
 * `request_block_row_level_security` (*OptionRequestBlockRowLevelSecurity*): If specified, blocks access to tables for which row_level_security policy is enabled [Boolean]
 * `request_callout_disabled` (*OptionRequestCalloutDisabled*): If specified, indicates that the request can't call-out to a user-provided service. [Boolean]
 * `request_description` (*OptionRequestDescription*): Arbitrary text that the author of the request wants to include as the request description. [String]
-* `request_external_table_disabled` (*OptionRequestExternalTableDisabled*):  If specified, indicates that the request can't invoke code in the ExternalTable. [Boolean]
-* `request_impersonation_disabled` (*OptionDoNotImpersonate*): If specified, indicates that the service should not impersonate the caller's identity. [Boolean]
+* `request_external_data_disabled` (*OptionRequestExternalDataDisabled*): If specified, indicates that the request can't access external data (using externaldata operator) or external tables. [Boolean]
+* `request_external_table_disabled` (*OptionRequestExternalTableDisabled*): If specified, indicates that the request can't access external tables. [Boolean]
+* `request_impersonation_disabled` (*OptionDoNotImpersonate*): If specified, indicates that the service shouldn't impersonate the caller's identity. [Boolean]
 * `request_readonly` (*OptionRequestReadOnly*): If specified, indicates that the request can't write anything. [Boolean]
 * `request_remote_entities_disabled` (*OptionRequestRemoteEntitiesDisabled*): If specified, indicates that the request can't access remote databases and clusters. [Boolean]
 * `request_sandboxed_execution_disabled` (*OptionRequestSandboxedExecutionDisabled*): If specified, indicates that the request can't invoke code in the sandbox. [Boolean]
-* `request_user` (*OptionRequestUser*): Request user to be used in the reporting (e.g. show queries). [String]
+* `request_user` (*OptionRequestUser*): Request user to be used in the reporting (for example, show queries). [String]
 * `results_progressive_enabled` (*OptionResultsProgressiveEnabled*): If set, enables the progressive query stream
 * `servertimeout` (*OptionServerTimeout*): Overrides the default request timeout. [TimeSpan]
 * `truncationmaxrecords` (*OptionTruncationMaxRecords*): Overrides the default maximum number of records a query is allowed to return to the caller (truncation). [Long]
@@ -240,5 +241,5 @@ in the query hierarchy for each subgroup of nodes; the size of the subgroup is s
 * `validate_permissions` (*OptionValidatePermissions*): Validates user's permissions to perform the query and doesn't run the query itself. [Boolean]
 The possible results for this property are:
 - "OK": permissions are present and valid.
-- "Incomplete": validation could not be completed as the query uses dynamic schema evaluation.
-- Returns KustoRequestDeniedException if permissions were not set.
+- "Incomplete": validation couldn't be completed as the query uses dynamic schema evaluation.
+- Returns KustoRequestDeniedException if permissions weren't set.

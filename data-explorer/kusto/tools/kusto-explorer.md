@@ -26,9 +26,10 @@ With Kusto.Explorer, you can:
 `https://<your_cluster>.<region>.kusto.windows.net.`
      Replace &lt;your_cluster&gt; and &lt;region&gt; with your Azure Data Explorer cluster name and deployment region.
 
-### Using Chrome and Kusto.Explorer
+### Using Google Chrome and Kusto.Explorer
 
-If you use Chrome as your default browser, make sure to install the ClickOnce extension for Chrome:
+If Google Chrome is your default browser, installing the the ClickOnce extension for Chrome is required.
+If your default browser is the Chromium-based Microsoft Edge, installing this extension is *not* required.
 
 [https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US](https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US)
 

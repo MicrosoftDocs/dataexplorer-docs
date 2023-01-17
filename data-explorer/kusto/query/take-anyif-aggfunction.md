@@ -1,19 +1,21 @@
 ---
-title: take-anyif() (aggregation function) - Azure Data Explorer
-description: This article describes take-anyif() (aggregation function) in Azure Data Explorer.
+title: take_anyif() (aggregation function) - Azure Data Explorer
+description: Learn how to use the take_anyif() function to return the value of an arbitrarily selected record for which the predicate is 'true'.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/14/2021
+ms.date: 11/20/2022
 ---
 # take_anyif() (aggregation function)
 
-Arbitrarily selects one record for each group in a [summarize operator](summarizeoperator.md), for which the predicate
-is "true". The function returns the value of an expression over each such record.
+Arbitrarily selects one record for each group in a [summarize operator](summarizeoperator.md) in records for which the *Predicate*
+is 'true'. The function returns the value of an expression over each such record.
 
-This function is useful when you want to get a sample value of one column per value of the compound group key, subject to some predicate that is "true". If such a value is present, the function attempts to return a non-null/non-empty value.
+This function is useful when you want to get a sample value of one column per value of the compound group key, subject to some predicate that is *true*. If such a value is present, the function attempts to return a non-null/non-empty value.
+
+> **Deprecated aliases:** anyif()
 
 > [!NOTE]
-> `anyif()` is a legacy and obsolete version of the `take_anyif()` function. The legacy version adds `any_` prefix to the columns returned by the `any()` aggregation.
+> The deprecated version adds `any_` prefix to the columns returned by the `any()` aggregation.
 
 ## Syntax
 
@@ -21,24 +23,30 @@ This function is useful when you want to get a sample value of one column per va
 
 ## Arguments
 
-* *Expr*: An expression over each record selected from the input to return.
-* *Predicate*: Predicate to indicate which records may be considered for evaluation.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *Expr* | string | &check; | Expression used for selecting a record. |
+| *Predicate* | string | &check; | Indicates which records may be considered for evaluation. |
 
 ## Returns
 
 The `take_anyif` aggregation function returns the value of the expression calculated
-for each of the records randomly selected from each group of the summarize operator. Only records for which *Predicate* returns "true" may be selected. If the predicate doesn't return "true", a null value is produced.
+for each of the records randomly selected from each group of the summarize operator. Only records for which *Predicate* returns 'true' may be selected. If the predicate doesn't return 'true', a null value is produced.
 
 ## Examples
 
 Pick a random EventType from Storm events, where event description has a key phrase.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUoScxOjU/Mq8xM0wBLh1QWpOoogJl+iUVFiSWZZakKGYnFCurFJUX5eekK5Zl5KeqaABMQsZRQAAAA" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
 | summarize take_anyif(EventType, EventNarrative has 'strong wind')
 ```
 
+**Output**
+
 |EventType|
 |---|
-|Thunderstorm Wind|
+|Strong Wind|

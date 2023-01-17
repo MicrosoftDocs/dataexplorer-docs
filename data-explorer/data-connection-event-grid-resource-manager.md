@@ -3,13 +3,13 @@ title: 'Create an Event Grid data connection for Azure Data Explorer by using Az
 description: In this article, you learn how to create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 03/15/2022
+ms.date: 07/31/2022
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template
 
 > [!div class="op_single_selector"]
-> * [One-click](one-click-ingestion-new-table.md)
+> * [Ingestion wizard](./ingestion-wizard-new-table.md)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -138,11 +138,12 @@ The following example shows an Azure Resource Manager template for adding an Eve
     },
     "resources": [{
             "type": "Microsoft.Kusto/Clusters/Databases/DataConnections",
-            "apiVersion": "2019-09-07",
+            "apiVersion": "2022-02-01",
             "name": "[concat(parameters('Clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'), '/', parameters('dataconnections_kustodc_name'))]",
             "location": "[parameters('location')]",
             "kind": "EventGrid",
             "properties": {
+                "managedIdentityResourceId": "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]",
                 "storageAccountResourceId": "[resourceId(parameters('subscriptionId'), parameters('resourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('StorageAccounts_storagedemo_name'))]",
                 "eventHubResourceId": "[resourceId(parameters('subscriptionId'), parameters('resourceGroup'), 'Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_eventhubns_name'), parameters('EventHubs_eventhubdemo_name'))]",
                 "consumerGroup": "[parameters('consumergroup_default_name')]",

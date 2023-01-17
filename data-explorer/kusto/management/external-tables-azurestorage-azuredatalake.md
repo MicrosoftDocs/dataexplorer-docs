@@ -16,7 +16,7 @@ For an introduction to the external Azure Storage tables feature, see [Query dat
 
 **Syntax**
 
-(`.create` `|` `.alter` `|` `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
 `kind` `=` `storage`  
 [`partition` `by` `(` *[Partitions](#partitions)* `)` [`pathformat` `=` `(` *[PathFormat](#path-format)* `)`]]  
 `dataformat` `=` *[Format](#format)*  
@@ -28,7 +28,7 @@ Creates or alters a new external table in the database in which the command is e
 > [!NOTE]
 > * If the table exists, `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
 > * The external table is not accessed during creation time. It will only be accessed during query / export. You can use the `validateNotEmpty` (optional) property during creation time to make sure the external table definition is valid and that the underlying storage is accessible.
-> * The operation requires [database user permission](../management/access-control/role-based-authorization.md) for `.create` and [table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
+> * The operation requires [database user permission](../management/access-control/role-based-authorization.md) for `.create` and [table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. When creating or altering an external table using managed identity authentication, [All Databases admin permission](../management/access-control/role-based-authorization.md) is required.
 
 **Parameters**
 
@@ -50,10 +50,13 @@ where *ColumnName* adheres to [entity naming](../query/schema-entities/entity-na
 > [!TIP]
 > If the external data schema is unknown, use the [infer\_storage\_schema](../query/inferstorageschemaplugin.md) plug-in, which helps infer the schema based on external file contents.
 
+> [!TIP]
+> For CSV data files, having files with non-identical schema under the same storage container might result in data appearing shifted or missing. If some CSV files miss columns or have extra columns, move them to a different storage container(s) and define another external table(s) matching their schema, so that each external table covers a set of storage containers containing files of an identical schema.
+
 <a name="kind"></a>
 *Kind*
 
-The type of the external table. In thise case, `storage` should to be used (rather than `sql`).
+The type of the external table. In this case, `storage` should be used (rather than `sql`).
 
 >[!NOTE]
 > Deprecated terms:  `blob` for Blob Azure Storage or Azure Data Lake Gen 2 Storage, `adl` for Azure Data Lake Gen 1 Storage.
@@ -129,7 +132,7 @@ The data format, any of the [ingestion formats](../../ingestion-supported-format
 > Using external table for [export scenario](data-export/export-data-to-an-external-table.md) is limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.
 
 > [!TIP]
-> We recommended using the *Parquet* format for external tables to improve query and export performance unless: you define virtual columns, use JSON paths mapping, or the external table data is in Azure Data Lake Storage (ADLS) Gen1. 
+> We recommended using the *Parquet* format for external tables to improve query and export performance, unless you use JSON paths mapping.
 
 <a name="connection-string"></a>
 *StorageConnectionString*
@@ -247,7 +250,7 @@ external_table("ExternalTable")
 When data is exported from Spark, partition columns (that are provided to the dataframe writer's `partitionBy` method) are not written to data files. 
 This process avoids data duplication because the data is already present in the folder names (for example, `column1=<value>/column2=<value>/`), and Spark can recognize it upon read.
 
-External tables support the following syntax for specifying virtual columns:
+External tables support reading this data in the form of `virtual colums`. Virtual columns can be of either type `string` or `datetime`, and are specified using the following syntax:
 
 ```kusto
 .create external table ExternalTable (EventName:string, Revenue:double)  
@@ -336,7 +339,7 @@ For partitioned table, `Partition` column will contain extracted partition value
 
 `.create` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
 
-Creates a new mapping. For more information, see [Data Mappings](./mappings.md#json-mapping).
+Creates a new mapping. For more information, see [Data Mappings](./json-mapping.md).
 
 **Example** 
  

@@ -3,7 +3,7 @@ title: predict_fl() - Azure Data Explorer
 description: This article describes the predict_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 09/09/2020
+ms.date: 11/08/2022
 ---
 # predict_fl()
 
@@ -29,18 +29,18 @@ The function `predict_fl()` predicts using an existing trained machine learning 
 
 ## Usage
 
-`predict_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`predict_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
 let predict_fl=(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
-    let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
+    let kwargs = bag_pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
     let code = ```if 1:
         
         import pickle
@@ -75,9 +75,9 @@ OccupancyDetection
 | summarize n=count() by Occupancy, pred_Occupancy
 ~~~
 
-# [Persistent](#tab/persistent)
+# [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
@@ -87,7 +87,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 predict_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
-    let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
+    let kwargs = bag_pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
     let code = ```if 1:
         
         import pickle
@@ -138,4 +138,19 @@ TRUE	    TRUE	        3006
 FALSE	    TRUE	        112
 TRUE	    FALSE	        15
 FALSE	    FALSE	        9284
+```
+
+### Model asset
+
+Get sample dataset and pre-trained model in your cluster with Python plugin enabled.
+
+<!-- csl -->
+```kusto
+//dataset
+.set OccupancyDetection <| cluster('help').database('Samples').OccupancyDetection
+
+//model
+.set ML_Models <| datatable(name:string, timestamp:datetime, model:string) [
+'Occupancy', datetime(now), '800363736b6c6561726e2e6c696e6561725f6d6f64656c2e6c6f6769737469630a4c6f67697374696352656772657373696f6e0a7100298171017d710228580700000070656e616c7479710358020000006c32710458040000006475616c7105895803000000746f6c7106473f1a36e2eb1c432d5801000000437107473ff0000000000000580d0000006669745f696e746572636570747108885811000000696e746572636570745f7363616c696e6771094b01580c000000636c6173735f776569676874710a4e580c00000072616e646f6d5f7374617465710b4e5806000000736f6c766572710c58090000006c69626c696e656172710d58080000006d61785f69746572710e4b64580b0000006d756c74695f636c617373710f58030000006f767271105807000000766572626f736571114b00580a0000007761726d5f737461727471128958060000006e5f6a6f627371134b015808000000636c61737365735f7114636e756d70792e636f72652e6d756c746961727261790a5f7265636f6e7374727563740a7115636e756d70790a6e6461727261790a71164b00857117430162711887711952711a284b014b0285711b636e756d70790a64747970650a711c58020000006231711d4b004b0187711e52711f284b0358010000007c71204e4e4e4affffffff4affffffff4b007471216289430200017122747123625805000000636f65665f7124681568164b008571256818877126527127284b014b014b05867128681c5802000000663871294b004b0187712a52712b284b0358010000003c712c4e4e4e4affffffff4affffffff4b0074712d628943286a02e0d50687e0bfc6d7c974fa93a63fb3d3b8080e6e943ffceb15defdad713f14c3a76bd73202bf712e74712f62580a000000696e746572636570745f7130681568164b008571316818877132527133284b014b01857134682b894308f1e89f57711290bf71357471366258070000006e5f697465725f7137681568164b00857138681887713952713a284b014b0185713b681c58020000006934713c4b004b0187713d52713e284b03682c4e4e4e4affffffff4affffffff4b0074713f628943040c00000071407471416258100000005f736b6c6561726e5f76657273696f6e71425806000000302e31392e32714375622e'
+]
 ```

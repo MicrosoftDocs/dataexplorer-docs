@@ -3,12 +3,12 @@ title: Visualize data with the Azure Data Explorer dashboard
 description: Learn how to visualize data with the Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 06/19/2022
+ms.date: 09/05/2022
 ---
 
 # Visualize data with Azure Data Explorer dashboards (Preview)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides a web application that enables you to run queries and build dashboards. Dashboards are available in the stand-alone web application, the [Azure Data Explorer web UI](web-query-data.md). Azure Data Explorer is also integrated with other dashboard services like [Power BI](power-bi-connector.md) and [Grafana](grafana.md).
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides a web application that enables you to run queries and build dashboards. Dashboards are available in the stand-alone web application, the [Azure Data Explorer web UI](web-query-data.md). Azure Data Explorer is also integrated with other dashboard services like [Power BI](power-bi-data-connector.md?tabs=connector) and [Grafana](grafana.md).
 
 Azure Data Explorer dashboards provide three main advantages:
 
@@ -25,7 +25,7 @@ The following image depicts an Azure Data Explorer dashboard.
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
@@ -54,6 +54,7 @@ Add a data source for the dashboard.
     1. Enter a **Data source name**.
     1. Enter the **Cluster URI** region and then select **Connect**.
     1. Select the **Database** from the drop-down list.
+    1. Enter a value for  **Query results cache max age** to enable query results cache on all queries of this data source. The max age can be in units of seconds, hours, or days.
     1. Select **Apply**.
 
     :::image type="content" source="media/adx-dashboards/data-source-pane.png" alt-text="Data source pane.":::
@@ -268,8 +269,8 @@ You can update an existing dashboard, or restore a previous version, as follows:
 >
 > * Select the smallest minimum time interval to reduce unnecessary load on the cluster.
 > * A dashboard viewer:
->     * Can change the minimum time intervals for personal use only.
->     * Can't select a value which is smaller than the **Minimum time interval** specified by the editor.
+>   * Can change the minimum time intervals for personal use only.
+>   * Can't select a value which is smaller than the **Minimum time interval** specified by the editor.
 
 ## Next Steps
 

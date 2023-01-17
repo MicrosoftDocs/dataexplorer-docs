@@ -3,7 +3,7 @@ title: summarize operator - Azure Data Explorer
 description: This article describes summarize operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/25/2022
+ms.date: 12/27/2022
 ms.localizationpriority: high 
 ---
 # summarize operator
@@ -92,6 +92,8 @@ Determine what unique combinations of
 Activities | summarize by ActivityType, completionStatus
 ```
 
+**Output**
+
 |`ActivityType`|`completionStatus`
 |---|---
 |`dancing`|`started`
@@ -101,11 +103,13 @@ Activities | summarize by ActivityType, completionStatus
 
 ### Minimum and maximum timestamp
 
-Finds the minimum and maximum timestamp of all records in the Activities table. There is no group-by clause, so there is just one row in the output:
+Finds the minimum and maximum timestamp of all records in the Activities table. There's no group-by clause, so there's just one row in the output:
 
 ```kusto
 Activities | summarize Min = min(Timestamp), Max = max(Timestamp)
 ```
+
+**Output**
 
 |`Min`|`Max`
 |---|---
@@ -118,6 +122,8 @@ Create a row for each continent, showing a count of the cities in which activiti
 ```kusto
 Activities | summarize cities=dcount(city) by continent
 ```
+
+**Output**
 
 |`cities`|`continent`
 |---|---
@@ -134,6 +140,8 @@ type. Because `Duration` has many values, use `bin` to group its values into 10-
 Activities | summarize count() by ActivityType, length=bin(Duration, 10m)
 ```
 
+**Output**
+
 |`count_`|`ActivityType`|`length`
 |---|---|---
 |`354`| `dancing` | `0:00:00.000`
@@ -146,23 +154,29 @@ Activities | summarize count() by ActivityType, length=bin(Duration, 10m)
 
 ### Aggregates default values
 
-When the input of `summarize` operator has at least one empty group-by key, it's result is empty, too.
+When the input of `summarize` operator has at least one empty group-by key, its result is empty, too.
 
 When the input of `summarize` operator doesn't have an empty group-by key, the result is the default values of the aggregates used in the `summarize`:
 
 ```kusto
 datatable(x:long)[]
-| summarize any(x), arg_max(x, x), arg_min(x, x), avg(x), buildschema(todynamic(tostring(x))), max(x), min(x), percentile(x, 55), hll(x) ,stdev(x), sum(x), sumif(x, x > 0), tdigest(x), variance(x)
+| summarize any_x=take_any(x), arg_max_x=arg_max(x, *), arg_min_x=arg_min(x, *), avg(x), buildschema(todynamic(tostring(x))), max(x), min(x), percentile(x, 55), hll(x) ,stdev(x), sum(x), sumif(x, x > 0), tdigest(x), variance(x)
 ```
 
-|any_x|max_x|max_x_x|min_x|min_x_x|avg_x|schema_x|max_x1|min_x1|percentile_x_55|hll_x|stdev_x|sum_x|sumif_x|tdigest_x|variance_x|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|||||||||||||||||
+**Output**
+
+|any_x|arg_max_x|arg_min_x|avg_x|schema_x|max_x|min_x|percentile_x_55|hll_x|stdev_x|sum_x|sumif_x|tdigest_x|variance_x|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+||||NaN||||||0|0|0||0|
+
+The result of `avg_x(x)` is `NaN` due to dividing by 0.
 
 ```kusto
 datatable(x:long)[]
 | summarize  count(x), countif(x > 0) , dcount(x), dcountif(x, x > 0)
 ```
+
+**Output**
 
 |count_x|countif_|dcount_x|dcountif_x|
 |---|---|---|---|
@@ -173,17 +187,21 @@ datatable(x:long)[]
 | summarize  make_set(x), make_list(x)
 ```
 
+**Output**
+
 |set_x|list_x|
 |---|---|
 |[]|[]|
 
-The aggregate avg sums all the non-nulls and counts only those which participated in the calculation (will not take nulls into account).
+The aggregate avg sums all the non-nulls and counts only those which participated in the calculation (won't take nulls into account).
 
 ```kusto
 range x from 1 to 2 step 1
 | extend y = iff(x == 1, real(null), real(5))
 | summarize sum(y), avg(y)
 ```
+
+**Output**
 
 |sum_y|avg_y|
 |---|---|
@@ -197,6 +215,8 @@ range x from 1 to 2 step 1
 | summarize count(y)
 ```
 
+**Output**
+
 |count_y|
 |---|
 |2|
@@ -206,6 +226,8 @@ range x from 1 to 2 step 1
 | extend y = iff(x == 1, real(null), real(5))
 | summarize make_set(y), make_set(y)
 ```
+
+**Output**
 
 |set_y|set_y1|
 |---|---|

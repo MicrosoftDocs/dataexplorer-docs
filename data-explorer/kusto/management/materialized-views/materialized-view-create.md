@@ -58,7 +58,7 @@ The query used in the materialized view argument is limited by the following rul
 
 * The query shouldn't include any operators that depend on `now()`. For example, the query shouldn't have `where Timestamp > ago(5d)`. Limit the period of time covered by the view using the retention policy on the materialized view.
 
-* The following operators are not supported in the materialized view query: [`order by`](../../query/orderoperator.md), [`sort by`](../../query/sortoperator.md), [`top-nested`](../../query/topnestedoperator.md), [`top`](../../query/topoperator.md), [`partition`](../../query/partitionoperator.md), [`serialize`](../../query/serializeoperator.md).
+* The following operators are not supported in the materialized view query: [`sort`](../../query/sort-operator.md), [`top-nested`](../../query/topnestedoperator.md), [`top`](../../query/topoperator.md), [`partition`](../../query/partitionoperator.md), [`serialize`](../../query/serializeoperator.md).
 
 * Composite aggregations are not supported in the materialized view definition. For instance, instead of the following view: `SourceTable | summarize Result=sum(Column1)/sum(Column2) by Id`, define the materialized view as: `SourceTable | summarize a=sum(Column1), b=sum(Column2) by Id`. During view query time, run - `ViewName | project Id, Result=a/b`. The required output of the view, including the calculated column (`a/b`), can be encapsulated in a [stored function](../../query/functions/user-defined-functions.md). Access the stored function instead of accessing the materialized view directly.
 
@@ -92,16 +92,18 @@ The following are supported in the `with(propertyName=propertyValue)` clause. Al
 |docString|string|A string documenting the materialized view|
 
 > [!WARNING]
+>
 > * A materialized view will be automatically disabled by the system if changes to the source table of the materialized view, or changes in data lead to incompatibility between the materialized view query and the expected materialized view's schema.
 >   * To avoid this error, the materialized view query must be deterministic. For example, the [bag_unpack](../../query/bag-unpackplugin.md) or [pivot](../../query/pivotplugin.md) plugins result in a non-deterministic schema.
 >   * When using an `arg_max(Timestamp, *)` aggregation and when `autoUpdateSchema` is false, changes to the source table can also lead to schema mismatches.
 >     * Avoid this failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)`, or by using the `autoUpdateSchema` option.
 > * Using `autoUpdateSchema` may lead to irreversible data loss when columns in the source table are dropped.
-> Monitor automatic disable of materialized views using the [MaterializedViewResult metric](materialized-view-overview.md#materializedviewresult-metric).  After fixing incompatibility issues, re-enable the view with the [enable materialized view](materialized-view-enable-disable.md) command.
+> * Monitor automatic disable of materialized views using the [MaterializedViewResult metric](materialized-views-monitoring.md#materializedviewresult-metric).
+> * After fixing incompatibility issues, the view should be explicitly re-enabled using the [enable materialized view](materialized-view-enable-disable.md) command.
 
-### Create materialized view over materialized view (preview)
+### Create materialized view over materialized view
 
-A materialized view over another materialized view can only be created when the source materialized view is of kind `take_any(*)` aggregation (deduplication). See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view-preview) and [examples](#examples) below.
+A materialized view over another materialized view can only be created when the source materialized view is of kind `take_any(*)` aggregation (deduplication). See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view) and [examples](#examples) below.
 
 **Syntax":**
 `.create` [`async`] [`ifnotexists`] `materialized-view` <br>
@@ -342,7 +344,7 @@ When creating a materialized view with the `backfill` property, the materialized
     } 
     ```
 
-* If the materialized view includes a *datetime* group-by key, the backfill process supports overriding the [extent creation time](../extents-overview.md#extent-creation-time) based on the *datetime* column. This can be useful, for example, if you would like "older" records to be dropped before recent ones, since the [retention policy](../retentionpolicy.md) is based on the extents creation time. Using this property is only supported if the *datetime* dimension uses the [bin()](../../query/binfunction.md) function. For example, the following backfill will assign creation time based on the `Timestamp` group-by key:
+* If the materialized view includes a *datetime* group-by key, the backfill process supports overriding the [extent creation time](../extents-overview.md#extent-creation-time) based on the *datetime* column. This can be useful, for example, if you would like "older" records to be dropped before recent ones, since the [retention policy](../retentionpolicy.md) is based on the extents creation time. For example, the following backfill will assign creation time based on the `Timestamp` group-by key:
 
    <!-- csl -->
     ```kusto
@@ -425,25 +427,6 @@ The backfill-by-move-extents option can be useful in two main scenarios:
     } 
     ```
 
-## Materialized views limitations and known issues
-
-* A materialized view can't be created:
-    * On top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view-preview).
-    * On [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
-    * On [external tables](../../query/schema-entities/externaltables.md).
-
-* A materialized view only processes new records ingested into the source table. Records which are removed from the source table, either by running [data purge](../../concepts/data-purge.md)/[soft delete](../../concepts/data-soft-delete.md)/[drop extents](../drop-extents.md), or due to [retention policy](../retentionpolicy.md) or any other reason, have no impact on the materialized view. The materialized view has its own [retention policy](materialized-view-policies.md#retention-and-caching-policy), which is independent of the retention policy of the source table. The materialized view might include records which are not present in the source table.
-* The source table of a materialized view:
-  * Must be a table into which data is directly ingested, either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [from query commands](../data-ingestion/ingest-from-query.md).
-    * Using [move extents](../move-extents.md) from other tables to the source table of the materialized view is only supported if using `setNewIngestionTime` property as part of the move extents command (refer to [.move extents](../move-extents.md) command for more details).
-    * Moving extents to the source table of a materialized view, while *not* using `setNewIngestionTime` may fail with one of the following errors:
-        * `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
-        * `Cannot move extents to 'TableName' since materialized view 'ViewName' will not process these extents (can lead to data loss in the materialized view)`.
-* Must have [IngestionTime policy](../ingestiontimepolicy.md) enabled (it is enabled by default).
-* Can't be a table with [restricted view access policy](../restrictedviewaccesspolicy.md).
-* [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
-* Continuous export from a materialized view isn't supported.
-
 ## Cancel materialized-view creation
 
 Cancel the process of materialized view creation when using the `backfill` option. This action is useful when creation is taking too long and you want to abort it while running.  
@@ -451,7 +434,7 @@ Cancel the process of materialized view creation when using the `backfill` optio
 > [!WARNING]
 > The materialized view can't be restored after running this command.
 
-The creation process can't be aborted immediately. The cancel command signals materialization to stop, and the creation periodically checks if cancel was requested. The cancel command waits for a max period of 10 minutes until the materialized view creation process is canceled and reports back if cancellation was successful. Even if the cancellation didn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will most probably abort itself later in the creation process. The [`.show operations`](../operations.md#show-operations) command will indicate if operation was canceled. The `cancel operation` command is only supported for materialized views creation cancellation, and not for canceling any other operations.
+The creation process can't be aborted immediately. The cancel command signals materialization to stop, and the creation periodically checks if a cancel was requested. The cancel command waits for a maximum period of 10 minutes until the materialized view creation process is canceled, and reports back if cancellation was successful. Even if the cancellation didn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will probably abort itself later in the creation process. The [`.show operations`](../operations.md#show-operations) command indicates if the operation was canceled.
 
 ### Syntax
 

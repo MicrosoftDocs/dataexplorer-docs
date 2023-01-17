@@ -1,16 +1,18 @@
 ---
 title: make_list() (aggregation function) - Azure Data Explorer
-description: This article describes make_list() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the make_list() function to create a dynamic JSON object array of all the values of the expressions in the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/23/2020
+ms.date: 12/26/2022
 adobe-target: true
 ---
 # make_list() (aggregation function)
 
-Returns a `dynamic` (JSON) array of all the values of *Expr* in the group.
+Creates a `dynamic` JSON object (array) of all the values of *Expr* in the group.
 
-* Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
+[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+
+> **Deprecated aliases:** makelist()
 
 ## Syntax
 
@@ -18,16 +20,18 @@ Returns a `dynamic` (JSON) array of all the values of *Expr* in the group.
 
 ## Arguments
 
-* *Expr*: Expression that will be used for aggregation calculation.
-* *MaxSize* is an optional integer limit on the maximum number of elements returned (default is *1048576*). MaxSize value cannot exceed 1048576.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *Expr* | dynamic | &check; | Expression used for aggregation calculations. |
+| *MaxSize* | integer |  | The limit on the maximum number of elements returned. The default is *1048576* and can't exceed *1048576*. |
 
 > [!NOTE]
-> `makelist()` is a legacy and obsolete version of the `make_list` function. The legacy version has a default limit of *MaxSize* = 128.
+> The deprecated version has a default *MaxSize* limit of 128.
 
 ## Returns
 
-Returns a `dynamic` (JSON) array of all the values of *Expr* in the group.
-If the input to the `summarize` operator is not sorted, the order of elements in the resulting array is undefined.
+Returns a `dynamic` JSON array of all the values of *Expr* in the group.
+If the input to the `summarize` operator isn't sorted, the order of elements in the resulting array is undefined.
 If the input to the `summarize` operator is sorted, the order of elements in the resulting array tracks that of the input.
 
 > [!TIP]
@@ -37,7 +41,10 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 ### One column
 
-The simplest example is to make a list out of a single column:
+The following example makes a list out of a single column:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz3PzwrCMAwG8HufIuzkYAfF/xNPPoaI1C1sxTadbQYqPrydy0wu4Zfv8llkiK3uMMIRas1pbxZhRtphCZGDoaaAaGo8+Z64BEOcq7OCNFn6amosZgUsi5Hio9dhgJVAwIqn0GQdEuvGU6K1UItPkc1fuim0FfLVJDsR8iSyF6mxElnM1eWgxnLqA7F3TgfzRnAvayKnvk7f8Trcv7r5F8QGBpEMAQAA" target="_blank">Run the query</a>
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
@@ -48,7 +55,7 @@ let shapes = datatable (name: string, sideCount: int)
     "pentagon", 5,
     "hexagon", 6,
     "heptagon", 7,
-    "octogon", 8,
+    "octagon", 8,
     "nonagon", 9,
     "decagon", 10
 ];
@@ -56,13 +63,18 @@ shapes
 | summarize mylist = make_list(name)
 ```
 
+**Results**
+
 |mylist|
 |---|
-|["triangle","square","rectangle","pentagon","hexagon","heptagon","octogon","nonagon","decagon"]|
+|["triangle","square","rectangle","pentagon","hexagon","heptagon","octagon","nonagon","decagon"]|
 
 ### Using the 'by' clause
 
-In the following query, you group using the `by` clause:
+The following example runs a query using the `by` clause:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz3Py26DMBCF4b2f4ggpUiOxIEnTCxWrKE+QZRVVDoyIVTwmeKhK1YePCQZ7Y30+m78hgb/qljwKVFrCvTSEJ9aWcnjpDNcpvKno4HqWHIZlrT4VwknCr+a6oSTFLp3I33rdjfAcoaNS5tFsLbHo2nGgfaQr/UZ5WaSdR6+RXClukrco7Dhu3qNUVEbZZOr8oaY49Q/fW6s780ewQ2O8hF6rv+lrfD9y17gMMP74Q3yae8NoaccKWxQFsjvUEHjHNAEAAA==" target="_blank">Run the query</a>
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
@@ -73,7 +85,7 @@ let shapes = datatable (name: string, sideCount: int)
     "pentagon", 5,
     "hexagon", 6,
     "heptagon", 7,
-    "octogon", 8,
+    "octagon", 8,
     "nonagon", 9,
     "decagon", 10
 ];
@@ -81,14 +93,19 @@ shapes
 | summarize mylist = make_list(name) by isEvenSideCount = sideCount % 2 == 0
 ```
 
+**Results**
+
 |isEvenSideCount| mylist|
 |---|---|
 |false|["triangle","pentagon","heptagon","nonagon"]|
-|true|["square","rectangle","hexagon","octogon","decagon"]|
+|true|["square","rectangle","hexagon","octagon","decagon"]|
 
 ### Packing a dynamic object
 
-You can [pack](./packfunction.md) a dynamic object in a column before making a list out of it, as seen in the following query:
+The following examples show how to [pack](./packfunction.md) a dynamic object in a column before making it a list.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03PTWrDMBAF4L1OMRgKNniR/qcpXoWeIMtSysQaHBFr5FjjkJQevmMshVoLi09vhF5PAvGAA0VowKLo2vcEJaOnDUQZHXc1RGdpGyaWDTiWynwa0K/QU+Sup6KGx3qheJpwnOEpwUit5FC2gViwC6z0nOhAlyQvNxly6DVRaCUssk7CgVPmLYmlNsn9yny9m6Wc+QW6CLEFqz0HbI9lMVfU2Pyr9eG5YvGvbqVzcfIeR/dD4K+9i6LzHo/0Pe9LW8H+Ci5+nIl3eUoTtxvgDh6gaWD1B75NBjppAQAA" target="_blank">Run the query</a>
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
@@ -99,19 +116,21 @@ let shapes = datatable (name: string, sideCount: int)
     "pentagon", 5,
     "hexagon", 6,
     "heptagon", 7,
-    "octogon", 8,
+    "octagon", 8,
     "nonagon", 9,
     "decagon", 10
 ];
 shapes
-| extend d = pack("name", name, "sideCount", sideCount)
+| extend d = bag_pack("name", name, "sideCount", sideCount)
 | summarize mylist = make_list(d) by isEvenSideCount = sideCount % 2 == 0
 ```
+
+**Results**
 
 |mylist|isEvenSideCount|
 |---|---|
 |false|[{"name":"triangle","sideCount":3},{"name":"pentagon","sideCount":5},{"name":"heptagon","sideCount":7},{"name":"nonagon","sideCount":9}]|
-|true|[{"name":"square","sideCount":4},{"name":"rectangle","sideCount":4},{"name":"hexagon","sideCount":6},{"name":"octogon","sideCount":8},{"name":"decagon","sideCount":10}]|
+|true|[{"name":"square","sideCount":4},{"name":"rectangle","sideCount":4},{"name":"hexagon","sideCount":6},{"name":"octagon","sideCount":8},{"name":"decagon","sideCount":10}]|
 
 ## See also
 

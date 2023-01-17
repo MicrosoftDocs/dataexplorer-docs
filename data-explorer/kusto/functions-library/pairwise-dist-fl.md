@@ -15,7 +15,7 @@ The function `pairwise_dist_fl()` calculates the multivariate distance between d
 - All numerical fields are considered numerical variables. They're normalized by transforming to z-scores and the distance is calculated as the absolute value of the difference.
 The total multivariate distance between data points is calculated as the average of the distances between variables.
 
-A distance close to 0 means that the entities are very similar and a distance above 1 means they're very different. Similarly, an entity with an average distance close to or above 1 indicates that it's different from many other entities in the partition, indicating a potential outlier.
+A distance close to zero means that the entities are similar and a distance above 1 means they're different. Similarly, an entity with an average distance close to or above one indicates that it's different from many other entities in the partition, indicating a potential outlier.
 
 The output of the function is pairwise distances between entities under the same partition. It can be used as-is to look for similar or different pairs. such as entities with minimal distances share many common features. It can also be easily transformed to a distance matrix (see the usage example) or used as input for clustering or outlier detection algorithms.
 
@@ -35,11 +35,11 @@ The output of the function is pairwise distances between entities under the same
 
 ## Usage
 
-`pairwise_dist_fl` is a user-defined function. You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`pairwise_dist_fl` is a user-defined function. You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -84,7 +84,7 @@ let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
             project d = generic_dist(pack_array(a), pack_array(a1))
             | summarize d = make_list(d)
         )
-        | extend dist = floor((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
+        | extend dist = bin((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
         | project-away d
         | where entity != entity1
         | sort by _partition asc, entity asc, dist asc
@@ -115,7 +115,7 @@ let raw_data = datatable(name:string, gender: string, height:int, weight:int, li
     'Tweety',   'F',    52,     20,     6,  'Tail',     'Pet' ,
     'Ulfie',    'M',    39,     29,     4,  'Wings',    'Pet',
     'Vinnie',   'F',    53,     22,     1,  'Tail',     'Pet',
-    'Woody',    'F',    51,     21,     4,  'Tail',     'Pet',
+    'Waldo',    'F',    51,     21,     4,  'Tail',     'Pet',
     'Xander',   'M',    50,     24,     4,  'Tail',     'Pet'
 ];
 raw_data
@@ -124,9 +124,9 @@ raw_data
 | evaluate pivot (entity, max(dist), entity1) | sort by entity1 asc
 ```
 
-# [Persistent](#tab/persistent)
+# [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
@@ -174,7 +174,7 @@ let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
             project d = generic_dist(pack_array(a), pack_array(a1))
             | summarize d = make_list(d)
         )
-        | extend dist = floor((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
+        | extend dist = bin((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
         | project-away d
         | where entity != entity1
         | sort by _partition asc, entity asc, dist asc
@@ -243,8 +243,8 @@ raw_data
 Looking at entities of two different types, we would like to calculate distance between entities belonging to the same type, by taking into account both nominal variables (such as gender or preferred accessory) and numerical variables (such as the number of limbs, height, and weight). The numerical variables are on different scales and must be centralized and scaled, which is done automatically. The output is pairs of entities under the same partition with calculated multivariate distance. It can be analyzed directly, visualized as a distance matrix or scatterplot, or used as input data for outlier detection algorithm by calculating mean distance per entity, with entities with high values indicating global outliers.
 For example, when adding an optional visualization using a distance matrix, you get a table as shown in the sample. From the sample, you can see that:
 
- * Some pairs of entities (Betsy and Fanny) have a low distance value (close to 0) indicating they are similar.
- * Some pairs of entities (Godzilla and Elmie) have a high distance value (1 or above) indicating they are different.
+ * Some pairs of entities (Betsy and Fanny) have a low distance value (close to 0) indicating they're similar.
+ * Some pairs of entities (Godzilla and Elmie) have a high distance value (1 or above) indicating they're different.
 
 The output can further be used to calculate the average distance per entity. A high average distance might indicate global outliers. For example, we can see that on average Godzilla has a high distance from the others indicating that it's a probable global outlier.
 

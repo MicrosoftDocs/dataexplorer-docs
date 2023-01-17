@@ -1,9 +1,9 @@
 ---
 title: radians() - Azure Data Explorer
-description: This article describes radians() in Azure Data Explorer.
+description: Learn how to use the radians() function to convert angle values from degrees to radians.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/12/2023
 ---
 # radians()
 
@@ -19,7 +19,7 @@ Converts angle value in degrees into value in radians, using formula `radians = 
 
 ## Returns
 
-* The corresponding angle in radians for an angle specified in degrees. 
+The corresponding angle in radians for an angle specified in degrees.
 
 ## Examples
 
@@ -27,6 +27,8 @@ Converts angle value in degrees into value in radians, using formula `radians = 
 print radians0 = radians(90), radians1 = radians(180), radians2 = radians(360) 
 
 ```
+
+**Output**
 
 |radians0|radians1|radians2|
 |---|---|---|

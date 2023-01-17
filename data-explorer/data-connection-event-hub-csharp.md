@@ -3,14 +3,14 @@ title: 'Create an Event Hubs data connection for Azure Data Explorer by using C#
 description: In this article, you learn how to create an Event Hubs data connection for Azure Data Explorer by using C#.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 03/15/2022
+ms.date: 09/11/2022
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer by using C\#
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [One-click](one-click-event-hub.md)
+> * [Ingestion wizard](./event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
@@ -41,7 +41,7 @@ var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
 var clientSecret = "PlaceholderClientSecret";//Client Secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+var authenticationContext = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 var credential = new ClientCredential(clientId, clientSecret);
 var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
 
@@ -89,6 +89,8 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | location | *Central US* | The location of the data connection resource.|
 | compression | *Gzip* or *None* | The type of data compression. |
 | databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-hub-overview.md#events-routing). |
+
+[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
 
 ## Generate data
 
