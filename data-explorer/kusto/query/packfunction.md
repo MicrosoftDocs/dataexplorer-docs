@@ -1,13 +1,13 @@
 ---
 title: bag_pack() - Azure Data Explorer
-description: This article describes bag_pack() function in Azure Data Explorer.
+description: Learn how to use the bag_pack() function to create a dynamic JSON object from a list of keys and values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/02/2022
+ms.date: 01/08/2023
 ---
 # bag_pack()
 
-Creates a `dynamic` JSON object (property bag) from a list of keys and values.
+Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from a list of keys and values.
 
 > **Deprecated aliases**: pack(), pack_dictionary()
 
@@ -15,19 +15,19 @@ Creates a `dynamic` JSON object (property bag) from a list of keys and values.
 
 `bag_pack(`*key1*`,` *value1*`,` *key2*`,` *value2*`,... )`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*key*| string | &check; | Key name.|
-|*value* | string | &check; | Key value.|
+|*key*| string | &check; | The key name.|
+|*value*| string | &check; | The key value.|
 
 > [!NOTE]
 > The *key* and *value* strings are an alternating list the total length of the list must be even.
 
 ## Returns
 
-Returns a `dynamic` JSON object (property bag) from the listed *key* and *value* inputs.
+Returns a `dynamic` property bag object from the listed *key* and *value* inputs.
 
 ## Examples
 
@@ -35,7 +35,8 @@ Returns a `dynamic` JSON object (property bag) from the listed *key* and *value*
 
 The following example creates and returns a property bag from an alternating list of keys and values.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhKTI8vSEzO1lDySS1LzVHSUVDyzEvLL8pNLMnMzwNxA4ryk1OLiz1dgBxDI2MToJBLYkkikIfQW1oE1lleXq6XlJmXrpecn6ukqQkA9RzT32IAAAA=)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhKTI8vSEzO1lDySS1LzVHSUVDyzEvLL8pNLMnMzwNxA4ryk1OLiz1dgBxDI2MToJBLYkkikIfQW1oE1lleXq6XlJmXrpecn6ukqQkA9RzT32IAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url", "www.bing.com"))
@@ -67,7 +68,8 @@ MmsMessages
 |555-555-1234 |555-555-1212 | 250 | jpeg | Pic2 |
 |555-555-1234 |555-555-1213 | 300 | png | Pic3 |
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61Sy26DMBC88xUrnxKJSmBCD604VDknikRuVVUZWIEJGGQb9aF+fG1olJgmbQ/FwmZ3Zr3MaBvUkLZqg0qxEhUkUDBtVtYgLDwwT9oNMsft0GYo70BpyUXpj8ieyRL1JWRdManW3SD0Me8t4XGESBzHN/YNabQi/nkcUhuvbs3+KzUa44D4c+Z0ybwyogS8p3uvMXI3/y73QWuWVy0KnfJ3vIbt3/qr2Ja1+JNVc1WTfhoE9qh7LO2543n43ZDLLtN4Xkr/UDp2jaauvThWRsRaez5F3gfUHRdw4KJIuBAoHdc74dhs2PiqURSwY/kBiyRj5XNvPhfkNEim1ykwfV3PDeomHIZ13mHYhMOw/jsMm1haHS8VSnR+F5JkZpKh9bKrMdcO0XdGxv9S9wkokKY3cgMAAA==)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61Sy26DMBC88xUrnxKJSmBCD604VDknikRuVVUZWIEJGGQb9aF+fG1olJgmbQ/FwmZ3Zr3MaBvUkLZqg0qxEhUkUDBtVtYgLDwwT9oNMsft0GYo70BpyUXpj8ieyRL1JWRdManW3SD0Me8t4XGESBzHN/YNabQi/nkcUhuvbs3+KzUa44D4c+Z0ybwyogS8p3uvMXI3/y73QWuWVy0KnfJ3vIbt3/qr2Ja1+JNVc1WTfhoE9qh7LO2543n43ZDLLtN4Xkr/UDp2jaauvThWRsRaez5F3gfUHRdw4KJIuBAoHdc74dhs2PiqURSwY/kBiyRj5XNvPhfkNEim1ykwfV3PDeomHIZ13mHYhMOw/jsMm1haHS8VSnR+F5JkZpKh9bKrMdcO0XdGxv9S9wkokKY3cgMAAA==" target="_blank">Run the query</a>
 
 ```kusto
 let SmsMessages = datatable (

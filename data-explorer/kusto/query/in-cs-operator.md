@@ -1,9 +1,9 @@
 ---
 title: The case-sensitive in string operator - Azure Data Explorer
-description: This article describes the case-sensitive in string operator in Azure Data Explorer.
+description: Learn how to use the in operator to filter data with a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/19/2021
+ms.date: 12/19/2022
 ---
 # in operator
 
@@ -24,19 +24,18 @@ The following table provides a comparison of the `in` operators:
 > * The expression list can produce up to `1,000,000` values.
 > * Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 ## Performance tips
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator, for example, `in`, not `in~`. For best practices, see [Query best practices](best-practices.md).
+For faster results, use the case-sensitive version of an operator. For example, use `in` instead of `in~`.
 
 ## Syntax
 
-*T* `|` `where` *col* `in` `(`*list of scalar expressions*`)`   
-*T* `|` `where` *col* `in` `(`*tabular expression*`)`   
+*T* `|` `where` *col* `in` `(`*list of scalar expressions*`)`
+*T* `|` `where` *col* `in` `(`*tabular expression*`)`
 
 ## Arguments
 
@@ -123,7 +122,7 @@ StormEvents
 let Lightning_By_State = materialize(StormEvents | summarize lightning_events = countif(EventType == 'Lightning') by State);
 let Top_5_States = Lightning_By_State | top 5 by lightning_events | project State; 
 Lightning_By_State
-| extend State = iif(State in (Top_5_States), State, "Other")
+| extend State = iff(State in (Top_5_States), State, "Other")
 | summarize sum(lightning_events) by State 
 ```
 

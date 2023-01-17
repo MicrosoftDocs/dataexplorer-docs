@@ -38,7 +38,7 @@ Alternative form with no piped input:
 called *ColumnName* whose value indicates which source table has contributed each row.
 If the query effectively (after wildcard matching) references tables from more than one database (default database always counts) the value of this column will have a table name qualified with the database.
 Similarly __cluster and database__ qualifications will be present in the value if more than one cluster is referenced. 
-* `isfuzzy=` `true` | `false`: If `isfuzzy` is set to `true` - allows fuzzy resolution of union legs. `Fuzzy` applies to the set of `union` sources. It means that while analyzing the query and preparing for execution, the set of union sources is reduced to the set of table references that exist and are accessible at the time. If at least one such table was found, any resolution failure will yield a warning in the query status results (one for each missing reference), but will not prevent the query execution; if no resolutions were successful - the query will return an error.
+* `isfuzzy=` `true` | `false`: If `isfuzzy` is set to `true` - allows fuzzy resolution of union legs. `Fuzzy` applies to the set of `union` sources. It means that while analyzing the query and preparing for execution, the set of union sources is reduced to the set of table references that exist and are accessible at the time. If at least one such table was found, any resolution failure will yield a warning in the query status results (one for each missing reference), but will not prevent the query execution; if no resolutions were successful - the query will return an error. 
 The default is `isfuzzy=` `false`.
 * *UnionParameters*: Zero or more (space-separated) parameters in the form of
   *Name* `=` *Value* that control the behavior
@@ -68,7 +68,7 @@ The default is `isfuzzy=` `false`.
 called *ColumnName* whose value indicates which source table contributed each row.
 If the query effectively (after wildcard matching) references tables from more than one database (default database always counts) the value of this column will have a table name qualified with the database.
 Similarly, the __cluster and database__ qualifications will be present in the value if more than one cluster is referenced. 
-* `isfuzzy=` `true` | `false`: If `isfuzzy` is set to `true` - allows fuzzy resolution of union legs. `Fuzzy` applies to the set of `union` sources. It means that while analyzing the query and preparing for execution, the set of union sources is reduced to the set of table references that exist and are accessible at the time. If at least one such table was found, any resolution failure will yield a warning in the query status results (one for each missing reference), but will not prevent the query execution; if no resolutions were successful - the query will return an error.
+* `isfuzzy=` `true` | `false`: If `isfuzzy` is set to `true` - allows fuzzy resolution of union legs. `Fuzzy` applies to the set of `union` sources. It means that while analyzing the query and preparing for execution, the set of union sources is reduced to the set of table references that exist and are accessible at the time. If at least one such table was found, any resolution failure will yield a warning in the query status results (one for each missing reference), but will not prevent the query execution; if no resolutions were successful - the query will return an error. However, in cross-workspace and cross-app queries, if any of the workspaces or apps is not found, the query will fail.
 The default is `isfuzzy=false`.
 
 ::: zone-end
@@ -149,6 +149,8 @@ union isfuzzy=true
 | count 
 ```
 
+**Output**
+
 |Count|
 |---|
 |2|
@@ -165,6 +167,8 @@ union isfuzzy=true View*, SomeView*, OtherView*
 | count 
 ```
 
+**Output**
+
 |Count|
 |---|
 |3|
@@ -180,6 +184,8 @@ let View_2 = view () { print x=toint(2) };
 union withsource=TableName View_1, View_2
 ```
 
+**Output**
+
 |TableName|x_long|x_int|
 |---------|------|-----|
 |View_1   |1     |     |
@@ -191,6 +197,8 @@ let View_2 = view () { print x=toint(2) };
 let View_3 = view () { print x_long=3 };
 union withsource=TableName View_1, View_2, View_3 
 ```
+
+**Output**
 
 |TableName|x_long1|x_int |x_long|
 |---------|-------|------|------|

@@ -7,7 +7,7 @@ ms.date: 11/20/2022
 ---
 # series_mv_oc_anomalies_fl()
 
-The function `series_mv_oc_anomalies_fl()` detects multivariate anomalies in series by applying the [One Class SVM model](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html). The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function trains one class SVM for each series and marks the points that fall outside the hyper sphere as anomalies.
+The function `series_mv_oc_anomalies_fl()` detects multivariate anomalies in series by applying the [One Class SVM model from scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html). The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function trains one class SVM for each series and marks the points that fall outside the hyper sphere as anomalies.
 
 > [!NOTE]
 >
@@ -28,11 +28,11 @@ The function `series_mv_oc_anomalies_fl()` detects multivariate anomalies in ser
 
 ## Usage
 
-`series_mv_oc_anomalies_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`series_mv_oc_anomalies_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-### [Ad hoc](#tab/adhoc)
+### [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -66,9 +66,9 @@ normal_2d_with_anomalies
 | render timechart
 ```
 
-### [Persistent](#tab/persistent)
+### [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One time installation
 

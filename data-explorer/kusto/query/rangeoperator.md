@@ -1,6 +1,6 @@
 ---
 title: range operator - Azure Data Explorer
-description: This article describes range operator in Azure Data Explorer.
+description: Learn how to use the range operator to generate a single-column table of values.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/13/2020
@@ -21,9 +21,9 @@ Notice that it doesn't have a pipeline input.
 * *start*: The smallest value in the output.
 * *stop*: The highest value being generated in the output (or a bound
 on the highest value, if *step* steps over this value).
-* *step*: The difference between two consecutive values. 
+* *step*: The difference between two consecutive values.
 
-The arguments must be numeric, date or timespan values. They can't reference the columns of any table. (If you want to compute the range based on an input table, use the range function, maybe with the mv-expand operator.) 
+The arguments must be numeric, date or timespan values. They can't reference the columns of any table. (If you want to compute the range based on an input table, use the range function, maybe with the mv-expand operator.)
 
 ## Returns
 
@@ -39,13 +39,14 @@ A table of midnight at the past seven days. The bin (floor) function reduces eac
 range LastWeek from ago(7d) to now() step 1d
 ```
 
+**Output**
+
 |LastWeek|
 |---|
 |2015-12-05 09:10:04.627|
 |2015-12-06 09:10:04.627|
 |...|
 |2015-12-12 09:10:04.627|
-
 
 A table with a single column called `Steps`
 whose type is `long` and whose values are `1`, `4`, and `7`.
@@ -55,8 +56,7 @@ whose type is `long` and whose values are `1`, `4`, and `7`.
 range Steps from 1 to 8 step 3
 ```
 
-The next example shows how the `range` operator can be used to create
-a small, ad-hoc, dimension table which is then used to introduce zeros where the source data has no values.
+The next example shows how the `range` operator can be used to create a small, ad-hoc, dimension table that is then used to introduce zeros where the source data has no values.
 
 ```kusto
 range TIMESTAMP from ago(4h) to now() step 1m

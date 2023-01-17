@@ -1,9 +1,9 @@
 ---
 title: mv-apply operator - Azure Data Explorer
-description: This article describes mv-apply operator in Azure Data Explorer.
+description: Learn how to use the mv-apply operator to apply a subquery to each record and union the results of each subquery.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 12/26/2022
 ---
 # mv-apply operator
 
@@ -38,7 +38,7 @@ The `mv-apply` operator gets the following inputs:
 
 1. Optionally, the names to assign the values of the expressions after expansion.
    These names become the columns names in the subtables.
-   If not specified, the original name of the column is used when the expression is a column reference. A random name is used otherwise. 
+   If not specified, the original name of the column is used when the expression is a column reference. A random name is used otherwise.
 
    > [!NOTE]
    > It is recommended to use the default column names.
@@ -82,7 +82,7 @@ and *SubQuery* has the same syntax of any query statement.
 * *Name*: If used, the name to assign the array-expanded values of each
   array-expanded expression.
   If not specified, the name of the column will be used if available.
-  A random name is generated if *ArrayExpression* is not a simple column name.
+  A random name is generated if *ArrayExpression* isn't a simple column name.
 
 * *ArrayExpression*: An expression of type `dynamic` whose values will be array-expanded.
   If the expression is the name of a column in the input, the input column is
@@ -90,7 +90,7 @@ and *SubQuery* has the same syntax of any query statement.
   specified) appears in the output.
 
 * *Typename*: If used, the name of the type that the individual elements of the
-  `dynamic` array *ArrayExpression* take. Elements that do not conform to this
+  `dynamic` array *ArrayExpression* take. Elements that don't conform to this
   type will be replaced by a null value.
   (If unspecified, `dynamic` is used by default.)
 
@@ -101,12 +101,8 @@ and *SubQuery* has the same syntax of any query statement.
 * *SubQuery*: A tabular query expression with an implicit tabular source that gets
   applied to each array-expanded subtable.
 
-**Notes**
-
-* Unlike the [`mv-expand`](./mvexpandoperator.md) operator, the `mv-apply` operator
-  does not support `bagexpand=array` expansion. If the expression to be expanded
-  is a property bag and not an array, it is possible to use an inner `mv-expand`
-  operator (see example below).
+>[!NOTE]
+> Unlike the [`mv-expand`](./mvexpandoperator.md) operator, the `mv-apply` operator doesn't support `bagexpand=array` expansion. If the expression to be expanded is a property bag and not an array, you can use an inner `mv-expand` operator (see example below).
 
 ## Examples
 
@@ -123,6 +119,8 @@ _data
    top 1 by element
 )
 ```
+
+**Output**
 
 |`xMod2`|l           |element|
 |-----|------------|-------|
@@ -144,6 +142,8 @@ _data
 )
 ```
 
+**Output**
+
 |`xMod2`|l        |SumOfTop2|
 |-----|---------|---------|
 |1    |[1,3,5,7]|12       |
@@ -164,6 +164,8 @@ _data
 )
 | project index, element
 ```
+
+**Output**
 
 |index|element|
 |---|---|
@@ -195,11 +197,12 @@ datatable(SourceNumber:string,TargetNumber:string,CharsCount:long)
 | project-away propsToRemove
 ```
 
+**Output**
+
 |SourceNumber|TargetNumber|CharsCount|values
 |---|---|---|---|
 |555-555-1234|555-555-1212|46|{<br> "SourceNumber": "555-555-1234",<br>   "TargetNumber": "555-555-1212"<br> }|
 |555-555-1212|&nbsp;|&nbsp;|{<br> "SourceNumber": "555-555-1212"<br> }|
-
 
 ## See also
 

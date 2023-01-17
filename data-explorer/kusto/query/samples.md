@@ -127,47 +127,47 @@ Add code to count the durations in conveniently sized bins. In this example, bec
 
 ```kusto
 Logs
-| filter ActivityId == "ActivityId with Blablabla"
+| where ActivityId == "ActivityId with Blablabla"
 | summarize max(Timestamp), min(Timestamp)
 | extend Duration = max_Timestamp - min_Timestamp
 
 wabitrace
-| filter Timestamp >= datetime(2015-01-12 11:00:00Z)
-| filter Timestamp < datetime(2015-01-12 13:00:00Z)
-| filter EventText like "NotifyHadoopApplicationJobPerformanceCounters"
+| where Timestamp >= datetime(2015-01-12 11:00:00Z)
+| where Timestamp < datetime(2015-01-12 13:00:00Z)
+| where EventText like "NotifyHadoopApplicationJobPerformanceCounters"
 | extend Tenant = extract("tenantName=([^,]+),", 1, EventText)
 | extend Environment = extract("environmentName=([^,]+),", 1, EventText)
 | extend UnitOfWorkId = extract("unitOfWorkId=([^,]+),", 1, EventText)
 | extend TotalLaunchedMaps = extract("totalLaunchedMaps=([^,]+),", 1, EventText, typeof(real))
 | extend MapsSeconds = extract("mapsMilliseconds=([^,]+),", 1, EventText, typeof(real)) / 1000
 | extend TotalMapsSeconds = MapsSeconds  / TotalLaunchedMaps
-| filter Tenant == 'DevDiv' and Environment == 'RollupDev2'
-| filter TotalLaunchedMaps > 0
+| where Tenant == 'DevDiv' and Environment == 'RollupDev2'
+| where TotalLaunchedMaps > 0
 | summarize sum(TotalMapsSeconds) by UnitOfWorkId
 | extend JobMapsSeconds = sum_TotalMapsSeconds * 1
 | project UnitOfWorkId, JobMapsSeconds
 | join (
 wabitrace
-| filter Timestamp >= datetime(2015-01-12 11:00:00Z)
-| filter Timestamp < datetime(2015-01-12 13:00:00Z)
-| filter EventText like "NotifyHadoopApplicationJobPerformanceCounters"
+| where Timestamp >= datetime(2015-01-12 11:00:00Z)
+| where Timestamp < datetime(2015-01-12 13:00:00Z)
+| where EventText like "NotifyHadoopApplicationJobPerformanceCounters"
 | extend Tenant = extract("tenantName=([^,]+),", 1, EventText)
 | extend Environment = extract("environmentName=([^,]+),", 1, EventText)
 | extend UnitOfWorkId = extract("unitOfWorkId=([^,]+),", 1, EventText)
 | extend TotalLaunchedReducers = extract("totalLaunchedReducers=([^,]+),", 1, EventText, typeof(real))
 | extend ReducesSeconds = extract("reducesMilliseconds=([^,]+)", 1, EventText, typeof(real)) / 1000
 | extend TotalReducesSeconds = ReducesSeconds / TotalLaunchedReducers
-| filter Tenant == 'DevDiv' and Environment == 'RollupDev2'
-| filter TotalLaunchedReducers > 0
+| where Tenant == 'DevDiv' and Environment == 'RollupDev2'
+| where TotalLaunchedReducers > 0
 | summarize sum(TotalReducesSeconds) by UnitOfWorkId
 | extend JobReducesSeconds = sum_TotalReducesSeconds * 1
 | project UnitOfWorkId, JobReducesSeconds )
 on UnitOfWorkId
 | join (
 wabitrace
-| filter Timestamp >= datetime(2015-01-12 11:00:00Z)
-| filter Timestamp < datetime(2015-01-12 13:00:00Z)
-| filter EventText like "NotifyHadoopApplicationJobPerformanceCounters"
+| where Timestamp >= datetime(2015-01-12 11:00:00Z)
+| where Timestamp < datetime(2015-01-12 13:00:00Z)
+| where EventText like "NotifyHadoopApplicationJobPerformanceCounters"
 | extend Tenant = extract("tenantName=([^,]+),", 1, EventText)
 | extend Environment = extract("environmentName=([^,]+),", 1, EventText)
 | extend JobName = extract("jobName=([^,]+),", 1, EventText)
@@ -182,7 +182,7 @@ wabitrace
 | extend TotalMapsSeconds = MapsSeconds  / TotalLaunchedMaps
 | extend TotalReducesSeconds = (ReducesSeconds / TotalLaunchedReducers / ReducesSeconds) * ReducesSeconds
 | extend CalculatedDuration = (TotalMapsSeconds + TotalReducesSeconds) * time(1s)
-| filter Tenant == 'DevDiv' and Environment == 'RollupDev2')
+| where Tenant == 'DevDiv' and Environment == 'RollupDev2')
 on UnitOfWorkId
 | extend MapsFactor = TotalMapsSeconds / JobMapsSeconds
 | extend ReducesFactor = TotalReducesSeconds / JobReducesSeconds
@@ -225,6 +225,8 @@ Instead of keeping those arrays, expand them by using [mv-expand](./mvexpandoper
 ```kusto
 X | mv-expand samples = range(bin(StartTime, 1m), StopTime , 1m)
 ```
+
+**Output**
 
 |SessionId | StartTime | StopTime  | samples|
 |---|---|---|---|
@@ -332,6 +334,8 @@ Logs
 | project count_, Message
 ```
 
+**Output**
+
 |count_|Message
 |---|---
 |7125|ExecuteAlgorithmMethod for method 'RunCycleFromInterimData' has failed...
@@ -354,6 +358,8 @@ Logs
 | reduce by Message with threshold=0.35
 | project Count, Pattern
 ```
+
+**Output**
 
 |Count|Pattern
 |---|---
@@ -381,6 +387,8 @@ Logs
 | where Level == "e" and Service == "Inferences.UnusualEvents_Main"
 | evaluate autocluster()
 ```
+
+**Output**
 
 |Count |Percentage (%)|Component|Cluster|Message
 |---|---|---|---|---
@@ -438,6 +446,8 @@ let phone_mapping = dynamic(
 Source
 | project FriendlyName = phone_mapping[DeviceModel], Count
 ```
+
+**Output**
 
 |FriendlyName|Count|
 |---|---|
@@ -639,11 +649,11 @@ let _start = datetime(2018-09-24);
 let _end = _start + 13d;
 Fruits
 | extend _bin = bin_at(Timestamp, 1d, _start) // #1
-| extend _endRange = iif(_bin + 7d > _end, _end,
+| extend _endRange = iff(_bin + 7d > _end, _end,
                             iff( _bin + 7d - 1d < _start, _start,
                                 iff( _bin + 7d - 1d < _bin, _bin,  _bin + 7d - 1d)))  // #2
 | extend _range = range(_bin, _endRange, 1d) // #3
-| mv-expand _range to typeof(datetime) limit 1000000 // #4
+| mv-expand _range to typeof(datetime) take 1000000 // #4
 | summarize min(Price), max(Price), sum(Price) by Timestamp=bin_at(_range, 1d, _start) ,  Fruit // #5
 | where Timestamp >= _start + 7d; // #6
 
@@ -710,6 +720,8 @@ let B = datatable(Timestamp:datetime, ID:string, EventB:string)
 ];
 A; B
 ```
+
+**Output**
 
 |Timestamp|ID|EventB|
 |---|---|---|
@@ -790,6 +802,8 @@ B_events
 | summarize arg_min(diff, *) by ID
 | project ID, B_Timestamp, A_Timestamp, EventB, EventA
 ```
+
+**Output**
 
 |ID|B_Timestamp|A_Timestamp|EventB|EventA|
 |---|---|---|---|---|
@@ -1308,6 +1322,8 @@ Heartbeat
 | summarize distinct_computers=dcountif(Computer, OSType=="Linux") by RemoteIPCountry
 ```
 
+**Output**
+
 |RemoteIPCountry  | distinct_computers  |
 ------------------|---------------------|
 |United States 	  | 19          		|
@@ -1617,7 +1633,7 @@ Nested objects are objects that contain other objects in an array or in a map of
 
 ### Work with JSON strings
 
-Use `extractjson` to access a specific JSON element in a known path. This function requires a path expression that uses the following conventions:
+Use `extractjson` or `extract_json()` to access a specific JSON element in a known path. This function requires a path expression that uses the following conventions:
 
 - Use _$_ to refer to the root folder.
 - Use the bracket or dot notation to refer to indexes and elements as illustrated in the following examples.
@@ -1627,7 +1643,7 @@ Use brackets for indexes and dots to separate elements:
 ```kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report
-| extend status = extractjson("$.hosts[0].status", hosts_report)
+| extend status = extract_json("$.hosts[0].status", hosts_report)
 ```
 
 This example is similar, but it uses only the brackets notation:
@@ -1635,7 +1651,7 @@ This example is similar, but it uses only the brackets notation:
 ```kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report
-| extend status = extractjson("$['hosts'][0]['status']", hosts_report)
+| extend status = extract_json("$['hosts'][0]['status']", hosts_report)
 ```
 
 For only one element, you can use only the dot notation:

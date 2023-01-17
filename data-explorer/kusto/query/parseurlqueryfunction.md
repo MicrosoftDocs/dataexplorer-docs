@@ -1,13 +1,13 @@
 ---
 title: parse_urlquery() - Azure Data Explorer
-description: This article describes parse_urlquery() in Azure Data Explorer.
+description: Learn how to use the parse_urlquery() function to return a dynamic object that contains the query parameters.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 01/08/2023
 ---
 # parse_urlquery()
 
-Returns a `dynamic` object contains the Query parameters.
+Returns a `dynamic` object that contains the query parameters.
 
 > **Deprecated aliases:** parseurlquery()
 
@@ -17,7 +17,10 @@ Returns a `dynamic` object contains the Query parameters.
 
 ## Arguments
 
-* *query*: A string represents a url query.
+*query*: A string representing a URL query.
+
+> [!NOTE]
+> The input format should follow URL query standards (key=value& ...).
 
 ## Returns
 
@@ -55,8 +58,3 @@ result:
 | UrlQuery | view | preserve |
 |--|--|--|
 |view=vs-2019&preserve-view=true|vs-2019|true|
-
-**Notes**
-
-* Input format should follow URL query standards (key=value& ...)
- 

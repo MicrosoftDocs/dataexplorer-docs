@@ -1,35 +1,36 @@
 ---
 title: hll_merge() - Azure Data Explorer
-description: This article describes hll_merge() in Azure Data Explorer.
+description: Learn how to use the hll_merge() function toe merge HLL results.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/18/2022
+ms.date: 12/28/2022
 ---
 # hll_merge()
 
-Merges `hll` results (scalar version of the aggregate version [`hll_merge()`](hll-merge-aggfunction.md)).
+Merges HLL results. This is the scalar version of the aggregate version [`hll_merge()`](hll-merge-aggfunction.md).
 
 Read about the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy](#estimation-accuracy).
 
 ## Syntax
 
-`hll_merge(` *Expr1*`,` *Expr2*`, ...)`
+`hll_merge(` *hll*`,` *hll2*`,` [ *hll3*`,` ... ]`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*Expr*|string|&check;|Columns that have `hll` values to be merged.|
+|*hll*, *hll2*, ... |string|&check;|The column names containing HLL values to merge. The function expects between 2-64 arguments.|
 
 ## Returns
 
-Returns one `hll` value which is the result of merging the columns `*Exrp1*`, `*Expr2*`, ... `*ExprN*`.
+Returns one HLL value. The value is the result of merging the columns *hll*, *hll2*, ... *hllN*.
 
 ## Examples
 
 This example shows the value of the merged columns.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMQQ6DMAwE75X4wx6J6KE8gLdEiLi0iCTIGCmp+vg6gUtP1uzsmscwExKeHD16SET/wC60KTS3LygJBYeMQUudyhLuh/cjvz+E17rapE5vm8y9cr44m9LdOC40CTzxTO5UtkJbx9fmr+umeASx5ck5Mz9Hg5B+pwAAAA==)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMQQ6DMAwE75X4wx6J6KE8gLdEiLi0iCTIGCmp+vg6gUtP1uzsmscwExKeHD16SET/wC60KTS3LygJBYeMQUudyhLuh/cjvz+E17rapE5vm8y9cr44m9LdOC40CTzxTO5UtkJbx9fmr+umeASx5ck5Mz9Hg5B+pwAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 range x from 1 to 10 step 1 
@@ -38,6 +39,8 @@ range x from 1 to 10 step 1
 | project merged = hll_merge(hll_x, hll_y)
 | project dcount_hll(merged)
 ```
+
+**Output**
 
 |`dcount_hll_merged`|
 |---|

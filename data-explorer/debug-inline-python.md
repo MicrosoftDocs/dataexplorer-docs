@@ -3,7 +3,7 @@ title: Debug Kusto query language inline Python using VS Code - Azure Data Explo
 description: Learn how to debug Kusto query language (KQL) inline Python using VS Code.
 ms.reviewer: adieldar
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 11/08/2022
 ---
 
 # Debug Kusto query language inline Python using VS Code
@@ -53,7 +53,7 @@ Kusto query language tools aren't convenient for developing and debugging Python
     'exp = kargs["exp"]\n'
     'result = df\n'
     'result["x4"] = df["x"].pow(exp)\n'
-    , pack('exp', 4))
+    , bag_pack('exp', 4))
     ```
 
     See the resulting table:
@@ -74,7 +74,7 @@ Kusto query language tools aren't convenient for developing and debugging Python
     'exp = kargs["exp"]\n'
     'result = df\n'
     'result["x4"] = df["x"].pow(exp)\n'
-    , pack('exp', 4))
+    , bag_pack('exp', 4))
     ```
 
 1. VS Code is launched:

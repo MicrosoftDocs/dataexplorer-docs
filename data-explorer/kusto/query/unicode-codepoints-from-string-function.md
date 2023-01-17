@@ -28,31 +28,40 @@ See [`unicode_codepoints_to_string()`](unicode-codepoints-to-string-function.md)
 
 ## Examples
 
-[**Run the Query**](https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVSjNy0zOT0mNBxEF+UDx4vi0ovzc+OISoKJ0DaVHk5Y9mrTh0aR1jyatfzRplZImADy1iJs9AAAA)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVSjNy0zOT0mNBxEF+UDx4vi0ovzc+OISoKJ0DaVHk5Y9mrTh0aR1jyatfzRplZImADy1iJs9AAAA" target="_blank">Run the query</a>
 
 ```kusto
 print arr = unicode_codepoints_from_string("⒦⒰⒮⒯⒪")
 ```
 
+**Output**
+
 |arr|
 |---|
 |[9382, 9392, 9390, 9391, 9386]|
 
-[**Run the Query**](https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVSjNy0zOT0mNBxEF+UDx4vi0ovzc+OISoKJ0DaXry69Pvb7w+ozrUxV0FbxLi0vylTQBiYjgf0AAAAA=)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVSjNy0zOT0mNBxEF+UDx4vi0ovzc+OISoKJ0DaXry69Pvb7w+ozrUxV0FbxLi0vylTQBiYjgf0AAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 print arr = unicode_codepoints_from_string("קוסטו - Kusto")
 ```
 
+**Output**
+
 |arr|
 |---|
 |[1511, 1493, 1505, 1496, 1493, 32, 45, 32, 75, 117, 115, 116, 111]|
 
-[**Run the Query**](https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUSguKVKwVSjNy0zOT0mNBxEF+UDx4viS/HigXGZeugYWybSi/FyYtJJ3aXFJvpKmJgA5JJpZUQAAAA==)
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUSguKVKwVSjNy0zOT0mNBxEF+UDx4viS/HigXGZeugYWybSi/FyYtJJ3aXFJvpKmJgA5JJpZUQAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 print str = unicode_codepoints_to_string(unicode_codepoints_from_string("Kusto"))
 ```
+
+**Output**
 
 |str|
 |---|

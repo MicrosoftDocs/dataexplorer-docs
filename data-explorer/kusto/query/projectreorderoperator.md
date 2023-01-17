@@ -1,13 +1,13 @@
 ---
 title: project-reorder operator - Azure Data Explorer
-description: This article describes project-reorder operator in Azure Data Explorer.
+description: Learn how to use the project-reorder operator to reorder columns in the output table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/12/2023
 ---
 # project-reorder operator
 
-Reorders columns in the result output.
+Reorders columns in the output table.
 
 ```kusto
 T | project-reorder Col2, Col1, Col* asc
@@ -27,6 +27,7 @@ T | project-reorder Col2, Col1, Col* asc
   If no explicit ordering is specified, the order is determined by the matching columns as they appear in the source table.
 
 > [!NOTE]
+>
 > * In ambiguous *ColumnNameOrPattern* matching, the column appears in the first position matching the pattern.
 > * Specifying columns for the `project-reorder` is optional. Columns that aren't specified explicitly appear as the last columns of the output table.
 > * To remove columns, use [`project-away`](projectawayoperator.md).
@@ -47,6 +48,8 @@ print a='a', b='b', c='c'
 |  project-reorder b
 ```
 
+**Output**
+
 |b|a|c|
 |---|---|---|
 |b|a|c|
@@ -58,6 +61,8 @@ Reorder columns of a table so that columns starting with `a` will appear before 
 print b = 'b', a2='a2', a3='a3', a1='a1'
 |  project-reorder a* asc
 ```
+
+**Output**
 
 |a1|a2|a3|b|
 |---|---|---|---|
