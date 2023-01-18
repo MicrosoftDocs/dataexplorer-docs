@@ -24,21 +24,20 @@ The examples in this tutorial use the `StormEvents` table, which is publicly ava
 
 ## Join data from multiple tables
 
-When analyzing your data, you may want to join data from multiple tables in order to combine information from different sources and gain a more comprehensive understanding of the data.
-
-The [join](../joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns and perform analysis on a combined data set.
+Joining data from multiple tables can provide a more complete understanding of your data. The [join](../joinoperator.md) operator is used to combine rows from different tables based on matching values in specified columns, which allows for analysis on the combined dataset.
 
 Like `join`, the [lookup](../lookupoperator.md) operator also combines rows from tables based on matching values in specified columns. However, there are several differences to consider, such as how each operator handles repeated columns, the types of lookups supported, performance considerations, and the size of the tables being joined.
 
 ### Cross-table joins
 
-There's a separate table in the sample database called `PopulationData`. Use `take` to see what data this table contains.
+There's another table in the [Samples database](https://dataexplorer.azure.com/clusters/help/databases/Samples) called `PopulationData`. Use `take` to see what data this table contains.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwvILyjNSSzJzM9zSSxJVKhRKEnMTlUwNAAAWLY+MRgAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwvILyjNSSzJzM9zSSxJVOCqUShJzE5VMAUAJEMCyxgAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-PopulationData | take 10
+PopulationData 
+| take 5
 ```
 
 **Output**
@@ -50,14 +49,13 @@ PopulationData | take 10
 |ARIZONA|7399410|
 |ARKANSAS|3025880|
 |CALIFORNIA|39562900|
-|...|...|
 
 The table contains a `State` column just like the one in the `StormEvents` table, and one more column showing the population of that state.
 
 Join the `PopulationData` table with `StormEvents` on the `State` column to find the total property damage caused by storms per capita by state.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOQQrCQAxF94J3yFJB8ASzsu4LPUHUIKlOMqYZodLDt2MRpeAy//NefuNq8fgk8W69GqDLMaLxi6A2TWTeVxjxShBKtZmPT7WFUw+No1NBW2WBG8slsAhZFn7kSaMp39FZpUJHUPkCybSls8/BbvGwJjtg4gkJyyn7H+l7s5qXJX8EI25L+sbiAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOQQrCQAxF954iSwXBE8yqdV/oCaIGSXWSMc0IFQ/fGYoiBZefn/fzeleLxyeJj5s3jDlGNH4RdKaJzKcWI14JQq22S/hUOzhN0Ds6FXJQFrixXAKLkGXhRy4rmvIdnVVadASV730yHejsS96v3nVkDSYuRFiLHH42q7CaV40//AyUi5Na3gAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -70,13 +68,13 @@ StormEvents
 Add `| render columnchart` to the query to visualize the result.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOQQrCQAxF94J3yFJB8ARdWfeFniC2QVM7yZhmhIqHt2MRpeAy+Xk/r3a1cLyT+LBePWFIIaDxg6AyjWQ+lhjwTFDkaDMPn2gLpxFqR6eMdsoCV5a2YBGyJHxLU43G1KOzSomOoPIFomlHjc+L3eJhRXbAyBNSLFX2P6VvZzXPJn8K8omRtGTQaJ+CNBc0fwFjx28n+AAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOwQrCQAxE735FjgqCX9CT9V7oF8Q2aGo3WdOsUPHj3aUoUvA4zLyZaV0tnB4kPm1eMKUQ0PhJ0JhGMp9rDHghqIq1XcTH2sF5htbRKZODssCNpa9YhCwJ31Nu0ZhGdFap0RFUvvloOlDni96v5hqyI0bORLU+cvjpLIfVvNz4w+eEkfRk0OmYgnRXNH8DzTGGOPMAAAA=" target="_blank">Run the query</a>
 
 :::image type="content" source="../images/tutorial/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
 
 ### Join query results
 
-Joins can be done based off of query results from the same table as well.
+Joins can also be done based off of query results from the same table.
 
 Say you want to create a list of states in which both lightning and avalanche events occurred. Use the join operator to merge the rows of two tables—one containing data on lightning events and the other containing data on avalanche events—based on the `State` column.
 
@@ -108,18 +106,18 @@ StormEvents
 
 ## Calculate percentages
 
-This section covers two common methods for calculating percentages.
+Calculating percentages can help you understand the distribution and proportion of different values within your data. This section covers two common methods for calculating percentages with the Kusto Query Language (KQL).
 
 ### Calculate percentage based on two columns
 
-To find the percentage of storm events that caused crop damage in each state, use `count()` and `countif()` to count the total number of storms and the number of storms that caused crop damage in each state.
+Use `count()` and `countif()` to find the percentage of storm events that caused crop damage in each state. First, count the total number of storms in each state. Then, count the number of storms that caused crop damage in each state.
 
-Then, use [extend](../extendoperator.md) to calculate the percentage of storms that caused crop damage in each state by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
+Then, use [extend](../extendoperator.md) to calculate the percentage between the two columns by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
 
 To ensure that you get a decimal result, use the [todouble()](../todoublefunction.md) function to convert at least one of the integer count values to a double before performing the division.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPPQ+CQAyGdxL+Q8c7QyK666QDGwkmzgdXlYS7mlKMGH+8wEWns2Pfjz6thNgdH+ilT5M39INzhtsXQprANCcS01Wzpy98JUYQdtDQ4EXpLFiCem7lVjLdkWU8GGeuP2N7UWHxlWEPuQ7ZeoSldD6NT0FvoURuJppoXwjx1GqVErI01B2qfwAa1jH+FWzyXGew1cvDxBIw4iUfrI4MCiABAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPsQ7CMAxE936FxwRVorDDBANbpSIxp62BSk1cOS6iiI8nTQVT8GjfvTtXQmyPD3Tiszf40VrD3QshgzBnEtNXs8KfXCVGEHbQ0OhE6TwqluOlk3vJNCDLdDDW3H667qqWxfcMeyh0tNYTRGSIxaega6FEbkKRJC1aOCBbpYRaGuse1b90DetU9xVsikLnsNXzq8SydEgzPoPkmgkZAQAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -148,12 +146,12 @@ StormEvents
 
 ### Calculate percentage based on table size
 
-To compare the number of storms by event type to the total number of storms in the database, first save the total number of storms in the database as a variable.
+To compare the number of storms by event type to the total number of storms in the database, first save the total number of storms in the database as a variable. [Let statements](../letstatement.md) are used to define variables within a query.
 
 Since [tabular expression statements](../tabularexpressionstatements.md) return tabular results, use the [toscalar()](../toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the percentage calculation.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wx4TKRrP4km8F+wPpHERJemWzUao+PG2UWg8zuPNMB4FOhLrL0IcIhxBKDrrLatMzk8cJMIbYgrB8v2F4CgNorQ+1FWh1FXpZHZaxHnxV4B++vJuGnHRR6YHOllhU/QaaJHdnOwN86srpd6jWg0Nu7/rG9gbszUfSEMd+dIAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XOwQrCMAyA4fueIsdWhtazeBLvgnuBrgZR2mWkqTDZw69WYfWYny8hHgU6EuuvQhwiHEEoOustq1LOLxwkwgwxhWD58UZwlAZRWh+aSjS1KOn0Yfnej0M/fXs3jZj1yPREJ2trq7UWLsguT/aO5aUbpd6jWoWG3d/fG9gbszULDOumf88AAAA=" target="_blank">Run the query</a>
 
 ```kusto
 let TotalStorms = toscalar(StormEvents | summarize count());
@@ -173,17 +171,14 @@ StormEvents
 |Winter Weather|3349|5.669928554498358|
 |...|...|...|
 
-> [!NOTE]
-> Take note of the **let** keyword in the previous query. [Let statements](../letstatement.md) are used to define variables within a query. Defining variables can improve the readability, reusability, and exploratory potential of your queries.
-
 ## Calculate correlation coefficients
 
 To determine if there's a relationship between the population of a state and the amount of damage caused by storms, use the [series_pearson_correlation](../series-pearson-correlationfunction.md) function.
 
-This query calculates the total amount of property damage caused by storms in each state and joins it with population data. The resulting columns are converted into series and the correlation coefficient is calculated.
+The following query calculates the total amount of property damage caused by storms in each state and joins it with population data. The resulting columns are converted into series and the correlation coefficient is calculated.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA31QQQ6CQAy8m/iHHiHxC57UuwkPIBWKKbot6RajxscrEgWVeGxnpjPTzNXC5kTicT67QWxDQOMrwda0IfPLGgPuCZYdlPTDC0phd4HM0amT1soCB5ZyySJksNWmPaKzyhodQWWgNqY1Ff7lsRhJ/mXJyJjiI1HAA+VHjp58EtLxpSn2G0w7Hzo7SQkrNaN+vVKqKi748ZWu+PNC3hBaVMmLgZdMBfs1T8edp23umV6O3ocBAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA31QQQ6CQAy8+4oeIfELnNQ7CQ8gFYqpsC3pVqPGxwsaFZV4bGemM9PC1cLmSOJxcYV4CAGNLwS5aU/m5zUG3BFkI5Q8hieUwvYMhaPToNwrC7QsdcYiZJBrf+jQWWWNjqDyYvame6r8y2E5UfwJUpAxxSFOwJbKjqMnn4R0emiO/QLTwYZOTlLDSs3osV0pNQ1XPDxkLH0/UPaEFlXK6s1L5nL9eqeTwvMuN5KkodCBAQAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
