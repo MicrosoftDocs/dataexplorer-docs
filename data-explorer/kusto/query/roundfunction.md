@@ -1,9 +1,9 @@
 ---
 title: round() - Azure Data Explorer
-description: This article describes round() in Azure Data Explorer.
+description: Learn how to use the round() function to round the source to the specified precision.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/18/2023
 ---
 # round()
 
