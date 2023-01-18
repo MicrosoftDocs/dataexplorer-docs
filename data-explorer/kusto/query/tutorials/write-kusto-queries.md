@@ -183,7 +183,7 @@ StormEvents
 
 The [top](../topoperator.md) operator returns the first *n* rows sorted by the specified column.
 
-The following query will return the five Texas floods that caused the most damaged property.
+The following query returns the five Texas floods that caused the most damaged property.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1lOQXKJgqJFUquCTmJqanBhTlF6QWlVQCZQqK8rNSk0tAphWVhGTmpuoouOalQBhgG3QQZuqgaQcAOmqryJYAAAA=" target="_blank">Run the query</a>

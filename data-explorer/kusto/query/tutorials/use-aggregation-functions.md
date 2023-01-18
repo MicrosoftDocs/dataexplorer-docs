@@ -16,7 +16,7 @@ In this tutorial, you'll learn how to:
 > * [Use the summarize operator](#use-the-summarize-operator)
 > * [Visualize query results](#visualize-query-results)
 > * [Perform a conditional count](#perform-a-conditional-count)
-> * [Group data by scalar values](#group-data-by-scalar-values)
+> * [Group data into bins](#group-data-into-bins)
 > * [Calculate the min, max, avg, and sum](#calculate-the-min-max-avg-and-sum)
 > * [Extract unique values](#extract-unique-values)
 > * [Bucket data by condition](#bucket-data-by-condition)
@@ -29,12 +29,12 @@ The examples in this tutorial use the `StormEvents` table, which is publicly ava
 
 ## Use the summarize operator
 
-The [summarize](../summarizeoperator.md) operator is essential to performing aggregations over your data. The `summarize` operator groups together rows based on the `by` clause and then uses an aggregation function to combine each group in a single row.
+The [summarize](../summarizeoperator.md) operator is essential to performing aggregations over your data. The `summarize` operator groups together rows based on the `by` clause and then uses the provided aggregation function to combine each group in a single row.
 
 Find the number of events by state using `summarize` with the [count](../count-aggfunction.md) aggregation function.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIyS9JzAkGyRYr2Cok55fmlWhoKiRVKgSXJJakAgChqbNHNwAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQjJL0nMCQZJFivYKiTnl+aVaGgqJFUqBJcklqQCABs8Zoc2AAAA" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
@@ -50,18 +50,13 @@ StormEvents
 |IOWA|2337|
 |ILLINOIS|2022|
 |MISSOURI|2016|
-|GEORGIA|1983|
-|MINNESOTA|1881|
-|WISCONSIN|1850|
-|NEBRASKA|1766|
-|NEWYORK|1750|
 |...|...|
 
 ## Visualize query results
 
-Visualizing query results in a chart or graph can help you identify patterns, trends, and outliers in your data. You can do this with the [render](../renderoperator.md) operator. Throughout the tutorial, you'll see examples of how to use `render` to display your results.
+Visualizing query results in a chart or graph can help you identify patterns, trends, and outliers in your data. You can do this with the [render](../renderoperator.md) operator.
 
-Start by using `render` to see the results from the previous query in a bar chart.
+Throughout the tutorial, you'll see examples of how to use `render` to display your results. For now, let's use `render` to see the results from the previous query in a bar chart.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIyS9JzAkGyRYr2Cok55fmlWhoKiRVKgSXJJakgtQWpealpBYpJCUWJWckFpUAAFJrtYhKAAAA" target="_blank">Run the query</a>
@@ -99,11 +94,11 @@ StormEvents
 |NORTH CAROLINA|82|
 |MISSOURI|78|
 
-### Group data by scalar values
+## Group data into bins
 
-To aggregate by scalar values, such as a numeric or time value, you'll first want to group the data into bins using the [bin()](../binfunction.md) function. Using `bin()` can help you understand how values are distributed within a certain range and make comparisons between different periods.
+To aggregate by scalar values, such as a numeric or time values, you'll first want to group the data into bins using the [bin()](../binfunction.md) function. Using `bin()` can help you understand how values are distributed within a certain range and make comparisons between different periods.
 
-This example counts the number of storms that caused crop damage for each week in 2007. The `7d` argument represents a week, as the function requires a valid [timespan](../scalar-data-types/timespan.md) value.
+The following query counts the number of storms that caused crop damage for each week in 2007. The `7d` argument represents a week, as the function requires a valid [timespan](../scalar-data-types/timespan.md) value.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKWCKW2hqgkwqLs3NTSzKrEpVAJvunF+aV6Jgq5AMojU0FZIqFZIy8zTgNukoGKZoAgCRt8vYjQAAAA==" target="_blank">Run the query</a>
@@ -138,11 +133,11 @@ Add `| render timechart` to the end of the query to visualize the results.
 
 ## Calculate the min, max, avg, and sum
 
-In this section, you'll use the `min()`, `max()`, `avg()`, and `sum()` aggregation functions to learn more about types of storms that cause crop damage.
+This section will show how to perform common calculations that are useful for getting an overview of the data and identifying patterns and trends.
 
 ### min, max, and avg
 
-The following example filters out rows with no damaged crops, calculates the minimum, maximum, and average crop damage for each event type, and then sorts the result by the average damage.
+To learn more about types of storms that cause crop damage, calculate the minimum, maximum, and average crop damage for each event type, and then sort the result by the average damage.
 
 Note that you can use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
 
@@ -173,9 +168,9 @@ StormEvents
 
 ### sum()
 
-The results of the previous query indicate that Freeze/Frost events had the most crop damage on average. However, the [time chart from the bin() query](#group-data-by-scalar-values) showed that events with crop damage mostly took place in the summer months.
+The results of the previous query indicate that Freeze/Frost events resulted in the most crop damage on average. However, the [bin() query](#group-data-into-bins) showed that events with crop damage mostly took place in the summer months.
 
-The previous `bin()` query only counted events that caused some damage. Modify that query to use the [sum()](../sum-aggfunction.md) function instead of the `count()` function, and you can check the total number of damaged crops based on event date.
+The `bin()` query only counted events that caused some damage. Modify that query to use the [sum()](../sum-aggfunction.md) function instead of the `count()` function, and you can check the total number of damaged crops by event date.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wxwTsCWth570on5B/YHULLaHpGWzWhQ/3gRBdNjTm2FnepnZn+4UJJbFC+tITOjFspwnTxhIVqIA5ayQJKJaY7rKNOk06hr/vGmrbaM1ygJJNjgcrbdXOvC8ROxhcke8eW95ehIy/gSwy1j9pDWGB4YpqO+YDTqn8wOm4IiRay9jMt/qYo/IxAAAAA==" target="_blank">Run the query</a>
@@ -197,7 +192,7 @@ Now you can see a peak in crop damage in January, which probably was due to Free
 
 ## Extract unique values
 
-This section shows how to count or create a set of unique values. The functions can be useful for understanding the distribution of unique values in a dataset, identifying outliers, or creating a distinct list of values for further analysis.
+This section shows how to count or create a set of unique values. The following functions can be useful for understanding the distribution of unique values in a dataset, identifying outliers, or creating a distinct list of values for further analysis.
 
 ### dcount()
 
@@ -225,7 +220,7 @@ StormEvents
 
 ## make_set()
 
-The [make_set()](../makeset-aggfunction.md) operator takes a selection of rows in a table and turns them into an array of unique values.
+Use [make_set()](../makeset-aggfunction.md) to turn a selection of rows in a table into an array of unique values.
 
 The following query uses `make_set()` to create an array of the event types that cause deaths in each state. The resulting table is then sorted by the number of storm types in each array.
 
@@ -312,7 +307,7 @@ StormEvents
 
 ## Next steps
 
-Now that you're familiar with common query operators and aggregation functions, go on to learn about some common and useful calculations.
+Now that you're familiar with common query operators and aggregation functions, go on to the next tutorial to explore common use cases.
 
 > [!div class="nextstepaction"]
 > [Explore common use cases](explore-common-use-cases.md)
