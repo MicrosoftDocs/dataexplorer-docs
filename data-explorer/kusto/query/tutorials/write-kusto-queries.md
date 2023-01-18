@@ -11,58 +11,29 @@ ms.date: 01/18/2023
 
 ::: zone pivot="azuredataexplorer"
 
-[Kusto Query Language (KQL)](../index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), and [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/).
+The [Kusto Query Language (KQL)](../index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), and [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/).
 
 In this tutorial, you'll learn how to:
 
 > [!div class="checklist"]
 >
-> * [Understand the structure of a Kusto query](#understand-the-structure-of-a-kusto-query)
-> * [Use common query operators](#use-common-query-operators)
+> * [Count rows](#count-rows)
+> * [See a sample of data](#see-a-sample-of-data)
+> * [Select a subset of columns](#select-a-subset-of-columns)
+> * [List unique values](#list-unique-values)
+> * [Filter by condition](#filter-by-condition)
+> * [Sort rows](#sort-rows)
+> * [Get the top n rows](#top)
 
-The examples in the tutorial all use the `StormEvents` table, which is publicly available in the [Samples database](https://help.kusto.windows.net/Samples) of the **help** cluster. To continue exploring with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
+The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To continue exploring with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
 
 ## Prerequisites
 
 * A Microsoft account or Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
 
-## Understand the structure of a Kusto query
+## Count rows
 
-In the [Kusto Query Language (KQL)](../index.md), the most common type of [query statement](../statements.md) is a [tabular expression statement](../tabularexpressionstatements.md).
-
-Tabular expression statements are used to manipulate data in tables or tabular datasets. They consist of one or more operators separated by a pipe (`|`) symbol. The order of the operators is important, since the data flows from one operator to the next and is transformed at each step.
-
-Read the following query, and then we'll go through it step-by-step.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKaCJG4HENZENKklVsLVVUHLz8Q/ydHFUAkol55fmlQAA2ZnM/XgAAAA=" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents 
-| where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
-| where State == "FLORIDA"
-| count
-```
-
-**Output**
-
-|Count|
-|--|
-|28|
-
-The query performs these actions in order:
-
-1. The `StormEvents` table is filtered by the `where` operator to include rows with `StartTime` values within the specified date range.
-1. The filtered table is then further filtered by another `where` operator to include rows with a `State` value of "FLORIDA".
-1. The final table is passed to the `count` operator, which returns a new table with a single column, `Count`, containing the number of rows in the table.
-
-## Use common query operators
-
-Let's learn some common query operators using the `StormEvents` table. These operators are key to understanding KQL and will be used in many of your queries.
-
-### count
-
-Begin by using the [count](../countoperator.md) operator to find the number of storm records in the table.
+Begin by using the [count](../countoperator.md) operator to find the number of storm records in the `StormEvents` table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUUjOL80rAQA76pZjFAAAAA==" target="_blank">Run the query</a>
@@ -78,7 +49,10 @@ StormEvents
 |--|
 |59066|
 
-### take
+> [!NOTE]
+> To learn more about the structure 
+
+## See a sample of data
 
 To get a sense of the data, use the [take](../takeoperator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the general data structure and contents.
 
@@ -100,7 +74,7 @@ The following table shows only 6 of the 22 returned columns. To see the full out
 |2007-09-29T08:11:00Z|2007-09-29T08:11:00Z|11091|61032|ATLANTIC SOUTH|Waterspout|...|
 |2007-09-18T20:00:00Z|2007-09-19T18:00:00Z|11074|60904|FLORIDA|Heavy Rain|...|
 
-### project
+## Select a subset of columns
 
 Use the [project](../projectoperator.md) operator to simplify the view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
 
@@ -128,7 +102,7 @@ StormEvents
 |AMERICAN SAMOA|Flash Flood|250000|
 |KENTUCKY|Flood|1000|
 
-### distinct
+## List unique values
 
 It appears that there are multiple types of storms based on the results of the previous query. Use the [distinct](../distinctoperator.md) operator to list all of the unique storm types.
 
@@ -155,9 +129,9 @@ There are 46 types of storms in the table.
 |Flood|
 |...|
 
-### where
+## Filter by condition
 
-The [where](../whereoperator.md) operator filters rows of data based on certain criteria. 
+The [where](../whereoperator.md) operator filters rows of data based on certain criteria.
 
 The following query looks for storm events in a specific `State` of a specific `EventType`.
 
@@ -181,7 +155,7 @@ There are 146 events that match these conditions. Here's a sample of 5 of them.
 |2007-03-12T02:30:00Z|2007-03-12T06:45:00Z|TEXAS|Flood|0|
 |...|...|...|...|...|
 
-### sort
+## Sort rows
 
 To view the top five floods in Texas that caused the most damage, use the [sort](../sort-operator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
 
@@ -206,7 +180,7 @@ StormEvents
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
 |...|...|...|...|...|
 
-### top
+## top
 
 The [top](../topoperator.md) operator returns the first *n* rows sorted by the specified column.
 
@@ -232,10 +206,10 @@ StormEvents
 |2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|TEXAS|Flood|750000|
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
 
-The following query uses `project` to create a computed `Duration` column that calculates the difference between the `StartTime` and `EndTime`. 
+> [!NOTE]
+> The order of the operators is important, since the data flows from one operator to the next and is transformed at each step. If you put `top` before `where` here, you'll get different results. To learn more, see [tabular expression statements](../tabularexpressionstatements.md).
 
-> [!TIP]
-> The [extend](../extendoperator.md) operator could also add computed columns, although these columns are added to the end of a table. In the example scenario, we don't want to see all columns with an appended column, so using `project` is a better choice.
+The following query uses `project` to create a computed `Duration` column that calculates the difference between the `StartTime` and `EndTime`. 
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OvQ7CMAyEdyTewVuWMDJ2QGr5WQJSKzGHxoIiEkeuKVTi4WmooBKbfXeffaUQ%2b6LDIO189oLHBRnhs1d9RMgyUOsbkVNgg4NSrIzicVVud2ZT7Y1KnFCEJZx6yK23ZzwwRWTpwWFbJx%2bfggOf39lKQwEyKIKrGo%2bwSEdZ0pyCkemKtUyi%2fib1j9ZjDz311H9%2fBys2LTk0lhPT4RvwA3pn6AAAAA%3d%3d" target="_blank">Run the query</a>
@@ -258,6 +232,9 @@ StormEvents
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|03:00:00|750000|
 
 If you take a look at the computed `Duration` column, you may notice that the flood that caused the most damage was also the longest flood.
+
+> [!TIP]
+> The [extend](../extendoperator.md) operator could also add computed columns, although these columns are added to the end of a table. In the example scenario, we don't want to see all columns with an appended column, so using `project` is a better choice.
 
 ## Next steps
 
