@@ -44,6 +44,24 @@ The `Result` dimension can have one of the following values:
 * **InsufficientCapacity**: The cluster doesn't have sufficient capacity to materialized the materialized view. This can either indicate missing [ingestion capacity](../capacitypolicy.md#ingestion-capacity) or missing [materialized views capacity](../capacitypolicy.md#materialized-views-capacity-policy). Insufficient capacity failures can be transient, but if they reoccur often it is recommended to scale out the cluster and/or increase relevant capacity in policy.
 * **InsufficientResources:** The cluster doesn't have sufficient resources (CPU/memory) to materialized the materialized view. This failure may also be a transient one, but if it reoccurs often a scale out/up is required.
 
+  * If the materialization process hits memory limits, the [$materialized-views workload group](../workload-groups.md#materialized-views-workload-group) limits can be modified and increased to support a higher amount of memory or CPU for the materialization process to consume.
+  
+   For example, the following command will alter the materialized views workload group to use a max of 64GB of memory per node during materialization (default is 15GB):
+
+    ~~~kusto
+    .alter-merge workload_group ['$materialized-views'] ```
+    {
+      "RequestLimitsPolicy": {
+        "MaxMemoryPerQueryPerNode": {
+          "Value": 68719241216
+        }
+      }
+    } ```
+    ~~~
+
+    > [!NOTE]
+    > MaxMemoryPerQueryPerNode cannot be set to over 50% of the total memory of each node.
+
 ## Track resource consumption
 
 **Materialized views resource consumption:** the resources consumed by the materialized views materialization process can be tracked using the [`.show commands-and-queries`](../commands-and-queries.md#show-commands-and-queries) command. Filter the records for a specific view using the following (replace `DatabaseName` and `ViewName`):
