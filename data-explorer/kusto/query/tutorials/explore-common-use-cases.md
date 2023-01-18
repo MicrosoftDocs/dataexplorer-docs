@@ -16,8 +16,7 @@ In this tutorial, you'll learn how to:
 > * [Calculate correlation coefficients](#calculate-correlation-coefficients)
 > * [Perform geospatial clustering](#perform-geospatial-clustering)
 
-> [!NOTE]
-> The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To continue exploring with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
+[!INCLUDE [tutorials-data-note](../../../includes/tutorials-data-note.md)]
 
 ## Prerequisites
 

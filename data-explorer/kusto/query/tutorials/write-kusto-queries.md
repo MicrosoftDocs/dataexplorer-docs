@@ -25,8 +25,7 @@ In this tutorial, you'll learn how to:
 > * [Sort results](#sort-results)
 > * [Get the top *n* rows](#get-the-top-n-rows)
 
-> [!NOTE]
-> The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To continue exploring with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
+[!INCLUDE [tutorials-data-note](../../../includes/tutorials-data-note.md)]
 
 ## Prerequisites
 
