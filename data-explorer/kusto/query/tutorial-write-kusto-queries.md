@@ -264,7 +264,7 @@ If you take a look at the computed `Duration` column, you may notice that the fl
 Now that you're familiar with the essentials of writing Kusto queries, move on to use aggregation functions to gain deeper insight into your data.
 
 > [!div class="nextstepaction"]
-> [2 - Tutorial: Use aggregation functions](tutorial-use-aggregation-functions.md)
+> [Use aggregation functions](tutorial-use-aggregation-functions.md)
 
 ::: zone-end
 
