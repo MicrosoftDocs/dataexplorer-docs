@@ -28,7 +28,6 @@ Stacked area graph. First column is x-axis, and should be a numeric column. Othe
     |*PropertyName*|*PropertyValue*                                                                   |
     |--------------|----------------------------------------------------------------------------------|
     |`accumulate`  |Whether the value of each measure gets added to all its predecessors. (`true` or `false`)|
-    |`kind`        |Further elaboration of the visualization kind.  For more information, see [`kind` property](#kind-property).                         |
     |`legend`      |Whether to display a legend or not (`visible` or `hidden`).                       |
     |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
     |`ymin`        |The minimum value to be displayed on Y-axis.                                      |
