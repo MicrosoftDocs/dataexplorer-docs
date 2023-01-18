@@ -26,7 +26,7 @@ In this tutorial, you'll learn how to:
 > * [Get the top *n* rows](#get-the-top-n-rows)
 > * [Calculate computed columns](#calculate-computed-columns)
 
-The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../start-for-free-web-ui.md).
+The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
 
 ## Prerequisites
 
