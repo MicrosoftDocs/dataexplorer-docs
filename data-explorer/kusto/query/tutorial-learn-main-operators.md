@@ -183,7 +183,7 @@ There are 146 events that match these conditions. Here's a sample of 5 of them.
 
 ### sort
 
-To view the top five floods in Texas that caused the most damage, use the [sort](./sortoperator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
+To view the top five floods in Texas that caused the most damage, use the [sort](./sort-operator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1FOcXlSgkVSq4JOYmpqcGFOUXpBaVVAIlCorys1KTS0CGFZWEZOam6ii45qVAGGALdBBG6qBpBwDYBhI8lQAAAA==" target="_blank">Run the query</a>
@@ -264,7 +264,7 @@ If you take a look at the computed `Duration` column, you may notice that the fl
 Now that you're familiar with the essentials of writing Kusto queries, move on to use aggregation functions to gain deeper insight into your data.
 
 > [!div class="nextstepaction"]
-> [2 - Tutorial: Use aggregation functions](./tutorial-manage-vm.md)
+> [2 - Tutorial: Use aggregation functions](tutorial-use-aggregation-functions.md)
 
 ::: zone-end
 

@@ -301,4 +301,4 @@ StormEvents
 Now that you're familiar with aggregation functions, move on to learn how to perform common operations, like joins, and calculations, like percentages and averages.
 
 > [!div class="nextstepaction"]
-> [3 - Tutorial: Perform common calculations](./tutorial-manage-vm.md)
+> [3 - Tutorial: Perform common calculations](tutorial-perform-common-calculations.md)
