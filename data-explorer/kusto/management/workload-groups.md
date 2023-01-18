@@ -58,7 +58,7 @@ You can [monitor](#monitoring) what gets classified to the `internal` workload g
 
 ### Materialized views workload group
 
-The `$materialized-views` workload group applies to materialized views materialization process. For more information on how materialized views work, see [materialized views overview](materialized-views/materialized-view-overview.md/#how-materialized-views-work).
+The `$materialized-views` workload group applies to materialized views materialization process. For more information on how materialized views work, see [materialized views overview](materialized-views/materialized-view-overview.md#how-materialized-views-work).
 
 You can change the following values under the workload group's [request limits policy](request-limits-policy.md):
 
