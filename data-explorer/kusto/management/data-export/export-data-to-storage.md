@@ -103,7 +103,7 @@ Column name labels are added as the first row for each blob.
     includeHeaders="all",
     encoding ="UTF8NoBOM"
   )
-  <| myLogs | where id == "moshe" | limit 10000
+  <| myLogs | where id == "moshe" | take 10000
 ```
 
 ## Failures during export commands

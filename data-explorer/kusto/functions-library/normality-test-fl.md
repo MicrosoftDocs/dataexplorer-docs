@@ -3,7 +3,7 @@ title: normality_test_fl() - Azure Data Explorer
 description: This article describes the normality_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 07/20/2021
+ms.date: 11/08/2022
 ---
 # normality_test_fl()
 
@@ -23,20 +23,19 @@ The function `normality_test_fl()` performs the [Normality Test](https://en.wiki
 * *test_statistic*: The name of the column to store test statistic value for the results.
 * *p_value*: The name of the column to store p-value for the results.
 
-
 ## Usage
 
-`normality_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`normality_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ~~~kusto
 let normality_test_fl = (tbl:(*), data:string, test_statistic:string, p_value:string)
 {
-    let kwargs = pack('data', data, 'test_statistic', test_statistic, 'p_value', p_value);
+    let kwargs = bag_pack('data', data, 'test_statistic', test_statistic, 'p_value', p_value);
     let code = ```if 1:
         from scipy import stats
         data = kargs["data"]
@@ -61,9 +60,9 @@ datatable(id:string, sample1:dynamic) [
 | invoke normality_test_fl('sample1', 'test_stat', 'p_val')
 ~~~
 
-# [Persistent](#tab/persistent)
+# [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
@@ -72,7 +71,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Normality Test")
 normality_test_fl(tbl:(*), data:string, test_statistic:string, p_value:string)
 {
-    let kwargs = pack('data', data, 'test_statistic', test_statistic, 'p_value', p_value);
+    let kwargs = bag_pack('data', data, 'test_statistic', test_statistic, 'p_value', p_value);
     let code = ```if 1:
         from scipy import stats
         data = kargs["data"]

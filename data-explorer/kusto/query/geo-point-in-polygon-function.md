@@ -172,7 +172,7 @@ let multipolygon = toscalar(
     Polygons
     | project individual_polygon = pack_array(polygon.coordinates)
     | summarize multipolygon_coordinates = make_list(individual_polygon)
-    | project multipolygon = pack("type","MultiPolygon", "coordinates", multipolygon_coordinates));
+    | project multipolygon = bag_pack("type","MultiPolygon", "coordinates", multipolygon_coordinates));
 Coordinates
 | where geo_point_in_polygon(longitude, latitude, multipolygon)
 ```

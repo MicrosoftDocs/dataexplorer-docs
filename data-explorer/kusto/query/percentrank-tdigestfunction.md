@@ -1,9 +1,9 @@
 ---
 title: percentrank_tdigest() - Azure Data Explorer
-description: This article describes percentrank_tdigest() in Azure Data Explorer.
+description: Learn how to use the percentrank_tdigest() function to calculate the approximate rank of the value in a set.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 01/11/2023
 ---
 # percentrank_tdigest()
 
