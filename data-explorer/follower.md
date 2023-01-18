@@ -176,14 +176,14 @@ credentials = ServicePrincipalCredentials(
 kusto_management_client = KustoManagementClient(credentials, follower_subscription_id)
 
 follower_resource_group_name = "followerResourceGroup"
-leader_resouce_group_name = "leaderResourceGroup"
+leader_resource_group_name = "leaderResourceGroup"
 follower_cluster_name = "follower"
 leader_cluster_name = "leader"
 attached_database_Configuration_name = "uniqueNameForAttachedDatabaseConfiguration"
 database_name  = "db" # Can be specific database name or * for all databases
 default_principals_modification_kind  = "Union"
 location = "North Central US"
-cluster_resource_id = "/subscriptions/" + leader_subscription_id + "/resourceGroups/" + leader_resouce_group_name + "/providers/Microsoft.Kusto/Clusters/" + leader_cluster_name
+cluster_resource_id = "/subscriptions/" + leader_subscription_id + "/resourceGroups/" + leader_resource_group_name + "/providers/Microsoft.Kusto/Clusters/" + leader_cluster_name
 table_level_sharing_properties = None
 if (database_name != "*"):
     #Set up the table level sharing properties - the following is just an example.
