@@ -59,7 +59,7 @@ Visualizing query results in a chart or graph can help you identify patterns, tr
 Throughout the tutorial, you'll see examples of how to use `render` to display your results. For now, let's use `render` to see the results from the previous query in a bar chart.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIyS9JzAkGyRYr2Cok55fmlWhoKiRVKgSXJJakgtQWpealpBYpJCUWJWckFpUAAFJrtYhKAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQjJL0nMCQZJFivYKiTnl+aVaGgqJFUqBJcklqQClRal5qWkFikkJRYlZyQWlQAACVd/oUgAAAA=" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
@@ -101,7 +101,7 @@ To aggregate by scalar values, such as a numeric or time values, you'll first wa
 The following query counts the number of storms that caused crop damage for each week in 2007. The `7d` argument represents a week, as the function requires a valid [timespan](../scalar-data-types/timespan.md) value.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKWCKW2hqgkwqLs3NTSzKrEpVAJvunF+aV6Jgq5AMojU0FZIqFZIy8zTgNukoGKZoAgCRt8vYjQAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOQQrCMBRE9z3FLBOwJamLrnRTPUG9wI/5aBZJJfm1KB7e6EJwGBh4mzeTzDke75ykNC+sV86MSSjLKUSGY1mZE5QnYalE9cYMrbG1Gl2Hf277dmu1RoMaSh4HinThMc+3gj1MNZQlRsrhyfhKx3lJgh3On1Ua7gEXkvo92GDw+g3gGT6rpAAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -173,7 +173,7 @@ The results of the previous query indicate that Freeze/Frost events resulted in 
 The `bin()` query only counted events that caused some damage. Modify that query to use the [sum()](../sum-aggfunction.md) function instead of the `count()` function, and you can check the total number of damaged crops by event date.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wxwTsCWth570on5B/YHULLaHpGWzWhQ/3gRBdNjTm2FnepnZn+4UJJbFC+tITOjFspwnTxhIVqIA5ayQJKJaY7rKNOk06hr/vGmrbaM1ygJJNjgcrbdXOvC8ROxhcke8eW95ehIy/gSwy1j9pDWGB4YpqO+YDTqn8wOm4IiRay9jMt/qYo/IxAAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOsQ7CMBBD936Fx0SiVVqGTrBQvqD8QEpONENSdDmoQHw8iZAQnDw9+2SPsnA43ilKql5YZ2LCKJbl5ANhIlmJIpSzQpKJ6ozpa9NmaTQN/nnb1dtWa1TIZ6PDYIO90IGXa8IeJjekWwiW/ZNQ6MfHrmD1E9aYHph8VN8pG/RO53+m6IhROs9z9t7w8FzwwAAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -199,7 +199,7 @@ This section shows how to count or create a set of unique values. The following 
 Approximate how many unique storm types there are by state using [dcount()](../dcount-aggfunction.md).
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoLs3NTSzKrEpVCAbJhFQWpBYr2CqkJOeX5pVogBWCxDQVkiqBKhJLUsGa8otKIAIwLQAdj1AoVwAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlUIBkmEVBakFivYKqQk55fmlWiA1YHENBWSKoEqEktSQXryi0ogfJgOADtJmYVVAAAA" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents 
@@ -225,7 +225,7 @@ Use [make_set()](../makeset-aggfunction.md) to turn a selection of rows in a tab
 The following query uses `make_set()` to create an array of the event types that cause deaths in each state. The resulting table is then sorted by the number of storm types in each array.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NMQ7CMAxFdyTu4LGVGLgATGVgLhJjZeCLBEhSOS4oiMODC2Lq+vz8fqtJwuaOqHk+e9HDQUANWF1uvOCotKYlJfmxbTz9qfl5CIHFP0GthXalR957dV+bVhT4ii5Dq3HD7jUdysdmhQV6SRfrjWAxWRl3kqj9sQiX7oZ4VldNyfUbAcrl9NEAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NsQ7CMAxEd77CYysx8AMwlYG5SIyVoScSIEnluKCgfjxJQUwdfX73rtUgbv+E17ia6GUgoAasJjZWcFHa0YaC/LKD7/9pxuPoHIt9g9qiOaYB8WTVfGHakuM7ugit5oXyr+mcMs2K3B8k3IptvteLkrISREuLRTh1D/irmmqJrT/1zAofzQAAAA==" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
@@ -253,7 +253,7 @@ The [case()](../casefunction.md) function groups data into buckets based on spec
 This example groups states based on the number of storm-related injuries their citizens sustained.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlXwzMsqLcpMLXbOL80rUbAFyWjAxFwyi1KTSzQVkioVgksSS1JBOlMrSlLzUuDanEqTs1NB+pITi1MVNHi5FPACVNvsFEwNdAhpUfJJLEpPVSKoDt1oQyKM9k1NySzNJd1sIowOzk3MySFsspJfvkIm1HQlfIo1wdGWX1QCjw2FxOJkAHJXMdXXAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRPQsCMQyG9/sVodMdOOjgqIMfg6Au/QWxF6R6bSFNRcUfrwU90OGKGZP3eTK8WgK79YW8xOoBMTmHbO8EG39KbCkuQ/ICs3ypP7uVZTLSwOEGWlDoBdJVyLc9tUjmTBkzGAnqCgbn+9ccpuNRgVBb5COpUuxXPCmLd9Ta5P42l8XaYdcVvWofwL7daiDb5LICS98BYDRPIbtEBswBAAA=" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
@@ -285,7 +285,7 @@ StormEvents
 Create a pie chart to visualize the proportion of states that experienced storms resulting in a large, medium, or small number of injuries.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRvQ6CMBCAdxPe4cIEiYMOjjigDibqwhPUctEqLeZ6NWJ8eC3+JBgD2LG972vTL+OS9OKMhm0wuIF1WgtSV4SlOThSaGelMwyJP4nee3NFKDmGbQUZC0ZP4oXR5B8sdfKInpPCIkTBAFpX87YpTEbDLiRcCdph2Dn3rR73UK8xV07/7+6hzrQoim5zuClBvexh23D8I1v1/P20qusk0r8uqnM183iUHtWQ4KRQ7gXxHQoTE4gQAgAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRvQ7CIBCA9z7FhalNHHRwrEPVwURd+gRIL4oWao7DWOPD29afpJqUyAj3fRC+nCsyywtadtEdnDdGkr4hrOzRk0Y3r7xlSNuT+L230ISKE9jVkLNkbEC8MtriQ2VenbDFlHQIcQSDq3/XDKbjUYAQa0l7FKGxb/EkLN5gob352xwW50aWZdArthXol1sMzCa/sernp2d11yRV7cviLlK/SkNS0woJzhrVQRI/AE1xwckEAgAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
