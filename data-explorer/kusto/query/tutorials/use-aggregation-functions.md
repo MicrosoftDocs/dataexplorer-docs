@@ -15,7 +15,7 @@ In this tutorial, you'll learn how to:
 >
 > * [Use the summarize operator](#use-the-summarize-operator)
 > * [Visualize query results](#visualize-query-results)
-> * [Perform a conditional count](#perform-a-conditional-count)
+> * [Conditionally count rows](#conditionally-count-rows)
 > * [Group data into bins](#group-data-into-bins)
 > * [Calculate the min, max, avg, and sum](#calculate-the-min-max-avg-and-sum)
 > * [Extract unique values](#extract-unique-values)
@@ -69,9 +69,9 @@ StormEvents
 
 :::image type="content" source="../images/tutorial/total-storms-by-state-bar-chart.png" alt-text="Screenshot of total storms by state bar chart created with the render operator.":::
 
-## Perform a conditional count
+## Conditionally count rows
 
-When analyzing your data, you may want to perform a conditional count to understand how many rows meet a specific criteria.
+When analyzing your data, you may want to count rows based on a specific condition to understand how many rows meet the given criteria.
 
 The following query uses the [countif()](../countif-aggfunction.md) function to count of storms that caused damage. The query then uses the `top` operator to filter the results and display the states with the highest amount of crop damage caused by storms.
 
