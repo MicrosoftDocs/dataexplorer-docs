@@ -207,7 +207,7 @@ StormEvents
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
 
 > [!NOTE]
-> The order of the operators is important, since the data flows from one operator to the next and is transformed at each step. If you put `top` before `where` here, you'll get different results. To learn more, see [tabular expression statements](../tabularexpressionstatements.md).
+> The order of the operators is important. If you put `top` before `where` here, you'll get different results. This is because the data is transformed by each operator. To learn more, see [tabular expression statements](../tabularexpressionstatements.md).
 
 The following query uses `project` to create a computed `Duration` column that calculates the difference between the `StartTime` and `EndTime`.
 
