@@ -308,7 +308,7 @@ AzureActivity
 | where Level == 'Critical'
 ```
 
-:::image type="content" source="images/tutorial/azure-monitor-where-results.png" lightbox="images/tutorial/azure-monitor-where-results.png" alt-text="Screenshot that shows the results of the where operator example.":::
+:::image type="content" source="../images/tutorial/azure-monitor-where-results.png" lightbox="../images/tutorial/azure-monitor-where-results.png" alt-text="Screenshot that shows the results of the where operator example.":::
 
 ## Select a subset of columns: *project*
 
@@ -321,7 +321,7 @@ AzureActivity
 | project TimeGenerated, Level, OperationNameValue, ResourceGroup, _ResourceId
 ```
 
-:::image type="content" source="images/tutorial/azure-monitor-project-results.png" lightbox="images/tutorial/azure-monitor-project-results.png" alt-text="Screenshot that shows the results of the project operator example.":::
+:::image type="content" source="../images/tutorial/azure-monitor-project-results.png" lightbox="../images/tutorial/azure-monitor-project-results.png" alt-text="Screenshot that shows the results of the project operator example.":::
 
 ## Show *n* rows: *take*
 
@@ -333,7 +333,7 @@ NetworkMonitoring
 | project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
 ```
 
-:::image type="content" source="images/tutorial/azure-monitor-take-results.png" lightbox="images/tutorial/azure-monitor-take-results.png" alt-text="Screenshot that shows the results of the take operator example.":::
+:::image type="content" source="../images/tutorial/azure-monitor-take-results.png" lightbox="../images/tutorial/azure-monitor-take-results.png" alt-text="Screenshot that shows the results of the take operator example.":::
 
 ## Order results: *sort*, *top*
 
@@ -354,7 +354,7 @@ NetworkMonitoring
 | project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
 ```
 
-:::image type="content" source="images/tutorial/azure-monitor-top-results.png" lightbox="images/tutorial/azure-monitor-top-results.png" alt-text="Screenshot that shows the results of the top operator example.":::
+:::image type="content" source="../images/tutorial/azure-monitor-top-results.png" lightbox="../images/tutorial/azure-monitor-top-results.png" alt-text="Screenshot that shows the results of the top operator example.":::
 
 ## Compute derived columns: *extend*
 
@@ -369,7 +369,7 @@ Perf
 | extend FreeGigabytes = FreeMegabytes / 1000
 ```
 
-:::image type="content" source="images/tutorial/azure-monitor-extend-results.png" lightbox="images/tutorial/azure-monitor-extend-results.png" alt-text="Screenshot that shows the results of the extend operator example.":::
+:::image type="content" source="../images/tutorial/azure-monitor-extend-results.png" lightbox="../images/tutorial/azure-monitor-extend-results.png" alt-text="Screenshot that shows the results of the extend operator example.":::
 
 ## Aggregate groups of rows: *summarize*
 
@@ -382,7 +382,7 @@ SecurityEvent
 | summarize count() by Computer, Level
 ```
 
-:::image type="content" source="images/tutorial/azure-monitor-summarize-count-results.png" lightbox="images/tutorial/azure-monitor-summarize-count-results.png" alt-text="Screenshot that shows the results of the summarize count operator example.":::
+:::image type="content" source="../images/tutorial/azure-monitor-summarize-count-results.png" lightbox="../images/tutorial/azure-monitor-summarize-count-results.png" alt-text="Screenshot that shows the results of the summarize count operator example.":::
 
 ## Summarize by scalar values
 
@@ -397,7 +397,7 @@ InsightsMetrics
 | summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
 ```
 
-:::image type="content" source="images/tutorial/azure-monitor-summarize-avg-results.png" lightbox="images/tutorial/azure-monitor-summarize-avg-results.png" alt-text="Screenshot that shows the results of the avg operator example.":::
+:::image type="content" source="../images/tutorial/azure-monitor-summarize-avg-results.png" lightbox="../images/tutorial/azure-monitor-summarize-avg-results.png" alt-text="Screenshot that shows the results of the avg operator example.":::
 
 ## Display a chart or table: *render*
 
@@ -413,7 +413,7 @@ InsightsMetrics
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/azure-monitor-render-results.png" lightbox="images/tutorial/azure-monitor-render-results.png" alt-text="Screenshot that shows the results of the render operator example.":::
+:::image type="content" source="../images/tutorial/azure-monitor-render-results.png" lightbox="../images/tutorial/azure-monitor-render-results.png" alt-text="Screenshot that shows the results of the render operator example.":::
 
 ## Work with multiple series
 
@@ -427,7 +427,7 @@ InsightsMetrics
 | render timechart
 ```
 
-:::image type="content" source="images/tutorial/azure-monitor-render-multiple-results.png" lightbox="images/tutorial/azure-monitor-render-multiple-results.png" alt-text="Screenshot that shows the results of the render operator with multiple series example.":::
+:::image type="content" source="../images/tutorial/azure-monitor-render-multiple-results.png" lightbox="../images/tutorial/azure-monitor-render-multiple-results.png" alt-text="Screenshot that shows the results of the render operator with multiple series example.":::
 
 ## Join data from two tables
 
@@ -448,7 +448,7 @@ VMComputer
 | project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
 ```
 
-:::image type="content" source="images/tutorial/azure-monitor-join-results.png" lightbox="images/tutorial/azure-monitor-join-results.png" alt-text="Screenshot that shows the results of the join operator example.":::
+:::image type="content" source="../images/tutorial/azure-monitor-join-results.png" lightbox="../images/tutorial/azure-monitor-join-results.png" alt-text="Screenshot that shows the results of the join operator example.":::
 
 ## Assign a result to a variable: *let*
 
@@ -465,7 +465,7 @@ PhysicalComputer
 | project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
 ```
 
-:::image type="content" source="images/tutorial/azure-monitor-let-results.png" lightbox="images/tutorial/azure-monitor-let-results.png" alt-text="Screenshot that shows the results of the let operator example.":::
+:::image type="content" source="../images/tutorial/azure-monitor-let-results.png" lightbox="../images/tutorial/azure-monitor-let-results.png" alt-text="Screenshot that shows the results of the let operator example.":::
 
 ## Next steps
 

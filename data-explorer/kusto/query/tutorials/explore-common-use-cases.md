@@ -24,6 +24,8 @@ The examples in the tutorial all use the `StormEvents` table, which is publicly 
 
 ## Join data from multiple tables
 
+When analyzing your data, you may want to join data from multiple tables in order to combine information from different sources and gain a more comprehensive understanding of the data.
+
 The [join](../joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns and perform analysis on a combined data set.
 
 Like `join`, the [lookup](../lookupoperator.md) operator also combines rows from tables based on matching values in specified columns. However, there are several differences to consider, such as how each operator handles repeated columns, the types of lookups supported, performance considerations, and the size of the tables being joined.
@@ -70,7 +72,7 @@ Add `| render columnchart` to the query to visualize the result.
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOQQrCQAxF94J3yFJB8ARdWfeFniC2QVM7yZhmhIqHt2MRpeAy+Xk/r3a1cLyT+LBePWFIIaDxg6AyjWQ+lhjwTFDkaDMPn2gLpxFqR6eMdsoCV5a2YBGyJHxLU43G1KOzSomOoPIFomlHjc+L3eJhRXbAyBNSLFX2P6VvZzXPJn8K8omRtGTQaJ+CNBc0fwFjx28n+AAAAA==" target="_blank">Run the query</a>
 
-:::image type="content" source="images/tutorial/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
+:::image type="content" source="../images/tutorial/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
 
 ### Join query results
 
@@ -223,7 +225,7 @@ StormEvents
 | render piechart with (kind = map)
 ```
 
-:::image type="content" source="images/tutorial/tornado-geospacial-map.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of tornado storms.":::
+:::image type="content" source="../images/tutorial/tornado-geospacial-map.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of tornado storms.":::
 
 ### Cluster storm events in a specific region
 
@@ -248,7 +250,7 @@ StormEvents
 | render piechart with (kind = map)
 ```
 
-:::image type="content" source="images/tutorial/southern-california-geospacial-mnap.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of southern California storms.":::
+:::image type="content" source="../images/tutorial/southern-california-geospacial-mnap.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of southern California storms.":::
 
 ## Next steps
 
