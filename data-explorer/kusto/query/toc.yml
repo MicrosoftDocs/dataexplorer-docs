@@ -11,7 +11,6 @@ items:
       href: tutorial-use-aggregation-functions.md
     - name: 3 - Perform common calculations
       href: tutorial-perform-common-calculations.md
-  href: tutorial.md
 - name: Samples
   href: samples.md
 - name: Query best practices
