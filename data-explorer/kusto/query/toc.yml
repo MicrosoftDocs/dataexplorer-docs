@@ -3,7 +3,14 @@ items:
   href: index.md
 - name: Quick reference guide
   href: ../../kql-quick-reference.md
-- name: Tutorial
+- name: Tutorials
+  items: 
+    - name: 1 - Learn main operators
+      href: tutorial-learn-main-operators.md
+    - name: 2 - Use aggregation functions
+      href: tutorial-use-aggregation-functions.md
+    - name: 3 - Perform common calculations
+      href: tutorial-perform-common-calculations.md
   href: tutorial.md
 - name: Samples
   href: samples.md
