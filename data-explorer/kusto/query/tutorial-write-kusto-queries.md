@@ -28,7 +28,7 @@ The examples in the tutorial all use the `StormEvents` table, which is publicly 
 
 ## Understand the structure of a Kusto query
 
-In the [Kusto Query Language (KQL)](index.md), the most common type of [query statement](statements.md) is a tabular expression statement.
+In the [Kusto Query Language (KQL)](index.md), the most common type of [query statement](statements.md) is a [tabular expression statement](tabularexpressionstatements.md).
 
 Tabular expression statements are used to manipulate data in tables or tabular datasets. They consist of one or more operators separated by a pipe (`|`) symbol. The order of the operators is important, since the data flows from one operator to the next and is transformed at each step.
 
