@@ -234,7 +234,7 @@ StormEvents
 If you take a look at the computed `Duration` column, you may notice that the flood that caused the most damage was also the longest flood.
 
 > [!TIP]
-> The [extend](../extendoperator.md) operator could also add computed columns, although these columns are added to the end of a table. In the example scenario, we don't want to see all columns with an appended column, so using `project` is a better choice.
+> The [extend](../extendoperator.md) operator adds computed columns to the end of a table. Since we don't want to see all columns plus an appended calculated column, using `project` to calculate the column is a better choice in this case.
 
 ## Next steps
 
