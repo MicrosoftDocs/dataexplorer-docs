@@ -60,7 +60,7 @@ Points graph. First column is x-axis and should be a numeric column. Other numer
 This visualization can be further elaborated by providing the `kind` property.
 The possible values of this property are:
 
-| `kind` value | Description|
+| `kind` value | Description |
 |---|---|
 |`scatterchart` |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point. Series column is optional. For more information, see [Geospatial visualizations](geospatial-visualizations.md). |
 
