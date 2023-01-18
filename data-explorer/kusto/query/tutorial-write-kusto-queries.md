@@ -7,7 +7,7 @@ zone_pivot_groups: kql-flavors
 ms.date: 01/18/2023
 ---
 
-# Tutorial: Learn main Kusto Query Language operators
+# Tutorial: Write Kusto queries
 
 ::: zone pivot="azuredataexplorer"
 
@@ -28,7 +28,7 @@ The examples in the tutorial all use the `StormEvents` table, which is publicly 
 
 ## Understand the structure of a Kusto query
 
-In the [Kusto Query Language (KQL)](index.md), the most common type of [query statement](statements.md?pivots=azuredataexplorer) is a tabular expression statement.
+In the [Kusto Query Language (KQL)](index.md), the most common type of [query statement](statements.md) is a tabular expression statement.
 
 Tabular expression statements are used to manipulate data in tables or tabular datasets. They consist of one or more operators separated by a pipe (`|`) symbol. The order of the operators is important, since the data flows from one operator to the next and is transformed at each step. Each operator begins with a tabular input and returns a tabular output.
 
@@ -401,7 +401,7 @@ InsightsMetrics
 
 ## Display a chart or table: *render*
 
-The [render](./renderoperator.md?pivots=azuremonitor) operator specifies how the output of the query is rendered. Log Analytics renders output as a table by default. You can select different chart types after you run the query. The `render` operator is useful to include in queries in which a specific chart type usually is preferred.
+The [render](./renderoperator.md) operator specifies how the output of the query is rendered. Log Analytics renders output as a table by default. You can select different chart types after you run the query. The `render` operator is useful to include in queries in which a specific chart type usually is preferred.
 
 The following example shows the hourly average processor utilization for a single computer. It renders the output as a timechart.
 
@@ -431,7 +431,7 @@ InsightsMetrics
 
 ## Join data from two tables
 
-What if you need to retrieve data from two tables in a single query? You can use the [join](./joinoperator.md?pivots=azuremonitor) operator to combine rows from multiple tables in a single result set. Each table must have a column that has a matching value so that the join understands which rows to match.
+What if you need to retrieve data from two tables in a single query? You can use the [join](./joinoperator.md) operator to combine rows from multiple tables in a single result set. Each table must have a column that has a matching value so that the join understands which rows to match.
 
 [VMComputer](/azure/azure-monitor/reference/tables/vmcomputer) is a table that Azure Monitor uses for VMs to store details about virtual machines that it monitors. [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) contains performance data that's collected from those virtual machines. One value collected in *InsightsMetrics* is available memory, but not the percentage memory that's available. To calculate the percentage, we need the physical memory for each virtual machine. That value is in `VMComputer`.
 
@@ -469,6 +469,6 @@ PhysicalComputer
 
 ## Next steps
 
-* View code samples for the [Kusto Query Language](samples.md?pivots=azuremonitor).
+* View code samples for the [Kusto Query Language](samples.md).
 
 ::: zone-end
