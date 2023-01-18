@@ -49,9 +49,6 @@ StormEvents
 |--|
 |59066|
 
-> [!NOTE]
-> To learn more about the structure 
-
 ## See a sample of data
 
 To get a sense of the data, use the [take](../takeoperator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the general data structure and contents.
