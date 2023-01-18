@@ -18,7 +18,7 @@ In this tutorial, you'll learn how to:
 > [!div class="checklist"]
 >
 > * [Understand the structure of a Kusto query](#understand-the-structure-of-a-kusto-query)
-> * [Use common query operators](#get-started-with-common-operators)
+> * [Use common query operators](#use-common-query-operators)
 
 The examples in the tutorial all use the `StormEvents` table, which is publicly available in the [Samples database](https://help.kusto.windows.net/Samples) of the **help** cluster. To continue exploring with your own data, [create your own free cluster](../../start-for-free-web-ui.md).
 
@@ -58,7 +58,7 @@ The query performs these actions in order:
 
 ## Use common query operators
 
-In this section, you'll learn some common query operators using the `StormEvents` table. These operators are key to understanding KQL and will be used in many of your queries.
+Let's learn some common query operators using the `StormEvents` table. These operators are key to understanding KQL and will be used in many of your queries.
 
 ### count
 
