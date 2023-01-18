@@ -7,7 +7,7 @@ ms.date: 01/18/2023
 
 # Tutorial: Use aggregation functions
 
-In the Kusto Query Language (KQL), [aggregation functions](aggregation-functions.md) allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, minimum, or average value.
+In the Kusto Query Language (KQL), [aggregation functions](../aggregation-functions.md) allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, minimum, or average value.
 
 In this tutorial, you'll learn how to:
 
@@ -21,7 +21,7 @@ In this tutorial, you'll learn how to:
 > * [Extract unique values](#extract-unique-values)
 > * [Bucket data by condition](#bucket-data-by-condition)
 
-The examples in the tutorial all use the `StormEvents` table, which is publicly available in the [Samples database](https://help.kusto.windows.net/Samples) of the **help** cluster. To continue exploring with your own data, [create your own free cluster](../../start-for-free-web-ui.md).
+The examples in the tutorial all use the `StormEvents` table, which is publicly available in the [Samples database](https://help.kusto.windows.net/Samples) of the **help** cluster. To continue exploring with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
 
 ## Prerequisites
 
@@ -29,9 +29,9 @@ The examples in the tutorial all use the `StormEvents` table, which is publicly 
 
 ## Use the summarize operator
 
-The [summarize](./summarizeoperator.md) operator is essential to performing aggregations over your data. The `summarize` operator groups together rows based on the `by` clause and then uses an aggregation function to combine each group in a single row.
+The [summarize](../summarizeoperator.md) operator is essential to performing aggregations over your data. The `summarize` operator groups together rows based on the `by` clause and then uses an aggregation function to combine each group in a single row.
 
-Find the number of events by state using `summarize` with the [count](./count-aggfunction.md) aggregation function.
+Find the number of events by state using `summarize` with the [count](../count-aggfunction.md) aggregation function.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIyS9JzAkGyRYr2Cok55fmlWhoKiRVKgSXJJakAgChqbNHNwAAAA==" target="_blank">Run the query</a>
@@ -59,7 +59,7 @@ StormEvents
 
 ## Visualize query results
 
-Visualizing query results in a chart or graph can help you identify patterns, trends, and outliers in your data. You can do this with the [render](renderoperator.md) operator. Throughout the tutorial, you'll see examples of how to use `render` to display your results.
+Visualizing query results in a chart or graph can help you identify patterns, trends, and outliers in your data. You can do this with the [render](../renderoperator.md) operator. Throughout the tutorial, you'll see examples of how to use `render` to display your results.
 
 Start by using `render` to see the results from the previous query in a bar chart.
 
@@ -78,7 +78,7 @@ StormEvents
 
 When analyzing your data, you may want to perform a conditional count to understand how many rows meet a specific criteria.
 
-The following query uses the [countif()](./countif-aggfunction.md) function to count of storms that caused damage. The query then uses the `top` operator to filter the results and display the states with the highest amount of crop damage caused by storms.
+The following query uses the [countif()](../countif-aggfunction.md) function to count of storms that caused damage. The query then uses the `top` operator to filter the results and display the states with the highest amount of crop damage caused by storms.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQgGiReHZ5ZkOBflF7gk5iampyrYKiTnl+aVZKZpQARAUsUKdgoGmgpJlUAtiSWpQENK8gsUTCECmGYAAFosNm9wAAAA" target="_blank">Run the query</a>
@@ -101,9 +101,9 @@ StormEvents
 
 ### Group data by scalar values
 
-To aggregate by scalar values, such as a numeric or time value, you'll first want to group the data into bins using the [bin()](./binfunction.md) function.
+To aggregate by scalar values, such as a numeric or time value, you'll first want to group the data into bins using the [bin()](../binfunction.md) function. Doing so will help you understand the distribution of values over a certain range.
 
-This example counts the number of storms that caused crop damage for each week in 2007. The `7d` argument represents a week, as the function requires a valid [timespan](scalar-data-types/timespan.md) value.
+This example counts the number of storms that caused crop damage for each week in 2007. The `7d` argument represents a week, as the function requires a valid [timespan](../scalar-data-types/timespan.md) value.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKWCKW2hqgkwqLs3NTSzKrEpVAJvunF+aV6Jgq5AMojU0FZIqFZIy8zTgNukoGKZoAgCRt8vYjQAAAA==" target="_blank">Run the query</a>
@@ -175,7 +175,7 @@ StormEvents
 
 The results of the previous query indicate that Freeze/Frost events had the most crop damage on average. However, the [time chart from the bin() query](#group-data-by-scalar-values) showed that events with crop damage mostly took place in the summer months.
 
-The previous `bin()` query only counted events that caused some damage. Modify that query to use the [sum()](./sum-aggfunction.md) function instead of the `count()` function, and you can check the total number of damaged crops based on event date.
+The previous `bin()` query only counted events that caused some damage. Modify that query to use the [sum()](../sum-aggfunction.md) function instead of the `count()` function, and you can check the total number of damaged crops based on event date.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wxwTsCWth570on5B/YHULLaHpGWzWhQ/3gRBdNjTm2FnepnZn+4UJJbFC+tITOjFspwnTxhIVqIA5ayQJKJaY7rKNOk06hr/vGmrbaM1ygJJNjgcrbdXOvC8ROxhcke8eW95ehIy/gSwy1j9pDWGB4YpqO+YDTqn8wOm4IiRay9jMt/qYo/IxAAAAA==" target="_blank">Run the query</a>
@@ -193,7 +193,7 @@ StormEvents
 Now you can see a peak in crop damage in January, which probably was due to Freeze/Frost.
 
 > [!TIP]
-> Use [minif()](minif-aggfunction.md), [maxif()](maxif-aggfunction.md), [avgif()](avgif-aggfunction.md), and [sumif()](sumif-aggfunction.md) to perform conditional aggregations, like we did when in the [perform a conditional count](#perform-a-conditional-count) section.
+> Use [minif()](../minif-aggfunction.md), [maxif()](../maxif-aggfunction.md), [avgif()](../avgif-aggfunction.md), and [sumif()](../sumif-aggfunction.md) to perform conditional aggregations, like we did when in the [perform a conditional count](#perform-a-conditional-count) section.
 
 ## Extract unique values
 
@@ -201,7 +201,7 @@ This section shows how to count or create a set of unique values. The functions 
 
 ### dcount()
 
-Approximate how many unique storm types there are by state using [dcount()](./dcount-aggfunction.md).
+Approximate how many unique storm types there are by state using [dcount()](../dcount-aggfunction.md).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoLs3NTSzKrEpVCAbJhFQWpBYr2CqkJOeX5pVogBWCxDQVkiqBKhJLUsGa8otKIAIwLQAdj1AoVwAAAA==" target="_blank">Run the query</a>
@@ -225,7 +225,7 @@ StormEvents
 
 ## make_set()
 
-The [make_set()](./makeset-aggfunction.md) operator takes a selection of rows in a table and turns them into an array of unique values.
+The [make_set()](../makeset-aggfunction.md) operator takes a selection of rows in a table and turns them into an array of unique values.
 
 The following query uses `make_set()` to create an array of the event types that cause deaths in each state. The resulting table is then sorted by the number of storm types in each array.
 
@@ -253,7 +253,7 @@ StormEvents
 
 ## Bucket data by condition
 
-The [case()](./casefunction.md) function groups data into buckets based on specified conditions. The function returns the corresponding result expression for the first satisfied predicate, or the final else expression if none of the predicates are satisfied.
+The [case()](../casefunction.md) function groups data into buckets based on specified conditions. The function returns the corresponding result expression for the first satisfied predicate, or the final else expression if none of the predicates are satisfied.
 
 This example groups states based on the number of storm-related injuries their citizens sustained.
 
@@ -315,4 +315,4 @@ StormEvents
 Now that you're familiar with common query operators and aggregation functions, go on to learn about some common and useful calculations.
 
 > [!div class="nextstepaction"]
-> [Perform common calculations](tutorial-perform-common-calculations.md)
+> [Perform common calculations](explore-common-use-cases.md)

@@ -6,11 +6,11 @@ items:
 - name: Tutorials
   items: 
     - name: 1 - Write Kusto queries
-      href: tutorial-write-kusto-queries.md
+      href: tutorials/write-kusto-queries.md
     - name: 2 - Use aggregation functions
-      href: tutorial-use-aggregation-functions.md
-    - name: 3 - Perform common calculations
-      href: tutorial-perform-common-calculations.md
+      href: tutorials/use-aggregation-functions.md
+    - name: 3 - Explore common use cases
+      href: tutorials/explore-common-use-cases.md
 - name: Samples
   href: samples.md
 - name: Query best practices

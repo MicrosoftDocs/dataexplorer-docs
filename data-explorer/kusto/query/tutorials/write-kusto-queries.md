@@ -11,7 +11,7 @@ ms.date: 01/18/2023
 
 ::: zone pivot="azuredataexplorer"
 
-[Kusto Query Language (KQL)](index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), and [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/).
+[Kusto Query Language (KQL)](../index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), and [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/).
 
 In this tutorial, you'll learn how to:
 
@@ -20,7 +20,7 @@ In this tutorial, you'll learn how to:
 > * [Understand the structure of a Kusto query](#understand-the-structure-of-a-kusto-query)
 > * [Use common query operators](#use-common-query-operators)
 
-The examples in the tutorial all use the `StormEvents` table, which is publicly available in the [Samples database](https://help.kusto.windows.net/Samples) of the **help** cluster. To continue exploring with your own data, [create your own free cluster](../../start-for-free-web-ui.md).
+The examples in the tutorial all use the `StormEvents` table, which is publicly available in the [Samples database](https://help.kusto.windows.net/Samples) of the **help** cluster. To continue exploring with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ The examples in the tutorial all use the `StormEvents` table, which is publicly 
 
 ## Understand the structure of a Kusto query
 
-In the [Kusto Query Language (KQL)](index.md), the most common type of [query statement](statements.md) is a [tabular expression statement](tabularexpressionstatements.md).
+In the [Kusto Query Language (KQL)](../index.md), the most common type of [query statement](../statements.md) is a [tabular expression statement](../tabularexpressionstatements.md).
 
 Tabular expression statements are used to manipulate data in tables or tabular datasets. They consist of one or more operators separated by a pipe (`|`) symbol. The order of the operators is important, since the data flows from one operator to the next and is transformed at each step.
 
@@ -62,7 +62,7 @@ Let's learn some common query operators using the `StormEvents` table. These ope
 
 ### count
 
-Begin by using the [count](./countoperator.md) operator to find the number of storm records in the table.
+Begin by using the [count](../countoperator.md) operator to find the number of storm records in the table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUUjOL80rAQA76pZjFAAAAA==" target="_blank">Run the query</a>
@@ -80,7 +80,7 @@ StormEvents
 
 ### take
 
-To get a sense of the data, use the [take](./takeoperator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the general data structure and contents.
+To get a sense of the data, use the [take](../takeoperator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the general data structure and contents.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUShJzE5VMAUAP49+9hUAAAA=" target="_blank">Run the query</a>
@@ -102,7 +102,7 @@ The following table shows only 6 of the 22 returned columns. To see the full out
 
 ### project
 
-Use the [project](./projectoperator.md) operator to simplify the view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
+Use the [project](../projectoperator.md) operator to simplify the view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMDQAMQuK8rNSk0sUgksSS1J1FMBqQioLgEyXxNzE9NSAovyC1KKSSgBtBl0/QgAAAA==" target="_blank">Run the query</a>
@@ -130,7 +130,7 @@ StormEvents
 
 ### distinct
 
-It appears that there are multiple types of storms based on the results of the previous query. Use the [distinct](./distinctoperator.md) operator to list all of the unique storm types.
+It appears that there are multiple types of storms based on the results of the previous query. Use the [distinct](../distinctoperator.md) operator to list all of the unique storm types.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRSMksLsnMSy5RAIuEVBakAgD24XVdIAAAAA==" target="_blank">Run the query</a>
@@ -157,7 +157,7 @@ There are 46 types of storms in the table.
 
 ### where
 
-The [where](./whereoperator.md) operator filters rows of data based on certain criteria. 
+The [where](../whereoperator.md) operator filters rows of data based on certain criteria. 
 
 The following query looks for storm events in a specific `State` of a specific `EventType`.
 
@@ -183,7 +183,7 @@ There are 146 events that match these conditions. Here's a sample of 5 of them.
 
 ### sort
 
-To view the top five floods in Texas that caused the most damage, use the [sort](./sort-operator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
+To view the top five floods in Texas that caused the most damage, use the [sort](../sort-operator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1FOcXlSgkVSq4JOYmpqcGFOUXpBaVVAIlCorys1KTS0CGFZWEZOam6ii45qVAGGALdBBG6qBpBwDYBhI8lQAAAA==" target="_blank">Run the query</a>
@@ -208,7 +208,7 @@ StormEvents
 
 ### top
 
-The [top](./topoperator.md) operator returns the first *n* rows sorted by the specified column.
+The [top](../topoperator.md) operator returns the first *n* rows sorted by the specified column.
 
 The following query will return the five Texas floods that caused the most damaged property.
 
@@ -235,7 +235,7 @@ StormEvents
 The following query uses `project` to create a computed `Duration` column that calculates the difference between the `StartTime` and `EndTime`. 
 
 > [!TIP]
-> The [extend](./extendoperator.md) operator could also add computed columns, although these columns are added to the end of a table. In the example scenario, we don't want to see all columns with an appended column, so using `project` is a better choice.
+> The [extend](../extendoperator.md) operator could also add computed columns, although these columns are added to the end of a table. In the example scenario, we don't want to see all columns with an appended column, so using `project` is a better choice.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OvQ7CMAyEdyTewVuWMDJ2QGr5WQJSKzGHxoIiEkeuKVTi4WmooBKbfXeffaUQ%2b6LDIO189oLHBRnhs1d9RMgyUOsbkVNgg4NSrIzicVVud2ZT7Y1KnFCEJZx6yK23ZzwwRWTpwWFbJx%2bfggOf39lKQwEyKIKrGo%2bwSEdZ0pyCkemKtUyi%2fib1j9ZjDz311H9%2fBys2LTk0lhPT4RvwA3pn6AAAAA%3d%3d" target="_blank">Run the query</a>
@@ -264,7 +264,7 @@ If you take a look at the computed `Duration` column, you may notice that the fl
 Now that you're familiar with the essentials of writing Kusto queries, move on to use aggregation functions to gain deeper insight into your data.
 
 > [!div class="nextstepaction"]
-> [Use aggregation functions](tutorial-use-aggregation-functions.md)
+> [Use aggregation functions](use-aggregation-functions.md)
 
 ::: zone-end
 
@@ -280,7 +280,7 @@ All queries in this tutorial use the [Log Analytics demo environment](https://ms
 
 The [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) table contains performance data that's collected by insights such as Azure Monitor for VMs and Azure Monitor for containers. To find out how large the table is, we'll pipe its content into an operator that counts rows.
 
-A query is a data source (usually a table name), optionally  followed by one or more pairs of the pipe character and some tabular operator. In this case, all records from the `InsightsMetrics` table are returned and then sent to the [count operator](./countoperator.md). The `count` operator displays the results because the operator is the last command in the query.
+A query is a data source (usually a table name), optionally  followed by one or more pairs of the pipe character and some tabular operator. In this case, all records from the `InsightsMetrics` table are returned and then sent to the [count operator](../countoperator.md). The `count` operator displays the results because the operator is the last command in the query.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -297,7 +297,7 @@ Here's the output:
 
 The [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) table has entries from the Azure activity log, which provides insight into subscription-level or management group-level events occurring in Azure. Let's see only `Critical` entries during a specific week.
 
-The [where](./whereoperator.md) operator is common in the Kusto Query Language. `where` filters a table to rows that match specific criteria. The following example uses multiple commands. First, the query retrieves all records for the table. Then, it filters the data for only records that are in the time range. Finally, it filters those results for only records that have a `Critical` level.
+The [where](../whereoperator.md) operator is common in the Kusto Query Language. `where` filters a table to rows that match specific criteria. The following example uses multiple commands. First, the query retrieves all records for the table. Then, it filters the data for only records that are in the time range. Finally, it filters those results for only records that have a `Critical` level.
 
 > [!NOTE]
 > In addition to specifying a filter in your query by using the `TimeGenerated` column, you can specify the time range in Log Analytics. For more information, see [Log query scope and time range in Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope).
@@ -312,7 +312,7 @@ AzureActivity
 
 ## Select a subset of columns: *project*
 
-Use [project](./projectoperator.md) to include only the columns you want. Building on the preceding example, let's limit the output to certain columns:
+Use [project](../projectoperator.md) to include only the columns you want. Building on the preceding example, let's limit the output to certain columns:
 
 ```kusto
 AzureActivity
@@ -325,7 +325,7 @@ AzureActivity
 
 ## Show *n* rows: *take*
 
-[NetworkMonitoring](/azure/azure-monitor/reference/tables/networkmonitoring) contains monitoring data for Azure virtual networks. Let's use the [take](./takeoperator.md) operator to look at 10 random sample rows in that table. The [take](./takeoperator.md) shows some rows from a table in no particular order:
+[NetworkMonitoring](/azure/azure-monitor/reference/tables/networkmonitoring) contains monitoring data for Azure virtual networks. Let's use the [take](../takeoperator.md) operator to look at 10 random sample rows in that table. The [take](../takeoperator.md) shows some rows from a table in no particular order:
 
 ```kusto
 NetworkMonitoring
@@ -346,7 +346,7 @@ NetworkMonitoring
 | project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
 ```
 
-You can get this exact behavior by instead using the [top](./topoperator.md) operator:
+You can get this exact behavior by instead using the [top](../topoperator.md) operator:
 
 ```kusto
 NetworkMonitoring
@@ -358,7 +358,7 @@ NetworkMonitoring
 
 ## Compute derived columns: *extend*
 
-The [extend](./projectoperator.md) operator is similar to [project](./projectoperator.md), but it adds to the set of columns instead of replacing them. You can use both operators to create a new column based on a computation on each row.
+The [extend](../projectoperator.md) operator is similar to [project](../projectoperator.md), but it adds to the set of columns instead of replacing them. You can use both operators to create a new column based on a computation on each row.
 
 The [Perf](/azure/azure-monitor/reference/tables/perf) table has performance data that's collected from virtual machines that run the Log Analytics agent.
 
@@ -373,7 +373,7 @@ Perf
 
 ## Aggregate groups of rows: *summarize*
 
-The [summarize](./summarizeoperator.md) operator groups together rows that have the same values in the `by` clause. Then, it uses an aggregation function like `count` to combine each group in a single row. A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns.
+The [summarize](../summarizeoperator.md) operator groups together rows that have the same values in the `by` clause. Then, it uses an aggregation function like `count` to combine each group in a single row. A range of [aggregation functions](../aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns.
 
 The [SecurityEvent](/azure/azure-monitor/reference/tables/securityevent) table contains security events like logons and processes that started on monitored computers. You can count how many events of each level occurred on each computer. In this example, a row is produced for each computer and level combination. A column contains the count of events.
 
@@ -386,7 +386,7 @@ SecurityEvent
 
 ## Summarize by scalar values
 
-You can aggregate by scalar values like numbers and time values, but you should use the [bin()](./binfunction.md) function to group rows into distinct sets of data. For example, if you aggregate by `TimeGenerated`, you'll get a row for most time values. Use `bin()` to consolidate values per hour or day.
+You can aggregate by scalar values like numbers and time values, but you should use the [bin()](../binfunction.md) function to group rows into distinct sets of data. For example, if you aggregate by `TimeGenerated`, you'll get a row for most time values. Use `bin()` to consolidate values per hour or day.
 
 The [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) table contains performance data that's organized according to insights from Azure Monitor for VMs and Azure Monitor for containers. The following query shows the hourly average processor utilization for multiple computers:
 
@@ -401,7 +401,7 @@ InsightsMetrics
 
 ## Display a chart or table: *render*
 
-The [render](./renderoperator.md) operator specifies how the output of the query is rendered. Log Analytics renders output as a table by default. You can select different chart types after you run the query. The `render` operator is useful to include in queries in which a specific chart type usually is preferred.
+The [render](../renderoperator.md) operator specifies how the output of the query is rendered. Log Analytics renders output as a table by default. You can select different chart types after you run the query. The `render` operator is useful to include in queries in which a specific chart type usually is preferred.
 
 The following example shows the hourly average processor utilization for a single computer. It renders the output as a timechart.
 
@@ -431,11 +431,11 @@ InsightsMetrics
 
 ## Join data from two tables
 
-What if you need to retrieve data from two tables in a single query? You can use the [join](./joinoperator.md) operator to combine rows from multiple tables in a single result set. Each table must have a column that has a matching value so that the join understands which rows to match.
+What if you need to retrieve data from two tables in a single query? You can use the [join](../joinoperator.md) operator to combine rows from multiple tables in a single result set. Each table must have a column that has a matching value so that the join understands which rows to match.
 
 [VMComputer](/azure/azure-monitor/reference/tables/vmcomputer) is a table that Azure Monitor uses for VMs to store details about virtual machines that it monitors. [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) contains performance data that's collected from those virtual machines. One value collected in *InsightsMetrics* is available memory, but not the percentage memory that's available. To calculate the percentage, we need the physical memory for each virtual machine. That value is in `VMComputer`.
 
-The following example query uses a join to perform this calculation. The [distinct](./distinctoperator.md) operator is used with `VMComputer` because details are regularly collected from each computer. As result, the table contains multiple rows for each computer. The two tables are joined using the `Computer` column. A row is created in the resulting set that includes columns from both tables for each row in `InsightsMetrics`, where the value in `Computer` has the same value in the `Computer` column in `VMComputer`.
+The following example query uses a join to perform this calculation. The [distinct](../distinctoperator.md) operator is used with `VMComputer` because details are regularly collected from each computer. As result, the table contains multiple rows for each computer. The two tables are joined using the `Computer` column. A row is created in the resulting set that includes columns from both tables for each row in `InsightsMetrics`, where the value in `Computer` has the same value in the `Computer` column in `VMComputer`.
 
 ```kusto
 VMComputer
@@ -452,7 +452,7 @@ VMComputer
 
 ## Assign a result to a variable: *let*
 
-Use [let](./letstatement.md) to make queries easier to read and manage. You can use this operator to assign the results of a query to a variable that you can use later. By using the `let` statement, the query in the preceding example can be rewritten as:
+Use [let](../letstatement.md) to make queries easier to read and manage. You can use this operator to assign the results of a query to a variable that you can use later. By using the `let` statement, the query in the preceding example can be rewritten as:
 
 ```kusto
 let PhysicalComputer = VMComputer
@@ -469,6 +469,6 @@ PhysicalComputer
 
 ## Next steps
 
-* View code samples for the [Kusto Query Language](samples.md).
+* View code samples for the [Kusto Query Language](../samples.md).
 
 ::: zone-end

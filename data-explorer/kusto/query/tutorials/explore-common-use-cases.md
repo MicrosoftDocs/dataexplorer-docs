@@ -1,11 +1,11 @@
 ---
-title: 'Tutorial: Perform common calculations'
-description: This tutorial describes how to perform common calculations in the Kusto Query Language.
+title: 'Tutorial: Explore common use cases'
+description: This tutorial explores common use cases for the Kusto Query Language.
 ms.topic: tutorial
 ms.date: 01/18/2023
 ---
 
-# Tutorial: Perform common calculations
+# Tutorial: Explore common use cases
 
 In this tutorial, you'll learn how to:
 
@@ -16,7 +16,7 @@ In this tutorial, you'll learn how to:
 > * [Calculate correlation coefficients](#calculate-correlation-coefficients)
 > * [Perform geospatial clustering](#perform-geospatial-clustering)
 
-The examples in the tutorial all use the `StormEvents` table, which is publicly available in the [Samples database](https://help.kusto.windows.net/Samples) of the **help** cluster. To continue exploring with your own data, [create your own free cluster](../../start-for-free-web-ui.md).
+The examples in the tutorial all use the `StormEvents` table, which is publicly available in the [Samples database](https://help.kusto.windows.net/Samples) of the **help** cluster. To continue exploring with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
 
 ## Prerequisites
 
@@ -24,9 +24,9 @@ The examples in the tutorial all use the `StormEvents` table, which is publicly 
 
 ## Join data from multiple tables
 
-The [join](./joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns and perform analysis on a combined data set.
+The [join](../joinoperator.md) operator is used to combine rows from tables based on matching values in specified columns and perform analysis on a combined data set.
 
-Like `join`, the [lookup](lookupoperator.md) operator also combines rows from tables based on matching values in specified columns. However, there are several differences to consider, such as how each operator handles repeated columns, the types of lookups supported, performance considerations, and the size of the tables being joined.
+Like `join`, the [lookup](../lookupoperator.md) operator also combines rows from tables based on matching values in specified columns. However, there are several differences to consider, such as how each operator handles repeated columns, the types of lookups supported, performance considerations, and the size of the tables being joined.
 
 ### Cross-table joins
 
@@ -112,9 +112,9 @@ This section covers two common methods for calculating percentages.
 
 To find the percentage of storm events that caused crop damage in each state, use `count()` and `countif()` to count the total number of storms and the number of storms that caused crop damage in each state.
 
-Then, use [extend](extendoperator.md) to calculate the percentage of storms that caused crop damage in each state by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
+Then, use [extend](../extendoperator.md) to calculate the percentage of storms that caused crop damage in each state by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
 
-To ensure that you get a decimal result, use the [todouble()](todoublefunction.md) function to convert at least one of the integer count values to a double before performing the division.
+To ensure that you get a decimal result, use the [todouble()](../todoublefunction.md) function to convert at least one of the integer count values to a double before performing the division.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPPQ+CQAyGdxL+Q8c7QyK666QDGwkmzgdXlYS7mlKMGH+8wEWns2Pfjz6thNgdH+ilT5M39INzhtsXQprANCcS01Wzpy98JUYQdtDQ4EXpLFiCem7lVjLdkWU8GGeuP2N7UWHxlWEPuQ7ZeoSldD6NT0FvoURuJppoXwjx1GqVErI01B2qfwAa1jH+FWzyXGew1cvDxBIw4iUfrI4MCiABAAA=" target="_blank">Run the query</a>
@@ -142,13 +142,13 @@ StormEvents
 |...|...|...|...|
 
 > [!NOTE]
-> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](todoublefunction.md). This will ensure that you don't get truncated results due to integer division.
+> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](../todoublefunction.md). This will ensure that you don't get truncated results due to integer division.
 
 ### Calculate percentage based on table size
 
 To compare the number of storms by event type to the total number of storms in the database, first save the total number of storms in the database as a variable.
 
-Since [tabular expression statements](tutorial-write-kusto-queries.md#understand-the-structure-of-a-kusto-query) return tabular results, use the [toscalar()](toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the percentage calculation.
+Since [tabular expression statements](write-kusto-queries.md#understand-the-structure-of-a-kusto-query) return tabular results, use the [toscalar()](../toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the percentage calculation.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wx4TKRrP4km8F+wPpHERJemWzUao+PG2UWg8zuPNMB4FOhLrL0IcIhxBKDrrLatMzk8cJMIbYgrB8v2F4CgNorQ+1FWh1FXpZHZaxHnxV4B++vJuGnHRR6YHOllhU/QaaJHdnOwN86srpd6jWg0Nu7/rG9gbszUfSEMd+dIAAAA=" target="_blank">Run the query</a>
@@ -172,11 +172,11 @@ StormEvents
 |...|...|...|
 
 > [!NOTE]
-> Take note of the **let** keyword in the previous query. [Let statements](letstatement.md) are used to define variables within a query. Defining variables can improve the readability, reusability, and exploratory potential of your queries.
+> Take note of the **let** keyword in the previous query. [Let statements](../letstatement.md) are used to define variables within a query. Defining variables can improve the readability, reusability, and exploratory potential of your queries.
 
 ## Calculate correlation coefficients
 
-To determine if there's a relationship between the population of a state and the amount of damage caused by storms, use the [series_pearson_correlation](series-pearson-correlationfunction.md) function.
+To determine if there's a relationship between the population of a state and the amount of damage caused by storms, use the [series_pearson_correlation](../series-pearson-correlationfunction.md) function.
 
 This query calculates the total amount of property damage caused by storms in each state and joins it with population data. The resulting columns are converted into series and the correlation coefficient is calculated.
 
@@ -203,11 +203,11 @@ A coefficient of 0.6419 suggests that there's a weak connection between the stat
 
 ## Perform geospatial clustering
 
-Geospatial clustering is a way to organize and analyze data based on geographical location. KQL offers multiple methods for performing [geospatial clustering](geospatial-grid-systems.md), as well as tools for [geospatial visualizations](geospatial-visualizations.md).
+Geospatial clustering is a way to organize and analyze data based on geographical location. KQL offers multiple methods for performing [geospatial clustering](../geospatial-grid-systems.md), as well as tools for [geospatial visualizations](../geospatial-visualizations.md).
 
 ### Cluster storm events by type
 
-The following query filters for all storm events of the "Tornado" event type. It then groups the events into clusters based on their longitude and latitude using the [geo_point_to_s2cell](geo-point-to-s2cell-function.md) function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a map to visualize the clusters.
+The following query filters for all storm events of the "Tornado" event type. It then groups the events into clusters based on their longitude and latitude using the [geo_point_to_s2cell](../geo-point-to-s2cell-function.md) function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a map to visualize the clusters.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2VQsU7DQAzd+QorU07KhFhvqdSNje7RcbV6B4l98jktQXw8TtJCEZuf/d7zs1+UZdyfkbQ+fMEloSCs8DAXBO+hObBQOHJj4yL8hlFhh6dMz0zdtQr6o82VWGkahvY2chDo+K/P5ExTp3EMkj8RIk+k/YZnv6LWwesMKdQEHk7IfeFsHOW+Pka8c/qN0cGTu8u5iDbuoop2lYRhs2kXX9f93WtS/FC0uNtHbG+zEpbjxfooUDLGFEThkjVB+56N7WEMxX0DtXW+QEsBAAA=" target="_blank">Run the query</a>
@@ -227,9 +227,9 @@ StormEvents
 
 ### Cluster storm events in a specific region
 
-To look within a specific region of interest, use a polygon to define the region and the [geo_point_in_polygon](geo-point-in-polygon-function.md) function to filter for events that occur within that region.
+To look within a specific region of interest, use a polygon to define the region and the [geo_point_in_polygon](../geo-point-in-polygon-function.md) function to filter for events that occur within that region.
 
-The following query defines a polygon representing the southern California region and filters for storm events within this region. It then groups the events into clusters using the [geo_point_to_s2cell](geo-point-to-s2cell-function.md) function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a map to visualize the clusters.
+The following query defines a polygon representing the southern California region and filters for storm events within this region. It then groups the events into clusters using the [geo_point_to_s2cell](../geo-point-to-s2cell-function.md) function, counts the number of events in each cluster, and projects the central point of the cluster. The resulting count is renamed as "Events" and the query renders a map to visualize the clusters.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21QTU+EQAy98yuaOUGCm+wqiavZi4k3DyYeCSHj0IVRmJKZ4oof/90CiR+ROfW17/W9TosMgQZu0LvS6NYeyTur4QDV6HRnTfwegTzFY4/qCtQ9tWNNTqVL2xD5yjrNGGSa5/nZdrvfZCmcX2yyIoUJZ6t49433q3jiF7NJ8ZlcRw9Mvrt9Qcch+oCT5EWokcqerOPSOinmYPEN1tbdkUthqTSnaxcmsqX39ISG4b9EhmHoOu3tG4KhQSwWPMrPzDhO4HGERodGOj9BmMqwM9i2qzkuf7tOooU7qYxc5nW7rImnvUn611mk+MroKli+QXzVTFAy8dJHD71F02jPcLLcQPxshX2ATvfJF6/vcb7pAQAA" target="_blank">Run the query</a>
@@ -252,7 +252,7 @@ StormEvents
 
 ## Next steps
 
-* Read more about the [Kusto Query Language](index.md)
-* Learn how to perform [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md)
-* Learn how to [ingest data](../../ingest-sample-data.md)
+* Read more about the [Kusto Query Language](../index.md)
+* Learn how to perform [cross-database and cross-cluster queries](../cross-cluster-or-database-queries.md)
+* Learn how to [ingest data](../../../ingest-sample-data.md)
 * Get a comprehensive understanding by reading the [white paper](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-explorer/Azure_Data_Explorer_white_paper.pdf)
