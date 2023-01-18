@@ -1,15 +1,15 @@
 ---
 title: partition operator - Azure Data Explorer
-description: This article describes partition operator in Azure Data Explorer.
+description: Learn how to use the partition operator to partition the records of the input table into multiple subtables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/03/2022
+ms.date: 01/08/2023
 ---
 # Partition operator
 
-The partition operator partitions the records of its input table into multiple subtables according to values in a key column, runs a subquery on each subtable, and produces a single output table that is the union of the results of all subqueries. This operator is useful when you need to perform a subquery only on a subset of rows that belongs to the same partition key, and not query the whole dataset. These subqueries could include aggregate functions, window functions, top N and others.
+The partition operator partitions the records of its input table into multiple subtables according to values in a key column. The operator runs a subquery on each subtable, and produces a single output table that is the union of the results of all subqueries. This operator is useful when you need to perform a subquery only on a subset of rows that belongs to the same partition key, and not query the whole dataset. These subqueries could include aggregate functions, window functions, top N and others.
 
-The partition operator supports several strategies of subquery operation: 
+The partition operator supports several strategies of subquery operation:
 
 * [Native](#native-strategy) - use with an implicit data source with thousands of key partition values.
 * [Shuffle](#shuffle-strategy) - use with an implicit source with millions of key partition values.
@@ -39,7 +39,7 @@ Legacy subqueries can use the following sources:
 * Implicit - The source is a tabular transformation that doesn't specify a tabular source. The source is implicit and will be assigned according to the subtable partitions. This scenario applies when there are 64 or less key values. 
 * Explicit - The subquery must include a tabular source explicitly. Only the key column of the input table is available in the subquery, and referenced by using its name in the `toscalar()` function.
 
-For both implicit and explicit sources, the subquery type is used for legacy purposes only, and indicated by the use of `hint.strategy=legacy`, or by not including any strategy indication. 
+For both implicit and explicit sources, the subquery type is used for legacy purposes only, and indicated by the use of `hint.strategy=legacy`, or by not including any strategy indication.
 
 Any other reference to the source is taken to mean the entire input table, for example, by using the [as operator](asoperator.md) and calling up the value again.
 
@@ -61,8 +61,8 @@ For native, shuffle and legacy subqueries, the result must be a single tabular r
 ## Arguments
 
 * *T*: The tabular source whose data is to be processed by the operator.
-* *strategy*: The partition strategy, `native`, `shuffle` or `legacy`. `native` strategy is used with an implicit source with thousands of key partition values. `shuffle` strategy is used with an implicit source with millions of key partition values. `legacy` strategy is used with an explicit or implicit source with 64 or less key partition values. 
-* *Column*: The name of a column in *T* whose values determine how the input table   is to be partitioned. See **Notes** below.
+* *strategy*: The partition strategy, `native`, `shuffle` or `legacy`. `native` strategy is used with an implicit source with thousands of key partition values. `shuffle` strategy is used with an implicit source with millions of key partition values. `legacy` strategy is used with an explicit or implicit source with 64 or less key partition values.
+* *Column*: The name of a column in *T* whose values determine how the input table   is to be partitioned.
 * *TransformationSubQuery*: A tabular transformation expression, whose source is implicitly the subtables produced by partitioning the records of *T*, each subtable being homogenous on the value of *Column*.
 * *ContextFreeSubQuery*: A tabular expression that includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.
 * *PartitionParameters*: Zero or more (space-separated) parameters in the form of: <br>
@@ -112,7 +112,6 @@ StormEvents
 |WISCONSIN|1|2|
 |WASHINGTON|1|2|
 |WASHINGTON|1|10|
-
 
 This query returns the top 1 EventType by total injuries for each State that starts with 'W':
 
@@ -168,8 +167,9 @@ StormEvents
 This strategy is for legacy purposes only, and indicated by the use of `hint.strategy=legacy` or by not including a strategy indication at all. See the following example:
 
 This query will run two subqueries:
-* When x == 1, the query will return all rows from StormEvents that has InjuriesIndirect == 1.
-* When x == 2, the query will return all rows from StormEvents that has InjuriesIndirect == 2.
+
+* When x == 1, the query will return all rows from StormEvents that have InjuriesIndirect == 1.
+* When x == 2, the query will return all rows from StormEvents that have InjuriesIndirect == 2.
 
 the final result is the union of these 2 subqueries.
 

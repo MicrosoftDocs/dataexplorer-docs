@@ -1,9 +1,9 @@
 ---
 title: project-keep operator - Azure Data Explorer
-description: This article describes project-keep operator in Azure Data Explorer.
+description: Learn how to use the project-keep operator to select columns from the input to keep in the output.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 01/12/2023
 ---
 # project-keep operator
 

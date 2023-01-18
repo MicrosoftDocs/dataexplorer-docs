@@ -1,18 +1,17 @@
 ---
-title: extract_json() and extractjson() - Azure Data Explorer
-description: Learn how to use the extract_json() and extractjson() functions to get a specified element out of a JSON text using a path expression.
+title: extract_json() - Azure Data Explorer
+description: Learn how to use the extract_json() function to get a specified element out of a JSON text using a path expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/12/2022
+ms.date: 01/09/2023
 ---
-# extract_json(), extractjson()
+# extract_json()
 
 Get a specified element out of a JSON text using a path expression.
 
 Optionally convert the extracted string to a specific type.
 
-> [!NOTE]
-> The `extract_json()` and `extractjson()` functions are interpreted equivalently.
+> The `extract_json()` and `extractjson()` functions are equivalent
 
 ```kusto
 extract_json("$.hosts[1].AvailableMB", EventText, typeof(int))
@@ -20,9 +19,7 @@ extract_json("$.hosts[1].AvailableMB", EventText, typeof(int))
 
 ## Syntax
 
-`extract_json(`*jsonPath*`,`*dataSource*`, `*type*`)`
-
-`extractjson(`*jsonPath*`,`*dataSource*`, `*type*`)`
+`extract_json(`*jsonPath*`,`*dataSource*`,`*type*`)`
 
 ## Arguments
 
@@ -48,7 +45,7 @@ T
 
 **Performance tips**
 
-* Apply where-clauses before using `extract_json()`
+* Apply where-clauses before using `extract_json()`.
 * Consider using a regular expression match with [extract](extractfunction.md) instead. This can run very much faster, and is effective if the JSON is produced from a template.
 * Use `parse_json()` if you need to extract more than one value from the JSON.
 * Consider having the JSON parsed at ingestion by declaring the type of the column to be dynamic.

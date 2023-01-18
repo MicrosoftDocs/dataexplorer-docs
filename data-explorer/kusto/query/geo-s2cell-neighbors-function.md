@@ -64,7 +64,7 @@ print cells = array_concat(pack_array(s2cell), geo_s2cell_neighbors(s2cell))
 | mv-expand cells to typeof(string)
 | project polygons = geo_s2cell_to_polygon(cells)
 | summarize arr = make_list(polygons)
-| project geojson = pack("type", "Feature","geometry", pack("type", "GeometryCollection", "geometries", arr), "properties", pack("name", "polygons"))
+| project geojson = bag_pack("type", "Feature","geometry", bag_pack("type", "GeometryCollection", "geometries", arr), "properties", bag_pack("name", "polygons"))
 ```
 
 **Output**

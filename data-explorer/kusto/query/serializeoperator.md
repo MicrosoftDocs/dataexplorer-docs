@@ -35,7 +35,7 @@ Traces
 
 The output row set of the following operators is marked as serialized.
 
-[range](./rangeoperator.md), [sort](./sortoperator.md), [order](./orderoperator.md), [top](./topoperator.md), [top-hitters](./tophittersoperator.md), [getschema](./getschemaoperator.md).
+[range](./rangeoperator.md), [sort](./sort-operator.md), [top](./topoperator.md), [top-hitters](./tophittersoperator.md), [getschema](./getschemaoperator.md).
 
 The output row set of the following operators is marked as non-serialized.
 
