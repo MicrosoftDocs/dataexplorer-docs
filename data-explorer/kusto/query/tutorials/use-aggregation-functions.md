@@ -7,7 +7,7 @@ ms.date: 01/18/2023
 
 # Tutorial: Use aggregation functions
 
-In the Kusto Query Language (KQL), [aggregation functions](../aggregation-functions.md) allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, minimum, or average value.
+[Aggregation functions](../aggregation-functions.md) allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, or average value.
 
 In this tutorial, you'll learn how to:
 
@@ -15,13 +15,13 @@ In this tutorial, you'll learn how to:
 >
 > * [Use the summarize operator](#use-the-summarize-operator)
 > * [Visualize query results](#visualize-query-results)
-> * [Count rows based on condition](#perform-a-conditional-count)
+> * [Perform a conditional count](#perform-a-conditional-count)
 > * [Group data by scalar values](#group-data-by-scalar-values)
 > * [Calculate the min, max, avg, and sum](#calculate-the-min-max-avg-and-sum)
 > * [Extract unique values](#extract-unique-values)
 > * [Bucket data by condition](#bucket-data-by-condition)
 
-The examples in the tutorial all use the `StormEvents` table, which is publicly available in the [Samples database](https://help.kusto.windows.net/Samples) of the **help** cluster. To continue exploring with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
+The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To continue exploring with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
 
 ## Prerequisites
 
@@ -315,4 +315,4 @@ StormEvents
 Now that you're familiar with common query operators and aggregation functions, go on to learn about some common and useful calculations.
 
 > [!div class="nextstepaction"]
-> [Perform common calculations](explore-common-use-cases.md)
+> [Explore common use cases](explore-common-use-cases.md)
