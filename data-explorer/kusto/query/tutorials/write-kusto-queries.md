@@ -22,8 +22,8 @@ In this tutorial, you'll learn how to:
 > * [Select a subset of columns](#select-a-subset-of-columns)
 > * [List unique values](#list-unique-values)
 > * [Filter by condition](#filter-by-condition)
-> * [Sort rows](#sort-rows)
-> * [Get the top n rows](#top)
+> * [Sort results](#sort-results)
+> * [Get the top *n* rows](#get-the-top-n-rows)
 
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To continue exploring with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
 
@@ -155,7 +155,7 @@ There are 146 events that match these conditions. Here's a sample of 5 of them.
 |2007-03-12T02:30:00Z|2007-03-12T06:45:00Z|TEXAS|Flood|0|
 |...|...|...|...|...|
 
-## Sort rows
+## Sort results
 
 To view the top five floods in Texas that caused the most damage, use the [sort](../sort-operator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
 
@@ -180,7 +180,7 @@ StormEvents
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
 |...|...|...|...|...|
 
-## top
+## Get the top *n* rows
 
 The [top](../topoperator.md) operator returns the first *n* rows sorted by the specified column.
 
@@ -209,7 +209,7 @@ StormEvents
 > [!NOTE]
 > The order of the operators is important, since the data flows from one operator to the next and is transformed at each step. If you put `top` before `where` here, you'll get different results. To learn more, see [tabular expression statements](../tabularexpressionstatements.md).
 
-The following query uses `project` to create a computed `Duration` column that calculates the difference between the `StartTime` and `EndTime`. 
+The following query uses `project` to create a computed `Duration` column that calculates the difference between the `StartTime` and `EndTime`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2OvQ7CMAyEdyTewVuWMDJ2QGr5WQJSKzGHxoIiEkeuKVTi4WmooBKbfXeffaUQ%2b6LDIO189oLHBRnhs1d9RMgyUOsbkVNgg4NSrIzicVVud2ZT7Y1KnFCEJZx6yK23ZzwwRWTpwWFbJx%2bfggOf39lKQwEyKIKrGo%2bwSEdZ0pyCkemKtUyi%2fib1j9ZjDz311H9%2fBys2LTk0lhPT4RvwA3pn6AAAAA%3d%3d" target="_blank">Run the query</a>
