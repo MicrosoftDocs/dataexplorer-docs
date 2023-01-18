@@ -18,7 +18,7 @@ In this tutorial, you'll learn how to:
 > [!div class="checklist"]
 >
 > * [Understand the structure of a Kusto query](#understand-the-structure-of-a-kusto-query)
-> * [Get started with common operators](#get-started-with-common-operators)
+> * [Use common query operators](#get-started-with-common-operators)
 
 The examples in the tutorial all use the `StormEvents` table, which is publicly available in the [Samples database](https://help.kusto.windows.net/Samples) of the **help** cluster. To continue exploring with your own data, [create your own free cluster](../../start-for-free-web-ui.md).
 
@@ -56,7 +56,7 @@ The query performs these actions in order:
 1. The filtered table is then further filtered by another `where` operator to include rows with a `State` value of "FLORIDA".
 1. The final table is passed to the `count` operator, which returns a new table with a single column, `Count`, containing the number of rows in the table.
 
-## Get started with common operators
+## Use common query operators
 
 In this section, you'll learn some common query operators using the `StormEvents` table. These operators are key to understanding KQL and will be used in many of your queries.
 
