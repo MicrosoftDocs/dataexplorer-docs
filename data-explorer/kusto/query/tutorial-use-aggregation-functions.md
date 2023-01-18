@@ -7,8 +7,6 @@ ms.date: 01/18/2023
 
 # Tutorial: Use aggregation functions
 
-[Kusto Query Language (KQL)](index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), and [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/).
-
 In this tutorial, you'll learn how to:
 
 > [!div class="checklist"]

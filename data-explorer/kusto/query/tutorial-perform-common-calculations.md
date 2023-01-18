@@ -7,8 +7,6 @@ ms.date: 01/18/2023
 
 # Tutorial: Perform common calculations
 
-[Kusto Query Language (KQL)](index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), and [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/).
-
 In this tutorial, you'll learn how to:
 
 > [!div class="checklist"]
@@ -150,7 +148,7 @@ StormEvents
 
 To compare the number of storms by event type to the total number of storms in the database, first save the total number of storms in the database as a variable.
 
-Since [tabular expression statements](tutorial-learn-main-operators.md#understand-the-structure-of-a-kusto-query) return tabular results, use the [toscalar()](toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the percentage calculation.
+Since [tabular expression statements](tutorial-write-kusto-queries.md#understand-the-structure-of-a-kusto-query) return tabular results, use the [toscalar()](toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the percentage calculation.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOwQrCMBBE74X+wx4TKRrP4km8F+wPpHERJemWzUao+PG2UWg8zuPNMB4FOhLrL0IcIhxBKDrrLatMzk8cJMIbYgrB8v2F4CgNorQ+1FWh1FXpZHZaxHnxV4B++vJuGnHRR6YHOllhU/QaaJHdnOwN86srpd6jWg0Nu7/rG9gbszUfSEMd+dIAAAA=" target="_blank">Run the query</a>
