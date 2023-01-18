@@ -6,7 +6,7 @@ items:
 - name: Tutorials
   items: 
     - name: 1 - Write Kusto queries
-      href: tutorial-learn-main-operators.md
+      href: tutorial-write-kusto-queries.md
     - name: 2 - Use aggregation functions
       href: tutorial-use-aggregation-functions.md
     - name: 3 - Perform common calculations

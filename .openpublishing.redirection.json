@@ -372,7 +372,7 @@
 		},
     {
 			"source_path": "data-explorer/kusto/query/tutorial.md",
-			"redirect_url": "/azure/data-explorer/kusto/query/tutorial-learn-main-operators",
+			"redirect_url": "/azure/data-explorer/kusto/query/tutorial-write-kusto-queries",
 			"redirect_document_id": false
 		},
     {
