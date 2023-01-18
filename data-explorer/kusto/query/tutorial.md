@@ -8,7 +8,7 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 
-# Tutorial: Write KQL queries
+# Tutorial: Write Kusto queries
 
 ::: zone pivot="azuredataexplorer"
 
