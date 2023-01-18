@@ -29,7 +29,7 @@ The examples in the tutorial all use the `StormEvents` table, which is publicly 
 
 ## Use the summarize operator
 
-The [summarize](./summarizeoperator.md) operator groups together rows based on the `by` clause and then uses an aggregation function to combine each group in a single row.
+The [summarize](./summarizeoperator.md) operator is essential to performing aggregations over your data. The `summarize` operator groups together rows based on the `by` clause and then uses an aggregation function to combine each group in a single row.
 
 Find the number of events by state using `summarize` with the [count](./count-aggfunction.md) aggregation function.
 
@@ -59,7 +59,7 @@ StormEvents
 
 ## Visualize query results
 
-Visualize query results with the [render](./renderoperator.md) operator. Throughout the tutorial, you'll see many examples of how to visually render your results.
+Visualizing query results in a chart or graph can help you identify patterns, trends, and outliers in your data. You can do this with the [render](renderoperator.md) operator. Throughout the tutorial, you'll see examples of how to use `render` to display your results.
 
 Start by using `render` to see the results from the previous query in a bar chart.
 
@@ -76,7 +76,9 @@ StormEvents
 
 ## Perform a conditional count
 
-The following example uses the [countif()](./countif-aggfunction.md) function to count of storms that caused damage. The function returns the count of rows where the predicate passed as an argument is `true`. Then the `top` operator further filters to show states with the most crop damage from storms.
+When analyzing your data, you may want to perform a conditional count to understand how many rows meet a specific criteria.
+
+The following query uses the [countif()](./countif-aggfunction.md) function to count of storms that caused damage. The query then uses the `top` operator to filter the results and display the states with the highest amount of crop damage caused by storms.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQgGiReHZ5ZkOBflF7gk5iampyrYKiTnl+aVZKZpQARAUsUKdgoGmgpJlUAtiSWpQENK8gsUTCECmGYAAFosNm9wAAAA" target="_blank">Run the query</a>
