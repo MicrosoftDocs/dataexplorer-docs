@@ -21,7 +21,7 @@ In this tutorial, you'll learn how to:
 > * [Extract unique values](#extract-unique-values)
 > * [Bucket data by condition](#bucket-data-by-condition)
 
-[!INCLUDE [tutorials-data-note](../../../includes/tutorials-data-note.md)]
+The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../start-for-free-web-ui.md).
 
 ## Prerequisites
 
