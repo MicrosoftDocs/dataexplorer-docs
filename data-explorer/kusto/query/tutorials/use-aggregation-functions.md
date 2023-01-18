@@ -307,7 +307,7 @@ StormEvents
 
 ## Next steps
 
-Now that you're familiar with common query operators and aggregation functions, go on to the next tutorial to explore common use cases.
+Now that you're familiar with common query operators and aggregation functions, go on to the next tutorial to practice common data analysis methods.
 
 > [!div class="nextstepaction"]
-> [Explore common use cases](explore-common-use-cases.md)
+> [Practice data analysis methods](practice-data-analysis-methods.md)

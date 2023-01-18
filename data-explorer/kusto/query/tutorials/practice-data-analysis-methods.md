@@ -1,11 +1,11 @@
 ---
-title: 'Tutorial: Explore common use cases'
+title: 'Tutorial: Learn common methods for data analysis'
 description: This tutorial explores common use cases for the Kusto Query Language.
 ms.topic: tutorial
 ms.date: 01/18/2023
 ---
 
-# Tutorial: Explore common use cases
+# Tutorial: Practice data analysis methods
 
 In this tutorial, you'll learn how to:
 
