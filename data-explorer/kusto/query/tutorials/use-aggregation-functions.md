@@ -101,7 +101,7 @@ StormEvents
 
 ### Group data by scalar values
 
-To aggregate by scalar values, such as a numeric or time value, you'll first want to group the data into bins using the [bin()](../binfunction.md) function. Doing so will help you understand the distribution of values over a certain range.
+To aggregate by scalar values, such as a numeric or time value, you'll first want to group the data into bins using the [bin()](../binfunction.md) function. Using `bin()` can help you understand how values are distributed within a certain range and make comparisons between different periods.
 
 This example counts the number of storms that caused crop damage for each week in 2007. The `7d` argument represents a week, as the function requires a valid [timespan](../scalar-data-types/timespan.md) value.
 
