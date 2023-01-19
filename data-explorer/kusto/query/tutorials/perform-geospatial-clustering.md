@@ -15,7 +15,7 @@ In this tutorial, you'll learn how to:
 >
 > * [Plot points on a map](#plot-points-on-a-map)
 > * [Plot multiple series of points](#plot-multiple-series-of-points)
-> * [Use GeoJSON dynamic values to plot points on a map](#use-geojson-dynamic-values-to-plot-points-on-a-map)
+> * [Use GeoJSON values to plot points on a map](#use-geojson-values-to-plot-points-on-a-map)
 > * [Represent data points with variable-sized bubbles](#represent-data-points-with-variable-sized-bubbles)
 > * [Display points within a specific area](#display-points-within-a-specific-area)
 
@@ -64,7 +64,7 @@ StormEvents
 | render scatterchart with (kind = map, xcolumn = BeginLon, ycolumns = BeginLat, series = EventType)
 ```
 
-## Use GeoJSON dynamic values to plot points on a map
+## Use GeoJSON values to plot points on a map
 
 A dynamic GeoJSON value can change or be updated and are often used for real-time mapping applications. Mapping points using dynamic GeoJSON values allows for more flexibility and control over the representation of the data on the map that may not be possible with plain latitude and longitude values.
 
