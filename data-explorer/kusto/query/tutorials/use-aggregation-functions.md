@@ -188,7 +188,7 @@ StormEvents
 Now you can see a peak in crop damage in January, which probably was due to Freeze/Frost.
 
 > [!TIP]
-> Use [minif()](../minif-aggfunction.md), [maxif()](../maxif-aggfunction.md), [avgif()](../avgif-aggfunction.md), and [sumif()](../sumif-aggfunction.md) to perform conditional aggregations, like we did when in the [perform a conditional count](#perform-a-conditional-count) section.
+> Use [minif()](../minif-aggfunction.md), [maxif()](../maxif-aggfunction.md), [avgif()](../avgif-aggfunction.md), and [sumif()](../sumif-aggfunction.md) to perform conditional aggregations, like we did when in the [conditionally count rows](#conditionally-count-rows) section.
 
 ## Extract unique values
 
