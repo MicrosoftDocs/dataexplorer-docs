@@ -104,7 +104,7 @@ StormEvents
 
 ## Display points within a specific area
 
-There are many methods to limit the visualization to a specific region. In this section, we'll use [geo_point_in_polygon](../geo-point-in-polygon-function.md) to [plot points within a polygon](#plot-points-within-a-polygon) and [geo_point_in_circle](../geo-point-in-circle-function.md) to [plot points within a circle](#plot-points-within-a-circle).
+There are many methods to limit the visualization to a specific region. In this section, we'll use `geo_point_in_polygon` to [plot points within a polygon](#plot-points-within-a-polygon) and `geo_point_in_circle` to [plot points within a circle](#plot-points-within-a-circle).
 
 ### Plot points within a polygon
 
