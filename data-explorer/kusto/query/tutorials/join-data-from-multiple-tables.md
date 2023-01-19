@@ -14,8 +14,8 @@ In this tutorial, you'll learn how to:
 > [!div class="checklist"]
 >
 > * [Join data from two tables](#join-data-from-two-tables)
-> * [Join data from query results](#join-data-from-query-results)
 > * [Use the lookup operator to join tables](#use-the-lookup-operator-to-join-tables)
+> * [Join data from query results](#join-data-from-query-results)
 
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
 
@@ -91,6 +91,33 @@ Add `| render columnchart` to the query to visualize the result.
 
 :::image type="content" source="../images/tutorial/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
 
+## Use the lookup operator to join tables
+
+The [lookup](../lookupoperator.md) operator is used to combine rows from tables based on matching values in specified columns. It is similar to `join` but with some differences, such as how it handles repeated columns and performance considerations. Using `lookup` to combine a large table with a small table can be more efficient because it broadcasts the small table to the large table, saving memory and resources.
+
+The following query is an example of using `lookup` to merge the `StormEvents` and `PopulationData` tables. It filters for storms that caused a direct death and shows the state population and death count from the event.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XNMQ7CMBBE0Z5TTAmSCy5AKtMjhQusYFFMjNfajEFIOTwBCkT99WZ6mt/2dy2cVjMeg7oiqnCYYnI9ER22S8hmY6sYUznvsl5ojepYH6y2LExWolA2sIKeQl1Edbu+/Wf7+Kwavingh8Lf1Qvnk5wdiwAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where DeathsDirect > 0
+| lookup kind=leftouter (PopulationData) on State
+| project EventType, State, Population, DeathsDirect
+```
+
+**Output**
+
+|EventType |State |Population |DeathsDirect|
+|--|--|--|--|
+|Lightning |SOUTH CAROLINA |5213270 |1|
+|Tornado |LOUISIANA |4637900 |2|
+|Flash Flood |TEXAS |29363100 |2|
+|Flood |INDIANA |6768940 |1|
+|Flood |INDIANA |6768940 |1|
+|...|...|...|...|
+
 ## Join data from query results
 
 Joins can also be done based off of query results from the same table.
@@ -122,33 +149,6 @@ StormEvents
 |COLORADO|
 |IDAHO|
 |NEVADA|
-
-## Use the lookup operator to join tables
-
-The [lookup](../lookupoperator.md) operator is used to combine rows from tables based on matching values in specified columns. It is similar to `join` but with some differences, such as how it handles repeated columns and performance considerations. Using `lookup` to combine a large table with a small table can be more efficient because it broadcasts the small table to the large table, saving memory and resources.
-
-The following query is an example of using `lookup` to merge the `StormEvents` and `PopulationData` tables. It filters for storms that caused a direct death and shows the state population and death count from the event.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XNMQ7CMBBE0Z5TTAmSCy5AKtMjhQusYFFMjNfajEFIOTwBCkT99WZ6mt/2dy2cVjMeg7oiqnCYYnI9ER22S8hmY6sYUznvsl5ojepYH6y2LExWolA2sIKeQl1Edbu+/Wf7+Kwavingh8Lf1Qvnk5wdiwAAAA==" target="_blank">Run the query</a>
-
-```kusto
-StormEvents
-| where DeathsDirect > 0
-| lookup kind=leftouter (PopulationData) on State
-| project EventType, State, Population, DeathsDirect
-```
-
-**Output**
-
-|EventType |State |Population |DeathsDirect|
-|--|--|--|--|
-|Lightning |SOUTH CAROLINA |5213270 |1|
-|Tornado |LOUISIANA |4637900 |2|
-|Flash Flood |TEXAS |29363100 |2|
-|Flood |INDIANA |6768940 |1|
-|Flood |INDIANA |6768940 |1|
-|...|...|...|...|
 
 ## Next steps
 
