@@ -71,9 +71,9 @@ StormEvents
 
 ## Conditionally count rows
 
-When analyzing your data, you may want to count rows based on a specific condition to understand how many rows meet the given criteria.
+When analyzing your data, use [countif()](../countif-aggfunction.md) to count rows based on a specific condition to understand how many rows meet the given criteria.
 
-The following query uses the [countif()](../countif-aggfunction.md) function to count of storms that caused damage. The query then uses the `top` operator to filter the results and display the states with the highest amount of crop damage caused by storms.
+The following query uses `countif()` to count of storms that caused damage. The query then uses the `top` operator to filter the results and display the states with the highest amount of crop damage caused by storms.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQgGiReHZ5ZkOBflF7gk5iampyrYKiTnl+aVZKZpQARAUsUKdgoGmgpJlUAtiSWpQENK8gsUTCECmGYAAFosNm9wAAAA" target="_blank">Run the query</a>
@@ -96,7 +96,7 @@ StormEvents
 
 ## Group data into bins
 
-To aggregate by scalar values, such as a numeric or time values, you'll first want to group the data into bins using the [bin()](../binfunction.md) function. Using `bin()` can help you understand how values are distributed within a certain range and make comparisons between different periods.
+To aggregate by numeric or time values, you'll first want to group the data into bins using the [bin()](../binfunction.md) function. Using `bin()` can help you understand how values are distributed within a certain range and make comparisons between different periods.
 
 The following query counts the number of storms that caused crop damage for each week in 2007. The `7d` argument represents a week, as the function requires a valid [timespan](../scalar-data-types/timespan.md) value.
 
@@ -133,11 +133,7 @@ Add `| render timechart` to the end of the query to visualize the results.
 
 ## Calculate the min, max, avg, and sum
 
-This section will show how to perform common calculations that are useful for getting an overview of the data and identifying patterns and trends.
-
-### min, max, and avg
-
-To learn more about types of storms that cause crop damage, calculate the minimum, maximum, and average crop damage for each event type, and then sort the result by the average damage.
+To learn more about types of storms that cause crop damage, calculate the [min()](../min-aggfunction.md), [max()](../max-aggfunction.md), and [avg()](../avg-aggfunction.md) crop damage for each event type, and then sort the result by the average damage.
 
 Note that you can use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
 
@@ -166,11 +162,9 @@ StormEvents
 |Thunderstorm Wind|22000000|100|920328.36538461538|
 |...|...|...|...|
 
-### sum()
-
 The results of the previous query indicate that Freeze/Frost events resulted in the most crop damage on average. However, the [bin() query](#group-data-into-bins) showed that events with crop damage mostly took place in the summer months.
 
-The `bin()` query only counted events that caused some damage. Modify that query to use the [sum()](../sum-aggfunction.md) function instead of the `count()` function, and you can check the total number of damaged crops by event date.
+Use the [sum()](../sum-aggfunction.md) function to check the total number of damaged crops instead of just the amount of events that caused some damage, as done with `count()` in the previous [bin() query](#group-data-into-bins).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOsQ7CMBBD936Fx0SiVVqGTrBQvqD8QEpONENSdDmoQHw8iZAQnDw9+2SPsnA43ilKql5YZ2LCKJbl5ANhIlmJIpSzQpKJ6ozpa9NmaTQN/nnb1dtWa1TIZ6PDYIO90IGXa8IeJjekWwiW/ZNQ6MfHrmD1E9aYHph8VN8pG/RO53+m6IhROs9z9t7w8FzwwAAAAA==" target="_blank">Run the query</a>
@@ -218,7 +212,7 @@ StormEvents
 |ILLINOIS|23|
 |...|...|
 
-## make_set()
+### make_set()
 
 Use [make_set()](../makeset-aggfunction.md) to turn a selection of rows in a table into an array of unique values.
 
