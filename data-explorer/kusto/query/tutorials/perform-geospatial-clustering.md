@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Practice geospatial clustering'
+title: 'Tutorial: Perform geospatial clustering'
 description: This tutorial gives examples of geospatial clustering in the Kusto Query Language.
 ms.topic: tutorial
 ms.date: 01/18/2023
