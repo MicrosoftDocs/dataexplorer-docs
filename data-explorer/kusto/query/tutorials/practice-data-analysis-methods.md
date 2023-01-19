@@ -14,8 +14,6 @@ In this tutorial, you'll learn how to:
 > [!div class="checklist"]
 >
 > * [Join data from multiple tables](#join-data-from-multiple-tables)
-> * [Calculate percentages](#calculate-percentages)
-> * [Calculate correlation coefficients](#calculate-correlation-coefficients)
 > * [Perform geospatial clustering](#perform-geospatial-clustering)
 
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
@@ -105,75 +103,6 @@ StormEvents
 |COLORADO|
 |IDAHO|
 |NEVADA|
-
-## Calculate percentages
-
-Calculating percentages can help you understand the distribution and proportion of different values within your data. This section covers two common methods for calculating percentages with the Kusto Query Language (KQL).
-
-### Calculate percentage based on two columns
-
-Use [count()](../count-aggfunction.md) and [countif](../countif-aggfunction.md) to find the percentage of storm events that caused crop damage in each state. First, count the total number of storms in each state. Then, count the number of storms that caused crop damage in each state.
-
-Then, use [extend](../extendoperator.md) to calculate the percentage between the two columns by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
-
-To ensure that you get a decimal result, use the [todouble()](../todoublefunction.md) function to convert at least one of the integer count values to a double before performing the division.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPsQ7CMAxE936FxwRVorDDBANbpSIxp62BSk1cOS6iiI8nTQVT8GjfvTtXQmyPD3Tiszf40VrD3QshgzBnEtNXs8KfXCVGEHbQ0OhE6TwqluOlk3vJNCDLdDDW3H667qqWxfcMeyh0tNYTRGSIxaega6FEbkKRJC1aOCBbpYRaGuse1b90DetU9xVsikLnsNXzq8SydEgzPoPkmgkZAQAA" target="_blank">Run the query</a>
-
-```kusto
-StormEvents
-| summarize 
-    TotalStormsInState = count(),
-    StormsWithPropertyDamage = countif(DamageProperty > 0)
-    by State
-| extend PercentWithPropertyDamage = 
-    round((todouble(StormsWithPropertyDamage) / TotalStormsInState * 100), 2)
-| sort by StormsWithPropertyDamage
-```
-
-**Output**
-
-|State|TotalStorms|StormsWithCropDamage|PercentWithCropDamage|
-|--|--|--|--|
-|TEXAS|4701|1205|25.63|
-|IOWA|2337|1062|45.44|
-|OHIO|1233|730|59.21|
-|GEORGIA|1983|666|33.59|
-|VIRGINIA|1647|622|37.77|
-|...|...|...|...|
-
-> [!NOTE]
-> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](../todoublefunction.md). This will ensure that you don't get truncated results due to integer division.
-
-### Calculate percentage based on table size
-
-To compare the number of storms by event type to the total number of storms in the database, first save the total number of storms in the database as a variable. [Let statements](../letstatement.md) are used to define variables within a query.
-
-Since [tabular expression statements](../tabularexpressionstatements.md) return tabular results, use the [toscalar()](../toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the percentage calculation.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XOwQrCMAyA4fueIsdWhtazeBLvgnuBrgZR2mWkqTDZw69WYfWYny8hHgU6EuuvQhwiHEEoOustq1LOLxwkwgwxhWD58UZwlAZRWh+aSjS1KOn0Yfnej0M/fXs3jZj1yPREJ2trq7UWLsguT/aO5aUbpd6jWoWG3d/fG9gbszULDOumf88AAAA=" target="_blank">Run the query</a>
-
-```kusto
-let TotalStorms = toscalar(StormEvents | summarize count());
-StormEvents
-| summarize EventCount = count() by EventType
-| project EventType, EventCount, Percentage = todouble(EventCount) / TotalStorms * 100.0
-```
-
-**Output**
-
-|EventType|EventCount|Percentage|
-|--|--|--|
-|Thunderstorm Wind|13015|22.034673077574237|
-|Hail|12711|21.519994582331627|
-|Flash Flood|3688|6.2438627975485055|
-|Drought|3616|6.1219652592015716|
-|Winter Weather|3349|5.669928554498358|
-|...|...|...|
-
-## Calculate correlation coefficients
 
 To determine if there's a relationship between the population of a state and the amount of damage caused by storms, use the [series_pearson_correlation](../series-pearson-correlationfunction.md) function.
 
