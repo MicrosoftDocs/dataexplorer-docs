@@ -414,6 +414,11 @@
       "source_path": "data-explorer/kusto/query/rowrankfunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/rowrankdensefunction",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geospatial-visualizations.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/tutorials/perform-geospatial-clustering",
+      "redirect_document_id": true
     }
   ]
 }
