@@ -3,7 +3,7 @@ title: round() - Azure Data Explorer
 description: This article describes round() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/17/2023
 ---
 # round()
 
@@ -11,12 +11,14 @@ Returns the rounded source to the specified precision.
 
 ## Syntax
 
-`round(`*source* [`,` *Precision*]`)`
+`round(`*number* [`,` *precision*]`)`
 
-## Arguments
+## Parameters
 
-* *source*: The source scalar the round is calculated on.
-* *Precision*: Number of digits the source will be rounded to. (default value is 0)
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *number*| long or real | &check; | The number to calculate the round on.|
+| *precision*| int | | The number of digits to round to. The default is 0.|
 
 ## Returns
 
