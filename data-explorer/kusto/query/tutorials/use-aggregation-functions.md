@@ -162,7 +162,7 @@ StormEvents
 |Thunderstorm Wind|22000000|100|920328.36538461538|
 |...|...|...|...|
 
-The results of the previous query indicate that Freeze/Frost events resulted in the most crop damage on average. However, the [bin() query](#group-data-into-bins) showed that events with crop damage mostly took place in the summer months.
+The results of the previous query indicate that Frost/Freeze events resulted in the most crop damage on average. However, the [bin() query](#group-data-into-bins) showed that events with crop damage mostly took place in the summer months.
 
 Use the [sum()](../sum-aggfunction.md) function to check the total number of damaged crops instead of just the amount of events that caused some damage, as done with `count()` in the previous [bin() query](#group-data-into-bins).
 
@@ -179,7 +179,7 @@ StormEvents
 
 :::image type="content" source="../images/tutorial/sum-crop-damage-by-week.png" alt-text="Screenshot of time chart showing crop damage by week.":::
 
-Now you can see a peak in crop damage in January, which probably was due to Freeze/Frost.
+Now you can see a peak in crop damage in January, which probably was due to Frost/Freeze.
 
 > [!TIP]
 > Use [minif()](../minif-aggfunction.md), [maxif()](../maxif-aggfunction.md), [avgif()](../avgif-aggfunction.md), and [sumif()](../sumif-aggfunction.md) to perform conditional aggregations, like we did when in the [conditionally count rows](#conditionally-count-rows) section.
