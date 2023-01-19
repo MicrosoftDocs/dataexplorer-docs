@@ -209,7 +209,7 @@ The [project](../projectoperator.md) and [extend](../extendoperator.md) operator
 
 Use `project` to specify only the columns you want to view, and use `extend` to append the calculated column to the end of the table.
 
-The following query uses `project` to create a calculated `Duration` column that holds the difference between the `StartTime` and `EndTime`. Since we only want to view a few select columns, using `project` is a better choice in this case.
+The following query creates a calculated `Duration` column with the difference between the `StartTime` and `EndTime`. Since we only want to view a few select columns, using `project` is the better choice in this case.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMsQoCMRBEe79iujRaWqYQLtZCUtjGy6InJhv29pSAH+/pIWg3zLx5Xlmyu1PRcfXE40JC8BqVYC1McMedN4gl4cOEVpdhf2NOZn4oV2xxauhijmc6CFcSbUg09vNcha/U61spGoZMa7iSltBNEnXgAvvtsPkF/40vqGFRKakAAAA=" target="_blank">Run the query</a>
