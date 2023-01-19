@@ -7,6 +7,8 @@ ms.date: 01/18/2023
 
 # Tutorial: Practice data analysis methods
 
+This tutorial is for those who want to leverage [Kusto Query Language (KQL)](../index.md) for common data analysis tasks. You'll build on the foundation from the previous two tutorials, [Learn common operators](learn-common-operators.md) and [Use aggregation functions](use-aggregation-functions.md), to use KQL to analyze a dataset, uncover patterns and trends, make and test predictions, and more.
+
 In this tutorial, you'll learn how to:
 
 > [!div class="checklist"]

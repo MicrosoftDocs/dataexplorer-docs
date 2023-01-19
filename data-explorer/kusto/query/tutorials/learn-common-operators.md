@@ -11,7 +11,7 @@ ms.date: 01/18/2023
 
 ::: zone pivot="azuredataexplorer"
 
-The [Kusto Query Language (KQL)](../index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), and [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/). KQL consists of many operators and functions. This tutorial will introduce you to common operators that you'll use in many of your queries.
+[Kusto Query Language (KQL)](../index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), and [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/). This tutorial is an introduction to the essential KQL operators needed to access and analyze your data.
 
 In this tutorial, you'll learn how to:
 
