@@ -24,7 +24,7 @@ In this tutorial, you'll learn how to:
 > * [Filter by condition](#filter-by-condition)
 > * [Sort results](#sort-results)
 > * [Get the top *n* rows](#get-the-top-n-rows)
-> * [Calculate computed columns](#calculate-computed-columns)
+> * [Create calculated columns](#create-calculated-columns)
 
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
 
@@ -77,11 +77,11 @@ The following table shows only 6 of the 22 returned columns. To see the full out
 Use the [project](../projectoperator.md) operator to simplify the view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNACyCorys1KTSxSCSxJLUnUUwCpCKguATJfE3MT01ICi/ILUopJKADPh83tAAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwBTIKivKzUpNLFIJLEktSdRTACkIqC4BMl8TcxPTUgKL8gtSikkoA88jUEj8AAAA=" target="_blank">Run the query</a>
 
 ```Kusto
 StormEvents
-| take 10
+| take 5
 | project State, EventType, DamageProperty
 ```
 
@@ -94,11 +94,6 @@ StormEvents
 |FLORIDA|Tornado|6200000|
 |GEORGIA|Thunderstorm Wind|2000|
 |MISSISSIPPI|Thunderstorm Wind|20000|
-|MISSISSIPPI|Tornado|450000|
-|MISSISSIPPI|Thunderstorm Wind|60000|
-|MISSISSIPPI|Hail|0|
-|AMERICAN SAMOA|Flash Flood|250000|
-|KENTUCKY|Flood|1000|
 
 ## List unique values
 
@@ -112,7 +107,7 @@ StormEvents
 | distinct EventType
 ```
 
-There are 46 types of storms in the table.
+There are 46 types of storms in the table. Here's a sample of 10 of them.
 
 |EventType|
 |--|
@@ -156,7 +151,7 @@ There are 146 events that match these conditions. Here's a sample of 5 of them.
 
 ## Sort results
 
-To view the top five floods in Texas that caused the most damage, use the [sort](../sort-operator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
+To view the top floods in Texas that caused the most damage, use the [sort](../sort-operator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1FOcXlSgkVSq4JOYmpqcGFOUXpBaVVAIlCorys1KTS0CGFZWEZOam6ii45qVAGGALdBBG6qBpBwDYBhI8lQAAAA==" target="_blank">Run the query</a>
@@ -206,11 +201,15 @@ StormEvents
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
 
 > [!NOTE]
-> The order of the operators is important. If you put `top` before `where` here, you'll get different results. This is because the data is transformed by each operator. To learn more, see [tabular expression statements](../tabularexpressionstatements.md).
+> The order of the operators is important. If you put `top` before `where` here, you'll get different results. This is because the data is transformed by each operator in order. To learn more, see [tabular expression statements](../tabularexpressionstatements.md).
 
-## Calculate computed columns
+## Create calculated columns
 
-The following query uses `project` to create a computed `Duration` column that calculates the difference between the `StartTime` and `EndTime`.
+The [project](../projectoperator.md) and [extend](../extendoperator.md) operators can both create calculated columns.
+
+Use `project` to specify only the columns you want to view, and use `extend` to append the calculated column to the end of the table.
+
+The following query uses `project` to create a calculated `Duration` column that holds the difference between the `StartTime` and `EndTime`. Since we only want to view a few select columns, using `project` is a better choice in this case.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMsQoCMRBEe79iujRaWqYQLtZCUtjGy6InJhv29pSAH+/pIWg3zLx5Xlmyu1PRcfXE40JC8BqVYC1McMedN4gl4cOEVpdhf2NOZn4oV2xxauhijmc6CFcSbUg09vNcha/U61spGoZMa7iSltBNEnXgAvvtsPkF/40vqGFRKakAAAA=" target="_blank">Run the query</a>
@@ -233,9 +232,6 @@ StormEvents
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|03:00:00|750000|
 
 If you take a look at the computed `Duration` column, you may notice that the flood that caused the most damage was also the longest flood.
-
-> [!TIP]
-> The [extend](../extendoperator.md) operator adds computed columns to the end of a table. Since we don't want to see all columns plus an appended calculated column, using `project` to calculate the column is a better choice in this case.
 
 ## Next steps
 
