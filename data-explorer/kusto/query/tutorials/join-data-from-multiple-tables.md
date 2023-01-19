@@ -7,7 +7,7 @@ ms.date: 01/18/2023
 
 # Tutorial: Join data from multiple tables
 
-Joining data from multiple tables allows for a more comprehensive analysis by combining information from different sources and creating new relationships between data points. In the [Kusto Query Language (KQL)](../index.md), the [join](../joinoperator.md) and [lookup](../lookupoperator.md) operators are used to combine data from different tables.
+Joining data from multiple tables allows for a more comprehensive analysis by combining information from different sources and creating new relationships between data points. In the [Kusto Query Language (KQL)](../index.md), the [join](../joinoperator.md) and [lookup](../lookupoperator.md) operators are used to combine data across tables.
 
 In this tutorial, you'll learn how to:
 
@@ -15,7 +15,7 @@ In this tutorial, you'll learn how to:
 >
 > * [Join data from two tables](#join-data-from-two-tables)
 > * [Use the lookup operator to join tables](#use-the-lookup-operator-to-join-tables)
-> * [Join data from query results](#join-data-from-query-results)
+> * [Join query results](#join-query-results)
 
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
 
@@ -118,7 +118,7 @@ StormEvents
 |Flood |INDIANA |6768940 |1|
 |...|...|...|...|
 
-## Join data from query results
+## Join query results
 
 Joins can also be done based off of query results from the same table.
 
