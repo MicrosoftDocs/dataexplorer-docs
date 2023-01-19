@@ -9,6 +9,8 @@ items:
       href: tutorials/learn-common-operators.md
     - name: 2 - Use aggregation functions
       href: tutorials/use-aggregation-functions.md
+    - name: 3 - Join data from multiple tables
+      href: tutorials/join-data-from-multiple-tables.md
     - name: 4 - Perform geospatial clustering
       href: tutorials/perform-geospatial-clustering.md
 - name: Samples

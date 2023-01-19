@@ -397,7 +397,7 @@ StormEvents
 
 ## Next steps
 
-Now that you're familiar with common query operators and aggregation functions, go on to the next tutorial to practice common data analysis methods.
+Now that you're familiar with common query operators and aggregation functions, go on to the next tutorial to learn how to join data from multiple tables.
 
 > [!div class="nextstepaction"]
-> [Practice data analysis methods](practice-data-analysis-methods.md)
+> [Join data from multiple tables](join-data-from-multiple-tables.md)
