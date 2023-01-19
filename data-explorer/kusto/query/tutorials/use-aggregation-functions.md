@@ -164,7 +164,7 @@ StormEvents
 
 The results of the previous query indicate that Frost/Freeze events resulted in the most crop damage on average. However, the [bin() query](#group-data-into-bins) showed that events with crop damage mostly took place in the summer months.
 
-Use the [sum()](../sum-aggfunction.md) function to check the total number of damaged crops instead of just the amount of events that caused some damage, as done with `count()` in the previous [bin() query](#group-data-into-bins).
+Use [sum()](../sum-aggfunction.md) to check the total number of damaged crops instead of the amount of events that caused some damage, as done with `count()` in the previous [bin() query](#group-data-into-bins).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOsQ7CMBBD936Fx0SiVVqGTrBQvqD8QEpONENSdDmoQHw8iZAQnDw9+2SPsnA43ilKql5YZ2LCKJbl5ANhIlmJIpSzQpKJ6ozpa9NmaTQN/nnb1dtWa1TIZ6PDYIO90IGXa8IeJjekWwiW/ZNQ6MfHrmD1E9aYHph8VN8pG/RO53+m6IhROs9z9t7w8FzwwAAAAA==" target="_blank">Run the query</a>
