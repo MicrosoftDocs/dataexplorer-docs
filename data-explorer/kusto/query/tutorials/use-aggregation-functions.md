@@ -7,7 +7,7 @@ ms.date: 01/18/2023
 
 # Tutorial: Use aggregation functions
 
-[Aggregation functions](../aggregation-functions.md) allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, or average value.
+[Aggregation functions](../aggregation-functions.md) allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, or average value. This tutorial builds on the foundation from the first tutorial, [Learn common operators](learn-common-operators.md).
 
 In this tutorial, you'll learn how to:
 
