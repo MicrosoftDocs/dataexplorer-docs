@@ -26,13 +26,13 @@ The examples in this tutorial use the `StormEvents` table, which is publicly ava
 
 ## Join data from multiple tables
 
-Joining data from multiple tables can provide a more complete understanding of your data. The [join](../joinoperator.md) operator is used to combine rows from different tables based on matching values in specified columns, which allows for analysis on the combined dataset.
+The [join](../joinoperator.md) operator is used to combine rows from different tables based on matching values in specified columns, which allows for analysis on the combined dataset.
 
 Like `join`, the [lookup](../lookupoperator.md) operator also combines rows from tables based on matching values in specified columns. However, there are several differences to consider, such as how each operator handles repeated columns, the types of lookups supported, performance considerations, and the size of the tables being joined.
 
 ### Cross-table joins
 
-There's another table in the [Samples database](https://dataexplorer.azure.com/clusters/help/databases/Samples) called `PopulationData`. Use `take` to see what data this table contains.
+There's another table in the [Samples database](https://dataexplorer.azure.com/clusters/help/databases/Samples) called `PopulationData`. Use the [take](../takeoperator.md) operator to see what data this table contains.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwvILyjNSSzJzM9zSSxJVOCqUShJzE5VMAUAJEMCyxgAAAA=" target="_blank">Run the query</a>
@@ -112,7 +112,7 @@ Calculating percentages can help you understand the distribution and proportion 
 
 ### Calculate percentage based on two columns
 
-Use `count()` and `countif()` to find the percentage of storm events that caused crop damage in each state. First, count the total number of storms in each state. Then, count the number of storms that caused crop damage in each state.
+Use [count()](../count-aggfunction.md) and [countif](../countif-aggfunction.md) to find the percentage of storm events that caused crop damage in each state. First, count the total number of storms in each state. Then, count the number of storms that caused crop damage in each state.
 
 Then, use [extend](../extendoperator.md) to calculate the percentage between the two columns by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
 
