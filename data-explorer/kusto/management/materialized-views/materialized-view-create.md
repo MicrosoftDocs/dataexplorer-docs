@@ -96,8 +96,8 @@ The following properties are supported in the `with(propertyName=propertyValue)`
 |`docString`|String|A string that documents the materialized view.|
 
 > [!WARNING]
-> * The system will automatically disable a materialized view if changes to the source table of the materialized view, or changes in data, lead to incompatibility between the materialized view query and the expected materialized view's schema.
-> * To avoid this error, the materialized view query must be deterministic. For example, the [bag_unpack](../../query/bag-unpackplugin.md) or [pivot](../../query/pivotplugin.md) plug-ins result in a non-deterministic schema.
+> * The system will automatically disable a materialized view if changes to the source table of the materialized view, or changes in data, lead to incompatibility between the materialized view query and the expected materialized view schema.
+> * To avoid this error, the materialized view query must be deterministic. For example, the [bag_unpack](../../query/bag-unpackplugin.md) or [pivot](../../query/pivotplugin.md) plug-in results in a non-deterministic schema.
 > * When you're using an `arg_max(Timestamp, *)` aggregation and when `autoUpdateSchema` is false, changes to the source table can also lead to schema mismatches. Avoid this failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)`, or by using the `autoUpdateSchema` option.
 > * Using `autoUpdateSchema` might lead to irreversible data loss when columns in the source table are dropped.
 > * Monitor automatic disabling of materialized views by using the [MaterializedViewResult metric](materialized-views-monitoring.md#materializedviewresult-metric).
@@ -126,7 +126,7 @@ You can create a materialized view over another materialized view only when the 
     }
     ```
     
-- Create a materialized view for daily aggregates with the `backfill` option, by using `async`:
+- Create a materialized view for daily aggregates with the backfill option, by using `async`:
 
     <!-- csl -->
     ```
@@ -138,7 +138,7 @@ You can create a materialized view over another materialized view only when the 
     } 
     ```
     
-- Create a materialized view with `backfill` and `effectiveDateTime`. The view is created based on records from the datetime only:
+- Create a materialized view with `backfill` and `effectiveDateTime`. The view is created based on records from the datetime only.
 
     <!-- csl -->
     ```
@@ -150,7 +150,7 @@ You can create a materialized view over another materialized view only when the 
     } 
     ```
 
-- Create a materialized view that deduplicates the source table, based on the `EventId` column, by using a lookback of 6 hours. Records will be deduplicated against only records ingested 6 hours before current records:
+- Create a materialized view that deduplicates the source table, based on the `EventId` column, by using a lookback of 6 hours. Records will be deduplicated against only records ingested 6 hours before current records.
 
     <!-- csl -->
     ```
@@ -372,7 +372,7 @@ If the materialized view includes a datetime group-by key, the backfill process 
 The option of backfilling by move extents backfills the materialized view based on an existing table, which isn't necessarily the source table of the materialized view. You achieve the backfill by [moving extents](../move-extents.md) from the specified table into the underlying materialized view table. This process implies that:
 
 * The data in the specified table should have the same schema as the materialized view schema.
-* Records in the specified table are moved to the view as is and are assumed to be deduped based on the definition of the materialized view.
+* Records in the specified table are moved to the view as is. They're assumed to be deduped based on the definition of the materialized view.
   
 For example, if the materialized view has the following aggregation:
 
@@ -409,7 +409,7 @@ The option of backfilling by move extents can be useful in two main scenarios:
     } 
     ```
 
-- If the `effectiveDateTime` property is specified along with the `move_extents_from` property, only extents in `DedupedT` whose `MaxCreatedOn` value is greater than `effectiveDateTime` are included in the backfill (moved to the materialized view).
+- If the `effectiveDateTime` property is specified along with the `move_extents_from` property, only extents in `DedupedT` whose `MaxCreatedOn` value is greater than `effectiveDateTime` are included in the backfill (moved to the materialized view):
 
     <!-- csl -->
     ```kusto
@@ -442,7 +442,7 @@ The option of backfilling by move extents can be useful in two main scenarios:
 
 ## Cancel materialized view creation
 
-You can cancel the process of materialized view creation when you're using the `backfill` option. This action is useful when creation is taking too long and you want to stop it while it's running.  
+You can cancel the process of materialized view creation when you're using the backfill option. This action is useful when creation is taking too long and you want to stop it while it's running.  
 
 > [!WARNING]
 > The materialized view can't be restored after you run this command.
