@@ -6,7 +6,7 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accu
 
 ## Syntax
 
-`hll_if` `(`*Expr*, `*Predicate*` [`,` *Accuracy*]`)`
+`hll_if` `(`*Expr*, *Predicate* [`,` *Accuracy*]`)`
 
 ## Arguments
 
