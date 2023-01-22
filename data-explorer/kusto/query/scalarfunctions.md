@@ -1,6 +1,6 @@
 ---
 title: Scalar Functions - Azure Data Explorer 
-description: This article describes Scalar Functions in Azure Data Explorer.
+description: Learn how to use scalar functions to perform calculations on a set of values and return a single value.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/10/2022
