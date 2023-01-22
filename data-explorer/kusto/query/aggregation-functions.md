@@ -46,6 +46,7 @@ An aggregation function performs a calculation on a set of values, and returns a
 | [count_distinct()](count-distinct-aggfunction.md), [count_distinctif()](count-distinctif-aggfunction.md) | Returns a count of unique elements in the group without/with a predicate. |
 | [dcount()](dcount-aggfunction.md), [dcountif()](dcountif-aggfunction.md) | Returns an approximate distinct count of the group elements without/with a predicate. |
 | [hll()](hll-aggfunction.md) | Returns the HyperLogLog (HLL) results of the group elements, an intermediate value of the `dcount` approximation. |
+| [hll_if()](hll-if-aggregation-function.md) | Returns the HyperLogLog (HLL) results of the group elements, an intermediate value of the `dcount` approximation (with predicate). |
 | [hll_merge()](hll-merge-aggfunction.md) | Returns a value for merged HLL results. |
 | [max()](max-aggfunction.md), [maxif()](maxif-aggfunction.md) | Returns the maximum value across the group without/with a predicate. |
 | [min()](min-aggfunction.md), [minif()](minif-aggfunction.md) | Returns the minimum value across the group without/with a predicate. |
