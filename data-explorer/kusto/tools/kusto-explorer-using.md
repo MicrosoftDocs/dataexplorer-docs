@@ -91,9 +91,7 @@ The script editor highlights query parameters:
 
 You can easily define and edit existing query parameters:
 
-
 :::image type="content" source="images/kusto-explorer-using/parametrized-query-2.png" alt-text="Edit parametrized query 2.":::
-
 
 :::image type="content" source="images/kusto-explorer-using/parametrized-query-3.png" alt-text="Edit parametrized query 3.":::
 
@@ -133,14 +131,14 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 
 You can create a URI that, when opened in a browser, opens Kusto.Explorer locally and runs a specific query on a specified Kusto database.
 
-> [!NOTE] 
+> [!NOTE]
 > For security reasons, deep-linking is disabled for control commands.
 
 #### Creating a deep-link
 
 The easiest way to create a deep-link is to author your query in Kusto.Explorer and then use
 `Export to Clipboard` to copy the query (including the deep link and results) to the clipboard. You can then share it by email.
-        
+
 When copied to an email, the deep link is displayed in small font. For example:
 
 https://help.kusto.windows.net/Samples [[Run the query](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)]
@@ -224,16 +222,16 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 |`group`   |The name of the connection group.                                         |
 |`filename`|The local file holding the connection group.                              |
 
-## Manage clusters, databases, tables, or function authorized principals
+## Manage databases, tables, or function authorized principals
 
 > [!NOTE]
 > Only [admins](../management/access-control/role-based-authorization.md) can add or drop authorized principals in their own scope.
 
-Right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Cluster Authorized Principals**. (You can also select this option from the Management Menu.)
+Right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Database Authorized Principals**. (You can also select this option from the Management Menu.)
 
-:::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Manage authorized principals.":::
+:::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Screenshot of entity drop down menu. The options titled Manage Database AUthorized Principals is highlighted.":::
 
-:::image type="content" source="images/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Manage authorized principals window.":::
+:::image type="content" source="images/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Screenshot of the Manage authorized principals window. The options titled Drop principal and Add principal are highlighted.":::
 
 * To add a new authorized principal, select **Add principal**, provide the principal details, and confirm the action.
 
@@ -251,7 +249,7 @@ Right-click the target entity in the [Connections panel](kusto-explorer.md#conne
 * [Kusto.Explorer options](kusto-explorer-options.md)
 * [Troubleshooting Kusto.Explorer](kusto-explorer-troubleshooting.md)
 
-Learn more about Kusto.Explorer tools and utilities:
+To Learn more about Kusto.Explorer tools and utilities, See:
 
 * [Kusto.Explorer code analyzer](kusto-explorer-code-analyzer.md)
 * [Kusto.Explorer code navigation](kusto-explorer-codenav.md)
