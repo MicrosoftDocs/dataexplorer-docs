@@ -9,7 +9,7 @@ ms.date: 01/09/2023
 
 In Azure Data Explorer, it's possible to customize the timeout length for your queries and [management commands](kusto/management/index.md). Adjusting the timeout can help you optimize the performance and efficiency of your queries and commands.
 
-In this guide, you'll learn how to set a custom timeout in various tools such as the [Azure Data Explorer web UI](web-ui-overview.md), [Kusto.Explorer](kusto/tools/kusto-explorer.md), and [Kusto.Cli](/kusto/tools/kusto-cli.md). By default, certain tools have their own default timeout values, but it may be helpful to adjust these values based on the complexity and expected runtime of your queries.
+In this guide, you'll learn how to set a custom timeout in various tools such as the [Azure Data Explorer web UI](web-ui-overview.md), [Kusto.Explorer](kusto/tools/kusto-explorer.md), [Kusto.Cli](/kusto/tools/kusto-cli.md), and when using an [SDK](#sdk). By default, certain tools have their own default timeout values, but it may be helpful to adjust these values based on the complexity and expected runtime of your queries.
 
 ## Azure Data Explorer web UI
 
@@ -84,3 +84,21 @@ Once set, the client request property applies to all future values until the app
 ```dotnet
 #crp servertimeout
 ```
+
+## SDK
+
+This section will describe how to configure a custom server timeout when using an SDK.
+
+### Prerequisites
+
+* The SDK for your use case: [.NET](kusto/api/netfx/about-the-sdk.md), [Python](kusto/api/python/kusto-python-client-library.md), [R](kusto/api/r/kusto-r-client-library.md), [Java](kusto/api/java/kusto-java-client-library.md), [Node](kusto/api/node/kusto-node-client-library.md), or [Go](kusto/api/golang/kusto-golang-client-library.md)
+
+### Set timeout length
+
+To set timeouts when using an SDK, you'll need to use [client request properties](kusto/api/netfx/request-properties.md).
+
+1. Create a new CRP (ClientRequestProperties) object or use an existing one.
+   1. To set a maximal server allowed timeout, set *norequesttimeout* to true.
+   1. To set a specific timeout, set *servertimeout* to a valid [timespan](kusto/query/scalar-data-types/timespan.md) value up to 1 hour.
+1. Use the CRP object in your query or control-command.
+1. The server will cancel the request if it exceeds the defined timeout.
