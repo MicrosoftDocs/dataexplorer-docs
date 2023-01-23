@@ -95,27 +95,28 @@ Add `| render columnchart` to the query to visualize the result.
 
 The [lookup](../lookupoperator.md) operator is used to combine rows from tables based on matching values in specified columns. It is similar to `join` but with some differences, such as how it handles repeated columns and performance considerations. Using `lookup` to combine a large table with a small table can be more efficient because it broadcasts the small table to the large table, saving memory and resources.
 
-The following query is an example of using `lookup` to merge the `StormEvents` and `PopulationData` tables. It filters for storms that caused a direct death and shows the state population and death count from the event.
+The following query is an example of using `lookup` to merge the `StormEvents` and `PopulationData` tables. It filters for storms that caused injuries and shows the state population and injury count from the event.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XNMQ7CMBBE0Z5TTAmSCy5AKtMjhQusYFFMjNfajEFIOTwBCkT99WZ6mt/2dy2cVjMeg7oiqnCYYnI9ER22S8hmY6sYUznvsl5ojepYH6y2LExWolA2sIKeQl1Edbu+/Wf7+Kwavingh8Lf1Qvnk5wdiwAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOQQrCMBRE94J3mKViF71AXdVFd0J7gWi/mDbmh58fpeDhJYoVdTvDezOtslx2V/Ial4s7bmcSQuOHJJZibYWOii1KsMxp4/s5z4xjHlPAaH1fOTopJyXBas8hOaOWfW3UrMEerRqljAThIRuew90UqHh1BT5UgY7VuPcqqt9bm79HWR1ZFIfpG34AQYNrmeYAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
-| where DeathsDirect > 0
+| where InjuriesDirect > 0 or InjuriesIndirect > 0
 | lookup kind=leftouter (PopulationData) on State
-| project EventType, State, Population, DeathsDirect
+| project EventType, State, Population, TotalInjuries = InjuriesDirect + InjuriesIndirect
+| sort by TotalInjuries
 ```
 
 **Output**
 
-|EventType |State |Population |DeathsDirect|
+|EventType |State |Population |TotalInjuries|
 |--|--|--|--|
-|Lightning |SOUTH CAROLINA |5213270 |1|
-|Tornado |LOUISIANA |4637900 |2|
-|Flash Flood |TEXAS |29363100 |2|
-|Flood |INDIANA |6768940 |1|
-|Flood |INDIANA |6768940 |1|
+Excessive Heat| MISSOURI| 6153230| 519|
+Excessive Heat| MISSOURI| 6153230| 422|
+Excessive Heat| OKLAHOMA| 3973710| 200|
+Heat| TENNESSEE| 6886720| 187|
+Winter Weather| TEXAS| 29363100| 137|
 |...|...|...|...|
 
 ## Join query results
