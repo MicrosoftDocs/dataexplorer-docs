@@ -61,17 +61,15 @@ The following rules limit the query used in the materialized view argument:
 
 * The following operators are not supported in the materialized view query: [`sort`](../../query/sort-operator.md), [`top-nested`](../../query/topnestedoperator.md), [`top`](../../query/topoperator.md), [`partition`](../../query/partitionoperator.md), [`serialize`](../../query/serializeoperator.md).
 
-* Composite aggregations are not supported in the definition of the materialized view. For instance, instead of using `SourceTable | summarize Result=sum(Column1)/sum(Column2) by Id`, define the materialized view as: `SourceTable | summarize a=sum(Column1), b=sum(Column2) by Id`. 
-
-  During view query time, run `ViewName | project Id, Result=a/b`. The required output of the view, including the calculated column (`a/b`), can be encapsulated in a [stored function](../../query/functions/user-defined-functions.md). Access the stored function instead of accessing the materialized view directly.
+* Composite aggregations are not supported in the definition of the materialized view. For instance, instead of using `SourceTable | summarize Result=sum(Column1)/sum(Column2) by Id`, define the materialized view as: `SourceTable | summarize a=sum(Column1), b=sum(Column2) by Id`. During view query time, run `ViewName | project Id, Result=a/b`. The required output of the view, including the calculated column (`a/b`), can be encapsulated in a [stored function](../../query/functions/user-defined-functions.md). Access the stored function instead of accessing the materialized view directly.
 
 * Cross-cluster and cross-database queries aren't supported.
 
 * References to [external_table()](../../query/externaltablefunction.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.
 
-* The materialized view query can't include any callouts that require impersonation. Specifically, all [query connectivity plug-ins](../../query/azure-digital-twins-query-request-plugin.md) that use impersonation aren't allowed.
+* The materialized view query can't include any callouts that require impersonation. Specifically, all [query connectivity plugins](../../query/azure-digital-twins-query-request-plugin.md) that use impersonation aren't allowed.
 
-* In addition to the source table of the view, the query might reference one or more [dimension tables](../../concepts/fact-and-dimension-tables.md). Dimension tables must be explicitly called out in the view properties. It's important to understand the following behavior when you're joining with dimension tables:
+* In addition to the source table of the view, the query is allowed to reference one or more [dimension tables](../../concepts/fact-and-dimension-tables.md). Dimension tables must be explicitly called out in the view properties. It's important to understand the following behavior when you're joining with dimension tables:
 
     * Records in the view's source table (the fact table) are materialized only once. Updates to the dimension tables don't have any impact on records that have already been processed from the fact table.
     * A different ingestion latency between the fact table and the dimension table might affect the view results.
@@ -97,7 +95,7 @@ The following properties are supported in the `with(propertyName=propertyValue)`
 
 > [!WARNING]
 > * The system will automatically disable a materialized view if changes to the source table of the materialized view, or changes in data, lead to incompatibility between the materialized view query and the expected materialized view schema.
-> * To avoid this error, the materialized view query must be deterministic. For example, the [bag_unpack](../../query/bag-unpackplugin.md) or [pivot](../../query/pivotplugin.md) plug-in results in a non-deterministic schema.
+> * To avoid this error, the materialized view query must be deterministic. For example, the [bag_unpack](../../query/bag-unpackplugin.md) or [pivot](../../query/pivotplugin.md) plugin results in a non-deterministic schema.
 > * When you're using an `arg_max(Timestamp, *)` aggregation and when `autoUpdateSchema` is false, changes to the source table can also lead to schema mismatches. Avoid this failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)`, or by using the `autoUpdateSchema` option.
 > * Using `autoUpdateSchema` might lead to irreversible data loss when columns in the source table are dropped.
 > * Monitor automatic disabling of materialized views by using the [MaterializedViewResult metric](materialized-views-monitoring.md#materializedviewresult-metric).
