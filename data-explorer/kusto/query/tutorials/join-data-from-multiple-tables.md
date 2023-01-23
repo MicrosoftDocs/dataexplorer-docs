@@ -14,7 +14,7 @@ In this tutorial, you'll learn how to:
 > [!div class="checklist"]
 >
 > * [Use the join operator](#use-the-join-operator)
-> * [Use the lookup operator](#use-the-lookup-operator-to-join-tables)
+> * [Use the lookup operator](#use-the-lookup-operator)
 > * [Join query results](#join-query-results)
 
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
@@ -94,7 +94,7 @@ Add `| render columnchart` to the query to visualize the result.
 > [!TIP]
 > There are many types of joins that you can perform with the `join` operator. See a [list of join flavors](../joinoperator.md#join-flavors).
 
-## Use the lookup operator to join tables
+## Use the lookup operator
 
 The [lookup](../lookupoperator.md) operator is used to combine rows from tables based on matching values in specified columns. It is similar to `join` but with some differences, such as how it handles repeated columns and performance considerations. Using `lookup` to combine a large table with a small table can be more efficient because it broadcasts the small table to the large table, saving memory and resources.
 
