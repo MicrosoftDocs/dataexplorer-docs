@@ -182,8 +182,8 @@ Using the `render` operator and the `timechart` visualization, you can render ti
 ```kusto
 range x from -2 to 2 step 0.1
 | extend sin = sin(x), cos = cos(x)
-| extend x_sign = iif(x > 0, "x_pos", "x_neg")
-| extend sum_sign = iif(sin + cos > 0, "sum_pos", "sum_neg")
+| extend x_sign = iff(x > 0, "x_pos", "x_neg")
+| extend sum_sign = iff(sin + cos > 0, "sum_pos", "sum_neg")
 | render linechart with  (ycolumns = sin, cos, series = x_sign, sum_sign)
 ```
 

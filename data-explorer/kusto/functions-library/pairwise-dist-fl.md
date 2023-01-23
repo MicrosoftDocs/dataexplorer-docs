@@ -84,7 +84,7 @@ let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
             project d = generic_dist(pack_array(a), pack_array(a1))
             | summarize d = make_list(d)
         )
-        | extend dist = floor((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
+        | extend dist = bin((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
         | project-away d
         | where entity != entity1
         | sort by _partition asc, entity asc, dist asc
@@ -174,7 +174,7 @@ let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
             project d = generic_dist(pack_array(a), pack_array(a1))
             | summarize d = make_list(d)
         )
-        | extend dist = floor((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
+        | extend dist = bin((1.0*array_sum(d)-1.0)/array_length(d), 0.0001) // -1 cancels the artifact distance calculated between entity names appearing in the bag and normalizes by number of features        
         | project-away d
         | where entity != entity1
         | sort by _partition asc, entity asc, dist asc
@@ -243,8 +243,8 @@ raw_data
 Looking at entities of two different types, we would like to calculate distance between entities belonging to the same type, by taking into account both nominal variables (such as gender or preferred accessory) and numerical variables (such as the number of limbs, height, and weight). The numerical variables are on different scales and must be centralized and scaled, which is done automatically. The output is pairs of entities under the same partition with calculated multivariate distance. It can be analyzed directly, visualized as a distance matrix or scatterplot, or used as input data for outlier detection algorithm by calculating mean distance per entity, with entities with high values indicating global outliers.
 For example, when adding an optional visualization using a distance matrix, you get a table as shown in the sample. From the sample, you can see that:
 
- * Some pairs of entities (Betsy and Fanny) have a low distance value (close to 0) indicating they are similar.
- * Some pairs of entities (Godzilla and Elmie) have a high distance value (1 or above) indicating they are different.
+ * Some pairs of entities (Betsy and Fanny) have a low distance value (close to 0) indicating they're similar.
+ * Some pairs of entities (Godzilla and Elmie) have a high distance value (1 or above) indicating they're different.
 
 The output can further be used to calculate the average distance per entity. A high average distance might indicate global outliers. For example, we can see that on average Godzilla has a high distance from the others indicating that it's a probable global outlier.
 
