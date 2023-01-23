@@ -5,7 +5,7 @@ ms.topic: how-to
 ms.date: 01/09/2023
 ---
 
-## Set timeouts
+# Set timeouts
 
 In Azure Data Explorer, it's possible to customize the timeout length for your queries and [management commands](kusto/management/index.md). Adjusting the timeout can help you optimize the performance and efficiency of your queries and commands.
 
