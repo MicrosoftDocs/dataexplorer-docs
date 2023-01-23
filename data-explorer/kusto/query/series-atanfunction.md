@@ -1,9 +1,9 @@
 ---
 title: series_atan() - Azure Data Explorer
-description: This article describes series_atan() in Azure Data Explorer.
+description: Learn how to use the series_atan() function to calculate the element-wise arctangent of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/11/2021
+ms.date: 01/22/2023
 ---
 # series_atan()
 
@@ -15,7 +15,7 @@ Calculates the element-wise arctangent function of the numeric series input.
 
 ## Arguments
 
-* *series*: Input numeric array, on which the arctangent function is applied. The argument must be a dynamic array. 
+* *series*: Input numeric array, on which the arctangent function is applied. The argument must be a dynamic array.
 
 ## Returns
 

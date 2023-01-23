@@ -1,9 +1,9 @@
 ---
 title: replace_string() - Azure Data Explorer
-description: This article describes replace_string() in Azure Data Explorer.
+description: Learn how to use the replace_string() function to replace all string matches with another string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/09/2022
+ms.date: 01/15/2023
 ---
 # replace_string()
 
@@ -23,7 +23,7 @@ Replaces all string matches with another string.
 
 ## Returns
 
-*text* after replacing all matches of *lookup* with evaluations of *rewrite*. Matches do not overlap.
+*text* after replacing all matches of *lookup* with evaluations of *rewrite*. Matches don't overlap.
 
 ## See also
 
@@ -47,4 +47,3 @@ range x from 1 to 5 step 1
 | 3    | Number is 3.000000  | Number was 3.000000|
 | 4    | Number is 4.000000  | Number was 4.000000|
 | 5    | Number is 5.000000  | Number was 5.000000|
- 
