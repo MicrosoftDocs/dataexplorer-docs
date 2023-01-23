@@ -282,34 +282,6 @@ A coefficient of 0.6419 suggests that there's a weak connection between the stat
 
 ## Extract unique values
 
-This section shows how to count or create a set of unique values. The following functions can be useful for understanding the distribution of unique values in a dataset, identifying outliers, or creating a distinct list of values for further analysis.
-
-### dcount()
-
-Approximate how many unique storm types there are by state using [dcount()](../dcount-aggfunction.md).
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlUIBkmEVBakFivYKqQk55fmlWiA1YHENBWSKoEqEktSQXryi0ogfJgOADtJmYVVAAAA" target="_blank">Run the query</a>
-
-```Kusto
-StormEvents 
-| summarize StormTypes = dcount(EventType) by State
-| sort by StormTypes
-```
-
-**Output**
-
-|State|StormTypes|
-|--|--|
-|TEXAS|27|
-|CALIFORNIA|26|
-|PENNSYLVANIA|25|
-|GEORGIA|24|
-|ILLINOIS|23|
-|...|...|
-
-### make_set()
-
 Use [make_set()](../makeset-aggfunction.md) to turn a selection of rows in a table into an array of unique values.
 
 The following query uses `make_set()` to create an array of the event types that cause deaths in each state. The resulting table is then sorted by the number of storm types in each array.
