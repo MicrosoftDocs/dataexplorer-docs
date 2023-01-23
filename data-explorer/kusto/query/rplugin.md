@@ -144,14 +144,14 @@ The example snips below assume local R machine on Windows environment.
 
 1. Verify you're using the appropriate R version – current R Sandbox version is 3.4.4:
 
-```
-> R.Version()["version.string"]
+    ```
+    > R.Version()["version.string"]
 
-$version.string
-[1] "R version 3.4.4 (2018-03-15)"
-```
+    $version.string
+    [1] "R version 3.4.4 (2018-03-15)"
+    ```
 
-If needed you can download it from [here](https://cran.r-project.org/bin/windows/base/old/3.4.4/).
+    If needed you can download it from [here](https://cran.r-project.org/bin/windows/base/old/3.4.4/).
 
 1. Launch the x64 RGui
 
@@ -159,7 +159,7 @@ If needed you can download it from [here](https://cran.r-project.org/bin/windows
 
 1. Add the newly created folder path to lib paths:
 
-```
+    ```
     > .libPaths("C://brglm2")
     ```
 
@@ -184,16 +184,15 @@ If needed you can download it from [here](https://cran.r-project.org/bin/windows
 
     :::image type="content" source="images/plugin/sample-directory.png" alt-text="Screenshot of library directory content.":::
 
-8. Select all items in that folder and zip them to e.g. libs.zip (do not zip the parent folder). You should get an archive structure like this:
-
+1. Select all items in that folder and zip them to e.g. libs.zip (do not zip the parent folder). You should get an archive structure like this:
 
     libs.zip:
 
-    - brglm2 (folder)
-    - enrichwith (folder)
-    - numDeriv (folder)
-    
-9. Upload libs.zip to the blob container that was set above
+    * brglm2 (folder)
+    * enrichwith (folder)
+    * numDeriv (folder)
+
+1. Upload libs.zip to the blob container that was set above
 
 1. Call the `r` plugin.
     * Specify the `external_artifacts` parameter with a property bag of name and reference to the zip file (the blob's URL, including a SAS token).
@@ -229,4 +228,3 @@ Make sure that the archive's name (first value in pack pair) has the *.zip suffi
 This capability isn't supported in Azure Monitor
 
 ::: zone-end
-
