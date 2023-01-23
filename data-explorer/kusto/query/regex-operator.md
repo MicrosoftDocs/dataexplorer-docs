@@ -1,21 +1,21 @@
 ---
 title: The case-sensitive match regex string operator - Azure Data Explorer
-description: This article describes the case-sensitive match regex string operator in Azure Data Explorer.
+description: Learn how to use the match regex string operator to filter a record set based on a case-sensitive regex value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/01/2021
+ms.date: 01/15/2023
 ---
 # match regex operator
 
-Filters a record set based on a case-sensitive regex value. 
+Filters a record set based on a case-sensitive regex value.
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
 ## Syntax
 
-*T* `|` `where` *col* `matches` `regex` `(`*expression*`)`   
+*T* `|` `where` *col* `matches` `regex` `(`*expression*`)`
 
 ## Arguments
 
