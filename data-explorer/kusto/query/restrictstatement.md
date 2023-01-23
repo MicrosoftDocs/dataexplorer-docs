@@ -1,6 +1,6 @@
 ---
 title: Restrict statement - Azure Data Explorer
-description: Learn how to use the restrict statement to limit tabular views that are visible to following query statements.
+description: Learn how to use the restrict statement to limit tabular views that are visible to subsequent query statements.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/21/2021
