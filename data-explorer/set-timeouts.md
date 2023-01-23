@@ -23,11 +23,17 @@ This section will describe how to configure a custom query timeout and admin com
 ### Set timeout length
 
 1. Go to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home).
+
 1. Sign in with your Microsoft account or Azure Active Directory user identity credentials.
+
 1. In the top menu, select the **Settings** icon.
+
 1. From the left menu, select **Connection**.
+
 1. Under the **Query timeout (in minutes)** setting, use the slider to choose the desired query timeout length.
+
 1. Under the **Admin command timeout (in minutes)** setting, use the slider to choose the desired admin command timeout length.
+
 1. The changes will be saved automatically.
 
 :::image type="content" source="media/set-timeouts/web-ui-set-timeouts.png" alt-text="Screenshot of the settings in the Azure Data Explorer web UI that control timeout length.":::
@@ -44,13 +50,17 @@ This section will describe how to configure a custom query timeout and admin com
 ### Set timeout length
 
 1. Open the Kusto.Explorer tool.
+
 1. In the top menu, select the **Tools** tab.
+
 1. On the right-hand side, select **Options**.
 
     :::image type="content" source="media/set-timeouts/kusto-explorer-options-widget.png" alt-text="Screenshot showing the options widget in the Kusto.Explorer tool.":::
 
 1. In the left menu, select **Connections**.
+
 1. In the **Query Server Timeout** setting, enter the desired timeout length.
+
 1. Under the **Admin Command Server Timeout** setting, enter the desired timeout length.
 
     :::image type="content" source="media/set-timeouts/kusto-explorer-set-timeouts.png" alt-text="Screenshot showing settings that control the timeout length in Kusto.Explorer.":::
@@ -98,8 +108,13 @@ This section will describe how to configure a custom server timeout when using a
 To set timeouts when using an SDK, you'll need to use [client request properties](kusto/api/netfx/request-properties.md).
 
 1. Install and import the necessary libraries or packages for your specific SDK.
+
 1. Create a new `ClientRequestProperties` object or use an existing one.
+
    1. To set a maximal server allowed timeout, set *norequesttimeout* to true.
+
    1. To set a specific timeout, set *servertimeout* to a valid [timespan](kusto/query/scalar-data-types/timespan.md) value up to 1 hour.
+
 1. Use the `ClientRequestProperties` object in your query or control-command.
+
 1. The server will cancel the request if it exceeds the defined timeout.
