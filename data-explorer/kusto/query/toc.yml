@@ -868,6 +868,8 @@ items:
     href: dcountif-aggfunction.md
   - name: hll()
     href: hll-aggfunction.md
+  - name: hll_if()
+    href: hll-if-aggregation-function.md
   - name: hll_merge()
     href: hll-merge-aggfunction.md
   - name: make_bag()
