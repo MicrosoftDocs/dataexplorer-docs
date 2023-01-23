@@ -97,8 +97,9 @@ This section will describe how to configure a custom server timeout when using a
 
 To set timeouts when using an SDK, you'll need to use [client request properties](kusto/api/netfx/request-properties.md).
 
-1. Create a new CRP (ClientRequestProperties) object or use an existing one.
+1. Install and import the necessary libraries or packages for your specific SDK.
+1. Create a new `ClientRequestProperties` object or use an existing one.
    1. To set a maximal server allowed timeout, set *norequesttimeout* to true.
    1. To set a specific timeout, set *servertimeout* to a valid [timespan](kusto/query/scalar-data-types/timespan.md) value up to 1 hour.
-1. Use the CRP object in your query or control-command.
+1. Use the `ClientRequestProperties` object in your query or control-command.
 1. The server will cancel the request if it exceeds the defined timeout.
