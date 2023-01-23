@@ -13,8 +13,8 @@ In this tutorial, you'll learn how to:
 
 > [!div class="checklist"]
 >
-> * [Join data from two tables](#join-data-from-two-tables)
-> * [Use the lookup operator to join tables](#use-the-lookup-operator-to-join-tables)
+> * [Use the join operator](#use-the-join-operator)
+> * [Use the lookup operator](#use-the-lookup-operator-to-join-tables)
 > * [Join query results](#join-query-results)
 
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
@@ -23,7 +23,7 @@ The examples in this tutorial use the `StormEvents` table, which is publicly ava
 
 * A Microsoft account or Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
 
-## Join data from two tables
+## Use the join operator
 
 There are two tables in the [Samples database](https://dataexplorer.azure.com/clusters/help/databases/Samples) related to storm events. One is called `StormEvents` and the other is called `PopulationData`. In this section, you'll join the tables to perform data analysis that wouldn't be possible with one table alone.
 
@@ -91,6 +91,9 @@ Add `| render columnchart` to the query to visualize the result.
 
 :::image type="content" source="../images/kql-tutorials/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
 
+> [!TIP]
+> There are many types of joins that you can perform with the `join` operator. See a [list of join flavors](../joinoperator.md#join-flavors).
+
 ## Use the lookup operator to join tables
 
 The [lookup](../lookupoperator.md) operator is used to combine rows from tables based on matching values in specified columns. It is similar to `join` but with some differences, such as how it handles repeated columns and performance considerations. Using `lookup` to combine a large table with a small table can be more efficient because it broadcasts the small table to the large table, saving memory and resources.
@@ -118,6 +121,9 @@ Excessive Heat| OKLAHOMA| 3973710| 200|
 Heat| TENNESSEE| 6886720| 187|
 Winter Weather| TEXAS| 29363100| 137|
 |...|...|...|...|
+
+> [!NOTE]
+> The `lookup` operator only supports two join flavors: `leftouter` and `inner`.
 
 ## Join query results
 
