@@ -1,6 +1,6 @@
 ---
 title: sequence_detect plugin - Azure Data Explorer
-description: Learn how to use the sequence_detect plugin to detect sequence occurrences based on provided predicates
+description: Learn how to use the sequence_detect plugin to detect sequence occurrences based on provided predicates.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/22/2023
