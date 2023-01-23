@@ -19,7 +19,6 @@ In this tutorial, you'll learn how to:
 > * [Group data into bins](#group-data-into-bins)
 > * [Calculate the min, max, avg, and sum](#calculate-the-min-max-avg-and-sum)
 > * [Calculate percentages](#calculate-percentages)
-> * [Calculate correlation coefficients](#calculate-correlation-coefficients)
 > * [Extract unique values](#extract-unique-values)
 > * [Bucket data by condition](#bucket-data-by-condition)
 
@@ -254,33 +253,6 @@ StormEvents
 |Drought|3616|6.1219652592015716|
 |Winter Weather|3349|5.669928554498358|
 |...|...|...|
-
-## Calculate correlation coefficients
-
-To determine if there's a relationship between the population of a state and the amount of damage caused by storms, use the [series_pearson_correlation](../series-pearson-correlationfunction.md) function.
-
-The following query calculates the total amount of property damage caused by storms in each state and joins it with population data. The resulting columns are converted into series and the correlation coefficient is calculated.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA31QQQ6CQAy8+4oeIfELnNQ7CQ8gFYqpsC3pVqPGxwsaFZV4bGemM9PC1cLmSOJxcYV4CAGNLwS5aU/m5zUG3BFkI5Q8hieUwvYMhaPToNwrC7QsdcYiZJBrf+jQWWWNjqDyYvame6r8y2E5UfwJUpAxxSFOwJbKjqMnn4R0emiO/QLTwYZOTlLDSs3osV0pNQ1XPDxkLH0/UPaEFlXK6s1L5nL9eqeTwvMuN5KkodCBAQAA" target="_blank">Run the query</a>
-
-```kusto
-StormEvents
-| summarize PropertyDamage = sum(DamageProperty) by State
-| join kind=inner PopulationData on State
-| project PropertyDamage, Population
-| summarize PropertyDamageSeries = make_list(PropertyDamage), PopulationSeries = make_list(Population)
-| extend CorrelationCoefficient = series_pearson_correlation(PropertyDamageSeries, PopulationSeries)
-| project CorrelationCoefficient
-```
-
-**Output**
-
-|CorrelationCoefficient|
-|--|
-|0.64199107528146893|
-
-A coefficient of 0.6419 suggests that there's a weak connection between the state population and the property damage caused by storms.
 
 ## Extract unique values
 
