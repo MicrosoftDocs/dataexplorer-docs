@@ -18,7 +18,7 @@ This section will describe how to configure a custom query timeout and admin com
 ### Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Access to an Azure Data Explorer cluster and database. If needed, [create a free cluster and database](start-for-free-web-ui.md).
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 
 ### Set timeout length
 
@@ -45,7 +45,7 @@ This section will describe how to configure a custom query timeout and admin com
 ### Prerequisites
 
 * Download and install the [Kusto.Explorer tool](tools/../kusto/tools/kusto-explorer.md#installing-kustoexplorer).
-* Access to an Azure Data Explorer cluster and database. If needed, [create a free cluster and database](start-for-free-web-ui.md).
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 
 ### Set timeout length
 
