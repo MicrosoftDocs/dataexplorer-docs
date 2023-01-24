@@ -27,13 +27,11 @@ Sign in to [the application](https://dataexplorer.azure.com/).
 
 ## Add clusters
 
-When you first open the application, there are no cluster connections.
+When you first open the application, there are no cluster connections. You must add a connection to a cluster before you can start running queries.
 
 :::image type="content" source="media/web-query-data/add-cluster.png" alt-text="Screenshot of query editor showing where to add a cluster.":::
 
-You must add a connection to a cluster before you can start running queries. In this section, you’ll add connections to the Azure Data Explorer **help** cluster and to the test cluster you've created in the [Prerequisites](#prerequisites) (optional).
-
-### Add help cluster
+Follow these steps to add a connection to the publicly-available **help** cluster:
 
 1. On the left menu, select **Query**.
 1. In the upper left of the application, select **Add Cluster**.
