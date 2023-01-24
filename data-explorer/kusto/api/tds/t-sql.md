@@ -77,3 +77,7 @@ StormEvents
 | sort by DamageProperty desc nulls first
 | take int(10)
 ```
+
+## Next steps
+
+* Connect and query from [MS-TDS clients](clients.md)
