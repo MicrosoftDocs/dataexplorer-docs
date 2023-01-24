@@ -36,7 +36,7 @@ Follow these steps to add a connection to the publicly-available **help** cluste
 1. On the left menu, select **Query**.
 1. In the upper left of the application, select **Add Cluster**.
 
-1. In the **Add cluster** dialog box, enter the URI `https://help.kusto.windows.net`, then select **Add**.
+1. In the **Add cluster** dialog box, enter `help`, then select **Add**.
 
 1. In the **Cluster connection** pane, you should now see the **help** cluster. Expand the **Samples** database and open the **Tables** folder to see the sample tables that you have access to.
 
