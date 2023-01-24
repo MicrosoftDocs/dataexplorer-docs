@@ -229,8 +229,8 @@ items:
       href: kusto/api/load-test-cluster.md
     - name: Optimize for high concurrency
       href: high-concurrency.md
-    - name: Set timeouts
-      href: set-timeouts.md
+    - name: Set timeout limits
+      href: set-timeout-limits.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
