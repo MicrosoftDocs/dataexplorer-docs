@@ -13,7 +13,7 @@ In this guide, you'll learn how to set a custom timeout in various tools such as
 
 ## Azure Data Explorer web UI
 
-This section will describe how to configure a custom query timeout and admin command timeout in the Azure Data Explorer web UI.
+This section describes how to configure a custom query timeout and admin command timeout in the Azure Data Explorer web UI.
 
 ### Prerequisites
 
@@ -38,7 +38,7 @@ This section will describe how to configure a custom query timeout and admin com
 
 ## Kusto.Explorer
 
-This section will describe how to configure a custom query timeout and admin command timeout in the Kusto.Explorer.
+This section describes how to configure a custom query timeout and admin command timeout in the Kusto.Explorer.
 
 ### Prerequisites
 
@@ -67,7 +67,7 @@ This section will describe how to configure a custom query timeout and admin com
 
 ## Kusto.Cli
 
-This section will describe how to configure a custom server timeout in the Kusto.Cli.
+This section describes how to configure a custom server timeout in the Kusto.Cli.
 
 ### Prerequisites
 
@@ -95,7 +95,7 @@ Once set, the client request property applies to all future values until the app
 
 ## Power BI
 
-This section will describe how to configure a custom server timeout in Power BI.
+This section describes how to configure a custom server timeout in Power BI.
 
 ### Prerequisites
 
@@ -126,7 +126,7 @@ For more information, see [configuring Azure Data Explorer connector options in 
 
 ## SDK
 
-This section will describe how to configure a custom server timeout when using an SDK.
+This section describes how to configure a custom server timeout when using an SDK.
 
 ### Prerequisites
 
