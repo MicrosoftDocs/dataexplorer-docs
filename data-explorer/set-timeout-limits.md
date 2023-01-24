@@ -22,19 +22,15 @@ This section will describe how to configure a custom query timeout and admin com
 
 ### Set timeout length
 
-1. Go to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home).
-
-1. Sign in with your Microsoft account or Azure Active Directory user identity credentials.
+1. Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) with your Microsoft account or Azure Active Directory user identity credentials.
 
 1. In the top menu, select the **Settings** icon.
 
 1. From the left menu, select **Connection**.
 
-1. Under the **Query timeout (in minutes)** setting, use the slider to choose the desired query timeout length.
+1. Under the **Query timeout (in minutes)** setting, use the slider to choose the desired query timeout length. The change will be saved automatically.
 
-1. Under the **Admin command timeout (in minutes)** setting, use the slider to choose the desired admin command timeout length.
-
-1. The changes will be saved automatically.
+1. Under the **Admin command timeout (in minutes)** setting, use the slider to choose the desired admin command timeout length. The change will be saved automatically.
 
 :::image type="content" source="media/set-timeouts/web-ui-set-timeouts.png" alt-text="Screenshot of the settings in the Azure Data Explorer web UI that control timeout length.":::
 
