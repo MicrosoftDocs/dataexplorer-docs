@@ -9,7 +9,7 @@ ms.date: 01/09/2023
 
 In Azure Data Explorer, it's possible to customize the timeout length for your queries and [management commands](kusto/management/index.md). Adjusting the timeout can help you optimize the performance and efficiency of your queries and commands.
 
-In this guide, you'll learn how to set a custom timeout in various tools such as the [Azure Data Explorer web UI](web-ui-overview.md), [Kusto.Explorer](kusto/tools/kusto-explorer.md), [Kusto.Cli](/kusto/tools/kusto-cli.md), and when using an [SDK](#sdk). By default, certain tools have their own default timeout values, but it may be helpful to adjust these values based on the complexity and expected runtime of your queries.
+In this guide, you'll learn how to set a custom timeout in various tools such as the [Azure Data Explorer web UI](web-ui-overview.md), [Kusto.Explorer](kusto/tools/kusto-explorer.md), [Kusto.Cli](/kusto/tools/kusto-cli.md), [Power BI](power-bi-data-connector.md), and when using an [SDK](#sdk). By default, certain tools have their own default timeout values, but it may be helpful to adjust these values based on the complexity and expected runtime of your queries.
 
 ## Azure Data Explorer web UI
 
@@ -94,6 +94,35 @@ Once set, the client request property applies to all future values until the app
 ```dotnet
 #crp servertimeout
 ```
+
+## Power BI
+
+This section will describe how to configure a custom server timeout in Power BI.
+
+### Prerequisites
+
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/)
+
+### Set timeout length
+
+1. Connect to your Azure Data Explorer cluster from Power BI desktop.
+
+1. In the top menu, select **Transform Data**.
+
+   :::image type="content" source="media/set-timeouts/power-bi-transform-data.png" alt-text="Screenshot of the transform data option in Power BI Desktop.":::
+
+1. In the top menu, select **Advanced Query Editor**.
+
+   :::image type="content" source="media/set-timeouts/power-bi-advanced-editor.png" alt-text="Screenshot of the powerBI advanced query editor option in Power BI Desktop.":::
+
+1. In the pop-up window, set the timeout option in the fourth parameter of the `AzureDataExplorer.Contents` method. The following example shows how to set a timeout length of 59 minutes. For more information, see [configuring Azure Data Explorer connector options in an M Query](/power-query/connectors/azuredataexplorer#configuring-azure-data-explorer-connector-options-in-an-m-query). 
+
+    ```Power Query M
+    let 
+        Source = AzureDataExplorer.Contents(<cluster>, <database>, <table>, [Timeout=#duration(0,0,59,0)])
+    in
+        Source
+    ```
 
 ## SDK
 
