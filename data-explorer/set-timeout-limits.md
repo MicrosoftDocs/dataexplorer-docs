@@ -84,7 +84,7 @@ Kusto.Cli.exe <ConnectionString> -execute:"#crp servertimeout=<timespan>"
 Alternatively, use the following command to set the *norequesttimeout* [client request property](kusto/api/netfx/request-properties.md#clientrequestproperties-options), which will set the timeout to the maximum value of 1 hour.
 
 ```dotnet
-Kusto.Cli.exe <ConnectionString> -execute:"#crp norequesttimeout=True"
+Kusto.Cli.exe <ConnectionString> -execute:"#crp norequesttimeout=true"
 ```
 
 Once set, the client request property applies to all future values until the app is restarted or another value gets set. To retrieve the current value, use:
@@ -138,12 +138,24 @@ To set timeouts when using an SDK, you'll need to use [client request properties
 
 1. Install and import the necessary libraries or packages for your specific SDK.
 
-1. Create a new `ClientRequestProperties` object or use an existing one.
+1. Create a `ClientRequestProperties` object.
 
-   1. To set a maximal server allowed timeout, set *norequesttimeout* to true.
-
-   1. To set a specific timeout, set *servertimeout* to a valid [timespan](kusto/query/scalar-data-types/timespan.md) value up to 1 hour.
+1. Set the *servertimeout* client request property to a valid [timespan](kusto/query/scalar-data-types/timespan.md) value, or set the *norequesttimeout* client request property to `true` to set the maximum allowed timeout. The maximum allowed timeout is 1 hour.
 
 1. Use the `ClientRequestProperties` object in your query or control-command.
 
 1. The server will cancel the request if it exceeds the defined timeout.
+
+> [!NOTE]
+> You can also edit an existing `ClientRequestProperties` object so long as it’s not being used concurrently.
+
+### Example
+
+The following example shows how to do this process for the .NET SDK.
+
+```csharp
+var crp = new ClientRequestProperties(…);
+crp.ClientRequestId = "…";
+crp.SetOption(OptionServerTimeout, TimeSpan.FromMinutes(35));
+// Now pass crp to ExecuteQuery/ExecuteControlCommand/etc.
+```
