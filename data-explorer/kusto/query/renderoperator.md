@@ -1,15 +1,15 @@
 ---
 title: render operator - Azure Data Explorer
-description: This article describes render operator in Azure Data Explorer.
+description: Learn how to use the render operator to instruct the user agent to render a visualization of the query results.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 01/23/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # render operator
 
-Instructs the user agent to render the results of the query in a particular way.
+Instructs the user agent to render a visualization of the query results.
 
 > [!NOTE]
 > * The render operator must be the last operator in the query, and can only be used with queries that produce a single tabular data stream result.
@@ -167,7 +167,7 @@ These visualizations have the following conceptual model:
   * If this column is of type `dynamic` and it holds an array, the individual values in the array will be treated as the values of the x-axis.
 * One or more columns in the table represent one or more measures that vary by the x-axis.
     These columns can be explicitly defined using the `ycolumns` property. If not defined, the user agent will pick all columns that are appropriate for the visualization.
-  * For example: in the `timechart` visualization, the user agent will use all columns with a numeric value that have not been specified otherwise.
+  * For example: in the `timechart` visualization, the user agent will use all columns with a numeric value that haven't been specified otherwise.
   * If the x-axis is an array, the values of each y-axis should also be an array of a similar length, with each y-axis occurring in a single column.
 * Zero or more columns in the table represent a unique set of dimensions that group together the measures. These columns can be specified by the `series` property, or the user agent will pick them automatically from the columns that are otherwise unspecified.
 
@@ -209,7 +209,6 @@ three kinds of columns:
   property).
   For each record, the series has as many measurements ("points" in the chart)
   as there are y-axis columns.
-
 
 ## Example
 

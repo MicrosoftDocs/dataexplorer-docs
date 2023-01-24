@@ -7,7 +7,7 @@ ms.date: 02/13/2020
 ---
 # T-SQL support
 
-[Kusto query language (KQL)](../../query/index.md) is the preferred query language.
+[Kusto Query Language (KQL)](../../query/index.md) is the preferred query language.
 T-SQL support, however, is useful for tools that can't be easily converted to use KQL.  
 T-SQL support is also useful for casual use by people familiar with SQL.
 
@@ -29,9 +29,9 @@ For example:
 select * from StormEvents
 ```
 
-## From T-SQL to Kusto query language
+## From T-SQL to Kusto Query Language
 
-Kusto supports translating T-SQL queries to Kusto query language (KQL). 
+Kusto supports translating T-SQL queries to Kusto Query Language (KQL). 
 This translation can help people familiar with SQL to better understand KQL.
 To get back the equivalent KQL from some T-SQL `select` statement, add `explain` before the query.
 

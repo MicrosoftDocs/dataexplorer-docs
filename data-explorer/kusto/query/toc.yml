@@ -900,6 +900,8 @@ items:
     href: dcountif-aggfunction.md
   - name: hll()
     href: hll-aggfunction.md
+  - name: hll_if()
+    href: hll-if-aggregation-function.md
   - name: hll_merge()
     href: hll-merge-aggfunction.md
   - name: make_bag()
@@ -1185,7 +1187,7 @@ items:
     href: series-subtractfunction.md
   - name: series_tan()
     displayName: element-wise, elementwise
-    href: series-tanfunction.md   
+    href: series-tanfunction.md
 - name: Plugins
   items:
   - name: General plugins

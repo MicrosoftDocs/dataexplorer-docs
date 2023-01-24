@@ -1,6 +1,6 @@
 ---
 title: rolling_percentile plugin - Azure Data Explorer
-description: This article describes rolling_percentile plugin in Azure Data Explorer.
+description: Learn how to use the rolling_percentile plugin to calculate an estimate of the rolling percentile per bin for the specified value column.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/24/2022
@@ -18,7 +18,7 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 ## Arguments
 
 * *T*: The input tabular expression.
-* *ValueColumn*: The name of the column with values to calculate the percentile of. 
+* *ValueColumn*: The name of the column with values to calculate the percentile of.
 * *Percentile*: Scalar with the percentile to calculate.
 * *IndexColumn*: The name of the column to run the rolling window over.
 * *BinSize*: Scalar with size of the bins to apply over the *IndexColumn*.
@@ -27,17 +27,15 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Returns
 
-Returns a table with a row per each bin (and combination of dimensions if specified) that has the rolling percentile of values in the window ending at the bin (inclusive). 
+Returns a table with a row per bin (and combination of dimensions if specified) that has the rolling percentile of values in the window ending at the bin (inclusive).
 Output table schema is:
-
 
 |IndexColumn|dim1|...|dim_n|rolling_BinsPerWindow_percentile_ValueColumn_Pct
 |---|---|---|---|---|
 
-
 ## Examples
 
-### Rolling 3-day median value per day 
+### Rolling 3-day median value per day
 
 The next query calculates a 3-day median value in daily granularity. Each row in the output represents the median value for the last 3 bins (days), including the bin itself.
 
@@ -47,8 +45,8 @@ let T =
 range idx from 0 to 24*10-1 step 1
 | project Timestamp = datetime(2018-01-01) + 1h*idx, val=idx+1
 | extend EvenOrOdd = iff(val % 2 == 0, "Even", "Odd");
- T  
- | evaluate rolling_percentile(val, 50, Timestamp, 1d, 3)
+T  
+| evaluate rolling_percentile(val, 50, Timestamp, 1d, 3)
 ```
 
 **Output**
