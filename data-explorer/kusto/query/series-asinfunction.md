@@ -1,9 +1,9 @@
 ---
 title: series_asin() - Azure Data Explorer
-description: This article describes series_asin() in Azure Data Explorer.
+description: Learn how to use the series_asin() function to calculate the element-wise arcsine function of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/11/2021
+ms.date: 01/22/2023
 ---
 # series_asin()
 
@@ -15,7 +15,7 @@ Calculates the element-wise arcsine function of the numeric series input.
 
 ## Arguments
 
-* *series*: Input numeric array, on which the arcsine function is applied. The argument must be a dynamic array. 
+* *series*: Input numeric array, on which the arcsine function is applied. The argument must be a dynamic array.
 
 ## Returns
 
@@ -34,4 +34,3 @@ print arr = dynamic([-1,0,1])
 |arr|arr_asin|
 |---|---|
 |[-6.5,0,8.2]|[1.5707963267948966,0.0,1.5707963267948966]|
-

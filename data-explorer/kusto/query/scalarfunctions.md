@@ -1,9 +1,9 @@
 ---
 title: Scalar Functions - Azure Data Explorer 
-description: This article describes Scalar Functions in Azure Data Explorer.
+description: Learn how to use scalar functions to perform calculations that return a single value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/10/2022
+ms.date: 01/23/2023
 ---
 # Scalar function types at a glance
 
@@ -91,6 +91,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[bag_merge()](bag-merge-function.md)|Merges dynamic property-bags into a dynamic property-bag with all properties merged.|
 |[bag_pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[bag_remove_keys()](bag-remove-keys-function.md)|Removes keys and associated values from a dynamic property-bag.|
+|[bag_set_key()](bag-set-key-function.md)|Sets a given key to a given value in a dynamic property-bag.|
 |[jaccard_index()](jaccard-index-function.md)|Computes the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of two sets.|
 |[pack_all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
 |[pack_array()](packarrayfunction.md)|Packs all input values into a dynamic array.|
@@ -110,7 +111,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[prev()](prevfunction.md)|For the serialized row set, returns a value of a specified column from the earlier row according to the offset.|
 |[row_cumsum()](rowcumsumfunction.md)|Calculates the cumulative sum of a column.|
 |[row_number()](rownumberfunction.md)|Returns a row's number in the serialized row set - consecutive numbers starting from a given index or from 1 by default.|
-|[row_rank()](rowrankfunction.md)|Returns a row's rank in the serialized row set.|
+|[row_rank_dense()](rowrankdensefunction.md)|Returns a row's dense rank in the serialized row set.|
+|[row_rank_min()](rowrankminfunction.md)|Returns a row's minimal rank in the serialized row set.|
 
 ## Flow control functions
 
