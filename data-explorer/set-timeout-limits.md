@@ -147,9 +147,6 @@ To set timeouts when using an SDK, you'll need to use [client request properties
 
 1. Use the `ClientRequestProperties` object in your query or control-command to apply the timeout.
 
-> [!NOTE]
-> You can edit an existing `ClientRequestProperties` object as long as it's not being used while you make the change.
-
 ### Example
 
 The following example shows how set a timeout when using the .NET SDK.
@@ -160,3 +157,10 @@ crp.ClientRequestId = "…";
 crp.SetOption(OptionServerTimeout, TimeSpan.FromMinutes(35));
 // Now pass crp to ExecuteQuery/ExecuteControlCommand/etc.
 ```
+
+> [!NOTE]
+> You can edit an existing `ClientRequestProperties` object as long as it's not being used while you make the change.
+
+## Next steps
+
+Learn more about [query limits](kusto/concepts/querylimits.md).
