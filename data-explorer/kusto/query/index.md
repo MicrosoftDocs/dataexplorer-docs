@@ -76,3 +76,4 @@ For more information on control commands, see [Management (control commands) ove
 * [KQL quick reference](../../kql-quick-reference.md)
 * [SQL to Kusto cheat sheet](sqlcheatsheet.md)
 * [Query best practices](best-practices.md)
+* [Query data with T-SQL](../api/tds/t-sql.md)
