@@ -1,9 +1,9 @@
 ---
 title: series_decompose_anomalies() - Azure Data Explorer
-description: This article describes series_decompose_anomalies() in Azure Data Explorer.
+description: Learn how to use series_decompose_anomalies() function to extract anomalous points from a dynamic numerical array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/28/2019
+ms.date: 01/22/2023
 ---
 # series_decompose_anomalies()
 
@@ -21,17 +21,17 @@ The function takes an expression containing a series (dynamic numerical array) a
 * *Series*: Dynamic array cell that is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators
 * *Threshold*: Anomaly threshold, default 1.5 (k value) for detecting mild or stronger anomalies
 * *Seasonality*: An integer controlling the seasonal analysis, containing either
-    * -1: Autodetect seasonality (using [series_periods_detect](series-periods-detectfunction.md)) [default]
-    * 0: No seasonality (that is, skip extracting this component)
-    * period: Positive integer, specifying the expected period in number of bins unit. For example, if the series is in one hour bins, a weekly period is 168 bins
+* -1: Autodetect seasonality (using [series_periods_detect](series-periods-detectfunction.md)) [default]
+* 0: No seasonality (that is, skip extracting this component)
+* period: Positive integer, specifying the expected period in number of bins unit. For example, if the series is in one hour bins, a weekly period is 168 bins
 * *Trend*: A string controlling the trend analysis, containing either
-    * "avg": Define trend component as average of the series [default]
-    * "none": No trend, skip extracting this component
-    * "linefit": Extract trend component using linear regression
+* "avg": Define trend component as average of the series [default]
+* "none": No trend, skip extracting this component
+* "linefit": Extract trend component using linear regression
 * *Test_points*: 0 [default] or a positive integer, that specifies the number of points at the end of the series to exclude from the learning (regression) process. This parameter should be set for forecasting purposes
 * *AD_method*: A string controlling the anomaly detection method on the residual time series, containing one of the following values:
-    * “ctukey”: [Tukey’s fence test](https://en.wikipedia.org/wiki/Outlier#Tukey's_fences) with custom 10th-90th percentile range [default]
-    * “tukey”: [Tukey’s fence test](https://en.wikipedia.org/wiki/Outlier#Tukey's_fences) with standard 25th-75th percentile range
+  * “ctukey”: [Tukey’s fence test](https://en.wikipedia.org/wiki/Outlier#Tukey's_fences) with custom 10th-90th percentile range [default]
+  * “tukey”: [Tukey’s fence test](https://en.wikipedia.org/wiki/Outlier#Tukey's_fences) with standard 25th-75th percentile range
 
     For more information on residual time series, see [series_outliers](series-outliersfunction.md)
 * *Seasonality_threshold*: The threshold for seasonality score when *Seasonality* is set to autodetect. The default score threshold is `0.6`. For more information, see [series_periods_detect](series-periods-detectfunction.md)
@@ -47,10 +47,11 @@ The function takes an expression containing a series (dynamic numerical array) a
 ## The algorithm
 
 This function follows these steps:
+
 1. Calls [series_decompose()](series-decomposefunction.md) with the respective parameters, to create the baseline and residuals series.
 1. Calculates ad_score series by applying [series_outliers()](series-outliersfunction.md) with the chosen anomaly detection method on the residuals series.
 1. Calculates the ad_flag series by applying the threshold on the ad_score to mark up/down/no anomaly respectively.
- 
+
 ## Examples
 
 ### Detect anomalies in weekly seasonality

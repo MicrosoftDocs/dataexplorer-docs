@@ -3,16 +3,16 @@ title: Ingest data from Azure Stream Analytics into Azure Data Explorer
 description: In this article, you'll learn how to ingest (load) data into Azure Data Explorer from Azure Stream Analytics.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 06/26/2022
+ms.date: 01/02/2023
 ---
 
 # Ingest data from Azure Stream Analytics into Azure Data Explorer
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion from Event Hubs, IoT Hubs, blobs written to blob containers, and Azure Stream Analytics jobs.
+Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). Azure Stream Analytics is a real-time analytics and complex event-processing engine that's designed to process high volumes of fast streaming data from multiple sources simultaneously.
 
-[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) is a real-time analytics and complex event-processing engine that is designed to analyze and process high volumes of fast streaming data from multiple sources simultaneously. An Azure Stream Analytics *job* consists of an input source, a transformation query, and an output connection. There are several output types to which you can send transformed data. You can create, edit, and test Stream Analytics jobs using the [Azure portal](/azure/stream-analytics/stream-analytics-quick-create-portal), Azure Resource Manager (ARM) templates, [Azure PowerShell](/azure/stream-analytics/stream-analytics-quick-create-powershell), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations), [REST API](/rest/api/streamanalytics/), and [Visual Studio](/azure/stream-analytics/stream-analytics-quick-create-vs).
+An Azure Stream Analytics *job* consists of an input source, a transformation query, and an output connection. You can create, edit, and test Stream Analytics jobs using the [Azure portal](/azure/stream-analytics/stream-analytics-quick-create-portal), Azure Resource Manager (ARM) templates, [Azure PowerShell](/azure/stream-analytics/stream-analytics-quick-create-powershell), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations), [REST API](/rest/api/streamanalytics/), [Visual Studio](/azure/stream-analytics/stream-analytics-quick-create-vs), and the [Stream Analytics no code editor](/azure/stream-analytics/no-code-filter-ingest-data-explorer).
 
-In this article, you'll learn how to use a Streaming Analytics job to collect data from an event hub and send it to your Azure Data Explorer cluster using the Azure portal or an ARM template.
+In this article, you'll learn how to use a Stream Analytics *job* to collect data from an event hub and send it to your Azure Data Explorer cluster using the Azure portal or an ARM template.
 
 ## Prerequisites
 

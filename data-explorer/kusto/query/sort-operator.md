@@ -1,19 +1,19 @@
 ---
-title: order operator, sort operator - Azure Data Explorer
-description: Learn how to use the order operator and the sort operator to sort the rows of the input table by on or more columns.
+title: sort operator - Azure Data Explorer
+description: Learn how to use the sort operator to sort the rows of the input table by one or more columns.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/09/2023
 ---
-# order operator, sort operator
+# sort operator
 
-Sort the rows of the input table into order by one or more columns.
+Sorts the rows of the input table into order by one or more columns.
 
-> The `order` and `sort` operators are equivalent
+> The `sort` and `order` operators are equivalent
 
 ## Syntax
 
-*T* `| order by` *column* [`asc` | `desc`] [`nulls first` | `nulls last`] [`,` ...]
+*T* `| sort by` *column* [`asc` | `desc`] [`nulls first` | `nulls last`] [`,` ...]
 
 ## Parameters
 
@@ -37,7 +37,7 @@ The following example shows storm events by state in alphabetical order with the
 
 ```kusto
 StormEvents
-| order by State asc, StartTime desc
+| sort by State asc, StartTime desc
 ```
 
 This table only shows the top 10 query results.
