@@ -122,6 +122,8 @@ This section describes how to configure a custom server timeout in Power BI.
         Source
     ```
 
+1. Select **Done** to apply the changes.
+
 > [!TIP]
 > To learn more, see [configuring Azure Data Explorer connector options in an M Query](/power-query/connectors/azuredataexplorer#configuring-azure-data-explorer-connector-options-in-an-m-query).
 
@@ -152,7 +154,7 @@ To set timeouts when using an SDK, you'll need to use [client request properties
 
 ### Example
 
-The following example shows how to do this process for the .NET SDK.
+The following example shows how set a timeout when using the .NET SDK.
 
 ```csharp
 var crp = new ClientRequestProperties(…);
