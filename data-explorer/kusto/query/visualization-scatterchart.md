@@ -9,8 +9,7 @@ zone_pivot_groups: kql-flavors
 ---
 # Scatter chart
 
-Points graph. First column is x-axis and should be a numeric column. Other numeric columns are y-axes. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKCsXJiSUlqUXJGYlFJQoK5ZklGRoVyfk5pbl5thWaAI8A701mAAAA)** |
-
+In a scatter chart visual, the first column is the x-axis and should be a numeric column. Other numeric columns are y-axes. Scatter plots are used to observe relationships between variables.
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](renderoperator.md).
 
@@ -65,3 +64,16 @@ The possible values of this property are:
 |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point. Series column is optional. For more information, see [Geospatial visualizations](geospatial-visualizations.md). |
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WOQQ6CMBBF955iwgoSPQI73JNwgpFOoNp2mukAYjy8hSjufvLf/3mdsvjrTEHT6Q1p8h7FvmhLZYMeB2qFI4mu1W2FTlEpc475MUVoOU4O1XJoUBE4HEAUvlOvF1zwvxIKhgRSj6ok/YiisFgdoXyqVUd1sZMQj9viDN/mZwFml4IskzY4E46GfFyP1hgK1QcXijj20QAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| summarize sum(DamageProperty)by State
+| lookup PopulationData on State
+| project-away State
+| render scatterchart with (xtitle="State population", title="Property damage by state", legend=hidden)
+```
+
+:::image type="content" source="images/visualization-scatterchart/scatter chart.png" alt-text="Screenshot of scatter chart visualization output.":::

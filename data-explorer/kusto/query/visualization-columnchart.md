@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors
 ---
 # Column chart
 
-Like `barchart` with vertical strips instead of horizontal strips.|   **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1CUahgp2BoAJUsKMrPSk0ugWjQQVYFVVCUmpeSWqSQnJ9TmpuXnJFYVAIAJOFS3Y8AAAA=)** |
+The column chart visual needs a minimum of two columns in the query result. By default, the first column is used as the x-axis. This column can contain text, datetime, or numeric data types. The other columns are used as the y-axis and contain numeric data types to be displayed as vertical lines. Column charts are used for comparing specific sub category items in a main category range, where the length of each line represents its value.
 
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](renderoperator.md).
@@ -67,3 +67,16 @@ The possible values of this property are:
 |`stacked100`       |Stack "columns" and stretch each one to the same height as the others.|
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNQiFEUKdgqGBkCJgqL8rNTkEohCHWQVQMmi1LyU1CKF5Pyc0ty85IzEohIAvF8Py38AAAA=" target="_blank">Run the query</a>
+
+```kusto 
+StormEvents
+| summarize event_count=count() by State
+| where event_count > 10
+| project State, event_count
+| render columnchart
+```
+
+:::image type="content" source="images/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization.":::

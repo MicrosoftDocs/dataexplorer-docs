@@ -10,7 +10,8 @@ zone_pivot_groups: kql-flavors
 # Pivot chart
 
 ::: zone pivot="azuredataexplorer"
-Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types. |   |
+
+Displays a pivot table and chart. You can interactively select data, columns, rows and various chart types.
 
 > [!NOTE]
 > *  This visualization can only be used in the context of the [render operator](renderoperator.md).
@@ -40,8 +41,6 @@ Displays a pivot table and chart. User can interactively select data, columns, r
     |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
     |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
     |`ytitle`      |The title of the y-axis (of type `string`).                                       |
-    
-## Example
 
 ::: zone-end
 

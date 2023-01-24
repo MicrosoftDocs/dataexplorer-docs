@@ -17,8 +17,6 @@ zone_pivot_groups: kql-flavors
 > * This visualization can only be used in the context of the [render operator](renderoperator.md).
 > * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
 
-
-
 ## Syntax
 
 *T* `|` `render` ladderchart [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
@@ -43,8 +41,6 @@ zone_pivot_groups: kql-flavors
     |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
     |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
     |`ytitle`      |The title of the y-axis (of type `string`).                                       |
-    
-## Example
 
 ::: zone-end
 

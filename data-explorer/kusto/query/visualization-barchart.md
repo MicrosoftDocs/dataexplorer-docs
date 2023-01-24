@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors
 ---
 # Bar chart
 
-First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1CUahgp2BoAJUsKMrPSk0ugWjQQVYFVVCUmpeSWqSQlFiUnJFYVAIAB5xR2owAAAA=)** 
+The bar chart visual needs a minimum of two columns in the query result. By default, the first column is used as the y-axis. This column can contain text, datetime, or numeric data types. The other columns are used as the x-axis and contain numeric data types to be displayed as horizontal lines. Bar charts are used mainly for comparing numeric and nominal discrete values, where the length of each line represents its value.
 
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](renderoperator.md).
@@ -67,3 +67,16 @@ The possible values of this property are:
 | `stacked100` | Stack "bars" and stretch each one to the same width as the others. |
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6tRKC7NzU0syqxKVUgtS80riU/OL80rsQWTGpoKSZUKwSWJJalcNQrlGalFKIoU7BQMDYASBUX5WanJJRCFOsgqgJJFqXkpqUUKSYlFyRmJRSUA52pZ+XAAAAA=" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| summarize event_count=count() by State
+| where event_count > 10
+| project State, event_count
+| render barchart
+```
+
+:::image type="content" source="images/visualization-barchart/bar-chart.png" alt-text="Screenshot of bar chart visualization result.":::

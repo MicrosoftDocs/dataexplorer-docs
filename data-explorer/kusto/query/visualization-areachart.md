@@ -3,13 +3,13 @@ title: Area chart visualization - Azure Data Explorer
 description: This article describes the area chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 01/24/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 # Area chart
 
-Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. | **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKiUWpickZiUUlCgrlmSUZGhXJ+TmluXm2FZoApaRQYmIAAAA=)**
+The area chart visual shows a time-series relationship. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Unlike line charts, area charts also visually represent volume. Area charts are ideal for indicating the change among different data sets.
 
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](renderoperator.md).
@@ -40,9 +40,7 @@ Area graph. First column is the x-axis and should be a numeric column. Other num
   |`xtitle`      |The title of the x-axis (of type `string`).                                       |
   |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
   |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
-
   |`ytitle`      |The title of the y-axis (of type `string`).                                       |
-
 
 ::: zone-end
 
@@ -69,3 +67,13 @@ The possible values of this property are:
 | `stacked100` | Stack "areas" to the right and stretch each one to the same width as the others. |
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuaqUShKzUtJLVJILEpNTM5ILCoBAEjF66IfAAAA" target="_blank">Run the query</a>
+
+```kusto
+demo_series3
+| render areachart
+```
+
+:::image type="content" source="images/visualization-areachart/area-chart.png" alt-text="Screenshot of area chart visualization.":::

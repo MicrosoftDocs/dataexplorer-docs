@@ -11,8 +11,9 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-Line graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=)** |
+The line chart visual is the most basic type of chart. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Line charts track changes over short and long periods of time. When smaller changes exist, line graphs are more useful than bar graphs.
 
+ 
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](renderoperator.md).
 
@@ -54,6 +55,17 @@ This visualization supports splitting into multiple y-axis values:
     
 ## Example
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLEm1tVUK8wxy9/TzdFQCyhQU5WelJpeA5IpKQjJzU3UUXBJzE9NTA4ryC1KLSiqBaopS81JSixRyMvNSkzOAygCpk5aiXAAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where State=="VIRGINIA"
+| project StartTime, DamageProperty
+| render linechart 
+```
+
+:::image type="content" source="images/visualization-linechart/line-chart.png" alt-text="Screenshot of line chart visualization output.":::
 
 ::: zone-end
 

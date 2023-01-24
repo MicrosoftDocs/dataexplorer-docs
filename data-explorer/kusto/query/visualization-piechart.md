@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors
 ---
 # Pie chart
 
-First column is color-axis, second column is numeric. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUoLkksSU3OL80rsQWTGpoKSZUKwSBRsML8ohKQAEKZAkg4JzM3s0TB0ADELkrNS0ktUijITE3OSASqLsksyUm1VfKtVAjITFVwBovBjFQCADspGXyIAAAA)** |
+The pie chart visual needs a minimum of two columns in the query result. By default, the first column is used as the color axis. This column can contain text, datetime, or numeric data types. Other columns will be used to determine the size of each slice and contain numeric data types. Pie charts are used for presenting a composition of categories and their proportions out of a total.
 
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](renderoperator.md).
@@ -62,3 +62,16 @@ The possible values of this property are:
 | `map` | Expected columns are [Longitude, Latitude] or GeoJSON point, color-axis and numeric. Supported in Kusto Explorer desktop. For more information, see Geospatial visualizations](geospatial-visualizations.md)
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WNQQqFMBBD955icKU7PYBLT9ATVP+AA7aVaVQUD2/rB92EJDwSg6Cu39gjFhfF1TmrcjJFWPAYVo/u0aqm4SCT28wFRc4fRamdxQmobZJV9j9WWoTHySZ2F0wVBDN3pcmX9P98R8v6BgN8EaGKAAAA" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| summarize statecount=count() by State
+| sort by statecount 
+| limit 10
+| render piechart with(title="Storm Events by State")
+```
+
+:::image type="content" source="images/visualization-piechart/pie-chart.png" alt-text="Screenshot of pie chart visualization output.":::
