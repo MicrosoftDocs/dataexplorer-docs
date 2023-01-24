@@ -80,4 +80,5 @@ StormEvents
 
 ## Next steps
 
-* Connect and query from [MS-TDS clients](clients.md)
+* Learn more about [MS-TDS and T-SQL support](index.md)
+* Connect and query from common [MS-TDS clients](clients.md)
