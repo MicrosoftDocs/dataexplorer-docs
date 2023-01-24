@@ -113,7 +113,7 @@ This section will describe how to configure a custom server timeout in Power BI.
 
    :::image type="content" source="media/set-timeouts/power-bi-advanced-editor.png" alt-text="Screenshot of the powerBI advanced query editor option in Power BI Desktop.":::
 
-1. In the pop-up window, set the timeout option in the fourth parameter of the `AzureDataExplorer.Contents` method. The following example shows how to set a timeout length of 59 minutes. For more information, see [configuring Azure Data Explorer connector options in an M Query](/power-query/connectors/azuredataexplorer#configuring-azure-data-explorer-connector-options-in-an-m-query). 
+1. In the pop-up window, set the timeout option in the fourth parameter of the `AzureDataExplorer.Contents` method. The following example shows how to set a timeout length of 59 minutes.
 
     ```Power Query M
     let 
@@ -121,6 +121,8 @@ This section will describe how to configure a custom server timeout in Power BI.
     in
         Source
     ```
+
+For more information, see [configuring Azure Data Explorer connector options in an M Query](/power-query/connectors/azuredataexplorer#configuring-azure-data-explorer-connector-options-in-an-m-query).
 
 ## SDK
 
