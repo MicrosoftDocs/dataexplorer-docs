@@ -111,7 +111,7 @@ This section describes how to configure a custom server timeout in Power BI.
 
 1. In the top menu, select **Advanced Query Editor**.
 
-   :::image type="content" source="media/set-timeouts/power-bi-advanced-editor.png" alt-text="Screenshot of the powerBI advanced query editor option in Power BI Desktop.":::
+   :::image type="content" source="media/set-timeouts/power-bi-advanced-editor.png" alt-text="Screenshot of the Power BI advanced query editor option in Power BI Desktop.":::
 
 1. In the pop-up window, set the timeout option in the fourth parameter of the `AzureDataExplorer.Contents` method. The following example shows how to set a timeout length of 59 minutes.
 
@@ -145,12 +145,10 @@ To set timeouts when using an SDK, you'll need to use [client request properties
 
 1. Set the *servertimeout* client request property to a valid [timespan](kusto/query/scalar-data-types/timespan.md) value, or set the *norequesttimeout* client request property to `true` to set the maximum allowed timeout. The maximum allowed timeout is 1 hour.
 
-1. Use the `ClientRequestProperties` object in your query or control-command.
-
-1. The server will cancel the request if it exceeds the defined timeout.
+1. Use the `ClientRequestProperties` object in your query or control-command to apply the timeout.
 
 > [!NOTE]
-> You can also edit an existing `ClientRequestProperties` object so long as it’s not being used concurrently.
+> You can edit an existing `ClientRequestProperties` object as long as it's not being used while you make the change.
 
 ### Example
 
