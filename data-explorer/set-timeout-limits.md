@@ -33,7 +33,7 @@ This section describes how to configure a custom query timeout and admin command
 1. Under the **Admin command timeout (in minutes)** setting, use the slider to choose the desired admin command timeout length.
 
     :::image type="content" source="media/set-timeouts/web-ui-set-timeouts.png" alt-text="Screenshot of the settings in the Azure Data Explorer web UI that control timeout length.":::
-    
+
 1. Close the settings window, and the changes will be saved automatically.
 
 ## Kusto.Explorer
@@ -122,7 +122,8 @@ This section describes how to configure a custom server timeout in Power BI.
         Source
     ```
 
-For more information, see [configuring Azure Data Explorer connector options in an M Query](/power-query/connectors/azuredataexplorer#configuring-azure-data-explorer-connector-options-in-an-m-query).
+> [!TIP]
+> To learn more, see [configuring Azure Data Explorer connector options in an M Query](/power-query/connectors/azuredataexplorer#configuring-azure-data-explorer-connector-options-in-an-m-query).
 
 ## SDK
 
