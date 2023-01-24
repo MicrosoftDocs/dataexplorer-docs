@@ -462,7 +462,7 @@ Mesh Systems is an IoT Solutions Provider that develops, operates, and manages e
 :::image type="icon" source="media/findmypartner/msg-logo.jpg":::
 
 msg is an independent, international group of companies with more than 10,000 employees worldwide.
-It is represented in 32 countries and supports its customers in their digital transformation. Founded
+It is represented in 32 countries/regions and supports its customers in their digital transformation. Founded
 in 1980, the consulting and IT company‘s range of services includes strategic business consulting and
 end-to-end solutions for the industries automotive, banking, consumer products, food, healthcare
 insurance, life science & chemicals, manufacturing, public sector, telecommunications, travel &
