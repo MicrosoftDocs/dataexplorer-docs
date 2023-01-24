@@ -51,9 +51,9 @@ The following table shows only the first 10 results.
 |COM08| Ask the Team: Azure Data Explorer|Ask the Team|Online|
 |COM137| Focus Group: Built-In Dashboard and Smart Auto Scaling Capabilities in Azure Data Explorer|Focus Group| Online|
 |CON-PRT157| Roundtable: Monitoring and managing your Azure Data Explorer deployments|Roundtable|Online|
-|CON-PRT103| Roundtable: Advanced Kusto query language topics|Roundtable| Online|
+|CON-PRT103| Roundtable: Advanced Kusto Query Language topics|Roundtable| Online|
 |CON-PRT157| Roundtable: Monitoring and managing your Azure Data Explorer deployments|Roundtable|Online|
-|CON-PRT103| Roundtable: Advanced Kusto query language topics|Roundtable|Online|
+|CON-PRT103| Roundtable: Advanced Kusto Query Language topics|Roundtable|Online|
 |CON-PRT130| Roundtable: Data exploration and visualization with Azure Data Explorer |Roundtable |Online|
 |CON-PRT130| Roundtable: Data exploration and visualization with Azure Data Explorer |Roundtable |Online|
 |...|...|...|...|

@@ -115,7 +115,7 @@ The query editor has two modes. The query builder mode and raw mode. Use the que
     **Filter**
     1. Click **+** to right of **Where (filter)** to select from the drop-down one or more columns in your table. 
     1. For each filter, define the value(s) by using the applicable operator. 
-    This selection is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto query language.
+    This selection is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto Query Language.
 
     **Value selection**
     1. Click **+** to right of **value columns** to select from the drop-down the value columns that will be displayed in the panel.
@@ -131,9 +131,9 @@ The query editor has two modes. The query builder mode and raw mode. Use the que
     :::image type="content" source="media/grafana/query-builder-all-values.png" alt-text="Query builder with all values complete.":::
 
     > [!TIP]
-    > While finalizing the settings in the query builder, a Kusto query language query is created. This query shows the logic you constructed with the graphical query editor. 
+    > While finalizing the settings in the query builder, a Kusto Query Language query is created. This query shows the logic you constructed with the graphical query editor. 
 
-1. Select **Edit KQL** to move to raw mode and edit your query using the flexibility and power of the Kusto query language.
+1. Select **Edit KQL** to move to raw mode and edit your query using the flexibility and power of the Kusto Query Language.
 
 :::image type="content" source="media/grafana/query-builder-with-raw-query.png" alt-text="Query builder with raw query.":::
 
