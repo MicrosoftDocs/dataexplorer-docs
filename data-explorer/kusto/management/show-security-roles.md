@@ -26,8 +26,7 @@ A line is returned for each security role assigned to the principal.
 
 ## Example
 
-The following control command lists all security principals that have
-access to the `StormEvents` table.
+The following control command lists all security principals that have access to the `StormEvents` table.
 
 ```kusto
 .show table StormEvents principals
@@ -37,4 +36,4 @@ Example result:
 
 |Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN|
 |---|---|---|---|---|
-|Database Apsty Admin |Azure AD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
+|Database StormEvents Admin |Azure AD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
