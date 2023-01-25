@@ -507,6 +507,8 @@ items:
       href: set-security-roles.md
     - name: Drop security roles
       href: drop-security-roles.md
+    - name: Show security roles
+      href: show-security-roles.md
 - name: Data ingestion
   items:
   - name: Ingest from storage
