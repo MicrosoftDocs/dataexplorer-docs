@@ -3,7 +3,7 @@ title: Find an Azure Data Explorer partner
 description: Learn about our partners and how they can help you with Azure Data Explorer.
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 01/13/2023
+ms.date: 01/25/2023
 ---
 # Find an Azure Data Explorer partner
 
@@ -239,6 +239,33 @@ Elastacloud are experts at building complex real-time solutions using Azure Data
 
 - [Elastacloud Limited website](https://www.elastacloud.com)
 - [Microsoft partner site for Elastacloud Limited](https://appsource.microsoft.com/marketplace/partner-dir/c670b60d-c4c7-4dec-8c1f-ac0da3e72bee/overview)
+
+## Fellowmind
+
+:::image type="icon" source="media/findmypartner/fellowmind-logo.jpg":::
+
+Data & Analytics team within Fellowmind Denmark is a part of the entire Data & Analytics capacity in the organization which consists of 400 people working with data. In Denmark, the team is counting 35 experts with each their focus area – Power BI, Data Ingestion, Data Modelling etc.
+
+The team a broad experience within the entire Data Platform in Azure on both small, medium, large and enterprise clients – spanning private sector, public sector, and the utility sector.
+
+With the emerging focus on IoT, Telemetry and streaming data, the need for experts within this field has also expanded to the Danish Data & Analytics team with specific roles for the complete project approach.
+
+**Partner type**
+
+- Consulting
+
+**Focus geography**
+
+- Denmark
+
+**Contact**
+
+- [https://www.fellowmindcompany.com/contact/](https://www.fellowmindcompany.com/contact/)
+
+**Additional information**
+
+- [Fellowmind website](https://www.fellowmindcompany.com)
+- [Microsoft partner site for Fellowmind](https://appsource.microsoft.com/marketplace/partner-dir/3b2de1f1-4306-444d-bed8-e724ef455f1d/overview)
 
 ## Henry Been Consultancy
 
@@ -488,6 +515,37 @@ topic-based competence. msg systems ag forms the core of the company group.
 
 - [msg systems ag website](https://www.msg.group)
 - [Microsoft partner site for msg systems ag](https://appsource.microsoft.com/marketplace/partner-dir/79513a1c-cd75-4d99-afa8-495af5f574c7)
+
+## Neal Analytics
+
+:::image type="icon" source="media/findmypartner/neal-analytics-logo.png":::
+
+Neal Analytics is an award-winning Data & AI consulting partner of Microsoft. With 6 different advanced specializations in Azure & 4 Partner of the Year awards & finalist finishes, Neal has a proven track record of success you can trust for all your Azure deployment needs.
+
+Neal has worked extensively with Azure Data Explorer and maintains a trained bench of consultants who can leverage this expertise to assist you in your customer scenario. Neal is also a partner in Microsoft’s Solution Assessment program, and if your organization qualifies this program will assist us in standing up a landing zone featuring Azure Data Explorer to help you get started with your ADX project.
+
+**Partner type**
+
+- System Integrator
+- ISV
+
+**Focus geography**
+
+- US
+- Canada
+- LATAM
+- EMEA
+- Middle East
+- APAC
+
+**Contact**
+
+- [Davidb@nealanalytics.com](mailto:Davidb@nealanalytics.com)
+
+**Additional information**
+
+- [Neal Analytics website](https://nealanalytics.com/)
+- [Microsoft partner site for Neal Analytics](https://appsource.microsoft.com/marketplace/partner-dir/4fd354cb-e69d-49f6-b954-daf93d5cef95/overview)
 
 ## Niels Berglund
 
