@@ -11,7 +11,7 @@ Azure Data Explorer uses a role-based access control (RBAC) model in which princ
 
 When a principal attempts an operation, the system performs an authorization check to make sure the principal is associated with at least one security role that grants permissions to perform the operation. Failing an authorization check aborts the operation.
 
-Management commands are used to assign security roles on databases, tables, external tables, materialized views, and functions.
+Management commands are the programmatic way to assign security roles on databases, tables, external tables, materialized views, and functions.
 
 ## Management commands
 
