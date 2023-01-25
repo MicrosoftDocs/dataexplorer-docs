@@ -503,13 +503,13 @@ items:
   items:
     - name: Security roles overview
       href: security-roles.md
-    - name: Add security roles
+    - name: .add
       href: add-security-roles.md
-    - name: Set security roles
-      href: set-security-roles.md
-    - name: Drop security roles
+    - name: .drop
       href: drop-security-roles.md
-    - name: Show security roles
+    - name: .set
+      href: set-security-roles.md
+    - name: .show
       href: show-security-roles.md
 - name: Data ingestion
   items:

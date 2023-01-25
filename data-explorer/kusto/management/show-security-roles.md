@@ -5,7 +5,7 @@ ms.topic: reference
 ms.date: 01/25/2023
 ---
 
-# Show security roles
+# Use the .show command to list security roles
 
 This section describes how to use the `.show` command to list the principals and their roles for a database, table, external table, materialized view, or function. To learn more about security roles, see the [security roles overview](security-roles.md).
 

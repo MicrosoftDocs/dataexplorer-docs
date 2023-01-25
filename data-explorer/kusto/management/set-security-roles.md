@@ -5,7 +5,7 @@ ms.topic: reference
 ms.date: 01/25/2023
 ---
 
-# Set security roles
+# Use the .set command to assign security roles
 
 This section describes how to use the `.set` command to assign principals to a database, table, external table, materialized view, or function. To learn more about security roles, see the [security roles overview](security-roles.md).
 
