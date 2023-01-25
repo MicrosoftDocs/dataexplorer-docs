@@ -1,11 +1,11 @@
 ---
-title: Security roles management - Azure Data Explorer
-description: This article describes security roles management in Azure Data Explorer.
+title: Security roles - Azure Data Explorer
+description: This article describes security roles in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/25/2023
 ---
-# Security roles management
+# Security roles
 
 Azure Data Explorer uses a role-based access control (RBAC) model in which principals get access to resources according to the security roles they're assigned.
 
@@ -15,7 +15,7 @@ Management commands are used to assign security roles on databases, tables, exte
 
 ## Management commands
 
-The following table describes the management commands used for managing security roles.
+The following table describes the commands used for managing security roles.
 
 |Command|Description|
 |--|--|
@@ -44,6 +44,8 @@ For a full description of the security roles at each scope, see [Azure Data Expl
 
 ## Next steps
 
-* [Use the .add management command](add-security-roles.md) to assign principals security roles
-* Learn how to [reference security principals](access-control/referencing-security-principals.md) when using management commands
 * Read more about [role-based access control](access-control/role-based-access-control.md) in Kusto
+* Use the [.show command](add-security-roles.md) to view principals and their security roles
+* Use the [.add command](add-security-roles.md) to add principals to a security role
+* Use the [.drop command](add-security-roles.md) to remove principals from a security role
+* Use the [.set command](add-security-roles.md) to assign principals to a security roles
