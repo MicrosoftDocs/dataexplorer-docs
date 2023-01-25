@@ -11,11 +11,18 @@ Azure Data Explorer uses a role-based access control (RBAC) model in which princ
 
 When a principal attempts an operation, the system performs an authorization check to make sure the principal is associated with at least one security role that grants permissions to perform the operation. Failing an authorization check aborts the operation.
 
-> [!IMPORTANT]
-> Before altering authorization rules on your cluster(s), read the following:
->
-> * [Azure Data Explorer role-based access control](./access-control/role-based-access-control.md)
-> * [Principals and identity providers](./access-control/principals-and-identity-providers.md)
+Management commands are used to assign security roles on databases, tables, external tables, materalized views, and functions.
+
+## Management commands
+
+The following table describes the management commands used for managing security roles.
+
+|Command|Description|
+|--|--|
+|[`.show`](show-security-roles.md)|Lists principals with the given role.|
+|[`.add`](add-security-roles.md)|Adds one or more principals to the role.|
+|[`.drop`](drop-security-roles.md)|Removes one or more principals from the role.|
+|[`.set`](set-security-roles.md)|Sets the role to the specific list of principals, removing all previous ones.|
 
 ## Security roles
 
@@ -34,14 +41,3 @@ For a full description of the security roles at each scope, see [Azure Data Expl
 
 > [!TIP]
 > There are three cluster level security roles (AllDatabasesAdmin, AllDatabasesViewer, and AllDatabasesMonitor) that can only be configured in the Azure portal. To learn more, see [manage cluster permissions](../../manage-cluster-permissions.md).
-
-## Management commands
-
-The following table describes the management commands used for managing security roles.
-
-|Command|Description|
-|--|--|
-|[`.show`](show-security-roles.md)|Lists principals with the given role.|
-|[`.add`](add-security-roles.md)|Adds one or more principals to the role.|
-|[`.drop`](drop-security-roles.md)|Removes one or more principals from the role.|
-|[`.set`](set-security-roles.md)|Sets the role to the specific list of principals, removing all previous ones.|
