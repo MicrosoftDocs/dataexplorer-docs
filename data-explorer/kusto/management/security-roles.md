@@ -37,6 +37,8 @@ For a full description of the security roles at each scope, see [Azure Data Expl
 
 ## Management commands
 
+The following table describes the management commands used for managing security roles.
+
 |Command|Description|
 |--|--|
 |[`.show`](show-security-roles.md)|Lists principals with the given role.|
