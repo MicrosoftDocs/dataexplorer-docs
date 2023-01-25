@@ -26,71 +26,58 @@ This section describes how to use the `.add` command to assign principals to a d
 
 ## Add database roles
 
-On a database, you can assign the `admins`, `users`, `viewers`, `unrestrictedviewers`, `ingestors`, and `monitors` roles.
+On a database, you can assign the `admins`, `users`, `viewers`, `unrestrictedviewers`, `ingestors`, and `monitors` roles. When defined for a database, the role applies to all entities in the database. To see a description of each role, see [role-based-access-control](access-control/role-based-access-control.md).
 
-### Examples
-
-The following command assigns an AAD user to the `users` role on the `SampleDatabase` database.
+The following example assigns an AAD user to the `users` role on the `SampleDatabase` database.
 
 ```kusto
-.add database SampleDatabase users ('aaduser=imikeoein@fabrikam.com') 'Test Database User - user'
+.add database SampleDatabase users ('aaduser=imikeoein@fabrikam.com')
 ```
 
-The following command assigns an AAD application to the `viewers` role on the `SampleDatabase` database.
-
-```kusto
-.add database SampleDatabase viewers ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;fabrikam.com') 'Test Database Viewer - application'
-```
+> [!NOTE]
+> You must be a **Database Admin** or an **AllDatabasesAdmin** to add security roles on a database.
 
 ## Add table roles
 
-On a table, you can assign the `admins` and `ingestors` roles.
+On a table, you can assign the `admins` and `ingestors` roles. A `Table Admin` has full access to the table. Whereas a `Table Ingestor` may ingest data to all tables in the database but does not have access to query the data.
 
-### Examples
+A principal must first be a `Database User` in order to be a `Table Admin`. Similarly, a principal must first be a `Database User` or `Database Ingestor` to be a `Table Ingestor`. To learn more, see [role-based-access-control](access-control/role-based-access-control.md).
 
-The following command assigns an AAD user to the `admins` role on the `SampleTable` table.
-
-```kusto
-.add table SampleTable admins ('aaduser=imikeoein@fabrikam.com') 'Test Table Admin - user'
-```
-
-The following command assigns an AAD application to the `ingestors` role on the `SampleTable` table.
+The following example assigns an AAD application to the `ingestors` role on the `SampleTable` table.
 
 ```kusto
-.add table SampleTable ingestors ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;fabrikam.com') 'Test Table Ingestor - application'
+.add table SampleTable ingestors ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;fabrikam.com')
 ```
 
 ## Add external table roles
 
-On an external table, you can assign the `admins` role.
+On an external table, you can assign the `admins` role. An `External Table Admin` can view, modify, and remove the external table and external table subobjects.
 
-### Example
-
-The following command assigns an AAD user to the `admins` role on the `SampleExternalTable` table.
+The following example assigns an AAD user to the `admins` role on the `SampleExternalTable` table.
 
 ```kusto
-.add external table SampleTable admins ('aaduser=imikeoein@fabrikam.com') 'Test Table Admin - user'
+.add external table SampleTable admins ('aaduser=imikeoein@fabrikam.com')
 ```
 
 ## Add materialized view roles
 
-On a materialized view, you can assign the `admins` role.
+On a materialized view, you can assign the `admins` role. A `Materialized View Admin` has permission to alter the view, delete the view, and grant admin permissions to another principal.
 
-### Example
+A principal must first be a `Database User` or `Table Admin` in order to be a `Materialized View Admin`.
 
-The following command assigns an AAD user to the `admins` role on the `SampleView` materialized view.
+The following example assigns an AAD user to the `admins` role on the `SampleView` materialized view.
 
 ```kusto
-.add materialized-view SampleView admins ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
+.add materialized-view SampleView admins ('aaduser=imikeoein@fabrikam.com')
 ```
 
 ## Add function roles
 
-On a function, you can assign the `admins` role.
+On a function, you can assign the `admins` role. A `Function Admin` has permission to alter the function, delete the function, and grant admin permissions to another principal.
 
-### Example
+A principal must first be a `Database User` or `Table Admin` in order to be a `Function Admin`.
 
-The following command assigns an AAD user to the `admins` role on the `SampleFunction` function.
+The following example assigns an AAD user to the `admins` role on the `SampleFunction` function.
 
 ```kusto
 .add function SampleFunction admins ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
