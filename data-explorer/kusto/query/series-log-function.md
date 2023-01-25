@@ -1,9 +1,9 @@
 ---
 title: series_log() - Azure Data Explorer
-description: This article describes series_log() in Azure Data Explorer.
+description: Learn how to use the series_log() function to calculate the element-wise natural logarithm function (base-e) of the numeric series input.
 ms.reviewer: afridman
 ms.topic: reference
-ms.date: 11/07/2022
+ms.date: 01/25/2023
 ---
 # series_log()
 
