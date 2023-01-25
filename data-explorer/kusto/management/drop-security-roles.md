@@ -1,6 +1,6 @@
 ---
 title: Drop security roles - Azure Data Explorer
-description: This article describes how to drop security roles in Azure Data Explorer.
+description: This article describes how to command to use the drop command to remove principals from a database, table, external table, materialized view, or function in Azure Data Explorer.
 ms.topic: reference
 ms.date: 01/25/2023
 ---

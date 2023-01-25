@@ -1,13 +1,13 @@
 ---
 title: Add security roles - Azure Data Explorer
-description: This article describes how to add security roles in Azure Data Explorer.
+description: This article describes how to use the add command to assign principals to a database, table, external table, materialized view, or function. in Azure Data Explorer.
 ms.topic: reference
 ms.date: 01/25/2023
 ---
 
 # Use the .add command to assign security roles
 
-This section describes how to use the `.add` command to add principals to a database, table, external table, materialized view, or function. To learn more about security roles, see the [security roles overview](security-roles.md).
+This section describes how to use the `.add` command to assign principals to a database, table, external table, materialized view, or function. To learn more about security roles, see the [security roles overview](security-roles.md).
 
 >[!NOTE]
 > To add security principals, you must be either a **Database Admin** or an **AllDatabasesAdmin**. To learn more, see [role-based access control](access-control/role-based-access-control.md).

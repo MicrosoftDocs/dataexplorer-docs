@@ -1,6 +1,6 @@
 ---
 title: Show security roles - Azure Data Explorer
-description: This article describes how to show security roles in Azure Data Explorer.
+description: This article describes how to use the show command to list the principals and their roles for a database, table, external table, materialized view, or function. in Azure Data Explorer.
 ms.topic: reference
 ms.date: 01/25/2023
 ---

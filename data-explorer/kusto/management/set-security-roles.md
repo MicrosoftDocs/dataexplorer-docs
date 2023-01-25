@@ -1,6 +1,6 @@
 ---
 title: Set security roles - Azure Data Explorer
-description: This article describes how to set security roles in Azure Data Explorer.
+description: This article describes how to set command to assign principals security roles on a database, table, external table, materialized view, or function.
 ms.topic: reference
 ms.date: 01/25/2023
 ---
