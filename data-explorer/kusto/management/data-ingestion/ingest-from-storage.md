@@ -77,6 +77,12 @@ values) to ensure that the SAS is never recorded.
 )
 ```
 
+The next example shows how to read a CSV file from Azure Blob Storage and ingest its contents into table `T` using [managed identity authentication](../../../managed-identities-overview.md).
+
+```kusto
+.ingest into table T ('https://StorageAccount.blob.core.windows.net/Container/file.csv;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e')
+```
+
 The next example is for ingesting data from Azure Data Lake Storage Gen 2
 (ADLSv2). The credentials used here (`...`) are the storage account credentials
 (shared key), and we use string obfuscation only for the secret part of the
