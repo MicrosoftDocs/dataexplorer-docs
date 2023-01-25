@@ -1,7 +1,6 @@
 ---
-title: Security roles management - Azure Data Explorer
-description: This article describes security roles management in Azure Data Explorer.
-ms.reviewer: alexans
+title: Add security roles - Azure Data Explorer
+description: This article describes how to add security roles in Azure Data Explorer.
 ms.topic: reference
 ms.date: 01/25/2023
 ---
@@ -22,7 +21,7 @@ This section describes how to use the `.add` command to add principals to a data
 |Name|Type|Required|Description|
 |--|--|--|--|
 | *ObjectType* | string | &check; | The type of object: `database`, `table`, `external table`, `materialized-view` or `function`.|
-| *ObjectName* | string | &check; | The name of the object for which to list principals.|
+| *ObjectName* | string | &check; | The name of the object for which to add principals.|
 | *Role* | string | &check; | A valid [security role](security-roles.md#security-roles) for the specified object type.|
 | *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](./access-control/principals-and-identity-providers.md#examples-for-azure-ad-principals).|
 | *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
