@@ -7,20 +7,17 @@ ms.date: 09/07/2022
 ---
 # Security roles management
 
-> [!IMPORTANT]
-> Before altering authorization rules on your cluster(s), read the following:
->
-> * [Azure Data Explorer role-based access control](./access-control/role-based-access-control.md)
-> * [Principals and identity providers](./access-control/principals-and-identity-providers.md)
-
 Azure Data Explorer uses a role-based access control (RBAC) model in which principals get access to resources according to the security roles they're assigned.
 
 When a principal attempts an operation, the system performs an authorization check to make sure the principal is associated with at least one security role that grants permissions to perform the operation. Failing an authorization check aborts the operation.
 
 This article describes how to use management commands to set, view, and manage security roles for databases, tables, functions, and materialized views.
 
->[!NOTE]
-> To change security principals, you must be either a **database admin** or an **alldatabases admin**.
+> [!IMPORTANT]
+> Before altering authorization rules on your cluster(s), read the following:
+>
+> * [Azure Data Explorer role-based access control](./access-control/role-based-access-control.md)
+> * [Principals and identity providers](./access-control/principals-and-identity-providers.md)
 
 ## Security roles
 
