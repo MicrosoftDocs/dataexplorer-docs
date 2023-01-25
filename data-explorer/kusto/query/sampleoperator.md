@@ -1,19 +1,16 @@
 ---
 title: sample operator - Azure Data Explorer
-description: This article describes sample operator in Azure Data Explorer.
+description: Learn how to use the sample operator to return up to the specified number of rows from the input table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/18/2020
+ms.date: 01/18/2023
 ---
 # sample operator
 
 Returns up to the specified number of random rows from the input table.
 
-```kusto
-T | sample 5
-```
-
 > [!NOTE]
+>
 > * `sample` is geared for speed rather than even distribution of values. Specifically, it means that it will not produce 'fair' results if used after operators that union 2 data sets of different sizes (such as a `union` or `join` operators). It's recommended to use `sample` right after the table reference and filters.
 > * `sample` is a non-deterministic operator, and will return different result set each time it is evaluated during the query. For example, the following query yields two different rows (even if one would expect to return the same row twice).
 
@@ -62,8 +59,7 @@ To sample a certain percentage of your data (rather than a specified number of r
 StormEvents | where rand() < 0.1
 ```
 
-To sample keys rather than rows (for example - sample 10 Ids and get all rows for these Ids) you can use [`sample-distinct`](./sampledistinctoperator.md) in combination with the `in` operator.
-
+To sample keys rather than rows (for example - sample 10 Ids and get all rows for these Ids), you can use [`sample-distinct`](./sampledistinctoperator.md) in combination with the `in` operator.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

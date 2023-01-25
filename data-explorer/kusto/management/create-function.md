@@ -41,6 +41,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 |DocString|String|A description of the function for UI purposes.
 
 > [!NOTE]
+>
 > * If the function already exists:
 >    * If `ifnotexists` flag is specified, the command is ignored (no change applied).
 >    * If `ifnotexists` flag is NOT specified, an error is returned.
@@ -54,21 +55,21 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 ```kusto
 .create function 
 with (docstring = 'Simple demo function', folder='Demo')
-MyFunction1()  {StormEvents | limit 100}
+MyFunction1()  {StormEvents | take 100}
 ```
 
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
-|MyFunction1|()|{StormEvents &#124; limit 100}|Demo|Simple demo function|
+|MyFunction1|()|{StormEvents &#124; take 100}|Demo|Simple demo function|
 
 ## Example: Demo function with parameter
 
 ```kusto
 .create function
 with (docstring = 'Demo function with parameter', folder='Demo')
- MyFunction2(myLimit: long)  {StormEvents | limit myLimit}
+ MyFunction2(myLimit: long)  {StormEvents | take myLimit}
 ```
 
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
-|MyFunction2|(myLimit:long)|{StormEvents &#124; limit myLimit}|Demo|Demo function with parameter|
+|MyFunction2|(myLimit:long)|{StormEvents &#124; take myLimit}|Demo|Demo function with parameter|

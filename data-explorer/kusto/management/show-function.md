@@ -30,8 +30,8 @@ Requires [database user permission](./access-control/role-based-access-control.m
 
 |Name |Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
-|MyFunction1 |() | {StormEvents &#124; limit 100}|MyFolder|Simple demo function|
-|MyFunction2 |(myLimit: long)| {StormEvents &#124; limit myLimit}|MyFolder|Demo function with parameter|
+|MyFunction1 |() | {StormEvents &#124; take 100}|MyFolder|Simple demo function|
+|MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|MyFolder|Demo function with parameter|
 |MyFunction3 |() | { StormEvents(100) }|MyFolder|Function calling other function|
 
 ## .show function
@@ -71,7 +71,8 @@ For a list of **all** functions, see [.show functions](#show-functions).
 |Folder|String|A folder used for UI functions categorization. This parameter doesn't change the way function is invoked
 |DocString|String|A description of the function for UI purposes.
  
-> [!NOTE] 
+> [!NOTE]
+>
 > * If the function does not exist, an error is returned.
 > * Requires [database user permission](./access-control/role-based-access-control.md).
  
@@ -80,7 +81,7 @@ For a list of **all** functions, see [.show functions](#show-functions).
 ```kusto
 .show function MyFunction1 with(ShowObfuscatedStrings = true)
 ```
-    
+
 |Name |Parameters |Body|Folder|DocString
 |---|---|---|---|---
-|MyFunction1 |() | {StormEvents &#124; limit 100}|MyFolder|Simple demo function
+|MyFunction1 |() | {StormEvents &#124; take 100}|MyFolder|Simple demo function

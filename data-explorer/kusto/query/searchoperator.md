@@ -1,9 +1,9 @@
 ---
 title: search operator - Azure Data Explorer
-description: This article describes search operators in Azure Data Explorer.
+description: Learn how to use the search operator to search for a text pattern in multiple tables and columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/22/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -18,7 +18,7 @@ Searches a text pattern in multiple tables and columns.
 ::: zone pivot="azuremonitor"
 
 > [!NOTE]
-> `search` operator is substantially less efficient than table-specific and column-specific text filtering. Whenever the tables or columns are known, it is recommended to use the [union operator](unionoperator.md) and [where operator, filter operator](whereoperator.md). Search will not function well when the workspace contains large number of tables and columns and the data volume that is being scanned is high and the time range of the query is high.
+> `search` operator is substantially less efficient than table-specific and column-specific text filtering. Whenever the tables or columns are known, it is recommended to use the [union operator](unionoperator.md) and [where operator](whereoperator.md). Search will not function well when the workspace contains large number of tables and columns and the data volume that is being scanned is high and the time range of the query is high.
 
 ::: zone-end
 
@@ -30,7 +30,7 @@ Searches a text pattern in multiple tables and columns.
 
 * *TabularSource*: An optional tabular expression that acts as a data source to be searched over,
   such as a table name, a [union operator](unionoperator.md), the results
-  of a tabular query, etc. Cannot appear together with the optional phrase that includes *TableSources*.
+  of a tabular query, etc. Can't appear together with the optional phrase that includes *TableSources*.
 
 * *CaseSensitivity*: An optional flag that controls the behavior of all `string` scalar operators
   with respect to case sensitivity. Valid values are the two synonyms `default` and `case_insensitive`
@@ -39,7 +39,7 @@ Searches a text pattern in multiple tables and columns.
 
 * *TableSources*: An optional comma-separated list of "wildcarded" table names to take part in the search.
   The list has the same syntax as the list of the [union operator](unionoperator.md).
-  Cannot appear together with the optional *TabularSource*.
+  Can't appear together with the optional *TabularSource*.
 
 * *SearchPredicate*: A mandatory predicate that defines what to search for (in other words,
   a Boolean expression that is evaluated for every record in the input and that, if it returns
@@ -50,7 +50,7 @@ Searches a text pattern in multiple tables and columns.
     match between all columns and the literal using `has`, `hasprefix`, `hassuffix`, and the inverted (`!`)
     or case-sensitive (`cs`) versions of these operators. The decision whether to apply `has`, `hasprefix`,
     or `hassuffix` depends on whether the literal starts or ends (or both) by an asterisk (`*`). Asterisks
-    inside the literal are not allowed.
+    inside the literal aren't allowed.
 
     |Literal   |Operator   |
     |----------|-----------|
@@ -61,7 +61,7 @@ Searches a text pattern in multiple tables and columns.
     |`bi*lg`   |`matches regex`|
 
   **Column restriction**: By default, string matching extensions attempt to match against all columns
-    of the data set. It is possible to restrict this matching to a particular column by using
+    of the data set. It's possible to restrict this matching to a particular column by using
     the following syntax: *ColumnName*`:`*StringLiteral*.
 
   **String equality**: Exact matches of a column against a string value (instead of a term-match)
@@ -74,7 +74,8 @@ Searches a text pattern in multiple tables and columns.
   **Regex match**: Regular expression matching is indicated using *Column* `matches regex` *StringLiteral*
     syntax, where *StringLiteral* is the regex pattern.
 
-Note that if both *TabularSource* and *TableSources* are omitted, the search is carried over all unrestricted tables
+>[!NOTE]
+>If both *TabularSource* and *TableSources* are omitted, the search is carried over all unrestricted tables
 and views of the database in scope.
 
 ## Summary of string matching extensions
@@ -97,11 +98,11 @@ and views of the database in scope.
 
 ## Remarks
 
-**Unlike** the [find operator](findoperator.md), the `search` operator does not support the following:
+**Unlike** the [find operator](findoperator.md), the `search` operator doesn't support the following:
 
 1. `withsource=`: The output will always include a column called `$table` of type `string` whose value
    is the table name from which each record was retrieved (or some system-generated name if the source
-   is not a table but a composite expression).
+   isn't a table but a composite expression).
 2. `project=`, `project-smart`: The output schema is equivalent to `project-smart` output schema.
 
 ## Examples

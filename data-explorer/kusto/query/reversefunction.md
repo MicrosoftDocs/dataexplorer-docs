@@ -1,9 +1,9 @@
 ---
 title: reverse() - Azure Data Explorer
-description: This article describes reverse() in Azure Data Explorer.
+description: Learn how to use the reverse() function to reverse the order of the input string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/15/2023
 ---
 # reverse()
 
@@ -34,7 +34,6 @@ print str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 |str|rstr|
 |---|---|
 |ABCDEFGHIJKLMNOPQRSTUVWXYZ|ZYXWVUTSRQPONMLKJIHGFEDCBA|
-
 
 ```kusto
 print ['int'] = 12345, ['double'] = 123.45, 
