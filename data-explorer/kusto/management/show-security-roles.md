@@ -27,7 +27,7 @@ A line is returned for each security role assigned to the principal.
 ## Example
 
 The following control command lists all security principals that have
-access to the `StormEvents` table:
+access to the `StormEvents` table.
 
 ```kusto
 .show table StormEvents principals
