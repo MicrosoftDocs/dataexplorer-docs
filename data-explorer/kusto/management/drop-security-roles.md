@@ -9,9 +9,6 @@ ms.date: 01/25/2023
 
 This section describes how to use the `.drop` command to remove principals from a database, table, external table, materialized view, or function. To learn more about security roles, see the [security roles overview](security-roles.md).
 
->[!NOTE]
-> To drop security principals, you must be either a **Database Admin** or an **AllDatabasesAdmin**. To learn more, see [role-based access control](access-control/role-based-access-control.md).
-
 ## Syntax
 
 `.drop` *ObjectType* *ObjectName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [ *Description* ]
