@@ -3,7 +3,7 @@ title: Security roles management - Azure Data Explorer
 description: This article describes security roles management in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/07/2022
+ms.date: 01/25/2023
 ---
 # Security roles management
 
