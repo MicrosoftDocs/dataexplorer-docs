@@ -26,13 +26,11 @@ The following table provides a comparison of the `startswith` operators:
 
 For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
 
-Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
-
 ## Performance tips
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator. For example, use `hassuffix_cs` instead of `hassuffix`.
+When possible, use [startswith_cs](startswith-cs-operator.md) - a case-sensitive version of the operator.
 
 ## Syntax
 
