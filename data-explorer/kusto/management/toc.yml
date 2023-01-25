@@ -503,6 +503,8 @@ items:
       href: security-roles.md
     - name: Add security roles
       href: add-security-roles.md
+    - name: Set security roles
+      href: set-security-roles.md
 - name: Data ingestion
   items:
   - name: Ingest from storage
