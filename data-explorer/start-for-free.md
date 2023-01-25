@@ -57,6 +57,7 @@ The free cluster is a subset of the full Azure Data Explorer cluster that provid
 | Autoscale | &check; | |
 | Azure Monitor and Insights | &check; | |
 | Event Hub and Event Grid connectors | &check; | |
+| Azure Resource Manager (ARM) templates | &check; | |
 
 ## Next steps
 
