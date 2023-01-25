@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors
 ---
 # Table
 
-Default - results are shown as a table.|  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1CUahgp2BoAJUsKMrPSk0ugWjQQVYFVVCUmpeSWqRQkpiUkwoAW+Ur0IkAAAA=)** |
+Default - results are shown as a table.
 
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](renderoperator.md).
@@ -53,3 +53,14 @@ Default - results are shown as a table.|  **[**Click to run sample query**](http
 ::: zone-end
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNFAAMotS81JSi4AiSTmpAB5OWY8lAAAA" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| take 10 
+| render table 
+```
+
+:::image type="content" source="images/visualization-table/table-visualization.png" alt-text="Screenshot of table visualization output.":::

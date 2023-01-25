@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors
 ---
 # Time chart
 
-Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. There's one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored). |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WrDMAyF7/sUukvCnDXJGIOVPEULuwxqoixm/gm2+jf28JObFjbYrmyho3M+yRCD1a5jaGFAJtaW8qaqX8qqLqvnYrMySYHnvxRNWT1B07xW1U03JFEzbVYDWd9Z/KAuUtAUm9UXpLJcSnAH2+LxPZe3AO9gJ6ZbRjvDGLy9EbG/BUemOXnvLxD1AOJ1mijQtWhbyHbbOgOA9RogkqGeAaXn3g1BooVb6OiDNHpD6CjAUccDGv2JrL0TSzozuQHyPYqHdqRkDKN3aBRwkJaCQJIoQ4VsuXh2A/Xezj5SWkVBWSvI0vSoOSsWpLtEpyDwY4KTW8nnJ5ws+2+eAhSyOxjkd+HDVVcIfHplp2TYTxgYTpqnnDUbarM32gPO86PY4jjqfmGw3vGkftNlCi5xNprbWW5kYvENQQnqDh8CAAA=)** |
+A time chart visual is a type of line graph. The first column of the query is the x-axis, and should be a datetime. Other numeric columns are y-axes. One string column values are used to group the numeric columns and create different lines in the chart. Other string columns are ignored. The time chart visual is similar to a [line chart](visualization-linechart.md) except the x-axis is always time.
 
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](renderoperator.md).
@@ -51,6 +51,9 @@ This visualization supports splitting into multiple y-axis values:
 |`none`    |A single y-axis is displayed for all series data. (Default)       |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
+
+
+
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
@@ -63,3 +66,19 @@ This visualization supports splitting into multiple y-axis values:
 ::: zone-end
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WqEQAyF7/cpcqdS7aqlFLr4FLvQS4ka16HzIzPZn5Y+fDOrCy20V5mQk3O+jCYGo2zL0MCATKwMpXVZvRRlVZTP2W6jowKvfynqonyCun4ty1U3RFE97TYDGdcafKc2kFcU6s0XxLZYWrAn0+D5mErNwFk4iOme0cwwemdWInZrcGCao3f3AUENIF6XiTzdmqaB5LCvEgDYbgECaeoZUGb2qAkiLayho/My6DWhJQ9nFU6o1SeyclYs6cpkB0g7FA9lKZc1DM6izoG9jHLwJImylMmVi2c7UO/M7ALFU3IoqhySuD0qTrIF6S5RMQjcGOHkr+TxE06O/TcvBxSyOxikd+HDTZcJfKxyUzTsJ/QMF8VTyoo1NckbdYDz/Ci2OI6qXxiMszzlv+mS7BvAR09lEAIAAA==" target="_blank">Run the query</a>
+
+```kusto 
+let min_t = datetime(2017-01-05);
+let max_t = datetime(2017-02-03 22:00);
+let dt = 2h;
+demo_make_series2
+| make-series num=avg(num) on TimeStamp from min_t to max_t step dt by sid 
+| where sid == 'TS1'   //  select a single time series for a cleaner visualization
+| extend (baseline, seasonal, trend, residual) = series_decompose(num, -1, 'linefit')  //  decomposition of a set of time series to seasonal, trend, residual, and baseline (seasonal+trend)
+| render timechart with(title='Web app. traffic of a month, decomposition')
+```
+
+:::image type="content" source="images/visualization-timechart/visualization-timechart.png" alt-text="Screenshot of timechart visualization output.":::

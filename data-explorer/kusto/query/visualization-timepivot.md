@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-Interactive navigation over the events time-line (pivoting on time axis)
+The time pivot visualization is an interactive navigation over the events time-line pivoting on time axis.
 
 > [!NOTE]
 > * This visualization can only be used in the context of the [render operator](renderoperator.md).
