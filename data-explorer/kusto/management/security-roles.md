@@ -45,7 +45,7 @@ For a full description of the security roles at each scope, see [Azure Data Expl
 ## Next steps
 
 * Read more about [role-based access control](access-control/role-based-access-control.md) in Kusto
-* Use the [.show command](add-security-roles.md) to view principals and their security roles
+* Use the [.show command](show-security-roles.md) to view principals and their security roles
 * Use the [.add command](add-security-roles.md) to add principals to a security role
-* Use the [.drop command](add-security-roles.md) to remove principals from a security role
-* Use the [.set command](add-security-roles.md) to assign principals to a security roles
+* Use the [.drop command](drop-security-roles.md) to remove principals from a security role
+* Use the [.set command](set-security-roles.md) to assign principals to a security roles
