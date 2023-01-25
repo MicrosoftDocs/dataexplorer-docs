@@ -41,3 +41,9 @@ For a full description of the security roles at each scope, see [Azure Data Expl
 
 > [!TIP]
 > There are three cluster level security roles (AllDatabasesAdmin, AllDatabasesViewer, and AllDatabasesMonitor) that can only be configured in the Azure portal. To learn more, see [manage cluster permissions](../../manage-cluster-permissions.md).
+
+## Next steps
+
+* [Use the .add management command](add-security-roles.md) to assign principals security roles
+* Learn how to [reference security principals](access-control/referencing-security-principals.md) when using management commands
+* Read more about [role-based access control](access-control/role-based-access-control.md) in Kusto
