@@ -328,7 +328,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     
     :::image type="content" source="media/ingest-data-kafka/kusto-query.png" alt-text="Kafka query column chart results in Azure Data Explorer.":::
 
-For more query examples and guidance, see [Write queries for Azure Data Explorer](write-queries.md) and [Kusto query language documentation](./kusto/query/index.md).
+For more query examples and guidance, see [Write queries for Azure Data Explorer](write-queries.md) and [Kusto Query Language documentation](./kusto/query/index.md).
 
 ## Reset
 

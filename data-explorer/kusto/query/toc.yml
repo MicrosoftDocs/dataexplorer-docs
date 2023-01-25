@@ -94,7 +94,7 @@ items:
   - name: Set statement
     href: setstatement.md
   - name: Tabular expression statements
-    displayName: SQL views
+    displayName: views
     href: tabularexpressionstatements.md
   - name: Batches
     href: batches.md
@@ -328,7 +328,7 @@ items:
 - name: Scalar functions
   items:
   - name: Scalar function types
-    displayName: SQL stored procedures
+    displayName: stored procedures
     href: scalarfunctions.md
   - name: abs()
     href: abs-function.md
@@ -1155,7 +1155,7 @@ items:
     href: series-subtractfunction.md
   - name: series_tan()
     displayName: element-wise, elementwise
-    href: series-tanfunction.md   
+    href: series-tanfunction.md
 - name: Plugins
   items:
   - name: General plugins

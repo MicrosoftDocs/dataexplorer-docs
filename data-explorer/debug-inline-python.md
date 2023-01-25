@@ -1,16 +1,16 @@
 ---
-title: Debug Kusto query language inline Python using VS Code - Azure Data Explorer
-description: Learn how to debug Kusto query language (KQL) inline Python using VS Code.
+title: Debug Kusto Query Language inline Python using VS Code - Azure Data Explorer
+description: Learn how to debug Kusto Query Language (KQL) inline Python using VS Code.
 ms.reviewer: adieldar
 ms.topic: how-to
 ms.date: 11/08/2022
 ---
 
-# Debug Kusto query language inline Python using VS Code
+# Debug Kusto Query Language inline Python using VS Code
 
-Azure Data Explorer supports running Python code embedded in Kusto query language using the [python() plugin](kusto/query/pythonplugin.md). The plugin runtime is hosted in a sandbox, an isolated and secure Python environment. The python() plugin capability extends Kusto query language native functionalities with the huge archive of OSS Python packages. This extension enables you to run advanced algorithms, such as machine learning, artificial intelligence, statistical, and time series as part of the query.
+Azure Data Explorer supports running Python code embedded in Kusto Query Language using the [python() plugin](kusto/query/pythonplugin.md). The plugin runtime is hosted in a sandbox, an isolated and secure Python environment. The python() plugin capability extends Kusto Query Language native functionalities with the huge archive of OSS Python packages. This extension enables you to run advanced algorithms, such as machine learning, artificial intelligence, statistical, and time series as part of the query.
 
-Kusto query language tools aren't convenient for developing and debugging Python algorithms. Therefore, develop the algorithm on your favorite Python-integrated development environment such as Jupyter, PyCharm, VS, or VS Code. When the algorithm is complete, copy and paste into KQL. To improve and streamline this workflow, Azure Data Explorer supports integration between Kusto Explorer or Web UI clients and VS Code for authoring and debugging KQL inline Python code. 
+Kusto Query Language tools aren't convenient for developing and debugging Python algorithms. Therefore, develop the algorithm on your favorite Python-integrated development environment such as Jupyter, PyCharm, VS, or VS Code. When the algorithm is complete, copy and paste into KQL. To improve and streamline this workflow, Azure Data Explorer supports integration between Kusto Explorer or Web UI clients and VS Code for authoring and debugging KQL inline Python code. 
 
 > [!NOTE]
 > This workflow can only be used to debug relatively small input tables (up to few MB). Therefore, you may need to limit the input for debugging.  If you need to process a large table, limit it for debugging using `| take`, `| sample`, or `where rand() < 0.x`.
