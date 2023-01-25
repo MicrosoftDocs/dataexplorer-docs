@@ -36,22 +36,22 @@ Instructs the user agent to render a visualization of the query results.
 
 ::: zone pivot="azuredataexplorer"
 
-| *Visualization*     |Description| Example |
-|--------------------|---|---|
-|[ `anomalychart`](visualization-anomalychart.md)     | Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function.  | <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WR3W7CMAyF73mKI25KpRbaTmjSUJ8CpF1WoXVptPxUifmb9vBLoGO7GFeR7ePv2I4ihpamYdToBBNLTYuqKF/zosyLdbqZqagQl/8UVV68oKreimLSdVFUDZtZR9o2WnxQ48lJ8tXsCzHM7yHMUdfidFiEN4U12AXoloUe0Turp4nYTsaeaYzs/RVedgis80CObkFdI9ltywTAagV4UtQyRKiZgyLEaTGZ9taFQqtIGHI4SX8USn4KltYEJF2YTIeFMFaHPPkMvrWOMuxFoEpDaVjujmo6aq0erafmIY+7ZCiX6wx5mSGJHb3kJA1sF8jB8q69toNwjLPkYfGTseqoja//eLNkRXXyTnuIcVyCneh72cL2YQdtDQ8ZHvIkDcsfPWH+3AvPvObx0FMXD/RLhfDYW9VhtNKwj/8U69M1b2S//AbRUQMWQQIAAA==" target="_blank">Run the query</a>
-| [`areachart`](visualization-areachart.md)      | Area graph.  |<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKiUWpickZiUUlCgrlmSUZGhXJ+TmluXm2FZoApaRQYmIAAAA=" target="_blank">Run the query</a>
-| [`barchart`](visualization-barchart.md)         |  displayed as horizontal strips. | <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1CUahgp2BoAJUsKMrPSk0ugWjQQVYFVVCUmpeSWqSQlFiUnJFYVAIAB5xR2owAAAA=" target="_blank">Run the query</a> 
-| [`card`](visualization-card.md)             | First result record is treated as set of scalar values and shows as a card.  | <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKCsmJRSkKQFCeWZKhUZGcn1Oam2dboQkA5CRu0GAAAAA=" target="_blank">Run the query</a>
-| [`columnchart`](visualization-columnchart.md)      | Like `barchart` with vertical strips instead of horizontal strips. |  <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1CUahgp2BoAJUsKMrPSk0ugWjQQVYFVVCUmpeSWqSQnJ9TmpuXnJFYVAIAJOFS3Y8AAAA=" target="_blank">Run the query</a>
-| [`ladderchart`](visualization-ladderchart.md)      | Last two columns are the x-axis, other columns are y-axis.| 
-| [`linechart`](visualization-linechart.md)        | Line graph. 
-| [`piechart`](visualization-piechart.md)         | First column is color-axis, second column is numeric. | <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=" target="_blank">Run the query</a>
-| [`pivotchart`](visualization-pivotchart.md)       | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types. |  <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKCsXJiSUlqUXJGYlFJQoK5ZklGRoVyfk5pbl5thWaAI8A701mAAAA" target="_blank">Run the query</a> 
-| [`scatterchart`](visualization-scatterchart.md)     | Points graph. 
-| [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph. | <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03LSwqAIBRG4XmruEODRs5bi4j+oeQDrjcyaPEZTZp+nOORq2ngiKanm9AFxdMHZotidIoFTV3z8tcXh42DRw8mamLdDm8Z1gXLQkRnlKC6q+nIZe3zAzEfsitrAAAA" target="_blank">Run the query</a>
-| [`table`](visualization-table.md)            | Default - results are shown as a table.| <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1CUahgp2BoAJUsKMrPSk0ugWjQQVYFVVCUmpeSWqRQkpiUkwoAW+Ur0IkAAAA=" target="_blank">Run the query</a> |
-| [`timechart`](visualization-timechart.md)        | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. |  <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleMetrics?query=H4sIAAAAAAAAA2WOQQ6CMBBF95xiljQRaIq69wCu5AKlHaEJbc10KsF4eEtM3Lj9+f/913WXaSKcNKMFQhPJgok5MMQnEiw6MfRg9ZbABegleBcyYyrdFJfMLoZqIB3SPZJHe0MqsysyOZOqN6wzEsLgPCbW/gEj8ooYalv+uKS1kko18tiok2jbv7SXQhRKyt5rci/8qtUCxg1GF+of+ABn6fcqYbDFe6eYWRN/AGyZf0DgAAAA" target="_blank">Run the query</a> 
-| [`timepivot`](visualization-timepivot.md)        | Interactive navigation over the events time-line (pivoting on time axis)|  |
+| *Visualization*                                         | Description                                                                                                                                                                                                       |
+|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [ `anomalychart`](visualization-anomalychart.md)        | Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
+| [`areachart`](visualization-areachart.md)               | Area graph.                                                                                                                                                                                                       |
+| [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.                                                                                                                                                                                   |
+| [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.                                                                                                                                       |
+| [`columnchart`](visualization-columnchart.md)           | Like `barchart` with vertical strips instead of horizontal strips.                                                                                                                                                |
+| [`ladderchart`](visualization-ladderchart.md)           | Last two columns are the x-axis, other columns are y-axis.                                                                                                                                                        | 
+| [`linechart`](visualization-linechart.md)               | Line graph.                                                                                                                                                                                                       |
+| [`piechart`](visualization-piechart.md)                 | First column is color-axis, second column is numeric.                                                                                                                                                             |
+| [`pivotchart`](visualization-pivotchart.md)             | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types.                                                                                                      |
+| [`scatterchart`](visualization-scatterchart.md)         | Points graph.                                                                                                                                                                                                     |
+| [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph.                                                                                                                                                                                               |
+| [`table`](visualization-table.md)                       | Default - results are shown as a table.                                                                                                                                                                           |
+| [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes.                                                                                                                     |
+| [`timepivot`](visualization-timepivot.md)               | Interactive navigation over the events time-line (pivoting on time axis)                                                                                                                                          |
 
 > [!NOTE]
 > The ladderchart, pivotchart, and timepivot visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
@@ -170,25 +170,6 @@ These visualizations have the following conceptual model:
   * For example: in the `timechart` visualization, the user agent will use all columns with a numeric value that haven't been specified otherwise.
   * If the x-axis is an array, the values of each y-axis should also be an array of a similar length, with each y-axis occurring in a single column.
 * Zero or more columns in the table represent a unique set of dimensions that group together the measures. These columns can be specified by the `series` property, or the user agent will pick them automatically from the columns that are otherwise unspecified.
-
-### Conceptual example
-
-You have a set of anemometers (wind gauges) that measure the wind force, speed, and direction. These wind gauges are spread over a large geographic region.
-
-The data from these measurements is found in a table with one record per measurement by each device, with columns for the timestamp (x-axis), measurements (three y-axes), and a longitude/latitude location (the series). 
-
-Using the `render` operator and the `timechart` visualization, you can render time graphs of each measurement in a different panel over time, with each line representing a different device by its longitute/latitude position.
-
-## Example: render linechart
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-range x from -2 to 2 step 0.1
-| extend sin = sin(x), cos = cos(x)
-| extend x_sign = iff(x > 0, "x_pos", "x_neg")
-| extend sum_sign = iff(sin + cos > 0, "sum_pos", "sum_neg")
-| render linechart with  (ycolumns = sin, cos, series = x_sign, sum_sign)
-```
 
 ## See also
 
