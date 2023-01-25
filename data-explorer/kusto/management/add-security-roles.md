@@ -34,14 +34,13 @@ The following example assigns an AAD user to the `users` role on the `SampleData
 .add database SampleDatabase users ('aaduser=imikeoein@fabrikam.com')
 ```
 
-> [!NOTE]
-> You must be a **Database Admin** or an **AllDatabasesAdmin** to add security roles on a database.
-
 ## Add table roles
 
-On a table, you can assign the `admins` and `ingestors` roles. A `Table Admin` has full access to the table. Whereas a `Table Ingestor` may ingest data to all tables in the database but does not have access to query the data.
+On a table, you can assign the `admins` and `ingestors` roles.
 
-A principal must first be a `Database User` in order to be a `Table Admin`. Similarly, a principal must first be a `Database User` or `Database Ingestor` to be a `Table Ingestor`. To learn more, see [role-based-access-control](access-control/role-based-access-control.md).
+`admins` have full access to the table. `ingestors` may ingest data to all tables in the database but do not have access to query the data.
+
+A principal must be a Database User in order to be a Table Admin, and a Database User or Database Ingestor to be a Table Ingestor.
 
 The following example assigns an AAD application to the `ingestors` role on the `SampleTable` table.
 
@@ -51,7 +50,7 @@ The following example assigns an AAD application to the `ingestors` role on the 
 
 ## Add external table roles
 
-On an external table, you can assign the `admins` role. An `External Table Admin` can view, modify, and remove the external table and external table subobjects.
+On an external table, you can assign the `admins` role. External table `admins` can view, modify, and remove the external table and external table subobjects.
 
 The following example assigns an AAD user to the `admins` role on the `SampleExternalTable` table.
 
@@ -61,9 +60,9 @@ The following example assigns an AAD user to the `admins` role on the `SampleExt
 
 ## Add materialized view roles
 
-On a materialized view, you can assign the `admins` role. A `Materialized View Admin` has permission to alter the view, delete the view, and grant admin permissions to another principal.
+On a materialized view, you can assign the `admins` role. Materialized view `admins` have permission to alter the view, delete the view, and grant admin permissions to another principal.
 
-A principal must first be a `Database User` or `Table Admin` in order to be a `Materialized View Admin`.
+A principal must first be a Database User or Table Admin in order to be a Materialized View Admin.
 
 The following example assigns an AAD user to the `admins` role on the `SampleView` materialized view.
 
@@ -73,9 +72,9 @@ The following example assigns an AAD user to the `admins` role on the `SampleVie
 
 ## Add function roles
 
-On a function, you can assign the `admins` role. A `Function Admin` has permission to alter the function, delete the function, and grant admin permissions to another principal.
+On a function, you can assign the `admins` role. Function `admins` have permission to alter the function, delete the function, and grant admin permissions to another principal.
 
-A principal must first be a `Database User` or `Table Admin` in order to be a `Function Admin`.
+A principal must first be a Database User or Table Admin in order to be a Function Admin.
 
 The following example assigns an AAD user to the `admins` role on the `SampleFunction` function.
 
