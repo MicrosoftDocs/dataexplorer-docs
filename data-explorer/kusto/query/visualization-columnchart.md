@@ -23,12 +23,14 @@ The column chart visual needs a minimum of two columns in the query result. By d
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *T* | string | &check; | Input table name.
-| *PropertyName* | string | | Additional information to use when rendering. See list of [properties](#properties).
-| *PropertyValue* | string | | Additional information to use when rendering. See list of [properties](#properties).
+| *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
+| *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
 
 ::: zone pivot="azuredataexplorer"
 
-### Properties
+### Properties 
+
+All properties are optional.
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -50,7 +52,9 @@ The column chart visual needs a minimum of two columns in the query result. By d
 
 ::: zone pivot="azuremonitor"
 
-### Properties
+### Properties 
+
+All properties are optional.
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -63,7 +67,7 @@ The column chart visual needs a minimum of two columns in the query result. By d
 ### `kind` property
 
 This visualization can be further elaborated by providing the `kind` property.
-The possible values of this property are:
+The supported values of this property are:
 
 | `kind` value | Definition |
 | --- | ---|

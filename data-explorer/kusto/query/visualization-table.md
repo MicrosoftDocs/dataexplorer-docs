@@ -23,10 +23,12 @@ Default - results are shown as a table.
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *T* | string | &check; | Input table name.
-| *PropertyName* | string | | Additional information to use when rendering. See list of [properties](#properties).
-| *PropertyValue* | string | | Additional information to use when rendering. See list of [properties](#properties).
+| *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
+| *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
 
-### Properties
+### Properties 
+
+All properties are optional.
 
 ::: zone pivot="azuredataexplorer"
 

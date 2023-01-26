@@ -23,12 +23,14 @@ A time chart visual is a type of line graph. The first column of the query is th
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *T* | string | &check; | Input table name.
-| *PropertyName* | string | | Additional information to use when rendering. See list of [properties](#properties).
-| *PropertyValue* | string | | Additional information to use when rendering. See list of [properties](#properties).
+| *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
+| *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
 
 ::: zone pivot="azuredataexplorer"
 
-### Properties
+### Properties 
+
+All properties are optional.
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -60,7 +62,9 @@ This visualization supports splitting into multiple y-axis values:
 
 ::: zone pivot="azuremonitor"
 
-### Properties
+### Properties 
+
+All properties are optional.
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|

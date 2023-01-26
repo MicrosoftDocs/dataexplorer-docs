@@ -9,12 +9,15 @@ zone_pivot_groups: kql-flavors
 ---
 # render operator
 
-Instructs the user agent to render a visualization of the query results.
+Instructs the user agent to render a visualization of the query results.  
 
-> [!NOTE]
-> * The render operator must be the last operator in the query, and can only be used with queries that produce a single tabular data stream result.
-> * The render operator does not modify data. It injects an annotation ("Visualization") into the result's extended properties. The annotation contains the information provided by the operator in the query.
-> * The interpretation of the visualization information is done by the user agent. Different agents, such as Kusto.Explorer or Azure Data Explorer web UI, may support different visualizations.
+The render operator must be the last operator in the query, and can only be used with queries that produce a single tabular data stream result.  The render operator does not modify data. It injects an annotation ("Visualization") into the result's extended  properties. The annotation contains the information provided by the operator in the query. The interpretation of the visualization information is done by the user agent. Different agents, such as Kusto.Explorer or Azure Data Explorer web UI, may support different visualizations.
+
+The data model of the render operator looks at the tabular data as if it has
+three kinds of columns:
+* The x axis column (indicated by the `xcolumn` property).
+* The series columns (any number of columns indicated by the `series` property.) For each record, the combined values of these columns defines a single series, and the chart has as many series as there are distinct combined values.
+* The y axis columns (any number of columns indicated by the `ycolumns` property). For each record, the series has as many measurements ("points" in the chart) as there are y-axis columns.
 
 > [!TIP]
 >
@@ -145,18 +148,6 @@ Some visualizations support splitting into multiple y-axis values:
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
 
-> [!NOTE]
-> The data model of the render operator looks at the tabular data as if it has
-three kinds of columns:
->
-> * The x axis column (indicated by the `xcolumn` property).
-> * The series columns (any number of columns indicated by the `series` property.)
-  For each record, the combined values of these columns defines a single series,
-  and the chart has as many series as there are distinct combined values.
-> * The y axis columns (any number of columns indicated by the `ycolumns`
-  property).
-  For each record, the series has as many measurements ("points" in the chart)
-  as there are y-axis columns.
 
 ## How to render continuous data
 

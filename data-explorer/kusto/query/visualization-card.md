@@ -22,13 +22,19 @@ The card visual only shows one element. If there are multiple columns and rows i
 
 ## Parameters
 
-* *T*: Input table name.
-* *PropertyName*/*PropertyValue* indicate additional information to use when rendering.
-  All properties are optional. The supported properties are:
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *T* | string | &check; | Input table name.
+| *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
+| *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
+
+### Properties 
+
+All properties are optional.
     
-    |*PropertyName*|*PropertyValue*                                                                   |
-    |--------------|----------------------------------------------------------------------------------|
-    |`title`       |The title of the visualization (of type `string`).                                |
+|*PropertyName*|*PropertyValue*                                                                   |
+|--------------|----------------------------------------------------------------------------------|
+|`title`       |The title of the visualization (of type `string`).                                |
 
 ## Example
 

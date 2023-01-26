@@ -23,10 +23,12 @@ The pie chart visual needs a minimum of two columns in the query result. By defa
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *T* | string | &check; | Input table name.
-| *PropertyName* | string | | Additional information to use when rendering. See list of [properties](#properties).
-| *PropertyValue* | string | | Additional information to use when rendering. See list of [properties](#properties).
+| *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
+| *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
 
-### Properties
+### Properties 
+
+All properties are optional.
 
 ::: zone pivot="azuredataexplorer"
 
@@ -59,11 +61,11 @@ The pie chart visual needs a minimum of two columns in the query result. By defa
 ### `kind` property
 
 This visualization can be further elaborated by providing the `kind` property.
-The possible values of this property are:
+The supported values of this property are:
 
 | `kind` value | Description| 
 |---|---|
-| `map` | Expected columns are [Longitude, Latitude] or GeoJSON point, color-axis and numeric. Supported in Kusto Explorer desktop. For more information, see Geospatial visualizations](geospatial-visualizations.md)
+| `map` | Expected columns are [Longitude, Latitude] or GeoJSON point, color-axis and numeric. Supported in Kusto Explorer desktop. For more information, see [Geospatial visualizations](geospatial-visualizations.md)
 
 ## Example
 

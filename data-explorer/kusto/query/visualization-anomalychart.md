@@ -25,10 +25,12 @@ The anomaly chart visualization is similar to a [timechart](visualization-timech
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *T* | string | &check; | Input table name.
-| *PropertyName* | string | | Additional information to use when rendering. See list of [properties](#properties).
-| *PropertyValue* | string | | Additional information to use when rendering. See list of [properties](#properties).
+| *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
+| *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
 
-### Properties
+### Properties 
+
+All properties are optional.
     
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -49,7 +51,7 @@ The anomaly chart visualization is similar to a [timechart](visualization-timech
 
 ### Multiple y-axes
 
-This visualization supports splitting into multiple y-axis values:
+This visualization supports splitting into multiple y-axis values. The supported values of this property are:
 
 |`ysplit`  |Description                                                       |
 |----------|------------------------------------------------------------------|

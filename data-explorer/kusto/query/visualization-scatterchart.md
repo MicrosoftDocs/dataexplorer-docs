@@ -22,10 +22,12 @@ In a scatter chart visual, the first column is the x-axis and should be a numeri
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *T* | string | &check; | Input table name.
-| *PropertyName* | string | | Additional information to use when rendering. See list of [properties](#properties).
-| *PropertyValue* | string | | Additional information to use when rendering. See list of [properties](#properties).
+| *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
+| *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
 
-### Properties
+### Properties 
+
+All properties are optional.
 
 ::: zone pivot="azuredataexplorer"
 
@@ -61,7 +63,7 @@ In a scatter chart visual, the first column is the x-axis and should be a numeri
 #### `kind` property
 
 This visualization can be further elaborated by providing the `kind` property.
-The possible values of this property are:
+The supported values of this property are:
 
 | `kind` value | Description |
 |---|---|
