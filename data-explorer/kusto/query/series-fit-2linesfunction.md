@@ -34,31 +34,40 @@ Takes an expression containing dynamic numerical array as input and applies a [t
 
 ## Syntax
 
-project `series_fit_2lines(`*x*`)`
+project `series_fit_2lines(`*series*`)`
 
 * Will return all mentioned above columns with the following names: series_fit_2lines_x_rsquare, series_fit_2lines_x_split_idx etc.
 
-project (rs, si, v)=`series_fit_2lines(`*x*`)`
+project (rs, si, v)=`series_fit_2lines(`*series*`)`
 
 * Will return the following columns: rs (r-square), si (split index), v (variance) and the rest will look like series_fit_2lines_x_rvariance, series_fit_2lines_x_line_fit and etc.
 
-extend (rs, si, v)=`series_fit_2lines(`*x*`)`
+extend (rs, si, v)=`series_fit_2lines(`*series*`)`
 
 * Will return only: rs (r-square), si (split index) and v (variance).
   
-## Arguments
+## Parameters
 
-* *x*: Dynamic array of numeric values.  
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *series* | dynamic | &check; | An array of numeric values.|
 
 > [!TIP]
 > The most convenient way of using this function is applying it to the results of [make-series](make-seriesoperator.md) operator.
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA1WQQUsDMRCF74X+h7k1CzE00VY97FUoeOqCF5ESs6M7ss3GbMRd8Mc7YW3X5vAyecz7mEmI5NNyAXyoLlewktNjKKP17yheyQvffYtCgm4KuAKtGwmX7iRTbizr0dsjOfGsJRhlsmwk3KhbCRu15l629Fpdn/Rewl2+t8q8FMvFD+CQ0NcTTlRtF1DCzieMDkOizkvYV59fNrL9ZCNZ77jaz+UjeXygVJQ9RsL+8Ebp0LInxtOQ4g/Ak1ShpbSrh5ll/sHMmWYucCbzegbmeUPsPtAl/j8JzBnPmTmc2yIvhRESHdE1NqZflsNPUXoBAAA=" target="_blank">Run the query</a>
+
 ```kusto
-print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([1,2.2, 2.5, 4.7, 5.0, 12, 10.3, 10.3, 9, 8.3, 6.2])
-| extend (Slope,Interception,RSquare,Variance,RVariance,LineFit)=series_fit_line(y), (RSquare2, SplitIdx, Variance2,RVariance2,LineFit2)=series_fit_2lines(y)
+print
+    id=' ',
+    x=range(bin(now(), 1h) - 11h, bin(now(), 1h), 1h),
+    y=dynamic([1, 2.2, 2.5, 4.7, 5.0, 12, 10.3, 10.3, 9, 8.3, 6.2])
+| extend
+    (Slope, Interception, RSquare, Variance, RVariance, LineFit)=series_fit_line(y),
+    (RSquare2, SplitIdx, Variance2, RVariance2, LineFit2)=series_fit_2lines(y)
 | project id, x, y, LineFit, LineFit2
 | render timechart
 ```

@@ -3,7 +3,7 @@ title: series_fit_line() - Azure Data Explorer
 description: Learn how to use the series_fit_line() function to apply a linear regression on a series to return multiple columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 01/26/2023
 ---
 # series_fit_line()
 
@@ -20,21 +20,28 @@ Takes an expression containing dynamic numerical array as input and does [linear
 
 ## Syntax
 
-`series_fit_line(`*x*`)`
+`series_fit_line(`*series*`)`
 
-## Arguments
+## Parameters
 
-* *x*: Dynamic array of numeric values.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *series* | dynamic | &check; | An array of numeric values.|
 
 > [!TIP]
 > The most convenient way of using this function is to apply it to the results of [make-series](make-seriesoperator.md) operator.
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA1VMywrCQAy8C/2H3NzCCm7Fx6VXQfDUghcRWdtoAzWt6YoW/HijPYiBSWYmybRCHKIRaFGZjmFsB/FMxfMFzYnYcPMwsQVXxTAB5yoL/+7Qhr8+LXv2VyrMPrEwt7CwsNIDp1DllgrVifJEV7PpB4c4Gr0AnwG5BJPlt7sXtJDXTatj54U8F8qyH91wQCmwDdSwhS0xrinEaYdC2B3PFI61eqb/JovmokCgKxaVl/AGWOACk/UAAAA=" target="_blank">Run the query</a>
+
 ```kusto
-print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([2,5,6,8,11,15,17,18,25,26,30,30])
-| extend (RSquare,Slope,Variance,RVariance,Interception,LineFit)=series_fit_line(y)
+print
+    id=' ',
+    x=range(bin(now(), 1h) - 11h, bin(now(), 1h), 1h),
+    y=dynamic([2, 5, 6, 8, 11, 15, 17, 18, 25, 26, 30, 30])
+| extend (RSquare, Slope, Variance, RVariance, Interception, LineFit)=series_fit_line(y)
 | render timechart
 ```
 
