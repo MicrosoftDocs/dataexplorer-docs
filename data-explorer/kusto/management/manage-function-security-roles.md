@@ -14,6 +14,7 @@ In this article, you'll learn how to use management commands to [view existing f
 > [!NOTE]
 >
 > * To change function admins, you must be an AllDatabasesAdmin, a Database Admin, or a Function Admin.
+> * A principal must have access on the database or table level to be a function admin.
 > * For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## View existing function admins
