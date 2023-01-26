@@ -63,14 +63,14 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 ### Syntax
 
-*Action* `database` *ObjectName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [ *Description* ]
+*Action* `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [ *Description* ]
 
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 | *Action* | string | &check; | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
-| *ObjectName* | string | &check; | The name of the object for which to add principals.|
+| *DatabaseName* | string | &check; | The name of the database for which to add principals.|
 | *Role* | string | &check; | The role to assign to the principal. For databases, this can be `admins`, `users`, `viewers`, `unrestrictedviewers`, `ingestors`, or `monitors`.|
 | *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](./access-control/principals-and-identity-providers.md#examples-for-azure-ad-principals).|
 | *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
