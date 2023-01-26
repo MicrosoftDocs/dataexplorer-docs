@@ -28,7 +28,7 @@ The anomaly chart visualization is similar to a [timechart](visualization-timech
 | *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
 | *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
 
-### Properties 
+### Properties
 
 All properties are optional.
     
@@ -49,7 +49,7 @@ All properties are optional.
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 |`anomalycolumns`| Comma-delimited list of columns, which will be considered as anomaly series and displayed as points on the chart|
 
-### Multiple y-axes
+#### `ysplit` property
 
 This visualization supports splitting into multiple y-axis values. The supported values of this property are:
 

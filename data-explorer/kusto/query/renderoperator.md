@@ -37,7 +37,9 @@ three kinds of columns:
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *T* | string | &check; | Input table name.
-| *visualization* | string | &check; | Indicates the kind of visualization to use. Must be one of the supported values in the following list.
+| *visualization* | string | &check; | Indicates the kind of [visualization](#visualization) to use. Must be one of the supported values in the following list.
+
+### Visualization
 
 ::: zone pivot="azuredataexplorer"
 
@@ -138,7 +140,7 @@ The supported values of this property are:
 
 ::: zone pivot="azuredataexplorer"
 
-### Multiple y-axes
+#### `ysplit` property
 
 Some visualizations support splitting into multiple y-axis values:
 
