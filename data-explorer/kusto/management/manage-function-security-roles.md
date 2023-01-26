@@ -9,7 +9,7 @@ ms.date: 01/25/2023
 
 Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the roles they're assigned. On functions, the only security role is `admins`. Function `admins` have the ability to view, modify, and remove the function.
 
-In this article, you'll learn how to use management commands to [view existing admins](#view-existing--admins) as well as [add and remove admins](#add-and-remove-admins) on functions.
+In this article, you'll learn how to use management commands to [view existing admins](#view-existing-admins) as well as [add and remove admins](#add-and-remove-admins) on functions.
 
 > [!NOTE]
 >
