@@ -64,7 +64,7 @@ print condition=dynamic([1,0,50]), if_true="yes", if_false="no"
 
 |condition|if_true|if_false|res|
 |---|---|---|---|
-|[true, false, true]|yes|no|[yes, no, yes]|
+|[1, 0, 50]|yes|no|[yes, no, yes]|
 
 ### Non-numeric and non-boolean condition values
 
