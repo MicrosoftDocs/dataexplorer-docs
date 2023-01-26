@@ -511,6 +511,8 @@ items:
       href: manage-external-table-security-roles.md
     - name: Manage materialized view roles
       href: manage-materialized-view-security-roles.md
+    - name: Manage function roles
+      href: manage-function-security-roles.md
 - name: Data ingestion
   items:
   - name: Ingest from storage
