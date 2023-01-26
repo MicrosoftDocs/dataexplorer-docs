@@ -18,7 +18,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 
 ## Azure Resource Manager template for adding a cluster principal
 

@@ -17,9 +17,9 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-* Visual Studio 2019, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
+* [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 
 ## Install C# NuGet
 
