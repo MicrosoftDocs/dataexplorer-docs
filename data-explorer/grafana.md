@@ -20,7 +20,8 @@ Instead you can [configure the data source](#configure-the-data-source) and [vis
 
 * [Grafana version 5.3.0 or later](https://docs.grafana.org/installation/) for your operating system
 * The [Azure Data Explorer plugin](https://grafana.com/grafana/plugins/grafana-azure-data-explorer-datasource/) for Grafana. Plugin version 3.0.5 or later is required to use Grafana query builder.
-* A cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
+* To follow along with the examples in this tutorial, [ingest the StormEvents sample data](ingest-sample-data.md).
 
 [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
@@ -115,7 +116,7 @@ The query editor has two modes. The query builder mode and raw mode. Use the que
     **Filter**
     1. Click **+** to right of **Where (filter)** to select from the drop-down one or more columns in your table. 
     1. For each filter, define the value(s) by using the applicable operator. 
-    This selection is similar to using the [where operator, filter operator](kusto/query/whereoperator.md) in Kusto query language.
+    This selection is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto Query Language.
 
     **Value selection**
     1. Click **+** to right of **value columns** to select from the drop-down the value columns that will be displayed in the panel.
@@ -131,9 +132,9 @@ The query editor has two modes. The query builder mode and raw mode. Use the que
     :::image type="content" source="media/grafana/query-builder-all-values.png" alt-text="Query builder with all values complete.":::
 
     > [!TIP]
-    > While finalizing the settings in the query builder, a Kusto query language query is created. This query shows the logic you constructed with the graphical query editor. 
+    > While finalizing the settings in the query builder, a Kusto Query Language query is created. This query shows the logic you constructed with the graphical query editor. 
 
-1. Select **Edit KQL** to move to raw mode and edit your query using the flexibility and power of the Kusto query language.
+1. Select **Edit KQL** to move to raw mode and edit your query using the flexibility and power of the Kusto Query Language.
 
 :::image type="content" source="media/grafana/query-builder-with-raw-query.png" alt-text="Query builder with raw query.":::
 
