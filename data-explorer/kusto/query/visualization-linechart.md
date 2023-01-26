@@ -3,7 +3,7 @@ title: Line chart visualization - Azure Data Explorer
 description: This article describes the line chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/03/2022
+ms.date: 01/26/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -49,7 +49,7 @@ All properties are optional.
 |`ysplit`      |How to split multiple the visualization. For more information, see [Multiple y-axes](#multiple-y-axes).                             |
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
-### Multiple y-axes
+#### `ysplit` property
 
 This visualization supports splitting into multiple y-axis values:
 

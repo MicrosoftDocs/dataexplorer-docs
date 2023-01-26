@@ -28,7 +28,7 @@ The area chart visual shows a time-series relationship. The first column of the 
 
 ::: zone pivot="azuredataexplorer"
 
-### Properties 
+### Properties
 
 All properties are optional.
 
@@ -64,7 +64,7 @@ All properties are optional.
 
 ::: zone-end
 
-### `kind` property
+#### `kind` property
 
 This visualization can be further elaborated by providing the `kind` property.
 The supported values of this property are:

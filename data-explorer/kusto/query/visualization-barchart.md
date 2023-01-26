@@ -64,7 +64,7 @@ All properties are optional.
 
 ::: zone-end
 
-### `kind` property
+#### `kind` property
 
 This visualization can be further elaborated by providing the `kind` property.
 The supported values of this property are:

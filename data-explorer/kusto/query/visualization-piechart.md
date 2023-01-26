@@ -3,7 +3,7 @@ title: Pie chart visualization - Azure Data Explorer
 description: This article describes the pie chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/03/2022
+ms.date: 01/26/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -58,7 +58,7 @@ All properties are optional.
 
 ::: zone-end
 
-### `kind` property
+#### `kind` property
 
 This visualization can be further elaborated by providing the `kind` property.
 The supported values of this property are:
