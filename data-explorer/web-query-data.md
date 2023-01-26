@@ -19,7 +19,7 @@ In this quickstart, you'll be working in the stand-alone Azure Data Explorer web
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md), or use the Azure Data Explorer help cluster.
+* An Azure Data Explorer cluster and database.  You can [create a free cluster](start-for-free-web-ui.md), [create a full cluster](create-cluster-database-portal.md),  or use the [help cluster](https://dataexplorer.azure.com/clusters/help). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 
 ## Sign in to the application
 

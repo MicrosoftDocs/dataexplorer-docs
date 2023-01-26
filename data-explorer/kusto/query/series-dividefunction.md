@@ -1,9 +1,9 @@
 ---
 title: series_divide() - Azure Data Explorer
-description: This article describes series_divide() in Azure Data Explorer.
+description: Learn how to use the series_divide() function to calculate the element-wise division of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/22/2023
 ---
 # series_divide()
 
@@ -15,7 +15,7 @@ Calculates the element-wise division of two numeric series inputs.
 
 ## Arguments
 
-* *series1, series2*: Input numeric arrays, the first to be element-wise divided by the second into a dynamic array result. All arguments must be dynamic arrays. 
+* *series1, series2*: Input numeric arrays, the first to be element-wise divided by the second into a dynamic array result. All arguments must be dynamic arrays.
 
 ## Returns
 

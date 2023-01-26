@@ -1,13 +1,14 @@
 ---
 title: Ingest data from Azure Event Hubs into Azure Data Explorer using the ingestion wizard
-description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Azure Event Hubs using the ingestion wizard.
+description: Learn how to ingest (load) data into Azure Data Explorer from Azure Event Hubs using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 09/20/2022
+ms.date: 01/09/2023
 ---
 # Use the ingestion wizard to create an Azure Event Hubs data connection for Azure Data Explorer
 
 > [!div class="op_single_selector"]
+>
 > * [Portal](ingest-data-event-hub.md)
 > * [Ingestion wizard](event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
@@ -19,17 +20,14 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
-* [Event hub with data for ingestion](ingest-data-event-hub.md#create-an-event-hub).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An [event hub](ingest-data-event-hub.md#create-an-event-hub) with data for ingestion.
 
 > [!NOTE]
-> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
-
-> [!NOTE]
-> The cluster and event hub should be associated with the same tenants, for different tenants please use [SDKs](./data-connection-event-hub-csharp.md)
-
-> [!NOTE]
-> To use the ingestion wizard, you must have at least [database user level permissions](kusto/management/access-control/role-based-authorization.md).
+>
+>* To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
+>* The cluster and event hub should be associated with the same tenants, for different tenants please use [SDKs](./data-connection-event-hub-csharp.md)
+>* To use the ingestion wizard, you must have at least [database user level permissions](kusto/management/access-control/role-based-authorization.md).
 
 ## Ingest data
 
@@ -69,9 +67,13 @@ The **Ingest data** window opens with the **Destination** tab selected.
     | Event hub namespace |  | The name that identifies your namespace. |
     | Event hub |  | The event hub you wish to use. |
     | Consumer group |  | The consumer group defined in your event hub. |
+    | Compression | | The compression type of the event hub messages payload.|
     | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
+    |Event retrieval start date| Coordinated Universal Time (UTC) | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created. |
 
 1. Select **Next: Schema**.
+
+[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
 
 ## Schema tab
 
@@ -101,8 +103,6 @@ For information on schema mapping with CSV-formatted data, see [Edit the schema]
 In the **Continuous ingestion from Event Hub established** window, all steps will be marked with green check marks when establishment finishes successfully. The cards below these steps give you options to explore your data with **Quick queries**, undo changes made using **Tools**, or **Monitor** the Event Hubs connections and data.
 
 :::image type="content" source="media/event-hub-wizard/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hubs with the ingestion wizard.":::
-
-[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
 
 ## Next steps
 

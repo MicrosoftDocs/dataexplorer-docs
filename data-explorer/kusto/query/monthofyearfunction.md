@@ -1,6 +1,6 @@
 ---
 title: monthofyear() - Azure Data Explorer
-description: This article describes monthofyear() in Azure Data Explorer.
+description: Learn how to use the monthofyear() function to get the integer representation of the month.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/08/2023
@@ -9,7 +9,7 @@ ms.date: 01/08/2023
 
 Returns the integer number from 1-12 representing the month number of the given year.
 
-Another alias: getmonth()
+> The `monthofyear()` and `getmonth()` functions are equivalent
 
 ## Syntax
 

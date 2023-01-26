@@ -1,13 +1,13 @@
 ---
-title: "The case-insensitive !hasprefix string operator - Azure Data Explorer"
-description: "This article describes the case-insensitive !hasprefix operator in Azure Data Explorer."
+title: The case-insensitive !hasprefix string operator - Azure Data Explorer
+description: Learn how to use the !hasprefix operator to filter records for data that doesn't include a case-insensitive prefix.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/25/2022
+ms.date: 01/09/2023
 ---
 # !hasprefix operators
 
-Filters a record set for data that does not include a case-insensitive starting string.
+Filters a record set for data that doesn't include a case-insensitive starting string.
 
 For best performance, use strings of three characters or more. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 

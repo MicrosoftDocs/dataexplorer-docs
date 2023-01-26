@@ -1,20 +1,19 @@
 ---
 title: series_fit_2lines() - Azure Data Explorer
-description: This article describes series_fit_2lines() in Azure Data Explorer.
+description: Learn how to use the series_fit_2lines() function to apply a two segmented linear regression on a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/22/2023
 ---
 # series_fit_2lines()
 
-Applies two segments linear regression on a series, returning multiple columns.  
+Applies a two segmented linear regression on a series, returning multiple columns.  
 
-Takes an expression containing dynamic numerical array as input and applies [two segments linear regression](https://en.wikipedia.org/wiki/Segmented_regression) in order to identify and quantify a trend change in a series. The function iterates on the series indexes. In each iteration, the function splits the series to two parts, fits a separate line (using [series_fit_line()](series-fit-linefunction.md)) to each part, and calculates the total r-square. The best split is the one that maximized r-square; the function returns its parameters:
-
+Takes an expression containing dynamic numerical array as input and applies a [two segmented linear regression](https://en.wikipedia.org/wiki/Segmented_regression) in order to identify and quantify a trend change in a series. The function iterates on the series indexes. In each iteration, the function splits the series to two parts, fits a separate line (using [series_fit_line()](series-fit-linefunction.md)) to each part, and calculates the total r-square. The best split is the one that maximized r-square; the function returns its parameters:
 
 |Parameter  |Description  |
 |---------|---------|
-|`rsquare`     | [R-square](https://en.wikipedia.org/wiki/Coefficient_of_determination) is standard measure of the fit quality. It's a number in the range [0-1], where 1 - is the best possible fit, and 0 means the data is unordered and do not fit any line.        |
+|`rsquare`     | [R-square](https://en.wikipedia.org/wiki/Coefficient_of_determination) is standard measure of the fit quality. It's a number in the range [0-1], where 1 - is the best possible fit, and 0 means the data is unordered and don't fit any line.        |
 |`split_idx`     |   The index of breaking point to two segments (zero-based).      |
 |`variance`     | Variance of the input data.        |
 |`rvariance`     | Residual variance, which is the variance between the input data values the approximated ones (by the two line segments).        |
@@ -30,19 +29,21 @@ Takes an expression containing dynamic numerical array as input and applies [two
 |`left_variance`     | Variance of the input data on the left side of the split.        |
 |`left_rvariance`     | Residual variance of the input data on the left side of the split.        |
 
-
-> [!Note]
+> [!NOTE]
 > This function returns multiple columns an so cannot be used as an argument for another function.
 
 ## Syntax
 
 project `series_fit_2lines(`*x*`)`
+
 * Will return all mentioned above columns with the following names: series_fit_2lines_x_rsquare, series_fit_2lines_x_split_idx etc.
 
 project (rs, si, v)=`series_fit_2lines(`*x*`)`
+
 * Will return the following columns: rs (r-square), si (split index), v (variance) and the rest will look like series_fit_2lines_x_rvariance, series_fit_2lines_x_line_fit and etc.
 
 extend (rs, si, v)=`series_fit_2lines(`*x*`)`
+
 * Will return only: rs (r-square), si (split index) and v (variance).
   
 ## Arguments
