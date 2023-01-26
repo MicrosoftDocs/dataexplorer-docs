@@ -3,7 +3,7 @@ title: materialized_view() (scope function) - Azure Data Explorer
 description: Learn how to use the materialized_view() function to reference the materialized part of a materialized view.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 12/26/2022
+ms.date: 01/05/2023
 ---
 
 # materialized_view() function
@@ -19,13 +19,14 @@ materialized_view('ViewName')
 
 ## Syntax
 
-`materialized_view` `(`*ViewName*`,` [*max_age*] `)`
+`materialized_view(`*ViewName*`,` [ *max_age* ] `)`
 
-## Arguments
+## Parameters
 
-* *ViewName*: The name of the `materialized view`.
-* *max_age*: Optional. If not provided, only the *materialized* part of the view is returned. If provided, function will return the
-_materialized_ part of the view if last materialization time is greater than [@now -  max_age]. Otherwise, the entire view is returned (identical to querying *ViewName* directly.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ViewName*| string| &check;| The name of the materialized view.|
+| *max_age*| int || If not provided, only the *materialized* part of the view is returned. If provided, the function will return the _materialized_ part of the view if last materialization time is greater than `@now -  max_age`. Otherwise, the entire view is returned, which is identical to querying *ViewName* directly.
 
 ## Examples
 

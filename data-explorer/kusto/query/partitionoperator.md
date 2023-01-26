@@ -3,7 +3,7 @@ title: partition operator - Azure Data Explorer
 description: Learn how to use the partition operator to partition the records of the input table into multiple subtables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 01/12/2023
 ---
 # Partition operator
 
@@ -54,27 +54,30 @@ For native, shuffle and legacy subqueries, the result must be a single tabular r
 
 ## Syntax
 
-*T* `|` `partition` [`hint.strategy=` *strategy*] [*PartitionParameters*] `by` *Column* `(` *TransformationSubQuery* `)`
+*T* `|` `partition` [`hint.strategy=` *strategy*] [ *PartitionParameters* ] `by` *Column* `(` *TransformationSubQuery* `)`
 
-*T* `|` `partition` [*PartitionParameters*] `by` *Column* `{` *ContextFreeSubQuery* `}`
+*T* `|` `partition` [ *PartitionParameters* ] `by` *Column* `{` *ContextFreeSubQuery* `}`
 
-## Arguments
+## Parameters
 
-* *T*: The tabular source whose data is to be processed by the operator.
-* *strategy*: The partition strategy, `native`, `shuffle` or `legacy`. `native` strategy is used with an implicit source with thousands of key partition values. `shuffle` strategy is used with an implicit source with millions of key partition values. `legacy` strategy is used with an explicit or implicit source with 64 or less key partition values.
-* *Column*: The name of a column in *T* whose values determine how the input table   is to be partitioned.
-* *TransformationSubQuery*: A tabular transformation expression, whose source is implicitly the subtables produced by partitioning the records of *T*, each subtable being homogenous on the value of *Column*.
-* *ContextFreeSubQuery*: A tabular expression that includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.
-* *PartitionParameters*: Zero or more (space-separated) parameters in the form of: <br>
-  *HintName* `=` *Value* that control the behavior of the operator. The following hints are supported:
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The tabular source whose data is to be processed by the operator.|
+| *strategy*| | | The partition strategy, `native`, `shuffle` or `legacy`. `native` strategy is used with an implicit source with thousands of key partition values. `shuffle` strategy is used with an implicit source with millions of key partition values. `legacy` strategy is used with an explicit or implicit source with 64 or less key partition values.|
+| *Column*| | &check; | The name of a column in *T* whose values determine how the input table is to be partitioned.|
+| *TransformationSubQuery*| | &check; | A tabular transformation expression, whose source is implicitly the subtables produced by partitioning the records of *T*, each subtable being homogenous on the value of *Column*.|
+| *ContextFreeSubQuery*| | &check; | A tabular expression that includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.|
+| *PartitionParameters*| | | Zero or more space-separated parameters in the form of: *HintName* `=` *Value* that control the behavior of the operator. See the [supported hints](#supported-hints).
 
-  |HintName               |Values         |Description|Native/Shuffle/Legacy strategy|
-  |-------------------|---------------|-----------|----------|
-  |`hint.strategy`|`legacy`, `shuffle`, `native`|Defines the execution strategy of the partition operator.|Native, Shuffle, Legacy|
-  |`hint.shufflekey`|the partition key|Runs the partition operator in shuffle strategy where the shuffle key is the specified partition key.|Shuffle|
-  |`hint.materialized`|`true`,`false` |If set to `true`, will materialize the source of the `partition` operator. The default value is `false`. |Legacy|
-  |`hint.concurrency`|*Number*|Hints the system how many partitions to run in parallel. The default value is 16.|Legacy|
-  |`hint.spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes. For example, if there are N partitions and the spread hint is set to P, then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint. The default value is 1.|Legacy|
+### Supported hints
+
+|HintName|Type|Description|Native/Shuffle/Legacy strategy|
+|--|--|--|--|
+|`hint.strategy`| string | The value `legacy`, `shuffle`, or `native`. This hint defines the execution strategy of the partition operator.|Native, Shuffle, Legacy|
+|`hint.shufflekey`| string | The partition key. Runs the partition operator in shuffle strategy where the shuffle key is the specified partition key.|Shuffle|
+|`hint.materialized`| bool |If set to `true`, will materialize the source of the `partition` operator. The default value is `false`. |Legacy|
+|`hint.concurrency`| int |Hints the system how many partitions to run in parallel. The default value is 16.|Legacy|
+|`hint.spread`| int |Hints the system how to distribute the partitions among cluster nodes. For example, if there are N partitions and the spread hint is set to P, then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint. The default value is 1.|Legacy|
 
 ## Returns
 
@@ -88,7 +91,9 @@ Use `hint.strategy=native` for this strategy. See the following examples:
 
 This query returns foreach InjuriesDirect, the count of events and total injuries in each State that starts with 'W'.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOvQoCMRCEe59iu0tAfAFJp4X1FdbxWMwKSWR3cseJD29UECyH+eZnRNV8nLnANk9aEivTiAgmQ1TYIkg0nIdu3rsWSC2UpGBn0I5d11AiZGa6rHQqt6bCdhDlCeSs5RxVHkzfhTDVVuD89keGjrj/mH83fS74/QtdD0E9ngAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
 | where State startswith 'W'
@@ -115,15 +120,17 @@ StormEvents
 
 This query returns the top 1 EventType by total injuries for each State that starts with 'W':
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOsQ7CMAxE936Ft7YLAzsbDMytxJwiixiRpHKurYL68STphAdLp+d78oCg7rayR2x22iwr0wADpgijiJvAUvtoM5xzFkjwZMXjFKH57JXoQt5AVqYpHdWG8nR1x8U5o/JlGgPM5+7fC6twzKWMupJLvIryE30x1F/GNB+WnRBmOhfwL6i0/wEF39OovgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
 | where State startswith 'W'
 | partition hint.strategy = native by State
-(
+    (
     summarize TotalInjueries = sum(InjuriesDirect) by EventType
     | top 2 by TotalInjueries
-)
+    )
 ```
 
 **Output** 
@@ -145,14 +152,16 @@ Use `hint.strategy=shuffle` for this strategy. See the following example:
 
 This query will return the top 3 DamagedProperty foreach EpisodeId, it returns also the columns EpisodeId and State.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OsQ6DMBBDd77iRiohFuZuZeiGxBcEOCAV5KKLQYrUjyewsODBi+0ntxBd650dQvYnbxQWVhzN1qEMUAOe4jvM2zguTF2k2tsgA3+HjJLyyyGeqjP8mNVM3Kh4VsQrS1CVH/e4lwW1SNziqf5KL3rZHA7GAN74mQAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
 | partition hint.strategy=shuffle by EpisodeId
-(
+    (
     top 3 by DamageProperty
     | project EpisodeId, State, DamageProperty
-)
+    )
 | count
 ```
 
@@ -173,10 +182,12 @@ This query will run two subqueries:
 
 the final result is the union of these 2 subqueries.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxXMwRGCMBAF0LtV/AqcwXuOHjhbQYxrCCO7zOajZsDehQLe86hZ8MXTbUIHGi6olBndacMcnYXFFENRnis9UnILL8kxNdzbDtcbzafrW5QVGz6D+PGFgF7HxYvUXh/FJfG3j8kW5R+3ariUdAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 range x from 1 to 2 step 1
-| partition hint.strategy=legacy by x { StormEvents | where x == InjuriesIndirect}
+| partition hint.strategy=legacy by x {StormEvents | where x == InjuriesIndirect}
 | count 
 ```
 
@@ -190,15 +201,17 @@ range x from 1 to 2 step 1
 
 In some cases, it's more performant and easier to write a query using the `partition` operator than using the [`top-nested` operator](topnestedoperator.md). The following example runs a subquery calculating `summarize` and `top` for each of States starting with `W`: (WYOMING, WASHINGTON, WEST VIRGINIA, WISCONSIN)
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2NsQ6CQBBEe75iOyAhNtZ0WlhjYn2Sjbcm3JHdOQiGj/cEdYtJJvN2pkPU4TxxgBUrzZ6VqYMDk8EpbBZ4Km9lDsfsBRIDeQk4GDRjj6UNDjIx3ZfvY0H5qk0tDYNTeTHtE20fU0BVN3QJz6TC1mak+pmTKPeoP1Ubf11GbvbWrW4lxJGO/9z2rfoN+O3/98UAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
 | where State startswith 'W'
 | partition hint.strategy=native by State 
-(
+    (
     summarize Events=count(), Injuries=sum(InjuriesDirect) by EventType, State
     | top 3 by Events 
-) 
+    ) 
 ```
 
 **Output** 
