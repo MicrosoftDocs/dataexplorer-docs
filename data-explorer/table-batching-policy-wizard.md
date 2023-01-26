@@ -14,8 +14,8 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. You don't require an Azure subscription. 
-* Create [a cluster and database](create-cluster-database-portal.md).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 
 ## Define and assign a table batching policy
 

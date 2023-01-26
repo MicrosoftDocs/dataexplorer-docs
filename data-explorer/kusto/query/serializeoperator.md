@@ -1,9 +1,9 @@
 ---
 title: serialize operator - Azure Data Explorer
-description: This article describes serialize operator in Azure Data Explorer.
+description: Learn how to use the serialize operator to mark the input row set as serialized and ready for window functions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/22/2023
 ---
 # serialize operator
 
@@ -35,7 +35,7 @@ Traces
 
 The output row set of the following operators is marked as serialized.
 
-[range](./rangeoperator.md), [sort](./sortoperator.md), [order](./orderoperator.md), [top](./topoperator.md), [top-hitters](./tophittersoperator.md), [getschema](./getschemaoperator.md).
+[range](./rangeoperator.md), [sort](./sort-operator.md), [top](./topoperator.md), [top-hitters](./tophittersoperator.md), [getschema](./getschemaoperator.md).
 
 The output row set of the following operators is marked as non-serialized.
 

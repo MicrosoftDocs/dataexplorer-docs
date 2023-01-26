@@ -1,9 +1,9 @@
 ---
 title: regex_quote() - Azure Data Explorer
-description: This article describes regex_quote() in Azure Data Explorer.
+description: Learn how to use the regex_quote() function to return a string that escapes all regular expression characters.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 05/19/2021
+ms.date: 01/15/2023
 ---
 # regex_quote()
 

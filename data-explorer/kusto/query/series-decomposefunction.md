@@ -1,16 +1,16 @@
 ---
 title: series_decompose() - Azure Data Explorer
-description: This article describes series_decompose() in Azure Data Explorer.
+description: Learn how to use the series_decompose() function to apply a decomposition transformation on a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/26/2019
+ms.date: 01/22/2023
 ---
 # series_decompose()
 
 Applies a decomposition transformation on a series.  
 
 Takes an expression containing a series (dynamic numerical array) as input and decomposes it to seasonal, trend, and residual components.
- 
+
 ## Syntax
 
 `series_decompose(`*Series* `[,` *Seasonality*`,` *Trend*`,` *Test_points*`,` *Seasonality_threshold*`])`
@@ -18,39 +18,38 @@ Takes an expression containing a series (dynamic numerical array) as input and d
 ## Arguments
 
 * *Series*: Dynamic array cell, which is an array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators
-* *Seasonality*: An integer controlling the seasonal analysis, containing either
-    * -1: autodetect seasonality using [series_periods_detect](series-periods-detectfunction.md) (default).
-    * period: positive integer specifying the expected period in number of bins. For example, if the series is in 1-h bins, a weekly period is 168 bins.
-    * 0: no seasonality (skip extracting this component).    
+* *Seasonality*: An integer controlling the seasonal analysis, containing either:
+  * -1: autodetect seasonality using [series_periods_detect](series-periods-detectfunction.md) (default).
+  * period: positive integer specifying the expected period in number of bins. For example, if the series is in 1-h bins, a weekly period is 168 bins.
+  * 0: no seasonality (skip extracting this component).
 * *Trend*: A string controlling the trend analysis, containing one of the following values:
-    * "avg": define trend component as average(x) (default)
-    * "linefit": extract trend component using linear regression.
-    * "none": no trend, skip extracting this component.    
+  * "avg": define trend component as average(x) (default)
+  * "linefit": extract trend component using linear regression.
+  * "none": no trend, skip extracting this component.
 * *Test_points*: 0 (default) or positive integer, specifying the number of points at the end of the series to exclude from the learning (regression) process. This parameter should be set for forecasting purposes.
 * *Seasonality_threshold*: The threshold for seasonality score when *Seasonality* is set to autodetect, the default score threshold is `0.6`. For more information, see [series_periods_detect](series-periods-detectfunction.md).
 
-**Return**
+## Returns
 
  The function returns the following respective series:
 
 * `baseline`: the predicted value of the series (sum of seasonal and trend components, see below).
 * `seasonal`: the series of the seasonal component:
-    * if the period isn't detected or is explicitly set to 0: constant 0.
-    * if detected or set to positive integer: median of the series points in the same phase
+  * if the period isn't detected or is explicitly set to 0: constant 0.
+  * if detected or set to positive integer: median of the series points in the same phase
 * `trend`: the series of the trend component.
 * `residual`: the series of the residual component (that is, x - baseline).
   
-
-**Notes**
-
-* Component execution order:
-    1. Extract the seasonal series
-    2. Subtract it from x, generating the deseasonal series
-    3. Extract the trend component from the deseasonal series
-    4. Create the baseline = seasonal + trend
-    5. Create the residual = x - baseline
-    
-* Either seasonality and, or trend should be enabled. Otherwise, the function is redundant, and just returns baseline = 0 and residual = x.
+>[!NOTE]
+> * Component execution order:
+>
+> 1. Extract the seasonal series
+> 1. Subtract it from x, generating the deseasonal series
+> 1. Extract the trend component from the deseasonal series
+> 1. Create the baseline = seasonal + trend
+> 1. Create the residual = x - baseline
+>
+> * Either seasonality and, or trend should be enabled. Otherwise, the function is redundant, and just returns baseline = 0 and residual = x.
 
 **More about series decomposition**
 
