@@ -503,14 +503,8 @@ items:
   items:
     - name: Security roles overview
       href: security-roles.md
-    - name: .show
-      href: show-security-roles.md
-    - name: .add
-      href: add-security-roles.md
-    - name: .drop
-      href: drop-security-roles.md
-    - name: .set
-      href: set-security-roles.md
+    - name: Manage database security roles
+      href: manage-database-security-roles.md
 - name: Data ingestion
   items:
   - name: Ingest from storage
