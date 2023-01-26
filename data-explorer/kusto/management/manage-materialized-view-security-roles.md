@@ -31,8 +31,6 @@ Before you add or remove principals, you can use the `.show` command to see a ta
 |--|--|--|--|
 | *MaterializedViewName* | string | &check; | The name of the materialized view for which to list principals.|
 
-A table with a line for each principal with admin access on the materialized view.
-
 ### Example
 
 The following command lists all security principals that have access to the `SampleView` materialized view.
