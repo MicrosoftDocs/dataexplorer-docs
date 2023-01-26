@@ -19,6 +19,8 @@ Use the following steps to integrate *monaco-kusto* into your app using *npm*.
 
 **Step 3**: [Add your database schema to the editor](#add-your-database-schema-to-the-editor)
 
+Try out the integration with our [Sample project](#sample-project)!
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) (v6.10.3 or later)
