@@ -13,7 +13,7 @@ In this article, you'll learn how to use management commands to [view existing e
 
 > [!NOTE]
 >
-> * To alter external table admins, you must be an `AllDatabasesAdmin`, a `Database Admin`, or a `External Table Admin`.
+> * To alter external table admins, you must be an AllDatabasesAdmin, a Database Admin, or an External Table Admin.
 > * For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## View existing external table admins

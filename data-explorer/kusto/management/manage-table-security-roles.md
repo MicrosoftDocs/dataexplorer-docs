@@ -11,7 +11,7 @@ Azure Data Explorer uses a role-based access control model in which principals g
 
 > [!NOTE]
 >
-> * To alter table security roles, you must be an `AllDatabasesAdmin`, a `Database Admin`, or a `Table Admin`.
+> * To alter table security roles, you must be an AllDatabasesAdmin, a Database Admin, or a Table Admin.
 > * A principal must have access on the database level to be assigned table specific security roles.
 > * For more information, see [role-based access control](access-control/role-based-access-control.md).
 
