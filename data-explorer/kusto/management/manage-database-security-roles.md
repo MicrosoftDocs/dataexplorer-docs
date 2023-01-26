@@ -25,6 +25,9 @@ The following table shows the possible security roles on the database level and 
 |`ingestors` | Ingest data to the database without access to query. |
 |`monitors` | View database metadata such as schemas, operations, and permissions.|
 
+> [!NOTE]
+> It isn't possible to grant viewer access to only some tables in the database.
+
 ## View existing security roles
 
 Before you add or remove principals, you can use the `.show` command to see a table with all of the principals and roles that are already set on the database.
