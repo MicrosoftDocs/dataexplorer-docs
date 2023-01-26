@@ -1,32 +1,29 @@
 ---
-title: row_rank() - Azure Data Explorer
-description: This article describes the row_rank() function in Azure Data Explorer.
-
+title: row_rank_min() - Azure Data Explorer
+description: Learn how to use the row_rank_min() function to return the current row's minimal rank in a serialized row set.
 ms.reviewer: royo
-
 ms.topic: reference
-ms.date: 01/28/2021
+ms.date: 01/18/2023
 ---
-# row_rank()
+# row_rank_min()
 
-Returns the current row's rank in a [serialized row set](./windowsfunctions.md#serialized-row-set).
-The row index starts by default at `1` for the first row, and is incremented by `1` whenever the provided *Term* is different than the previous row's *Term*.
+Returns the current row's minimal rank in a [serialized row set](./windowsfunctions.md#serialized-row-set).
+
+The rank is the minimal row number that the current row's *Term* appears in.
 
 ## Syntax
 
-`row_rank` `(` *Term* `)`
+`row_rank_min` `(` *Term* `)`
 
-* *Term* is is an expression indicating the value to consider for the rank. The rank is increased whenever the *Term* changes.
+* *Term* is an expression indicating the value to consider for the rank. The rank is the minimal row number for *Term*.
   
 ## Returns
 
 Returns the row rank of the current row as a value of type `long`.
 
-
 ## Example
 
 This example shows how to rank the `Airline` by the number of departures from the SEA `Airport`:
-
 
 ```kusto
 datatable (Airport:string, Airline:string, Departures:long)
@@ -38,7 +35,7 @@ datatable (Airport:string, Airline:string, Departures:long)
   "SEA", "EL", 3
 ]
 | sort by Departures asc
-| extend Rank=row_rank(Departures)
+| extend Rank=row_rank_min(Departures)
 ```
 
 Running this query produces the following result:
@@ -49,4 +46,4 @@ SEA      | BA       | 2           | 1
 SEA      | LH       | 3           | 2
 SEA      | UA       | 3           | 2
 SEA      | EL       | 3           | 2
-SEA      | LY       | 100         | 3
+SEA      | LY       | 100         | 5

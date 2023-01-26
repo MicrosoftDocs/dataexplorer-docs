@@ -1,13 +1,13 @@
 ---
 title: print operator - Azure Data Explorer
-description: This article describes print operator in Azure Data Explorer.
+description: Learn how to use the print operator to output a single row with one or more scalar expression results as columns.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/12/2023
 ---
 # print operator
 
-Outputs a single-row with one or more scalar expression results as columns.
+Outputs a single row with one or more scalar expression results as columns.
 
 ## Syntax
 

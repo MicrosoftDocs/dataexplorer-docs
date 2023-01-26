@@ -9,6 +9,8 @@ ms.date: 09/26/2019
 # Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template
 
 > [!div class="op_single_selector"]
+>
+> * [Web UI free cluster](start-for-free-web-ui.md)
 > * [Portal](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
@@ -114,7 +116,7 @@ To find more template samples, see [Azure Quickstart Templates](https://azure.mi
 
 ## Deploy the template and verify template deployment
 
-You can deploy the Azure Resource Manager template by [using the Azure portal](#use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment) or [using powershell](#use-powershell-to-deploy-the-template-and-verify-template-deployment).
+You can deploy the Azure Resource Manager template by [using the Azure portal](#use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment) or [using PowerShell](#use-powershell-to-deploy-the-template-and-verify-template-deployment).
 
 ### Use the Azure portal to deploy the template and verify template deployment
 
@@ -133,11 +135,11 @@ It takes a few minutes to create an Azure Data Explorer cluster and database.
 
 1. To verify the deployment, you open the resource group in the [Azure portal](https://portal.azure.com) to find your new cluster and database. 
 
-### Use powershell to deploy the template and verify template deployment
+### Use PowerShell to deploy the template and verify template deployment
 
-#### Deploy the template using powershell
+#### Deploy the template using PowerShell
 
-1. Select **Try it** from the following code block, and then follow the instructions to sign in to the Azure Cloud shell.
+1. Select **Try it** from the following code block, and then follow the instructions to sign in to the Azure Cloud Shell.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"

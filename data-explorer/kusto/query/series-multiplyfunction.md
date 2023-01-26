@@ -1,9 +1,9 @@
 ---
 title: series_multiply() - Azure Data Explorer
-description: This article describes series_multiply() in Azure Data Explorer.
+description: Learn how to use the series_multiply() function to calculate the element-wise multiplication of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/25/2023
 ---
 # series_multiply()
 
@@ -15,7 +15,7 @@ Calculates the element-wise multiplication of two numeric series inputs.
 
 ## Arguments
 
-* *series1, series2*: Input numeric arrays, to be element-wise multiplied into a dynamic array result. All arguments must be dynamic arrays. 
+* *series1, series2*: Input numeric arrays, to be element-wise multiplied into a dynamic array result. All arguments must be dynamic arrays.
 
 ## Returns
 

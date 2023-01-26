@@ -1,6 +1,6 @@
 ---
 title: prev() - Azure Data Explorer
-description: This article describes prev() in Azure Data Explorer.
+description: Learn how to use the prev() function to return the value of a specific column in a specified row.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/12/2023
