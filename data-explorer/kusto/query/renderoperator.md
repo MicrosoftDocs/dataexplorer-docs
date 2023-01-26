@@ -117,7 +117,7 @@ three kinds of columns:
 #### `kind` property
 
 This visualization can be further elaborated by providing the `kind` property.
-The possible values of this property are:
+The supported values of this property are:
 
 |*Visualization*|`kind`             |Description                        |
 |---------------|-------------------|-----------------------------------|

@@ -10,7 +10,8 @@ zone_pivot_groups: kql-flavors
 # Stacked area chart
 
 ::: zone pivot="azuredataexplorer"
-Stacked area graph. First column is x-axis, and should be a numeric column. Other numeric columns are y-axes. |  **[**Click to run sample query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03LSwqAIBRG4XmruEODRs5bi4j+oeQDrjcyaPEZTZp+nOORq2ngiKanm9AFxdMHZotidIoFTV3z8tcXh42DRw8mamLdDm8Z1gXLQkRnlKC6q+nIZe3zAzEfsitrAAAA)** |
+
+The stacked area chart visual shows a continuous relationship. This visual is similar to the [Area chart](visualization-areachart.md), but shows the area under each element of a series. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Unlike line charts, area charts also visually represent volume. Area charts are ideal for indicating the change among different data sets.
 
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](renderoperator.md).
