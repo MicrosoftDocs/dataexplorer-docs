@@ -30,10 +30,6 @@ Before you begin adding or removing principals, use the `.show` command to see w
 |--|--|--|--|
 | *ExternalTableName* | string | &check; | The name of the external table for which to list principals.|
 
-### Returns
-
-A table with a line for each principal with admin access on the external table.
-
 ### Example
 
 The following command lists all security principals that have access to the `Samples` external table.
@@ -68,10 +64,6 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 > [!NOTE]
 > The `.set` command with `none` instead of a list of principals will remove all principals.
-
-### Returns
-
-A table with a line for each principal with admin access on the external table.
 
 ### Examples
 

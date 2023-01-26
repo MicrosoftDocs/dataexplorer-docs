@@ -38,10 +38,6 @@ Before you begin adding or removing principals, use the `.show` command to see w
 |--|--|--|--|
 | *TableName* | string | &check; | The name of the table for which to list principals.|
 
-### Returns
-
-A table with a line for each security role assigned to each principal on the table.
-
 ### Example
 
 The following command lists all security principals that have access to the `StormEvents` table.
@@ -77,10 +73,6 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 > [!NOTE]
 > The `.set` command with `none` instead of a list of principals will remove all principals of the specified role.
-
-### Returns
-
-A table with a line for each principal and their security roles on the table.
 
 ### Examples
 

@@ -31,8 +31,6 @@ Before you begin adding or removing principals, use the `.show` command to see w
 |--|--|--|--|
 | *MaterializedViewName* | string | &check; | The name of the materialized view for which to list principals.|
 
-### Returns
-
 A table with a line for each principal with admin access on the materialized view.
 
 ### Example
@@ -69,10 +67,6 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 > [!NOTE]
 > The `.set` command with `none` instead of a list of principals will remove all principals.
-
-### Returns
-
-A table with a line for each principal with admin access on the materialized view.
 
 ### Examples
 
