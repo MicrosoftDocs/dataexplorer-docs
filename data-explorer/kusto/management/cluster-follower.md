@@ -148,7 +148,7 @@ It requires [DatabaseAdmin permissions](./access-control/role-based-access-contr
 
 > [!NOTE]
 > * Viewing the effective collection of principals after the change can be done using the `.show` commands:
->    * [`.show database principals`](../management/security-roles.md#list-all-principals)
+>    * [`.show database principals`](../management/manage-database-security-roles.md#view-existing-security-roles)
 >    * [`.show database details`](../management/show-databases.md)
 > * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
