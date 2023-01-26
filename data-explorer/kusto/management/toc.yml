@@ -503,7 +503,7 @@ items:
   items:
     - name: Security roles overview
       href: security-roles.md
-    - name: Manage database security roles
+    - name: Manage database roles
       href: manage-database-security-roles.md
     - name: Manage table roles
       href: manage-table-security-roles.md
