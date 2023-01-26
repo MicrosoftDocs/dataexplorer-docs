@@ -39,8 +39,8 @@ items:
     displayName: Azure Data Explorer web UI
   - name: Query data in Azure Data Explorer web UI
     href: web-query-data.md
-  - name: Explore the samples gallery
-    href: web-ui-samples-gallery.md
+  - name: Explore Azure Data Explorer dashboards
+    href: web-ui-samples-dashboards.md
 - name: Tutorials
   items:
   - name: Write queries
@@ -223,6 +223,8 @@ items:
     items:
     - name: Azure Data Explorer web UI
       items:
+        - name: Query sample data
+          href: web-ui-samples-query.md
         - name: Customize settings
           href: web-customize-settings.md
         - name: Results grid
