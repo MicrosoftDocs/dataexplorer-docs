@@ -32,7 +32,7 @@ Before you begin adding or removing principals, use the `.show` command to see w
 
 ### Returns
 
-A table with a line for each security role assigned to each principal on the external table.
+A table with a line for each principal with admin access on the external table.
 
 ### Example
 
