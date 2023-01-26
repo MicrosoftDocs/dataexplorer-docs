@@ -18,8 +18,8 @@ The following table shows the possible security roles on the database level and 
 
 |Role|Permissions|
 |--|--|
-|`admins` | View, modify, and remove the database and database sub-entities.|
-|`users` | View the database and create new database sub-entities.|
+|`admins` | View, modify, and remove the database and database entities.|
+|`users` | View the database and create new database entities.|
 |`viewers` | View tables in the database where [RestrictedViewAccess](restrictedviewaccesspolicy.md) isn't turned on.|
 |`unrestrictedviewers`| View the tables in the database even where [RestrictedViewAccess](restrictedviewaccesspolicy.md) is turned on. The principal must also have `admins`, `viewers` or `users` permissions. |
 |`ingestors` | Ingest data to the database without access to query. |
