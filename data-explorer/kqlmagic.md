@@ -15,7 +15,7 @@ Jupyter Notebook is an open-source web application that allows you to create and
 
 ## Prerequisites
 
-* Organizational email account that is a member of Azure Active Directory (Azure AD).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Jupyter Notebook installed on your local machine or use [Azure Data Studio](/sql/azure-data-studio/notebooks/notebooks-kqlmagic)
 
 ## Install kqlmagic library
