@@ -30,7 +30,7 @@ The **Permissions** column displays the access granted to each role. The **Depen
 |Database|Monitor |Execute `.show` commands in the context of the database and its child entities. ||[Azure portal](../../../manage-database-permissions.md) or [management commands](../security-roles.md)|
 |Table|Admin | Full permission in the scope of a particular table.| Database user |[Management commands](../security-roles.md)|
 |Table|Ingestor |Ingest data to the table without access to query the data. | Database user or Database ingestor |[Management commands](../security-roles.md)|
-|External table|Admin | Full permission in the scope of a particular table.| Database user |[Management commands](../security-roles.md)|
+|External Table|Admin | Full permission in the scope of a particular table.| Database user |[Management commands](../security-roles.md)|
 |Materialized view|Admin |Full permission to alter the view, delete the view, and grant admin permissions to another principal. | Database user or Table admin |[Management commands](../security-roles.md)|
 |Function|Admin |Full permission to alter the function, delete the function, and grant admin permissions to another principal. | Database user or Table admin |[Management commands](../security-roles.md)|
 
