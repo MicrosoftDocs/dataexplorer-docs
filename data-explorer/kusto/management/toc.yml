@@ -505,6 +505,8 @@ items:
       href: security-roles.md
     - name: Manage database security roles
       href: manage-database-security-roles.md
+    - name: Manage table roles
+      href: manage-table-security-roles.md
 - name: Data ingestion
   items:
   - name: Ingest from storage
