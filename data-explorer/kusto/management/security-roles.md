@@ -19,10 +19,10 @@ The following table describes the commands used for managing security roles.
 
 |Command|Description|
 |--|--|
-|[`.show`](show-security-roles.md)|Lists principals with the given role.|
-|[`.add`](add-security-roles.md)|Adds one or more principals to the role.|
-|[`.drop`](drop-security-roles.md)|Removes one or more principals from the role.|
-|[`.set`](set-security-roles.md)|Sets the role to the specific list of principals, removing all previous ones.|
+|`.show`|Lists principals with the given role.|
+|`.add`|Adds one or more principals to the role.|
+|`.drop`|Removes one or more principals from the role.|
+|`.set`|Sets the role to the specific list of principals, removing all previous ones.|
 
 ## Security roles
 
@@ -44,8 +44,5 @@ For a full description of the security roles at each scope, see [Azure Data Expl
 
 ## Next steps
 
-* Read more about [role-based access control](access-control/role-based-access-control.md) in Kusto
-* Use the [.show command](show-security-roles.md) to view principals and their security roles
-* Use the [.add command](add-security-roles.md) to add principals to a security role
-* Use the [.drop command](drop-security-roles.md) to remove principals from a security role
-* Use the [.set command](set-security-roles.md) to assign principals to a security roles
+* Read more about Azure Data Explorer [role-based access control](access-control/role-based-access-control.md)
+* Learn how to [reference security principals](access-control/referencing-security-principals.md)
