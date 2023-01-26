@@ -67,7 +67,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 | `skip-results` | string | | If provided, the command won't return the updated list of external table principals.|
 
 > [!NOTE]
-> The `.set` command with `none` instead of a list of principals will remove all principals of the specified role.
+> The `.set` command with `none` instead of a list of principals will remove all principals.
 
 ### Returns
 
