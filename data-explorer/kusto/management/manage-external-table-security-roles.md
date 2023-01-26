@@ -71,7 +71,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 ### Returns
 
-A table with a line for admin on the external table.
+A table with a line for each principal with admin access on the external table.
 
 ### Examples
 
