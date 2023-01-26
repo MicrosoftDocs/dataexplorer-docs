@@ -18,9 +18,9 @@ current row in a [serialized row set](./windowsfunctions.md#serialized-row-set).
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *column*| string |  &check; | The column to get the values from.|
+| *column*| string |  &check; | The column from which to get the values.|
 | *offset*| int | | The amount of rows to move from the current row. Default is 1. |
-| *default_value*| scalar | | The default value to be used when there's no next row to take the value from. When no default value is specified, `null` is used.|
+| *default_value*| scalar | | The default value when there's no value in the next row. When no default value is specified, `null` is used.|
 
 ## Examples
 
