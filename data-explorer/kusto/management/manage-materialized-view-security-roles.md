@@ -60,8 +60,8 @@ This section provides syntax, parameters, and examples for adding and removing p
 | *Action* | string | &check; | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
 | *MaterializedViewName* | string | &check; | The name of the materialized view for which to add principals.|
 | *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](./access-control/principals-and-identity-providers.md#examples-for-azure-ad-principals).|
-| *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
 | `skip-results` | string | | If provided, the command won't return the updated list of materialized view principals.|
+| *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
 
 > [!NOTE]
 > The `.set` command with `none` instead of a list of principals will remove all principals.

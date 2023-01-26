@@ -69,8 +69,8 @@ This section provides syntax, parameters, and examples for adding and removing p
 | *DatabaseName* | string | &check; | The name of the database for which to add principals.|
 | *Role* | string | &check; | The role to assign to the principal. For databases, this can be `admins`, `users`, `viewers`, `unrestrictedviewers`, `ingestors`, or `monitors`.|
 | *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](./access-control/principals-and-identity-providers.md#examples-for-azure-ad-principals).|
-| *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
 | `skip-results` | string | | If provided, the command won't return the updated list of database principals.|
+| *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
 
 > [!NOTE]
 > The `.set` command with `none` instead of a list of principals will remove all principals of the specified role.
