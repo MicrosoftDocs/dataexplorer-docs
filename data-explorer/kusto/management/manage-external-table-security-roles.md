@@ -18,7 +18,7 @@ In this article, you'll learn how to use management commands to [view existing a
 
 ## View existing admins
 
-Before you begin adding or removing principals, use the `.show` command to see which principals already have admin access on the external table.
+Before you add or remove principals, you can use the `.show` command to see a table with all of the principals that already have admin access on the external table.
 
 ### Syntax
 

@@ -26,7 +26,7 @@ The following table shows the possible security roles on the table level and des
 
 ## View existing security roles
 
-Before you begin adding or removing principals, use the `.show` command to see which principals and roles are already set on the table.
+Before you add or remove principals, you can use the `.show` command to see a table with all of the principals and roles that are already set on the table.
 
 ### Syntax
 
