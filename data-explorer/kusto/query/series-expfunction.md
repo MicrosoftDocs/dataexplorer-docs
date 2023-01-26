@@ -1,6 +1,6 @@
 ---
 title: series_exp() - Azure Data Explorer
-description: This article describes series_exp() in Azure Data Explorer.
+description: Learn how to use the series_exp() function to calculate the element-wise base-e exponential function (e^x) of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/22/2023
@@ -15,9 +15,13 @@ Calculates the element-wise base-e exponential function (e^x) of the numeric ser
 
 ## Parameters
 
+<<<<<<< HEAD
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *series* | dynamic | &check; | An array of numeric values whose elements are applied as the exponent in the exponential function. |
+=======
+* *series*: Input numeric array whose elements are applied as the exponent in the exponential function. The argument must be a dynamic array.
+>>>>>>> daf56f7ad24cd548627c0a3bfb2cf240ce438ab8
 
 ## Returns
 

@@ -16,8 +16,8 @@ Private endpoints use private IP addresses from your VNet to connect you private
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Sign in to the [Azure portal](https://portal.azure.com/).
-* [Create a cluster](create-cluster-database-portal.md) that isn't injected in a virtual network
-* [Create a virtual network](/azure/virtual-network/quick-create-portal)
+* An [Azure Data Explorer cluster](create-cluster-database-portal.md) that isn't injected in a virtual network.
+* A [virtual network](/azure/virtual-network/quick-create-portal).
 
 ## Create a private endpoint
 

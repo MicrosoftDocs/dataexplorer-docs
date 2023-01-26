@@ -1,6 +1,6 @@
 ---
 title: series_fft() - Azure Data Explorer
-description: This article describes series_fft() function in Azure Data Explorer.
+description: Learn how to use the series_fft() function to apply the Fast Fourier Transform (FFT) on a series.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 01/22/2023
@@ -69,7 +69,7 @@ The function returns the complex inverse fft in two series. The first series for
     | project-away fft_y_real, fft_y_imag   //  too many series for linechart with panels
     | render linechart with(ysplit=panels)
     ```
-    
+
     This query returns *y_real2* and *y_imag2, which are the same as *y_real* and *y_imag*:  
-    
+
     :::image type="content" source="images/series-fft-function/series-ifft.png" alt-text="Series ifft." border="false":::

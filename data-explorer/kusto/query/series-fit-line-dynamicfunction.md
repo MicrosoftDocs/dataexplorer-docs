@@ -1,15 +1,16 @@
 ---
 title: series_fit_line_dynamic() - Azure Data Explorer
-description: This article describes series_fit_line_dynamic() in Azure Data Explorer.
+description: Learn how to use the series_fit_line_dynamic() function to apply a linear regression on a series to return a dynamic object.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/22/2023
 ---
 # series_fit_line_dynamic()
 
 Applies linear regression on a series, returning dynamic object.  
 
 Takes an expression containing dynamic numerical array as input, and does [linear regression](https://en.wikipedia.org/wiki/Line_fitting) to find the line that best fits it. This function should be used on time series arrays, fitting the output of make-series operator. It generates a dynamic value with the following content:
+
 * `rsquare`: [r-square](https://en.wikipedia.org/wiki/Coefficient_of_determination) is a standard measure of the fit quality. It's a number in the range [0-1], where 1 is the best possible fit, and 0 means the data is unordered and doesn't fit any line
 * `slope`: Slope of the approximated line (the *a*-value from *y=ax+b*)
 * `variance`: Variance of the input data
@@ -39,10 +40,9 @@ print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([2,5,6,
 | extend RSquare=fit.rsquare, Slope=fit.slope, Variance=fit.variance,RVariance=fit.rvariance,Interception=fit.interception,LineFit=fit.line_fit
 | render timechart
 ```
- 
+
 :::image type="content" source="images/series-fit-line/series-fit-line.png" alt-text="Series fit line.":::
 
 | RSquare | Slope | Variance | RVariance | Interception | LineFit                                                                                     |
 |---------|-------|----------|-----------|--------------|---------------------------------------------------------------------------------------------|
 | 0.982   | 2.730 | 98.628   | 1.686     | -1.666       | 1.064, 3.7945, 6.526, 9.256, 11.987, 14.718, 17.449, 20.180, 22.910, 25.641, 28.371, 31.102 |
- 
