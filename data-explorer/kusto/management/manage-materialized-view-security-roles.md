@@ -7,7 +7,7 @@ ms.date: 01/25/2023
 
 # Manage materialized view roles
 
-Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the materialized view admins they're assigned. On materialized views, the only security role is `admins`. Materialized view `admins` have the ability to view, modify, and remove the materialized view.
+Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the roles they're assigned. On materialized views, the only security role is `admins`. Materialized view `admins` have the ability to view, modify, and remove the materialized view.
 
 In this article, you'll learn how to use management commands to [view existing materialized view admins](#view-existing-materialized-view-admins) as well as [add and remove materialized view admins](#add-and-remove-materialized-view-admins) on the materialized view level.
 
