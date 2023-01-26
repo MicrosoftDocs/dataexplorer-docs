@@ -13,13 +13,7 @@ An expression containing dynamic numerical array is the input. The function repl
 
 ## Syntax
 
-<<<<<<< HEAD
 `series_fill_backward(`*series*`[,`*missing_value_placeholder*`])`
-=======
-`series_fill_backward(`*x*`[, `*missing_value_placeholder*`])`
-
-* Will return series *x* with all instances of *missing_value_placeholder* filled backwards.
->>>>>>> daf56f7ad24cd548627c0a3bfb2cf240ce438ab8
 
 ## Parameters
 
@@ -33,11 +27,7 @@ An expression containing dynamic numerical array is the input. The function repl
 > * If *missing_value_placeholder* is `double`(*null*), or omitted, then a result may contain *null* values. To fill these *null* values, use other interpolation functions. Only [series_outliers()](series-outliersfunction.md) supports *null* values in input arrays.
 > * `series_fill_backward()` preserves the original type of the array elements.
 
-<<<<<<< HEAD
 ## Returns
-=======
-* Specify *null* as the default value to apply any interpolation functions after [make-series](make-seriesoperator.md):
->>>>>>> daf56f7ad24cd548627c0a3bfb2cf240ce438ab8
 
 Series *series* with all instances of *missing_value_placeholder* filled backwards.
 
@@ -63,10 +53,5 @@ data
 |---|---|
 |[111,null,36,41,null,null,16,61,33,null,null]|[111,36,36,41,16,16,16,61,33,null,null]|
 
-<<<<<<< HEAD
 > [!TIP]
 > Use [series_fill_forward](series-fill-forwardfunction.md) or [series-fill-const](series-fill-constfunction.md) to complete interpolation of the above array.
-=======
-
-Use [series_fill_forward](series-fill-forwardfunction.md) or [series-fill-const](series-fill-constfunction.md) to complete interpolation of the above array.
->>>>>>> daf56f7ad24cd548627c0a3bfb2cf240ce438ab8
