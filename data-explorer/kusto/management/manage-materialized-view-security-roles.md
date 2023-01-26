@@ -13,7 +13,7 @@ In this article, you'll learn how to use management commands to [view existing a
 
 > [!NOTE]
 >
-> * To change materialized view admins, you must be an AllDatabasesAdmin, a Database Admin, or a Materialized View Admin.
+> * You must be an AllDatabasesAdmin, a Database Admin, or a Materialized View Admin to control materialized view access.
 > * A principal must have access on the database or table level to be a Materialized View Admin.
 > * For more information, see [role-based access control](access-control/role-based-access-control.md).
 
