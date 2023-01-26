@@ -48,7 +48,6 @@ All properties are optional.
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
-## Example
 
 ::: zone-end
 
