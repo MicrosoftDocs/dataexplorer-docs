@@ -17,9 +17,11 @@ Kusto Query Language tools aren't convenient for developing and debugging Python
 
 ## Prerequisites
 
-1. Install Python [Anaconda Distribution](https://www.anaconda.com/distribution/#download-section). In **Advanced Options**, select **Add Anaconda to my PATH environment variable**.
-2. Install [Visual Studio Code](https://code.visualstudio.com/Download)
-3. Install [Python extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* Install Python [Anaconda Distribution](https://www.anaconda.com/distribution/#download-section). In **Advanced Options**, select **Add Anaconda to my PATH environment variable**.
+* Install [Visual Studio Code](https://code.visualstudio.com/Download).
+* Install [Python extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 
 ## Run your query in your client application
 
