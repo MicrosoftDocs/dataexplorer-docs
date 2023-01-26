@@ -21,7 +21,7 @@ zone_pivot_groups: kql-flavors
 
 *T* `|` `render` ladderchart [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
 
-## Arguments
+## Parameters
 
 * *T*: Input table name.
 * *PropertyName*/*PropertyValue* indicate additional information to use when rendering.

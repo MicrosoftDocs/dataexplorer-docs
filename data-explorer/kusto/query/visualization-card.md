@@ -20,7 +20,7 @@ The card visual only shows one element. If there are multiple columns and rows i
 
 *T* `|` `render` card [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
 
-## Arguments
+## Parameters
 
 * *T*: Input table name.
 * *PropertyName*/*PropertyValue* indicate additional information to use when rendering.

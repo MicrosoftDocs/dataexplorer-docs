@@ -18,29 +18,33 @@ A time chart visual is a type of line graph. The first column of the query is th
 
 *T* `|` `render` timechart [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
 
-## Arguments
+## Parameters
 
-* *T*: Input table name.
-* *PropertyName*/*PropertyValue* indicate additional information to use when rendering.
-  All properties are optional. The supported properties are:
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *T* | string | &check; | Input table name.
+| *PropertyName* | string | | Additional information to use when rendering. See list of [properties](#properties).
+| *PropertyValue* | string | | Additional information to use when rendering. See list of [properties](#properties).
 
 ::: zone pivot="azuredataexplorer"
 
-  |*PropertyName*|*PropertyValue*                                                                   |
-  |--------------|----------------------------------------------------------------------------------|
-  |`accumulate`  |Whether the value of each measure gets added to all its predecessors. (`true` or `false`)|
-  |`legend`      |Whether to display a legend or not (`visible` or `hidden`).                       |
-  |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
-  |`ymin`        |The minimum value to be displayed on Y-axis.                                      |
-  |`ymax`        |The maximum value to be displayed on Y-axis.                                      |
-  |`title`       |The title of the visualization (of type `string`).                                |
-  |`xaxis`       |How to scale the x-axis (`linear` or `log`).                                      |
-  |`xcolumn`     |Which column in the result is used for the x-axis.                                |
-  |`xtitle`      |The title of the x-axis (of type `string`).                                       |
-  |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
-  |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
-  |`ysplit`      |How to split multiple the visualization. For more information, see [Multiple y-axes](#multiple-y-axes).                             |
-  |`ytitle`      |The title of the y-axis (of type `string`).                                       |
+### Properties
+
+|*PropertyName*|*PropertyValue*                                                                   |
+|--------------|----------------------------------------------------------------------------------|
+|`accumulate`  |Whether the value of each measure gets added to all its predecessors. (`true` or `false`)|
+|`legend`      |Whether to display a legend or not (`visible` or `hidden`).                       |
+|`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
+|`ymin`        |The minimum value to be displayed on Y-axis.                                      |
+|`ymax`        |The maximum value to be displayed on Y-axis.                                      |
+|`title`       |The title of the visualization (of type `string`).                                |
+|`xaxis`       |How to scale the x-axis (`linear` or `log`).                                      |
+|`xcolumn`     |Which column in the result is used for the x-axis.                                |
+|`xtitle`      |The title of the x-axis (of type `string`).                                       |
+|`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
+|`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
+|`ysplit`      |How to split multiple the visualization. For more information, see [Multiple y-axes](#multiple-y-axes).                             |
+|`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
 ### Multiple y-axes
 
@@ -52,16 +56,16 @@ This visualization supports splitting into multiple y-axis values:
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
 
-
-
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
 
-  |*PropertyName*|*PropertyValue*                                                                   |
-  |--------------|----------------------------------------------------------------------------------|
-  |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
-  |`title`       |The title of the visualization (of type `string`).                                |
+### Properties
+
+|*PropertyName*|*PropertyValue*                                                                   |
+|--------------|----------------------------------------------------------------------------------|
+|`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
+|`title`       |The title of the visualization (of type `string`).                                |
 
 ::: zone-end
 

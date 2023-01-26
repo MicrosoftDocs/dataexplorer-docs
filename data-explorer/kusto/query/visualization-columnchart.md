@@ -18,13 +18,17 @@ The column chart visual needs a minimum of two columns in the query result. By d
 
 *T* `|` `render` columnchart [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
 
-## Arguments
+## Parameters
 
-* *T*: Input table name.
-* *PropertyName*/*PropertyValue* indicate additional information to use when rendering.
-  All properties are optional. The supported properties are:
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *T* | string | &check; | Input table name.
+| *PropertyName* | string | | Additional information to use when rendering. See list of [properties](#properties).
+| *PropertyValue* | string | | Additional information to use when rendering. See list of [properties](#properties).
 
 ::: zone pivot="azuredataexplorer"
+
+### Properties
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -45,6 +49,8 @@ The column chart visual needs a minimum of two columns in the query result. By d
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
+
+### Properties
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|

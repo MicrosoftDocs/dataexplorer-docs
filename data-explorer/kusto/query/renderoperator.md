@@ -27,16 +27,18 @@ Instructs the user agent to render a visualization of the query results.
 
 ## Syntax
 
-*T* `|` `render` *Visualization* [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
+*T* `|` `render` *visualization* [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
 
-## Arguments
+## Parameters
 
-* *T*: Input table name.
-* *Visualization* indicates the kind of visualization to use. The supported values are:
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *T* | string | &check; | Input table name.
+| *visualization* | string | &check; | Indicates the kind of visualization to use. Must be one of the supported values in the following list.
 
 ::: zone pivot="azuredataexplorer"
 
-| *Visualization*                                         | Description                                                                                                                                                                                                       |
+| *visualization*                                         | Description                                                                                                                                                                                                       |
 |---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [ `anomalychart`](visualization-anomalychart.md)        | Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
 | [`areachart`](visualization-areachart.md)               | Area graph.                                                                                                                                                                                                       |

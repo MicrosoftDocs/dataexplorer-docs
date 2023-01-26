@@ -17,11 +17,15 @@ In a scatter chart visual, the first column is the x-axis and should be a numeri
 
 *T* `|` `render` scatterchart [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
 
-## Arguments
+## Parameters
 
-* *T*: Input table name.
-* *PropertyName*/*PropertyValue* indicate additional information to use when rendering.
-  All properties are optional. The supported properties are:
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *T* | string | &check; | Input table name.
+| *PropertyName* | string | | Additional information to use when rendering. See list of [properties](#properties).
+| *PropertyValue* | string | | Additional information to use when rendering. See list of [properties](#properties).
+
+### Properties
 
 ::: zone pivot="azuredataexplorer"
 
