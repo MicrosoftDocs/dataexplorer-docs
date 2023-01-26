@@ -3,7 +3,7 @@ title: mv-expand operator - Azure Data Explorer
 description: Learn how to use the mv-expand operator to expand multi-value dynamic arrays or property bags into multiple records.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/26/2022
+ms.date: 01/08/2023
 ---
 # mv-expand operator
 
@@ -21,7 +21,7 @@ output of the operator. All columns of the input that aren't expanded are duplic
 
 *T* `|mv-expand` [`bagexpansion=`(`bag` | `array`)] *Name* `=` *ArrayExpression* [`to typeof(`*Typename*`)`] [, [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
 
-## Arguments
+## Parameters
 
 * *ColumnName*, *ArrayExpression*: A column reference, or a scalar expression with a value
   of type `dynamic` that holds an array or a property bag. The individual top-level elements
