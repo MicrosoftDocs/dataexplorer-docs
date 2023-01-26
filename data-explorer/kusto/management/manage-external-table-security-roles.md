@@ -1,11 +1,11 @@
 ---
-title: Manage external table external table admins - Azure Data Explorer
+title: Manage external external table admins - Azure Data Explorer
 description: This article describes how to use management commands to view, add, and remove external table admins on the external table level in Azure Data Explorer.
 ms.topic: reference
 ms.date: 01/25/2023
 ---
 
-# Manage external table external table admins
+# Manage external table admins
 
 Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the external table admins they're assigned. On external tables, the only security role is `admins`. External table `admins` have the ability to view, modify, and remove the external table and external table entities.
 
