@@ -9,7 +9,7 @@ ms.date: 01/25/2023
 
 Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the roles they're assigned. On materialized views, the only security role is `admins`. Materialized view `admins` have the ability to view, modify, and remove the materialized view.
 
-In this article, you'll learn how to use management commands to [view existing materialized view admins](#view-existing-materialized-view-admins) as well as [add and remove materialized view admins](#add-and-remove-materialized-view-admins).
+In this article, you'll learn how to use management commands to [view existing admins](#view-existing-admins) as well as [add and remove admins](#add-and-remove-admins) on materialized views.
 
 > [!NOTE]
 >
@@ -17,7 +17,7 @@ In this article, you'll learn how to use management commands to [view existing m
 > * A principal must have access on the database or table level to be a materialized view admin.
 > * For more information, see [role-based access control](access-control/role-based-access-control.md).
 
-## View existing materialized view admins
+## View existing admins
 
 Before you begin adding or removing principals, use the `.show` command to see which principals already have admin access on the materialized view.
 
@@ -47,7 +47,7 @@ The following command lists all security principals that have access to the `Sam
 |---|---|---|---|---|
 |Materialized View SampleView Admin |Azure AD User |Abbi Atkins |cd709aed-a26c-e3953dec735e |aaduser=abbiatkins@fabrikam.com|
 
-## Add and remove materialized view admins
+## Add and remove admins
 
 This section provides syntax, parameters, and examples for adding and removing principals.
 
@@ -70,9 +70,9 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 ### Examples
 
-In the following examples, you'll see how to [add materialized view admins](#add-materialized-view-admins-with-add), [remove materialized view admins](#remove-materialized-view-admins-with-drop), and [add and remove materialized view admins in the same command](#add-new-materialized-view-admins-and-remove-the-old-with-set).
+In the following examples, you'll see how to [add admins](#add-admins-with-add), [remove admins](#remove-admins-with-drop), and [add and remove admins in the same command](#add-new-admins-and-remove-the-old-with-set).
 
-#### Add materialized view admins with .add
+#### Add admins with .add
 
 The following example adds a principal to the `admins` role on the `SampleView` materialized view.
 
@@ -80,7 +80,7 @@ The following example adds a principal to the `admins` role on the `SampleView` 
 .add materialized view SampleView admins ('aaduser=imikeoein@fabrikam.com')
 ```
 
-#### Remove materialized view admins with .drop
+#### Remove admins with .drop
 
 The following example removes all principals in the group from the `admins` role on the `SampleView` materialized view.
 
@@ -88,7 +88,7 @@ The following example removes all principals in the group from the `admins` role
 .drop materialized view SampleView admins ('aadGroup=SomeGroupEmail@fabrikam.com')
 ```
 
-#### Add new materialized view admins and remove the old with .set
+#### Add new admins and remove the old with .set
 
 THe following example removes existing `admins` and adds the provided principals as `admins` on the `SampleView` materialized view.
 
@@ -96,7 +96,7 @@ THe following example removes existing `admins` and adds the provided principals
 .set materialized view SampleView admins ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
 ```
 
-#### Remove all materialized view admins with .set
+#### Remove all admins with .set
 
 The following command removes all existing `admins` on the `SampleView` materialized view.
 

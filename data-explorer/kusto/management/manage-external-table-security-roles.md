@@ -9,14 +9,14 @@ ms.date: 01/25/2023
 
 Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the roles they're assigned. On external tables, the only security role is `admins`. External table `admins` have the ability to view, modify, and remove the external table and external table entities.
 
-In this article, you'll learn how to use management commands to [view existing external table admins](#view-existing-external-table-admins) as well as [add and remove external table admins](#add-and-remove-external-table-admins).
+In this article, you'll learn how to use management commands to [view existing admins](#view-existing-admins) as well as [add and remove admins](#add-and-remove-admins) on external tables.
 
 > [!NOTE]
 >
 > * To alter external table admins, you must be an AllDatabasesAdmin, a Database Admin, or an External Table Admin.
 > * For more information, see [role-based access control](access-control/role-based-access-control.md).
 
-## View existing external table admins
+## View existing admins
 
 Before you begin adding or removing principals, use the `.show` command to see which principals already have admin access on the external table.
 
@@ -44,7 +44,7 @@ The following command lists all security principals that have access to the `Sam
 |---|---|---|---|---|
 |External Table Samples Admin |Azure AD User |Abbi Atkins |cd709aed-a26c-e3953dec735e |aaduser=abbiatkins@fabrikam.com|
 
-## Add and remove external table admins
+## Add and remove admins
 
 This section provides syntax, parameters, and examples for adding and removing principals.
 
@@ -67,9 +67,9 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 ### Examples
 
-In the following examples, you'll see how to [add external table admins](#add-external-table-admins-with-add), [remove external table admins](#remove-external-table-admins-with-drop), and [add and remove external table admins in the same command](#add-new-external-table-admins-and-remove-the-old-with-set).
+In the following examples, you'll see how to [add admins](#add-admins-with-add), [remove admins](#remove-admins-with-drop), and [add and remove admins in the same command](#add-new-admins-and-remove-the-old-with-set).
 
-#### Add external table admins with .add
+#### Add admins with .add
 
 The following example adds a principal to the `admins` role on the `Samples` external table.
 
@@ -77,7 +77,7 @@ The following example adds a principal to the `admins` role on the `Samples` ext
 .add external table Samples admins ('aaduser=imikeoein@fabrikam.com')
 ```
 
-#### Remove external table admins with .drop
+#### Remove admins with .drop
 
 The following example removes all principals in the group from the `admins` role on the `Samples` external table.
 
@@ -85,7 +85,7 @@ The following example removes all principals in the group from the `admins` role
 .drop external table Samples admins ('aadGroup=SomeGroupEmail@fabrikam.com')
 ```
 
-#### Add new external table admins and remove the old with .set
+#### Add new admins and remove the old with .set
 
 THe following example removes existing `admins` and adds the provided principals as `admins` on the `Samples` external table.
 
@@ -93,7 +93,7 @@ THe following example removes existing `admins` and adds the provided principals
 .set external table Samples admins ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
 ```
 
-#### Remove all external table admins with .set
+#### Remove all admins with .set
 
 The following command removes all existing `admins` on the `Samples` external table.
 

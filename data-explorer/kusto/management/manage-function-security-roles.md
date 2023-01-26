@@ -9,7 +9,7 @@ ms.date: 01/25/2023
 
 Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the roles they're assigned. On functions, the only security role is `admins`. Function `admins` have the ability to view, modify, and remove the function.
 
-In this article, you'll learn how to use management commands to [view existing function admins](#view-existing-function-admins) as well as [add and remove function admins](#add-and-remove-function-admins).
+In this article, you'll learn how to use management commands to [view existing admins](#view-existing--admins) as well as [add and remove admins](#add-and-remove-admins) on functions.
 
 > [!NOTE]
 >
@@ -17,7 +17,7 @@ In this article, you'll learn how to use management commands to [view existing f
 > * A principal must have access on the database or table level to be a function admin.
 > * For more information, see [role-based access control](access-control/role-based-access-control.md).
 
-## View existing function admins
+## View existing admins
 
 Before you begin adding or removing principals, use the `.show` command to see which principals already have admin access on the function.
 
@@ -45,7 +45,7 @@ The following command lists all security principals that have access to the `Sam
 |---|---|---|---|---|
 |Function SampleFunction Admin |Azure AD User |Abbi Atkins |cd709aed-a26c-e3953dec735e |aaduser=abbiatkins@fabrikam.com|
 
-## Add and remove function admins
+## Add and remove admins
 
 This section provides syntax, parameters, and examples for adding and removing principals.
 
@@ -68,9 +68,9 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 ### Examples
 
-In the following examples, you'll see how to [add function admins](#add-function-admins-with-add), [remove function admins](#remove-function-admins-with-drop), and [add and remove function admins in the same command](#add-new-function-admins-and-remove-the-old-with-set).
+In the following examples, you'll see how to [add admins](#add-admins-with-add), [remove admins](#remove-admins-with-drop), and [add and remove admins in the same command](#add-new-admins-and-remove-the-old-with-set).
 
-#### Add function admins with .add
+#### Add admins with .add
 
 The following example adds a principal to the `admins` role on the `SampleFunction` function.
 
@@ -78,7 +78,7 @@ The following example adds a principal to the `admins` role on the `SampleFuncti
 .add function SampleFunction admins ('aaduser=imikeoein@fabrikam.com')
 ```
 
-#### Remove function admins with .drop
+#### Remove admins with .drop
 
 The following example removes all principals in the group from the `admins` role on the `SampleFunction` function.
 
@@ -86,7 +86,7 @@ The following example removes all principals in the group from the `admins` role
 .drop function SampleFunction admins ('aadGroup=SomeGroupEmail@fabrikam.com')
 ```
 
-#### Add new function admins and remove the old with .set
+#### Add new admins and remove the old with .set
 
 THe following example removes existing `admins` and adds the provided principals as `admins` on the `SampleFunction` function.
 
@@ -94,7 +94,7 @@ THe following example removes existing `admins` and adds the provided principals
 .set function SampleFunction admins ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
 ```
 
-#### Remove all function admins with .set
+#### Remove all admins with .set
 
 The following command removes all existing `admins` on the `SampleFunction` function.
 
