@@ -9,7 +9,7 @@ ms.date: 01/22/2023
 
 Marks that the order of the input row set is safe to use for window functions.
 
-The operator has a declarative meaning. It marks the input row set as serialized (ordered), so that [window functions](./windowsfunctions.md) can be applied to it.
+The operator has a declarative meaning. It marks the input row set as serialized (ordered), so that [window functions](./windowsfunctions.md) can be applied to it. It does not sort the input row set. 
 
 ```kusto
 T | serialize rn=row_number()
@@ -19,7 +19,7 @@ T | serialize rn=row_number()
 
 `serialize` [*Name1* `=` *Expr1* [`,` *Name2* `=` *Expr2*]...]
 
-* The *Name*/*Expr* pairs are similar to those pairs in the [extend operator](./extendoperator.md).
+* The *Name*/*Expr* pairs are similar to those pairs in the [extend operator](./extendoperator.md). Following the same behaviour, an un-aliased expression will be  automatically named and a bare column will make no change to the output row set. 
 
 ## Example
 
