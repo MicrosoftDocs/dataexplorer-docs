@@ -434,6 +434,11 @@
       "source_path": "data-explorer/web-ui-samples-gallery.md",
       "redirect_url": "/azure/data-explorer/web-ui-samples-dashboards",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/web-ui-overview.md",
+      "redirect_url": "/azure/data-explorer/web-ui-get-data-overview.md",
+      "redirect_document_id": false
     }
   ]
 }

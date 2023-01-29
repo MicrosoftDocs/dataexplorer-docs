@@ -85,14 +85,18 @@ items:
       href: ingest-data-overview.md
     - name: Data ingestion properties
       href: ingestion-properties.md
+    - name: Azure Data Explorer web UI
+      items:
+        - name: Overview
+          href: web-ui-get-data-overview.md
+        - name: Ingestion wizard
+          href: ingest-data-wizard.md
     - name: Formats for data ingestion
       displayName: supported data formats
       href: ingestion-supported-formats.md
     - name: Ingest JSON data using the wizard
       displayName: ingest data, ingestion wizard, one click, local file, existing table
       href: ingestion-wizard-existing-table.md
-    - name: Ingestion wizard
-      href: ingest-data-wizard.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -223,6 +227,8 @@ items:
     items:
     - name: Azure Data Explorer web UI
       items:
+        - name: Overview
+          href: web-ui-query-data-overview.md
         - name: Query sample data
           href: web-ui-samples-query.md
         - name: Customize settings
@@ -261,8 +267,10 @@ items:
     items:
     - name: Data visualization overview
       href: viz-overview.md
-    - name: Azure Data Explorer dashboards
+    - name: Azure Data Explorer web UI
       items:
+      - name: Overview
+        href: web-ui-visualize-data-overview.md
       - name: Use dashboards
         href: azure-data-explorer-dashboards.md
       - name: Use dashboard parameters
