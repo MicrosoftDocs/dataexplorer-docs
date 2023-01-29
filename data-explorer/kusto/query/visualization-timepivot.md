@@ -29,7 +29,7 @@ The time pivot visualization is an interactive navigation over the events time-l
 | *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
 | *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
 
-### Properties 
+### Properties
 
 All properties are optional.
 
