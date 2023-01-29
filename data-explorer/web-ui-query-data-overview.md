@@ -23,8 +23,6 @@ In this page, you can write and run Kusto Query Language (KQL) queries in the qu
 * [Kusto Query Language overview](./kusto/query/index.md).
 * Learn module: [Write your first KQL query](/training/modules/write-first-query-kusto-query-language/).
 
-Once you have query results, you can View and manipulate the results in the [results grid](web-results-grid.md).
-
 :::image type="content" source="media/web-ui-overviews/query-page.png" alt-text="Screenshot of the results page with the query editor and results grid highlighted.":::
 
 ## Next steps
