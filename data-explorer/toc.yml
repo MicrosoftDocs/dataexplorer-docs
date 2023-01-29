@@ -91,12 +91,12 @@ items:
           href: web-ui-get-data-overview.md
         - name: Ingestion wizard
           href: ingest-data-wizard.md
+        - name: Ingest JSON data using the wizard
+          displayName: ingest data, ingestion wizard, one click, local file, existing table
+          href: ingestion-wizard-existing-table.md
     - name: Formats for data ingestion
       displayName: supported data formats
       href: ingestion-supported-formats.md
-    - name: Ingest JSON data using the wizard
-      displayName: ingest data, ingestion wizard, one click, local file, existing table
-      href: ingestion-wizard-existing-table.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
