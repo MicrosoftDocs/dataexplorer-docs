@@ -11,21 +11,19 @@ The Azure Data Explorer web UI provides a comprehensive data exploration experie
 
 ## Query data
 
-To query data, you can connect to the [**help** cluster](https://dataexplorer.azure.com/clusters/help/), [create a free cluster](start-for-free-web-ui.md), or [create a full cluster](create-cluster-database-portal.md), or [connect to an existing cluster](web-query-data.md#add-clusters).
+To start querying data, you have a few options:
 
-Once you've ingested data or connected to a data source, use the [query page](https://dataexplorer.azure.com/clusters/help) to query data and explore results.
+* Connect to the free and publicly accessible [**help** cluster](https://dataexplorer.azure.com/clusters/help/)
+* [Create a free cluster](start-for-free-web-ui.md)
+* [Create a full cluster](create-cluster-database-portal.md)
+* [Connect to an existing cluster](web-query-data.md#add-clusters)
 
-In this page, write and run Kusto Query Language (KQL) queries in the query editor window. For help getting started with KQL, see the following articles.
-
-* [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md)
-* [Kusto Query Language overview](./kusto/query/index.md)
-* Learn module: [Write your first KQL query](/training/modules/write-first-query-kusto-query-language/)
+Once you have connected to a data source, you can write and run [Kusto Query Language (KQL)](kusto/query/index.md) queries on the Azure Data Explorer Query page. To select the database you want to run the query on, just highlight it in the left menu. The highlighted database will provide the context for your query.
 
 :::image type="content" source="media/web-ui-overviews/query-page.png" alt-text="Screenshot of the results page with the query editor and results grid highlighted.":::
 
 ## Next steps
 
-* [Query sample data](web-ui-samples-query.md)
-* [Customize settings](web-customize-settings.md)
-* [Results grid](web-results-grid.md)
-* [Share queries](web-share-queries.md)
+* Learn module: [Write your first KQL query](/training/modules/write-first-query-kusto-query-language/)
+* [Query sample data](web-ui-samples-query.md) in the Azure Data Explorer web UI
+* Learn how to view results using the [Results grid](web-results-grid.md)
