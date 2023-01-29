@@ -233,14 +233,16 @@ items:
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
       href: query-monitor-data.md
-    - name: Query data in Power Apps application
+    - name: Query data in Power Apps
       href: power-apps-connector.md
-    - name: Query cold data with hot windows
-      href: hot-windows.md
-    - name: Debug KQL inline Python
-      href: debug-inline-python.md
+    - name: Query data using T-SQL
+      href: kusto/api/tds/t-sql.md
     - name: Query data using Python
       href: python-query-data.md
+    - name: Debug KQL inline Python
+      href: debug-inline-python.md
+    - name: Query cold data with hot windows
+      href: hot-windows.md
     - name: Time Series Analysis and Machine Learning
       items:
       - name: Time series analysis
@@ -271,8 +273,7 @@ items:
       - name: Dynamic M query parameters
         displayName: Power BI
         href: power-bi-dynamic-m.md
-      - name: SQL query
-        displayName: Power BI
+      - name: Query with SQL in Power BI
         href: power-bi-sql-query.md
     - name: Excel
       items:

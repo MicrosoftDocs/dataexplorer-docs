@@ -1,6 +1,6 @@
 ---
 title: series_add() - Azure Data Explorer
-description: This article describes series_add() in Azure Data Explorer.
+description: Learn how to use the series_add() function to calculate the element-wise addition of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/22/2023

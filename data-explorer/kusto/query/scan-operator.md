@@ -1,9 +1,9 @@
 ---
 title: scan operator - Azure Data Explorer
-description: This article describes the scan operator in Azure Data Explorer.
+description: Learn how to use the scan operator to scan data, match, and build sequences based on the predicates.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/25/2022
+ms.date: 01/22/2023
 ---
 # scan operator
 
@@ -44,7 +44,7 @@ T
 * *StepName*: Used to reference values in the state of scan for conditions and assignments. The step name must be unique.
 * *Condition*: A Boolean expression that defines which records from the input matches the step. A record matches the step when the condition is true with the step’s state or with the previous step’s state.
 * *Assignment*: A scalar expression that is assigned to the corresponding column when a record matches a step.
-* `output`: Controls the output logic of the step on repeated matches. `all` (default) outputs all records matching the step, `last` outputs only the last record in a series of repeating matches for the step, `none` does not output records matching the step.
+* `output`: Controls the output logic of the step on repeated matches. `all` (default) outputs all records matching the step, `last` outputs only the last record in a series of repeating matches for the step, `none` doesn't output records matching the step.
 
 ## Returns
 
@@ -98,7 +98,6 @@ range x from 1 to 5 step 1
 |4|8|10|8|
 |5|10|5|18|
 
-
 ### Fill forward a column
 
 Fill forward a string column. Each empty value is assigned the last seen non-empty value.
@@ -137,7 +136,7 @@ Events
 |00:11:00|D|D|
 |00:12:00||D|
 
-### Sessions tagging 
+### Sessions tagging
 
 Divide the input into sessions: a session ends 30 minutes after the first event of the session, after which a new session starts. Note the use of `with_match_id` flag which assigns a unique value for each distinct match (session) of *scan*. Also note the special use of two *steps* in this example, `inSession` has `true` as condition so it captures and outputs all the records from the input while `endSession` captures records that happen more than 30m from the `sessionStart` value for the current match. The `endSession` step has `output=none` meaning it doesn't produce output records. The `endSession` step is used to advance the state of the current match from `inSession` to `endSession`, allowing a new match (session) to begin, starting from the current record.
 
@@ -178,7 +177,7 @@ Events
 
 ### Events between Start and Stop
 
-Find all sequences of events between the event `Start` and the event `Stop` that occur within 5 minutes. Assign a match ID for each sequence. 
+Find all sequences of events between the event `Start` and the event `Stop` that occur within 5 minutes. Assign a match ID for each sequence.
 
 ```kusto
 let Events = datatable ( Ts: timespan, Event: string ) 
@@ -257,7 +256,7 @@ Referencing a value in the state is done in the form *StepName*.*ColumnName*. Fo
 
 Each record from the input is evaluated against all of scan’s steps, starting from last to first. When a record *r* is considered against some step *s_k*, the following logic is applied:
 
-* If the state of the previous step is not empty and the record *r* satisfies the condition of *s_k* using the state of the previous step *s_(k-1)*, then the following happens:
+* If the state of the previous step isn't empty and the record *r* satisfies the condition of *s_k* using the state of the previous step *s_(k-1)*, then the following happens:
     1. The state of *s_k* is deleted.
     1. The state of *s_(k-1)* becomes ("promoted" to be) the state of *s_k*, and the state of *s_(k-1)* becomes empty.
     1. All the assignments of *s_k* are calculated and extend *r*.

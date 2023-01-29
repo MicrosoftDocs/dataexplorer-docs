@@ -1,20 +1,20 @@
 ---
 title: series_fit_poly() - Azure Data Explorer
-description: This article describes the series_fit_poly() in Azure Data Explorer.
+description: Learn how to use the series_fit_poly() to apply a polynomial regression from an independent variable (x_series) to a dependent variable (y_series).
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 09/21/2020
+ms.date: 01/23/2023
 ---
 # series_fit_poly()
 
-Applies a polynomial regression from an independent variable (x_series) to a dependent variable (y_series). This function takes a table containing multiple series (dynamic numerical arrays) and generates the best fit high-order polynomial for each series using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). 
+Applies a polynomial regression from an independent variable (x_series) to a dependent variable (y_series). This function takes a table containing multiple series (dynamic numerical arrays) and generates the best fit high-order polynomial for each series using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression).
 
 > [!TIP]
+>
 > * For linear regression of an evenly spaced series, as created by [make-series operator](make-seriesoperator.md), use the simpler function [series_fit_line()](series-fit-linefunction.md). See [Example 2](#example-2).
 > * If *x_series* is supplied, and the regression is done for a high degree, consider normalizing to the [0-1] range. See [Example 3](#example-3).
 > * If *x_series* is of datetime type, it must be converted to double and normalized. See [Example 3](#example-3).
 > * For reference implementation of polynomial regression using inline Python, see [series_fit_poly_fl()](../functions-library/series-fit-poly-fl.md).
-
 
 ## Syntax
 
@@ -78,7 +78,7 @@ demo_series1
 :::image type="content" source="images/series-fit-poly-function/fit-poly-line.png" alt-text="Graph showing linear regression.":::
 
 :::image type="content" source="images/series-fit-poly-function/fit-poly-line-table.png" alt-text="Coefficients of linear regression." border="false":::
-    
+
 ### Example 3
 
 Irregular (unevenly spaced) time series:
@@ -98,4 +98,5 @@ irregular_ts
 | project-rename fnum=series_fit_poly_num_poly_fit
 | render timechart with(ycolumns=num, fnum)
 ```
+
 :::image type="content" source="images/series-fit-poly-function/irregular-time-series-1.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series.":::

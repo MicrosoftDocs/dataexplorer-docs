@@ -1,6 +1,6 @@
 ---
 title: series_ceiling() - Azure Data Explorer
-description: This article describes series_ceiling() in Azure Data Explorer.
+description: Learn how to use the series_ceiling() function to calculate the element-wise ceiling function of the numeric series input.
 ms.reviewer: afridman
 ms.topic: reference
 ms.date: 01/22/2023

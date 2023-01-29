@@ -1,6 +1,6 @@
 ---
 title: series_acos() - Azure Data Explorer
-description: This article describes series_acos() in Azure Data Explorer.
+description: Learn how to use the series_acos() function to calculate the element-wise arccosine function of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/22/2023

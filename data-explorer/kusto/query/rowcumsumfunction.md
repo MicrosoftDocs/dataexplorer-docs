@@ -1,9 +1,9 @@
 ---
 title: row_cumsum() - Azure Data Explorer
-description: This article describes row_cumsum() in Azure Data Explorer.
+description: Learn how to use the row_cumsum() function to calculate the cumulative sum of a column in a serialized row set.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/18/2023
 ---
 # row_cumsum()
 
@@ -15,7 +15,7 @@ Calculates the cumulative sum of a column in a [serialized row set](./windowsfun
 
 * *Term* is an expression indicating the value to be summed.
   The expression must be a scalar of one of the following types:
-  `decimal`, `int`, `long`, or `real`. Null *Term* values do not affect the
+  `decimal`, `int`, `long`, or `real`. Null *Term* values don't affect the
   sum.
 * *Restart* is an optional argument of type `bool` that indicates when the
   accumulation operation should be restarted (set back to 0). It can be
