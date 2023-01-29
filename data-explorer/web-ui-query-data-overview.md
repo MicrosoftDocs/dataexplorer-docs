@@ -18,7 +18,7 @@ To start querying data, you have a few options:
 * [Create a full cluster](create-cluster-database-portal.md)
 * [Connect to an existing cluster](web-query-data.md#add-clusters)
 
-Once you have connected to a data source, you can write and run [Kusto Query Language (KQL)](kusto/query/index.md) queries on the **Query** page. Select the database you want to run the query on in the left menu. The highlighted database will provide the context for your query.
+Once you've connected to a data source, you can write and run [Kusto Query Language (KQL)](kusto/query/index.md) queries on the **Query** page. Select the database you want to run the query on in the left menu. The highlighted database will provide the context for your query.
 
 :::image type="content" source="media/web-ui-overviews/query-page.png" alt-text="Screenshot of the results page with the query editor and results grid highlighted.":::
 
