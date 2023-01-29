@@ -7,15 +7,21 @@ ms.date: 01/29/2023
 
 # Azure Data Explorer web UI visualize data overview
 
-## Dashboards (preview)
+The Azure Data Explorer web UI provides a comprehensive data exploration experience, covering everything from data ingestion to querying data and creating visualizations and dashboards. This overview highlights the areas of the web UI related to creating visualizations and dashboards.
 
-[Dashboards](https://dataexplorer.azure.com/dashboards) tell a story through visualizations, and are an interactive way to monitor your data and see all of your most important insights at a glance. See a sample dashboard below for example.
+## Connect to a cluster
+
+To create dashboards, you'll need a cluster and database. You can use the publicly available [**help** cluster](https://dataexplorer.azure.com/clusters/help/), [create a free cluster](start-for-free-web-ui.md), [create a full cluster](create-cluster-database-portal.md), or[connect to an existing cluster](web-query-data.md#add-clusters).
+
+## Dashboards
+
+[Dashboards](https://dataexplorer.azure.com/dashboards) are an interactive and effective way to visualize your data. In the Azure Data Explorer web UI, you can:
+
+* [View sample dashboards](web-ui-samples-dashboards.md) with data from the **help** cluster.
+* [Create your own dashboards](azure-data-explorer-dashboards.md#create-a-dashboard) from the **Dashboards (Preview)** pane in the left menu.
 
 :::image type="content" source="media/adx-dashboards/dash.png" alt-text="Screenshot of sample dashboard.":::
 
-* [View sample dashboards](web-ui-samples-gallery.md#explore-sample-dashboards) with data from the **help** cluster.
-* Create your own dashboards using the following guidance:
-  * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
-  * [Create a dashboard](azure-data-explorer-dashboards.md#create-a-dashboard)
-  * [Use dashboard parameters](dashboard-parameters.md)
-  * [Customize dashboard visuals](dashboard-customize-visuals.md)
+## Next steps
+
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
