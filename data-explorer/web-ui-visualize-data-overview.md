@@ -5,7 +5,7 @@ ms.topic: conceptual
 ms.date: 01/29/2023
 ---
 
-# Azure Data Explorer web UI visualize data overview
+# Visualize data in the Azure Data Explorer web UI
 
 The Azure Data Explorer web UI provides a comprehensive data exploration experience, covering everything from data ingestion to querying data and creating visualizations and dashboards. This overview highlights the areas of the web UI related to creating visualizations and dashboards.
 
