@@ -15,7 +15,7 @@ Azure Data Explorer uses a role-based access control (RBAC) model in which [prin
 
 The following table outlines the roles and permissions available at each scope.
 
-The **Permissions** column displays the access granted to each role. The **Dependencies** column lists the prerequisite roles required to obtain the given role in that row. For example, to be a Table Admin, you must first be a Database User. When there are multiple roles listed in the dependencies column, only one of them is required. The **Manage** column offers ways to add or remove role principals.
+The **Permissions** column displays the access granted to each role. The **Dependencies** column lists the minimum roles required to obtain the role in that row. For example, to become a Table Admin, you must first have a role like Database User or a role that includes the permissions of Database User, such as Database Admin or AllDatabasesAdmin. When multiple roles are listed in the **Dependencies** column, only one of them is needed to obtain the role. The **Manage** column offers ways to add or remove role principals.
 
 |Scope|Role|Permissions|Dependencies|Manage|
 |--|--|--|--|
@@ -25,14 +25,14 @@ The **Permissions** column displays the access granted to each role. The **Depen
 |Database|Admin|Full permission in the scope of a particular database. Includes all lower level permissions.  ||[Azure portal](../../../manage-database-permissions.md) or [management commands](../manage-database-security-roles.md)|
 |Database|User|Read all data and metadata of the database. Create tables and functions, and become the admin for those tables and functions.||[Azure portal](../../../manage-database-permissions.md) or [management commands](../manage-database-security-roles.md)|
 |Database|Viewer |Read all data and metadata, except for tables with the [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md) turned on. ||[Azure portal](../../../manage-database-permissions.md) or [management commands](../manage-database-security-roles.md)|
-|Database|Unrestrictedviewer |Read all data and metadata, including in tables with the [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md) turned on. | Database viewer or Database user |[Azure portal](../../../manage-database-permissions.md) or [management commands](../manage-database-security-roles.md)|
+|Database|Unrestrictedviewer |Read all data and metadata, including in tables with the [RestrictedViewAccess policy](../show-table-restricted-view-access-policy-command.md) turned on. | Database User or Database Viewer |[Azure portal](../../../manage-database-permissions.md) or [management commands](../manage-database-security-roles.md)|
 |Database|Ingestor |Ingest data to all tables in the database without access to query the data. ||[Azure portal](../../../manage-database-permissions.md) or [management commands](../manage-database-security-roles.md)|
 |Database|Monitor |Execute `.show` commands in the context of the database and its child entities. ||[Azure portal](../../../manage-database-permissions.md) or [management commands](../manage-database-security-roles.md)|
-|Table|Admin | Full permission in the scope of a particular table.| Database user |[Management commands](../manage-table-security-roles.md)|
-|Table|Ingestor |Ingest data to the table without access to query the data. | Database user or Database ingestor |[Management commands](../manage-table-security-roles.md)|
-|External Table|Admin | Full permission in the scope of a particular table.| |[Management commands](../manage-external-table-security-roles.md)|
-|Materialized view|Admin |Full permission to alter the view, delete the view, and grant admin permissions to another principal. | Database user or Table admin |[Management commands](../manage-materialized-view-security-roles.md)|
-|Function|Admin |Full permission to alter the function, delete the function, and grant admin permissions to another principal. | Database user or Table admin |[Management commands](../manage-function-security-roles.md)|
+|Table|Admin | Full permission in the scope of a particular table.| Database User |[Management commands](../manage-table-security-roles.md)|
+|Table|Ingestor |Ingest data to the table without access to query the data. | Database User or Database Ingestor |[Management commands](../manage-table-security-roles.md)|
+|External Table|Admin | Full permission in the scope of a particular external table.| Database User or Database Viewer |[Management commands](../manage-external-table-security-roles.md)|
+|Materialized view|Admin |Full permission to alter the view, delete the view, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../manage-materialized-view-security-roles.md)|
+|Function|Admin |Full permission to alter the function, delete the function, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../manage-function-security-roles.md)|
 
 ## Next steps
 
