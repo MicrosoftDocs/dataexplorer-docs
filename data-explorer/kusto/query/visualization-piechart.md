@@ -87,4 +87,4 @@ StormEvents
 | render piechart with(title="Storm Events by State")
 ```
 
-:::image type="content" source="images/visualization-piechart/pie-chart.png" alt-text="Screenshot of pie chart visualization output.":::
+:::image type="content" source="images/visualization-piechart/pie-chart.png" alt-text="Screenshot of pie chart visualization output." lightbox="images/visualization-piechart/pie-chart.png":::

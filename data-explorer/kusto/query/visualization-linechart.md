@@ -71,7 +71,7 @@ StormEvents
 | render linechart 
 ```
 
-:::image type="content" source="images/visualization-linechart/line-chart.png" alt-text="Screenshot of line chart visualization output.":::
+:::image type="content" source="images/visualization-linechart/line-chart.png" alt-text="Screenshot of line chart visualization output." lightbox="images/visualization-linechart/line-chart.png":::
 
 ::: zone-end
 

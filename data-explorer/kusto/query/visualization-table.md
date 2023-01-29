@@ -69,4 +69,4 @@ StormEvents
 | render table 
 ```
 
-:::image type="content" source="images/visualization-table/table-visualization.png" alt-text="Screenshot of table visualization output.":::
+:::image type="content" source="images/visualization-table/table-visualization.png" alt-text="Screenshot of table visualization output." lightbox="images/visualization-table/table-visualization.png":::

@@ -3,7 +3,7 @@ title: Anomaly chart visualization - Azure Data Explorer
 description: This article describes the anomaly chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/24/2023
+ms.date: 01/29/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -75,7 +75,7 @@ demo_make_series2
 | render anomalychart with(anomalycolumns=anomalies, title='Web app. traffic of a month, anomalies') //use "| render anomalychart with anomalycolumns=anomalies" to render the anomalies as bold points on the series charts.
 ```
 
-:::image type="content" source="images/visualization-anomalychart/anomaly-chart.png" alt-text="Screenshot of anomaly chart output.":::
+:::image type="content" source="images/visualization-anomalychart/anomaly-chart.png" alt-text="Screenshot of anomaly chart output." lightbox="images/visualization-anomalychart/anomaly-chart.png":::
 
 ::: zone-end
 

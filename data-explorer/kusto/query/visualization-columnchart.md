@@ -89,4 +89,4 @@ StormEvents
 | render columnchart
 ```
 
-:::image type="content" source="images/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization.":::
+:::image type="content" source="images/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization." lightbox="images/visualization-columnchart/column-chart.png":::

@@ -89,4 +89,4 @@ StormEvents
 | render barchart
 ```
 
-:::image type="content" source="images/visualization-barchart/bar-chart.png" alt-text="Screenshot of bar chart visualization result.":::
+:::image type="content" source="images/visualization-barchart/bar-chart.png" alt-text="Screenshot of bar chart visualization result." lightbox="images/visualization-barchart/bar-chart.png":::

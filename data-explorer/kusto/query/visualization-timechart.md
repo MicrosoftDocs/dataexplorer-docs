@@ -89,4 +89,4 @@ demo_make_series2
 | render timechart with(title='Web app. traffic of a month, decomposition')
 ```
 
-:::image type="content" source="images/visualization-timechart/visualization-timechart.png" alt-text="Screenshot of timechart visualization output.":::
+:::image type="content" source="images/visualization-timechart/visualization-timechart.png" alt-text="Screenshot of timechart visualization output." lightbox="images/visualization-timechart/visualization-timechart.png":::

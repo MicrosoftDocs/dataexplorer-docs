@@ -3,7 +3,7 @@ title: Scatter chart visualization - Azure Data Explorer
 description: This article describes the scatter chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/03/2022
+ms.date: 01/29/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -84,4 +84,4 @@ StormEvents
 | render scatterchart with (xtitle="State population", title="Property damage by state", legend=hidden)
 ```
 
-:::image type="content" source="images/visualization-scatterchart/scatter chart.png" alt-text="Screenshot of scatter chart visualization output.":::
+:::image type="content" source="images/visualization-scatterchart/scatter-chart.png" alt-text="Screenshot of scatter chart visualization output." lightbox="images/visualization-scatterchart/scatter-chart.png":::

@@ -58,7 +58,7 @@ nyc_taxi
 | render stackedareachart with (xcolumn=pickup_datetime, series=passenger_count)
 ```
 
-:::image type="content" source="images/visualization-stacked-areachart/stacked-area-chart.png" alt-text="Screenshot of stacked area chart visual output.":::
+:::image type="content" source="images/visualization-stacked-areachart/stacked-area-chart.png" alt-text="Screenshot of stacked area chart visual output." lightbox="images/visualization-stacked-areachart/stacked-area-chart.png":::
 
 ::: zone-end
 
