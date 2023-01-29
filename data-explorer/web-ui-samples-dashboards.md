@@ -2,7 +2,7 @@
 title: Azure Data Explorer web UI sample dashboards
 description: In this how-to article, you learn how to use the samples gallery in the Azure Data Explorer web UI to explore dashboards.
 ms.topic: quickstart
-ms.date: 01/26/2021
+ms.date: 01/26/2023
 ---
 
 # Explore the Azure Data Explorer web UI sample dashboards
