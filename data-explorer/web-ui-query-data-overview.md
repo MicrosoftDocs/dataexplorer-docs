@@ -17,11 +17,11 @@ To query data, you'll need a cluster and database. You can use the publicly avai
 
 Once you've ingested data or connected to a data source, use the [query page](https://dataexplorer.azure.com/clusters/help) to query data and explore results.
 
-In this page, you can write and run Kusto Query Language (KQL) queries in the query editor window. For help getting started with KQL, see the following articles.
+In this page, write and run Kusto Query Language (KQL) queries in the query editor window. For help getting started with KQL, see the following articles.
 
 * [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md)
-* [Kusto Query Language overview](./kusto/query/index.md).
-* Learn module: [Write your first KQL query](/training/modules/write-first-query-kusto-query-language/).
+* [Kusto Query Language overview](./kusto/query/index.md)
+* Learn module: [Write your first KQL query](/training/modules/write-first-query-kusto-query-language/)
 
 :::image type="content" source="media/web-ui-overviews/query-page.png" alt-text="Screenshot of the results page with the query editor and results grid highlighted.":::
 
