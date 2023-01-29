@@ -11,6 +11,13 @@ zone_pivot_groups: kql-flavors
 
 The pie chart visual needs a minimum of two columns in the query result. By default, the first column is used as the color axis. This column can contain text, datetime, or numeric data types. Other columns will be used to determine the size of each slice and contain numeric data types. Pie charts are used for presenting a composition of categories and their proportions out of a total.
 
+::: zone pivot="azuredataexplorer"
+
+The pie chart visual can also be used in the context of [Geospatial visualizations](geospatial-visualizations.md).
+
+::: zone-end
+
+
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](renderoperator.md).
 

@@ -9,7 +9,9 @@ zone_pivot_groups: kql-flavors
 ---
 # Scatter chart
 
-In a scatter chart visual, the first column is the x-axis and should be a numeric column. Other numeric columns are y-axes. Scatter plots are used to observe relationships between variables.
+In a scatter chart visual, the first column is the x-axis and should be a numeric column. Other numeric columns are y-axes. Scatter plots are used to observe relationships between variables. The scatter chart visual can also be used in the context of [Geospatial visualizations](geospatial-visualizations.md).
+
+
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](renderoperator.md).
 
