@@ -11,7 +11,7 @@ The Azure Data Explorer web UI provides a comprehensive data exploration experie
 
 ## Connect to a cluster
 
-To query data, you'll need a cluster and database. You can use the publicly available [**help** cluster](https://dataexplorer.azure.com/clusters/help/), [create a free cluster](start-for-free-web-ui.md), [create a full cluster](create-cluster-database-portal.md), or[connect to an existing cluster](web-query-data.md#add-clusters).
+To query data, you'll need a cluster and database. You can use the publicly available [**help** cluster](https://dataexplorer.azure.com/clusters/help/), [create a free cluster](start-for-free-web-ui.md), [create a full cluster](create-cluster-database-portal.md), or [connect to an existing cluster](web-query-data.md#add-clusters).
 
 ## Query data
 
