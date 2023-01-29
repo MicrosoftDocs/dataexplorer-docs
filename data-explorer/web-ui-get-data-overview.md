@@ -7,7 +7,11 @@ ms.date: 01/29/2023
 
 # Azure Data Explorer web UI get data overview
 
-The Azure Data Explorer web UI provides a comprehensive data exploration experience, covering everything from data ingestion to querying and creating visualizations and dashboards. This overview highlights the areas of the web UI related to data ingestion and management.
+The Azure Data Explorer web UI provides a comprehensive data exploration experience, covering everything from data ingestion to querying data and creating visualizations and dashboards. This overview highlights the areas of the web UI related to data ingestion and management.
+
+## Connect to a cluster
+
+You can [create a free cluster](start-for-free-web-ui.md) to work on your own data without committing resources. Alternatively, [connect to an existing cluster](web-query-data.md#add-clusters). You'll need the cluster URI and permission to access this data.
 
 ## Data management
 
