@@ -44,7 +44,7 @@ Get started learning about KQL queries with a dataset from the samples gallery.
 
 The query editor window, located to the right of the cluster connections pane, provides useful tutorials in the form of commonly used queries along with detailed explanations.
 
-We'll take a look at the **Metrics** database, labeled as **SampleMetrics** in the cluster connections pane. There are similar tutorials and queries available for all the sample datasets.
+We'll take a look at the **Metrics** database, labeled as **SampleMetrics** in the cluster connections pane.
 
 The **SampleMetrics** dataset consists of the following tables:
 
