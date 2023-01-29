@@ -1,9 +1,9 @@
 ---
 title: series_greater() - Azure Data Explorer
-description: This article describes series_greater() in Azure Data Explorer.
+description: Learn how to use the series_greater() function to calculate the element-wise greater (`>`) logic operation of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 01/23/2023
 ---
 # series_greater()
 
@@ -15,7 +15,7 @@ Calculates the element-wise greater (`>`) logic operation of two numeric series 
 
 ## Arguments
 
-* *Series1, Series2*: Input numeric arrays to be element-wise compared. All arguments must be dynamic arrays. 
+* *Series1, Series2*: Input numeric arrays to be element-wise compared. All arguments must be dynamic arrays.
 
 ## Returns
 
@@ -38,5 +38,6 @@ print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 ## See also
 
 For entire series statistics comparisons, see:
+
 * [series_stats()](series-statsfunction.md)
 * [series_stats_dynamic()](series-stats-dynamicfunction.md)

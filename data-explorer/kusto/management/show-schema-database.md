@@ -124,7 +124,8 @@ The following *Options* are all optional:
   * Authorized principals at the database/table level.
   * Row level security policies at the table level.
   * Restricted view access policies at the table level.
-* `IncludeIngestionMappings`: (`true` | `false`) - If `true`, ingestion mappings at the table level will be included. Defaults to `false`. 
+* `IncludeIngestionMappings`: (`true` | `false`) - If `true`, ingestion mappings at the table level will be included. Defaults to `false`.
+* `ShowObfuscatedStrings`: (`true` | `false`) - If `true`, credentials persisted in Kusto configurations will be returned. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the command will fail. Defaults to `false`.
 
 **Returns**
 

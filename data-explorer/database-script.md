@@ -22,7 +22,7 @@ There are various methods you can use to configure a database with scripts. We'l
 
 1. [*Inline script*](#inline-script): The script is provided inline as a parameter to a JSON ARM template.
 1. [*Bicep script*](#bicep-script): The script is provided as a separate file used by a Bicep ARM template.
-1. [*Storage Account*](#storage-account-script): The script is created as a blob in an Azure storage account and its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) provided as parameters to the ARM template.
+1. [*Storage Account*](#storage-account-script): The script is created as a blob in an Azure storage account and its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview) provided as parameters to the ARM template.
 
 > [!NOTE]
 > Each cluster can have a maximum of 50 scripts.
@@ -41,8 +41,8 @@ Notice the two commands are idempotent. When first run, they create the tables, 
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 
 ## Security
 
