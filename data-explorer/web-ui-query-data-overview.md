@@ -31,4 +31,5 @@ Once you have query results, you can View and manipulate the results in the [res
 
 * [Query sample data](web-ui-samples-query.md)
 * [Customize settings](web-customize-settings.md)
+* [Results grid](web-results-grid.md)
 * [Share queries](web-share-queries.md)
