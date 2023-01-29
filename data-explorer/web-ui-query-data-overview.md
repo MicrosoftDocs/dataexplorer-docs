@@ -9,10 +9,9 @@ ms.date: 01/29/2023
 
 The Azure Data Explorer web UI provides a comprehensive data exploration experience, covering everything from data ingestion to querying data and creating visualizations and dashboards. This overview highlights the areas of the web UI related to querying your data.
 
-> [!NOTE]
-> To query data, you can connect to the [**help** cluster](https://dataexplorer.azure.com/clusters/help/), [create a free cluster](start-for-free-web-ui.md), [create a full cluster](create-cluster-database-portal.md), or [connect to an existing cluster](web-query-data.md#add-clusters).
-
 ## Query data
+
+To query data, you can connect to the [**help** cluster](https://dataexplorer.azure.com/clusters/help/), [create a free cluster](start-for-free-web-ui.md), or [create a full cluster](create-cluster-database-portal.md), or [connect to an existing cluster](web-query-data.md#add-clusters).
 
 Once you've ingested data or connected to a data source, use the [query page](https://dataexplorer.azure.com/clusters/help) to query data and explore results.
 
