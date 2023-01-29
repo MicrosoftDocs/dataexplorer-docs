@@ -57,7 +57,7 @@ The **SampleMetrics** dataset consists of the following tables:
 >
 > :::image type="content" source="media/web-ui-samples-gallery/web-ui-tutorials-dropdown.png" alt-text="Screenshot showing Azure Data Explorer web U I dropdown menu to choose sample tutorials in query window.":::
 
-### Run a query
+## Run a query
 
 In the query edit window, place your cursor in a query and select **Run** at the top of the window, or press *Shift* + *Enter* to run a query. Results are displayed in the query results pane, directly below the query editor window.
 
