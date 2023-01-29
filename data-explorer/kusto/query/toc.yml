@@ -172,7 +172,39 @@ items:
   - name: reduce operator
     href: reduceoperator.md
   - name: render operator
-    href: renderoperator.md
+    items:
+    - name: render operator
+      href: renderoperator.md
+    - name: visualizations
+      items: 
+      - name: anomalychart
+        href: visualization-anomalychart.md
+      - name: areachart
+        href: visualization-areachart.md
+      - name: barchart
+        href: visualization-barchart.md
+      - name: card
+        href: visualization-card.md
+      - name: columnchart
+        href: visualization-columnchart.md
+      - name: ladderchart
+        href: visualization-ladderchart.md
+      - name: linechart
+        href: visualization-linechart.md
+      - name: piechart
+        href: visualization-piechart.md
+      - name: pivotchart
+        href: visualization-pivotchart.md
+      - name: scatterchart
+        href: visualization-scatterchart.md
+      - name: stackedareachart
+        href: visualization-stackedareachart.md
+      - name: table
+        href: visualization-table.md
+      - name: timechart
+        href: visualization-timechart.md
+      - name: timepivot
+        href: visualization-timepivot.md
   - name: sample operator
     href: sampleoperator.md
   - name: sample-distinct operator
