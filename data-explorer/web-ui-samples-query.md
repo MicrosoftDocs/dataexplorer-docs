@@ -28,7 +28,7 @@ Get started learning about KQL queries with a dataset from the samples gallery.
 
 1. In the **Explore data samples** dialog box, select a sample dataset and then select **Explore**.
 
-    :::image type="content" source="media/web-ui-samples-gallery/explore-data-samples-dialog.png" alt-text="Screenshot of Explore data samples dialog box showing sample database options.":::
+    :::image type="content" source="media/web-ui-samples-gallery/explore-dashboards-dialog.png" alt-text="Screenshot of Explore data samples dialog box showing sample database options.":::
 
     In the cluster connections pane, the **help** cluster is displayed with sample databases showing [stored functions](kusto/query/schema-entities/stored-functions.md), [external tables](kusto/query/schema-entities/externaltables.md), [materialized views](kusto/management/materialized-views/materialized-view-overview.md), and database [tables](kusto/query/schema-entities/tables.md). The database selected in the sample data dialogue box is highlighted.
 
