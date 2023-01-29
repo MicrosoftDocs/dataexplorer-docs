@@ -24,4 +24,6 @@ To create dashboards, you'll need a cluster and database. You can use the public
 
 ## Next steps
 
-* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
+* [Use dashboards](azure-data-explorer-dashboards.md)
+* [Use dashboards parameters](dashboard-parameters.md)
+* [Customize dashboards visuals](dashboard-customize-visuals.md)
