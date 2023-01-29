@@ -7,12 +7,12 @@ ms.date: 01/25/2023
 
 # Manage external table roles
 
-Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the roles they're assigned. On external tables, the only security role is `admins`. External table `admins` have the ability to view, modify, and remove the external table and external table entities.
+Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the roles they're assigned. On external tables, the only security role is `admins`. External table `admins` have the ability to view, modify, and remove the external table.
 
 In this article, you'll learn how to use management commands to [view existing admins](#view-existing-admins) as well as [add and remove admins](#add-and-remove-admins) on external tables.
 
 > [!NOTE]
-> You must be a Database Admin or an External Table Admin to control external table access. For more information, see [role-based access control](access-control/role-based-access-control.md).
+> You must be an AllDatabasesAdmin, a Database Admin, or an External Table Admin to control external table access. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## View existing admins
 

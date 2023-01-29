@@ -13,7 +13,7 @@ In this article, you'll learn how to use management commands to [view existing a
 
 > [!NOTE]
 >
-> * You must be a Database Admin or a Function Admin to control function access.
+> * You must be an AllDatabasesAdmin, a Database Admin, or a Function Admin to control function access.
 > * A principal must have access on the database or table level to be a Function Admin.
 > * For more information, see [role-based access control](access-control/role-based-access-control.md).
 
