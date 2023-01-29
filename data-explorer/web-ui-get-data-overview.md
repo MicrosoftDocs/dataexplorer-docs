@@ -13,10 +13,10 @@ The Azure Data Explorer web UI provides a comprehensive data exploration experie
 
 In the **[Data management](https://dataexplorer.azure.com/oneclick)** page, you'll find ways to ingest data, create database tables, map the table schema, and set ingestion and retention policies.
 
-:::image type="content" source="media/web-ui-overviews/search-actions.png" alt-text="Screenshot of search actions option in data management page.":::
-
 > [!TIP]
 > Use the search box on the right side of the page to filter cards by key terms.
+
+:::image type="content" source="media/web-ui-overviews/search-actions.png" alt-text="Screenshot of search actions option in data management page.":::
 
 ## Quick actions
 
@@ -26,11 +26,7 @@ Select from quick actions to [ingest data](https://dataexplorer.azure.com/onecli
 
 ## More actions
 
-The tabs below the quick actions lead you to more options for data ingestion and management.
-
-:::image type="content" source="media/web-ui-overviews/more-tab-options.png" alt-text="Screenshot of tab options in data management page.":::
-
-Read more about each option by selecting the links in the following table.
+The tabs below the quick actions lead you to more options for data ingestion and management. Read more about each option by selecting the links in the following table.
 
 |Tab  |Ingestion options  |
 |---------|---------|
