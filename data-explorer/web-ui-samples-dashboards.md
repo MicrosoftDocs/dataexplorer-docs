@@ -9,10 +9,7 @@ ms.date: 01/26/2023
 
 The Azure Data Explorer web UI has a samples gallery for you to view built-in dashboards without the need to [create your own cluster and database](start-for-free-web-ui.md) or [ingest data](ingest-data-overview.md). Dashboards allow you to manipulate different parameters and visuals to gain insights from your data.
 
-In this quickstart, you'll learn how to access and explore the built-in dashboards in the Azure Data Explorer web UI samples gallery.
-
-> [!NOTE]
-> Knowledge of the [Kusto Query Language (KQL)](kusto/query/index.md) is not required to create and modify your dashboards but can be used for further customization.
+In this quickstart, you'll learn how to access and explore the built-in dashboards in the Azure Data Explorer web UI samples gallery. Knowledge of [Kusto Query Language (KQL)](kusto/query/index.md) is not required to create and modify your dashboards but can be used for further customization.
 
 ## Prerequisites
 
