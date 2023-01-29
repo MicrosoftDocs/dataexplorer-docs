@@ -9,9 +9,8 @@ ms.date: 01/29/2023
 
 The Azure Data Explorer web UI provides a comprehensive data exploration experience, covering everything from data ingestion to querying data and creating visualizations and dashboards. This overview highlights the areas of the web UI related to data ingestion and management.
 
-## Prerequisites
-
-To ingest data, you'll need to [create a free cluster](start-for-free-web-ui.md), [create a full cluster](create-cluster-database-portal.md), or [connect to an existing cluster](web-query-data.md#add-clusters).
+> [!NOTE]
+> To ingest data, you'll need to [create a free cluster](start-for-free-web-ui.md), [create a full cluster](create-cluster-database-portal.md), or [connect to an existing cluster](web-query-data.md#add-clusters).
 
 ## Data management
 

@@ -9,9 +9,8 @@ ms.date: 01/29/2023
 
 The Azure Data Explorer web UI provides a comprehensive data exploration experience, covering everything from data ingestion to querying data and creating visualizations and dashboards. This overview highlights the areas of the web UI related to creating visualizations and dashboards.
 
-## Prerequisites
-
-To create dashboards, you'll need a cluster and database. You can use the publicly available [**help** cluster](https://dataexplorer.azure.com/clusters/help/), [create a free cluster](start-for-free-web-ui.md), [create a full cluster](create-cluster-database-portal.md), or [connect to an existing cluster](web-query-data.md#add-clusters).
+> [!NOTE]
+> To create dashboards, you can use the publicly available [**help** cluster](https://dataexplorer.azure.com/clusters/help/), [create a free cluster](start-for-free-web-ui.md), [create a full cluster](create-cluster-database-portal.md), or [connect to an existing cluster](web-query-data.md#add-clusters).
 
 ## Dashboards
 
