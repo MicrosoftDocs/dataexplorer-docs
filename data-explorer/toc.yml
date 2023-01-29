@@ -55,9 +55,6 @@ items:
     href: ingest-data-no-code.md
 - name: Concepts
   items:
-  - name: Azure Data Explorer web UI overview
-    displayName: Kusto Web Explorer, KWE
-    href: web-ui-overview.md
   - name: Business continuity
     items:
     - name: Overview
