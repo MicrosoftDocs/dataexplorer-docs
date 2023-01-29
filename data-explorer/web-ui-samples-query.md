@@ -32,7 +32,7 @@ Get started learning about KQL queries with a dataset from the samples gallery.
 
     :::image type="content" source="media/web-ui-samples-gallery/explore-dashboards-dialog.png" alt-text="Screenshot of Explore data samples dialog box showing sample database options.":::
 
-1. In the cluster connections pane, the **help** cluster is displayed with sample databases showing [stored functions](kusto/query/schema-entities/stored-functions.md), [external tables](kusto/query/schema-entities/externaltables.md), [materialized views](kusto/management/materialized-views/materialized-view-overview.md), and database [tables](kusto/query/schema-entities/tables.md). The database selected in the sample data dialogue box is highlighted.
+    In the cluster connections pane, the **help** cluster is displayed with sample databases showing [stored functions](kusto/query/schema-entities/stored-functions.md), [external tables](kusto/query/schema-entities/externaltables.md), [materialized views](kusto/management/materialized-views/materialized-view-overview.md), and database [tables](kusto/query/schema-entities/tables.md). The database selected in the sample data dialogue box is highlighted.
 
     :::image type="content" source="media/web-ui-samples-gallery/cluster-connection-pane.png" alt-text="Screenshot of Azure Data Explorer U I cluster connection pane showing sample databases and tables in a tree diagram.":::
 
@@ -42,17 +42,15 @@ Get started learning about KQL queries with a dataset from the samples gallery.
 
 ## Follow the tutorials
 
-The query editor window, located to the right of the cluster connections pane, provides useful tutorials in the form of commonly used queries along with detailed explanations. In this example, we will take a look at the **Metrics** database, labeled as **SampleMetrics** in the cluster connections pane. Tutorials and queries are available for all the sample datasets.
+The query editor window, located to the right of the cluster connections pane, provides useful tutorials in the form of commonly used queries along with detailed explanations.
+
+We'll take a look at the **Metrics** database, labeled as **SampleMetrics** in the cluster connections pane. There are similar tutorials and queries available for all the sample datasets.
 
 The **SampleMetrics** dataset consists of the following tables:
 
 * RawServerMetrics: where raw data is ingested for temporary storage.
 * TransformedServerMetrics: where parsed and processed data is stored.
 * SQLServersLocation: containing reference data of servers' location.
-
-To analyze the data in these tables, review and run the provided KQL queries tutorials in the query editor window.
-
-:::image type="content" source="media/web-ui-samples-gallery/web-ui-query-window.png" alt-text="Screenshot showing the query editor window with sample tutorials." lightbox="media/web-ui-samples-gallery/web-ui-query-window.png":::
 
 > [!TIP]
 > You can navigate to other tutorials from the query editor window. Select **File** > **Open tutorials** and then choose the specific tutorial you want to explore.
@@ -64,6 +62,8 @@ To analyze the data in these tables, review and run the provided KQL queries tut
 In the query edit window, place your cursor in a query and select **Run** at the top of the window, or press *Shift* + *Enter* to run a query. Results are displayed in the query results pane, directly below the query editor window.
 
 Before running any query or command, take a moment to read the comments above it. The comments include important information. For example, why certain control commands will not work in the **help** cluster due to lack of permissions.
+
+:::image type="content" source="media/web-ui-samples-gallery/web-ui-query-window.png" alt-text="Screenshot showing the query editor window with sample tutorials." lightbox="media/web-ui-samples-gallery/web-ui-query-window.png":::
 
 ## Learn management commands
 
