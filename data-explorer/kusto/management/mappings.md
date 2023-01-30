@@ -10,7 +10,7 @@ ms.date: 11/16/2022
 
 Data mappings are used during ingestion to map incoming data to columns inside tables.
 
-Data Explorer supports different types of mappings, both `row-oriented` (CSV, JSON, AVRO and W3CLOGFILE), and `column-oriented` (Parquet and ORC).
+Data Explorer supports different types of mappings, both `row-oriented` (`CSV`, `JSON`, `AVRO` and `W3CLOGFILE`), and `column-oriented` (`Parquet` and `ORC`).
 
 Each element in the mapping list is constructed from three fields:
 
@@ -28,12 +28,22 @@ Ingestion is possible without specifying a mapping. See [identity mapping](#iden
 
 ## Supported mapping types
 
-* [JSON](json-mapping.md)
-* [CSV](csv-mapping.md)
-* [AVRO](avro-mapping.md)
-* [W3CLOGFILE](w3c-log-file-mapping.md)
-* [Parquet](parquet-mapping.md)
-* [ORC](orc-mapping.md)
+The following table defines mapping types to be used when ingesting or querying external data of a specific format.
+
+|Data Format   | Mapping Type |
+|--------------|--------------|
+| `JSON`       | [JSON Mapping](json-mapping.md) |
+| `CSV`        | [CSV Mapping](csv-mapping.md) |
+| `TSV`        | [CSV Mapping](csv-mapping.md) |
+| `PSV`        | [CSV Mapping](csv-mapping.md) |
+| `SCSV`       | [CSV Mapping](csv-mapping.md) |
+| `SOHsv`      | [CSV Mapping](csv-mapping.md) |
+| `TXT`        | [CSV Mapping](csv-mapping.md) |
+| `RAW`        | [CSV Mapping](csv-mapping.md) |
+| `AVRO`       | [AVRO Mapping](avro-mapping.md) |
+| `W3CLOGFILE` | [W3CLOGFILE Mapping](w3c-log-file-mapping.md) |
+| `Parquet`    | [Parquet Mapping](parquet-mapping.md) |
+| `ORC`        | [ORC Mapping](orc-mapping.md) |
 
 ## Identity mapping
 

@@ -15,8 +15,6 @@ Filters a record set for data that doesn't contain a case-insensitive ending str
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator. For example, use `endswith_cs` instead of `endswith`.
-
 ## Syntax
 
 *T* `|` `where` *col* `!endswith_cs` `(`*expression*`)`  
