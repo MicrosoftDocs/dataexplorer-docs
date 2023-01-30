@@ -3,7 +3,7 @@ title: series_not_equals() - Azure Data Explorer
 description: This article describes series_not_equals() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 01/30/2023
 ---
 # series_not_equals()
 
@@ -11,11 +11,13 @@ Calculates the element-wise not equals (`!=`) logic operation of two numeric ser
 
 ## Syntax
 
-`series_not_equals (`*Series1*`,` *Series2*`)`
+`series_not_equals(`*series1*`,` *series2*`)`
 
-## Arguments
+## Parameters
 
-* *Series1, Series2*: Input numeric arrays to be element-wise compared. All arguments must be dynamic arrays. 
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *series1*, *series2* | dynamic | &check; | The arrays of numeric values to be element-wise compared.|
 
 ## Returns
 
@@ -23,7 +25,9 @@ Dynamic array of booleans containing the calculated element-wise not equal logic
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2VLBVSKnMS8zNTNaINtQx0jGJ1dRRKDZCFjYBChvGanLVKKRWlKTmpQB1xefll8SnFpYm5hTHgxUXpxZlphYjCWsUG4LM0QQA1OZCDmgAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 | extend s1_not_equals_s2 = series_not_equals(s1, s2)
