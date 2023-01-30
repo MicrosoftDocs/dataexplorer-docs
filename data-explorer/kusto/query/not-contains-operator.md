@@ -16,7 +16,7 @@ Filters a record set for data that doesn't include a case-sensitive string. `!co
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-When possible, use [!contains_cs](not-contains-cs-operator.md) - a case-sensitive version of the operator.
+When possible, use the case-sensitive [!contains_cs](not-contains-cs-operator.md).
 
 Use `!has` if you're looking for a [term](datatypes-string-operators.md#what-is-a-term).
 

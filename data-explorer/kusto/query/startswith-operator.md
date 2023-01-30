@@ -30,7 +30,7 @@ For further information about other operators and to determine which operator is
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-When possible, use [startswith_cs](startswith-cs-operator.md) - a case-sensitive version of the operator.
+When possible, use the case-sensitive [startswith_cs](startswith-cs-operator.md).
 
 ## Syntax
 

@@ -15,7 +15,7 @@ Filters a record set for data with a case-insensitive string. `has` searches for
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-When possible, use [has_cs](has-cs-operator.md) - a case-sensitive version of the operator.
+When possible, use the case-sensitive [has_cs](has-cs-operator.md).
 
 ## Syntax
 

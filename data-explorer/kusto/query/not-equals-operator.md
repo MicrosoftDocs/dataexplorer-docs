@@ -24,7 +24,7 @@ For more information about other operators and to determine which operator is mo
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-When possible, use [!=](not-equals-cs-operator.md) - a case-sensitive version of the operator.
+When possible, use the case-sensitive [!=](not-equals-cs-operator.md).
 
 ## Syntax
 

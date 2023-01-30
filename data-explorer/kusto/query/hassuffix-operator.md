@@ -15,7 +15,7 @@ Filters a record set for data with a case-insensitive ending string. `hassuffix`
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-When possible, use [hassuffix_cs](hassuffix-cs-operator.md) - a case-sensitive version of the operator.
+When possible, use the case-sensitive [hassuffix_cs](hassuffix-cs-operator.md).
 
 > [!NOTE]
 > Text index cannot be fully utilized for this function, therefore the performance of this function is comparable to [endswith](endswith-operator.md) function, though the semantics is different.

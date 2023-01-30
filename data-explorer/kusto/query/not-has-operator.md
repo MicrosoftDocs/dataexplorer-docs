@@ -15,7 +15,7 @@ Filters a record set for data that doesn't have a matching case-insensitive stri
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-When possible, use [!has_cs](not-has-cs-operator.md) - a case-sensitive version of the operator.
+When possible, use the case-sensitive [!has_cs](not-has-cs-operator.md).
 
 ## Syntax
 

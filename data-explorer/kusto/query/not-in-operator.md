@@ -30,7 +30,7 @@ For more information about other operators and to determine which operator is mo
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-When possible, use [!in](not-in-cs-operator.md) - a case-sensitive version of the operator.
+When possible, use the case-sensitive [!in](not-in-cs-operator.md).
 
 ## Syntax
 

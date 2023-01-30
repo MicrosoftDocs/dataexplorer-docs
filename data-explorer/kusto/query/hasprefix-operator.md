@@ -17,7 +17,7 @@ For best performance, use strings of three characters or more. `hasprefix` searc
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-When possible, use [hasprefix_cs](hasprefix-cs-operator.md) - a case-sensitive version of the operator.
+When possible, use the case-sensitive [hasprefix_cs](hasprefix-cs-operator.md).
 
 ## Syntax
 

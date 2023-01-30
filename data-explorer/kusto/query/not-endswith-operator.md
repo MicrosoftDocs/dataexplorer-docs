@@ -15,7 +15,7 @@ Filters a record set for data that excludes a case-insensitive ending string.
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-When possible, use [!endswith_cs](not-endswith-cs-operator.md) - a case-sensitive version of the operator.
+When possible, use the case-sensitive [!endswith_cs](not-endswith-cs-operator.md).
 
 ## Syntax
 

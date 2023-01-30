@@ -15,7 +15,7 @@ Filters a record set for data that doesn't start with a case-insensitive search 
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-When possible, use [!startswith_cs](not-startswith-cs-operator.md) - a case-sensitive version of the operator.
+When possible, use the case-sensitive [!startswith_cs](not-startswith-cs-operator.md).
 
 ## Syntax
 
