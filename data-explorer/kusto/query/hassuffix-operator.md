@@ -7,17 +7,18 @@ ms.date: 01/11/2023
 ---
 # hassuffix operator
 
-Filters a record set for data with a case-insensitive ending string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
+Filters a record set for data with a case-insensitive ending string. `hassuffix` returns `true` if there is a [term](datatypes-string-operators.md#what-is-a-term) inside the filtered string column ending with the specified string expression.
 
 [!INCLUDE [hassuffix-operator-comparison](../../includes/hassuffix-operator-comparison.md)]
-
-Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
 
 ## Performance tips
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator. For example, use `hassuffix_cs` instead of `hassuffix`.
+When possible, use the case-sensitive [hassuffix_cs](hassuffix-cs-operator.md).
+
+> [!NOTE]
+> Text index cannot be fully utilized for this function, therefore the performance of this function is comparable to [endswith](endswith-operator.md) function, though the semantics is different.
 
 ## Syntax
 
