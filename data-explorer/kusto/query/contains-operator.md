@@ -7,7 +7,7 @@ ms.date: 01/11/2023
 ---
 # contains operator
 
-Filters a record set for data containing a case-insensitive string. `contains_cs` searches for arbitrary sub-strings rather than [terms](datatypes-string-operators.md#what-is-a-term).
+Filters a record set for data containing a case-insensitive string. `contains` searches for arbitrary sub-strings rather than [terms](datatypes-string-operators.md#what-is-a-term).
 
 [!INCLUDE [contains-operator-comparison](../../includes/contains-operator-comparison.md)]
 

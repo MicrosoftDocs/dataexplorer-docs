@@ -8,7 +8,7 @@ ms.date: 01/11/2023
 
 # !contains_cs operator
 
-Filters a record set for data that doesn't include a case-sensitive string. `contains` searches for characters rather than [terms](datatypes-string-operators.md#what-is-a-term) of three or more characters. The query scans the values in the column, which is slower than looking up a term in a term index.
+Filters a record set for data that doesn't include a case-sensitive string. `!contains_cs` searches for characters rather than [terms](datatypes-string-operators.md#what-is-a-term) of three or more characters. The query scans the values in the column, which is slower than looking up a term in a term index.
 
 [!INCLUDE [contains-operator-comparison](../../includes/contains-operator-comparison.md)]
 
