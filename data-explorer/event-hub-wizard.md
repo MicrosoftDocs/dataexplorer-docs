@@ -104,6 +104,18 @@ In the **Continuous ingestion from Event Hub established** window, all steps wil
 
 :::image type="content" source="media/event-hub-wizard/data-ingestion-completed.png" alt-text="Screenshot of final screen in ingestion to Azure Data Explorer from Event Hubs with the ingestion wizard.":::
 
+## More data management actions
+
+Discover the available options within each [Data management](https://dataexplorer.azure.com/oneclick) tab by selecting the links in the following table.
+
+|Tab  |Ingestion options  |
+|---------|---------|
+|**Manage**     | Create [tables](https://dataexplorer.azure.com/oneclick/createtable), [external tables](external-table.md) and update [batching](./kusto/management/batchingpolicy.md) and [retention](./kusto/management/retentionpolicy.md) policies.      |
+|**One-time ingestion**    | Ingest from [local files, blob storage](./ingest-data-wizard.md), or a [container](./ingestion-wizard-new-table.md).      |
+|**Continuous ingestion**     | Configure continuous ingestion from [Event Hubs](./event-hub-wizard.md) or a blob container.        |
+|**Backfill**     |  Ingest data from sources as a one time or [continuous ingestion](./ingestion-wizard-new-table.md).       |
+|**SDKs**     |  The [sample app generator wizard](https://dataexplorer.azure.com/oneclick/generatecode?programingLang=Python) is a tool that allows you to create a working app to [ingest and query your data in your preferred programming language](./sample-app-generator-wizard.md). Learn more about connectors to expand and explore the capabilities of Azure Data Explorer.    |
+
 ## Next steps
 
 * [Query data in Azure Data Explorer web UI](web-query-data.md)
