@@ -80,8 +80,6 @@ items:
     - name: Data ingestion overview
       displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
       href: ingest-data-overview.md
-    - name: Data ingestion properties
-      href: ingestion-properties.md
     - name: Azure Data Explorer web UI
       items:
         - name: Ingestion wizard
@@ -89,6 +87,8 @@ items:
         - name: Ingest JSON data using the wizard
           displayName: ingest data, ingestion wizard, one click, local file, existing table
           href: ingestion-wizard-existing-table.md
+    - name: Data ingestion properties
+      href: ingestion-properties.md
     - name: Formats for data ingestion
       displayName: supported data formats
       href: ingestion-supported-formats.md
