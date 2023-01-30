@@ -3,7 +3,7 @@ title: sin() - Azure Data Explorer
 description: This article describes sin() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/30/2023
 ---
 # sin()
 
@@ -11,12 +11,14 @@ Returns the sine function.
 
 ## Syntax
 
-`sin(`*x*`)`
+`sin(`*number*`)`
 
-## Arguments
+## Parameters
 
-* *x*: A real number.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *number* | real | &check; | The number for which to calculate the sine.|
 
 ## Returns
 
-* The result of `sin(x)`
+The sine of *number*.
