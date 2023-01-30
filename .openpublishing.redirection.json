@@ -437,7 +437,7 @@
     },
     {
       "source_path": "data-explorer/web-ui-overview.md",
-      "redirect_url": "/azure/data-explorer/web-ui-get-data-overview.md",
+      "redirect_url": "/azure/data-explorer/web-query-data",
       "redirect_document_id": false
     }
   ]
