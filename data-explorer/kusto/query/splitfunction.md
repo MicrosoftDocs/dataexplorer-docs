@@ -4,7 +4,6 @@ description: Learn how to use the split() function to split the source string ac
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/30/2023
-ms.date: 01/30/2023
 adobe-target: true
 ---
 # split()
