@@ -30,8 +30,6 @@ For more information about other operators and to determine which operator is mo
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator. For example, use `in` instead of `in~`.
-
 ## Syntax
 
 *T* `|` `where` *col* `in` `(`*list of scalar expressions*`)`

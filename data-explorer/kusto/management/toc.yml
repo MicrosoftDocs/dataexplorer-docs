@@ -495,9 +495,9 @@ items:
     items:
     - name: Query weak consistency policy
       href: query-weak-consistency-policy.md
-    - name: .alter query weak consistency policy
+    - name: .alter cluster policy query_weak_consistency
       href: alter-query-weak-consistency-policy.md
-    - name: .show query weak consistency policy
+    - name: .show cluster policy query_weak_consistency
       href: show-query-weak-consistency-policy.md
 - name: Security roles
   href: security-roles.md

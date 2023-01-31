@@ -21,11 +21,10 @@ In this article, you create an Event Hubs data connection for Azure Data Explore
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * [Python 3.4+](https://www.python.org/downloads/).
-* [Table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
-* [Database and table policies](database-table-policies-python.md) (optional).
-* [Event Hubs with data for ingestion](ingest-data-event-hub.md#create-an-event-hub).
+* A [table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
+* An [event hub](ingest-data-event-hub.md#create-an-event-hub) with data for ingestion.
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]
 

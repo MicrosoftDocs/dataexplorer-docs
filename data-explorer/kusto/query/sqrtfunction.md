@@ -11,11 +11,13 @@ Returns the square root of the input.
 
 ## Syntax
 
-`sqrt(`*x*`)`
+`sqrt(`*number*`)`
 
-## Arguments
+## Parameters
 
-* *x*: A real number >= 0.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *number* | int, long, or real | &check; | The number for which to calculate the square root.|
 
 ## Returns
 

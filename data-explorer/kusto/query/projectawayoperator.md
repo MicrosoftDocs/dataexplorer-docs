@@ -17,8 +17,8 @@ Select what columns from the input table to exclude from the output table.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | Tabular input from which to remove columns. |
-| *ColumnNameOrPattern* | string | &check; | Name of the column or column wildcard-pattern to be removed from the output.|
+| *T* | string | &check; | The tabular input from which to remove columns. |
+| *ColumnNameOrPattern* | string | &check; | One or more column names or column wildcard-patterns to be removed from the output.|
 
 ## Returns
 

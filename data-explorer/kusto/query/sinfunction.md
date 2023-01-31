@@ -11,12 +11,14 @@ Returns the sine value of the specified number.
 
 ## Syntax
 
-`sin(`*x*`)`
+`sin(`*number*`)`
 
-## Arguments
+## Parameters
 
-* *x*: A real number.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *number* | real | &check; | The number for which to calculate the sine.|
 
 ## Returns
 
-* The result of `sin(x)`
+The sine of *number*.

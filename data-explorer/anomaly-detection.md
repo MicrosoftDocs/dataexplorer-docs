@@ -14,7 +14,8 @@ This article details the Azure Data Explorer time series anomaly detection and f
 
 ## Prerequisites
 
-Read [Time series analysis in Azure Data Explorer](time-series-analysis.md) for an overview of time series capabilities.
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* Read [Time series analysis in Azure Data Explorer](time-series-analysis.md) for an overview of time series capabilities.
 
 ## Time series decomposition model
 

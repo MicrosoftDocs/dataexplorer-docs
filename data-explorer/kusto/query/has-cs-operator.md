@@ -7,15 +7,13 @@ ms.date: 12/18/2022
 ---
 # has_cs operator
 
-Filters a record set for data with a case-sensitive search string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
+Filters a record set for data with a case-sensitive search string. `has_cs` searches for indexed terms, where an indexed [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
 [!INCLUDE [has-operator-comparison](../../includes/has-operator-comparison.md)]
 
 ## Performance tips
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
-
-For faster results, use the case-sensitive version of an operator. For example, use `has_cs` instead of `has`.
 
 ## Syntax
 

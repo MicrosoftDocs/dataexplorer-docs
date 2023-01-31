@@ -3,7 +3,7 @@ title: new_activity_metrics plugin - Azure Data Explorer
 description: Learn how to use the new_activity_metrics plugin to calculate activity metrics. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/26/2022
+ms.date: 01/08/2023
 ---
 # new_activity_metrics plugin
 
@@ -15,17 +15,19 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 *TabularExpression* `| evaluate` `new_activity_metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Window* [`,` *Cohort*] [`,` *dim1*`,` *dim2*`,` ...] [`,` *Lookback*] `)`
 
-## Arguments
+## Parameters
 
-* *TabularExpression*: The tabular expression that serves as input.
-* *IdColumn*: The name of the column with ID values that represent user activity.
-* *TimelineColumn*: The name of the column that represents the timeline.
-* *Start*: Scalar with value of the analysis start period.
-* *End*: Scalar with value of the analysis end period.
-* *Window*: Scalar with value of the analysis window period. Can be either a numeric, datetime, or timestamp value, or a string that is one of `week`, `month` or `year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) accordingly.
-* *Cohort*: (optional) a scalar constant indicating specific cohort. If not provided, all cohorts corresponding to the analysis time window are calculated and returned.
-* *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
-* *Lookback*: (optional) a tabular expression with a set of IDs that belong to the 'look back' period.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TabularExpression*| string | &check; | The tabular expression for which to calculate activity metrics.|
+| *IdColumn*| string | &check; | The name of the column with ID values that represent user activity.|
+| *TimelineColumn*| string | &check; | The name of the column that represents the timeline.|
+| *Start*| scalar | &check; | The value of the analysis start period.|
+| *End*| scalar | &check; | The value of the analysis end period.|
+| *Window*| scalar | &check; | The value of the analysis window period. Can be a numeric, datetime, or timespan value, or a string that is one of `week`, `month` or `year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) accordingly.|
+| *Cohort*| scalar | | Indicates a specific cohort. If not provided, all cohorts corresponding to the analysis time window are calculated and returned.|
+| *dim1*, *dim2*, ...| dynamic | | An array of the dimensions columns that slice the activity metrics calculation.|
+| *Lookback*| string | | A tabular expression with a set of IDs that belong to the 'look back' period.|
 
 ## Returns
 
@@ -115,16 +117,18 @@ Following is an analysis of a few records from the output:
 
 The next query calculates a retention and churn rate for week-over-week window for `New Users` cohort (users that arrived on the first week).
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21Ry27DIBC85yvmFmht2U4V5VDlVqk/0FtVWcisExIbLNg8LPXjC7arHFoOsBpmZ9ihKPBOlrxigldWux5asYJrcQnkoRo2V8OGwqojRh1YecY+kYhNT2JTVru83OZlJV9nCln9H+ElEaLFgfCmRrQ+Wi1y7OauwDSg0qtv0J0TkITYdc4ehEhN+dIhUUSefBB9JKbnC4lnVA+8TkOE/WQrFiWNJ2zLuHmZ4Q8W+zflXOWoIqOSiHr9Naf7EB1g9H5WTc/mcSDXiqQh0ZneMKpyWquiwIc6E5ztRvCR0BofGDeiMxp3dHFu0amIDMqrnpj8NM9VdZf0GZZu9RL+WMdrb5ogPtdGr7+yFGC2RJFN0WXY6V8kyQzenajhKeV6YrObTx+dLBtn6/TnGZrjxc/1D5PKiK4LAgAA" target="_blank">Run the query</a>
+
 ```kusto
 // Generate random data of user activities
 let _start = datetime(2017-05-01);
 let _end = datetime(2017-05-31);
-range Day from _start to _end  step 1d
-| extend d = tolong((Day - _start)/1d)
-| extend r = rand()+1
-| extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1) 
-| mv-expand id=_users to typeof(long) take 1000000
+range Day from _start to _end step 1d
+| extend d = tolong((Day - _start) / 1d)
+| extend r = rand() + 1
+| extend _users=range(tolong(d * 50 * r), tolong(d * 50 * r + 200 * r - 1), 1) 
+| mv-expand id=_users to typeof(long) limit 1000000
 // Take only the first week cohort (last parameter)
 | evaluate new_activity_metrics(['id'], Day, _start, _end, 7d, _start)
 | project from_Day, to_Day, retention_rate, churn_rate
@@ -144,16 +148,18 @@ range Day from _start to _end  step 1d
 
 The next query calculates retention and churn rate for week-over-week window for `New Users` cohort. If the previous example calculated the statistics for a single week - the following query produces an NxN table for each from/to combination.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22RwWrDMBBE7/mKuUVqbWynhByKb4Ve+gelGGFtUhVbMtImTaAf35VtyKH1QRbL25ndUVXhlTxFw4RovA0jrGGDcMQ5UYTp2V0cO0qbgRhdYhMZbYaI3UhqVzeHst6XdaOfF4S8/Q94yoBYnAgv5oZjFKtVjsPSlZgmNHbzA7pyLmQhDkPwJ6VyU7l2aFTC6TsYBczjK41HNPd6l5dI7WyrViWLB+xrOaIu8Kcm/bt6uZVohGg0RG+8lHSdxAHOtotqHptvE4Wjyhoagxsdo6nnb1NVeDOJMZloRmLJ0iUEIZisSOcZL2Y45+A9fXdr0LdO2Oj6pN63zm4/ihxWsa5dzDEVOMyrTzF8Uc9zkt1McVj+Uew8u+C7/K4F+s9zXO6/Mr0rj+8BAAA=" target="_blank">Run the query</a>
+
 ```kusto
 // Generate random data of user activities
 let _start = datetime(2017-05-01);
 let _end = datetime(2017-05-31);
-range Day from _start to _end  step 1d
-| extend d = tolong((Day - _start)/1d)
-| extend r = rand()+1
-| extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1) 
-| mv-expand id=_users to typeof(long) take 1000000
+range Day from _start to _end step 1d
+| extend d = tolong((Day - _start) / 1d)
+| extend r = rand() + 1
+| extend _users=range(tolong(d * 50 * r), tolong(d * 50 * r + 200 * r - 1), 1) 
+| mv-expand id=_users to typeof(long) limit 1000000
 // Last parameter is omitted - 
 | evaluate new_activity_metrics(['id'], Day, _start, _end, 7d)
 | project from_Day, to_Day, retention_rate, churn_rate
@@ -186,17 +192,19 @@ consideration `lookback` period: a tabular query with set of Ids that are used t
 the `New Users` cohort (all IDs that don't appear in this set are `New Users`). The
 query examines the retention behavior of the `New Users` during the analysis period.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22SzW6DMBCE7zzFHO0WBKSKcki4VepjIBdvUjeAkdn8SXn42jgpjVIfMFq+nR2PyXN8UE9OMcGpXtsOWrGC3eIwkoNq2BwNGxqTlhh1a+3+UzV7VIEjNh2JRVGusmKRFaVcR2pk5fgZWf5BqNf/AW+/wGSjCqZ2hHd1wdZ5c7MBtlFkZBpQ6gR+XUFnDsWgzba1/U6I0JvNjRK5x+Uj7+IkLSReUT5+q0MQYzUZETdRjRcsC/9wMsVTzWssiviWofREKXHT7I4ZnQc/CUZXUTmchC8D2a0IOhKt6QyjLKa1TvJ8CuTu/x5M3K84fZGLAW3uwV8xOPtNDYdy6ietk4lO/JmOqj2Ey+7pVN8u91J3xM40ozA6jS1RKJ0STrHSc+XBhkzmUeF66qmZbdwd+fzY2L4Ov9cPqFoyT2oCAAA=" target="_blank">Run the query</a>
+
 ```kusto
 // Generate random data of user activities
 let _lookback = datetime(2017-02-01);
 let _start = datetime(2017-05-01);
 let _end = datetime(2017-05-31);
-let _data = range Day from _lookback to _end  step 1d
-| extend d = tolong((Day - _lookback)/1d)
-| extend r = rand()+1
-| extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1) 
-| mv-expand id=_users to typeof(long) take 1000000;
+let _data = range Day from _lookback to _end step 1d
+    | extend d = tolong((Day - _lookback) / 1d)
+    | extend r = rand() + 1
+    | extend _users=range(tolong(d * 50 * r), tolong(d * 50 * r + 200 * r - 1), 1) 
+    | mv-expand id=_users to typeof(long) limit 1000000;
 //
 let lookback_data = _data | where Day < _start | project Day, id;
 _data

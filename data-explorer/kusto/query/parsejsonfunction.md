@@ -3,7 +3,7 @@ title: parse_json() function - Azure Data Explorer
 description: Learn how to use the parse_json() function to return an object of type `dynamic`.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2022
+ms.date: 01/08/2023
 ---
 # parse_json()
 
@@ -17,9 +17,11 @@ It's better to use the parse_json() function over the [extract_json()](./extract
 
 `parse_json(`*json*`)`
 
-## Arguments
+## Parameters
 
-* *json*: An expression of type `string`. It represents a [JSON-formatted value](https://json.org/), or an expression of type [dynamic](./scalar-data-types/dynamic.md), representing the actual `dynamic` value.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *json* | string | &check; | The string in the form of a [JSON-formatted value](https://json.org/) or a [dynamic](./scalar-data-types/dynamic.md) property bag to parse as JSON.|
 
 ## Returns
 

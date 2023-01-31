@@ -1,16 +1,16 @@
 ---
 title: series_decompose_forecast() - Azure Data Explorer
-description: This article describes series_decompose_forecast() in Azure Data Explorer.
+description: Learn how to use the series_decompose_forecast() function to predict the value of the last trailing points.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/26/2019
+ms.date: 01/22/2023
 ---
 # series_decompose_forecast()
 
 Forecast based on series decomposition.
 
 Takes an expression containing a series (dynamic numerical array) as input, and predicts the values of the last trailing points. For more information, see [series_decompose](series-decomposefunction.md).
- 
+
 ## Syntax
 
 `series_decompose_forecast(`*Series* `,` *Points* `[,` *Seasonality*`,` *Trend*`,` *Seasonality_threshold*`])`
@@ -20,20 +20,21 @@ Takes an expression containing a series (dynamic numerical array) as input, and 
 * *Series*: Dynamic array cell of numeric values. Typically, the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators.
 * *Points*: Integer specifying the number of points at the end of the series to predict (forecast). These points are excluded from the learning (regression) process.
 * *Seasonality*: An integer controlling the seasonal analysis, containing one of:
-    * -1: Autodetect seasonality using [series_periods_detect](series-periods-detectfunction.md) (default).
-    * period: Positive integer, specifying the expected period in number of bins. For example, if the series is in 1h bins, a weekly period is 168 bins.
-    * 0: No seasonality (skip extracting this component).
+  * -1: Autodetect seasonality using [series_periods_detect](series-periods-detectfunction.md) (default).
+  * period: Positive integer, specifying the expected period in number of bins. For example, if the series is in 1h bins, a weekly period is 168 bins.
+  * 0: No seasonality (skip extracting this component).
 * *Trend*: A string controlling the trend analysis, containing one of:
-    * `linefit`: Extract trend component using linear regression (default).
-    * `avg`: Define trend component as average(x).
-    * `none`: No trend, skip extracting this component.
+  * `linefit`: Extract trend component using linear regression (default).
+  * `avg`: Define trend component as average(x).
+  * `none`: No trend, skip extracting this component.
 * *Seasonality_threshold*: The threshold for seasonality score when *Seasonality* is set to autodetect. The default score threshold is `0.6`. For more information, see [series_periods_detect](series-periods-detectfunction.md).
 
-**Return**
+## Returns
 
  A dynamic array with the forecasted series.
 
 > [!NOTE]
+>
 > * The dynamic array of the original input series should include a number of *points* slots to be forecasted. The forecast is typically done by using [make-series](make-seriesoperator.md) and specifying the end time in the range that includes the timeframe to forecast.
 > * Either seasonality or trend should be enabled, otherwise the function is redundant, and just returns a series filled with zeroes.
 
@@ -55,4 +56,3 @@ ts
 ```
 
 :::image type="content" source="images/series-decompose-forecastfunction/series-decompose-forecast.png" alt-text="Series decompose forecast.":::
- 
