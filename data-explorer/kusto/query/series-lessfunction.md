@@ -3,7 +3,7 @@ title: series_less() - Azure Data Explorer
 description: Learn how to use the series_less() function to calculate the element-wise less (`<`) logic operation of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/25/2023
+ms.date: 01/30/2023
 ---
 # series_less()
 
@@ -11,11 +11,13 @@ Calculates the element-wise less (`<`) logic operation of two numeric series inp
 
 ## Syntax
 
-`series_less (`*Series1*`,` *Series2*`)`
+`series_less(`*series1*`,` *series2*`)`
 
-## Arguments
+## Parameters
 
-* *Series1, Series2*: Input numeric arrays to be element-wise compared. All arguments must be dynamic arrays.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *series1*, *series2* | dynamic | &check; | The arrays of numeric values to be element-wise compared.|
 
 ## Returns
 
@@ -23,7 +25,9 @@ Dynamic array of booleans containing the calculated element-wise less logic oper
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2VLBVSKnMS8zNTNaINtQx0jGJ1dRRKDZCFjYBChvGanLVKKRWlKTmpQB1xeekFhfHg5UVpxZlphaDBTSKDUF6NQGAeKRCXAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 | extend s1_less_s2 = series_less(s1, s2)
