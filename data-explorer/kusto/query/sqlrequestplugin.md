@@ -1,9 +1,9 @@
 ---
 title: sql_request plugin - Azure Data Explorer
-description: This article describes sql_request plugin in Azure Data Explorer.
+description: Learn how to use the sql_request plugin to send an SQL query to an SQL server network endpoint. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/19/2022
+ms.date: 01/31/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -36,7 +36,7 @@ The optional *OutputSchema* argument has the following syntax:
 Specifying this argument allows the plugin to be used
 in scenarios (such as a cross-cluster query) which would otherwise prevent it from running,
 and enables multiple query optimizations.
-It is therefore recommended to always specify it.
+It's therefore recommended to always specify it.
 An error is raised if the run-time schema of the first rowset returned by the SQL network endpoint
 doesn't match the *OutputSchema* schema.
 

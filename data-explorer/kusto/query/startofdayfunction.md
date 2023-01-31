@@ -1,9 +1,9 @@
 ---
 title: startofday() - Azure Data Explorer
-description: This article describes startofday() in Azure Data Explorer.
+description: Learn how to use the startofday() function to return the start of the day containing the date.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/31/2023
 ---
 # startofday()
 
@@ -16,7 +16,7 @@ Returns the start of the day containing the date, shifted by an offset, if provi
 ## Arguments
 
 * `date`: The input date.
-* `offset`: An optional number of offset days from the input date (integer, default - 0). 
+* `offset`: An optional number of offset days from the input date (integer, default - 0).
 
 ## Returns
 

@@ -1,16 +1,16 @@
 ---
 title: sliding_window_counts plugin - Azure Data Explorer
-description: This article describes sliding_window_counts plugin in Azure Data Explorer.
+description: Learn how to use the sliding_window_counts plugin to calculate counts and distinct counts of values in a sliding window over a lookback period.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/30/2023
 ---
 # sliding_window_counts plugin
 
-Calculates counts and distinct count of values in a sliding window over a lookback period, 
+Calculates counts and distinct count of values in a sliding window over a lookback period,
 using the technique described [here](samples.md#perform-aggregations-over-a-sliding-window). The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
-For instance, for each *day*, calculate count and distinct count of users in previous *week*. 
+For instance, for each *day*, calculate count and distinct count of users in previous *week*.
 
 ```kusto
 T | evaluate sliding_window_counts(id, datetime_column, startofday(ago(30d)), startofday(now()), 7d, 1d, dim1, dim2, dim3)
@@ -23,12 +23,12 @@ T | evaluate sliding_window_counts(id, datetime_column, startofday(ago(30d)), st
 ## Arguments
 
 * *T*: The input tabular expression.
-* *IdColumn*: The name of the column with ID values that represent user activity. 
+* *IdColumn*: The name of the column with ID values that represent user activity.
 * *TimelineColumn*: The name of the column representing the timeline.
 * *Start*: Scalar with value of the analysis start period.
 * *End*: Scalar with value of the analysis end period.
 * *LookbackWindow*: Scalar constant value of the lookback period (for example, for `dcount` users in past 7d: LookbackWindow = 7d)
-* *Bin*: Scalar constant value of the analysis step period. This value can be a numeric/datetime/timestamp value. If the value is a string with the format `week`/`month`/`year`, all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md). 
+* *Bin*: Scalar constant value of the analysis step period. This value can be a numeric/datetime/timestamp value. If the value is a string with the format `week`/`month`/`year`, all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md).
 * *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
 
 ## Returns
@@ -41,10 +41,9 @@ Output table schema is:
 |---|---|---|---|---|---|
 |type: as of *TimelineColumn*|..|..|..|long|long|
 
-
 ## Examples
 
-Calculate counts and `dcounts` for users in past week, for each day in the analysis period. 
+Calculate counts and `dcounts` for users in past week, for each day in the analysis period.
 
 ```kusto
 let start = datetime(2017 - 08 - 01);

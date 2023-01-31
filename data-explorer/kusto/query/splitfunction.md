@@ -1,9 +1,9 @@
 ---
 title: split() - Azure Data Explorer
-description: This article describes split() in Azure Data Explorer.
+description: Learn how to use the split() function to split the source string according to a given delimiter.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/30/2023
 adobe-target: true
 ---
 # split()
@@ -24,7 +24,7 @@ split("aaa_bbb_ccc", "_") == ["aaa","bbb","ccc"]
 
 * *source*: The source string that will be split according to the given delimiter.
 * *delimiter*: The delimiter that will be used in order to split the source string.
-* *requestedIndex*: An optional zero-based index `int`. If provided, the returned string array will contain the requested substring if exists. 
+* *requestedIndex*: An optional zero-based index `int`. If provided, the returned string array will contain the requested substring if exists.
 
 ## Returns
 

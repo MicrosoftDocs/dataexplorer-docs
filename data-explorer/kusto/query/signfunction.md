@@ -1,13 +1,13 @@
 ---
 title: sign() - Azure Data Explorer
-description: This article describes sign() in Azure Data Explorer.
+description: Learn how to use the sign() function to return the sign of the numeric expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/30/2023
 ---
 # sign()
 
-Sign of a numeric expression
+Returns the sign of the numeric expression.
 
 ## Syntax
 
@@ -19,7 +19,7 @@ Sign of a numeric expression
 
 ## Returns
 
-* The positive (+1), zero (0), or negative (-1) sign of the specified expression. 
+* The positive (+1), zero (0), or negative (-1) sign of the specified expression.
 
 ## Examples
 
