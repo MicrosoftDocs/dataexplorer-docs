@@ -17,8 +17,9 @@ For more information about other operators and to determine which operator is mo
 
 ## Syntax
 
-*T* `|` `where` *col* `has_all` `(`*scalar_expr*`,` [*scalar_expr_2*`,` *scalar_expr3*`,` ... ]`)`
-*T* `|` `where` *col* `has_all` `(`*tabular_expr*`)`
+*T* `|` `where` *col* `has_all` `(`*scalar_value* [`,` *scalar_value_2*`,` *scalar_value_3*`,` ... ]`)`
+
+*T* `|` `where` *col* `has_all` `((`*tabular_expr*`))`
 
 ## Parameters
 
@@ -26,20 +27,12 @@ For more information about other operators and to determine which operator is mo
 |--|--|--|--|
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
 | *col* | string | &check; | The column used to filter the records.|
-| *scalar_expr* | scalar | | An expression or list of expressions to search for in *col*.|
-| *tabular_expr* | string | | A tabular expression that has a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used.|
-
-> [!NOTE]
-> At least one *scalar_expr* or a single *tabular_expr* is required.
+| *scalar_value* | scalar | &check; | A value or comma-separated set of values to search for in *col*.|
+| *tabular_expr* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 256 distinct results.|
 
 ## Returns
 
 Rows in *T* for which the predicate is `true`.
-
-> [!NOTE]
->
-> * The expression list can produce up to `256` values.
-> * For tabular expressions, the first column of the result set is selected.
 
 ## Examples
 
@@ -63,15 +56,14 @@ StormEvents
 
 ### Use has_all operator with a dynamic array
 
-The same result can be achieved using a dynamic array notation:
+The same result can be achieved using a dynamic array notation.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzWNsQrCQBBE+3zFclUCdpaSStLaaCcia241h3e3YW+TcOLHmwvYDDPDY8aTwpvywmITtGBzxOD6+mp69tbswCQVjq/i8KkkkTmWMKDz5tYcqrOyhG6mqAmqLywDCUE3usSWTiiC6maCAdMdvYf6/9WsbJpCQHEfgiNPUdu+aN3AI8M2eMkjrZjyCPtSbtQPqfuJjLEAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2NsQoCMRBEe8F/WFJdwM7aSq610U4OWXOrF0h2j83eScSPl1wzzAyPmauJ5n4ltgL73Q8+EylBP8ciI11QFS2uBBOWB6YE3VgZcwzd3QVJozuAK6bC7+bwZaQswi1MGJMbvG+jZckZNX4JzrKwnULTzsOzwnZ9qzM1zmSGY2s37A8IXzPSmwAAAA==" target="_blank">Run the query</a>
 
 ```kusto
-let keywords = dynamic(["cold", "strong", "afternoon", "hail"]);
 StormEvents 
-| where EpisodeNarrative has_all (keywords)
+| where EpisodeNarrative has_all (dynamic(["cold", "strong", "afternoon", "hail"]))
 | summarize Count=count() by EventType
 | top 3 by Count
 ```

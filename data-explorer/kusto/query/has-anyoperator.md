@@ -17,7 +17,7 @@ For more information about other operators and to determine which operator is mo
 
 ## Syntax
 
-*T* `|` `where` *col* `has_any` `(`*scalar_value*`,` [*scalar_value_2*`,` *scalar_value_3*`,` ... ]`)`
+*T* `|` `where` *col* `has_any` `(`*scalar_value* [`,` *scalar_value_2*`,` *scalar_value_3*`,` ... ]`)`
 
 *T* `|` `where` *col* `has_any` `((`*tabular_expr*`))`
 
