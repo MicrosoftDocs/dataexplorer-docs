@@ -4,7 +4,6 @@ description: Learn how to use the sliding_window_counts plugin to calculate coun
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/30/2023
-ms.date: 01/30/2023
 ---
 # sliding_window_counts plugin
 
