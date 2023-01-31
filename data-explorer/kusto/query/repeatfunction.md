@@ -22,7 +22,7 @@ Generates a dynamic array containing a series comprised of repeated numbers.
 
 ## Returns
 
-If *count* is equal to zero, a empty array is returned.
+If *count* is equal to zero, an empty array is returned.
 If *count* is less than zero, a null value is returned.
 
 ## Examples
