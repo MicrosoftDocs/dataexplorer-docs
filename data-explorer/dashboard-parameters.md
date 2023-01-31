@@ -3,7 +3,7 @@ title: Parameters in Azure Data Explorer dashboards
 description: Use parameters as a building block for dashboard filters.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 11/14/2022
+ms.date: 01/31/2023
 ---
 
 # Use parameters in Azure Data Explorer dashboards
@@ -243,7 +243,7 @@ Query-based parameter values are derived at dashboard load time by executing the
 
 1. Select **Done** to create the parameter.
 
-#### Use the parameters in the query
+#### Use the parameter in a query
 
 1. The following sample query uses the new *Events* parameter by using the `_events` variable.
 
@@ -275,7 +275,7 @@ Free text parameters don't contain any values. They allow you to introduce your 
     * **Pin as dashboard filter**: checked
     * **Default value**: No default value
 
-#### Use parameters in the query
+#### Use the parameter in a query
 
 1. Run a sample query using the new *Company* parameter by using the `_company` variable name:
 
@@ -288,9 +288,9 @@ Free text parameters don't contain any values. They allow you to introduce your 
     | top 5 by WatchEvents
     ```
 
-### Use the Data Source parameter
+### Use the data source parameter
 
-Data source parameters contain dashboard data source values. They allow you to select a data source for the tiles and paramaeters using it.
+Once you have [added data sources](azure-data-explorer-dashboards.md#add-data-source) to your dashboard, you can create a parameter that selects one or more of the available data sources. This parameter can be used in tiles and other parameters.
 
 #### Create a data source parameter
 
@@ -299,15 +299,24 @@ Data source parameters contain dashboard data source values. They allow you to s
     * **Label**: Cluster
     * **Parameter type**: Data source
     * **Show on pages**: Select all
-    * **Values**: list all data sources
-    * **Default value**: Demo 12
+    * **Values**: Select all
+    * **Default value**: No default value
 
-#### Use parameters in the query
+    :::image type="content" source="media/dashboard-parameters/data-source-parameter.png" alt-text="Screenshot of data source parameters.":::
 
-1. Run a sample query using the new *Cluster* parameter by using the Data source parameter:
-2. With each selection of the data source parameter, all the relevant paramters and tiles will be executed on the selected data source.
+1. Select **Done**.
 
 The new parameter is now visible in the parameter list at the top of the dashboard.
+
+#### Use the parameter in a query
+
+1. Navigate to the query of a new or existing tile.
+1. In **Source**, select the name of your new parameter under **Data source parameters**. For the above-created parameter, select **Cluster**
+
+    :::image type="content" source="media/dashboard-parameters/data-source-parameter-in-query.png" alt-text="Screenshot of selecting a data source parameter in the query.":::
+
+1. Select **Apply changes**.
+1. Use the **Cluster** parameter to change the data source for this connected query.
 
 ## Use cross-filters as dashboard parameters
 
