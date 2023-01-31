@@ -1,9 +1,9 @@
 ---
 title: set_difference() - Azure Data Explorer
-description: This article describes set_difference() in Azure Data Explorer.
+description: Learn how to use the set_difference() function to create a difference set of all distinct values in the first array that aren't in the other array inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/02/2019
+ms.date: 01/30/2023
 ---
 # set_difference()
 
@@ -15,7 +15,7 @@ Returns a `dynamic` (JSON) array of the set of all distinct values that are in t
 
 ## Arguments
 
-* *arr1...arrN*: Input arrays to create a difference set (at least two arrays). All arguments must be dynamic arrays (see [pack_array](packarrayfunction.md)). 
+* *arr1...arrN*: Input arrays to create a difference set (at least two arrays). All arguments must be dynamic arrays (see [pack_array](packarrayfunction.md)).
 
 ## Returns
 

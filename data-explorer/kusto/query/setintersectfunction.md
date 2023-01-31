@@ -1,9 +1,9 @@
 ---
 title: set_intersect() - Azure Data Explorer
-description: This article describes set_intersect() in Azure Data Explorer.
+description: Learn how to use the set_intersect() function to create a set of the distinct values that are in all the array inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/02/2019
+ms.date: 01/30/2023
 ---
 # set_intersect()
 
@@ -15,7 +15,7 @@ Returns a `dynamic` array of the set of all distinct values that are in all arra
 
 ## Arguments
 
-* *arr1...arrN*: Input arrays to create an intersect set (at least two arrays). All arguments must be dynamic arrays. For more information, see [pack_array](packarrayfunction.md). 
+* *arr1...arrN*: Input arrays to create an intersect set (at least two arrays). All arguments must be dynamic arrays. For more information, see [pack_array](packarrayfunction.md).
 
 ## Returns
 

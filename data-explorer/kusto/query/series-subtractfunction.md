@@ -1,9 +1,9 @@
 ---
 title: series_subtract() - Azure Data Explorer
-description: This article describes series_subtract() in Azure Data Explorer.
+description: Learn how to use the series_subtract() function to calculate the element-wise subtraction of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/30/2023
 ---
 # series_subtract()
 
@@ -15,7 +15,7 @@ Calculates the element-wise subtraction of two numeric series inputs.
 
 ## Arguments
 
-* *series1, series2*: Input numeric arrays, the second to be element-wise subtracted from the first into a dynamic array result. All arguments must be dynamic arrays. 
+* *series1, series2*: Input numeric arrays, the second to be element-wise subtracted from the first into a dynamic array result. All arguments must be dynamic arrays.
 
 ## Returns
 

@@ -1,13 +1,13 @@
 ---
 title: hash_sha256() - Azure Data Explorer
-description: This article describes hash_sha256() in Azure Data Explorer.
+description: Learn how to use the hash_sha256() function to return a sha256 hash value of the source input.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/13/2020
 ---
 # hash_sha256()
 
-Returns a sha256 hash value for the input value.
+Returns a sha256 hash value of the source input.
 
 ## Syntax
 
@@ -44,7 +44,7 @@ h2=hash_sha256(datetime(2020-01-01))
 |---|---|
 |78ae647dc5544d227130a0682a51e30bc7777fbb6d8a8f17007463a3ecd1d524|ba666752dc1a20eb750b0eb64e780cc4c968bc9fb8813461c1d7e750f302d71d|
 
-The following example uses the `hash_sha256()` function to aggregate StormEvents based on State's SHA256 hash value. 
+The following example uses the `hash_sha256()` function to aggregate StormEvents based on State's SHA256 hash value.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

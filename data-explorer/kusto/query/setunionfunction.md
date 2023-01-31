@@ -1,13 +1,13 @@
 ---
 title: set_union() - Azure Data Explorer
-description: This article describes set_union() in Azure Data Explorer.
+description: Learn how to use the set_union() function to create a union set of all the  distinct values in all of the array inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/02/2019
+ms.date: 01/30/2023
 ---
 # set_union()
 
-Returns a `dynamic` array of the set of all distinct values that are in any of arrays - (arr1 ∪ arr2 ∪ ...).
+Returns a `dynamic` array of the set of all distinct values that are in any of the arrays - (arr1 ∪ arr2 ∪ ...).
 
 ## Syntax
 
@@ -15,7 +15,7 @@ Returns a `dynamic` array of the set of all distinct values that are in any of a
 
 ## Arguments
 
-* *arr1...arrN*: Input arrays to create a union set (at least two arrays). All arguments must be dynamic arrays (see [pack_array](packarrayfunction.md)). 
+* *arr1...arrN*: Input arrays to create a union set (at least two arrays). All arguments must be dynamic arrays (see [pack_array](packarrayfunction.md)).
 
 ## Returns
 

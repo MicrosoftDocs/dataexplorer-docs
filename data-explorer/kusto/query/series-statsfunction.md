@@ -1,6 +1,6 @@
 ---
 title: series_stats() - Azure Data Explorer
-description: This article describes series_stats() in Azure Data Explorer.
+description: Learn how to use the series_stats() function to calculate the statistics for a numerical series using multiple columns.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/27/2021
@@ -21,7 +21,7 @@ Statistic | Description
  `variance` | Sample variance of input array.
  `stdev`| Sample standard deviation of the input array.
 
-> [!NOTE] 
+> [!NOTE]
 > This function returns multiple values, so it can't be used as the input for another function.
 > Consider using [series_stats_dynamic](./series-stats-dynamicfunction.md) if you only need a single value, such as "average".
 
