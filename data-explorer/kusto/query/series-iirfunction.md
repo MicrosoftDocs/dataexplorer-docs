@@ -1,18 +1,19 @@
 ---
 title: series_iir() - Azure Data Explorer
-description: This article describes series_iir() in Azure Data Explorer.
+description: Learn how to use the series_iir() function to apply an Infinite Impulse Response filter on a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/09/2021
+ms.date: 01/25/2023
 ---
 # series_iir()
 
 Applies an Infinite Impulse Response filter on a series.  
 
-The function takes an expression containing dynamic numerical array as input, and applies an [Infinite Impulse Response](https://en.wikipedia.org/wiki/Infinite_impulse_response) filter. By specifying the filter coefficients, the function can be used:
-* to calculate the cumulative sum of the series
-* to apply smoothing operations
-* to apply various [high-pass](https://en.wikipedia.org/wiki/High-pass_filter), [band-pass](https://en.wikipedia.org/wiki/Band-pass_filter), and [low-pass](https://en.wikipedia.org/wiki/Low-pass_filter) filters
+The function takes an expression containing dynamic numerical array as input, and applies an [Infinite Impulse Response](https://en.wikipedia.org/wiki/Infinite_impulse_response) filter. By specifying the filter coefficients, you can use the function to:
+
+* calculate the cumulative sum of the series
+* apply smoothing operations
+* apply various [high-pass](https://en.wikipedia.org/wiki/High-pass_filter), [band-pass](https://en.wikipedia.org/wiki/Band-pass_filter), and [low-pass](https://en.wikipedia.org/wiki/Low-pass_filter) filters
 
 The function takes as input the column containing the dynamic array and two static dynamic arrays of the filter's *a* and *b* coefficients, and applies the filter on the column. It outputs a new dynamic array column, containing the filtered output.  
 
@@ -27,7 +28,7 @@ The function takes as input the column containing the dynamic array and two stat
 * *a*: Dynamic array of numeric values, containing the denominator coefficients of the filter.
 
 > [!IMPORTANT]
-> The first element of `a` (that is, `a[0]`) mustn't be zero, to avoid division by 0. See the [formula below](#the-filters-recursive-formula).
+> The first element of `a` (that is, `a[0]`) mustn't be zero, to avoid division by 0. See the [following formula](#the-filters-recursive-formula).
 
 ## The filter's recursive formula
 

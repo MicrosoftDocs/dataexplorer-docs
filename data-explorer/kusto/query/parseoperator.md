@@ -9,32 +9,28 @@ ms.date: 01/08/2023
 
 Evaluates a string expression and parses its value into one or more calculated columns. The calculated columns will have nulls, for unsuccessfully parsed strings. If there's no need to use rows where parsing doesn't succeed, prefer using the [parse-where operator](parsewhereoperator.md).
 
-```kusto
-T | parse Text with "ActivityName=" name ", ActivityType=" type
-```
-
 ## Syntax
 
 *T* `| parse` [`kind=regex` [`flags=regex_flags`] |`simple`|`relaxed`] *Expression* `with` `*` (*StringConstant* *ColumnName* [`:` *ColumnType*]) `*`...
 
-## Arguments
+## Parameters
 
-* *T*: The input table.
-* kind:
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The tabular input to parse.|
+| *kind* | string | &check; | One of the [supported kind values](#supported-kind-values).|
+| *Expression* | string | &check; | An expression that evaluates to a string.|
+| *ColumnName* | string | &check; | The name of a column to assign a value to, extracted from the string expression. |
+| *ColumnType* | string | | The scalar value that indicates the type to convert the value to. The default is the `string`.|
 
-  * simple (the default): StringConstant is a regular string value and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types.
+### Supported kind values
 
-  * regex: StringConstant may be a regular expression and the match is strict. All string delimiters, which can be a regex for this mode, should appear in the parsed string, and all extended columns must match the required types.
-
-  * flags: Flags to be used in regex mode like `U` (Ungreedy), `m` (multi-line mode), `s` (match new line `\n`), `i` (case-insensitive) in [RE2 flags](re2.md).
-
-  * relaxed: StringConstant is a regular string value and the match is relaxed. All string delimiters should appear in the parsed string, but extended columns may partially match the required types. Extended columns that didn't match the required types will get the value null.
-
-* *Expression*: An expression that evaluates to a string.
-
-* *ColumnName:* The name of a column to assign a value to, extracted from the string expression.
-  
-* *ColumnType:* Optional. The scalar value that indicates the type to convert the value to. The default is the `string` type.
+|Text|Description|
+|--|--|
+| `simple` | This is the default value. *StringConstant* is a regular string value and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types.|
+| `regex` | *StringConstant* may be a regular expression and the match is strict. All string delimiters, which can be a regex for this mode, should appear in the parsed string, and all extended columns must match the required types.|
+| `flags` | Flags to be used in regex mode like `U` (Ungreedy), `m` (multi-line mode), `s` (match new line `\n`), `i` (case-insensitive). More flags can be found in [RE2 flags](re2.md).|
+| `relaxed` | *StringConstant* is a regular string value and the match is relaxed. All string delimiters should appear in the parsed string, but extended columns may partially match the required types. Extended columns that didn't match the required types will get the value `null`.|
 
 ## Returns
 
@@ -78,7 +74,9 @@ In the example below, assume that the column `EventText` of table `Traces` conta
 strings of the form `Event: NotifySliceRelease (resourceName={0}, totalSlices={1}, sliceNumber={2}, lockTime={3}, releaseTime={4}, previousLockTime={5})`.
 The operation will extend the table with six columns: `resourceName`, `totalSlices`, `sliceNumber`, `lockTime`, `releaseTime`, and `previousLockTime`.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9XUQU+DMBQA4Du/4qWnYUhWOt20hqM3Q4zjZjww9tyqHSVtmZr446W4IATHduFguPDIe6Uf7xWJFhKdZmgggnVqq2slcXK3x9wm+GG5sVrkG9978kj9kEOsrHj5XEqR4SNKTA3CRKNRpc4wTncYPYgCpchxmW1xXUrUAVhlU1mXmIgtAjDuNi53K9QRmwUgVfaWiKqWsmm4mDIazoFe80vKaRiA/nnN8YRC416o0tz/vczspsrySTAaIbwaJNBTBHoWgY5JYPTfd4Gx44TwFCE8pws1dNRBmg8ShgfpbEI1SN7zrXc49+B9QZHqauvNqYd3YbdwAaRjIdAOgXQppB1xqfKNW6CNI21qk9FwSSN3S7edpB3x6i/lMogr7mFJz3/I911+TdXqFTPbsXQknY78tqOzpf5n/ga40FRFSQUAAA==" target="_blank">Run the query</a>
+
 ```kusto
 let Traces = datatable(EventText:string)
 [

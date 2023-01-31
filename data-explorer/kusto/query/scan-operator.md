@@ -1,6 +1,6 @@
 ---
 title: scan operator - Azure Data Explorer
-description: This article describes the scan operator in Azure Data Explorer.
+description: Learn how to use the scan operator to scan data, match, and build sequences based on the predicates.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/22/2023
@@ -148,7 +148,7 @@ Events
 |00:11:00|D|D|
 |00:12:00||D|
 
-### Sessions tagging 
+### Sessions tagging
 
 Divide the input into sessions: a session ends 30 minutes after the first event of the session, after which a new session starts. Note the use of `with_match_id` flag which assigns a unique value for each distinct match (session) of *scan*. Also note the special use of two *steps* in this example, `inSession` has `true` as condition so it captures and outputs all the records from the input while `endSession` captures records that happen more than 30m from the `sessionStart` value for the current match. The `endSession` step has `output=none` meaning it doesn't produce output records. The `endSession` step is used to advance the state of the current match from `inSession` to `endSession`, allowing a new match (session) to begin, starting from the current record.
 
@@ -279,7 +279,7 @@ Referencing a value in the state is done in the form *StepName*.*ColumnName*. Fo
 
 Each record from the input is evaluated against all of scan’s steps, starting from last to first. When a record *r* is considered against some step *s_k*, the following logic is applied:
 
-* If the state of the previous step is not empty and the record *r* satisfies the condition of *s_k* using the state of the previous step *s_(k-1)*, then the following happens:
+* If the state of the previous step isn't empty and the record *r* satisfies the condition of *s_k* using the state of the previous step *s_(k-1)*, then the following happens:
     1. The state of *s_k* is deleted.
     1. The state of *s_(k-1)* becomes ("promoted" to be) the state of *s_k*, and the state of *s_(k-1)* becomes empty.
     1. All the assignments of *s_k* are calculated and extend *r*.

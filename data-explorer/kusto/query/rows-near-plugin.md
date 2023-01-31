@@ -1,6 +1,6 @@
 ---
 title: rows_near plugin - Azure Data Explorer
-description: This article describes rows_near plugin in Azure Data Explorer.
+description: Learn how to use the rows_near plugin to find rows near a specified condition.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/19/2023

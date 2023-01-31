@@ -1,6 +1,6 @@
 ---
 title: search operator - Azure Data Explorer
-description: This article describes search operators in Azure Data Explorer.
+description: Learn how to use the search operator to search for a text pattern in multiple tables and columns.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/22/2023
@@ -74,7 +74,7 @@ Unlike the [find operator](findoperator.md), the `search` operator does not supp
 
 1. `withsource=`: The output will always include a column called `$table` of type `string` whose value
    is the table name from which each record was retrieved (or some system-generated name if the source
-   is not a table but a composite expression).
+   isn't a table but a composite expression).
 2. `project=`, `project-smart`: The output schema is equivalent to `project-smart` output schema.
 
 ## Examples
