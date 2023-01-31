@@ -1,9 +1,9 @@
 ---
 title: serialize operator - Azure Data Explorer
-description: This article describes serialize operator in Azure Data Explorer.
+description: Learn how to use the serialize operator to mark the input row set as serialized and ready for window functions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/22/2023
 ---
 # serialize operator
 
@@ -11,15 +11,16 @@ Marks that the order of the input row set is safe to use for window functions.
 
 The operator has a declarative meaning. It marks the input row set as serialized (ordered), so that [window functions](./windowsfunctions.md) can be applied to it.
 
-```kusto
-T | serialize rn=row_number()
-```
-
 ## Syntax
 
 `serialize` [*Name1* `=` *Expr1* [`,` *Name2* `=` *Expr2*]...]
 
-* The *Name*/*Expr* pairs are similar to those pairs in the [extend operator](./extendoperator.md).
+## Parameters
+
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *Name* | string | | The name of the column to add or update. If omitted, the output column name will be automatically generated. |
+| *Expr* | string | &check; | The calculation to perform over the input.|
 
 ## Example
 
@@ -35,7 +36,7 @@ Traces
 
 The output row set of the following operators is marked as serialized.
 
-[range](./rangeoperator.md), [sort](./sortoperator.md), [order](./orderoperator.md), [top](./topoperator.md), [top-hitters](./tophittersoperator.md), [getschema](./getschemaoperator.md).
+[range](./rangeoperator.md), [sort](./sort-operator.md), [top](./topoperator.md), [top-hitters](./tophittersoperator.md), [getschema](./getschemaoperator.md).
 
 The output row set of the following operators is marked as non-serialized.
 

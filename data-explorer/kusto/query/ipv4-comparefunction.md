@@ -20,12 +20,7 @@ Compares two IPv4 strings. The two IPv4 strings are parsed and compared while ac
 |*Expr1*, *Expr2*| string | &check; | A string expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).
 |*PrefixMask*| int | | An integer from 0 to 32 representing the number of most-significant bits that are taken into account.
 
-## IP-prefix notation
-
-IP addresses can be defined with `IP-prefix notation` using a slash (`/`) character.
-The IP address to the LEFT of the slash (`/`) is the base IP address. The number (0 to 32) to the RIGHT of the slash (`/`) is the number of contiguous 1 bit in the netmask.
-
-For example, 192.168.2.0/24 will have an associated net/subnetmask containing 24 contiguous bits or 255.255.255.0 in dotted decimal format.
+[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 ## Returns
 
@@ -52,6 +47,8 @@ datatable(ip1_string:string, ip2_string:string)
 | extend result = ipv4_compare(ip1_string, ip2_string)
 ```
 
+**Output**
+
 |ip1_string|ip2_string|result|
 |---|---|---|
 |192.168.1.0|192.168.1.0|0|
@@ -73,6 +70,8 @@ datatable(ip1_string:string, ip2_string:string, prefix:long)
 ]
 | extend result = ipv4_compare(ip1_string, ip2_string, prefix)
 ```
+
+**Output**
 
 |ip1_string|ip2_string|prefix|result|
 |---|---|---|---|

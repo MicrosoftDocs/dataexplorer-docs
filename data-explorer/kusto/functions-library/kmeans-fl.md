@@ -3,7 +3,7 @@ title: kmeans_fl() - Azure Data Explorer
 description: This article describes the kmeans_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 10/18/2020
+ms.date: 11/08/2022
 ---
 # kmeans_fl()
 
@@ -25,17 +25,17 @@ The function `kmeans_fl()` clusterizes a dataset using the [k-means algorithm](h
 
 ## Usage
 
-`kmeans_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`kmeans_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
 let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
 {
-    let kwargs = pack('k', k, 'features', features, 'cluster_col', cluster_col);
+    let kwargs = bag_pack('k', k, 'features', features, 'cluster_col', cluster_col);
     let code = ```if 1:
         
         from sklearn.cluster import KMeans
@@ -65,9 +65,9 @@ OccupancyDetection
 | sample 10
 ~~~
 
-# [Persistent](#tab/persistent)
+# [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
@@ -76,7 +76,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create function with (folder = "Packages\\ML", docstring = "K-Means clustering")
 kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 {
-    let kwargs = pack('k', k, 'features', features, 'cluster_col', cluster_col);
+    let kwargs = bag_pack('k', k, 'features', features, 'cluster_col', cluster_col);
     let code = ```if 1:
         
         from sklearn.cluster import KMeans

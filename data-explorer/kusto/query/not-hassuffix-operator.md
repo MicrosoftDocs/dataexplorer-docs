@@ -1,40 +1,24 @@
 ---
-title: "The case-insensitive !hassuffix string operator - Azure Data Explorer"
-description: "This article describes the case-insensitive !hassuffix string operator in Azure Data Explorer."
+title: The case-insensitive !hassuffix string operator - Azure Data Explorer
+description: Learn how to use the !hassuffix string operator to filter records for data that doesn't have a case-insensitive suffix.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2021
+ms.date: 01/11/2023
 ---
 # !hassuffix operator
 
-Filters a record set for data that does not have a case-insensitive ending string.`has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
+Filters a record set for data that doesn't have a case-insensitive ending string. `!hassuffix` returns `true` if there is no [term](datatypes-string-operators.md#what-is-a-term) inside string column ending with the specified string expression.
 
-The following table provides a comparison of the `hassuffix` operators:
-
-|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
-|-----------|--------------|----------------|-------------------------|
-|[`hassuffix`](hassuffix-operator.md) |RHS is a term suffix in LHS |No |`"North America" hassuffix "ica"`|
-|[`!hassuffix`](not-hassuffix-operator.md) |RHS isn't a term suffix in LHS |No |`"North America" !hassuffix "americ"`|
-|[`hassuffix_cs`](hassuffix-cs-operator.md)  |RHS is a term suffix in LHS |Yes |`"North America" hassuffix_cs "ica"`|
-|[`!hassuffix_cs`](not-hassuffix-cs-operator.md) |RHS isn't a term suffix in LHS |Yes |`"North America" !hassuffix_cs "icA"`|
-
-> [!NOTE]
-> The following abbreviations are used in the table above:
->
-> * RHS = right hand side of the expression
-> * LHS = left hand side of the expression
-
-For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
-
-Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
+[!INCLUDE [hassuffix-operator-comparison](../../includes/hassuffix-operator-comparison.md)]
 
 ## Performance tips
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator. For example, use `hassuffix_cs` instead of `hassuffix`.
+When possible, use [!hassuffix_cs](not-hassuffix-cs-operator.md) - a case-sensitive version of the operator.
 
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`.
+> [!NOTE]
+> Text index cannot be fully utilized for this function, therefore the performance of this function is comparable to [!endswith](not-endswith-operator.md) function, though the semantics is different.
 
 ## Syntax
 

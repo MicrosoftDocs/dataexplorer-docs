@@ -1,16 +1,17 @@
 ---
 title: series_fit_line() - Azure Data Explorer
-description: This article describes series_fit_line() in Azure Data Explorer.
+description: Learn how to use the series_fit_line() function to apply a linear regression on a series to return multiple columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/22/2023
 ---
 # series_fit_line()
 
 Applies linear regression on a series, returning multiple columns.  
 
 Takes an expression containing dynamic numerical array as input and does [linear regression](https://en.wikipedia.org/wiki/Line_fitting) to find the line that best fits it. This function should be used on time series arrays, fitting the output of make-series operator. The function generates the following columns:
-* `rsquare`: [r-square](https://en.wikipedia.org/wiki/Coefficient_of_determination) is a standard measure of the fit quality. The value's a number in the range [0-1], where 1 - is the best possible fit, and 0 means the data is unordered and doesn't fit any line. 
+
+* `rsquare`: [r-square](https://en.wikipedia.org/wiki/Coefficient_of_determination) is a standard measure of the fit quality. The value's a number in the range [0-1], where 1 - is the best possible fit, and 0 means the data is unordered and doesn't fit any line.
 * `slope`: Slope of the approximated line ("a" from y=ax+b).
 * `variance`: Variance of the input data.
 * `rvariance`: Residual variance that is the variance between the input data values the approximated ones.

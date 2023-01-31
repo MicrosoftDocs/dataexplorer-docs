@@ -3,10 +3,9 @@ title: series_rolling_fl() - Azure Data Explorer
 description: This article describes the series_rolling_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 09/08/2020
+ms.date: 11/14/2022
 ---
 # series_rolling_fl()
-
 
 The function `series_rolling_fl()` applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
@@ -26,15 +25,15 @@ The function `series_rolling_fl()` applies rolling aggregation on a series. It t
 * *aggr*: The name of the aggregation function to use. See [aggregation functions](#aggregation-functions).
 * *aggr_params*: Optional parameters for the aggregation function.
 * *center*: An optional Boolean value that indicates whether the rolling window is one of the following options:
-    * applied symmetrically before and after the current point, or 
+    * applied symmetrically before and after the current point, or
     * applied from the current point backwards. <br>
     By default, *center* is false, for calculation on streaming data.
 
 ## Aggregation functions
 
-This function supports any aggregation function from [numpy](https://numpy.org/) or [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats) that calculates a scalar out of a series. The following list is not exhaustive:
+This function supports any aggregation function from [numpy](https://numpy.org/) or [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats) that calculates a scalar out of a series. The following list isn't exhaustive:
 
-* [`sum`](https://numpy.org/doc/stable/reference/generated/numpy.sum.html#numpy.sum) 
+* [`sum`](https://numpy.org/doc/stable/reference/generated/numpy.sum.html#numpy.sum)
 * [`mean`](https://numpy.org/doc/stable/reference/generated/numpy.mean.html?highlight=mean#numpy.mean)
 * [`min`](https://numpy.org/doc/stable/reference/generated/numpy.amin.html#numpy.amin)
 * [`max`](https://numpy.org/doc/stable/reference/generated/numpy.amax.html)
@@ -48,24 +47,24 @@ This function supports any aggregation function from [numpy](https://numpy.org/)
 * [`mode` (most common value)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html)
 * [`moment` (n<sup>th</sup> moment)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.moment.html)
 * [`tmean` (trimmed mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmean.html)
-* [`tmin`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmin.html) 
+* [`tmin`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmin.html)
 * [`tmax`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmax.html)
 * [`tstd`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tstd.html)
-* [`iqr` (inter quantile range)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.iqr.html) 
+* [`iqr` (inter quantile range)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.iqr.html)
 
 ## Usage
 
-`series_rolling_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`series_rolling_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
 {
-    let kwargs = pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
+    let kwargs = bag_pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
     let code =
         '\n'
         'y_series = kargs["y_series"]\n'
@@ -97,9 +96,9 @@ demo_make_series1
 | render timechart
 ```
 
-# [Persistent](#tab/persistent)
+# [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
@@ -108,7 +107,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Rolling window functions on a series")
 series_rolling_fl(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic, center:bool=true)
 {
-    let kwargs = pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
+    let kwargs = bag_pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
     let code =
         '\n'
         'y_series = kargs["y_series"]\n'
@@ -187,4 +186,3 @@ The following examples assume the function is already installed:
     ```
     
     :::image type="content" source="images/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
-    

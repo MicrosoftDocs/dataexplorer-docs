@@ -3,7 +3,7 @@ title: geo_h3cell_neighbors() - Azure Data Explorer
 description: Learn how to use the geo_h3cell_neighbors() function to calculate the H3 cell neighbors.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 12/14/2022
+ms.date: 01/02/2023
 ---
 # geo_h3cell_neighbors()
 
@@ -35,6 +35,8 @@ The following example calculates H3 cell neighbors.
 print neighbors = geo_h3cell_neighbors('862a1072fffffff')
 ```
 
+**Output**
+
 |neighbors|
 |---|
 |["862a10727ffffff","862a10707ffffff","862a1070fffffff","862a10777ffffff","862a100dfffffff","862a100d7ffffff"]|
@@ -46,6 +48,8 @@ The following example calculates an array of input H3 cell with its neighbors.
 let h3cell = '862a1072fffffff';
 print cells = array_concat(pack_array(h3cell), geo_h3cell_neighbors(h3cell))
 ```
+
+**Output**
 
 |cells|
 |---|
@@ -60,8 +64,10 @@ print cells = array_concat(pack_array(h3cell), geo_h3cell_neighbors(h3cell))
 | mv-expand cells to typeof(string)
 | project polygons = geo_h3cell_to_polygon(cells)
 | summarize arr = make_list(polygons)
-| project geojson = pack("type", "Feature","geometry", pack("type", "GeometryCollection", "geometries", arr), "properties", pack("name", "polygons"))
+| project geojson = bag_pack("type", "Feature","geometry", bag_pack("type", "GeometryCollection", "geometries", arr), "properties", bag_pack("name", "polygons"))
 ```
+
+**Output**
 
 |geojson|
 |---|
@@ -79,6 +85,8 @@ print cells = array_concat(pack_array(h3cell), geo_h3cell_neighbors(h3cell))
 | project polygon = geo_union_polygons_array(arr)
 ```
 
+**Output**
+
 |polygon|
 |---|
 |{<br>  "type": "Polygon",<br>  "coordinates": [[[  -73.926766604813565,  40.718903205013063],[  -73.912969923470314,  40.750105305345329],[  -73.943844904976629,  40.773964402038523],[  -73.988522328408948,  40.766594382212254],[  -74.019448383546617,  40.79043914023697],[  -74.064132193843633,  40.783038509825005],[  -74.077839665342211,  40.751803958414136],[  -74.1224794808745,  40.744383587828388],[  -74.1361375042681,  40.713156370029125],[  -74.1052004095288,  40.689365648097251],[  -74.118853750491638,  40.658161927046628],[  -74.0879619670209,  40.6343838242296],[  -74.043422283844933,  40.641782462872115],[  -74.012581189358343,  40.617990065981623],[  -73.968047801220749,  40.625358290164755],[  -73.954305509472675,  40.656529678451555],[  -73.909728515658443,  40.663878222244442],[  -73.895936872069854,  40.695056852396377],[  -73.926766604813565,  40.718903205013063]]]}|
@@ -89,6 +97,8 @@ The following example returns true because of the invalid H3 Cell token input.
 ```kusto
 print invalid = isnull(geo_h3cell_neighbors('abc'))
 ```
+
+**Output**
 
 |invalid|
 |---|

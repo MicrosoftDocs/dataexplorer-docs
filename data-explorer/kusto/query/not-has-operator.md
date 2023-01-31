@@ -1,13 +1,13 @@
 ---
 title: The case-insensitive !has string operators - Azure Data Explorer
-description: This article describes the case-insensitive !has string operator in Azure Data Explorer.
+description: Learn how to use the !has string operator to filter records for data that doesn't have a matching case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2021
+ms.date: 01/09/2023
 ---
 # !has operator
 
-Filters a record set for data that does not have a matching case-insensitive string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
+Filters a record set for data that doesn't have a matching case-insensitive string. `!has` searches for indexed terms, where an indexed [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
 [!INCLUDE [has-operator-comparison](../../includes/has-operator-comparison.md)]
 
@@ -15,13 +15,11 @@ Filters a record set for data that does not have a matching case-insensitive str
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator. For example, use `has_cs` instead of `has`.
-
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`.
+When possible, use the case-sensitive [!has_cs](not-has-cs-operator.md).
 
 ## Syntax
 
-*T* `|` `where` *Column* `!has` `(`*Expression*`)`   
+*T* `|` `where` *Column* `!has` `(`*Expression*`)`
 
 ## Arguments
 

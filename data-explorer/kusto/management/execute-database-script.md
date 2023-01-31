@@ -67,7 +67,7 @@ Each command appearing in the script will be reported as a separate record in th
 .create-or-alter function
   with (skipvalidation = "true") 
   SampleT1(myLimit: long) { 
-    T1 | limit myLimit
+    T1 | take myLimit
 }
 ```
 
@@ -75,4 +75,4 @@ Each command appearing in the script will be reported as a separate record in th
 |---|---|---|---|---|
 |1d28531b-58c8-4023-a5d3-16fa73c06cfa|TableCreate|.create-merge table T(a:string, b:string)|Completed||
 |67d0ea69-baa4-419a-93d3-234c03834360|RetentionPolicyAlter|.alter-merge table T policy retention softdelete = 10d|Completed||
-|0b0e8769-d4e8-4ff9-adae-071e52a650c7|FunctionCreateOrAlter|.create-or-alter function  with (skipvalidation = "true")SampleT1(myLimit: long) {T1 \| limit myLimit}|Completed||
+|0b0e8769-d4e8-4ff9-adae-071e52a650c7|FunctionCreateOrAlter|.create-or-alter function  with (skipvalidation = "true")SampleT1(myLimit: long) {T1 \| take myLimit}|Completed||

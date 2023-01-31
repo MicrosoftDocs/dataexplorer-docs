@@ -1,9 +1,9 @@
 ---
 title: not() - Azure Data Explorer
-description: This article describes not() in Azure Data Explorer.
+description: Learn how to use the not() function to reverse the value of its boolean argument.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/05/2023
 ---
 # not()
 

@@ -1,46 +1,34 @@
 ---
 title: reduce operator - Azure Data Explorer
-description: This article describes reduce operator in Azure Data Explorer.
+description: Learn how to use the reduce operator to group a set of strings together based on value similarity.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 1/17/2023
 ---
 # reduce operator
 
-Groups a set of strings together based on values similarity.
+Groups a set of strings together based on value similarity.
 
-```kusto
-T | reduce by LogMessage with threshold=0.1
-```
-
-For each such group, it outputs a **pattern** that best describes the group (possibly using the
-asterix (`*`) character to represent wildcards), a **count** of the number of values in the group,
-and a **representative** of the group (one of the original values in the group).
+For each such group, the operator returns a `pattern`, `count`, and `representative`. The `pattern` best describes the group, in which the `*` character represents a wildcard. The `count` is the number of values in the group, and the `representative` is one of the original values in the group.
 
 ## Syntax
 
-*T* `|` `reduce` [`kind` `=` *ReduceKind*] `by` *Expr* [`with` [`threshold` `=` *Threshold*] [`,` `characters` `=` *Characters*] ]
+*T* `|` `reduce` [`kind` `=` *ReduceKind*] `by` *Expr* [`with` [`threshold` `=` *Threshold*] [`,` `characters` `=` *Characters*]]
 
-## Arguments
+## Parameters
 
-* *Expr*: An expression that evaluates to a `string` value.
-* *Threshold*: A `real` literal in the range (0..1). Default is 0.1. For large inputs, threshold should be small. 
-* *Characters*: A `string` literal containing a list of characters to add to the list of characters
-  that don't break a term. (For example, if you want `aaa=bbbb` and `aaa:bbb` to each be a whole term,
-  rather than break on `=` and `:`, use `":="` as the string literal.)
-* *ReduceKind*: Specifies the reduce flavor. The only valid value for the time being is `source`.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *Expr* | string | &check; | The value by which to reduce.|
+| *Threshold* | real | | A value in the range 0-1. Default is 0.1. It's recommended to set a small threshold for large inputs. |
+| *Characters* | string | | A list of characters that don't break a term. For example, if you want `aaa=bbbb` and `aaa:bbb` to each be a whole term, rather than break on `=` and `:`, use `":="` as the string literal.|
+| *ReduceKind* | string | | The only valid value is `source`. If `source` is specified, the operator will append the `Pattern` column to the existing rows in the table instead of aggregating by `Pattern`.|
 
 ## Returns
 
-This operator returns a table with three columns (`Pattern`, `Count`, and `Representative`),
-and as many rows as there are groups. `Pattern` is the pattern value for the group, with `*`
-being used as a wildcard (representing arbitrary insertion strings), `Count` counts how
-many rows in the input to the operator are represented by this pattern, and `Representative`
-is one value from the input that falls into this group.
+A table with as many rows as there are groups and columns titled `pattern`, `count`, and `representative`. The `pattern` best describes the group, in which the `*` character represents a wildcard, or placeholder for an arbitrary insertion string. The `count` is the number of values in the group, and the `representative` is one of the original values in the group.
 
-If `[kind=source]` is specified, the operator will append the `Pattern` column to the existing rows in the table (instead of aggregating by `Pattern`).
-
-For example, the result of `reduce by city` might include: 
+For example, the result of `reduce by city` might include:
 
 |Pattern     |Count |Representative|
 |------------|------|--------------|
@@ -52,12 +40,16 @@ For example, the result of `reduce by city` might include:
 
 Another example with customized tokenization:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzWNMQ7CMBAEe16xcmWkCNkPyA9IR5H2cI7YCOzochGJxOO5hq1WGu2sUJ0ZOx7S3ojQhhhCwKq8IJ6+WKQ9OSmG48a7ojciidS7gVIula9MUkudR9fZ2KB1r61U9UJ18jGcLSYSnrbEuB9/FT5FMzQLr7m9pj5cQojokDIJJWVZ7c2N7gefKNUWogAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 range x from 1 to 1000 step 1
 | project MyText = strcat("MachineLearningX", tostring(toint(rand(10))))
 | reduce by MyText  with threshold=0.001 , characters = "X" 
 ```
+
+**Output**
 
 |Pattern         |Count|Representative   |
 |----------------|-----|-----------------|
@@ -84,6 +76,5 @@ Trace | take 10000
 
 [autocluster](./autoclusterplugin.md)
 
-**Notes**
-
-The implementation of `reduce` operator is largely based on the paper [A Data Clustering Algorithm for Mining Patterns From Event Logs](https://ristov.github.io/publications/slct-ipom03-web.pdf), by Risto Vaarandi.
+> [!NOTE]
+> The implementation of `reduce` operator is largely based on the paper [A Data Clustering Algorithm for Mining Patterns From Event Logs](https://ristov.github.io/publications/slct-ipom03-web.pdf), by Risto Vaarandi.

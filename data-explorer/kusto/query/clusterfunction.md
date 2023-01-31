@@ -38,13 +38,15 @@ cluster('help').database('Samples').StormEvents | count
 cluster('help.kusto.windows.net').database('Samples').StormEvents | count
 ```
 
+**Output**
+
 |Count|
 |---|
 |59066|
 
 ### Use cluster() inside let statements
 
-The previous query can be rewritten to use an inline function (`let` statement) that takes a parameter called `clusterName` and passes it to the `cluster()` function.
+The previous query can be rewritten to use a query-defined function (`let` statement) that takes a parameter called `clusterName` and passes it to the `cluster()` function.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleLogs?query=H4sIAAAAAAAAA8tJLVFIy89XsFXQSM4pLS5JLfJLzE21Ki4pysxL1+Sq5lIAAqgMsgpNvZTEksSkxOJUDfXgxNyCnNRidU294JL8olzXstS8kmKFGoXk/NK8Eq5aay6gBRrqGak5BeqaADuaG9BwAAAA" target="_blank">Run the query</a>
@@ -56,6 +58,8 @@ let foo = (clusterName:string)
 };
 foo('help')
 ```
+
+**Output**
 
 |Count|
 |---|

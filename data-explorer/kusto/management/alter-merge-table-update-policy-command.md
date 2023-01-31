@@ -12,6 +12,7 @@ Change the table update policy. The [update policy](updatepolicy.md) instructs A
 > [!NOTE]
 > The source table and the table for which the update policy is defined must be in the same database.
 > The update policy function schema and the target table schema must match in their column names, types, and order.
+> If the policy already defined on the table, the PolicyObjects specified in the command are added to the array of PolicyObjects in the existing policy.
 
 ## Syntax
 

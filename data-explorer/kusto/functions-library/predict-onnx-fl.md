@@ -29,18 +29,18 @@ The function `predict_onnx_fl()` predicts using an existing trained machine lear
 
 ## Usage
 
-`predict_onnx_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`predict_onnx_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed the code using the [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
 let predict_onnx_fl=(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
-    let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
+    let kwargs = bag_pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
     let code = ```if 1:
     
     import binascii
@@ -80,9 +80,9 @@ OccupancyDetection
 | summarize n=count() by Occupancy, pred_Occupancy
 ~~~
 
-# [Persistent](#tab/persistent)
+# [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
@@ -92,7 +92,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 predict_onnx_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
     let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
-    let kwargs = pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
+    let kwargs = bag_pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
     let code = ```if 1:
     
     import binascii

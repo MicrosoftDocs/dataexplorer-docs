@@ -94,7 +94,7 @@ items:
   - name: Set statement
     href: setstatement.md
   - name: Tabular expression statements
-    displayName: SQL views
+    displayName: views
     href: tabularexpressionstatements.md
   - name: Batches
     href: batches.md
@@ -138,16 +138,15 @@ items:
       href: broadcastjoin.md
     - name: Time window join
       href: join-timewindow.md
-  - name: limit operator
-    href: limitoperator.md
   - name: lookup operator
     href: lookupoperator.md
   - name: mv-apply operator
     href: mv-applyoperator.md
   - name: mv-expand operator
     href: mvexpandoperator.md
-  - name: order operator
-    href: orderoperator.md
+  - name: sort operator
+    displayName: order operator
+    href: sort-operator.md
   - name: project operator
     href: projectoperator.md
   - name: project-away operator
@@ -173,7 +172,39 @@ items:
   - name: reduce operator
     href: reduceoperator.md
   - name: render operator
-    href: renderoperator.md
+    items:
+    - name: render operator
+      href: renderoperator.md
+    - name: visualizations
+      items: 
+      - name: anomalychart
+        href: visualization-anomalychart.md
+      - name: areachart
+        href: visualization-areachart.md
+      - name: barchart
+        href: visualization-barchart.md
+      - name: card
+        href: visualization-card.md
+      - name: columnchart
+        href: visualization-columnchart.md
+      - name: ladderchart
+        href: visualization-ladderchart.md
+      - name: linechart
+        href: visualization-linechart.md
+      - name: piechart
+        href: visualization-piechart.md
+      - name: pivotchart
+        href: visualization-pivotchart.md
+      - name: scatterchart
+        href: visualization-scatterchart.md
+      - name: stackedareachart
+        href: visualization-stackedareachart.md
+      - name: table
+        href: visualization-table.md
+      - name: timechart
+        href: visualization-timechart.md
+      - name: timepivot
+        href: visualization-timepivot.md
   - name: sample operator
     href: sampleoperator.md
   - name: sample-distinct operator
@@ -187,8 +218,6 @@ items:
   - name: shuffle query
     displayName: hint.shufflekey, hint.strategy, shufflekey, hint, strategy
     href: shufflequery.md
-  - name: sort operator
-    href: sortoperator.md
   - name: summarize operator
     items:
     - name: summarize operator overview
@@ -196,6 +225,7 @@ items:
     - name: Using hll() and tdigest()
       href: usinghlltdigest.md
   - name: take operator
+    displayName: limit operator
     href: takeoperator.md
   - name: top operator
     href: topoperator.md
@@ -206,6 +236,7 @@ items:
   - name: union operator
     href: unionoperator.md
   - name: where operator
+    displayName: filter operator
     href: whereoperator.md
 - name: Special functions
   items:
@@ -329,7 +360,7 @@ items:
 - name: Scalar functions
   items:
   - name: Scalar function types
-    displayName: SQL stored procedures
+    displayName: stored procedures
     href: scalarfunctions.md
   - name: abs()
     href: abs-function.md
@@ -341,7 +372,8 @@ items:
     href: around-function.md
   - name: array_concat()
     href: arrayconcatfunction.md
-  - name: array_iif()
+  - name: array_iff()
+    displayName: array_iif()
     href: arrayifffunction.md
   - name: array_index_of()
     href: arrayindexoffunction.md
@@ -387,6 +419,8 @@ items:
     href: packfunction.md
   - name: bag_remove_keys()
     href: bag-remove-keys-function.md
+  - name: bag_set_key()
+    href: bag-set-key-function.md
   - name: base64_decode_toarray()
     href: base64_decode_toarrayfunction.md
   - name: base64_decode_tostring()
@@ -408,6 +442,7 @@ items:
   - name: beta_pdf()
     href: beta-pdffunction.md
   - name: bin()
+    displayName: floor()
     href: binfunction.md
   - name: bin_at()
     href: binatfunction.md
@@ -524,10 +559,9 @@ items:
   - name: extract_all()
     displayName: extractall()
     href: extractallfunction.md
-  - name: extract_json(), extractjson()
+  - name: extract_json()
+    displayName: extractjson()
     href: extractjsonfunction.md
-  - name: floor()
-    href: floorfunction.md
   - name: format_bytes()
     href: format-bytesfunction.md
   - name: format_datetime()
@@ -540,8 +574,6 @@ items:
     href: format-timespanfunction.md
   - name: gamma()
     href: gammafunction.md
-  - name: getmonth()
-    href: getmonthfunction.md
   - name: gettype()
     href: gettypefunction.md
   - name: getyear()
@@ -579,9 +611,8 @@ items:
   - name: hourofday()
     href: hourofdayfunction.md
   - name: iff()
+    displayName: iif()
     href: ifffunction.md
-  - name: iif()
-    href: iiffunction.md
   - name: indexof()
     href: indexoffunction.md
   - name: indexof_regex()
@@ -647,6 +678,7 @@ items:
   - name: min_of()
     href: min-offunction.md
   - name: monthofyear()
+    displayName: getmonth()
     href: monthofyearfunction.md
   - name: new_guid()
     href: newguidfunction.md
@@ -758,9 +790,11 @@ items:
     href: substringfunction.md
   - name: tan()
     href: tanfunction.md
-  - name: tdigest_merge()
-    href: tdigest-mergefunction.md
+  - name: merge_tdigest()
+    displayName: tdigest_merge()
+    href: merge-tdigest-function.md
   - name: tobool()
+    displayName: toboolean()
     href: toboolfunction.md
   - name: todatetime()
     href: todatetimefunction.md
@@ -866,6 +900,8 @@ items:
     href: dcountif-aggfunction.md
   - name: hll()
     href: hll-aggfunction.md
+  - name: hll_if()
+    href: hll-if-aggregation-function.md
   - name: hll_merge()
     href: hll-merge-aggfunction.md
   - name: make_bag()
@@ -913,7 +949,7 @@ items:
     href: take-anyif-aggfunction.md        
   - name: tdigest()
     href: tdigest-aggfunction.md
-  - name: tdigest_merge()
+  - name: tdigest_merge(), merge_tdigest()
     href: tdigest-merge-aggfunction.md
   - name: variance()
     href: variance-aggfunction.md
@@ -1048,6 +1084,9 @@ items:
   - name: series_divide()
     displayName: element-wise, elementwise
     href: series-dividefunction.md
+  - name: series_dot_product()
+    displayName: element-wise, elementwise
+    href: series-dot-productfunction.md
   - name: series_equals()
     displayName: element-wise, elementwise
     href: series-equalsfunction.md
@@ -1151,7 +1190,7 @@ items:
     href: series-subtractfunction.md
   - name: series_tan()
     displayName: element-wise, elementwise
-    href: series-tanfunction.md   
+    href: series-tanfunction.md
 - name: Plugins
   items:
   - name: General plugins
@@ -1248,8 +1287,10 @@ items:
     href: rowcumsumfunction.md
   - name: row_number()
     href: rownumberfunction.md
-  - name: row_rank()
-    href: rowrankfunction.md
+  - name: row_rank_dense()
+    href: rowrankdensefunction.md
+  - name: row_rank_min()
+    href: rowrankminfunction.md
   - name: row_window_session()
     href: row-window-session-function.md
 - name: Limits and Errors
@@ -1304,3 +1345,9 @@ items:
       href: ../tools/kusto-explorer-troubleshooting.md
   - name: Kusto.Cli
     href: ../tools/kusto-cli.md
+  - name: Kusto emulator
+    items:
+    - name: Kusto emulator overview
+      href: ../../kusto-emulator-overview.md
+    - name: Install the Kusto emulator
+      href: ../../kusto-emulator-install.md

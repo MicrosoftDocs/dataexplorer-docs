@@ -1,9 +1,9 @@
 ---
 title: series_fit_2lines_dynamic() - Azure Data Explorer
-description: This article describes series_fit_2lines_dynamic() in Azure Data Explorer.
+description: Learn how to use the series_fit_2lines_dynamic() function to apply two segments linear regression on a dynamic numerical array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/22/2023
 ---
 # series_fit_2lines_dynamic()
 
@@ -11,11 +11,11 @@ Applies two segments linear regression on a series, returning a dynamic object.
 
 Takes an expression containing dynamic numerical array as input and applies [two segments linear regression](https://en.wikipedia.org/wiki/Segmented_regression) in order to identify and quantify trend changes in a series. The function iterates on the series indexes. In each iteration, it splits the series to two parts, and fits a separate line using [series_fit_line()](series-fit-linefunction.md) or [series_fit_line_dynamic()](series-fit-line-dynamicfunction.md). The function fits the lines to each of the two parts, and calculates the total R-squared value. The best split is the one that maximizes R-squared. The function returns its parameters in dynamic value with the following content:
 
-* `rsquare`: [R-squared](https://en.wikipedia.org/wiki/Coefficient_of_determination) is a standard measure of the fit quality. It's a number in the range of [0-1], where 1 is the best possible fit, and 0 means the data is unordered and do not fit any line.
+* `rsquare`: [R-squared](https://en.wikipedia.org/wiki/Coefficient_of_determination) is a standard measure of the fit quality. It's a number in the range of [0-1], where 1 is the best possible fit, and 0 means the data is unordered and don't fit any line.
 * `split_idx`: the index of breaking point to two segments (zero-based).
 * `variance`: variance of the input data.
 * `rvariance`: residual variance that is the variance between the input data values the approximated ones (by the two line segments).
-* `line_fit`: numerical array holding a series of values of the best fitted line. The series length is equal to the length of the input array. It is used for charting.
+* `line_fit`: numerical array holding a series of values of the best fitted line. The series length is equal to the length of the input array. It's used for charting.
 * `right.rsquare`: r-square of the line on the right side of the split, see [series_fit_line()](series-fit-linefunction.md) or [series_fit_line_dynamic()](series-fit-line-dynamicfunction.md).
 * `right.slope`: slope of the right approximated line (of the form y=ax+b).
 * `right.interception`: interception of the approximated left line (b from y=ax+b).

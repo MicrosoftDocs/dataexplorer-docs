@@ -1,9 +1,9 @@
 ---
 title: series_fill_backward() - Azure Data Explorer
-description: This article describes series_fill_backward() in Azure Data Explorer.
+description: Learn how to use the series_fill_backward() function to perform a backward fill interpolation of missing values in a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/22/2023
 ---
 # series_fill_backward()
 
@@ -14,6 +14,7 @@ An expression containing dynamic numerical array is the input. The function repl
 ## Syntax
 
 `series_fill_backward(`*x*`[, `*missing_value_placeholder*`])`
+
 * Will return series *x* with all instances of *missing_value_placeholder* filled backwards.
 
 ## Arguments
@@ -23,7 +24,7 @@ An expression containing dynamic numerical array is the input. The function repl
 
 **Notes**
 
-* Specify *null* as the default value to apply any interpolation functions after [make-series](make-seriesoperator.md): 
+* Specify *null* as the default value to apply any interpolation functions after [make-series](make-seriesoperator.md):
 
 ```kusto
 make-series num=count() default=long(null) on TimeStamp from ago(1d) to ago(1h) step 1h by Os, Browser
@@ -47,9 +48,11 @@ data
 
 ```
 
+**Output**
+
 |`arr`|`fill_backward`|
 |---|---|
 |[111,null,36,41,null,null,16,61,33,null,null]|[111,36,36,41,16,16,16,61,33,null,null]|
 
-  
+
 Use [series_fill_forward](series-fill-forwardfunction.md) or [series-fill-const](series-fill-constfunction.md) to complete interpolation of the above array.

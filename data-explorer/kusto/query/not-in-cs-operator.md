@@ -1,6 +1,6 @@
 ---
 title: The case-sensitive !in string operator - Azure Data Explorer
-description: This article describes the case-sensitive !in string operator in Azure Data Explorer.
+description: Learn how to use the !in string operator to filter records for data without a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/28/2022
@@ -14,10 +14,6 @@ Filters a record set for data without a case-sensitive string.
 ## Performance tips
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
-
-For faster results, use the case-sensitive version of an operator. For example, use `in` instead of `in~`.
-
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`.
 
 ## Syntax
 

@@ -1,9 +1,9 @@
 ---
 title: series_fill_linear() - Azure Data Explorer
-description: This article describes series_fill_linear() in Azure Data Explorer.
+description: Learn how to use the series_fill_linear() function to linearly interpolate missing values in a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/22/2023
 ---
 # series_fill_linear()
 
@@ -14,8 +14,8 @@ Takes an expression containing dynamic numerical array as input, does linear int
 ## Syntax
 
 `series_fill_linear(`*x*`[,` *missing_value_placeholder*` [,`*fill_edges*` [,`*constant_value*`]]]))`
+
 * Will return series linear interpolation of *x* using specified parameters.
- 
 
 ## Arguments
 
@@ -26,7 +26,7 @@ Takes an expression containing dynamic numerical array as input, does linear int
 
 ## Notes
 
-* To apply any interpolation functions after [make-series](make-seriesoperator.md), specify *null* as the default value: 
+* To apply any interpolation functions after [make-series](make-seriesoperator.md), specify *null* as the default value:
 
     <!-- csl: https://help.kusto.windows.net/Samples -->
     ```kusto
@@ -55,6 +55,8 @@ data
           with_const = series_fill_linear(arr, double(null), true, 3.14159)  
 
 ```
+
+**Output**
 
 |`arr`|`without_args`|`with_edges`|`wo_edges`|`with_const`|
 |---|---|---|---|---|

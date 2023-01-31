@@ -3,7 +3,7 @@ title: series_shapes_fl() - Azure Data Explorer
 description: This article describes the series_shapes_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 08/23/2022
+ms.date: 11/08/2022
 ---
 # series_shapes_fl()
 
@@ -23,11 +23,11 @@ The function `series_shapes_fl()` detects positive/negative trend or jump in a s
 
 ## Usage
 
-`series_shapes_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`series_shapes_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -65,10 +65,10 @@ let series_shapes_fl=(series:dynamic, advanced:bool=false)
 //  filter for jumps that are not close to the series edges and the right slope has the same direction
     let norm_rslope = abs(rslope/norm_range);
     let jump_score = iff((sign_jump*rslope >= 0.0 or norm_rslope < 0.02) and split_idx between((0.1*n)..(0.9*n)), jump_score1, 0.0);
-    let res = iff(advanced, pack("n", n, "low_pct", low_pct, "high_pct", high_pct, "norm_range", norm_range, "slope", slope, "rsquare", rsquare, "rel_slope", rel_slope, "norm_slope", norm_slope,
+    let res = iff(advanced, bag_pack("n", n, "low_pct", low_pct, "high_pct", high_pct, "norm_range", norm_range, "slope", slope, "rsquare", rsquare, "rel_slope", rel_slope, "norm_slope", norm_slope,
                               "trend_score", trend_score, "split_idx", split_idx, "jump", jump, "rsquare2", rsquare2, "last_left", last_left, "first_right", first_right, "rel_jump", rel_jump,
                               "lslope", lslope, "rslope", rslope, "norm_rslope", norm_rslope, "norm_jump", norm_jump, "jump_score", jump_score)
-                              , pack("trend_score", trend_score, "jump_score", jump_score));
+                              , bag_pack("trend_score", trend_score, "jump_score", jump_score));
     res
 }
 ;
@@ -88,9 +88,9 @@ union
 | render timechart with(series=tsid, xcolumn=x, ycolumns=y)
 ```
 
-# [Persistent](#tab/persistent)
+# [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
@@ -131,10 +131,10 @@ series_shapes_fl(series:dynamic, advanced:bool=false)
 //  filter for jumps that are not close to the series edges and the right slope has the same direction
     let norm_rslope = abs(rslope/norm_range);
     let jump_score = iff((sign_jump*rslope >= 0.0 or norm_rslope < 0.02) and split_idx between((0.1*n)..(0.9*n)), jump_score1, 0.0);
-    let res = iff(advanced, pack("n", n, "low_pct", low_pct, "high_pct", high_pct, "norm_range", norm_range, "slope", slope, "rsquare", rsquare, "rel_slope", rel_slope, "norm_slope", norm_slope,
+    let res = iff(advanced, bag_pack("n", n, "low_pct", low_pct, "high_pct", high_pct, "norm_range", norm_range, "slope", slope, "rsquare", rsquare, "rel_slope", rel_slope, "norm_slope", norm_slope,
                               "trend_score", trend_score, "split_idx", split_idx, "jump", jump, "rsquare2", rsquare2, "last_left", last_left, "first_right", first_right, "rel_jump", rel_jump,
                               "lslope", lslope, "rslope", rslope, "norm_rslope", norm_rslope, "norm_jump", norm_jump, "jump_score", jump_score)
-                              , pack("trend_score", trend_score, "jump_score", jump_score));
+                              , bag_pack("trend_score", trend_score, "jump_score", jump_score));
     res
 }
 ```

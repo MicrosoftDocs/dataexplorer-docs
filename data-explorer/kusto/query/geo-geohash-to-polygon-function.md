@@ -33,6 +33,8 @@ Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynam
 print GeohashPolygon = geo_geohash_to_polygon("dr5ru");
 ```
 
+**Output**
+
 |GeohashPolygon|
 |---|
 |{<br>"type": "Polygon",<br>"coordinates": [<br>[[-74.00390625, 40.7373046875], [-73.9599609375, 40.7373046875], [-73.9599609375, 40.78125], [-74.00390625, 40.78125], [-74.00390625, 40.7373046875]]]<br>}|
@@ -51,11 +53,13 @@ datatable(lng:real, lat:real)
 | project geohash = geo_point_to_geohash(lng, lat, 5)
 | project geohash_polygon = geo_geohash_to_polygon(geohash)
 | summarize geohash_polygon_lst = make_list(geohash_polygon)
-| project pack(
+| project bag_pack(
     "type", "Feature",
-    "geometry", pack("type", "GeometryCollection", "geometries", geohash_polygon_lst),
-    "properties", pack("name", "Geohash polygons collection"))
+    "geometry", bag_pack("type", "GeometryCollection", "geometries", geohash_polygon_lst),
+    "properties", bag_pack("name", "Geohash polygons collection"))
 ```
+
+**Output**
 
 |Column1|
 |---|
@@ -67,6 +71,8 @@ The following example returns a null result because of the invalid geohash input
 ```kusto
 print GeohashPolygon = geo_geohash_to_polygon("a");
 ```
+
+**Output**
 
 |GeohashPolygon|
 |---|

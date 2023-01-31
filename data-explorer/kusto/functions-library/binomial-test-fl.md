@@ -3,7 +3,7 @@ title: binomial_test_fl() - Azure Data Explorer
 description: This article describes the binomial_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/08/2021
+ms.date: 11/08/2022
 ---
 # binomial_test_fl()
 
@@ -27,17 +27,17 @@ The function `binomial_test_fl()` performs the [binomial test](https://en.wikipe
 
 ## Usage
 
-`binomial_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`binomial_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let binomial_test_fl = (tbl:(*), successes:string, trials:string, p_value:string, success_prob:real=0.5, alt_hypotheis:string='two-sided')
 {
-    let kwargs = pack('successes', successes, 'trials', trials, 'p_value', p_value, 'success_prob', success_prob, 'alt_hypotheis', alt_hypotheis);
+    let kwargs = bag_pack('successes', successes, 'trials', trials, 'p_value', p_value, 'success_prob', success_prob, 'alt_hypotheis', alt_hypotheis);
     let code = ```if 1:
         from scipy import stats
         
@@ -66,9 +66,9 @@ datatable(id:string, x:int, n:int) [
 | invoke binomial_test_fl('x', 'n', 'p_val', success_prob=0.2, alt_hypotheis='greater')
 ```
 
-# [Persistent](#tab/persistent)
+# [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
@@ -77,7 +77,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Binomial test")
 binomial_test_fl(tbl:(*), successes:string, trials:string, p_value:string, success_prob:real=0.5, alt_hypotheis:string='two-sided')
 {
-    let kwargs = pack('successes', successes, 'trials', trials, 'p_value', p_value, 'success_prob', success_prob, 'alt_hypotheis', alt_hypotheis);
+    let kwargs = bag_pack('successes', successes, 'trials', trials, 'p_value', p_value, 'success_prob', success_prob, 'alt_hypotheis', alt_hypotheis);
     let code = ```if 1:
         from scipy import stats
         

@@ -3,7 +3,7 @@ title: hash_sha1() - Azure Data Explorer
 description: This article describes hash_sha1() in Azure Data Explorer.
 ms.reviewer: atefsawaed
 ms.topic: reference
-ms.date: 07/28/2021
+ms.date: 01/30/2023
 ---
 # hash_sha1()
 
@@ -13,9 +13,11 @@ Returns a sha1 hash value for the input value.
 
 `hash_sha1(`*source*`)`
 
-## Arguments
+## Parameters
 
-*source*: The value to be hashed.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *source* | scalar | &check; | The value to be hashed.|
 
 ## Returns
 
@@ -30,12 +32,16 @@ and 255).
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUeBSAIIMQ9uMxOKM+OKMREMNpfD8opwUJU0diJQRklRKYklqSWZuqoaRgZGBroEhEGlqAgBM1jIESAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 print 
-h1=hash_sha1("World"),
-h2=hash_sha1(datetime(2020-01-01))
+    h1=hash_sha1("World"),
+    h2=hash_sha1(datetime(2020-01-01))
 ```
+
+**Output**
 
 |h1|h2|
 |---|---|
@@ -43,12 +49,16 @@ h2=hash_sha1(datetime(2020-01-01))
 
 The following example uses the `hash_sha1()` function to aggregate StormEvents based on State's SHA1 hash value. 
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlUIBkk455fmlSjYKiSDaA1NhaRKoHhiSaoOhPJILM6wzQAS8cUZiYYaYDFNoCkl+QUKphDFcENSUouTAeqGdyxtAAAA" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents 
 | summarize StormCount = count() by State, StateHash=hash_sha1(State)
 | top 5 by StormCount desc
 ```
+
+**Output**
 
 |State|StateHash|StormCount|
 |---|---|---|

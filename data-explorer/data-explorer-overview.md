@@ -51,7 +51,7 @@ The [ingestion wizard](./ingest-data-wizard.md) makes the data ingestion process
 
 ### Versatile data visualization
 
-Data visualization helps you gain important insights. Azure Data Explorer offers built-in visualization and [dashboarding](azure-data-explorer-dashboards.md) out of the box, with support for various charts and visualizations. It has native integration with [Power BI](power-bi-connector.md), native connectors for [Grafana](grafana.md), [Kibana](k2bridge.md) and Databricks, ODBC support for [Tableau](tableau.md), [Sisense](sisense.md), Qlik, and more.
+Data visualization helps you gain important insights. Azure Data Explorer offers built-in visualization and [dashboarding](azure-data-explorer-dashboards.md) out of the box, with support for various charts and visualizations. It has native integration with [Power BI](power-bi-data-connector.md?tabs=connector), native connectors for [Grafana](grafana.md), [Kibana](k2bridge.md) and Databricks, ODBC support for [Tableau](tableau.md), [Sisense](sisense.md), Qlik, and more.
 
 ### Automatic ingest, process, and export
 
@@ -76,7 +76,7 @@ Generally speaking, when you interact with Azure Data Explorer, you're going to 
 
     Use the web application to run, review, and share queries and results. You can also send queries programmatically (using an SDK) or to a REST API endpoint. If you're familiar with SQL, get started with the [SQL to Kusto cheat sheet](kusto/query/sqlcheatsheet.md). [Quickstart: Query data in Azure Data Explorer web UI](web-query-data.md)
 
-1. **Visualize results:**  Use different visual displays of your data in the native Azure Data Explorer [Dashboards](azure-data-explorer-dashboards.md). You can also display your results using connectors to some of the [leading visualization services](viz-overview.md), such as [Power BI](power-bi-connector.md) and [Grafana](grafana.md). Azure Data Explorer also has [ODBC](connect-odbc.md) and JDBC connector support to tools such as [Tableau](tableau.md) and [Sisense](sisense.md).
+1. **Visualize results:**  Use different visual displays of your data in the native Azure Data Explorer [Dashboards](azure-data-explorer-dashboards.md). You can also display your results using connectors to some of the [leading visualization services](viz-overview.md), such as [Power BI](power-bi-data-connector.md?tabs=connector) and [Grafana](grafana.md). Azure Data Explorer also has [ODBC](connect-odbc.md) and JDBC connector support to tools such as [Tableau](tableau.md) and [Sisense](sisense.md).
 
 ## How to provide feedback
 

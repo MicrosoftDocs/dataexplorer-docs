@@ -10,19 +10,20 @@ ms.date: 09/09/2021
 Calculate various probabilities and related metrics for a pair of categorical variables.
 
 The function `pair_probabilities_fl()`calculates the following probabilities and related metrics for a pair of categorical variables, A and B, as follows:
-- P(A) is the probability of each value *A=a*
-- P(B) is the probability of each value *B=b*
-- P(A|B) is the conditional probability of *A=a* given *B=b*
-- P(B|A) is the conditional probability of *B=b* given *A=a*
-- P(A&#8746;B) is the union probability (*A=a* or *B=b*)
-- P(A&#8745;B) is the intersection probability (*A=a* and *B=b*)
-- The <a id="lift">**lift metric**</a> is calculated as P(A&#8745;B)/P(A)*P(B). For more information, see [lift metric](https://en.wikipedia.org/wiki/Lift_(data_mining)).
-    - A lift near 1 means that the joint probability of two values is similar to what is expected in case that both variables are independent.
-    - Lift >> 1 means that values cooccur more often than expected under independence assumption.
-    - Lift << 1 means that values are less likely to cooccur than expected under independence assumption.
-- The <a id="jaccard">**Jaccard similarity coefficient**</a> is calculated as P(A&#8745;B)/P(A&#8746;B). For more information, see [Jaccard similarity coefficient](https://en.wikipedia.org/wiki/Jaccard_index).
-    - A high Jaccard coefficient, close to 1, means that the values tend to occur together. 
-    - A low Jaccard coefficient, close to 0, means that the values tend to stay apart.
+
+* P(A) is the probability of each value *A=a*
+* P(B) is the probability of each value *B=b*
+* P(A|B) is the conditional probability of *A=a* given *B=b*
+* P(B|A) is the conditional probability of *B=b* given *A=a*
+* P(A&#8746;B) is the union probability (*A=a* or *B=b*)
+* P(A&#8745;B) is the intersection probability (*A=a* and *B=b*)
+* The <a id="lift">**lift metric**</a> is calculated as P(A&#8745;B)/P(A)*P(B). For more information, see [lift metric](https://en.wikipedia.org/wiki/Lift_(data_mining)).
+  * A lift near 1 means that the joint probability of two values is similar to what is expected in case that both variables are independent.
+  * Lift >> 1 means that values cooccur more often than expected under independence assumption.
+  * Lift << 1 means that values are less likely to cooccur than expected under independence assumption.
+* The <a id="jaccard">**Jaccard similarity coefficient**</a> is calculated as P(A&#8745;B)/P(A&#8746;B). For more information, see [Jaccard similarity coefficient](https://en.wikipedia.org/wiki/Jaccard_index).
+  * A high Jaccard coefficient, close to 1, means that the values tend to occur together.
+  * A low Jaccard coefficient, close to 0, means that the values tend to stay apart.
 
 > [!NOTE]
 > This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
@@ -33,17 +34,17 @@ The function `pair_probabilities_fl()`calculates the following probabilities and
 
 ## Arguments
 
-*	*A*: First categorical variable.
-*	*B*: Second categorical variable.
-*	*Scope*: Field that contains the scope, so that the probabilities for variables A and B are calculated independently for each scope value.
+* *A*: First categorical variable.
+* *B*: Second categorical variable.
+* *Scope*: Field that contains the scope, so that the probabilities for variables A and B are calculated independently for each scope value.
 
 ## Usage
 
-`pair_probabilities_fl` is a user-defined function. You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`pair_probabilities_fl` is a user-defined function. You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -62,8 +63,8 @@ probAB
        , P_BIA = P_AB/P_A                               // conditional probability of B on A
 | extend Lift_AB = P_AB/(P_A * P_B)                     // lift metric
        , Jaccard_AB = P_AB/P_AUB                        // Jaccard similarity index
-| project _A, _B, _scope, floor(P_A, 0.00001), floor(P_B, 0.00001), floor(P_AB, 0.00001), floor(P_AUB, 0.00001), floor(P_AIB, 0.00001)
-, floor(P_BIA, 0.00001), floor(Lift_AB, 0.00001), floor(Jaccard_AB, 0.00001)
+| project _A, _B, _scope, bin(P_A, 0.00001), bin(P_B, 0.00001), bin(P_AB, 0.00001), bin(P_AUB, 0.00001), bin(P_AIB, 0.00001)
+, bin(P_BIA, 0.00001), bin(Lift_AB, 0.00001), bin(Jaccard_AB, 0.00001)
 | sort by _scope, _A, _B
 };
 //
@@ -96,9 +97,9 @@ dancePairs
 | invoke pair_probabilities_fl('boy','girl', 'dance_class')
 ```
 
-# [Persistent](#tab/persistent)
+# [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
@@ -120,8 +121,8 @@ probAB
        , P_BIA = P_AB/P_A                               // conditional probability of B on A
 | extend Lift_AB = P_AB/(P_A * P_B)                     // lift metric
        , Jaccard_AB = P_AB/P_AUB                        // Jaccard similarity index
-| project _A, _B, _scope, floor(P_A, 0.00001), floor(P_B, 0.00001), floor(P_AB, 0.00001), floor(P_AUB, 0.00001), floor(P_AIB, 0.00001)
-, floor(P_BIA, 0.00001), floor(Lift_AB, 0.00001), floor(Jaccard_AB, 0.00001)
+| project _A, _B, _scope, bin(P_A, 0.00001), bin(P_B, 0.00001), bin(P_AB, 0.00001), bin(P_AUB, 0.00001), bin(P_AIB, 0.00001)
+, bin(P_BIA, 0.00001), bin(Lift_AB, 0.00001), bin(Jaccard_AB, 0.00001)
 | sort by _scope, _A, _B
 };
 ```

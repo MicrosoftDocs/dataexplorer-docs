@@ -1,9 +1,9 @@
 ---
 title: mysql_request plugin - Azure Data Explorer
-description: This article describes mysql_request plugin in Azure Data Explorer.
+description: Learn how to use the mysql_request plugin to send a SQL query to a MySQL server network endpoint.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/01/2022
+ms.date: 01/08/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -23,13 +23,13 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 `evaluate` `mysql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters*] `)` [`:` *OutputSchema*]
 
-## Arguments
+## Parameters
 
 | Name | Type | Required| Description |
 |---|---|---|---|
-| *ConnectionString* | string | &check; | Indicates the connection string that points at the MySQL Server network endpoint. See [authentication](#username-and-password-authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). |
-| *SqlQuery* | string | &check; | Indicates the query that is to be executed against the SQL endpoint. Must return one or more row sets, but only the first one is made available for the rest of the query. |
-| *SqlParameters* | dynamic | | Holds key-value pairs to pass as parameters along with the query. |
+| *ConnectionString* | string | &check; | The connection string that points at the MySQL Server network endpoint. See [authentication](#username-and-password-authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). |
+| *SqlQuery* | string | &check; | The query that is to be executed against the SQL endpoint. Must return one or more row sets. Only the first set is made available for the rest of the query. |
+| *SqlParameters* | dynamic | | A property bag object that holds key-value pairs to pass as parameters along with the query. |
 | *OutputSchema* | | | The names and types for the expected columns of the `mysql_request` plugin output.<br /><br />**Syntax**: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`<br /><br />Specifying the expected schema optimizes query execution by not having to first run the actual query to explore the schema. An error is raised if the run-time schema doesn't match the *OutputSchema* schema. |
 
 ## Set callout policy

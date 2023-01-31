@@ -1,9 +1,9 @@
 ---
 title: series_fill_forward() - Azure Data Explorer
-description: This article describes series_fill_forward() in Azure Data Explorer.
+description: Learn how to use the series_fill_forward() function to perform a forward fill interpolation of missing values in a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/22/2023
 ---
 # series_fill_forward()
 
@@ -14,6 +14,7 @@ An expression containing dynamic numerical array is the input. The function repl
 ## Syntax
 
 `series_fill_forward(`*x*`[, `*missing_value_placeholder*`])`
+
 * Will return series *x* with all instances of *missing_value_placeholder* filled forwards.
 
 ## Arguments
@@ -48,8 +49,10 @@ data
 
 ```
 
+**Output**
+
 |`arr`|`fill_forward`|
 |---|---|
 |[null,null,36,41,null,null,16,61,33,null,null]|[null,null,36,41,41,41,16,61,33,33,33]|
-   
+
 Use [series_fill_backward](series-fill-backwardfunction.md) or [series-fill-const](series-fill-constfunction.md) to complete interpolation of the above array.

@@ -20,7 +20,7 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 
 You need the following to complete this article:
 
-* An organizational email account that is a member of Azure Active directory, so you can connect to the [Azure Data Explorer help cluster](https://dataexplorer.azure.com/clusters/help/databases/samples).
+* A Microsoft account or an Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**)
 
 ## Get data from Azure Data Explorer
@@ -77,4 +77,4 @@ If you no longer need the report you created for this article, delete the Power 
 
 ## Next steps
 
-[Visualize data using the Azure Data Explorer connector for Power BI](power-bi-connector.md)
+[Visualize data using the Azure Data Explorer connector for Power BI](power-bi-data-connector.md)

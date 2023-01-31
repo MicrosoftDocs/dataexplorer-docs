@@ -15,8 +15,6 @@ Filters a record set for data with a case-sensitive string.
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator. For example, use `in` instead of `in~`.
-
 ## Syntax
 
 *T* `|` `where` *col* `in` `(`*scalar_expr*`,` [*scalar_expr_2*`,` *scalar_expr3*`,` ... ]`)`
@@ -124,7 +122,7 @@ let Lightning_By_State = materialize(StormEvents
     | summarize lightning_events = countif(EventType == 'Lightning') by State);
 let Top_5_States = Lightning_By_State | top 5 by lightning_events | project State; 
 Lightning_By_State
-| extend State = iif(State in (Top_5_States), State, "Other")
+| extend State = iff(State in (Top_5_States), State, "Other")
 | summarize sum(lightning_events) by State 
 ```
 

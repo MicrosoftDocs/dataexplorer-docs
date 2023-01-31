@@ -33,6 +33,8 @@ Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynam
 print geo_h3cell_to_polygon("862a1072fffffff")
 ```
 
+**Output**
+
 |print_0|
 |---|
 |{<br>"type": "Polygon",<br>"coordinates": [[[-74.0022744646159, 40.735376026215022], [-74.046908029686236, 40.727986222489115], [-74.060610712223664, 40.696775140349033],[  -74.029724408156682, 40.672970047595463], [-73.985140983708192, 40.680349049267583],[  -73.971393761028622, 40.71154393543933], [-74.0022744646159, 40.735376026215022]]]<br>}|
@@ -51,11 +53,13 @@ datatable(lng:real, lat:real)
 | project h3_hash = geo_point_to_h3cell(lng, lat, 6)
 | project h3_hash_polygon = geo_h3cell_to_polygon(h3_hash)
 | summarize h3_hash_polygon_lst = make_list(h3_hash_polygon)
-| project pack(
+| project bag_pack(
     "type", "Feature",
-    "geometry", pack("type", "GeometryCollection", "geometries", h3_hash_polygon_lst),
-    "properties", pack("name", "H3 polygons collection"))
+    "geometry", bag_pack("type", "GeometryCollection", "geometries", h3_hash_polygon_lst),
+    "properties", bag_pack("name", "H3 polygons collection"))
 ```
+
+**Output**
 
 |Column1|
 |---|
@@ -67,6 +71,8 @@ The following example returns a null result because of the invalid H3 Cell token
 ```kusto
 print geo_h3cell_to_polygon("@")
 ```
+
+**Output**
 
 |print_0|
 |---|

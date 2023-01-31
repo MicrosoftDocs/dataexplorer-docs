@@ -39,13 +39,15 @@ cluster('help').database('Sample').StormEvents
 database('Samples').StormEvents | count
 ```
 
+**Output**
+
 |Count|
 |---|
 |59066|
 
 ### Use database() inside let statements
 
-The same query as above can be rewritten to use inline function (let statement) that
+The query above can be rewritten as a query-defined function (let statement) that
 receives a parameter `dbName` - which is passed into the database() function.
 
 ```kusto
@@ -55,6 +57,8 @@ let foo = (dbName:string)
 };
 foo('help')
 ```
+
+**Output**
 
 |Count|
 |---|

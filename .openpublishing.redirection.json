@@ -346,6 +346,16 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/power-bi-connector.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/power-bi-imported-query.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": false
+    },    
+    {
       "source_path": "data-explorer/kusto/query/toutf8function.md",
       "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-from-string-function",
       "redirect_document_id": true
@@ -353,6 +363,51 @@
     {
       "source_path": "data-explorer/kusto/query/makestringfunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-to-string-function",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/visualize-power-bi.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/floorfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/binfunction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/limitoperator.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/takeoperator",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/orderoperator.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/sort-operator",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/iiffunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/ifffunction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/getmonthfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/monthofyearfunction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/access-control/principals-and-identity-providers.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/access-control/referencing-security-principals",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/tdigest-mergefunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/merge-tdigest-function",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/rowrankfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/rowrankdensefunction",
       "redirect_document_id": true
     }
   ]

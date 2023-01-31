@@ -34,4 +34,4 @@ Alters the `DocString` value of an existing function.
     
 |Name |Parameters |Body|Folder|DocString
 |---|---|---|---|---
-|MyFunction2 |(myLimit: long)| {StormEvents &#124; limit myLimit}|MyFolder|Updated docstring|
+|MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|MyFolder|Updated docstring|

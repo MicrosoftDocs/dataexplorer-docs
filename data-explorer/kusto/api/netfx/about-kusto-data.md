@@ -15,7 +15,7 @@ either a query client (`ICslQueryProvider`) or a control command
 provider (`ICslAdminProvider`) from a connection string object
 pointing at the Kusto engine service, database, authentication
 method, etc. You can then issue data queries or
-control commands by specifying the appropriate Kusto query language
+control commands by specifying the appropriate Kusto Query Language
 string, and get back one or more data tables via the returned
 `IDataReader` object.
 

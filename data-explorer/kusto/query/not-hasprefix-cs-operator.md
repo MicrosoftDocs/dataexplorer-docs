@@ -1,13 +1,13 @@
 ---
-title: "The case-sensitive !hasprefix_cs string operator - Azure Data Explorer"
-description: "This article describes the case-sensitive !hasprefix_cs string operator in Azure Data Explorer."
+title: The case-sensitive !hasprefix_cs string operator - Azure Data Explorer
+description: Learn how to use the !hasprefix_cs string operator to filter records for data that doesn't have a case-sensitive prefix.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2021
+ms.date: 01/09/2023
 ---
 # !hasprefix_cs operator
 
-Filters a record set for data that does not have a case-sensitive starting string. `has` searches for indexed terms, where a [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
+Filters a record set for data that doesn't have a case-sensitive starting string. `!hasprefix_cs` searches for indexed terms, where an indexed [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
 |Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
 |-----------|--------------|----------------|-------------------------|
@@ -17,18 +17,16 @@ Filters a record set for data that does not have a case-sensitive starting strin
 |[`!hasprefix_cs`](not-hasprefix-cs-operator.md) |RHS isn't a term prefix in LHS |Yes |`"North America" !hasprefix_cs "CA"`|
 
 > [!NOTE]
-> The following abbreviations are used in the table above:
+> The following abbreviations are used in the above table:
 >
 > * RHS = right hand side of the expression
 > * LHS = left hand side of the expression
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 ## Performance tips
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
-
-For faster results, use the case-sensitive version of an operator. For example, use `hasprefix_cs` instead of `hasprefix`.
 
 ## Syntax
 

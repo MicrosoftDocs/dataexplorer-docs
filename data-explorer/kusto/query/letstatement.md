@@ -1,9 +1,9 @@
 ---
 title: Let statement - Azure Data Explorer
-description: This article describes the Let statement in Azure Data Explorer.
+description: Learn how to use the Let statement to set a variable name to define an expression or a function.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/04/2022
+ms.date: 12/26/2022
 ms.localizationpriority: high
 ---
 # Let statement
@@ -12,7 +12,7 @@ Use the `let` statement to set a variable name equal to an expression or a funct
 
 `let` statements are useful for:
 
-* Breaking up a complex expression into multiple parts, each represented by a variable. 
+* Breaking up a complex expression into multiple parts, each represented by a variable.
 * Defining constants outside of the query body for readability.
 * Defining a variable once and using it multiple times within a query.
 
@@ -22,12 +22,11 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 ## Syntax: Scalar or tabular expressions
 
-`let` *Name* `=` *ScalarExpression* 
+`let` *Name* `=` *ScalarExpression*
 
-`let` *Name* `=` *TabularExpression* 
+`let` *Name* `=` *TabularExpression*
 
-
-### Arguments 
+### Arguments
 
 |Argument  |Description  |Example  |
 |---------|---------|---------|
@@ -39,17 +38,17 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 `let` *Name* `=` [`view`] `(` [*TabularArgName* `:` `(` `*` `)` `,`   [*ArgName* `:` *ArgType* ]`,` ... ]  `)` `{` *FunctionBody* `}`
 
-`let` *Name* `=` [`view`] `(` [  [*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ] `)` ] `,` [  [*ArgName* `:` *ArgType* , ...]  ] `)` `{` *FunctionBody* `}
+`let` *Name* `=` [`view`] `(` [[*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ] `)` ] `,` [[*ArgName* `:` *ArgType, ...]] `)` `{` *FunctionBody* `}
 
 ### Arguments
 
 |Argument |Description  |
 |---------|---------|
-|*FunctionBody* | An expression that yields a user defined function. | 
-|*view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. | 
-| *TabularArgName*| The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. | 
+|*FunctionBody* | An expression that yields a user defined function. |
+|*view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. |
+| *TabularArgName*| The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. |
 | *AttributeName*: *AttributeType*| The name and type of the attribute. Part of the table schema definition, which includes a set of attributes with their types. |  
-|*ArgName* | The name of the scalar argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked.  | 
+|*ArgName* | The name of the scalar argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked.  |
 |*ArgType* | The type of the scalar argument. Currently the following are supported for user defined functions: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).|  
 
 > [!NOTE]
@@ -144,7 +143,7 @@ foo2(2) | count
 |---|
 |50|
 
-### Create a view or virtual table 
+### Create a view or virtual table
 
 This example shows you how to use a let statement to create a [`view` or virtual table](schema-entities/views.md).
 

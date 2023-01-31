@@ -3,7 +3,7 @@ title: two_sample_t_test_fl() - Azure Data Explorer
 description: This article describes the two_sample_t_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 07/20/2021
+ms.date: 11/08/2022
 ---
 # two_sample_t_test_fl()
 
@@ -26,20 +26,19 @@ The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://e
 * *p_value*: The name of the column to store p-value for the results.
 * *equal_var*: If `true` (default), performs a standard independent 2 sample test that assumes equal population variances. If `false`, performs Welch’s t-test, which does not assume equal population variance. As mentioned above, consider using the native [welch_test()](../query/welch-testfunction.md).
 
-
 ## Usage
 
-`two_sample_t_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+`two_sample_t_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-# [Ad hoc](#tab/adhoc)
+# [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using the [let statement](../query/letstatement.md). No permission is required.
+To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 <!-- csl: https://help.kusto.windows.net:443/Samples -->
 ```kusto
 let two_sample_t_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string, equal_var:bool=true)
 {
-    let kwargs = pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value, 'equal_var', equal_var);
+    let kwargs = bag_pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value, 'equal_var', equal_var);
     let code =
         'from scipy import stats\n'
         'import pandas\n'
@@ -69,9 +68,9 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | invoke two_sample_t_test_fl('sample1', 'sample2', 'test_stat', 'p_val')
 ```
 
-# [Persistent](#tab/persistent)
+# [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One-time installation
 
@@ -80,7 +79,7 @@ For persistent usage, use [`.create function`](../management/create-function.md)
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Two-Sample t-Test")
 two_sample_t_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string, equal_var:bool=true)
 {
-    let kwargs = pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value, 'equal_var', equal_var);
+    let kwargs = bag_pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value, 'equal_var', equal_var);
     let code =
         'from scipy import stats\n'
         'import pandas\n'

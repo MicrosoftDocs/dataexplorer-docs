@@ -3,7 +3,7 @@ title: Find an Azure Data Explorer partner
 description: Learn about our partners and how they can help you with Azure Data Explorer.
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 12/20/2022
+ms.date: 01/25/2023
 ---
 # Find an Azure Data Explorer partner
 
@@ -110,6 +110,34 @@ beanTech is the IT partner that can help you manage the entire data chain in the
 - [https://www.beantech.it/case-studies/analisi-dati-raccolti-dallimpianto-turbine-remote-monitoring-per-fincantieri/](https://www.beantech.it/case-studies/analisi-dati-raccolti-dallimpianto-turbine-remote-monitoring-per-fincantieri/)
 - [https://www.beantech.it/case-studies/fameccanica/](https://www.beantech.it/case-studies/fameccanica/)
 
+## Capgemini
+
+:::image type="icon" source="media/findmypartner/capgemini-logo.jpg":::
+
+With the world becoming increasingly intelligent and entire value chains being transformed, data is an essential source of understanding and insight. But it’s not enough to have the data, it needs to be reliable, and you need to know how to use it.
+
+Perform AI, our full-service portfolio, enables you to take advantage of the transformative power of data and artificial intelligence (AI). By becoming data-powered, your enterprise can adapt to the changing world and achieve sustainable competitive advantage.
+
+**"Activate data. Augment intelligence. Amplify outcomes."**
+
+Besides these general descriptions of our capabilities one of our strongest sectors is Automotive, where we have the chance to work on plenty of IoT use cases and references with the Azure Data Explorer.
+
+**Partner type**
+
+- Consulting
+
+**Focus geography**
+
+- Global
+
+**Contact**
+
+- [elayaraja.eswaran@capgemini.com](mailto:elayaraja.eswaran@capgemini.com)
+
+**Additional information**
+
+- [Capgemini website](https://www.capgemini.com)
+
 ## Data Addiction Pty Ltd
 
 :::image type="icon" source="media/findmypartner/data-addiction-logo.png":::
@@ -212,6 +240,33 @@ Elastacloud are experts at building complex real-time solutions using Azure Data
 - [Elastacloud Limited website](https://www.elastacloud.com)
 - [Microsoft partner site for Elastacloud Limited](https://appsource.microsoft.com/marketplace/partner-dir/c670b60d-c4c7-4dec-8c1f-ac0da3e72bee/overview)
 
+## Fellowmind
+
+:::image type="icon" source="media/findmypartner/fellowmind-logo.jpg":::
+
+Data & Analytics team within Fellowmind Denmark is a part of the entire Data & Analytics capacity in the organization which consists of 400 people working with data. In Denmark, the team is counting 35 experts with each their focus area – Power BI, Data Ingestion, Data Modelling etc.
+
+The team a broad experience within the entire Data Platform in Azure on both small, medium, large and enterprise clients – spanning private sector, public sector, and the utility sector.
+
+With the emerging focus on IoT, Telemetry and streaming data, the need for experts within this field has also expanded to the Danish Data & Analytics team with specific roles for the complete project approach.
+
+**Partner type**
+
+- Consulting
+
+**Focus geography**
+
+- Denmark
+
+**Contact**
+
+- [https://www.fellowmindcompany.com/contact/](https://www.fellowmindcompany.com/contact/)
+
+**Additional information**
+
+- [Fellowmind website](https://www.fellowmindcompany.com)
+- [Microsoft partner site for Fellowmind](https://appsource.microsoft.com/marketplace/partner-dir/3b2de1f1-4306-444d-bed8-e724ef455f1d/overview)
+
 ## Henry Been Consultancy
 
 :::image type="icon" source="media/findmypartner/azure-specialist-logo.png":::
@@ -265,6 +320,36 @@ We build up our customer's data platforms powered with Azure data services. Our 
 
 - [iLink Systems website](https://www.ilink-digital.com)
 - [Microsoft partner site for iLink Systems](https://appsource.microsoft.com/marketplace/partner-dir/a8e5d571-43e8-4c3c-96be-344156cf6887/overview)
+
+## InCycle
+
+:::image type="icon" source="media/findmypartner/incycle-logo.png":::
+
+InCycle provides expert consulting for companies seeking to harness data to innovate, create value and develop competitive advantage. Specializing in DataOps, MLOps, and real-time telemetry (Big Data, IoT, SaaS Apps), InCycle helps ambitious companies realize the next level of success.
+
+**Partner type**
+
+- System Integrator
+- Boutique consultancy
+
+**Focus geography**
+
+- USA
+- Canada
+
+**Contact**
+
+- [barry.paquet@incyclesoftware.com](mailto:barry.paquet@incyclesoftware.com)
+
+**Additional information**
+
+- [InCycle website](https://www.incyclesoftware.com)
+- [Microsoft partner site for InCycle](https://appsource.microsoft.com/marketplace/partner-dir/645bb7a1-6948-4422-9396-e813e2a96415/overview)
+
+**Success stories**
+
+- [https://www.incyclesoftware.com/real-time-hyper-scale-streaming-telemetry-accelerator](https://www.incyclesoftware.com/real-time-hyper-scale-streaming-telemetry-accelerator)
+- [https://www.incyclesoftware.com/media-conglomerate](https://www.incyclesoftware.com/media-conglomerate)
 
 ## Insight
 
@@ -399,6 +484,69 @@ Mesh Systems is an IoT Solutions Provider that develops, operates, and manages e
 
 - [https://meshsystems.com/case-study/bunn](https://meshsystems.com/case-study/bunn)
 
+## msg systems ag
+
+:::image type="icon" source="media/findmypartner/msg-logo.jpg":::
+
+msg is an independent, international group of companies with more than 10,000 employees worldwide.
+It is represented in 32 countries/regions and supports its customers in their digital transformation. Founded
+in 1980, the consulting and IT company‘s range of services includes strategic business consulting and
+end-to-end solutions for the industries automotive, banking, consumer products, food, healthcare
+insurance, life science & chemicals, manufacturing, public sector, telecommunications, travel &
+logistics and utilities. Within the group, independent companies cover the wide variety of industry and
+topic-based competence. msg systems ag forms the core of the company group.
+
+**Partner type**
+
+- Development of Standard Software and Individual Solutions
+- System Integration
+
+**Focus geography**
+
+- Primarily Germany
+- EMEA
+- US
+
+**Contact**
+
+- [adx@msg.group](mailto:adx@msg.group)
+
+**Additional information**
+
+- [msg systems ag website](https://www.msg.group)
+- [Microsoft partner site for msg systems ag](https://appsource.microsoft.com/marketplace/partner-dir/79513a1c-cd75-4d99-afa8-495af5f574c7)
+
+## Neal Analytics
+
+:::image type="icon" source="media/findmypartner/neal-analytics-logo.png":::
+
+Neal Analytics is an award-winning Data & AI consulting partner of Microsoft. With 6 different advanced specializations in Azure & 4 Partner of the Year awards & finalist finishes, Neal has a proven track record of success you can trust for all your Azure deployment needs.
+
+Neal has worked extensively with Azure Data Explorer and maintains a trained bench of consultants who can leverage this expertise to assist you in your customer scenario. Neal is also a partner in Microsoft’s Solution Assessment program, and if your organization qualifies this program will assist us in standing up a landing zone featuring Azure Data Explorer to help you get started with your ADX project.
+
+**Partner type**
+
+- System Integrator
+- ISV
+
+**Focus geography**
+
+- US
+- Canada
+- LATAM
+- EMEA
+- Middle East
+- APAC
+
+**Contact**
+
+- [Davidb@nealanalytics.com](mailto:Davidb@nealanalytics.com)
+
+**Additional information**
+
+- [Neal Analytics website](https://nealanalytics.com/)
+- [Microsoft partner site for Neal Analytics](https://appsource.microsoft.com/marketplace/partner-dir/4fd354cb-e69d-49f6-b954-daf93d5cef95/overview)
+
 ## Niels Berglund
 
 :::image type="icon" source="media/findmypartner/no-logo.png":::
@@ -453,7 +601,7 @@ We have a Co-sell offering on the Azure Market place: https://azuremarketplace.m
 
 :::image type="icon" source="media/findmypartner/orion-innovation-logo.png":::
 
-Orion Innovation is a Leader in Digital transformation services with a Design led , technology driven approach. We are a trusted partner to our Fortune 500, Large, Medium clients in their business transformation initiatives with 99% CSAT. With 25+ years of experience we bring deep domain expertise in Financial Services, Professional Services,  Healthcare & Life Sciences , Hi-Tech, Telecom, Media & Entertainment, Sports and Education Verticals.  Our global team of 6,000+ associates  in 12 major delivery centers across USA, LATAM, Europe and APAC delivers those digital transformation services around Experience Design, Digital Product Development, Data Analytics & AI, Cloud & Infrastructure, Business application & Modernization, Embedded & Realtime solutions, IoT/IIoT, Testing and Cybersecurity. We are ISO 9001:2015, ISO/IEC 27001:2013 certified, as well as CMMI&reg;️ Level 3 compliant and have IP's covering Industry Solutions, Accelerators and proprietary internal tools.
+Orion Innovation is a Leader in Digital transformation services with a Design led, technology driven approach. We are a trusted partner to our Fortune 500, Large, Medium clients in their business transformation initiatives with 99% CSAT. With 25+ years of experience we bring deep domain expertise in Financial Services, Professional Services,  Healthcare & Life Sciences, Hi-Tech, Telecom, Media & Entertainment, Sports and Education Verticals.  Our global team of 6,000+ associates  in 12 major delivery centers across USA, LATAM, Europe and APAC delivers those digital transformation services around Experience Design, Digital Product Development, Data Analytics & AI, Cloud & Infrastructure, Business application & Modernization, Embedded & real time solutions, IoT/IIoT, Testing and Cybersecurity. We are ISO 9001:2015, ISO/IEC 27001:2013 certified, as well as CMMI&reg;️ Level 3 compliant and have IP's covering Industry Solutions, Accelerators and proprietary internal tools.
 
 **Partner type**
 
@@ -557,11 +705,11 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 
 **Success stories**
 
-- [https://explore.uptake.com/c/case-study-capital-power?x=6bRGL0](https://explore.uptake.com/c/case-study-capital-power?x=6bRGL0)
-- [https://explore.uptake.com/c/uptake-chevron-timeseriesdata?x=krx5TU](https://explore.uptake.com/c/uptake-chevron-timeseriesdata?x=krx5TU)
-- [https://explore.uptake.com/c/case-study-ensign?x=BEdWTc](https://explore.uptake.com/c/case-study-ensign?x=BEdWTc)
-- [https://explore.uptake.com/c/case-Study-enerplus?x=DBxBPq](https://explore.uptake.com/c/case-Study-enerplus?x=DBxBPq)
-- [https://explore.uptake.com/c/case-study-davey-textiles?x=ri4YdG](https://explore.uptake.com/c/case-study-davey-textiles?x=ri4YdG)
+- [https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization](https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization)
+- [https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion](https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion)
+- [https://www.uptake.com/resources/ensign-establishes-a-single-source-of-truth-for-their-data](https://www.uptake.com/resources/ensign-establishes-a-single-source-of-truth-for-their-data)
+- [https://www.uptake.com/resources/enerplus-uses-insights-from-uptake-fusion-for-data-driven-decision-making](https://www.uptake.com/resources/enerplus-uses-insights-from-uptake-fusion-for-data-driven-decision-making)
+- [https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring](https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring)
 
 ## Zure Ltd
 

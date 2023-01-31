@@ -23,6 +23,9 @@ Alternative form with no piped input:
 
 `union` [*UnionParameters*] [`kind=` `inner`|`outer`] [`withsource=`*ColumnName*] [`isfuzzy=` `true`|`false`] *Table* [`,` *Table*]...  
 
+> [!NOTE]
+> The operation of the `union` operator can be altered by setting the `best_effort` request property to `true`, using either a [set statement](./setstatement.md) or through [client request properties](../api/netfx/request-properties.md). When this property is set to `true`, the `union` operator will disregard fuzzy resolution and connectivity failures to execute any of the sub-expressions being “unioned” and yield a warning in the query status results.
+
 ## Arguments
 
 ::: zone pivot="azuredataexplorer"
@@ -149,6 +152,8 @@ union isfuzzy=true
 | count 
 ```
 
+**Output**
+
 |Count|
 |---|
 |2|
@@ -165,6 +170,8 @@ union isfuzzy=true View*, SomeView*, OtherView*
 | count 
 ```
 
+**Output**
+
 |Count|
 |---|
 |3|
@@ -180,6 +187,8 @@ let View_2 = view () { print x=toint(2) };
 union withsource=TableName View_1, View_2
 ```
 
+**Output**
+
 |TableName|x_long|x_int|
 |---------|------|-----|
 |View_1   |1     |     |
@@ -191,6 +200,8 @@ let View_2 = view () { print x=toint(2) };
 let View_3 = view () { print x_long=3 };
 union withsource=TableName View_1, View_2, View_3 
 ```
+
+**Output**
 
 |TableName|x_long1|x_int |x_long|
 |---------|-------|------|------|

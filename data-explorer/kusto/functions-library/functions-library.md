@@ -11,6 +11,12 @@ The following article contains a categorized list of [UDF (user-defined function
 
 The user-defined functions code is given in the articles.  It can be used within a let statement embedded in a query or can be persisted in a database using [`.create function`](../management/create-function.md).
 
+## General functions
+
+| Function Name | Description |
+|--|--|
+| [get_packages_version_fl()](get-packages-version-fl.md) | Returns version information of the Python engine and the specified packages. |
+
 ## Machine learning functions
 
 | Function Name | Description |
@@ -18,6 +24,15 @@ The user-defined functions code is given in the articles.  It can be used within
 | [kmeans_fl()](kmeans-fl.md) | Clusterize using the k-means algorithm. |
 | [predict_fl()](predict-fl.md) | Predict using an existing trained machine learning model. |
 | [predict_onnx_fl()](predict-onnx-fl.md) | Predict using an existing trained machine learning model in ONNX format. |
+
+## Plotly functions
+
+The following section contains functions for rendering interactive [Plotly charts](https://plotly.com/python/).
+
+| Function Name | Description |
+|--|--|
+| [plotly_anomaly_fl()](plotly-anomaly-fl.md) | Render anomaly chart using a Plotly template. |
+| [plotly_scatter3d_fl()](plotly-scatter3d-fl.md) | Render 3D scatter chart using a Plotly template. |
 
 ## PromQL functions
 
