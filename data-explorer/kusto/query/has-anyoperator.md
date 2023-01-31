@@ -19,8 +19,9 @@ For faster results, use the case-sensitive version of an operator. For example, 
 
 ## Syntax
 
-*T* `|` `where` *col* `has_any` `(`*scalar_expr*`,` [*scalar_expr_2*`,` *scalar_expr3*`,` ... ]`)`
-*T* `|` `where` *col* `has_any` `(`*tabular_expr*`)`
+*T* `|` `where` *col* `has_any` `(`*scalar_value*`,` [*scalar_value_2*`,` *scalar_value_3*`,` ... ]`)`
+
+*T* `|` `where` *col* `has_any` `((`*tabular_expr*`))`
 
 ## Parameters
 
@@ -28,13 +29,8 @@ For faster results, use the case-sensitive version of an operator. For example, 
 |--|--|--|--|
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
 | *col* | string | &check; | The column used to filter the records.|
-| *scalar_expr* | scalar | | An expression or list of expressions to search for in *col*.|
-| *tabular_expr* | string | | A tabular expression that has a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used.|
-
-> [!NOTE]
->
-> * At least one *scalar_expr* or a single *tabular_expr* is required.
-> * The *scalar_expr* list can include up to 10,000 values.
+| *scalar_value* | scalar | &check; | A value or comma-separated set of values to search for in *col*.|
+| *tabular_expr* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 10,000 distinct results.|
 
 ## Returns
 
@@ -42,7 +38,9 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples
 
-### Use has_any operator with a list
+### List of values
+
+The following query shows how to use `has_any` with a list of values.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXISCyOT8yrVNBQcnYM8vfx9HNU0lFQcnH09g8Bs/xcw5U0wbqKS3NzE4syq1IVkvNL80o0NBWSKiGGAACHltT/YAAAAA==" target="_blank">Run the query</a>
@@ -64,15 +62,16 @@ StormEvents
 |NEW MEXICO|527|
 |NEW HAMPSHIRE|394|
 
-### Use has_any operator with a dynamic array
+### Dynamic array
+
+The following query shows how to use `has_any` with a dynamic array.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoLkksSS1WsFVIqcxLzM1M1ohWL84vLclQ11FQz8svAjJiNa15uYJL8otyXctS80qKFXi5ahTKM1KLUhWCQZoVMhKL4xPzKhU0IGZpguSLS3NzE4syq1IVkvNL80o0NBWSKiHKAZ3v1Dd1AAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXISCyOT8yrVNBIqcxLzM1M1ohWL84vLclQ11FQz8svAjJiNTVBmopLc3MTizKrUhWS80vzSjQ0FZIqIWYAAIx5b2ZfAAAA" target="_blank">Run the query</a>
 
 ```kusto
-let states = dynamic(['south', 'north']);
 StormEvents 
-| where State has_any (states)
+| where State has_any (dynamic(['south', 'north']))
 | summarize count() by State
 ```
 
@@ -84,3 +83,33 @@ StormEvents
 |NORTH DAKOTA|905|
 |ATLANTIC SOUTH|193|
 |ATLANTIC NORTH|188|
+
+### Inline tabular expression
+
+The following query shows how to use `has_any` with an inline tabular expression.
+
+> [!IMPORTANT]
+> An inline tabular expression must be enclosed with double parenthesis to be properly parsed.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXISCyOT8yrVNDQCMgvKM1JLMnMz3NJLElUgClDCCvYKZgagAFQsqAoPys1uQRiiqYmyNji0tzcxKLMqlSF5PzSvBINTYWkSog8AMlS+PGBAAAA" target="_blank">Run the query</a>
+
+```kusto
+StormEvents 
+| where State has_any ((PopulationData | where Population > 5000000 | project State))
+| summarize count() by State
+```
+
+### Tabular expression from a let statement
+
+The following query shows how to use `has_any` with a tabular expression from a [let statement](letstatement.md). Notice that the double parentheses as provided in the last example aren't necessary in this case.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NsQrCQBBE+0D+Ycqks7ESrbQX8gFhDYuJ3N2G3b1IxI/XRIRMOW8eE9gRSO/cmpOz4YirjDmQD5LO5IQ3nj0rb2qcsN+t+cJR5cGdo1n0Q1k0LhovEyc3lMVfXil6spbSjGr7WC8ryzGSDi9GJzl5VeM2/6QPjBKdkqEAAAA=" target="_blank">Run the query</a>
+
+```kusto
+let large_states = PopulationData | where Population > 5000000 | project State;
+StormEvents 
+| where State has_any (large_states)
+| summarize count() by State
+```
