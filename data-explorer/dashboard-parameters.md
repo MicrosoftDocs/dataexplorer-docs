@@ -300,7 +300,7 @@ Once you have [added data sources](azure-data-explorer-dashboards.md#add-data-so
     * **Parameter type**: Data source
     * **Show on pages**: Select all
     * **Values**: Select all
-    * **Default value**: No default value
+    * **Default value**: Samples
 
     :::image type="content" source="media/dashboard-parameters/data-source-parameter.png" alt-text="Screenshot of data source parameters.":::
 
