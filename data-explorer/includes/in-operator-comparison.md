@@ -13,10 +13,7 @@ The following table provides a comparison of the `in` operators:
 |[`!in~`](../kusto/query/not-in-operator.md) |Not equals to any of the elements |No | `"bCa" !in~ ("123", "345", "ABC")` |
 
 > [!NOTE]
->
-> * In tabular expressions, the first column of the result set is selected.
-> * The expression list can produce up to `1,000,000` values.
-> * Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
+> Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
 
 For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](../kusto/query/datatypes-string-operators.md).
 
