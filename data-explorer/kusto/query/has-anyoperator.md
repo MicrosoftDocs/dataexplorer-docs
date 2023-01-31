@@ -17,9 +17,9 @@ For more information about other operators and to determine which operator is mo
 
 ## Syntax
 
-*T* `|` `where` *col* `has_any` `(`*scalar_value* [`,` *scalar_value_2*`,` *scalar_value_3*`,` ... ]`)`
+*T* `|` `where` *col* `has_any` `(`*scalar_values*`)`
 
-*T* `|` `where` *col* `has_any` `((`*tabular_expr*`))`
+*T* `|` `where` *col* `has_any` `((`*tabular_expression*`))`
 
 ## Parameters
 
@@ -27,8 +27,8 @@ For more information about other operators and to determine which operator is mo
 |--|--|--|--|
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
 | *col* | string | &check; | The column used to filter the records.|
-| *scalar_value* | scalar | &check; | A value or comma-separated set of values to search for in *col*.|
-| *tabular_expr* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 10,000 distinct results.|
+| *scalar_values* | scalar | &check; | A single value or comma-separated set of values to search for in *col*.|
+| *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 10,000 distinct results.|
 
 ## Returns
 
@@ -36,9 +36,9 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples
 
-### List of values
+### Set of scalar values
 
-The following query shows how to use `has_any` with a list of values.
+The following query shows how to use `has_any` with a comma-separated set of values.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXISCyOT8yrVNBQcnYM8vfx9HNU0lFQcnH09g8Bs/xcw5U0wbqKS3NzE4syq1IVkvNL80o0NBWSKiGGAACHltT/YAAAAA==" target="_blank">Run the query</a>

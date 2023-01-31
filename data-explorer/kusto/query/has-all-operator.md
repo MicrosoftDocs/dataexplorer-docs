@@ -17,9 +17,9 @@ For more information about other operators and to determine which operator is mo
 
 ## Syntax
 
-*T* `|` `where` *col* `has_all` `(`*scalar_value* [`,` *scalar_value_2*`,` *scalar_value_3*`,` ... ]`)`
+*T* `|` `where` *col* `has_any` `(`*scalar_values*`)`
 
-*T* `|` `where` *col* `has_all` `((`*tabular_expr*`))`
+*T* `|` `where` *col* `has_all` `((`*tabular_expression*`))`
 
 ## Parameters
 
@@ -27,7 +27,7 @@ For more information about other operators and to determine which operator is mo
 |--|--|--|--|
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
 | *col* | string | &check; | The column used to filter the records.|
-| *scalar_value* | scalar | &check; | A value or comma-separated set of values to search for in *col*.|
+| *scalar_values* | scalar | &check; | A single value or comma-separated set of values to search for in *col*.|
 | *tabular_expr* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 256 distinct results.|
 
 ## Returns
