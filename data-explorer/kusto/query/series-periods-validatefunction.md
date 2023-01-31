@@ -1,9 +1,9 @@
 ---
 title: series_periods_validate() - Azure Data Explorer
-description: This article describes series_periods_validate() in Azure Data Explorer.
+description: Learn how to use the series_periods_validate() function to check whether a time series contains periodic patterns of given lengths.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/19/2019
+ms.date: 01/30/2023
 ---
 # series_periods_validate()
 
@@ -14,6 +14,7 @@ Often a metric measuring the traffic of an application is characterized by a wee
 The function takes as input a column that contains a dynamic array of time series (typically the resulting output of [make-series](make-seriesoperator.md) operator), and one or more `real` numbers that define the lengths of the periods to validate.
 
 The function outputs two columns:
+
 * *periods*: A dynamic array that contains the periods to validate (supplied in the input).
 * *scores*: A dynamic array that contains a score between 0 and 1. The score shows the significance of a period in its respective position in the *periods* array.
 
@@ -27,10 +28,11 @@ The function outputs two columns:
 * *period1*, *period2*, and so on: `real` numbers specifying the periods to validate, in units of the bin size. For example, if the series is in 1h bins, a weekly period is 168 bins.
 
 > [!IMPORTANT]
+>
 > * The minimal value for each of the *period* arguments is **4** and the maximal is half of the length of the input series. For a *period* argument outside these bounds, the output score will be **0**.
 >
 > * The input time series must be regular, that is, aggregated in constant bins, and is always the case if it has been created using [make-series](make-seriesoperator.md). Otherwise, the output is meaningless.
-> 
+>
 > * The function accepts up to 16 periods to validate.
 
 ## Example

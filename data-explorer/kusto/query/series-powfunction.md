@@ -1,9 +1,9 @@
 ---
 title: series_pow() - Azure Data Explorer
-description: This article describes series_pow() in Azure Data Explorer.
+description: Learn how to use the series_pow() function to calculate the element-wise power of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/15/2021
+ms.date: 01/30/2023
 ---
 # series_pow()
 

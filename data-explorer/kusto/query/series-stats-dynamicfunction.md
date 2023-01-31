@@ -1,6 +1,6 @@
 ---
 title: series_stats_dynamic() - Azure Data Explorer
-description: This article describes series_stats_dynamic() in Azure Data Explorer.
+description: Learn how to use the series_stats_dynamic() function to calculate the statistics for a series in a dynamic object.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/10/2020
@@ -10,6 +10,7 @@ ms.date: 02/10/2020
 Returns statistics for a series in a dynamic object.  
 
 The `series_stats_dynamic()` function takes a column containing dynamic numerical array as input and generates a dynamic value with the following content:
+
 * `min`: minimum value in the input array
 * `min_idx`: first position of the minimum value in the input array
 * `max`: maximum value in the input array
@@ -26,7 +27,7 @@ The `series_stats_dynamic()` function takes a column containing dynamic numerica
 
 ## Arguments
 
-* *x*: Dynamic array cell which is an array of numeric values. 
+* *x*: Dynamic array cell which is an array of numeric values.
 * *ignore_nonfinite*: Boolean (optional, default: `false`) flag that specifies whether to calculate the statistics while ignoring non-finite values (*null*, *NaN*, *inf*, etc.). If set to `false` the returned result is `null` if non-finite values are present in the array.
 
 ## Example

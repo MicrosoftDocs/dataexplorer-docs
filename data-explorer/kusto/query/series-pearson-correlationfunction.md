@@ -1,9 +1,9 @@
 ---
 title: series_pearson_correlation() - Azure Data Explorer
-description: This article describes series_pearson_correlation() in Azure Data Explorer.
+description: Learn how to use the series_pearson_correlation() function to calculate the pearson correlation coefficient of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/31/2019
+ms.date: 01/30/2023
 ---
 # series_pearson_correlation()
 
@@ -17,7 +17,7 @@ See: [Pearson correlation coefficient](https://en.wikipedia.org/wiki/Pearson_cor
 
 ## Arguments
 
-* *Series1, Series2*: Input numeric arrays for calculating the correlation coefficient. All arguments must be dynamic arrays of the same length. 
+* *Series1, Series2*: Input numeric arrays for calculating the correlation coefficient. All arguments must be dynamic arrays of the same length.
 
 ## Returns
 

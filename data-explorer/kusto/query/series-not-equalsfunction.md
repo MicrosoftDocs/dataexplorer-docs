@@ -1,9 +1,9 @@
 ---
 title: series_not_equals() - Azure Data Explorer
-description: This article describes series_not_equals() in Azure Data Explorer.
+description: Learn how to use the series_not_equals() function to calculate the element-wise not equals (`!=`) logic operation of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 01/30/2023
 ---
 # series_not_equals()
 
@@ -15,7 +15,7 @@ Calculates the element-wise not equals (`!=`) logic operation of two numeric ser
 
 ## Arguments
 
-* *Series1, Series2*: Input numeric arrays to be element-wise compared. All arguments must be dynamic arrays. 
+* *Series1, Series2*: Input numeric arrays to be element-wise compared. All arguments must be dynamic arrays.
 
 ## Returns
 
@@ -38,5 +38,6 @@ print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 ## See also
 
 For entire series statistics comparisons, see:
+
 * [series_stats()](series-statsfunction.md)
 * [series_stats_dynamic()](series-stats-dynamicfunction.md)

@@ -1,9 +1,9 @@
 ---
 title: series_sin() - Azure Data Explorer
-description: This article describes series_sin() in Azure Data Explorer.
+description: Learn how to use the series_sin() function to calculate the element-wise sine function of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/11/2021
+ms.date: 01/30/2023
 ---
 # series_sin()
 
@@ -15,7 +15,7 @@ Calculates the element-wise sine function of the numeric series input.
 
 ## Arguments
 
-* *series*: Input numeric array, on which the sine function is applied. The argument must be a dynamic array. 
+* *series*: Input numeric array, on which the sine function is applied. The argument must be a dynamic array.
 
 ## Returns
 
@@ -34,4 +34,3 @@ print arr = dynamic([-1,0,1])
 |arr|arr_sin|
 |---|---|
 |[-6.5,0,8.2]|[-0.8414709848078965,0.0,0.8414709848078965]|
-

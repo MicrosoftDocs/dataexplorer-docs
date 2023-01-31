@@ -1,9 +1,9 @@
 ---
 title: series_outliers() - Azure Data Explorer
-description: This article describes series_outliers() in Azure Data Explorer.
+description: Learn how to use the series_outliers() function to score anomaly points in a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/20/2019
+ms.date: 01/30/2023
 ---
 # series_outliers()
 
@@ -46,6 +46,6 @@ range x from 1 to 100 step 1
 | mv-expand x to typeof(long), series to typeof(double), outliers to typeof(double)
 | project x, series , outliers_removed=iff(outliers > 1.5 or outliers < -1.5, series_stats_series_avg , series ) // replace outliers with the average
 | render linechart
-``` 
+```
 
 :::image type="content" source="images/series-outliersfunction/series-outliers.png" alt-text="Series outliers." border="false":::

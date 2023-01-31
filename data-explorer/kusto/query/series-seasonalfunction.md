@@ -1,9 +1,9 @@
 ---
 title: series_seasonal() - Azure Data Explorer
-description: This article describes series_seasonal() in Azure Data Explorer.
+description: Learn how to use the series_seasonal() function to calculate the seasonal component of a series according to the detected seasonal period.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/30/2023
 ---
 # series_seasonal()
 
@@ -17,9 +17,9 @@ Calculates the seasonal component of a series, according to the detected or give
 
 * *series*: Input numeric dynamic array
 * *period* (optional): Integer number of bins in each seasonal period, possible values:
-    *  -1 (default): Autodetects the period by using [series_periods_detect()](series-periods-detectfunction.md) with a threshold of *0.7*. Returns zeroes if seasonality isn't detected
-    * Positive integer: Used as the period for the seasonal component
-    * Any other value: Ignores seasonality and returns a series of zeroes
+  * -1 (default): Autodetects the period by using [series_periods_detect()](series-periods-detectfunction.md) with a threshold of *0.7*. Returns zeroes if seasonality isn't detected
+  * Positive integer: Used as the period for the seasonal component
+  * Any other value: Ignores seasonality and returns a series of zeroes
 
 ## Returns
 
@@ -29,7 +29,7 @@ Dynamic array of the same length as the *series* input that contains the calcula
 
 ### Auto detect the period
 
-In the following example, the series' period is automatically detected. The first series' period is detected to be six bins and the second five bins. The third series' period is too short to be detected and returns a series of zeroes. 
+In the following example, the series' period is automatically detected. The first series' period is detected to be six bins and the second five bins. The third series' period is too short to be detected and returns a series of zeroes.
 See the next example on [how to force the period](#force-a-period).
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -65,7 +65,7 @@ print s=dynamic([1,3,5,1,3,5,2,4,6])
 |---|---|
 |[1,3,5,1,3,5,2,4,6]|[1.0,3.0,5.0,1.0,3.0,5.0,1.0,3.0,5.0]|
 |[1,3,5,2,4,6,1,3,5,2,4,6]|[1.5,3.5,5.5,1.5,3.5,5.5,1.5,3.5,5.5,1.5,3.5,5.5]|
- 
+
 ## Next steps
 
 * [series_periods_detect()](series-periods-detectfunction.md)
