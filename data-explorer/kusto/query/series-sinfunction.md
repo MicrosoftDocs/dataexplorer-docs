@@ -7,7 +7,7 @@ ms.date: 01/30/2023
 ---
 # series_sin()
 
-Calculates the element-wise sine function of the numeric series input.
+Calculates the element-wise sine of the numeric series input.
 
 ## Syntax
 
