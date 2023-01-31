@@ -36,9 +36,9 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-### List of values
+### List of scalar values
 
-The following query shows how to use `in` with a set of values.
+The following query shows how to use `in` with a list of values.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMU9BQcvPxD/J0cVTSUVByd/UPcvcEM/1cwxUi/YO8lTRBmpLzS/NKAJNAy9pJAAAA" target="_blank">Run the query</a>

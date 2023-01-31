@@ -36,9 +36,9 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples
 
-### Set of scalar values
+### List of scalar values
 
-The following query shows how to use `has_any` with a comma-separated set of values.
+The following query shows how to use `has_any` with a comma-separated list of values.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXISCyOT8yrVNBQcnYM8vfx9HNU0lFQcnH09g8Bs/xcw5U0wbqKS3NzE4syq1IVkvNL80o0NBWSKiGGAACHltT/YAAAAA==" target="_blank">Run the query</a>
