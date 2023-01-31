@@ -3,7 +3,7 @@ title: sample operator - Azure Data Explorer
 description: Learn how to use the sample operator to return up to the specified number of rows from the input table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/18/2023
+ms.date: 01/19/2023
 ---
 # sample operator
 
@@ -18,11 +18,17 @@ Returns up to the specified number of random rows from the input table.
 
 *T* `| sample` *NumberOfRows*
 
-## Arguments
+## Parameters
 
-* *NumberOfRows*: The number of rows of *T* to return. You can specify any numeric expression.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T*| string | &check; | The input tabular expression. |
+| *NumberOfRows*| int, long, or real | &check; | The number of rows to return. You can specify any numeric expression.|
 
 ## Examples
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIT0ksSVSwVShKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDC05soBqSxOzC3ISQWqheipUYAKAOVL8zLz8xQ0oEo0dRBMANt5ESNkAAAA" target="_blank">Run the query</a>
 
 ```kusto
 let _data = range x from 1 to 100 step 1;
@@ -39,6 +45,9 @@ union (_sample), (_sample)
 
 To ensure that in example above `_sample` is calculated once, one can use [materialize()](./materializefunction.md) function:
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XLOwqAMBCE4d5TTJmARVIHzyILrhLIi2QFEQ+vYsBu4P8msGBeSAgTKqWNcWCtOcJCMqwxaMIF1g3hlY1iCfzYSMLVU/Anq+9/oUer3bAnnxNU93r85w3rZ9v0cQAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 let _data = range x from 1 to 100 step 1;
 let _sample = materialize(_data | sample 1);
@@ -54,14 +63,18 @@ union (_sample), (_sample)
 
 To sample a certain percentage of your data (rather than a specified number of rows), you can use
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKM9ILUpVKErMS9HQVLBRMNAzBABGrj/0IAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents | where rand() < 0.1
 ```
 
-To sample keys rather than rows (for example - sample 10 Ids and get all rows for these Ids), you can use [`sample-distinct`](./sampledistinctoperator.md) in combination with the `in` operator.
+To sample keys rather than rows (for example - sample 10 Ids and get all rows for these Ids) you can use [`sample-distinct`](./sampledistinctoperator.md) in combination with the `in` operator.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoTswtyEl1Lcgszk9JLVawVQguyS/KdS1LzSspVqiBSuumZBaXZOYllygYGijkpylAlXumWHMhKeeqUSjPSC1KRUgrZOYpaKDaoAkA08y7N3UAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 let sampleEpisodes = StormEvents | sample-distinct 10 of EpisodeId;
 StormEvents
