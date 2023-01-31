@@ -13,7 +13,7 @@ The function takes an expression with a dynamic numerical array as input, and ge
 
 ## Syntax
 
-`series_outliers(`*series* [`,`*kind*`,`*ignore_val*`,`*min_percentile*`,`*max_percentile* ]`)`
+`series_outliers(`*series* [`,` *kind* ] [`,` *ignore_val* ] [`,` *min_percentile* ] [`,` *max_percentile* ]`)`
 
 ## Parameters
 
