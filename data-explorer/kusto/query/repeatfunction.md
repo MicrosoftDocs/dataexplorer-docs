@@ -3,7 +3,7 @@ title: repeat() - Azure Data Explorer
 description: Learn how to use the repeat() function to generate a dynamic array containing a series comprised of repeated numbers.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/23/2023
+ms.date: 01/17/2023
 ---
 # repeat()
 
@@ -13,10 +13,15 @@ Generates a dynamic array containing a series comprised of repeated numbers.
 
 `repeat(`*value*`,` *count*`)`
 
-## Arguments
+## Parameters
 
-* *value*: The value of the element in the resulting array. The type of *value* can be boolean, integer, long, real, datetime, or timespan.
-* *count*: The count of the elements in the resulting array. The *count* must be an integer number.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | bool, int, long, real, datetime, or timespan | &check; | The value of the element in the resulting array.|  
+| *count* | int | &check; | The count of the elements in the resulting array.|
+
+## Returns
+
 If *count* is equal to zero, an empty array is returned.
 If *count* is less than zero, a null value is returned.
 
