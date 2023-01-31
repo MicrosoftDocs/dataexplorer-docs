@@ -1,26 +1,26 @@
 ---
 title: reduce operator - Azure Data Explorer
-description: This article describes reduce operator in Azure Data Explorer.
+description: Learn how to use the reduce operator to group a set of strings together based on value similarity.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 1/17/2023
 ---
 # reduce operator
 
-Groups a set of strings together based on values similarity.
+Groups a set of strings together based on value similarity.
 
 For each such group, the operator returns a `pattern`, `count`, and `representative`. The `pattern` best describes the group, in which the `*` character represents a wildcard. The `count` is the number of values in the group, and the `representative` is one of the original values in the group.
 
 ## Syntax
 
-*T* `|` `reduce` [`kind` `=` *ReduceKind*] `by` *Expr* [`with` [`threshold` `=` *Threshold*] [`,` `characters` `=` *Characters*] ]
+*T* `|` `reduce` [`kind` `=` *ReduceKind*] `by` *Expr* [`with` [`threshold` `=` *Threshold*] [`,` `characters` `=` *Characters*]]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *Expr* | string | &check; | The value by which to reduce.|
-| *Threshold* | real | | A value in the range 0-1. Default is 0.1. This value should be small for large inputs. |
+| *Threshold* | real | | A value in the range 0-1. Default is 0.1. It's recommended to set a small threshold for large inputs. |
 | *Characters* | string | | A list of characters that don't break a term. For example, if you want `aaa=bbbb` and `aaa:bbb` to each be a whole term, rather than break on `=` and `:`, use `":="` as the string literal.|
 | *ReduceKind* | string | | The only valid value for now is `source`. If `source` is specified, the operator will append the `Pattern` column to the existing rows in the table instead of aggregating by `Pattern`.|
 
@@ -28,7 +28,7 @@ For each such group, the operator returns a `pattern`, `count`, and `representat
 
 A table with as many rows as there are groups and columns titled `pattern`, `count`, and `representative`. The `pattern` best describes the group, in which the `*` character represents a wildcard, or placeholder for an arbitrary insertion string. The `count` is the number of values in the group, and the `representative` is one of the original values in the group.
 
-For example, the result of `reduce by city` might include: 
+For example, the result of `reduce by city` might include:
 
 |Pattern     |Count |Representative|
 |------------|------|--------------|
@@ -72,10 +72,9 @@ Trace | take 10000
 | reduce by Text with characters="-_"
 ```
 
-**Notes**
-
-The implementation of `reduce` operator is largely based on the paper [A Data Clustering Algorithm for Mining Patterns From Event Logs](https://ristov.github.io/publications/slct-ipom03-web.pdf), by Risto Vaarandi.
-
 ## See also
 
-* [autocluster](./autoclusterplugin.md)
+[autocluster](./autoclusterplugin.md)
+
+> [!NOTE]
+> The implementation of `reduce` operator is largely based on the paper [A Data Clustering Algorithm for Mining Patterns From Event Logs](https://ristov.github.io/publications/slct-ipom03-web.pdf), by Risto Vaarandi.

@@ -11,11 +11,11 @@ ms.date: 10/20/2020
 # Use a Jupyter Notebook and kqlmagic extension to analyze data in Azure Data Explorer
 
 Jupyter Notebook is an open-source web application that allows you to create and share documents containing live code, equations, visualizations, and narrative text. Usage includes data cleaning and transformation, numerical simulation, statistical modeling, data visualization, and machine learning.
-[Jupyter Notebook](https://jupyter.org/) supports magic functions that extend the capabilities of the kernel by supporting additional commands. kqlmagic is a command that extends the capabilities of the Python kernel in Jupyter Notebook so you can run Kusto language queries natively. You can easily combine Python and Kusto query language to query and visualize data using the rich Plot.ly library integrated with `render` commands. Data sources for running queries are supported. These data sources include Azure Data Explorer, a fast and highly scalable data exploration service for log and telemetry data, as well as Azure Monitor logs and Application Insights. kqlmagic also works with Azure Data Studio, Jupyter Lab, and Visual Studio Code Jupyter extension.
+[Jupyter Notebook](https://jupyter.org/) supports magic functions that extend the capabilities of the kernel by supporting additional commands. kqlmagic is a command that extends the capabilities of the Python kernel in Jupyter Notebook so you can run Kusto language queries natively. You can easily combine Python and Kusto Query Language to query and visualize data using the rich Plot.ly library integrated with `render` commands. Data sources for running queries are supported. These data sources include Azure Data Explorer, a fast and highly scalable data exploration service for log and telemetry data, as well as Azure Monitor logs and Application Insights. kqlmagic also works with Azure Data Studio, Jupyter Lab, and Visual Studio Code Jupyter extension.
 
 ## Prerequisites
 
-* Organizational email account that is a member of Azure Active Directory (Azure AD).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Jupyter Notebook installed on your local machine or use [Azure Data Studio](/sql/azure-data-studio/notebooks/notebooks-kqlmagic)
 
 ## Install kqlmagic library
@@ -98,7 +98,7 @@ If you don't like the default color palette, customize the charts using palette 
 
 ## Parameterize a query with Python
 
-Kqlmagic allows for simple interchange between Kusto query language and Python. To learn more: [Parameterize your kqlmagic query with Python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
+Kqlmagic allows for simple interchange between Kusto Query Language and Python. To learn more: [Parameterize your kqlmagic query with Python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
 
 ### Use a Python variable in your KQL query
 

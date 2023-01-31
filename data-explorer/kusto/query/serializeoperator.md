@@ -1,9 +1,9 @@
 ---
 title: serialize operator - Azure Data Explorer
-description: This article describes serialize operator in Azure Data Explorer.
+description: Learn how to use the serialize operator to mark the input row set as serialized and ready for window functions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/22/2023
 ---
 # serialize operator
 

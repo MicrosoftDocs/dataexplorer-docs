@@ -1,17 +1,17 @@
 ---
 title: repeat() - Azure Data Explorer
-description: This article describes repeat() in Azure Data Explorer.
+description: Learn how to use the repeat() function to generate a dynamic array containing a series comprised of repeated numbers.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/17/2023
 ---
 # repeat()
 
-Generates a dynamic array holding a series of equal values.
+Generates a dynamic array containing a series comprised of repeated numbers.
 
 ## Syntax
 
-`repeat(`*value*`,` *count*`)` 
+`repeat(`*value*`,` *count*`)`
 
 ## Parameters
 

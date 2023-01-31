@@ -21,14 +21,11 @@ Checks group membership or principal identity of the current principal running t
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *group* | dynamic | &check; | An array of string literals in which each literal represents an Azure AD principal. See [examples for Azure AD principals](../management/access-control/principals-and-identity-providers.md#azure-ad-tenants).|
+| *group* | dynamic | &check; | An array of string literals in which each literal represents an Azure Active Directory (Azure AD) principal. See [examples for Azure AD principals](../management/access-control/principals-and-identity-providers.md#referencing-azure-ad-principals).|
 
 ## Returns
-  
-The function returns:
 
-* `true`: if the current principal running the query was successfully matched for at least one input argument.
-* `false`: otherwise
+The function returns `true` if the current principal running the query is successfully matched for at least one input argument. If not, the function returns `false`.
 
 ## Examples
 

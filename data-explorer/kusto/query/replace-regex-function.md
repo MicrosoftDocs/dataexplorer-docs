@@ -1,6 +1,6 @@
 ---
 title: replace_regex() - Azure Data Explorer
-description: This article describes replace_regex() in Azure Data Explorer.
+description: Learn how to use the replace_regex() function to replace all regex matches with another string.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 1/17/2023
