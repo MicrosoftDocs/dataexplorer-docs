@@ -13,9 +13,11 @@ Calculates the element-wise ceiling function of the numeric series input.
 
 `series_ceiling(`*series*`)`
 
-## Arguments
+## Parameters
 
-* *series*: Input numeric array, on which the ceiling function is applied. The argument must be a dynamic array.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *series* | dynamic | &check; | An array of numeric values over which the ceiling function is applied. |
 
 ## Returns
 
@@ -23,7 +25,9 @@ Dynamic array of the calculated ceiling function. Any non-numeric element yields
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShWsFVIqcxLzM1M1ojWNdQz1THUMdIzjdXkqlFIrShJzUtRKI5PTs3MycxLByotTi3KTIULaBRrAgCQd2nZRgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 print s = dynamic([-1.5,1,2.5])
 | extend s_ceiling = series_ceiling(s)
