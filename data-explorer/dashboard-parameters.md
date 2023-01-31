@@ -100,7 +100,7 @@ Fixed value parameters are based on predefined values specified by the user. The
 
 1. Fill in the details as follows:
 
-    * **Parameter display name**: Company
+    * **Label**: Company
     * **Parameter type**: Single selection
     * **Variable name**: `_company`
     * **Data type**: String
@@ -155,7 +155,7 @@ Fixed value parameters are based on predefined values specified by the user. The
 
 1. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
 
-    * **Parameter display name**: Companies
+    * **Label**: Companies
     * **Parameter type**: Multiple selection
     * **Variable name**: `_companies`
 
@@ -195,7 +195,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 1. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
 
-    * **Parameter display name**: Event
+    * **Label**: Event
     * **Variable name**: `_event`
     * **Source**: Query
     * **Data source**: GitHub
@@ -237,7 +237,7 @@ Query-based parameter values are derived at dashboard load time by executing the
 
 1. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
 
-    * **Parameter display name**: Events
+    * **Label**: Events
     * **Parameter type**: Multiple selection
     * **Variable name**: `_events`
 
@@ -268,7 +268,7 @@ Free text parameters don't contain any values. They allow you to introduce your 
 
 1. Select **Parameters** to open the **Parameters pane** and select **New parameter**.
 1. Fill in the details as follows:
-    * **Parameter display name**: Company
+    * **Label**: Company
     * **Parameter type**: Free text
     * **Variable name**: _company
     * **Data type**: String
@@ -287,6 +287,25 @@ Free text parameters don't contain any values. They allow you to introduce your 
     | summarize WatchEvents=count() by RepoName = tolower(tostring(Repo.name))
     | top 5 by WatchEvents
     ```
+
+### Use the Data Source parameter
+
+Data source parameters contain dashboard data source values. They allow you to select a data source for the tiles and paramaeters using it.
+
+#### Create a data source parameter
+
+1. Select **Parameters** to open the **Parameters pane** and select **New parameter**.
+1. Fill in the details as follows:
+    * **Label**: Cluster
+    * **Parameter type**: Data source
+    * **Show on pages**: Select all
+    * **Values**: list all data sources
+    * **Default value**: Demo 12
+
+#### Use parameters in the query
+
+1. Run a sample query using the new *Cluster* parameter by using the Data source parameter:
+2. With each selection of the data source parameter, all the relevant paramters and tiles will be executed on the selected data source.
 
 The new parameter is now visible in the parameter list at the top of the dashboard.
 
