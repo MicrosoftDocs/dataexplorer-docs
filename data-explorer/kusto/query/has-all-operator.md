@@ -27,7 +27,7 @@ For more information about other operators and to determine which operator is mo
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input whose records are to be filtered.|
+| *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column used to filter the records.|
 | *list_of_scalars* | scalar | &check; | A value or comma-separated set of values to search for in *col*.|
 | *dynamic_array* | dynamic | &check; | An array of values to search for in *col*.|

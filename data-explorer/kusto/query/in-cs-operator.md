@@ -27,7 +27,7 @@ Filters a record set for data with a case-sensitive string.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input whose records are to be filtered.|
+| *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column used to filter the records.|
 | *scalar_values* | scalar | &check; | A value or comma-separated set of values to search for in *col*.|
 | *dynamic_array* | dynamic | &check; | An array of values to search for in *col*.|
