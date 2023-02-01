@@ -3,7 +3,7 @@ title: series_fit_line_dynamic() - Azure Data Explorer
 description: Learn how to use the series_fit_line_dynamic() function to apply a linear regression on a series to return a dynamic object.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 01/26/2023
 ---
 # series_fit_line_dynamic()
 
@@ -22,22 +22,35 @@ This operator is similar to [series_fit_line](series-fit-linefunction.md), but u
 
 ## Syntax
 
-`series_fit_line_dynamic(`*x*`)`
+`series_fit_line_dynamic(`*series*`)`
 
-## Arguments
+## Parameters
 
-* *x*: Dynamic array of numeric values.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *series* | dynamic | &check; | An array of numeric values.|
 
 > [!TIP]
 > The most convenient way of using this function is by applying it to the results of [make-series](make-seriesoperator.md) operator.
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA11OTWvDMAy9F/ofdGsCXqkztu7ia2HQUwu7jBG8RG0ErZIp3tbAfvyU2IN2Bpn3Jft1QhzmM9BDtVvAwkRyceL5iNk7ccbtd5YbsE0Od2BtY+BWjVfcG1w9sD9Tlb0WBh4MPBp40oDVUWbXOsoLxYVa96tx3vL57AfwEpBrOFBwPQphXyosT8RY/r05XAXjf7v9x6cXdBpdSj/h1GR/aruo9yNK6osX8lxF4yuR5O1uTPnnPnNAqbAL1PIUoCshZbZadqP9R3sqrmBsLNoXBQKdsWq8hF+uDo0sdgEAAA==" target="_blank">Run the query</a>
+
 ```kusto
-print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([2,5,6,8,11,15,17,18,25,26,30,30])
+print
+    id=' ',
+    x=range(bin(now(), 1h) - 11h, bin(now(), 1h), 1h),
+    y=dynamic([2, 5, 6, 8, 11, 15, 17, 18, 25, 26, 30, 30])
 | extend fit=series_fit_line_dynamic(y)
-| extend RSquare=fit.rsquare, Slope=fit.slope, Variance=fit.variance,RVariance=fit.rvariance,Interception=fit.interception,LineFit=fit.line_fit
+| extend
+    RSquare=fit.rsquare,
+    Slope=fit.slope,
+    Variance=fit.variance,
+    RVariance=fit.rvariance,
+    Interception=fit.interception,
+    LineFit=fit.line_fit
 | render timechart
 ```
 

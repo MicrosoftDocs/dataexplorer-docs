@@ -3,7 +3,7 @@ title: series_fit_2lines_dynamic() - Azure Data Explorer
 description: Learn how to use the series_fit_2lines_dynamic() function to apply two segments linear regression on a dynamic numerical array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 01/26/2023
 ---
 # series_fit_2lines_dynamic()
 
@@ -31,21 +31,30 @@ This operator is similar to [series_fit_2lines](series-fit-2linesfunction.md). U
 
 ## Syntax
 
-`series_fit_2lines_dynamic(`*x*`)`
+`series_fit_2lines_dynamic(`*series*`)`
 
-## Arguments
+## Parameters
 
-* *x*: Dynamic array of numeric values.  
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *series* | dynamic | &check; | An array of numeric values.|
 
 > [!TIP]
 > The most convenient way of using this function is applying it to the results of the [make-series](make-seriesoperator.md) operator.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA21PywrCMBC8F/oPe7OFNTTxfcjVk38gUmq72hWNkgZswY83sVQsmMMkOzszm31YNi6OwB+u9AQm2BettoU5U3Jkk5j7M0kRZJ3CFKSsEcZsD72v01VnihuXyV4iKKECLBDmYoWwEJnXekpmYjbgBmEd7qVQhzSOXkCtI1P1cTs2tGWnG7JMTX5il189lQ9DulR8at/AkUP9WlTQNP9MYd7D3i9UOr8/QovQ4ZDxfaggs/5TZMHxjcq6sO4NHF3PtzoBAAA=" target="_blank">Run the query</a>
+
 ```kusto
-print id=' ', x=range(bin(now(), 1h)-11h, bin(now(), 1h), 1h), y=dynamic([1,2.2, 2.5, 4.7, 5.0, 12, 10.3, 10.3, 9, 8.3, 6.2])
-| extend LineFit=series_fit_line_dynamic(y).line_fit, LineFit2=series_fit_2lines_dynamic(y).line_fit
+print
+    id=' ',
+    x=range(bin(now(), 1h) - 11h, bin(now(), 1h), 1h),
+    y=dynamic([1, 2.2, 2.5, 4.7, 5.0, 12, 10.3, 10.3, 9, 8.3, 6.2])
+| extend
+    LineFit=series_fit_line_dynamic(y).line_fit,
+    LineFit2=series_fit_2lines_dynamic(y).line_fit
 | project id, x, y, LineFit, LineFit2
 | render timechart
 ```
