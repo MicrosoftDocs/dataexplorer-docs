@@ -111,45 +111,41 @@ This example provides the steps needed to connect to MATLAB using JDBC.
 
 ## ODBC
 
-Applications that support ODBC can connect to Azure Data Explorer.
+To create an ODBC data source to connect to Azure Data Explorer, follow these steps.
 
-Create an ODBC data source:
+1. [Launch the ODBC Data Source Administrator](/sql/database-engine/configure-windows/open-the-odbc-data-source-administrator?view=sql-server-ver16).
 
-1. Launch the ODBC Data Source Administrator.
-1. Select **Add** to create a new data source, and set *ODBC Driver 17 for SQL Server*.
-1. Give the data source a name, and specify the Azure Data Explorer cluster name in the **Server** field. For example, *mykusto.kusto.windows.net*.
-1. Set **Active Directory Integrated**, for the authentication option.
+1. Select **Add** to create a new data source.
+
+1. Select **ODBC Driver 17 for SQL Server**.
+
+1. Give the data source a **Name** and specify the Azure Data Explorer cluster URI in the **Server** field.
+
+1. For the authentication option, select **Active Directory Integrated**.
+
 1. Select **Next** to set the database.
-1. You can just leave the defaults for all the other settings in the tabs that follow.
+
+1. In the tabs that follow, you can leave the default settings. Select **Next** to move on.
+
 1. Select **Finish** to open the data source summary window, where the connection can be tested.
 
-You can now use the ODBC data source with the applications.
-
-If the ODBC application can accept a connection string instead of, or in addition to DSN, then use the following.
+1. Use the ODBC data source. If the application can accept a connection string, you can use something like the following string to connect.
 
 ```odbc
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
 ```
 
-Some ODBC applications don't work well with the `NVARCHAR(MAX)` type. For more information, see [Using Large Value Types in SQL Server Native Client](/sql/relational-databases/native-client/features/using-large-value-types).
+### Application authentication with OBDC
 
-The common workaround, is to cast the returned data to *NVARCHAR(n)*, with some value for n. For example, *NVARCHAR(4000)*. Such a workaround, however, won't work for Azure Data Explorer, since Azure Data Explorer has only one string type and for SQL clients it's encoded as *NVARCHAR(MAX)*.
+To use service principal authentication with ODBC, you must provide an Azure Active Directory tenant ID in the ODBC connection string. Specify the tenant ID in the Language field.
 
-Azure Data Explorer offers a different workaround. You can configure Azure Data Explorer to encode all strings as *NVARCHAR(n)* via a connection string. The language field in the connection string can be used to specify tuning options in the format, *language@OptionName1:OptionValue1,OptionName2:OptionValue2*.
-
-For example, the following connection string will instruct Azure Data Explorer to encode strings as *NVARCHAR(5000)*. It can be used, for example, to work with the SAP Smart Data Integration, which has a default mapping for type NVARCHAR with precision > 5000.
+For example, specify the tenant with `Language=any@AadAuthority:<aad_tenant_id>`.
 
 ```odbc
-"Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated;Language=any@MaxStringSize:5000"
+"Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@AadAuthority:<aad_tenant_id>;UID=<aad_application_id>;PWD=<aad_application_secret>"
 ```
 
-You can also use service principal authentication with ODBC. To do so, you must provide an Azure Active Directory tenant ID in the ODBC connection string. The tenant ID can be specified in the *Language* field using the following syntax:
-
-```odbc
-"Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@MaxStringSize:4000,AadAuthority:<aad_tenant_id>;UID=<aad_application_id>;PWD=<aad_application_secret>"
-```
-
-You can also change the *Language* field in the ODBC data source (DSN). To do so, add the *Language* value in the DSN registry, as shown in the following example:
+You can change the Language field in the ODBC data source (DSN) in the registry for Windows.
 
 ```odbc
 [HKEY_CURRENT_USER\SOFTWARE\ODBC\ODBC.INI\MyUserDSN]
@@ -167,7 +163,19 @@ Server = tcp:<adx_cluster_name>.<region_name>.kusto.windows.net,1433
 Language = any@AadAuthority:<aad_tenant_id>
 ```
 
-The Azure AD tenant ID for SQL clients can also be configured at the cluster level. If configured, you don't need to specify the ID on client. To change the tenant ID at the cluster level, please open a support request in the [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
+The Azure AD tenant ID can also be configured at the cluster level, so you don't have to specify it on the client. If you need to change the tenant ID at the cluster level, open a support request in the  [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
+
+### NVARCHAR() configuration with OBDC
+
+ODBC applications may not work well with `NVARCHAR(MAX)` type. You can cast the data to `NVARCHAR(n)`, where `n` is some value. This workaround won't work with Azure Data Explorer, which only has one string type encoded as `NVARCHAR(MAX)`.
+
+You can configure specialty Azure Data Explorer options via a connection string in the format `language@OptionName1:OptionValue1,OptionName2:OptionValue2`.
+
+For example, `Language=any@MaxStringSize:5000` will encode strings as `NVARCHAR(5000)`.
+
+```odbc
+"Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated;Language=any@MaxStringSize:5000"
+```
 
 ### PowerShell
 
