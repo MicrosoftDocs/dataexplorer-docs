@@ -177,9 +177,11 @@ For example, `Language=any@MaxStringSize:5000` will encode strings as `NVARCHAR(
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated;Language=any@MaxStringSize:5000"
 ```
 
-### PowerShell
+### Examples
 
-Here is an example of the PowerShell script that uses the ODBC driver.
+This section provides examples of how to connect to Azure Data Explorer using the ODBC driver.
+
+#### PowerShell
 
 ```powershell
 $conn = [System.Data.Common.DbProviderFactories]::GetFactory("System.Data.Odbc").CreateConnection()
@@ -188,6 +190,15 @@ $conn.Open()
 $conn.GetSchema("Tables")
 $conn.Close()
 ```
+
+#### Tableau
+
+Create an ODBC data source. For more information, see the [ODBC](./clients.md#odbc) section.
+
+1. Connect via **Other Databases (ODBC)**.
+1. Set the ODBC data source in **DSN**.
+1. Select **Connect** to establish a connection.
+1. Select **Sign In**, once the button is available, and sign in to Azure Data Explorer.
 
 ## LINQPad
 
@@ -219,37 +230,6 @@ Make a new connection.
 1. Use Database picker to select the database.
 1. Select **Connect** to take you to the database dashboard and set the connection.
 1. Select **New Query** to open the query window, or select the **New Query** task on the dashboard.
-
-## Power BI desktop
-
-Connect like you do, to the SQL Azure Database.
-
-1. Under **Get Data**, select **More**.
-1. Set **Azure**, and then **Azure SQL Database**.
-1. Specify the Azure Data Explorer server name. For example, *mykusto.kusto.windows.net*.
-1. Select **DirectQuery**.
-1. Set **Microsoft account** authentication (not **Windows**), and select **sign in**.
-1. The database picker shows the available databases. Continue like you do, with a real SQL server.
-
-## Excel
-
-Connect like you do, to the SQL Azure Database.
-
-1. Select **Get Data** under the **Data** tab, then set **From Azure** and **From Azure SQL Database**.
-1. Specify the Azure Data Explorer server name. For example, *mykusto.kusto.windows.net*.
-1. Set **Microsoft account** authentication (not **Windows**), and select **sign in**.
-1. The database picker shows the available databases. Continue like you do, with a real SQL server.
-1. Once signed in, select **Connect**.
-1. The database picker shows the available databases. Continue like you do, with a real SQL server.
-
-## Tableau
-
-Create an ODBC data source. For more information, see the [ODBC](./clients.md#odbc) section.
-
-1. Connect via **Other Databases (ODBC)**.
-1. Set the ODBC data source in **DSN**.
-1. Select **Connect** to establish a connection.
-1. Select **Sign In**, once the button is available, and sign in to Azure Data Explorer.
 
 ## DBeaver (5.3.3 and above)
 
