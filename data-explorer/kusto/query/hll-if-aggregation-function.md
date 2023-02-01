@@ -7,7 +7,7 @@ ms.date: 01/22/2023
 ---
 # hll_if() (aggregation function)
 
-Calculates the intermediate results of [`dcount`](dcount-aggfunction.md) in records for which *Predicate* evaluates to `true`.
+Calculates the intermediate results of [`dcount`](dcount-aggfunction.md) in records for which the *predicate* evaluates to `true`.
 
 Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accuracy](dcount-aggfunction.md#estimation-accuracy).
 
