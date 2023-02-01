@@ -19,7 +19,9 @@ When possible, use the case-sensitive [in](in-cs-operator.md).
 
 ## Syntax
 
-*T* `|` `where` *col* `in~` `(`*scalar_values*`)`
+*T* `|` `where` *col* `in~` `(`*list_of_scalars*`)`
+
+*T* `|` `where` *col* `in~` `(`*dynamic_array*`)`
 
 *T* `|` `where` *col* `in~` `((`*tabular_expression*`))`
 
@@ -29,7 +31,8 @@ When possible, use the case-sensitive [in](in-cs-operator.md).
 |--|--|--|--|
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
 | *col* | string | &check; | The column used to filter the records.|
-| *scalar_values* | scalar | &check; | A value or comma-separated set of values to search for in *col*.|
+| *list_of_scalars* | scalar | &check; | A value or comma-separated set of values to search for in *col*.|
+| *dynamic_array* | dynamic | &check; | An array of values to search for in *col*.|
 | *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 1,000,000 distinct results.|
 
 ## Returns

@@ -17,7 +17,11 @@ For more information about other operators and to determine which operator is mo
 
 ## Syntax
 
-*T* `|` `where` *col* `has_any` `(`*expr*`,` [ *expr_2*`,` ... ] `)`
+*T* `|` `where` *col* `has_any` `(`*list_of_scalars*`)`
+
+*T* `|` `where` *col* `has_any` `(`*dynamic_array*`)`
+
+*T* `|` `where` *col* `has_any` `((`*tabular_expression*`))`
 
 ## Parameters
 
@@ -25,10 +29,9 @@ For more information about other operators and to determine which operator is mo
 |--|--|--|--|
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
 | *col* | string | &check; | The column used to filter the records.|
-| *expr* | scalar | &check; | The values to search for in *col*. An *expr* can be a [scalar](scalar-data-types/index.md) value or [tabular expression](tabularexpressionstatements.md), and produce a maximum of 10,000 distinct results for which to search. If a tabular *expr* has multiple columns, only the first column will be considered.|
-
-> [!NOTE]
-> An inline expression must be enclosed with double parenthesis to be properly parsed. See [example](#inline-tabular-expression).
+ *list_of_scalars* | scalar | &check; | A value or comma-separated set of values to search for in *col*.|
+| *dynamic_array* | dynamic | &check; | An array of values to search for in *col*.|
+| *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 10,000 distinct results.|
 
 ## Returns
 
@@ -98,6 +101,9 @@ StormEvents
 | where State has_any ((PopulationData | where Population > 5000000 | project State))
 | summarize count() by State
 ```
+
+> [!NOTE]
+> An inline expression must be enclosed with double parenthesis to be properly parsed.
 
 ### Tabular expression from a let statement
 
