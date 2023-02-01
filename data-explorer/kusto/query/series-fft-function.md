@@ -52,8 +52,8 @@ The function returns the complex inverse fft in two series. The first series for
 
 * Transform a series to the frequency domain, and then apply the inverse transform to get back the original series:
 
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VQ23KDIBB99yvOI7QmUfuSaYZvcWiyKi2CA6TRXv69GLWxnXZfYM+NZTUFeGXoIl9JsP4RJ3t+0pSiI6fs6dbXUpmlE/k2i4pGevqGsm3G8Z4g1ijF3RjLinh2inHs5sDYsx73k5nz5DM5JDrOYERe7A+41m6HaK6N1NBk6tAkTpqa0KNytkWGYGGwQQ4fqEOefID6QOaEwYnlM6xPsecpBvUDeih4lPtz20qn3mKmaOULlVr5wPpRXjqSegUO7oqqVtZrVPHbq6yqQjkZU0z3Uc4h4OOnyZcRZItgJlf2iSkWioqVU43Wf/JjROfsMx3DRl7kgL9l80KDtWilGeZgVNZBx8UcG+kCLio06KQh7WOqi2PRb5oNvtMqiEnFvwD5H9DbOQIAAA==" target="_blank">Run the query</a>
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VQ23KDIBB99yvOI7QmUfuSaYZvcWiyKi2CA6TRXv69GLWxnXZfYM+NZTUFeGXoIl9JsP4RJ3t+0pSiI6fs6dbXUpmlE/k2i4pGevqGsm3G8Z4g1ijF3RjLinh2inHs5sDYsx73k5nz5DM5JDrOYERe7A+41m6HaK6N1NBk6tAkTpqa0KNytkWGYGGwQQ4fqEOefID6QOaEwYnlM6xPsecpBvUDeih4lPtz20qn3mKmaOULlVr5wPpRXjqSegUO7oqqVtZrVPHbq6yqQjkZU0z3Uc4h4OOnyZcRZItgJlf2iSkWioqVU43Wf/JjROfsMx3DRl7kgL9l80KDtWilGeZgVNZBx8UcG+kCLio06KQh7WOqi2PRb5oNvtMqiEnFvwD5H9DbOQIAAA==" target="_blank">Run the query</a>
 
     ```kusto
     let sinewave=(x:double, period:double, gain:double=1.0, phase:double=0.0)
