@@ -364,11 +364,13 @@ Consulting, architecture and implementation of cloud-native software for the MS 
 
 :::image type="icon" source="media/findmypartner/ilink-digital-logo.png":::
 
-- **Data Technology Jumpstart**
+**Data Technology Jumpstart**
 We help customers accelerate their project timings by familiarizing them with the Azure data platform technologies, and environment setup, providing reference solutions to the customer use-case and setting up guidance for best practices.
-- **Architecture Consulting**
+
+**Architecture Consulting**
 Our experts work to architect solutions for our customer's most pressing data architecture use cases. We analyze the existing system, understand the current pain points and provide a future-proof reference architecture, execute a couple of sample use cases, and set up guidance for the best practices.
-- **Data Platform Build-up**
+
+**Data Platform Build-up**
 We build up our customer's data platforms powered with Azure data services. Our team enables our customers to create their own complete data platform from inception to production, set up processes for data analysis, data integration, exposing data as a product, and set up data governance and monitoring for different data-related programs and projects.
 
 **Partner type**
