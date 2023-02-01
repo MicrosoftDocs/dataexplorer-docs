@@ -25,7 +25,7 @@ For more information about other operators and to determine which operator is mo
 |--|--|--|--|
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
 | *col* | string | &check; | The column used to filter the records.|
-| *expr* | scalar or tabular | &check; | A single or set of values to search for in *col*. An *expr* can be of [scalar](scalar-data-types/index.md) or [tabular](tabularexpressionstatements.md) type, and produce a maximum of 10,000 distinct results for which to search. If a tabular *expr* has multiple columns, only the first column will be considered.|
+| *expr* | scalar | &check; | The values to search for in *col*. An *expr* can be a [scalar](scalar-data-types/index.md) value or [tabular expression](tabularexpressionstatements.md), and produce a maximum of 10,000 distinct results for which to search. If a tabular *expr* has multiple columns, only the first column will be considered.|
 
 > [!NOTE]
 > An inline expression must be enclosed with double parenthesis to be properly parsed. See [example](#inline-tabular-expression).
