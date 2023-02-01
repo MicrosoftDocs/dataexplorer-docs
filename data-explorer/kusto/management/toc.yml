@@ -500,7 +500,19 @@ items:
     - name: .show cluster policy query_weak_consistency
       href: show-query-weak-consistency-policy.md
 - name: Security roles
-  href: security-roles.md
+  items:
+    - name: Security roles overview
+      href: security-roles.md
+    - name: Manage database roles
+      href: manage-database-security-roles.md
+    - name: Manage table roles
+      href: manage-table-security-roles.md
+    - name: Manage external table roles
+      href: manage-external-table-security-roles.md
+    - name: Manage materialized view roles
+      href: manage-materialized-view-security-roles.md
+    - name: Manage function roles
+      href: manage-function-security-roles.md
 - name: Data ingestion
   items:
   - name: Ingest from storage
@@ -606,15 +618,15 @@ items:
   - name: Azure Active Directory
     displayName: AAD, Azure AD
     href: access-control/aad.md
+  - name: Role-based access control
+    href: access-control/role-based-access-control.md
+    displayName: RBAC, security roles, principals
   - name: How-To Azure Active Directory authentication
     displayName: AAD, Azure AD
     href: access-control/how-to-authenticate-with-aad.md
   - name: Referencing security principals
     displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
     href: access-control/principals-and-identity-providers.md
-  - name: Principal roles
-    displayName: security roles, RBAC, role-based access control
-    href: access-control/role-based-authorization.md
   - name: Allow cross-tenant queries and commands
     href: ../../cross-tenant-query-and-commands.md
 - name: Advanced data management

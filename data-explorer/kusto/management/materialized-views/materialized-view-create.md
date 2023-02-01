@@ -26,7 +26,7 @@ There are two possible ways to create a materialized view, as noted by the *back
 > [!IMPORTANT]
 > On large source tables, the backfill option might take a long time to complete. If this process transiently fails while running, it won't be automatically retried. You must then re-execute the create command. For more information, see [Backfill a materialized view](#backfill-a-materialized-view).
 
-The create operation requires [database admin](../access-control/role-based-authorization.md) permissions. The creator of the materialized view becomes the admin of it.
+The create operation requires [Database Admin](../access-control/role-based-access-control.md) permissions. The creator of the materialized view becomes the Admin of it.
 
 ## Syntax
 
