@@ -17,7 +17,7 @@ Filters a record set for data without a case-sensitive string.
 
 ## Syntax
 
-*T* `|` `where` *col* `has_any` `(`*scalar_values*`)`
+*T* `|` `where` *col* `!in` `(`*scalar_values*`)`
 
 *T* `|` `where` *col* `!in` `((`*tabular_expression*`))`
 

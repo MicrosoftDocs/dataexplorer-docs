@@ -19,7 +19,7 @@ When possible, use the case-sensitive [!in](not-in-cs-operator.md).
 
 ## Syntax
 
-*T* `|` `where` *col* `has_any` `(`*scalar_values*`)`
+*T* `|` `where` *col* `!in~` `(`*scalar_values*`)`
 
 *T* `|` `where` *col* `!in~` `((`*tabular_expression*`))`
 
