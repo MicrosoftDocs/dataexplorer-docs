@@ -25,7 +25,7 @@ Returns a flat list of the structure of the selected databases with all their ta
 When used with a version, the database is only returned if it's a later version than the version provided.
 
 > [!NOTE]
-> The version should only be provided in "vMM.mm" format. MM represents the major version and mm represent the minor version.
+> The version should only be provided in "vMM.mm" format. MM represents the major version and mm represents the minor version.
 
 **Example** 
  
