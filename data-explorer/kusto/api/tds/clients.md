@@ -6,17 +6,15 @@ ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 10/30/2019
 ---
-# MS-TDS clients and Azure Data Explorer
+# Connect to Azure Data Explorer like Microsoft SQL Server
 
-Azure Data Explorer implements TDS-compliant endpoints for MS-SQL clients. Compatibility is on the protocol level. Any library or application that can connect to the SQL Azure database with Azure Active Directory (Azure AD) authentication, will work with the Azure Data Explorer server. Therefore, you can use the server domain name like it was the SQL Azure server.
+Azure Data Explorer provides TDS-compliant endpoints that imitate the functionality of Microsoft SQL Server. As a result, any library and application that can connect to a Microsoft Azure SQL Database with Azure Active Directory (Azure AD) authentication can also connect to Azure Data Explorer. You can access your data stored in Azure Data Explorer by specifying the server domain name in the same way you would when connecting to Microsoft Azure SQL Database.
 
-Azure Data Explorer doesn't support basic authentication with username and password. You must use Azure Active Directory with all clients listed below.
+This article explains how to connect and authenticate to Azure Data Explorer using the SQL Server emulation functionality, such as with [JDBC](#jdbc), [ODBC](#odbc), [Azure Data Studio](#azure-data-studio-134-and-above), and more.
 
-Azure Data Explorer implements a subset of the T-SQL and a subset of the SQL server emulation. For more information, see [known issues](./sqlknownissues.md) for differences between the SQL Server's implementation of T-SQL and Azure Data Explorer's.
-
-## .NET SQL client
-
-Azure Data Explorer supports Azure AD authentication for SQL clients. For more information, see [.NET SQL Client (user authentication)](./aad.md#net-sql-client-user) and [.NET SQL Client (application authentication)](./aad.md#net-sql-client-application)
+> [!NOTE]
+>
+> Azure Data Explorer implements a subset of T-SQL. See [known issues](./sqlknownissues.md) for differences between T-SQL in Microsoft SQL Server and Azure Data Explorer.
 
 ## JDBC
 
