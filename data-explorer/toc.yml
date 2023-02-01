@@ -226,7 +226,7 @@ items:
           href: web-ui-samples-query.md
         - name: Customize settings
           href: web-customize-settings.md
-        - name: Results grid
+        - name: Explore the results grid
           href: web-results-grid.md
         - name: Share queries
           href: web-share-queries.md
