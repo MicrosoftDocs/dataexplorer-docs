@@ -3,7 +3,7 @@ title: Find an Azure Data Explorer partner
 description: Learn about our partners and how they can help you with Azure Data Explorer.
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 01/25/2023
+ms.date: 02/01/2023
 ---
 # Find an Azure Data Explorer partner
 
@@ -53,6 +53,42 @@ We develop and design sophisticated, forward-looking software solutions based on
 
 - [AIT GmbH & Co. KG website](https://www.aitgmbh.de/)
 - [Microsoft partner site for AIT GmbH & Co. KG](https://appsource.microsoft.com/marketplace/partner-dir/c9febb40-e205-4f30-8d0b-c00039a9f4fc/overview)
+
+## Alten
+
+:::image type="icon" source="media/findmypartner/alten-logo.png":::
+
+ALTEN is the consulting and engineering organization working in various (niche) markets for the high-tech sector and ICT. The development of new High-Tech technologies is costly and requires specialist knowledge. Knowledge in the field of technology plays the most important role, the central pillar within ALTEN.
+
+ALTEN also offers her specialist knowledge in the field of IT. We play an active role regarding quality, reliability, and innovations in the area of Big Data and Internet of Things with our partners in order to strengthen the digital transformation and sustainability
+
+**Partner type**
+
+- System Integrator
+- Consulting
+- Mechatronics
+- Technical Software
+- IoT Solution Provider
+
+**Focus geography**
+
+- Global
+- Europe
+- Netherlands
+
+**Contact**
+
+- [adx@alten.nl](mailto:adx@alten.nl)
+
+**Additional information**
+
+- [Alten website](https://www.alten.com/)
+- [Microsoft partner site for Alten](https://appsource.microsoft.com/marketplace/partner-dir/a892a098-b15f-4f3c-b34f-6bcf4802815c/overview)
+
+**Success stories**
+
+- [https://bits-chips.nl/artikel/infusing-the-mobile-crane-industry-with-iot-based-data-driven-solutions/](https://bits-chips.nl/artikel/infusing-the-mobile-crane-industry-with-iot-based-data-driven-solutions/)
+- [https://bits-chips.nl/artikel/comfortably-connected-to-the-cloud/](https://bits-chips.nl/artikel/comfortably-connected-to-the-cloud/)
 
 ## AM Squared Systems
 
@@ -137,6 +173,40 @@ Besides these general descriptions of our capabilities one of our strongest sect
 **Additional information**
 
 - [Capgemini website](https://www.capgemini.com)
+
+## Codit
+
+:::image type="icon" source="media/findmypartner/logo-codit.png":::
+
+At Codit we want to help make the world an even smarter place.
+By creating customer cloud solutions that make the world’s data work better, we help our customers to evolve, and touch the lives of millions across the globe.
+Our team of 200 employees across our offices in Belgium, France, Portugal, Switzerland, the United Kingdom, The Netherlands, Malta and Luxembourg use leading Microsoft Azure Cloud Native technologies to put the world’s data to work.
+
+**Partner type**
+
+- System Integrator
+
+**Focus geography**
+
+- Western Europe
+- UK
+- France
+
+**Contact**
+
+- [francis.defauw@codit.eu](mailto:francis.defauw@codit.eu)
+
+**Additional information**
+
+- [Codit website](https://www.codit.eu)
+- [Microsoft partner site for Codit](https://appsource.microsoft.com/marketplace/partner-dir/7517bc42-bcf8-4916-a677-b5753051f846/overview)
+
+**Success stories**
+
+- [https://www.codit.eu/en/clients/euronavs-iot-solution-connects-vessels-to-shore-improving-efficiency-and-reducing-carbon-emissions/](https://www.codit.eu/en/clients/euronavs-iot-solution-connects-vessels-to-shore-improving-efficiency-and-reducing-carbon-emissions/)
+- [https://www.youtube.com/watch?v=gz2Vwlmi7j8](https://www.youtube.com/watch?v=gz2Vwlmi7j8)
+- [https://www.codit.eu/en/clients/duco-azure-iot-edge/](https://www.codit.eu/en/clients/duco-azure-iot-edge/)
+- [https://www.youtube.com/watch?v=0JLC_UJeeq4](https://www.youtube.com/watch?v=0JLC_UJeeq4)
 
 ## Data Addiction Pty Ltd
 
