@@ -104,7 +104,7 @@ This configuration is identical to the [active-active-active configuration](#act
 
 ### Active-Hot standby configuration
 
-The Active-Hot configuration is similar to the [Active-Active configuration](#active-active-configuration) in dual ingest, processing, and curation. However, the standby cluster is offline to end users, and doesn't need to be in the same SKU as the primary. The hot standby cluster can also be of a smaller SKU and scale, and as such is less performant. In a disaster scenario, the standby cluster is brought online, and scaled up.
+The Active-Hot configuration is similar to the [Active-Active configuration](#active-active-configuration) in dual ingest, processing, and curation. While the standby cluster is online for ingestion, process and curation, it is made made unavailable to end users for query. The standby cluster doesn't need to be in the same SKU as the primary and may also be of a smaller SKU and scale, and as such may be less performant. In a disaster scenario, the users are redirected to the standby cluster, which can then be scaled up.
 
 :::image type="content" source="media/business-continuity-overview/active-hot-standby.png" alt-text="Active-hot standby configuration.":::
 
