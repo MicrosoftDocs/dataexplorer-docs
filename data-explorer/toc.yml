@@ -32,7 +32,7 @@ items:
 - name: Quickstarts
   expanded: true
   items:
-  - name: Create cluster and database - Azure portal
+  - name: Create a cluster and database
     href: create-cluster-database-portal.md
   - name: Get sample data
     href: ingest-sample-data.md
