@@ -17,7 +17,7 @@ Returns statistics for a series in a dynamic object.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array cell that's an array of numeric values.|
+| *series* | dynamic | &check; | An array of numeric values.|
 | *ignore_nonfinite* | bool | | Indicates whether to calculate the statistics while ignoring non-finite values, such as *null*, *NaN*, *inf*, and so on. The default is `false`, which returns `null` if non-finite values are present in the array.|
 
 ## Returns
