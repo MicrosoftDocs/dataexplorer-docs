@@ -26,7 +26,7 @@ When possible, use the case-sensitive [!in~](not-in-cs-operator.md).
 *T* `|` `where` *col* `!in~` `((`*tabular_expression*`))`
 
 > [!NOTE]
-> An inline tabular expression must be enclosed with double parentheses to be properly parsed. See [example](#tabular-expression).
+> An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
 
 ## Parameters
 
@@ -104,7 +104,7 @@ StormEvents
 
 ### Tabular expression
 
-The following query shows how to use `!in~` with an inline tabular expression. Notice that an inline tabular expression must be enclosed with double parentheses to be properly parsed.
+The following query shows how to use `!in~` with an inline tabular expression. Notice that an inline tabular expression must be enclosed with double parentheses.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVVDMzKtT0NAIyC8ozUksyczPc0ksSVSAqUEIK9gpmBqAAVCyoCg/KzW5BGKEpibQyOLS3NzEosyqVIXk/NK8Eg1NhaRKiDQAEmmU0nwAAAA=" target="_blank">Run the query</a>

@@ -24,7 +24,7 @@ Filters a record set for data with a case-sensitive string.
 *T* `|` `where` *col* `in` `((`*tabular_expression*`))`
 
 > [!NOTE]
-> An inline tabular expression must be enclosed with double parentheses to be properly parsed. See [example](#tabular-expression).
+> An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
 
 ## Parameters
 
@@ -100,7 +100,7 @@ StormEvents
 | count
 ```
 
-The same query can be written with an inline tabular expression statement. Notice that an inline tabular expression must be enclosed with double parentheses to be properly parsed.
+The same query can be written with an inline tabular expression statement. Notice that an inline tabular expression must be enclosed with double parentheses.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXIzFPQ0ODlUgCCYIQyiECNQnFpbm5iUWZVqkJyfmleiYamQlIlRCNMRUl+gYIpSBSsIB4irKkJtgcsBAD4wHSifQAAAA==" target="_blank">Run the query</a>

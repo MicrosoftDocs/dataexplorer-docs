@@ -20,7 +20,7 @@ For more information about other operators and to determine which operator is mo
 *T* `|` `where` *col* `has_any` `((`*tabular_expression*`))`
 
 > [!NOTE]
-> An inline tabular expression must be enclosed with double parentheses to be properly parsed. See [example](#tabular-expression).
+> An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
 
 ## Parameters
 
@@ -115,7 +115,7 @@ StormEvents
 
 ### Tabular expression
 
-The following query shows how to use `has_any` with an inline tabular expression. Notice that an inline tabular expression must be enclosed with double parentheses to be properly parsed.
+The following query shows how to use `has_any` with an inline tabular expression. Notice that an inline tabular expression must be enclosed with double parentheses.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXISCyOT8yrVNDQCMgvKM1JLMnMz3NJLElUgClDCCvYKZgagAFQsqAoPys1uQRiiqYmyNji0tzcxKLMqlSF5PzSvBINTYWkSog8AMlS+PGBAAAA" target="_blank">Run the query</a>
