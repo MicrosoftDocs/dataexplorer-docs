@@ -9,11 +9,11 @@ ms.date: 02/02/2023
 
 Filters a record set for data without a case-insensitive string.
 
-[!in~CLUDE [in-operator-comparison](../../includes/in-operator-comparison.md)]
+[!INCLUDE [in-operator-comparison](../../includes/in-operator-comparison.md)]
 
 ## Performance tips
 
-[!in~CLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
 When possible, use the case-sensitive [!in~](not-in-cs-operator.md).
 
