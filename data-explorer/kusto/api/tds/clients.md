@@ -22,32 +22,29 @@ To use JDBC to connect to Azure Data Explorer, follow these steps.
 
 1. Create an application with `mssql-jdbc` JAR, `adal4j` JAR, and all of their dependencies. For example, see the following list of dependencies.
 
-```java
-mssql-jdbc-7.0.0.jre8.jar
-adal4j-1.6.3.jar
-accessors-smart-1.2.jar
-activation-1.1.jar
-asm-5.0.4.jar
-commons-codec-1.11.jar
-commons-lang3-3.5.jar
-gson-2.8.0.jar
-javax.mail-1.6.1.jar
-jcip-annotations-1.0-1.jar
-json-smart-2.3.jar
-lang-tag-1.4.4.jar
-nimbus-jose-jwt-6.5.jar
-oauth2-oidc-sdk-5.64.4.jar
-slf4j-api-1.7.21.jar
-```
+    ```java
+    mssql-jdbc-7.0.0.jre8.jar
+    adal4j-1.6.3.jar
+    accessors-smart-1.2.jar
+    activation-1.1.jar
+    asm-5.0.4.jar
+    commons-codec-1.11.jar
+    commons-lang3-3.5.jar
+    gson-2.8.0.jar
+    javax.mail-1.6.1.jar
+    jcip-annotations-1.0-1.jar
+    json-smart-2.3.jar
+    lang-tag-1.4.4.jar
+    nimbus-jose-jwt-6.5.jar
+    oauth2-oidc-sdk-5.64.4.jar
+    slf4j-api-1.7.21.jar
+    ```
 
 1. Create an application to use the JDBC driver class *com.microsoft.sqlserver.jdbc.SQLServerDriver*. You can connect with a connection string like the following.
 
-```java
-jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database_name>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword
-```
-
-> [!NOTE]
-> To use Azure Active Directory integrated authentication, replace **ActiveDirectoryPassword** with **ActiveDirectoryIntegrated**. For more information, see [JDBC (user authentication)](./aad.md#jdbc-user) and [JDBC (application authentication)](./aad.md#jdbc-application).
+    ```java
+    jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database_name>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryIntegrated
+    ```
 
 ### JDBC user authentication
 
