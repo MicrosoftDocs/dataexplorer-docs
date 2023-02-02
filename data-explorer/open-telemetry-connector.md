@@ -25,7 +25,7 @@ The OpenTelemetry exporter supports ingestion of data from many receivers into A
 Azure Active Directory (Azure AD) applications with app keys are supported. To create and register an app in Azure AD, see [Register an application](/azure/active-directory/develop/quickstart-register-app#register-an-application). For information on service principals, see [Application and service principal objects in Azure AD](/azure/active-directory/develop/app-objects-and-service-principals).
 
 > [!NOTE]
-> The designated principal must have *Data Ingestor* role-based authorization. For more information, see [role-based authorization](kusto/management/access-control/role-based-authorization.md).
+> The designated principal must have an *ingestor* role. For more information, see [role-based access control](kusto/management/access-control/role-based-access-control.md).
 
 ## Create tables
 

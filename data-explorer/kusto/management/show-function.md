@@ -16,7 +16,7 @@ To return only one specific function, see [.show function](#show-function).
 .show functions
 ```
 
-Requires [database user permission](../management/access-control/role-based-authorization.md).
+Requires [database user permission](./access-control/role-based-access-control.md).
  
 |Output parameter |Type |Description
 |---|---|--- 
@@ -74,9 +74,9 @@ For a list of **all** functions, see [.show functions](#show-functions).
 > [!NOTE]
 >
 > * If the function does not exist, an error is returned.
-> * Requires [database user permission](../management/access-control/role-based-authorization.md).
-
-## Example
+> * Requires [database user permission](./access-control/role-based-access-control.md).
+ 
+**Example** 
 
 ```kusto
 .show function MyFunction1 with(ShowObfuscatedStrings = true)
