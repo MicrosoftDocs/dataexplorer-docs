@@ -13,7 +13,7 @@ Azure Data Explorer implements TDS-compliant endpoints for MS-SQL clients. Compa
 Azure Data Explorer doesn't support basic authentication with username and password. You must use Azure Active Directory with all clients listed below.
 
 > [!NOTE]
-> Azure Data Explorer implements a subset of T-SQL. To learn more, see [T-SQL in Kusto versus Microsoft SQL Server](../../../tsql-in-kusto.md)
+> Azure Data Explorer implements a subset of T-SQL. To learn more, see [T-SQL in Kusto versus Microsoft SQL Server](../../../t-sql-in-kusto.md)
 
 ## JDBC
 

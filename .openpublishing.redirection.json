@@ -417,7 +417,7 @@
     },
     {
       "source_path": "data-explorer/kusto/api/tds/t-sql.md",
-      "redirect_url": "/azure/data-explorer/query-with-t-sql",
+      "redirect_url": "/azure/data-explorer/t-sql-query",
       "redirect_document_id": true
     },
     {
