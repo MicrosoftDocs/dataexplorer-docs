@@ -30,7 +30,7 @@ When possible, use the case-sensitive [!in~](not-in-cs-operator.md).
 
 ## Parameters
 
-The following table describes the parameters to use with the `!in~` operator. Depending on the chosen [syntax](#syntax), either *scalar*, *dynamic_array*, or *tabular_expression* is required.
+The following table describes the `!in~` operator parameters. Depending on the chosen [syntax](#syntax), either *scalar*, *dynamic_array*, or *tabular_expression* is required.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
