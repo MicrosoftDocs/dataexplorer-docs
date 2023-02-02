@@ -17,7 +17,7 @@ Filters a record set for data without a case-sensitive string.
 
 ## Syntax
 
-*T* `|` `where` *col* `!in` `(`*scalar* [`,` *scalar2*`,` *scalar3*`,` ... ]`)`
+*T* `|` `where` *col* `!in` `(`*list_of_scalars*`)`
 
 *T* `|` `where` *col* `!in` `(`*dynamic_array*`)`
 
@@ -34,7 +34,7 @@ The following table describes the `!in` operator parameters. Depending on the ch
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column by which to filter.|
-| *scalar* | scalar | &check; | A value or comma-separated set of [scalar](scalar-data-types/index.md) values to search for in *col*.|
+| *list_of_scalars* | scalar | &check; | A comma-separated list of one or more [scalar](scalar-data-types/index.md) values to search for in *col*.|
 | *dynamic_array* | dynamic | &check; | A [dynamic array](scalar-data-types/dynamic.md) of values to search for in *col*.|
 | *tabular_expression* | string | &check; | A [tabular expression](tabularexpressionstatements.md) that produces a set of values to search for in *col*. The expression can produce up to 1,000,000 distinct results. If the output has multiple columns, only the first column is used.|
 
