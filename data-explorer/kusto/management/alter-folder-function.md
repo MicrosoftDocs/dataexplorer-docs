@@ -12,8 +12,8 @@ Alters the Folder value of an existing function.
 `.alter` `function` *FunctionName* `folder` *Folder*
 
 > [!NOTE]
-> * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the function is allowed to modify the function. 
+> * Requires [database admin permission](./access-control/role-based-access-control.md)
+> * The [database user](./access-control/role-based-access-control.md) who originally created the function is allowed to modify the function. 
 > * If the function doesn't exist, an error is returned. For creating new function, [`.create function`](create-function.md)
 
 |Output parameter |Type |Description

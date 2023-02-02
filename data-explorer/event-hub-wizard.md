@@ -27,7 +27,7 @@ Azure Data Explorer offers ingestion (data loading) from Event Hubs, a big data 
 >
 >* To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
 >* The cluster and event hub should be associated with the same tenants, for different tenants please use [SDKs](./data-connection-event-hub-csharp.md)
->* To use the ingestion wizard, you must have at least [database user level permissions](kusto/management/access-control/role-based-authorization.md).
+>* To use the ingestion wizard, you must have at least [database user level permissions](kusto/management/access-control/role-based-access-control.md).
 
 ## Ingest data
 
