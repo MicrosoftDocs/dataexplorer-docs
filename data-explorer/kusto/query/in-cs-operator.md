@@ -45,7 +45,7 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-### List of scalar values
+### List of scalars
 
 The following query shows how to use `in` with a list of scalar values.
 
