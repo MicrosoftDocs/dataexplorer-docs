@@ -13,7 +13,7 @@ Sandbox policies are managed at cluster-level and affect all the nodes in the cl
 
 ## Permissions
 
-This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permissions.
+This command requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

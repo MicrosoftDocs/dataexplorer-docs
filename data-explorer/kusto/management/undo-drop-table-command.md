@@ -11,7 +11,7 @@ The `.undo` `drop` `table` command reverts a drop table operation to a specific 
 
 ## Permissions
 
-This command requires [database admin](../management/access-control/role-based-authorization.md) permissions.
+This command requires [database admin](../management/access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

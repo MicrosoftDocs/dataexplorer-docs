@@ -16,7 +16,7 @@ This command runs in the context of a specific database. It moves the specified 
 
 ## Permissions
 
-The command requires [table admin](../management/access-control/role-based-authorization.md) permissions for the source and destination tables.
+The command requires [table admin](../management/access-control/role-based-access-control.md) permissions for the source and destination tables.
 
 ## Restrictions
 

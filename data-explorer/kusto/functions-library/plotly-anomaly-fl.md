@@ -93,7 +93,7 @@ demo_make_series2
 
 ### [Stored](#tab/persistent)
 
-To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-access-control.md).
 
 ### One time installation
 

@@ -16,7 +16,7 @@ Creates a new empty table based on existing table. This command must run in the 
 
 ## Permissions
 
-This command requires [database admin](access-control/role-based-authorization.md) permissions.
+This command requires [database admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

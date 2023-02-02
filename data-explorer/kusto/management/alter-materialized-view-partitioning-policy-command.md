@@ -11,7 +11,7 @@ Change a materialized view [partitioning policy](partitioningpolicy.md). The par
 
 ## Permissions
 
-This command requires [database admin](access-control/role-based-authorization.md) permissions.
+This command requires [database admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

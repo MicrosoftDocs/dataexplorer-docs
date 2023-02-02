@@ -13,7 +13,7 @@ This command is relevant to any external table of any type. For an overview of e
 
 ## Permissions
 
-This command requires [database monitor](../management/access-control/role-based-authorization.md) permissions.
+This command requires [database monitor](../management/access-control/role-based-access-control.md) permissions.
 
 ## Syntax 
 

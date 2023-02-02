@@ -12,7 +12,7 @@ To return only one specific function, see [.show function](#show-function).
 
 ## Permissions
 
-These commands requires [database user](../management/access-control/role-based-authorization.md) permissions.
+These commands requires [database user](../management/access-control/role-based-access-control.md) permissions.
 
 ## .show functions
 

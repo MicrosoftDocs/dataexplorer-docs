@@ -11,7 +11,7 @@ Lets you create and extend the schemas of existing tables in a single bulk opera
 
 ## Permissions
 
-This command requires [database user](access-control/role-based-authorization.md) permissions, and [table admin](access-control/role-based-authorization.md) permissions for extending existing tables.
+This command requires [database user](access-control/role-based-access-control.md) permissions, and [table admin](access-control/role-based-access-control.md) permissions for extending existing tables.
 
 ## Syntax
 

@@ -12,9 +12,9 @@ Creates or alters an external SQL table in the database in which the command is 
 
 ## Permissions
 
-Creating or altering an external table using managed identity authentication requires[AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
+Creating or altering an external table using managed identity authentication requires[AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
 
-To `.create` requires [database user](../management/access-control/role-based-authorization.md) permissions and to `.alter` requires [table admin](../management/access-control/role-based-authorization.md) permissions.
+To `.create` requires [database user](../management/access-control/role-based-access-control.md) permissions and to `.alter` requires [table admin](../management/access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

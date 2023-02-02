@@ -18,7 +18,7 @@ The `.clean databases extentcontainers` command deletes unused storage artifacts
 
 ## Permissions
 
-This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permissions.
+This command requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions.
 
 ### Syntax
 

@@ -13,7 +13,7 @@ The follower commands include [database level commands](#database-level-commands
 
 ## Permissions
 
-These commands require [database admin](access-control/role-based-authorization.md) permissions.
+These commands require [database admin](access-control/role-based-access-control.md) permissions.
 
 ## Database policy overrides
 

@@ -23,7 +23,7 @@ Gets the schema to use in create/alter commands and additional table metadata.
 
 ## Permissions
 
-This command requires [database user](../management/access-control/role-based-authorization.md) permissions.
+This command requires [database user](../management/access-control/role-based-access-control.md) permissions.
 
 ## .show table schema as JSON
 

@@ -11,7 +11,7 @@ Shows the encoding policy. For an overview of the encoding policy, see [Encoding
 
 ## Permissions
 
-This command requires [database monitor](../management/access-control/role-based-authorization.md) permissions.
+This command requires [database monitor](../management/access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

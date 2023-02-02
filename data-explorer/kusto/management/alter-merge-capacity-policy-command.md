@@ -11,7 +11,7 @@ Enables or disables a cluster's [capacity policy](capacitypolicy.md). The policy
 
 ## Permissions
 
-This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permissions.
+This command requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

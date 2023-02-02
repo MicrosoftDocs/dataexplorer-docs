@@ -15,7 +15,7 @@ Alters the encoding policy. For an overview of the encoding policy, see [Encodin
 
 ## Permissions
 
-This command requires [table or database admin](access-control/role-based-authorization.md) permissions.
+This command requires [table or database admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

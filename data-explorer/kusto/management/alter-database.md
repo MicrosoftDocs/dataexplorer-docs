@@ -11,7 +11,7 @@ Alters a database's pretty (friendly) name.
 
 ## Permissions
 
-This command requires [database admin](access-control/role-based-authorization.md) permissions.
+This command requires [database admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

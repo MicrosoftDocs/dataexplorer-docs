@@ -16,9 +16,9 @@ Alters the Folder value of an existing table.
 
 ## Permission
 
-Requires [database admin](../management/access-control/role-based-authorization.md) permissions.
+Requires [database admin](../management/access-control/role-based-access-control.md) permissions.
 
-The [database user](../management/access-control/role-based-authorization.md) who originally created the table is permitted to edit it.
+The [database user](../management/access-control/role-based-access-control.md) who originally created the table is permitted to edit it.
 
 ## Examples
 

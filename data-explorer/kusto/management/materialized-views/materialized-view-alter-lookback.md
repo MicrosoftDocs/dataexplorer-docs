@@ -16,7 +16,7 @@ Alters the `lookback` value of an existing materialized view. For more informati
 
 ## Permissions
 
-This command requires you to have [database admin or materialized view admin](../access-control/role-based-authorization.md) permissions.
+This command requires you to have [database admin or materialized view admin](../access-control/role-based-access-control.md) permissions.
 
 ## Examples
 

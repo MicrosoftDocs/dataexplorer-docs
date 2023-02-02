@@ -14,7 +14,7 @@ Removes a table or multiple tables from the database.
 
 ## Permissions
 
-This command requires [table admin](access-control/role-based-authorization.md) permissions.
+This command requires [table admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

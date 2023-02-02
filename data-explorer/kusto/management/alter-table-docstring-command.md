@@ -18,9 +18,9 @@ Alters the `DocString` value of an existing table.
 
 ## Permissions
 
-This command requires [database admin](access-control/role-based-authorization.md) permissions.
+This command requires [database admin](access-control/role-based-access-control.md) permissions.
 
-The [database user](../management/access-control/role-based-authorization.md) who originally created the table is permitted to modify it.
+The [database user](../management/access-control/role-based-access-control.md) who originally created the table is permitted to modify it.
 
 **Example** 
 

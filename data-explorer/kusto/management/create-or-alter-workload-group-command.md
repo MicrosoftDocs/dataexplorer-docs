@@ -13,7 +13,7 @@ For more information, see [Workload groups](workload-groups.md). To show the cur
 
 ## Permissions
 
-This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permissions.
+This command requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
