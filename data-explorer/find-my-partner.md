@@ -204,9 +204,7 @@ Our team of 200 employees across our offices in Belgium, France, Portugal, Switz
 **Success stories**
 
 - [https://www.codit.eu/en/clients/euronavs-iot-solution-connects-vessels-to-shore-improving-efficiency-and-reducing-carbon-emissions/](https://www.codit.eu/en/clients/euronavs-iot-solution-connects-vessels-to-shore-improving-efficiency-and-reducing-carbon-emissions/)
-- [https://www.youtube.com/watch?v=gz2Vwlmi7j8](https://www.youtube.com/watch?v=gz2Vwlmi7j8)
 - [https://www.codit.eu/en/clients/duco-azure-iot-edge/](https://www.codit.eu/en/clients/duco-azure-iot-edge/)
-- [https://www.youtube.com/watch?v=0JLC_UJeeq4](https://www.youtube.com/watch?v=0JLC_UJeeq4)
 
 ## Data Addiction Pty Ltd
 
