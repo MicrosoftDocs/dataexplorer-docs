@@ -33,6 +33,9 @@ Filters a record set for data with a case-sensitive string.
 | *dynamic_array* | dynamic | &check; | An array of values to search for in *col*.|
 | *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 1,000,000 distinct results.|
 
+> [!NOTE]
+> Depending on the chosen [syntax](#syntax), either *scalar_values*, *dynamic_array*, or *tabular_expression* is required.
+
 ## Returns
 
 Rows in *T* for which the predicate is `true`.
@@ -41,7 +44,7 @@ Rows in *T* for which the predicate is `true`.
 
 ### List of scalar values
 
-The following query shows how to use `in` with a list of values.
+The following query shows how to use `in` with a list of scalar values.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMU9BQcvPxD/J0cVTSUVByd/UPcvcEM/1cwxUi/YO8lTRBmpLzS/NKAJNAy9pJAAAA" target="_blank">Run the query</a>
@@ -80,7 +83,7 @@ StormEvents
 
 ### Tabular expression
 
-The following query shows how to use `has_any` with a tabular expression.
+The following query shows how to use `in` with a tabular expression.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIyS+IN40PLkksSS1WsFXg5VIAguCS/KJc17LUvJJiiECNQnFpbm5iUWZVqkJyfmleiYamQlKlAlgbTEVJfoGCKUgUrCDeGmgWkjlAXo1CeUZqUSpEl0JmnoIGsuWaYBVgvQBWFNNCmAAAAA==" target="_blank">Run the query</a>
@@ -95,10 +98,7 @@ StormEvents
 | count
 ```
 
-The same query can be written with an inline tabular expression statement.
-
-> [!IMPORTANT]
-> An inline tabular expression must be enclosed with double parenthesis to be properly parsed.
+The same query can be written with an inline tabular expression statement. Notice that an inline tabular expression must be enclosed with double parentheses to be properly parsed.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXIzFPQ0ODlUgCCYIQyiECNQnFpbm5iUWZVqkJyfmleiYamQlIlRCNMRUl+gYIpSBSsIB4irKkJtgcsBAD4wHSifQAAAA==" target="_blank">Run the query</a>
