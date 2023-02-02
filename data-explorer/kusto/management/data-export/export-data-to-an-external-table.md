@@ -13,7 +13,7 @@ You can export data by defining an [external table](../show-external-tables.md) 
 
 ## Permissions
 
-The command requires [table admin or database admin](../access-control/role-based-access-control.md) permissions.
+This command requires [Database Admin or Table Admin](../access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
