@@ -128,6 +128,17 @@ StormEvents
 | summarize count() by State
 ```
 
+**Output**
+
+|State|Count|
+|--|--|
+|TEXAS |4701|
+|ILLINOIS |2022|
+|MISSOURI |2016|
+|GEORGIA |1983|
+|MINNESOTA |1881|
+|...|...|
+
 The same query can also be written with a [let statement](letstatement.md). Notice that the double parentheses as provided in the last example aren't necessary in this case.
 
 > [!div class="nextstepaction"]
@@ -139,3 +150,14 @@ StormEvents
 | where State has_any (large_states)
 | summarize count() by State
 ```
+
+**Output**
+
+|State|Count|
+|--|--|
+|TEXAS |4701|
+|ILLINOIS |2022|
+|MISSOURI |2016|
+|GEORGIA |1983|
+|MINNESOTA |1881|
+|...|...|
