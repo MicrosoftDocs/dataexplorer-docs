@@ -33,7 +33,7 @@ The following table describes the parameters to use with the `has_all` operator.
 | *col* | string | &check; | The column by which to filter.|
 | *scalar* | scalar | &check; | A value or comma-separated set of [scalar](scalar-data-types/index.md) values to search for in *col*.|
 | *dynamic_array* | dynamic | &check; | A [dynamic array](scalar-data-types/dynamic.md) of values to search for in *col*.|
-| *tabular_expression* | string | &check; | A [tabular expression](tabularexpressionstatements.md) that produces a set of values to search for in *col*. If the result has multiple columns, the first column is used. The expression can produce up to 256 distinct results.|
+| *tabular_expression* | string | &check; | A [tabular expression](tabularexpressionstatements.md) that produces a set of values to search for in *col*. The expression can produce up to 256 distinct results. If the output has multiple columns, only the first column is used.|
 
 ## Returns
 
