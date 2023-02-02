@@ -3,7 +3,7 @@ title: The case-sensitive !in string operator - Azure Data Explorer
 description: Learn how to use the !in string operator to filter records for data without a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 02/02/2023
 ---
 # !in operator
 
