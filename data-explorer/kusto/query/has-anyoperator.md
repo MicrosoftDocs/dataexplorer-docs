@@ -34,7 +34,7 @@ For more information about other operators and to determine which operator is mo
 | *col* | string | &check; | The column by which to filter.|
 | *scalar* | scalar | &check; | A value or comma-separated set of [scalar](scalar-data-types/index.md) values to search for in *col*.|
 | *dynamic_array* | dynamic | &check; | A dynamic array of values to search for in col.|
-| *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 10,000 distinct results.|
+| *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the result has multiple columns, the first column is used. The expression can produce up to 10,000 distinct results.|
 
 > [!NOTE]
 > Depending on the chosen [syntax](#syntax), either *scalar*, *dynamic_array*, or *tabular_expression* is required.
