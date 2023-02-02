@@ -71,9 +71,9 @@ You can use the ODBC data source from other applications to connect to Azure Dat
 > [!NOTE]
 > ODBC applications may not work well with `NVARCHAR(MAX)` type. You can cast the data to `NVARCHAR(`*n*`)` using the `Language` parameter in the connection string. For example, `Language=any@MaxStringSize:5000` will encode strings as `NVARCHAR(5000)`.
 
-## ODBC application authentication
+## Application authentication
 
-To use service principal authentication with ODBC, you must provide the Azure AD tenant ID in the `Language` field. 
+To use service principal authentication with ODBC, you must provide the Azure AD tenant ID in the `Language` field.
 
 You can set this configuration in the [connection string](#connection-string), the [Windows registry](#windows-registry), or the [odbc.ini file](#odbcini-file).
 
