@@ -11,10 +11,6 @@ Filters a record set for data with one or more case-insensitive search strings. 
 
 For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
-## Performance tips
-
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
-
 ## Syntax
 
 *T* `|` `where` *col* `has_all` `(`*scalar* [`,` *scalar2*`,` *scalar3*`,` ... ]`)`
