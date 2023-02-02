@@ -218,6 +218,9 @@ items:
       href: connect-odbc.md
     - name: Connect with JDBC
       href: connect-jdbc.md
+    - name: Connect like SQL Server
+      href: connect-sql-clients.md
+      displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio
   - name: Query data
     items:
     - name: Azure Data Explorer web UI

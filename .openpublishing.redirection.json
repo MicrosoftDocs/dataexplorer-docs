@@ -409,6 +409,11 @@
       "source_path": "data-explorer/kusto/query/rowrankfunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/rowrankdensefunction",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/clients.md",
+      "redirect_url": "/azure/data-explorer/connect-sql-clients",
+      "redirect_document_id": true
     }
   ]
 }
