@@ -35,8 +35,8 @@ The following table describes the parameters to use with the `in` operator. Depe
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column by which to filter.|
 | *scalar* | scalar | &check; | A value or comma-separated set of [scalar](scalar-data-types/index.md) values to search for in *col*.|
-| *dynamic_array* | dynamic | &check; | A dynamic array of values to search for in col.|
-| *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the result has multiple columns, the first column is used. The expression can produce up to 1,000,000 distinct results.|
+| *dynamic_array* | dynamic | &check; | A [dynamic array](scalar-data-types/dynamic.md) of values to search for in *col*.|
+| *tabular_expression* | string | &check; | A [tabular expression](tabularexpressionstatements.md) that produces a set of values to search for in *col*. If the result has multiple columns, the first column is used. The expression can produce up to 1,000,000 distinct results.|
 
 ## Returns
 
