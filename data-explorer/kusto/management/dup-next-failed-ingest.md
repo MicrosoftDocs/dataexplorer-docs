@@ -20,7 +20,7 @@ The file uploads to the storage container and the ingestion are performed by the
 
 ## Permissions
 
-This command requires [database admin](access-control/role-based-access-control.md) permissions.
+This command requires [Database Admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

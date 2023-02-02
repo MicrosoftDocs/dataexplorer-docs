@@ -101,4 +101,4 @@ For example, the database user role grants security principals, users, or servic
 * create functions in the database
 
 The association of security principals to security roles can be defined individually,
-or by using security groups that are defined in Azure AD. The commands are defined in [Setting role-based access control rules](../security-roles.md).
+or by using security groups that are defined in Azure AD. The commands are defined in [Security roles management](../security-roles.md).

@@ -11,7 +11,7 @@ Changes a table [partitioning policy](partitioningpolicy.md). The partitioning p
 
 ## Permissions
 
-This command requires [database admin](access-control/role-based-access-control.md) permissions.
+This command requires [Database Admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

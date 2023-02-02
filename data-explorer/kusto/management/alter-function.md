@@ -12,7 +12,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 
 ## Permissions
 
-This command requires [database admin](../management/access-control/role-based-access-control.md) permissions.
+This command requires [Database Admin](../management/access-control/role-based-access-control.md) permissions.
 
 The database user who originally created the function may modify the function.
 
