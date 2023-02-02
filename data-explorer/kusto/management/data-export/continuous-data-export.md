@@ -13,7 +13,7 @@ To enable continuous data export, [create an external table](../external-tables-
 
 ## Permissions
 
-All continuous export commands require [database admin](../access-control/role-based-access-control.md) permissions.
+All continuous export commands require [Database Admin](../access-control/role-based-access-control.md) permissions.
 
 ## Continuous export guidelines
 
