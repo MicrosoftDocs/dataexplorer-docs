@@ -3,7 +3,7 @@ title: The case-insensitive has_any string operator - Azure Data Explorer
 description: Learn how to use the has_any operator to filter data with any set of case-insensitive strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 02/02/2023
 ---
 # has_any operator
 
@@ -27,11 +27,14 @@ For more information about other operators and to determine which operator is mo
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input whose records are to be filtered.|
+| *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column used to filter the records.|
  *list_of_scalars* | scalar | &check; | A value or comma-separated set of values to search for in *col*.|
 | *dynamic_array* | dynamic | &check; | An array of values to search for in *col*.|
 | *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 10,000 distinct results.|
+
+> [!NOTE]
+> Depending on the chosen [syntax](#syntax), either *scalar_values*, *dynamic_array*, or *tabular_expression* is required.
 
 ## Returns
 
@@ -39,9 +42,9 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples
 
-### List of scalar values
+### List of scalars
 
-The following query shows how to use `has_any` with a comma-separated list of values.
+The following query shows how to use `has_any` with a comma-separated list of scalar values.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXISCyOT8yrVNBQcnYM8vfx9HNU0lFQcnH09g8Bs/xcw5U0wbqKS3NzE4syq1IVkvNL80o0NBWSKiGGAACHltT/YAAAAA==" target="_blank">Run the query</a>
@@ -89,9 +92,32 @@ StormEvents
 |ATLANTIC SOUTH|193|
 |ATLANTIC NORTH|188|
 
-### Inline tabular expression
+The same query can also be written with a [let statement](letstatement.md).
 
-The following query shows how to use `has_any` with an inline tabular expression.
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWMQQrCMBBF9z3F3yUBbyBdeoIuRWRsB1IwE5iZtER6eIvuHrzHe7ODlMkwYulCZZ3jPVhtnsMFQaqe8EjXYfKq5baxuGE4sGdWxuTkjEz2JOmIv1E6rbVSSNcPY65NPCa8+j/+AmgCW+9wAAAA" target="_blank">Run the query</a>
+
+```kusto
+let areas = dynamic(['south', 'north']);
+StormEvents 
+| where State has_any (areas)
+| summarize count() by State
+```
+
+**Output**
+
+|State|count_|
+|---|---|
+|NORTH CAROLINA|1721|
+|SOUTH DAKOTA|1567|
+|SOUTH CAROLINA|915|
+|NORTH DAKOTA|905|
+|ATLANTIC SOUTH|193|
+|ATLANTIC NORTH|188|
+
+### Tabular expression
+
+The following query shows how to use `has_any` with an inline tabular expression. Notice that an inline tabular expression must be enclosed with double parenthesis to be properly parsed.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXISCyOT8yrVNDQCMgvKM1JLMnMz3NJLElUgClDCCvYKZgagAFQsqAoPys1uQRiiqYmyNji0tzcxKLMqlSF5PzSvBINTYWkSog8AMlS+PGBAAAA" target="_blank">Run the query</a>
@@ -102,12 +128,7 @@ StormEvents
 | summarize count() by State
 ```
 
-> [!NOTE]
-> An inline expression must be enclosed with double parenthesis to be properly parsed.
-
-### Tabular expression from a let statement
-
-The following query shows how to use `has_any` with a tabular expression from a [let statement](letstatement.md). Notice that the double parentheses as provided in the last example aren't necessary in this case.
+The same query can also be written with a [let statement](letstatement.md). Notice that the double parentheses as provided in the last example aren't necessary in this case.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NsQrCQBBE+0D+Ycqks7ESrbQX8gFhDYuJ3N2G3b1IxI/XRIRMOW8eE9gRSO/cmpOz4YirjDmQD5LO5IQ3nj0rb2qcsN+t+cJR5cGdo1n0Q1k0LhovEyc3lMVfXil6spbSjGr7WC8ryzGSDi9GJzl5VeM2/6QPjBKdkqEAAAA=" target="_blank">Run the query</a>
