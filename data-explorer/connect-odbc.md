@@ -3,7 +3,7 @@ title: Connect to Azure Data Explorer with ODBC
 description: In this article, you learn how to set up an Open Database Connectivity (ODBC) connection to Azure Data Explorer.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 06/30/2019
+ms.date: 02/02/2023
 ---
 
 # Connect to Azure Data Explorer with ODBC
@@ -60,7 +60,67 @@ Follow these steps to configure an ODBC data source using the ODBC driver for SQ
 
     ![Test succeeded.](media/connect-odbc/test-succeeded.png)
 
+## Use the ODBC connector
+
+You can use the ODBC data source from other applications to connect to Azure Data Explorer with a connection string like the following.
+
+```odbc
+"Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
+```
+
+> [!NOTE]
+> ODBC applications may not work well with `NVARCHAR(MAX)` type. You can cast the data to `NVARCHAR(`*n*`)` using the `Language` parameter in the connection string. For example, `Language=any@MaxStringSize:5000` will encode strings as `NVARCHAR(5000)`.
+
+## ODBC application authentication
+
+To use service principal authentication with ODBC, you must provide the Azure AD tenant ID in the `Language` field. 
+
+You can set this configuration in the [connection string](#connection-string), the [Windows registry](#windows-registry), or the [odbc.ini file](#odbcini-file).
+
+The Azure AD tenant ID can also be configured at the cluster level, so you don't have to specify it on the client. If you need to change the tenant ID at the cluster level, open a support request in the  [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
+
+### Connection string
+
+Set the application principal with `Language=any@AadAuthority:<aad_tenant_id>` in the connection string.
+
+```odbc
+"Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@AadAuthority:<aad_tenant_id>;UID=<aad_application_id>;PWD=<aad_application_secret>"
+```
+
+### Windows registry
+
+Edit the `Language` field in the ODBC data source (DSN) in the registry for Windows as follows.
+
+```odbc
+[HKEY_CURRENT_USER\SOFTWARE\ODBC\ODBC.INI\MyUserDSN]
+"Language"="any@AadAuthority:<aad_tenant_id>"
+```
+
+### odbc.ini file
+
+For Linux and macOS, edit the odbc.ini file, as follows.
+
+```odbc
+# [DSN name]
+[MSSQLTest]  
+Driver = ODBC Driver 17 for SQL Server  
+# Server = [protocol:]server[,port]  
+Server = tcp:<adx_cluster_name>.<region_name>.kusto.windows.net,1433
+Language = any@AadAuthority:<aad_tenant_id>
+```
+
+## Example
+
+The following example shows how to connect to Azure Data Explorer using an ODBC driver in Powershell. For this to work, you must first follow the steps in [Configure the ODBC data source](#configure-the-odbc-data-source).
+
+```powershell
+$conn = [System.Data.Common.DbProviderFactories]::GetFactory("System.Data.Odbc").CreateConnection()
+$conn.ConnectionString = "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
+$conn.Open()
+$conn.GetSchema("Tables")
+$conn.Close()
+```
+
 ## Next steps
 
 * [Connect to Azure Data Explorer from Tableau](tableau.md)
-* Learn how to [authorize an application principal with ODBC](kusto/api/tds/clients.md#odbc-application-authentication)

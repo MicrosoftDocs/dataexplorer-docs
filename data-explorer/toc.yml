@@ -214,6 +214,8 @@ items:
     - name: JSON formatted data
       displayName: ingest data, ingestion
       href: ingest-json-formats.md
+    - name: Connect with ODBC
+      href: connect-odbc.md
   - name: Query data
     items:
     - name: Azure Data Explorer web UI
@@ -285,8 +287,6 @@ items:
         href: excel-blank-query.md
     - name: Grafana
       href: grafana.md
-    - name: ODBC connector
-      href: connect-odbc.md
     - name: Tableau
       href: tableau.md
     - name: Sisense
