@@ -18,13 +18,10 @@ Alters the `DocString` value of an existing table.
 
 ## Permissions
 
-This command requires [Database Admin](access-control/role-based-access-control.md) permissions.
-
-The [database user](../management/access-control/role-based-access-control.md) who originally created the table is permitted to modify it.
+This command requires [Database Admin or Table Admin](access-control/role-based-access-control.md) permissions. The principal that created the table is automatically made a Table Admin.
 
 **Example** 
 
 ```kusto
 .alter table LyricsAsTable docstring "This is the theme to Garry's show"
 ```
- 
