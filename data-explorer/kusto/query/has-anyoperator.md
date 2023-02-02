@@ -117,7 +117,7 @@ StormEvents
 
 ### Tabular expression
 
-The following query shows how to use `has_any` with an inline tabular expression. Notice that an inline tabular expression must be enclosed with double parenthesis to be properly parsed.
+The following query shows how to use `has_any` with an inline tabular expression. Notice that an inline tabular expression must be enclosed with double parentheses to be properly parsed.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXISCyOT8yrVNDQCMgvKM1JLMnMz3NJLElUgClDCCvYKZgagAFQsqAoPys1uQRiiqYmyNji0tzcxKLMqlSF5PzSvBINTYWkSog8AMlS+PGBAAAA" target="_blank">Run the query</a>
