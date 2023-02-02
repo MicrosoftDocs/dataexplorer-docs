@@ -8,9 +8,9 @@ ms.date: 02/02/2023
 ---
 # Connect to Azure Data Explorer like SQL Server
 
-Azure Data Explorer provides TDS-compliant endpoints that imitate the functionality of Microsoft SQL Server. As a result, any library and application that can connect to a Microsoft Azure SQL Database with Azure Active Directory (Azure AD) authentication can also connect to Azure Data Explorer. You can access your data stored in Azure Data Explorer by specifying the server domain name in the same way you would when connecting to Microsoft Azure SQL Database.
+Any library and application that can connect to a Microsoft Azure SQL Database with Azure Active Directory (Azure AD) authentication can also connect to Azure Data Explorer. Access your data stored in Azure Data Explorer by specifying the server domain name in the same way you would when connecting to Microsoft Azure SQL Database. This functionality is made possible by Azure Data Explorer's TDS-compliant endpoints, which emulate Microsoft SQL Server.
 
-This article explains how to connect and authenticate to Azure Data Explorer using the SQL Server emulation functionality, such as with [JDBC](#jdbc), [ODBC](#odbc), [Azure Data Studio](#azure-data-studio-134-and-above), and more.
+This article explains how to connect and authenticate to Azure Data Explorer using [JDBC](#jdbc), [ODBC](#odbc), [Azure Data Studio](#azure-data-studio-134-and-above), and more.
 
 > [!NOTE]
 >
