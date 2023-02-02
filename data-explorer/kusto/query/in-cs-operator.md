@@ -17,7 +17,7 @@ Filters a record set for data with a case-sensitive string.
 
 ## Syntax
 
-*T* `|` `where` *col* `in` `(`*scalar_values*`)`
+*T* `|` `where` *col* `in` `(`*list_of_scalars*`)`
 
 *T* `|` `where` *col* `in` `(`*dynamic_array*`)`
 
@@ -32,12 +32,12 @@ Filters a record set for data with a case-sensitive string.
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column used to filter the records.|
-| *scalar_values* | scalar | &check; | A value or comma-separated set of values to search for in *col*.|
+| *list_of_scalars* | scalar | &check; | A value or comma-separated set of values to search for in *col*.|
 | *dynamic_array* | dynamic | &check; | An array of values to search for in *col*.|
 | *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 1,000,000 distinct results.|
 
 > [!NOTE]
-> Depending on the chosen [syntax](#syntax), either *scalar_values*, *dynamic_array*, or *tabular_expression* is required.
+> Depending on the chosen [syntax](#syntax), either *list_of_scalars*, *dynamic_array*, or *tabular_expression* is required.
 
 ## Returns
 

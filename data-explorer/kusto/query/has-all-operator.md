@@ -34,7 +34,7 @@ For more information about other operators and to determine which operator is mo
 | *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 256 distinct results.|
 
 > [!NOTE]
-> Depending on the chosen [syntax](#syntax), either *scalar_values*, *dynamic_array*, or *tabular_expression* is required.
+> Depending on the chosen [syntax](#syntax), either *list_of_scalars*, *dynamic_array*, or *tabular_expression* is required.
 
 ## Returns
 
