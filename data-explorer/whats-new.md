@@ -3,11 +3,41 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 01/01/2023
+ms.date: 02/02/2023
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## January 2023
+
+**General**
+
+| Article title | Description |
+|--|--|
+| [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | Updated article. Security principals revised.|
+
+**Functions library**
+
+| Article title | Description |
+|--|--|
+|- [plotly_anomaly_fl()](/azure/data-explorer/kusto/functions-library/plotly-anomaly-fl.md) </br> - [plotly_scatter3d_fl()](/azure/data-explorer/kusto/functions-library/plotly-scatter3d-fl.md) | New articles. Describes how to customize a plotly template. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+|[Referencing security principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals.md) | New article. Describes how to reference security principals and identity providers.
+|- [.dup-next-failed-ingest](/azure/data-explorer/kusto/management/dup-next-failed-ingest.md) <br/> - [.dup-next-ingest](/azure/data-explorer/kusto/management/dup-next-ingest.md) | New articles. Describes how to troubleshoot data on demand. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+|- [Anomaly chart](kusto/query/visualization-anomalychart.md) <br/> - [Area chart](kusto/query/visualization-areachart.md) <br/> - [Bar chart](kusto/query/visualization-barchart.md) <br/> - [Card](kusto/query/visualization-card.md) <br/> - [Column chart](kusto/query/visualization-columnchart.md) <br/> - [Ladder chart](kusto/query/visualization-ladderchart.md) <br/> - [Line chart](kusto/query/visualization-linechart.md) <br/> - [Pie chart](kusto/query/visualization-piechart.md) <br/> - [Pivot chart](kusto/query/visualization-pivotchart.md) <br/> - [Scatter chart](kusto/query/visualization-scatterchart.md) <br/> - [Stacked area chart](kusto/query/visualization-stackedareachart.md) <br/> - [Table](kusto/query/visualization-table.md) <br/> - [Time chart](kusto/query/visualization-timechart.md) <br/> - [Time pivot](kusto/query/visualization-timepivot.md) | New articles. Describes how to render visualizations of query results. |
+| [series_dot_product()](/azure/data-explorer/kusto/query/series-dot-productfunction.md) | New articles. Describes how to calculate the dot product of two numeric series.|
+| [hll_if() (aggregation function)](/azure/data-explorer/kusto/query/hll-if-aggregation-function.md) | New article. Describes how to calculate the intermediate results of the `dcount()` function. |
+| [bag_set_key()](/azure/data-explorer/kusto/query/bag-set-key-function.md) | New article. Describes how to set a given key to a given value in a dynamic property bag. |
 
 ## December 2022
 
@@ -190,15 +220,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [series_lag_fl()](kusto/functions-library/series-lag-fl.md) | New article. Describes the `series_lag_fl()` user-defined function. |
-
-## January 2022
-
-| Article title | Description |
-|--|--|
-| [Use the sample app generator to create code to ingest and query your data](sample-app-generator-wizard.md) | New Article. Describes how to use the sample app generator for your preferred programming language. |
-
-**API**
-
-| Article title | Description |
-|--|--|
-| [Azure Data Explorer API overview](kusto/api/index.md) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.
