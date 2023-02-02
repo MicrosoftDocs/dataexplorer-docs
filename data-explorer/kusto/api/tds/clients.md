@@ -191,15 +191,6 @@ $conn.GetSchema("Tables")
 $conn.Close()
 ```
 
-#### Tableau
-
-Create an ODBC data source. For more information, see the [ODBC](./clients.md#odbc) section.
-
-1. Connect via **Other Databases (ODBC)**.
-1. Set the ODBC data source in **DSN**.
-1. Select **Connect** to establish a connection.
-1. Select **Sign In**, once the button is available, and sign in to Azure Data Explorer.
-
 ## LINQPad
 
 A Linq application can be used with Azure Data Explorer, by connecting it like it's an SQL server.
