@@ -60,7 +60,7 @@ Follow these steps to configure an ODBC data source using the ODBC driver for SQ
 
     ![Test succeeded.](media/connect-odbc/test-succeeded.png)
 
-## Use the ODBC connector
+## Use the ODBC data source
 
 You can use the ODBC data source from other applications to connect to Azure Data Explorer with a connection string like the following.
 
