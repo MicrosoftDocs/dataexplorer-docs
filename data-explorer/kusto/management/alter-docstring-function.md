@@ -16,9 +16,7 @@ Alters the `DocString` value of an existing function.
 
 ## Permissions
 
-This command requires [Database Admin](../management/access-control/role-based-access-control.md) permissions.
-
-The database user who originally created the function may modify the function.
+This command requires [Database Admin or Function Admin](../management/access-control/role-based-access-control.md) permissions. The principal that creates the function is automatically made a Function Admin.
 
 ## Syntax
 

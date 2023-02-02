@@ -16,7 +16,7 @@ Clears the data of an existing table, including streaming ingestion data.
 
 ## Permissions
 
-This command requires [table admin](access-control/role-based-access-control.md) permissions.
+This command requires [Table Admin](access-control/role-based-access-control.md) permissions.
 
 ## Example
 

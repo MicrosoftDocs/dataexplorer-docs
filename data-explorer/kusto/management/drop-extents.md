@@ -20,7 +20,7 @@ This command has several variants: In one, the extents to be dropped are specifi
 
 ## Permissions
 
-This command requires [table admin](access-control/role-based-access-control.md) permissions for each table that has extents returned by the provided query.
+This command requires [Table Admin](access-control/role-based-access-control.md) permissions for each table that has extents returned by the provided query.
 
 ## Syntax
 
