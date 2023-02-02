@@ -1,11 +1,11 @@
 ---
-title: take operator, limit operator - Azure Data Explorer
-description: Learn how to use the take operator and limit operator to return a specified number of rows.
+title: take operator - Azure Data Explorer
+description: Learn how to use the take operator to return a specified number of rows.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/09/2023
 ---
-# take operator, limit operator
+# take operator
 
 Return up to the specified number of rows.
 
@@ -21,7 +21,6 @@ the source data is sorted.
 ## Syntax
 
 `take` *NumberOfRows*
-`limit` *NumberOfRows*
 
 ## Paging of query results
 
@@ -41,6 +40,6 @@ T | take 5
 
 ## See also
 
-* [order operator, sort operator](orderoperator.md)
+* [sort operator](sort-operator.md)
 * [top operator](topoperator.md)
 * [top-nested operator](topnestedoperator.md)

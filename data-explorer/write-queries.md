@@ -13,17 +13,7 @@ In this article, you learn how to use the query language in Azure Data Explorer 
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md).
-
-You can run the queries in this article in one of two ways:
-
-* On the Azure Data Explorer *help cluster* that we have set up to aid learning.
-    [Sign in to the cluster](https://dataexplorer.azure.com/clusters/help/databases/samples) with an organizational email account that is a member of Azure Active directory.
-
-* On your own cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
-
-    [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
+* A Microsoft account or an Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
 
 ## Overview of the query language
 
@@ -127,9 +117,9 @@ StormEvents
 | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative
 ```
 
-### order, sort
+### sort
 
-[**order, sort**](kusto/query/orderoperator.md): Sort the rows of the input table into order by one or more columns.
+[**sort**](kusto/query/sort-operator.md): Sort the rows of the input table into order by one or more columns.
 
 The following query sorts the data in descending order by `DamageProperty`.
 
@@ -254,7 +244,7 @@ The following query counts events by the time modulo one day, binned into hours,
 
 ```Kusto
 StormEvents
-| extend hour = floor(StartTime % 1d , 1h)
+| extend hour = bin(StartTime % 1d , 1h)
 | summarize event_count=count() by hour
 | sort by hour asc
 | render timechart
@@ -267,7 +257,7 @@ The following query compares multiple daily series on a time chart.
 
 ```Kusto
 StormEvents
-| extend hour= floor( StartTime % 1d , 1h)
+| extend hour= bin( StartTime % 1d , 1h)
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
 | summarize event_count=count() by hour, State
 | render timechart
@@ -334,7 +324,7 @@ This query uses a **let** statement, which binds a name (in this case `MyData`) 
 
 ### parse_json()
 
-[**parse_json()**](kusto/query/parsejsonfunction.md): Interprets a string as a JSON value, and returns the value as dynamic. It's better than using the **extract_json(), extractjson()** functions when you need to extract more than one element of a compound JSON object.
+[**parse_json()**](kusto/query/parsejsonfunction.md): Interprets a string as a JSON value, and returns the value as dynamic. It's better than using the **extract_json()** function when you need to extract more than one element of a compound JSON object.
 
 The following query extracts the JSON elements from an array.
 
@@ -853,7 +843,7 @@ range _day from _start to _end step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+100*r-1), 1)
-| mv-expand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) take 1000000
 // Calculate DAU/WAU ratio
 | evaluate activity_engagement(['id'], _day, _start, _end, 1d, 7d)
 | project _day, Dau_Wau=activity_ratio*100
@@ -881,7 +871,7 @@ range _day from _start to _end step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1)
-| mv-expand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) take 1000000
 | where _day > datetime(2017-01-02)
 | project _day, id
 // Calculate weekly retention rate
@@ -908,7 +898,7 @@ range Day from _start to _end step 1d
 | extend d = tolong((Day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1)
-| mv-expand id=_users to typeof(long) limit 1000000
+| mv-expand id=_users to typeof(long) take 1000000
 // Take only the first week cohort (last parameter)
 | evaluate new_activity_metrics(['id'], Day, _start, _end, 7d, _start)
 | project from_Day, to_Day, retention_rate, churn_rate

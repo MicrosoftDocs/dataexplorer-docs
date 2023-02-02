@@ -3,7 +3,7 @@ title: minif() (aggregation function) - Azure Data Explorer
 description: Learn how to use the minif() function to return the minimum value of an expression where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/16/2022
+ms.date: 01/08/2023
 ---
 # minif() (aggregation function)
 

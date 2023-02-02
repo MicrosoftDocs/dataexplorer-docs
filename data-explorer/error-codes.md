@@ -64,8 +64,8 @@ The following list contains error codes you may come across during [ingestion](i
 |Download_AccessConditionNotSatisfied              |Failed to download source from Azure storage. Access condition not satisfied.     |Permanent           |
 |Download_Forbidden                                |Failed to download source from Azure storage. Access forbidden.    |Permanent           |
 |Download_AccountNotFound                          |Failed to download source from Azure storage. Account not found.    |Permanent           |
-|BadRequest_TableAccessDenied                      |Access to table is denied.<br>For more information, see [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md).     |Permanent           |
-|BadRequest_DatabaseAccessDenied                   |Access to database is denied.<br>For more information, see [Role-based Authorization in Kusto](./kusto/management/access-control/role-based-authorization.md).                        |Permanent           |
+|BadRequest_TableAccessDenied                      |Access to table is denied.<br>For more information, see [role-based access control](./kusto/management/access-control/role-based-access-control.md).     |Permanent           |
+|BadRequest_DatabaseAccessDenied                   |Access to database is denied.<br>For more information, see [role-based access control](./kusto/management/access-control/role-based-access-control.md).                        |Permanent           |
 |BadRequest_InvalidAuthentication                  |Authentication to data isn't valid.                                |Permanent           |
 
 ## Category: DownloadFailed

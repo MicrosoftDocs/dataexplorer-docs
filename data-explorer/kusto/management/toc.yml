@@ -117,38 +117,40 @@ items:
     items:
     - name: Materialized views overview
       href: materialized-views/materialized-view-overview.md
-    - name: ".create materialized-view"
-      href: materialized-views/materialized-view-create.md
+    - name: Materialized views limitations
+      href: materialized-views/materialized-views-limitations.md
+    - name: Monitor materialized views
+      href: materialized-views/materialized-views-monitoring.md
+    - name: Materialized views policies
+      href: materialized-views/materialized-view-policies.md
+    - name: Materialized views data purge
+      href: materialized-views/materialized-view-purge.md
     - name: ".alter materialized-view"
       href: materialized-views/materialized-view-alter.md
-    - name: ".create-or-alter materialized-view"
-      href: materialized-views/materialized-view-create-or-alter.md
-    - name: ".show materialized-view commands"
-      href: materialized-views/materialized-view-show-commands.md
-    - name: ".show materialized-view details"
-      href: materialized-views/materialized-view-show-details-command.md
+    - name: ".alter materialized-view autoUpdateSchema"
+      href: materialized-views/materialized-view-alter-autoUpdateSchema.md
     - name: ".alter materialized-view docstring"
       href: materialized-views/materialized-view-alter-docstring.md
     - name: ".alter materialized-view folder"
       href: materialized-views/materialized-view-alter-folder.md
     - name: ".alter materialized-view lookback"
       href: materialized-views/materialized-view-alter-lookback.md
-    - name: ".alter materialized-view autoUpdateSchema"
-      href: materialized-views/materialized-view-alter-autoUpdateSchema.md
-    - name: ".rename materialized-view"
-      href: materialized-views/materialized-view-rename.md
-    - name: ".drop materialized-view"
-      href: materialized-views/materialized-view-drop.md
     - name: ".clear materialized-view data"
       href: materialized-views/materialized-view-clear-data.md
+    - name: ".create materialized-view"
+      href: materialized-views/materialized-view-create.md
+    - name: ".create-or-alter materialized-view"
+      href: materialized-views/materialized-view-create-or-alter.md
     - name: ".disable | .enable materialized-view"
       href: materialized-views/materialized-view-enable-disable.md    
-    - name: Materialized views limitations
-      href: materialized-views/materialized-views-limitations.md
-    - name: Materialized views policies
-      href: materialized-views/materialized-view-policies.md
-    - name: Materialized views data purge
-      href: materialized-views/materialized-view-purge.md
+    - name: ".drop materialized-view"
+      href: materialized-views/materialized-view-drop.md
+    - name: ".rename materialized-view"
+      href: materialized-views/materialized-view-rename.md
+    - name: ".show materialized-views"
+      href: materialized-views/materialized-view-show-commands.md
+    - name: ".show materialized-views details"
+      href: materialized-views/materialized-view-show-details-command.md
   - name: Stored query results
     displayName: .set stored query, .show stored query, .drop stored query
     href: stored-query-results.md
@@ -493,12 +495,24 @@ items:
     items:
     - name: Query weak consistency policy
       href: query-weak-consistency-policy.md
-    - name: .alter query weak consistency policy
+    - name: .alter cluster policy query_weak_consistency
       href: alter-query-weak-consistency-policy.md
-    - name: .show query weak consistency policy
+    - name: .show cluster policy query_weak_consistency
       href: show-query-weak-consistency-policy.md
 - name: Security roles
-  href: security-roles.md
+  items:
+    - name: Security roles overview
+      href: security-roles.md
+    - name: Manage database roles
+      href: manage-database-security-roles.md
+    - name: Manage table roles
+      href: manage-table-security-roles.md
+    - name: Manage external table roles
+      href: manage-external-table-security-roles.md
+    - name: Manage materialized view roles
+      href: manage-materialized-view-security-roles.md
+    - name: Manage function roles
+      href: manage-function-security-roles.md
 - name: Data ingestion
   items:
   - name: Ingest from storage
@@ -601,18 +615,20 @@ items:
 - name: Access control
   href: access-control/index.md
   items:
-  - name: Identities
-    href: access-control/principals-and-identity-providers.md
   - name: Azure Active Directory
     displayName: AAD, Azure AD
     href: access-control/aad.md
-  - name: Principal roles
-    href: access-control/role-based-authorization.md
-  - name: Allow cross-tenant queries and commands
-    href: ../../cross-tenant-query-and-commands.md
+  - name: Role-based access control
+    href: access-control/role-based-access-control.md
+    displayName: RBAC, security roles, principals
   - name: How-To Azure Active Directory authentication
     displayName: AAD, Azure AD
     href: access-control/how-to-authenticate-with-aad.md
+  - name: Referencing security principals
+    displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
+    href: access-control/principals-and-identity-providers.md
+  - name: Allow cross-tenant queries and commands
+    href: ../../cross-tenant-query-and-commands.md
 - name: Advanced data management
   items:
   - name: Extents (data shards)

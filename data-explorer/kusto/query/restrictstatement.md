@@ -1,6 +1,6 @@
 ---
 title: Restrict statement - Azure Data Explorer
-description: This article describes Restrict statement in Azure Data Explorer.
+description: Learn how to use the restrict statement to limit tabular views that are visible to subsequent query statements.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/21/2021
@@ -25,18 +25,20 @@ The middle-tier application can prefix the user's query with a **logical model**
 `restrict` `access` `to` `(` [*EntitySpecifier* [`,` ...]] `)`
 
 Where *EntitySpecifier* is one of:
+
 * An identifier defined by a let statement as a tabular view.
 * A table reference (similar to one used by a union statement).
 * A pattern defined by a pattern declaration.
 
-All tables, tabular views, or patterns that are not specified by the restrict statement become "invisible" to the rest of the query. 
-Let, set, and tabular statements are strung together/separated by a semicolon, otherwise they will not be considered part of the same query.
+All tables, tabular views, or patterns that aren't specified by the restrict statement become "invisible" to the rest of the query.
+Let, set, and tabular statements are strung together/separated by a semicolon, otherwise they won't be considered part of the same query.
 
 ## Arguments
 
-The restrict statement can get one or more parameters that define the permissive restriction during name resolution of the entity. 
+The restrict statement can get one or more parameters that define the permissive restriction during name resolution of the entity.
 The entity can be:
-* [let statement](./letstatement.md) appearing before `restrict` statement. 
+
+* [let statement](./letstatement.md) appearing before `restrict` statement.
 
   ```kusto
   // Limit access to 'Test' let statement only
@@ -63,12 +65,12 @@ The entity can be:
 
     // Assuming the database that the query uses has table Table1 and Func1 defined in the metadata.
     // Assuming that database 'DB2' has table Table2 and Func2 defined in the metadata
-    restricts access to (database().*);
+    restrict access to (database().*);
     // Now access is restricted to all tables/functions of the current database ('DB2' is not accessible).
 
     // Assuming the database that the query uses has table Table1 and Func1 defined in the metadata.
     // Assuming that database 'DB2' has table Table2 and Func2 defined in the metadata
-    restricts access to (database('DB2').*);
+    restrict access to (database('DB2').*);
     // Now access is restricted to all tables/functions of the database 'DB2'
     ```
 

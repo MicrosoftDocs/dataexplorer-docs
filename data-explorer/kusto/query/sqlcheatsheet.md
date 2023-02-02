@@ -3,19 +3,20 @@ title: SQL to Kusto query translation - Azure Data Explorer
 description: This article describes SQL to Kusto query translation in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/27/2021
+ms.date: 01/09/2023
 ---
 # SQL to Kusto cheat sheet
 
-Kusto supports a subset of the SQL language. See the list of [SQL known issues](../api/tds/sqlknownissues.md) for the full list of unsupported features.
+If you're familiar with SQL and want to learn KQL, you can use Azure Data Explorer to translate SQL queries into KQL.
 
-The primary language to interact with Kusto is KQL (Kusto Query Language). To make the transition and learning experience easier, you can use Kusto to translate SQL queries to KQL. Send an SQL query to Kusto, prefixing it with the verb 'EXPLAIN'.
+To translate an SQL query, preface the SQL query with a comment line, `--`, and the keyword `explain`. The output will show the KQL version of the query, which can help you understand the KQL syntax and concepts.
 
-For example:
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9PV5XKNCPBx9PRT4Ap29XF1DlFw9g/1C4l38nTX0NJUSCxWcFZwC/L3VQguyS/KdS1LzSspBgDZdzUzNQAAAA==" target="_blank">Run the query</a>
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
-EXPLAIN 
+--
+explain
 SELECT COUNT_BIG(*) as C FROM StormEvents 
 ```
 
@@ -53,3 +54,7 @@ Union |<code>SELECT * FROM dependencies<br>UNION<br>SELECT * FROM exceptions</co
 Join |<code>SELECT * FROM dependencies <br>LEFT OUTER JOIN exception<br>ON dependencies.operation_Id = exceptions.operation_Id</code> |<code>dependencies<br>&#124; join kind = leftouter<br>&nbsp;&nbsp;(exceptions)<br>on $left.operation_Id == $right.operation_Id</code>
 Nested queries |<code>SELECT * FROM dependencies<br>WHERE resultCode == <br>(SELECT TOP 1 resultCode FROM dependencies<br>WHERE resultId = 7<br>ORDER BY timestamp DESC)</code> |<code>dependencies<br>&#124; where resultCode == toscalar(<br>&nbsp;&nbsp;dependencies<br>&nbsp;&nbsp;&#124; where resultId == 7<br>&nbsp;&nbsp;&#124; top 1 by timestamp desc<br>&nbsp;&nbsp;&#124; project resultCode)</code>
 Having |<code>SELECT COUNT(\*) FROM dependencies<br>GROUP BY name<br>HAVING COUNT(\*) > 3</code> |<code>dependencies<br>&#124; summarize Count = count() by name<br>&#124; where Count > 3</code>|
+
+## Next steps
+
+* Use [T-SQL](../api/tds/t-sql.md) to query data

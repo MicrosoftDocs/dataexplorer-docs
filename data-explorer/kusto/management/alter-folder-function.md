@@ -38,7 +38,7 @@ The database user who originally created the function may modify the function.
     
 |Name |Parameters |Body|Folder|DocString
 |---|---|---|---|---
-|MyFunction2 |(myLimit: long)| {StormEvents &#124; limit myLimit}|Updated Folder|Some DocString|
+|MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|Updated Folder|Some DocString|
 
 ```kusto
 .alter function MyFunction1 folder @"First Level\Second Level"
@@ -46,4 +46,4 @@ The database user who originally created the function may modify the function.
     
 |Name |Parameters |Body|Folder|DocString
 |---|---|---|---|---
-|MyFunction2 |(myLimit: long)| {StormEvents &#124; limit myLimit}|First Level\Second Level|Some DocString|
+|MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|First Level\Second Level|Some DocString|

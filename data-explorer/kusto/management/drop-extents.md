@@ -25,8 +25,8 @@ This command requires [table admin](access-control/role-based-authorization.md) 
 ## Syntax
 
 > [!NOTE]
-> If the argument *TableName* is specified, you will need [Table admin permission](../management/access-control/role-based-authorization.md) to drop an extent.
-> If the the argument *TableName* isn't specified, you will need [Database admin permission](../management/access-control/role-based-authorization.md) to drop an extent.
+> If the argument *TableName* is specified, you will need [Table admin permission](./access-control/role-based-access-control.md) to drop an extent.
+> If the the argument *TableName* isn't specified, you will need [Database admin permission](./access-control/role-based-access-control.md) to drop an extent.
 
 ### Drop extents with a query
 

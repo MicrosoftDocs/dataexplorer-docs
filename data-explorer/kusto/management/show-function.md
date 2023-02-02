@@ -32,8 +32,8 @@ These commands requires [database user](../management/access-control/role-based-
 
 |Name |Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
-|MyFunction1 |() | {StormEvents &#124; limit 100}|MyFolder|Simple demo function|
-|MyFunction2 |(myLimit: long)| {StormEvents &#124; limit myLimit}|MyFolder|Demo function with parameter|
+|MyFunction1 |() | {StormEvents &#124; take 100}|MyFolder|Simple demo function|
+|MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|MyFolder|Demo function with parameter|
 |MyFunction3 |() | { StormEvents(100) }|MyFolder|Function calling other function|
 
 ## .show function
@@ -81,7 +81,7 @@ For a list of **all** functions, see [.show functions](#show-functions).
 ```kusto
 .show function MyFunction1 with(ShowObfuscatedStrings = true)
 ```
-    
+
 |Name |Parameters |Body|Folder|DocString
 |---|---|---|---|---
-|MyFunction1 |() | {StormEvents &#124; limit 100}|MyFolder|Simple demo function
+|MyFunction1 |() | {StormEvents &#124; take 100}|MyFolder|Simple demo function

@@ -29,7 +29,7 @@ This command requires [database user](../management/access-control/role-based-au
 
 Gets the schema in JSON format and additional table metadata.
 
-Requires [Database user permission](../management/access-control/role-based-authorization.md).
+Requires [Database user permission](./access-control/role-based-access-control.md).
 
 ```kusto
 .show table TableName schema as json

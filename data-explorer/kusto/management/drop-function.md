@@ -51,7 +51,7 @@ This command returns a list of the remaining functions in the database.
 |Folder|String|A folder used for UI functions categorization. This parameter doesn't change the way the function is invoked.
 |DocString|String|A description of the function for UI purposes.
 
-Requires [function admin permission](../management/access-control/role-based-authorization.md).
+Requires [function admin permission](./access-control/role-based-access-control.md).
 
 ### Example
  

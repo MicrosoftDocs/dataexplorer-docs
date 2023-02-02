@@ -45,7 +45,7 @@ Runs multiple consumer operators in parallel.
 * [`summarize`](summarizeoperator.md)
 * [`top`](topoperator.md)
 * [`top-nested`](topnestedoperator.md)
-* [`sort`](sortoperator.md)
+* [`sort`](orderoperator.md)
 * [`mv-expand`](mvexpandoperator.md)
 * [`reduce`](reduceoperator.md)
 
@@ -67,7 +67,7 @@ In the following example, the result tables will be named "GenericResult",  "Gen
 KustoLogs
 | where Timestamp > ago(1h)
 | fork
-    ( where Level == "Error" | project EventText | limit 100 )
+    ( where Level == "Error" | project EventText | take 100 )
     ( project Timestamp, EventText | top 1000 by Timestamp desc)
     ( summarize min(Timestamp), max(Timestamp) by ActivityID )
 ```
@@ -78,7 +78,7 @@ In the following examples, the result tables will be named "Errors", "EventsText
 KustoLogs
 | where Timestamp > ago(1h)
 | fork
-    ( where Level == "Error" | project EventText | limit 100 | as Errors )
+    ( where Level == "Error" | project EventText | take 100 | as Errors )
     ( project Timestamp, EventText | top 1000 by Timestamp desc | as EventsTexts )
     ( summarize min(Timestamp), max(Timestamp) by ActivityID | as TimeRangePerActivityID )
 ```
@@ -87,7 +87,7 @@ KustoLogs
 KustoLogs
 | where Timestamp > ago(1h)
 | fork
-    Errors = ( where Level == "Error" | project EventText | limit 100 )
+    Errors = ( where Level == "Error" | project EventText | take 100 )
     EventsTexts = ( project Timestamp, EventText | top 1000 by Timestamp desc )
     TimeRangePerActivityID = ( summarize min(Timestamp), max(Timestamp) by ActivityID )
 ```

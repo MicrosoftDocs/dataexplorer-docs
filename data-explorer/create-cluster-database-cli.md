@@ -9,6 +9,8 @@ ms.date: 09/06/2022
 # Create an Azure Data Explorer cluster and database by using Azure CLI
 
 > [!div class="op_single_selector"]
+>
+> * [Web UI free cluster](start-for-free-web-ui.md)
 > * [Portal](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
@@ -21,7 +23,7 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
 ## Prerequisites
 
-A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 [!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)]
 

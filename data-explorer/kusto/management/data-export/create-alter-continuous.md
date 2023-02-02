@@ -37,6 +37,7 @@ Creates or alters a continuous export job.
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100000 records. |
 | `useNativeParquetWriter` | `bool` | Use the new export implementation when exporting to Parquet, this implementation is a more performant, resource light export mechanism. Note that an exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
 | `managedIdentity` | `string` | The managed identity on behalf of which the continuous export job will run. This can be an object ID, or the `system` reserved word. This field is required to run continuous export jobs exporting data to an external table that uses impersonation authentication. The field is also required if the query argument references tables in other databases. For more information on managed identities, see [managed identity overview](../../../managed-identities-overview.md) |
+| `isDisabled` | `bool` | Disable/enable the continuous export. Default is false. |
 
 ## Example
 

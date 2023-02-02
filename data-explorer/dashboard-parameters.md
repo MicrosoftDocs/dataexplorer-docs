@@ -3,7 +3,7 @@ title: Parameters in Azure Data Explorer dashboards
 description: Use parameters as a building block for dashboard filters.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 11/14/2022
+ms.date: 01/31/2023
 ---
 
 # Use parameters in Azure Data Explorer dashboards
@@ -100,7 +100,7 @@ Fixed value parameters are based on predefined values specified by the user. The
 
 1. Fill in the details as follows:
 
-    * **Parameter display name**: Company
+    * **Label**: Company
     * **Parameter type**: Single selection
     * **Variable name**: `_company`
     * **Data type**: String
@@ -155,7 +155,7 @@ Fixed value parameters are based on predefined values specified by the user. The
 
 1. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
 
-    * **Parameter display name**: Companies
+    * **Label**: Companies
     * **Parameter type**: Multiple selection
     * **Variable name**: `_companies`
 
@@ -195,7 +195,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 1. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
 
-    * **Parameter display name**: Event
+    * **Label**: Event
     * **Variable name**: `_event`
     * **Source**: Query
     * **Data source**: GitHub
@@ -237,13 +237,13 @@ Query-based parameter values are derived at dashboard load time by executing the
 
 1. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
 
-    * **Parameter display name**: Events
+    * **Label**: Events
     * **Parameter type**: Multiple selection
     * **Variable name**: `_events`
 
 1. Select **Done** to create the parameter.
 
-#### Use the parameters in the query
+#### Use the parameter in a query
 
 1. The following sample query uses the new *Events* parameter by using the `_events` variable.
 
@@ -268,14 +268,14 @@ Free text parameters don't contain any values. They allow you to introduce your 
 
 1. Select **Parameters** to open the **Parameters pane** and select **New parameter**.
 1. Fill in the details as follows:
-    * **Parameter display name**: Company
+    * **Label**: Company
     * **Parameter type**: Free text
     * **Variable name**: _company
     * **Data type**: String
     * **Pin as dashboard filter**: checked
     * **Default value**: No default value
 
-#### Use parameters in the query
+#### Use the parameter in a query
 
 1. Run a sample query using the new *Company* parameter by using the `_company` variable name:
 
@@ -288,7 +288,35 @@ Free text parameters don't contain any values. They allow you to introduce your 
     | top 5 by WatchEvents
     ```
 
+### Use the data source parameter
+
+Once you have [added data sources](azure-data-explorer-dashboards.md#add-data-source) to your dashboard, you can create a parameter that selects one or more of the available data sources. This parameter can be used in tiles and other parameters.
+
+#### Create a data source parameter
+
+1. Select **Parameters** to open the **Parameters pane** and select **New parameter**.
+1. Fill in the details as follows:
+    * **Label**: Cluster
+    * **Parameter type**: Data source
+    * **Show on pages**: Select all
+    * **Values**: Select all
+    * **Default value**: Samples
+
+    :::image type="content" source="media/dashboard-parameters/data-source-parameter.png" alt-text="Screenshot of data source parameters.":::
+
+1. Select **Done**.
+
 The new parameter is now visible in the parameter list at the top of the dashboard.
+
+#### Use the parameter in a query
+
+1. Navigate to the query of a new or existing tile.
+1. In **Source**, select the name of your new parameter under **Data source parameters**. For the above-created parameter, select **Cluster**
+
+    :::image type="content" source="media/dashboard-parameters/data-source-parameter-in-query.png" alt-text="Screenshot of selecting a data source parameter in the query.":::
+
+1. Select **Apply changes**.
+1. Use the **Cluster** parameter to change the data source for this connected query.
 
 ## Use cross-filters as dashboard parameters
 

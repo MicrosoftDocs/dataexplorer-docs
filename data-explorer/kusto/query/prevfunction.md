@@ -1,9 +1,9 @@
 ---
 title: prev() - Azure Data Explorer
-description: This article describes prev() in Azure Data Explorer.
+description: Learn how to use the prev() function to return the value of a specific column in a specified row.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/12/2023
 ---
 # prev()
 
@@ -12,21 +12,15 @@ The specified row is at a specified offset from the current row in a [serialized
 
 ## Syntax
 
-There are several possibilities.
+`prev(`*column*`,` [ *offset* ]`,` [ *default_value* ] `)`
 
-* `prev(column)`
+## Parameters
 
-* `prev(column, offset)`
-
-* `prev(column, offset, default_value)`
-
-## Arguments
-
-* `column`: The column to get the values from.
-
-* `offset`: The offset to go back in rows. When no offset is specified, a default offset 1 is used.
-
-* `default_value`: The default value to be used when there are no previous rows to take the value from. When no default value is specified, null is used.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *column*| string | &check; | The column from which to get the values.|
+| *offset*| int | | The offset to go back in rows. The default is 1.|
+| *default_value*| scalar | | The default value to be used when there are no previous rows from which to take the value. The default is `null`.|
 
 ## Examples
 
