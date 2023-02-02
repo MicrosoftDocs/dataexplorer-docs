@@ -18,7 +18,7 @@ The extents whose tags should be altered are specified using a Kusto query that 
 
 ## Permissions
 
-This command requires [Table Admin](access-control/role-based-access-control.md) permissions.
+This command requires [Database Admin or Table Admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

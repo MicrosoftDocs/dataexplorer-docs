@@ -15,7 +15,7 @@ The `.alter-merge table` command:
 
 ## Permissions
 
-This command requires [Table Admin](access-control/role-based-access-control.md) permissions.
+This command requires [Database Admin or Table Admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
