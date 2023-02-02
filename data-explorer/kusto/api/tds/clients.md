@@ -49,7 +49,79 @@ jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database
 > [!NOTE]
 > To use Azure Active Directory integrated authentication, replace **ActiveDirectoryPassword** with **ActiveDirectoryIntegrated**. For more information, see [JDBC (user authentication)](./aad.md#jdbc-user) and [JDBC (application authentication)](./aad.md#jdbc-application).
 
-### Example
+## JDBC user authentication
+
+Following is an example of how to programmatically authenticate using Azure AD with JDBC for a user principal.
+
+```java
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+import com.microsoft.aad.msal4j.*;
+
+public class Sample {
+  public static void main(String[] args) throws Exception {
+    IAuthenticationResult authenticationResult = futureAuthenticationResult.get();
+    SQLServerDataSource ds = new SQLServerDataSource();
+    ds.setServerName("<your cluster DNS name>");
+    ds.setDatabaseName("<your database name>");
+    ds.setHostNameInCertificate("*.kusto.windows.net"); // Or appropriate regional domain.
+    ds.setAuthentication("ActiveDirectoryIntegrated");
+    try (Connection connection = ds.getConnection();
+         Statement stmt = connection.createStatement();) {
+      ResultSet rs = stmt.executeQuery("<your T-SQL query>");
+      /*
+      Read query result.
+      */
+    } catch (Exception e) {
+      System.out.println();
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+## JDBC application authentication
+
+Following is an example of how to programmatically authenticate using Azure AD with JDBC for an application principal.
+
+```java
+import java.sql.*;
+import com.microsoft.sqlserver.jdbc.*;
+import com.microsoft.aad.msal4j.*;
+import java.net.MalformedURLException;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
+public class Sample {
+  public static void main(String[] args) throws Throwable {
+    // Can also use tenant name.
+    String authorityUrl = "https://login.microsoftonline.com/<your AAD tenant ID>";
+    Set<String> scopes = new HashSet<>();
+    scopes.add("https://<your cluster DNS name>/.default");
+
+    IConfidentialClientApplication clientApplication = ConfidentialClientApplication.builder("<your application client ID>", ClientCredentialFactory.createFromSecret("<your application key>")).authority(authorityUrl).build();
+    CompletableFuture<IAuthenticationResult> futureAuthenticationResult = clientApplication.acquireToken(ClientCredentialParameters.builder(scopes).build());
+    IAuthenticationResult authenticationResult = futureAuthenticationResult.get();
+    SQLServerDataSource ds = new SQLServerDataSource();
+    ds.setServerName("<your cluster DNS name>");
+    ds.setDatabaseName("<your database name>");
+    ds.setAccessToken(authenticationResult.accessToken());
+    connection = ds.getConnection();
+    statement = connection.createStatement();
+    ResultSet rs = statement.executeQuery("<your T-SQL query>");
+    /*
+    Read query result.
+    */
+  }
+}
+```
+
+## JDBC example
 
 This example provides the steps needed to connect to MATLAB using JDBC.
 
