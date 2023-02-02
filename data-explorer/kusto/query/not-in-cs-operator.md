@@ -28,6 +28,8 @@ Filters a record set for data without a case-sensitive string.
 
 ## Parameters
 
+The following table describes the parameters to use with the `!in` operator. Depending on the chosen [syntax](#syntax), either *scalar*, *dynamic_array*, or *tabular_expression* is required.
+
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
@@ -35,9 +37,6 @@ Filters a record set for data without a case-sensitive string.
 | *scalar* | scalar | &check; | A value or comma-separated set of [scalar](scalar-data-types/index.md) values to search for in *col*.|
 | *dynamic_array* | dynamic | &check; | A dynamic array of values to search for in col.|
 | *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the result has multiple columns, the first column is used. The expression can produce up to 1,000,000 distinct results.|
-
-> [!NOTE]
-> Depending on the chosen [syntax](#syntax), either *scalar*, *dynamic_array*, or *tabular_expression* is required.
 
 ## Returns
 
