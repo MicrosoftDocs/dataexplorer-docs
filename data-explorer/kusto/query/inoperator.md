@@ -35,11 +35,16 @@ When possible, use the case-sensitive [in](in-cs-operator.md).
 | *dynamic_array* | dynamic | &check; | An array of values to search for in *col*.|
 | *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 1,000,000 distinct results.|
 
+> [!NOTE]
+> Depending on the chosen [syntax](#syntax), either *scalar_values*, *dynamic_array*, or *tabular_expression* is required.
+
 ## Returns
 
 Rows in *T* for which the predicate is `true`.
 
-## Examples  
+## Examples
+
+### List of scalars
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMq1PQUHLz8Q/ydHFU0lFQSk/NL0rPTAQx/VzDFSL9g7yVNEG6kvNL80oAl8ORJUoAAAA=" target="_blank">Run the query</a>
@@ -55,3 +60,85 @@ StormEvents
 |Count|
 |---|
 |4775|  
+
+### Dynamic array
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMq1PQSKnMS8zNTNaIVnLz8Q/ydHFU0lFQSk/NL0rPTAQx/VzDFSL9g7yVYjU1QQYk55fmlQAAcLCM41UAAAA=" target="_blank">Run the query</a>
+
+```kusto
+StormEvents 
+| where State in~ (dynamic(["FLORIDA", "georgia", "NEW YORK"])) 
+| count
+```
+
+**Output**
+
+|Count|
+|---|
+|4775|  
+
+The same query can also be written with a [let statement](letstatement.md).
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoLkksSS1WsFVIqcxLzM1M1ohWcvPxD/J0cVTSUVBKT80vSs9MBDH9XMMVIv2DvJViNa25gkvyi3Jdy1LzSooVuGoUyjNSi1IVgkFGKWQkFscn5lUqaEBM1gRKF5fm5iYWZValKiTnl+aVaGgqJFVCVAMACG2BiYIAAAA=" target="_blank">Run the query</a>
+
+```kusto
+let states = dynamic(["FLORIDA", "georgia", "NEW YORK"]);
+StormEvents 
+| where State has_any (states)
+| summarize count() by State
+```
+
+**Output**
+
+|Count|
+|---|
+|4775|
+
+### Tabular expression
+
+The following query shows how to use `in~` with an inline tabular expression. Notice that an inline tabular expression must be enclosed with double parentheses to be properly parsed.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMq1PQ0AjILyjNSSzJzM9zSSxJVIApQQgr2CmYGoABULKgKD8rNbkEYoKmJtDE4tLc3MSizKpUheT80rwSDU2FpEqINACuenXZewAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents 
+| where State in~ ((PopulationData | where Population > 5000000 | project State))
+| summarize count() by State
+```
+
+**Output**
+
+|State|Count|
+|--|--|
+|TEXAS |4701|
+|ILLINOIS |2022|
+|MISSOURI |2016|
+|GEORGIA |1983|
+|MINNESOTA |1881|
+|...|...|
+
+The same query can also be written with a [let statement](letstatement.md). Notice that the double parentheses as provided in the last example aren't necessary in this case.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NsQ6CQBBEe75iSuhorIxW0pvwAWYlGz1yd0v29jAaw7eDEBOmnHkv49ngSR98S0bGCSdcZciezEm8kBG+eD1ZeVfjjEO9ZhkHlZ47Q/vTj0VroqEZOVpC8VfXDS5OKPdf1QKkHAKp+zA6ydHKCvf3xs9WLYRGmgAAAA==" target="_blank">Run the query</a>
+
+```kusto
+let large_states = PopulationData | where Population > 5000000 | project State;
+StormEvents 
+| where State in~ (large_states)
+| summarize count() by State
+```
+
+**Output**
+
+|State|Count|
+|--|--|
+|TEXAS |4701|
+|ILLINOIS |2022|
+|MISSOURI |2016|
+|GEORGIA |1983|
+|MINNESOTA |1881|
+|...|...|
