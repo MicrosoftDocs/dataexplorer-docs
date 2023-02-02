@@ -17,7 +17,7 @@ For more information about other operators and to determine which operator is mo
 
 ## Syntax
 
-*T* `|` `where` *col* `has_any` `(`*list_of_scalars*`)`
+*T* `|` `where` *col* `has_any` `(`*scalar* [`,` *scalar2*`,` *scalar3*`,` ... ]`)`
 
 *T* `|` `where` *col* `has_any` `(`*dynamic_array*`)`
 
@@ -32,12 +32,12 @@ For more information about other operators and to determine which operator is mo
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column used to filter the records.|
- *list_of_scalars* | scalar | &check; | A value or comma-separated set of values to search for in *col*.|
+| *scalar* | scalar | &check; | A value or comma-separated set of [scalar](scalar-data-types/index.md) values to search for in *col*.|
 | *dynamic_array* | dynamic | &check; | An array of values to search for in *col*.|
 | *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 10,000 distinct results.|
 
 > [!NOTE]
-> Depending on the chosen [syntax](#syntax), either *list_of_scalars*, *dynamic_array*, or *tabular_expression* is required.
+> Depending on the chosen [syntax](#syntax), either *scalar*, *dynamic_array*, or *tabular_expression* is required.
 
 ## Returns
 
