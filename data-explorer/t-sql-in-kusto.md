@@ -1,22 +1,22 @@
 ---
-title: Kusto MS-TDS/T-SQL differences with SQL Server - Azure Data Explorer
-description: This article describes MS-TDS/T-SQL Differences between Kusto and Microsoft SQL Server in Azure Data Explorer.
+title: T-SQL in Kusto versus Microsoft SQL Server - Azure Data Explorer
+description: This article describes T-SQL differences between Kusto and Microsoft SQL Server in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/04/2019
+ms.date: 02/02/2023
 ---
-# MS-TDS/T-SQL Differences between Kusto and Microsoft SQL Server
+# T-SQL in Kusto versus Microsoft SQL Server
 
-Below is partial list of the main differences between Kusto and SQL Server's implementation of T-SQL.
+Kusto implements a subset of the T-SQL language. This article provides an overview of the main differences between the Kusto and Microsoft SQL Server implementations of T-SQL.
 
 ## CREATE, INSERT, DROP, ALTER statements
 
 Kusto doesn't support schema modifications or data modifications through MS-TDS,
 nor does it support the above T-SQL statements.
 
-## Correlated sub-queries
+## Correlated subqueries
 
-Kusto doesn't support correlated sub-queries in `SELECT`, `WHERE`, and `JOIN` clauses.
+Kusto doesn't support correlated subqueries in `SELECT`, `WHERE`, and `JOIN` clauses.
 
 ## TOP flavors
 
@@ -36,7 +36,7 @@ and `ELSE` batches.
 ## Data types
 
 Depending on the query, the data returned may have a different type than in SQL Server.
-An obvious example here are types such as `TINYINT` and `SMALLINT` that have no
+An example is types such as `TINYINT` and `SMALLINT` that have no
 equivalent in Kusto. Therefore, clients that expect a value of type `BYTE` or `INT16`
 might get an `INT32` or an `INT64` value instead.
 
@@ -44,12 +44,12 @@ might get an `INT32` or an `INT64` value instead.
 
 When asterix is used in the `SELECT` statement, the order of columns in each result set
 may differ between Kusto and SQL Server. Client that use column names would work better in these cases.
-If there is no asterix character in the `SELECT` statement, the column ordinals would be preserved.
+If there's no asterix character in the `SELECT` statement, the column ordinals would be preserved.
 
 ## Columns name in results
 
-In T-SQL, multiple columns may have the same name. This is not allowed in Kusto.
-In case of a collision in names, the names of the columns might be different in Kusto.
+In T-SQL, multiple columns may have the same name, which isn't allowed in Kusto.
+If there's a collision in names, the names of the columns might be different in Kusto.
 However, the original name would be preserved, at least for one of the columns.
 
 ## ANY, ALL, and EXISTS predicates

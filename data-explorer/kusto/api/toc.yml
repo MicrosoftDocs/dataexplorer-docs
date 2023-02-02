@@ -32,8 +32,6 @@ items:
   - name: Azure Active Directory
     displayName: AAD, Azure AD
     href: tds/aad.md
-  - name: Known issues
-    href: tds/sqlknownissues.md
 - name: .NET SDK
   items:
   - name: General

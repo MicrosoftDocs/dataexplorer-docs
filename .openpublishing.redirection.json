@@ -414,6 +414,16 @@
       "source_path": "data-explorer/kusto/query/rowrankfunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/rowrankdensefunction",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/t-sql.md",
+      "redirect_url": "/azure/data-explorer/query-with-t-sql",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/sqlknownissues.md",
+      "redirect_url": "/azure/data-explorer/t-sql-in-kusto",
+      "redirect_document_id": true
     }
   ]
 }

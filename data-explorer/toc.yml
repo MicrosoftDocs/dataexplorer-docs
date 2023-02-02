@@ -235,8 +235,12 @@ items:
       href: query-monitor-data.md
     - name: Query data in Power Apps
       href: power-apps-connector.md
-    - name: Query data using T-SQL
-      href: kusto/api/tds/t-sql.md
+    - name: T-SQL
+      items:
+        - name: Query data using T-SQL
+          href: t-sql-query.md
+        - name: T-SQL in Kusto
+          href: t-sql-in-kusto.md
     - name: Query data using Python
       href: python-query-data.md
     - name: Debug KQL inline Python

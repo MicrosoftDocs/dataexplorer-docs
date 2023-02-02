@@ -5,7 +5,7 @@ ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 01/24/2023
 ---
-# T-SQL support
+# Query data using T-SQL
 
 The Azure Data Explorer query editor supports the use of T-SQL in addition to its primary query language, [Kusto query language (KQL)](../../query/index.md). While KQL is the recommended query language, T-SQL can be useful for tools that are unable to use KQL or for users who are already familiar with SQL.
 
