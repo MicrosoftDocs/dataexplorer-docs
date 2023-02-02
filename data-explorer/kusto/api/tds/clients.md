@@ -174,7 +174,7 @@ This example provides the steps needed to connect to MATLAB using JDBC.
    > * If you end with `database=` without a value, the database name will be inferred.
    > * To use Azure Active Directory integrated authentication, replace **ActiveDirectoryPassword** with **ActiveDirectoryIntegrated**.
 
-1. In the MATLAB command window, test the connection and run a sample query. Replace *KUSTO_TABLE* with an existing table in Azure Data Explorer.
+1. In the MATLAB command window, test the connection and run a sample query. Replace `KUSTO_TABLE` with an existing table in Azure Data Explorer.
 
    ```java
    data = select(conn, 'SELECT * FROM <<KUSTO_TABLE>>')
