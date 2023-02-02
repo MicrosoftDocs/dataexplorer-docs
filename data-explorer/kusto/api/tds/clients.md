@@ -182,7 +182,7 @@ This example shows how to connect to Azure Data Explorer from MATLAB using JDBC.
 
 To create an ODBC data source to connect to Azure Data Explorer, follow the steps described in [Connect to Azure Data Explorer with ODBC](../../../connect-odbc.md).
 
-Then, you can use the ODBC data source from other applications to connect to Azure Data Explorer. Use a connection string like the following to connect.
+Then, use the ODBC data source from other applications to connect to Azure Data Explorer with a connection string like the following.
 
 ```odbc
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
@@ -193,22 +193,32 @@ Then, you can use the ODBC data source from other applications to connect to Azu
 
 ### ODBC application authentication
 
-To use service principal authentication with ODBC, you must provide an Azure Active Directory tenant ID in the ODBC connection string. Specify the tenant ID in the `Language` field.
+To use service principal authentication with ODBC, you must provide the Azure AD tenant ID in the `Language` field. 
 
-For example, specify the tenant with `Language=any@AadAuthority:<aad_tenant_id>`.
+You can set this configuration in the [connection string](#connection-string), the [Windows registry](#windows-registry), or the [odbc.ini file](#odbcini-file).
+
+The Azure AD tenant ID can also be configured at the cluster level, so you don't have to specify it on the client. If you need to change the tenant ID at the cluster level, open a support request in the  [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
+
+### Connection string
+
+Set the application principal with `Language=any@AadAuthority:<aad_tenant_id>` in the connection string.
 
 ```odbc
 "Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@AadAuthority:<aad_tenant_id>;UID=<aad_application_id>;PWD=<aad_application_secret>"
 ```
 
-You can change the Language field in the ODBC data source (DSN) in the registry for Windows.
+### Windows registry
+
+Edit the `Language` field in the ODBC data source (DSN) in the registry for Windows as follows.
 
 ```odbc
 [HKEY_CURRENT_USER\SOFTWARE\ODBC\ODBC.INI\MyUserDSN]
 "Language"="any@AadAuthority:<aad_tenant_id>"
 ```
 
-For Linux and macOS, edit the odbc.ini file, as follows:
+### odbc.ini file
+
+For Linux and macOS, edit the odbc.ini file, as follows.
 
 ```odbc
 # [DSN name]
@@ -218,8 +228,6 @@ Driver = ODBC Driver 17 for SQL Server
 Server = tcp:<adx_cluster_name>.<region_name>.kusto.windows.net,1433
 Language = any@AadAuthority:<aad_tenant_id>
 ```
-
-The Azure AD tenant ID can also be configured at the cluster level, so you don't have to specify it on the client. If you need to change the tenant ID at the cluster level, open a support request in the  [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
 
 ## PowerShell
 
