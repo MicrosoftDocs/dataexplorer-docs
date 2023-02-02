@@ -9,6 +9,18 @@ ms.date: 07/06/2022
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
 
+## January 2022
+
+| Article title | Description |
+|--|--|
+| [Use the sample app generator to create code to ingest and query your data](sample-app-generator-wizard.md) | New Article. Describes how to use the sample app generator for your preferred programming language. |
+
+**API**
+
+| Article title | Description |
+|--|--|
+| [Azure Data Explorer API overview](kusto/api/index.md) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.
+
 ## December 2021
 
 | Article title | Description |
