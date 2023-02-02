@@ -21,7 +21,7 @@ For more information about other operators and to determine which operator is mo
 
 ## Parameters
 
-The following table describes the `has_all` operator parameters. Depending on the chosen [syntax](#syntax), either *scalar*, *dynamic_array*, or *tabular_expression* is required.
+The following table describes the `has_all` operator parameters. Depending on the chosen [syntax](#syntax), either *list_of_scalars*, *dynamic_array*, or *tabular_expression* is required.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
