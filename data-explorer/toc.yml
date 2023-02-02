@@ -216,6 +216,8 @@ items:
       href: ingest-json-formats.md
     - name: Connect with ODBC
       href: connect-odbc.md
+    - name: Connect with JDBC
+      href: connect-jdbc.md
   - name: Query data
     items:
     - name: Azure Data Explorer web UI
