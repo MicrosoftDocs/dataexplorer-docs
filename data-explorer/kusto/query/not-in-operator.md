@@ -33,8 +33,8 @@ When possible, use the case-sensitive [!in~](not-in-cs-operator.md).
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
-| *col* | string | &check; | The column used to filter the records.|
-| *scalar* | scalar | &check; | A value or comma-separated set of [scalar](scalar-data-types/index.md) values to search for in *col*.|
+| *col* | string | &check; | The column by which to filter.|
+| *scalar* | scalar | &check; | A value or comma-separated set of [scalar](scalar-data-types/index.md) values used to filter *col*.|
 | *dynamic_array* | dynamic | &check; | An array of values to search for in *col*.|
 | *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 1,000,000 distinct results.|
 

@@ -28,7 +28,7 @@ For more information about other operators and to determine which operator is mo
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
-| *col* | string | &check; | The column used to filter the records.|
+| *col* | string | &check; | The column by which to filter.|
 | *scalar* | scalar | &check; | A value or comma-separated set of [scalar](scalar-data-types/index.md) values to search for in *col*.|
 | *dynamic_array* | dynamic | &check; | An array of values to search for in *col*.|
 | *tabular_expression* | string | &check; | A tabular expression that produces a set of values to search for in *col*. If the tabular expression has multiple columns, the first column is used. The *tabular_expr* can produce up to 256 distinct results.|
