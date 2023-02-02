@@ -117,7 +117,7 @@ StormEvents
 
 **Output**
 
-|State|Count|
+|State|count_|
 |--|--|
 |TEXAS |4701|
 |ILLINOIS |2022|
@@ -140,7 +140,7 @@ StormEvents
 
 **Output**
 
-|State|Count|
+|State|count_|
 |--|--|
 |TEXAS |4701|
 |ILLINOIS |2022|

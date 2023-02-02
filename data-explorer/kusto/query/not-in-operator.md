@@ -117,7 +117,7 @@ StormEvents
 
 **Output**
 
-|State|Count|
+|State|count_|
 |--|--|
 |KANSAS|3166|
 |IOWA|2337|
@@ -140,7 +140,7 @@ StormEvents
 
 **Output**
 
-|State|Count|
+|State|count_|
 |--|--|
 |KANSAS|3166|
 |IOWA|2337|
