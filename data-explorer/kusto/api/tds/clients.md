@@ -118,9 +118,9 @@ public class Sample {
 }
 ```
 
-### JDBC example: MATLAB
+## MATLAB
 
-This example provides the steps needed to connect to MATLAB using JDBC.
+This example shows how to connect to Azure Data Explorer from MATLAB using JDBC.
 
 1. Create a "javaclasspath.txt" file in your preferences directory. This file will be used to add the required JAR-files to the front of MATLAB's static classpath.
 
