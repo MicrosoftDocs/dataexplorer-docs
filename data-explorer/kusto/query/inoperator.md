@@ -46,6 +46,8 @@ Rows in *T* for which the predicate is `true`.
 
 ### List of scalars
 
+The following query shows how to use `in~` with a comma-separated list of scalar values.
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMq1PQUHLz8Q/ydHFU0lFQSk/NL0rPTAQx/VzDFSL9g7yVNEG6kvNL80oAl8ORJUoAAAA=" target="_blank">Run the query</a>
 
@@ -62,6 +64,8 @@ StormEvents
 |4775|  
 
 ### Dynamic array
+
+The following query shows how to use `in~` with a dynamic array.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMq1PQSKnMS8zNTNaIVnLz8Q/ydHFU0lFQSk/NL0rPTAQx/VzDFSL9g7yVYjU1QQYk55fmlQAAcLCM41UAAAA=" target="_blank">Run the query</a>
