@@ -15,7 +15,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-| [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | Updated article. Security principals revised.|
+|- [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) </br> - [Referencing security principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals.md) | Updated articles. Renewed and restructured referencing of security principals and identity providers.
 
 **Functions library**
 
@@ -27,13 +27,13 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|[Referencing security principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals.md) | New article. Describes how to reference security principals and identity providers.
 |- [.dup-next-failed-ingest](/azure/data-explorer/kusto/management/dup-next-failed-ingest.md) <br/> - [.dup-next-ingest](/azure/data-explorer/kusto/management/dup-next-ingest.md) | New articles. Describes how to troubleshoot data on demand. |
 
 **Query**
 
 | Article title | Description |
 |--|--|
+|[render operator](/azure/data-explorer/kusto/query/renderoperator.md)| Refreshed article. Renewed list of visualizations.
 |- [Anomaly chart](kusto/query/visualization-anomalychart.md) <br/> - [Area chart](kusto/query/visualization-areachart.md) <br/> - [Bar chart](kusto/query/visualization-barchart.md) <br/> - [Card](kusto/query/visualization-card.md) <br/> - [Column chart](kusto/query/visualization-columnchart.md) <br/> - [Ladder chart](kusto/query/visualization-ladderchart.md) <br/> - [Line chart](kusto/query/visualization-linechart.md) <br/> - [Pie chart](kusto/query/visualization-piechart.md) <br/> - [Pivot chart](kusto/query/visualization-pivotchart.md) <br/> - [Scatter chart](kusto/query/visualization-scatterchart.md) <br/> - [Stacked area chart](kusto/query/visualization-stackedareachart.md) <br/> - [Table](kusto/query/visualization-table.md) <br/> - [Time chart](kusto/query/visualization-timechart.md) <br/> - [Time pivot](kusto/query/visualization-timepivot.md) | New articles. Describes how to render visualizations of query results. |
 | [series_dot_product()](/azure/data-explorer/kusto/query/series-dot-productfunction.md) | New articles. Describes how to calculate the dot product of two numeric series.|
 | [hll_if() (aggregation function)](/azure/data-explorer/kusto/query/hll-if-aggregation-function.md) | New article. Describes how to calculate the intermediate results of the `dcount()` function. |
