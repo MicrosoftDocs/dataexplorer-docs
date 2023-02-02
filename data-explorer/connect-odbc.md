@@ -63,3 +63,4 @@ Follow these steps to configure an ODBC data source using the ODBC driver for SQ
 ## Next steps
 
 * [Connect to Azure Data Explorer from Tableau](tableau.md)
+* Learn how to [authorize an application principal with ODBC](kusto/api/tds/clients.md#odbc-application-authentication)
