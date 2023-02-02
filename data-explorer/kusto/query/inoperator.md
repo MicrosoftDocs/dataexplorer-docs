@@ -25,6 +25,9 @@ When possible, use the case-sensitive [in](in-cs-operator.md).
 
 *T* `|` `where` *col* `in~` `((`*tabular_expression*`))`
 
+> [!NOTE]
+> An inline tabular expression must be enclosed with double parentheses to be properly parsed. See [example](#tabular-expression).
+
 ## Parameters
 
 | Name | Type | Required | Description |

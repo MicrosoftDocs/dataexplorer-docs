@@ -23,6 +23,9 @@ For more information about other operators and to determine which operator is mo
 
 *T* `|` `where` *col* `has_any` `((`*tabular_expression*`))`
 
+> [!NOTE]
+> An inline tabular expression must be enclosed with double parentheses to be properly parsed. See [example](#tabular-expression).
+
 ## Parameters
 
 | Name | Type | Required | Description |
