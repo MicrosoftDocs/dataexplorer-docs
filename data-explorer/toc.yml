@@ -235,18 +235,18 @@ items:
       href: query-monitor-data.md
     - name: Query data in Power Apps
       href: power-apps-connector.md
-    - name: T-SQL
-      items:
-        - name: Query data using T-SQL
-          href: t-sql-query.md
-        - name: T-SQL in Kusto
-          href: t-sql-in-kusto.md
     - name: Query data using Python
       href: python-query-data.md
     - name: Debug KQL inline Python
       href: debug-inline-python.md
     - name: Query cold data with hot windows
       href: hot-windows.md
+    - name: T-SQL
+      items:
+        - name: Query data using T-SQL
+          href: t-sql-query.md
+        - name: T-SQL in Kusto
+          href: t-sql-in-kusto.md
     - name: Time Series Analysis and Machine Learning
       items:
       - name: Time series analysis
