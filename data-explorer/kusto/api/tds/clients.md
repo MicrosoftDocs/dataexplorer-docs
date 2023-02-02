@@ -183,25 +183,9 @@ This example provides the steps needed to connect to MATLAB using JDBC.
 
 ## ODBC
 
-To create an ODBC data source to connect to Azure Data Explorer, follow these steps.
+To create an ODBC data source to connect to Azure Data Explorer, follow the steps described in [Connect to Azure Data Explorer with ODBC](../../../connect-odbc.md).
 
-1. [Launch the ODBC Data Source Administrator](/sql/database-engine/configure-windows/open-the-odbc-data-source-administrator?view=sql-server-ver16).
-
-1. Select **Add** to create a new data source.
-
-1. Select **ODBC Driver 17 for SQL Server**.
-
-1. Give the data source a **Name** and specify the Azure Data Explorer cluster URI in the **Server** field.
-
-1. For the authentication option, select **Active Directory Integrated**.
-
-1. Select **Next** to set the database.
-
-1. In the tabs that follow, you can leave the default settings. Select **Next** to move on.
-
-1. Select **Finish** to open the data source summary window, where the connection can be tested.
-
-1. Use the ODBC data source. If the application can accept a connection string, you can use a connection string like the following to connect.
+Then, you can use the ODBC data source from other applications to connect to Azure Data Explorer. Use a connection string like the following to connect.
 
 ```odbc
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
@@ -210,13 +194,9 @@ To create an ODBC data source to connect to Azure Data Explorer, follow these st
 > [!NOTE]
 > ODBC applications may not work well with `NVARCHAR(MAX)` type. You can cast the data to `NVARCHAR(`*n*`)` using the `Language` parameter in the connection string. For example, `Language=any@MaxStringSize:5000` will encode strings as `NVARCHAR(5000)`.
 
-### ODBC user authentication
-
-User authentication is done via the ODBC driver set up. As described in the previous section, select **Active Directory Integrated** as the authentication option when configuring the ODBC data source.
-
 ### ODBC application authentication
 
-To use service principal authentication with ODBC, you must provide an Azure Active Directory tenant ID in the ODBC connection string. Specify the tenant ID in the Language field.
+To use service principal authentication with ODBC, you must provide an Azure Active Directory tenant ID in the ODBC connection string. Specify the tenant ID in the `Language` field.
 
 For example, specify the tenant with `Language=any@AadAuthority:<aad_tenant_id>`.
 
@@ -244,11 +224,9 @@ Language = any@AadAuthority:<aad_tenant_id>
 
 The Azure AD tenant ID can also be configured at the cluster level, so you don't have to specify it on the client. If you need to change the tenant ID at the cluster level, open a support request in the  [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
 
-### ODBC example: Powershell
+## PowerShell
 
-This section provides examples of how to connect to Azure Data Explorer from Powershell using the ODBC driver.
-
-#### PowerShell
+The following example shows how to connect to Azure Data Explorer using an ODBC driver from Powershell. For this to work, you must first follow the steps in [ODBC](#odbc) to create the ODBC driver.
 
 ```powershell
 $conn = [System.Data.Common.DbProviderFactories]::GetFactory("System.Data.Odbc").CreateConnection()
