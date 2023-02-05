@@ -10,7 +10,7 @@ ms.date: 01/24/2023
 The Azure Data Explorer query editor supports the use of T-SQL in addition to its primary query language, [Kusto query language (KQL)](kusto/query/index.md). While KQL is the recommended query language, T-SQL can be useful for tools that are unable to use KQL or for users who are already familiar with SQL.
 
 > [!NOTE]
-> The query editor only supports T-SQL `SELECT` statements and doesn't support DDL commands, such as `CREATE`, `ALTER`, or `DROP`. For more information about the limitations of using T-SQL with Kusto, see the section on [T-SQL in Kusto](t-sql-in-kusto.md).
+> The query editor only supports T-SQL `SELECT` statements and doesn't support DDL commands, such as `CREATE`, `ALTER`, or `DROP`. For more information, see [T-SQL in Kusto vs. Microsoft SQL Server](t-sql-in-kusto.md).
 
 ## Query with T-SQL
 
@@ -80,4 +80,4 @@ StormEvents
 
 ## Next steps
 
-* Learn more about [T-SQL in Kusto](t-sql-in-kusto.md)
+* Learn more about [T-SQL in Kusto vs. Microsoft SQL Server](t-sql-in-kusto.md)
