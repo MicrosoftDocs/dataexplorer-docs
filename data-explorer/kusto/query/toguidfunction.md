@@ -3,7 +3,7 @@ title: toguid() - Azure Data Explorer
 description: This article describes toguid() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/30/2021
+ms.date: 02/05/2023
 ---
 # toguid()
 
@@ -14,11 +14,13 @@ Converts a string to a [`guid`](./scalar-data-types/guid.md) scalar.
 
 ## Syntax
 
-`toguid(`*Expr*`)`
+`toguid(`*value*`)`
 
-## Arguments
+## Parameters
 
-* *Expr*: Expression that will be converted to [`guid`](./scalar-data-types/guid.md) scalar. 
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | scalar | &check; | The value to convert to [guid](scalar-data-types/guid.md).|
 
 ## Returns
 
@@ -27,7 +29,10 @@ The conversion process takes the first 32 characters of the input, ignoring prop
 * If the conversion is successful, the result will be a [`guid`](./scalar-data-types/guid.md) scalar.
 * Otherwise, the result will be `null`.
 
-## Examples
+## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjeKSIisFIJGZl67JyxXNy6UABEoGhkbGJqZm5haWiUnJKalp6HwlHSwKdUEyuiARXaxqE6H2KJRkJJYoZBYr5OWXKCQqpJdmpijxcsXyctUopFaUpOalgIUUbBVK8kEMkBM1ATuW7RixAAAA" target="_blank">Run the query</a>
 
 ```kusto
 datatable(str: string)
@@ -39,7 +44,7 @@ datatable(str: string)
 | extend guid = toguid(str)
 ```
 
-**Output**:
+**Output**
 
 |str|guid|
 |---|---|
