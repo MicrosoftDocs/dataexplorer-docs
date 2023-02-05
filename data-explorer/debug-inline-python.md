@@ -89,6 +89,7 @@ Kusto Query Language tools aren't convenient for developing and debugging Python
 
 > [!NOTE]
 > There may be differences between the Python sandbox image and your local installation. [Check the sandbox image for specific packages by querying the plugin](https://github.com/Azure/azure-kusto-analytics-lib/blob/master/Utils/functions/get_modules_version.csl).
-> In case there are errors when launching VS code debugging session try setting the default terminal profile to command prompt:
+> 
+In case there are errors when launching VS code debugging session try setting the default terminal profile to command prompt:
 >  * Press CTRL + SHIFT + P to open the Command Palette.
 >  * Search for "Terminal: Select Default Profile" and select "Command Prompt"
