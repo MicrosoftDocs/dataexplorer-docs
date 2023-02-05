@@ -1,9 +1,9 @@
 ---
 title: series_pearson_correlation() - Azure Data Explorer
-description: This article describes series_pearson_correlation() in Azure Data Explorer.
+description: Learn how to use the series_pearson_correlation() function to calculate the pearson correlation coefficient of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 02/05/2023
 ---
 # series_pearson_correlation()
 
