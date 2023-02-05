@@ -11,7 +11,7 @@ T-SQL is a language used in both Kusto and Microsoft SQL Server. However, Kusto 
 
 ## CREATE, INSERT, DROP, ALTER statements
 
-Kusto doesn't support `CREATE`, `INSERT`, `DROP`, and `ALTER` T-SQL statements, and doesn't support schema modifications or data modifications through MS-TDS.
+Kusto doesn't support `CREATE`, `INSERT`, `DROP`, and `ALTER` T-SQL statements, or schema and data modifications through MS-TDS.
 
 ## Correlated subqueries
 
@@ -19,8 +19,7 @@ Kusto doesn't support correlated subqueries in `SELECT`, `WHERE`, and `JOIN` cla
 
 ## TOP flavors
 
-Kusto ignores `WITH TIES` and evaluates queries as regular `TOP`.
-Kusto doesn't support `PERCENT`.
+Kusto ignores `WITH TIES` and evaluates such queries as regular `TOP`, and doesn't support `PERCENT`.
 
 ## Cursors
 
@@ -29,16 +28,16 @@ Kusto doesn't support SQL cursors.
 ## Flow control
 
 Kusto doesn't support flow control statements, except for a few limited cases,
-such as `IF` `THEN` `ELSE` clause that has the identical schema for the `THEN`
+such as `IF` `THEN` `ELSE` clauses that have an identical schema for the `THEN`
 and `ELSE` batches.
 
 ## Data types
 
-The data returned by Kusto may be of a different type than in SQL Server, such as types like `TINYINT` and `SMALLINT` which have no equivalent in Kusto. This means that clients expecting a `BYTE` or `INT16` value may receive an `INT32` or `INT64` value instead.
+The data returned by Kusto may be of a different type than in SQL Server. For example, types like `TINYINT` and `SMALLINT` have no equivalent in Kusto, which means that clients expecting a `BYTE` or `INT16` value may receive an `INT32` or `INT64` value instead.
 
 ## Column order in results
 
-When the `SELECT` statement uses an asterisk (`*`), the order of columns in each result set may differ between Kusto and SQL Server. Queries using column names would work better in these cases. If the `SELECT` statement doesn't use an asterisk, the column ordinals are preserved.
+When the `SELECT` statement uses an asterisk (`*`), the order of columns in each result set may differ between Kusto and SQL Server. If the `SELECT` statement doesn't use an asterisk, the column ordinals are preserved. It's recommended to use column names in cases where the column order matters.
 
 ## Columns name in results
 
