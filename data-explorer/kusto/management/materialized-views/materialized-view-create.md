@@ -28,7 +28,7 @@ There are two possible ways to create a materialized view, as noted by the *back
 
 ## Permissions
 
-This command requires you to have [database admin or materialized view admin](../access-control/role-based-access-control.md) permissions. The creator of the materialized view becomes the admin of it.
+This command requires [Database Admin](../access-control/role-based-access-control.md) permissions. The creator of the materialized view becomes the admin of it.
 
 ## Syntax
 

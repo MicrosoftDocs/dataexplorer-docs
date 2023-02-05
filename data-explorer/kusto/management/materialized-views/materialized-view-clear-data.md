@@ -15,7 +15,7 @@ The difference between this command and dropping and recreating the view (with n
 
 ## Permissions
 
-This command requires [database admin or materialized view admin permissions](../access-control/role-based-access-control.md).
+This command requires [Database Admin or Materialized View Admin](../access-control/role-based-access-control.md).
 
 ## Syntax
 

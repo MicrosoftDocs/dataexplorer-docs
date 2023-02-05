@@ -12,6 +12,10 @@ Disables or enables the continuous-export job. A disabled continuous export won'
 When enabling a continuous export that has been disabled for a long time, exporting will continue from where it last stopped when the exporting was disabled. This continuation may result in a long running export, blocking other exports from running, if there isn't sufficient cluster capacity to serve all processes. 
 Continuous exports are executed by last run time in ascending order (oldest export will run first, until catch up is complete). 
 
+## Permissions
+
+This command requires [Database Admin](../access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.enable` `continuous-export` *ContinuousExportName* 

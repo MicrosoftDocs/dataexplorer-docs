@@ -10,7 +10,7 @@ Returns a set that contains the specified table or all tables in the database wi
 
 ## Permissions
 
-This command requires [database viewer](../management/access-control/role-based-access-control.md) permissions.
+This command requires [Database Viewer](../management/access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

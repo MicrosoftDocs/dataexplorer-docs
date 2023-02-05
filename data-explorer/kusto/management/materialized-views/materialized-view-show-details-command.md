@@ -11,7 +11,7 @@ Returns a set that contains the specified materialized view or all materialized 
 
 ## Permissions
 
-This command requires [database viewer](../access-control/role-based-access-control.md) permissions.
+This command requires [Database Viewer](../access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

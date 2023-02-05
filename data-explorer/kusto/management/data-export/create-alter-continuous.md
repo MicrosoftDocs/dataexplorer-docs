@@ -9,6 +9,10 @@ ms.date: 07/19/2021
 
 Creates or alters a continuous export job.
 
+## Permissions
+
+This command requires [Database Admin](../access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.create-or-alter` `continuous-export` *ContinuousExportName* <br>

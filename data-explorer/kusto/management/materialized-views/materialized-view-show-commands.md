@@ -10,6 +10,10 @@ ms.date: 08/30/2020
 
 The following show commands display information about [materialized views](materialized-view-overview.md).
 
+## Permissions
+
+These commands requires [Database Monitor](../access-control/role-based-access-control.md) permissions. OR HIGHER...
+
 ## .show materialized-view
 
 Displays information about the materialized view's definition and its current state.

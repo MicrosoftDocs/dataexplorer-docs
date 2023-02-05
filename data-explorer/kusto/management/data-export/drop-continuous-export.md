@@ -9,6 +9,10 @@ ms.date: 08/03/2020
 
 Drops a continuous-export job.
 
+## Permissions
+
+This command requires [Database Admin](../access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.drop` `continuous-export` *ContinuousExportName*

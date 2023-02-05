@@ -11,7 +11,7 @@ Drops a materialized view.
 
 ## Permissions
 
-This command requires [database or materialized view admin](../access-control/role-based-access-control.md) permissions.
+This command requires [Database Admin or Materialized View Admin](../access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
