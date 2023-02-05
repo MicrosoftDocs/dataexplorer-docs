@@ -91,6 +91,10 @@ receives a parameter `tableName` - which is passed into the table() function.
 
 ::: zone-end
 
+::: zone pivot="azuredataexplorer"
+
+::: zone-end"
+
 ### Use table() with non-constant parameter
 
 A parameter, which isn't a scalar constant string, can't be passed as a parameter to the `table()` function.
