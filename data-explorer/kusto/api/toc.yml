@@ -17,6 +17,8 @@ items:
     href: rest/deeplink.md
   - name: Streaming ingest
     href: rest/streaming-ingest.md
+  - name: T-SQL
+    href: rest/t-sql.md
 - name: MS-TDS
   displayName: SQL, ADO.NET, JDBC, ODBC
   items:
