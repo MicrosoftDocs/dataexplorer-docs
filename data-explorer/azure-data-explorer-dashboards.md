@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 01/31/2023
 ---
 
-# Visualize data with Azure Data Explorer dashboards (Preview)
+# Visualize data with Azure Data Explorer dashboards 
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides a web application that enables you to run queries and build dashboards. Dashboards are available in the stand-alone web application, the [Azure Data Explorer web UI](web-query-data.md). Azure Data Explorer is also integrated with other dashboard services like [Power BI](power-bi-data-connector.md?tabs=connector) and [Grafana](grafana.md).
 
