@@ -3,7 +3,6 @@ title: series_subtract() - Azure Data Explorer
 description: Learn how to use the series_subtract() function to calculate the element-wise subtraction of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
 ms.date: 01/30/2023
 ---
 # series_subtract()
