@@ -3,7 +3,7 @@ title: strcmp() - Azure Data Explorer
 description: This article describes strcmp() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 02/05/2023
 ---
 # strcmp()
 
@@ -13,21 +13,27 @@ The function starts comparing the first character of each string. If they are eq
 
 ## Syntax
 
-`strcmp(`*string1*`,` *string2*`)` 
+`strcmp(`*string1*`,` *string2*`)`
 
-## Arguments
+## Parameters
 
-* *string1*: first input string for comparison. 
-* *string2*: second input string for comparison.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *string1* | string | &check; | The first input string for comparison.|
+| *string2* | string | &check; | The second input string for comparison.|
 
 ## Returns
 
-Returns an integral value indicating the relationship between the strings:
-* *<0* - the first character that does not match has a lower value in string1 than in string2
-* *0* - the contents of both strings are equal
-* *>0* - the first character that does not match has a greater value in string1 than in string2
+Returns an integer value indicating the relationship between the strings:
 
-## Examples
+* *<0* - the first character that does not match has a lower value in *string1* than in *string2*
+* *0* - the contents of both strings are equal
+* *>0* - the first character that does not match has a greater value in *string1* than in *string2*
+
+## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjeKSosy8dEMrCK2jAKGNoHxNhWguBSBQcnRyVtKBkBCBxKRkVAGICrAwXEVKKlSIK5arRiG1oiQ1L0WhKLW4NKdEwRZkVXJuAcwFOlCbNQEUhY2inAAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 datatable(string1:string, string2:string) [
