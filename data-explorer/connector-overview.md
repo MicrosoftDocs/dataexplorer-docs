@@ -11,12 +11,12 @@ The following table summarizes the available connectors in Azure Data Explorer a
 
 | Name of connector                 | Type                                       | Underlying SDK | Repo owner | Functionality         |
 |-----------------------------------|--------------------------------------------|----------------|---|-----------------------|
-| [Apache Kafka](#apache-kafka)     | **Ingestion** <br> *streaming, batching*       | Java           |   | Telemetry             |
-| [Apache Log4J 2](#apache-log4j-2) | Ingestion <br> *streaming*                 | Java           |   | Logs                  |
-| [Apache Spark](#apache-spark)     | **Ingestion** <br> *batching* <br> <br> **Export** | Java           |   | Telemetry             |
-| [Logstash](#logstash)             | **Ingestion** <br> *batching*                  | Java           |   | Logs                  |
+| [Apache Kafka](#apache-kafka)     | **Ingestion** <br> *streaming, batching*       | Java           | Microsoft Azure  | Telemetry             |
+| [Apache Log4J 2](#apache-log4j-2) | **Ingestion** <br> *streaming*                 | Java           | Microsoft Azure | Logs                  |
+| [Apache Spark](#apache-spark)     | **Export** <br> <br>**Ingestion** <br> *batching* | Java           | Microsoft Azure  | Telemetry             |
+| [Logstash](#logstash)             | **Ingestion** <br> *batching*                  | Java           | Microsoft Azure  | Logs                  |
 | [Open Telemetry](#open-telemetry) | **Ingestion** <br> *streaming, batching*       | Go             |   | Traces, Metrics, Logs |
-| [Telegraf](#telegraf)             | **Ingestion** <br> *streaming, batching*       | Go             |   | Metrics, Logs         |
+| [Telegraf](#telegraf)             | **Ingestion** <br> *streaming, batching*       | Go             | InfluxData | Metrics, Logs         |
 
 ## Apache Kafka
 
