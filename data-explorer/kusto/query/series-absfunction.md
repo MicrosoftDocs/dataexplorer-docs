@@ -13,9 +13,11 @@ Calculates the element-wise absolute value of the numeric series input.
 
 `series_abs(`*series*`)`
 
-## Arguments
+## Parameters
 
-* *series*: Input numeric array, on which the absolute value function is applied. The argument must be a dynamic array.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *series* | dynamic | &check; | An array of numeric values over which the absolute value function is applied. |
 
 ## Returns
 
@@ -23,7 +25,9 @@ Dynamic array of calculated absolute value. Any non-numeric element yields a `nu
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVUipzEvMzUzWiNY10zPVMdCx0DOK1eSqUUitKEnNSwEpik9MKgYqLE4tykwtBnE0gIKaAGEU39tEAAAA" target="_blank">Run the query</a>
+
 ```kusto
 print arr = dynamic([-6.5,0,8.2])
 | extend arr_abs = series_abs(arr)

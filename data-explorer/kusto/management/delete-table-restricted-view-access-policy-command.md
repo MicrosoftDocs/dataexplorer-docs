@@ -7,7 +7,7 @@ ms.date: 09/27/2021
 ---
 # .delete restricted view access policy
 
-Delete the optional table [restricted view access policy](restrictedviewaccesspolicy.md). When this policy is enabled for a table, data in the table can only be queried by principals who have an [UnrestrictedViewer](../management/access-control/role-based-authorization.md) role in the database. Deleting a policy is similar to disabling a policy. 
+Delete the optional table [restricted view access policy](restrictedviewaccesspolicy.md). When this policy is enabled for a table, data in the table can only be queried by principals who have an [UnrestrictedViewer](./access-control/role-based-access-control.md) role in the database. Deleting a policy is similar to disabling a policy. 
 
 ## Syntax
 

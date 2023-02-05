@@ -3,7 +3,7 @@ title: Visualize data with the Azure Data Explorer dashboard
 description: Learn how to visualize data with the Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 09/05/2022
+ms.date: 01/31/2023
 ---
 
 # Visualize data with Azure Data Explorer dashboards (Preview)
@@ -45,17 +45,17 @@ You can create a dashboard in the Azure Data Explorer web UI using the following
 
 Add a data source for the dashboard.
 
-1. Select **Data sources**.
-1. In the **Data sources** pane, select **New data source**.
+1. Select the **More menu** [...] > **Data sources**
 
-    :::image type="content" source="media/adx-dashboards/data-source.png" alt-text="Data source.":::
+    :::image type="content" source="media/adx-dashboards/data-source-more-menu.png" alt-text="Screenshot of adding a data source through the more menu.":::
 
+1. In the **Data sources** pane, select **+ New data source**.
 1. In the **Create new data source** pane:
     1. Enter a **Data source name**.
     1. Enter the **Cluster URI** region and then select **Connect**.
     1. Select the **Database** from the drop-down list.
     1. Enter a value for  **Query results cache max age** to enable query results cache on all queries of this data source. The max age can be in units of seconds, hours, or days.
-    1. Select **Apply**.
+    1. Select **Create**.
 
     :::image type="content" source="media/adx-dashboards/data-source-pane.png" alt-text="Data source pane.":::
 
