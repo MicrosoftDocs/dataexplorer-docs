@@ -1,6 +1,6 @@
 ---
 title: series_sin() - Azure Data Explorer
-description: Learn how to use the series_sin() function to calculate the element-wise sine function of the numeric series input.
+description: Learn how to use the series_sin() function to calculate the element-wise sine of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/30/2023
@@ -8,7 +8,7 @@ ms.date: 01/30/2023
 ---
 # series_sin()
 
-Calculates the element-wise sine function of the numeric series input.
+Calculates the element-wise sine of the numeric series input.
 
 ## Syntax
 
