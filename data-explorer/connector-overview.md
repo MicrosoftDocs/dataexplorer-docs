@@ -1,22 +1,22 @@
 ---
-title: Overview of available connectors in Azure Data Explorer.
+title: Overview of available data connectors in Azure Data Explorer.
 description: This article summarizes the available connectors and their capabilities.
 ms.reviewer: aksdi
 ms.topic: reference
-ms.date: 01/15/2023
+ms.date: 02/05/2023
 ---
-# OSS Connectors Overview
+# Data connectors Overview
 
 The following table summarizes the available connectors in Azure Data Explorer and their capabilities:
 
-| Name of connector |Underlying SDK | Ingestion | Export |Streaming| Batching | Functionality |
-|---|---|---|---|---|---|---|
-| [Apache Kafka](#apache-kafka) | Java | &check; | &cross; | &check; | &check; | Telemetry |
-| [Apache Log4J 2](#apache-log4j-2) | Java | &check; | &cross; | &check; | &cross; | Logs |
-| [Apache Spark](#apache-spark) | Java | &check; | &check; | &cross; | &check; | Telemetry |
-| [Logstash](#logstash) | Java | &check; | &cross; | &cross; | &check; | Logs |
-| [Open Telemetry](#open-telemetry) | Go | &check; | &cross; | &check; | &check; | Traces, Metrics, Logs |
-| [Telegraf](#telegraf) | Go | &check; | &cross; | &check; | &check; | Metrics, Logs |
+| Name of connector                 | Type                                       | Underlying SDK | Repo owner | Functionality         |
+|-----------------------------------|--------------------------------------------|----------------|---|-----------------------|
+| [Apache Kafka](#apache-kafka)     | **Ingestion** <br> *streaming, batching*       | Java           |   | Telemetry             |
+| [Apache Log4J 2](#apache-log4j-2) | Ingestion <br> *streaming*                 | Java           |   | Logs                  |
+| [Apache Spark](#apache-spark)     | **Ingestion** <br> *batching* <br> <br> **Export** | Java           |   | Telemetry             |
+| [Logstash](#logstash)             | **Ingestion** <br> *batching*                  | Java           |   | Logs                  |
+| [Open Telemetry](#open-telemetry) | **Ingestion** <br> *streaming, batching*       | Go             |   | Traces, Metrics, Logs |
+| [Telegraf](#telegraf)             | **Ingestion** <br> *streaming, batching*       | Go             |   | Metrics, Logs         |
 
 ## Apache Kafka
 
