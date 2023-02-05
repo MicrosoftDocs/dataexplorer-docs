@@ -4,7 +4,6 @@ description: Learn how to use the series_pearson_correlation() function to calcu
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/05/2023
-ms.date: 01/30/2023
 ---
 # series_pearson_correlation()
 

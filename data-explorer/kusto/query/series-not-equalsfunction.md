@@ -4,7 +4,6 @@ description: Learn how to use the series_not_equals() function to calculate the 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/30/2023
-ms.date: 01/30/2023
 ---
 # series_not_equals()
 
