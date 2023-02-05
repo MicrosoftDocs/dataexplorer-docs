@@ -97,7 +97,7 @@ Use the following steps to share tables:
         "tablesToInclude": { "type": "Array" }
       },
       "variables": {
-        "invitationSuffix": "[replace_string(replace_string(parameters('recipientEmail'),'@', '_'), '.', '_')]"
+        "invitationSuffix": "[replace(replace(parameters('recipientEmail'),'@', '_'), '.', '_')]"
       },
       "resources": [
         {

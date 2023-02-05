@@ -13,7 +13,7 @@ The `.alter table` command:
 * Reorders table columns
 * Sets a new column schema, `docstring`, and folder to an existing table, overwriting the existing column schema, `docstring`, and folder
 * Must run in the context of a specific database that scopes the table name
-* Requires [Table Admin permission](../management/access-control/role-based-authorization.md)
+* Requires [Table Admin permission](./access-control/role-based-access-control.md)
 
 ## Syntax
 

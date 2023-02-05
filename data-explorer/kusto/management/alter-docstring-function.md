@@ -14,8 +14,8 @@ Alters the `DocString` value of an existing function.
 `.alter` `function` *FunctionName* `docstring` *Documentation*
 
 > [!NOTE]
-> * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the function is allowed to modify the function.
+> * Requires [database admin permission](./access-control/role-based-access-control.md)
+> * The [database user](./access-control/role-based-access-control.md) who originally created the function is allowed to modify the function.
 > * If the function doesn't exist, an error is returned. For more information on how to create a new function, see [`.create function`](create-function.md).
 
 |Output parameter |Type |Description

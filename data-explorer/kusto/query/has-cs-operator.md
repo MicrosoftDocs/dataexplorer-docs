@@ -3,7 +3,7 @@ title: The case-sensitive has_cs string operator - Azure Data Explorer
 description: Learn how to use the has_cs operator to filter data with a case-sensitive search string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 12/28/2022
 ---
 # has_cs operator
 
@@ -24,8 +24,8 @@ Filters a record set for data with a case-sensitive search string. `has_cs` sear
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
-| *Column* | string | &check; | The column to filter.|
-| *Expression* | scalar or tabular | &check; | An expression for which to search.|
+| *Column* | string | &check; | The column used to filter the records.|
+| *Expression* | scalar or tabular | &check; | An expression for which to search. If the value is a tabular expression and has multiple columns, the first column is used.|
 
 ## Returns
 

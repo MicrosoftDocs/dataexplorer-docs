@@ -9,7 +9,7 @@ ms.date: 05/20/2021
 
 Returns the schema of the external table, as JSON or CSL. 
 
-Requires [Database monitor permission](../management/access-control/role-based-authorization.md). This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
+Requires [Database monitor permission](./access-control/role-based-access-control.md). This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
 
 ## Syntax 
 

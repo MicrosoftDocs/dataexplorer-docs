@@ -3,6 +3,7 @@ title: series_tan() - Azure Data Explorer
 description: Learn how to use the series_tan() function to calculate the element-wise tangent of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
+ms.date: 02/05/2023
 ms.date: 01/30/2023
 ---
 # series_tan()
@@ -13,19 +14,23 @@ Calculates the element-wise tangent of the numeric series input.
 
 `series_tan(`*series*`)`
 
-## Arguments
+## Parameters
 
-* *series*: Input numeric array, on which the tangent function is applied. The argument must be a dynamic array.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *series* | dynamic | &check; | An array of numeric values on which the tangent function is applied.|
 
 ## Returns
 
-Dynamic array of calculated tangent function values. Any non-numeric element yields a `null` element value.
+A dynamic array of calculated tangent function values. Any non-numeric element yields a `null` element value.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVUipzEvMzUzWiNY11FEw0FEwjNXkqlFIrShJzUsBKYkvScwDKitOLcpMLQZxNICCmgCTiCSoQgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-print arr = dynamic([-1,0,1])
+print arr = dynamic([-1, 0, 1])
 | extend arr_tan = series_tan(arr)
 ```
 

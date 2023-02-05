@@ -59,4 +59,4 @@ If a Purge command was executed on this database, the undo drop table command ca
 
 Extent can be recovered only if the hard delete period of the extent container it resides in wasn't reached yet.
 
-The command requires [database admin permission](../management/access-control/role-based-authorization.md).
+The command requires [database admin permission](./access-control/role-based-access-control.md).

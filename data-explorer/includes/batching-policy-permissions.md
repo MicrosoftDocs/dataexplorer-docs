@@ -9,4 +9,4 @@ ms.custom: include file
 > [!NOTE]
 > The minimal required permission level to set batching policies on a database is `Database admin`.  
 > The minimal required permission level to set batching policies on a table is `Table admin`.
-> For more information, see [Role-based authorization](../kusto/management/access-control/role-based-authorization.md).
+> For more information, see [role-based access control](../kusto/management/access-control/role-based-access-control.md).
