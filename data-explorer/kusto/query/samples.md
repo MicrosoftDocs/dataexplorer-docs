@@ -1,6 +1,6 @@
 ---
 title: Samples for Kusto Queries - Azure Data Explorer
-description: Learn how to use common queries that use Kusto Query Language.
+description: Learn how to use Kusto Query Language to accomplish specific scenarios.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/22/2023
