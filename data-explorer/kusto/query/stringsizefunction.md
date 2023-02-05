@@ -1,6 +1,6 @@
 ---
 title: string_size() - Azure Data Explorer
-description: This article describes string_size() in Azure Data Explorer.
+description: Learn how to use the string_size() function to measure the size of the input string.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/05/2023

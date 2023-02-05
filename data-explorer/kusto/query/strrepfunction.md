@@ -1,6 +1,6 @@
 ---
 title: strrep() - Azure Data Explorer
-description: This article describes strrep() in Azure Data Explorer.
+description: Learn how to use the strrep() function to repeat the input value.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/05/2023

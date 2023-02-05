@@ -1,9 +1,9 @@
 ---
 title: series_stats() - Azure Data Explorer
-description: This article describes series_stats() in Azure Data Explorer.
+description: Learn how to use the series_stats() function to calculate the statistics for a numerical series using multiple columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 02/05/2023
 ---
 # series_stats()
 

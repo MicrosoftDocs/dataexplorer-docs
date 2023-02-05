@@ -1,6 +1,6 @@
 ---
 title: sumif() (aggregation function) - Azure Data Explorer
-description: This article describes sumif() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the sumif() (aggregation function) function to calculate the sum of an expression value in records for which the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/05/2023

@@ -1,13 +1,13 @@
 ---
 title: series_tan() - Azure Data Explorer
-description: This article describes series_tan() in Azure Data Explorer.
+description: Learn how to use the series_tan() function to calculate the element-wise tangent of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/30/2023
 ---
 # series_tan()
 
-Calculates the element-wise tangent function of the numeric series input.
+Calculates the element-wise tangent of the numeric series input.
 
 ## Syntax
 

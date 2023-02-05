@@ -1,6 +1,6 @@
 ---
 title: strcmp() - Azure Data Explorer
-description: This article describes strcmp() in Azure Data Explorer.
+description: Learn how to use the strcmp() function to compare two strings.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/05/2023
@@ -9,7 +9,7 @@ ms.date: 02/05/2023
 
 Compares two strings.
 
-The function starts comparing the first character of each string. If they are equal to each other, it continues with the following pairs until the characters differ or until the end of shorter string is reached.
+The function starts comparing the first character of each string. If they're equal to each other, it continues with the following pairs until the characters differ or until the end of shorter string is reached.
 
 ## Syntax
 

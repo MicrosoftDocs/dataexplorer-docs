@@ -1,13 +1,13 @@
 ---
 title: substring() - Azure Data Explorer
-description: This article describes substring() in Azure Data Explorer.
+description: Learn how to use the substring() function to extract a substring from the source string.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/05/2023
 ---
 # substring()
 
-Extracts a substring from a source string starting from some index to the end of the string.
+Extracts a substring from the source string starting from some index to the end of the string.
 
 Optionally, the length of the requested substring can be specified.
 

@@ -1,6 +1,6 @@
 ---
 title: table() (scope function) - Azure Data Explorer
-description: This article describes table() (scope function) in Azure Data Explorer.
+description: Learn how to use the table() (scope function) function to reference a table.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/05/2023
@@ -93,7 +93,7 @@ receives a parameter `tableName` - which is passed into the table() function.
 
 ### Use table() with non-constant parameter
 
-A parameter, which is not scalar constant string can't be passed as parameter to `table()` function.
+A parameter, which isn't a scalar constant string, can't be passed as a parameter to the `table()` function.
 
 Below, given an example of workaround for such case.
 
