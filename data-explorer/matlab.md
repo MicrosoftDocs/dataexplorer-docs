@@ -1,11 +1,11 @@
 ---
-title: Connect to Azure Data Explorer with JDBC
-description: In this article, you learn how to set up a JDBC connection to Azure Data Explorer.
+title: Query data in MATLAB
+description: In this article, you learn how to set up a JDBC connection in MATLAB and query Azure Data Explorer.
 ms.topic: how-to
-ms.date: 02/02/2023
+ms.date: 02/06/2023
 ---
 
-## Query data in MATLAB
+# Query data in MATLAB
 
 From MATLAB, you can connect to Azure Data Explorer using [JDBC](connect-jdbc.md) and run queries with [T-SQL](kusto/api/tds/t-sql.md). This functionality is made possible by Azure Data Explorer's TDS-compliant endpoints, which emulate Microsoft SQL Server. This article will take you through the process of setting up an Azure Data Explorer connection in MATLAB.
 

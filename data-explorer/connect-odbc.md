@@ -75,7 +75,7 @@ You can use the ODBC data source from other applications to connect to Azure Dat
 
 To use service principal authentication with ODBC, you must provide the Azure AD tenant ID in the `Language` field.
 
-You can set this configuration in the [connection string](#connection-string), the [Windows registry](#windows-registry), or the [odbc.ini file](#odbcini-file).
+You can set this configuration in the connection string, the Windows registry, or the odbc.ini file.
 
 The Azure AD tenant ID can also be configured at the cluster level, so you don't have to specify it on the client. If you need to change the tenant ID at the cluster level, open a support request in the  [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
 
