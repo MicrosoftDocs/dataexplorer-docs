@@ -43,10 +43,10 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 > [!NOTE]
 >
 > * If the function already exists:
->   * If `ifnotexists` flag is specified, the command is ignored (no change applied).
->   * If `ifnotexists` flag is NOT specified, an error is returned.
->   * For altering an existing function, see [`.alter function`](alter-function.md)
-> * Requires [database user permission](../management/access-control/role-based-authorization.md).
+>    * If `ifnotexists` flag is specified, the command is ignored (no change applied).
+>    * If `ifnotexists` flag is NOT specified, an error is returned.
+>    * For altering an existing function, see [`.alter function`](alter-function.md)
+> * Requires [database user permission](./access-control/role-based-access-control.md).
 > * Not all data types are supported in `let` statements. Supported types are: boolean, string, long, datetime, timespan, double, and dynamic.
 > * Use `skipvalidation` to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
 

@@ -9,7 +9,7 @@ ms.date: 11/09/2020
 
 Returns a set that contains the specified materialized view or all materialized views in the database with a detailed summary of each materialized view's properties.
 
-Requires [Database viewer permission](../access-control/role-based-authorization.md).
+Requires [Database viewer permission](../access-control/role-based-access-control.md).
 
 ```kusto
 .show materialized-view MV1 details

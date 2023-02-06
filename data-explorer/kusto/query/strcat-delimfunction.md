@@ -1,13 +1,13 @@
 ---
 title: strcat_delim() - Azure Data Explorer
-description: This article describes strcat_delim() in Azure Data Explorer.
+description: Learn how to use the strcat_delim() function to concatenate between 2 and 64 arguments using a specified delimiter as the first argument.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 01/31/2023
 ---
 # strcat_delim()
 
-Concatenates between 2 and 64 arguments, with delimiter, provided as first argument.
+Concatenates between 2 and 64 arguments, using a specified delimiter as the first argument.
 
 ## Syntax
 
@@ -27,7 +27,7 @@ Concatenates between 2 and 64 arguments, with delimiter, provided as first argum
 
 The arguments concatenated to a single string with *delimiter*.
 
-## Examples
+## Example
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSguUbAFEkXJiSXxKak5mbka6rrqOgqGOgrqRkBa3RHEKdYEAPL2A8YtAAAA" target="_blank">Run the query</a>

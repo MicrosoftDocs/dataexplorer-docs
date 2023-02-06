@@ -1,13 +1,13 @@
 ---
 title: strcat_array() - Azure Data Explorer
-description: This article describes strcat_array() in Azure Data Explorer.
+description: Learn how to use the strcat_array() function to create a concatenated string of array values using a specified delimiter. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 01/31/2023
 ---
 # strcat_array()
 
-Creates a concatenated string of array values using specified delimiter.
+Creates a concatenated string of array values using a specified delimiter.
 
 ## Syntax
 

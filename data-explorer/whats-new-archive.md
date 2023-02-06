@@ -9,6 +9,18 @@ ms.date: 07/06/2022
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
 
+## January 2022
+
+| Article title | Description |
+|--|--|
+| [Use the sample app generator to create code to ingest and query your data](sample-app-generator-wizard.md) | New Article. Describes how to use the sample app generator for your preferred programming language. |
+
+**API**
+
+| Article title | Description |
+|--|--|
+| [Azure Data Explorer API overview](kusto/api/index.md) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.
+
 ## December 2021
 
 | Article title | Description |
@@ -54,9 +66,9 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Role-based Authorization in Kusto](kusto/management/access-control/role-based-authorization.md) | Updated article. Materialized views rename source table.
+| [Role-based Authorization in Kusto](kusto/management/access-control/role-based-access-control.md) | Updated article. Materialized views rename source table.
 | [Cache policy (hot and cold cache)](kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
-| [Role-based Authorization in Kusto](kusto/management/access-control/role-based-authorization.md)| Updated article. Using the AllDatabasesMonitor role.
+| [Role-based Authorization in Kusto](kusto/management/access-control/role-based-access-control.md)| Updated article. Using the AllDatabasesMonitor role.
 
 ## September 2021
 

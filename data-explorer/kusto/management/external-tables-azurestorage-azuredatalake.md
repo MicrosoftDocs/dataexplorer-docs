@@ -28,7 +28,7 @@ Creates or alters a new external table in the database in which the command is e
 > [!NOTE]
 > * If the table exists, `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
 > * The external table is not accessed during creation time. It will only be accessed during query / export. You can use the `validateNotEmpty` (optional) property during creation time to make sure the external table definition is valid and that the underlying storage is accessible.
-> * The operation requires [database user permission](../management/access-control/role-based-authorization.md) for `.create` and [table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. When creating or altering an external table using managed identity authentication, [All Databases admin permission](../management/access-control/role-based-authorization.md) is required.
+> * The operation requires [database user permission](./access-control/role-based-access-control.md) for `.create` and [table admin permission](./access-control/role-based-access-control.md) for `.alter`. When creating or altering an external table using managed identity authentication, [All Databases admin permission](./access-control/role-based-access-control.md) is required.
 
 **Parameters**
 
@@ -294,7 +294,7 @@ Once all the conditions are met, the file is fetched and processed by the query 
 Returns a list of all files that will be processed when querying a given external table.
 
 > [!NOTE]
-> The operation requires [database user permission](../management/access-control/role-based-authorization.md).
+> The operation requires [database user permission](./access-control/role-based-access-control.md).
 
 **Syntax:** 
 
