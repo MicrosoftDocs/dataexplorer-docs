@@ -1,9 +1,9 @@
 ---
 title: sql_request plugin - Azure Data Explorer
-description: This article describes sql_request plugin in Azure Data Explorer.
+description: Learn how to use the sql_request plugin to send an SQL query to an SQL server network endpoint. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 01/31/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
