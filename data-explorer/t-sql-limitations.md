@@ -11,18 +11,18 @@ You can [use T-SQL to query Azure Data Explorer](t-sql-query.md). However, only 
 
 |T-SQL statement or feature|Description|
 |---|---|
-|`CREATE`, `INSERT`, `DROP`, `ALTER`|Not supported|
-|Schema modifications or data modifications|Not supported|
-|`ANY`, `ALL`, `EXISTS`|Not supported|
+|`CREATE`, `INSERT`, `DROP`, and `ALTER`|Not supported|
+|Schema or data modifications|Not supported|
+|`ANY`, `ALL`, and `EXISTS`|Not supported|
 |`WITHIN GROUP`|Not supported|
-|`TOP` `PERCENT`|Not supported|
 |`TOP` `WITH TIES`|Evaluated as regular `TOP`|
+|`TOP` `PERCENT`|Not supported|
 |`TRUNCATE`|Returns the nearest value|
 |SQL cursors|Not supported|
 |Correlated subqueries in `SELECT`, `WHERE`, and `JOIN` clauses|Not supported|
 |Recursive common table expressions (CTEs)|Not supported|
-|Dynamic SQL statements|Not supported|
-|Flow control statements|Limited support. For example, `IF` `THEN` `ELSE` with an identical schema for `THEN` and `ELSE` are supported.|
+|Dynamic statements|Not supported|
+|Flow control statements|Only `IF` `THEN` `ELSE` statements with an identical schema for `THEN` and `ELSE` are supported.|
 | `SELECT` `*` | Column order may differ from expectation. Use column names if order matters.|
-|Duplicate column names|Not supported. Original name preserved for one column.|
+|Duplicate column names|Not supported. The original name is preserved for one column.|
 |Data types|Data returned may differ in type from SQL Server. For example, `TINYINT` and `SMALLINT` have no equivalent in Azure Data Explorer, and may return as `INT32` or `INT64` instead of `BYTE` or `INT16`.|
