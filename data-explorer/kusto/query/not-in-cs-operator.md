@@ -28,7 +28,7 @@ Filters a record set for data without a case-sensitive string.
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column by which to filter.|
-| *expressions* | scalar or tabular | &check; | One or more [scalar](scalar-data-types/index.md) values or [tabular expressions](tabularexpressionstatements.md) separated by a comma. The search will only consider up to 1,000,000 distinct values. If a tabular expression has multiple columns, only the first column will be used.|
+| *expressions* | scalar or tabular | &check; | One or more comma-separated values for which to search. These values can be any combination of [scalars](scalar-data-types/index.md) or [tabular expressions](tabularexpressionstatements.md) that evaluate to a set of values. The search will only consider up to 1,000,000 distinct values. If a tabular expression has multiple columns, only the first column will be used.|
 
 ## Returns
 
