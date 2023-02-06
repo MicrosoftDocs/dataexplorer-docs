@@ -423,7 +423,7 @@
     {
       "source_path": "data-explorer/kusto/api/tds/sqlknownissues.md",
       "redirect_url": "/azure/data-explorer/t-sql",
-      "redirect_document_id": true
+      "redirect_document_id": false
     }
   ]
 }
