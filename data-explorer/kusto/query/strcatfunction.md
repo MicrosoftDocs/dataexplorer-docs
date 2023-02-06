@@ -1,9 +1,9 @@
 ---
 title: strcat() - Azure Data Explorer
-description: This article describes strcat() in Azure Data Explorer.
+description: Learn how to use the strcat() function to concatenate between 1 and 64 arguments.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 01/31/2023
 ---
 # strcat()
 
