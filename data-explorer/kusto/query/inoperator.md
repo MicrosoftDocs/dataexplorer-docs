@@ -27,7 +27,7 @@ When possible, use the case-sensitive [in](in-cs-operator.md).
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column by which to filter.|
-| *expressions* | scalar or tabular | &check; | One or more comma-separated values for which to search. The values can be derived from a [tabular expression](tabularexpressionstatements.md), be a list of [scalars](scalar-data-types/index.md), or a mixture of both. If a tabular expression has multiple columns, only the first column will be used. The search will only consider up to 1,000,000 distinct values.|
+| *expressions* | scalar or tabular | &check; | One or more comma-separated values for which to search. The values can be [scalars](scalar-data-types/index.md), be derived from a [tabular expression](tabularexpressionstatements.md), or a mixture of both. If a tabular expression has multiple columns, only the first column will be used. The search will only consider up to 1,000,000 distinct values.|
 
 > [!NOTE]
 > An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
