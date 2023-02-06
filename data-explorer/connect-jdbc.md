@@ -11,9 +11,9 @@ JDBC, or Java Database Connectivity, is a Java API used to connect to databases 
 
 ## Connect with JDBC
 
-To use JDBC to connect to Azure Data Explorer, follow these steps.
+The following steps describe how to use JDBC to connect to Azure Data Explorer.
 
-1. Create an application with `mssql-jdbc` JAR, `adal4j` JAR, and all of their dependencies. For example, see the following list of dependencies.
+1. Create an application with `mssql-jdbc` JAR, `adal4j` JAR, and all of their dependencies. Following is a list of dependencies required when using the `7.0.0` version of `mssql-jdbc` and `1.6.3` version of `adal4j`.
 
     ```java
     mssql-jdbc-7.0.0.jre8.jar
@@ -33,7 +33,7 @@ To use JDBC to connect to Azure Data Explorer, follow these steps.
     slf4j-api-1.7.21.jar
     ```
 
-1. Create an application to use the JDBC driver class *com.microsoft.sqlserver.jdbc.SQLServerDriver*. You can connect with a connection string like the following.
+1. Create an application to use the JDBC driver class *com.microsoft.sqlserver.jdbc.SQLServerDriver*. You can connect with a connection string of the following format. Replace `<cluster_name.region>` with you cluster name and cluster region and `<database_name>` with your database name.
 
     ```java
     jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database_name>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryIntegrated
@@ -55,13 +55,13 @@ public class Sample {
   public static void main(String[] args) throws Exception {
     IAuthenticationResult authenticationResult = futureAuthenticationResult.get();
     SQLServerDataSource ds = new SQLServerDataSource();
-    ds.setServerName("<your cluster DNS name>");
-    ds.setDatabaseName("<your database name>");
+    ds.setServerName("<cluster_DNS>");
+    ds.setDatabaseName("<database_name>");
     ds.setHostNameInCertificate("*.kusto.windows.net"); // Or appropriate regional domain.
     ds.setAuthentication("ActiveDirectoryIntegrated");
     try (Connection connection = ds.getConnection();
          Statement stmt = connection.createStatement();) {
-      ResultSet rs = stmt.executeQuery("<your T-SQL query>");
+      ResultSet rs = stmt.executeQuery("<T-SQL_query>");
       /*
       Read query result.
       */
@@ -90,20 +90,20 @@ import java.util.concurrent.ExecutionException;
 public class Sample {
   public static void main(String[] args) throws Throwable {
     // Can also use tenant name.
-    String authorityUrl = "https://login.microsoftonline.com/<your AAD tenant ID>";
+    String authorityUrl = "https://login.microsoftonline.com/<tenant_ID>";
     Set<String> scopes = new HashSet<>();
-    scopes.add("https://<your cluster DNS name>/.default");
+    scopes.add("https://<cluster_DNS>/.default");
 
-    IConfidentialClientApplication clientApplication = ConfidentialClientApplication.builder("<your application client ID>", ClientCredentialFactory.createFromSecret("<your application key>")).authority(authorityUrl).build();
+    IConfidentialClientApplication clientApplication = ConfidentialClientApplication.builder("<application_client_ID>", ClientCredentialFactory.createFromSecret("<application_key>")).authority(authorityUrl).build();
     CompletableFuture<IAuthenticationResult> futureAuthenticationResult = clientApplication.acquireToken(ClientCredentialParameters.builder(scopes).build());
     IAuthenticationResult authenticationResult = futureAuthenticationResult.get();
     SQLServerDataSource ds = new SQLServerDataSource();
-    ds.setServerName("<your cluster DNS name>");
-    ds.setDatabaseName("<your database name>");
+    ds.setServerName("<cluster_DNS>");
+    ds.setDatabaseName("<database_name>");
     ds.setAccessToken(authenticationResult.accessToken());
     connection = ds.getConnection();
     statement = connection.createStatement();
-    ResultSet rs = statement.executeQuery("<your T-SQL query>");
+    ResultSet rs = statement.executeQuery("<T-SQL_query>");
     /*
     Read query result.
     */
@@ -156,7 +156,7 @@ This example shows how to connect to Azure Data Explorer from MATLAB using JDBC.
 1. In the MATLAB command window, run the following command to connect to Azure Data Explorer.
 
    ```java
-   conn = database('<<KUSTO_DATABASE>>','<<AAD_USER>>','<<USER_PWD>>','com.microsoft.sqlserver.jdbc.SQLServerDriver',    ['jdbc:sqlserver://<<MYCLUSTER>>.kusto.windows.net:1433;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authenti cation=ActiveDirectoryPassword;database='])
+   conn = database('<database_name>','<AAD_user>','<AAD_user_password>','com.microsoft.sqlserver.jdbc.SQLServerDriver' ['jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword;database='])
    ```
 
    > [!NOTE]
@@ -164,9 +164,9 @@ This example shows how to connect to Azure Data Explorer from MATLAB using JDBC.
    > * If you end with `database=` without a value, the database name will be inferred.
    > * To use Azure Active Directory integrated authentication, replace **ActiveDirectoryPassword** with **ActiveDirectoryIntegrated**.
 
-1. In the MATLAB command window, test the connection and run a sample query. Replace `KUSTO_TABLE` with an existing table in Azure Data Explorer.
+1. In the MATLAB command window, test the connection and run a sample query. Replace `<table_name>` with an existing table in Azure Data Explorer.
 
    ```java
-   data = select(conn, 'SELECT * FROM <<KUSTO_TABLE>>')
+   data = select(conn, 'SELECT * FROM <table_name>')
    data
    ```
