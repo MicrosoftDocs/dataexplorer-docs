@@ -7,11 +7,7 @@ ms.date: 02/06/2023
 ---
 # T-SQL limitations
 
-Azure Data Explorer offers limited support for T-SQL. The [limitations](#limitations) table in this article outlines the T-SQL features that aren't supported or partially supported.
-
-## Limitations
-
-The following table describes T-SQL statements and features that aren't supported, or are partially supported, by Azure Data Explorer.
+Azure Data Explorer offers limited support for T-SQL. The following table outlines the T-SQL statements and features that aren't supported or partially supported.
 
 |T-SQL statement or feature|Description|
 |---|---|
@@ -30,8 +26,3 @@ The following table describes T-SQL statements and features that aren't supporte
 | `SELECT` `*` | Column order may differ from expectation. Use column names if order matters.|
 |Duplicate column names|Not supported. The original name is preserved for one column.|
 |Data types|Data returned may differ in type from SQL Server. For example, `TINYINT` and `SMALLINT` have no equivalent in Azure Data Explorer, and may return as `INT32` or `INT64` instead of `BYTE` or `INT16`.|
-
-## Next steps
-
-* [Use T-SQL to query Azure Data Explorer](t-sql-query.md)
-* Connect to Azure Data Explorer from common [SQL clients](kusto/api/tds/clients.md)
