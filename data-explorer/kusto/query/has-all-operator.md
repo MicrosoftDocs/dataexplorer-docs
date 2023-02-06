@@ -13,23 +13,15 @@ For more information about other operators and to determine which operator is mo
 
 ## Syntax
 
-*T* `|` `where` *col* `has_all` `(`*list_of_scalars*`)`
-
-*T* `|` `where` *col* `has_all` `(`*dynamic_array*`)`
-
-*T* `|` `where` *col* `has_all` `((`*tabular_expression*`))`
+*T* `|` `where` *col* `has_all` `(`*expressions*`)`
 
 ## Parameters
-
-The following table describes the `has_all` operator parameters. Depending on the chosen [syntax](#syntax), either *list_of_scalars*, *dynamic_array*, or *tabular_expression* is required.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column by which to filter.|
-| *list_of_scalars* | scalar | &check; | A comma-separated list of one or more [scalar](scalar-data-types/index.md) values to search for in *col*.|
-| *dynamic_array* | dynamic | &check; | A [dynamic array](scalar-data-types/dynamic.md) of values to search for in *col*.|
-| *tabular_expression* | string | &check; | A [tabular expression](tabularexpressionstatements.md) that produces a set of values to search for in *col*. The expression can produce up to 256 distinct results. If the output has multiple columns, only the first column is used.|
+| *expressions* | scalar or tabular | &check; | One or more [scalar](scalar-data-types/index.md) values or [tabular expressions](tabularexpressionstatements.md) separated by a comma. The search will only consider up to 256 distinct values. If a tabular expression has multiple columns, only the first column will be used.|
 
 ## Returns
 
