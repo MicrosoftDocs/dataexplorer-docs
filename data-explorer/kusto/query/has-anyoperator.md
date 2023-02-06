@@ -15,9 +15,6 @@ For more information about other operators and to determine which operator is mo
 
 *T* `|` `where` *col* `has_any` `(`*expressions*`)`
 
-> [!NOTE]
-> An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
-
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -25,6 +22,9 @@ For more information about other operators and to determine which operator is mo
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column by which to filter.|
 | *expressions* | scalar or tabular | &check; | One or more comma-separated values for which to search. These values can be any combination of [scalars](scalar-data-types/index.md) or [tabular expressions](tabularexpressionstatements.md) that evaluate to a set of values. The search will only consider up to 10,000 distinct values. If a tabular expression has multiple columns, only the first column will be used..|
+
+> [!NOTE]
+> An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
 
 ## Returns
 

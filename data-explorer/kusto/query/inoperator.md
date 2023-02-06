@@ -21,9 +21,6 @@ When possible, use the case-sensitive [in](in-cs-operator.md).
 
 *T* `|` `where` *col* `in~` `(`*expressions*`)`
 
-> [!NOTE]
-> An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
-
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -31,6 +28,9 @@ When possible, use the case-sensitive [in](in-cs-operator.md).
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column by which to filter.|
 | *expressions* | scalar or tabular | &check; | One or more comma-separated values for which to search. These values can be any combination of [scalars](scalar-data-types/index.md) or [tabular expressions](tabularexpressionstatements.md) that evaluate to a set of values. The search will only consider up to 1,000,000 distinct values. If a tabular expression has multiple columns, only the first column will be used.|
+
+> [!NOTE]
+> An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
 
 ## Returns
 
