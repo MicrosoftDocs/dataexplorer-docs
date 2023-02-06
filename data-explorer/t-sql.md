@@ -10,7 +10,7 @@ ms.date: 01/24/2023
 The Azure Data Explorer query editor supports the use of T-SQL in addition to its primary query language, [Kusto query language (KQL)](kusto/query/index.md). While KQL is the recommended query language, T-SQL can be useful for tools that are unable to use KQL or for users who are already familiar with SQL.
 
 > [!NOTE]
-> The query editor only supports T-SQL `SELECT` statements and doesn't support DDL commands, such as `CREATE`, `ALTER`, or `DROP`. For more information, see [T-SQL limitations](t-sql-limitations.md).
+> The query editor only supports T-SQL `SELECT` statements and doesn't support DDL commands, such as `CREATE`, `ALTER`, or `DROP`. For more information, see [limitations](#limitations).
 
 ## Query with T-SQL
 
@@ -78,6 +78,28 @@ StormEvents
 | take int(10)
 ```
 
+## Limitations
+
+Azure Data Explorer offers limited support for T-SQL. The following table outlines the T-SQL statements and features that aren't supported or are partially supported.
+
+|T-SQL statement or feature|Description|
+|---|---|
+|`CREATE`, `INSERT`, `DROP`, and `ALTER`|Not supported|
+|Schema or data modifications|Not supported|
+|`ANY`, `ALL`, and `EXISTS`|Not supported|
+|`WITHIN GROUP`|Not supported|
+|`TOP` `PERCENT`|Not supported|
+|`TOP` `WITH TIES`|Evaluated as regular `TOP`|
+|`TRUNCATE`|Returns the nearest value|
+|`SELECT` `*` | Column order may differ from expectation. Use column names if order matters.|
+|SQL cursors|Not supported|
+|Correlated subqueries|Not supported|
+|Recursive CTEs|Not supported|
+|Dynamic statements|Not supported|
+|Flow control statements|Only `IF` `THEN` `ELSE` statements with an identical schema for `THEN` and `ELSE` are supported.|
+|Duplicate column names|Not supported. The original name is preserved for one column.|
+|Data types|Data returned may differ in type from SQL Server. For example, `TINYINT` and `SMALLINT` have no equivalent in Azure Data Explorer, and may return as `INT32` or `INT64` instead of `BYTE` or `INT16`.|
+
 ## Next steps
 
-* Learn more about [T-SQL limitations](t-sql-limitations.md) in Azure Data Explorer
+* Connect to Azure Data Explorer from common [SQL clients](kusto/api/tds/clients.md)

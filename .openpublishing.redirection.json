@@ -422,7 +422,7 @@
     },
     {
       "source_path": "data-explorer/kusto/api/tds/sqlknownissues.md",
-      "redirect_url": "/azure/data-explorer/t-sql-limitations",
+      "redirect_url": "/azure/data-explorer/t-sql",
       "redirect_document_id": true
     }
   ]
