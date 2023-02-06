@@ -62,7 +62,7 @@ Follow these steps to configure an ODBC data source using the ODBC driver for SQ
 
 ## Use the ODBC data source
 
-You can use the ODBC data source from other applications to connect to Azure Data Explorer with a connection string like the following.
+You can use the ODBC data source from other applications to connect to Azure Data Explorer with a connection string of the following format.
 
 ```odbc
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
@@ -79,7 +79,7 @@ You can set this configuration in the [connection string](#connection-string), t
 
 The Azure AD tenant ID can also be configured at the cluster level, so you don't have to specify it on the client. If you need to change the tenant ID at the cluster level, open a support request in the  [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
 
-### Connection string
+# [Connection string](#tab/connection-string)
 
 Set the application principal with `Language=any@AadAuthority:<aad_tenant_id>` in the connection string.
 
@@ -87,7 +87,7 @@ Set the application principal with `Language=any@AadAuthority:<aad_tenant_id>` i
 "Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@AadAuthority:<aad_tenant_id>;UID=<aad_application_id>;PWD=<aad_application_secret>"
 ```
 
-### Windows registry
+# [Windows registry](#tab/windows-registry)
 
 Edit the `Language` field in the ODBC data source (DSN) in the registry for Windows as follows.
 
@@ -96,7 +96,7 @@ Edit the `Language` field in the ODBC data source (DSN) in the registry for Wind
 "Language"="any@AadAuthority:<aad_tenant_id>"
 ```
 
-### odbc.ini file
+# [odbc.ini file](#tab/odbcini-file)
 
 For Linux and macOS, edit the odbc.ini file, as follows.
 
@@ -123,4 +123,4 @@ $conn.Close()
 
 ## Next steps
 
-* [Connect to Azure Data Explorer from Tableau](tableau.md)
+Use ODBC to [connect to Azure Data Explorer from Tableau](tableau.md).
