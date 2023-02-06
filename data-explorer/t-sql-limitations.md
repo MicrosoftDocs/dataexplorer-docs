@@ -7,7 +7,7 @@ ms.date: 02/06/2023
 ---
 # T-SQL limitations
 
-Azure Data Explorer offers limited support for T-SQL. The following table outlines the T-SQL statements and features that aren't supported or partially supported.
+Azure Data Explorer offers limited support for T-SQL. The following table outlines the T-SQL statements and features that aren't supported or are partially supported.
 
 |T-SQL statement or feature|Description|
 |---|---|
