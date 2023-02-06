@@ -1,6 +1,6 @@
 ---
 title: Set statement - Azure Data Explorer
-description: This article describes Set statement in Azure Data Explorer.
+description: Learn how to use the set statement to set a query option for the duration of the query.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/30/2023
@@ -17,7 +17,7 @@ Query options control how a query executes and returns results. They can be bool
 * Query options can also be enabled programmatically by setting them in the
   `ClientRequestProperties` object. See [here](../api/netfx/request-properties.md).
   
-* Query options are not formally a part of the Kusto language, and may be
+* Query options aren't formally a part of the Kusto language, and may be
   modified without being considered as a breaking language change.
 
 ## Syntax

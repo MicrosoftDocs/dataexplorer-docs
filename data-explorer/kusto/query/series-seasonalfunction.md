@@ -1,6 +1,6 @@
 ---
 title: series_seasonal() - Azure Data Explorer
-description: This article describes series_seasonal() in Azure Data Explorer.
+description: Learn how to use the series_seasonal() function to calculate the seasonal component of a series according to the detected seasonal period.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/30/2023
@@ -28,7 +28,7 @@ A dynamic array of the same length as the *series* input that contains the calcu
 
 ### Auto detect the period
 
-In the following example, the series' period is automatically detected. The first series' period is detected to be six bins and the second five bins. The third series' period is too short to be detected and returns a series of zeroes. 
+In the following example, the series' period is automatically detected. The first series' period is detected to be six bins and the second five bins. The third series' period is too short to be detected and returns a series of zeroes.
 See the next example on [how to force the period](#force-a-period).
 
 > [!div class="nextstepaction"]
