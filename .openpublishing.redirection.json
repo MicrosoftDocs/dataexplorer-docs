@@ -424,6 +424,11 @@
       "source_path": "data-explorer/kusto/api/tds/aad.md",
       "redirect_url": "/azure/data-explorer/connect-jdbc",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/index.md",
+      "redirect_url": "/azure/data-explorer/t-sql.md",
+      "redirect_document_id": false
     }
   ]
 }
