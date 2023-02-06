@@ -554,6 +554,10 @@ items:
           displayName: Microsoft Flow, flow, flow connector
       - name: Logic Apps
         href: kusto/tools/logicapps.md
+      - name: Azure Pipelines
+        href: devops.md
+      - name: Sync Kusto
+        href: kusto/tools/synckusto.md
     - name: Notebooks
       items:
       - name: Analyze data in Jupyter Notebooks & Kqlmagic
@@ -569,18 +573,11 @@ items:
         - name: Use Kqlmagic
           displayName: Azure Data Studio
           href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
-    - name: Azure Cosmos DB
-      href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
-      displayName: databricks
-    - name: Azure Pipelines
-      href: devops.md
     - name: Connect from Azure Synapse Apache Spark
       href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
     - name: Migrate TSI to Azure Data Explorer
       href: /azure/time-series-insights/migration-to-adx
       displayName: Time Series Insights
-    - name: Sync Kusto
-      href: kusto/tools/synckusto.md
 - name: Kusto Query Language
   href: kusto/query/toc.yml
 - name: Management commands

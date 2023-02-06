@@ -9,14 +9,19 @@ ms.date: 02/05/2023
 
 The following table summarizes the available connectors in Azure Data Explorer and their capabilities:
 
-| Name of connector                 | Type                                       | Underlying SDK | Repo owner | Functionality         |
-|-----------------------------------|--------------------------------------------|----------------|---|-----------------------|
-| [Apache Kafka](#apache-kafka)     | **Ingestion** <br> *streaming, batching*       | Java           | Microsoft Azure  | Telemetry             |
-| [Apache Log4J 2](#apache-log4j-2) | **Ingestion** <br> *streaming*                 | Java           | Microsoft Azure | Logs                  |
-| [Apache Spark](#apache-spark)     | **Export** <br> <br>**Ingestion** <br> *batching* | Java           | Microsoft Azure  | Telemetry             |
-| [Logstash](#logstash)             | **Ingestion** <br> *batching*                  | Java           | Microsoft Azure  | Logs                  |
-| [Open Telemetry](#open-telemetry) | **Ingestion** <br> *streaming, batching*       | Go             |   | Traces, Metrics, Logs |
-| [Telegraf](#telegraf)             | **Ingestion** <br> *streaming, batching*       | Go             | InfluxData | Metrics, Logs         |
+| Name of connector                 | Type                                              | Underlying SDK | Repo owner      | Functionality         |
+|-----------------------------------|---------------------------------------------------|----------------|-----------------|-----------------------|
+| [Apache Kafka](#apache-kafka)     | **Ingestion** <br> *streaming, batching*          | Java           | Microsoft Azure | Telemetry             |
+| [Apache Log4J 2](#apache-log4j-2) | **Ingestion** <br> *streaming*                    | Java           | Microsoft Azure | Logs                  |
+| [Apache Spark](#apache-spark)     | **Export** <br> <br>**Ingestion** <br> *batching* | Java           | Microsoft Azure | Telemetry             |
+| [Logstash](#logstash)             | **Ingestion** <br> *batching*                     | Java           | Microsoft Azure | Logs                  |
+| [Open Telemetry](#open-telemetry) | **Ingestion** <br> *streaming, batching*          | Go             |                 | Traces, Metrics, Logs |
+| [Telegraf](#telegraf)             | **Ingestion** <br> *streaming, batching*          | Go             | InfluxData      | Metrics, Logs         |
+|  [Event Hubs](#event-hubs)      |     **Ingestion** <br> *streaming*                   |                |                 |                       |
+|  [Event Grid  ](#event-grid)                   |       **Ingestion** <br> *streaming, batching*                                   |                |                 |                       |
+|  [IoT Hubs](#iot-hubs)          |        **Ingestion** <br> *streaming*             |                |                 |                       |
+|                                   |                                                   |                |                 |                       |
+|                                   |                                                   |                |                 |                       |
 
 ## Apache Kafka
 
@@ -83,3 +88,49 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Documentation:** [Ingest data from Telegraf into Azure Data Explorer](ingest-data-telegraf.md)
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
 
+
+## Event Hubs
+
+* **Description:** 
+* **Type:** 
+* **Ingestion type supported:** 
+* **Functionality:** 
+* **Underlying SDK:** 
+* **Repository:** 
+* **Documentation:** 
+* **Community Blog:**  
+
+
+## Event Grid
+
+* **Description:** 
+* **Type:** 
+* **Ingestion type supported:** 
+* **Functionality:** 
+* **Underlying SDK:** 
+* **Repository:** 
+* **Documentation:** 
+* **Community Blog:**  
+
+
+## IoT Hubs
+
+* **Description:** 
+* **Type:** 
+* **Ingestion type supported:** 
+* **Functionality:** 
+* **Underlying SDK:** 
+* **Repository:** 
+* **Documentation:** 
+* **Community Blog:**  
+
+## 
+
+* **Description:** 
+* **Type:** 
+* **Ingestion type supported:** 
+* **Functionality:** 
+* **Underlying SDK:** 
+* **Repository:** 
+* **Documentation:** 
+* **Community Blog:**  
