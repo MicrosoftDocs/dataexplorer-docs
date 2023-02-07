@@ -3,7 +3,7 @@ title: .alter-merge table update policy command - Azure Data Explorer
 description: This article describes the .alter-merge table update policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/27/2022
+ms.date: 02/07/2023
 ---
 # .alter-merge table update policy
 
@@ -17,7 +17,7 @@ Change the table update policy. The [update policy](updatepolicy.md) instructs A
 ## Syntax
 
 `.alter-merge` `table` *TableName* `policy` `update` *ArrayOfPolicyObjects*
-`.alter-merge` `table` *DatabaseName*`.`*TableName* `update` `sharding` *ArrayOfPolicyObjects*
+`.alter-merge` `table` *DatabaseName*`.`*TableName* `policy` `update` *ArrayOfPolicyObjects*
 
 ## Arguments
 
