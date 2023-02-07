@@ -1,9 +1,9 @@
 ---
 title: strlen() - Azure Data Explorer
-description: This article describes strlen() in Azure Data Explorer.
+description: Learn how to use the strlen() function to measure the length of the input string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/01/2023
 ---
 # strlen()
 
@@ -21,9 +21,8 @@ Returns the length, in characters, of the input string.
 
 Returns the length, in characters, of the input string.
 
-**Notes**
-
-This function counts Unicode [code points](https://en.wikipedia.org/wiki/Code_point).
+>[!NOTE]
+>This function counts Unicode [code points](https://en.wikipedia.org/wiki/Code_point).
 
 ## Examples
 

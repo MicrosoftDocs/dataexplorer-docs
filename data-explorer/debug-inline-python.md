@@ -17,9 +17,11 @@ Kusto Query Language tools aren't convenient for developing and debugging Python
 
 ## Prerequisites
 
-1. Install Python [Anaconda Distribution](https://www.anaconda.com/distribution/#download-section). In **Advanced Options**, select **Add Anaconda to my PATH environment variable**.
-2. Install [Visual Studio Code](https://code.visualstudio.com/Download)
-3. Install [Python extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* Install Python [Anaconda Distribution](https://www.anaconda.com/distribution/#download-section). In **Advanced Options**, select **Add Anaconda to my PATH environment variable**.
+* Install [Visual Studio Code](https://code.visualstudio.com/Download).
+* Install [Python extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 
 ## Run your query in your client application
 
@@ -87,3 +89,7 @@ Kusto Query Language tools aren't convenient for developing and debugging Python
 
 > [!NOTE]
 > There may be differences between the Python sandbox image and your local installation. [Check the sandbox image for specific packages by querying the plugin](https://github.com/Azure/azure-kusto-analytics-lib/blob/master/Utils/functions/get_modules_version.csl).
+> [!NOTE]
+> In case there are errors when launching VS code debugging session try setting the default terminal profile to command prompt:
+>  * Press CTRL + SHIFT + P to open the Command Palette.
+>  * Search for "Terminal: Select Default Profile" and select "Command Prompt"

@@ -184,7 +184,7 @@ Install packages as follows:
 
   1. Create a blob container to host the packages, preferably in the same place as your cluster. For example, `https://artifactswestus.blob.core.windows.net/python`, assuming your cluster is in West US.
   1. Alter the cluster's [callout policy](../management/calloutpolicy.md) to allow access to that location.
-        * This change requires [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
+        * This change requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
 
         * For example, to enable access to a blob located in `https://artifactswestus.blob.core.windows.net/python`, run the following command:
 

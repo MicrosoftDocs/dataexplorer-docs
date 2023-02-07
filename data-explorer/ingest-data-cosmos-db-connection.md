@@ -24,9 +24,9 @@ Step 3: [Test the data connection](#step-3-test-the-data-connection)
 
 ## Prerequisites
 
-- An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/)
-- A [cluster and database](create-cluster-database-portal.md)
-- A container from a [Cosmos DB account for NoSQL](/azure/cosmos-db/nosql/)
+- An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+- An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+- A container from a [Cosmos DB account for NoSQL](/azure/cosmos-db/nosql/).
 
 ## Step 1: Choose an Azure Data Explorer table and configure its table mapping
 

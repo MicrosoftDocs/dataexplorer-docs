@@ -9,7 +9,7 @@ ms.date: 02/04/2020
 
 Gets the schema to use in create/alter commands and additional table metadata.
 
-Requires [Database user permission](../management/access-control/role-based-authorization.md).
+Requires [Database user permission](./access-control/role-based-access-control.md).
 
 ```kusto
 .show table TableName cslschema 
@@ -28,7 +28,7 @@ Requires [Database user permission](../management/access-control/role-based-auth
 
 Gets the schema in JSON format and additional table metadata.
 
-Requires [Database user permission](../management/access-control/role-based-authorization.md).
+Requires [Database user permission](./access-control/role-based-access-control.md).
 
 ```kusto
 .show table TableName schema as json

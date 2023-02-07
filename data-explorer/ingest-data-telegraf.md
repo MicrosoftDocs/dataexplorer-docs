@@ -14,9 +14,8 @@ Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Tel
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
-* Download [Telegraf](https://portal.influxdata.com/downloads/).
-* Host Telegraf in a virtual machine (VM) or container. Telegraf can be hosted locally where the app or service being monitored is deployed, or remotely on a dedicated monitoring compute/container.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* [Telegraf](https://portal.influxdata.com/downloads/). Host Telegraf in a virtual machine (VM) or container. Telegraf can be hosted locally where the app or service being monitored is deployed, or remotely on a dedicated monitoring compute/container.
 
 ## Supported authentication methods
 

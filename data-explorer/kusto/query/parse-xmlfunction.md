@@ -7,21 +7,23 @@ ms.date: 01/08/2023
 ---
 # parse_xml()
 
-Interprets a `string` as an XML value, converts the value to a JSON and returns the value as `dynamic`.
+Interprets a `string` as an XML value, converts the value to a JSON, and returns the value as `dynamic`.
 
 ## Syntax
 
 `parse_xml(`*xml*`)`
 
-## Arguments
+## Parameters
 
-* *xml*: An expression of type `string`, representing a XML-formatted value.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *xml*| string | &check; | The XML-formatted string value to parse.|
 
 ## Returns
 
 An object of type [dynamic](./scalar-data-types/dynamic.md) that is determined by the value of *xml*, or null, if the XML format is invalid.
 
-The conversion is done as following:
+The conversion is done as follows:
 
 XML                                |JSON                                            |Access
 -----------------------------------|------------------------------------------------|--------------
@@ -35,13 +37,12 @@ XML                                |JSON                                        
 
 > [!NOTE]
 >
-> * Maximal input `string` length for `parse_xml` is 1MB (1,048,576 bytes). Longer strings interpretation will result in a null object
-> * Only element nodes, attributes and text nodes will be translated. Everything else will be skipped
+> * Maximal input `string` length for `parse_xml` is 1 MB (1,048,576 bytes). Longer strings interpretation will result in a null object.
+> * Only element nodes, attributes and text nodes will be translated. Everything else will be skipped.
 
 ## Example
 
-In the following example, when `context_custom_metrics` is a `string`
-that looks like this:
+In the following example, when `context_custom_metrics` is a `string` that looks like this:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

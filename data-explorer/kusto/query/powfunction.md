@@ -13,11 +13,28 @@ Returns a result of raising to power
 
 `pow(`*base*`,` *exponent* `)`
 
-## Arguments
+## Parameters
 
-* *base*: Base value.
-* *exponent*: Exponent value.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *base*| int, real, or long | &check; | The base value.|
+| *exponent*| int, real, or long | &check; | The exponent value.|
 
 ## Returns
 
 Returns base raised to the power exponent: base ^ exponent.
+
+## Example 
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbEtyC/XMNJRMNYEAGG04SkWAAAA" target="_blank">Run the query</a>
+
+```kusto
+print result=pow(2, 3)
+```
+
+**Output**
+
+|result|
+|--|
+|8|
