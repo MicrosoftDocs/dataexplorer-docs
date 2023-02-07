@@ -14,11 +14,15 @@ Alters the data type of an existing table column.
 > After using `.alter column`, that data cannot be recovered, even by using another command to alter the column type back to a previous value.
 > If you need to preserve pre-existing data, see our recommended [procedure for changing the type of a column without losing data](#changing-column-type-without-data-loss).
 
-**Syntax** 
+## Permissions
+
+This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+
+## Syntax
 
 `.alter` `column` [*DatabaseName* `.`] *TableName* `.` *ColumnName* `type` `=` *ColumnNewType*
  
-**Example** 
+## Example
 
 ```kusto
 .alter column ['Table'].['ColumnX'] type=string

@@ -9,6 +9,10 @@ ms.date: 09/29/2022
 
 Change a database's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based. The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it.
 
+## Permissions
+
+This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.alter` `database` *DatabaseName* `policy` `retention` *PolicyObject*

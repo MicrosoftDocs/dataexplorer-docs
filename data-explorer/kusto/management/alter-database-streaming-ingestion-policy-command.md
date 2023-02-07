@@ -15,6 +15,10 @@ Use the classic bulk ingestion instead of streaming ingestion when the amount of
 
 To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md). Streaming ingestion must be enabled at the cluster level before it can be used at the database level.
 
+## Permissions
+
+This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.alter` `database` *DatabaseName* `policy` `streamingingestion` *PolicyObject*

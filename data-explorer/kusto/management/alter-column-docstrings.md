@@ -9,6 +9,10 @@ ms.date: 02/10/2022
 
 Sets the `DocString` property of one or more columns of the specified table.  Columns not explicitly set will have this property removed.
 
+## Permissions
+
+This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.alter` `table` *TableName* `column-docstrings` `(` *Col1* `:` *DocString1* [`,` *Col2* `:` *DocString2*]... `)`

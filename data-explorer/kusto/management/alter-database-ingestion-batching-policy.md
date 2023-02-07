@@ -13,6 +13,10 @@ When setting the policy for a database, it applies for all its tables, except ta
 
 ## Permissions
 
+This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
+
+## Permissions
+
 [!INCLUDE [batching-policy-permissions](../../includes/batching-policy-permissions.md)]
 
 ## Defaults and limits

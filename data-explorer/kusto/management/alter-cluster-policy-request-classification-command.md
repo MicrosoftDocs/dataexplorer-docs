@@ -9,6 +9,10 @@ ms.date: 01/06/2022
 
 Alters cluster's request classification policy. For more information, see [request classification policy](request-classification-policy.md).
 
+## Permissions
+
+This command requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.alter` `cluster` `policy` `request_classification` *SerializedPartialPolicy*  `<|` *ClassificationFunctionBody*
