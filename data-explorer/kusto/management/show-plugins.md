@@ -7,16 +7,20 @@ ms.date: 11/02/2020
 ---
 # .show plugins
 
-
 Lists all plugins of the cluster.
+
+## Permissions
+
+This command requires at least Database User, Database Viewer, or Database Monitor permissions. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 
 `.show` `plugins`
 
-## Output
+## Returns
 
 Returns a table containing the following fields:
+
 * **PluginName**: Name of the plugin
 * **IsEnabled**: A boolean value that indicates if the plugin is enabled
 
@@ -25,7 +29,7 @@ Returns a table containing the following fields:
 <!-- csl -->
 ```kusto
 .show plugins
-``` 
+```
 
 | PluginName | IsEnabled |
 |---|---|
