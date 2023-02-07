@@ -17,13 +17,14 @@ Change the table update policy. The [update policy](updatepolicy.md) instructs A
 ## Syntax
 
 `.alter-merge` `table` *TableName* `policy` `update` *ArrayOfPolicyObjects*
+
 `.alter-merge` `table` *DatabaseName*`.`*TableName* `policy` `update` *ArrayOfPolicyObjects*
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
-*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context. A wildcard (*) denotes all tables.
-*ArrayOfPolicyObjects* - Define policy objects, see also [update policy](updatepolicy.md).
+* *DatabaseName* - Specify the name of the database.
+* *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context. A wildcard (*) denotes all tables.
+* *ArrayOfPolicyObjects* - Define policy objects, see also [update policy](updatepolicy.md).
 
 ## Returns
 
