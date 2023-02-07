@@ -1,0 +1,86 @@
+---
+title: Set up your development environment to use the Azure Data Explorer client library
+description: Learn how to set up your development environment to use the Azure Data Explorer client library.
+ms.reviewer: yogilad
+ms.topic: how-to
+ms.date: 02/05/2023
+---
+# Set up your development environment to use the Azure Data Explorer client library
+
+Get started with the Azure Data Explorer client libraries.
+
+In this article, you learn how to install client library packages for your preferred language
+
+## Prerequisites
+
+- A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+- Language specific prerequisites
+
+    ### [C\#](#tab/csharp)
+
+    ### [Python](#tab/python)
+
+    - [Python 3.7 or later](https://www.python.org/downloads/)
+        - Ensure the `python` executable is in your `PATH`.
+        - Verify installation: In a command shell, run `python --version` to check that the version is 3.7 or later.
+
+    ### [Node.js](#tab/nodejs)
+
+    - [Node 16 or later](https://nodejs.org/en/download/) built with ES6
+        - Ensure the `node` executable is in your `PATH`.
+        - Verify installation: In a command shell, run `node --version` to check that the version is 3.7 or later.
+
+    ### [Go](#tab/go)
+
+    ### [Java](#tab/java)
+
+    ---
+
+### Install the package
+
+This section walks you through installing the the Azure Data Explorer client library in your environment.
+
+The following table lists the client libraries for Azure Data Explorer and the corresponding package names.
+
+| Library Name | Package name | Description |
+| -- | -- | -- |
+| Kusto client library | `azure-kusto-data` | Provides a client for connecting to Azure Data Explorer. Use the client library to [query data](../../query/index.md) or run [management commands](../../management/index.md). |
+| Kusto ingest client library | `azure-kusto-ingest` | Provides a client for ingesting data into Azure Data Explorer. Use the ingest client library to [ingest data](../../../ingest-data-overview.md) into Azure Data Explorer. |
+
+Add the Azure Data Explorer client libraries for your preferred language to your project. Use the package manager appropriate for your language to install the client libraries.
+
+### [C\#](#tab/csharp)
+
+### [Python](#tab/python)
+
+```bash
+python -m pip install azure-kusto-data
+```
+
+### [Node.js](#tab/nodejs)
+
+```bash
+npm install azure-kusto-data
+```
+
+### [Go](#tab/go)
+
+### [Java](#tab/java)
+
+---
+
+### Learn how to create apps that use client libraries
+
+The following articles walk you through creating apps that use the Azure Data Explorer client libraries.
+
+- [Create a Hello Kusto! app](app-hello-kusto.md)
+- TBD
+
+## Next steps
+
+<!-- Advance to the next article to learn how to create... -->
+> [!div class="nextstepaction"]
+> [KQL quick reference](../../../kql-quick-reference.md)
+
+> [!div class="nextstepaction"]
+> [Sample app generator wizard](../../../sample-app-generator-wizard.md)
