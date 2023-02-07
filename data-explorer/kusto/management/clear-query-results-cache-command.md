@@ -9,11 +9,15 @@ ms.date: 06/16/2020
 
 Clear all [cached query results](../query/query-results-cache.md) made against the context database.
 
-**Syntax**
+## Permissions
+
+This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
+
+## Syntax
 
 `.clear` `database` `cache` `query_results`
 
-**Returns**
+## Returns
 
 This command returns a table with the following columns:
 
@@ -22,7 +26,7 @@ This command returns a table with the following columns:
 |NodeId|`string`|Identifier of the cluster node.
 |Count|`long`|The number of entries deleted by the node.
 
-**Example**
+## Example
 
 ```kusto
 .clear database cache query_results

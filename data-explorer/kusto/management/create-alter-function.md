@@ -11,6 +11,10 @@ Creates a stored function or alters an existing function and stores it inside th
 
 Rules for parameter types and CSL statements are the same as for [`let` statements](../query/letstatement.md).
 
+## Permissions
+
+This command requires at least [Database User](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 .`create-or-alter function [with (docstring = '<description>' folder='<name>')] [FunctionName] ([paramName:paramType], ...) { CSL-statement }`

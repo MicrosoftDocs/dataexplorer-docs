@@ -9,6 +9,10 @@ ms.date: 07/08/2021
 
 Deletes a table-level or database-level extent tags retention policy. For more information, see [extent tags retention policy](extent-tags-retention-policy.md).
 
+## Permissions
+
+This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 ```kusto

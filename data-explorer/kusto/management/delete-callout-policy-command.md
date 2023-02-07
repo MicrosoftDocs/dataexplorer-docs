@@ -9,6 +9,10 @@ ms.date: 09/29/2021
 
 Deletes a cluster's [callout policy](calloutpolicy.md). Azure Data Explorer clusters can communicate with external services in many different scenarios. Cluster admins can manage the authorized domains for external calls, by updating the cluster's callout policy.
 
+## Permissions
+
+This command requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.delete` `cluster` `policy` `callout` 

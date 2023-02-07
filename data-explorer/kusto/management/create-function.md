@@ -15,7 +15,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 
 ## Permissions
 
-This command requires [Database User](access-control/role-based-access-control.md) permissions.
+This command requires at least [Database User](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
