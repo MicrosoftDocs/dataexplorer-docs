@@ -1,9 +1,9 @@
 ---
 title: summarize operator - Azure Data Explorer
-description: This article describes summarize operator in Azure Data Explorer.
+description: Learn how to use the summarize operator to produce a table that summarizes the content of the input table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/27/2022
+ms.date: 02/01/2023
 ms.localizationpriority: high 
 ---
 # summarize operator
@@ -64,6 +64,7 @@ record.
 To summarize over ranges of numeric values, use `bin()` to reduce ranges to discrete values.
 
 > [!NOTE]
+>
 > * Although you can provide arbitrary expressions for both the aggregation and grouping expressions, it's more efficient to use simple column names, or apply `bin()` to a numeric column.
 > * The automatic hourly bins for datetime columns is no longer supported. Use explicit binning instead. For example, `summarize by bin(timestamp, 1h)`.
 
@@ -77,7 +78,7 @@ The following table summarizes the default values of aggregations:
 | `make_bag()`, `make_bag_if()`, `make_list()`, `make_list_if()`, `make_set()`, `make_set_if()` | empty dynamic array              ([]) |
 | All others | null |
 
- When using these aggregates over entities which includes null values, the null values will be ignored and won't participate in the calculation (see examples below).
+ When using these aggregates over entities that includes null values, the null values will be ignored and won't participate in the calculation (see examples below).
 
 ## Examples
 

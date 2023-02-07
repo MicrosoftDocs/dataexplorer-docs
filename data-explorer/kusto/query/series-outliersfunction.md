@@ -1,6 +1,6 @@
 ---
 title: series_outliers() - Azure Data Explorer
-description: This article describes series_outliers() in Azure Data Explorer.
+description: Learn how to use the series_outliers() function to score anomaly points in a series.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/30/2023

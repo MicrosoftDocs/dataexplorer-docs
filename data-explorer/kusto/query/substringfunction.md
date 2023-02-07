@@ -1,13 +1,13 @@
 ---
 title: substring() - Azure Data Explorer
-description: This article describes substring() in Azure Data Explorer.
+description: Learn how to use the substring() function to extract a substring from the source string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/01/2023
 ---
 # substring()
 
-Extracts a substring from a source string starting from some index to the end of the string.
+Extracts a substring from the source string starting from some index to the end of the string.
 
 Optionally, the length of the requested substring can be specified.
 
@@ -23,11 +23,10 @@ substring("abcdefg", 1, 2) == "bc"
 
 * *source*: The source string that the substring will be taken from.
 * *startingIndex*: The zero-based starting character position of the requested substring.
-* *length*: An optional parameter that can be used to specify the requested number of characters in the substring. 
+* *length*: An optional parameter that can be used to specify the requested number of characters in the substring.
 
-**Notes**
-
-*startingIndex* can be a negative number, in which case the substring will be retrieved from the end of the source string.
+> [!NOTE]
+> *startingIndex* can be a negative number, in which case the substring will be retrieved from the end of the source string.
 
 ## Returns
 

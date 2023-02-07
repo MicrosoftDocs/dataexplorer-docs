@@ -1,6 +1,6 @@
 ---
 title: series_sign() - Azure Data Explorer
-description: This article describes series_sign() in Azure Data Explorer.
+description: Learn how to use the series_sign() function to calculate the element-wise sign of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/30/2023
