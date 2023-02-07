@@ -13,6 +13,10 @@ Change the table update policy. The [update policy](updatepolicy.md) instructs A
 > The source table and the table for which the update policy is defined must be in the same database.
 > The update policy function schema and the target table schema must match in their column names, types, and order.
 
+## Permissions
+
+This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 ```kusto

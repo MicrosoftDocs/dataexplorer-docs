@@ -19,7 +19,7 @@ The `.alter table` command:
 
 ## Permissions
 
-This command requires [Database Admin or Table Admin](access-control/role-based-access-control.md) permissions.
+This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

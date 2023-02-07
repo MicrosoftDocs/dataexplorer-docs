@@ -13,7 +13,7 @@ If the policy isn't set for a table, the database-level policy applies. If it is
 
 ## Permissions
 
-[!INCLUDE [batching-policy-permissions](../../includes/batching-policy-permissions.md)]
+This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
 
 ## Defaults and limits
 

@@ -9,6 +9,10 @@ ms.date: 01/05/2022
 
 Alters a table-level extent tags retention policy. For more information, see [extent tags retention policy](extent-tags-retention-policy.md).
 
+## Permissions
+
+This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.alter` `table` *TableName* `policy` `extent_tags_retention` *SerializedPolicyObject* 

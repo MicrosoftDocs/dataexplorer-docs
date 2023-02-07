@@ -18,10 +18,6 @@ When you define the [`IngestionBatching`](./show-table-ingestion-batching-policy
 * [Ingestion batching policy command reference](./show-table-ingestion-batching-policy.md)
 * [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
 
-## Permissions
-
-[!INCLUDE [batching policy permissions](../../includes/batching-policy-permissions.md)]
-
 ## Sealing a batch
 
 There's an optimal size of about 1 GB of uncompressed data for bulk ingestion. Ingestion of blobs with much less data is suboptimal, so in queued ingestion the service will batch small blobs together.

@@ -9,6 +9,10 @@ ms.date: 01/13/2022
 
 Change the table cache policy. To speed up queries, Azure Data Explorer caches data on its processing nodes, in SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe data so that important data can take priority.
 
+## Permissions
+
+This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `caching` *PolicyParameters* 

@@ -11,7 +11,7 @@ Remove the table [ingestion batching policy](batchingpolicy.md) that defines dat
 
 ## Permissions
 
-[!INCLUDE [batching-policy-permissions](../../includes/batching-policy-permissions.md)]
+This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

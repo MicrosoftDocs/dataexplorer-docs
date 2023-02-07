@@ -11,7 +11,7 @@ Remove the database [ingestion batching policy](batchingpolicy.md) that defines 
 
 ## Permissions
 
-[!INCLUDE [batching-policy-permissions](../../includes/batching-policy-permissions.md)]
+This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
