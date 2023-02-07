@@ -9,6 +9,9 @@ ms.date: 09/29/2021
 
 Delete a table's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged. 
  
+## Permissions
+
+This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

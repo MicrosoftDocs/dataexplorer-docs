@@ -20,13 +20,11 @@ This command has several variants: In one, the extents to be dropped are specifi
 
 ## Permissions
 
-This command requires [Database Admin or Table Admin](access-control/role-based-access-control.md) permissions for each table that has extents returned by the provided query.
+If the the *TableName* is specified, at least [Table Admin](access-control/role-based-access-control.md) permissions are required.
+
+If the the *TableName* isn't specified, at least [Database Admin](./access-control/role-based-access-control.md) permissions are required.
 
 ## Syntax
-
-> [!NOTE]
-> If the argument *TableName* is specified, you will need [Table admin permission](./access-control/role-based-access-control.md) to drop an extent.
-> If the the argument *TableName* isn't specified, you will need [Database admin permission](./access-control/role-based-access-control.md) to drop an extent.
 
 ### Drop extents with a query
 

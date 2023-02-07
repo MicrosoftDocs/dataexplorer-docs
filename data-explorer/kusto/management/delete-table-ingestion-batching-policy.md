@@ -9,10 +9,6 @@ ms.date: 06/19/2022
 
 Remove the table [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
 
-## Permissions
-
-This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
-
 ## Syntax
 
 `.delete` `table` *TableName* `policy` `ingestionbatching`

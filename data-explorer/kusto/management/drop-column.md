@@ -19,11 +19,15 @@ To drop multiple columns from a table, see [drop table columns](#drop-table-colu
 > This command is irreversible. All data in the column that is removed will no longer by queryable.
 > Future commands to add that column back will not be able to restore the data.
 
-**Syntax**
+## Permissions
+
+This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+
+## Syntax
 
 `.drop` `column` *TableName* `.` *ColumnName*
 
-## drop table columns
+## Drop multiple table columns
 
 Removes multiple columns from a table.
 
@@ -35,6 +39,6 @@ Removes multiple columns from a table.
 > This command is irreversible. All data in the column that is removed will no longer by queryable.
 > Future commands to add those columns back will not be able to restore the data.
 
-**Syntax**
+### Syntax
 
 `.drop` `table` *TableName* `columns` `(` *Col1* [`,` *Col2*]... `)`
