@@ -9,6 +9,10 @@ ms.date: 01/06/2022
 
 Enables or disables a cluster's request classification policy. For more information, see [request classification policy](request-classification-policy.md).
 
+## Permissions
+
+This command requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.alter-merge` `cluster` `policy` `request_classification` `'{"IsEnabled":` [true|false] `}`

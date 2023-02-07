@@ -8,7 +8,10 @@ ms.date: 11/29/2021
 # .alter-merge database merge policy
 
 Change a database's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged. 
- 
+
+## Permissions
+
+This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

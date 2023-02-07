@@ -12,6 +12,10 @@ The command sets the ManagedIdentity policy of the cluster or the specified data
 > [!NOTE]
 > Managed identities should be assigned to the cluster (see [instructions](../../configure-managed-identities-cluster.md)) before you can assign them to the ManagedIdentity policy.
 
+## Permissions
+
+The command to alter the cluster policy requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions, and the command to alter the database policy requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 * `.alter` `cluster` `policy` `managed_identity` *ArrayOfPolicyObjects*

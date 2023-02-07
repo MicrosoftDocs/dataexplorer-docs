@@ -8,7 +8,10 @@ ms.date: 11/29/2021
 # .alter-merge database retention policy
 
 Change a database's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based. 
- 
+
+## Permissions
+
+This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

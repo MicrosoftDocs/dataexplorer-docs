@@ -15,6 +15,10 @@ Use the classic bulk ingestion instead of streaming ingestion when the amount of
 
 * To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md).
 
+## Permissions
+
+This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.alter-merge` `table` *TableName* `policy` `streamingingestion` *PolicyObject*

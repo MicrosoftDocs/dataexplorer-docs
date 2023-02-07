@@ -9,10 +9,6 @@ ms.date: 11/29/2021
 
 Change a materialized view [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
-## Permissions
-
-This command requires [Database Admin](access-control/role-based-access-control.md) permissions.
-
 ## Syntax
 
 `.alter-merge` `materialized-view` *MaterializedViewName* `policy` `partitioning` *PolicyObject*

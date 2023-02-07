@@ -12,6 +12,10 @@ The command updates the ManagedIdentity policy of the cluster or the specified d
 > [!NOTE]
 > Managed identities should be assigned to the cluster (see [instructions](../../configure-managed-identities-cluster.md)) before you can assign them to the ManagedIdentity policy.
 
+## Permissions
+
+These commands require [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 * `.alter-merge` `cluster` `policy` `managed_identity` *ArrayOfPolicyObjects*

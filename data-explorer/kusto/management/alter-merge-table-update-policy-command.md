@@ -14,6 +14,10 @@ Change the table update policy. The [update policy](updatepolicy.md) instructs A
 > The update policy function schema and the target table schema must match in their column names, types, and order.
 > If the policy already defined on the table, the PolicyObjects specified in the command are added to the array of PolicyObjects in the existing policy.
 
+## Permissions
+
+This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.alter-merge` `table` *TableName* `policy` `update` *ArrayOfPolicyObjects*

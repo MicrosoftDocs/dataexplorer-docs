@@ -18,6 +18,10 @@ Enable or disable a materialized view's [row_level_security policy](rowlevelsecu
 
 For more information about running queries on the row level security policy, see [row_level_security policy](rowlevelsecuritypolicy.md).
 
+## Permissions
+
+This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.alter` `materialized-view` *MaterializedViewName* `policy` `row_level_security` [`enable` | `disable`]

@@ -9,6 +9,10 @@ ms.date: 01/13/2022
 
 Change a table's [row order policy](roworderpolicy.md). The row order policy is an optional table policy that defines the row order in a data shard. This policy can improve performance for queries that relate to a small set of values that can be ordered.
 
+## Permissions
+
+This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.alter-merge` `table` *TableName* `policy` `roworder` [*column1* [asc|desc], *column2* [asc|desc],...]

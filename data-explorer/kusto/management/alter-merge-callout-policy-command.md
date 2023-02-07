@@ -9,6 +9,10 @@ ms.date: 09/29/2022
 
 Enables or disables a cluster's [callout policy](calloutpolicy.md). Azure Data Explorer clusters can communicate with external services in many different scenarios. Cluster admins can manage the authorized domains for external calls, by updating the cluster's callout policy.
 
+## Permissions
+
+This command requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.alter-merge` `cluster` `policy` `callout` *SerializedArrayOfPolicyObjects*

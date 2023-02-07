@@ -9,6 +9,10 @@ ms.date: 02/10/2022
 
 Sets the `DocString` property for one or more columns of a specified table. Columns not explicitly defined will keep any previous definition for this property, if it exists.
 
+## Permissions
+
+This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.alter-merge` `table` *TableName* `column-docstrings` `(` *Col1* `:` *DocString1* [`,` *Col2* `:` *DocString2*]... `)`
