@@ -12,10 +12,11 @@ Azure Data Explorer uses a role-based access control model in which principals g
 In this article, you'll learn how to use management commands to [view existing admins](#view-existing-admins) as well as [add and remove admins](#add-and-remove-admins) on functions.
 
 > [!NOTE]
->
-> * You must be an AllDatabasesAdmin, a Database Admin, or a Function Admin to control function access.
-> * A principal must have access on the database or table level to be a Function Admin.
-> * For more information, see [role-based access control](access-control/role-based-access-control.md).
+> A principal must have access on the database or table level to be a Function Admin.
+
+## Permissions
+
+You must be either a Function Admin on the specific function or a Database Admin to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## View existing admins
 

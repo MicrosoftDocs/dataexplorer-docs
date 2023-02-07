@@ -10,10 +10,11 @@ ms.date: 01/25/2023
 Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the security roles they're assigned. In this article, you'll learn how to use management commands to [view existing security roles](#view-existing-security-roles) as well as [add and remove security roles](#add-and-remove-security-roles) on the table level.
 
 > [!NOTE]
->
-> * You must be an AllDatabasesAdmin, a Database Admin, or a Table Admin to assign table level security roles.
-> * A principal must have access on the database level to be assigned table specific security roles.
-> * For more information, see [role-based access control](access-control/role-based-access-control.md).
+> A principal must have access on the database level to be assigned table specific security roles.
+
+## Permissions
+
+You must be either a Table Admin on the specific table or a Database Admin to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Table level security roles
 

@@ -11,8 +11,9 @@ Azure Data Explorer uses a role-based access control model in which principals g
 
 In this article, you'll learn how to use management commands to [view existing admins](#view-existing-admins) as well as [add and remove admins](#add-and-remove-admins) on external tables.
 
-> [!NOTE]
-> You must be an AllDatabasesAdmin, a Database Admin, or an External Table Admin to control external table access. For more information, see [role-based access control](access-control/role-based-access-control.md).
+## Permissions
+
+You must be either an External Table Admin on the specific external table or a Database Admin to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## View existing admins
 

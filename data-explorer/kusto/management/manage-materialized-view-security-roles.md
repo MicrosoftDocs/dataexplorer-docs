@@ -12,10 +12,11 @@ Azure Data Explorer uses a role-based access control model in which principals g
 In this article, you'll learn how to use management commands to [view existing admins](#view-existing-admins) as well as [add and remove admins](#add-and-remove-admins) on materialized views.
 
 > [!NOTE]
->
-> * You must be an AllDatabasesAdmin, a Database Admin, or a Materialized View Admin to control materialized view access.
-> * A principal must have access on the database or table level to be a Materialized View Admin.
-> * For more information, see [role-based access control](access-control/role-based-access-control.md).
+> A principal must have access on the database or table level to be a Materialized View Admin.
+
+## Permissions
+
+You must be either a Materialized View Admin on the specific materialized view or a Database Admin to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## View existing admins
 
