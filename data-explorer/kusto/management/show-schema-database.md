@@ -9,6 +9,10 @@ ms.date: 03/14/2021
 
 The following commands show database schema as a table, JSON object, or CSL script.
 
+## Permissions
+
+These command requires at least Database User, Database Viewer, or Database Monitor permissions. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
 ## .show databases schema
 
 **Syntax**

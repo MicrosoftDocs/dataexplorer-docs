@@ -9,6 +9,10 @@ ms.date: 08/16/2021
 
 This article describes the show control command used for the [query weak consistency policy](query-weak-consistency-policy.md). This command returns the query weak consistency policy of the cluster.
 
+## Permissions
+
+This command requires at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 ```kusto

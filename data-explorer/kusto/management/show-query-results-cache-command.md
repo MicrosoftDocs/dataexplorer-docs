@@ -9,11 +9,15 @@ ms.date: 06/16/2020
 
 Returns a table showing statistics related to the [query results cache](../query/query-results-cache.md) made against the context database.
 
-**Syntax**
+## Permissions
+
+This command requires at least Database User, Database Viewer, or Database Monitor permissions. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
+## Syntax
 
 `.show database cache query_results`
 
-**Output**
+## Returns
  
 |Output parameter |Type |Description 
 |---|---|---

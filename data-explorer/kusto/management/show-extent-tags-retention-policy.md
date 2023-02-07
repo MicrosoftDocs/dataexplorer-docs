@@ -9,6 +9,14 @@ ms.date: 07/08/2021
 
 Shows a table-level or database-level extent tags retention policy. For more information, see [extent tags retention policy](extent-tags-retention-policy.md).
 
+## Permissions
+
+To see the extent tags retention policy on a database, you must have at least Database User, Database Viewer, or Database Monitor permissions.
+
+To see the extent tags retention policy on a table, you must have at least Table Admin permissions.
+
+For more information, see [role-based access control](access-control/role-based-access-control.md).
+
 ## Syntax
 
 ```kusto

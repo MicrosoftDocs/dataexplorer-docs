@@ -26,6 +26,16 @@ The types of `.show extents` commands are as follows:
 > command variant that includes filtering extents is preferable to filtering the results
 > of the command using another query.
 
+## Permissions
+
+To see extents on a table, you must have at least Table Admin permissions.
+
+To see extents on a database, you must have at least Database User, Database Viewer, or Database Monitor permissions.
+
+To see extents on the cluster, you must have at least AllDatabasesMonitor permissions.
+
+For more information, see [role-based access control](access-control/role-based-access-control.md).
+
 ## Table scope
 
 `.show` `table` *TableName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]

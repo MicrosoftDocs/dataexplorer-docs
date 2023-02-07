@@ -11,7 +11,11 @@ Shows the encoding policy. For an overview of the encoding policy, see [Encoding
 
 ## Permissions
 
-This command requires [database monitor](../management/access-control/role-based-access-control.md) permissions.
+To see the encoding policy on a database, you must have at least Database User, Database Viewer, or Database Monitor permissions.
+
+To see the encoding policy on a table, you must have at least Table Admin permissions.
+
+For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 

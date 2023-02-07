@@ -11,13 +11,17 @@ Returns a table showing the properties of the context database.
 
 To return a table in which every record corresponds to a database in the cluster that the user has access to, see [`.show databases`](show-databases.md).
 
-**Syntax**
+## Permissions
+
+This command requires at least Database User, Database Viewer, or Database Monitor permissions. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
+## Syntax
 
 `.show` `database` [`details` | `identity` | `policies` | `datastats`]
 
 The default call without any options specified is equal to 'identity' option.
 
-**Output for 'identity' option**
+## Output for 'identity' option
  
 |Output parameter |Type |Description 
 |---|---|---
@@ -30,7 +34,7 @@ The default call without any options specified is equal to 'identity' option.
 |CurrentUserIsUnrestrictedViewer |Boolean | Specifies if the current user is an unrestricted viewer on the database.
 |DatabaseId |Guid |The database's unique ID.
 
-**Output for 'details' option**
+## Output for 'details' option
  
 |Output parameter |Type |Description 
 |---|---|---
@@ -53,8 +57,7 @@ The default call without any options specified is equal to 'identity' option.
 |NumberOfExternalTables |Int64 |The database's number of external tables.
 |NumberOfMaterializedViews |Int64 |The database's number of materialized views.
 
-
-**Output for 'policies' option**
+## Output for 'policies' option
  
 |Output parameter |Type |Description 
 |---|---|---
@@ -73,7 +76,7 @@ The default call without any options specified is equal to 'identity' option.
 |StreamingIngestionPolicy |String | The database's Streaming Ingestion policy (serialized in JSON format).
 |IngestionBatchingPolicy |String | The database's Ingestion Batching policy (serialized in JSON format).
 
-**Output for 'datastats' option**
+## Output for 'datastats' option
 
 |Output parameter |Type |Description 
 |---|---|---
