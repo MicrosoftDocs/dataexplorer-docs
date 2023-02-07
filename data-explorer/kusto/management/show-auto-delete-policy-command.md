@@ -9,6 +9,10 @@ ms.date: 09/26/2021
 
 Shows the auto delete policy that is applied to a table. For more information, see [auto delete policy](auto-delete-policy.md).
 
+## Permissions
+
+This command requires at least Database User, Database Viewer, or Database Monitor permissions on the database containing the table or Table Admin permissions on the specific table. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.show` `table` *TableName* `policy` `auto_delete`

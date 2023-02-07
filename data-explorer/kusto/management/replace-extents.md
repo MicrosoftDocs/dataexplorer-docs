@@ -18,7 +18,7 @@ All of the drop and move operations are done in a single transaction.
 
 ## Permissions
 
-This command requires [Database Admin or Table Admin](../management/access-control/role-based-access-control.md) permissions for the source and destination tables.
+This command requires at least [Table Admin](../management/access-control/role-based-access-control.md) permissions for the source and destination tables.
 
 ## Syntax
 

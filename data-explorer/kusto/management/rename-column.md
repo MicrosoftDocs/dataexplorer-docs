@@ -10,6 +10,10 @@ ms.date: 02/11/2020
 Changes the name of an existing table column.
 To change the name of multiple columns, see [below](#rename-columns).
 
+## Permissions
+
+The command requires at least [Table Admin](../management/access-control/role-based-access-control.md) permissions.
+
 ### Syntax
 
 `.rename` `column` [*DatabaseName*`.`]*TableName*`.`*ColumnExistingName* `to` *ColumnNewName*

@@ -9,6 +9,10 @@ ms.date: 09/26/2021
 
 Shows the cluster's request classification policy. For more information, see [Request classification policy](request-classification-policy.md).
 
+## Permissions
+
+This command requires at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.show` `cluster` `policy` `request_classification`

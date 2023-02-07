@@ -11,6 +11,10 @@ Display the cluster sandbox policy. Azure Data Explorer runs specified plugins w
 
 Sandbox policies are managed at cluster-level and affect all the nodes in the cluster.
 
+## Permissions
+
+This command requires at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions.
+
 ## Syntax
 
 `.show` `cluster` `policy` `sandbox`
