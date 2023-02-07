@@ -21,15 +21,9 @@ Gets the schema to use in create/alter commands and additional table metadata.
 | Folder           | String | Table's folder                                            |
 | DocString        | String | Table's docstring                                         |
 
-## Permissions
-
-This command requires [Database User](../management/access-control/role-based-access-control.md) permissions.
-
 ## .show table schema as JSON
 
 Gets the schema in JSON format and additional table metadata.
-
-Requires [Database user permission](./access-control/role-based-access-control.md).
 
 ```kusto
 .show table TableName schema as json
@@ -42,3 +36,7 @@ Requires [Database user permission](./access-control/role-based-access-control.m
 | DatabaseName     | String | The database to which the table belongs |
 | Folder           | String | Table's folder                          |
 | DocString        | String | Table's docstring                       |
+
+## Permissions
+
+These command require at least Database User, Database Viewer, or Database Monitor permissions on the database containing the table or Table Admin permissions on the specific table. For more information, see [role-based access control](access-control/role-based-access-control.md).

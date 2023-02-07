@@ -11,6 +11,10 @@ Show the table sharding policy. Use the [sharding policy](../management/sharding
 
 The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster should be sealed. When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
 
+## Permissions
+
+This command requires at least Database User, Database Viewer, or Database Monitor permissions on the database containing the table or Table Admin permissions on the specific table. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
 ## Syntax
 
 **For a specified table**

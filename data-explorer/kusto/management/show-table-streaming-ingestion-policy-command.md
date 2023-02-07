@@ -15,6 +15,10 @@ Use the classic (bulk) ingestion instead of streaming ingestion when the amount 
 
 * To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md).
 
+## Permissions
+
+This command requires at least Database User, Database Viewer, or Database Monitor permissions on the database containing the table or Table Admin permissions on the specific table. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.show` `table` *TableName* `policy` `streamingingestion`

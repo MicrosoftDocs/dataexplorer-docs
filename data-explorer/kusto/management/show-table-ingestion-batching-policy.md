@@ -9,6 +9,10 @@ ms.date: 09/27/2021
 
 Display the table [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
 
+## Permissions
+
+This command requires at least Database User, Database Viewer, or Database Monitor permissions on the database containing the table or Table Admin permissions on the specific table. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.show` `table` *TableName* `policy` `ingestionbatching`

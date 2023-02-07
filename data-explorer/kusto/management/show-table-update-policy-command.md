@@ -13,6 +13,10 @@ Show the table update policy. The [update policy](updatepolicy.md) instructs Azu
 > The source table and the table for which the update policy is defined must be in the same database.
 > The update policy function schema and the target table schema must match in their column names, types, and order.
 
+## Permissions
+
+This command requires at least Database User, Database Viewer, or Database Monitor permissions on the database containing the table or Table Admin permissions on the specific table. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
 ## Syntax
 
 **For a specified table**
