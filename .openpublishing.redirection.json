@@ -416,6 +416,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/kusto/management/access-control/role-based-authorization.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/access-control/role-based-access-control",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/kusto/management/access-control/principals-and-identity-providers.md",
       "redirect_url": "/azure/data-explorer/kusto/management/access-control/referencing-security-principals",
       "redirect_document_id": true

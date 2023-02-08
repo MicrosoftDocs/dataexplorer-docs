@@ -129,7 +129,7 @@ Grant the following privileges on an Azure Data Explorer cluster:
 * For reading (data source), the Azure AD identity must have *viewer* privileges on the target database, or *admin* privileges on the target table.
 * For writing (data sink), the Azure AD identity must have *ingestor* privileges on the target database. It must also have *user* privileges on the target database to create new tables. If the target table already exists, you must configure *admin* privileges on the target table.
 
-For more information on Azure Data Explorer principal roles, see [role-based authorization](kusto/management/access-control/role-based-authorization.md). For managing security roles, see [security roles management](kusto/management/security-roles.md).
+For more information on Azure Data Explorer principal roles, see [role-based access control](kusto/management/access-control/role-based-access-control.md). For managing security roles, see [security roles management](kusto/management/security-roles.md).
 
 ## Spark sink: writing to Azure Data Explorer
 

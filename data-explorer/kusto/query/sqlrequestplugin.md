@@ -1,9 +1,9 @@
 ---
 title: sql_request plugin - Azure Data Explorer
-description: This article describes sql_request plugin in Azure Data Explorer.
+description: Learn how to use the sql_request plugin to send an SQL query to an SQL server network endpoint. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/19/2022
+ms.date: 01/31/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -17,28 +17,22 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
 
-  `evaluate` `sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)` [`:` *OutputSchema*]
+`evaluate` `sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)` [`:` *OutputSchema*]
 
-## Arguments
+## Parameters
 
 | Name | Type | Required| Description |
 |---|---|---|---|
-| *ConnectionString* | string | &check; | Indicates the connection string that points at the SQL Server network endpoint. See [valid methods of authentication](#authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). |
-| *SqlQuery* | string | &check; | Indicates the query that is to be executed against the SQL endpoint. Must return one or more row sets, but only the first one is made available for the rest of the Kusto query. |
-| *SqlParameters* | dynamic | | Holds key-value pairs to pass as parameters along with the query. |
-|*Options* | dynamic | |Holds more advanced settings as key-value pairs. Currently, only `token` can be set, to pass a caller-provided Azure AD access token that is forwarded to the SQL endpoint for authentication.
-| *OutputSchema* | | | The names and types for the expected columns of the `sql_request` plugin output.|
+| *ConnectionString* | string | &check; | The connection string that points at the SQL Server network endpoint. See [valid methods of authentication](#authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). |
+| *SqlQuery* | string | &check; | The query that is to be executed against the SQL endpoint. The query must return one or more row sets, but only the first one is made available for the rest of the Kusto query. |
+| *SqlParameters* | dynamic | | A property bag of key-value pairs to pass as parameters along with the query. |
+|*Options* | dynamic | | A property bag of key-value pairs to pass more advanced settings along with the query. Currently, only `token` can be set, to pass a caller-provided Azure AD access token that is forwarded to the SQL endpoint for authentication.|
+| *OutputSchema* | string | | The names and types for the expected columns of the `sql_request` plugin output. Use the following syntax: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`.|
 
-The optional *OutputSchema* argument has the following syntax:
-
-`(` *ColumnName* `:` *ColumnType* [`,` ...] `)`
-
-Specifying this argument allows the plugin to be used
-in scenarios (such as a cross-cluster query) which would otherwise prevent it from running,
-and enables multiple query optimizations.
-It is therefore recommended to always specify it.
-An error is raised if the run-time schema of the first rowset returned by the SQL network endpoint
-doesn't match the *OutputSchema* schema.
+> [!NOTE]
+>
+> * Specifying the *OutputSchema* is highly recommended, as it allows the plugin to be used in scenarios that might otherwise not work without it, such as a cross-cluster query. The *OutputSchema* can also enable multiple query optimizations.
+> * An error is raised if the run-time schema of the first row set returned by the SQL network endpoint doesn't match the *OutputSchema* schema.
 
 ## Examples
 

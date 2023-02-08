@@ -9,7 +9,7 @@ ms.date: 11/22/2021
 
 Renames a materialized view.
 
-Requires [Database Admin](../access-control/role-based-authorization.md) or materialized view admin permissions.
+Requires [Database Admin](../access-control/role-based-access-control.md) or materialized view admin permissions.
 
 ## Syntax
 `.rename` `materialized-view` *OldName* `to` *NewName*

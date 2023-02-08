@@ -91,7 +91,7 @@ ts
 
 ## [Stored](#tab/stored)
 
-To store the function, see the [`.create function`](../management/create-function.md) to add the code to a stored function. Creating a function requires [database user permissions](../management/access-control/role-based-authorization.md).
+To store the function, see the [`.create function`](../management/create-function.md) to add the code to a stored function. Creating a function requires [database user permissions](../management/access-control/role-based-access-control.md).
 
 ### One time installation
 
