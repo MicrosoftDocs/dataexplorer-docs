@@ -7,17 +7,17 @@ ms.date: 02/04/2020
 ---
 # .show ingestion mapping
 
-Show the ingestion mappings (all or the one specified by name).
+Shows the ingestion mappings (all or the one specified by name).
 
 * `.show` `table` *TableName* `ingestion` *MappingKind*  `mappings`
 
 * `.show` `table` *TableName* `ingestion` *MappingKind*  `mapping` *MappingName* 
 
-Show all ingestion mappings from all mapping types:
+Shows all ingestion mappings from all mapping types:
 
 * `.show` `table` *TableName* `ingestion`  `mappings`
 
-Show all ingestion mappings on a database:
+Shows all ingestion mappings on a database:
 
 * `.show` `database` *DatabaseName* `ingestion` *MappingKind* `mappings`
 
