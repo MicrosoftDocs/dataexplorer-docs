@@ -84,10 +84,10 @@ items:
       items:
         - name: Ingestion wizard
           href: ingest-data-wizard.md
-        - name: Ingest into an existing table
+        - name: Ingest from file
           displayName: ingest data, ingestion wizard, one click, local file, existing table
           href: ingestion-wizard-existing-table.md
-        - name: Ingest into a new table
+        - name: Ingest from container
           displayName: Event Grid, ingest data, ingestion, one click, csv file
           href: ingestion-wizard-new-table.md
     - name: Data ingestion properties
