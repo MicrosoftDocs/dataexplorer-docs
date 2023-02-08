@@ -20,9 +20,9 @@ This command has several variants: In one, the extents to be dropped are specifi
 
 ## Permissions
 
-If the the *TableName* is specified, at least [Table Admin](access-control/role-based-access-control.md) permissions are required.
+If the the *TableName* is specified, you must have [Table Admin](access-control/role-based-access-control.md) permissions to run the command.
 
-If the the *TableName* isn't specified, at least [Database Admin](./access-control/role-based-access-control.md) permissions are required.
+If the the *TableName* isn't specified, you must have [Database Admin](./access-control/role-based-access-control.md) permissions to run the command.
 
 ## Syntax
 
