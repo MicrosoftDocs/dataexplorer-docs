@@ -9,7 +9,7 @@ ms.date: 02/11/2020
 
 Removes a column from a table.
 
-To drop multiple columns from a table, see [drop table columns](#drop-table-columns).
+To drop multiple columns from a table, see [drop multiple table columns](#drop-multiple-table-columns).
 
 > [!NOTE]
 > This command does not physically delete the data, and does not reduce the cost of storage
