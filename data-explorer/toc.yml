@@ -84,7 +84,7 @@ items:
       items:
         - name: Ingestion wizard
           href: ingest-data-wizard.md
-        - name: Ingest from file
+        - name: Ingest from local file
           displayName: ingest data, ingestion wizard, one click, local file, existing table
           href: ingestion-wizard-existing-table.md
         - name: Ingest from container
