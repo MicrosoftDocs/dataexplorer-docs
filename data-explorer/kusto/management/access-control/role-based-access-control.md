@@ -15,7 +15,11 @@ ARM permissions, such as being a subscription owner or a cluster owner, grant ac
 
 The following table outlines the roles and permissions available at each scope.
 
-The **Permissions** column displays the access granted to each role. The **Dependencies** column lists the minimum roles required to obtain the role in that row. For example, to become a Table Admin, you must first have a role like Database User or a role that includes the permissions of Database User, such as Database Admin or AllDatabasesAdmin. When multiple roles are listed in the **Dependencies** column, only one of them is needed to obtain the role. The **Manage** column offers ways to add or remove role principals.
+The **Permissions** column displays the access granted to each role.
+
+The **Dependencies** column lists the minimum roles required to obtain the role in that row. For example, to become a Table Admin, you must first have a role like Database User or a role that includes the permissions of Database User, such as Database Admin or AllDatabasesAdmin. When multiple roles are listed in the **Dependencies** column, only one of them is needed to obtain the role.
+
+The **Manage** column offers ways to add or remove role principals.
 
 |Scope|Role|Permissions|Dependencies|Manage|
 |--|--|--|--|
