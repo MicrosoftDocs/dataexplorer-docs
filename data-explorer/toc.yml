@@ -88,7 +88,7 @@ items:
           displayName: ingest data, ingestion wizard, one click, existing table
           href: ingestion-wizard-existing-table.md
         - name: Ingest from container
-          displayName: Event Grid, ingest data, ingestion, one click, csv file
+          displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
           href: ingestion-wizard-new-table.md
     - name: Data ingestion properties
       href: ingestion-properties.md
