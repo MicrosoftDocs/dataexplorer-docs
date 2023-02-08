@@ -12,7 +12,7 @@ For dropping multiple functions from the database, see [.drop functions](#drop-f
 
 ## Permissions
 
-This command requires at least [Function Admin](access-control/role-based-access-control.md) permissions.
+You must have [Function Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

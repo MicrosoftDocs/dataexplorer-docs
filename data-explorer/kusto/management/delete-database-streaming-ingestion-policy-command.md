@@ -17,7 +17,7 @@ Use the classic (bulk) ingestion instead of streaming ingestion when the amount 
 
 ## Permissions
 
-This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
+You must have [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

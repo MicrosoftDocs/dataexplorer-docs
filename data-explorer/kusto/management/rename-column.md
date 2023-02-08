@@ -12,7 +12,7 @@ To change the name of multiple columns, see [below](#rename-columns).
 
 ## Permissions
 
-The command requires at least [Table Admin](../management/access-control/role-based-access-control.md) permissions.
+You must have [Table Admin](../management/access-control/role-based-access-control.md) permissions to run this command.
 
 ### Syntax
 

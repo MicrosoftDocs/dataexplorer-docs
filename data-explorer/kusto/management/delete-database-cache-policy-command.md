@@ -11,7 +11,7 @@ Delete the database cache policy.  To speed up queries on data, Azure Data Explo
 
 ## Permissions
 
-This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
+You must have [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
