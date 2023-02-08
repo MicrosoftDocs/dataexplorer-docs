@@ -11,11 +11,7 @@ Shows a table-level or database-level extent tags retention policy. For more inf
 
 ## Permissions
 
-To see the extent tags retention policy on a database, you must have at least Database User, Database Viewer, or Database Monitor permissions.
-
-To see the extent tags retention policy on a table, you must have at least Table Admin permissions.
-
-For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 

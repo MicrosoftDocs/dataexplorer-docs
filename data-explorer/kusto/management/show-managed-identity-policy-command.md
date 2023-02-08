@@ -11,9 +11,9 @@ This command returns the ManagedIdentity policy of the cluster or the specified 
 
 ## Permissions
 
-To see the managed identity policy on the cluster, you must have at least AllDatabasesMonitor permissions.
+To see the managed identity policy on the cluster, you must have AllDatabasesMonitor permissions.
 
-To see the managed identity policy on a database, you must have at least Database User, Database Viewer, or Database Monitor permissions.
+To see the managed identity policy on a database, you must have Database User, Database Viewer, or Database Monitor permissions.
 
 For more information, see [role-based access control](access-control/role-based-access-control.md).
 

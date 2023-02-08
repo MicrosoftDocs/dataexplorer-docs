@@ -28,11 +28,9 @@ The types of `.show extents` commands are as follows:
 
 ## Permissions
 
-To see extents on a table, you must have at least Table Admin permissions.
+To see extents on the cluster, you must have AllDatabasesMonitor permissions.
 
-To see extents on a database, you must have at least Database User, Database Viewer, or Database Monitor permissions.
-
-To see extents on the cluster, you must have at least AllDatabasesMonitor permissions.
+To see extents on a database, you must have Database User, Database Viewer, or Database Monitor permissions.
 
 For more information, see [role-based access control](access-control/role-based-access-control.md).
 
