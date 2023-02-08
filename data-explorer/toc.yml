@@ -551,7 +551,7 @@ items:
       - name: Logic Apps
         href: kusto/tools/logicapps.md
     - name: Azure Cosmos DB
-      href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
+      href: ingest-data-cosmos-db-connection.md
     - name: Telegraf
       href: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
     - name: Apache Spark Connector
