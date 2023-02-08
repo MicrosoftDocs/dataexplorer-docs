@@ -10,6 +10,10 @@ ms.date: 08/03/2020
 Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest.
 The command will not return any results if executed on a [follower database](../../../follower.md), it must be executed against the leader database.
 
+## Permissions
+
+This command requires at least Database User, Database Viewer, or Database Monitor permissions. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.show` `continuous-export` *ContinuousExportName* `failures`

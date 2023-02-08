@@ -9,6 +9,10 @@ ms.date: 05/06/2021
 
 Returns the properties of a specified continuous export or all continuous exports in the database.
 
+## Permissions
+
+This command requires at least Database User, Database Viewer, or Database Monitor permissions. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.show` `continuous-export` *ContinuousExportName*

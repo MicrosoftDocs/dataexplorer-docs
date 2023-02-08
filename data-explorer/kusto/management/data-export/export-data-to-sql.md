@@ -9,7 +9,11 @@ ms.date: 02/13/2020
 
 Export data to SQL allows you to run a query and have its results sent to a table in a SQL database, such as a SQL database hosted by the Azure SQL Database service.
 
-**Syntax**
+## Permissions
+
+This command requires at least [Table Admin](../access-control/role-based-access-control.md) permissions.
+
+## Syntax
 
 `.export` [`async`] `to` `sql` *SqlTableName* *SqlConnectionString* [`with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]
  `<|` *Query*
@@ -77,7 +81,7 @@ There are a number of limitations and restrictions when exporting data to a SQL 
 * [Use Azure Active Directory Authentication for authentication with SQL Database](/azure/sql-database/sql-database-aad-authentication)
 * [Azure AD authentication extensions for Azure SQL DB and SQL DW tools](https://azure.microsoft.com/blog/azure-ad-authentication-extensions-for-azure-sql-db-and-sql-dw-tools/)
 
-**Examples** 
+## Examples
 
 In this example, Kusto runs the query and then exports the first record set produced by the query to the `MySqlTable` table in the `MyDatabase` database in server `myserver`.
 

@@ -27,7 +27,10 @@ Stored query results behave like tables, in that the order of records isn't pres
 ## Prerequisites
 
 * [EngineV3](../../engine-v3.md)
-* `Database Viewer` or higher access role
+
+## Permissions
+
+This command requires at least Database User, Database Viewer, or Database Monitor permissions. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 
