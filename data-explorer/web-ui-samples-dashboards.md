@@ -1,11 +1,11 @@
 ---
-title: Azure Data Explorer web UI sample dashboards
-description: In this how-to article, you learn how to use the samples gallery in the Azure Data Explorer web UI to explore dashboards.
+title: "Quickstart: Visualize sample data dashboards in Azure Data Explorer web UI"
+description: In this how-to article, you learn how to use the visualize sample data dashboards from the samples gallery in the Azure Data Explorer web UI.
 ms.topic: quickstart
 ms.date: 01/26/2023
 ---
 
-# Explore the Azure Data Explorer web UI sample dashboards
+# Quickstart: Visualize sample data dashboards
 
 The Azure Data Explorer web UI has a samples gallery for you to view built-in dashboards without the need to [create your own cluster and database](start-for-free-web-ui.md) or [ingest data](ingest-data-overview.md). Dashboards allow you to manipulate different parameters and visuals to gain insights from your data.
 

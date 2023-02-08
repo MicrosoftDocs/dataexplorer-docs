@@ -1,10 +1,10 @@
 ---
-title: Query data in the Azure Data Explorer web UI samples gallery
+title: Explore sample data in the Azure Data Explorer web UI samples gallery
 description: In this how-to article, you learn how to query data in the samples gallery in the Azure Data Explorer web UI.
 ms.topic: how-to
 ms.date: 01/29/2023
 ---
-# Query data in the Azure Data Explorer web UI samples gallery
+# Explore the samples gallery
 
 The Azure Data Explorer web UI has a samples gallery for you to practice writing [Kusto Query Language (KQL)](kusto/query/index.md) queries and commands. This gallery provides sample data with guided tutorials in a free and publicly accessible [**help** cluster](https://dataexplorer.azure.com/clusters/help).
 

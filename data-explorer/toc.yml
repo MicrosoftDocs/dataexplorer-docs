@@ -32,14 +32,14 @@ items:
 - name: Quickstarts
   expanded: true
   items:
-  - name: Create cluster and database - Azure portal
+  - name: Create a cluster and database
     href: create-cluster-database-portal.md
-  - name: Ingest sample data
+  - name: Get sample data
     href: ingest-sample-data.md
     displayName: Azure Data Explorer web UI
-  - name: Query data in Azure Data Explorer web UI
+  - name: Query sample data
     href: web-query-data.md
-  - name: Explore Azure Data Explorer dashboards
+  - name: Visualize sample data dashboards
     href: web-ui-samples-dashboards.md
 - name: Tutorials
   items:
@@ -80,7 +80,7 @@ items:
     - name: Data ingestion overview
       displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
       href: ingest-data-overview.md
-    - name: Azure Data Explorer web UI
+    - name: Get data in the web UI
       items:
         - name: Ingestion wizard
           href: ingest-data-wizard.md
@@ -220,22 +220,16 @@ items:
       href: ingest-json-formats.md
   - name: Query data
     items:
-    - name: Azure Data Explorer web UI
+    - name: Query data in the web UI
       items:
-        - name: Query sample data
+        - name: Explore the sample gallery
           href: web-ui-samples-query.md
         - name: Customize settings
           href: web-customize-settings.md
-        - name: Results grid
+        - name: Explore the results grid
           href: web-results-grid.md
         - name: Share queries
           href: web-share-queries.md
-    - name: Evaluate query performance in your cluster
-      href: kusto/api/load-test-cluster.md
-    - name: Optimize for high concurrency
-      href: high-concurrency.md
-    - name: Query cold data with hot windows
-      href: hot-windows.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
@@ -254,6 +248,8 @@ items:
       href: high-concurrency.md
     - name: Set timeout limits
       href: set-timeout-limits.md
+    - name: Query cold data with hot windows
+      href: hot-windows.md
     - name: Time Series Analysis and Machine Learning
       items:
         - name: Azure Data Explorer Python library
@@ -264,7 +260,7 @@ items:
     items:
     - name: Data visualization overview
       href: viz-overview.md
-    - name: Azure Data Explorer web UI
+    - name: Visualize dashboards in the web UI
       items:
       - name: Use dashboards
         href: azure-data-explorer-dashboards.md

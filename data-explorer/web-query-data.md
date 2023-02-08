@@ -1,14 +1,14 @@
 ---
-title: 'Quickstart: Query data in the Azure Data Explorer web UI'
-description: In this quickstart, you'll learn how to query and share data in the Azure Data Explorer web UI.
+title: 'Quickstart: Query sample data in the Azure Data Explorer web UI'
+description: In this quickstart, you'll learn how to query and share sample data in the Azure Data Explorer web UI.
 ms.reviewer: olgolden
 ms.topic: quickstart
-ms.date: 09/07/2022
+ms.date: 02/01/2021
 ms.custom: mode-portal
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
 ---
-# Quickstart: Query data in the Azure Data Explorer web UI
+# Quickstart: Query sample data
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data. Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share Kusto Query Language commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer web UI](https://dataexplorer.azure.com).
 The Azure Data Explorer web UI can also be hosted by other web portals in an HTML iframe. For more information on how to host the Azure Data Explorer web UI and the Monaco editor used, see [Monaco IDE integration](kusto/api/monaco/monaco-kusto.md).
