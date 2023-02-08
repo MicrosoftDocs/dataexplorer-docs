@@ -11,7 +11,7 @@ Creates or alters a continuous export job.
 
 ## Permissions
 
-This command requires at least [Database Admin](../access-control/role-based-access-control.md) permissions.
+You must have [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

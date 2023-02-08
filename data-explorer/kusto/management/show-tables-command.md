@@ -14,7 +14,7 @@ Returns a set that contains the specified table or all tables in the database.
 
 ## Permissions
 
-This command requires at least Database User, Database Viewer, or Database Monitor permissions. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Example
 

@@ -11,7 +11,7 @@ Shows the auto delete policy that is applied to a table. For more information, s
 
 ## Permissions
 
-You must have Database User, Database Viewer, Database Monitor, or Table Admin permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 

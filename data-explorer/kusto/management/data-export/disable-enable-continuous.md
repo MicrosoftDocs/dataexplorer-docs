@@ -14,7 +14,7 @@ Continuous exports are executed by last run time in ascending order (oldest expo
 
 ## Permissions
 
-This command requires at least [Database Admin](../access-control/role-based-access-control.md) permissions.
+You must have [Database Admin](../access-control/role-based-access-control.md) permissions to run these commands.
 
 ## Syntax
 
