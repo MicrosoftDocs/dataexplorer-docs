@@ -11,7 +11,7 @@ Sets the `DocString` property of one or more columns of the specified table.  Co
 
 ## Permissions
 
-This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+You must have [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

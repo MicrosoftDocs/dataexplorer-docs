@@ -11,7 +11,7 @@ Change a database's [merge policy](mergepolicy.md). The merge policy defines if 
 
 ## Permissions
 
-This command requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
+You must have [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
