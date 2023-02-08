@@ -11,7 +11,7 @@ The command sets the cluster [query weak consistency policy](./query-weak-consis
 
 ## Permissions
 
-This command requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions.
+You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

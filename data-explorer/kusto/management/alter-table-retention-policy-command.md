@@ -11,7 +11,7 @@ Change a table's [retention policy](retentionpolicy.md). The retention policy co
 
 ## Permissions
 
-This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+You must have [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

@@ -13,7 +13,7 @@ If the policy isn't set for a table, the database-level policy applies. If it is
 
 ## Permissions
 
-This command requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+You must have [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Defaults and limits
 

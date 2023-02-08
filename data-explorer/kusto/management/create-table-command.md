@@ -13,7 +13,7 @@ The command must run in context of a specific database.
 
 ## Permissions
 
-This command requires at least [Database User](access-control/role-based-access-control.md) permissions.
+You must have [Database User](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
