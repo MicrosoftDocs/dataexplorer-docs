@@ -84,9 +84,12 @@ items:
       items:
         - name: Ingestion wizard
           href: ingest-data-wizard.md
-        - name: Ingest JSON data using the wizard
+        - name: Ingest into an existing table
           displayName: ingest data, ingestion wizard, one click, local file, existing table
           href: ingestion-wizard-existing-table.md
+        - name: Ingest into a new table
+          displayName: Event Grid, ingest data, ingestion, one click, csv file
+          href: ingestion-wizard-new-table.md
     - name: Data ingestion properties
       href: ingestion-properties.md
     - name: Formats for data ingestion
@@ -130,9 +133,6 @@ items:
       - name: Event Grid data connection
         displayName: ingest
         href: ingest-data-event-grid-overview.md
-      - name: Ingestion wizard
-        displayName: Event Grid, ingest data, ingestion, one click, csv file
-        href: ingestion-wizard-new-table.md
       - name: Azure portal
         displayName: Event Grid, ingest, data connection
         href: ingest-data-event-grid.md
