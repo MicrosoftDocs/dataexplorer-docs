@@ -11,7 +11,7 @@ Creates a materialized view or alters an existing materialized view.
 
 ## Permissions
 
-This command requires at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions.
+You must have [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Limitations
 
