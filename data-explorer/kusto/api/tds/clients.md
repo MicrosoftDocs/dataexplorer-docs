@@ -293,10 +293,3 @@ Add the required JAR-files to the front of MATLAB's static classpath by creating
 
    > [!NOTE]
    > Replace *KUSTO_TABLE* with an existing table in Azure Data Explorer.
-
-## Sending T-SQL queries over the REST API
-
-The [Azure Data Explorer REST API](../rest/index.md) can accept and execute T-SQL queries.
-
-1. Send the request to the query endpoint with the **csl** property set to the text of the T-SQL query.
-1. Set **[request property](../netfx/request-properties.md)** **OptionQueryLanguage** to **sql**.
