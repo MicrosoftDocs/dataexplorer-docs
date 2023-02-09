@@ -60,7 +60,7 @@ Clients on a VNet using a private endpoint should use the same connection string
 By default, Azure Data Explorer creates a [private DNS zone](/azure/dns/private-dns-overview) attached to the VNet with the necessary updates for the private endpoints. However, if you're using your own DNS server, you may need to make more changes to your DNS configuration.
 
 > [!IMPORTANT]
-> We recommend that your Azure tenant be configured to align with the recommendations found in this [Private Endpoint and DNS configuration at Scale](/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale) article from the Cloud Adoption Framework. Azure Data Explorer is one of many services in Azure that leverages Private Endpoints and you will benefit from following this guidance. Specifically, this article will instruct you on how to automate Private DNS entry creation using Azure Policies. This will prove invaluable as you scale out your Azure Data Explorer footprint.
+> For optimal configuration, we recommend that you align your deployment with the recommendations in the [Private Endpoint and DNS configuration at Scale](/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale) Cloud Adoption Framework article. Use the information in the article to automate Private DNS entry creation using Azure Policies, making it easier to manage your deployment as you scale.
 
 :::image type="content" source="media/security-network-private-endpoint/pe-dns-config-inline.png" alt-text="Screenshot of the DNS configuration page, showing the DNS configuration of the private endpoint." lightbox="media/security-network-private-endpoint/pe-dns-config.png":::
 
