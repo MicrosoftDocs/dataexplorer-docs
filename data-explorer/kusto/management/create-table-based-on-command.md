@@ -20,6 +20,12 @@ Requires [Database admin permission](access-control/role-based-access-control.md
 
 `.create` `table` *TableName* `based-on` *OtherTable*  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
+If a table with the same (case-sensitive) name as the one specified in the *OtherTable* argument already exists, the command fails.
+
+If the *FolderName* argument is not provided, the value for that argument is copied from the one set for the existing *TableName*, so that both tables will end up existing under the same folder.
+
+If the argument *Documentation* is not provided, it is automatically set to **Created based on *TableName***. 
+
 ## Arguments
 
 * *TableName*: New table name
