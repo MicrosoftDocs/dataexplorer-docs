@@ -3,7 +3,7 @@ title: .create table based-on - Azure Data Explorer
 description: This article describes the `.create table based-on` command in Azure Data Explorer
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 12/29/2020
+ms.date: 02/12/2023
 ---
 # .create table based-on
 
@@ -20,18 +20,14 @@ Requires [Database admin permission](access-control/role-based-access-control.md
 
 `.create` `table` *TableName* `based-on` *OtherTable*  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
-If a table with the same (case-sensitive) name as the one specified in the *OtherTable* argument already exists, the command fails.
+## Parameters
 
-If the *FolderName* argument is not provided, the value for that argument is copied from the one set for the existing *TableName*, so that both tables will end up existing under the same folder.
-
-If the argument *Documentation* is not provided, it is automatically set to **Created based on *TableName***. 
-
-## Arguments
-
-* *TableName*: New table name
-* *OtherTable*: Source table name
-* *Documentation*: Override default table documentation string
-* *FolderName*: Override target folder name
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TableName* | string | &check; | The name of the table to create. The case-senestive name must be unique in the database. |
+| *OtherTable*:*columnType* | string | &check; | The name of an existing table to use as the source for the columns, docstring, and folder of the table being created. |
+| *Documentation* | string | | Free text describing the entity to be added. This string is presented in various UX settings next to the entity names. The default value is *Created based on **<TableName>***.  |
+| *FolderName* | string | | The name of the folder where to add the table. The default is the same folder as *TableName*.  |
 
 ## Returns
 
