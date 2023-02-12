@@ -9,7 +9,7 @@ ms.date: 02/05/2023
 
 Azure Data Explorer supports a [subset of the T-SQL language](../tds/sqlknownissues.md). For users who are more comfortable with SQL or have applications that are compatible with SQL, using T-SQL can be a useful way to interact with the data stored in Azure Data Explorer. In this article, we'll provide steps and examples for how to send T-SQL queries over the REST API.
 
-## Send a T-SQL query
+## T-SQL query request
 
 To send T-SQL queries to the API, create a `POST` request with the following components.
 
