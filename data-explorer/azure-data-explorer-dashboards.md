@@ -3,25 +3,27 @@ title: Visualize data with the Azure Data Explorer dashboard
 description: Learn how to visualize data with the Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 01/31/2023
+ms.date: 02/12/2023
 ---
 
 # Visualize data with Azure Data Explorer dashboards 
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides a web application that enables you to run queries and build dashboards. Dashboards are available in the stand-alone web application, the [Azure Data Explorer web UI](web-query-data.md). Azure Data Explorer is also integrated with other dashboard services like [Power BI](power-bi-data-connector.md?tabs=connector) and [Grafana](grafana.md).
-
-Azure Data Explorer dashboards provide three main advantages:
-
-* Natively export queries from the Azure Data Explorer web UI to Azure Data Explorer dashboards.
-* Explore the data in the Azure Data Explorer web UI.
-* Optimized dashboard rendering performance.
-
-The following image depicts an Azure Data Explorer dashboard.
-
-:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Screenshot showing an Azure Data Explorer web UI dashboard.":::
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Explore your data from end-to-end in the Azure Data Explorer web application, starting with [data ingestion](ingest-data-wizard.md), running [queries](web-query-data.md), and ultimately building dashboards. Using the web UI, you can natively export Kusto Query Language (KQL) queries to a dashboard as visuals and later modify their underlying queries as needed. In addition to ease of data exploration, this fully integrated Azure Data Explorer dashboard experience provides improved query and visualization performance.
 
 > [!IMPORTANT]
 > Your data is secure. Dashboards and dashboard-related metadata about users is encrypted at rest using Microsoft-managed keys.
+
+The following image shows a sample Azure Data Explorer dashboard:
+
+:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Screenshot showing an Azure Data Explorer web UI dashboard." lightbox="media/adx-dashboards/dash.png":::
+
+To interactively explore sample dashboards, see [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md).
+
+You can create a dashboard in the Azure Data Explorer web UI in the following ways. In this article, you'll create a new dashboard.
+
+* [Pin from query](web-share-queries.md#pin-to-dashboard)
+* [Import a dashboard file](#to-create-new-dashboard-from-a-file)
+* [Create a new dashboard](#create-a-new-dashboard)
 
 ## Prerequisites
 
@@ -29,17 +31,20 @@ The following image depicts an Azure Data Explorer dashboard.
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
-## Create a dashboard
+## Create a new dashboard
 
-You can create a dashboard in the Azure Data Explorer web UI using the following steps. Alternatively, you can create a dashboard by [importing a dashboard file](#to-create-new-dashboard-from-a-file).
-
-1. In the navigation bar, select **Dashboards (Preview)** and then select **New dashboard**.
+1. In the navigation bar, select **Dashboards** and then select **New dashboard**.
 
     :::image type="content" source="media/adx-dashboards/new-dashboard.png" alt-text="New dashboard.":::
 
 1. Enter a dashboard name and then select **Create**.
 
     :::image type="content" source="media/adx-dashboards/new-dashboard-popup.png" alt-text="Create a dashboard.":::
+
+> [!NOTE]
+> You must be in **Editing** mode to make changes to a dashboard.
+>
+> :::image type="content" source="media/adx-dashboards/editing-mode.png" alt-text="Screenshot of editing mode in dashboards.":::
 
 ## Add data source
 
@@ -103,7 +108,7 @@ For more information about generating parameter queries, see [Create a parameter
 
 ## Add tile
 
-**Add tile** uses Kusto Query Language snippets to retrieve data and render visuals. Each tile/query can support a single visual.
+In addition to pinning a tile from a query, you can add new tiles directly from the existing dashboard. **Add tile** uses Kusto Query Language snippets to retrieve data and render visuals. Each tile/query can support a single visual.
 
 1. Select **Add tile** from the dashboard canvas or the top menu bar.
 
@@ -113,16 +118,16 @@ For more information about generating parameter queries, see [Create a parameter
     1. Select the data source from the drop-down menu.
     1. Type the query, and the select **Run**. For more information about generating queries that use parameters, see [Use parameters in your query](dashboard-parameters.md#use-parameters-in-your-query).
 
-    1. Select **+ Add visual**.
+    1. Select **Visual**.
 
     :::image type="content" source="media/adx-dashboards/initial-query.png" alt-text="Execute query.":::
 
-1. In the **Visual formatting** pane, select **Visual type** to choose the type of visual.
+1. In the visual tab, select **Visual type** to choose the type of visual.
 1. Select **Apply changes** to pin the visual to the dashboard.
 
     :::image type="content" source="media/adx-dashboards/add-visual.png" alt-text="Add visual to query.":::
 
-1. You can resize the visual and then **Save changes** to save the dashboard.
+1. You can resize the visual and then select the **Save** icon.
 
     :::image type="content" source="media/adx-dashboards/save-dashboard.png" alt-text="save dashboard.":::
 
@@ -253,8 +258,7 @@ You can update an existing dashboard, or restore a previous version, as follows:
 
 ## Enable auto refresh
 
-1. Select **Edit** in dashboard menu to switch to edit mode.
-1. Select **Auto refresh**.
+1. Select the **More** menu **[...]** > **Auto refresh**.
 
     :::image type="content" source="media/adx-dashboards/auto-refresh.png" alt-text="Select auto refresh.":::
 
@@ -277,3 +281,5 @@ You can update an existing dashboard, or restore a previous version, as follows:
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
 * [Customize dashboard visuals](dashboard-customize-visuals.md)
 * [Query data in Azure Data Explorer](web-query-data.md)
+* [Power BI](power-bi-data-connector.md?tabs=connector) 
+* [Grafana](grafana.md)
