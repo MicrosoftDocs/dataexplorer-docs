@@ -53,7 +53,7 @@ The following example shows a request body with a T-SQL query in the `csl` field
 }
 ```
 
-The response will be in a format similar to the following.
+The response is in a format similar to the following.
 
 ```json
 {
