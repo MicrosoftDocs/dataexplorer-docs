@@ -79,3 +79,8 @@ The response will be in a format similar to the following.
     ]
 }
 ```
+
+## Next steps
+
+* Learn more about [T-SQL](../tds/t-sql.md) in Azure Data Explorer
+* See the [REST API overview](index.md)
