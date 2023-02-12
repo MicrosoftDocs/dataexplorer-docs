@@ -24,7 +24,7 @@ must authenticate by using the HTTP `Authorization` request header.
 
 There are many different methods to get an Azure AD access token. To learn more, see [user authentication](../../management/access-control/how-to-authenticate-with-aad.md#user-authentication) and [application authentication](../../management/access-control/how-to-authenticate-with-aad.md#application-authentication).
 
-The following steps guide you through using the Azure CLI to create an application principal and requesting an Azure AD bearer token for this principal.
+The following steps will guide you through using the Azure CLI to create an application principal and requesting an Azure AD bearer token for this principal.
 
 1. Login to the Azure CLI.
 
@@ -44,7 +44,7 @@ The following steps guide you through using the Azure CLI to create an applicati
       az ad sp create-for-rbac -n <SERVICE_PRINCIPAL_NAME> 
       ```
 
-  This will create an Azure Active Directory Service Principal and return the `appId`, `displayName`, `password`, and `tenantId` for the service principal.
+      This will create an Azure Active Directory Service Principal and return the `appId`, `displayName`, `password`, and `tenantId` for the service principal.
 
 1. Grant the application principal access to your database. For example, in the context of your database, use the following command to add the principal as a user.
 
