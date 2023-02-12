@@ -1,13 +1,13 @@
 ---
 title: Tabular expression statements - Azure Data Explorer
-description: This article describes Tabular expression statements in Azure Data Explorer.
+description: Learn how to use tabular expression statements to produce tabular data sets.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/21/2021
 ---
 # Tabular expression statements
 
-The tabular expression statement is what people usually have in mind when they talk about queries. This statement usually appears last in the statement list, and both its input and its output consists of tables or tabular data sets. 
+The tabular expression statement is what people usually have in mind when they talk about queries. This statement usually appears last in the statement list, and both its input and its output consists of tables or tabular data sets.
 Any two statements must be separated by a semicolon.
 
 Azure Data Explorer uses a data flow model for the tabular expression statement. A tabular expression statement is generally composed of *tabular data sources*
@@ -18,9 +18,9 @@ Each operator accepts a tabular data set "from the pipe", and other inputs inclu
 
 *Source* `|` *Operator1* `|` *Operator2* `|` *RenderInstruction*
 
-- *Source* - tabular data sources such as Azure Data Explorer tables
-- *Operator* - tabular data operators such as filters and projections
-- *RenderInstruction* - rendering operators or instructions 
+* *Source* - tabular data sources such as Azure Data Explorer tables
+* *Operator* - tabular data operators such as filters and projections
+* *RenderInstruction* - rendering operators or instructions
 
 ## Tabular data sources
 

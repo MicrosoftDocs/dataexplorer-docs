@@ -1,6 +1,6 @@
 ---
 title: set_has_element() - Azure Data Explorer
-description: This article describes set_has_element() in Azure Data Explorer.
+description: Learn how to use the set_has_element() function to determine if the input set contains the specified value.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/30/2023
