@@ -7,7 +7,7 @@ ms.date: 02/05/2023
 
 # Send T-SQL queries via the REST API
 
-Azure Data Explorer supports a [subset of the T-SQL language](../tds/sqlknownissues.md). For users who are more comfortable with SQL or have applications that are compatible with SQL, using T-SQL can be a useful way to interact with the data stored in Azure Data Explorer. In this article, we'll provide steps and examples for how to send T-SQL queries over the REST API.
+Azure Data Explorer supports a [subset of the T-SQL language](../tds/sqlknownissues.md). In this article, you'll learn how to send T-SQL queries via the REST API. If you have an application that's compatible with SQL, this method of querying your data stored in Azure Data Explorer can be especially useful.
 
 ## T-SQL query request
 
@@ -15,7 +15,7 @@ To send T-SQL queries to the API, create a `POST` request with the following com
 
 * Request URL: The URL should be formatted as `https://<cluster_uri>/v1/rest/query`, where `<cluster_uri>` is the URI of your cluster containing the table you want to query.
 
-* Headers: Set the following mandatory headers and any [optional headers](request.md#request-headers) that you want to set. Replace `<cluster_uri>` and `<bearer_token>` with your specific cluster URI and bearer token values.
+* Headers: Set the following [headers](request.md#request-headers). Replace `<cluster_uri>` and `<bearer_token>` with your specific cluster URI and bearer token values.
 
     ```makefile
     Accept:application/json
