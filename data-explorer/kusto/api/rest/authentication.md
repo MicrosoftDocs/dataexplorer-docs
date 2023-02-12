@@ -12,14 +12,13 @@ must authenticate by using the HTTP `Authorization` request header.
 
 ## Syntax
 
-`Authorization:` *AuthScheme* *AuthParameters*
+`Authorization:` `Bearer` *AuthToken*
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *AuthScheme*| string| &check;| The type of authentication. The value should be `Bearer`.|
-| *AuthParameters*| string | &check; | An Azure Active Directory (Azure AD) access token for the service.|
+| *AuthToken*| string | &check; | An Azure Active Directory (Azure AD) access token for the service.|
 
 ## How to get an access token
 
@@ -49,7 +48,7 @@ The following steps will take you through how to use the Azure CLI to create an 
 
   This will create an Azure Active Directory Service Principal and return the `appId`, `displayName`, `password`, and `tenantId` for the service principal.
 
-1. Grant the application principal access to your database. For example, in the context of your Azure Data Explorer database, use the following command to add the principal as a user.
+1. Grant the application principal access to your database. For example, in the context of your database, use the following command to add the principal as a user.
 
   ```kusto
   .add database <DATABASE> users ('aadapp=<appId>;<tenantId>')
