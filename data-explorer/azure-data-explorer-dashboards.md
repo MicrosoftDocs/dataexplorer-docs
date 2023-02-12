@@ -19,12 +19,6 @@ The following image shows a sample Azure Data Explorer dashboard:
 
 To interactively explore sample dashboards, see [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md).
 
-You can create a dashboard in the Azure Data Explorer web UI in the following ways. In this article, you'll start by creating a new dashboard.
-
-* [Pin from query](web-share-queries.md#pin-to-dashboard)
-* [Import a dashboard file](#to-create-new-dashboard-from-a-file)
-* [Create a new dashboard](#create-a-new-dashboard)
-
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
