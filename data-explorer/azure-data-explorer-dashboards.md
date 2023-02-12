@@ -41,11 +41,6 @@ You can create a dashboard in the Azure Data Explorer web UI in the following wa
 
     :::image type="content" source="media/adx-dashboards/new-dashboard-popup.png" alt-text="Create a dashboard.":::
 
-> [!NOTE]
-> You must be in **Editing** mode to make any changes to a dashboard.
->
-> :::image type="content" source="media/adx-dashboards/editing-mode.png" alt-text="Screenshot of editing mode in dashboards.":::
-
 ## Add data source
 
 A single dashboard can show visuals from one or more clusters.
