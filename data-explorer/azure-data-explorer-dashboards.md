@@ -8,7 +8,7 @@ ms.date: 02/12/2023
 
 # Visualize data with Azure Data Explorer dashboards 
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Explore your data from end-to-end in the Azure Data Explorer web application, starting with [data ingestion](ingest-data-wizard.md), running [queries](web-query-data.md), and ultimately building dashboards. Using the web UI, you can natively export Kusto Query Language (KQL) queries to a dashboard as visuals and later modify their underlying queries as needed. In addition to ease of data exploration, this fully integrated Azure Data Explorer dashboard experience provides improved query and visualization performance.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Explore your data from end-to-end in the Azure Data Explorer web application, starting with [data ingestion](ingest-data-wizard.md), running [queries](web-query-data.md), and ultimately building dashboards. A dashboard is a collection of tiles, optionally organized in pages, where each tile has an underlying query and a visual representation. Using the web UI, you can natively export Kusto Query Language (KQL) queries to a dashboard as visuals and later modify their underlying queries as needed. In addition to ease of data exploration, this fully integrated Azure Data Explorer dashboard experience provides improved query and visualization performance.
 
 > [!IMPORTANT]
 > Your data is secure. Dashboards and dashboard-related metadata about users is encrypted at rest using Microsoft-managed keys.
@@ -59,13 +59,9 @@ A single dashboard can show visuals from one or more clusters.
 
     :::image type="content" source="media/adx-dashboards/data-source-pane.png" alt-text="Data source pane.":::
 
-## Use Parameters
-
-Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with your tile(s).  For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
-
 ## Add tile
 
-In addition to pinning a tile from a query, you can add new tiles directly from the existing dashboard. **Add tile** uses Kusto Query Language snippets to retrieve data and render visuals. Each tile/query can support a single visual.
+Dashboard tiles use Kusto Query Language snippets to retrieve data and render visuals. Each tile/query can support a single visual.
 
 1. Select **Add tile** from the dashboard canvas or the top menu bar.
 
@@ -87,6 +83,27 @@ In addition to pinning a tile from a query, you can add new tiles directly from 
 1. You can resize the visual and then select the **Save** icon.
 
     :::image type="content" source="media/adx-dashboards/save-dashboard.png" alt-text="save dashboard.":::
+
+## Pin tile from query
+
+You can also pin a query from the [query tab of the web UI](web-query-data.md).
+
+To pin a query:
+
+1. Create and run the query whose output you want to visualize in the dashboard.
+1. Select **Share** > **Pin to dashboard**.
+1. In the **Pin to dashboard** pane:
+    1. Provide a **Query name**.
+    1. Select **Use existing** or **Create new**.
+    1. Provide **Dashboard name**
+    1. Select the **View dashboard after creation** checkbox (if it's a new dashboard).
+    1. Select **Pin**
+
+    :::image type="content" source="media/web-query-data/pin-to-dashboard.png" alt-text="Screenshot of the Pin to dashboard pane.":::
+
+## Use Parameters
+
+Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with your tile(s).  For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
 
 ## Share dashboards
 
