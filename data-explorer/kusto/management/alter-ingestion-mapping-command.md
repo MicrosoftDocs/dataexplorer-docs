@@ -42,7 +42,7 @@ Alters an existing ingestion mapping that is associated with a specific table/da
 ```
 [
     { "column" : "rownumber", "datatype" : "int", "Properties":{"Path":"$.rownumber"}},
-    { "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}
+    { "column" : "rowguid", "DataType":"string", "Properties":{"Path":"$.rowguid"}}
 ]
 ```
 
