@@ -20,7 +20,7 @@ must authenticate by using the HTTP `Authorization` request header.
 |--|--|--|--|
 | *AccessToken*| string | &check; | An Azure Active Directory (Azure AD) access token for the service.|
 
-## How to get an access token
+## Example
 
 There are many different methods to get an Azure AD access token. To learn more, see [user authentication](../../management/access-control/how-to-authenticate-with-aad.md#user-authentication) and [application authentication](../../management/access-control/how-to-authenticate-with-aad.md#application-authentication).
 
