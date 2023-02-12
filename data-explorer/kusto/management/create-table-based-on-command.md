@@ -26,7 +26,7 @@ Requires [Database admin permission](access-control/role-based-access-control.md
 |--|--|--|--|
 | *TableName* | string | &check; | The name of the table to create. The case-senestive name must be unique in the database. |
 | *OtherTable*:*columnType* | string | &check; | The name of an existing table to use as the source for the columns, docstring, and folder of the table being created. |
-| *Documentation* | string | | Free text describing the entity to be added. This string is presented in various UX settings next to the entity names. The default value is *Created based on **<TableName>***.  |
+| *Documentation* | string | | Free text describing the entity to be added. This string is presented in various UX settings next to the entity names. The default value is *Created based on **\<TableName>***.  |
 | *FolderName* | string | | The name of the folder where to add the table. The default is the same folder as *TableName*.  |
 
 ## Returns
