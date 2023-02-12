@@ -12,21 +12,19 @@ must authenticate by using the HTTP `Authorization` request header.
 
 ## Syntax
 
-`Authorization:` `Bearer` *AuthToken*
+`Authorization:` `Bearer` *AccessToken*
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *AuthToken*| string | &check; | An Azure Active Directory (Azure AD) access token for the service.|
+| *AccessToken*| string | &check; | An Azure Active Directory (Azure AD) access token for the service.|
 
 ## How to get an access token
 
-To get an access token, the client must communicate with the Azure AD service.
+There are many different methods to get an Azure AD access token. To learn more, see [user authentication](../../management/access-control/how-to-authenticate-with-aad.md#user-authentication) and [application authentication](../../management/access-control/how-to-authenticate-with-aad.md#application-authentication).
 
-The method used will depend on whether you want to authenticate a user principal or authenticate an application principal. To learn more, see [user authentication](../../management/access-control/how-to-authenticate-with-aad.md#user-authentication) and [application authentication](../../management/access-control/how-to-authenticate-with-aad.md#application-authentication).
-
-The following steps will take you through how to use the Azure CLI to create an application principal and authenticate this principal when sending a REST API request.
+The following steps guide you through using the Azure CLI to create an application principal and requesting an Azure AD bearer token for this principal.
 
 1. Login to the Azure CLI.
 
