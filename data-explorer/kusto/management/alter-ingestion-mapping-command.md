@@ -41,7 +41,7 @@ Alters an existing ingestion mapping that is associated with a specific table/da
 .alter table MyTable ingestion json mapping "Mapping1"
 ```
 [
-    { "column" : "rownumber", "datatype" : "int", "Properties":{"Path":"$.rownumber"}},
+    { "column" : "rownumber", "DataType" : "int", "Properties":{"Path":"$.rownumber"}},
     { "column" : "rowguid", "DataType":"string", "Properties":{"Path":"$.rowguid"}}
 ]
 ```
