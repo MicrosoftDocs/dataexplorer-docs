@@ -19,7 +19,7 @@ The following image shows a sample Azure Data Explorer dashboard:
 
 To interactively explore sample dashboards, see [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md).
 
-You can create a dashboard in the Azure Data Explorer web UI in the following ways. In this article, you'll create a new dashboard.
+You can create a dashboard in the Azure Data Explorer web UI in the following ways. In this article, you'll start by creating a new dashboard.
 
 * [Pin from query](web-share-queries.md#pin-to-dashboard)
 * [Import a dashboard file](#to-create-new-dashboard-from-a-file)
@@ -33,22 +33,22 @@ You can create a dashboard in the Azure Data Explorer web UI in the following wa
 
 ## Create a new dashboard
 
-1. In the navigation bar, select **Dashboards** and then select **New dashboard**.
+1. In the navigation bar, select **Dashboards** > **New dashboard**.
 
     :::image type="content" source="media/adx-dashboards/new-dashboard.png" alt-text="New dashboard.":::
 
-1. Enter a dashboard name and then select **Create**.
+1. Enter a dashboard name and select **Create**.
 
     :::image type="content" source="media/adx-dashboards/new-dashboard-popup.png" alt-text="Create a dashboard.":::
 
 > [!NOTE]
-> You must be in **Editing** mode to make changes to a dashboard.
+> You must be in **Editing** mode to make any changes to a dashboard.
 >
 > :::image type="content" source="media/adx-dashboards/editing-mode.png" alt-text="Screenshot of editing mode in dashboards.":::
 
 ## Add data source
 
-Add a data source for the dashboard.
+A single dashboard can show visuals from one or more clusters.
 
 1. Select the **More menu** [...] > **Data sources**
 
@@ -67,44 +67,6 @@ Add a data source for the dashboard.
 ## Use Parameters
 
 Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with your tile(s).  For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
-
-1. Select **Parameters** on the top bar.
-1. Select the **+ New parameter** button in the **Parameters** pane.
-
-    :::image type="content" source="media/adx-dashboards/parameters.png" alt-text="Select new parameter.":::
-
-1. Enter values for all the mandatory fields and select **Done**. In this example, we're using a query-based parameter that allows you to select one or more states and see events associated with this selection.
-
-    :::image type="content" source="media/adx-dashboards/parameter-pane.png" alt-text="Parameter pane.":::
-
-|Field|Description|
-|---------|---------|
-|**Parameter type**|One of the following:<br>- **Single Selection**: Only one value can be selected in the filter as input for the parameter.<br>- **Multiple Selection**: One or more values can be selected in the filter as input(s) for the parameter.<br>- **Time Range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.<br>- The parameter type you select will affect the way you write any query that's based on this parameter.|
-|**Variable name**|The name of the parameter to be used in the query.|
-|**Data type**|The data type of the parameter values.|
-|**Pin as dashboard filter**|The option to pin the parameter-based filter to the dashboard.|
-|**Source**|The source of the parameter values:<br>- **Fixed values**: Manually introduced static filter values.<br>- **Query**: Dynamically introduced values using a KQL query.|
-|**Value column**|Results column to be used as parameter values. Only applicable for query-based parameters.|
-|**Label column**|Results column to be used for parameter labels. Only applicable for query-based parameters.|
-|**Add empty "Select all" value**|Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values.|
-|**Display name**|The name of the parameter shown on the dashboard or the edit card.|
-|**Default value**|The default parameter value.|
-
-### Parameter query
-
-The following is an example of a query using the parameter defined in [Use parameters](azure-data-explorer-dashboards.md#use-parameters).
-
-:::image type="content" source="media/adx-dashboards/parameter-query.png" alt-text="Screenshot of query used to generate parameters.":::
-
-1. Select the source data from the drop-down bar.
-1. Enter your query and then select **Run**.
-
-1. Select **Apply changes**.
-
-> [!NOTE]
-> The parameter query is used to generate dynamically introduced values as parameters using a KQL query. It's not the query used for generating the dashboard visual.
-
-For more information about generating parameter queries, see [Create a parameter](dashboard-parameters.md#create-a-parameter).
 
 ## Add tile
 
@@ -258,7 +220,7 @@ You can update an existing dashboard, or restore a previous version, as follows:
 
 ## Enable auto refresh
 
-1. Select the **More** menu **[...]** > **Auto refresh**.
+1. Select the **More menu [...]** > **Auto refresh**.
 
     :::image type="content" source="media/adx-dashboards/auto-refresh.png" alt-text="Select auto refresh.":::
 
