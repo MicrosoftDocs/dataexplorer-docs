@@ -347,15 +347,16 @@ The following considerations apply to the Cosmos DB change feed:
 
     Because of this scenario, the data connector may miss some intermediate document changes. For example, some events may be missed if the data connection service is down for a few minutes, or if the frequency of document changes is higher than the API polling frequency. However, the latest state of each document is captured.
 
-## RUs cost
+## Estimate cost
 
-An obvious question to ask is how much does using this data connection impact your Cosmos DB container's [Request Units (RUs)](azure/cosmos-db/request-units) usage?
+How much does using the Cosmos DB data connection impact your Cosmos DB container's [Request Units (RUs)](azure/cosmos-db/request-units) usage?
 
-Azure Data Explorer is invoking the Cosmos DB Change Feed API on each physical partition of your container.  This can be invoked to up to once a second.  There are fixed costs and variable costs associated to those API invocations.
+The connector invokes the Cosmos DB Change Feed API on each physical partition of your container, to up to once a second. The following costs are associated with these invocations:
 
-The fixed costs are about 2 RUs per physical partition every second (at most).
-
-Although mileage will vary, the variable costs are about %2 of the RUs used to write documents.  For instance, let's say you write hundred (100) documents to a Cosmos DB container which costs one thousand (1000) RUs.  Azure Data Explorer will consume about %2 of that, i.e. 20 RUs, to read those documents from the change feed.
+| Cost | Description |
+| -- | -- |
+| Fixed costs | Fixed costs are about 2 RUs per physical partition every second. |
+| Variable costs | Variable costs are about 2% of the RUs used to write documents, though this may vary depending on your scenario. For example, if you write 100 documents to a Cosmos DB container, the cost of writing those documents is 1,000 RUs. The corresponding cost for using the connector to read those document is about 2% the cost to write them, approximately 20 RUs. |
 
 ## Next steps
 
