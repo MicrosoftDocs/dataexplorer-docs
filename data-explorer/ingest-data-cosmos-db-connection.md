@@ -349,7 +349,7 @@ The following considerations apply to the Cosmos DB change feed:
 
 ## Estimate cost
 
-How much does using the Cosmos DB data connection impact your Cosmos DB container's [Request Units (RUs)](azure/cosmos-db/request-units) usage?
+How much does using the Cosmos DB data connection impact your Cosmos DB container's [Request Units (RUs)](/azure/cosmos-db/request-units) usage?
 
 The connector invokes the Cosmos DB Change Feed API on each physical partition of your container, to up to once a second. The following costs are associated with these invocations:
 
