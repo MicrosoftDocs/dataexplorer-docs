@@ -42,7 +42,7 @@ Requires [Database viewer permission](./access-control/role-based-access-control
 | `MinExtentsCreationTime`   | DateTime | The minimum creation time of an extent in the table (or null, if there are no extents)`**`.     |
 | `MaxExtentsCreationTime`   | DateTime | The maximum creation time of an extent in the table (or null, if there are no extents)`**`.     |
 | `RowOrderPolicy`           | String   | The table's effective row order policy, serialized as JSON.                                     |
-| `TableId`                  | String   | The table's internal GUID identifier.                                                           |
+| `TableId`                  | String   | The table's unique ID.                                                           |
 
 `*` *Taking into account policies of parent entities (such as database/cluster).*
 
