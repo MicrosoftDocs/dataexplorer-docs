@@ -8,7 +8,7 @@ ms.date: 01/31/2023
 
 # Visualize data with Azure Data Explorer dashboards (Preview)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides a web application that enables you to run queries and build dashboards. Dashboards are available in the stand-alone web application, the [Azure Data Explorer web UI](web-query-data.md). Azure Data Explorer is also integrated with other dashboard services like [Power BI](power-bi-data-connector.md?tabs=connector) and [Grafana](grafana.md).
+In the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), you can run queries and build dashboards. Azure Data Explorer is also integrated with other dashboard services like [Power BI](power-bi-data-connector.md?tabs=connector) and [Grafana](grafana.md).
 
 Azure Data Explorer dashboards provide three main advantages:
 
@@ -18,7 +18,7 @@ Azure Data Explorer dashboards provide three main advantages:
 
 The following image depicts an Azure Data Explorer dashboard.
 
-:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Screenshot showing an Azure Data Explorer web UI dashboard.":::
+:::image type="content" source="media/adx-dashboards/sample-dashboard.png" alt-text="Screenshot showing an Azure Data Explorer web UI dashboard.":::
 
 > [!IMPORTANT]
 > Your data is secure. Dashboards and dashboard-related metadata about users is encrypted at rest using Microsoft-managed keys.
@@ -34,12 +34,7 @@ The following image depicts an Azure Data Explorer dashboard.
 You can create a dashboard in the Azure Data Explorer web UI using the following steps. Alternatively, you can create a dashboard by [importing a dashboard file](#to-create-new-dashboard-from-a-file).
 
 1. In the navigation bar, select **Dashboards (Preview)** and then select **New dashboard**.
-
-    :::image type="content" source="media/adx-dashboards/new-dashboard.png" alt-text="New dashboard.":::
-
-1. Enter a dashboard name and then select **Create**.
-
-    :::image type="content" source="media/adx-dashboards/new-dashboard-popup.png" alt-text="Create a dashboard.":::
+1. Enter a **Dashboard name** and then select **Create**.
 
 ## Add data source
 
@@ -52,22 +47,17 @@ Add a data source for the dashboard.
 1. In the **Data sources** pane, select **+ New data source**.
 1. In the **Create new data source** pane:
     1. Enter a **Data source name**.
-    1. Enter the **Cluster URI** region and then select **Connect**.
+    1. Enter the **Cluster URI** and then select **Connect**.
     1. Select the **Database** from the drop-down list.
-    1. Enter a value for  **Query results cache max age** to enable query results cache on all queries of this data source. The max age can be in units of seconds, hours, or days.
+    1. Enter a value for  **Query results cache max age** to turn on query results cache on all queries of this data source. The max age can be in units of seconds, hours, or days.
     1. Select **Create**.
-
-    :::image type="content" source="media/adx-dashboards/data-source-pane.png" alt-text="Data source pane.":::
 
 ## Use Parameters
 
-Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with your tile(s).  For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
+Parameters significantly improve dashboard rendering performance, and allow you you to use filter values as early as possible in the query. Filtering is turned on when the parameter is included in the query associated with your tile(s).  For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
 
 1. Select **Parameters** on the top bar.
 1. Select the **+ New parameter** button in the **Parameters** pane.
-
-    :::image type="content" source="media/adx-dashboards/parameters.png" alt-text="Select new parameter.":::
-
 1. Enter values for all the mandatory fields and select **Done**. In this example, we're using a query-based parameter that allows you to select one or more states and see events associated with this selection.
 
     :::image type="content" source="media/adx-dashboards/parameter-pane.png" alt-text="Parameter pane.":::
@@ -251,7 +241,7 @@ You can update an existing dashboard, or restore a previous version, as follows:
 1. Select the file to update the dashboard.
 1. Select **Save changes**.
 
-## Enable auto refresh
+## Turn on auto refresh
 
 1. Select **Edit** in dashboard menu to switch to edit mode.
 1. Select **Auto refresh**.
@@ -261,7 +251,7 @@ You can update an existing dashboard, or restore a previous version, as follows:
 1. Toggle the option so auto refresh is **Enabled**.
 1. Select values for **Minimum time interval** and **Default refresh rate**.
 
-    :::image type="content" source="media/adx-dashboards/auto-refresh-toggle.png" alt-text="Enable auto refresh.":::
+    :::image type="content" source="media/adx-dashboards/auto-refresh-toggle.png" alt-text="Turn on auto refresh.":::
 
 1. Select **Apply** and then **Save** the dashboard.
 
