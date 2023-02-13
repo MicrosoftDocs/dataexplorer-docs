@@ -33,7 +33,9 @@ For each table `T1` you'd like to change a column type in, execute the following
 1. Create a table `T1_prime` with the correct schema (the right column types and the same column order).
 1. Ingest the data into `T1_prime` from `T1`, applying the required data transformations. In the example below, Col1 is being converted to the string data type.
 
-    `.set-or-append T1_prime <| T1 | extend Col1=tostring(Col1)`
+    ```kusto
+    .set-or-append T1_prime <| T1 | extend Col1=tostring(Col1)
+    ```
 
 1. Swap the tables using [.rename tables](rename-table-command.md) command, which allows swapping table names.
 
@@ -47,4 +49,6 @@ For each table `T1` you'd like to change a column type in, execute the following
 
     `T1_prime` will include only a copy of the historical data (before the schema change) and can be safely dropped after confirming the schema and data in `T1` were correctly updated.
 
-    `.drop table T1_prime`
+    ```kusto
+    .drop table T1_prime
+    ```
