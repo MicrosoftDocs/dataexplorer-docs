@@ -7,12 +7,9 @@ ms.date: 09/14/2022
 ---
 # Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer
 
-[The ingestion wizard](./ingest-data-wizard.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.
+[The ingestion wizard](./ingest-data-wizard.md) allows you to ingest data in various formats and create mapping structures, as a one-time or continuous ingestion process.
 
-This document describes using the ingestion wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. Use the same process with slight adaptations to cover various different use cases.
-
-For an overview of the ingestion wizard and a list of prerequisites, see [Ingest data into Azure Data Explorer using the ingestion wizard](./ingest-data-wizard.md).
-For different types or sources of data, see [Ingest data from a container/ADLS into Azure Data Explorer](./ingestion-wizard-new-table.md).
+This document describes using the ingestion wizard to ingest JSON data from a local file into an existing table. Use the same process with slight adaptations to cover different use cases.
 
 > [!NOTE]
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
@@ -118,5 +115,7 @@ In the **Data ingestion completed** window, all three steps are marked with gree
 
 ## Next steps
 
-* [Query data in Azure Data Explorer web UI](web-query-data.md)
-* [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)
+* Get an [overview of the ingestion wizard](ingest-data-wizard.md)
+* Learn how to [Ingest data from a container/ADLS into Azure Data Explorer](./ingestion-wizard-new-table.md)
+* [Query data](web-query-data.md) in the Azure Data Explorer web UI
+* [Write queries](write-queries.md) for Azure Data Explorer using [Kusto Query Language (KQL)](kusto/query/index.md)
