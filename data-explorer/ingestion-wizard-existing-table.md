@@ -9,7 +9,7 @@ ms.date: 09/14/2022
 
 [The ingestion wizard](./ingest-data-wizard.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.
 
-This document describes using the ingestion wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. Use the same process with slight adaptations to cover a variety of different use cases.
+This document describes using the ingestion wizard in a specific use case to ingest **JSON** data from a **local file** into an **existing table**. Use the same process with slight adaptations to cover various different use cases.
 
 For an overview of the ingestion wizard and a list of prerequisites, see [Ingest data into Azure Data Explorer using the ingestion wizard](./ingest-data-wizard.md).
 For different types or sources of data, see [Ingest data from a container/ADLS into Azure Data Explorer](./ingestion-wizard-new-table.md).
@@ -51,9 +51,9 @@ For different types or sources of data, see [Ingest data from a container/ADLS i
 
 The **Schema** tab opens.
 
-* **Compression type** will be selected automatically by the source file name. In this case, the compression type is **JSON**
+* **Compression type** is selected automatically by the source file name. In this case, the compression type is **JSON**
 
-* If you select **Ignore data format errors**, the data will be ingested in JSON format. If you leave this check box unselected, the data will be ingested in multijson format.
+* If you select **Ignore data format errors**, the data is ingested in JSON format. If you leave this check box unselected, the data is ingested in multijson format.
 
 * When you select  **JSON**, you must also select **Nested levels**, from 1 to 100. The levels determine the table column data division.
 
@@ -63,15 +63,15 @@ The **Schema** tab opens.
     > If you want to use **CSV** files, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](./ingestion-wizard-new-table.md#edit-the-schema)
 
 * For tabular formats, you can select **Keep current table schema**.
-Tabular data doesn't necessarily include the column names that are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema will remain the same. If this option is unchecked, new columns will be created for incoming data, regardless of data structure.
+Tabular data doesn't necessarily include the column names that are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema remains the same. If this option is unchecked, new columns are created for incoming data, regardless of data structure.
 
     :::image type="content" source="media/ingestion-wizard-existing-table/keep-table-schema.png" alt-text="Screenshot showing the 'keep current table schema' option checked when using tabular data format.":::
 
 ### Add nested JSON data
 
-To add columns from JSON levels that are different than the main **Nested levels** selected above, do the following steps:
+To add columns from JSON levels that are different than the main **Nested levels**, do the following steps:
 
-1. Click on the arrow next to any column name, and select **New column**.
+1. Select on the arrow next to any column name, and select **New column**.
 
     :::image type="content" source="media/ingestion-wizard-existing-table/new-column.png" alt-text="Screenshot of options in the schema tab to add a new column using the ingestion wizard for Azure Data Explorer.":::
 
@@ -107,7 +107,7 @@ Select **Next: Start ingestion** to begin data ingestion.
 
 ## Complete data ingestion
 
-In the **Data ingestion completed** window, all three steps will be marked with green check marks when data ingestion finishes successfully.
+In the **Data ingestion completed** window, all three steps are marked with green check marks when data ingestion finishes successfully.
 
 :::image type="content" source="media/ingestion-wizard-existing-table/one-click-data-ingestion-complete.png" alt-text="Screenshot of ingestion wizard summary when ingestion is completed.":::
 
