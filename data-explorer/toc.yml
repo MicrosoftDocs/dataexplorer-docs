@@ -591,6 +591,9 @@ items:
     - name: Migrate TSI to Azure Data Explorer
       href: /azure/time-series-insights/migration-to-adx
       displayName: Time Series Insights
+    - name: Linked server
+      href: linked-server.md
+      displayName: SQL Server, ODBC
 - name: Kusto Query Language
   href: kusto/query/toc.yml
 - name: Management commands

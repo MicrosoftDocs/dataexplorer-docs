@@ -459,6 +459,11 @@
       "source_path": "data-explorer/web-ui-overview.md",
       "redirect_url": "/azure/data-explorer/web-query-data",
       "redirect_document_id": false
-    }
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/linkedserver.md",
+      "redirect_url": "/azure/data-explorer/linked-server",
+      "redirect_document_id": true
+    },
   ]
 }
