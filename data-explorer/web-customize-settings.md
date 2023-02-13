@@ -16,9 +16,9 @@ This article will guide you through the process of customizing settings in the [
 
 ## Go to the settings
 
-Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
+Select the settings icon :::image type="icon" source="media/web-customize-settings/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
 
-:::image type="content" source="media/web-query-data/settings.png" alt-text="Screenshot of the Settings window.":::
+:::image type="content" source="media/web-customize-settings/settings-pane.png" alt-text="Screenshot of the Settings window.":::
 
 ## Export and import environment settings
 
@@ -37,7 +37,7 @@ The export and import actions help you protect your work environment and relocat
 
 1. In the **Settings** > **General** window, select **Import**. Then in **Warning** pop-up, select **Import**.
 
-    :::image type="content" source="media/web-query-data/import.png" alt-text="Screenshot of the import warning dialog box.":::
+    :::image type="content" source="media/web-customize-settings/import-settings.png" alt-text="Screenshot of the import warning dialog box.":::
 
 1. Locate your **adx-export.json** file from your local storage and open it.
 1. Your previous cluster connections and open tabs are now available.
@@ -49,14 +49,14 @@ The export and import actions help you protect your work environment and relocat
 
 Kusto tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on).
 
-### Enable error level highlighting
+### Turn on error level highlighting
 
-To enable the error level highlighting:
+To turn on error level highlighting:
 
 1. Select the **Settings** icon next to your user name.
 1. Select the **Appearance** tab and toggle the **Enable error level highlighting** option to the right.
 
-    :::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="Animated GIF showing how to enable error-level highlighting in the settings.":::
+    :::image type="content" source="media/web-customize-settings/enable-error-level-highlighting.png" alt-text="Screenshot showing how to enable error-level highlighting in the settings.":::
 
 Error level color scheme in **Light** mode | Error level color scheme in **Dark** mode
 |---|---|
