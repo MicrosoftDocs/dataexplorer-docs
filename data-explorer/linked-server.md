@@ -26,7 +26,8 @@ The following steps describe how to set up the linked server connection.
     > [!NOTE]
     > The language parameter tells Azure Data Explorer to encode strings as `NVARCHAR(4000)`. For more information about this workaround, see [ODBC](connect-odbc.md).
 
-1. Create the linked server. The **Provider** should be **Microsoft OLE DB Provider for ODBC Drivers**, and the **Provider string** should be the connection string from the previous step.
+1. Open the New Linked Server dialog.
+1. In the **General** settings, select **Microsoft OLE DB Provider for ODBC Drivers** for the **Provider** and input the connection string from the previous step in the **Provider string** box.
 1. In the **Security** settings, select **Be made using the login's current security context**.
 1. Select **OK** to save the linked server.
 
