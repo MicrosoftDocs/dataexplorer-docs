@@ -35,7 +35,7 @@ The following steps guide you through using the Azure CLI to create an applicati
 1. Set your default subscription.
 
       ```dotnetcli
-      az account set  --subscription <SUBSCRIPTION_ID>
+      az account set --subscription <SUBSCRIPTION_ID>
       ```
 
 1. Create a service principal. This following command creates an Azure Active Directory Service Principal and returns the `appId`, `displayName`, `password`, and `tenantId` for the service principal.
