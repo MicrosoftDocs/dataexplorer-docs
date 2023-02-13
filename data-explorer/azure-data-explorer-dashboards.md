@@ -83,7 +83,6 @@ The following is an example of a query using the parameter defined in [Use param
 
 1. Select the source data from the drop-down bar.
 1. Enter your query and then select **Run**.
-
 1. Select **Apply changes**.
 
 > [!NOTE]
@@ -100,9 +99,8 @@ For more information about generating parameter queries, see [Create a parameter
     :::image type="content" source="media/adx-dashboards/empty-dashboard-new-query.png" alt-text="New query.":::
 
 1. In the **Query** pane,
-    1. Select the data source from the drop-down menu.
+    1. Select the data **Source** from the drop-down menu.
     1. Type the query, and the select **Run**. For more information about generating queries that use parameters, see [Use parameters in your query](dashboard-parameters.md#use-parameters-in-your-query).
-
     1. Select **+ Add visual**.
 
     :::image type="content" source="media/adx-dashboards/initial-query.png" alt-text="Execute query.":::
@@ -132,7 +130,7 @@ Use the share menu to [grant permissions](#grant-permissions) for an Azure Activ
 1. Select the **Share** menu item in the top bar of the dashboard.
 1. Select **Manage permissions** from the drop-down.
 
-    :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Share dashboard drop-down.":::
+    :::image type="content" source="media/adx-dashboards/manage-dashboard-permissions.png" alt-text="Share dashboard drop-down.":::
 
 ### Grant permissions
 
@@ -141,8 +139,6 @@ To grant permissions to a user in the **Dashboard permissions** pane:
 1. Write the user's name or email in **Add new members** box.
 1. In the **Permission** level, select one of the following values: **Can view** or **Can edit**.
 1. Select **Add**.
-
-:::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Manage dashboard permissions.":::
 
 ### Change a user permission level
 
@@ -166,9 +162,9 @@ Use the file menu to export a dashboard to a JSON file. Exporting dashboard can 
 * **Dashboard template**: You can use the file as template for creating new dashboards.
 * **Manual editing**: You can edit the file to modify the dashboard. The file can be imported back to the dashboard.
 
-To export a dashboard, in the dashboard, select **File** > **Export to file**.
+To export a dashboard, in the dashboard, select **File** > **Export dashboard to file**.
 
-:::image type="content" source="media/adx-dashboards/export-dashboard-file.png" alt-text="Screenshot of dashboard, showing the export to file option.":::
+:::image type="content" source="media/adx-dashboards/export-dashboard-to-file.png" alt-text="Screenshot of dashboard, showing the export to file option.":::
 
 The file contains the dashboard data in JSON format, an outline of which is shown in the following snippet.
 
@@ -223,10 +219,7 @@ The file contains the dashboard data in JSON format, an outline of which is show
 
 You can use a dashboard file to create a new dashboard, as follows:
 
-1. In the main dashboard page, select **New dashboard** > **Import from file**.
-
-    :::image type="content" source="media/adx-dashboards/import-dashboard-file.png" alt-text="Screenshot of dashboard, showing the import from file option.":::
-
+1. In the main **Dashboards (Preview)** window, select **New dashboard** > **Import from file**.
 1. Select the file to import.
 1. Enter a dashboard name, and then select **Create**.
 
@@ -235,16 +228,13 @@ You can use a dashboard file to create a new dashboard, as follows:
 You can update an existing dashboard, or restore a previous version, as follows:
 
 1. In the dashboard, select **File** > **Replace with file**.
-
-    :::image type="content" source="media/adx-dashboards/replace-dashboard-file.png" alt-text="Screenshot of dashboard, showing the option to replace with file.":::
-
 1. Select the file to update the dashboard.
 1. Select **Save changes**.
 
 ## Turn on auto refresh
 
-1. Select **Edit** in dashboard menu to switch to edit mode.
-1. Select **Auto refresh**.
+1. Select **Viewing** in dashboard menu and select **Editing** from the drop-down to switch to edit mode.
+1. Select the menu on the upper right side of the page, and select **Auto refresh**.
 
     :::image type="content" source="media/adx-dashboards/auto-refresh.png" alt-text="Select auto refresh.":::
 
@@ -253,7 +243,8 @@ You can update an existing dashboard, or restore a previous version, as follows:
 
     :::image type="content" source="media/adx-dashboards/auto-refresh-toggle.png" alt-text="Turn on auto refresh.":::
 
-1. Select **Apply** and then **Save** the dashboard.
+1. Select **Apply**.
+1. Select the save widget to save the dashboard.
 
 > [!NOTE]
 >
