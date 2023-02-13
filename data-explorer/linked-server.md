@@ -41,7 +41,7 @@ SELECT * FROM OpenQuery(LINKEDSERVER, 'SELECT * FROM <KustoStoredFunction>[(<Par
 
 Use Kusto [stored functions](kusto/query/schema-entities/stored-functions.md) for extracting data from Azure Data Explorer. Learn more at [KQL over TDS](kusto/api/tds/tdskql.md).
 
-The SQL Server has a limitation where it can't use remote tabular functions from linked servers directly in its own queries. To overcome this limitation, use the `OpenQuery` function to run a query on the linked server. You can then use the outer T-SQL query to combine the data from the SQL server with the data returned from the Azure Data Explorer stored function.
+SQL Server has a limitation where it can't use remote tabular functions from linked servers directly in its own queries. To overcome this limitation, use the `OpenQuery` function to run a query on the linked server. You can then use the outer T-SQL query to combine the data from the SQL server with the data returned from the Azure Data Explorer stored function.
 
 ## See also
 
