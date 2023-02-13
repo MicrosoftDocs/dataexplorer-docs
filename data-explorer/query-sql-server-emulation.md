@@ -11,7 +11,7 @@ Azure Data Explorer provides Tabular Data Stream (TDS) endpoints that allow you 
 
 ## Executing stored functions
 
-You can create and execute [stored functions](../../query/schema-entities/stored-functions.md) like SQL stored procedures. For example, if you have a stored function as described in the following table, you can execute it as shown in the code example.
+You can create and execute [stored functions](kusto/query/schema-entities/stored-functions.md) like SQL stored procedures. For example, if you have a stored function as described in the following table, you can execute it as shown in the code example.
 
 |Name |Parameters|Body|Folder|DocString
 |---|---|---|---|---|
@@ -46,9 +46,9 @@ SELECT * FROM kusto.MyFunction(10)
 
 ## Executing queries
 
-The SQL stored procedure `sp_execute_kql` can be used to execute [KQL](../../query/index.md) queries, including parameterized queries. The procedure is similar to the `sp_executesql` stored procedure.
+The SQL stored procedure `sp_execute_kql` can be used to execute [KQL](/kusto/query/index.md) queries, including parameterized queries. The procedure is similar to the `sp_executesql` stored procedure.
 
-The first parameter of `sp_execute_kql` is the KQL query, and any other parameters are treated as [query parameters](../../query/queryparametersstatement.md). The following example shows how to use `sp_execute_kql`.
+The first parameter of `sp_execute_kql` is the KQL query, and any other parameters are treated as [query parameters](kusto/query/queryparametersstatement.md). The following example shows how to use `sp_execute_kql`.
 
 ```csharp
   using (var connection = new SqlConnection(csb.ToString()))
