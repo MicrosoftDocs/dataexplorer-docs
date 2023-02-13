@@ -23,8 +23,6 @@ items:
   - name: MS-TDS overview
     displayName: SQL, ADO.NET, JDBC, ODBC
     href: tds/index.md
-  - name: KQL over TDS
-    href: tds/tdskql.md
   - name: Clients
     href: tds/clients.md
   - name: Linked server

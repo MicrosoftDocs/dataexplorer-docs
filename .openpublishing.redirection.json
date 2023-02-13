@@ -424,6 +424,11 @@
       "source_path": "data-explorer/kusto/api/tds/sqlknownissues.md",
       "redirect_url": "/azure/data-explorer/t-sql",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/tdskql.md",
+      "redirect_url": "/azure/data-explorer/query-sql-server-eumulation",
+      "redirect_document_id": true
     }
   ]
 }
