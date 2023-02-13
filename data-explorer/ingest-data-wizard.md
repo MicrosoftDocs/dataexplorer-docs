@@ -3,14 +3,14 @@ title: Ingest data into Azure Data Explorer using the ingestion wizard
 description: Overview of ingesting (loading) data into Azure Data Explorer simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 09/05/2022
+ms.date: 02/13/2023
 ---
 
 # What is the ingestion wizard?
 
-The ingestion wizard makes the data ingestion process easy, fast, and intuitive. Using the ingestion wizard helps you ramp-up quickly to start ingesting data, creating database tables, mapping structures. Select data from different kinds of sources in different data formats, either as a one-time or continuous ingestion process.
+The ingestion wizard is a user interface for ingesting data in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). The ingestion wizard can be used to ingest data in various forms, as a one-time or continuous ingestion, and create database tables and mapping structures.
 
-The following features make the ingestion wizard so useful:
+The ingestion wizard provides the following features:
 
 * Intuitive experience guided by the ingestion wizard
 * Ingest data in a matter of minutes
@@ -19,8 +19,6 @@ The following features make the ingestion wizard so useful:
 * Ingest data into new or existing tables
 * Table mapping and schema are suggested to you and easy to change
 * Continue ingestion easily and quickly from a container with [Event Grid](./ingestion-wizard-new-table.md#create-continuous-ingestion)
-
-The ingestion wizard is useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
 
 ## Prerequisites
 
@@ -40,9 +38,9 @@ The ingestion wizard guides you through the ingestion process.
 
       :::image type="content" source="media/ingest-data-wizard/select-data-pane.png" alt-text="Screenshot of options to ingest data from the data management window of the Azure Data Explorer web UI interface - Azure Data Explorer." lightbox="media/ingest-data-wizard/select-data-pane.png":::
 
-  * Select **Query** in the left pane. Right-click the *database* or *table* and select **Ingest new data**.
+  * Select **Query** in the left pane. Right-click the database or table and select **Ingest data**.
 
-      :::image type="content" source="media/ingest-data-wizard/ingest-new-data-database-menu.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI.":::
+      :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI.":::
 
 * To access the ingestion wizard from the **Azure Data Explorer** home screen in your cluster, complete the first two steps ([cluster creation and database creation](#prerequisites)) and then select **Ingest**.
 
