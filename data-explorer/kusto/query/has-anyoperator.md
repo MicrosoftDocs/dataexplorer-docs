@@ -13,26 +13,18 @@ For more information about other operators and to determine which operator is mo
 
 ## Syntax
 
-*T* `|` `where` *col* `has_any` `(`*list_of_scalars*`)`
-
-*T* `|` `where` *col* `has_any` `(`*dynamic_array*`)`
-
-*T* `|` `where` *col* `has_any` `((`*tabular_expression*`))`
-
-> [!NOTE]
-> An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
+*T* `|` `where` *col* `has_any` `(`*expressions*`)`
 
 ## Parameters
-
-The following table describes the `has_any` operator parameters. Depending on the chosen [syntax](#syntax), either *list_of_scalars*, *dynamic_array*, or *tabular_expression* is required.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column by which to filter.|
-| *list_of_scalars* | scalar | &check; | A comma-separated list of one or more [scalar](scalar-data-types/index.md) values to search for in *col*.|
-| *dynamic_array* | dynamic | &check; | A [dynamic array](scalar-data-types/dynamic.md) of values to search for in *col*.|
-| *tabular_expression* | string | &check; | A [tabular expression](tabularexpressionstatements.md) that produces a set of values to search for in *col*. The expression can produce up to 10,000 distinct results. If the output has multiple columns, only the first column is used.|
+| *expressions* | scalar or tabular | &check; | One or more comma-separated expressions that specify the values for which to search. Each expression can be a [scalar](scalar-data-types/index.md) value or a [tabular expression](tabularexpressionstatements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 10,000 distinct values.|
+
+> [!NOTE]
+> An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
 
 ## Returns
 
