@@ -18,7 +18,7 @@ in the form of default query limits. If you're considering removing these limits
 **Request concurrency** is a limit that a cluster imposes on several requests running at the same time.
 
 * The default value of the limit depends on the SKU the cluster is running on, and is calculated as: `Cores-Per-Node x 10`.
-  * For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
+  * For example, for a cluster that's set up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
 * The default value can be changed by configuring the [request rate limit policy](../management/request-rate-limit-policy.md) of the `default` workload group.
   * The actual number of requests that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
  
@@ -193,6 +193,9 @@ control commands. This value can be increased if needed (capped at one hour).
    than the server timeout value requested by the user. This difference, is to allow for network latencies.
 * To automatically use the maximum allowed request timeout, set the client request property `norequesttimeout` to `true`.
 
+> [!NOTE]
+> See [set timeout limits](../../set-timeout-limits.md) for a step-by-step guide on how to set timeouts in the Azure Data Explorer web UI, Kusto.Explorer, Kusto.Cli, Power BI, and when using an SDK.
+
 ## Limit on query CPU resource usage
 
 Kusto lets you run queries and use as much CPU resources as the cluster has.
@@ -222,7 +225,7 @@ If the tree depth exceeds an internal threshold, the query is considered too com
 
 The following examples show common query patterns that can cause the query to exceed this limit and fail:
 
-* a long lists of binary operators that are chained together. For example:
+* a long list of binary operators that are chained together. For example:
 
 ```kusto
 T 

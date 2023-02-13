@@ -9,7 +9,7 @@ ms.date: 07/05/2020
 
 Creates new empty tables as a bulk operation.
 
-The command must run in context of a specific database.
+The command must run in the context of a specific database.
 
 Requires [Database user permission](./access-control/role-based-access-control.md).
 

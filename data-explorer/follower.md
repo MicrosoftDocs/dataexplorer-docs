@@ -34,7 +34,7 @@ To attach a database, you must have user, group, service principal, or managed i
 
 When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'.
 
-'*TableLevelSharingProperties*' contains six arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, and `materializedViewsToExclude`. The maximum number of entries in all arrays together is 100.
+'*TableLevelSharingProperties*' contains eight arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, `materializedViewsToExclude`, `functionsToInclude`, and `functionsToExclude`. The maximum number of entries in all arrays together is 100.
 
 > [!NOTE]
 > Table level sharing is not supported when using '*' all databases notation.
@@ -266,6 +266,8 @@ Use the following steps to attach a database:
     | *externalTablesToExclude* | The list of tables to exclude. To exclude all external tables, use ["*"]. | `["ExternalTable1ToExclude", "ExternalTable2ToExclude"]` |
     | *materializedViewsToInclude* | The list of materialized views to include. To include all materialized views starting with 'Logs', use ["Logs*"]. | `["Mv1ToInclude", "Mv2ToInclude"]` |
     | *materializedViewsToExclude* | The list of materialized views to exclude. To exclude all materialized views, use ["*"]. | `["Mv11ToExclude", "Mv22ToExclude"]` |
+    | *functionsToInclude* | The list of functions to include. | `["FunctionToInclude"]` |
+    | *functionsToExclude* | The list of functions to exclude. | `["FunctionToExclude"]` |
     | *location* | The location of all the resources. The leader and the follower must be in the same location. |  |
 
     ```json
@@ -350,6 +352,20 @@ Use the following steps to attach a database:
                     "description": "The list of materialized views to exclude. Not supported when following all databases."
                 }
             },
+            "functionsToInclude": {
+                "type": "array",
+                "defaultValue": [],
+                "metadata": {
+                    "description": "The list of functions to include."
+                }
+            },
+            "functionsToExclude": {
+                "type": "array",
+                "defaultValue": [],
+                "metadata": {
+                    "description": "The list of functions to exclude."
+                }
+            },
             "location": {
                 "type": "string",
                 "defaultValue": "",
@@ -375,8 +391,9 @@ Use the following steps to attach a database:
                         "externalTablesToInclude": "[parameters('externalTablesToInclude')]",
                         "externalTablesToExclude": "[parameters('externalTablesToExclude')]",
                         "materializedViewsToInclude": "[parameters('materializedViewsToInclude')]",
-                        "materializedViewsToExclude": "[parameters('materializedViewsToExclude')]"
-
+                        "materializedViewsToExclude": "[parameters('materializedViewsToExclude')]",
+                        "functionsToInclude": "[parameters('functionsToInclude')]",
+                        "functionsToExclude": "[parameters('functionsToExclude')]"
                     }
                 }
             }

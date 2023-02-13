@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 09/04/2022
 ---
 
-# Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer
+# Ingest data from a container into Azure Data Explorer
 
 > [!div class="op_single_selector"]
 > * [Ingestion wizard](ingestion-wizard-new-table.md)
