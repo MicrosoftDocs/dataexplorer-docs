@@ -19,9 +19,10 @@ You can use the following ways to query the *current state* from your table:
 - [Run a query to get the latest versions of documents](#run-a-query-to-get-the-latest-versions-of-documents)
 - [Create a materialized view of the latest versions of documents](#create-a-materialized-view-of-the-latest-versions-of-documents)
 
-In the examples, you'll get the latest versions of document by summarizing the table by the **Id** column, using the [arg_max](kusto/query/arg-max-aggfunction.md) function on the `_timestamp` column to only show the rows with the most recent timestamps.
+In the examples, you'll get the latest versions of the document by summarizing the table by the **Id** column, using the [arg_max](kusto/query/arg-max-aggfunction.md) function on the **_timestamp** column to only show the rows with the most recent timestamps.
 
-Here we assume you have mapped the `_timestamp` column to the Cosmos DB native `_ts` with a `DateTimeFromUnixSeconds` in order to get the timestamp in `datetime` format (as we did [here](ingest-data-cosmos-db-connection#step-1-choose-an-azure-data-explorer-table-and-configure-its-table-mapping)).  This makes the query / materialized view more performant.  If you haven't, it would still work on a long `_ts` column but will be less efficient.
+> [!NOTE]
+> The **_timestamp** column is created from the **_ts** property of ingested the Cosmos DB documents. The conversion from `DateTimeFromUnixSeconds` (**_ts**) to `datetime` (**_timestamp**) is performed by the ingestion  [table mapping](ingest-data-cosmos-db-connection#step-1-choose-an-azure-data-explorer-table-and-configure-its-table-mapping) configured for the table. The converted data in the **_timestamp** column makes queries and materialized views more performant than using the native `DateTimeFromUnixSeconds` **_ts** value.
 
 ### Run a query to get the latest versions of documents
 
