@@ -447,7 +447,7 @@
     },
     {
       "source_path": "data-explorer/kusto/api/tds/tdskql.md",
-      "redirect_url": "/azure/data-explorer/query-sql-server-eumulation",
+      "redirect_url": "/azure/data-explorer/query-sql-server-emulation",
       "redirect_document_id": true
     },
     {
