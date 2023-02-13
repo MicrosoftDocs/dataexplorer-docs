@@ -69,7 +69,7 @@ c224488c-ad42-4e6c-bc55-ae10858af58d,2
 d8857a93-2728-4bcb-be1d-1a2cd35386a7,4
 b1ddcfcc-388c-46a2-91d4-5e70aead098c,5
 
-// Create table T1_prime with the same schema and column order (except for the column we want to change the type)
+// Create table T1_prime with the correct schema and same column order
 .create table T1_prime (Col1:string, Id:int)
 
 // Append data to the new table
@@ -78,6 +78,6 @@ b1ddcfcc-388c-46a2-91d4-5e70aead098c,5
 // Rename tables
 .rename tables T1_prime = T1, T1 = T1_prime
 
-// Drop table T1_prime which now has the old schema and data
+// Drop table T1_prime, which now has the old schema and data
 .drop table T1_prime
 ```
