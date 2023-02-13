@@ -24,7 +24,7 @@ The following steps describe how to set up the linked server connection.
     ```
 
     > [!NOTE]
-    > The language parameter tells Azure Data Explorer to encode strings as `NVARCHAR(4000)`. For more information about this workaround, see [ODBC](./clients.md#odbc).
+    > The language parameter tells Azure Data Explorer to encode strings as `NVARCHAR(4000)`. For more information about this workaround, see [ODBC](connect-odbc.md).
 
 1. Create the linked server. The **Provider** should be **Microsoft OLE DB Provider for ODBC Drivers**, and the **Provider string** should be the connection string from the previous step.
 1. In the **Security** settings, select **Be made using the login's current security context**.
@@ -44,5 +44,5 @@ The SQL Server has a limitation where it can't use remote tabular functions from
 
 ## See also
 
-* [Create linked servers](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine?view=sql-server-ver16)
+* [Create linked servers](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine)
 * [Connect with ODBC](connect-odbc.md)
