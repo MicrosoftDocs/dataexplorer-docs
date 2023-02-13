@@ -10,47 +10,39 @@ ms.custom: mode-portal
 ---
 # Quickstart: Query sample data
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data. Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share Kusto Query Language commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer web UI](https://dataexplorer.azure.com).
-The Azure Data Explorer web UI can also be hosted by other web portals in an HTML iframe. For more information on how to host the Azure Data Explorer web UI and the Monaco editor used, see [Monaco IDE integration](kusto/api/monaco/monaco-kusto.md).
-In this quickstart, you'll be working in the stand-alone Azure Data Explorer web UI.
-
-:::image type="content" source="media/web-query-data/walkthrough.gif" alt-text="Walkthrough of the Kusto Web Explorer experience in the Azure Data Explorer web U I.":::
+Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share [Kusto Query Language (KQL)](kusto/query/index.md) commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer web UI](https://dataexplorer.azure.com). In this quickstart, you'll learn how to query data in the stand-alone Azure Data Explorer web UI.
 
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database.  You can [create a free cluster](start-for-free-web-ui.md), [create a full cluster](create-cluster-database-portal.md),  or use the [help cluster](https://dataexplorer.azure.com/clusters/help). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
-
-## Sign in to the application
-
-Sign in to [the application](https://dataexplorer.azure.com/).
+* Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
 ## Add clusters
 
-When you first open the application, there are no cluster connections. You must add a connection to a cluster before you can start running queries.
+When you first open the web UI, in the **Query** page, you should see a connection to the **help** cluster. The examples in this quickstart use the `StormEvents` table in the `Samples` database of the **help** cluster.
 
-:::image type="content" source="media/web-query-data/add-cluster.png" alt-text="Screenshot of query editor showing where to add a cluster.":::
+If you want to run queries on a different cluster, you must add a connection to that cluster.
 
-Follow these steps to add a connection to the publicly-available **help** cluster:
+To add a new cluster connection, do the following:
 
 1. On the left menu, select **Query**.
-1. In the upper left of the application, select **Add Cluster**.
-
-1. In the **Add cluster** dialog box, enter `help`, then select **Add**.
-
-1. In the **Cluster connection** pane, you should now see the **help** cluster. Expand the **Samples** database and open the **Tables** folder to see the sample tables that you have access to.
-
-    :::image type="content" source="media/web-query-data/help-cluster.png" alt-text="Find table in the help cluster in the Azure Data Explorer web U I.":::
-
-We use the **StormEvents** table later in this quickstart, and in other Azure Data Explorer articles.
+1. In the upper left pane, select **Add cluster**.
+1. In the **Add cluster** dialog box, enter the cluster **Connection URI** and **Display name**.
+1. Select **Add** to add the connection.
 
 ## Run queries
 
-You can now run queries on both clusters (assuming you have data in your test cluster). For this article, we'll focus on the **help** cluster.
+To run a query, you must select the database on which you want to run the query in order to set the query context.
 
 1. In the **Cluster connection** pane, under the **help** cluster, select the **Samples** database.
 
+    :::image type="content" source="media/web-query-data/samples-db-context.png" alt-text="Screenshot of the Samples database selected.":::
+
 1. Copy and paste the following query into the query window. At the top of the window, select **Run**.
+
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM4vKlFIqlQILkksKgnJzE1VSEktTgZKlCRmpyoYGgAAl2udPi4AAAA=" target="_blank">Run the query</a>
 
     ```kusto
     StormEvents
@@ -62,11 +54,10 @@ You can now run queries on both clusters (assuming you have data in your test cl
 
     :::image type="content" source="media/web-query-data/result-set-take-10.png" alt-text="Screenshot of a table that lists data for 10 storm events in the Azure Data Explorer web U I." border="false":::
 
-    The following image shows the state of the application, with the cluster added, and a query with results.
-
-    :::image type="content" source="media/web-query-data/webui-take10.png" alt-text="Screenshot of query editor window in the Azure Data Explorer web U I.":::
-
 1. Copy and paste the following query into the query window, below the first query. Notice how it isn't formatted on separate lines like the first query.
+
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WMQQrDMBAD73mFHtBD+4fmWgrJB7bxUtzirFmLgCGP74YeotNIA5poXsZNVzbsaObEq2OiOOdcFEnbggGRHdXtowtPe8G4pj/ExqMfT3OvgXcp8tanW1VnD1Vzs6QPcRfmTeOQ8lXcrj+ZB1DRhAAAAA==" target="_blank">Run the query</a>
 
     ```kusto
     StormEvents | sort by StartTime desc 
@@ -85,6 +76,9 @@ You can now run queries on both clusters (assuming you have data in your test cl
     > Select **Recall** at the top of the query window to show the result set from the first query without having to rerun the query. Often during analysis, you run multiple queries, and **Recall** allows you to retrieve the results of previous queries.
 
 1. Let's run one more query to see a different type of output.
+
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMsQ7CQAxDd74iYyt1KBtLGZDY2PoBKFyj9hBJUJprBeLjuYMFFkv2s927Gh8XEp83L5gTM1p8ElCJzkGTePfRqm6A4wAd4DJWBxqjnNBruDygd3QqazUvPteyWyeyvx/Yw3bXthndTa8U/DtsfjsZGslABkFviSVMaP4GmKtNLqQAAAA=" target="_blank">Run the query</a>
 
     ```kusto
     StormEvents
