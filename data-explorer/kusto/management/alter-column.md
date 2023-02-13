@@ -52,3 +52,32 @@ For each table `T1` you'd like to change a column type in, execute the following
     ```kusto
     .drop table T1_prime
     ```
+
+Example:
+
+Change column "Col1" data type in table `T1` from guid to string.
+
+```kusto
+// Create table T1
+.create table T1 (Col1:guid, Id:int)
+
+// Ingest sample data into T1
+.ingest inline into table T1 <|
+b642dec0-1040-4eac-84df-a75cfeba7aa4,1
+c224488c-ad42-4e6c-bc55-ae10858af58d,2
+99784a64-91ad-4897-ae0e-9d44bed8eda0,3
+d8857a93-2728-4bcb-be1d-1a2cd35386a7,4
+b1ddcfcc-388c-46a2-91d4-5e70aead098c,5
+
+// Create table T1_prime with the same schema and column order (except for the column we want to change the type)
+.create table T1_prime (Col1:string, Id:int)
+
+// Append data to the new table
+.set-or-append T1_prime <| T1 | extend Col1=tostring(Col1)
+
+// Rename tables
+.rename tables T1_prime = T1, T1 = T1_prime
+
+// Drop table T1_prime which now has the old schema and data
+.drop table T1_prime
+```
