@@ -2,7 +2,7 @@
 title: 'Customize settings in the Azure Data Explorer web UI'
 description: In this guide, you'll learn how to customize your settings in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 01/15/2023
+ms.date: 02/13/2023
 ---
 
 # Customize settings in the Azure Data Explorer web UI
@@ -64,7 +64,7 @@ Error level color scheme in **Light** mode | Error level color scheme in **Dark*
 
 ### Column requirements for highlighting
 
-For highlighted error levels, the column must be of type int, long, or string.
+For highlighted error levels, the column must be of [data type](kusto/query/scalar-data-types/index.md) `int`, `long`, or `string`.
 
 - If the column is of type `long` or `int`:
   - The column name must be *Level*
@@ -84,12 +84,9 @@ You can change the displayed datetime values to reflect a specific time zone. Th
 
 1. Select the **Settings** icon next to your user name.
 1. Select the **General** tab, and select a time zone from the dropdown menu.
+1. View the selected time zone in the results grid menu bar.
 
-    :::image type="content" source="media/web-query-data/time-zone.png" alt-text="Screenshot of general tab on settings blade to change time zone in Azure Data Explorer web U I.":::
-
-The selected time zone will then be visible in the results grid menu bar.
-
-:::image type="content" source="media/web-query-data/query-time-utc.png" alt-text="Screenshot of Query time changed to UTC in results grid menu.":::
+    :::image type="content" source="media/web-customize-settings/query-time-utc.png" alt-text="Screenshot of Query time changed to UTC in results grid menu.":::
 
 ## Next steps
 
