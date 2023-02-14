@@ -22,7 +22,7 @@ You can use the following ways to query the *current state* from your table:
 In the examples, you'll get the latest versions of the document by summarizing the table by the **Id** column, using the [arg_max](kusto/query/arg-max-aggfunction.md) function on the **_timestamp** column to only show the rows with the most recent timestamps.
 
 > [!NOTE]
-> The **_timestamp** column is created from the **_ts** property of ingested the Cosmos DB documents. The conversion from `DateTimeFromUnixSeconds` (**_ts**) to `datetime` (**_timestamp**) is performed by the ingestion  [table mapping](ingest-data-cosmos-db-connection#step-1-choose-an-azure-data-explorer-table-and-configure-its-table-mapping) configured for the table. The converted data in the **_timestamp** column makes queries and materialized views more performant than using the native `DateTimeFromUnixSeconds` **_ts** value.
+> The **_timestamp** column is created from the **_ts** property of ingested the Cosmos DB documents. The conversion from `DateTimeFromUnixSeconds` (**_ts**) to `datetime` (**_timestamp**) is performed by the ingestion  [table mapping](ingest-data-cosmos-db-connection.md#step-1-choose-an-azure-data-explorer-table-and-configure-its-table-mapping) configured for the table. The converted data in the **_timestamp** column makes queries and materialized views more performant than using the native `DateTimeFromUnixSeconds` **_ts** value.
 
 ### Run a query to get the latest versions of documents
 
