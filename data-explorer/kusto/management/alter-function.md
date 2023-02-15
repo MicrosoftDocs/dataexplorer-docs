@@ -12,7 +12,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 
 ## Syntax
 
-`.alter` `function` [ `with` `(` *PropertyName* `=` *PropertyValue*`,` ... `)`] *FunctionName*`(`*Parameters*`)` { *Body* }
+`.alter` `function` [ `with` `(` *PropertyName* `=` *PropertyValue*`,` ... `)`] *FunctionName*`(`*Parameters*`)` `{` *Body* `}`
 
 ## Parameters
 
