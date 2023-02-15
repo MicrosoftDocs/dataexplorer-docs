@@ -17,7 +17,13 @@ Requires [Database user permission](./access-control/role-based-access-control.m
 
 `.create` `tables` *TableName1* ([columnName:columnType], ...) [`,` *TableName2* ([columnName:columnType], ...) ... ] [`with` `(` [`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
-If any or all specified tables already exist, the command returns success. Specified tables that don't exist are created.
+> [!NOTE]
+> If one or more tables with the same (case-sensitive) names as the specified tables already exist in the context of the database, the command returns success without changing the existing tables, even in the following scenarios:
+>
+> - The specified schema doesn't match the schema of an existing table
+> - The `folder` or `docstring` parameters are specified with values different from the ones set in the existing tables
+>
+> Any specified tables that don't exist are created.
  
 **Example** 
 
