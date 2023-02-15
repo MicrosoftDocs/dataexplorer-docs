@@ -3,7 +3,7 @@ title: .create function - Azure Data Explorer
 description: This article describes the .create function in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/15/2022
+ms.date: 02/15/2023
 ---
 # .create function
 
@@ -15,20 +15,27 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 
 ## Syntax
 
-`.create` `function` [`ifnotexists`] [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`] [`view` `=` *View*] [`,` `skipvalidation` `=` 'true'] `)`]
-*FunctionName* `(` *ParamName* `:` *ParamType* [`,` ...] `)` `{` *FunctionBody* `}`
+`.create` `function` [ `ifnotexists` ] [ `with` `(`*PropertyName* `=` *PropertyValue*`,` ...`)` ]
+*FunctionName* `(`*Parameters*`)` `{` *Body* `}`
 
-## Arguments
+## Parameters
 
-|Input parameter |Type |Description |
-|---|---|---|
-|ifnotexists| bool | Will be executed only if the function doesn't exist (when set to `true`).
-|docstring|String|A description of the function.
-|folder|String|The name of the folder tag.
-|view|bool|Designates this function as a stored view.
-|skipvalidation|bool|When set to `true`, it will run validation logic on the function and fail if function isn't valid. (Default: `true`)
-|FunctionName(ParamName:ParamType)|String (String:datatype)|Name of the function, the parameter name and datatype.
-|FunctionBody|   | A user defined function expression.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| `ifnotexists` | string | | If specified, the function will only be created if the function doesn't yet exist.|
+|*FunctionName* | string | &check; | The name of the function to create or alter.|
+| *PropertyName*, *PropertyValue* | string | | A comma-separated list of properties. See [supported properties](#supported-properties) to learn more about the optional property values.|
+|*Parameters*  | string | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
+|*Body*| string | &check; | A user defined function expression.|
+
+### Supported properties
+
+|Name|Type|Description|
+|--|--|--|
+|`docstring`|string|A description of the function for UI purposes.|
+|`folder`|string|The name of a folder used for UI functions categorization.|
+|`view`|bool|Designates this function as a stored view.|
+|`skipvalidation`|bool|Determines whether or not to run validation logic on the function, and fail the process if the function isn't valid. The default is `true`.|
 
 ## Returns
 
@@ -50,7 +57,9 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 > * Not all data types are supported in `let` statements. Supported types are: boolean, string, long, datetime, timespan, double, and dynamic.
 > * Use `skipvalidation` to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
 
-## Example: Simple demo function
+## Examples
+
+### Simple demo function
 
 ```kusto
 .create function 
@@ -62,7 +71,7 @@ MyFunction1()  {StormEvents | take 100}
 |---|---|---|---|---|
 |MyFunction1|()|{StormEvents &#124; take 100}|Demo|Simple demo function|
 
-## Example: Demo function with parameter
+### Demo function with parameter
 
 ```kusto
 .create function
