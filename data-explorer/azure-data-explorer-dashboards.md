@@ -3,7 +3,7 @@ title: Visualize data with the Azure Data Explorer dashboard
 description: Learn how to visualize data with the Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 02/12/2023
+ms.date: 02/15/2023
 ---
 
 # Visualize data with Azure Data Explorer dashboards 
@@ -89,9 +89,11 @@ To pin a query:
 1. Create and run the query whose output you want to visualize in the dashboard.
 1. Select **Share** > **Pin to dashboard**.
 1. In the **Pin to dashboard** pane:
-    1. Provide a **Query name**.
-    1. Select **Use existing** or **Create new**.
-    1. Provide **Dashboard name**
+    1. Provide a **Tile name**.
+    1. The **Data source name** is auto populated from the query data source.
+    1. Select **Use existing data source if possible**.
+    1. Select **Create new**.
+    1. Enter **Dashboard name**.
     1. Select the **View dashboard after creation** checkbox (if it's a new dashboard).
     1. Select **Pin**
 
