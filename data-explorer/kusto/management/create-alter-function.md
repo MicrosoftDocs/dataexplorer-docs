@@ -36,7 +36,7 @@ If the function with the provided *FunctionName* doesn't exist in the database m
 ## Example
 
 ```kusto
-.create-or-alter function  with (docstring = 'Demo function with parameter', folder='MyFolder') TestFunction(myLimit:int)
+.create-or-alter function with (docstring = 'Demo function with parameter', folder='MyFolder') TestFunction(myLimit:int)
 {
     StormEvents | take myLimit 
 } 
