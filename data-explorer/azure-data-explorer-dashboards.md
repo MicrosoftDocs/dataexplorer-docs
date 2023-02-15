@@ -94,9 +94,7 @@ For more information about generating parameter queries, see [Create a parameter
 
 **Add tile** uses Kusto Query Language snippets to retrieve data and render visuals. Each tile/query can support a single visual.
 
-1. Select **Add tile** from the dashboard canvas or the top menu bar.
-
-    :::image type="content" source="media/adx-dashboards/empty-dashboard-new-query.png" alt-text="New query.":::
+1. Select **+ Add** and then **Add Tile** from the dashboard canvas or the top menu bar.
 
 1. In the **Query** pane,
     1. Select the data **Source** from the drop-down menu.
