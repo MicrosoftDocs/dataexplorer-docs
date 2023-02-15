@@ -3,7 +3,7 @@ title: .create table based-on - Azure Data Explorer
 description: This article describes the `.create table based-on` command in Azure Data Explorer
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 02/12/2023
+ms.date: 02/15/2023
 ---
 # .create table based-on
 
@@ -18,7 +18,7 @@ Requires [Database admin permission](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.create` `table` *TableName* `based-on` *OtherTable*  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
+`.create` `table` *TableName* `based-on` *OtherTable*  [`with` `(`*PropertyName* `=` *PropertyValue*`)`]
 
 ## Parameters
 
@@ -26,8 +26,14 @@ Requires [Database admin permission](access-control/role-based-access-control.md
 |--|--|--|--|
 | *TableName* | string | &check; | The name of the table to create. The case-senestive name must be unique in the database. |
 | *OtherTable*:*columnType* | string | &check; | The name of an existing table to use as the source for the columns, docstring, and folder of the table being created. |
-| *Documentation* | string | | Free text describing the entity to be added. This string is presented in various UX settings next to the entity names. The default value is *Created based on **\<TableName>***.  |
-| *FolderName* | string | | The name of the folder where to add the table. The default is the same folder as *TableName*.  |
+| *PropertyName*, *PropertyValue* | string | | A comma-separated list of properties. See [supported properties](#supported-properties) to learn more about the optional property values.|
+
+### Supported properties
+
+|Name|Type|Description|
+|--|--|--|
+|`docstring`|string|Free text describing the entity to be added. This string is presented in various UX settings next to the entity names. The default value is *Created based on **\<TableName>***.|
+|`folder`|string|The name of the folder where to add the table. The default is the same folder as *TableName*.|
 
 ## Returns
 
@@ -42,4 +48,3 @@ This command returns the new table's schema in JSON format, similar to running t
 ```kusto
 .create table MyLogs_Temp based-on MyLogs with (folder="TempTables")
 ```
-
