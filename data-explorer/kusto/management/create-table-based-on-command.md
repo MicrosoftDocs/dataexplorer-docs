@@ -25,7 +25,7 @@ Requires [Database admin permission](access-control/role-based-access-control.md
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *TableName* | string | &check; | The name of the table to create. The case-senestive name must be unique in the database. |
-| *OtherTable*:*columnType* | string | &check; | The name of an existing table to use as the source for the columns, docstring, and folder of the table being created. |
+| *OtherTable* | string | &check; | The name of an existing table to use as the source for the columns, docstring, and folder of the table being created. |
 | *PropertyName*, *PropertyValue* | string | | A comma-separated list of properties. See [supported properties](#supported-properties) to learn more about the optional property values.|
 
 ### Supported properties
