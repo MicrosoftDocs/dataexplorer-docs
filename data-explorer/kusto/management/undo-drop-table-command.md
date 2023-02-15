@@ -7,13 +7,15 @@ ms.date: 02/04/2020
 ---
 # .undo drop table
 
-The `.undo` `drop` `table` command reverts a drop table operation to a specific database version.
+The `.undo drop table` command reverts a drop table operation to a specific database version.
+
+That database version is the one before the drop operation was executed, and corresponds to the highest minor version of one major version before the one assigned by the DROP-TABLE event written in the journal when the table was dropped. More details on how to get such version can be found in the **How to find the required database version** section below.
 
 Requires [Database admin permission](./access-control/role-based-access-control.md).
 
 **Syntax**
 
-`.undo` `drop` `table` *TableName* [`as` *NewTableName*] `version=v` *DB_MajorVersion.DB_MinorVersion*
+`.undo drop table` *TableName* [`as` *NewTableName*] `version=v` *DB_MajorVersion.DB_MinorVersion*
 
 The command must be executed in the context of the database from which the table was dropped.
 
@@ -60,3 +62,5 @@ You can find the database version before the drop operation was executed by usin
 If a Purge command was executed on this database, the undo drop table command can't be executed to a version earlier to the purge execution.
 
 Extent can be recovered only if the hard delete period of the extent container it resides in wasn't reached yet.
+
+If a table with the same name has been created and dropped several times, only most recent drop can be undone.
