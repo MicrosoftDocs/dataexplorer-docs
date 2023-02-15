@@ -22,7 +22,7 @@ Requires [Database user permission](./access-control/role-based-access-control.m
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *TableName* | string | &check; | The name of the table to create. |
-| *ColumnName*, *ColumnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
+| *ColumnName*, *ColumnType* | string | &check; | The name of a column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
 | *PropertyName*, *PropertyValue* | string | | A comma-separated list of properties. See [supported properties](#supported-properties) to learn more about the optional property values.|
 
 ### Supported properties
