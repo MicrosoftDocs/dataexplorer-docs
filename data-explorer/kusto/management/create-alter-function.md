@@ -42,7 +42,7 @@ If the function with the provided *FunctionName* doesn't exist in the database m
 } 
 ```
 
-**Results**
+**Output**
 
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
