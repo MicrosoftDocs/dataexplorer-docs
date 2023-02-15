@@ -3,7 +3,7 @@ title: Create and alter SQL Server external tables - Azure Data Explorer
 description: This article describes how to create and alter external tables based on SQL Server tables.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 02/15/2023
 ---
 
 # Create and alter SQL Server external tables
@@ -12,17 +12,17 @@ Creates or alters an external SQL table in the database in which the command is 
 
 ## Syntax
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* ([columnName:columnType], ...)  
-`kind` `=` `sql`  
-`table` `=` *SqlTableName*  
-`(`*SqlServerConnectionString*`)`  
-[`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*], *property_name* `=` *value*`,`...`)`]
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*ColumnName*`:`*ColumnType* [`,` ...]`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlServerConnectionString*`)` [`with` `(`*PropertyName* `=` *PropertyValue*`)`]
 
 ## Parameters
 
-* *TableName* - External table name. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.
-* *SqlTableName* - The name of the SQL table. Not including the database name (example: "MySqlTable" and not "db1.MySqlTable"). If the name of the table contains a period (".") you can use ['Name.of.the.table'] notation.
-* *SqlServerConnectionString* - The connection string to the SQL Server. See the supported [SQL authentication methods](../api/connection-strings/sql-authentication-methods.md).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TableName* | string | &check; | The name of the external table. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.|
+| *ColumnName*, *ColumnType* | string | &check; | The name of a column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
+|*SqlTableName*| string | &check; | The name of the SQL table. Not including the database name (example: "MySqlTable" and not "db1.MySqlTable"). If the name of the table contains a period (".") you can use ['Name.of.the.table'] notation.|
+| *SqlServerConnectionString*| string |&check;| The connection string to the SQL Server. See the supported [SQL authentication methods](../api/connection-strings/sql-authentication-methods.md).|
+| *PropertyName*, *PropertyValue* | string | | A comma-separated list of properties. See [optional properties](#optional-properties) to learn more about the optional property values.|
 
 > [!NOTE]
 > * If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities.
