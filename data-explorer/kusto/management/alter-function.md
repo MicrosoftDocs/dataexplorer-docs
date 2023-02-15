@@ -3,26 +3,25 @@ title: .alter function - Azure Data Explorer
 description: This article describes .alter function in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/15/2023
 ---
 # .alter function
 
 Alters an existing function and stores it inside the database metadata.
 Rules for parameter types and CSL statements are the same as for [`let` statements](../query/letstatement.md).
 
-**Syntax**
+## Syntax
 
-```kusto
-.alter function [with (docstring = '<description>', folder='<name>', skipvalidation='true')] [FunctionName] ([paramName:paramType], ...) { CSL-statement }
-```
-    
-|Output parameter |Type |Description
-|---|---|--- 
-|Name  |String |The name of the function.
-|Parameters  |String |The parameters required by the function.
-|Body  |String |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.
-|Folder|String|A folder used for UI functions categorization. This parameter does not change the way function is invoked.
-|DocString|String|A description of the function for UI purposes.
+`.alter` `function` [ `with` `(` *PropertyName* `=` *PropertyValue*`,` ... `)`] *FunctionName*`(`*Parameters*`)` { *Body* }
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*FunctionName* | string | &check; | The name of the function.|
+| *PropertyName*, *PropertyValue* | string | | A comma-separated list of properties. See [supported properties](#supported-properties) to learn more about the optional property values.|
+|*Parameters*  | string |A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterValue*.|
+|*Body*| string | | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
 
 > [!NOTE]
 >
@@ -30,7 +29,14 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 > * Requires [database admin permission](./access-control/role-based-access-control.md)
 > * The [database user](./access-control/role-based-access-control.md) who originally created the function is allowed to modify the function. 
 > * Not all Kusto types are supported in `let` statements. Supported types are: string, long, datetime, timespan, and double.
-> * Use `skipvalidation` to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
+
+### Supported properties
+
+|Name|Type|Description|
+|--|--|--|
+|`docstring`|string|A description of the function for UI purposes.|
+|`folder`|string|The name of a folder used for UI functions categorization.|
+|`skipvalidation`|bool|Determines whether or not to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.|
 
 ## Example
 
