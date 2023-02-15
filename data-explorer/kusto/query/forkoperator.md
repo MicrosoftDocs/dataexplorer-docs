@@ -45,7 +45,7 @@ Runs multiple consumer operators in parallel.
 * [`summarize`](summarizeoperator.md)
 * [`top`](topoperator.md)
 * [`top-nested`](topnestedoperator.md)
-* [`sort`](orderoperator.md)
+* [`sort`](/azure/data-explorer/kusto/query/sort-operator)
 * [`mv-expand`](mvexpandoperator.md)
 * [`reduce`](reduceoperator.md)
 

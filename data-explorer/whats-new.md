@@ -15,28 +15,28 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) </br> - [Referencing security principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals.md) | Updated articles. Renewed and restructured referencing of security principals and identity providers.
+|- [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) </br> - [Referencing security principals](./kusto/management/access-control/referencing-security-principals.md) | Updated articles. Renewed and restructured referencing of security principals and identity providers.
 
 **Functions library**
 
 | Article title | Description |
 |--|--|
-|- [plotly_anomaly_fl()](/azure/data-explorer/kusto/functions-library/plotly-anomaly-fl.md) </br> - [plotly_scatter3d_fl()](/azure/data-explorer/kusto/functions-library/plotly-scatter3d-fl.md) | New articles. Describes how to customize a plotly template. |
+|- [plotly_anomaly_fl()](./kusto/functions-library/plotly-anomaly-fl.md) </br> - [plotly_scatter3d_fl()](./kusto/functions-library/plotly-scatter3d-fl.md) | New articles. Describes how to customize a plotly template. |
 
 **Management**
 
 | Article title | Description |
 |--|--|
-|- [.dup-next-failed-ingest](/azure/data-explorer/kusto/management/dup-next-failed-ingest.md) <br/> - [.dup-next-ingest](/azure/data-explorer/kusto/management/dup-next-ingest.md) | New articles. Describes how to troubleshoot data on demand. |
+|- [.dup-next-failed-ingest](./kusto/management/dup-next-failed-ingest.md) <br/> - [.dup-next-ingest](./kusto/management/dup-next-ingest.md) | New articles. Describes how to troubleshoot data on demand. |
 
 **Query**
 
 | Article title | Description |
 |--|--|
-| - [render operator](/azure/data-explorer/kusto/query/renderoperator.md)<br />- [Anomaly chart](kusto/query/visualization-anomalychart.md) <br/> - [Area chart](kusto/query/visualization-areachart.md) <br/> - [Bar chart](kusto/query/visualization-barchart.md) <br/> - [Card](kusto/query/visualization-card.md) <br/> - [Column chart](kusto/query/visualization-columnchart.md) <br/> - [Ladder chart](kusto/query/visualization-ladderchart.md) <br/> - [Line chart](kusto/query/visualization-linechart.md) <br/> - [Pie chart](kusto/query/visualization-piechart.md) <br/> - [Pivot chart](kusto/query/visualization-pivotchart.md) <br/> - [Scatter chart](kusto/query/visualization-scatterchart.md) <br/> - [Stacked area chart](kusto/query/visualization-stackedareachart.md) <br/> - [Table](kusto/query/visualization-table.md) <br/> - [Time chart](kusto/query/visualization-timechart.md) <br/> - [Time pivot](kusto/query/visualization-timepivot.md) | Updated and new articles. Refreshed render overview and added topics describing each render visualization. |
-| [series_dot_product()](/azure/data-explorer/kusto/query/series-dot-productfunction.md) | New articles. Describes how to calculate the dot product of two numeric series.|
-| [hll_if() (aggregation function)](/azure/data-explorer/kusto/query/hll-if-aggregation-function.md) | New article. Describes how to calculate the intermediate results of the `dcount()` function. |
-| [bag_set_key()](/azure/data-explorer/kusto/query/bag-set-key-function.md) | New article. Describes how to set a given key to a given value in a dynamic property bag. |
+| - [render operator](./kusto/query/renderoperator.md)<br />- [Anomaly chart](kusto/query/visualization-anomalychart.md) <br/> - [Area chart](kusto/query/visualization-areachart.md) <br/> - [Bar chart](kusto/query/visualization-barchart.md) <br/> - [Card](kusto/query/visualization-card.md) <br/> - [Column chart](kusto/query/visualization-columnchart.md) <br/> - [Ladder chart](kusto/query/visualization-ladderchart.md) <br/> - [Line chart](kusto/query/visualization-linechart.md) <br/> - [Pie chart](kusto/query/visualization-piechart.md) <br/> - [Pivot chart](kusto/query/visualization-pivotchart.md) <br/> - [Scatter chart](kusto/query/visualization-scatterchart.md) <br/> - [Stacked area chart](kusto/query/visualization-stackedareachart.md) <br/> - [Table](kusto/query/visualization-table.md) <br/> - [Time chart](kusto/query/visualization-timechart.md) <br/> - [Time pivot](kusto/query/visualization-timepivot.md) | Updated and new articles. Refreshed render overview and added topics describing each render visualization. |
+| [series_dot_product()](./kusto/query/series-dot-productfunction.md) | New articles. Describes how to calculate the dot product of two numeric series.|
+| [hll_if() (aggregation function)](./kusto/query/hll-if-aggregation-function.md) | New article. Describes how to calculate the intermediate results of the `dcount()` function. |
+| [bag_set_key()](./kusto/query/bag-set-key-function.md) | New article. Describes how to set a given key to a given value in a dynamic property bag. |
 
 ## December 2022
 
@@ -107,7 +107,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [Use the ingestion wizard to ingest JSON data](ingestion-wizard-existing-table.md) <br />- [Web UI overview](web-ui-overview.md)|Updated articles. Added references to ingestion wizard and updated UI.|
+|- [Use the ingestion wizard to ingest JSON data](ingestion-wizard-existing-table.md) <br />- [Web UI overview](/azure/data-explorer/web-query-data)|Updated articles. Added references to ingestion wizard and updated UI.|
 
 **Management**
 
@@ -147,8 +147,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [Ingest data from Azure Stream Analytics (Preview)](stream-analytics-connector.md) | New Article. Describes how to ingest (load) data from Azure Stream Analytics. |
-| [Azure Data Explorer web UI overview](web-ui-overview.md) | New Article. Describes the elements of web UI home page and the data analytics journey. |
-| [Explore the Azure Data Explorer web UI samples gallery](web-ui-samples-gallery.md) | New Article. Describes how to use the samples gallery in the web UI. |
+| [Azure Data Explorer web UI overview](/azure/data-explorer/web-query-data) | New Article. Describes the elements of web UI home page and the data analytics journey. |
+| [Explore the Azure Data Explorer web UI samples gallery](/azure/data-explorer/web-ui-samples-dashboards) | New Article. Describes how to use the samples gallery in the web UI. |
 | [Select a SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md) | Updated Article. New SKU list and refreshed content. |
 
 ## May 2022
