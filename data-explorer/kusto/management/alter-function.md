@@ -20,7 +20,7 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 |--|--|--|--|
 |*FunctionName* | string | &check; | The name of the function.|
 | *PropertyName*, *PropertyValue* | string | | A comma-separated list of properties. See [supported properties](#supported-properties) to learn more about the optional property values.|
-|*Parameters*  | string |A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterValue*.|
+|*Parameters*  | string |A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
 |*Body*| string | | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
 
 > [!NOTE]
