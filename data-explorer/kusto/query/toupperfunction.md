@@ -3,11 +3,31 @@ title: toupper() - Azure Data Explorer
 description: This article describes toupper() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/15/2023
 ---
 # toupper()
 
 Converts a string to upper case.
+
+## Syntax
+
+`toupper(`*value*`)`
+
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | string | &check; | The value to convert to an uppercase string.|
+
+## Returns
+
+If conversion is successful, result will be an uppercase string.
+If conversion is not successful, result will be `null`.
+
+## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJLy0oSC3SUMpIzcnJV9JUsLVVUPJw9fHxVwIAC8jUKyEAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 toupper("hello") == "HELLO"
