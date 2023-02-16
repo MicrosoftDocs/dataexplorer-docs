@@ -3,7 +3,7 @@ title: Create or alter continuous data export - Azure Data Explorer
 description: This article describes how to create or alter continuous data export in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 07/19/2021
+ms.date: 02/16/2023
 ---
 # Create or alter continuous export
 
@@ -17,14 +17,15 @@ Creates or alters a continuous export job.
 [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]<br>
 `<|` *Query*
 
-## Arguments
+## Parameters
 
-| Argument | Type | Description |
-|--|--|--|
-| ContinuousExportName | String | Name of continuous export. Name must be unique within the database and is used to periodically run the continuous export. |
-| ExternalTableName | String | Name of [external table](../../query/schema-entities/externaltables.md) to export to. |
-| Query | String | Query to export. |
-| over (T1, T2) | String | An optional comma-separated list of fact tables in the query. If not specified, all tables referenced in the query are assumed to be fact tables. If specified, tables *not* in this list are treated as dimension tables and will not be scoped (all records will participate in all exports). See [continuous data export overview](continuous-data-export.md) for details. |
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ContinuousExportName* | string | &check; | The name of the continuous export. Must be unique within the database. |
+| *ExternalTableName* | string | &check; | The name of the [external table](../../query/schema-entities/externaltables.md) to export to. |
+| *Query* | string | &check; | The query to export. |
+| *T1*, *T2* | string | | A comma-separated list of fact tables in the query. If not specified, all tables referenced in the query are assumed to be fact tables. If specified, tables *not* in this list are treated as dimension tables and will not be scoped (all records will participate in all exports). See [continuous data export overview](continuous-data-export.md) for details. |
+| *PropertyName*, *PropertyValue* | string | | A comma-separated list of optional [properties](#properties).|
 
 ## Properties
 
