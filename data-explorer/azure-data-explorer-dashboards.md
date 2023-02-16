@@ -13,7 +13,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 A dashboard is a collection of tiles, optionally organized in pages, where each tile has an underlying query and a visual representation. Using the web UI, you can natively export Kusto Query Language (KQL) queries to a dashboard as visuals and later modify their underlying queries and visual formatting as needed. In addition to ease of data exploration, this fully integrated Azure Data Explorer dashboard experience provides improved query and visualization performance.
 
 > [!IMPORTANT]
-> Your data is secure. Dashboards and dashboard-related metadata about users is encrypted at rest using Microsoft-managed keys.
+> Your data is secure. Dashboards and dashboard-related metadata about users are encrypted at rest using Microsoft-managed keys.
 
 The following image shows a sample Azure Data Explorer dashboard:
 
