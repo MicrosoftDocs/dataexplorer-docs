@@ -46,6 +46,12 @@ var reader = client.ExecuteQuery("StormEvents | count");
 
 **Example: Enumerating the accessible databases**
 
+> Note!
+> 
+> It is essential to properly disposed on unused data readers and clients as they hold network resources.
+> 
+> Accumulate of unused and undisposed data readers and clients could lead to various network errors or unexpected timeouts. 
+
 ```csharp
 var kcsb = new KustoConnectionStringBuilder(cluster URI here). WithAadUserPromptAuthentication();
 using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
