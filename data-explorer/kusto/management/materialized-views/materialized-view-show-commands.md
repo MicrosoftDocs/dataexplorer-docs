@@ -3,7 +3,7 @@ title: show materialized view commands - Azure Data Explorer
 description: This article describes show materialized views commands in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/30/2020
+ms.date: 02/16/2023
 ---
 
 # .show materialized-views commands
@@ -20,11 +20,11 @@ Displays information about the materialized view's definition and its current st
 
 `.show` `materialized-views`
 
-### Properties
+## Parameters
 
-|Property|Type|Description
-|----------------|-------|---|
-|MaterializedViewName|String|Name of the materialized view.|
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *MaterializedViewName* | string | &check; | The name of the materialized view. |
 
 ### Example
 
@@ -61,6 +61,12 @@ Returns the schema of the materialized view in CSL/JSON.
 
 `.show` `materialized-view` *MaterializedViewName* `schema` `as` `csl`
 
+### Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *MaterializedViewName* | string | &check; | The name of the materialized view. |
+
 ### Output parameters
 
 | Output parameter | Type   | Description                                               |
@@ -80,7 +86,13 @@ This command provides the same details as the [show table extents](../show-exten
 ### Syntax
 
 `.show` `materialized-view` *MaterializedViewName* `extents` [`hot`]
- 
+
+### Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *MaterializedViewName* | string | &check; | The name of the materialized view. |
+
 ## .show materialized-view failures
 
 Returns failures that occurred as part of the materialization process of the materialized view.
@@ -89,11 +101,11 @@ Returns failures that occurred as part of the materialization process of the mat
 
 `.show` `materialized-view` *MaterializedViewName* `failures`
 
-### Properties
+### Parameters
 
-|Property|Type|Description
-|----------------|-------|---|
-|MaterializedViewName|String|Name of the Materialized View.|
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *MaterializedViewName* | string | &check; | The name of the materialized view. |
 
 ### Output
 

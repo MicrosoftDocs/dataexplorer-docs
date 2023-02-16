@@ -3,7 +3,7 @@ title: Materialized view rename - Azure Data Explorer
 description: This article describes rename materialized view command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 11/22/2021
+ms.date: 02/16/2023
 ---
 # .rename materialized-view
 
@@ -12,14 +12,15 @@ Renames a materialized view.
 Requires [Database Admin](../access-control/role-based-access-control.md) or materialized view admin permissions.
 
 ## Syntax
+
 `.rename` `materialized-view` *OldName* `to` *NewName*
 
-## Properties
+## Parameters
 
-| Property | Type| Description |
-|----------------|-------|-----|
-| OldName| String| Name of the materialized view to rename.|
-| NewName| String| New name to assign to the view.|
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *OldName* | string | &check; | The old name of the materialized view. |
+| *NewName* | string | &check; | The new name to assign to the materialized view. |
 
 ## Returns
 

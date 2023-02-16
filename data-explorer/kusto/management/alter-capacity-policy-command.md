@@ -3,7 +3,7 @@ title: Alter capacity policy command - Azure Data Explorer
 description: This article describes the .alter capacity policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/30/2021
+ms.date: 02/16/2023
 ---
 # .alter capacity policy
 
@@ -14,11 +14,13 @@ Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy con
 
 ## Syntax
 
-`.alter` `cluster` `policy` `capacity` *PolicyObject* 
+`.alter` `cluster` `policy` `capacity` *PolicyObject*
 
-## Arguments
+## Parameters
 
-*PolicyObject* - Define a JSON policy object. See [capacity policy](capacitypolicy.md) for policy properties. 
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *PolicyObject* | string | &check; | A JSON policy object. See [capacity policy](capacitypolicy.md) for policy properties. |
 
 ## Returns
 

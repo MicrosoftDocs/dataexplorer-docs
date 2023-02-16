@@ -3,7 +3,7 @@ title: .show materialized view details - Azure Data Explorer
 description: This article describes .show materialized view command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 02/16/2023
 ---
 # .show materialized view details
 
@@ -16,6 +16,21 @@ Requires [Database viewer permission](../access-control/role-based-access-contro
 .show materialized-views (MV1, ..., MVn) details
 .show materialized-views details
 ```
+
+## Syntax
+
+`.show` `materialized-view` *MaterializedViewName* `details`
+
+`.show` `.materialized-views` `(`*MaterializedViewsNames*`)` `details`
+
+`.show` `.materialized-views` `details`
+
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *MaterializedViewName* | string | &check; | The name of the materialized view. |
+| *MaterializedViewsNames* | string | &check; | One or more comma-separated materialized view names. |
 
 ## Output
 
