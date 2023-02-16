@@ -3,23 +3,25 @@ title: Visualize data with the Azure Data Explorer dashboard
 description: Learn how to visualize data with the Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 02/15/2023
+ms.date: 01/31/2023
 ---
 
-# Visualize data with Azure Data Explorer dashboards 
+# Visualize data with Azure Data Explorer dashboards (Preview)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Explore your data from end-to-end in the Azure Data Explorer web application, starting with [data ingestion](ingest-data-wizard.md), running [queries](web-query-data.md), and ultimately building dashboards. 
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer provides a web application that enables you to run queries and build dashboards. Dashboards are available in the stand-alone web application, the [Azure Data Explorer web UI](web-query-data.md). Azure Data Explorer is also integrated with other dashboard services like [Power BI](power-bi-data-connector.md?tabs=connector) and [Grafana](grafana.md).
 
-A dashboard is a collection of tiles, optionally organized in pages, where each tile has an underlying query and a visual representation. Using the web UI, you can natively export Kusto Query Language (KQL) queries to a dashboard as visuals and later modify their underlying queries and visual formatting as needed. In addition to ease of data exploration, this fully integrated Azure Data Explorer dashboard experience provides improved query and visualization performance.
+Azure Data Explorer dashboards provide three main advantages:
+
+* Natively export queries from the Azure Data Explorer web UI to Azure Data Explorer dashboards.
+* Explore the data in the Azure Data Explorer web UI.
+* Optimized dashboard rendering performance.
+
+The following image depicts an Azure Data Explorer dashboard.
+
+:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Screenshot showing an Azure Data Explorer web UI dashboard.":::
 
 > [!IMPORTANT]
-> Your data is secure. Dashboards and dashboard-related metadata about users are encrypted at rest using Microsoft-managed keys.
-
-The following image shows a sample Azure Data Explorer dashboard:
-
-:::image type="content" source="media/adx-dashboards/dash.png" alt-text="Screenshot showing an Azure Data Explorer web UI dashboard." lightbox="media/adx-dashboards/dash.png":::
-
-To interactively explore sample dashboards, see [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md).
+> Your data is secure. Dashboards and dashboard-related metadata about users is encrypted at rest using Microsoft-managed keys.
 
 ## Prerequisites
 
@@ -27,19 +29,21 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
 * Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
-## Create a new dashboard
+## Create a dashboard
 
-1. In the navigation bar, select **Dashboards** > **New dashboard**.
+You can create a dashboard in the Azure Data Explorer web UI using the following steps. Alternatively, you can create a dashboard by [importing a dashboard file](#to-create-new-dashboard-from-a-file).
+
+1. In the navigation bar, select **Dashboards (Preview)** and then select **New dashboard**.
 
     :::image type="content" source="media/adx-dashboards/new-dashboard.png" alt-text="New dashboard.":::
 
-1. Enter a dashboard name and select **Create**.
+1. Enter a dashboard name and then select **Create**.
 
     :::image type="content" source="media/adx-dashboards/new-dashboard-popup.png" alt-text="Create a dashboard.":::
 
 ## Add data source
 
-A single dashboard can show visuals from one or more clusters.
+Add a data source for the dashboard.
 
 1. Select the **More menu** [...] > **Data sources**
 
@@ -55,9 +59,51 @@ A single dashboard can show visuals from one or more clusters.
 
     :::image type="content" source="media/adx-dashboards/data-source-pane.png" alt-text="Data source pane.":::
 
+## Use Parameters
+
+Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with your tile(s).  For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
+
+1. Select **Parameters** on the top bar.
+1. Select the **+ New parameter** button in the **Parameters** pane.
+
+    :::image type="content" source="media/adx-dashboards/parameters.png" alt-text="Select new parameter.":::
+
+1. Enter values for all the mandatory fields and select **Done**. In this example, we're using a query-based parameter that allows you to select one or more states and see events associated with this selection.
+
+    :::image type="content" source="media/adx-dashboards/parameter-pane.png" alt-text="Parameter pane.":::
+
+|Field|Description|
+|---------|---------|
+|**Parameter type**|One of the following:<br>- **Single Selection**: Only one value can be selected in the filter as input for the parameter.<br>- **Multiple Selection**: One or more values can be selected in the filter as input(s) for the parameter.<br>- **Time Range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.<br>- The parameter type you select will affect the way you write any query that's based on this parameter.|
+|**Variable name**|The name of the parameter to be used in the query.|
+|**Data type**|The data type of the parameter values.|
+|**Pin as dashboard filter**|The option to pin the parameter-based filter to the dashboard.|
+|**Source**|The source of the parameter values:<br>- **Fixed values**: Manually introduced static filter values.<br>- **Query**: Dynamically introduced values using a KQL query.|
+|**Value column**|Results column to be used as parameter values. Only applicable for query-based parameters.|
+|**Label column**|Results column to be used for parameter labels. Only applicable for query-based parameters.|
+|**Add empty "Select all" value**|Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values.|
+|**Display name**|The name of the parameter shown on the dashboard or the edit card.|
+|**Default value**|The default parameter value.|
+
+### Parameter query
+
+The following is an example of a query using the parameter defined in [Use parameters](azure-data-explorer-dashboards.md#use-parameters).
+
+:::image type="content" source="media/adx-dashboards/parameter-query.png" alt-text="Screenshot of query used to generate parameters.":::
+
+1. Select the source data from the drop-down bar.
+1. Enter your query and then select **Run**.
+
+1. Select **Apply changes**.
+
+> [!NOTE]
+> The parameter query is used to generate dynamically introduced values as parameters using a KQL query. It's not the query used for generating the dashboard visual.
+
+For more information about generating parameter queries, see [Create a parameter](dashboard-parameters.md#create-a-parameter).
+
 ## Add tile
 
-Dashboard tiles use Kusto Query Language snippets to retrieve data and render visuals. Each tile/query can support a single visual.
+**Add tile** uses Kusto Query Language snippets to retrieve data and render visuals. Each tile/query can support a single visual.
 
 1. Select **Add tile** from the dashboard canvas or the top menu bar.
 
@@ -67,41 +113,18 @@ Dashboard tiles use Kusto Query Language snippets to retrieve data and render vi
     1. Select the data source from the drop-down menu.
     1. Type the query, and the select **Run**. For more information about generating queries that use parameters, see [Use parameters in your query](dashboard-parameters.md#use-parameters-in-your-query).
 
-    1. Select **Visual**.
+    1. Select **+ Add visual**.
 
     :::image type="content" source="media/adx-dashboards/initial-query.png" alt-text="Execute query.":::
 
-1. In the visual tab, select **Visual type** to choose the type of visual.
+1. In the **Visual formatting** pane, select **Visual type** to choose the type of visual.
 1. Select **Apply changes** to pin the visual to the dashboard.
 
     :::image type="content" source="media/adx-dashboards/add-visual.png" alt-text="Add visual to query.":::
 
-1. You can resize the visual and then select the **Save** icon.
+1. You can resize the visual and then **Save changes** to save the dashboard.
 
     :::image type="content" source="media/adx-dashboards/save-dashboard.png" alt-text="save dashboard.":::
-
-## Pin tile from query
-
-You can also pin a query from the [query tab of the web UI](web-query-data.md).
-
-To pin a query:
-
-1. Create and run the query whose output you want to visualize in the dashboard.
-1. Select **Share** > **Pin to dashboard**.
-1. In the **Pin to dashboard** pane:
-    1. Provide a **Tile name**.
-    1. The **Data source name** is auto populated from the query data source.
-    1. Select **Use existing data source if possible**.
-    1. Select **Create new**.
-    1. Enter **Dashboard name**.
-    1. Select the **View dashboard after creation** checkbox (if it's a new dashboard).
-    1. Select **Pin**
-
-    :::image type="content" source="media/web-query-data/pin-to-dashboard.png" alt-text="Screenshot of the Pin to dashboard pane.":::
-
-## Use parameters
-
-Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with your tile(s).  For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
 
 ## Share dashboards
 
@@ -230,7 +253,8 @@ You can update an existing dashboard, or restore a previous version, as follows:
 
 ## Enable auto refresh
 
-1. Select the **More menu [...]** > **Auto refresh**.
+1. Select **Edit** in dashboard menu to switch to edit mode.
+1. Select **Auto refresh**.
 
     :::image type="content" source="media/adx-dashboards/auto-refresh.png" alt-text="Select auto refresh.":::
 
@@ -253,5 +277,3 @@ You can update an existing dashboard, or restore a previous version, as follows:
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
 * [Customize dashboard visuals](dashboard-customize-visuals.md)
 * [Query data in Azure Data Explorer](web-query-data.md)
-* [Power BI](power-bi-data-connector.md?tabs=connector) 
-* [Grafana](grafana.md)
