@@ -1,13 +1,13 @@
 ---
-title: Set up your development environment to use the Azure Data Explorer client library
-description: Learn how to set up your development environment to use the Azure Data Explorer client library.
+title: Set up your development environment to use Azure Data Explorer client libraries
+description: Learn how to set up your development environment to use Azure Data Explorer client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 02/05/2023
 ---
-# Set up your development environment to use the Azure Data Explorer client library
+# Set up your development environment to use Azure Data Explorer client libraries
 
-Get started with the Azure Data Explorer client libraries.
+Learn how to set up your environment to use Azure Data Explorer client libraries. You can use these libraries to create apps that connect with a cluster and run queries or ingest data.
 
 In this article, you learn how to install client library packages for your preferred language
 
@@ -47,7 +47,7 @@ The following table lists the client libraries for Azure Data Explorer and the c
 | Kusto client library | `azure-kusto-data` | Provides a client for connecting to Azure Data Explorer. Use the client library to [query data](../../query/index.md) or run [management commands](../../management/index.md). |
 | Kusto ingest client library | `azure-kusto-ingest` | Provides a client for ingesting data into Azure Data Explorer. Use the ingest client library to [ingest data](../../../ingest-data-overview.md) into Azure Data Explorer. |
 
-Add the Azure Data Explorer client libraries for your preferred language to your project. Use the package manager appropriate for your language to install the client libraries.
+Add the Azure Data Explorer client libraries for your preferred language to your project, or use the package manager appropriate for your language to install the client libraries.
 
 ### [C\#](#tab/csharp)
 
@@ -55,12 +55,14 @@ Add the Azure Data Explorer client libraries for your preferred language to your
 
 ```bash
 python -m pip install azure-kusto-data
+python -m pip install azure-kusto-ingest
 ```
 
 ### [Node.js](#tab/nodejs)
 
 ```bash
 npm install azure-kusto-data
+npm install azure-kusto-ingest
 ```
 
 ### [Go](#tab/go)

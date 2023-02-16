@@ -1,19 +1,19 @@
 ---
-title: Create your first app - Hello Kusto - Azure Data Explorer
-description: Learn how to create your first app to print Hello Kusto using Azure Data Explorer client libraries.
+title: Create your first application - Hello Kusto - Azure Data Explorer
+description: Learn how to create your first application to print Hello Kusto using Azure Data Explorer client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 02/05/2023
 ---
-# Create your first app: Hello Kusto
+# Hello Kusto: Create your first Azure Data Exlplorer client application
 
 In this article, you learn how to:
 
 > [!div class="checklist"]
 >
-> - Create your first app to run a basic query that:
->   - Uses interactive authentication to connect to our help cluster `https://help.kusto.windows.net`
->   - Run a basic query that prints *Hello Kusto!*
+> - Create your first client application
+> - Use interactive authentication
+> - Run a basic query that prints *Hello Kusto!*
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ In this article, you learn how to:
 1. In your preferred IDE or text editor, create a file named `hello-kusto` with the language appropriate extension and add code to do the following:
 
     - Import the *KustoClient* and *KustoConnectionStringBuilder* classes from the `azure.kusto.data` package.
-    - Define an empty function named `main` and calls it.
+    - Define an empty function named `main` and call it.
 
     ### [C\#](#tab/csharp)
 
@@ -51,13 +51,13 @@ In this article, you learn how to:
     main();
     ```
 
-    ### [Go](#tab/go)
+    <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
 
     ---
 
-1. Add code to create a *KustoConnectionStringBuilder* object that defines the connection string to the cluster and sets the authentication mode to interactive. The connection string is in the format `https://<clusterName>.<region>.kusto.windows.net;`.
+1. Add code to create a *KustoConnectionStringBuilder* object that defines the connection string to the cluster and sets the authentication mode to interactive. The connection string is in the format `https://<clusterName>.<region>.kusto.windows.net/`.
 
     ### [C\#](#tab/csharp)
 
@@ -75,7 +75,7 @@ In this article, you learn how to:
     const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
     ```
 
-    ### [Go](#tab/go)
+    <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
 
@@ -97,7 +97,7 @@ In this article, you learn how to:
     const query_client = new KustoClient(kcsb);
     ```
 
-    ### [Go](#tab/go)
+    <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
 
@@ -121,7 +121,7 @@ In this article, you learn how to:
     const query = "print Welcome='Hello Kusto!'";
     ```
 
-    ### [Go](#tab/go)
+    <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
 
@@ -156,7 +156,7 @@ In this article, you learn how to:
     console.log(response.primaryResults[0][0]["Welcome"].toString());
     ```
 
-    ### [Go](#tab/go)
+    <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
 
@@ -207,7 +207,7 @@ async function main() {
 main();
 ```
 
-### [Go](#tab/go)
+<!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
 
@@ -231,7 +231,7 @@ python hello-kusto.py
 node hello-kusto.js
 ```
 
-### [Go](#tab/go)
+<!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
 
