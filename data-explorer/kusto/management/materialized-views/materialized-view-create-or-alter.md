@@ -3,7 +3,7 @@ title: .create-or-alter materialized view - Azure Data Explorer
 description: This article describes `.create-or-alter materialized view` in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/08/2020
+ms.date: 02/16/2023
 ---
 # .create-or-alter materialized-view
 
@@ -24,7 +24,14 @@ The command has the following limitations:
 *ViewName* `on table` *SourceTableName* <br>
 `{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
 
-For more information on arguments and properties, see the [`.create materialized-view`](materialized-view-create.md) command.
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*ViewName*|string|&check;|The name of the materialized view.|
+|*PropertyName*, *PropertyValue*|string||A list of [properties](materialized-view-create.md#properties).|
+|*SourceTableName*|string|&check;|The name of the source table on which the view is defined.|
+|*Query*|string|&check;|The materialized view query.|
 
 ## Example
 

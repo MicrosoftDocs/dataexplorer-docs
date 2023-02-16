@@ -3,7 +3,7 @@ title: Alter materialized view - Azure Data Explorer
 description: This article describes how to Alter materialized views in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/30/2020
+ms.date: 02/16/2023
 ---
 # .alter materialized-view
 
@@ -23,13 +23,14 @@ Requires [Database Admin](../access-control/role-based-access-control.md) permis
     &nbsp;&nbsp;&nbsp;&nbsp;*Query*  
 `}`
 
-## Arguments
+## Parameters
 
-|Argument|Type|Description
-|----------------|-------|---|
-|ViewName|String|Materialized view name.|
-|SourceTableName|String|Name of source table on which the view is defined.|
-|Query|String|The materialized view query.|
+|Name|Type|Required|Description|
+|--|--|--|
+|*ViewName*|string|&check;|The materialized view name.|
+|*PropertyName*, *PropertyValue*|string||A list of [properties](#properties).|
+|*SourceTableName*|string|&check;|The name of the source table on which the view is defined.|
+|*Query*|string|&check;|The materialized view query.|
 
 ## Properties
 
