@@ -3,7 +3,7 @@ title: Drop continuous data export - Azure Data Explorer
 description: This article describes how to drop continuous data export in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/03/2020
+ms.date: 02/16/2023
 ---
 # Drop continuous export
 
@@ -13,12 +13,12 @@ Drops a continuous-export job.
 
 `.drop` `continuous-export` *ContinuousExportName*
 
-## Properties
+## Parameters
 
-| Property             | Type   | Description                |
-|----------------------|--------|----------------------------|
-| ContinuousExportName | String | Name of continuous export |
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ContinuousExportName* | string | &check; | The name of the continuous export. |
 
-## Output
+## Returns
 
 The remaining continuous exports in the database (post deletion). Output schema as in the [show continuous export command](show-continuous-export.md).

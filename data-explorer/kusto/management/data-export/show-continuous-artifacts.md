@@ -3,7 +3,7 @@ title: Show continuous data export artifacts - Azure Data Explorer
 description: This article describes how to show continuous data export artifacts in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/03/2020
+ms.date: 02/16/2023
 ---
 # Show continuous export artifacts
 
@@ -14,13 +14,13 @@ The command will not return any results if executed on a [follower database](../
 
 `.show` `continuous-export` *ContinuousExportName* `exported-artifacts`
 
-## Properties
+## Parameters
 
-| Property             | Type   | Description                |
-|----------------------|--------|----------------------------|
-| ContinuousExportName | String | Name of continuous export. |
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ContinuousExportName* | string | &check; | The name of the continuous export. |
 
-## Output
+## Returns
 
 | Output parameter  | Type     | Description                            |
 |-------------------|----------|----------------------------------------|

@@ -3,28 +3,27 @@ title: Export data to SQL - Azure Data Explorer
 description: This article describes Export data to SQL in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/16/2023
 ---
 # Export data to SQL
 
 Export data to SQL allows you to run a query and have its results sent to a table in a SQL database, such as a SQL database hosted by the Azure SQL Database service.
 
-**Syntax**
+## Syntax
 
 `.export` [`async`] `to` `sql` *SqlTableName* *SqlConnectionString* [`with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]
  `<|` *Query*
 
-Where:
-* *async*: Command runs in asynchronous mode (optional).
-* *SqlTableName* SQL database table name where the data is inserted.
-  To protect against injection attacks, this name is restricted.
-* *SqlConnectionString* is a `string` literal that follows the `ADO.NET`
-  connection string format and describes the SQL endpoint and database
-  to which you connect. For security reasons, the connection string is restricted.
-* *PropertyName*, *PropertyValue* are pairs of a name (identifier) and a value
-  (string literal).
+## Parameters
 
-Properties:
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `async` | string | | If specified, the command runs in asynchronous mode.|
+| *SqlTableName* | string | &check; | The SQL database table name where the data is inserted. To protect against injection attacks, this name is restricted.|
+| *SqlConnectionString* | string | &check; | Describes the SQL endpoint and database to which you connect. Must follow the `ADO.NET` connection string format and describes the SQL endpoint and database to which you connect. For security reasons, the connection string is restricted.|
+| *PropertyName*, *PropertyValue*| string || A list of optional [properties](#properties).|
+
+## Properties
 
 |Name               |Values           |Description|
 |-------------------|-----------------|-----------|

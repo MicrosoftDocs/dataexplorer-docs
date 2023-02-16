@@ -3,7 +3,7 @@ title: Show continuous data export - Azure Data Explorer
 description: This article describes how to show continuous data export properties in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/06/2021
+ms.date: 02/16/2023
 ---
 # Show continuous export
 
@@ -15,13 +15,13 @@ Returns the properties of a specified continuous export or all continuous export
 
 `.show` `continuous-exports`
 
-## Properties
+## Parameters
 
-| Property             | Type   | Description                |
-|----------------------|--------|----------------------------|
-| ContinuousExportName | String | Name of continuous export. |
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ContinuousExportName* | string | &check; | The name of the continuous export. |
 
-## Output
+## Returns
 
 | Output parameter    | Type     | Description                                                             |
 |---------------------|----------|-------------------------------------------------------------------------|
