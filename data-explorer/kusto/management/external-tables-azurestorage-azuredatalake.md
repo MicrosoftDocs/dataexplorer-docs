@@ -211,7 +211,7 @@ external_table("ExternalTable")
 
 When querying an external table, the query engine improves performance by filtering out irrelevant external storage files. The process of iterating files and deciding whether a file should be processed is as follows:
 
-1. Build a URI pattern that represents a place where files are found. Initially, the URI pattern equals a connection string provided as part of the external table definition. If there are any partitions defined, they are rendered using *[PathFormat](#path-format)*, then appended to the URI pattern.
+1. Build a URI pattern that represents a place where files are found. Initially, the URI pattern equals a connection string provided as part of the external table definition. If there are any partitions defined, they are rendered using *PathFormat*, then appended to the URI pattern.
 
 2. For all files found under the URI patterns(s) created, check that:
 
