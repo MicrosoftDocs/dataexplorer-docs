@@ -67,7 +67,7 @@ In the table above, we have three partitions. We can create a separate time seri
 ## Time series analysis functions
 
 In this section, we'll perform typical series processing functions.
-Once a set of time series is created, Azure Data Explorer supports a growing list of functions to process and analyze them which can be found in the [time series documentation](machine-learning-and-tsa.md). We will describe a few representative functions for processing and analyzing time series.
+Once a set of time series is created, Azure Data Explorer supports a growing list of functions to process and analyze them which can be found in the [time series documentation](/azure/data-explorer/kusto/query/time-series-analysis). We will describe a few representative functions for processing and analyzing time series.
 
 ### Filtering
 
