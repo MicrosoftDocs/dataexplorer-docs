@@ -26,7 +26,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 
 ## Apache Kafka
 
-* **Description:** Azure Data Explorer supports [data ingestion from Apache Kafka](ingest-data-kafka.md). Apache Kafka is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. Kafka Connect is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Azure Data Explorer Kafka Sink serves as the connector from Kafka and doesn't require using code.
+* **Description:** Azure Data Explorer supports data ingestion from [Apache Kafka](https://kafka.apache.org/documentation/). Apache Kafka is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. Kafka Connect is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Azure Data Explorer Kafka Sink serves as the connector from Kafka and doesn't require using code.
 * **Type:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Functionality:** Telemetry
