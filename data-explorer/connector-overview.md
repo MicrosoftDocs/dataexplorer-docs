@@ -9,27 +9,27 @@ ms.date: 02/19/2023
 
 The following table summarizes the available connectors in Azure Data Explorer and their capabilities:
 
-| Name of connector                 | Type                                              | Underlying SDK | Repo owner      | Functionality         |
-|-----------------------------------|---------------------------------------------------|----------------|-----------------|-----------------------|
-| [Apache Kafka](#apache-kafka)     | **Ingestion** <br> *streaming, batching*          | Java           | Microsoft Azure | Telemetry             |
-| [Apache Log4J 2](#apache-log4j-2) | **Ingestion** <br> *streaming*                    | Java           | Microsoft Azure | Logs                  |
-| [Apache Spark](#apache-spark)     | **Export** <br> <br>**Ingestion** <br> *batching* | Java           | Microsoft Azure | Telemetry             |
-| [Azure Cosmos DB](#azure-cosmos-db)         |     **Ingestion** <br>  *streaming, batching*        |  .NET              |                 |                       |
-| [Azure Data Factory](#azure-data-factory)     |    **Export** <br> <br>**Ingestion** <br> *batching*  | .NET             |                 |                       |
-| [Azure Event Grid ](#azure-event-grid)   |       **Ingestion** <br> *streaming, batching*         |    .NET              |                 |                       |
-| [Azure Event Hubs](#azure-event-hubs)      |     **Ingestion** <br> *streaming*                   |  .NET         |                 |                       |
-| [Azure IoT Hubs](#azure-iot-hubs)          |        **Ingestion** <br> *streaming*             |      .NET            |                 |                       |
-| [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** <br>  *streaming* |           .NET   |                    |
-| [Logstash](#logstash)             | **Ingestion** <br> *batching*                     | Java           | Microsoft Azure | Logs                  |
-| [Open Telemetry](#open-telemetry) | **Ingestion** <br> *streaming, batching*          | Go             |                 | Traces, Metrics, Logs |
-| [Telegraf](#telegraf)             | **Ingestion** <br> *streaming, batching*          | Go             | InfluxData      | Metrics, Logs         |
+| Name of connector           | Type         | Supports streaming? | Repo type      | Functionality         |
+|---------------------------------------------------|------------------------------------------|:-:|-----------------|-----------------------|
+| [Apache Kafka](#apache-kafka)     | **Ingestion**       |   &check;             | [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Telemetry             |
+| [Apache Log4J 2](#apache-log4j-2)   | **Ingestion**    |   &check;             | [Open source](https://github.com/Azure/azure-kusto-log4j)| Logs                  |
+| [Apache Spark](#apache-spark)      | **Export** <br> <br>**Ingestion**        |  &#x2717;               | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry             |
+| [Azure Cosmos DB](#azure-cosmos-db)      | **Ingestion**   |      &check;          |      First party           |                       |
+| [Azure Data Factory](#azure-data-factory) | **Export** <br> <br>**Ingestion**   |   &#x2717;            |        First party      |                       |
+| [Azure Event Grid ](#azure-event-grid)   | **Ingestion**  |  &check;                    |      First party         |                       |
+| [Azure Event Hubs](#azure-event-hubs) | **Ingestion**  |      &check;        |       First party       |                       |
+| [Azure IoT Hubs](#azure-iot-hubs)  | **Ingestion**    |  &check;           |     First party         |                       |
+| [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion**   |   &check;         |    First party           |
+| [Logstash](#logstash)         | **Ingestion**   |    &#x2717;             | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs                  |
+| [Open Telemetry](#open-telemetry)  | **Ingestion**  |    &check;              |  Open source    | Traces, Metrics, Logs |
+| [Telegraf](#telegraf)    | **Ingestion** | &check;           |   [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer)   | Metrics, Logs   |
 
 
 ## Apache Kafka
 
 * **Description:** Azure Data Explorer supports [data ingestion from Apache Kafka](ingest-data-kafka.md). Apache Kafka is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. Kafka Connect is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Azure Data Explorer Kafka Sink serves as the connector from Kafka and doesn't require using code.
 * **Type:** Ingestion
-* **Ingestion type supported:** Streaming, Batching
+* **Ingestion type supported:** Batching, Streaming
 * **Functionality:** Telemetry
 * **Underlying SDK:** Java
 * **Repository:** Microsoft Azure - https://github.com/Azure/kafka-sink-azure-kusto/
@@ -40,7 +40,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 
 * **Description:** Apache Log4J 2 sink for Azure Data Explorer allows you to easily stream your log data to Azure Data Explorer, where you can analyze, visualize, and alert on your logs in real time.
 * **Type:** Ingestion
-* **Ingestion type supported:** Streaming
+* **Ingestion type supported:** Batching, Streaming
 * **Functionality:** Logs
 * **Underlying SDK:** Java
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-log4j
@@ -50,7 +50,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 
 * **Description:** The [Azure Data Explorer connector for Spark](spark-connector.md) is an open source project that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. Using Azure Data Explorer and Apache Spark, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, Azure Data Explorer becomes a valid data store for standard Spark source and sink operations, such as write, read, and writeStream.
 * **Type:** Ingestion, Export
-* **Ingestion type supported:** Streaming, Batching
+* **Ingestion type supported:** Batching, Streaming
 * **Functionality:** Telemetry
 * **Underlying SDK:** Java
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-spark/
@@ -63,9 +63,8 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Type:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Functionality:** 
-* **Underlying SDK:** .NET
 * **Documentation:** [Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)](ingest-data-cosmos-db-connection.md)
-* **Community Blog:**  
+
 
 ## Azure Data Factory
 
@@ -73,9 +72,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Type:** Ingestion, Export
 * **Ingestion type supported:** Batching
 * **Functionality:** 
-* **Underlying SDK:** .NET
 * **Documentation:** [Copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md)
-* **Community Blog:**  
 
 ## Azure Event Hubs
 
@@ -83,9 +80,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Type:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Functionality:** 
-* **Underlying SDK:** 
 * **Documentation:** [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)
-* **Community Blog:**  
 
 ## Azure Event Grid
 
@@ -93,30 +88,24 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Type:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Functionality:** 
-* **Underlying SDK:** .NET
 * **Documentation:** [Event Grid data connection](ingest-data-event-grid-overview.md)
-* **Community Blog:**  
 
 ## Azure IoT Hubs
 
 * **Description:** [Azure IoT Hub](/azure/iot-hub/about-iot-hub) is a managed service, hosted in the cloud, that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages. Azure Data Explorer offers continuous ingestion from customer-managed IoT Hubs, using its [Event Hub compatible built in endpoint of device-to-cloud messages](/azure/iot-hub/iot-hub-devguide-messages-d2c#routing-endpoints).
-* **Type:** 
+* **Type:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
-* **Functionality:** Ingestion
-* **Underlying SDK:** .NET
+* **Functionality:** 
 * **Documentation:** [IoT Hub data connection](ingest-data-iot-hub-overview.md)
-* **Community Blog:**  
 
 ## Azure Stream Analytics
 
 * **Description:** [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction) is a real-time analytics and complex event-processing engine that's designed to process high volumes of fast streaming data from multiple sources simultaneously.
-* **Type:** 
-* **Ingestion type supported:** Streaming
+* **Type:** Ingestion
+* **Ingestion type supported:** Batching, Streaming
 * **Functionality:** 
-* **Underlying SDK:** .NET
 * **Documentation:** [Ingest data from Azure Stream Analytics into Azure Data Explorer](stream-analytics-connector.md)
-* **Community Blog:**  
-
+ 
 ## Logstash
 
 * **Description:** [The Azure Data Explorer Logstash plugin](ingest-data-logstash.md) enables you to process events from Logstash into an Azure Data Explorer database for later analysis.
