@@ -16,10 +16,10 @@ The following table summarizes the available connectors in Azure Data Explorer a
 | [Apache Spark](#apache-spark)     | **Export** <br> <br>**Ingestion** <br> *batching* | Java           | Microsoft Azure | Telemetry             |
 | [Azure Cosmos DB](#cosmos-db)         |     **Ingestion** <br>  *streaming, batching*        |  .NET              |                 |                       |
 | [Azure Data Factory](#azure-data-factory)     |    **Export** <br> <br>**Ingestion** <br> *batching*  | .NET             |                 |                       |
-| [Azure Event Grid ](#event-grid)                   |       **Ingestion** <br> *streaming, batching*                                   |                |                 |                       |
-| [Azure Event Hubs](#event-hubs)      |     **Ingestion** <br> *streaming*                   |                |                 |                       |
-| [Azure IoT Hubs](#iot-hubs)          |        **Ingestion** <br> *streaming*             |                |                 |                       |
-| [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** <br>  *streaming* |                 | .NET                     |
+| [Azure Event Grid ](#event-grid)   |       **Ingestion** <br> *streaming, batching*         |    .NET              |                 |                       |
+| [Azure Event Hubs](#event-hubs)      |     **Ingestion** <br> *streaming*                   |  .NET         |                 |                       |
+| [Azure IoT Hubs](#iot-hubs)          |        **Ingestion** <br> *streaming*             |      .NET            |                 |                       |
+| [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** <br>  *streaming* |           .NET   |                    |
 | [Logstash](#logstash)             | **Ingestion** <br> *batching*                     | Java           | Microsoft Azure | Logs                  |
 | [Open Telemetry](#open-telemetry) | **Ingestion** <br> *streaming, batching*          | Go             |                 | Traces, Metrics, Logs |
 | [Telegraf](#telegraf)             | **Ingestion** <br> *streaming, batching*          | Go             | InfluxData      | Metrics, Logs         |
