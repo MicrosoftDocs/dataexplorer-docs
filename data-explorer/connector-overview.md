@@ -5,7 +5,7 @@ ms.reviewer: aksdi
 ms.topic: reference
 ms.date: 02/19/2023
 ---
-# Data connectors Overview
+# Data connectors overview
 
 The following table summarizes the available connectors in Azure Data Explorer and their capabilities:
 
