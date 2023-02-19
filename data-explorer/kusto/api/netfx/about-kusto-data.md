@@ -46,11 +46,8 @@ var reader = client.ExecuteQuery("StormEvents | count");
 
 **Example: Enumerating the accessible databases**
 
-> Note!
-> 
-> It is essential to properly disposed on unused data readers and clients as they hold network resources.
-> 
-> Accumulate of unused and undisposed data readers and clients could lead to various network errors or unexpected timeouts. 
+> [!NOTE]
+> We recommend that data readers and clients are disposed of after use to release network resources. Accumulation of these resources can result in unexpected network errors and timeouts.
 
 ```csharp
 var kcsb = new KustoConnectionStringBuilder(cluster URI here). WithAadUserPromptAuthentication();
