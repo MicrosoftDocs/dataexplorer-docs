@@ -14,9 +14,9 @@ The following table summarizes the available connectors in Azure Data Explorer a
 | [Apache Kafka](#apache-kafka)     | **Ingestion** <br> *streaming, batching*          | Java           | Microsoft Azure | Telemetry             |
 | [Apache Log4J 2](#apache-log4j-2) | **Ingestion** <br> *streaming*                    | Java           | Microsoft Azure | Logs                  |
 | [Apache Spark](#apache-spark)     | **Export** <br> <br>**Ingestion** <br> *batching* | Java           | Microsoft Azure | Telemetry             |
+| [Azure Cosmos DB](#cosmos-db)         |     **Ingestion** <br>  *streaming, batching*        |                |                 |                       |
 | [Azure Data Factory](#azure-data-factory)     |    **Export** <br> <br>**Ingestion** <br> *batching*  |                |                 |                       |
 | [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** <br>  *streaming* |                 |                       |
-| [Cosmos DB](#cosmos-db)         |     **Ingestion** <br>  *streaming, batching*        |                |                 |                       |
 | [Event Grid  ](#event-grid)                   |       **Ingestion** <br> *streaming, batching*                                   |                |                 |                       |
 | [Event Hubs](#event-hubs)      |     **Ingestion** <br> *streaming*                   |                |                 |                       |
 | [IoT Hubs](#iot-hubs)          |        **Ingestion** <br> *streaming*             |                |                 |                       |
@@ -57,6 +57,72 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Documentation:** [Azure Data Explorer Connector for Apache Spark](spark-connector.md)
 * **Community Blog:** [Data pre-processing for Azure Data Explorer with Apache Spark](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/data-pre-processing-for-azure-data-explorer-with-apache-spark/ba-p/2727993/)
 
+## Azure Cosmos DB
+
+* **Description:** Azure Data Explorer supports data ingestion from [Azure Cosmos DB for NoSql](/azure/cosmos-db/) using a change feed. The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your cluster.
+* **Type:** Ingestion
+* **Ingestion type supported:** Batching, Streaming
+* **Functionality:** 
+* **Underlying SDK:** 
+* **Repository:** 
+* **Documentation:** [Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)](ingest-data-cosmos-db-connection.md)
+* **Community Blog:**  
+
+## Azure Data Factory
+
+* **Description:**  [Azure Data Factory](/azure/data-factory) (ADF) is a cloud-based data integration service that allows you to integrate different data stores and perform activities on the data.
+* **Type:** Ingestion, Export
+* **Ingestion type supported:** Batching
+* **Functionality:** 
+* **Underlying SDK:** 
+* **Repository:** 
+* **Documentation:** [Copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md)
+* **Community Blog:**  
+
+## Azure Stream Analytics
+
+* **Description:** [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction) is a real-time analytics and complex event-processing engine that's designed to process high volumes of fast streaming data from multiple sources simultaneously.
+* **Type:** 
+* **Ingestion type supported:** Streaming
+* **Functionality:** 
+* **Underlying SDK:** 
+* **Repository:** 
+* **Documentation:** [Ingest data from Azure Stream Analytics into Azure Data Explorer](stream-analytics-connector.md)
+* **Community Blog:**  
+
+## Event Hubs
+
+* **Description:**  [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
+* **Type:** Ingestion
+* **Ingestion type supported:** Batching, Streaming
+* **Functionality:** 
+* **Underlying SDK:** 
+* **Repository:** 
+* **Documentation:** [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)
+* **Community Blog:**  
+
+## Event Grid
+
+* **Description:** Event Grid ingestion is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created or blob renamed notifications and streaming these notifications to Azure Data Explorer via Azure Event Hubs.
+* **Type:** Ingestion
+* **Ingestion type supported:** Batching, Streaming
+* **Functionality:** 
+* **Underlying SDK:** 
+* **Repository:** 
+* **Documentation:** [Event Grid data connection](ingest-data-event-grid-overview.md)
+* **Community Blog:**  
+
+## IoT Hubs
+
+* **Description:** [Azure IoT Hub](/azure/iot-hub/about-iot-hub) is a managed service, hosted in the cloud, that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages. Azure Data Explorer offers continuous ingestion from customer-managed IoT Hubs, using its [Event Hub compatible built in endpoint of device-to-cloud messages](/azure/iot-hub/iot-hub-devguide-messages-d2c#routing-endpoints).
+* **Type:** 
+* **Ingestion type supported:** Batching, Streaming
+* **Functionality:** Ingestion
+* **Underlying SDK:** 
+* **Repository:** 
+* **Documentation:** [IoT Hub data connection](ingest-data-iot-hub-overview.md)
+* **Community Blog:**  
+
 ## Logstash
 
 * **Description:** [The Azure Data Explorer Logstash plugin](ingest-data-logstash.md) enables you to process events from Logstash into an Azure Data Explorer database for later analysis.
@@ -89,69 +155,3 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Repository:** InfluxData - https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
 * **Documentation:** [Ingest data from Telegraf into Azure Data Explorer](ingest-data-telegraf.md)
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
-
-## Event Hubs
-
-* **Description:** 
-* **Type:** 
-* **Ingestion type supported:** 
-* **Functionality:** 
-* **Underlying SDK:** 
-* **Repository:** 
-* **Documentation:** [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)
-* **Community Blog:**  
-
-## Event Grid
-
-* **Description:** 
-* **Type:** 
-* **Ingestion type supported:** 
-* **Functionality:** 
-* **Underlying SDK:** 
-* **Repository:** 
-* **Documentation:** [Event Grid data connection](ingest-data-event-grid-overview.md)
-* **Community Blog:**  
-
-## IoT Hubs
-
-* **Description:** 
-* **Type:** 
-* **Ingestion type supported:** 
-* **Functionality:** 
-* **Underlying SDK:** 
-* **Repository:** 
-* **Documentation:** [IoT Hub data connection](ingest-data-iot-hub-overview.md)
-* **Community Blog:**  
-
-## Cosmos DB
-
-* **Description:** Azure Data Explorer supports data ingestion from [Azure Cosmos DB for NoSql](/azure/cosmos-db/) using a change feed. The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your cluster.
-* **Type:** 
-* **Ingestion type supported:** Batching, Streaming
-* **Functionality:** 
-* **Underlying SDK:** 
-* **Repository:** 
-* **Documentation:** [Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)](ingest-data-cosmos-db-connection.md)
-* **Community Blog:**  
-
-## Azure Data Factory
-
-* **Description:**  [Azure Data Factory](/azure/data-factory) (ADF) is a cloud-based data integration service that allows you to integrate different data stores and perform activities on the data.
-* **Type:** 
-* **Ingestion type supported:** 
-* **Functionality:** 
-* **Underlying SDK:** 
-* **Repository:** 
-* **Documentation:** 
-* **Community Blog:**  
-
-## Azure Stream Analytics
-
-* **Description:** [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction) is a real-time analytics and complex event-processing engine that's designed to process high volumes of fast streaming data from multiple sources simultaneously.
-* **Type:** 
-* **Ingestion type supported:** Streaming
-* **Functionality:** 
-* **Underlying SDK:** 
-* **Repository:** 
-* **Documentation:** [Ingest data from Azure Stream Analytics into Azure Data Explorer](stream-analytics-connector.md)
-* **Community Blog:**  
