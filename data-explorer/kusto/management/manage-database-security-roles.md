@@ -26,7 +26,7 @@ The following table shows the possible security roles on the database level and 
 |`monitors` | View database metadata such as schemas, operations, and permissions.|
 
 > [!NOTE]
-> It isn't possible to grant viewer access to only some tables in the database.
+> It isn't possible to assign the `viewer` role for only some tables in the database. For different approaches on how to grant a principal view access to a subset of tables, see [control view access to tables](control-view-access.md).
 
 ## View existing security roles
 
