@@ -16,7 +16,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 | [Apache Spark](#apache-spark)      | **Export** <br> <br>**Ingestion**        |  &#x2717;               | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry             |
 | [Azure Cosmos DB](#azure-cosmos-db)      | **Ingestion**   |      &check;          |      First party           |    Change feed      |
 | [Azure Data Factory](#azure-data-factory) | **Export** <br> <br>**Ingestion**   |   &#x2717;            |        First party      |    Data orchestration            |
-| [Azure Event Grid ](#azure-event-grid)   | **Ingestion**  |  &check;                    |      First party         |                       |
+| [Azure Event Grid ](#azure-event-grid)   | **Ingestion**  |  &check;                    |      First party         |       Event processing                |
 | [Azure Event Hubs](#azure-event-hubs) | **Ingestion**  |      &check;        |       First party       |        Messaging               |
 | [Azure IoT Hubs](#azure-iot-hubs)  | **Ingestion**    |  &check;           |     First party         |      IoT data  |
 | [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion**   |   &check;         |    First party           | Event processing |
