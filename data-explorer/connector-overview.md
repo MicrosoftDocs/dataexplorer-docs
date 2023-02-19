@@ -9,7 +9,7 @@ ms.date: 02/19/2023
 
 The following table summarizes the available connectors in Azure Data Explorer and their capabilities:
 
-| Name of connector           | Type         | Supports streaming? | Repo type      | Functionality         |
+| Name of connector           | Type         | Supports streaming? | Connector type      | Functionality         |
 |---------------------------------------------------|------------------------------------------|:-:|-----------------|-----------------------|
 | [Apache Kafka](#apache-kafka)     | **Ingestion**       |   &check;             | [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Telemetry             |
 | [Apache Log4J 2](#apache-log4j-2)   | **Ingestion**    |   &check;             | [Open source](https://github.com/Azure/azure-kusto-log4j)| Logs                  |
