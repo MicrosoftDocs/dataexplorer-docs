@@ -545,7 +545,7 @@ items:
     items:
     - name: Tools and integrations overview
       href: tools-integrations-overview.md
-    - name: Connectors overview
+    - name: Data connectors overview
       displayName: connect, integrate, integration
       href: connector-overview.md
     - name: Orchestrate
