@@ -11,15 +11,15 @@ The following table summarizes the available connectors in Azure Data Explorer a
 
 | Name of connector                 | Type                                              | Underlying SDK | Repo owner      | Functionality         |
 |-----------------------------------|---------------------------------------------------|----------------|-----------------|-----------------------|
-|  [Azure Data Factory](#azure-data-factory)     |    **Export** <br> <br>**Ingestion** <br> *batching*  |                |                 |                       |
 | [Apache Kafka](#apache-kafka)     | **Ingestion** <br> *streaming, batching*          | Java           | Microsoft Azure | Telemetry             |
 | [Apache Log4J 2](#apache-log4j-2) | **Ingestion** <br> *streaming*                    | Java           | Microsoft Azure | Logs                  |
 | [Apache Spark](#apache-spark)     | **Export** <br> <br>**Ingestion** <br> *batching* | Java           | Microsoft Azure | Telemetry             |
+| [Azure Data Factory](#azure-data-factory)     |    **Export** <br> <br>**Ingestion** <br> *batching*  |                |                 |                       |
 | [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** <br>  *streaming* |                 |                       |
-|  [Cosmos DB](#cosmos-db)         |     **Ingestion** <br>  *streaming, batching*        |                |                 |                       |
-|  [Event Grid  ](#event-grid)                   |       **Ingestion** <br> *streaming, batching*                                   |                |                 |                       |
-|  [Event Hubs](#event-hubs)      |     **Ingestion** <br> *streaming*                   |                |                 |                       |
-|  [IoT Hubs](#iot-hubs)          |        **Ingestion** <br> *streaming*             |                |                 |                       |
+| [Cosmos DB](#cosmos-db)         |     **Ingestion** <br>  *streaming, batching*        |                |                 |                       |
+| [Event Grid  ](#event-grid)                   |       **Ingestion** <br> *streaming, batching*                                   |                |                 |                       |
+| [Event Hubs](#event-hubs)      |     **Ingestion** <br> *streaming*                   |                |                 |                       |
+| [IoT Hubs](#iot-hubs)          |        **Ingestion** <br> *streaming*             |                |                 |                       |
 | [Logstash](#logstash)             | **Ingestion** <br> *batching*                     | Java           | Microsoft Azure | Logs                  |
 | [Open Telemetry](#open-telemetry) | **Ingestion** <br> *streaming, batching*          | Go             |                 | Traces, Metrics, Logs |
 | [Telegraf](#telegraf)             | **Ingestion** <br> *streaming, batching*          | Go             | InfluxData      | Metrics, Logs         |
