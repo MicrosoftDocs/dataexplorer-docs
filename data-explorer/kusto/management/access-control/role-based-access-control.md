@@ -40,4 +40,4 @@ The **Permissions** column displays the access granted to each role. The **Depen
 * To set permissions for a database, use the [Azure portal](../../../manage-database-permissions.md) or [use management commands](../security-roles.md)
 * To set permissions for a table, external table, function, or materialized view, [use management commands](../security-roles.md).
 * To grant a principal from a different tenant access to a resource, see [Allow cross-tenant queries and commands](../../../cross-tenant-query-and-commands.md).
-* To grant a principal view access to a subset of tables, see [control view access to tables](control-view-access.md)
+* To grant a principal view access to a subset of tables, see [control view access to tables](../control-view-access.md)
