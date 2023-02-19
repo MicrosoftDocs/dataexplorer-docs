@@ -41,11 +41,12 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 |DocString|String|A description of the function for UI purposes.
 
 > [!NOTE]
+>
 > * If the function already exists:
 >    * If `ifnotexists` flag is specified, the command is ignored (no change applied).
 >    * If `ifnotexists` flag is NOT specified, an error is returned.
 >    * For altering an existing function, see [`.alter function`](alter-function.md)
-> * Requires [database user permission](../management/access-control/role-based-authorization.md).
+> * Requires [database user permission](./access-control/role-based-access-control.md).
 > * Not all data types are supported in `let` statements. Supported types are: boolean, string, long, datetime, timespan, double, and dynamic.
 > * Use `skipvalidation` to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
 
@@ -54,21 +55,21 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 ```kusto
 .create function 
 with (docstring = 'Simple demo function', folder='Demo')
-MyFunction1()  {StormEvents | limit 100}
+MyFunction1()  {StormEvents | take 100}
 ```
 
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
-|MyFunction1|()|{StormEvents &#124; limit 100}|Demo|Simple demo function|
+|MyFunction1|()|{StormEvents &#124; take 100}|Demo|Simple demo function|
 
 ## Example: Demo function with parameter
 
 ```kusto
 .create function
 with (docstring = 'Demo function with parameter', folder='Demo')
- MyFunction2(myLimit: long)  {StormEvents | limit myLimit}
+ MyFunction2(myLimit: long)  {StormEvents | take myLimit}
 ```
 
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
-|MyFunction2|(myLimit:long)|{StormEvents &#124; limit myLimit}|Demo|Demo function with parameter|
+|MyFunction2|(myLimit:long)|{StormEvents &#124; take myLimit}|Demo|Demo function with parameter|

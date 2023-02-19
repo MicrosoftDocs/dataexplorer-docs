@@ -13,7 +13,7 @@ Clears the data of an existing table, including streaming ingestion data.
 
 > [!NOTE]
 >
-> * Requires [table admin permission](../management/access-control/role-based-authorization.md).
+> * Requires [table admin permission](./access-control/role-based-access-control.md).
 > * In the event of a partial success or failure, an exception is thrown with detailed information about the error.
 
 **Example** 

@@ -3,7 +3,7 @@ title: max() (aggregation function) - Azure Data Explorer
 description: Learn how to use the max() function to find the maximum value of the expression in the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/26/2022
+ms.date: 01/05/2023
 ---
 # max() (aggregation function)
 
@@ -13,34 +13,34 @@ Finds the maximum value the expression in the group.
 
 ## Syntax
 
-`max` `(`*Expr*`)`
+`max(`*expr*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr*  string | &check; | Expression used for aggregation calculation. |
+| *expr* | string | &check; | The expression used for the aggregation calculation. |
 
 ## Returns
 
-Returns the maximum value of *Expr* across the group.
+Returns the maximum value of *expr* across the group.
 
 > [!TIP]
-> This gives you the max on its own. But if you want other columns in the rowuse [arg_max](arg-max-aggfunction.md).
+> This gives you the max on its own. If you want to see other columns in addition to the max, use [arg_max](arg-max-aggfunction.md).
 
 ## Example
 
 This example returns the last record in a table.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVfBJLEktLgFL2OYmVmgElyQWlYRk5qZqAgAAp60yMgAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlXwSSxJLS4By9jmJlZoBJckFpWEZOamagIADGp6XTMAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
 | summarize LatestEvent=max(StartTime)
 ```
 
-**Results**
+**Output**
 
 | LatestEvent |
 |--|

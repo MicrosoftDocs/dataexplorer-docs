@@ -1,9 +1,9 @@
 ---
 title: Query parameters declaration statement - Azure Data Explorer
-description: This article describes Query parameters declaration statement in Azure Data Explorer.
+description: Learn how to use the query parameters declaration statement to parameterize queries and protect against injection attacks.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2021
+ms.date: 01/12/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -40,7 +40,6 @@ To reference query parameters, the query text, or functions it uses, must first 
 >
 > * Like [user defined functions](functions/user-defined-functions.md), query parameters of type `dynamic` cannot have default values.
 > * Let, set, and tabular statements are strung together/separated by a semicolon, otherwise they will not be considered part of the same query.
-
 
 ## Examples
 

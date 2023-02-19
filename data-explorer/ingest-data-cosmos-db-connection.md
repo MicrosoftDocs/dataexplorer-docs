@@ -24,9 +24,9 @@ Step 3: [Test the data connection](#step-3-test-the-data-connection)
 
 ## Prerequisites
 
-- An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/)
-- A [cluster and database](create-cluster-database-portal.md)
-- A container from a [Cosmos DB account for NoSQL](/azure/cosmos-db/nosql/)
+- An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+- An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+- A container from a [Cosmos DB account for NoSQL](/azure/cosmos-db/nosql/).
 
 ## Step 1: Choose an Azure Data Explorer table and configure its table mapping
 
@@ -346,6 +346,17 @@ The following considerations apply to the Cosmos DB change feed:
     When the API call at timestamp 55 is made, the change feed API returns the latest version of the document. In this case, the latest version of document *A* is the update at timestamp 50, which is the update to property **foo** from *Pink* to *Carmine*.
 
     Because of this scenario, the data connector may miss some intermediate document changes. For example, some events may be missed if the data connection service is down for a few minutes, or if the frequency of document changes is higher than the API polling frequency. However, the latest state of each document is captured.
+
+## Estimate cost
+
+How much does using the Cosmos DB data connection impact your Cosmos DB container's [Request Units (RUs)](/azure/cosmos-db/request-units) usage?
+
+The connector invokes the Cosmos DB Change Feed API on each physical partition of your container, to up to once a second. The following costs are associated with these invocations:
+
+| Cost | Description |
+| -- | -- |
+| Fixed costs | Fixed costs are about 2 RUs per physical partition every second. |
+| Variable costs | Variable costs are about 2% of the RUs used to write documents, though this may vary depending on your scenario. For example, if you write 100 documents to a Cosmos DB container, the cost of writing those documents is 1,000 RUs. The corresponding cost for using the connector to read those document is about 2% the cost to write them, approximately 20 RUs. |
 
 ## Next steps
 

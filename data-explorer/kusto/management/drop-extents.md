@@ -11,7 +11,7 @@ Drops extents from a specified database or table.
 
 This command has several variants: In one, the extents to be dropped are specified by a Kusto query. In the other variants, extents are specified using a mini-language described below.
 
-Requires [Table admin permission](../management/access-control/role-based-authorization.md) for each table that has extents returned by the provided query.
+Requires [Table admin permission](./access-control/role-based-access-control.md) for each table that has extents returned by the provided query.
 
 > [!NOTE]
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
@@ -23,8 +23,8 @@ Requires [Table admin permission](../management/access-control/role-based-author
 ## Syntax
 
 > [!NOTE]
-> If the argument *TableName* is specified, you will need [Table admin permission](../management/access-control/role-based-authorization.md) to drop an extent.
-> If the the argument *TableName* isn't specified, you will need [Database admin permission](../management/access-control/role-based-authorization.md) to drop an extent.
+> If the argument *TableName* is specified, you will need [Table admin permission](./access-control/role-based-access-control.md) to drop an extent.
+> If the the argument *TableName* isn't specified, you will need [Database admin permission](./access-control/role-based-access-control.md) to drop an extent.
 
 ### Drop extents with a query
 

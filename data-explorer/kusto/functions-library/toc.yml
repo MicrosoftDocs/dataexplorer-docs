@@ -44,6 +44,12 @@ items:
 - name: perm_fl()
   displayName: functions library, statistics
   href: perm-fl.md
+- name: plotly_anomaly_fl()
+  displayName: functions library, Plotly, anomaly, chart, render
+  href: plotly-anomaly-fl.md
+- name: plotly_scatter3d_fl()
+  displayName: functions library, Plotly, scatter, chart, render
+  href: plotly-scatter3d-fl.md
 - name: predict_fl()
   displayName: functions library, score, classify
   href: predict-fl.md

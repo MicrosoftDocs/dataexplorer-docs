@@ -42,7 +42,7 @@ If you have table Logs, you can start exploring them:
 StormEvents | count 
 ```
 
-When your cursor is on this line, it's colored gray. Press **F5** to run the query. 
+When your cursor is on this line, it's colored gray. Press **F5** to run the query.
 
 Here are some more example queries:
 
@@ -50,7 +50,7 @@ Here are some more example queries:
 
 ```kusto
 // Take 10 lines from the table. Useful to get familiar with the data
-StormEvents | limit 10 
+StormEvents | take 10 
 ```
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -60,7 +60,7 @@ StormEvents | limit 10
 // and take sample of 10 lines
 StormEvents 
 | where EventType == 'Flood' and State =~ 'California'
-| limit 10
+| take 10
 ```
 
 :::image type="content" source="images/kusto-explorer-using/basic-query.png" alt-text="Kusto Explorer basic query.":::
@@ -77,6 +77,7 @@ Learn more about [Kusto Query Language](../query/index.md).
 
 > [!NOTE]
 > There are two types of query parametrization techniques in Kusto:
+>
 > * [Language-integrated query parametrization](../query/queryparametersstatement.md) is implemented as part
 > of the query engine and is meant to be used by applications that query the service programmatically. This method is not described in this document.
 >
@@ -153,9 +154,9 @@ https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSs
 
 You can use parametrized queries with deep-linking.
 
-1. Create a query to be formed as a parametrized query (for example, `KustoLogs | where Timestamp > ago({Period}) | count`) 
-1. Provide a parameter for every query parameter in the URI, such as: 
-    
+1. Create a query to be formed as a parametrized query (for example, `KustoLogs | where Timestamp > ago({Period}) | count`)
+1. Provide a parameter for every query parameter in the URI, such as:
+
     `https://<your_cluster>.kusto.windows.net/MyDatabase?
 web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
@@ -163,7 +164,7 @@ web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
 #### Limitations
 
-The queries are limited to ~2000 characters because of browser limitations, HTTP proxies, and tools that validate links, such as Microsoft Outlook. The limitation is approximate because it's dependent on the cluster and Database name length. For more information, see [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427). 
+The queries are limited to ~2000 characters because of browser limitations, HTTP proxies, and tools that validate links, such as Microsoft Outlook. The limitation is approximate because it's dependent on the cluster and Database name length. For more information, see [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427).
 
 To reduce the chances of reaching the character limit, see [Getting Shorter Links](#getting-shorter-links).
 
@@ -172,14 +173,12 @@ The format of the URI is:
 
 For example:
     [https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10](https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10)
- 
+
 This URI will open Kusto.Explorer, connect to the `Help` Kusto cluster, and run the specified query on the `Samples` database. If there's an instance of Kusto.Explorer already running, the running instance will open a new tab and run the query in it.
 
 ### Getting shorter links
 
-Queries can become long. To reduce the chance the query exceeds the maximum length, use the 
-`String Kusto.Data.Common.CslCommandGenerator.EncodeQueryAsBase64Url(string query)` method 
-available in Kusto Client Library. This method produces a more compact version of the query. The shorter format is also recognized by Kusto.Explorer.
+Queries can become long. To reduce the chance the query exceeds the maximum length, use the `String Kusto.Data.Common.CslCommandGenerator.EncodeQueryAsBase64Url(string query)` method available in Kusto Client Library. This method produces a more compact version of the query. The shorter format is also recognized by Kusto.Explorer.
 
 https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
 
@@ -228,7 +227,7 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 ## Manage clusters, databases, tables, or function authorized principals
 
 > [!NOTE]
-> Only [admins](../management/access-control/role-based-authorization.md) can add or drop authorized principals in their own scope.
+> Only [admins](../management/access-control/role-based-access-control.md) can add or drop authorized principals in their own scope.
 
 Right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Cluster Authorized Principals**. (You can also select this option from the Management Menu.)
 
@@ -237,7 +236,7 @@ Right-click the target entity in the [Connections panel](kusto-explorer.md#conne
 :::image type="content" source="images/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Manage authorized principals window.":::
 
 * To add a new authorized principal, select **Add principal**, provide the principal details, and confirm the action.
-    
+
     :::image type="content" source="images/kusto-explorer-using/add-authorized-principals-window.png" alt-text="Add authorized principal.":::
 
     :::image type="content" source="images/kusto-explorer-using/confirm-add-authorized-principals.png" alt-text="Confirm add authorized principal.":::
@@ -246,7 +245,6 @@ Right-click the target entity in the [Connections panel](kusto-explorer.md#conne
 
     :::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Confirm drop authorized principal.":::
 
-
 ## Next steps
 
 * [Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md)
@@ -254,6 +252,7 @@ Right-click the target entity in the [Connections panel](kusto-explorer.md#conne
 * [Troubleshooting Kusto.Explorer](kusto-explorer-troubleshooting.md)
 
 Learn more about Kusto.Explorer tools and utilities:
+
 * [Kusto.Explorer code analyzer](kusto-explorer-code-analyzer.md)
 * [Kusto.Explorer code navigation](kusto-explorer-codenav.md)
 * [Kusto.Explorer code refactoring](kusto-explorer-refactor.md)

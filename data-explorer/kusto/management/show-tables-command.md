@@ -7,9 +7,9 @@ ms.date: 02/04/2020
 ---
 # .show tables
 
-Returns a set that contains the specified table or all tables in the database.
+Returns a set that contains the specified tables or all tables in the database.
 
-Requires [Database viewer permission](../management/access-control/role-based-authorization.md).
+Requires [Database viewer permission](./access-control/role-based-access-control.md).
 
 > [!NOTE]
 > For table statistics, see the [.show table data statistics](show-table-data-statistics.md) command.

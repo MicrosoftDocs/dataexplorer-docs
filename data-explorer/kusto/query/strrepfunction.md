@@ -1,15 +1,15 @@
 ---
 title: strrep() - Azure Data Explorer
-description: This article describes strrep() in Azure Data Explorer.
+description: Learn how to use the strrep() function to repeat the input value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/01/2023
 ---
 # strrep()
 
-Repeats given [string](./scalar-data-types/string.md) provided amount of times.
+Repeats the given [string](./scalar-data-types/string.md) a specified number of times.
 
-* In case if first or third argument is not of a string type, it will be forcibly converted to string.
+* If the first or third arguments aren't of a string type, they'll forcibly be converted to a string.
 
 ## Syntax
 
@@ -26,7 +26,7 @@ Repeats given [string](./scalar-data-types/string.md) provided amount of times.
 Value repeated for a specified number of times, concatenated with *delimiter*.
 
 In case if *multiplier* is more than maximal allowed value (1024), input string will be repeated 1024 times.
- 
+
 ## Example
 
 ```kusto
