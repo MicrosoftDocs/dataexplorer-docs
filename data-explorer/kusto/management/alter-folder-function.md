@@ -3,18 +3,29 @@ title: .alter function folder - Azure Data Explorer
 description: This article describes .alter function folder in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/19/2023
 ---
 # .alter function folder
 
 Alters the Folder value of an existing function.
 
-`.alter` `function` *FunctionName* `folder` *Folder*
-
 > [!NOTE]
 > * Requires [database admin permission](./access-control/role-based-access-control.md)
 > * The [database user](./access-control/role-based-access-control.md) who originally created the function is allowed to modify the function. 
 > * If the function doesn't exist, an error is returned. For creating new function, [`.create function`](create-function.md)
+
+## Syntax
+
+`.alter` `function` *FunctionName* `folder` *Folder*
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*FunctionName*|string|&check;|The name of the function to alter.|
+|*Folder*|string|&check;|The name of the folder to assign to the function.|
+
+## Returns
 
 |Output parameter |Type |Description
 |---|---|--- 
@@ -24,7 +35,7 @@ Alters the Folder value of an existing function.
 |Folder|String|A folder that is used for UI functions categorization. This parameter does not change the way function is invoked.
 |DocString|String|A description of the function for UI purposes.
 
-**Example** 
+## Example
 
 ```kusto
 .alter function MyFunction1 folder "Updated Folder"

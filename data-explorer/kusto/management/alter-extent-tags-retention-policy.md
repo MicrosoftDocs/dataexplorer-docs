@@ -3,7 +3,7 @@ title: Alter database extent tags retention policy management - Azure Data Explo
 description: "This article describes the .alter extent tags retention policy command for databases in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 01/05/2022
+ms.date: 02/19/2023
 ---
 # .alter database extent tags retention policy
 
@@ -13,10 +13,12 @@ Alters a database-level extent tags retention policy. For more information, see 
 
 `.alter` `database` *DatabaseName* `policy extent_tags_retention` *SerializedArrayOfPolicyObjects*
 
-## Arguments
+## Parameters
 
-- *DatabaseName* - Specify the name of the database.
-- *SerializedArrayOfPolicyObjects* - Define a serialized array of policy objects.  For more information, see the [extent tags retention policy](extent-tags-retention-policy.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database for which to alter the extent tags retention policy.|
+|*SerializedArrayOfPolicyObjects*|string|&check;|A serialized array of policy objects. For more information, see the [extent tags retention policy](extent-tags-retention-policy.md).|
 
 ## Example
 
@@ -33,4 +35,3 @@ For database D1, set an extent tags retention policy so that any `drop-by` tags 
 		"RetentionPeriod": "02:00:00"
 	}
 ]```
-~~~

@@ -3,7 +3,7 @@ title: ".alter managed_identity policy command - Azure Data Explorer"
 description: "This article describes the .alter managed_identity policy command in Azure Data Explorer."
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 02/19/2023
 ---
 # .alter managed_identity policy
 
@@ -14,14 +14,15 @@ The command sets the ManagedIdentity policy of the cluster or the specified data
 
 ## Syntax
 
-* `.alter` `cluster` `policy` `managed_identity` *ArrayOfPolicyObjects*
-* `.alter` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfPolicyObjects*
+`.alter` `cluster` `policy` `managed_identity` *ArrayOfPolicyObjects*
 
-## Arguments
+`.alter` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfPolicyObjects*
+
+## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ArrayOfPolicyObjects*|array|&check;|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
+|*ArrayOfPolicyObjects*|array|&check;|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects.|
 |*DatabaseName*|string|&check;|The name of the database.|
 
 > [!NOTE]
@@ -42,7 +43,7 @@ If any of the specified managed identities is not assigned to the cluster, an er
 
 ## Example
 
-~~~kusto
+```kusto
 .alter database db policy managed_identity ```
 [
   {
@@ -51,4 +52,3 @@ If any of the specified managed identities is not assigned to the cluster, an er
   }
 ]
 ```
-~~~

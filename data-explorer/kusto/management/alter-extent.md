@@ -3,7 +3,7 @@ title: .alter extent tags - Azure Data Explorer
 description: This article describes the alter extent command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/02/2020
+ms.date: 02/19/2023
 ---
 
 # .alter extent tags
@@ -20,24 +20,26 @@ Requires [Table admin permission](./access-control/role-based-access-control.md)
 
 ## Syntax
 
-`.alter` [`async`] `extent` `tags` `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)` <| *query*
+`.alter` [`async`] `extent` `tags` `(`*Tags*`)` `<|` *Query*
 
-`.alter-merge` [`async`] `extent` `tags` `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)` <| *query*
+`.alter-merge` [`async`] `extent` `tags` `(`*Tags*`)` `<|` *Query*
 
-* `.alter` or `.alter-merge`:
-  * `.alter` sets the collection of the extent's tags to the specified tags, while overriding the extent's existing tags.
-  * `.alter-merge` sets the collection of the extent's tags to the union of the specified tags and the extent's existing tags.
+* `.alter` sets the collection of the extent's tags to the specified tags, while overriding the extent's existing tags.
+* `.alter-merge` sets the collection of the extent's tags to the union of the specified tags and the extent's existing tags.
 
-* `async` (optional): Execute the command asynchronously.
-   * An Operation ID (Guid) is returned. 
-   * The operation's status can be monitored. Use the [`.show operations`](operations.md#show-operations) command.
-   * You can retrieve the results of a successful execution. Use the [`.show operation details`](operations.md#show-operation-details) command.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|`async`|string||If specified, the command will run asynchronously. The return output when run with `async` is an operation ID (guid) that can be used to monitor the operation's status. Use [`.show operations`](operations.md#show-operations) or [`.show operation details`](operations.md#show-operation-details).|
+|*Tags*|string|&check;|One or more comma-separated extent tags. Each tag should be enclosed in single quotes (`'`).|
+|*Query*|string|&check;|Specifies the extents whose tags should be altered.|
 
 ## Restrictions
 
 All extents must be in the context database, and must belong to the same table.
 
-## Return output
+## Returns
 
 |Output parameter |Type |Description|
 |---|---|---|
@@ -72,7 +74,6 @@ appending 2 new tags to their existing collection of tags
 ```kusto
 .alter-merge extent tags ('drop-by:MyNewTag','MyOtherNewTag') <| .show table MyTable extents where tags has 'drop-by:MyTag'
 ```
-
 
 ## Sample output
 
