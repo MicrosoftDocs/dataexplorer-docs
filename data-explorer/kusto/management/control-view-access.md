@@ -7,11 +7,11 @@ ms.date: 02/19/2023
 
 # Control view access to tables in Azure Data Explorer
 
-This article provides methods for granting a principal view access to a subset of tables in a database.
+This article explains how you can give a principal view access to a subset of tables within a database.
 
-In Azure Data Explorer, the standard approach is to grant the `viewer` [security role](security-roles.md#security-roles) on the database level. However, assigning the `viewer` role to specific tables isn't possible.
+Azure Data Explorer provides different [security roles](security-roles.md#security-roles) at various levels. The `viewer` role is available at the database level, but not at the table level. If you assign a principal the `viewer` role on a database, they can access all tables in the database unless you take measures to limit or modify their table access.
 
-If you grant a principal the `viewer` role on a database, they gain access to all tables in the database except for the tables with the [Restricted View Access policy](restrictedviewaccesspolicy.md) turned on. This article explores alternative policies and approaches to restrict a principal's access to specific tables.
+In this article, you'll learn a few methods to restrict a principal's access on the table level.
 
 ## Restricted View Access policy
 
@@ -34,5 +34,5 @@ In some cases, the best approach may be to split the tables into different datab
 
 ## Next steps
 
-* Learn how to assign [security roles](security-roles.md)
-* Read about [role-based access control in Azure Data Explorer](access-control/role-based-access-control.md)
+* Use management commands to assign [security roles](security-roles.md)
+* Learn more about [role-based access control in Azure Data Explorer](access-control/role-based-access-control.md)
