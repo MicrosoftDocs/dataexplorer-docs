@@ -14,11 +14,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 | [Apache Kafka](#apache-kafka)     | **Ingestion** <br> *streaming, batching*          | Java           | Microsoft Azure | Telemetry             |
 | [Apache Log4J 2](#apache-log4j-2) | **Ingestion** <br> *streaming*                    | Java           | Microsoft Azure | Logs                  |
 | [Apache Spark](#apache-spark)     | **Export** <br> <br>**Ingestion** <br> *batching* | Java           | Microsoft Azure | Telemetry             |
-| [Azure Cosmos DB](#cosmos-db)         |     **Ingestion** <br>  *streaming, batching*        |  .NET              |                 |                       |
+| [Azure Cosmos DB](#azure-cosmos-db)         |     **Ingestion** <br>  *streaming, batching*        |  .NET              |                 |                       |
 | [Azure Data Factory](#azure-data-factory)     |    **Export** <br> <br>**Ingestion** <br> *batching*  | .NET             |                 |                       |
-| [Azure Event Grid ](#event-grid)   |       **Ingestion** <br> *streaming, batching*         |    .NET              |                 |                       |
-| [Azure Event Hubs](#event-hubs)      |     **Ingestion** <br> *streaming*                   |  .NET         |                 |                       |
-| [Azure IoT Hubs](#iot-hubs)          |        **Ingestion** <br> *streaming*             |      .NET            |                 |                       |
+| [Azure Event Grid ](#azure-event-grid)   |       **Ingestion** <br> *streaming, batching*         |    .NET              |                 |                       |
+| [Azure Event Hubs](#azure-event-hubs)      |     **Ingestion** <br> *streaming*                   |  .NET         |                 |                       |
+| [Azure IoT Hubs](#azure-iot-hubs)          |        **Ingestion** <br> *streaming*             |      .NET            |                 |                       |
 | [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** <br>  *streaming* |           .NET   |                    |
 | [Logstash](#logstash)             | **Ingestion** <br> *batching*                     | Java           | Microsoft Azure | Logs                  |
 | [Open Telemetry](#open-telemetry) | **Ingestion** <br> *streaming, batching*          | Go             |                 | Traces, Metrics, Logs |
