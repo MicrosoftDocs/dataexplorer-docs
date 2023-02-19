@@ -513,6 +513,8 @@ items:
       href: manage-materialized-view-security-roles.md
     - name: Manage function roles
       href: manage-function-security-roles.md
+    - name: Control table view access
+      href: control-view-access.md
 - name: Data ingestion
   items:
   - name: Ingest from storage
