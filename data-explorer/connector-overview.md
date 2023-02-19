@@ -122,7 +122,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Ingestion type supported:** Batching, Streaming
 * **Functionality:** Traces, Metrics, Logs
 * **Underlying SDK:** Go
-* **Repository:** Open Telemetry, https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter
+* **Repository:** Open Telemetry - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter
 * **Documentation:** [Ingest data from OpenTelemetry to Azure Data Explorer](open-telemetry-connector.md)
 * **Community Blog:** [Getting started with Open Telemetry and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-open-telemetry-and-azure-data-explorer/ba-p/3675708)
 
