@@ -21,8 +21,18 @@ This method works since a principal with the `viewer` role on a database can onl
 
 ## Row Level Security policy
 
+By using a [Row Level Security (RLS) policy](rowlevelsecuritypolicy.md), you can apply restrictions on data row access in your application, granting access only to rows that meet certain criteria. For example, you could use RLS to allow users to view data only for specific geographic regions, or only for a certain time period.
 
+When you create an RLS policy on a table, the access restriction applies to all users, including database administrators and the RLS creator.
+
+> [!NOTE]
+> A Row Level Security policy can't be set on a table for which the Restricted View Access policy is turned on.
 
 ## Architecture changes
 
 In some cases, the best approach may be to split the tables into different databases.
+
+## Next steps
+
+* Learn how to assign [security roles](security-roles.md)
+* Read about [role-based access control in Azure Data Explorer](access-control/role-based-access-control.md)
