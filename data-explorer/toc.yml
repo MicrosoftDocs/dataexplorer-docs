@@ -108,6 +108,23 @@ items:
     - name: Cross-tenant data connection
       displayName: event hub, event grid
       href: ingest-data-cross-tenant.md
+    - name: Using SDKs
+      items:
+      - name: .NET SDK
+        displayName: ingest data, ingestion
+        href: net-sdk-ingest-data.md
+      - name: Python
+        displayName: ingest data, ingestion
+        href: python-ingest-data.md
+      - name: Node SDK
+        displayName: ingest data, ingestion
+        href: node-ingest-data.md
+      - name: Go SDK
+        displayName: ingest data, ingestion
+        href: go-ingest-data.md
+      - name: Java SDK
+        displayName: ingest data, ingestion
+        href: java-ingest-data.md
     - name: Event Hubs
       items:
       - name: Event Hubs data connection
@@ -175,6 +192,12 @@ items:
         href: data-factory-template.md
       - name: Run control commands using Azure Data Factory
         href: data-factory-command-activity.md
+    - name: Apache Kafka
+      displayName: ingest data, ingestion, connector
+      href: ingest-data-kafka.md
+    - name: Apache Spark 
+      displayName: connector
+      href: spark-connector.md
     - name: Azure Cosmos DB
       items:
       - name: Azure Cosmos DB data connection
@@ -183,26 +206,18 @@ items:
       - name: Get latest Azure Cosmos DB documents
         displayName: ingest data, ingestion
         href: ingest-data-cosmos-db-queries.md
-    - name: Using SDKs
-      items:
-      - name: .NET SDK
-        displayName: ingest data, ingestion
-        href: net-sdk-ingest-data.md
-      - name: Python
-        displayName: ingest data, ingestion
-        href: python-ingest-data.md
-      - name: Node SDK
-        displayName: ingest data, ingestion
-        href: node-ingest-data.md
-      - name: Go SDK
-        displayName: ingest data, ingestion
-        href: go-ingest-data.md
-      - name: Java SDK
-        displayName: ingest data, ingestion
-        href: java-ingest-data.md
     - name: Azure Stream Analytics
       href: stream-analytics-connector.md
       displayName: ingest data, ingestion
+    - name: Logstash
+      displayName: ingest data, ingestion
+      href: ingest-data-logstash.md    
+    - name: OpenTelemetry
+      href: open-telemetry-connector.md 
+      displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion
+    - name: Telegraf
+      displayName: ingest data, ingestion
+      href: ingest-data-telegraf.md
     - name: JSON formatted data
       displayName: ingest data, ingestion
       href: ingest-json-formats.md
@@ -529,25 +544,9 @@ items:
     items:
     - name: Tools and integrations overview
       href: tools-integrations-overview.md
-    - name: Connectors
-      items:
-      - name: Connectors overview
-        displayName: connect, integrate, integration
-        href: connector-overview.md
-      - name: Apache Spark 
-        href: spark-connector.md
-      - name: Apache Kafka
-        displayName: ingest data, ingestion
-        href: ingest-data-kafka.md
-      - name: Logstash
-        displayName: ingest data, ingestion
-        href: ingest-data-logstash.md    
-      - name: OpenTelemetry
-        href: open-telemetry-connector.md 
-        displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion
-      - name: Telegraf
-        displayName: ingest data, ingestion
-        href: ingest-data-telegraf.md
+    - name: Connectors overview
+      displayName: connect, integrate, integration
+      href: connector-overview.md
     - name: Orchestrate
       items:
       - name: Power Automate
