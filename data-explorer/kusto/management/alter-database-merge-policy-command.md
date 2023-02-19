@@ -3,20 +3,22 @@ title: ".alter database merge policy command - Azure Data Explorer"
 description: "This article describes the .alter database merge policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 01/05/2022
+ms.date: 02/19/2023
 ---
 # .alter database merge policy
 
-Change a database's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+Use this command to change a database's [merge policy](mergepolicy.md). The merge policy defines if and how [extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
 
 ## Syntax
 
 `.alter` `database` *DatabaseName* `policy` `merge` *PolicyObject*
 
-## Arguments
+## Parameters
 
-- *DatabaseName* - Specify the name of the database.
-- *PolicyObject* - Define a policy object. For more information, see [merge policy](mergepolicy.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database for which to alter the merge policy.|
+|*PolicyObject*|string|&check;|A policy object that defines the merge policy. For more information, see [merge policy](mergepolicy.md).|
 
 ### Examples
 
