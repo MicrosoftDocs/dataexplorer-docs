@@ -71,3 +71,30 @@ of client code that utilizes Kusto. It provides the following important static m
 |`CreateCslQueryProvider`                    |`ICslQueryProvider`                    |Sending queries to a Kusto engine cluster.                    |
 |`CreateCslAdminProvider`                    |`ICslAdminProvider`                    |Sending control commands to a Kusto cluster (of any kind).    |
 |`CreateRedirectProvider`                    |`IRedirectProvider`                    |Creating a redirect HTTP response message for a Kusto request.|
+
+## Best practices when using the Kusto client library
+
+There are a number of best practices that are essential for using the Kusto client library
+effectively in a demanding environment (that is, when sending a large number of requests to the service
+in rapid succession.)
+
+### Prefer using a single client instance across many requests
+
+The client providers (essentially, all objects returned by `KustoClientFactory`) are built to be
+reused again and again by multiple threads concurrently without the need of locks. Furthermore,
+they all cache essential information returned by the service on first contact, so reusing a single
+such object instead of creating a new one per request is highly recommended.
+
+### Prefer specifying the database parameter to modifying the DefaultDatabase property
+
+There's a single settable property in client providers (`DefaultDatabase`) that is **not** thread-safe.
+The recommendation is to set it once on creation and never modify it again.
+If a single client is used to send requests to multiple databases, prefer indicating the database
+by using the methods that take a `database` parameter.
+
+### Dispose of the client and all request results
+
+All disposable objects (the Kusto client itself, as well as all request results objects,
+which implement `IDataReader`) should be disposed once they are no longer needed. This is
+essential for scalability, as any "undisposed" request holds on to essential network
+resources and does not release them until it's either disposed explicitly or garbage-collected.
