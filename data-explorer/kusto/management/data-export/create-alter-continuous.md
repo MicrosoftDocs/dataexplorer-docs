@@ -22,9 +22,9 @@ Creates or alters a continuous export job.
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *ContinuousExportName* | string | &check; | The name of the continuous export. Must be unique within the database. |
-| *ExternalTableName* | string | &check; | The name of the [external table](../../query/schema-entities/externaltables.md) to export to. |
+| *ExternalTableName* | string | &check; | The name of the [external table](../../query/schema-entities/externaltables.md) export target. |
 | *Query* | string | &check; | The query to export. |
-| *T1*, *T2* | string | | A comma-separated list of fact tables in the query. If not specified, all tables referenced in the query are assumed to be fact tables. If specified, tables *not* in this list are treated as dimension tables and will not be scoped (all records will participate in all exports). See [continuous data export overview](continuous-data-export.md) for details. |
+| *T1*, *T2* | string | | A comma-separated list of fact tables in the query. If not specified, all tables referenced in the query are assumed to be fact tables. If specified, tables *not* in this list are treated as dimension tables and will not be scoped, so all records will participate in all exports. See [continuous data export overview](continuous-data-export.md) for details. |
 | *PropertyName*, *PropertyValue* | string | | A comma-separated list of optional [properties](#properties).|
 
 ## Properties
