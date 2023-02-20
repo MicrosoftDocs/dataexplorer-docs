@@ -290,6 +290,14 @@ To configure your Cosmos DB connection:
 >
 > Azure Data Explorer has an aggregation (batching) policy for data ingestion designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of one GB, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batchingpolicy.md). To reduce latency, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
 
+## Private Endpoint
+
+Azure Data Explorer cluster needs to have access to the Cosmos DB account in order to invoke its Change Feed API.
+
+If the Cosmos DB account blocks network access (e.g. via [private endpoint](/azure/cosmos-db/how-to-configure-private-endpoints)) to Azure Data Explorer cluster, you need to [create a managed private endpoint](security-network-managed-private-endpoint-create.md) to the Cosmos DB Account.
+
+This should be done before creating the data connection.
+
 ## Considerations
 
 The following considerations apply to the Cosmos DB change feed:
