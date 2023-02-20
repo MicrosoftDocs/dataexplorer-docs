@@ -9,7 +9,7 @@ ms.date: 02/13/2020
 
 Alters a database's pretty (friendly) name.
 
-Requires [DatabaseAdmin permission](../management/access-control/role-based-authorization.md).
+Requires [DatabaseAdmin permission](./access-control/role-based-access-control.md).
 
 **Syntax**
 

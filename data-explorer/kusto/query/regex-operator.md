@@ -1,27 +1,29 @@
 ---
 title: The case-sensitive match regex string operator - Azure Data Explorer
-description: This article describes the case-sensitive match regex string operator in Azure Data Explorer.
+description: Learn how to use the match regex string operator to filter a record set based on a case-sensitive regex value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/01/2021
+ms.date: 01/17/2023
 ---
 # match regex operator
 
-Filters a record set based on a case-sensitive regex value. 
+Filters a record set based on a case-sensitive regex value.
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
 ## Syntax
 
-*T* `|` `where` *col* `matches` `regex` `(`*expression*`)`   
+*T* `|` `where` *col* `matches` `regex` `(`*expression*`)`
 
-## Arguments
+## Parameters
 
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The tabular input whose records are to be filtered.|
+| *col* | string | &check; | The column by which to filter.|
+| *expression* | scalar | &check; | The expression used to filter.|
 
 ## Returns
 
@@ -29,13 +31,15 @@ Rows in *T* for which the predicate is `true`.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPITexJDkjtVihKDU9tUJByVtPK1gJrgTJHAU7BUMDoERBUX5WanIJRLcOsgoA+5LANo0AAAA=" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-    | summarize event_count=count() by State
-    | where State matches regex "K.*S"
-    | where event_count > 10
-    | project State, event_count
+| summarize event_count=count() by State
+| where State matches regex "K.*S"
+| where event_count > 10
+| project State, event_count
 ```
 
 **Output**

@@ -24,7 +24,7 @@ Azure Data Explorer pulls data from an external source and reads requests from a
 
 * **[Ingestion properties](ingestion-properties.md)**: The properties that affect how the data will be ingested (for example, tagging, mapping, creation time).
 
-* **Permissions**: To ingest data, the process requires [database ingestor level permissions](kusto/management/access-control/role-based-authorization.md). Other actions, such as query, may require database admin, database user, or table admin permissions.
+* **Permissions**: To ingest data, the process requires [database ingestor level permissions](kusto/management/access-control/role-based-access-control.md). Other actions, such as query, may require database admin, database user, or table admin permissions.
 
 ## Batching vs streaming ingestion
 

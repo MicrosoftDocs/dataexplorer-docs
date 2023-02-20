@@ -114,7 +114,7 @@ Scalar function in `OtherDb`.
 In default database.
 
 ```kusto
-database("OtherDb").MyView("exception") | extend CalCol=database("OtherDb").MyCalc(Col1, Col2, Col3) | limit 10
+database("OtherDb").MyView("exception") | extend CalCol=database("OtherDb").MyCalc(Col1, Col2, Col3) | take 10
 ```
 
 ## Limitations of cross-cluster function calls
@@ -139,7 +139,7 @@ The following query calls a remote scalar function `MyCalc`.
 This call violates rule #1, so it's not valid.
 
 ```kusto
-MyTable | extend CalCol=cluster("OtherCluster").database("OtherDb").MyCalc(Col1, Col2, Col3) | limit 10
+MyTable | extend CalCol=cluster("OtherCluster").database("OtherDb").MyCalc(Col1, Col2, Col3) | take 10
 ```
 
 The following query calls remote function `MyCalc` and provides a tabular parameter.

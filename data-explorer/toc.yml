@@ -32,15 +32,15 @@ items:
 - name: Quickstarts
   expanded: true
   items:
-  - name: Create cluster and database - Azure portal
+  - name: Create a cluster and database
     href: create-cluster-database-portal.md
-  - name: Ingest sample data
+  - name: Get sample data
     href: ingest-sample-data.md
-  - name: Explore the samples gallery
-    href: web-ui-samples-gallery.md
     displayName: Azure Data Explorer web UI
-  - name: Query data with Azure Data Explorer web UI
+  - name: Query sample data
     href: web-query-data.md
+  - name: Visualize sample data dashboards
+    href: web-ui-samples-dashboards.md
 - name: Tutorials
   items:
   - name: Write queries
@@ -55,6 +55,14 @@ items:
     href: ingest-data-no-code.md
 - name: Concepts
   items:
+  - name: Business continuity
+    items:
+    - name: Overview
+      displayName: BCDR, bcdr
+      href: business-continuity-overview.md
+    - name: Create solutions
+      displayName: BCDR, bcdr
+      href: business-continuity-create-solution.md
   - name: EngineV3
     href: engine-v3.md
   - name: Security
@@ -65,14 +73,6 @@ items:
       href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
     - name: Security controls by Azure Policy
       href: security-controls-policy.md
-  - name: Business continuity
-    items:
-    - name: Overview
-      displayName: BCDR, bcdr
-      href: business-continuity-overview.md
-    - name: Create solutions
-      displayName: BCDR, bcdr
-      href: business-continuity-create-solution.md
 - name: Explore data
   items:
   - name: Get data
@@ -80,14 +80,21 @@ items:
     - name: Data ingestion overview
       displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
       href: ingest-data-overview.md
+    - name: Get data in the web UI
+      items:
+        - name: Ingestion wizard
+          href: ingest-data-wizard.md
+        - name: Ingest from local file
+          displayName: ingest data, ingestion wizard, one click, existing table
+          href: ingestion-wizard-existing-table.md
+        - name: Ingest from container
+          displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
+          href: ingestion-wizard-new-table.md
     - name: Data ingestion properties
       href: ingestion-properties.md
     - name: Formats for data ingestion
       displayName: supported data formats
       href: ingestion-supported-formats.md
-    - name: Ingest JSON data using the wizard
-      displayName: ingest data, ingestion wizard, one click, local file, existing table
-      href: ingestion-wizard-existing-table.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -126,9 +133,6 @@ items:
       - name: Event Grid data connection
         displayName: ingest
         href: ingest-data-event-grid-overview.md
-      - name: Ingestion wizard
-        displayName: Event Grid, ingest data, ingestion, one click, csv file
-        href: ingestion-wizard-new-table.md
       - name: Azure portal
         displayName: Event Grid, ingest, data connection
         href: ingest-data-event-grid.md
@@ -216,44 +220,47 @@ items:
       href: ingest-json-formats.md
   - name: Query data
     items:
-    - name: Azure Data Explorer web UI
+    - name: Query data in the web UI
       items:
-      - name: Azure Data Explorer web UI overview
-        displayName: Kusto Web Explorer, KWE
-        href: web-ui-overview.md
-      - name: Ingestion wizard
-        href: ingest-data-wizard.md
-      - name: Azure Data Explorer web UI keyboard shortcuts
-        href: web-ui-query-keyboard-shortcuts.md
-    - name: Evaluate query performance in your cluster
-      href: kusto/api/load-test-cluster.md
-    - name: Optimize for high concurrency
-      href: high-concurrency.md
+        - name: Explore the sample gallery
+          href: web-ui-samples-query.md
+        - name: Customize settings
+          href: web-customize-settings.md
+        - name: Explore the results grid
+          href: web-results-grid.md
+        - name: Share queries
+          href: web-share-queries.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
       href: query-monitor-data.md
-    - name: Query data in Power Apps application
+    - name: Query data in Power Apps
       href: power-apps-connector.md
-    - name: Query cold data with hot windows
-      href: hot-windows.md
-    - name: Debug KQL inline Python
-      href: debug-inline-python.md
+    - name: Query data using T-SQL
+      href: kusto/api/tds/t-sql.md
     - name: Query data using Python
       href: python-query-data.md
+    - name: Debug KQL inline Python
+      href: debug-inline-python.md
+    - name: Evaluate query performance in your cluster
+      href: kusto/api/load-test-cluster.md
+    - name: Optimize for high concurrency
+      href: high-concurrency.md
+    - name: Set timeout limits
+      href: set-timeout-limits.md
+    - name: Query cold data with hot windows
+      href: hot-windows.md
     - name: Time Series Analysis and Machine Learning
       items:
-      - name: Time series analysis
-        href: time-series-analysis.md
-      - name: Anomaly detection and forecasting
-        href: anomaly-detection.md
-      - name: Machine learning
-        href: machine-learning-clustering.md
+        - name: Azure Data Explorer Python library
+          href: python-query-data.md
+        - name: Debug Kusto Query Language inline Python
+          href: debug-inline-python.md
   - name: Visualize data
     items:
     - name: Data visualization overview
       href: viz-overview.md
-    - name: Azure Data Explorer dashboards
+    - name: Visualize dashboards in the web UI
       items:
       - name: Use dashboards
         href: azure-data-explorer-dashboards.md
@@ -271,8 +278,7 @@ items:
       - name: Dynamic M query parameters
         displayName: Power BI
         href: power-bi-dynamic-m.md
-      - name: SQL query
-        displayName: Power BI
+      - name: Query with SQL in Power BI
         href: power-bi-sql-query.md
     - name: Excel
       items:
@@ -548,7 +554,7 @@ items:
       - name: Logic Apps
         href: kusto/tools/logicapps.md
     - name: Azure Cosmos DB
-      href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
+      href: ingest-data-cosmos-db-connection.md
     - name: Telegraf
       href: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
     - name: Apache Spark Connector
@@ -590,6 +596,17 @@ items:
   items:
   - name: API
     href: kusto/api/toc.yml
+  - name: Azure CLI Kusto
+    href: /cli/azure/kusto
+  - name: Azure Data Explorer web UI keyboard shortcuts
+    href: web-ui-query-keyboard-shortcuts.md
+  - name: Azure Policy built-ins
+    displayName: samples, policies, definitions
+    href: policy-reference.md
+  - name: Functions library
+    href: kusto/functions-library/toc.yml
+  - name: PowerShell Kusto
+    href: /powershell/module/az.kusto/#kusto
   - name: Troubleshoot ingestion
     items:
     - name: Ingestion error codes
@@ -599,15 +616,6 @@ items:
       displayName: Failure, error code
     - name: Ingestion FAQ
       href: kusto/management/ingestion-faq.yml  
-  - name: Azure CLI Kusto
-    href: /cli/azure/kusto
-  - name: PowerShell Kusto
-    href: /powershell/module/az.kusto/#kusto
-  - name: Functions library
-    href: kusto/functions-library/toc.yml
-  - name: Azure Policy built-ins
-    displayName: samples, policies, definitions
-    href: policy-reference.md
 - name: Resources
   items:
   - name: Forums

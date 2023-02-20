@@ -103,7 +103,7 @@ Here's the output:
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|North to northeast winds gusting to around 58 mph were reported in the mountains of Ventura county.|
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|The Warm Springs RAWS sensor reported northerly winds gusting to 58 mph.|
 
-You can achieve the same result by using  either [order or sort](./orderoperator.md), and then [take](./takeoperator.md):
+You can achieve the same result by using  either [sort](./sort-operator.md), and then [take](./takeoperator.md):
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -120,7 +120,7 @@ Create a new column by computing a value in every row:
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| limit 5
+| take 5
 | extend Duration = EndTime - StartTime 
 | project StartTime, EndTime, Duration, EventType, State
 ```
@@ -275,12 +275,12 @@ Notice that `render timechart` uses the first column as the x-axis, and then dis
 
 How does activity vary over the average day?
 
-Count events by the time modulo one day, binned into hours. Here, we use `floor` instead of `bin`:
+Count events by the time modulo one day, binned into hours.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend hour = floor(StartTime % 1d , 1h)
+| extend hour =bin(StartTime % 1d , 1h)
 | summarize event_count=count() by hour
 | sort by hour asc
 | render timechart
@@ -299,7 +299,7 @@ How does activity vary over the time of day in different states?
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend hour= floor( StartTime % 1d , 1h)
+| extend hour= bin( StartTime % 1d , 1h)
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
 | summarize event_count=count() by hour, State
 | render timechart
@@ -312,7 +312,7 @@ Divide by `1h` to turn the x-axis into an hour number instead of a duration:
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend hour= floor( StartTime % 1d , 1h)/ 1h
+| extend hour= bin( StartTime % 1d , 1h)/ 1h
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
 | summarize event_count=count() by hour, State
 | render columnchart
@@ -540,7 +540,7 @@ Here's the output:
 
 ## Filter by Boolean expression: *where*
 
-The [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) table has entries from the Azure activity log, which provides insight into subscription-level or management group-level events occuring in Azure. Let's see only `Critical` entries during a specific week.
+The [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) table has entries from the Azure activity log, which provides insight into subscription-level or management group-level events occurring in Azure. Let's see only `Critical` entries during a specific week.
 
 The [where](./whereoperator.md) operator is common in the Kusto Query Language. `where` filters a table to rows that match specific criteria. The following example uses multiple commands. First, the query retrieves all records for the table. Then, it filters the data for only records that are in the time range. Finally, it filters those results for only records that have a `Critical` level.
 

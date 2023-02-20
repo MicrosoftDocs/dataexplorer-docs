@@ -1,29 +1,33 @@
 ---
 title: set_union() - Azure Data Explorer
-description: This article describes set_union() in Azure Data Explorer.
+description: Learn how to use the set_union() function to create a union set of all the  distinct values in all of the array inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/02/2019
+ms.date: 02/05/2023
 ---
 # set_union()
 
-Returns a `dynamic` array of the set of all distinct values that are in any of arrays - (arr1 ∪ arr2 ∪ ...).
+Returns a `dynamic` array of the set of all distinct values that are in any of the arrays - (arr1 ∪ arr2 ∪ ...).
 
 ## Syntax
 
-`set_union(`*arr1*`, `*arr2*`[`,` *arr3*, ...]``)`
+`set_union(`*set1*`,` *set2* [`,` *set3*, ...]`)`
 
-## Arguments
+## Parameters
 
-* *arr1...arrN*: Input arrays to create a union set (at least two arrays). All arguments must be dynamic arrays (see [pack_array](packarrayfunction.md)). 
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *set1...setN* | dynamic | &check; | Arrays used to create a union set. A minimum of 2 arrays are required. See [pack_array](packarrayfunction.md).|
 
 ## Returns
 
-Returns a dynamic array of the set of all distinct values that are in any of arrays. See [`set_intersect()`](setintersectfunction.md)  and [`set_difference()`](setdifferencefunction.md).
+Returns a dynamic array of the set of all distinct values that are in any of arrays.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13MwQ7CIBCE4btPMcdiuNCefZZmU1djjUC2mLKkDy+cDL1+M/mF/JOR8ZDwgUMKmLAljnCXA5wT+zsUt/q4YvxTqaQ97ZVKT+SqRVreM4mQDtmqzbYYCxrPC7Tx1PNuaixKWHlJ2DjNX/8KfiDXCu1ufsyJVeDAAAAA" target="_blank">Run the query</a>
+
 ```kusto
 range x from 1 to 3 step 1
 | extend y = x * 2
@@ -40,3 +44,8 @@ range x from 1 to 3 step 1
 |[1,2,4,8]|
 |[2,4,8,16]|
 |[3,6,12,24]|
+
+## See also
+
+* [`set_intersect()`](setintersectfunction.md)
+* [`set_difference()`](setdifferencefunction.md)

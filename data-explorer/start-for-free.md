@@ -3,7 +3,7 @@ title: Start for free using Azure Data Explorer
 description: This article shows you how to get started with a free Azure Data Explorer cluster.
 ms.reviewer: avnera
 ms.topic: how-to
-ms.date: 07/26/2022
+ms.date: 01/25/2023
 ---
 
 # What is a free Azure Data Explorer cluster?
@@ -57,6 +57,7 @@ The free cluster is a subset of the full Azure Data Explorer cluster that provid
 | Autoscale | &check; | |
 | Azure Monitor and Insights | &check; | |
 | Event Hub and Event Grid connectors | &check; | |
+| Azure Resource Manager (ARM) templates | &check; | |
 
 ## Next steps
 

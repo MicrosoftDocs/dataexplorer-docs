@@ -22,9 +22,9 @@ Azure Data Explorer dashboards is a web application that enables you to run quer
 
 For more information, see, [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
 
-## Kusto query language visualizations
+## Kusto Query Language visualizations
 
-The Kusto query language [`render operator`](kusto/query/renderoperator.md) offers various visualizations such as tables, pie charts, and bar charts to depict query results. Query visualizations are helpful in anomaly detection and forecasting, machine learning, and more.
+The Kusto Query Language [`render operator`](kusto/query/renderoperator.md) offers various visualizations such as tables, pie charts, and bar charts to depict query results. Query visualizations are helpful in anomaly detection and forecasting, machine learning, and more.
 
 ## Power BI
 

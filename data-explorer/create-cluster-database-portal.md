@@ -3,7 +3,7 @@ title: "Quickstart: Create an Azure Data Explorer cluster and database"
 description: In this quickstart, you learn how to create an Azure Data Explorer cluster and database, and ingest data.
 ms.reviewer: mblythe
 ms.topic: quickstart
-ms.date: 02/08/2022
+ms.date: 01/16/2023
 ms.custom: mode-portal
 adobe-target: true
 
@@ -14,6 +14,7 @@ adobe-target: true
 
 > [!div class="op_single_selector"]
 >
+> * [Web UI free cluster](start-for-free-web-ui.md)
 > - [Portal](create-cluster-database-portal.md)
 > - [CLI](create-cluster-database-cli.md)
 > - [PowerShell](create-cluster-database-powershell.md)
@@ -24,13 +25,15 @@ adobe-target: true
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest data into a database so that you can run queries against it. In this quickstart, you create a cluster and a database.
 
-If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+>[!TIP]
+> You can also [create a free cluster](start-for-free-web-ui.md) with only a Microsoft account or an Azure Active Directory user identity.
 
 For more information on cluster subscription limits, see [Azure Data Explorer limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-data-explorer-limits).
 
-## Sign in to the Azure portal
+## Prerequisites
 
-Sign in to the [Azure portal](https://portal.azure.com/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Sign in to the [Azure portal](https://portal.azure.com/).
 
 ## Create a cluster
 
@@ -50,7 +53,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. Fill out the basic cluster details with the following information.
 
-    :::image type="content" source="media/create-cluster-database-portal/create-cluster-form.png" alt-text="Screenshot of the cluster form.":::
+    :::image type="content" source="media/create-cluster-database-portal/create-cluster-form.png" alt-text="Screenshot of the Azure portal create Azure Data Explorer cluster form.":::
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -60,8 +63,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
     | Region | *West US* or *West US 2* | Select *West US* or *West US 2* (if using availability zones) for this quickstart. For a production system, select the region that best meets your needs.
     | Workload | *Dev/Test* | Select *Dev/Test* for this quickstart. For a production system, select the specification that best meets your needs.
     | Compute specifications | *Dev(No SLA)_Standard_E2a_v4* | Select *Dev(No SLA)_Standard_E2a_v4* for this quickstart. For a production system, select the specification that best meets your needs.
-    | Availability zones | *1*, *2*, or *3* | Place the cluster instances in one or more availability zones in the same region (optional). [Azure Availability Zones](/azure/availability-zones/az-overview) are unique physical locations within the same Azure region. They protect an Azure Data Explorer cluster from loss data. The cluster nodes are created, by default, in the same data center. When you select several availability zones you can eliminate a single point of failure and ensure high availability. **Deployment to availability zones is possible only when creating the cluster, and can't be modified later.**
-    | | | |
+    | Availability zones | On | Turning on this feature will distribute the cluster storage and compute resources across multiple physical zones within a region for added protection and availability. By default, this feature is turned on if zones are supported in the region. If less than 3 zones are available for the compute instances, the portal will display the number of supported zones. Note that deployment to availability zones is possible only when creating the cluster, and can't be modified later. Read more about [Azure Availability Zones](/azure/availability-zones/az-overview).|
 
 1. Select **Review + create** to review your cluster details, and on the next screen select **Create** to provision the cluster. Provisioning typically takes about 10 minutes.
 

@@ -1,11 +1,11 @@
 ---
-title: iff(), iif() - Azure Data Explorer
+title: iff() - Azure Data Explorer
 description: This article describes iff() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/28/2022
 ---
-# iff(), iif()
+# iff()
 
 Returns the value of *then* if *if* evaluates to `true`,
 or the value of *else* otherwise.

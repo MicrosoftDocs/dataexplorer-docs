@@ -9,6 +9,8 @@ ms.date: 09/26/2019
 # Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template
 
 > [!div class="op_single_selector"]
+>
+> * [Web UI free cluster](start-for-free-web-ui.md)
 > * [Portal](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
@@ -29,84 +31,91 @@ In this article, you use an [existing quickstart template](https://azure.microso
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-      "clusters_kustocluster_name": {
-          "type": "string",
-          "defaultValue": "[concat('kusto', uniqueString(resourceGroup().id))]",
-          "metadata": {
-            "description": "Name of the cluster to create"
-          }
-      },
-      "databases_kustodb_name": {
-          "type": "string",
-          "defaultValue": "kustodb",
-          "metadata": {
-            "description": "Name of the database to create"
-          }
-      },
-      "location": {
-        "type": "string",
-        "defaultValue": "[resourceGroup().location]",
-        "metadata": {
-          "description": "Location for all resources."
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusters_kustocluster_name": {
+            "type": "string",
+            "defaultValue": "[concat('kusto', uniqueString(resourceGroup().id))]",
+            "metadata": {
+                "description": "Name of the cluster to create"
+            }
+        },
+        "databases_kustodb_name": {
+            "type": "string",
+            "defaultValue": "kustodb",
+            "metadata": {
+                "description": "Name of the database to create"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location for all resources."
+            }
         }
-      }
-  },
-  "variables": {},
-  "resources": [
-      {
-          "name": "[parameters('clusters_kustocluster_name')]",
-          "type": "Microsoft.Kusto/clusters",
-          "sku": {
-              "name": "Standard_E8ads_v5",
-              "tier": "Standard",
-              "capacity": 2
-          },
-          "apiVersion": "2020-09-18",
-          "location": "[parameters('location')]",
-          "tags": {
-            "Created By": "GitHub quickstart template"
-          },
-          "properties": {
-              "trustedExternalTenants": [],
-              "optimizedAutoscale": {
-                  "version": 1,
-                  "isEnabled": true,
-                  "minimum": 2,
-                  "maximum": 10
-              },
-              "enableDiskEncryption": false,
-              "enableStreamingIngest": false,
-              "virtualNetworkConfiguration":{
-                  "subnetId": "<subnet resource id>",
-                  "enginePublicIpId": "<Engine service's public IP address resource id>",
-                  "dataManagementPublicIpId": "<Data management's service public IP address resource id>"
-              },
-              "keyVaultProperties":{
-                  "keyName": "<Key name>",
-                  "keyVaultUri": "<Key vault uri>"
-              },
-              "enablePurge": false,
-              "enableDoubleEncryption": false,
-              "engineType": "V3"
-          }
-      },
-      {
-          "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
-          "type": "Microsoft.Kusto/clusters/databases",
-          "apiVersion": "2020-09-18",
-          "location": "[parameters('location')]",
-          "dependsOn": [
-              "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
-          ],
-          "properties": {
-              "softDeletePeriodInDays": 365,
-              "hotCachePeriodInDays": 31
-          }
-      }
-  ]
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('clusters_kustocluster_name')]",
+            "type": "Microsoft.Kusto/clusters",
+            "sku": {
+                "name": "Standard_E8ads_v5",
+                "tier": "Standard",
+                "capacity": 2
+            },
+            "apiVersion": "2022-12-29",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Created By": "GitHub quickstart template"
+            },
+            "properties": {
+                "trustedExternalTenants": [],
+                "optimizedAutoscale": {
+                    "version": 1,
+                    "isEnabled": true,
+                    "minimum": 2,
+                    "maximum": 10
+                },
+                "enableDiskEncryption": false,
+                "enableStreamingIngest": false,
+                "virtualNetworkConfiguration": {
+                    "subnetId": "<subnet resource id>",
+                    "enginePublicIpId": "<Engine service's public IP address resource id>",
+                    "dataManagementPublicIpId": "<Data management's service public IP address resource id>"
+                },
+                "keyVaultProperties": {
+                    "keyName": "<Key name>",
+                    "keyVaultUri": "<Key vault uri>",
+                    "userIdentity": "<ResourceId of user assigned managed identity>"
+                },
+                "enablePurge": false,
+                "enableDoubleEncryption": false,
+                "engineType": "V3"
+            },
+            "identity": {
+                "type": "SystemAssigned, UserAssigned",
+                "userAssignedIdentities": {
+                    "<ResourceId of managed identity>": {}
+                }
+            }
+        },
+        {
+            "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
+            "type": "Microsoft.Kusto/clusters/databases",
+            "apiVersion": "2022-12-29",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
+            ],
+            "properties": {
+                "softDeletePeriodInDays": 365,
+                "hotCachePeriodInDays": 31
+            }
+        }
+    ]
 }
 ```
 
@@ -114,7 +123,7 @@ To find more template samples, see [Azure Quickstart Templates](https://azure.mi
 
 ## Deploy the template and verify template deployment
 
-You can deploy the Azure Resource Manager template by [using the Azure portal](#use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment) or [using powershell](#use-powershell-to-deploy-the-template-and-verify-template-deployment).
+You can deploy the Azure Resource Manager template by [using the Azure portal](#use-the-azure-portal-to-deploy-the-template-and-verify-template-deployment) or [using PowerShell](#use-powershell-to-deploy-the-template-and-verify-template-deployment).
 
 ### Use the Azure portal to deploy the template and verify template deployment
 
@@ -133,11 +142,11 @@ It takes a few minutes to create an Azure Data Explorer cluster and database.
 
 1. To verify the deployment, you open the resource group in the [Azure portal](https://portal.azure.com) to find your new cluster and database. 
 
-### Use powershell to deploy the template and verify template deployment
+### Use PowerShell to deploy the template and verify template deployment
 
-#### Deploy the template using powershell
+#### Deploy the template using PowerShell
 
-1. Select **Try it** from the following code block, and then follow the instructions to sign in to the Azure Cloud shell.
+1. Select **Try it** from the following code block, and then follow the instructions to sign in to the Azure Cloud Shell.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"

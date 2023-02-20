@@ -12,8 +12,8 @@ Alters the Folder value of an existing function.
 `.alter` `function` *FunctionName* `folder` *Folder*
 
 > [!NOTE]
-> * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the function is allowed to modify the function. 
+> * Requires [database admin permission](./access-control/role-based-access-control.md)
+> * The [database user](./access-control/role-based-access-control.md) who originally created the function is allowed to modify the function. 
 > * If the function doesn't exist, an error is returned. For creating new function, [`.create function`](create-function.md)
 
 |Output parameter |Type |Description
@@ -32,7 +32,7 @@ Alters the Folder value of an existing function.
     
 |Name |Parameters |Body|Folder|DocString
 |---|---|---|---|---
-|MyFunction2 |(myLimit: long)| {StormEvents &#124; limit myLimit}|Updated Folder|Some DocString|
+|MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|Updated Folder|Some DocString|
 
 ```kusto
 .alter function MyFunction1 folder @"First Level\Second Level"
@@ -40,4 +40,4 @@ Alters the Folder value of an existing function.
     
 |Name |Parameters |Body|Folder|DocString
 |---|---|---|---|---
-|MyFunction2 |(myLimit: long)| {StormEvents &#124; limit myLimit}|First Level\Second Level|Some DocString|
+|MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|First Level\Second Level|Some DocString|
