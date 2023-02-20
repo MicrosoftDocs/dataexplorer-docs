@@ -43,7 +43,8 @@ Each command appearing in the script will be reported as a separate record in th
 >[!NOTE]
 >* The script text may include empty lines and comments between the commands.
 >* Commands are executed sequentially, in the order they appear in the input script.
->* Script execution is non-transactional, and no rollback is performed upon error. It's advised to use the idempotent form of commands when using `.execute database script`.
+>* Script execution is sequential, but non-transactional, and no rollback is performed upon error. It's advised to use the idempotent form of commands when using `.execute database script`.
+>* Execution of the command requires Database Admin permissions, in addition to permissions that may be required by each specific command.
 >* Default behavior of the command - fail on the first error, it can be changed using property argument.
 >* Read-only control commands (`.show` commands) aren't executed and are reported with status `Skipped`.
 
