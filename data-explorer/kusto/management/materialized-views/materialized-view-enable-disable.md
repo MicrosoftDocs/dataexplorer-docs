@@ -22,6 +22,10 @@ A materialized view can be disabled in any of the following ways:
 
 Disabling a view is only recommended if you suspect that the view is impacting your cluster's health.
 
+## Permissions
+
+You must be either a Materialized View Admin on the specific materialized view or a Database Admin to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.enable` | `disable` `materialized-view` *MaterializedViewName*

@@ -9,6 +9,10 @@ ms.date: 02/20/2023
 
 Executes batch of control commands in scope of a single database.
 
+## Permissions
+
+You must have [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+
 ## Syntax
 
 `.execute` `database` `script`  

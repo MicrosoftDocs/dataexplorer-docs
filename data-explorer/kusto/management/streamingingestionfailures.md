@@ -18,6 +18,10 @@ This command returns a result set that includes aggregated streaming ingestion f
 >
 > The retention period for streaming ingestion failures is 14 days.
 
+## Permissions
+
+If you have Database Admin or Database Monitor permissions, you'll see all failed operations. Otherwise, you'll only see operations that you created. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
 ## Syntax
 
 | Syntax option | Description |

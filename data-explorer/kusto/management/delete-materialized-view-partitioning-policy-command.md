@@ -9,6 +9,10 @@ ms.date: 09/29/2021
 
 Deletes a materialized view [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
+## Permissions
+
+You must have [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+
 ## Syntax
 
 `.delete` `materialized-view` *MaterializedViewName* `policy` `partitioning` 

@@ -9,6 +9,10 @@ ms.date: 11/29/2021
 
 Change a materialized view's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
 
+## Permissions
+
+You must have [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+
 ## Syntax
 
 `.alter` `materialized-view` *MaterializedViewName* `policy` `merge` *PolicyObject*
