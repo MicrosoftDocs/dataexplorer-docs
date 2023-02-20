@@ -206,6 +206,36 @@ Our team of 200 employees across our offices in Belgium, France, Portugal, Switz
 - [https://www.codit.eu/en/clients/euronavs-iot-solution-connects-vessels-to-shore-improving-efficiency-and-reducing-carbon-emissions/](https://www.codit.eu/en/clients/euronavs-iot-solution-connects-vessels-to-shore-improving-efficiency-and-reducing-carbon-emissions/)
 - [https://www.codit.eu/en/clients/duco-azure-iot-edge/](https://www.codit.eu/en/clients/duco-azure-iot-edge/)
 
+## CyberProof – a UST company
+
+:::image type="icon" source="media/findmypartner/cyberproof-logo.png":::
+
+CyberProof, a UST company, helps our clients transform their security to a cost-effective, cloud-native technology architecture. Our next-generation Managed Detection & Response (MDR) service is built to support large, complex enterprises by combining expert human and virtual analysts. Our services are enabled by our purpose-built platform, the CyberProof Defense Center – enabling us to be more agile, collaborate better, and deliver powerful analytics. Our integrated security services include Threat Intelligence, Threat Hunting, and vulnerability Management. Our experts innovate to meet our clients’ needs with custom use cases, integrations, and automations.
+
+**Partner type**
+
+- MDR
+- Consulting
+- Custom solution
+- Integration
+
+**Focus geography**
+
+- Global
+
+**Contact**
+
+- [info@cyberproof.com](mailto:info@cyberproof.com)
+
+**Additional information**
+
+- [CyberProof – a UST company website](https://www.CyberProof.com)
+- [Microsoft partner site for CyberProof – a UST company](https://appsource.microsoft.com/marketplace/partner-dir/f3030f0a-998c-4a82-852c-1d0777740cf5/overview)
+
+**Success stories**
+
+- [https://blog.cyberproof.com/blog/cutting-azure-sentinel-costs-with-microsoft-azure-data-explorer-adx](https://blog.cyberproof.com/blog/cutting-azure-sentinel-costs-with-microsoft-azure-data-explorer-adx)
+
 ## Data Addiction Pty Ltd
 
 :::image type="icon" source="media/findmypartner/data-addiction-logo.png":::
