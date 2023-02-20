@@ -14,7 +14,7 @@ Azure Data Explorer uses a role-based access control model in which principals g
 
 ## Permissions
 
-You must be either a Table Admin on the specific table or a Database Admin to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run these commands.
 
 ## Table level security roles
 
