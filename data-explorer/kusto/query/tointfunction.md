@@ -9,21 +9,35 @@ ms.date: 02/13/2020
 
 Converts input to integer (signed 32-bit) number representation.
 
-```kusto
-toint("123") == int(123)
-```
+> [!NOTE]
+> Prefer using [int()](./scalar-data-types/int.md) when possible.
 
 ## Syntax
 
-`toint(`*Expr*`)`
+`toint(`*value*`)`
 
-## Arguments
+## Parameters
 
-* *Expr*: Expression that will be converted to integer. 
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | scalar | &check; | The value to convert to an [integer](scalar-data-types/int.md).|
 
 ## Returns
 
 If the conversion is successful, the result will be an integer.
 If the conversion isn't successful, the result will be `null`.
- 
-*Note*: Prefer using [int()](./scalar-data-types/int.md) when possible.
+
+## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJB5IaSoZGxkqaCra2CkAGAO190RQZAAAA" target="_blank">Run the query</a>
+
+```kusto
+print toint("123") == 123
+```
+
+**Output**
+
+|print_0|
+|--|
+|true|
