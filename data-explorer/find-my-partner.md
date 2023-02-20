@@ -674,7 +674,7 @@ Provide training around Azure Data Explorer.
 
 ## OPTION 4.0 AG
 
-:::image type="icon" source="media/findmypartner/option-4-0-logo.svg":::
+:::image type="icon" source="media/findmypartner/option-4-0-logo.png":::
 
 We have a Co-sell offering on the Azure Market place: https://azuremarketplace.microsoft.com/marketplace/consulting-services/option40ag1624272391965.02052010
 
@@ -701,7 +701,7 @@ We have a Co-sell offering on the Azure Market place: https://azuremarketplace.m
 
 ## Orion Systems Integrators, LLC
 
-:::image type="icon" source="media/findmypartner/orion-innovation-logo.png":::
+:::image type="icon" source="media/findmypartner/orion-innovation-logo.jpg":::
 
 Orion Innovation is a Leader in Digital transformation services with a Design led, technology driven approach. We are a trusted partner to our Fortune 500, Large, Medium clients in their business transformation initiatives with 99% CSAT. With 25+ years of experience we bring deep domain expertise in Financial Services, Professional Services,  Healthcare & Life Sciences, Hi-Tech, Telecom, Media & Entertainment, Sports and Education Verticals.  Our global team of 6,000+ associates  in 12 major delivery centers across USA, LATAM, Europe and APAC delivers those digital transformation services around Experience Design, Digital Product Development, Data Analytics & AI, Cloud & Infrastructure, Business application & Modernization, Embedded & real time solutions, IoT/IIoT, Testing and Cybersecurity. We are ISO 9001:2015, ISO/IEC 27001:2013 certified, as well as CMMI&reg;️ Level 3 compliant and have IP's covering Industry Solutions, Accelerators and proprietary internal tools.
 
