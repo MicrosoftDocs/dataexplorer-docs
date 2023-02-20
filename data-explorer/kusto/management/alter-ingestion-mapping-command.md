@@ -45,8 +45,8 @@ The command to alter database ingestion mapping requires at least [Database Inge
 .alter table MyTable ingestion json mapping "Mapping1"
 ```
 [
-    { "column" : "rownumber", "Properties":{"Path":"$.rownumber"}},
-    { "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}
+    { "column" : "rownumber", "DataType" : "int", "Properties":{"Path":"$.rownumber"}},
+    { "column" : "rowguid", "DataType":"string", "Properties":{"Path":"$.rowguid"}}
 ]
 ```
 

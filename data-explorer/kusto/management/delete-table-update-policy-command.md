@@ -20,12 +20,13 @@ You must have [Table Admin](access-control/role-based-access-control.md) permiss
 ## Syntax
 
 `.delete` `table` *TableName* `policy` `update`
-`.delete` `table` *DatabaseName*`.`*TableName* `update` `sharding`
+
+`.delete` `table` *DatabaseName*`.`*TableName* `policy` `update`
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
-*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context. A wildcard (*) denotes all tables.
+* *DatabaseName* - Specify the name of the database.
+* *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context. A wildcard (*) denotes all tables.
 
 ## Returns
 

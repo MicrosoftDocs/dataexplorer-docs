@@ -17,7 +17,7 @@ You must have [Database Admin](../management/access-control/role-based-access-co
 
 `.undo` `drop` `table` *TableName* [`as` *NewTableName*] `version=v` *DB_MajorVersion.DB_MinorVersion*
 
-The command must be executed with database context.
+The command must be executed in the context of the database from which the table was dropped.
 
 ## Returns
 

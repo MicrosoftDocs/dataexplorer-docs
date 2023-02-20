@@ -9,7 +9,7 @@ ms.date: 10/11/2021
 
 Creates a new table or extends an existing table.
 
-The command must run in context of a specific database.
+The command must run in the context of a specific database. 
 
 ## Permissions
 

@@ -30,8 +30,8 @@ that the `round()` function rounds a number to a specific number of digits while
 ## Examples
 
 ```kusto
-round(2.15, 1)                   // 2.2
-round(2.15) (which is the same as round(2.15, 0))                   // 2
-round(-50.55, -2)                   // -100
-round(21.5, -1)                   // 20
+round(2.15, 1)      // 2.2
+round(2.15)         // 2 // equivalent to round(2.15, 0)
+round(-50.55, -2)   // -100
+round(21.5, -1)     // 20
 ```

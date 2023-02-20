@@ -26,7 +26,7 @@ Creates a [datetime](./scalar-data-types/datetime.md) scalar value between the s
 |*day*| int | &check; | The day value between 1 to 28-31, depending on the month.|
 |*hour*| int | | The hour value between 0 to 23.|
 |*minute*| int | | The minute value between 0 to 59.|
-|*second*| int | | The second value between 0 to 59.9999999.|
+|*second*| double | | The second value between 0 to 59.9999999.|
 
 ## Returns
 

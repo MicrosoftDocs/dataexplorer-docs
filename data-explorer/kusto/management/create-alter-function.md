@@ -17,7 +17,7 @@ You must have [Database User](access-control/role-based-access-control.md) permi
 
 ## Syntax
 
-.`create-or-alter function [with (docstring = '<description>' folder='<name>')] [FunctionName] ([paramName:paramType], ...) { CSL-statement }`
+.`create-or-alter function [with (docstring = '<description>', folder='<name>')] [FunctionName] ([paramName:paramType], ...) { CSL-statement }`
 
 If the function with the provided *FunctionName* doesn't exist in the database metadata, the command creates a new function. Else, that function will be changed.
 
