@@ -18,7 +18,7 @@ that is embedded inline, in the command text itself.
 
 ## Permissions
 
-You must have [Table Ingestor](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Ingestor](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

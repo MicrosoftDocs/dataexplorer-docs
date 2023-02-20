@@ -11,7 +11,7 @@ Enable or disable a table's [ingestion time policy](ingestiontimepolicy.md). Azu
 
 ## Permissions
 
-You must have [Table Ingestor](../management/access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Ingestor](../management/access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

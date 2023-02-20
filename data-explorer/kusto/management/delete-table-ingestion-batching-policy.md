@@ -11,7 +11,7 @@ Remove the table [ingestion batching policy](batchingpolicy.md) that defines dat
 
 ## Permissions
 
-You must have [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

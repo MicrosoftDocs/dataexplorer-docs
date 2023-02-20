@@ -11,7 +11,7 @@ Executes batch of control commands in scope of a single database.
 
 ## Permissions
 
-You must have [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

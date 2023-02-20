@@ -11,7 +11,7 @@ This article describes the show control command used for the [query weak consist
 
 ## Permissions
 
-You must have [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

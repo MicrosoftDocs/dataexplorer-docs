@@ -11,7 +11,7 @@ Delete a table's [merge policy](mergepolicy.md). The merge policy defines if and
  
 ## Permissions
 
-You must have [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

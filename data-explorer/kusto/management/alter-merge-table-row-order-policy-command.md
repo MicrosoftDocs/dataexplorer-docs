@@ -11,7 +11,7 @@ Change a table's [row order policy](roworderpolicy.md). The row order policy is 
 
 ## Permissions
 
-You must have [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

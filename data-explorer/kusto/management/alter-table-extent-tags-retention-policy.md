@@ -11,7 +11,7 @@ Alters a table-level extent tags retention policy. For more information, see [ex
 
 ## Permissions
 
-You must have [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

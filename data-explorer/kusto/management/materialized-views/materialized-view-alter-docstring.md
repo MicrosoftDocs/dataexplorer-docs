@@ -15,7 +15,7 @@ Alters the DocString value of an existing materialized view.
 
 ## Permissions
 
-You must have [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Example
 

@@ -11,7 +11,7 @@ Shows the cluster's request classification policy. For more information, see [Re
 
 ## Permissions
 
-You must have [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
