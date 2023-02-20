@@ -261,11 +261,13 @@ Data Mastery help businesses harness the power of their data and make data-drive
 
 ## Device Insight GmbH
 
-:::image type="icon" source="media/findmypartner/device-insight-logo.png":::
+:::image type="icon" source="media/findmypartner/insight-logo.jpg":::
 
-**Best of both worlds: Azure IoT**
+**IoT made simple**
 
-Following the IoT's Lego principle, we combine the best of both worlds: Device Insight's turnkey IoT building blocks along with native integration into Microsoft Azure. We select the right IoT services from Microsoft Azure and complement them with solution components from Device Insight"s core product CENTERSIGHT scale. All functions can be tailored flexibly and individually to meet your exact requirements. So your IoT project doesn't have to start from scratch and you will be able to realize your first applications within a very short time. Once the proof of value has been provided, we prepare everything for scaling.
+Device Insight is a specialist for Internet of Things and Industry 4.0 and one of the IoT pioneers in the DACH/GSA region. The company develops and operates customized applications, platforms and IoT solutions in various industries and use case domains based on a wide range of Azure technologies. As such, Device Insight provides consulting for setting up, operating and maintaining Azure Data Explorer and has strong experience in leveraging Azure Data Explorer as a time series database and analytics engine. Using ADX, the solutions provide deep insights based on IoT data, energy data, application logs and other time series data, integrated with data sets from other enterprise applications. Combining ADX with other Azure services, Device Insight provides end-to-end solutions for condition monitoring, predictive maintenance, digital customer portals, data platforms, smart services, energy optimization, production and machine digitization and similar.
+
+In addition to the 360-degree consulting & services, Device Insight offers the flexible application framework CENTERSIGHT scale. The framework offers many building blocks for IoT-related applications out of the box as managed services and comes with native support for Azure Data Explorer alongside a multi-tenancy and sub-tenancy capability. This allows companies to develop their custom IoT solutions much faster and be able to manage end user access to the data stored in ADX on a fine-granular level.
 
 **Partner type**
 
@@ -277,7 +279,7 @@ Following the IoT's Lego principle, we combine the best of both worlds: Device I
 
 **Contact**
 
-- [https://device-insight.com/en/consultation](https://device-insight.com/en/consultation)
+- [alliances@insight.com](mailto:alliances@insight.com)
 
 **Additional information**
 
