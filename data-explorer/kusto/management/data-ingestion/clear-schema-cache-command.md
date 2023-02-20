@@ -14,7 +14,7 @@ For more information, see [Streaming ingestion and schema changes](streaming-ing
 
 ## Permissions
 
-You must have at least [Database Ingestor](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
