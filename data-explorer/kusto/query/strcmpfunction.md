@@ -26,9 +26,9 @@ The function starts comparing the first character of each string. If they're equ
 
 Returns an integer value indicating the relationship between the strings:
 
-* *<0* - the first character that does not match has a lower value in *string1* than in *string2*
+* *<0* - the first character that doesn't match has a lower value in *string1* than in *string2*
 * *0* - the contents of both strings are equal
-* *>0* - the first character that does not match has a greater value in *string1* than in *string2*
+* *>0* - the first character that doesn't match has a greater value in *string1* than in *string2*
 
 ## Example
 
