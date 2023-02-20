@@ -93,7 +93,7 @@ receives a parameter `tableName` - which is passed into the table() function.
 
 ::: zone pivot="azuremonitor"
 
-::: zone-end"
+::: zone-end
 
 ### Use table() with non-constant parameter
 
