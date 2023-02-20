@@ -83,7 +83,7 @@ Iris
 
 ### [Stored](#tab/persistent)
 
-To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](/azure/data-explorer/kusto/management/access-control/role-based-access-control).
+To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
 
 ### One time installation
 
@@ -127,7 +127,7 @@ Iris
 
 ---
 
-The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards (Preview)](../../azure-data-explorer-dashboards.md).
+The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards ](../../azure-data-explorer-dashboards.md).
 
 ![Screenshot of 3D scatter chart of a sample data set.](images\plotly-scatter3d-fl\plotly-scatter3d-chart.png)
 
