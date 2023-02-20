@@ -90,11 +90,6 @@ items:
         - name: Ingest from container
           displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
           href: ingestion-wizard-new-table.md
-    - name: Data ingestion properties
-      href: ingestion-properties.md
-    - name: Formats for data ingestion
-      displayName: supported data formats
-      href: ingestion-supported-formats.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -105,9 +100,6 @@ items:
         href: lightingest.md
       - name: Use wizard for one-time ingestion of historical data with LightIngest
         href: generate-lightingest-command.md
-    - name: Cross-tenant data connection
-      displayName: event hub, event grid
-      href: ingest-data-cross-tenant.md
     - name: Using SDKs
       items:
       - name: .NET SDK
@@ -202,26 +194,34 @@ items:
     - name: Azure Cosmos DB
       items:
       - name: Azure Cosmos DB data connection
-        displayName: ingest
+        displayName: ingest, connector
         href: ingest-data-cosmos-db-connection.md
       - name: Get latest Azure Cosmos DB documents
         displayName: ingest data, ingestion
         href: ingest-data-cosmos-db-queries.md
     - name: Azure Stream Analytics
       href: stream-analytics-connector.md
-      displayName: ingest data, ingestion
+      displayName: ingest data, ingestion, connector
     - name: Logstash
-      displayName: ingest data, ingestion
+      displayName: ingest data, ingestion, connector
       href: ingest-data-logstash.md    
     - name: OpenTelemetry
       href: open-telemetry-connector.md 
-      displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion
+      displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion, connector
     - name: Telegraf
-      displayName: ingest data, ingestion
+      displayName: ingest data, ingestion, connector
       href: ingest-data-telegraf.md
+    - name: Cross-tenant data connection
+      displayName: event hub, event grid
+      href: ingest-data-cross-tenant.md
     - name: JSON formatted data
       displayName: ingest data, ingestion
       href: ingest-json-formats.md
+    - name: Data ingestion properties
+      href: ingestion-properties.md
+    - name: Formats for data ingestion
+      displayName: supported data formats
+      href: ingestion-supported-formats.md
   - name: Query data
     items:
     - name: Query data in the web UI
