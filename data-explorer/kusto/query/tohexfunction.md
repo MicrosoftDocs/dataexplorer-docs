@@ -25,12 +25,22 @@ Converts input to a hexadecimal string.
 If conversion is successful, result will be a string value.
 If conversion is not successful, result will be `null`.
 
-## Examples
+## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42PsQ7CMAxEdyT+4baAlNIQoGLpyI/Qum2kJqkaD/18EhAliIXb7Ds/29NsHG83iGI/0LLTl2qPuoY4KiVk7hSr1X0p5VCWqM7F3TC0CGi8nUay5Bi+QxrMQezjzhdO4poj36iT/hMVyxWhkn6ufib056WEvy0NURtgjcNIruchsbVE8HnPBJje+ZnawwOAcjs/JwEAAA==" target="_blank">Run the query</a>
 
 ```kusto
-tohex(256) == '100'
-tohex(-256) == 'ffffffffffffff00' // 64-bit 2's complement of -256
-tohex(toint(-256), 8) == 'ffffff00' // 32-bit 2's complement of -256
-tohex(256, 8) == '00000100'
-tohex(256, 2) == '100' // Exceeds min length of 2, so min length is ignored.
+print
+    tohex(256) == '100',
+    tohex(-256) == 'ffffffffffffff00', // 64-bit 2's complement of -256
+    tohex(toint(-256), 8) == 'ffffff00', // 32-bit 2's complement of -256
+    tohex(256, 8) == '00000100',
+    tohex(256, 2) == '100' // Exceeds min length of 2, so min length is ignored.
 ```
+
+**Output**
+
+|print_0|print_1|print_2|print_3|print_04|
+|--|--|--|--|--|
+|true|true|true|true|true|
