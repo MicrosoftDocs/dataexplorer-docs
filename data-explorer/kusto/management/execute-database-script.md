@@ -3,7 +3,7 @@ title: .execute database script - Azure Data Explorer
 description: This article describes the `.execute database script` functionality in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/11/2021
+ms.date: 02/20/2023
 ---
 # .execute database script
 
