@@ -16,9 +16,9 @@ The `.clean databases extentcontainers` command deletes unused storage artifacts
 > [!WARNING]
 > Once the `.clean databases extentcontainers` command is run, the recoverability defined in the [retention policy](../management/retentionpolicy.md) is reset to the time when the command was executed by the user. You won't be able change the database state to an earlier point in time. We advise only running this command based on [Azure Advisor recommendation](../../azure-advisor.md#delete-unused-storage-artifacts).
 
-## Permissions
+### Permissions
 
-You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have AllDatabasesAdmin or AllDatabasesMonitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ### Syntax
 
@@ -50,8 +50,6 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 ## .show database extentcontainers clean operations
 
 This command monitors the [`.clean databases extentcontainers`](#clean-databases-extentcontainers) operations on the database level.
-
-You must have an AllDatabasesAdmin, AllDatabasesMonitor or specific database admin or monitor permission to execute this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 The cleanup action doesn’t start immediately after running the command. A delay period of at least five days is set by the system.
 The initial state is 'Cleanup requested'.

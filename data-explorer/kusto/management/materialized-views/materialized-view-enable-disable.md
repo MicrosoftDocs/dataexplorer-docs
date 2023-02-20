@@ -24,7 +24,7 @@ Disabling a view is only recommended if you suspect that the view is impacting y
 
 ## Permissions
 
-You must be either a Materialized View Admin on the specific materialized view or a Database Admin to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) to run these commands.
 
 ## Syntax
 
