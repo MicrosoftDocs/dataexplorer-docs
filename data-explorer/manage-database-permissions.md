@@ -45,7 +45,7 @@ This article describes the available roles and how to assign principals to those
 
     The output of the command shows the list of existing users and the roles they're assigned to in the database.
     
-    For examples pertaining to Azure Active Directory and the Kusto authorization model, please see [Principals and Identity Providers](kusto/management/access-control/principals-and-identity-providers.md)
+    For examples pertaining to Azure Active Directory and the Kusto authorization model, please see [Principals and Identity Providers](/azure/data-explorer/kusto/management/access-control/referencing-security-principals)
 
 ## Next steps
 
