@@ -91,7 +91,7 @@ receives a parameter `tableName` - which is passed into the table() function.
 
 ::: zone-end
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredatamonitor"
 
 ::: zone-end"
 
