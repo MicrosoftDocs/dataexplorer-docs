@@ -1,5 +1,5 @@
 ---
-title: Overview of data connectors in Azure Data Explorer.
+title: Overview of data connectors in Azure Data Explorer
 description: This article summarizes available data connectors and their capabilities.
 ms.reviewer: aksdi
 ms.topic: reference
