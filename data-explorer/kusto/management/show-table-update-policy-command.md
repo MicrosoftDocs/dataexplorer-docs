@@ -15,7 +15,7 @@ Show the table update policy. The [update policy](updatepolicy.md) instructs Azu
 
 ## Permissions
 
-You must have Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 
