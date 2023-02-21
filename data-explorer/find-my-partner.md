@@ -117,7 +117,7 @@ AM Squared Provides specialist consulting, project and support services with res
 
 :::image type="icon" source="media/findmypartner/bean-tech-logo.png":::
 
-beanTech is an IT company that has been supporting industries in the challenges of Digital Transformation for over twenty years.
+beanTech is an IT company that has been supporting industries in the challenges of Digital Transformation for over 20 years.
 
 Competence and availability of the technical team, experience gained in hundreds of projects and technologies always at the state of the art respond perfectly to the needs of the modern manufacturing company that isn't looking for a simple supplier but a business partner to grow in its market.
 
@@ -266,7 +266,7 @@ Data Addiction is a specialist provider of Microsoft Data and AI, and Dynamics 3
 :::image type="icon" source="media/findmypartner/data-mastery-logo.png":::
 
 Data Mastery is a Data Engineering and Advanced Analytics consultancy. Our specialty is the design, build, implementation and management of data analytics solutions. Our consultants are experts in advanced analytics using Azure and Databricks.
-Data Mastery help businesses harness the power of their data and make data-driven decisions through advanced analytics, business intelligence, and modern data platforms. We have a wealth of knowledge and experience across the Utilities, Mining, Financial Services, Real Estate and Education sectors. We have delivered some of Sydney's most exciting Cloud Transformation projects and we look forward to helping you in your journey to the cloud.
+Data Mastery help businesses harness the power of their data and make data-driven decisions through advanced analytics, business intelligence, and modern data platforms. We have a wealth of knowledge and experience across the Utilities, Mining, Financial Services, Real Estate and Education sectors. We've delivered some of Sydney's most exciting Cloud Transformation projects and we look forward to helping you in your journey to the cloud.
 
 **Partner type**
 
@@ -291,7 +291,7 @@ Data Mastery help businesses harness the power of their data and make data-drive
 
 ## Device Insight GmbH
 
-:::image type="icon" source="media/findmypartner/insight-logo.jpg":::
+:::image type="icon" source="media/findmypartner/device-insight-logo.jpg":::
 
 **IoT made simple**
 
@@ -309,7 +309,7 @@ In addition to the 360-degree consulting & services, Device Insight offers the f
 
 **Contact**
 
-- [alliances@insight.com](mailto:alliances@insight.com)
+- [https://device-insight.com/en/consultation](https://device-insight.com/en/consultation)
 
 **Additional information**
 
