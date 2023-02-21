@@ -7,9 +7,9 @@ items:
     href: rest/index.md
   - name: Authentication
     href: rest/authentication.md
-  - name: Query/management HTTP request
+  - name: Query HTTP request
     href: rest/request.md
-  - name: Query/management HTTP response
+  - name: Query HTTP response
     href: rest/response.md
   - name: Query v2 HTTP response
     href: rest/response2.md
@@ -17,6 +17,8 @@ items:
     href: rest/deeplink.md
   - name: Streaming ingest
     href: rest/streaming-ingest.md
+  - name: Query with T-SQL
+    href: rest/t-sql.md
 - name: MS-TDS
   displayName: SQL, ADO.NET, JDBC, ODBC
   items:
