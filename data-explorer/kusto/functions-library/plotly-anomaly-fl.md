@@ -93,7 +93,7 @@ demo_make_series2
 
 ### [Stored](#tab/persistent)
 
-To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](/azure/data-explorer/kusto/management/access-control/role-based-access-control).
+To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
 
 ### One time installation
 

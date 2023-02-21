@@ -3,7 +3,7 @@ title: .clear materialized view data - Azure Data Explorer
 description: This article describes the `.clear materialized-view data` command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/16/2023
+ms.date: 02/21/2023
 ---
 # .clear materialized-view data
 
@@ -13,7 +13,9 @@ The data is cleared from the `materialized part` of the view only. For more deta
 
 The difference between this command and dropping and recreating the view (with no `backfill`) is that using this command preserves all policies set on the materialized view.
 
-Requires [Database Admin](../access-control/role-based-access-control.md) permissions, or an admin of the materialized view.
+## Permissions
+
+You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

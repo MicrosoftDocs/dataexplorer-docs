@@ -3,16 +3,18 @@ title: Alter materialized view - Azure Data Explorer
 description: This article describes how to Alter materialized views in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/16/2023
+ms.date: 02/21/2023
 ---
 # .alter materialized-view
 
 Altering the [materialized view](materialized-view-overview.md) can be used for changing the query of a materialized view, while preserving the existing data in the view.
 
-Requires [Database Admin](../access-control/role-based-access-control.md) permissions, or an admin of the materialized view.
-
 > [!WARNING]
 > Be extra cautious when altering a materialized view. Incorrect use may lead to data loss.
+
+## Permissions
+
+You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

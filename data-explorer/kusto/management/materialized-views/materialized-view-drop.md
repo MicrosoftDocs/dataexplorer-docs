@@ -3,13 +3,15 @@ title: Materialized views drop - Azure Data Explorer
 description: This article describes drop materialized view command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/16/2023
+ms.date: 02/21/2023
 ---
 # .drop materialized-view 
 
 Drops a materialized view.
 
-Requires [Database Admin](../access-control/role-based-access-control.md) or materialized view admin permissions.
+## Permissions
+
+You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

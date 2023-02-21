@@ -3,7 +3,7 @@ title: .alter materialized view lookback - Azure Data Explorer
 description: This article describes .alter materialized view lookback in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/16/2023
+ms.date: 02/21/2023
 ---
 # .alter materialized-view lookback
 
@@ -13,6 +13,10 @@ Alters the `lookback` value of an existing materialized view. For more informati
 >
 > * A `lookback` for a materialized view is only supported for [EngineV3](../../../engine-v3.md) clusters.
 > * You must either be the [database user](../access-control/role-based-access-control.md) who created the materialized view or have [database admin permission](../access-control/role-based-access-control.md) to run this command.
+
+## Permissions
+
+You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
