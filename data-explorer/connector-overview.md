@@ -135,7 +135,6 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Ingestion type supported:** Batching
 * **Use cases:** Data orchestration
 * **Documentation:** [Azure Data Explorer connector for Microsoft Power Automate](flow.md)
-* **Community Blog:**  
 
 
 ## Telegraf
@@ -148,3 +147,8 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Repository:** InfluxData - https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
 * **Documentation:** [Ingest data from Telegraf into Azure Data Explorer](ingest-data-telegraf.md)
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
+
+
+## See also
+
+* [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
