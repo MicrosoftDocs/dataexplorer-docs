@@ -93,7 +93,7 @@ demo_make_series2
 
 ### [Stored](#tab/persistent)
 
-To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](/azure/data-explorer/kusto/management/access-control/role-based-access-control).
+To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
 
 ### One time installation
 
@@ -144,7 +144,7 @@ demo_make_series2
 
 ---
 
-The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards (Preview)](../../azure-data-explorer-dashboards.md).
+The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards ](../../azure-data-explorer-dashboards.md).
 
 The following image shows a sample anomaly chart using the above function:
 

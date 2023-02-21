@@ -3,7 +3,7 @@ title: ".alter database streaming ingestion policy command - Azure Data Explorer
 description: "This article describes the .alter database streaming ingestion policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/19/2023
+ms.date: 02/21/2023
 ---
 # .alter database streaming ingestion policy
 
@@ -14,6 +14,10 @@ Streaming ingestion is best suited for low latency scenarios where the ingestion
 However, when the amount of data grows beyond 4 Gb per hour per table, it's recommended to switch to classic bulk ingestion instead of streaming ingestion.
 
 To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md). Streaming ingestion must be enabled at the cluster level before it can be used at the database level.
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

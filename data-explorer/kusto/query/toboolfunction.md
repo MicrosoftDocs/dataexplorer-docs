@@ -3,7 +3,7 @@ title: tobool() - Azure Data Explorer
 description: Learn how to use the tobool() function to convert an input to a boolean representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/05/2023
 ---
 # tobool()
 
@@ -13,11 +13,13 @@ Convert inputs to boolean (signed 8-bit) representation.
 
 ## Syntax
 
-`tobool(`*Expr*`)`
+`tobool(`*value*`)`
 
-## Arguments
+## Parameters
 
-* *Expr*: Expression that will be converted to boolean.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | string | &check; | The value to convert to boolean.|
 
 ## Returns
 

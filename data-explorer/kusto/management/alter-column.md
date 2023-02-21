@@ -3,7 +3,7 @@ title: .alter column - Azure Data Explorer
 description: This article describes .alter column in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/19/2023
+ms.date: 02/21/2023
 ---
 # .alter column
 
@@ -13,6 +13,10 @@ Alters the data type of an existing table column.
 > When altering the data type of a column, any pre-existing data in that column will return a [null value](../query/scalar-data-types/null-values.md) in future queries.
 > After using `.alter column`, that data cannot be recovered, even by using another command to alter the column type back to a previous value.
 > If you need to preserve pre-existing data, see our recommended [procedure for changing the type of a column without losing data](#changing-column-type-without-data-loss).
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

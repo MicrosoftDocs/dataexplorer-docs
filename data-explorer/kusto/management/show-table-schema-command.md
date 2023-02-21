@@ -3,13 +3,11 @@ title: .show table schema - Azure Data Explorer
 description: This article describes .show table schema in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/21/2023
 ---
 # .show table schema
 
 Gets the schema to use in create/alter commands and additional table metadata.
-
-Requires [Database user permission](./access-control/role-based-access-control.md).
 
 ```kusto
 .show table TableName cslschema 
@@ -23,12 +21,9 @@ Requires [Database user permission](./access-control/role-based-access-control.m
 | Folder           | String | Table's folder                                            |
 | DocString        | String | Table's docstring                                         |
 
-
 ## .show table schema as JSON
 
 Gets the schema in JSON format and additional table metadata.
-
-Requires [Database user permission](./access-control/role-based-access-control.md).
 
 ```kusto
 .show table TableName schema as json
@@ -41,3 +36,7 @@ Requires [Database user permission](./access-control/role-based-access-control.m
 | DatabaseName     | String | The database to which the table belongs |
 | Folder           | String | Table's folder                          |
 | DocString        | String | Table's docstring                       |
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).

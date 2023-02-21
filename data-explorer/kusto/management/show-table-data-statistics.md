@@ -3,16 +3,18 @@ title: .show table data statistics - Azure Data Explorer
 description: This article describes the .show table data statistics command in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/19/2022
+ms.date: 02/21/2023
 ---
 # .show table data statistics
 
 Displays table data statistics estimation by table column and storage engine version.
 
-This command requires [Database monitor permission](./access-control/role-based-access-control.md).
-
 > [!NOTE]
 > This command only returns statistics for data stored in columnar stores. Row store data statistics are not returned.
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 
