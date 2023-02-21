@@ -31,84 +31,91 @@ In this article, you use an [existing quickstart template](https://azure.microso
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-      "clusters_kustocluster_name": {
-          "type": "string",
-          "defaultValue": "[concat('kusto', uniqueString(resourceGroup().id))]",
-          "metadata": {
-            "description": "Name of the cluster to create"
-          }
-      },
-      "databases_kustodb_name": {
-          "type": "string",
-          "defaultValue": "kustodb",
-          "metadata": {
-            "description": "Name of the database to create"
-          }
-      },
-      "location": {
-        "type": "string",
-        "defaultValue": "[resourceGroup().location]",
-        "metadata": {
-          "description": "Location for all resources."
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusters_kustocluster_name": {
+            "type": "string",
+            "defaultValue": "[concat('kusto', uniqueString(resourceGroup().id))]",
+            "metadata": {
+                "description": "Name of the cluster to create"
+            }
+        },
+        "databases_kustodb_name": {
+            "type": "string",
+            "defaultValue": "kustodb",
+            "metadata": {
+                "description": "Name of the database to create"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location for all resources."
+            }
         }
-      }
-  },
-  "variables": {},
-  "resources": [
-      {
-          "name": "[parameters('clusters_kustocluster_name')]",
-          "type": "Microsoft.Kusto/clusters",
-          "sku": {
-              "name": "Standard_E8ads_v5",
-              "tier": "Standard",
-              "capacity": 2
-          },
-          "apiVersion": "2020-09-18",
-          "location": "[parameters('location')]",
-          "tags": {
-            "Created By": "GitHub quickstart template"
-          },
-          "properties": {
-              "trustedExternalTenants": [],
-              "optimizedAutoscale": {
-                  "version": 1,
-                  "isEnabled": true,
-                  "minimum": 2,
-                  "maximum": 10
-              },
-              "enableDiskEncryption": false,
-              "enableStreamingIngest": false,
-              "virtualNetworkConfiguration":{
-                  "subnetId": "<subnet resource id>",
-                  "enginePublicIpId": "<Engine service's public IP address resource id>",
-                  "dataManagementPublicIpId": "<Data management's service public IP address resource id>"
-              },
-              "keyVaultProperties":{
-                  "keyName": "<Key name>",
-                  "keyVaultUri": "<Key vault uri>"
-              },
-              "enablePurge": false,
-              "enableDoubleEncryption": false,
-              "engineType": "V3"
-          }
-      },
-      {
-          "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
-          "type": "Microsoft.Kusto/clusters/databases",
-          "apiVersion": "2020-09-18",
-          "location": "[parameters('location')]",
-          "dependsOn": [
-              "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
-          ],
-          "properties": {
-              "softDeletePeriodInDays": 365,
-              "hotCachePeriodInDays": 31
-          }
-      }
-  ]
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('clusters_kustocluster_name')]",
+            "type": "Microsoft.Kusto/clusters",
+            "sku": {
+                "name": "Standard_E8ads_v5",
+                "tier": "Standard",
+                "capacity": 2
+            },
+            "apiVersion": "2022-12-29",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Created By": "GitHub quickstart template"
+            },
+            "properties": {
+                "trustedExternalTenants": [],
+                "optimizedAutoscale": {
+                    "version": 1,
+                    "isEnabled": true,
+                    "minimum": 2,
+                    "maximum": 10
+                },
+                "enableDiskEncryption": false,
+                "enableStreamingIngest": false,
+                "virtualNetworkConfiguration": {
+                    "subnetId": "<subnet resource id>",
+                    "enginePublicIpId": "<Engine service's public IP address resource id>",
+                    "dataManagementPublicIpId": "<Data management's service public IP address resource id>"
+                },
+                "keyVaultProperties": {
+                    "keyName": "<Key name>",
+                    "keyVaultUri": "<Key vault uri>",
+                    "userIdentity": "<ResourceId of user assigned managed identity>"
+                },
+                "enablePurge": false,
+                "enableDoubleEncryption": false,
+                "engineType": "V3"
+            },
+            "identity": {
+                "type": "SystemAssigned, UserAssigned",
+                "userAssignedIdentities": {
+                    "<ResourceId of managed identity>": {}
+                }
+            }
+        },
+        {
+            "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
+            "type": "Microsoft.Kusto/clusters/databases",
+            "apiVersion": "2022-12-29",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
+            ],
+            "properties": {
+                "softDeletePeriodInDays": 365,
+                "hotCachePeriodInDays": 31
+            }
+        }
+    ]
 }
 ```
 

@@ -3,11 +3,19 @@ title: ".alter materialized view merge policy command- Azure Data Explorer"
 description: "This article describes the .alter materialized view merge policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
+<<<<<<< HEAD
 ms.date: 02/19/2023
+=======
+ms.date: 02/21/2023
+>>>>>>> 63693557fb8f5851fab8f3947d4d3d22fcd14361
 ---
 # .alter materialized view merge policy
 
 Use this command to change a materialized view's [merge policy](mergepolicy.md). The merge policy defines if and how [extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

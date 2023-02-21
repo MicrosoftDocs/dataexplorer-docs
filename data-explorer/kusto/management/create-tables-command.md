@@ -3,7 +3,7 @@ title: .create tables - Azure Data Explorer
 description: This article describes .create tables in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/05/2020
+ms.date: 02/21/2023
 ---
 # .create tables
 
@@ -11,9 +11,11 @@ Creates new empty tables as a bulk operation.
 
 The command must run in the context of a specific database.
 
-Requires [Database user permission](./access-control/role-based-access-control.md).
+## Permissions
 
-**Syntax**
+You must have at least [Database User](access-control/role-based-access-control.md) permissions to run this command.
+
+## Syntax
 
 `.create` `tables` *TableName1* ([columnName:columnType], ...) [`,` *TableName2* ([columnName:columnType], ...) ... ] [`with` `(` [`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
 
@@ -24,8 +26,8 @@ Requires [Database user permission](./access-control/role-based-access-control.m
 > - The `folder` or `docstring` parameters are specified with values different from the ones set in the existing tables
 >
 > Any specified tables that don't exist are created.
- 
-**Example** 
+
+## Example
 
 ```kusto
 .create tables 

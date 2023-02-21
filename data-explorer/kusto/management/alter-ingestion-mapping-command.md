@@ -3,11 +3,15 @@ title: ".alter ingestion mapping - Azure Data Explorer"
 description: "This article describes .alter ingestion mapping in Azure Data Explorer."
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/19/2023
+ms.date: 02/21/2023
 ---
 # .alter ingestion mapping
 
 Alters an existing ingestion mapping that is associated with a specific table/database and a specific format (full mapping replace).
+
+## Permissions
+
+The command to alter database ingestion mapping requires at least [Database Ingestor](access-control/role-based-access-control.md) permissions, and the command to alter table ingestion mapping requires at least [Table Ingestor](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
@@ -56,7 +60,7 @@ Alters an existing ingestion mapping that is associated with a specific table/da
 ```
 ````
 
-**Sample output**
+**Output**
 
 | Name     | Kind | Mapping                                                                                                                                                                          |
 |----------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

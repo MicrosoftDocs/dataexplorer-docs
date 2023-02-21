@@ -42,4 +42,4 @@ This article describes the available cluster level roles and how to assign princ
 ## See also
 
 * To configure database or table specific access, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md)
-* For a list of available roles, see [Role-based Authorization](./kusto/management/access-control/role-based-access-control.md)
+* For a list of available roles, see [Role-based access control](./kusto/management/access-control/role-based-access-control.md)
