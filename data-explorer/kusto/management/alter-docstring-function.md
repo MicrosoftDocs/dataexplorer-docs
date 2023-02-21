@@ -22,10 +22,6 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 `.alter` `function` *FunctionName* `docstring` *Documentation*
 
-## Syntax
-
-`.alter` `function` *FunctionName* `docstring` *Documentation*
-
 ## Parameters
 
 |Name|Type|Required|Description|
