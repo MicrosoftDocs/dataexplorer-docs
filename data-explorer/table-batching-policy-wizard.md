@@ -41,9 +41,11 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
     |**Setting** | **Default value** | **Field description**
     |---|---|---|
-    | Number of items | *1000*  | The number of files defined as the limit after which a batch is sealed.  |
+    | Number of items | *1000*  | The number of files defined as the limit after which a batch is sealed.|
     | Time (seconds) |  *300* | The time limit after which a batch is sealed. |
     | Size (MB) |  *1024* | The size limit after which a batch is sealed.  |
+
+    Number of items should only be modified in setups where you control the data units (blobs or files).  In cases of message-based setups, like Event Hub, IoT Hub, CosmosDB change feed, the fields to control are Time and Size.
 
     For more information, see [ingestion batching policy batch sealing](./kusto/management/batchingpolicy.md#sealing-a-batch).
 
