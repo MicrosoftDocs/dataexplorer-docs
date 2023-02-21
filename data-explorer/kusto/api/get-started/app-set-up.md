@@ -36,7 +36,7 @@ One of the following .NET frameworks:
     - Ensure the `node` executable is in your `PATH`
     - Verify installation: In a command shell, run `node --version` to check that the version is 3.7 or later
 
-### [Go](#tab/go)
+<!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
 
@@ -48,14 +48,19 @@ This section walks you through installing the the Azure Data Explorer client lib
 
 The following table lists the client libraries for Azure Data Explorer and the corresponding package names.
 
-| Library Name | Package name | Description |
-| -- | -- | -- |
-| Kusto client library | `azure-kusto-data` | Provides a client for connecting to Azure Data Explorer. Use the client library to [query data](../../query/index.md) or run [management commands](../../management/index.md). |
-| Kusto ingest client library | `azure-kusto-ingest` | Provides a client for ingesting data into Azure Data Explorer. Use the ingest client library to [ingest data](../../../ingest-data-overview.md) into Azure Data Explorer. |
+| Library Name | Description |
+| -- | -- |
+| Kusto Data library | Provides a client for connecting to Azure Data Explorer. Use the client library to [query data](../../query/index.md) or run [management commands](../../management/index.md). |
+| Kusto Ingest library | Provides a client for ingesting data into Azure Data Explorer. Use the ingest client library to [ingest data](../../../ingest-data-overview.md) into Azure Data Explorer. |
 
 Add the Azure Data Explorer client libraries for your preferred language to your project, or use the package manager appropriate for your language to install the client libraries.
 
 ### [C\#](#tab/csharp)
+
+```bash
+dotnet add package Microsoft.Azure.Kusto.Data --version 11.2.2
+dotnet add package Microsoft.Azure.Kusto.Ingest --version 11.2.2
+```
 
 ### [Python](#tab/python)
 
@@ -71,7 +76,7 @@ npm install azure-kusto-data
 npm install azure-kusto-ingest
 ```
 
-### [Go](#tab/go)
+<!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
 
