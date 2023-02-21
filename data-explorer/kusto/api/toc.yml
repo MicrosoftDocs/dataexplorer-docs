@@ -25,8 +25,6 @@ items:
   - name: MS-TDS overview
     displayName: SQL, ADO.NET, JDBC, ODBC
     href: tds/index.md
-  - name: KQL over TDS
-    href: tds/tdskql.md
   - name: Clients
     href: tds/clients.md
   - name: Linked server
@@ -34,8 +32,6 @@ items:
   - name: Azure Active Directory
     displayName: AAD, Azure AD
     href: tds/aad.md
-  - name: Known issues
-    href: tds/sqlknownissues.md
 - name: .NET SDK
   items:
   - name: General
