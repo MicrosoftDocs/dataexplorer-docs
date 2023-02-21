@@ -20,10 +20,6 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 `.alter` `function` *FunctionName* `folder` *Folder*
 
-## Syntax
-
-`.alter` `function` *FunctionName* `folder` *Folder*
-
 ## Parameters
 
 |Name|Type|Required|Description|
