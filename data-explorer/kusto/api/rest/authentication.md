@@ -24,6 +24,35 @@ must authenticate by using the HTTP `Authorization` request header.
 
 There are many different methods to get an Azure AD access token. To learn more, see [user authentication](../../management/access-control/how-to-authenticate-with-aad.md#user-authentication) and [application authentication](../../management/access-control/how-to-authenticate-with-aad.md#application-authentication).
 
+### Get an access token for a user principal using the Azure CLI
+
+1. Sign in to the Azure CLI.
+
+      ```dotnetcli
+      az login --output table
+      ```
+
+1. Find the row where the column `Default` is `true`. Confirm that the subscription in that row is the subscription for which you want to create your Azure AD access token. To find subscription information, see [get subscription and tenant IDs in the Azure portal](/azure/azure-portal/get-subscription-tenant-id). If you need to switch to a different subscription, run one of the following commands.
+
+      ```dotnetcli
+      az account set --subscription <subscription-id>
+      ```
+
+      ```dotnetcli
+      az account set --name "<subscription-name>"
+      ```
+
+1. Run the following command to get the access token.
+
+      ```dotnetcli
+      az account get-access-token \
+        --resource "https://api.kusto.windows.net" \
+        --query "accessToken" \
+        --output tsv
+      ```
+
+### Get an access token for a service principal using the Azure CLI
+
 The following steps guide you through using the Azure CLI to create an application principal and requesting an Azure AD bearer token for this principal.
 
 1. Sign in to the Azure CLI.
@@ -32,7 +61,7 @@ The following steps guide you through using the Azure CLI to create an applicati
       az login
       ```
 
-1. Set your default subscription.
+1. Set your subscription to the subscription under which you want to create a service principal.
 
       ```dotnetcli
       az account set --subscription <SUBSCRIPTION_ID>
