@@ -3,16 +3,18 @@ title: Overview of data connectors in Azure Data Explorer
 description: This article summarizes available data connectors and their capabilities.
 ms.reviewer: aksdi
 ms.topic: reference
-ms.date: 02/19/2023
+ms.date: 02/21/2023
 ---
 # Data connectors overview
+
+[Data ingestion](ingest-data-overview.md) is the process used to load data records from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for [query](kusto/query/index.md). Azure Data Explorer provides several connectors for data ingestion.
 
 The following table summarizes the available connectors in Azure Data Explorer and their capabilities:
 
 | Name           | Functionality       | Supports streaming? | Type      | Use cases         |
 |---------------------------------------------------|------------------------------------------|:-:|-----------------|-----------------------|
-| [Apache Kafka](#apache-kafka)     | **Ingestion**       |   &check;             | [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Telemetry             |
-| [Apache Log4J 2](#apache-log4j-2)   | **Ingestion**    |   &check;             | [Open source](https://github.com/Azure/azure-kusto-log4j)| Logs                  |
+| [Apache Kafka](#apache-kafka)     | **Ingestion**       |   &check;             | First party, [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Logs, Telemetry, Time series             |
+| [Apache Log4J 2](#apache-log4j-2)   | **Ingestion**    |   &check;             | First party, [Open source](https://github.com/Azure/azure-kusto-log4j)| Logs                  |
 | [Apache Spark](#apache-spark)      | **Export** <br> <br>**Ingestion**        |  &#x2717;               | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry             |
 | [Azure Cosmos DB](#azure-cosmos-db)      | **Ingestion**   |      &check;          |      First party           |    Change feed      |
 | [Azure Data Factory](#azure-data-factory) | **Export** <br> <br>**Ingestion**   |   &#x2717;            |        First party      |    Data orchestration            |
@@ -22,36 +24,37 @@ The following table summarizes the available connectors in Azure Data Explorer a
 | [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion**   |   &check;         |    First party           | Event processing |
 | [Logstash](#logstash)         | **Ingestion**   |    &#x2717;             | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs                  |
 | [Open Telemetry](#open-telemetry)  | **Ingestion**  |    &check;              |  [Open source](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter)    | Traces, Metrics, Logs |
+| [Power Automate](#power-automate) |  **Export** <br> <br>**Ingestion**  | &#x2717; | First party | Data orchestration | 
 | [Telegraf](#telegraf)    | **Ingestion** | &check;           |   [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer)   | Metrics, Logs   |
 
 ## Apache Kafka
 
-* **Description:** Azure Data Explorer supports data ingestion from [Apache Kafka](https://kafka.apache.org/documentation/). Apache Kafka is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. Kafka Connect is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Azure Data Explorer Kafka Sink serves as the connector from Kafka and doesn't require using code.
+* **Description:** Azure Data Explorer supports data ingestion from [Apache Kafka](https://kafka.apache.org/documentation/). Apache Kafka is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. Kafka Connect is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Azure Data Explorer Kafka Sink serves as the connector from Kafka and doesn't require using code. This is a gold certified by Confluent - has gone through comprehensive review and testing for quality, feature completeness, compliance with standards and for performance.
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
-* **Use cases:** Telemetry
-* **Underlying SDK:** Java
+* **Use cases:** Logs, Telemetry, Time series
+* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/kafka-sink-azure-kusto/
 * **Documentation:** [Ingest data from Apache Kafka into Azure Data Explorer](ingest-data-kafka.md)
 * **Community Blog:** [Kafka ingestion into Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/kafka-ingestion-into-azure-data-explorer-part-1/ba-p/1452439)
 
 ## Apache Log4J 2
 
-* **Description:** Apache Log4J 2 sink for Azure Data Explorer allows you to easily stream your log data to Azure Data Explorer, where you can analyze, visualize, and alert on your logs in real time.
+* **Description:** Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. Apache Log4J 2 sink for Azure Data Explorer allows you to easily stream your log data to Azure Data Explorer, where you can analyze, visualize, and alert on your logs in real time.
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs
-* **Underlying SDK:** Java
+* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-log4j
 * **Community Blog:** [Getting started with Apache Log4j and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-apache-log4j-and-azure-data-explorer/ba-p/3705242)
 
 ## Apache Spark
 
-* **Description:** The [Azure Data Explorer connector for Spark](spark-connector.md) is an open source project that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. Using Azure Data Explorer and Apache Spark, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, Azure Data Explorer becomes a valid data store for standard Spark source and sink operations, such as write, read, and writeStream.
+* **Description:** [Apache Spark](https://spark.apache.org/) is a unified analytics engine for large-scale data processing. The [Azure Data Explorer connector for Spark](spark-connector.md) is an open source project that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. Using Azure Data Explorer and Apache Spark, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, Azure Data Explorer becomes a valid data store for standard Spark source and sink operations, such as write, read, and writeStream.
 * **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry
-* **Underlying SDK:** Java
+* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-spark/
 * **Documentation:** [Azure Data Explorer Connector for Apache Spark](spark-connector.md)
 * **Community Blog:** [Data pre-processing for Azure Data Explorer with Apache Spark](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/data-pre-processing-for-azure-data-explorer-with-apache-spark/ba-p/2727993/)
@@ -63,7 +66,6 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Change feed
 * **Documentation:** [Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)](ingest-data-cosmos-db-connection.md)
-
 
 ## Azure Data Factory
 
@@ -110,7 +112,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching
 * **Use cases:** Logs
-* **Underlying SDK:** Java
+* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/logstash-output-kusto/
 * **Documentation:** [Ingest data from Logstash to Azure Data Explorer](ingest-data-logstash.md)
 * **Community Blog:** [How to migrate from Elasticsearch to Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/how-to-migrate-from-elasticsearch-to-azure-data-explorer/ba-p/1621539/)
@@ -121,10 +123,20 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Traces, Metrics, Logs
-* **Underlying SDK:** Go
+* **Underlying SDK:** [Go](kusto/api/golang/kusto-golang-client-library.md)
 * **Repository:** Open Telemetry - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter
 * **Documentation:** [Ingest data from OpenTelemetry to Azure Data Explorer](open-telemetry-connector.md)
 * **Community Blog:** [Getting started with Open Telemetry and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-open-telemetry-and-azure-data-explorer/ba-p/3675708)
+
+## Power Automate
+
+* **Description:** [Power Automate](/power-automate/getting-started) is an orchestration service used to automate business processes. The Azure Data Explorer connector for :::no-loc text="Power Automate"::: (previously Microsoft Flow) enables you to orchestrate and schedule flows, send notifications, and alerts, as part of a scheduled or triggered task. 
+* **Functionality:** Ingestion, Export
+* **Ingestion type supported:** Batching
+* **Use cases:** Data orchestration
+* **Documentation:** [Azure Data Explorer connector for Microsoft Power Automate](flow.md)
+* **Community Blog:**  
+
 
 ## Telegraf
 
