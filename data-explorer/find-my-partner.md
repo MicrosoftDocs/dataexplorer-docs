@@ -60,7 +60,7 @@ We develop and design sophisticated, forward-looking software solutions based on
 
 ALTEN is the consulting and engineering organization working in various (niche) markets for the high-tech sector and ICT. The development of new High-Tech technologies is costly and requires specialist knowledge. Knowledge in the field of technology plays the most important role, the central pillar within ALTEN.
 
-ALTEN also offers her specialist knowledge in the field of IT. We play an active role regarding quality, reliability, and innovations in the area of Big Data and Internet of Things with our partners in order to strengthen the digital transformation and sustainability
+ALTEN also offers their specialist knowledge in the field of IT. We play an active role regarding quality, reliability, and innovations in the area of Big Data and Internet of Things with our partners in order to strengthen the digital transformation and sustainability
 
 **Partner type**
 
