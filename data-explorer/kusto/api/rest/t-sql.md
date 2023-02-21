@@ -2,12 +2,12 @@
 title: Send T-SQL queries over RESTful web API - Azure Data Explorer
 description: This article describes how to use T-SQL queries with the RESTful web API for Azure Data Explorer.
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 02/21/2023
 ---
 
 # Send T-SQL queries via the REST API
 
-Azure Data Explorer supports a [subset of the T-SQL language](../tds/sqlknownissues.md). In this article, you'll learn how to send T-SQL queries via the REST API. This method of accessing your data can be especially useful if you have an application compatible with SQL.
+Azure Data Explorer supports a [subset of the T-SQL language](../tds/sqlknownissues.md). In this article, you'll learn how to send T-SQL queries via the REST API.
 
 ## Request structure
 
