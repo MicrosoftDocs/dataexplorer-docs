@@ -38,7 +38,7 @@ You can create and execute [stored functions](kusto/query/schema-entities/stored
 > [!NOTE]
 > To distinguish between stored functions and emulated SQL system stored procedures, execute stored functions with an explicit reference to the `kusto` schema. In the example, the stored function is executed using `kusto.Myfunction`.
 
-When using T-SQL, it's recommended to create optimized KQL queries and encapsulate them in stored functions, as doing so minimizes T-SQL code and may increase performance. For example, you can call `MyFunction` using the following code.
+When using T-SQL, we recommended that you create optimized KQL queries and encapsulate them in stored functions, as doing so minimizes T-SQL code and may increase performance. For example, you can call `MyFunction` using the following code.
 
 ```sql
 SELECT * FROM kusto.MyFunction(10)
