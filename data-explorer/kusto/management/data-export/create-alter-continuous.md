@@ -59,7 +59,7 @@ with
 
 ## Continuous Export with Managed Identity
 
-In order to use Continuous Export with Managed Identity, please add the `AutomatedFlow` usage to the [Managed Identity policy](../managed-identity-policy.md).
+In order to use Continuous Export with Managed Identity, please add the `AutomatedFlows` usage to the [Managed Identity policy](../managed-identity-policy.md).
  
 For more information on how to set up and use a managed identity with continuous exports, see [managed identity overview](../../../managed-identities-overview.md). 
 
