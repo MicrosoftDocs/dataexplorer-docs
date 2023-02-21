@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # .alter-merge database sharding policy
 
-Change the database sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
+Use this command to change the database sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
 
 The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster should be sealed. When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
 
@@ -19,10 +19,12 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.alter-merge` `database` *DatabaseName* `policy` `sharding` *ArrayOfPolicyObjects*
 
-## Arguments
+## Parameters
 
-*DatabaseName* - Specify the name of the database. 
-*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database for which to alter the sharding policy.|
+|*ArrayOfPolicyObjects*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [sharding policy](shardingpolicy.md).|
 
 ## Returns
 

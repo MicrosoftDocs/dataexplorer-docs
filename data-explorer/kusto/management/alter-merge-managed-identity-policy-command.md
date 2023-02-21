@@ -18,15 +18,16 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 ## Syntax
 
-* `.alter-merge` `cluster` `policy` `managed_identity` *ArrayOfPolicyObjects*
-* `.alter-merge` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfPolicyObjects*
+`.alter-merge` `cluster` `policy` `managed_identity` *ArrayOfPolicyObjects*
 
-## Arguments
+`.alter-merge` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfPolicyObjects*
+
+## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ArrayOPolicyObjects*|array|&check;|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
 |*DatabaseName*|string|&check;|The name of the database.|
+|*ArrayOPolicyObjects*|array|&check;|A serialized array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
 
 > [!NOTE]
 >
