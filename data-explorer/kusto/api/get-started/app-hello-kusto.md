@@ -194,10 +194,10 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     >
     > The *print kusto* query returns a single table with one row and column.
     >
-    > For C#, the response is a [DataReader](/dotnet/api/system.data.idatareader?view=net-7.0) object. You can reference the result, as follows:
+    > For C#, the response is a [DataReader](/dotnet/api/system.data.idatareader) object. You can reference the result, as follows:
     >
-    > - Use the [Read()](/dotnet/api/system.data.idatareader.read?view=net-7.0) method to read the first row
-    > - Use the [GetString](/dotnet/api/system.data.idatarecord.getstring?view=net-7.0)() method to get the value of the first column
+    > - Use the [Read()](/dotnet/api/system.data.idatareader.read) method to read the first row
+    > - Use the [GetString](/dotnet/api/system.data.idatarecord.getstring)() method to get the value of the first column
     >
     > For Python and Node.js, the response in the primary results JSON object. The object contains an array of tables, which in turn contains an array of rows. Each row contains data organized into a dictionary of columns. You can reference the result, as follows:
     >
