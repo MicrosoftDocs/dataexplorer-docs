@@ -13,28 +13,34 @@ In this article, you learn how to install client library packages for your prefe
 
 ## Prerequisites
 
-- A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-- Language specific prerequisites
+Language specific prerequisites:
 
-    ### [C\#](#tab/csharp)
+### [C\#](#tab/csharp)
 
-    ### [Python](#tab/python)
+One of the following .NET frameworks:
 
-    - [Python 3.7 or later](https://www.python.org/downloads/)
-        - Ensure the `python` executable is in your `PATH`.
-        - Verify installation: In a command shell, run `python --version` to check that the version is 3.7 or later.
+- .NET SDK 5.0 or later
+- .NET Core 2.1 or later
+- .NET Standard 2.1 or later
+- .NET Framework 4.7.2 or later
 
-    ### [Node.js](#tab/nodejs)
+### [Python](#tab/python)
 
-    - [Node 16 or later](https://nodejs.org/en/download/) built with ES6
-        - Ensure the `node` executable is in your `PATH`.
-        - Verify installation: In a command shell, run `node --version` to check that the version is 3.7 or later.
+- [Python 3.7 or later](https://www.python.org/downloads/)
+    - Ensure the `python` executable is in your `PATH`
+    - Verify installation: In a command shell, run `python --version` to check that the version is 3.7 or later
 
-    ### [Go](#tab/go)
+### [Node.js](#tab/nodejs)
 
-    ### [Java](#tab/java)
+- [Node 16 or later](https://nodejs.org/en/download/) built with ES6
+    - Ensure the `node` executable is in your `PATH`
+    - Verify installation: In a command shell, run `node --version` to check that the version is 3.7 or later
 
-    ---
+### [Go](#tab/go)
+
+### [Java](#tab/java)
+
+---
 
 ### Install the package
 

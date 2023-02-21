@@ -21,150 +21,253 @@ In this article, you learn how to:
 
 ## Create your app
 
-1. In your preferred IDE or text editor, create a file named `hello-kusto` with the language appropriate extension and add code to do the following:
+1. In your preferred IDE or text editor, create a file named `hello-kusto` with the language appropriate extension.
 
-    - Import the *KustoClient* and *KustoConnectionStringBuilder* classes from the `azure.kusto.data` package.
-    - Define an empty function named `main` and call it.
+1. Add code to do the following:
 
-    ### [C\#](#tab/csharp)
+    1. Add the Azure Data Explorer client library client and string builder classes.
 
-    ### [Python](#tab/python)
+        ### [C\#](#tab/csharp)
 
-    ```python
-    from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
+        ```csharp
+        using Kusto.Data;
+        using Kusto.Data.Net.Client;
+        ```
 
-    def main():
+        ### [Python](#tab/python)
 
-    if __name__ == "__main__":
-        main()
-    ```
+        ```python
+        from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
+        ```
 
-    ### [Node.js](#tab/nodejs)
+        ### [Node.js](#tab/nodejs)
 
-    ```nodejs
-    const KustoClient = require("azure-kusto-data").Client;
-    const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+        ```nodejs
+        const KustoClient = require("azure-kusto-data").Client;
+        const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+        ```
 
-    async function main() {
-    }
+        <!-- ### [Go](#tab/go) -->
 
-    main();
-    ```
+        ### [Java](#tab/java)
 
-    <!-- ### [Go](#tab/go) -->
+        ---
 
-    ### [Java](#tab/java)
+    1. Define an empty function named `main` and call it.
 
-    ---
+        ### [C\#](#tab/csharp)
 
-1. Add code to create a *KustoConnectionStringBuilder* object that defines the connection string to the cluster and sets the authentication mode to interactive. The connection string is in the format `https://<clusterName>.<region>.kusto.windows.net/`.
+        ```csharp
+        namespace HelloKusto
+        {
+          class HelloKusto
+          {
+            static void Main(string[] args)
+            {
+            }
+          }
+        }
+        ```
 
-    ### [C\#](#tab/csharp)
+        ### [Python](#tab/python)
 
-    ### [Python](#tab/python)
+        ```python
+        def main():
 
-    ```python
-    cluster_uri = "https://help.kusto.windows.net"
-    kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
-    ```
+        if __name__ == "__main__":
+          main()
+        ```
 
-    ### [Node.js](#tab/nodejs)
+        ### [Node.js](#tab/nodejs)
 
-    ```nodejs
-    const cluster_uri = "https://help.kusto.windows.net";
-    const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
-    ```
+        ```nodejs
+        async function main()
+        {
+        }
 
-    <!-- ### [Go](#tab/go) -->
+        main();
+        ```
 
-    ### [Java](#tab/java)
+        <!-- ### [Go](#tab/go) -->
 
-    ---
+        ### [Java](#tab/java)
 
-1. Add code to create a client object that uses the *KustoConnectionStringBuilder* object to connect to the cluster.
+        ---
 
-    ### [C\#](#tab/csharp)
+    1. Create a connection string builder object that defines the cluster URI and sets the authentication mode to interactive. The cluster URI is in the format `https://<clusterName>.<region>.kusto.windows.net/`.
 
-    ### [Python](#tab/python)
+        > [!NOTE]
+        > For interactive authentication, you need a Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+        >
+        > In C#, the interactive authentication process does not prompt the user if:
+        >
+        > - The user is already authenticated on the device
+        > - There is an existing Kusto.Explorer or Azure Date Explorer web UI authentication on the device
 
-    ```python
-    query_client = KustoClient(kcsb)
-    ```
+        ### [C\#](#tab/csharp)
 
-    ### [Node.js](#tab/nodejs)
+        ```csharp
+        string cluster_uri = "https://help.kusto.windows.net/";
+        var kcsb = new KustoConnectionStringBuilder(cluster_uri).WithAadUserPromptAuthentication();
+        ```
 
-    ```nodejs
-    const query_client = new KustoClient(kcsb);
-    ```
+        ### [Python](#tab/python)
 
-    <!-- ### [Go](#tab/go) -->
+        ```python
+        cluster_uri = "https://help.kusto.windows.net"
+        kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
+        ```
 
-    ### [Java](#tab/java)
+        ### [Node.js](#tab/nodejs)
 
-    ---
+        ```nodejs
+        const cluster_uri = "https://help.kusto.windows.net";
+        const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
+        ```
 
-1. Add code to define the database and query to run. The query prints *Hello Kusto!* in a column named **Welcome**.
+        <!-- ### [Go](#tab/go) -->
 
-    ### [C\#](#tab/csharp)
+        ### [Java](#tab/java)
 
-    ### [Python](#tab/python)
+        ---
 
-    ```python
-    database = "Samples"
-    query = "print Welcome='Hello Kusto!'"
-    ```
+    1. Create a client object that uses the connection string builder object to connect to the cluster.
 
-    ### [Node.js](#tab/nodejs)
+        ### [C\#](#tab/csharp)
 
-    ```nodejs
-    const database = "Samples";
-    const query = "print Welcome='Hello Kusto!'";
-    ```
+        ```csharp
+        using (var query_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
+        {
+        }
+        ```
 
-    <!-- ### [Go](#tab/go) -->
+        ### [Python](#tab/python)
 
-    ### [Java](#tab/java)
+        ```python
+        query_client = KustoClient(kcsb)
+        ```
 
-    ---
+        ### [Node.js](#tab/nodejs)
 
-1. Add code to run the query and print the result.
+        ```nodejs
+        const query_client = new KustoClient(kcsb);
+        ```
 
-    > [!NOTE]
-    > The query output is returned in the response as the primary results object. The object contains an array of tables, which in turn contains an array of rows. Each row contains data organized into a dictionary of columns.
-    >
-    > The *print kusto* query returns a table with a single row in the result set, which is referenced as follows:
-    >
-    > - The first array index `[0]` references the first table
-    > - The second array index `[0]` references the first row
-    > - The dictionary key `["Welcome"]` references the **Welcome** column
+        <!-- ### [Go](#tab/go) -->
 
-    ### [C\#](#tab/csharp)
+        ### [Java](#tab/java)
 
-    ### [Python](#tab/python)
+        ---
 
-    ```python
-    response = query_client.execute(database, query)
+    1. Define the database and query to run. The query prints *Hello Kusto!* in a column named **Welcome**.
 
-    print(response.primary_results[0][0]["Welcome"])
-    ```
+        ### [C\#](#tab/csharp)
 
-    ### [Node.js](#tab/nodejs)
+        ```csharp
+        string database = "Samples";
+        string query = "print Welcome='Hello Kusto!'";
+        ```
 
-    ```nodejs
-    let response = await query_client.execute(database, query);
+        ### [Python](#tab/python)
 
-    console.log(response.primaryResults[0][0]["Welcome"].toString());
-    ```
+        ```python
+        database = "Samples"
+        query = "print Welcome='Hello Kusto!'"
+        ```
 
-    <!-- ### [Go](#tab/go) -->
+        ### [Node.js](#tab/nodejs)
 
-    ### [Java](#tab/java)
+        ```nodejs
+        const database = "Samples";
+        const query = "print Welcome='Hello Kusto!'";
+        ```
 
-    ---
+        <!-- ### [Go](#tab/go) -->
+
+        ### [Java](#tab/java)
+
+        ---
+
+    1. Run the query and print the result.
+
+        > [!NOTE]
+        > The query output is returned in the response as an object that contains one or more tables, comprised of one more more rows and columns.
+        > The format of the object depends on the client library language.
+        >
+        > The *print kusto* query returns a single table with one row and column.
+        >
+        > For C#, the response is a [DataReader](/dotnet/api/system.data.idatareader?view=net-7.0) object. You can reference the result, as follows:
+        >
+        > - Use the [Read()](/dotnet/api/system.data.idatareader.read?view=net-7.0) method to read the first row
+        > - Use the [GetString](/dotnet/api/system.data.idatarecord.getstring?view=net-7.0)() method to get the value of the first column
+        >
+        > For Python and Node.js, the response in the primary results JSON object. The object contains an array of tables, which in turn contains an array of rows. Each row contains data organized into a dictionary of columns. You can reference the result, as follows:
+        >
+        > - The first array index `[0]` references the first table
+        > - The second array index `[0]` references the first row
+        > - The dictionary key `["Welcome"]` references the **Welcome** column
+
+        ### [C\#](#tab/csharp)
+
+        ```csharp
+        var response = query_client.ExecuteQuery(database, query, null);
+
+        response.Read();
+        Console.WriteLine(response.GetString(0));
+        ```
+
+        ### [Python](#tab/python)
+
+        ```python
+        response = query_client.execute(database, query)
+
+        print(response.primary_results[0][0]["Welcome"])
+        ```
+
+        ### [Node.js](#tab/nodejs)
+
+        ```nodejs
+        let response = await query_client.execute(database, query);
+
+        console.log(response.primaryResults[0][0]["Welcome"].toString());
+        ```
+
+        <!-- ### [Go](#tab/go) -->
+
+        ### [Java](#tab/java)
+
+        ---
 
 The complete code should look like this:
 
 ### [C\#](#tab/csharp)
+
+```csharp
+using Kusto.Data;
+using Kusto.Data.Net.Client;
+
+namespace HelloKusto
+{
+  class HelloKusto
+  {
+    static void Main(string[] args)
+    {
+      string cluster_uri = "https://help.kusto.windows.net/";
+      var kcsb = new KustoConnectionStringBuilder(cluster_uri).WithAadUserPromptAuthentication();
+    
+      using (var query_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
+      {
+        string database = "Samples";
+        string query = "print Welcome='Hello Kusto!'";
+        var response = query_client.ExecuteQuery(database, query, null);
+  
+        response.Read();
+        Console.WriteLine(response.GetString(0));
+      }
+    }
+  }
+}
+```
 
 ### [Python](#tab/python)
 
@@ -172,15 +275,15 @@ The complete code should look like this:
 from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
 
 def main():
-    cluster_uri = "https://help.kusto.windows.net"
-    kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
-    query_client = KustoClient(kcsb)
+  cluster_uri = "https://help.kusto.windows.net"
+  kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
+  query_client = KustoClient(kcsb)
 
-    database = "Samples"
-    query = "print Welcome='Hello Kusto!'"
-    response = query_client.execute(database, query)
+  database = "Samples"
+  query = "print Welcome='Hello Kusto!'"
+  response = query_client.execute(database, query)
 
-    print(response.primary_results[0][0]["Welcome"])
+  print(response.primary_results[0][0]["Welcome"])
 
 if __name__ == "__main__":
     main()
@@ -192,16 +295,17 @@ if __name__ == "__main__":
 const KustoClient = require("azure-kusto-data").Client;
 const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
 
-async function main() {
-    const cluster_uri = "https://help.kusto.windows.net";
-    const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
-    const query_client = new KustoClient(kcsb);
-    
-    const database = "Samples";
-    const query = "print Welcome='Hello Kusto!'";
-    let response = await query_client.execute(database, query);
+async function main()
+{
+  const cluster_uri = "https://help.kusto.windows.net";
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
+  const query_client = new KustoClient(kcsb);
 
-    console.log(response.primaryResults[0][0]["Welcome"].toString());
+  const database = "Samples";
+  const query = "print Welcome='Hello Kusto!'";
+  let response = await query_client.execute(database, query);
+
+  console.log(response.primaryResults[0][0]["Welcome"].toString());
 }
 
 main();
