@@ -2,7 +2,7 @@
 title: Manage external external table roles - Azure Data Explorer
 description: This article describes how to use management commands to view, add, and remove external table admins on the external table level in Azure Data Explorer.
 ms.topic: reference
-ms.date: 01/25/2023
+ms.date: 02/21/2023
 ---
 
 # Manage external table roles
@@ -11,8 +11,9 @@ Azure Data Explorer uses a role-based access control model in which principals g
 
 In this article, you'll learn how to use management commands to [view existing admins](#view-existing-admins) as well as [add and remove admins](#add-and-remove-admins) on external tables.
 
-> [!NOTE]
-> You must be an AllDatabasesAdmin, a Database Admin, or an External Table Admin to control external table access. For more information, see [role-based access control](access-control/role-based-access-control.md).
+## Permissions
+
+You must have Database Admin permissions or be an External Table Admin on the specific external table to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## View existing admins
 
@@ -56,7 +57,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 |--|--|--|--|
 | *Action* | string | &check; | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
 | *ExternalTableName* | string | &check; | The name of the external table for which to add principals.|
-| *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](./access-control/principals-and-identity-providers.md#examples-for-azure-ad-principals).|
+| *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](/azure/data-explorer/kusto/management/access-control/referencing-security-principals#examples-for-azure-ad-principals).|
 | `skip-results` | string | | If provided, the command won't return the updated list of external table principals.|
 | *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
 

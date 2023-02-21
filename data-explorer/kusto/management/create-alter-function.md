@@ -3,7 +3,7 @@ title: .create-or-alter function - Azure Data Explorer
 description: This article describes .create-or-alter function in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/21/2023
 ---
 # .create-or-alter function
 
@@ -11,9 +11,13 @@ Creates a stored function or alters an existing function and stores it inside th
 
 Rules for parameter types and CSL statements are the same as for [`let` statements](../query/letstatement.md).
 
+## Permissions
+
+You must have at least [Database User](access-control/role-based-access-control.md) permissions to run this command.
+
 ## Syntax
 
-.`create-or-alter function [with (docstring = '<description>' folder='<name>')] [FunctionName] ([paramName:paramType], ...) { CSL-statement }`
+.`create-or-alter function [with (docstring = '<description>', folder='<name>')] [FunctionName] ([paramName:paramType], ...) { CSL-statement }`
 
 If the function with the provided *FunctionName* doesn't exist in the database metadata, the command creates a new function. Else, that function will be changed.
 

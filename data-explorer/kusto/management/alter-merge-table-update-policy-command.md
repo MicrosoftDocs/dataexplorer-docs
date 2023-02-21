@@ -3,7 +3,7 @@ title: .alter-merge table update policy command - Azure Data Explorer
 description: This article describes the .alter-merge table update policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/27/2022
+ms.date: 02/21/2023
 ---
 # .alter-merge table update policy
 
@@ -14,16 +14,21 @@ Change the table update policy. The [update policy](updatepolicy.md) instructs A
 > The update policy function schema and the target table schema must match in their column names, types, and order.
 > If the policy already defined on the table, the PolicyObjects specified in the command are added to the array of PolicyObjects in the existing policy.
 
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+
 ## Syntax
 
 `.alter-merge` `table` *TableName* `policy` `update` *ArrayOfPolicyObjects*
-`.alter-merge` `table` *DatabaseName*`.`*TableName* `update` `sharding` *ArrayOfPolicyObjects*
+
+`.alter-merge` `table` *DatabaseName*`.`*TableName* `policy` `update` *ArrayOfPolicyObjects*
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
-*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context. A wildcard (*) denotes all tables.
-*ArrayOfPolicyObjects* - Define policy objects, see also [update policy](updatepolicy.md).
+* *DatabaseName* - Specify the name of the database.
+* *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context. A wildcard (*) denotes all tables.
+* *ArrayOfPolicyObjects* - Define policy objects, see also [update policy](updatepolicy.md).
 
 ## Returns
 

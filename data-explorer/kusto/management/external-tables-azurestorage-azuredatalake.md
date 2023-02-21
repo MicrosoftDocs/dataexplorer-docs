@@ -3,7 +3,7 @@ title: Create and alter Azure Storage external tables - Azure Data Explorer
 description: This article describes how to create and alter external tables based on Azure Blob Storage or Azure Data Lake
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 02/21/2023
 ---
 
 # Create and alter Azure Storage external tables
@@ -11,6 +11,12 @@ ms.date: 03/24/2020
 The following command describes how to create an external table located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2. 
 
 For an introduction to the external Azure Storage tables feature, see [Query data in Azure Data Lake using Azure Data Explorer](../../data-lake-query-data.md).
+
+## Permissions
+
+To `.create` requires at least [Database User](../management/access-control/role-based-access-control.md) permissions and to `.alter` requires at least [Table Admin](../management/access-control/role-based-access-control.md) permissions.
+
+To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
 
 ## .create or .alter external table
 
@@ -28,7 +34,6 @@ Creates or alters a new external table in the database in which the command is e
 > [!NOTE]
 > * If the table exists, `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
 > * The external table is not accessed during creation time. It will only be accessed during query / export. You can use the `validateNotEmpty` (optional) property during creation time to make sure the external table definition is valid and that the underlying storage is accessible.
-> * The operation requires [database user permission](./access-control/role-based-access-control.md) for `.create` and [table admin permission](./access-control/role-based-access-control.md) for `.alter`. When creating or altering an external table using managed identity authentication, [All Databases admin permission](./access-control/role-based-access-control.md) is required.
 
 **Parameters**
 
@@ -292,9 +297,6 @@ Once all the conditions are met, the file is fetched and processed by the query 
 ## .show external table artifacts
 
 Returns a list of all files that will be processed when querying a given external table.
-
-> [!NOTE]
-> The operation requires [database user permission](./access-control/role-based-access-control.md).
 
 **Syntax:** 
 

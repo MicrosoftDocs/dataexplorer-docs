@@ -53,28 +53,28 @@ demo_make_series1
 | render timechart 
 ```
 
-- Use the [`make-series`](kusto/query/make-seriesoperator.md) operator to create a set of three time series, where:
+- Use the [`make-series`](make-seriesoperator.md) operator to create a set of three time series, where:
     - `num=count()`: time series of traffic
     - `from min_t to max_t step 1h`: time series is created in 1-hour bins in the time range (oldest and newest timestamps of table records)
-    - `default=0`: specify fill method for missing bins to create regular time series. Alternatively use [`series_fill_const()`](kusto/query/series-fill-constfunction.md), [`series_fill_forward()`](kusto/query/series-fill-forwardfunction.md), [`series_fill_backward()`](kusto/query/series-fill-backwardfunction.md) and [`series_fill_linear()`](kusto/query/series-fill-linearfunction.md) for changes
+    - `default=0`: specify fill method for missing bins to create regular time series. Alternatively use [`series_fill_const()`](series-fill-constfunction.md), [`series_fill_forward()`](series-fill-forwardfunction.md), [`series_fill_backward()`](series-fill-backwardfunction.md) and [`series_fill_linear()`](series-fill-linearfunction.md) for changes
     - `by OsVer`:  partition by OS
 - The actual time series data structure is a numeric array of the aggregated value per each time bin. We use `render timechart` for visualization.
 
 In the table above, we have three partitions. We can create a separate time series: Windows 10 (red), 7 (blue) and 8.1 (green) for each OS version as seen in the graph:
 
-![Time series partition.](media/time-series-analysis/time-series-partition.png)
+![Time series partition.](../../media/time-series-analysis/time-series-partition.png)
 
 ## Time series analysis functions
 
 In this section, we'll perform typical series processing functions.
-Once a set of time series is created, Azure Data Explorer supports a growing list of functions to process and analyze them which can be found in the [time series documentation](kusto/query/machine-learning-and-tsa.md). We will describe a few representative functions for processing and analyzing time series.
+Once a set of time series is created, Azure Data Explorer supports a growing list of functions to process and analyze them which can be found in the [time series documentation](/azure/data-explorer/kusto/query/time-series-analysis). We will describe a few representative functions for processing and analyzing time series.
 
 ### Filtering
 
 Filtering is a common practice in signal processing and useful for time series processing tasks (for example, smooth a noisy signal, change detection).
 - There are two generic filtering functions:
-    - [`series_fir()`](kusto/query/series-firfunction.md): Applying FIR filter. Used for simple calculation of moving average and differentiation of the time series for change detection.
-    - [`series_iir()`](kusto/query/series-iirfunction.md): Applying IIR filter. Used for exponential smoothing and cumulative sum.
+    - [`series_fir()`](series-firfunction.md): Applying FIR filter. Used for simple calculation of moving average and differentiation of the time series for change detection.
+    - [`series_iir()`](series-iirfunction.md): Applying IIR filter. Used for exponential smoothing and cumulative sum.
 - `Extend` the time series set by adding a new moving average series of size 5 bins (named *ma_num*) to the query:
 
 > [!div class="nextstepaction"]
@@ -89,13 +89,13 @@ demo_make_series1
 | render timechart
 ```
 
-![Time series filtering.](media/time-series-analysis/time-series-filtering.png)
+![Time series filtering.](../../media/time-series-analysis/time-series-filtering.png)
 
 ### Regression analysis
 
 ADX supports segmented linear regression analysis to estimate the trend of the time series.
-- Use [series_fit_line()](kusto/query/series-fit-linefunction.md) to fit the best line to a time series for general trend detection.
-- Use [series_fit_2lines()](kusto/query/series-fit-2linesfunction.md) to detect trend changes, relative to the baseline, that are useful in monitoring scenarios.
+- Use [series_fit_line()](series-fit-linefunction.md) to fit the best line to a time series for general trend detection.
+- Use [series_fit_2lines()](series-fit-2linesfunction.md) to detect trend changes, relative to the baseline, that are useful in monitoring scenarios.
 
 Example of `series_fit_line()` and  `series_fit_2lines()` functions in a time series query:
 
@@ -108,7 +108,7 @@ demo_series2
 | render linechart with(xcolumn=x)
 ```
 
-![Time series regression.](media/time-series-analysis/time-series-regression.png)
+![Time series regression.](../../media/time-series-analysis/time-series-regression.png)
 
 - Blue: original time series
 - Green: fitted line
@@ -131,10 +131,10 @@ demo_series3
 | render timechart 
 ```
 
-![Time series seasonality.](media/time-series-analysis/time-series-seasonality.png)
+![Time series seasonality.](../../media/time-series-analysis/time-series-seasonality.png)
 
-- Use [series_periods_detect()](kusto/query/series-periods-detectfunction.md) to automatically detect the periods in the time series. 
-- Use [series_periods_validate()](kusto/query/series-periods-validatefunction.md) if we know that a metric should have specific distinct period(s) and we want to verify that they exist.
+- Use [series_periods_detect()](series-periods-detectfunction.md) to automatically detect the periods in the time series. 
+- Use [series_periods_validate()](series-periods-validatefunction.md) if we know that a metric should have specific distinct period(s) and we want to verify that they exist.
 
 > [!NOTE]
 > It's an anomaly if specific distinct periods don't exist
@@ -158,7 +158,7 @@ The function detects daily and weekly seasonality. The daily scores less than th
 
 ### Element-wise functions
 
-Arithmetic and logical operations can be done on a time series. Using [series_subtract()](kusto/query/series-subtractfunction.md) we can calculate a residual time series, that is, the difference between original raw metric and a smoothed one, and look for anomalies in the residual signal:
+Arithmetic and logical operations can be done on a time series. Using [series_subtract()](series-subtractfunction.md) we can calculate a residual time series, that is, the difference between original raw metric and a smoothed one, and look for anomalies in the residual signal:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=" target="_blank">Run the query</a>
@@ -174,7 +174,7 @@ demo_make_series1
 | render timechart
 ```
 
-![Time series operations.](media/time-series-analysis/time-series-operations.png)
+![Time series operations.](../../media/time-series-analysis/time-series-operations.png)
 
 - Blue: original time series
 - Red: smoothed time series
@@ -226,7 +226,7 @@ demo_many_series1
 | render timechart with(ymin=0) 
 ```
 
-![Time series at scale.](media/time-series-analysis/time-series-at-scale.png)
+![Time series at scale.](../../media/time-series-analysis/time-series-at-scale.png)
 
 The above behavior is misleading, since the single normal time series is aggregated from thousands of different instances that may have abnormal patterns. Therefore, we create a time series per instance. An instance is defined by Loc (location), anonOp (operation), and DB (specific machine).
 
@@ -260,7 +260,7 @@ demo_many_series1
 | render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
 ```
 
-![Time series top two.](media/time-series-analysis/time-series-top-2.png)
+![Time series top two.](../../media/time-series-analysis/time-series-top-2.png)
 
 Display the instances:
 
@@ -288,5 +288,5 @@ These advanced capabilities combined with Azure Data Explorer fast performance s
 
 ## Next steps
 
-* Learn about [Time series anomaly detection and forecasting](anomaly-detection.md) in Azure Data Explorer.
-* Learn about [Machine learning capabilities](machine-learning-clustering.md) in Azure Data Explorer.
+* Learn about [Time series anomaly detection and forecasting](./anomaly-detection.md) in Azure Data Explorer.
+* Learn about [Machine learning capabilities](./machine-learning-clustering.md) in Azure Data Explorer.

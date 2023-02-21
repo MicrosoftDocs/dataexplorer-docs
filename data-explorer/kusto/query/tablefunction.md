@@ -1,9 +1,9 @@
 ---
 title: table() (scope function) - Azure Data Explorer
-description: This article describes table() (scope function) in Azure Data Explorer.
+description: Learn how to use the table() (scope function) function to reference a table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 02/05/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -11,50 +11,24 @@ zone_pivot_groups: kql-flavors
 
 The table() function references a table by providing its name as an expression of type `string`.
 
-```kusto
-table('StormEvent')
-```
-
 ## Syntax
 
-`table` `(` *TableName* [`,` *DataScope*] `)`
+`table(` *TableName* [`,` *DataScope*] `)`
 
-## Arguments
+## Parameters
 
-::: zone pivot="azuredataexplorer"
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*TableName* | string | &check; | The name of the table being referenced. The value of this expression must be constant at the point of call to the function, meaning it cannot vary by the data context.|
+| *DataScope* | string | | Used to restrict the table reference to data according to how this data falls under the table's effective [cache policy](../management/cachepolicy.md). If used, the actual argument must be one of the [Valid data scope values](#valid-data-scope-values).
 
-* *TableName*: An expression of type `string` that provides the name of the table
-  being referenced. The value of this expression must be constant at the point
-  of call to the function (i.e. it cannot vary by the data context).
+### Valid data scope values
 
-* *DataScope*: An optional parameter of type `string` that can be used to restrict
-  the table reference to data according to how this data falls under the table's
-  effective [cache policy](../management/cachepolicy.md). If used, the actual argument
-  must be a constant `string` expression having one of the following possible values:
-
-    - `"hotcache"`: Only data that is categorized as hot cache will be referenced.
-    - `"all"`: All the data in the table will be referenced.
-    - `"default"`: This is the same as `"all"`, except if the cluster has been
-      set to use `"hotcache"` as the default by the cluster admin.
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-* *TableName*: An expression of type `string` that provides the name of the table
-  being referenced. The value of this expression must be constant at the point
-  of call to the function (i.e. it cannot vary by the data context).
-
-* *DataScope*: An optional parameter of type `string` that can be used to restrict
-  the table reference to data according to how this data falls under the table's
-  effective cache policy. If used, the actual argument
-  must be a constant `string` expression having one of the following possible values:
-
-    - `"hotcache"`: Only data that is categorized as hot cache will be referenced.
-    - `"all"`: All the data in the table will be referenced.
-    - `"default"`: This is the same as `"all"`.
-
-::: zone-end
+|Value|Description|
+|--|--|
+| `hotcache`| Only data that is categorized as hot cache will be referenced.|
+| `all`| All the data in the table will be referenced.|
+| `default`| The default is `all`, except if it has been set to `hotcache` by the cluster admin.|
 
 ## Returns
 
@@ -112,13 +86,18 @@ receives a parameter `tableName` - which is passed into the table() function.
 
 ::: zone pivot="azuredataexplorer"
 
-**Note:** such functions can be used only locally and not in the cross-cluster query.
+> [!NOTE]
+> Such functions can be used only locally and not in the cross-cluster query.
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
 
 ::: zone-end
 
 ### Use table() with non-constant parameter
 
-A parameter, which is not scalar constant string can't be passed as parameter to `table()` function.
+A parameter, which isn't a scalar constant string, can't be passed as a parameter to the `table()` function.
 
 Below, given an example of workaround for such case.
 

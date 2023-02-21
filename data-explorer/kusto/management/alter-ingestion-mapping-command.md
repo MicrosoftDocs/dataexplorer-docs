@@ -3,13 +3,17 @@ title: ".alter ingestion mapping - Azure Data Explorer"
 description: "This article describes .alter ingestion mapping in Azure Data Explorer."
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/29/2022
+ms.date: 02/21/2023
 ---
 # .alter ingestion mapping
 
 Alters an existing ingestion mapping that is associated with a specific table/database and a specific format (full mapping replace).
 
-**Syntax**
+## Permissions
+
+The command to alter database ingestion mapping requires at least [Database Ingestor](access-control/role-based-access-control.md) permissions, and the command to alter table ingestion mapping requires at least [Table Ingestor](access-control/role-based-access-control.md) permissions.
+
+## Syntax
 
 `.alter` `table` *TableName* `ingestion` *MappingKind* `mapping` *MappingName* *ArrayOfMappingObjects*
 
@@ -27,7 +31,7 @@ Alters an existing ingestion mapping that is associated with a specific table/da
 * *MappingName* - Specify the name of the mapping.
 * *ArrayOfMappingObjects* - An array with one or more mapping objects defined.
 
-**Example** 
+## Example
  
 ````kusto
 .alter table MyTable ingestion csv mapping "Mapping1"
@@ -41,8 +45,8 @@ Alters an existing ingestion mapping that is associated with a specific table/da
 .alter table MyTable ingestion json mapping "Mapping1"
 ```
 [
-    { "column" : "rownumber", "Properties":{"Path":"$.rownumber"}},
-    { "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}
+    { "column" : "rownumber", "DataType" : "int", "Properties":{"Path":"$.rownumber"}},
+    { "column" : "rowguid", "DataType":"string", "Properties":{"Path":"$.rowguid"}}
 ]
 ```
 
@@ -55,7 +59,7 @@ Alters an existing ingestion mapping that is associated with a specific table/da
 ```
 ````
 
-**Sample output**
+**Output**
 
 | Name     | Kind | Mapping                                                                                                                                                                          |
 |----------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
