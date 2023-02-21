@@ -3,11 +3,15 @@ title: .show cluster capacity policy command- Azure Data Explorer
 description: This article describes the .show cluster capacity policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/26/2021
+ms.date: 02/21/2023
 ---
 # .show cluster capacity policy
 
-Display a cluster's [capacity policy](capacitypolicy.md). A capacity policy is used for controlling the compute resources of data management operations on the cluster. This command requires [AllDatabasesMonitor](access-control/role-based-access-control.md) permission.
+Display a cluster's [capacity policy](capacitypolicy.md). A capacity policy is used for controlling the compute resources of data management operations on the cluster.
+
+## Permissions
+
+You must have at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

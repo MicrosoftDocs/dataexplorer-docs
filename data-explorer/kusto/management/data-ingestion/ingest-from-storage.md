@@ -3,7 +3,7 @@ title: Kusto.ingest into command (pull data from storage) - Azure Data Explorer
 description: This article describes The .ingest into command (pull data from storage) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/23/2022
+ms.date: 02/21/2023
 ---
 # Ingest from storage
 
@@ -14,6 +14,10 @@ can retrieve 1000 CSV-formatted blobs from Azure Blob Storage, parse
 them, and ingest them together into a single target table.
 Data is appended to the table
 without affecting existing records, and without modifying the table's schema. Minimal required permission levels are required so that you can ingest data into all existing tables in a database or into a specific existing table. For more information, see [Permissions on the Engine Service](../../api/netfx/kusto-ingest-client-permissions.md#permissions-on-the-engine-service).
+
+## Permissions
+
+You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

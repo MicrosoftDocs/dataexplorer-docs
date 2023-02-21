@@ -3,12 +3,16 @@ title: rename column - Azure Data Explorer
 description: This article describes rename column in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/21/2023
 ---
 # .rename column
 
 Changes the name of an existing table column.
 To change the name of multiple columns, see [below](#rename-columns).
+
+## Permissions
+
+You must have at least [Table Admin](../management/access-control/role-based-access-control.md) permissions to run this command.
 
 ### Syntax
 

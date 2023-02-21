@@ -3,7 +3,7 @@ title: .alter table row level security policy command- Azure Data Explorer
 description: This article describes the .alter table row level security policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 10/04/2021
+ms.date: 02/21/2023
 ---
 # .alter table row level security policy
 
@@ -17,6 +17,10 @@ Enable or disable a table's [row_level_security policy](rowlevelsecuritypolicy.m
 > This is useful if you want to try various queries for row_level_security, but don’t want it to actually take effect on users. Once you’re confident in the query, enable the policy.
 
 For more information about running queries on the row level security policy, see [row_level_security policy](rowlevelsecuritypolicy.md).
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
