@@ -2,7 +2,7 @@
 title: .dup-next-ingest - Azure Data Explorer
 description: Learn how to troubleshoot your data ingestion on demand using the .dup-next-ingest command.
 ms.topic: reference
-ms.date: 12/01/2022
+ms.date: 02/21/2023
 ---
 
 # .dup-next-ingest
@@ -20,7 +20,7 @@ The file uploads to the storage container and the ingestion are performed by the
 
 ## Permissions
 
-This command requires [database admin](access-control/role-based-access-control.md) permissions.
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
