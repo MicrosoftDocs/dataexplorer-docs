@@ -9,7 +9,7 @@ ms.date: 02/01/2023
 
 This article describes the partners of the Azure Data Explorer Find My Partner Program. Partners can help you with your Azure Data Explorer implementation, including consulting, training, and support.
 
-The services and expertise are chosen by the partner and should not be considered as endorsement confirmation by Microsoft. The partner is solely responsible for the services it provides.
+The services and expertise are chosen by the partner and shouldn't be considered as endorsement confirmation by Microsoft. The partner is solely responsible for the services it provides.
 
 You can also get the list of partners by running the following query on the [help](https://help.kusto.windows.net) cluster:
 
@@ -119,7 +119,7 @@ AM Squared Provides specialist consulting, project and support services with res
 
 beanTech is an IT company that has been supporting industries in the challenges of Digital Transformation for over twenty years.
 
-Competence and availability of the technical team, experience gained in hundreds of projects and technologies always at the state of the art respond perfectly to the needs of the modern manufacturing company that is not looking for a simple supplier but a business partner to grow in its market.
+Competence and availability of the technical team, experience gained in hundreds of projects and technologies always at the state of the art respond perfectly to the needs of the modern manufacturing company that isn't looking for a simple supplier but a business partner to grow in its market.
 
 beanTech is the IT partner that can help you manage the entire data chain in the factory with a complete and integrated offer of solutions ranging from telemetry data acquisition to big data architecture on cloud, from web software development to operation management consultancy, from event analytics to the implementation of sophisticated artificial intelligence algorithms applied to improve performance.
 
@@ -156,7 +156,7 @@ Perform AI, our full-service portfolio, enables you to take advantage of the tra
 
 **"Activate data. Augment intelligence. Amplify outcomes."**
 
-Besides these general descriptions of our capabilities one of our strongest sectors is Automotive, where we have the chance to work on plenty of IoT use cases and references with the Azure Data Explorer.
+Besides these general descriptions of our capabilities, one of our strongest sectors is Automotive, where we have the chance to work on plenty of IoT use cases and references with the Azure Data Explorer.
 
 **Partner type**
 
@@ -320,7 +320,7 @@ In addition to the 360-degree consulting & services, Device Insight offers the f
 
 :::image type="icon" source="media/findmypartner/elasta-cloud-logo.png":::
 
-Elastacloud are experts at building complex real-time solutions using Azure Data Explorer. With a penchant for understanding event-driven architectures for high-performant, high-fidelity platforms, Elastacloud has used Azure Data Explorer (ADX) to ingest, transform and serve data for large scale cybersecurity analytics for Security Operations Centers (SOC) and IoT monitoring solutions serving billions of events an hour through real-time queries using KQL. Elastacloud have contributed the popular tool [DexCmd](https://github.com/elastacloud/dexcmdline) back to the community. If you need high performance, high-fidelity event driven platforms built that simplify and abstract the user journey contact Elastacloud.
+Elastacloud are experts at building complex real-time solutions using Azure Data Explorer. With a penchant for understanding event-driven architectures for high-performant, high-fidelity platforms, Elastacloud has used Azure Data Explorer (ADX) to ingest, transform and serve data for large scale cybersecurity analytics for Security Operations Centers (SOC) and IoT monitoring solutions serving billions of events an hour through real-time queries using KQL. Elastacloud have contributed the popular tool [DexCmd](https://github.com/elastacloud/dexcmdline) back to the community. If you need high performance, high-fidelity event driven platforms built that simplifies and abstract the user journey contact Elastacloud.
 
 **Partner type**
 
