@@ -3,11 +3,15 @@ title: Drop continuous data export - Azure Data Explorer
 description: This article describes how to drop continuous data export in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/16/2023
+ms.date: 02/21/2023
 ---
 # Drop continuous export
 
 Drops a continuous-export job.
+
+## Permissions
+
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

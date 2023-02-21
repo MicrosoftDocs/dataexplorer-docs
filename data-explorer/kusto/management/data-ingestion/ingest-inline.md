@@ -3,7 +3,7 @@ title: The ingest inline command (push) - Azure Data Explorer
 description: This article describes the .ingest inline command (push).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/16/2023
+ms.date: 02/21/2023
 ---
 # .ingest inline command (push)
 
@@ -15,6 +15,10 @@ that is embedded inline, in the command text itself.
 > For production use, we recommended that you use other ingestion methods
 > that are better for bulk delivery of huge amounts of data,
 > such as [ingest from storage](./ingest-from-storage.md).
+
+## Permissions
+
+You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

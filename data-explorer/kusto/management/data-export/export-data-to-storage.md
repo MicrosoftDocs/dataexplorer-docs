@@ -3,12 +3,16 @@ title: Export data to storage - Azure Data Explorer
 description: This article describes Export data to storage in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/16/2023
+ms.date: 02/21/2023
 ---
 # Export data to storage
 
 Executes a query and writes the first result set to an
 external storage, specified by a [storage connection string](../../api/connection-strings/storage-connection-strings.md).
+
+## Permissions
+
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -70,7 +74,7 @@ For example, after a successful completion, you can retrieve the results using:
 .show operation f008dc1e-2710-47d8-8d34-0d562f5f8615 details
 ```
 
-**Examples** 
+## Examples
 
 In this example, Kusto runs the query and then exports the first recordset produced by the query to one or more compressed CSV blobs.
 Column name labels are added as the first row for each blob.
