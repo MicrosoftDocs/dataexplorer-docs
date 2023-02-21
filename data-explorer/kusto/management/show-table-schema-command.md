@@ -3,7 +3,7 @@ title: .show table schema - Azure Data Explorer
 description: This article describes .show table schema in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/21/2023
 ---
 # .show table schema
 

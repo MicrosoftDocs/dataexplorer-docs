@@ -3,7 +3,7 @@ title: .drop extent tags - Azure Data Explorer
 description: This article describes the drop extent tags command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/02/2020
+ms.date: 02/21/2023
 ---
 
 # .drop extent tags

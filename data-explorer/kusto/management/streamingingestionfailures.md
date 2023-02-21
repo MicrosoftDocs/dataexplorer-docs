@@ -2,7 +2,7 @@
 title: Streaming ingestion failures - Azure Data Explorer
 description: This article describes the command to show streaming ingestion failures in Azure Data Explorer.
 ms.topic: reference
-ms.date: 04/07/2022
+ms.date: 02/21/2023
 ---
 
 # Streaming ingestion failures

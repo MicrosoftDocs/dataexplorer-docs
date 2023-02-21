@@ -3,7 +3,7 @@ title: Export data to an external table - Azure Data Explorer
 description: This article describes Export data to an external table in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/25/2021
+ms.date: 02/21/2023
 ---
 # Export data to an external table
 

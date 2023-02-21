@@ -3,7 +3,7 @@ title: .clear materialized view data - Azure Data Explorer
 description: This article describes the `.clear materialized-view data` command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/02/2021
+ms.date: 02/21/2023
 ---
 # .clear materialized-view data
 

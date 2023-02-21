@@ -3,7 +3,7 @@ title: Sandbox policy - Azure Data Explorer
 description: This article describes Sandbox policy in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/25/2021
+ms.date: 02/21/2023
 ---
 # Sandbox policy
 

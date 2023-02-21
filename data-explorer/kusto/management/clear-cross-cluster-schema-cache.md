@@ -3,7 +3,7 @@ title: Clear schema cache for cross-cluster queries - Azure Data Explorer
 description: This article describes how to manually clear the cross-cluster query cache in Azure Data Explorer.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 02/28/2022
+ms.date: 02/21/2023
 ---
 
 # Clear schema cache for cross-cluster queries

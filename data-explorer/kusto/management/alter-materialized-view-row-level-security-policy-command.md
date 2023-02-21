@@ -3,7 +3,7 @@ title: .alter materialized view row level security policy command- Azure Data Ex
 description: This article describes the .alter materialized view row level security policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 10/04/2021
+ms.date: 02/21/2023
 ---
 # .alter materialized view row level security policy
 

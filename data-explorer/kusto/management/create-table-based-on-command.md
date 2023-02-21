@@ -3,7 +3,7 @@ title: .create table based-on - Azure Data Explorer
 description: This article describes the `.create table based-on` command in Azure Data Explorer
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 02/12/2023
+ms.date: 02/21/2023
 ---
 # .create table based-on
 

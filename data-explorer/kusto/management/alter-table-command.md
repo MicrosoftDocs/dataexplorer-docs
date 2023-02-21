@@ -3,7 +3,7 @@ title: .alter table - Azure Data Explorer
 description: This article describes the .alter table command.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/29/2022
+ms.date: 02/21/2023
 ---
 # .alter table
 

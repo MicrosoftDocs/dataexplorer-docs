@@ -3,7 +3,7 @@ title: .rename table and .rename tables - Azure Data Explorer
 description: This article describes .rename table and .rename tables in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/21/2023
 ---
 # .rename table and .rename tables
 

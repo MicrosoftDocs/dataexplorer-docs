@@ -3,7 +3,7 @@ title: Follower commands - Azure Data Explorer
 description: Learn how to use follower commands to manage your follower configuration.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/18/2020
+ms.date: 02/21/2023
 ---
 # Follower commands
 

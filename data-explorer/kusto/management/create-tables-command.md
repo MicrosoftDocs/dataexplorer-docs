@@ -3,7 +3,7 @@ title: .create tables - Azure Data Explorer
 description: This article describes .create tables in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/05/2020
+ms.date: 02/21/2023
 ---
 # .create tables
 

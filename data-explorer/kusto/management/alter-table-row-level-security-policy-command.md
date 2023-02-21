@@ -3,7 +3,7 @@ title: .alter table row level security policy command- Azure Data Explorer
 description: This article describes the .alter table row level security policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 10/04/2021
+ms.date: 02/21/2023
 ---
 # .alter table row level security policy
 

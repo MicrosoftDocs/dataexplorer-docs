@@ -3,7 +3,7 @@ title: ".alter callout policy command - Azure Data Explorer"
 description: "This article describes the .alter callout policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/29/2022
+ms.date: 02/21/2023
 ---
 # .alter callout policy
 

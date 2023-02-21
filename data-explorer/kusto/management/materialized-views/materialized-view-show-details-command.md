@@ -3,7 +3,7 @@ title: .show materialized view details - Azure Data Explorer
 description: This article describes .show materialized view command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 02/21/2023
 ---
 # .show materialized view details
 

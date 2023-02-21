@@ -3,7 +3,7 @@ title: drop column - Azure Data Explorer
 description: This article describes drop column in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/21/2023
 ---
 # .drop column
 

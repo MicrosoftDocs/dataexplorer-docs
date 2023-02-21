@@ -3,7 +3,7 @@ title: .alter restricted view access policy command - Azure Data Explorer
 description: This article describes the .alter restricted view access policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 02/21/2023
 ---
 # .alter restricted view access policy
 

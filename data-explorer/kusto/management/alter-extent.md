@@ -3,7 +3,7 @@ title: .alter extent tags - Azure Data Explorer
 description: This article describes the alter extent command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/02/2020
+ms.date: 02/21/2023
 ---
 
 # .alter extent tags

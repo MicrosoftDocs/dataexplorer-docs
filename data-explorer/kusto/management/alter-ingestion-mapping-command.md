@@ -3,7 +3,7 @@ title: ".alter ingestion mapping - Azure Data Explorer"
 description: "This article describes .alter ingestion mapping in Azure Data Explorer."
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/29/2022
+ms.date: 02/21/2023
 ---
 # .alter ingestion mapping
 

@@ -3,7 +3,7 @@ title: ".alter cluster policy query_weak_consistency management - Azure Data Exp
 description: "This article describes the `.alter cluster policy query_weak_consistency` command in Azure Data Explorer."
 ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 01/13/2022
+ms.date: 02/21/2023
 ---
 # .alter cluster policy query_weak_consistency
 

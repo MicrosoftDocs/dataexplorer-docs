@@ -3,7 +3,7 @@ title: ".alter managed_identity policy command - Azure Data Explorer"
 description: "This article describes the .alter managed_identity policy command in Azure Data Explorer."
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 02/21/2023
 ---
 # .alter managed_identity policy
 

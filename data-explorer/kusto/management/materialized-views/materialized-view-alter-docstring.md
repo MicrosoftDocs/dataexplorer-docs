@@ -3,7 +3,7 @@ title: .alter materialized view docstring - Azure Data Explorer
 description: This article describes the `.alter materialized-view docstring` command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/08/2021
+ms.date: 02/21/2023
 ---
 # .alter materialized-view docstring
 

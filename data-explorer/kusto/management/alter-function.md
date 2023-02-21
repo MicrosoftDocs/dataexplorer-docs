@@ -3,7 +3,7 @@ title: .alter function - Azure Data Explorer
 description: This article describes .alter function in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/21/2023
 ---
 # .alter function
 

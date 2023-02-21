@@ -3,7 +3,7 @@ title: .show extents - Azure Data Explorer
 description: This article describes the show extents command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/02/2020
+ms.date: 02/21/2023
 ---
 
 # .show extents

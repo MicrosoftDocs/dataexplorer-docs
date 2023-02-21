@@ -3,7 +3,7 @@ title: .alter table docstring - Azure Data Explorer
 description: This article describes the `.alter table docstring` command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/05/2021
+ms.date: 02/21/2023
 ---
 # .alter table docstring
 

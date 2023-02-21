@@ -3,7 +3,7 @@ title: Delete extent tags retention policy management - Azure Data Explorer
 description: This article describes the delete extent tags retention policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 07/08/2021
+ms.date: 02/21/2023
 ---
 # .delete extent tags retention policy
 

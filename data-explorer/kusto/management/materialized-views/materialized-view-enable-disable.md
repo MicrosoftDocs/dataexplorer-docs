@@ -3,7 +3,7 @@ title: Enable and disable materialized view commands - Azure Data Explorer
 description: This article describes how to enable or disable materialized view commands in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/30/2020
+ms.date: 02/21/2023
 ---
 
 # .disable | .enable materialized-view

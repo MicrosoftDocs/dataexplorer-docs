@@ -3,7 +3,7 @@ title: .drop function - Azure Data Explorer
 description: This article describes .drop function in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/21/2023
 ---
 # .drop function
 

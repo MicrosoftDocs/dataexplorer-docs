@@ -3,7 +3,7 @@ title: Alter column encoding policy - Azure Data Explorer
 description: This article describes the `.alter column encoding policy` command in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/28/2022
+ms.date: 02/21/2023
 ---
 # .alter encoding policy
 

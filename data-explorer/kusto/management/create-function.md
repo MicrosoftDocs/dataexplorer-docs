@@ -3,7 +3,7 @@ title: .create function - Azure Data Explorer
 description: This article describes the .create function in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/15/2022
+ms.date: 02/21/2023
 ---
 # .create function
 

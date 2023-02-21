@@ -3,7 +3,7 @@ title: .undo drop table - Azure Data Explorer
 description: This article describes .undo drop table in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/21/2023
 ---
 # .undo drop table
 

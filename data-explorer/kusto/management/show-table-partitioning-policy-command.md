@@ -3,7 +3,7 @@ title: .show table partitioning policy command- Azure Data Explorer
 description: This article describes the .show table partitioning policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 02/21/2023
 ---
 # .show table partitioning policy
 

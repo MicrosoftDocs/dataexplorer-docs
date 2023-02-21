@@ -3,7 +3,7 @@ title: ".show table ingestion batching policy command- Azure Data Explorer"
 description: "This article describes the .show table ingestion batching policy command in Azure Data Explorer."
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 02/21/2023
 ---
 # .show table ingestion batching policy
 

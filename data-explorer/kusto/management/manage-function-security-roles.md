@@ -2,7 +2,7 @@
 title: Manage function roles - Azure Data Explorer
 description: This article describes how to use management commands to view, add, and remove function admins on the function level in Azure Data Explorer.
 ms.topic: reference
-ms.date: 01/25/2023
+ms.date: 02/21/2023
 ---
 
 # Manage function roles

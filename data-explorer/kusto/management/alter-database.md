@@ -3,7 +3,7 @@ title: .alter database prettyname - Azure Data Explorer
 description: This article describes the `.alter` database pretty name command.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/21/2023
 ---
 # .alter database prettyname
 

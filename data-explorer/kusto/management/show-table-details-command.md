@@ -3,7 +3,7 @@ title: .show table details - Azure Data Explorer
 description: This article describes .show table details in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/21/2023
 ---
 # .show table details
 Returns a set that contains the specified table or all tables in the database with a detailed summary of each table's properties.

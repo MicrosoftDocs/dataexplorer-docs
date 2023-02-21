@@ -3,7 +3,7 @@ title: ".alter column-docstrings - Azure Data Explorer"
 description: "This article describes .alter column-docstrings in Azure Data Explorer."
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/10/2022
+ms.date: 02/21/2023
 ---
 # .alter column-docstrings
 
