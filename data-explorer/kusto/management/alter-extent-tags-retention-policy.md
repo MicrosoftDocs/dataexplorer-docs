@@ -24,7 +24,7 @@ Alters a database-level extent tags retention policy. For more information, see 
 
 For database D1, set an extent tags retention policy so that any `drop-by` tags that are older than three days, and any `ingest-by` tags that are older than two hours will be automatically dropped.
 
-~~~kusto
+```kusto
 .alter database D1 policy extent_tags_retention ```[
 	{
 		"TagPrefix": "drop-by:",
@@ -35,3 +35,4 @@ For database D1, set an extent tags retention policy so that any `drop-by` tags 
 		"RetentionPeriod": "02:00:00"
 	}
 ]```
+```
