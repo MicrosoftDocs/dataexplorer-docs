@@ -10,8 +10,6 @@ ms.date: 09/14/2022
 During the ingestion process, throughput is optimized by batching small ingress data chunks together before ingestion. The  [ingestion batching policy](./kusto/management/batchingpolicy.md#sealing-a-batch) defines data aggregation for batching.
 In this article, you can define and assign an ingestion batching policy for a table using the table batching policy wizard.
 
-[!INCLUDE [batching-policy-permissions](includes/batching-policy-permissions.md)]
-
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
