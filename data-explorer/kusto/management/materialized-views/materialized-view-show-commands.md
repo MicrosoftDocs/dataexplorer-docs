@@ -3,12 +3,16 @@ title: show materialized view commands - Azure Data Explorer
 description: This article describes show materialized views commands in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/16/2023
+ms.date: 02/21/2023
 ---
 
 # .show materialized-views commands
 
 The following show commands display information about [materialized views](materialized-view-overview.md).
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## .show materialized-view
 

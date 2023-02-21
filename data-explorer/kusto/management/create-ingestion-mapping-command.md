@@ -3,13 +3,17 @@ title: .create ingestion mapping - Azure Data Explorer
 description: This article describes .create ingestion mapping in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/21/2023
 ---
 # .create ingestion mapping
 
 Creates an ingestion mapping that can be associated with a specific format and a specific table or database.
 
-**Syntax**
+## Permissions
+
+The command to create a database ingestion mapping requires at least [Database Ingestor](access-control/role-based-access-control.md) permissions, and the command to create a table ingestion mapping requires at least [Table Ingestor](access-control/role-based-access-control.md) permissions.
+
+## Syntax
 
 `.create` `table` *TableName* `ingestion` *MappingKind* `mapping` *MappingName* *MappingFormattedAsJson*
 
@@ -24,7 +28,7 @@ Creates an ingestion mapping that can be associated with a specific format and a
 > * If a mapping with the same name is created in both the table scope and the database scope, the mapping in the table scope will have a higher priority.
 > * When ingesting into a table and referencing a mapping whose schema does not match the ingested table schema, the ingest operation will fail.
  
-**Example** 
+## Examples
  
 ```kusto
 .create table MyTable ingestion csv mapping "Mapping1"
@@ -53,7 +57,7 @@ Creates an ingestion mapping that can be associated with a specific format and a
 | mapping1 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` |
 | mapping2 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` |
 
-**Example: .create ingestion mapping with escape characters** 
+### Example: .create ingestion mapping with escape characters** 
  
 ```kusto
 .create table test_table ingestion json mapping "test_mapping_name"

@@ -9,7 +9,8 @@ ms.date: 11/12/2022
 In this article, we'll cover the limitations of sandboxes in VM sizes that don't support nested virtualization.
 
 ## Prerequisites and limitations
-* Sandboxes that run on [non-modern VM sizes](#virtual-machine-sizes) are subject to the following limitations:
+Sandboxes that run on [non-modern VM sizes](#virtual-machine-sizes) are subject to the following limitations:
+* The sandbox image is fixed - either Python 3.6.5 or R 3.4.4.
 * Data engines that enable both [disk encryption](../../security.md#data-protection) and sandboxes features must run on a VM size that supports [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data). For more information on supported VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
     * If encryption is enabled on the data engine before encryption at host is adopted as the default for supported VM sizes, the data engine may not support both features side by side. In this case, stop and start the cluster.
 * The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run.

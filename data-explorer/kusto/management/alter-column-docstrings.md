@@ -3,11 +3,15 @@ title: ".alter column-docstrings - Azure Data Explorer"
 description: "This article describes .alter column-docstrings in Azure Data Explorer."
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/16/2023
+ms.date: 02/21/2023
 ---
 # .alter column-docstrings
 
 Sets the `DocString` property of one or more columns of the specified table.  Columns not explicitly set will have this property removed.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

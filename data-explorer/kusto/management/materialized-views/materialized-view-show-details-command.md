@@ -3,13 +3,17 @@ title: .show materialized view details - Azure Data Explorer
 description: This article describes .show materialized view command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/16/2023
+ms.date: 02/21/2023
 ---
 # .show materialized view details
 
 Returns a set that contains the specified materialized view or all materialized views in the database with a detailed summary of each materialized view's properties.
 
-Requires [Database viewer permission](../access-control/role-based-access-control.md).
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
+
+## Syntax
 
 ```kusto
 .show materialized-view MV1 details
