@@ -3,11 +3,15 @@ title: ".alter-merge column-docstrings - Azure Data Explorer"
 description: "This article describes .alter-merge column-docstrings in Azure Data Explorer."
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/10/2022
+ms.date: 02/21/2023
 ---
 # .alter-merge column-docstrings
 
 Sets the `DocString` property for one or more columns of a specified table. Columns not explicitly defined will keep any previous definition for this property, if it exists.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
