@@ -3,16 +3,18 @@ title: Enable plugin command - Azure Data Explorer
 description: This article describes plugins management command .enable plugin in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/02/2020
+ms.date: 02/21/2023
 ---
 # .enable plugin
 
 Enables a plugin.
 
-This command requires `All Databases admin` permission.
-
 > [!NOTE]
 > To enable language extensions (`R`, `python`) follow [these instructions](../../language-extensions.md#enable-language-extensions-on-your-cluster).
+
+## Permissions
+
+You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

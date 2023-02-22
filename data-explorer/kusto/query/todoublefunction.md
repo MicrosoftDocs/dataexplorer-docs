@@ -15,9 +15,11 @@ Converts the input expression to a value of type `real`.
 
 `todouble(`*Expr*`)`
 
-## Arguments
+## Parameters
 
-* *Expr*: An expression whose value will be converted to a value of type `real`.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | scalar | &check; | The value to convert to [real](scalar-data-types/real.md).|
 
 ## Returns
 

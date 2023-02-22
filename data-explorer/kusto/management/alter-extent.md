@@ -3,7 +3,7 @@ title: .alter extent tags - Azure Data Explorer
 description: This article describes the alter extent command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/02/2020
+ms.date: 02/21/2023
 ---
 
 # .alter extent tags
@@ -12,11 +12,13 @@ The command runs in the context of a specific database. It alters the specified 
 
 The extents whose tags should be altered are specified using a Kusto query that returns a recordset with a column called "ExtentId".
 
-Requires [Table admin permission](./access-control/role-based-access-control.md) for all involved tables.
-
 > [!NOTE]
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
