@@ -17,7 +17,7 @@ Language specific prerequisites:
 
 ### [C\#](#tab/csharp)
 
-One of the following .NET frameworks:
+One of the following .NET SDKs:
 
 - .NET SDK 5.0 or later
 - .NET Core 2.1 or later
