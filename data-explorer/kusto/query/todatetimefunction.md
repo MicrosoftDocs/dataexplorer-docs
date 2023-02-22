@@ -1,13 +1,13 @@
 ---
 title: todatetime() - Azure Data Explorer
-description: This article describes todatetime() in Azure Data Explorer.
+description: Learn how to use the todatetime() function to convert the input expression to a datetime value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/20/2023
 ---
 # todatetime()
 
-Converts input to [datetime](./scalar-data-types/datetime.md) scalar.
+Converts the input to a [datetime](./scalar-data-types/datetime.md) scalar value.
 
 ```kusto
 todatetime("2015-12-24") == datetime(2015-12-24)
@@ -19,12 +19,11 @@ todatetime("2015-12-24") == datetime(2015-12-24)
 
 ## Arguments
 
-* *Expr*: Expression that will be converted to [datetime](./scalar-data-types/datetime.md).
+* *Expr*: An expression that will be converted to a [datetime](./scalar-data-types/datetime.md) value.
 
 ## Returns
 
-If the conversion is successful, the result will be a [datetime](./scalar-data-types/datetime.md) value.
-Else, the result will be null.
- 
+If the conversion is successful, the result will be a [datetime](./scalar-data-types/datetime.md) value. Otherwise, the result will be `null`.
+
 > [!NOTE]
-> Prefer using [datetime()](./scalar-data-types/datetime.md) when possible.
+> Use [datetime()](scalar-data-types/datetime.md#datetime-literals) when possible.

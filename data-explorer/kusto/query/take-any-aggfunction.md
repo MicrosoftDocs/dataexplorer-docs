@@ -1,9 +1,9 @@
 ---
 title: take_any() (aggregation function) - Azure Data Explorer
-description: This article describes take_any() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the take_any() (aggregation function) to return the value of an arbitrarily selected record.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/09/2022
+ms.date: 02/20/2023
 ---
 # take_any() (aggregation function)
 

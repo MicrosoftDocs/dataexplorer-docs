@@ -1,9 +1,9 @@
 ---
 title: tohex() - Azure Data Explorer
-description: This article describes tohex() in Azure Data Explorer.
+description: Learn how to use the tohex() function to convert the input expression to a hexadecimal string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/22/2023
 ---
 # tohex()
 
@@ -19,14 +19,13 @@ tohex(256, 2) == '100' // Exceeds min length of 2, so min length is ignored.
 
 ## Syntax
 
-`tohex(`*Expr*`, [`,` *MinLength*]`)`
+`tohex(`*Expr*`, [`,`*MinLength*]`)`
 
 ## Arguments
 
-* *Expr*: int or long value that will be converted to a hex string.  Other types are not supported.
+* *Expr*: int or long value that will be converted to a hex string. Other types aren't supported.
 * *MinLength*: numeric value representing the number of leading characters to include in the output.  Values between 1 and 16 are supported, values greater than 16 will be truncated to 16.  If the string is longer than minLength without leading characters, then minLength is effectively ignored.  Negative numbers may only be represented at minimum by their underlying data size, so for an int (32-bit) the minLength will be at minimum 8, for a long (64-bit) it will be at minimum 16.
 
 ## Returns
 
-If conversion is successful, result will be a string value.
-If conversion is not successful, result will be null.
+If conversion is successful, result will be a string value. Otherwise, the result will be null.
