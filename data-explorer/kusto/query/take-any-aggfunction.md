@@ -25,7 +25,7 @@ and returns the value of one or more expressions over each such record.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr_N* | string | &check; | The expression used for selecting a record. If the wildcard value (`*`) is given in place of an expression, all records will be selected.|
+| *expr_N* | string | &check; | The expression(s) projected as columns for each record chosen. If the wildcard value (`*`) is given in place of an expression, all columns which have not been projected already through another previous expression, will be projected. In the absence of a wildcard, having multiple expressions refer to the same column has the effect of projecting that same column as many times as the number of expressions referring to it. When multiple expressions are projected with identical names, the first one retains the original name, all subsequent are automatically suffixed with an incremental integer so that each column name becomes unique. In the presence of a wildcard, having multiple expressions refer to the same column has the effect of ignoring all but the first reference to it, regardless of whether it was explicit or implicit (by means of the `*`).|
 
 ## Returns
 
