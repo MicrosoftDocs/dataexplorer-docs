@@ -14,6 +14,9 @@ items:
 - name: factorial_fl()
   displayName: functions library, statistics
   href: factorial-fl.md
+- name: geoip_fl()
+  displayName: functions library, geographic, ip, country, state, city, longitude, latitude
+  href: geoip-fl.md
 - name: get_packages_version_fl()
   displayName: functions library, python, version, package
   href: get-packages-version-fl.md
