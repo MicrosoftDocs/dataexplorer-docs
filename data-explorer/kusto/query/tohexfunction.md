@@ -1,6 +1,6 @@
 ---
 title: tohex() - Azure Data Explorer
-description: Learn how to use the tohex() function to convert the input expression to a hexadecimal string.
+description: Learn how to use the tohex() function to convert the input value to a hexadecimal string.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/22/2023
