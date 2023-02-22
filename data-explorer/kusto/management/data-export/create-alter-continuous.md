@@ -3,11 +3,15 @@ title: Create or alter continuous data export - Azure Data Explorer
 description: This article describes how to create or alter continuous data export in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/16/2023
+ms.date: 02/21/2023
 ---
 # Create or alter continuous export
 
 Creates or alters a continuous export job.
+
+## Permissions
+
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -59,7 +63,7 @@ with
 
 ## Continuous Export with Managed Identity
 
-In order to use Continuous Export with Managed Identity, please add the `AutomatedFlow` usage to the [Managed Identity policy](../managed-identity-policy.md).
+In order to use Continuous Export with Managed Identity, please add the `AutomatedFlows` usage to the [Managed Identity policy](../managed-identity-policy.md).
  
 For more information on how to set up and use a managed identity with continuous exports, see [managed identity overview](../../../managed-identities-overview.md). 
 
