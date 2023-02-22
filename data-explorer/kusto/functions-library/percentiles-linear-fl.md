@@ -47,8 +47,8 @@ let percentiles_linear_fl=(tbl:(*), val_col:string, pct_arr:dynamic, aggr_col:st
     | mv-apply pct to typeof(real) on (
           extend index=pct/100.0*(n-1)
         | extend low_index=tolong(floor(index, 1)), high_index=tolong(ceiling(index))
-        | extend interval=toreal(_vals[high_index])-toreal(_vals[low_index])
-        | extend pct_val=toreal(_vals[low_index])+(index-low_index)*interval
+        | extend interval=todouble(_vals[high_index])-todouble(_vals[low_index])
+        | extend pct_val=todouble(_vals[low_index])+(index-low_index)*interval
         | summarize pct_arr=make_list(pct), pct_val=make_list(pct_val))
     | project-away n
 }
@@ -86,8 +86,8 @@ percentiles_linear_fl(tbl:(*), val_col:string, pct_arr:dynamic, aggr_col:string=
     | mv-apply pct to typeof(real) on (
           extend index=pct/100.0*(n-1)
         | extend low_index=tolong(floor(index, 1)), high_index=tolong(ceiling(index))
-        | extend interval=toreal(_vals[high_index])-toreal(_vals[low_index])
-        | extend pct_val=toreal(_vals[low_index])+(index-low_index)*interval
+        | extend interval=todouble(_vals[high_index])-todouble(_vals[low_index])
+        | extend pct_val=todouble(_vals[low_index])+(index-low_index)*interval
         | summarize pct_arr=make_list(pct), pct_val=make_list(pct_val))
     | project-away n
 }
