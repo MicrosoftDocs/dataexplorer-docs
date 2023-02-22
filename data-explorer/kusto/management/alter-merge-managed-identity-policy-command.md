@@ -3,7 +3,7 @@ title: ".alter-merge managed_identity policy command - Azure Data Explorer"
 description: This article describes the .alter-merge managed_identity policy command in Azure Data Explorer.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 02/21/2023
 ---
 # .alter-merge managed_identity policy
 
@@ -11,6 +11,10 @@ The command updates the ManagedIdentity policy of the cluster or the specified d
 
 > [!NOTE]
 > Managed identities should be assigned to the cluster (see [instructions](../../configure-managed-identities-cluster.md)) before you can assign them to the ManagedIdentity policy.
+
+## Permissions
+
+You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run these commands.
 
 ## Syntax
 
