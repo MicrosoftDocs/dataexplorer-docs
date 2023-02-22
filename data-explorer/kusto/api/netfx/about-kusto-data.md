@@ -22,13 +22,13 @@ string, and get back one or more data tables via the returned
 More concretely, to create an ADO.NET-like client allowing queries against
 Kusto, use static methods on the `Kusto.Data.Net.Client.KustoClientFactory`
 class. These take the connection string and create a thread-safe, disposable,
-client object. (It's strongly recommended that client code does not
+client object. (It's strongly recommended that client code doesn't
 create "too many" instances of this object. Instead, client code should create an
 object per connection string and hold on to it for as long as necessary.)
 This allows the client object to efficiently cache resources.
 
 In general, all methods on the clients are thread-safe with two exceptions: `Dispose`, 
-and setter properties. For consistent results, do not invoke either methods
+and setter properties. For consistent results, don't invoke either methods
 concurrently.
 
 Following are a few examples. Additional samples can be found [here](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client).
@@ -45,6 +45,9 @@ var reader = client.ExecuteQuery("StormEvents | count");
 ```
 
 **Example: Enumerating the accessible databases**
+
+> [!NOTE]
+> We recommend that data readers and clients are disposed of after use to release network resources. Accumulation of these resources can result in unexpected network errors and timeouts.
 
 ```csharp
 var kcsb = new KustoConnectionStringBuilder(cluster URI here). WithAadUserPromptAuthentication();

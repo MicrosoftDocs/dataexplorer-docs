@@ -13,10 +13,12 @@ Returns the tangent value of the specified number.
 
 `tan(`*x*`)`
 
-## Arguments
+## Parameters
 
-* *x*: A real number.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *x* | real | &check; | The number for which to calculate the tangent. |
 
 ## Returns
 
-* The result of `tan(x)`
+The result of `tan(`*x*`)`

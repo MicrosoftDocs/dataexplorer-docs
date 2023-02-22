@@ -17,17 +17,17 @@ For more information about the underlying algorithm (T-Digest) and the estimated
 
 ## Syntax
 
-`tdigest_merge` `(`*Expr*`)`
+`tdigest_merge(`*expr*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*Expr* | string | &check; | Expression that will be used for aggregation calculation.
+|*expr* | string | &check; | The expression used for the aggregation calculation.|
 
 ## Returns
 
-Returns the merged tdigest values of *Expr* across the group.
+Returns the merged tdigest values of *expr* across the group.
 
 > [!NOTE]
 >

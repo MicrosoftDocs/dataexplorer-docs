@@ -9,21 +9,35 @@ ms.date: 02/20/2023
 
 Converts the input to a [datetime](./scalar-data-types/datetime.md) scalar value.
 
-```kusto
-todatetime("2015-12-24") == datetime(2015-12-24)
-```
+> [!NOTE]
+> Prefer using [datetime()](./scalar-data-types/datetime.md) when possible.
 
 ## Syntax
 
-`todatetime(`*Expr*`)`
+`todatetime(`*value*`)`
 
-## Arguments
+## Parameters
 
-* *Expr*: An expression that will be converted to a [datetime](./scalar-data-types/datetime.md) value.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | scalar | &check; | The value to convert to [datetime](./scalar-data-types/datetime.md).|
 
 ## Returns
 
-If the conversion is successful, the result will be a [datetime](./scalar-data-types/datetime.md) value. Otherwise, the result will be `null`.
+If the conversion is successful, the result will be a [datetime](./scalar-data-types/datetime.md) value.
+Else, the result will be `null`.
 
-> [!NOTE]
-> Use [datetime()](scalar-data-types/datetime.md#datetime-literals) when possible.
+## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJT0ksSS3JzE3VUDc00jUw0jUyMDJS11SwtVXALgMAakZnYjgAAAA=" target="_blank">Run the query</a>
+
+```kusto
+print todatetime('12-02-2022') == datetime('12-02-2022')
+```
+
+**Output**
+
+|print_0|
+|--|
+|true|

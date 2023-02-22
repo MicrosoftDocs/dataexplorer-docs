@@ -15,18 +15,18 @@ For more information, see the [underlying algorithm (T-Digest) and the estimated
 
 ## Syntax
 
- `tdigest` `(`*Expr* [`,` *WeightExpr*]`)`
+`tdigest(`*expr* [`,` *weight*]`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr* | string | &check; | Expression used for the aggregation calculation. |
-| *WeightExpr* | string | &check; | Expression used as the weight of the values for the aggregation calculation. |
+| *expr* | string | &check; | The expression used for the aggregation calculation. |
+| *weight* | string | | The weights of the values for the aggregation calculation. |
 
 ## Returns
 
-The intermediate results of the weighted percentiles of `*Expr*` across the group.
+The Intermediate results of weighted percentiles of `*expr*` across the group.
 
 > [!TIP]
 >
