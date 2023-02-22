@@ -73,7 +73,7 @@ Here's how to wrap it in a function:
 ```kusto
 let vector_sum=(x: dynamic) {
     let y=array_length(x) - 1;
-    toreal(series_iir(x, dynamic([1]), dynamic([1, -1]))[y])
+    todouble(series_iir(x, dynamic([1]), dynamic([1, -1]))[y])
 };
 print d=dynamic([0, 1, 2, 3, 4])
 | extend dd=vector_sum(d)

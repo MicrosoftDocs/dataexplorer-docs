@@ -27,7 +27,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[tobool()](toboolfunction.md)|Convert inputs to boolean (signed 8-bit) representation.|
 |[todatetime()](todatetimefunction.md)|Converts input to datetime scalar.|
-|[todouble()/toreal()](todoublefunction.md)|Converts the input to a value of type real. (todouble() and toreal() are synonyms.)|
+|[todouble()](todoublefunction.md)|Converts the input to a value of type real.|
 |[tostring()](tostringfunction.md)|Converts input to a string representation.|
 |[totimespan()](totimespanfunction.md)|Converts input to timespan scalar.|
 
