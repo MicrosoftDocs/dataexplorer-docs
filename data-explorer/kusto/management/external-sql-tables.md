@@ -35,11 +35,11 @@ Creates or alters an external SQL table in the database in which the command is 
 
 | Property            | Type            | Description                          |
 |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
-| `folder`            | `string`        | The table's folder.                  |
-| `docString`         | `string`        | A string documenting the table.      |
-| `firetriggers`      | `true`/`false`  | If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. (For more information, see [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) and [System.Data.SqlClient.SqlBulkCopy](/dotnet/api/system.data.sqlclient.sqlbulkcopy)) |
-| `createifnotexists` | `true`/ `false` | If `true`, the target SQL table will be created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column that is the primary key. The default is `false`.  |
-| `primarykey`        | `string`        | If `createifnotexists` is `true`, the resulting column name will be used as the SQL table's primary key if it is created by this command.                  |
+| `folder`            | `string`        | Table's folder.                      |
+| `docString`         | `string`        | String documenting the table.        |
+| `firetriggers`      | `bool`          | If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. (For more information, see [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) and [System.Data.SqlClient.SqlBulkCopy](/dotnet/api/system.data.sqlclient.sqlbulkcopy)) |
+| `createifnotexists` | `bool`          | If `true`, the target SQL table will be created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column that is the primary key. The default is `false`.  |
+| `primarykey`        | `string`        | If `createifnotexists` is `true`, the column whose name matches the value provided in this property will be used as the SQL table's primary key if the table is created by this command.                  |
 
 > [!NOTE]
 > * If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables. 
