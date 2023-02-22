@@ -47,8 +47,7 @@ There are many different methods to get an Azure AD access token. To learn more,
       ```dotnetcli
       az account get-access-token \
         --resource "https://api.kusto.windows.net" \
-        --query "accessToken" \
-        --output tsv
+        --query "accessToken"
       ```
 
 ### Get an access token for a service principal using the Azure CLI
