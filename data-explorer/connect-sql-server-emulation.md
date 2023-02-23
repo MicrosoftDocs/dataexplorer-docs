@@ -8,7 +8,7 @@ ms.date: 02/23/2023
 
 Any library and application that can connect to a Microsoft Azure SQL Database with Azure Active Directory (Azure AD) authentication can also connect to Azure Data Explorer. This functionality is made possible by Azure Data Explorer's TDS-compliant endpoint, which emulates Microsoft SQL Server.
 
-For example, you can connect to Azure Data Explorer using [ODBC](connect-odbc.md), [JDBC](connect-jdbc.md), or from [common clients](connect-sql-clients.md) such as LINQPad, Azure Data Studio, and more.
+SQL Server emulation allows you to connect to Azure Data Explorer using [ODBC](connect-odbc.md), [JDBC](connect-jdbc.md), or from [common clients](connect-sql-clients.md) such as LINQPad, Azure Data Studio, and more.
 
 ## Tuning options
 
