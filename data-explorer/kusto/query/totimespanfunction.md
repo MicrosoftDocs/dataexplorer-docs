@@ -1,13 +1,13 @@
 ---
 title: totimespan() - Azure Data Explorer
-description: This article describes totimespan() in Azure Data Explorer.
+description: Learn how to use the totimespan() function to convert the input to a `timespan` scalar value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 02/23/2023
 ---
 # totimespan()
 
-Converts input to [timespan](./scalar-data-types/timespan.md) scalar.
+Converts the input to a [timespan](./scalar-data-types/timespan.md) scalar value.
 
 ```kusto
 totimespan("0.00:01:00") == time(1min)
@@ -25,5 +25,4 @@ totimespan("0.00:01:00") == time(1min)
 
 ## Returns
 
-If conversion is successful, result will be a [timespan](./scalar-data-types/timespan.md) value.
-Else, result will be null.
+If the conversion is successful, the result will be a [timespan](./scalar-data-types/timespan.md) value. Otherwise, the result will be null.

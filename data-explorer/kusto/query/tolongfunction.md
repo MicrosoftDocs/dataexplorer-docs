@@ -1,17 +1,13 @@
 ---
 title: tolong() - Azure Data Explorer
-description: This article describes tolong() in Azure Data Explorer.
+description: Learn how to use the tolong() function to convert the input value to a long number representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/22/2023
 ---
 # tolong()
 
-Converts input to long (signed 64-bit) number representation.
-
-```kusto
-tolong("123") == 123
-```
+Converts the input value to a long (signed 64-bit) number representation.
 
 > [!NOTE]
 > Prefer using [long()](./scalar-data-types/long.md) when possible.
@@ -22,10 +18,14 @@ tolong("123") == 123
 
 ## Arguments
 
-* *Expr*: Expression that will be converted to long. 
+* *Expr*: Expression that will be converted to long.
 
 ## Returns
 
-If conversion is successful, result will be a long number.
-If conversion is not successful, result will be `null`.
- 
+If the conversion is successful, the result will be a long number. Otherwise, the result will be `null`.
+
+## Example
+
+```kusto
+tolong("123") == 123
+```
