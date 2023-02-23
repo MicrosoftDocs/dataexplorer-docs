@@ -16,7 +16,7 @@ For customizing Azure Data Explorer according to your specific requirements, you
 
 ### Supported tuning options
 
-The following table describes the supported tuning options. To learn how to use these options, see the [syntax](#syntax) explanation and the [example](#example).
+The following table describes the supported tuning options. To learn how to use these options, see the [syntax](#syntax) explanation.
 
 |Tuning option|Description|
 |--|--|
@@ -25,7 +25,7 @@ The following table describes the supported tuning options. To learn how to use 
 
 ### Syntax
 
-[ `Language` | `Application` ] `=` *ExpectedArguments* `@` *TuningOptionName*`:`*TuningOptionValue*
+[ `Language` | `Application` ] `=` *ExpectedArguments*`@`*TuningOptionName*`:`*TuningOptionValue*
 
 ### Parameters
 
