@@ -1,6 +1,6 @@
 ---
 title: tan() - Azure Data Explorer
-description: Learn how to use the tan() function to return the tangent value of a the specified number.
+description: Learn how to use the tan() function to return the tangent value of the specified number.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/20/2023
