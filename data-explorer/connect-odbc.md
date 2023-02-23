@@ -68,20 +68,16 @@ You can use the ODBC data source from other applications to connect to Azure Dat
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
 ```
 
-> [!NOTE]
-> ODBC applications may not work well with `NVARCHAR(MAX)` type. You can cast the data to `NVARCHAR(`*n*`)` using the `Language` parameter in the connection string. For example, `Language=any@MaxStringSize:5000` will encode strings as `NVARCHAR(5000)`.
+> [NOTE!]
+> Azure Data Explorer considers string values as `NVARCHAR(MAX)`, which may not work well with some ODBC applications. Cast the data to `NVARCHAR(`*n*`)` using the `Language` parameter in the connection string. For example, `Language=any@MaxStringSize:5000` will encode strings as `NVARCHAR(5000)`. For more information, see [tuning options](connect-sql-server-emulation.md#tuning-options).
 
 ## Application authentication
 
-To use service principal authentication with ODBC, you must provide the Azure AD tenant ID in the `Language` field.
-
-You can set this configuration in the connection string, the Windows registry, or the odbc.ini file.
-
-The Azure AD tenant ID can also be configured at the cluster level, so you don't have to specify it on the client. If you need to change the tenant ID at the cluster level, open a support request in the  [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
+To use application principal authentication with ODBC, you must provide the Azure AD tenant ID. You can set this configuration in the connection string, the Windows registry, or the odbc.ini file. See examples in the following tabs.
 
 # [Connection string](#tab/connection-string)
 
-Set the application principal with `Language=any@AadAuthority:<aad_tenant_id>` in the connection string.
+Set the application principal with `Language=any@AadAuthority:<aad_tenant_id>` in the connection string. Replace `<aad_tenant_id>`, `<aad_application_id>`, and `<aad_application_secret>` with the Azure AD tenant ID, Azure AD application ID, and the Azure AD application secret respectively.
 
 ```odbc
 "Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@AadAuthority:<aad_tenant_id>;UID=<aad_application_id>;PWD=<aad_application_secret>"

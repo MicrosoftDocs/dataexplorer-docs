@@ -224,8 +224,10 @@ items:
           href: connect-sql-server-emulation.md
         - name: Connect with ODBC
           href: connect-odbc.md
+          displayName: SQL emulation
         - name: Connect with JDBC
           href: connect-jdbc.md
+          displayName: SQL emulation
         - name: Connect from common clients
           href: connect-sql-clients.md
           displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio
