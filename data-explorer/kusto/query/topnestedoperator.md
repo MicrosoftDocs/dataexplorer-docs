@@ -1,9 +1,9 @@
 ---
 title: top-nested operator - Azure Data Explorer
-description: This article describes top-nested operator in Azure Data Explorer.
+description: Learn how to use the top-nested operator to produce a hierarchical aggregation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/22/2023
 ---
 # top-nested operator
 
@@ -59,14 +59,14 @@ For each *TopNestedClause*:
   determines which of the resulting records are "top".
   
   The following aggregation functions are supported:
-   * [sum()](sum-aggfunction.md),
-   * [count()](count-aggfunction.md),
-   * [max()](max-aggfunction.md),
-   * [min()](min-aggfunction.md),
-   * [dcount()](dcountif-aggfunction.md),
-   * [avg()](avg-aggfunction.md),
-   * [percentile()](percentiles-aggfunction.md), and
-   * [percentilew()](percentiles-aggfunction.md). Any algebraic combination of the aggregations is also supported.
+  * [sum()](sum-aggfunction.md),
+  * [count()](count-aggfunction.md),
+  * [max()](max-aggfunction.md),
+  * [min()](min-aggfunction.md),
+  * [dcount()](dcountif-aggfunction.md),
+  * [avg()](avg-aggfunction.md),
+  * [percentile()](percentiles-aggfunction.md), and
+  * [percentilew()](percentiles-aggfunction.md). Any algebraic combination of the aggregations is also supported.
 
 * `asc` or `desc` (the default) may appear to control whether selection is actually from the "bottom" or "top" of the range of aggregated values.
 

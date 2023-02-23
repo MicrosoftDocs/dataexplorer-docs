@@ -80,6 +80,9 @@ items:
     - name: Data ingestion overview
       displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
       href: ingest-data-overview.md
+    - name: Data connectors overview
+      displayName: connect, integrate, integration, export, orchestrate
+      href: connector-overview.md
     - name: Get data in the web UI
       items:
         - name: Ingestion wizard
@@ -90,11 +93,6 @@ items:
         - name: Ingest from container
           displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
           href: ingestion-wizard-new-table.md
-    - name: Data ingestion properties
-      href: ingestion-properties.md
-    - name: Formats for data ingestion
-      displayName: supported data formats
-      href: ingestion-supported-formats.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -105,9 +103,23 @@ items:
         href: lightingest.md
       - name: Use wizard for one-time ingestion of historical data with LightIngest
         href: generate-lightingest-command.md
-    - name: Cross-tenant data connection
-      displayName: event hub, event grid
-      href: ingest-data-cross-tenant.md
+    - name: Using SDKs
+      items:
+      - name: .NET SDK
+        displayName: ingest data, ingestion
+        href: net-sdk-ingest-data.md
+      - name: Python
+        displayName: ingest data, ingestion
+        href: python-ingest-data.md
+      - name: Node SDK
+        displayName: ingest data, ingestion
+        href: node-ingest-data.md
+      - name: Go SDK
+        displayName: ingest data, ingestion
+        href: go-ingest-data.md
+      - name: Java SDK
+        displayName: ingest data, ingestion
+        href: java-ingest-data.md
     - name: Event Hubs
       items:
       - name: Event Hubs data connection
@@ -168,6 +180,7 @@ items:
     - name: Azure Data Factory
       items:
       - name: Integration with Data Factory
+        displayName: export, ingest, copy
         href: data-factory-integration.md
       - name: Copy data using Azure Data Factory
         href: data-factory-load-data.md
@@ -175,49 +188,43 @@ items:
         href: data-factory-template.md
       - name: Run control commands using Azure Data Factory
         href: data-factory-command-activity.md
+    - name: Apache Kafka
+      displayName: ingest data, ingestion, connector
+      href: ingest-data-kafka.md
+    - name: Apache Spark 
+      displayName: connector, export, ingest
+      href: spark-connector.md
     - name: Azure Cosmos DB
       items:
       - name: Azure Cosmos DB data connection
-        displayName: ingest
+        displayName: ingest, connector
         href: ingest-data-cosmos-db-connection.md
       - name: Get latest Azure Cosmos DB documents
         displayName: ingest data, ingestion
         href: ingest-data-cosmos-db-queries.md
-    - name: Using SDKs
-      items:
-      - name: .NET SDK
-        displayName: ingest data, ingestion
-        href: net-sdk-ingest-data.md
-      - name: Python
-        displayName: ingest data, ingestion
-        href: python-ingest-data.md
-      - name: Node SDK
-        displayName: ingest data, ingestion
-        href: node-ingest-data.md
-      - name: Go SDK
-        displayName: ingest data, ingestion
-        href: go-ingest-data.md
-      - name: Java SDK
-        displayName: ingest data, ingestion
-        href: java-ingest-data.md
     - name: Azure Stream Analytics
       href: stream-analytics-connector.md
-      displayName: ingest data, ingestion
-    - name: OpenTelemetry
-      href: open-telemetry-connector.md
-      displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion
-    - name: Kafka
-      displayName: ingest data, ingestion
-      href: ingest-data-kafka.md
-    - name: Telegraf
-      displayName: ingest data, ingestion
-      href: ingest-data-telegraf.md
+      displayName: ingest data, ingestion, connector
     - name: Logstash
-      displayName: ingest data, ingestion
-      href: ingest-data-logstash.md
+      displayName: ingest data, ingestion, connector
+      href: ingest-data-logstash.md    
+    - name: OpenTelemetry
+      href: open-telemetry-connector.md 
+      displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion, connector
+    - name: Telegraf
+      displayName: ingest data, ingestion, connector
+      href: ingest-data-telegraf.md
+    - name: Cross-tenant data connection
+      displayName: event hub, event grid
+      href: ingest-data-cross-tenant.md
     - name: JSON formatted data
       displayName: ingest data, ingestion
       href: ingest-json-formats.md
+    - name: Data ingestion properties
+      href: ingestion-properties.md
+    - name: Formats for data ingestion
+      displayName: supported data formats
+      href: ingestion-supported-formats.md
   - name: Query data
     items:
     - name: Query data in the web UI
@@ -555,15 +562,10 @@ items:
           displayName: Microsoft Flow, flow, flow connector
       - name: Logic Apps
         href: kusto/tools/logicapps.md
-    - name: Azure Cosmos DB
-      href: ingest-data-cosmos-db-connection.md
-    - name: Telegraf
-      href: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
-    - name: Apache Spark Connector
-      href: spark-connector.md
-      displayName: databricks
-    - name: Connect from Azure Synapse Apache Spark
-      href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
+      - name: Azure Pipelines
+        href: devops.md
+      - name: Sync Kusto
+        href: kusto/tools/synckusto.md
     - name: Notebooks
       items:
       - name: Analyze data in Jupyter Notebooks & Kqlmagic
@@ -579,10 +581,8 @@ items:
         - name: Use Kqlmagic
           displayName: Azure Data Studio
           href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
-    - name: Azure Pipelines
-      href: devops.md
-    - name: Sync Kusto
-      href: kusto/tools/synckusto.md
+    - name: Connect from Azure Synapse Apache Spark
+      href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
     - name: Migrate TSI to Azure Data Explorer
       href: /azure/time-series-insights/migration-to-adx
       displayName: Time Series Insights
