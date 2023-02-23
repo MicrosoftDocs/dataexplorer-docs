@@ -15,7 +15,7 @@ This article covers the following authentication methods:
 * [Managed identity](#managed-identity)
 * [Shared Access (SAS) key](#shared-access-sas-token)
 * [Azure AD access token](#azure-ad-access-token)
-* [Access key](#access-key)
+* [Storage account access key](#storage-account-access-key)
 * [AWS Programmatic Access Keys](#aws-programmatic-access-keys)
 
 > [!NOTE]
@@ -44,8 +44,8 @@ There are different authentication methods available for different external stor
 | [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use for attended flows when you need complex access control over the external storage. For example, in continuous export flows. You can also restrict storage access at the user level. |
 | [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use in unattended flows, where no Azure Active Directory (Azure AD) principal can be derived to execute queries and commands. Managed identities are the only authentication solution. |
 | [Shared Access (SAS) key](#shared-access-sas-token) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | SAS tokens have an expiration time. Use when accessing storage for a limited time. |
-| [Token](#token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Azure AD tokens have an expiration time. Use when accessing storage for a limited time. |
-| [Access key](#access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | When you need to access resources on an ongoing basis. |
+| [Azure AD access token](#azure-ad-access-token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Azure AD tokens have an expiration time. Use when accessing storage for a limited time. |
+| [Storage account access key](#storage-account-access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | When you need to access resources on an ongoing basis. |
 | [AWS Programmatic Access Keys](#aws-programmatic-access-keys) | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources on an ongoing basis. |
 
 ## Impersonation
