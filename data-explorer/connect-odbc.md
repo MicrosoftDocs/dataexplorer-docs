@@ -68,7 +68,7 @@ You can use the ODBC data source from other applications to connect to Azure Dat
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
 ```
 
-> [NOTE!]
+> [!NOTE]
 > Azure Data Explorer considers string values as `NVARCHAR(MAX)`, which may not work well with some ODBC applications. Cast the data to `NVARCHAR(`*n*`)` using the `Language` parameter in the connection string. For example, `Language=any@MaxStringSize:5000` will encode strings as `NVARCHAR(5000)`. For more information, see [tuning options](connect-sql-server-emulation.md#tuning-options).
 
 ## Application authentication
