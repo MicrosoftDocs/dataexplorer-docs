@@ -12,7 +12,7 @@ SQL Server emulation allows you to connect to Azure Data Explorer using [ODBC](c
 
 ## Tuning options
 
-There are specific Azure Data Explorer parameters that aren't natively supported from certain SQL Server connection configurations. In order to provide these parameters, Azure Data Explorer allows these values to be provided in the `Language` and `Application` properties of TDS. It's recommended to use the `Language` property.
+For customizing Azure Data Explorer according to your specific requirements, you might need to supply certain information that's not supported by the standard SQL Server connection configuration. To allow for such parameters, Azure Data Explorer lets you input these values into the TDS `Language` and `Application` properties. It's recommended to use the `Language` property when possible.
 
 ### Supported tuning options
 
