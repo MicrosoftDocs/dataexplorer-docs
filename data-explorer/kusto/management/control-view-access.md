@@ -9,7 +9,7 @@ ms.date: 02/23/2023
 
 In Azure Data Explorer, principals gain access to resources, such as databases and tables, based on their assigned [security roles](security-roles.md#security-roles). The `viewer` security role is only available at the database level, and assigning a principal this role gives them view access to all tables in the database.
 
-In this article, we'll explain how you can give a principal view access to a subset of tables within a database.
+In this article, you'll learn methods for controlling a principal's table view access.
 
 ## Restricted View Access policy
 
