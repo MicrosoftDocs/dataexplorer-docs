@@ -30,7 +30,7 @@ The function accepts a table containing the column to calculate on and an option
 
 `percentiles_linear_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
-### [Ad hoc](#tab/adhoc)
+### [Query-defined](#tab/query-defined)
 
 For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
 
@@ -66,7 +66,7 @@ datatable(x:long, name:string) [
 | project-rename name=_key, x=_vals
 ```
 
-### [Persistent](#tab/persistent)
+### [Stored](#tab/stored)
 
 For persistent usage, use [`.create function`](../management/create-function.md).  Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
 
