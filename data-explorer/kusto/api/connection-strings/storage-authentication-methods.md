@@ -35,7 +35,7 @@ The following table explains how to hide your private information using the `h` 
 |Hide the entire connection string|Preface the connection string with `h`.|`h"<connection_string>"`|
 |Hide only the secret part of the string|Split the connection string into location and secret and add the `h` before the secret part.| `"<connection_string>"h"<secret>"`|
 
-## Authentication methods by storage type
+## Authentication methods overview
 
 There are different authentication methods available for different external storage types. The following table summarizes the available methods.
 
