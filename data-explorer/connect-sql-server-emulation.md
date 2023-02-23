@@ -16,12 +16,12 @@ For customizing Azure Data Explorer according to your specific requirements, you
 
 ### Supported tuning options
 
-The supported tuning options are described in the following table. To learn how to use these options, see the [syntax](#syntax) explanation and the [example](#example).
+The following table describes the supported tuning options. To learn how to use these options, see the [syntax](#syntax) explanation and the [example](#example).
 
 |Tuning option|Description|
 |--|--|
 |`MaxStringSize`|The default behavior of Azure Data Explorer is to consider string values as `NVARCHAR(MAX)`. For applications that don't work well with the `NVARCHAR(MAX)` type, you can cast the data to `NVARCHAR(`*n*`)`.|
-|`AadAuthority`|This tuning option is used to specify the Azure AD tenant ID for authentication.|
+|`AadAuthority`|Used to specify the Azure AD tenant and principal details for authentication.|
 
 ### Syntax
 
@@ -47,4 +47,4 @@ When connecting with ODBC, specify the Azure AD tenant using the `Language` para
 
 Azure Data Explorer requires authentication through Azure AD. In some cases, to achieve application authentication, you need to provide the tenant ID in the [tuning options](#tuning-options) previously mentioned. For an example, see [connect with ODBC](connect-odbc.md#application-authentication).
 
-The Azure AD tenant ID can also be configured at the cluster level, which removes the need to specify it from the client. To change the tenant ID at the cluster level, open a support request in the  [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
+It's possible to configure the Azure AD tenant ID at the cluster level and remove the need to specify it from the client. To change the tenant ID at the cluster level, open a support request in the  [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
