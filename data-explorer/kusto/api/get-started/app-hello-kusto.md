@@ -103,6 +103,10 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     {
       public static void main(String[] args)
       {
+        try {
+        } catch (Exception e) {
+          System.out.println("Error: " + e.getMessage());
+        }
       }
     }
     ```
@@ -386,17 +390,21 @@ public class HelloKusto
 {
   public static void main(String[] args)
   {
-    String cluster_uri = "https://help.kusto.windows.net/";
-    ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
+    try {
+      String cluster_uri = "https://help.kusto.windows.net/";
+      ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
 
-    try (Client query_client = ClientFactory.createClient(kcsb) {
-      String database = "Samples";
-      String query = "print Welcome='Hello Kusto!'";
-      KustoOperationResult response = query_client.execute(database, query);
+      try (Client query_client = ClientFactory.createClient(kcsb)) {
+        String database = "Samples";
+        String query = "print Welcome='Hello Kusto!'";
+        KustoOperationResult response = query_client.execute(database, query);
 
-      KustoResultSetTable primary_results = response.getPrimaryResults();
-      primary_results.next();
-      System.out.println(primary_results.getString("Welcome"));
+        KustoResultSetTable primary_results = response.getPrimaryResults();
+        primary_results.next();
+        System.out.println(primary_results.getString("Welcome"));
+      } catch (Exception e) {
+        System.out.println("Error: " + e.getMessage());
+      }
     } catch (Exception e) {
       System.out.println("Error: " + e.getMessage());
     }
