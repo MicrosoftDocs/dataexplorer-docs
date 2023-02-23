@@ -9,21 +9,9 @@ ms.reviewer: ramacg
 
 Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. Apache Log4J 2 sink for Azure Data Explorer allows you to easily stream your log data to Azure Data Explorer, where you can analyze, visualize, and alert on your logs in real time. 
 
-The architecture of log4j2 consists of the following components:
-
-- Configuration: This component is responsible for reading the configuration file and setting up the logging system based on the specified parameters.
-- Loggers: These components generate log messages and send them to the appenders for further processing.
-- Appenders: These are the components that receive the log messages from the loggers and write them to a specific destination, such as a file, console, or database.
-- Filters: These components determine whether a log message should be processed or discarded based on specified criteria.
-- Layouts: These components are responsible for formatting the log messages in a specific way before they are written to the destination.
-- Plugins: These components allow the system to be extended with additional functionality, such as custom appenders or filters.
-
-The Log4j2-ADX connector uses a custom strategy to be used in the RollingFileAppender. Logs are written into the rolling file to prevent any data loss arising out of network failure while connecting to the Azure Data Explorer cluster. The data is stored in a rolling file and then flushed to the Azure Data Explorer cluster.
-
 In this tutorial, you learn how to:
 
 > [!div class="checklist"]
-> * Create a cluster and database
 > * Create an AAD App registration
 > * Create a table and table mapping
 > * Clone the Log4j2-Azure Data Explorer connector repo
@@ -33,7 +21,7 @@ In this tutorial, you learn how to:
 
 ## Prerequisites
 
-## Create cluster and database
+* cluster and database
 
 ## Create AAD App registration
 
@@ -43,7 +31,6 @@ Grant it database ingestor role
 Save app key and application ID
 
 ## Create table
-
 
 ```kusto
 .create table log4jTest (timenanos:long,timemillis:long,level:string,threadid:string,threadname:string,threadpriority:int,formattedmessage:string,loggerfqcn:string,loggername:string,marker:string,thrownproxy:string,source:string,contextmap:string,contextstack:string)
@@ -62,7 +49,10 @@ git clone https://github.com/Azure/azure-kusto-log4j.git
 cd samples
 ```
 
+The Log4j2-Azure Data Explorer connector uses a custom strategy to be used in the RollingFileAppender. Logs are written into the rolling file to prevent any data loss arising out of network failure while connecting to the Azure Data Explorer cluster. The data is stored in a rolling file and then flushed to the Azure Data Explorer cluster.
+
 ## Configure the log4J configuration file
+
 
 Log4J supports various formats for its configuration
 
