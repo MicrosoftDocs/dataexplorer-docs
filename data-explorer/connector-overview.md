@@ -3,7 +3,7 @@ title: Overview of data connectors in Azure Data Explorer
 description: This article summarizes available data connectors and their capabilities.
 ms.reviewer: aksdi
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 02/23/2023
 ---
 # Data connectors overview
 
@@ -16,6 +16,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 | [Apache Kafka](#apache-kafka)     | **Ingestion**       |   &check;             | First party, [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Logs, Telemetry, Time series             |
 | [Apache Log4J 2](#apache-log4j-2)   | **Ingestion**    |   &check;             | First party, [Open source](https://github.com/Azure/azure-kusto-log4j)| Logs                  |
 | [Apache Spark](#apache-spark)      | **Export** <br> <br>**Ingestion**        |  &#x2717;               | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry             |
+| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export** <br> <br>**Ingestion**        |  &#x2717;             |  First party      | Telemetry |
 | [Azure Cosmos DB](#azure-cosmos-db)      | **Ingestion**   |      &check;          |      First party           |    Change feed      |
 | [Azure Data Factory](#azure-data-factory) | **Export** <br> <br>**Ingestion**   |   &#x2717;            |        First party      |    Data orchestration            |
 | [Azure Event Grid ](#azure-event-grid)   | **Ingestion**  |  &check;                    |      First party         |       Event processing                |
@@ -58,6 +59,15 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-spark/
 * **Documentation:** [Azure Data Explorer Connector for Apache Spark](spark-connector.md)
 * **Community Blog:** [Data pre-processing for Azure Data Explorer with Apache Spark](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/data-pre-processing-for-azure-data-explorer-with-apache-spark/ba-p/2727993/)
+
+## Apache Spark for Azure Synapse Analytics
+
+* **Description:** [Apache Spark](https://spark.apache.org/) is a parallel processing framework that supports in-memory processing to boost the performance of big data analytic applications. [Apache Spark in Azure Synapse](/azure/synapse-analytics/spark/apache-spark-overview) Analytics is one of Microsoft's implementations of Apache Spark in the cloud. You can access an Azure Data Explorer database from [Synapse Studio](/azure/synapse-analytics/) with Apache Spark for Azure Synapse Analytics.
+* **Functionality:** Ingestion, Export
+* **Ingestion type supported:** Batching
+* **Use cases:** Telemetry
+* **Documentation:** [Connect an Azure Data Explorer database to an Azure Synapse workspace](/azure/synapse-analytics/quickstart-connect-azure-data-explorer)
+
 
 ## Azure Cosmos DB
 
