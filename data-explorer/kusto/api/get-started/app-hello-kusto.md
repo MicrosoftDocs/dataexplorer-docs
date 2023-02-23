@@ -230,32 +230,30 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     >
     > ### [C\#](#tab/csharp)
     >
-    > ### [Python](#tab/python)
-    >
-    > ### [Node.js](#tab/nodejs)
-    >
-    > <!-- ### [Go](#tab/go) -->
-    >
-    > ### [Java](#tab/java)
-    >
-    > ---
-    >
-    > For C#, the response is a [DataReader](/dotnet/api/system.data.idatareader) object. You can reference the result, as follows:
+    > The response is a [DataReader](/dotnet/api/system.data.idatareader) object. You can reference the result, as follows:
     >
     > - Use the [Read()](/dotnet/api/system.data.idatareader.read) method to read the first row
     > - Use the [GetString](/dotnet/api/system.data.idatarecord.getstring)() method to get the value of the first column
     >
-    > For Python and Node.js, the response in the primary results JSON object. The object contains an array of tables, which in turn contains an array of rows. Each row contains data organized into a dictionary of columns. You can reference the result, as follows:
+    > ### [Python / Node.js](#tab/python+nodejs)
+    >
+    > The response in the primary results JSON object. The object contains an array of tables, which in turn contains an array of rows. Each row contains data organized into a dictionary of columns. You can reference the result, as follows:
     >
     > - The first array index `[0]` references the first table
     > - The second array index `[0]` references the first row
     > - The dictionary key `["Welcome"]` references the **Welcome** column
     >
-    > For Java, the response is a KustoOperationResult object. You can reference the result, as follows:
+    > <!-- ### [Go](#tab/go) -->
+    >
+    > ### [Java](#tab/java)
+    >
+    > The response is a KustoOperationResult object. You can reference the result, as follows:
     >
     > - Use the getPrimaryResults() method to get the primary results table
     > - the [next()](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/ListIterator.html#next()) method to read the first row
     > - the getString() method to get the value of the first column
+    >
+    > ---
 
     ### [C\#](#tab/csharp)
 
