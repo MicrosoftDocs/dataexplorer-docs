@@ -17,12 +17,14 @@ Language specific prerequisites:
 
 ### [C\#](#tab/csharp)
 
-One of the following .NET SDKs:
+One or more of the following .NET SDK frameworks:
 
 - .NET SDK 5.0 or later
 - .NET Core 2.1 or later
 - .NET Standard 2.1 or later
 - .NET Framework 4.7.2 or later
+
+Verify installation: In a command shell, run `dotnet sdk check` to check that the versions installed meet the minimum requirements.
 
 ### [Python](#tab/python)
 
