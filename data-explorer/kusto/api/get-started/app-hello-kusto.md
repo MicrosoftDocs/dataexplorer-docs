@@ -433,7 +433,7 @@ node hello-kusto.js
 ### [Java](#tab/java)
 
 ```bash
-java -cp .;azure-kusto-data-1.0.0.jar HelloKusto
+java HelloKusto
 ```
 
 ---
