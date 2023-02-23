@@ -228,6 +228,18 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     >
     > The *print kusto* query returns a single table with one row and column.
     >
+    > ### [C\#](#tab/csharp)
+    >
+    > ### [Python](#tab/python)
+    >
+    > ### [Node.js](#tab/nodejs)
+    >
+    > <!-- ### [Go](#tab/go) -->
+    >
+    > ### [Java](#tab/java)
+    >
+    > ---
+    >
     > For C#, the response is a [DataReader](/dotnet/api/system.data.idatareader) object. You can reference the result, as follows:
     >
     > - Use the [Read()](/dotnet/api/system.data.idatareader.read) method to read the first row
