@@ -25,15 +25,14 @@ The following table describes the supported tuning options. To learn how to use 
 
 ### Syntax
 
-[ `Language` | `Application` ] `=` *ExpectedArguments*`@`*TuningOptionName*`:`*TuningOptionValue*
+[ `Language` | `Application` ] `=` *ExpectedArguments*`@`*TuningOptions*
 
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*ExpectedArguments*|string|&check;|The expected value for the `Language` or `Application` field in TDS.|
-|*TuningOptionName*|string|&check;|One of the [supported tuning options](#supported-tuning-options).|
-|*TuningOptionValue*|string|&check;|The value of the tuning option.|
+|*TuningOptions*|string|&check;|One or more comma-separated [supported tuning options](#supported-tuning-options). Each tuning option must be in the format of *TuningOptionName*`:`*TuningOptionValue*.|
 
 ### Example
 
