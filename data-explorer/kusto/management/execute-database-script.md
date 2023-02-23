@@ -1,13 +1,17 @@
 ---
 title: .execute database script - Azure Data Explorer
-description: This article describes the .execute database script functionality in Azure Data Explorer.
+description: This article describes the `.execute database script` functionality in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/11/2021
+ms.date: 02/21/2023
 ---
 # .execute database script
 
 Executes batch of control commands in scope of a single database.
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -25,8 +29,8 @@ Executes batch of control commands in scope of a single database.
 
   | PropertyName            | Type            | Description                          |
   |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
-  | `ContinueOnErrors`            | `bool`        | If set to `false` - the script will stop on the first error. If set to `true` - the script execution continues. Default: `false`. |
-  | `ThrowOnErrors`            | `bool`        | If set to `true` - the script will throw an error (fail) on the first error. Does not work together with `ContinueOnErrors`, only one is allowed. Default: `false`. |
+  | `ContinueOnErrors`            | `bool`        | If set to `false` - the script stops on the first error. If set to `true` - the script execution continues. Default: `false`. |
+  | `ThrowOnErrors`            | `bool`        | If set to `true` - the script throws an error (fail) on the first error. Doesn't work together with `ContinueOnErrors`, only one is allowed. Default: `false`. |
 
 ## Output
 
@@ -43,7 +47,8 @@ Each command appearing in the script will be reported as a separate record in th
 >[!NOTE]
 >* The script text may include empty lines and comments between the commands.
 >* Commands are executed sequentially, in the order they appear in the input script.
->* Script execution is non-transactional, and no rollback is performed upon error. It's advised to use the idempotent form of commands when using `.execute database script`.
+>* Script execution is sequential, but non-transactional, and no rollback is performed upon error. It's advised to use the idempotent form of commands when using `.execute database script`.
+>* Execution of the command requires Database Admin permissions, in addition to permissions that may be required by each specific command.
 >* Default behavior of the command - fail on the first error, it can be changed using property argument.
 >* Read-only control commands (`.show` commands) aren't executed and are reported with status `Skipped`.
 

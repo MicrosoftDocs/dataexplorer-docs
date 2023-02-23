@@ -3,7 +3,7 @@ title: .alter table - Azure Data Explorer
 description: This article describes the .alter table command.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/29/2022
+ms.date: 02/21/2023
 ---
 # .alter table
 
@@ -13,7 +13,13 @@ The `.alter table` command:
 * Reorders table columns
 * Sets a new column schema, `docstring`, and folder to an existing table, overwriting the existing column schema, `docstring`, and folder
 * Must run in the context of a specific database that scopes the table name
-* Requires [Table Admin permission](./access-control/role-based-access-control.md)
+
+> [!WARNING]
+> Using the `.alter` command incorrectly may lead to data loss.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

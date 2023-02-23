@@ -626,7 +626,7 @@ items:
     href: access-control/how-to-authenticate-with-aad.md
   - name: Referencing security principals
     displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
-    href: access-control/principals-and-identity-providers.md
+    href: /azure/data-explorer/kusto/management/access-control/referencing-security-principals
   - name: Allow cross-tenant queries and commands
     href: ../../cross-tenant-query-and-commands.md
 - name: Advanced data management

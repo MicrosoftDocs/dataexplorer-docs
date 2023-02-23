@@ -2,15 +2,16 @@
 title: Manage database security roles - Azure Data Explorer
 description: This article describes how to use management commands to view, add, and remove security roles on the database level in Azure Data Explorer.
 ms.topic: reference
-ms.date: 01/25/2023
+ms.date: 02/21/2023
 ---
 
 # Manage database security roles
 
 Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the security roles they're assigned. In this article, you'll learn how to use management commands to [view existing security roles](#view-existing-security-roles) as well as [add and remove security roles](#add-and-remove-security-roles) on the database level.
 
-> [!NOTE]
-> You must be either an AllDatabasesAdmin or a Database Admin to assign database level security roles. For more information, see [role-based access control](access-control/role-based-access-control.md).
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run these commands.
 
 ## Database level security roles
 
@@ -71,7 +72,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 | *Action* | string | &check; | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
 | *DatabaseName* | string | &check; | The name of the database for which to add principals.|
 | *Role* | string | &check; | The role to assign to the principal. For databases, this can be `admins`, `users`, `viewers`, `unrestrictedviewers`, `ingestors`, or `monitors`.|
-| *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](./access-control/principals-and-identity-providers.md#examples-for-azure-ad-principals).|
+| *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](/azure/data-explorer/kusto/management/access-control/referencing-security-principals#examples-for-azure-ad-principals).|
 | `skip-results` | string | | If provided, the command won't return the updated list of database principals.|
 | *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
 

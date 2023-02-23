@@ -3,7 +3,7 @@ title: tdigest_merge() (aggregation functions) - Azure Data Explorer
 description: Learn how to use the tdigest_merge() aggregation function to merge tdigest results in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 02/05/2023
 ---
 # tdigest_merge() (aggregation functions)
 
@@ -17,17 +17,17 @@ For more information about the underlying algorithm (T-Digest) and the estimated
 
 ## Syntax
 
-`tdigest_merge` `(`*Expr*`)`
+`tdigest_merge(`*expr*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*Expr* | string | &check; | Expression that will be used for aggregation calculation.
+|*expr* | string | &check; | The expression used for the aggregation calculation.|
 
 ## Returns
 
-Returns the merged tdigest values of *Expr* across the group.
+Returns the merged tdigest values of *expr* across the group.
 
 > [!NOTE]
 >
