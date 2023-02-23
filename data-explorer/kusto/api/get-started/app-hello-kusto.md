@@ -386,8 +386,8 @@ public class HelloKusto
 {
   public static void main(String[] args)
   {
-      String cluster_uri = "https://help.kusto.windows.net/";
-      ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
+    String cluster_uri = "https://help.kusto.windows.net/";
+    ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
 
     try (Client query_client = ClientFactory.createClient(kcsb) {
       String database = "Samples";
