@@ -1,9 +1,9 @@
 ---
 title: top operator - Azure Data Explorer
-description: This article describes top operator in Azure Data Explorer.
+description: Learn how to use the top operator to return the first specified number of records sorted by the specified columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 02/23/2023
 ---
 # top operator
 
@@ -28,7 +28,7 @@ Returns the first *N* records sorted by the specified columns.
 
 ## Example
 
-Show top 3 storms with most direct injuries.
+Show top three storms with most direct injuries.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjJL1AwVkiqVPDMyyotykwtdsksSk0uAQCehD//JgAAAA==" target="_blank">Run the query</a>
