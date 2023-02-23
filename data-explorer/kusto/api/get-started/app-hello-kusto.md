@@ -103,25 +103,13 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     {
       public static void main(String[] args)
       {
-        try {
-        } catch (Exception e) {
-          System.out.println(e.getMessage());
-        }
       }
     }
     ```
 
     ---
 
-1. Create a connection string builder object that defines the cluster URI and sets the authentication mode to interactive. The cluster URI is in the format `https://<clusterName>.<region>.kusto.windows.net/`.
-
-    > [!NOTE]
-    > For interactive authentication, you need a Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-    >
-    > In C#, the interactive authentication process does not prompt the user if:
-    >
-    > - The user is already authenticated on the device
-    > - There is an existing Kusto.Explorer or Azure Date Explorer web UI authentication on the device
+1. Create a connection string builder object that defines the cluster URI and sets the authentication mode to interactive. For more information about the cluster URI, see [Kusto connection strings](../connection-strings/kusto.md).
 
     ### [C\#](#tab/csharp)
 
@@ -154,6 +142,14 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ```
     ---
 
+    > [!NOTE]
+    > For interactive authentication, you need a Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+    >
+    > In C#, the interactive authentication process may not prompt the user if:
+    >
+    > - The user is already authenticated on the device
+    > - There is an existing Kusto.Explorer or Azure Date Explorer web UI authentication on the device
+
 1. Create a client object that uses the connection string builder object to connect to the cluster.
 
     ### [C\#](#tab/csharp)
@@ -181,7 +177,10 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [Java](#tab/java)
 
     ```java
-    Client query_client = ClientFactory.createClient(kcsb);
+    try (Client query_client = ClientFactory.createClient(kcsb)) {
+    } catch (Exception e) {
+      System.out.println("Error: " + e.getMessage());
+    }
     ```
 
     ---
@@ -222,6 +221,47 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
 
 1. Run the query and print the result.
 
+    ### [C\#](#tab/csharp)
+
+    ```csharp
+    using (var response = query_client.ExecuteQuery(database, query, null))
+    {
+      response.Read();
+      int columnNo = response.GetOrdinal("Welcome");
+      Console.WriteLine(response.GetString(columnNo));
+    }
+    ```
+
+    ### [Python](#tab/python)
+
+    ```python
+    response = query_client.execute(database, query)
+
+    print(response.primary_results[0][0]["Welcome"])
+    ```
+
+    ### [Node.js](#tab/nodejs)
+
+    ```nodejs
+    let response = await query_client.execute(database, query);
+
+    console.log(response.primaryResults[0][0]["Welcome"].toString());
+    ```
+
+    <!-- ### [Go](#tab/go) -->
+
+    ### [Java](#tab/java)
+
+    ```java
+    KustoOperationResult response = query_client.execute(database, query);
+
+    KustoResultSetTable primary_results = response.getPrimaryResults();
+    primary_results.next();
+    System.out.println(primary_results.getString("Welcome"));
+    ```
+
+    ---
+
     > [!NOTE]
     > The query output is returned in the response as an object that contains one or more tables, comprised of one more more rows and columns.
     > The format of the object depends on the client library language.
@@ -255,47 +295,6 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     >
     > ---
 
-    ### [C\#](#tab/csharp)
-
-    ```csharp
-    var response = query_client.ExecuteQuery(database, query, null);
-
-    response.Read();
-    
-    int columnNo = response.GetOrdinal("Welcome");
-    Console.WriteLine(response.GetString(columnNo));
-    ```
-
-    ### [Python](#tab/python)
-
-    ```python
-    response = query_client.execute(database, query)
-
-    print(response.primary_results[0][0]["Welcome"])
-    ```
-
-    ### [Node.js](#tab/nodejs)
-
-    ```nodejs
-    let response = await query_client.execute(database, query);
-
-    console.log(response.primaryResults[0][0]["Welcome"].toString());
-    ```
-
-    <!-- ### [Go](#tab/go) -->
-
-    ### [Java](#tab/java)
-
-    ```java
-    KustoOperationResult response = query_client.execute(database, query);
-
-    KustoResultSetTable primary_results = response.getPrimaryResults();
-    primary_results.next();
-    System.out.println(primary_results.getString("Welcome"));
-    ```
-
-    ---
-
 The complete code should look like this:
 
 ### [C\#](#tab/csharp)
@@ -317,11 +316,13 @@ namespace HelloKusto
       {
         string database = "Samples";
         string query = "print Welcome='Hello Kusto!'";
-        var response = query_client.ExecuteQuery(database, query, null);
-  
-        response.Read();
-        int columnNo = response.GetOrdinal("Welcome");
-        Console.WriteLine(response.GetString(columnNo));
+
+        using (var response = query_client.ExecuteQuery(database, query, null))
+        {
+          response.Read();
+          int columnNo = response.GetOrdinal("Welcome");
+          Console.WriteLine(response.GetString(columnNo));
+        }
       }
     }
   }
@@ -385,11 +386,10 @@ public class HelloKusto
 {
   public static void main(String[] args)
   {
-    try {
       String cluster_uri = "https://help.kusto.windows.net/";
       ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
-      Client query_client = ClientFactory.createClient(kcsb);
 
+    try (Client query_client = ClientFactory.createClient(kcsb) {
       String database = "Samples";
       String query = "print Welcome='Hello Kusto!'";
       KustoOperationResult response = query_client.execute(database, query);
