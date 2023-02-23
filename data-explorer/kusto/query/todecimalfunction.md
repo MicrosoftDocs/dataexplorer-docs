@@ -25,7 +25,7 @@ Converts the input to a decimal number representation.
 ## Returns
 
 If conversion is successful, result will be a decimal number.
-If conversion is not successful, result will be `null`.
+If conversion isn't successful, result will be `null`.
 
 ## Example
 
