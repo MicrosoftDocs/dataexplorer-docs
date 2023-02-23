@@ -7,7 +7,7 @@ ms.date: 02/06/2023
 
 # Query data in MATLAB
 
-From MATLAB, you can connect to Azure Data Explorer using [JDBC](connect-jdbc.md) and run queries with [T-SQL](kusto/api/tds/t-sql.md). This functionality is made possible by Azure Data Explorer's TDS-compliant endpoint, which emulate Microsoft SQL Server. This article will take you through the process of setting up an Azure Data Explorer connection in MATLAB.
+From MATLAB, you can connect to Azure Data Explorer using [JDBC](connect-jdbc.md) and run queries with [T-SQL](kusto/api/tds/t-sql.md). This functionality is made possible by Azure Data Explorer's TDS-compliant endpoint, which emulates Microsoft SQL Server. This article will take you through the process of setting up an Azure Data Explorer connection in MATLAB.
 
 ## Connect from MATLAB
 
