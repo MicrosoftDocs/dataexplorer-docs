@@ -3,7 +3,7 @@ title: 'Hello Kusto: Create your first application - Azure Data Explorer'
 description: Learn how to create your first application to print Hello Kusto using Azure Data Explorer client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 02/05/2023
+ms.date: 02/23/2023
 ---
 # Hello Kusto: Create your first Azure Data Explorer client application
 
@@ -49,6 +49,14 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
 
     ### [Java](#tab/java)
 
+    ```java
+    import com.microsoft.azure.kusto.data.Client;
+    import com.microsoft.azure.kusto.data.ClientFactory;
+    import com.microsoft.azure.kusto.data.KustoOperationResult;
+    import com.microsoft.azure.kusto.data.KustoResultSetTable;
+    import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
+    ```
+
     ---
 
 1. Define an empty function named `main` and call it.
@@ -73,7 +81,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     def main():
 
     if __name__ == "__main__":
-        main()
+      main()
     ```
 
     ### [Node.js](#tab/nodejs)
@@ -89,6 +97,19 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
+
+    ```java
+    public class HelloKusto 
+    {
+      public static void main(String[] args)
+      {
+        try {
+        } catch (Exception e) {
+          System.out.println(e.getMessage());
+        }
+      }
+    }
+    ```
 
     ---
 
@@ -127,6 +148,10 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
 
     ### [Java](#tab/java)
 
+    ```java
+    String cluster_uri = "https://help.kusto.windows.net/";
+    ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
+    ```
     ---
 
 1. Create a client object that uses the connection string builder object to connect to the cluster.
@@ -154,6 +179,10 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
+
+    ```java
+    Client query_client = ClientFactory.createClient(kcsb);
+    ```
 
     ---
 
@@ -184,6 +213,11 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
 
     ### [Java](#tab/java)
 
+    ```java
+    String database = "Samples";
+    String query = "print Welcome='Hello Kusto!'";
+    ```
+
     ---
 
 1. Run the query and print the result.
@@ -204,6 +238,12 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     > - The first array index `[0]` references the first table
     > - The second array index `[0]` references the first row
     > - The dictionary key `["Welcome"]` references the **Welcome** column
+    >
+    > For Java, the response is a KustoOperationResult object. You can reference the result, as follows:
+    >
+    > - Use the getPrimaryResults() method to get the primary results table
+    > - the [next()](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/ListIterator.html#next()) method to read the first row
+    > - the getString() method to get the value of the first column
 
     ### [C\#](#tab/csharp)
 
@@ -211,7 +251,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     var response = query_client.ExecuteQuery(database, query, null);
 
     response.Read();
-    Console.WriteLine(response.GetString(0));
+    Console.WriteLine(response.GetString(response.GetOrdinal("Welcome")));
     ```
 
     ### [Python](#tab/python)
@@ -233,6 +273,14 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
+
+    ```java
+    KustoOperationResult response = query_client.execute(database, query);
+
+    KustoResultSetTable primary_results = response.getPrimaryResults();
+    primary_results.next();
+    System.out.println(primary_results.getString("Welcome"));
+    ```
 
     ---
 
@@ -260,7 +308,7 @@ namespace HelloKusto
         var response = query_client.ExecuteQuery(database, query, null);
   
         response.Read();
-        Console.WriteLine(response.GetString(0));
+        Console.WriteLine(response.GetString(response.GetOrdinal("Welcome")));
       }
     }
   }
@@ -284,7 +332,7 @@ def main():
   print(response.primary_results[0][0]["Welcome"])
 
 if __name__ == "__main__":
-    main()
+  main()
 ```
 
 ### [Node.js](#tab/nodejs)
@@ -313,6 +361,36 @@ main();
 
 ### [Java](#tab/java)
 
+```java
+import com.microsoft.azure.kusto.data.Client;
+import com.microsoft.azure.kusto.data.ClientFactory;
+import com.microsoft.azure.kusto.data.KustoOperationResult;
+import com.microsoft.azure.kusto.data.KustoResultSetTable;
+import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
+
+public class HelloKusto 
+{
+  public static void main(String[] args)
+  {
+    try {
+      String cluster_uri = "https://help.kusto.windows.net/";
+      ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
+      Client query_client = ClientFactory.createClient(kcsb);
+
+      String database = "Samples";
+      String query = "print Welcome='Hello Kusto!'";
+      KustoOperationResult response = query_client.execute(database, query);
+
+      KustoResultSetTable primary_results = response.getPrimaryResults();
+      primary_results.next();
+      System.out.println(primary_results.getString("Welcome"));
+    } catch (Exception e) {
+      System.out.println("Error: " + e.getMessage());
+    }
+  }
+}
+```
+
 ---
 
 ## Run your app
@@ -340,6 +418,10 @@ node hello-kusto.js
 <!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
+
+```bash
+java -cp .;azure-kusto-data-1.0.0.jar HelloKusto
+```
 
 ---
 

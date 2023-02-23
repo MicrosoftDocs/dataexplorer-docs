@@ -3,7 +3,7 @@ title: Set up your development environment to use Azure Data Explorer client lib
 description: Learn how to set up your development environment to use Azure Data Explorer client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 02/05/2023
+ms.date: 02/23/2023
 ---
 # Set up your development environment to use Azure Data Explorer client libraries
 
@@ -40,6 +40,12 @@ One of the following .NET SDKs:
 
 ### [Java](#tab/java)
 
+- JDK 11 or later
+    - Ensure the `java` executable is in your `PATH`
+    - Verify installation: In a command shell, run `java -version` to check that the version is 11 or later
+- Maven 3.6.3 or later
+    - Ensure the `mvn` executable is in your `PATH`
+    - Verify installation: In a command shell, run `mvn -version` to check that the version is 3.6.3 or later
 ---
 
 ### Install the package
@@ -79,6 +85,11 @@ npm install azure-kusto-ingest
 <!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
+
+```bash
+mvn clean install azure-kusto-data
+mvn clean install azure-kusto-ingest
+```
 
 ---
 
