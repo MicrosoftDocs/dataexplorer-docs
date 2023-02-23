@@ -31,6 +31,6 @@ Returns the properties of the dropped external table. For more information, see 
 .drop external table ExternalBlob
 ```
 
-| TableName | TableType | Folder         | DocString | Schema       | Properties |
-|-----------|-----------|----------------|-----------|-----------------------------------------------------|------------|
-| T         | Blob      | ExternalTables | Docs      | [{ "Name": "x",  "CslType": "long"},<br> { "Name": "s",  "CslType": "string" }] | {}         |
+| TableName   | TableType | Folder         | DocString | Properties | ConnectionStrings | Partitions | PathFormat |
+|-------------|-----------|----------------|-----------|------------|-------------------|------------|------------|
+| ExternalBlob|           |                |           |            |                   |            |            |
