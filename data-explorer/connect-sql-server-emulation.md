@@ -37,7 +37,7 @@ The following table describes the supported tuning options. To learn how to use 
 
 ### Example
 
-When connecting with ODBC, specify the Azure AD tenant using the `Language` parameter and the `AadAuthority` tuning option in the connection string.
+When connecting with ODBC, specify the Azure AD tenant using the `Language` property and the `AadAuthority` tuning option in the connection string.
 
 ```odbc
 "Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@AadAuthority:<aad_tenant_id>"
