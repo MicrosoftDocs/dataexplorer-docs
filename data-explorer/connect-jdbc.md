@@ -2,7 +2,7 @@
 title: Connect to Azure Data Explorer with JDBC
 description: In this article, you learn how to set up a JDBC connection to Azure Data Explorer.
 ms.topic: how-to
-ms.date: 02/02/2023
+ms.date: 02/23/2023
 ---
 
 # Connect to Azure Data Explorer with JDBC

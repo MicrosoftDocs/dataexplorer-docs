@@ -3,7 +3,7 @@ title: Connect to Azure Data Explorer with ODBC
 description: In this article, you learn how to set up an Open Database Connectivity (ODBC) connection to Azure Data Explorer.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 02/02/2023
+ms.date: 02/23/2023
 ---
 
 # Connect to Azure Data Explorer with ODBC
