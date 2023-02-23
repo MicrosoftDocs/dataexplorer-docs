@@ -22,7 +22,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*MaterializedViewName*|string|&check;|The name of the materialized view.|
-|*PolicyObject*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [retention policy](retentionpolicy.md).|
+|*PolicyParameters*|string|&check;|One or more policy parameters. For more information, see [retention policy](retentionpolicy.md).|
 
 ### Example
 
