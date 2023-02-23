@@ -251,7 +251,9 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     var response = query_client.ExecuteQuery(database, query, null);
 
     response.Read();
-    Console.WriteLine(response.GetString(response.GetOrdinal("Welcome")));
+    
+    int columnNo = response.GetOrdinal("Welcome");
+    Console.WriteLine(response.GetString(columnNo));
     ```
 
     ### [Python](#tab/python)
@@ -308,7 +310,8 @@ namespace HelloKusto
         var response = query_client.ExecuteQuery(database, query, null);
   
         response.Read();
-        Console.WriteLine(response.GetString(response.GetOrdinal("Welcome")));
+        int columnNo = response.GetOrdinal("Welcome");
+        Console.WriteLine(response.GetString(columnNo));
       }
     }
   }
