@@ -45,6 +45,6 @@ When connecting with ODBC, specify the Azure AD tenant using the `Language` para
 
 ## Authentication
 
-Azure Data Explorer requires authentication through Azure Active Directory (Azure AD). Most SQL Server compatible clients allow for Azure AD user authentication. In some cases, to achieve application authentication, you need to provide the tenant ID in the [tuning options](#tuning-options) previously mentioned. For an example, see [connect with ODBC](connect-odbc.md#application-authentication).
+Azure Data Explorer requires authentication through Azure AD. Most SQL Server compatible clients allow for Azure AD user authentication. In some cases, to achieve application authentication, you need to provide the tenant ID in the [tuning options](#tuning-options) previously mentioned. For an example, see [connect with ODBC](connect-odbc.md#application-authentication).
 
 The Azure AD tenant ID can also be configured at the cluster level, so you don't have to specify it on the client. If you need to change the tenant ID at the cluster level, open a support request in the  [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
