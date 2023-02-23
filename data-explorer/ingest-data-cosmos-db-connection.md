@@ -27,6 +27,7 @@ Step 3: [Test the data connection](#step-3-test-the-data-connection)
 - An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 - An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 - A container from a [Cosmos DB account for NoSQL](/azure/cosmos-db/nosql/).
+- If your Cosmos DB account blocks network access, for example by using a [private endpoint](/azure/cosmos-db/how-to-configure-private-endpoints), you must [create a managed private endpoint](security-network-managed-private-endpoint-create.md) to the Cosmos DB account. This is required for your cluster to invoke the change feed API.
 
 ## Step 1: Choose an Azure Data Explorer table and configure its table mapping
 
@@ -289,14 +290,6 @@ To configure your Cosmos DB connection:
 > [!NOTE]
 >
 > Azure Data Explorer has an aggregation (batching) policy for data ingestion designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of one GB, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batchingpolicy.md). To reduce latency, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
-
-## Private Endpoint
-
-Azure Data Explorer cluster needs to have access to the Cosmos DB account in order to invoke its Change Feed API.
-
-If the Cosmos DB account blocks network access (e.g. via [private endpoint](/azure/cosmos-db/how-to-configure-private-endpoints)) to Azure Data Explorer cluster, you need to [create a managed private endpoint](security-network-managed-private-endpoint-create.md) to the Cosmos DB Account.
-
-This should be done before creating the data connection.
 
 ## Considerations
 
