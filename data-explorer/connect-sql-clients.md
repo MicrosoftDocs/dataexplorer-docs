@@ -1,9 +1,7 @@
 ---
-title: Connect to Azure Data Explorer with SQL Server emulation - Azure Data Explorer
+title: Connect from common SQL clients - Azure Data Explorer
 description: This article describes how to connect to Azure Data Explorer with SQL Server emulation from various clients in Azure Data Explorer.
-ms.reviewer: orspodek
 ms.topic: reference
-ms.custom: has-adal-ref
 ms.date: 02/23/2023
 ---
 
