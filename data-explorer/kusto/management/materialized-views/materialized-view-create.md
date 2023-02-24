@@ -299,7 +299,7 @@ The following aggregation functions are supported:
     }
     ```
     
-    Don't include the update policy query as part of the materialized view:
+    The alternative, consisting on the inclusion of the update policy query as part of the materialized view, is worse and therefor not recommended:
     
     ```kusto
     .create materialized-view Usage on table SourceTable
