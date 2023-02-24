@@ -41,12 +41,12 @@ The `Result` dimension can have one of the following values:
 * **Success**: Materialization completed successfully.
 * **SourceTableNotFound**: Source table of the materialization view was dropped. The materialized view is automatically disabled as a result.
 * **SourceTableSchemaChange**: The schema of the source table has changed in a way that isn't compatible with the materialized view definition (materialized view query doesn't match the materialized view schema). The materialized view is automatically disabled as a result.
-* **InsufficientCapacity**: The cluster doesn't have sufficient capacity to materialized the materialized view. This can either indicate missing [ingestion capacity](../capacitypolicy.md#ingestion-capacity) or missing [materialized views capacity](../capacitypolicy.md#materialized-views-capacity-policy). Insufficient capacity failures can be transient, but if they reoccur often it is recommended to scale out the cluster and/or increase relevant capacity in policy.
-* **InsufficientResources:** The cluster doesn't have sufficient resources (CPU/memory) to materialized the materialized view. This failure may also be a transient one, but if it reoccurs often a scale out/up is required.
+* **InsufficientCapacity**: The cluster doesn't have sufficient capacity to materialized the view. This can either indicate missing [ingestion capacity](../capacitypolicy.md#ingestion-capacity) or missing [materialized views capacity](../capacitypolicy.md#materialized-views-capacity-policy). Insufficient capacity failures can be transient, but if they reoccur often it is recommended to scale out the cluster and/or increase relevant capacity in policy.
+* **InsufficientResources:** The cluster doesn't have sufficient resources (CPU/memory) to materialized the view. This failure may also be a transient one, but if it reoccurs often a scale out/up is required.
 
 ## Track resource consumption
 
-**Materialized views resource consumption:** the resources consumed by the materialized views materialization process can be tracked using the [`.show commands-and-queries`](../commands-and-queries.md#show-commands-and-queries) command. Filter the records for a specific view using the following (replace `DatabaseName` and `ViewName`):
+**Materialized views resource consumption:** the resources consumed by the materialization process can be tracked using the [`.show commands-and-queries`](../commands-and-queries.md#show-commands-and-queries) command. Filter the records for a specific view using the following (replace `DatabaseName` and `ViewName`):
 
 <!-- csl -->
 ```
