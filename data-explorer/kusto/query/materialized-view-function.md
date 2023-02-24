@@ -44,4 +44,4 @@ materialized_view("ViewName", 10m)
 * Once a view is created, it can be queried just as any other table in the database, including participate in cross-cluster / cross-database queries.
 * Materialized views aren't included in wildcard unions or searches.
 * Syntax for querying the view is the view name (like a table reference).
-* Querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. The query combines the materialized part of the view with all unmaterialized records in the source table. For more information, see [behind the scenes](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work) for details.
+* Querying the materialized view will always return the most up-to-date results, based on all records ingested to the source table. The query combines the materialized part of the view with all unmaterialized records in the source table. For more information, see [how materialized views work](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work) for details.
