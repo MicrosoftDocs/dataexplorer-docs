@@ -34,7 +34,7 @@ A materialized view can become unhealthy for any or all of the following reasons
 
 ## MaterializedViewResult metric
 
-The `MaterializedViewResult` metric provides information about the result of a materialization cycle, and can be used to identify issues in the materialized view health status. The metric includes the `Database` and `MaterializedViewName` and a `Result` dimension.
+The `MaterializedViewResult` metric provides information about the result of a materialization cycle, and can be used to identify issues in the materialized view health status. The metric includes the `Database`, `MaterializedViewName`, and a `Result` dimension.
 
 The `Result` dimension can have one of the following values:
   
