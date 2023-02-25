@@ -48,6 +48,30 @@ range LastWeek from ago(7d) to now() step 1d
 |...|
 |2015-12-12 09:10:04.627|
 
+
+This example is to demonstrate the ability to parameterize, extend and consume as a table.  
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let toUnixTime = (dt:datetime) 
+{ 
+    (dt - datetime(1970-01-01)) / 1s 
+};
+let MyMonthStart = startofmonth(now()); //Start of month
+let StepBy = 4.534h; //Supported timespans
+let nn = 64000; // Row Count parametrized
+let MyTimeline = range MyMonthHour from MyMonthStart to now() step StepBy
+| extend MyMonthHourinUnixTime = toUnixTime(MyMonthHour), DateOnly = bin(MyMonthHour,1d), TimeOnly = MyMonthHour - bin(MyMonthHour,1d)
+; MyTimeline | order by MyMonthHour asc | take nn
+```
+**Output**
+|MyMonthHour|	MyMonthHourinUnixTime	|DateOnly|	TimeOnly
+|---|---|---|---
+|2023-02-01 |00:00:00.0000000	|1675209600	|2023-02-01 00:00:00.0000000	| 00:00:00
+|2023-02-01 |04:32:02.4000000	|1675225922.4	|2023-02-01 00:00:00.0000000	|04:32:02.4000000
+|2023-02-01 |09:04:04.8000000	|1675242244.8	|2023-02-01 00:00:00.0000000	|09:04:04.8000000
+|2023-02-01 |13:36:07.2000000	|1675258567.2	|2023-02-01 00:00:00.0000000	|13:36:07.2000000
+|...|...|...|...
+
 A table with a single column called `Steps`
 whose type is `long` and whose values are `1`, `4`, and `7`.
 
