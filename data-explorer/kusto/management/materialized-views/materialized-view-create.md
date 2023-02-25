@@ -459,7 +459,7 @@ Even if the cancellation doesn't succeed within 10 minutes, and the cancel comma
 
 |Property|Type|Description
 |----------------|-------|---|
-|`operationId`|GUID|The operation ID returned from the `.create materialized-view` command.|
+|`operationId`|GUID|The operation ID returned from the `.create async materialized-view` command.|
 
 ### Output
 
