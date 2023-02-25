@@ -50,5 +50,5 @@ If a [row level security policy](materialized-view-policies.md#row-level-securit
   * Choose to ignore the error by adding `allowMaterializedViewsWithoutRowLevelSecurity` property to the enable policy command. For example:
 
 ```kusto
-    .enable materialized-view MV with (allowMaterializedViewsWithoutRowLevelSecurity=true)
+.enable materialized-view MV with (allowMaterializedViewsWithoutRowLevelSecurity=true)
 ```
