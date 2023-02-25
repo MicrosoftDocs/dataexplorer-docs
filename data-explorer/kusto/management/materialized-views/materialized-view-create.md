@@ -451,9 +451,11 @@ The creation process can't be canceled immediately. The cancel command signals m
 
 Even if the cancellation doesn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will probably cancel itself later in the creation process. The [`.show operations`](../operations.md#show-operations) command indicates if the operation was canceled.
 
+If the operation is no longer in progress when the `.cancel operation` command is issued, the command will report an error saying so.
+
 ### Syntax
 
-`.cancel` `operation` *operationId*
+`.cancel operation` *operationId*
 
 ### Properties
 
