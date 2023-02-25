@@ -28,7 +28,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Returns
 
-The command returns the remaining materialized views in the database, which is the output of the [show materialized-views](materialized-view-show-commands.md#show-materialized-view) command.
+The command returns the remaining materialized views in the database, which is the output of the [.show materialized-views](materialized-view-show-commands.md#show-materialized-view) command.
 
 ## Example
 
