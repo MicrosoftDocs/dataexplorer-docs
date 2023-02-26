@@ -26,6 +26,9 @@ Callout policy is composed of the following.
 * **CalloutUriRegex** - Specifies the permitted Regex of the callout's domain
 * **CanCall** - Indicates whether the callout is permitted external calls.
 
+> [!NOTE]
+> Denials take precende over permitted external call. That is, if the regular expression of more than one policy defined for the same resource type matches the resource being accessed, and at least one of the policies has CanCall set to false, the external call is denied. 
+
 ## Predefined callout policies
 
 The table shows a set of predefined callout policies that are preconfigured on Azure Data Explorer clusters to enable callouts to selected services.
