@@ -222,19 +222,19 @@ items:
       href: alter-cluster-cache-policy-command.md
     - name: ".alter database cache policy command"
       href: alter-database-cache-policy-command.md
-    - name: ".alter materialized view cache policy command"
+    - name: ".alter materialized-view cache policy command"
       href: alter-materialized-view-cache-policy-command.md
     - name: ".alter table cache policy command"
       href: alter-table-cache-policy-command.md
     - name: ".delete database cache policy command"
       href: delete-database-cache-policy-command.md
-    - name: ".delete materialized view cache policy command"
+    - name: ".delete materialized-view cache policy command"
       href: delete-materialized-view-cache-policy-command.md
     - name: ".delete table cache policy command"
       href: delete-table-cache-policy-command.md
     - name: ".show database cache policy command"
       href: show-database-cache-policy-command.md
-    - name: ".show materialized view cache policy command"
+    - name: ".show materialized-view cache policy command"
       href: show-materialized-view-cache-policy-command.md
     - name: ".show table cache policy command"
       href: show-table-cache-policy-command.md
