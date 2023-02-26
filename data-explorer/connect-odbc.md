@@ -119,4 +119,5 @@ $conn.Close()
 
 ## Next steps
 
-Use ODBC to [connect to Azure Data Explorer from Tableau](tableau.md).
+* See the overview on [SQL Server emulation in Azure Data Explorer](connect-sql-server-emulation.md)
+* Use ODBC to [connect to Azure Data Explorer from Tableau](tableau.md)

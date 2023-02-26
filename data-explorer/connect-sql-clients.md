@@ -9,6 +9,8 @@ ms.date: 02/23/2023
 
 This article give examples on how to connect to Azure Data Explorer from [LINQPad](#linqpad), [Azure Data Studio](#azure-data-studio-134-and-above), [DBeaver](#dbeaver-533-and-above), and [Microsoft SQL Server Management Studio](#microsoft-sql-server-management-studio-v18x).
 
+For more information, see the overview on [SQL Server emulation in Azure Data Explorer](connect-sql-server-emulation.md).
+
 ## LINQPad
 
 You can connect to Azure Data Explorer from LINQPad as if Azure Data Explorer were an SQL server.
