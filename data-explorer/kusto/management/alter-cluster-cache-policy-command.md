@@ -11,7 +11,7 @@ Change the cluster cache policy. To speed up queries on data, Azure Data Explore
 
 ## Permissions
 
-You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
