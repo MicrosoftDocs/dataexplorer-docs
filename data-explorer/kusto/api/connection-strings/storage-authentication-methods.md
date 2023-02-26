@@ -24,7 +24,7 @@ It's recommended to add an `h` to connection strings that contain secrets. This 
 
 The following table explains how to hide your private information using the `h` string.
 
-|Purpose|Method|Syntax|
+|Goal|Method|Syntax|
 |--|--|--|
 |Hide the entire connection string|Preface the connection string with `h`.|`h"<connection_string>"`|
 |Hide only the secret part of the string|Split the connection string into the resource location and the secret information and add the `h` between the two.| `"<resource_location>"h"<secret>"`|
