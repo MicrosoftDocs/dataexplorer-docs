@@ -21,7 +21,7 @@ Each AVRO mapping element may contain the following optional `properties`:
 |`Transform`|Transformation that should be applied on the content with [supported transformations](./mappings.md#mapping-transformations).|
 
 >[!NOTE]
-> `Field` and `Path` cannot be used together; only one is allowed.
+> `Field` and `Path` are mutually exclusive.
 >
 > The following alternatives are equivalent:
 >
