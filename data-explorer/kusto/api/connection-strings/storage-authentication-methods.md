@@ -31,7 +31,7 @@ The following table explains how to hide your private information using the `h` 
 
 ## Authentication methods availability
 
-There are different authentication methods available for different external storage types. The following table summarizes the available methods.
+The following table summarizes the available authentication methods for different external storage types.
 
 | Authentication method | Blob storage | Azure Data Lake Storage Gen 2 | Azure Data Lake Storage Gen 1 | Amazon S3 | When should you use this method? |
 |---|---|---|---|---|---|
