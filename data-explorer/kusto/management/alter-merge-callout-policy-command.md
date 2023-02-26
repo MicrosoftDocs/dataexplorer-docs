@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # .alter-merge callout policy
 
-Enables or disables a cluster's [callout policy](calloutpolicy.md). Azure Data Explorer clusters can communicate with external services in many different scenarios. Cluster admins can manage the authorized domains for external calls, by updating the cluster's callout policy.
+Adds the [callout policy](calloutpolicy.md) provided in this command to any other already existing callout policy. Azure Data Explorer clusters can communicate with external services in many different scenarios. Cluster admins can manage the authorized domains for external calls, by updating the cluster's callout policy.
 
 ## Permissions
 
