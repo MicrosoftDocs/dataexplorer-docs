@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # .alter materialized view cache policy
 
-Change the materialized view cache policy. To speed up queries on data, Azure Data Explorer caches it on its processing nodes' SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority.
+Change the materialized view cache policy. To speed up queries on data, Azure Data Explorer caches data on its processing nodes, in SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority.
 
 ## Permissions
 
