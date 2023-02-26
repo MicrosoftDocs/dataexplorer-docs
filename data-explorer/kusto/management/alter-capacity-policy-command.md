@@ -14,7 +14,7 @@ Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy con
 
 ## Permissions
 
-You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
