@@ -19,8 +19,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
-*PolicyParameter* - Define one or more policy parameters. For parameters, see [cache policy](cachepolicy.md). 
+- *DatabaseName* - Specify the name of the database.
+- *PolicyParameter* - Define one or more policy parameters. For parameters, see [cache policy](cachepolicy.md). 
 
 ## Returns
 
