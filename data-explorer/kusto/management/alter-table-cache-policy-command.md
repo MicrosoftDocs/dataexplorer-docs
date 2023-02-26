@@ -15,13 +15,13 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `caching` *PolicyParameters* 
+`.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `caching` *PolicyParameter* 
 
 ## Arguments
 
 - *DatabaseName* - Specify the name of the database.
 - *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
-- *PolicyParameters* - Define policy parameters, see also [cache policy](cachepolicy.md).
+- *PolicyParameter* - Define policy parameters, see also [cache policy](cachepolicy.md).
 
 ## Example
 
