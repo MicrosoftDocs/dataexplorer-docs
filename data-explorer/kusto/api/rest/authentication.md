@@ -54,7 +54,7 @@ The following steps return an access token for the user principal making the req
 
 ### Get an access token for a service principal using the Azure CLI
 
-Azure AD service principals represent applications or services that need access to resources, usually in non-interactive scenarios such as API calls. The following steps guide you through using the Azure CLI to create a service principal and getting an Azure AD bearer token for this principal.
+Azure AD service principals represent applications or services that need access to resources, usually in non-interactive scenarios such as API calls. The following steps guide you through creating a service principal and getting a bearer token for this principal.
 
 1. Sign in to the Azure CLI.
 
