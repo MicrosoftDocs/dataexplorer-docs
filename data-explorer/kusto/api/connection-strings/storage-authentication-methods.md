@@ -29,7 +29,7 @@ The following table explains how to hide your private information using the `h` 
 |Hide the entire connection string|Preface the connection string with `h`.|`h"<connection_string>"`|
 |Hide only the secret part of the string|Split the connection string into the resource location and the secret information and add the `h` between the two.| `"<resource_location>"h"<secret>"`|
 
-## Authentication methods availability
+## Authentication by storage type
 
 The following table summarizes the available authentication methods for different external storage types.
 
