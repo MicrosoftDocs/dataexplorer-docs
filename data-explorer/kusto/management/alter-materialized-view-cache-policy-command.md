@@ -15,7 +15,7 @@ You must have at least [Materialized view Admin](access-control/role-based-acces
 
 ## Syntax
 
-`.alter` `materialized view` *MaterializedViewName* `policy` `caching` *PolicyParameter*
+`.alter` `materialized-view` *MaterializedViewName* `policy` `caching` *PolicyParameter*
 
 ## Arguments
 
