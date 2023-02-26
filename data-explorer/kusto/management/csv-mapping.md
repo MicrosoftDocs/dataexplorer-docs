@@ -16,11 +16,11 @@ Each CSV mapping element must contain either of the following optional `properti
 |Property|Description|
 |--|--|
 |`Ordinal`|The column order number in CSV.|
-|`ConstantValue`|The constant value to be used for a column instead of some value inside the CSV file.|
+|`ConstValue`|The constant value to be used for a column instead of some value inside the CSV file.|
 
 > [!NOTE]
 >
-> * `Ordinal` and `ConstantValue` are mutually exclusive.
+> * `Ordinal` and `ConstValue` are mutually exclusive.
 > * For `TXT` and `RAW` formats, only `Ordinal` `0` can be mapped, as text is treated as a single column of lines.
 
 [!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
