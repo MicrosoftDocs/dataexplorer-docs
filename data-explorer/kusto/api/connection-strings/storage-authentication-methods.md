@@ -7,7 +7,7 @@ ms.date: 02/23/2023
 ---
 # Storage authentication methods
 
-To interact with external storage from Azure Data Explorer, you must specify the storage connection string. The connection string defines the resource to access and its authentication information.
+To interact with external storage from Azure Data Explorer, you must specify the external storage connection string. The connection string defines the resource to access and its authentication information.
 
 This article describes the following authentication methods:
 
