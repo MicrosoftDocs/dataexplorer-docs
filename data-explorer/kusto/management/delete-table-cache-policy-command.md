@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # .delete table cache policy
 
-Delete the table cache policy. To speed up queries on data, Azure Data Explorer caches it on its processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority. 
+Delete the table cache policy. To speed up queries, Azure Data Explorer caches data on its processing nodes, in SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority. 
 
 ## Permissions
 
@@ -19,8 +19,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Arguments
 
-*DatabaseName* - Specify the name of the database.
-*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
+- *DatabaseName* - Specify the name of the database.
+- *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
 
 ## Example
 
