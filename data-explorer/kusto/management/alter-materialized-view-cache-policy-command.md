@@ -19,8 +19,8 @@ You must have at least [Materialized view Admin](access-control/role-based-acces
 
 ## Arguments
 
-*MaterializedViewName* - Specify the name of the materialized view. 
-*PolicyParameter* - Define one or more policy parameters. For parameters, see [cache policy](cachepolicy.md). 
+- *MaterializedViewName* - Specify the name of the materialized view.
+- *PolicyParameter* - Define one or more policy parameters. For parameters, see [cache policy](cachepolicy.md). 
 
 ## Example
 
