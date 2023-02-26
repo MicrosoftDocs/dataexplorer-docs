@@ -16,12 +16,12 @@ Each ORC mapping element may contain the following optional `properties`:
 |Property|Description|
 |--|--|
 |`Field`|The name of the field in the ORC record.|
-|`Path`|Alternative to using `Field` that allows taking the inner part of an ORC record-field, if necessary. The value denotes a JSON-path from the root of the ORC record. The JSON path that denotes the entire ORC record is `$`. If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
-|`ConstantValue`|The constant value to be used for a column instead of some value inside the ORC file.|
+|`Path`|Alternative to using `Field` that allows taking the inner part of an ORC record-field, if necessary. The value denotes a JSON-path from the root of the ORC record. The JSON path that denotes the entire ORC record is `$`. If the value doesn't start with `$`: the value is interpreted as a constant which is set in the column, as long as the column's data type supports such value. If it doesn't, then that column is set to null. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
+|`ConstValue`|The constant value to be used for a column instead of some value inside the ORC file.|
 |`Transform`|[mapping transformations](mappings.md#mapping-transformations) that should be applied on the content.|
 
 > [!NOTE]
-> `Field` and `Path` cannot be used together; only one is allowed.
+> `Field` and `Path` are mutually exclusive.
 >
 > The following alternatives are equivalent:
 >
