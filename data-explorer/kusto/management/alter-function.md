@@ -32,7 +32,7 @@ You must have at least [Function Admin](../management/access-control/role-based-
 >
 > * If the function doesn't exist, an error is returned. For creating a new function, see [`.create function`](create-function.md)
 > * Not all Kusto types are supported in `let` statements. Supported types are: string, long, datetime, timespan, and double.
-> * Use `skipvalidation` to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
+> * Use `skipvalidation` to skip semantic validation of the function. This is useful when a function is created before some any of the objects referenced in its body. For example, if Function1 which references Function2 and Table1 is created earlier than those two other objects.
 
 ## Example
 
