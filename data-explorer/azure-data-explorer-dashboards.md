@@ -124,8 +124,8 @@ Use the share menu to [grant permissions](#grant-permissions) for an Azure Activ
 ### Grant permissions
 
 To grant permissions to a user in the **Dashboard permissions** pane:
-
-1. Write the user's name or email in **Add new members** box.
+ 
+1. Enter the Azure AD user or Azure AD group in **Add new members**.
 1. In the **Permission** level, select one of the following values: **Can view** or **Can edit**.
 1. Select **Add**.
 
