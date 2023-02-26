@@ -50,24 +50,24 @@ Azure Data Explorer impersonates the requestor's principal identity to access th
 |--|
 |`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;impersonate"`|
 
-The principal performing the operation must have the necessary permissions for the specific external storage. For example in Azure Blob Storage, to read from the blob the principal needs the Reader role and to export to the blob the principal needs the Contributor role. To learn more, see [Azure Blob Storage access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac) or [Azure Data Lake Storage access control](/azure/storage/blobs/data-lake-storage-access-control).
+The principal must have the necessary permissions to perform the operation. For example in Azure Blob Storage, to read from the blob the principal needs the Reader role and to export to the blob the principal needs the Contributor role. To learn more, see [Azure Blob Storage access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac) or [Azure Data Lake Storage access control](/azure/storage/blobs/data-lake-storage-access-control).
 
 ## Managed identity
 
-Azure Data Explorer uses the managed identity, either system or user-assigned, to make requests and access resources. For a system-assigned managed identity, append `;managed_identity=system` to the connection string. For a user-assigned managed identity, append `;managed_identity={object_id}` to the connection string.
+Azure Data Explorer uses the managed identity to make requests and access resources. For a system-assigned managed identity, append `;managed_identity=system` to the connection string. For a user-assigned managed identity, append `;managed_identity={object_id}` to the connection string.
 
 |Managed identity type|Example|
 |--|--|--|
 |System-assigned|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=system"`|
 |User-assigned|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b"`|
 
-The managed identity performing the operation must have the necessary permissions for the specific external storage. For example in Azure Blob Storage, to read from the blob the managed identity needs the Reader role and to export to the blob the managed identity needs the Contributor role. To learn more, see [Azure Blob Storage access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac) or [Azure Data Lake Storage access control](/azure/storage/blobs/data-lake-storage-access-control).
+The managed identity must have the necessary permissions to perform the operation. For example in Azure Blob Storage, to read from the blob the managed identity needs the Reader role and to export to the blob the managed identity needs the Contributor role. To learn more, see [Azure Blob Storage access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac) or [Azure Data Lake Storage access control](/azure/storage/blobs/data-lake-storage-access-control).
 
 ## Shared Access (SAS) token
 
 In the Azure portal, [generate a SAS token](generate-sas-token.md) with the required permissions.
 
-For example, to read from the external storage specify the **Read** and **List** permissions and to export to the external storage specify the **Write** permissions. To learn more, see [delegate access by using a shared access signature](/rest/api/storageservices/delegate-access-with-shared-access-signature).
+For example, to read from the external storage specify the Read and List permissions and to export to the external storage specify the Write permissions. To learn more, see [delegate access by using a shared access signature](/rest/api/storageservices/delegate-access-with-shared-access-signature).
 
 Use the SAS URL as the connection string.
 
@@ -77,7 +77,7 @@ Use the SAS URL as the connection string.
 
 ## Azure AD access token
 
-To add a base-64 encoded Azure AD OAuth 2.0 access token, append `;token={AadToken}` to the connection string. The token must be for the resource `https://storage.azure.com/`.
+To add a base-64 encoded Azure AD access token, append `;token={AadToken}` to the connection string. The token must be for the resource `https://storage.azure.com/`.
 
 For more information on how to generate an Azure AD access token, see [get an access token for authorization](/azure/storage/common/identity-library-acquire-token).
 
