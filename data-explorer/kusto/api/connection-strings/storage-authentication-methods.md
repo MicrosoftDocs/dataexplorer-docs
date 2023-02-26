@@ -46,8 +46,6 @@ The following table summarizes the available authentication methods for differen
 
 To use impersonation, append `;impersonate` to the connection string. Azure Data Explorer impersonates the requestor's principal identity to access the resource.
 
-The principal must have the appropriate role-based access control (RBAC) role assignments on the storage to perform the requested action.
-
 [!INCLUDE [external-storage-authorization-note](../../../includes/external-storage-authorization-note.md)]
 
 ### Impersonation example
@@ -57,8 +55,6 @@ The principal must have the appropriate role-based access control (RBAC) role as
 ## Managed identity
 
 To add a managed identity, append `;managed_identity=...` to the connection string. Azure Data Explorer uses the managed identity, either system or user-assigned, to make requests and access resources.
-
-The managed identity must have the appropriate role-based access control (RBAC) role assignments on the storage to perform the requested action.
 
 The following table describes the syntax for the two managed identity authorization methods.
 
