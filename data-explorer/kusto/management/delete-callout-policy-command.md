@@ -11,7 +11,7 @@ Deletes a cluster's [callout policy](calloutpolicy.md). Azure Data Explorer clus
 
 ## Permissions
 
-You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
