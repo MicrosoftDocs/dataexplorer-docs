@@ -48,7 +48,7 @@ More predefined policies on your cluster may be observed with next query:
 
 ## Control commands
 
-You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run these commands.
+You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run these commands.
 
 **Show all configured callout policies**
 
