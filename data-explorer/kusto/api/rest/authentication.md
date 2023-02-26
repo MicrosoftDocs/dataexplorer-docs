@@ -59,10 +59,10 @@ Azure AD service principals represent applications or services that need access 
 1. Sign in to the Azure CLI.
 
       ```azurecli
-      az login
+      az login --output table
       ```
 
-1. Run one of the following commands to set your subscription to the subscription under which you want to create a service principal.
+1. Find the row where the column `Default` is `true`. Confirm that the subscription in that row is the subscription under which you want to create the service principal. To find subscription information, see [get subscription and tenant IDs in the Azure portal](/azure/azure-portal/get-subscription-tenant-id). If you need to switch to a different subscription, run one of the following commands.
 
       ```azurecli
       az account set --subscription <SUBSCRIPTION_ID>
