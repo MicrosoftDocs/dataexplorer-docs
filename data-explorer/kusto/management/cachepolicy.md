@@ -7,12 +7,11 @@ ms.date: 10/03/2021
 ---
 # Cache policy (hot and cold cache) 
 
-Azure Data Explorer stores its ingested data in reliable storage (most commonly Azure Blob Storage),
-away from its actual processing (such as Azure Compute) nodes. To speed up queries on that data, Azure Data Explorer caches it, or parts of it, on its processing nodes, SSD, or even in RAM. Azure Data Explorer includes a sophisticated cache mechanism designed to intelligently decide which data objects to cache. The cache enables Azure Data Explorer to describe the data artifacts that it uses, so that more important data can take priority. For example, column indexes and column data shards.
+Azure Data Explorer stores its ingested data in reliable storage (most commonly Azure Blob Storage), away from its actual processing (such as Azure Compute) nodes. To speed up queries on that data, Azure Data Explorer caches it, or parts of it, on its processing nodes' SSD, or even in RAM. Azure Data Explorer includes a sophisticated cache mechanism designed to intelligently decide which data objects to cache. The cache enables Azure Data Explorer to describe the data artifacts that it uses, so that more important data can take priority. For example, column indexes and column data shards.
 
 The best query performance is achieved when all ingested data is cached. Sometimes, certain data doesn't justify the cost of keeping it "warm" in local SSD storage.
 For example, many teams consider that rarely accessed older log records are of lesser importance.
-They prefer to have reduced performance when querying this data, rather than pay to keep it warm all the time.
+They prefer to have reduced performance when querying this data, rather than paying to keep it warm all the time.
 
 Azure Data Explorer cache provides a granular **cache policy** that customers can use to differentiate between: **hot data cache** and **cold data cache**. Azure Data Explorer cache uses 95% of the local SSD disk to keep all data that falls into the hot data cache category. If the cache policy requires more disk space than the available local SSD disk, the most recent data will preferentially be kept in the cache. The remaining 5% of the local SSD space is used to hold data that isn't categorized as hot. 
 
@@ -49,13 +48,13 @@ Kusto supports queries that are scoped down to hot cache data only.
 
 There are several query possibilities:
 * Add a client request property called `query_datascope` to the query.
-   Possible values: `default`, `all`, and `hotcache`.
+   Possible values are: `default`, `all`, and `hotcache`.
 * Use a `set` statement in the query text: `set query_datascope='...'`.
    Possible values are the same as for the client request property.
 * Add a `datascope=...` text immediately after a table reference in the query body. 
    Possible values are `all` and `hotcache`.
 
-The `default` value indicates use of the cluster default settings, which determine that the query should cover all data.
+The `default` value indicates use of the cluster default settings, which determines that the query should cover all data.
 
 If there's a discrepancy between the different methods, then `set` takes precedence over the client request property. Specifying a value for a table reference takes precedence over both.
 
@@ -72,17 +71,15 @@ T | union U | join (T datascope=all | where Timestamp < ago(365d)) on X
 
 Cache policy is independent of [retention policy](./retentionpolicy.md): 
 - Cache policy defines how to prioritize resources. Queries for important data are faster.
-- Retention policy defines the extent of the queryable data in a table/database (specifically, `SoftDeletePeriod`).
+- Retention policy defines for how long the data in a table/database will be available for querying (specifically, `SoftDeletePeriod`).
 
-Configure this policy to achieve the optimal balance 
-between cost and performance, based on the expected query pattern.
+Configure this policy to achieve the optimal balance between cost and performance, based on the expected query pattern.
 
 Example:
 * `SoftDeletePeriod` = 56d
 * `hot cache policy` = 28d
 
-In the example, the last 28 days of data will be on the cluster SSD and the
-additional 28 days of data will be stored in Azure blob storage.
+In the example, the last 28 days of data will be on the cluster SSD and the additional 28 days of data will be stored in Azure blob storage.
 You can run queries on the full 56 days of data.
  
 ## See also
