@@ -10,7 +10,7 @@ ms.date: 02/26/2023
 
 As an administrator, you can lock your cluster to prevent accidental deletion of data. The lock overrides any user permissions set using [Azure Data Explorer role-based access control](kusto/management/access-control/role-based-access-control.md).
 
-In the portal, you can set locks that prevent either deletions or modifications. These locks are called **Delete** and **Read-only**. The following table describes the permissions that each lock provides:
+In the Azure portal, you can set **Delete** or **Read-only** locks that prevent either deletions or modifications. The following table describes the permissions that each lock provides:
 
 | Lock level | Description |
 | --- | --- |
