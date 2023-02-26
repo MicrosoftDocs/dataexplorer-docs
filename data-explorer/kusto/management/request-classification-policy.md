@@ -9,7 +9,7 @@ ms.date: 04/30/2021
 
 The classification process assigns incoming requests to a workload group, based on the characteristics of the requests. Tailor the classification logic by writing a user-defined function, as part of a cluster-level request classification policy.
 
-In the absence of an enable request classification policy, all requests are classified into the `default` workload group.
+In the absence of an enabled request classification policy, all requests are classified into the `default` workload group.
 
 ## Policy object
 
@@ -27,14 +27,14 @@ The user-defined function has the following characteristics and behaviors:
 * If `IsEnabled` is set to `true` in the policy, the user-defined function is evaluated for every new request.
 * The user-defined function gives workload group context for the request for the full lifetime of the request.
 * The request is given the `default` workload group context in the following situations:
-    * The user-defined function returns an empty string, `default`, or the name of non-existent workload group
+    * The user-defined function returns an empty string, `default`, or the name of non-existent workload group.
     * The function fails for any reason.
 * Only one user-defined function can be designated at any given time.
 
 > [!IMPORTANT]
 > The request classification function will be evaluated for each request that runs on the cluster.
 > It is recommended to keep it as lightweight as possible, and not include heavy computations in it.
-> For example: Avoid having to evaluate many regular expressions as part of its execution.
+> For example, avoid having to evaluate many regular expressions as part of its execution.
 
 ### Requirements and limitations
 
@@ -85,7 +85,7 @@ case(current_principal_is_member_of('aadgroup=somesecuritygroup@contoso.com'), "
 
 ## Control commands
 
-Use the following control commands to manage a cluster's request classification.
+Use the following control commands to manage a cluster's request classification policy.
 
 | Command | Description |
 |--|--|
