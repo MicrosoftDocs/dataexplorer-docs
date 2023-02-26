@@ -16,8 +16,8 @@ Each element in the mapping list is constructed from three fields:
 
 |Property|Required|Description|
 |--|--|--|
-|`Column`| &check; |Target column name in the table|
-|`Datatype`| | Datatype with which to create the mapped column if it doesn't already exist in the table|
+|`Column`| &check; |Target column name in the table.|
+|`Datatype`| | Datatype with which to create the mapped column if it doesn't already exist in the table.|
 |`Properties`| | Property-bag containing properties specific for each mapping as described in each specific mapping type page.|
 
 [!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
@@ -51,7 +51,7 @@ Ingestion is possible without specifying `ingestionMapping` or `ingestionMapping
 
 |Format type|Format|Mapping logic|
 |---------|---------| ---------|
-|Tabular data formats with defined order of columns, such as delimiter-separated or single-line formats| `CSV`, `TSV`, `TSVe`, `PSV`, `SCSV`, `Txt`, `SOHsv`, `Raw`| All table columns are mapped in their respective order to data columns in order they appear in the data source. Column data type is taken from the table schema. |
+|Tabular data formats with defined order of columns, such as delimiter-separated or single-line formats| `CSV`, `TSV`, `TSVe`, `PSV`, `SCSV`, `Txt`, `SOHsv`, `Raw`| All table columns are mapped in their respective order to data columns in the order they appear in the data source. Column data type is taken from the table schema. |
 |Formats with named columns or records with named fields|`JSON`, `Parquet`, `Avro`, `ApacheAvro`, `Orc`, `W3CLOGFILE`| All table columns are mapped to data columns or record fields having the same name (case-sensitive). Column data type is taken from the table schema. |
 
 > [!WARNING]
