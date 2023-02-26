@@ -3,7 +3,7 @@ title: Authentication over HTTPS - Azure Data Explorer
 description: This article describes Authentication over HTTPS in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/12/2023
+ms.date: 02/26/2023
 ---
 # Authentication over HTTPS
 
@@ -26,25 +26,27 @@ There are many different methods to get an Azure AD access token. To learn more,
 
 ### Get an access token for a user principal using the Azure CLI
 
+The following steps return an access token for the user principal making the request. Make sure the user principal has access to the Azure Data Explorer resource you plan to access. For more information, see [role-based access control](../../management/access-control/role-based-access-control.md).
+
 1. Sign in to the Azure CLI.
 
-      ```dotnetcli
+      ```azurecli
       az login --output table
       ```
 
 1. Find the row where the column `Default` is `true`. Confirm that the subscription in that row is the subscription for which you want to create your Azure AD access token. To find subscription information, see [get subscription and tenant IDs in the Azure portal](/azure/azure-portal/get-subscription-tenant-id). If you need to switch to a different subscription, run one of the following commands.
 
-      ```dotnetcli
-      az account set --subscription <subscription-id>
+      ```azurecli
+      az account set --subscription <SUBSCRIPTION_ID>
       ```
 
-      ```dotnetcli
-      az account set --name "<subscription-name>"
+      ```azurecli
+      az account set --name "<SUBSCRIPTION_NAME>"
       ```
 
 1. Run the following command to get the access token.
 
-      ```dotnetcli
+      ```azurecli
       az account get-access-token \
         --resource "https://api.kusto.windows.net" \
         --query "accessToken"
@@ -52,23 +54,27 @@ There are many different methods to get an Azure AD access token. To learn more,
 
 ### Get an access token for a service principal using the Azure CLI
 
-The following steps guide you through using the Azure CLI to create an application principal and requesting an Azure AD bearer token for this principal.
+Azure AD service principals represent applications or services that need access to resources, usually in non-interactive scenarios such as API calls. The following steps guide you through using the Azure CLI to create a service principal and getting an Azure AD bearer token for this principal.
 
 1. Sign in to the Azure CLI.
 
-      ```dotnetcli
+      ```azurecli
       az login
       ```
 
 1. Set your subscription to the subscription under which you want to create a service principal.
 
-      ```dotnetcli
+      ```azurecli
       az account set --subscription <SUBSCRIPTION_ID>
       ```
 
-1. Create a service principal. This following command creates an Azure Active Directory Service Principal and returns the `appId`, `displayName`, `password`, and `tenantId` for the service principal.
+      ```azurecli
+      az account set --name "<SUBSCRIPTION_NAME>"
+      ```
 
-      ```dotnetcli
+1. Create a service principal. This following command creates an Azure AD service principal and returns the `appId`, `displayName`, `password`, and `tenantId` for the service principal.
+
+      ```azurecli
       az ad sp create-for-rbac -n <SERVICE_PRINCIPAL_NAME> 
       ```
 
@@ -82,7 +88,7 @@ The following steps guide you through using the Azure CLI to create an applicati
 
 1. Send an HTTP request to request an access token. Replace `<tenantId>`, `<appId>`, and `<password>` with the values obtained from the previous command. This request returns a JSON object containing the access token, which you can use as the value for the `Authorization` header in your requests to Azure Data Explorer.
 
-      ```dotnetcli
+      ```azurecli
       curl -X POST https://login.microsoftonline.com/<tenantId>/oauth2/token \
         -F grant_type=client_credentials \
         -F client_id=<appId> \
