@@ -62,7 +62,7 @@ Azure AD service principals represent applications or services that need access 
       az login
       ```
 
-1. Set your subscription to the subscription under which you want to create a service principal.
+1. Run one of the following commands to set your subscription to the subscription under which you want to create a service principal.
 
       ```azurecli
       az account set --subscription <SUBSCRIPTION_ID>
