@@ -26,9 +26,9 @@ Returns a JSON representation of the policy.
 Displays the auto delete policy that is applied on the table.
 
 ```kusto
-.show table [table_name] policy auto_delete
+.show table StormEvents policy auto_delete
 ```
 
 |Policy name | Entity name | Policy | Child entities | Entity type
 |---|---|---|---|---
-|AutoDeletePolicy | Table name | JSON serialization of the policy object | null | Table
+|AutoDeletePolicy | [database].[StormEvents] | { "ExpiryDate": "2021-12-01T00:00:00" "DeleteIfNotEmpty": true } |      | Table
