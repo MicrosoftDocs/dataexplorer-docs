@@ -17,6 +17,10 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `table` *TableName* `policy` `auto_delete`
 
+## Arguments
+
+*TableName* - Specify the name of the table. 
+
 ## Returns
 
 Returns a JSON representation of the policy.
