@@ -7,9 +7,9 @@ ms.date: 02/23/2023
 ---
 # Storage authentication methods
 
-Azure Data Explorer can interact with external storage in various ways, such as reading and exporting data. To authenticate to external storage, you must specify the storage connection string. The connection string defines the resource to access and its authentication information.
+To interact with external storage from Azure Data Explorer, you must specify the storage connection string. The connection string defines the resource to access and its authentication information.
 
-This article covers the following authentication methods:
+This article describes the following authentication methods:
 
 * [Impersonation](#impersonation)
 * [Managed identity](#managed-identity)
@@ -17,12 +17,6 @@ This article covers the following authentication methods:
 * [Azure AD access token](#azure-ad-access-token)
 * [Storage account access key](#storage-account-access-key)
 * [AWS Programmatic Access Keys](#aws-programmatic-access-keys)
-
-> [!NOTE]
-> When using impersonation, SAS keys, and managed identities the principal or managed identity performing the operation must have the appropriate role-based access control (RBAC) role assignments. To learn more, see:
->
-> * [Azure Blob Storage access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac)
-> * [Azure Data Lake Storage access control](/azure/storage/blobs/data-lake-storage-access-control)
 
 ## Privacy and security
 
@@ -33,9 +27,9 @@ The following table explains how to hide your private information using the `h` 
 |Purpose|Method|Syntax|
 |--|--|--|
 |Hide the entire connection string|Preface the connection string with `h`.|`h"<connection_string>"`|
-|Hide only the secret part of the string|Split the connection string into location and secret and add the `h` before the secret part.| `"<connection_string>"h"<secret>"`|
+|Hide only the secret part of the string|Split the connection string into the resource location and the secret information and add the `h` between the two.| `"<resource_location>"h"<secret>"`|
 
-## Authentication methods overview
+## Authentication methods availability
 
 There are different authentication methods available for different external storage types. The following table summarizes the available methods.
 
@@ -50,9 +44,11 @@ There are different authentication methods available for different external stor
 
 ## Impersonation
 
-To use impersonation, append `;impersonate` to the connection string. Azure Data Explorer uses the requestor's principal identity and impersonate this identity to access the resource.
+To use impersonation, append `;impersonate` to the connection string. Azure Data Explorer impersonates the requestor's principal identity to access the resource.
 
 The principal must have the appropriate role-based access control (RBAC) role assignments on the storage to perform the requested action.
+
+[!INCLUDE [external-storage-authorization-note](../../../includes/external-storage-authorization-note.md)]
 
 ### Impersonation example
 
@@ -68,22 +64,16 @@ The following table describes the syntax for the two managed identity authorizat
 
 |Managed identity type|Syntax|Example|
 |--|--|--|
-|System-assigned|`;managed_identity=system`|[See example](#system-assigned-managed-identity)|
-|User-assigned|`;managed_identity={object_id}`|[See example](#user-assigned-managed-identity)|
+|System-assigned|`;managed_identity=system`|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=system"`|
+|User-assigned|`;managed_identity={object_id}`|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b"`|
 
-### Managed identity examples
-
-#### System-assigned managed identity
-
-`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=system"`
-
-#### User-assigned managed identity
-
-`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b"`
+[!INCLUDE [external-storage-authorization-note](../../../includes/external-storage-authorization-note.md)]
 
 ## Shared Access (SAS) token
 
 In the Azure portal, [generate a SAS token](generate-sas-token.md) and use the SAS URL as the connection string.
+
+[!INCLUDE [external-storage-authorization-note](../../../includes/external-storage-authorization-note.md)]
 
 ### SAS example
 
