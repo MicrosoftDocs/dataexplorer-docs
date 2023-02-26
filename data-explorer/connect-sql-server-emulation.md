@@ -20,7 +20,9 @@ It's possible to configure the Azure AD tenant ID at the cluster level and remov
 
 ## Tuning options
 
-For customizing Azure Data Explorer according to your specific requirements, you might need to supply certain information that's not supported by the standard SQL Server connection configuration. To allow for such parameters, Azure Data Explorer lets you input these values into the TDS `Language` and `Application` properties. We recommend to use the `Language` property when possible.
+For customizing Azure Data Explorer according to your specific requirements, you might need to supply certain information that's not supported by the standard SQL Server connection configuration.
+
+To allow for such parameters, Azure Data Explorer lets you input these values into the TDS `Language` and `Application` properties. We recommend to use the `Language` property when possible.
 
 ### Supported tuning options
 
