@@ -73,7 +73,7 @@ You can use the ODBC data source from other applications to connect to Azure Dat
 
 ## Application authentication
 
-To use application principal authentication with ODBC, you must provide the Azure AD tenant ID. You can set this configuration in the connection string, the Windows registry, or the odbc.ini file. See examples in the following tabs.
+To use application principal authentication with ODBC, you must provide the Azure AD tenant ID. You can set this configuration in the connection string, the Windows registry, or the odbc.ini file. See examples in the following tabs. For more information, see [tuning options](connect-sql-server-emulation.md#tuning-options).
 
 # [Connection string](#tab/connection-string)
 

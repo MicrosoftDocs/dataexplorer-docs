@@ -14,7 +14,7 @@ SQL Server emulation allows you to connect to Azure Data Explorer using [ODBC](c
 
 Azure Data Explorer requires authentication through Azure AD.
 
-To authenticate an application principal from certain clients, you may need to include the tenant ID in the [tuning options](#tuning-options). For an example, see [connect with ODBC](connect-odbc.md#application-authentication).
+To authenticate an application principal, you need to include the tenant ID in the [tuning options](#tuning-options). For an example, see [connect with ODBC](connect-odbc.md#application-authentication).
 
 It's possible to configure the Azure AD tenant ID at the cluster level and remove the need to specify it from the client. To change the tenant ID at the cluster level, open a support request in the  [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
 
@@ -31,7 +31,7 @@ The following table describes the supported tuning options. To learn how to use 
 |Tuning option|Description|
 |--|--|
 |`MaxStringSize`|The default behavior of Azure Data Explorer is to consider string values as `NVARCHAR(MAX)`. For applications that don't work well with the `NVARCHAR(MAX)` type, you can cast the data to `NVARCHAR(`*n*`)`.|
-|`AadAuthority`|Used to specify the Azure AD tenant and principal details for authentication.|
+|`AadAuthority`|Used to specify the Azure AD tenant ID for authentication.|
 
 ### Syntax
 
@@ -49,5 +49,5 @@ The following table describes the supported tuning options. To learn how to use 
 The following example specifies the Azure AD tenant ID in an ODBC connection string using the `Language` property and the `AadAuthority` tuning option.
 
 ```odbc
-"Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@AadAuthority:<aad_tenant_id>"
+Driver={ODBC Driver 17 for SQL Server};Server=myadxcluster.westeurope.kusto.windows.net;Database=mydatabase;Authentication=ActiveDirectoryServicePrincipal;Language=any@AadAuthority:57B489CD-590C-417F-A8B9-E75D2F9A04C8,MaxStringSize:5000;UID=A9BCAB99-8AAD-4411-A232-37E2116B935E;PWD=mysecret
 ```
