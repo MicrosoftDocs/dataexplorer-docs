@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # .show database cache policy
 
-Show the database cache policy. To speed up queries on data, Azure Data Explorer caches it on its processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority.  
+Show the database cache policy. To speed up queries, Azure Data Explorer caches data on its processing nodes, in SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority.  
 
 ## Permissions
 
@@ -27,7 +27,7 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-The following example shows the table caching policy:
+The following example shows the database caching policy:
 
 ```kusto
 .show database MyDatabase policy caching 
