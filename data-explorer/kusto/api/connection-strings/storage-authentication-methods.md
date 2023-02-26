@@ -44,24 +44,22 @@ The following table summarizes the available authentication methods for differen
 
 ## Impersonation
 
-To use impersonation, append `;impersonate` to the connection string. Azure Data Explorer impersonates the requestor's principal identity to access the resource.
+Azure Data Explorer impersonates the requestor's principal identity to access the resource. To use impersonation, append `;impersonate` to the connection string.
+
+|Example|
+|--|
+|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;impersonate"`|
 
 [!INCLUDE [external-storage-authorization-note](../../../includes/external-storage-authorization-note.md)]
 
-### Impersonation example
-
-`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;impersonate"`.
-
 ## Managed identity
 
-To add a managed identity, append `;managed_identity=...` to the connection string. Azure Data Explorer uses the managed identity, either system or user-assigned, to make requests and access resources.
+Azure Data Explorer uses the managed identity, either system or user-assigned, to make requests and access resources. For a system-assigned managed identity, append `;managed_identity=system` to the connection string. For a user-assigned managed identity, append `;managed_identity={object_id}` to the connection string.
 
-The following table describes the syntax for the two managed identity authorization methods.
-
-|Managed identity type|Syntax|Example|
+|Managed identity type|Example|
 |--|--|--|
-|System-assigned|`;managed_identity=system`|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=system"`|
-|User-assigned|`;managed_identity={object_id}`|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b"`|
+|System-assigned|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=system"`|
+|User-assigned|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b"`|
 
 [!INCLUDE [external-storage-authorization-note](../../../includes/external-storage-authorization-note.md)]
 
@@ -69,11 +67,11 @@ The following table describes the syntax for the two managed identity authorizat
 
 In the Azure portal, [generate a SAS token](generate-sas-token.md) and use the SAS URL as the connection string.
 
+|Example|
+|--|
+|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"`|
+
 [!INCLUDE [external-storage-authorization-note](../../../includes/external-storage-authorization-note.md)]
-
-### SAS example
-
-`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"`.
 
 ## Azure AD access token
 
@@ -81,35 +79,23 @@ To add a base-64 encoded Azure AD OAuth 2.0 access token, append `;token={AadTok
 
 For more information on how to generate an Azure AD access token, see [get an access token for authorization](/azure/storage/common/identity-library-acquire-token).
 
-### Azure AD access token example
-
-`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im..."`.
+|Example|
+|--|
+|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im..."`|
 
 ## Storage account access key
 
-To add a storage account access key, append the key to the connection string.
+To add a storage account access key, append the key to the connection string. In Azure Blob Storage, append `;{key}` to the connection string. For Azure Data Lake Storage Gen 2, append `;sharedkey={key}` to the connection string.
 
-The following table describes the syntax for the two supported storage accounts.
-
-|Storage account|Syntax|Example|
+|Storage account|Example|
 |--|--|--|
-|Azure Blob Storage|`;{key}`|[See example](#azure-blob-storage)|
-|Azure Data Lake Storage Gen2|`;sharedkey={key}`|[See example](#azure-data-lake-storage-gen2)|
-
-### Storage account access key examples
-
-#### Azure Blob Storage
-
-`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;ljkAkl...=="`
-
-#### Azure Data Lake Storage Gen2
-
-`"abfss://fs@fabrikam.dfs.core.windows.net/path/to/file.csv;sharedkey=sv=...&sp=rwd"`
+|Azure Blob Storage|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;ljkAkl...=="`|
+|Azure Data Lake Storage Gen2|`"abfss://fs@fabrikam.dfs.core.windows.net/path/to/file.csv;sharedkey=sv=...&sp=rwd"`|
 
 ## AWS Programmatic Access Keys
 
 To add Amazon Web Services access keys, append `;AwsCredentials={ACCESS_KEY_ID},{SECRET_ACCESS_KEY}` to the connection string.
 
-### AWS Programmatic Access Keys example
-
-`"https://yourbucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AKIAIOSFODNN7EXAMPLE,wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"`.
+|Example|
+|--|
+|`"https://yourbucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AKIAIOSFODNN7EXAMPLE,wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"`|
