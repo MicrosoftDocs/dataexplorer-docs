@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # .alter capacity policy
 
-Change the cluster's [capacity policy](capacitypolicy.md). A capacity policy controls the computational resources for data management operations on the cluster.
+Replaces the cluster's [capacity policy](capacitypolicy.md) with the one provided in this command. A capacity policy controls the computational resources for data management operations on the cluster.
 
 > [!NOTE]
 > Changes to the cluster capacity policy could take up to 1 hour to take effect.
