@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # .alter callout policy
 
-Change the cluster [callout policy](calloutpolicy.md). Azure Data Explorer clusters can communicate with external services in many different scenarios. Cluster admins can manage the authorized domains for external calls, by updating the cluster's callout policy.
+Replaces the cluster [callout policy](calloutpolicy.md) with the one provided in this command. Azure Data Explorer clusters can communicate with external services in many different scenarios. Cluster admins can manage the authorized domains for external calls, by updating the cluster's callout policy.
 
 ## Permissions
 
