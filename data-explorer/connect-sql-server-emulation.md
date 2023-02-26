@@ -14,7 +14,7 @@ SQL Server emulation allows you to connect to Azure Data Explorer using [ODBC](c
 
 Azure Data Explorer requires authentication through Azure AD.
 
-To authenticate an application principal, certain clients may require you to include the tenant ID in the [tuning options](#tuning-options). For an example, see [connect with ODBC](connect-odbc.md#application-authentication).
+To authenticate an application principal from certain clients, you may need to include the tenant ID in the [tuning options](#tuning-options). For an example, see [connect with ODBC](connect-odbc.md#application-authentication).
 
 It's possible to configure the Azure AD tenant ID at the cluster level and remove the need to specify it from the client. To change the tenant ID at the cluster level, open a support request in the  [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) about configuring *SecuritySettings.TdsEndpointDefaultAuthority* with the required tenant ID.
 
