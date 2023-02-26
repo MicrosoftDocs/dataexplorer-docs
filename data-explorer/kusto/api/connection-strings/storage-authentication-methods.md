@@ -50,7 +50,7 @@ Azure Data Explorer impersonates the requestor's principal identity to access th
 |--|
 |`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;impersonate"`|
 
-[!INCLUDE [external-storage-authorization-note](../../../includes/external-storage-authorization-note.md)]
+The principal performing the operation must have the necessary permissions for the specific external storage. For example in Azure Blob Storage, to read from the blob the principal needs the Reader role and to export to the blob the principal needs the Contributor role. To learn more, see [Azure Blob Storage access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac) or [Azure Data Lake Storage access control](/azure/storage/blobs/data-lake-storage-access-control).
 
 ## Managed identity
 
@@ -61,17 +61,19 @@ Azure Data Explorer uses the managed identity, either system or user-assigned, t
 |System-assigned|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=system"`|
 |User-assigned|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b"`|
 
-[!INCLUDE [external-storage-authorization-note](../../../includes/external-storage-authorization-note.md)]
+The managed identity performing the operation must have the necessary permissions for the specific external storage. For example in Azure Blob Storage, to read from the blob the managed identity needs the Reader role and to export to the blob the managed identity needs the Contributor role. To learn more, see [Azure Blob Storage access control](/azure/storage/common/authorization-resource-provider#assign-management-permissions-with-azure-role-based-access-control-azure-rbac) or [Azure Data Lake Storage access control](/azure/storage/blobs/data-lake-storage-access-control).
 
 ## Shared Access (SAS) token
 
-In the Azure portal, [generate a SAS token](generate-sas-token.md) and use the SAS URL as the connection string.
+In the Azure portal, [generate a SAS token](generate-sas-token.md) with the required permissions.
+
+For example, to read from the external storage specify the **Read** and **List** permissions and to export to the external storage specify the **Write** permissions. To learn more, see [delegate access by using a shared access signature](/rest/api/storageservices/delegate-access-with-shared-access-signature).
+
+Use the SAS URL as the connection string.
 
 |Example|
 |--|
 |`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"`|
-
-[!INCLUDE [external-storage-authorization-note](../../../includes/external-storage-authorization-note.md)]
 
 ## Azure AD access token
 
