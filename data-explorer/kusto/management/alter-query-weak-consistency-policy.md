@@ -3,7 +3,7 @@ title: ".alter cluster policy query_weak_consistency management - Azure Data Exp
 description: "This article describes the `.alter cluster policy query_weak_consistency` command in Azure Data Explorer."
 ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 02/26/2023
 ---
 # .alter cluster policy query_weak_consistency
 
@@ -15,15 +15,18 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 ## Syntax
 
-This command has two flavors:
-* `.alter` `cluster` `policy` `query_weak_consistency` *PolicyObject* 
-* `.alter-merge` `cluster` `policy` `query_weak_consistency` *PolicyObject*
+`.alter` `cluster` `policy` `query_weak_consistency` *PolicyObject*
 
-The first flavor expects a complete JSON (that includes all policy properties), and any property that is omitted, will be set to its default. The second flavor may receive a subset of the policy properties, and only those will be modified (while the rest remains untouched). Examples will follow.
+`.alter-merge` `cluster` `policy` `query_weak_consistency` *PolicyObject*
 
-## Arguments
+> [!NOTE]
+> With `.alter`, any policy property that you don't define will be set to its default value. However, with `.alter-merge`, only the subset of the policy properties that you provide will be modified while the others remain unchanged.
 
-*PolicyObject* - a JSON policy object, see the [query weak consistency policy](./query-weak-consistency-policy.md#the-policy-object) for policy properties (also shown in the examples below).
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *PolicyObject* | string | &check; | A JSON policy object. For policy properties, see the [query weak consistency policy](./query-weak-consistency-policy.md#the-policy-object).|
 
 ## Result
 
