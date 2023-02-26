@@ -24,5 +24,3 @@ with a subset of the T-SQL query language. Microsoft Excel and Microsoft Power B
 * [Azure Data Explorer as linked server to SQL server](./linkedserver.md) - Configure the cluster as a linked server to the SQL server on-premises. 
 
 * [MS-TDS with Azure Active Directory](./aad.md) - Use Azure AD via TDS, for connecting to Azure Data Explorer.
-
-* [SQL Known Issues](./sqlknownissues.md) - Learn about the main differences between SQL Server's implementation of T-SQL and Azure Data Explorer.

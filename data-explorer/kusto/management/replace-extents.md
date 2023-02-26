@@ -3,7 +3,7 @@ title: .replace extents - Azure Data Explorer
 description: This article describes the replace extents command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/02/2020
+ms.date: 02/21/2023
 ---
 # .replace extents
 
@@ -12,11 +12,13 @@ It moves the specified extents from their source tables to the destination table
 and then drops the specified extents from the destination table.
 All of the drop and move operations are done in a single transaction.
 
-Requires [Table admin permission](./access-control/role-based-access-control.md) for the source and destination tables.
-
 > [!NOTE]
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (data shards) overview](extents-overview.md).
+
+## Permissions
+
+You must have at least [Table Admin](../management/access-control/role-based-access-control.md) permissions for the source and destination tables.
 
 ## Syntax
 
