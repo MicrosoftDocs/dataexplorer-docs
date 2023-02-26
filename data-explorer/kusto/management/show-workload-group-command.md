@@ -13,7 +13,7 @@ For more information, see [Workload groups](workload-groups.md).
 
 ## Permissions
 
-You must have [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
