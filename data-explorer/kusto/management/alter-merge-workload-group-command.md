@@ -9,7 +9,7 @@ ms.date: 02/21/2023
 
 Alters a workload group.
 
-For more information, see [Workload groups](workload-groups.md). To show the current workload group settings, use the [`.show` command](show-workload-group-command.md).
+For more information, see [Workload groups](workload-groups.md). To show the current workload group settings, use the [`.show workload_group` command](show-workload-group-command.md).
 
 ## Permissions
 
