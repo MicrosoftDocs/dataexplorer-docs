@@ -16,7 +16,7 @@ Each W3CLOGFILE mapping element may contain the following optional `properties`:
 |Property|Description|
 |--|--|
 |`Field`| W3CLOGFILE entry name|
-|`ConstantValue`| The constant value to be used for a column instead of some value inside W3CLOGFILE file.|
+|`ConstValue`| The constant value to be used for a column instead of some value inside W3CLOGFILE file.|
 |`Transform`|[mapping transformations](mappings.md#mapping-transformations) that should be applied on the content.|
 
 > [!NOTE]
