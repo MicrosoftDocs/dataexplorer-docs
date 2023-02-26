@@ -33,7 +33,7 @@ The following table explains how to hide your private information using the `h` 
 
 The following table summarizes the available authentication methods for different external storage types.
 
-| Authentication method | Blob storage | Azure Data Lake Storage Gen 2 | Azure Data Lake Storage Gen 1 | Amazon S3 | When should you use this method? |
+| Authentication method | Available in Blob storage? | Available in Azure Data Lake Storage Gen 2? | Available in Azure Data Lake Storage Gen 1? | Available in Amazon S3? | When should you use this method? |
 |---|---|---|---|---|---|
 | [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use for attended flows when you need complex access control over the external storage. For example, in continuous export flows. You can also restrict storage access at the user level. |
 | [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use in unattended flows, where no Azure Active Directory (Azure AD) principal can be derived to execute queries and commands. Managed identities are the only authentication solution. |
