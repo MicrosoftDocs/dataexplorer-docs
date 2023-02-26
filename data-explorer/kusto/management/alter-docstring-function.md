@@ -38,4 +38,4 @@ You must have at least [Function Admin](../management/access-control/role-based-
     
 |Name |Parameters |Body|Folder|DocString
 |---|---|---|---|---
-|MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|MyFolder|Updated docstring|
+|MyFunction1 |(myLimit: long)| {StormEvents &#124; take myLimit}|MyFolder|Updated docstring|
