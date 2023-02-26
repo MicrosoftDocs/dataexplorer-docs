@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # .alter function folder
 
-Alters the Folder value of an existing function.
+Alters the `Folder` value of an existing function.
 
 > [!NOTE]
 > If the function doesn't exist, an error is returned. For more information on how to create a new function, see [`.create function`](create-function.md).
@@ -22,11 +22,11 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 |Output parameter |Type |Description
 |---|---|--- 
-|Name  |String |The name of the function. 
+|Name  |string |The name of the function. 
 |Parameters  |String |The parameters that are required by the function.
-|Body  |String |(Zero or more) Let statements followed by a valid CSL expression that is evaluated upon function invocation.
-|Folder|String|A folder that is used for UI functions categorization. This parameter does not change the way function is invoked.
-|DocString|String|A description of the function for UI purposes.
+|Body  |string |(Zero or more) Let statements followed by a valid CSL expression that is evaluated upon function invocation.
+|Folder|string|A folder that is used for UI functions categorization. This parameter does not change the way function is invoked.
+|DocString|string|A description of the function for UI purposes.
 
 **Example** 
 
@@ -36,7 +36,7 @@ You must have at least [Function Admin](../management/access-control/role-based-
     
 |Name |Parameters |Body|Folder|DocString
 |---|---|---|---|---
-|MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|Updated Folder|Some DocString|
+|MyFunction1 |(myLimit: long)| {StormEvents &#124; take myLimit}|Updated Folder|Some DocString|
 
 ```kusto
 .alter function MyFunction1 folder @"First Level\Second Level"
@@ -44,4 +44,4 @@ You must have at least [Function Admin](../management/access-control/role-based-
     
 |Name |Parameters |Body|Folder|DocString
 |---|---|---|---|---
-|MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|First Level\Second Level|Some DocString|
+|MyFunction1 |(myLimit: long)| {StormEvents &#124; take myLimit}|First Level\Second Level|Some DocString|
