@@ -19,18 +19,18 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 ## Syntax
 
-`.create` `function` [ `ifnotexists` ] [ `with` `(`*PropertyName* `=` *PropertyValue*`,` ...`)` ]
-*FunctionName* `(`*Parameters*`)` `{` *Body* `}`
+`.create` `function` [ `ifnotexists` ] [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)` ]
+*functionName* `(`*parameters*`)` `{` *body* `}`
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 | `ifnotexists` | string | | If specified, the function will only be created if the function doesn't yet exist.|
-|*FunctionName* | string | &check; | The name of the function to create or alter.|
-| *PropertyName*, *PropertyValue* | string | | A comma-separated list of properties. See [supported properties](#supported-properties) to learn more about the optional property values.|
-|*Parameters*  | string | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
-|*Body*| string | &check; | A user defined function expression.|
+|*functionName* | string | &check; | The name of the function to create or alter.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+|*parameters*  | string | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
+|*body*| string | &check; | A user defined function expression.|
 
 ### Supported properties
 

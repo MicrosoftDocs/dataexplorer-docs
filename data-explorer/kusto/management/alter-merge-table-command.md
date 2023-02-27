@@ -19,21 +19,21 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `(`*ColumnName*`:`*ColumnType* [`,` ...]`)`  [`with` `(`*PropertyName* `=` *PropertyValue*`)`]
+`.alter-merge` `table` *tableName* `(`*columnName*`:`*columnType* [`,` ...]`)`  [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to alter. |
-| *ColumnName*, *ColumnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
-| *PropertyName*, *PropertyValue* | string | | A comma-separated list of properties. See [supported properties](#supported-properties) to learn more about the optional property values.|
+| *tableName* | string | &check; | The name of the table to alter. |
+| *columnName*, *columnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 > [!NOTE]
 > If you try to alter a column type, the command will fail. Use [`.alter column`](alter-column.md) instead.
 
 > [!TIP]
-> Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.
+> Use `.show table [tableName] cslschema` to get the existing column schema before you alter it.
 
 ### Supported properties
 

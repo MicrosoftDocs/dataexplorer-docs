@@ -17,10 +17,10 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 ## Syntax
 
 `.export` [`async`] [`compressed`]
-`to` *OutputDataFormat*
-`(` *StorageConnectionString* [`,` ...] `)`
-[`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
-`<|` *Query*
+`to` *outputDataFormat*
+`(` *storageConnectionString* [`,` ...] `)`
+[`with` `(` *propertyName* `=` *propertyValue* [`,` ...] `)`]
+`<|` *query*
 
 ## Arguments
 
@@ -30,10 +30,10 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 * `compressed`: If specified, the output storage artifacts are compressed
   as `.gz` files. See `compressionType` for compressing Parquet files as snappy. 
 
-* *OutputDataFormat*: Indicates the data format of the storage artifacts written
+* *outputDataFormat*: Indicates the data format of the storage artifacts written
   by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`.
 
-* *StorageConnectionString*: Specifies one or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md)
+* *storageConnectionString*: Specifies one or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md)
   that indicate which storage to write the data to. (More than one storage
   connection string may be specified for scalable writes.) Each such connection 
   string must indicate the credentials to use when writing to storage.
@@ -138,7 +138,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
         ) 
         <| 
         set query_fanout_nodes_percent = 50;
-        ExportQuery
+        Exportquery
     ```
 
 * Reduce concurrency of number of threads exporting in each node when using per shard export, by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_threads_percent` to the desired concurrency (percent of threads). The property can be set as part of the export query. For example, the following command will limit the number of threads writing to storage concurrently to 50% on each of the cluster nodes:
@@ -152,7 +152,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
         ) 
         <| 
         set query_fanout_threads_percent = 50;
-        ExportQuery
+        Exportquery
     ```
 
 * If exporting to a partitioned external table, setting the `spread`/`concurrency` properties can reduce concurrency (see details in the [command properties](export-data-to-an-external-table.md#syntax).

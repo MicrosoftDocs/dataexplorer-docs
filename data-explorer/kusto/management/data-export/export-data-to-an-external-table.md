@@ -17,13 +17,13 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 ## Syntax
 
-`.export` [`async`] `to` `table` *ExternalTableName* <br>
-[`with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <| *Query*
+`.export` [`async`] `to` `table` *externalTableName* <br>
+[`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
 
 ## Arguments
 
-* *ExternalTableName*: the name of the external table to export to.
-* *Query*: export query.
+* *externalTableName*: the name of the external table to export to.
+* *query*: export query.
 
 ## Properties
 
@@ -45,7 +45,7 @@ The following properties are supported as part of the export to external table c
 
 |Output parameter |Type |Description
 |---|---|---
-|ExternalTableName  |String |The name of the external table.
+|externalTableName  |String |The name of the external table.
 |Path|String|Output path.
 |NumRecords|String| Number of records exported to path.
 
@@ -83,7 +83,7 @@ ExternalBlob is a non-partitioned external table.
 .export to table ExternalBlob <| T
 ```
 
-|ExternalTableName|Path|NumRecords|
+|externalTableName|Path|NumRecords|
 |---|---|---|
 |ExternalBlob|http://storage1.blob.core.windows.net/externaltable1cont1/1_58017c550b384c0db0fea61a8661333e.csv|10|
 
@@ -106,7 +106,7 @@ dataformat=csv
 .export to table PartitionedExternalBlob <| T
 ```
 
-|ExternalTableName|Path|NumRecords|
+|externalTableName|Path|NumRecords|
 |---|---|---|
 |ExternalBlob|http://storageaccount.blob.core.windows.net/container1/CustomerName=customer1/2019/01/01/fa36f35c-c064-414d-b8e2-e75cf157ec35_1_58017c550b384c0db0fea61a8661333e.csv|10|
 |ExternalBlob|http://storageaccount.blob.core.windows.net/container1/CustomerName=customer2/2019/01/01/fa36f35c-c064-414d-b8e2-e75cf157ec35_2_b785beec2c004d93b7cd531208424dc9.csv|10|

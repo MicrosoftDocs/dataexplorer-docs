@@ -23,9 +23,9 @@ The command has the following limitations:
 ## Syntax
 
 `.create-or-alter` `materialized-view` <br>
-[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
-*ViewName* `on table` *SourceTableName* <br>
-`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
+[ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] <br>
+*viewName* `on table` *sourceTableName* <br>
+`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*query*<br>`}`
 
 For more information on arguments and properties, see the [`.create materialized-view`](materialized-view-create.md) command.
 

@@ -16,16 +16,16 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 ## Syntax
 
-`.alter` `function` [ `with` `(` *PropertyName* `=` *PropertyValue*`,` ... `)`] *FunctionName*`(`*Parameters*`)` `{` *Body* `}`
+`.alter` `function` [ `with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] *functionName*`(`*parameters*`)` `{` *body* `}`
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*FunctionName* | string | &check; | The name of the function to alter.|
-| *PropertyName*, *PropertyValue* | string | | A comma-separated list of properties. See [supported properties](#supported-properties) to learn more about the optional property values.|
-|*Parameters*  | string | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
-|*Body*| string | &check; | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
+|*functionName* | string | &check; | The name of the function to alter.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+|*parameters*  | string | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
+|*body*| string | &check; | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
 
 > [!NOTE]
 >

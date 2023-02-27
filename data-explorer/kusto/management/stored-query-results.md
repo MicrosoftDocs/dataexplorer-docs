@@ -22,7 +22,7 @@ Stored query results behave like tables, in that the order of records isn't pres
 > [!NOTE]
 >
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
-> * Query results are stored in a storage account associated with the cluster; the data is not cached in local SSD storage.
+> * query results are stored in a storage account associated with the cluster; the data is not cached in local SSD storage.
 
 ## Prerequisites
 
@@ -34,21 +34,21 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-`.set` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`] <| *Query*
+`.set` [`async`] `stored_query_result` *storedQueryResultName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
 
-`.set-or-replace` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`] <| *Query*
+`.set-or-replace` [`async`] `stored_query_result` *storedQueryResultName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 | *async* | string | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
-| *StoredQueryResultName* | string | &check; | Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.|
-| *PropertyName*, *PropertyValue* | string |  | One or more [supported properties](#supported-properties). |
-| *Query* | string | &check; | The text of a query whose results will be stored.|
+| *storedQueryResultName* | string | &check; | Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.|
+| *propertyName*, *propertyValue* | string |  | One or more [supported properties](#supported-properties). |
+| *query* | string | &check; | The text of a query whose results will be stored.|
 
 > [!NOTE]
-> If the *StoredQueryResultName* exists, `.set` will fail with an error. In contrast, `.set-or-replace` will delete the existing stored-query-result if it exists and then create a new one with the same name.
+> If the *storedQueryResultName* exists, `.set` will fail with an error. In contrast, `.set-or-replace` will delete the existing stored-query-result if it exists and then create a new one with the same name.
 
 ## Supported properties
 
@@ -68,7 +68,7 @@ A tabular subset of the records produced by the query, referred to as the "previ
 
 To retrieve a stored query result, use `stored_query_result()` function in your query:
 
-`stored_query_result` `(` 'StoredQueryResultName' `)` `|` ...
+`stored_query_result` `(` 'storedQueryResultName' `)` `|` ...
 
 ## Examples
 
@@ -158,7 +158,7 @@ Shows information on active stored query results.
 
 #### Returns
 
-| StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
+| StoredqueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
 | c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
 
@@ -168,13 +168,13 @@ Shows schema of active stored query result.
 
 #### Syntax
 
-`.show` `stored_query_result` *StoredQueryResultName* `schema`
+`.show` `stored_query_result` *storedQueryResultName* `schema`
 
 `Database Viewer` permission is required for invoking this command.
 
 #### Returns
 
-| StoredQueryResult | Schema |
+| StoredqueryResult | Schema |
 | ------------------- | ---- |
 | Events | [{"Column":"ID","Type":"guid"},{"Column":"EventName","Type":"string"},{"Column":"Time","Type":"datetime"}] |
 
@@ -184,7 +184,7 @@ Deletes an active stored query result created in the current database by the cur
 
 #### Syntax
 
-`.drop` `stored_query_result` *StoredQueryResultName*
+`.drop` `stored_query_result` *storedQueryResultName*
 
 `Database Viewer` permission is required for invoking this command.
 
@@ -192,7 +192,7 @@ Deletes an active stored query result created in the current database by the cur
 
 Returns information about deleted stored query results, for example:
 
-| StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
+| StoredqueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
 | c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
 
@@ -217,7 +217,7 @@ Example:
 .drop stored_query_results by user 'aadapp=c28e9b80-2808-bed525fc0fbb'
 ```
 
-| StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
+| StoredqueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
 | c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
 | 571f1a76-f5a9-49d4-b339-ba7caac19b46 | Traces | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 5212 | 100000 | 2020-10-07 14:31:01.8271231| 2020-10-08 14:31:01.8271231 |

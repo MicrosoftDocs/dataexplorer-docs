@@ -23,21 +23,21 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.alter` `table` *TableName* `(`*ColumnName*`:`*ColumnType* [`,` ...]`)`  [`with` `(`*PropertyName* `=` *PropertyValue*`)`]
+`.alter` `table` *tableName* `(`*columnName*`:`*columnType* [`,` ...]`)`  [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to alter. |
-| *ColumnName*, *ColumnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
-| *PropertyName*, *PropertyValue* | string | | A comma-separated list of properties. See [supported properties](#supported-properties) to learn more about the optional property values.|
+| *tableName* | string | &check; | The name of the table to alter. |
+| *columnName*, *columnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 > [!WARNING]
 > Existing columns that aren't specified in the command will be dropped. This could lead to unexpected data loss.
 
 > [!TIP]
-> Use `.show table [TableName] cslschema` to get the existing table schema before you alter it.
+> Use `.show table [tableName] cslschema` to get the existing table schema before you alter it.
 
 ### Supported properties
 

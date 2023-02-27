@@ -18,17 +18,17 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 ## Syntax
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*ColumnName*`:`*ColumnType* [`,` ...]`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlServerConnectionString*`)` [`with` `(`*PropertyName* `=` *PropertyValue*`)`]
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *tableName* `(`*columnName*`:`*columnType* [`,` ...]`)` `kind` `=` `sql` `table` `=` *sqlTableName* `(`*sqlServerConnectionString*`)` [`with` `(`*propertyName* `=` *propertyValue* [`,` ... ]`)`]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the external table. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.|
-| *ColumnName*, *ColumnType* | string | &check; | The name of a column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
-|*SqlTableName*| string | &check; | The name of the SQL table. Not including the database name (example: "MySqlTable" and not "db1.MySqlTable"). If the name of the table contains a period (".") you can use ['Name.of.the.table'] notation.|
-| *SqlServerConnectionString*| string |&check;| The connection string to the SQL Server. See the supported [SQL authentication methods](../api/connection-strings/sql-authentication-methods.md).|
-| *PropertyName*, *PropertyValue* | string | | A comma-separated list of properties. See [optional properties](#optional-properties) to learn more about the optional property values.|
+| *tableName* | string | &check; | The name of the external table. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.|
+| *columnName*, *columnType* | string | &check; | The name of a column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
+|*sqlTableName*| string | &check; | The name of the SQL table. Not including the database name (example: "MySqlTable" and not "db1.MySqlTable"). If the name of the table contains a period (".") you can use ['Name.of.the.table'] notation.|
+| *sqlServerConnectionString*| string |&check;| The connection string to the SQL Server. See the supported [SQL authentication methods](../api/connection-strings/sql-authentication-methods.md).|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [optional properties](#optional-properties).|
 
 > [!NOTE]
 > If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities.
@@ -71,7 +71,7 @@ with
 
 **Output**
 
-| TableName   | TableType | Folder         | DocString | Properties                            |
+| tableName   | TableType | Folder         | DocString | Properties                            |
 |-------------|-----------|----------------|-----------|---------------------------------------|
 | MySqlExternalTable | Sql       | ExternalTables | Docs      | {<br>  "TargetEntityKind": "sqltable`",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=mydatabase;",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
 

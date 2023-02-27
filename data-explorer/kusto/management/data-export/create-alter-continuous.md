@@ -15,21 +15,21 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ## Syntax
 
-`.create-or-alter` `continuous-export` *ContinuousExportName* <br>
+`.create-or-alter` `continuous-export` *continuousExportName* <br>
 [ `over` `(`*T1*, *T2* `)`] <br>
-`to` `table` *ExternalTableName* <br> 
-[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]<br>
+`to` `table` *externalTableName* <br> 
+[ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]<br>
 `<|` *Query*
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ContinuousExportName* | string | &check; | The name of the continuous export. Must be unique within the database. |
-| *ExternalTableName* | string | &check; | The name of the [external table](../../query/schema-entities/externaltables.md) export target. |
+| *continuousExportName* | string | &check; | The name of the continuous export. Must be unique within the database. |
+| *externalTableName* | string | &check; | The name of the [external table](../../query/schema-entities/externaltables.md) export target. |
 | *Query* | string | &check; | The query to export. |
 | *T1*, *T2* | string | | A comma-separated list of fact tables in the query. If not specified, all tables referenced in the query are assumed to be fact tables. If specified, tables *not* in this list are treated as dimension tables and won't be scoped, so all records will participate in all exports. See [continuous data export overview](continuous-data-export.md) for details. |
-| *PropertyName*, *PropertyValue* | string | | A comma-separated list of optional [properties](#properties).|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of optional [properties](#properties).|
 
 ## Properties
 
@@ -57,7 +57,7 @@ with
 <| T
 ```
 
-| Name | ExternalTableName | Query | ForcedLatency | IntervalBetweenRuns | CursorScopedTables | ExportProperties |
+| Name | externalTableName | Query | ForcedLatency | IntervalBetweenRuns | CursorScopedTables | ExportProperties |
 |--|--|--|--|--|--|--|
 | MyExport | ExternalBlob | S | 00:10:00 | 01:00:00 | [<br>  "['DB'].['S']"<br>] | {<br>  "SizeLimit": 104857600<br>} |
 

@@ -15,17 +15,16 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 ## Syntax
 
-`.export` [`async`] `to` `sql` *SqlTableName* *SqlConnectionString* [`with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]
- `<|` *Query*
+`.export` [`async`] `to` `sql` *sqlTableName* *sqlConnectionString* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
 
 Where:
 * *async*: Command runs in asynchronous mode (optional).
-* *SqlTableName* SQL database table name where the data is inserted.
+* *sqlTableName* SQL database table name where the data is inserted.
   To protect against injection attacks, this name is restricted.
-* *SqlConnectionString* is a `string` literal that follows the `ADO.NET`
+* *sqlConnectionString* is a `string` literal that follows the `ADO.NET`
   connection string format and describes the SQL endpoint and database
   to which you connect. For security reasons, the connection string is restricted.
-* *PropertyName*, *PropertyValue* are pairs of a name (identifier) and a value
+* *propertyName*, *propertyValue* are pairs of a name (identifier) and a value
   (string literal).
 
 Properties:
