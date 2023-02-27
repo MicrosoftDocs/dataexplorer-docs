@@ -35,7 +35,7 @@ The following steps describe how to use JDBC to connect to Azure Data Explorer.
     slf4j-api-1.7.21.jar
     ```
 
-1. Create an application to use the JDBC driver class *com.microsoft.sqlserver.jdbc.SQLServerDriver*. You can connect with a connection string of the following format. Replace `<cluster_name.region>` with you cluster name and cluster region and `<database_name>` with your database name.
+1. Create an application to use the JDBC driver class *com.microsoft.sqlserver.jdbc.SQLServerDriver*. You can connect with a connection string of the following format. Replace `<cluster_name.region>` with your cluster name and cluster region and `<database_name>` with your database name.
 
     ```java
     jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database_name>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryIntegrated

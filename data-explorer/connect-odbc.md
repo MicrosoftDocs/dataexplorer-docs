@@ -16,7 +16,7 @@ Using the following video, you can learn to create an ODBC connection.
 
 > [!VIDEO https://www.youtube.com/embed/qA5wxhrOwog]
 
-Alternatively, you can [configure the ODBC data source](#configure-the-odbc-data-source) as detailed below. 
+Alternatively, you can [configure the ODBC data source](#configure-the-odbc-data-source).
 
 In the article, you learn how to use the SQL Server ODBC driver, so you can connect to Azure Data Explorer from any application that supports ODBC. 
 
@@ -107,7 +107,7 @@ Language = any@AadAuthority:<aad_tenant_id>
 
 ## Example
 
-The following example shows how to connect to Azure Data Explorer using an ODBC driver in Powershell. For this to work, you must first follow the steps in [Configure the ODBC data source](#configure-the-odbc-data-source).
+The following example shows how to connect to Azure Data Explorer using an ODBC driver in PowerShell. For this to work, you must first follow the steps in [Configure the ODBC data source](#configure-the-odbc-data-source).
 
 ```powershell
 $conn = [System.Data.Common.DbProviderFactories]::GetFactory("System.Data.Odbc").CreateConnection()
