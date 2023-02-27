@@ -3,7 +3,7 @@ title: translate() - Azure Data Explorer
 description: This article describes translate() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/11/2019
+ms.date: 02/15/2023
 ---
 # translate()
 
@@ -14,15 +14,17 @@ The function searches for characters in the 'searchList' and replaces them with 
 
 `translate(`*searchList*`,` *replacementList*`,` *source*`)`
 
-## Arguments
+## Parameters
 
-* *searchList*: The list of characters that should be replaced
-* *replacementList*: The list of characters that should replace the characters in 'searchList'
-* *source*: A string to search
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *searchList* | string | &check; | The list of characters that should be replaced.|
+| *replacementList* | string | &check; | The list of characters that should replace the characters in *searchList*.|
+| *source* | string | &check; | A string to search.|
 
 ## Returns
 
-*source* after replacing all ocurrences of characters in 'replacementList' with the corresponding characters in 'searchList'
+*source* after replacing all occurrences of characters in 'replacementList' with the corresponding characters in 'searchList'
 
 ## Examples
 
