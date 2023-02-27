@@ -21,7 +21,7 @@ Converts unix-epoch nanoseconds to UTC datetime.
 
 ## Returns
 
-If the conversion is successful, the result will be a [datetime](./scalar-data-types/datetime.md) value. If conversion is not successful, result will be null.
+If the conversion is successful, the result is a [datetime](./scalar-data-types/datetime.md) value. If conversion isn't successful, result is null.
 
 ## See also
 
