@@ -180,7 +180,7 @@ external_table("ExternalTable")
 
 **Sample Output**
 
-|tableName|TableType|Folder|DocString|Properties|ConnectionStrings|Partitions|PathFormat|
+|TableName|TableType|Folder|DocString|Properties|ConnectionStrings|Partitions|PathFormat|
 |---------|---------|------|---------|----------|-----------------|----------|----------|
 |ExternalTable|Blob|ExternalTables|Docs|{"Format":"Csv","Compressed":false,"CompressionType":null,"FileExtension":null,"IncludeHeaders":"None","Encoding":null,"NamePrefix":null}|["https://storageaccount.blob.core.windows.net/container1;\*\*\*\*\*\*\*"]|[{"Mod":10,"Name":"CustomerId","ColumnName":"CustomerName","Ordinal":0},{"Function":"StartOfDay","Name":"Date","ColumnName":"Timestamp","Ordinal":1}]|"customer\_id=" CustomerId "/dt=" datetime\_pattern("yyyyMMdd",Date)|
 

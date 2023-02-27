@@ -48,7 +48,7 @@ The following properties are supported as part of the export to external table c
 
 |Output parameter |Type |Description
 |---|---|---
-|externalTableName  |String |The name of the external table.
+|ExternalTableName  |String |The name of the external table.
 |Path|String|Output path.
 |NumRecords|String| Number of records exported to path.
 
@@ -86,7 +86,7 @@ ExternalBlob is a non-partitioned external table.
 .export to table ExternalBlob <| T
 ```
 
-|externalTableName|Path|NumRecords|
+|ExternalTableName|Path|NumRecords|
 |---|---|---|
 |ExternalBlob|http://storage1.blob.core.windows.net/externaltable1cont1/1_58017c550b384c0db0fea61a8661333e.csv|10|
 
@@ -109,7 +109,7 @@ dataformat=csv
 .export to table PartitionedExternalBlob <| T
 ```
 
-|externalTableName|Path|NumRecords|
+|ExternalTableName|Path|NumRecords|
 |---|---|---|
 |ExternalBlob|http://storageaccount.blob.core.windows.net/container1/CustomerName=customer1/2019/01/01/fa36f35c-c064-414d-b8e2-e75cf157ec35_1_58017c550b384c0db0fea61a8661333e.csv|10|
 |ExternalBlob|http://storageaccount.blob.core.windows.net/container1/CustomerName=customer2/2019/01/01/fa36f35c-c064-414d-b8e2-e75cf157ec35_2_b785beec2c004d93b7cd531208424dc9.csv|10|
