@@ -3,7 +3,7 @@ title: .alter-merge table - Azure Data Explorer
 description: This article describes the .alter-merge table command.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/29/2022
+ms.date: 02/21/2023
 ---
 # .alter-merge table
 
@@ -12,7 +12,10 @@ The `.alter-merge table` command:
 * Secures data in existing columns
 * Adds new columns, `docstring`, and folder to an existing table
 * Must run in the context of a specific database that scopes the table name
-* Requires [Table Admin permission](./access-control/role-based-access-control.md)
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

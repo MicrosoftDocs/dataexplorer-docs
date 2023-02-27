@@ -3,7 +3,7 @@ title: Enable and disable materialized view commands - Azure Data Explorer
 description: This article describes how to enable or disable materialized view commands in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/30/2020
+ms.date: 02/21/2023
 ---
 
 # .disable | .enable materialized-view
@@ -21,6 +21,10 @@ A materialized view can be disabled in any of the following ways:
 > * You can enable a materialized view that has previously been disabled. When re-enabled, the materialized view will continue materializing from the point it left off, and no records will be skipped. If the view was disabled for a long time, it may take a long time to catch up.
 
 Disabling a view is only recommended if you suspect that the view is impacting your cluster's health.
+
+## Permissions
+
+You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) to run these commands.
 
 ## Syntax
 

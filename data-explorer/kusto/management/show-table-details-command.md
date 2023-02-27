@@ -3,12 +3,16 @@ title: .show table details - Azure Data Explorer
 description: This article describes .show table details in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/21/2023
 ---
 # .show table details
 Returns a set that contains the specified table or all tables in the database with a detailed summary of each table's properties.
 
-Requires [Database viewer permission](./access-control/role-based-access-control.md).
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
+## Syntax
 
 ```kusto
 .show table T1 details
@@ -16,7 +20,7 @@ Requires [Database viewer permission](./access-control/role-based-access-control
 .show tables details
 ```
 
-**Output**
+## Output
 
 | Output parameter           | Type     | Description                                                                                     |
 |----------------------------|----------|-------------------------------------------------------------------------------------------------|

@@ -118,7 +118,7 @@ StormEvents
 |WASHINGTON|1|2|
 |WASHINGTON|1|10|
 
-This query returns the top 1 EventType by total injuries for each State that starts with 'W':
+This query returns the top 2 EventType by total injuries for each State that starts with 'W':
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOsQ7CMAxE936Ft7YLAzsbDMytxJwiixiRpHKurYL68STphAdLp+d78oCg7rayR2x22iwr0wADpgijiJvAUvtoM5xzFkjwZMXjFKH57JXoQt5AVqYpHdWG8nR1x8U5o/JlGgPM5+7fC6twzKWMupJLvIryE30x1F/GNB+WnRBmOhfwL6i0/wEF39OovgAAAA==" target="_blank">Run the query</a>

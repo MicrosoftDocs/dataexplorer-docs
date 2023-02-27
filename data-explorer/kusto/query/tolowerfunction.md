@@ -1,13 +1,13 @@
 ---
 title: tolower() - Azure Data Explorer
-description: This article describes tolower() in Azure Data Explorer.
+description: Learn how to use the tolower() function to convert the input string to lower case.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/22/2023
 ---
 # tolower()
 
-Converts input string to lower case.
+Converts the input string to lower case.
 
 ## Syntax
 

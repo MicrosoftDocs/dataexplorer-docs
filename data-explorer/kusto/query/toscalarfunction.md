@@ -1,9 +1,9 @@
 ---
 title: toscalar() - Azure Data Explorer
-description: This article describes toscalar() in Azure Data Explorer.
+description: Learn how to use the toscalar() function to return a scalar constant value of the evaluated expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/23/2023
 ---
 # toscalar()
 
@@ -11,7 +11,7 @@ Returns a scalar constant value of the evaluated expression.
 
 This function is useful for queries that require staged calculations. For example,
 calculate a total count of events, and then use the result to filter groups
-that exceed a certain percent of all events. 
+that exceed a certain percent of all events.
 
 Any two statements must be separated by a semicolon.
 
@@ -96,8 +96,8 @@ range z from Start to End step Step | extend start=Start, end=End, step=Step
 |9|1|9|2|
 
 The following example shows how `toscalar` can be used to "fix" an expression
-so that it'll be calculated precisely once. In this case, the expression being
-calculated returns a different value per evaluation. 
+so that it will be calculated precisely once. In this case, the expression being
+calculated returns a different value per evaluation.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XLsQqAIBRG4T3wHf5RoUXX8FlC8nYJTEONDHr4bGo9HydQBWtY1FQWF1yWka6Zz81LpSYxhM9N9z/3ml1kQsOa0w7dXxiUSge0GB5QqxQ9mmU94rZsXqEZQWVlAAAA" target="_blank">Run the query</a>

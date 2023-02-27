@@ -1,9 +1,9 @@
 ---
 title: top-hitters operator - Azure Data Explorer
-description: This article describes top-hitters operator in Azure Data Explorer.
+description: Learn how to use the top-hitters operator  to return an approximation for the most popular distinct values in the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/22/2023
 ---
 # top-hitters operator
 

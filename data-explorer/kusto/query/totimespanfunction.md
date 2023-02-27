@@ -1,13 +1,13 @@
 ---
 title: totimespan() - Azure Data Explorer
-description: This article describes totimespan() in Azure Data Explorer.
+description: Learn how to use the totimespan() function to convert the input to a `timespan` scalar value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/23/2023
 ---
 # totimespan()
 
-Converts input to [timespan](./scalar-data-types/timespan.md) scalar.
+Converts the input to a [timespan](./scalar-data-types/timespan.md) scalar value.
 
 > **Deprecated aliases:** totime()
 

@@ -1,13 +1,13 @@
 ---
 title: tostring() - Azure Data Explorer
-description: This article describes tostring() in Azure Data Explorer.
+description: Learn how to use the tostring() function to convert the input value to a string representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/23/2023
 ---
 # tostring()
 
-Converts input to a string representation.
+Converts the input to a string representation.
 
 ## Syntax
 

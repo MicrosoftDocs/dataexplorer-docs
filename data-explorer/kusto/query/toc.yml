@@ -800,7 +800,8 @@ items:
     href: todatetimefunction.md
   - name: todecimal()
     href: todecimalfunction.md
-  - name: todouble(), toreal()
+  - name: todouble()
+    displayName: toreal()
     href: todoublefunction.md
   - name: parse_json()
     displayName: toobject(), parsejson(), todynamic()

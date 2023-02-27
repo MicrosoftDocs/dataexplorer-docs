@@ -3,31 +3,37 @@ title: strrep() - Azure Data Explorer
 description: Learn how to use the strrep() function to repeat the input value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/01/2023
+ms.date: 02/05/2023
 ---
 # strrep()
 
-Repeats the given [string](./scalar-data-types/string.md) a specified number of times.
-
-* If the first or third arguments aren't of a string type, they'll forcibly be converted to a string.
+Replicates a [string](scalar-data-types/string.md) the number of times specified.
 
 ## Syntax
 
-`strrep(`*value*,*multiplier*,[*delimiter*]`)`
+`strrep(`*value*`,` *multiplier*`,` [ *delimiter* ]`)`
 
-## Arguments
+## Parameters
 
-* *value*: input expression
-* *multiplier*: positive integer value (from 1 to 1024)
-* *delimiter*: an optional string expression (default: empty string)
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* | string | &check; | The string to replicate. |
+| *multiplier* | int | &check; | The amount of times to replicate the string. Must be a value from 1 to 1024.|
+| *delimiter* | string | | The delimeter used to separate the string replications. The default delimiter is an empty string.|
+
+> [!NOTE]
+> If *value* or *delimiter* isn't a `string`, they'll be forcibly converted to string.
 
 ## Returns
 
-Value repeated for a specified number of times, concatenated with *delimiter*.
+The *value* string repeated the number of times as specified by *multiplier*, concatenated with *delimiter*.
 
-In case if *multiplier* is more than maximal allowed value (1024), input string will be repeated 1024 times.
+If *multiplier* is more than the maximal allowed value of 1024, the input string will be repeated 1024 times.
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgrys+NLy4pUrBVAJJFqQUa6o5Ozuo6CkaaOhBJkCq4pKGRsY6xjrqeOky2JDM3FSFtXKxjpKOuoK4JAHPzDvRdAAAA" target="_blank">Run the query</a>
 
 ```kusto
 print from_str = strrep('ABC', 2), from_int = strrep(123,3,'.'), from_time = strrep(3s,2,' ')

@@ -1,9 +1,9 @@
 ---
 title: toupper() - Azure Data Explorer
-description: This article describes toupper() in Azure Data Explorer.
+description: Learn how to use the toupper() function to convert a string to upper case.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/23/2023
 ---
 # toupper()
 

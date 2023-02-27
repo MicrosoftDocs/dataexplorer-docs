@@ -3,11 +3,15 @@ title: ".alter materialized view cache policy command - Azure Data Explorer"
 description: "This article describes the .alter materialized view cache policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 01/06/2022
+ms.date: 02/21/2023
 ---
 # .alter materialized view cache policy
 
 Change the materialized view cache policy. To speed up queries on data, Azure Data Explorer caches it on its processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
