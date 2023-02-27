@@ -24,7 +24,7 @@ The function searches for characters in the 'searchList' and replaces them with 
 
 ## Returns
 
-*source* after replacing all ocurrences of characters in 'replacementList' with the corresponding characters in 'searchList'
+*source* after replacing all occurrences of characters in 'replacementList' with the corresponding characters in 'searchList'
 
 ## Examples
 
