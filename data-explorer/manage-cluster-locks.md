@@ -17,7 +17,7 @@ In the Azure portal, you can set **Delete** or **Read-only** locks that prevent 
 | **Delete** | Authorized users can read and modify a cluster, but they can't delete it. |
 | **Read-only** | Authorized users can read a cluster, but they can't delete or update it. Applying this lock is similar to restricting all authorized users to the permissions that the Reader role provides. |
 
-This article describes how to lock and unlock your cluster using the Azure portal. For more information about locking Azure resources, see [Lock your resources to protect your infrastructure](/azure/azure-resource-manager/management/lock-resources?tabs=json).
+This article describes how to lock and unlock your cluster using the Azure portal. For more information about locking Azure resources using the portal, see [Lock your resources to protect your infrastructure](/azure/azure-resource-manager/management/lock-resources). For information about how to lock your cluster programmatically, see [Management Locks - Create Or Update At Resource Level](/rest/api/resources/management-locks/create-or-update-at-resource-level).
 
 ## Lock your cluster in the Azure portal
 
@@ -38,4 +38,4 @@ To delete a lock, in the row where the lock appears, select the **Delete** butto
 
 ## Next steps
 
-- [Manage Azure Data Explorer cluster permissions](manage-cluster-permissions.md)
+- [Manage cluster horizontal scaling (scale out)](manage-cluster-horizontal-scaling.md)
