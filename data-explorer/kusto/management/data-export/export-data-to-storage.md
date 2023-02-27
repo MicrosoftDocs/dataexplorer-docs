@@ -24,8 +24,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 ## Arguments
 
-* `async`: If specified, indicates that the command runs in asynchronous mode.
-  See below for more details on the behavior in this mode.
+* `async`: If specified, indicates that the command runs in [asynchronous mode](#asynchronous-mode).
 
 * `compressed`: If specified, the output storage artifacts are compressed
   as `.gz` files. See `compressionType` for compressing Parquet files as snappy. 
@@ -51,16 +50,16 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 | Property | Type | Description |
 |--|--|--|
 | `includeHeaders` | `string` | For `csv`/`tsv` output, controls the generation of column headers. Can be one of `none` (default; no header lines emitted), `all` (emit a header line into every storage artifact), or `firstFile` (emit a header line into the first storage artifact only). |
-| `fileExtension` | `string` | Indicates the "extension" part of the storage artifact (for example, `.csv` or `.tsv`). If compression is used, `.gz` will be appended as well. |
-| `namePrefix` | `string` | Indicates a prefix to add to each generated storage artifact name. A random prefix will be used if left unspecified. |
+| `fileExtension` | `string` | Indicates the "extension" part of the storage artifact (for example, `.csv` or `.tsv`). If compression is used, `.gz` is appended as well. |
+| `namePrefix` | `string` | Indicates a prefix to add to each generated storage artifact name. A random prefix is used if left unspecified. |
 | `encoding` | `string` | Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`. |
 | `compressionType` | `string` | Indicates the type of compression to use. Possible values are `gzip` or `snappy`. Default is `gzip`. `snappy` can (optionally) be used for `parquet` format. |
-| `distribution` | `string` | Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread will write to storage. Otherwise, export will write from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluateoperator.md). Defaults to `per_shard`. |
-| `persistDetails` | `bool` | Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller does not require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
-| `sizeLimit` | `long` | The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100MB (default) to 1GB. |
-| `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100000 records. |
+| `distribution` | `string` | Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread writes to storage. Otherwise, export writes from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluateoperator.md). Defaults to `per_shard`. |
+| `persistDetails` | `bool` | Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
+| `sizeLimit` | `long` | The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100 MB (default) to 1 GB. |
+| `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100,000 records. |
 | `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
-| `useNativeParquetWriter` | `bool` | Use the new export implementaion when exporting to Parquet, this implementation is a more performant, resource light export mechanism. Note that an exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
+| `useNativeParquetWriter` | `bool` | Use the new export implementation when exporting to Parquet, this implementation is a more performant, resource light export mechanism. Note that an exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
 
 ## Returns
 
@@ -156,11 +155,11 @@ When the number of extents/nodes is large, this may lead to high load on storage
     ```
 
 * If exporting to a partitioned external table, setting the `spread`/`concurrency` properties can reduce concurrency (see details in the [command properties](export-data-to-an-external-table.md#syntax).
-* If neither of the above work, is also possible to completely disable distribution by setting the `distributed` property to false, but this is not recommended, as it may significantly impact the command performance.
+* If neither of the above work, is also possible to completely disable distribution by setting the `distributed` property to false, but this isn't recommended, as it may significantly effect the command performance.
 
 ### Authorization failures
 
-Authentication or authorization failures during export commands can occur when the credentials provided in the storage connection string aren't permitted to write to storage. If you are using `impersonate` or a user-delegated SAS token for the export command, the [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role is required to write to the storage account. For more details, see [Storage connection strings](../../api/connection-strings/storage-connection-strings.md).
+Authentication or authorization failures during export commands can occur when the credentials provided in the storage connection string aren't permitted to write to storage. If you're using `impersonate` or a user-delegated SAS token for the export command, the [Storage Blob Data Contributor](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role is required to write to the storage account. For more information, see [Storage connection strings](../../api/connection-strings/storage-connection-strings.md).
 
 ## Data types mapping
 
