@@ -24,8 +24,7 @@ Where:
 * *sqlConnectionString* is a `string` literal that follows the `ADO.NET`
   connection string format and describes the SQL endpoint and database
   to which you connect. For security reasons, the connection string is restricted.
-* *propertyName*, *propertyValue* are pairs of a name (identifier) and a value
-  (string literal).
+* *propertyName*, *propertyValue* are key-value pairs of the following supported properties.
 
 Properties:
 
