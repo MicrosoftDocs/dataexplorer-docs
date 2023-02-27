@@ -3,7 +3,7 @@ title: Export data to an external table - Azure Data Explorer
 description: This article describes Export data to an external table in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 02/27/2023
 ---
 # Export data to an external table
 
@@ -20,10 +20,13 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 `.export` [`async`] `to` `table` *externalTableName* <br>
 [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
 
-## Arguments
+## Parameters
 
-* *externalTableName*: the name of the external table to export to.
-* *query*: export query.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *externalTableName* | string | &check; | The name of the external table to which to export.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of optional [properties](#properties).|
+| *query* | string | &check; | The export query.|
 
 ## Properties
 
