@@ -22,7 +22,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 ### Syntax
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema*`)` `kind` `=` `storage` [`partition` `by` `(`*Partitions*`)` [`pathformat` `=` `(`*path-format*`)`]] `dataformat` `=` *Format* `(`*StorageConnectionString* [`,` ...] `)` [`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`]  
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *tableName* `(`*schema*`)` `kind` `=` `storage` [`partition` `by` `(`*partitions*`)` [`pathformat` `=` `(`*path-format*`)`]] `dataformat` `=` *format* `(`*storageConnectionString* [`,` ...] `)` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]  
 
 Creates or alters a new external table in the database in which the command is executed.
 
@@ -35,14 +35,14 @@ Creates or alters a new external table in the database in which the command is e
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|An external table name that adheres to the [entity names](../query/schema-entities/entity-names.md) rules. An external table can't have the same name as a regular table in the same database.|
-|*Schema*|string|&check;|The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*. If the schema is unknown, use [infer\_storage\_schema](../query/inferstorageschemaplugin.md) to infer the schema based on external file contents.|
-|*Kind*|string|&check;|The type of the external table. In this case, `storage` should be used instead of `sql`. Deprecated terms: `blob` for Blob Azure Storage or Azure Data Lake Gen 2 Storage, and `adl` for Azure Data Lake Gen 1 Storage.|
-|*Partitions*|string|| A comma-separated list of columns by which the external table is partitioned. Partition column can exist in the data file itself, or as part of the file path. See [partitions formatting](#partitions-formatting) to learn how this value should look.|
-|*PathFormat*|string||An external data folder URI path format to use with partitions. See [partitions formatting](#partitions-formatting) for more information.|
-|*Format*|string|&check;|The data format, which can be any of the [ingestion formats](../../ingestion-supported-formats.md). It's recommended to use the `Parquet` format for external tables to improve query and export performance, unless you use `JSON` paths mapping. When using an external table for [export scenario](data-export/export-data-to-an-external-table.md), you're limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.|
-|*StorageConnectionString*|string|&check;|One or more comma-separated paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 file systems or Azure Data Lake Gen 1 containers, including credentials. The external table storage type is determined by the provided connection strings. See [storage connection strings](../api/connection-strings/storage-connection-strings.md) for details.|
-|*PropertyName*, *PropertyValue*|string||A comma-separated list of properties. See [optional properties](#optional-properties).|
+|*tableName*|string|&check;|An external table name that adheres to the [entity names](../query/schema-entities/entity-names.md) rules. An external table can't have the same name as a regular table in the same database.|
+|*schema*|string|&check;|The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*. If the schema is unknown, use [infer\_storage\_schema](../query/inferstorageschemaplugin.md) to infer the schema based on external file contents.|
+|*kind*|string|&check;|The type of the external table. In this case, `storage` should be used instead of `sql`. Deprecated terms: `blob` for Blob Azure Storage or Azure Data Lake Gen 2 Storage, and `adl` for Azure Data Lake Gen 1 Storage.|
+|*partitions*|string|| A comma-separated list of columns by which the external table is partitioned. Partition column can exist in the data file itself, or as part of the file path. See [partitions formatting](#partitions-formatting) to learn how this value should look.|
+|*pathFormat*|string||An external data folder URI path format to use with partitions. See [partitions formatting](#partitions-formatting) for more information.|
+|*format*|string|&check;|The data format, which can be any of the [ingestion formats](../../ingestion-supported-formats.md). It's recommended to use the `Parquet` format for external tables to improve query and export performance, unless you use `JSON` paths mapping. When using an external table for [export scenario](data-export/export-data-to-an-external-table.md), you're limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.|
+|*storageConnectionString*|string|&check;|One or more comma-separated paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 file systems or Azure Data Lake Gen 1 containers, including credentials. The external table storage type is determined by the provided connection strings. See [storage connection strings](../api/connection-strings/storage-connection-strings.md) for details.|
+|*propertyName*, *propertyValue*|string||A comma-separated list of key-value property pairs. See [optional properties](#optional-properties).|
 
 > [!TIP]
 > Provide more than a single storage account to avoid storage throttling while [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided.
@@ -180,7 +180,7 @@ external_table("ExternalTable")
 
 **Sample Output**
 
-|TableName|TableType|Folder|DocString|Properties|ConnectionStrings|Partitions|PathFormat|
+|tableName|TableType|Folder|DocString|Properties|ConnectionStrings|Partitions|PathFormat|
 |---------|---------|------|---------|----------|-----------------|----------|----------|
 |ExternalTable|Blob|ExternalTables|Docs|{"Format":"Csv","Compressed":false,"CompressionType":null,"FileExtension":null,"IncludeHeaders":"None","Encoding":null,"NamePrefix":null}|["https://storageaccount.blob.core.windows.net/container1;\*\*\*\*\*\*\*"]|[{"Mod":10,"Name":"CustomerId","ColumnName":"CustomerName","Ordinal":0},{"Function":"StartOfDay","Name":"Date","ColumnName":"Timestamp","Ordinal":1}]|"customer\_id=" CustomerId "/dt=" datetime\_pattern("yyyyMMdd",Date)|
 
@@ -238,7 +238,7 @@ Returns a list of all files that will be processed when querying a given externa
 
 **Syntax:** 
 
-`.show` `external` `table` *TableName* `artifacts` [`limit` *MaxResults*]
+`.show` `external` `table` *tableName* `artifacts` [`limit` *MaxResults*]
 
 where *MaxResults* is an optional parameter, which can be set to limit the number of results.
 
@@ -275,7 +275,7 @@ For partitioned table, `Partition` column will contain extracted partition value
 
 ## .create external table mapping
 
-`.create` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
+`.create` `external` `table` *ExternaltableName* `mapping` *MappingName* *MappingInJsonFormat*
 
 Creates a new mapping. For more information, see [Data Mappings](./json-mapping.md).
 
@@ -293,7 +293,7 @@ Creates a new mapping. For more information, see [Data Mappings](./json-mapping.
 
 ## .alter external table mapping
 
-`.alter` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
+`.alter` `external` `table` *ExternaltableName* `mapping` *MappingName* *MappingInJsonFormat*
 
 Alters an existing mapping.
 
@@ -311,9 +311,9 @@ Alters an existing mapping.
 
 ## .show external table mappings
 
-`.show` `external` `table` *ExternalTableName* `mapping` *MappingName*
+`.show` `external` `table` *ExternaltableName* `mapping` *MappingName*
 
-`.show` `external` `table` *ExternalTableName* `mappings`
+`.show` `external` `table` *ExternaltableName* `mappings`
 
 Show the mappings (all or the one specified by name).
 
@@ -333,7 +333,7 @@ Show the mappings (all or the one specified by name).
 
 ## .drop external table mapping
 
-`.drop` `external` `table` *ExternalTableName* `mapping` *MappingName*
+`.drop` `external` `table` *ExternaltableName* `mapping` *MappingName*
 
 Drops the mapping from the database.
 
