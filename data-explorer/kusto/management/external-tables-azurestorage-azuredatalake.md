@@ -39,7 +39,7 @@ Creates or alters a new external table in the database in which the command is e
 |*schema*|string|&check;|The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*. If the schema is unknown, use [infer\_storage\_schema](../query/inferstorageschemaplugin.md) to infer the schema based on external file contents.|
 |*kind*|string|&check;|The type of the external table. In this case, `storage` should be used instead of `sql`. Deprecated terms: `blob` for Blob Azure Storage or Azure Data Lake Gen 2 Storage, and `adl` for Azure Data Lake Gen 1 Storage.|
 |*partitions*|string|| A comma-separated list of columns by which the external table is partitioned. Partition column can exist in the data file itself, or as part of the file path. See [partitions formatting](#partitions-formatting) to learn how this value should look.|
-|*pathFormat*|string||An external data folder URI path format to use with partitions. See [partitions formatting](#partitions-formatting) for more information.|
+|*pathFormat*|string||An external data folder URI path format to use with partitions. See [partitions formatting](#partitions-formatting).|
 |*format*|string|&check;|The data format, which can be any of the [ingestion formats](../../ingestion-supported-formats.md). It's recommended to use the `Parquet` format for external tables to improve query and export performance, unless you use `JSON` paths mapping. When using an external table for [export scenario](data-export/export-data-to-an-external-table.md), you're limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.|
 |*storageConnectionString*|string|&check;|One or more comma-separated paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 file systems or Azure Data Lake Gen 1 containers, including credentials. The external table storage type is determined by the provided connection strings. See [storage connection strings](../api/connection-strings/storage-connection-strings.md) for details.|
 |*propertyName*, *propertyValue*|string||A comma-separated list of key-value property pairs. See [optional properties](#optional-properties).|
@@ -97,10 +97,10 @@ By default, datetime values are rendered using the following formats:
 | `namePrefix`     | `string` | If set, indicates the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
 | `fileExtension`  | `string` | If set, indicates file extensions of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
 | `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
-| `sampleUris`     | `bool`   | If set, the command result provides several examples of simulated external data files URI as they are expected by the external table definition. This option helps validate whether the *Partitions* and *PathFormat* parameters are defined properly. |
+| `sampleUris`     | `bool`   | If set, the command result provides several examples of simulated external data files URI as they're expected by the external table definition. This option helps validate whether the *Partitions* and *PathFormat* parameters are defined properly. |
 | `filesPreview`   | `bool`   | If set, one of the command result tables contains a preview of [.show external table artifacts](#show-external-table-artifacts) command. Like `sampleUri`, the option helps validate the *Partitions* and *PathFormat* parameters of external table definition. |
 | `validateNotEmpty` | `bool`   | If set, the connection strings are validated for having content in them. The command will fail if the specified URI location doesn't exist, or if there are insufficient permissions to access it. |
-| `dryRun` | `bool` | If set, the external table definition is not persisted. This option is useful for validating the external table definition, especially in conjunction with the `filesPreview` or `sampleUris` parameter. |
+| `dryRun` | `bool` | If set, the external table definition isn't persisted. This option is useful for validating the external table definition, especially in conjunction with the `filesPreview` or `sampleUris` parameter. |
 
 > [!TIP]
 > To learn more about the role `namePrefix` and `fileExtension` properties play in data file filtering during query, see [file filtering logic](#file-filtering) section.
@@ -187,7 +187,7 @@ external_table("ExternalTable")
 <a name="virtual-columns"></a>
 **Virtual columns**
 
-When data is exported from Spark, partition columns (that are provided to the dataframe writer's `partitionBy` method) are not written to data files.
+When data is exported from Spark, partition columns (that are provided to the dataframe writer's `partitionBy` method) aren't written to data files.
 This process avoids data duplication because the data is already present in the folder names (for example, `column1=<value>/column2=<value>/`), and Spark can recognize it upon read.
 
 External tables support reading this data in the form of `virtual colums`. Virtual columns can be of either type `string` or `datetime`, and are specified using the following syntax:
@@ -216,7 +216,7 @@ external_table("ExternalTable")
 
 When querying an external table, the query engine improves performance by filtering out irrelevant external storage files. The process of iterating files and deciding whether a file should be processed is as follows:
 
-1. Build a URI pattern that represents a place where files are found. Initially, the URI pattern equals a connection string provided as part of the external table definition. If there are any partitions defined, they are rendered using *PathFormat*, then appended to the URI pattern.
+1. Build a URI pattern that represents a place where files are found. Initially, the URI pattern equals a connection string provided as part of the external table definition. If there are any partitions defined, they're rendered using *PathFormat*, then appended to the URI pattern.
 
 2. For all files found under the URI patterns(s) created, check that:
 
