@@ -24,8 +24,8 @@ Converts the input value to a long (signed 64-bit) number representation.
 
 ## Returns
 
-If conversion is successful, result will be a long number.
-If conversion is not successful, result will be `null`.
+If conversion is successful, the result is a long number.
+If conversion isn't successful, the result is `null`.
 
 ## Example
 

@@ -21,8 +21,8 @@ Converts the input string to lower case.
 
 ## Returns
 
-If conversion is successful, result will be a lowercase string.
-If conversion is not successful, result will be `null`.
+If conversion is successful, result is a lowercase string.
+If conversion isn't successful, result is `null`.
 
 ## Example
 

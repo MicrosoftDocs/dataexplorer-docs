@@ -21,8 +21,8 @@ Converts the input to a string representation.
 
 ## Returns
 
-If the *value* value is non-null, the result will be a string representation of *value*.
-If the *value* value is null, the result will be an empty string.
+If *value* is non-null, the result is a string representation of *value*.
+If *value* is null, the result is an empty string.
 
 ## Example
 

@@ -21,8 +21,8 @@ Converts a string to upper case.
 
 ## Returns
 
-If conversion is successful, result will be an uppercase string.
-If conversion is not successful, result will be `null`.
+If conversion is successful, result is an uppercase string.
+If conversion isn't successful, result is `null`.
 
 ## Example
 
