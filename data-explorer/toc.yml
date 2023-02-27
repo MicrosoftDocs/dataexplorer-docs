@@ -432,6 +432,8 @@ items:
           href: auto-stop-clusters.md
         - name: Manage cluster permissions
           href: manage-cluster-permissions.md
+        - name: Manage cluster locks
+          href: manage-cluster-locks.md
         - name: Manage cluster horizontal scaling
           href: manage-cluster-horizontal-scaling.md
         - name: Manage cluster vertical scaling
