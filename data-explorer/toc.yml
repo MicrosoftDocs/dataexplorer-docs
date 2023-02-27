@@ -231,8 +231,8 @@ items:
         - name: Connect with JDBC
           href: connect-jdbc.md
           displayName: SQL Server emulation
-        - name: Connect from common clients
-          href: connect-sql-clients.md
+        - name: Connect from common apps
+          href: connect-common-apps.md
           displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
     - name: Data ingestion properties
       href: ingestion-properties.md
