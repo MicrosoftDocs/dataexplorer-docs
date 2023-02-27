@@ -19,9 +19,11 @@ Any two statements must be separated by a semicolon.
 
 `toscalar(`*Expression*`)`
 
-## Arguments
+## Parameters
 
-* *Expression*: Expression that will be evaluated for scalar conversion.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *Expression* | string | &check; | The value to convert to a scalar value.|
 
 ## Returns
 
@@ -73,6 +75,9 @@ _dataset1
 
 Evaluate `Start`, `End`, and `Step` as scalar constants, and use the result for `range` evaluation.
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NQQrCQAxF94J3+EuFbupOJEtP0BMMNS3COFPSCIP08M1kELoL/7/3E1kxaBAFQfM6hhjkssg7KQr118f5FI14ptexl5BmRsEk+YPectyxKi92bxjzN+lfHGp6MG+1aPqv6e25TdQfPuLOBi7KHllPTnWwgIzrHKQK7lv8zY7AAAAA" target="_blank">Run the query</a>
+
 ```kusto
 let Start = toscalar(print x=1);
 let End = toscalar(range x from 1 to 9 step 1 | count);
@@ -93,6 +98,9 @@ range z from Start to End step Step | extend start=Start, end=End, step=Step
 The following example shows how `toscalar` can be used to "fix" an expression
 so that it will be calculated precisely once. In this case, the expression being
 calculated returns a different value per evaluation.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XLsQqAIBRG4T3wHf5RoUXX8FlC8nYJTEONDHr4bGo9HydQBWtY1FQWF1yWka6Zz81LpSYxhM9N9z/3ml1kQsOa0w7dXxiUSge0GB5QqxQ9mmU94rZsXqEZQWVlAAAA" target="_blank">Run the query</a>
 
 ```kusto
 let g1 = toscalar(new_guid());
