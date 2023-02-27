@@ -12,11 +12,8 @@ Azure Data Explorer implements TDS-compliant endpoints for MS-SQL clients. Compa
 
 Azure Data Explorer doesn't support basic authentication with username and password. You must use Azure Active Directory with all clients listed below.
 
-Azure Data Explorer implements a subset of the T-SQL and a subset of the SQL server emulation. For more information, see [known issues](./sqlknownissues.md) for differences between the SQL Server's implementation of T-SQL and Azure Data Explorer's.
-
-## .NET SQL client
-
-Azure Data Explorer supports Azure AD authentication for SQL clients. For more information, see [.NET SQL Client (user authentication)](./aad.md#net-sql-client-user) and [.NET SQL Client (application authentication)](./aad.md#net-sql-client-application)
+> [!NOTE]
+> Azure Data Explorer implements a subset of T-SQL. To learn more, see [T-SQL in Kusto versus Microsoft SQL Server](../../../t-sql.md#limitations)
 
 ## JDBC
 
@@ -293,10 +290,3 @@ Add the required JAR-files to the front of MATLAB's static classpath by creating
 
    > [!NOTE]
    > Replace *KUSTO_TABLE* with an existing table in Azure Data Explorer.
-
-## Sending T-SQL queries over the REST API
-
-The [Azure Data Explorer REST API](../rest/index.md) can accept and execute T-SQL queries.
-
-1. Send the request to the query endpoint with the **csl** property set to the text of the T-SQL query.
-1. Set **[request property](../netfx/request-properties.md)** **OptionQueryLanguage** to **sql**.

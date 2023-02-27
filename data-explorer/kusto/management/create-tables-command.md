@@ -3,7 +3,7 @@ title: .create tables - Azure Data Explorer
 description: This article describes .create tables in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/21/2023
 ---
 # .create tables
 
@@ -11,7 +11,9 @@ Creates new empty tables as a bulk operation.
 
 The command must run in the context of a specific database.
 
-Requires [Database user permission](./access-control/role-based-access-control.md).
+## Permissions
+
+You must have at least [Database User](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

@@ -3,15 +3,15 @@ title: .create-merge tables - Azure Data Explorer
 description: This article describes the .create-merge tables command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/21/2023
 ---
 # .create-merge tables
 
 Lets you create and extend the schemas of existing tables in a single bulk operation, in the context of a specific database.
 
-> [!NOTE]
-> Requires [Database user permission](./access-control/role-based-access-control.md).
-> Requires [table admin permission](./access-control/role-based-access-control.md) for extending existing tables.
+## Permissions
+
+This command requires [Database User](access-control/role-based-access-control.md) permissions, and [Table Admin](access-control/role-based-access-control.md) permissions for extending existing tables.
 
 ## Syntax
 

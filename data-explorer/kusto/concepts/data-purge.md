@@ -277,7 +277,7 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 |`DatabaseName`    |     Database name to filter results.    |Optional
 
 > [!NOTE]
-> Status will be provided only on databases that client has [Database admin](../management/access-control/role-based-access-control.md) permissions.
+> Status will be provided only on databases for which the client has [Database Admin](../management/access-control/role-based-access-control.md) permissions.
 
 **Examples**
 

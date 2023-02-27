@@ -3,7 +3,7 @@ title: .create function - Azure Data Explorer
 description: This article describes the .create function in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/21/2023
 ---
 # .create function
 
@@ -12,6 +12,10 @@ Creates a stored function, which is a reusable KQL query,  with the given name. 
 Functions can call other functions (recursiveness isn't supported). Besides, [`let`](../query/letstatement.md) statements are allowed as part of the *Function Body*. See [`let` statements](../query/letstatement.md).
 
 Rules for parameter types and CSL statements are the same as for [`let` statements](../query/letstatement.md).
+
+## Permissions
+
+You must have at least [Database User](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -53,7 +57,6 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 >    * If `ifnotexists` flag is specified, the command is ignored (no change applied).
 >    * If `ifnotexists` flag is NOT specified, an error is returned.
 >    * For altering an existing function, see [`.alter function`](alter-function.md)
-> * Requires [database user permission](./access-control/role-based-access-control.md).
 > * Not all data types are supported in `let` statements. Supported types are: boolean, string, long, datetime, timespan, double, and dynamic.
 > * Use `skipvalidation` to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
 

@@ -3,14 +3,18 @@ title: Export data to storage - Azure Data Explorer
 description: This article describes Export data to storage in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/14/2021
+ms.date: 02/21/2023
 ---
 # Export data to storage
 
 Executes a query and writes the first result set to an
 external storage, specified by a [storage connection string](../../api/connection-strings/storage-connection-strings.md).
 
-**Syntax**
+## Permissions
+
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
+
+## Syntax
 
 `.export` [`async`] [`compressed`]
 `to` *OutputDataFormat*
@@ -18,7 +22,7 @@ external storage, specified by a [storage connection string](../../api/connectio
 [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
 `<|` *Query*
 
-**Arguments**
+## Arguments
 
 * `async`: If specified, indicates that the command runs in asynchronous mode.
   See below for more details on the behavior in this mode.
@@ -58,7 +62,7 @@ external storage, specified by a [storage connection string](../../api/connectio
 | `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
 | `useNativeParquetWriter` | `bool` | Use the new export implementaion when exporting to Parquet, this implementation is a more performant, resource light export mechanism. Note that an exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
 
-**Results**
+## Returns
 
 The commands returns a table that describes the generated storage artifacts.
 Each record describes a single artifact and includes the storage path to the
@@ -69,7 +73,7 @@ artifact and how many data records it holds.
 |http://storage1.blob.core.windows.net/containerName/export_1_d08afcae2f044c1092b279412dcb571b.csv|10|
 |http://storage1.blob.core.windows.net/containerName/export_2_454c0f1359e24795b6529da8a0101330.csv|15|
 
-**Asynchronous mode**
+## Asynchronous mode
 
 If the `async` flag is specified, the command executes in asynchronous mode.
 In this mode, the command returns immediately with an operation ID, and data
@@ -86,7 +90,7 @@ For example, after a successful completion, you can retrieve the results using:
 .show operation f008dc1e-2710-47d8-8d34-0d562f5f8615 details
 ```
 
-**Examples** 
+## Examples
 
 In this example, Kusto runs the query and then exports the first recordset produced by the query to one or more compressed CSV blobs.
 Column name labels are added as the first row for each blob.

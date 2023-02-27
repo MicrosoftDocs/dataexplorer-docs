@@ -3,18 +3,20 @@ title: .create table based-on - Azure Data Explorer
 description: This article describes the `.create table based-on` command in Azure Data Explorer
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/21/2023
 ---
 # .create table based-on
 
 Creates a new empty table based on existing table. This command must run in the context of a specific database.
 
-Requires [Database admin permission](access-control/role-based-access-control.md).
-
 > [!NOTE]
 > All properties of the source table are copied to the new table, with the following exceptions:
 > * [Update policy](updatepolicy.md)
 > * [Authorized principals](security-roles.md): When using the `.create table based-on` command, the current principal is added to the table admins.
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

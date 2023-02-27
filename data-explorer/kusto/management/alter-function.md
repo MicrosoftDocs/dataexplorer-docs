@@ -3,12 +3,16 @@ title: .alter function - Azure Data Explorer
 description: This article describes .alter function in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/21/2023
 ---
 # .alter function
 
 Alters an existing function and stores it inside the database metadata.
 Rules for parameter types and CSL statements are the same as for [`let` statements](../query/letstatement.md).
+
+## Permissions
+
+You must have at least [Function Admin](../management/access-control/role-based-access-control.md) permissions to run this command. The principal that creates the function is automatically made a Function Admin.
 
 ## Syntax
 
@@ -26,8 +30,6 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 > [!NOTE]
 >
 > * If the function doesn't exist, an error is returned. For creating a new function, see [`.create function`](create-function.md)
-> * Requires [database admin permission](./access-control/role-based-access-control.md)
-> * The [database user](./access-control/role-based-access-control.md) who originally created the function is allowed to modify the function. 
 > * Not all Kusto types are supported in `let` statements. Supported types are: string, long, datetime, timespan, and double.
 
 ### Supported properties
