@@ -22,7 +22,7 @@ Stored query results behave like tables, in that the order of records isn't pres
 > [!NOTE]
 >
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
-> * query results are stored in a storage account associated with the cluster; the data is not cached in local SSD storage.
+> * Query results are stored in a storage account associated with the cluster; the data is not cached in local SSD storage.
 
 ## Prerequisites
 
@@ -158,7 +158,7 @@ Shows information on active stored query results.
 
 #### Returns
 
-| StoredqueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
+| StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
 | c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
 
@@ -174,7 +174,7 @@ Shows schema of active stored query result.
 
 #### Returns
 
-| StoredqueryResult | Schema |
+| StoredQueryResult | Schema |
 | ------------------- | ---- |
 | Events | [{"Column":"ID","Type":"guid"},{"Column":"EventName","Type":"string"},{"Column":"Time","Type":"datetime"}] |
 
@@ -192,7 +192,7 @@ Deletes an active stored query result created in the current database by the cur
 
 Returns information about deleted stored query results, for example:
 
-| StoredqueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
+| StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
 | c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
 
@@ -217,7 +217,7 @@ Example:
 .drop stored_query_results by user 'aadapp=c28e9b80-2808-bed525fc0fbb'
 ```
 
-| StoredqueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
+| StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
 | c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
 | 571f1a76-f5a9-49d4-b339-ba7caac19b46 | Traces | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 5212 | 100000 | 2020-10-07 14:31:01.8271231| 2020-10-08 14:31:01.8271231 |
