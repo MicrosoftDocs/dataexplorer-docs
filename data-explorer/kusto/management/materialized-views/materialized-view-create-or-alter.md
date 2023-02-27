@@ -22,10 +22,10 @@ The command has the following limitations:
 
 ## Syntax
 
-`.create-or-alter` `materialized-view` <br>
-[ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] <br>
-*viewName* `on table` *sourceTableName* <br>
-`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*query*<br>`}`
+`.create-or-alter` `materialized-view` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] *viewName* `on table` *sourceTableName*
+`{`
+    &nbsp;&nbsp;&nbsp;&nbsp;*query*
+`}`
 
 For more information on arguments and properties, see the [`.create materialized-view`](materialized-view-create.md) command.
 
