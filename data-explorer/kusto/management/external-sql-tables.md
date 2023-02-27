@@ -71,7 +71,7 @@ with
 
 **Output**
 
-| tableName   | TableType | Folder         | DocString | Properties                            |
+| TableName   | TableType | Folder         | DocString | Properties                            |
 |-------------|-----------|----------------|-----------|---------------------------------------|
 | MySqlExternalTable | Sql       | ExternalTables | Docs      | {<br>  "TargetEntityKind": "sqltable`",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=mydatabase;",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
 
