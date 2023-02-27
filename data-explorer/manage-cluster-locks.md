@@ -28,13 +28,13 @@ This article describes how to lock and unlock your cluster using the Azure porta
 1. Select **Add**.
 1. Give the lock a name and lock level. Optionally, you can add notes that describe the lock.
 
-    :::image type="content" source="media/manage-cluster-locks/add-cluster-lock.png" alt-text="Add a cluster lock to prevent accidental deletion.":::
+    :::image type="content" source="media/manage-cluster-locks/add-cluster-lock.png" alt-text="Screenshot showing add a cluster lock to prevent accidental deletion.":::
 
 ## Unlock your cluster in the Azure portal
 
 To delete a lock, in the row where the lock appears, select the **Delete** button.
 
-:::image type="content" source="media/manage-cluster-locks/delete-cluster-lock.png" alt-text="Delete a cluster lock.":::
+:::image type="content" source="media/manage-cluster-locks/delete-cluster-lock.png" alt-text="Screenshot showing delete a cluster lock.":::
 
 ## Next steps
 
