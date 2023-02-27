@@ -1,22 +1,22 @@
 ---
 title: Analyze time series data using Azure Data Explorer
-description: Learn how to analyze time series data in the cloud using Azure Data Explorer.
+description: Learn how to use Azure Data Explorer to analyze time series data.
 ms.reviewer: adieldar
 ms.topic: how-to
-ms.date: 10/11/2021
+ms.date: 02/20/2023
 ---
 # Time series analysis in Azure Data Explorer
 
 Azure Data Explorer (ADX) performs on-going collection of telemetry data from cloud services or IoT devices. This data can be analyzed for various insights such as monitoring service health, physical production processes, and usage trends. Analysis is done on time series of selected metrics to find a deviation in the pattern compared to its typical baseline pattern.
-ADX contains native support for creation, manipulation, and analysis of multiple time series. 
-In this topic, learn how Azure Data Explorer is used to create and analyze **thousands of time series in seconds**, enabling near real-time monitoring solutions and workflows.
+ADX contains native support for creation, manipulation, and analysis of multiple time series.
+In this article, learn how Azure Data Explorer is used to create and analyze **thousands of time series in seconds**, enabling near real-time monitoring solutions and workflows.
 
 ## Time series creation
 
 In this section, we'll create a large set of regular time series simply and intuitively using the `make-series` operator, and fill-in missing values as needed.
 The first step in time series analysis is to partition and transform the original telemetry table to a set of time series. The table usually contains a timestamp column, contextual dimensions, and optional metrics. The dimensions are used to partition the data. The goal is to create thousands of time series per partition at regular time intervals.
 
-The input table *demo_make_series1* contains 600K records of arbitrary web service traffic. Use the command below to sample 10 records:
+The input table *demo_make_series1* contains 600K records of arbitrary web service traffic. Use the following command to sample 10 records:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03MTo0vTi3KTC02VKhRKAFyFQwNADOyzKUbAAAA" target="_blank">Run the query</a>
@@ -54,10 +54,10 @@ demo_make_series1
 ```
 
 - Use the [`make-series`](make-seriesoperator.md) operator to create a set of three time series, where:
-    - `num=count()`: time series of traffic
-    - `from min_t to max_t step 1h`: time series is created in 1-hour bins in the time range (oldest and newest timestamps of table records)
-    - `default=0`: specify fill method for missing bins to create regular time series. Alternatively use [`series_fill_const()`](series-fill-constfunction.md), [`series_fill_forward()`](series-fill-forwardfunction.md), [`series_fill_backward()`](series-fill-backwardfunction.md) and [`series_fill_linear()`](series-fill-linearfunction.md) for changes
-    - `by OsVer`:  partition by OS
+  - `num=count()`: time series of traffic
+  - `from min_t to max_t step 1h`: time series is created in 1-hour bins in the time range (oldest and newest timestamps of table records)
+  - `default=0`: specify fill method for missing bins to create regular time series. Alternatively use [`series_fill_const()`](series-fill-constfunction.md), [`series_fill_forward()`](series-fill-forwardfunction.md), [`series_fill_backward()`](series-fill-backwardfunction.md) and [`series_fill_linear()`](series-fill-linearfunction.md) for changes
+  - `by OsVer`:  partition by OS
 - The actual time series data structure is a numeric array of the aggregated value per each time bin. We use `render timechart` for visualization.
 
 In the table above, we have three partitions. We can create a separate time series: Windows 10 (red), 7 (blue) and 8.1 (green) for each OS version as seen in the graph:
@@ -67,14 +67,15 @@ In the table above, we have three partitions. We can create a separate time seri
 ## Time series analysis functions
 
 In this section, we'll perform typical series processing functions.
-Once a set of time series is created, Azure Data Explorer supports a growing list of functions to process and analyze them which can be found in the [time series documentation](/azure/data-explorer/kusto/query/time-series-analysis). We will describe a few representative functions for processing and analyzing time series.
+Once a set of time series is created, Azure Data Explorer supports a growing list of functions to process and analyze them. For more information, see [Time series analysis in Azure Data Explorer](time-series-analysis.md). We'll describe a few representative functions for processing and analyzing time series.
 
 ### Filtering
 
 Filtering is a common practice in signal processing and useful for time series processing tasks (for example, smooth a noisy signal, change detection).
+
 - There are two generic filtering functions:
-    - [`series_fir()`](series-firfunction.md): Applying FIR filter. Used for simple calculation of moving average and differentiation of the time series for change detection.
-    - [`series_iir()`](series-iirfunction.md): Applying IIR filter. Used for exponential smoothing and cumulative sum.
+  - [`series_fir()`](series-firfunction.md): Applying FIR filter. Used for simple calculation of moving average and differentiation of the time series for change detection.
+  - [`series_iir()`](series-iirfunction.md): Applying IIR filter. Used for exponential smoothing and cumulative sum.
 - `Extend` the time series set by adding a new moving average series of size 5 bins (named *ma_num*) to the query:
 
 > [!div class="nextstepaction"]
@@ -94,6 +95,7 @@ demo_make_series1
 ### Regression analysis
 
 ADX supports segmented linear regression analysis to estimate the trend of the time series.
+
 - Use [series_fit_line()](series-fit-linefunction.md) to fit the best line to a time series for general trend detection.
 - Use [series_fit_2lines()](series-fit-2linesfunction.md) to detect trend changes, relative to the baseline, that are useful in monitoring scenarios.
 
@@ -133,7 +135,7 @@ demo_series3
 
 ![Time series seasonality.](../../media/time-series-analysis/time-series-seasonality.png)
 
-- Use [series_periods_detect()](series-periods-detectfunction.md) to automatically detect the periods in the time series. 
+- Use [series_periods_detect()](series-periods-detectfunction.md) to automatically detect the periods in the time series.
 - Use [series_periods_validate()](series-periods-validatefunction.md) if we know that a metric should have specific distinct period(s) and we want to verify that they exist.
 
 > [!NOTE]
@@ -288,5 +290,5 @@ These advanced capabilities combined with Azure Data Explorer fast performance s
 
 ## Next steps
 
-* Learn about [Time series anomaly detection and forecasting](./anomaly-detection.md) in Azure Data Explorer.
-* Learn about [Machine learning capabilities](./machine-learning-clustering.md) in Azure Data Explorer.
+- Learn about [Time series anomaly detection and forecasting](./anomaly-detection.md) in Azure Data Explorer.
+- Learn about [Machine learning capabilities](./machine-learning-clustering.md) in Azure Data Explorer.

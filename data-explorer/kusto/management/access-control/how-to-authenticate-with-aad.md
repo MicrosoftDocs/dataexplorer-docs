@@ -128,7 +128,7 @@ and set the `Federated Authentication` property of the Azure Data Explorer conne
 will be presented with a sign-in form to enter the Azure AD credentials. Following a
 successful authentication the request will be sent to Azure Data Explorer.
 
-Applications that don't use the Azure Data Explorer SDK can still use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) instead of implementing the Azure AD service security protocol client. See [https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet]
+Applications that don't use the Azure Data Explorer SDK can still use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) instead of implementing the Azure AD service security protocol client. See [Azure AD and OpenID Connect](https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet)
 for an example of doing so from a .NET application.
 
 If your application is intended to serve as front-end and authenticate users for an Azure Data Explorer cluster, the application must be granted delegated permissions on Azure Data Explorer.

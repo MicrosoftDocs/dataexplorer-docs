@@ -1,9 +1,9 @@
 ---
 title: tohex() - Azure Data Explorer
-description: This article describes tohex() in Azure Data Explorer.
+description: Learn how to use the tohex() function to convert the input value to a hexadecimal string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 02/22/2023
 ---
 # tohex()
 
