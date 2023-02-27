@@ -459,6 +459,13 @@
       "source_path": "data-explorer/web-ui-overview.md",
       "redirect_url": "/azure/data-explorer/web-query-data",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "clean-extent-containers.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/extents-overview",
+      "redirect_document_id": false
     }
   ]
 }
+
+
