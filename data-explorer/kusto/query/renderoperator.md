@@ -198,12 +198,4 @@ InsightsMetrics
 | render timechart
 ```
 
-<<<<<<< HEAD
-[Rendering examples in the tutorial](./tutorial.md?pivots=azuremonitor#display-a-chart-or-table-render)
-=======
-## See also
-
-* [Rendering examples in the tutorial](./tutorial.md?pivots=azuremonitor#display-a-chart-or-table-render-1)
->>>>>>> 7ba76547c63f71144cf246199182ac3fd42089cd
-
 ::: zone-end
