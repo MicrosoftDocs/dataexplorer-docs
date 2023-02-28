@@ -23,22 +23,28 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.alter` `table` *TableName* (*columnName*:*columnType*[, ...])  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
+`.alter` `table` *tableName* `(`*columnName*`:`*columnType* [`,` ...]`)`  [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to alter. |
-| *columnName*:*columnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
-| *Documentation* | string | | Free text describing the entity to be added. This string is presented in various UX settings next to the entity names. |
-| *FolderName* | string | | The name of the folder to add to the table. |
+| *tableName* | string | &check; | The name of the table to alter. |
+| *columnName*, *columnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 > [!WARNING]
 > Existing columns that aren't specified in the command will be dropped. This could lead to unexpected data loss.
 
 > [!TIP]
-> Use `.show table [TableName] cslschema` to get the existing table schema before you alter it.
+> Use `.show table [tableName] cslschema` to get the existing table schema before you alter it.
+
+### Supported properties
+
+|Name|Type|Description|
+|--|--|--|
+|`docstring`|string|Free text describing the entity to be added. This string is presented in various UX settings next to the entity names.|
+|`folder`|string|The name of the folder to add to the table.|
 
 ## How the command affects the data
 

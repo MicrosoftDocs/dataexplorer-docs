@@ -17,9 +17,11 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 `.alter` `cluster` `policy` `caching` *PolicyParameter*  
 
-## Arguments
+## Parameters
 
-*PolicyParameter* - Define one or more policy parameters. For parameters, see [cache policy](cachepolicy.md). 
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *PolicyParameter* | string | &check; | One or more policy parameters. For parameters, see [cache policy](cachepolicy.md).|
 
 ## Returns
 

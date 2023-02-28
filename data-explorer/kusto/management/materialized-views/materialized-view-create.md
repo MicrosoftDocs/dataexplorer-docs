@@ -33,17 +33,17 @@ You must have at least [Database User](../access-control/role-based-access-contr
 ## Syntax
 
 `.create` [`async`] [`ifnotexists`] `materialized-view` <br>
-[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
-*ViewName* `on table` *SourceTableName* <br>
-`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
+[ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] <br>
+*viewName* `on table` *sourceTableName* <br>
+`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*query*<br>`}`
 
 ## Arguments
 
 |Argument|Type|Description
 |----------------|-------|---|
-|`ViewName`|String|The materialized view name. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
-|`SourceTableName`|String|The name of the source table that the view is defined on.|
-|`Query`|String|The materialized view query. For more information, see [Query argument](#query-argument).|
+|*viewName*|String|The materialized view name. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
+|*sourceTableName*|String|The name of the source table that the view is defined on.|
+|*query*|String|The materialized view query. For more information, see [Query argument](#query-argument).|
 
 > [!NOTE]
 > If the materialized view already exists:
@@ -110,7 +110,7 @@ You can create a materialized view over another materialized view only when the 
 **Syntax:**
 
 `.create` [`async`] [`ifnotexists`] `materialized-view` <br>
-[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
+[ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] <br>
 *ViewName* `on materialized-view` *SourceMaterializedViewName* <br>
 `{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
 

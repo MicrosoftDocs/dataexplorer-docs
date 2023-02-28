@@ -17,14 +17,31 @@ This command requires [Database User](access-control/role-based-access-control.m
 
 ## Syntax
 
-`.create-merge` `table` *TableName* ([columnName:columnType], ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
+`.create-merge` `table` *tableName* `(`*columnName*`:`*columnType* [`,` ...]`)`  [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
+
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *tableName* | string | &check; | The name of the table to create or extend. |
+| *columnName*, *columnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of mappings defines the output column schema.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+
+### Supported properties
+
+|Name|Type|Description|
+|--|--|--|
+|`docstring`|string|Free text describing the entity to be added. This string is presented in various UX settings next to the entity names.|
+|`folder`|string|The name of the folder to add to the table.|
+
+## Returns
 
 If the table doesn't exist, functions exactly as `.create table` command.
 
 If table T exists, and you send a `.create-merge table T (<columns specification>)` command, then:
 
 * Any column in \<columns specification> that didn't previously exist in T will be added to the end of T's schema.
-* Any column in T that is not in \<columns specification> won't be removed from T.
+* Any column in T that isn't in \<columns specification> won't be removed from T.
 * Any column in \<columns specification> that exists in T, but with a different data type will cause the command to fail.
 
 ## See also
