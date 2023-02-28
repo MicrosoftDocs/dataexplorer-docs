@@ -26,6 +26,12 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.alter` `materialized-view` *MaterializedViewName* `policy` `row_level_security` [`enable` | `disable`]
 
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view for which to turn on or off the row level security policy.|
+
 ### Example
 
 Enable the policy at the materialized-view level:
