@@ -1,9 +1,9 @@
 ---
 title: translate() - Azure Data Explorer
-description: This article describes translate() in Azure Data Explorer.
+description: Learn how to use the translate() function to replace a set of characters with another set of characters in a given string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/11/2019
+ms.date: 02/27/2023
 ---
 # translate()
 
@@ -22,7 +22,7 @@ The function searches for characters in the 'searchList' and replaces them with 
 
 ## Returns
 
-*source* after replacing all ocurrences of characters in 'replacementList' with the corresponding characters in 'searchList'
+*source* after replacing all occurrences of characters in 'replacementList' with the corresponding characters in 'searchList'
 
 ## Examples
 

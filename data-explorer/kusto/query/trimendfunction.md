@@ -1,9 +1,9 @@
 ---
 title: trim_end() - Azure Data Explorer
-description: This article describes trim_end() in Azure Data Explorer.
+description: Learn how to use the trim_end() function to remove the trailing match of the specified regular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/27/2023
 ---
 # trim_end()
 
@@ -22,7 +22,7 @@ Removes trailing match of the specified regular expression.
 
 *source* after trimming matches of *regex* found in the end of *source*.
 
-## Example
+## Examples
 
 Statement bellow trims *substring*  from the end of *string_to_trim*:
 
