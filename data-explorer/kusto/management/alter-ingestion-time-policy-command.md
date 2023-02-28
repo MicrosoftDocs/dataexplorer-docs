@@ -24,7 +24,7 @@ You must have at least [Table Ingestor](../management/access-control/role-based-
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*TableName*|string|&check;|The name of the table.|
-|*Flag*|bool|&check;|Determines whether to turn on or turn off the policy. `true` will turn on the policy. `false` will turn off the policy.
+|*Flag*|bool|&check;|Determines whether to turn on or turn off the policy. `true` turns on the policy. `false` turns off the policy.
 
 ### Examples
 

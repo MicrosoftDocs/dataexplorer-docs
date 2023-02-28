@@ -43,7 +43,7 @@ The object ID is available in the Azure portal on the managed identity's overvie
 The command sets the cluster's or database's ManagedIdentity policy object, overriding any current policy,
 and then returns the output of the corresponding [.show managed identity policy](show-managed-identity-policy-command.md) command.
 
-If any of the specified managed identities is not assigned to the cluster, an error will be returned and the ManagedIdentity policy will not be modified.
+If any of the specified managed identities isn't assigned to the cluster, an error is returned and the ManagedIdentity policy won't be modified.
 
 ## Example
 
