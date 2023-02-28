@@ -1,13 +1,13 @@
 ---
 title: todecimal() - Azure Data Explorer
-description: This article describes todecimal() in Azure Data Explorer.
+description: Learn how to use the todecimal() function to convert the input expression to a decimal number representation. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/20/2023
 ---
 # todecimal()
 
-Converts input to decimal number representation.
+Converts the input to a decimal number representation.
 
 > [!NOTE]
 > Prefer using [real()](./scalar-data-types/real.md) when possible.
@@ -25,7 +25,7 @@ Converts input to decimal number representation.
 ## Returns
 
 If conversion is successful, result will be a decimal number.
-If conversion is not successful, result will be `null`.
+If conversion isn't successful, result will be `null`.
 
 ## Example
 
