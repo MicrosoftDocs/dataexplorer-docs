@@ -18,11 +18,11 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-`.show` `table` *TableName* `data` `statistics` [ `with` `(` *PropertyName* `=` *PropertyValue* `)` ]
+`.show` `table` *tableName* `data` `statistics` [ `with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)` ]
 
 ## Arguments
 
-* *TableName*: The name of the table on which you want to return statistics.
+* *tableName*: The name of the table on which you want to return statistics.
 
 ## Properties
 

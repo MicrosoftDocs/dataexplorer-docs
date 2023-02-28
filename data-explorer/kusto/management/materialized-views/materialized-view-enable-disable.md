@@ -30,11 +30,11 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 `.enable` | `disable` `materialized-view` *MaterializedViewName*
 
-## Properties
+## Parameters
 
-|Property|Type|Description
-|----------------|-------|---|
-|MaterializedViewName|String|Name of the materialized view.|
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view.|
 
 ## Example
 

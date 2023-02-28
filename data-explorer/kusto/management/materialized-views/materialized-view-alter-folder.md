@@ -9,11 +9,20 @@ ms.date: 02/21/2023
 
 Alters the folder value of an existing materialized view. 
 
-`.alter` `materialized-view` *MaterializedViewName* `folder` *Folder*
-
 ## Permissions
 
 You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
+
+## Syntax
+
+`.alter` `materialized-view` *MaterializedViewName* `folder` *Folder*
+
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view.|
+|*Folder*|string|&check;|The folder value to attach to the materialized view.|
 
 ## Example
 

@@ -1,9 +1,9 @@
 ---
 title: unixtime_nanoseconds_todatetime() - Azure Data Explorer
-description: This article describes unixtime_nanoseconds_todatetime() in Azure Data Explorer.
+description: Learn how to use the unixtime_nanoseconds_todatetime() function to convert unix-epoch nanoseconds to UTC datetime.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/28/2023
 ---
 # unixtime_nanoseconds_todatetime()
 
@@ -21,13 +21,7 @@ Converts unix-epoch nanoseconds to UTC datetime.
 
 ## Returns
 
-If the conversion is successful, the result is a [datetime](./scalar-data-types/datetime.md) value. If conversion isn't successful, result is null.
-
-## See also
-
-* Convert unix-epoch seconds to UTC datetime using [unixtime_seconds_todatetime()](unixtime-seconds-todatetimefunction.md).
-* Convert unix-epoch milliseconds to UTC datetime using [unixtime_milliseconds_todatetime()](unixtime-milliseconds-todatetimefunction.md).
-* Convert unix-epoch microseconds to UTC datetime using [unixtime_microseconds_todatetime()](unixtime-microseconds-todatetimefunction.md).
+If the conversion is successful, the result is a [datetime](./scalar-data-types/datetime.md) value. Otherwise, the result is null.
 
 ## Example
 
@@ -43,3 +37,9 @@ print date_time = unixtime_nanoseconds_todatetime(1546300800000000000)
 |date_time|
 |---|
 |2019-01-01 00:00:00.0000000|
+
+## See also
+
+* Convert unix-epoch seconds to UTC datetime using [unixtime_seconds_todatetime()](unixtime-seconds-todatetimefunction.md).
+* Convert unix-epoch milliseconds to UTC datetime using [unixtime_milliseconds_todatetime()](unixtime-milliseconds-todatetimefunction.md).
+* Convert unix-epoch microseconds to UTC datetime using [unixtime_microseconds_todatetime()](unixtime-microseconds-todatetimefunction.md).
