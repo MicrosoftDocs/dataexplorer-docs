@@ -218,7 +218,7 @@ When querying an external table, the query engine improves performance by filter
 
 1. Build a URI pattern that represents a place where files are found. Initially, the URI pattern equals a connection string provided as part of the external table definition. If there are any partitions defined, they're rendered using *PathFormat*, then appended to the URI pattern.
 
-2. For all files found under the URI patterns(s) created, check that:
+2. For all files found under the URI pattern(s) created, check that:
 
    * Partition values match predicates used in a query.
    * Blob name starts with `NamePrefix`, if such a property is defined.

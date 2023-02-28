@@ -24,7 +24,7 @@ This command requires [Database User](access-control/role-based-access-control.m
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *tableName* | string | &check; | The name of the table to create or extend. |
-| *columnName*, *columnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
+| *columnName*, *columnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of mappings defines the output column schema.|
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
@@ -41,7 +41,7 @@ If the table doesn't exist, functions exactly as `.create table` command.
 If table T exists, and you send a `.create-merge table T (<columns specification>)` command, then:
 
 * Any column in \<columns specification> that didn't previously exist in T will be added to the end of T's schema.
-* Any column in T that is not in \<columns specification> won't be removed from T.
+* Any column in T that isn't in \<columns specification> won't be removed from T.
 * Any column in \<columns specification> that exists in T, but with a different data type will cause the command to fail.
 
 ## See also

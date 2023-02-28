@@ -59,11 +59,11 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 | `sizeLimit` | `long` | The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100 MB (default) to 1 GB. |
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100,000 records. |
 | `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
-| `useNativeParquetWriter` | `bool` | Use the new export implementation when exporting to Parquet, this implementation is a more performant, resource light export mechanism. Note that an exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
+| `useNativeParquetWriter` | `bool` | Use the new export implementation when exporting to Parquet, this implementation is a more performant, resource light export mechanism. An exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
 
 ## Returns
 
-The commands returns a table that describes the generated storage artifacts.
+The commands return a table that describes the generated storage artifacts.
 Each record describes a single artifact and includes the storage path to the
 artifact and how many data records it holds.
 
@@ -111,9 +111,9 @@ Column name labels are added as the first row for each blob.
 
 ## Failures during export commands
 
-Export commands can transiently fail during execution. [Continuous export](continuous-data-export.md) will automatically retry the command. Regular export commands ([export to storage](export-data-to-storage.md), [export to external table](export-data-to-an-external-table.md)) do not perform any retries.
+Export commands can transiently fail during execution. [Continuous export](continuous-data-export.md) will automatically retry the command. Regular export commands ([export to storage](export-data-to-storage.md), [export to external table](export-data-to-an-external-table.md)) don't perform any retries.
 
-*  When the export command fails, artifacts that were already written to storage are not deleted. These artifacts will remain in storage. If the command fails, assume the export is incomplete, even if some artifacts were written. 
+*  When the export command fails, artifacts that were already written to storage aren't deleted. These artifacts remain in storage. If the command fails, assume the export is incomplete, even if some artifacts were written. 
 * The best way to track both completion of the command and the artifacts exported upon successful completion is by using the [`.show operations`](../operations.md#show-operations) and [`.show operation details`](../operations.md#show-operation-details) commands.
 
 ### Storage failures
@@ -126,7 +126,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
 
 * Increase the number of storage accounts provided to the export command or to the [external table definition](../external-tables-azurestorage-azuredatalake.md) (the load will be evenly distributed between the accounts).
 * Reduce the concurrency by setting the distribution hint to `per_node` (see command properties).
-* Reduce concurrency of number of nodes exporting by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_nodes_percent` to the desired concurrency (percent of nodes). The property can be set as part of the export query. For example, the following command will limit the number of nodes writing to storage concurrently to 50% of the cluster nodes:
+* Reduce concurrency of number of nodes exporting by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_nodes_percent` to the desired concurrency (percent of nodes). The property can be set as part of the export query. For example, the following command limits the number of nodes writing to storage concurrently to 50% of the cluster nodes:
 
     ```kusto
     .export async  to csv
@@ -140,7 +140,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
         ExportQuery
     ```
 
-* Reduce concurrency of number of threads exporting in each node when using per shard export, by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_threads_percent` to the desired concurrency (percent of threads). The property can be set as part of the export query. For example, the following command will limit the number of threads writing to storage concurrently to 50% on each of the cluster nodes:
+* Reduce concurrency of number of threads exporting in each node when using per shard export, by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_threads_percent` to the desired concurrency (percent of threads). The property can be set as part of the export query. For example, the following command limits the number of threads writing to storage concurrently to 50% on each of the cluster nodes:
 
     ```kusto
     .export async  to csv
@@ -155,7 +155,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
     ```
 
 * If exporting to a partitioned external table, setting the `spread`/`concurrency` properties can reduce concurrency (see details in the [command properties](export-data-to-an-external-table.md#syntax).
-* If neither of the above work, is also possible to completely disable distribution by setting the `distributed` property to false, but this isn't recommended, as it may significantly effect the command performance.
+* If neither of the above work, you can completely disable distribution by setting the `distributed` property to false. However, we don't recommend doing so, as it may significantly affect the command performance.
 
 ### Authorization failures
 
