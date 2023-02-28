@@ -21,15 +21,13 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `policy` `update` *ArrayOfPolicyObjects*
-
-`.alter-merge` `table` *DatabaseName*`.`*TableName* `policy` `update` *ArrayOfPolicyObjects*
+`.alter-merge` `table` [ *DatabaseName* `.`]*TableName* `policy` `update` *ArrayOfPolicyObjects*
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *DatabaseName* | string | &check; | The name of the database. When you run the command from the database context that contains the table, *DatabaseName* is not required. |
+| *DatabaseName* | string | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required. |
 | *TableName* | string | &check; | The name of the table. A wildcard, `*`, denotes all tables.|
 | *ArrayOfPolicyObjects* | string | &check; | A serialized array of policy objects. For more information, see [update policy](updatepolicy.md).|
 
