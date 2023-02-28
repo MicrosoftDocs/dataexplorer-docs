@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # Export data to SQL
 
-Export data to SQL allows you to run a query and have its results sent to a table in a SQL database, such as a SQL database hosted by the Azure SQL Database service.
+Export data to SQL allows you to run a query and have its results sent to a table in an SQL database, such as an SQL database hosted by the Azure SQL Database service.
 
 ## Permissions
 
@@ -15,8 +15,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 ## Syntax
 
-`.export` [`async`] `to` `sql` *SqlTableName* *SqlConnectionString* [`with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]
- `<|` *Query*
+`.export` [`async`] `to` `sql` *sqlTableName* *sqlConnectionString* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
 
 ## Parameters
 
@@ -31,15 +30,15 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 |Name               |Values           |Description|
 |-------------------|-----------------|-----------|
-|`firetriggers`     |`true` or `false`|If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. (For more information see [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) and [System.Data.SqlClient.SqlBulkCopy](/dotnet/api/system.data.sqlclient.sqlbulkcopy))|
-|`createifnotexists`|`true` or `false`|If `true`, the target SQL table will be created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column which is the primary key. The default is `false`.|
-|`primarykey`       |                 |If `createifnotexists` is `true`, indicates the name of the column in the result that will be used as the SQL table's primary key if it is created by this command.|
+|`firetriggers`     |`true` or `false`|If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. For more information, see [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) and [System.Data.SqlClient.SqlBulkCopy](/dotnet/api/system.data.sqlclient.sqlbulkcopy).|
+|`createifnotexists`|`true` or `false`|If `true`, the target SQL table is created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column that is the primary key. The default is `false`.|
+|`primarykey`       |                 |If `createifnotexists` is `true`, this property indicates the name of the column in the result that will be used as the SQL table's primary key if it's created by this command.|
 |`persistDetails`   |`bool`           |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results). Defaults to `false` in synchronous executions, but can be turned on. |
-|`token`            |`string`         |The AAD access token that Kusto will forward to the SQL endpoint for authentication. When set, the SQL connection string shouldn't include authentication information like `Authentication`, `User ID`, or `Password`.|
+|`token`            |`string`         |The Azure AD access token that Kusto will forward to the SQL endpoint for authentication. When set, the SQL connection string shouldn't include authentication information like `Authentication`, `User ID`, or `Password`.|
 
 ## Limitations and restrictions
 
-There are a number of limitations and restrictions when exporting data to a SQL database:
+There are a number of limitations and restrictions when exporting data to an SQL database:
 
 1. Kusto is a cloud service, so the connection string must point to a
    database that is accessible from the cloud. (In particular, one can't
@@ -59,10 +58,10 @@ There are a number of limitations and restrictions when exporting data to a SQL 
    that the table has one column marked as an identity column.
 
 4. Exporting large volumes of data may take a long time. It's recommended that
-   the target SQL table be set for minimal logging during bulk import.
+   the target SQL table is set for minimal logging during bulk import.
    See [SQL Server Database Engine > ... > Database Features > Bulk Import and Export of Data](/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import).
 
-5. Data export is performed using SQL bulk copy and provides no transactional guarantees on the target SQL database. See [Transaction and Bulk Copy Operations](/dotnet/framework/data/adonet/sql/transaction-and-bulk-copy-operations) for more details.
+5. Data export is performed using SQL bulk copy and provides no transactional guarantees on the target SQL database. See [Transaction and Bulk Copy Operations](/dotnet/framework/data/adonet/sql/transaction-and-bulk-copy-operations).
 
 6. The SQL table name is restricted to a name consisting of letters, digits, spaces, underscores (`_`), dots (`.`) and hyphens (`-`).
 
@@ -75,7 +74,7 @@ There are a number of limitations and restrictions when exporting data to a SQL 
    table due to other limitations on the primary key column. The workaround is to manually create the table in SQL before exporting the data. The reason for this limitation is that primary key columns in SQL can't be of unlimited size, but Kusto table columns
    have no declared size limitations.
 
-## Azure DB AAD Integrated Authentication Documentation
+## Azure DB Azure AD Integrated Authentication Documentation
 
 * [Use Azure Active Directory Authentication for authentication with SQL Database](/azure/sql-database/sql-database-aad-authentication)
 * [Azure AD authentication extensions for Azure SQL DB and SQL DW tools](https://azure.microsoft.com/blog/azure-ad-authentication-extensions-for-azure-sql-db-and-sql-dw-tools/)

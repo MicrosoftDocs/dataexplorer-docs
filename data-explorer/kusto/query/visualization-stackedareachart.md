@@ -18,17 +18,16 @@ The stacked area chart visual shows a continuous relationship. This visual is si
 
 ## Syntax
 
-*T* `|` `render` stackedareachart [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
+*T* `|` `render` `stackedareachart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-## Parameters
+## Supported parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
-| *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
-| *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
+| *T* | string | &check; | Input table name.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-### Properties 
+### Supported properties
 
 All properties are optional.
 

@@ -14,14 +14,15 @@ Renames a materialized view.
 You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
+
 `.rename` `materialized-view` *OldName* `to` *NewName*
 
-## Properties
+## Parameters
 
-| Property | Type| Description |
-|----------------|-------|-----|
-| OldName| String| Name of the materialized view to rename.|
-| NewName| String| New name to assign to the view.|
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *OldName* | string | &check; | The old name of the materialized view. |
+| *NewName* | string | &check; | The new name to assign to the materialized view. |
 
 ## Returns
 
