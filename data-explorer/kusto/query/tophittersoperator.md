@@ -1,20 +1,14 @@
 ---
 title: top-hitters operator - Azure Data Explorer
-description: This article describes top-hitters operator in Azure Data Explorer.
+description: Learn how to use the top-hitters operator  to return an approximation for the most popular distinct values in the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/22/2023
 ---
 # top-hitters operator
 
 Returns an approximation for the most popular distinct values, or the values
 with the largest sum, in the input.
-
-```kusto
-Events | top-hitters 5 of EventId
-
-PageViews | top-hitters 25 of Page by NumViews
-```
 
 > [!NOTE]
 > `top-hitters` uses an approximation algorithm optimized for performance
@@ -23,22 +17,16 @@ PageViews | top-hitters 25 of Page by NumViews
 
 ## Syntax
 
-*T* `|` `top-hitters` *NumberOfValues* `of` *ValueExpression*
+*T* `|` `top-hitters` *NumberOfValues* `of` *ValueExpression* [ `by` *SummingExpression* ]
 
-*T* `|` `top-hitters` *NumberOfValues* `of` *ValueExpression* `by` *SummingExpression*
+## Parameters
 
-## Arguments
-
-* *NumberOfValues*: The number of distinct values of *ValueExpression*.
-  Expressions of type `int`, `long`, and `real` are valid (rounded down).
-
-* *ValueExpression*: An expression over the input table *T* whose distinct
-  values are returned.
-
-* *SummingExpression*: If specified, a numeric expression over the input table *T*
-  whose sum per distinct value of *ValueExpression* establishes which values
-  to emit. If not specified, the count of each distinct value of *ValueExpression*
-  will be used instead.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The input tabular expression.|
+| *NumberOfValues* | int, long, or real | &check; | The number of distinct values of *ValueExpression*.|
+| *ValueExpression* | string | &check; | An expression over the input table *T* whose distinct values are returned.|
+| *SummingExpression* | string | | If specified, a numeric expression over the input table *T* whose sum per distinct value of *ValueExpression* establishes which values to emit. If not specified, the count of each distinct value of *ValueExpression*  is used instead.|
 
 ## Remarks
 

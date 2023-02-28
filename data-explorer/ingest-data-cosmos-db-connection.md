@@ -27,6 +27,7 @@ Step 3: [Test the data connection](#step-3-test-the-data-connection)
 - An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 - An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 - A container from a [Cosmos DB account for NoSQL](/azure/cosmos-db/nosql/).
+- If your Cosmos DB account blocks network access, for example by using a [private endpoint](/azure/cosmos-db/how-to-configure-private-endpoints), you must [create a managed private endpoint](security-network-managed-private-endpoint-create.md) to the Cosmos DB account. This is required for your cluster to invoke the change feed API.
 
 ## Step 1: Choose an Azure Data Explorer table and configure its table mapping
 

@@ -5,7 +5,7 @@ ms.reviewer: yonil
 ms.topic: reference
 ms.date: 02/21/2023
 ---
-# .show cluster request classification policy
+# .show cluster policy request_classification
 
 Shows the cluster's request classification policy. For more information, see [Request classification policy](request-classification-policy.md).
 
