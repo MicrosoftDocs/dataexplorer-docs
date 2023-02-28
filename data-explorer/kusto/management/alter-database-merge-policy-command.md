@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # .alter database merge policy
 
-Change a database's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+Use this command to change a database's [merge policy](mergepolicy.md). The merge policy defines if and how [extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
 
 ## Permissions
 
@@ -17,10 +17,12 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.alter` `database` *DatabaseName* `policy` `merge` *PolicyObject*
 
-## Arguments
+## Parameters
 
-- *DatabaseName* - Specify the name of the database.
-- *PolicyObject* - Define a policy object. For more information, see [merge policy](mergepolicy.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database for which to alter the merge policy.|
+|*PolicyObject*|string|&check;|A policy object that defines the merge policy. For more information, see [merge policy](mergepolicy.md).|
 
 ### Examples
 
