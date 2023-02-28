@@ -24,7 +24,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 ## Example
 
-For database D1, set an extent tags retention policy so that any `drop-by` tags that are older than three days, and any `ingest-by` tags that are older than two hours will be automatically dropped.
+The following command sets an extent tags retention policy for database D1. The policy causes any `drop-by` tags that are older than three days and any `ingest-by` tags that are older than two hours to be automatically dropped.
 
 ~~~kusto
 .alter database D1 policy extent_tags_retention ```[
