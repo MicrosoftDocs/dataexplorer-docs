@@ -16,14 +16,12 @@ You must have at least [Database Admin](access-control/role-based-access-control
 ## Syntax
 
 `.execute` `database` `script`  
-[`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]   
-`<|`  
- *Control-commands-script*
+[`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *control-commands-script*
 
 ### Parameters
 
-* *Control-commands-script*: Text with one or more control commands.
-* *PropertyName*: Optional properties from the following list:
+* *control-commands-script*: Text with one or more control commands.
+* *propertyName*, *propertyValue*: Optional properties from the following list:
 
 #### Optional properties
 

@@ -16,23 +16,29 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 ## Syntax
 
-```kusto
-.alter function [with (docstring = '<description>', folder='<name>', skipvalidation='true')] [FunctionName] ([paramName:paramType], ...) { CSL-statement }
-```
-    
-|Output parameter |Type |Description
-|---|---|--- 
-|Name  |String |The name of the function.
-|Parameters  |String |The parameters required by the function.
-|Body  |String |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.
-|Folder|String|A folder used for UI functions categorization. This parameter does not change the way function is invoked.
-|DocString|String|A description of the function for UI purposes.
+`.alter` `function` [ `with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] *functionName*`(`*parameters*`)` `{` *body* `}`
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*functionName* | string | &check; | The name of the function to alter.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+|*parameters*  | string | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
+|*body*| string | &check; | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
 
 > [!NOTE]
 >
 > * If the function doesn't exist, an error is returned. For creating a new function, see [`.create function`](create-function.md)
 > * Not all Kusto types are supported in `let` statements. Supported types are: string, long, datetime, timespan, and double.
-> * Use `skipvalidation` to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
+
+### Supported properties
+
+|Name|Type|Description|
+|--|--|--|
+|`docstring`|string|A description of the function for UI purposes.|
+|`folder`|string|The name of a folder used for UI functions categorization.|
+|`skipvalidation`|bool|Determines whether or not to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.|
 
 ## Example
 
