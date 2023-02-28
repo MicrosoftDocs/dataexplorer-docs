@@ -1,9 +1,9 @@
 ---
 title: Samples for Kusto Queries - Azure Data Explorer
-description: This article describes common queries and examples that use the Kusto Query Language.
+description: Learn how to use Kusto Query Language to accomplish specific scenarios.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2022
+ms.date: 01/22/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -376,6 +376,7 @@ Logs
 Now, you have a good view into the top errors that contributed to the detected anomalies.
 
 To understand the effect of these errors across the sample system, consider that:
+
 * The `Logs` table contains additional dimensional data, like `Component` and `Cluster`.
 * The new autocluster plugin can help derive component and cluster insight with a simple query.
 
@@ -812,10 +813,9 @@ B_events
 |y|2019-01-01 00:00:04.0000000|2019-01-01 00:00:02.0000000|B|Ay1|
 |z|2019-01-01 00:02:00.0000000||B||
 
-
 ## Next steps
 
-- Walk through a [a tutorial on the Kusto Query Language](tutorial.md?pivots=azuredataexplorer).
+Walk through a [a tutorial on the Kusto Query Language](tutorial.md?pivots=azuredataexplorer).
 
 ::: zone-end
 
@@ -882,18 +882,17 @@ Operator       |Description                         |Case-sensitive|Example (yie
 `in`           |Equals to one of the elements       |Yes           |`"abc" in ("123", "345", "abc")`
 `!in`          |Not equals to any of the elements   |Yes           |`"bca" !in ("123", "345", "abc")`
 
-
 ### *countof*
 
 Counts occurrences of a substring within a string. Can match plain strings or use a regular expression (regex). Plain string matches might overlap, but regex matches don't overlap.
 
-```
+```kusto
 countof(text, search [, kind])
 ```
 
-- `text`: The input string
-- `search`: Plain string or regex to match inside text
-- `kind`: _normal_ | _regex_ (default: normal).
+* `text`: The input string
+* `search`: Plain string or regex to match inside text
+* `kind`: _normal_ | _regex_ (default: normal).
 
 Returns the number of times that the search string can be matched in the container. Plain string matches might overlap, but regex matches don't overlap.
 
@@ -915,7 +914,6 @@ print countof("ababa", "aba", "regex");  //result: 1
 print countof("abcabc", "a.c", "regex");  // result: 2
 ```
 
-
 ### *extract*
 
 Gets a match for a regular expression from a specific string. Optionally, can convert the extracted substring to the specified type.
@@ -924,10 +922,10 @@ Gets a match for a regular expression from a specific string. Optionally, can co
 extract(regex, captureGroup, text [, typeLiteral])
 ```
 
-- `regex`: A regular expression.
-- `captureGroup`: A positive integer constant that indicates the capture group to extract. Use 0 for the entire match, 1 for the value matched by the first parenthesis \(\) in the regular expression, and 2 or more for subsequent parentheses.
-- `text` - The string to search.
-- `typeLiteral` - An optional type literal (for example, `typeof(long)`). If provided, the extracted substring is converted to this type.
+* `regex`: A regular expression.
+* `captureGroup`: A positive integer constant that indicates the capture group to extract. Use 0 for the entire match, 1 for the value matched by the first parenthesis \(\) in the regular expression, and 2 or more for subsequent parentheses.
+* `text` - The string to search.
+* `typeLiteral` - An optional type literal (for example, `typeof(long)`). If provided, the extracted substring is converted to this type.
 
 Returns the substring matched against the indicated capture group `captureGroup`, optionally converted to `typeLiteral`. If there's no match or the type conversion fails, returns null.
 
@@ -958,10 +956,11 @@ let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
 print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s);  //result: 00:09:27
 ```
+
 ### *isempty*, *isnotempty*
 
-- `isempty` returns `true` if the argument is an empty string or null (see `isnull`).
-- `isnotempty` returns `true` if the argument isn't an empty string or null (see `isnotnull`). Alias: `isnotempty`.
+* `isempty` returns `true` if the argument is an empty string or null (see `isnull`).
+* `isnotempty` returns `true` if the argument isn't an empty string or null (see `isnotnull`). Alias: `isnotempty`.
 
 ```kusto
 isempty(value)
@@ -1019,9 +1018,9 @@ Replaces all regex matches with another string.
 replace_regex(regex, rewrite, input_text)
 ```
 
-- `regex`: The regular expression to match by. It can contain capture groups in parentheses \(\).
-- `rewrite`: The replacement regex for any match made by matching a regex. Use \0 to refer to the whole match, \1 for the first capture group, \2, and so on, for subsequent capture groups.
-- `input_text`: The input string to search in.
+* `regex`: The regular expression to match by. It can contain capture groups in parentheses \(\).
+* `rewrite`: The replacement regex for any match made by matching a regex. Use \0 to refer to the whole match, \1 for the first capture group, \2, and so on, for subsequent capture groups.
+* `input_text`: The input string to search in.
 
 Returns the text after replacing all matches of regex with evaluations of rewrite. Matches don't overlap.
 
@@ -1040,19 +1039,17 @@ Activity                                        |Replaced
 ------------------------------------------------|----------------------------------------------------------
 4663 - An attempt was made to access an object  |Activity ID 4663: An attempt was made to access an object.
 
-
 ### *split*
 
 Splits a specific string according to a specified delimiter, and then returns an array of the resulting substrings.
 
-```
+```kusto
 split(source, delimiter [, requestedIndex])
 ```
 
-- `source`: The string to be split according to the specified delimiter.
-- `delimiter`: The delimiter that will be used to split the source string.
-- `requestedIndex`: An optional zero-based index. If provided, the returned string array holds only that item (if it exists).
-
+* `source`: The string to be split according to the specified delimiter.
+* `delimiter`: The delimiter that will be used to split the source string.
+* `requestedIndex`: An optional zero-based index. If provided, the returned string array holds only that item (if it exists).
 
 #### Example
 
@@ -1069,7 +1066,7 @@ print split("aabbcc", "bb");        // result: ["aa","cc"]
 
 Concatenates string arguments (supports 1-16 arguments).
 
-```
+```kusto
 strcat("string1", "string2", "string3")
 ```
 
@@ -1083,7 +1080,7 @@ print strcat("hello", " ", "world")	// result: "hello world"
 
 Returns the length of a string.
 
-```
+```kusto
 strlen("text_to_evaluate")
 ```
 
@@ -1093,18 +1090,17 @@ strlen("text_to_evaluate")
 print strlen("hello")	// result: 5
 ```
 
-
 ### *substring*
 
 Extracts a substring from a specific source string, starting at the specified index. Optionally, you can specify the length of the requested substring.
 
-```
+```kusto
 substring(source, startingIndex [, length])
 ```
 
-- `source`: The source string that the substring is taken from.
-- `startingIndex`: The zero-based starting character position of the requested substring.
-- `length`: An optional parameter that you can use to specify the requested length of the returned substring.
+* `source`: The source string that the substring is taken from.
+* `startingIndex`: The zero-based starting character position of the requested substring.
+* `length`: An optional parameter that you can use to specify the requested length of the returned substring.
 
 #### Example
 
@@ -1115,12 +1111,11 @@ print substring("123456", 2, 2);	// result: "34"
 print substring("ABCD", 0, 2);	// result: "AB"
 ```
 
-
 ### *tolower*, *toupper*
 
 Converts a specific string to all lowercase or all uppercase.
 
-```
+```kusto
 tolower("value")
 toupper("value")
 ```
@@ -1331,7 +1326,6 @@ Heartbeat
 |Ireland   	      | 0		       		|
 |United Kingdom	  | 0		       		|
 |Netherlands	  | 2  					|
-
 
 To analyze even smaller subgroups of your data, add column names to the `by` section. For example, you might want to count the distinct computers from each country or region per type of operating system (`OSType`):
 
@@ -1635,8 +1629,8 @@ Nested objects are objects that contain other objects in an array or in a map of
 
 Use `extractjson` or `extract_json()` to access a specific JSON element in a known path. This function requires a path expression that uses the following conventions:
 
-- Use _$_ to refer to the root folder.
-- Use the bracket or dot notation to refer to indexes and elements as illustrated in the following examples.
+* Use _$_ to refer to the root folder.
+* Use the bracket or dot notation to refer to indexes and elements as illustrated in the following examples.
 
 Use brackets for indexes and dots to separate elements:
 
@@ -1970,8 +1964,8 @@ This example demonstrates how to create an automated detector for service disrup
 
 Two techniques are used to evaluate the service status based on trace logs data:
 
-- Use [make-series](/azure/kusto/query/make-seriesoperator) to convert semi-structured textual trace logs into a metric that represents the ratio between positive and negative trace lines.
-- Use [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) and [series_fit_line](/azure/kusto/query/series-fit-linefunction) for advanced step-jump detection by using time-series analysis with a two-line linear regression.
+* Use [make-series](/azure/kusto/query/make-seriesoperator) to convert semi-structured textual trace logs into a metric that represents the ratio between positive and negative trace lines.
+* Use [series_fit_2lines](/azure/kusto/query/series-fit-2linesfunction) and [series_fit_line](/azure/kusto/query/series-fit-linefunction) for advanced step-jump detection by using time-series analysis with a two-line linear regression.
 
 ```kusto
 let startDate = startofday(datetime("2017-02-01"));
@@ -2002,7 +1996,6 @@ traces
 
 ## Next steps
 
-- Walk through a [tutorial on the Kusto Query Language](tutorial.md?pivots=azuremonitor).
-
+Walk through a [tutorial on the Kusto Query Language](tutorial.md?pivots=azuremonitor).
 
 ::: zone-end

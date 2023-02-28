@@ -3,11 +3,15 @@ title: ".alter materialized view partitioning policy command- Azure Data Explore
 description: "This article describes the .alter materialized view partitioning policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 02/21/2023
 ---
 # .alter materialized view partitioning policy
 
-Change a materialized view [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md). The command requires [DatabaseAdmin](access-control/role-based-authorization.md) permissions.
+Change a materialized view [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

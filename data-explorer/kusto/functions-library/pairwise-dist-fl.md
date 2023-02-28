@@ -98,7 +98,7 @@ let raw_data = datatable(name:string, gender: string, height:int, weight:int, li
     'Cindy',    'F',    130,    30,     4,  'Hat',      'Person',
     'Dan',      'M',    190,    105,    4,  'Hat',      'Person',
     'Elmie',    'M',    110,    30,     4,  'Toy',      'Person',
-    'Fanny',    'F',    170,    65,     4,  'Bag',      'Person',
+    'Franny',   'F',    170,    65,     4,  'Bag',      'Person',
     'Godzilla', '?',    260,    210,    5,  'Tail',     'Person',
     'Hannie',   'F',    112,    28,     4,  'Toy',      'Person',
     'Ivie',     'F',    105,    20,     4,  'Toy',      'Person',
@@ -126,7 +126,7 @@ raw_data
 
 # [Stored](#tab/stored)
 
-To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
 
 ### One-time installation
 
@@ -193,7 +193,7 @@ let raw_data = datatable(name:string, gender: string, height:int, weight:int, li
     'Cindy',    'F',    130,    30,     4,  'Hat',      'Person',
     'Dan',      'M',    190,    105,    4,  'Hat',      'Person',
     'Elmie',    'M',    110,    30,     4,  'Toy',      'Person',
-    'Fanny',    'F',    170,    65,     4,  'Bag',      'Person',
+    'Franny',   'F',    170,    65,     4,  'Bag',      'Person',
     'Godzilla', '?',    260,    210,    5,  'Tail',     'Person',
     'Hannie',   'F',    112,    28,     4,  'Toy',      'Person',
     'Ivie',     'F',    105,    20,     4,  'Toy',      'Person',
@@ -225,14 +225,14 @@ raw_data
 ## Analysis
 
 ```kusto
-| entity1  | Andy   | Betsy  | Cindy  | Dan    | Elmie  | Fanny  | Godzilla | Hannie |
+| entity1  | Andy   | Betsy  | Cindy  | Dan    | Elmie  | Franny | Godzilla | Hannie |
 |----------|--------|--------|--------|--------|--------|--------|----------|--------|...
 | Andy     |        | 0.354  | 0.4125 | 0.1887 | 0.4843 | 0.3702 | 1.2087   | 0.6265 |
 | Betsy    | 0.354  |        | 0.416  | 0.4708 | 0.6307 | 0.0161 | 1.2051   | 0.4872 |
 | Cindy    | 0.4125 | 0.416  |        | 0.6012 | 0.3575 | 0.3998 | 1.4783   | 0.214  |
 | Dan      | 0.1887 | 0.4708 | 0.6012 |        | 0.673  | 0.487  | 1.0199   | 0.8152 |
 | Elmie    | 0.4843 | 0.6307 | 0.3575 | 0.673  |        | 0.6145 | 1.5502   | 0.1565 |
-| Fanny    | 0.3702 | 0.0161 | 0.3998 | 0.487  | 0.6145 |        | 1.2213   | 0.471  |
+| Franny   | 0.3702 | 0.0161 | 0.3998 | 0.487  | 0.6145 |        | 1.2213   | 0.471  |
 | Godzilla | 1.2087 | 1.2051 | 1.4783 | 1.0199 | 1.5502 | 1.2213 |          | 1.5495 |
 | Hannie   | 0.6265 | 0.4872 | 0.214  | 0.8152 | 0.1565 | 0.471  | 1.5495   |        |...
 .
@@ -243,7 +243,7 @@ raw_data
 Looking at entities of two different types, we would like to calculate distance between entities belonging to the same type, by taking into account both nominal variables (such as gender or preferred accessory) and numerical variables (such as the number of limbs, height, and weight). The numerical variables are on different scales and must be centralized and scaled, which is done automatically. The output is pairs of entities under the same partition with calculated multivariate distance. It can be analyzed directly, visualized as a distance matrix or scatterplot, or used as input data for outlier detection algorithm by calculating mean distance per entity, with entities with high values indicating global outliers.
 For example, when adding an optional visualization using a distance matrix, you get a table as shown in the sample. From the sample, you can see that:
 
- * Some pairs of entities (Betsy and Fanny) have a low distance value (close to 0) indicating they're similar.
+ * Some pairs of entities (Betsy and Franny) have a low distance value (close to 0) indicating they're similar.
  * Some pairs of entities (Godzilla and Elmie) have a high distance value (1 or above) indicating they're different.
 
 The output can further be used to calculate the average distance per entity. A high average distance might indicate global outliers. For example, we can see that on average Godzilla has a high distance from the others indicating that it's a probable global outlier.

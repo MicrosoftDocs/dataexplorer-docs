@@ -3,7 +3,7 @@ title: ".alter-merge table streaming ingestion policy command - Azure Data Explo
 description: "This article describes the .alter-merge table streaming ingestion policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 01/13/2022
+ms.date: 02/21/2023
 ---
 # .alter-merge table streaming ingestion policy
 
@@ -14,6 +14,10 @@ Use in low latency scenarios, where ingestion time is less than 10 seconds for v
 Use the classic bulk ingestion instead of streaming ingestion when the amount of data grows to more than 4 Gb per hour per table.
 
 * To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md).
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

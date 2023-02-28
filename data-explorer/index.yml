@@ -120,7 +120,7 @@ landingContent:
           - text: Query data using Python
             url: python-query-data.md
           - text: Time series analysis
-            url: time-series-analysis.md
+            url: /azure/data-explorer/kusto/query/time-series-analysis
       - linkListType: reference
         links:
           - text: KQL quick reference

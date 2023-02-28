@@ -32,13 +32,14 @@ The function `series_uv_anomalies_fl()` detects anomalies in time series by call
 
 ### Prerequisites
 
-* This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
-* You must [create an Anomaly Detector resource and obtain its key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
-* This function calls the anomaly detection service endpoint and requires:
-    * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster.
-    * Modify the [callout policy](../management/calloutpolicy.md) for type `webapi` to allow accessing the service endpoint (the uri below).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](../../create-cluster-database-portal.md).
+* [Enable the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. This is necessary because this function contains inline Python.
+* [Create an Anomaly Detector resource and obtain its key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
+* Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster to access the anomaly detection service endpoint.
+* Modify the [callout policy](../management/calloutpolicy.md) for type `webapi` to access the anomaly detection service endpoint.
 
-In the following function example, replace 'YOUR-AD-RESOURCE-NAME' in the uri and 'YOUR-KEY' in the 'Ocp-Apim-Subscription-Key' of the header with your resource name and key.
+In the following function example, replace `YOUR-AD-RESOURCE-NAME` in the uri and `YOUR-KEY` in the `Ocp-Apim-Subscription-Key` of the header with your Anomaly Detector resource name and key.
 
 ## [Query-defined](#tab/query-defined)
 
@@ -90,7 +91,7 @@ ts
 
 ## [Stored](#tab/stored)
 
-To store the function, see the [`.create function`](../management/create-function.md) to add the code to a stored function. Creating a function requires [database user permissions](../management/access-control/role-based-authorization.md).
+To store the function, see the [`.create function`](../management/create-function.md) to add the code to a stored function. Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
 
 ### One time installation
 

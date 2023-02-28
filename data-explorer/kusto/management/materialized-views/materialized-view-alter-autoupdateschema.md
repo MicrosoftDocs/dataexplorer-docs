@@ -3,7 +3,7 @@ title: .alter materialized view autoUpdateSchema - Azure Data Explorer
 description: This article describes .alter materialized view autoUpdateSchema in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/08/2021
+ms.date: 02/21/2023
 ---
 
 # .alter materialized-view autoUpdateSchema
@@ -12,10 +12,11 @@ Sets the `autoUpdateSchema` value of an existing materialized view to `true` or 
 
 `.alter` `materialized-view` *MaterializedViewName* `autoUpdateSchema` [`true`|`false`]
 
-> [!NOTE]
-> You must either be the [database user](../access-control/role-based-authorization.md) who created the materialized view or have [database admin permission](../access-control/role-based-authorization.md) to run this command.
+## Permissions
 
-**Examples** 
+You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
+
+## Examples
 
 ```kusto
 .alter materialized-view MyView autoUpdateSchema true

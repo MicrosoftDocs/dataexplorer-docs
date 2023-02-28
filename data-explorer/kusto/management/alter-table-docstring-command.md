@@ -3,7 +3,7 @@ title: .alter table docstring - Azure Data Explorer
 description: This article describes the `.alter table docstring` command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/05/2021
+ms.date: 02/21/2023
 ---
 # .alter table docstring
 
@@ -14,13 +14,14 @@ Alters the `DocString` value of an existing table.
 `.alter` `table` *TableName* `docstring` *Documentation*
 
 > [!NOTE]
-> * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the table is permitted to modify it
-> * If the table doesn't exist, an error is returned. To create a new table, see [`.create table`](create-table-command.md)
+> If the table doesn't exist, an error is returned. To create a new table, see [`.create table`](create-table-command.md)
 
-**Example** 
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+
+## Example
 
 ```kusto
 .alter table LyricsAsTable docstring "This is the theme to Garry's show"
 ```
- 

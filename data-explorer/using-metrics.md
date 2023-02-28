@@ -16,7 +16,7 @@ For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 
 ## Use metrics to monitor your Azure Data Explorer resources
 
@@ -45,12 +45,12 @@ The **Resource** and **Metric Namespace** pickers are pre-selected for your Azur
 
 The Azure Data Explorer metrics give insight into both overall performance and use of your resources, as well as information about specific actions, such as ingestion or query. The metrics in this article have been grouped by usage type. 
 
-The types of metrics are: 
-* [Cluster metrics](#cluster-metrics) 
-* [Export metrics](#export-metrics) 
-* [Ingestion metrics](#ingestion-metrics) 
+The types of metrics are:
+* [Cluster metrics](#cluster-metrics)
+* [Export metrics](#export-metrics)
+* [Ingestion metrics](#ingestion-metrics)
 * [Streaming ingest metrics](#streaming-ingest-metrics)
-* [Query metrics](#query-metrics) 
+* [Query metrics](#query-metrics)
 * [Materialized view metrics](#materialized-view-metrics)
 
 For an alphabetical list of Azure Monitor's metrics for Azure Data Explorers, see [supported Azure Data Explorer cluster metrics](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters).

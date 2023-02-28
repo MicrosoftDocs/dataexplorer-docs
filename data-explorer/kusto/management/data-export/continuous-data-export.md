@@ -3,7 +3,7 @@ title: Continuous data export - Azure Data Explorer
 description: This article describes Continuous data export in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/03/2020
+ms.date: 02/21/2023
 ---
 # Continuous data export overview
 
@@ -11,8 +11,9 @@ This article describes continuous export of data from Kusto to an [external tabl
 
 To enable continuous data export, [create an external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table. 
 
-> [!NOTE]
-> All continuous export commands require [database admin permissions](../access-control/role-based-authorization.md).
+## Permissions
+
+All continuous export commands require at least [Database Admin](../access-control/role-based-access-control.md) permissions.
 
 ## Continuous export guidelines
 

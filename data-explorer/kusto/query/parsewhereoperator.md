@@ -3,7 +3,7 @@ title: parse-where operator - Azure Data Explorer
 description: Learn how to use the parse-where operator to parse the value of a string expression into one or more calculated columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 01/12/2023
 ---
 # parse-where operator
 
@@ -11,31 +11,27 @@ Evaluates a string expression, and parses its value into one or more calculated 
 
 See [parse operator](parseoperator.md), which produces nulls for unsuccessfully parsed strings.
 
-```kusto
-T | parse-where Text with "ActivityName=" name ", ActivityType=" type
-```
-
 ## Syntax
 
 *T* `| parse-where` [`kind=regex` [`flags=regex_flags`] |`simple`] *Expression* `with` `*` (*StringConstant* *ColumnName* [`:` *ColumnType*]) `*`...
 
-## Arguments
+## Parameters
 
-* *T*: The input table.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The tabular input to parse.|
+| *kind* | string | &check; | One of the [supported kind values](#supported-kind-values).|
+| *Expression* | string | &check; | An expression that evaluates to a string.|
+| *ColumnName* | string | &check; | The name of a column to assign a value to, extracted from the string expression. |
+| *ColumnType* | string | | The scalar value that indicates the type to convert the value to. The default is the `string`.|
 
-* *kind*:
+### Supported kind values
 
-  * *simple* (default): StringConstant is a regular string value, and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types.
-
-  * *regex*: StringConstant may be a regular expression, and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types. String delimiters can be a regex for this mode.
-
-  * *flags*: Flags to be used in regex mode:  `U` (Ungreedy), `m` (multi-line mode), `s` (match new line `\n`), `i` (case-insensitive), More flags can be found in [RE2 flags](re2.md).
-
-* *Expression*: An expression that evaluates to a string.
-
-* *ColumnName:* The name of a column that is assigned to a value that was taken out of the string expression.
-  
-* *ColumnType:* should be an optional scalar type that indicates the type to convert the value to. The default is string type.
+|Text|Description|
+|--|--|
+| `simple` | This is the default value. *StringConstant* is a regular string value and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types.|
+| `regex` | *StringConstant* may be a regular expression and the match is strict. All string delimiters, which can be a regex for this mode, should appear in the parsed string, and all extended columns must match the required types.|
+| `flags` | Flags to be used in regex mode like `U` (Ungreedy), `m` (multi-line mode), `s` (match new line `\n`), `i` (case-insensitive). More flags can be found in [RE2 flags](re2.md).|
 
 ## Returns
 
@@ -79,19 +75,27 @@ A few of the strings don't have a full match.
 
 Using `parse`, the calculated columns will have nulls.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92UTU/DMAyG75X6H6ycNlRpaYENinrkhibEdkMIZZ3ZAlk7JekAiR9P0i/SARuH7UJ7aOy+cfzEiQVqmEqWooIE5kybdyawd73BTE/xTcegtOTZou97YJ776kPK/zGMc82f3ieCp3iHAplC6ElUeSFTHLMVJrd8jYJnOEmXOC8EygB0rpkop6gkGgWg7HBcrGYoE55tmODzx6w0AxB5+jLlJg6NBuFoENFwCPQiPqMxDQOQ1ZK/C9YSNzwv1M3PYU4vjapPguMyhec7OWiXo9kBUwrUxvEnCHp0iIj+j2JE0e8c4T6OsKzWHo6S9uAc2xejc8CGO5noYZjMGfO9hyvfq7sF+N4HrJk0JG2zgFeul3ACpINGwDWBdMmIa8UGJFvYCC4gcXG/JC0zafFtcBeWuFZs+5uVEDv7GzJpdqHxNPq+1Ve4Mn/GVFeldaHqajsktcdJvPY0qQZNlDa/2rOVxSekEWJPoQUAAA==" target="_blank">Run the query</a>
+
 ```kusto
-let Traces = datatable(EventText:string)
-[
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=invalid_number, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=invalid_datetime, previousLockTime=02/17/2016 08:39:00)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=20, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=invalid_number, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
+let Traces = datatable(EventText: string)
+    [
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=invalid_number, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=invalid_datetime, previousLockTime=02/17/2016 08:39:00)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=20, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:01)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=invalid_number, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
 ];
 Traces  
-| parse EventText with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previouLockTime:date ")" *  
-| project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previousLockTime
+| parse EventText with * "resourceName=" resourceName ", totalSlices=" totalSlices: long * "sliceNumber=" sliceNumber: long * "lockTime=" lockTime ", releaseTime=" releaseTime: date "," * "previousLockTime=" previouLockTime: date ")" *  
+| project
+    resourceName,
+    totalSlices,
+    sliceNumber,
+    lockTime,
+    releaseTime,
+    previouLockTime
 ```
 
 **Output**
@@ -108,19 +112,27 @@ Traces
 
 Using 'parse-where' will filter-out unsuccessfully parsed strings from the result.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92UzU7DMAyA75X6DlZOGypaWmCDoh65oQmx3RBCWWe2QNZOSbqBxMOT/pJubOOwXWgOrR3b9WcnFqhhLFmMCiKYMm3WRGDnboWJHuOHDkFpyZNZ13XAPE/lixT7IQxTzV8/R4LH+IgCmULoSFRpJmMcsgVGD3yJgic4iuc4zQRKD3SqmShcVBQMPFD55zBbTFBGPFkxwacvSSF6INL4fcxNHBr0/EEvoH4f6HV4SUPqeyDLX+42WEpc8TRT97+HubgxVl3inZbJv9rLQdscdQVMK1AbxZ8g6MkhAvo/mhEEuzn8Qxx+0a0DHAXt0Tk2L0brgPX3MtHjMJkz5jrPt65TTQtwnS9YMqnwfD1HidCMDFhzPYczIC1AArYIpM1HbCk0OMksj2BjEhv6x6QhJ00R8uA2MrGlMJ9yuQnJvbfAyVYtaodu7lBSy/QNY1122Kaqmm6hVBor80pT5+rVUZoEK81mGt84KDIhqQUAAA==" target="_blank">Run the query</a>
+
 ```kusto
-let Traces = datatable(EventText:string)
-[
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=invalid_number, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=invalid_datetime, previousLockTime=02/17/2016 08:39:00)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=20, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=invalid_number, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
+let Traces = datatable(EventText: string)
+    [
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=invalid_number, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=invalid_datetime, previousLockTime=02/17/2016 08:39:00)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=20, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:01)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=invalid_number, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
 ];
 Traces  
-| parse-where EventText with * "resourceName=" resourceName ", totalSlices=" totalSlices:long * "sliceNumber=" sliceNumber:long * "lockTime=" lockTime ", releaseTime=" releaseTime:date "," * "previousLockTime=" previousLockTime:date ")" *  
-| project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previousLockTime
+| parse-where EventText with * "resourceName=" resourceName ", totalSlices=" totalSlices: long * "sliceNumber=" sliceNumber: long * "lockTime=" lockTime ", releaseTime=" releaseTime: date "," * "previousLockTime=" previousLockTime: date ")" *  
+| project
+    resourceName,
+    totalSlices,
+    sliceNumber,
+    lockTime,
+    releaseTime,
+    previousLockTime
 ```
 
 **Output**
@@ -134,20 +146,28 @@ Traces
 
 To get the resourceName and totalSlices, use the following query:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0/CMBTH70v2P7z0BGaGbiLozA7G7KbTAJ6MIWV7QqW0pO0AE/94y5YYMPLjgBfbQw/fb1/z6fvmCbQw0CxHAwkUzLo9EthIFyjtAFc2BmM1l+Om74FbL/VBKj2GTFn+9tEXPMceCmQGoaHRqFLnmLEZJk98joJL7OcTLEqBOgCrLBPVFZNIJYcLJngx5NLieC2btZKVsxHqJAwDECqfDrgrRaNW2G1FNOwAvYrbNKZO1fWruw1zjQuuSnP/e5mLa+dqkuC0WFH3B8flXg56iIMexUFPznGgPe32/2hPFO3mCA9xhMe0p6L9+5h19nLsj9nRHC5mvvd643v12PC9T5gzbfB8OUGNMOWycKNEu7is4HuMwJLbCZwB6aX9x+feXZrdPqQJgU1cIAFZWzYRySZw7OjkuLZVz2r1jrndKrL1Q1+VQ2/Q3QQAAA==" target="_blank">Run the query</a>
+
 ```kusto
-let Traces = datatable(EventText:string)
-[
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=non_valid_integer, sliceNumber=11, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=02/17/2016 08:40:00, previousLockTime=02/17/2016 08:39:00)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=non_valid_integer, sliceNumber=44, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
+let Traces = datatable(EventText: string)
+    [
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=non_valid_integer, sliceNumber=11, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=02/17/2016 08:40:00, previousLockTime=02/17/2016 08:39:00)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=non_valid_integer, sliceNumber=44, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:01)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
 ];
 Traces
-| parse-where kind = regex EventText with * "RESOURCENAME=" resourceName "," * "totalSlices=" totalSlices:long "," *
+| parse-where kind = regex EventText with * "RESOURCENAME=" resourceName "," * "totalSlices=" totalSlices: long "," *
 | project resourceName, totalSlices
 ```
+
+**Output**
+
+|resourceName|totalSlices|
+|--|--|
+||
 
 ### `parse-where` with case-insensitive regex flag
 
@@ -157,18 +177,20 @@ To get the required result, run `parse-where` with a case-insensitive (`i`) rege
 
 Only three strings will be parsed successfully, so the result is three records (some totalSlices hold invalid integers).
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0/CMBTH70v2P7zsBGaGbiLozA7G7KbTAJ6MIWV7jEppSdsBJv7xlC0xYOTHAS+2hx6+377m0/fN42hgoGiGGmLIqbF7xLGRLFCYAa5MBNooJoqm64Bdb/XhVXoEqTRs/NnnLMMecqQaoaFQy1JlmNIZxi9sjpwJ7GcTzEuOygcjDeXVFR0LKYYLylk+ZMJgsZH1RknL2QhVHAQ+cJlNB8yWImEr6LZCEnSA3ERtEhGrqvrV/Ya5wgWTpX78vczVrXU1Pf+8WGH3B8f1QQ5yjIOcxEHOznGkPe32/2hPGO7nCI5xBKe0p6L9+5h1DnIcjtnJHDZmrvN+5zr12HCdL5hTpfFyOUGFMGUit6NE2bisYMxpoWMG3+MElsxM4AK8XtJ/fu09JOn9UxJ7sI0Nnu9tLNuo3jZ4ZClFUduq55X8wMzsFNn5qTU3KKnV5QQAAA==" target="_blank">Run the query</a>
+
 ```kusto
-let Traces = datatable(EventText:string)
-[
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=non_valid_integer, sliceNumber=11, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=02/17/2016 08:40:00, previousLockTime=02/17/2016 08:39:00)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=non_valid_integer, sliceNumber=44, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:01)",
-"Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
+let Traces = datatable(EventText: string)
+    [
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=non_valid_integer, sliceNumber=11, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=02/17/2016 08:40:00, previousLockTime=02/17/2016 08:39:00)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=non_valid_integer, sliceNumber=44, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:01)",
+    "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
 ];
 Traces
-| parse-where kind = regex flags=i EventText with * "RESOURCENAME=" resourceName "," * "totalSlices=" totalSlices:long "," *
+| parse-where kind = regex flags=i EventText with * "RESOURCENAME=" resourceName "," * "totalSlices=" totalSlices: long "," *
 | project resourceName, totalSlices
 ```
 

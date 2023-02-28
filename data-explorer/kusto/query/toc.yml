@@ -92,7 +92,7 @@ items:
   - name: Set statement
     href: setstatement.md
   - name: Tabular expression statements
-    displayName: SQL views
+    displayName: views
     href: tabularexpressionstatements.md
   - name: Batches
     href: batches.md
@@ -170,7 +170,39 @@ items:
   - name: reduce operator
     href: reduceoperator.md
   - name: render operator
-    href: renderoperator.md
+    items:
+    - name: render operator
+      href: renderoperator.md
+    - name: visualizations
+      items: 
+      - name: anomalychart
+        href: visualization-anomalychart.md
+      - name: areachart
+        href: visualization-areachart.md
+      - name: barchart
+        href: visualization-barchart.md
+      - name: card
+        href: visualization-card.md
+      - name: columnchart
+        href: visualization-columnchart.md
+      - name: ladderchart
+        href: visualization-ladderchart.md
+      - name: linechart
+        href: visualization-linechart.md
+      - name: piechart
+        href: visualization-piechart.md
+      - name: pivotchart
+        href: visualization-pivotchart.md
+      - name: scatterchart
+        href: visualization-scatterchart.md
+      - name: stackedareachart
+        href: visualization-stackedareachart.md
+      - name: table
+        href: visualization-table.md
+      - name: timechart
+        href: visualization-timechart.md
+      - name: timepivot
+        href: visualization-timepivot.md
   - name: sample operator
     href: sampleoperator.md
   - name: sample-distinct operator
@@ -326,7 +358,7 @@ items:
 - name: Scalar functions
   items:
   - name: Scalar function types
-    displayName: SQL stored procedures
+    displayName: stored procedures
     href: scalarfunctions.md
   - name: abs()
     href: abs-function.md
@@ -766,7 +798,8 @@ items:
     href: todatetimefunction.md
   - name: todecimal()
     href: todecimalfunction.md
-  - name: todouble(), toreal()
+  - name: todouble()
+    displayName: toreal()
     href: todoublefunction.md
   - name: parse_json()
     displayName: toobject(), parsejson(), todynamic()
@@ -799,8 +832,10 @@ items:
   - name: trim_start()
     href: trimstartfunction.md
   - name: unicode_codepoints_from_string()
+    displayName: to_utf8()
     href: unicode-codepoints-from-string-function.md
   - name: unicode_codepoints_to_string()
+    displayName: make_string()
     href: unicode-codepoints-to-string-function.md
   - name: unixtime_microseconds_todatetime()
     href: unixtime-microseconds-todatetimefunction.md
@@ -866,6 +901,8 @@ items:
     href: dcountif-aggfunction.md
   - name: hll()
     href: hll-aggfunction.md
+  - name: hll_if()
+    href: hll-if-aggregation-function.md
   - name: hll_merge()
     href: hll-merge-aggfunction.md
   - name: make_bag()
@@ -1011,8 +1048,14 @@ items:
     href: geo-union-polygons-array-function.md
 - name: Time series analysis
   items:
-  - name: Time series analysis overview
-    href: machine-learning-and-tsa.md
+  - name: Example use cases
+    items:
+    - name: Time series analysis
+      href: time-series-analysis.md
+    - name: Anomaly detection and forecasting
+      href: anomaly-detection.md
+    - name: Machine learning
+      href: machine-learning-clustering.md
   - name: make-series operator
     href: make-seriesoperator.md
   - name: series_abs()
@@ -1048,6 +1091,9 @@ items:
   - name: series_divide()
     displayName: element-wise, elementwise
     href: series-dividefunction.md
+  - name: series_dot_product()
+    displayName: element-wise, elementwise
+    href: series-dot-productfunction.md
   - name: series_equals()
     displayName: element-wise, elementwise
     href: series-equalsfunction.md
@@ -1151,7 +1197,7 @@ items:
     href: series-subtractfunction.md
   - name: series_tan()
     displayName: element-wise, elementwise
-    href: series-tanfunction.md   
+    href: series-tanfunction.md
 - name: Plugins
   items:
   - name: General plugins

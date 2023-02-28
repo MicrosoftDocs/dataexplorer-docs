@@ -3,11 +3,15 @@ title: ".alter-merge capacity policy command- Azure Data Explorer"
 description: "This article describes the .alter-merge capacity policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 02/21/2023
 ---
 # .alter-merge capacity policy
 
-Enables or disables a cluster's [capacity policy](capacitypolicy.md). The policy is used to control the computational resources for data management operations on the cluster. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
+Enables or disables a cluster's [capacity policy](capacitypolicy.md). The policy is used to control the computational resources for data management operations on the cluster.
+
+## Permissions
+
+You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

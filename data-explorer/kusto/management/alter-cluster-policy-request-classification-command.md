@@ -3,20 +3,26 @@ title: ".alter cluster policy request classification command - Azure Data Explor
 description: "This article describes the .alter cluster policy request classification command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 01/06/2022
+ms.date: 02/21/2023
 ---
 # .alter cluster request classification policy
 
 Alters cluster's request classification policy. For more information, see [request classification policy](request-classification-policy.md).
 
+## Permissions
+
+You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+
 ## Syntax
 
 `.alter` `cluster` `policy` `request_classification` *SerializedPartialPolicy*  `<|` *ClassificationFunctionBody*
 
-## Arguments
+## Parameters
 
-- *SerializedPartialPolicy* - Define a serialized JSON policy. For policy properties, see [request classification policy](request-classification-policy.md)
-- *ClassificationFunctionBody* - Define an array with one or more classification functions.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *SerializedPartialPolicy* | string | &check; | A serialized JSON policy. For policy properties, see [request classification policy](request-classification-policy.md).|
+| *ClassificationFunctionBody*| string | &check; | An array with one or more classification functions.|
 
 ## Returns
 
