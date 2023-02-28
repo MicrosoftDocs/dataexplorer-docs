@@ -13,15 +13,16 @@ Returns the string represented by the Unicode codepoints. This function is the i
 
 ## Syntax
 
-`unicode_codepoints_to_string (`*value*[, *valueN*]... `)`
+`unicode_codepoints_to_string (`*values*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | int, long, or dynamic array of int or long | &check; | The integer value to convert. |
+| *values* | int, long, or dynamic | &check; | One or more comma-separated values to convert. The values may also be a [dynamic array](scalar-data-types/dynamic.md).|
 
-* This function receives up to 64 arguments.
+> [!NOTE]
+> This function receives up to 64 arguments.
 
 ## Returns
 

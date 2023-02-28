@@ -13,10 +13,12 @@ Removes leading match of the specified regular expression.
 
 `trim_start(`*regex*`,` *source*`)`
 
-## Arguments
+## Parameters
 
-* *regex*: String or [regular expression](re2.md) to be trimmed from the beginning of *source*.  
-* *source*: A string.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *regex* | string | &check; | The string or [regular expression](re2.md) to be trimmed from the beginning of *source*.|
+| *source* | string | &check; | The source string from which to trim *regex*.|
 
 ## Returns
 
@@ -24,7 +26,10 @@ Removes leading match of the specified regular expression.
 
 ## Examples
 
-Statement bellow trims *substring*  from the start of *string_to_trim*:
+The following statement trims *substring*  from the start of *string_to_trim*.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoLinKzEuPL8mPBzJyFWwVHJQySkoKiq309ZOAEnrJ+blK1rxcOSClpUkQ1UBVcEUgyQKgIBaTUAV0QERuako83AyQAJCXWFSiATdaB1WTJgD3gw1dowAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 let string_to_trim = @"https://bing.com";
@@ -38,7 +43,10 @@ print string_to_trim = string_to_trim,trimmed_string = trim_start(substring,stri
 |---|---|
 |https://bing.com|bing.com|
 
-Next statement trims all non-word characters from the beginning of the string:
+The next statement trims all non-word characters from the beginning of the string.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBVKC5JLVAw5OWqUSgoys9KTS4BihQp2ILI5MQSDSVdBQUlHaWQVKCAkk6FjoOSvr6CipImSENqRUlqXopCSVFmbm5qSjxEH4gHZCYWlWg4KEXHxZTHaivpAKU0AZNZAoR9AAAA" target="_blank">Run the query</a>
 
 ```kusto
 range x from 1 to 5 step 1

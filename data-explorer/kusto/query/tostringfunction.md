@@ -11,18 +11,23 @@ Converts the input to a string representation.
 
 ## Syntax
 
-`tostring(`*`Expr`*`)`
+`tostring(`*value*`)`
 
-## Arguments
+## Parameters
 
-* *`Expr`*: Expression that will be converted to string.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *value* | scalar | &check; | The value to convert to a string.|
 
 ## Returns
 
-If the *`Expr`* value is non-null, the result will be a string representation of *`Expr`*.
-If the *`Expr`* value is null, the result will be an empty string.
+If *value* is non-null, the result is a string representation of *value*.
+If *value* is null, the result is an empty string.
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJLy4BMtI1DI2MNRVsbRWUgAwlAFmZlSocAAAA" target="_blank">Run the query</a>
 
 ```kusto
 tostring(123) == "123"

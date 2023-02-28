@@ -11,11 +11,13 @@ Converts unix-epoch milliseconds to UTC datetime.
 
 ## Syntax
 
-`unixtime_milliseconds_todatetime(*milliseconds*)`
+`unixtime_milliseconds_todatetime(`*milliseconds*`)`
 
-## Arguments
+## Parameters
 
-* *milliseconds*: A real number represents epoch timestamp in milliseconds. `Datetime` that occurs before the epoch time (1970-01-01 00:00:00) has a negative timestamp value.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *milliseconds* | real | &check; | The epoch timestamp in microseconds. A `datetime` value that occurs before the epoch time (1970-01-01 00:00:00) has a negative timestamp value.|
 
 ## Returns
 
@@ -23,7 +25,9 @@ If the conversion is successful, the result will be a [datetime](./scalar-data-t
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples  -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJLEmNL8nMTVWwVSjNy6wAMeNzM3NyMotTk/PzUorjS/JBakDiGoamJmbGBgYWBiCgCQDATIC6QQAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 print date_time = unixtime_milliseconds_todatetime(1546300800000)
 ```
