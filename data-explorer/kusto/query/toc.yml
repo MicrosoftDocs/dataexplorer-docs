@@ -834,8 +834,10 @@ items:
   - name: trim_start()
     href: trimstartfunction.md
   - name: unicode_codepoints_from_string()
+    displayName: to_utf8()
     href: unicode-codepoints-from-string-function.md
   - name: unicode_codepoints_to_string()
+    displayName: make_string()
     href: unicode-codepoints-to-string-function.md
   - name: unixtime_microseconds_todatetime()
     href: unixtime-microseconds-todatetimefunction.md
