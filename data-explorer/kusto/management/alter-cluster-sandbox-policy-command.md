@@ -20,9 +20,11 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 `.alter` `cluster` `policy` `sandbox` *ArrayOfPolicyObjects*
 
-## Arguments
+## Parameters
 
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined. For policy object definitions, the [sandbox policy](sandboxpolicy.md).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ArrayOfPolicyObjects* | string | &check;  | An array with one or more policy objects defined. For policy object definitions, the [sandbox policy](sandboxpolicy.md).|
 
 ## Returns
 
