@@ -3,7 +3,7 @@ title: Alter table extent tags retention policy management - Azure Data Explorer
 description: This article describes the alter extent tags retention policy command for tables in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 02/28/2023
 ---
 # .alter table extent tags retention policy
 
@@ -15,16 +15,18 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `extent_tags_retention` *SerializedPolicyObject* 
+`.alter` `table` *TableName* `policy` `extent_tags_retention` *SerializedPolicyObject*
 
-## Arguments
+## Parameters
 
-- *TableName* - Specify the name of the table.
-- *SerializedPolicyObject* - Define a serialized policy object.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *TableName* | string | &check; | The name of the table to alter.|
+| *SerializedPolicyObject* | string | &check; | A serialized policy object. See [extent tags retention policy](extent-tags-retention-policy.md).|
 
 ## Example
 
-For table T1, set an extent tags retention policy so that any `drop-by` tags that are older than 3 days, and any `ingest-by` tags that are older than two hours will be automatically dropped.
+The following command sets an extent tags retention policy for table T1. The policy causes any `drop-by` tags that are older than three days and any `ingest-by` tags that are older than two hours to be automatically dropped.
 
 ~~~kusto
 .alter table T1 policy extent_tags_retention ```[
