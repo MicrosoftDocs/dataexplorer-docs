@@ -18,7 +18,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 The command has the following limitations:
 
 * See limitations in [alter materialized view limitations](materialized-view-alter.md#alter-materialized-view-limitations).
-* The `backfill` property isn't supported if the materialized view already exists. If the materialized view already exists, it cannot be backfilled.
+* The `backfill` property isn't supported if the materialized view already exists. If the materialized view already exists, it can't be backfilled.
 
 ## Syntax
 
