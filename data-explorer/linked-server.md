@@ -36,7 +36,7 @@ The following steps describe how to set up the linked server connection.
 Query data from Azure Data Explorer using the following syntax.
 
 ```sql
-SELECT * FROM OpenQuery(LINKEDSERVER, 'SELECT * FROM <KustoStoredFunction>[(<Parameters>)]')
+SELECT * FROM OpenQuery(LINKEDSERVER, 'SELECT * from MyFunction(10)')
 ```
 
 Use Kusto [stored functions](kusto/query/schema-entities/stored-functions.md) for extracting data from Azure Data Explorer. Learn more at [KQL over TDS](kusto/api/tds/tdskql.md).
