@@ -22,7 +22,7 @@ This command requires [Database User](access-control/role-based-access-control.m
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *tableName* | string | &check; | The name of the table to create or extend. |
-| *columnName*, *columnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
+| *columnName*, *columnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of mappings defines the output column schema.|
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
