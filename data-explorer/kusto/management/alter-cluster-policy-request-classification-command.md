@@ -17,10 +17,12 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 `.alter` `cluster` `policy` `request_classification` *SerializedPartialPolicy*  `<|` *ClassificationFunctionBody*
 
-## Arguments
+## Parameters
 
-- *SerializedPartialPolicy* - Define a serialized JSON policy. For policy properties, see [request classification policy](request-classification-policy.md)
-- *ClassificationFunctionBody* - Define an array with one or more classification functions.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *SerializedPartialPolicy* | string | &check; | A serialized JSON policy. For policy properties, see [request classification policy](request-classification-policy.md).|
+| *ClassificationFunctionBody*| string | &check; | An array with one or more classification functions.|
 
 ## Returns
 

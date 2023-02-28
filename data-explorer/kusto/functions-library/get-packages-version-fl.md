@@ -29,7 +29,7 @@ The function accepts a dynamic array containing the names of the packages to che
 
 `get_packages_version_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
-### [Ad hoc](#tab/adhoc)
+### [Query-defined]](#tab/query-defined)
 
 For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
 
@@ -62,7 +62,7 @@ let get_packages_version_fl = (packages:dynamic=dynamic([]))
 get_packages_version_fl(pack_array('numpy', 'scipy', 'pandas', 'statsmodels', 'sklearn', 'onnxruntime', 'plotly'))
 ```
 
-### [Persistent](#tab/persistent)
+### [Stored](#tab/stored)
 
 For persistent usage, use [`.create function`](../management/create-function.md).  Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
 

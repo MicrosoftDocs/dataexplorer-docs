@@ -15,11 +15,18 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-```kusto
-.show materialized-view MV1 details
-.show materialized-views (MV1, ..., MVn) details
-.show materialized-views details
-```
+`.show` `materialized-view` *MaterializedViewName* `details`
+
+`.show` `.materialized-views` `(`*MaterializedViewsNames*`)` `details`
+
+`.show` `.materialized-views` `details`
+
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *MaterializedViewName* | string | &check; | The name of the materialized view. |
+| *MaterializedViewsNames* | string | &check; | One or more comma-separated materialized view names. |
 
 ## Output
 
