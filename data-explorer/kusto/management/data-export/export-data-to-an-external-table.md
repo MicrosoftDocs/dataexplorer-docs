@@ -30,7 +30,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 ## Properties
 
-The following properties are supported as part of the export to external table command:  
+The following properties are supported as part of the export to external table command.
 
 | Property | Type | Description| Default
 |---|---|---|---|
