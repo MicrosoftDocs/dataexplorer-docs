@@ -46,9 +46,9 @@ The object ID is available in the Azure portal on the managed identity's overvie
 
 ## Returns
 
-The command updates the ManagedIdentity policy of the cluster or the specified database, adding new managed identities or adding usages to existing managed identities, and then returns the output of the corresponding [.show managed identity policy](show-managed-identity-policy-command.md) command.
+The command updates the ManagedIdentity policy of the cluster or the specified database. The change may add new managed identities or add usages to existing managed identities. Then, the command returns the output of the corresponding [.show managed identity policy](show-managed-identity-policy-command.md) command.
 
-If any of the specified managed identities is not assigned to the cluster, an error will be returned and the ManagedIdentity policy will not be modified.
+If any of the specified managed identities isn't assigned to the cluster, an error is returned and the ManagedIdentity policy won't be modified.
 
 ## Example
 
