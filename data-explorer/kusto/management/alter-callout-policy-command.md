@@ -15,11 +15,13 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 ## Syntax
 
-`.alter` `cluster` `policy` `callout` *SerializedArrayOfPolicyObjects* 
+`.alter` `cluster` `policy` `callout` *SerializedArrayOfPolicyObjects*
 
-## Arguments
+## Parameters
 
-*SerializedArrayOfPolicyObjects* - A serialized array of JSON policy objects defined. See [callout policy](calloutpolicy.md) for policy properties. 
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *SerializedArrayOfPolicyObjects* | string | &check; | A serialized array of JSON policy objects defined. See [callout policy](calloutpolicy.md) for policy properties.|
 
 ## Returns
 

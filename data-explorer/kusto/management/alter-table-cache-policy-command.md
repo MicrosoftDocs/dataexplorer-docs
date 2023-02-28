@@ -3,11 +3,11 @@ title: ".alter table cache policy command - Azure Data Explorer"
 description: "This article describes the .alter table cache policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 02/28/2023
 ---
 # .alter table cache policy
 
-Change the table cache policy. To speed up queries, Azure Data Explorer caches data on its processing nodes, in SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe data so that important data can take priority.
+Use this command to change the table cache policy. To speed up queries, Azure Data Explorer caches data on its processing nodes, in SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe data so that important data can take priority.
 
 ## Permissions
 
@@ -15,15 +15,17 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `caching` *PolicyParameters* 
+`.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `caching` *PolicyParameters*
 
-## Arguments
+## Parameters
 
-- *DatabaseName* - Specify the name of the database.
-- *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
-- *PolicyParameters* - Define policy parameters, see also [cache policy](cachepolicy.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *DatabaseName* | string | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required.|
+| *TableName* | string | &check; | The name of the table. Use without *DatabaseName* when running in the required database's context.|
+| *PolicyParameters* | string | &check; | The policy parameters to set. See [cache policy](cachepolicy.md).|
 
-## Example
+## Examples
 
 ### Set cache policy of a table
 

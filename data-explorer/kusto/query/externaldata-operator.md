@@ -28,17 +28,17 @@ The `externaldata` operator returns a table whose schema is defined in the query
 
 ## Syntax
 
-`externaldata` `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`
-`[` *StorageConnectionString* [`,` ...] `]`
-[`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
+`externaldata` `(`*columnName*`:`*columnType* [`,` ...] `)`
+`[` *storageConnectionString* [`,` ...] `]`
+[`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ColumnName*, *ColumnType* | string | &check;| A list of column names and their types. This list defines the schema of the table. |
-| *StorageConnectionString* | string | &check;| A [storage connection string](../api/connection-strings/storage-connection-strings.md) of the storage artifact to query. |
-| *PropertyName*, *PropertyValue* | string | | A list of optional [properties](#properties) that determines how to interpret the data retrieved from storage.
+| *columnName*, *columnType* | string | &check;| A list of column names and their types. This list defines the schema of the table. |
+| *storageConnectionString* | string | &check;| A [storage connection string](../api/connection-strings/storage-connection-strings.md) of the storage artifact to query. |
+| *propertyName*, *propertyValue* | string | | A list of optional [properties](#properties) that determines how to interpret the data retrieved from storage.
 
 ### Properties
 

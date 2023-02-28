@@ -18,20 +18,19 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Syntax
 
-`.alter` `materialized-view`  
-[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]  
-*ViewName* `on table` *SourceTableName*  
+`.alter` `materialized-view` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] *viewName* `on table` *sourceTableName*  
 `{`  
-    &nbsp;&nbsp;&nbsp;&nbsp;*Query*  
+    &nbsp;&nbsp;&nbsp;&nbsp;*query*  
 `}`
 
-## Arguments
+## Parameters
 
-|Argument|Type|Description
-|----------------|-------|---|
-|ViewName|String|Materialized view name.|
-|SourceTableName|String|Name of source table on which the view is defined.|
-|Query|String|The materialized view query.|
+|Name|Type|Required|Description|
+|--|--|--|
+|*viewName*|string|&check;|The materialized view name.|
+|*propertyName*, *propertyValue*|string||A list of [properties](#properties).|
+|*sourceTableName*|string|&check;|The name of the source table on which the view is defined.|
+|*query*|string|&check;|The materialized view query.|
 
 ## Properties
 

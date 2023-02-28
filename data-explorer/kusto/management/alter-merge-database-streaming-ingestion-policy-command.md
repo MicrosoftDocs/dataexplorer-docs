@@ -7,11 +7,11 @@ ms.date: 02/21/2023
 ---
 # .alter-merge database streaming ingestion policy
 
-Change the database streaming ingestion policy. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
+Use this command to change the database streaming ingestion policy. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
 
-Streaming ingestion is targeted for scenarios that require low latency, with an ingestion time of less than 10 seconds for varied volume data. It's used to optimize operational processing of many tables, in one or more databases, where the stream of data into each table is relatively small (a few records per second) but the overall data ingestion volume is high (thousands of records per second).
+Streaming ingestion is best suited for low latency scenarios where the ingestion time is under 10 seconds for varying data volume. It can optimize processing for multiple tables across one or more databases, especially when the tables receive only a few records per second but the ingestion volume is thousands of records per second.
 
-Use the classic (bulk) ingestion instead of streaming ingestion when the amount of data grows to more than 4 Gb per hour per table. 
+However, when the amount of data grows beyond 4 Gb per hour per table, it's recommended to switch to classic bulk ingestion instead of streaming ingestion.
 
 To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md). Streaming ingestion must be enabled on the cluster level before it can be used at the database level.
 
@@ -23,10 +23,12 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.alter-merge` `database` *DatabaseName* `policy` `streamingingestion` *ArrayOfPolicyObjects*
 
-## Arguments
+## Parameters
 
-*DatabaseName* - Specify the name of the database. 
-*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database for which to alter the streaming ingestion policy.|
+|*ArrayOfPolicyObjects*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [streaming ingestion policy](streamingingestionpolicy.md).|
 
 ## Returns
 

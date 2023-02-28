@@ -23,28 +23,17 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 
 `.ingest` [`async`] `into` `table` *TableName* *SourceDataLocator* [`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
 
-## Arguments
+## Parameters
 
-* `async`: If specified, the command will return immediately, and continue
-  ingestion in the background. The results of the command will include
-  an `OperationId` value that can then be used with the `.show operation`
-  command to retrieve the ingestion completion status and results.
-  
-* *TableName*: The name of the table to ingest data into.
-  The table name is always relative to the database in context,
-  and its schema is the schema that will be assumed for the data
-  if no schema mapping object is provided.
-
-* *SourceDataLocator*: A literal of type `string`, or a comma-delimited list of such
-  literals surrounded by `(` and `)` characters, representing [storage connection strings](../../api/connection-strings/storage-connection-strings.md). Kusto uses a URI format to describe the storage files containing the data to pull. 
-  * A single connection string must refer to a single file hosted by a storage account. 
-  * Ingestion of multiple files can be done by specifying multiple connection strings separated with a comma, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/externaltables.md).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `async` | string | | If specified, the command returns immediately, and continue ingestion in the background. The results of the command include an `OperationId` value to use with the `.show operation` command to retrieve the ingestion completion status and results.|
+| *TableName* | string | &check; | The name of the table into which to ingest data. The table name is always relative to the database in context, and its schema is the schema that will be assumed for the data if no schema mapping object is provided.|
+| *SourceDataLocator* | string | &check; |A comma-delimited list representing [storage connection strings](../../api/connection-strings/storage-connection-strings.md). A single connection string must refer to a single file hosted by a storage account. Ingestion of multiple files can be done by specifying multiple connection strings separated with a comma, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/externaltables.md).|
 
 > [!NOTE]
-> It is strongly recommended to use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals)
-> for the *SourceDataPointer* that includes actual credentials in it.
-> The service will be sure to scrub credentials
-> in its internal traces, error messages, etc.
+> It's strongly recommended to use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for the *SourceDataLocator* that includes actual credentials in it.
+> The service will be sure to scrub credentials in its internal traces, error messages, etc.
 
 [!INCLUDE [ingestion-properties](../../../includes/ingestion-properties.md)]
 
