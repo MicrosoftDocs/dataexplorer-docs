@@ -17,11 +17,13 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter` `table` *TableName* `column-docstrings` `(` *Col1* `:` *DocString1* [`,` *Col2* `:` *DocString2*]... `)`
 
-## Arguments
+## Parameters
 
-- *DocString* - Free text that you can attach to a table/function/column to describe the entity. This string is presented in various UX settings next to the entity names.
-- *TableName* - Name of the table on which the operation is performed.
-- *Col* - Column on which the operation is performed.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *DocString* | string | &check; | Free text that you can attach to a table/function/column to describe the entity. This string is presented in various UX settings next to the entity names.|
+| *TableName* | string | &check; | The name of the table on which the operation is performed.|
+| *Col* | string | &check; | The column on which the operation is performed.|
 
 ## Example
 

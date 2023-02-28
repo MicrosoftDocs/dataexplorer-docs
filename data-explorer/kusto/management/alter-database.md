@@ -17,6 +17,13 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.alter` `database` *DatabaseName* `prettyname` `'`*DatabasePrettyName*`'`
 
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database to alter.|
+|*DatabasePrettyName*|string|&check;|The new pretty name for the database.|
+
 ## Returns
  
 |Output parameter |Type |Description 
