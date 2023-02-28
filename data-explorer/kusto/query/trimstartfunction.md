@@ -1,9 +1,9 @@
 ---
 title: trim_start() - Azure Data Explorer
-description: This article describes trim_start() in Azure Data Explorer.
+description: Learn how to use the trim_start() function to remove the leading match of the specified regular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/27/2023
 ---
 # trim_start()
 
@@ -24,7 +24,7 @@ Removes leading match of the specified regular expression.
 
 *source* after trimming match of *regex* found in the beginning of *source*.
 
-## Example
+## Examples
 
 The following statement trims *substring*  from the start of *string_to_trim*.
 

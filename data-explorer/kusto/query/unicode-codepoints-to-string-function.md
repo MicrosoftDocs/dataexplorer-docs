@@ -1,9 +1,9 @@
 ---
 title: unicode_codepoints_to_string() - Azure Data Explorer
-description: This article describes unicode_codepoints_to_string() in Azure Data Explorer.
+description: Learn how to use the unicode_codepoints_to_string() function to return the string represented by the Unicode codepoints.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 02/27/2023
 ---
 # unicode_codepoints_to_string()
 

@@ -33,17 +33,18 @@ You must have at least [Database User](../access-control/role-based-access-contr
 ## Syntax
 
 `.create` [`async`] [`ifnotexists`] `materialized-view` <br>
-[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
-*ViewName* `on table` *SourceTableName* <br>
-`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
+[ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] <br>
+*viewName* `on table` *sourceTableName* <br>
+`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*query*<br>`}`
 
-## Arguments
+## Parameters
 
-|Argument|Type|Description
-|----------------|-------|---|
-|`ViewName`|String|The materialized view name. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
-|`SourceTableName`|String|The name of the source table that the view is defined on.|
-|`Query`|String|The materialized view query. For more information, see [Query argument](#query-argument).|
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*viewName*|string|&check;|The materialized view name. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
+|*propertyName*, *propertyValue*|string||A list of [properties](#properties).|
+|*sourceTableName*|string|&check;|The name of the source table that the view is defined on.|
+|*query*|string|&check;|The materialized view query. For more information, see [Query argument](#query-argument).|
 
 > [!NOTE]
 > If the materialized view already exists:
@@ -92,8 +93,8 @@ The following properties are supported in the `with(propertyName=propertyValue)`
 |`lookback`|Timespan| Valid only for `arg_max`/`arg_min`/`take_any` materialized views, and only if the engine is [EngineV3](../../../engine-v3.md). It limits the period of time in which duplicates are expected. For example, if a lookback of 6 hours is specified on an `arg_max` view, the deduplication between newly ingested records and existing ones will take into consideration only records that were ingested up to 6 hours ago. <br><br>Lookback is relative to `ingestion_time`. Defining the lookback period incorrectly might lead to duplicates in the materialized view. For example, if a record for a specific key is ingested 10 hours after a record for the same key was ingested, and the lookback is set to 6 hours, that key will be a duplicate in the view. The lookback period is applied during both [materialization time](materialized-view-overview.md#how-materialized-views-work) and [query time](materialized-view-overview.md#materialized-views-queries).|
 |`autoUpdateSchema`|Boolean|Whether to automatically update the view on source table changes. Default is `false`. This option is valid only for views of type `arg_max(Timestamp, *)`/`arg_min(Timestamp, *)`/`take_any(*)` (only when the column's argument is `*`). If this option is set to `true`, changes to the source table will be automatically reflected in the materialized view.
 |`dimensionTables`|Array|A dynamic argument that includes an array of dimension tables in the view. See [Query argument](#query-argument).
-|`folder`|String|The materialized view's folder.|
-|`docString`|String|A string that documents the materialized view.|
+|`folder`|string|The materialized view's folder.|
+|`docString`|string|A string that documents the materialized view.|
 
 > [!WARNING]
 > * The system will automatically disable a materialized view if changes to the source table of the materialized view, or changes in data, lead to incompatibility between the materialized view query and the expected materialized view schema.
@@ -110,7 +111,7 @@ You can create a materialized view over another materialized view only when the 
 **Syntax:**
 
 `.create` [`async`] [`ifnotexists`] `materialized-view` <br>
-[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
+[ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] <br>
 *ViewName* `on materialized-view` *SourceMaterializedViewName* <br>
 `{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
 
@@ -466,10 +467,10 @@ Even if the cancellation doesn't succeed within 10 minutes, and the cancel comma
 |Output parameter |Type |Description
 |---|---|---
 |`OperationId`|GUID|The operation ID of the `.create materialized-view` command.
-|`Operation`|String|The type of operation.
+|`Operation`|string|The type of operation.
 |`StartedOn`|Datetime|The start time of the create operation.
-|`CancellationState`|String|One of: `Canceled successfully` (creation was canceled), `Cancellation failed` (wait for cancellation timed out), `Unknown` (view creation is no longer running but wasn't canceled by this operation).
-|`ReasonPhrase`|String|The reason why cancellation wasn't successful.
+|`CancellationState`|string|One of: `Canceled successfully` (creation was canceled), `Cancellation failed` (wait for cancellation timed out), `Unknown` (view creation is no longer running but wasn't canceled by this operation).
+|`ReasonPhrase`|string|The reason why cancellation wasn't successful.
 
 ### Example
 

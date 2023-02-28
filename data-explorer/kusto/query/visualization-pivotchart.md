@@ -19,17 +19,16 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 
 ## Syntax
 
-*T* `|` `render` pivotchart [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
+*T* `|` `render` `pivotchart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *T* | string | &check; | Input table name.
-| *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
-| *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-### Properties 
+### Supported properties
 
 All properties are optional.
 

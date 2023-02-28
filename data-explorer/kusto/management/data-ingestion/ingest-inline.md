@@ -26,22 +26,16 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 [`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
 `<|` *Data*
 
-## Arguments
+## Parameters
 
-* *TableName* is the name of the table to ingest data into.
-  The name is always related to the database in context.
-  The table schema is the schema that will be assumed for the data
-  if no schema-mapping object is provided.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TableName* | string | &check; | The name of the table into which to ingest data. The table name is always relative to the database in context, and its schema is the schema that will be assumed for the data if no schema mapping object is provided.|
+| *Data* | string | The data content to ingest. Unless otherwise modified by the ingestion properties, this content is parsed as CSV.|
+| *IngestionPropertyName*, *IngestionPropertyValue* | string | | Any number of [ingestion properties](../../../ingestion-properties.md) that affect the ingestion process.|
 
-* *Data* is the data content to ingest. Unless otherwise modified
-  by the ingestion properties, this content is parsed as CSV.
- 
- > [!NOTE]
- > Unlike most control commands and queries, the text of the *Data* part of the command doesn't have to follow the syntactic conventions of the language. 
- For example, whitespace characters are important, or the `//` combination isn't treated as a comment.
-
-* *IngestionPropertyName*, *IngestionPropertyValue*: Any number of
-  [ingestion properties](../../../ingestion-properties.md) that affect the ingestion process.
+> [!NOTE]
+> Unlike most control commands and queries, the text of the *Data* part of the command doesn't have to follow the syntactic conventions of the language. For example, whitespace characters are important, or the `//` combination isn't treated as a comment.
 
 ## Returns
 
