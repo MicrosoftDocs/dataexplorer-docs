@@ -8,7 +8,7 @@ ms.date: 02/21/2023
 
 # .alter materialized-view autoUpdateSchema
 
-Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`. For information on the the autoUpdateSchema property, see [materialized view create command properties](materialized-view-create.md#properties).
+Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`. For information on the autoUpdateSchema property, see [materialized view create command properties](materialized-view-create.md#properties).
 
 ## Permissions
 
