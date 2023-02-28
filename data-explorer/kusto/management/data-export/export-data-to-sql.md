@@ -38,7 +38,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 ## Limitations and restrictions
 
-There are a number of limitations and restrictions when exporting data to an SQL database:
+There are some limitations and restrictions when exporting data to an SQL database:
 
 1. Kusto is a cloud service, so the connection string must point to a
    database that is accessible from the cloud. (In particular, one can't

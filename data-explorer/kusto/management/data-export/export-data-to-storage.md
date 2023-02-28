@@ -22,7 +22,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| `async` | string | | If specified, the command runs in asynchronous mode. See [asynchronous mode](#asynchronous-mode) for more details on the behavior in this mode.|
+| `async` | string | | If specified, the command runs in asynchronous mode. See [asynchronous mode](#asynchronous-mode).|
 | `compressed` | string | | If specified, the output storage artifacts are compressed as `.gz` files. See the `compressionType` [property](#properties) for compressing Parquet files as snappy.|
 | *OutputDataFormat* | string | &check; | Indicates the data format of the storage artifacts written by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`.|
 | *StorageConnectionString* | string | | One or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md) that indicate which storage to write the data to. More than one storage connection string may be specified for scalable writes. Each such connection string must indicate the credentials to use when writing to storage. For example, when writing to Azure Blob Storage, the credentials can be the storage account key, or a shared access key (SAS) with the permissions to read, write, and list blobs.|
