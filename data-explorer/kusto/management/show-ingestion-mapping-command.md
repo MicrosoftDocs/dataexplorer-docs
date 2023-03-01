@@ -48,3 +48,9 @@ For a table that only contains one CSV mapping named "mapping1", the following t
 | Name     | Kind | Mapping     |
 |----------|------|-------------|
 | mapping1 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` |
+
+## See also
+
+* Learn more about [data mappings](mappings.md)
+* Use the [.create ingestion mapping](create-ingestion-mapping-command.md) command to create a new mapping
+* Use the [.alter ingestion mapping](alter-ingestion-mapping-command.md) command to change an existing mapping
