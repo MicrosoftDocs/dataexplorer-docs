@@ -67,5 +67,5 @@ If the table only contained one CSV mapping named "mapping1", the following quer
 ## See also
 
 * Learn more about [data mappings](mappings.md)
-* Use the [.create ingestion mapping](create-ingestion-mapping-command.md) command to create a new mapping
-* Use the [.alter ingestion mapping](alter-ingestion-mapping-command.md) command to change an existing mapping
+* Use [.create ingestion mapping](create-ingestion-mapping-command.md) to create a new mapping
+* Use [.alter ingestion mapping](alter-ingestion-mapping-command.md) to change an existing mapping
