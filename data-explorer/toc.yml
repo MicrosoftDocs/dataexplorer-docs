@@ -251,6 +251,8 @@ items:
           href: web-results-grid.md
         - name: Share queries
           href: web-share-queries.md
+        - name: Keyboard shortcuts
+          href: web-ui-query-keyboard-shortcuts.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
@@ -619,8 +621,6 @@ items:
     href: kusto/api/toc.yml
   - name: Azure CLI Kusto
     href: /cli/azure/kusto
-  - name: Azure Data Explorer web UI keyboard shortcuts
-    href: web-ui-query-keyboard-shortcuts.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
     href: policy-reference.md

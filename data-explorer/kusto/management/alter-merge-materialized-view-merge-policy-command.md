@@ -7,7 +7,11 @@ ms.date: 02/21/2023
 ---
 # .alter-merge materialized view merge policy
 
-Use this command to change a materialized view's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged. 
+Use this command to change a materialized view's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
