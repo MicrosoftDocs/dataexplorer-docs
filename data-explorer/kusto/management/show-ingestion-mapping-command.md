@@ -11,11 +11,11 @@ Use this command to view the ingestion mapping(s) for a database or table.
 
 ## Syntax
 
-Use the following syntax to view a specific mapping based on the mapping name.
+View a specific mapping based on the mapping name:
 
 `.show` [`table`|`database`] *EntityName* `ingestion` `mapping` *MappingName*
 
-Use the following syntax to view all mappings of a certain type or all mappings for the specified table or database.
+View all mappings or mappings of a certain type:
 
 `.show` [`table`|`database`] *EntityName* `ingestion` [ *MappingKind* ] `mappings`
 
