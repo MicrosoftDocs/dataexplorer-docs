@@ -7,7 +7,7 @@ ms.date: 03/01/2023
 ---
 # .show ingestion mapping
 
-Use this command to view the ingestion mapping(s) for a database or table.
+Use this command to view a specific ingestion mapping, or all ingestion mappings, for a database or table.
 
 ## Syntax
 
@@ -15,7 +15,7 @@ View a specific mapping:
 
 `.show` [`table`|`database`] *EntityName* `ingestion` *MappingKind* `mapping` *MappingName*
 
-View all mappings or all mappings of a certain type:
+View all mappings or all mappings of a specific type:
 
 `.show` [`table`|`database`] *EntityName* `ingestion` [ *MappingKind* ] `mappings`
 
@@ -24,7 +24,7 @@ View all mappings or all mappings of a certain type:
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*EntityName*|string|&check;|The name of the table or database for which to show the ingestion mapping(s).|
-|*MappingKind*|string||The type of mapping(s) to view. The options are `csv`, `json`, `avro`, `w3clogfile`, `parquet`, and `orc`.|
+|*MappingKind*|string||The type of mapping(s) to view. Possible values: `csv`, `json`, `avro`, `w3clogfile`, `parquet`, and `orc`.|
 |*MappingName*|string||The name of the mapping to view. This argument is required if you specify that you want to view a single `mapping` instead of multiple `mappings` for the entity. See [syntax options](#syntax).|
 
 ## Returns
