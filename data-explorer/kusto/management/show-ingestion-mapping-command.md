@@ -33,14 +33,10 @@ The command returns a table with the columns `Name`, `Kind`, and `Mapping` that 
 
 ## Example
 
-For a table that only contains one CSV mapping named "mapping1", the following two queries would both return the same output.
+### Show a specific ingestion mapping
 
 ```kusto
-// Specify the mapping name
 .show table MyTable ingestion csv mapping "mapping1" 
-
-// Specify the mapping type only
-.show table MyTable ingestion csv mappings 
 ```
 
 **Output**
@@ -48,6 +44,25 @@ For a table that only contains one CSV mapping named "mapping1", the following t
 | Name     | Kind | Mapping     |
 |----------|------|-------------|
 | mapping1 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` |
+
+If the table only contained one CSV mapping named "mapping1", the following query would return the same output as the previous query.
+
+```kusto
+// Specify the mapping type only
+.show table MyTable ingestion csv mappings 
+```
+
+## Show all mappings for a table
+
+```kusto
+.show table MyTable ingestion mappings
+```
+
+## Show all csv mappings for a database
+
+```kusto
+.show database MyDatabase ingestion csv mappings
+```
 
 ## See also
 
