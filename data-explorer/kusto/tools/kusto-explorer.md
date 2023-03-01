@@ -162,7 +162,7 @@ The Home tab shows the most recently used functions, divided into sections:
 |Query and Results To Clipboard|    Exports Query and data set to a clipboard. If a chart is presented, it exports the chart as a bitmap.|
 |Result To Clipboard| Exports data set to a clipboard. If a chart is presented, it exports the chart as a bitmap.|
 |Query To Clipboard| Exports the Query to a clipboard.|
-|Results To Clipboard (datatable())| <!--TBD> |
+|Results To Clipboard (datatable())| <!--TBD--> Maximal allowed cell value is 30000.|
 ||---------*Results*---------|
 |Clear results cache| Clears cached results of previously executed queries.|
 
@@ -211,9 +211,9 @@ The Home tab shows the most recently used functions, divided into sections:
 |Hide Duplicates|Toggles removal of the duplicate rows from the query results.|
 |Hide Empty Columns|Toggles removal of empty columns from the query results.|
 |Collapse Singular Columns|Toggles collapsing columns with singular value.|
-|Row Selection| <!--TBD--> |
-|Color By Column| <!--TBD-->|
-|Wrap Text| <!--TBD-->|
+|Row Selection| Enables selection of specific rows in the Results panel|
+|Color By Column| Groups identical records in the first column by color.|
+|Wrap Text| Formats cells to wrap the data to fit the column width.|
 ||---------*Data Filtering*---------|
 |Filter Rows In Search|Toggles the option to show only matching rows in query results search (**Ctrl+F**).|
 ||---------*Visualizations*---------|
@@ -232,7 +232,7 @@ The Home tab shows the most recently used functions, divided into sections:
 |----|----------|
 ||---------*IntelliSense*---------|
 |Enable IntelliSense| Enables and disables IntelliSense on the Script Panel.|
-|Issues List| <!--TBD>|
+|Issues List| Lists issues in the Script panel.|
 ||---------*Automation*---------|
 |Add New Automation|<!--TBD-->|
 ||---------*Utilities*---------|
