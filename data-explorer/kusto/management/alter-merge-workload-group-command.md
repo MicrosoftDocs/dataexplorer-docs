@@ -1,19 +1,20 @@
 ---
 title: .alter-merge workload group command - Azure Data Explorer
-description: This article describes the .alter-merge workload group command in Azure Data Explorer.
+description: This article describes the alter-merge workload group command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/26/2023
+ms.date: 03/01/2023
+
 ---
 # .alter-merge workload_group
 
 Alters a workload group.
 
-For more information, see [Workload groups](workload-groups.md). To show the current workload group settings, use the [`.show` command](show-workload-group-command.md).
+For more information, see [Workload groups](workload-groups.md). To show the current workload group settings, use the [`.show workload_group` command](show-workload-group-command.md).
 
 ## Permissions
 
-You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -21,17 +22,34 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 ## Parameters
 
-|Name|Type|Required|Description|
-|--|--|--|--|
-| *WorkloadGroupName* | string | &check; | The name of the workload group. The name can be escaped with bracket notation like ['WorkLoadGroupName']. |
-| *SerializedPolicyObject* | string | &check; | A serialized policy object. The following policies apply to workload groups: [request classification](request-classification-policy.md), [request limits](request-limits-policy.md), [request rate limit](request-rate-limit-policy.md), and [request rate limits enforcement](request-rate-limits-enforcement-policy.md).|
+| Name                             | Type   | Required | Description                                                                                                                                                                                                                       |
+|----------------------------------|--------|----------|-------------------------------------------------------------------------------------------|
+| *WorkloadGroupName*              | string | &check;  | Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName']. |
+| *SerializedPolicyObject*         | string | &check;  | JSON representation of the policy. `*`                                                    |
+
+`*` The following policies apply to workload groups:
+
+* [request classification](request-classification-policy.md)
+* [request limits](request-limits-policy.md)
+* [request rate limit](request-rate-limit-policy.md)
+* [request rate limits enforcement](request-rate-limits-enforcement-policy.md).
+
+## Returns
+
+The command returns one row showing the details of the workload group.
+
+Following is the schema of the output returned:
+
+| Name              | Type   | Description                        |
+|-------------------|--------|------------------------------------|
+| WorkloadGroupName | string | Name of the workload group.        |
+| WorkloadGroup     | string | JSON representation of the policy. |
 
 ## Examples
 
 ### Alter specific limits in the request limits policy
 
-The following command alters specific limits in the request limits policy of the `default` workload group,
-while keeping previously defined limits unchanged.
+Alter specific limits in the request limits policy of the `default` workload group, while keeping previously defined limits unchanged.
 
 ~~~kusto
 .alter-merge workload_group default ```
@@ -49,10 +67,15 @@ while keeping previously defined limits unchanged.
 } ```
 ~~~
 
+**Output:**
+
+| WorkloadGroupName | WorkloadGroup                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| default           | {"RequestLimitsPolicy":{"DataScope":{"IsRelaxable":false,"Value":"HotCache"},"MaxMemoryPerQueryPerNode":{"IsRelaxable":true,"Value":8589699072},"MaxMemoryPerIterator":{"IsRelaxable":true,"Value":5368709120},"MaxFanoutThreadsPercentage":{"IsRelaxable":true,"Value":100},"MaxFanoutNodesPercentage":{"IsRelaxable":true,"Value":100},"MaxResultRecords":{"IsRelaxable":true,"Value":500000},"MaxResultBytes":{"IsRelaxable":true,"Value":67108864},"MaxExecutionTime":{"IsRelaxable":false,"Value":"00:01:00"}},"RequestRateLimitPolicies":[{"IsEnabled":true,"Scope":"WorkloadGroup","LimitKind":"ConcurrentRequests","Properties":{"MaxConcurrentRequests":100}}],"RequestRateLimitsEnforcementPolicy":{"QueriesEnforcementLevel":"QueryHead","CommandsEnforcementLevel":"Database"}} |
+
 ### Alter the request rate limit policies
 
-The following command alters the request rate limit policies of the `default` workload group,
-while keeping all of its other policies unchanged.
+Alter the request rate limit policies of the `default` workload group, while keeping all of its other policies unchanged.
 
 ~~~kusto
 .alter-merge workload_group default ```
@@ -70,9 +93,15 @@ while keeping all of its other policies unchanged.
 } ```
 ~~~
 
+**Output:**
+
+| WorkloadGroupName | WorkloadGroup                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| default           | {"RequestLimitsPolicy":{"DataScope":{"IsRelaxable":false,"Value":"HotCache"},"MaxMemoryPerQueryPerNode":{"IsRelaxable":true,"Value":8589699072},"MaxMemoryPerIterator":{"IsRelaxable":true,"Value":5368709120},"MaxFanoutThreadsPercentage":{"IsRelaxable":true,"Value":100},"MaxFanoutNodesPercentage":{"IsRelaxable":true,"Value":100},"MaxResultRecords":{"IsRelaxable":true,"Value":500000},"MaxResultBytes":{"IsRelaxable":true,"Value":67108864},"MaxExecutionTime":{"IsRelaxable":false,"Value":"00:01:00"}},"RequestRateLimitPolicies":[{"IsEnabled":true,"Scope":"WorkloadGroup","LimitKind":"ConcurrentRequests","Properties":{"MaxConcurrentRequests":100}}],"RequestRateLimitsEnforcementPolicy":{"QueriesEnforcementLevel":"QueryHead","CommandsEnforcementLevel":"Database"}} |
+
 ### Alter the request queuing policy
 
-The following command turns on request queuing for the `default` workload group, while keeping its request limits policy and request rate limit policies unchanged.
+Turn on request queuing for the `default` workload group, while keeping its request limits policy and request rate limit policies unchanged.
 
 ~~~kusto
 .alter-merge workload_group default ```
@@ -83,10 +112,15 @@ The following command turns on request queuing for the `default` workload group,
 } ```
 ~~~
 
+**Output:**
+
+| WorkloadGroupName | WorkloadGroup                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| default           | {"RequestLimitsPolicy":{"DataScope":{"IsRelaxable":false,"Value":"HotCache"},"MaxMemoryPerQueryPerNode":{"IsRelaxable":true,"Value":8589699072},"MaxMemoryPerIterator":{"IsRelaxable":true,"Value":5368709120},"MaxFanoutThreadsPercentage":{"IsRelaxable":true,"Value":100},"MaxFanoutNodesPercentage":{"IsRelaxable":true,"Value":100},"MaxResultRecords":{"IsRelaxable":true,"Value":500000},"MaxResultBytes":{"IsRelaxable":true,"Value":67108864},"MaxExecutionTime":{"IsRelaxable":false,"Value":"00:01:00"}},"RequestRateLimitPolicies":[{"IsEnabled":true,"Scope":"WorkloadGroup","LimitKind":"ConcurrentRequests","Properties":{"MaxConcurrentRequests":100}}],"RequestQueuingPolicy":{"IsEnabled":true},"RequestRateLimitsEnforcementPolicy":{"QueriesEnforcementLevel":\n"QueryHead","CommandsEnforcementLevel":"Database"}} |
+
 ### Alter the request rate limits enforcement policy
 
-The following command turns on request rate limits enforcement policy for the `default` workload group,
-while keeping all of its other policies unchanged.
+Turn on request rate limits enforcement policy for the `default` workload group, while keeping all of its other policies unchanged.
 
 ~~~kusto
 .alter-merge workload_group default ```
@@ -98,9 +132,15 @@ while keeping all of its other policies unchanged.
 } ```
 ~~~
 
+**Output:**
+
+| WorkloadGroupName | WorkloadGroup                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| default           | {"RequestLimitsPolicy":{"DataScope":{"IsRelaxable":false,"Value":"HotCache"},"MaxMemoryPerQueryPerNode":{"IsRelaxable":true,"Value":8589699072},"MaxMemoryPerIterator":{"IsRelaxable":true,"Value":5368709120},"MaxFanoutThreadsPercentage":{"IsRelaxable":true,"Value":100},"MaxFanoutNodesPercentage":{"IsRelaxable":true,"Value":100},"MaxResultRecords":{"IsRelaxable":true,"Value":500000},"MaxResultBytes":{"IsRelaxable":true,"Value":67108864},"MaxExecutionTime":{"IsRelaxable":false,"Value":"00:01:00"}},"RequestRateLimitPolicies":[{"IsEnabled":true,"Scope":"WorkloadGroup","LimitKind":"ConcurrentRequests","Properties":{"MaxConcurrentRequests":100}}],"RequestQueuingPolicy":{"IsEnabled":true},"RequestRateLimitsEnforcementPolicy":{"QueriesEnforcementLevel":"QueryHead","CommandsEnforcementLevel":"Cluster"}} |
+
 ### Alter the query consistency policy
 
-The following command specifies the applicable option for the query consistency model.
+Specify the applicable option for the query consistency model.
 
 ~~~kusto
 .alter-merge workload_group default ```
@@ -113,3 +153,9 @@ The following command specifies the applicable option for the query consistency 
   }
 } ```
 ~~~
+
+**Output:**
+
+| WorkloadGroupName | WorkloadGroup                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| default           | {"RequestLimitsPolicy":{"DataScope":{"IsRelaxable":false,"Value":"HotCache"},"MaxMemoryPerQueryPerNode":{"IsRelaxable":true,"Value":8589699072},"MaxMemoryPerIterator":{"IsRelaxable":true,"Value":5368709120},"MaxFanoutThreadsPercentage":{"IsRelaxable":true,"Value":100},"MaxFanoutNodesPercentage":{"IsRelaxable":true,"Value":100},"MaxResultRecords":{"IsRelaxable":true,"Value":500000},"MaxResultBytes":{"IsRelaxable":true,"Value":67108864},"MaxExecutionTime":{"IsRelaxable":false,"Value":"00:01:00"}},"RequestRateLimitPolicies":[{"IsEnabled":true,"Scope":"WorkloadGroup","LimitKind":"ConcurrentRequests","Properties":{"MaxConcurrentRequests":100}}],"RequestQueuingPolicy":{"IsEnabled":true},"RequestRateLimitsEnforcementPolicy":{"QueriesEnforcementLevel":"QueryHead","CommandsEnforcementLevel":"Cluster"},"QueryConsistencyPolicy":{"QueryConsistency":{"IsRelaxable":true,"Value":"Weak"}}} |
