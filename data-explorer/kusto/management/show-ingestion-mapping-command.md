@@ -45,7 +45,7 @@ The command returns a table with the columns `Name`, `Kind`, and `Mapping` that 
 |----------|------|-------------|
 | mapping1 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` |
 
-If the table only contained one CSV mapping named "mapping1", the following query would return the same output as the previous query.
+If the table only contained one CSV file mapping named "mapping1", the following query would return the same output as the previous query.
 
 ```kusto
 .show table MyTable ingestion csv mappings 
