@@ -16,36 +16,22 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 ## Syntax
 
-`.export` [`async`] [`compressed`]
-`to` *outputDataFormat*
-`(` *storageConnectionString* [`,` ...] `)`
-[`with` `(` *propertyName* `=` *propertyValue* [`,` ...] `)`]
-`<|` *query*
+`.export` [`async`] [`compressed`] `to` *OutputDataFormat* `(` *StorageConnectionString* [`,` ...] `)` [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`] `<|` *Query*
 
-## Arguments
+## Parameters
 
-* `async`: If specified, indicates that the command runs in [asynchronous mode](#asynchronous-mode).
-
-* `compressed`: If specified, the output storage artifacts are compressed
-  as `.gz` files. See `compressionType` for compressing Parquet files as snappy. 
-
-* *outputDataFormat*: Indicates the data format of the storage artifacts written
-  by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`.
-
-* *storageConnectionString*: Specifies one or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md)
-  that indicate which storage to write the data to. (More than one storage
-  connection string may be specified for scalable writes.) Each such connection 
-  string must indicate the credentials to use when writing to storage.
-  For example, when writing to Azure Blob Storage, the credentials can be the
-  storage account key, or a shared access key (SAS) with the permissions to
-  read, write, and list blobs.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `async` | string | | If specified, the command runs in asynchronous mode. See [asynchronous mode](#asynchronous-mode).|
+| `compressed` | string | | If specified, the output storage artifacts are compressed as `.gz` files. See the `compressionType` [property](#properties) for compressing Parquet files as snappy.|
+| *OutputDataFormat* | string | &check; | Indicates the data format of the storage artifacts written by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`.|
+| *StorageConnectionString* | string | | One or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md) that indicate which storage to write the data to. More than one storage connection string may be specified for scalable writes. Each such connection string must indicate the credentials to use when writing to storage. For example, when writing to Azure Blob Storage, the credentials can be the storage account key, or a shared access key (SAS) with the permissions to read, write, and list blobs.|
+| *PropertyName*, *PropertyValue* | string | | A comma-separated list of key-value property pairs. See [properties](#properties).|
 
 > [!NOTE]
-> We highly recommended exporting data to storage that is co-located in the
-> same region as the cluster itself. This includes data that is exported so it can be transferred to another cloud service in
-> other regions. Writes should be done locally, while reads can happen remotely.
+> We highly recommended exporting data to storage that is co-located in the same region as the cluster itself. This includes data that is exported so it can be transferred to another cloud service in other regions. Writes should be done locally, while reads can happen remotely.
 
-* *PropertyName*/*PropertyValue*: Zero or more optional export properties:
+## Properties
 
 | Property | Type | Description |
 |--|--|--|

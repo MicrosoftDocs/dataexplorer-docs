@@ -23,13 +23,14 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
     &nbsp;&nbsp;&nbsp;&nbsp;*query*  
 `}`
 
-## Arguments
+## Parameters
 
-|Argument|Type|Description
-|----------------|-------|---|
-|viewName|String|Materialized view name.|
-|sourceTableName|String|Name of source table on which the view is defined.|
-|query|String|The materialized view query.|
+|Name|Type|Required|Description|
+|--|--|--|
+|*viewName*|string|&check;|The materialized view name.|
+|*propertyName*, *propertyValue*|string||A list of [properties](#properties).|
+|*sourceTableName*|string|&check;|The name of the source table on which the view is defined.|
+|*query*|string|&check;|The materialized view query.|
 
 ## Properties
 
