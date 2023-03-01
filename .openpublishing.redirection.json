@@ -482,7 +482,7 @@
     },
     {
       "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-show-commands.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/materialized-views/materialized-view-show-command.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/materialized-views/materialized-view-show-command",
       "redirect_document_id": true
     }
   ]
