@@ -248,7 +248,7 @@ The following aggregation functions are supported:
 
   ```kusto
       SourceTable | summarize take_any(*) by EventId
-  ``` 
+  ```
 
   If `EventId` always has the same `Timestamp` value, and therefore adding `Timestamp` doesn't change the semantics of the aggregation, it's better to define the view as:
 
@@ -257,7 +257,7 @@ The following aggregation functions are supported:
   ```
 
   > [!TIP]
-  > Late-arriving data in a datetime group-by key can have a negative impact on the materialized view's performance. For example, assume that a materialized view uses `bin(Timestamp, 1d)` as one of its group-by keys, and several outliers in the data have very old `Timestamp` values. These outliers might negatively affect the materialized view. 
+  > Late-arriving data in a datetime group-by key can have a negative impact on the materialized view's performance. For example, assume that a materialized view uses `bin(Timestamp, 1d)` as one of its group-by keys, and several outliers in the data have very old `Timestamp` values. These outliers might negatively affect the materialized view.
   >
   > We recommend that in the materialized view query, you either filter out the outlier records or normalize these records to the current time.
 
@@ -339,7 +339,7 @@ Using the backfill option is not supported for data in a cold cache. Increase th
 
 If you experience failures in view creation, try changing these properties:
 
-* `MaxSourceRecordsForSingleIngest`: By default, the number of source records in each ingest operation during backfill is 2 million per node. You can change this default by setting this property to the desired number of records. (The value is the _total_ number of records in each ingest operation.) 
+* `MaxSourceRecordsForSingleIngest`: By default, the number of source records in each ingest operation during backfill is 2 million per node. You can change this default by setting this property to the desired number of records. (The value is the *total* number of records in each ingest operation.)
 
   Decreasing this value can be helpful when creation fails on memory limits or query timeouts. Increasing this value can speed up view creation, assuming that the cluster can execute the aggregation function on more records than the default.
 
@@ -436,7 +436,7 @@ The option of backfilling by move extents can be useful in two main scenarios:
 * The following example demonstrates the use of the `source_ingestion_time_from` property in the option of backfilling by move extents. Using both `source_ingestion_time_from` and `move_extents_from` indicates that the materialized view is backfilled from two sources:
 
   * **The `move_extents_from` table**: `DedupedT` in the following example. This table should include all historical data to backfill. You can optionally use the `effectiveDateTime` property to include only extents in `DedupedT` whose `MaxCreatedOn` value is greater than `effectiveDateTime`.
-  * **The source table of the materialized view**: `T` in the following example. Backfill from this table includes only records whose [ingestion_time()](../../query/ingestiontimefunction.md) value is greater than `source_ingestion_time_from`. 
+  * **The source table of the materialized view**: `T` in the following example. Backfill from this table includes only records whose [ingestion_time()](../../query/ingestiontimefunction.md) value is greater than `source_ingestion_time_from`.
 
      The `source_ingestion_time_from` property should be used only to handle the possible data loss in the short time between preparing the table to backfill from (`DedupedT`) and the time that the view is created. Don't set this property too far in the past. That would start the materialized view with a significant lag, which might be hard to catch up with.
 
