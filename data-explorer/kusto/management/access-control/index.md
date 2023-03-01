@@ -93,7 +93,7 @@ var acquireTokenTask = authContext.AcquireTokenAsync(
 ## Authorization
 
 All authenticated principals undergo an authorization check before they may carry out an action on an Azure Data Explorer resource.
-Azure Data Explorer uses a [role-based authorization model](role-based-authorization.md), where principals are ascribed to one or more security roles. Authorization succeeds as long as one of the principal's roles is authorized.
+Azure Data Explorer uses a [role-based access control model](role-based-access-control.md), where principals are ascribed to one or more security roles. Authorization succeeds as long as one of the principal's roles is authorized.
 
 For example, the database user role grants security principals, users, or services, the right to:
 * read the data of a particular database
@@ -101,4 +101,4 @@ For example, the database user role grants security principals, users, or servic
 * create functions in the database
 
 The association of security principals to security roles can be defined individually,
-or by using security groups that are defined in Azure AD. The commands are defined in [Setting role based authorization rules](../security-roles.md).
+or by using security groups that are defined in Azure AD. The commands are defined in [Security roles management](../security-roles.md).

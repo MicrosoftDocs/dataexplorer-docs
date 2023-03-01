@@ -32,15 +32,15 @@ items:
 - name: Quickstarts
   expanded: true
   items:
-  - name: Create cluster and database - Azure portal
+  - name: Create a cluster and database
     href: create-cluster-database-portal.md
-  - name: Ingest sample data
+  - name: Get sample data
     href: ingest-sample-data.md
-  - name: Explore the samples gallery
-    href: web-ui-samples-gallery.md
     displayName: Azure Data Explorer web UI
-  - name: Query data with Azure Data Explorer web UI
+  - name: Query sample data
     href: web-query-data.md
+  - name: Visualize sample data dashboards
+    href: web-ui-samples-dashboards.md
 - name: Tutorials
   items:
   - name: Write queries
@@ -55,6 +55,14 @@ items:
     href: ingest-data-no-code.md
 - name: Concepts
   items:
+  - name: Business continuity
+    items:
+    - name: Overview
+      displayName: BCDR, bcdr
+      href: business-continuity-overview.md
+    - name: Create solutions
+      displayName: BCDR, bcdr
+      href: business-continuity-create-solution.md
   - name: EngineV3
     href: engine-v3.md
   - name: Security
@@ -65,14 +73,6 @@ items:
       href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
     - name: Security controls by Azure Policy
       href: security-controls-policy.md
-  - name: Business continuity
-    items:
-    - name: Overview
-      displayName: BCDR, bcdr
-      href: business-continuity-overview.md
-    - name: Create solutions
-      displayName: BCDR, bcdr
-      href: business-continuity-create-solution.md
 - name: Explore data
   items:
   - name: Get data
@@ -80,14 +80,19 @@ items:
     - name: Data ingestion overview
       displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
       href: ingest-data-overview.md
-    - name: Data ingestion properties
-      href: ingestion-properties.md
-    - name: Formats for data ingestion
-      displayName: supported data formats
-      href: ingestion-supported-formats.md
-    - name: Ingest JSON data using the wizard
-      displayName: ingest data, ingestion wizard, one click, local file, existing table
-      href: ingestion-wizard-existing-table.md
+    - name: Data connectors overview
+      displayName: connect, integrate, integration, export, orchestrate
+      href: connector-overview.md
+    - name: Get data in the web UI
+      items:
+        - name: Ingestion wizard
+          href: ingest-data-wizard.md
+        - name: Ingest from local file
+          displayName: ingest data, ingestion wizard, one click, existing table
+          href: ingestion-wizard-existing-table.md
+        - name: Ingest from container
+          displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
+          href: ingestion-wizard-new-table.md
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -98,9 +103,23 @@ items:
         href: lightingest.md
       - name: Use wizard for one-time ingestion of historical data with LightIngest
         href: generate-lightingest-command.md
-    - name: Cross-tenant data connection
-      displayName: event hub, event grid
-      href: ingest-data-cross-tenant.md
+    - name: Using SDKs
+      items:
+      - name: .NET SDK
+        displayName: ingest data, ingestion
+        href: net-sdk-ingest-data.md
+      - name: Python
+        displayName: ingest data, ingestion
+        href: python-ingest-data.md
+      - name: Node SDK
+        displayName: ingest data, ingestion
+        href: node-ingest-data.md
+      - name: Go SDK
+        displayName: ingest data, ingestion
+        href: go-ingest-data.md
+      - name: Java SDK
+        displayName: ingest data, ingestion
+        href: java-ingest-data.md
     - name: Event Hubs
       items:
       - name: Event Hubs data connection
@@ -126,9 +145,6 @@ items:
       - name: Event Grid data connection
         displayName: ingest
         href: ingest-data-event-grid-overview.md
-      - name: Ingestion wizard
-        displayName: Event Grid, ingest data, ingestion, one click, csv file
-        href: ingestion-wizard-new-table.md
       - name: Azure portal
         displayName: Event Grid, ingest, data connection
         href: ingest-data-event-grid.md
@@ -164,6 +180,7 @@ items:
     - name: Azure Data Factory
       items:
       - name: Integration with Data Factory
+        displayName: export, ingest, copy
         href: data-factory-integration.md
       - name: Copy data using Azure Data Factory
         href: data-factory-load-data.md
@@ -171,89 +188,104 @@ items:
         href: data-factory-template.md
       - name: Run control commands using Azure Data Factory
         href: data-factory-command-activity.md
+    - name: Apache Kafka
+      displayName: ingest data, ingestion, connector
+      href: ingest-data-kafka.md
+    - name: Apache Spark 
+      displayName: connector, export, ingest
+      href: spark-connector.md
     - name: Azure Cosmos DB
       items:
       - name: Azure Cosmos DB data connection
-        displayName: ingest
+        displayName: ingest, connector
         href: ingest-data-cosmos-db-connection.md
       - name: Get latest Azure Cosmos DB documents
         displayName: ingest data, ingestion
         href: ingest-data-cosmos-db-queries.md
-    - name: Using SDKs
-      items:
-      - name: .NET SDK
-        displayName: ingest data, ingestion
-        href: net-sdk-ingest-data.md
-      - name: Python
-        displayName: ingest data, ingestion
-        href: python-ingest-data.md
-      - name: Node SDK
-        displayName: ingest data, ingestion
-        href: node-ingest-data.md
-      - name: Go SDK
-        displayName: ingest data, ingestion
-        href: go-ingest-data.md
-      - name: Java SDK
-        displayName: ingest data, ingestion
-        href: java-ingest-data.md
     - name: Azure Stream Analytics
       href: stream-analytics-connector.md
-      displayName: ingest data, ingestion
-    - name: OpenTelemetry
-      href: open-telemetry-connector.md
-      displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion
-    - name: Kafka
-      displayName: ingest data, ingestion
-      href: ingest-data-kafka.md
-    - name: Telegraf
-      displayName: ingest data, ingestion
-      href: ingest-data-telegraf.md
+      displayName: ingest data, ingestion, connector
     - name: Logstash
-      displayName: ingest data, ingestion
-      href: ingest-data-logstash.md
+      displayName: ingest data, ingestion, connector
+      href: ingest-data-logstash.md    
+    - name: OpenTelemetry
+      href: open-telemetry-connector.md 
+      displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion, connector
+    - name: Telegraf
+      displayName: ingest data, ingestion, connector
+      href: ingest-data-telegraf.md
+    - name: Cross-tenant data connection
+      displayName: event hub, event grid
+      href: ingest-data-cross-tenant.md
     - name: JSON formatted data
       displayName: ingest data, ingestion
       href: ingest-json-formats.md
+    - name: Connect with SQL Server emulation
+      items:
+        - name: Overview
+          href: connect-sql-server-emulation.md
+          displayName: SQL Server emulation
+        - name: Connect with ODBC
+          href: connect-odbc.md
+          displayName: SQL Server emulation
+        - name: Connect with JDBC
+          href: connect-jdbc.md
+          displayName: SQL Server emulation
+        - name: Connect from common apps
+          href: connect-common-apps.md
+          displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
+    - name: Data ingestion properties
+      href: ingestion-properties.md
+    - name: Formats for data ingestion
+      displayName: supported data formats
+      href: ingestion-supported-formats.md
   - name: Query data
     items:
-    - name: Azure Data Explorer web UI
+    - name: Query data in the web UI
       items:
-      - name: Azure Data Explorer web UI overview
-        displayName: Kusto Web Explorer, KWE
-        href: web-ui-overview.md
-      - name: Ingestion wizard
-        href: ingest-data-wizard.md
-      - name: Azure Data Explorer web UI keyboard shortcuts
-        href: web-ui-query-keyboard-shortcuts.md
-    - name: Evaluate query performance in your cluster
-      href: kusto/api/load-test-cluster.md
-    - name: Optimize for high concurrency
-      href: high-concurrency.md
+        - name: Explore the sample gallery
+          href: web-ui-samples-query.md
+        - name: Customize settings
+          href: web-customize-settings.md
+        - name: Explore the results grid
+          href: web-results-grid.md
+        - name: Share queries
+          href: web-share-queries.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
       href: query-monitor-data.md
-    - name: Query data in Power Apps application
+    - name: Query data in MATLAB
+      href: matlab.md
+    - name: Query data in Power Apps
       href: power-apps-connector.md
-    - name: Query cold data with hot windows
-      href: hot-windows.md
-    - name: Debug KQL inline Python
-      href: debug-inline-python.md
     - name: Query data using Python
       href: python-query-data.md
+    - name: Debug KQL inline Python
+      href: debug-inline-python.md
+    - name: Evaluate query performance in your cluster
+      href: kusto/api/load-test-cluster.md
+    - name: Optimize for high concurrency
+      href: high-concurrency.md
+    - name: Set timeout limits
+      href: set-timeout-limits.md
+    - name: Query cold data with hot windows
+      href: hot-windows.md
+    - name: Query data using T-SQL
+      href: t-sql.md
+    - name: SQL Server emulation
+      href: query-sql-server-emulation.md
     - name: Time Series Analysis and Machine Learning
       items:
-      - name: Time series analysis
-        href: time-series-analysis.md
-      - name: Anomaly detection and forecasting
-        href: anomaly-detection.md
-      - name: Machine learning
-        href: machine-learning-clustering.md
+        - name: Azure Data Explorer Python library
+          href: python-query-data.md
+        - name: Debug Kusto Query Language inline Python
+          href: debug-inline-python.md
   - name: Visualize data
     items:
     - name: Data visualization overview
       href: viz-overview.md
-    - name: Azure Data Explorer dashboards
+    - name: Visualize dashboards in the web UI
       items:
       - name: Use dashboards
         href: azure-data-explorer-dashboards.md
@@ -271,8 +303,7 @@ items:
       - name: Dynamic M query parameters
         displayName: Power BI
         href: power-bi-dynamic-m.md
-      - name: SQL query
-        displayName: Power BI
+      - name: Query with SQL in Power BI
         href: power-bi-sql-query.md
     - name: Excel
       items:
@@ -284,8 +315,6 @@ items:
         href: excel-blank-query.md
     - name: Grafana
       href: grafana.md
-    - name: ODBC connector
-      href: connect-odbc.md
     - name: Tableau
       href: tableau.md
     - name: Sisense
@@ -417,6 +446,8 @@ items:
           href: auto-stop-clusters.md
         - name: Manage cluster permissions
           href: manage-cluster-permissions.md
+        - name: Manage cluster locks
+          href: manage-cluster-locks.md
         - name: Manage cluster horizontal scaling
           href: manage-cluster-horizontal-scaling.md
         - name: Manage cluster vertical scaling
@@ -547,15 +578,10 @@ items:
           displayName: Microsoft Flow, flow, flow connector
       - name: Logic Apps
         href: kusto/tools/logicapps.md
-    - name: Azure Cosmos DB
-      href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
-    - name: Telegraf
-      href: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
-    - name: Apache Spark Connector
-      href: spark-connector.md
-      displayName: databricks
-    - name: Connect from Azure Synapse Apache Spark
-      href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
+      - name: Azure Pipelines
+        href: devops.md
+      - name: Sync Kusto
+        href: kusto/tools/synckusto.md
     - name: Notebooks
       items:
       - name: Analyze data in Jupyter Notebooks & Kqlmagic
@@ -571,13 +597,14 @@ items:
         - name: Use Kqlmagic
           displayName: Azure Data Studio
           href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
-    - name: Azure Pipelines
-      href: devops.md
-    - name: Sync Kusto
-      href: kusto/tools/synckusto.md
+    - name: Connect from Azure Synapse Apache Spark
+      href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
     - name: Migrate TSI to Azure Data Explorer
       href: /azure/time-series-insights/migration-to-adx
       displayName: Time Series Insights
+    - name: Linked server
+      href: linked-server.md
+      displayName: SQL Server, ODBC
 - name: Kusto Query Language
   href: kusto/query/toc.yml
 - name: Management commands
@@ -590,6 +617,17 @@ items:
   items:
   - name: API
     href: kusto/api/toc.yml
+  - name: Azure CLI Kusto
+    href: /cli/azure/kusto
+  - name: Azure Data Explorer web UI keyboard shortcuts
+    href: web-ui-query-keyboard-shortcuts.md
+  - name: Azure Policy built-ins
+    displayName: samples, policies, definitions
+    href: policy-reference.md
+  - name: Functions library
+    href: kusto/functions-library/toc.yml
+  - name: PowerShell Kusto
+    href: /powershell/module/az.kusto/#kusto
   - name: Troubleshoot ingestion
     items:
     - name: Ingestion error codes
@@ -599,15 +637,6 @@ items:
       displayName: Failure, error code
     - name: Ingestion FAQ
       href: kusto/management/ingestion-faq.yml  
-  - name: Azure CLI Kusto
-    href: /cli/azure/kusto
-  - name: PowerShell Kusto
-    href: /powershell/module/az.kusto/#kusto
-  - name: Functions library
-    href: kusto/functions-library/toc.yml
-  - name: Azure Policy built-ins
-    displayName: samples, policies, definitions
-    href: policy-reference.md
 - name: Resources
   items:
   - name: Forums

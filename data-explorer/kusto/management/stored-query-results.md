@@ -3,7 +3,7 @@ title: Stored query results - Azure Data Explorer
 description: This article describes how to create and use stored query results in Azure Data Explorer.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 07/15/2021
+ms.date: 02/21/2023
 ---
 
 # Stored query results
@@ -27,25 +27,28 @@ Stored query results behave like tables, in that the order of records isn't pres
 ## Prerequisites
 
 * [EngineV3](../../engine-v3.md)
-* `Database Viewer` or higher access role
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 
-`.set` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`] <| *Query*
+`.set` [`async`] `stored_query_result` *storedQueryResultName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
 
-`.set-or-replace` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* `,` ... `)`] <| *Query*
+`.set-or-replace` [`async`] `stored_query_result` *storedQueryResultName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 | *async* | string | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
-| *StoredQueryResultName* | string | &check; | Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.|
-| *PropertyName*, *PropertyValue* | string |  | One or more [supported properties](#supported-properties). |
-| *Query* | string | &check; | The text of a query whose results will be stored.|
+| *storedQueryResultName* | string | &check; | Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.|
+| *propertyName*, *propertyValue* | string |  | One or more [supported properties](#supported-properties). |
+| *query* | string | &check; | The text of a query whose results will be stored.|
 
 > [!NOTE]
-> If the *StoredQueryResultName* exists, `.set` will fail with an error. In contrast, `.set-or-replace` will delete the existing stored-query-result if it exists and then create a new one with the same name.
+> If the *storedQueryResultName* exists, `.set` will fail with an error. In contrast, `.set-or-replace` will delete the existing stored-query-result if it exists and then create a new one with the same name.
 
 ## Supported properties
 
@@ -65,7 +68,7 @@ A tabular subset of the records produced by the query, referred to as the "previ
 
 To retrieve a stored query result, use `stored_query_result()` function in your query:
 
-`stored_query_result` `(` 'StoredQueryResultName' `)` `|` ...
+`stored_query_result` `(` 'storedQueryResultName' `)` `|` ...
 
 ## Examples
 
@@ -165,7 +168,7 @@ Shows schema of active stored query result.
 
 #### Syntax
 
-`.show` `stored_query_result` *StoredQueryResultName* `schema`
+`.show` `stored_query_result` *storedQueryResultName* `schema`
 
 `Database Viewer` permission is required for invoking this command.
 
@@ -181,7 +184,7 @@ Deletes an active stored query result created in the current database by the cur
 
 #### Syntax
 
-`.drop` `stored_query_result` *StoredQueryResultName*
+`.drop` `stored_query_result` *storedQueryResultName*
 
 `Database Viewer` permission is required for invoking this command.
 

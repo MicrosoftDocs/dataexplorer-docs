@@ -396,6 +396,31 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/kusto/query/machine-learning-and-tsa.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/time-series-analysis",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/time-series-analysis.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/time-series-analysis",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/anomaly-detection.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/anomaly-detection",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/machine-learning-clustering.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/machine-learning-clustering",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/access-control/role-based-authorization.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/access-control/role-based-access-control",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/kusto/management/access-control/principals-and-identity-providers.md",
       "redirect_url": "/azure/data-explorer/kusto/management/access-control/referencing-security-principals",
       "redirect_document_id": true
@@ -408,6 +433,51 @@
     {
       "source_path": "data-explorer/kusto/query/rowrankfunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/rowrankdensefunction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/clients.md",
+      "redirect_url": "/azure/data-explorer/connect-sql-server-emulation",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/aad.md",
+      "redirect_url": "/azure/data-explorer/connect-jdbc",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/index.md",
+      "redirect_url": "/azure/data-explorer/t-sql.md",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/t-sql.md",
+      "redirect_url": "/azure/data-explorer/t-sql",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/sqlknownissues.md",
+      "redirect_url": "/azure/data-explorer/t-sql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/tdskql.md",
+      "redirect_url": "/azure/data-explorer/query-sql-server-emulation",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/web-ui-samples-gallery.md",
+      "redirect_url": "/azure/data-explorer/web-ui-samples-dashboards",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/web-ui-overview.md",
+      "redirect_url": "/azure/data-explorer/web-query-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/linkedserver.md",
+      "redirect_url": "/azure/data-explorer/linked-server",
       "redirect_document_id": true
     }
   ]

@@ -44,7 +44,7 @@ plotly_scatter3d_fl(tbl:(*), x_col:string, y_col:string, z_col:string, aggr_col:
 
 `plotly_scatter3d_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for examples.
 
-### [Query-defined](#tab/adhoc)
+### [Query-defined](#tab/query-defined)
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
@@ -81,9 +81,9 @@ Iris
 | invoke plotly_scatter3d_fl(x_col='SepalLength', y_col='PetalLength', z_col='SepalWidth', aggr_col='Class', chart_title='3D scatter chart using plotly_scatter3d_fl()')
 ```
 
-### [Stored](#tab/persistent)
+### [Stored](#tab/stored)
 
-To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
 
 ### One time installation
 
@@ -127,7 +127,7 @@ Iris
 
 ---
 
-The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards (Preview)](../../azure-data-explorer-dashboards.md).
+The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards ](../../azure-data-explorer-dashboards.md).
 
 ![Screenshot of 3D scatter chart of a sample data set.](images\plotly-scatter3d-fl\plotly-scatter3d-chart.png)
 

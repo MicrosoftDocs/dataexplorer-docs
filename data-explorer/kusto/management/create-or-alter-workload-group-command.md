@@ -3,13 +3,17 @@ title: .create-or-alter workload group - Azure Data Explorer
 description: This article describes the .create-or-alter workload group command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 11/08/2021
+ms.date: 02/21/2023
 ---
 # .create-or-alter workload_group
 
-Creates a new workload group, or alters an existing workload group. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
+Creates a new workload group, or alters an existing workload group.
 
 For more information, see [Workload groups](workload-groups.md). To show the current workload group settings, use the [`.show` command](show-workload-group-command.md).
+
+## Permissions
+
+You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

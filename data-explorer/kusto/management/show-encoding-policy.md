@@ -3,12 +3,15 @@ title: Show encoding policy - Azure Data Explorer
 description: This article describes the `.show encoding policy` command in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/28/2022
+ms.date: 02/21/2023
 ---
 # .show encoding policy
 
 Shows the encoding policy. For an overview of the encoding policy, see [Encoding policy](encoding-policy.md).
-This command requires [database monitor](access-control/role-based-authorization.md) permission.
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 

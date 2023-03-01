@@ -2,7 +2,7 @@
 title: Streaming Ingestion statistics - Azure Data Explorer
 description: This article describes the command to show streaming ingestion statistics in Azure Data Explorer.
 ms.topic: reference
-ms.date: 04/07/2022
+ms.date: 02/21/2023
 ---
 
 # Streaming ingestion statistics
@@ -15,6 +15,10 @@ This command returns a result set that includes aggregated statistics for the [s
 > The streaming ingestion statistics are grouped into buckets of short periods of time and aggregated by database, table, principal, ingestion status, and ingestion properties.
 >
 > The retention period for streaming ingestion statistics is 14 days.
+
+## Permissions
+
+If you have Database Admin or Database Monitor permissions, you'll see all failed operations. Otherwise, you'll only see operations that you created. For more information about permissions, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 

@@ -9,6 +9,18 @@ ms.date: 07/06/2022
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
 
+## January 2022
+
+| Article title | Description |
+|--|--|
+| [Use the sample app generator to create code to ingest and query your data](sample-app-generator-wizard.md) | New Article. Describes how to use the sample app generator for your preferred programming language. |
+
+**API**
+
+| Article title | Description |
+|--|--|
+| [Azure Data Explorer API overview](kusto/api/index.md) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.
+
 ## December 2021
 
 | Article title | Description |
@@ -54,9 +66,9 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Role-based Authorization in Kusto](kusto/management/access-control/role-based-authorization.md) | Updated article. Materialized views rename source table.
+| [Role-based access control in Kusto](kusto/management/access-control/role-based-access-control.md) | Updated article. Materialized views rename source table.
 | [Cache policy (hot and cold cache)](kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
-| [Role-based Authorization in Kusto](kusto/management/access-control/role-based-authorization.md)| Updated article. Using the AllDatabasesMonitor role.
+| [Role-based access control in Kusto](kusto/management/access-control/role-based-access-control.md)| Updated article. Using the AllDatabasesMonitor role.
 
 ## September 2021
 
@@ -238,7 +250,7 @@ Article title | Description
 [ipv4_is_in_range()](kusto/query/ipv4-is-in-range-function.md) | New article. Checks if IPv4 string address is in IPv4-prefix notation range.
 [ipv4_netmask_suffix()](kusto/query/ipv4-netmask-suffix-function.md) | New article. Returns the value of the IPv4 netmask suffix from IPv4 string address.
 [has_all operator](kusto/query/has-all-operator.md) | New article. `has_all` operator filters based on the provided set of values (all values must be present).
-[row_rank()](kusto/query/rowrankfunction.md) | New article. Returns the current row's rank in a [serialized row set](kusto/query/windowsfunctions.md#serialized-row-set).
+[row_rank()](/azure/data-explorer/kusto/query/rowrankdensefunction) | New article. Returns the current row's rank in a [serialized row set](kusto/query/windowsfunctions.md#serialized-row-set).
 | [Null Values](kusto/query/scalar-data-types/null-values.md) | Updated article. New behavior in Engine V3.
 | [String operators](kusto/query/datatypes-string-operators.md) | Updated article. String term indexing for Engine V3.
 

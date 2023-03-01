@@ -3,26 +3,32 @@ title: ".alter materialized view partitioning policy command- Azure Data Explore
 description: "This article describes the .alter materialized view partitioning policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 02/21/2023
 ---
 # .alter materialized view partitioning policy
 
-Change a materialized view [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md). The command requires [DatabaseAdmin](access-control/role-based-authorization.md) permissions.
+Change a materialized view [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter` `materialized-view` *MaterializedViewName* `policy` `partitioning` *PolicyObject*
 
-## Arguments
+## Parameters
 
-*MaterializedViewName* - Specify the name of the materialized view.
-*PolicyObject* - Define a policy object, see also [partitioning policy](partitioningpolicy.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;| The name of the materialized view.|
+|*PolicyObject*|string|&check;|A policy object used to set the partitioning policy. For more information, see [partitioning policy](partitioningpolicy.md).|
 
 ### Example
 
 Set a policy on the materialized view with two kinds of partition keys:
 
-~~~kusto
+```kusto
 .alter materialized-view [materialized_view_table_name] policy partitioning ```
 {
   "PartitionKeys": [
@@ -46,4 +52,4 @@ Set a policy on the materialized view with two kinds of partition keys:
     }
   ]
 }```
-~~~
+```

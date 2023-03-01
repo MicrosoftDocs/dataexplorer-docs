@@ -7,7 +7,7 @@ ms.date: 11/23/2022
 
 # Manage Azure Data Explorer cluster permissions
 
-Azure Data Explorer enables you to control access to resources in your cluster using a role-based access control model. Under this model, [principals](kusto/management/access-control/principals-and-identity-providers.md)—users, groups, and apps—are mapped to [security roles](kusto/management/security-roles.md). Principals are granted access to cluster resources according to the roles they're assigned.
+Azure Data Explorer enables you to control access to resources in your cluster using a role-based access control model. Under this model, [principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals)—users, groups, and apps—are mapped to [security roles](kusto/management/security-roles.md). Principals are granted access to cluster resources according to the roles they're assigned.
 
 This article describes the available cluster level roles and how to assign principals to those roles using the Azure portal.
 
@@ -42,4 +42,4 @@ This article describes the available cluster level roles and how to assign princ
 ## See also
 
 * To configure database or table specific access, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md)
-* For a list of available roles, see [Role-based Authorization](./kusto/management/access-control/role-based-authorization.md)
+* For a list of available roles, see [Role-based access control](./kusto/management/access-control/role-based-access-control.md)

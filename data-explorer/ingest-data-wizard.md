@@ -25,7 +25,7 @@ The ingestion wizard is useful when ingesting data for the first time, or when y
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 > [!NOTE]
@@ -120,6 +120,19 @@ Once you have completed schema mapping and column manipulations, the ingestion w
 ### Initial data exploration
 
 After ingestion, the wizard gives you options to use **[Quick commands](./ingestion-wizard-existing-table.md#explore-quick-queries-and-tools)** for initial exploration of your data.
+
+## More data management actions
+
+Discover the available options within each [Data management](https://dataexplorer.azure.com/oneclick) tab by selecting the links in the following table.
+
+|Tab  |Ingestion options  |
+|---------|---------|
+|**Manage**     | Create [tables](https://dataexplorer.azure.com/oneclick/createtable), [external tables](external-table.md) and update [batching](./kusto/management/batchingpolicy.md) and [retention](./kusto/management/retentionpolicy.md) policies.      |
+|**One-time ingestion**    | Ingest from [local files, blob storage](./ingest-data-wizard.md), or a [container](./ingestion-wizard-new-table.md).      |
+|**Continuous ingestion**     | Configure continuous ingestion from [Event Hubs](./event-hub-wizard.md) or a blob container.        |
+|**Backfill**     |  Ingest data from sources as a one time or [continuous ingestion](./ingestion-wizard-new-table.md).       |
+|**SDKs**     |  The [sample app generator wizard](https://dataexplorer.azure.com/oneclick/generatecode?programingLang=Python) is a tool that allows you to create a working app to [ingest and query your data in your preferred programming language](./sample-app-generator-wizard.md). Learn more about connectors to expand and explore the capabilities of Azure Data Explorer.    |
+
 
 ## Next steps
 

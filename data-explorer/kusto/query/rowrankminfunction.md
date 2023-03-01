@@ -1,15 +1,14 @@
 ---
 title: row_rank_min() - Azure Data Explorer
-description: This article describes the row_rank_min() function in Azure Data Explorer.
-
+description: Learn how to use the row_rank_min() function to return the current row's minimal rank in a serialized row set.
 ms.reviewer: royo
-
 ms.topic: reference
-ms.date: 01/16/2023
+ms.date: 01/18/2023
 ---
 # row_rank_min()
 
 Returns the current row's minimal rank in a [serialized row set](./windowsfunctions.md#serialized-row-set).
+
 The rank is the minimal row number that the current row's *Term* appears in.
 
 ## Syntax
@@ -22,11 +21,9 @@ The rank is the minimal row number that the current row's *Term* appears in.
 
 Returns the row rank of the current row as a value of type `long`.
 
-
 ## Example
 
 This example shows how to rank the `Airline` by the number of departures from the SEA `Airport`:
-
 
 ```kusto
 datatable (Airport:string, Airline:string, Departures:long)

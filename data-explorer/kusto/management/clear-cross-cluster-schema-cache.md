@@ -3,7 +3,7 @@ title: Clear schema cache for cross-cluster queries - Azure Data Explorer
 description: This article describes how to manually clear the cross-cluster query cache in Azure Data Explorer.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 02/28/2022
+ms.date: 02/21/2023
 ---
 
 # Clear schema cache for cross-cluster queries
@@ -13,6 +13,10 @@ When running a cross-cluster query, the cluster that performs the initial query 
 Any changes to the schema of the remote entity may result in unwanted effects. For example, new columns aren't recognized or deleted columns may cause a 'Partial Query Error' instead of a semantic error. For more information, see [Cross-cluster queries and schema changes](../concepts/cross-cluster-and-schema-changes.md).
 
 You can use the following command when you need to refresh the schema without waiting for the expiry time of the cache.
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 
