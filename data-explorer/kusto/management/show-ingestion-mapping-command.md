@@ -61,7 +61,7 @@ The following command shows all ingestion mappings for the table MyTable.
 
 ### Show all mappings of a specific kind
 
-The following command shows all csv ingestion mappings for the database MyDatabase.
+The following command shows all CSV file ingestion mappings for the database MyDatabase.
 
 ```kusto
 .show database MyDatabase ingestion csv mappings
