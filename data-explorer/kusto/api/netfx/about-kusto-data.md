@@ -29,15 +29,23 @@ In general, all methods on the clients are thread-safe with two exceptions: `Dis
 and setter properties. For consistent results, don't invoke either methods
 concurrently.
 Following are a few examples. More samples can be found [here](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client).
-**Example: Counting Rows**
+
+## Example: Counting Rows
+
 The following code demonstrates counting the rows of a table named `StormEvents` in a database named `Samples`:
+
 ```csharp
 var client = Kusto.Data.Net.Client.KustoClientFactory.CreateCslQueryProvider("https://help.kusto.windows.net/Samples;Fed=true");
 var reader = client.ExecuteQuery("StormEvents | count");
 // Read the first row from reader -- it's 0'th column is the count of records in MyTable
 // Don't forget to dispose of reader when done.
 ```
-**Example: Enumerating the accessible databases**
+
+## Example: Enumerating the accessible databases
+
+> [!NOTE]
+> We recommend that data readers and clients are disposed of after use to release network resources. Accumulation of these resources can result in unexpected network errors and timeouts.
+
 ```csharp
 var kcsb = new KustoConnectionStringBuilder(cluster URI here). WithAadUserPromptAuthentication();
 using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
@@ -52,9 +60,12 @@ using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
     }
 }
 ```
+
 ## The KustoClientFactory client factory
+
 The static class `Kusto.Data.Net.Client.KustoClientFactory` provides the main entry point for authors
 of client code that utilizes Kusto. It provides the following important static methods:
+
 |Method                                      |Returns                                |Used for                                                      |
 |--------------------------------------------|---------------------------------------|--------------------------------------------------------------|
 |`CreateCslQueryProvider`                    |`ICslQueryProvider`                    |Sending queries to a Kusto engine cluster.                    |

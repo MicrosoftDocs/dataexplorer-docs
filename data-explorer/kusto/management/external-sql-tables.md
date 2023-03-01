@@ -3,30 +3,35 @@ title: Create and alter SQL Server external tables - Azure Data Explorer
 description: This article describes how to create and alter external tables based on SQL Server tables.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 02/21/2023
 ---
 
 # Create and alter SQL Server external tables
 
-Creates or alters an external SQL table in the database in which the command is executed.  
+Creates or alters an external SQL table in the database in which the command is executed.
+
+## Permissions
+
+To `.create` requires at least [Database User](../management/access-control/role-based-access-control.md) permissions and to `.alter` requires at least [Table Admin](../management/access-control/role-based-access-control.md) permissions.
+
+To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* ([columnName:columnType], ...)  
-`kind` `=` `sql`  
-`table` `=` *SqlTableName*  
-`(`*SqlServerConnectionString*`)`  
-[`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*], *property_name* `=` *value*`,`...`)`]
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *tableName* `(`*columnName*`:`*columnType* [`,` ...]`)` `kind` `=` `sql` `table` `=` *sqlTableName* `(`*sqlServerConnectionString*`)` [`with` `(`*propertyName* `=` *propertyValue* [`,` ... ]`)`]
 
 ## Parameters
 
-* *TableName* - External table name. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.
-* *SqlTableName* - The name of the SQL table. Not including the database name (example: "MySqlTable" and not "db1.MySqlTable"). If the name of the table contains a period (".") you can use ['Name.of.the.table'] notation.
-* *SqlServerConnectionString* - The connection string to the SQL Server. See the supported [SQL authentication methods](../api/connection-strings/sql-authentication-methods.md).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *tableName* | string | &check; | The name of the external table. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.|
+| *columnName*, *columnType* | string | &check; | The name of a column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
+|*sqlTableName*| string | &check; | The name of the SQL table. Not including the database name (example: "MySqlTable" and not "db1.MySqlTable"). If the name of the table contains a period (".") you can use ['Name.of.the.table'] notation.|
+| *sqlServerConnectionString*| string |&check;| The connection string to the SQL Server. See the supported [SQL authentication methods](../api/connection-strings/sql-authentication-methods.md).|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [optional properties](#optional-properties).|
 
 > [!NOTE]
-> * If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities.
-> * When creating or altering an external table using managed identity authentication, [All Databases admin permission](./access-control/role-based-access-control.md) is required.
+> If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities.
 
 > [!WARNING]
 > Connection strings and queries that include confidential information should be obfuscated so that they'll be omitted from any Kusto tracing. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).
@@ -43,10 +48,8 @@ Creates or alters an external SQL table in the database in which the command is 
 
 > [!NOTE]
 > * If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables. 
-> * Altering the schema or format of an external SQL table is not supported. 
+> * Altering the schema or format of an external SQL table is not supported.
 
-Requires [database user permission](./access-control/role-based-access-control.md) for `.create` and [table admin permission](./access-control/role-based-access-control.md) for `.alter`. 
- 
 **Example** 
 
 ```kusto

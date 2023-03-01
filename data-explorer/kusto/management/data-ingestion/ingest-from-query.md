@@ -20,22 +20,22 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 
 ## Syntax
 
-`.set` [`async`] *TableName* [`with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *QueryOrCommand*
+`.set` [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
 
-`.append` [`async`] *TableName* [`with` `(`*PropertyName* `=` *PropertyValue* [`,` ...`])`] `<|` *QueryOrCommand*
+`.append` [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
 
-`.set-or-append` [`async`] *TableName* [`with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *QueryOrCommand*
+`.set-or-append` [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
 
-`.set-or-replace` [`async`] *TableName* [`with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *QueryOrCommand*
+`.set-or-replace` [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 | *async* | string | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
-| *TableName* | string | &check; | The name of the table to ingest data into. The *TableName* is always related to the database in context. |
-| *PropertyName*, *PropertyValue* | string | | One or more [supported ingestion properties](#supported-ingestion-properties) used to control the ingestion process. |
-| *QueryOrCommand* | string | &check; | The text of a query or a control command whose results will be used as data to ingest.|
+| *tableName* | string | &check; | The name of the table to ingest data into. The *tableName* is always related to the database in context. |
+| *propertyName*, *propertyValue* | string | | One or more [supported ingestion properties](#supported-ingestion-properties) used to control the ingestion process. |
+| *queryOrCommand* | string | &check; | The text of a query or a control command whose results will be used as data to ingest.|
 
 > [!NOTE]
 > Only `.show` control commands are supported.

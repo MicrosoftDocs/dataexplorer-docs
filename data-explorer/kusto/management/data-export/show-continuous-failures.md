@@ -3,24 +3,28 @@ title: Show continuous data export failures - Azure Data Explorer
 description: This article describes how to show continuous data export failures in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/03/2020
+ms.date: 02/21/2023
 ---
 # Show continuous export failures
 
 Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest.
 The command will not return any results if executed on a [follower database](../../../follower.md), it must be executed against the leader database.
 
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.show` `continuous-export` *ContinuousExportName* `failures`
 
-## Properties
+## Parameters
 
-| Property             | Type   | Description                |
-|----------------------|--------|----------------------------|
-| ContinuousExportName | String | Name of continuous export  |
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ContinuousExportName* | string | &check; | The name of the continuous export. |
 
-## Output
+## Returns
 
 | Output parameter | Type      | Description                                         |
 |------------------|-----------|-----------------------------------------------------|
