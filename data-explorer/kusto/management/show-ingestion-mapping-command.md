@@ -52,13 +52,17 @@ If the table only contained one CSV mapping named "mapping1", the following quer
 .show table MyTable ingestion csv mappings 
 ```
 
-## Show all mappings for a table
+### Show all mappings for a table
+
+The following command shows all ingestion mappings for the table MyTable.
 
 ```kusto
 .show table MyTable ingestion mappings
 ```
 
-## Show all csv mappings for a database
+### Show all mappings of a specific kind
+
+The following command shows all csv ingestion mappings for the database MyDatabase.
 
 ```kusto
 .show database MyDatabase ingestion csv mappings
