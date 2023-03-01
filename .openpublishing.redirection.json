@@ -476,9 +476,16 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/kusto/management/clean-extent-containers.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/extents-overview",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "data-explorer/kusto/api/tds/linkedserver.md",
       "redirect_url": "/azure/data-explorer/linked-server",
       "redirect_document_id": true
     }
   ]
 }
+
+
