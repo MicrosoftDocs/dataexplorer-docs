@@ -220,6 +220,20 @@ items:
     - name: JSON formatted data
       displayName: ingest data, ingestion
       href: ingest-json-formats.md
+    - name: Connect with SQL Server emulation
+      items:
+        - name: Overview
+          href: connect-sql-server-emulation.md
+          displayName: SQL Server emulation
+        - name: Connect with ODBC
+          href: connect-odbc.md
+          displayName: SQL Server emulation
+        - name: Connect with JDBC
+          href: connect-jdbc.md
+          displayName: SQL Server emulation
+        - name: Connect from common apps
+          href: connect-common-apps.md
+          displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
     - name: Data ingestion properties
       href: ingestion-properties.md
     - name: Formats for data ingestion
@@ -237,10 +251,14 @@ items:
           href: web-results-grid.md
         - name: Share queries
           href: web-share-queries.md
+        - name: Keyboard shortcuts
+          href: web-ui-query-keyboard-shortcuts.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
       href: query-monitor-data.md
+    - name: Query data in MATLAB
+      href: matlab.md
     - name: Query data in Power Apps
       href: power-apps-connector.md
     - name: Query data using Python
@@ -299,8 +317,6 @@ items:
         href: excel-blank-query.md
     - name: Grafana
       href: grafana.md
-    - name: ODBC connector
-      href: connect-odbc.md
     - name: Tableau
       href: tableau.md
     - name: Sisense
@@ -432,6 +448,8 @@ items:
           href: auto-stop-clusters.md
         - name: Manage cluster permissions
           href: manage-cluster-permissions.md
+        - name: Manage cluster locks
+          href: manage-cluster-locks.md
         - name: Manage cluster horizontal scaling
           href: manage-cluster-horizontal-scaling.md
         - name: Manage cluster vertical scaling
@@ -586,6 +604,9 @@ items:
     - name: Migrate TSI to Azure Data Explorer
       href: /azure/time-series-insights/migration-to-adx
       displayName: Time Series Insights
+    - name: Linked server
+      href: linked-server.md
+      displayName: SQL Server, ODBC
 - name: Kusto Query Language
   href: kusto/query/toc.yml
 - name: Management commands
@@ -600,8 +621,6 @@ items:
     href: kusto/api/toc.yml
   - name: Azure CLI Kusto
     href: /cli/azure/kusto
-  - name: Azure Data Explorer web UI keyboard shortcuts
-    href: web-ui-query-keyboard-shortcuts.md
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
     href: policy-reference.md

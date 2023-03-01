@@ -24,19 +24,23 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 > [!NOTE]
 > If you omit the `type`, the existing encoding policy profile is cleared reset to the default value.
 
-## Arguments
+## Parameters
 
-* *EntityIdentifier*: the identifier for the column.
-* *EncodingPolicyType*: the type of the encoding policy to apply to the specified column.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*EntityIdentifier*|string|&check;|The identifier for the column.|
+|*EncodingPolicyType*|string||The type of the encoding policy to apply to the specified column. See [encoding policy types](#encoding-policy-types) for the possible values.|
 
-   The possible values of *EncodingPolicyType* are:
+### Encoding policy types
 
-  |Encoding Policy Profile | Description |
-  |------------------------|------------|
-  |`Identifier`            | Suitable for columns that have data that represents ID-like information (for example, guids). This policy applies the required index for this column to gain both query performance and reduce size in the storage. |
-  |`BigObject`             | Suitable for columns of dynamic type, which holds large objects. For example, the output of [hll aggregate function](../query/hll-aggfunction.md)). This policy disables the index of this column and overrides `MaxValueSize` property in the encoding Policy to 2 MB. |
-  |`BigObject32`           | Similar to `BigObject` in terms of target scenarios. Overrides `MaxValueSize` property in the encoding Policy to 32 MB. |
-  |`Null`                  | Sets the current default encoding policy to the column and clears the previous encoding policy profile.                               |
+The following table contains the possible values for the *EncodingPolicyType* parameter.
+
+|Encoding Policy Profile | Description |
+|------------------------|------------|
+|`Identifier`            | Suitable for columns that have data that represents ID-like information (for example, guids). This policy applies the required index for this column to gain both query performance and reduce size in the storage. |
+|`BigObject`             | Suitable for columns of dynamic type, which holds large objects. For example, the output of [hll aggregate function](../query/hll-aggfunction.md)). This policy disables the index of this column and overrides `MaxValueSize` property in the encoding Policy to 2 MB. |
+|`BigObject32`           | Similar to `BigObject` in terms of target scenarios. Overrides `MaxValueSize` property in the encoding Policy to 32 MB. |
+|`Null`                  | Sets the current default encoding policy to the column and clears the previous encoding policy profile.                               |
 
 ## Example
 

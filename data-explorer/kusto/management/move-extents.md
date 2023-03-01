@@ -25,11 +25,11 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 
 ## Syntax
 
-`.move` [`async`] `extents` `all` `from` `table` *SourceTableName* `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]
+`.move` [`async`] `extents` `all` `from` `table` *sourceTableName* `to` `table` *destinationTableName* [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-`.move` [`async`] `extents` `from` `table` *SourceTableName* `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] `(` *GUID1* [`,` *GUID2* ...] `)`
+`.move` [`async`] `extents` `from` `table` *sourceTableName* `to` `table` *destinationTableName* [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `(` *GUID1* [`,` *GUID2* ...] `)`
 
-`.move` [`async`] `extents` `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)` ] <| *query*
+`.move` [`async`] `extents` `to` `table` *destinationTableName* [ `with` `(`*propertyName* `=` *propertyValue* [`,`...]`)`] `<|` *query*
 
 `async` (optional). Execute the command asynchronously.
    * An Operation ID (Guid) is returned.

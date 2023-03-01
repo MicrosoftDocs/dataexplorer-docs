@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # .alter database ingestion batching policy
 
-Set the [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested.
+Use this command to set the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy determines when data aggregation stops and a batch is sealed and ingested.
 
 When setting the policy for a database, it applies for all its tables, except tables that were set with their own IngestionBatching policy. If the policy isn't set for a database, the [default values](batchingpolicy.md#defaults-and-limits) apply.
 
@@ -23,10 +23,12 @@ See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
 `.alter` `database` *DatabaseName* `policy` `ingestionbatching` *PolicyObject*
 
-## Arguments
+## Parameters
 
-- *DatabaseName* - Specify the name of the database.
-- *PolicyObject* - Define a policy object. For more information, see [ingestion batching policy](batchingpolicy.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database for which to alter the ingestion batching policy.|
+|*PolicyObject*|string|&check;|A policy object that defines the ingestion batching policy. For more information, see [ingestion batching policy](batchingpolicy.md).|
 
 ## Example
 

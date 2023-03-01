@@ -7,11 +7,11 @@ ms.date: 02/21/2023
 ---
 # .alter database streaming ingestion policy
 
-Change the database streaming ingestion policy. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
+Use this command to change the database streaming ingestion policy. The [streaming policy](../management/streamingingestionpolicy.md) manages streaming ingestion of data into databases and tables.
 
-Use in low latency scenarios, where ingestion time is less than 10 seconds for varying data volume. You can optimize processing for many tables in one or more databases, when tables receive a few records per second, whereas the ingestion volume is thousands of records per second.
+Streaming ingestion is best suited for low latency scenarios where the ingestion time is under 10 seconds for varying data volume. It can optimize processing for multiple tables across one or more databases, especially when the tables receive only a few records per second but the ingestion volume is thousands of records per second.
 
-Use the classic bulk ingestion instead of streaming ingestion when the amount of data grows to more than 4 Gb per hour per table. 
+However, when the amount of data grows beyond 4 Gb per hour per table, it's recommended to switch to classic bulk ingestion instead of streaming ingestion.
 
 To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md). Streaming ingestion must be enabled at the cluster level before it can be used at the database level.
 
@@ -23,10 +23,10 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.alter` `database` *DatabaseName* `policy` `streamingingestion` *PolicyObject*
 
-## Arguments
-
-- *DatabaseName* - Specify the name of the database.
-- *PolicyObject* - Define a policy object. For more information, see the [streaming policy](../management/streamingingestionpolicy.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database for which to alter the streaming ingestion policy.|
+|*PolicyObject*|string|&check;|A policy object that defines the streaming ingestion policy. For more information, see the [streaming policy](../management/streamingingestionpolicy.md).|
 
 ## Returns
 

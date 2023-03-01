@@ -3,11 +3,11 @@ title: .alter table partitioning policy command- Azure Data Explorer
 description: This article describes the .alter table partitioning policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 02/28/2023
 ---
 # .alter table partitioning policy
 
-Changes a table [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+Use this command to change a table [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Permissions
 
@@ -17,12 +17,14 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.alter` `table` *TableName* `policy` `partitioning` *PolicyObject*
 
-## Arguments
+## Parameters
 
-- *TableName* - Specify the name of the table.  
-- *PolicyObject* - Define a policy object, see also [partitioning policy](partitioningpolicy.md).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TableName* | string | &check; | The name of the table to alter. |
+| *PolicyObject* | string | &check; | A serialized JSON policy object. See [partitioning policy](partitioningpolicy.md). |
 
-### Example
+### Examples
 
 Set a policy with a hash partition key:
 
