@@ -147,9 +147,15 @@ items:
       href: materialized-views/materialized-view-drop.md
     - name: ".rename materialized-view"
       href: materialized-views/materialized-view-rename.md
-    - name: ".show materialized-views"
-      href: materialized-views/materialized-view-show-commands.md
-    - name: ".show materialized-views details"
+    - name: ".show materialized-view(s)"
+      href: materialized-views/materialized-view-show-command.md
+    - name: ".show materialized-view schema"
+      href: materialized-views/materialized-view-show-schema-command.md
+    - name: ".show materialized-view extents"
+      href: materialized-views/materialized-view-show-extents-command.md
+    - name: ".show materialized-view failures"
+      href: materialized-views/materialized-view-show-failures-command.md
+    - name: ".show materialized-view(s) details"
       href: materialized-views/materialized-view-show-details-command.md
   - name: Stored query results
     displayName: .set stored query, .show stored query, .drop stored query

@@ -479,6 +479,11 @@
       "source_path": "data-explorer/kusto/api/tds/linkedserver.md",
       "redirect_url": "/azure/data-explorer/linked-server",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-show-commands.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/materialized-views/materialized-view-show-command.md",
+      "redirect_document_id": true
     }
   ]
 }

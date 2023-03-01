@@ -3,7 +3,7 @@ title: Materialized view rename - Azure Data Explorer
 description: This article describes rename materialized view command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/01/2023
 ---
 # .rename materialized-view
 
@@ -19,17 +19,46 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Parameters
 
-| Name | Type | Required | Description |
-|--|--|--|--|
-| *OldName* | string | &check; | The old name of the materialized view. |
-| *NewName* | string | &check; | The new name to assign to the materialized view. |
+| Name      | Type    | Required | Description                              |
+|-----------|--------|-----------|------------------------------------------|
+| *OldName* | string | &check;   | Name of the materialized view to rename. |
+| *NewName* | string | &check;   | New name to assign to the view.          |
 
 ## Returns
 
-The command returns all materialized views in the database, after the rename, which is the output of the [show materialized view](materialized-view-show-commands.md#show-materialized-view) command.
+The command returns all materialized views in the database, after the rename, which is the output of the [`.show materialized view(s)`](materialized-view-show-command.md#show-materialized-view) command.
 
-## Example
+Following is the schema of the output returned:
+
+| Name              | Type     | Description                                                                                                                                                                                 |
+|-------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name              | string   | The name of the materialized view.                                                                                                                                                          |
+| SourceTable       | string   | The source table of the materialized view.                                                                                                                                                  |
+| Query             | string   | The materialized view query.                                                                                                                                                                |
+| MaterializedTo    | datetime | The max materialized ingestion_time() timestamp in source table. For more information, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work).        |
+| LastRun           | datetime | The last time materialization was run.                                                                                                                                                      |
+| LastRunResult     | string   | Result of last run. Returns `Completed` for successful runs, otherwise `Failed`.                                                                                                            |
+| IsHealthy         | bool     | `true` when view is considered healthy, `false` otherwise. View is considered healthy if it was successfully materialized up to the last hour (`MaterializedTo` is greater than `ago(1h)`). |
+| IsEnabled         | bool     | `true` when view is enabled (see [Disable or enable materialized view](materialized-view-enable-disable.md)).                                                                               |
+| Folder            | string   | The materialized view folder.                                                                                                                                                               |
+| DocString         | string   | The materialized view doc string.                                                                                                                                                           |
+| AutoUpdateSchema  | bool     | Whether the view is enabled for auto updates.                                                                                                                                               |
+| EffectiveDateTime | datetime | The effective date time of the view, determined during creation time (see [`.create materialized-view`](materialized-view-create.md#create-materialized-view)).                             |
+| Lookback          | timespan | The time span limiting the period of time in which duplicates are expected.                                                                                                                 |
+
+## Examples
+
+### Rename one materialized view
+
+The following command renames materialized view ViewName to NewName:
 
 ```kusto
 .rename materialized-view ViewName to NewName
 ```
+
+**Output:**
+
+| Name    | SourceTable | Query                                               | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
+|---------|-------------|-----------------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|
+| ArgMax  | T           | T \| summarize arg_max(Timestamp, *) by User        | 2023-02-26T16:40:03.3345704Z     | 2023-02-26T16:44:15.9033667Z | Completed     | true      | true      |                  |           | false            | 2023-02-23T14:01:42.5172342Z |            |
+| NewName | MyTable     | MyTable \| summarize arg_max(Column3, *) by Column1 | 2023-02-26T16:40:03.3345704Z     | 2023-02-26T16:44:15.9033667Z | Completed     | true      | true      |                  |           | true             | 2023-02-23T14:01:42.5172342Z |            |
