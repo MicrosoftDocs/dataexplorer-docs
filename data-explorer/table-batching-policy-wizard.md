@@ -10,8 +10,6 @@ ms.date: 09/14/2022
 During the ingestion process, throughput is optimized by batching small ingress data chunks together before ingestion. The  [ingestion batching policy](./kusto/management/batchingpolicy.md#sealing-a-batch) defines data aggregation for batching.
 In this article, you can define and assign an ingestion batching policy for a table using the table batching policy wizard.
 
-[!INCLUDE [batching-policy-permissions](includes/batching-policy-permissions.md)]
-
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
@@ -41,7 +39,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
     |**Setting** | **Default value** | **Field description**
     |---|---|---|
-    | Number of items | *1000*  | The number of files defined as the limit after which a batch is sealed.  |
+    | Number of items | *1000*  | The number of files defined as the limit after which a batch is sealed. This setting should only be set in scenarios where you can control the data units, such as blobs or files. In message-based scenarios, such as Event Hubs, IoT Hub, and Azure Cosmos DB change feed, consider using the *Time* and *Size* settings to control batching. |
     | Time (seconds) |  *300* | The time limit after which a batch is sealed. |
     | Size (MB) |  *1024* | The size limit after which a batch is sealed.  |
 

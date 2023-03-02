@@ -18,17 +18,16 @@ The card visual only shows one element. If there are multiple columns and rows i
 
 ## Syntax
 
-*T* `|` `render` card [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
+*T* `|` `render` `card` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
-| *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
-| *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
+| *T* | string | &check; | Input table name.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-### Properties 
+### Supported properties
 
 All properties are optional.
     

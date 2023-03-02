@@ -626,7 +626,7 @@ items:
     href: access-control/how-to-authenticate-with-aad.md
   - name: Referencing security principals
     displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
-    href: access-control/principals-and-identity-providers.md
+    href: /azure/data-explorer/kusto/management/access-control/referencing-security-principals
   - name: Allow cross-tenant queries and commands
     href: ../../cross-tenant-query-and-commands.md
 - name: Advanced data management
@@ -649,8 +649,6 @@ items:
         href: replace-extents.md
       - name: .show extents
         href: show-extents.md
-    - name: Extent containers clean commands
-      href: clean-extent-containers.md
   - name: Follower commands
     displayName: Cluster commands, database commands, materialized view commands, table commands 
     href: cluster-follower.md

@@ -3,12 +3,16 @@ title: .show functions - Azure Data Explorer
 description: This article describes .show functions in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/21/2023
 ---
 # .show function(s)
 
 Lists all the stored functions in the currently-selected database.
 To return only one specific function, see [.show function](#show-function).
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## .show functions
 
@@ -16,8 +20,6 @@ To return only one specific function, see [.show function](#show-function).
 .show functions
 ```
 
-Requires [database user permission](./access-control/role-based-access-control.md).
- 
 |Output parameter |Type |Description
 |---|---|--- 
 |Name  |String |The name of the function. 
@@ -72,10 +74,8 @@ For a list of **all** functions, see [.show functions](#show-functions).
 |DocString|String|A description of the function for UI purposes.
  
 > [!NOTE]
->
-> * If the function does not exist, an error is returned.
-> * Requires [database user permission](./access-control/role-based-access-control.md).
- 
+> If the function does not exist, an error is returned.
+
 **Example** 
 
 ```kusto

@@ -16,19 +16,18 @@ A time chart visual is a type of line graph. The first column of the query is th
 
 ## Syntax
 
-*T* `|` `render` timechart [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
+*T* `|` `render` `timechart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *T* | string | &check; | Input table name.
-| *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
-| *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ::: zone pivot="azuredataexplorer"
 
-### Properties 
+### Supported properties
 
 All properties are optional.
 

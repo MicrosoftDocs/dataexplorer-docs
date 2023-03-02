@@ -30,7 +30,7 @@ The function accepts a table containing the column to calculate on and an option
 
 `percentiles_linear_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 
-### [Ad hoc](#tab/adhoc)
+### [Query-defined](#tab/query-defined)
 
 For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
 
@@ -47,8 +47,8 @@ let percentiles_linear_fl=(tbl:(*), val_col:string, pct_arr:dynamic, aggr_col:st
     | mv-apply pct to typeof(real) on (
           extend index=pct/100.0*(n-1)
         | extend low_index=tolong(floor(index, 1)), high_index=tolong(ceiling(index))
-        | extend interval=toreal(_vals[high_index])-toreal(_vals[low_index])
-        | extend pct_val=toreal(_vals[low_index])+(index-low_index)*interval
+        | extend interval=todouble(_vals[high_index])-todouble(_vals[low_index])
+        | extend pct_val=todouble(_vals[low_index])+(index-low_index)*interval
         | summarize pct_arr=make_list(pct), pct_val=make_list(pct_val))
     | project-away n
 }
@@ -66,9 +66,9 @@ datatable(x:long, name:string) [
 | project-rename name=_key, x=_vals
 ```
 
-### [Persistent](#tab/persistent)
+### [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-access-control.md).
+For persistent usage, use [`.create function`](../management/create-function.md).  Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
 
 ### One time installation
 
@@ -86,8 +86,8 @@ percentiles_linear_fl(tbl:(*), val_col:string, pct_arr:dynamic, aggr_col:string=
     | mv-apply pct to typeof(real) on (
           extend index=pct/100.0*(n-1)
         | extend low_index=tolong(floor(index, 1)), high_index=tolong(ceiling(index))
-        | extend interval=toreal(_vals[high_index])-toreal(_vals[low_index])
-        | extend pct_val=toreal(_vals[low_index])+(index-low_index)*interval
+        | extend interval=todouble(_vals[high_index])-todouble(_vals[low_index])
+        | extend pct_val=todouble(_vals[low_index])+(index-low_index)*interval
         | summarize pct_arr=make_list(pct), pct_val=make_list(pct_val))
     | project-away n
 }
