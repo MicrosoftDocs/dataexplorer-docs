@@ -14,6 +14,19 @@ external storage, specified by a [storage connection string](../../api/connectio
 
 You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
+## External storage authorization
+
+The authentication method to access external storage is based on the connection string provided, and the permissions required to access the table vary depending on the authentication method.
+
+The following table lists the supported authentication methods and the permissions needed for exporting data to external storage.
+
+|Authentication method|Write permissions|
+|--|--|--|--|
+|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage blob contributor|
+|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Writer|
+|[Azure AD access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
+|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||
+
 ## Syntax
 
 `.export` [`async`] [`compressed`]
