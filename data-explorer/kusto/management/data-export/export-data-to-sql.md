@@ -13,22 +13,25 @@ Export data to SQL allows you to run a query and have its results sent to a tabl
 
 You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
+## SQL database authorization
+
+Authorization to the SQL database is based on the sql connection string. To learn more, see [SQL Server authentication methods](../../api/connection-strings/sql-authentication-methods.md).
+
 ## Syntax
 
 `.export` [`async`] `to` `sql` *SqlTableName* *SqlConnectionString* [`with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]
  `<|` *Query*
 
-Where:
-* *async*: Command runs in asynchronous mode (optional).
-* *SqlTableName* SQL database table name where the data is inserted.
-  To protect against injection attacks, this name is restricted.
-* *SqlConnectionString* is a `string` literal that follows the `ADO.NET`
-  connection string format and describes the SQL endpoint and database
-  to which you connect. For security reasons, the connection string is restricted.
-* *PropertyName*, *PropertyValue* are pairs of a name (identifier) and a value
-  (string literal).
+## Parameters
 
-Properties:
+|Name|Type|Required|Description|
+|--|--|--|--|
+|`async`|string||If specified, the command runs asynchronously.|
+|*SqlTableName*|string|&check;|The name of the SQL database table into which to insert the data. To protect against injection attacks, this name is restricted.|
+|*SqlConnectionString*|string|&check;|The connection string for the SQL endpoint and database. The string must follow the `ADO.NET` connection string format. For security reasons, the connection string is restricted.|
+|*PropertyName*, *PropertyValue*|string||A list of optional [properties](#properties).|
+
+## Properties
 
 |Name               |Values           |Description|
 |-------------------|-----------------|-----------|
