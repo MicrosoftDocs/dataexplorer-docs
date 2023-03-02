@@ -9,7 +9,7 @@ ms.date: 12/28/2022
 
 This plugin infers schema of external data, and returns it as CSL schema string. The string can be used when [creating external tables](../management/external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table). The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
-## External storage authorization
+## Authentication and authorization
 
 In the [properties of the request](#properties-of-the-request), you specify storage connection strings to access. Each storage connection string specifies the authorization method to use for access to the storage. Depending on the authorization method, the principal may need to be granted permissions on the external storage to perform the schema inference.
 

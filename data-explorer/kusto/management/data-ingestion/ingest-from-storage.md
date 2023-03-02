@@ -19,7 +19,7 @@ without affecting existing records, and without modifying the table's schema. Mi
 
 You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
 
-## External storage authorization
+## Authentication and authorization
 
 Each storage connection string specified indicates the authorization method to use for access to the storage. Depending on the authorization method, the principal may need to be granted permissions on the external storage to perform the ingestion.
 
