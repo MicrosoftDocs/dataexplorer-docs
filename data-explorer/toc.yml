@@ -89,7 +89,7 @@ items:
           href: ingest-data-wizard.md
         - name: Ingest from local file
           displayName: ingest data, ingestion wizard, one click, existing table
-          href: ingestion-wizard-existing-table.md
+          href: ingest-from-local-file.md
         - name: Ingest from container
           displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
           href: ingestion-wizard-new-table.md
