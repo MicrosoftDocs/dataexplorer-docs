@@ -19,32 +19,33 @@ without affecting existing records, and without modifying the table's schema. Mi
 
 You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
 
+## External storage authorization
+
+Each storage connection string specified indicates the authorization method to use for access to the storage. Depending on the authorization method, the principal may need to be granted permissions on the external storage to perform the ingestion.
+
+The following table lists the supported authentication methods and the permissions needed for ingesting data from external storage.
+
+|Authentication method|Permissions|
+|--|--|--|--|
+|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage blob reader|
+|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|
+|[Azure AD access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
+|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||
+
 ## Syntax
 
 `.ingest` [`async`] `into` `table` *TableName* *SourceDataLocator* [`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
 
-## Arguments
+## Parameters
 
-* `async`: If specified, the command will return immediately, and continue
-  ingestion in the background. The results of the command will include
-  an `OperationId` value that can then be used with the `.show operation`
-  command to retrieve the ingestion completion status and results.
-  
-* *TableName*: The name of the table to ingest data into.
-  The table name is always relative to the database in context,
-  and its schema is the schema that will be assumed for the data
-  if no schema mapping object is provided.
-
-* *SourceDataLocator*: A literal of type `string`, or a comma-delimited list of such
-  literals surrounded by `(` and `)` characters, representing [storage connection strings](../../api/connection-strings/storage-connection-strings.md). Kusto uses a URI format to describe the storage files containing the data to pull. 
-  * A single connection string must refer to a single file hosted by a storage account. 
-  * Ingestion of multiple files can be done by specifying multiple connection strings separated with a comma, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/externaltables.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+|`async`|string||If specified, the command returns immediately and continue ingestion in the background. The results of the command include an `OperationId` value that can then be used with the `.show operation` command to retrieve the ingestion completion status and results.|
+|*TableName*|string|&check;|The name of the table into which to ingest data. The table name is always relative to the database in context. If no schema mapping object is provided, the schema of the database in context is used.|
+|*SourceDataLocator*|string|&check;|A single or comma-separated list of [storage connection strings](../../api/connection-strings/storage-connection-strings.md). A single connection string must refer to a single file hosted by a storage account. Ingestion of multiple files can be done by specifying multiple connection strings, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/externaltables.md).|
 
 > [!NOTE]
-> It is strongly recommended to use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals)
-> for the *SourceDataPointer* that includes actual credentials in it.
-> The service will be sure to scrub credentials
-> in its internal traces, error messages, etc.
+> We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for the *SourceDataPointer*. The service will scrub credentials in internal traces and error messages.
 
 [!INCLUDE [ingestion-properties](../../../includes/ingestion-properties.md)]
 
