@@ -29,24 +29,34 @@ In this article, you'll go through the following steps:
 In order to ingest data using the Log4j 2 connector, you need to create and register an Azure AD service principal and then authorize this principal to ingest data an Azure Data Explorer database.
 
 1. Follow steps 1-7 in [Create an Azure Active Directory application registration in Azure Data Explorer](provision-azure-ad-app.md) to create an Azure AD app. Save the app key and application ID values to be used in later steps.
-1. Browse to your database in the query tab of the [web UI](https://dataexplorer.azure.com/). For more information, see 
-1. Grant the app [database ingestor](kusto/management/access-control/role-based-access-control.md) role using the following management command.
+1. Connect to your cluster and browse to your database in the query tab of the [web UI](https://dataexplorer.azure.com/). For more information, see [Add clusters](web-query-data.md#add-clusters).
+1. Grant the app [database ingestor](kusto/management/access-control/role-based-access-control.md) role using the following management command. For more information, see [Manage permissions with management commands](manage-database-permissions.md#manage-permissions-with-management-commands).
 
-```kusto
-.add database Samples ingestors ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;fabrikam.com')
-```
+    ```kusto
+    .add database DatabaseName ingestors ('aadapp=12345-abcd-12a3-b123-ccdd12345a1b') 'Azure Data Explorer App Registration'
+    ```
+    
+    1. Instead of the placeholder *DatabaseName*, enter the name of your database.
+    1. Instead of the placeholder application ID, use the application ID that was saved in a previous step.
 
-## Create table
+    > [!NOTE]
+    > The last parameter is a string that shows up as notes when you query the roles associated with a database.
 
-```kusto
-.create table log4jTest (timenanos:long,timemillis:long,level:string,threadid:string,threadname:string,threadpriority:int,formattedmessage:string,loggerfqcn:string,loggername:string,marker:string,thrownproxy:string,source:string,contextmap:string,contextstack:string)
-```
+## Create table and mapping
 
-## Create table mapping
+Now that you've given permissions to the connector to ingest data in your database, you need to create a table with data columns that correspond to the incoming data.
 
-```kusto
-.create table log4jTest ingestion csv mapping 'log4jCsvTestMapping' '[{"Name":"timenanos","DataType":"","Ordinal":"0","ConstValue":null},{"Name":"timemillis","DataType":"","Ordinal":"1","ConstValue":null},{"Name":"level","DataType":"","Ordinal":"2","ConstValue":null},{"Name":"threadid","DataType":"","Ordinal":"3","ConstValue":null},{"Name":"threadname","DataType":"","Ordinal":"4","ConstValue":null},{"Name":"threadpriority","DataType":"","Ordinal":"5","ConstValue":null},{"Name":"formattedmessage","DataType":"","Ordinal":"6","ConstValue":null},{"Name":"loggerfqcn","DataType":"","Ordinal":"7","ConstValue":null},{"Name":"loggername","DataType":"","Ordinal":"8","ConstValue":null},{"Name":"marker","DataType":"","Ordinal":"9","ConstValue":null},{"Name":"thrownproxy","DataType":"","Ordinal":"10","ConstValue":null},{"Name":"source","DataType":"","Ordinal":"11","ConstValue":null},{"Name":"contextmap","DataType":"","Ordinal":"12","ConstValue":null},{"Name":"contextstack","DataType":"","Ordinal":"13","ConstValue":null}]'
-```
+1. Run the following [table creation command](kusto/management/create-table-command.md) in your query editor:
+
+    ```kusto
+    .create table log4jTest (timenanos:long,timemillis:long,level:string,threadid:string,threadname:string,threadpriority:int,formattedmessage:string,loggerfqcn:string,loggername:string,marker:string,thrownproxy:string,source:string,contextmap:string,contextstack:string)
+    ```
+
+1. Run the following [ingestion mapping command](kusto/management/create-ingestion-mapping-command.md) in your query editor:
+
+    ```kusto
+    .create table log4jTest ingestion csv mapping 'log4jCsvTestMapping' '[{"Name":"timenanos","DataType":"","Ordinal":"0","ConstValue":null},{"Name":"timemillis","DataType":"","Ordinal":"1","ConstValue":null},{"Name":"level","DataType":"","Ordinal":"2","ConstValue":null},{"Name":"threadid","DataType":"","Ordinal":"3","ConstValue":null},{"Name":"threadname","DataType":"","Ordinal":"4","ConstValue":null},{"Name":"threadpriority","DataType":"","Ordinal":"5","ConstValue":null},{"Name":"formattedmessage","DataType":"","Ordinal":"6","ConstValue":null},{"Name":"loggerfqcn","DataType":"","Ordinal":"7","ConstValue":null},{"Name":"loggername","DataType":"","Ordinal":"8","ConstValue":null},{"Name":"marker","DataType":"","Ordinal":"9","ConstValue":null},{"Name":"thrownproxy","DataType":"","Ordinal":"10","ConstValue":null},{"Name":"source","DataType":"","Ordinal":"11","ConstValue":null},{"Name":"contextmap","DataType":"","Ordinal":"12","ConstValue":null},{"Name":"contextstack","DataType":"","Ordinal":"13","ConstValue":null}]'
+    ```
 
 ## Clone the Log4j2-Azure Data Explorer connector git repo
 
