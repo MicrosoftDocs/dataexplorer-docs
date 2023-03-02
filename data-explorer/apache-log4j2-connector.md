@@ -36,8 +36,8 @@ In order to ingest data using the Log4j 2 connector, you need to create and regi
     .add database DatabaseName ingestors ('aadapp=12345-abcd-12a3-b123-ccdd12345a1b') 'Azure Data Explorer App Registration'
     ```
     
-    1. Instead of the placeholder *DatabaseName*, enter the name of your database.
-    1. Instead of the placeholder application ID, use the application ID that was saved in a previous step.
+    * Instead of the placeholder *DatabaseName*, enter the name of your database.
+    * Instead of the placeholder application ID, use the application ID that was saved in a previous step.
 
     > [!NOTE]
     > The last parameter is a string that shows up as notes when you query the roles associated with a database.
@@ -69,14 +69,7 @@ The Log4j2-Azure Data Explorer connector uses a custom strategy to be used in th
 
 ## Configure environmental variables
 
-Log4J supports various formats for its configuration
-
-XML
-JSON
-PROPERTIES
-YAML
-
-In the sample project included in the git repo, the default format is log4j2.xml. The following attributes of KustoStrategy are referenced by the configuration file:
+In the sample project included in the git repo, the default configuration format is log4j2.xml. The following attributes of KustoStrategy are referenced by the configuration file:
 
 ``` xml
 <KustoStrategy
@@ -92,11 +85,27 @@ In the sample project included in the git repo, the default format is log4j2.xml
 />
 ```
 
-Set 
-
 Note: log4jTest is the name of the table and the mapping log4CsvTestMapping we created in the above steps.
 
-Execute the following command and the application starts running. After running, we can see the logs getting ingested into ADX cluster.
+### [Windows](#tab/windows)
+
+```powershell
+$env:LOG4J2_ADX_DB_NAME="<db-name>"
+$env:LOG4J2_ADX_TENANT_ID="<tenant-id>"                   
+$env:LOG4J2_ADX_INGEST_CLUSTER_URL="https://ingest-<cluster>.kusto.windows.net"
+$env:LOG4J2_ADX_APP_ID="<app-id>"
+$env:LOG4J2_ADX_APP_KEY="<app-key>" 
+```
+
+### [Mac/Linux](#tab/linux)
+
+```sh
+export LOG4J2_ADX_DB_NAME="<db-name>"
+export LOG4J2_ADX_TENANT_ID="<tenant-id>"
+export LOG4J2_ADX_INGEST_CLUSTER_URL="https://ingest-<cluster>.kusto.windows.net"
+export LOG4J2_ADX_APP_ID="<app-id>"
+export LOG4J2_ADX_APP_KEY="<app-key>"
+```
 
 ## Run the sample app
 
