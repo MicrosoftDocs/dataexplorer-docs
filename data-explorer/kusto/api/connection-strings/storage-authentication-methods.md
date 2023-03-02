@@ -20,7 +20,7 @@ This article describes the following authentication methods:
 
 ## Privacy and security
 
-It's recommended to add an `h` to connection strings that contain secrets. This practice ensures that the private information in the connection string is [obfuscated in telemetry data](../../query/scalar-data-types/string.md#obfuscated-string-literals).
+We recommend adding an `h` to connection strings that contain secrets. This practice ensures that the private information in the connection string is [obfuscated in telemetry data](../../query/scalar-data-types/string.md#obfuscated-string-literals).
 
 The following table explains how to hide your private information using the `h` string.
 
