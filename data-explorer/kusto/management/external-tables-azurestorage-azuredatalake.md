@@ -18,6 +18,20 @@ To `.create` requires at least [Database User](../management/access-control/role
 
 To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
 
+## Authorization
+
+The authentication method to access an external table is based on the connection string provided during its creation. The required permissions to access the table vary depending on the authentication method used.
+
+The following table lists the supported authentication methods for Azure Storage external tables and the permissions needed to read or write to the table.
+
+|Authentication method|Read permissions|Write permissions|
+|--|--|--|--|
+|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage blob reader|Storage blob contributor|
+|[Managed identity](../api/connection-strings/storage-authentication-methods.md#managed-identity)|Storage blob reader|Storage blob contributor|
+|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|Writer|
+|[Azure AD access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|||
+|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|||
+
 ## .create or .alter external table
 
 **Syntax**
