@@ -3,7 +3,7 @@ title: external_table() - Azure Data Explorer
 description: Learn how to use the external_table() function to reference an external table by name.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/12/2022
+ms.date: 03/02/2023
 ---
 # external_table()
 
