@@ -50,7 +50,7 @@ In the **Add parameter** pane, configure the following properties.
 
 ## Manage parameters in parameter card
 
-After selecting **Parameters** from the top bar, you can [view the list of existing parameters](#view-parameters-list). In each parameter card, you can select the pencil widget to edit the parameter, or select the three dots menu to **Duplicate**, **Delete**, or move the parameter.
+After selecting **Parameters** from the top bar, you can [view the list of existing parameters](#view-parameters-list). In each parameter card, you can select the pencil widget to edit the parameter, or select the **More [...]** menu to **Duplicate**, **Delete**, or move the parameter.
 
 The following indicators can be viewed in the parameter card:
 
