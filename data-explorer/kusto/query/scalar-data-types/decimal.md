@@ -17,7 +17,7 @@ as .NET's `System.Data.SqlTypes.SqlDecimal`.
 There are several special literal forms:
 * `decimal(null)`: This is the [null value](null-values.md).
 
-> [!NOTE]
-> Math operations on `decimal` type are significantly slower than operations on [real](real.md) data type.
+> [!CAUTION]
+> Arithmetic operations involving `decimal` values are significantly slower than operations on [real](real.md) data type.
 > If your use case doesn't require very high precision, it's advised to switch to `real`.
 
