@@ -9,7 +9,7 @@ ms.date: 02/01/2023
 
 This article describes the partners of the Azure Data Explorer Find My Partner Program. Partners can help you with your Azure Data Explorer implementation, including consulting, training, and support.
 
-The services and expertise are chosen by the partner and should not be considered as endorsement confirmation by Microsoft. The partner is solely responsible for the services it provides.
+The services and expertise are chosen by the partner and shouldn't be considered as endorsement confirmation by Microsoft. The partner is solely responsible for the services it provides.
 
 You can also get the list of partners by running the following query on the [help](https://help.kusto.windows.net) cluster:
 
@@ -60,7 +60,7 @@ We develop and design sophisticated, forward-looking software solutions based on
 
 ALTEN is the consulting and engineering organization working in various (niche) markets for the high-tech sector and ICT. The development of new High-Tech technologies is costly and requires specialist knowledge. Knowledge in the field of technology plays the most important role, the central pillar within ALTEN.
 
-ALTEN also offers her specialist knowledge in the field of IT. We play an active role regarding quality, reliability, and innovations in the area of Big Data and Internet of Things with our partners in order to strengthen the digital transformation and sustainability
+ALTEN also offers their specialist knowledge in the field of IT. We play an active role regarding quality, reliability, and innovations in the area of Big Data and Internet of Things with our partners in order to strengthen the digital transformation and sustainability
 
 **Partner type**
 
@@ -117,9 +117,9 @@ AM Squared Provides specialist consulting, project and support services with res
 
 :::image type="icon" source="media/findmypartner/bean-tech-logo.png":::
 
-beanTech is an IT company that has been supporting industries in the challenges of Digital Transformation for over twenty years.
+beanTech is an IT company that has been supporting industries in the challenges of Digital Transformation for over 20 years.
 
-Competence and availability of the technical team, experience gained in hundreds of projects and technologies always at the state of the art respond perfectly to the needs of the modern manufacturing company that is not looking for a simple supplier but a business partner to grow in its market.
+Competence and availability of the technical team, experience gained in hundreds of projects and technologies always at the state of the art respond perfectly to the needs of the modern manufacturing company that isn't looking for a simple supplier but a business partner to grow in its market.
 
 beanTech is the IT partner that can help you manage the entire data chain in the factory with a complete and integrated offer of solutions ranging from telemetry data acquisition to big data architecture on cloud, from web software development to operation management consultancy, from event analytics to the implementation of sophisticated artificial intelligence algorithms applied to improve performance.
 
@@ -770,7 +770,7 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 
 **Additional information**
 
-- [Uptake Technologies Inc. website](https://www.uptake.com/)
+- [Uptake Technologies Inc. website](https://www.uptakefusion.com/)
 - [Microsoft partner site for Uptake Technologies Inc.](https://appsource.microsoft.com/marketplace/partner-dir/b3e8ad26-068f-40c8-81ff-1deba19b820a/overview)
 
 **Success stories**
@@ -778,7 +778,7 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 - [https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization](https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization)
 - [https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion](https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion)
 - [https://www.uptake.com/resources/ensign-establishes-a-single-source-of-truth-for-their-data](https://www.uptake.com/resources/ensign-establishes-a-single-source-of-truth-for-their-data)
-- [https://www.uptake.com/resources/enerplus-uses-insights-from-uptake-fusion-for-data-driven-decision-making](https://www.uptake.com/resources/enerplus-uses-insights-from-uptake-fusion-for-data-driven-decision-making)
+- [Enerplus uses insights from Uptake Fusion for data-driven decision-making](https://static1.squarespace.com/static/63a1c6a2415f98749634e9ea/t/63ed0457f54f952c860ec199/1676477527222/Uptake+Case+Study-+Enerplus+%282%29.pdf)
 - [https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring](https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring)
 
 ## Zure Ltd
