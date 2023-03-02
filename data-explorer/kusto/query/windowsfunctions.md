@@ -1,9 +1,9 @@
 ---
 title: Window functions - Azure Data Explorer
-description: This article describes Window functions in Azure Data Explorer.
+description: Learn how to use window functions on rows in a serialized set.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/20/2019
+ms.date: 03/02/2023
 ---
 # Window functions overview
 
