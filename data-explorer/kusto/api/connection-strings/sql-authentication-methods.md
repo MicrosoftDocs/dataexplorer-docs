@@ -7,19 +7,24 @@ ms.date: 07/02/2022
 ---
 # SQL Server authentication methods
 
-Azure Data Explorer can authenticate to external SQL databases in different ways. For Azure Data Explorer to interact with and authenticate to SQL databases, you must specify the SQL Server's `connection string`. The `connection string` defines the database being accessed and its authentication information.
-
-We recommend adding an `h` to connection strings that contain secrets, so that the connection strings are [obfuscated in telemetry data](../../query/scalar-data-types/string.md#obfuscated-string-literals) using one of the following methods:
-
-* Hide the entire string: Add an `h` to the beginning of the string, like this: `h"Server=tcp:myserver.database.windows.net..."`
-* Hide the secret part of the string: Split the connection string into location and secret and add the `h` before the secret part.
-  For example: `"Server=tcp:myserver.database.windows.net,1433;"` `h"User Id={myUserId};Password={myPlaceholderPassword};Initial Catalog=mydatabase;"`
+To interact with external SQL databases from Azure Data Explorer, you must specify the external SQL database connection string. The connection string defines the resource to access and its authentication information.
 
 The following authentication methods are supported:
 
 * [AAD-integrated authentication](#aad-integrated-authentication)
 * [Managed identity](#managed-identity)
 * [Username and Password](#username-and-password)
+
+## Privacy and security
+
+We recommend adding an `h` to connection strings that contain secrets. This practice ensures that the private information in the connection string is [obfuscated in telemetry data](../../query/scalar-data-types/string.md#obfuscated-string-literals).
+
+The following table explains how to hide your private information using the `h` string.
+
+|Goal|Method|Syntax|
+|--|--|--|
+|Hide the entire connection string|Preface the connection string with `h`.|`h"<connection_string>"`|
+|Hide only the secret part of the string|Split the connection string into the resource location and the secret information and add the `h` between the two.| `"<resource_location>"h"<secrets>"`|
 
 ## AAD-integrated authentication
 
