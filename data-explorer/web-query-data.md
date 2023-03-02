@@ -31,6 +31,8 @@ To add a new cluster connection, do the following:
 1. In the **Add cluster** dialog box, enter the cluster **Connection URI** and **Display name**.
 1. Select **Add** to add the connection.
 
+If you don't see the **help** cluster, add it using the previous steps. Use "help" as the **Connection URI**.
+
 ## Run queries
 
 To run a query, you must select the database on which you want to run the query in order to set the query context.
