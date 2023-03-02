@@ -107,10 +107,13 @@ export LOG4J2_ADX_APP_ID="<app-id>"
 export LOG4J2_ADX_APP_KEY="<app-key>"
 ```
 
+---
+
 ## Run the sample app
 
+Within your terminal, navigate to the samples folder of the cloned repo.
+
 ```
-cd samples
 mvn compile exec:java -Dexec.mainClass="org.example.KustoLog4JSampleApp" 
 ```
 
