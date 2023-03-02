@@ -1,34 +1,40 @@
 ---
 title: Ingest data in Azure Data Explorer using the Apache Log4J 2 connector
 description: Learn how to use the Apache Log4J 2 connector in Azure Data Explorer.
-ms.date: 02/20/2023
-ms.topic: tutorial
+ms.date: 03/02/2023
+ms.topic: how-to
 ms.reviewer: ramacg
 ---
-# Log4j 2 connector
+# Ingest data with the Log4j 2 connector
 
 Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. Apache Log4J 2 sink for Azure Data Explorer allows you to easily stream your log data to Azure Data Explorer, where you can analyze, visualize, and alert on your logs in real time. 
 
-In this tutorial, you learn how to:
+In this article, you'll go through the following steps:
 
 > [!div class="checklist"]
-> * Create an AAD App registration
+> * Create an AAD App registration and grant it permissions
 > * Create a table and table mapping
 > * Clone the Log4j2-Azure Data Explorer connector repo
-> * Configure the log4J configuration file
+> * Configure environmental variables
 > * Run the sample app
 > * Explore ingested data
 
 ## Prerequisites
 
-* cluster and database
+* [Apache Maven](https://maven.apache.org/)
+* Azure Data Explorer [cluster and database](create-cluster-database-portal.md)
 
-## Create AAD App registration
+## Create an AAD App registration and grant it ingestor permissions
 
-[Create an Azure Active Directory application registration in Azure Data Explorer](provision-azure-ad-app.md)
+In order to ingest data using the Log4j 2 connector, you need to create and register an Azure AD service principal and then authorize this principal to ingest data an Azure Data Explorer database.
 
-Grant it database ingestor role
-Save app key and application ID
+1. Follow steps 1-7 in [Create an Azure Active Directory application registration in Azure Data Explorer](provision-azure-ad-app.md) to create an Azure AD app. Save the app key and application ID values to be used in later steps.
+1. Browse to your database in the query tab of the [web UI](https://dataexplorer.azure.com/). For more information, see 
+1. Grant the app [database ingestor](kusto/management/access-control/role-based-access-control.md) role using the following management command.
+
+```kusto
+.add database Samples ingestors ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;fabrikam.com')
+```
 
 ## Create table
 
@@ -44,15 +50,14 @@ Save app key and application ID
 
 ## Clone the Log4j2-Azure Data Explorer connector git repo
 
+
 ```git bash
 git clone https://github.com/Azure/azure-kusto-log4j.git
-cd samples
 ```
 
 The Log4j2-Azure Data Explorer connector uses a custom strategy to be used in the RollingFileAppender. Logs are written into the rolling file to prevent any data loss arising out of network failure while connecting to the Azure Data Explorer cluster. The data is stored in a rolling file and then flushed to the Azure Data Explorer cluster.
 
-## Configure the log4J configuration file
-
+## Configure environmental variables
 
 Log4J supports various formats for its configuration
 
@@ -61,9 +66,9 @@ JSON
 PROPERTIES
 YAML
 
-In the sample project included in the git repo, the default format is log4j2.xml. The following attributes of KustoStrategy need to be configured.
+In the sample project included in the git repo, the default format is log4j2.xml. The following attributes of KustoStrategy are referenced by the configuration file:
 
-``` 
+``` xml
 <KustoStrategy
    clusterIngestUrl="${sys:LOG4J2_ADX_INGEST_CLUSTER_URL}"
    appId="${sys:LOG4J2_ADX_APP_ID}"
@@ -77,6 +82,8 @@ In the sample project included in the git repo, the default format is log4j2.xml
 />
 ```
 
+Set 
+
 Note: log4jTest is the name of the table and the mapping log4CsvTestMapping we created in the above steps.
 
 Execute the following command and the application starts running. After running, we can see the logs getting ingested into ADX cluster.
@@ -86,11 +93,6 @@ Execute the following command and the application starts running. After running,
 ```
 cd samples
 mvn compile exec:java -Dexec.mainClass="org.example.KustoLog4JSampleApp" 
-                      -DLOG4J2_ADX_DB_NAME="ADX-database-name" 
-                      -DLOG4J2_ADX_TENANT_ID="tenant-id" 
-                      -DLOG4J2_ADX_INGEST_CLUSTER_URL="ADX-ingest-url" 
-                      -DLOG4J2_ADX_APP_ID="appId" 
-                      -DLOG4J2_ADX_APP_KEY="appKey"
 ```
 
 The ingested log data can be verified by querying the created log table(log4jTest in our case) by using the following KQL command
@@ -106,4 +108,8 @@ The output of the above KQL query should fetch records as per the screenshot att
 
 ## Clean up resources
 
-## Next steps
+
+
+## See also
+
+* [Data connectors overview](connector-overview.md)
