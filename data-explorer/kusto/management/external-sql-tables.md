@@ -18,7 +18,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 ## External table authorization
 
-The authentication method to access an SQL Server external table is based on the connection string provided during its creation. Depending on the authorization method, the principal may need to be granted extra permissions on the SQL Server external table. To learn more, see [SQL Server authentication methods](../../api/connection-strings/sql-authentication-methods.md).
+The authentication method to access an SQL Server external table is based on the connection string provided during its creation. Depending on the authorization method, the principal may need to be granted extra permissions on the SQL Server external table. To learn more, see [SQL Server authentication methods](../api/connection-strings/sql-authentication-methods.md).
 
 ## Syntax
 

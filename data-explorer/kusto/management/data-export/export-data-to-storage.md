@@ -22,10 +22,10 @@ The following table lists the supported authentication methods and the permissio
 
 |Authentication method|Permissions|
 |--|--|--|--|
-|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage blob contributor|
-|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Write|
-|[Azure AD access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
-|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||
+|[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage blob contributor|
+|[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Write|
+|[Azure AD access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
+|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||
 
 ## Syntax
 
