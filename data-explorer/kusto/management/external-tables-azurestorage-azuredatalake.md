@@ -20,7 +20,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 ## Authorization
 
-The authentication method to access an external table is based on the connection string provided during its creation. The required permissions to access the table vary depending on the authentication method used.
+The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method.
 
 The following table lists the supported authentication methods for Azure Storage external tables and the permissions needed to read or write to the table.
 
