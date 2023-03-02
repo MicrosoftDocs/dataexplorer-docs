@@ -28,7 +28,7 @@ The following table lists the supported authentication methods for Azure Storage
 |--|--|--|--|
 |[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage blob reader|Storage blob contributor|
 |[Managed identity](../api/connection-strings/storage-authentication-methods.md#managed-identity)|Storage blob reader|Storage blob contributor|
-|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|Writer|
+|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|Write|
 |[Azure AD access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|||
 |[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|||
 
