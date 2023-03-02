@@ -21,13 +21,11 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|[Manage Azure Data Explorer cluster locks to prevent accidental deletion in your cluster](manage-cluster-locks.md)| New article. Describes how to manage Azure Data Explorer locks to prevent accidental deletion of data using the Azure portal.|
-|[Connect from common apps](connect-common-apps.md) | New article. Describes how to connect to Azure Data Explorer with SQL Server emulation from various clients.|
-|[Connect to Azure Data Explorer with JDBC](connect-jdbc.md)| New article. Describes how to connect to Azure Data Explorer with JDBC. |
-|[Connect to Azure Data Explorer with SQL Server emulation](connect-sql-server-emulation.md)| New article. Describes SQL Server emulation in Azure Data Explorer.|
-|[Azure Data Explorer as a linked server from SQL Server](linked-server.md)| New article. Describes Azure Data Explorer as a linked server from SQL Server.|
+|[Manage Azure Data Explorer cluster locks to prevent accidental deletion in your cluster](manage-cluster-locks.md)| New article. Describes how to manage cluster locks to prevent accidental deletion of data using the Azure portal.|
+|[Connect from common apps](connect-common-apps.md) | New article. Describes how to connect to Azure Data Explorer with SQL Server emulation from various apps.|
+|- [Connect to Azure Data Explorer with JDBC](connect-jdbc.md) </br> - [Connect to Azure Data Explorer with SQL Server emulation](connect-sql-server-emulation.md) </br> - [Connect to Azure Data Explorer with ODBC](connect-odbc.md) | New articles. Describes how to connect to Azure Data Explorer with different connectivity apps.|
+|[Azure Data Explorer as a linked server from SQL Server](linked-server.md)| New article. Describes how to connect Azure Data Explorer as a linked server from SQL Server.|
 |[Query data in MATLAB](matlab.md)| New article. Describes how to set up a JDBC connection in MATLAB.|
-[Connect to Azure Data Explorer with ODBC](connect-odbc.md)| Updated article. SQL clients and linked server docs revised.|
 |[Set timeout limits](set-timeout-limits.md)| New article. Describes how to set query timeout limits.|
 |[Data connectors overview](connector-overview.md)| New article. Describes available data connectors and their capabilities.|
 |- [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md) </br> - [Azure Data Explorer web UI results grid](web-results-grid.md) </br> - [Share queries from Azure Data Explorer web UI](web-share-queries.md) </br> - [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md) </br> - [Explore the samples gallery](web-ui-samples-query.md) | New articles. Describes how to use, query, visualize, and share queries in the Azure Data Explorer web UI.|
