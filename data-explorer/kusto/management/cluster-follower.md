@@ -3,13 +3,17 @@ title: Follower commands - Azure Data Explorer
 description: Learn how to use follower commands to manage your follower configuration.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/18/2020
+ms.date: 02/21/2023
 ---
 # Follower commands
 
 Control commands for managing your follower configuration. These commands run synchronously but are applied on the next periodic schema refresh, which may result in a short delay until the new configuration is applied.
 
 The follower commands include [database level commands](#database-level-commands) and [table level commands](#tables-and-materialized-views-commands).
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Database policy overrides
 
@@ -73,8 +77,7 @@ Shows a database (or databases) followed from other leader cluster, which have o
 
 ### .alter follower database policy caching
 
-Alters a follower database caching policy, to override the one set on the source database in the leader cluster. 
-It requires [DatabaseAdmin permissions](./access-control/role-based-access-control.md).
+Alters a follower database caching policy, to override the one set on the source database in the leader cluster.
 
 **Notes**
 
@@ -98,7 +101,6 @@ It requires [DatabaseAdmin permissions](./access-control/role-based-access-contr
 ### .delete follower database policy caching
 
 Deletes a follower database override caching policy. This deletion causes the policy set on the source database in the leader cluster the effective one.
-It requires [DatabaseAdmin permissions](./access-control/role-based-access-control.md). 
 
 **Notes**
 
@@ -120,9 +122,7 @@ It requires [DatabaseAdmin permissions](./access-control/role-based-access-contr
 
 ### .add follower database principals
 
-Adds authorized principal(s) to the follower database collection of override authorized principals. 
-It requires [DatabaseAdmin permission](./access-control/role-based-access-control.md).
-
+Adds authorized principal(s) to the follower database collection of override authorized principals.
 **Notes**
 
 * The default `modification kind` for such authorized principals is `none`. To change the `modification kind` use  [alter follower database principals-modification-kind](#alter-follower-database-principals-modification-kind).
@@ -144,7 +144,6 @@ It requires [DatabaseAdmin permission](./access-control/role-based-access-contro
 ### .drop follower database principals
 
 Drops authorized principal(s) from the follower database collection of override authorized principals.
-It requires [DatabaseAdmin permissions](./access-control/role-based-access-control.md).
 
 > [!NOTE]
 > * Viewing the effective collection of principals after the change can be done using the `.show` commands:
@@ -165,8 +164,7 @@ It requires [DatabaseAdmin permissions](./access-control/role-based-access-contr
 
 ### .alter follower database principals-modification-kind
 
-Alters the follower database authorized principals modification kind. 
-It requires [DatabaseAdmin permissions](./access-control/role-based-access-control.md).
+Alters the follower database authorized principals modification kind.
 
 > [!NOTE]
 > * Viewing the effective collection of principals after the change can be done using the `.show` commands:
@@ -187,8 +185,7 @@ It requires [DatabaseAdmin permissions](./access-control/role-based-access-contr
 
 ### .alter follower database caching-policies-modification-kind
 
-Alters the caching policies modification kind for the follower database, table, and materialized views. 
-It requires [DatabaseAdmin permissions](./access-control/role-based-access-control.md).
+Alters the caching policies modification kind for the follower database, table, and materialized views.
 
 > [!NOTE]
 > * Viewing the effective collection of database/table-level caching policies after the change can be done using the standard `.show` commands:
@@ -210,8 +207,7 @@ It requires [DatabaseAdmin permissions](./access-control/role-based-access-contr
 
 The follower cluster can wait for new data to be fetched from the underlying storage to the nodes' SSD (cache) before making this data queryable.
 
-The following command alters the follower database configuration of pre-fetching new extents upon each schema refresh. 
-This command requires [DatabaseAdmin permissions](./access-control/role-based-access-control.md).
+The following command alters the follower database configuration of pre-fetching new extents upon each schema refresh.
 
 > [!WARNING]
 > * This setting can degrade the freshness of data in the follower database.
@@ -234,7 +230,6 @@ This command requires [DatabaseAdmin permissions](./access-control/role-based-ac
 ### Alter follower table or materialized view caching policy
 
 Alters a table's or a materialized view's caching policy on the follower database, to override the policy set on the source database in the leader cluster.
-It requires [DatabaseAdmin permissions](./access-control/role-based-access-control.md). 
 
 > [!NOTE]
 > * Viewing the policy or effective policies after the change can be done using the `.show` commands:
@@ -263,8 +258,7 @@ It requires [DatabaseAdmin permissions](./access-control/role-based-access-contr
 
 ### Delete follower table or materialized view caching policy
 
-Deletes an override for a table's or a materialized-view's caching policy on the follower database. The policy set on the source database in the leader cluster will now be the effective policy. 
-Requires [DatabaseAdmin permissions](./access-control/role-based-access-control.md). 
+Deletes an override for a table's or a materialized-view's caching policy on the follower database. The policy set on the source database in the leader cluster will now be the effective policy.
 
 > [!NOTE]
 > * Viewing the policy or effective policies after the change can be done using the `.show` commands:

@@ -156,7 +156,7 @@ Perform AI, our full-service portfolio, enables you to take advantage of the tra
 
 **"Activate data. Augment intelligence. Amplify outcomes."**
 
-Besides these general descriptions of our capabilities one of our strongest sectors is Automotive, where we have the chance to work on plenty of IoT use cases and references with the Azure Data Explorer.
+Besides these general descriptions of our capabilities, one of our strongest sectors is Automotive, where we have the chance to work on plenty of IoT use cases and references with the Azure Data Explorer.
 
 **Partner type**
 
@@ -206,6 +206,36 @@ Our team of 200 employees across our offices in Belgium, France, Portugal, Switz
 - [https://www.codit.eu/en/clients/euronavs-iot-solution-connects-vessels-to-shore-improving-efficiency-and-reducing-carbon-emissions/](https://www.codit.eu/en/clients/euronavs-iot-solution-connects-vessels-to-shore-improving-efficiency-and-reducing-carbon-emissions/)
 - [https://www.codit.eu/en/clients/duco-azure-iot-edge/](https://www.codit.eu/en/clients/duco-azure-iot-edge/)
 
+## CyberProof – a UST company
+
+:::image type="icon" source="media/findmypartner/cyberproof-logo.png":::
+
+CyberProof, a UST company, helps our clients transform their security to a cost-effective, cloud-native technology architecture. Our next-generation Managed Detection & Response (MDR) service is built to support large, complex enterprises by combining expert human and virtual analysts. Our services are enabled by our purpose-built platform, the CyberProof Defense Center – enabling us to be more agile, collaborate better, and deliver powerful analytics. Our integrated security services include Threat Intelligence, Threat Hunting, and vulnerability Management. Our experts innovate to meet our clients’ needs with custom use cases, integrations, and automations.
+
+**Partner type**
+
+- MDR
+- Consulting
+- Custom solution
+- Integration
+
+**Focus geography**
+
+- Global
+
+**Contact**
+
+- [info@cyberproof.com](mailto:info@cyberproof.com)
+
+**Additional information**
+
+- [CyberProof – a UST company website](https://www.CyberProof.com)
+- [Microsoft partner site for CyberProof – a UST company](https://appsource.microsoft.com/marketplace/partner-dir/f3030f0a-998c-4a82-852c-1d0777740cf5/overview)
+
+**Success stories**
+
+- [https://blog.cyberproof.com/blog/cutting-azure-sentinel-costs-with-microsoft-azure-data-explorer-adx](https://blog.cyberproof.com/blog/cutting-azure-sentinel-costs-with-microsoft-azure-data-explorer-adx)
+
 ## Data Addiction Pty Ltd
 
 :::image type="icon" source="media/findmypartner/data-addiction-logo.png":::
@@ -236,7 +266,7 @@ Data Addiction is a specialist provider of Microsoft Data and AI, and Dynamics 3
 :::image type="icon" source="media/findmypartner/data-mastery-logo.png":::
 
 Data Mastery is a Data Engineering and Advanced Analytics consultancy. Our specialty is the design, build, implementation and management of data analytics solutions. Our consultants are experts in advanced analytics using Azure and Databricks.
-Data Mastery help businesses harness the power of their data and make data-driven decisions through advanced analytics, business intelligence, and modern data platforms. We have a wealth of knowledge and experience across the Utilities, Mining, Financial Services, Real Estate and Education sectors. We have delivered some of Sydney's most exciting Cloud Transformation projects and we look forward to helping you in your journey to the cloud.
+Data Mastery help businesses harness the power of their data and make data-driven decisions through advanced analytics, business intelligence, and modern data platforms. We have a wealth of knowledge and experience across the Utilities, Mining, Financial Services, Real Estate and Education sectors. We've delivered some of Sydney's most exciting Cloud Transformation projects and we look forward to helping you in your journey to the cloud.
 
 **Partner type**
 
@@ -261,11 +291,13 @@ Data Mastery help businesses harness the power of their data and make data-drive
 
 ## Device Insight GmbH
 
-:::image type="icon" source="media/findmypartner/device-insight-logo.png":::
+:::image type="icon" source="media/findmypartner/device-insight-logo.jpg":::
 
-**Best of both worlds: Azure IoT**
+**IoT made simple**
 
-Following the IoT's Lego principle, we combine the best of both worlds: Device Insight's turnkey IoT building blocks along with native integration into Microsoft Azure. We select the right IoT services from Microsoft Azure and complement them with solution components from Device Insight"s core product CENTERSIGHT scale. All functions can be tailored flexibly and individually to meet your exact requirements. So your IoT project doesn't have to start from scratch and you will be able to realize your first applications within a very short time. Once the proof of value has been provided, we prepare everything for scaling.
+Device Insight is a specialist for Internet of Things and Industry 4.0 and one of the IoT pioneers in the DACH/GSA region. The company develops and operates customized applications, platforms and IoT solutions in various industries and use case domains based on a wide range of Azure technologies. As such, Device Insight provides consulting for setting up, operating and maintaining Azure Data Explorer and has strong experience in leveraging Azure Data Explorer as a time series database and analytics engine. Using ADX, the solutions provide deep insights based on IoT data, energy data, application logs and other time series data, integrated with data sets from other enterprise applications. Combining ADX with other Azure services, Device Insight provides end-to-end solutions for condition monitoring, predictive maintenance, digital customer portals, data platforms, smart services, energy optimization, production and machine digitization and similar.
+
+In addition to the 360-degree consulting & services, Device Insight offers the flexible application framework CENTERSIGHT scale. The framework offers many building blocks for IoT-related applications out of the box as managed services and comes with native support for Azure Data Explorer alongside a multi-tenancy and subtenancy capability. This allows companies to develop their custom IoT solutions much faster and be able to manage end user access to the data stored in ADX on a fine-granular level.
 
 **Partner type**
 
@@ -288,7 +320,7 @@ Following the IoT's Lego principle, we combine the best of both worlds: Device I
 
 :::image type="icon" source="media/findmypartner/elasta-cloud-logo.png":::
 
-Elastacloud are experts at building complex real-time solutions using Azure Data Explorer. With a penchant for understanding event-driven architectures for high-performant, high-fidelity platforms, Elastacloud has used Azure Data Explorer (ADX) to ingest, transform and serve data for large scale cybersecurity analytics for Security Operations Centers (SOC) and IoT monitoring solutions serving billions of events an hour through real-time queries using KQL. Elastacloud have contributed the popular tool [DexCmd](https://github.com/elastacloud/dexcmdline) back to the community. If you need high performance, high-fidelity event driven platforms built that simplify and abstract the user journey contact Elastacloud.
+Elastacloud are experts at building complex real-time solutions using Azure Data Explorer. With a penchant for understanding event-driven architectures for high-performant, high-fidelity platforms, Elastacloud has used Azure Data Explorer (ADX) to ingest, transform and serve data for large scale cybersecurity analytics for Security Operations Centers (SOC) and IoT monitoring solutions serving billions of events an hour through real-time queries using KQL. Elastacloud have contributed the popular tool [DexCmd](https://github.com/elastacloud/dexcmdline) back to the community. If you need high performance, high-fidelity event driven platforms built that simplifies and abstract the user journey contact Elastacloud.
 
 **Partner type**
 
@@ -451,7 +483,7 @@ Insight is ready to help you get more value from your data at any scale. Harness
 
 :::image type="icon" source="media/findmypartner/elasta-cloud-intelligent-spaces-logo.png":::
 
-A product spin-off of Elastacloud, Intelligent Spaces build a wholly Azure backed Digital Twin for managing spaces used by business. Intelligent Spaces handles BIM collaboration and analytics, automated graph creation and a geospatial enrichment engine that produced 3D and AR visualizations. Operating at the intersection of spatial and real-time, their Digital Twin is connected to physical space using IoT technologies. Their Analytics Pack is an ADX powered, web UI that allows business users to drag and drop analytic operations which are then translated and executed directly in ADX. They have contributed the popular tool [AdxUtils](https://github.com/intelligentspaces/AdxUtils) back to the community. If you need Digital Twins or BIM integrations with ADX, contact Intelligent Spaces.
+A product spin-off of Elastacloud, Intelligent Spaces build an Azure backed Digital Twin for managing spaces used by business. Intelligent Spaces handles BIM collaboration and analytics, automated graph creation and a geospatial enrichment engine that produced 3D and AR visualizations. Operating at the intersection of spatial and real-time, their Digital Twin is connected to physical space using IoT technologies. Their Analytics Pack is an ADX powered, web UI that allows business users to drag and drop analytic operations which are then translated and executed directly in ADX. They've contributed the popular tool [AdxUtils](https://github.com/intelligentspaces/AdxUtils) back to the community. If you need Digital Twins or BIM integrations with ADX, contact Intelligent Spaces.
 
 **Partner type**
 
@@ -500,7 +532,7 @@ LINKIT serves more than 100 customers in the Netherlands and Germany, providing 
 :::image type="icon" source="media/findmypartner/maq-software-logo.png":::
 
 As 2021 Microsoft Power BI Partner of the Year, we engage with leading companies to accelerate their business intelligence and analytics initiatives. Our solutions enable our clients to improve their operations, reduce costs, increase sales, and build stronger customer relationships. Our clients consistently recognize us for providing architecture and governance frameworks, implementing best practices to optimize reports, and building team capability through training programs. Our innovative tools and 33 certified visuals expand Power BI capabilities to save time for decision makers.
-As a premier supplier to Microsoft for two decades, our clients benefit from our extensive insights on the platform and engineering practices. As a Microsoft Managed Partner, our clients benefit from our breadth and depth of expertise. With globally integrated teams in Redmond, Washington, and three locations in India, we deliver solutions with increased velocity and technical intensity. Inc. magazine has recognized us for sustained growth by listing us on the Inc. 5000 list ten times – a rare honor.
+As a premier supplier to Microsoft for two decades, our clients benefit from our extensive insights on the platform and engineering practices. As a Microsoft Managed Partner, our clients benefit from our breadth and depth of expertise. With globally integrated teams in Redmond, Washington, and three locations in India, we deliver solutions with increased velocity and technical intensity. Inc. magazine has recognized us for sustained growth by listing us on the Inc. 5000 list 10 times – a rare honor.
 
 **Partner type**
 
@@ -590,7 +622,7 @@ topic-based competence. msg systems ag forms the core of the company group.
 
 :::image type="icon" source="media/findmypartner/neal-analytics-logo.png":::
 
-Neal Analytics is an award-winning Data & AI consulting partner of Microsoft. With 6 different advanced specializations in Azure & 4 Partner of the Year awards & finalist finishes, Neal has a proven track record of success you can trust for all your Azure deployment needs.
+Neal Analytics is an award-winning Data & AI consulting partner of Microsoft. With six different advanced specializations in Azure & four Partner of the Year awards & finalist finishes, Neal has a proven track record of success you can trust for all your Azure deployment needs.
 
 Neal has worked extensively with Azure Data Explorer and maintains a trained bench of consultants who can leverage this expertise to assist you in your customer scenario. Neal is also a partner in Microsoft’s Solution Assessment program, and if your organization qualifies this program will assist us in standing up a landing zone featuring Azure Data Explorer to help you get started with your ADX project.
 
@@ -642,9 +674,9 @@ Provide training around Azure Data Explorer.
 
 ## OPTION 4.0 AG
 
-:::image type="icon" source="media/findmypartner/option-4-0-logo.svg":::
+:::image type="icon" source="media/findmypartner/option-4-0-logo.png":::
 
-We have a Co-sell offering on the Azure Market place: https://azuremarketplace.microsoft.com/marketplace/consulting-services/option40ag1624272391965.02052010
+We've a Co-sell offering on the Azure Market place: https://azuremarketplace.microsoft.com/marketplace/consulting-services/option40ag1624272391965.02052010
 
 **Partner type**
 
@@ -669,9 +701,9 @@ We have a Co-sell offering on the Azure Market place: https://azuremarketplace.m
 
 ## Orion Systems Integrators, LLC
 
-:::image type="icon" source="media/findmypartner/orion-innovation-logo.png":::
+:::image type="icon" source="media/findmypartner/orion-innovation-logo.jpg":::
 
-Orion Innovation is a Leader in Digital transformation services with a Design led, technology driven approach. We are a trusted partner to our Fortune 500, Large, Medium clients in their business transformation initiatives with 99% CSAT. With 25+ years of experience we bring deep domain expertise in Financial Services, Professional Services,  Healthcare & Life Sciences, Hi-Tech, Telecom, Media & Entertainment, Sports and Education Verticals.  Our global team of 6,000+ associates  in 12 major delivery centers across USA, LATAM, Europe and APAC delivers those digital transformation services around Experience Design, Digital Product Development, Data Analytics & AI, Cloud & Infrastructure, Business application & Modernization, Embedded & real time solutions, IoT/IIoT, Testing and Cybersecurity. We are ISO 9001:2015, ISO/IEC 27001:2013 certified, as well as CMMI&reg;️ Level 3 compliant and have IP's covering Industry Solutions, Accelerators and proprietary internal tools.
+Orion Innovation is a Leader in Digital transformation services with a Design led, technology driven approach. We're a trusted partner to our Fortune 500, Large, Medium clients in their business transformation initiatives with 99% CSAT. With 25+ years of experience we bring deep domain expertise in Financial Services, Professional Services,  Healthcare & Life Sciences, Hi-Tech, Telecom, Media & Entertainment, Sports and Education Verticals.  Our global team of 6,000+ associates  in 12 major delivery centers across USA, LATAM, Europe and APAC delivers those digital transformation services around Experience Design, Digital Product Development, Data Analytics & AI, Cloud & Infrastructure, Business application & Modernization, Embedded & real time solutions, IoT/IIoT, Testing and Cybersecurity. We're ISO 9001:2015, ISO/IEC 27001:2013 certified, as well as CMMI&reg;️ Level 3 compliant and have IP's covering Industry Solutions, Accelerators and proprietary internal tools.
 
 **Partner type**
 
@@ -752,7 +784,7 @@ Tricloud provides an end-to-end Industrial IoT Platform based on Azure IoT and A
 
 Uptake provides our customers with the scalable, secure ability to connect their machines, people and data together to accelerate and unlock AI-enabled industrial intelligence to optimize costs, manage risks and increase revenue assurance.
 
-Uptake is the intelligence system for industrial assets. With the power of data acquisition and artificial intelligence, Uptake gives all departments — maintenance, reliability, and operations teams — a single, shared, and contextualized view of every asset in an operation. Driven by powerful data science models and cloud computing, our products deliver insights to customers that help them predict and prevent asset failure, mitigate risk, optimize maintenance strategy and asset performance, reduce costs, assure productivity, and enhance safety. With 48+ patents and recognized for leadership in Industrial AI by Gartner, the World Economic Forum, CNBC, and Forbes, Uptake is headquartered in Chicago with presence in Canada, South America, Europe, India, and Australia.
+Uptake is the intelligence system for industrial assets. With the power of data acquisition and artificial intelligence, Uptake gives all departments, such as maintenance, reliability, and operations teams, a single, shared, and contextualized view of every asset in an operation. Driven by powerful data science models and cloud computing, our products deliver insights to customers that help them predict and prevent asset failure, mitigate risk, optimize maintenance strategy and asset performance, reduce costs, assure productivity, and enhance safety. With 48+ patents and recognized for leadership in Industrial AI by Gartner, the World Economic Forum, CNBC, and Forbes, Uptake is headquartered in Chicago with presence in Canada, South America, Europe, India, and Australia.
 
 Uptake provides asset-intensive companies the transparency, traceable, secure, cost-effective ability to connect their machines, people and data together providing assurance on ESG Reporting and Disclosure with Data granularity, accessibility, accuracy and better governance.
 

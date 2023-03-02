@@ -3,23 +3,25 @@ title: .execute database script - Azure Data Explorer
 description: This article describes the `.execute database script` functionality in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/20/2023
+ms.date: 02/21/2023
 ---
 # .execute database script
 
 Executes batch of control commands in scope of a single database.
 
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+
 ## Syntax
 
 `.execute` `database` `script`  
-[`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]   
-`<|`  
- *Control-commands-script*
+[`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *control-commands-script*
 
 ### Parameters
 
-* *Control-commands-script*: Text with one or more control commands.
-* *PropertyName*: Optional properties from the following list:
+* *control-commands-script*: Text with one or more control commands.
+* *propertyName*, *propertyValue*: Optional properties from the following list:
 
 #### Optional properties
 

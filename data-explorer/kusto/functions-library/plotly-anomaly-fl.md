@@ -47,7 +47,7 @@ Extract the required 'anomaly' template from the publicly available `PlotlyTempl
 
 `plotly_anomaly_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for examples.
 
-### [Query-defined](#tab/adhoc)
+### [Query-defined](#tab/query-defined)
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permission is required.
 
@@ -91,9 +91,9 @@ demo_make_series2
                            chart_title='Anomaly chart using plotly_anomaly_fl()', series_name=s_name, y_name='# of requests')
 ```
 
-### [Stored](#tab/persistent)
+### [Stored](#tab/stored)
 
-To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
 
 ### One time installation
 
