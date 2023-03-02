@@ -1,15 +1,15 @@
 ---
 title: url_decode() - Azure Data Explorer
-description: This article describes url_decode() in Azure Data Explorer.
+description: Learn how to use the url_decode() function to convert an encoded URL into a regular URL representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 03/02/2023
 ---
 # url_decode()
 
-The function converts encoded URL into a regular URL representation.
+The function converts an encoded URL into a regular URL representation.
 
-For more details information about URL encoding and decoding, see [Percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding).
+For more information about URL encoding and decoding, see [Percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding).
 
 ## Syntax
 
