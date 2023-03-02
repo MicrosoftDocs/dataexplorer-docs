@@ -24,9 +24,9 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Parameters
 
-| Name                   | Type   | Required | Description                 |
-|------------------------|--------|----------|-----------------------------|
-| *MaterializedViewName* | string | &check;  | The materialized view name. |
+| Name                   | Type   | Required | Description                    |
+|------------------------|--------|----------|--------------------------------|
+| *MaterializedViewName* | string | &check;  | Name of the materialized view. |
 
 ### Returns
 
@@ -34,7 +34,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 |-------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ExtentId          | guid     | Globally unique identifier associated to the extent.                                                                                                                                                                 |
 | DatabaseName      | string   | Database that the extent belongs to.                                                                                                                                                                                 |
-| TableName         | string   | An internal name by which the engine refers to the materialized part of the materialized view. It consists of the prefix `_MV_` followed by the name the user assigned to the materialized view when it was created. |
+| TableName         | string   | Internal name by which the engine refers to the materialized part of the materialized view. It consists of the prefix `_MV_` followed by the name the user assigned to the materialized view when it was created.    |
 | MaxCreatedOn      | datetime | Date and time when the extent was created. For a merged extent, the maximum of creation times among source extents.                                                                                                  |
 | OriginalSize      | double   | Original size in bytes of the extent data.                                                                                                                                                                           |
 | ExtentSize        | double   | Size of the extent in memory (compressed + index).                                                                                                                                                                   |
@@ -48,7 +48,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 | RowCount          | long     | Number of rows in the extent.                                                                                                                                                                                        |
 | MinCreatedOn      | datetime | Date and time when the extent was created. For a merged extent, the minimum of creation times among the source extents.                                                                                              |
 | Tags              | string   | Tags, if any, defined for the extent.                                                                                                                                                                                |
-| Kind              | string   | The kind of the storage engine that created the extent ("StorageV2" or "StorageV3").                                                                                                                                 |
+| Kind              | string   | Kind of the storage engine that created the extent ("StorageV2" or "StorageV3").                                                                                                                                     |
 | ReservedSlot3     | string   | For internal use only.                                                                                                                                                                                               |
 | DeletedRowCount   | long     | Number of deleted rows in the extent.                                                                                                                                                                                |
 

@@ -23,17 +23,19 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Parameters
 
-| Name                   | Type   | Required | Description                 |
-|------------------------|--------|----------|-----------------------------|
-| *MaterializedViewName* | string | &check;  | The materialized view name. |
+| Name                   | Type   | Required | Description                    |
+|------------------------|--------|----------|--------------------------------|
+| *MaterializedViewName* | string | &check;  | Name of the materialized view. |
 
 ## Returns
 
+Following is the schema of the output returned:
+
 | Name              | Type     | Description                                                                                                                                                                                                          |
 |-------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ExtentId          | guid     | The globally unique identifier of the extent containing information for the materialized part of the materialized view which has been removed.                                                                       |
-| TableName         | string   | An internal name by which the engine refers to the materialized part of the materialized view. It consists of the prefix `_MV_` followed by the name the user assigned to the materialized view when it was created. |
-| CreatedOn         | datetime | The date and time when the extent was originally created.                                                                                                                                                            |
+| ExtentId          | guid     | Globally unique identifier of the extent containing information for the materialized part of the materialized view which has been removed.                                                                           |
+| TableName         | string   | Internal name by which the engine refers to the materialized part of the materialized view. It consists of the prefix `_MV_` followed by the name the user assigned to the materialized view when it was created.    |
+| CreatedOn         | datetime | Date and time when the extent was originally created.                                                                                                                                                                |
 
 ## Examples
 

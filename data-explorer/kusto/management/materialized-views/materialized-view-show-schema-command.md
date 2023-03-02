@@ -24,19 +24,19 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Parameters
 
-| Name                   | Type   | Required | Description                 |
-|------------------------|--------|----------|-----------------------------|
-| *MaterializedViewName* | string | &check;  | The materialized view name. |
+| Name                   | Type   | Required | Description                    |
+|------------------------|--------|----------|--------------------------------|
+| *MaterializedViewName* | string | &check;  | Name of the materialized view. |
 
 ### Returns
 
-| Name             | Type   | Description                                               |
-|------------------|--------|-----------------------------------------------------------|
-| TableName        | string | The name of the materialized view.                        |
-| Schema           | string | The materialized view csl or json schema.                 |
-| DatabaseName     | string | The database to which the materialized view belongs.      |
-| Folder           | string | Materialized view's folder.                               |
-| DocString        | string | Materialized view's docstring.                            |
+| Name             | Type   | Description                                          |
+|------------------|--------|------------------------------------------------------|
+| TableName        | string | Name of the materialized view.                       |
+| Schema           | string | CSL or JSON schema of the materialized view.         |
+| DatabaseName     | string | Database that the materialized view belongs to.      |
+| Folder           | string | Folder under which the materialized view is created. |
+| DocString        | string | Description assigned to the materialized view.       |
 
 ## Examples
 

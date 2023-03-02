@@ -39,11 +39,12 @@ You must have at least [Database User](../access-control/role-based-access-contr
 
 ## Parameters
 
-| Name                   | Type   | Required | Description                                                                                                                                                                                                                       |
-|------------------------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| *MaterializedViewName* | string | &check;  | The materialized view name. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
-| *SourceTableName*      | string | &check;  | Name of source table on which the view is defined.                                                                                                                                                                                |
-| *Query*                | string | &check;  | The materialized view query.                                                                                                                                                                                                      |
+| Name                            | Type   | Required | Description                                                                                                                                                                                                                          |
+|---------------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#properties).                                                                                                                        |
+| *MaterializedViewName*          | string | &check;  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
+| *SourceTableName*               | string | &check;  | Name of source table on which the view is defined.                                                                                                                                                                                   |
+| *Query*                         | string | &check;  | Query definition of the materialized view.                                                                                                                                                                                                        |
 
 > [!NOTE]
 > If the materialized view already exists:
@@ -52,49 +53,20 @@ You must have at least [Database User](../access-control/role-based-access-contr
 > * If the `ifnotexists` flag isn't specified, an error is returned.
 > * To alter an existing materialized view, use the [.alter materialized-view](materialized-view-alter.md) command.
 
-### Query parameter
-
-The following rules limit the query used in the materialized view Query parameter:
-
-* The query should reference a single fact table that is the source of the materialized view. It should include a single `summarize` operator, and one or more [aggregation functions](#supported-aggregation-functions) aggregated by one or more groups by expressions. The `summarize` operator must always be the last operator in the query.
-  
-  A materialized view that includes only a single `arg_max`/`arg_min`/`take_any` aggregation might perform better than a materialized view that includes these aggregations along with other aggregations (such as `count`/`dcount`/`avg`). This is because some optimizations are relevant only to these kinds of materialized views. They don't apply when the view includes mixed aggregation functions (where *mixed* means both `arg_max`/`arg_min`/`take_any` and other aggregations in the same view).
-
-* The query shouldn't include any operators that depend on `now()`. For example, the query shouldn't have `where Timestamp > ago(5d)`. Use the retention policy on the materialized view to limit the period of time that the view covers.
-
-* The following operators are not supported in the materialized view query: [`sort`](../../query/sort-operator.md), [`top-nested`](../../query/topnestedoperator.md), [`top`](../../query/topoperator.md), [`partition`](../../query/partitionoperator.md), [`serialize`](../../query/serializeoperator.md).
-
-* Composite aggregations are not supported in the definition of the materialized view. For instance, instead of using `SourceTableName | summarize Result=sum(Column1)/sum(Column2) by Id`, define the materialized view as: `SourceTableName | summarize a=sum(Column1), b=sum(Column2) by Id`. During view query time, run `MaterializedViewName | project Id, Result=a/b`. The required output of the view, including the calculated column (`a/b`), can be encapsulated in a [stored function](../../query/functions/user-defined-functions.md). Access the stored function instead of accessing the materialized view directly.
-
-* Cross-cluster and cross-database queries aren't supported.
-
-* References to [external_table()](../../query/externaltablefunction.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.
-
-* The materialized view query can't include any callouts that require impersonation. Specifically, all [query connectivity plugins](../../query/azure-digital-twins-query-request-plugin.md) that use impersonation aren't allowed.
-
-* In addition to the source table of the view, the query is allowed to reference one or more [dimension tables](../../concepts/fact-and-dimension-tables.md). Dimension tables must be explicitly called out in the view properties. It's important to understand the following behavior when you're joining with dimension tables:
-
-  * Records in the view's source table (the fact table) are materialized only once. Updates to the dimension tables don't have any impact on records that have already been processed from the fact table.
-  * A different ingestion latency between the fact table and the dimension table might affect the view results.
-
-    **Example**: A view definition includes an inner join with a dimension table. At the time of materialization, the dimension record was not fully ingested, but it was already ingested into the fact table. This record will be dropped from the view and never processed again.
-
-    Similarly, if the join is an outer join, the record from fact table will be processed and added to view with a null value for the dimension table columns. Records that have already been added (with null values) to the view won't be processed again. Their values, in columns from the dimension table, will remain null.
-
 ## Properties
 
 The following properties are supported in the `with(propertyName=propertyValue)` clause. All properties are optional.
 
-| Name                        | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|-----------------------------|--------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `backfill`                  | bool     | Whether to create the view based on all records currently in `SourceTable` (`true`), or to create it from now on (`false`). Default is `false`. For more information, see [Backfill a materialized view](#backfill-a-materialized-view).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `effectiveDateTime`         | datetime | Relevant only when you're using `backfill`. If it's set, creation backfills only with records ingested after the datetime. `backfill` must also be set to `true`. This property expects a datetime literal; for example, `effectiveDateTime=datetime(2019-05-01)`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| `UpdateExtentsCreationTime` | bool     | Relevant only when you're using `backfill`. If it's set to `true`, [extent creation time](../extents-overview.md#extent-creation-time) is assigned based on the datetime group-by key during the backfill process. For more information, see [Backfill a materialized view](#backfill-a-materialized-view).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| `lookback`                  | timespan | Valid only for `arg_max`/`arg_min`/`take_any` materialized views, and only if the engine is [EngineV3](../../../engine-v3.md). It limits the period of time in which duplicates are expected. For example, if a lookback of 6 hours is specified on an `arg_max` view, the deduplication between newly ingested records and existing ones will take into consideration only records that were ingested up to 6 hours ago. <br><br>Lookback is relative to `ingestion_time`. Defining the lookback period incorrectly might lead to duplicates in the materialized view. For example, if a record for a specific key is ingested 10 hours after a record for the same key was ingested, and the lookback is set to 6 hours, that key will be a duplicate in the view. The lookback period is applied during both [materialization time](materialized-view-overview.md#how-materialized-views-work) and [query time](materialized-view-overview.md#materialized-views-queries). |
-| `autoUpdateSchema`          | bool     | Whether to automatically update the view on source table changes. Default is `false`. This option is valid only for views of type `arg_max(Timestamp, *)`/`arg_min(Timestamp, *)`/`take_any(*)` (only when the column's argument is `*`). If this option is set to `true`, changes to the source table will be automatically reflected in the materialized view.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| `dimensionTables`           | array    | A dynamic argument that includes an array of dimension tables in the view. See [Query parameter](#query-parameter).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| `folder`                    | string   | The materialized view's folder.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `docString`                 | string   | A string that documents the materialized view.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Name                      | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|---------------------------|--------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| backfill                  | bool     | Whether to create the view based on all records currently in `SourceTable` (`true`), or to create it from now on (`false`). Default is `false`. For more information, see [Backfill a materialized view](#backfill-a-materialized-view).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| effectiveDateTime         | datetime | Relevant only when you're using `backfill`. If it's set, creation backfills only with records ingested after the datetime. `backfill` must also be set to `true`. This property expects a datetime literal; for example, `effectiveDateTime=datetime(2019-05-01)`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| updateExtentsCreationTime | bool     | Relevant only when you're using `backfill`. If it's set to `true`, [extent creation time](../extents-overview.md#extent-creation-time) is assigned based on the datetime group-by key during the backfill process. For more information, see [Backfill a materialized view](#backfill-a-materialized-view).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| lookback                  | timespan | Valid only for `arg_max`/`arg_min`/`take_any` materialized views, and only if the engine is [EngineV3](../../../engine-v3.md). It limits the period of time in which duplicates are expected. For example, if a lookback of 6 hours is specified on an `arg_max` view, the deduplication between newly ingested records and existing ones will take into consideration only records that were ingested up to 6 hours ago. <br><br>Lookback is relative to `ingestion_time`. Defining the lookback period incorrectly might lead to duplicates in the materialized view. For example, if a record for a specific key is ingested 10 hours after a record for the same key was ingested, and the lookback is set to 6 hours, that key will be a duplicate in the view. The lookback period is applied during both [materialization time](materialized-view-overview.md#how-materialized-views-work) and [query time](materialized-view-overview.md#materialized-views-queries). |
+| autoUpdateSchema          | bool     | Whether to automatically update the view on source table changes. Default is `false`. This option is valid only for views of type `arg_max(Timestamp, *)`/`arg_min(Timestamp, *)`/`take_any(*)` (only when the column's argument is `*`). If this option is set to `true`, changes to the source table will be automatically reflected in the materialized view.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| dimensionTables           | array    | A dynamic argument that includes an array of dimension tables in the view. See [Query parameter](#query-parameter).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| folder                    | string   | The materialized view's folder.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| docString                 | string   | A string that documents the materialized view.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 > [!WARNING]
 
@@ -118,11 +90,12 @@ You can create a materialized view over another materialized view only when the 
 
 **Parameters:**
 
-| Name                         | Type   | Required | Description                                                                                                                                                                                                                       |
-|------------------------------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| *MaterializedViewName*       | string | &check;  | The materialized view name. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
-| *SourceMaterializedViewName* | string | &check;  | Name of source materialized view on which the view is defined.                                                                                                                                                                                |
-| *Query*                      | string | &check;  | The materialized view query.                                                                                                                                                                                                      |
+| Name                            | Type   | Required | Description                                                                                                                                                                                                                          |
+|---------------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#properties).                                                                                                                        |
+| *MaterializedViewName*          | string | &check;  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
+| *SourceTableName*               | string | &check;  | Name of source table on which the view is defined.                                                                                                                                                                                   |
+| *Query*                         | string | &check;  | Query definition of the materialized view.                                                                                                                                                                                                        |
 
 ## Examples
 
@@ -214,8 +187,38 @@ You can create a materialized view over another materialized view only when the 
         | summarize arg_max(Timestamp, *) by User 
     }
     ```
+## Remarks
 
-## Supported aggregation functions
+### Query parameter
+
+The following rules limit the query used in the materialized view Query parameter:
+
+* The query should reference a single fact table that is the source of the materialized view. It should include a single `summarize` operator, and one or more [aggregation functions](#supported-aggregation-functions) aggregated by one or more groups by expressions. The `summarize` operator must always be the last operator in the query.
+  
+  A materialized view that includes only a single `arg_max`/`arg_min`/`take_any` aggregation might perform better than a materialized view that includes these aggregations along with other aggregations (such as `count`/`dcount`/`avg`). This is because some optimizations are relevant only to these kinds of materialized views. They don't apply when the view includes mixed aggregation functions (where *mixed* means both `arg_max`/`arg_min`/`take_any` and other aggregations in the same view).
+
+* The query shouldn't include any operators that depend on `now()`. For example, the query shouldn't have `where Timestamp > ago(5d)`. Use the retention policy on the materialized view to limit the period of time that the view covers.
+
+* The following operators are not supported in the materialized view query: [`sort`](../../query/sort-operator.md), [`top-nested`](../../query/topnestedoperator.md), [`top`](../../query/topoperator.md), [`partition`](../../query/partitionoperator.md), [`serialize`](../../query/serializeoperator.md).
+
+* Composite aggregations are not supported in the definition of the materialized view. For instance, instead of using `SourceTableName | summarize Result=sum(Column1)/sum(Column2) by Id`, define the materialized view as: `SourceTableName | summarize a=sum(Column1), b=sum(Column2) by Id`. During view query time, run `MaterializedViewName | project Id, Result=a/b`. The required output of the view, including the calculated column (`a/b`), can be encapsulated in a [stored function](../../query/functions/user-defined-functions.md). Access the stored function instead of accessing the materialized view directly.
+
+* Cross-cluster and cross-database queries aren't supported.
+
+* References to [external_table()](../../query/externaltablefunction.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.
+
+* The materialized view query can't include any callouts that require impersonation. Specifically, all [query connectivity plugins](../../query/azure-digital-twins-query-request-plugin.md) that use impersonation aren't allowed.
+
+* In addition to the source table of the view, the query is allowed to reference one or more [dimension tables](../../concepts/fact-and-dimension-tables.md). Dimension tables must be explicitly called out in the view properties. It's important to understand the following behavior when you're joining with dimension tables:
+
+  * Records in the view's source table (the fact table) are materialized only once. Updates to the dimension tables don't have any impact on records that have already been processed from the fact table.
+  * A different ingestion latency between the fact table and the dimension table might affect the view results.
+
+    **Example**: A view definition includes an inner join with a dimension table. At the time of materialization, the dimension record was not fully ingested, but it was already ingested into the fact table. This record will be dropped from the view and never processed again.
+
+    Similarly, if the join is an outer join, the record from fact table will be processed and added to view with a null value for the dimension table columns. Records that have already been added (with null values) to the view won't be processed again. Their values, in columns from the dimension table, will remain null.
+
+### Supported aggregation functions
 
 The following aggregation functions are supported:
 
@@ -240,7 +243,7 @@ The following aggregation functions are supported:
 * [`percentile`, `percentiles`](../../query/percentiles-aggfunction.md)
 * [`tdigest`](../../query/tdigest-aggfunction.md)
 
-## Performance tips
+### Performance tips
 
 * **Use a datetime group-by key**: Materialized views that have a datetime column as one of their group-by keys are more efficient than those that don't. The reason is that some optimizations can be applied only when there's a datetime group-by key. If adding a datetime group-by key doesn't change the semantics of your aggregation, we recommend that you add it. You can do this only if the datetime column is *immutable* for each unique entity.
 
@@ -325,7 +328,7 @@ The following aggregation functions are supported:
 > [!TIP]
 > If you require the best query time performance, but you can tolerate some data latency, use the [materialized_view() function](../../query/materialized-view-function.md).
 
-## Backfill a materialized view
+### Backfill a materialized view
 
 When you're creating a materialized view by using the `backfill` property, the materialized view will be created based on the records available in the source table. Or it will be created based on a subset of those records, if you use `effectiveDateTime`.
 
@@ -377,7 +380,7 @@ If the materialized view includes a datetime group-by key, the backfill process 
 } 
 ```
 
-## Backfill by move extents
+### Backfill by move extents
 
 The option of backfilling by move extents backfills the materialized view based on an existing table, which isn't necessarily the source table of the materialized view. You achieve the backfill by [moving extents](../move-extents.md) from the specified table into the underlying materialized view table. This process implies that:
 
@@ -399,7 +402,7 @@ The materialized view is backfilled *only* based on the specified table. Materia
 
 If the source table of the materialized view is continuously ingesting data, creating the view by using move extents might result in some data loss. This is because records ingested into the source table, in the short time between the time of preparing the table to backfill from and the time that the view is created, won't be included in the materialized view. To handle this scenario, you can set the `source_ingestion_time_from` property to the start time of the materialized view over the source table.
 
-### Use cases
+#### Use cases
 
 The option of backfilling by move extents can be useful in two main scenarios:
 
@@ -451,7 +454,7 @@ The option of backfilling by move extents can be useful in two main scenarios:
     } 
     ```
 
-## Cancel materialized view creation
+### Cancel materialized view creation
 
 You can cancel the process of materialized view creation when you're using the backfill option. This action is useful when creation is taking too long and you want to stop it while it's running.  
 
@@ -464,27 +467,27 @@ Even if the cancellation doesn't succeed within 10 minutes, and the cancel comma
 
 If the operation is no longer in progress when the `.cancel operation` command is issued, the command will report an error saying so.
 
-### Syntax
+#### Syntax
 
 `.cancel operation` *operationId*
 
-### Parameters
+#### Parameters
 
 | Name          | Type | Required | Description                                                                   |
 |---------------|------|----------|-------------------------------------------------------------------------------|
 | `operationId` | guid | &check;  | The operation ID returned from the `.create async materialized-view` command. |
 
-### Output
+#### Output
 
-| Name                | Type     | Description
-|---------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `OperationId`       | guid     |The operation ID of the `.create materialized-view` command.                                                                                                                                            |
-| `Operation`         | string   |The type of operation.                                                                                                                                                                                  |
-| `StartedOn`         | datetime |The start time of the create operation.                                                                                                                                                                 |
-| `CancellationState` | string   |One of: `Canceled successfully` (creation was canceled), `Cancellation failed` (wait for cancellation timed out), `Unknown` (view creation is no longer running but wasn't canceled by this operation). |
-| `ReasonPhrase`      | string   |The reason why cancellation wasn't successful.                                                                                                                                                          |
+| Name              | Type     | Description
+|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| OperationId       | guid     |The operation ID of the `.create materialized-view` command.                                                                                                                                            |
+| Operation         | string   |The type of operation.                                                                                                                                                                                  |
+| StartedOn         | datetime |The start time of the create operation.                                                                                                                                                                 |
+| CancellationState | string   |One of: `Canceled successfully` (creation was canceled), `Cancellation failed` (wait for cancellation timed out), `Unknown` (view creation is no longer running but wasn't canceled by this operation). |
+| ReasonPhrase      | string   |The reason why cancellation wasn't successful.                                                                                                                                                          |
 
-### Example
+#### Examples
 
 <!-- csl -->
 ```kusto
