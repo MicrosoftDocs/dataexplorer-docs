@@ -15,6 +15,12 @@ You can export data by defining an [external table](../show-external-tables.md) 
 
 You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
+## External table authorization
+
+The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method.
+
+To learn more, check out the documentation for creating an [Azure Storage external table](../management/external-tables-azurestorage-azuredatalake.md#external-table-authorization) or [SQL Server external table](../management/external-sql-tables.md).
+
 ## Syntax
 
 `.export` [`async`] `to` `table` *ExternalTableName* <br>

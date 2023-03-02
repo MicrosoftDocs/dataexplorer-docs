@@ -16,7 +16,7 @@ References an [external table](schema-entities/externaltables.md) by name.
 
 ## External table authorization
 
-The authentication method used to access an external table is based on the connection string provided upon creation of the external table. Depending on the authentication method, a principal may need different permissions to access the table.
+The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method.
 
 To learn more, check out the documentation for creating an [Azure Storage external table](../management/external-tables-azurestorage-azuredatalake.md#external-table-authorization) or [SQL Server external table](../management/external-sql-tables.md).
 
