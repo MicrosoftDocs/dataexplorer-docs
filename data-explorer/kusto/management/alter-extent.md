@@ -22,9 +22,9 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.alter` [`async`] `extent` `tags` `(`*Tags*`)` `<|` *Query*
+`.alter` [`async`] `table` '*TableName*' `extent` `tags` `(`*Tags*`)` `with` `(` `extentCreatedOnFrom`='*FromDate*' `,` `extentCreatedOnTo`='*ToDate*'`)` <| *Query*
 
-`.alter-merge` [`async`] `extent` `tags` `(`*Tags*`)` `<|` *Query*
+`.alter-merge` [`async`] `table` '*TableName*' `extent` `tags` `(`*Tags*`)` `with` `(` `extentCreatedOnFrom`='*FromDate*' `,` `extentCreatedOnTo`='*ToDate*'`)` <| *Query*
 
 * `.alter` sets the collection of the extent's tags to the specified tags, while overriding the extent's existing tags.
 * `.alter-merge` sets the collection of the extent's tags to the union of the specified tags and the extent's existing tags.
@@ -54,27 +54,27 @@ All extents must be in the context database, and must belong to the same table.
 
 ### Alter tags 
 
-Alter tags of all the extents in table `MyTable` to `MyTag`
+Alter tags of all the extents within the specified creation time range in table `MyTable` to `MyTag`
 
 ```kusto
-.alter extent tags ('MyTag') <| .show table MyTable extents
+.alter table MyTable extent tags ('MyTag') with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24)) <| .show table MyTable extents
 ```
 
 ### Alter tags of specific extents
 
-Alter tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`
+Alter tags of all the extents within the specified creation time range in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`
 
 ```kusto
-.alter extent tags ('drop-by:MyNewTag','MyOtherNewTag') <| .show table MyTable extents where tags has 'drop-by:MyTag'
+.alter table MyTable extent tags ('drop-by:MyNewTag','MyOtherNewTag') with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24)) <| .show table MyTable extents where tags has 'drop-by:MyTag'
 ```
 
 ### Alter-merge tags of specific extents
 
-Alter-merges tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`, by
+Alter-merges tags of all the extents within the specified creation time range in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`, by
 appending 2 new tags to their existing collection of tags
 
 ```kusto
-.alter-merge extent tags ('drop-by:MyNewTag','MyOtherNewTag') <| .show table MyTable extents where tags has 'drop-by:MyTag'
+.alter-merge able MyTable extent tags ('drop-by:MyNewTag','MyOtherNewTag') with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24)) <| .show table MyTable extents where tags has 'drop-by:MyTag'
 ```
 
 ## Sample output
