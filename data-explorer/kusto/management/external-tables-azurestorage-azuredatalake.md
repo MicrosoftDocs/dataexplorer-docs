@@ -18,7 +18,7 @@ To `.create` requires at least [Database User](../management/access-control/role
 
 To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
 
-## Authorization
+## External table authorization
 
 The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method.
 
