@@ -2,7 +2,7 @@
 title: 'Customize settings in the Azure Data Explorer web UI'
 description: In this guide, you'll learn how to customize your settings in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 01/15/2023
+ms.date: 02/13/2023
 ---
 
 # Customize settings in the Azure Data Explorer web UI
@@ -16,9 +16,9 @@ This article will guide you through the process of customizing settings in the [
 
 ## Go to the settings
 
-Select the settings icon :::image type="icon" source="media/web-query-data/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
+Select the settings icon :::image type="icon" source="media/web-customize-settings/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
 
-:::image type="content" source="media/web-query-data/settings.png" alt-text="Screenshot of the Settings window.":::
+:::image type="content" source="media/web-customize-settings/settings-pane.png" alt-text="Screenshot of the Settings window.":::
 
 ## Export and import environment settings
 
@@ -37,7 +37,7 @@ The export and import actions help you protect your work environment and relocat
 
 1. In the **Settings** > **General** window, select **Import**. Then in **Warning** pop-up, select **Import**.
 
-    :::image type="content" source="media/web-query-data/import.png" alt-text="Screenshot of the import warning dialog box.":::
+    :::image type="content" source="media/web-customize-settings/import-settings.png" alt-text="Screenshot of the import warning dialog box.":::
 
 1. Locate your **adx-export.json** file from your local storage and open it.
 1. Your previous cluster connections and open tabs are now available.
@@ -49,14 +49,14 @@ The export and import actions help you protect your work environment and relocat
 
 Kusto tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on).
 
-### Enable error level highlighting
+### Turn on error level highlighting
 
-To enable the error level highlighting:
+To turn on error level highlighting:
 
 1. Select the **Settings** icon next to your user name.
 1. Select the **Appearance** tab and toggle the **Enable error level highlighting** option to the right.
 
-    :::image type="content" source="media/web-query-data/enable-error-highlighting.gif" alt-text="Animated GIF showing how to enable error-level highlighting in the settings.":::
+    :::image type="content" source="media/web-customize-settings/enable-error-level-highlighting.png" alt-text="Screenshot showing how to enable error-level highlighting in the settings.":::
 
 Error level color scheme in **Light** mode | Error level color scheme in **Dark** mode
 |---|---|
@@ -64,7 +64,7 @@ Error level color scheme in **Light** mode | Error level color scheme in **Dark*
 
 ### Column requirements for highlighting
 
-For highlighted error levels, the column must be of type int, long, or string.
+For highlighted error levels, the column must be of [data type](kusto/query/scalar-data-types/index.md) `int`, `long`, or `string`.
 
 - If the column is of type `long` or `int`:
   - The column name must be *Level*
@@ -84,12 +84,9 @@ You can change the displayed datetime values to reflect a specific time zone. Th
 
 1. Select the **Settings** icon next to your user name.
 1. Select the **General** tab, and select a time zone from the dropdown menu.
+1. View the selected time zone in the results grid menu bar.
 
-    :::image type="content" source="media/web-query-data/time-zone.png" alt-text="Screenshot of general tab on settings blade to change time zone in Azure Data Explorer web U I.":::
-
-The selected time zone will then be visible in the results grid menu bar.
-
-:::image type="content" source="media/web-query-data/query-time-utc.png" alt-text="Screenshot of Query time changed to UTC in results grid menu.":::
+    :::image type="content" source="media/web-customize-settings/query-time-utc.png" alt-text="Screenshot of Query time changed to UTC in results grid menu.":::
 
 ## Next steps
 
