@@ -3,15 +3,13 @@ title: .drop extents - Azure Data Explorer
 description: This article describes the drop extents command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/23/2022
+ms.date: 02/21/2023
 ---
 # .drop extents
 
 Drops extents from a specified database or table.
 
 This command has several variants: In one, the extents to be dropped are specified by a Kusto query. In the other variants, extents are specified using a mini-language described below.
-
-Requires [Table admin permission](./access-control/role-based-access-control.md) for each table that has extents returned by the provided query.
 
 > [!NOTE]
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
@@ -20,11 +18,13 @@ Requires [Table admin permission](./access-control/role-based-access-control.md)
 > [!CAUTION]
 > If you drop an extent, all the rows in that extent will be deleted. To delete individual records, use [Soft delete](../concepts/data-soft-delete.md).
 
-## Syntax
+## Permissions
 
-> [!NOTE]
-> If the argument *TableName* is specified, you will need [Table admin permission](./access-control/role-based-access-control.md) to drop an extent.
-> If the the argument *TableName* isn't specified, you will need [Database admin permission](./access-control/role-based-access-control.md) to drop an extent.
+If the the *TableName* is specified, you must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run the command.
+
+If the the *TableName* isn't specified, you must have at least [Database Admin](./access-control/role-based-access-control.md) permissions to run the command.
+
+## Syntax
 
 ### Drop extents with a query
 

@@ -3,7 +3,7 @@ title: ".alter cluster sandbox policy command - Azure Data Explorer"
 description: "This article describes the .alter cluster sandbox policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/30/2021
+ms.date: 02/21/2023
 ---
 # .alter cluster sandbox policy
 
@@ -12,15 +12,19 @@ Examples of these flows are user-defined scripts that run using the [Python plug
 
 Sandbox policies are managed at cluster-level and affect all the nodes in the cluster.
 
-To alter the policies, you'll need [AllDatabasesAdmin](./access-control/role-based-access-control.md) permissions.
+## Permissions
+
+You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter` `cluster` `policy` `sandbox` *ArrayOfPolicyObjects*
 
-## Arguments
+## Parameters
 
-*ArrayOfPolicyObjects* - An array with one or more policy objects defined. For policy object definitions, the [sandbox policy](sandboxpolicy.md).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ArrayOfPolicyObjects* | string | &check;  | An array with one or more policy objects defined. For policy object definitions, the [sandbox policy](sandboxpolicy.md).|
 
 ## Returns
 

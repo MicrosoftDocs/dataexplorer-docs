@@ -3,28 +3,29 @@ title: .drop function - Azure Data Explorer
 description: This article describes .drop function in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/21/2023
 ---
 # .drop function
 
 Drops a function from the database.
 For dropping multiple functions from the database, see [.drop functions](#drop-functions).
 
-**Syntax**
+## Permissions
+
+You must have at least [Function Admin](access-control/role-based-access-control.md) permissions to run this command.
+
+## Syntax
 
 `.drop` `function` *FunctionName* [`ifexists`]
 
 * `ifexists`: If specified, modifies the behavior of the command to
   not fail for a non-existent function.
 
-> [!NOTE]
-> * Requires [function admin permission](./access-control/role-based-access-control.md).
-    
 |Output parameter |Type |Description
 |---|---|--- 
 |Name  |String |The name of the function that was removed
- 
-**Example** 
+
+## Example
 
 ```kusto
 .drop function MyFunction1
@@ -34,11 +35,11 @@ For dropping multiple functions from the database, see [.drop functions](#drop-f
 
 Drops multiple functions from the database.
 
-**Syntax**
+### Syntax
 
 `.drop` `functions` (*FunctionName1*, *FunctionName2*,..) [ifexists]
 
-**Returns**
+### Returns
 
 This command returns a list of the remaining functions in the database.
 
@@ -52,7 +53,7 @@ This command returns a list of the remaining functions in the database.
 
 Requires [function admin permission](./access-control/role-based-access-control.md).
 
-**Example** 
+### Example
  
 ```kusto
 .drop functions (Function1, Function2, Function3) ifexists

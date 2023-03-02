@@ -3,7 +3,7 @@ title: url_encode_component() - Azure Data Explorer
 description: This article describes url_encode_component() in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/27/2022
+ms.date: 02/15/2023
 ---
 # url_encode_component()
 
@@ -15,15 +15,20 @@ For more details information about URL encoding and decoding, see [Percent-encod
 
 `url_encode_component(`*url*`)`
 
-## Arguments
+## Parameters
 
-* *url*: input URL (string).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *url* | string | &check; | The URL to encode.|
 
 ## Returns
 
 URL (string) converted into a format that can be transmitted over the Internet.
 
-## Examples
+## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXLMQqAMAxA0V3wDtmqIO2uCN5E1AZbiEmpkV7fiuP/8AgVnkwww2KCarpH50opdo982kMuF5BIoEgm78zUNilHVpAcz8jb56oeAPkQj/7P9a+18iSMrF2d/QtxbpMUagAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 let url = @'https://www.bing.com/hello world/';

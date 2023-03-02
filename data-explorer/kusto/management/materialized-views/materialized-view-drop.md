@@ -3,26 +3,28 @@ title: Materialized views drop - Azure Data Explorer
 description: This article describes drop materialized view command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/30/2020
+ms.date: 02/21/2023
 ---
 # .drop materialized-view 
 
 Drops a materialized view.
 
-Requires [Database Admin](../access-control/role-based-access-control.md) or materialized view admin permissions.
+## Permissions
+
+You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.drop` `materialized-view` *MaterializedViewName* [`ifexists`]
 
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view.|
+
 > [!NOTE]
 > If `ifexists` is specified, the command won't fail if it refers to a non-existent materialized view.
-
-## Properties
-
-| Property | Type| Description |
-|----------------|-------|-----|
-| MaterializedViewName| String| Name of the Materialized View.|
 
 ## Returns
 
