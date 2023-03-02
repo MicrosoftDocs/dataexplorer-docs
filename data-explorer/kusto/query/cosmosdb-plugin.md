@@ -13,6 +13,10 @@ zone_pivot_groups: kql-flavors
 
 The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL network endpoint and returns the results of the query. This plugin is primarily designed for querying small datasets, for example, enriching data with reference data stored in [Azure Cosmos DB](/azure/cosmos-db/). The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
+## Authorization
+
+To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the authorization information in the connection string. The supported authorization methods are using account keys or an Azure AD token.
+
 ## Syntax
 
 `evaluate` `cosmosdb_sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)` [`:` *OutputSchema*]

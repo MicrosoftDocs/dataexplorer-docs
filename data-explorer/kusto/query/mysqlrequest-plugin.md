@@ -19,6 +19,10 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 > The `mysql_request` plugin is disabled by default.
 > To enable the plugin, run the [`.enable plugin mysql_request` command](../management/enable-plugin.md). To see which plugins are enabled, use [`.show plugin` management commands](../management/show-plugins.md).
 
+## Authorization
+
+To authorize to a MySQL Server network endpoint, you need to specify the authorization information in the connection string. The supported authorization method is via username and password.
+
 ## Syntax
 
 `evaluate` `mysql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters*] `)` [`:` *OutputSchema*]
