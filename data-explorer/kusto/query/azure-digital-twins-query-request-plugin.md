@@ -14,9 +14,9 @@ Using the plugin, you can query across data in both Azure Digital Twins and any 
 
 For more information about the plugin, see [Azure Digital Twins query plugin for Azure Data Explorer](/azure/digital-twins/concepts-data-explorer-plugin#using-the-plugin).
 
-## Authentication and authorization
+## Authorization
 
-The `azure_digital_twins_query_request` plugin uses the Azure AD account of the user running the query to authenticate. To run a query, a user must at least be granted the **Azure Digital Twins Data Reader** role. Information on how to assign this role can be found in [**Security for Azure Digital Twins solutions**](/azure/digital-twins/concepts-security#authorization-azure-roles-for-azure-digital-twins).
+The `azure_digital_twins_query_request` plugin uses the Azure AD account of the user running the query to authenticate. To run a query, a user must at least be granted the **Azure Digital Twins Data Reader** role. Information on how to assign this role can be found in [Security for Azure Digital Twins solutions](/azure/digital-twins/concepts-security#authorization-azure-roles-for-azure-digital-twins).
 
 ## Syntax
 
