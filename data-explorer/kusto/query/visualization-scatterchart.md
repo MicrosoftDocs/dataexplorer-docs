@@ -17,17 +17,16 @@ In a scatter chart visual, the first column is the x-axis and should be a numeri
 
 ## Syntax
 
-*T* `|` `render` scatterchart [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
+*T* `|` `render` `scatterchart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
-| *PropertyName* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
-| *PropertyValue* | string | | Additional information to use when rendering. See list of supported [properties](#properties).
+| *T* | string | &check; | Input table name.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-### Properties 
+### Supported properties
 
 All properties are optional.
 

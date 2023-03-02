@@ -40,7 +40,7 @@ The following table lists the supported authentication methods and the permissio
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|`async`|string||If specified, the command returns immediately and continue ingestion in the background. The results of the command include an `OperationId` value that can then be used with the `.show operation` command to retrieve the ingestion completion status and results.|
+|`async`|string||If specified, the command returns immediately and continues ingestion in the background. The results of the command include an `OperationId` value that can then be used with the `.show operation` command to retrieve the ingestion completion status and results.|
 |*TableName*|string|&check;|The name of the table into which to ingest data. The table name is always relative to the database in context. If no schema mapping object is provided, the schema of the database in context is used.|
 |*SourceDataLocator*|string|&check;|A single or comma-separated list of [storage connection strings](../../api/connection-strings/storage-connection-strings.md). A single connection string must refer to a single file hosted by a storage account. Ingestion of multiple files can be done by specifying multiple connection strings, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/externaltables.md).|
 
@@ -80,6 +80,12 @@ values) to ensure that the SAS is never recorded.
     h'https://contoso.blob.core.windows.net/container/file1.csv?...',
     h'https://contoso.blob.core.windows.net/container/file2.csv?...'
 )
+```
+
+The next example shows how to read a CSV file from Azure Blob Storage and ingest its contents into table `T` using managed identity authentication. For additional information on managed identity authentication method, see [Managed Identity Authentication Overview](../../api/connection-strings/storage-authentication-methods.md#managed-identity).
+
+```kusto
+.ingest into table T ('https://StorageAccount.blob.core.windows.net/Container/file.csv;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e')
 ```
 
 The next example is for ingesting data from Azure Data Lake Storage Gen 2

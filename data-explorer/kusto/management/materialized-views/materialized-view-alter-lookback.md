@@ -9,14 +9,25 @@ ms.date: 02/21/2023
 
 Alters the `lookback` value of an existing materialized view. For more information on the lookback property, see [materialized view create command properties](materialized-view-create.md#properties).
 
-`.alter` `materialized-view` *MaterializedViewName* `lookback` *LookbackPeriod*
-
 > [!NOTE]
-> A `lookback` for a materialized view is only supported for [EngineV3](../../../engine-v3.md) clusters.
+>
+> * A `lookback` for a materialized view is only supported for [EngineV3](../../../engine-v3.md) clusters.
+> * You must either be the [database user](../access-control/role-based-access-control.md) who created the materialized view or have [database admin permission](../access-control/role-based-access-control.md) to run this command.
 
 ## Permissions
 
 You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
+
+## Syntax
+
+`.alter` `materialized-view` *MaterializedViewName* `lookback` *LookbackPeriod*
+
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view.|
+|*LookbackPeriod*|timespan|&check;|The lookback period for the materialized view.|
 
 ## Examples
 

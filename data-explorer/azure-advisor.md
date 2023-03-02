@@ -107,7 +107,6 @@ The **reduce Azure Data Explorer table cache period for cluster cost optimizatio
 #### Delete unused storage artifacts
 
 The recommendation **delete unused storage artifacts** is given for a cluster that has unused storage artifacts left from maintenance and background operations on [data shards (extents)](kusto/management/extents-overview.md). Over time, internal extents merge operations can accumulate redundant and unused storage artifacts that remain beyond the data retention period. While this unreferenced data doesn’t negatively impact the performance, it can lead to more storage use than necessary.
-The recommended action is to run the [clean databases extentcontainers](kusto/management/clean-extent-containers.md#clean-databases-extentcontainers) command to detect and delete unused storage artifacts and reduce cost. 
 
 > [!IMPORTANT]
 > Data recoverability will be reset to the cleanup time and will not be available on data that was created before running the cleanup.
