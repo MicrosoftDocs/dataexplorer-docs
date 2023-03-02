@@ -371,7 +371,7 @@ If the materialized view includes a datetime group-by key, the backfill process 
 ```kusto
 .create async materialized-view with (
         backfill=true,
-        UpdateExtentsCreationTime=true
+        updateExtentsCreationTime=true
     )
     CustomerUsage on table T
 {
