@@ -5,7 +5,8 @@ description: This article describes the punycode_from_string() command in Azure 
 
 # punycode_from_string()
 
-Encodes input string to punycode form.
+Encodes input string to Punycode form.
+(https://en.wikipedia.org/wiki/Punycode)
 
 
 ## Syntax
