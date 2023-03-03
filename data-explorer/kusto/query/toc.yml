@@ -783,6 +783,10 @@ items:
     href: zlib-base64-compress.md
   - name: zlib_decompress_from_base64_string()
     href: zlib-base64-decompress.md
+  - name: punycode_from_string()
+    href: punycode_from_string.md
+  - name: punycode_to_string()
+    href: punycode_to_string.md
 - name: Aggregation functions
   displayName: aggregation
   items:
