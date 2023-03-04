@@ -44,7 +44,7 @@ The `infer_storage_schema` plugin returns a single result table containing a sin
 ```kusto
 let options = dynamic({
   'StorageContainers': [
-    h@'https://storageaccount.blob.core.windows.net/MovileEvents;secretKey'
+    h@'https://storageaccount.blob.core.windows.net/MobileEvents;secretKey'
   ],
   'FileExtension': '.parquet',
   'FileNamePrefix': 'part-',
