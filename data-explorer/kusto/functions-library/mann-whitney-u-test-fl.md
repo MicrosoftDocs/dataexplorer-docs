@@ -15,7 +15,7 @@ The function `mann_whitney_u_test_fl()` performs the [Mann-Whitney U Test](https
 
 ## Syntax
 
-`T | mann_whitney_u_test_fl()(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value*`,` [ *use_continuity* ]`)`
+`T | mann_whitney_u_test_fl()(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value* [`,` *use_continuity* ]`)`
 
 ## Parameters
 

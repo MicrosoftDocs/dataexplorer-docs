@@ -16,7 +16,7 @@ The function `series_mv_ee_anomalies_fl()` detects multivariate anomalies in ser
 
 ## Syntax
 
-`T | invoke series_mv_ee_anomalies_fl(`*features_cols*`,` *anomaly_col*`,` [ *anomalies_pct* ]`)`
+`T | invoke series_mv_ee_anomalies_fl(`*features_cols*`,` *anomaly_col* [`,` *anomalies_pct* ]`)`
   
 ## Parameters
 

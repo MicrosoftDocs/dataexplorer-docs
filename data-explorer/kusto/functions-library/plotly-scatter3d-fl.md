@@ -27,7 +27,7 @@ Extract the required 'scatter3d' template from the publicly available `PlotlyTem
 
 plotly_scatter3d_fl(tbl:(*), x_col:string, y_col:string, z_col:string, aggr_col:string='', chart_title:string='3D Scatter chart')
 
-`T | invoke plotly_scatter3d_fl(`*x_col*`,` *y_col*`,` *z_col*`,` *aggr_col*`,` [ *chart_title* ]`)`
+`T | invoke plotly_scatter3d_fl(`*x_col*`,` *y_col*`,` *z_col*`,` *aggr_col* [`,` *chart_title* ]`)`
   
 ## Parameters
 

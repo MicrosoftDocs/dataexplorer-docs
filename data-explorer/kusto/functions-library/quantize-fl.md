@@ -15,7 +15,7 @@ The function `quantize_fl()` bins metric columns. It quantizes metric columns to
 
 ## Syntax
 
-`T | invoke quantize_fl(`*num_bins*`,` *in_cols*`,` *out_cols*`,` [ *labels* ]`)`
+`T | invoke quantize_fl(`*num_bins*`,` *in_cols*`,` *out_cols* [`,` *labels* ]`)`
 
 ## Parameters
 
