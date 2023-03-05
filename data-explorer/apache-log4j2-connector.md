@@ -130,13 +130,18 @@ export LOG4J2_ADX_APP_KEY="<app-key>"
 
 Within your terminal, navigate to the samples folder of the cloned repo.
 
-```
+```Maven
 mvn compile exec:java -Dexec.mainClass="org.example.KustoLog4JSampleApp" 
 ```
 
 ## Explore the ingested data with query
 
-The ingested log data can be verified by querying the created log table(log4jTest in our case) by using the following KQL command
+The ingested log data can be verified by counting the number of records in the table. In this example, the table name is log4jTest.
+
+```kusto
+log4jTest 
+| count
+```
 
 ```kusto
 log4jTest 
@@ -145,10 +150,7 @@ log4jTest
 
 The output of the above KQL query should fetch records as per the screenshot attached below.
 
-## Clean up resources
-
-
-
 ## See also
 
 * [Data connectors overview](connector-overview.md)
+* [Kusto Query Language (KQL) overview](kusto/query/index.md)
