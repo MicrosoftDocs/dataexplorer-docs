@@ -14,7 +14,7 @@ The function `series_rate_fl()` calculates the average rate of metric increase p
 
 ## Syntax
 
-`T | invoke series_rate_fl(`[ *n_bins* ]`,` [ *fix_reset* ]`)`
+`T | invoke series_rate_fl(`[ *n_bins* [`,` *fix_reset* ]]`)`
 
 `T` is a table returned from [series_metric_fl()](series-metric-fl.md). Its schema includes `(timestamp:dynamic, name:string, labels:string, value:dynamic)`.
 
