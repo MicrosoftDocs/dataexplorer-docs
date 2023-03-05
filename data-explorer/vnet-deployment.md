@@ -152,12 +152,13 @@ The following sections list the relevant IP addresses for management and health 
 | North Europe | 52.142.91.221 |
 | Norway East | 51.120.49.100 |
 | Norway West | 51.120.133.5 |
+| Poland Central | 20.215.208.177 |
 | South Africa North | 102.133.129.138 |
 | South Africa West | 102.133.0.97 |
 | South Central US | 20.45.3.60 |
 | Southeast Asia | 40.119.203.252 |
 | South India | 40.81.72.110, 104.211.224.189 |
-| Switzerland North | 51.107.42.144 |
+| Switzerland North | 20.203.198.33 |
 | Switzerland West | 51.107.98.201 |
 | UAE Central | 20.37.82.194 |
 | UAE North | 20.46.146.7 |
