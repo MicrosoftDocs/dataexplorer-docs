@@ -10,7 +10,7 @@ ms.date: 03/05/2023
 Generates a single-column table of values.
 
 > [!NOTE]
-> This operator doesn't take a tabluar input.
+> This operator doesn't take a tabular input.
 
 ## Syntax
 
