@@ -3,7 +3,7 @@ title: series_moving_avg_fl() - Azure Data Explorer
 description: This article describes series_moving_avg_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 09/08/2020
+ms.date: 03/05/2023
 ---
 # series_moving_avg_fl()
 
@@ -16,16 +16,15 @@ The function `series_moving_avg_fl()` takes an expression containing a dynamic n
 
 ## Syntax
 
-`series_moving_avg_fl(`*y_series*`,` *n*`, [`*center*`])`
+`series_moving_avg_fl(`*y_series*`,` *n*`,` [ *center* ]`)`
   
-## Arguments
+## Parameters
 
-* *y_series*: Dynamic array cell of numeric values.
-* *n*: The width of the moving average filter.
-* *center*: An optional Boolean value that indicates whether the moving average is one of the following options:
-    * applied symmetrically on a window before and after the current point, or 
-    * applied on a window from the current point backwards. <br>
-    By default, *center* is False.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*y_series*|dynamic|&check;|An array cell of numeric values.|
+|*n*|int|&check;|The width of the moving average filter.|
+|*center*|bool||Indicates whether the moving average is either applied symmetrically on a window before and after the current point or applied on a window from the current point backwards. By default, *center* is `false`.|
 
 ## Usage
 
@@ -35,7 +34,9 @@ The function `series_moving_avg_fl()` takes an expression containing a dynamic n
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PsU7EMAyG9zzFPzZS0KnDLUV9BMTAiTVKW7cX0SSV41ZUwLuTcgcTlhfr1/fZnkmQiT1lG9Lm42TdNtlxRotqt7ekGfbogu8NYuOjGPQUhbjpUprb0c2ZtPpQKHU3jZ7/YAOmhZxUdcG1gfBKvwatvtSjOp1KA08/6+E2YjcR0ogzOh/zkQ8Ukg3uje7SWn3iGB9uI+Ia2j6tUSqNFHHxgV7EhQVZaEF9RbfjOb8SF47eheJwIMXY/vd7VTKDs8Gl3KoLwgUghhRtf3Us3/KQTtk1AQAA" target="_blank">Run the query</a>
+
 ```kusto
 let series_moving_avg_fl = (y_series:dynamic, n:int, center:bool=false)
 {
