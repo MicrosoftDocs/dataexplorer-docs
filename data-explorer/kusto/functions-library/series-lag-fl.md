@@ -3,7 +3,7 @@ title: series_lag_fl() - Azure Data Explorer
 description: This article describes series_lag_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/09/2022
+ms.date: 03/05/2023
 ---
 # series_lag_fl()
 
@@ -18,10 +18,12 @@ The function `series_lag_fl()` takes an expression containing a dynamic numerica
 
 `series_lag_fl(`*y_series*`,` *offset*`)`
   
-## Arguments
+## Parameters
 
-* *y_series*: Dynamic array cell of numeric values.
-* *offset*: An integer specifying the required offset in bins.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *y_series* | dynamic | &check; | An array cell of numeric values.|
+| *offset* | int | &check; | An integer specifying the required offset in bins.|
 
 ## Usage
 
@@ -31,7 +33,9 @@ The function `series_lag_fl()` takes an expression containing a dynamic numerica
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WRzW7DIBCE7zzFHo3qyvU1Ec/QQ6teLWKWhJYfC9ZS3Kbv3g1EaYu4MMynGRaPBAWzwzJ5fZysBwVdE3Zmizq4uYdkbUHauUhSfAng5RmrfrZTKrP2OndZxyPCGWxOAUbWb+DDCIVwgbGiF1hyeseZYFPO2u4MSt2NPfB+kjdjWUPQ2X1iy3KeMHNg0B84eVeo26TcV691+da6b94erPYFpfgWezEM4lrYEMPjaV8P5AJO5eRsFU0TDy6Wu0iJH9z9+gZDnGYwpKk2aHmjuNRCj+0IcQ1qTiuTElKEV8ZfSIeljYArHDZ4Lm+YmcMzYTRXpCWgUf/+ouOb/k8pyUxmgqdwrTWfdKYfkxiPZMEBAAA=" target="_blank">Run the query</a>
+
 ```kusto
 let series_lag_fl = (series:dynamic, offset:int)
 {
