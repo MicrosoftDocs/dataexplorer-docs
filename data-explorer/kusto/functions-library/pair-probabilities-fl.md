@@ -3,7 +3,7 @@ title: pair_probabilities_fl() - Azure Data Explorer
 description: This article describes the pair_probabilities_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 09/09/2021
+ms.date: 03/05/2023
 ---
 # pair_probabilities_fl()
 
@@ -32,11 +32,13 @@ The function `pair_probabilities_fl()`calculates the following probabilities and
 
 `pair_probabilities_fl(`*A*, *B*, *Scope*`)`
 
-## Arguments
+## Parameters
 
-* *A*: First categorical variable.
-* *B*: Second categorical variable.
-* *Scope*: Field that contains the scope, so that the probabilities for variables A and B are calculated independently for each scope value.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*A*|scalar|&check;|The first categorical variable.|
+|*B*|scalar|&check;|The second categorical variable.|
+|*Scope*|scalar|&check;|The field that contains the scope, so that the probabilities for *A* and *B* are calculated independently for each scope value.|
 
 ## Usage
 
@@ -46,7 +48,9 @@ The function `pair_probabilities_fl()`calculates the following probabilities and
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA71WwW7bMAy9+yt4s915S3dt0YO1U4oWC7b2NAyGLCutWlkKbLlItu7fR8lupCZOhiTAnItNPj4+UqIUyQ0sqGiKRaNLWgopjOBtMZdwBYkp5UVylmaQF0zLi9Y0Qj1kQN59tUwveGBJo9+RRNY7ZKip4Y2gUvzilgxegS8NVxUUOXoxpqtVIeZ8KVrTJi5LBnGMGQsyAiAhwOUdAa31OGB66cQw3SnzVX0fYu5QSdvVNW1QWe/MpfR+Z0lSKFdDnp7F9ignO+LJRlxui1jrfIUnLRQ8Cyz+CiSfG91hbyAJlaWglQ8YWjUrHLXRle5KyZMhWzrZkB1IBMQPWrd1og9Na5pspPyaLpMNq69pW962uj3iyD5x5BRxZEzcduvGOtfriXYukvP3q+Nb4J/JBPz4rGCuG+CUPcILlR0HPYd8PzXpqckx1Fa1X4p7W69dkg+u9o/97hl/kLpTAhMHCaLBl9nA6UBGJpZr/4NkTKsKTw+tqHyn2dZv6yMhOZnmnjw/iZxY8ty34UbMTT8zjj6x/Gc2ZbqLXGIE1ByPL+Y1XlPGaFMFTH1/d2scIqAVtZC4q1EeLjdfojSU/MSZ2TgVMiiFsvoyOP90js/n9M1Etk35mO1+zDgNjNGacbqVZujUptlXHtDgrOrG+BMxG2qJ/lxGk4kb74oqxmd4mbTYsYoa/NmpK/VqfVk8iMbfHA5fMEnb9u3u+OH6H1/TmrdxZl9vabNyb+5DV7xRcXYI6psueWOs83TUrWCPlEv0xjNqt4ugfcgRqED9HlSg6+SMB+u6we1Lh1YchQrUn4w6OOP/X8cjdH2xu1+wf7ViA7Zr5++GjbJFPy8jP7Q44kK96Gc+/ocwiXGQ4yy2I2xbEkxvnP4FjoTy7UcKAAA=" target="_blank">Run the query</a>
+
 ```kusto
 let pair_probabilities_fl = (tbl:(*), A_col:string, B_col:string, scope_col:string)
 {

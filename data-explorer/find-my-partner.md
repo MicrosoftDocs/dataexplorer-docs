@@ -802,7 +802,7 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 
 **Additional information**
 
-- [Uptake Technologies Inc. website](https://www.uptake.com/)
+- [Uptake Technologies Inc. website](https://www.uptakefusion.com/)
 - [Microsoft partner site for Uptake Technologies Inc.](https://appsource.microsoft.com/marketplace/partner-dir/b3e8ad26-068f-40c8-81ff-1deba19b820a/overview)
 
 **Success stories**
@@ -810,7 +810,7 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 - [https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization](https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization)
 - [https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion](https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion)
 - [https://www.uptake.com/resources/ensign-establishes-a-single-source-of-truth-for-their-data](https://www.uptake.com/resources/ensign-establishes-a-single-source-of-truth-for-their-data)
-- [https://www.uptake.com/resources/enerplus-uses-insights-from-uptake-fusion-for-data-driven-decision-making](https://www.uptake.com/resources/enerplus-uses-insights-from-uptake-fusion-for-data-driven-decision-making)
+- [Enerplus uses insights from Uptake Fusion for data-driven decision-making](https://static1.squarespace.com/static/63a1c6a2415f98749634e9ea/t/63ed0457f54f952c860ec199/1676477527222/Uptake+Case+Study-+Enerplus+%282%29.pdf)
 - [https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring](https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring)
 
 ## Zure Ltd
