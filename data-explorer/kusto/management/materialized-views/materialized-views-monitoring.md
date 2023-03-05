@@ -11,7 +11,7 @@ Monitor the materialized view's health in the following ways:
 
 * Monitor [materialized view metrics](../../../using-metrics.md#materialized-view-metrics) in the Azure portal.
   * The materialized view age metric `MaterializedViewAgeSeconds` should be used to monitor the freshness of the view. This one should be the primary metric to monitor.
-* Monitor the `IsHealthy` property returned from [`.show materialized-view`](materialized-view-show-command.md#show-materialized-view).
+* Monitor the `IsHealthy` property returned from [`.show materialized-view`](materialized-view-show-command.md#show-materialized-views).
 * Check for failures using [`.show materialized-view failures`](materialized-view-show-failures-command.md#show-materialized-view-failures).
 
 > [!NOTE]
