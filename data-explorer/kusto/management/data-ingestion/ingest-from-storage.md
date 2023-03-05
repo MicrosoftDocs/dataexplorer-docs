@@ -31,6 +31,7 @@ The following table lists the supported authentication methods and the permissio
 |[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|List + Read|
 |[Azure AD access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
 |[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|||
+|[Managed identity](../../api/connection-strings/storage-authentication-methods.md#managed-identity)|Storage Blob Data Reader|Reader|
 
 ## Syntax
 
