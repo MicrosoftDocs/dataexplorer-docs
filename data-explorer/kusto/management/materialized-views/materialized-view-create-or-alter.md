@@ -15,10 +15,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Syntax
 
-`.create-or-alter` `materialized-view` <br>
-[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
-*MaterializedViewName* `on table` *SourceTableName* <br>
-`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
+`.create-or-alter` `materialized-view` [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] *MaterializedViewName* `on table` *SourceTableName* `{` *Query* `}`
 
 ## Parameters
 
