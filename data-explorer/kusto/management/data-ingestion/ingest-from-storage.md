@@ -25,12 +25,12 @@ Each storage connection string specified indicates the authorization method to u
 
 The following table lists the supported authentication methods and the permissions needed for ingesting data from external storage.
 
-|Authentication method|Permissions|
-|--|--|--|--|
-|[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage blob reader|
-|[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|
+|Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
+|--|--|--|
+|[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage blob reader|Reader|
+|[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|List + Read|
 |[Azure AD access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
-|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||
+|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|||
 
 ## Syntax
 
