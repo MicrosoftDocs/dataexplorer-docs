@@ -3,7 +3,7 @@ title: series_dbl_exp_smoothing_fl() - Azure Data Explorer
 description: This article describes the series_dbl_exp_smoothing_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: joruales
 ms.topic: reference
-ms.date: 02/06/2021
+ms.date: 03/05/2023
 ---
 # series_dbl_exp_smoothing_fl()
 
@@ -16,13 +16,15 @@ The function `series_dbl_exp_smoothing_fl()` takes an expression containing a dy
 
 ## Syntax
 
-`series_dbl_exp_smoothing_fl(`*y_series*`, [`*alpha*`, `*beta*`])`
+`series_dbl_exp_smoothing_fl(`*y_series*`,` [ *alpha* ]`,` [ *beta* ]`)`
 
-## Arguments
+## Parameters
 
-* *y_series*: Dynamic array cell of numeric values.
-* *alpha*: An optional real value in the range [0-1], specifying the weight of the last point vs. the weight of the previous points (which is `1-alpha`). Default is 0.5.
-* *beta*: An optional real value in the range [0-1], specifying the weight of the last slope vs. the weight of the previous slopes (which is `1-beta`). Default is 0.5.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*y_series*|dynamic|&check;|An array of numeric values.|
+|*alpha*|real||A value in the range [0-1] that specifies the weight of the last point vs. the weight of the previous points, which is `1 - alpha`. The default is 0.5.|
+|*beta*|real||A value in the range [0-1] that specifies the weight of the last slope vs. the weight of the previous slopes, which is `1 - beta`. The default is 0.5.|
 
 ## Usage
 
@@ -32,7 +34,9 @@ The function `series_dbl_exp_smoothing_fl()` takes an expression containing a dy
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMMQ6DMAwF0N2n+GMilkZsoJwFWa2DIiUOSj1Eor07rLwDvCKGxG9rPXPZUolOl6zm6STcdq6VnU7B059W6qy7YCD1VhFgDeGFr8mBmX6QYaIfpIH4ON3wF7cGc3NnAAAA" target="_blank">Run the query</a>
+
 ```kusto
 let series_dbl_exp_smoothing_fl = (y_series:dynamic, alpha:double=0.5, beta:double=0.5)
 {

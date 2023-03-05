@@ -18,10 +18,12 @@ The function `perm_fl()`calculates *P(n, k)*, the number of [permutations](https
 
 `perm_fl(`*n*, *k*`)`
   
-## Arguments
+## Parameters
 
-* *n*: Total number of items.
-* *k*: Selected number of items.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*n*|int|&check;|The total number of items.|
+|*k*|int|&check;|The selected number of items.|
 
 ## Usage
 
@@ -31,7 +33,9 @@ The function `perm_fl()`calculates *P(n, k)*, the number of [permutations](https
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OQQrCMBBF9znFXyZo0dqdpWcpQSdBkkxCnUVBvbupFgvO5sO8x8yPJCg0pdHFQfP5xrJHWMKoh0KdWAVnLzIyBnibktW8a03/B8NGm/DjkmNmr7/KYTWNeqleTZY9geGmnNBVE+0Rd6GCTj1BsxBfsVzl5rQtyufRWlhz7WreODahQsIAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 let perm_fl=(n:int, k:int)
 {
@@ -64,7 +68,6 @@ perm_fl(n:int, k:int)
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range n from 3 to 10 step 3
 | extend k = n-2
@@ -73,9 +76,10 @@ range n from 3 to 10 step 3
 
 ---
 
-```kusto
-n	k	pnk
-3	1	3
-6	4	360
-9	7	181440
-```
+**Output**
+
+| n | k | pnk    |
+|---|---|--------|
+| 3 | 1 | 3      |
+| 6 | 4 | 360    |
+| 9 | 7 | 181440 |

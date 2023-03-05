@@ -3,10 +3,9 @@ title: series_downsample_fl() - Azure Data Explorer
 description: This article describes the series_downsample_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 03/05/2023
 ---
 # series_downsample_fl()
-
 
 The function `series_downsample_fl()` [downsamples a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)#Downsampling_by_an_integer_factor). This function takes a table containing multiple time series (dynamic numerical array), and downsamples each series. The output contains both the coarser series and its respective times array. To avoid [aliasing](https://en.wikipedia.org/wiki/Aliasing), the function applies a simple [low pass filter](https://en.wikipedia.org/wiki/Low-pass_filter) on each series before subsampling.
 
@@ -17,13 +16,15 @@ The function `series_downsample_fl()` [downsamples a time series by an integer f
 
 `T | invoke series_downsample_fl(`*t_col*`,` *y_col*`,` *ds_t_col*`,` *ds_y_col*`,` *sampling_factor*`)`
 
-## Arguments
+## Parameters
 
-* *t_col*: The name of the column (of the input table) containing the time axis of the series to downsample.
-* *y_col*: The name of the column (of the input table) containing the series to downsample.
-* *ds_t_col*: The name of the column to store the downsampled time axis of each series.
-* *ds_y_col*: The name of the column to store the down sampled series.
-* *sampling_factor*: an integer specifying the required down sampling.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*t_col*|string|&check;|The name of the column that contains the time axis of the series to downsample.|
+|*y_col*|string|&check;|The name of the column that contains the series to downsample.|
+|*ds_t_col*|string|&check;|The name of the column to store the down sampled time axis of each series.|
+|*ds_y_col*|string|&check;|The name of the column to store the down sampled series.|
+|*sampling_factor*|int|&check;|An integer specifying the required down sampling.|
 
 ## Usage
 
@@ -33,7 +34,9 @@ The function `series_downsample_fl()` [downsamples a time series by an integer f
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22TTZObMAyG7/wKXToxHdJsOj2lw633Htrp1WNAbLzxB2OLENrtf68MZNOw4RBifTzSKxmDBBGDxigbP7iobGdQtqYUVJmD+JgXQLL25hApaPdcwHh3aqKkteE+YiLyP9mqmnw4aEd59icDfrjC9H4FvBC6BpgFJXB2b53ULV50pCimAkwenbK6Fk8598RFHkSO7yJX/ClrkdvqINhQQMAOFYn9u16T9tDj/Jsn0m4HoLrOjKAg6jQqMH6ATsUIrTaEASpsfUCIfbW94pYm7Hk75yaZ5IHGDn0rvinCn9riourmaHxfGa7r3QQQi4igmzL4QbreVhhEvt0v/OGIXJjd8GGtBEoeFupkESvX7vOnJ2bAgyepfaAj9taqoH/jsi+rTigNL0Dw+W03/1lHuV4ErylyTKWeZafqk7heoyIhb5doYl1Tu+BfsKatGtQ4h7Hzij0r0/McJ2LvJmaqkWd/s69Zg9bLqZ959fvsdWpvOx+BJ1nWvnck0rAhLeMHsWaIhB3sj1CN8D3+wsB52p39CR9+MmLzlrkpYMPU9Kq9ChHlnWuxzRFfcsYGngpfHuKo+qgCwaDpKC7zBS/XDP4KZ08sb6j8H3eKyanLAwAA" target="_blank">Run the query</a>
+
 ```kusto
 let series_downsample_fl=(tbl:(*), t_col:string, y_col:string, ds_t_col:string, ds_y_col:string, sampling_factor:int)
 {
