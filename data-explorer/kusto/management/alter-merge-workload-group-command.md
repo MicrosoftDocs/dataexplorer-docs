@@ -3,14 +3,12 @@ title: .alter-merge workload group command - Azure Data Explorer
 description: This article describes the alter-merge workload group command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 03/05/2023
 
 ---
 # .alter-merge workload_group
 
-Alters a workload group.
-
-For more information, see [Workload groups](workload-groups.md). To show the current workload group settings, use the [`.show workload_group` command](show-workload-group-command.md).
+Alter a workload group.
 
 ## Permissions
 

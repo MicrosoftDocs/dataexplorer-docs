@@ -1,13 +1,13 @@
 ---
-title: ".alter-merge cluster policy request classification command- Azure Data Explorer"
-description: "This article describes the cluster's .alter-merge request classification policy command in Azure Data Explorer."
+title: ".alter-merge cluster policy request_classification command- Azure Data Explorer"
+description: "This article describes alter-merge cluster policy request_classification command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 03/05/2023
 ---
-# .alter-merge cluster request classification policy
+# .alter-merge cluster policy request_classification
 
-Enables or disables a cluster's request classification policy. For more information, see [request classification policy](request-classification-policy.md).
+Enable or disable a cluster's request classification policy.
 
 ## Permissions
 

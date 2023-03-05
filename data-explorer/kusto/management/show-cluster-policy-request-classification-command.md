@@ -1,13 +1,13 @@
 ---
-title: The .show cluster policy request classification command - Azure Data Explorer
-description: This article describes the show cluster policy request classification command in Azure Data Explorer.
+title: The .show cluster policy request_classification command - Azure Data Explorer
+description: This article describes the show cluster policy request_classification command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 03/05/2023
 ---
 # .show cluster policy request_classification
 
-Shows the cluster's request classification policy. For more information, see [Request classification policy](request-classification-policy.md).
+Shows the cluster's request classification policy.
 
 ## Permissions
 
@@ -28,8 +28,8 @@ Following is the schema of the output returned:
 | PolicyName    | string | Name of the policy. For cluster request classification policy this value is **ClusterRequestClassificationPolicy**.                                                |
 | EntityName    | string | Name of the entity for which the policy is set. For cluster request classification policy this value is an empty string.                                           |
 | Policy        | string | JSON representation of the policy object.                                                                                                                          |
-| ChildEntities | string | Child entities for which this policy is set. For cluster request classification policy this command returns **["$systemdb","KustoMonitoringPersistentDatabase"]**. |
-| EntityType    | string | Type of entity for which this policy is set. For cluster request classification policy this command returns **Cluster**.                                           |
+| ChildEntities | string | Child entities for which this policy is set. For cluster request classification policy this values is an array of strings, each of which corresponds to the name of system and user databases attached to the cluster. |
+| EntityType    | string | Type of entity for which this policy is set. For cluster request classification policy this value is **Cluster**.                                           |
 
 ## Examples
 

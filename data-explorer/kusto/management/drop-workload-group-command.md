@@ -1,15 +1,13 @@
 ---
-title: .drop workload group command - Azure Data Explorer
-description: This article describes the drop workload group command in Azure Data Explorer.
+title: drop workload_group command - Azure Data Explorer
+description: This article describes the drop workload_group command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 03/05/2023
 ---
 # .drop workload_group
 
-Drops a workload group.
-
-For more information, see [Workload groups](workload-groups.md).
+Drop a workload group.
 
 ## Permissions
 

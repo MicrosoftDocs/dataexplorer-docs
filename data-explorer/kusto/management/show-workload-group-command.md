@@ -3,13 +3,11 @@ title: .show workload group command - Azure Data Explorer
 description: This article describes the .show workload group command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 03/05/2023
 ---
 # .show workload_group(s)
 
 Shows a specific workload group or all workload group definitions.
-
-For more information, see [Workload groups](workload-groups.md).
 
 ## Permissions
 
