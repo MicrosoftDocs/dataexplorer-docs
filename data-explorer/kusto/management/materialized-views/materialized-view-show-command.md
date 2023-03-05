@@ -6,7 +6,7 @@ ms.topic: reference
 ms.date: 03/01/2023
 ---
 
-# .show materialized-view
+# .show materialized-view(s)
 
 Displays definition and current state for one or all materialized views.
 
