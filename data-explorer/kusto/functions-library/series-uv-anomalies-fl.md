@@ -3,7 +3,7 @@ title: series_uv_anomalies_fl() - Azure Data Explorer
 description: This article describes the series_uv_anomalies_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/14/2022
+ms.date: 03/05/2023
 ---
 # series_uv_anomalies_fl()
 
@@ -18,7 +18,7 @@ The function `series_uv_anomalies_fl()` detects anomalies in time series by call
 
 `T | invoke series_uv_anomalies_fl(`*y_series* [`,` *sensitivity* [`,` *tsid*]]`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

@@ -3,7 +3,7 @@ title: time_weighted_avg_fl() - Azure Data Explorer
 description: This article describes time_weighted_avg_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/27/2021
+ms.date: 03/05/2023
 ---
 # time_weighted_avg_fl()
 
@@ -16,16 +16,18 @@ This type of aggregation is required for use cases where the metric values are e
 
 ## Syntax
 
-`T | invoke time_weighted_avg_fl(`*t_col*, *y_col*, *key_col*, *stime*, *:::no-loc text="etime":::*, *dt*`)`
+`T | invoke time_weighted_avg_fl(`*t_col*, *y_col*, *key_col*, *stime*, *etime*, *dt*`)`
   
-## Arguments
+## Parameters
 
-* *t_col*: The name of the column containing the time stamp of the records.
-* *y_col*: The name of the column containing the metric value of the records.
-* *key_col*: The name of the column containing the partition key of the records.
-* *:::no-loc text="stime":::*: Start time of the aggregation window.
-* *:::no-loc text="etime":::*: End time of the aggregation window.
-* *dt*: Aggregation time bin.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *t_col* | string | &check; | The name of the column containing the time stamp of the records.|
+| *y_col* | string | &check; | The name of the column containing the metric value of the records.|
+| *key_col* | string | &check; | The name of the column containing the partition key of the records.|
+| *stime* | datetime | &check; | The start time of the aggregation window.|
+| *etime* | datetime | &check; | The end time of the aggregation window.|
+| *dt* | timespan | &check; | The aggregation time bin.|
 
 ## Usage
 
