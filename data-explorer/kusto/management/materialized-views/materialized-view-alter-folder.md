@@ -32,7 +32,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ### Set the folder of a materialized view to one under root
 
-The following command sets the folder in which a materialized view must be shown to one under the root folder:
+The following command sets the folder in which a materialized view must be shown to one named **Updated folder** under **Materialized Views** folder:
 
 ```kusto
 .alter materialized-view MyView folder "Updated folder"

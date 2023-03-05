@@ -18,12 +18,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Syntax
 
-`.alter` `materialized-view`  
-[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`]  
-*MaterializedViewName* `on table` *SourceTableName*  
-`{`  
-    &nbsp;&nbsp;&nbsp;&nbsp;*Query*  
-`}`
+`.alter` `materialized-view` [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] *MaterializedViewName* `on table` *SourceTableName*  `{`  *Query* `}`
 
 ## Parameters
 
@@ -36,7 +31,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Properties
 
-The following properties are supported in the `with(propertyName=propertyValue)` clause. All properties are optional.
+The following properties are supported in the `with` `(`*PropertyName* `=` *PropertyValue*`)` clause. All properties are optional.
 
 | Name                      | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |---------------------------|--------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

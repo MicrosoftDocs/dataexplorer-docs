@@ -52,7 +52,7 @@ You must have at least [Database User](../access-control/role-based-access-contr
 
 ## Properties
 
-The following properties are supported in the `with(propertyName=propertyValue)` clause. All properties are optional.
+The following properties are supported in the `with` `(`*PropertyName* `=` *PropertyValue*`)` clause. All properties are optional.
 
 | Name                      | Type     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |---------------------------|--------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -131,20 +131,20 @@ You can create a materialized view over another materialized view only when the 
 
     <!-- csl -->
     ```kusto
-    .create materialized-view with(lookback=6h) DedupedT on table T
+    .create materialized-view with(lookback=6h) DeduplicatedTable on table T
     {
         T
         | summarize take_any(*) by EventId
     }
     ```
 
-* Create a downsampling materialized view that's based on the previous `DedupedT` materialized view:
+* Create a downsampling materialized view that's based on the previous `DeduplicatedTable` materialized view:
 
     <!-- csl -->
     ```kusto
-    .create materialized-view DailyUsage on materialized-view DedupedT
+    .create materialized-view DailyUsage on materialized-view DeduplicatedTable
     {
-        DedupedT
+        DeduplicatedTable
         | summarize count(), dcount(User) by Day=bin(Timestamp, 1d)
     }
     ```
@@ -407,23 +407,23 @@ The option of backfilling by move extents can be useful in two main scenarios:
 
 **Examples:**
 
-* In the following example, table `DedupedT` includes a single record per `EventId` instance and will be used as the baseline for the materialized view. Only records in `T` that are ingested after the view creation time will be included in the materialized view.
+* In the following example, table `DeduplicatedTable` includes a single record per `EventId` instance and will be used as the baseline for the materialized view. Only records in `T` that are ingested after the view creation time will be included in the materialized view.
 
     <!-- csl -->
     ```kusto
-    .create async materialized-view with (move_extents_from=DedupedT) MV on table T
+    .create async materialized-view with (move_extents_from=DeduplicatedTable) MV on table T
     {
         T
         | summarize arg_max(Timestamp, *) by EventId
     } 
     ```
 
-* If the `effectiveDateTime` property is specified along with the `move_extents_from` property, only extents in `DedupedT` whose `MaxCreatedOn` value is greater than `effectiveDateTime` are included in the backfill (moved to the materialized view):
+* If the `effectiveDateTime` property is specified along with the `move_extents_from` property, only extents in `DeduplicatedTable` whose `MaxCreatedOn` value is greater than `effectiveDateTime` are included in the backfill (moved to the materialized view):
 
     <!-- csl -->
     ```kusto
     .create async materialized-view with 
-        (move_extents_from=DedupedT, effectiveDateTime=datetime(2019-01-01)) 
+        (move_extents_from=DeduplicatedTable, effectiveDateTime=datetime(2019-01-01)) 
         MV on table T
     {
         T
@@ -433,16 +433,16 @@ The option of backfilling by move extents can be useful in two main scenarios:
 
 * The following example demonstrates the use of the `source_ingestion_time_from` property in the option of backfilling by move extents. Using both `source_ingestion_time_from` and `move_extents_from` indicates that the materialized view is backfilled from two sources:
 
-  * **The `move_extents_from` table**: `DedupedT` in the following example. This table should include all historical data to backfill. You can optionally use the `effectiveDateTime` property to include only extents in `DedupedT` whose `MaxCreatedOn` value is greater than `effectiveDateTime`.
+  * **The `move_extents_from` table**: `DeduplicatedTable` in the following example. This table should include all historical data to backfill. You can optionally use the `effectiveDateTime` property to include only extents in `DeduplicatedTable` whose `MaxCreatedOn` value is greater than `effectiveDateTime`.
   * **The source table of the materialized view**: `T` in the following example. Backfill from this table includes only records whose [ingestion_time()](../../query/ingestiontimefunction.md) value is greater than `source_ingestion_time_from`.
 
-     The `source_ingestion_time_from` property should be used only to handle the possible data loss in the short time between preparing the table to backfill from (`DedupedT`) and the time that the view is created. Don't set this property too far in the past. That would start the materialized view with a significant lag, which might be hard to catch up with.
+     The `source_ingestion_time_from` property should be used only to handle the possible data loss in the short time between preparing the table to backfill from (`DeduplicatedTable`) and the time that the view is created. Don't set this property too far in the past. That would start the materialized view with a significant lag, which might be hard to catch up with.
 
-   In the following example, assume that the current time is `2020-01-01 03:00`. Table `DedupedT` is a deduped table of `T`. It includes all historical data, deduplicated until `2020-01-01 00:00`. The `create` command uses `DedupedT` for backfilling the materialized view by using move extents. The `create` command also includes all records in `T` that were ingested since `2020-01-01`.
+   In the following example, assume that the current time is `2020-01-01 03:00`. Table `DeduplicatedTable` is a deduped table of `T`. It includes all historical data, deduplicated until `2020-01-01 00:00`. The `create` command uses `DeduplicatedTable` for backfilling the materialized view by using move extents. The `create` command also includes all records in `T` that were ingested since `2020-01-01`.
 
     <!-- csl -->
     ```kusto
-    .create async materialized-view with (move_extents_from=DedupedT, source_ingestion_time_from=datetime(2020-01-01)) MV on table T
+    .create async materialized-view with (move_extents_from=DeduplicatedTable, source_ingestion_time_from=datetime(2020-01-01)) MV on table T
     {
         T
         | summarize arg_max(Timestamp, *) by EventId
