@@ -3,7 +3,7 @@ title: kmeans_fl() - Azure Data Explorer
 description: This article describes the kmeans_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 03/05/2023
 ---
 # kmeans_fl()
 
@@ -17,11 +17,13 @@ The function `kmeans_fl()` clusterizes a dataset using the [k-means algorithm](h
 
 `T | invoke kmeans_fl(`*k*`,` *features_cols*`,` *cluster_col*`)`
 
-## Arguments
+## Parameters
 
-* *k*: The required number of clusters.
-* *features_cols*: Dynamic array containing the names of the features columns that are used for clustering.
-* *cluster_col*: The name of the column that stores the output cluster ID for each record.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*k*|int|&check;|The number of clusters.|
+|*features_cols*|dynamic|&check;|An array containing the names of the features columns to use for clustering.|
+|*cluster_col*|string|&check;|The name of the column to store the output cluster ID for each record.|
 
 ## Usage
 
