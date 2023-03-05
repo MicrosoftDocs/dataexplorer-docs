@@ -162,7 +162,7 @@ The Home tab shows the most recently used functions, divided into sections:
 |Query and Results To Clipboard|    Exports Query and data set to a clipboard. If a chart is presented, it exports the chart as a bitmap.|
 |Result To Clipboard| Exports data set to a clipboard. If a chart is presented, it exports the chart as a bitmap.|
 |Query To Clipboard| Exports the Query to a clipboard.|
-|Results To Clipboard (datatable())| <!--TBD--> Maximal allowed cell value is 30000.|
+|Results To Clipboard (datatable())| Exports query results to a clipboard. Maximal allowed cell value is 30000.|
 ||---------*Results*---------|
 |Clear results cache| Clears cached results of previously executed queries.|
 
@@ -234,11 +234,11 @@ The Home tab shows the most recently used functions, divided into sections:
 |Enable IntelliSense| Enables and disables IntelliSense on the Script Panel.|
 |Issues List| Lists issues in the Script panel.|
 ||---------*Automation*---------|
-|Add New Automation|<!--TBD-->|
+|Add New Automation| Produces an analysis report that summarizes query results with additional insights.|
 ||---------*Utilities*---------|
-|Command-line tools|<!--TBD-->|
-|Compress LZ4 file| <!--TBD-->|
-|Decompress LZ4 file| <!--TBD-->|
+|Command-line tools|Opens the command prompt on your computer.|
+|Compress LZ4 file|Compresses files using the LZ4 algorithm.|
+|Decompress LZ4 file| Decompresses files using the LZ4 algorithm.|
 ||---------*Analytics*---------|
 |Analytical Reports| Opens a dashboard with multiple pre-built reports for data analysis.|
 ||---------*Translate*---------|
@@ -257,7 +257,6 @@ The Home tab shows the most recently used functions, divided into sections:
 |Cluster Diagnostics | Shows a health summary for the Server Group currently selected in Connections Panel. |
 |Latest data: All tables| Shows a summary of the latest data in all tables of the currently selected database.|
 |Latest data: Selected table|Shows in the status bar the latest data in the selected table.|
-|Azure Portal| <!--TBD-->|
 |Cluster Health (Geneva)| <!--TBD-->|
 |Purge Metrics (Geneva)| <!--TBD-->|
 
@@ -282,9 +281,9 @@ The Home tab shows the most recently used functions, divided into sections:
 |Help             | Opens a link to the Kusto online documentation.  |
 |What's new       | Opens a document that lists all Kusto.Explorer changes.|
 |Report Issue      |Opens a dialog with two options: <ul><li>Report issues related to service</li><li>Report issues in the client application</li></ul>. |
-|Keyboard Shortcuts| <!--TBD-->|
+|Keyboard Shortcuts| Opens a link to the Kusto Explorer keyboard shortcuts article.|
 |Suggest Feature  | Opens a link to the Kusto feedback forum. |
-|Show EULA| <!--TBD-->|
+|Show EULA| Opens a link to the Microsoft Azure Legal Information article.|
 
 ## Connections panel
 :::image type="content" source="images/kusto-explorer/connections-panel.png" alt-text="Screenshot of the Connections panel that shows the Help cluster's databases.":::
