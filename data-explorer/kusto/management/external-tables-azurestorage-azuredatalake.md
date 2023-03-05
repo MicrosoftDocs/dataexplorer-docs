@@ -24,10 +24,9 @@ The authentication method to access an external table is based on the connection
 
 The following table lists the supported authentication methods for Azure Storage external tables and the permissions needed to read or write to the table.
 
-| Authentication method | Azure Blob Storage / Data Lake Storage Gen2 | | Data Lake Storage Gen1 | |
-|--|--|-|--|-|
+| Authentication method | Azure Blob Storage / Data Lake Storage Gen2 | Data Lake Storage Gen1 |
 ||Read permissions|Write permissions|Read permissions|Write permissions|
-|--|--|-|--|-|
+|--|--|--|--|--|
 |[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Reader|Storage Blob Data Contributor|Reader|Contributor|
 |[Managed identity](../api/connection-strings/storage-authentication-methods.md#managed-identity)|Storage Blob Data Reader|Storage Blob Data Contributor|Reader|Contributor|
 |[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|Write|||
