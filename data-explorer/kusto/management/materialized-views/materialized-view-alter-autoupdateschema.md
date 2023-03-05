@@ -32,7 +32,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ### Enable auto update schema for a materialized view
 
-The following command enables autoUpdateSchema for materialized view MyView, so that when the schema of the source table on which the view is based changes, the schema of the view is automatically updated to reflect those changes.
+The following command enables `autoUpdateSchema` for materialized view *MyView*, so that when the schema of the source table on which the view is based changes, the schema of the view is automatically updated to reflect those changes.
 
 ```kusto
 .alter materialized-view MyView autoUpdateSchema true
@@ -46,7 +46,7 @@ The following command enables autoUpdateSchema for materialized view MyView, so 
 
 ### Disable auto update schema for a materialized view
 
-The following command disables autoUpdateSchema for materialized view MyView, so that when the schema of the source table on which the view is based changes, the schema of the view doesn't update automatically to reflect those changes.
+The following command disables `autoUpdateSchema` for materialized view *MyView*, so that when the schema of the source table on which the view is based changes, the schema of the view doesn't update automatically to reflect those changes.
 
 ```kusto
 .alter materialized-view MyView autoUpdateSchema false

@@ -32,10 +32,7 @@ You must have at least [Database User](../access-control/role-based-access-contr
 
 ## Syntax
 
-`.create` [`async`] [`ifnotexists`] `materialized-view` <br>
-[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
-*MaterializedViewName* `on table` *SourceTableName* <br>
-`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
+`.create` [`async`] [`ifnotexists`] `materialized-view` [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] *MaterializedViewName* `on table` *SourceTableName* `{` *Query* `}`
 
 ## Parameters
 
@@ -83,10 +80,7 @@ You can create a materialized view over another materialized view only when the 
 
 **Syntax:**
 
-`.create` [`async`] [`ifnotexists`] `materialized-view` <br>
-[ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] <br>
-*MaterializedViewName* `on materialized-view` *SourceMaterializedViewName* <br>
-`{`<br>&nbsp;&nbsp;&nbsp;&nbsp;*Query*<br>`}`
+`.create` [`async`] [`ifnotexists`] `materialized-view` [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] *MaterializedViewName* `on materialized-view` *SourceMaterializedViewName* `{` *Query* `}`
 
 **Parameters:**
 
