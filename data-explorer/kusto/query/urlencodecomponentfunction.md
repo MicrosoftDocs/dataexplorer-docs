@@ -1,15 +1,15 @@
 ---
 title: url_encode_component() - Azure Data Explorer
-description: This article describes url_encode_component() in Azure Data Explorer.
+description: Learn how to use the url_encode_component() function to convert characters of the input URL into a transmittable format.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 03/02/2023
 ---
 # url_encode_component()
 
 The function converts characters of the input URL into a format that can be transmitted over the internet. Differs from [url_encode](./urlencodefunction.md) by encoding spaces as '%20' and not as '+'.
 
-For more details information about URL encoding and decoding, see [Percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding).
+For more information about URL encoding and decoding, see [Percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding).
 
 ## Syntax
 

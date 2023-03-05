@@ -27,18 +27,17 @@ Extract the required 'scatter3d' template from the publicly available `PlotlyTem
 
 plotly_scatter3d_fl(tbl:(*), x_col:string, y_col:string, z_col:string, aggr_col:string='', chart_title:string='3D Scatter chart')
 
-
-`T | invoke plotly_scatter3d_fl(`*x_col*`,` *y_col*`,` *z_col*`,` *aggr_col*`,` *chart_title*`)`
+`T | invoke plotly_scatter3d_fl(`*x_col*`,` *y_col*`,` *z_col*`,` *aggr_col*`,` [ *chart_title* ]`)`
   
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x_col* | string | &check; | The name of the column for the X coordinated of the 3D plot|
-| *y_col* | string | &check; | The name of the column for the Y coordinated of the 3D plot|
-| *z_col* | string | &check; | The name of the column for the Z coordinated of the 3D plot|
-| *aggr_col* | string | &check; | The name of the grouping column. Records in the same group are rendered in distinct color|
-| *chart_title* | string | | Chart title, default is '3D Scatter chart'|
+| *x_col* | string | &check; | The name of the column for the X coordinated of the 3D plot.|
+| *y_col* | string | &check; | The name of the column for the Y coordinated of the 3D plot.|
+| *z_col* | string | &check; | The name of the column for the Z coordinated of the 3D plot.|
+| *aggr_col* | string | &check; | The name of the grouping column. Records in the same group are rendered in distinct color.|
+| *chart_title* | string | | The chart title. The default is '3D Scatter chart'.|
 
 ## Usage
 
