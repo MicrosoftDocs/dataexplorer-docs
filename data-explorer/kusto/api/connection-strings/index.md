@@ -23,5 +23,5 @@ There are a number of connection string formats:
 
 > [!NOTE]
 > Some connection strings may reference security principals. See
-> [principals and identity providers](../../management/access-control/principals-and-identity-providers.md)
+> [principals and identity providers](/azure/data-explorer/kusto/management/access-control/referencing-security-principals)
 > for how to specify security principals in connection strings.

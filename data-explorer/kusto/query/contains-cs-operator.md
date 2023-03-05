@@ -7,7 +7,7 @@ ms.date: 01/11/2023
 ---
 # contains_cs operator
 
-Filters a record set for data containing a case-sensitive string. `contains` searches for characters rather than [terms](datatypes-string-operators.md#what-is-a-term) of three or more characters. The query scans the values in the column, which is slower than looking up a term in a term index.
+Filters a record set for data containing a case-sensitive string. `contains_cs` searches for arbitrary sub-strings rather than [terms](datatypes-string-operators.md#what-is-a-term).
 
 [!INCLUDE [contains-operator-comparison](../../includes/contains-operator-comparison.md)]
 
@@ -15,9 +15,7 @@ Filters a record set for data containing a case-sensitive string. `contains` sea
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator. For example, use `contains_cs` instead of `contains`.
-
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. Also, `has` works faster than `contains`, `startswith`, or `endswith`, however it isn't as precise and could provide unwanted records.
+If you're looking for a [term](datatypes-string-operators.md#what-is-a-term), use `has_cs` for faster results.
 
 ## Syntax
 

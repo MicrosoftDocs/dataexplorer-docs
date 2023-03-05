@@ -7,7 +7,7 @@ ms.date: 02/27/2020
 ---
 # Tables management
 
-This topic discusses the life cycle of tables and associated control commands that are in helpful for exploring, creating and altering tables.
+This topic discusses the life cycle of tables and associated control commands that are helpful for exploring, creating and altering tables.
 
 Select the links in the table below for more information about them.
 

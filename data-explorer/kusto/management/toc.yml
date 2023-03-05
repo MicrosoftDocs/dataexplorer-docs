@@ -485,7 +485,7 @@ items:
       href: updatepolicy.md
     - name: .alter table update policy command
       href: alter-table-update-policy-command.md
-    - name: .alter-merge table update policy policy command
+    - name: .alter-merge table update policy command
       href: alter-merge-table-update-policy-command.md
     - name: .delete table update policy command
       href: delete-table-update-policy-command.md
@@ -495,12 +495,24 @@ items:
     items:
     - name: Query weak consistency policy
       href: query-weak-consistency-policy.md
-    - name: .alter query weak consistency policy
+    - name: .alter cluster policy query_weak_consistency
       href: alter-query-weak-consistency-policy.md
-    - name: .show query weak consistency policy
+    - name: .show cluster policy query_weak_consistency
       href: show-query-weak-consistency-policy.md
 - name: Security roles
-  href: security-roles.md
+  items:
+    - name: Security roles overview
+      href: security-roles.md
+    - name: Manage database roles
+      href: manage-database-security-roles.md
+    - name: Manage table roles
+      href: manage-table-security-roles.md
+    - name: Manage external table roles
+      href: manage-external-table-security-roles.md
+    - name: Manage materialized view roles
+      href: manage-materialized-view-security-roles.md
+    - name: Manage function roles
+      href: manage-function-security-roles.md
 - name: Data ingestion
   items:
   - name: Ingest from storage
@@ -603,18 +615,20 @@ items:
 - name: Access control
   href: access-control/index.md
   items:
-  - name: Identities
-    href: access-control/principals-and-identity-providers.md
   - name: Azure Active Directory
     displayName: AAD, Azure AD
     href: access-control/aad.md
-  - name: Principal roles
-    href: access-control/role-based-authorization.md
-  - name: Allow cross-tenant queries and commands
-    href: ../../cross-tenant-query-and-commands.md
+  - name: Role-based access control
+    href: access-control/role-based-access-control.md
+    displayName: RBAC, security roles, principals
   - name: How-To Azure Active Directory authentication
     displayName: AAD, Azure AD
     href: access-control/how-to-authenticate-with-aad.md
+  - name: Referencing security principals
+    displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
+    href: /azure/data-explorer/kusto/management/access-control/referencing-security-principals
+  - name: Allow cross-tenant queries and commands
+    href: ../../cross-tenant-query-and-commands.md
 - name: Advanced data management
   items:
   - name: Extents (data shards)
@@ -635,8 +649,6 @@ items:
         href: replace-extents.md
       - name: .show extents
         href: show-extents.md
-    - name: Extent containers clean commands
-      href: clean-extent-containers.md
   - name: Follower commands
     displayName: Cluster commands, database commands, materialized view commands, table commands 
     href: cluster-follower.md

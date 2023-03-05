@@ -3,7 +3,7 @@ title: normality_test_fl() - Azure Data Explorer
 description: This article describes the normality_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 03/05/2023
 ---
 # normality_test_fl()
 
@@ -17,11 +17,13 @@ The function `normality_test_fl()` performs the [Normality Test](https://en.wiki
 
 `T | invoke normality_test_fl()(`*data*`,` *test_statistic*`,`*p_value*`)`
 
-## Arguments
+## Parameters
 
-* *data*: The name of the column containing the set of data to be used for the test.
-* *test_statistic*: The name of the column to store test statistic value for the results.
-* *p_value*: The name of the column to store p-value for the results.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*data*|string|&check;|The name of the column containing the data to be used for the test.|
+|*test_statistic*|string|&check;|The name of the column to store test statistic value for the results.|
+|*p_value*|string|&check;|The name of the column to store p-value for the results.|
 
 ## Usage
 
@@ -62,7 +64,7 @@ datatable(id:string, sample1:dynamic) [
 
 # [Stored](#tab/stored)
 
-To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
 
 ### One-time installation
 

@@ -3,13 +3,17 @@ title: show external table control command - Azure Data Explorer
 description: This article describes the show external table control command in Azure Data Explorer 
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/20/2021
+ms.date: 02/21/2023
 ---
 # .show external tables
 
 Returns all external tables in the database (or a specific external table).
 
-Requires [Database monitor permission](../management/access-control/role-based-authorization.md). This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
+This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
+
+## Permissions
+
+You must have at least Database User, Database Viewer, Database Monitor to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 

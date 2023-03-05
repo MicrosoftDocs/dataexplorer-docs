@@ -3,11 +3,15 @@ title: .show databases schema - Azure Data Explorer
 description: This article describes .show databases schema in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/14/2021
+ms.date: 02/21/2023
 ---
 # .show database schema commands
 
 The following commands show database schema as a table, JSON object, or CSL script.
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## .show databases schema
 
@@ -25,7 +29,7 @@ Returns a flat list of the structure of the selected databases with all their ta
 When used with a version, the database is only returned if it's a later version than the version provided.
 
 > [!NOTE]
-> The version should only be provided in "vMM.mm" format. MM represents the major version and mm represent the minor version.
+> The version should only be provided in "vMM.mm" format. MM represents the major version and mm represents the minor version.
 
 **Example** 
  
@@ -124,7 +128,8 @@ The following *Options* are all optional:
   * Authorized principals at the database/table level.
   * Row level security policies at the table level.
   * Restricted view access policies at the table level.
-* `IncludeIngestionMappings`: (`true` | `false`) - If `true`, ingestion mappings at the table level will be included. Defaults to `false`. 
+* `IncludeIngestionMappings`: (`true` | `false`) - If `true`, ingestion mappings at the table level will be included. Defaults to `false`.
+* `ShowObfuscatedStrings`: (`true` | `false`) - If `true`, credentials persisted in Kusto configurations will be returned. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the command will fail. Defaults to `false`.
 
 **Returns**
 

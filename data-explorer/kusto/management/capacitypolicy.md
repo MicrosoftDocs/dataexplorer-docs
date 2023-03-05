@@ -36,7 +36,7 @@ The capacity policy is made of:
 |Property                           |Type    |Description                                                                                                |
 |-----------------------------------|--------|-----------------------------------------------------------------------------------------------------------|
 |MinimumConcurrentOperationsPerNode |long    |A minimal value for the number of concurrent extents merge/rebuild operations on a single node. Default is 1 |
-|MaximumConcurrentOperationsPerNode |long    |A maximal value for the number of concurrent extents merge/rebuild operations on a single node. Default is 3 |
+|MaximumConcurrentOperationsPerNode |long    |A maximal value for the number of concurrent extents merge/rebuild operations on a single node. Default is 5 |
 
 The cluster's total extents merge capacity, as shown by [`.show capacity`](../management/diagnostics.md#show-capacity), is calculated by:
 

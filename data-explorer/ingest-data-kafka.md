@@ -18,9 +18,9 @@ For more information, see the connector [Git repo](https://github.com/Azure/kafk
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md) using default cache and retention policies.
-* Install [Azure CLI](/cli/azure/install-azure-cli).
-* Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
+* An Azure Data Explorer cluster and database with the default cache and retention policies. [Create a cluster and database](create-cluster-database-portal.md).
+* [Azure CLI](/cli/azure/install-azure-cli).
+* [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
 
 ## Create an Azure Active Directory service principal
 
@@ -328,7 +328,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     
     :::image type="content" source="media/ingest-data-kafka/kusto-query.png" alt-text="Kafka query column chart results in Azure Data Explorer.":::
 
-For more query examples and guidance, see [Write queries for Azure Data Explorer](write-queries.md) and [Kusto query language documentation](./kusto/query/index.md).
+For more query examples and guidance, see [Write queries for Azure Data Explorer](write-queries.md) and [Kusto Query Language documentation](./kusto/query/index.md).
 
 ## Reset
 

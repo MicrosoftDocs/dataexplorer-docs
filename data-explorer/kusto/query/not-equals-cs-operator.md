@@ -24,10 +24,6 @@ For more information about other operators and to determine which operator is mo
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator. For example, use `==` instead of `=`.
-
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`.
-
 ## Syntax
 
 *T* `|` `where` *col* `!=` `(`*list of scalar expressions*`)`

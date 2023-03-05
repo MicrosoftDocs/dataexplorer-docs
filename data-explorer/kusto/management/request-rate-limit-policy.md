@@ -41,7 +41,7 @@ When a request exceeds the limit on maximum number of concurrent requests:
          The control command was aborted due to throttling. Retrying after some backoff might succeed. CommandType: 'TableCreate', Capacity: 80, Origin: 'RequestRateLimitPolicy/WorkloadGroup/default'.
          ```
        
-      1. A throttled query, that was classified to a workload group named `MyWorkloadGroup`, which has a limit of 80 concurrent requests at the scope of the workload group:
+      1. A throttled query, that was classified to a workload group named `MyWorkloadGroup`, which has a limit of 50 concurrent requests at the scope of the workload group:
 
          ```
          The query was aborted due to throttling. Retrying after some backoff might succeed. Capacity: 50, Origin: 'RequestRateLimitPolicy/WorkloadGroup/MyWorkloadGroup'.

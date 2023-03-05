@@ -3,7 +3,7 @@ title: Data soft delete - Azure Data Explorer
 description: This article describes Data soft delete in Azure Data Explorer.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 01/16/2022
+ms.date: 03/02/2023
 ---
 # Soft delete
 
@@ -39,7 +39,7 @@ The soft delete process is performed using the following steps:
 
 * Don't run soft delete and purge commands on the same table in parallel. First wait for one command to complete and only then run the other command.
 
-* Soft delete is executed against your engine endpoint: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-authorization.md) permissions on the relevant database.
+* Soft delete is executed against your engine endpoint: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-access-control.md) permissions on the relevant database.
 
 * Soft delete can affect materialized views based on a source table in which records are deleted. This can happen because every [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work) adds newly ingested data to the materialized part from the previous cycle. Therefore, if the command deletes newly ingested records before a new cycle begins, those records won't be added to the materialized view. Otherwise, deleting records won't affect the materialized view.
 
@@ -74,15 +74,13 @@ In most cases, the deletion of records won't result in a change of COGS.
 
 ### Syntax
 
-```kusto
 `.delete` [`async`] `table` *TableName* `records <|` *Predicate*
-```
 
-### Arguments
+### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*async*|string||If specified, indicates that the command runs in asynchronous mode.|
+|`async`|string||If specified, indicates that the command runs in asynchronous mode.|
 |*TableName*|string|&check;|The name of the table from which to delete records.|
 |*Predicate*|string|&check;|The predicate that returns records to delete. Specified as a query.|
 

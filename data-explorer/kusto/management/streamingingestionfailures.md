@@ -2,7 +2,7 @@
 title: Streaming ingestion failures - Azure Data Explorer
 description: This article describes the command to show streaming ingestion failures in Azure Data Explorer.
 ms.topic: reference
-ms.date: 04/07/2022
+ms.date: 02/21/2023
 ---
 
 # Streaming ingestion failures
@@ -17,6 +17,10 @@ This command returns a result set that includes aggregated streaming ingestion f
 > Gateway throttling failures will not appear in the result set of this command.
 >
 > The retention period for streaming ingestion failures is 14 days.
+
+## Permissions
+
+If you have Database Admin or Database Monitor permissions, you'll see all failed operations. Otherwise, you'll only see operations that you created. For more information about permissions, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 

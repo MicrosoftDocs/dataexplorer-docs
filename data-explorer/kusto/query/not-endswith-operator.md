@@ -11,13 +11,11 @@ Filters a record set for data that excludes a case-insensitive ending string.
 
 [!INCLUDE [endswith-operator-comparison](../../includes/endswith-operator-comparison.md)]
 
-Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
-
 ## Performance tips
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator. For example, use `endswith_cs` instead of `endswith`.
+When possible, use the case-sensitive [!endswith_cs](not-endswith-cs-operator.md).
 
 ## Syntax
 

@@ -3,7 +3,7 @@ title: binomial_test_fl() - Azure Data Explorer
 description: This article describes the binomial_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 03/02/2023
 ---
 # binomial_test_fl()
 
@@ -15,15 +15,17 @@ The function `binomial_test_fl()` performs the [binomial test](https://en.wikipe
 
 ## Syntax
 
-`T | invoke binomial_test_fl(`*successes*`,` *trials*`,` *success_prob*`,` *alt_hypotheis*`)`
+`T | invoke binomial_test_fl(`*successes*`,` *trials*`,` [ *success_prob* ]`,` [ *alt_hypotheis* ]`)`
 
-## Arguments
+## Parameters
 
-* *successes*: The name of the column containing the number of success results.
-* *trials*: The name of the column containing the total number of trials.
-* *p_value*: The name of the column to store the results.
-* *success_prob*: The success probability, default is 0.5.
-* *alt_hypotheis*: The alternative hypothesis can be either 'two-sided', 'greater', or 'less'. The default is 'two-sided'.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *successes* | string | &check; | The name of the column containing the number of success results.|
+| *trials* | string | &check; | The name of the column containing the total number of trials.|
+| *p_value* | string | &check; | The name of the column to store the results.|
+| *success_prob* | real | | The success probability. The default is 0.5.|
+| *alt_hypotheis* | string | | The alternate hypothesis can be `two-sided`, `greater`, or `less`. The default is `two-sided`.|
 
 ## Usage
 
@@ -68,7 +70,7 @@ datatable(id:string, x:int, n:int) [
 
 # [Stored](#tab/stored)
 
-To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
 
 ### One-time installation
 

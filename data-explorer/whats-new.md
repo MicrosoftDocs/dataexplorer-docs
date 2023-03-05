@@ -3,11 +3,63 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 01/01/2023
+ms.date: 02/02/2023
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## February 2023
+
+**API**
+
+| Article title | Description |
+|--|--|
+| [Authentication over HTTPS](/azure/data-explorer/kusto/api/rest/authentication.md)| Updated article.  REST API authorization examples added. |
+
+**General**
+
+| Article title | Description |
+|--|--|
+|[Manage Azure Data Explorer cluster locks to prevent accidental deletion in your cluster](manage-cluster-locks.md)| New article. Describes how to manage cluster locks to prevent accidental deletion of data using the Azure portal.|
+|[Connect from common apps](connect-common-apps.md) | New article. Describes how to connect to Azure Data Explorer with SQL Server emulation from various apps.|
+|- [Connect to Azure Data Explorer with JDBC](connect-jdbc.md) </br> - [Connect to Azure Data Explorer with SQL Server emulation](connect-sql-server-emulation.md) </br> - [Connect to Azure Data Explorer with ODBC](connect-odbc.md) | New articles. Describes how to connect to Azure Data Explorer with different connection apps.|
+|[Azure Data Explorer as a linked server from SQL Server](linked-server.md)| New article. Describes how to connect Azure Data Explorer as a linked server from SQL Server.|
+|[Query data in MATLAB](matlab.md)| New article. Describes how to set up a JDBC connection in MATLAB.|
+|[Set timeout limits](set-timeout-limits.md)| New article. Describes how to set query timeout limits.|
+|[Data connectors overview](connector-overview.md)| New article. Describes available data connectors and their capabilities.|
+|- [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md) </br> - [Azure Data Explorer web UI results grid](web-results-grid.md) </br> - [Share queries from Azure Data Explorer web UI](web-share-queries.md) </br> - [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md) </br> - [Explore the samples gallery](web-ui-samples-query.md) | New articles. Describes how to use, query, visualize, and share queries in the Azure Data Explorer web UI.|
+|[Query data using T-SQL](t-sql.md)| Updated article. Support limitations added.|
+|[What is the ingestion wizard?](ingest-data-wizard.md) | Updated article. Management actions added.|
+
+## January 2023
+
+**General**
+
+| Article title | Description |
+|--|--|
+|- [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) </br> - [Referencing security principals](./kusto/management/access-control/referencing-security-principals.md) | Updated articles. Renewed and restructured referencing of security principals and identity providers.|
+
+**Functions library**
+
+| Article title | Description |
+|--|--|
+|- [plotly_anomaly_fl()](./kusto/functions-library/plotly-anomaly-fl.md) </br> - [plotly_scatter3d_fl()](./kusto/functions-library/plotly-scatter3d-fl.md) | New articles. Describes how to customize a plotly template. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+|- [.dup-next-failed-ingest](./kusto/management/dup-next-failed-ingest.md) <br/> - [.dup-next-ingest](./kusto/management/dup-next-ingest.md) | New articles. Describes how to troubleshoot data on demand. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [render operator](./kusto/query/renderoperator.md)<br />- [Anomaly chart](kusto/query/visualization-anomalychart.md) <br/> - [Area chart](kusto/query/visualization-areachart.md) <br/> - [Bar chart](kusto/query/visualization-barchart.md) <br/> - [Card](kusto/query/visualization-card.md) <br/> - [Column chart](kusto/query/visualization-columnchart.md) <br/> - [Ladder chart](kusto/query/visualization-ladderchart.md) <br/> - [Line chart](kusto/query/visualization-linechart.md) <br/> - [Pie chart](kusto/query/visualization-piechart.md) <br/> - [Pivot chart](kusto/query/visualization-pivotchart.md) <br/> - [Scatter chart](kusto/query/visualization-scatterchart.md) <br/> - [Stacked area chart](kusto/query/visualization-stackedareachart.md) <br/> - [Table](kusto/query/visualization-table.md) <br/> - [Time chart](kusto/query/visualization-timechart.md) <br/> - [Time pivot](kusto/query/visualization-timepivot.md) | Updated and new articles. Refreshed render overview and added topics describing each render visualization. |
+| [series_dot_product()](./kusto/query/series-dot-productfunction.md) | New article. Describes how to calculate the dot product of two numeric series.|
+| [hll_if() (aggregation function)](./kusto/query/hll-if-aggregation-function.md) | New article. Describes how to calculate the intermediate results of the `dcount()` function. |
+| [bag_set_key()](./kusto/query/bag-set-key-function.md) | New article. Describes how to set a given key to a given value in a dynamic property bag. |
 
 ## December 2022
 
@@ -78,7 +130,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [Use the ingestion wizard to ingest JSON data](ingestion-wizard-existing-table.md) <br />- [Web UI overview](web-ui-overview.md)|Updated articles. Added references to ingestion wizard and updated UI.|
+|- [Use the ingestion wizard to ingest JSON data](ingestion-wizard-existing-table.md) <br />- [Web UI overview](/azure/data-explorer/web-query-data)|Updated articles. Added references to ingestion wizard and updated UI.|
 
 **Management**
 
@@ -118,8 +170,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [Ingest data from Azure Stream Analytics (Preview)](stream-analytics-connector.md) | New Article. Describes how to ingest (load) data from Azure Stream Analytics. |
-| [Azure Data Explorer web UI overview](web-ui-overview.md) | New Article. Describes the elements of web UI home page and the data analytics journey. |
-| [Explore the Azure Data Explorer web UI samples gallery](web-ui-samples-gallery.md) | New Article. Describes how to use the samples gallery in the web UI. |
+| [Azure Data Explorer web UI overview](/azure/data-explorer/web-query-data) | New Article. Describes the elements of web UI home page and the data analytics journey. |
+| [Explore the Azure Data Explorer web UI samples gallery](/azure/data-explorer/web-ui-samples-dashboards) | New Article. Describes how to use the samples gallery in the web UI. |
 | [Select a SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md) | Updated Article. New SKU list and refreshed content. |
 
 ## May 2022
@@ -176,29 +228,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [http_request plugin / http_request_post plugin](kusto/query/http-request-plugin.md) | New article. Describes the http_request plugin. |
 | [Cross-database and cross-cluster queries](kusto/query/cross-cluster-or-database-queries.md) | Updated article. Updated links to cross-cluster queries and schema changes page. |
 | [Cross-cluster queries and schema changes](kusto/concepts/cross-cluster-and-schema-changes.md) | New article. Describes cross-cluster queries and schema changes. |
-
-## February 2022
-
-| Article title | Description |
-|--|--|
-| [What is a free cluster?](start-for-free.md) | New article. Describes how to get started with a free Azure Data Explorer cluster. |
-| [Cross-tenant data connection](ingest-data-cross-tenant.md) | New article. Describes how to create cross-tenant data connections for Azure Event Hubs or Azure Event Grid services in a different tenant. |
-| [Automated provisioning](automated-deploy-overview.md) | New article. Maps different articles for automating the provisioning of clusters. |
-
-**Functions library**
-
-| Article title | Description |
-|--|--|
-| [series_lag_fl()](kusto/functions-library/series-lag-fl.md) | New article. Describes the `series_lag_fl()` user-defined function. |
-
-## January 2022
-
-| Article title | Description |
-|--|--|
-| [Use the sample app generator to create code to ingest and query your data](sample-app-generator-wizard.md) | New Article. Describes how to use the sample app generator for your preferred programming language. |
-
-**API**
-
-| Article title | Description |
-|--|--|
-| [Azure Data Explorer API overview](kusto/api/index.md) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.

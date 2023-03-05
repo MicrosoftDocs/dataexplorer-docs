@@ -1,15 +1,14 @@
 ---
 title: row_rank_dense() - Azure Data Explorer
-description: This article describes the row_rank_dense() function in Azure Data Explorer.
-
+description: Learn how to use the row_rank_dense() function to return the current row's dense rank in a serialized row set.
 ms.reviewer: royo
-
 ms.topic: reference
-ms.date: 01/16/2023
+ms.date: 01/18/2023
 ---
 # row_rank_dense()
 
 Returns the current row's dense rank in a [serialized row set](./windowsfunctions.md#serialized-row-set).
+
 The row rank starts by default at `1` for the first row, and is incremented by `1` whenever the provided *Term* is different than the previous row's *Term*.
 
 ## Syntax
@@ -22,11 +21,9 @@ The row rank starts by default at `1` for the first row, and is incremented by `
 
 Returns the row rank of the current row as a value of type `long`.
 
-
 ## Example
 
 This example shows how to rank the `Airline` by the number of departures from the SEA `Airport` using dense rank:
-
 
 ```kusto
 datatable (Airport:string, Airline:string, Departures:long)
