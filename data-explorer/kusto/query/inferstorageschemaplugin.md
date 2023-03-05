@@ -13,14 +13,15 @@ This plugin infers schema of external data, and returns it as CSL schema string.
 
 In the [properties of the request](#properties-of-the-request), you specify storage connection strings to access. Each storage connection string specifies the authorization method to use for access to the storage. Depending on the authorization method, the principal may need to be granted permissions on the external storage to perform the schema inference.
 
-The following table lists the supported authentication methods and any required permissions.
+The following table lists the supported authentication methods and any required permissions by storage type.
 
-|Authentication method|Permissions|
-|--|--|--|--|
-|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage blob reader|
-|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|
-|[Azure AD access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
-|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||
+|Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
+|--|--|--|
+|[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Reader|Reader|
+|[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|List + Read|
+|[Azure AD access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
+|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|||
+
 
 ## Syntax
 
