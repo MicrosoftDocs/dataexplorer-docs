@@ -16,7 +16,7 @@ The function `series_moving_avg_fl()` takes an expression containing a dynamic n
 
 ## Syntax
 
-`series_moving_avg_fl(`*y_series*`,` *n*`,` [ *center* ]`)`
+`series_moving_avg_fl(`*y_series*`,` *n* [`,` *center* ]`)`
   
 ## Parameters
 

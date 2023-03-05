@@ -16,7 +16,7 @@ The function `series_dbl_exp_smoothing_fl()` takes an expression containing a dy
 
 ## Syntax
 
-`series_dbl_exp_smoothing_fl(`*y_series*`,` [ *alpha* ]`,` [ *beta* ]`)`
+`series_dbl_exp_smoothing_fl(`*y_series* [`,` *alpha* [`,` *beta* ]]`)`
 
 ## Parameters
 

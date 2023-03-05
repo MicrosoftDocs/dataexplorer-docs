@@ -15,7 +15,7 @@ The function `binomial_test_fl()` performs the [binomial test](https://en.wikipe
 
 ## Syntax
 
-`T | invoke binomial_test_fl(`*successes*`,` *trials*`,` [ *success_prob* ]`,` [ *alt_hypotheis* ]`)`
+`T | invoke binomial_test_fl(`*successes*`,` *trials* [`,`*success_prob* [`,` *alt_hypotheis* ]]`)`
 
 ## Parameters
 
