@@ -33,7 +33,7 @@ The output of the function is pairwise distances between entities under the same
 | *entity* | string | &check; | The name of the input table column containing the names or IDs of the entities for which the distances will be calculated. |
 | *partition* | string | &check; | The name of the input table column containing the partition or scope, so that the distances are calculated for all pairs of entities under the same partition. |
 
-## Usage
+## Examples
 
 `pairwise_dist_fl` is a user-defined function. You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
