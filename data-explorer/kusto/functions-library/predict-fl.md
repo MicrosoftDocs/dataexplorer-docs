@@ -26,7 +26,7 @@ The function `predict_fl()` predicts using an existing trained machine learning 
 |*features_cols*|synamic|&check;|An array containing the names of the features columns that are used by the model for prediction.|
 |*pred_col*|string|&check;|The name of the column that stores the predictions.|
 
-## Examples
+## Usage
 
 `predict_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 

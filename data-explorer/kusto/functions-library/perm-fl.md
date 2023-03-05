@@ -25,7 +25,7 @@ The function `perm_fl()`calculates *P(n, k)*, the number of [permutations](https
 |*n*|int|&check;|The total number of items.|
 |*k*|int|&check;|The selected number of items.|
 
-## Examples
+## Usage
 
 `perm_fl()` is a user-defined function. You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 

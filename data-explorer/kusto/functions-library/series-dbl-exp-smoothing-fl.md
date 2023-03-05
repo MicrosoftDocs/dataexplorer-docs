@@ -26,7 +26,7 @@ The function `series_dbl_exp_smoothing_fl()` takes an expression containing a dy
 |*alpha*|real||A value in the range [0-1] that specifies the weight of the last point vs. the weight of the previous points, which is `1 - alpha`. The default is 0.5.|
 |*beta*|real||A value in the range [0-1] that specifies the weight of the last slope vs. the weight of the previous slopes, which is `1 - beta`. The default is 0.5.|
 
-## Examples
+## Usage
 
 `series_dbl_exp_smoothing_fl()` is a user-defined function. You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 

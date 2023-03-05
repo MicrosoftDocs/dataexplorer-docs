@@ -26,7 +26,7 @@ The function accepts a table containing the column to calculate on and an option
 | *pct_arr* | dynamic | &check; | A numerical array containing the required percentiles. Each percentile should be in the range [0-100]. |
 | *aggr_col* | string | | The name of the column that contains the grouping key.|
 
-## Examples
+## Usage
 
 `percentiles_linear_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
 

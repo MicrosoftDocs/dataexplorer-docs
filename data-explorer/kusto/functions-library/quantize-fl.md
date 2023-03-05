@@ -26,7 +26,7 @@ The function `quantize_fl()` bins metric columns. It quantizes metric columns to
 |*out_cols*|dynamic|&check;|An array containing the names of the respective output columns for the binned values.|
 |*labels*|dynamic||An array containing the label names. If unspecified, bin ranges will be used.|
 
-## Examples
+## Usage
 
 `quantize_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 

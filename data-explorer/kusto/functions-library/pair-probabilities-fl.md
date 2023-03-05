@@ -40,7 +40,7 @@ The function `pair_probabilities_fl()`calculates the following probabilities and
 |*B*|scalar|&check;|The second categorical variable.|
 |*Scope*|scalar|&check;|The field that contains the scope, so that the probabilities for *A* and *B* are calculated independently for each scope value.|
 
-## Examples
+## Usage
 
 `pair_probabilities_fl` is a user-defined function. You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 

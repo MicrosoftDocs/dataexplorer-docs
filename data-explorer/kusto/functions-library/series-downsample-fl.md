@@ -26,7 +26,7 @@ The function `series_downsample_fl()` [downsamples a time series by an integer f
 |*ds_y_col*|string|&check;|The name of the column to store the down sampled series.|
 |*sampling_factor*|int|&check;|An integer specifying the required down sampling.|
 
-## Examples
+## Usage
 
 `series_downsample_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
