@@ -25,7 +25,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Returns
 
-The command returns all materialized views in the database, after the drop, which is the output of the [show materialized view](materialized-view-show-command.md#show-materialized-view) command.
+The command returns all materialized views in the database, after the drop, which is the output of the [show materialized view](materialized-view-show-command.md#show-materialized-views) command.
 
 [!INCLUDE [materialized-view-show-command-output-schema.md](../../../includes/materialized-view-show-command-output-schema.md)]
 
