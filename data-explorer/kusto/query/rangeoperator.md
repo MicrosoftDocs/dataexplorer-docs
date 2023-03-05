@@ -3,13 +3,14 @@ title: range operator - Azure Data Explorer
 description: Learn how to use the range operator to generate a single-column table of values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/05/2023
 ---
 # range operator
 
 Generates a single-column table of values.
 
-Notice that it doesn't have a pipeline input. 
+> [!NOTE]
+> This operator doesn't take a tabluar input.
 
 ## Syntax
 
@@ -30,9 +31,9 @@ The arguments must be numeric, date or timespan values. They can't reference the
 A table with a single column called *columnName*,
 whose values are *start*, *start* `+` *step*, ... up to and until *stop*.
 
-## Example  
+## Examples
 
-A table of midnight at the past seven days. The bin (floor) function reduces each time to the start of the day.
+The following example creates a table with entries for the current time stamp extended over the past seven days, once a day. 
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -48,8 +49,8 @@ range LastWeek from ago(7d) to now() step 1d
 |...|
 |2015-12-12 09:10:04.627|
 
+The following example shows how to use the `range` operator with parameters, which are then extended and consumed as a table.  
 
-This example is to demonstrate the ability to parameterize, extend and consume as a table.  
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let toUnixTime = (dt:datetime) 
@@ -63,7 +64,9 @@ let MyTimeline = range MyMonthHour from MyMonthStart to now() step StepBy
 | extend MyMonthHourinUnixTime = toUnixTime(MyMonthHour), DateOnly = bin(MyMonthHour,1d), TimeOnly = MyMonthHour - bin(MyMonthHour,1d)
 ; MyTimeline | order by MyMonthHour asc | take nn
 ```
+
 **Output**
+
 |MyMonthHour|	MyMonthHourinUnixTime	|DateOnly|	TimeOnly
 |---|---|---|---
 |2023-02-01 |00:00:00.0000000	|1675209600	|2023-02-01 00:00:00.0000000	| 00:00:00
@@ -72,7 +75,7 @@ let MyTimeline = range MyMonthHour from MyMonthStart to now() step StepBy
 |2023-02-01 |13:36:07.2000000	|1675258567.2	|2023-02-01 00:00:00.0000000	|13:36:07.2000000
 |...|...|...|...
 
-A table with a single column called `Steps`
+The following example creates a table with a single column called `Steps`
 whose type is `long` and whose values are `1`, `4`, and `7`.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -80,7 +83,7 @@ whose type is `long` and whose values are `1`, `4`, and `7`.
 range Steps from 1 to 8 step 3
 ```
 
-The next example shows how the `range` operator can be used to create a small, ad-hoc, dimension table that is then used to introduce zeros where the source data has no values.
+The following example shows how the `range` operator can be used to create a small, ad-hoc, dimension table that is then used to introduce zeros where the source data has no values.
 
 ```kusto
 range TIMESTAMP from ago(4h) to now() step 1m
