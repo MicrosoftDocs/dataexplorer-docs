@@ -20,6 +20,8 @@ The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://e
 
 ## Parameters
 
+|Name|Type|Required|Description|
+|--|--|--|--|
 | *data1* | string | &check; | The name of the column containing the first set of data to be used for the test.|
 | *data2* | string | &check; | The name of the column containing the second set of data to be used for the test.|
 | *test_statistic* | string | &check; | The name of the column to store test statistic value for the results.|

@@ -19,6 +19,8 @@ The function `wilcoxon_test_fl()` performs the [Wilcoxon Test](https://en.wikipe
 
 ## Parameters
 
+|Name|Type|Required|Description|
+|--|--|--|--|
 | *data* | string | &check; | The name of the column containing the data to be used for the test.|
 | *test_statistic* | string | &check; | The name of the column to store test statistic value for the results.|
 | *p_value* | string | &check; | The name of the column to store p-value for the results.|
