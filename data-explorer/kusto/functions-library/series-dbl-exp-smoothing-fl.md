@@ -35,8 +35,7 @@ The function `series_dbl_exp_smoothing_fl()` takes an expression containing a dy
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
 > [!div class="nextstepaction"]
-> <a href="> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMMQ6DMAwF0N2n+GMilkZsoJwFWa2DIiUOSj1Eor07rLwDvCKGxG9rPXPZUolOl6zm6STcdq6VnU7B059W6qy7YCD1VhFgDeGFr8mBmX6QYaIfpIH4ON3wF7cGc3NnAAAA" target="_blank">Run the query</a>" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMMQ6DMAwF0N2n+GMilkZsoJwFWa2DIiUOSj1Eor07rLwDvCKGxG9rPXPZUolOl6zm6STcdq6VnU7B059W6qy7YCD1VhFgDeGFr8mBmX6QYaIfpIH4ON3wF7cGc3NnAAAA" target="_blank">Run the query</a>
 
 ```kusto
 let series_dbl_exp_smoothing_fl = (y_series:dynamic, alpha:double=0.5, beta:double=0.5)
