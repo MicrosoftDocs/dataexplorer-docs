@@ -67,8 +67,8 @@ let MyTimeline = range MyMonthHour from MyMonthStart to now() step StepBy
 
 **Output**
 
-| MyMonthHour | MyMonthHourinUnixTime | DateOnly| TimeOnly |
-| --- | --- | --- | --- |
+| MyMonthHour | MyMonthHourinUnixTime | DateOnly | TimeOnly |
+|---|---|---|---|
 | 2023-02-01 | 00:00:00.0000000 | 1675209600 | 2023-02-01 00:00:00.0000000 | 00:00:00 |
 | 2023-02-01 | 04:32:02.4000000 | 1675225922.4 | 2023-02-01 00:00:00.0000000 | 04:32:02.4000000 |
 | 2023-02-01 | 09:04:04.8000000 | 1675242244.8 | 2023-02-01 00:00:00.0000000 | 09:04:04.8000000 |
