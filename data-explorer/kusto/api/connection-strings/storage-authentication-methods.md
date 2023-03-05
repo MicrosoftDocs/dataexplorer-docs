@@ -50,7 +50,7 @@ Azure Data Explorer impersonates the requestor's principal identity to access th
 |--|
 |`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;impersonate"`|
 
-The principal must have the necessary permissions to perform the operation. For example in Azure Blob Storage, to read from the blob the principal needs the Storage Blob Data Reader role and to export to the blob the principal needs the Storage Blob Data Contributor role. To learn more, see [Data Lake Storage Gen2 access control](/azure/storage/blobs/data-lake-storage-access-control-model#role-based-access-control-azure-rbac).
+The principal must have the necessary permissions to perform the operation. For example in Azure Blob Storage, to read from the blob the principal needs the Storage Blob Data Reader role and to export to the blob the principal needs the Storage Blob Data Contributor role. To learn more, see [Azure Blob Storage / Data Lake Storage Gen2 access control](/azure/storage/blobs/data-lake-storage-access-control-model#role-based-access-control-azure-rbac) or [Data Lake Storage Gen1 access control](/azure/data-lake-store/data-lake-store-security-overview#azure-rbac-for-account-management).
 
 ## Managed identity
 
@@ -61,7 +61,7 @@ Azure Data Explorer uses the managed identity to make requests and access resour
 |System-assigned|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=system"`|
 |User-assigned|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b"`|
 
-The managed identity must have the necessary permissions to perform the operation. For example in Azure Blob Storage, to read from the blob the managed identity needs the Storage Blob Data Reader role and to export to the blob the managed identity needs the Storage Blob Data Contributor role. To learn more, see [Data Lake Storage Gen2 access control](/azure/storage/blobs/data-lake-storage-access-control-model#role-based-access-control-azure-rbac).
+The managed identity must have the necessary permissions to perform the operation. For example in Azure Blob Storage, to read from the blob the managed identity needs the Storage Blob Data Reader role and to export to the blob the managed identity needs the Storage Blob Data Contributor role. To learn more, see [Azure Blob Storage / Data Lake Storage Gen2 access control](/azure/storage/blobs/data-lake-storage-access-control-model#role-based-access-control-azure-rbac) or [Data Lake Storage Gen1 access control](/azure/data-lake-store/data-lake-store-security-overview#azure-rbac-for-account-management).
 
 > [!NOTE]
 > Managed identity is only supported in specific Azure Data Explorer flows. For more information, see [Managed identities overview](../../../managed-identities-overview.md).
