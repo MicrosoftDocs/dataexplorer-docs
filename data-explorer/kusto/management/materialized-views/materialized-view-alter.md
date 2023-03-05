@@ -48,23 +48,7 @@ The following properties are supported in the `with(propertyName=propertyValue)`
 
 ## Returns
 
-Following is the schema of the output returned:
-
-| Name              | Type     | Description                                                                                                                                                                                 |
-|-------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Name              | string   | Name of the materialized view.                                                                                                                                                              |
-| SourceTable       | string   | Name of source table on which the view is defined.                                                                                                                                          |
-| Query             | string   | Query definition of the materialized view.                                                                                                                                                  |
-| MaterializedTo    | datetime | Maximum materialized ingestion_time() timestamp in source table. For more information, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work).        |
-| LastRun           | datetime | Last time materialization was run.                                                                                                                                                          |
-| LastRunResult     | string   | Result of last run. Returns `Completed` for successful runs, otherwise `Failed`.                                                                                                            |
-| IsHealthy         | bool     | `true` when view is considered healthy, `false` otherwise. View is considered healthy if it was successfully materialized up to the last hour (`MaterializedTo` is greater than `ago(1h)`). |
-| IsEnabled         | bool     | `true` when view is enabled (see [Disable or enable materialized view](materialized-view-enable-disable.md)).                                                                               |
-| Folder            | string   | Folder under which the materialized view is created.                                                                                                                                        |
-| DocString         | string   | Description assigned to the materialized view.                                                                                                                                              |
-| AutoUpdateSchema  | bool     | Whether the view is enabled for auto updates.                                                                                                                                               |
-| EffectiveDateTime | datetime | Effective date time of the view, determined during creation time (see [`.create materialized-view`](materialized-view-create.md#create-materialized-view)).                                 |
-| Lookback          | timespan | Time span limiting the period of time in which duplicates are expected.                                                                                                                     |
+[!INCLUDE [materialized-view-show-command-output-schema.md](../../../includes/materialized-view-show-command-output-schema.md)]
 
 ## Examples
 
@@ -85,25 +69,10 @@ The following command modifies the query definition of materialized view MyView:
 |--------|-------------|-----------------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|
 | MyView | MyTable     | MyTable \| summarize arg_max(Column3, *) by Column1 | 2023-02-26T16:40:03.3345704Z     | 2023-02-26T16:44:15.9033667Z | Completed     | true      | true      |                  |           | false            | 2023-02-23T14:01:42.5172342Z |            |
 
-## Remarks
-
-The `dimensionTables` and `lookback` properties are the only supported properties in the `.alter materialized-view` command.
-
 ## Use cases
 
 * Add aggregations to the view - for example, add `avg` aggregation to `T | summarize count(), min(Value) by Id`, by altering view query to `T | summarize count(), min(Value), avg(Value) by Id`.
 * Change operators other than the summarize operator. For example, filter out some records by altering  `T | summarize arg_max(Timestamp, *) by User` to `T | where User != 'someone' | summarize arg_max(Timestamp, *) by User`.
 * Alter with no change to the query because of a change in source table. For example, assume a view of `T | summarize arg_max(Timestamp, *) by Id`, which isn't set to `autoUpdateSchema` (see [`.create materialized-view`](materialized-view-create.md) command). If a column is added or removed from the source table of the view, the view is automatically disabled. Execute the alter command, with the exact same query, to change the materialized view's schema to align with new table schema. The view still must be explicitly enabled following the change, using the [enable materialized view](materialized-view-enable-disable.md) command.
 
-## Limitations
-
-* **Changes not supported:**
-  * Changing column type isn't supported.
-  * Renaming columns isn't supported. For example, altering a view of `T | summarize count() by Id` to `T | summarize Count=count() by Id` drops column `count_` and creates a new column `Count`, which initially contains nulls only.
-  * Changes to the materialized view group by expressions aren't supported.
-
-* **Impact on existing data:**
-  * Altering the materialized view has no impact on existing data.
-  * New columns receive nulls for all existing records until records ingested after the alter command modify the null values.
-    * For example: if a view of `T | summarize count() by bin(Timestamp, 1d)` is altered to `T | summarize count(), sum(Value) by bin(Timestamp, 1d)`, then for a particular `Timestamp=T` for which records have already been processed before altering the view, the `sum` column contains partial data. This view only includes records processed after the alter execution.
-  * Adding filters to the query doesn't change records that have already been materialized. The filter will only apply to newly ingested records.
+[!INCLUDE [materialized-view-alter-limitations.md](../../../includes/materialized-view-alter-limitations.md)]

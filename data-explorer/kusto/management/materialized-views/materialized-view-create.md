@@ -44,7 +44,7 @@ You must have at least [Database User](../access-control/role-based-access-contr
 | *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#properties).                                                                                                                        |
 | *MaterializedViewName*          | string | &check;  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
 | *SourceTableName*               | string | &check;  | Name of source table on which the view is defined.                                                                                                                                                                                   |
-| *Query*                         | string | &check;  | Query definition of the materialized view.                                                                                                                                                                                                        |
+| *Query*                         | string | &check;  | Query definition of the materialized view. For more information and limitations, see [Query parameter](#query-parameter) section.                                                                                                                                                                                                      |
 
 > [!NOTE]
 > If the materialized view already exists:
@@ -94,8 +94,8 @@ You can create a materialized view over another materialized view only when the 
 |---------------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#properties).                                                                                                                        |
 | *MaterializedViewName*          | string | &check;  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
-| *SourceTableName*               | string | &check;  | Name of source table on which the view is defined.                                                                                                                                                                                   |
-| *Query*                         | string | &check;  | Query definition of the materialized view.                                                                                                                                                                                                        |
+| *SourceMaterializedViewName*    | string | &check;  | Name of source table on which the view is defined.                                                                                                                                                                                   |
+| *Query*                         | string | &check;  | Query definition of the materialized view.                                                                                                                                                                                           |
 
 ## Examples
 
@@ -187,6 +187,7 @@ You can create a materialized view over another materialized view only when the 
         | summarize arg_max(Timestamp, *) by User 
     }
     ```
+
 ## Remarks
 
 ### Query parameter
@@ -312,7 +313,7 @@ The following aggregation functions are supported:
     }
     ```
 
-    The alternative, consisting on the inclusion of the update policy query as part of the materialized view, is worse and therefor not recommended:
+    The alternative, of including the update policy as part of the materialized view query, might perform worse and therefore not recommended:
 
     ```kusto
     .create materialized-view Usage on table SourceTable

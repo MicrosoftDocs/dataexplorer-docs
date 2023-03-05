@@ -47,5 +47,5 @@ The following command shows the failures, if any, ocurred during the materializa
 
 **Output:**
 
-| Timestamp | OperationId | Name  | MaxCreatedOn                 | OriginalSize | ExtentSize | CompressedSize | IndexSize | Blocks | Segments | ReservedSlot1 | ReservedSlot2 | ExtentContainerId | RowCount | MinCreatedOn                 | Tags | Kind      | ReservedSlot3 | DeletedRowCount |
-|-----------|-------------|------------|------------------------------|--------------|------------|----------------|-----------|--------|----------|---------------|---------------|-------------------|----------|------------------------------|------|-----------|---------------|-----------------|
+| Timestamp | OperationId | Name  | LastSuccessRun | FailureKind | Details |
+|-----------|-------------|-------|----------------|-------------|---------|

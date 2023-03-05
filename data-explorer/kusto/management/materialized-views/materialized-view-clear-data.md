@@ -46,10 +46,3 @@ The following command clears all data from the materialized part of view UsersVi
 ```kusto
 .clear materialized-view UsersView data 
 ```
-
-**Output:**
-
-| ExtentId                             | TableName     | CreatedOn                    |
-|--------------------------------------|---------------|------------------------------|
-| d9ac7dc8-0e23-4a6f-806a-8a641dff9c8b | _MV_UsersView | 2023-03-01T09:46:05.4256695Z |
-| b2dea1a6-fa97-4cf6-8103-902490d5ff14 | _MV_UsersView | 2023-03-01T09:47:05.516036Z  |

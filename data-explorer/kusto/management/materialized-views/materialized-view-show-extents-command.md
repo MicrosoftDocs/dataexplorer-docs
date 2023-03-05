@@ -30,27 +30,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ### Returns
 
-| Name              |Type      | Description                                                                                                                                                                                                          |
-|-------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ExtentId          | guid     | Globally unique identifier associated to the extent.                                                                                                                                                                 |
-| DatabaseName      | string   | Database that the extent belongs to.                                                                                                                                                                                 |
-| TableName         | string   | Internal name by which the engine refers to the materialized part of the materialized view. It consists of the prefix `_MV_` followed by the name the user assigned to the materialized view when it was created.    |
-| MaxCreatedOn      | datetime | Date and time when the extent was created. For a merged extent, the maximum of creation times among source extents.                                                                                                  |
-| OriginalSize      | double   | Original size in bytes of the extent data.                                                                                                                                                                           |
-| ExtentSize        | double   | Size of the extent in memory (compressed + index).                                                                                                                                                                   |
-| CompressedSize    | double   | Compressed size of the extent data in memory.                                                                                                                                                                        |
-| IndexSize         | double   | Index size of the extent data.                                                                                                                                                                                       |
-| Blocks            | long     | Number of data blocks in the extent.                                                                                                                                                                                 |
-| Segments          | long     | Number of data segments in the extent.                                                                                                                                                                               |
-| ReservedSlot1     | string   | For internal use only.                                                                                                                                                                                               |
-| ReservedSlot2     | string   | For internal use only.                                                                                                                                                                                               |
-| ExtentContainerId | string   | Identifier of the container the extent is stored in.                                                                                                                                                                 |
-| RowCount          | long     | Number of rows in the extent.                                                                                                                                                                                        |
-| MinCreatedOn      | datetime | Date and time when the extent was created. For a merged extent, the minimum of creation times among the source extents.                                                                                              |
-| Tags              | string   | Tags, if any, defined for the extent.                                                                                                                                                                                |
-| Kind              | string   | Kind of the storage engine that created the extent ("StorageV2" or "StorageV3").                                                                                                                                     |
-| ReservedSlot3     | string   | For internal use only.                                                                                                                                                                                               |
-| DeletedRowCount   | long     | Number of deleted rows in the extent.                                                                                                                                                                                |
+[!INCLUDE [show-extents-output-schema.md](../../../includes/show-extents-output-schema.md)]                                                                                                                                                                            |
 
 ## Examples
 
@@ -66,8 +46,8 @@ The following command shows the extents holding the data in the materialized par
 
 | ExtentId                              | DatabaseName | TableName  | MaxCreatedOn                 | OriginalSize | ExtentSize | CompressedSize | IndexSize | Blocks | Segments | ReservedSlot1 | ReservedSlot2 | ExtentContainerId | RowCount | MinCreatedOn                 | Tags | Kind      | ReservedSlot3 | DeletedRowCount |
 |---------------------------------------|--------------|------------|------------------------------|--------------|------------|----------------|-----------|--------|----------|---------------|---------------|-------------------|----------|------------------------------|------|-----------|---------------|-----------------|
-| 17a05fa6-9ec4-45f6-991f-28075a09c9f9  | MyDatabase   | MyDatabase | 2023-03-01T09:37:05.4447625Z |       116458 |    1080900 |         388865 |    153527 |        |          |               |               |                   |     2876 | 2023-03-01T09:36:05.4536225Z |      | StorageV3 |               |               0 |
-| 65ac5fa6-c434-56a6-65bf-07b575d09ff9  | MyDatabase   | MyDatabase | 2023-03-01T09:48:05.5547625Z |       127458 |    1200900 |         407865 |    183539 |        |          |               |               |                   |     3000 | 2023-03-01T09:48:05.5547625Z |      | StorageV3 |               |               0 |
+| 17a05fa6-9ec4-45f6-991f-28075a09c9f9  | MyDatabase   | ViewName   | 2023-03-01T09:37:05.4447625Z |       116458 |    1080900 |         388865 |    153527 |        |          |               |               |                   |     2876 | 2023-03-01T09:36:05.4536225Z |      | StorageV3 |               |               0 |
+| 65ac5fa6-c434-56a6-65bf-07b575d09ff9  | MyDatabase   | ViewName   | 2023-03-01T09:48:05.5547625Z |       127458 |    1200900 |         407865 |    183539 |        |          |               |               |                   |     3000 | 2023-03-01T09:48:05.5547625Z |      | StorageV3 |               |               0 |
 
 ### Show extents in hot cache from materialized part of one materialized view
 
@@ -81,4 +61,4 @@ The following command shows the extents holding the data in the materialized par
 
 | ExtentId                              | DatabaseName | TableName  | MaxCreatedOn                 | OriginalSize | ExtentSize | CompressedSize | IndexSize | Blocks | Segments | ReservedSlot1 | ReservedSlot2 | ExtentContainerId | RowCount | MinCreatedOn                 | Tags | Kind      | ReservedSlot3 | DeletedRowCount |
 |---------------------------------------|--------------|------------|------------------------------|--------------|------------|----------------|-----------|--------|----------|---------------|---------------|-------------------|----------|------------------------------|------|-----------|---------------|-----------------|
-| 65ac5fa6-c434-56a6-65bf-07b575d09ff9  | MyDatabase   | MyDatabase | 2023-03-01T09:48:05.5547625Z |       127458 |    1200900 |         407865 |    183539 |        |          |               |               |                   |     3000 | 2023-03-01T09:48:05.5547625Z |      | StorageV3 |               |               0 |
+| 65ac5fa6-c434-56a6-65bf-07b575d09ff9  | MyDatabase   | ViewName   | 2023-03-01T09:48:05.5547625Z |       127458 |    1200900 |         407865 |    183539 |        |          |               |               |                   |     3000 | 2023-03-01T09:48:05.5547625Z |      | StorageV3 |               |               0 |

@@ -56,27 +56,11 @@ If the table exist, only the following subset of properties are supported in the
 
 ## Returns
 
-Following is the schema of the output returned:
-
-| Name              | Type     | Description                                                                                                                                                                                 |
-|-------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Name              | string   | Name of the materialized view.                                                                                                                                                              |
-| SourceTable       | string   | Name of source table on which the view is defined.                                                                                                                                          |
-| Query             | string   | Query definition of the materialized view.                                                                                                                                                  |
-| MaterializedTo    | datetime | Maximum materialized ingestion_time() timestamp in source table. For more information, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work).        |
-| LastRun           | datetime | Last time materialization was run.                                                                                                                                                          |
-| LastRunResult     | string   | Result of last run. Returns `Completed` for successful runs, otherwise `Failed`.                                                                                                            |
-| IsHealthy         | bool     | `true` when view is considered healthy, `false` otherwise. View is considered healthy if it was successfully materialized up to the last hour (`MaterializedTo` is greater than `ago(1h)`). |
-| IsEnabled         | bool     | `true` when view is enabled (see [Disable or enable materialized view](materialized-view-enable-disable.md)).                                                                               |
-| Folder            | string   | Folder under which the materialized view is created.                                                                                                                                        |
-| DocString         | string   | Description assigned to the materialized view.                                                                                                                                              |
-| AutoUpdateSchema  | bool     | Whether the view is enabled for auto updates.                                                                                                                                               |
-| EffectiveDateTime | datetime | Effective date time of the view, determined during creation time (see [`.create materialized-view`](materialized-view-create.md#create-materialized-view)).                                 |
-| Lookback          | timespan | Time span limiting the period of time in which duplicates are expected.                                                                                                                     |
+[!INCLUDE [materialized-view-show-command-output-schema.md](../../../includes/materialized-view-show-command-output-schema.md)]
 
 ## Examples
 
-### Create or alter one materialized view
+### Create or alter a materialized view
 
 The following command creates a new or alters an existing materialized view called ArgMax:
 
@@ -97,19 +81,6 @@ The following command creates a new or alters an existing materialized view call
 
 If the materialized view does not exist, this command behaves just like [.create materialized-view](materialized-view-create.md).
 
-If it does exist already, it allows you to change the values of SourceTableName, Query or any of the properties except for 'backfill'.
-
 For more information, see the [Query parameter](materialized-view-create.md#query-parameter) and [Properties](materialized-view-create.md#properties) sections.
 
-## Limitations
-
-* **Changes not supported:**
-  * Changing column type isn't supported.
-  * Renaming columns isn't supported. For example, altering a view of `T | summarize count() by Id` to `T | summarize Count=count() by Id` drops column `count_` and creates a new column `Count`, which initially contains nulls only.
-  * Changes to the materialized view group by expressions aren't supported.
-
-* **Impact on existing data:**
-  * Altering the materialized view has no impact on existing data.
-  * New columns receive nulls for all existing records until records ingested after the alter command modify the null values.
-    * For example: if a view of `T | summarize count() by bin(Timestamp, 1d)` is altered to `T | summarize count(), sum(Value) by bin(Timestamp, 1d)`, then for a particular `Timestamp=T` for which records have already been processed before altering the view, the `sum` column contains partial data. This view only includes records processed after the alter execution.
-  * Adding filters to the query doesn't change records that have already been materialized. The filter will only apply to newly ingested records.
+[!INCLUDE [materialized-view-alter-limitations.md](../../../includes/materialized-view-alter-limitations.md)]

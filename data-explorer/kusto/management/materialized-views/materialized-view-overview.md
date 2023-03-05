@@ -18,17 +18,6 @@ Materialized views always return an up-to-date result of the aggregation query (
 > * Consider using [update policies](../updatepolicy.md) where appropriate - see [How to choose between materialized views and update policies?](#how-to-choose-between-materialized-views-and-update-policies) for more details.
 > * Monitor the health of your materialized views based on the recommendations in the [materialized views monitoring](materialized-views-monitoring.md) page.
 
-Use the following commands to manage materialized views:
-
-* [`.create materialized-view`](materialized-view-create.md)
-* [`.drop materialized-view`](materialized-view-drop.md)
-* [`{.disable | .enable} materialized-view`](materialized-view-enable-disable.md)
-* [`.show materialized-view(s)`](materialized-view-show-command.md)
-* [`.show materialized-view schema`](materialized-view-show-schema-command.md)
-* [`.show materialized-view details`](materialized-view-show-details-command.md)
-* [`.show materialized-view extents`](materialized-view-show-extents-command.md)
-* [`.show materialized-view failures`](materialized-view-show-failures-command.md)
-
 ## Why use materialized views?
 
 By investing resources (data storage, background CPU cycles) for materialized views of commonly used aggregations, you get the following benefits:
@@ -50,7 +39,7 @@ The following are common scenarios that can be addressed by using a materialized
 
 * Deduplicate records in a table using [`take_any()` (aggregation function)](../../query/take-any-aggfunction.md).
   * In deduplication scenarios, it might sometimes be useful to "hide" the source table with the materialized view, such that callers querying the table query the deduplicated materialized view instead.
-  * You can implement such recommendation by creating a function with same name as the source table, that references the view instead of the source table. Since [functions override tables with same name](../../query/schema-entities/tables.md), users calling the "table" actually query the materialized view.
+  * You can implement this pattern by creating a function with same name as the source table, that references the view instead of the source table. Since [functions override tables with same name](../../query/schema-entities/tables.md), users calling the "table" actually query the materialized view.
   * When doing so, the materialized view definition must reference the source table using the [table()](../../query/tablefunction.md) function, to avoid cyclic references in the view definition:
     <!-- csl -->
     ```kusto
@@ -91,7 +80,7 @@ The [materialized views monitoring](materialized-views-monitoring.md) page expla
 
 There are 2 ways to query a materialized view:
 
-* **Query the entire view**: when you query the materialized view by its name, similarly to querying a table, the materialized view query *combines*_* the materialized part of the view with the records in the source table that haven't been materialized yet (the `delta`).
+* **Query the entire view**: when you query the materialized view by its name, similarly to querying a table, the materialized view query *combines* the materialized part of the view with the records in the source table that haven't been materialized yet (the `delta`).
   * Querying the materialized view always returns the most up-to-date results, based on all records ingested to the source table. For more information about the *materialized* vs. *non-materialized* parts in materialized view, see [how materialized views work](#how-materialized-views-work).
   * This option might not perform best as it needs to materialize the `delta` part during query time. Performance in this case depends on the view's age and the filters applied in the query. The [materialized view query optimizer section](#materialized-view-query-optimizer) includes possible ways to improve query performance when querying the entire view.
 
