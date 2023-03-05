@@ -3,7 +3,7 @@ title: series_dot_product_fl() - Azure Data Explorer
 description: This article describes series_dot_product_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 10/18/2020
+ms.date: 03/05/2023
 ---
 # series_dot_product_fl()
 
@@ -18,12 +18,14 @@ The function `series_dot_product_fl()` takes an expression containing two dynami
 
 `series_dot_product_fl(`*vec1*`,` *vec2*`)`
   
-## Arguments
+## Parameters
 
-* *vec1*: Dynamic array cell of numeric values.
-* *vec2*: Dynamic array cell of numeric values, same length as *vec1*.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*vec1*|dynamic|&check;|An array of numeric values.|
+|*vec2*|dynamic|&check;|An array of numeric values that is the same length as *vec1*.|
 
-## Usage
+## Examples
 
 `series_dot_product_fl()` is a user-defined function. You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
@@ -31,7 +33,9 @@ The function `series_dot_product_fl()` takes an expression containing two dynami
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32Q3WoCMRBG7/MUc5lAimQtvajskyyyaDKVSH6WbBIU7bt3VlctIubu+5JzJozDDCMmi2NvYu6HFE3Ruf9xLa+o1bc5ho23WgKl5pYEOzGg4whGh/6CQXsT+eKyHdzxYriSYnUHdPH9WPzjubWJ3y0S5hm8U2vxP8kPKmZPjiaWrUM+y7rpjv2u2GLBSrAxMD4kGzIoOANp96gzVNWmTdghpz8tJSiy12auPiV8TZWQ70lC1TOrCFZXmp0BDxmDgbpsX66V12kjjfgDPSnst3gBAAA=" target="_blank">Run the query</a>
+
 ```kusto
 let series_dot_product_fl=(vec1:dynamic, vec2:dynamic)
 {

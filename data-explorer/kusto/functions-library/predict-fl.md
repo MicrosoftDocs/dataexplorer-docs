@@ -3,7 +3,7 @@ title: predict_fl() - Azure Data Explorer
 description: This article describes the predict_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 03/05/2023
 ---
 # predict_fl()
 
@@ -17,17 +17,16 @@ The function `predict_fl()` predicts using an existing trained machine learning 
 
 `T | invoke predict_fl(`*models_tbl*`,` *model_name*`,` *features_cols*`,` *pred_col*`)`
 
-## Arguments
+## Parameters
 
-* *models_tbl*: The name of the table containing all serialized models. This table must contain the following columns:
-    * *name*: the model name
-    * *timestamp*: time of model training
-    * *model*: string representation of the serialized model
-* *model_name*: The name of the specific model to use.
-* *features_cols*: Dynamic array containing the names of the features columns that are used by the model for prediction.
-* *pred_col*: The name of the column that stores the predictions.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*models_tbl*|string|&check;|The name of the table that contains all serialized models. The table must have the following columns:<br/> `name`: the model name<br/>`timestamp`: time of model training<br/>`model`: string representation of the serialized model|
+|*model_name*|string|&check;|The name of the specific model to use.|
+|*features_cols*|synamic|&check;|An array containing the names of the features columns that are used by the model for prediction.|
+|*pred_col*|string|&check;|The name of the column that stores the predictions.|
 
-## Usage
+## Examples
 
 `predict_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
