@@ -17,11 +17,10 @@ The following table lists the supported authentication methods and any required 
 
 |Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
 |--|--|--|
-|[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Reader|Reader|
-|[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|List + Read|
-|[Azure AD access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
-|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|||
-
+|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Reader|Reader|
+|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|List + Read|
+|[Azure AD access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
+|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|||
 
 ## Syntax
 
