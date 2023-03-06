@@ -23,7 +23,7 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 | Name | Type | Required| Description |
 |---|---|---|---|
-| *ConnectionString* | string | &check; | The connection string that points at the SQL Server network endpoint. See [valid methods of authentication](#authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). |
+| *ConnectionString* | string | &check; | The connection string that points at the SQL Server network endpoint. See [valid methods of authentication](#authentication-and-authorization) and how to specify the [network endpoint](#specify-the-network-endpoint). |
 | *SqlQuery* | string | &check; | The query that is to be executed against the SQL endpoint. The query must return one or more row sets, but only the first one is made available for the rest of the Kusto query. |
 | *SqlParameters* | dynamic | | A property bag of key-value pairs to pass as parameters along with the query. |
 |*Options* | dynamic | | A property bag of key-value pairs to pass more advanced settings along with the query. Currently, only `token` can be set, to pass a caller-provided Azure AD access token that is forwarded to the SQL endpoint for authentication.|
