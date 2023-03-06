@@ -3,7 +3,7 @@ title: Export data to SQL - Azure Data Explorer
 description: This article describes Export data to SQL in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/06/2023
 ---
 # Export data to SQL
 
@@ -13,9 +13,16 @@ Export data to SQL allows you to run a query and have its results sent to a tabl
 
 You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
-## SQL database authorization
+## Authentication and authorization
 
-Authorization to the SQL database is based on the sql connection string. To learn more, see [SQL Server authentication methods](../../api/connection-strings/sql-authentication-methods.md).
+The authentication method is based on the connection string provided, and the permissions required to access the SQL database vary depending on the authentication method.
+
+The following table lists the supported authentication methods and the permissions needed to export to SQL.
+
+|Authentication method|Permissions|
+|--|--|
+|[Impersonation](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication)|Existing table: UPDATE and INSERT<br/>New table: UPDATE, INSERT, and CREATE |
+|[Username and password](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)||
 
 ## Syntax
 
