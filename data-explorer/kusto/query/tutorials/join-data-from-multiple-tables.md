@@ -98,29 +98,30 @@ Add `| render columnchart` to the query to visualize the result.
 
 The [lookup](../lookupoperator.md) operator optimizes the performance of queries where a fact table is enriched with data from a dimension table. It extends the fact table with values that are looked up in a dimension table. For best performance, the system by default assumes that the left table is the larger fact table, and the right table is the smaller dimension table. This is exactly opposite to the assumption that's used by the `join` operator.
 
-The following query is an example of using `lookup` to merge the `StormEvents` and `PopulationData` tables. It filters for storms that caused injuries and shows the state population and injury count from the event.
+In the help cluster, there's another database called `ContosoSales` that contains sales data. The following query uses `lookup` to merge the `SalesFact` and `Products` tables from this database to get the total sales by product category.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOQQrCMBRE94J3mKViF71AXdVFd0J7gWi/mDbmh58fpeDhJYoVdTvDezOtslx2V/Ial4s7bmcSQuOHJJZibYWOii1KsMxp4/s5z4xjHlPAaH1fOTopJyXBas8hOaOWfW3UrMEerRqljAThIRuew90UqHh1BT5UgY7VuPcqqt9bm79HWR1ZFIfpG34AQYNrmeYAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAwtOzEktdktMLuGqUcjJz88uLVAIKMpPKU0uKVbIz4OxvVMrgfLFpbm5iUWZVakKIfkliTnBIK0KtgrJ+aV5JRqaCkmVMOXOiSWp6flFlX6JualAfflFKalFIGkkbSmpxckAoEL9GXwAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-StormEvents
-| where InjuriesDirect > 0 or InjuriesIndirect > 0
-| lookup kind=leftouter (PopulationData) on State
-| project EventType, State, Population, TotalInjuries = InjuriesDirect + InjuriesIndirect
-| sort by TotalInjuries
+SalesFact
+| lookup Products on ProductKey
+| summarize TotalSales = count() by ProductCategoryName
+| order by TotalSales desc
 ```
 
 **Output**
 
-|EventType |State |Population |TotalInjuries|
-|--|--|--|--|
-Excessive Heat| MISSOURI| 6153230| 519|
-Excessive Heat| MISSOURI| 6153230| 422|
-Excessive Heat| OKLAHOMA| 3973710| 200|
-Heat| TENNESSEE| 6886720| 187|
-Winter Weather| TEXAS| 29363100| 137|
-|...|...|...|...|
+|ProductCategoryName|TotalSales|
+|--|--|
+|Games and Toys|966782|
+|TV and Video|715024|
+|Cameras and camcorders |323003|
+|Computers|313487|
+|Home Appliances|237508|
+|Audio|192671|
+|Cell phones|50342|
+|Music, Movies and Audio Books|33376|
 
 > [!NOTE]
 > The `lookup` operator only supports two join flavors: `leftouter` and `inner`.
