@@ -13,10 +13,6 @@ zone_pivot_groups: kql-flavors
 
 The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL network endpoint and returns the results of the query. This plugin is primarily designed for querying small datasets, for example, enriching data with reference data stored in [Azure Cosmos DB](/azure/cosmos-db/). The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
-## Authorization
-
-To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the authorization information in the connection string. The supported authorization methods are using account keys or an Azure AD token.
-
 ## Syntax
 
 `evaluate` `cosmosdb_sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)` [`:` *OutputSchema*]
@@ -38,6 +34,15 @@ Supported *Options* settings include:
 | `armResourceId` | API key from the Azure Resource Manager. </br>**Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc` |
 | `token` | Azure AD access token used to authenticate with the Azure Resource Manager.|
 | `preferredLocations` | Which region the data is queried from. </br>**Example:**`['East US']` |
+
+## Authentication and authorization
+
+To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the authorization information in the connection string. The following table provides the supported authentication methods and the description for how to use that method.
+
+|Authentication method|Connection string syntax|Description|
+|--|--|--|--|
+|Account key|`;AccountKey=`|Append the account key to the connection string.|
+|Azure AD access token|`{ token: <token> }`|Provide the token in the *Options* argument.|
 
 ## Set callout policy
 
