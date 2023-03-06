@@ -11,7 +11,7 @@ The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipe
 
 > [!NOTE]
 > * `bartlett_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [function declaration](#function-declaration).
-> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
+> * This function contains inline Python and requires [turning on the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
 
 ## Syntax
 
