@@ -386,8 +386,6 @@ items:
                 href: security-network-private-endpoint-troubleshoot.md
             - name: Virtual network injection
               items:
-              - name: Create a cluster in your VNet - Portal
-                href: vnet-create-cluster-portal.md
               - name: Deploy your cluster to your VNet
                 href: vnet-deployment.md
               - name: Create a private or service endpoint to resources used by data connections

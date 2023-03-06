@@ -165,7 +165,7 @@ Reliability recommendations include the following:
 
 #### Cluster uses subnet without delegation
 
-The recommendation is given to a virtual network cluster that uses a subnet without delegation for 'Microsoft.Kusto/clusters'. The recommendation is to delegate your subnet to 'Microsoft.Kusto/clusters'. For more information, see step 8 in [Create Virtual Network and subnet](vnet-create-cluster-portal.md#create-virtual-network-and-subnet). When you delegate a subnet to a cluster, you allow that service to establish basic network configuration rules for the subnet, which helps the cluster operate its instances in a stable manner.
+The recommendation is given to a virtual network cluster that uses a subnet without delegation for 'Microsoft.Kusto/clusters'. The recommendation is to delegate your subnet to 'Microsoft.Kusto/clusters'. When you delegate a subnet to a cluster, you allow that service to establish basic network configuration rules for the subnet, which helps the cluster operate its instances in a stable manner.
 
 #### Cluster uses subnet with invalid IP configuration
 
