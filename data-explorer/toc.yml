@@ -60,7 +60,7 @@ items:
       - name: 3 - Join data from multiple tables
         href: kusto/query/tutorials/join-data-from-multiple-tables.md
       - name: 4 - Create geospatial visualizations
-        href: kusto/query/tutorials/perform-geospatial-clustering.md
+        href: kusto/query/tutorials/create-geospatial-visualizations.md
 - name: Concepts
   items:
   - name: Business continuity

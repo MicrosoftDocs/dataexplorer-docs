@@ -447,7 +447,7 @@
     },
     {
       "source_path": "data-explorer/kusto/query/geospatial-visualizations.md",
-      "redirect_url": "/azure/data-explorer/kusto/query/tutorials/perform-geospatial-clustering",
+      "redirect_url": "/azure/data-explorer/kusto/query/tutorials/create-geospatial-visualizations",
       "redirect_document_id": true
     },
     {
