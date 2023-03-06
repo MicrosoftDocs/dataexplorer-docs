@@ -2,12 +2,12 @@
 title: 'Tutorial: Learn common Kusto Query Language operators'
 description: This tutorial describes how to write queries using common operators in the Kusto Query Language to meet common query needs.
 ms.topic: tutorial
-ms.date: 01/18/2023
+ms.date: 03/06/2023
 ---
 
 # Tutorial: Learn common operators
 
-[Kusto Query Language (KQL)](../index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), and [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/). This tutorial is an introduction to the essential KQL operators used to access and analyze your data.
+[Kusto Query Language (KQL)](../index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/), and more. This tutorial is an introduction to the essential KQL operators used to access and analyze your data.
 
 In this tutorial, you'll learn how to:
 
