@@ -19,10 +19,6 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 `evaluate` `sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)` [`:` *OutputSchema*]
 
-## Authorization
-
-To authorize to a MySQL Server network endpoint, you need to specify the authorization information in the connection string. The supported authorization methods are via Azure AD token or impersonation.
-
 ## Parameters
 
 | Name | Type | Required| Description |
