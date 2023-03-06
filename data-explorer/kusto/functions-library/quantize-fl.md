@@ -3,10 +3,9 @@ title: quantize_fl() - Azure Data Explorer
 description: This article describes the quantize_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 03/05/2023
 ---
 # quantize_fl()
-
 
 The function `quantize_fl()` bins metric columns. It quantizes metric columns to categorical labels, based on the K-Means algorithm.
 
@@ -16,14 +15,16 @@ The function `quantize_fl()` bins metric columns. It quantizes metric columns to
 
 ## Syntax
 
-`T | invoke quantize_fl(`*num_bins*`,` *in_cols*`,` *out_cols*`,` *labels*`)`
+`T | invoke quantize_fl(`*num_bins*`,` *in_cols*`,` *out_cols* [`,` *labels* ]`)`
 
-## Arguments
+## Parameters
 
-* *num_bins*: Required number of bins.
-* *in_cols*: Dynamic array containing the names of the columns to quantize.
-* *out_cols*: Dynamic array containing the names of the respective output columns for the binned values.
-* *labels*: Dynamic array containing the label names. This parameter is optional. If *Labels* isn't supplied, bin ranges will be used.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*num_bins*|int|&check;| The required number of bins.|
+|*in_cols*|dynamic|&check;|An array containing the names of the columns to quantize.|
+|*out_cols*|dynamic|&check;|An array containing the names of the respective output columns for the binned values.|
+|*labels*|dynamic||An array containing the label names. If unspecified, bin ranges will be used.|
 
 ## Usage
 
