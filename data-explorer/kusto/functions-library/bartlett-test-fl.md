@@ -59,8 +59,6 @@ let bartlett_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:stri
 
 To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
 
-### One-time installation
-
 ~~~kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Bartlett Test")
 bartlett_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string)
