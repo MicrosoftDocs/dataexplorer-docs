@@ -67,7 +67,7 @@ PopulationData
 |ARKANSAS|3025880|
 |CALIFORNIA|39562900|
 
-Both tables contains a `State` column. The `StormEvents` table has many more columns, and the `PopulationData` has only one column containing the population of the given state.
+Both tables contains a `State` column. The `StormEvents` table has many more columns, and the `PopulationData` has only one other column that contains the population of the given state.
 
 ### Join the tables
 
@@ -96,7 +96,7 @@ Add `| render columnchart` to the query to visualize the result.
 
 ## Use the lookup operator
 
-The [lookup](../lookupoperator.md) operator is used to combine rows from tables based on matching values in specified columns. It is similar to `join` but with some differences, such as how it handles repeated columns and performance considerations. Using `lookup` to combine a large table with a small table can be more efficient because it broadcasts the small table to the large table, saving memory and resources.
+The [lookup](../lookupoperator.md) operator is a special implementation of a `join` operator that optimizes the performance of queries where a fact table is enriched with data from a dimension table. It extends the fact table with values that are looked up in a dimension table. For best performance, the system by default assumes that the left table is the larger (fact) table, and the right table is the smaller (dimension) table. This is exactly opposite to the assumption that's used by the `join` operator.
 
 The following query is an example of using `lookup` to merge the `StormEvents` and `PopulationData` tables. It filters for storms that caused injuries and shows the state population and injury count from the event.
 
