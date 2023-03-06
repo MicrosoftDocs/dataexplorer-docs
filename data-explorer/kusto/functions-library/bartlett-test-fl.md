@@ -52,15 +52,7 @@ let bartlett_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:stri
     ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
-}
-;
-datatable(id:string, sample1:dynamic, sample2:dynamic) [
-'Test #1', dynamic([23.64, 20.57, 20.42]), dynamic([27.1, 22.12, 33.56]),
-'Test #2', dynamic([20.85, 21.89, 23.41]), dynamic([35.09, 30.02, 26.52]),
-'Test #3', dynamic([20.13, 20.5, 21.7, 22.02]), dynamic([32.2, 32.79, 33.9, 34.22])
-]
-| extend test_stat= 0.0, p_val = 0.0
-| invoke bartlett_test_fl('sample1', 'sample2', 'test_stat', 'p_val')
+};
 ~~~
 
 # [Stored](#tab/stored)
