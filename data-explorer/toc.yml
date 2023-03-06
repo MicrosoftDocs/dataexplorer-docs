@@ -59,7 +59,7 @@ items:
         href: kusto/query/tutorials/use-aggregation-functions.md
       - name: 3 - Join data from multiple tables
         href: kusto/query/tutorials/join-data-from-multiple-tables.md
-      - name: 4 - Perform geospatial clustering
+      - name: 4 - Create geospatial visualizations
         href: kusto/query/tutorials/perform-geospatial-clustering.md
 - name: Concepts
   items:

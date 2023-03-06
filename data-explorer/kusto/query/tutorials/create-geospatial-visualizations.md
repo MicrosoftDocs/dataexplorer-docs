@@ -1,11 +1,11 @@
 ---
-title: 'Tutorial: Perform geospatial clustering'
-description: This tutorial gives examples of geospatial clustering in the Kusto Query Language.
+title: 'Tutorial: Create geospatial visualizations'
+description: This tutorial gives examples of geospatial visualizations in the Kusto Query Language.
 ms.topic: tutorial
 ms.date: 01/18/2023
 ---
 
-# Tutorial: Perform geospatial clustering
+# Tutorial: Create geospatial visualizations
 
 This tutorial is for those who want to leverage [Kusto Query Language (KQL)](../index.md) for geospatial clustering. Geospatial clustering is a way to organize and analyze data based on geographical location. KQL offers multiple methods for performing [geospatial clustering](../geospatial-grid-systems.md), as well as tools for [geospatial visualizations](../geospatial-visualizations.md).
 
