@@ -107,16 +107,18 @@ evaluate sql_request(
 | project Name
 ```
 
-## Authentication
+## Authentication and authorization
 
 The sql_request plugin supports three methods of authentication to the
-SQL Server endpoint:
+SQL Server endpoint.
 
 ### Azure AD-integrated authentication
 
 `Authentication="Active Directory Integrated"`
 
   Azure AD-integrated authentication is the preferred method. This method has the user or application authenticate via Azure AD to Kusto. The same token is then used to access the SQL Server network endpoint.
+
+  The principal performing the action must also have the required permissions on the SQL resource to perform the requested action. For example, in order to read from the database, the principal needs table SELECT permissions, and to write to the database the principal needs UPDATE and INSERT permissions. If writing to a new database, then CREATE permissions are also required.
 
 ### Username/Password authentication
 
