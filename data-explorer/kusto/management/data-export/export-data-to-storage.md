@@ -47,17 +47,6 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 | `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
 | `useNativeParquetWriter` | `bool` | Use the new export implementation when exporting to Parquet, this implementation is a more performant, resource light export mechanism. An exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
 
-## Returns
-
-The commands return a table that describes the generated storage artifacts.
-Each record describes a single artifact and includes the storage path to the
-artifact and how many data records it holds.
-
-|Path|NumRecords|
-|---|---|
-|http://storage1.blob.core.windows.net/containerName/export_1_d08afcae2f044c1092b279412dcb571b.csv|10|
-|http://storage1.blob.core.windows.net/containerName/export_2_454c0f1359e24795b6529da8a0101330.csv|15|
-
 ## Authentication and authorization
 
 The authentication method is based on the connection string provided, and the permissions required vary depending on the authentication method.
@@ -70,6 +59,17 @@ The following table lists the supported authentication methods and the permissio
 |[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Write|Write|
 |[Azure AD access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
 |[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|||
+
+## Returns
+
+The commands return a table that describes the generated storage artifacts.
+Each record describes a single artifact and includes the storage path to the
+artifact and how many data records it holds.
+
+|Path|NumRecords|
+|---|---|
+|http://storage1.blob.core.windows.net/containerName/export_1_d08afcae2f044c1092b279412dcb571b.csv|10|
+|http://storage1.blob.core.windows.net/containerName/export_2_454c0f1359e24795b6529da8a0101330.csv|15|
 
 ## Asynchronous mode
 
