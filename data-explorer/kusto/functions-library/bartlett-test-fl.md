@@ -28,6 +28,8 @@ The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipe
 
 ## Function declaration
 
+`bartlett_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
+
 # [Query-defined](#tab/query-defined)
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
@@ -92,8 +94,6 @@ bartlett_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_v
 ---
 
 ## Examples
-
-`bartlett_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
 # [Query-defined](#tab/query-defined-example)
 
