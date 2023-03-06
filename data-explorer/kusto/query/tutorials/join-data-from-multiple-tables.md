@@ -127,22 +127,23 @@ Winter Weather| TEXAS| 29363100| 137|
 
 ## Join query-generated tables
 
-Joins can also be done based off of query results from the same table.
+Joins can also be done based on query results from the same table.
 
 Say you want to create a list of states in which both lightning and avalanche events occurred. Use the join operator to merge the rows of two tables—one containing data on lightning events and the other containing data on avalanche events—based on the `State` column.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZR8MtMzSvIy89KVgAqy8jPzFLIz81JsM/PyUosUNLgUgCAYYYgCWAC7SY5liTmJeckZqUpgRZpgMj8PqD2xJFVBAWh8SmZxSWZecglECABlvNsfnAAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZR8MtMzSvIy89KVgApSMotLMvOSSxSCSxJLUoECWfmZeQrZmXkptpl5ealFChpcCkAQjDBVASyA3WjHssScxLzkjFQlqCI040GCmmAyPw8iBACRNof1rwAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
 | where EventType == "Lightning"
+| distinct State
 | join kind=inner (
     StormEvents 
     | where EventType == "Avalanche"
+    | distinct State
     )
     on State  
-| distinct State
 ```
 
 **Output**
