@@ -7,11 +7,11 @@ ms.date: 03/06/2023
 ---
 # bartlett_test_fl()
 
-The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
+The `bartlett_test_fl()` function is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) function that performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
 
-> [!NOTE]
-> * `bartlett_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [function declaration](#function-declaration).
-> * This function contains inline Python and requires [turning on the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
+## Prerequisites
+
+* `python()` plugin must be [turned on for the cluster]](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python to used in the function.
 
 ## Syntax
 
@@ -28,11 +28,11 @@ The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipe
 
 ## Function declaration
 
-`bartlett_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
+You can define the function by either embeding its code as a query-defined function, or creating it as a stored function in your database, as follows:
 
-# [Query-defined](#tab/query-defined)
+### [Query-defined](#tab/query-defined)
 
-To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
+Embed the code in the query using the [let statement](../query/letstatement.md). No permissions are required.
 
 ~~~kusto
 let bartlett_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string)
@@ -55,9 +55,9 @@ let bartlett_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:stri
 };
 ~~~
 
-# [Stored](#tab/stored)
+### [Stored](#tab/stored)
 
-To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
+Use the [`.create function`](../management/create-function.md) to add the code as a stored function in your database. Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md) command.
 
 ~~~kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Bartlett Test")
@@ -83,11 +83,13 @@ bartlett_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_v
 
 ---
 
-## Examples
+## Example
 
-# [Query-defined](#tab/query-defined-example)
+The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
 
-To use a query-defined function, embed the code using the [let statement](../query/letstatement.md).
+### [Query-defined](#tab/query-defined-example)
+
+To use a query-defined function, invoke it after the embedded function definition.
 
 ~~~kusto
 let bartlett_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string)
@@ -117,17 +119,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | invoke bartlett_test_fl('sample1', 'sample2', 'test_stat', 'p_val')
 ~~~
 
-**Output**
-
-| id | sample1 | sample2 | test_stat | p_val |
-| --- | --- | --- | --- | --- |
-| Test #1 | [23.64, 20.57, 20.42] | [27.1, 22.12, 33.56] | 1.7660796224425723 | 0.183868001738637 |
-| Test #2 | [20.85, 21.89, 23.41] | [35.09, 30.02, 26.52] | 1.9211710616896014 | 0.16572762069132516 |
-| Test #3 | [20.13, 20.5, 21.7, 22.02] | [32.2, 32.79, 33.9, 34.22] | 0.0026985713829234454 | 0.958570306268548 |
-
-# [Stored](#tab/stored-example)
-
-The following example uses the stored function created in the [Function declaration](#function-declaration) section.
+### [Stored](#tab/stored-example)
 
 ~~~kusto
 datatable(id:string, sample1:dynamic, sample2:dynamic) [
@@ -139,7 +131,9 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | invoke bartlett_test_fl('sample1', 'sample2', 'test_stat', 'p_val')
 ~~~
 
-**Output**
+---
+
+## Output
 
 | id | sample1 | sample2 | test_stat | p_val |
 | --- | --- | --- | --- | --- |
