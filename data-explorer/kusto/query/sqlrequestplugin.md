@@ -110,31 +110,16 @@ evaluate sql_request(
 ## Authentication and authorization
 
 The sql_request plugin supports the following three methods of authentication to the
-SQL Server endpoint.
+SQL Server endpoint. The permissions columns specifies any permissions needed on the SQL resource to be able to perform the requested action.
 
-### Azure AD-integrated authentication
+|Authentication method|Syntax|Description|Permissions|
+|--|--|--|
+|Azure AD-integrated|`Authentication="Active Directory Integrated"`|This is the preferred authentication method. The user or application authenticates via Azure AD to Azure Data Explorer, and the same token is used to access the SQL Server network endpoint.|Read: table SELECT permissions<br/>Write: table CREATE, UPDATE, and INSERT permissions|
+|Username and password|`User ID=...; Password=...;`|Username and password authentication support is provided when Azure AD-integrated authentication can't be done. Avoid this method, when possible, as secret information is sent through Azure Data Explorer.||
+|Azure AD access token|`dynamic({'token': h"eyJ0..."})`|The access token is passed as `token` property in the *Options* argument of the plugin.||
 
-`Authentication="Active Directory Integrated"`
-
-  Azure AD-integrated authentication is the preferred method. This method has the user or application authenticate via Azure AD to Kusto. The same token is then used to access the SQL Server network endpoint.
-
-  The principal performing the action must also have the required permissions on the SQL resource to perform the requested action. For example, in order to read from the database, the principal needs table SELECT permissions, and to write to the database the principal needs UPDATE and INSERT permissions. If writing to a new database, then CREATE permissions are also required.
-
-### Username/Password authentication
-
-`User ID=...; Password=...;`
-
-  Username and password authentication support is provided when Azure AD-integrated authentication can't be done. Avoid this method, when possible, as secret information is sent through Kusto.
-
-### Azure AD access token
-
-`dynamic({'token': h"eyJ0..."})`
-
-   With the Azure AD access token authentication method, the caller generates the access token, which is forwarded by Kusto to the SQL endpoint. The connection string shouldn't include authentication information like `Authentication`, `User ID`, or `Password`. Instead, the access token is passed as `token` property in the `Options` argument of the sql_request plugin.
-
-> [!WARNING]
-> Connection strings and queries that include confidential information or information that should be guarded should be obfuscated to be omitted from any Kusto tracing.
-> For more informations, see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals).
+> [!NOTE]
+> Connection strings and queries that include confidential information or information that should be guarded should be obfuscated to be omitted from any Kusto tracing. For more information, see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Encryption and server validation
 
