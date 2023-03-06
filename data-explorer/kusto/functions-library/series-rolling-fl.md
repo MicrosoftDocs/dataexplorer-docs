@@ -3,7 +3,7 @@ title: series_rolling_fl() - Azure Data Explorer
 description: This article describes the series_rolling_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/14/2022
+ms.date: 03/05/2023
 ---
 # series_rolling_fl()
 
@@ -17,17 +17,16 @@ The function `series_rolling_fl()` applies rolling aggregation on a series. It t
 
 `T | invoke series_rolling_fl(`*y_series*`,` *y_rolling_series*`,` *n*`,` *aggr*`,` *aggr_params*`,` *center*`)`
 
-## Arguments
+## Parameters
 
-* *y_series*: The name of the column (of the input table) containing the series to fit.
-* *y_rolling_series*: The name of the column to store the rolling aggregation series.
-* *n*: The width of the rolling window.
-* *aggr*: The name of the aggregation function to use. See [aggregation functions](#aggregation-functions).
-* *aggr_params*: Optional parameters for the aggregation function.
-* *center*: An optional Boolean value that indicates whether the rolling window is one of the following options:
-    * applied symmetrically before and after the current point, or
-    * applied from the current point backwards. <br>
-    By default, *center* is false, for calculation on streaming data.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *y_series* | string | &check; | The name of the column that contains the series to fit.|
+| *y_rolling_series* | string | &check; | The name of the column to store the rolling aggregation series.|
+| *n* | int | &check; | The width of the rolling window.|
+| *aggr* | string | &check; | The name of the aggregation function to use. See [aggregation functions](#aggregation-functions).|
+| *aggr_params* | string | | Optional parameters for the aggregation function.|
+| *center* | bool| |Indicates whether the rolling window is applied symmetrically before and after the current point or applied from the current point backwards. By default, *center* is `false`, for calculation on streaming data.|
 
 ## Aggregation functions
 

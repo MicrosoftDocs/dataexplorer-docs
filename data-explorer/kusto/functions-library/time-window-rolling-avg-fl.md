@@ -3,7 +3,7 @@ title: time_window_rolling_avg_fl() - Azure Data Explorer
 description: This article describes time_window_rolling_avg_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 12/14/2021
+ms.date: 03/05/2023
 ---
 # time_window_rolling_avg_fl()
 
@@ -18,15 +18,17 @@ This type of rolling window calculation is required for use cases where the metr
 
 ## Syntax
 
-`T | invoke time_window_rolling_avg_fl(`*t_col*, *y_col*, *key_col*, *dt* [, *direction* ]`)`
+`T | invoke time_window_rolling_avg_fl(`*t_col*`,` *y_col*`,` *key_col*`,` *dt* [`,` *direction* ]`)`
   
-## Arguments
+## Parameters
 
-* *t_col*: The name of the column containing the time stamp of the records.
-* *y_col*: The name of the column containing the metric value of the records.
-* *key_col*: The name of the column containing the partition key of the records.
-* *dt*: Duration of the rolling window.
-* *direction*: Aggregation direction (optional). +1/-1: rolling window is set from current time forward/backward respectively. Default is -1, as backward rolling window is the only possible method for streaming scenarios.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *t_col* | string | &check; | The name of the column containing the time stamp of the records.|
+| *y_col* | string | &check; | The name of the column containing the metric value of the records.|
+| *key_col* | string | &check; | The name of the column containing the partition key of the records.|
+| *dt* | timespan | &check; | The duration of the rolling window.|
+| *direction* | int | | The aggregation direction. The possible values are +1 or -1. A rolling window is set from current time forward/backward respectively. Default is -1, as backward rolling window is the only possible method for streaming scenarios.|
 
 ## Usage
 

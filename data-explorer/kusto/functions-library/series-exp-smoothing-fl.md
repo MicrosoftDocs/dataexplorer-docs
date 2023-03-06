@@ -3,7 +3,7 @@ title: series_exp_smoothing_fl() - Azure Data Explorer
 description: This article describes series_exp_smoothing_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/22/2020
+ms.date: 03/05/2023
 ---
 # series_exp_smoothing_fl()
 
@@ -16,12 +16,14 @@ The function `series_exp_smoothing_fl()` takes an expression containing a dynami
 
 ## Syntax
 
-`series_exp_smoothing_fl(`*y_series*`, [`*alpha*`])`
+`series_exp_smoothing_fl(`*y_series* [`,` *alpha* ]`)`
   
-## Arguments
+## Parameters
 
-* *y_series*: Dynamic array cell of numeric values.
-* *alpha*: An optional real value in the range [0-1], specifying the weight of the last point vs. the weight of the previous points (which is `1-alpha`). Default is 0.5.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*y_series*|dynamic|&check;|An array cell of numeric values.|
+|*alpha*|real||A value in the range [0-1] that specifies the weight of the last point vs. the weight of the previous points, which is `1 - alpha`. The default is 0.5.|
 
 ## Usage
 
@@ -31,7 +33,9 @@ The function `series_exp_smoothing_fl()` takes an expression containing a dynami
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPzWrDMBCE73qKuRQscIMFzSXFzyK29iYWkWSzUkDqz7tXaUNDDt3j7H6zM54zEovjZLlsNoV1zYuLJ3v0GNFV+7s8zDVScFMP8ttCh3m9vHkeh91eqw+FNjcT5+QP6rHRdLYkQrX74fSDZG5uz0Zr9aVelVA8MQqOsgYY5BX7ASnzBqM+wSVznFFbroInmKFp6RICiXu/UiMCndl6l3JX2qf6oFR9t7g3tdejf/p3tcewe9FooDSMBd5FnhaS/A2UDARTNwEAAA==" target="_blank">Run the query</a>
+
 ```kusto
 let series_exp_smoothing_fl = (y_series:dynamic, alpha:double=0.5)
 {
