@@ -68,17 +68,21 @@ StormEvents
 
 A dynamic GeoJSON value can change or be updated and are often used for real-time mapping applications. Mapping points using dynamic GeoJSON values allows for more flexibility and control over the representation of the data on the map that may not be possible with plain latitude and longitude values.
 
-The following query uses the [geo_point_to_s2cell](../geo-point-to-s2cell-function.md) and [geo_s2cell_to_central_point](../geo-s2cell-to-central-point-function.md) to map storm events in a scatter chart. In this case, the visualization is the same as our first example using longitude and latitude. The difference is in how the points were determined.
+The following query uses the [geo_point_to_s2cell](../geo-point-to-s2cell-function.md) and [geo_s2cell_to_central_point](../geo-s2cell-to-central-point-function.md) to map storm events in a scatter chart.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA33OvQrCQBAE4N6n2DKBICpYphHs7CwlhPWy5E7vJ+ytiuLDe5dYBAS7hZ1vmKMEdvs7eYmLNwwcLqQEdtQbfwi++l4o6RlvziGbF8H5CRqjrnsK7RCMl1ZCGzeKrC1+aQXbctY9Aqgh48lkrdICRjvVFbl9bqzvk0hTCW0xRpYqBO6MR6F4WjVlBRblX2bd5EIm3xFDVChCrDSywMOIhuJqfJe8w6H8ABkqA1kUAQAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
-| take 100
-| summarize by hash=geo_point_to_s2cell(BeginLon, BeginLat)
-| project geo_s2cell_to_central_point(hash)
+| project BeginLon, BeginLat
+| summarize by hash=geo_point_to_s2cell(BeginLon, BeginLat, 5)
+| project point = geo_s2cell_to_central_point(hash)
+| project lng = toreal(point.coordinates[0]), lat = toreal(point.coordinates[1])
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="../images/kql-tutorials/geospatial-storm-events-scatterchart.png" alt-text="Screenshot of storm event scatterchart.":::
+:::image type="content" source="../images/kql-tutorials/geospatial-storm-events-centered.png" alt-text="Screenshot of sample storm events on a map by type.":::
 
 ## Represent data points with variable-sized bubbles
 
@@ -103,6 +107,7 @@ StormEvents
 :::image type="content" source="../images/kql-tutorials/tornado-geospatial-map.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of tornado storms.":::
 
 ## Display points within a specific area
+
 
 Use a polygon to define the region and the [geo_point_in_polygon](../geo-point-in-polygon-function.md) function to filter for events that occur within that region.
 
