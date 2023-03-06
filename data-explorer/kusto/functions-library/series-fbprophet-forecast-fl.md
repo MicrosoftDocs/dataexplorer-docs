@@ -3,7 +3,7 @@ title: series_fbprophet_forecast_fl() - Azure Data Explorer
 description: This article describes the series_fbprophet_forecast_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 03/05/2023
 ---
 # series_fbprophet_forecast_fl()
 
@@ -16,16 +16,18 @@ The function `series_fbprophet_forecast_fl()` takes an expression containing a t
 
 ## Syntax
 
-`T | invoke series_fbprophet_forecast_fl(`*ts_series*`,` *y_series*`,` *y_pred_series*`, [` *points*`, `*y_pred_low_series*`,` *y_pred_high_series*]`)`
+`T | invoke series_fbprophet_forecast_fl(`*ts_series*`,` *y_series*`,` *y_pred_series*`,` [ *points* ]`,` [ *y_pred_low_series* ]`,` [ *y_pred_high_series* ]`)`
   
-## Arguments
+## Parameters
 
-* *ts_series*: The name of the input table column containing the time stamps of the series to predict.
-* *y_series*: The name of the input table column containing the values of the series to predict.
-* *y_pred_series*: The name of the column to store the predicted series.
-* *points*: Integer specifying the number of points at the end of the series to predict (forecast). These points are excluded from the learning (regression) process. Optional parameter, default to 0.
-* *y_pred_low_series*: The name of the column to store the series of the lowest values of the confidence interval. Optional parameter, can be omitted if confidence interval isn't needed.
-* *y_pred_high_series*: The name of the column to store the series of the highest values of the confidence interval. Optional parameter, can be omitted if confidence interval isn't needed.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*ts_series*|string|&check;|The name of the input table column containing the time stamps of the series to predict.|
+|*y_series*|string|&check;|The name of the input table column containing the values of the series to predict.|
+|*y_pred_series*|string|&check;|The name of the column to store the predicted series.|
+|*points*|int|&check;|The number of points at the end of the series to predict (forecast). These points are excluded from the learning (regression) process. The default is 0.|
+|*y_pred_low_series*|string||The name of the column to store the series of the lowest values of the confidence interval. Omit if the confidence interval isn't needed.|
+|*y_pred_high_series*|string||The name of the column to store the series of the highest values of the confidence interval. Omit if the confidence interval isn't needed.|
 
 ## Usage
 

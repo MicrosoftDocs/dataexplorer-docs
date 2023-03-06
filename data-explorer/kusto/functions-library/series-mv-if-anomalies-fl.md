@@ -3,7 +3,7 @@ title: series_mv_if_anomalies_fl() - Azure Data Explorer
 description: This article describes the series_mv_if_anomalies_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 03/05/2023
 ---
 # series_mv_if_anomalies_fl()
 
@@ -16,17 +16,17 @@ The function `series_mv_if_anomalies_fl()` detects multivariate anomalies in ser
 
 ## Syntax
 
-`T | invoke series_mv_if_anomalies_fl(`*features_cols*`,` *anomaly_col*`,` *anomalies_pct*`,` *num_trees*`,` *samples_pct*`)`
+`T | invoke series_mv_if_anomalies_fl(`*features_cols*`,` *anomaly_col*`,` [ *anomalies_pct* ]`,` [ *num_trees* ]`,` [ *samples_pct* ]`)`
   
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *features_cols* | dynamic | &check; | Dynamic array containing the names of the columns that are used for the multivariate anomaly detection model. |
+| *features_cols* | dynamic | &check; | An array containing the names of the columns that are used for the multivariate anomaly detection model. |
 | *anomaly_col* | string | &check; | The name of the column to store the detected anomalies. |
-| *anomalies_pct* | real | | A real number in the range [0-50] specifying the expected percentage of anomalies in the data. Default value: 4% |
-| *num_trees* | int | | The number of isolation trees to build for each time series. Default value: 100 |
-| *samples_pct* | real | | A real number in the range [0-100] specifying the percentage of samples used to build each tree. Default value: 100%, i.e. use the full series |
+| *anomalies_pct* | real | | A real number in the range [0-50] specifying the expected percentage of anomalies in the data. Default value: 4%. |
+| *num_trees* | int | | The number of isolation trees to build for each time series. Default value: 100. |
+| *samples_pct* | real | | A real number in the range [0-100] specifying the percentage of samples used to build each tree. Default value: 100%, i.e. use the full series. |
 
 ## Usage
 

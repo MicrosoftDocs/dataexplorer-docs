@@ -3,7 +3,7 @@ title: levene_test_fl() - Azure Data Explorer
 description: This article describes the levene_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 03/05/2023
 ---
 # levene_test_fl()
 
@@ -17,13 +17,14 @@ The function `levene_test_fl()` performs the [Levene Test](https://en.wikipedia.
 
 `T | invoke levene_test_fl()(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value*`)`
 
-## Arguments
+## Parameters
 
-* *data1*: The name of the column containing the first set of data to be used for the test.
-* *data2*: The name of the column containing the second set of data to be used for the test.
-* *test_statistic*: The name of the column to store test statistic value for the results.
-* *p_value*: The name of the column to store p-value for the results.
-
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*data1*|string|&check;|The name of the column containing the first set of data to be used for the test.|
+|*data2*|string|&check;|The name of the column containing the second set of data to be used for the test.|
+|*test_statistic*|string|&check;|The name of the column to store test statistic value for the results.|
+|*p_value*|string|&check;|The name of the column to store p-value for the results.|
 
 ## Usage
 

@@ -3,7 +3,7 @@ title: pairwise_dist_fl() - Azure Data Explorer
 description: This article describes the pairwise_dist_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 03/03/2022
+ms.date: 03/05/2023
 ---
 # pairwise_dist_fl()
 
@@ -26,7 +26,7 @@ The output of the function is pairwise distances between entities under the same
 
 `pairwise_dist_fl(entity, partition)`
   
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
@@ -41,7 +41,9 @@ The output of the function is pairwise distances between entities under the same
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=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" target="_blank">Run the query</a>
+
 ```kusto
 let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
 {
@@ -247,4 +249,3 @@ For example, when adding an optional visualization using a distance matrix, you 
  * Some pairs of entities (Godzilla and Elmie) have a high distance value (1 or above) indicating they're different.
 
 The output can further be used to calculate the average distance per entity. A high average distance might indicate global outliers. For example, we can see that on average Godzilla has a high distance from the others indicating that it's a probable global outlier.
-
