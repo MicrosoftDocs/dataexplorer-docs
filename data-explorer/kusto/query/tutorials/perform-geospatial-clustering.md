@@ -104,10 +104,6 @@ StormEvents
 
 ## Display points within a specific area
 
-There are many methods to limit the visualization to a specific region. In this section, we'll use `geo_point_in_polygon` to [plot points within a polygon](#plot-points-within-a-polygon) and `geo_point_in_circle` to [plot points within a circle](#plot-points-within-a-circle).
-
-### Plot points within a polygon
-
 Use a polygon to define the region and the [geo_point_in_polygon](../geo-point-in-polygon-function.md) function to filter for events that occur within that region.
 
 The following query defines a polygon representing the southern California region and filters for storm events within this region. It then groups the events into clusters, counts the number of events in each cluster, projects the central point of the cluster, and renders a map to visualize the clusters.
@@ -130,26 +126,6 @@ StormEvents
 ```
 
 :::image type="content" source="../images/kql-tutorials/geospatial-southern-california-polygon.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of southern California storms.":::
-
-### Plot points within a circle
-
-Use a circle to define a region using [geo_point_in_circle](../geo-point-in-circle-function.md).
-
-The following query defines a circular region in Florida and filters for storm events within this region. It then groups the events into clusters, counts the number of events in each cluster, projects the central point of the cluster, and renders a map to visualize the clusters.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PsY7CMAyG93sKjwnKoRa4UxlYkNjYYI9CsEju0iRyDQjEw5MCEh2Y7OH//s/ecKJ2dcLI3dcNMqU/tAxLPPi4TlG9NsMKHqHtJWPJnR0SwgGTzslH1j5q68kGFJ9IQhPEd1OPp828lgomzfhnOvtVUFdVBaN+yFLaHdvWkL8i2HSMLCTsLm+rAmc6B4uBlZPuJhZD+GCVg2964hnsEVsKyYRnh+hLpRpqHnJdcMK4R4Ls0TpDDGfPDsS/j/tyRWuyvAMDvYMKPAEAAA==" target="_blank">Run the query</a>
-
-```kusto
-StormEvents
-| project BeginLon, BeginLat, EventType
-| where geo_point_in_circle(BeginLon, BeginLat, real(-81.3891), 28.5346, 1000 * 100)
-| summarize count() by EventType, hash = geo_point_to_s2cell(BeginLon, BeginLat)
-| project geo_s2cell_to_central_point(hash), EventType, count_
-| render piechart with (kind = map)
-```
-
-:::image type="content" source="../images/kql-tutorials/geospatial-points-within-circle.png" alt-text="Screenshot of points within circle in Florida.":::
 
 ## Next steps
 
