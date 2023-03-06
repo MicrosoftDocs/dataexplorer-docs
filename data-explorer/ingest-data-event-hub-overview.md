@@ -83,6 +83,7 @@ The following example shows you how to set the event hub details and send weathe
 The data is in JSON format and *mapping1* is pre-defined on table *WeatherMetrics*.
 
 ```csharp
+// This sample uses Microsoft.ServiceBus.Messaging which is a .Net Framework library. The concept is similar using the Microsoft.Azure.ServiceBus library.  
 var eventHubNamespaceConnectionString=<connection_string>;
 var eventHubName=<event_hub>;
 

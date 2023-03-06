@@ -150,7 +150,7 @@ It uses an explicit schema definition that allows various optimizations to be ev
 
 ```kusto
 evaluate mysql_request(
-  'Server=contoso.mysql.database.azure.com; Posvsrt = 3306;'
+  'Server=contoso.mysql.database.azure.com; Port = 3306;'
      'Database=Fabrikam;'
     h'UID=USERNAME;'
     h'Pwd=PASSWORD;',
