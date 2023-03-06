@@ -446,11 +446,6 @@
       "redirect_document_id": true
     },
     {
-      "source_path": "data-explorer/kusto/query/geospatial-visualizations.md",
-      "redirect_url": "/azure/data-explorer/kusto/query/tutorials/create-geospatial-visualizations",
-      "redirect_document_id": true
-    },
-    {
       "source_path": "data-explorer/kusto/api/tds/clients.md",
       "redirect_url": "/azure/data-explorer/connect-sql-server-emulation",
       "redirect_document_id": true
