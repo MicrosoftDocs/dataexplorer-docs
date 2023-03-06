@@ -44,7 +44,7 @@ The following command sets the folder in which a materialized view must be shown
 |--------|-------------|---------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|
 | MyView | MyTable     | MyTable \| summarize take_any(*) by Column1 | 2023-02-26T16:40:03.3345704Z     | 2023-02-26T16:44:15.9033667Z | Completed     | true      | true      | "Updated folder" |           | true             | 2023-02-23T14:01:42.5172342Z |            |
 
-### Set the folder of a materialized view to one two levels under root
+### Set the folder of a materialized view to two levels under root
 
 The following command sets the folder in which a materialized view must be shown to two levels under **Materialized Views** folder:
 
