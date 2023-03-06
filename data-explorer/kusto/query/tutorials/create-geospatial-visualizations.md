@@ -7,7 +7,7 @@ ms.date: 01/18/2023
 
 # Tutorial: Create geospatial visualizations
 
-This tutorial is for those who want to leverage [Kusto Query Language (KQL)](../index.md) for geospatial clustering. Geospatial clustering is a way to organize and analyze data based on geographical location. KQL offers multiple methods for performing [geospatial clustering](../geospatial-grid-systems.md), as well as tools for [geospatial visualizations](../geospatial-visualizations.md).
+This tutorial is for those who want to leverage [Kusto Query Language (KQL)](../index.md) for geospatial visualization. Geospatial clustering is a way to organize and analyze data based on geographical location. KQL offers multiple methods for performing [geospatial clustering](../geospatial-grid-systems.md), as well as tools for [geospatial visualizations](../geospatial-visualizations.md).
 
 In this tutorial, you'll learn how to:
 
@@ -149,7 +149,7 @@ StormEvents
 | render piechart with (kind = map)
 ```
 
-:::image type="content" source="../images/kql-tutorials/geospatial-points-within-circle.png" alt-text="Screenshot of points within circle in Florida.":::
+:::image type="content" source="../images/kql-tutorials/geospatial-storm-events-pie.png" alt-text="Screenshot of storm events on a pie map.":::
 
 ## Next steps
 
