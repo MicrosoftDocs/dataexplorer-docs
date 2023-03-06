@@ -93,7 +93,7 @@ bartlett_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_v
 
 `bartlett_test_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
 
-# [Query-defined](#tab/query-defined)
+# [Query-defined](#tab/query-defined-example)
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md).
 
@@ -133,7 +133,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | Test #2 | [20.85, 21.89, 23.41] | [35.09, 30.02, 26.52] | 1.9211710616896014 | 0.16572762069132516 |
 | Test #3 | [20.13, 20.5, 21.7, 22.02] | [32.2, 32.79, 33.9, 34.22] | 0.0026985713829234454 | 0.958570306268548 |
 
-# [Stored](#tab/stored)
+# [Stored](#tab/stored-example)
 
 The following example uses the stored function created in the [Function declaration](#function-declaration) section.
 
