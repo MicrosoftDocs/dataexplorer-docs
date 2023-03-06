@@ -2,7 +2,7 @@
 title: 'Tutorial: Join data from multiple tables'
 description: This tutorial shows how to join data from multiple tables using the Kusto Query Language.
 ms.topic: tutorial
-ms.date: 01/18/2023
+ms.date: 03/06/2023
 ---
 
 # Tutorial: Join data from multiple tables
@@ -15,7 +15,7 @@ In this tutorial, you'll learn how to:
 >
 > * [Use the join operator](#use-the-join-operator)
 > * [Use the lookup operator](#use-the-lookup-operator)
-> * [Join query results](#join-query-results)
+> * [Join query-generated tables](#join-query-generated-tables)
 
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
 
@@ -125,7 +125,7 @@ Winter Weather| TEXAS| 29363100| 137|
 > [!NOTE]
 > The `lookup` operator only supports two join flavors: `leftouter` and `inner`.
 
-## Join query results
+## Join query-generated tables
 
 Joins can also be done based off of query results from the same table.
 
