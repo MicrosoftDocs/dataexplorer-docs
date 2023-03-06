@@ -229,6 +229,28 @@ StormEvents
 
 If you take a look at the computed `Duration` column, you may notice that the flood that caused the most damage was also the longest flood.
 
+Use `extend` to view the calculated `Duration` column along with all of the other columns. The `Duration` column is added as the last column.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWNuwoCMRBFe7/idqksLVMIG2shKWxHM+iCyYTZ8RHw481qd+Hcw4kmWsKTqy2bD143VkY0Mob3cCmc9tGBasbvk3r7g8NdJLthmDTscO6YqNCVjyqN1ToyL5eB+W085OmhZLNUeISa01wY2zWjtu4vDhiVhIQAAAA=" target="_blank">Run the query</a>
+
+```Kusto
+StormEvents
+| where State == 'TEXAS' and EventType == 'Flood'
+| top 5 by DamageProperty desc
+| extend Duration = EndTime - StartTime
+```
+
+**Output**
+
+|StartTime|EndTime|...|Duration|
+|--|--|--|--|
+|2007-08-18T21:30:00Z|2007-08-19T23:00:00Z|...|1.01:30:00|
+|2007-06-27T00:00:00Z|2007-06-27T12:00:00Z|...|12:00:00|
+|2007-06-28T18:00:00Z|2007-06-28T23:00:00Z|...|05:00:00|
+|2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|...|08:00:00|
+|2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|...|03:00:00|
+
 ## Next steps
 
 Now that you're familiar with the essentials of writing Kusto queries, go on to the next tutorial and learn how to use aggregation functions to gain deeper insight into your data.
