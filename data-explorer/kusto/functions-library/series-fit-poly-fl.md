@@ -3,7 +3,7 @@ title: series_fit_poly_fl() - Azure Data Explorer
 description: This article describes the series_fit_poly_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 03/05/2023
 ---
 # series_fit_poly_fl()
 
@@ -20,16 +20,18 @@ The function `series_fit_poly_fl()` applies a polynomial regression on a series.
 
 ## Syntax
 
-`T | invoke series_fit_poly_fl(`*y_series*`,` *y_fit_series*`,` *fit_coeff*`,` *degree*`, [`*x_series*`,` *x_istime*]`)`
+`T | invoke series_fit_poly_fl(`*y_series*`,` *y_fit_series*`,` *fit_coeff*`,` *degree*`,` [ *x_series* ]`,` [ *x_istime* ]`)`
   
-## Arguments
+## Parameters
 
-* *y_series*: The name of the input table column containing the [dependent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). That is, the series to fit.
-* *y_fit_series*: The name of the column to store the best fit series.
-* *fit_coeff*: The name of the column to store the best fit polynomial coefficients.
-* *degree*: The required order of the polynomial to fit. For example, 1 for linear regression, 2 for quadratic regression, and so on.
-* *x_series*: The name of the column containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables), that is, the x or time axis. This parameter is optional, and is needed only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). The default value is an empty string, as x is redundant for the regression of an evenly spaced series.
-* *x_istime*: This boolean parameter is optional. This parameter is needed only if *x_series* is specified and it's a vector of datetime.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*y_series*|string|&check;|The name of the input table column containing the [dependent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). That is, the series to fit.|
+|*y_fit_series*|string|&check;|The name of the column to store the best fit series.|
+|*fit_coeff*|string|&check;|The name of the column to store the best fit polynomial coefficients.|
+|*degree*|int|&check;|The required order of the polynomial to fit. For example, 1 for linear regression, 2 for quadratic regression, and so on.|
+|*x_series*|string||The name of the column containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables), that is, the x or time axis. This parameter is optional, and is needed only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). The default value is an empty string, as x is redundant for the regression of an evenly spaced series.|
+|*x_istime*|bool||This parameter is needed only if *x_series* is specified and it's a vector of datetime.|
 
 ## Usage
 

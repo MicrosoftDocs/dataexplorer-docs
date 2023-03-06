@@ -17,16 +17,16 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 `.export` [`async`] `to` `sql` *sqlTableName* *sqlConnectionString* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
 
-Where:
-* *async*: Command runs in asynchronous mode (optional).
-* *sqlTableName* SQL database table name where the data is inserted.
-  To protect against injection attacks, this name is restricted.
-* *sqlConnectionString* is a `string` literal that follows the `ADO.NET`
-  connection string format and describes the SQL endpoint and database
-  to which you connect. For security reasons, the connection string is restricted.
-* *propertyName*, *propertyValue* are key-value pairs of the following supported properties.
+## Parameters
 
-Properties:
+| Name | Type | Required | Description |
+|--|--|--|--|
+| `async` | string | | If specified, the command runs in asynchronous mode.|
+| *SqlTableName* | string | &check; | The SQL database table name where the data is inserted. To protect against injection attacks, this name is restricted.|
+| *SqlConnectionString* | string | &check; | Describes the SQL endpoint and database to which you connect. Must follow the `ADO.NET` connection string format and describes the SQL endpoint and database to which you connect. For security reasons, the connection string is restricted.|
+| *PropertyName*, *PropertyValue*| string || A list of optional [properties](#properties).|
+
+## Properties
 
 |Name               |Values           |Description|
 |-------------------|-----------------|-----------|
@@ -38,7 +38,7 @@ Properties:
 
 ## Limitations and restrictions
 
-There are a number of limitations and restrictions when exporting data to an SQL database:
+There are some limitations and restrictions when exporting data to an SQL database:
 
 1. Kusto is a cloud service, so the connection string must point to a
    database that is accessible from the cloud. (In particular, one can't

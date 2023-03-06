@@ -3,7 +3,7 @@ title: factorial_fl() - Azure Data Explorer
 description: This article describes factorial_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/07/2021
+ms.date: 03/02/2023
 ---
 # factorial_fl()
 
@@ -18,9 +18,11 @@ The function `factorial_fl()`calculates [factorial](https://en.wikipedia.org/wik
 
 `factorial_fl(`*n*`)`
   
-## Arguments
+## Parameters
 
-* *n*: The input integer.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*n*|int|&check;|The input integer for which to calculate the factorial.|
 
 ## Usage
 
@@ -30,7 +32,9 @@ The function `factorial_fl()`calculates [factorial](https://en.wikipedia.org/wik
 
 To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMMQ6DMAwF0N2n+GMilkZsoJwFWa2DIiUOSj1Eor07rLwDvCKGxG9rPXPZUolOl6zm6STcdq6VnU7B059W6qy7YCD1VhFgDeGFr8mBmX6QYaIfpIH4ON3wF7cGc3NnAAAA" target="_blank">Run the query</a>
+
 ```kusto
 let factorial_fl=(n:int)
 {
@@ -58,7 +62,9 @@ factorial_fl(n:int)
 
 ### Usage
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0UCguSS1QMOaqUUitKEnNS1FIq1CwVUhLTC7JL8pMzIlPy9Go0AQAVBtAKDkAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 range x from 1 to 10 step 3
 | extend fx = factorial_fl(x)
@@ -66,10 +72,9 @@ range x from 1 to 10 step 3
 
 ---
 
-```kusto
-x	fx
-1	1
-4	24
-7	5040
-10	3628799
-```
+| x | fx |
+|---|---|
+| 1 | 1 |
+| 4 | 24 |
+| 7 | 5040 |
+| 10 | 3628799 |

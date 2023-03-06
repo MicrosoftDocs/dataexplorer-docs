@@ -18,7 +18,7 @@ The function `series_uv_change_points_fl()` finds change points in time series b
 
 `T | invoke series_uv_change_points_fl(`*y_series* [`,` *score_threshold* [`,` *trend_window* [`,` *tsid*]]]`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

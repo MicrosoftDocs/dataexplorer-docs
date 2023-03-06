@@ -20,15 +20,24 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 `.alter` `function` *FunctionName* `folder` *Folder*
 
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*FunctionName*|string|&check;|The name of the function to alter.|
+|*Folder*|string|&check;|The name of the folder to assign to the function.|
+
+## Returns
+
 |Output parameter |Type |Description
 |---|---|--- 
 |Name  |String |The name of the function. 
-|Parameters  |String |The parameters that are required by the function.
-|Body  |String |(Zero or more) Let statements followed by a valid CSL expression that is evaluated upon function invocation.
-|Folder|String|A folder that is used for UI functions categorization. This parameter does not change the way function is invoked.
+|Parameters  |String |The parameters required by the function.
+|Body  |String |Zero or more let statements followed by a valid CSL expression to be evaluated upon function invocation.
+|Folder|String|A folder to use for UI functions categorization. This parameter doesn't change the way function is invoked.
 |DocString|String|A description of the function for UI purposes.
 
-**Example** 
+## Example
 
 ```kusto
 .alter function MyFunction1 folder "Updated Folder"

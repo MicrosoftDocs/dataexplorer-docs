@@ -3,7 +3,7 @@ title: Data soft delete - Azure Data Explorer
 description: This article describes Data soft delete in Azure Data Explorer.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 01/16/2022
+ms.date: 03/02/2023
 ---
 # Soft delete
 
@@ -74,15 +74,13 @@ In most cases, the deletion of records won't result in a change of COGS.
 
 ### Syntax
 
-```kusto
 `.delete` [`async`] `table` *TableName* `records <|` *Predicate*
-```
 
-### Arguments
+### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*async*|string||If specified, indicates that the command runs in asynchronous mode.|
+|`async`|string||If specified, indicates that the command runs in asynchronous mode.|
 |*TableName*|string|&check;|The name of the table from which to delete records.|
 |*Predicate*|string|&check;|The predicate that returns records to delete. Specified as a query.|
 

@@ -3,7 +3,7 @@ title: series_shapes_fl() - Azure Data Explorer
 description: This article describes the series_shapes_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 03/05/2023
 ---
 # series_shapes_fl()
 
@@ -16,10 +16,12 @@ The function `series_shapes_fl()` detects positive/negative trend or jump in a s
 
 `T | extend series_shapes_fl(`*y_series*`,` *advanced*`)`
 
-## Arguments
+## Parameters
 
-* *y_series*: Dynamic array cell of numeric values.
-* *advanced*: Boolean flag, default to 'false'. Set to 'true' to output additional calculated parameters.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *y_series* | dynamic | &check; |An array cell of numeric values.|
+| *advanced* | bool | | The default is `false`. Set to `true` to output additional calculated parameters.|
 
 ## Usage
 

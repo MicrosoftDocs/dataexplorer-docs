@@ -17,12 +17,12 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 `.drop` `continuous-export` *ContinuousExportName*
 
-## Properties
+## Parameters
 
-| Property             | Type   | Description                |
-|----------------------|--------|----------------------------|
-| ContinuousExportName | String | Name of continuous export |
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ContinuousExportName* | string | &check; | The name of the continuous export. |
 
-## Output
+## Returns
 
 The remaining continuous exports in the database (post deletion). Output schema as in the [show continuous export command](show-continuous-export.md).

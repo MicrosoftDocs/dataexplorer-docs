@@ -18,13 +18,13 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `continuous-export` *ContinuousExportName* `failures`
 
-## Properties
+## Parameters
 
-| Property             | Type   | Description                |
-|----------------------|--------|----------------------------|
-| ContinuousExportName | String | Name of continuous export  |
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ContinuousExportName* | string | &check; | The name of the continuous export. |
 
-## Output
+## Returns
 
 | Output parameter | Type      | Description                                         |
 |------------------|-----------|-----------------------------------------------------|

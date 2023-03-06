@@ -673,6 +673,9 @@ items:
     href: make-timespanfunction.md
   - name: max_of()
     href: max-offunction.md
+  - name: merge_tdigest()
+    displayName: tdigest_merge()
+    href: merge-tdigest-function.md
   - name: min_of()
     href: min-offunction.md
   - name: monthofyear()
@@ -700,6 +703,9 @@ items:
     href: parse-ipv6function.md
   - name: parse_ipv6_mask()
     href: parse-ipv6-maskfunction.md
+  - name: parse_json()
+    displayName: toobject(), parsejson(), todynamic()
+    href: parsejsonfunction.md
   - name: parse_path()
     href: parsepathfunction.md
   - name: parse_url()
@@ -788,9 +794,6 @@ items:
     href: substringfunction.md
   - name: tan()
     href: tanfunction.md
-  - name: merge_tdigest()
-    displayName: tdigest_merge()
-    href: merge-tdigest-function.md
   - name: tobool()
     displayName: toboolean()
     href: toboolfunction.md
@@ -801,9 +804,6 @@ items:
   - name: todouble()
     displayName: toreal()
     href: todoublefunction.md
-  - name: parse_json()
-    displayName: toobject(), parsejson(), todynamic()
-    href: parsejsonfunction.md
   - name: toguid()
     href: toguidfunction.md
   - name: tohex()

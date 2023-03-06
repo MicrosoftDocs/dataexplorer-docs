@@ -3,7 +3,7 @@ title: percentiles_linear_fl() - Azure Data Explorer
 description: Learn how to use the percentiles_linear_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 12/08/2022
+ms.date: 03/05/2023
 ---
 # percentiles_linear_fl()
 
@@ -16,15 +16,15 @@ The function accepts a table containing the column to calculate on and an option
 
 ## Syntax
 
-`T | invoke percentiles_linear_fl(`*val_col*`,` *pct_arr*`,` *aggr_col*`)`
+`T | invoke percentiles_linear_fl(`*val_col*`,` *pct_arr* [`,` *aggr_col* ]`)`
   
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *val_col* | string | &check; | The name of the column (of the input table) containing the values to calculate the percentiles on|
-| *pct_arr* | dynamic | &check; | A numerical array containing the required percentiles, each one should be in the range [0-100]. |
-| *aggr_col* | string | | The name of the column (of the input table) containing the grouping key. |
+| *val_col* | string | &check; | The name of the column that contains the values with which to calculate the percentiles.|
+| *pct_arr* | dynamic | &check; | A numerical array containing the required percentiles. Each percentile should be in the range [0-100]. |
+| *aggr_col* | string | | The name of the column that contains the grouping key.|
 
 ## Usage
 
@@ -33,6 +33,9 @@ The function accepts a table containing the column to calculate on and an option
 ### [Query-defined](#tab/query-defined)
 
 For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21T246bMBB95yvmDTt1tkml1WpT8bB93j+IIuTAhLgxNjJOFtrtv3cMJpcV8DAwPnPmzMUaPTToCjReaWxzrQxKlx90xvxeb9iCC7hInRdWb1rvlKkENIXPpXObsjeyVoUAWVXuDpGlKU/+JkAPcQz2E7DzaErIiayFDAh9rk2uDtip1rcs5hCwelrxLyEn7GcipqQC0rf393QKsq5EB/t+DJMtyRtz0idETHuua+nUHxyPslqekCpvPRv++RT+qMOQCCpb9rlGU/ljBD+CqDdZ7E88qC9L2TS6D0fgLfi+QXtgDqXmYA2wATc+kUSZErtA8329on4smFmu+RV2zaXtRz5CvdXWVOygrXVscAlYcxrdUVXHR0yBimZcjSg+w6qMR0eVUUBpz3uNY53bG9WOL7+cXZXsZghDO2b47mK+jWqWVxdfTCru6G5Tiw2+mxt5uLhmevAHD5+m1Dj7Gwu/lB+yB5P8S34mpfT0Bl3dJnRIAG01xlXmsE2ew4alInmN9iXa4P8V/+/tehU/dskndfNiTzh/xVjapQLiLWJbCvtBnM9kX8jS6HdUUxrU0HbftDsMrkFlFrZUQJcNLf0PuYtI1MwDAAA=" target="_blank">Run the query</a>
 
 ```kusto
 let percentiles_linear_fl=(tbl:(*), val_col:string, pct_arr:dynamic, aggr_col:string='')
@@ -111,16 +114,9 @@ datatable(x:long, name:string) [
 
 ---
 
-```kusto
-name	x	pct_arr    pct_val
-A      [5,  [0.0,      [5.0,
-        7,   25.0,      6.0,
-        9]	 50.0,      7.0,
-             75.0,      8.0,
-             100.0]     9.0]
-B      [5,  [0.0,      [5.0,
-        7,   25.0,      6.5,
-        7,	 50.0,      7.0,
-        10]  75.0,      7.75,
-             100.0]     10.0]
-```
+**Output**
+
+|name|x|pct_arr|pct_val|
+|--|--|--|--|
+|A|[5,7,9]|[0,25,50,75,100]|[5,6,7,8,9]|
+|B|[5,7,7,10]|[0,25,50,75,100]|[5,6.5,7,7.75,10]
