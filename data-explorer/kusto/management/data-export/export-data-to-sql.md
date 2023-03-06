@@ -13,17 +13,6 @@ Export data to SQL allows you to run a query and have its results sent to a tabl
 
 You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
-## Authentication and authorization
-
-The authentication method is based on the connection string provided, and the permissions required to access the SQL database vary depending on the authentication method.
-
-The following table lists the supported authentication methods and the permissions needed to export to SQL.
-
-|Authentication method|Permissions|
-|--|--|
-|[Impersonation](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication)|Existing table: UPDATE and INSERT<br/>New table: UPDATE, INSERT, and CREATE |
-|[Username and password](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)||
-
 ## Syntax
 
 `.export` [`async`] `to` `sql` *sqlTableName* *sqlConnectionString* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
@@ -46,6 +35,17 @@ The following table lists the supported authentication methods and the permissio
 |`primarykey`       |                 |If `createifnotexists` is `true`, this property indicates the name of the column in the result that will be used as the SQL table's primary key if it's created by this command.|
 |`persistDetails`   |`bool`           |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results). Defaults to `false` in synchronous executions, but can be turned on. |
 |`token`            |`string`         |The Azure AD access token that Kusto will forward to the SQL endpoint for authentication. When set, the SQL connection string shouldn't include authentication information like `Authentication`, `User ID`, or `Password`.|
+
+## Authentication and authorization
+
+The authentication method is based on the connection string provided, and the permissions required to access the SQL database vary depending on the authentication method.
+
+The following table lists the supported authentication methods and the permissions needed to export to SQL.
+
+|Authentication method|Permissions|
+|--|--|
+|[Impersonation](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication)|Existing table: UPDATE and INSERT<br/>New table: UPDATE, INSERT, and CREATE |
+|[Username and password](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)||
 
 ## Limitations and restrictions
 
