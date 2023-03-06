@@ -964,7 +964,6 @@ items:
     displayName: H3, S2, Geohash
     href: geospatial-grid-systems.md
   - name: Geospatial visualizations
-    displayName: Geospatial visualizations
     href: geospatial-visualizations.md
   - name: geo_distance_2points()
     href: geo-distance-2points-function.md
