@@ -109,7 +109,7 @@ evaluate sql_request(
 
 ## Authentication and authorization
 
-The sql_request plugin supports three methods of authentication to the
+The sql_request plugin supports the following three methods of authentication to the
 SQL Server endpoint.
 
 ### Azure AD-integrated authentication
