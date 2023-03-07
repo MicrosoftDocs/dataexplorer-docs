@@ -5,8 +5,8 @@ description: This article describes the punycode_from_string() command in Azure 
 
 # punycode_from_string()
 
-Encodes input string to Punycode form.
-(https://en.wikipedia.org/wiki/Punycode)
+
+Encodes input string to Punycode form. (https://en.wikipedia.org/wiki/Punycode)
 
 
 ## Syntax
@@ -24,14 +24,14 @@ Encodes input string to Punycode form.
 
 ## Example
 
-### Using Kusto
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+ print encoded = punycode_from_string('académie-française')
+```
 
-``
-print encoded = punycode_from_string('académie-française')
-``
-
-**Output:**
-"acadmie-franaise-npb1a"
+|encoded|
+|---|
+|acadmie-franaise-npb1a|
 
 ## Next steps
 

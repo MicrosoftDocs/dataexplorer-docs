@@ -5,7 +5,8 @@ description: This article describes the punycode_to_string() command in Azure Da
 
 # punycode_to_string()
 
-Decodes input string from punycode form.
+
+Decodes input string from punycode form. (https://en.wikipedia.org/wiki/Punycode)
 
 ## Syntax
 
@@ -21,15 +22,14 @@ Decodes input string from punycode form.
 * Returns an empty result if decoding failed.
 
 ## Example
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+ print decoded = punycode_to_string('acadmie-franaise-npb1a')
+```
 
-### Using Kusto
-
-``
-print decoded = punycode_to_string('acadmie-franaise-npb1a')
-``
-
-**Output:**
-"académie-française"
+|decoded|
+|---|
+|académie-française|
 
 ## Next steps
 
