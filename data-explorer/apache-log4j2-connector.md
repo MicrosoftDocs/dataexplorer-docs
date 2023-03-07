@@ -71,6 +71,8 @@ git clone https://github.com/Azure/azure-kusto-log4j.git
 
 ## Configure attributes of KustoStrategy
 
+The Log4j2-Azure Data Explorer connector uses a custom strategy that's used in the *RollingFileAppender*. Logs are written into the rolling file to prevent any data loss arising out of network failure while connecting to the Azure Data Explorer cluster. The data is stored in a rolling file and then flushed to the Azure Data Explorer cluster.
+
 In the sample project included in the git repo, the default configuration format is defined in the file log4j2.xml. This configuration file is located under the file path: \azure-kusto-log4j\samples\src\main\resources\log4j2.xml. 
 
 The following attributes of KustoStrategy are referenced by the configuration file:
