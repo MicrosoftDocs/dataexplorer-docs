@@ -8,15 +8,17 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 
-# Tutorial: Use Kusto queries
+# Tutorial: Apply Kusto queries 
 
 ::: zone pivot="azuredataexplorer"
 
-The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
+The most effective way to learn the Kusto Query language is by looking at some basic queries. We recommend using this [database with sample data](https://help.kusto.windows.net/Samples) for the queries demonstrated in this tutorial. 
+
+# Basic queries
 
 ## Count rows
 
-Our example database has a table called `StormEvents`. we want to find out how large the table is. So we'll pipe its content into an operator that counts the rows in the table.
+The `StormEvents` table in the sample database provides some information about storms that occured in the United States. To find out how long the table is, we will have to feed all of its content into an operator that counts the rows.
 
 *Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
 
@@ -33,14 +35,15 @@ Here's the output:
 
 For more information, see [count operator](./countoperator.md).
 
-## Select a subset of columns: *project*
+## Select a subset of columns, with *project*
 
-Use [project](./projectoperator.md) to pick out only the columns you want. See the following example, which uses both the [project](./projectoperator.md)
-and the [take](./takeoperator.md) operators.
+Use the [project](./projectoperator.md) operator to select only the columns you want. 
 
-## Filter by Boolean expression: *where*
+Have a look at the following examples, where the [project](./projectoperator.md), [where](./whereoperator.md), and [take](./takeoperator.md) operators are used.
 
-Let's see only `flood` events in `California` in Feb-2007:
+### Filter by Boolean expression, using *where*
+
+Within our selected subset of columns, let's refine our selection by calling up only `Flood` events in `California` in Feb-2007:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -56,9 +59,9 @@ Here's the output:
 |---|---|---|---|---|
 |2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to western Kern County in the early morning hours of the 19th. Minor flooding was reported across State Highway 166 near Taft.|
 
-## Show *n* rows: *take*
+### Show *n* rows, using *take*
 
-Let's see some data. What's in a random sample of five rows?
+Now, let's see what is in a random sample of five rows:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -77,9 +80,9 @@ Here's the output:
 |2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|Thunderstorm Wind|MISSISSIPPI|Numerous large trees were blown down with some down on power lines. Damage occurred in eastern Adams county.|
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|Thunderstorm Wind|GEORGIA|The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206. The cost of tree removal was estimated.|
 
-But [take](./takeoperator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.)
+Note that [take](./takeoperator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.)
 
-## Order results: *sort*, *top*
+## Order results with *sort* and *top*
 
 * *Syntax note*: Some operators have parameters that are introduced by keywords like `by`.
 * In the following example, `desc` orders results in descending order and `asc` orders results in ascending order.
@@ -103,7 +106,7 @@ Here's the output:
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|North to northeast winds gusting to around 58 mph were reported in the mountains of Ventura county.|
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|The Warm Springs RAWS sensor reported northerly winds gusting to 58 mph.|
 
-You can achieve the same result by using  either [sort](./sort-operator.md), and then [take](./takeoperator.md):
+You can achieve the same result by using either [sort](./sort-operator.md), and then [take](./takeoperator.md):
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -113,7 +116,7 @@ StormEvents
 | project  StartTime, EndTime, EventType, EventNarrative
 ```
 
-## Compute derived columns: *extend*
+## Compute derived columns, with *extend*
 
 Create a new column by computing a value in every row:
 
@@ -154,9 +157,9 @@ Here's the output:
 
 [Scalar expressions](./scalar-data-types/index.md) can include all the usual operators (`+`, `-`, `*`, `/`, `%`), and a range of useful functions are available.
 
-## Aggregate groups of rows: *summarize*
+## Aggregate groups of rows, with *summarize*
 
-Count the number of events occur in each state:
+Count the number of events that occur in each state:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -166,7 +169,7 @@ StormEvents
 
 [summarize](./summarizeoperator.md) groups together rows that have the same values in the `by` clause, and then uses an aggregation function (for example, `count`) to combine each group in a single row. In this case, there's a row for each state and a column for the count of rows in that state.
 
-A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. For example, we could get the count of storms per state, and the sum of unique types of storm per state. Then, we could use [top](./topoperator.md) to get the most storm-affected states:
+A range of [aggregation functions](aggregation-functions.md) is available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. For example, we could get the count of storms per state, and the sum of unique types of storm per state. Then, we could use [top](./topoperator.md) to get the most storm-affected states:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -218,7 +221,7 @@ The [bin()](./binfunction.md) is the same as the floor() function in many langua
 
 <a name="displaychartortable"></a>
 
-## Display a chart or table: *render*
+## Display a chart or table, with *render*
 
 You can project two columns and use them as the x-axis and the y-axis of a chart:
 
