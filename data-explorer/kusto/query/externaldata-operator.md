@@ -12,6 +12,9 @@ zone_pivot_groups: kql-flavors
 The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external storage artifact, such as a blob in Azure Blob Storage or a file in Azure Data Lake Storage.
 
 > [!NOTE]
+> The `externaldata` operator supports a specific set of storage services, as listed under [Storage connection strings](../api/connection-strings/storage-connection-strings.md).
+
+> [!NOTE]
 > The `externaldata` operator supports Shared Access Signature (SAS) key, Access key, and Azure AD Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-authentication-methods.md).
 
 ::: zone pivot="azuredataexplorer"

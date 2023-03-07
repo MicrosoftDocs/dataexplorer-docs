@@ -19,6 +19,10 @@ The following types of external storage are supported:
 Each type of storage has corresponding connection string formats used to describe the storage resources and how to access them.
 Azure Data Explorer uses a URI format to describe these storage resources and the properties necessary to access them, such as security credentials.
 
+> [!WARN]
+> Be mindful of the fact that the list below is exhaustive. In particular, note that HTTP web services that do not implement the entire API set of
+> Azure Blob Storage are **not supported**, even if they appear to work in some scenarios.
+
 ## Storage connection string templates
 
 Each storage type has a different connection string format. See the following table for connection string templates for each storage type.
