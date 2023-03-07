@@ -22,7 +22,7 @@ Calculates counts and distinct count of values in a sliding window over a lookba
 | *TimelineColumn* | string | &check; | The name of the column representing the timeline.|
 | *Start* | int, long, real, datetime, or timespan | &check; | The analysis start period.|
 | *End* | int, long, real, datetime, or timespan | &check; | The analysis end period.|
-| *LookbackWindow* | int, long, real, datetime, or timespan | &check; | The lookback period. For example, for `dcount` users in past `7d`: *LookbackWindow* = `7d`.|
+| *LookbackWindow* | int, long, real, datetime, or timespan | &check; | The lookback period, this value must be a multiple of *Bin*, if not the *LookbackWindow* value will be replaced by the *Bin* value. For example, for `dcount` users in past `7d`: *LookbackWindow* = `7d`.|
 | *Bin* | int, long, real, datetime, timespan, or string | &check; | The analysis step period. The possible string values are `week`, `month`, and `year` for which all periods will be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), [startofyear](startofyearfunction.md) respectively. |
 | *dim1*, *dim2*, ... | string | | A list of the dimensions columns that slice the activity metrics calculation.|
 
