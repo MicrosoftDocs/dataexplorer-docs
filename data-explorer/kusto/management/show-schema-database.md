@@ -123,13 +123,13 @@ Generates a CSL script with all the required commands to create a copy of the gi
 
 The following *Options* are all optional:
 
-* `IncludeEncodingPolicies`: (`true` | `false`) - If `true`, encoding policies at the database/table/column level will be included. Defaults to `true`. 
+* `IncludeEncodingPolicies`: (`true` | `false`) - Defaults to `true`. If `true`, encoding policies at the database/table/column level will be included. 
 * `IncludeSecuritySettings`: (`true` | `false`) - Defaults to `true`. If `true`, the following options would be included:
   * Authorized principals at the database/table level.
   * Row level security policies at the table level.
   * Restricted view access policies at the table level.
-* `IncludeIngestionMappings`: (`true` | `false`) - If `true`, ingestion mappings at the table level will be included. Defaults to `true`.
-* `ShowObfuscatedStrings`: (`true` | `false`) - If `true`, credentials persisted in Kusto configurations will be returned. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the command will fail. Defaults to `false`.
+* `IncludeIngestionMappings`: (`true` | `false`) - Defaults to `true`. If `true`, ingestion mappings at the table level will be included.
+* `ShowObfuscatedStrings`: (`true` | `false`) - Defaults to `false`. If `true`, credentials persisted in Kusto configurations will be returned. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the command will fail.
 
 **Returns**
 
