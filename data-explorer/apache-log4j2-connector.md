@@ -7,18 +7,20 @@ ms.reviewer: ramacg
 ---
 # Ingest data with the Apache Log4j 2 connector
 
-Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. Apache Log4J 2 sink for Azure Data Explorer allows you to easily stream your log data to Azure Data Explorer, where you can analyze, visualize, and alert on your logs in real time. 
+Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Apache Log4J 2 sink for Azure Data Explorer streams your log data to Azure Data Explorer, where you can analyze, visualize, and alert on your logs in real time. 
 
-In this article, we use a sample log generator app to show how to configure and run the Log4j 2 connector.
+In this article, we use a sample log generator app to show how to configure and run the Log4j 2 connector. 
+
+For a complete list of data connectors, see [Data connectors overview](connector-overview.md).
 
 ## Prerequisites
 
 * [Apache Maven](https://maven.apache.org/)
-* Azure Data Explorer [cluster and database](create-cluster-database-portal.md)
+* An Azure Data Explorer [cluster and database](create-cluster-database-portal.md)
 
 ## Create an Azure AD App registration
 
-Azure Active Directory (Azure AD) application authentication is used for applications, such as an unattended service or a scheduled flow, that need to access Azure Data Explorer without a user present. To ingest data using the Log4j 2 connector, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the Log4j 2 connector, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
 
 1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create an Azure Active Directory application registration in Azure Data Explorer](provision-azure-ad-app.md). 
 1. Save the following values to be used in later steps:
@@ -30,10 +32,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
 
 1. In the query tab of the [web UI](https://dataexplorer.azure.com/), connect to your cluster. For more information on how to connect, see [Add clusters](web-query-data.md#add-clusters).
 1. Browse to the database in which you want to ingest data.
-1. Run the following management command. This command grants the app a [database ingestor](kusto/management/access-control/role-based-access-control.md) role. For more information, see [Manage permissions with management commands](manage-database-permissions.md#manage-permissions-with-management-commands).
-
-    * Enter the name of your database instead of the placeholder *DatabaseName*.
-    * Use the application ID that was saved in a previous step instead of the placeholder application ID *12345-abcd-12a3-b123-ccdd12345a1b*.
+1. Run the following management command, replacing the placeholder *DatabaseName* and application ID value with the values saved in the previous section. This command grants the app a [database ingestor](kusto/management/access-control/role-based-access-control.md) role. For more information, see [Manage permissions with management commands](manage-database-permissions.md#manage-permissions-with-management-commands).
 
     ```kusto
     .add database DatabaseName ingestors ('aadapp=12345-abcd-12a3-b123-ccdd12345a1b') 'Azure Data Explorer App Registration'
@@ -44,7 +43,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
 
 ## Create table and mapping
 
-Now that you've given permissions to the connector to ingest data, you need to create a target table for the incoming data. Your data table should match the incoming data; in this example you use table mapping that corresponds to the data sent from a sample app.
+Now that you've given permissions to the connector to ingest data, you need to create a target table for the incoming data. In this example you use table mapping that corresponds to the data sent from the sample app.
 
 1. Run the following [table creation command](kusto/management/create-table-command.md) in your query editor:
 
@@ -70,9 +69,6 @@ Clone the Log4j2-Azure Data Explorer [git repo](https://github.com/Azure/azure-k
 git clone https://github.com/Azure/azure-kusto-log4j.git
 ```
 
-> [!NOTE]
-> The Log4j2-Azure Data Explorer connector uses a custom strategy that's used in the *RollingFileAppender*. Logs are written into the rolling file to prevent any data loss arising out of network failure while connecting to the Azure Data Explorer cluster. The data is stored in a rolling file and then flushed to the Azure Data Explorer cluster.
-
 ## Configure attributes of KustoStrategy
 
 In the sample project included in the git repo, the default configuration format is defined in the file log4j2.xml. This configuration file is located under the file path: \azure-kusto-log4j\samples\src\main\resources\log4j2.xml. 
@@ -94,7 +90,7 @@ The following attributes of KustoStrategy are referenced by the configuration fi
 ```
 
 > [!IMPORTANT]
-> The table name `log4jTest` and mapping name `log4CsvTestMapping` were created in the [above steps](#create-table-and-mapping) for the sample example. If you are not using the samples, replace these values and save the configuration file.
+> The table name `log4jTest` and mapping name `log4CsvTestMapping` were created in the [above steps](#create-table-and-mapping) for the sample example. If using different table and mapping names, replace these values and save the configuration file.
 
 The configuration file references the following environmental variables:
 
@@ -102,7 +98,7 @@ The configuration file references the following environmental variables:
 |---|---|
 | LOG4J2_ADX_DB_NAME | Database name. Defined in [Prerequisites](#prerequisites)
 | LOG4J2_ADX_TENANT_ID | Tenant ID. Created in [Create an Azure AD App registration](#create-an-azure-ad-app-registration).
-| LOG4J2_ADX_INGEST_CLUSTER_URL | Cluster ingestion URI of the format *https://ingest-cluster.kusto.windows.net* where *cluster* should be replaced with your cluster name.
+| LOG4J2_ADX_INGEST_CLUSTER_URL | Cluster ingestion URI of the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*.
 | LOG4J2_ADX_APP_ID | App ID. Created in [Create an Azure AD App registration](#create-an-azure-ad-app-registration).
 | LOG4J2_ADX_APP_KEY | App key value. Created in [Create an Azure AD App registration](#create-an-azure-ad-app-registration).
 
@@ -150,6 +146,8 @@ Copy the following query and run it in the context of your target database.
 log4jTest 
 | take 10
 ```
+
+Your output should look similar to the following table:
 
 **Output:**
 
