@@ -42,7 +42,7 @@ Convert an angle value from one unit to another.
 
 ## Returns
 
- Returns the input value converted from one angle unit to another.
+ Returns the input value converted from one angle unit to another, or `null` for invalid units.
 
 ## Example
 

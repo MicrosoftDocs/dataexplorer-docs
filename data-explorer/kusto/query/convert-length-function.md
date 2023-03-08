@@ -62,7 +62,7 @@ Convert a length value from one unit to another.
 
 ## Returns
 
- Returns the input value converted from one length unit to another.
+ Returns the input value converted from one length unit to another, or `null` for invalid units.
 
 ## Example
 

@@ -58,7 +58,7 @@ Convert a speed value from one unit to another.
 
 ## Returns
 
-Returns the input value converted from one speed unit to another.
+ Returns the input value converted from one speed unit to another, or `null` for invalid units.
 
 ## Example
 

@@ -62,7 +62,7 @@ Convert an energy value from one unit to another.
 
 ## Returns
 
- Returns the input value converted from one energy unit to another.
+ Returns the input value converted from one energy unit to another, or `null` for invalid units.
 
 ## Example
 
