@@ -31,12 +31,10 @@ Use the following steps to create an Event Hubs data connection in your free clu
 
 1. Go to [My Cluster](https://aka.ms/kustofree).
 
-    **//TODO: Add capture of My cluster page**
-
 1. Select the **Data connections** tab, and then select **Ingest from Event Hubs**.  
     The **Ingest data** window opens with the **Destination** tab selected.
 
-    **//TODO: Add capture of Data connections tab, showing Ingest button**
+    :::image type="content" source="media/start-for-free-event-hubs/start-for-free-create-event-hubs-data-connection.png" alt-text="Screenshot of the data connections tab, showing the ingest from Event Hubs option." lightbox="media/start-for-free-event-hubs/start-for-free-create-event-hubs-data-connection.png":::
 
 1. Fill out the destination details using the information in [Destination tab](event-hub-wizard.md#destination-tab), and then select **Next**.
 1. Fill out the source details using the information in [Source tab](event-hub-wizard.md#source-tab), and then select **Next**.
@@ -65,7 +63,7 @@ If there is a connectivity issue with a connecting, its status in the **Data con
 Use the following tab to determine how to resolve the issue:
 
 | Cause | Resolution |
-| --- | --- | --- |
+| --- | --- |
 | Account keys regenerated | Reconnect the data connection. |
 | Event hub deleted | [Delete](#delete-a-data-connection) the data connection. |
 
