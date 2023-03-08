@@ -180,7 +180,7 @@ There are multiple ways to flatten dynamic columns by using the [extend](kusto/q
 * **Use the extend operator**: We recommend using this approach as it's faster and robust. Even if the schema changes, it will not break queries or dashboards.
 
     ```kusto
-    Tablenmae
+    Tablename
     | extend facility_code=toint(fields.facility_code), message=tostring(fields.message), procid= tolong(fields.procid), severity_code=toint(fields.severity_code),
     SysLogTimestamp=unixtime_nanoseconds_todatetime(tolong(fields.timestamp)), version= todouble(fields.version),
     appname= tostring(tags.appname), facility= tostring(tags.facility),host= tostring(tags.host), hostname=tostring(tags.hostname), severity=tostring(tags.severity)
