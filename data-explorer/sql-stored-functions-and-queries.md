@@ -75,4 +75,3 @@ The first parameter of `sp_execute_kql` is the KQL query, and any other paramete
 * [Connect with ODBC](connect-odbc.md)
 * [Connect with JDBC](connect-jdbc.md)
 * [Connect from common apps](connect-common-apps.md)
-* [Run stored functions and queries](sql-kql-queries.md)
