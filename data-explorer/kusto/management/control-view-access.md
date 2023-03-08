@@ -13,11 +13,11 @@ In this article, you'll learn methods for controlling a principal's table view a
 
 ## Structure data for controlled access
 
-To control access more effectively, we recommend that you separate tables into different databases based on access privileges. This separation simplifies the task of making sure certain data is only viewed and edited by the proper principals. For instance, create a distinct database for sensitive data and restrict access to specific principals by assigning them the relevant [security roles](security-roles.md).
+To control access more effectively, we recommend that you separate tables into different databases based on access privileges. For instance, create a distinct database for sensitive data and restrict access to specific principals by assigning them the relevant [security roles](security-roles.md).
 
 ## Restricted View Access policy
 
-To restrict access to specific tables, you can turn on the [Restricted View Access policy](restrictedviewaccesspolicy.md) for those tables. This policy ensures that only principals with the `unrestrictedViewer` role can access the table. Meanwhile, principals with the regular `viewer` role won't be able to view the table.
+To restrict access to specific tables, you can turn on the [Restricted View Access policy](restrictedviewaccesspolicy.md) for those tables. This policy ensures that only principals with the `unrestrictedViewer` role can access the table. Meanwhile, principals with the regular `viewer` role can't view the table.
 
 ## Row Level Security policy
 
