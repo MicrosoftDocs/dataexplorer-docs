@@ -506,15 +506,17 @@ items:
     - name: Manage database roles
       href: manage-database-security-roles.md
     - name: Manage table roles
-      href: manage-table-security-roles.md
+      items:
+      - name: Manage table roles
+        href: manage-table-security-roles.md
+      - name: Manage table view access
+        href: manage-table-view-access.md
     - name: Manage external table roles
       href: manage-external-table-security-roles.md
     - name: Manage materialized view roles
       href: manage-materialized-view-security-roles.md
     - name: Manage function roles
       href: manage-function-security-roles.md
-    - name: Control table view access
-      href: control-view-access.md
 - name: Data ingestion
   items:
   - name: Ingest from storage

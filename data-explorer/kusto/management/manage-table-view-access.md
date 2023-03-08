@@ -1,11 +1,11 @@
 ---
-title: Control view access to tables - Azure Data Explorer
+title: Manage view access to tables - Azure Data Explorer
 description: This article describes how to grant access to view only some tables in a database in Azure Data Explorer.
 ms.topic: reference
 ms.date: 03/08/2023
 ---
 
-# Control view access to tables in Azure Data Explorer
+# Manage view access to tables in Azure Data Explorer
 
 In Azure Data Explorer, principals gain access to resources, such as databases and tables, based on their assigned [security roles](security-roles.md#security-roles). The `viewer` security role is only available at the database level, and assigning a principal this role gives them view access to all tables in the database.
 
