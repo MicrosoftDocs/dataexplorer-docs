@@ -2,7 +2,7 @@
 title: ORC Mapping - Azure Data Explorer
 description: Learn how to use ORC mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
-ms.date: 11/16/2022
+ms.date: 03/08/2023
 ---
 
 # ORC mapping
@@ -11,17 +11,18 @@ Use ORC mapping to map incoming data to columns inside tables when your ingestio
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-Each ORC mapping element may contain the following optional `properties`:
+Each ORC mapping element must contain either of the following optional properties:
 
-|Property|Description|
-|--|--|
-|`Field`|The name of the field in the ORC record.|
-|`Path`|Alternative to using `Field` that allows taking the inner part of an ORC record-field, if necessary. The value denotes a JSON-path from the root of the ORC record. The JSON path that denotes the entire ORC record is `$`. If the value doesn't start with `$`: a constant value is used. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md).|
-|`ConstantValue`|The constant value to be used for a column instead of some value inside the ORC file.|
-|`Transform`|[mapping transformations](mappings.md#mapping-transformations) that should be applied on the content.|
+| Property   | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Field      | string | Name of the field in the ORC record.                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Path       | string | If the value starts with `$` it's interpreted as the path to the field in the ORC document that will become the content of the column in the table. The path that denotes the entire ORC record is `$`. If the value doesn't start with `$` it's interpreted as a constant value. Paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md). |
+| ConstValue | string | The constant value to be used for a column instead of some value inside the ORC file.                                                                                                                                                                                                                                                                                                                                                |
+| Transform  | string | Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations).                                                                                                                                                                                                                                                                                                            |
 
-> [!NOTE]
-> `Field` and `Path` cannot be used together; only one is allowed.
+>[!NOTE]
+>
+> Field and Path are mutually exclusive.
 >
 > The following alternatives are equivalent:
 >
@@ -93,7 +94,3 @@ Use ORC mapping during ingestion without defining a mapping schema (see [identit
         format="orc"
     )
 ```
-
-## Next steps
-
-* Learn more about [data mappings](mappings.md)
