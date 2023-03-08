@@ -106,7 +106,7 @@ The following example removes all principals in the group from the `admins` role
 
 #### Add new security roles and remove the old with .set
 
-THe following example removes existing `viewers` and adds the provided principals as `viewers` on the `Samples` database.
+The following example removes existing `viewers` and adds the provided principals as `viewers` on the `Samples` database.
 
 ```kusto
 .set database Samples viewers ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
