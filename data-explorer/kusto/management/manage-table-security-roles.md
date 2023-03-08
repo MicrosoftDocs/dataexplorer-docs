@@ -25,7 +25,7 @@ The following table shows the possible security roles on the table level and des
 |`ingestors` | Ingest data to the table without access to query. |
 
 > [!NOTE]
-> To learn how to grant a principal view access to a subset of tables within a database, see [control view access to tables](control-view-access.md).
+> To learn how to grant a principal view access to a subset of tables within a database, see [control view access to tables](manage-table-view-access.md).
 
 ## View existing security roles
 
