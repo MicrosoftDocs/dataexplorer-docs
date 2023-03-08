@@ -42,7 +42,7 @@ SQL Server endpoint. The permissions columns specifies any permissions needed on
 |Authentication method|Syntax|How|Description|
 |--|--|--|
 |Azure AD-integrated|`Authentication="Active Directory Integrated"`|Add to the *ConnectionString* parameter.|This is the preferred authentication method. The user or application authenticates via Azure AD to Azure Data Explorer, and the same token is used to access the SQL Server network endpoint.<br/>The principal must have the appropriate permissions on the SQL resource to perform the requested action. For example, to read from the database the principal needs table SELECT permissions, and to write to an existing table the principal needs UPDATE and INSERT permissions. To write to a new table, CREATE permissions are also required.|
-|Username and password|`User ID=...; Password=...;`|Add in the *Options* parameter.|When possible, avoid this method as secret information is sent through Azure Data Explorer.|
+|Username and password|`User ID=...; Password=...;`|Add to the *ConnectionString* parameter.|When possible, avoid this method as secret information is sent through Azure Data Explorer.|
 |Azure AD access token|`dynamic({'token': h"eyJ0..."})`|Add in the *Options* parameter.|The access token is passed as `token` property in the *Options* argument of the plugin.|
 
 > [!NOTE]
