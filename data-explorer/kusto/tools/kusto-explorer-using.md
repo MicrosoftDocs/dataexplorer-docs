@@ -14,7 +14,7 @@ Kusto.Explorer is a desktop application that enables you to explore your data us
 
 Search++ mode enables you to search for a term using search syntax across one or more tables.
 
-1. In the Home tab, in the Query dropdown, select **Search++**.
+1. In the **Home** tab, in the Query dropdown, select **Search++**.
 1. Select **Multiple tables**.
 1. Under **Choose tables**, define which tables to search.
 1. In the edit box, enter your search phrase and select **Go**.
@@ -28,7 +28,7 @@ Search++ mode enables you to search for a term using search syntax across one or
 
 ## Query mode
 
-Kusto.Explorer includes a powerful script mode that enables you to write, edit, and run inline queries. The script mode comes with syntax highlighting and IntelliSense, so you can quickly ramp-up your knowledge of the Kusto Query Language.
+Kusto.Explorer includes a powerful query mode that enables you to write, edit, and run inline queries. The query mode comes with syntax highlighting and IntelliSense, so you can quickly ramp-up your knowledge of the Kusto Query Language.
 
 This section describes how to run basic queries in Kusto.Explorer and how to add parameters to your queries.
 

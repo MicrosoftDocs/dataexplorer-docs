@@ -39,36 +39,48 @@ If your default browser is the Chromium-based Microsoft Edge, installing this ex
 The Kusto.Explorer user interface is designed with a layout based on tabs and panels, similar to that of other Microsoft products:
 
 * Navigate through the tabs on the [menu panel](#menu-panel) to perform various operations
-* Manage your connections in the [connections panel](#connections-panel)
+* Manage your connections in the [connections panee](#connections-panel)
 * Create scripts to run in the script panel
 * View the results of the scripts in the results panel
 
 :::image type="content" source="images/kusto-explorer/ke-start.png" alt-text="Screenshot of Kusto Explorer user interface that shows an overview of the interface's four panels.":::
 
+## Connections panel
+
+:::image type="content" source="images/kusto-explorer/connections-panel.png" alt-text="Screenshot of the Connections panel that shows the Help cluster's databases.":::
+
+The Connections pane shows all the configured cluster connections. For each cluster the databases, tables, and attributes (columns) that they store are shown. Select items (which sets an implicit context
+for the search/query in the main panel), or double-click items to copy the name to the search/query panel.
+
+If the actual schema is large (such as a database with hundreds of tables), you can search it by pressing **CTRL+F** and entering a substring (case-insensitive) of the entity name you're looking for.
+
+Kusto.Explorer supports controlling the Connection panel from the query window, which is useful for scripts. For example, you can start a script file with a command that instructs Kusto.Explorer to connect to the cluster/database whose data is being queried by the script, by using the following syntax:
+
+<!-- csl -->
+```kusto
+#connect cluster('help').database('Samples')
+
+StormEvents | count
+```
+
+Run each line using `F5`, or similar.
+
+## Work Folders panel
+
+:::image type="content" source="images/kusto-explorer/work-folders-pane.png" alt-text="Screenshot of the Work Folders panel showing Unsaved work and Tracked Folders.":::
+
+The Work folders pane organizes your work folders in one place to make navigating your work easier. There are two types of work folders:
+
+* **Unsaved work**: lists folders for open query tabs that you may still be working on.
+* **Tracked folders**: lists folders from your local device that you can add as KQL libraries for easier access and management.
+
 ## Menu panel
-
-Kusto.Explorer Menu panel includes the following tabs:
-
-* [Home](#home-tab)
-* [File](#file-tab)
-* [Connections](#connections-tab)
-* [View](#view-tab)
-* [Tools](#tools-tab)
-* [Monitoring](#monitoring-tab)
-* [Management](#management-tab)
-* [Help](#help-tab)
 
 ### Home tab
 
 :::image type="content" source="images/kusto-explorer/home-tab.png" alt-text="Screenshot of the Home tab that shows the Home tab's five sections.":::
 
-The Home tab shows the most recently used functions, divided into sections:
-
-* [Query](#query-section)
-* [Share](#share-section)
-* [Visualizations](#visualizations-section)
-* [View](#view-section)
-* [Help](#help-tab)
+The Home tab shows the most frequently used operations. It includes:
 
 ### Query section
 
@@ -76,8 +88,8 @@ The Home tab shows the most recently used functions, divided into sections:
 
 |Menu|    Behavior|
 |----|----------|
-|Mode dropdown | <ul><li>Query mode: Switches Query Window into a [script mode](kusto-explorer-using.md#query-mode). Commands can be loaded and saved as scripts (default)</li> <li> Search mode: A single query mode where each command entered is processed immediately and presents a result in the Result Window</li> <li>Search++ mode: Allows searching for a term using search syntax across one or more tables. Learn more about using [Search++ Mode](kusto-explorer-using.md#search-mode)</li></ul> |
-|New Tab| Opens a new tab for querying Kusto |
+|Mode dropdown | <ul><li>Query mode: Switches the query editor into a [query mode](kusto-explorer-using.md#query-mode). Commands can be written and saved as queries (default)</li> <li> Search mode: A single query mode where each command entered is processed immediately and presents a result in the result panel</li> <li>Search++ mode: Allows searching for a term using search syntax across one or more tables. Learn more about using [Search++ Mode](kusto-explorer-using.md#search-mode)</li></ul> |
+|New Tab| Opens a new tab for querying Kusto Query Language. |
 
 ### Share section
 
@@ -92,6 +104,8 @@ The Home tab shows the most recently used functions, divided into sections:
 ### Visualizations section
 
 :::image type="content" source="images/kusto-explorer/home-visualizations-menu.png" alt-text="Screenshot of the Home tab section titled Visualizations that shows the different options for visualizing data.":::
+
+For variable visualizations see the [render operator](/data-explorer/kusto/query/renderoperator.md).
 
 |Menu         | Behavior|
 |-------------|---------|
@@ -247,6 +261,18 @@ The Home tab shows the most recently used functions, divided into sections:
 |Reset Options| Sets application settings to default values.|
 |Options| Opens a tool for configuring application settings. Learn more about [Kusto.Explorer options](kusto-explorer-options.md).|
 
+## Table row colors
+
+Kusto.Explorer tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on).
+
+To modify the output color scheme, or turn this behavior off, from the **Tools** menu, select **Options** > **Results Viewer** > **Verbosity color scheme**.
+
+:::image type="content" source="images/kusto-explorer/ke-color-scheme.png" alt-text="Screenshot of Kusto Explorer color scheme modification.":::
+
+**Excel** color scheme legend| **Vivid** color scheme legend
+|---|---
+| :::image type="content" source="images/kusto-explorer/excel-color-scheme.png" alt-text="Screenshot of the Excel color scheme legend in Kusto Explorer." border="false"::: |:::image type="content" source="images/kusto-explorer/vivid-color-scheme.png" alt-text="Screenshot vivid color scheme legend in Kusto Explorer." border="false":::
+
 ## Monitoring tab
 
 :::image type="content" source="images/kusto-explorer/monitoring-tab.png" alt-text="Screenshot of the Monitoring tab that shows two options for monitoring data.":::
@@ -262,7 +288,7 @@ The Home tab shows the most recently used functions, divided into sections:
 
 ## Management tab
 
-:::image type="content" source="images/kusto-explorer/management-tab.png" alt-text="Screenshot of the Management tab that shows options for managing Authorized Prinicipals. ":::
+:::image type="content" source="images/kusto-explorer/management-tab.png" alt-text="Screenshot of the Management tab that shows options for managing Authorized Principals. ":::
 
 |Menu             | Behavior|
 |-----------------|---------|
@@ -281,28 +307,9 @@ The Home tab shows the most recently used functions, divided into sections:
 |Help             | Opens a link to the Kusto online documentation.  |
 |What's new       | Opens a document that lists all Kusto.Explorer changes.|
 |Report Issue      |Opens a dialog with two options: <ul><li>Report issues related to service</li><li>Report issues in the client application</li></ul>. |
-|Keyboard Shortcuts| Opens a link to the Kusto Explorer keyboard shortcuts article.|
+|Keyboard Shortcuts| Opens a link to the [list of Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md).|
 |Suggest Feature  | Opens a link to the Kusto feedback forum. |
 |Show EULA| Opens a link to the Microsoft Azure Legal Information article.|
-
-## Connections panel
-:::image type="content" source="images/kusto-explorer/connections-panel.png" alt-text="Screenshot of the Connections panel that shows the Help cluster's databases.":::
-
-The Connections pane shows all the configured cluster connections. For each cluster the databases, tables, and attributes (columns) that they store are shown. Select items (which sets an implicit context
-for the search/query in the main panel), or double-click items to copy the name to the search/query panel.
-
-If the actual schema is large (such as a database with hundreds of tables), you can search it by pressing **CTRL+F** and entering a substring (case-insensitive) of the entity name you're looking for.
-
-Kusto.Explorer supports controlling the Connection panel from the query window, which is useful for scripts. For example, you can start a script file with a command that instructs Kusto.Explorer to connect to the cluster/database whose data is being queried by the script, by using the following syntax:
-
-<!-- csl -->
-```kusto
-#connect cluster('help').database('Samples')
-
-StormEvents | count
-```
-
-Run each line using `F5`, or similar.
 
 ### Control the user identity connecting to Kusto.Explorer
 
@@ -328,22 +335,6 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 > The domain name of the user is not necessarily the same as that of the tenant hosting the cluster.
 
 :::image type="content" source="images/kusto-explorer/advanced-connection-string.png" alt-text="Screenshot of the Add Connection pane showing the option titled Advanced Connection String.":::
-
-## Keyboard shortcuts
-
-You might find that using keyboard shortcuts enables you to perform operations faster than with the mouse. Take a look at this [list of Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md) to learn more.
-
-## Table row colors
-
-Kusto.Explorer tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on).
-
-To modify the output color scheme, or turn this behavior off, from the **Tools** menu, select **Options** > **Results Viewer** > **Verbosity color scheme**.
-
-:::image type="content" source="images/kusto-explorer/ke-color-scheme.png" alt-text="Screenshot of Kusto Explorer color scheme modification.":::
-
-**Excel** color scheme legend| **Vivid** color scheme legend
-|---|---
-| :::image type="content" source="images/kusto-explorer/excel-color-scheme.png" alt-text="Screenshot of the Excel color scheme legend in Kusto Explorer." border="false"::: |:::image type="content" source="images/kusto-explorer/vivid-color-scheme.png" alt-text="Screenshot vivid color scheme legend in Kusto Explorer." border="false":::
 
 ## Next steps
 
