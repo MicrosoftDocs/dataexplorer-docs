@@ -8,7 +8,7 @@ ms.date: 02/26/2023
 
 Any library and application that can connect to a Microsoft Azure SQL Database with Azure Active Directory (Azure AD) authentication can also connect to Azure Data Explorer. This functionality is made possible by Azure Data Explorer's TDS-compliant endpoint, which emulates Microsoft SQL Server.
 
-With SQL Server emulation, you can connect to Azure Data Explorer through various methods, including [ODBC](connect-odbc.md), [JDBC](connect-jdbc.md), and [common apps](connect-common-apps.md) like LINQPad and Azure Data Studio. From these apps, you can [run Kusto Query Language (KQL) queries and stored functions](query-sql-server-emulation.md) just like you would with SQL stored procedures.
+With SQL Server emulation, you can connect to Azure Data Explorer through various methods, including [ODBC](connect-odbc.md), [JDBC](connect-jdbc.md), and [common apps](connect-common-apps.md) like LINQPad and Azure Data Studio.
 
 ## Authentication
 
@@ -57,4 +57,4 @@ Driver={ODBC Driver 17 for SQL Server};Server=myadxcluster.westeurope.kusto.wind
 * [Connect with ODBC](connect-odbc.md)
 * [Connect with JDBC](connect-jdbc.md)
 * [Connect from common apps](connect-common-apps.md)
-* [Run stored functions and queries](sql-stored-functions-and-queries.md)
+* [Run KQL queries and call stored functions](sql-stored-functions-and-queries.md)

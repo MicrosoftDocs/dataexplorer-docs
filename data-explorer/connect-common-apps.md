@@ -167,4 +167,4 @@ From MATLAB, you can connect to Azure Data Explorer using [JDBC](connect-jdbc.md
 ## Next steps
 
 * [Query with T-SQL](t-sql.md)
-* [Run stored functions and queries](sql-stored-functions-and-queries.md)
+* [Run KQL queries and call stored functions](sql-stored-functions-and-queries.md)

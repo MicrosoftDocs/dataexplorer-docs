@@ -115,4 +115,4 @@ public class Sample {
 
 ## Next steps
 
-* [Run stored functions and queries](sql-stored-functions-and-queries.md)
+* [Run KQL queries and call stored functions](sql-stored-functions-and-queries.md)

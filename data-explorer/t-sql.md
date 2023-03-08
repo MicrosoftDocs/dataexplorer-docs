@@ -118,4 +118,3 @@ Azure Data Explorer offers limited support for T-SQL. The following table outlin
 ## Next steps
 
 * Learn about [SQL Server emulation](sql-server-emulation-overview.md) in Azure Data Explorer
-* Connect to Azure Data Explorer from common [SQL clients](kusto/api/tds/clients.md)
