@@ -3,7 +3,7 @@ title: infer_storage_schema plugin - Azure Data Explorer
 description: Learn how to use the infer_storage_schema plugin to infer the schema of external data. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 03/08/2023
 ---
 # infer_storage_schema plugin
 
