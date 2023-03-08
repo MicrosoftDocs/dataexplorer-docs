@@ -57,4 +57,4 @@ Driver={ODBC Driver 17 for SQL Server};Server=myadxcluster.westeurope.kusto.wind
 * [Connect with ODBC](connect-odbc.md)
 * [Connect with JDBC](connect-jdbc.md)
 * [Connect from common apps](connect-common-apps.md)
-* [Run stored functions and queries](sql-stored-functions.md)
+* [Run stored functions and queries](sql-stored-functions-and-queries.md)

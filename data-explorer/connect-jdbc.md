@@ -115,4 +115,4 @@ public class Sample {
 
 ## Next steps
 
-* [Run stored functions and queries](sql-stored-functions.md)
+* [Run stored functions and queries](sql-stored-functions-and-queries.md)
