@@ -1,5 +1,5 @@
 ---
-title: Connect to Azure Data Explorer with SQL Server emulation - Azure Data Explorer
+title: Query data in Azure Data Explorer with SQL Server emulation - Azure Data Explorer
 description: This article provides an overview on SQL Server emulation in Azure Data Explorer.
 ms.topic: reference
 ms.date: 02/26/2023
@@ -57,6 +57,5 @@ Driver={ODBC Driver 17 for SQL Server};Server=myadxcluster.westeurope.kusto.wind
 * [Connect with ODBC](connect-odbc.md)
 * [Connect with JDBC](connect-jdbc.md)
 * [Connect from common apps](connect-common-apps.md)
-* [Query with T-SQL](t-sql.md)
 * [Run stored functions](sql-stored-functions.md)
 * [Run KQL queries](sql-kql-queries.md)

@@ -115,6 +115,5 @@ public class Sample {
 
 ## Next steps
 
-* [Query with T-SQL](t-sql.md)
 * [Run stored functions](sql-stored-functions.md)
 * [Run KQL queries](sql-kql-queries.md)

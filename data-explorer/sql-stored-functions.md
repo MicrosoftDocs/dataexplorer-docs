@@ -45,5 +45,4 @@ You can create and run [stored functions](kusto/query/schema-entities/stored-fun
 * [Connect with ODBC](connect-odbc.md)
 * [Connect with JDBC](connect-jdbc.md)
 * [Connect from common apps](connect-common-apps.md)
-* [Query with T-SQL](t-sql.md)
 * [Run KQL queries](sql-kql-queries.md)
