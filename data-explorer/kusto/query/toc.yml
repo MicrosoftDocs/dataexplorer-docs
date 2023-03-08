@@ -1357,3 +1357,5 @@ items:
       href: ../../kusto-emulator-overview.md
     - name: Install the Kusto emulator
       href: ../../kusto-emulator-install.md
+  - name: Kusto extension for Azure Data Studio >>
+    href: https://learn.microsoft.com/sql/azure-data-studio/extensions/kusto-extension
