@@ -249,9 +249,9 @@ items:
       href: python-query-data.md
     - name: Debug KQL inline Python
       href: debug-inline-python.md
-    - name: Query data with T-SQL
+    - name: Query data using T-SQL
       href: t-sql.md
-    - name: Query data with SQL Server emulation
+    - name: Query data using SQL Server emulation
       items:
         - name: Overview
           href: sql-server-emulation-overview.md

@@ -4,7 +4,7 @@ description: This article provides an overview on SQL Server emulation in Azure 
 ms.topic: reference
 ms.date: 02/26/2023
 ---
-# Query data in Azure Data Explorer with SQL Server emulation
+# Query data in Azure Data Explorer using SQL Server emulation
 
 Any library and application that can connect to a Microsoft Azure SQL Database with Azure Active Directory (Azure AD) authentication can also connect to Azure Data Explorer. This functionality is made possible by Azure Data Explorer's TDS-compliant endpoint, which emulates Microsoft SQL Server.
 
