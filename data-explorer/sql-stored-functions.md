@@ -1,6 +1,6 @@
 ---
-title: Run KQL stored functions and queries with SQL Server emulation - Azure Data Explorer
-description: This article describes using the Kusto Query Language (KQL) or T-SQL over TDS in Azure Data Explorer.
+title: Run stored functions with SQL Server emulation - Azure Data Explorer
+description: This article describes using stored functions over TDS in Azure Data Explorer.
 ms.reviewer: yosefd
 ms.topic: reference
 ms.date: 03/08/2023

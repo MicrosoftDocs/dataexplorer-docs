@@ -1,11 +1,11 @@
 ---
-title: Run KQL stored functions and queries with SQL Server emulation - Azure Data Explorer
+title: Run KQL queries with SQL Server emulation - Azure Data Explorer
 description: This article describes using the Kusto Query Language (KQL) or T-SQL over TDS in Azure Data Explorer.
 ms.reviewer: yosefd
 ms.topic: reference
 ms.date: 03/08/2023
 ---
-# Run stored functions and KQL queries with SQL Server emulation
+# Run KQL queries with SQL Server emulation
 
 Azure Data Explorer provides Tabular Data Stream (TDS) endpoints that allow you to query data in a way similar to how you would query data in SQL Server. In this article, you'll learn how to run [Kusto Query Language (KQL)](kusto/query/index.md) queries from an SQL compatible client.
 
