@@ -8,7 +8,7 @@ ms.date: 04/05/2022
 
 # Create a managed private endpoint for Azure Data Explorer
 
-Managed private endpoints are required to connect to Azure resources that are highly protected. In this article, you'll learn how to create a managed private endpoint and connect it to your data source.
+Managed private endpoints are required to connect to Azure resources that are highly protected. They are one-way private connections for data flowing from Azure Data Explorer to other protected services. In this article, you'll learn how to create a managed private endpoint and connect it to your data source.
 
 ## Prerequisites
 
