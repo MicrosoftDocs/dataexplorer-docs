@@ -105,7 +105,7 @@ The following example removes all principals in the group from the `admins` role
 
 #### Add new security roles and remove the old with .set
 
-THe following example removes existing `ingestors` and adds the provided principals as `ingestors` on the `StormEvents` table.
+The following example removes existing `ingestors` and adds the provided principals as `ingestors` on the `StormEvents` table.
 
 ```kusto
 .set table StormEvents ingestors ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
