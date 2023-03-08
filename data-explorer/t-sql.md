@@ -3,7 +3,7 @@ title: T-SQL - Azure Data Explorer
 description: This article describes T-SQL in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 01/24/2023
+ms.date: 03/08/2023
 ---
 # Query data using T-SQL
 
@@ -78,6 +78,21 @@ StormEvents
 | take int(10)
 ```
 
+## Run stored functions
+
+When using T-SQL, we recommend that you create optimized KQL queries and encapsulate them in [stored functions](kusto/query/schema-entities/stored-functions.md), as doing so minimizes T-SQL code and may increase performance. For example, if you have a stored function as described in the following table, you can execute it as shown in the code example.
+
+|Name |Parameters|Body|Folder|DocString
+|---|---|---|---|---|
+|MyFunction |(myLimit: long)| {StormEvents &#124; take myLimit}|MyFolder|Demo function with parameter|
+
+```sql
+SELECT * FROM kusto.MyFunction(10)
+```
+
+> [!NOTE]
+> To distinguish between stored functions and emulated SQL system stored procedures, execute stored functions with an explicit reference to the `kusto` schema. In the example, the stored function is executed using `kusto.Myfunction`.
+
 ## Limitations
 
 Azure Data Explorer offers limited support for T-SQL. The following table outlines the T-SQL statements and features that aren't supported or are partially supported.
@@ -102,4 +117,4 @@ Azure Data Explorer offers limited support for T-SQL. The following table outlin
 
 ## Next steps
 
-* Connect to Azure Data Explorer from common [SQL clients](kusto/api/tds/clients.md)
+* Learn about [SQL Server emulation](sql-server-emulation-overview.md) in Azure Data Explorer
