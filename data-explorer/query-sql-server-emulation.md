@@ -40,7 +40,7 @@ You can create and execute [stored functions](kusto/query/schema-entities/stored
 > [!NOTE]
 > To distinguish between stored functions and emulated SQL system stored procedures, execute stored functions with an explicit reference to the `kusto` schema. In the example, the stored function is executed using `kusto.Myfunction`.
 
-## Run queries
+## Run KQL queries
 
 The SQL stored procedure `sp_execute_kql` can be used to execute [KQL](/kusto/query/index.md) queries, including parameterized queries. The procedure is similar to the `sp_executesql` stored procedure.
 

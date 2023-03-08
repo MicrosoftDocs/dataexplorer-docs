@@ -265,7 +265,7 @@ items:
           displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
         - name: Query data with T-SQL
           href: t-sql.md
-        - name: Run stored functions and queries
+        - name: Run stored functions and KQL queries
           href: query-sql-server-emulation.md
     - name: Evaluate query performance in your cluster
       href: kusto/api/load-test-cluster.md
