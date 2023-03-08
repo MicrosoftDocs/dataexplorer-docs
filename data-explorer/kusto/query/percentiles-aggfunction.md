@@ -16,7 +16,7 @@ The accuracy depends on the density of population in the region of the percentil
 * `percentilesw()` is like `percentilew()`, but calculates a number of weighted percentile values, which is faster than calculating each percentile individually.
 * `percentilew()` and `percentilesw()` let you calculate weighted percentiles. Weighted percentiles calculate the given percentiles in a "weighted" way, by treating each value as if it was repeated `weight` times, in the input.
 
-To add a percentage calculation to your results, see the [percentages example](tutorial.md#percentages).
+See an example of how to add a percentage calculation to your results in the [tutorial](tutorial.md#calculate-percentages) tutorial.
 
 ## Syntax
 

@@ -27,7 +27,7 @@ The following table shows the possible security roles on the database level and 
 |`monitors` | View database metadata such as schemas, operations, and permissions.|
 
 > [!NOTE]
-> It isn't possible to grant viewer access to only some tables in the database.
+> It isn't possible to assign the `viewer` role for only some tables in the database. For different approaches on how to grant a principal view access to a subset of tables, see [manage table view access](manage-table-view-access.md).
 
 ## View existing security roles
 
@@ -107,7 +107,7 @@ The following example removes all principals in the group from the `admins` role
 
 #### Add new security roles and remove the old with .set
 
-THe following example removes existing `viewers` and adds the provided principals as `viewers` on the `Samples` database.
+The following example removes existing `viewers` and adds the provided principals as `viewers` on the `Samples` database.
 
 ```kusto
 .set database Samples viewers ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
