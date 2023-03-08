@@ -120,4 +120,6 @@ $conn.Close()
 ## Next steps
 
 * See the overview on [SQL Server emulation in Azure Data Explorer](sql-server-emulation-overview.md)
-* [Run KQL queries and stored functions like SQL stored procedures](query-sql-server-emulation.md)
+* [Query with T-SQL](t-sql.md)
+* [Run stored functions](sql-stored-functions.md)
+* [Run KQL queries](sql-kql-queries.md)

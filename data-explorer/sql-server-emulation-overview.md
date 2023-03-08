@@ -4,7 +4,7 @@ description: This article provides an overview on SQL Server emulation in Azure 
 ms.topic: reference
 ms.date: 02/26/2023
 ---
-# Connect to Azure Data Explorer with SQL Server emulation
+# Query data in Azure Data Explorer with SQL Server emulation
 
 Any library and application that can connect to a Microsoft Azure SQL Database with Azure Active Directory (Azure AD) authentication can also connect to Azure Data Explorer. This functionality is made possible by Azure Data Explorer's TDS-compliant endpoint, which emulates Microsoft SQL Server.
 
@@ -57,5 +57,6 @@ Driver={ODBC Driver 17 for SQL Server};Server=myadxcluster.westeurope.kusto.wind
 * [Connect with ODBC](connect-odbc.md)
 * [Connect with JDBC](connect-jdbc.md)
 * [Connect from common apps](connect-common-apps.md)
-* [Run KQL queries and stored functions with SQL Server emulation](query-sql-server-emulation.md)
-* [Use T-SQL to query Azure DAta Explorer](t-sql.md)
+* [Query with T-SQL](t-sql.md)
+* [Run stored functions](sql-stored-functions.md)
+* [Run KQL queries](sql-kql-queries.md)
