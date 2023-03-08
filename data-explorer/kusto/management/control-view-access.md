@@ -1,6 +1,6 @@
 ---
 title: Control view access to tables - Azure Data Explorer
-description: This article describes how to grant access to view only some tables in a database in Azure Data Explorer.
+description: Learn how to grant access to view only some tables in a database in Azure Data Explorer.
 ms.topic: reference
 ms.date: 03/08/2023
 ---
