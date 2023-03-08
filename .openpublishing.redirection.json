@@ -367,7 +367,7 @@
     },
     {
 			"source_path": "data-explorer/write-queries.md",
-			"redirect_url": "/azure/data-explorer/kusto/query/tutorial",
+			"redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
 			"redirect_document_id": false
 		},
     {
