@@ -28,9 +28,9 @@ The following table lists the supported authentication methods for Azure Storage
 |--|--|--|
 |[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Read permissions: Storage Blob Data Reader<br/>Write permissions:Storage Blob Data Contributor|Read permissions: Reader<br/>Write permissions: Contributor|
 |[Managed identity](../api/connection-strings/storage-authentication-methods.md#managed-identity)|Read permissions: Storage Blob Data Reader<br/>Write permissions: Storage Blob Data Contributor|Read permissions: Reader<br/>Write permissions: Contributor|
-|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Read permissions: List + Read<br/>Write permissions: Write|This authorization method is not supported in Gen1.|
+|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Read permissions: List + Read<br/>Write permissions: Write|This authorization method isn't supported in Gen1.|
 |[Azure AD access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|||
-|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authorization method is not supported in Gen1.|
+|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authorization method isn't supported in Gen1.|
 
 ## .create or .alter external table
 
