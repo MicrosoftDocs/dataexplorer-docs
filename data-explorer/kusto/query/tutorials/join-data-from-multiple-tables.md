@@ -67,7 +67,7 @@ PopulationData
 |ARKANSAS|3025880|
 |CALIFORNIA|39562900|
 
-Both tables contains a `State` column. The `StormEvents` table has many more columns, and the `PopulationData` has only one other column that contains the population of the given state.
+Both tables contain a `State` column. The `StormEvents` table has many more columns, and the `PopulationData` has only one other column that contains the population of the given state.
 
 ### Join the tables
 
