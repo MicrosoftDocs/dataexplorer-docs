@@ -3,7 +3,7 @@ title: Kusto.Explorer installation and user interface
 description: Learn about the features of Kusto.Explorer and how it can help you to explore your data
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 03/05/2023
+ms.date: 03/08/2023
 ---
 
 # Kusto.Explorer installation and user interface
@@ -259,7 +259,7 @@ For variable visualizations see the [render operator](/data-explorer/kusto/query
 |Query to Power BI| Translates a query to a format suitable for using in Power BI.|
 ||---------*Options*---------|
 |Reset Options| Sets application settings to default values.|
-|Options| Opens a tool for configuring application settings. Learn more about [Kusto.Explorer options](kusto-explorer-options.md).|
+|Options| Opens a tool for configuring application settings. To learn more, see [Kusto.Explorer options](kusto-explorer-options.md).|
 
 ## Table row colors
 
