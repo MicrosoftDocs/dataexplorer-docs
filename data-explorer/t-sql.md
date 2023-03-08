@@ -78,7 +78,7 @@ StormEvents
 | take int(10)
 ```
 
-## Executing stored functions
+## Run stored functions
 
 When using T-SQL, we recommend that you create optimized KQL queries and encapsulate them in [stored functions](kusto/query/schema-entities/stored-functions.md), as doing so minimizes T-SQL code and may increase performance. For example, if you have a stored function as described in the following table, you can execute it as shown in the code example.
 
