@@ -265,6 +265,10 @@ items:
       href: python-query-data.md
     - name: Debug KQL inline Python
       href: debug-inline-python.md
+    - name: Query data with SQL Server emulation
+      href: query-sql-server-emulation.md
+    - name: Query data with T-SQL
+      href: t-sql.md
     - name: Evaluate query performance in your cluster
       href: kusto/api/load-test-cluster.md
     - name: Optimize for high concurrency
@@ -273,10 +277,6 @@ items:
       href: set-timeout-limits.md
     - name: Query cold data with hot windows
       href: hot-windows.md
-    - name: Query data with SQL Server emulation
-      href: query-sql-server-emulation.md
-    - name: Query data with T-SQL
-      href: t-sql.md
     - name: Time Series Analysis and Machine Learning
       items:
         - name: Azure Data Explorer Python library
