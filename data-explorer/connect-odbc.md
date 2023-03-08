@@ -117,6 +117,8 @@ $conn.GetSchema("Tables")
 $conn.Close()
 ```
 
+---
+
 ## Next steps
 
 * See the overview on [SQL Server emulation in Azure Data Explorer](sql-server-emulation-overview.md)
