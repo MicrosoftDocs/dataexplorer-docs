@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Kusto queries'
-description: This tutorial describes how to use queries in the Kusto Query Language to meet common query needs.
+Title: 'Tutorial: Apply Kusto queries'
+Description: This tutorial describes how to use queries in the Kusto Query Language to meet common query needs.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/01/2021
@@ -8,15 +8,17 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
 
-# Tutorial: Use Kusto queries
+# Tutorial: Apply Kusto queries - a quick reference guide 
 
 ::: zone pivot="azuredataexplorer"
 
-The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
+The best way to learn the Kusto Query language (KQL) is by looking at some sample queries. The purpose of this tutorial is to provide a quick reference to the most commonly used Kusto queries, together with examples and code samples of each query. For a more comprehensive understanding of KQL, you can refer to our [Data analysis in Azure Data Explorer](../training/paths/data-analysis-data-explorer-kusto-query-language/) which contains modules on many of the queries that you will encounter here, and more. 
 
-## Count rows
+We recommend using this [database with sample data](https://help.kusto.windows.net/Samples) for the queries demonstrated in this tutorial.  The `StormEvents` table in the sample database provides some information about storms that occurred in the United States. To explore and gain insights from tabular data, tabular operators are applied. Let's have a look at some Kusto queries and their associated operators:
 
-Our example database has a table called `StormEvents`. we want to find out how large the table is. So we'll pipe its content into an operator that counts the rows in the table.
+## Count rows: *count* 
+
+To find out how long the table is, we will have to feed all of its content into an operator that counts the rows:
 
 *Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
 
@@ -31,16 +33,15 @@ Here's the output:
 |-----|
 |59066|
 
-For more information, see [count operator](./countoperator.md).
+For more information, see [count](./countoperator.md) operator. 
 
-## Select a subset of columns: *project*
+## Select a subset of columns: *project* 
 
-Use [project](./projectoperator.md) to pick out only the columns you want. See the following example, which uses both the [project](./projectoperator.md)
-and the [take](./takeoperator.md) operators.
+Use the [project](./projectoperator.md) operator to select only the columns you want to work with. 
 
-## Filter by Boolean expression: *where*
+## Filter data: *where* 
 
-Let's see only `flood` events in `California` in Feb-2007:
+Within our selected subset of columns, let's refine our selection by calling up only `Flood` events in `California` in Feb-2007:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -56,9 +57,9 @@ Here's the output:
 |---|---|---|---|---|
 |2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to western Kern County in the early morning hours of the 19th. Minor flooding was reported across State Highway 166 near Taft.|
 
-## Show *n* rows: *take*
+## Show *n* rows: *take* 
 
-Let's see some data. What's in a random sample of five rows?
+Now, let's see what is in a random sample of five rows:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -77,14 +78,14 @@ Here's the output:
 |2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|Thunderstorm Wind|MISSISSIPPI|Numerous large trees were blown down with some down on power lines. Damage occurred in eastern Adams county.|
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|Thunderstorm Wind|GEORGIA|The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206. The cost of tree removal was estimated.|
 
-But [take](./takeoperator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.)
+Note that [limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.
 
-## Order results: *sort*, *top*
+## Order results: *sort* and *top* 
 
 * *Syntax note*: Some operators have parameters that are introduced by keywords like `by`.
 * In the following example, `desc` orders results in descending order and `asc` orders results in ascending order.
 
-Show me the first *n* rows, ordered by a specific column:
+Since [take](./takeoperator.md) shows rows from the table in no particular order, let's sort them - we want the first *n* rows, ordered by a specific column:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -103,7 +104,7 @@ Here's the output:
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|North to northeast winds gusting to around 58 mph were reported in the mountains of Ventura county.|
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|The Warm Springs RAWS sensor reported northerly winds gusting to 58 mph.|
 
-You can achieve the same result by using  either [sort](./sort-operator.md), and then [take](./takeoperator.md):
+You can achieve the same result by using [sort](./sort-operator.md), and then [take](./takeoperator.md):
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -113,7 +114,7 @@ StormEvents
 | project  StartTime, EndTime, EventType, EventNarrative
 ```
 
-## Compute derived columns: *extend*
+## Compute derived columns: *extend* 
 
 Create a new column by computing a value in every row:
 
@@ -135,9 +136,7 @@ Here's the output:
 |2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|00:03:00|Thunderstorm Wind|MISSISSIPPI|
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|00:05:00|Thunderstorm Wind|GEORGIA|
 
-It's possible to reuse a column name and assign a calculation result to the same column.
-
-Example:
+It's possible to reuse a column name and assign a calculation result to the same column, for example:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -156,7 +155,7 @@ Here's the output:
 
 ## Aggregate groups of rows: *summarize*
 
-Count the number of events occur in each state:
+Count the number of events occuring in each state:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -187,13 +186,13 @@ Here's the output:
 
 In the results of a `summarize` operator:
 
-* Each column is named in `by`.
-* Each computed expression has a column.
-* Each combination of `by` values has a row.
+* Each column is named in `by`
+* Each computed expression has a column
+* Each combination of `by` values has a row
 
 ## Summarize by scalar values
 
-You can use scalar (numeric, time, or interval) values in the `by` clause, but you'll want to put the values into bins by using the [bin()](./binfunction.md) function:
+You can use scalar (numeric, time, or interval) values in the `by` clause, but you'll have to put the values into bins by using the [bin()](./binfunction.md) function:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -202,7 +201,7 @@ StormEvents
 | summarize event_count = count() by bin(StartTime, 1d)
 ```
 
-The query reduces all the timestamps to intervals of one day:
+This query reduces all the timestamps to intervals of one day:
 
 |StartTime|event_count|
 |---|---|
@@ -220,7 +219,7 @@ The [bin()](./binfunction.md) is the same as the floor() function in many langua
 
 ## Display a chart or table: *render*
 
-You can project two columns and use them as the x-axis and the y-axis of a chart:
+You can `project` two columns and use them as the x-axis and the y-axis of a chart:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -273,9 +272,7 @@ Notice that `render timechart` uses the first column as the x-axis, and then dis
 
 ## Daily average cycle
 
-How does activity vary over the average day?
-
-Count events by the time modulo one day, binned into hours.
+Count events by the time modulo one day, binned into hours, to see how activity vary over the average day.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -288,7 +285,7 @@ StormEvents
 
 :::image type="content" source="images/tutorial/time-count-hour.png" alt-text="Screenshot that shows a timechart count by hour.":::
 
-Currently, `render` doesn't label durations properly, but we could use `| render columnchart` instead:
+Currently, `render` doesn't label durations properly but we could use `| render columnchart` instead:
 
 :::image type="content" source="images/tutorial/column-count-hour.png" alt-text="Screenshot that shows a column chart count by hour.":::
 
@@ -307,7 +304,7 @@ StormEvents
 
 :::image type="content" source="images/tutorial/time-hour-state.png" alt-text="Screenshot of a timechart by hour and state.":::
 
-Divide by `1h` to turn the x-axis into an hour number instead of a duration:
+Divide by `1h` to turn the x-axis into an hour amount instead of a duration:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -341,11 +338,9 @@ StormEvents
 
 ## User session example of *join*
 
-This section doesn't use the `StormEvents` table.
+This section doesn't use the `StormEvents` table. 
 
-Assume you have data that includes events which mark the start and end of each user session with a unique ID.
-
-How would you find out how long each user session lasts?
+Assume you have data that includes events which mark the start and end of each user session with a unique ID. How would you find out how long each user session lasts?
 
 You can use `extend` to provide an alias for the two timestamps, and then compute the session duration:
 
@@ -391,7 +386,7 @@ Or, you can use `| render columnchart`:
 
 ## Percentiles
 
-What ranges of durations do we find in different percentages of storms?
+What are the ranges of durations in different percentages of storms?
 
 To get this information, use the preceding query from [Plot a distribution](#plot-a-distribution), but replace `render` with:
 
@@ -405,9 +400,9 @@ In this case, we didn't use a `by` clause, so the output is a single row:
 
 We can see from the output that:
 
-* 5% of storms have a duration of less than 5 minutes.
-* 50% of storms lasted less than 1 hour and 25 minutes.
-* 95% of storms lasted less than 2 hours and 50 minutes.
+* 5% of storms have a duration of less than 5 minutes
+* 50% of storms lasted less than 1 hour and 25 minutes
+* 95% of storms lasted less than 2 hours and 50 minutes
 
 To get a separate breakdown for each state, use the `state` column separately with both `summarize` operators:
 
@@ -427,7 +422,7 @@ StormEvents
 
 ## Percentages
 
-Using the StormEvents table, we can calculate the percentage of direct injuries from all injuries.
+Using the `StormEvents` table, we can calculate the percentage of `direct injuries` among all injuries.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -496,7 +491,7 @@ Use this query if your default database is `Telemetry`:
 union Requests, database("Diagnostics").Logs | ...
 ```
 
-The preceding two queries assume that both databases are in the cluster you're currently connected to. If the `Telemetry` database was in a cluster named *TelemetryCluster.kusto.windows.net*, to access it, use this query:
+The preceding two queries assume that both databases are in the cluster you're currently connected to. If the `Telemetry` database was in a cluster named *TelemetryCluster.kusto.windows.net*, use this query to access it:
 
 ```kusto
 Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
@@ -511,209 +506,3 @@ For more information about combining data from several databases in a query, see
 
 * View code samples for the [Kusto Query Language](samples.md?pivots=azuredataexplorer).
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-The best way to learn about the Azure Data Explorer Query Language is to look at some basic queries to get a "feel" for the language. These queries are similar to queries in the Azure Data Explorer tutorial, but use data from common tables in an Azure Log Analytics workspace.
-
-Run these queries by using Log Analytics in the Azure portal. Log Analytics is a tool you can use to write log queries. Use log data in Azure Monitor, and then evaluate log query results. If you aren't familiar with Log Analytics, complete the [Log Analytics tutorial](/azure/azure-monitor/log-query/log-analytics-tutorial).
-
-All queries in this tutorial use the [Log Analytics demo environment](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade). You can use your own environment, but you might not have some of the tables that are used here. Because the data in the demo environment isn't static, the results of your queries might vary slightly from the results shown here.
-
-## Count rows
-
-The [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) table contains performance data that's collected by insights such as Azure Monitor for VMs and Azure Monitor for containers. To find out how large the table is, we'll pipe its content into an operator that counts rows.
-
-A query is a data source (usually a table name), optionally  followed by one or more pairs of the pipe character and some tabular operator. In this case, all records from the `InsightsMetrics` table are returned and then sent to the [count operator](./countoperator.md). The `count` operator displays the results because the operator is the last command in the query.
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-InsightsMetrics | count
-```
-
-Here's the output:
-
-|Count|
-|-----|
-|1,263,191|
-
-## Filter by Boolean expression: *where*
-
-The [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity) table has entries from the Azure activity log, which provides insight into subscription-level or management group-level events occurring in Azure. Let's see only `Critical` entries during a specific week.
-
-The [where](./whereoperator.md) operator is common in the Kusto Query Language. `where` filters a table to rows that match specific criteria. The following example uses multiple commands. First, the query retrieves all records for the table. Then, it filters the data for only records that are in the time range. Finally, it filters those results for only records that have a `Critical` level.
-
-> [!NOTE]
-> In addition to specifying a filter in your query by using the `TimeGenerated` column, you can specify the time range in Log Analytics. For more information, see [Log query scope and time range in Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope).
-
-```kusto
-AzureActivity
-| where TimeGenerated > datetime(10-01-2020) and TimeGenerated < datetime(10-07-2020)
-| where Level == 'Critical'
-```
-
-:::image type="content" source="images/tutorial/azure-monitor-where-results.png" lightbox="images/tutorial/azure-monitor-where-results.png" alt-text="Screenshot that shows the results of the where operator example.":::
-
-## Select a subset of columns: *project*
-
-Use [project](./projectoperator.md) to include only the columns you want. Building on the preceding example, let's limit the output to certain columns:
-
-```kusto
-AzureActivity
-| where TimeGenerated > datetime(10-01-2020) and TimeGenerated < datetime(10-07-2020)
-| where Level == 'Critical'
-| project TimeGenerated, Level, OperationNameValue, ResourceGroup, _ResourceId
-```
-
-:::image type="content" source="images/tutorial/azure-monitor-project-results.png" lightbox="images/tutorial/azure-monitor-project-results.png" alt-text="Screenshot that shows the results of the project operator example.":::
-
-## Show *n* rows: *take*
-
-[NetworkMonitoring](/azure/azure-monitor/reference/tables/networkmonitoring) contains monitoring data for Azure virtual networks. Let's use the [take](./takeoperator.md) operator to look at 10 random sample rows in that table. The [take](./takeoperator.md) shows some rows from a table in no particular order:
-
-```kusto
-NetworkMonitoring
-| take 10
-| project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
-```
-
-:::image type="content" source="images/tutorial/azure-monitor-take-results.png" lightbox="images/tutorial/azure-monitor-take-results.png" alt-text="Screenshot that shows the results of the take operator example.":::
-
-## Order results: *sort*, *top*
-
-Instead of random records, we can return the latest five records by first sorting by time:
-
-```kusto
-NetworkMonitoring
-| sort by TimeGenerated desc
-| take 5
-| project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
-```
-
-You can get this exact behavior by instead using the [top](./topoperator.md) operator:
-
-```kusto
-NetworkMonitoring
-| top 5 by TimeGenerated desc
-| project TimeGenerated, Computer, SourceNetwork, DestinationNetwork, HighLatency, LowLatency
-```
-
-:::image type="content" source="images/tutorial/azure-monitor-top-results.png" lightbox="images/tutorial/azure-monitor-top-results.png" alt-text="Screenshot that shows the results of the top operator example.":::
-
-## Compute derived columns: *extend*
-
-The [extend](./projectoperator.md) operator is similar to [project](./projectoperator.md), but it adds to the set of columns instead of replacing them. You can use both operators to create a new column based on a computation on each row.
-
-The [Perf](/azure/azure-monitor/reference/tables/perf) table has performance data that's collected from virtual machines that run the Log Analytics agent.
-
-```kusto
-Perf
-| where ObjectName == "LogicalDisk" and CounterName == "Free Megabytes"
-| project TimeGenerated, Computer, FreeMegabytes = CounterValue
-| extend FreeGigabytes = FreeMegabytes / 1000
-```
-
-:::image type="content" source="images/tutorial/azure-monitor-extend-results.png" lightbox="images/tutorial/azure-monitor-extend-results.png" alt-text="Screenshot that shows the results of the extend operator example.":::
-
-## Aggregate groups of rows: *summarize*
-
-The [summarize](./summarizeoperator.md) operator groups together rows that have the same values in the `by` clause. Then, it uses an aggregation function like `count` to combine each group in a single row. A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns.
-
-The [SecurityEvent](/azure/azure-monitor/reference/tables/securityevent) table contains security events like logons and processes that started on monitored computers. You can count how many events of each level occurred on each computer. In this example, a row is produced for each computer and level combination. A column contains the count of events.
-
-```kusto
-SecurityEvent
-| summarize count() by Computer, Level
-```
-
-:::image type="content" source="images/tutorial/azure-monitor-summarize-count-results.png" lightbox="images/tutorial/azure-monitor-summarize-count-results.png" alt-text="Screenshot that shows the results of the summarize count operator example.":::
-
-## Summarize by scalar values
-
-You can aggregate by scalar values like numbers and time values, but you should use the [bin()](./binfunction.md) function to group rows into distinct sets of data. For example, if you aggregate by `TimeGenerated`, you'll get a row for most time values. Use `bin()` to consolidate values per hour or day.
-
-The [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) table contains performance data that's organized according to insights from Azure Monitor for VMs and Azure Monitor for containers. The following query shows the hourly average processor utilization for multiple computers:
-
-```kusto
-InsightsMetrics
-| where Computer startswith "DC"
-| where Namespace  == "Processor" and Name == "UtilizationPercentage"
-| summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
-```
-
-:::image type="content" source="images/tutorial/azure-monitor-summarize-avg-results.png" lightbox="images/tutorial/azure-monitor-summarize-avg-results.png" alt-text="Screenshot that shows the results of the avg operator example.":::
-
-## Display a chart or table: *render*
-
-The [render](./renderoperator.md?pivots=azuremonitor) operator specifies how the output of the query is rendered. Log Analytics renders output as a table by default. You can select different chart types after you run the query. The `render` operator is useful to include in queries in which a specific chart type usually is preferred.
-
-The following example shows the hourly average processor utilization for a single computer. It renders the output as a timechart.
-
-```kusto
-InsightsMetrics
-| where Computer == "DC00.NA.contosohotels.com"
-| where Namespace  == "Processor" and Name == "UtilizationPercentage"
-| summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
-| render timechart
-```
-
-:::image type="content" source="images/tutorial/azure-monitor-render-results.png" lightbox="images/tutorial/azure-monitor-render-results.png" alt-text="Screenshot that shows the results of the render operator example.":::
-
-## Work with multiple series
-
-If you use multiple values in a `summarize by` clause, the chart displays a separate series for each set of values:
-
-```kusto
-InsightsMetrics
-| where Computer startswith "DC"
-| where Namespace  == "Processor" and Name == "UtilizationPercentage"
-| summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
-| render timechart
-```
-
-:::image type="content" source="images/tutorial/azure-monitor-render-multiple-results.png" lightbox="images/tutorial/azure-monitor-render-multiple-results.png" alt-text="Screenshot that shows the results of the render operator with multiple series example.":::
-
-## Join data from two tables
-
-What if you need to retrieve data from two tables in a single query? You can use the [join](./joinoperator.md?pivots=azuremonitor) operator to combine rows from multiple tables in a single result set. Each table must have a column that has a matching value so that the join understands which rows to match.
-
-[VMComputer](/azure/azure-monitor/reference/tables/vmcomputer) is a table that Azure Monitor uses for VMs to store details about virtual machines that it monitors. [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) contains performance data that's collected from those virtual machines. One value collected in *InsightsMetrics* is available memory, but not the percentage memory that's available. To calculate the percentage, we need the physical memory for each virtual machine. That value is in `VMComputer`.
-
-The following example query uses a join to perform this calculation. The [distinct](./distinctoperator.md) operator is used with `VMComputer` because details are regularly collected from each computer. As result, the table contains multiple rows for each computer. The two tables are joined using the `Computer` column. A row is created in the resulting set that includes columns from both tables for each row in `InsightsMetrics`, where the value in `Computer` has the same value in the `Computer` column in `VMComputer`.
-
-```kusto
-VMComputer
-| distinct Computer, PhysicalMemoryMB
-| join kind=inner (
-    InsightsMetrics
-    | where Namespace == "Memory" and Name == "AvailableMB"
-    | project TimeGenerated, Computer, AvailableMemoryMB = Val
-) on Computer
-| project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
-```
-
-:::image type="content" source="images/tutorial/azure-monitor-join-results.png" lightbox="images/tutorial/azure-monitor-join-results.png" alt-text="Screenshot that shows the results of the join operator example.":::
-
-## Assign a result to a variable: *let*
-
-Use [let](./letstatement.md) to make queries easier to read and manage. You can use this operator to assign the results of a query to a variable that you can use later. By using the `let` statement, the query in the preceding example can be rewritten as:
-
-```kusto
-let PhysicalComputer = VMComputer
-    | distinct Computer, PhysicalMemoryMB;
-let AvailableMemory = InsightsMetrics
-    | where Namespace == "Memory" and Name == "AvailableMB"
-    | project TimeGenerated, Computer, AvailableMemoryMB = Val;
-PhysicalComputer
-| join kind=inner (AvailableMemory) on Computer
-| project TimeGenerated, Computer, PercentMemory = AvailableMemoryMB / PhysicalMemoryMB * 100
-```
-
-:::image type="content" source="images/tutorial/azure-monitor-let-results.png" lightbox="images/tutorial/azure-monitor-let-results.png" alt-text="Screenshot that shows the results of the let operator example.":::
-
-## Next steps
-
-* View code samples for the [Kusto Query Language](samples.md?pivots=azuremonitor).
-
-::: zone-end
