@@ -37,7 +37,7 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 ## Authentication and authorization
 
 The sql_request plugin supports the following three methods of authentication to the
-SQL Server endpoint. The permissions columns specifies any permissions needed on the SQL resource to be able to perform the requested action.
+SQL Server endpoint.
 
 |Authentication method|Syntax|How|Description|
 |--|--|--|
