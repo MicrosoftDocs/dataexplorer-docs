@@ -15,8 +15,8 @@ Azure Data Explorer supports deploying a cluster into a subnet in your virtual n
 > [!Note]
 > Injecting a cluster into a virtual network enables you to manage all of its traffic. Therefore, you are responsible for ensuring that any connected services are able to communicate with each other, including Azure Event Hubs or Azure Storage accounts.
 
-> [!Warning]
-> The capability of injecting an Azure Data Explorer cluster into a virtual network into a customer network during cluster creation in the Azure Portal was removed. It is still possible ([not recommended](security-network-overview.md#comparison-and-recommendation)) to inject an Azure Data Explorer cluster into a virtual network using [ARM templates](https://azure.microsoft.com/resources/templates/kusto-vnet/).
+> [!IMPORTANT]
+> In the Azure portal, the ability to inject a cluster into your VNET during cluster creation was removed. You can still, though [not recommended](security-network-overview.md#comparison-and-recommendation), inject a cluster into a VNET using [ARM templates](https://azure.microsoft.com/resources/templates/kusto-vnet/).
 
 ## Next steps
 
