@@ -3,7 +3,7 @@ title: The .delete auto delete policy command - Azure Data Explorer
 description: This article describes the .delete auto delete policy command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/08/2023
 ---
 # .delete auto delete policy
 
@@ -17,9 +17,11 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.delete` `table` *TableName* `policy` `auto_delete`
 
-## Arguments
+## Parameters
 
-*TableName* - Specify the name of the table. 
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TableName* | string | &check;| The name of the table.|
 
 ## Example
 
