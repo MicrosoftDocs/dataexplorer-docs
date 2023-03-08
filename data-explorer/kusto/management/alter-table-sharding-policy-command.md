@@ -3,11 +3,11 @@ title: .alter table sharding policy command - Azure Data Explorer
 description: This article describes the .alter table sharding policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/08/2023
 ---
 # .alter table sharding policy
 
-Change the table sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
+Use this command to change the table sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
 
 The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster should be sealed. When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
 
@@ -19,10 +19,12 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter` `table` *TableName* `policy` `sharding` *PolicyObject*
 
-## Arguments
+## Parameters
 
-- *TableName* - Specify the name of the table. A wildcard (*) denotes all tables.
-- *PolicyObject* - Define a policy object, see also [sharding policy](../management/shardingpolicy.md).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TableName* | string | &check;| The name of the table.|
+| *PolicyObject* |string | &check; | A serialized policy object. For more information, see [sharding policy](../management/shardingpolicy.md).|
 
 ## Returns
 
@@ -30,7 +32,7 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-The following command  returns the updated extents sharding policy for the table:
+The following command returns the updated extents sharding policy for the table.
 
 ````kusto
 .alter table MyTable policy sharding
