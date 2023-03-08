@@ -234,6 +234,8 @@ items:
         - name: Connect from common apps
           href: connect-common-apps.md
           displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
+        - name: SQL Server emulation
+          href: query-sql-server-emulation.md
     - name: Data ingestion properties
       href: ingestion-properties.md
     - name: Formats for data ingestion
@@ -275,8 +277,6 @@ items:
       href: hot-windows.md
     - name: Query data using T-SQL
       href: t-sql.md
-    - name: SQL Server emulation
-      href: query-sql-server-emulation.md
     - name: Time Series Analysis and Machine Learning
       items:
         - name: Azure Data Explorer Python library
