@@ -7,7 +7,7 @@ ms.date: 01/30/2023
 ---
 # sin()
 
-Returns the sine value of the specified number.
+Returns the sine function value of the specified angle. The angle is specified in radians.
 
 ## Syntax
 
@@ -17,8 +17,20 @@ Returns the sine value of the specified number.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *number* | real | &check; | The number for which to calculate the sine.|
+| *number* | real | &check; | The value in radians for which to calculate the sine.|
 
 ## Returns
 
-The sine of *number*.
+The sine of *number* of radians.
+
+## Example
+
+```kusto
+print sin(1)
+```
+
+**Output**
+
+|result|
+|--|
+|0.841470984807897|

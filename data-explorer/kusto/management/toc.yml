@@ -506,7 +506,11 @@ items:
     - name: Manage database roles
       href: manage-database-security-roles.md
     - name: Manage table roles
-      href: manage-table-security-roles.md
+      items:
+      - name: Manage table roles
+        href: manage-table-security-roles.md
+      - name: Manage table view access
+        href: manage-table-view-access.md
     - name: Manage external table roles
       href: manage-external-table-security-roles.md
     - name: Manage materialized view roles

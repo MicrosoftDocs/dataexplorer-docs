@@ -366,6 +366,16 @@
       "redirect_document_id": true
     },
     {
+			"source_path": "data-explorer/write-queries.md",
+			"redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
+			"redirect_document_id": false
+		},
+    {
+			"source_path": "data-explorer/kusto/query/tutorial.md",
+			"redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
+			"redirect_document_id": false
+		},
+    {
       "source_path": "data-explorer/visualize-power-bi.md",
       "redirect_url": "/azure/data-explorer/power-bi-data-connector",
       "redirect_document_id": false
