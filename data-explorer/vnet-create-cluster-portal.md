@@ -10,7 +10,7 @@ ms.date: 03/08/2023
 
 # Create an Azure Data Explorer cluster in your virtual network
 
-Azure Data Explorer supports deploying a cluster into a subnet in your virtual network (VNet). This capability enables you to access the cluster privately from your Azure virtual network or on-premises, access resource such as event hub and storage inside your virtual network, and restrict inbound and outbound traffic.
+Azure Data Explorer supports deploying a cluster into a subnet in your virtual network (VNet). This capability enables you to access the cluster privately from your Azure virtual network or on-premises, access resource such as Event Hubs and Azure Storage inside your virtual network, and restrict inbound and outbound traffic.
 
 > [!Note]
 > Injecting a cluster into a virtual network enables you to manage all of its traffic. Therefore, you are responsible for ensuring that any connected services are able to communicate with each other, including Azure Event Hubs or Azure Storage accounts.
