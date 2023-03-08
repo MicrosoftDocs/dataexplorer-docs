@@ -115,4 +115,4 @@ public class Sample {
 
 ## Next steps
 
-Use JDBC to [query data in MATLAB](matlab.md).
+* [Run KQL queries and call stored functions](sql-kql-queries-and-stored-functions.md)

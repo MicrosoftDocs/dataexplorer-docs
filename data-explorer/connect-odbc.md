@@ -3,7 +3,7 @@ title: Connect to Azure Data Explorer with ODBC
 description: In this article, you learn how to set up an Open Database Connectivity (ODBC) connection to Azure Data Explorer.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 02/23/2023
+ms.date: 03/08/2023
 ---
 
 # Connect to Azure Data Explorer with ODBC
@@ -69,11 +69,11 @@ You can use the ODBC data source from other applications to connect to Azure Dat
 ```
 
 > [!NOTE]
-> Azure Data Explorer considers string values as `NVARCHAR(MAX)`, which may not work well with some ODBC applications. Cast the data to `NVARCHAR(`*n*`)` using the `Language` parameter in the connection string. For example, `Language=any@MaxStringSize:5000` will encode strings as `NVARCHAR(5000)`. For more information, see [tuning options](connect-sql-server-emulation.md#tuning-options).
+> Azure Data Explorer considers string values as `NVARCHAR(MAX)`, which may not work well with some ODBC applications. Cast the data to `NVARCHAR(`*n*`)` using the `Language` parameter in the connection string. For example, `Language=any@MaxStringSize:5000` will encode strings as `NVARCHAR(5000)`. For more information, see [tuning options](sql-server-emulation-overview.md#tuning-options).
 
 ## Application authentication
 
-To use application principal authentication with ODBC, you must provide the Azure AD tenant ID. You can set this configuration in the connection string, the Windows registry, or the odbc.ini file. See examples in the following tabs. For more information, see [tuning options](connect-sql-server-emulation.md#tuning-options).
+To use application principal authentication with ODBC, you must provide the Azure AD tenant ID. You can set this configuration in the connection string, the Windows registry, or the odbc.ini file. See examples in the following tabs. For more information, see [tuning options](sql-server-emulation-overview.md#tuning-options).
 
 # [Connection string](#tab/connection-string)
 
@@ -117,7 +117,9 @@ $conn.GetSchema("Tables")
 $conn.Close()
 ```
 
+---
+
 ## Next steps
 
-* See the overview on [SQL Server emulation in Azure Data Explorer](connect-sql-server-emulation.md)
-* Use ODBC to [connect to Azure Data Explorer from Tableau](tableau.md)
+* See the overview on [SQL Server emulation in Azure Data Explorer](sql-server-emulation-overview.md)
+* [Run KQL queries and call stored functions](sql-kql-queries-and-stored-functions.md)
