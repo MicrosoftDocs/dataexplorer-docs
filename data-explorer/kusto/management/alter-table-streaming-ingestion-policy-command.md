@@ -36,7 +36,7 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-The following command turns on on streaming ingestion and determines the suggested allocation rate for the table.
+The following command turns on streaming ingestion and determines the suggested allocation rate for the table.
 
 ```kusto
 .alter table Table1 policy streamingingestion '{"IsEnabled": true, "HintAllocatedRate": 2.1}'
