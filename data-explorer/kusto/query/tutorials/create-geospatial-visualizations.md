@@ -82,7 +82,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="../images/kql-tutorials/geospatial-storm-events-centered.png" alt-text="Screenshot of sample storm events on a map by type.":::
+:::image type="content" source="../images/kql-tutorials/geospatial-storm-events-centered.png" alt-text="Screenshot of sample storm events displayed using geojson.":::
 
 ## Represent data points with variable-sized bubbles
 
