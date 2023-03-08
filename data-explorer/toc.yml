@@ -249,6 +249,8 @@ items:
       href: python-query-data.md
     - name: Debug KQL inline Python
       href: debug-inline-python.md
+    - name: Query data with T-SQL
+      href: t-sql.md
     - name: Query data with SQL Server emulation
       items:
         - name: Overview
@@ -265,8 +267,6 @@ items:
           displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
         - name: Run stored functions and queries
           href: sql-stored-functions-and-queries.md
-    - name: Query data with T-SQL
-      href: t-sql.md
     - name: Evaluate query performance in your cluster
       href: kusto/api/load-test-cluster.md
     - name: Optimize for high concurrency
