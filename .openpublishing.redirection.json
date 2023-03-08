@@ -494,6 +494,16 @@
       "source_path": "data-explorer/kusto/api/tds/linkedserver.md",
       "redirect_url": "/azure/data-explorer/linked-server",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/connect-sql-server-emulation.md",
+      "redirect_url": "/azure/data-explorer/sql-server-emulation-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/matlab.md",
+      "redirect_url": "/azure/data-explorer/connect-common-apps",
+      "redirect_document_id": true
     }
   ]
 }
