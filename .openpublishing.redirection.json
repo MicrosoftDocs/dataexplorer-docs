@@ -507,7 +507,7 @@
     },
     {
       "source_path": "data-explorer/query-sql-server-emulation.md",
-      "redirect_url": "/azure/data-explorer/sql-stored-functions",
+      "redirect_url": "/azure/data-explorer/sql-stored-functions-and-queries",
       "redirect_document_id": true
     }
   ]

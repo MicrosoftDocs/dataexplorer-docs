@@ -263,10 +263,8 @@ items:
         - name: Connect from common apps
           href: connect-common-apps.md
           displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
-        - name: Run stored functions
-          href: sql-stored-functions.md
-        - name: Run KQL queries
-          href: sql-kql-queries.md
+        - name: Run stored functions and queries
+          href: sql-stored-functions-and-queries.md
     - name: Query data with T-SQL
       href: t-sql.md
     - name: Evaluate query performance in your cluster
