@@ -42,7 +42,7 @@ The following table describes the two ways to specify authentication parameters.
 
 |Authentication method|Description|
 |--|--|
-|Azure Active Directory (impersonation)|In the *Options* parameter, specify the credentials under an `Authentication` key, set `azure_active_directory` to `Active Directory Integrated`, and set `AadResourceId` to the target web service resource ID.|
+|Azure Active Directory (impersonation)|In the *Options* parameter, specify the credentials under an `Authentication` key and set `AadResourceId` to the target web service resource ID.|
 |Query credentials|In the *RequestHeaders* or in the *Options* parameters, specify the credentials under the `Authorization` key.|
 
 > [!NOTE]
