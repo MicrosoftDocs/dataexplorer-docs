@@ -115,4 +115,5 @@ public class Sample {
 
 ## Next steps
 
-Use JDBC to [query data in MATLAB](matlab.md).
+* [Run KQL queries and stored functions like SQL stored procedures](query-sql-server-emulation.md)
+* Use JDBC to [query data in MATLAB](matlab.md).

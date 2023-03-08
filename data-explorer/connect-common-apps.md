@@ -106,4 +106,5 @@ To connect to Azure Data Explorer from Microsoft SQL Server Management Studio, f
 
 ## Next steps
 
+* [Run KQL queries and stored functions like SQL stored procedures](query-sql-server-emulation.md)
 * Use [T-SQL](t-sql.md) to query Azure Data Explorer

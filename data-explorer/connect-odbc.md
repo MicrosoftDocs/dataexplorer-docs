@@ -120,4 +120,4 @@ $conn.Close()
 ## Next steps
 
 * See the overview on [SQL Server emulation in Azure Data Explorer](connect-sql-server-emulation.md)
-* Use ODBC to [connect to Azure Data Explorer from Tableau](tableau.md)
+* [Run KQL queries and stored functions like SQL stored procedures](query-sql-server-emulation.md)
