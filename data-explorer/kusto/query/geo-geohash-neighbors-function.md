@@ -23,7 +23,7 @@ Read more about [`geohash`](https://en.wikipedia.org/wiki/Geohash).
 
 ## Returns
 
-An array of Geohash neighbors. If the Geohash is invalid, the query will produce a null result.
+An array of Geohash neighbors. If the Geohash is invalid, the query produces a null result.
 
 ## Examples
 
