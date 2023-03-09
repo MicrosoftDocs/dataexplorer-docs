@@ -8,9 +8,9 @@ ms.date: 03/09/2019
 
 # Kusto.Explorer code features
 
-<!-- Intro-->
+Kusto.Explorer offers a variety of code features, including [Code refactoring](#code-refactoring), [Code navigation](#code-navigation), and a [Code analyzer](#code-analyzer) utility.
 
-## Code Refactoring
+## Code refactoring
 
 Similar to other IDEs, Kusto.Explorer offers several features to KQL query editing and refactoring.
 
@@ -34,7 +34,7 @@ You can also promote tabular expressions as `let` statements by selecting its te
 
 ![Animated GIF. A tabular expression is selected in the Query Editor. A let statement then appears that sets that tabular expression to a new variable.](./Images/kusto-explorer-refactor/ke-extract-as-let-tabular.gif "extract-as-let-tabular")
 
-## Code Navigation
+## Code navigation
 
 Kusto.Explorer provides several features for easy code navigation using query symbols information.
 
@@ -48,7 +48,7 @@ You can obtain all references of the current symbol using `Ctrl`+`F12` short-cut
 
 :::image type="content" source="images/kusto-explorer-codenav/ke-code-nav-references.gif" alt-text="References of a symbol Kusto Explorer Code Navigation.":::
 
-### Kusto Explorer Code Analyzer
+## Code analyzer
 
 Kusto.Explorer provides code analyzer utility that automatically analyzes the current query and outputs a set of applicable improvement recommendations.
 
