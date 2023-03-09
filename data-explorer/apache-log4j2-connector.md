@@ -7,7 +7,7 @@ ms.reviewer: ramacg
 ---
 # Ingest data with the Apache Log4j 2 connector
 
-Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Apache Log4J 2 sink for Azure Data Explorer streams your log data to Azure Data Explorer, where you can analyze, visualize, and alert on your logs in real time. 
+Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Apache Log4J 2 sink for Azure Data Explorer streams your log data to Azure Data Explorer, where you can analyze and visualize your logs in real time. 
 
 In this article, you'll use a sample log generator app to show how to configure and use the Log4j2 connector. 
 
