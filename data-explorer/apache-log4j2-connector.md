@@ -1,6 +1,6 @@
 ---
 title: Ingest data in Azure Data Explorer using the Apache Log4J2 connector
-description: Learn how to use the Apache Log4J 2 connector in Azure Data Explorer.
+description: Learn how to use the Apache Log4J2 connector in Azure Data Explorer.
 ms.date: 03/09/2023
 ms.topic: how-to
 ms.reviewer: ramacg
