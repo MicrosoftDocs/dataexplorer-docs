@@ -95,7 +95,7 @@ print intersection = geo_intersection_line_with_polygon(lineString, polygon)
 |---|
 |{"type": "MultiLineString","coordinates": [[[  -106.89353655881905,  39.769226209776306],[  -101.74448553679453,  40.373506008712525]],[[-99.136499431328858,  40.589336512699994],[-95.284527737311791,  40.799060242246348]]]}|
 
-The following line ands polygon don't intersect.
+The following line and polygon don't intersect.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32QwWrDMBBE7/0KoVMCalhJ3tU6oX/QQ6FHY0xwhCtwJeMIgin997p2kxZaetjLzmOGmd5n0Yfon/MYYicexGmKx9fQbt5kngYv9/Lxpkol25TGU4jH7M9yX1VaCV2ryihh6vp9e7jrZ7sh9VOX4l9eT6v026i6d3ZXOm1KQGbruFQF7BwjA5LWxI7cHLRQDFCg1Uxg0SyYQ+OIbcFgCfHKOQCw2swO2tHKMRoiixaJihv2f+jaa5j7ZzGfH8++zWGp1/nU/Hw1n0M2l5Bfmq8NNt/Tqusu2w865byEcwEAAA==" target="_blank">Run the query</a>
