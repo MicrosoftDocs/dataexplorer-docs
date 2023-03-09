@@ -61,7 +61,10 @@ let bartlett_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:stri
 
 ### [Stored](#tab/stored)
 
-Use the [`.create function`](../management/create-function.md) to add the code as a stored function in your database. Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md) command. You must run this code before you can use the function as shown in the [Example](#example).
+Define the stored function one-time using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+
+> [!IMPORTANT]
+You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
 ~~~kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Bartlett Test")
