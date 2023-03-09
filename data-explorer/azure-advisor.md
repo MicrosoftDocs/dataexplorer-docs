@@ -3,7 +3,7 @@ title: Use Azure Advisor recommendations to optimize your Azure Data Explorer cl
 description: This article describes Azure Advisor recommendations used to optimize your Azure Data Explorer cluster
 ms.reviewer: lizlotor
 ms.topic: how-to
-ms.date: 10/11/2021
+ms.date: 03/08/2023
 ---
 
 # Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster
@@ -165,7 +165,7 @@ Reliability recommendations include the following:
 
 #### Cluster uses subnet without delegation
 
-The recommendation is given to a virtual network cluster that uses a subnet without delegation for 'Microsoft.Kusto/clusters'. The recommendation is to delegate your subnet to 'Microsoft.Kusto/clusters'. For more information, see step 8 in [Create Virtual Network and subnet](vnet-create-cluster-portal.md#create-virtual-network-and-subnet). When you delegate a subnet to a cluster, you allow that service to establish basic network configuration rules for the subnet, which helps the cluster operate its instances in a stable manner.
+The strong recommendation is given to a virtual network cluster that uses a subnet without delegation for 'Microsoft.Kusto/clusters'. When you delegate a subnet to a cluster, you allow that service to establish basic network configuration rules for the subnet, which helps the cluster operate its instances in a stable manner.
 
 #### Cluster uses subnet with invalid IP configuration
 

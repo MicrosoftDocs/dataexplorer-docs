@@ -19,20 +19,14 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-**For a specified table**
+`.show` `table` [ *DatabaseName*`.`]*TableName* `policy` `update`
 
-`.show` `table` *TableName* `policy` `update`
+## Parameters
 
-`.show` `table` *DatabaseName*`.`*TableName* `policy` `update`
-
-**For all tables**
-
-`.show` `table` * `policy` `update`
-
-## Arguments
-
-*DatabaseName* - Specify the name of the database.
-*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context. A wildcard (*) denotes all tables.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string||The name of the database. This is required when running the command from outside the database context of the specified table.|
+|*TableName*|string|&check;|The name of the table for which to show the policy details.|
 
 ## Returns
 
