@@ -3,7 +3,7 @@ title: Overview of data connectors in Azure Data Explorer
 description: This article summarizes available data connectors and their capabilities.
 ms.reviewer: aksdi
 ms.topic: reference
-ms.date: 02/23/2023
+ms.date: 03/07/2023
 ---
 # Data connectors overview
 
@@ -14,7 +14,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 | Name           | Functionality       | Supports streaming? | Type      | Use cases         |
 |---------------------------------------------------|------------------------------------------|:-:|-----------------|-----------------------|
 | [Apache Kafka](#apache-kafka)     | **Ingestion**       |   &check;             | First party, [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Logs, Telemetry, Time series             |
-| [Apache Log4J 2](#apache-log4j-2)   | **Ingestion**    |   &check;             | First party, [Open source](https://github.com/Azure/azure-kusto-log4j)| Logs                  |
+| [Apache Log4J2](#apache-log4j2)   | **Ingestion**    |   &check;             | First party, [Open source](https://github.com/Azure/azure-kusto-log4j)| Logs                  |
 | [Apache Spark](#apache-spark)      | **Export** <br> <br>**Ingestion**        |  &#x2717;               | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry             |
 | [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export** <br> <br>**Ingestion**        |  &#x2717;             |  First party      | Telemetry |
 | [Azure Cosmos DB](#azure-cosmos-db)      | **Ingestion**   |      &check;          |      First party           |    Change feed      |
@@ -39,14 +39,15 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Documentation:** [Ingest data from Apache Kafka into Azure Data Explorer](ingest-data-kafka.md)
 * **Community Blog:** [Kafka ingestion into Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/kafka-ingestion-into-azure-data-explorer-part-1/ba-p/1452439)
 
-## Apache Log4J 2
+## Apache Log4J2
 
-* **Description:** Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. Apache Log4J 2 sink for Azure Data Explorer allows you to easily stream your log data to Azure Data Explorer, where you can analyze, visualize, and alert on your logs in real time.
+* **Description:** Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. Apache Log4J2 sink for Azure Data Explorer allows you to easily stream your log data to Azure Data Explorer, where you can analyze, visualize, and alert on your logs in real time.
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-log4j
+* **Documentation:** [Ingest data with the Apache Log4j2 connector](apache-log4j2-connector.md)
 * **Community Blog:** [Getting started with Apache Log4j and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-apache-log4j-and-azure-data-explorer/ba-p/3705242)
 
 ## Apache Spark

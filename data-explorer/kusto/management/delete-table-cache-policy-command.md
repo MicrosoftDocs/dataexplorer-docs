@@ -17,10 +17,12 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.delete` `table` [*DatabaseName* `.`]*TableName* `policy` `caching`
 
-## Arguments
+## Parameters
 
-*DatabaseName* - Specify the name of the database.
-*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string||The name of the database. Use when running outside the database context that contains the table for which to delete the cache policy.|
+|*TableName*|string|&check;|The name of the table.|
 
 ## Example
 
