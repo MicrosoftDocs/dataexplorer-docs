@@ -26,7 +26,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Examples
 
-The following examples shows the table caching policy:
+The following examples show the table caching policy:
 
 ```kusto
 .show table MyDatabase.MyTable policy caching 
