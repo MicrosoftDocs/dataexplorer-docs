@@ -61,7 +61,7 @@ let bartlett_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:stri
 
 ### [Stored](#tab/stored)
 
-Use the [`.create function`](../management/create-function.md) to add the code as a stored function in your database. Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md) command.
+Use the [`.create function`](../management/create-function.md) to add the code as a stored function in your database. Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md) command. You must run this code before you can use the function as shown in the [Example](#example).
 
 ~~~kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Bartlett Test")
@@ -125,7 +125,8 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 
 ### [Stored](#tab/stored)
 
-For this example to run successfully, you must first run the [function declaration](#function-declaration) code to store the function.
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [function declaration](#function-declaration) code to store the function.
 
 ~~~kusto
 datatable(id:string, sample1:dynamic, sample2:dynamic) [
