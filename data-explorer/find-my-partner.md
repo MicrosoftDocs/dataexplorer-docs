@@ -713,7 +713,7 @@ Orion Innovation is a Leader in Digital transformation services with a Design le
 
 - USA
 - LATAM
-- Europe (UK, Germany, Switzerland, Russia, Lithuania, Serbia, Romania, Turkey, Israel)
+- Europe (UK, Germany, Switzerland, Russia, Lithuania, Serbia, Romania, Türkiye, Israel)
 - APAC (Australia, Singapore, India)
 
 **Contact**

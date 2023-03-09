@@ -3,7 +3,7 @@ title: series_mv_oc_anomalies_fl() - Azure Data Explorer
 description: This article describes the series_mv_oc_anomalies_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 03/08/2023
 ---
 # series_mv_oc_anomalies_fl()
 
@@ -18,7 +18,7 @@ The function `series_mv_oc_anomalies_fl()` detects multivariate anomalies in ser
 
 `T | invoke series_mv_oc_anomalies_fl(`*features_cols*`,` *anomaly_col* [`,` *anomalies_pct* ]`)`
   
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
