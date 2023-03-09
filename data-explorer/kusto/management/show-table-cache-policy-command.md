@@ -17,10 +17,12 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `table` [*DatabaseName* `.`]*TableName* `policy` `caching`
 
-## Arguments
+## Parameters
 
-*DatabaseName* - Specify the name of the database.
-*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string||The name of the database. This is required when running the command from outside the database context of the specified table.|
+|*TableName*|string|&check;|The name of the table.|
 
 ## Examples
 

@@ -3,7 +3,7 @@ title: .show materialized view row level security policy command- Azure Data Exp
 description: This article describes the .show materialized view row level security policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 10/04/2021
+ms.date: 03/09/2023
 ---
 # .show materialized view row level security policy
 
@@ -15,9 +15,11 @@ For more information about running queries on the row level security policy, see
 
 `.show` `materialized-view` *MaterializedViewName* `policy` `row_level_security`
 
-## Arguments
+## Parameters
 
-*MaterializedViewName* - Specify the name of the materialized view.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view.|
 
 ## Returns
 

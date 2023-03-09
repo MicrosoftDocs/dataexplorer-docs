@@ -3,7 +3,7 @@ title: .show database streaming ingestion policy command - Azure Data Explorer
 description: This article describes the .show database streaming ingestion policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/09/2023
 ---
 # .show database streaming ingestion policy
 
@@ -13,7 +13,7 @@ Streaming ingestion is targeted for scenarios that require low latency, with an 
 
 Use the classic (bulk) ingestion instead of streaming ingestion when the amount of data grows to more than 4 Gb per hour per table. 
 
-* To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md).
+To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md).
 
 ## Permissions
 
@@ -23,9 +23,11 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `database` *DatabaseName* `policy` `streamingingestion`
 
-## Arguments
+## Parameters
 
-*DatabaseName* - Specify the name of the database. 
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database.|
 
 ## Example
 
