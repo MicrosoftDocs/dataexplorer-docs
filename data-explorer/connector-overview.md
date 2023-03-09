@@ -47,7 +47,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Use cases:** Logs
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-log4j
-* **Documentation:** [Ingest data with the Apache Log4j 2 connector](apache-log4j2-connector.md)
+* **Documentation:** [Ingest data with the Apache Log4j2 connector](apache-log4j2-connector.md)
 * **Community Blog:** [Getting started with Apache Log4j and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-apache-log4j-and-azure-data-explorer/ba-p/3705242)
 
 ## Apache Spark
