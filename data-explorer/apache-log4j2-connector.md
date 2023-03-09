@@ -1,15 +1,15 @@
 ---
-title: Ingest data in Azure Data Explorer using the Apache Log4J2 connector
-description: Learn how to use the Apache Log4J2 connector in Azure Data Explorer.
+title: Ingest data in Azure Data Explorer using the Apache log4J 2 connector
+description: Learn how to use the Apache log4J 2 connector in Azure Data Explorer.
 ms.date: 03/09/2023
 ms.topic: how-to
 ms.reviewer: ramacg
 ---
-# Ingest data with the Apache Log4J2 connector
+# Ingest data with the Apache log4J 2 connector
 
-Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4J allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Apache Log4J2 sink for Azure Data Explorer streams your log data to Azure Data Explorer, where you can analyze and visualize your logs in real time. 
+Log4J is a popular logging framework for Java applications maintained by the Apache Foundation. Log4J allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Apache log4J 2 sink for Azure Data Explorer streams your log data to Azure Data Explorer, where you can analyze and visualize your logs in real time. 
 
-In this article, you'll use a sample log generator app to show how to configure and use the Log4J2 connector. 
+In this article, you'll use a sample log generator app to show how to configure and use the log4J 2 connector. 
 
 For a complete list of data connectors, see [Data connectors overview](connector-overview.md).
 
@@ -20,7 +20,7 @@ For a complete list of data connectors, see [Data connectors overview](connector
 
 ## Create an Azure AD App registration
 
-Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the Log4J2 connector, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the log4J 2 connector, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
 
 1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create an Azure Active Directory application registration in Azure Data Explorer](provision-azure-ad-app.md). 
 1. Save the following values to be used in later steps:
@@ -61,9 +61,9 @@ Now that you've given permissions to the connector to ingest data, you need to c
 
      In this example, the ingestion mapping is named *log4jCsvTestMapping*. This ingestion mapping name is referenced later in the configuration file.
 
-## Clone the Log4J2-Azure Data Explorer connector git repo
+## Clone the log4J 2-Azure Data Explorer connector git repo
 
-Clone the Log4J2-Azure Data Explorer [git repo](https://github.com/Azure/azure-kusto-log4j) using the following git command:
+Clone the log4J 2-Azure Data Explorer [git repo](https://github.com/Azure/azure-kusto-log4j) using the following git command:
 
 ```bash
 git clone https://github.com/Azure/azure-kusto-log4j.git
@@ -71,7 +71,7 @@ git clone https://github.com/Azure/azure-kusto-log4j.git
 
 ## Configure attributes of KustoStrategy
 
-The Log4J2-Azure Data Explorer connector uses a custom strategy that's used in the *RollingFileAppender*. Logs are written into the rolling file to prevent any data loss arising out of network failure while connecting to the Azure Data Explorer cluster. The data is stored in a rolling file and then flushed to the Azure Data Explorer cluster.
+The log4J 2-Azure Data Explorer connector uses a custom strategy that's used in the *RollingFileAppender*. Logs are written into the rolling file to prevent any data loss arising out of network failure while connecting to the Azure Data Explorer cluster. The data is stored in a rolling file and then flushed to the Azure Data Explorer cluster.
 
 In the sample project included in the git repo, the default configuration format is defined in the file log4j2.xml. This configuration file is located under the file path: \azure-kusto-log4j\samples\src\main\resources\log4j2.xml. 
 
@@ -159,3 +159,5 @@ Your output should look similar to the following table:
 
 * [Data connectors overview](connector-overview.md)
 * [Kusto Query Language (KQL) overview](kusto/query/index.md)
+* [Getting Started with Azure Databricks Log4J to Azure Data Explorer](https://github.com/Azure/azure-kusto-log4j/tree/master/samples-azure-databricks) Git repo
+* [Ingest Azure Databricks logs into Azure Data Explorer using Log4j2-ADX connector](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/ingest-azure-databricks-logs-into-azure-data-explorer-using/ba-p/3726265) Community blog
