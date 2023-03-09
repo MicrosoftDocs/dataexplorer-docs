@@ -114,6 +114,7 @@ let bartlett_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:stri
     tbl
     | evaluate python(typeof(*), code, kwargs)
 };
+// Example code to run the function
 datatable(id:string, sample1:dynamic, sample2:dynamic) [
 'Test #1', dynamic([23.64, 20.57, 20.42]), dynamic([27.1, 22.12, 33.56]),
 'Test #2', dynamic([20.85, 21.89, 23.41]), dynamic([35.09, 30.02, 26.52]),
