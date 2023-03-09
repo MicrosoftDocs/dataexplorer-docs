@@ -7,7 +7,7 @@ ms.date: 03/09/2023
 ---
 # bartlett_test_fl()
 
-The `bartlett_test_fl()` function is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) function that performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
+The `bartlett_test_fl()` function is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) that performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
 
 ## Prerequisites
 
