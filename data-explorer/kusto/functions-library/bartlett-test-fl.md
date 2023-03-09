@@ -3,7 +3,7 @@ title: bartlett_test_fl() - Azure Data Explorer
 description: This article describes the bartlett_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/06/2023
+ms.date: 03/09/2023
 ---
 # bartlett_test_fl()
 
@@ -11,7 +11,7 @@ The `bartlett_test_fl()` function is a user-defined [tabular function](../query/
 
 ## Prerequisites
 
-* `python()` plugin must be [turned on for the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python to used in the function.
+* `python()` plugin must be [turned on for the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 
 ## Syntax
 
@@ -28,11 +28,14 @@ The `bartlett_test_fl()` function is a user-defined [tabular function](../query/
 
 ## Function declaration
 
-You can define the function by either embeding its code as a query-defined function, or creating it as a stored function in your database, as follows:
+You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database, as follows:
 
 ### [Query-defined](#tab/query-defined)
 
 Embed the code in the query using the [let statement](../query/letstatement.md). No permissions are required.
+
+> [!IMPORTANT]
+> A [let statement](../query/letstatement.md) won't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `bartlett_test_fl()`, see [Example](#example).
 
 ~~~kusto
 let bartlett_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string)
@@ -53,6 +56,7 @@ let bartlett_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:stri
     tbl
     | evaluate python(typeof(*), code, kwargs)
 };
+// Write your code to use the function here.
 ~~~
 
 ### [Stored](#tab/stored)
@@ -87,7 +91,7 @@ bartlett_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_v
 
 The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
 
-### [Query-defined](#tab/query-defined-example)
+### [Query-defined](#tab/query-defined)
 
 To use a query-defined function, invoke it after the embedded function definition.
 
@@ -119,7 +123,9 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | invoke bartlett_test_fl('sample1', 'sample2', 'test_stat', 'p_val')
 ~~~
 
-### [Stored](#tab/stored-example)
+### [Stored](#tab/stored)
+
+For this example to run successfully, you must first run the [function declaration](#function-declaration) code to store the function.
 
 ~~~kusto
 datatable(id:string, sample1:dynamic, sample2:dynamic) [
