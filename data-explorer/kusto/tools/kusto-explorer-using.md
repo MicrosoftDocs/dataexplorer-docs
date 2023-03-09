@@ -251,7 +251,5 @@ Right-click the target entity in the [Connections panel](kusto-explorer.md#conne
 
 To Learn more about Kusto.Explorer tools and utilities, See:
 
-* [Kusto.Explorer code analyzer](kusto-explorer-code-analyzer.md)
-* [Kusto.Explorer code navigation](kusto-explorer-codenav.md)
-* [Kusto.Explorer code refactoring](kusto-explorer-refactor.md)
+* [Kusto.Explorer code features](kusto-explorer-code-features.md)
 * [Kusto Query Language (KQL)](../query/index.md)

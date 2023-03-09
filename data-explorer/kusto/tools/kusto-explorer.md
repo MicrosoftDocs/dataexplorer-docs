@@ -347,7 +347,5 @@ To learn more about working with Kusto.Explorer, see:
 
 To learn more about Kusto.Explorer tools and utilities, see:
 
-* [Kusto.Explorer code analyzer](kusto-explorer-code-analyzer.md)
-* [Kusto.Explorer code navigation](kusto-explorer-codenav.md)
-* [Kusto.Explorer code refactoring](kusto-explorer-refactor.md)
+* [Kusto.Explorer code features](kusto-explorer-code-features.md)
 * [Kusto Query Language (KQL)](/azure/kusto/query/)

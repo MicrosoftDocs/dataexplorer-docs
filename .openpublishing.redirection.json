@@ -504,8 +504,21 @@
       "source_path": "data-explorer/kusto/api/tds/linkedserver.md",
       "redirect_url": "/azure/data-explorer/linked-server",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/kusto-explorer-refactor.md",
+      "redirect_url": "/azure/data-explorer/kusto/tools/kusto-explorer-code-features",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/kusto-explorer-codenav.md",
+      "redirect_url": "/azure/data-explorer/kusto/tools/kusto-explorer-code-features",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/kusto-explorer-code-analyzer.md",
+      "redirect_url": "/azure/data-explorer/kusto/tools/kusto-explorer-code-features",
+      "redirect_document_id": false
     }
   ]
 }
-
-
