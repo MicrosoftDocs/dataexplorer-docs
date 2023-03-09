@@ -61,7 +61,7 @@ Details |string |Includes the failure details if the operation fails.
 Move all extents from two specific tables (`MyTable1`, `MyTable2`) in a specified creation time range to table `MyOtherTable`, and drop all extents in `MyOtherTable` tagged with `drop-by:MyTag`:
 
 ```kusto
-.replace extents in table MyOtherTable with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24)) <|
+.replace extents in table MyOtherTable with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <|
     {
         .show table MyOtherTable extents where tags has 'drop-by:MyTag'
     },
@@ -84,7 +84,7 @@ Move all extents from two specific tables (`MyTable1`, `MyTable2`) in a specifie
 Move all extents in a specified creation time range from one specific table (`MyTable1`) to table `MyOtherTable`, and drop a specific extent in `MyOtherTable`, by its ID:
 
 ```kusto
-.replace extents in table MyOtherTable with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24)) <|
+.replace extents in table MyOtherTable with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <|
     {
         print ExtentId = "2cca5844-8f0d-454e-bdad-299e978be5df"
     },
@@ -94,7 +94,7 @@ Move all extents in a specified creation time range from one specific table (`My
 ```
 
 ```kusto
-.replace extents in table MyOtherTable with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24)) <|
+.replace extents in table MyOtherTable with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <|
     {
         .show table MyOtherTable extents
         | where ExtentId == guid(2cca5844-8f0d-454e-bdad-299e978be5df) 
@@ -109,7 +109,7 @@ Move all extents in a specified creation time range from one specific table (`My
 Implement an idempotent logic so that Kusto drops extents from table `t_dest` only if there are extents to move from table `t_source` to table `t_dest`:
 
 ```kusto
-.replace async extents in table t_dest with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24)) <|
+.replace async extents in table t_dest with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <|
 {
     let any_extents_to_move = toscalar( 
         t_source

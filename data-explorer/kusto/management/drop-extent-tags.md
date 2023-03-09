@@ -52,7 +52,7 @@ The extents and the tags to drop are specified using a Kusto query. It returns a
 ### Syntax for .drop extent tags in query
 
 ```kusto
-.drop table MyTable extent tags with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24)) <| ...query...
+.drop table MyTable extent tags with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| ...query...
 ```
 
 ### Return output
@@ -76,18 +76,18 @@ Drop the `drop-by:Partition000` tag from any extent in table that is tagged with
 
 ### Drop several tags
 
-Drop the the tags `drop-by:20160810104500`, `a random tag`, and `drop-by:20160810` from any extent in table that is tagged with either of them:
+Drop the the tags `drop-by:20230312104500`, `a random tag`, and `drop-by:20230312` from any extent in table that is tagged with either of them:
 
 ```kusto
-.drop table [My Table] extent tags ('drop-by:20160810104500','a random tag','drop-by:20160810') with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24))
+.drop table [My Table] extent tags ('drop-by:20230312104500','a random tag','drop-by:20230312') with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12))
 ```
 
-### Drop all `drop-by` tags in a specifies creation time range
+### Drop all `drop-by` tags in a specified creation time range
 
-Drop all `drop-by` tags from extents in table `MyTable` in a specifies creation time range:
+Drop all `drop-by` tags from extents in table `MyTable` in a specified creation time range:
 
 ```kusto
-.drop table MyTable extent tags with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24)) <| 
+.drop table MyTable extent tags with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| 
   .show table MyTable extents 
   | where isnotempty(Tags)
   | extend Tags = split(Tags, '\r\n') 
@@ -100,7 +100,7 @@ Drop all `drop-by` tags from extents in table `MyTable` in a specifies creation 
 Drop all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from extents in table `MyTable`:
 
 ```kusto
-.drop table MyTable extent tags with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24)) <| 
+.drop table MyTable extent tags with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| 
   .show table MyTable extents 
   | where isnotempty(Tags)
   | extend Tags = split(Tags, '\r\n')

@@ -57,7 +57,7 @@ All extents must be in the context database, and must belong to the same table.
 Alter tags of all the extents within the specified creation time range in table `MyTable` to `MyTag`
 
 ```kusto
-.alter table MyTable extent tags ('MyTag') with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24)) <| .show table MyTable extents
+.alter table MyTable extent tags ('MyTag') with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| .show table MyTable extents
 ```
 
 ### Alter tags of specific extents
@@ -65,7 +65,7 @@ Alter tags of all the extents within the specified creation time range in table 
 Alter tags of all the extents within the specified creation time range in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`
 
 ```kusto
-.alter table MyTable extent tags ('drop-by:MyNewTag','MyOtherNewTag') with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24)) <| .show table MyTable extents where tags has 'drop-by:MyTag'
+.alter table MyTable extent tags ('drop-by:MyNewTag','MyOtherNewTag') with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| .show table MyTable extents where tags has 'drop-by:MyTag'
 ```
 
 ### Alter-merge tags of specific extents
@@ -74,7 +74,7 @@ Alter-merges tags of all the extents within the specified creation time range in
 appending 2 new tags to their existing collection of tags
 
 ```kusto
-.alter-merge able MyTable extent tags ('drop-by:MyNewTag','MyOtherNewTag') with (extentCreatedOnFrom=datetime(2022-02-24), extentCreatedOnTo=datetime(2023-06-24)) <| .show table MyTable extents where tags has 'drop-by:MyTag'
+.alter-merge table MyTable extent tags ('drop-by:MyNewTag','MyOtherNewTag') with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| .show table MyTable extents where tags has 'drop-by:MyTag'
 ```
 
 ## Sample output
