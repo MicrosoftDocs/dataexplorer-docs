@@ -29,7 +29,7 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-The following command will return the batching policy on a database.
+The following command returns the batching policy on a database.
 
 ```kusto
 .show database MyDatabase policy ingestionbatching
