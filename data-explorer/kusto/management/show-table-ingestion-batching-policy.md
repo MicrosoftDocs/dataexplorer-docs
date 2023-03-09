@@ -3,7 +3,7 @@ title: ".show table ingestion batching policy command- Azure Data Explorer"
 description: "This article describes the .show table ingestion batching policy command in Azure Data Explorer."
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/09/2023
 ---
 # .show table ingestion batching policy
 
@@ -17,9 +17,11 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `table` *TableName* `policy` `ingestionbatching`
 
-## Arguments
+## Parameters
 
-*TableName* - Specify the name of the table.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table for which to show the policy details.|
 
 ## Returns
 
@@ -33,6 +35,6 @@ The following command will return the batching policy on a table.
 .show table MyTable policy ingestionbatching
 ```
 
-## Next steps
+## See also
 
 * [show database batching policy](show-database-ingestion-batching-policy.md)
