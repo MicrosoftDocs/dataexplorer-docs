@@ -3,7 +3,7 @@ title: .show database sharding policy command - Azure Data Explorer
 description: This article describes the .show database sharding policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/09/2023
 ---
 # .show database sharding policy
 
@@ -19,9 +19,11 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `database` *DatabaseName* `policy` `sharding`
 
-## Arguments
+## Parameters
 
-*DatabaseName* - Specify the name of the database.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database.|
 
 ## Returns
 
