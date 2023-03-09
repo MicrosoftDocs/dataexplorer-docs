@@ -130,7 +130,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 ### [Stored](#tab/stored)
 
 > [!IMPORTANT]
-> For this example to run successfully, you must first run the [function declaration](#function-definition) code to store the function.
+> For this example to run successfully, you must first run the [function definition](#function-definition) code to store the function.
 
 ~~~kusto
 datatable(id:string, sample1:dynamic, sample2:dynamic) [
