@@ -11,7 +11,7 @@ The `bartlett_test_fl()` function is a user-defined [tabular function](../query/
 
 ## Prerequisites
 
-* `python()` plugin must be [turned on for the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+* The `python()` plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 
 ## Syntax
 
