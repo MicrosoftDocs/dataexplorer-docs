@@ -32,7 +32,7 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Embed the code in the query using the [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
 
 > [!IMPORTANT]
 > A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `bartlett_test_fl()`, see [Example](#example).
