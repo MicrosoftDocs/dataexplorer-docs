@@ -3,7 +3,7 @@ title: .show restricted view access policy command - Azure Data Explorer
 description: This article describes the .show restricted view access policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/09/2023
 ---
 # .show restricted view access policy
 
@@ -23,15 +23,17 @@ Display the policy for all tables:
 
 `.show` `table` * `policy` `restricted_view_access`
 
-## Arguments
+## Parameters
 
-*TableName* - Specify the name of the table. 
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table for which to show the policy details.|
 
 ## Returns
 
 Returns a JSON representation of the policy.
 
-## Example
+## Examples
 
 Display the policy for a table:
 
