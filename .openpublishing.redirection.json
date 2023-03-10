@@ -157,7 +157,7 @@
     },
     {
       "source_path": "data-explorer/kusto/query/regex-operator.md",
-      "redirect_url": "/azure/data-explorer/kusto/query/mathces-regex-operator",
+      "redirect_url": "/azure/data-explorer/kusto/query/matches-regex-operator",
       "redirect_document_id": true
     },
     {
