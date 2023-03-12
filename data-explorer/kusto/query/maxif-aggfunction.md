@@ -3,7 +3,7 @@ title: maxif() (aggregation function) - Azure Data Explorer
 description: Learn how to use the maxif() function to calculate the maximum value of an expression where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 03/12/2023
 ---
 # maxif() (aggregation function)
 
@@ -17,7 +17,7 @@ See also - [max()](max-aggfunction.md) function, which returns the maximum value
 
 `maxif(`*expr*`,`*predicate*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

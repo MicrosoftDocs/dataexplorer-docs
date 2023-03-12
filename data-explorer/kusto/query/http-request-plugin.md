@@ -4,7 +4,7 @@ description: Learn how to use the http_request plugin to send an HTTP request an
 services: data-explorer
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 03/08/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -36,6 +36,19 @@ The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP req
 | *Options* | dynamic |  | A property bag containing additional properties of the request. |
 | *Content* | string |  | The body content to send with the request. The content is encoded in `UTF-8` and the media type for the `Content-Type` attribute is `application/json`. |
 
+## Authentication and authorization
+
+The following table describes the two ways to specify authentication parameters.
+
+|Authentication method|Description|
+|--|--|
+|Azure Active Directory (impersonation)|In the *Options* parameter, specify the credentials under an `Authentication` key and set `AadResourceId` to the target web service resource ID.|
+|Query credentials|In the *RequestHeaders* or in the *Options* parameters, specify the credentials under the `Authorization` key.|
+
+> [!NOTE]
+> If the query includes confidential information, make sure that the relevant parts of the query text are obfuscated so that they'll be omitted from any tracing.
+> For more information, see [obfuscated string literals](./scalar-data-types/string.md#obfuscated-string-literals).
+
 ## Returns
 
 Both plugins return a table that has a single record with the following dynamic columns:
@@ -53,26 +66,6 @@ Before you use the `http_request` and `http_request_post` plugins, make sure tha
 * The specified *Uri* value must be a destination that is enabled for `webapi` callout by the [Callout policy](../management/calloutpolicy.md). Otherwise, running the query results in an error.
 
 * If you're using authentication, you must use the HTTPS protocol. Attempts to use HTTP with authentication enabled results in an error.
-
-## Authentication
-
-You can use the query arguments to specify authentication parameters for the `http_request` and `http_request_post` plugins. The following scenarios are supported:
-
-| Argument | Description |
-|--|--|
-| *Uri* | The URI to authenticate with. |
-| *RequestHeaders* | Using the HTTP standard `Authorization` header or any custom header supported by the web service. |
-
-<!--
-| *Options* | Using the HTTP standard `Authorization` header.<br />If you want to use Azure Active Directory (Azure AD) authentication, you must use an HTTPS URI for the request and set the following values:<br />* `azure_active_directory` to `Active Directory Integrated`<br />* `AadResourceId` to the Azure AD ResourceId value of the target web service. |
--->
-
-> [!WARNING]
-> Be extra careful not to send secret information, such as
-> authentication tokens, over HTTP connections. Additionally, if the query includes
-> confidential information, make sure that the relevant parts of the
-> query text are obfuscated so that they'll be omitted from any tracing.
-> For more information, see [obfuscated string literals](./scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Headers
 
