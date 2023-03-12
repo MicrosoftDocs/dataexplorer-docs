@@ -3,7 +3,7 @@ title: Let statement - Azure Data Explorer
 description: Learn how to use the Let statement to set a variable name to define an expression or a function.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/26/2022
+ms.date: 03/12/2023
 ms.localizationpriority: high
 ---
 # Let statement
@@ -26,30 +26,29 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 `let` *Name* `=` *TabularExpression*
 
-### Arguments
+### Parameters
 
-|Argument  |Description  |Example  |
-|---------|---------|---------|
-|*Name*   | The variable name must be valid. | You can escape the name, for example `["Name with spaces"]` |
-|*ScalarExpression* | An expression with a scalar result.| `let one=1;`  |
-|*TabularExpression*  | An expression with a tabular result. |  `let RecentLog = Logs  \| where Timestamp > ago(1h)`  |
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*Name*|string|&check;|The variable name. You can escape the name with brackets. For example, `["Name with spaces"]`.|
+|*ScalarExpression*|string|&check;|An expression with a scalar result. For example, `let one=1;`.|
+|*TabularExpression*|string|&check;|An expression with a tabular result. For example, `let RecentLog = Logs  \| where Timestamp > ago(1h)`.|
 
 ## Syntax: View or function
 
 `let` *Name* `=` [`view`] `(` [*TabularArgName* `:` `(` `*` `)` `,`   [*ArgName* `:` *ArgType* ]`,` ... ]  `)` `{` *FunctionBody* `}`
 
-`let` *Name* `=` [`view`] `(` [[*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ] `)` ] `,` [[*ArgName* `:` *ArgType, ...]] `)` `{` *FunctionBody* `}
+`let` *Name* `=` [`view`] `(` [*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ] `)` ] `,` [[*ArgName* `:` *ArgType, ...]] `)` `{` *FunctionBody* `}`
 
-### Arguments
+### Parameters
 
-|Argument |Description  |
-|---------|---------|
-|*FunctionBody* | An expression that yields a user defined function. |
-|*view* | Appears only in a parameterless `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. |
-| *TabularArgName*| The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. |
-| *AttributeName*: *AttributeType*| The name and type of the attribute. Part of the table schema definition, which includes a set of attributes with their types. |  
-|*ArgName* | The name of the scalar argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked.  |
-|*ArgType* | The type of the scalar argument. Currently the following are supported for user defined functions: `bool`, `string`, `long`, `datetime`, `timespan`, `real`, and `dynamic` (and aliases to these types).|  
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*FunctionBody* |string|&check;| An expression that yields a user defined function. |
+|`view`|string||Appears only in a parameter-less `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views.|
+|*TabularArgName*|string||The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. |
+| *AttributeName*: *AttributeType*|string|| The name and type of the attribute. Part of the table schema definition, which includes a set of attributes with their types. |  
+|*ArgName*: *ArgType* |string|| The name and type of the scalar argument. The name can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. The only supported types are `bool`, `string`, `long`, `datetime`, `timespan`, `real`, `dynamic`, and the aliases to these types.|
 
 > [!NOTE]
 >
@@ -65,7 +64,6 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 The following example uses a scalar expression statement.
 
 ```kusto
-
 let n = 10;  // number
 let place = "Dallas";  // string
 let cutoff = ago(62d); // datetime 
@@ -77,7 +75,9 @@ Events
 
 The following example binds the name `some number` using the `['name']` notation, and then uses it in a tabular expression statement.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIVi/Oz01VyCvNTUotUo9VsFUwMrDmKkrMS09VqFRIK8rPVTBQKMnHUFdcklqgYAoALOYxk0IAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 let ['some number'] = 20;
 range y from 0 to ['some number'] step 5
@@ -87,7 +87,9 @@ range y from 0 to ['some number'] step 5
 
 This example uses the let statement with arguments for scalar calculation. The query defines function `MultiplyByN` for multiplying two numbers.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHwLc0pySzIqXSq9FOwVdAoS8yxysnPS9dRyAPTmgrVCkAxBS2FPIVaa66ixLz0VIUKhbSi/FwFQ4WSfAVTheKS1AIgm6tGIbWiJDUvRaEotRhoKNA0JLM1KnQUTDUBj8joV3EAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 let MultiplyByN = (val:long, n:long) { val * n };
 range x from 1 to 5 step 1 
@@ -108,7 +110,9 @@ range x from 1 to 5 step 1
 
 The following example removes leading and trailing ones from the input.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzXMMQrCQBBA0T6n+KTaBQu3sEnwDDZeQMgYAtndMDPCgvHuBsTuVW8V565LvhUxrgQbzHUpc+TNgRz61J+wyGfs9FFmofHUmklnvJIumMtGotuR5lImVOy1+pH93+D1l4YW4xcl/CbOcQAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 let TrimOnes = (s:string) { trim("1", s) };
 range x from 10 to 15 step 1 
@@ -130,7 +134,9 @@ range x from 10 to 15 step 1
 
 This example defines two let statements where one statement (`foo2`) uses another (`foo1`).
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03NQQqAIBCF4X2neEsFF+my6CwRZW3MCZsgqO5eakG7t/jmH2cZI5FGA9Gu3AWuHPlJobV++ObKdklb4kDo/GSxYww0I5+AKXlEmPlVFy6nzZv+JeJDoRV0Wb51+fhohZE40dPm+QYbBlAGmgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 let foo1 = (_start:long, _end:long, _step:long) { range x from _start to _end step _step};
 let foo2 = (_step:long) { foo1(1, 100, _step)};
@@ -147,7 +153,9 @@ foo2(2) | count
 
 This example shows you how to use a let statement to create a [`view` or virtual table](schema-entities/views.md).
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEISsxLTzU0ULBVKMtMLVfQ0FSoVigCiSn4Vjrn55Tm5imkFeXnKhgqlOQrANUVl6QWADm11lw5MN1GROo2QtZdnJpYlJyBUGZrq2AKAEWZgauQAAAA" target="_blank">Run the query</a>
+
 ```kusto
 let Range10 = view () { range MyColumn from 1 to 10 step 1 };
 let Range20 = view () { range MyColumn from 1 to 20 step 1 };
@@ -165,7 +173,6 @@ search MyColumn == 5
 
 The [`materialize()`](materializefunction.md) function lets you cache subquery results during the time of query execution. When you use the `materialize()` function, the data is cached, and any subsequent invocation of the result uses cached data.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 let totalPagesPerDay = PageViews
 | summarize by Page, Day = startofday(Timestamp)

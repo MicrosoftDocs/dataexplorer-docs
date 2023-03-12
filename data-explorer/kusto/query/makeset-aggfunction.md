@@ -3,7 +3,7 @@ title: make_set() (aggregation function) - Azure Data Explorer
 description: Learn how to use the make_set() function to return a JSON array of the distinct values that the expression takes in the group. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 03/12/2023
 ---
 # make_set() (aggregation function)
 
@@ -17,7 +17,7 @@ Creates a `dynamic` array of the set of distinct values that *expr* takes in the
 
  `make_set(`*expr* [`,` *maxSize*]`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
