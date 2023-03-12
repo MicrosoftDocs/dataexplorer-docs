@@ -3,7 +3,7 @@ title: Alias statement - Azure Data Explorer
 description: Learn how to use an alias statement to define an alias for a database that is used for a query.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/20/2022
+ms.date: 03/12/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -18,12 +18,19 @@ The alias must be defined according to the following syntax, where *clustername*
 
 ## Syntax
 
-`alias` database[*'DatabaseAliasName'*] `=` cluster("https://*clustername*.kusto.windows.net").database("*databasename*")
+`alias` database[*'DatabaseAliasName'*] `=` cluster("https://*clustername*.kusto.windows.net").database("*DatabaseName*")
 
-`alias` database *DatabaseAliasName* `=` cluster("https://*clustername*.kusto.windows.net").database("*databasename*")
+`alias` database *DatabaseAliasName* `=` cluster("https://*clustername*.kusto.windows.net").database("*DatabaseName*")
 
-* *'DatabaseAliasName'* can be either an existing name or a new name.
-* The mapped cluster-uri and the mapped database-name must appear inside double-quotes(") or single-quotes(')
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseAliasName*|string|&check;|An existing name or new database alias name.|
+|*DatabaseName*|string|&check;|The name of the database to give an alias.|
+
+> [!NOTE]
+> The mapped cluster-uri and the mapped database-name must appear inside double-quotes(") or single-quotes(').
 
 ## Examples
 
