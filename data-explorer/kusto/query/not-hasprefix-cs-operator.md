@@ -3,7 +3,7 @@ title: The case-sensitive !hasprefix_cs string operator - Azure Data Explorer
 description: Learn how to use the !hasprefix_cs string operator to filter records for data that doesn't have a case-sensitive prefix.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/09/2023
+ms.date: 03/12/2023
 ---
 # !hasprefix_cs operator
 
@@ -30,13 +30,15 @@ For more information about other operators and to determine which operator is mo
 
 ## Syntax
 
-*T* `|` `where` *Column* `!hasprefix_cs` `(`*Expression*`)`  
+*T* `|` `where` *column* `!hasprefix_cs` `(`*expression*`)`  
 
-## Arguments
+## Parameters
 
-* *T* - The tabular input whose records are to be filtered.
-* *Column* - The column to filter.
-* *Expression* - Scalar or literal expression.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check;| The tabular input whose records are to be filtered.|
+| *column* | string | &check;| The column by which to filter.|
+| *expression* | scalar | &check;| The scalar or literal expression for which to search.|
 
 ## Returns
 
@@ -44,12 +46,14 @@ Rows in *T* for which the predicate is `true`.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPQTEjsbigKDUtsyI+uVhBKUAJKA/WAgDAMC2uXAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-    | summarize event_count=count() by State
-    | where State !hasprefix_cs "P"
-    | count
+| summarize event_count=count() by State
+| where State !hasprefix_cs "P"
+| count
 ```
 
 **Output**
