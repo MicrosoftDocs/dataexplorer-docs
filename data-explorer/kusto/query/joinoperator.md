@@ -27,10 +27,10 @@ Merge the rows of two tables to form a new table by matching values of the speci
 
 ### Rules
 
-|Rule kind        |Syntax          |Predicate    |
-|-----------------|--------------|-------------------------|
-|Equality by name |*ColumnName*    |`where` *LeftTable*.*ColumnName* `==` *RightTable*.*ColumnName*|
-|Equality by value|`$left.`*LeftColumn* `==` `$right.`*RightColumn*|`where` `$left.`*LeftColumn* `==` `$right.`*RightColumn*       |
+| Rule kind | Syntax | Predicate |
+|---|---|---|
+| Equality by name | *ColumnName* | `where` *LeftTable*.*ColumnName* `==` *RightTable*.*ColumnName* |
+| Equality by value | `$left.`*LeftColumn* `==` `$right.`*RightColumn* | `where` `$left.`*LeftColumn* `==` `$right.`*RightColumn* |
 
 > [!NOTE]
 > For 'equality by value', the column names *must* be qualified with the applicable owner table denoted by `$left` and `$right` notations.
