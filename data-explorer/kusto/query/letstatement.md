@@ -22,23 +22,20 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 ## Syntax: Scalar or tabular expressions
 
-`let` *Name* `=` *ScalarExpression*
-
-`let` *Name* `=` *TabularExpression*
+`let` *Name* `=` *Expression*
 
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*Name*|string|&check;|The variable name. You can escape the name with brackets. For example, `["Name with spaces"]`.|
-|*ScalarExpression*|string|&check;|An expression with a scalar result. For example, `let one=1;`.|
-|*TabularExpression*|string|&check;|An expression with a tabular result. For example, `let RecentLog = Logs  \| where Timestamp > ago(1h)`.|
+|*Expression*|string|&check;|An expression with a scalar or tabular result. For example, an expression with a scalar result would be `let one=1;`, and an expression with a tabular result would be `let RecentLog = Logs  \| where Timestamp > ago(1h)`.|
 
 ## Syntax: View or function
 
 `let` *Name* `=` [`view`] `(` [*TabularArgName* `:` `(` `*` `)` `,`   [*ArgName* `:` *ArgType* ]`,` ... ]  `)` `{` *FunctionBody* `}`
 
-`let` *Name* `=` [`view`] `(` [*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ] `)` ] `,` [[*ArgName* `:` *ArgType, ...]] `)` `{` *FunctionBody* `}`
+`let` *Name* `=` [`view`] `(` [[*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ] `)` ] `,` [*ArgName* `:` *ArgType, ...]] `)` `{` *FunctionBody* `}`
 
 ### Parameters
 
