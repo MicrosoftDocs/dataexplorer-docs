@@ -62,7 +62,7 @@ The following example shows the value of `DamageProperty` being larger than 95% 
 StormEvents | summarize percentile(DamageProperty, 95) by State
 ```
 
-**Results**
+**Output**
 
 The results table shown includes only the first 10 rows.
 
@@ -90,7 +90,7 @@ The following example shows the value of `DamageProperty` simultaneously calcula
 StormEvents | summarize percentiles(DamageProperty, 5, 50, 95) by State
 ```
 
-**Results**
+**Output**
 
 The results table shown includes only the first 10 rows.
 
@@ -164,7 +164,7 @@ latencyTable
 | summarize percentilesw(LatencyBucket, ReqCount, 50, 75, 99.9)
 ```
 
-**Results**
+**Output**
 
 | percentile_LatencyBucket_50 | percentile_LatencyBucket_75 | percentile_LatencyBucket_99_9 |
 |--|--|--|
@@ -182,7 +182,7 @@ TransformedSensorsData
 | summarize percentiles_array(Value, 5, 25, 50, 75, 95), avg(Value) by SensorName
 ```
 
-**Results**
+**Output**
 
 The results table displays only the first 10 rows.
 
