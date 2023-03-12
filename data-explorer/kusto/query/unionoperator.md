@@ -66,7 +66,7 @@ If the `union` input is [tables](../management/tables.md) as opposed to [tabular
 
 A table with as many rows as there are in all the input tables.
 
-### Examples
+## Examples
 
 ### Tables with string in name or column
 
