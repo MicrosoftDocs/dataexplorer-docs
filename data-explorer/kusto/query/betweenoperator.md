@@ -25,7 +25,7 @@ Filters a record set for data matching the values in an inclusive range.
 | *rightRange* | int, long, real, datetime, or timespan | &check; | The expression of the right range. The range is inclusive. This value can only be of type [timespan](scalar-data-types/timespan.md) if *expr* and *leftRange* are both of type `datetime`.|
 
 > [!TIP]
-> If *expr* is of type `datetime`, you can provide a `datetime` value for the *leftRange* and a `timespan` value for the *rightRange*. See [example](#filter-datetime-using-a-timespan-range).
+> If *expr* and *leftRange* are `datetime` values, you can provide a `timespan` value for the *rightRange*. See [example](#filter-datetime-using-a-timespan-range).
 
 ## Returns
 
