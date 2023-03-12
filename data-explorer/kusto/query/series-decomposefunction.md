@@ -74,7 +74,7 @@ ts
 
 :::image type="content" source="images/samples/series-decompose1.png" alt-text="Series decompose 1.":::
 
-## Weekly seasonality with trend
+### Weekly seasonality with trend
 
 In this example, we add a trend to the series from the previous example. First, we run `series_decompose` with the default parameters. The trend `avg` default value only takes the average and doesn't compute the trend. The generated baseline doesn't contain the trend. When observing the trend in the residuals, it becomes apparent that this example is less accurate than the previous example.
 
