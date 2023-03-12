@@ -28,7 +28,7 @@ The middle-tier application can prefix the user's query with a **logical model**
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*EntitySpecifiers*|string|&check;|One or more comma-separated entity specifiers. The possible values are:<br/>* An identifier defined by a let statement as a tabular view<br/>* A table or function reference, similar to one used by a union statement<br/>* A pattern defined by a pattern declaration<br/>|
+|*EntitySpecifiers*|string|&check;|One or more comma-separated entity specifiers. The possible values are:<br/>- An identifier defined by a let statement as a tabular view<br/>- A table or function reference, similar to one used by a union statement<br/>- A pattern defined by a pattern declaration<br/>|
 
 > [!NOTE]
 >
@@ -49,7 +49,7 @@ restrict access to (Test);
 
 ### Tables or functions
 
-The following examples uses references to [tables](../management/tables.md) or [functions](../management/functions.md) that are defined in the database metadata.
+The following example uses references to [tables](../management/tables.md) or [functions](../management/functions.md) that are defined in the database metadata.
 
 ```kusto
 // Assuming the database that the query uses has table Table1 and Func1 defined in the metadata, 
