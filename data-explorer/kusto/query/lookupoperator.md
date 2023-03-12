@@ -72,13 +72,8 @@ A table with:
   The columns of the right side will be automatically renamed if there are name conflicts.
 * A row for every match between the input tables. A match is a row selected from one table that has the same value for all the `on` fields as a row in the other table.
 * The Attributes (lookup keys) will appear only once in the output table.
-* `kind` unspecified, `kind=leftouter`
-
-  In addition to the inner matches, there's a row for every row on the left (and/or right), even if it has no match. In that case, the unmatched output cells contain nulls.
-
-* `kind=inner`
-
-  There's a row in the output for every combination of matching rows from left and right.
+* If `kind` is unspecified or `kind=leftouter`, then in addition to the inner matches, there's a row for every row on the left (and/or right), even if it has no match. In that case, the unmatched output cells contain nulls.
+* If `kind=inner`, then there's a row in the output for every combination of matching rows from left and right.
 
 ## Examples
 

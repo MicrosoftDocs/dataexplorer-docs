@@ -28,13 +28,8 @@ Takes two or more tables and returns the rows of all of them.
 |*UnionParameters*|string||Zero or more space-separated parameters in the form of *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. See [supported union parameters](#supported-union-parameters).|
 |`kind`|string||Either `inner` or `outer`. `inner` causes the result to have the subset of columns that are common to all of the input tables. `outer` causes the result to have all the columns that occur in any of the inputs. Cells that aren't defined by an input row are set to `null`. The default is `outer`.<br/><br/>With `outer`, the result has all the columns that occur in any of the inputs, one column for each name and type occurrences. This means that if a column appears in multiple tables and has multiple types, it has a corresponding column for each type in the union's result. This column name is suffixed with a '_' followed by the origin column [type](./scalar-data-types/index.md).|
 |`withsource=`*ColumnName*|string||If specified, the output includes a column called *ColumnName* whose value indicates which source table has contributed each row. If the query effectively references tables from more than one database including the default database, then the value of this column has a table name qualified with the database. __cluster and database__ qualifications are present in the value if more than one cluster is referenced.|
-|`isfuzzy`|bool||If set to `true`, the set of union sources is reduced to the set of table references that exist and are accessible at the time while analyzing the query and preparing for execution. If at least one such table was found, any resolution failure yields a warning in the query status results, but won't prevent the query execution. If no resolutions were successful, the query returns an error. The default is `false`. `isfuzzy=true` only applies to the `union` sources resolution phase. Once the set of source tables is determined, possible additional query failures won't be suppressed.|
+|`isfuzzy`|bool||If set to `true`, allows fuzzy resolution of union legs. The set of union sources is reduced to the set of table references that exist and are accessible at the time while analyzing the query and preparing for execution. If at least one such table was found, any resolution failure yields a warning in the query status results, but won't prevent the query execution. If no resolutions were successful, the query returns an error. The default is `false`.<br/><br/>`isfuzzy=true` only applies to the `union` sources resolution phase. Once the set of source tables is determined, possible additional query failures won't be suppressed.|
 |*Tables*|string||One or more comma-separated table references, a query expression enclosed with parenthesis, or a set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.|
-
-> [!NOTE]
->
-> * The `union` scope will not include [functions](../management/functions.md). To include a function, define a [let statement](./letstatement.md) with the `view` keyword.
-> * There's no guarantee of the order in which the union legs will appear, but if each leg has an `order by` operator, then each leg will be sorted.
 
 ### Supported union parameters
 
@@ -47,53 +42,30 @@ Takes two or more tables and returns the rows of all of them.
 
 ::: zone pivot="azuremonitor"
 
-* `Table`:
-    *  The name of a table, such as `Events`
-    *  A query expression that must be enclosed with parenthesis, such as `(Events | where id==42)`
-    *  A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.
-
-> [!NOTE]
-> Whenever the list of tables is known, refrain from using wildcards. Some workspaces contains very large number of tables that would lead to inefficient execution. Tables may also be added over time leading to unpredicted results.
-    
-* `kind`: 
-    * `inner` - The result has the subset of columns that are common to all of the input tables.
-    * `outer` - (default). The result has all the columns that occur in any of the inputs. Cells that weren't defined by an input row are set to `null`.
-* `withsource`=*ColumnName*: If specified, the output will include a column
-called *ColumnName* whose value indicates which source table contributed each row.
-If the query effectively (after wildcard matching) references tables from more than one database (default database always counts) the value of this column will have a table name qualified with the database.
-Similarly, the __cluster and database__ qualifications will be present in the value if more than one cluster is referenced. 
-* `isfuzzy=` `true` | `false`: If `isfuzzy` is set to `true` - allows fuzzy resolution of union legs. `Fuzzy` applies to the set of `union` sources. It means that while analyzing the query and preparing for execution, the set of union sources is reduced to the set of table references that exist and are accessible at the time. If at least one such table was found, any resolution failure will yield a warning in the query status results (one for each missing reference), but won't prevent the query execution; if no resolutions were successful - the query will return an error. However, in cross-workspace and cross-app queries, if any of the workspaces or apps isn't found, the query fails.
-The default is `isfuzzy=false`.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*T*|string||The input tabular expression.|
+|*UnionParameters*|string||Zero or more space-separated parameters in the form of *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. See [supported union parameters](#supported-union-parameters).<br/><br/>Whenever the list of tables is known, refrain from using wildcards. Some workspaces contains very large number of tables that would lead to inefficient execution. Tables may also be added over time leading to unpredicted results.|
+|`kind`|string||Either `inner` or `outer`. `inner` causes the result to have the subset of columns that are common to all of the input tables. `outer` causes the result to have all the columns that occur in any of the inputs. Cells that aren't defined by an input row are set to `null`. The default is `outer`.<br/><br/>With `outer`, the result has all the columns that occur in any of the inputs, one column for each name and type occurrences. This means that if a column appears in multiple tables and has multiple types, it has a corresponding column for each type in the union's result. This column name is suffixed with a '_' followed by the origin column [type](./scalar-data-types/index.md).|
+|`withsource=`*ColumnName*|string||If specified, the output includes a column called *ColumnName* whose value indicates which source table has contributed each row. If the query effectively references tables from more than one database including the default database, then the value of this column has a table name qualified with the database. __cluster and database__ qualifications are present in the value if more than one cluster is referenced.|
+|`isfuzzy`|bool||If set to `true`, allows fuzzy resolution of union legs. The set of union sources is reduced to the set of table references that exist and are accessible at the time while analyzing the query and preparing for execution. If at least one such table was found, any resolution failure yields a warning in the query status results, but won't prevent the query execution. If no resolutions were successful, the query returns an error. However, in cross-workspace and cross-app queries, if any of the workspaces or apps is not found, the query will fail. The default is `false`.<br/><br/>`isfuzzy=true` only applies to the `union` sources resolution phase. Once the set of source tables is determined, possible additional query failures won't be suppressed.|
+|*Tables*|string||One or more comma-separated table references, a query expression enclosed with parenthesis, or a set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.|
 
 ::: zone-end
 
-::: zone pivot="azuredataexplorer"
+> [!NOTE]
+>
+> * The `union` scope can include [let statements](./letstatement.md) if attributed with the `view` keyword.
+> * The `union` scope will not include [functions](../management/functions.md). To include a function, define a [let statement](./letstatement.md) with the `view` keyword.
+> * There's no guarantee of the order in which the union legs will appear, but if each leg has an `order by` operator, then each leg will be sorted.
 
 ## Performance considerations
 
 If the `union` input is [tables](../management/tables.md) as opposed to [tabular expressions](./tabularexpressionstatements.md), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./findoperator.md),
 
-::: zone-end
-
 ## Returns
 
 A table with as many rows as there are in all the input tables.
-
-::: zone pivot="azuremonitor"
-
-**Notes**
-
-1. `union` scope can include [let statements](./letstatement.md) if those are 
-attributed with [view keyword](./letstatement.md)
-2. `union` scope won't include functions. To include 
-function in the union scope - define a [let statement](./letstatement.md) 
-with [view keyword](./letstatement.md)
-3. If the `union` input is tables (as oppose to [tabular expressions](./tabularexpressionstatements.md)), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./findoperator.md) for better performance. Please note the different [output schema](./findoperator.md#output-schema) produced by the `find` operator. 
-4. `isfuzzy=` `true` applies only to the phase of the `union` sources resolution. Once the set of source tables was determined, possible additional query failures won't be suppressed.
-5. When using `outer union`, the result has all the columns that occur in any of the inputs, one column for each name and type occurrences. This means that if a column appears in multiple tables and has multiple types, it will have a corresponding column for each type in the `union`'s result. This column name will be suffixed with a '_' followed by the origin column [type](./scalar-data-types/index.md).
-6. Any two statements must be separated by a semicolon.
-
-::: zone-end
 
 ### Examples
 
