@@ -3,7 +3,7 @@ title: range operator - Azure Data Explorer
 description: Learn how to use the range operator to generate a single-column table of values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 03/12/2023
 ---
 # range operator
 
@@ -16,15 +16,17 @@ Generates a single-column table of values.
 
 `range` *columnName* `from` *start* `to` *stop* `step` *step*
 
-## Arguments
+## Parameters
 
-* *columnName*: The name of the single column in the output table.
-* *start*: The smallest value in the output.
-* *stop*: The highest value being generated in the output (or a bound
-on the highest value, if *step* steps over this value).
-* *step*: The difference between two consecutive values.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*columnName*|string|&check;| The name of the single column in the output table.|
+|*start*|int, long, real, datetime, or timespan|&check;| The smallest value in the output.|
+|*stop*|int, long, real, datetime, or timespan|&check;| The highest value being generated in the output or a bound on the highest value if *step* steps over this value.|
+|*step*|int, long, real, datetime, or timespan|&check;| The difference between two consecutive values.|
 
-The arguments must be numeric, date or timespan values. They can't reference the columns of any table. (If you want to compute the range based on an input table, use the range function, maybe with the mv-expand operator.)
+> [!NOTE]
+> The values can't reference the columns of any table. If you want to compute the range based on an input table, use the [range](rangefunction.md) function potentially with the [mv-expand](mvexpandoperator.md) operator.
 
 ## Returns
 
@@ -33,9 +35,11 @@ whose values are *start*, *start* `+` *step*, ... up to and until *stop*.
 
 ## Examples
 
-The following example creates a table with entries for the current time stamp extended over the past seven days, once a day. 
+The following example creates a table with entries for the current time stamp extended over the past seven days, once a day.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVfBJLC4JT03NVkgrys9VSEzP1zBP0VQoyVfIyy/X0FQoLkktUDBMAQDbz6iXLAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 range LastWeek from ago(7d) to now() step 1d
 ```
@@ -51,7 +55,9 @@ range LastWeek from ago(7d) to now() step 1d
 
 The following example shows how to use the `range` operator with parameters, which are then extended and consumed as a table.  
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21QQU7DMBC8+xV7TKSGJCKAIOICHLhUSBQe4OINjUjWlrNRGyh/Zx1a4UpYlizvzNgz0yED21dqdy9tj3ALieEboxlZrimoL1AgS6aQwXGelNdXRVaUstMUcigHUN+16uSt5bS0xJsVa8/y2hBO2/RhlpDdJmlaQ57/wraBGZiFK0Z3N4mkOrs4rzYza3TOekYD4dPBaRpmKpHQLquiKAILnu0W7u1IDE573SP79hPNwU1I1bUUknlN73g0+GhHD423/aljtjC7FOPoDp7UHnDHSCbWthR19ldgElHSBTxIYU/UhVjrlmJwURrBg+SAx76y/9iqjuPswXqDHtbTiVIPbwKx/kBp6Qf2xjgc3AEAAA==" target="_blank">Run the query</a>
+
 ```kusto
 let toUnixTime = (dt:datetime) 
 { 
@@ -67,8 +73,6 @@ let MyTimeline = range MyMonthHour from MyMonthStart to now() step StepBy
 
 **Output**
 
-
-
 | MyMonthHour | MyMonthHourinUnixTime | DateOnly     | TimeOnly                    |
 |--------------|------------------------|---------------|------------------------------|
 | 2023-02-01  | 00:00:00.0000000      | 1675209600   | 2023-02-01 00:00:00.0000000 |
@@ -80,7 +84,9 @@ let MyTimeline = range MyMonthHour from MyMonthStart to now() step StepBy
 The following example creates a table with a single column called `Steps`
 whose type is `long` and whose values are `1`, `4`, and `7`.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVQguSS0oVkgrys9VMFQoyVewUCgGiigYAwBtHYQiHgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 range Steps from 1 to 8 step 3
 ```

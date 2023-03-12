@@ -3,7 +3,7 @@ title: Query parameters declaration statement - Azure Data Explorer
 description: Learn how to use the query parameters declaration statement to parameterize queries and protect against injection attacks.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 03/12/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -28,13 +28,13 @@ To reference query parameters, the query text, or functions it uses, must first 
 
 `declare` `query_parameters` `(` *Name1* `:` *Type1* [`=` *DefaultValue1*] [`,`...] `);`
 
-* *Name1*: The name of a query parameter used in the query.
-* *Type1*: The corresponding type, such as `string` or `datetime`.
-  The values provided by the user are encoded as strings, to Kusto will
-  apply the appropriate parse method to the query parameter to get
-  a strongly-typed value.
-* *DefaultValue1*: An optional default value for the parameter. This value must be
-  a literal of the appropriate scalar type.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*Name1*|string|&check;|The name of a query parameter used in the query.|
+|*Type1*|string|&check;|The corresponding type, such as `string` or `datetime`. The values provided by the user are encoded as strings. The appropriate parse method is applied to the query parameter to get a strongly-typed value.|
+|*DefaultValue1*|string||A default value for the parameter. This value must be a literal of the appropriate scalar type.|
 
 > [!NOTE]
 >
