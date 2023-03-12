@@ -3,7 +3,7 @@ title: percentile(), percentiles() - Azure Data Explorer
 description: Learn how to use the percentile(), percentiles() functions to calculate estimates for nearest rank percentiles in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 03/12/2023
 ---
 # percentile(), percentiles() (aggregation function)
 
@@ -36,12 +36,12 @@ To add a percentage calculation to your results, see the [percentages example](t
 
 `percentilesw_array` `(`*Expr*`,` *WeightExpr*`,` *Dynamic array*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*Expr* | string | &check; | Expression that will be used for aggregation calculation.|
-|*WeightExpr*| string | &check; | Expression that will be used as the weight of values for aggregation calculation.|
+|*Expr* | string | &check; | The expression to use for aggregation calculation.|
+|*WeightExpr*| string | &check; | The expression to use as the weight of values for aggregation calculation.|
 |*Percentile*| double | &check;| A constant that specifies the percentile.|
 |*Dynamic array* | dynamic | &check; | A list of percentiles in a dynamic array of integers or floating point numbers.|
 
