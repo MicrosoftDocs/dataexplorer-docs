@@ -18,12 +18,19 @@ The alias must be defined according to the following syntax, where *clustername*
 
 ## Syntax
 
-`alias` database[*'DatabaseAliasName'*] `=` cluster("https://*clustername*.kusto.windows.net").database("*databasename*")
+`alias` database[*'DatabaseAliasName'*] `=` cluster("https://*clustername*.kusto.windows.net").database("*DatabaseName*")
 
-`alias` database *DatabaseAliasName* `=` cluster("https://*clustername*.kusto.windows.net").database("*databasename*")
+`alias` database *DatabaseAliasName* `=` cluster("https://*clustername*.kusto.windows.net").database("*DatabaseName*")
 
-* *'DatabaseAliasName'* can be either an existing name or a new name.
-* The mapped cluster-uri and the mapped database-name must appear inside double-quotes(") or single-quotes(')
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseAliasName*|string|&check;|An existing name or new database alias name.|
+|*DatabaseName*|string|&check;|The name of teh database to give an alias.|
+
+> [!NOTE]
+> The mapped cluster-uri and the mapped database-name must appear inside double-quotes(") or single-quotes(').
 
 ## Examples
 
