@@ -3,7 +3,7 @@ title: R plugin (Preview) - Azure Data Explorer
 description: Learn how to use the R plugin (Preview) to run a user-defined function using an R script.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 01/18/2023
+ms.date: 03/12/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -20,23 +20,15 @@ The plugin's runtime is hosted in a [sandbox](../concepts/sandboxes.md) on the c
 
 *T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `r(`*output_schema*`,` *script* [`,` *script_parameters*] [`,` *external_artifacts*]`)`
 
-## Arguments
+## Parameters
 
-* *output_schema*: A `type` literal that defines the output schema of the tabular data, returned by the R code.
-* The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`, for example: `typeof(col1:string, col2:long)`.
-* To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`.
-* *script*: A `string` literal that is the valid R script to be executed.
-* *script_parameters*: An optional `dynamic` literal that is a property bag of name and value pairs to be passed to the R script as the reserved `kargs` dictionary. For more information, see [Reserved R variables](#reserved-r-variables).
-* *hint.distribution*: An optional hint for the plugin's execution to be distributed across multiple cluster nodes.
-   Default: `single`.
-* `single`: A single instance of the script will run over the entire query data.
-* `per_node`: If the query before the R block is distributed, an instance of the script will run on each node over the data that it contains.
-* *external_artifacts*: An optional `dynamic` literal that is a property bag of name and URL pairs, for artifacts that are accessible from cloud storage. They can be made available for the script to use at runtime.
-  * URLs referenced in this property bag are required to be:
-    * Included in the cluster's [callout policy](../management/calloutpolicy.md).
-    * In a publicly available location, or provide the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage-connection-strings.md).
-  * The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Example](#examples).
-  * For more information, see [Install packages for the R plugin](#install-packages-for-the-r-plugin). 
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*output_schema*|string|&check;|A `type` literal that defines the output schema of the tabular data, returned by the R code. The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`. For example: `typeof(col1:string, col2:long)`. To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`.|
+|*script*|string|&check;|The valid R script to be executed.|
+|*script_parameters*|dynamic||A property bag of name and value pairs to be passed to the R script as the reserved `kargs` dictionary. For more information, see [Reserved R variables](#reserved-r-variables).|
+|`hint.distribution`|string||Hint for the plugin's execution to be distributed across multiple cluster nodes. The default value is `single`. `single` means that a single instance of the script will run over the entire query data. `per_node` means that if the query before the R block is distributed, an instance of the script will run on each node over the data that it contains.|
+|*external_artifacts*|dynamic||A property bag of name and URL pairs for artifacts that are accessible from cloud storage. They can be made available for the script to use at runtime. URLs referenced in this property bag are required to be included in the cluster's [callout policy](../management/calloutpolicy.md) and in a publicly available location, or contain the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage-connection-strings.md). The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Example](#examples). For more information, see [Install packages for the R plugin](#install-packages-for-the-r-plugin).|
 
 ## Reserved R variables
 
