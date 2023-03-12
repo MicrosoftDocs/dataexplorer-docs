@@ -3,7 +3,7 @@ title: summarize operator - Azure Data Explorer
 description: Learn how to use the summarize operator to produce a table that summarizes the content of the input table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/01/2023
+ms.date: 03/12/2023
 ms.localizationpriority: high 
 ---
 # summarize operator
@@ -26,25 +26,19 @@ A table that shows how many items have prices in each interval  [0,10.0], [10.0,
 
 ## Syntax
 
-*T* `| summarize` [*SummarizeParameters*]
+*T* `| summarize` [ *SummarizeParameters* ]
       [[*Column* `=`] *Aggregation* [`,` ...]]
     [`by`
       [*Column* `=`] *GroupExpression* [`,` ...]]
 
-## Arguments
+## Parameters
 
-* *Column:* Optional name for a result column. Defaults to a name derived from the expression.
-* *Aggregation:* A call to an [aggregation function](aggregation-functions.md) such as `count()` or `avg()`, with column names as arguments.
-* *GroupExpression:* A scalar expression that can reference the input data.
-  The output will have as many records as there are distinct values of all the
-  group expressions.
-* *SummarizeParameters*: Zero or more (space-separated) parameters in the form of *Name* `=` *Value* that control the behavior. The following parameters are supported:
-  
-  |Name  |Description  |
-  |---|---|
-  |`hint.num_partitions` |Specifies the number of partitions used to share the query load on cluster nodes. See [shuffle query](shufflequery.md)  |
-  |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. See [shuffle query](shufflequery.md) |
-  |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node will process one partition of the data. See [shuffle query](shufflequery.md)  |
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*Column*|string||The name for the result column. Defaults to a name derived from the expression.|
+|*Aggregation*|string|&check;|A call to an [aggregation function](aggregation-functions.md) such as `count()` or `avg()`, with column names as arguments.|
+|*GroupExpression*|scalar|&check;|A scalar expression that can reference the input data. The output will have as many records as there are distinct values of all the group expressions.|
+|*SummarizeParameters*|string||Zero or more space-separated parameters in the form of *Name* `=` *Value* that control the behavior. See [supported parameters](#supported-parameters).
 
 > [!NOTE]
 > When the input table is empty, the output depends on whether *GroupExpression*
@@ -52,6 +46,14 @@ A table that shows how many items have prices in each interval  [0,10.0], [10.0,
 >
 > * If *GroupExpression* is not provided, the output will be a single (empty) row.
 > * If *GroupExpression* is provided, the output will have no rows.
+
+### Supported parameters
+
+  |Name  |Description  |
+  |---|---|
+  |`hint.num_partitions` |Specifies the number of partitions used to share the query load on cluster nodes. See [shuffle query](shufflequery.md)  |
+  |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. See [shuffle query](shufflequery.md) |
+  |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node will process one partition of the data. See [shuffle query](shufflequery.md)  |
 
 ## Returns
 

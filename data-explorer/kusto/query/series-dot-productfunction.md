@@ -3,7 +3,7 @@ title: series_dot_product() - Azure Data Explorer
 description: This article describes series_dot_product() in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 1/17/2023
+ms.date: 03/12/2023
 ---
 # series_dot_product()
 
@@ -15,9 +15,10 @@ The function `series_dot_product()` takes two numeric series as input, and calcu
 
 `series_dot_product(`*series1*`,` *series2*`)`
 
-## Alternate Syntax
+## Alternate syntax
 
 `series_dot_product(`*series*`, `*numeric*`)`
+
 `series_dot_product(`*numeric*`, `*series*`)`
 
 > [!NOTE]
@@ -27,11 +28,11 @@ The function `series_dot_product()` takes two numeric series as input, and calcu
 >
 > For example, `series_dot_product([1, 2, 3], 10)` will be treated as `series_dot_product([1, 2, 3], [10, 10, 10])`.
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series1, series2* | dynamic arrays |  &check | Input arrays with numeric data, to be element-wise multiplied and then summed into a value of type 'real'.
+| *series1, series2* | dynamic |  &check; | Input arrays with numeric data, to be element-wise multiplied and then summed into a value of type `real`.
 
 ## Returns
 
@@ -44,7 +45,9 @@ Any non-numeric element of the input series will be ignored.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMQQoCMQyF4b2neMupdNNx7VlKaeOg4rQkEdri4a2DMLoLH3k/h3UhVFw4P+CgGSeIUhn34QWqSmtCw3m8HDHv1Ae1LxXON4oKcQNLiHcfmEObqm22GwuZ/71bNItq9po4n7L6EUrPqH4bCPGV5NcncZ+YeQNovYwctAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 range x from 1 to 3 step 1 
 | extend y = x * 2
@@ -59,7 +62,9 @@ range x from 1 to 3 step 1
 |[2,4,8]|[8,4,2]|48|
 |[3,6,12]|[12,6,3]|108|
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03LQQrCMBCF4b2neMtWsklde5YQklGq2ISZEZLi4Z2K0O6Gb97PcbkTGm5cXvDQggtEqdp9+oCa0pLRcbXJGdNOq1H/U+XyoKQQb1hjeobIHPvQXHfr6CDT1u+t+JCLBsvyO2n4vYV4Jjn6IH5Lxy/j/FcsogAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 range x from 1 to 3 step 1 
 | extend y = x * 2
