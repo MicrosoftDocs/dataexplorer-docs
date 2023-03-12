@@ -3,7 +3,7 @@ title: The between operator - Azure Data Explorer
 description: Learn how to use the between operator to return a record set of values in an inclusive range for which the predicate evaluates to true. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 03/12/2023
 ---
 # between operator
 
