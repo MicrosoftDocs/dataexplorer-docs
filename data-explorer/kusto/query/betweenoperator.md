@@ -22,10 +22,7 @@ Filters a record set for data matching the values in an inclusive range.
 | *T* | string | &check; |  The tabular input whose records are to be matched. For example, the table name. |
 | *expr* | scalar | &check; |  The expression used to filter. |
 | *leftRange* | int, long, real, or datetime | &check; | The expression of the left range. The range is inclusive.|
-| *rightRange* | int, long, real, datetime, or timespan | &check; | The expression of the right range. The range is inclusive. This value can only be of type [timespan](scalar-data-types/timespan.md) if *expr* and *leftRange* are both of type `datetime`.|
-
-> [!TIP]
-> If *expr* and *leftRange* are `datetime` values, you can provide a `timespan` value for the *rightRange*. See [example](#filter-datetime-using-a-timespan-range).
+| *rightRange* | int, long, real, datetime, or timespan | &check; | The expression of the right range. The range is inclusive.<br/><br/>This value can only be of type [timespan](scalar-data-types/timespan.md) if *expr* and *leftRange* are both of type `datetime`. See [example](#filter-datetime-using-a-timespan-range).|
 
 ## Returns
 
