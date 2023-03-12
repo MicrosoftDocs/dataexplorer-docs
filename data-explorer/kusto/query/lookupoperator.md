@@ -3,7 +3,7 @@ title: lookup operator - Azure Data Explorer
 description: Learn how to use the lookup operator to extend columns of a fact table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/26/2022
+ms.date: 03/12/2023
 ---
 # lookup operator
 
@@ -43,35 +43,27 @@ with the following differences:
 
 ## Syntax
 
-*LeftTable* `|` `lookup` [`kind` `=` (`leftouter`|`inner`)] `(` *RightTable* `)` `on` *Attributes*
+*LeftTable* `|` `lookup` [`kind` `=` (`leftouter`|`inner`)] `(`*RightTable*`)` `on` *Attributes*
 
-## Arguments
+## Parameters
 
-* *LeftTable*: The table or tabular expression that is the basis for the lookup.
-  Denoted as `$left`.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*LeftTable*|string|&check;|The table or tabular expression that is the basis for the lookup. Denoted as `$left`.|
+|*RightTable*|The table or tabular expression that is used to "populate" new columns in the fact table. Denoted as `$right`.|
+|*Attributes*|string|&check;|A comma-delimited list of one or more rules that describe how rows from *LeftTable* are matched to rows from *RightTable*. Multiple rules are evaluated using the `and` logical operator. See [Rules](#rules).|
+|`kind`|string||Determines how to treat rows in *LeftTable* that have no match in *RightTable*. By default, `leftouter` is used, which means all those rows will appear in the output with null values used for the missing values of *RightTable* columns added by the operator. If `inner` is used, such rows are omitted from the output. Other kinds of join aren't supported by the `lookup` operator.|
 
-* *RightTable*: The table or tabular expression that is used to "populate"
-  new columns in the fact table. Denoted as `$right`.
+### Rules
 
-* *Attributes*: A comma-delimited list of one or more rules that describe how rows from
-  *LeftTable* are matched to rows from *RightTable*. Multiple rules are evaluated using the `and` logical operator.
-  A rule can be one of:
+| Rule kind | Syntax | Predicate |
+|---|---|---|
+| Equality by name | *ColumnName* | `where` *LeftTable*.*ColumnName* `==` *RightTable*.*ColumnName* |
+| Equality by value | `$left.`*LeftColumn* `==` `$right.`*RightColumn* | `where` `$left.`*LeftColumn* `==` `$right.`*RightColumn |
 
-  |Rule kind        |Syntax                                          |Predicate                                                      |
-  |-----------------|------------------------------------------------|---------------------------------------------------------------|
-  |Equality by name |*ColumnName*                                    |`where` *LeftTable*.*ColumnName* `==` *RightTable*.*ColumnName*|
-  |Equality by value|`$left.`*LeftColumn* `==` `$right.`*RightColumn*|`where` `$left.`*LeftColumn* `==` `$right.`*RightColumn        |
+> [!NOTE]
+> In case of 'equality by value', the column names *must* be qualified with the applicable owner table denoted by `$left` and `$right` notations.
 
-  > [!Note]
-  > In case of 'equality by value', the column names *must* be qualified with the applicable owner table denoted by `$left` and `$right` notations.
-
-* `kind`: An optional instruction on how to treat rows in *LeftTable* that
-  have no match in *RightTable*. By default, `leftouter` is used, which means
-  all those rows will appear in the output with null values used for the
-  missing values of *RightTable* columns added by the operator. If `inner`
-  is used, such rows are omitted from the output. (Other kinds
-  of join aren't supported by the `lookup` operator.)
-  
 ## Returns
 
 A table with:
@@ -89,6 +81,9 @@ A table with:
   There's a row in the output for every combination of matching rows from left and right.
 
 ## Examples
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32RsW4CMQyG93sKKxOVslDahYoBqOhatWwVQ+4wyMJJqotpVakP3wQ3h2BAGRL7k+X/UxgFVq6TtWsZZ1sn+eTX6C1+T5P0FPb2FfsUg+Nar5wn/vmv7uCjATBjY8EsiDnfuXxxgsnYQu4vyZIpSAzKJjfYQ2Hvgl9YoFk4Zo+9ssfC1uRPY3kuxoNpNk8NZ5ln8tcuNwXsnMmlS5saqXqUJW3u7XX9gIfAijvFNfQ5M5hUeq3yGlxzq4KQ704Kw180v8CZHz/hQGE7Y9xJPAr2gyDEANXMgjr9AbRCGP7OAQAA" target="_blank">Run the query</a>
 
 ```kusto
 let FactTable=datatable(Row:string,Personal:string,Family:string) [
