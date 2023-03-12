@@ -119,6 +119,7 @@ To embed a dashboard, you'll need to make a few changes to the steps.
 
     1. Save your changes in the **Manifest**.
     1. Select **API permissions**, and validate you have a new entry: **RTD Metadata Service**.
+    1. If you are using the dashboards sharing feature, you need to add "email" and "profile" permissions under Microsoft Graph.
     1. Open the Azure PowerShell and add the following new service principal for that app:
 
         ```powershell
