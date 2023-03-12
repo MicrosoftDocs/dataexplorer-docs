@@ -49,7 +49,7 @@ restrict access to (Test);
 
 ### Tables or functions
 
-The following examples uses references to [tables](../management/tables.md) or [functions](../management/functions.md) that are defined in the database metadata.
+The following example uses references to [tables](../management/tables.md) or [functions](../management/functions.md) that are defined in the database metadata.
 
 ```kusto
 // Assuming the database that the query uses has table Table1 and Func1 defined in the metadata, 
