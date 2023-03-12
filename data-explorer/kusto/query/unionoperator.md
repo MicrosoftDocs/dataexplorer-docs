@@ -60,7 +60,7 @@ Takes two or more tables and returns the rows of all of them.
 
 ## Performance considerations
 
-If the `union` input is [tables](../management/tables.md) as opposed to [tabular expressions](./tabularexpressionstatements.md), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./findoperator.md),
+If the `union` input is [tables](../management/tables.md) as opposed to [tabular expressions](./tabularexpressionstatements.md), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./findoperator.md).
 
 ## Returns
 
