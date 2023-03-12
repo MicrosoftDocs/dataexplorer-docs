@@ -7,7 +7,7 @@ ms.date: 03/12/2023
 ---
 # !hassuffix operator
 
-Filters a record set for data that doesn't have a case-insensitive ending string. `!hassuffix` returns `true` if there is no [term](datatypes-string-operators.md#what-is-a-term) inside string column ending with the specified string expression.
+Filters a record set for data that doesn't have a case-insensitive ending string. `!hassuffix` returns `true` if there's no [term](datatypes-string-operators.md#what-is-a-term) inside string column ending with the specified string expression.
 
 [!INCLUDE [hassuffix-operator-comparison](../../includes/hassuffix-operator-comparison.md)]
 
