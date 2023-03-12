@@ -15,7 +15,7 @@ T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), 
 
 ## Syntax
 
-*T* `| evaluate` `activity_counts_metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *LookbackWindow* [`,` *dim1*`,` *dim2*`,` ...]`)`
+*T* `| evaluate` `activity_counts_metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Window* [`,` *dim1*`,` *dim2*`,` ...]`)`
 
 ## Parameters
 
@@ -26,7 +26,7 @@ T | evaluate activity_counts_metrics(id, datetime_column, startofday(ago(30d)), 
 | *TimelineColumn* | string | &check; | The name of the column that represents the timeline. |
 | *Start* | datetime | &check; | The analysis start period. |
 | *End* | datetime | &check; | The analysis end period. |
-| *LookbackWindow* | decimal, datetime, or timespan | &check; | The analysis window period. The value may also be a string of `week`, `month`, or `year`, in which case all periods would be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), or [startofyear](startofyearfunction.md). |
+| *Window* | decimal, datetime, or timespan | &check; | The analysis window period. The value may also be a string of `week`, `month`, or `year`, in which case all periods would be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), or [startofyear](startofyearfunction.md). |
 |  *dim1*, *dim2*, ... | dynamic |   | An array of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
