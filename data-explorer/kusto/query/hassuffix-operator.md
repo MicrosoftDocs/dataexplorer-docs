@@ -3,7 +3,7 @@ title: The case-insensitive hassuffix string operator - Azure Data Explorer
 description:  Learn how to use the hassuffix operator to filter data with a case-insensitive suffix string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/11/2023
+ms.date: 03/12/2023
 ---
 # hassuffix operator
 
@@ -24,11 +24,13 @@ When possible, use the case-sensitive [hassuffix_cs](hassuffix-cs-operator.md).
 
 *T* `|` `where` *Column* `hassuffix` `(`*Expression*`)`
 
-## Arguments
+## Parameters
 
-* *T* - The tabular input whose records are to be filtered.
-* *Column* - The column to filter.
-* *Expression* - Scalar or literal expression.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*T*|string|The tabular input whose records are to be filtered.|
+|*Column*|string|The column by which to filter.|
+|*Expression*|scalar|The scalar or literal expression for which to search.|
 
 ## Returns
 
@@ -36,12 +38,14 @@ Rows in *T* for which the predicate is `true`.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPISOxuLg0LS2zQkEpXwkoV1CUn5WaXAKR1UE2CQBH0LHRbQAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-    | summarize event_count=count() by State
-    | where State hassuffix "o"
-    | project State, event_count
+| summarize event_count=count() by State
+| where State hassuffix "o"
+| project State, event_count
 ```
 
 **Output**
