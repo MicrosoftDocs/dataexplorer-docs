@@ -77,7 +77,8 @@ let geoip_fl=(tbl:(*), ip_col:string, country_col:string, state_col:string, city
         pack('geoip2.zip', 'https://artifactswestus.blob.core.windows.net/public/geoip2-4.6.0.zip',
              'GeoLite2-City.mmdb', 'https://artifactswestus.blob.core.windows.net/public/GeoLite2-City-20230221.mmdb')
         )
-}
+};
+// Write your query to use the function here.
 ```
 
 ### [Stored](#tab/stored)

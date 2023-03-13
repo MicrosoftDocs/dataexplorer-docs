@@ -37,6 +37,7 @@ let factorial_fl=(n:int)
 {
     gamma(n+1)
 };
+// Write your query to use the function here.
 ```
 
 ### [Stored](#tab/stored)
