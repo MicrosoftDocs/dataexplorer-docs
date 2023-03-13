@@ -18,15 +18,13 @@ The alias must be defined according to the following syntax, where *clustername*
 
 ## Syntax
 
-`alias` database[*'DatabaseAliasName'*] `=` cluster("https://*clustername*.kusto.windows.net").database("*DatabaseName*")
-
 `alias` database *DatabaseAliasName* `=` cluster("https://*clustername*.kusto.windows.net").database("*DatabaseName*")
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseAliasName*|string|&check;|An existing name or new database alias name.|
+|*DatabaseAliasName*|string|&check;|An existing name or new database alias name. You can escape the name with brackets. For example, ["Name with spaces"]. |
 |*DatabaseName*|string|&check;|The name of the database to give an alias.|
 
 > [!NOTE]
