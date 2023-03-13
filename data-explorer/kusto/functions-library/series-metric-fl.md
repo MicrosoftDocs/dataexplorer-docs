@@ -88,10 +88,6 @@ series_metric_fl(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_
 }
 ```
 
-**Output**
-
-:::image type="content" source="images/series-metric-fl/disk-write-metric-10m.png" alt-text="Graph showing disk write metric over 10 minutes." border="false":::
-
 ---
 
 ## Example
@@ -123,6 +119,10 @@ demo_prometheus
 | invoke series_metric_fl('TimeStamp', 'Name', 'Labels', 'Val', 'writes', '"disk":"sda1","host":"aks-agentpool-88086459-vmss000001"', offset=now()-datetime(2020-12-08 00:00))
 | render timechart with(series=labels)
 ```
+
+**Output**
+
+:::image type="content" source="images/series-metric-fl/disk-write-metric-10m.png" alt-text="Graph showing disk write metric over 10 minutes." border="false":::
 
 ### [Stored](#tab/stored)
 
