@@ -256,7 +256,7 @@ demo_make_series1
 
 :::image type="content" source="images/series-rolling-fl/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements" border="false":::
 
-## Calculate the rolling trimmed mean
+### Calculate the rolling trimmed mean
 
 ### [Query-defined](#tab/query-defined)
 
