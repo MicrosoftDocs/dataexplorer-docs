@@ -3,16 +3,23 @@ title: series_fbprophet_forecast_fl() - Azure Data Explorer
 description: This article describes the series_fbprophet_forecast_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 03/13/2023
 ---
 # series_fbprophet_forecast_fl()
 
-The function `series_fbprophet_forecast_fl()` takes an expression containing a time series as input, and predicts the values of the last trailing points using the [Prophet algorithm](https://facebook.github.io/prophet/). The function returns both the forecasted points and their confidence intervals. This function is a Kusto Query Language (KQL) wrapper to Prophet() class, and exposes only the parameters that are mandatory for prediction. Feel free to modify your copy to support more parameters. such as holidays, change points, Fourier order, and so on. 
+The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing a time series as input, and predicts the values of the last trailing points using the [Prophet algorithm](https://facebook.github.io/prophet/). The function returns both the forecasted points and their confidence intervals. This function is a Kusto Query Language (KQL) wrapper to Prophet() class, and exposes only the parameters that are mandatory for prediction. Feel free to modify your copy to support more parameters. such as holidays, change points, Fourier order, and so on.
 
 > [!NOTE]
-> * `series_fbprophet_forecast_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
-> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
-> * Consider using the native function [series_decompose_forecast()](../query/series-decompose-forecastfunction.md). The native function is based on a simpler model, but is more scalable and runs faster.
+> Consider using the native function [series_decompose_forecast()](../query/series-decompose-forecastfunction.md). The native function is based on a simpler model, but is more scalable and runs faster.
+
+## Prerequisites
+
+* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+* Install the `fbprophet` package since it isn't included in the Python image. To install the package, do the following:
+  1. Follow the guidelines for [Installing packages for the Python plugin](../query/pythonplugin.md#install-packages-for-the-python-plugin).
+     * To save time in the above guidelines, you can download the `fbprophet` zip file, containing the wheel files of `fbprophet` and its dependencies, from [https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip](https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip). Save this file to your allowlisted blob container.
+  1. Create a SAS token with read access to your zip file. To create a SAS token, see [get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
+  1. In the [Example](#example), replace the URL reference in the `external_artifacts` parameter with your file path and its SAS token.
 
 ## Syntax
 
@@ -29,22 +36,136 @@ The function `series_fbprophet_forecast_fl()` takes an expression containing a t
 |*y_pred_low_series*|string||The name of the column to store the series of the lowest values of the confidence interval. Omit if the confidence interval isn't needed.|
 |*y_pred_high_series*|string||The name of the column to store the series of the highest values of the confidence interval. Omit if the confidence interval isn't needed.|
 
-## Usage
+## Function definition
 
-`series_fbprophet_forecast_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
+You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database, as follows:
 
-The `fbprophet` package isn't included in the Python image. To install and use this package, do the following steps:
+### [Query-defined](#tab/query-defined)
 
- 1. Follow the guidelines for [Installing packages for the Python plugin](../query/pythonplugin.md#install-packages-for-the-python-plugin).
-  * To save time in the above guidelines, you can download the `fbprophet` zip file, containing the wheel files of `fbprophet` and its dependencies, from [https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip](https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip). Save this file to your allowlisted blob container.
-1. Create a SAS token with read access to your zip file. To create a SAS token, see [get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
-1. In the example below, replace the URL reference in the `external_artifacts` parameter with your file path and its SAS token.
+Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
 
-# [Query-defined](#tab/query-defined)
+> [!IMPORTANT]
+> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_fbprophet_forecast_fl()`, see [Example](#example).
 
-To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
+~~~kusto
+let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_pred_series:string, points:int=0, y_pred_low_series:string='', y_pred_high_series:string='')
+{
+    let kwargs = bag_pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
+    let code = ```if 1:
+        from sandbox_utils import Zipackage
+        Zipackage.install("fbprophet.zip")
+        import os
+        os.chdir("D:\\\\Library\\\\mingw-w64\\\\bin")   #  If you don't set this, loading the mingw-w64 DLLs will fail
+        ts_series = kargs["ts_series"]
+        y_series = kargs["y_series"]
+        y_pred_series = kargs["y_pred_series"]
+        points = kargs["points"]
+        y_pred_low_series = kargs["y_pred_low_series"]
+        y_pred_high_series = kargs["y_pred_high_series"]
+        result = df
+        sr = pd.Series(df[y_pred_series])
+        if y_pred_low_series != '':
+            srl = pd.Series(df[y_pred_low_series])
+        if y_pred_high_series != '':
+            srh = pd.Series(df[y_pred_high_series])
+        from fbprophet import Prophet
+        df1 = pd.DataFrame(columns=["ds", "y"])
+        for i in range(df.shape[0]):
+            df1["ds"] = pd.to_datetime(df[ts_series][i])
+            df1["ds"] = df1["ds"].dt.tz_convert(None)
+            df1["y"] = df[y_series][i]
+            df2 = df1[:-points]
+            m = Prophet()
+            m.fit(df2)
+            future = df1[["ds"]]
+            forecast = m.predict(future)
+            sr[i] = list(forecast["yhat"])
+            if y_pred_low_series != '':
+                srl[i] = list(forecast["yhat_lower"])
+            if y_pred_high_series != '':
+                srh[i] = list(forecast["yhat_upper"])
+        result[y_pred_series] = sr
+        if y_pred_low_series != '':
+            result[y_pred_low_series] = srl
+        if y_pred_high_series != '':
+            result[y_pred_high_series] = srh
+    ```;
+    tbl
+     | evaluate python(typeof(*), code, kwargs
+//  fbprophet v0.7.1 for Python 3.6.5, SAS key till 3/26/2030
+, external_artifacts=bag_pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
+};
+// Write your query to use the function here.
+~~~
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+### [Stored](#tab/stored)
+
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+
+> [!IMPORTANT]
+> You must run this code to create the function before you can use the function as shown in the [Example](#example).
+
+~~~kusto
+.create-or-alter function with (folder = "Packages\\Series", docstring = "Time Series Forecast using Facebook fbprophet package")
+series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_series:string, points:int=0, y_pred_low_series:string='', y_pred_high_series:string='')
+{
+    let kwargs = bag_pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
+    let code = ```if 1:
+        from sandbox_utils import Zipackage
+        Zipackage.install("fbprophet.zip")
+        import os
+        os.chdir("D:\\\\Library\\\\mingw-w64\\\\bin")   #  If you don't set this, loading the mingw-w64 DLLs will fail
+        ts_series = kargs["ts_series"]
+        y_series = kargs["y_series"]
+        y_pred_series = kargs["y_pred_series"]
+        points = kargs["points"]
+        y_pred_low_series = kargs["y_pred_low_series"]
+        y_pred_high_series = kargs["y_pred_high_series"]
+        result = df
+        sr = pd.Series(df[y_pred_series])
+        if y_pred_low_series != '':
+            srl = pd.Series(df[y_pred_low_series])
+        if y_pred_high_series != '':
+            srh = pd.Series(df[y_pred_high_series])
+        from fbprophet import Prophet
+        df1 = pd.DataFrame(columns=["ds", "y"])
+        for i in range(df.shape[0]):
+            df1["ds"] = pd.to_datetime(df[ts_series][i])
+            df1["ds"] = df1["ds"].dt.tz_convert(None)
+            df1["y"] = df[y_series][i]
+            df2 = df1[:-points]
+            m = Prophet()
+            m.fit(df2)
+            future = df1[["ds"]]
+            forecast = m.predict(future)
+            sr[i] = list(forecast["yhat"])
+            if y_pred_low_series != '':
+                srl[i] = list(forecast["yhat_lower"])
+            if y_pred_high_series != '':
+                srh[i] = list(forecast["yhat_upper"])
+        result[y_pred_series] = sr
+        if y_pred_low_series != '':
+            result[y_pred_low_series] = srl
+        if y_pred_high_series != '':
+            result[y_pred_high_series] = srh
+    ```;
+    tbl
+     | evaluate python(typeof(*), code, kwargs
+//  fbprophet v0.7.1 for Python 3.6.5, SAS key till 3/26/2030
+, external_artifacts=bag_pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
+}
+~~~
+
+---
+
+## Example
+
+The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+
+### [Query-defined](#tab/query-defined)
+
+To use a query-defined function, invoke it after the embedded function definition.
+
 ~~~kusto
 let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_pred_series:string, points:int=0, y_pred_low_series:string='', y_pred_high_series:string='')
 {
@@ -108,67 +229,11 @@ demo_make_series2
 | render timechart 
 ~~~
 
-# [Stored](#tab/stored)
+### [Stored](#tab/stored)
 
-To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
 
-### One time installation
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-~~~kusto
-.create-or-alter function with (folder = "Packages\\Series", docstring = "Time Series Forecast using Facebook fbprophet package")
-series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_series:string, points:int=0, y_pred_low_series:string='', y_pred_high_series:string='')
-{
-    let kwargs = bag_pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
-    let code = ```if 1:
-        from sandbox_utils import Zipackage
-        Zipackage.install("fbprophet.zip")
-        import os
-        os.chdir("D:\\\\Library\\\\mingw-w64\\\\bin")   #  If you don't set this, loading the mingw-w64 DLLs will fail
-        ts_series = kargs["ts_series"]
-        y_series = kargs["y_series"]
-        y_pred_series = kargs["y_pred_series"]
-        points = kargs["points"]
-        y_pred_low_series = kargs["y_pred_low_series"]
-        y_pred_high_series = kargs["y_pred_high_series"]
-        result = df
-        sr = pd.Series(df[y_pred_series])
-        if y_pred_low_series != '':
-            srl = pd.Series(df[y_pred_low_series])
-        if y_pred_high_series != '':
-            srh = pd.Series(df[y_pred_high_series])
-        from fbprophet import Prophet
-        df1 = pd.DataFrame(columns=["ds", "y"])
-        for i in range(df.shape[0]):
-            df1["ds"] = pd.to_datetime(df[ts_series][i])
-            df1["ds"] = df1["ds"].dt.tz_convert(None)
-            df1["y"] = df[y_series][i]
-            df2 = df1[:-points]
-            m = Prophet()
-            m.fit(df2)
-            future = df1[["ds"]]
-            forecast = m.predict(future)
-            sr[i] = list(forecast["yhat"])
-            if y_pred_low_series != '':
-                srl[i] = list(forecast["yhat_lower"])
-            if y_pred_high_series != '':
-                srh[i] = list(forecast["yhat_upper"])
-        result[y_pred_series] = sr
-        if y_pred_low_series != '':
-            result[y_pred_low_series] = srl
-        if y_pred_high_series != '':
-            result[y_pred_high_series] = srh
-    ```;
-    tbl
-     | evaluate python(typeof(*), code, kwargs
-//  fbprophet v0.7.1 for Python 3.6.5, SAS key till 3/26/2030
-, external_artifacts=bag_pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
-}
-~~~
-
-### Usage
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
 //
 //  Forecasting 3 time series using fbprophet, compare to forecasting using the native function series_decompose_forecast()
@@ -186,5 +251,7 @@ demo_make_series2
 ~~~
 
 ---
+
+## Output
 
 :::image type="content" source="images/series-fbprophet-forecast-fl/fbprophet-example.png" alt-text="Graph showing forecasting few time series." border="false":::
