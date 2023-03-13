@@ -65,7 +65,7 @@ let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
 Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
-> You must run this code to create the function before you can use the function as shown in the [Example](#example).
+> You must run this code to create the function before you can use the function as shown in the [Examples](#examples).
 
 ~~~kusto
 .create function with (folder = "Packages\\ML", docstring = "K-Means clustering")
