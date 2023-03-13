@@ -90,9 +90,11 @@ series_metric_fl(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_
 
 ---
 
-## Example
+## Examples
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples uses the [invoke operator](../query/invokeoperator.md) to run the function.
+
+### Specify selector
 
 ### [Query-defined](#tab/query-defined)
 
@@ -120,10 +122,6 @@ demo_prometheus
 | render timechart with(series=labels)
 ```
 
-**Output**
-
-:::image type="content" source="images/series-metric-fl/disk-write-metric-10m.png" alt-text="Graph showing disk write metric over 10 minutes." border="false":::
-
 ### [Stored](#tab/stored)
 
 > [!IMPORTANT]
@@ -135,21 +133,53 @@ demo_prometheus
 | render timechart with(series=labels)
 ```
 
+---
+
 **Output**
 
 :::image type="content" source="images/series-metric-fl/disk-write-metric-10m.png" alt-text="Graph showing disk write metric over 10 minutes." border="false":::
 
-### Additional example
+### Without specifying selector
 
 The following example doesn't specify selector, so all 'writes' metrics are selected. This example assumes that the function is already installed, and uses alternative direct calling syntax, specifying the input table as the first parameter:
+
+### [Query-defined](#tab/query-defined)
+
+To use a query-defined function, invoke it after the embedded function definition.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21TwY7bIBC95yvmZqicXW9OVVb8QdVLq16qCmFnvKbBJgKySdrtv3cAO46j+GKYGd483hsMBvDoNHrZY3C6ka0RLC+9DLXZsk+8hKB79EH1B9lYs/WUHd5KGFSPi4BRNRq/CL0rc1wWjX3i4fuDHg02wboxLoqCUtbua9Xst4nDQQ1iWrCXqidutm09hgfpivPV3xXQZ9ItM7bcCd227K4jCAGx2+5CvHTDfhbFL8L2B6PDfW0JRVlw/nqFxtgSBKg3yzKbm6Qfk7lofb1PrrhROu0/AM8Bh92sOB0l9Y79IHWLZ+2DZws3iLMKCZwNR2M4z748ODbZRfwLPmn+oG52cdZjgk52PjhztbmEii9vcu0zYslg5W9vh7EPh/w9PwOhDu/oAgQLeQJAEYC3FKovsMfLiHzq0OF4TXE7UKl+lq7GcEIcWPLg6SmpNLGzbocuws7lyjdj0h/7Xjn9Bxc+9GqP0tB9ZwcmScScS3sekSOjSecF81GSTnmpjAE2zyZf/Xtd3T9ItsPeyoOzFOnw6MnA70TgWyRAM1t8pT7x/yXBxtUPZeLv5HTAGMhTKQZ7Ynx9nZdNtanWL5t19RmqalvF9/IBjjwjYWJB0ylS/qRDxzIlkYmXcEkPQ6gzev4fmU9bcEMEAAA=" target="_blank">Run the query</a>
+
+```kusto
+let series_metric_fl=(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_col:string, value_col:string, metric_name:string, labels_selector:string='', lookback:timespan=timespan(10m), offset:timespan=timespan(0))
+{
+    let selector_d=iff(labels_selector == '', dynamic(['']), split(labels_selector, ','));
+    let etime = ago(offset);
+    let stime = etime - lookback;
+    metrics_tbl
+    | extend timestamp = column_ifexists(timestamp_col, datetime(null)), name = column_ifexists(name_col, ''), labels = column_ifexists(labels_col, dynamic(null)), value = column_ifexists(value_col, 0)
+    | extend labels = dynamic_to_json(labels)       //  convert to string and sort by key
+    | where name == metric_name and timestamp between(stime..etime)
+    | order by timestamp asc
+    | summarize timestamp = make_list(timestamp), value=make_list(value) by name, labels
+    | where labels has_all (selector_d)
+};
+series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 'Val', 'writes', offset=now()-datetime(2020-12-08 00:00))
+| render timechart with(series=labels, ysplit=axes)
+```
+
+### [Stored](#tab/stored)
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
 
 ```kusto
 series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 'Val', 'writes', offset=now()-datetime(2020-12-08 00:00))
 | render timechart with(series=labels, ysplit=axes)
 ```
 
+---
+
 **Output**
 
 :::image type="content" source="images/series-metric-fl/all-disks-write-metric-10m.png" alt-text="Graph showing disk write metric for all disks over 10 minutes." border="false":::
-
----

@@ -3,7 +3,7 @@ title: series_fit_poly_fl() - Azure Data Explorer
 description: This article describes the series_fit_poly_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 03/13/2023
 ---
 # series_fit_poly_fl()
 
@@ -42,7 +42,7 @@ You can define the function by either embedding its code as a query-defined func
 Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_fit_poly_fl()`, see [Example](#example).
+> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_fit_poly_fl()`, see [Examples](#examples).
 
 ```kusto
 let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
@@ -89,7 +89,7 @@ let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff
 Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
-> You must run this code to create the function before you can use the function as shown in the [Example](#example).
+> You must run this code to create the function before you can use the function as shown in the [Examples](#examples).
 
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Fit a polynomial of a specified degree to a series")
@@ -133,9 +133,11 @@ series_fit_poly_fl(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:stri
 
 ---
 
-## Example
+## Examples
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples uses the [invoke operator](../query/invokeoperator.md) to run the function.
+
+### Fit fifth order polynomial to a regular time series
 
 ### [Query-defined](#tab/query-defined)
 
@@ -189,10 +191,6 @@ demo_make_series1
 | render timechart with(ycolumns=num, fnum)
 ```
 
-**Output**
-
-:::image type="content" source="images/series-fit-poly-fl/usage-example.png" alt-text="Graph showing fifth order polynomial fit to a regular time series." border="false":::
-
 ### [Stored](#tab/stored)
 
 > [!IMPORTANT]
@@ -210,49 +208,165 @@ demo_make_series1
 | render timechart with(ycolumns=num, fnum)
 ```
 
+---
+
 **Output**
 
 :::image type="content" source="images/series-fit-poly-fl/usage-example.png" alt-text="Graph showing fifth order polynomial fit to a regular time series." border="false":::
 
-### Additional examples
+### Test irregular time series
 
-The following examples assume the function is already installed:
+### [Query-defined](#tab/query-defined)
 
-1. Test irregular (unevenly spaced) time series
-    
-    <!-- csl: https://help.kusto.windows.net/Samples -->
-    ```kusto
-    let max_t = datetime(2016-09-03);
-    demo_make_series1
-    | where TimeStamp between ((max_t-2d)..max_t)
-    | summarize num=count() by bin(TimeStamp, 5m), OsVer
-    | order by TimeStamp asc
-    | where hourofday(TimeStamp) % 6 != 0   //  delete every 6th hour to create unevenly spaced time series
-    | summarize TimeStamp=make_list(TimeStamp), num=make_list(num) by OsVer
-    | extend fnum = dynamic(null), coeff=dynamic(null)
-    | invoke series_fit_poly_fl('num', 'fnum', 'coeff', 8, 'TimeStamp', True)
-    | render timechart with(ycolumns=num, fnum)
-    ```
-    
-    :::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series." border="false":::
+To use a query-defined function, invoke it after the embedded function definition.
 
-1. Fifth order polynomial with noise on x & y axes
+```kusto
+let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
+{
+    let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
+    let code=
+        '\n'
+        'y_series = kargs["y_series"]\n'
+        'y_fit_series = kargs["y_fit_series"]\n'
+        'fit_coeff = kargs["fit_coeff"]\n'
+        'degree = kargs["degree"]\n'
+        'x_series = kargs["x_series"]\n'
+        'x_istime = kargs["x_istime"]\n'
+        '\n'
+        'def fit(ts_row, x_col, y_col, deg):\n'
+        '    y = ts_row[y_col]\n'
+        '    if x_col == "": # If there is no x column creates sequential range [1, len(y)]\n'
+        '       x = np.arange(len(y)) + 1\n'
+        '    else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.\n'
+        '       if x_istime: \n'
+        '           x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))\n'
+        '           x = x - x.min()\n'
+        '           x = x / x.max()\n'
+        '           x = x * (len(x) - 1) + 1\n'
+        '       else:\n'
+        '           x = ts_row[x_col]\n'
+        '    coeff = np.polyfit(x, y, deg)\n'
+        '    p = np.poly1d(coeff)\n'
+        '    z = p(x)\n'
+        '    return z, coeff\n'
+        '\n'
+        'result = df\n'
+        'if len(df):\n'
+        '   result[[y_fit_series, fit_coeff]] = df.apply(fit, axis=1, args=(x_series, y_series, degree,), result_type="expand")\n'
+    ;
+    tbl
+     | evaluate python(typeof(*), code, kwargs)
+};
+let max_t = datetime(2016-09-03);
+demo_make_series1
+| where TimeStamp between ((max_t-2d)..max_t)
+| summarize num=count() by bin(TimeStamp, 5m), OsVer
+| order by TimeStamp asc
+| where hourofday(TimeStamp) % 6 != 0   //  delete every 6th hour to create unevenly spaced time series
+| summarize TimeStamp=make_list(TimeStamp), num=make_list(num) by OsVer
+| extend fnum = dynamic(null), coeff=dynamic(null)
+| invoke series_fit_poly_fl('num', 'fnum', 'coeff', 8, 'TimeStamp', True)
+| render timechart with(ycolumns=num, fnum)
+```
 
-    <!-- csl: https://help.kusto.windows.net/Samples -->
-    ```kusto
-    range x from 1 to 200 step 1
-    | project x = rand()*5 - 2.3
-    | extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
-    | extend y = y + (rand() - 0.5)*0.5*y
-    | summarize x=make_list(x), y=make_list(y)
-    | extend y_fit = dynamic(null), coeff=dynamic(null)
-    | invoke series_fit_poly_fl('y', 'y_fit', 'coeff', 5, 'x')
-    |fork (project-away coeff) (project coeff | mv-expand coeff)
-    | render linechart
-    ```
-        
-    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="Graph of fit of fifth order polynomial with noise on x & y axes":::
-       
-    :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="Coefficients of fit of fifth order polynomial with noise." border="false":::
+### [Stored](#tab/stored)
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
+
+```kusto
+let max_t = datetime(2016-09-03);
+demo_make_series1
+| where TimeStamp between ((max_t-2d)..max_t)
+| summarize num=count() by bin(TimeStamp, 5m), OsVer
+| order by TimeStamp asc
+| where hourofday(TimeStamp) % 6 != 0   //  delete every 6th hour to create unevenly spaced time series
+| summarize TimeStamp=make_list(TimeStamp), num=make_list(num) by OsVer
+| extend fnum = dynamic(null), coeff=dynamic(null)
+| invoke series_fit_poly_fl('num', 'fnum', 'coeff', 8, 'TimeStamp', True)
+| render timechart with(ycolumns=num, fnum)
+```
 
 ---
+
+**Output**
+
+:::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series." border="false":::
+
+### Fifth order polynomial with noise on x & y axes
+### [Query-defined](#tab/query-defined)
+
+To use a query-defined function, invoke it after the embedded function definition.
+
+```kusto
+let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
+{
+    let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
+    let code=
+        '\n'
+        'y_series = kargs["y_series"]\n'
+        'y_fit_series = kargs["y_fit_series"]\n'
+        'fit_coeff = kargs["fit_coeff"]\n'
+        'degree = kargs["degree"]\n'
+        'x_series = kargs["x_series"]\n'
+        'x_istime = kargs["x_istime"]\n'
+        '\n'
+        'def fit(ts_row, x_col, y_col, deg):\n'
+        '    y = ts_row[y_col]\n'
+        '    if x_col == "": # If there is no x column creates sequential range [1, len(y)]\n'
+        '       x = np.arange(len(y)) + 1\n'
+        '    else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.\n'
+        '       if x_istime: \n'
+        '           x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))\n'
+        '           x = x - x.min()\n'
+        '           x = x / x.max()\n'
+        '           x = x * (len(x) - 1) + 1\n'
+        '       else:\n'
+        '           x = ts_row[x_col]\n'
+        '    coeff = np.polyfit(x, y, deg)\n'
+        '    p = np.poly1d(coeff)\n'
+        '    z = p(x)\n'
+        '    return z, coeff\n'
+        '\n'
+        'result = df\n'
+        'if len(df):\n'
+        '   result[[y_fit_series, fit_coeff]] = df.apply(fit, axis=1, args=(x_series, y_series, degree,), result_type="expand")\n'
+    ;
+    tbl
+     | evaluate python(typeof(*), code, kwargs)
+};
+range x from 1 to 200 step 1
+| project x = rand()*5 - 2.3
+| extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
+| extend y = y + (rand() - 0.5)*0.5*y
+| summarize x=make_list(x), y=make_list(y)
+| extend y_fit = dynamic(null), coeff=dynamic(null)
+| invoke series_fit_poly_fl('y', 'y_fit', 'coeff', 5, 'x')
+|fork (project-away coeff) (project coeff | mv-expand coeff)
+| render linechart
+```
+
+### [Stored](#tab/stored)
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
+
+```kusto
+range x from 1 to 200 step 1
+| project x = rand()*5 - 2.3
+| extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
+| extend y = y + (rand() - 0.5)*0.5*y
+| summarize x=make_list(x), y=make_list(y)
+| extend y_fit = dynamic(null), coeff=dynamic(null)
+| invoke series_fit_poly_fl('y', 'y_fit', 'coeff', 5, 'x')
+|fork (project-away coeff) (project coeff | mv-expand coeff)
+| render linechart
+```
+
+---
+
+**Output**
+
+:::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="Graph of fit of fifth order polynomial with noise on x & y axes":::
+
+:::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="Coefficients of fit of fifth order polynomial with noise." border="false":::

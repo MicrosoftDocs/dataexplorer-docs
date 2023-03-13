@@ -156,7 +156,7 @@ normal_2d_with_anomalies
 
 ---
 
-## Output
+**Output**
 
 The table normal_2d_with_anomalies contains a set of 3 time series. Each time series has two-dimensional normal distribution with daily anomalies added at midnight, 8am, and 4pm respectively. You can create this sample data set using [an example query](series-mv-ee-anomalies-fl.md#create-a-sample-data-set).
 
