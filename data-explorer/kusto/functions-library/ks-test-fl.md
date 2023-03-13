@@ -15,7 +15,7 @@ The function `ks_test_fl()` is a [UDF (user-defined function)](../query/function
 
 ## Syntax
 
-`T | invoke ks_test_fl()(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value*`)`
+`T | invoke ks_test_fl(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value*`)`
 
 ## Parameters
 
