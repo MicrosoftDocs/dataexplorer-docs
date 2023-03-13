@@ -95,7 +95,7 @@ kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 
 ## Examples
 
-The following examples uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
 
 ### Clusterize room occupancy from sensors measurements
 
