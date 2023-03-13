@@ -3,16 +3,15 @@ title: series_mv_ee_anomalies_fl() - Azure Data Explorer
 description: Learn how to use the series_mv_ee_anomalies_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 03/13/2023
 ---
 # series_mv_ee_anomalies_fl()
 
-The function `series_mv_ee_anomalies_fl()` detects multivariate anomalies in series by applying [elliptic envelope model from scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.covariance.EllipticEnvelope.html). This model assumes that the source of the multivariate data is multi-dimensional normal distribution. The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function builds a multi-dimensional elliptical envelope for each series and marks the points that fall outside this normal envelope as anomalies.
+The function `series_mv_ee_anomalies_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that detects multivariate anomalies in series by applying [elliptic envelope model from scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.covariance.EllipticEnvelope.html). This model assumes that the source of the multivariate data is multi-dimensional normal distribution. The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function builds a multi-dimensional elliptical envelope for each series and marks the points that fall outside this normal envelope as anomalies.
 
-> [!NOTE]
->
-> * `series_mv_ee_anomalies_fl()` is a [user-defined function](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
-> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
+## Prerequisites
+
+* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 
 ## Syntax
 
@@ -26,15 +25,17 @@ The function `series_mv_ee_anomalies_fl()` detects multivariate anomalies in ser
 | *anomaly_col* | string | &check; | The name of the column to store the detected anomalies. |
 | *anomalies_pct* | real | | A real number in the range [0-50] specifying the expected percentage of anomalies in the data. Default value: 4%. |
 
-## Usage
+## Function definition
 
-`series_mv_ee_anomalies_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
+You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database, as follows:
 
 ### [Query-defined](#tab/query-defined)
 
-To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!IMPORTANT]
+> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_mv_ee_anomalies_fl()`, see [Example](#example).
+
 ```kusto
 // Define function
 let series_mv_ee_anomalies_fl=(tbl:(*), features_cols:dynamic, anomaly_col:string, anomalies_pct:real=4.0)
@@ -68,11 +69,11 @@ normal_2d_with_anomalies
 
 ### [Stored](#tab/stored)
 
-To store the function, see [`.create function`](../management/create-function.md).  Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
 
-### One time installation
+> [!IMPORTANT]
+> You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ~~~kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Anomaly Detection for multi dimensional normally distributed data using elliptical envelope model")
 series_mv_ee_anomalies_fl(tbl:(*), features_cols:dynamic, anomaly_col:string, anomalies_pct:real=4.0)
@@ -97,9 +98,51 @@ series_mv_ee_anomalies_fl(tbl:(*), features_cols:dynamic, anomaly_col:string, an
 }
 ~~~
 
-### Usage
+---
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+## Example
+
+The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+
+### [Query-defined](#tab/query-defined)
+
+To use a query-defined function, invoke it after the embedded function definition.
+
+```kusto
+// Define function
+let series_mv_ee_anomalies_fl=(tbl:(*), features_cols:dynamic, anomaly_col:string, anomalies_pct:real=4.0)
+{
+    let kwargs = bag_pack('features_cols', features_cols, 'anomaly_col', anomaly_col, 'anomalies_pct', anomalies_pct);
+    let code = ```if 1:
+        from sklearn.covariance import EllipticEnvelope
+        features_cols = kargs['features_cols']
+        anomaly_col = kargs['anomaly_col']
+        anomalies_pct = kargs['anomalies_pct']
+        dff = df[features_cols]
+        ellipsoid = EllipticEnvelope(contamination=anomalies_pct/100.0)
+        for i in range(len(dff)):
+            dffi = dff.iloc[[i], :]
+            dffe = dffi.explode(features_cols)
+            ellipsoid.fit(dffe)
+            df.loc[i, anomaly_col] = (ellipsoid.predict(dffe) < 0).astype(int).tolist()
+        result = df
+    ```;
+    tbl
+    | evaluate python(typeof(*), code, kwargs)
+};
+// Usage
+normal_2d_with_anomalies
+| extend anomalies=dynamic(null)
+| invoke series_mv_ee_anomalies_fl(pack_array('x', 'y'), 'anomalies')
+| extend anomalies=series_multiply(80, anomalies)
+| render timechart
+```
+
+### [Stored](#tab/stored)
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
+
 ```kusto
 normal_2d_with_anomalies
 | extend anomalies=dynamic(null)
@@ -109,6 +152,8 @@ normal_2d_with_anomalies
 ```
 
 ---
+
+**Output**
 
 The table normal_2d_with_anomalies contains a set of 3 time series. Each time series has two-dimensional normal distribution with daily anomalies added at midnight, 8am, and 4pm respectively. You can create this sample data set using [an example query](series-mv-ee-anomalies-fl.md#create-a-sample-data-set).
 
@@ -132,7 +177,6 @@ You can see that on TS1 most of the midnight anomalies were detected using this 
 
 ### Create a sample data set
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .set normal_2d_with_anomalies <|
 //
