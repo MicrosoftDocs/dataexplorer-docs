@@ -34,7 +34,7 @@ You can define the function by either embedding its code as a query-defined func
 Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `kmeans_fl()`, see [Example](#example).
+> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `kmeans_fl()`, see [Examples](#examples).
 
 ~~~kusto
 let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
@@ -93,9 +93,11 @@ kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 
 ---
 
-## Example
+## Examples
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples uses the [invoke operator](../query/invokeoperator.md) to run the function.
+
+### Clusterize room occupancy from sensors measurements
 
 ### [Query-defined](#tab/query-defined)
 
@@ -134,21 +136,6 @@ OccupancyDetection
 | sample 10
 ~~~
 
-**Output**
-
-| Timestamp | Temperature | Humidity | Light | CO2 | HumidityRatio | Occupancy |Test | cluster_id |
-|---|---|---|---|---|---|---|---|---|
-| 2015-02-02 14:38:00.0000000 | 23.64 | 27.1 | 473 | 908.8 | 0.00489763 | TRUE | TRUE | 1 |
-| 2015-02-03 01:47:00.0000000 | 20.575 | 22.125 | 0 | 446 | 0.00330878 | FALSE | TRUE | 0 |
-| 2015-02-10 08:47:00.0000000 | 20.42666667 | 33.56 | 405 | 494.3333333 | 0.004986493 | TRUE | FALSE | 4 |
-| 2015-02-10 09:15:00.0000000 | 20.85666667 | 35.09666667 | 433 | 665.3333333 | 0.005358055 | TRUE | FALSE | 4 |
-| 2015-02-11 16:13:00.0000000 | 21.89 | 30.0225 | 429 | 771.75 | 0.004879358 | TRUE | TRUE | 4 |
-| 2015-02-13 14:06:00.0000000 | 23.4175 | 26.5225 | 608 | 599.75 | 0.004728116 | TRUE | TRUE | 4 |
-| 2015-02-13 23:09:00.0000000 | 20.13333333 | 32.2 | 0 | 502.6666667 | 0.004696278 | FALSE | TRUE | 0 |
-| 2015-02-15 18:30:00.0000000 | 20.5 | 32.79 | 0 | 666.5 | 0.004893459 | FALSE | TRUE | 3 |
-| 2015-02-17 13:43:00.0000000 | 21.7 | 33.9 | 454 | 1167 | 0.005450924 | TRUE | TRUE | 1 |
-| 2015-02-17 18:17:00.0000000 | 22.025 | 34.2225 | 0 | 1538.25 | 0.005614538 | FALSE | TRUE | 2 |
-
 ### [Stored](#tab/stored)
 
 > [!IMPORTANT]
@@ -167,6 +154,8 @@ OccupancyDetection
 | sample 10
 ```
 
+---
+
 **Output**
 
 | Timestamp | Temperature | Humidity | Light | CO2 | HumidityRatio | Occupancy |Test | cluster_id |
@@ -182,7 +171,44 @@ OccupancyDetection
 | 2015-02-17 13:43:00.0000000 | 21.7 | 33.9 | 454 | 1167 | 0.005450924 | TRUE | TRUE | 1 |
 | 2015-02-17 18:17:00.0000000 | 22.025 | 34.2225 | 0 | 1538.25 | 0.005614538 | FALSE | TRUE | 2 |
 
-Extract the centroids and size of each cluster, with the function already installed:
+### Extract the centroids and size of each cluster
+
+### [Query-defined](#tab/query-defined)
+
+To use a query-defined function, invoke it after the embedded function definition.
+
+```kusto
+let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
+{
+    let kwargs = bag_pack('k', k, 'features', features, 'cluster_col', cluster_col);
+    let code = ```if 1:
+        
+        from sklearn.cluster import KMeans
+        
+        k = kargs["k"]
+        features = kargs["features"]
+        cluster_col = kargs["cluster_col"]
+        
+        km = KMeans(n_clusters=k)
+        df1 = df[features]
+        km.fit(df1)
+        result = df
+        result[cluster_col] = km.labels_
+    ```;
+    tbl
+    | evaluate python(typeof(*), code, kwargs)
+};
+OccupancyDetection
+| extend cluster_id=double(null)
+| invoke kmeans_fl(5, pack_array("Temperature", "Humidity", "Light", "CO2", "HumidityRatio"), "cluster_id")
+| summarize Temperature=avg(Temperature), Humidity=avg(Humidity), Light=avg(Light), CO2=avg(CO2), HumidityRatio=avg(HumidityRatio), num=count() by cluster_id
+| order by num
+```
+
+### [Stored](#tab/stored)
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
 
 ```kusto
 OccupancyDetection
@@ -191,6 +217,8 @@ OccupancyDetection
 | summarize Temperature=avg(Temperature), Humidity=avg(Humidity), Light=avg(Light), CO2=avg(CO2), HumidityRatio=avg(HumidityRatio), num=count() by cluster_id
 | order by num
 ```
+
+---
 
 **Output**
 

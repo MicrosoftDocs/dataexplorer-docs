@@ -201,7 +201,7 @@ dancePairs
 
 ---
 
-## Output
+**Output**
 
 Let's look at list of pairs of people dancing at two dance classes supposedly at random to find out if anything looks anomalous (meaning, not random). We'll start by looking at each class by itself.
 

@@ -146,7 +146,7 @@ get_packages_version_fl(pack_array('numpy', 'scipy', 'pandas', 'statsmodels', 's
 
 ---
 
-## Output
+**Output**
 
 | name | ver |
 |---|---|

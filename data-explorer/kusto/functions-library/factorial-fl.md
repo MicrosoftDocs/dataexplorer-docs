@@ -88,7 +88,7 @@ range x from 1 to 10 step 3
 
 ---
 
-## Output
+**Output**
 
 | x | fx |
 |---|---|

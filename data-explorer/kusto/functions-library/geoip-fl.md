@@ -205,7 +205,7 @@ datatable(ip:string) [
 
 ---
 
-## Output
+**Output**
 
 | ip | country | state | city | longitude | latitude |
 |--|--|--|--|--|--|

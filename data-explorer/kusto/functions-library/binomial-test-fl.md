@@ -153,7 +153,7 @@ datatable(id:string, x:int, n:int) [
 
 ---
 
-## Output
+**Output**
 
 | id | x | n | p_val |
 |---|---|---|---|
