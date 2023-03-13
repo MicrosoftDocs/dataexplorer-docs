@@ -153,3 +153,7 @@ If the cluster's subnet is configured to force tunnel all internet-bound traffic
 ### Check firewall rules
 
 If you force tunnel subnet outbound traffic to a firewall, make sure all dependencies FQDN (for example, *.blob.core.windows.net*) are allowed in the firewall configuration as described in [securing outbound traffic with firewall](vnet-deployment.md#securing-outbound-traffic-with-a-firewall).
+
+## Cluster Suspension Issues
+
+If the cluster fails to suspend, confirm that there aren't any locks on the networking resources in the customer's subscription.
