@@ -128,7 +128,7 @@ series_fit_lowess_fl(tbl:(*), y_series:string, y_fit_series:string, fit_size:int
 
 ## Examples
 
-The following examples uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
 
 ### LOWESS regression on regular time series
 
