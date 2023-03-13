@@ -109,7 +109,7 @@ export tableName="<tableName>"
 
 Within your terminal, navigate to the root folder of the cloned repo and run the following `dotnet` command:
 
-```bash
+```powershell
 dotnet build src
 ```
 
@@ -117,7 +117,7 @@ dotnet build src
 
 Within your terminal, navigate to the samples folder of the cloned repo and run the following `dotnet` command:
 
-```bash
+```powershell
 dotnet build run
 ```
 
