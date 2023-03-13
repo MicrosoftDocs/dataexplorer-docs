@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
     ```
 
     > [!NOTE]
-    > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](data-explorer/kusto/management/manage-database-security-roles.md#view-existing-security-roles).
+    > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](kusto/management/manage-database-security-roles.md#view-existing-security-roles).
 
 ## Create table and mapping
 
