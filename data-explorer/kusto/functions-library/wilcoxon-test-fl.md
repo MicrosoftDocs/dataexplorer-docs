@@ -139,7 +139,7 @@ datatable(id:string, sample1:dynamic) [
 
 ---
 
-## Output
+**Output**
 
 | id | sample1 | test_stat | p_val |
 |---|---|---|---|
