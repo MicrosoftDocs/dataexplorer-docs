@@ -65,44 +65,21 @@ Clone the Serilog sink's [git repo](https://github.com/Azure/serilog-sinks-azure
 git clone https://github.com/Azure/serilog-sinks-azuredataexplorer
 ```
 
-<!-- ## Configure attributes of KustoStrategy
+### Set environmental variables
 
-The Serilog sink connector uses a custom strategy that's used in the *RollingFileAppender*. Logs are written into the rolling file to prevent any data loss arising out of network failure while connecting to the Azure Data Explorer cluster. The data is stored in a rolling file and then flushed to the Azure Data Explorer cluster.
-
-In the sample project included in the git repo, the default configuration format is defined in the file log4j2.xml. This configuration file is located under the file path: \azure-kusto-log4j\samples\src\main\resources\log4j2.xml.
-
-The following attributes of KustoStrategy are referenced by the configuration file:
-
-``` xml
-<KustoStrategy
-   clusterIngestUrl="${env:LOG4J2_ADX_INGEST_CLUSTER_URL}"
-   appId="${env:LOG4J2_ADX_APP_ID}"
-   appKey="${env:LOG4J2_ADX_APP_KEY}"
-   appTenant="${env:LOG4J2_ADX_TENANT_ID}"
-   dbName="${env:LOG4J2_ADX_DB_NAME}"
-   tableName="log4jTest"
-   logTableMapping="log4jCsvTestMapping"
-   mappingType="csv"
-   flushImmediately="false"
-/>
-```
-
-> [!IMPORTANT]
-> The table name `log4jTest` and mapping name `log4CsvTestMapping` were created in the [above steps](#create-table-and-mapping) for the sample example. If using different table and mapping names, replace these values and save the configuration file.
-
-The configuration file references the following environmental variables:
+Set the following environmental variables.
 
 | Variable | Description |
 |---|---|
-| LOG4J2_ADX_DB_NAME | Database name. Defined in [Prerequisites](#prerequisites)
-| LOG4J2_ADX_TENANT_ID | Tenant ID. Created in [Create an Azure AD App registration](#create-an-azure-ad-app-registration).
-| LOG4J2_ADX_INGEST_CLUSTER_URL | Cluster ingestion URI of the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*.
-| LOG4J2_ADX_APP_ID | App ID. Created in [Create an Azure AD App registration](#create-an-azure-ad-app-registration).
-| LOG4J2_ADX_APP_KEY | App key value. Created in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). -->
+| *IngestionEndPointUri* | The ingest URI for your cluster in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. |
+| *DatabaseName* | The case-sensitive name of the target database. |
+| *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create table and mapping](#create-table-and-mapping). |
+| *AppId* | Application client ID required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+| *AppKey* | Application key required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+| *Tenant* | The ID of the tenant in which the application is registered. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+| *BufferBaseFileName* | The base file name for the buffer file. Set this value if you require your logs to be durable against loss resulting connection failures to your cluster. For example, `C:/Temp/Serilog` |
 
-### Set environmental variables
-
-Set the following environmental variables manually or using the following commands:
+You can set the environment variables manually or using the following commands:
 
 #### [Windows](#tab/windows)
 
@@ -143,15 +120,15 @@ You can explore the ingested data with a quick query in the [web UI](https://dat
 Copy the following query and run it in the context of your target database.
 
 ```kusto
-log4jTest
+SerilogTest
 | take 10
 ```
 
-Your output should look similar to the following table:
-
 **Output:**
 
-:::image type="content" source="media/apache-log4j2-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
+Your output should look similar to the following table:
+
+:::image type="content" source="media/serilog-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
 
 ## See also
 

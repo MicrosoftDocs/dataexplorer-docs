@@ -3,7 +3,7 @@ title: .create ingestion mapping - Azure Data Explorer
 description: This article describes .create ingestion mapping in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/12/2023
 ---
 # .create ingestion mapping
 
@@ -19,15 +19,25 @@ The command to create a database ingestion mapping requires at least [Database I
 
 `.create` `database` *DatabaseName* `ingestion` *MappingKind* `mapping` *MappingName* *MappingFormattedAsJson*
 
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *TableName* | string | &check; | The name of the table.|
+| *DatabaseName* | string | &check; | The name of the database.|
+| *MappingKind* | string | &check; | The type of mapping. Valid values are `CSV`, `JSON`, `avro`, `parquet`, and `orc`.|
+| *MappingName* | string | &check; | The name of the mapping.|
+| *MappingFormattedAsJson* | string | &check; | The ingestion mapping definition formatted as a JSON value.|
+
 > [!NOTE]
+>
 > * Once created, the mapping can be referenced by its name in ingestion commands, instead of specifying the complete mapping as part of the command.
-> * Valid values for _MappingKind_ are: `CSV`, `JSON`, `avro`, `parquet`, and `orc`
 > * If a mapping by the same name already exists for the table:
 >    * `.create` will fail
 >    * `.create-or-alter` will alter the existing mapping
 > * If a mapping with the same name is created in both the table scope and the database scope, the mapping in the table scope will have a higher priority.
 > * When ingesting into a table and referencing a mapping whose schema does not match the ingested table schema, the ingest operation will fail.
- 
+
 ## Examples
  
 ```kusto

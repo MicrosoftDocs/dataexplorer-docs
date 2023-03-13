@@ -17,13 +17,15 @@ Filters a record set for data that doesn't have a matching case-sensitive string
 
 ## Syntax
 
-*T* `|` `where` *Column* `!has_cs` `(`*Expression*`)`  
+*T* `|` `where` *column* `!has_cs` `(`*expression*`)`  
 
-## Arguments
+## Parameters
 
-* *T* - The tabular input whose records are to be filtered.
-* *Column* - The column to filter.
-* *Expression* - Scalar or literal expression.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check;| The tabular input whose records are to be filtered.|
+| *column* | string | &check;| The column by which to filter.|
+| *expression* | scalar | &check;| The scalar or literal expression for which to search.|
 
 ## Returns
 
@@ -31,12 +33,14 @@ Rows in *T* for which the predicate is `true`.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPQTEjsTg+uVhBKS+1XAkoB1YOAGM3qTFYAAAA" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-    | summarize event_count=count() by State
-    | where State !has_cs "new"
-    | count
+| summarize event_count=count() by State
+| where State !has_cs "new"
+| count
 ```
 
 **Output**

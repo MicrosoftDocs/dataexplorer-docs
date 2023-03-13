@@ -527,6 +527,37 @@ LINKIT serves more than 100 customers in the Netherlands and Germany, providing 
 
 - [LINKIT website](https://www.linkit.nl/en)
 
+## M&M Software GmbH
+
+:::image type="icon" source="media/findmypartner/mm-logo.jpg":::
+
+M&M Software is a technology and consulting company for digital solutions. Our range of services includes substantiated management and technology consulting, high qualified software development and maintenance as well as comprehensive quality assurance and IT services.
+
+As a project partner for software development services, we drive the success of our customers and support them in the realization of their digital visions - from initial vision to the finished product. Software solutions from M&M pave the way for the future of an intelligently connected world.
+
+**Partner type**
+
+- Custom Software Development
+- Cloud Solution Provider
+- IoT Solution Provider
+
+**Focus geography**
+
+- Germany
+- EMEA
+- US
+- China
+- India
+
+**Contact**
+
+- [info@mm-software.com](mailto:info@mm-software.com)
+
+**Additional information**
+
+- [M&M Software GmbH website](https://www.mm-software.com)
+- [Microsoft partner site for M&M Software GmbH](https://appsource.microsoft.com/marketplace/partner-dir/6e7c735d-01be-4294-8312-c84847d048d6/overview)
+
 ## MAQ Software
 
 :::image type="icon" source="media/findmypartner/maq-software-logo.png":::
@@ -713,7 +744,7 @@ Orion Innovation is a Leader in Digital transformation services with a Design le
 
 - USA
 - LATAM
-- Europe (UK, Germany, Switzerland, Russia, Lithuania, Serbia, Romania, Turkey, Israel)
+- Europe (UK, Germany, Switzerland, Russia, Lithuania, Serbia, Romania, Türkiye, Israel)
 - APAC (Australia, Singapore, India)
 
 **Contact**

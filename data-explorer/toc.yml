@@ -43,6 +43,8 @@ items:
     href: web-ui-samples-dashboards.md
 - name: Tutorials
   items:
+  - name: Write queries
+    href: write-queries.md
   - name: E2E programmatic Blob ingestion
     items:
       - name: C#
@@ -51,16 +53,6 @@ items:
         href: end-to-end-python.md
   - name: Ingest and query monitoring data
     href: ingest-data-no-code.md
-  - name: Kusto Query Language
-    items: 
-      - name: 1 - Learn common operators
-        href: kusto/query/tutorials/learn-common-operators.md
-      - name: 2 - Use aggregation functions
-        href: kusto/query/tutorials/use-aggregation-functions.md
-      - name: 3 - Join data from multiple tables
-        href: kusto/query/tutorials/join-data-from-multiple-tables.md
-      - name: 4 - Create geospatial visualizations
-        href: kusto/query/tutorials/create-geospatial-visualizations.md
 - name: Concepts
   items:
   - name: Business continuity
@@ -199,6 +191,9 @@ items:
     - name: Apache Kafka
       displayName: ingest data, ingestion, connector
       href: ingest-data-kafka.md
+    - name: Apache Log4j2
+      displayName: ingest data, ingestion, connector
+      href: apache-log4j2-connector.md
     - name: Apache Spark 
       displayName: connector, export, ingest
       href: spark-connector.md
@@ -228,20 +223,6 @@ items:
     - name: JSON formatted data
       displayName: ingest data, ingestion
       href: ingest-json-formats.md
-    - name: Connect with SQL Server emulation
-      items:
-        - name: Overview
-          href: connect-sql-server-emulation.md
-          displayName: SQL Server emulation
-        - name: Connect with ODBC
-          href: connect-odbc.md
-          displayName: SQL Server emulation
-        - name: Connect with JDBC
-          href: connect-jdbc.md
-          displayName: SQL Server emulation
-        - name: Connect from common apps
-          href: connect-common-apps.md
-          displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
     - name: Data ingestion properties
       href: ingestion-properties.md
     - name: Formats for data ingestion
@@ -265,14 +246,30 @@ items:
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
       href: query-monitor-data.md
-    - name: Query data in MATLAB
-      href: matlab.md
     - name: Query data in Power Apps
       href: power-apps-connector.md
     - name: Query data using Python
       href: python-query-data.md
     - name: Debug KQL inline Python
       href: debug-inline-python.md
+    - name: Query data using T-SQL
+      href: t-sql.md
+    - name: Query data using SQL Server emulation
+      items:
+        - name: Overview
+          href: sql-server-emulation-overview.md
+          displayName: SQL Server emulation
+        - name: Connect with ODBC
+          href: connect-odbc.md
+          displayName: SQL Server emulation
+        - name: Connect with JDBC
+          href: connect-jdbc.md
+          displayName: SQL Server emulation
+        - name: Connect from common apps
+          href: connect-common-apps.md
+          displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
+        - name: Run KQL queries and stored functions
+          href: sql-kql-queries-and-stored-functions.md
     - name: Evaluate query performance in your cluster
       href: kusto/api/load-test-cluster.md
     - name: Optimize for high concurrency
@@ -281,10 +278,6 @@ items:
       href: set-timeout-limits.md
     - name: Query cold data with hot windows
       href: hot-windows.md
-    - name: Query data using T-SQL
-      href: t-sql.md
-    - name: SQL Server emulation
-      href: query-sql-server-emulation.md
     - name: Time Series Analysis and Machine Learning
       items:
         - name: Azure Data Explorer Python library

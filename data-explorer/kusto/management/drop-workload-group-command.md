@@ -3,7 +3,7 @@ title: .drop workload group command - Azure Data Explorer
 description: This article describes the .drop workload group command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/09/2023
 ---
 # .drop workload_group
 
@@ -22,9 +22,11 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 `.drop` `workload_group` *WorkloadGroupName*
 
-## Argument
+## Parameters
 
-*WorkloadGroupName* - Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName'].
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*WorkloadGroupName*|string|&check;|The name of the workload group. This name can be specified with bracket notation ['WorkLoadGroupName'].|
 
 ## Examples
 

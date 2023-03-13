@@ -3,7 +3,7 @@ title: .show workload group command - Azure Data Explorer
 description: This article describes the .show workload group command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/09/2023
 ---
 # .show workload group
 
@@ -21,9 +21,11 @@ You must have [AllDatabasesAdmin](../management/access-control/role-based-access
 
 `.show` `workload_groups`
 
-## Argument
+## Parameters
 
-*WorkloadGroupName* - Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName'].
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*WorkloadGroupName*|string|&check;| The name of the workload group. This name can be specified with bracket notation ['WorkLoadGroupName'].|
 
 ## Example
 

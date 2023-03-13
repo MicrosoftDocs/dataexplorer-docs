@@ -33,4 +33,4 @@ You can integrate Azure Data Explorer capabilities in your apps in the following
 ## Next steps
 
 - [Kusto Query Language (KQL) overview](../../query/index.md)
-- [Write Kusto queries](../../query/tutorial.md)
+- [Use Kusto queries](../../query/tutorial.md)
