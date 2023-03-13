@@ -180,7 +180,7 @@ OccupancyDetection
 | TRUE | FALSE | 15 |
 | FALSE | FALSE | 9284 |
 
-### Model asset
+## Model asset
 
 Get sample dataset and pre-trained model in your cluster with Python plugin enabled.
 
