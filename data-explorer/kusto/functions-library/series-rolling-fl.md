@@ -3,15 +3,15 @@ title: series_rolling_fl() - Azure Data Explorer
 description: This article describes the series_rolling_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 03/13/2023
 ---
 # series_rolling_fl()
 
-The function `series_rolling_fl()` applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
+The function `series_rolling_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
-> [!NOTE]
-> * `series_rolling_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
-> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
+## Prerequisites
+
+* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 
 ## Syntax
 
@@ -51,15 +51,17 @@ This function supports any aggregation function from [numpy](https://numpy.org/)
 * [`tstd`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tstd.html)
 * [`iqr` (inter quantile range)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.iqr.html)
 
-## Usage
+## Function definition
 
-`series_rolling_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
+You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database, as follows:
 
-# [Query-defined](#tab/query-defined)
+### [Query-defined](#tab/query-defined)
 
-To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!IMPORTANT]
+> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_rolling_fl()`, see [Example](#example).
+
 ```kusto
 let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
 {
@@ -83,25 +85,17 @@ let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:in
         '\n';
     tbl
     | evaluate python(typeof(*), code, kwargs)
-}
-;
-//
-//  Calculate rolling median of 9 elements
-//
-demo_make_series1
-| make-series num=count() on TimeStamp step 1h by OsVer
-| extend rolling_med = dynamic(null)
-| invoke series_rolling_fl('num', 'rolling_med', 9, 'median')
-| render timechart
+};
+// Write your query to use the function here.
 ```
 
-# [Stored](#tab/stored)
+### [Stored](#tab/stored)
 
-To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
 
-### One-time installation
+> [!IMPORTANT]
+> You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Rolling window functions on a series")
 series_rolling_fl(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic, center:bool=true)
@@ -129,9 +123,58 @@ series_rolling_fl(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr
 }
 ```
 
-### Usage
+---
+## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+
+### [Query-defined](#tab/query-defined)
+
+To use a query-defined function, invoke it after the embedded function definition.
+
+```kusto
+let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
+{
+    let kwargs = bag_pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
+    let code =
+        '\n'
+        'y_series = kargs["y_series"]\n'
+        'y_rolling_series = kargs["y_rolling_series"]\n'
+        'n = kargs["n"]\n'
+        'aggr = kargs["aggr"]\n'
+        'aggr_params = kargs["aggr_params"]\n'
+        'center = kargs["center"]\n'
+        'result = df\n'
+        'in_s = df[y_series]\n'
+        'func = getattr(np, aggr, None)\n'
+        'if not func:\n'
+        '    import scipy.stats\n'
+        '    func = getattr(scipy.stats, aggr)\n'
+        'if func:\n'
+        '    result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))\n'
+        '\n';
+    tbl
+    | evaluate python(typeof(*), code, kwargs)
+};
+//
+//  Calculate rolling median of 9 elements
+//
+demo_make_series1
+| make-series num=count() on TimeStamp step 1h by OsVer
+| extend rolling_med = dynamic(null)
+| invoke series_rolling_fl('num', 'rolling_med', 9, 'median')
+| render timechart
+```
+
+**Output**
+
+:::image type="content" source="images/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements." border="false":::
+
+### [Stored](#tab/stored)
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
+
 ```kusto
 //
 //  Calculate rolling median of 9 elements
@@ -143,11 +186,11 @@ demo_make_series1
 | render timechart
 ```
 
----
+**Output**
 
 :::image type="content" source="images/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements." border="false":::
 
-## Additional examples
+### Additional examples
 
 The following examples assume the function is already installed:
 
@@ -185,3 +228,5 @@ The following examples assume the function is already installed:
     ```
     
     :::image type="content" source="images/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
+
+---
