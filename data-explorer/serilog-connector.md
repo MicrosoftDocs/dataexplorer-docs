@@ -105,12 +105,20 @@ export tableName="<tableName>"
 
 ---
 
+## Build the connector
+
+Within your terminal, navigate to the root folder of the cloned repo and run the following `dotnet` command:
+
+```bash
+dotnet build src
+```
+
 ## Run the sample app
 
 Within your terminal, navigate to the samples folder of the cloned repo and run the following `dotnet` command:
 
 ```bash
-dotnet build src
+dotnet build run
 ```
 
 ## Explore the ingested data
