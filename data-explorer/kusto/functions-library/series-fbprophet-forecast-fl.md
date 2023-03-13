@@ -252,6 +252,6 @@ demo_make_series2
 
 ---
 
-## Output
+**Output**
 
 :::image type="content" source="images/series-fbprophet-forecast-fl/fbprophet-example.png" alt-text="Graph showing forecasting few time series." border="false":::

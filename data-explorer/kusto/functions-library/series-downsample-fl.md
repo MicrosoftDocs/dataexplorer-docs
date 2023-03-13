@@ -122,7 +122,7 @@ demo_make_series1
 
 ---
 
-## Output
+**Output**
 
 The time series downsampled by 4:
 :::image type="content" source="images/series-downsample-fl/downsampling-demo.png" alt-text="Graph showing downsampling of a time series." border="false":::
