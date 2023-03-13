@@ -3,15 +3,15 @@ title: predict_onnx_fl() - Azure Data Explorer
 description: This article describes the predict_onnx_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 03/13/2023
 ---
 # predict_onnx_fl()
 
-The function `predict_onnx_fl()` predicts using an existing trained machine learning model. This model has been converted to [ONNX](https://onnx.ai/) format, serialized to string, and saved in a standard Azure Data Explorer table.
+The function `predict_onnx_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that predicts using an existing trained machine learning model. This model has been converted to [ONNX](https://onnx.ai/) format, serialized to string, and saved in a standard Azure Data Explorer table.
 
-> [!NOTE]
-> * `predict_onnx_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
-> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
+## Prerequisites
+
+* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 
 ## Syntax
 
@@ -26,15 +26,100 @@ The function `predict_onnx_fl()` predicts using an existing trained machine lear
 |*features_cols*|synamic|&check;|An array containing the names of the features columns that are used by the model for prediction.|
 |*pred_col*|string|&check;|The name of the column that stores the predictions.|
 
-## Usage
+## Function definition
 
-`predict_onnx_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
+You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database, as follows:
 
-# [Query-defined](#tab/query-defined)
+### [Query-defined](#tab/query-defined)
 
-To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!IMPORTANT]
+> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `predict_onnx_fl()`, see [Example](#example).
+
+~~~kusto
+let predict_onnx_fl=(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
+{
+    let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
+    let kwargs = bag_pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
+    let code = ```if 1:
+    
+    import binascii
+    
+    smodel = kargs["smodel"]
+    features_cols = kargs["features_cols"]
+    pred_col = kargs["pred_col"]
+    bmodel = binascii.unhexlify(smodel)
+    
+    features_cols = kargs["features_cols"]
+    pred_col = kargs["pred_col"]
+    
+    import onnxruntime as rt
+    sess = rt.InferenceSession(bmodel)
+    input_name = sess.get_inputs()[0].name
+    label_name = sess.get_outputs()[0].name
+    df1 = df[features_cols]
+    predictions = sess.run([label_name], {input_name: df1.values.astype(np.float32)})[0]
+    
+    result = df
+    result[pred_col] = pd.DataFrame(predictions, columns=[pred_col])
+    
+    ```;
+    samples | evaluate python(typeof(*), code, kwargs)
+};
+// Write your query to use the function here.
+~~~
+
+### [Stored](#tab/stored)
+
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+
+> [!IMPORTANT]
+> You must run this code to create the function before you can use the function as shown in the [Example](#example).
+
+~~~kusto
+.create-or-alter function with (folder = "Packages\\ML", docstring = "Predict using ONNX model")
+predict_onnx_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
+{
+    let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
+    let kwargs = bag_pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
+    let code = ```if 1:
+    
+    import binascii
+    
+    smodel = kargs["smodel"]
+    features_cols = kargs["features_cols"]
+    pred_col = kargs["pred_col"]
+    bmodel = binascii.unhexlify(smodel)
+    
+    features_cols = kargs["features_cols"]
+    pred_col = kargs["pred_col"]
+    
+    import onnxruntime as rt
+    sess = rt.InferenceSession(bmodel)
+    input_name = sess.get_inputs()[0].name
+    label_name = sess.get_outputs()[0].name
+    df1 = df[features_cols]
+    predictions = sess.run([label_name], {input_name: df1.values.astype(np.float32)})[0]
+    
+    result = df
+    result[pred_col] = pd.DataFrame(predictions, columns=[pred_col])
+    
+    ```;
+    samples | evaluate python(typeof(*), code, kwargs)
+}
+~~~
+
+---
+
+## Example
+
+The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+
+### [Query-defined](#tab/query-defined)
+
+To use a query-defined function, invoke it after the embedded function definition.
+
 ~~~kusto
 let predict_onnx_fl=(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
 {
@@ -79,49 +164,11 @@ OccupancyDetection
 | summarize n=count() by Occupancy, pred_Occupancy
 ~~~
 
-# [Stored](#tab/stored)
+### [Stored](#tab/stored)
 
-To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
 
-### One-time installation
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-~~~kusto
-.create-or-alter function with (folder = "Packages\\ML", docstring = "Predict using ONNX model")
-predict_onnx_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
-{
-    let model_str = toscalar(models_tbl | where name == model_name | top 1 by timestamp desc | project model);
-    let kwargs = bag_pack('smodel', model_str, 'features_cols', features_cols, 'pred_col', pred_col);
-    let code = ```if 1:
-    
-    import binascii
-    
-    smodel = kargs["smodel"]
-    features_cols = kargs["features_cols"]
-    pred_col = kargs["pred_col"]
-    bmodel = binascii.unhexlify(smodel)
-    
-    features_cols = kargs["features_cols"]
-    pred_col = kargs["pred_col"]
-    
-    import onnxruntime as rt
-    sess = rt.InferenceSession(bmodel)
-    input_name = sess.get_inputs()[0].name
-    label_name = sess.get_outputs()[0].name
-    df1 = df[features_cols]
-    predictions = sess.run([label_name], {input_name: df1.values.astype(np.float32)})[0]
-    
-    result = df
-    result[pred_col] = pd.DataFrame(predictions, columns=[pred_col])
-    
-    ```;
-    samples | evaluate python(typeof(*), code, kwargs)
-}
-~~~
-
-### Usage
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 //
 // Predicts room occupancy from sensors measurements, and calculates the confusion matrix
@@ -139,12 +186,11 @@ OccupancyDetection
 
 ---
 
-Confusion matrix:
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-Occupancy	pred_Occupancy	n
-TRUE	    TRUE	        3006
-FALSE	    TRUE	        112
-TRUE	    FALSE	        15
-FALSE	    FALSE	        9284
-```
+**Output**
+
+| Occupancy | pred_Occupancy | n |
+|---|---|---|
+| TRUE | TRUE | 3006 |
+| FALSE | TRUE | 112 |
+| TRUE | FALSE | 15 |
+| FALSE | FALSE | 9284 |
