@@ -137,9 +137,6 @@ The following example uses the [invoke operator](../query/invokeoperator.md) to 
 
 To use a query-defined function, invoke it after the embedded function definition.
 
-> [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `geoip_fl()`, see [Example](#example).
-
 ```kusto
 let geoip_fl=(tbl:(*), ip_col:string, country_col:string, state_col:string, city_col:string, longitude_col:string, latitude_col:string)
 {
