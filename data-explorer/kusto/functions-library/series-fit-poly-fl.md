@@ -133,7 +133,7 @@ series_fit_poly_fl(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:stri
 
 ---
 
-## Examples
+## Example
 
 The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
 

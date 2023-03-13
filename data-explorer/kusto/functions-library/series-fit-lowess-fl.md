@@ -126,7 +126,7 @@ series_fit_lowess_fl(tbl:(*), y_series:string, y_fit_series:string, fit_size:int
 
 ---
 
-## Examples
+## Example
 
 The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
 

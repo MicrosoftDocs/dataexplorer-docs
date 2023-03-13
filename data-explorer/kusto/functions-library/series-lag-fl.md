@@ -68,7 +68,7 @@ series_lag_fl(series:dynamic, offset:int)
 
 ---
 
-## Examples
+## Example
 
 ### [Query-defined](#tab/query-defined)
 
