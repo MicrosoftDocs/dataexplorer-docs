@@ -173,7 +173,7 @@ tbl
 
 ## Output
 
-| timestamp | key |  | val |
+| timestamp | key | val |
 |---|---|---|
 | 2021-04-26 00:00:00.0000000 | Device1 | 125 |
 | 2021-04-26 01:00:00.0000000 | Device1 | 110 |
