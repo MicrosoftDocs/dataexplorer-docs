@@ -61,7 +61,7 @@ Create a target table for the incoming data, mapping the ingested data columns t
 
 Clone the Serilog sink's [git repo](https://github.com/Azure/serilog-sinks-azuredataexplorer) using the following git command:
 
-```bash
+```powershell
 git clone https://github.com/Azure/serilog-sinks-azuredataexplorer
 ```
 
