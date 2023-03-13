@@ -123,7 +123,7 @@ series_uv_anomalies_fl(tbl:(*), y_series:string, sensitivity:int=85, tsid:string
 
 ## Examples
 
-The following examples uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
 
 ### Use `series_uv_anomalies_fl()`
 

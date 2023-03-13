@@ -86,7 +86,7 @@ series_rate_fl(tbl:(timestamp:dynamic, value:dynamic), n_bins:int=1, fix_reset:b
 
 ## Examples
 
-The following examples uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
 
 ### Calculate average rate of metric increase
 

@@ -141,7 +141,7 @@ datatable(id:string, sample1:dynamic) [
 
 **Output**
 
-| id | sample1 | test_stat | p_val |
+| ID | sample1 | test_stat | p_val |
 |---|---|---|---|
 | Test #1 | [23.64, 20.57, 20.42] | 0, 0.10880943004054568 |
 | Test #2 | [20.85, 21.89, 23.41] | 0, 0.10880943004054568 |

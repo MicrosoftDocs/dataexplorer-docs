@@ -126,7 +126,7 @@ series_rolling_fl(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr
 ---
 ## Examples
 
-The following examples uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
 
 ### Calculate rolling median of 9 elements
 
@@ -254,7 +254,7 @@ demo_make_series1
 
 **Output**
 
-:::image type="content" source="images/series-rolling-fl/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements" border="false":::
+:::image type="content" source="images/series-rolling-fl/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements." border="false":::
 
 ### Calculate the rolling trimmed mean
 
