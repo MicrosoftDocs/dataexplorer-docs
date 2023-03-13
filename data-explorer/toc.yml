@@ -194,7 +194,6 @@ items:
     - name: Apache Log4j2
       displayName: ingest data, ingestion, connector
       href: apache-log4j2-connector.md
-      href: ingest-data-kafka.md
     - name: Serilog
       displayName: ingest data, ingestion, connector
       href: serilog-connector.md
