@@ -136,8 +136,8 @@ OccupancyDetection
 
 **Output**
 
-| Timestamp | Temperature | Humidity | Light | CO2 | HumidityRatio | Occupancy Test | cluster_id |
-|---|---|---|---|---|---|---|---|
+| Timestamp | Temperature | Humidity | Light | CO2 | HumidityRatio | Occupancy |Test | cluster_id |
+|---|---|---|---|---|---|---|---|---|
 | 2015-02-02 14:38:00.0000000 | 23.64 | 27.1 | 473 | 908.8 | 0.00489763 | TRUE | TRUE | 1 |
 | 2015-02-03 01:47:00.0000000 | 20.575 | 22.125 | 0 | 446 | 0.00330878 | FALSE | TRUE | 0 |
 | 2015-02-10 08:47:00.0000000 | 20.42666667 | 33.56 | 405 | 494.3333333 | 0.004986493 | TRUE | FALSE | 4 |
@@ -169,8 +169,8 @@ OccupancyDetection
 
 **Output**
 
-| Timestamp | Temperature | Humidity | Light | CO2 | HumidityRatio | Occupancy Test | cluster_id |
-|---|---|---|---|---|---|---|---|
+| Timestamp | Temperature | Humidity | Light | CO2 | HumidityRatio | Occupancy |Test | cluster_id |
+|---|---|---|---|---|---|---|---|---|
 | 2015-02-02 14:38:00.0000000 | 23.64 | 27.1 | 473 | 908.8 | 0.00489763 | TRUE | TRUE | 1 |
 | 2015-02-03 01:47:00.0000000 | 20.575 | 22.125 | 0 | 446 | 0.00330878 | FALSE | TRUE | 0 |
 | 2015-02-10 08:47:00.0000000 | 20.42666667 | 33.56 | 405 | 494.3333333 | 0.004986493 | TRUE | FALSE | 4 |
