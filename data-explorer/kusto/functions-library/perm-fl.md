@@ -97,7 +97,7 @@ range n from 3 to 10 step 3
 
 ---
 
-## Output
+**Output**
 
 | n | k | pnk    |
 |---|---|--------|

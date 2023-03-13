@@ -183,7 +183,7 @@ demo_make_series2
 
 ---
 
-## Output
+**Output**
 
 The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards ](../../azure-data-explorer-dashboards.md).
 

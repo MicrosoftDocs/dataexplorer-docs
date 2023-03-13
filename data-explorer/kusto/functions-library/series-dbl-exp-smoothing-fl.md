@@ -95,6 +95,6 @@ range x from 1 to 50 step 1
 
 ---
 
-## Output
+**Output**
 
 :::image type="content" source="images/series-dbl-exp-smoothing-fl/dbl-exp-smoothing-demo.png" alt-text="Graph showing double exponential smoothing of artificial series." border="false":::

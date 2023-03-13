@@ -287,7 +287,7 @@ raw_data
 
 ---
 
-## Output
+**Output**
 
 | entity1 | Andy | Betsy | Cindy | Dan | Elmie | Franny | Godzilla | Hannie | ... |
 |---|---|---|---|---|---|---|---|---|---|

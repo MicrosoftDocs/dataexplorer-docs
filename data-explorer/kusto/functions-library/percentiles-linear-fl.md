@@ -147,7 +147,7 @@ datatable(x:long, name:string) [
 
 ---
 
-## Output
+**Output**
 
 |name|x|pct_arr|pct_val|
 |--|--|--|--|

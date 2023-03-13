@@ -171,7 +171,7 @@ union
 
 ---
 
-## Output
+**Output**
 
 | x | x_label | x_bin |
 |---|---|---|

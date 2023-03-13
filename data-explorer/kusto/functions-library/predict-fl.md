@@ -171,7 +171,7 @@ OccupancyDetection
 
 ---
 
-## Output
+**Output**
 
 | Occupancy | pred_Occupancy | n |
 |---|---|---|
