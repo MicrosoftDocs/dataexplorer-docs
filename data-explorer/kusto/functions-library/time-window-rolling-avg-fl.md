@@ -164,7 +164,7 @@ tbl
 
 ---
 
-## Output
+**Output**
 
 | timestamp | value | avg_value | key |
 |---|---|---|---|

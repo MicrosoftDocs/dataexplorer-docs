@@ -191,7 +191,7 @@ ts
 
 ---
 
-## Output
+**Output**
 
 ![Graph showing anomalies on a time series.](images/series-uv-anomalies-fl/uv-anomalies-example-1.png)
 

@@ -194,7 +194,7 @@ ts
 
 ---
 
-## Output
+**Output**
 
 The following graph shows change points on a time series.
 

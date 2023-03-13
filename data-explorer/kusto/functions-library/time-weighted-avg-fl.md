@@ -171,7 +171,7 @@ tbl
 
 ---
 
-## Output
+**Output**
 
 | timestamp | key | val |
 |---|---|---|
