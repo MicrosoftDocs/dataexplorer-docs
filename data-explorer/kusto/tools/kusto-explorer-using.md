@@ -84,21 +84,13 @@ To learn more about the Kusto Query Language, see [Kusto Query Language](../quer
 >
 > * Client-side query parametrization, described below, is a feature of the Kusto.Explorer application only. It's equivalent to using string-replace operations on the queries before sending them to be executed by the service. The syntax described below is not part of the query language itself and can't be used when sending queries to the service by means other than Kusto.Explorer.
 
-If you use the same value in multiple queries or in multiple tabs, it's highly inconvenient to change that value in every place it's used. That's why Kusto.Explorer supports query parameters. Query parameters are shared among tabs so that they can be easily reused. Parameters are denoted by {} brackets. For example: `{parameter1}`
-
-The script editor highlights query parameters:
-
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-1.png" alt-text="Parametrized query 1.":::
+If you use the same value in multiple queries or in multiple tabs, it's highly inconvenient to change that value in every place it's used. That's why Kusto.Explorer supports query parameters. Query parameters are shared among tabs so that they can be easily reused. Parameters are denoted by {} brackets. For example, `{parameter1}`.
 
 You can easily define and edit existing query parameters:
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-2.png" alt-text="Edit parametrized query 2.":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query.png" alt-text="Screenshot of Query editor showing a query with parameters. The Query editor option titled Query parameters is highlighted.":::
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-3.png" alt-text="Edit parametrized query 3.":::
-
-The script editor also has IntelliSense for query parameters that are already defined:
-
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-4.png" alt-text="Paramaterized query IntelliSense.":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query-3.png" alt-text="Screenshot of the Query parameters window showing the defined parameters.":::
 
 You can have multiple sets of parameters (listed in the **Parameters Set** combo box).
 Select **Add new** or **Delete current** to manipulate the list of parameter sets.
@@ -244,7 +236,7 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
     :::image type="content" source="images/kusto-explorer-using/confirm-add-authorized-principals.png" alt-text="Screenshot of Review Principal window showing a confirmation request for adding authorized principal.":::
 
 To drop an existing authorized principal, select **Drop principal** and confirm the action.
-    :::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Confirm drop authorized principal.":::
+     :::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Confirm drop authorized principal.":::
 
 ## Next steps
 
