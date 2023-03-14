@@ -27,6 +27,8 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
 
     ### [C\#](#tab/csharp)
 
+    In the **hello-kusto.cs** file, start by adding the following code:
+
     ```csharp
     using Kusto.Data;
     using Kusto.Data.Net.Client;
@@ -34,11 +36,15 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
 
     ### [Python](#tab/python)
 
+    In the **hello-kusto.py** file, start by adding the following code:
+
     ```python
     from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
     ```
 
     ### [Node.js](#tab/nodejs)
+
+    In the **hello-kusto.js** file, start by adding the following code:
 
     ```nodejs
     const KustoClient = require("azure-kusto-data").Client;
@@ -48,6 +54,8 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
+
+    In the **hello-kusto.java** file, start by adding the following code:
 
     ```java
     import com.microsoft.azure.kusto.data.Client;
