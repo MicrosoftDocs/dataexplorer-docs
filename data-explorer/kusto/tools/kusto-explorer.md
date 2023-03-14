@@ -109,10 +109,10 @@ For variable visualizations see the [render operator](../query/renderoperator.md
 
 |Menu         | Behavior|
 |-------------|---------|
-|Area chart      | Displays an area chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis). |
+|Area chart   | Displays an area chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis). |
 |Column Chart | Displays a column chart where all numeric columns are mapped to different series (Y-axis). The text column before numeric is the X-axis (can be controlled in the UI).|
 |Bar Chart    | Displays a bar chart where all numeric columns are mapped to different series (X-axis). The text column before numeric is the Y-axis (can be controlled in the UI).|
-|Stacked Area chart      | Displays a stacked area chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis). |
+|Stacked Area Chart      | Displays a stacked area chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis). |
 |Timeline Chart   | Displays a time chart in which the X-axis is the first column (must be datetime). All numeric columns are mapped to different series (Y-axis).|
 |Line Chart   | Displays a line chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
 |Anomaly Chart| Similar to timechart, but finds anomalies in time series data, using a machine learning anomaly detection algorithm. The data must be in fixed interval buckets. For anomaly detection, Kusto.Explorer uses the [series_decompose_anomalies](../query/series-decompose-anomaliesfunction.md) function.
@@ -152,8 +152,8 @@ For variable visualizations see the [render operator](../query/renderoperator.md
 |Save To File| Saves the content of the active script panel to *.kql file.|
 |Close Tab| Closes the current tab window|
 ||---------*Profiles*---------|
-|Import Profile| <!--TBD-->|
-|Export Profile| <!--TBD-->|
+|Import Profile| Import a Kusto.Explorer profile. |
+|Export Profile| Export a Kusto.Explorer profile.|
 ||---------*Save Data*---------|
 |Data To CSV       | Exports data to a CSV (comma-separated-values) file.|
 |Data To JSON      | Exports data to a JSON formatted file.|
@@ -188,8 +188,8 @@ For variable visualizations see the [render operator](../query/renderoperator.md
 |Remove Connection| Removes the existing connection to Kusto Server.|
 |Refresh| Refreshes properties of a Kusto server connection.|
 ||---------*Profiles*---------|
-|Import Profile| <!--TBD-->|
-|Export Profile| <!--TBD-->|
+|Import Profile| Import a Kusto.Explorer profile.|
+|Export Profile| Export a Kusto.Explorer profile.|
 ||---------*Security*---------|
 |Inspect Your ADD Principal| Shows currents active user details.|
 |Sign-out| Signs-out the current user from the connection to AAD.|
@@ -275,8 +275,8 @@ To modify the output color scheme, or turn this behavior off, from the **Tools**
 |Cluster Diagnostics | Shows a health summary for the Server Group currently selected in Connections Panel. |
 |Latest data: All tables| Shows a summary of the latest data in all tables of the currently selected database.|
 |Latest data: Selected table|Shows in the status bar the latest data in the selected table.|
-|Cluster Health (Geneva)| <!--TBD-->|
-|Purge Metrics (Geneva)| <!--TBD-->|
+|Cluster Health (Geneva)| Opens a link to view the state of your cluster.|
+|Purge Metrics (Geneva)| Opens a link a to view data purge metrics. |
 
 ## Management tab
 
