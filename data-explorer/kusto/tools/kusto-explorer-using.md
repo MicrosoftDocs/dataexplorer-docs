@@ -225,23 +225,25 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 
 ## Manage databases, tables, or function authorized principals
 
-> [!NOTE]
+> [!IMPORTANT]
 > Only [admins](../management/access-control/role-based-access-control.md) can add or drop authorized principals in their own scope.
 
-Right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Database Authorized Principals**. (You can also select this option from the Management Menu.)
+1. To view the list of authorized principals, right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Database Authorized Principals**. (You can also select this option from the Management Menu.)
 
-:::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Screenshot of entity drop down menu. The options titled Manage Database AUthorized Principals is highlighted.":::
+    :::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Screenshot of entity drop down menu. The options titled Manage Database AUthorized Principals is highlighted.":::
 
-:::image type="content" source="images/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Screenshot of the Manage authorized principals window. The options titled Drop principal and Add principal are highlighted.":::
+1. Select **Add principal** to add an authorized principal.
+    :::image type="content" source="images/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Screenshot of the Manage authorized principals window. The options titled Drop principal and Add principal are highlighted.":::
 
-* To add a new authorized principal, select **Add principal**, provide the principal details, and confirm the action.
+1. Provide the principal details, then select **Add principal**.
 
-    :::image type="content" source="images/kusto-explorer-using/add-authorized-principals-window.png" alt-text="Add authorized principal.":::
+    :::image type="content" source="images/kusto-explorer-using/add-authorized-principals-window.png" alt-text="Screenshot of the Add authorized principal window. The button titled Add principal is highlighted.":::
 
-    :::image type="content" source="images/kusto-explorer-using/confirm-add-authorized-principals.png" alt-text="Confirm add authorized principal.":::
+1. Confirm that you want to add the authorized principal.
 
-* To drop an existing authorized principal, select **Drop principal** and confirm the action.
+    :::image type="content" source="images/kusto-explorer-using/confirm-add-authorized-principals.png" alt-text="Screenshot of Review Principal window showing a confirmation request for adding authorized principal.":::
 
+To drop an existing authorized principal, select **Drop principal** and confirm the action.
     :::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Confirm drop authorized principal.":::
 
 ## Next steps
