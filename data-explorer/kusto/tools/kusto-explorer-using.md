@@ -3,7 +3,7 @@ title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 03/08/2023
+ms.date: 03/14/2023
 ---
 
 # Using Kusto.Explorer
@@ -14,11 +14,12 @@ Kusto.Explorer is a desktop application that enables you to explore your data us
 
 Search++ mode enables you to search for a term using search syntax across one or more tables.
 
-1. In the **Home** tab, in the Query dropdown, select **Search++**.
+1. In the Query dropdown on the **Home** tab, select **Search++**.
 1. Select **Multiple tables**.
-1. Under **Choose tables**, define which tables to search.
+1. Under **Choose tables**, define which tables to search, then select **OK**.
 1. In the edit box, enter your search phrase and select **Go**.
-1. A heat-map of the table/time-slot grid shows which terms appear and where they appear.
+
+    A heat-map of the table/time-slot grid shows which terms appear and where they appear.
 
     :::image type="content" source="images/kusto-explorer-using/search-plus-plus.png" alt-text="Search + + Kusto Explorer":::
 
@@ -65,7 +66,7 @@ StormEvents
 
 :::image type="content" source="images/kusto-explorer-using/basic-query.png" alt-text="Kusto Explorer basic query.":::
 
-Learn more about [Kusto Query Language](../query/index.md).
+To learn more about the Kusto Query Language, see [Kusto Query Language](../query/index.md).
 
 > [!NOTE]
 > Blank lines in the query expression can affect which part of the query is executed.
