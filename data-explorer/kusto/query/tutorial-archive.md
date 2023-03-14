@@ -1,12 +1,12 @@
 ---
-title: 'Tutorial: Kusto queries'
-description: This tutorial describes how to use queries in the Kusto Query Language to meet common query needs.
+title: 'Tutorial: Kusto queries archive'
+description: This archive tutorial describes how to use queries in the Kusto Query Language to meet common query needs.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/01/2021
 ---
 
-# Tutorial: Use Kusto queries
+# Tutorial: Use Kusto queries archive
 
 The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
 

@@ -169,7 +169,7 @@ These visualizations have the following conceptual model:
 
 ## See also
 
-* [Rendering examples in the tutorial](./tutorial.md#displaychartortable)
+* [Rendering examples in the tutorial](tutorials/use-aggregation-functions.md#visualize-query-results)
 * [Anomaly detection](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
 
 ::: zone-end
@@ -197,9 +197,5 @@ InsightsMetrics
 | summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
 | render timechart
 ```
-
-## See also
-
-* [Rendering examples in the tutorial](./tutorial.md?pivots=azuremonitor#display-a-chart-or-table-render-1)
 
 ::: zone-end

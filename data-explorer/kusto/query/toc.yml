@@ -3,8 +3,6 @@ items:
   href: index.md
 - name: Quick reference guide
   href: ../../kql-quick-reference.md
-- name: Tutorial
-  href: tutorial.md
 - name: Samples
   href: samples.md
 - name: Query best practices
@@ -966,7 +964,6 @@ items:
     displayName: H3, S2, Geohash
     href: geospatial-grid-systems.md
   - name: Geospatial visualizations
-    displayName: Geospatial visualizations
     href: geospatial-visualizations.md
   - name: geo_distance_2points()
     href: geo-distance-2points-function.md
@@ -1358,4 +1355,4 @@ items:
     - name: Install the Kusto emulator
       href: ../../kusto-emulator-install.md
   - name: Kusto extension for Azure Data Studio >>
-    href: https://learn.microsoft.com/sql/azure-data-studio/extensions/kusto-extension
+    href: /sql/azure-data-studio/extensions/kusto-extension

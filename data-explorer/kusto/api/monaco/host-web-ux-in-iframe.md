@@ -171,4 +171,4 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 ## Next steps
 
 - [Kusto Query Language (KQL) overview](../../query/index.md)
-- [Use Kusto queries](../../query/tutorial.md)
+- [Write Kusto queries](../../query/tutorial.md)
