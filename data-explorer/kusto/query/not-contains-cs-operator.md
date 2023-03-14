@@ -3,7 +3,7 @@ title: The case-sensitive !contains_cs string operator - Azure Data Explorer
 description: Learn how to use the !contains_cs string operator to filter data that doesn't include a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/11/2023
+ms.date: 03/12/2023
 ---
 
 # !contains_cs operator
@@ -24,11 +24,13 @@ If you're looking for a [term](datatypes-string-operators.md#what-is-a-term), us
 
 *T* `|` `where` *Column* `!contains_cs` `(`*Expression*`)`
 
-## Arguments
+## Parameters
 
-* *T* - The tabular input whose records are to be filtered.
-* *Column* - The column to filter.
-* *Expression* - Scalar or literal expression.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check;| The tabular input whose records are to be filtered.|
+| *Column* | string | &check;| The column by which to filter.|
+| *Expression* | scalar | &check;| The scalar or literal expression for which to search.|
 
 ## Returns
 
@@ -36,12 +38,14 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPQTE5P68kMTOvOD65WEHJMVgJKA/WAgDbLF9iXAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-    | summarize event_count=count() by State
-    | where State !contains_cs "AS"
-    | count
+| summarize event_count=count() by State
+| where State !contains_cs "AS"
+| count
 ```
 
 **Output**
@@ -50,13 +54,15 @@ StormEvents
 |-----|
 |59|
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPQTE5P68kMTOvOD65WEEpxDVCCa4AyRQFOwVjAwMDoFRBUX5WanIJRLcOshoAY3LN3I0AAAA=" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-    | summarize event_count=count() by State
-    | where State !contains_cs "TEX"
-    | where event_count > 3000
-    | project State, event_count
+| summarize event_count=count() by State
+| where State !contains_cs "TEX"
+| where event_count > 3000
+| project State, event_count
 ```
 
 **Output**

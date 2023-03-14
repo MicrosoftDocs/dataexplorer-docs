@@ -3,7 +3,7 @@ title: Tabular expression statements - Azure Data Explorer
 description: Learn how to use tabular expression statements to produce tabular data sets.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2021
+ms.date: 03/12/2023
 ---
 # Tabular expression statements
 
@@ -18,9 +18,13 @@ Each operator accepts a tabular data set "from the pipe", and other inputs inclu
 
 *Source* `|` *Operator1* `|` *Operator2* `|` *RenderInstruction*
 
-* *Source* - tabular data sources such as Azure Data Explorer tables
-* *Operator* - tabular data operators such as filters and projections
-* *RenderInstruction* - rendering operators or instructions
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*Source*|string|&check;|A tabular data source, such as an Azure Data Explorer table.|
+|*Operator*|string|&check;|Tabular data operators, such as filters and projections.|
+|*RenderInstruction*|string||Rendering operators or instructions.|
 
 ## Tabular data sources
 

@@ -39,7 +39,7 @@ that looks like this:
 {"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}}
 ```
 
-then the following CSL Fragment retrieves the value of the `duration` slot
+then the following query retrieves the value of the `duration` slot
 in the object, and from that it retrieves two slots, `duration.value` and
  `duration.min` (`118.0` and `110.0`, respectively).
 

@@ -3,7 +3,7 @@ title: percentile(), percentiles() - Azure Data Explorer
 description: Learn how to use the percentile(), percentiles() functions to calculate estimates for nearest rank percentiles in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 03/12/2023
 ---
 # percentile(), percentiles() (aggregation function)
 
@@ -16,7 +16,7 @@ The accuracy depends on the density of population in the region of the percentil
 * `percentilesw()` is like `percentilew()`, but calculates a number of weighted percentile values, which is faster than calculating each percentile individually.
 * `percentilew()` and `percentilesw()` let you calculate weighted percentiles. Weighted percentiles calculate the given percentiles in a "weighted" way, by treating each value as if it was repeated `weight` times, in the input.
 
-See an example of how to add a percentage calculation to your results in the [tutorial](tutorial.md#calculate-percentages) tutorial.
+To add a percentage calculation to your results, see the [percentages example](tutorial.md#percentages).
 
 ## Syntax
 
@@ -36,12 +36,12 @@ See an example of how to add a percentage calculation to your results in the [tu
 
 `percentilesw_array` `(`*Expr*`,` *WeightExpr*`,` *Dynamic array*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*Expr* | string | &check; | Expression that will be used for aggregation calculation.|
-|*WeightExpr*| string | &check; | Expression that will be used as the weight of values for aggregation calculation.|
+|*Expr* | string | &check; | The expression to use for aggregation calculation.|
+|*WeightExpr*| string | &check; | The expression to use as the weight of values for aggregation calculation.|
 |*Percentile*| double | &check;| A constant that specifies the percentile.|
 |*Dynamic array* | dynamic | &check; | A list of percentiles in a dynamic array of integers or floating point numbers.|
 
@@ -62,7 +62,7 @@ The following example shows the value of `DamageProperty` being larger than 95% 
 StormEvents | summarize percentile(DamageProperty, 95) by State
 ```
 
-**Results**
+**Output**
 
 The results table shown includes only the first 10 rows.
 
@@ -90,7 +90,7 @@ The following example shows the value of `DamageProperty` simultaneously calcula
 StormEvents | summarize percentiles(DamageProperty, 5, 50, 95) by State
 ```
 
-**Results**
+**Output**
 
 The results table shown includes only the first 10 rows.
 
@@ -164,7 +164,7 @@ latencyTable
 | summarize percentilesw(LatencyBucket, ReqCount, 50, 75, 99.9)
 ```
 
-**Results**
+**Output**
 
 | percentile_LatencyBucket_50 | percentile_LatencyBucket_75 | percentile_LatencyBucket_99_9 |
 |--|--|--|
@@ -182,7 +182,7 @@ TransformedSensorsData
 | summarize percentiles_array(Value, 5, 25, 50, 75, 95), avg(Value) by SensorName
 ```
 
-**Results**
+**Output**
 
 The results table displays only the first 10 rows.
 

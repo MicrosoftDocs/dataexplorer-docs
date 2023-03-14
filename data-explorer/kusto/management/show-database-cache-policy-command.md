@@ -3,7 +3,7 @@ title: .show database cache policy command - Azure Data Explorer
 description: This article describes the .show database cache policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/09/2023
 ---
 # .show database cache policy
 
@@ -17,9 +17,11 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `database` *DatabaseName* `policy` `caching`
 
-## Arguments
+## Parameters
 
-*DatabaseName* - Specify the name of the database.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database.|
 
 ## Returns
 

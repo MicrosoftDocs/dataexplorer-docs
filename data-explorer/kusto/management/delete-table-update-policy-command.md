@@ -3,7 +3,7 @@ title: .delete table update policy command - Azure Data Explorer
 description: This article describes the .delete table update policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/09/2023
 ---
 # .delete table update policy
 
@@ -19,14 +19,14 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.delete` `table` *TableName* `policy` `update`
+`.delete` `table` [ *DatabaseName*`.`]*TableName* `policy` `update`
 
-`.delete` `table` *DatabaseName*`.`*TableName* `policy` `update`
+## Parameters
 
-## Arguments
-
-* *DatabaseName* - Specify the name of the database.
-* *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context. A wildcard (*) denotes all tables.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string||The name of the database. This is required when running the command from outside the database context of the specified table.|
+|*TableName*|string|&check;|The name of the table.|
 
 ## Returns
 

@@ -3,7 +3,7 @@ title: merge_tdigest() - Azure Data Explorer
 description: Learn how to use the merge_tdigest() function to merge columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/08/2022
+ms.date: 03/12/2023
 ---
 # merge_tdigest()
 
@@ -15,13 +15,13 @@ Read more about the underlying algorithm (T-Digest) and the estimated error [her
 
 ## Syntax
 
-`merge_tdigest(` *Expr1*`,` *Expr2*`, ...)`
+`merge_tdigest(`*exprs*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr* | dynamic | &check; | Columns that have the `tdigest` values to be merged. |
+| *exprs* | dynamic | &check; | One or more comma-separated column references that have the `tdigest` values to be merged. |
 
 ## Returns
 
@@ -32,7 +32,6 @@ The result for merging the columns `*Expr1*`, `*Expr2*`, ... `*ExprN*` to one `t
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02OSwrDMBBD9z3FLG2aRXKA3qNdhZAoxiX+YE/BDj18h7Ym2Wmk0UNp8gZUaE3B0UAcaOgpM6IclzehMPxClW7yc5VMvPxybkp2B/FiDTLfJf1LVXTX9ONkVy3FmMITM5NDMliOdPwaqtEOwLkUkWZ4thvGBv1xOlnVS6dGhFVtwRutP5Qlo27WAAAA" target="_blank">Run the query</a>
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 range x from 1 to 10 step 1 
 | extend y = x + 10

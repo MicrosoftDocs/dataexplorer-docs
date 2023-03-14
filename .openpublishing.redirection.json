@@ -156,6 +156,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/kusto/query/regex-operator.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/matches-regex-operator",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/kusto/functions-library/normality_test_fl.md",
       "redirect_url": "/azure/data-explorer/kusto/functions-library/normality-test-fl",
       "redirect_document_id": true
@@ -365,16 +370,6 @@
       "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-to-string-function",
       "redirect_document_id": true
     },
-    {
-			"source_path": "data-explorer/write-queries.md",
-			"redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
-			"redirect_document_id": false
-		},
-    {
-			"source_path": "data-explorer/kusto/query/tutorial.md",
-			"redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
-			"redirect_document_id": false
-		},
     {
       "source_path": "data-explorer/visualize-power-bi.md",
       "redirect_url": "/azure/data-explorer/power-bi-data-connector",
