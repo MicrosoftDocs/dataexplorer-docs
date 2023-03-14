@@ -110,7 +110,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 
     :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
 
-    Kusto.Explorer pastes the following to the clipboard:
+    Kusto.Explorer copies the following to the clipboard:
      * Your query
      * The query results (table or chart)
      * The connection details for the Kusto cluster and database

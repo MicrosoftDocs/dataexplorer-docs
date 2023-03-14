@@ -3,7 +3,7 @@ title: Kusto Explorer code features - Azure Data Explorer
 description: This article describes Kusto Explorer Code features.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 03/14/2023
 ---
 
 # Kusto.Explorer code features

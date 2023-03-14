@@ -3,7 +3,7 @@ title: Kusto.Explorer installation and user interface
 description: Learn about the features of Kusto.Explorer and how it can help you to explore your data
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 03/08/2023
+ms.date: 03/14/2023
 ---
 
 # Kusto.Explorer installation and user interface
