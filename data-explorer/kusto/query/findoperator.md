@@ -125,20 +125,24 @@ For example, see [examples of cases where find will act as a union](./findoperat
 
 ### Term lookup across all tables in current database
 
-The query finds all rows from all tables in the current database in which any column includes the word `Kusto`.
-The resulting records are transformed according to the [output schema](#output-schema).
+The query finds all rows from all tables in the current database in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). The output includes rows from the `Customers` table and the `SalesTable` table of the `ContosoSales` database.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAA0vLzEtRUPJILcpLzEtJrVICAAv0zUwQAAAA" target="_blank">Run the query</a>
 
 ```kusto
-find "Kusto"
+find "Hernandez"
 ```
 
 ### Term lookup across all tables matching a name pattern in the current database
 
-The query finds all rows from all tables in the current database whose name starts with `K`, and in which any column includes the word `Kusto`.
-The resulting records are transformed according to the [output schema](#output-schema).
+The query finds all rows from all tables in the current database whose name starts with `C`, and in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). Now, the output only contains records from the `Customers` table.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAA0vLzEtRyMxT0HDW0lQoz0gtSlXQUshILFZQ8kgtykvMS0mtUgIA+50LFCQAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-find in (K*) where * has "Kusto"
+find in (C*) where * has "Hernandez"
 ```
 
 ### Term lookup across all tables in all databases in the cluster
