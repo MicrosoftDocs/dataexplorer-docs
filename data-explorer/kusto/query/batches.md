@@ -16,6 +16,8 @@ A query can include multiple tabular expression statements, as long as they're d
 
 ## Examples
 
+### Name tabular results
+
 For example, the following query produces two tabular results. User agent tools can then display those results with the appropriate name associated with each (`Count of events in Florida` and `Count of events in Guam`, respectively).
 
 > [!div class="nextstepaction"]
@@ -25,6 +27,8 @@ For example, the following query produces two tabular results. User agent tools 
 StormEvents | where State == "FLORIDA" | count | as ['Count of events in Florida'];
 StormEvents | where State == "GUAM" | count | as ['Count of events in Guam']
 ```
+
+### Share a calculation
 
 Batching is useful for scenarios where a common calculation is shared by multiple subqueries, such as for dashboards. If the common calculation is complex, use the [materialize() function](./materializefunction.md) and construct the query so that it will be executed only once:
 
