@@ -11,6 +11,12 @@ Serilog is a popular logging framework for .NET applications. Serilog allows dev
 
 In this article, you'll use a sample log generator app to show how to configure and use the Serilog connector.
 
+> [!div class="checklist"]
+>
+> * Add
+> * List item 2
+> * List item 3
+
 For a complete list of data connectors, see [Data connectors overview](connector-overview.md).
 
 ## Prerequisites
