@@ -22,9 +22,9 @@ All continuous export commands require at least [Database Admin](../access-contr
 * **Frequency**:
   * Continuous export runs according to the time period configured for it in the `intervalBetweenRuns` property. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. The time interval can be as low as one minute, if the ingestion rate is high.
 
-> [!NOTE]
-> The `intervalBetweenRuns` serves as a recommendation only, and isn't guaranteed to be precise. Continuous export isn't suitable for exporting periodic aggregations.
-> For example, a configuration of `intervalBetweenRuns`=`1h` with an hourly aggregation (`T | summarize by bin(Timestamp, 1h)`) won't work as expected, since the continuous export won't run exactly on-the-hour. Therefore, each hourly bin will receive multiple entries in the exported data.
+    > [!NOTE]
+    > The `intervalBetweenRuns` serves as a recommendation only, and isn't guaranteed to be precise. Continuous export isn't suitable for exporting periodic aggregations.
+    > For example, a configuration of `intervalBetweenRuns`=`1h` with an hourly aggregation (`T | summarize by bin(Timestamp, 1h)`) won't work as expected, since the continuous export won't run exactly on-the-hour. Therefore, each hourly bin will receive multiple entries in the exported data.
 
 * **Number of files**:
   * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#number-of-files). Each continuous export iteration always writes to new files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs. The frequency parameter is `intervalBetweenRuns`.
