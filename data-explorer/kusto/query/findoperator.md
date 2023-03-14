@@ -3,7 +3,7 @@ title: find operator - Azure Data Explorer
 description: Learn how to use the find operator to find rows that match a predicate across a set of tables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 03/14/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -132,7 +132,7 @@ The resulting records are transformed according to the [output schema](#output-s
 find "Kusto"
 ```
 
-## Term lookup across all tables matching a name pattern in the current database
+### Term lookup across all tables matching a name pattern in the current database
 
 The query finds all rows from all tables in the current database whose name starts with `K`, and in which any column includes the word `Kusto`.
 The resulting records are transformed according to the [output schema](#output-schema).
