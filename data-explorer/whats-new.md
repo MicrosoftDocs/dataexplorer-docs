@@ -15,7 +15,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-| [Authentication over HTTPS](/azure/data-explorer/kusto/api/rest/authentication.md)| Updated article.  REST API authorization examples added. |
+| [Authentication over HTTPS](kusto/api/rest/authentication.md)| Updated article.  REST API authorization examples added. |
 
 **General**
 
