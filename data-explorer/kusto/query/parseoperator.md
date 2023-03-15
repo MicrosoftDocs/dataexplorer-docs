@@ -21,6 +21,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 | *kind* | string | &check; | One of the [supported kind values](#supported-kind-values). The default value is `simple`.|
 | *regexFlags* | string | |If *kind* is `regex`, then you can specify regex flags to be used like `U` for ungreedy, `m` for multi-line mode, `s` for match new line `\n`, and `i` for case-insensitive. More flags can be found in [RE2 flags](re2.md).|
 | *expression* | string | &check; | An expression that evaluates to a string.|
+| *stringConstant* | string | &check; | A string constant for which to search and parse.|
 | *columnName* | string | &check; | The name of a column to assign a value to, extracted from the string expression. |
 | *columnType* | string | | The scalar value that indicates the type to convert the value to. The default is the `string`.|
 
