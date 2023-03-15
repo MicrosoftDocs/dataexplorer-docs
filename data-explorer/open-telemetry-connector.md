@@ -10,7 +10,7 @@ ms.reviewer: ramacg
 
 [OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) (OTel) is an open framework for application observability. The instrumentation is hosted by the Cloud Native Computing Foundation (CNCF), which provides standard interfaces for observability data, including [metrics](https://opentelemetry.io/docs/concepts/observability-primer/#reliability--metrics), [logs](https://opentelemetry.io/docs/concepts/observability-primer/#logs), and [traces](https://opentelemetry.io/docs/concepts/observability-primer/#distributed-traces).
 
-The OpenTelemetry exporter supports ingestion of data from many receivers into Azure Data Explorer. In this article, you'll learn how to configure the OTel collector to ingest into Azure Data Explorer, you'll set up the collector to ingest sample data, and then you'll take a quick look at the data that has been ingested.
+The [OpenTelemetry exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) supports ingestion of data from many receivers into Azure Data Explorer. In this article, you'll learn how to configure the OTel collector to ingest into Azure Data Explorer, you'll set up the collector to ingest sample data, and then you'll take a quick look at the data that has been ingested.
 
 > [!NOTE]
 > The configuration settings are summarized in the [readme documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/azuredataexplorerexporter/README.md).
