@@ -83,24 +83,35 @@ Unlike the [find operator](findoperator.md), the `search` operator does not supp
 
 Search for a term over all unrestricted tables and views of the database in scope.
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlBQci9KTc1TAgAhG1rADgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-search "billg"
+search "Green"
 ```
+
+The output contains records from the `Customers`, `Products`, and `SalesTable` tables. The `Customers` records shows all customers with the last name "Green", and the `Products` and `SalesTable` records shows products with some mention of "Green".
 
 ### Conditional global term search
 
 Search for records that match both terms over all unrestricted tables and views of the database in scope.
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlBQci9KTc1TUkjMS1HQUHJJzSmtSFVSyC9SUAooyi9OLU8sSlXSBADUfdV9LAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-search "billg" and ("steveb" or "satyan")
+search "Green" and ("Deluxe" or "Proseware")
 ```
 
 ### Search a specific table
 
-Search only in the TraceEvent table.
+Search only in the `Customers` table.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlDIzFPQCCjKTylNLinWVFByL0pNzVMCAAJBkngcAAAA" target="_blank">Run the query</a>
 
 ```kusto
-search in (TraceEvent) "billg"
+search in (Products) "Green"
 ```
 
 ### Case-sensitive search
