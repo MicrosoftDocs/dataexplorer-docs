@@ -25,9 +25,8 @@ The accuracy depends on the density of population in the region of the percentil
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*expr* | string | &check; | The expression to use for aggregation calculation.|
-|*WeightExpr*| string | &check; | The expression to use as the weight of values for aggregation calculation.|
-|*percentile*| double | &check;| A constant that specifies the percentile.|
-|*Dynamic array* | dynamic | &check; | A list of percentiles in a dynamic array of integers or floating point numbers.|
+|*percentile*| int or long | &check;| A constant that specifies the percentile.|
+|*percentiles* | int or long | &check; | One or more comma-separated percentiles.|
 
 ## Returns
 
