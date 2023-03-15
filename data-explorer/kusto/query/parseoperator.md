@@ -30,22 +30,19 @@ Evaluates a string expression and parses its value into one or more calculated c
 > * The parse pattern may start with *ColumnName* and not only with *StringConstant*.
 > * If the parsed *expression* isn't of type `string`, it will be converted to type `string`.
 > * Use [`project`](projectoperator.md) if you also want to drop or rename some columns.
-> * Use `*` in the pattern to skip junk values.
-> * The `*` can't be used after a `string` type column.
+> * Use `*` in the pattern to skip junk values. The `*` can't be used after a `string` type column.
 
 ### Supported kind values
 
 |Text|Description|
 |--|--|
-| `simple` | This is the default value. *StringConstant* is a regular string value and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types.|
-| `regex` | *StringConstant* may be a regular expression and the match is strict. All string delimiters, which can be a regex for this mode, should appear in the parsed string, and all extended columns must match the required types.|
-| `relaxed` | *StringConstant* is a regular string value and the match is relaxed. All string delimiters should appear in the parsed string, but extended columns may partially match the required types. Extended columns that didn't match the required types will get the value `null`.|
+| `simple` | This is the default value. *stringConstant* is a regular string value and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types.|
+| `regex` | *stringConstant* may be a regular expression and the match is strict. All string delimiters, which can be a regex for this mode, should appear in the parsed string, and all extended columns must match the required types.|
+| `relaxed` | *stringConstant* is a regular string value and the match is relaxed. All string delimiters should appear in the parsed string, but extended columns may partially match the required types. Extended columns that didn't match the required types will get the value `null`.|
 
 ### Regex mode
 
-In regex mode, parse will translate the pattern to a regex. Use [RE2 syntax](re2.md) to do the matching, and use numbered captured groups that are handled internally.
-
-For example:
+In regex mode, parse will translate the pattern to a regex. Use [RE2 syntax](re2.md) to do the matching, and use numbered captured groups that are handled internally. For example:
 
 ```kusto
 parse kind=regex Col with * <regex1> var1:string <regex2> var2:long
