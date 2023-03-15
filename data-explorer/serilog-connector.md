@@ -1,21 +1,21 @@
 ---
-title: Ingest data in Azure Data Explorer using the Serilog connector
-description: Learn how to use the Serilog connector in Azure Data Explorer.
+title: Ingest data with the Serilog sink into Azure Data Explorer
+description: Learn how to use the Azure Data Explorer Serilog sink to ingest data into your cluster.
 ms.date: 03/02/2023
 ms.topic: how-to
 ms.reviewer: ramacg
 ---
-# Ingest data with the Serilog connector
+# Ingest data with the Serilog sink into Azure Data Explorer
 
 Serilog is a popular logging framework for .NET applications. Serilog allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Serilog sink for Azure Data Explorer streams your log data to Azure Data Explorer, where you can analyze and visualize your logs in real time.
 
-In this article, you'll use a sample log generator app to show how to configure and use the Serilog connector.
+In this article, you'll do the following:
 
 > [!div class="checklist"]
 >
-> * Add
-> * List item 2
-> * List item 3
+> * [Set up your environment](#set-up-your-environment)
+> * [Add the Serilog sink to your app](#add-the-serilog-sink-to-your-app)
+> * [Try the sample app](#try-the-sample-app)
 
 For a complete list of data connectors, see [Data connectors overview](connector-overview.md).
 
@@ -24,7 +24,19 @@ For a complete list of data connectors, see [Data connectors overview](connector
 * .NET SDK 6.0 or later
 * An Azure Data Explorer [cluster and database](create-cluster-database-portal.md)
 
-## Create an Azure AD App registration
+## Set up your environment
+
+In this section, you'll set up your environment to use the Serilog sink.
+
+### Install the package
+
+Add the [Serilog.Sinks.AzureDataExplorer](https://www.nuget.org/packages/serilog.sinks.azuredataexplorer) NuGet package. Use the Install-Package command specifying the name of the NuGet package.
+
+```powershell
+Install-Package Serilog.Sinks.AzureDataExplorer
+```
+
+### Create an Azure AD App registration
 
 Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the Serilog connector, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
 
@@ -34,7 +46,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
     * Directory (tenant) ID
     * Client secret key value
 
-## Grant the Azure AD app permissions
+### Grant the Azure AD app permissions
 
 1. In the query tab of the [web UI](https://dataexplorer.azure.com/), connect to your cluster. For more information on how to connect, see [Add clusters](web-query-data.md#add-clusters).
 1. Browse to the database in which you want to ingest data.
@@ -47,7 +59,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
     > [!NOTE]
     > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](kusto/management/manage-database-security-roles.md#view-existing-security-roles).
 
-## Create table and mapping
+### Create table and mapping
 
 Create a target table for the incoming data, mapping the ingested data columns to the columns in the target table. In the following steps, the table schema and mapping correspond to the data sent from the sample app.
 
@@ -63,7 +75,64 @@ Create a target table for the incoming data, mapping the ingested data columns t
     .create table SerilogTest ingestion csv mapping 'SerilogTestMapping' '[{"Name":"Timestamp","DataType":"","Ordinal":"0","ConstValue":null},{"Name":"Level","DataType":"","Ordinal":"1","ConstValue":null},{"Name":"Message","DataType":"","Ordinal":"2","ConstValue":null},{"Name":"Exception","DataType":"","Ordinal":"3","ConstValue":null},{"Name":"Properties","DataType":"","Ordinal":"4","ConstValue":null},{"Name":"Position","DataType":"","Ordinal":"5","ConstValue":null},{"Name":"Elapsed","DataType":"","Ordinal":"6","ConstValue":null}]'
     ```
 
-## Clone the git repo
+## Add the Serilog sink to your app
+
+Use the following steps to add the Serilog sink to your app, configure the environment variables used by the sink, and run the app.
+
+1. Add the following using statements to your app:
+
+    ```csharp
+    using Serilog.Sinks.AzureDataExplorer;
+    ```
+
+1. Configure the Serilog sink, replacing placeholders using the information in the table that follows:
+
+    ```csharp
+    var log = new LoggerConfiguration()
+    .WriteTo.AzureDataExplorer(new AzureDataExplorerSinkOptions
+    {
+        IngestionEndpointUri = "<cluster>",
+        DatabaseName = "<MyDatabase>",
+        TableName = "<MyTable>",
+        BufferBaseFileName = "<BufferBaseFileName>"
+    })
+    .CreateLogger();
+    ```
+
+    | Variable | Description |
+    |---|---|
+    | *IngestionEndPointUri* | The ingest URI for your cluster in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. |
+    | *DatabaseName* | The case-sensitive name of the target database. |
+    | *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create table and mapping](#create-table-and-mapping). |
+    | *AppId* | Application client ID required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+    | *AppKey* | Application key required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+    | *Tenant* | The ID of the tenant in which the application is registered. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+    | *BufferBaseFileName* | Optional base file name for the buffer file. Set this value if you require your logs to be durable against loss resulting connection failures to your cluster. For example, `C:/Temp/Serilog` |
+
+1. Send data to Azure Data Explorer using the Serilog sink. For example:
+
+    ```csharp
+    log.Verbose("Processed {@Position} in {Elapsed:000} ms.", position, elapsedMs);
+    log.Information("Processed {@Position} in {Elapsed:000} ms.", position, elapsedMs);
+    log.Warning("Processed {@Position} in {Elapsed:000} ms.", position, elapsedMs);
+    log.Error(new Exception(), "Processed {@Position} in {Elapsed:000} ms.", position, elapsedMs);
+    log.Debug("Processed {@Position} in {Elapsed:000} ms. ", position, elapsedMs);
+    ```
+
+1. Run the app.
+
+1. Verify that the data is in your cluster. In the [web UI](https://dataexplorer.azure.com/), run the following query replacing the placeholder with the name of the table that used earlier:
+
+    ```kusto
+    <TableName>
+    | take 10
+    ```
+
+## Try the sample app
+
+Try the sample log generator app shows how to configure and use the Serilog sink.
+
+### Clone the git repo
 
 Clone the Serilog sink's [git repo](https://github.com/Azure/serilog-sinks-azuredataexplorer) using the following git command:
 
@@ -111,7 +180,7 @@ export tableName="<tableName>"
 
 ---
 
-## Build the connector
+### Build the sample app
 
 Within your terminal, navigate to the root folder of the cloned repo and run the following `dotnet` command:
 
@@ -119,7 +188,7 @@ Within your terminal, navigate to the root folder of the cloned repo and run the
 dotnet build src
 ```
 
-## Run the sample app
+### Run the sample app
 
 Within your terminal, navigate to the samples folder of the cloned repo and run the following `dotnet` command:
 
@@ -127,7 +196,7 @@ Within your terminal, navigate to the samples folder of the cloned repo and run 
 dotnet build run
 ```
 
-## Explore the ingested data
+### Explore the ingested data
 
 You can explore the ingested data with a quick query in the [web UI](https://dataexplorer.azure.com/).
 
