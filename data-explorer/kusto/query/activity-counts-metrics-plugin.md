@@ -11,7 +11,7 @@ Calculates useful activity metrics for each time window compared/aggregated to *
 
 ## Syntax
 
-*T* `| evaluate` `activity_counts_metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Step* [`,` *Dimensions*`,` ...]`)`
+*T* `| evaluate` `activity_counts_metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Step* [`,` *Dimensions*]`)`
 
 ## Parameters
 
