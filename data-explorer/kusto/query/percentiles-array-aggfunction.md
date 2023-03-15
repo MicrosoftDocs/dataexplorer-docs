@@ -1,16 +1,15 @@
 ---
-title: percentiles_array() - Azure Data Explorer
-description: Learn how to use the percentiles_array() function to calculate estimates for nearest rank percentiles in Azure Data Explorer.
+title: percentiles_array(), percentilesw_array - Azure Data Explorer
+description: Learn how to use the percentiles_array() function to calculate estimates for nearest rank percentiles and weighted percentiles in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/15/2023
 ---
-# percentiles_array() (aggregation function)
+# percentiles_array(), percentilesw_array() (aggregation function)
 
-Calculates multiple percentile estimates for the specified [nearest-rank percentile](#nearest-rank-percentile) of the population defined by *expr*.
-The accuracy depends on the density of population in the region of the percentile.
+Calculates multiple percentile estimates for the specified [nearest-rank percentile](percentiles-aggfunction.md#nearest-rank-percentile) of the population defined by *expr*. The accuracy depends on the density of population in the region of the percentile.
 
-`percentiles_array()` works like [percentiles()](percentiles-aggfunction.md). However, instead of returning the percentile values in individual columns, `percentiles_array()` returns them in a single array.
+`percentiles_array()` works like [percentiles()](percentiles-aggfunction.md) to calculate percentiles, and `percentiles_array()` works like [percentilesw()](percentiles-aggfunction.md) to calculate weighted percentiles. However, instead of returning the values in individual columns, they return them in a single array.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
@@ -18,12 +17,15 @@ The accuracy depends on the density of population in the region of the percentil
 
 `percentiles_array(`*expr*`,` *percentiles*`)`
 
+`percentilesw_array(`*expr*`,` *weightExpr*`,` *percentiles*`)`
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*expr* | string | &check; | The expression to use for aggregation calculation.|
-|*percentiles*| int, long, or dynamic | &check;| One or more constants that specify the percentiles. *percentiles* can be a comma-separated list of integers or long values or a dynamic array of integer or long values.|
+|*percentiles*| int, long, or dynamic | &check;| One or more comma-separated percentiles or a dynamic array of percentiles. Each percentile can be an integer or long value.|
+|*weightExpr*|long|&check;|The weight to give each value.|
 
 ## Returns
 
@@ -91,22 +93,56 @@ The results table displays only the first 10 rows.
 |sensor-34|["0.049980293859462954","0.25094722564949412","0.50914023067384762","0.75571549713447961","0.95176564809278674"]|0.504309494|
 |...|...|...|
 
-## Nearest-rank percentile
+### Weighted percentiles
 
-*P*-th percentile (0 < *P* <= 100) of a list of ordered values, sorted in ascending order, is the smallest value in the list. The *P* percent of the data is less or equal to *P*-th percentile value ([from Wikipedia article on percentiles](https://en.wikipedia.org/wiki/Percentile#The_Nearest_Rank_method)).
+Assume you repetitively measure the time (Duration) it takes an action to complete. Instead of recording every value of the measurement, you record each value of Duration, rounded to 100 msec, and how many times the rounded value appeared (BucketSize).
 
-Define *0*-th percentiles to be the smallest member of the population.
+Use `summarize percentilesw_array(Duration, BucketSize, ...)` to calculate the given percentiles in a "weighted" way. Treat each value of Duration as if it was repeated BucketSize times in the input, without actually needing to materialize those records.
 
->[!NOTE]
-> Given the approximating nature of the calculation, the actual returned value may not be a member of the population.
-> Nearest-rank definition means that *P*=50 does not conform to the [interpolative definition of the median](https://en.wikipedia.org/wiki/Median). When evaluating the significance of this discrepancy for the specific application, the size of the population and an [estimation error](#estimation-error-in-percentiles) should be taken into account.
+The following example shows weighted percentiles. Using the following set of latency values in milliseconds: `{ 1, 1, 2, 2, 2, 5, 7, 7, 12, 12, 15, 15, 15, 18, 21, 22, 26, 35 }`.
 
-## Estimation error in percentiles
+To reduce bandwidth and storage, do pre-aggregation to the following buckets: `{ 10, 20, 30, 40, 50, 100 }`. Count the number of events in each bucket to produce the following table:
 
-The percentiles aggregate provides an approximate value using [T-Digest](https://github.com/tdunning/t-digest/blob/master/docs/t-digest-paper/histo.pdf).
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHISSxJzUuuDElMyklVsFVISSwBQhBbIyi10Dm/NK/EKic/L11HwQei0Kk0OTsVIqapwBWtwKUABBY6CoYGOhC2mY6CEYxtrKNgDGMb6iiYGChwxVpzIVsJAGDD8KqDAAAA" target="_blank">Run the query</a>
 
->[!NOTE]
->
-> * The bounds on the estimation error vary with the value of the requested percentile. The best accuracy is at both ends of the [0..100] scale. Percentiles 0 and 100 are the exact minimum and maximum values of the distribution. The accuracy gradually decreases towards the middle of the scale. It's worst at the median and is capped at 1%.
-> * Error bounds are observed on the rank, not on the value. Suppose percentile(X, 50) returned a value of Xm. The estimate guarantees that at least 49% and at most 51% of the values of X are less or equal to Xm. There is no theoretical limit on the difference between Xm and the actual median value of X.
-> * The estimation may sometimes result in a precise value but there are no reliable conditions to define when it will be the case.
+```kusto
+let latencyTable = datatable (ReqCount:long, LatencyBucket:long) 
+[ 
+    8, 10, 
+    6, 20, 
+    3, 30, 
+    1, 40 
+];
+latencyTable
+```
+
+The table displays:
+
+* Eight events in the 10-ms bucket (corresponding to subset `{ 1, 1, 2, 2, 2, 5, 7, 7 }`)
+* Six events in the 20-ms bucket (corresponding to subset `{ 12, 12, 15, 15, 15, 18 }`)
+* Three events in the 30-ms bucket (corresponding to subset `{ 21, 22, 26 }`)
+* One event  in the 40-ms bucket (corresponding to subset `{ 35 }`)
+
+At this point, the original data is no longer available. Only the number of events in each bucket. To compute percentiles from this data, use the `percentilesw()` function. For the 50, 75, and 99.9 percentiles, use the following query:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAA1WOQQuCQBCF7/sr3lFhCM2sLLrUtVN0i4hpG0Ja11pXwujHZ8hCzVw+Ho/5xoiHYS9Wd3s+G8EKF/b9fjnayWNTt9YvTG2vhO1QXLf6JkMWQx2g0M+ckCY08JQwDpwRssApYZJAHZfqV6neaNqqYle+BHdxWqwvjTTPEzvHXfRnJYSfCHl/d5YTimJUxB+W4nlIyQAAAA==" target="_blank">Run the query</a>
+
+```kusto
+let latencyTable = datatable (ReqCount:long, LatencyBucket:long) 
+[ 
+    8, 10, 
+    6, 20, 
+    3, 30, 
+    1, 40 
+];
+latencyTable
+| summarize percentilesw_array(LatencyBucket, ReqCount, 50, 75, 99.9)
+```
+
+**Output**
+
+| percentile_LatencyBucket |
+|---|---|---|
+| [20, 20, 40] |
