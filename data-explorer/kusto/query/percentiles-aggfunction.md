@@ -22,9 +22,9 @@ The accuracy depends on the density of population in the region of the percentil
 
 `percentiles(`*expr*`,` *percentiles*`)`
 
-`percentilew(`*expr*`,` *percentile*`)`
+`percentilew(`*expr*`,` *weightExpr*`,` *percentile*`)`
 
-`percentilesw(`*expr*`,` *percentiles*`)`
+`percentilesw(`*expr*`,` *weightExpr*`,` *percentiles*`)`
 
 ## Parameters
 
@@ -33,6 +33,7 @@ The accuracy depends on the density of population in the region of the percentil
 |*expr* | string | &check; | The expression to use for aggregation calculation.|
 |*percentile*| int or long | &check;| A constant that specifies the percentile.|
 |*percentiles* | int or long | &check; | One or more comma-separated percentiles.|
+|*weightExpr*|long|&check;|The weight to give each value.|
 
 ## Returns
 
