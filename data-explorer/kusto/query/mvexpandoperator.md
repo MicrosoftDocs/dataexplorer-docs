@@ -3,7 +3,7 @@ title: mv-expand operator - Azure Data Explorer
 description: Learn how to use the mv-expand operator to expand multi-value dynamic arrays or property bags into multiple records.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 03/15/2023
 ---
 # mv-expand operator
 
@@ -17,29 +17,19 @@ output of the operator. All columns of the input that aren't expanded are duplic
 
 ## Syntax
 
-*T* `|mv-expand` [`bagexpansion=`(`bag` | `array`)] [`with_itemindex=`*IndexColumnName*] *ColumnName* [`to typeof(` *Typename*`)`] [``, *ColumnName* ...] [`limit` *Rowlimit*]
+*T* `|mv-expand` [`bagexpansion=`(`bag` | `array`)] [`with_itemindex=` *IndexColumnName*] *ColumnName* [`to typeof(` *Typename*`)`] [`,` *ColumnName* ...] [`limit` *Rowlimit*]
 
-*T* `|mv-expand` [`bagexpansion=`(`bag` | `array`)] *Name* `=` *ArrayExpression* [`to typeof(`*Typename*`)`] [, [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
+*T* `|mv-expand` [`bagexpansion=`(`bag` | `array`)] [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] [`,` [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
 
 ## Parameters
 
-* *ColumnName*, *ArrayExpression*: A column reference, or a scalar expression with a value
-  of type `dynamic` that holds an array or a property bag. The individual top-level elements
-  of the array or property bag get expanded into multiple records.<br>
-  When *ArrayExpression* is used and *Name* doesn't equal any input column name,
-  the expanded value is extended into a new column in the output.
-  Otherwise, the existing *ColumnName* is replaced.
-
-* *Name:* A name for the new column.
-
-* *Typename:* Indicates the underlying type of the array's elements, which becomes the type of the column produced by the `mv-expand` operator. The operation of applying type is cast-only and doesn't include parsing or type-conversion. Array elements that don't conform with the declared type will become `null` values.
-
-* *RowLimit:* The maximum number of rows generated from each original row. The default is 2147483647.
-
-  > [!NOTE]
-  > `mvexpand` is a legacy and obsolete form of the operator `mv-expand`. The legacy version has a default row limit of 128.
-
-* *IndexColumnName:* If `with_itemindex` is specified, the output will include another column (named *IndexColumnName*) which contains the index (starting at 0) of the item in the original expanded collection.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*ColumnName*, *ArrayExpression*|string|&check;|A column reference, or a scalar expression with a value of type `dynamic` that holds an array or a property bag. The individual top-level elements of the array or property bag get expanded into multiple records.<br>When *ArrayExpression* is used and *Name* doesn't equal any input column name, the expanded value is extended into a new column in the output. Otherwise, the existing *ColumnName* is replaced.|
+|*Name*|string| |A name for the new column.|
+|*Typename*|string|&check;|Indicates the underlying type of the array's elements, which becomes the type of the column produced by the `mv-expand` operator. The operation of applying type is cast-only and doesn't include parsing or type-conversion. Array elements that don't conform with the declared type become `null` values.|
+|*RowLimit*|int||The maximum number of rows generated from each original row. The default is 2147483647. `mvexpand` is a legacy and obsolete form of the operator `mv-expand`. The legacy version has a default row limit of 128.|
+|*IndexColumnName*|string||If `with_itemindex` is specified, the output includes another column named *IndexColumnName* that contains the index starting at 0 of the item in the original expanded collection.|
 
 ## Returns
 
@@ -51,7 +41,7 @@ as determined in the following way:
    to all records.
 
 1. For each *ColumnName* or *ArrayExpression* that is expanded, the number of output records
-   is determined for each value as explained [below](#modes-of-expansion). For each input record, the maximum number of output records is calculated. All arrays or property bags are expanded "in parallel"
+   is determined for each value as explained in [modes of expansion](#modes-of-expansion). For each input record, the maximum number of output records is calculated. All arrays or property bags are expanded "in parallel"
    so that missing values (if any) are replaced by null values. Elements are expanded into rows in the order that they appear in the original array/bag.
 
 1. If the dynamic value is null, then a single record is produced for that value (null).
