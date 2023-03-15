@@ -7,7 +7,7 @@ ms.date: 03/15/2023
 ---
 # bag_pack()
 
-Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from a list of columns. The keys of the property bag are the column names.
+Creates a dynamic property bag object from a list of columns.
 
 ## Syntax
 
@@ -17,7 +17,7 @@ Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from a lis
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*column*| scalar | &check; | A column to pack.|
+|*column*| scalar | &check; | A column to pack. The name of the column is the property name in the property bag.|
 
 ## Returns
 
