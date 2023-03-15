@@ -27,13 +27,13 @@ Calculates useful activity metrics for each time window compared/aggregated to *
 
 ## Returns
 
-Returns a table that has the total count values, distinct count values, distinct count of new values, and aggregated distinct count for each time window.
+Returns a table that has the total count values, distinct count values, distinct count of new values, and aggregated distinct count for each time window. If *Dimensions* are provided, then there is a column for each dimension in the output table.
 
 The following table shows the output table schema.
 
-|`Timestamp`|*Dimension1*|...|*DimensionN*|`count`|`dcount`|`new_dcount`|`aggregated_dcount`|
-|---|---|---|---|---|---|---|---|
-|type: as of *TimelineColumn*|..|..|..|long|long|long|long|
+|`Timestamp`|`count`|`dcount`|`new_dcount`|`aggregated_dcount`|
+|---|---|---|---|---|
+|type: as of *TimelineColumn*|long|long|long|long|
 
 * `Timestamp`: The time window start time.
 * `count`: The total records count in the time window and *dim(s)*
