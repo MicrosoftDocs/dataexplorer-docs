@@ -7,15 +7,15 @@ ms.reviewer: ramacg
 ---
 # Ingest data with the Serilog sink into Azure Data Explorer
 
-Serilog is a popular logging framework for .NET applications. Serilog allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Serilog sink for Azure Data Explorer streams your log data to Azure Data Explorer, where you can analyze and visualize your logs in real time.
+Serilog is a popular logging framework for .NET applications. Serilog allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Serilog sink, also known as an appender, for Azure Data Explorer streams your log data to Azure Data Explorer, where you can analyze and visualize your logs in real time.
 
-In this article, you'll do the following:
+In this article, you'll learn how to:
 
 > [!div class="checklist"]
 >
 > * [Set up your environment](#set-up-your-environment)
 > * [Add the Serilog sink to your app](#add-the-serilog-sink-to-your-app)
-> * [Try the sample app](#try-the-sample-app)
+> * [Run the sample app](#run-the-sample-app)
 
 For a complete list of data connectors, see [Data connectors overview](connector-overview.md).
 
@@ -26,7 +26,7 @@ For a complete list of data connectors, see [Data connectors overview](connector
 
 ## Set up your environment
 
-In this section, you'll set up your environment to use the Serilog sink.
+In this section, you'll prepare your environment to use the Serilog sink.
 
 ### Install the package
 
@@ -59,7 +59,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
     > [!NOTE]
     > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](kusto/management/manage-database-security-roles.md#view-existing-security-roles).
 
-### Create table and mapping
+### Create a table and ingestion mapping
 
 Create a target table for the incoming data, mapping the ingested data columns to the columns in the target table. In the following steps, the table schema and mapping correspond to the data sent from the sample app.
 
@@ -77,7 +77,11 @@ Create a target table for the incoming data, mapping the ingested data columns t
 
 ## Add the Serilog sink to your app
 
-Use the following steps to add the Serilog sink to your app, configure the environment variables used by the sink, and run the app.
+Use the following steps to:
+
+* Add the Serilog sink to your app
+* Configure the variables used by the sink
+* Build and run the app
 
 1. Add the following using statements to your app:
 
@@ -109,6 +113,8 @@ Use the following steps to add the Serilog sink to your app, configure the envir
     | *Tenant* | The ID of the tenant in which the application is registered. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
     | *BufferBaseFileName* | Optional base file name for the buffer file. Set this value if you require your logs to be durable against loss resulting connection failures to your cluster. For example, `C:/Temp/Serilog` |
 
+    For more options, see [Sink Options](https://github.com/Azure/serilog-sinks-azuredataexplorer#options).
+
 1. Send data to Azure Data Explorer using the Serilog sink. For example:
 
     ```csharp
@@ -119,7 +125,7 @@ Use the following steps to add the Serilog sink to your app, configure the envir
     log.Debug("Processed {@Position} in {Elapsed:000} ms. ", position, elapsedMs);
     ```
 
-1. Run the app.
+1. Build and run the app. For example, if you are using Visual Studio, press F5.
 
 1. Verify that the data is in your cluster. In the [web UI](https://dataexplorer.azure.com/), run the following query replacing the placeholder with the name of the table that used earlier:
 
@@ -128,90 +134,76 @@ Use the following steps to add the Serilog sink to your app, configure the envir
     | take 10
     ```
 
-## Try the sample app
+## Run the sample app
 
-Try the sample log generator app shows how to configure and use the Serilog sink.
+Use the sample log generator app as an example showing how to configure and use the Serilog sink.
 
-### Clone the git repo
+1. Clone the Serilog sink's [git repo](https://github.com/Azure/serilog-sinks-azuredataexplorer) using the following git command:
 
-Clone the Serilog sink's [git repo](https://github.com/Azure/serilog-sinks-azuredataexplorer) using the following git command:
+    ```powershell
+    git clone https://github.com/Azure/serilog-sinks-azuredataexplorer
+    ```
 
-```powershell
-git clone https://github.com/Azure/serilog-sinks-azuredataexplorer
-```
+1. Set the following environmental variables to configure the Serilog sink:
 
-### Set environmental variables
+    | Variable | Description |
+    |---|---|
+    | *IngestionEndPointUri* | The ingest URI for your cluster in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. |
+    | *DatabaseName* | The case-sensitive name of the target database. |
+    | *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create table and mapping](#create-table-and-mapping). |
+    | *AppId* | Application client ID required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+    | *AppKey* | Application key required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+    | *Tenant* | The ID of the tenant in which the application is registered. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+    | *BufferBaseFileName* | The base file name for the buffer file. Set this value if you require your logs to be durable against loss resulting connection failures to your cluster. For example, `C:/Temp/Serilog` |
 
-Set the following environmental variables.
+    You can set the environment variables manually or using the following commands:
 
-| Variable | Description |
-|---|---|
-| *IngestionEndPointUri* | The ingest URI for your cluster in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. |
-| *DatabaseName* | The case-sensitive name of the target database. |
-| *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create table and mapping](#create-table-and-mapping). |
-| *AppId* | Application client ID required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-| *AppKey* | Application key required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-| *Tenant* | The ID of the tenant in which the application is registered. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-| *BufferBaseFileName* | The base file name for the buffer file. Set this value if you require your logs to be durable against loss resulting connection failures to your cluster. For example, `C:/Temp/Serilog` |
+    #### [Windows](#tab/windows)
 
-You can set the environment variables manually or using the following commands:
+    ```powershell
+    $env:ingestionURI="<ingestionURI>"
+    $env:appId="<appId>"
+    $env:appKey="<appKey>"
+    $env:tenant="<tenant>"
+    $env:databaseName="<databaseName>"
+    $env:tableName="<tableName>"
+    ```
 
-#### [Windows](#tab/windows)
+    #### [Mac/Linux](#tab/linux)
 
-```powershell
-$env:ingestionURI="<ingestionURI>"
-$env:appId="<appId>"
-$env:appKey="<appKey>"
-$env:tenant="<tenant>"
-$env:databaseName="<databaseName>"
-$env:tableName="<tableName>"
-```
+    ```bash
+    export ingestionURI="<ingestionURI>"
+    export appId="<appId>"
+    export appKey="<appKey>"
+    export tenant="<tenant>"
+    export databaseName="<databaseName>"
+    export tableName="<tableName>"
+    ```
 
-#### [Mac/Linux](#tab/linux)
+    ---
 
-```bash
-export ingestionURI="<ingestionURI>"
-export appId="<appId>"
-export appKey="<appKey>"
-export tenant="<tenant>"
-export databaseName="<databaseName>"
-export tableName="<tableName>"
-```
+1. Within your terminal, navigate to the root folder of the cloned repo and run the following `dotnet` command to build the app:
 
----
+    ```powershell
+    dotnet build src
+    ```
 
-### Build the sample app
+1. Within your terminal, navigate to the samples folder and run the following `dotnet` command to run the app:
 
-Within your terminal, navigate to the root folder of the cloned repo and run the following `dotnet` command:
+    ```powershell
+    dotnet build run
+    ```
 
-```powershell
-dotnet build src
-```
+1. In the [web UI](https://dataexplorer.azure.com/), select the target database, and run the following query to explore the ingested data:
 
-### Run the sample app
+    ```kusto
+    SerilogTest
+    | take 10
+    ```
 
-Within your terminal, navigate to the samples folder of the cloned repo and run the following `dotnet` command:
+    Your output should look similar to the following image:
 
-```powershell
-dotnet build run
-```
-
-### Explore the ingested data
-
-You can explore the ingested data with a quick query in the [web UI](https://dataexplorer.azure.com/).
-
-Copy the following query and run it in the context of your target database.
-
-```kusto
-SerilogTest
-| take 10
-```
-
-**Output:**
-
-Your output should look similar to the following table:
-
-:::image type="content" source="media/serilog-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
+    :::image type="content" source="media/serilog-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
 
 ## See also
 
