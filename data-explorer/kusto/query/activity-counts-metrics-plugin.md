@@ -27,7 +27,7 @@ Calculates useful activity metrics for each time window compared/aggregated to *
 
 ## Returns
 
-Returns a table that has the total count values, distinct count values, distinct count of new values, and aggregated distinct count for each time window. If *Dimensions* are provided, then for each dimension there's another column with the dimension column name and value in the output table.
+Returns a table that has the total count values, distinct count values, distinct count of new values, and aggregated distinct count for each time window. If *Dimensions* are provided, then there's another column for each dimension in the output table.
 
 The following table describes the output table schema.
 
