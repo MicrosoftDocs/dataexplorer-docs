@@ -50,10 +50,10 @@ Azure Active Directory (Azure AD) application authentication is used for applica
 
 1. In the query tab of the [web UI](https://dataexplorer.azure.com/), connect to your cluster. For more information on how to connect, see [Add clusters](web-query-data.md#add-clusters).
 1. Browse to the database in which you want to ingest data.
-1. Run the following management command, replacing the placeholders *DatabaseName* and *application ID* with the previously saved values. This command grants the app the [database ingestor](kusto/management/access-control/role-based-access-control.md) role. For more information, see [Manage permissions with management commands](manage-database-permissions.md#manage-permissions-with-management-commands).
+1. Run the following management command, replacing the placeholders *DatabaseName* and *ApplicationID* with the previously saved values. This command grants the app the [database ingestor](kusto/management/access-control/role-based-access-control.md) role. For more information, see [Manage permissions with management commands](manage-database-permissions.md#manage-permissions-with-management-commands).
 
     ```kusto
-    .add database DatabaseName ingestors ('aadapp=12345-abcd-12a3-b123-ccdd12345a1b') 'Azure Data Explorer App Registration'
+    .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>') 'Azure Data Explorer App Registration'
     ```
 
     > [!NOTE]
@@ -63,16 +63,16 @@ Azure Active Directory (Azure AD) application authentication is used for applica
 
 Create a target table for the incoming data, mapping the ingested data columns to the columns in the target table. In the following steps, the table schema and mapping correspond to the data sent from the sample app.
 
-1. In your query editor, run the following [table creation command](kusto/management/create-table-command.md):
+1. In your query editor, run the following [table creation command](kusto/management/create-table-command.md), replacing the placeholder *TableName* with the name of the target table:
 
     ```kusto
-    .create table SerilogTest (Timestamp: datetime, Level: string, Message: string, Exception: string, Properties: dynamic, Position: dynamic, Elapsed: int)
+    .create table <TableName> (Timestamp: datetime, Level: string, Message: string, Exception: string, Properties: dynamic, Position: dynamic, Elapsed: int)
     ```
 
-1. Run the following [ingestion mapping command](kusto/management/create-ingestion-mapping-command.md):
+1. Run the following [ingestion mapping command](kusto/management/create-ingestion-mapping-command.md), replacing the placeholders *TableName* with the target table name and *TableNameMapping* with the name of the ingestion mapping:
 
     ```kusto
-    .create table SerilogTest ingestion csv mapping 'SerilogTestMapping' '[{"Name":"Timestamp","DataType":"","Ordinal":"0","ConstValue":null},{"Name":"Level","DataType":"","Ordinal":"1","ConstValue":null},{"Name":"Message","DataType":"","Ordinal":"2","ConstValue":null},{"Name":"Exception","DataType":"","Ordinal":"3","ConstValue":null},{"Name":"Properties","DataType":"","Ordinal":"4","ConstValue":null},{"Name":"Position","DataType":"","Ordinal":"5","ConstValue":null},{"Name":"Elapsed","DataType":"","Ordinal":"6","ConstValue":null}]'
+    .create table <TableName> ingestion csv mapping '<TableNameMapping>' '[{"Name":"Timestamp","DataType":"","Ordinal":"0","ConstValue":null},{"Name":"Level","DataType":"","Ordinal":"1","ConstValue":null},{"Name":"Message","DataType":"","Ordinal":"2","ConstValue":null},{"Name":"Exception","DataType":"","Ordinal":"3","ConstValue":null},{"Name":"Properties","DataType":"","Ordinal":"4","ConstValue":null},{"Name":"Position","DataType":"","Ordinal":"5","ConstValue":null},{"Name":"Elapsed","DataType":"","Ordinal":"6","ConstValue":null}]'
     ```
 
 ## Add the Serilog sink to your app
@@ -194,10 +194,10 @@ Use the sample log generator app as an example showing how to configure and use 
     dotnet build run
     ```
 
-1. In the [web UI](https://dataexplorer.azure.com/), select the target database, and run the following query to explore the ingested data:
+1. In the [web UI](https://dataexplorer.azure.com/), select the target database, and run the following query to explore the ingested data, replacing the placeholder *TableName* with the name of the target table:
 
     ```kusto
-    SerilogTest
+    <TableName>
     | take 10
     ```
 
