@@ -1,11 +1,11 @@
 ---
-title: percentiles_array(), percentilesw_array - Azure Data Explorer
-description: Learn how to use the percentiles_array() function to calculate estimates for nearest rank percentiles and weighted percentiles in Azure Data Explorer.
+title: percentiles_array() - Azure Data Explorer
+description: Learn how to use the percentiles_array() function to calculate estimates for nearest rank percentiles in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/15/2023
 ---
-# percentiles_array(), percentilesw_array() (aggregation function)
+# percentiles_array() (aggregation function)
 
 Calculates multiple percentile estimates for the specified [nearest-rank percentile](percentiles-aggfunction.md#nearest-rank-percentile) of the population defined by *expr*. The accuracy depends on the density of population in the region of the percentile.
 
