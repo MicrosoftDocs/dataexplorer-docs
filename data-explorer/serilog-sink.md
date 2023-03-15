@@ -1,7 +1,7 @@
 ---
 title: Ingest data with the Serilog sink into Azure Data Explorer
 description: Learn how to use the Azure Data Explorer Serilog sink to ingest data into your cluster.
-ms.date: 03/02/2023
+ms.date: 03/15/2023
 ms.topic: how-to
 ms.reviewer: ramacg
 ---

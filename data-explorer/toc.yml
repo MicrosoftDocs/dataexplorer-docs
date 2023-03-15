@@ -196,7 +196,7 @@ items:
       href: apache-log4j2-connector.md
     - name: Serilog
       displayName: ingest data, ingestion, connector
-      href: serilog-connector.md
+      href: serilog-sink.md
     - name: Apache Spark 
       displayName: connector, export, ingest
       href: spark-connector.md
