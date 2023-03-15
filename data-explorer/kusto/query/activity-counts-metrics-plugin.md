@@ -31,7 +31,7 @@ Returns a table that has the total count values, distinct count values, distinct
 
 The following table describes the output table schema. If *Dimensions* are provided, then for each dimension there's another column with the dimension column name and value in the output table.
 
-| Output column name | Type | Description |
+| Column name | Type | Description |
 |---|---|---|
 | `Timestamp` | Same as the provided *TimelineColumn* argument| The time window start time. |
 | `count` | long | The total records count in the time window and *dim(s)* |
