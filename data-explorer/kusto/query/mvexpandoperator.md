@@ -62,11 +62,15 @@ Two modes of property bag expansions are supported:
 
 ### Single column - array expansion
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY1EK4XMvBIdhSQrhZTKvMTczGRNXq5oXi4FIDDUgYlpRBsa6CgYGcRq6kCkjJCk1BPVdRTUk9RjgTpjeblqFHLLdFMrChLzUhSSANALFPlqAAAA" target="_blank">Run the query</a>
+
 ```kusto
-datatable (a:int, b:dynamic)
-[1,dynamic([10, 20]),
- 2,dynamic(['a', 'b'])]
+datatable (a: int, b: dynamic)
+[
+    1, dynamic([10, 20]),
+    2, dynamic(['a', 'b'])
+]
 | mv-expand b
 ```
 
@@ -83,11 +87,15 @@ datatable (a:int, b:dynamic)
 
 A simple expansion of a single column:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY1EK4XMvBIdhSQrhZTKvMTczGRNXq5oXi4FIDDUgYlpVCsVFOUXGCpZKSglGirpKIC5RiBukqFSraYORIMRdg1GqBqMgBp4uWJ5uWoUcst0UysKEvNSFJIAxNVM3ZQAAAA=" target="_blank">Run the query</a>
+
 ```kusto
-datatable (a:int, b:dynamic)
-[1,dynamic({"prop1":"a1", "prop2":"b1"}),
- 2,dynamic({"prop1":"a2", "prop2":"b2"})]
+datatable (a: int, b: dynamic)
+[
+    1, dynamic({"prop1": "a1", "prop2": "b1"}),
+    2, dynamic({"prop1": "a2", "prop2": "b2"})
+]
 | mv-expand b
 ```
 
@@ -104,11 +112,15 @@ datatable (a:int, b:dynamic)
 
 A simple bag expansion to key-value pairs:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22LwQqDMBBE74H8w5CTQgpNjoJfEjzsNqFINUoqYmj7742WHgqduczM7vO0FPMQUFGDPi4a3MDnSGN/qaVwUqDI6O9WPdScptmoBoqM0jiq3Ssb9ar1B7D/AfsL2AJI0UnxxLiewjZT9GC6HuneT7GllCiDsb+EbQnlfgsZLdidO42Vhpad6d7eMsidxwAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-datatable (a:int, b:dynamic)
-[1,dynamic({"prop1":"a1", "prop2":"b1"}),
- 2,dynamic({"prop1":"a2", "prop2":"b2"})]
+datatable (a: int, b: dynamic)
+[
+    1, dynamic({"prop1": "a1", "prop2": "b1"}),
+    2, dynamic({"prop1": "a2", "prop2": "b2"})
+]
 | mv-expand bagexpansion=array b 
 | extend key = b[0], val=b[1]
 ```
@@ -126,9 +138,13 @@ datatable (a:int, b:dynamic)
 
 Expanding two columns will first 'zip' the applicable columns and then expand them:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY1EK4XMvBIdhSQrhZTKvMTczGQdhWQ4WzOal0sBCAx1YCIa1UoFRfkFhkpWCkqJSjoKYJ4RiJekVKuJUBZtqqNgoqNgHKvJyxXLy1WjkFumm1pRkJiXopAEtAEANvW+roIAAAA=" target="_blank">Run the query</a>
+
 ```kusto
-datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), dynamic([5, 4, 3])]
+datatable (a: int, b: dynamic, c: dynamic)[
+    1, dynamic({"prop1": "a", "prop2": "b"}), dynamic([5, 4, 3])
+]
 | mv-expand b, c
 ```
 
@@ -144,14 +160,14 @@ datatable (a:int, b:dynamic, c:dynamic)[1,dynamic({"prop1":"a", "prop2":"b"}), d
 
 If you want to get a Cartesian product of expanding two columns, expand one after the other:
 
-<!-- csl: https://kuskusdfv3.kusto.windows.net/Kuskus -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY1EK4XMvBIdhSQrhZTKvMTczGQdhWQ4W5OXK5qXSwEIDHVgYhrVSgVF+QWGSlYKSolKOgpgnhGIl6RUq4lQFm2qo2AWCzQhlperRiG3TDe1oiAxL0UhCZWbDACXJubPjQAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-datatable (a:int, b:dynamic, c:dynamic)
-  [
-  1,
-  dynamic({"prop1":"a", "prop2":"b"}),
-  dynamic([5, 6])
-  ]
+datatable (a: int, b: dynamic, c: dynamic)
+[
+    1, dynamic({"prop1": "a", "prop2": "b"}), dynamic([5, 6])
+]
 | mv-expand b
 | mv-expand c
 ```
@@ -169,18 +185,24 @@ datatable (a:int, b:dynamic, c:dynamic)
 
 To force the output of an mv-expand to a certain type (default is dynamic), use `to typeof`:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02MuwoCMRRE+4X8w7BVAtfCBz629TOWFHm5BkyymIu44McbC8WZZjgzjDfcbG8B0gyofI95ItgBfskmRUdwv6xG0aGpP5dc2WTu6VvJcU3YELaEnVZ/eE84EI6Ek1ai06J7IT1W4Tmb7GHbO7iAlzmUi4yZ1WcwBa7uGpJ5A3+651CdAAAA" target="_blank">Run the query</a>
+
 ```kusto
-datatable (a:string, b:dynamic, c:dynamic)["Constant", dynamic([1,2,3,4]), dynamic([6,7,8,9])]
+datatable (a: string, b: dynamic, c: dynamic)[
+    "Constant", dynamic([1, 2, 3, 4]), dynamic([6, 7, 8, 9])
+]
 | mv-expand b, c to typeof(int)
 | getschema 
 ```
 
-ColumnName|ColumnOrdinal|DateType|ColumnType
--|-|-|-
-a|0|System.String|string
-b|1|System.Object|dynamic
-c|2|System.Int32|int
+**Output**
+
+| ColumnName | ColumnOrdinal | DateType | ColumnType |
+|---|---|---|---|
+| a | 0 | System.String | string |
+| b | 1 | System.Object | dynamic |
+| c | 2 | System.Int32 | int |
 
 Notice column `b` is returned as `dynamic` while `c` is returned as `int`.
 
@@ -188,7 +210,9 @@ Notice column `b` is returned as `dynamic` while `c` is returned as `int`.
 
 Expansion of an array with `with_itemindex`:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBRKC5JLVAw5OWqUSguzc1NLMqsAqmwVchNzE6Nz8ksLtGo0ATJ5pbpplYUJOalKJRnlmTEZ5ak5mbmpaRW2HqCSIUKAIrdlHpcAAAA" target="_blank">Run the query</a>
+
 ```kusto
 range x from 1 to 4 step 1
 | summarize x = make_list(x)
