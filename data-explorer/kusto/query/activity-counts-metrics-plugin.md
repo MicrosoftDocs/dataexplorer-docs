@@ -27,19 +27,17 @@ Calculates useful activity metrics for each time window compared/aggregated to *
 
 ## Returns
 
-Returns a table that has the total count values, distinct count values, distinct count of new values, and aggregated distinct count for each time window. If *Dimensions* are provided, then there is a column for each dimension in the output table.
+Returns a table that has the total count values, distinct count values, distinct count of new values, and aggregated distinct count for each time window.
 
-The following table shows the output table schema.
+The following table describes the output table schema. If *Dimensions* are provided, then for each dimension there's an additional column with the dimension column name and value in the output table.
 
-|`Timestamp`|`count`|`dcount`|`new_dcount`|`aggregated_dcount`|
-|---|---|---|---|---|
-|type: as of *TimelineColumn*|long|long|long|long|
-
-* `Timestamp`: The time window start time.
-* `count`: The total records count in the time window and *dim(s)*
-* `dcount`: The distinct ID values count in the time window and *dim(s)*
-* `new_dcount`: The distinct ID values in the time window and *dim(s)* compared to all previous time windows.
-* `aggregated_dcount`: The total aggregated distinct ID values of *dim(s)* from first-time window to current (inclusive).
+| Output column name | Type | Description |
+|---|---|---|
+| `Timestamp` | Same as the provided *TimelineColumn* argument| The time window start time. |
+| `count` | long | The total records count in the time window and *dim(s)* |
+| `dcount` | long | The distinct ID values count in the time window and *dim(s)* |
+| `new_dcount` | long | The distinct ID values in the time window and *dim(s)* compared to all previous time windows. |
+| `aggregated_dcount` | long | The total aggregated distinct ID values of *dim(s)* from first-time window to current (inclusive). |
 
 ## Examples
 
