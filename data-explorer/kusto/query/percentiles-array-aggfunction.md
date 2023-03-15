@@ -23,7 +23,7 @@ The accuracy depends on the density of population in the region of the percentil
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*expr* | string | &check; | The expression to use for aggregation calculation.|
-|*percentiles*| long or dynamic | &check;| One or more constants that specify the percentiles. *percentiles* can be a comma-separated list of strings or a dynamic array.|
+|*percentiles*| int, long, or dynamic | &check;| One or more constants that specify the percentiles. *percentiles* can be a comma-separated list of integers or long values or a dynamic array of integer or long values.|
 
 ## Returns
 
