@@ -203,7 +203,7 @@ Use the sample log generator app as an example showing how to configure and use 
 
     Your output should look similar to the following image:
 
-    :::image type="content" source="media/serilog-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
+    :::image type="content" lightbox="media/serilog-connector/take-10-results.png" source="media/serilog-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
 
 ## See also
 
