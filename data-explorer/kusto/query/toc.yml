@@ -930,6 +930,7 @@ items:
   - name: minif()
     href: minif-aggfunction.md
   - name: percentile(), percentiles()
+    displayName: percentilew(), percentilesw(), weighted percentile
     href: percentiles-aggfunction.md
   - name: percentiles_array()
     href: percentiles-array-aggfunction.md
