@@ -9,7 +9,7 @@ ms.date: 03/15/2023
 
 Calculates multiple percentile estimates for the specified [nearest-rank percentile](percentiles-aggfunction.md#nearest-rank-percentile) of the population defined by *expr*. The accuracy depends on the density of population in the region of the percentile.
 
-`percentiles_array()` works like [percentiles()](percentiles-aggfunction.md) to calculate percentiles, and `percentiles_array()` works like [percentilesw()](percentiles-aggfunction.md) to calculate weighted percentiles. However, instead of returning the values in individual columns, they return them in a single array.
+`percentiles_array()` works like [percentiles()](percentiles-aggfunction.md) to calculate percentiles, and `percentilesw_array()` works like [percentilesw()](percentiles-aggfunction.md) to calculate weighted percentiles. However, instead of returning the values in individual columns, they return them in a single array.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
