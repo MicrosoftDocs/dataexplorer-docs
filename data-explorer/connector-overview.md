@@ -157,7 +157,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Underlying SDK:** [.NET](kusto/api/netfx/about-the-sdk.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/serilog-sinks-azuredataexplorer
 * **Documentation:** [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink.md)
-* **Community Blog:** [Getting started with Serilog sink and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-serilog-and-azure-data-explorer/ba-p/3742009)
+* **Community Blog:** [Getting started with Serilog sink and Azure Data Explorer](https://go.microsoft.com/fwlink/p/?linkid=2227749)
 
 ## Telegraf
 
