@@ -3,7 +3,7 @@ title: reduce operator - Azure Data Explorer
 description: Learn how to use the reduce operator to group a set of strings together based on value similarity.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 1/17/2023
+ms.date: 03/15/2023
 ---
 # reduce operator
 
@@ -38,7 +38,9 @@ For example, the result of `reduce by city` might include:
 | \* -on- \* | 2730 |One -on- One  |
 | Paris      | 2716 |Paris         |
 
-Another example with customized tokenization:
+## Examples
+
+### Use customized tokenization
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzWNMQ7CMBAEe16xcmWkCNkPyA9IR5H2cI7YCOzochGJxOO5hq1WGu2sUJ0ZOx7S3ojQhhhCwKq8IJ6+WKQ9OSmG48a7ojciidS7gVIula9MUkudR9fZ2KB1r61U9UJ18jGcLSYSnrbEuB9/FT5FMzQLr7m9pj5cQojokDIJJWVZ7c2N7gefKNUWogAAAA==" target="_blank">Run the query</a>
@@ -55,7 +57,7 @@ range x from 1 to 1000 step 1
 |----------------|-----|-----------------|
 |MachineLearning*|1000 |MachineLearningX4|
 
-## Examples
+### Apply `reduce` to sanitized input
 
 The following example shows how one might apply the `reduce` operator to a "sanitized"
 input, in which GUIDs in the column being reduced are replaced prior to reducing
