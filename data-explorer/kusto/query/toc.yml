@@ -933,6 +933,7 @@ items:
     displayName: percentilew(), percentilesw(), weighted percentile
     href: percentiles-aggfunction.md
   - name: percentiles_array()
+    displayName: percentilesw_array(), weighted percentiles
     href: percentiles-array-aggfunction.md
   - name: stdev()
     href: stdev-aggfunction.md
