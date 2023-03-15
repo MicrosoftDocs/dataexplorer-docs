@@ -19,8 +19,8 @@ Adding or removing principals can be done by a [DatabaseAdmin](./access-control/
 > [!NOTE]
 > RestrictedViewAccess policy can't be configured on a table on which a [Row Level Security policy](./rowlevelsecuritypolicy.md) is enabled.
 
-> [!WARNING]
+> [!IMPORTANT]
 >
-> A table with RestrictedViewAccess policy enabled cannot be used as the source of a materialized view. See [materialized views limitations and known issues](./materialized-views/materialized-views-limitations.md#the-materialized-view-source) for more details.
+> A table with RestrictedViewAccess policy enabled cannot be used as the source of a materialized view. For more information, see [materialized views limitations and known issues](materialized-views/materialized-views-limitations.md#the-materialized-view-source).
 
 For more information, see the control commands for managing the [RestrictedViewAccess policy](./show-table-restricted-view-access-policy-command.md).
