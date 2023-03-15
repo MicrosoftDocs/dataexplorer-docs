@@ -11,9 +11,9 @@ In this article, you learn how to:
 
 > [!div class="checklist"]
 >
-> - Create your first client application
-> - Use interactive authentication
-> - Run a basic query that prints *Hello Kusto!*
+> - Run a basic query and process the results
+> - Control the query execution with client request properties
+> - Use query parameters to protect sensitive data
 
 ## Prerequisites
 
@@ -21,13 +21,11 @@ In this article, you learn how to:
 
 ## Create your app
 
-In your preferred IDE or text editor, create a file named `hello-kusto` with the language appropriate extension, and then add code to do the following:
+In your preferred IDE or text editor, create a file named `basic-query` with the language appropriate extension, and then add code to do the following:
 
-1. Add the Azure Data Explorer client and string builder classes.
+1. Create a client application that connects to the [help cluster](https://dataexplorer.azure.com/clusters/help).
 
     ### [C\#](#tab/csharp)
-
-    In the **hello-kusto.cs** file, start by adding the client libraries:
 
     ```csharp
     using Kusto.Data;
@@ -36,15 +34,17 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
 
     ### [Python](#tab/python)
 
-    In the **hello-kusto.py** file, start by adding the client libraries:
-
     ```python
     from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
+
+    def main():
+      cluster_uri = "https://help.kusto.windows.net"
+      kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
+
+      with KustoClient(kcsb) as query_client:
     ```
 
     ### [Node.js](#tab/nodejs)
-
-    In the **hello-kusto.js** file, start by adding the client libraries:
 
     ```nodejs
     const KustoClient = require("azure-kusto-data").Client;
@@ -54,8 +54,6 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
-
-    In the **hello-kusto.java** file, start by adding the client libraries:
 
     ```java
     import com.microsoft.azure.kusto.data.Client;
@@ -175,7 +173,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [Python](#tab/python)
 
     ```python
-    with KustoClient(kcsb) as query_client:
+    query_client = KustoClient(kcsb)
     ```
 
     ### [Node.js](#tab/nodejs)
@@ -349,14 +347,13 @@ from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
 def main():
   cluster_uri = "https://help.kusto.windows.net"
   kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
+  query_client = KustoClient(kcsb)
 
-  with KustoClient(kcsb) as query_client:
+  database = "Samples"
+  query = "print Welcome='Hello Kusto!'"
+  response = query_client.execute(database, query)
 
-    database = "Samples"
-    query = "print Welcome='Hello Kusto!'"
-    response = query_client.execute(database, query)
-
-    print(response.primary_results[0][0]["Welcome"])
+  print(response.primary_results[0][0]["Welcome"])
 
 if __name__ == "__main__":
   main()
@@ -430,19 +427,19 @@ In a command shell, run your app using the following command:
 ### [C\#](#tab/csharp)
 
 ```bash
-hello-kusto.exe
+basic-query.exe
 ```
 
 ### [Python](#tab/python)
 
 ```bash
-python hello-kusto.py
+python basic-query.py
 ```
 
 ### [Node.js](#tab/nodejs)
 
 ```bash
-node hello-kusto.js
+node basic-query.js
 ```
 
 <!-- ### [Go](#tab/go) -->
