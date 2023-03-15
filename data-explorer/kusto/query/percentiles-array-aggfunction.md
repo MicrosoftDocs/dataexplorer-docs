@@ -33,7 +33,7 @@ Returns an estimate for *expr* of the specified percentiles in the group as a si
 
 ### Comma-separated percentiles
 
-Multiple percentiles can be obtained as an array in a single dynamic column, instead of in multiple columns.
+Multiple percentiles can be obtained as an array in a single dynamic column, instead of in multiple columns as with [percentiles()](percentiles-aggfunction.md).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAAwspSswrTssvyk1NCU7NK84vKnZJLEnk5apRKC7NzU0syqxKVShILUpOzSvJzEktjk8sKkqs1AhLzClN1VEw1VEwAmJTAx0FcyBtaaqpo5BYlg6R1lRIqlSAmOmXmJsKANY0tLFpAAAA" target="_blank">Run the query</a>
