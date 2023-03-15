@@ -415,6 +415,8 @@ items:
   - name: bag_pack()
     displayName: pack(), pack_dictionary()
     href: packfunction.md
+  - name: bag_pack_columns()
+    href: bag-pack-columns-function.md
   - name: bag_remove_keys()
     href: bag-remove-keys-function.md
   - name: bag_set_key()
