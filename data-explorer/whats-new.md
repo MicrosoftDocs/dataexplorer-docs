@@ -15,7 +15,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-| [Authentication over HTTPS](/azure/data-explorer/kusto/api/rest/authentication.md)| Updated article.  REST API authorization examples added. |
+| [Authentication over HTTPS](kusto/api/rest/authentication.md)| Updated article.  REST API authorization examples added. |
 
 **General**
 
@@ -25,7 +25,6 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |[Connect from common apps](connect-common-apps.md) | New article. Describes how to connect to Azure Data Explorer with SQL Server emulation from various apps.|
 |- [Connect to Azure Data Explorer with JDBC](connect-jdbc.md) </br> - [Connect to Azure Data Explorer with SQL Server emulation](connect-sql-server-emulation.md) </br> - [Connect to Azure Data Explorer with ODBC](connect-odbc.md) | New articles. Describes how to connect to Azure Data Explorer with different connection apps.|
 |[Azure Data Explorer as a linked server from SQL Server](linked-server.md)| New article. Describes how to connect Azure Data Explorer as a linked server from SQL Server.|
-|[Query data in MATLAB](matlab.md)| New article. Describes how to set up a JDBC connection in MATLAB.|
 |[Set timeout limits](set-timeout-limits.md)| New article. Describes how to set query timeout limits.|
 |[Data connectors overview](connector-overview.md)| New article. Describes available data connectors and their capabilities.|
 |- [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md) </br> - [Azure Data Explorer web UI results grid](web-results-grid.md) </br> - [Share queries from Azure Data Explorer web UI](web-share-queries.md) </br> - [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md) </br> - [Explore the samples gallery](web-ui-samples-query.md) | New articles. Describes how to use, query, visualize, and share queries in the Azure Data Explorer web UI.|
