@@ -107,7 +107,7 @@ Use the following steps to:
     |---|---|
     | *IngestionEndPointUri* | The ingest URI for your cluster in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. |
     | *DatabaseName* | The case-sensitive name of the target database. |
-    | *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create table and mapping](#create-table-and-mapping). |
+    | *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create a table and ingestion mapping](#create-a-table-and-ingestion-mapping). |
     | *AppId* | Application client ID required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
     | *AppKey* | Application key required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
     | *Tenant* | The ID of the tenant in which the application is registered. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
@@ -150,7 +150,7 @@ Use the sample log generator app as an example showing how to configure and use 
     |---|---|
     | *IngestionEndPointUri* | The ingest URI for your cluster in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. |
     | *DatabaseName* | The case-sensitive name of the target database. |
-    | *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create table and mapping](#create-table-and-mapping). |
+    | *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create a table and ingestion mapping](#create-a-table-and-ingestion-mapping). |
     | *AppId* | Application client ID required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
     | *AppKey* | Application key required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
     | *Tenant* | The ID of the tenant in which the application is registered. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
