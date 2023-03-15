@@ -11,15 +11,16 @@ Evaluates a string expression and parses its value into one or more calculated c
 
 ## Syntax
 
-*T* `| parse` [`kind=regex` [`flags=regex_flags`] |`simple`|`relaxed`] *Expression* `with` `*` (*StringConstant* *ColumnName* [`:` *ColumnType*]) `*`...
+*T* `| parse` [`kind=`*kind* [`flags=` *regexFlags*]] *Expression* `with` `*` (*StringConstant* *ColumnName* [`:` *ColumnType*]) `*`...
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to parse.|
-| *kind* | string | &check; | One of the [supported kind values](#supported-kind-values).|
-| *Expression* | string | &check; | An expression that evaluates to a string.|
+| *kind* | string | &check; | One of the [supported kind values](#supported-kind-values). The default value is `simple`.|
+| *regexFlags* | string | |If *kind* is `regex`, then you can specify regex flags to be used like `U` for ungreedy, `m` for multi-line mode, `s` for match new line `\n`, and `i` for case-insensitive. More flags can be found in [RE2 flags](re2.md).|
+| *expression* | string | &check; | An expression that evaluates to a string.|
 | *ColumnName* | string | &check; | The name of a column to assign a value to, extracted from the string expression. |
 | *ColumnType* | string | | The scalar value that indicates the type to convert the value to. The default is the `string`.|
 
@@ -29,21 +30,20 @@ Evaluates a string expression and parses its value into one or more calculated c
 |--|--|
 | `simple` | This is the default value. *StringConstant* is a regular string value and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types.|
 | `regex` | *StringConstant* may be a regular expression and the match is strict. All string delimiters, which can be a regex for this mode, should appear in the parsed string, and all extended columns must match the required types.|
-| `flags` | Flags to be used in regex mode like `U` (Ungreedy), `m` (multi-line mode), `s` (match new line `\n`), `i` (case-insensitive). More flags can be found in [RE2 flags](re2.md).|
 | `relaxed` | *StringConstant* is a regular string value and the match is relaxed. All string delimiters should appear in the parsed string, but extended columns may partially match the required types. Extended columns that didn't match the required types will get the value `null`.|
+
+> [!TIP]
+>
+> * Use [`project`](projectoperator.md) if you also want to drop or rename some columns.
+> * Use `*` in the pattern to skip junk values.
+
+> [!NOTE]
+> The `*` can't be used after a `string` type column.
 
 ## Returns
 
 The input table, extended according to the list of columns that are
 provided to the operator.
-
-> [!TIP]
->
-> * Use [`project`](projectoperator.md) if you also want to drop or rename some columns.
-> * Use * in the pattern, to skip junk values.
-
-> [!NOTE]
-> The `*` can't be used after a `string` type column.
 
 * The parse pattern may start with *ColumnName* and not only with *StringConstant*.
 
