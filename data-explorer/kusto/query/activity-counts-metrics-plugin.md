@@ -16,7 +16,7 @@ Calculates useful activity metrics for each time window compared/aggregated to *
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
+|--|--|--|--|
 | *T* | string | &check; | The tabular input used to count activities. |
 | *IdColumn* | string | &check; | The name of the column with ID values that represent user activity. |
 | *TimelineColumn* | string | &check; | The name of the column that represents the timeline. |
@@ -29,7 +29,7 @@ Calculates useful activity metrics for each time window compared/aggregated to *
 
 Returns a table that has the total count values, distinct count values, distinct count of new values, and aggregated distinct count for each time window.
 
-The following table describes the output table schema. If *Dimensions* are provided, then for each dimension there's an additional column with the dimension column name and value in the output table.
+The following table describes the output table schema. If *Dimensions* are provided, then for each dimension there's another column with the dimension column name and value in the output table.
 
 | Output column name | Type | Description |
 |---|---|---|
