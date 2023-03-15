@@ -199,7 +199,7 @@ items:
     - name: Apache Kafka
       displayName: ingest data, ingestion, connector
       href: ingest-data-kafka.md
-    - name: Apache Log4j2
+    - name: Apache Log4J 2
       displayName: ingest data, ingestion, connector
       href: apache-log4j2-connector.md
     - name: Apache Spark 
