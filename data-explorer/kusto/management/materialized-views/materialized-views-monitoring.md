@@ -41,8 +41,26 @@ The `Result` dimension can have one of the following values:
 * **Success**: Materialization completed successfully.
 * **SourceTableNotFound**: Source table of the materialization view was dropped. The materialized view is automatically disabled as a result.
 * **SourceTableSchemaChange**: The schema of the source table has changed in a way that isn't compatible with the materialized view definition (materialized view query doesn't match the materialized view schema). The materialized view is automatically disabled as a result.
-* **InsufficientCapacity**: The cluster doesn't have sufficient capacity to materialized the materialized view. This can either indicate missing [ingestion capacity](../capacitypolicy.md#ingestion-capacity) or missing [materialized views capacity](../capacitypolicy.md#materialized-views-capacity-policy). Insufficient capacity failures can be transient, but if they reoccur often it is recommended to scale out the cluster and/or increase relevant capacity in policy.
-* **InsufficientResources:** The cluster doesn't have sufficient resources (CPU/memory) to materialized the materialized view. This failure may also be a transient one, but if it reoccurs often a scale out/up is required.
+* **InsufficientCapacity**: The cluster doesn't have sufficient capacity to materialize the materialized view. This can either indicate missing [ingestion capacity](../capacitypolicy.md#ingestion-capacity) or missing [materialized views capacity](../capacitypolicy.md#materialized-views-capacity-policy). Insufficient capacity failures can be transient, but if they reoccur often we recommend scaling out the cluster or increasing relevant capacity in the policy.
+* **InsufficientResources:** The cluster doesn't have sufficient resources (CPU/memory) to materialize the materialized view. This failure may be transient, but if it reoccurs try scaling the cluster up or out.
+
+  * If the materialization process hits memory limits, the [$materialized-views workload group](../workload-groups.md#materialized-views-workload-group) limits can be increased to support more memory or CPU for the materialization process to consume.
+  
+   For example, the following command will alter the materialized views workload group to use a max of 64 gigabytes (GB) of memory per node during materialization (the default value is 15 GB):
+
+    ~~~kusto
+    .alter-merge workload_group ['$materialized-views'] ```
+    {
+      "RequestLimitsPolicy": {
+        "MaxMemoryPerQueryPerNode": {
+          "Value": 68719241216
+        }
+      }
+    } ```
+    ~~~
+
+    > [!NOTE]
+    > MaxMemoryPerQueryPerNode can't be set to more than 50% of the total memory of each node.
 
 ## Track resource consumption
 

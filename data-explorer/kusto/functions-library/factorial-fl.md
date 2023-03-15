@@ -3,16 +3,13 @@ title: factorial_fl() - Azure Data Explorer
 description: This article describes factorial_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/02/2023
+ms.date: 03/13/2023
 ---
 # factorial_fl()
 
 Calculate factorial.
 
-The function `factorial_fl()`calculates [factorial](https://en.wikipedia.org/wiki/Factorial) of positive integers (*n!*). It's a simple wrapper of the Azure Data Explorer native [gamma()](../query/gammafunction.md) function.
-
-> [!NOTE]
-> This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+The function `factorial_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that calculates [factorial](https://en.wikipedia.org/wiki/Factorial) of positive integers (*n!*). It's a simple wrapper of the Azure Data Explorer native [gamma()](../query/gammafunction.md) function.
 
 ## Syntax
 
@@ -24,34 +21,32 @@ The function `factorial_fl()`calculates [factorial](https://en.wikipedia.org/wik
 |--|--|--|--|
 |*n*|int|&check;|The input integer for which to calculate the factorial.|
 
-## Usage
+## Function definition
 
-`factorial_fl()` is a user-defined function. You can either embed its code as a query-defined function or you can create a stored function in your database. See the following tabs for more examples.
+You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database, as follows:
 
-# [Query-defined](#tab/query-defined)
+### [Query-defined](#tab/query-defined)
 
-To use a query-defined function, embed the code using the [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
 
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMMQ6DMAwF0N2n+GMilkZsoJwFWa2DIiUOSj1Eor07rLwDvCKGxG9rPXPZUolOl6zm6STcdq6VnU7B059W6qy7YCD1VhFgDeGFr8mBmX6QYaIfpIH4ON3wF7cGc3NnAAAA" target="_blank">Run the query</a>
+> [!IMPORTANT]
+> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `factorial_fl()`, see [Example](#example).
 
 ```kusto
 let factorial_fl=(n:int)
 {
     gamma(n+1)
-}
-;
-range x from 1 to 10 step 3
-| extend fx = factorial_fl(x)
+};
+// Write your query to use the function here.
 ```
 
-# [Stored](#tab/stored)
+### [Stored](#tab/stored)
 
-To store the function, see [`.create function`](../management/create-function.md). Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
 
-### One-time installation
+> [!IMPORTANT]
+> You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Calculate factorial")
 factorial_fl(n:int)
@@ -60,7 +55,28 @@ factorial_fl(n:int)
 }
 ```
 
-### Usage
+---
+
+## Example
+
+### [Query-defined](#tab/query-defined)
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMMQ6DMAwF0N2n+GMilkZsoJwFWa2DIiUOSj1Eor07rLwDvCKGxG9rPXPZUolOl6zm6STcdq6VnU7B03+lzroLBlJvFQHWEF74mhyY6QcZJvpBGoiP0g1/ARFWBuNmAAAA" target="_blank">Run the query</a>
+
+```kusto
+let factorial_fl=(n:int)
+{
+    gamma(n+1)
+};
+range x from 1 to 10 step 3
+| extend fx = factorial_fl(x)
+```
+
+### [Stored](#tab/stored)
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0UCguSS1QMOaqUUitKEnNS1FIq1CwVUhLTC7JL8pMzIlPy9Go0AQAVBtAKDkAAAA=" target="_blank">Run the query</a>
@@ -71,6 +87,8 @@ range x from 1 to 10 step 3
 ```
 
 ---
+
+**Output**
 
 | x | fx |
 |---|---|

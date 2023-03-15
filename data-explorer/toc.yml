@@ -43,8 +43,6 @@ items:
     href: web-ui-samples-dashboards.md
 - name: Tutorials
   items:
-  - name: Write queries
-    href: write-queries.md
   - name: E2E programmatic Blob ingestion
     items:
       - name: C#
@@ -53,6 +51,16 @@ items:
         href: end-to-end-python.md
   - name: Ingest and query monitoring data
     href: ingest-data-no-code.md
+  - name: Kusto Query Language
+    items: 
+      - name: 1 - Learn common operators
+        href: kusto/query/tutorials/learn-common-operators.md
+      - name: 2 - Use aggregation functions
+        href: kusto/query/tutorials/use-aggregation-functions.md
+      - name: 3 - Join data from multiple tables
+        href: kusto/query/tutorials/join-data-from-multiple-tables.md
+      - name: 4 - Create geospatial visualizations
+        href: kusto/query/tutorials/create-geospatial-visualizations.md
 - name: Concepts
   items:
   - name: Business continuity
@@ -191,7 +199,7 @@ items:
     - name: Apache Kafka
       displayName: ingest data, ingestion, connector
       href: ingest-data-kafka.md
-    - name: Apache Log4j2
+    - name: Apache Log4J 2
       displayName: ingest data, ingestion, connector
       href: apache-log4j2-connector.md
     - name: Serilog
