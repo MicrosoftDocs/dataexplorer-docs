@@ -3,7 +3,7 @@ title: reduce operator - Azure Data Explorer
 description: Learn how to use the reduce operator to group a set of strings together based on value similarity.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 1/17/2023
+ms.date: 03/16/2023
 ---
 # reduce operator
 
