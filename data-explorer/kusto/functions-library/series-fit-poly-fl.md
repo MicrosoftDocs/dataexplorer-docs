@@ -11,7 +11,7 @@ The function `series_fit_poly_fl()` is a [user-defined function (UDF)](../query/
 
 > [!NOTE]
 >
-> * Use the native function [series_fit_poly()](../query/series-fit-poly-function.md). The function below is for reference only.
+> * Use the native function [series_fit_poly()](../query/series-fit-poly-function.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
 > * For linear regression of an evenly spaced series, as created by [make-series operator](../query/make-seriesoperator.md), use the native function [series_fit_line()](../query/series-fit-linefunction.md).
 
 ## Prerequisites
