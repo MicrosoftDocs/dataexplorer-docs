@@ -7,7 +7,9 @@ ms.date: 03/15/2023
 ---
 # percentilew(), percentilesw() (aggregation function)
 
-Calculate weighted percentiles of the population defined by *expr*. Weighted percentiles are a method of calculating percentiles where each value in the input dataset is given a weight. The weighted percentiles then calculate the given percentiles by treating each value as if it was repeated a number of times equal to its weight.
+Calculate weighted percentiles of the population defined by *expr*.
+
+Weighted percentiles calculate percentiles in a dataset by giving each value in the input dataset a weight. In this method, each value is considered to be repeated a number of times equal to its weight, which is then used to calculate the percentile. By giving more importance to certain values, weighted percentiles provide a way to calculate percentiles in a "weighted" manner.
 
 To calculate unweighted percentiles, see [percentiles()](percentiles-aggfunction.md).
 
