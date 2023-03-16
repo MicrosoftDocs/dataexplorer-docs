@@ -72,7 +72,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 | *Action* | string | &check; | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
 | *DatabaseName* | string | &check; | The name of the database for which to add principals.|
 | *Role* | string | &check; | The role to assign to the principal. For databases, this can be `admins`, `users`, `viewers`, `unrestrictedviewers`, `ingestors`, or `monitors`.|
-| *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](./access-control/referencing-security-principals.md#examples-for-azure-ad-principals).|
+| *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](./access-control/referencing-security-principals.md).|
 | `skip-results` | string | | If provided, the command won't return the updated list of database principals.|
 | *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
 
