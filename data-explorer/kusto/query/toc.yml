@@ -930,11 +930,11 @@ items:
   - name: minif()
     href: minif-aggfunction.md
   - name: percentile(), percentiles()
-    displayName: percentilew(), percentilesw(), weighted percentile
+    displayName: percentiles_array()
     href: percentiles-aggfunction.md
-  - name: percentiles_array()
+  - name: percentilew(), percentilesw()
     displayName: percentilesw_array(), weighted percentiles
-    href: percentiles-array-aggfunction.md
+    href: percentilesw-aggfunction.md
   - name: stdev()
     href: stdev-aggfunction.md
   - name: stdevif()
