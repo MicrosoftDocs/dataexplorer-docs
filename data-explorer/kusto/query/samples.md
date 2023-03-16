@@ -815,7 +815,7 @@ B_events
 
 ## Next steps
 
-Walk through a [a tutorial on the Kusto Query Language](tutorial.md?pivots=azuredataexplorer).
+Walk through a [a tutorial on the Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators?pivots=azuredataexplorer).
 
 ::: zone-end
 
@@ -1996,6 +1996,6 @@ traces
 
 ## Next steps
 
-Walk through a [tutorial on the Kusto Query Language](tutorial.md?pivots=azuremonitor).
+Walk through a [tutorial on the Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators?pivots=azuremonitor).
 
 ::: zone-end

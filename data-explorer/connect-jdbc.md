@@ -9,7 +9,7 @@ ms.date: 02/23/2023
 
 Java Database Connectivity (JDBC) is a Java API used to connect to databases and execute queries. You can use JDBC to connect to Azure Data Explorer. This functionality is made possible by Azure Data Explorer's TDS-compliant endpoint, which emulates Microsoft SQL Server.
 
-For more information, see the overview on [SQL Server emulation in Azure Data Explorer](connect-sql-server-emulation.md).
+For more information, see the overview on [SQL Server emulation in Azure Data Explorer](/azure/data-explorer/sql-server-emulation-overview).
 
 ## Connect with JDBC
 
