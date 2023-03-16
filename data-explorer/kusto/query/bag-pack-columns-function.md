@@ -5,7 +5,7 @@ ms.reviewer: yifats
 ms.topic: reference
 ms.date: 03/15/2023
 ---
-# bag_pack()
+# bag_pack_columns()
 
 Creates a dynamic property bag object from a list of columns.
 
