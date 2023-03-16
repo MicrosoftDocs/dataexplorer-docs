@@ -3,7 +3,7 @@ title: Kusto Query Language (KQL) overview- Azure Data Explorer
 description: Learn about how to use Kusto Query Language to explore data.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/19/2022
+ms.date: 03/16/2023
 adobe-target: true
 ---
 # Kusto Query Language (KQL) overview
