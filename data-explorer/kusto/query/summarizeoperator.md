@@ -3,7 +3,7 @@ title: summarize operator - Azure Data Explorer
 description: Learn how to use the summarize operator to produce a table that summarizes the content of the input table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 03/16/2023
 ms.localizationpriority: high 
 ---
 # summarize operator
@@ -146,30 +146,38 @@ The following table shows only the first 5 rows. To see the full output, run the
 
 ### Histogram
 
-The following example calculates a histogram for each activity
-type. Because `Duration` has many values, use `bin` to group its values into 10-minute intervals:
+The following example calculates a histogram storm event types that had storms lasting longer than 1 day. Because `Duration` has many values, use `bin()` to group its values into 1-day intervals.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NQQ6CQAxF9ybeoUtIcOEBxo2ycwcXGKCRMZmWlA4GwuG1EKObn+bn9f1KWWI5Iel4PKwwCD+xVdiaeh6wgFsSr4EJHJTU1SEinKBSL2q3Pb16FPxxFzh3Vo8pRi9hwd125UTqWsssh2b+37gjPbR3TaDsqyk+lnzTsKjhO/MGpa0usbAAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-Activities | summarize count() by ActivityType, length=bin(Duration, 10m)
+StormEvents
+| project EventType, Duration = EndTime - StartTime
+| where Duration > 1d
+| summarize EventCount=count() by EventType, Length=bin(Duration, 1d)
+| sort by Length
 ```
 
 **Output**
 
-|`count_`|`ActivityType`|`length`
-|---|---|---
-|`354`| `dancing` | `0:00:00.000`
-|`23`|`singing` | `0:00:00.000`
-|`2717`|`dancing`|`0:10:00.000`
-|`341`|`singing`|`0:10:00.000`
-|`725`|`dancing`|`0:20:00.000`
-|`2876`|`singing`|`0:20:00.000`
-|...
+| EventType | Length | EventCount |
+|---|---|---|
+| Drought | 30.00:00:00 | 1646 |
+| Wildfire | 30.00:00:00 | 11 |
+| Heat | 30.00:00:00 | 14 |
+| Flood | 30.00:00:00 | 20 |
+| Heavy Rain | 29.00:00:00 | 42 |
+| ... | ... | ... |
 
 ### Aggregates default values
 
 When the input of `summarize` operator has at least one empty group-by key, its result is empty, too.
 
 When the input of `summarize` operator doesn't have an empty group-by key, the result is the default values of the aggregates used in the `summarize`:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2PwQ7CIBBE7yb+A0cwHLz0YqI/YkyzBaQbAU3ZNtT48S7EGg4zmTe7WSwQvyE4WU7hmby63va7j8hzjDDh2wlIa1/OBA/Xs5VFaQGT7yMUjn9OFi0OG8C0AUx/sPg2OcwYbDajiyDpadcEEQ27TBOmWlFcagur1nnWl5uMS4T1Ri26jqMxBEZCZ7JuaSU+eFO8114RF3HkgCx6l6nBhb8EyfAe9QXbqS6i+AAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 datatable(x:long)[]
@@ -184,6 +192,9 @@ datatable(x:long)[]
 
 The result of `avg_x(x)` is `NaN` due to dividing by 0.
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjQqrnPy8dM3oWF6uGoXi0tzcxKLMqlQFheT80rwSjQpNHQgrM02jQsFOwUBTQUchBSGXApfUUYDIAwDGwdg7WgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 datatable(x:long)[]
 | summarize  count(x), countif(x > 0) , dcount(x), dcountif(x, x > 0)
@@ -194,6 +205,9 @@ datatable(x:long)[]
 |count_x|countif_|dcount_x|dcountif_x|
 |---|---|---|---|
 |0|0|0|0|
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjQqrnPy8dM3oWF6uGoXi0tzcxKLMqlQFhdzE7NT44tQSjQpNHQgnJ7MYxAMATGERsTsAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 datatable(x:long)[]
@@ -207,6 +221,9 @@ datatable(x:long)[]
 |[]|[]|
 
 The aggregate avg sums all the non-nulls and counts only those which participated in the calculation (won't take nulls into account).
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2KSwqAIBgG90F3+JYKbQxaehihXxF8hI/Q6PAptJqBmaSCITToFD0ESsSOXOiCWJcX1AqFEx0SVmvWICXEhkTKsVCd478fnM89V+9Vsg9NY31UdZvBD+MI2XFlAAAA" target="_blank">Run the query</a>
 
 ```kusto
 range x from 1 to 2 step 1
@@ -222,6 +239,9 @@ range x from 1 to 2 step 1
 
 The regular count will count nulls:
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy3KTQqAIBAG0H3QHb6lA20MWnoYqTEEf2JU0OjwEbR7iyc2nYwOJzlCo2asKJUv6Hl6wL1yOjBg4J1THcZALxC2QaUWAv3eiL5eWoxW/M3Yc0tVDXoBSiga018AAAA=" target="_blank">Run the query</a>
+
 ```kusto
 range x from 1 to 2 step 1
 | extend y = iff(x == 1, real(null), real(5))
@@ -233,6 +253,9 @@ range x from 1 to 2 step 1
 |count_y|
 |---|
 |2|
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03KSwqAIBRG4XnQHv6hQhODhq4lhK4h+YirgkWLr6BBs3PgYxNXQoPlFKBQEkbkQjtU312gViguOKDhrBUNWkMNYDJexOq9/HqS8uW5hmDYnYRgNpozFXE85Dc305SXFm8AAAA=" target="_blank">Run the query</a>
 
 ```kusto
 range x from 1 to 2 step 1
