@@ -7,7 +7,7 @@ ms.date: 03/16/2023
 ---
 # percentile(), percentiles() (aggregation function)
 
-Calculates an estimate for the specified [nearest-rank percentile](#nearest-rank-percentile) of the population defined by *expr*.
+The `percentile()` function calculates an estimate for the specified [nearest-rank percentile](#nearest-rank-percentile) of the population defined by *expr*.
 The accuracy depends on the density of population in the region of the percentile.
 
 `percentiles()` works similarly to `percentile()`. However, `percentiles()` can calculate multiple percentile values at once, which is more efficient than calculating each percentile value separately.
