@@ -20,7 +20,7 @@ For each such group, the operator returns a `pattern`, `count`, and `representat
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *Expr* | string | &check; | The value by which to reduce.|
-| *Threshold* | real | | A value in the range 0-1. Default is 0.1. It's recommended to set a small threshold for large inputs. |
+| *Threshold* | real | | A value in the range 0-1. The default value is 0.1. We recommend setting a small threshold for large inputs. |
 | *Characters* | string | | A list of characters that don't break a term. For example, if you want `aaa=bbbb` and `aaa:bbb` to each be a whole term, rather than break on `=` and `:`, use `":="` as the string literal.|
 | *ReduceKind* | string | | The only valid value is `source`. If `source` is specified, the operator will append the `Pattern` column to the existing rows in the table instead of aggregating by `Pattern`.|
 
