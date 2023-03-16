@@ -10,20 +10,6 @@ ms.localizationpriority: high
 
 Produces a table that aggregates the content of the input table.
 
-```kusto
-Sales | summarize NumTransactions=count(), Total=sum(UnitPrice * NumUnits) by Fruit, StartOfMonth=startofmonth(SellDateTime)
-```
-
-Returns a table with how many sell transactions and the total amount per fruit and sell month.
-The output columns show the count of transactions, transaction worth, fruit, and the datetime of the beginning of the month
-in which the transaction was recorded.
-
-```kusto
-T | summarize count() by price_range=bin(price, 10.0)
-```
-
-A table that shows how many items have prices in each interval  [0,10.0], [10.0,20.0], and so on. This example has a column for the count and one for the price range. All other input columns are ignored.
-
 ## Syntax
 
 *T* `| summarize` [ *SummarizeParameters* ]
@@ -88,51 +74,75 @@ The following table summarizes the default values of aggregations:
 
 ### Unique combination
 
-Determine what unique combinations of
-`ActivityType` and `CompletionStatus` there are in a table. There are no aggregation functions, just group-by keys. The output will just show the columns for those results:
+The following query determines what unique combinations of `State` and `EventType` there are for storms that resulted in direct injury. There are no aggregation functions, just group-by keys. The output will just show the columns for those results.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVfDMyyotykwtdsksSk0uUbBTMADJFZfm5iYWZValKiRVKgSXJJak6iiAdYZUFqQCAEZA2i9IAAAA" target="_blank">Run the query</a>
 
 ```kusto
-Activities | summarize by ActivityType, completionStatus
+StormEvents
+| where InjuriesDirect > 0
+| summarize by State, EventType
 ```
 
 **Output**
 
-|`ActivityType`|`completionStatus`
-|---|---
-|`dancing`|`started`
-|`singing`|`started`
-|`dancing`|`abandoned`
-|`singing`|`completed`
+The following table shows only the first 5 rows. To see the full output, run the query.
+
+| State | EventType |
+|---|---|
+| TEXAS | Thunderstorm Wind |
+| TEXAS | Flash Flood |
+| TEXAS | Winter Weather |
+| TEXAS | High Wind |
+| TEXAS | Flood |
+|...|...|
 
 ### Minimum and maximum timestamp
 
-Finds the minimum and maximum timestamp of all records in the Activities table. There's no group-by clause, so there's just one row in the output:
+Finds the minimum and maximum heavy rain storms in Hawaii. There's no group-by clause, so there's just one row in the output.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WMsQrCQBBEe8F/GK5S0E+4ImDAFGmSgPViFjzh9sJlExPx42VFsRvevJlWU47lzKLjdvPC48aZ0Sopw3u4c3EpqsqBpMfH6tbh2zDNKxoK4mw45HTnq+I0ZdKQBB6l9F2IjKP9ZbVs5jjFSDk8GXUwLQbZ/Vb7A2paDNLyh28u8qFKpAAAAA==" target="_blank">Run the query</a>
 
 ```kusto
-Activities | summarize Min = min(Timestamp), Max = max(Timestamp)
+StormEvents
+| where State == "HAWAII" and EventType == "Heavy Rain"
+| project Duration = EndTime - StartTime
+| summarize Min = min(Duration), Max = max(Duration)
 ```
 
 **Output**
 
-|`Min`|`Max`
-|---|---
-|`1975-06-09 09:21:45` | `2015-12-24 23:45:00`
+| Min | Max |
+|---|---|
+| 01:08:00 | 11:55:00 |
 
 ### Distinct count
 
 Create a row for each continent, showing a count of the cities in which activities occur. Because there are few values for "continent", no grouping function is needed in the 'by' clause:
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIqSxILfZPCwbJF9umJOeX5pVogBWCZDQVkioVgksSS1LBuvKLSkACKHoALe01bFoAAAA=" target="_blank">Run the query</a>
+
 ```kusto
-Activities | summarize cities=dcount(city) by continent
+StormEvents
+| summarize TypesOfStorms=dcount(EventType) by State
+| sort by TypesOfStorms
 ```
 
 **Output**
 
-|`cities`|`continent`
-|---|---
-|`4290`|`Asia`|
-|`3267`|`Europe`|
-|`2673`|`North America`|
+The following table shows only the first 5 rows. To see the full output, run the query.
+
+| State | TypesOfStorms |
+|---|---|
+| TEXAS | 27 |
+| CALIFORNIA | 26 |
+| PENNSYLVANIA | 25 |
+| GEORGIA | 24 |
+| ILLINOIS | 23 |
+|...|...|
 
 ### Histogram
 
