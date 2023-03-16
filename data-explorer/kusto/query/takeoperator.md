@@ -3,7 +3,7 @@ title: take operator - Azure Data Explorer
 description: Learn how to use the take operator to return a specified number of rows.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/09/2023
+ms.date: 03/16/2023
 ---
 # take operator
 
@@ -22,6 +22,12 @@ the source data is sorted.
 
 `take` *NumberOfRows*
 
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*NumberOfRows*|int|&check;|The number of rows to return.|
+
 ## Paging of query results
 
 Methods for implementing paging include:
@@ -34,8 +40,11 @@ Methods for implementing paging include:
 
 ## Example
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-T | take 5
+StormEvents | take 5
 ```
 
 ## See also
