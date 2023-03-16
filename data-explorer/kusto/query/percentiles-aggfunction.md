@@ -34,6 +34,9 @@ To calculate weighted percentiles, see [percentilesw()](percentilesw-aggfunction
 
 Returns a table with the estimates for *expr* of the specified percentiles in the group, each in a separate column.
 
+> [!NOTE]
+> To return the percentiles in a single column, see [Return percentiles as an array](#return-percentiles-as-an-array).
+
 ## Examples
 
 ### Calculate single percentile
