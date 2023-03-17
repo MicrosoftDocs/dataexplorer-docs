@@ -143,4 +143,4 @@ Run the following command in your database to clean up the `logs` table:
 
 ## Next steps
 
-* [Write queries](write-queries.md)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
