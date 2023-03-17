@@ -69,7 +69,7 @@ In this article, we'll show you how to evaluate query performance in your cluste
     | Key | Description |
     |--|--|
     | *db* | The name of the database you want to query. |
-    | *csl* | The Kusto query you want to run. The query must be sent as a string literal. If used, [encode string literals](../query/scalar-data-types/string.md#string-literals). We recommend verifying the query before you send it by testing it in the [web UI](/azure/data-explorer/web-query-data). |
+    | *csl* | The Kusto query you want to run. The query must be sent as a string literal. If used, [encode string literals](../query/scalar-data-types/string.md#string-literals). We recommend verifying the query before you send it by testing it in the [web UI](../../web-query-data.md). |
 
     :::image type="content" source="images/load-test/postman-request.png" lightbox="images/load-test/postman-request.png" alt-text="Screenshot of POST request, showing the parameters for the body of the API request.":::
 
@@ -165,7 +165,7 @@ In the following steps, you'll run load tests using a local installation of Graf
     | *access_token* | `<bearer-token>` | The bearer token you noted earlier |
     | *cluster-uri* | `https://\<cluster-name>.<region-name>.kusto.windows.net/.default` | The URI for your cluster. You can get the URI from the overview page of your Azure Data Explorer cluster. |
     | *database-name* | Sampledb | The name of the database you want to query. |
-    | *kusto-query* | "Tablename \| take 10" | The Kusto query you want to run. The query must be sent as a string literal. If used, [encode string literals](../query/scalar-data-types/string.md#string-literals). We recommend verifying the query before you send it by testing it in the [web UI](/azure/data-explorer/web-query-data). |
+    | *kusto-query* | "Tablename \| take 10" | The Kusto query you want to run. The query must be sent as a string literal. If used, [encode string literals](../query/scalar-data-types/string.md#string-literals). We recommend verifying the query before you send it by testing it in the [web UI](../../web-query-data.md). |
     | *random-uuid* | e9f884e4-90f0-404a-8e8b-01d883023bf1 | A random UUID to identify the request. Use any internet-based generator to generate a UUID. |
     | *Host* | `<cluster-name>.<region>.kusto.windows.net` | The cluster query URI. For Azure Synapse Data Explorer pools, use the relevant Data Explorer pool URI. |
     | *x-ms-client-request-id* | e9f884e4-90f0-404a-8e8b-01d883023bf1 | A random UUID to identify the request. If you're using Postman, you can use Postman.Query to generate the UUID. |
@@ -267,7 +267,7 @@ In the following steps, you'll set up and run load tests using JMeter. You'll se
     | Key | Description |
     |--|--|
     | *db* | The name of the database you want to query. |
-    | *csl* | The Kusto query you want to run. The query must be sent as a string literal. If used, [encode string literals](../query/scalar-data-types/string.md#string-literals). We recommend verifying the query before you send it by testing it in the [web UI](/azure/data-explorer/web-query-data). |
+    | *csl* | The Kusto query you want to run. The query must be sent as a string literal. If used, [encode string literals](../query/scalar-data-types/string.md#string-literals). We recommend verifying the query before you send it by testing it in the [web UI](../../web-query-data.md). |
 
     :::image type="content" source="images/load-test/jmeter-http-request-properties.png" lightbox="images/load-test/jmeter-http-request-properties.png" alt-text="Screenshot of POST request, showing the body properties and the parameters of the API request.":::
 

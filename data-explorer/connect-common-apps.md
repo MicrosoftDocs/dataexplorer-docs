@@ -98,7 +98,7 @@ To connect to Azure Data Explorer from Microsoft SQL Server Management Studio, f
 
    > [!NOTE]
    > Browsing database objects via SSMS is not supported yet, since SSMS uses correlate subqueries to browse database schema.
-   > Correlated subqueries are not supported by Azure Data Explorer. For more information, see [correlated subqueries](./kusto/api/tds/sqlknownissues.md#correlated-sub-queries).
+   > Correlated subqueries are not supported by Azure Data Explorer. For more information, see [correlated subqueries](/azure/data-explorer/t-sql#correlated-sub-queries).
 
 1. Select **New Query** to open the query window and set your database.
 
@@ -157,7 +157,7 @@ From MATLAB, you can connect to Azure Data Explorer using [JDBC](connect-jdbc.md
    > * If you end with `database=` without a value, the database name will be inferred.
    > * To use Azure Active Directory integrated authentication, replace **ActiveDirectoryPassword** with **ActiveDirectoryIntegrated**.
 
-1. In the MATLAB command window, test the connection and run a sample [T-SQL](kusto/api/tds/t-sql.md) query. Replace `<table_name>` with an existing table in Azure Data Explorer.
+1. In the MATLAB command window, test the connection and run a sample [T-SQL](/azure/data-explorer/t-sql) query. Replace `<table_name>` with an existing table in Azure Data Explorer.
 
    ```java
    data = select(conn, 'SELECT * FROM <table_name>')

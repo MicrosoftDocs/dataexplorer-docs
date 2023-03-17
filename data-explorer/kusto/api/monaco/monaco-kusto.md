@@ -243,4 +243,4 @@ Run the following commands from the root of the cloned repo:
 ## Next steps
 
 - [Kusto Query Language (KQL) overview](../../query/index.md)
-- [Write Kusto queries](../../query/tutorial.md)
+- [Write Kusto queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

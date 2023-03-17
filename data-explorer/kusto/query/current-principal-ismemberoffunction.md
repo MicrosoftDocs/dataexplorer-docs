@@ -21,7 +21,7 @@ Checks group membership or principal identity of the current principal running t
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *group* | dynamic | &check; | An array of string literals in which each literal represents an Azure Active Directory (Azure AD) principal. See [examples for Azure AD principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals#referencing-azure-ad-principals).|
+| *group* | dynamic | &check; | An array of string literals in which each literal represents an Azure Active Directory (Azure AD) principal. See [examples for Azure AD principals](../management/access-control/referencing-security-principals.md).|
 
 ## Returns
 
