@@ -88,6 +88,4 @@ ms.date: 11/04/2019
 
 ## Next steps
 
-* [Write queries for Azure Data Explorer](write-queries.md)
-
-
+* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

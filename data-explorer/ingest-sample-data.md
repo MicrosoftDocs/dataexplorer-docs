@@ -123,4 +123,4 @@ First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.co
 
 * [Azure Data Explorer data ingestion](ingest-data-overview.md) to learn more about ingestion methods.
 * [Quickstart: Query data in Azure Data Explorer web UI](web-query-data.md).
-* [Write queries](write-queries.md) with Kusto Query Language.
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) with Kusto Query Language.

@@ -10,7 +10,7 @@ ms.date: 03/08/2023
 
 Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a widely accepted application programming interface (API) for database access. Use ODBC to connect to Azure Data Explorer from applications that don't have a dedicated connector.
 
-Behind the scenes, applications call functions in the ODBC interface, which are implemented in database-specific modules called *drivers*. Azure Data Explorer supports a subset of the SQL Server communication protocol ([MS-TDS](/azure/data-explorer/t-sql)), so it can use the ODBC driver for SQL Server.
+Behind the scenes, applications call functions in the ODBC interface, which are implemented in database-specific modules called *drivers*. Azure Data Explorer supports a subset of the SQL Server communication protocol ([MS-TDS](./t-sql.md)), so it can use the ODBC driver for SQL Server.
 
 Using the following video, you can learn to create an ODBC connection. 
 
