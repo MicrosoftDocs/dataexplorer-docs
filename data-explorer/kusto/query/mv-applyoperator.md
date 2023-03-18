@@ -182,7 +182,7 @@ datatable (Val:int, Arr1:dynamic, Arr2:dynamic)
 
 **Output**
 
-|Val|Arr1|Arr2|Out|
+|Val|Arr1|Arr2|`Out`|
 |---|---|---|---|
 |1|["A1","A2","A3"]|["B1","B2","B3"]|["A1_B1","A2_B2","A3_B3"]|
 |5|["C1","C2"]|["D1","D2"]|["C1_D1","C2_D2"]|
