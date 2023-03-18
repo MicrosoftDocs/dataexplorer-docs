@@ -164,6 +164,29 @@ _data
 |3|8|
 |4|10|
 
+### Using mutiple columns to join element of 2 arrays
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OPQuDMBRF9/yKSxcN2EFLF6GDH3u3LiKSagapSUVjqcUf3/TFUmkeBO47h8trhLFz7ST8i+jiVpsAyTCEcTNrodqaUvRNnBUIA6zJL7wk9AJ4SUT/wSv5FqYEU4Kpgww4bpWMlCwi6N4P5gTzD2Ql2AL12Iu+72a60F2Gu4bPIJ9G6gbnyeCE0Qy1ML6TdtXOmZxhwTgpJYb2JanCukrcZNW1o9P5Wvq3j+zeVm+3NnLG35rQNVo+AQAA" target="_blank">Run the query</a>
+
+```kusto
+datatable (Val:int, Arr1:dynamic, Arr2:dynamic)
+[ 1, dynamic(['A1', 'A2', 'A3']), dynamic(['B1', 'B2', 'B3']), 
+  5, dynamic(['C1', 'C2']),       dynamic(['D1', 'D2'])
+] 
+| mv-apply Arr1, Arr2 on (
+ extend Out = strcat(Arr1, "_", Arr2)
+ | summarize Arr1 = make_list(Arr1), Arr2 = make_list(Arr2), Out= make_list(Out)
+)
+```
+
+**Output**
+
+|Val|Arr1|Arr2|Out|
+|---|---|---|---|
+|1|["A1","A2","A3"]|["B1","B2","B3"]|["A1_B1","A2_B2","A3_B3"]|
+|5|["C1","C2"]|["D1","D2"]|["C1_D1","C2_D2"]|
+
 ### Applying mv-apply to a property bag
 
 In the following example, `mv-apply` is used in combination with an
