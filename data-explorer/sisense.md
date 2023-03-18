@@ -116,4 +116,4 @@ transform data into actionable insights to make an impact on your business.
 
 ## Next steps
 
-* [Write queries for Azure Data Explorer](write-queries.md)
+* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
