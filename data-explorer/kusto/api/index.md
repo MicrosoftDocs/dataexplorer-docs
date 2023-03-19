@@ -35,7 +35,7 @@ A number of [client libraries](client-libraries.md) are also available to use th
 Azure Data Explorer also supports the Microsoft SQL Server communication protocol (MS-TDS), and includes a limited support for running T-SQL queries.
 This protocol enables users to run queries on Azure Data Explorer using a well-known query syntax (T-SQL) and database client tools such as LINQPad, sqlcmd, Tableau, Excel, and Power BI.
 
-For more information, see [MS-TDS](/azure/data-explorer/t-sql).
+For more information, see [MS-TDS](../../t-sql.md).
 
 ## Client libraries
 

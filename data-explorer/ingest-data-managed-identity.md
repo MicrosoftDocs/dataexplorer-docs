@@ -86,4 +86,4 @@ The following are examples of blob URIs for system and user assigned managed ide
 
 ## Next steps
 
-* [Write queries](write-queries.md)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
