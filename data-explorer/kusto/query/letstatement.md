@@ -3,7 +3,7 @@ title: Let statement - Azure Data Explorer
 description: Learn how to use the Let statement to set a variable name to define an expression or a function.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 03/19/2023
 ms.localizationpriority: high
 ---
 # Let statement
@@ -33,9 +33,7 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 ## Syntax: View or function
 
-`let` *Name* `=` [`view`] `(` [*TabularArgName* `:` `(` `*` `)` `,`   [*ArgName* `:` *ArgType* ]`,` ... ]  `)` `{` *FunctionBody* `}`
-
-`let` *Name* `=` [`view`] `(` [[*TabularArgName* `:` `(`[*AttributeName* `:` *AttributeType*] [`,` ... ] `)` ] `,` [*ArgName* `:` *ArgType, ...]] `)` `{` *FunctionBody* `}`
+`let` *Name* `=` [`view`] `(`[*TabularArgName*`:` `(`*TabularArgSchema*`)` `,` [*ArgName*`:` *ArgType* ]`,` ... ]`)` `{` *FunctionBody* `}`
 
 ### Parameters
 
@@ -43,8 +41,8 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 |--|--|--|--|
 |*FunctionBody* |string|&check;| An expression that yields a user defined function. |
 |`view`|string||Appears only in a parameter-less `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views.|
-|*TabularArgName*|string||The name of the tabular argument. Can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. |
-| *AttributeName*: *AttributeType*|string|| The name and type of the attribute. Part of the table schema definition, which includes a set of attributes with their types. |  
+|*TabularArgName*|string||The name of a tabular argument. The tabular argument name can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. If *TabularArgName* is specified, then you must specify *TabularArgSchema*.|
+| *TabularArgSchema*|string|| A comma-separated list of column names and their types in the format *ColumnName*:*ColumnType*. The input tabular argument must have at least the specified columns. You can use a wildcard (`*`) to allow for any schema. To reference columns in the function body, they must be specified. See [Tabular argument with schema](#tabular-argument-with-schema) and [Tabular argument with wildcard](#tabular-argument-with-wildcard).|
 |*ArgName*: *ArgType* |string|| The name and type of the scalar argument. The name can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. The only supported types are `bool`, `string`, `long`, `datetime`, `timespan`, `real`, `dynamic`, and the aliases to these types.|
 
 > [!NOTE]
@@ -210,3 +208,46 @@ let start_time = ago(5h);
 let end_time = start_time + 2h; 
 T | where Time > start_time and Time < end_time | ...
 ```
+
+### Tabular argument with schema
+
+The following example specifies that the table parameter `T` must have a column `State` of type `string`. The table `T` may include other columns as well, but they can't be referenced in the function `StateState` because the aren't declared.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEILkksSQUTthohVgoaYKaVQnFJUWZeuqamQrVCiEKNQmpFSWpeikJxfLEtUCY5sQSiTgeiXVOh1poruCS/KNe1LDWvpJirRiEzryw/OxXJdA1NoGhBUX5WajLUUh2QcQAWPcCygwAAAA==" target="_blank">Run the query</a>
+
+```kusto
+let StateState=(T: (State: string)) { T | extend s_s=strcat(State, State) };
+StormEvents
+| invoke StateState()
+| project State, s_s
+```
+
+**Output**
+
+| State | s_s |
+|---|---|
+| ATLANTIC SOUTH | ATLANTIC SOUTHATLANTIC SOUTH |
+| FLORIDA | FLORIDAFLORIDA |
+| FLORIDA | FLORIDAFLORIDA |
+| GEORGIA | GEORGIAGEORGIA |
+| MISSISSIPPI | MISSISSIPPIMISSISSIPPI |
+|...|...|
+
+### Tabular argument with wildcard
+
+The table parameter `T` can have any schema, and the function CountRecordsInTable will work.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFwzi/NKwlKTc4vSin2zAtJTMpJtdUIsVLQ0NLUVKhWCFGoUUgGKVGoteYKLskvynUtS80rKQYKZ+aV5WenYjNAQxMAvc2gqVoAAAA=" target="_blank">Run the query</a>
+
+```kusto
+let CountRecordsInTable=(T: (*)) { T | count };
+StormEvents | invoke CountRecordsInTable()
+```
+
+**Output**
+
+|Count|
+|--|
+|59,066|
