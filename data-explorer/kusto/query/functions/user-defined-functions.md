@@ -209,7 +209,7 @@ print f(12, c=7) // Returns "12-b.default-7"
 
 ## Invoking a user-defined function
 
-The method by which you invoke a user-defined function depends on the arguments that the function expects to receive. The following sections cover how to [invoke a UDF without arguments](#invoke-a-udf-without-arguments), [invoke a UDF with scalar arguments](#invoke-a-udf-with-scalar-arguments), and [invoke a UDF with tabular arguments](#invoke-a-udf-with-tabular-arguments).
+The method to invoke a user-defined function depends on the arguments that the function expects to receive. The following sections cover how to [invoke a UDF without arguments](#invoke-a-udf-without-arguments), [invoke a UDF with scalar arguments](#invoke-a-udf-with-scalar-arguments), and [invoke a UDF with tabular arguments](#invoke-a-udf-with-tabular-arguments).
 
 ### Invoke a UDF without arguments
 
@@ -345,7 +345,7 @@ The only place a user-defined function may be invoked with an argument that vari
 
 #### Supported scalar function
 
-The following query is supported since `f` is a scalar function that doesn't reference any tabular expression.
+The following query is supported because `f` is a scalar function that doesn't reference any tabular expression.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEISUzKSTVUsFVISSwBQiBHowLITLUCESWZuama0TCWhqGluYGugSEQacZa83LlwLQboWh3zs8pzc2zysnPS9eMNjQyNoWpTQMq08jILy0qhkgqVCvk5ZdraCpoK4BFtQwzFGqBaqFm1iiUZ6QWpSpAzFNQtFUAGgYULSjKz0pNLlFIARqXpmFooAkAl/NDkMcAAAA=" target="_blank">Run the query</a>

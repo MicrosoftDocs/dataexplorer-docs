@@ -63,7 +63,7 @@ StormEvents
 | 10217 | Excessive Heat | 422 |
 | 10217 | Excessive Heat | 519 |
 
-## Specifying query parameters in a client application
+## Specify query parameters in a client application
 
 The names and values of query parameters are provided as `string` values
 by the application making the query. No name may repeat.
