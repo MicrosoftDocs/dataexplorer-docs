@@ -18,7 +18,7 @@ A query can include multiple tabular expression statements, as long as they're d
 
 ### Name tabular results
 
-For example, the following query produces two tabular results. User agent tools can then display those results with the appropriate name associated with each (`Count of events in Florida` and `Count of events in Guam`, respectively).
+The following query produces two tabular results. User agent tools can then display those results with the appropriate name associated with each (`Count of events in Florida` and `Count of events in Guam`, respectively).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKM9ILUpVCC5JLElVsLVVUHLz8Q/ydHFUAkol55fmlQDpxGKFaHVnMCc/TSEVojMzT8EtJ78oMyVRPdaalysYr6HuoY6+xJjoXpqYqx4LAI0euu6hAAAA" target="_blank">Run the query</a>
