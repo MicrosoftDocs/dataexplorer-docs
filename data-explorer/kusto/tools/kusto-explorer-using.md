@@ -237,7 +237,7 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 
 To drop an existing authorized principal, select **Drop principal** and confirm the action.
 
-    :::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Confirm drop authorized principal.":::
+:::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Confirm drop authorized principal.":::
 
 ## Next steps
 
