@@ -152,7 +152,7 @@ This query is a [cross-database](./cross-cluster-or-database-queries.md) query.
 The resulting records are transformed according to the [output schema](#output-schema).
 
 ```kusto
-find in (database('*').*) "Kusto"
+find in (database('*').*) where * has "Kusto"
 ```
 
 ### Term lookup across all tables and databases matching a name pattern in the cluster
