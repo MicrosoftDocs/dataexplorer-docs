@@ -9,7 +9,7 @@ ms.date: 07/31/2022
 # Create an Event Grid data connection for Azure Data Explorer by using Python
 
 > [!div class="op_single_selector"]
-> * [Ingestion wizard](./ingestion-wizard-new-table.md)
+> * [Ingestion wizard](/azure/data-explorer/ingest-from-container)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)

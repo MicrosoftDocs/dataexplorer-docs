@@ -182,4 +182,4 @@ In Kusto, you can use `summarize arg_min()` to reverse the order of which record
 
 ## Next steps
 
-- Walk through a tutorial on the [Kusto Query Language](tutorial.md?pivots=azuremonitor).
+- Walk through a tutorial on the [Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators?pivots=azuremonitor).

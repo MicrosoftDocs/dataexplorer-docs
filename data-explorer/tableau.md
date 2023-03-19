@@ -46,4 +46,4 @@ Once you've finished configuring ODBC, you can bring sample data into Tableau.
 
 ## Next steps
 
-* [Write queries for Azure Data Explorer](write-queries.md)
+* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

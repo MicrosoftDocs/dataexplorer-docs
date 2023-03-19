@@ -23,7 +23,7 @@ Azure Data Explorer supports two JSON file formats:
 * `multijson`: Multi-lined JSON. The parser ignores the line separators and reads a record from the previous position to the end of a valid JSON.
 
 > [!NOTE]
-> When ingesting using the [ingestion wizard](ingest-data-wizard.md), select **Ignore data format errors**, to ingest data in JSON format. If you leave this check box unselected, the data will be ingested in multijson format. For more information, see [edit the schema in the ingestion wizard](ingestion-wizard-existing-table.md#edit-the-schema).
+> When ingesting using the [ingestion wizard](ingest-data-wizard.md), select **Ignore data format errors**, to ingest data in JSON format. If you leave this check box unselected, the data will be ingested in multijson format. For more information, see [edit the schema in the ingestion wizard](/azure/data-explorer/ingest-from-local-file#edit-the-schema).
 
 For more information, see [JSON Lines](https://jsonlines.org/).
 
@@ -558,4 +558,4 @@ Array data types are an ordered collection of values. Ingestion of a JSON array 
 ## Next steps
 
 * [Data ingestion overview](ingest-data-overview.md)
-* [Write queries](write-queries.md)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
