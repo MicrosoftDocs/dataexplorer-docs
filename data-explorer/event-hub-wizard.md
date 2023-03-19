@@ -79,8 +79,8 @@ The **Ingest data** window opens with the **Destination** tab selected.
 
 Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects. Supported formats are CSV, JSON, PSV, SCsv, SOHsv TSV, TXT, and TSVE.
 
-For information on schema mapping with JSON-formatted data, see [Edit the schema](./ingestion-wizard-existing-table.md#edit-the-schema).
-For information on schema mapping with CSV-formatted data, see [Edit the schema](./ingestion-wizard-new-table.md#edit-the-schema).
+For information on schema mapping with JSON-formatted data, see [Edit the schema](/azure/data-explorer/ingest-from-local-file#edit-the-schema).
+For information on schema mapping with CSV-formatted data, see [Edit the schema](/azure/data-explorer/ingest-from-container#edit-the-schema).
 
 :::image type="content" source="media/event-hub-wizard/event-hub-schema.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
 
@@ -107,4 +107,4 @@ In the **Continuous ingestion from Event Hub established** window, all steps wil
 ## Next steps
 
 * [Query data in Azure Data Explorer web UI](web-query-data.md)
-* [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)
+* [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

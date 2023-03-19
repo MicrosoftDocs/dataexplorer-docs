@@ -3,7 +3,7 @@ title: .alter table retention policy command- Azure Data Explorer
 description: This article describes the .alter table retention policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/08/2023
 ---
 # .alter table retention policy
 
@@ -17,10 +17,12 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter` `table` *TableName* `policy` `retention` *PolicyObject*
 
-## Arguments
+## Parameters
 
-- *TableName* - Specify the name of the table.  
-- *PolicyObject* - Define a policy object, see also  [retention policy](retentionpolicy.md).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TableName* | string | &check;| The name of the table.|
+| *PolicyObject* |string | &check; | A serialized policy object. For more information, see [retention policy](retentionpolicy.md).|
 
 ### Example
 

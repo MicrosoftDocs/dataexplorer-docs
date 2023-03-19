@@ -302,7 +302,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
 
 ### Query the data
 
-1. To see all the records, run the following [query](write-queries.md):
+1. To see all the records, run the following [query](/azure/data-explorer/kusto/query/tutorials/learn-common-operators):
     
     ```kusto
     Storms
@@ -316,7 +316,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     | project StartTime, EndTime, Source, EventId
     ```
     
-1. Use the [`summarize`](./write-queries.md#summarize) operator:
+1. Use the [`summarize`](kusto/query/summarizeoperator.md) operator:
 
     ```kusto
     Storms
@@ -328,7 +328,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     
     :::image type="content" source="media/ingest-data-kafka/kusto-query.png" alt-text="Kafka query column chart results in Azure Data Explorer.":::
 
-For more query examples and guidance, see [Write queries for Azure Data Explorer](write-queries.md) and [Kusto Query Language documentation](./kusto/query/index.md).
+For more query examples and guidance, see [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) and [Kusto Query Language documentation](./kusto/query/index.md).
 
 ## Reset
 
@@ -354,8 +354,8 @@ az kusto database delete -n <database name> --cluster-name <cluster name> -g <re
 Tune the [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) connector to work with the [ingestion batching policy](kusto/management/batchingpolicy.md):
 
 * Tune the Kafka Sink `flush.size.bytes` size limit starting from 1 MB, increasing by increments of 10 MB or 100 MB. 
-* When using Kafka Sink, data is aggregated twice. On the connector side data is aggregated according to flush settings, and on the Azure Data Explorer service side according to the batching policy. If the batching time is too short and no data can be ingested by both connector and service, batching time must be increased. Set batching size at 1 GB and increase or decrease by 100 MB increments as needed. For example, if the flush size is 1 MB and the batching policy size is 100 MB,after a 100 MB batch is aggregated by the Kafka Sink connector, a 100 MB batch will be ingested by the Azure Data Explorer service. If the batching policy time is 20 seconds and the Kafka Sink connector flushes 50 MB in a 20 second period - then the service will ingest a 50 MB batch.
-* You can scale by adding instances and [Kafka partitions](https://kafka.apache.org/documentation/). Increase `tasks.max` to the number of partitions. Create a partition if you have enough data to produce a blob the size of the `flush.size.bytes` setting. If the blob is smaller, the batch is processed when it reaches the time limit, so the partition will not receive enough throughput. A large number of partitions means more processing overhead.
+* When using Kafka Sink, data is aggregated twice. On the connector side data is aggregated according to flush settings, and on the Azure Data Explorer service side according to the batching policy. If the batching time is too short and no data can be ingested by both connector and service, batching time must be increased. Set batching size at 1 GB and increase or decrease by 100 MB increments as needed. For example, if the flush size is 1 MB and the batching policy size is 100 MB,after a 100-MB batch is aggregated by the Kafka Sink connector, a 100-MB batch will be ingested by the Azure Data Explorer service. If the batching policy time is 20 seconds and the Kafka Sink connector flushes 50 MB in a 20-second period - then the service will ingest a 50-MB batch.
+* You can scale by adding instances and [Kafka partitions](https://kafka.apache.org/documentation/). Increase `tasks.max` to the number of partitions. Create a partition if you have enough data to produce a blob the size of the `flush.size.bytes` setting. If the blob is smaller, the batch is processed when it reaches the time limit, so the partition won't receive enough throughput. A large number of partitions means more processing overhead.
 
 ## Next Steps
 

@@ -100,19 +100,12 @@ The Home tab shows the most recently used functions, divided into sections:
 |Stacked Area chart      | Displays a stacked area chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis) |
 |Timeline Chart   | Displays a time chart in which the X-axis is the first column (must be datetime). All numeric columns are mapped to different series (Y-axis).|
 |Line Chart   | Displays a line chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
-|[Anomaly Chart](#anomaly-chart)|    Similar to timechart, but finds anomalies in time series data, using the machine learning anomalies algorithm. For anomaly detection, Kusto.Explorer uses the [series_decompose_anomalies](../query/series-decompose-anomaliesfunction.md) function.
+|Anomaly Chart| Similar to timechart, but finds anomalies in time series data, using a machine learning anomaly detection algorithm. The data must be in fixed interval buckets. For anomaly detection, Kusto.Explorer uses the [series_decompose_anomalies](../query/series-decompose-anomaliesfunction.md) function.
 |Pie Chart    |    Displays a pie chart in which the color-axis is the first column. The theta-axis (must be a measure, converted to percent) is the second column.|
 |Time Ladder |    Displays a ladder chart in which the X-axis is the last two columns (must be datetime). The Y-axis is a composite of the other columns.|
 |Scatter Chart| Displays a point graph in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
 |Pivot Chart  | Displays a pivot table and pivot chart that gives the full flexibility of selecting data, columns, rows, and various chart types.| 
 |Time Pivot   | Interactive navigation over the events time-line (pivoting on time axis)|
-
-> [!NOTE]
-> <a id="anomaly-chart">Anomaly Chart</a>: 
->The algorithm expects time series data, which consists of two columns:
->* Time in fixed interval buckets
->* Numeric value for anomaly detection
->To produce time series data in Kusto.Explorer, summarize by the time field and specify the time bucket bin.
 
 ### View section
 

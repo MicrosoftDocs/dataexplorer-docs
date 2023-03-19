@@ -242,4 +242,4 @@ If you don't plan to use the resources you have created, run the following comma
 
 ## Next steps
 
-[Write queries](write-queries.md)
+[Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

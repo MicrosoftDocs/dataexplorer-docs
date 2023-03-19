@@ -588,7 +588,7 @@ Related functions:
 | Portugal                         |
 | ROK                              |
 | Singapore                        |
-| Turkey                           |
+| Türkiye                          |
 | UCT                              |
 | US/Alaska                        |
 | US/Aleutian                      |

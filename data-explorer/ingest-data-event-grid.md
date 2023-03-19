@@ -11,7 +11,7 @@ ms.date: 09/11/2022
 # Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications
 
 > [!div class="op_single_selector"]
-> * [Ingestion wizard](./ingestion-wizard-new-table.md)
+> * [Ingestion wizard](/azure/data-explorer/ingest-from-container)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)

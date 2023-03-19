@@ -3,29 +3,29 @@ title: Cancel operation command - Azure Data Explorer
 description: This article describes the `.cancel operation` command in Azure Data Explorer.
 ms.reviewer: odkadosh
 ms.topic: reference
-ms.date: 07/19/2022
+ms.date: 03/08/2023
 ---
 # .cancel operation command
 
 This command cancels a long-running operation. This command is useful when the operation is taking too long and you would like to abort it while running.
+
 The cancel operation command isn't guaranteed to succeed. The output of the `.cancel operation` command indicates whether or not cancellation was successful.
 
 > [!NOTE]
 > The cancel operation command is only supported for [ingest from query commands](data-ingestion/ingest-from-query.md), and not for canceling any other commands.
 
-### Syntax
+## Syntax
 
 `.cancel` `operation` *OperationId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
 
-## Arguments
+## Parameters
 
-* *OperationId*: A guid representing the operation ID returned from the running command.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *OperationId* | guid | &check; | A guid of the operation ID returned from the running command.|
+| *ReasonPhrase* | string | | The reason for canceling the running command.|
 
-### Optional properties
-
-* *ReasonPhrase*: A string describing the reason for canceling the running command.
-
-### Output
+## Returns
 
 |Output parameter |Type |Description
 |---|---|---
@@ -35,7 +35,7 @@ The cancel operation command isn't guaranteed to succeed. The output of the `.ca
 |CancellationState | string | Returns one of the following options: <br> `Cancelled successfully`: the operation was canceled <br> `Cancel failed`: the operation can't be canceled at this point. The operation may still be running or may have completed.
 |ReasonPhrase | string | Reason why cancellation wasn't successful.
 
-### Example
+## Example
 
 <!-- csl -->
 ```
