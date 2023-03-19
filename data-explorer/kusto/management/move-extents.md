@@ -41,6 +41,9 @@ There are three ways to specify which extents to move:
 * Specify explicitly the extent IDs in the source table.
 * Provide a query whose results specify the extent IDs in the source tables.
 
+> [!NOTE]
+> For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range
+
 ## Properties
 
 The following properties are supported. 

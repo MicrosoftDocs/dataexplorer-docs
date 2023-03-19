@@ -31,6 +31,9 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `async` (optional): Execute the command asynchronously.
 
+> [!NOTE]
+> For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range
+
 * An Operation ID (Guid) is returned.
 * The operation's status can be monitored. Use the [`.show operations`](operations.md#show-operations) command.
 * Use the [`.show operation details`](operations.md#show-operation-details) command to retrieve the results of a successful execution.

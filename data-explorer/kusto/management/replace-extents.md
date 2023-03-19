@@ -36,6 +36,9 @@ To specify which extents should be dropped or moved, use one of two queries.
 
 Both queries should return a recordset with a column called "ExtentId".
 
+> [!NOTE]
+> For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range
+
 ## Restrictions
 
 * Both source and destination tables must be in the context database.
