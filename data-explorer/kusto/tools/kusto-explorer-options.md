@@ -26,7 +26,7 @@ The following tables describe the options for customizing the behavior of Kusto.
 | Option | Description |
 |---------|--------------|
 | Queries auto-save | When enabled, the application automatically saves open documents. Changing this setting requires restarting the application to take effect. Enabled by default.|
-| Track changes | When enabled, the application tracks changes made to query scripts on disk by other applications. If the query script is changed externally you'll be notified and prompted for reloading it. Changing this setting requires restarting the application. Enabled by default.|
+| Track changes | When enabled, the application tracks changes made to query scripts on disk by other applications. If the query script is changed externally, you'll be notified and prompted for reloading it. Changing this setting requires restarting the application. Enabled by default.|
 | Use Edit Sessions | When enabled, each application process owns its own set of documents. Disabled by default.|
 | Font| The font used in the Query editor.|
 | Font Size | The font size used in the query editor.|
@@ -34,7 +34,7 @@ The following tables describe the options for customizing the behavior of Kusto.
 | Replace tabs with spaces | When enabled, tabs are automatically replaced with spaces.|
 | Disable function parameter injection | When enabled, function parameter injection from the clipboard is disabled.|
 | Disable query parameter injection | When enabled, query parameter injection is disabled.|
-| Disable query run triggers except F5 | When enabled, only the F5 key will trigger queries to run.|
+| Disable query run triggers except F5 | When enabled, only the F5 key triggers queries to run.|
 | Show help inside the application | When enabled, Help topics are shown inside the application. When disabled Help topics are opened inside a browser.|
 | Query parameter length limit | The maximal length of a string that can be used as a query parameter. Setting this value to more than 128K may cause performance issues. Default is 64K.|
 | Quick replacements| Invoke "Quick replacement" by pressing Ctrl+Space in the query editor when the caret is at the text to be replaced.|
@@ -66,7 +66,7 @@ The following tables describe the options for customizing the behavior of Kusto.
 | Expression| The placement of expressions in lists. |
 | Statement | The placement of statements. |
 | Semicolon | The placement of semicolons that end query statements. *New Line* places semicolons on a new line, indented. *Smart* places semicolons on a new line if the statement itself spans more than one line.  *None* leaves semicolons as is.
-| Insert Missing Syntax | Adds missing punctuation like (such as commas and semicolons) that you are getting error messages for.|
+| Insert Missing Syntax | Adds missing punctuation like (such as commas and semicolons) that you're getting error messages for.|
 
 ## Results Viewer
 
@@ -76,12 +76,12 @@ The following tables describe the options for customizing the behavior of Kusto.
 | Font | Font family used to display results.|
 | Max lines per cell | Maximum number of lines to show in each cell. Changing the setting to '-1' will result in unlimited lines per cell. Default is eight lines per cell.|
 | Numeric formatting | Formatting used for numbers. Default  is no formatting. |
-| Verbosity color scheme | Selects the color scheme for row formatting based on auto-detected verbosity level.|
+| Verbosity color scheme | Selects the color scheme for row formatting based on autodetected verbosity level.|
 | Hide empty columns | When enabled, empty columns in the view showing data will be hidden.  Default is disabled.|
-| Collapse single-value columns| When enabled, will auto-collapse single-value columns in the view showing data. Columns with single non-empty values will be shown as groups. Default is disabled.|
+| Collapse single-value columns| When enabled, will autocollapse single-value columns in the view showing data. Columns with single nonempty values will be shown as groups. Default is disabled.|
 | Templated value replacement | When enabled, you can interpolate the template column 'body:string' using the other columns, and the properties column 'env_properties:dynamic'. Interpolation is done for the pattern '{columnOrPropertyName}'. This option requires the result to have a 'body' and 'env_properties' columns. Default is disabled.
 | Auto-sort results by datetime columns | When enabled, rows will be auto-sorted by datetime columns. Default is enabled.|
-| Column visible range | The maximal amount of characters to be displayed in a column. Default is 2048.|
+| Column visible range | The maximal number of characters to be displayed in a column. Default is 2048.|
 | Text wrapping | When enabled, text that doesn't fit into cell width will be wrapped according to the column width. Default is disabled.|
 | Visualize JSON as text | When enabled, JSON values are visualized as single-row text. Default is disabled.|
 | Maximum Text Details Size | The maximum number of characters that will be shown in the detailed information panel when the cell is double-clicked. Default is 32KB.|
