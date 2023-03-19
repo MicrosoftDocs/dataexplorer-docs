@@ -21,6 +21,10 @@ The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP req
 > [callout policy](../management/calloutpolicy.md) that cluster admins
 > can use to granularly control which URIs the request can be sent to.
 
+## Prerequisites
+
+* Enable the plugins. For more information, see [.enable plugin](../management/enable-plugin.md).
+
 ## Syntax
 
 `evaluate` `http_request(`*Uri* [`,` *RequestHeaders* [`,` *Options*]]`)`
