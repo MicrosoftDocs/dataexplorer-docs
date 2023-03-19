@@ -167,18 +167,18 @@ _data
 ### Using mutiple columns to join element of 2 arrays
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OPQuDMBRF9/yKSxcN2EFLF6GDH3u3LiKSagapSUVjqcUf3/TFUmkeBO47h8trhLFz7ST8i+jiVpsAyTCEcTNrodqaUvRNnBUIA6zJL7wk9AJ4SUT/wSv5FqYEU4Kpgww4bpWMlCwi6N4P5gTzD2Ql2AL12Iu+72a60F2Gu4bPIJ9G6gbnyeCE0Qy1ML6TdtXOmZxhwTgpJYb2JanCukrcZNW1o9P5Wvq3j+zeVm+3NnLG35rQNVo+AQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OPQuDMBCG9/yKo0sSsIMpXYQOfuzduohIqhlCEysaSy3++KaXtog5CLwf93CtdH6uRgG7SJOA7lwE6TDECbRzJ61uUIq/5KQk4F8c/RxW0jSmEdBU4H+gFV+HGYYZhlkIkXBcl3Is5WKzW6BdfGxSAVnAPvay782MN4bT4N4BQ6J6OtW1cJ4cnGB0QyMdC71dvQtljsUFxslaOeiXQpCvW3lTtdFj2OBf9MYX3vf0tetlYPI3W/swT0sBAAA=" target="_blank">Run the query</a>
 
 ```kusto
-datatable (Val:int, Arr1:dynamic, Arr2:dynamic)
-[ 1, dynamic(['A1', 'A2', 'A3']), dynamic(['B1', 'B2', 'B3']), 
-  5, dynamic(['C1', 'C2']),       dynamic(['D1', 'D2'])
+datatable (Val: int, Arr1: dynamic, Arr2: dynamic)
+[
+    1, dynamic(['A1', 'A2', 'A3']), dynamic(['B1', 'B2', 'B3']), 
+    5, dynamic(['C1', 'C2']), dynamic(['D1', 'D2'])
 ] 
 | mv-apply Arr1, Arr2 on (
- extend Out = strcat(Arr1, "_", Arr2)
- | summarize Arr1 = make_list(Arr1), Arr2 = make_list(Arr2), Out = make_list(Out)
-)
-```
+    extend Out = strcat(Arr1, "_", Arr2)
+    | summarize Arr1 = make_list(Arr1), Arr2 = make_list(Arr2), Out= make_list(Out)
+    )
 
 **Output**
 
