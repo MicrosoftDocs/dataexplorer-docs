@@ -236,7 +236,7 @@ StormEvents
 
 ### Tabular argument with wildcard
 
-The table parameter `T` can have any schema, and the function CountRecordsInTable will work.
+The table parameter `T` can have any schema, and the function `CountRecordsInTable` will work.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFwzi/NKwlKTc4vSin2zAtJTMpJtdUIsVLQ0NLUVKhWCFGoUUgGKVGoteYKLskvynUtS80rKQYKZ+aV5WenYjNAQxMAvc2gqVoAAAA=" target="_blank">Run the query</a>
