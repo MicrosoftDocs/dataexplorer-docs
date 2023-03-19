@@ -518,11 +518,14 @@
     {
       "source_path": "data-explorer/matlab.md",
       "redirect_url": "/azure/data-explorer/connect-common-apps",
+      
+      "source_path": "data-explorer/query-sql-server-emulation.md",
+      "redirect_url": "/azure/data-explorer/sql-kql-queries-and-stored-functions",
       "redirect_document_id": true
     },
     {
-      "source_path": "data-explorer/query-sql-server-emulation.md",
-      "redirect_url": "/azure/data-explorer/sql-kql-queries-and-stored-functions",
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-show-commands.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/materialized-views/materialized-view-show-command",
       "redirect_document_id": true
     }
   ]
