@@ -151,6 +151,9 @@ The query finds all rows from all tables in all databases in which any column in
 This query is a [cross-database](./cross-cluster-or-database-queries.md) query.
 The resulting records are transformed according to the [output schema](#output-schema).
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0vLzEtRyMxT0EhJLElMSixO1VDXUtfU09JUKM9ILUpV0FLISCxWUPIuLS7JVwIAAccP5C0AAAA=" target="_blank">Run the query</a>
+
 ```kusto
 find in (database('*').*) where * has "Kusto"
 ```
@@ -160,8 +163,11 @@ find in (database('*').*) where * has "Kusto"
 The query finds all rows from all tables whose name starts with `K` in all databases whose name start with `B` and in which any column includes the word `Kusto`.
 The resulting records are transformed according to the [output schema](#output-schema).
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0vLzEtRyMxT0EhJLElMSixO1VAK1lLS1HPW0lQoz0gtSlXQUshILFZQ8i4tLslXAgCcXznPLwAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-find in (database("B*").K*) where * has "Kusto"
+find in (database("S*").C*) where * has "Kusto"
 ```
 
 ### Term lookup in several clusters
