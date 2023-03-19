@@ -29,6 +29,9 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 * `.alter` sets the collection of the extent's tags to the specified tags, while overriding the extent's existing tags.
 * `.alter-merge` sets the collection of the extent's tags to the union of the specified tags and the extent's existing tags.
 
+> [!NOTE]
+> For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range 
+
 ## Parameters
 
 |Name|Type|Required|Description|
