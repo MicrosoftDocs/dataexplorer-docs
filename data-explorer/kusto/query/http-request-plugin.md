@@ -4,7 +4,7 @@ description: Learn how to use the http_request plugin to send an HTTP request an
 services: data-explorer
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 03/19/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -23,9 +23,9 @@ The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP req
 
 ## Syntax
 
-`evaluate` `http_request` `(` *Uri* [`,` *RequestHeaders* [`,` *Options*]] `)`
+`evaluate` `http_request(`*Uri* [`,` *RequestHeaders* [`,` *Options*]]`)`
 
-`evaluate` `http_request_post` `(` *Uri* [`,` *RequestHeaders* [`,` *Options* [`,` *Content*]]] `)`
+`evaluate` `http_request_post(`*Uri* [`,` *RequestHeaders* [`,` *Options* [`,` *Content*]]]`)`
 
 ## Parameters
 
@@ -33,8 +33,13 @@ The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP req
 |--|--|--|--|
 | *Uri* | string | &check; | The destination URI for the HTTP or HTTPS request. |
 | *RequestHeaders* | dynamic |  | A property bag containing [HTTP headers](#headers) to send with the request. |
-| *Options* | dynamic |  | A property bag containing additional properties of the request. |
+| *Options* | dynamic |  | A property bag containing additional properties of the request.|
 | *Content* | string |  | The body content to send with the request. The content is encoded in `UTF-8` and the media type for the `Content-Type` attribute is `application/json`. |
+
+> [!NOTE]
+> The functions expect the arguments to be provided in a specific order, as presented in [Syntax](#syntax). While many of the arguments are optional, in many cases you'll still need to provide them.
+>
+> For instance, when using `http_request_post`, if you want to include *Content*, you must also provide *RequestHeaders* and *Options*. However, if you don't have any values to pass for these arguments, you can simply pass an empty dynamic property bag.
 
 ## Authentication and authorization
 
