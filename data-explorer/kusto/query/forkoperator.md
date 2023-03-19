@@ -63,8 +63,6 @@ Multiple result tables, one for each of the *subquery* arguments.
 
 ### Unnamed subqueries
 
-In the following example, the result tables will be named "GenericResult" and "GenericResult_2".
-
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVBy8/EP8nRxVALJpeUXZfNyKQCBBlSdS2piSUaxS2ZRanKJgjaU65mXAhGwUzDURFXvmZdVWpSZitABE0DRAwCWU8oSkwAAAA==" target="_blank">Run the query</a>
 
