@@ -3,7 +3,7 @@ title: Kusto Explorer code features - Azure Data Explorer
 description: This article describes Kusto Explorer Code features.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/14/2023
+ms.date: 03/19/2023
 ---
 
 # Kusto.Explorer code features
@@ -16,19 +16,19 @@ Use Kusto.Explorer's KQL query editing and refactoring features to rename variab
 
 ### Rename variable or column name
 
-Rename selected symbols by clicking `Ctrl`+`R` in the Query editor window.
+Rename selected symbols by clicking `Ctrl`+`R` in the query editor window.
 
 ![Animated GIF that shows a variable being renamed in the Query Editor window. Three occurrences are simultaneously replaced with the new name.](./Images/kusto-explorer-code-features/ke-refactor-rename.gif "refactor-rename")
 
 ### Extract scalars as `let` expressions
 
-You can define selected literals as `let` expressions by clicking `Alt`+`Ctrl`+`M`.
+To define selected literals as `let` expressions, press `Alt`+`Ctrl`+`M`.
 
 ![Animated GIF. The Query Editor pointer starts on a literal expression. A let statement then appears that sets that literal value to a new variable.](./Images/kusto-explorer-code-features/ke-extract-as-let-literal.gif "extract-as-let-literal")
 
 ### Extract tabular statements as `let` expressions
 
-You can also define tabular expressions as `let` statements by selecting its text, then clicking `Alt`+`Ctrl`+`M`.
+To define tabular expressions as `let` statements, select the text, and then press `Alt`+`Ctrl`+`M`.
 
 ![Animated GIF. A tabular expression is selected in the Query Editor. A let statement then appears that sets that tabular expression to a new variable.](./Images/kusto-explorer-code-features/ke-extract-as-let-tabular.gif "extract-as-let-tabular")
 
@@ -38,11 +38,11 @@ Kusto.Explorer provides several features for easy code navigation using query sy
 
 ### Go-to symbol definition
 
-You can navigate to the definition of the current symbol using `F12` or the `Alt`+`Home` short-cuts.
+You can navigate to the definition of the current symbol using `F12` or the `Alt`+`Home` shortcuts.
 
 ### List all references of a symbol
 
-You can obtain all references of the current symbol using the `Ctrl`+`F12` short-cut.
+You can obtain all references of the current symbol using the `Ctrl`+`F12` shortcut.
 
 :::image type="content" source="images/kusto-explorer-code-features/ke-code-nav-references.gif" alt-text="References of a symbol Kusto Explorer Code Navigation.":::
 

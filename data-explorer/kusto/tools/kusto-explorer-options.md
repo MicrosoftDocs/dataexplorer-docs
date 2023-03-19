@@ -3,7 +3,7 @@ title: Kusto Explorer options - Azure Data Explorer
 description: This article describes Kusto Explorer options in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 03/19/2023
 ---
 # Kusto Explorer options
 
@@ -19,9 +19,9 @@ The following tables describe the options for customizing the behavior of Kusto.
 | Welcome message | When enabled, the application shows the welcome message on start. Default is enabled.|
 | Display theme | The application UI color scheme: light or dark.|
 | Use legacy display themes| Enables and disables using legacy themes. |
-| Multi-line tabs| Enables and disables multi-line arrangement of the Query panel tabs. Default is enabled. |
+| Multi-line tabs| Enables and disables multi-line arrangement of the query panel tabs. Default is enabled. |
   
-## Query Editor
+## Query editor
 
 | Option | Description |
 |---------|--------------|
@@ -37,7 +37,7 @@ The following tables describe the options for customizing the behavior of Kusto.
 | Disable query run triggers except F5 | When enabled, only the F5 key will trigger queries to run.|
 | Show help inside the application | When enabled, Help topics are shown inside the application. When disabled Help topics are opened inside a browser.|
 | Query parameter length limit | The maximal length of a string that can be used as a query parameter. Setting this value to more than 128K may cause performance issues. Default is 64K.|
-| Quick replacements| Invoke "Quick replacement" by using Ctrl+Space in the Query editor when the caret is at the text to be replaced.|
+| Quick replacements| Invoke "Quick replacement" by pressing Ctrl+Space in the query editor when the caret is at the text to be replaced.|
 
 ## IntelliSense
 
@@ -74,7 +74,7 @@ The following tables describe the options for customizing the behavior of Kusto.
 |---------|--------------|
 | Font Size | The font size used by the data table grid, where query results are shown.|
 | Font | Font family used to display results.|
-| Max lines per cell | Maximum number of lines to show in each cell. Changing the setting to '-1' will result in unlimited lines per cell. Default is 8 lines per cell.|
+| Max lines per cell | Maximum number of lines to show in each cell. Changing the setting to '-1' will result in unlimited lines per cell. Default is eight lines per cell.|
 | Numeric formatting | Formatting used for numbers. Default  is no formatting. |
 | Verbosity color scheme | Selects the color scheme for row formatting based on auto-detected verbosity level.|
 | Hide empty columns | When enabled, empty columns in the view showing data will be hidden.  Default is disabled.|

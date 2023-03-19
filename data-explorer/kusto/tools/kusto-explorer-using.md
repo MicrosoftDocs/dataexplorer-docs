@@ -3,7 +3,7 @@ title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 03/14/2023
+ms.date: 03/19/2023
 ---
 
 # Using Kusto.Explorer
@@ -14,7 +14,7 @@ Kusto.Explorer is a desktop application that enables you to explore your data us
 
 Search++ mode enables you to search for a term using search syntax across one or more tables.
 
-1. In the Query dropdown on the **Home** tab, select **Search++**.
+1. In the **Query** dropdown on the **Home** tab, select **Search++**.
 1. Select **Multiple tables**.
 1. Under **Choose tables**, define which tables to search, then select **OK**.
 1. In the edit box, enter your search phrase and select **Go**.
@@ -236,7 +236,8 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
     :::image type="content" source="images/kusto-explorer-using/confirm-add-authorized-principals.png" alt-text="Screenshot of Review Principal window showing a confirmation request for adding authorized principal.":::
 
 To drop an existing authorized principal, select **Drop principal** and confirm the action.
-     :::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Confirm drop authorized principal.":::
+
+    :::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Confirm drop authorized principal.":::
 
 ## Next steps
 
