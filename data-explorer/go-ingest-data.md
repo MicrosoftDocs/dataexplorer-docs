@@ -208,4 +208,4 @@ If you plan to follow our other articles, keep the resources you created. If not
 
 ## Next steps
 
-[Write queries](write-queries.md)
+[Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

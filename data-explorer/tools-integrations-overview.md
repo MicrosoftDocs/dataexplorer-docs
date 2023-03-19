@@ -22,8 +22,8 @@ For a complete list of ingestion connectors, see [Data connectors Overview](conn
 ### Azure Data Explorer ingestion tools
 
 * [LightIngest](lightingest.md) - Help utility for ad-hoc data ingesting into Azure Data Explorer
-* Ingestion wizard: [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](./ingestion-wizard-new-table.md)
-or [from a local file to an existing table](./ingestion-wizard-existing-table.md)
+* Ingestion wizard: [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
+or [from a local file to an existing table](/azure/data-explorer/ingest-from-local-file)
 
 ## Query data
 

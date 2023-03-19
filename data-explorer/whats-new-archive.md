@@ -139,8 +139,8 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
 | [Create an external table using the Azure Data Explorer web UI wizard](external-table.md) | Updated article. New UI.
 | [Use one-click ingestion to create an event hub data connection](./event-hub-wizard.md)| Updated article. New UI.
-| [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](./ingestion-wizard-existing-table.md) | Updated article. New UI.
-| [Ingest data from a container/ADLS into Azure Data Explorer](./ingestion-wizard-new-table.md) | Updated article. New UI.
+| [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](/azure/data-explorer/ingest-from-local-file) | Updated article. New UI.
+| [Ingest data from a container/ADLS into Azure Data Explorer](/azure/data-explorer/ingest-from-container) | Updated article. New UI.
 | [Create a table in Azure Data Explorer](./create-table-wizard.md) | Updated article. New UI.
 
 **Query**
@@ -264,7 +264,7 @@ Article title | Description
 [ipv4_is_in_range()](kusto/query/ipv4-is-in-range-function.md) | New article. Checks if IPv4 string address is in IPv4-prefix notation range.
 [ipv4_netmask_suffix()](kusto/query/ipv4-netmask-suffix-function.md) | New article. Returns the value of the IPv4 netmask suffix from IPv4 string address.
 [has_all operator](kusto/query/has-all-operator.md) | New article. `has_all` operator filters based on the provided set of values (all values must be present).
-[row_rank()](/azure/data-explorer/kusto/query/rowrankdensefunction) | New article. Returns the current row's rank in a [serialized row set](kusto/query/windowsfunctions.md#serialized-row-set).
+[row_rank()](./kusto/query/rowrankdensefunction.md) | New article. Returns the current row's rank in a [serialized row set](kusto/query/windowsfunctions.md#serialized-row-set).
 | [Null Values](kusto/query/scalar-data-types/null-values.md) | Updated article. New behavior in Engine V3.
 | [String operators](kusto/query/datatypes-string-operators.md) | Updated article. String term indexing for Engine V3.
 
@@ -298,7 +298,7 @@ Article title | Description
 
 Article title | Description
 ---|---
-[Clean extent containers commands](kusto/management/clean-extent-containers.md) | New article. Describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands.
+[Clean extent containers commands](/azure/data-explorer/kusto/management/extents-overview) | New article. Describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands.
 [Request classification policy (Preview)](kusto/management/request-classification-policy.md)<br>[Request classification policy (Preview) - Control commands](kusto/management/show-cluster-policy-request-classification-command.md) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
 [Request limits policy (Preview)](kusto/management/request-limits-policy.md) | New article. A workload group's request limits policy allows limiting the resources used by the request during its execution.
 [Request rate limit policy (Preview)](kusto/management/request-rate-limit-policy.md) | New article. The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group.

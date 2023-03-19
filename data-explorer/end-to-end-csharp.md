@@ -228,4 +228,4 @@ await resourceManagementClient.ResourceGroups.DeleteAsync(resourceGroupName);
 *  To learn about other ways to create a cluster and database, see [Create an Azure Data Explorer cluster and database](create-cluster-database-csharp.md).
 * To learn more about ingestion methods, see [Azure Data Explorer data ingestion](ingest-data-overview.md).
 * To learn about the web application, see [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md).
-* [Write queries](write-queries.md) with Kusto Query Language.
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) with Kusto Query Language.

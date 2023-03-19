@@ -302,7 +302,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
 
 ### Query the data
 
-1. To see all the records, run the following [query](write-queries.md):
+1. To see all the records, run the following [query](/azure/data-explorer/kusto/query/tutorials/learn-common-operators):
     
     ```kusto
     Storms
@@ -328,7 +328,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     
     :::image type="content" source="media/ingest-data-kafka/kusto-query.png" alt-text="Kafka query column chart results in Azure Data Explorer.":::
 
-For more query examples and guidance, see [Write queries for Azure Data Explorer](write-queries.md) and [Kusto Query Language documentation](./kusto/query/index.md).
+For more query examples and guidance, see [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) and [Kusto Query Language documentation](./kusto/query/index.md).
 
 ## Reset
 

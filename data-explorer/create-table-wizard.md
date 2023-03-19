@@ -8,7 +8,7 @@ ms.date: 09/11/2022
 
 # Create a table in Azure Data Explorer
 
-Creating a table is an important step in the process of [data ingestion](ingest-data-overview.md) and [query](write-queries.md) in Azure Data Explorer. The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer web UI.
+Creating a table is an important step in the process of [data ingestion](ingest-data-overview.md) and [query](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) in Azure Data Explorer. The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer web UI.
 
 ## Prerequisites
 
@@ -142,4 +142,4 @@ In the tiles below the **Create table** progress, explore **Quick queries** or *
 
 * [Data ingestion overview](ingest-data-overview.md)
 * [Ingestion wizard](./ingest-data-wizard.md)
-* [Write queries for Azure Data Explorer](write-queries.md)
+* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

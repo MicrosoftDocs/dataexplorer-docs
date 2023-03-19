@@ -9,7 +9,7 @@ ms.date: 09/04/2022
 # Ingest data from a container into Azure Data Explorer
 
 > [!div class="op_single_selector"]
-> * [Ingestion wizard](ingestion-wizard-new-table.md)
+> * [Ingestion wizard](/azure/data-explorer/ingest-from-container)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -20,7 +20,7 @@ The [ingestion wizard](./ingest-data-wizard.md) enables you to quickly ingest da
 This document describes using the intuitive ingestion wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that responds to new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
 
 For an overview of the ingestion wizard, see [What is the ingestion wizard?](./ingest-data-wizard.md).
-For information about ingesting data into an existing table in Azure Data Explorer, see [Ingest data to an existing table](./ingestion-wizard-existing-table.md)
+For information about ingesting data into an existing table in Azure Data Explorer, see [Ingest data to an existing table](/azure/data-explorer/ingest-from-local-file)
 
 ## Prerequisites
 
@@ -71,7 +71,7 @@ Under **Source type**, do the following steps:
    :::image type="content" source="media/ingestion-wizard-new-table/from-container.png" alt-text="Screenshot selecting ingestion from container in the ingestion wizard.":::
 
    > [!TIP]
-   > For ingestion **from file**, see [Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer](./ingestion-wizard-existing-table.md#select-an-ingestion-type)
+   > For ingestion **from file**, see [Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer](/azure/data-explorer/ingest-from-local-file#select-an-ingestion-type)
 
 ## Filter data
 
@@ -119,7 +119,7 @@ In the **Schema** tab:
     In this case, the data format is **CSV**
 
     > [!TIP]
-    > If you want to use **JSON** files, see [Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer](./ingestion-wizard-existing-table.md#edit-the-schema).
+    > If you want to use **JSON** files, see [Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer](/azure/data-explorer/ingest-from-local-file#edit-the-schema).
 
 1. You can select the check box **Ignore the first record** to ignore the heading row of the file.
 
@@ -182,4 +182,4 @@ Review the resources, and select **Create**.
 ## Next steps
 
 * [Query data in Azure Data Explorer web UI](web-query-data.md)
-* [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)
+* [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
