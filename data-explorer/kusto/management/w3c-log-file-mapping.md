@@ -2,7 +2,7 @@
 title: W3CLOGFILE Mapping - Azure Data Explorer
 description: Learn how to use W3CLOGFILE mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
-ms.date: 11/16/2022
+ms.date: 03/08/2023
 ---
 
 # W3CLOGFILE mapping
@@ -11,16 +11,17 @@ Use W3CLOGFILE mapping to map incoming data to columns inside tables when your i
 
 [!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
 
-Each W3CLOGFILE mapping element may contain the following optional `properties`:
+Each W3CLOGFILE mapping element must contain either of the following optional properties:
 
-|Property|Description|
-|--|--|
-|`Field`| W3CLOGFILE entry name|
-|`ConstantValue`| The constant value to be used for a column instead of some value inside W3CLOGFILE file.|
-|`Transform`|[mapping transformations](mappings.md#mapping-transformations) that should be applied on the content.|
+| Property   | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|------------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Field      | string | Name of the field in the W3CLOGFILE log record.                                                                                                                                                                                                                                                                                                                                                                                              |
+| ConstValue | string | The constant value to be used for a column instead of some value inside the W3CLOGFILE file.                                                                                                                                                                                                                                                                                                                                                 |
+| Transform  | string | Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations).                                                                                                                                                                                                                                                                                                                    |
 
 > [!NOTE]
-> The only supported transformations for W3CLOGFILE format are: `SourceLineNumber` and `SourceLocation`.
+>
+> The only supported transformations for W3CLOGFILE format are SourceLineNumber and SourceLocation.
 
 [!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
 
@@ -85,7 +86,3 @@ Use W3CLOGFILE mapping during ingestion without defining a mapping schema (see [
         format="w3clogfile"
     )
 ```
-
-## Next steps
-
-* Learn more about [data mappings](mappings.md)
