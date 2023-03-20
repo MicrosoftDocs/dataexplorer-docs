@@ -23,13 +23,13 @@ The command returns one row showing the details of the cluster request classific
 
 Following is the schema of the output returned:
 
-| Name          | Type   | Description                                                                                                                                                        |
-|---------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PolicyName    | string | Name of the policy. For cluster request classification policy this value is **ClusterRequestClassificationPolicy**.                                                |
-| EntityName    | string | Name of the entity for which the policy is set. For cluster request classification policy this value is an empty string.                                           |
-| Policy        | string | JSON representation of the policy object.                                                                                                                          |
-| ChildEntities | string | Child entities for which this policy is set. For cluster request classification policy this values is an array of strings, each of which corresponds to the name of system and user databases attached to the cluster. |
-| EntityType    | string | Type of entity for which this policy is set. For cluster request classification policy this value is **Cluster**.                                           |
+| Name          | Type   | Description                                                                                                                                                                                                            |
+|---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| PolicyName    | string | Name of the policy. For cluster request classification policy, this value is **ClusterRequestClassificationPolicy**.                                                                                                   |
+| EntityName    | string | Name of the entity for which the policy is set. For cluster request classification policy, this value is an empty string.                                                                                              |
+| Policy        | string | JSON representation of the policy object.                                                                                                                                                                              |
+| ChildEntities | string | Child entities for which this policy is set. For cluster request classification policy, this value is an array of strings, each of which corresponds to the name of system and user databases attached to the cluster. |
+| EntityType    | string | Type of entity for which this policy is set. For cluster request classification policy, this value is **Cluster**.                                                                                                     |
 
 ## Examples
 
