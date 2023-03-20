@@ -23,7 +23,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 | *expression* | string | &check; | An expression that evaluates to a string.|
 | *stringConstant* | string | &check; | A string constant for which to search and parse.|
 | *columnName* | string | &check; | The name of a column to assign a value to, extracted from the string expression. |
-| *columnType* | string | | The scalar value that indicates the type to convert the value to. The default is the `string`.|
+| *columnType* | string | | The scalar value that indicates the type to convert the value to. The default is `string`.|
 
 > [!NOTE]
 >
