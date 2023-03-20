@@ -68,7 +68,7 @@ The managed identity used for the continuous export must have write permissions 
 
 For more information, see the **Authentication and authorization** section of [Azure Storage external tables](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external tables](../external-sql-tables.md#authentication-and-authorization).
 
-## 5 - Create continuous export job
+## 5 - Create the continuous export job
 
 Use the [.create-or-alter continuous-export](create-alter-continuous.md) command to create the continuous export job.
 
