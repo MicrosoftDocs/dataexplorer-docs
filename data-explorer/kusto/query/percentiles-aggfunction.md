@@ -98,7 +98,7 @@ The results table shown includes only the first 10 rows.
 
 ## Return percentiles as an array
 
-Instead of returning the values in individual columns, use the `percentilesw_array()` function to return the percentiles in a single column of dynamic array type.
+Instead of returning the values in individual columns, use the `percentiles_array()` function to return the percentiles in a single column of dynamic array type.
 
 ### Syntax
 
