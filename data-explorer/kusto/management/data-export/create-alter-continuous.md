@@ -9,6 +9,9 @@ ms.date: 02/21/2023
 
 Creates or alters a continuous export job.
 
+> [!IMPORTANT]
+> If the target external table uses [impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation) authentication, you must specify a managed identity to run the continuous export. For more information, see [Authenticate with a managed identity](continuous-export-with-managed-identity.md).
+
 ## Permissions
 
 You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
@@ -56,13 +59,3 @@ with
 | Name | ExternalTableName | Query | ForcedLatency | IntervalBetweenRuns | CursorScopedTables | ExportProperties |
 |--|--|--|--|--|--|--|
 | MyExport | ExternalBlob | S | 00:10:00 | 01:00:00 | [<br>  "['DB'].['S']"<br>] | {<br>  "SizeLimit": 104857600<br>} |
-
-## Continuous Export with Managed Identity
-
-In order to use Continuous Export with Managed Identity, please add the `AutomatedFlows` usage to the [Managed Identity policy](../managed-identity-policy.md).
- 
-For more information on how to set up and use a managed identity with continuous exports, see [managed identity overview](../../../managed-identities-overview.md). 
-
-> [!NOTE]
-> Continuous export jobs exporting data to an external table that uses impersonation authentication must run on behalf of a managed identity. 
-> Setting up continuous export to such a table without specifying a managed identity to run on behalf of, will result in the following error message: `"Error: continuous export to external tables with impersonation requires setting the 'managedIdentity' property in the continuous export configuration."`
