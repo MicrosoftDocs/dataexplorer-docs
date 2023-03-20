@@ -39,7 +39,6 @@ You can:
 Monitor what gets classified to the internal workload group and the statistics of those requests using the [Monitoring recommendations](#monitoring).
 
 > [!NOTE]
-
 > * A limit on the maximum amount of concurrent *queries* may have been defined on some cluster using the optional *"Query throttling policy"*, which has been deprecated.
 > * In these clusters, the limit on the maximum amount of concurrent *queries* was automatically applied on the `default` workload group's [request rate limits policies](request-rate-limit-policy.md).
 > * While the old limit applied only to *queries*, the new limit applies to *all requests* - queries and control commands.

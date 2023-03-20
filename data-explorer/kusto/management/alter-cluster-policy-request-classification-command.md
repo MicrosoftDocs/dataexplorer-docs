@@ -42,7 +42,7 @@ Following is the schema of the output returned:
 
 ### Set a policy with multiple workload groups
 
-Set a policy which, based on the evaluation of multiple conditions, assigns the user to one amonf many different workload groups or to default:
+Set a policy which, based on the evaluation of multiple conditions, assigns the user to one among many different workload groups or to default:
 
 ```kusto
 .alter cluster policy request_classification '{"IsEnabled":true}' <|
