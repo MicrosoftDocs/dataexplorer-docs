@@ -11,7 +11,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 
 ## Syntax
 
-*T* `| parse` [ `kind=`*kind* [ `flags=`*regexFlags* ]] *expression* `with` [ `*` ] *stringConstant* *columnName* [`:` *columnType*] [ `*` ] `,`...
+*T* `| parse` [ `kind=`*kind* [ `flags=`*regexFlags* ]] *expression* `with` [ `*` ] *stringConstant* *columnName* [`:` *columnType*] [ `*` ] `,` ...
 
 ## Parameters
 
