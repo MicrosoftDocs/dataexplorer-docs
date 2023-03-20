@@ -176,7 +176,7 @@ items:
       href: csv-mapping.md
     - name: "JSON mapping"
       href: json-mapping.md
-    - name: "ARVO mapping"
+    - name: "AVRO mapping"
       href: avro-mapping.md
     - name: "Parquet mapping"
       href: parquet-mapping.md
