@@ -179,7 +179,6 @@ datatable (Val: int, Arr1: dynamic, Arr2: dynamic)
     extend Out = strcat(Arr1, "_", Arr2)
     | summarize Arr1 = make_list(Arr1), Arr2 = make_list(Arr2), Out= make_list(Out)
     )
-
 **Output**
 
 |Val|Arr1|Arr2|`Out`|
