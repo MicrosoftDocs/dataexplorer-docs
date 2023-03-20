@@ -36,6 +36,8 @@ Azure Data Explorer pulls data from an external source and reads requests from a
 
 Azure Data Explorer supports several ingestion methods, each with its own target scenarios. These methods include ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion.
 
+For a list of data connectors, see [Data connectors overview](connector-overview.md).
+
 ### Ingestion using managed pipelines
 
 For organizations who wish to have management (throttling, retries, monitors, alerts, and more) done by an external service, using a connector is likely the most appropriate solution. Queued ingestion is appropriate for large data volumes. Azure Data Explorer supports the following Azure Pipelines:
@@ -135,7 +137,7 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
     In order to ingest data, a table needs to be created beforehand. Use one of the following options:
 
     * Create a table [with a command](kusto/management/create-table-command.md).
-    * Create a table using the [ingestion wizard](./ingestion-wizard-new-table.md).
+    * Create a table using the [ingestion wizard](/azure/data-explorer/ingest-from-container).
 
     > [!Note]
     > If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.

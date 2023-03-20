@@ -27,7 +27,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[tobool()](toboolfunction.md)|Convert inputs to boolean (signed 8-bit) representation.|
 |[todatetime()](todatetimefunction.md)|Converts input to datetime scalar.|
-|[todouble()/toreal()](todoublefunction.md)|Converts the input to a value of type real. (todouble() and toreal() are synonyms.)|
+|[todouble()](todoublefunction.md)|Converts the input to a value of type real.|
 |[tostring()](tostringfunction.md)|Converts input to a string representation.|
 |[totimespan()](totimespanfunction.md)|Converts input to timespan scalar.|
 
@@ -90,6 +90,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[bag_keys()](bagkeysfunction.md)|Enumerates all the root keys in a dynamic property-bag object.|
 |[bag_merge()](bag-merge-function.md)|Merges dynamic property-bags into a dynamic property-bag with all properties merged.|
 |[bag_pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
+|[bag_pack_columns()](bag-pack-columns-function.md)|Creates a dynamic object (property bag) from a list of columns.|
 |[bag_remove_keys()](bag-remove-keys-function.md)|Removes keys and associated values from a dynamic property-bag.|
 |[bag_set_key()](bag-set-key-function.md)|Sets a given key to a given value in a dynamic property-bag.|
 |[jaccard_index()](jaccard-index-function.md)|Computes the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of two sets.|
@@ -189,7 +190,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[case()](casefunction.md)|Evaluates a list of predicates and returns the first result expression whose predicate is satisfied.|
 |[coalesce()](coalescefunction.md)|Evaluates a list of expressions and returns the first non-null (or non-empty for string) expression.|
-|[iff()](/azure/data-explorer/kusto/query/ifffunction)|Evaluate the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
+|[iff()](./ifffunction.md)|Evaluate the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
 |[max_of()](max-offunction.md)|Returns the maximum value of several evaluated numeric expressions.|
 |[min_of()](min-offunction.md)|Returns the minimum value of several evaluated numeric expressions.|
 

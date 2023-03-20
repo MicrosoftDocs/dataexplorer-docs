@@ -3,17 +3,17 @@ title: get_packages_version_fl() - Azure Data Explorer
 description: Learn how to use the get_packages_version_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 12/27/2022
+ms.date: 03/13/2023
 ---
 # get_packages_version_fl()
 
-Retrieves the versions of the Python engine and packages of the [inline python() plugin](../query/pythonplugin.md).
+`get_packages_version_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves the versions of the Python engine and packages of the [inline python() plugin](../query/pythonplugin.md).
+
 The function accepts a dynamic array containing the names of the packages to check, and returns their respective versions and the Python engine version.
 
-> [!NOTE]
->
-> * `get_packages_version_fl()` is a [user-defined function](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
-> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
+## Prerequisites
+
+* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 
 ## Syntax
 
@@ -25,13 +25,16 @@ The function accepts a dynamic array containing the names of the packages to che
 |--|--|--|--|
 | *packages* | dynamic | | A dynamic array containing the names of the packages. Default is empty list to retrieve only the engine version |
 
-## Usage
+## Function definition
 
-`get_packages_version_fl()` is a user-defined function [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database, as follows:
 
-### [Ad hoc](#tab/adhoc)
+### [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
+Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+
+> [!IMPORTANT]
+> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `get_packages_version_fl()`, see [Example](#example).
 
 ```kusto
 let get_packages_version_fl = (packages:dynamic=dynamic([]))
@@ -57,16 +60,16 @@ let get_packages_version_fl = (packages:dynamic=dynamic([]))
     ```;
     print 1
     | evaluate python(typeof(name:string , ver:string), code, kwargs)
-}
-;
-get_packages_version_fl(pack_array('numpy', 'scipy', 'pandas', 'statsmodels', 'sklearn', 'onnxruntime', 'plotly'))
+};
+// Write your query to use the function here.
 ```
 
-### [Persistent](#tab/persistent)
+### [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md).  Creating a function requires [Database User permissions](../management/access-control/role-based-access-control.md).
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
 
-### One time installation
+> [!IMPORTANT]
+> You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
 ```kusto
 .create-or-alter function with (folder = "Packages\\Utils", docstring = "Returns version information of the Python engine and the specified packages")
@@ -96,7 +99,46 @@ get_packages_version_fl(packages:dynamic=dynamic([]))
 }
 ```
 
-### Usage
+---
+
+## Example
+
+### [Query-defined](#tab/query-defined)
+
+To use a query-defined function, invoke it after the embedded function definition.
+
+```kusto
+let get_packages_version_fl = (packages:dynamic=dynamic([]))
+{
+    let kwargs = pack('packages', packages);
+    let code =
+    ```if 1:
+        import importlib
+        import sys
+        
+        packages = kargs["packages"]
+        result = pd.DataFrame(columns=["name", "ver"])
+        for i in range(len(packages)):
+            result.loc[i, "name"] = packages[i]
+            try:
+                m = importlib.import_module(packages[i])
+                result.loc[i, "ver"] = m.__version__ if hasattr(m, "__version__") else "missing __version__ attribute"
+            except Exception as ex:
+                result.loc[i, "ver"] = "ERROR: " + (ex.msg if hasattr(ex, "msg") else "exception, no msg")
+        id = result.shape[0]
+        result.loc[id, "name"] = "Python"
+        result.loc[id, "ver"] = sys.version
+    ```;
+    print 1
+    | evaluate python(typeof(name:string , ver:string), code, kwargs)
+};
+get_packages_version_fl(pack_array('numpy', 'scipy', 'pandas', 'statsmodels', 'sklearn', 'onnxruntime', 'plotly'))
+```
+
+### [Stored](#tab/stored)
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
 
 ```kusto
 get_packages_version_fl(pack_array('numpy', 'scipy', 'pandas', 'statsmodels', 'sklearn', 'onnxruntime', 'plotly'))
@@ -104,14 +146,15 @@ get_packages_version_fl(pack_array('numpy', 'scipy', 'pandas', 'statsmodels', 's
 
 ---
 
-```kusto
-name	    ver
-numpy	    1.23.4
-onnxruntime	1.13.1
-pandas	    1.5.1
-plotly	    5.11.0
-Python	    3.10.8 (tags/v3.10.8:aaaf517, Oct 11 2022, 16:50:30) [MSC v.1933 64 bit (AMD64)]
-scipy	    1.9.3
-sklearn	    1.1.3
-statsmodels	0.13.2
-```
+**Output**
+
+| name | ver |
+|---|---|
+| numpy | 1.23.4 |
+| onnxruntime | 1.13.1 |
+| pandas | 1.5.1 |
+| plotly | 5.11.0 |
+| Python | 3.10.8 (tags/v3.10.8:aaaf517, Oct 11 2022, 16:50:30) [MSC v.1933 64 bit (AMD64)] |
+| scipy | 1.9.3 |
+| sklearn | 1.1.3 |
+| statsmodels | 0.13.2 |

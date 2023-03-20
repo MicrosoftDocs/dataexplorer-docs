@@ -39,7 +39,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
     |**Setting** | **Default value** | **Field description**
     |---|---|---|
-    | Number of items | *1000*  | The number of files defined as the limit after which a batch is sealed.  |
+    | Number of items | *1000*  | The number of files defined as the limit after which a batch is sealed. This setting should only be set in scenarios where you can control the data units, such as blobs or files. In message-based scenarios, such as Event Hubs, IoT Hub, and Azure Cosmos DB change feed, consider using the *Time* and *Size* settings to control batching. |
     | Time (seconds) |  *300* | The time limit after which a batch is sealed. |
     | Size (MB) |  *1024* | The size limit after which a batch is sealed.  |
 
@@ -56,4 +56,4 @@ In the **Summary** tab, all steps will be marked with green check marks when the
 ## Next steps
 
 * [Query data in Azure Data Explorer web UI](web-query-data.md)
-* [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)
+* [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

@@ -3,7 +3,7 @@ title: .show table sharding policy command - Azure Data Explorer
 description: This article describes the .show table sharding policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/09/2023
 ---
 # .show table sharding policy
 
@@ -17,17 +17,13 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-**For a specified table**
-
 `.show` `table` *TableName* `policy` `sharding`
 
-**For all tables**
+## Parameters
 
-`.show` `table` * `policy` `sharding`
-
-## Arguments
-
-*TableName* - Specify the name of the table. A wildcard (*) denotes all tables.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table for which to show the policy details. A wildcard (`*`) denotes all tables.|
 
 ## Returns
 

@@ -18,11 +18,13 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 ## Syntax
 
-`.alter` `cluster` `policy` `capacity` *PolicyObject* 
+`.alter` `cluster` `policy` `capacity` *PolicyObject*
 
-## Arguments
+## Parameters
 
-*PolicyObject* - Define a JSON policy object. See [capacity policy](capacitypolicy.md) for policy properties. 
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *PolicyObject* | string | &check; | A JSON policy object. See [capacity policy](capacitypolicy.md) for policy properties. |
 
 ## Returns
 

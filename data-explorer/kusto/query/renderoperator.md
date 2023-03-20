@@ -30,14 +30,15 @@ three kinds of columns:
 
 ## Syntax
 
-*T* `|` `render` *visualization* [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
+*T* `|` `render` *visualization* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *T* | string | &check; | Input table name.
-| *visualization* | string | &check; | Indicates the kind of [visualization](#visualization) to use. Must be one of the supported values in the following list.
+| *visualization* | string | &check; | Indicates the kind of [visualization](#visualization) to use. Must be one of the supported values in the following list.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Visualization
 
@@ -168,7 +169,7 @@ These visualizations have the following conceptual model:
 
 ## See also
 
-* [Rendering examples in the tutorial](./tutorial.md#displaychartortable)
+* [Rendering examples in the tutorial](tutorials/use-aggregation-functions.md#visualize-query-results)
 * [Anomaly detection](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
 
 ::: zone-end
@@ -196,9 +197,5 @@ InsightsMetrics
 | summarize avg(Val) by Computer, bin(TimeGenerated, 1h)
 | render timechart
 ```
-
-## See also
-
-* [Rendering examples in the tutorial](./tutorial.md?pivots=azuremonitor#display-a-chart-or-table-render-1)
 
 ::: zone-end

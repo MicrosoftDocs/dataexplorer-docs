@@ -3,7 +3,7 @@ title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 03/20/2023
 ---
 
 # Using Kusto.Explorer
@@ -14,11 +14,12 @@ Kusto.Explorer is a desktop application that enables you to explore your data us
 
 Search++ mode enables you to search for a term using search syntax across one or more tables.
 
-1. In the Home tab, in the Query dropdown, select **Search++**.
+1. In the **Query** dropdown on the **Home** tab, select **Search++**.
 1. Select **Multiple tables**.
-1. Under **Choose tables**, define which tables to search.
+1. Under **Choose tables**, define which tables to search, then select **OK**.
 1. In the edit box, enter your search phrase and select **Go**.
-1. A heat-map of the table/time-slot grid shows which terms appear and where they appear.
+
+    A heat-map of the table/time-slot grid shows which terms appear and where they appear.
 
     :::image type="content" source="images/kusto-explorer-using/search-plus-plus.png" alt-text="Search + + Kusto Explorer":::
 
@@ -28,7 +29,7 @@ Search++ mode enables you to search for a term using search syntax across one or
 
 ## Query mode
 
-Kusto.Explorer includes a powerful script mode that enables you to write, edit, and run inline queries. The script mode comes with syntax highlighting and IntelliSense, so you can quickly ramp-up your knowledge of the Kusto Query Language.
+Kusto.Explorer includes a powerful query mode that enables you to write, edit, and run inline queries. The query mode comes with syntax highlighting and IntelliSense, so you can quickly ramp-up your knowledge of the Kusto Query Language.
 
 This section describes how to run basic queries in Kusto.Explorer and how to add parameters to your queries.
 
@@ -65,7 +66,7 @@ StormEvents
 
 :::image type="content" source="images/kusto-explorer-using/basic-query.png" alt-text="Kusto Explorer basic query.":::
 
-Learn more about [Kusto Query Language](../query/index.md).
+To learn more about the Kusto Query Language, see [Kusto Query Language](../query/index.md).
 
 > [!NOTE]
 > Blank lines in the query expression can affect which part of the query is executed.
@@ -83,23 +84,13 @@ Learn more about [Kusto Query Language](../query/index.md).
 >
 > * Client-side query parametrization, described below, is a feature of the Kusto.Explorer application only. It's equivalent to using string-replace operations on the queries before sending them to be executed by the service. The syntax described below is not part of the query language itself and can't be used when sending queries to the service by means other than Kusto.Explorer.
 
-If you use the same value in multiple queries or in multiple tabs, it's highly inconvenient to change that value in every place it's used. That's why Kusto.Explorer supports query parameters. Query parameters are shared among tabs so that they can be easily reused. Parameters are denoted by {} brackets. For example: `{parameter1}`
-
-The script editor highlights query parameters:
-
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-1.png" alt-text="Parametrized query 1.":::
+If you use the same value in multiple queries or in multiple tabs, it's highly inconvenient to change that value in every place it's used. That's why Kusto.Explorer supports query parameters. Query parameters are shared among tabs so that they can be easily reused. Parameters are denoted by {} brackets. For example, `{parameter1}`.
 
 You can easily define and edit existing query parameters:
 
+:::image type="content" source="images/kusto-explorer-using/parametrized-query.png" alt-text="Screenshot of query editor showing a query with parameters. The query editor option titled Query parameters is highlighted.":::
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-2.png" alt-text="Edit parametrized query 2.":::
-
-
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-3.png" alt-text="Edit parametrized query 3.":::
-
-The script editor also has IntelliSense for query parameters that are already defined:
-
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-4.png" alt-text="Paramaterized query IntelliSense.":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query-3.png" alt-text="Screenshot of the Query parameters window showing the defined parameters.":::
 
 You can have multiple sets of parameters (listed in the **Parameters Set** combo box).
 Select **Add new** or **Delete current** to manipulate the list of parameter sets.
@@ -108,7 +99,7 @@ Select **Add new** or **Delete current** to manipulate the list of parameter set
 
 ## Share queries and results
 
-In Kusto.Explorer, you can share queries and results by email. You can also create deep links that will open and run a query in the browser.
+In Kusto.Explorer, you can share queries and results by email. You can also create deep links that open and run a query in the browser.
 
 ### Share queries and results by email
 
@@ -119,11 +110,11 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 
     :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
 
-    Kusto.Explorer pastes the following to the clipboard:
+    Kusto.Explorer copies the following to the clipboard:
      * Your query
      * The query results (table or chart)
      * The connection details for the Kusto cluster and database
-     * A link that will rerun the query automatically
+     * A link that reruns the query automatically
 
 1. Paste the contents of the clipboard into a new email message.
 
@@ -133,14 +124,14 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 
 You can create a URI that, when opened in a browser, opens Kusto.Explorer locally and runs a specific query on a specified Kusto database.
 
-> [!NOTE] 
+> [!NOTE]
 > For security reasons, deep-linking is disabled for control commands.
 
 #### Creating a deep-link
 
 The easiest way to create a deep-link is to author your query in Kusto.Explorer and then use
 `Export to Clipboard` to copy the query (including the deep link and results) to the clipboard. You can then share it by email.
-        
+
 When copied to an email, the deep link is displayed in small font. For example:
 
 https://help.kusto.windows.net/Samples [[Run the query](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)]
@@ -224,26 +215,29 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 |`group`   |The name of the connection group.                                         |
 |`filename`|The local file holding the connection group.                              |
 
-## Manage clusters, databases, tables, or function authorized principals
+## Manage databases, tables, or function authorized principals
 
-> [!NOTE]
+> [!IMPORTANT]
 > Only [admins](../management/access-control/role-based-access-control.md) can add or drop authorized principals in their own scope.
 
-Right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Cluster Authorized Principals**. (You can also select this option from the Management Menu.)
+1. To view the list of authorized principals, right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Database Authorized Principals**. (You can also select this option from the Management Menu.)
 
-:::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Manage authorized principals.":::
+    :::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Screenshot of entity drop down menu. The options titled Manage Database Authorized Principals is highlighted.":::
 
-:::image type="content" source="images/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Manage authorized principals window.":::
+1. Select **Add principal** to add an authorized principal.
+    :::image type="content" source="images/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Screenshot of the Manage authorized principals window. The options titled Drop principal and Add principal are highlighted.":::
 
-* To add a new authorized principal, select **Add principal**, provide the principal details, and confirm the action.
+1. Provide the principal details, then select **Add principal**.
 
-    :::image type="content" source="images/kusto-explorer-using/add-authorized-principals-window.png" alt-text="Add authorized principal.":::
+    :::image type="content" source="images/kusto-explorer-using/add-authorized-principals-window.png" alt-text="Screenshot of the Add authorized principal window. The button titled Add principal is highlighted.":::
 
-    :::image type="content" source="images/kusto-explorer-using/confirm-add-authorized-principals.png" alt-text="Confirm add authorized principal.":::
+1. Confirm that you want to add the authorized principal.
 
-* To drop an existing authorized principal, select **Drop principal** and confirm the action.
+    :::image type="content" source="images/kusto-explorer-using/confirm-add-authorized-principals.png" alt-text="Screenshot of Review Principal window showing a confirmation request for adding authorized principal.":::
 
-    :::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Confirm drop authorized principal.":::
+To drop an existing authorized principal, select **Drop principal** and confirm the action.
+
+:::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Screenshot of Drop principal window showing a confirmation request for dropping an authorized principal.":::
 
 ## Next steps
 
@@ -251,9 +245,7 @@ Right-click the target entity in the [Connections panel](kusto-explorer.md#conne
 * [Kusto.Explorer options](kusto-explorer-options.md)
 * [Troubleshooting Kusto.Explorer](kusto-explorer-troubleshooting.md)
 
-Learn more about Kusto.Explorer tools and utilities:
+To Learn more about Kusto.Explorer tools and utilities, See:
 
-* [Kusto.Explorer code analyzer](kusto-explorer-code-analyzer.md)
-* [Kusto.Explorer code navigation](kusto-explorer-codenav.md)
-* [Kusto.Explorer code refactoring](kusto-explorer-refactor.md)
+* [Kusto.Explorer code features](kusto-explorer-code-features.md)
 * [Kusto Query Language (KQL)](../query/index.md)

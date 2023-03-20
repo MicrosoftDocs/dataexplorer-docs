@@ -32,7 +32,7 @@ Resource Health determines the health of your Azure Data Explorer resource by ex
 
 ## Resource health status
 
-The health of a resource is displayed with one of the following statuses, available, unavailable, and unknown.
+The health of a resource is displayed with one of the following statuses: available, degraded, unavailable, and unknown.
 
 ### Available
 

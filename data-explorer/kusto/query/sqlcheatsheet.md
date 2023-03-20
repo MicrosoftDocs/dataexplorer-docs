@@ -57,4 +57,4 @@ Having |<code>SELECT COUNT(\*) FROM dependencies<br>GROUP BY name<br>HAVING COUN
 
 ## Next steps
 
-* Use [T-SQL](../api/tds/t-sql.md) to query data
+* Use [T-SQL](/azure/data-explorer/t-sql) to query data

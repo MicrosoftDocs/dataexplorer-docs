@@ -15,9 +15,11 @@ Read more about [S2 Cells](https://s2geometry.io/devguide/s2cell_hierarchy).
 
 `geo_s2cell_to_polygon(`*s2cell*`)`
 
-## Arguments
+## Parameters
 
-*s2cell*: S2 Cell token string value as it was calculated by [geo_point_to_s2cell()](geo-point-to-s2cell-function.md). The S2 Cell token maximum string length is 16 characters.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *s2cell* | string | &check; | S2 cell token value as it was calculated by [geo_point_to_s2cell()](geo-point-to-s2cell-function.md). The S2 cell token maximum string length is 16 characters.|
 
 ## Returns
 
@@ -28,7 +30,9 @@ Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynam
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2Sk7NyQnIz6lMz89TsFVIT82Ph4jFl+THF0DENZQsLJONTC2VNAF6g4+NNQAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 print s2cellPolygon = geo_s2cell_to_polygon("89c259")
 ```
@@ -41,7 +45,9 @@ print s2cellPolygon = geo_s2cell_to_polygon("89c259")
 
 The following example assembles GeoJSON geometry collection of S2 Cell polygons.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22QTW6DMBCF95xixAokN+KvYCplFSk9QJdVZTl0RGgMRrazoOrhO4AVorT2xp4335tnf0pH+6QwUkP7YlAqBkq65RQH7wHQeqryXf1cljxnUCQ7nlR1UrFNSkte1quU8jwt7iRepwVfpKrIsypnwUfwA6PRX9g4sJk4S3uGPbSoxai7wQmnhc0aVGoOtGRhkCbxX4r61dTqwdMrNOO+Hvm+GbXXvpem+8ZHWCjryKCXFxSqsy560O/nnmQrRtlcouV5oZtGDBmER5Tuaui4lilLj85MJN2AW++rFw9aKbLs9DBXPdKhpds/AWNvTUFGNG7t28wH2S/mbxkc6AvAkxaabUoc/wKv/5OK6QEAAA==" target="_blank">Run the query</a>
+
 ```kusto
 datatable(lng:real, lat:real)
 [
@@ -66,7 +72,9 @@ datatable(lng:real, lat:real)
 
 The following example returns a null result because of the invalid s2cell token input.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2Sk7NyQnIz6lMz89TsFVIT82Ph4jFl+THF0DENZQSlTQByV78WTAAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 print s2cellPolygon = geo_s2cell_to_polygon("a")
 ```

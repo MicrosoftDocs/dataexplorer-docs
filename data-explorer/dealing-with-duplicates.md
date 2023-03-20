@@ -92,4 +92,4 @@ Data duplication can be handled in multiple ways. Evaluate the options carefully
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Write queries for Azure Data Explorer](write-queries.md)
+> [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

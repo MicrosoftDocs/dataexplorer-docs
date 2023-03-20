@@ -506,7 +506,11 @@ items:
     - name: Manage database roles
       href: manage-database-security-roles.md
     - name: Manage table roles
-      href: manage-table-security-roles.md
+      items:
+      - name: Manage table roles
+        href: manage-table-security-roles.md
+      - name: Manage table view access
+        href: manage-table-view-access.md
     - name: Manage external table roles
       href: manage-external-table-security-roles.md
     - name: Manage materialized view roles
@@ -626,7 +630,7 @@ items:
     href: access-control/how-to-authenticate-with-aad.md
   - name: Referencing security principals
     displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
-    href: /azure/data-explorer/kusto/management/access-control/referencing-security-principals
+    href: ./access-control/referencing-security-principals.md
   - name: Allow cross-tenant queries and commands
     href: ../../cross-tenant-query-and-commands.md
 - name: Advanced data management
@@ -649,8 +653,6 @@ items:
         href: replace-extents.md
       - name: .show extents
         href: show-extents.md
-    - name: Extent containers clean commands
-      href: clean-extent-containers.md
   - name: Follower commands
     displayName: Cluster commands, database commands, materialized view commands, table commands 
     href: cluster-follower.md

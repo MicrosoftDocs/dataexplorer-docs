@@ -17,14 +17,14 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 `.drop` `materialized-view` *MaterializedViewName* [`ifexists`]
 
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view.|
+
 > [!NOTE]
 > If `ifexists` is specified, the command won't fail if it refers to a non-existent materialized view.
-
-## Properties
-
-| Property | Type| Description |
-|----------------|-------|-----|
-| MaterializedViewName| String| Name of the Materialized View.|
 
 ## Returns
 

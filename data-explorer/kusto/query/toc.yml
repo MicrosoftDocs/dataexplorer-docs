@@ -3,8 +3,6 @@ items:
   href: index.md
 - name: Quick reference guide
   href: ../../kql-quick-reference.md
-- name: Tutorial
-  href: tutorial.md
 - name: Samples
   href: samples.md
 - name: Query best practices
@@ -347,8 +345,8 @@ items:
       href: not-in-cs-operator.md
     - name: "!in~ operator" 
       href: not-in-operator.md 
-    - name: match regex operator
-      href: regex-operator.md
+    - name: matches regex operator
+      href: matches-regex-operator.md
     - name: startswith operator
       href: startswith-operator.md
     - name: startswith_cs operator
@@ -417,6 +415,9 @@ items:
   - name: bag_pack()
     displayName: pack(), pack_dictionary()
     href: packfunction.md
+  - name: bag_pack_columns()
+    displayName: bag pack columns, dynamic object, property bag
+    href: bag-pack-columns-function.md
   - name: bag_remove_keys()
     href: bag-remove-keys-function.md
   - name: bag_set_key()
@@ -675,6 +676,9 @@ items:
     href: make-timespanfunction.md
   - name: max_of()
     href: max-offunction.md
+  - name: merge_tdigest()
+    displayName: tdigest_merge()
+    href: merge-tdigest-function.md
   - name: min_of()
     href: min-offunction.md
   - name: monthofyear()
@@ -702,6 +706,9 @@ items:
     href: parse-ipv6function.md
   - name: parse_ipv6_mask()
     href: parse-ipv6-maskfunction.md
+  - name: parse_json()
+    displayName: toobject(), parsejson(), todynamic()
+    href: parsejsonfunction.md
   - name: parse_path()
     href: parsepathfunction.md
   - name: parse_url()
@@ -790,9 +797,6 @@ items:
     href: substringfunction.md
   - name: tan()
     href: tanfunction.md
-  - name: merge_tdigest()
-    displayName: tdigest_merge()
-    href: merge-tdigest-function.md
   - name: tobool()
     displayName: toboolean()
     href: toboolfunction.md
@@ -800,11 +804,9 @@ items:
     href: todatetimefunction.md
   - name: todecimal()
     href: todecimalfunction.md
-  - name: todouble(), toreal()
+  - name: todouble()
+    displayName: toreal()
     href: todoublefunction.md
-  - name: parse_json()
-    displayName: toobject(), parsejson(), todynamic()
-    href: parsejsonfunction.md
   - name: toguid()
     href: toguidfunction.md
   - name: tohex()
@@ -833,8 +835,10 @@ items:
   - name: trim_start()
     href: trimstartfunction.md
   - name: unicode_codepoints_from_string()
+    displayName: to_utf8()
     href: unicode-codepoints-from-string-function.md
   - name: unicode_codepoints_to_string()
+    displayName: make_string()
     href: unicode-codepoints-to-string-function.md
   - name: unixtime_microseconds_todatetime()
     href: unixtime-microseconds-todatetimefunction.md
@@ -929,8 +933,11 @@ items:
   - name: minif()
     href: minif-aggfunction.md
   - name: percentile(), percentiles()
-    displayName: percentiles_array(), percentilew(), percentilesw(), percentilesw_array()
+    displayName: percentiles_array()
     href: percentiles-aggfunction.md
+  - name: percentilew(), percentilesw()
+    displayName: percentilesw_array(), weighted percentiles
+    href: percentilesw-aggfunction.md
   - name: stdev()
     href: stdev-aggfunction.md
   - name: stdevif()
@@ -963,7 +970,6 @@ items:
     displayName: H3, S2, Geohash
     href: geospatial-grid-systems.md
   - name: Geospatial visualizations
-    displayName: Geospatial visualizations
     href: geospatial-visualizations.md
   - name: geo_distance_2points()
     href: geo-distance-2points-function.md
@@ -1341,12 +1347,9 @@ items:
       href: ../tools/kusto-explorer-options.md
     - name: Keyboard shortcuts
       href: ../tools/kusto-explorer-shortcuts.md
-    - name: Code Refactoring
-      href: ../tools/kusto-explorer-refactor.md
-    - name: Code Navigation
-      href: ../tools/kusto-explorer-codenav.md
-    - name: Code Analyzer
-      href: ../tools/kusto-explorer-code-analyzer.md
+    - name: Kusto.Explorer code features
+      displayName: Code Refactoring, Code Navigation, Code Analyzer
+      href: ../tools/kusto-explorer-code-features.md
     - name: Troubleshooting Kusto.Explorer
       href: ../tools/kusto-explorer-troubleshooting.md
   - name: Kusto.Cli
@@ -1357,3 +1360,5 @@ items:
       href: ../../kusto-emulator-overview.md
     - name: Install the Kusto emulator
       href: ../../kusto-emulator-install.md
+  - name: Kusto extension for Azure Data Studio >>
+    href: /sql/azure-data-studio/extensions/kusto-extension

@@ -43,10 +43,16 @@ This article describes the available roles and how to assign principals to those
     .add database <TestDatabase> users ('aaduser=<user@contoso.com>')
     ```
 
+    Adding roles to principals from external tenants require either the tenant ID or name to be explicitly specified in the control command. To add a user from an external tenant to the Database user role, run the following command, substituting your database name, user and tenant name.
+
+    ```Kusto
+    .add database <TestDatabase> users ('aaduser=<user@contoso.com;fabrikam.com>')
+    ```
+
     The output of the command shows the list of existing users and the roles they're assigned to in the database.
     
-    For examples pertaining to Azure Active Directory and the Kusto authorization model, please see [Principals and Identity Providers](/azure/data-explorer/kusto/management/access-control/referencing-security-principals)
+    For examples pertaining to Azure Active Directory and the Kusto authorization model, please see [Principals and Identity Providers](./kusto/management/access-control/referencing-security-principals.md)
 
 ## Next steps
 
-[Write queries](write-queries.md)
+[Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

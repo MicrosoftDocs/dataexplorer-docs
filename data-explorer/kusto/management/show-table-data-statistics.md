@@ -3,7 +3,7 @@ title: .show table data statistics - Azure Data Explorer
 description: This article describes the .show table data statistics command in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/09/2023
 ---
 # .show table data statistics
 
@@ -18,13 +18,16 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-`.show` `table` *TableName* `data` `statistics` [ `with` `(` *PropertyName* `=` *PropertyValue* `)` ]
+`.show` `table` *tableName* `data` `statistics` [ `with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)` ]
 
-## Arguments
+## Parameters
 
-* *TableName*: The name of the table on which you want to return statistics.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table for which to show statistics.|
+|*propertyName*, *propertyValue*|string||A comma-separated list of optional [properties](#properties).|
 
-## Properties
+### Properties
 
 The following properties can be specified. All properties are optional.
 
