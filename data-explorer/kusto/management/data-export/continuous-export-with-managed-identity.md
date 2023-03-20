@@ -11,6 +11,10 @@ In some cases, you must use a managed identity to successfully configure a conti
 
 In this article, you'll learn how to perform continuous export with a managed identity.
 
+## Permissions
+
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to create a continuous export.
+
 ## 1 - Create an external table
 
 Continuous export jobs export data to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query. The results are stored in the external table, which defines the destination and the schema of the exported data.
