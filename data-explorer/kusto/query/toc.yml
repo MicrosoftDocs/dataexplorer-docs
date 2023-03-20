@@ -1344,12 +1344,9 @@ items:
       href: ../tools/kusto-explorer-options.md
     - name: Keyboard shortcuts
       href: ../tools/kusto-explorer-shortcuts.md
-    - name: Code Refactoring
-      href: ../tools/kusto-explorer-refactor.md
-    - name: Code Navigation
-      href: ../tools/kusto-explorer-codenav.md
-    - name: Code Analyzer
-      href: ../tools/kusto-explorer-code-analyzer.md
+    - name: Kusto.Explorer code features
+      displayName: Code Refactoring, Code Navigation, Code Analyzer
+      href: ../tools/kusto-explorer-code-features.md
     - name: Troubleshooting Kusto.Explorer
       href: ../tools/kusto-explorer-troubleshooting.md
   - name: Kusto.Cli
