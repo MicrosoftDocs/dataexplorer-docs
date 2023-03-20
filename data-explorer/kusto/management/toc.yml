@@ -242,13 +242,13 @@ items:
     items:
     - name: Callout policy
       href: calloutpolicy.md
-    - name: ".alter callout policy command"
+    - name: .alter cluster policy callout command
       href: alter-callout-policy-command.md
-    - name: ".alter-merge callout policy command"
+    - name: .alter-merge cluster policy callout command
       href: alter-merge-callout-policy-command.md
-    - name: ".delete callout policy command"
+    - name: .delete cluster policy callout command
       href: delete-callout-policy-command.md
-    - name: ".show callout policy command"
+    - name: .show cluster policy callout command
       href: show-cluster-callout-policy-command.md
   - name: Capacity
     items:
