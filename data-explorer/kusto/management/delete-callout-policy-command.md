@@ -23,7 +23,7 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 |---------------|--------|-----------------------------------------------------------------------------------------------------------|
 | PolicyName    | string | Name of the policy. For cluster callout policy this value is **CalloutPolicy**.                           |
 | EntityName    | string | Name of the entity for which the policy is set. For cluster callout policy this value is an empty string. |
-| Policy        | string | JSON representation of the policy object. This command sets this value to null.                          |
+| Policy        | string | JSON representation of the policy object. This command sets this value to null.                           |
 | ChildEntities | string | Child entities for which this policy is set. For cluster callout policy this value is an empty string.    |
 | EntityType    | string | Type of entity for which this policy is set. For cluster callout policy this value is an empty string.    |
 
