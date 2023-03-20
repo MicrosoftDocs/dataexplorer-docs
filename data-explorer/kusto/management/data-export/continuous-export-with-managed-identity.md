@@ -11,46 +11,58 @@ In some cases, you must use a managed identity to successfully configure a conti
 
 In this article, you'll learn how to perform continuous export with a managed identity.
 
-## 1 - Configure the managed identity for your cluster
+## 1 - Create an external table
 
-For instructions, see [Configure managed identities for your Azure Data Explorer cluster](../../../configure-managed-identities-cluster.md).
+Continuous export jobs export data to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query. The results are stored in the external table, which defines the destination and the schema of the exported data.
+
+If you don't yet have an external table for your continuous export, [Create an Azure Storage external tables](../external-tables-azurestorage-azuredatalake.md) or [Create an SQL Server external tables](../external-sql-tables.md).
+
+## 2 - Configure the managed identity for your cluster
+
+[Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity) or [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity) for your cluster.
+
+An Azure Data Explorer cluster can only have one system-assigned identity. This identity is tied to your cluster and deleted if your resource is deleted. On the other hand, a user-assigned identity is a standalone Azure resource, and multiple of these identities can be assigned to your cluster.
 
 ## 2 - Set the managed identity policy
 
 1. Define a [managed identity policy](../managed-identity-policy.md). `AutomatedFlows` must be listed under the `AllowedUsages` field.
 
-```JSON
-{
-  "ObjectId": "<objectID>",
-  "ClientId": "<clientID>",
-  "TenantId": "<tenantID",
-  "DisplayName": "myManagedIdentity",
-  "IsSystem": false,
-  "AllowedUsages": "AutomatedFlows, ExternalTable"
-}
-```
+    ```JSON
+    {
+      "ObjectId": "<objectID>",
+      "ClientId": "<clientID>",
+      "TenantId": "<tenantID",
+      "DisplayName": "myManagedIdentity",
+      "IsSystem": false,
+      "AllowedUsages": "AutomatedFlows, ExternalTable"
+    }
+    ```
 
 1. Run the [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command to set the managed identity policy for the cluster or database of the continuous export.
 
-## 3 - Grant permissions to the managed identity
+## 3 - Grant Azure Data Explorer permissions to the managed identity
 
-Run the following command to grant the managed identity at least the Database User security role. Replace `databaseName`, `managedIdentityObjectId`, and `tenantId` with the relevant values.
+The managed identity needs at least the [Database User](../access-control/role-based-access-control.md) role for the Azure Data Explorer database containing your external table in order to perform the continuous export.
+
+To grant the managed identity the Database User role, run the following command.
 
 ```kusto
 .add database <databaseName> users ('aadapp={managedIdentityObjectId};{tenantId}')
 ```
 
-To learn more about the available security roles, see [Role-based access control](../access-control/role-based-access-control.md). For more information on how to use management commands to grant security roles, see [Security roles overview](../security-roles.md).
+For more information on how to use management commands to grant security roles, see [Security roles overview](../security-roles.md).
 
-## 3 - Create the external table
+## 4 - Grant external resource permissions to the managed identity
 
-If the external table doesn't yet exist, create it by following the instructions in [Create and alter Azure Storage external tables](../external-tables-azurestorage-azuredatalake.md) or [Create and alter SQL Server external tables](../external-sql-tables.md).
+The managed identity used for the continuous export must have write permissions over the external resource. The required permissions vary depending on the resource type.
 
-## 4 - Give write permissions to the managed identity
+| External resource | Required permissions|
+|--|--|--|
+|Azure Blob Storage / Data Lake Storage Gen2|Storage Blob Data Contributor|
+|Data Lake Storage Gen1|Contributor|
+|SQL Server|CREATE, UPDATE, and INSERT|
 
-The managed identity used for the continuous export must have write permissions over the external resource. The required write permissions vary based on the type of resource and authentication method.
-
-Depending on your use case, assign the managed identity the relevant **Write permissions** for [Azure Storage](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server](../external-sql-tables.md#authentication-and-authorization) as specified in the **Authentication and authorization** table.
+For more information, see the **Authentication and authorization** section of [Azure Storage external tables](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external tables](../external-sql-tables.md#authentication-and-authorization).
 
 ## 5 - Create continuous export job
 
