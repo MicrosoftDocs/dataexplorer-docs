@@ -933,8 +933,11 @@ items:
   - name: minif()
     href: minif-aggfunction.md
   - name: percentile(), percentiles()
-    displayName: percentiles_array(), percentilew(), percentilesw(), percentilesw_array()
+    displayName: percentiles_array()
     href: percentiles-aggfunction.md
+  - name: percentilew(), percentilesw()
+    displayName: percentilesw_array(), weighted percentiles
+    href: percentilesw-aggfunction.md
   - name: stdev()
     href: stdev-aggfunction.md
   - name: stdevif()
@@ -1344,12 +1347,9 @@ items:
       href: ../tools/kusto-explorer-options.md
     - name: Keyboard shortcuts
       href: ../tools/kusto-explorer-shortcuts.md
-    - name: Code Refactoring
-      href: ../tools/kusto-explorer-refactor.md
-    - name: Code Navigation
-      href: ../tools/kusto-explorer-codenav.md
-    - name: Code Analyzer
-      href: ../tools/kusto-explorer-code-analyzer.md
+    - name: Kusto.Explorer code features
+      displayName: Code Refactoring, Code Navigation, Code Analyzer
+      href: ../tools/kusto-explorer-code-features.md
     - name: Troubleshooting Kusto.Explorer
       href: ../tools/kusto-explorer-troubleshooting.md
   - name: Kusto.Cli
