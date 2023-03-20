@@ -3,7 +3,7 @@ title: .delete materialized view cache policy command - Azure Data Explorer
 description: This article describes the .delete materialized view cache policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/09/2023
 ---
 # .delete materialized view cache policy
 
@@ -17,9 +17,11 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.delete` `materialized view` *MaterializedViewName* `policy` `caching`
 
-## Arguments
+## Parameters
 
-*MaterializedViewName* - Specify the name of the materialized view.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view.|
 
 ## Example
 

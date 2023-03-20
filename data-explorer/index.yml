@@ -112,7 +112,7 @@ landingContent:
       - linkListType: tutorial
         links:
           - text: Write KQL queries
-            url: write-queries.md
+            url: /azure/data-explorer/kusto/query/tutorials/learn-common-operators
       - linkListType: how-to-guide
         links:
           - text: Query data in Azure Data Lake
@@ -120,7 +120,7 @@ landingContent:
           - text: Query data using Python
             url: python-query-data.md
           - text: Time series analysis
-            url: /azure/data-explorer/kusto/query/time-series-analysis
+            url: ./kusto/query/time-series-analysis.md
       - linkListType: reference
         links:
           - text: KQL quick reference

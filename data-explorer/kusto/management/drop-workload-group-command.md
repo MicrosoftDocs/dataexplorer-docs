@@ -3,7 +3,7 @@ title: drop workload_group command - Azure Data Explorer
 description: This article describes the drop workload_group command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 03/09/2023
 ---
 # .drop workload_group
 

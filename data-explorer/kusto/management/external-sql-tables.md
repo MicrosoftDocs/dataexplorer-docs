@@ -50,7 +50,19 @@ To `.create-or-alter` an external table using managed identity authentication re
 > * If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables. 
 > * Altering the schema or format of an external SQL table is not supported.
 
-**Example** 
+## Authentication and authorization
+
+The authentication method to access a SQL Server external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method.
+
+The following table lists the supported authentication methods for SQL Server external tables and the permissions needed to read or write to the table.
+
+|Authentication method|Read permissions|Write permissions|
+|--|--|--|
+|[Impersonation](../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
+|[Managed identity](../api/connection-strings/sql-authentication-methods.md#managed-identity)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
+|[Username and password](../api/connection-strings/sql-authentication-methods.md#username-and-password)|||
+
+## Example
 
 ```kusto
 .create external table MySqlExternalTable (x:long, s:string) 

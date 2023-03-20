@@ -270,4 +270,4 @@ Select VM SKUs with more cores and higher network throughput (memory is less imp
 
 ## Next steps
 
-* Query your data in the Azure Data Lake using Azure Data Explorer. Learn to [write queries](write-queries.md) and derive more insights from your data.
+* Query your data in the Azure Data Lake using Azure Data Explorer. Learn to [write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) and derive more insights from your data.

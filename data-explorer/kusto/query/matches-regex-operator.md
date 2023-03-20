@@ -1,11 +1,11 @@
 ---
-title: The case-sensitive match regex string operator - Azure Data Explorer
-description: Learn how to use the match regex string operator to filter a record set based on a case-sensitive regex value.
+title: The case-sensitive matches regex string operator - Azure Data Explorer
+description: Learn how to use the matches regex string operator to filter a record set based on a case-sensitive regex value.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/17/2023
 ---
-# match regex operator
+# matches regex operator
 
 Filters a record set based on a case-sensitive regex value.
 

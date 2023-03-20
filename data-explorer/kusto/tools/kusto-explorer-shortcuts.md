@@ -3,7 +3,7 @@ title: Kusto.Explorer keyboard shortcuts (hot-keys) - Azure Data Explorer
 description: This article describes Kusto.Explorer keyboard shortcuts (hot-keys) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/22/2020
+ms.date: 03/08/2023
 ---
 # Kusto.Explorer keyboard shortcuts (hot-keys)
 
@@ -56,7 +56,7 @@ You can use the following keyboard shortcuts with the query editor or when the c
 |`Ctrl`+`Shift`+`V`|Shows Timeline pivot over existing data|
 |`Ctrl`+`F9`  | Toggles `show only matching rows`/`highlight matching rows` modes for  client text search (`Ctrl`+`F`) behavior in data grid. |
 |`Ctrl`+`F10` |Shows details panel - where selected row is presented as property  grid|
-|`Ctrl`+`F`  | Shows search box for the panel that is currently in focus. Supported in `Connetions`, `Data Results`, and `Query Editor` panels|
+|`Ctrl`+`F`  | Shows search box for the panel that is currently in focus. Supported in `Connections`, `Data Results`, and `Query Editor` panels|
 |`Ctrl`+`Tab`| Shows Query Editor document selector dialog. You can hold `Ctrl` and switch between documents with `Tab` |
 |`Ctrl`+`J`|Toggles appearance of the result panel|
 |`Ctrl`+`E`|Toggles appearance of the query editor and result panel in cycle of: `Query Editor and Results` -> `Query Editor` -> `Query Editor and Results` -> `Results` |
@@ -100,7 +100,7 @@ The following keyboard shortcuts can be used when editing a query in the query e
 |`Ctrl`+`Z`| Undo |
 |`Ctrl`+`Y`| Redo |
 |`Ctrl`+`L`| Deletes current line|
-|`Ctrl`+`D`| Deletes current line| 
+|`Ctrl`+`D`| Deletes current line|
 |`Ctrl`+`F`| Opens `Find` dialog |
 |`Ctrl`+`Shift`+`F`| Opens `Find` dialog (all tabs lookup) |
 |`Ctrl`+`H`| Opens `Replace` dialog |

@@ -25,6 +25,9 @@ The following table shows the possible security roles on the table level and des
 |`admins` | View, modify, and remove the table and table entities.|
 |`ingestors` | Ingest data to the table without access to query. |
 
+> [!NOTE]
+> To learn how to grant a principal view access to a subset of tables within a database, see [manage table view access](manage-table-view-access.md).
+
 ## View existing security roles
 
 Before you add or remove principals, you can use the `.show` command to see a table with all of the principals and roles that are already set on the table.
@@ -68,7 +71,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 | *Action* | string | &check; | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
 | *TableName* | string | &check; | The name of the table for which to add principals.|
 | *Role* | string | &check; | The role to assign to the principal. For tables, this can be `admins` or `ingestors`.|
-| *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](/azure/data-explorer/kusto/management/access-control/referencing-security-principals#examples-for-azure-ad-principals).|
+| *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](./access-control/referencing-security-principals.md).|
 | `skip-results` | string | | If provided, the command won't return the updated list of table principals.|
 | *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
 
@@ -103,7 +106,7 @@ The following example removes all principals in the group from the `admins` role
 
 #### Add new security roles and remove the old with .set
 
-THe following example removes existing `ingestors` and adds the provided principals as `ingestors` on the `StormEvents` table.
+The following example removes existing `ingestors` and adds the provided principals as `ingestors` on the `StormEvents` table.
 
 ```kusto
 .set table StormEvents ingestors ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')

@@ -3,7 +3,7 @@ title: Export data to an external table - Azure Data Explorer
 description: This article describes Export data to an external table in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/27/2023
+ms.date: 03/20/2023
 ---
 # Export data to an external table
 
@@ -43,6 +43,10 @@ The following properties are supported as part of the export to external table c
 
 >[!NOTE]
 > `hint.spread` and `hint.concurrency` are properties used to decrease/increase the concurrency of write operations. For more information, see [partition operator](../../query/partitionoperator.md). These properties are only relevant when exporting to an external table which is partitioned by a string partition. By default, the number of nodes exporting concurrently will be the minimum value between 64 and the number of cluster nodes.
+
+## Authentication and authorization
+
+In order to export to an external table, you must set up write permissions. For more information, see the **Write permissions** for [Azure Storage external table](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external table](../external-sql-tables.md).
 
 ## Output
 

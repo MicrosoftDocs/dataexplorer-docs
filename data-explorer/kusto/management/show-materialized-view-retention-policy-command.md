@@ -3,7 +3,7 @@ title: .show materialized-view retention policy command- Azure Data Explorer
 description: This article describes the .show materialized-view retention policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 10/03/2021
+ms.date: 03/09/2023
 ---
 # .show materialized-view retention policy
 
@@ -13,9 +13,11 @@ Display a materialized-view's [retention policy](retentionpolicy.md). The retent
 
 `.show` `materialized-view` *DatabaseName* `policy` `retention` 
 
-## Arguments
+## Parameters
 
-*MaterializedViewName* - Specify the name of the materialized view.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view.|
 
 ## Returns
 

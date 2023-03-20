@@ -3,7 +3,7 @@ title: .delete table sharding policy command - Azure Data Explorer
 description: This article describes the .delete table sharding policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/09/2023
 ---
 # .delete table sharding policy
 
@@ -19,9 +19,11 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.delete` `table` *TableName* `policy` `sharding`
 
-## Arguments
+## Parameters
 
-*TableName* - Specify the name of the table. A wildcard (*) denotes all tables.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table. A wildcard (`*`) denotes all tables.|
 
 ## Example
 
