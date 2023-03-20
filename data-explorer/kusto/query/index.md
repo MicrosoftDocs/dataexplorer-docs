@@ -52,7 +52,7 @@ This query has a single tabular expression statement. The statement begins with 
 |-----|
 |   28|
 
-To try out some more Kusto queries, see [Tutorial: Use Kusto queries](tutorial.md).
+To try out some more Kusto queries, see [Tutorial: Write Kusto queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators).
 
 ## Control commands
 
@@ -71,9 +71,9 @@ For more information on control commands, see [Management (control commands) ove
 
 ## Next steps
 
-* [Tutorial: Use Kusto queries](tutorial.md)
+* [Tutorial: Write Kusto queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
 * [Samples for Kusto Queries](samples.md)
 * [KQL quick reference](../../kql-quick-reference.md)
 * [SQL to Kusto cheat sheet](sqlcheatsheet.md)
 * [Query best practices](best-practices.md)
-* [Query data with T-SQL](../api/tds/t-sql.md)
+* [Query data with T-SQL](/azure/data-explorer/t-sql)

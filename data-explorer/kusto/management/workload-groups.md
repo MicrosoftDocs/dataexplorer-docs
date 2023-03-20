@@ -9,14 +9,18 @@ ms.date: 04/30/2021
 
 A workload group serves as a container for requests (queries, commands) that have similar classification criteria. Workload groups and [workload group policies](#workload-group-policies) are a means of resource governance for incoming requests to the cluster, and allow aggregate monitoring of the requests. When a request's execution begins, the request is classified and assigned to a specific workload group. Then, the request runs using the policies assigned to the workload group.
 
-Workload groups are defined at the cluster level. Up to 10 custom workload groups may be defined in addition to the two built-in workload groups.
+Workload groups are defined at the cluster level. Up to 10 custom workload groups may be defined in addition to the three built-in workload groups.
 
 > [!NOTE]
 > Requests that aren't queries or control commands aren't included in the scope of workload groups. For example: streaming ingestion requests.
 
 ## Built-in workload groups
 
-There are two pre-defined workload groups: [the `internal` workload group](#internal-workload-group) and [the `default` workload group](#default-workload-group).
+The pre-defined workload groups are:
+
+* [`internal` workload group](#internal-workload-group)
+* [`default` workload group](#default-workload-group) 
+* [`$materialized-views` workload group](#materialized-views-workload-group)
 
 ### Default workload group
 
@@ -37,7 +41,7 @@ Monitor what gets classified to the internal workload group and the statistics o
 > [!NOTE]
 > * A limit on the maximum amount of concurrent *queries* may have been defined on some cluster using the optional *"Query throttling policy"*, which has been deprecated.
 > * In these clusters, the limit on the maximum amount of concurrent *queries* was automatically applied on the `default` workload group's [request rate limits policies](request-rate-limit-policy.md).
-> * While the old limit applied only to *queries*, the new limit applies to *all reqeusts* - queries and control commands.
+> * While the old limit applied only to *queries*, the new limit applies to *all requests* - queries and control commands.
 
 
 ### Internal workload group
@@ -51,6 +55,21 @@ You can't:
 * Classify requests into the `internal` workload group.
 
 You can [monitor](#monitoring) what gets classified to the `internal` workload group, and statistics of those requests.
+
+
+### Materialized views workload group
+
+The `$materialized-views` workload group applies to the materialized views materialization process. For more information on how materialized views work, see [materialized views overview](materialized-views/materialized-view-overview.md#how-materialized-views-work).
+
+You can change the following values in the workload group's [request limits policy](request-limits-policy.md):
+
+* MaxMemoryPerQueryPerNode
+* MaxMemoryPerIterator
+* MaxFanoutThreadsPercentage
+* MaxFanoutNodesPercentage
+
+> [!NOTE]
+> You can't change the criteria used for routing these requests.
 
 ## Request classification
 

@@ -35,6 +35,15 @@ Supported *Options* settings include:
 | `token` | Azure AD access token used to authenticate with the Azure Resource Manager.|
 | `preferredLocations` | Which region the data is queried from. </br>**Example:**`['East US']` |
 
+## Authentication and authorization
+
+To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the authorization information in the connection string. The following table provides the supported authentication methods and the description for how to use that method.
+
+|Authentication method|Connection string syntax|Description|
+|--|--|--|--|
+|Account key|`;AccountKey=`|Append the account key to the connection string.|
+|Azure AD access token|`{ token: <token> }`|Provide the token in the *Options* argument.|
+
 ## Set callout policy
 
 The plugin makes callouts to the Azure Cosmos DB instance. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `cosmosdb` to the target *CosmosDbUri*.

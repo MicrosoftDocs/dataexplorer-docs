@@ -3,7 +3,7 @@ title: .show materialized view partitioning policy command- Azure Data Explorer
 description: This article describes the .show materialized view partitioning policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 03/09/2023
 ---
 # .show materialized view partitioning policy
 
@@ -13,9 +13,11 @@ Displays a materialized view [partitioning policy](partitioningpolicy.md). The p
 
 `.show` `materialized-view` *MaterializedViewName* `policy` `partitioning` 
 
-## Arguments
+## Parameters
 
-*MaterializedViewName* - Specify the name of the materialized view.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view.|
 
 ## Returns
 

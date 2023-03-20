@@ -527,6 +527,37 @@ LINKIT serves more than 100 customers in the Netherlands and Germany, providing 
 
 - [LINKIT website](https://www.linkit.nl/en)
 
+## M&M Software GmbH
+
+:::image type="icon" source="media/findmypartner/mm-logo.jpg":::
+
+M&M Software is a technology and consulting company for digital solutions. Our range of services includes substantiated management and technology consulting, high qualified software development and maintenance as well as comprehensive quality assurance and IT services.
+
+As a project partner for software development services, we drive the success of our customers and support them in the realization of their digital visions - from initial vision to the finished product. Software solutions from M&M pave the way for the future of an intelligently connected world.
+
+**Partner type**
+
+- Custom Software Development
+- Cloud Solution Provider
+- IoT Solution Provider
+
+**Focus geography**
+
+- Germany
+- EMEA
+- US
+- China
+- India
+
+**Contact**
+
+- [info@mm-software.com](mailto:info@mm-software.com)
+
+**Additional information**
+
+- [M&M Software GmbH website](https://www.mm-software.com)
+- [Microsoft partner site for M&M Software GmbH](https://appsource.microsoft.com/marketplace/partner-dir/6e7c735d-01be-4294-8312-c84847d048d6/overview)
+
 ## MAQ Software
 
 :::image type="icon" source="media/findmypartner/maq-software-logo.png":::
@@ -713,7 +744,7 @@ Orion Innovation is a Leader in Digital transformation services with a Design le
 
 - USA
 - LATAM
-- Europe (UK, Germany, Switzerland, Russia, Lithuania, Serbia, Romania, Turkey, Israel)
+- Europe (UK, Germany, Switzerland, Russia, Lithuania, Serbia, Romania, Türkiye, Israel)
 - APAC (Australia, Singapore, India)
 
 **Contact**
@@ -802,7 +833,7 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 
 **Additional information**
 
-- [Uptake Technologies Inc. website](https://www.uptake.com/)
+- [Uptake Technologies Inc. website](https://www.uptakefusion.com/)
 - [Microsoft partner site for Uptake Technologies Inc.](https://appsource.microsoft.com/marketplace/partner-dir/b3e8ad26-068f-40c8-81ff-1deba19b820a/overview)
 
 **Success stories**
@@ -810,7 +841,7 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 - [https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization](https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization)
 - [https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion](https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion)
 - [https://www.uptake.com/resources/ensign-establishes-a-single-source-of-truth-for-their-data](https://www.uptake.com/resources/ensign-establishes-a-single-source-of-truth-for-their-data)
-- [https://www.uptake.com/resources/enerplus-uses-insights-from-uptake-fusion-for-data-driven-decision-making](https://www.uptake.com/resources/enerplus-uses-insights-from-uptake-fusion-for-data-driven-decision-making)
+- [Enerplus uses insights from Uptake Fusion for data-driven decision-making](https://static1.squarespace.com/static/63a1c6a2415f98749634e9ea/t/63ed0457f54f952c860ec199/1676477527222/Uptake+Case+Study-+Enerplus+%282%29.pdf)
 - [https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring](https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring)
 
 ## Zure Ltd

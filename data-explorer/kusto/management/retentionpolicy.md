@@ -81,21 +81,21 @@ Set all tables in the database to have a soft-delete period of seven days and di
 
 * *Option 1 (Recommended)*: Set a database-level retention policy, and verify there are no table-level policies set.
 
-```kusto
-.delete table MyTable1 policy retention        // optional, only if the table previously had its policy set
-.delete table MyTable2 policy retention        // optional, only if the table previously had its policy set
-.delete table MySpecialTable policy retention  // optional, only if the table previously had its policy set
-.alter-merge database MyDatabase policy retention softdelete = 7d recoverability = disabled
-.alter-merge materialized-view ViewName policy retention softdelete = 7d 
-```
+  ```kusto
+  .delete table MyTable1 policy retention        // optional, only if the table previously had its policy set
+  .delete table MyTable2 policy retention        // optional, only if the table previously had its policy set
+  .delete table MySpecialTable policy retention  // optional, only if the table previously had its policy set
+  .alter-merge database MyDatabase policy retention softdelete = 7d recoverability = disabled
+  .alter-merge materialized-view ViewName policy retention softdelete = 7d 
+  ```
 
 * *Option 2*: For each table, set a table-level retention policy, with a soft-delete period of seven days and recoverability disabled.
 
-```kusto
-.alter-merge table MyTable1 policy retention softdelete = 7d recoverability = disabled
-.alter-merge table MyTable2 policy retention softdelete = 7d recoverability = disabled
-.alter-merge table MySpecialTable policy retention softdelete = 7d recoverability = disabled
-```
+  ```kusto
+  .alter-merge table MyTable1 policy retention softdelete = 7d recoverability = disabled
+  .alter-merge table MyTable2 policy retention softdelete = 7d recoverability = disabled
+  .alter-merge table MySpecialTable policy retention softdelete = 7d recoverability = disabled
+  ```
 
 ### Soft-delete period of seven days and recoverability enabled
 
@@ -104,20 +104,20 @@ Set all tables in the database to have a soft-delete period of seven days and di
 
 * *Option 1 (Recommended)*: Set a database-level retention policy, and set a table-level retention policy.
 
-```kusto
-.delete table MyTable1 policy retention   // optional, only if the table previously had its policy set
-.delete table MyTable2 policy retention   // optional, only if the table previously had its policy set
-.alter-merge database MyDatabase policy retention softdelete = 7d recoverability = disabled
-.alter-merge table MySpecialTable policy retention softdelete = 14d recoverability = enabled
-```
+  ```kusto
+  .delete table MyTable1 policy retention   // optional, only if the table previously had its policy set
+  .delete table MyTable2 policy retention   // optional, only if the table previously had its policy set
+  .alter-merge database MyDatabase policy retention softdelete = 7d recoverability = disabled
+  .alter-merge table MySpecialTable policy retention softdelete = 14d recoverability = enabled
+  ```
 
 * *Option 2*: For each table, set a table-level retention policy, with the relevant soft-delete period and recoverability.
 
-```kusto
-.alter-merge table MyTable1 policy retention softdelete = 7d recoverability = disabled
-.alter-merge table MyTable2 policy retention softdelete = 7d recoverability = disabled
-.alter-merge table MySpecialTable policy retention softdelete = 14d recoverability = enabled
-```
+  ```kusto
+  .alter-merge table MyTable1 policy retention softdelete = 7d recoverability = disabled
+  .alter-merge table MyTable2 policy retention softdelete = 7d recoverability = disabled
+  .alter-merge table MySpecialTable policy retention softdelete = 14d recoverability = enabled
+  ```
 
 ### Soft-delete period of seven days, and `MySpecialTable` keeps its data indefinitely
 
@@ -125,26 +125,26 @@ Set tables `MyTable1` and `MyTable2` to have a soft-delete period of seven days,
 
 * *Option 1*: Set a database-level retention policy, and set a table-level retention policy, with a soft-delete period of 100 years, the default retention policy, for `MySpecialTable`.
 
-```kusto
-.delete table MyTable1 policy retention   // optional, only if the table previously had its policy set
-.delete table MyTable2 policy retention   // optional, only if the table previously had its policy set
-.alter-merge database MyDatabase policy retention softdelete = 7d
-.alter table MySpecialTable policy retention "{}" // this sets the default retention policy
-```
+  ```kusto
+  .delete table MyTable1 policy retention   // optional, only if the table previously had its policy set
+  .delete table MyTable2 policy retention   // optional, only if the table previously had its policy set
+  .alter-merge database MyDatabase policy retention softdelete = 7d
+  .alter table MySpecialTable policy retention "{}" // this sets the default retention policy
+  ```
 
 * *Option 2*: For tables `MyTable1` and `MyTable2`, set a table-level retention policy, and verify that the database-level and table-level policy for `MySpecialTable` aren't set.
 
-```kusto
-.delete database MyDatabase policy retention   // optional, only if the database previously had its policy set
-.delete table MySpecialTable policy retention   // optional, only if the table previously had its policy set
-.alter-merge table MyTable1 policy retention softdelete = 7d
-.alter-merge table MyTable2 policy retention softdelete = 7d
-```
+  ```kusto
+  .delete database MyDatabase policy retention   // optional, only if the database previously had its policy set
+  .delete table MySpecialTable policy retention   // optional, only if the table previously had its policy set
+  .alter-merge table MyTable1 policy retention softdelete = 7d
+  .alter-merge table MyTable2 policy retention softdelete = 7d
+  ```
 
 * *Option 3*: For tables `MyTable1` and `MyTable2`, set a table-level retention policy. For table `MySpecialTable`, set a table-level retention policy with a soft-delete period of 100 years, the default retention policy.
 
-```kusto
-.alter-merge table MyTable1 policy retention softdelete = 7d
-.alter-merge table MyTable2 policy retention softdelete = 7d
-.alter table MySpecialTable policy retention "{}"
-```
+  ```kusto
+  .alter-merge table MyTable1 policy retention softdelete = 7d
+  .alter-merge table MyTable2 policy retention softdelete = 7d
+  .alter table MySpecialTable policy retention "{}"
+  ```

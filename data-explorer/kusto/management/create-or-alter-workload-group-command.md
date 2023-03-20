@@ -3,7 +3,7 @@ title: .create-or-alter workload group - Azure Data Explorer
 description: This article describes the .create-or-alter workload group command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/08/2023
 ---
 # .create-or-alter workload_group
 
@@ -19,15 +19,12 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 `.create-or-alter` `workload_group` *WorkloadGroupName* *SerializedArrayOfPolicyObjects*
 
-## Arguments
+## Parameters
 
-- *WorkloadGroupName* - Name of the workload group. Can be escaped with bracket notation ['WorkLoadGroupName'].
-- *SerializedArrayOfPolicyObjects* - An array with one or more policy objects defined. The following policies apply to workload groups:   
-  
-  * [request classification](request-classification-policy.md)
-  * [request limits](request-limits-policy.md)
-  * [request rate limit](request-rate-limit-policy.md)
-  * [request rate limits enforcement](request-rate-limits-enforcement-policy.md).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *WorkloadGroupName* | string | &check; | The name of the workload group. This name be escaped with bracket notation ['WorkLoadGroupName'].|
+| *SerializedArrayOfPolicyObjects* | string | &check; | A serialized array with one or more policy objects defined. The following policies apply to workload groups: [request classification](request-classification-policy.md), [request limits](request-limits-policy.md), [request rate limit](request-rate-limit-policy.md), and [request rate limits enforcement](request-rate-limits-enforcement-policy.md).|
 
 ## Examples
 
