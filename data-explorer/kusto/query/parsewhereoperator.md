@@ -9,6 +9,8 @@ ms.date: 01/12/2023
 
 Evaluates a string expression, and parses its value into one or more calculated columns. The result is only the successfully parsed strings.
 
+`parse-where` parses the strings in the same way as [parse](parseoperator.md), and filters out strings that were not parsed successfully.
+
 See [parse operator](parseoperator.md), which produces nulls for unsuccessfully parsed strings.
 
 ## Syntax
@@ -29,7 +31,6 @@ See [parse operator](parseoperator.md), which produces nulls for unsuccessfully 
 
 >[!NOTE]
 >
-> * `parse-where` parses the strings in the same way as [parse](parseoperator.md), and filters out strings that were not parsed successfully.
 > * Use [project](projectoperator.md) if you also want to drop or rename some columns.
 > * Use `*` in the pattern to skip junk values. This value can't be used after `string` column.
 > * The parse pattern may start with *ColumnName*, in addition to *StringConstant*.
