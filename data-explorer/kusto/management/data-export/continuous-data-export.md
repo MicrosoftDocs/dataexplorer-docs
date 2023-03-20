@@ -11,7 +11,7 @@ This article describes continuous export of data from Kusto to an [external tabl
 
 To enable continuous data export, [create an external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table. 
 
-In some cases, you must use a managed identity to successfully configure a continuous export job. For more information, see [Authenticate with managed identity for continuous export](kusto/management/data-export/continuous-export-with-managed-identity.md).
+In some cases, you must use a managed identity to successfully configure a continuous export job. For more information, see [Authenticate with managed identity for continuous export](continuous-export-with-managed-identity.md).
 
 ## Permissions
 
