@@ -3,7 +3,7 @@ title: Kusto.Explorer installation and user interface
 description: Learn about the features of Kusto.Explorer and how it can help you to explore your data
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 03/19/2023
+ms.date: 03/20/2023
 ---
 
 # Kusto.Explorer installation and user interface
@@ -39,7 +39,7 @@ If your default browser is the Chromium-based Microsoft Edge, installing this ex
 The Kusto.Explorer user interface is designed with a layout based on tabs and panels, similar to that of other Microsoft products:
 
 * Navigate through the tabs on the [menu panel](#menu-panel) to perform various operations
-* Manage your connections in the [connections panee](#connections-panel)
+* Manage your connections in the [connections panel](#connections-panel)
 * Create scripts to run in the script panel
 * View the results of the scripts in the results panel
 
@@ -105,7 +105,7 @@ The Home tab shows the most frequently used operations. It includes:
 
 :::image type="content" source="images/kusto-explorer/home-visualizations-menu.png" alt-text="Screenshot of the Home tab section titled Visualizations that shows the different options for visualizing data.":::
 
-For variable visualizations see the [render operator](../query/renderoperator.md).
+For variable visualizations, see the [render operator](../query/renderoperator.md).
 
 |Menu         | Behavior|
 |-------------|---------|
@@ -276,7 +276,7 @@ To modify the output color scheme, or turn this behavior off, from the **Tools**
 |Latest data: All tables| Shows a summary of the latest data in all tables of the currently selected database.|
 |Latest data: Selected table|Shows in the status bar the latest data in the selected table.|
 |Cluster Health (Geneva)| Opens a link to view the state of your cluster.|
-|Purge Metrics (Geneva)| Opens a link a to view data purge metrics. |
+|Purge Metrics (Geneva)| Opens a link to view data purge metrics. |
 
 ## Management tab
 

@@ -3,7 +3,7 @@ title: Kusto Explorer options - Azure Data Explorer
 description: This article describes Kusto Explorer options in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/19/2023
+ms.date: 03/20/2023
 ---
 # Kusto Explorer options
 
@@ -93,7 +93,7 @@ The following tables describe the options for customizing the behavior of Kusto.
 |---------|--------------|
 | Additional Trusted Hosts | Lists additional trusted hosts that are considered safe to connect to. Use ';' to specify more than a single host, and '*' to specify a multiple-domain pattern.|
 | Sort table columns alphabetically | When enabled, the columns appearing under the table nodes in the connections panel will be sorted alphabetically.|
-| Show Views in 'Function' folder | When enabled, functions with the 'view=true' tag wil appear under the Functions folder or Connections panel.|
+| Show Views in 'Function' folder | When enabled, functions with the 'view=true' tag will appear under the Functions folder or Connections panel.|
 | Query Server Timeout | The server timeout for query execution.|
 | Admin Command Server Timeout | Specifies the server timeout for admin command execution.|
 | Lazy schema exploration | When enabled, the connections panel will only fetch and display database schema when the database node is expanded.|

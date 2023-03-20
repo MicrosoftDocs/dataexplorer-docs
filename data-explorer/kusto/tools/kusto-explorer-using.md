@@ -3,7 +3,7 @@ title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 03/19/2023
+ms.date: 03/20/2023
 ---
 
 # Using Kusto.Explorer
@@ -88,7 +88,7 @@ If you use the same value in multiple queries or in multiple tabs, it's highly i
 
 You can easily define and edit existing query parameters:
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query.png" alt-text="Screenshot of Query editor showing a query with parameters. The Query editor option titled Query parameters is highlighted.":::
+:::image type="content" source="images/kusto-explorer-using/parametrized-query.png" alt-text="Screenshot of query editor showing a query with parameters. The query editor option titled Query parameters is highlighted.":::
 
 :::image type="content" source="images/kusto-explorer-using/parametrized-query-3.png" alt-text="Screenshot of the Query parameters window showing the defined parameters.":::
 
@@ -99,7 +99,7 @@ Select **Add new** or **Delete current** to manipulate the list of parameter set
 
 ## Share queries and results
 
-In Kusto.Explorer, you can share queries and results by email. You can also create deep links that will open and run a query in the browser.
+In Kusto.Explorer, you can share queries and results by email. You can also create deep links that open and run a query in the browser.
 
 ### Share queries and results by email
 
@@ -114,7 +114,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
      * Your query
      * The query results (table or chart)
      * The connection details for the Kusto cluster and database
-     * A link that will rerun the query automatically
+     * A link that reruns the query automatically
 
 1. Paste the contents of the clipboard into a new email message.
 
@@ -222,7 +222,7 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 
 1. To view the list of authorized principals, right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Database Authorized Principals**. (You can also select this option from the Management Menu.)
 
-    :::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Screenshot of entity drop down menu. The options titled Manage Database AUthorized Principals is highlighted.":::
+    :::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Screenshot of entity drop down menu. The options titled Manage Database Authorized Principals is highlighted.":::
 
 1. Select **Add principal** to add an authorized principal.
     :::image type="content" source="images/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Screenshot of the Manage authorized principals window. The options titled Drop principal and Add principal are highlighted.":::
@@ -237,7 +237,7 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 
 To drop an existing authorized principal, select **Drop principal** and confirm the action.
 
-:::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Confirm drop authorized principal.":::
+:::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Screenshot of Drop principal window showing a confirmation request for dropping an authorized principal.":::
 
 ## Next steps
 
