@@ -37,7 +37,7 @@ Callout policies are managed at cluster-level and are classified into the follow
 
 ## Predefined callout policies
 
-The following table shows a set of predefined callout policies that are pre-configured on Azure Data Explorer clusters to enable callouts to selected services:
+The following table shows a set of predefined callout policies that are preconfigured on Azure Data Explorer clusters to enable callouts to selected services:
 
 | Service             | Designation           | Permitted domains                                                                                                         |
 |---------------------|-----------------------|---------------------------------------------------------------------------------------------------------------------------|
