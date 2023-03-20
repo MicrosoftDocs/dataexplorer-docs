@@ -3,7 +3,7 @@ title: Manage Event Hubs data connections in your free Azure Data Explorer clust
 description: Learn how to manage Azure Event Hubs data connections in your free cluster.
 ms.reviewer: guregini
 ms.topic: how-to
-ms.date: 01/17/2023
+ms.date: 03/20/2023
 ---
 
 # Manage Event Hubs data connections in your free Azure Data Explorer cluster
