@@ -25,7 +25,9 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.drop` `column` *TableName* `.` *ColumnName*
+`.drop` `column` *TableName* `.` *ColumnName* [`ifexists`]
+
+* `ifexists`: If specified, modifies the behavior so that the command won't fail on a non-existent column.
 
 ## Drop multiple table columns
 

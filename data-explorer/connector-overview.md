@@ -3,7 +3,7 @@ title: Overview of data connectors in Azure Data Explorer
 description: This article summarizes available data connectors and their capabilities.
 ms.reviewer: aksdi
 ms.topic: reference
-ms.date: 03/07/2023
+ms.date: 03/15/2023
 ---
 # Data connectors overview
 
@@ -11,22 +11,23 @@ ms.date: 03/07/2023
 
 The following table summarizes the available connectors in Azure Data Explorer and their capabilities:
 
-| Name           | Functionality       | Supports streaming? | Type      | Use cases         |
-|---------------------------------------------------|------------------------------------------|:-:|-----------------|-----------------------|
-| [Apache Kafka](#apache-kafka)     | **Ingestion**       |   &check;             | First party, [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Logs, Telemetry, Time series             |
-| [Apache Log4J2](#apache-log4j2)   | **Ingestion**    |   &check;             | First party, [Open source](https://github.com/Azure/azure-kusto-log4j)| Logs                  |
-| [Apache Spark](#apache-spark)      | **Export** <br> <br>**Ingestion**        |  &#x2717;               | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry             |
-| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export** <br> <br>**Ingestion**        |  &#x2717;             |  First party      | Telemetry |
-| [Azure Cosmos DB](#azure-cosmos-db)      | **Ingestion**   |      &check;          |      First party           |    Change feed      |
-| [Azure Data Factory](#azure-data-factory) | **Export** <br> <br>**Ingestion**   |   &#x2717;            |        First party      |    Data orchestration            |
-| [Azure Event Grid ](#azure-event-grid)   | **Ingestion**  |  &check;                    |      First party         |       Event processing                |
-| [Azure Event Hubs](#azure-event-hubs) | **Ingestion**  |      &check;        |       First party       |        Messaging               |
-| [Azure IoT Hubs](#azure-iot-hubs)  | **Ingestion**    |  &check;           |     First party         |      IoT data  |
-| [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion**   |   &check;         |    First party           | Event processing |
-| [Logstash](#logstash)         | **Ingestion**   |    &#x2717;             | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs                  |
-| [Open Telemetry](#open-telemetry)  | **Ingestion**  |    &check;              |  [Open source](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter)    | Traces, Metrics, Logs |
-| [Power Automate](#power-automate) |  **Export** <br> <br>**Ingestion**  | &#x2717; | First party | Data orchestration | 
-| [Telegraf](#telegraf)    | **Ingestion** | &check;           |   [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer)   | Metrics, Logs   |
+| Name | Functionality | Supports streaming? | Type | Use cases |
+|---|---|:-:|---|---|
+| [Apache Kafka](#apache-kafka) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Logs, Telemetry, Time series |
+| [Apache Log4J 2](#apache-log4j-2) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-log4j) | Logs |
+| [Apache Spark](#apache-spark) | **Export** <br /><br />**Ingestion** | &#x2717; | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
+| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export** <br /><br />**Ingestion** | &#x2717; | First party | Telemetry |
+| [Azure Cosmos DB](#azure-cosmos-db) | **Ingestion** | &check; | First party | Change feed |
+| [Azure Data Factory](#azure-data-factory) | **Export** <br /><br />**Ingestion** | &#x2717; | First party | Data orchestration |
+| [Azure Event Grid ](#azure-event-grid) | **Ingestion** | &check; | First party | Event processing |
+| [Azure Event Hubs](#azure-event-hubs) | **Ingestion** | &check; | First party | Messaging |
+| [Azure IoT Hubs](#azure-iot-hubs) | **Ingestion** | &check; | First party | IoT data |
+| [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** | &check; | First party | Event processing |
+| [Logstash](#logstash) | **Ingestion** | &#x2717; | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs |
+| [Open Telemetry](#open-telemetry) | **Ingestion** | &check; | [Open source](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) | Traces, Metrics, Logs |
+| [Power Automate](#power-automate) | **Export** <br /><br />**Ingestion** | &#x2717; | First party | Data orchestration |
+| [Serilog](#serilog) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/serilog-sinks-azuredataexplorer) | Logs |
+| [Telegraf](#telegraf) | **Ingestion** | &check; | [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) | Metrics, Logs |
 
 ## Apache Kafka
 
@@ -39,16 +40,16 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Documentation:** [Ingest data from Apache Kafka into Azure Data Explorer](ingest-data-kafka.md)
 * **Community Blog:** [Kafka ingestion into Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/kafka-ingestion-into-azure-data-explorer-part-1/ba-p/1452439)
 
-## Apache Log4J2
+## Apache Log4J 2
 
-* **Description:** Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. Apache Log4J2 sink for Azure Data Explorer allows you to easily stream your log data to Azure Data Explorer, where you can analyze, visualize, and alert on your logs in real time.
+* **Description:** Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. Apache Log4J2 sink for Azure Data Explorer allows you to easily stream your log data to Azure Data Explorer, where you can analyze and visualize your logs in real time.
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-log4j
-* **Documentation:** [Ingest data with the Apache Log4j2 connector](apache-log4j2-connector.md)
-* **Community Blog:** [Getting started with Apache Log4j and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-apache-log4j-and-azure-data-explorer/ba-p/3705242)
+* **Documentation:** [Ingest data with the Apache Log4J 2 connector](apache-log4j2-connector.md)
+* **Community Blog:** [Getting started with Apache Log4J and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-apache-log4j-and-azure-data-explorer/ba-p/3705242)
 
 ## Apache Spark
 
@@ -116,7 +117,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Event processing
 * **Documentation:** [Ingest data from Azure Stream Analytics into Azure Data Explorer](stream-analytics-connector.md)
- 
+
 ## Logstash
 
 * **Description:** [The Azure Data Explorer Logstash plugin](ingest-data-logstash.md) enables you to process events from Logstash into an Azure Data Explorer database for later analysis.
@@ -141,12 +142,22 @@ The following table summarizes the available connectors in Azure Data Explorer a
 
 ## Power Automate
 
-* **Description:** [Power Automate](/power-automate/getting-started) is an orchestration service used to automate business processes. The Azure Data Explorer connector for :::no-loc text="Power Automate"::: (previously Microsoft Flow) enables you to orchestrate and schedule flows, send notifications, and alerts, as part of a scheduled or triggered task. 
+* **Description:** [Power Automate](/power-automate/getting-started) is an orchestration service used to automate business processes. The Azure Data Explorer connector for :::no-loc text="Power Automate"::: (previously Microsoft Flow) enables you to orchestrate and schedule flows, send notifications, and alerts, as part of a scheduled or triggered task.
 * **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching
 * **Use cases:** Data orchestration
 * **Documentation:** [Azure Data Explorer connector for Microsoft Power Automate](flow.md)
 
+## Serilog
+
+* **Description:** Serilog is a popular logging framework for .NET applications. Serilog allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Serilog sink, also known as an appender, for Azure Data Explorer streams your log data to Azure Data Explorer, where you can analyze and visualize your logs in real time.
+* **Functionality:** Ingestion
+* **Ingestion type supported:** Batching, Streaming
+* **Use cases:** Logs
+* **Underlying SDK:** [.NET](kusto/api/netfx/about-the-sdk.md)
+* **Repository:** Microsoft Azure - https://github.com/Azure/serilog-sinks-azuredataexplorer
+* **Documentation:** [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink.md)
+* **Community Blog:** [Getting started with Serilog sink and Azure Data Explorer](https://go.microsoft.com/fwlink/p/?linkid=2227749)
 
 ## Telegraf
 
@@ -158,7 +169,6 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Repository:** InfluxData - https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
 * **Documentation:** [Ingest data from Telegraf into Azure Data Explorer](ingest-data-telegraf.md)
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
-
 
 ## See also
 

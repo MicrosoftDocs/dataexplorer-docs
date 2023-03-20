@@ -221,4 +221,4 @@ If you don't want to keep the report you created, simply delete the *storm-event
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Write queries](write-queries.md)
+> [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
