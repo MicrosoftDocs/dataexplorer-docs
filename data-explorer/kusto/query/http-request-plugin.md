@@ -4,7 +4,7 @@ description: Learn how to use the http_request plugin to send an HTTP request an
 services: data-explorer
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 03/19/2023
+ms.date: 03/20/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -23,7 +23,11 @@ The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP req
 
 ## Prerequisites
 
-* Enable the plugins. For more information, see [.enable plugin](../management/enable-plugin.md).
+* Enable the plugins by running the following commands:
+  * `.enable plugin http_request`  
+  * `.enable plugin http_request_post`
+
+For more information, see [.enable plugin](../management/enable-plugin.md) and [.show plugins](../management/show-plugins.md).
 
 ## Syntax
 
@@ -41,9 +45,9 @@ The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP req
 | *Content* | string |  | The body content to send with the request. The content is encoded in `UTF-8` and the media type for the `Content-Type` attribute is `application/json`. |
 
 > [!NOTE]
-> The functions expect the arguments to be provided in a specific order, as presented in [Syntax](#syntax). While many of the arguments are optional, in many cases you'll still need to provide them.
+> The function arguments must be provided in the order presented in [Syntax](#syntax). While many of the arguments are optional, you may need to provide them in order to pass arguments later in the order.
 >
-> For instance, when using `http_request_post`, if you want to include *Content*, you must also provide *RequestHeaders* and *Options*. However, if you don't have any values to pass for these arguments, you can simply pass an empty dynamic property bag.
+> For instance, when using `http_request_post`, if you want to include *Content*, you must also provide *RequestHeaders* and *Options*. If you don't have any values to pass for these arguments, pass an empty dynamic property bag.
 
 ## Authentication and authorization
 
