@@ -7,7 +7,7 @@ ms.date: 03/05/2023
 ---
 # .alter-merge cluster policy callout
 
-Turn on or turn off a cluster's [callout policy](calloutpolicy.md) or add a new, non-existing, callout policy to the array of callout  policies defined for the cluster.
+Turn on or turn off a cluster's [callout policy](calloutpolicy.md) or add a new, nonexisting, callout policy to the array of callout policies defined for the cluster.
 
 ## Permissions
 
