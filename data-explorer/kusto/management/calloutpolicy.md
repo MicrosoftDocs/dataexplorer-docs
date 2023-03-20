@@ -30,7 +30,7 @@ Callout policies are managed at cluster-level and are classified into the follow
 | sql                 | Controls the [SQL plugin](../query/sqlrequestplugin.md).                                                                                                              |
 | mysql               | Controls the [MySQL plugin](../query/mysqlrequest-plugin.md).                                                                                                         |
 | azure_digital_twins | Controls the [Azure Digital Twins plugin](../query/azure-digital-twins-query-request-plugin.md).                                                                      |
-| cosmosdb            | Controls the [CosmosDB plugin](../query/cosmosdb-plugin.md).                                                                                                          |
+| cosmosdb            | Controls the [Cosmos DB plugin](../query/cosmosdb-plugin.md).                                                                                                          |
 | sandbox_artifacts   | Controls sandboxed plugins ([python](../query/pythonplugin.md) and [R](../query/rplugin.md)).                                                                         |
 | external_data       | Controls access to external data through [external tables](../query/schema-entities/externaltables.md) or [externaldata](../query/externaldata-operator.md) operator. |
 | webapi              | Controls access to http endpoints.                                                                                                                                    |
@@ -59,4 +59,4 @@ More predefined policies on your cluster may be observed with next query:
 
 ## Remarks
 
-If an external resource of a given type matches more than one policy defined for such type, and at least one of the matched policies have their CanCall property set to false, access to the resource is denied.
+If an external resource of a given type matches more than one policy defined for such type, and at least one of the matched policies has their CanCall property set to false, access to the resource is denied.
