@@ -43,7 +43,7 @@ Use the following steps to create an Event Hubs data connection in your free clu
 1. Select **Close** to return to the **My cluster** page.
 1. Select the **Data connections** tab, and verify that the connection appears and the status is **Connected**.
 
-      **//TODO: Add capture of Data connections tab showing connected EH**
+    :::image type="content" source="media/start-for-free-event-hubs/start-for-free-verify-event-hubs-data-connection.png" alt-text="Screenshot of the data connections tab, showing the ingest from Event Hubs connection is connected." lightbox="media/start-for-free-event-hubs/start-for-free-verify-event-hubs-data-connection.png":::
 
 ## View data connection details
 
@@ -51,7 +51,7 @@ To view data connection details:
 
 1. In the **Data connections** tab, select the data connection name.
 
-    **//TODO: Add capture of Data connections tab showing EH details**
+    :::image type="content" source="media/start-for-free-event-hubs/start-for-free-view-event-hubs-data-connection-details.png" alt-text="Screenshot of the data connections tab, showing the ingest from Event Hubs connection details pane." lightbox="media/start-for-free-event-hubs/start-for-free-view-event-hubs-data-connection-details.png":::
 
 1. Optionally, select field dropdowns to view additional details.
 1. Select **Close** to return to the **Data connections** tab.
@@ -69,19 +69,15 @@ Use the following tab to determine how to resolve the issue:
 
 To reconnect the data connection:
 
-1. In the **Data connections** tab, locate the data connection, and then select **Reconnect** (**//TODO: Add reconnect icon**).
+1. In the **Data connections** tab, locate the data connection, and then select **Reconnect** (:::image type="icon" source="media/start-for-free-event-hubs/start-for-free-reconnect-hubs-data-connection.png" border="false":::).
 1. Verify that the status is **Connected**.
 
 ## Delete a data connection
 
 To delete a data connection:
 
-1. In the **Data connections** tab, locate the data connection, and then select **Delete** (**//TODO: Add delete icon**).
+1. In the **Data connections** tab, locate the data connection, and then select **Delete** (:::image type="icon" source="media/start-for-free-event-hubs/start-for-free-delete-hubs-data-connection.png" border="false":::).
 1. Verify that the data connection no longer appears in the list of connections.
-
-## Migrate a data connection when upgrading your free cluster
-
-**//TODO: Should probably add this to the upgrade topic**
 
 ## Next steps
 
