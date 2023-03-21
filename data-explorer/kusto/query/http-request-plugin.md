@@ -23,11 +23,11 @@ The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP req
 
 ## Prerequisites
 
-* Enable the plugins by running the following commands:
+* [Enable the plugins](../management/enable-plugin.md) by running the following commands:
   * `.enable plugin http_request`  
   * `.enable plugin http_request_post`
-
-For more information, see [.enable plugin](../management/enable-plugin.md) and [.show plugins](../management/show-plugins.md).
+* Make sure that the specified *Uri* value is an allowed destination for `webapi` callout by the [Callout policy](../management/calloutpolicy.md). Otherwise, running the query results in an error.
+* If you're using authentication, use the HTTPS protocol. Attempts to use HTTP with authentication enabled results in an error.
 
 ## Syntax
 
@@ -69,14 +69,6 @@ Both plugins return a table that has a single record with the following dynamic 
 
 If the HTTP response indicates (via the `Content-Type` response header) that the media type is `application/json`,
 the response body is automatically parsed as-if it's a JSON object. Otherwise, it's returned as-is.
-
-## Prerequisites
-
-Before you use the `http_request` and `http_request_post` plugins, make sure that requests meet the following requirements:
-
-* The specified *Uri* value must be a destination that is enabled for `webapi` callout by the [Callout policy](../management/calloutpolicy.md). Otherwise, running the query results in an error.
-
-* If you're using authentication, you must use the HTTPS protocol. Attempts to use HTTP with authentication enabled results in an error.
 
 ## Headers
 
