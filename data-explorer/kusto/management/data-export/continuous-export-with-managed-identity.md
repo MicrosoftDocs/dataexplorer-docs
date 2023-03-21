@@ -1,11 +1,11 @@
 ---
-title: Authenticate with managed identity for continuous export - Azure Data Explorer
-description: This article describes how to authenticate with managed identity in a continuous export flow in Azure Data Explorer.
+title: Authenticate with a managed identity for continuous export - Azure Data Explorer
+description: This article describes how to authenticate with a managed identity for continuous export in Azure Data Explorer.
 ms.reviewer: shanisolomon
 ms.topic: reference
 ms.date: 03/21/2023
 ---
-# Authenticate with managed identity for continuous export
+# Authenticate with a managed identity for continuous export
 
 Continuous export jobs periodically transfer data to an [external table](../../query/schema-entities/externaltables.md) by running a query. In certain situations, such as when the query for continuous export refers to tables in other databases or when the target external table uses impersonation authentication, a [managed identity](../../../managed-identities-overview.md) must be used to successfully configure the continuous export.
 
@@ -53,23 +53,23 @@ For example, the following command sets the policy on the `SampleDatabase`:
 ]```
 ```
 
-## 3 - Grant Azure Data Explorer permissions
+## 4 - Grant Azure Data Explorer permissions
 
-The managed identity needs at least the [Database User](../access-control/role-based-access-control.md) role for the Azure Data Explorer database containing your external table in order to perform the continuous export.
+The managed identity must have at least [Database User](../access-control/role-based-access-control.md) permissions for the database where your external table resides.
 
-To grant the managed identity the Database User role, run the following command.
+To grant permissions, run the following command, replacing `DatabaseName` with the name of the database, `objectId` with the managed identity object ID, and `tenantId` with the Azure Active Directory tenant ID:
 
 ```kusto
-.add database <databaseName> users ('aadapp={managedIdentityObjectId};{tenantId}')
+.add database DatabaseName users ('aadapp={objectId};{tenantId}')
 ```
 
-For more information on how to use management commands to grant security roles, see [Security roles overview](../security-roles.md).
+For more information, see [Manage database security roles](../manage-database-security-roles.md#add-and-remove-security-roles).
 
-## 4 - Grant external resource permissions
+## 5 - Grant external resource permissions
 
-The managed identity used for the continuous export must have write permissions over the external resource to perform continuous export. The required permissions vary depending on the resource type.
+The managed identity must have write permissions over the external data store referenced by the external table. The required permissions vary depending on the data store.
 
-Grant the managed identity the relevant write permissions on the external resource based on the following table.
+Grant the managed identity the relevant write permissions on the external resource based on the following table:
 
 | External resource | Required permissions|
 |--|--|--|
@@ -79,16 +79,14 @@ Grant the managed identity the relevant write permissions on the external resour
 
 For more information, see the **Authentication and authorization** section of [Azure Storage external tables](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external tables](../external-sql-tables.md#authentication-and-authorization).
 
-## 5 - Create the continuous export job
+## 6 - Create the continuous export job
 
-Use the [.create-or-alter continuous-export](create-alter-continuous.md) command to create the continuous export job.
+Use the [.create-or-alter continuous-export](create-alter-continuous.md) command to create the continuous export job. To use your managed identity for authentication, set the `managedIdentity` property using the syntax relevant to the type of managed identity you created.
 
-The `managedIdentity` property must be specified. To specify the `managedIdentity` property, use the syntax relevant to the type of managed identity you created.
-
-* For a system-assigned managed identity: `managedIdentity=system`.
-* For a user-assigned managed identity: `managedidentity={objectId}`. Replace `objectId` with the object ID of the managed identity.
+* For a system-assigned managed identity, use `managedIdentity=system`.
+* For a user-assigned managed identity, use `managedidentity={objectId}` in which `objectId` is the object ID of the user-assigned managed identity.
 
 ## Next steps
 
-* See the [continuous export overview](continuous-data-export.md)
+* Read the [continuous export overview](continuous-data-export.md)
 * Learn more about [managed identities](../../../managed-identities-overview.md)
