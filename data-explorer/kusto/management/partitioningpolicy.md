@@ -110,7 +110,7 @@ The partition function used is [bin_at()](../query/binatfunction.md) and isn't c
 #### Uniform range datetime partition example
 
 The snippet shows a uniform datetime range partition key over a `datetime` typed column named `timestamp`.
-It uses `datetime(2021-01-01)` as its reference point, with a size of `7d` for each partition, and does not
+It uses `datetime(2021-01-01)` as its reference point, with a size of `7d` for each partition, and doesn't
 override the extents' creation times.
 
 ```json
@@ -127,7 +127,7 @@ override the extents' creation times.
 
 ## The policy object
 
-By default, a table's data partitioning policy is `null`, in which case data in the table won't be re-partitioned after it's ingested.
+By default, a table's data partitioning policy is `null`, in which case data in the table won't be repartitioned after it's ingested.
 
 The data partitioning policy has the following main properties:
 
@@ -198,7 +198,7 @@ The following properties can be defined as part of the policy. These properties 
 ## The data partitioning process
 
 * Data partitioning runs as a post-ingestion background process in the cluster.
-  * A table that is continuously ingested into is expected to always have a "tail" of data that is yet to be partitioned (non-homogeneous extents).
+  * A table that is continuously ingested into is expected to always have a "tail" of data that is yet to be partitioned (nonhomogeneous extents).
 * Data partitioning runs only on hot extents, regardless of the value of the `EffectiveDateTime` property in the policy.
   * If partitioning cold extents is required, you need to temporarily adjust the [caching policy](cachepolicy.md).
 
@@ -213,7 +213,7 @@ The following properties can be defined as part of the policy. These properties 
 ### Limitations
 
 * Attempts to partition data in a database that already has more than 5,000,000 extents will be throttled.
-  * In such cases, the `EffectiveDateTime` property of partitioning policies of tables in the database will be automatically delayed by several hours, so that you can re-evaluate your configuration and policies.
+  * In such cases, the `EffectiveDateTime` property of partitioning policies of tables in the database will be automatically delayed by several hours, so that you can reevaluate your configuration and policies.
 
 ## Outliers in partitioned columns
 
