@@ -31,9 +31,9 @@ For more information, see [.enable plugin](../management/enable-plugin.md) and [
 
 ## Syntax
 
-`evaluate` `http_request(`*Uri* [`,` *RequestHeaders* [`,` *Options*]]`)`
+`evaluate` `http_request` `(` *Uri* [`,` *RequestHeaders* [`,` *Options*]] `)`
 
-`evaluate` `http_request_post(`*Uri* [`,` *RequestHeaders* [`,` *Options* [`,` *Content*]]]`)`
+`evaluate` `http_request_post` `(` *Uri* [`,` *RequestHeaders* [`,` *Options* [`,` *Content*]]] `)`
 
 ## Parameters
 
