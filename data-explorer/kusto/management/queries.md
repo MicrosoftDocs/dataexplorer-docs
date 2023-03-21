@@ -3,7 +3,7 @@ title: Queries management - Azure Data Explorer
 description: This article describes Queries management in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/23/2022
+ms.date: 03/21/2023
 ---
 # Queries management
 
@@ -22,11 +22,13 @@ The `.show` `queries` command lists queries that have reached a final state, and
 
 `.show` `running` `queries` [ `by user` *UserPrincipalName*]
 
+### Parameters
+
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *UserPrincipalName* | string |  |  The UPN of a specific user for which to return a list of queries. |
 
-**Returns**
+### Returns
 
 - Returns a table containing previously run queries and their completion statistics. You can use KQL queries to explore the results.
 - Returns a list of currently executing queries by the current user, or by another user, or by all users.
@@ -58,11 +60,9 @@ The returned table schema is:
 |ResultSetStatistics | dynamic |Statistics describing returned data set|
 |WorkloadGroup|string | Name of the workload group that query was associated with|
 
-**Examples**
+### Examples
 
-**Example 1**
-
-This example shows completed queries.
+#### Show completed queries
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA9MrzsgvVygsTS3KTC1W4OWqUSgoys9KTS5RCEmtKNFRcCktSizJzM8DyZQkZqcqGBoAAA0BJaEzAAAA" target="_blank">Run the query</a>
@@ -73,7 +73,7 @@ This example shows completed queries.
 | take 10
 ```
 
- **Results**
+**Output**
 
 | Text | Duration |
 |--|--|
@@ -88,15 +88,13 @@ This example shows completed queries.
 | traceAgg(now(5500d)) | 00:00:00.0312952 |
 | traceAgg(now(-5500d)) | 00:00:00.0312445 |
 
-**Example 2**
-
-This example returns the currently running queries by the current user.
+#### Show running queries by the current user
 
 ```kusto
 .show running queries 
 ```
 
-This example returns the currently running queries by a specific user name.
+#### Show running queries by the a specified user
 
 ```kusto
 .show running queries by user <UserPrincipalName>
@@ -106,18 +104,18 @@ This example returns the currently running queries by a specific user name.
 
 The `.cancel` `query` command starts a best-effort attempt to cancel a specific running query. Cluster admins can cancel any running query. Database admins can cancel any running query that was invoked on a database to which they have admin access. All principals can cancel running queries that they started.
 
-**Syntax**
+### Syntax
 
 `.cancel` `query` *ClientRequestId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
 
-**Arguments**
+### Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ClientRequestId* | string | &check; | Value of the running query's `ClientRequestId` property. |
+| *ClientRequestId* | string | &check; | The value of the running query's `ClientRequestId` property. |
 | *ReasonPhrase* | string | &check; when reason specified | Describes the reason for canceling the running query and is included in the query results if it's successfully canceled. |
 
-**Examples**
+### Example
 
 This example cancels a specific query using *ClientRequestId*.
 
