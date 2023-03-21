@@ -3,7 +3,7 @@ title: Workload groups - Azure Data Explorer
 description: This article describes workload groups in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/30/2021
+ms.date: 03/05/2023
 ---
 # Workload groups
 
@@ -42,7 +42,6 @@ Monitor what gets classified to the internal workload group and the statistics o
 > * A limit on the maximum amount of concurrent *queries* may have been defined on some cluster using the optional *"Query throttling policy"*, which has been deprecated.
 > * In these clusters, the limit on the maximum amount of concurrent *queries* was automatically applied on the `default` workload group's [request rate limits policies](request-rate-limit-policy.md).
 > * While the old limit applied only to *queries*, the new limit applies to *all requests* - queries and control commands.
-
 
 ### Internal workload group
 
@@ -86,7 +85,6 @@ The following policies can be defined per workload group:
 * [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md)
 * [Request queuing policy](request-queuing-policy.md)
 * [Query consistency policy](query-consistency-policy.md)
-
 
 ## Monitoring
 
