@@ -13,7 +13,7 @@ In this article, you'll learn how to configure your continuous export job with a
 
 ## Prerequisites
 
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](../../../create-cluster-database-portal.md).
 * [Database Admin](../access-control/role-based-access-control.md) permissions on the Azure Data Explorer database.
 
 ## 1 - Create an external table
