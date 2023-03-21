@@ -3,7 +3,7 @@ title: Partitioning policy - Azure Data Explorer
 description: This article describes the partitioning policy in Azure Data Explorer, and how it can be used to improve query performance.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 2/2/2021
+ms.date: 03/21/2023
 ---
 # Partitioning policy
 
@@ -102,10 +102,10 @@ The partition function used is [bin_at()](../query/binatfunction.md) and isn't c
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `RangeSize`            | A `timespan` scalar constant that indicates the size of each datetime partition.                                                                                | Start with the value `1.00:00:00` (one day). Don't set a shorter value, because it may result in the table having a large number of small extents that can't be merged.                                                                                                      |
 | `Reference`            | A `datetime` scalar constant that indicates a fixed point in time, according to which datetime partitions are aligned.                                          | Start with `1970-01-01 00:00:00`. If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`.                                                                                                      |
-| `OverrideCreationTime` | A `bool` indicating whether or not the result extent's minimum and maximum creation times should be overridden by the range of the values in the partition key. | Defaults to `false`. Set to `true` if data isn't ingested in-order of time of arrival (for example, a single source file may include datetime values that are distant), and/or you want to force retention/caching based on the datetime values, and not the time of ingestion. |
+| `OverrideCreationTime` | A `bool` indicating whether or not the result extent's minimum and maximum creation times should be overridden by the range of the values in the partition key. | Defaults to `false`. Set to `true` if data isn't ingested in-order of time of arrival. For example, a single source file may include datetime values that are distant, and/or you want to force retention/caching based on the datetime values and not the time of ingestion.<br/><br/>If set to `true`, we recommend setting the `Lookback` property in the table's [merge policy](mergepolicy.md) to `HotCache`. |
 
 > [!CAUTION]
-> When `OverrideCreationTime` is set to `true`, make sure the `Lookback` property in the table's effective [Extents merge policy](mergepolicy.md) is aligned with the datetime values in your data.
+> Setting `OverrideCreationTime` to `true` may cause data shards to be missed by the process that merges extents. Data shards are missed if the creation time is older than the `Lookback` period of the table's [merge policy](mergepolicy.md). To make sure that the data shards are discoverable, adjust the `Lookback` period to `HotCache`.
 
 #### Uniform range datetime partition example
 
