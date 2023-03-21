@@ -33,34 +33,34 @@ There are two types of managed identities: system-assigned and user-assigned. A 
 
 To add a managed identity to your cluster, see one of the following guides:
 
-* [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity)
-* [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity)
+* [Add a system-assigned managed identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity)
+* [Add a user-assigned managed identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity)
 
 ## 3 - Set the managed identity policy
 
-The [ManagedIdentity policy](../managed-identity-policy.md) controls which managed identities can be used for what purposes.
+To allow the managed identity to perform continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md) with `AutomatedFlows` listed under the `AllowedUsages` field of the [ManagedIdentity policy object](../managed-identity-policy.md#the-managedidentity-policy-object).
 
-Use the [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command to set the policy on the cluster or on the database containing the external table to use for the continuous export. To allow the managed identity to perform continuous export, you must list `AutomatedFlows` under the `AllowedUsages` field of the [ManagedIdentity policy object](../managed-identity-policy.md#the-managedidentity-policy-object).
-
-For example, the following command sets the policy on the `SampleDatabase`:
+To set the policy, run the following command, replacing `<DatabaseName>` with the name of the database that contains the external table and `<objectId>` with the managed identity object ID:
 
 ```kusto
-.alter database SampleDatabase policy managed_identity ```[
+.alter database <DatabaseName> policy managed_identity ```[
     {
-      "ObjectId": "<managedIdentityObjectId>",
+      "ObjectId": "<objectId>",
       "AllowedUsages": "AutomatedFlows"
     }
 ]```
 ```
 
+For more information, see [.alter managed_identity policy](../alter-managed-identity-policy-command.md).
+
 ## 4 - Grant Azure Data Explorer permissions
 
 The managed identity must have at least [Database User](../access-control/role-based-access-control.md) permissions for the database where your external table resides.
 
-To grant permissions, run the following command, replacing `DatabaseName` with the name of the database, `objectId` with the managed identity object ID, and `tenantId` with the Azure Active Directory tenant ID:
+To grant permissions, run the following command, replacing `<DatabaseName>` with the name of the database, `<objectId>` with the managed identity object ID, and `<tenantId>` with the Azure Active Directory tenant ID:
 
 ```kusto
-.add database DatabaseName users ('aadapp={objectId};{tenantId}')
+.add database <DatabaseName> users ('aadapp=<objectId>;<tenantId>')
 ```
 
 For more information, see [Manage database security roles](../manage-database-security-roles.md#add-and-remove-security-roles).
@@ -69,9 +69,9 @@ For more information, see [Manage database security roles](../manage-database-se
 
 The managed identity must have write permissions over the external data store referenced by the external table. The required permissions vary depending on the data store.
 
-Grant the managed identity the relevant write permissions on the external resource based on the following table:
+On the external data store, grant the managed identity the required write permissions:
 
-| External resource | Required permissions|
+| External data store | Required permissions |
 |--|--|--|
 |Azure Blob Storage / Data Lake Storage Gen2|Storage Blob Data Contributor|
 |Data Lake Storage Gen1|Contributor|
@@ -81,10 +81,12 @@ For more information, see **Authentication and authorization** in [Azure Storage
 
 ## 6 - Create the continuous export job
 
-Use the [.create-or-alter continuous-export](create-alter-continuous.md) command to create the continuous export job. To use your managed identity for authentication, set the `managedIdentity` property using the syntax relevant to the type of managed identity you created.
+Now, you can create a continuous export job with managed identity authentication.
+
+To do so, create the job with the [.create-or-alter continuous-export](create-alter-continuous.md) command, and set the `managedIdentity` property using the relevant syntax:
 
 * For a system-assigned managed identity, use `managedIdentity=system`.
-* For a user-assigned managed identity, use `managedidentity={objectId}` in which `objectId` is the object ID of the user-assigned managed identity.
+* For a user-assigned managed identity, use `managedidentity=<objectId>` in which `<objectId>` is the object ID of the user-assigned managed identity.
 
 ## Next steps
 
