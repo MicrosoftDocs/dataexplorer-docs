@@ -41,7 +41,7 @@ For more information, see [.enable plugin](../management/enable-plugin.md) and [
 |--|--|--|--|
 | *Uri* | string | &check; | The destination URI for the HTTP or HTTPS request. |
 | *RequestHeaders* | dynamic |  | A property bag containing [HTTP headers](#headers) to send with the request. |
-| *Options* | dynamic |  | A property bag containing additional properties of the request.|
+| *Options* | dynamic |  | A property bag containing additional properties of the request. |
 | *Content* | string |  | The body content to send with the request. The content is encoded in `UTF-8` and the media type for the `Content-Type` attribute is `application/json`. |
 
 > [!NOTE]
