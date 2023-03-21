@@ -45,9 +45,7 @@ For more information, see [.enable plugin](../management/enable-plugin.md) and [
 | *Content* | string |  | The body content to send with the request. The content is encoded in `UTF-8` and the media type for the `Content-Type` attribute is `application/json`. |
 
 > [!NOTE]
-> The function arguments must be provided in the order presented in [Syntax](#syntax). While many of the arguments are optional, you may need to provide them in order to pass arguments later in the order.
->
-> For instance, when using `http_request_post`, if you want to include *Content*, you must also provide *RequestHeaders* and *Options*. If you don't have any values to pass for these arguments, pass an empty dynamic property bag.
+> To specify an optional parameter that follows an optional parameter, make sure to provide a value for the preceding optional argument. For more information, see [Syntax clarification](index.md#syntax-clarification).
 
 ## Authentication and authorization
 
