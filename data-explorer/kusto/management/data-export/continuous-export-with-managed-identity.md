@@ -75,7 +75,7 @@ Grant the managed identity the relevant write permissions on the external resour
 |Data Lake Storage Gen1|Contributor|
 |SQL Server|CREATE, UPDATE, and INSERT|
 
-For more information, see the **Authentication and authorization** section of [Azure Storage external tables](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external tables](../external-sql-tables.md#authentication-and-authorization).
+For more information, see **Authentication and authorization** in [Azure Storage external tables](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external tables](../external-sql-tables.md#authentication-and-authorization).
 
 ## 6 - Create the continuous export job
 
