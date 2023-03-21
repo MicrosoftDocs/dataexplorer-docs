@@ -69,6 +69,18 @@ Not all control commands modify data or metadata. The large class of commands th
 
 For more information on control commands, see [Management (control commands) overview](../management/index.md).
 
+## Syntax clarification
+
+Brackets around a parameter name in the syntax indicate that parameter is optional. However, even if a parameter is optional, you may need to provide an empty value in order to specify a parameter later in the order. This requirement is because function arguments must be provided in the order specified in the function syntax.
+
+### Example
+
+Consider the [http_request plugin](http-request-plugin.md) syntax:
+
+`evaluate` `http_request` `(` *Uri* [, *RequestHeaders* [, *Options*]] `)`
+
+Based on this syntax, the *RequestHeaders* and *Options* parameters are optional. However, when invoking this plugin, if you want to specify *Options* then you must also specify *RequestHeaders*. If you don't have any value to pass, pass an empty dynamic property bag.
+
 ## Next steps
 
 * [Tutorial: Write Kusto queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
