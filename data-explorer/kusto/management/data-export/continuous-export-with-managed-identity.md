@@ -7,9 +7,11 @@ ms.date: 03/21/2023
 ---
 # Authenticate with a managed identity for continuous export
 
-Continuous export jobs periodically transfer data to an [external table](../../query/schema-entities/externaltables.md) by running a query. In certain situations, such as when the query for continuous export refers to tables in other databases or when the target external table uses impersonation authentication, a [managed identity](../../../managed-identities-overview.md) must be used to successfully configure the continuous export.
+Continuous export jobs periodically transfer data to an [external table](../../query/schema-entities/externaltables.md) by running a query.
 
-In this article, you'll learn how to configure your continuous export job with a managed identity to ensure successful authentication.
+In some cases, a [managed identity](../../../managed-identities-overview.md) must be used to successfully configure a continuous export job. For example, if the target external table uses impersonation authentication or if the continuous export query references tables in other databases, a [managed identity](../../../managed-identities-overview.md) must be used.
+
+In this article, you'll learn how to set up a continuous export job with a managed identity to ensure successful authentication.
 
 ## Prerequisites
 
