@@ -71,7 +71,7 @@ For more information on control commands, see [Management (control commands) ove
 
 ## Syntax clarification
 
-Brackets around a parameter name in the syntax indicate that parameter is optional. However, even if a parameter is optional, you may need to provide an empty value in order to specify a parameter later in the order. This requirement is because function arguments must be provided in the order specified in the function syntax.
+Brackets around a parameter in the syntax indicate that parameter is optional. However, even if a parameter is optional, you may need to provide an empty value in order to specify a parameter later in the order. This requirement is because arguments must be provided in the order specified in the syntax.
 
 ### Example
 
