@@ -27,16 +27,16 @@ To create an external table for your continuous export, see one of the following
 
 ## 2 - Add a managed identity to your cluster
 
-There are two types of managed identities: system-assigned and user-assigned. A system-assigned identity is tied to your cluster and gets deleted when the cluster is deleted. Only one system-assigned identity is allowed per Azure Data Explorer cluster. A user-assigned managed identity is a standalone Azure resource. Multiple user-assigned identities can be assigned to your cluster.
-
 To add a managed identity to your cluster, see one of the following guides:
 
 * [Add a system-assigned managed identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity)
 * [Add a user-assigned managed identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity)
 
+A system-assigned identity is tied to your cluster and gets deleted when the cluster is deleted. Only one system-assigned identity is allowed per Azure Data Explorer cluster. A user-assigned managed identity is a standalone Azure resource. Multiple user-assigned identities can be assigned to your cluster.
+
 ## 3 - Set the managed identity policy
 
-To allow the managed identity to perform continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md) with `AutomatedFlows` listed under the `AllowedUsages` field of the [ManagedIdentity policy object](../managed-identity-policy.md#the-managedidentity-policy-object).
+To allow the managed identity to perform continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md) with `AutomatedFlows` specified in the `AllowedUsages` field of the policy object.
 
 To set the policy, run the following command, replacing `<DatabaseName>` with the name of the database that contains the external table and `<objectId>` with the managed identity object ID:
 
@@ -75,16 +75,16 @@ On the external data store, grant the managed identity the required write permis
 |Data Lake Storage Gen1|Contributor|
 |SQL Server|CREATE, UPDATE, and INSERT|
 
-For more information, see **Authentication and authorization** in [Azure Storage external tables](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external tables](../external-sql-tables.md#authentication-and-authorization).
+For more information, see [Azure Storage external tables](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external tables](../external-sql-tables.md#authentication-and-authorization).
 
 ## 6 - Create the continuous export job
 
-Now, you can create a continuous export job with managed identity authentication.
+To create a continuous export job with managed identity authentication, use the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property.
 
-To do so, create the job with the [.create-or-alter continuous-export](create-alter-continuous.md) command, and set the `managedIdentity` property using the relevant syntax:
+To specify the `managedIdentity` property, use the relevant syntax:
 
-* For a system-assigned managed identity, use `managedIdentity=system`.
-* For a user-assigned managed identity, use `managedidentity=<objectId>` in which `<objectId>` is the object ID of the user-assigned managed identity.
+* System-assigned managed identity: `managedIdentity=system`.
+* User-assigned managed identity: `managedidentity=<objectId>`.
 
 ## Next steps
 
