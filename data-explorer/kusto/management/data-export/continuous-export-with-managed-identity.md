@@ -24,8 +24,6 @@ To create an external table for your continuous export, see one of the following
 
 * [Create an Azure Storage external table](../external-tables-azurestorage-azuredatalake.md)
 * [Create an SQL Server external table](../external-sql-tables.md)
-<!-- Should I add this one? -->
-* [Create an external table using Azure Data Explorer web UI Wizard](../../../external-table.md)
 
 ## 2 - Create the managed identity
 
