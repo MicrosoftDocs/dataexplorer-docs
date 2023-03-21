@@ -3,46 +3,55 @@ title: Authenticate with managed identity for continuous export - Azure Data Exp
 description: This article describes how to authenticate with managed identity in a continuous export flow in Azure Data Explorer.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 03/20/2023
+ms.date: 03/21/2023
 ---
 # Authenticate with managed identity for continuous export
 
-In some cases, you must use a managed identity to successfully configure a continuous export job. For example, if the query of the continuous export references tables in other databases or if the target external table uses impersonation authentication, then the continuous export job must run on behalf of a managed identity.
+Continuous export jobs periodically transfer data to an [external table](../../query/schema-entities/externaltables.md) by running a query. In certain situations, such as when the query for continuous export refers to tables in other databases or when the target external table uses impersonation authentication, a [managed identity](../../../managed-identities-overview.md) must be used to successfully configure the continuous export.
 
-In this article, you'll learn how to perform continuous export with a managed identity.
+In this article, you'll learn how to configure your continuous export job with a managed identity to ensure successful authentication.
 
-## Permissions
+## Prerequisites
 
-You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to create a continuous export.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* [Database Admin](../access-control/role-based-access-control.md) permissions on the Azure Data Explorer database.
 
 ## 1 - Create an external table
 
-Continuous export jobs export data to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query. The results are stored in the external table, which defines the destination and the schema of the exported data.
+External tables reference data stored outside Azure Data Explorer. Supported external data stores are Azure Blob Storage, Azure Data Lake, and SQL Server.
 
-If you don't yet have an external table for your continuous export, [Create an Azure Storage external tables](../external-tables-azurestorage-azuredatalake.md) or [Create an SQL Server external tables](../external-sql-tables.md).
+To create an external table for your continuous export, see one of the following articles:
+
+* [Create an Azure Storage external table](../external-tables-azurestorage-azuredatalake.md)
+* [Create an SQL Server external table](../external-sql-tables.md)
+<!-- Should I add this one? -->
+* [Create an external table using Azure Data Explorer web UI Wizard](../../../external-table.md)
 
 ## 2 - Create the managed identity
 
-[Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity) or [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity) for your cluster.
+There are two types of managed identities: system-assigned and user-assigned. A system-assigned identity is tied to your cluster and gets deleted when the cluster is deleted. Only one system-assigned identity is allowed per Azure Data Explorer cluster. A user-assigned managed identity is a standalone Azure resource. Multiple user-assigned identities can be assigned to your cluster.
 
-An Azure Data Explorer cluster can only have one system-assigned managed identity. This identity is tied to your cluster and deleted if your resource is deleted. On the other hand, a user-assigned managed identity is a standalone Azure resource, and multiple of these identities can be assigned to your cluster.
+To add a managed identity to your cluster, see one of the following guides:
 
-## 2 - Set the managed identity policy
+* [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity)
+* [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity)
 
-1. Define a [managed identity policy](../managed-identity-policy.md). `AutomatedFlows` must be listed under the `AllowedUsages` field.
+## 3 - Set the managed identity policy
 
-    ```JSON
+The [ManagedIdentity policy](../managed-identity-policy.md) controls which managed identities can be used for what purposes.
+
+Use the [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command to set the policy on the cluster or on the database containing the external table to use for the continuous export. To allow the managed identity to perform continuous export, you must list `AutomatedFlows` under the `AllowedUsages` field of the [ManagedIdentity policy object](../managed-identity-policy.md#the-managedidentity-policy-object).
+
+For example, the following command sets the policy on the `SampleDatabase`:
+
+```kusto
+.alter database SampleDatabase policy managed_identity ```[
     {
-      "ObjectId": "<objectID>",
-      "ClientId": "<clientID>",
-      "TenantId": "<tenantID",
-      "DisplayName": "myManagedIdentity",
-      "IsSystem": false,
-      "AllowedUsages": "AutomatedFlows, ExternalTable"
+      "ObjectId": "<managedIdentityObjectId>",
+      "AllowedUsages": "AutomatedFlows"
     }
-    ```
-
-1. Run the [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command to set the managed identity policy for the cluster or database of the continuous export.
+]```
+```
 
 ## 3 - Grant Azure Data Explorer permissions
 
