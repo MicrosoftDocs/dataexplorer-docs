@@ -25,7 +25,7 @@ To create an external table for your continuous export, see one of the following
 * [Create an Azure Storage external table](../external-tables-azurestorage-azuredatalake.md)
 * [Create an SQL Server external table](../external-sql-tables.md)
 
-## 2 - Create the managed identity
+## 2 - Add a managed identity to your cluster
 
 There are two types of managed identities: system-assigned and user-assigned. A system-assigned identity is tied to your cluster and gets deleted when the cluster is deleted. Only one system-assigned identity is allowed per Azure Data Explorer cluster. A user-assigned managed identity is a standalone Azure resource. Multiple user-assigned identities can be assigned to your cluster.
 
