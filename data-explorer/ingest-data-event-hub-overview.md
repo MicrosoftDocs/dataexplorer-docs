@@ -214,4 +214,5 @@ Azure Data Explorer doesn't support `Alias` event hub namespaces. To implement t
 * [Create an event hub data connection for Azure Data Explorer using C#](data-connection-event-hub-csharp.md)
 * [Create an event hub data connection for Azure Data Explorer using Python](data-connection-event-hub-python.md)
 * [Create an event hub data connection for Azure Data Explorer using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
+* [Manage Event Hubs data connections in your free cluster](start-for-free-event-hubs.md)
 * [Ingest and query Azure Monitor logs with Azure Data Explorer](ingest-data-no-code.md?tabs=diagnostic-metrics)
