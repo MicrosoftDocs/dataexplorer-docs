@@ -7,7 +7,7 @@ ms.date: 03/21/2023
 ---
 # Authenticate with a managed identity for continuous export
 
-In some cases, a [managed identity](../../../managed-identities-overview.md) must be used to successfully configure a continuous export job. For example, if the target external table uses impersonation authentication or if the continuous export query references tables in other databases, a managed identity must be used.
+In some cases, a [managed identity](../../../managed-identities-overview.md) must be used to successfully configure a [continuous export](continuous-data-export.md) job. For example, if the target external table uses impersonation authentication or if the continuous export query references tables in other databases, a managed identity must be used.
 
 In this article, you'll learn how to set up a continuous export job with a managed identity to ensure successful authentication.
 
