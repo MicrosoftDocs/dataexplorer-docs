@@ -37,7 +37,7 @@ Possible values of *period*:
 
 ## Returns
 
-A date after or before a certain time/date interval has been added or subtracted.
+A [datetime](./scalar-data-types/datetime.md) after or before a certain time/date interval has been added or subtracted.
 
 ## Examples
 
