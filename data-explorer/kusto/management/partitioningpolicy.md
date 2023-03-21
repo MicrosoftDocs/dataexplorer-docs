@@ -105,7 +105,7 @@ The partition function used is [bin_at()](../query/binatfunction.md) and isn't c
 | `OverrideCreationTime` | A `bool` indicating whether or not the result extent's minimum and maximum creation times should be overridden by the range of the values in the partition key. | Defaults to `false`. Set to `true` if data isn't ingested in-order of time of arrival. For example, a single source file may include datetime values that are distant, and/or you want to force retention/caching based on the datetime values and not the time of ingestion.<br/><br/>If set to `true`, we recommend setting the `Lookback` property in the table's [merge policy](mergepolicy.md) to `HotCache`. |
 
 > [!CAUTION]
-> Setting `OverrideCreationTime` to `true` may cause data shards to be missed by the process that merges extents. Data shards are missed if the creation time is older than the `Lookback` period of the table's [merge policy](mergepolicy.md). To make sure that the data shards are discoverable, adjust the `Lookback` period to `HotCache`.
+> Setting `OverrideCreationTime` to `true` may cause extents to be missed in the merge process. Extents are missed if the creation time is older than the `Lookback` period of the table's [merge policy](mergepolicy.md). To make sure that the extents are discoverable, adjust the `Lookback` period to `HotCache`.
 
 #### Uniform range datetime partition example
 
