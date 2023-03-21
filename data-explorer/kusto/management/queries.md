@@ -16,11 +16,11 @@ The `.show` `queries` command lists queries that have reached a final state, and
 > - A [database admin or database monitor](./access-control/role-based-access-control.md) can see any command that was invoked on their database.
 > - Other users can only see queries that were invoked by them.
 
-**Syntax**
+### Syntax
 
-`.show` [`running`] `queries` [`by` *\** | `by user` *UserPrincipalName*]
+`.show` `queries`
 
-**Arguments**
+`.show` `running` `queries` [ `by user` *UserPrincipalName*]
 
 | Name | Type | Required | Description |
 |--|--|--|--|
