@@ -7,6 +7,8 @@ ms.date: 03/20/2023
 ---
 # Authenticate with managed identity for continuous export
 
+-- Something short about CE / MIs
+
 In some cases, you must use a managed identity to successfully configure a continuous export job. For example, if the query of the continuous export references tables in other databases or if the target external table uses impersonation authentication, then the continuous export job must run on behalf of a managed identity.
 
 In this article, you'll learn how to perform continuous export with a managed identity.
@@ -21,11 +23,11 @@ Continuous export jobs export data to an [external table](../../query/schema-ent
 
 If you don't yet have an external table for your continuous export, [Create an Azure Storage external tables](../external-tables-azurestorage-azuredatalake.md) or [Create an SQL Server external tables](../external-sql-tables.md).
 
-## 2 - Configure the managed identity for your cluster
+## 2 - Create the managed identity
 
 [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity) or [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity) for your cluster.
 
-An Azure Data Explorer cluster can only have one system-assigned identity. This identity is tied to your cluster and deleted if your resource is deleted. On the other hand, a user-assigned identity is a standalone Azure resource, and multiple of these identities can be assigned to your cluster.
+An Azure Data Explorer cluster can only have one system-assigned managed identity. This identity is tied to your cluster and deleted if your resource is deleted. On the other hand, a user-assigned managed identity is a standalone Azure resource, and multiple of these identities can be assigned to your cluster.
 
 ## 2 - Set the managed identity policy
 
@@ -44,7 +46,7 @@ An Azure Data Explorer cluster can only have one system-assigned identity. This 
 
 1. Run the [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command to set the managed identity policy for the cluster or database of the continuous export.
 
-## 3 - Grant Azure Data Explorer permissions to the managed identity
+## 3 - Grant Azure Data Explorer permissions
 
 The managed identity needs at least the [Database User](../access-control/role-based-access-control.md) role for the Azure Data Explorer database containing your external table in order to perform the continuous export.
 
@@ -56,9 +58,11 @@ To grant the managed identity the Database User role, run the following command.
 
 For more information on how to use management commands to grant security roles, see [Security roles overview](../security-roles.md).
 
-## 4 - Grant external resource permissions to the managed identity
+## 4 - Grant external resource permissions
 
-The managed identity used for the continuous export must have write permissions over the external resource. The required permissions vary depending on the resource type.
+The managed identity used for the continuous export must have write permissions over the external resource to perform continuous export. The required permissions vary depending on the resource type.
+
+Grant the managed identity the relevant write permissions on the external resource based on the following table.
 
 | External resource | Required permissions|
 |--|--|--|
