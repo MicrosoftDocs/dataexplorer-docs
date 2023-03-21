@@ -7,8 +7,6 @@ ms.date: 03/20/2023
 ---
 # Authenticate with managed identity for continuous export
 
--- Something short about CE / MIs
-
 In some cases, you must use a managed identity to successfully configure a continuous export job. For example, if the query of the continuous export references tables in other databases or if the target external table uses impersonation authentication, then the continuous export job must run on behalf of a managed identity.
 
 In this article, you'll learn how to perform continuous export with a managed identity.
