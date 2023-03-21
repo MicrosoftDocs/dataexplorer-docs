@@ -6,7 +6,7 @@ ms.topic: reference
 ms.date: 03/01/2023
 ---
 
-# {.disable | .enable} materialized-view
+# .disable | .enable materialized-view
 
 Disables or enables the materialization process for a materialized view.
 
@@ -19,7 +19,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Syntax
 
-{`.enable` | `disable`} `materialized-view` *MaterializedViewName*
+`.enable` | `disable` `materialized-view` *MaterializedViewName*
 
 ## Parameters
 

@@ -15,7 +15,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Syntax
 
-`.alter` `materialized-view` *MaterializedViewName* `docstring` '*DocString*'
+`.alter` `materialized-view` *MaterializedViewName* `docstring` *DocString*
 
 ## Parameters
 

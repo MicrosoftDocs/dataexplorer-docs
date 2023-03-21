@@ -16,14 +16,14 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Syntax
 
-`.alter` `materialized-view` *MaterializedViewName* `autoUpdateSchema` {`true`|`false`}
+`.alter` `materialized-view` *MaterializedViewName* `autoUpdateSchema` *Boolean*
 
 ## Parameters
 
 | Name                   | Type   | Required | Description                    |
 |------------------------|--------|----------|--------------------------------|
 | *MaterializedViewName* | string | &check;  | Name of the materialized view. |
-
+| *Boolean* | Bool | &check;  | `autoUpdateSchema` value to be updated. |
 ## Returns
 
 [!INCLUDE [materialized-view-show-command-output-schema.md](../../../includes/materialized-view-show-command-output-schema.md)]
