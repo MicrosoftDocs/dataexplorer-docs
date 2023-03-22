@@ -326,6 +326,15 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[has_any_ipv4()](has-any-ipv4-function.md)|Searches for any of the specified IPv4 addresses in a text.|
 |[has_any_ipv4_prefix()](has-any-ipv4-prefix-function.md)|Searches for any of the specified IPv4 addresses or prefixes in a text.|
 
+## IPv6 text match functions
+
+|Function Name     |Description                                          |
+|-------------------------|--------------------------------------------------------|
+|[has_ipv6()](has-ipv6-function.md)|Searches for an IPv6 address in a text.|
+|[has_ipv6_prefix()](has-ipv6-prefix-function.md)|Searches for an IPv6 address or prefix in a text.|
+|[has_any_ipv6()](has-any-ipv6-function.md)|Searches for any of the specified IPv6 addresses in a text.|
+|[has_any_ipv6_prefix()](has-any-ipv6-prefix-function.md)|Searches for any of the specified IPv6 addresses or prefixes in a text.|
+
 ## Type functions
 
 |Function Name     |Description                                          |
