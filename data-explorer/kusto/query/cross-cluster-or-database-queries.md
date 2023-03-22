@@ -122,7 +122,7 @@ database("OtherDb").MyView("exception") | extend CalCol=database("OtherDb").MyCa
 Tabular functions or views can be referenced across clusters. The following limitations apply:
 
 * Remote functions must return tabular schema. Scalar functions can only be accessed in the same cluster.
-* Remote functions can accept only scalar parameters. Functions that get one or more table arguments can only be accessed in the same cluster.
+* Remote functions can accept only scalar arguments. Functions that get one or more table arguments can only be accessed in the same cluster.
 * Remote functions' result schema must be fixed (known in advance without executing parts of the query).
   This precludes the use of query constructs such as the `pivot` plugin. (Note that some plugins,
   such as the `bag_unpack` plugin, supports a way to indicate the result schema statically,
