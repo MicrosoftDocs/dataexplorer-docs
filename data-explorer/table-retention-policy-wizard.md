@@ -65,4 +65,4 @@ In the **Summary** tab, all steps will be marked with green check marks when the
 ## Next steps
 
 * [Query data in Azure Data Explorer web UI](web-query-data.md)
-* [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)
+* [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

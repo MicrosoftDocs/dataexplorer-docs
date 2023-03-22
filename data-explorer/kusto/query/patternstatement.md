@@ -3,7 +3,7 @@ title: Pattern statement - Azure Data Explorer
 description: Learn how to use pattern statements to map string tuples to tabular expressions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 03/14/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -61,6 +61,9 @@ In each of the following examples, a pattern is declared, defined, and then invo
 
 The following example defines a pattern that maps states to an expression that returns its capital city.
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XPsQrCMBDG8b3QdzgytYsPoDiU4qqDiEjp8NkGLaaXkJ5IEd/dtFTUoUOGO+73h9S6MvCaHES0Z6rsncX3tKaE0eplJ77hS1p0AvlMZRw944goUYd9ptJFobb6QSfrb6oM8EkuXAnlcI3AhI3KzBncK3qt/t0R3TUExfKc3Jm+dQ2+NAejxqhDVXvBHN3UreUhPdrhTZ/7iUyJN/8CZSgGAQAA" target="_blank">Run the query</a>
+
 ```kusto
 declare pattern country = (name:string)[state:string]
 {
@@ -76,6 +79,9 @@ country("Canada").Alberta
 |Capital|
 |-------|
 |Edmonton|
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA62RsQrCMBCGd6Hv8FOHtlDFtrgoHQQXB5+gdAhpLJWahCRCofruJpjBCi7SwJHckfv/fJeG0Z4oBkmMYYrjICVKxETKvqPEdIKfmp02quNtUmkqJPNZDQSLMVjArjgiWZSsq+hIDIlqVyoxQhHeMgy4KHFDBiOwhTZM2vMDUokro8Ybhm5bZmEKJ/EWGPDcf+mfmfWm2lr8re8lbM22N3HyaZLPAZFPILINVlOSYg6S4heJizu33+aueyT3mtTnbo6+8QXib67/+wEAAA==" target="_blank">Run the query</a>
 
 The following example defines a pattern that defines some scoped application data.
 
@@ -143,7 +149,7 @@ union app("ApplicationX").["*"]
 
 A middle-tier application provides its users with the ability to use KQL and wants to enhance the experience by enriching the query results with augmented data from its internal service.
 
-To this end, the application provides users with a pattern statement that returns tabular data that their users can use in their queries. The pattern's arguments are the keys the application will use to retrieve the enrichment data. When the user runs the query, the application does not parse the query itself but instead plans to leverage the error returned by an empty pattern to retrieve the keys it requires. So it prepends the query with the empty pattern declaration, sends it to Azure Data Explorer for processing, and then parses the returned HTTP header to retrieve the values of missing pattern arguments. The application uses the these values to look up the enrichment data and builds a new declaration that defines the appropriate enrichment data mapping. Finally, the application prepends the new definition to the user's query, resends it for processing, and returns the result it receives to the user.
+To this end, the application provides users with a pattern statement that returns tabular data that their users can use in their queries. The pattern's arguments are the keys the application will use to retrieve the enrichment data. When the user runs the query, the application does not parse the query itself but instead plans to leverage the error returned by an empty pattern to retrieve the keys it requires. So it prepends the query with the empty pattern declaration, sends it to Azure Data Explorer for processing, and then parses the returned HTTP header to retrieve the values of missing pattern arguments. The application uses these values to look up the enrichment data and builds a new declaration that defines the appropriate enrichment data mapping. Finally, the application prepends the new definition to the user's query, resends it for processing, and returns the result it receives to the user.
 
 ### Example
 
@@ -164,6 +170,9 @@ The application receives the following error in response.
 > One or more pattern references were not declared. Detected pattern references: ["map_ip_to_longlat('10.10.10.10')"]
 
 The application inspects the error, determines that the error indicates a missing pattern reference, and retrieves the missing IP address (*10.10.10.10*). It uses the IP address to look up the enrichment data in its internal service and builds a new pattern defining the mapping of the IP address to the corresponding longitude and latitude data. The new pattern is prepended to the user's query and run again. This time the query succeeds because the enrichment data is now declared in the query, and the result is sent to the user.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNQQrDIBAA74J/WHJKoBW1lSQt/iB/kKVKCFgjureQv9dLLy3McZjx4RWxBMhIFEqCN2a3ZUe7i3taIxJY6NH7Emp9VCpbWgfODs4A+k5J8aUbmnhAbgLBgmRvo7hLM8/6Aksr2avSWshxMsrAydn55Ozv9VP8AIoi/+WcAAAA" target="_blank">Run the query</a>
 
 ```kusto
 declare pattern map_ip_to_longlat = (address:string)

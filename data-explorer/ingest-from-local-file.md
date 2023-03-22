@@ -57,7 +57,7 @@ The **Schema** tab opens.
     :::image type="content" source="media/ingestion-wizard-existing-table/json-levels.png" alt-text="Screenshot completing ingestion information for ingesting a JSON file.":::
 
     > [!TIP]
-    > If you want to use **CSV** files, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](./ingestion-wizard-new-table.md#edit-the-schema)
+    > If you want to use **CSV** files, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container#edit-the-schema)
 
 * For tabular formats, you can select **Keep current table schema**.
 Tabular data doesn't necessarily include the column names that are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema remains the same. If this option is unchecked, new columns are created for incoming data, regardless of data structure.
@@ -109,13 +109,13 @@ In the **Data ingestion completed** window, all three steps are marked with gree
 :::image type="content" source="media/ingestion-wizard-existing-table/one-click-data-ingestion-complete.png" alt-text="Screenshot of ingestion wizard summary when ingestion is completed.":::
 
 > [!IMPORTANT]
-> To set up continuous ingestion from a container, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](./ingestion-wizard-new-table.md#create-continuous-ingestion)
+> To set up continuous ingestion from a container, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container#create-continuous-ingestion)
 
 [!INCLUDE [data-explorer-ingestion-wizard-query-data](includes/data-explorer-ingestion-wizard-query-data.md)]
 
 ## Next steps
 
 * Get an [overview of the ingestion wizard](ingest-data-wizard.md)
-* Learn how to [Ingest data from a container/ADLS into Azure Data Explorer](./ingestion-wizard-new-table.md)
+* Learn how to [Ingest data from a container/ADLS into Azure Data Explorer](/azure/data-explorer/ingest-from-container)
 * [Query data](web-query-data.md) in the Azure Data Explorer web UI
-* [Write queries](write-queries.md) for Azure Data Explorer using [Kusto Query Language (KQL)](kusto/query/index.md)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) for Azure Data Explorer using [Kusto Query Language (KQL)](kusto/query/index.md)

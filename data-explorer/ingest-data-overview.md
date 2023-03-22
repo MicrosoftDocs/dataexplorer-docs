@@ -137,7 +137,7 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
     In order to ingest data, a table needs to be created beforehand. Use one of the following options:
 
     * Create a table [with a command](kusto/management/create-table-command.md).
-    * Create a table using the [ingestion wizard](./ingestion-wizard-new-table.md).
+    * Create a table using the [ingestion wizard](/azure/data-explorer/ingest-from-container).
 
     > [!Note]
     > If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.

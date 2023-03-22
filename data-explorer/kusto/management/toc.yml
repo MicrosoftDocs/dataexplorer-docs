@@ -8,25 +8,25 @@ items:
     href: workload-groups.md
   - name: Workload group commands
     items:
-    - name: .alter-merge workload group command
+    - name: .alter-merge workload_group command
       href: alter-merge-workload-group-command.md
-    - name: .create or alter workload group command
+    - name: .create-or-alter workload_group command
       href: create-or-alter-workload-group-command.md
-    - name: .drop workload group command
+    - name: .drop workload_group command
       href: drop-workload-group-command.md
-    - name: .show workload group command
+    - name: .show workload_group(s) command
       href: show-workload-group-command.md
   - name: Request classification policy
     items:
     - name: Request classification policy
       href: request-classification-policy.md
-    - name: .alter cluster request classification policy commands
+    - name: .alter cluster policy request_classification command
       href: alter-cluster-policy-request-classification-command.md
-    - name: .alter-merge cluster request classification policy commands
+    - name: .alter-merge cluster policy request_classification command
       href: alter-merge-cluster-policy-request-classification-command.md
-    - name: .delete cluster request classification policy commands
+    - name: .delete cluster policy request_classification command
       href: delete-cluster-policy-request-classification-command.md
-    - name: .show cluster request classification policy commands
+    - name: .show cluster policy request_classification command
       href: show-cluster-policy-request-classification-command.md
   - name: Request limits policy
     href: request-limits-policy.md
@@ -176,7 +176,7 @@ items:
       href: csv-mapping.md
     - name: "JSON mapping"
       href: json-mapping.md
-    - name: "ARVO mapping"
+    - name: "AVRO mapping"
       href: avro-mapping.md
     - name: "Parquet mapping"
       href: parquet-mapping.md
@@ -208,11 +208,11 @@ items:
     items:
     - name: Auto delete policy
       href: auto-delete-policy.md
-    - name: ".alter auto delete policy command"
+    - name: .alter table policy auto_delete command
       href: alter-auto-delete-policy-command.md
-    - name: ".delete auto delete policy command"
+    - name: .delete table policy auto_delete command
       href: delete-auto-delete-policy-command.md
-    - name: ".show auto delete policy command"
+    - name: .show table policy auto_delete command
       href: show-auto-delete-policy-command.md
   - name: Cache
     items:
@@ -242,13 +242,13 @@ items:
     items:
     - name: Callout policy
       href: calloutpolicy.md
-    - name: ".alter callout policy command"
+    - name: .alter cluster policy callout command
       href: alter-callout-policy-command.md
-    - name: ".alter-merge callout policy command"
+    - name: .alter-merge cluster policy callout command
       href: alter-merge-callout-policy-command.md
-    - name: ".delete callout policy command"
+    - name: .delete cluster policy callout command
       href: delete-callout-policy-command.md
-    - name: ".show callout policy command"
+    - name: .show cluster policy callout command
       href: show-cluster-callout-policy-command.md
   - name: Capacity
     items:
@@ -630,7 +630,7 @@ items:
     href: access-control/how-to-authenticate-with-aad.md
   - name: Referencing security principals
     displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
-    href: /azure/data-explorer/kusto/management/access-control/referencing-security-principals
+    href: ./access-control/referencing-security-principals.md
   - name: Allow cross-tenant queries and commands
     href: ../../cross-tenant-query-and-commands.md
 - name: Advanced data management

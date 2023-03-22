@@ -58,7 +58,7 @@ let geoip_fl=(tbl:(*), ip_col:string, country_col:string, state_col:string, city
         longitude_col = kargs['longitude_col']
         latitude_col = kargs['latitude_col']
         result=df
-        reader = geoip2.database.Reader(r'Temp\\GeoLite2-City.mmdb')
+        reader = geoip2.database.Reader(r'C:\\Temp\\GeoLite2-City.mmdb')
 
         def geodata(ip):
             try:
@@ -105,7 +105,7 @@ geoip_fl(tbl:(*), ip_col:string, country_col:string, state_col:string, city_col:
         longitude_col = kargs['longitude_col']
         latitude_col = kargs['latitude_col']
         result=df
-        reader = geoip2.database.Reader(r'Temp\\GeoLite2-City.mmdb')
+        reader = geoip2.database.Reader(r'C:\\Temp\\GeoLite2-City.mmdb')
 
         def geodata(ip):
             try:
@@ -153,7 +153,7 @@ let geoip_fl=(tbl:(*), ip_col:string, country_col:string, state_col:string, city
         longitude_col = kargs['longitude_col']
         latitude_col = kargs['latitude_col']
         result=df
-        reader = geoip2.database.Reader(r'Temp\\GeoLite2-City.mmdb')
+        reader = geoip2.database.Reader(r'C:\\Temp\\GeoLite2-City.mmdb')
 
         def geodata(ip):
             try:
