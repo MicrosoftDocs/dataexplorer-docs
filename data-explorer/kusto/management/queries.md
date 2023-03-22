@@ -106,13 +106,13 @@ The `.cancel` `query` command starts a best-effort attempt to cancel a specific 
 
 ### Syntax
 
-`.cancel` `query` *ClientRequestId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
+`.cancel` `query` *ClientActivityId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
 
 ### Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ClientRequestId* | string | &check; | The value of the running query's `ClientActivityId` property. |
+| *ClientActivityId* | string | &check; | The value of the running query's `ClientActivityId` property. |
 | *ReasonPhrase* | string | &check; when reason specified | Describes the reason for canceling the running query and is included in the query results if it's successfully canceled. |
 
 ### Example
