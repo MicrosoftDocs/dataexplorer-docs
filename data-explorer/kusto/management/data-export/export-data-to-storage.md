@@ -90,7 +90,7 @@ For example, after a successful completion, you can retrieve the results using:
 
 ## Examples
 
-In this example, Kusto runs the query and then exports the first recordset produced by the query to one or more compressed CSV blobs (up-to 1GB before compression).
+In this example, Kusto runs the query and then exports the first recordset produced by the query to one or more compressed CSV blobs, up to 1GB before compression.
 Column name labels are added as the first row for each blob.
 
 ```kusto 
