@@ -29,7 +29,9 @@ The specified row is at a specified offset from the current row in a [serialized
 In the following query, a new column called `prevA` is added to the table with data from column `A` of the previous row. A default value of 10 is used for rows without any data in column `A`. Then, the difference between the values in column `A` and the corresponding value in `prevA` is calculated and stored in a new column called `diff`. Finally, the table is filtered based on whether the value in column `A` is 1 greater than the corresponding value in `prevA`.
 
 ```kusto
-Table | serialize | extend prevA = prev(A,1,10)
+Table
+| serialize 
+| extend prevA = prev(A,1,10)
 | extend diff = A - prevA
 | where diff > 1
 ```
