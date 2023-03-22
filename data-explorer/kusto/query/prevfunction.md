@@ -50,6 +50,27 @@ TransformedSensorsData
 |2022-04-13T01:07:14.431908Z|sensor-9|0.35430645405452|0af415c2-59dc-4a50-89c3-9a18ae5d621f|M100|268|
 |...|...|...|...|...|...|
 
+### Perform aggregation based on comparison between adjacent rows
+
+The following query calculates the average time difference in milliseconds between calls to `sensor-9`.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAA22NvQ6CQBCEexPfYbuDBAtLi+toLLSB3qzcopewB7ld8Sc+vBwWWNjNzDeZqSMGafvI5CoK0kcpUXG9esP9SpHgGx6RCawFI7Pd7ExqTErh/ITaM4kiD4DSJEAPpeBAp7z0bbsPB991XqjpgxOw4FApwZObaGZ4oaZY1goYIo3Zj9/m+fx7Y8boXwQ4XrL/L/kHqqI6JdkAAAA=" target="_blank">Run the query</a>
+
+```kusto
+TransformedSensorsData
+| where SensorName == 'sensor-9'
+| sort by Timestamp asc
+| extend timeDiffInMilliseconds = datetime_diff('millisecond', Timestamp, prev(Timestamp, 1))
+| summarize avg(timeDiffInMilliseconds)
+```
+
+**Output**
+
+|avg_timeDiffInMilliseconds|
+|--|
+|30.726900061254298
+
 ### Extend row with data from the previous row
 
 In the following query, a new column called `prevA` is added to the table with data from column `A` of the previous row. A default value of 10 is used for rows without any data in column `A`. Then, the difference between the values in column `A` and the corresponding value in `prevA` is calculated and stored in a new column called `diff`. Finally, the table is filtered based on whether the value in column `A` is 1 greater than the corresponding value in `prevA`.
