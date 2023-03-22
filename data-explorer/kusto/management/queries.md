@@ -117,7 +117,7 @@ The `.cancel` `query` command starts a best-effort attempt to cancel a specific 
 
 ### Example
 
-This example cancels a specific query using *ClientRequestId*.
+This example cancels a specific query using *ClientActivityId*.
 
 ```kusto
 .cancel query "KE.RunQuery;8f70e9ab-958f-4955-99df-d2a288b32b2c"
