@@ -7,7 +7,7 @@ ms.date: 11/24/2022
 ---
 # datetime_add()
 
-Calculates a new [datetime](./scalar-data-types/datetime.md) from a specified period multiplied by a specified amount, added or subtracted to a specified [datetime](./scalar-data-types/datetime.md).
+Calculates a new [datetime](./scalar-data-types/datetime.md) from a specified period multiplied by a specified amount, added to, or subtracted from a specified [datetime](./scalar-data-types/datetime.md).
 
 ## Syntax
 
