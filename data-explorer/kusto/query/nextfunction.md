@@ -24,7 +24,7 @@ current row in a [serialized row set](./windowsfunctions.md#serialized-row-set).
 
 ## Examples
 
-### Filter data based on comparison of two rows
+### Filter data based on comparison between adjacent rows
 
 The following query returns rows that show breaks longer than 1 minute between calls to `sensor-9`.
 
