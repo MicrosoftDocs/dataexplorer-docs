@@ -90,7 +90,7 @@ For example, after a successful completion, you can retrieve the results using:
 
 ## Examples
 
-In this example, Kusto runs the query and then exports the first recordset produced by the query to one or more compressed CSV blobs.
+In this example, Kusto runs the query and then exports the first recordset produced by the query to one or more compressed CSV blobs, up to 1GB before compression.
 Column name labels are added as the first row for each blob.
 
 ```kusto 
@@ -100,12 +100,13 @@ Column name labels are added as the first row for each blob.
     h@"https://storage1.blob.core.windows.net/containerName;secretKey",
     h@"https://storage1.blob.core.windows.net/containerName2;secretKey"
   ) with (
-    sizeLimit=100000,
+    sizeLimit=1000000000,
     namePrefix="export",
     includeHeaders="all",
     encoding ="UTF8NoBOM"
   )
-  <| myLogs | where id == "moshe" | take 10000
+  <| 
+  Logs | where id == "1234" 
 ```
 
 ## Failures during export commands
