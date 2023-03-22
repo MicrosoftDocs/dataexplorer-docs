@@ -3,7 +3,7 @@ title: row_rank_dense() - Azure Data Explorer
 description: Learn how to use the row_rank_dense() function to return the current row's dense rank in a serialized row set.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 01/18/2023
+ms.date: 03/22/2023
 ---
 # row_rank_dense()
 
@@ -23,7 +23,10 @@ Returns the row rank of the current row as a value of type `long`.
 
 ## Example
 
-This example shows how to rank the `Airline` by the number of departures from the SEA `Airport` using dense rank:
+The following query shows how to rank the `Airline` by the number of departures from the SEA `Airport` using dense rank.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ3HzKKC/KISq+KSosy8dB0FID8nMy8VzndJLUgsKiktSi22ysnPS9fk5Yrm5VJQUAp2dVTSUVDy8QCSxjooQpFA0tDAAEUw1BFDnROINEIRcvUBqeLliuXlqlEoBjpLIakSyQUKicXJIJnUipLUvBSFoMS8bNui/PL4IiAjPiU1rzhVA6FYEwC7n6cO5QAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 datatable (Airport:string, Airline:string, Departures:long)
@@ -38,7 +41,7 @@ datatable (Airport:string, Airline:string, Departures:long)
 | extend Rank=row_rank_dense(Departures)
 ```
 
-Running this query produces the following result:
+**Output**
 
 Airport  | Airline  | Departures  | Rank
 ---------|----------|-------------|------
