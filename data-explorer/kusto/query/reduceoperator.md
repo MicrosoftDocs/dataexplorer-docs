@@ -3,7 +3,7 @@ title: reduce operator - Azure Data Explorer
 description: Learn how to use the reduce operator to group a set of strings together based on value similarity.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/16/2023
+ms.date: 03/22/2023
 ---
 # reduce operator
 
@@ -21,7 +21,7 @@ For each such group, the operator returns a `pattern`, `count`, and `representat
 |--|--|--|--|
 | *Expr* | string | &check; | The value by which to reduce.|
 | *Threshold* | real | | A value between 0 and 1 that determines the minimum fraction of rows required to match the grouping criteria in order to trigger a reduction operation. The default value is 0.1.<br/><br/>We recommend setting a small threshold value for large inputs. With a smaller threshold value, more similar values are grouped together, resulting in fewer but more similar groups. A larger threshold value requires less similarity, resulting in more groups that are less similar. See [Examples](#examples).|
-| *Characters* | string | | A list of characters that don't break a term. For example, if you want `aaa=bbbb` and `aaa:bbb` to each be a whole term, rather than break on `=` and `:`, use `":="` as the string literal.|
+| *Characters* | string | | A list of characters that separate between terms. The default is every non-ascii numeric character. For examples, see [Behavior of Characters parameter](#behavior-of-characters-parameter).|
 | *ReduceKind* | string | | The only valid value is `source`. If `source` is specified, the operator appends the `Pattern` column to the existing rows in the table instead of aggregating by `Pattern`.|
 
 ## Returns
@@ -81,6 +81,38 @@ range x from 1 to 1000 step 1
 |MachineLearning*|99|MachineLearningX8|
 |MachineLearning*|104|MachineLearningX7|
 |MachineLearning*|106|MachineLearningX2|
+
+### Behavior of Characters parameter
+
+If the *Characters* parameter is unspecified, then every non-ascii numeric character will be a term separator.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxWKQQqAMAwEv7L0VMGDfYAf8VZrKgo2JUao4ONNLwMzjMSyExqy8IUAZYQJt1I1+VCFT0pqQTB3pqjeZWY3wi0GZYtH2X0bBvuFticR1re/P7YelSlbAAAA" target="_blank">Run the query</a>
+
+```kusto
+range x from 1 to 10 step 1 | project str = strcat("foo", "Z", tostring(x)) | reduce by str
+```
+
+**Output**
+
+|Pattern|Count|Representative|
+|--|--|--|
+|others|10||
+
+However, if you specify that "Z" is a separator, then it's as if each value in `str` is 2 terms: `foo` and `tostring(x)`:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2LSQqAQAwEv9LMyQEP+gA/4m2McQMnEiMq+Hijl4IuujTlkXFhUFlRwwR1hd148/FgU1mYzIWi+UjJijCIhBKhdZi4nPNYXDH6X7k/iNHdf3HONoGmpImMdW+8eAEwpEQbbwAAAA==" target="_blank">Run the query</a>
+
+```kusto
+range x from 1 to 10 step 1 | project str = strcat("foo", "Z", tostring(x)) | reduce by str with characters="Z"
+```
+
+**Output**
+
+|Pattern|Count|Representative|
+|--|--|--|
+|foo*|10|fooZ1|
 
 ### Apply `reduce` to sanitized input
 
