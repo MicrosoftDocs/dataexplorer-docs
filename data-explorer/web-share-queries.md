@@ -72,7 +72,7 @@ To copy a link to share with others and the text of the query, follow these step
 
 1. Under **Copy**, select **Link, query to clipboard**.
 
-    :::image type="content" source="media/web-share-query/link-query-to-clipboard.png" alt-text="Screenshot of the link to clipboard button.":::
+    :::image type="content" source="media/web-share-query/link-query-to-clipboard.png" alt-text="Screenshot of the link, query to clipboard button.":::
 
 1. Paste to share. The output lists the link followed by the query text.
 
@@ -84,7 +84,7 @@ To copy a link to share with others, the text of the query, and the results of t
 
 1. Under **Copy**, select **Link, query, results to clipboard**.
 
-    :::image type="content" source="media/web-share-query/link-query-results-to-clipboard.png" alt-text="Screenshot of the link to clipboard button.":::
+    :::image type="content" source="media/web-share-query/link-query-results-to-clipboard.png" alt-text="Screenshot of the link, query, results to clipboard button.":::
 
 1. Paste to share. The output lists the link, query text, and query results.
 
