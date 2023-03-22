@@ -36,7 +36,7 @@ Add the [Serilog.Sinks.AzureDataExplorer](https://www.nuget.org/packages/serilog
 Install-Package Serilog.Sinks.AzureDataExplorer
 ```
 
-### Create an Azure AD App registration
+### Create an Azure AD app registration
 
 Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the Serilog connector, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
 
