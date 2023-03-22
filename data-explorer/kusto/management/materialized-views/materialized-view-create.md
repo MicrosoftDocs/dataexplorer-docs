@@ -45,7 +45,7 @@ You must have at least [Database User](../access-control/role-based-access-contr
 
 > [!NOTE]
 > If the materialized view already exists:
-
+>
 > * If the `ifnotexists` flag is specified, the command is ignored. No change is applied, even if the new definition doesn't match the existing definition.
 > * If the `ifnotexists` flag isn't specified, an error is returned.
 > * To alter an existing materialized view, use the [.alter materialized-view](materialized-view-alter.md) command.
@@ -57,7 +57,7 @@ The following properties are supported in the `with` `(`*PropertyName* `=` *Prop
 [!INCLUDE [materialized-view-create-properties](../../../includes/materialized-view-create-properties.md)]
 
 > [!WARNING]
-
+>
 > * The system will automatically disable a materialized view if changes to the source table of the materialized view, or changes in data, lead to incompatibility between the materialized view query and the expected materialized view schema.
 > * To avoid this error, the materialized view query must be deterministic. For example, the [bag_unpack](../../query/bag-unpackplugin.md) or [pivot](../../query/pivotplugin.md) plugin results in a non-deterministic schema.
 > * When you're using an `arg_max(Timestamp, *)` aggregation and when `autoUpdateSchema` is false, changes to the source table can also lead to schema mismatches. Avoid this failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)`, or by using the `autoUpdateSchema` option.

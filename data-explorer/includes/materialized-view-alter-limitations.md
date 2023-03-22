@@ -1,14 +1,15 @@
 ---
 ms.topic: include
-ms.date: 03/05/2023
+ms.date: 03/22/2023
 ---
 
 ## Limitations
 
 * **Changes not supported:**
+  * Changes to the materialized view group by expressions.
   * Changing column type.
   * Renaming columns. For example, altering a view of `T | summarize count() by Id` to `T | summarize Count=count() by Id` drops column `count_` and creates a new column `Count`, which initially contains nulls only.
-  * Changes to the materialized view group by expressions.
+
 
 * **Impact on existing data:**
   * Altering the materialized view has no impact on existing data.
