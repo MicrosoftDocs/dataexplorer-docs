@@ -1,6 +1,8 @@
 ---
 title: has_ipv6_prefix() - Azure Data Explorer
 description: Learn how to use the has_ipv6_prefix() function to check if a specified IPv4 address prefix appears in the text.
+ms.topic: reference
+ms.date: 03/21/2023
 ---
 # has_ipv6_prefix()
 

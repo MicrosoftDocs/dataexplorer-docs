@@ -1,6 +1,8 @@
 ---
 title: has_ipv6() - Acure Data Explorer
 description: Learn how to use the has_ipv6() function to check if any IPv6 addresses appear in the text.
+ms.topic: reference
+ms.date: 03/21/2023
 ---
 
 # has_ipv6()
