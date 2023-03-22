@@ -15,7 +15,7 @@ The `basket` plugin finds frequent patterns of attributes in the data and return
 
 ## Parameters
 
-All arguments are optional, but they must be ordered as shown in the [syntax](#syntax).
+All parameters are optional, but they must be ordered as shown in the [syntax](#syntax).
 
 |Name|Type|Required|Description|
 |--|--|--|--|
