@@ -22,7 +22,9 @@ current row in a [serialized row set](./windowsfunctions.md#serialized-row-set).
 | *offset*| int | | The amount of rows to move from the current row. Default is 1. |
 | *default_value*| scalar | | The default value when there's no value in the next row. When no default value is specified, `null` is used.|
 
-## Example
+## Examples
+
+### Filter data based on comparison of two rows
 
 The following query returns rows that show breaks longer than 1 minute between calls to `sensor-9`.
 
@@ -47,3 +49,15 @@ TransformedSensorsData
 |2022-04-13T01:01:28.694515Z|sensor-9|0.88694998371843614|db9fc946-3934-4ed3-86f6-41adc99d1c60|M100|3|
 |2022-04-13T01:01:33.337056Z|sensor-9|0.097825966284867713|2c5a8b3c-6bcb-440f-9f34-04e12a689c72|M100|3|
 |...|...|...|...|...|...|
+
+### Extend row with data from the next row
+
+In the following query, a new column called `nextA` is added to the table with data from column `A` of the next row. A default value of 10 is used for rows without any data in column `A`. Then, the difference between the values in column `A` and the corresponding value in `nextA` is calculated and stored in a new column called `diff`. Finally, the table is filtered based on whether the value in column `A` is 1 greater than the corresponding value in `nextA`.
+
+```kusto
+Table
+| serialize
+| extend nextA = next(A,1,10)
+| extend diff = A - nextA
+| where diff > 1
+```
