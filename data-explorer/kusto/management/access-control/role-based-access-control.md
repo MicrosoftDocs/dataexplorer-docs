@@ -3,7 +3,7 @@ title: Role-based access control in Kusto - Azure Data Explorer
 description: This article describes role-based access control in Kusto in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/20/2021
+ms.date: 03/21/2023
 ---
 # Azure Data Explorer role-based access control
 
