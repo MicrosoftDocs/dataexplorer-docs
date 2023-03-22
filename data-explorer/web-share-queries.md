@@ -7,7 +7,7 @@ ms.date: 03/22/2023
 
 # Share queries from Azure Data Explorer web UI
 
-This article will walk you through the process of sharing queries from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home). By the end of this article, you'll know how to share a query with a colleague, pin it to a dashboard, or even connect it to Power BI.
+This article describes the process of sharing queries from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home). By the end of this article, you'll know how to share a query link, share the query results, or even pin it to a dashboard.
 
 To learn how to run queries, see [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md).
 
@@ -24,14 +24,14 @@ The following table outlines the many options for how to share a query.
 |--|--|
 |[Pin to dashboard](#pin-to-dashboard)|Display the query in an [Azure Data Explorer dashboard](azure-data-explorer-dashboards.md).|
 |[Link to clipboard](#link-to-clipboard)|Copy a link that can be used to run the query.|
-|[Link, query to clipboard](#link-query-to-clipboard)|Copy a link that can be used to run the query as well as the text of the query.|
+|[Link, query to clipboard](#link-query-to-clipboard)|Copy a link that can be used to run the query and the text of the query.|
 |[Link, query, results to clipboard](#link-query-results-to-clipboard)|Copy a link that can be used to run the query, the text of the query, and the results of the query.|
 |[Download](#download)|Download a KQL file of the query.|
 |[Export to CSV](#export-to-csv)|Download a CSV of the query results.|
 
 ## Pin to dashboard
 
-To pin a query to a dashboard for continuous monitoring, do the following:
+To pin a query to a dashboard for continuous monitoring, follow these steps:
 
 1. In the query window, select the query that you want to pin.
 
@@ -51,7 +51,7 @@ To pin a query to a dashboard for continuous monitoring, do the following:
 
 ## Link to clipboard
 
-To copy a link to share with others, do the following:
+To copy a link to share with others, follow these steps:
 
 1. In the query window, select the query that you want to share.
 
@@ -66,7 +66,7 @@ To copy a link to share with others, do the following:
 
 ## Link, query to clipboard
 
-To copy a link to share with others as well as the text of the query, do the following:
+To copy a link to share with others and the text of the query, follow these steps:
 
 1. In the query window, select the query that you want to share.
 
@@ -78,7 +78,7 @@ To copy a link to share with others as well as the text of the query, do the fol
 
 ## Link, query, results to clipboard
 
-To copy a link to share with others, the text of the query, and the results of the query, do the following:
+To copy a link to share with others, the text of the query, and the results of the query, follow these steps:
 
 1. In the query window, select the query that you want to share.
 
@@ -90,7 +90,7 @@ To copy a link to share with others, the text of the query, and the results of t
 
 ## Download
 
-To download a KQL file of the query, do the following:
+To download a KQL file of the query, follow these steps:
 
 1. In the query window, select the query that you want to download.
 
@@ -100,7 +100,7 @@ To download a KQL file of the query, do the following:
 
 ## Export to CSV
 
-To export the query results to a CSV file, do the following:
+To export the query results to a CSV file, follow these steps:
 
 1. In the query window, select the query that you want to export.
 
