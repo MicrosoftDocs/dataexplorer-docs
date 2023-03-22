@@ -3,7 +3,7 @@ title: find operator - Azure Data Explorer
 description: Learn how to use the find operator to find rows that match a predicate across a set of tables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 03/14/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -125,20 +125,24 @@ For example, see [examples of cases where find will act as a union](./findoperat
 
 ### Term lookup across all tables in current database
 
-The query finds all rows from all tables in the current database in which any column includes the word `Kusto`.
-The resulting records are transformed according to the [output schema](#output-schema).
+The query finds all rows from all tables in the current database in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). The output includes rows from the `Customers` table and the `SalesTable` table of the `ContosoSales` database.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAA0vLzEtRUPJILcpLzEtJrVICAAv0zUwQAAAA" target="_blank">Run the query</a>
 
 ```kusto
-find "Kusto"
+find "Hernandez"
 ```
 
-## Term lookup across all tables matching a name pattern in the current database
+### Term lookup across all tables matching a name pattern in the current database
 
-The query finds all rows from all tables in the current database whose name starts with `K`, and in which any column includes the word `Kusto`.
-The resulting records are transformed according to the [output schema](#output-schema).
+The query finds all rows from all tables in the current database whose name starts with `C`, and in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). Now, the output only contains records from the `Customers` table.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAA0vLzEtRyMxT0HDW0lQoz0gtSlXQUshILFZQ8kgtykvMS0mtUgIA+50LFCQAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-find in (K*) where * has "Kusto"
+find in (C*) where * has "Hernandez"
 ```
 
 ### Term lookup across all tables in all databases in the cluster
@@ -147,8 +151,11 @@ The query finds all rows from all tables in all databases in which any column in
 This query is a [cross-database](./cross-cluster-or-database-queries.md) query.
 The resulting records are transformed according to the [output schema](#output-schema).
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0vLzEtRyMxT0EhJLElMSixO1VDXUtfU09JUKM9ILUpV0FLISCxWUPIuLS7JVwIAAccP5C0AAAA=" target="_blank">Run the query</a>
+
 ```kusto
-find in (database('*').*) "Kusto"
+find in (database('*').*) where * has "Kusto"
 ```
 
 ### Term lookup across all tables and databases matching a name pattern in the cluster
@@ -156,8 +163,11 @@ find in (database('*').*) "Kusto"
 The query finds all rows from all tables whose name starts with `K` in all databases whose name start with `B` and in which any column includes the word `Kusto`.
 The resulting records are transformed according to the [output schema](#output-schema).
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0vLzEtRyMxT0EhJLElMSixO1VAK1lLS1HPW0lQoz0gtSlXQUshILFZQ8i4tLslXAgCcXznPLwAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-find in (database("B*").K*) where * has "Kusto"
+find in (database("S*").C*) where * has "Kusto"
 ```
 
 ### Term lookup in several clusters
