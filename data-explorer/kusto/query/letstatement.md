@@ -45,9 +45,7 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 > [!NOTE]
 >
-> * You can use `(*)` for the tabular expression.
-> * When using a tabular expression as part of a user defined function, the columns can't be accessed as part of the function.
-> * Tabular arguments appear before scalar arguments.
+> * Tabular parameters must appear before scalar parameters.
 > * Any two statements must be separated by a semicolon.
 
 ## Examples
