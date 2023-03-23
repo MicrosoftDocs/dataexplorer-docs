@@ -31,9 +31,9 @@ Consider the syntax for the [http_request plugin](http-request-plugin.md), which
 
 Based on this syntax, the *RequestHeaders* and *Options* are optional parameters of type [dynamic](scalar-data-types/dynamic.md). When invoking this plugin, if you want to specify *Options* then you must also specify *RequestHeaders*. If you don't have any value to pass, you should pass an empty dynamic property bag.
 
-The following example passes an empty dynamic property bag for the *RequestHeaders* parameter and a dynamic object with a `SomeOptionName` key and `SomeOptionValue` value for the *Options* parameter.
+The following example passes an empty dynamic property bag for the *RequestHeaders* parameter and a dynamic object with a `SomeName` key and `SomeValue` value for the *Options* parameter.
 
-`evaluate` `http_request` `("https://someuri.com/", dynamic({}), dynamic({ SomeOptionName: SomeOptionValue }))`
+`evaluate` `http_request` `("https://someuri.com/", dynamic({}), dynamic({ SomeName: SomeValue }))`
 
 ## See also
 
