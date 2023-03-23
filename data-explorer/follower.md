@@ -124,7 +124,7 @@ else
     {
         "Logs*"
     };
-    var tls = new TableLevelSharingProperties(tablesToInclude: tablesToInclude, externalTablesToExclude: externalTablesToExclude);
+    tls = new TableLevelSharingProperties(tablesToInclude: tablesToInclude, externalTablesToExclude: externalTablesToExclude);
 }
 
 
