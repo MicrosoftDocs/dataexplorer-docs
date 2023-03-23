@@ -94,7 +94,7 @@ The returned table schema is:
 .show running queries 
 ```
 
-#### Show running queries by the a specified user
+#### Show running queries by a specified user
 
 ```kusto
 .show running queries by user <UserPrincipalName>
