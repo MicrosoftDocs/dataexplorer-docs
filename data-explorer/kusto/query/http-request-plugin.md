@@ -26,8 +26,7 @@ The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP req
 * [Enable the plugins](../management/enable-plugin.md) by running the following commands:
   * `.enable plugin http_request`  
   * `.enable plugin http_request_post`
-* Make sure that the specified *Uri* value is an allowed destination for `webapi` callout by the [Callout policy](../management/calloutpolicy.md). Otherwise, running the query results in an error.
-* If you're using authentication, use the HTTPS protocol. Attempts to use HTTP with authentication enabled results in an error.
+* Set the *Uri* as an allowed destination for `webapi` in the [Callout policy](../management/calloutpolicy.md). Otherwise, running the query results in an error.
 
 ## Syntax
 
@@ -45,7 +44,9 @@ The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP req
 | *Content* | string |  | The body content to send with the request. The content is encoded in `UTF-8` and the media type for the `Content-Type` attribute is `application/json`. |
 
 > [!NOTE]
-> To specify an optional parameter that follows an optional parameter, make sure to provide a value for the preceding optional parameter. For more information, see [Working with optional parameters](syntax-conventions.md#working-with-optional-parameters).
+>
+> * To specify an optional parameter that follows an optional parameter, make sure to provide a value for the preceding optional parameter. For more information, see [Working with optional parameters](syntax-conventions.md#working-with-optional-parameters).
+> * If you're using authentication, use the HTTPS protocol. Attempts to use HTTP with authentication results in an error.
 
 ## Authentication and authorization
 
