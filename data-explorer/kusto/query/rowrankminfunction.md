@@ -3,7 +3,7 @@ title: row_rank_min() - Azure Data Explorer
 description: Learn how to use the row_rank_min() function to return the current row's minimal rank in a serialized row set.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 01/18/2023
+ms.date: 03/22/2023
 ---
 # row_rank_min()
 
@@ -15,7 +15,11 @@ The rank is the minimal row number that the current row's *Term* appears in.
 
 `row_rank_min` `(` *Term* `)`
 
-* *Term* is an expression indicating the value to consider for the rank. The rank is the minimal row number for *Term*.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*Term*|string|&check;|An expression indicating the value to consider for the rank. The rank is the minimal row number for *Term*.|
   
 ## Returns
 
@@ -23,7 +27,10 @@ Returns the row rank of the current row as a value of type `long`.
 
 ## Example
 
-This example shows how to rank the `Airline` by the number of departures from the SEA `Airport`:
+The following query shows how to rank the `Airline` by the number of departures from the SEA `Airport`.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ3HzKKC/KISq+KSosy8dB0FID8nMy8VzndJLUgsKiktSi22ysnPS9fk5Yrm5VJQUAp2dVTSUVDy8QCSxjooQpFA0tDAAEUw1BFDnROINEIRcvUBqeLliuXlqlEoBjpLIakSyQUKicXJIJnUipLUvBSFoMS8bNui/PL4IiAjPjczTwOhVBMA9lGyTeMAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 datatable (Airport:string, Airline:string, Departures:long)
@@ -38,7 +45,7 @@ datatable (Airport:string, Airline:string, Departures:long)
 | extend Rank=row_rank_min(Departures)
 ```
 
-Running this query produces the following result:
+**Output**
 
 Airport  | Airline  | Departures  | Rank
 ---------|----------|-------------|------
