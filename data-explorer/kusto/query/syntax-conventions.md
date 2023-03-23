@@ -15,7 +15,7 @@ This article outlines the syntax conventions followed in the Kusto Query Languag
 |*Italic*|The name of a parameter.|
 |`Block`|A string literal.|
 |`|` (vertical bar)|Separates syntax items, and indicates that you can only use one of them.|
-|[] (square brackets)|The enclosed item is considered to be an optional parameter.|
+|[ ] (square brackets)|The enclosed item is considered to be an optional parameter.|
 |`,`...|Indicates the preceding parameters can be repeated *n* number of times.|
 
 ## Optional parameters
