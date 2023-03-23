@@ -33,17 +33,15 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 ## Syntax: View or function
 
-`let` *Name* `=` [`view`] `(`[*TabularArgName*`:` `(`*TabularArgSchema*`)` `,` [*ArgName*`:` *ArgType* ]`,` ... ]`)` `{` *FunctionBody* `}`
+`let` *Name* `=` [`view`] `(`[ *Parameters* ]`)` `{` *FunctionBody* `}`
 
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*FunctionBody* |string|&check;| An expression that yields a user defined function. |
 |`view`|string||Appears only in a parameter-less `let` statement with no arguments. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views.|
-|*TabularArgName*|string||The name of a tabular argument. The tabular argument name can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. If *TabularArgName* is specified, then you must specify *TabularArgSchema*.|
-| *TabularArgSchema*|string|| A comma-separated list of column names and their types in the format *ColumnName*:*ColumnType*. The input tabular argument must have at least the specified columns, or you can use a wildcard (`*`) to allow for any schema. To reference columns in the function body, they must be specified. See [Tabular argument with schema](#tabular-argument-with-schema) and [Tabular argument with wildcard](#tabular-argument-with-wildcard).|
-|*ArgName*: *ArgType* |string|| The name and type of the scalar argument. The name can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. The only supported types are `bool`, `string`, `long`, `datetime`, `timespan`, `real`, `dynamic`, and the aliases to these types.|
+|*Parameters*|string||Zero or more comma-separated scalar or tabular function parameters.<br/><br/>For each parameter of scalar type, provide the parameter name and parameter type in the format *Name*`:`*Type*. The name can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. The only supported types are `bool`, `string`, `long`, `datetime`, `timespan`, `real`, `dynamic`, and the aliases to these types.<br/><br/>If the parameter is of tabular type, the parameter should be in the format `(`*TabularName*`:` `(`*ColumnName*`:`*ColumnType*`,` ...`))` or `(`*TabularName*`: (*))`. Each specified column must be in the input tabular argument, or allow for the input tabular argument to have any schema by using the wildcard (`*`) syntax. To reference columns in the function body, they must be specified. For examples, see [Tabular argument with schema](#tabular-argument-with-schema) and [Tabular argument with wildcard](#tabular-argument-with-wildcard).|
+|*FunctionBody* |string|&check;| An expression that yields a user defined function. |
 
 > [!NOTE]
 >
