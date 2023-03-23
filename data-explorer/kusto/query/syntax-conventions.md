@@ -28,7 +28,7 @@ Consider the [http_request plugin](http-request-plugin.md) syntax:
 
 `evaluate` `http_request` `(` *Uri* [, *RequestHeaders* [, *Options*]] `)`
 
-Based on this syntax, the *RequestHeaders* and *Options* are optional parameters of type [dynamic](scalar-data-types/dynamic.md). However, when invoking this plugin, if you want to specify *Options* then you must also specify *RequestHeaders*. If you don't have any value to pass, pass an empty dynamic property bag.
+Based on this syntax, the *RequestHeaders* and *Options* are optional parameters of type [dynamic](scalar-data-types/dynamic.md). When invoking this plugin, if you want to specify *Options* then you must also specify *RequestHeaders*. If you don't have any value to pass, pass an empty dynamic property bag.
 
 ## See also
 
