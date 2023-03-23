@@ -54,5 +54,5 @@ If any of the specified managed identities isn't assigned to the cluster, an err
     "ObjectId": "d99c9846-1615-a2f9-a96f-78e136ba93eb",
     "AllowedUsages": "NativeIngestion, ExternalTable"
   }
-]
+]```
 ```
