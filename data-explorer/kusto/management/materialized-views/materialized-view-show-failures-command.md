@@ -1,9 +1,9 @@
 ---
-title: show materialized-view failures commands - Azure Data Explorer
+title: .show materialized-view failures commands - Azure Data Explorer
 description: This article describes show materialized-view failures commands in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 03/23/2023
 ---
 
 # .show materialized-view failures
@@ -28,7 +28,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 | Name           | Type      | Description                                                |
 |----------------|-----------|------------------------------------------------------------|
-| Timestamp      | timestamp | Date and time when the failure ocurred.                    |
+| Timestamp      | timestamp | Date and time when the failure occurred.                    |
 | OperationId    | string    | Operation identifier of the run that failed.               |
 | Name           | string    | Name of the materialized view.                             |
 | LastSuccessRun | datetime  | Date and time of the last run that completed successfully. |
@@ -39,7 +39,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ### Show failures occurred during materialization of a materialized view
 
-The following command shows the failures, if any, ocurred during the materialization of materialized view ViewName:
+The following command shows the failures, if any, occurred during the materialization of materialized view ViewName:
 
 ```kusto
 .show materialized-view ViewName failures

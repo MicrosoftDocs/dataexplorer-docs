@@ -1,5 +1,5 @@
 ---
-title: show materialized-view schema commands - Azure Data Explorer
+title: .show materialized-view schema commands - Azure Data Explorer
 description: This article describes show materialized-view schema commands in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

@@ -40,3 +40,7 @@ The following purge predicate isn't valid, since it references the result of the
 ```kusto
 MV | where avg_Duration > 1h
 ```
+
+## See also
+
+* [Materialized views](materialized-view-overview.md)
