@@ -1,15 +1,13 @@
 ---
 title: .alter materialized view docstring - Azure Data Explorer
-description: This article describes the `.alter materialized-view docstring` command in Azure Data Explorer.
+description: This article describes the alter materialized-view docstring command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/01/2023
 ---
 # .alter materialized-view docstring
 
-Alters the DocString value of an existing materialized view.
-
-`DocString` is free text that you can attach to a table/function/column describing the entity. This string is presented in various UX settings next to the entity names.
+Alters the *DocString* value associated to an existing materialized view to describe it.
 
 ## Permissions
 
@@ -17,17 +15,31 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Syntax
 
-`.alter` `materialized-view` *MaterializedViewName* `docstring` *Documentation*
+`.alter` `materialized-view` *MaterializedViewName* `docstring` *DocString*
 
 ## Parameters
 
-| Name | Type | Required | Description |
-|--|--|--|--|
-|*MaterializedViewName*|string|&check;|The name of the materialized view.|
-|*Documentation*|string|&check;|The free text you want to use to describe the materialized view.|
+| Name                   | Type   | Required | Description                                                                                                                                    |
+|------------------------|--------|----------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| *MaterializedViewName* | string | &check;  | Name of the materialized view.                                                                                                                 |
+| *DocString*            | string | &check;  | Free text that you can attach to a materialized view to describe it. This string is presented in various UI settings next to the entity names. |
 
-## Example
+## Returns
+
+[!INCLUDE [materialized-view-show-command-output-schema.md](../../../includes/materialized-view-show-command-output-schema.md)]
+
+## Examples
+
+### Set the docstring of a materialized view
+
+The following command sets the description of a materialized via its docstring property:
 
 ```kusto
 .alter materialized-view MyView docstring "docs here..."
 ```
+
+**Output:**
+
+| Name   | SourceTable | Query                                       | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder | DocString      | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
+|--------|-------------|---------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|--------|----------------|------------------|------------------------------|------------|
+| MyView | MyTable     | MyTable \| summarize take_any(*) by Column1 | 2023-02-26T16:40:03.3345704Z     | 2023-02-26T16:44:15.9033667Z | Completed     | true      | true      |        | "docs here..." | true             | 2023-02-23T14:01:42.5172342Z |            |
