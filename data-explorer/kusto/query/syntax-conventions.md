@@ -23,7 +23,7 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 Even if a parameter is optional, you may need to provide an empty value in order to specify a parameter later in the order. This requirement is because arguments must be provided in the order specified in the syntax. The best practice is to provide an empty value of the same type as the parameter.
 
-### Example of optional parameter specification
+### Example of specifying optional parameters
 
 Consider the syntax for the [http_request plugin](http-request-plugin.md), which is used to send HTTP requests:
 
