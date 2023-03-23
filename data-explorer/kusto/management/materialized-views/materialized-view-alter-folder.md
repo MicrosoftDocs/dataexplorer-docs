@@ -15,7 +15,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Syntax
 
-`.alter` `materialized-view` *MaterializedViewName* `folder` '*Folder*'
+`.alter` `materialized-view` *MaterializedViewName* `folder` *Folder*
 
 ## Parameters
 
