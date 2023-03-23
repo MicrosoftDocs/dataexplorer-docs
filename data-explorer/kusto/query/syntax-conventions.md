@@ -23,15 +23,13 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 To provide an argument for an optional parameter that comes after another optional parameter, you must give a value for the prior parameter. This is because arguments must follow the order specified in the syntax. If you don't have a specific value to pass for the parameter, provide an empty value of the same type as the parameter.
 
-### Example of specifying optional parameters
+### Example of sequential optional parameters
 
-Consider the syntax for the [http_request plugin](http-request-plugin.md), which is used to send HTTP requests:
+Consider the syntax for the [http_request plugin](http-request-plugin.md):
 
 `evaluate` `http_request` `(` *Uri* [, *RequestHeaders* [, *Options*]] `)`
 
-Based on this syntax, the *RequestHeaders* and *Options* are optional parameters of type [dynamic](scalar-data-types/dynamic.md). When invoking this plugin, if you want to provide an argument for the *Options* parameter then you must also provide an argument for the *RequestHeaders* parameter. If you don't have any value to provide, you should provide an empty dynamic property bag.
-
-The following example makes a request to `https://contoso.com/`. There aren't any request headers to provide, so the *RequestHeaders* argument is an empty dynamic property bag. Then, the *Options* argument is a dynamic property bag containing an `EmployeeName` key with the value `Nicole`.
+Based on this syntax, the *RequestHeaders* and *Options* are optional parameters of type [dynamic](scalar-data-types/dynamic.md). To provide an argument for the *Options* parameter, you must also provide an argument for the *RequestHeaders* parameter. The following example shows how to provide an empty value for the first optional parameter, *RequestHeaders*, in order to be able to specify a real value for the second optional parameter, *Options*.
 
 `evaluate` `http_request` `("https://contoso.com/", dynamic({}), dynamic({ EmployeeName: Nicole }))`
 
