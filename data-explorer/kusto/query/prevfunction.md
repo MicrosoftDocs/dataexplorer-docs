@@ -76,7 +76,7 @@ TransformedSensorsData
 In the following query, as part of the serialization done with the [serialize operator](serializeoperator.md), a new column `previous_session_type` is added with data from the previous row. Since there was no session prior to the first session, the column is empty in the first row.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+aqUSjPAAopJMOlFGxtFdSdSjNzUhSMDAwt1YFKilOLMhNzMqtSFfJSK0riiyGa40sqC4CqwWIayGKaQC0FRflZqcklCiWZuanxiXkp8SmlRYklQBU6CnClmSU5qUhcoE4dTAsAcOu/KLQAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NMQ7CMAwAd17hrSB1ADaGLvAEHhBFiRFGIYlspwjUx9cCqerA6POdfSn5how54BVFqGTZTPC6G4KwrGAYoDs3ShGO+8OpM0WQySf6IFTGkUoTJ78DTt/Vii/frtnOssrlgUFB6YnO5+hiY69m9LCopAlXo5X9/yczmplkXLwAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 ConferenceSessions
