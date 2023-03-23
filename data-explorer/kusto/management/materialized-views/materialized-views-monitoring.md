@@ -3,16 +3,16 @@ title: Monitor materialized views - Azure Data Explorer
 description: This article describes how to monitor materialized views in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 01/15/2023
+ms.date: 03/19/2023
 ---
 # Monitor materialized views
 
 Monitor the materialized view's health in the following ways:
 
 * Monitor [materialized view metrics](../../../using-metrics.md#materialized-view-metrics) in the Azure portal.
-  * The materialized view age metric `MaterializedViewAgeSeconds` should be used to monitor the freshness of the view. This should be the primary metric to monitor.
-* Monitor the `IsHealthy` property returned from [`.show materialized-view`](materialized-view-show-commands.md#show-materialized-view).
-* Check for failures using [`.show materialized-view failures`](materialized-view-show-commands.md#show-materialized-view-failures).
+  * The materialized view age metric `MaterializedViewAgeSeconds` should be used to monitor the freshness of the view. This one should be the primary metric to monitor.
+* Monitor the `IsHealthy` property returned from [`.show materialized-view`](materialized-view-show-command.md#show-materialized-views).
+* Check for failures using [`.show materialized-view failures`](materialized-view-show-failures-command.md#show-materialized-view-failures).
 
 > [!NOTE]
 >
@@ -20,15 +20,15 @@ Monitor the materialized view's health in the following ways:
 
 ## Troubleshooting unhealthy materialized views
 
-The `MaterializedViewHealth` metric indicates whether a materialized view is healthy. Before a materialized view becomes unhealthy, its age, noted by the `MaterializedViewAgeSeconds` metric, will gradually increase.
+The `MaterializedViewHealth` metric indicates whether a materialized view is healthy. Before a materialized view becomes unhealthy, its age, noted by the `MaterializedViewAgeSeconds` metric, gradually increases.
 
 A materialized view can become unhealthy for any or all of the following reasons:
 
-* The materialization process is failing. The [MaterializedViewResult metric](#materializedviewresult-metric) and the [`.show materialized-view failures`](materialized-view-show-commands.md#show-materialized-view-failures) command can help identify the root cause of the failure.
-* The materialized view might have been automatically disabled by the system, due to changes to the source table. You can check if the view is disabled by checking the `IsEnabled` column returned from [`.show materialized-view` command](materialized-view-show-commands.md). See more details in [materialized views limitations and known issues](materialized-views-limitations.md#the-materialized-view-source)
-* The cluster doesn't have sufficient capacity to materialize all incoming data on-time. In this case, there may not be failures in execution. However, the view's age will gradually increase, since it isn't able to keep up with the ingestion rate. There could be several root causes for this situation:
-  * There are additional materialized views in the cluster, and the cluster doesn't have sufficient capacity to run all views. See [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy) to change the default settings for number of materialized views executed concurrently.  
-  * Materialization is slow because there are too many extents to rebuild in each materialization cycle. To learn more about why extents rebuilds impact the view's performance, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work). The number of extents rebuilt in each cycle is provided in the `MaterializedViewExtentsRebuild` metric. The following solutions may help:
+* The materialization process is failing. The [MaterializedViewResult metric](#materializedviewresult-metric) and the [`.show materialized-view failures`](materialized-view-show-failures-command.md#show-materialized-view-failures) command can help identify the root cause of the failure.
+* The system may have automatically disabled the materialized view, due to changes to the source table. You can check if the view is disabled by checking the `IsEnabled` column returned from [`.show materialized-view` command](materialized-view-show-command.md#show-materialized-views). See more details in [materialized views limitations and known issues](materialized-views-limitations.md#the-materialized-view-source)
+* The cluster doesn't have sufficient capacity to materialize all incoming data on-time. In this case, there may not be failures in execution. However, the view's age gradually increases, since it isn't able to keep up with the ingestion rate. There could be several root causes for this situation:
+  * There are more materialized views in the cluster, and the cluster doesn't have sufficient capacity to run all views. See [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy) to change the default settings for number of materialized views executed concurrently.  
+  * Materialization is slow because there are too many extents to rebuild in each materialization cycle. To learn more about why extents rebuild impacts the view's performance, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work). The number of extents rebuilt in each cycle is provided in the `MaterializedViewExtentsRebuild` metric. The following solutions may help:
     * Moving the cluster to [Engine V3](../../../engine-v3.md) should significantly improve performance of rebuild extents.
     * For V2 clusters only, you can increase the extents rebuilt concurrency in the [materialized view capacity policy](../capacitypolicy.md#materialized-views-capacity-policy).
 
@@ -67,7 +67,7 @@ The `Result` dimension can have one of the following values:
 **Materialized views resource consumption:** the resources consumed by the materialized views materialization process can be tracked using the [`.show commands-and-queries`](../commands-and-queries.md#show-commands-and-queries) command. Filter the records for a specific view using the following (replace `DatabaseName` and `ViewName`):
 
 <!-- csl -->
-```
+```kusto
 .show commands-and-queries 
 | where Database  == "DatabaseName" and ClientActivityId startswith "DN.MaterializedViews;ViewName;"
 ```

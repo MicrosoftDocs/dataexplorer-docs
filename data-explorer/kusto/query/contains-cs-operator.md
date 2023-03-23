@@ -3,7 +3,7 @@ title: The case-sensitive contains_cs string operator - Azure Data Explorer
 description: Learn how to use the contains_cs operator to filter a record set for data containing a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/11/2023
+ms.date: 03/16/2023
 ---
 # contains_cs operator
 
@@ -36,12 +36,12 @@ Rows in *T* for which *string* is in *col*.
 ## Example
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4tLc3MSizKpUhVSQcHxyfmleiS2Y1NBUSKpUCC5JLEmFKi7PSC1KhYgoJOfnlSRm5hXHJxcrKDkGKwEAd3al+FsAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPITk/ryQxM684PrlYQckxWAkAynmLoFMAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
-    | summarize event_count=count() by State
-    | where State contains_cs "AS"
+| summarize event_count=count() by State
+| where State contains_cs "AS"
 ```
 
 **Output**

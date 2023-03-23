@@ -3,7 +3,7 @@ title: top-hitters operator - Azure Data Explorer
 description: Learn how to use the top-hitters operator  to return an approximation for the most popular distinct values in the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/22/2023
+ms.date: 03/16/2023
 ---
 # top-hitters operator
 
@@ -46,48 +46,50 @@ The second syntax (with *SummingExpression*) is conceptually equivalent to:
 
 ### Get most frequent items
 
-The next example shows how to find top-5 languages with most pages in Wikipedia (accessed after during April 2016).
+The next example shows how to find top-5 types of storms.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKMkv0M3ILClJLSpWMFXIT1MAy4RUFqQCAFP10SMoAAAA" target="_blank">Run the query</a>
 
 ```kusto
-PageViews
-| where Timestamp > datetime(2016-04-01) and Timestamp < datetime(2016-05-01) 
-| top-hitters 5 of Language 
+StormEvents
+| top-hitters 5 of EventType 
 ```
 
 **Output**
 
-|Language|approximate_count_Language|
+| EventType | approximate_count_EventType |
 |---|---|
-|en|1539954127|
-|zh|339827659|
-|de|262197491|
-|ru|227003107|
-|fr|207943448|
+| Thunderstorm Wind | 13015 |
+| Hail | 12711 |
+| Flash Flood | 3688 |
+| Drought | 3616 |
+| Winter Weather | 3349 |
 
 ### Get top hitters based on column value
 
-The next example shows how to find most viewed English pages of Wikipedia of the year 2016.
-The query uses 'Views' (integer number) to calculate page popularity (number of views).
+The next example shows how to find the States with the most "Thunderstorm Wind" events.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZRCMkrzUlKLikEKFcIz81KUgApL8gt0MzJLSoDiCoYGCvlpCsEliSWpAPMxVM5OAAAA" target="_blank">Run the query</a>
 
 ```kusto
-PageViews
-| where Timestamp > datetime(2016-01-01)
-| where Language == "en"
-| where Page !has 'Special'
-| top-hitters 10 of Page by Views
+StormEvents
+| where EventType == "Thunderstorm Wind"
+| top-hitters 10 of State 
 ```
 
 **Output**
 
-|Page|approximate_sum_Views|
+| State | approximate_sum_State |
 |---|---|
-|Main_Page|1325856754|
-|Web_scraping|43979153|
-|Java_(programming_language)|16489491|
-|United_States|13928841|
-|Wikipedia|13584915|
-|Donald_Trump|12376448|
-|YouTube|11917252|
-|The_Revenant_(2015_film)|10714263|
-|Star_Wars:_The_Force_Awakens|9770653|
-|Portal:Current_events|9578000|
+| TEXAS | 830 |
+| GEORGIA | 609 |
+| MICHIGAN | 602 |
+| IOWA | 585 |
+| PENNSYLVANIA | 549 |
+| ILLINOIS | 533 |
+| NEW YORK | 502 |
+| VIRGINIA | 482 |
+| KANSAS | 476 |
+| OHIO | 455 |

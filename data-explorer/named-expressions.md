@@ -14,7 +14,7 @@ In Kusto Query Language, you can bind names to complex expressions in several di
 
 * In a [let statement](kusto/query/letstatement.md)
 * In the [as operator](kusto/query/asoperator.md)
-* In the formal argument list of [user-defined functions](kusto/query/functions/user-defined-functions.md)
+* In the formal parameters list of [user-defined functions](kusto/query/functions/user-defined-functions.md)
 
 When you reference these named expressions in a query, the following steps occur:
 1. The calculation within the named expression is evaluated. This calculation produces either a scalar or tabular value.
@@ -33,7 +33,7 @@ To mitigate these concerns, you can materialize the calculation results in memor
 
 Use the following strategies for tabular functions:
 
-* **let statements and function arguments**: Use the [materialize()](kusto/query/materializefunction.md) function.
+* **let statements and function parameters**: Use the [materialize()](kusto/query/materializefunction.md) function.
 * **as operator**: Set the `hint.materialized` hint value to `true`.
 
 For example, the following query uses the non-deterministic tabular [sample operator](kusto/query/sampleoperator.md):
