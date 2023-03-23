@@ -45,7 +45,7 @@ The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP req
 | *Content* | string |  | The body content to send with the request. The content is encoded in `UTF-8` and the media type for the `Content-Type` attribute is `application/json`. |
 
 > [!NOTE]
-> To specify an optional parameter that follows an optional parameter, make sure to provide a value for the preceding optional parameter. For more information, see [Syntax conventions](syntax-conventions.md).
+> To specify an optional parameter that follows an optional parameter, make sure to provide a value for the preceding optional parameter. For more information, see [Working with optional parameters](syntax-conventions.md#working-with-optional-parameters).
 
 ## Authentication and authorization
 
