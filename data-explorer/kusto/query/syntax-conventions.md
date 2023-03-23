@@ -23,13 +23,15 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 Even if a parameter is optional, you may need to provide an empty value in order to specify a parameter later in the order. This requirement is because arguments must be provided in the order specified in the syntax. The best practice is to provide an empty value of the same type as the parameter.
 
-### Example
+### Example of optional parameter specification
 
-Consider the [http_request plugin](http-request-plugin.md) syntax:
+Consider the syntax for the [http_request plugin](http-request-plugin.md), which is used to send HTTP requests:
 
 `evaluate` `http_request` `(` *Uri* [, *RequestHeaders* [, *Options*]] `)`
 
 Based on this syntax, the *RequestHeaders* and *Options* are optional parameters of type [dynamic](scalar-data-types/dynamic.md). When invoking this plugin, if you want to specify *Options* then you must also specify *RequestHeaders*. If you don't have any value to pass, pass an empty dynamic property bag.
+
+The following example passes an empty dynamic property bag for the *RequestHeaders* parameter and a dynamic object with a `SomeOptionName` key and `SomeOptionValue` value for the *Options* parameter.
 
 `evaluate` `http_request` `("https://someuri.com/", dynamic({}), dynamic({ SomeOptionName: SomeOptionValue }))`
 
