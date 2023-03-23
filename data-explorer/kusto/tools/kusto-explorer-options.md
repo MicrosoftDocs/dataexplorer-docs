@@ -61,7 +61,7 @@ The following tables describe the options for customizing the behavior of Kusto.
 | Data Table Values| The alignment of brackets around data table values, when on separate lines.|
 | Function Body| The alignment of function body brace. * when on separate lines.
 | Function Parameters| The alignment of function parameter parentheses, when on separate lines.|
-| Function arguments| The alignment of function argument parentheses, when on separate lines. |
+| Function Arguments| The alignment of function argument parentheses, when on separate lines. |
 | Pipe Operator | The placement of the pipe (bar) character that exists between tabular query operators. *New Line* places all pipe characters on a new line. *Smart* places all pipe characters on a new line if the query already spans more than one line. *None* leaves all pipe characters as is.|
 | Expression| The placement of expressions in lists. |
 | Statement | The placement of statements. |
