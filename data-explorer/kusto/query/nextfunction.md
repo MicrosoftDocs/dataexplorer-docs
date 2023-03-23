@@ -3,7 +3,7 @@ title: next() - Azure Data Explorer
 description: Learn how to use the next() function to return the value of the next column at an offset. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/22/2023
+ms.date: 03/23/2023
 ---
 # next()
 
@@ -73,12 +73,25 @@ TransformedSensorsData
 
 ### Extend row with data from the next row
 
-In the following query, a new column called `nextA` is added to the table with data from column `A` of the next row. A default value of 10 is used for rows without any data in column `A`. Then, the difference between the values in column `A` and the corresponding value in `nextA` is calculated and stored in a new column called `diff`. Finally, the table is filtered based on whether the value in column `A` is 1 greater than the corresponding value in `nextA`.
+In the following query, as part of the serialization done with the [serialize operator](serializeoperator.md), a new column `next_session_type` is added with data from the next row.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+aqUSjPAAopJMOlFGxtFdSdSjNzUhSMDAwt1YFKilOLMhNzMqtSFfJSK0riiyGa40sqC4CqwWIayGKaQC0FRflZqcklCiWZuanxiXkp8SmlRYklQBU6CnClmSU5qUhcoE4dTAsAcOu/KLQAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-Table
-| serialize
-| extend nextA = next(A,1,10)
-| extend diff = A - nextA
-| where diff > 1
+ConferenceSessions
+| where conference == 'Build 2019'
+| serialize next_session_type = next(session_type)
+| project time_and_duration, session_title, session_type, next_session_type
 ```
+
+**Output**
+
+| time_and_duration | session_title | session_type | next_session_type |
+|---|---|---|---|
+| Mon, May 6, 8:30-10:00 am | Vision Keynote - Satya Nadella | Keynote | Expo Session |
+| Mon, May 6, 1:20-1:40 pm | Azure Data Explorer: Advanced Time Series analysis | Expo Session | Breakout |
+| Mon, May 6, 2:00-3:00 pm | Azure's Data Platform - Powering Modern Applications and Cloud Scale Analytics at Petabyte Scale | Breakout | Expo Session |
+| Mon, May 6, 4:00-4:20 pm | How BASF is using Azure Data Services | Expo Session | Expo Session |
+| Mon, May 6, 6:50 - 7:10 pm | Azure Data Explorer: Operationalize your ML models | Expo Session | Expo Session |
+|...|...|...|...|
