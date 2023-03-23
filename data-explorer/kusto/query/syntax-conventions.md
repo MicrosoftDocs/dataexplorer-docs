@@ -6,7 +6,7 @@ ms.date: 03/23/2023
 ---
 # Syntax conventions of reference documentation
 
-This article outlines the syntax conventions followed in the Kusto Query Language (KQL) and Azure Data Explorer management command reference documentation.
+This article outlines the syntax conventions followed in the [Kusto Query Language (KQL)](index.md) and Azure Data Explorer [management commands](../management/index.md) reference documentation.
 
 ## Syntax conventions
 
