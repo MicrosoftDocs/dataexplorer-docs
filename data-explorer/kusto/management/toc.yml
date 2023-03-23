@@ -125,31 +125,53 @@ items:
       href: materialized-views/materialized-view-policies.md
     - name: Materialized views data purge
       href: materialized-views/materialized-view-purge.md
-    - name: ".alter materialized-view"
+    - name: .alter materialized-view
+      displayName: alter
       href: materialized-views/materialized-view-alter.md
-    - name: ".alter materialized-view autoUpdateSchema"
+    - name: .alter materialized-view autoUpdateSchema
+      displayName: alter auto update schema
       href: materialized-views/materialized-view-alter-autoUpdateSchema.md
-    - name: ".alter materialized-view docstring"
+    - name: .alter materialized-view docstring
+      displayName: alter materialized view
       href: materialized-views/materialized-view-alter-docstring.md
-    - name: ".alter materialized-view folder"
+    - name: .alter materialized-view folder
+      displayName: alter materialized view
       href: materialized-views/materialized-view-alter-folder.md
-    - name: ".alter materialized-view lookback"
+    - name: .alter materialized-view lookback
+      displayName: alter materialized view
       href: materialized-views/materialized-view-alter-lookback.md
-    - name: ".clear materialized-view data"
+    - name: .clear materialized-view data
+      displayName: clear materialized view data
       href: materialized-views/materialized-view-clear-data.md
-    - name: ".create materialized-view"
+    - name: .create materialized-view
+      displayName: create materialized view
       href: materialized-views/materialized-view-create.md
-    - name: ".create-or-alter materialized-view"
+    - name: .create-or-alter materialized-view
+      displayName: create or alter materialized view
       href: materialized-views/materialized-view-create-or-alter.md
-    - name: ".disable | .enable materialized-view"
+    - name: .disable | .enable materialized-view
+      displayName: disable enable 
       href: materialized-views/materialized-view-enable-disable.md    
-    - name: ".drop materialized-view"
+    - name: .drop materialized-view
+      displayName: drop materialized view
       href: materialized-views/materialized-view-drop.md
-    - name: ".rename materialized-view"
+    - name: .rename materialized-view
+      displayName: rename materialized view
       href: materialized-views/materialized-view-rename.md
-    - name: ".show materialized-views"
-      href: materialized-views/materialized-view-show-commands.md
-    - name: ".show materialized-views details"
+    - name: .show materialized-view(s)
+      displayName: show materialized view
+      href: materialized-views/materialized-view-show-command.md
+    - name: .show materialized-view schema
+      displayName: show materialized view schema
+      href: materialized-views/materialized-view-show-schema-command.md
+    - name: .show materialized-view extents
+      displayName: show materialized view extents
+      href: materialized-views/materialized-view-show-extents-command.md
+    - name: .show materialized-view failures
+      displayName: show materialized view failures
+      href: materialized-views/materialized-view-show-failures-command.md
+    - name: .show materialized-view(s) details
+      displayName: show materialized view details
       href: materialized-views/materialized-view-show-details-command.md
   - name: Stored query results
     displayName: .set stored query, .show stored query, .drop stored query
