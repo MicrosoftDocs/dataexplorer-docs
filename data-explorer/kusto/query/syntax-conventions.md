@@ -21,7 +21,7 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 ## Optional parameters
 
-Even if a parameter is optional, you may need to provide an empty value in order to specify a parameter later in the order. This requirement is because arguments must be provided in the order specified in the syntax. The best practice is to provide an empty value of the same type as the parameter.
+Even if a parameter is optional, you may need to provide an argument for this parameter in order to specify an argument for a parameter later in the order. This requirement is because arguments must be provided in the order specified in the syntax. The best practice is to provide an empty value of the same type as the parameter.
 
 ### Example of specifying optional parameters
 
