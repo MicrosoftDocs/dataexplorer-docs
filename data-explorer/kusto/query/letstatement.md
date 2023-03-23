@@ -3,7 +3,7 @@ title: Let statement - Azure Data Explorer
 description: Learn how to use the Let statement to set a variable name to define an expression or a function.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/19/2023
+ms.date: 03/23/2023
 ms.localizationpriority: high
 ---
 # Let statement
