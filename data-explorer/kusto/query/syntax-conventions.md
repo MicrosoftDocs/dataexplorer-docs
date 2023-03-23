@@ -1,10 +1,10 @@
 ---
-title: Syntax conventions of the reference documentation - Azure Data Explorer
+title: Reference documentation syntax conventions - Azure Data Explorer
 description: Learn about the syntax conventions for the Kusto Query Language and Azure Data Explorer management command documentation.
 ms.topic: reference
 ms.date: 03/23/2023
 ---
-# Syntax conventions of the reference documentation
+# Reference documentation syntax conventions
 
 This article outlines the syntax conventions followed in the Kusto Query Language (KQL) and Azure Data Explorer management command reference documentation.
 
