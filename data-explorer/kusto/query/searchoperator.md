@@ -3,7 +3,7 @@ title: search operator - Azure Data Explorer
 description: Learn how to use the search operator to search for a text pattern in multiple tables and columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 03/15/2023
 ---
 # search operator
 
@@ -83,54 +83,68 @@ Unlike the [find operator](findoperator.md), the `search` operator does not supp
 
 Search for a term over all unrestricted tables and views of the database in scope.
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlBQci9KTc1TAgAhG1rADgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-search "billg"
+search "Green"
 ```
+
+The output contains records from the `Customers`, `Products`, and `SalesTable` tables. The `Customers` records shows all customers with the last name "Green", and the `Products` and `SalesTable` records shows products with some mention of "Green".
 
 ### Conditional global term search
 
 Search for records that match both terms over all unrestricted tables and views of the database in scope.
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlBQci9KTc1TUkjMS1HQUHJJzSmtSFVSyC9SUAooyi9OLU8sSlXSBADUfdV9LAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-search "billg" and ("steveb" or "satyan")
+search "Green" and ("Deluxe" or "Proseware")
 ```
 
 ### Search a specific table
 
-Search only in the TraceEvent table.
+Search only in the `Customers` table.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlDIzFPQCCjKTylNLinWVFByL0pNzVMCAAJBkngcAAAA" target="_blank">Run the query</a>
 
 ```kusto
-search in (TraceEvent) "billg"
+search in (Products) "Green"
 ```
 
 ### Case-sensitive search
 
 Search for records that match both case-sensitive terms over all unrestricted tables and views of the database in scope.
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlDIzsxLsU1OLE6NL07NK84sySxLVVBKyilNVQIAA9DDEiEAAAA=" target="_blank">Run the query</a>
+
 ```kusto
-search kind=case_sensitive "BillB" and ("SteveB" or "SatyaN")
+search kind=case_sensitive "blue"
 ```
 
 ### Search specific columns
 
-Search for a term in the "CEO" and "CSA" columns over all unrestricted tables and views of the database in scope.
+Search for a term in the "FirstName" and "LastName" columns over all unrestricted tables and views of the database in scope.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlBwyywqLvFLzE21UnJMLMrPU1LIL1LwSYSJeZSmZ6QWKwEA/CSSXi0AAAA=" target="_blank">Run the query</a>
 
 ```kusto
-search CEO:"billg" or CSA:"billg"
+search FirstName:"Aaron" or LastName:"Hughes"
 ```
 
 ### Limit search by timestamp
 
-Search for a term over all unrestricted tables and views of the database in scope if the term appears in a record with a Timestamp greater than the given date.
+Search for a term over all unrestricted tables and views of the database in scope if the term appears in a record with a date greater than the given date.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlBQ8ihNz0gtVlJIzEtRcEksSfVOrVSwU0gBskoyc1M11I0MDCx1DQyBSF0TAMIgQA00AAAA" target="_blank">Run the query</a>
 
 ```kusto
-search "billg" and Timestamp >= datetime(1981-01-01)
-```
-
-### Searches over all the higher-ups
-
-```kusto
-search in (C*, TF) "billg" or "davec" or "steveb"
+search "Hughes" and DateKey > datetime('2009-01-01')
 ```
 
 ## Performance Tips
