@@ -127,7 +127,7 @@ shapes
 
 **Output**
 
-|mylist|isEvenSideCount|
+|isEvenSideCount|mylist|
 |---|---|
 |false|[{"name":"triangle","sideCount":3},{"name":"pentagon","sideCount":5},{"name":"heptagon","sideCount":7},{"name":"nonagon","sideCount":9}]|
 |true|[{"name":"square","sideCount":4},{"name":"rectangle","sideCount":4},{"name":"hexagon","sideCount":6},{"name":"octagon","sideCount":8},{"name":"decagon","sideCount":10}]|

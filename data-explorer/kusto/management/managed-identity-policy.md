@@ -52,7 +52,7 @@ The following values specify authentication to a `usage` using the configured ma
 | Value | Description | 
 |---|---|
 | `All` | All current and future usages are allowed. |
-| `AutomatedFlow`| Run a continuous export automated flow on behalf of a managed identity. |
+| `AutomatedFlows`| Run a continuous export automated flow on behalf of a managed identity. |
 | `DataConnection` | Authenticate to data connections to an Event Hub or an Event Grid. |
 |`ExternalTable` | Authenticate to external tables using connection strings configured with a managed identity. |
 | `NativeIngestion` |  Authenticate to an SDK for native ingestions from an external source. |
