@@ -16,7 +16,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-`.show` `materialized-view` *MaterializedViewName*
+`.show` `materialized-view` *MaterializedViewName*g
 
 `.show` `materialized-views`
 
