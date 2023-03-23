@@ -15,11 +15,11 @@ Sandboxes are run locally (meaning, processing is done close to the data), with 
 ## Prerequisites and limitations
 
 * Sandboxes that run on [VM sizes supporting nested virtualization](#vm-sizes-supporting-nested-virtualization) are implemented using [Hyper-V technology](https://en.wikipedia.org/wiki/Hyper-V) and have no limitations.
-* Sandboxes that run on [VM sizes not supporting nested virtualization](./sandboxes-in-non-modern-skus.md#virtual-machine-sizes) are implemented using a proprietary legacy technology and are subject to [some limitations](./sandboxes-in-non-modern-skus.md).
+* Sandboxes that run on [VM sizes not supporting nested virtualization](sandboxes-in-non-modern-skus.md#virtual-machine-sizes) are implemented using a proprietary legacy technology and are subject to [some limitations](sandboxes-in-non-modern-skus.md).
 * The image for running the sandboxes is deployed to each of the Data Engine's nodes and requires dedicated SSD space to run.
   * The estimated size is between 10-20 GB.
   * This affects the cluster's data capacity, and may affect the [cost](https://azure.microsoft.com/pricing/details/data-explorer) of the cluster.
-  
+
 ## Runtime
 
 * A sandboxed query operator may use one or more sandboxes for its execution.
@@ -27,7 +27,7 @@ Sandboxes are run locally (meaning, processing is done close to the data), with 
   * When a node is restarted, for example, as part of a service upgrade, all running sandboxes on it are disposed of.
 * Each node maintains a predefined number of sandboxes that are ready for running incoming requests.
   * Once a sandbox is used, a new one is automatically made available to replace it.
-* If there are no pre-allocated sandboxes available to serve a query operator, it will be throttled until new sandboxes are available. For more information, see [Errors](#errors). New sandbox allocation could take up to 10-15 seconds per sandbox, depending on the SKU and available resources on the data node. 
+* If there are no pre-allocated sandboxes available to serve a query operator, it will be throttled until new sandboxes are available. For more information, see [Errors](#errors). New sandbox allocation could take up to 10-15 seconds per sandbox, depending on the SKU and available resources on the data node.
 
 ## Sandbox parameters
 
@@ -43,6 +43,7 @@ Some of the  parameters can be controlled using a cluster-level [sandbox policy]
   * Reaching the limit results in termination of the sandbox, and a query execution error.
 
 ## Sandbox limitations
+
 * **Network:** A sandbox can't interact with any resource on the virtual machine (VM) or outside of it.
   * A sandbox can't interact with another sandbox.
 
@@ -58,7 +59,6 @@ Some of the  parameters can be controlled using a cluster-level [sandbox policy]
 |E_SB_QUERY_THROTTLED_ERROR|TooManyRequests (429)      |The sandboxed query was aborted because of throttling. Retrying after some backoff might succeed   |There are no available sandboxes on the target node. New sandboxes should become available in a few seconds         |
 |E_SB_QUERY_THROTTLED_ERROR|TooManyRequests (429)      |Sandboxes of kind '{kind}' haven't yet been initialized                                            |The sandbox policy has recently changed. New sandboxes obeying the new policy will become available in a few seconds|
 |                          |InternalServiceError (520) |The sandboxed query was aborted due to a failure in initializing sandboxes                         |An unexpected infrastructure failure.                         |
-
 
 ## VM Sizes supporting nested virtualization
 
