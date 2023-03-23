@@ -71,7 +71,7 @@ TransformedSensorsData
 |--|
 |30.726900061254298
 
-### Extend row with data from the next row
+### Extend row with data from the previous row
 
 In the following query, as part of the serialization done with the [serialize operator](serializeoperator.md), a new column `previous_session_type` is added with data from the previous row. Since there was no session prior to the first session, the column is empty in the first row.
 
@@ -87,7 +87,7 @@ ConferenceSessions
 
 **Output**
 
-| time_and_duration | session_title | session_type | next_session_type |
+| time_and_duration | session_title | session_type | previous_session_type |
 |---|---|---|---|
 | Mon, May 6, 8:30-10:00 am | Vision Keynote - Satya Nadella | Keynote | |
 | Mon, May 6, 1:20-1:40 pm | Azure Data Explorer: Advanced Time Series analysis | Expo Session | Keynote |
