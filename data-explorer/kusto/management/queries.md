@@ -112,8 +112,8 @@ The `.cancel` `query` command starts a best-effort attempt to cancel a specific 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ClientActivityId* | string | &check; | The value of the running query's `ClientActivityId` property. |
-| *ReasonPhrase* | string | &check; when reason specified | Describes the reason for canceling the running query and is included in the query results if it's successfully canceled. |
+| *ClientActivityId* | string | &check; | The value of the running query's `ClientActivityId` property. The *ClientActivityId* of a query can be obtained by running the [.show queries](#show-queries) command.|
+| *ReasonPhrase* | string | &check; | Describes the reason for canceling the running query and is included in the query results if it's successfully canceled. |
 
 ### Example
 
