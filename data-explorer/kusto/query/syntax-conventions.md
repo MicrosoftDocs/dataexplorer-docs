@@ -21,7 +21,7 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 ## Working with optional parameters
 
-To provide an argument for an optional parameter that comes after another optional parameter, you must give a value for the prior parameter. This is because arguments must follow the order specified in the syntax. If you don't have a specific value to pass for the parameter, provide an empty value of the same type as the parameter.
+To provide an argument for an optional parameter that comes after another optional parameter, you must provide an argument for the prior parameter. This requirement is because arguments must follow the order specified in the syntax. If you don't have a specific value to pass for the parameter, use an empty value of the same type.
 
 ### Example of sequential optional parameters
 
