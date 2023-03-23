@@ -20,6 +20,9 @@ The following examples show how to use `hll`/`tdigest` and demonstrate that usin
 > For example, when persisting the output of `hll` function with accuracy level 4, the size of the `hll` object exceeds the default MaxValueSize, which is 1MB.
 > To avoid this issue, modify the encoding policy of the column as shown in the following examples.
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2LQQqDMBQF9z3FWyYgaMRtD+DCM4Rf/VWLMSH50iAevrGznGEi7TMj4x29g4F4mOYPknCAeVxIh3MU15OxbJvKVaeLDNF/eBSk4vt9eOEJTrI6ErYTCdk7qDLYrFEj+K8yTdtVrf4Bfsb2aXIAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 range x from 1 to 1000000 step 1
 | summarize hll(x,4)

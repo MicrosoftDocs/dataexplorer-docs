@@ -3,7 +3,7 @@ title: toscalar() - Azure Data Explorer
 description: Learn how to use the toscalar() function to return a scalar constant value of the evaluated expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/23/2023
+ms.date: 03/16/2023
 ---
 # toscalar()
 
@@ -17,13 +17,13 @@ Any two statements must be separated by a semicolon.
 
 ## Syntax
 
-`toscalar(`*Expression*`)`
+`toscalar(`*expression*`)`
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *Expression* | string | &check; | The value to convert to a scalar value.|
+| *expression* | string | &check; | The value to convert to a scalar value.|
 
 ## Returns
 
@@ -54,6 +54,9 @@ _dataset1
 ```
 
 This failure can be mitigated by using the `join` operator, as in the following example:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIT0ksSSxOLTFUsFUAMUsSk3JSNSqsFHLy89I1ow11FIx0FIx1FEx0FExjrblykLQYYdOio1AJ1auAqllHwQyoH24dV41CVn5mnoIG3DRNhfw8hQoFoERBUX5WanKJQgXQMAB+d0ZipAAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 let _dataset1 = datatable(x: long)[1, 2, 3, 4, 5];
