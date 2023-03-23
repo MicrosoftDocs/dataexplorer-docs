@@ -71,14 +71,27 @@ TransformedSensorsData
 |--|
 |30.726900061254298
 
-### Extend row with data from the previous row
+### Extend row with data from the next row
 
-In the following query, a new column called `prevA` is added to the table with data from column `A` of the previous row. A default value of 10 is used for rows without any data in column `A`. Then, the difference between the values in column `A` and the corresponding value in `prevA` is calculated and stored in a new column called `diff`. Finally, the table is filtered based on whether the value in column `A` is 1 greater than the corresponding value in `prevA`.
+In the following query, as part of the serialization done with the [serialize operator](serializeoperator.md), a new column `previous_session_type` is added with data from the previous row. Since there was no session prior to the first session, the column is empty in the first row.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+aqUSjPAAopJMOlFGxtFdSdSjNzUhSMDAwt1YFKilOLMhNzMqtSFfJSK0riiyGa40sqC4CqwWIayGKaQC0FRflZqcklCiWZuanxiXkp8SmlRYklQBU6CnClmSU5qUhcoE4dTAsAcOu/KLQAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-Table
-| serialize 
-| extend prevA = prev(A,1,10)
-| extend diff = A - prevA
-| where diff > 1
+ConferenceSessions
+| where conference == 'Build 2019'
+| serialize previous_session_type = prev(session_type)
+| project time_and_duration, session_title, session_type, previous_session_type
 ```
+
+**Output**
+
+| time_and_duration | session_title | session_type | next_session_type |
+|---|---|---|---|
+| Mon, May 6, 8:30-10:00 am | Vision Keynote - Satya Nadella | Keynote | |
+| Mon, May 6, 1:20-1:40 pm | Azure Data Explorer: Advanced Time Series analysis | Expo Session | Keynote |
+| Mon, May 6, 2:00-3:00 pm | Azure's Data Platform - Powering Modern Applications and Cloud Scale Analytics at Petabyte Scale | Breakout | Expo Session |
+| Mon, May 6, 4:00-4:20 pm | How BASF is using Azure Data Services | Expo Session | Breakout |
+| Mon, May 6, 6:50 - 7:10 pm | Azure Data Explorer: Operationalize your ML models | Expo Session | Expo Session |
+| ... | ... | ... | ... |
