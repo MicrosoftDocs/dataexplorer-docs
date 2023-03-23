@@ -29,7 +29,7 @@ Consider the syntax for the [http_request plugin](http-request-plugin.md):
 
 `evaluate` `http_request` `(` *Uri* [, *RequestHeaders* [, *Options*]] `)`
 
-Based on this syntax, the *RequestHeaders* and *Options* are optional parameters of type [dynamic](scalar-data-types/dynamic.md). To provide an argument for the *Options* parameter, you must also provide an argument for the *RequestHeaders* parameter. The following example shows how to provide an empty value for the first optional parameter, *RequestHeaders*, in order to be able to specify a real value for the second optional parameter, *Options*.
+*RequestHeaders* and *Options* are optional parameters of type [dynamic](scalar-data-types/dynamic.md). To provide an argument for the *Options* parameter, you must also provide an argument for the *RequestHeaders* parameter. The following example shows how to provide an empty value for the first optional parameter, *RequestHeaders*, in order to be able to specify a value for the second optional parameter, *Options*.
 
 `evaluate` `http_request` `("https://contoso.com/", dynamic({}), dynamic({ EmployeeName: Nicole }))`
 
