@@ -123,6 +123,8 @@ To send data from an event hub to Azure Data Explorer, you must first create a t
 
 ### [ARM template](#tab/arm-template)
 
+---
+
 ## 2 - Connect to the event hub
 
 When this connection is in place, data that flows into the event hub streams to the target table.
@@ -152,8 +154,6 @@ When this connection is in place, data that flows into the event hub streams to 
     | Compression | *None* | The compression type of the event hub messages payload. Supported compression types: *None, Gzip*.|
     | Managed Identity (recommended) | System-assigned | The managed identity used by the Data Explorer cluster for access to read from the event hub. We recommend using managed identities to control access to your event hub.<br /><br />**Note**:<br />When the data connection is created:<br/>\* *System-assigned* identities are automatically created if they don't exist<br />\* The managed identity is automatically assigned the *Azure Event Hubs Data Receiver* role and is added to your Data Explorer cluster. We recommend verifying that the role was assigned and that the identity was added to the cluster. |
 
-    [!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
-
     > [!NOTE]
     > If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
 
@@ -175,8 +175,6 @@ When this connection is in place, data that flows into the event hub streams to 
     | Compression | | The compression type of the event hub messages payload.|
     | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
     |Event retrieval start date| Coordinated Universal Time (UTC) | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created. |
-
-    [!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
 
 1. Set the schema.
 
@@ -207,6 +205,10 @@ When this connection is in place, data that flows into the event hub streams to 
 ### [Python](#tab/python)
 
 ### [ARM template](#tab/arm-template)
+
+---
+
+[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
 
 ## 3 - Send sample data
 
