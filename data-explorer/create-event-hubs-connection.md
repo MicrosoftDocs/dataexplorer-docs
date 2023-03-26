@@ -120,40 +120,106 @@ To send data from an event hub to Azure Data Explorer, you must first create a t
     ```
 
 ### [Python](#tab/python)
+
 ### [ARM template](#tab/arm-template)
 
-## 2 - Copy the connection string - Portal only?
+## 2 - Connect to the event hub
 
-
-
-## 3 - Connect to the event hub
+When this connection is in place, data that flows into the event hub streams to the target table.
 
 ### [Portal](#tab/portal)
+
+1. Under the cluster you created, select **Databases** then **TestDatabase**.
+
+    :::image type="content" source="media/ingest-data-event-hub/select-test-database.png" alt-text="Screenshot of Azure Data Explorer web U I left menu, showing the Test Database item, selected.":::
+
+1. Select **Data ingestion** and **Add data connection**.
+
+    :::image type="content" source="media/ingest-data-event-hub/event-hub-connection.png" alt-text=" Screenshot of the Azure Data Explorer web U I left menu, showing how to Add data connection.":::
+
+1. Fill out the form with the following information, and then select **Create**.
+
+    :::image type="content" source="media/ingest-data-event-hub/data-connection-pane.png" alt-text="Screenshot of the Azure Data Explorer web U I, showing the Create data connection form.":::
+
+    | **Setting** | **Suggested value** | **Field description** |
+    |---|---|---|
+    | Data connection name | *test-hub-connection* | The name of the connection you want to create in Azure Data Explorer.|
+    | Subscription |      | The subscription ID where the event hub resource is located.  |
+    | Event hub namespace | A unique namespace name | The name you chose earlier that identifies your namespace. |
+    | Event hub | *test-hub* | The event hub you created. |
+    | Consumer group | *test-group* | The consumer group defined in the event hub you created. |
+    | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first record. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
+    | Compression | *None* | The compression type of the event hub messages payload. Supported compression types: *None, Gzip*.|
+    | Managed Identity (recommended) | System-assigned | The managed identity used by the Data Explorer cluster for access to read from the event hub. We recommend using managed identities to control access to your event hub.<br /><br />**Note**:<br />When the data connection is created:<br/>\* *System-assigned* identities are automatically created if they don't exist<br />\* The managed identity is automatically assigned the *Azure Event Hubs Data Receiver* role and is added to your Data Explorer cluster. We recommend verifying that the role was assigned and that the identity was added to the cluster. |
+
+    [!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
+
+    > [!NOTE]
+    > If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
+
 ### [Wizard](#tab/wizard)
+
+1. Under **Source type**, select **Event Hub**.
+
+1. Under **Data Connection**, fill in the following fields and select **Next: Schema**.
+
+    :::image type="content" source="media/event-hub-wizard/project-details.png" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
+
+    |**Setting** | **Suggested value** | **Field description**
+    |---|---|---|
+    | Data connection name | *TestDataConnection*  | The name that identifies your data connection.
+    | Subscription |      | The subscription ID where the event hub resource is located.  |
+    | Event hub namespace |  | The name that identifies your namespace. |
+    | Event hub |  | The event hub you wish to use. |
+    | Consumer group |  | The consumer group defined in your event hub. |
+    | Compression | | The compression type of the event hub messages payload.|
+    | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
+    |Event retrieval start date| Coordinated Universal Time (UTC) | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created. |
+
+    [!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
+
+1. Set the schema.
+
+    Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects. Supported formats are CSV, JSON, PSV, SCsv, SOHsv TSV, TXT, and TSVE.
+
+    For information on schema mapping with JSON-formatted data, see [Edit the schema](/azure/data-explorer/ingest-from-local-file#edit-the-schema).
+    For information on schema mapping with CSV-formatted data, see [Edit the schema](/azure/data-explorer/ingest-from-container#edit-the-schema).
+
+    :::image type="content" source="media/event-hub-wizard/event-hub-schema.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
+
+    > [!NOTE]
+    >
+    > * If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, the option to select **Streaming ingestion** is available.
+    > * If streaming is not enabled for the cluster, the option to select **Batching time** is available. For Event Hubs, the recommended default [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
+
+1. If the data you see in the preview window isn't complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
+
+    * **Discard and fetch new data**: discards the data presented and searches for new events.
+    * **Fetch more data**: Searches for more events in addition to the events already found.
+
+    > [!NOTE]
+    > To see a preview of your data, your event hub must be sending events.
+
+1. Select **Next: Summary**.
+
 ### [C#](#tab/c-sharp)
+
 ### [Python](#tab/python)
+
 ### [ARM template](#tab/arm-template)
 
-## 4 - Send sample data
+## 3 - Send sample data
 
 ### [Portal](#tab/portal)
+
 ### [Wizard](#tab/wizard)
+
 ### [C#](#tab/c-sharp)
+
 ### [Python](#tab/python)
+
 ### [ARM template](#tab/arm-template)
 
-## 5 - Check the flow
+## 4 - Check the flow
 
-### [Portal](#tab/portal)
-### [Wizard](#tab/wizard)
-### [C#](#tab/c-sharp)
-### [Python](#tab/python)
-### [ARM template](#tab/arm-template)
-
-## 6 - Clean up resources
-
-### [Portal](#tab/portal)
-### [Wizard](#tab/wizard)
-### [C#](#tab/c-sharp)
-### [Python](#tab/python)
-### [ARM template](#tab/arm-template)
+## 5 - Clean up resources
