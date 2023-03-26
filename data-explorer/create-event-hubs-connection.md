@@ -18,8 +18,6 @@ For information about ingesting from Event Hubs, see [Connect to event hub](inge
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
-* A [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) to send mock data to the event hub.
-* [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/) to run the sample app.
 
 ## 1 - Create the target table
 
