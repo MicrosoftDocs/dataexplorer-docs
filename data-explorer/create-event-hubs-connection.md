@@ -49,8 +49,6 @@ To send data from an event hub to Azure Data Explorer, you must first create a t
 
 1. The **Ingest data** window opens with the **Destination** tab selected. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
 
-    :::image type="content" source="media/event-hub-wizard/destination-tab.png" alt-text="Screen shot of destination tab. Cluster, Database, and Table fields must be filled out before proceeding to Next-Source.":::
-
 1. Under **Table**, select **New table** and enter a name for the new table. Alternatively, use an existing table.
 
     > [!NOTE]
