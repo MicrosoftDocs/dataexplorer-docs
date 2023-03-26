@@ -7,9 +7,11 @@ ms.date: 03/26/2023
 ---
 # Use a managed identity to run a continuous export job
 
+Continuous export jobs allow you to export data from Azure Data Explorer to an external table with a periodically run query. The external table determines where the data is saved, such as Azure Blob Storage, and how it's organized.
+
 In some cases, a [managed identity](../../../managed-identities-overview.md) must be used to successfully configure a [continuous export](continuous-data-export.md) job. For example, if the target external table uses impersonation authentication or if the continuous export query references tables in other databases, a managed identity must be used.
 
-In this article, you'll learn how to set up a continuous export job with a managed identity.
+This article will show you how to create a continuous export job with a managed identity. You'll create an external table with impersonation authentication, assign a managed identity to your cluster, grant the necessary permissions, and then create the continuous export job using the external table and managed identity.
 
 ## Prerequisites
 
@@ -18,18 +20,16 @@ In this article, you'll learn how to set up a continuous export job with a manag
 
 ## 1 - Create an external table
 
-External tables reference data stored outside Azure Data Explorer. To create an external table for your continuous export, see one of the following articles:
+To create an external table for your continuous export, see one of the following articles:
 
 * [Create an Azure Storage external table](../external-tables-azurestorage-azuredatalake.md)
 * [Create an SQL Server external table](../external-sql-tables.md)
 
-The following tabs show examples for how to set up an Azure Storage or SQL Server external table using impersonation authentication.
+The following tabs show examples for how to set up an Azure Storage or SQL Server external table with impersonation authentication.
 
 ### [Azure Storage](#tab/azure-storage)
 
-The following command creates an external table named `MyExternalTable` for `mycontainer` in an Azure Blob Storage account named `mystorageaccount`. The table has two columns, an integer `x` and a string `s`, and the data is in CSV format.
-
-To specify the use of [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation), the connection string ends with `;impersonate`.
+The following command creates an external table named `MyExternalTable` for `mycontainer` in an Azure Blob Storage account named `mystorageaccount`. The table has two columns, an integer `x` and a string `s`, and the data is in CSV format. To specify the use of [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation), the connection string ends with `;impersonate`.
 
 ```kusto
 .create external table MyExternalTable (x:int, s:string) kind=storage dataformat=csv 
