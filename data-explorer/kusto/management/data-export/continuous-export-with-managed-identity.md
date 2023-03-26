@@ -135,8 +135,6 @@ For more information, see [Azure Storage external tables](../external-tables-azu
 
 To create a continuous export job with managed identity authentication, use the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property.
 
-To specify the `managedIdentity` property, use the relevant syntax:
-
 * System-assigned managed identity: `managedIdentity=system`.
 * User-assigned managed identity: `managedidentity=<objectId>`.
 
