@@ -34,7 +34,9 @@ A system-assigned identity is tied to your cluster and gets deleted when the clu
 
 ## 3 - Set the managed identity policy
 
-To allow the managed identity to perform continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md) with `AutomatedFlows` specified in the `AllowedUsages` field of the policy object. This policy can be set on the cluster or database level. For an example, see the [cluster](#cluster) or [database](#database) tab.
+To allow the managed identity to perform continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md). In the policy object, you must specify `AutomatedFlows` in the `AllowedUsages` field.
+
+This policy can be set on the cluster or database level. For examples, see the following tabs.
 
 ### [Cluster](#tab/cluster)
 
@@ -68,7 +70,7 @@ For more information, see [.alter managed_identity policy](../alter-managed-iden
 
 ## 4 - Grant Azure Data Explorer permissions
 
-The managed identity must have at least [Database User](../access-control/role-based-access-control.md) permissions over the databases that the continuous export query references.
+The managed identity must have at least [Database User](../access-control/role-based-access-control.md) permissions over the databases referenced in your continuous export query.
 
 To grant permissions, run the following command. Replace `<DatabaseName>` with the name of the database, `<objectId>` with the managed identity object ID, and `<tenantId>` with the Azure Active Directory tenant ID.
 
