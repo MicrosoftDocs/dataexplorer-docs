@@ -68,9 +68,9 @@ For more information, see [.alter managed_identity policy](../alter-managed-iden
 
 ## 4 - Grant Azure Data Explorer permissions
 
-The managed identity must have at least [Database User](../access-control/role-based-access-control.md) permissions for the database where your external table resides.
+The managed identity must have at least [Database User](../access-control/role-based-access-control.md) permissions over the databases that the continuous export query references.
 
-To grant permissions, run the following command, replacing `<DatabaseName>` with the name of the database, `<objectId>` with the managed identity object ID, and `<tenantId>` with the Azure Active Directory tenant ID:
+To grant permissions, run the following command. Replace `<DatabaseName>` with the name of the database, `<objectId>` with the managed identity object ID, and `<tenantId>` with the Azure Active Directory tenant ID.
 
 ```kusto
 .add database <DatabaseName> users ('aadapp=<objectId>;<tenantId>')
