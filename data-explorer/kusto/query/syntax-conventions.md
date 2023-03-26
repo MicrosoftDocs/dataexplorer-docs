@@ -12,11 +12,11 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 |Convention|Description|
 |--|--|
-|*Italic*|Parameters to be provided a value upon use of the function or command.|
 |`Block`|String literals to be entered exactly as shown.|
+|*Italic*|Parameters to be provided a value upon use of the function or command.|
 |[ ] (square brackets)|Denotes that the enclosed item is an optional parameter.|
-|`|` (pipe)|When enclosed in brackets, indicates that you can only use one of the syntax items separated by the pipe(s).<br/><br/>When not enclosed in brackets, indicates a break between KQL operators in a tabular expression statement. The data is transformed and "piped" from one operator to the next.|
 |`,`...|Indicates the preceding parameter can be repeated multiple times, separated by commas.|
+|`|` (pipe)|When enclosed in brackets, indicates that you must choose one of the pipe-separated items.<br/><br/>When not enclosed in brackets, indicates a break between KQL operators in a tabular expression statement. The data is transformed and "piped" from one operator to the next.|
 |`;`|Query statement terminator.|
 
 ## Working with optional parameters
