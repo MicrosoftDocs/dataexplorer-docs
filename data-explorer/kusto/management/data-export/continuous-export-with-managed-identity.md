@@ -135,9 +135,17 @@ For more information, see [.alter managed_identity policy](../alter-managed-iden
 
 The managed identity must have at least [Database User](../access-control/role-based-access-control.md) permissions over the databases referenced in your continuous export query.
 
-To grant permissions, run the following command.
+#### System-assigned identity
 
-Replace `<DatabaseName>` with the name of the database. For a system-assigned managed identity, replace `<objectId>` with `system`. For a user-assigned managed identity, replace `<objectId>` with the managed identity object ID. Replace `<tenantId>` with the Azure Active Directory tenant ID.
+To grant permissions for a system-assigned identity, run the following command. Replace `<DatabaseName>` with the name of the database.
+
+```kusto
+.add database <DatabaseName> users ('aadapp=system')
+```
+
+#### User-assigned identity
+
+To grant permissions for a user-assigned identity, run the following command. Replace `<DatabaseName>` with the name of the database,`<objectId>` with the managed identity object ID, and `<tenantId>` with the Azure Active Directory tenant ID.
 
 ```kusto
 .add database <DatabaseName> users ('aadapp=<objectId>;<tenantId>')
