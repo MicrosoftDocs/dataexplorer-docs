@@ -132,6 +132,9 @@ To send data from an event hub to Azure Data Explorer, you must first create a t
 
 When this connection is in place, data that flows into the event hub streams to the target table.
 
+> [!CAUTION]
+> If the event hub is moved to a different resource or subscription, you won't be able to make changes to the connection. Either update or recreate the connection.
+
 ### [Portal](#tab/portal)
 
 1. Under the cluster you created, select **Databases** then **TestDatabase**.
@@ -455,4 +458,3 @@ print(poller.result())
 
 ---
 
-[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
