@@ -67,26 +67,13 @@ A system-assigned identity is tied to your cluster and gets deleted when the clu
 
 ## 3 - Set the managed identity policy
 
-For the managed identity to be used with continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md) with `AutomatedFlows` on your cluster or database. For examples, see the following tabs.
+For the managed identity to be used with continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md) with `AutomatedFlows`. The policy can be set on the cluster or database level. For examples, see the following tabs.
 
 ### [Cluster](#tab/cluster)
 
-#### System-assigned identity
+To set the policy on the cluster, run the following command.
 
-To set the policy on the cluster for a system-assigned identity, run the following command.
-
-```kusto
-.alter cluster policy managed_identity ```[
-    {
-      "ObjectId": "system",
-      "AllowedUsages": "AutomatedFlows"
-    }
-]```
-```
-
-#### User-assigned identity
-
-To set the policy on the cluster for a user-assigned identity, run the following command. Replace `<objectId>` with the managed identity object ID.
+For a system-assigned managed identity, replace `<objectId>` with `system`. For a user-assigned managed-identity, replace `<objectId>` with the managed identity object ID.
 
 ```kusto
 .alter cluster policy managed_identity ```[
@@ -99,22 +86,9 @@ To set the policy on the cluster for a user-assigned identity, run the following
 
 ### [Database](#tab/database)
 
-#### System-assigned identity
+To set the policy on a database, run the following command.
 
-To set the policy on the database for a system-assigned identity, run the following command. Replace `<DatabaseName>` with the name of the database that contains the external table.
-
-```kusto
-.alter database <DatabaseName> policy managed_identity ```[
-    {
-      "ObjectId": "system",
-      "AllowedUsages": "AutomatedFlows"
-    }
-]```
-```
-
-#### User-assigned identity
-
-To set the policy on the database for a system-assigned identity, run the following command. Replace `<DatabaseName>` with the name of the database that contains the external table, and replace `<objectId>` with the managed identity object ID.
+Replace `<DatabaseName>` with the name of the database that contains the external table. For a system-assigned managed identity, replace `<objectId>` with `system`. For a user-assigned managed-identity, replace `<objectId>` with the managed identity object ID.
 
 ```kusto
 .alter database <DatabaseName> policy managed_identity ```[
@@ -133,17 +107,7 @@ For more information, see [.alter managed_identity policy](../alter-managed-iden
 
 The managed identity must have at least [Database User](../access-control/role-based-access-control.md) permissions over the databases referenced in your continuous export query.
 
-#### System-assigned identity
-
-To grant permissions for a system-assigned identity, run the following command. Replace `<DatabaseName>` with the name of the database.
-
-```kusto
-.add database <DatabaseName> users ('aadapp=system')
-```
-
-#### User-assigned identity
-
-To grant permissions for a user-assigned identity, run the following command. Replace `<DatabaseName>` with the name of the database,`<objectId>` with the managed identity object ID, and `<tenantId>` with the Azure Active Directory tenant ID.
+To grant permissions, run the following command. Replace `<DatabaseName>` with the name of the database, `<objectId>` with `system` or the managed identity object ID, and `<tenantId>` with the Azure Active Directory tenant ID.
 
 ```kusto
 .add database <DatabaseName> users ('aadapp=<objectId>;<tenantId>')
