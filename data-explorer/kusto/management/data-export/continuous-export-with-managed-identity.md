@@ -25,7 +25,7 @@ To create an external table for your continuous export, see one of the following
 * [Create an Azure Storage external table](../external-tables-azurestorage-azuredatalake.md)
 * [Create an SQL Server external table](../external-sql-tables.md)
 
-The following tabs show examples for how to set up an Azure Storage or SQL Server external table with impersonation authentication.
+The following tabs show how to set up an Azure Storage or SQL Server external table with impersonation authentication.
 
 ### [Azure Storage](#tab/azure-storage)
 
