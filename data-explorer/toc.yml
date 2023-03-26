@@ -148,6 +148,9 @@ items:
       - name: Azure Resource Manager template
         displayName: Event hub, ingest, data connection
         href: data-connection-event-hub-resource-manager.md
+      - name: Manage Event Hubs in your free cluster
+        displayName: Event hub, ingest, data connection
+        href: start-for-free-event-hubs.md
     - name: Event Grid
       items:
       - name: Event Grid data connection
@@ -640,6 +643,8 @@ items:
     href: kusto/functions-library/toc.yml
   - name: PowerShell Kusto
     href: /powershell/module/az.kusto/#kusto
+  - name: Python plugin packages
+    href: python-package-reference.md
   - name: Troubleshoot ingestion
     items:
     - name: Ingestion error codes

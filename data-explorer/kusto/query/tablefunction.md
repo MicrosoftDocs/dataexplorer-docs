@@ -3,7 +3,7 @@ title: table() (scope function) - Azure Data Explorer
 description: Learn how to use the table() (scope function) function to reference a table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 03/16/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -42,9 +42,11 @@ The table() function references a table by providing its name as an expression o
 
 ### Use table() to access table of the current database
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytJTMpJ1VAPLskvynUtS80rKVbXVKhRSM4vzSsBAIdoofIcAAAA" target="_blank">Run the query</a>
+
 ```kusto
-table('StormEvent') | count
+table('StormEvents') | count
 ```
 
 **Output**
@@ -57,13 +59,15 @@ table('StormEvent') | count
 
 The query above can be rewritten as a query-defined function (let statement) that receives a parameter `tableName` - which is passed into the table() function.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIy89XsFXQKElMykn1S8xNtSouKcrMS9fkquZSAAKwOEJWU6FGITm/NK+Eq9aaC6hVQz24JL8o17UsNa+kWF0TAD3GJXVRAAAA" target="_blank">Run the query</a>
+
 ```kusto
 let foo = (tableName:string)
 {
     table(tableName) | count
 };
-foo('help')
+foo('StormEvents')
 ```
 
 **Output**
@@ -100,6 +104,9 @@ receives a parameter `tableName` - which is passed into the table() function.
 A parameter, which isn't a scalar constant string, can't be passed as a parameter to the `table()` function.
 
 Below, given an example of workaround for such case.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIMVSwVSgoyswrUaiwNbTmygGJGSGJGUHE4pMz8vOLU4ESGvHFqTmpySX5RVbFJUBF6Zpc1VwKQFCal5mfB2ZpAE2tUSjPSC1KVYCrVrC1VVAPMVTX1IGqMcKlxkhdk6vWmgtqpQZYAADWO8bZrAAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 let T1 = print x=1;
