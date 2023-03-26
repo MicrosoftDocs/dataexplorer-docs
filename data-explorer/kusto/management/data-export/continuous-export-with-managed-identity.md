@@ -67,9 +67,7 @@ A system-assigned identity is tied to your cluster and gets deleted when the clu
 
 ## 3 - Set the managed identity policy
 
-To allow the managed identity to perform continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md). In the policy object, you must specify `AutomatedFlows` in the `AllowedUsages` field.
-
-This policy can be set on the cluster or database level. For examples, see the following tabs.
+For the managed identity to be used with continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md) with `AutomatedFlows` on your cluster or database. For examples, see the following tabs.
 
 ### [Cluster](#tab/cluster)
 
