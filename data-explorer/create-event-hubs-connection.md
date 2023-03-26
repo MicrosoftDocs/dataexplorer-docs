@@ -61,6 +61,63 @@ To send data from an event hub to Azure Data Explorer, you must first create a t
 
 ### [C#](#tab/c-sharp)
 
+1. Install the ingest library.
+
+    ```csharp
+    Install-Package Microsoft.Azure.Kusto.Ingest
+    ```
+
+1. Construct the connection string.
+
+    ```csharp
+    var tenantId = "<TenantId>";
+    var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net/";
+
+    var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri).WithAadUserPromptAuthentication(tenantId);
+    ```
+
+1. Create a table.
+
+    ```csharp
+    var databaseName = "<DatabaseName>";
+    var table = "<TableName>";
+    using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
+    {
+        var command =
+            CslCommandGenerator.GenerateTableCreateCommand(
+                table,
+                new[]
+                {
+                    Tuple.Create("StartTime", "System.DateTime"),
+                    Tuple.Create("EndTime", "System.DateTime"),
+                    ...
+                });
+    
+        kustoClient.ExecuteControlCommand(databaseName, command);
+    }
+    ```
+
+1. Define an ingestion mapping.
+
+    ```csharp
+    var tableMapping = "TableName_CSV_Mapping";
+    using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
+    {
+        var command =
+            CslCommandGenerator.GenerateTableMappingCreateCommand(
+                Data.Ingestion.IngestionMappingKind.Csv,
+                table,
+                tableMapping,
+                new[] {
+                    new ColumnMapping() { ColumnName = "StartTime", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "0" } } },
+                    new ColumnMapping() { ColumnName = "EndTime", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "1" } } },
+                    new ColumnMapping() { ColumnName = "EpisodeId", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "2" } } },
+                    ...
+            });
+    
+        kustoClient.ExecuteControlCommand(databaseName, command);
+    }
+    ```
 
 ### [Python](#tab/python)
 ### [ARM template](#tab/arm-template)
