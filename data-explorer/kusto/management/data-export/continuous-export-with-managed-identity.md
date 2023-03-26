@@ -23,6 +23,35 @@ External tables reference data stored outside Azure Data Explorer. To create an 
 * [Create an Azure Storage external table](../external-tables-azurestorage-azuredatalake.md)
 * [Create an SQL Server external table](../external-sql-tables.md)
 
+The following tabs contain examples for how to configure an Azure Storage or SQL Server external table with impersonation authentication.
+
+### [Azure Storage](#tab/azure-storage)
+
+The following command creates an external table named `MyExternalTable` for `container1` in a storage account named `mystorageaccount` residing in Azure Blob Storage. The table has two columns, one for an integer `x` and one for a string `s`, and the data is formatted in CSV. The connection string used in the command contains `;impersonate` at the end, which specifies to use [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation) to access the data store.
+
+```kusto
+.create external table MyExternalTable (x:int, s:string) kind=storage dataformat=csv 
+( 
+   h@'https://mystorageaccount.blob.core.windows.net/container1;impersonate' 
+)
+```
+
+> [!NOTE]
+> To create an external table for Azure Data Lake Storage Gen1 or Azure Data Lake Storage Gen2, refer to the [Storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) to learn how to modify the connection string appropriately.
+
+### [SQL Server](#tab/sql-server)
+
+The following command creates an external table named `MySqlExternalTable` for the `MySqlTable` table stored in a SQL Server database named `MyDatabase`. The table has two columns, one for an integer `x` and one for a string `s`. The connection string used in the command contains `;Authentication=Active Directory Integrated`. This format specifies that [Active Directory Integrated authentication](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication), which is impersonation authentication, should be used to access the SQL table.
+
+```kusto
+.create external table MySqlExternalTable (x:int, s:string) kind=sql table=MySqlTable
+( 
+   h@'Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=MyDatabase;'
+)
+```
+
+---
+
 ## 2 - Assign a managed identity to your cluster
 
 To assign a managed identity to your cluster, see one of the following guides:
