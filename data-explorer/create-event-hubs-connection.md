@@ -172,19 +172,9 @@ When this connection is in place, data that flows into the event hub streams to 
     | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
     |Event retrieval start date| Coordinated Universal Time (UTC) | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created. |
 
-1. Set the schema.
+1. Set the ingestion policy. If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, you can select **Streaming ingestion**. If streaming is not enabled for the cluster, set the **Data batching latency**. For Event Hubs, the recommended [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
 
-    Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects. Supported formats are CSV, JSON, PSV, SCsv, SOHsv TSV, TXT, and TSVE.
-
-    For information on schema mapping with JSON-formatted data, see [Edit the schema](/azure/data-explorer/ingest-from-local-file#edit-the-schema).
-    For information on schema mapping with CSV-formatted data, see [Edit the schema](/azure/data-explorer/ingest-from-container#edit-the-schema).
-
-    :::image type="content" source="media/event-hub-wizard/event-hub-schema.png" alt-text="Screenshot of schema tab in ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
-
-    > [!NOTE]
-    >
-    > * If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, the option to select **Streaming ingestion** is available.
-    > * If streaming is not enabled for the cluster, the option to select **Batching time** is available. For Event Hubs, the recommended default [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
+1. Select the **Data format**.
 
 1. If the data you see in the preview window isn't complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
 
