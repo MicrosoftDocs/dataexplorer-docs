@@ -34,9 +34,24 @@ A system-assigned identity is tied to your cluster and gets deleted when the clu
 
 ## 3 - Set the managed identity policy
 
-To allow the managed identity to perform continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md) with `AutomatedFlows` specified in the `AllowedUsages` field of the policy object.
+To allow the managed identity to perform continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md) with `AutomatedFlows` specified in the `AllowedUsages` field of the policy object. This policy can be set on the cluster or database level.
 
-To set the policy, run the following command, replacing `<DatabaseName>` with the name of the database that contains the external table and `<objectId>` with the managed identity object ID:
+### [Cluster](#tab/cluster)
+
+To set a managed identity policy on the cluster level, run the following command. Replace `<objectId>` with the managed identity object ID.
+
+```kusto
+.alter cluster policy managed_identity ```[
+    {
+      "ObjectId": "<objectId>",
+      "AllowedUsages": "AutomatedFlows"
+    }
+]```
+```
+
+### [Database](#tab/database)
+
+To set the policy on the database level, run the following command. Replace `<DatabaseName>` with the name of the database that contains the external table and `<objectId>` with the managed identity object ID.
 
 ```kusto
 .alter database <DatabaseName> policy managed_identity ```[
@@ -46,6 +61,8 @@ To set the policy, run the following command, replacing `<DatabaseName>` with th
     }
 ]```
 ```
+
+---
 
 For more information, see [.alter managed_identity policy](../alter-managed-identity-policy-command.md).
 
