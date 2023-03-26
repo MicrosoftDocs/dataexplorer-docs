@@ -29,7 +29,9 @@ The following tabs show how to set up an Azure Storage or SQL Server external ta
 
 ### [Azure Storage](#tab/azure-storage)
 
-The following command creates an external table named `MyExternalTable` for `mycontainer` in an Azure Blob Storage account named `mystorageaccount`. The table has two columns, an integer `x` and a string `s`. To specify the use of [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation), the connection string ends with `;impersonate`.
+The following command creates an external table named `MyExternalTable` for `mycontainer` in an Azure Blob Storage account named `mystorageaccount`. The table has two columns, an integer `x` and a string `s`.
+
+To specify the use of [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation), the connection string ends with `;impersonate`.
 
 ```kusto
 .create external table MyExternalTable (x:int, s:string) kind=storage dataformat=csv 
