@@ -161,14 +161,12 @@ When this connection is in place, data that flows into the event hub streams to 
 
 1. Under **Data Connection**, fill in the following fields and select **Next: Schema**.
 
-    :::image type="content" source="media/event-hub-wizard/project-details.png" alt-text="Screenshot of source tab with project details fields to be filled in - ingest new data to Azure Data Explorer with Event Hubs in the ingestion wizard.":::
-
     |**Setting** | **Suggested value** | **Field description**
     |---|---|---|
-    | Data connection name | *TestDataConnection*  | The name that identifies your data connection.
     | Subscription |      | The subscription ID where the event hub resource is located.  |
     | Event hub namespace |  | The name that identifies your namespace. |
     | Event hub |  | The event hub you wish to use. |
+    | Data connection name | *TestDataConnection*  | The name that identifies your data connection.|
     | Consumer group |  | The consumer group defined in your event hub. |
     | Compression | | The compression type of the event hub messages payload.|
     | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
