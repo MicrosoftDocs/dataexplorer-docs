@@ -143,8 +143,6 @@ When this connection is in place, data that flows into the event hub streams to 
 
 1. Fill out the form with the following information, and then select **Create**.
 
-    :::image type="content" source="media/ingest-data-event-hub/data-connection-pane.png" alt-text="Screenshot of the Azure Data Explorer web U I, showing the Create data connection form.":::
-
     | **Setting** | **Suggested value** | **Field description** |
     |---|---|---|
     | Data connection name | *test-hub-connection* | The name of the connection you want to create in Azure Data Explorer.|
