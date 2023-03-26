@@ -23,9 +23,9 @@ External tables reference data stored outside Azure Data Explorer. To create an 
 * [Create an Azure Storage external table](../external-tables-azurestorage-azuredatalake.md)
 * [Create an SQL Server external table](../external-sql-tables.md)
 
-## 2 - Add a managed identity to your cluster
+## 2 - Assign a managed identity to your cluster
 
-To add a managed identity to your cluster, see one of the following guides:
+To assign a managed identity to your cluster, see one of the following guides:
 
 * [Add a system-assigned managed identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity)
 * [Add a user-assigned managed identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity)
