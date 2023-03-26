@@ -101,6 +101,12 @@ To specify the `managedIdentity` property, use the relevant syntax:
 * System-assigned managed identity: `managedIdentity=system`.
 * User-assigned managed identity: `managedidentity=<objectId>`.
 
+For example, the following command creates a continuous export job with a system-assigned managed identity.
+
+```kusto
+.create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity=system) <| MyTable
+```
+
 ## Next steps
 
 * Read the [continuous export overview](continuous-data-export.md)
