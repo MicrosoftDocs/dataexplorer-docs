@@ -202,6 +202,60 @@ When this connection is in place, data that flows into the event hub streams to 
 
 ### [C#](#tab/c-sharp)
 
+```csharp
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+var clientSecret = "PlaceholderClientSecret";//Client Secret
+var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var authenticationContext = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
+var credential = new ClientCredential(clientId, clientSecret);
+var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+
+var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+
+var kustoManagementClient = new KustoManagementClient(credentials)
+{
+    SubscriptionId = subscriptionId
+};
+
+var resourceGroupName = "testrg";
+//The cluster and database that are created as part of the Prerequisites
+var clusterName = "mycluster";
+var databaseName = "mydatabase";
+var dataConnectionName = "myeventhubconnect";
+//The event hub that is created as part of the Prerequisites
+var eventHubResourceId = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.EventHub/namespaces/xxxxxx/eventhubs/xxxxxx";
+var consumerGroup = "$Default";
+var location = "Central US";
+//The table and column mapping are created as part of the Prerequisites
+var tableName = "StormEvents";
+var mappingRuleName = "StormEvents_CSV_Mapping";
+var dataFormat = EventHubDataFormat.CSV;
+var compression = "None";
+var databaseRouting = "Multi";
+await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, dataConnectionName,
+    new EventHubDataConnection(eventHubResourceId, consumerGroup, location: location, tableName: tableName, mappingRuleName: mappingRuleName, dataFormat: dataFormat, compression: compression, databaseRouting: databaseRouting));
+```
+
+|**Setting** | **Suggested value** | **Field description**|
+|---|---|---|
+| tenantId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Your tenant ID. Also known as directory ID.|
+| subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The subscription ID that you use for resource creation.|
+| clientId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The client ID of the application that can access resources in your tenant.|
+| clientSecret | *PlaceholderClientSecret* | The client secret of the application that can access resources in your tenant.|
+| resourceGroupName | *testrg* | The name of the resource group containing your cluster.|
+| clusterName | *mykustocluster* | The name of your cluster.|
+| databaseName | *mykustodatabase* | The name of the target database in your cluster.|
+| dataConnectionName | *myeventhubconnect* | The desired name of your data connection.|
+| tableName | *StormEvents* | The name of the target table in the target database.|
+| mappingRuleName | *StormEvents_CSV_Mapping* | The name of your column mapping related to the target table.|
+| dataFormat | *csv* | The data format of the message.|
+| eventHubResourceId | *Resource ID* | The resource ID of your event hub that holds the data for ingestion. |
+| consumerGroup | *$Default* | The consumer group of your event hub.|
+| location | *Central US* | The location of the data connection resource.|
+| compression | *Gzip* or *None* | The type of data compression. |
+| databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-hub-overview.md#events-routing). |
+
 ### [Python](#tab/python)
 
 ### [ARM template](#tab/arm-template)
