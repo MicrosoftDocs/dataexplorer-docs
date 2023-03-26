@@ -27,12 +27,14 @@ The following tabs contain examples for how to configure an Azure Storage or SQL
 
 ### [Azure Storage](#tab/azure-storage)
 
-The following command creates an external table named `MyExternalTable` for `container1` in a storage account named `mystorageaccount` residing in Azure Blob Storage. The table has two columns, one for an integer `x` and one for a string `s`, and the data is formatted in CSV. The connection string used in the command contains `;impersonate` at the end, which specifies to use [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation) to access the data store.
+The following command creates an external table named `MyExternalTable` for `mycontainer` in an Azure Blob Storage account named `mystorageaccount`. The table has two columns, an integer `x` and a string `s`, and the data is in CSV format.
+
+To specify the use of [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation), the connection string ends with `;impersonate`.
 
 ```kusto
 .create external table MyExternalTable (x:int, s:string) kind=storage dataformat=csv 
 ( 
-   h@'https://mystorageaccount.blob.core.windows.net/container1;impersonate' 
+   h@'https://mystorageaccount.blob.core.windows.net/mycontainer;impersonate' 
 )
 ```
 
@@ -41,7 +43,9 @@ The following command creates an external table named `MyExternalTable` for `con
 
 ### [SQL Server](#tab/sql-server)
 
-The following command creates an external table named `MySqlExternalTable` for the `MySqlTable` table stored in a SQL Server database named `MyDatabase`. The table has two columns, one for an integer `x` and one for a string `s`. The connection string used in the command contains `;Authentication=Active Directory Integrated`. This format specifies that [Active Directory Integrated authentication](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication), which is impersonation authentication, should be used to access the SQL table.
+The following command creates an external table named `MySqlExternalTable` for the `MySqlTable` table stored in a SQL Server database named `MyDatabase`. The table has two columns, an integer `x` and a string `s`.
+
+To specify the use of [Active Directory Integrated authentication](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication), which is impersonation authentication, the connection string contains `;Authentication=Active Directory Integrated`.
 
 ```kusto
 .create external table MySqlExternalTable (x:int, s:string) kind=sql table=MySqlTable
