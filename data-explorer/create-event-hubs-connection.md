@@ -133,11 +133,11 @@ When this connection is in place, data that flows into the event hub streams to 
 
 ### [Portal](#tab/portal)
 
-1. Under the cluster you created, select **Databases** then **TestDatabase**.
+1. In the Azure portal, go to your cluster and select **Databases** from the left menu. Then, select the database you created.
 
     :::image type="content" source="media/ingest-data-event-hub/select-test-database.png" alt-text="Screenshot of Azure Data Explorer web U I left menu, showing the Test Database item, selected.":::
 
-1. Select **Data ingestion** and **Add data connection**.
+1. From the left menu, select **Data ingestion**. Then, in the top bar, select **Add data connection**.
 
     :::image type="content" source="media/ingest-data-event-hub/event-hub-connection.png" alt-text=" Screenshot of the Azure Data Explorer web U I left menu, showing how to Add data connection.":::
 
