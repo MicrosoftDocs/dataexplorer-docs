@@ -18,9 +18,7 @@ In this article, you'll learn how to set up a continuous export job with a manag
 
 ## 1 - Create an external table
 
-External tables reference data stored outside Azure Data Explorer. Supported external data stores are Azure Blob Storage, Azure Data Lake, and SQL Server.
-
-To create an external table for your continuous export, see one of the following articles:
+External tables reference data stored outside Azure Data Explorer. To create an external table for your continuous export, see one of the following articles:
 
 * [Create an Azure Storage external table](../external-tables-azurestorage-azuredatalake.md)
 * [Create an SQL Server external table](../external-sql-tables.md)
