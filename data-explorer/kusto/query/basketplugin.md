@@ -11,7 +11,7 @@ The `basket` plugin finds frequent patterns of attributes in the data and return
 
 ## Syntax
 
-*T* | `evaluate` `basket` `(` [*Threshold*, *WeightColumn*, *MaxDimensions*, *CustomWildcard*, *CustomWildcard*, ...]`)`
+*T* | `evaluate` `basket` `(`[ *Threshold*`,` *WeightColumn*`,` *MaxDimensions*`,` *CustomWildcard*`,` *CustomWildcard*`,` ... ]`)`
 
 ## Parameters
 

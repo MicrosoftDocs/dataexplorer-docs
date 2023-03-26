@@ -22,7 +22,7 @@ Invokes a lambda expression that receives the source of `invoke` as a tabular ar
 |--|--|--|--|
 | *T*| string | &check; | The tabular source.|
 | *function*| string | &check; | The name of the lambda `let` expression or stored function name to be evaluated.|
-| *param1*, *param2* ... | string || Additional lambda arguments.|
+| *param1*, *param2* ... | string || Any additional lambda arguments to pass to the function.|
 
 ## Returns
 
