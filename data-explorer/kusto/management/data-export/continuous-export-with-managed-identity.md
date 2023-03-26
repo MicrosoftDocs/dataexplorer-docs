@@ -23,7 +23,7 @@ External tables reference data stored outside Azure Data Explorer. To create an 
 * [Create an Azure Storage external table](../external-tables-azurestorage-azuredatalake.md)
 * [Create an SQL Server external table](../external-sql-tables.md)
 
-The following tabs contain examples for how to configure an Azure Storage or SQL Server external table with impersonation authentication.
+The following tabs show examples for how to set up an Azure Storage or SQL Server external table using impersonation authentication.
 
 ### [Azure Storage](#tab/azure-storage)
 
