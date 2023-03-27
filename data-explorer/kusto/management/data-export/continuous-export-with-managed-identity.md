@@ -7,11 +7,11 @@ ms.date: 03/26/2023
 ---
 # Use a managed identity to run a continuous export job
 
-Continuous export jobs allow you to export data from Azure Data Explorer to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query. The external table determines where the data is saved, such as Azure Blob Storage, and how it's organized.
+Continuous export jobs export data from Azure Data Explorer to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query.
 
-In some cases, a [managed identity](../../../managed-identities-overview.md) must be used to successfully configure a continuous export job. For example, if the target external table uses impersonation authentication or if the continuous export query references tables in other databases, a managed identity must be used.
+To successfully configure a continuous export job, you may need to use a [managed identity](../../../managed-identities-overview.md). A managed identity is required if the external table uses impersonation authentication or if the export query references tables in other databases. A managed identity allows the continuous export job to generate an Azure Active Directory (Azure AD) bearer token to access resources its behalf.
 
-This article will show you how to create a continuous export job with a managed identity. You'll create an external table, assign a managed identity to your cluster, grant the necessary permissions, and then create the continuous export job using the external table and managed identity.
+In this article, you'll learn the steps necessary to configure a continuous export job with a managed identity.
 
 ## Prerequisites
 
