@@ -313,8 +313,6 @@ For example, you can modify the previous code to pass the *EventType* value and 
 1. Substitute the property values in the query text with the parameter names
 1. Set the parameter values in the client request properties passed to the execute method
 
-```kusto
-
 ### [C\#](#tab/csharp)
 
 ```csharp
