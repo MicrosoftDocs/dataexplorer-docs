@@ -122,7 +122,7 @@ When the external table uses impersonation authentication, the managed identity 
 
 On the external data store, grant the managed identity the required write permissions:
 
-| External data store | Required permissions | Set the permissions|
+| External data store | Required permissions | Grant the permissions|
 |--|--|--|
 |Azure Blob Storage |Storage Blob Data Contributor|[Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)|
 |Data Lake Storage Gen2| Storage Blob Data Contributor|[Manage ACLs](/azure/storage/blobs/data-lake-storage-acl-azure-portal)
