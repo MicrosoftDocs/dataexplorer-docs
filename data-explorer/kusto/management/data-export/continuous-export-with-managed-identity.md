@@ -146,5 +146,6 @@ For example, the following command creates a continuous export job with a system
 
 ## Next steps
 
-* Read the [continuous export overview](continuous-data-export.md)
-* Learn more about [managed identities](../../../managed-identities-overview.md)
+* To see your continuous export configurations, run the [.show continuous-exports](show-continuous-export.md) command.
+* Read the [continuous export overview](continuous-data-export.md).
+* Learn more about [managed identities](../../../managed-identities-overview.md).
