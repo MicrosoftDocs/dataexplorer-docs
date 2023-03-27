@@ -14,43 +14,6 @@ zone_pivot_groups: kql-flavors
 
 This article identifies common queries and how you can use the Kusto Query Language to meet them.
 
-## Retrieve the latest records (by timestamp) per identity
-
-Suppose you have a table that includes:
-
-* An `ID` column that identifies the entity with which each row is associated, such as a user ID or a node ID
-* A `timestamp` column that provides the time reference for the row
-* Other columns
-
-You can use the [top-nested operator](topnestedoperator.md) to make a query that returns the latest two records for each value of the `ID` column, where *latest* is defined as having the highest value of `timestamp`:
-
-```kusto
-datatable(id:string, timestamp:datetime, bla:string)           // #1
-  [
-  "Barak",  datetime(2015-01-01), "1",
-  "Barak",  datetime(2016-01-01), "2",
-  "Barak",  datetime(2017-01-20), "3",
-  "Donald", datetime(2017-01-20), "4",
-  "Donald", datetime(2017-01-18), "5",
-  "Donald", datetime(2017-01-19), "6"
-  ]
-| top-nested   of id        by dummy0=max(1),                  // #2
-  top-nested 2 of timestamp by dummy1=max(timestamp),          // #3
-  top-nested   of bla       by dummy2=max(1)                   // #4
-| project-away dummy0, dummy1, dummy2                          // #5
-```
-
-Here's a step-by-step explanation of the preceding query (the numbering refers to the numbers in the code comments):
-
-1. The `datatable` is a way to produce some test data for demonstration purposes. Normally, you'd use real data here.
-1. This line essentially means _return all distinct values of `id`_.
-1. This line then returns, for the top two records that maximize:
-     * The `timestamp` column
-     * The columns of the preceding level (here, just `id`)
-     * The column specified at this level (here, `timestamp`)
-1. This line adds the values of the `bla` column for each of the records returned by the preceding level. If the table has other columns you're interested in, you can repeat this line for each of those columns.
-1. The final line uses the [project-away operator](projectawayoperator.md) to remove the "extra" columns that are introduced by `top-nested`.
-
 ## Perform aggregations over a sliding window
 
 The following example shows how to summarize columns by using a sliding window. For the query, use the following table, which contains prices of fruits by timestamps.
