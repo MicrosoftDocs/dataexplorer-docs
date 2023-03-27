@@ -64,10 +64,8 @@ To specify the use of [Active Directory Integrated authentication](../../api/con
 
 To assign a managed identity to your cluster, see one of the following guides:
 
-* [Add a system-assigned managed identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity)
-* [Add a user-assigned managed identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity)
-
-A system-assigned identity is tied to your cluster and gets deleted when the cluster is deleted. Only one system-assigned identity is allowed per Azure Data Explorer cluster. A user-assigned managed identity is a standalone Azure resource. Multiple user-assigned identities can be assigned to your cluster.
+* [**Add a system-assigned managed identity**](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity): A system-assigned identity is tied to your cluster and gets deleted when the cluster is deleted. Only one system-assigned identity is allowed per Azure Data Explorer cluster.
+* [**Add a user-assigned managed identity**](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity): A user-assigned managed identity is a standalone Azure resource. Multiple user-assigned identities can be assigned to your cluster.
 
 ## 3 - Set the managed identity policy
 
