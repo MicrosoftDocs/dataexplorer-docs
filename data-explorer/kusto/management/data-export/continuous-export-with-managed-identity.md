@@ -27,7 +27,7 @@ To create an external table for your continuous export, see one of the following
 
 ### [Azure Storage](#tab/azure-storage)
 
-The following example command shows how to set up an Azure Storage external table with impersonation authentication.
+The following example shows how to set up an Azure Storage external table with impersonation authentication.
 
 The command creates an external table named `MyExternalTable` for `mycontainer` in an Azure Blob Storage account named `mystorageaccount`. The table has two columns, an integer `x` and a string `s`.
 
@@ -45,7 +45,7 @@ To specify the use of [impersonation authentication](../../api/connection-string
 
 ### [SQL Server](#tab/sql-server)
 
-The following example command shows how to set up a SQL Server external table with impersonation authentication.
+The following example shows how to set up a SQL Server external table with impersonation authentication.
 
 The command creates an external table named `MySqlExternalTable` for the `MySqlTable` table stored in a SQL Server database named `MyDatabase`. The table has two columns, an integer `x` and a string `s`.
 
@@ -64,8 +64,9 @@ To specify the use of [Active Directory Integrated authentication](../../api/con
 
 To assign a managed identity to your cluster, see one of the following guides:
 
-* [**Add a system-assigned managed identity**](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity): A system-assigned identity is tied to your cluster and gets deleted when the cluster is deleted. Only one system-assigned identity is allowed per Azure Data Explorer cluster.
-* [**Add a user-assigned managed identity**](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity): A user-assigned managed identity is a standalone Azure resource. Multiple user-assigned identities can be assigned to your cluster.
+* [**Assign a system-assigned managed identity**](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity): A system-assigned identity is tied to your cluster and gets deleted when the cluster is deleted. Only one system-assigned identity is allowed per Azure Data Explorer cluster.
+
+* [**Assign a user-assigned managed identity**](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity): A user-assigned managed identity is a standalone Azure resource. Multiple user-assigned identities can be assigned to your cluster.
 
 ## 3 - Set the managed identity policy
 
