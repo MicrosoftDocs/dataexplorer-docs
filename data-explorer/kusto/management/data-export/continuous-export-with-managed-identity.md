@@ -107,13 +107,15 @@ Replace `<DatabaseName>` with the name of the database that contains the externa
 
 The managed identity must have at least [Database User](../access-control/role-based-access-control.md) permissions over the databases referenced in your continuous export query.
 
-To grant permissions, run the following command. Replace `<DatabaseName>` with the name of the database. For a system-assigned managed identity, replace `<objectId>` with `system`. For a user-assigned managed-identity, replace `<objectId>` with the managed identity object ID. Replace `<tenantId>` with the Azure Active Directory tenant ID.
+To grant permissions, run the following command:
 
 ```kusto
 .add database <DatabaseName> users ('aadapp=<objectId>;<tenantId>')
 ```
 
-For more information, see [Manage database security roles](../manage-database-security-roles.md#add-and-remove-security-roles).
+Replace `<DatabaseName>` with the name of the database. For a system-assigned managed identity, replace `<objectId>` with `system`. For a user-assigned managed-identity, replace `<objectId>` with the managed identity object ID. Replace `<tenantId>` with the Azure Active Directory tenant ID.
+
+Learn more about [managing database security roles](../manage-database-security-roles.md#add-and-remove-security-roles).
 
 ## 5 - Grant external resource permissions
 
