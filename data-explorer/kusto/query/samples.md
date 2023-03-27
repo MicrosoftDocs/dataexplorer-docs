@@ -14,65 +14,6 @@ zone_pivot_groups: kql-flavors
 
 This article identifies common queries and how you can use the Kusto Query Language to meet them.
 
-## Map values from one set to another
-
-A common query use case is static mapping of values. Static mapping can help make results more presentable.
-
-For example, in the next table, `DeviceModel` specifies a device model. Using the device model isn't a convenient form of referencing the device name. 
-
-|DeviceModel |Count
-|---|---
-|iPhone5,1 |32
-|iPhone3,2 |432
-|iPhone7,2 |55
-|iPhone5,2 |66
-
- Using a friendly name is more convenient:
-
-|FriendlyName |Count
-|---|---
-|iPhone 5 |32
-|iPhone 4 |432
-|iPhone 6 |55
-|iPhone5 |66
-
-The next two examples demonstrate how to change from using a device model to a friendly name to identify a device. 
-
-### Map by using a dynamic dictionary
-
-You can achieve mapping by using a dynamic dictionary and dynamic accessors. For example:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-// Dataset definition
-let Source = datatable(DeviceModel:string, Count:long)
-[
-  'iPhone5,1', 32,
-  'iPhone3,2', 432,
-  'iPhone7,2', 55,
-  'iPhone5,2', 66,
-];
-// Query start here
-let phone_mapping = dynamic(
-  {
-    "iPhone5,1" : "iPhone 5",
-    "iPhone3,2" : "iPhone 4",
-    "iPhone7,2" : "iPhone 6",
-    "iPhone5,2" : "iPhone5"
-  });
-Source
-| project FriendlyName = phone_mapping[DeviceModel], Count
-```
-
-**Output**
-
-|FriendlyName|Count|
-|---|---|
-|iPhone 5|32|
-|iPhone 4|432|
-|iPhone 6|55|
-|iPhone5|66|
-
 ## Retrieve the latest records (by timestamp) per identity
 
 Suppose you have a table that includes:
