@@ -69,13 +69,11 @@ To assign a managed identity to your cluster, see one of the following guides:
 
 ## 3 - Set the managed identity policy
 
-For the managed identity to be used with continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md) with `AutomatedFlows`. The policy can be set on the cluster or database level. For examples, see the following tabs.
+For the managed identity to be used with continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md) with the `AutomatedFlows` property. Set the policy on the cluster or database level with the [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command. See the examples in the following tabs.
 
 ### [Cluster](#tab/cluster)
 
-To set the policy on the cluster, run the following command.
-
-For a system-assigned managed identity, replace `<objectId>` with `system`. For a user-assigned managed-identity, replace `<objectId>` with the managed identity object ID.
+To set the policy on the cluster, run the following command:
 
 ```kusto
 .alter cluster policy managed_identity ```[
@@ -86,11 +84,11 @@ For a system-assigned managed identity, replace `<objectId>` with `system`. For 
 ]```
 ```
 
+For a system-assigned managed identity, replace `<objectId>` with `system`. For a user-assigned managed-identity, replace `<objectId>` with the managed identity object ID.
+
 ### [Database](#tab/database)
 
-To set the policy on a database, run the following command.
-
-Replace `<DatabaseName>` with the name of the database that contains the external table. For a system-assigned managed identity, replace `<objectId>` with `system`. For a user-assigned managed-identity, replace `<objectId>` with the managed identity object ID.
+To set the policy on a database, run the following command:
 
 ```kusto
 .alter database <DatabaseName> policy managed_identity ```[
@@ -100,6 +98,8 @@ Replace `<DatabaseName>` with the name of the database that contains the externa
     }
 ]```
 ```
+
+Replace `<DatabaseName>` with the name of the database that contains the external table. For a system-assigned managed identity, replace `<objectId>` with `system`. For a user-assigned managed-identity, replace `<objectId>` with the managed identity object ID.
 
 ---
 
