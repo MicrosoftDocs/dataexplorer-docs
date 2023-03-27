@@ -123,13 +123,12 @@ When the external table uses impersonation authentication, the managed identity 
 
 On the external data store, grant the managed identity the required write permissions:
 
-| External data store | Required permissions |
+| External data store | Required permissions | Set the permissions|
 |--|--|--|
-|Azure Blob Storage / Data Lake Storage Gen2|Storage Blob Data Contributor|
-|Data Lake Storage Gen1|Contributor|
-|SQL Server|CREATE, UPDATE, and INSERT|
-
-For more information, see [Azure Storage external tables](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external tables](../external-sql-tables.md#authentication-and-authorization).
+|Azure Blob Storage |Storage Blob Data Contributor|[Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)|
+|Data Lake Storage Gen2| Storage Blob Data Contributor|[Manage ACLs](/azure/storage/blobs/data-lake-storage-acl-azure-portal)
+|Data Lake Storage Gen1|Contributor|[Assign an Azure role](/azure/data-lake-store/data-lake-store-secure-data?branch=main#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts)
+|SQL Server|CREATE, UPDATE, and INSERT|[Grant permissions](/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver16)|
 
 ## 6 - Create a continuous export job
 
