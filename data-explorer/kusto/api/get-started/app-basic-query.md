@@ -3,7 +3,7 @@ title: 'Basic query: Create an app to run basic queries - Azure Data Explorer'
 description: Learn how to create an app to run basic queries using Azure Data Explorer client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 02/23/2023
+ms.date: 03/27/2023
 ---
 # Basic query: Create an app to run basic queries
 
