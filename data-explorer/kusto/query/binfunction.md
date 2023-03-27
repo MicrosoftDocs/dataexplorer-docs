@@ -44,3 +44,30 @@ with a bucket size of 1 second:
 ```kusto
 T | summarize Hits=count() by bin(Duration, 1s)
 ```
+
+## Add null bins to table
+
+When there are rows for bins with no corresponding row in the table, you can "pad" the table with those bins.
+
+```kusto
+let StartTime=ago(12h);
+let StopTime=now()
+T
+| where Timestamp > StartTime and Timestamp <= StopTime
+| summarize Count=count() by bin(Timestamp, 5m)
+| where ...
+| union ( // 1
+  range x from 1 to 1 step 1 // 2
+  | mv-expand Timestamp=range(StartTime, StopTime, 5m) to typeof(datetime) // 3
+  | extend Count=0 // 4
+  )
+| summarize Count=sum(Count) by bin(Timestamp, 5m) // 5
+```
+
+Here's a step-by-step explanation of the preceding query:
+
+1. Use the `union` operator to add more rows to a table. Those rows are produced by the `union` expression.
+1. The `range` operator produces a table that has a single row and column. The table isn't used for anything other than for `mv-expand` to work on.
+1. The `mv-expand` operator over the `range` function creates as many rows as there are five-minute bins between `StartTime` and `EndTime`.
+1. Use a `Count` of `0`.
+1. The `summarize` operator groups together bins from the original (left, or outer) argument to `union`. The operator also bins from the inner argument to it (the null bin rows). This process ensures that the output has one row per bin whose value is either zero or the original count.
