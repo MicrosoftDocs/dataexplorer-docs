@@ -103,8 +103,6 @@ Replace `<DatabaseName>` with the name of the database that contains the externa
 
 ---
 
-For more information, see [.alter managed_identity policy](../alter-managed-identity-policy-command.md).
-
 ## 4 - Grant Azure Data Explorer permissions
 
 The managed identity must have at least [Database User](../access-control/role-based-access-control.md) permissions over the databases referenced in your continuous export query.
