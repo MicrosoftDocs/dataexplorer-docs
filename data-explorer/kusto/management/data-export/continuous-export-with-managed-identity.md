@@ -128,7 +128,7 @@ On the external data store, grant the managed identity the required write permis
 |Azure Blob Storage |Storage Blob Data Contributor|[Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)|
 |Data Lake Storage Gen2| Storage Blob Data Contributor|[Manage ACLs](/azure/storage/blobs/data-lake-storage-acl-azure-portal)
 |Data Lake Storage Gen1|Contributor|[Assign an Azure role](/azure/data-lake-store/data-lake-store-secure-data?branch=main#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts)
-|SQL Server|CREATE, UPDATE, and INSERT|[Grant permissions](/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver16)|
+|SQL Server|CREATE, UPDATE, and INSERT|[Grant permissions](/sql/relational-databases/security/permissions-database-engine)|
 
 ## 6 - Create a continuous export job
 
