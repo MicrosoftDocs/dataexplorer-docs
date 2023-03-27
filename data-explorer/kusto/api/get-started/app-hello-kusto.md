@@ -1,17 +1,17 @@
 ---
-title: 'Hello Kusto: Create your first application - Azure Data Explorer'
-description: Learn how to create your first application to print Hello Kusto using Azure Data Explorer client libraries.
+title: 'Hello Kusto: Create your first app - Azure Data Explorer'
+description: Learn how to create your first app to print Hello Kusto using Azure Data Explorer client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 02/23/2023
 ---
-# Hello Kusto: Create your first Azure Data Explorer client application
+# Hello Kusto: Create your first Azure Data Explorer client app
 
 In this article, you learn how to:
 
 > [!div class="checklist"]
 >
-> - Create your first client application
+> - Create your first client app
 > - Use interactive authentication
 > - Run a basic query that prints *Hello Kusto!*
 
@@ -465,4 +465,4 @@ Hello Kusto!
 
 <!-- Advance to the next article to learn how to create... -->
 > [!div class="nextstepaction"]
-> [TBD](../../../kql-quick-reference.md)
+> [Create an app to run basic queries](app-basic-query.md)

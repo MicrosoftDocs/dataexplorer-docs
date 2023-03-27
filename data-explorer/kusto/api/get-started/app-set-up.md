@@ -99,8 +99,8 @@ mvn clean install azure-kusto-ingest
 
 The following articles walk you through creating apps that use the Azure Data Explorer client libraries.
 
-- [Create a Hello Kusto! app](app-hello-kusto.md)
-- TBD
+- [Create your first app](app-hello-kusto.md)
+- [Create an app to run basic queries](app-basic-query.md)
 
 ## Next steps
 
