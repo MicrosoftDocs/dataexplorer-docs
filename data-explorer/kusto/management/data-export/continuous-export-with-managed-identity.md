@@ -131,9 +131,9 @@ On the external data store, grant the managed identity the required write permis
 
 For more information, see [Azure Storage external tables](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external tables](../external-sql-tables.md#authentication-and-authorization).
 
-## 6 - Create the continuous export job
+## 6 - Create a continuous export job
 
-To create a continuous export job with managed identity authentication, use the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property.
+To create a continuous export job with a managed identity, use the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property.
 
 * System-assigned managed identity: `managedIdentity=system`.
 * User-assigned managed identity: `managedidentity=<objectId>`.
