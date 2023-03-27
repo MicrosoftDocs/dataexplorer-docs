@@ -119,7 +119,7 @@ Learn more about [managing database security roles](../manage-database-security-
 
 ## 5 - Grant external resource permissions
 
-If the external table uses impersonation authentication, then the managed identity must have write permissions over the external data store referenced by the external table. The required permissions vary depending on the data store.
+When the external table uses impersonation authentication, the managed identity must have write permissions over the external data store referenced by the external table. The required permissions vary depending on the data store type.
 
 On the external data store, grant the managed identity the required write permissions:
 
