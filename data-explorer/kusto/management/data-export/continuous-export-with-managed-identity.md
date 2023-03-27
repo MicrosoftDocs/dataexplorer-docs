@@ -25,11 +25,11 @@ To create an external table for your continuous export, see one of the following
 * [Create an Azure Storage external table](../external-tables-azurestorage-azuredatalake.md)
 * [Create an SQL Server external table](../external-sql-tables.md)
 
-The following tabs show how to set up an Azure Storage or SQL Server external table with impersonation authentication.
-
 ### [Azure Storage](#tab/azure-storage)
 
-The following command creates an external table named `MyExternalTable` for `mycontainer` in an Azure Blob Storage account named `mystorageaccount`. The table has two columns, an integer `x` and a string `s`.
+The following example command shows how to set up an Azure Storage external table with impersonation authentication.
+
+The command creates an external table named `MyExternalTable` for `mycontainer` in an Azure Blob Storage account named `mystorageaccount`. The table has two columns, an integer `x` and a string `s`.
 
 To specify the use of [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation), the connection string ends with `;impersonate`.
 
@@ -41,11 +41,13 @@ To specify the use of [impersonation authentication](../../api/connection-string
 ```
 
 > [!NOTE]
-> To create an external table for Azure Data Lake Storage Gen1 or Azure Data Lake Storage Gen2, refer to the [Storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) to learn how to modify the connection string appropriately.
+> To create an external table for Azure Data Lake Storage Gen1 or Azure Data Lake Storage Gen2, use the [Storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) to modify the connection string as needed.
 
 ### [SQL Server](#tab/sql-server)
 
-The following command creates an external table named `MySqlExternalTable` for the `MySqlTable` table stored in a SQL Server database named `MyDatabase`. The table has two columns, an integer `x` and a string `s`.
+The following example command shows how to set up a SQL Server external table with impersonation authentication.
+
+The command creates an external table named `MySqlExternalTable` for the `MySqlTable` table stored in a SQL Server database named `MyDatabase`. The table has two columns, an integer `x` and a string `s`.
 
 To specify the use of [Active Directory Integrated authentication](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication), which is impersonation authentication, the connection string contains `;Authentication=Active Directory Integrated`.
 
