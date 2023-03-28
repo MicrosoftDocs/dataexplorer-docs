@@ -25,11 +25,14 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.drop` [`async`] `extent` `tags` `from` `table` *TableName* `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)`
+`.drop` [`async`] `table` *TableName* `extent` `tags` `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)` `with` `(` `extentCreatedOnFrom`='*FromDate*' `,` `extentCreatedOnTo`='*ToDate*'`)`
 
-`.drop` [`async`] `extent` `tags` <| *query*
+`.drop` [`async`] `table` *TableName* `extent` `tags` `with` `(` `extentCreatedOnFrom`='*FromDate*' `,` `extentCreatedOnTo`='*ToDate*'`)`<| *Query*
 
 `async` (optional): Execute the command asynchronously.
+
+> [!NOTE]
+> For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range
 
 * An Operation ID (Guid) is returned.
 * The operation's status can be monitored. Use the [`.show operations`](operations.md#show-operations) command.
@@ -52,7 +55,7 @@ The extents and the tags to drop are specified using a Kusto query. It returns a
 ### Syntax for .drop extent tags in query
 
 ```kusto
-.drop extent tags <| ...query...
+.drop table MyTable extent tags with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| ...query...
 ```
 
 ### Return output
@@ -76,18 +79,18 @@ Drop the `drop-by:Partition000` tag from any extent in table that is tagged with
 
 ### Drop several tags
 
-Drop the the tags `drop-by:20160810104500`, `a random tag`, and `drop-by:20160810` from any extent in table that is tagged with either of them:
+Drop the tags `drop-by:20230312104500`, `a random tag`, and `drop-by:20230312` from any extent in table that is tagged with either of them:
 
 ```kusto
-.drop extent tags from table [My Table] ('drop-by:20160810104500','a random tag','drop-by:20160810')
+.drop table [My Table] extent tags ('drop-by:20230312104500','a random tag','drop-by:20230312') with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12))
 ```
 
-### Drop all `drop-by` tags
+### Drop all `drop-by` tags in a specified creation time range
 
-Drop all `drop-by` tags from extents in table `MyTable`:
+Drop all `drop-by` tags from extents in table `MyTable` in a specified creation time range:
 
 ```kusto
-.drop extent tags <| 
+.drop table MyTable extent tags with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| 
   .show table MyTable extents 
   | where isnotempty(Tags)
   | extend Tags = split(Tags, '\r\n') 
@@ -100,7 +103,7 @@ Drop all `drop-by` tags from extents in table `MyTable`:
 Drop all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from extents in table `MyTable`:
 
 ```kusto
-.drop extent tags <| 
+.drop table MyTable extent tags with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| 
   .show table MyTable extents 
   | where isnotempty(Tags)
   | extend Tags = split(Tags, '\r\n')
