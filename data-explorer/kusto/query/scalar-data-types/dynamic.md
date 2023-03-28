@@ -132,6 +132,9 @@ even if the sub-object has a different underlying type. Use the `gettype`
 function to discover the actual underlying type of the value, and any
 of the cast function listed below to cast it to the actual type.
 
+> [!TIP]
+> To see an example query using dynamic objects and object accessors, see [Map values from one set to another](../tutorials/learn-common-operators.md#map-values-from-one-set-to-another).
+
 ## Casting dynamic objects
 
 > After subscripting a dynamic object, you must cast the value to a simple type.
