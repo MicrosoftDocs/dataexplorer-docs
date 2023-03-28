@@ -94,6 +94,10 @@ Azure Data Explorer supports creating managed private endpoints to the following
 
 Private endpoints aren't supported for virtual network injected Azure Data Explorer clusters.
 
+## Implications on cost
+
+(Managed) private endpoints are resources which are generating cost which are covered by you. Depending on the solution architecture you have chosen, they might be higher or lower. Please review the [pricing page](https://azure.microsoft.com/pricing/details/private-link/) of private endpoints.
+
 ## Next steps
 
 * [Create a Private Endpoints for Azure Data Explorer](security-network-private-endpoint-create.md)
