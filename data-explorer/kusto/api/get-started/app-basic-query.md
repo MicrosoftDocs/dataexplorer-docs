@@ -31,6 +31,23 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     ```csharp
     using Kusto.Data;
     using Kusto.Data.Net.Client;
+
+    namespace HelloKusto
+    {
+      class BasicQuery
+      {
+        static void Main(string[] args)
+        {
+          string cluster_uri = "https://help.kusto.windows.net/";
+          var kcsb = new KustoConnectionStringBuilder(cluster_uri)
+              .WithAadUserPromptAuthentication();
+
+          using (var query_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
+          {
+          }
+        }
+      }
+    }
     ```
 
     ### [Python](#tab/python)
@@ -71,6 +88,13 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     ### [C\#](#tab/csharp)
 
     ```csharp
+    string database = "Samples";
+    string query = @"StormEvents
+                    | where EventType == 'Tornado'
+                    | extend TotalDamage = DamageProperty + DamageCrops
+                    | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
+                    | where DailyDamage > 100000000
+                    | order by DailyDamage desc";
     ```
 
     ### [Python](#tab/python)
@@ -104,6 +128,22 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     ### [C\#](#tab/csharp)
 
     ```csharp
+    using (var response = query_client.ExecuteQuery(database, query, null))
+    {
+      int columnNoStartTime = response.GetOrdinal("StartTime");
+      int columnNoState = response.GetOrdinal("State");
+      int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
+
+      Console.WriteLine("Daily tornado damages over 100,000,000$:");
+
+      while (response.Read())
+      {
+        Console.WriteLine("{0} - {1}, {2}",
+          response.GetDateTime(columnNoStartTime),
+          response.GetString(columnNoState),
+          response.GetInt64(columnNoDailyDamage));
+      }
+    }
     ```
 
     ### [Python](#tab/python)
@@ -135,6 +175,49 @@ The complete code should look like this:
 ### [C\#](#tab/csharp)
 
 ```csharp
+using Kusto.Data;
+using Kusto.Data.Net.Client;
+
+namespace HelloKusto
+{
+  class BasicQuery
+  {
+    static void Main(string[] args)
+    {
+      string cluster_uri = "https://help.kusto.windows.net/";
+      var kcsb = new KustoConnectionStringBuilder(cluster_uri)
+          .WithAadUserPromptAuthentication();
+
+      using (var query_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
+      {
+        string database = "Samples";
+        string query = @"StormEvents
+                         | where EventType == 'Tornado'
+                         | extend TotalDamage = DamageProperty + DamageCrops
+                         | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
+                         | where DailyDamage > 100000000
+                         | order by DailyDamage desc";
+
+        using (var response = query_client.ExecuteQuery(database, query, null))
+        {
+          int columnNoStartTime = response.GetOrdinal("StartTime");
+          int columnNoState = response.GetOrdinal("State");
+          int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
+
+          Console.WriteLine("Daily tornado damages over 100,000,000$:");
+
+          while (response.Read())
+          {
+            Console.WriteLine("{0} - {1}, {2}",
+              response.GetDateTime(columnNoStartTime),
+              response.GetString(columnNoState),
+              response.GetInt64(columnNoDailyDamage));
+          }
+        }
+      }
+    }
+  }
+}
 ```
 
 ### [Python](#tab/python)
@@ -233,7 +316,22 @@ For example, you can modify the previous code to access the values of the `Start
 
 ### [C\#](#tab/csharp)
 
+In C#, you can only access the values of the columns by their ordinal positions in the result set. You can't use the column names; hence, the code remains the same.
+
 ```csharp
+int columnNoStartTime = response.GetOrdinal("StartTime");
+int columnNoState = response.GetOrdinal("State");
+int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
+
+Console.WriteLine("Daily tornado damages over 100,000,000$:");
+
+while (response.Read())
+{
+  Console.WriteLine("{0} - {1}, {2}",
+    response.GetDateTime(columnNoStartTime),
+    response.GetString(columnNoState),
+    response.GetInt64(columnNoDailyDamage));
+}
 ```
 
 ### [Python](#tab/python)
@@ -272,6 +370,15 @@ For example, you can replace the query_client.execute_query call in the previous
 ### [C\#](#tab/csharp)
 
 ```csharp
+using Kusto.Data.Common;
+
+var crp = new ClientRequestProperties();
+crp.ClientRequestId = "QueryDemo" + Guid.NewGuid().ToString();
+crp.SetOption(ClientRequestProperties.OptionServerTimeout, "1m");
+
+using (var response = query_client.ExecuteQuery(database, query, crp))
+{
+}
 ```
 
 ### [Python](#tab/python)
@@ -316,6 +423,34 @@ For example, you can modify the previous code to pass the *EventType* value and 
 ### [C\#](#tab/csharp)
 
 ```csharp
+string query = @"declare query_parameters(event_type:string, daily_damage:int);
+                  StormEvents
+                  | where EventType == event_type
+                  | extend TotalDamage = DamageProperty + DamageCrops
+                  | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
+                  | where DailyDamage > daily_damage
+                  | order by DailyDamage desc";
+
+var crp = new ClientRequestProperties();
+crp.SetParameter("event_type", "Flash Flood");
+crp.SetParameter("daily_damage", 200000000.ToString());
+
+using (var response = query_client.ExecuteQuery(database, query, crp))
+{
+  int columnNoStartTime = response.GetOrdinal("StartTime");
+  int columnNoState = response.GetOrdinal("State");
+  int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
+
+  Console.WriteLine("Daily flash flood damages over 200,000,000$:");
+
+  while (response.Read())
+  {
+    Console.WriteLine("{0} - {1}, {2}",
+      response.GetDateTime(columnNoStartTime),
+      response.GetString(columnNoState),
+      response.GetInt64(columnNoDailyDamage));
+  }
+}
 ```
 
 ### [Python](#tab/python)
@@ -360,6 +495,57 @@ The complete code using ordinal positions to access column values and parameters
 ### [C\#](#tab/csharp)
 
 ```csharp
+using Kusto.Data;
+using Kusto.Data.Common;
+using Kusto.Data.Net.Client;
+
+namespace HelloKusto
+{
+  class BasicQuery
+  {
+    static void Main(string[] args)
+    {
+      string cluster_uri = "https://help.kusto.windows.net/";
+      var kcsb = new KustoConnectionStringBuilder(cluster_uri)
+          .WithAadUserPromptAuthentication();
+
+      using (var query_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
+      {
+        string database = "Samples";
+        string query = @"declare query_parameters(event_type:string, daily_damage:int);
+                         StormEvents
+                         | where EventType == event_type
+                         | extend TotalDamage = DamageProperty + DamageCrops
+                         | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
+                         | where DailyDamage > daily_damage
+                         | order by DailyDamage desc";
+
+        var crp = new ClientRequestProperties();
+        crp.ClientRequestId = "QueryDemo" + Guid.NewGuid().ToString();
+        crp.SetOption(ClientRequestProperties.OptionServerTimeout, "1m");
+        crp.SetParameter("event_type", "Flash Flood");
+        crp.SetParameter("daily_damage", 200000000.ToString());
+
+        using (var response = query_client.ExecuteQuery(database, query, crp))
+        {
+          int columnNoStartTime = response.GetOrdinal("StartTime");
+          int columnNoState = response.GetOrdinal("State");
+          int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
+
+          Console.WriteLine("Daily flash flood damages over 200,000,000$:");
+
+          while (response.Read())
+          {
+            Console.WriteLine("{0} - {1}, {2}",
+              response.GetDateTime(columnNoStartTime),
+              response.GetString(columnNoState),
+              response.GetInt64(columnNoDailyDamage));
+          }
+        }
+      }
+    }
+  }
+}
 ```
 
 ### [Python](#tab/python)
