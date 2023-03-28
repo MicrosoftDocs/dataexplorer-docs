@@ -96,7 +96,7 @@ Private endpoints aren't supported for virtual network injected Azure Data Explo
 
 ## Implications on cost
 
-(Managed) private endpoints are resources which are generating cost which are covered by you. Depending on the solution architecture you have chosen, they might be higher or lower. Please review the [pricing page](https://azure.microsoft.com/pricing/details/private-link/) of private endpoints.
+Private endpoints or managed private endpoints are resources that incur additional costs. The cost varies depending on the selected solution architecture. For more information, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link/).
 
 ## Next steps
 
