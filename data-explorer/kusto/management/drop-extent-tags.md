@@ -79,7 +79,7 @@ Drop the `drop-by:Partition000` tag from any extent in table that is tagged with
 
 ### Drop several tags
 
-Drop the the tags `drop-by:20230312104500`, `a random tag`, and `drop-by:20230312` from any extent in table that is tagged with either of them:
+Drop the tags `drop-by:20230312104500`, `a random tag`, and `drop-by:20230312` from any extent in table that is tagged with either of them:
 
 ```kusto
 .drop table [My Table] extent tags ('drop-by:20230312104500','a random tag','drop-by:20230312') with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12))
