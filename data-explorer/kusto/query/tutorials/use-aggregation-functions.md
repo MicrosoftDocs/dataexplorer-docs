@@ -344,7 +344,9 @@ StormEvents
 
 ## Perform aggregations over a sliding window
 
-The following example shows how to summarize columns using a sliding window. The query calculates the minimum, maximum, and average property damage of tornados, floods, and wildfires using a sliding window of seven days. Each record in the result set aggregates the preceding seven days, and the results contain a record per day in the analysis period.
+The following example shows how to summarize columns using a sliding window.
+
+The query calculates the minimum, maximum, and average property damage of tornados, floods, and wildfires using a sliding window of seven days. Each record in the result set aggregates the preceding seven days, and the results contain a record per day in the analysis period.
 
 Here's a step-by-step explanation of the query:
 
@@ -356,27 +358,21 @@ Here's a step-by-step explanation of the query:
 1. Exclude the first seven days from the final result because there's no seven-day lookback period for them.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VSy27CMBC85ytWOTnCCAJtc6BwKj1XBanHysgbaim2I2MeqfrxXVuQBEqjxPHaM7PPCj0clZH2uPLCeZiDFB690sgm43ExDG+ezZKqxS2NJFSfM4B8KmfJylunlwc0fpf8wPELHUI0102NoAywdG2dEdKmHNLXyloZNh+qkqVymGbJaAQ5UfHkkZxsiDIP66fwbBc82VKKhkWna4ow45BL3g8lSkw6Cfrehdki6aiyZEFxAIWERZcL728TuPtccYfkFJ77Xvm18Y/IfRmyebt0N1kWU5l2qbhzHvHPIuOSXShDhD8QXB+GeKpFy/AWPNXfluzS2Ah9JOhur7Vw6htBK8NehBZbfHO2Rucbqq0Wp7+Hzu6NZOKwvb3KYNNA6Ap1Stfzc9vcJb7rNvFuMEIwT+28tAKwuJ2xQs5+AY3edE6tAgAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VSy27CMBC85ytWOTnCCAJtc6BwKj1XBanHysgbaim2I2MeqfrxXVuQBEqjxPHas7OP2Qo9HJWR9rjywnmYgxQevdLIJuNxMQxvns2SqsUtjSRU32cA+VTOkpW3Ti8PaPwu+YHjFzqEaK6bGkEZYOnaOiOkTTmkr5W1Mmw+VCVL5TDNgNzw5JECbAg+D+un8GwXothSiobFgGvKLuOQS95PI4PRCPKOgr53YbZIPKosWWAcQCFh0dXB+9sE7j5XvkMKCs/9qPza+IfkPg3ZvF26myyLpUy6Uty5jvhn0eNSXWhDhE8Jrg9DPNWi9fAWPPXeluwiaoQ+EHS311o49Y2glWEvQostvjlbo/MN9VaL099DZ/dGMnHY3l5lsGkgqEJK6Xp+ls1d8ruWifeGgpJ5bGelJYDF7XwVchawT79tsmpLrgIAAA==" target="_blank">Run the query</a>
 
 ```kusto
 let windowStart = datetime(2007-07-01);
 let windowEnd = windowStart + 13d;
 StormEvents
-| where EventType in ("Tornado", "Flood", "Wildfire")
-// 1
-| extend bin = bin_at(startofday(StartTime), 1d, windowStart)
-// 2
+| where EventType in ("Tornado", "Flood", "Wildfire") 
+| extend bin = bin_at(startofday(StartTime), 1d, windowStart) // 1
 | extend endRange = iff(bin + 7d > windowEnd, windowEnd, 
                       iff(bin + 7d - 1d < windowStart, windowStart, 
-                        iff(bin + 7d - 1d < bin, bin, bin + 7d - 1d)))
-// 3
-| extend range = range(bin, endRange, 1d)
-// 4
-| mv-expand range to typeof(datetime)
-// 5
-| summarize min(DamageProperty), max(DamageProperty), round(avg(DamageProperty)) by Timestamp=bin_at(range, 1d, windowStart), EventType
-// 6
-| where Timestamp >= windowStart + 7d;
+                        iff(bin + 7d - 1d < bin, bin, bin + 7d - 1d))) // 2
+| extend range = range(bin, endRange, 1d) // 3
+| mv-expand range to typeof(datetime) // 4
+| summarize min(DamageProperty), max(DamageProperty), round(avg(DamageProperty)) by Timestamp=bin_at(range, 1d, windowStart), EventType // 5
+| where Timestamp >= windowStart + 7d; // 6
 ```
 
 **Output**
