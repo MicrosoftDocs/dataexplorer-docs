@@ -364,19 +364,19 @@ let windowEnd = windowStart + 13d;
 StormEvents
 | where EventType == "Blizzard"
 | extend duration = EndTime - StartTime
-// STEP 1
+// 1
 | extend bin = bin_at(startofday(StartTime), 1d, windowStart)
-// STEP 2
+// 2
 | extend endRange = iff(bin + 7d > windowEnd, windowEnd, 
                       iff(bin + 7d - 1d < windowStart, windowStart, 
                         iff(bin + 7d - 1d < bin, bin, bin + 7d - 1d)))
-// STEP 3
+// 3
 | extend range = range(bin, endRange, 1d)
-// STEP 4
+// 4
 | mv-expand range to typeof(datetime)
-// STEP 5
+// 5
 | summarize avg(duration) by Timestamp=bin_at(range, 1d, windowStart), EventType
-// STEP 6
+// 6
 | where Timestamp >= windowStart + 7d;
 ```
 
