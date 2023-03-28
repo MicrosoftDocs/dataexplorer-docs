@@ -344,11 +344,7 @@ StormEvents
 
 ## Perform aggregations over a sliding window
 
-The following two examples show how to summarize columns using a sliding window.
-
-### Calculate the average duration of blizzards
-
-The following query calculates the average duration of blizzards per day using a sliding window of seven days. Each record in the result set aggregates the preceding seven days, and the results contain a record per day in the analysis period.
+The following example shows how to summarize columns using a sliding window. The query performs multiple aggregations to calculate the minimum, maximum, and average property damage of tornados, floods, and wildfires using a sliding window of seven days. Each record in the result set aggregates the preceding seven days, and the results contain a record per day in the analysis period.
 
 Here's a step-by-step explanation of the query:
 
@@ -356,49 +352,8 @@ Here's a step-by-step explanation of the query:
 1. Add seven days to the bin value to set the end of the range for each record. If the value is out of the range of `windowStart` and `windowEnd`, adjust the value accordingly.
 1. Create an array of seven days for each record, starting from the current day of the record.
 1. Expand the array from step 3 with [mv-expand](../mvexpandoperator.md) in order to duplicate each record to seven records with one-day intervals between them.
-1. Calculate the aggregation function for each day. Due to step 4, this step actually summarizes the previous seven days.
+1. Calculate the aggregation functions for each day. Due to step 4, this step actually summarizes the previous seven days.
 1. Exclude the first seven days from the final result because there's no seven-day lookback period for them.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VSy26DMBC88xWrnIwCCiRtOVByqMS9KtwrRzapJV4yDgTUj+8aBZtUiYWNV56Z9Xq25AoGUbNmyBSVChJgVHElKk72QRD5QYifGzulwaU1Q9Sas4XwwGInU42s0p7XqnN+YfjhksMc5mPLIUlg81GKaaKSbfCcXxVHJXaRVImmRkkUzjEv+DDL6r2z20GWp58QWsZJaDCu31SRTiObgtGRGJLrQci89Q1do7O3Oji/aH3Gm4EoCqJltxAxONo6vfXWgYfjjutjZnhfp/bugycij2Uw9sxiT1zX1nOw9chbMfOfzLSlRP0glvOCnKr3+bWlhqYaUOhSU5DFfot/RXx3qSoqxcSB9meymObCaQT95GhD1SY3T+SS8t4DzzaDkX4zjWJU4Pi/uSIW/wE2NOhFpgIAAA==" target="_blank">Run the query</a>
-
-```kusto
-let windowStart = datetime(2007-01-01);
-let windowEnd = windowStart + 13d;
-StormEvents
-| where EventType == "Blizzard"
-| extend duration = EndTime - StartTime
-// 1
-| extend bin = bin_at(startofday(StartTime), 1d, windowStart)
-// 2
-| extend endRange = iff(bin + 7d > windowEnd, windowEnd, 
-                      iff(bin + 7d - 1d < windowStart, windowStart, 
-                        iff(bin + 7d - 1d < bin, bin, bin + 7d - 1d)))
-// 3
-| extend range = range(bin, endRange, 1d)
-// 4
-| mv-expand range to typeof(datetime)
-// 5
-| summarize avg(duration) by Timestamp=bin_at(range, 1d, windowStart), EventType
-// 6
-| where Timestamp >= windowStart + 7d;
-```
-
-**Output**
-
-| Timestamp | EventType | avg_duration |
-|---|---|---|
-| 2007-01-08T00:00:00Z | Blizzard | 11:35:00 |
-| 2007-01-09T00:00:00Z | Blizzard | 13:26:22.5000000 |
-| 2007-01-10T00:00:00Z | Blizzard | 10:12:00 |
-| 2007-01-11T00:00:00Z | Blizzard | 12:09:26.6666666 |
-| 2007-01-12T00:00:00Z | Blizzard | 12:09:26.6666666 |
-| 2007-01-13T00:00:00Z | Blizzard | 12:09:26.6666666 |
-| 2007-01-14T00:00:00Z | Blizzard | 13:24:30 |
-
-### Compare property damage by event type
-
-The following example performs a similar process as shown in the previous example. However, in this example, the query performs multiple aggregations to calculate the minimum, maximum, and average property damage of tornados, floods, and wildfires. Notice that the results contain a record per day per event type.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VSy27CMBC85ytWOTnCCAJtc6BwKj1XBanHysgbaim2I2MeqfrxXVuQBEqjxPHaM7PPCj0clZH2uPLCeZiDFB690sgm43ExDG+ezZKqxS2NJFSfM4B8KmfJylunlwc0fpf8wPELHUI0102NoAywdG2dEdKmHNLXyloZNh+qkqVymGbJaAQ5UfHkkZxsiDIP66fwbBc82VKKhkWna4ow45BL3g8lSkw6Cfrehdki6aiyZEFxAIWERZcL728TuPtccYfkFJ77Xvm18Y/IfRmyebt0N1kWU5l2qbhzHvHPIuOSXShDhD8QXB+GeKpFy/AWPNXfluzS2Ah9JOhur7Vw6htBK8NehBZbfHO2Rucbqq0Wp7+Hzu6NZOKwvb3KYNNA6Ap1Stfzc9vcJb7rNvFuMEIwT+28tAKwuJ2xQs5+AY3edE6tAgAA" target="_blank">Run the query</a>
