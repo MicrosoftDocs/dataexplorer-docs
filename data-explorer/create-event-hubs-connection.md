@@ -27,13 +27,13 @@ To send data from an event hub to Azure Data Explorer, create a table to receive
 
     :::image type="content" source="media/ingest-data-event-hub/query-explorer-link.png" alt-text="Screenshot of the Azure portal U I left menu, showing the Query application option.":::
 
-1. Construct a query to create a table using the [.create table command](kusto/management/create-table-command.md). Write the command in the query window and select **Run**. For example, the following command creates a `TestTable` table.
+1. Write a query to create a table using the [.create table command](kusto/management/create-table-command.md) in the query window and select **Run**. For example, the following command creates a `TestTable` table.
 
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
     ```
 
-1. Create an [ingestion data mapping](kusto/management/create-ingestion-mapping-command.md). Write the command to create the mapping into the query window and select **Run**. For example, the following command creates a `TestMapping` JSON mapping for the `TestTable` table.
+1. Write a query to create an [ingestion data mapping](kusto/management/create-ingestion-mapping-command.md) in the query window and select **Run**. For example, the following command creates a `TestMapping` JSON mapping for the `TestTable` table.
 
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp", "Properties": {"Path": "$.timeStamp"}},{"column":"Name", "Properties": {"Path":"$.name"}} ,{"column":"Metric", "Properties": {"Path":"$.metric"}}, {"column":"Source", "Properties": {"Path":"$.source"}}]'
