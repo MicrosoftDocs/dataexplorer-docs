@@ -41,18 +41,23 @@ There are three ways to specify which extents to move:
 * Specify explicitly the extent IDs in the source table.
 * Provide a query whose results specify the extent IDs in the source tables.
 
+> [!NOTE]
+> For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range
+
 ## Properties
 
-The following properties are supported. All properties are optional.
+The following properties are supported. 
 
-|Property name|Type|Description |
-|----------------|-------|---|
-|setNewIngestionTime|bool|If set to true, a new [ingestion time](../query/ingestiontimefunction.md) will be assigned to all records in extents being moved. This is useful when records should be processed by workloads that depend on [database cursors](databasecursor.md), such as [materialized views](materialized-views/materialized-view-overview.md) and [continuous data export ](data-export/continuous-data-export.md).|
+|Property name|Type|Required|Description |
+|----------------|-------|---|---|
+|setNewIngestionTime|bool||If set to true, a new [ingestion time](../query/ingestiontimefunction.md) will be assigned to all records in extents being moved. This is useful when records should be processed by workloads that depend on [database cursors](databasecursor.md), such as [materialized views](materialized-views/materialized-view-overview.md) and [continuous data export ](data-export/continuous-data-export.md).|
+|extentCreatedOnFrom|datetime| &check; |Apply on extents with creation time newer than this
+|extentCreatedOnTo|datetime| &check; |Apply on extents with creation time older than this
 
 ## Specify extents with a query
 
 ```kusto
-.move extents to table TableName <| ...query...
+.move extents to table TableName with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| ...query...
 ```
 
 The extents are specified using a Kusto query that returns a recordset with a column called *ExtentId*.
@@ -75,20 +80,20 @@ Move all extents in table `MyTable` to table `MyOtherTable`:
 .move extents all from table MyTable to table MyOtherTable
 ```
 
-### Move two specific extents 
+### Move two specific extents in a specified creation time range
 
-Move two specific extents (by their extent IDs) from table `MyTable` to table `MyOtherTable`:
+Move two specific extents (by their extent IDs) in a specified creation time range from table `MyTable` to table `MyOtherTable`:
 
 ```kusto
-.move extents from table MyTable to table MyOtherTable (AE6CD250-BE62-4978-90F2-5CB7A10D16D7,399F9254-4751-49E3-8192-C1CA78020706)
+.move extents from table MyTable to table MyOtherTable with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) (AE6CD250-BE62-4978-90F2-5CB7A10D16D7,399F9254-4751-49E3-8192-C1CA78020706)
 ```
 
-### Move all extents from specific tables 
+### Move all extents in a specified creation time range from specific tables 
 
-Move all extents from specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`:
+Move all extents in a specified creation time range from specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`:
 
 ```kusto
-.move extents to table MyOtherTable <| .show tables (MyTable1,MyTable2) extents
+.move extents to table MyOtherTable with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| .show tables (MyTable1,MyTable2) extents
 ```
 
 ### Move all extents with set new ingestion time
