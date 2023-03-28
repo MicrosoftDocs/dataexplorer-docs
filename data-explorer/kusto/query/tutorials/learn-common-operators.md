@@ -254,7 +254,7 @@ StormEvents
 
 ## Map values from one set to another
 
-Static mapping is a useful technique for changing the presentation of your results. By using a dynamic dictionary and accessors, values from one set can be mapped to another set.
+Static mapping is a useful technique for changing the presentation of your results. In KQL, one way to perform static mapping is by using a dynamic dictionary and accessors to map values from one set to another.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA23PvQrCQBAE4D5PMVylkCdQUkkEC0UIVmJxXpZ4kvthc4kc6rt7JBYqFtt9M8O2FNC5nhVtpffaNihQRyuNVrMMuKcDRGmIG7IqYiutbIgFFhD7/txqJfLJHIJudYhYOeOljZNgPchAIonnfJlVwbEpB7Khyx64XYgJ1TiOovi74vgT/E6kEs/uSipgbN3U+ZvnWLMmW7dxJ00Kf/94nNDpBfVsVEn9AAAA" target="_blank">Run the query</a>
