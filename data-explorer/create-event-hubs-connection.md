@@ -184,6 +184,8 @@ When this connection is in place, data that flows into the event hub streams to 
 
 1. Select **Next: Summary**.
 
+1. In the **Continuous ingestion from Event Hub established** window, all steps will be marked with green check marks when establishment finishes successfully.
+
 ### [C#](#tab/c-sharp)
 
 ```csharp
