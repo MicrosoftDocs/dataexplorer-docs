@@ -168,9 +168,11 @@ When this connection is in place, data that flows into the event hub streams to 
     | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
     |Event retrieval start date| Coordinated Universal Time (UTC) | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created. |
 
-1. Set the ingestion policy. If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, you can select **Streaming ingestion**. If streaming is not enabled for the cluster, set the **Data batching latency**. For Event Hubs, the recommended [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
+1. Set the ingestion policy. If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, you can select **Streaming ingestion**. If streaming is not enabled for the cluster, set the **Batching time**. For Event Hubs, the recommended [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
 
     :::image type="content" source="media/event-hub-wizard/event-hub-schema.png" alt-text="Screenshot of Schema page of ingestion wizard." lightbox="media/event-hub-wizard/event-hub-schema.png":::
+
+1. Select the **Data format**. For CSV-formatted data, **Ignore the first record** to ignore the heading row of the file. For JSON-formatted data, select **Ignore data format errors** to ingest the data in JSON format or leave unselected to ingest the data in multijson format. Select the **Nested levels** to determine the table column data division.
 
 1. If the data you see in the preview window isn't complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
 
