@@ -344,7 +344,7 @@ StormEvents
 
 ## Perform aggregations over a sliding window
 
-The following example shows how to summarize columns using a sliding window. The query performs multiple aggregations to calculate the minimum, maximum, and average property damage of tornados, floods, and wildfires using a sliding window of seven days. Each record in the result set aggregates the preceding seven days, and the results contain a record per day in the analysis period.
+The following example shows how to summarize columns using a sliding window. The query calculates the minimum, maximum, and average property damage of tornados, floods, and wildfires using a sliding window of seven days. Each record in the result set aggregates the preceding seven days, and the results contain a record per day in the analysis period.
 
 Here's a step-by-step explanation of the query:
 
@@ -352,7 +352,7 @@ Here's a step-by-step explanation of the query:
 1. Add seven days to the bin value to set the end of the range for each record. If the value is out of the range of `windowStart` and `windowEnd`, adjust the value accordingly.
 1. Create an array of seven days for each record, starting from the current day of the record.
 1. Expand the array from step 3 with [mv-expand](../mvexpandoperator.md) in order to duplicate each record to seven records with one-day intervals between them.
-1. Calculate the aggregation functions for each day. Due to step 4, this step actually summarizes the previous seven days.
+1. Perform the aggregations for each day. Due to step 4, this step actually summarizes the previous seven days.
 1. Exclude the first seven days from the final result because there's no seven-day lookback period for them.
 
 > [!div class="nextstepaction"]
