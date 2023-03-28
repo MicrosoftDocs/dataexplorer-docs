@@ -132,9 +132,6 @@ even if the sub-object has a different underlying type. Use the `gettype`
 function to discover the actual underlying type of the value, and any
 of the cast function listed below to cast it to the actual type.
 
-> [!TIP]
-> To see an example query using dynamic objects and object accessors, see [Map values from one set to another](../tutorials/learn-common-operators.md#map-values-from-one-set-to-another).
-
 ## Casting dynamic objects
 
 > After subscripting a dynamic object, you must cast the value to a simple type.
@@ -211,3 +208,7 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 Every field is indexed during data ingestion. The scope of the index is a single data shard. 
 
 To index dynamic columns, the ingestion process enumerates all “atomic” elements within the dynamic value (property names, values, array elements) and forwards them to the index builder. Otherwise, dynamic fields have the same inverted term index as string fields.
+
+## Next steps
+
+* To see an example query using dynamic objects and object accessors, see [Map values from one set to another](../tutorials/learn-common-operators.md#map-values-from-one-set-to-another).
