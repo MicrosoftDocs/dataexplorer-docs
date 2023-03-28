@@ -41,7 +41,7 @@ To send data from an event hub to Azure Data Explorer, create a table to receive
 
 ### [Wizard](#tab/wizard)
 
-1. From the **Data** tab of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), in the **Ingest data from Event Hub** card, select **Ingest**.
+1. From the **Data** tab of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select **Ingest** from the **Ingest data from Event Hub** card.
 
     :::image type="content" source="media/event-hub-wizard/ingestion-in-web-ui.png" alt-text="Select the ingestion wizard in the Azure Data Explorer web UI.":::
 
@@ -170,7 +170,7 @@ When this connection is in place, data that flows into the event hub streams to 
 
 1. Set the ingestion policy. If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, you can select **Streaming ingestion**. If streaming is not enabled for the cluster, set the **Data batching latency**. For Event Hubs, the recommended [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
 
-1. Select the **Data format**.
+    :::image type="content" source="media/event-hub-wizard/event-hub-schema.png" alt-text="Screenshot of Schema page of ingestion wizard." lightbox="media/event-hub-wizard/event-hub-schema.png":::
 
 1. If the data you see in the preview window isn't complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
 
