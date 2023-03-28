@@ -3,8 +3,6 @@ items:
   href: index.md
 - name: Quick reference guide
   href: ../../kql-quick-reference.md
-- name: Samples
-  href: samples.md
 - name: Query best practices
   items:
   - name: Best practices
