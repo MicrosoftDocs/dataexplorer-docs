@@ -140,8 +140,10 @@ items:
     href: lookupoperator.md
   - name: mv-apply operator
     href: mv-applyoperator.md
+    displayName: mv apply mv_apply
   - name: mv-expand operator
     href: mvexpandoperator.md
+    displayName: mv expand mv_expand
   - name: sort operator
     displayName: order operator
     href: sort-operator.md
@@ -149,18 +151,24 @@ items:
     href: projectoperator.md
   - name: project-away operator
     href: projectawayoperator.md
+    displayName: project away project_away
   - name: project-keep operator
     href: project-keep-operator.md
+    displayName: project keep project_keep
   - name: project-rename operator
     href: projectrenameoperator.md
+    displayName: project rename project_rename
   - name: project-reorder operator
     href: projectreorderoperator.md
+    displayName: project reorder project_reorder
   - name: parse operator
     href: parseoperator.md
   - name: parse-where operator
     href: parsewhereoperator.md
+    displayName: parse where parse_where
   - name: parse-kv operator
     href: parse-kv-operator.md
+    displayName: parse kv parse_kv
   - name: partition operator
     href: partitionoperator.md
   - name: print operator
@@ -207,6 +215,7 @@ items:
     href: sampleoperator.md
   - name: sample-distinct operator
     href: sampledistinctoperator.md
+    displayName: sample distinct sample_distinct
   - name: scan operator
     href: scan-operator.md
   - name: search operator
@@ -229,8 +238,10 @@ items:
     href: topoperator.md
   - name: top-nested operator
     href: topnestedoperator.md
+    displayName: top nested top_nested
   - name: top-hitters operator
     href: tophittersoperator.md
+    displayName: top hitters top_hitters
   - name: union operator
     href: unionoperator.md
   - name: where operator
@@ -244,16 +255,19 @@ items:
     href: databasefunction.md
   - name: external_table()
     href: externaltablefunction.md
+    displayName: external table external-table
   - name: materialize()
     href: materializefunction.md
   - name: materialized_view()
     href: materialized-view-function.md
+    displayName: materialized view materialized-view
   - name: Query results cache
     href: query-results-cache.md
   - name: table()
     href: tablefunction.md
   - name: toscalar()
     href: toscalarfunction.md
+    displayName: to_scalar to-scalar
 - name: Scalar operators
   items:
   - name: between operators  
