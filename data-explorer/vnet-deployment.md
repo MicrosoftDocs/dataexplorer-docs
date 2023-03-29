@@ -3,6 +3,7 @@ title: Deploy Azure Data Explorer into your Virtual Network
 description: Learn how to deploy Azure Data Explorer into your Virtual Network
 ms.reviewer: basaba
 ms.topic: how-to
+ms.custom: devx-track-arm-template
 ms.date: 03/30/2022
 ---
 
@@ -380,4 +381,3 @@ This template creates the cluster, virtual network, subnet, network security gro
 
 * Virtual network resources with deployed clusters don't support the [move to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription) operation.
 * Public IP address resources used for the cluster engine or the data management service don't support the move to a new resource group or subscription operation.
-
