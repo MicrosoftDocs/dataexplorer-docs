@@ -1,36 +1,40 @@
 ---
 title: bag_merge() - Azure Data Explorer 
-description: This article describes bag_merge() in Azure Data Explorer.
+description: Learn how to use the bag_merge() function to merge property bags.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 06/18/2020
+ms.date: 11/23/2022
 ---
 # bag_merge()
 
-Merges `dynamic` property-bags into a `dynamic` property-bag with all properties merged.
+Merges `dynamic` property bags into a `dynamic` property bag object with all properties merged.
 
 ## Syntax
 
-`bag_merge(`*bag1*`, `*bag2*`[`,` *bag3*, ...])`
+`bag_merge(`*bag1*`,`*bag2*`[`,`*bag3*, ...])`
 
-## Arguments
+## Parameters
 
-* *bag1...bagN*: Input `dynamic` property-bags. The function accepts between 2 to 64 arguments.
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *bag1...bagN* | dynamic | &check; | The property bags to merge. The function accepts between 2 to 64 arguments. |
 
 ## Returns
 
-Returns a `dynamic` property-bag. Results from merging all of the input property-bag objects. If a key appears in more than one input object, an arbitrary value (out of the possible values for this key) will be chosen.
+Returns a `dynamic` property bag. Results from merging all of the input property bag objects. If a key appears in more than one input object, an arbitrary value out of the possible values for this key will be chosen.
 
 ## Example
 
-Expression:
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUhKTI/PTS1KT9XgUlBQSKnMS8zNTNaoVnc0VLcyNNJRUHcCMkC0M5A2rtXUQVNmpG5lYQhSBmKA1IE11mpqAgDRMHuwaAAAAA==" target="_blank">Run the query</a>
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print result = bag_merge(
    dynamic({'A1':12, 'B1':2, 'C1':3}),
    dynamic({'A2':81, 'B2':82, 'A1':1}))
 ```
+
+**Output**
 
 |result|
 |---|

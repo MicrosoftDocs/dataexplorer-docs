@@ -21,9 +21,6 @@ Use the :::no-loc text="Power Automate"::: connector to query your data and aggr
 
 :::image type="content" source="media/flow-usage/flow-sql-example.png" alt-text="Screenshot of SQL connector, showing querying data by using the Power Automate connector.":::
 
-> [!IMPORTANT]
-> In the **Cluster Name** field, enter the cluster URL.
-
 ## Push data to a Microsoft Power BI dataset
 
 You can use the :::no-loc text="Power Automate"::: connector with the Power BI connector to push data from Kusto queries to Power BI streaming datasets.
@@ -75,9 +72,6 @@ In the following example, we add a **Slack - Post Message** action and a **Visua
 In this example, if an incident is still active, query Kusto again to get information about how incidents from the same source were solved in the past.
 
 :::image type="content" source="media/flow-usage/flow-condition-query.png" alt-text="Screenshot of flow condition query.":::
-
-> [!IMPORTANT]
-> In the **Cluster Name** field, enter the cluster URL.
 
 Visualize this information as a pie chart, and email it to the team.
 

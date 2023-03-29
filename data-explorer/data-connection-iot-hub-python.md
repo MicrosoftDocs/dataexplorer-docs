@@ -20,11 +20,10 @@ In this article, you create an IoT Hub data connection for Azure Data Explorer b
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * [Python 3.4+](https://www.python.org/downloads/).
-* [Table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
-* [Database and table policies](database-table-policies-python.md) (optional).
-* [An IoT Hub with a shared access policy configured](ingest-data-iot-hub.md#create-an-iot-hub).
+* A [table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
+* An [IoT Hub](ingest-data-iot-hub.md#create-an-iot-hub) with a shared access policy configured.
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]
 
@@ -69,7 +68,7 @@ mapping_rule_name = "StormEvents_CSV_Mapping"
 data_format = "csv"
 database_routing = "Multi"
 
-#Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, check https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.data_connections.create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, data_connection_name=data_connection_name,
                                             parameters=IotHubDataConnection(iot_hub_resource_id=iot_hub_resource_id, shared_access_policy_name=shared_access_policy_name,
                                                                                 consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format, database_routing=database_routing))

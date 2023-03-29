@@ -62,8 +62,7 @@
       "extendBreadcrumb": true,
       "brand": "azure",
       "uhfHeaderId": "azure",
-      "feedback_system": "GitHub",
-      "feedback_github_repo": "MicrosoftDocs/dataexplorer-docs",
+      "feedback_system": "Standard",
       "feedback_product_url": "https://feedback.azure.com/d365community/forum/a952add5-eb24-ec11-b6e6-000d3a4f0da0",
       "recommendations": true,
       "_op_documentIdPathDepotMapping": {

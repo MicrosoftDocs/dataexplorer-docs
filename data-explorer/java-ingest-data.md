@@ -3,12 +3,12 @@ title: 'Ingest data with Azure Data Explorer Java SDK'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Java SDK.
 ms.reviewer: abhishgu
 ms.topic: how-to
-ms.date: 02/07/2022
+ms.date: 09/07/2022
 
 # Customer intent: As a Java developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
 
-# Ingest data using the Azure Data Explorer Java SDK 
+# Ingest data using the Azure Data Explorer Java SDK
 
 > [!div class="op_single_selector"]
 > * [.NET](net-sdk-ingest-data.md)
@@ -23,8 +23,8 @@ In this article, learn how to ingest data using the Azure Data Explorer Java lib
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * JDK version 1.8 or later.
 * [Maven](https://maven.apache.org/download.cgi).
@@ -74,15 +74,16 @@ static void createTable(String database) {
         System.out.println("Failed to create table: " + e.getMessage());
         return;
     }
-    
+
 }
 ```
 
 ### Data ingestion
 
-Queue ingestion by using a file from an existing Azure Blob Storage container. 
+Queue ingestion by using a file from an existing Azure Blob Storage container.
+
 * Use `BlobSourceInfo` to specify the Blob Storage path.
-* Use `IngestionProperties` to define table, database, mapping name, and data type. 
+* Use `IngestionProperties` to define table, database, mapping name, and data type.
 In the following example, the data type is `CSV`.
 
 ```java
@@ -175,8 +176,8 @@ public static void main(final String[] args) throws Exception {
     ```
 
 1. Set the service principal information with the following information as environment variables used by the program:
-    * Cluster endpoint 
-    * Database name 
+    * Cluster endpoint
+    * Database name
 
     ```console
     export AZURE_SP_CLIENT_ID="<replace with appID>"
@@ -201,22 +202,22 @@ public static void main(final String[] args) throws Exception {
     Waiting for ingestion to complete...
     ```
 
-Wait a few minutes for the ingestion process to complete. After successful completion, you will see the following log message: `Ingestion completed successfully`. You can exit the program at this point and move to the next step without impacting the ingestion process, which has already been queued.
+Wait a few minutes for the ingestion process to complete. After successful completion, you'll see the following log message: `Ingestion completed successfully`. You can exit the program at this point and move to the next step without impacting the ingestion process, which has already been queued.
 
 ## Validate
 
-Wait five to 10 minutes for the queued ingestion to schedule the ingestion process and load data into Azure Data Explorer. 
+Wait five to 10 minutes for the queued ingestion to schedule the ingestion process and load data into Azure Data Explorer.
 
-1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com) and connect to your cluster. 
+1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com) and connect to your cluster.
 1. Run the following command to get the count of records in the `StormEvents` table:
-    
+
     ```kusto
     StormEvents | count
     ```
 
 ## Troubleshoot
 
-1. To see ingestion failures in the last four hours, run the following command on your database: 
+1. To see ingestion failures in the last four hours, run the following command on your database:
 
     ```kusto
     .show ingestion failures
@@ -233,7 +234,7 @@ Wait five to 10 minutes for the queued ingestion to schedule the ingestion proce
 
 ## Clean up resources
 
-If you don't plan to use the resources you have just created, run the following command in your database to drop the `StormEvents` table.
+If you don't plan to use the resources you have created, run the following command in your database to drop the `StormEvents` table.
 
 ```kusto
 .drop table StormEvents
@@ -241,4 +242,4 @@ If you don't plan to use the resources you have just created, run the following 
 
 ## Next steps
 
-[Write queries](write-queries.md)
+[Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

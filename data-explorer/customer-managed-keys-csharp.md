@@ -25,21 +25,20 @@ This section shows you how to configure customer-managed keys encryption using t
 
 ### Prerequisites
 
-* Visual Studio 2019, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
+* [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 
-### Install C# NuGet
+### Install C# NuGet packages
 
 * Install the [Azure Data Explorer (Kusto) NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-
-* Install the [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet package](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) for authentication.
-
-> [!IMPORTANT]
-> The [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet package and Azure AD Authentication Library (ADAL) have been deprecated. No new features have been added since June 30, 2020.   We strongly encourage you to upgrade, see the [migration guide](/azure/active-directory/develop/msal-migration) for more details.
+* Install the [MSAL NuGet package](https://www.nuget.org/packages/Microsoft.Identity.Client/) for authentication with Azure Active Directory (Azure AD).
 
 ### Authentication
 
-To run the examples in this article, [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You can add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
+To run the examples in this article, [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You can add role assignment at the subscription scope and get the required `Azure AD Directory (tenant) ID`, `Application ID`, and `Application Secret`.
+
+The following code snippet demonstrates how to use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure AD application token to access your cluster. For the flow to succeed, the application must be registered with Azure AD and you must have the credentials for application authentication, such as an Azure AD-issued application key or an Azure AD-registered X.509v2 certificate.
 
 ### Configure cluster
 
@@ -48,16 +47,24 @@ By default, Azure Data Explorer encryption uses Microsoft-managed keys. Configur
 1. Update your cluster by using the following code:
 
     ```csharp
-    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "PlaceholderClientSecret";//Client Secret
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";    // Azure AD Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";    // Application ID
+    var clientSecret = "PlaceholderClientSecret";           // Application secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
-    var credential = new ClientCredential(clientId, clientSecret);
-    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+    
+    // Create a confidential authentication client for Azure AD:
+    var authClient = ConfidentialClientApplicationBuilder.Create(clientId)
+            .WithAuthority($"https://login.microsoftonline.com/{tenantId}")
+            .WithClientSecret(clientSecret)                 // can be replaced by .WithCertificate to authenticate with an X.509 certificate
+            .Build();
 
-    var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+    // Define scopes for accessing Azure management plane
+    string[] scopes = new string[] { "https://management.core.windows.net/.default" };
 
+    // Acquire application token
+    AuthenticationResult result = authClient.AcquireTokenForClient(scopes).ExecuteAsync().Result;
+
+    var credentials = new TokenCredentials(result.AccessToken, result.TokenType);
     var kustoManagementClient = new KustoManagementClient(credentials)
     {
         SubscriptionId = subscriptionId

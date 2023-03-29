@@ -66,7 +66,7 @@ To apply the policy at the cluster level, run:
 
 ## Queue blobs for ingestion with managed identity using Kusto SDK
 
-When ingesting data using one of Kusto [SDKs](net-sdk-ingest-data.md), generate your [blob URI using managed identity authentication](kusto/api/connection-strings/storage-authentication-methods.md#managed-identity) by appending `;managed_identity={objectId}` to the unauthorized blob URI. If you ingest data your cluster's system assigned managed identity, you can append `;managed_identity=system` to the blob URI.
+When ingesting data using a Kusto [SDK](net-sdk-ingest-data.md), generate your [blob URI using managed identity authentication](kusto/api/connection-strings/storage-authentication-methods.md#managed-identity) by appending `;managed_identity={objectId}` to the unauthorized blob URI. If you ingest data using your cluster's system assigned managed identity, you can append `;managed_identity=system` to the blob URI.
 
 > [!IMPORTANT]
 > 
@@ -80,10 +80,10 @@ The following are examples of blob URIs for system and user assigned managed ide
 
 > [!IMPORTANT]
 >
-> * When using Managed Identities to ingest data with the C# SDK, you must provide a blob size in `BlobSourceOptions`. If the size is not set, the SDK attempts to fill in the blob size by accessing the storage account resulting in a failure.
-> * The *size* parameter should correspond to the raw (uncompressed) data size, and not necessarily to the blob size.
+> * When using Managed Identities to ingest data with the C# SDK, you must provide a blob size in `BlobSourceOptions`. If the size is not set, the SDK attempts to fill in the blob size by accessing the storage account, resulting in a failure.
+> * The *size* parameter should be the raw (uncompressed) data size, and not necessarily the blob size.
 > * If you do not know the size at the time of ingestion, you may provide a value of zero (0). The service will attempt to discover the size using the managed identity for authentication.
 
 ## Next steps
 
-* [Write queries](write-queries.md)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

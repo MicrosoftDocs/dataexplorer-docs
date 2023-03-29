@@ -3,20 +3,24 @@ title: .show cluster databases - Azure Data Explorer
 description: This article describes .show cluster databases in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/21/2023
 ---
 # .show cluster databases
 
 Returns a table showing all the databases attached to the cluster and to which the user invoking the command has access. If specific database names are used, only those databases would
 be included.
 
-**Syntax**
+## Permissions
+
+You must have at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions to run this command.
+
+## Syntax
 
 `.show` `cluster` `databases` [`details` | `identity` | `policies` | `datastats`]
 
 `.show` `cluster` `databases` `(`database1`,` database2`,` ... databaseN`)`
 
-**Output**
+## Returns
  
 |Output parameter |Type |Description 
 |---|---|---

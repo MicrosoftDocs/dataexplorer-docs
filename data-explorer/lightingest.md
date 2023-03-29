@@ -3,7 +3,7 @@ title: Use LightIngest to ingest data into Azure Data Explorer.
 description: Learn about LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 05/09/2022
+ms.date: 12/08/2022
 ---
 
 # Use LightIngest to ingest data into Azure Data Explorer
@@ -48,7 +48,7 @@ To auto-generate a LightIngest command, see [Use ingestion wizard for one-time i
     For example:
 
     ```
-    ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+    LightIngest.exe "https://ingest-{Cluster name and region}.kusto.windows.net;Fed=True" -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 
 ### Recommendations
@@ -117,7 +117,7 @@ The argument values must include:
     The value for `-creationTimePattern` argument is part of the filename: *"'historicalvalues'yyyyMMdd'.parquet'"*
 
     ```kusto
-    ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
+    LightIngest.exe "https://ingest-{Cluster name and region}.kusto.windows.net;Fed=True" -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
      -pattern:"*.parquet" -format:parquet -limit:2 -cr:10.0 -dontWait:true
     ```
 
@@ -126,7 +126,7 @@ The argument values must include:
     The value for `-creationTimePattern` argument is part of the folder structure: *"'folder/'yyyy/MM/dd'/blob'"*
 
    ```kusto
-    ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'mycontainer/myfolder/'yyyy/MM/dd'/'"
+    LightIngest.exe "https://ingest-{Cluster name and region}.kusto.windows.net;Fed=True" -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'mycontainer/myfolder/'yyyy/MM/dd'/'"
      -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 

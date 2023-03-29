@@ -39,7 +39,6 @@ The RLS policy can't be enabled on a table:
 * for which [continuous data export](../management/data-export/continuous-data-export.md) is configured.
 * referenced by a query of an [update policy](./updatepolicy.md).
 * on which [restricted view access policy](./restrictedviewaccesspolicy.md) is configured.
-* on which another row level security policy is enabled. 
 
 ## Examples
 
@@ -57,7 +56,7 @@ You can also mask the email address:
 Sales | where SalesPersonAadUser == current_principal() | extend EmailAddress = "****"
 ```
 
-If you want every sales person to see all the sales of a specific country, you can define a query similar to:
+If you want every sales person to see all the sales of a specific country/region, you can define a query similar to:
 
 ```kusto
 let UserToCountryMapping = datatable(User:string, Country:string)

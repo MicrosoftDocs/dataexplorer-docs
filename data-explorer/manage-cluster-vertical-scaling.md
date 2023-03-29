@@ -23,13 +23,13 @@ This article explains the vertical scaling workflow:
 
 1. In the Azure portal, go to your Azure Data Explorer cluster resource. Under **Settings**, select **Scale up**.
 
-1. In the **Scale up** window, you will see a list of available SKUs for your cluster. For example, in the following figure, only four SKUs are available.
+1. In the **Scale up** window, you'll see available SKUs for your cluster. For example, in the following figure, there are eight recommended SKUs available. Expand the **Storage optimized**, **Compute optimized**, and **Dev/test** dropdowns to see more options.
 
     ![Scale up.](media/manage-cluster-vertical-scaling/scale-up.png)
 
     The SKUs are disabled because they're the current SKU, or they aren't available in the region where the cluster is located.
 
-1. To change your SKU, select a new SKU and click **Select**.
+1. To change your SKU, select a new SKU and then select **Apply**.
 
 > [!NOTE]
 > * The vertical scaling process can take a few minutes, and during that time your cluster will be  suspended. 

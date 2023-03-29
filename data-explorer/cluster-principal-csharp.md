@@ -3,7 +3,7 @@ title: 'Add cluster principals for Azure Data Explorer by using C#'
 description: In this article, you learn how to add cluster principals for Azure Data Explorer by using C#.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 09/11/2022
 ---
 
 # Add cluster principals for Azure Data Explorer by using C#
@@ -17,9 +17,9 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-* Visual Studio 2019, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 
 ## Install C# NuGet
 

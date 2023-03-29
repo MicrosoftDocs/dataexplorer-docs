@@ -1,9 +1,9 @@
 ---
 title: Aggregation Functions - Azure Data Explorer 
-description: This article describes aggregation functions in Azure Data Explorer.
+description: Learn how to use aggregation functions to perform calculations on a set of values and return a single value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/25/2022
+ms.date: 09/20/2022
 ---
 
 # Aggregation function types at a glance
@@ -43,11 +43,12 @@ An aggregation function performs a calculation on a set of values, and returns a
 | [avg()](avg-aggfunction.md) | Returns an average value across the group. |
 | [avgif()](avgif-aggfunction.md) | Returns an average value across the group (with predicate). |
 | [count()](count-aggfunction.md), [countif()](countif-aggfunction.md) | Returns a count of the group without/with a predicate. |
+| [count_distinct()](count-distinct-aggfunction.md), [count_distinctif()](count-distinctif-aggfunction.md) | Returns a count of unique elements in the group without/with a predicate. |
 | [dcount()](dcount-aggfunction.md), [dcountif()](dcountif-aggfunction.md) | Returns an approximate distinct count of the group elements without/with a predicate. |
 | [hll()](hll-aggfunction.md) | Returns the HyperLogLog (HLL) results of the group elements, an intermediate value of the `dcount` approximation. |
+| [hll_if()](hll-if-aggregation-function.md) | Returns the HyperLogLog (HLL) results of the group elements, an intermediate value of the `dcount` approximation (with predicate). |
 | [hll_merge()](hll-merge-aggfunction.md) | Returns a value for merged HLL results. |
 | [max()](max-aggfunction.md), [maxif()](maxif-aggfunction.md) | Returns the maximum value across the group without/with a predicate. |
-| [merge_tdigest()](tdigest-merge-aggfunction.md) | Returns the merged `tdigest` value across the group, is an alias of `tdigest_merge`. |
 | [min()](min-aggfunction.md), [minif()](minif-aggfunction.md) | Returns the minimum value across the group without/with a predicate. |
 | [percentile()](percentiles-aggfunction.md) | Returns a percentile estimation of the group. |
 | [percentiles()](percentiles-aggfunction.md) | Returns percentile estimations of the group. |

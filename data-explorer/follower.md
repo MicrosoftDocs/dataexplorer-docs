@@ -3,7 +3,7 @@ title: Use follower database feature to attach databases in Azure Data Explorer
 description: Learn about how to attach databases in Azure Data Explorer using the follower database feature.
 ms.reviewer: gabilehner
 ms.topic: how-to
-ms.date: 02/28/2022
+ms.date: 10/02/2022
 ---
 
 # Use follower databases
@@ -22,9 +22,8 @@ Attaching a database to a different cluster using the follower capability is use
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md) for the leader.
-* Create [a cluster and database](create-cluster-database-portal.md) for the follower.
-* [Ingest data](ingest-sample-data.md) to the leader database using one of various methods discussed in [ingestion overview](./ingest-data-overview.md).
+* An Azure Data Explorer cluster and database for the leader and follower. [Create a cluster and database](create-cluster-database-portal.md).
+* The leader database should contain data. You can [ingest data](ingest-sample-data.md) using one of the methods discussed in [ingestion overview](ingest-data-overview.md).
 
 ## Attach a database
 
@@ -35,7 +34,7 @@ To attach a database, you must have user, group, service principal, or managed i
 
 When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'.
 
-'*TableLevelSharingProperties*' contains six arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, and `materializedViewsToExclude`. The maximum number of entries in all arrays together is 100.
+'*TableLevelSharingProperties*' contains eight arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, `materializedViewsToExclude`, `functionsToInclude`, and `functionsToExclude`. The maximum number of entries in all arrays together is 100.
 
 > [!NOTE]
 > Table level sharing is not supported when using '*' all databases notation.
@@ -69,11 +68,15 @@ When attaching the database all tables, external tables and materialized views a
     materializedViewsToExclude=["*"]
     ```
 
+### Database name override
+
+You can optionally make the database name in the follower cluster different from the leader cluster. For example, you may want to attach the same database name from multiple leader clusters to a follower cluster. To specify a different database name, configure the '*DatabaseNameOverride*' or '*DatabaseNamePrefix*' property.
+
 ## [C#](#tab/csharp)
 
 ### Attach a database using C\#
 
-### Prerequisite nuggets
+### Required NuGet packages
 
 * Install [Microsoft.Azure.Management.Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Install [Microsoft.Rest.ClientRuntime.Azure.Authentication for authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
@@ -92,8 +95,8 @@ var resourceManagementClient = new KustoManagementClient(serviceCreds){
     SubscriptionId = followerSubscriptionId
 };
 
-var followerResourceGroupName = "followerResouceGroup";
-var leaderResourceGroup = "leaderResouceGroup";
+var followerResourceGroupName = "followerResourceGroup";
+var leaderResourceGroup = "leaderResourceGroup";
 var leaderClusterName = "leader";
 var followerClusterName = "follower";
 var attachedDatabaseConfigurationName = "uniqueNameForAttachedDatabaseConfiguration";
@@ -121,7 +124,7 @@ else
     {
         "Logs*"
     };
-    var tls = new TableLevelSharingProperties(tablesToInclude: tablesToInclude, externalTablesToExclude: externalTablesToExclude);
+    tls = new TableLevelSharingProperties(tablesToInclude: tablesToInclude, externalTablesToExclude: externalTablesToExclude);
 }
 
 
@@ -171,15 +174,15 @@ credentials = ServicePrincipalCredentials(
     )
 kusto_management_client = KustoManagementClient(credentials, follower_subscription_id)
 
-follower_resource_group_name = "followerResouceGroup"
-leader_resouce_group_name = "leaderResouceGroup"
+follower_resource_group_name = "followerResourceGroup"
+leader_resource_group_name = "leaderResourceGroup"
 follower_cluster_name = "follower"
 leader_cluster_name = "leader"
 attached_database_Configuration_name = "uniqueNameForAttachedDatabaseConfiguration"
 database_name  = "db" # Can be specific database name or * for all databases
 default_principals_modification_kind  = "Union"
 location = "North Central US"
-cluster_resource_id = "/subscriptions/" + leader_subscription_id + "/resourceGroups/" + leader_resouce_group_name + "/providers/Microsoft.Kusto/Clusters/" + leader_cluster_name
+cluster_resource_id = "/subscriptions/" + leader_subscription_id + "/resourceGroups/" + leader_resource_group_name + "/providers/Microsoft.Kusto/Clusters/" + leader_cluster_name
 table_level_sharing_properties = None
 if (database_name != "*"):
     #Set up the table level sharing properties - the following is just an example.
@@ -190,7 +193,7 @@ if (database_name != "*"):
 
 attached_database_configuration_properties = AttachedDatabaseConfiguration(cluster_resource_id = cluster_resource_id, database_name = database_name, default_principals_modification_kind = default_principals_modification_kind, location = location, table_level_sharing_properties = table_level_sharing_properties)
 
-#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
 ```
 
@@ -209,11 +212,11 @@ Install : Az.Kusto
 ```Powershell
 $FollowerClustername = 'follower'
 $FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
-$FollowerResourceGroupName = 'followerResouceGroup'
+$FollowerResourceGroupName = 'followerResourceGroup'
 $DatabaseName = "db"  ## Can be specific database name or * for all databases
 $LeaderClustername = 'leader'
 $LeaderClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
-$LeaderClusterResourceGroup = 'leaderResouceGroup'
+$LeaderClusterResourceGroup = 'leaderResourceGroup'
 $DefaultPrincipalsModificationKind = 'Union'
 ##Construct the LeaderClusterResourceId and Location
 $getleadercluster = Get-AzKustoCluster -Name $LeaderClustername -ResourceGroupName $LeaderClusterResourceGroup -SubscriptionId $LeaderClusterSubscriptionID -ErrorAction Stop
@@ -263,6 +266,8 @@ Use the following steps to attach a database:
     | *externalTablesToExclude* | The list of tables to exclude. To exclude all external tables, use ["*"]. | `["ExternalTable1ToExclude", "ExternalTable2ToExclude"]` |
     | *materializedViewsToInclude* | The list of materialized views to include. To include all materialized views starting with 'Logs', use ["Logs*"]. | `["Mv1ToInclude", "Mv2ToInclude"]` |
     | *materializedViewsToExclude* | The list of materialized views to exclude. To exclude all materialized views, use ["*"]. | `["Mv11ToExclude", "Mv22ToExclude"]` |
+    | *functionsToInclude* | The list of functions to include. | `["FunctionToInclude"]` |
+    | *functionsToExclude* | The list of functions to exclude. | `["FunctionToExclude"]` |
     | *location* | The location of all the resources. The leader and the follower must be in the same location. |  |
 
     ```json
@@ -347,6 +352,20 @@ Use the following steps to attach a database:
                     "description": "The list of materialized views to exclude. Not supported when following all databases."
                 }
             },
+            "functionsToInclude": {
+                "type": "array",
+                "defaultValue": [],
+                "metadata": {
+                    "description": "The list of functions to include."
+                }
+            },
+            "functionsToExclude": {
+                "type": "array",
+                "defaultValue": [],
+                "metadata": {
+                    "description": "The list of functions to exclude."
+                }
+            },
             "location": {
                 "type": "string",
                 "defaultValue": "",
@@ -372,8 +391,9 @@ Use the following steps to attach a database:
                         "externalTablesToInclude": "[parameters('externalTablesToInclude')]",
                         "externalTablesToExclude": "[parameters('externalTablesToExclude')]",
                         "materializedViewsToInclude": "[parameters('materializedViewsToInclude')]",
-                        "materializedViewsToExclude": "[parameters('materializedViewsToExclude')]"
-
+                        "materializedViewsToExclude": "[parameters('materializedViewsToExclude')]",
+                        "functionsToInclude": "[parameters('functionsToInclude')]",
+                        "functionsToExclude": "[parameters('functionsToExclude')]"
                     }
                 }
             }
@@ -393,17 +413,26 @@ To verify that the database was successfully attached, find your attached databa
 
 ### Check your follower cluster
 
-1. Navigate to the follower cluster and select **Databases**
-1. Search for new Read-only databases in the database list.
+1. Browse to the follower cluster and select **Databases**.
+1. In the database list, search for new read-only databases.
 
-    ![Read-only follower database.](media/follower/read-only-follower-database.png)
+    :::image type="content" source="media/follower/read-only-follower-database.png" lightbox="media/follower/read-only-follower-database.png" alt-text="Screenshot of read-only follower databases in portal.":::
+
+    You can also view this list in the database overview page:
+
+    :::image type="content" source="media/follower/read-only-follower-database-overview.png" alt-text="Screenshot of databases overview page with list of follower clusters.":::    
 
 ### Check your leader cluster
 
-1. Navigate to the leader cluster and select **Databases**
+1. Browse to the leader cluster and select **Databases**
 1. Check that the relevant databases are marked as **SHARED WITH OTHERS** > **Yes**
+1. Toggle the relationship link to view details.
 
-    ![Read and write attached databases.](media/follower/read-write-databases-shared.png)
+    :::image type="content" source="media/follower/read-write-databases-shared.png" alt-text="Screenshot of databases shared with others to check leader cluster.":::
+
+    You can also view this in the database overview page:
+
+   :::image type="content" source="media/follower/read-write-databases-shared-overview.png" alt-text="Screenshot of overview with list of databases shared with others.":::
 
 ## Detach the follower database
 
@@ -453,7 +482,7 @@ var resourceManagementClient = new KustoManagementClient(serviceCreds){
 };
 
 var leaderResourceGroupName = "testrg";
-var followerResourceGroupName = "followerResouceGroup";
+var followerResourceGroupName = "followerResourceGroup";
 var leaderClusterName = "leader";
 var followerClusterName = "follower";
 //The cluster and database that are created as part of the Prerequisites
@@ -491,11 +520,11 @@ credentials = ServicePrincipalCredentials(
     )
 kusto_management_client = KustoManagementClient(credentials, follower_subscription_id)
 
-follower_resource_group_name = "followerResouceGroup"
+follower_resource_group_name = "followerResourceGroup"
 follower_cluster_name = "follower"
 attached_database_configurationName = "uniqueName"
 
-#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
 ```
 
@@ -533,7 +562,7 @@ attached_database_configuration_name = "uniqueName"
 location = "North Central US"
 cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceGroups/" + follower_resource_group_name + "/providers/Microsoft.Kusto/Clusters/" + follower_cluster_name
 
-#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.clusters.detach_follower_databases(resource_group_name = leader_resource_group_name, cluster_name = leader_cluster_name, cluster_resource_id = cluster_resource_id, attached_database_configuration_name = attached_database_configuration_name)
 ```
 
@@ -552,7 +581,7 @@ Install : Az.Kusto
 ```powershell
 $FollowerClustername = 'follower'
 $FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
-$FollowerResourceGroupName = 'followerResouceGroup'
+$FollowerResourceGroupName = 'followerResourceGroup'
 $DatabaseName = "sanjn"  ## Can be specific database name or * for all databases
 
 ##Construct the Configuration name

@@ -1,26 +1,25 @@
 ---
 title: binary_and() - Azure Data Explorer
-description: This article describes binary_and() in Azure Data Explorer.
+description: Learn how to use the binary_and() function to compare bits in corresponding operands. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 11/21/2022
 ---
 # binary_and()
 
-Returns a result of the bitwise `and` operation between two values.
-
-```kusto
-binary_and(x,y)
-```
+Returns a result of the bitwise `AND` operation between two values.
 
 ## Syntax
 
-`binary_and(`*num1*`,` *num2* `)`
+`binary_and(`*value1*`,`*value2*`)`
 
-## Arguments
+## Parameters
 
-* *num1*, *num2*: long numbers.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value1* | long | &check; | The left-hand value of the bitwise `AND` operation. |
+| *value2* | long | &check; | The right-hand value of the bitwise `AND` operation. |
 
 ## Returns
 
-Returns logical AND operation on a pair of numbers: num1 & num2.
+Returns logical `AND` operation on a pair of numbers: value1 & value2.

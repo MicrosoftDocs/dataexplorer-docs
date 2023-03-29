@@ -3,20 +3,26 @@ title: .alter-merge table retention policy command- Azure Data Explorer
 description: This article describes the .alter-merge table retention policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 10/03/2021
+ms.date: 02/23/2023
 ---
 # .alter-merge table retention policy
 
-Change a table's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based. The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it.
+Use this command to change a table's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based. The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `policy` `retention` *PolicyParameters* 
+`.alter-merge` `table` *TableName* `policy` `retention` *PolicyParameters*
 
-## Arguments
+## Parameters
 
-*TableName* - Specify the name of the table. 
-*PolicyParameters* - Define policy parameters, see also [retention policy](retentionpolicy.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table.|
+|*PolicyParameters*|string|&check;|One or more policy parameters. For more information, see [retention policy](retentionpolicy.md).|
 
 ### Example
 

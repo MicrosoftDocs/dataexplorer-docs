@@ -3,7 +3,7 @@ title: 'Ingest data using the Azure Data Explorer Python library'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Python.
 ms.reviewer: vladikbr
 ms.topic: how-to
-ms.date: 02/07/2022
+ms.date: 09/07/2022
 
 # Customer intent: As a Python developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -21,11 +21,10 @@ In this article, you ingest data using the Azure Data Explorer Python library. A
 
 First, create a table and data mapping in a cluster. You then queue ingestion to the cluster and validate the results.
 
-
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 * [Python 3.4+](https://www.python.org/downloads/).
 
 ## Install the data and ingest libraries
@@ -53,7 +52,7 @@ To authenticate an application, Azure Data Explorer uses your Azure Active Direc
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-For example, if your domain is *contoso.com*, the URL is: [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Click this URL to see the results; the first line is as follows. 
+For example, if your domain is *contoso.com*, the URL is: [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Click this URL to see the results; the first line is as follows.
 
 ```console
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
@@ -73,25 +72,15 @@ Now construct the connection string. The following example uses device authentic
 You create the destination table and mapping in a later step.
 
 ```python
-KCSB_INGEST = KustoConnectionStringBuilder.with_aad_device_authentication(
-    KUSTO_INGEST_URI, AAD_TENANT_ID)
+KCSB_INGEST = KustoConnectionStringBuilder.with_interactive_login(
+    KUSTO_INGEST_URI)
 
-KCSB_DATA = KustoConnectionStringBuilder.with_aad_device_authentication(
-    KUSTO_URI, AAD_TENANT_ID)
+KCSB_DATA = KustoConnectionStringBuilder.with_interactive_login(
+    KUSTO_URI)
 
 DESTINATION_TABLE = "StormEvents"
 DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
 ```
-
-> [!NOTE]
-> Where possible, we recommend using managed identity authentication. It's the most secure authentication method since it doesn't require you to specify credentials or secrets in your code. For more information about where you can use managed identities, see [Azure services that can use managed identities to access other services](/azure/active-directory/managed-identities-azure-resources/managed-identities-status)
-> 
-> To use managed identity authentication in your code, create the connection string without specifying the authentication method, as follows:
-> 
-> ```python
-> KCSB_INGEST = KustoConnectionStringBuilder()
-> KCSB_DATA = KustoConnectionStringBuilder()
-> ```
 
 ## Set source file information
 
@@ -143,7 +132,7 @@ Queue a message to pull data from blob storage and ingest that data into Azure D
 ```python
 INGESTION_CLIENT = QueuedIngestClient(KCSB_INGEST)
 
-# All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
+# All ingestion properties are documented here: https://learn.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
 INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, data_format=DataFormat.CSV,
                                            ingestion_mapping_reference=DESTINATION_TABLE_COLUMN_MAPPING, additional_properties={'ignoreFirstRecord': 'true'})
 # FILE_SIZE is the raw size of the data in bytes

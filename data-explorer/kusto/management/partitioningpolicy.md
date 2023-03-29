@@ -3,7 +3,7 @@ title: Partitioning policy - Azure Data Explorer
 description: This article describes the partitioning policy in Azure Data Explorer, and how it can be used to improve query performance.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 2/2/2021
+ms.date: 03/21/2023
 ---
 # Partitioning policy
 
@@ -18,14 +18,14 @@ The main purpose of the partitioning policy is to improve performance of queries
 
 The following are the only scenarios in which setting a data partitioning policy is recommended. In all other scenarios, setting the policy isn't advised.
 
-* **Frequent filters on a medium or high cardinality string column**:
-  * For example: multi-tenant solutions, or a metrics table where most or all queries filter on a column of type `string` such as the `TenantId` or the `MetricId`.
+* **Frequent filters on a medium or high cardinality `string` or `guid` column**:
+  * For example: multi-tenant solutions, or a metrics table where most or all queries filter on a column of type `string` or `guid`, such as the `TenantId` or the `MetricId`.
   * Medium cardinality is at least 10,000 distinct values.
-  * Set the [hash partition key](#hash-partition-key) to be the string column, and set the [`PartitionAssigmentMode` property](#partition-properties) to `uniform`.
-* **Frequent aggregations or joins on a high cardinality string column**:
+  * Set the [hash partition key](#hash-partition-key) to be the `string` or `guid` column, and set the [`PartitionAssigmentMode` property](#partition-properties) to `uniform`.
+* **Frequent aggregations or joins on a high cardinality `string` or `guid` column**:
   * For example, IoT information from many different sensors, or academic records of many different students. 
   * High cardinality is at least 1,000,000 distinct values, where the distribution of values in the column is approximately even.
-  * In this case, set the [hash partition key](#hash-partition-key) to be the column frequently grouped-by or joined-on, and set the [`PartitionAssigmentMode` property](#partition-properties) to `default`.
+  * In this case, set the [hash partition key](#hash-partition-key) to be the column frequently grouped-by or joined-on, and set the [`PartitionAssigmentMode` property](#partition-properties) to `ByPartition`.
 * **Out-of-order data ingestion**:
   * Data ingested into a table might not be ordered and partitioned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span. 
   * In this case, set the [uniform range datetime partition key](#uniform-range-datetime-partition-key) to be the `datetime` column.
@@ -43,16 +43,16 @@ The following are the only scenarios in which setting a data partitioning policy
 The following kinds of partition keys are supported.
 
 |Kind                                                   |Column Type |Partition properties                                               |Partition value                                        |
-|-------------------------------------------------------|------------|-------------------------------------------------------------------|-------------------------------------------------------|
-|[Hash](#hash-partition-key)                            |`string`    |`Function`, `MaxPartitionCount`, `Seed`, `PartitionAssignmentMode` | `Function`(`ColumnName`, `MaxPartitionCount`, `Seed`) |
-|[Uniform range](#uniform-range-datetime-partition-key) |`datetime`  |`RangeSize`, `Reference`, `OverrideCreationTime`                   | `bin_at`(`ColumnName`, `RangeSize`, `Reference`)      |
+|-------------------------------------------------------|------------------|-------------------------------------------------------------------|-------------------------------------------------------|
+|[Hash](#hash-partition-key)                            |`string` or `guid`|`Function`, `MaxPartitionCount`, `Seed`, `PartitionAssignmentMode` | `Function`(`ColumnName`, `MaxPartitionCount`, `Seed`) |
+|[Uniform range](#uniform-range-datetime-partition-key) |`datetime`        |`RangeSize`, `Reference`, `OverrideCreationTime`                   | `bin_at`(`ColumnName`, `RangeSize`, `Reference`)      |
 
 ### Hash partition key
 
 > [!NOTE]
 > The data partitioning operation adds significant processing load. We recommend applying a hash partition key on a `string`-type column in a table only under the following conditions:
 > * If the majority of queries use equality filters (`==`, `in()`).
-> * The majority of queries aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher) such as an `device_ID`, or `user_ID`.
+> * The majority of queries aggregate/join on a specific column of type `string` or `guid` which is of *large-dimension* (cardinality of 10M or higher), such as an `device_ID`, or `user_ID`.
 > * The usage pattern of the partitioned tables is in high concurrency query load, such as in monitoring or dashboarding applications. 
 
 * A hash-modulo function is used to partition the data.
@@ -67,7 +67,7 @@ The following kinds of partition keys are supported.
 | `Function` | The name of a hash-modulo function to use.| `XxHash64` | |
 | `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. | In the range `(1,2048]`. |  Higher values lead to greater overhead of the data partitioning process on the cluster's nodes, and a higher number of extents for each time period. The recommended value is `128`. Higher values will significantly increase the overhead of partitioning the data post-ingestion, and the size of metadata - and are therefore not recommended.
 | `Seed` | Use for randomizing the hash value. | A positive integer. | `1`, which is also the default value. |
-| `PartitionAssignmentMode` | The mode used for assigning partitions to nodes in the cluster. | `Default`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node. <br> `Uniform`: An extents' partition values are disregarded. Extents are assigned uniformly to the cluster's nodes. | If queries don't join or aggregate on the hash partition key, use `Uniform`. Otherwise, use `Default`. |
+| `PartitionAssignmentMode` | The mode used for assigning partitions to nodes in the cluster. | `ByPartition`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node. <br> `Uniform`: An extents' partition values are disregarded. Extents are assigned uniformly to the cluster's nodes. | If queries don't join or aggregate on the hash partition key, use `Uniform`. Otherwise, use `ByPartition`. |
 
 #### Hash partition key example
 
@@ -102,15 +102,12 @@ The partition function used is [bin_at()](../query/binatfunction.md) and isn't c
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `RangeSize`            | A `timespan` scalar constant that indicates the size of each datetime partition.                                                                                | Start with the value `1.00:00:00` (one day). Don't set a shorter value, because it may result in the table having a large number of small extents that can't be merged.                                                                                                      |
 | `Reference`            | A `datetime` scalar constant that indicates a fixed point in time, according to which datetime partitions are aligned.                                          | Start with `1970-01-01 00:00:00`. If there are records in which the datetime partition key has `null` values, their partition value is set to the value of `Reference`.                                                                                                      |
-| `OverrideCreationTime` | A `bool` indicating whether or not the result extent's minimum and maximum creation times should be overridden by the range of the values in the partition key. | Defaults to `false`. Set to `true` if data isn't ingested in-order of time of arrival (for example, a single source file may include datetime values that are distant), and/or you want to force retention/caching based on the datetime values, and not the time of ingestion. |
-
-> [!CAUTION]
-> When `OverrideCreationTime` is set to `true`, make sure the `Lookback` property in the table's effective [Extents merge policy](mergepolicy.md) is aligned with the datetime values in your data.
+| `OverrideCreationTime` | A `bool` indicating whether or not the result extent's minimum and maximum creation times should be overridden by the range of the values in the partition key. | Defaults to `false`. Set to `true` if data isn't ingested in-order of time of arrival. For example, a single source file may include datetime values that are distant, and/or you may want to enforce retention or caching based on the datetime values rather than the time of ingestion.<br/><br/>When `OverrideCreationTime` is set to `true`, extents may be missed in the merge process. Extents are missed if their creation time is older than the `Lookback` period of the table's [Extents merge policy](mergepolicy.md). To make sure that the extents are discoverable, set the `Lookback` property to `HotCache`.|
 
 #### Uniform range datetime partition example
 
 The snippet shows a uniform datetime range partition key over a `datetime` typed column named `timestamp`.
-It uses `datetime(2021-01-01)` as its reference point, with a size of `7d` for each partition, and does not
+It uses `datetime(2021-01-01)` as its reference point, with a size of `7d` for each partition, and doesn't
 override the extents' creation times.
 
 ```json
@@ -127,7 +124,7 @@ override the extents' creation times.
 
 ## The policy object
 
-By default, a table's data partitioning policy is `null`, in which case data in the table won't be re-partitioned after it's ingested.
+By default, a table's data partitioning policy is `null`, in which case data in the table won't be repartitioned after it's ingested.
 
 The data partitioning policy has the following main properties:
 
@@ -198,7 +195,7 @@ The following properties can be defined as part of the policy. These properties 
 ## The data partitioning process
 
 * Data partitioning runs as a post-ingestion background process in the cluster.
-  * A table that is continuously ingested into is expected to always have a "tail" of data that is yet to be partitioned (non-homogeneous extents).
+  * A table that is continuously ingested into is expected to always have a "tail" of data that is yet to be partitioned (nonhomogeneous extents).
 * Data partitioning runs only on hot extents, regardless of the value of the `EffectiveDateTime` property in the policy.
   * If partitioning cold extents is required, you need to temporarily adjust the [caching policy](cachepolicy.md).
 
@@ -213,7 +210,7 @@ The following properties can be defined as part of the policy. These properties 
 ### Limitations
 
 * Attempts to partition data in a database that already has more than 5,000,000 extents will be throttled.
-  * In such cases, the `EffectiveDateTime` property of partitioning policies of tables in the database will be automatically delayed by several hours, so that you can re-evaluate your configuration and policies.
+  * In such cases, the `EffectiveDateTime` property of partitioning policies of tables in the database will be automatically delayed by several hours, so that you can reevaluate your configuration and policies.
 
 ## Outliers in partitioned columns
 

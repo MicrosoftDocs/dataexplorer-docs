@@ -3,7 +3,7 @@ title: Restrict outbound access from your Azure Data Explorer cluster
 description: In this article, you'll learn how to restrict the outbound access from your Azure Data Explorer cluster to other services.
 ms.reviewer: eladb
 ms.topic: how-to
-ms.date: 07/03/2022
+ms.date: 11/13/2022
 ---
 
 # Restrict outbound access from your Azure Data Explorer cluster
@@ -22,7 +22,7 @@ Callout policies can be divided, as follows:
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md), or use the Azure Data Explorer help cluster.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 
 ## Run callout policy commands
 
@@ -169,7 +169,7 @@ If you want to allow outbound access to a specific FQDN, you can add it to the `
 
     ```kusto
     .show cluster policy callout 
-    | project Policy=todynamic(Policy)
+    | project Policy=parse_json(Policy)
     | mv-expand Policy
     | where Policy.CalloutType == "sql" 
     ```

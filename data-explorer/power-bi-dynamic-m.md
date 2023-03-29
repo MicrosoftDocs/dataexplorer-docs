@@ -3,21 +3,20 @@ title: Use Dynamic M query parameters with Azure Data Explorer for Power BI
 description: In this article, you'll learn how to filter data in a dynamic M query linked to a KQL function.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 01/06/2022
+ms.date: 09/12/2022
 ---
 
 # Use Dynamic M query parameters with Azure Data Explorer for Power BI
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Power BI is a business analytics solution that lets you visualize your data and share the results across your organization. With [Dynamic M parameters](/power-bi/connect-data/desktop-dynamic-m-query-parameters), you can create Power BI reports that give viewers the ability to use filters or slicers to set values for KQL query parameters.
 
-In this article, you'll start with a new Power BI project and use the sample data to create a report that uses a slicer to filter data in a dynamic M query linked to a KQL function.
+In this article, you'll start with a new Power BI project and use the sample data to create a report that uses a slicer to filter data, in a dynamic M query linked to a KQL function.
 
 ## Prerequisites
 
 You need the following to complete this article:
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* An organizational email account that is a member of Azure Active directory, so you can connect to the [Azure Data Explorer help cluster](https://dataexplorer.azure.com/clusters/help/databases/samples).
+* A Microsoft account or an Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**)
 * [Enabling Dynamic M query parameters](/power-bi/connect-data/desktop-dynamic-m-query-parameters#enabling-dynamic-m-query-parameters)
 
@@ -80,7 +79,7 @@ First, set up a connector for Power BI.
 
     :::image type="content" source="media/power-bi-dynamic-m/select-function.png" alt-text="Screenshot of Navigation screen, showing the selection of a function.":::
 
-    The function opens as a dynamic M query in Power Query Editor, where you we will proceed to create a parameter to use with the dynamic M query.
+    The function opens as a dynamic M query in Power Query Editor, where we proceed to create a parameter to use with the dynamic M query.
 
     > [!NOTE]
     > The EventsByStates function is a read only sample function that you can use to test the functionality of the Dynamic M query parameters. It defines the final version which supports multiple and select all values for the parameter. If you want to test the single selection functionality in your own cluster and progressively test the functionality, you can start with the following single selection definition of the function.
@@ -231,13 +230,13 @@ You can now head back to the report and select all event types in the slicer.
 
 There are some considerations and limitations to consider when using dynamic M query parameters:
 
-* A single parameter cannot be bound to multiple fields nor vice-versa.
-* The following parameter types are not supported:
+* A single parameter can't be bound to multiple fields nor vice-versa.
+* The following parameter types aren't supported:
     * Any
     * Duration
     * True / False
     * Binary
-* The following filters are not supported:
+* The following filters aren't supported:
     * Relative time slicer or filter
     * Relative date
     * Hierarchy slicer

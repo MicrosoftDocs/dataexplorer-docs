@@ -11,19 +11,38 @@ items:
     href: whats-new.md
   - name: Solution architectures
     href: solution-architectures.md
+  - name: Training modules
+    items:
+    - name: "Introduction to Azure Data Explorer"
+      href:  /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+    - name: "Write your first query with Kusto Query Language"
+      href: /training/modules/write-first-query-kusto-query-language/
+    - name: "Gain insights from your data by using Kusto Query Language"
+      href: /training/modules/gain-insights-data-kusto-query-language/
+    - name: "Multi-table queries using Kusto Query Language"
+      href: /training/modules/multi-table-queries-with-kusto-query-language/
+    - name: "Characterize an unfamiliar dataset with Azure Data Explorer"
+      href: /training/modules/characterize-data-azure-data-explorer/
+    - name: "Create dashboards in Azure Data Explorer"
+      href: /training/modules/create-dashboards-azure-data-explorer/
+    - name: "Learning path: Data analysis in Azure Data Explorer with Kusto Query Language"
+      href: /training/paths/data-analysis-data-explorer-kusto-query-language/
+    - name: "Learning path: Create queries for Microsoft Sentinel using Kusto Query Language"
+      href: /training/paths/sc-200-utilize-kql-for-azure-sentinel/
 - name: Quickstarts
   expanded: true
   items:
-  - name: Create cluster and database - Azure portal
+  - name: Create a cluster and database
     href: create-cluster-database-portal.md
-  - name: Ingest sample data
+  - name: Get sample data
     href: ingest-sample-data.md
-  - name: Query data with Azure Data Explorer web UI
+    displayName: Azure Data Explorer web UI
+  - name: Query sample data
     href: web-query-data.md
+  - name: Visualize sample data dashboards
+    href: web-ui-samples-dashboards.md
 - name: Tutorials
   items:
-  - name: Write queries
-    href: write-queries.md
   - name: E2E programmatic Blob ingestion
     items:
       - name: C#
@@ -32,41 +51,18 @@ items:
         href: end-to-end-python.md
   - name: Ingest and query monitoring data
     href: ingest-data-no-code.md
-  - name: Visualize data in Power BI
-    href: visualize-power-bi.md
-  - name: "Learn module: Introduction to Azure Data Explorer"
-    href: /learn/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+  - name: Kusto Query Language
+    items: 
+      - name: 1 - Learn common operators
+        href: kusto/query/tutorials/learn-common-operators.md
+      - name: 2 - Use aggregation functions
+        href: kusto/query/tutorials/use-aggregation-functions.md
+      - name: 3 - Join data from multiple tables
+        href: kusto/query/tutorials/join-data-from-multiple-tables.md
+      - name: 4 - Create geospatial visualizations
+        href: kusto/query/tutorials/create-geospatial-visualizations.md
 - name: Concepts
   items:
-  - name: EngineV3
-    href: engine-v3.md
-  - name: Azure Data Explorer web UI
-    items:
-    - name: Azure Data Explorer web UI overview
-      displayName: Kusto Web Explorer, KWE
-      href: web-ui-overview.md
-    - name: Ingestion wizard
-      href: ingest-data-wizard.md
-  - name: Data ingestion
-    items:
-    - name: Data ingestion overview
-      displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
-      href: ingest-data-overview.md
-    - name: Data ingestion properties
-      href: ingestion-properties.md
-    - name: Formats for data ingestion
-      displayName: supported data formats
-      href: ingestion-supported-formats.md
-  - name: Data visualization overview
-    href: viz-overview.md
-  - name: Security
-    items:
-    - name: Security overview
-      href: security.md
-    - name: Security baseline
-      href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
-    - name: Security controls by Azure Policy
-      href: security-controls-policy.md
   - name: Business continuity
     items:
     - name: Overview
@@ -75,59 +71,36 @@ items:
     - name: Create solutions
       displayName: BCDR, bcdr
       href: business-continuity-create-solution.md
-  - name: Tools and integrations overview
-    href: tools-integrations-overview.md
-- name: How-to guides
+  - name: EngineV3
+    href: engine-v3.md
+  - name: Security
+    items:
+    - name: Security overview
+      href: security.md
+    - name: Security baseline
+      href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
+    - name: Security controls by Azure Policy
+      href: security-controls-policy.md
+- name: Explore data
   items:
-  - name: Explore the samples gallery
-    href: web-ui-samples-gallery.md
-    displayName: Azure Data Explorer web UI
-  - name: Explore with a free cluster
+  - name: Get data
     items:
-    - name: Create a free cluster
-      href: start-for-free-web-ui.md
-    - name: Upgrade a free cluster
-      href: start-for-free-upgrade.md
-  - name: Create cluster and database
-    items:
-    - name: Azure CLI
-      href: create-cluster-database-cli.md
-    - name: PowerShell
-      href: create-cluster-database-powershell.md
-    - name: C#
-      href: create-cluster-database-csharp.md
-    - name: Python
-      href: create-cluster-database-python.md
-    - name: Go
-      href: create-cluster-database-go.md
-    - name: Automated provisioning
-      href: automated-deploy-overview.md
-    - name: Azure Resource Manager template
-      href: create-cluster-database-resource-manager.md
-  - name: Create tables
-    items:
-    - name: Create table
-      href: create-table-wizard.md
-    - name: External table creation wizard
-      displayName: one-click
-      href: external-table.md
-    - name: Create table policies
+    - name: Data ingestion overview
+      displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
+      href: ingest-data-overview.md
+    - name: Data connectors overview
+      displayName: connect, integrate, integration, export, orchestrate
+      href: connector-overview.md
+    - name: Get data in the web UI
       items:
-      - name: Create ingestion batching table policy
-        displayName: one-click, wizard
-        href: table-batching-policy-wizard.md
-      - name: Create retention table policy
-        displayName: one-click, wizard
-        href: table-retention-policy-wizard.md
-  - name: Ingest data
-    items:
-    - name: Ingestion wizard
-      items:
-      - name: JSON data from local file to existing table
-        displayName: ingest data, ingestion, one click
-        href: ingestion-wizard-existing-table.md
-      - name: Sample app generator
-        href: sample-app-generator-wizard.md
+        - name: Ingestion wizard
+          href: ingest-data-wizard.md
+        - name: Ingest from local file
+          displayName: ingest data, ingestion wizard, one click, existing table
+          href: ingest-from-local-file.md
+        - name: Ingest from container
+          displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
+          href: /azure/data-explorer/ingest-from-container
     - name: Streaming ingestion
       displayName: ingest data, ingestion
       href: ingest-data-streaming.md
@@ -138,12 +111,26 @@ items:
         href: lightingest.md
       - name: Use wizard for one-time ingestion of historical data with LightIngest
         href: generate-lightingest-command.md
-    - name: Cross-tenant data connection
-      displayName: event hub, event grid
-      href: ingest-data-cross-tenant.md
-    - name: Event hub
+    - name: Using SDKs
       items:
-      - name: Event hub data connection
+      - name: .NET SDK
+        displayName: ingest data, ingestion
+        href: net-sdk-ingest-data.md
+      - name: Python
+        displayName: ingest data, ingestion
+        href: python-ingest-data.md
+      - name: Node SDK
+        displayName: ingest data, ingestion
+        href: node-ingest-data.md
+      - name: Go SDK
+        displayName: ingest data, ingestion
+        href: go-ingest-data.md
+      - name: Java SDK
+        displayName: ingest data, ingestion
+        href: java-ingest-data.md
+    - name: Event Hubs
+      items:
+      - name: Event Hubs data connection
         displayName: ingest, ingestion
         href: ingest-data-event-hub-overview.md
       - name: Azure portal
@@ -161,14 +148,14 @@ items:
       - name: Azure Resource Manager template
         displayName: Event hub, ingest, data connection
         href: data-connection-event-hub-resource-manager.md
+      - name: Manage Event Hubs in your free cluster
+        displayName: Event hub, ingest, data connection
+        href: start-for-free-event-hubs.md
     - name: Event Grid
       items:
       - name: Event Grid data connection
         displayName: ingest
         href: ingest-data-event-grid-overview.md
-      - name: Ingestion wizard
-        displayName: Event Grid, ingest data, ingestion, one click, csv file
-        href: ingestion-wizard-new-table.md
       - name: Azure portal
         displayName: Event Grid, ingest, data connection
         href: ingest-data-event-grid.md
@@ -204,6 +191,7 @@ items:
     - name: Azure Data Factory
       items:
       - name: Integration with Data Factory
+        displayName: export, ingest, copy
         href: data-factory-integration.md
       - name: Copy data using Azure Data Factory
         href: data-factory-load-data.md
@@ -211,67 +199,110 @@ items:
         href: data-factory-template.md
       - name: Run control commands using Azure Data Factory
         href: data-factory-command-activity.md
-    - name: Using SDKs
+    - name: Apache Kafka
+      displayName: ingest data, ingestion, connector
+      href: ingest-data-kafka.md
+    - name: Apache Log4J 2
+      displayName: ingest data, ingestion, connector
+      href: apache-log4j2-connector.md
+    - name: Serilog
+      displayName: ingest data, ingestion, connector
+      href: serilog-sink.md
+    - name: Apache Spark 
+      displayName: connector, export, ingest
+      href: spark-connector.md
+    - name: Azure Cosmos DB
       items:
-      - name: .NET SDK
+      - name: Azure Cosmos DB data connection
+        displayName: ingest, connector
+        href: ingest-data-cosmos-db-connection.md
+      - name: Get latest Azure Cosmos DB documents
         displayName: ingest data, ingestion
-        href: net-sdk-ingest-data.md
-      - name: Python
-        displayName: ingest data, ingestion
-        href: python-ingest-data.md
-      - name: Node SDK
-        displayName: ingest data, ingestion
-        href: node-ingest-data.md
-      - name: Go SDK
-        displayName: ingest data, ingestion
-        href: go-ingest-data.md
-      - name: Java SDK
-        displayName: ingest data, ingestion
-        href: java-ingest-data.md
+        href: ingest-data-cosmos-db-queries.md
     - name: Azure Stream Analytics
       href: stream-analytics-connector.md
-      displayName: ingest data, ingestion
-    - name: Kafka
-      displayName: ingest data, ingestion
-      href: ingest-data-kafka.md
-    - name: Telegraf
-      displayName: ingest data, ingestion
-      href: ingest-data-telegraf.md
+      displayName: ingest data, ingestion, connector
     - name: Logstash
-      displayName: ingest data, ingestion
-      href: ingest-data-logstash.md
+      displayName: ingest data, ingestion, connector
+      href: ingest-data-logstash.md    
+    - name: OpenTelemetry
+      href: open-telemetry-connector.md 
+      displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion, connector
+    - name: Telegraf
+      displayName: ingest data, ingestion, connector
+      href: ingest-data-telegraf.md
+    - name: Cross-tenant data connection
+      displayName: event hub, event grid
+      href: ingest-data-cross-tenant.md
     - name: JSON formatted data
       displayName: ingest data, ingestion
       href: ingest-json-formats.md
+    - name: Data ingestion properties
+      href: ingestion-properties.md
+    - name: Formats for data ingestion
+      displayName: supported data formats
+      href: ingestion-supported-formats.md
   - name: Query data
     items:
+    - name: Query data in the web UI
+      items:
+        - name: Explore the sample gallery
+          href: web-ui-samples-query.md
+        - name: Customize settings
+          href: web-customize-settings.md
+        - name: Explore the results grid
+          href: web-results-grid.md
+        - name: Share queries
+          href: web-share-queries.md
+        - name: Keyboard shortcuts
+          href: web-ui-query-keyboard-shortcuts.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
       href: query-monitor-data.md
-    - name: Query data in Power Apps application
+    - name: Query data in Power Apps
       href: power-apps-connector.md
-    - name: Query cold data with hot windows
-      href: hot-windows.md
+    - name: Query data using Python
+      href: python-query-data.md
     - name: Debug KQL inline Python
       href: debug-inline-python.md
-    - name: Using SDKs
+    - name: Query data using T-SQL
+      href: t-sql.md
+    - name: Query data using SQL Server emulation
       items:
-      - name: Python
-        href: python-query-data.md
+        - name: Overview
+          href: sql-server-emulation-overview.md
+          displayName: SQL Server emulation
+        - name: Connect with ODBC
+          href: connect-odbc.md
+          displayName: SQL Server emulation
+        - name: Connect with JDBC
+          href: connect-jdbc.md
+          displayName: SQL Server emulation
+        - name: Connect from common apps
+          href: connect-common-apps.md
+          displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
+        - name: Run KQL queries and stored functions
+          href: sql-kql-queries-and-stored-functions.md
+    - name: Evaluate query performance in your cluster
+      href: kusto/api/load-test-cluster.md
     - name: Optimize for high concurrency
       href: high-concurrency.md
+    - name: Set timeout limits
+      href: set-timeout-limits.md
+    - name: Query cold data with hot windows
+      href: hot-windows.md
     - name: Time Series Analysis and Machine Learning
       items:
-      - name: Time series analysis
-        href: time-series-analysis.md
-      - name: Anomaly detection and forecasting
-        href: anomaly-detection.md
-      - name: Machine learning
-        href: machine-learning-clustering.md
+        - name: Azure Data Explorer Python library
+          href: python-query-data.md
+        - name: Debug Kusto Query Language inline Python
+          href: debug-inline-python.md
   - name: Visualize data
     items:
-    - name: Azure Data Explorer dashboards
+    - name: Data visualization overview
+      href: viz-overview.md
+    - name: Visualize dashboards in the web UI
       items:
       - name: Use dashboards
         href: azure-data-explorer-dashboards.md
@@ -281,19 +312,15 @@ items:
         href: dashboard-customize-visuals.md
     - name: Power BI
       items:
+      - name: Use data in Power BI 
+        displayName: Imported query
+        href: power-bi-data-connector.md
       - name: Power BI best practices
         href: power-bi-best-practices.md
-      - name: Connector
-        displayName: Power BI
-        href: power-bi-connector.md
       - name: Dynamic M query parameters
         displayName: Power BI
         href: power-bi-dynamic-m.md
-      - name: Imported query
-        displayName: Power BI
-        href: power-bi-imported-query.md
-      - name: SQL query
-        displayName: Power BI
+      - name: Query with SQL in Power BI
         href: power-bi-sql-query.md
     - name: Excel
       items:
@@ -305,8 +332,6 @@ items:
         href: excel-blank-query.md
     - name: Grafana
       href: grafana.md
-    - name: ODBC connector
-      href: connect-odbc.md
     - name: Tableau
       href: tableau.md
     - name: Sisense
@@ -315,168 +340,249 @@ items:
       href: redash.md
     - name: Kibana (K2Bridge connector)
       href: k2bridge.md
-  - name: Secure
+  - name: Admin
     items:
-    - name: Isolated compute
-      href: isolated-compute.md
-    - name: Network isolation (VNet)
+    - name: Create cluster and database
       items:
-        - name: Network security overview 
-          href: security-network-overview.md
-        - name: Private Endpoints
+      - name: Azure CLI
+        href: create-cluster-database-cli.md
+      - name: PowerShell
+        href: create-cluster-database-powershell.md
+      - name: C#
+        href: create-cluster-database-csharp.md
+      - name: Python
+        href: create-cluster-database-python.md
+      - name: Go
+        href: create-cluster-database-go.md
+      - name: Automated provisioning
+        href: automated-deploy-overview.md
+      - name: Azure Resource Manager template
+        href: create-cluster-database-resource-manager.md
+    - name: Create free cluster
+      items:
+      - name: Create a free cluster
+        href: start-for-free-web-ui.md
+      - name: Upgrade a free cluster
+        href: start-for-free-upgrade.md
+    - name: Create tables
+      items:
+      - name: Create table
+        href: create-table-wizard.md
+      - name: External table creation wizard
+        displayName: one-click
+        href: external-table.md
+      - name: Create table policies
+        items:
+        - name: Create ingestion batching table policy
+          displayName: one-click, wizard
+          href: table-batching-policy-wizard.md
+        - name: Create retention table policy
+          displayName: one-click, wizard
+          href: table-retention-policy-wizard.md
+    - name: Secure
+      items:
+        - name: Isolated compute
+          href: isolated-compute.md
+        - name: Network isolation (VNet)
           items:
-          - name: Private Endpoints overview
-            href: security-network-private-endpoint.md
-          - name: Create a private endpoint
-            href: security-network-private-endpoint-create.md
-          - name: Create a managed private endpoint
-            href: security-network-managed-private-endpoint-create.md
-          - name: Restrict public access
-            href: security-network-restrict-public-access.md
-          - name: Troubleshoot private endpoints
-            href: security-network-private-endpoint-troubleshoot.md
-        - name: Virtual network injection
+            - name: Network security overview 
+              href: security-network-overview.md
+            - name: Private Endpoints
+              items:
+              - name: Private Endpoints overview
+                href: security-network-private-endpoint.md
+              - name: Create a private endpoint
+                href: security-network-private-endpoint-create.md
+              - name: Create a managed private endpoint
+                href: security-network-managed-private-endpoint-create.md
+              - name: Restrict public access
+                href: security-network-restrict-public-access.md
+              - name: Troubleshoot private endpoints
+                href: security-network-private-endpoint-troubleshoot.md
+            - name: Virtual network injection
+              items:
+              - name: Create a cluster in your VNet - Portal
+                href: vnet-create-cluster-portal.md
+              - name: Deploy your cluster to your VNet
+                href: vnet-deployment.md
+              - name: Create a private or service endpoint to resources used by data connections
+                displayName: VNet, private endpoint, Azure Storage, event hub
+                href: vnet-endpoint-storage-event-hub.md
+              - name: Troubleshoot VNet cluster creation, connectivity, and operation
+                href: vnet-deploy-troubleshoot.md
+            - name: Restrict outbound requests
+              href: security-network-restrict-outbound-access.md
+        - name: Encryption
           items:
-          - name: Create a cluster in your VNet - Portal
-            href: vnet-create-cluster-portal.md
-          - name: Deploy your cluster to your VNet
-            href: vnet-deployment.md
-          - name: Create a private or service endpoint to resources used by data connections
-            displayName: VNet, private endpoint, Azure Storage, event hub
-            href: vnet-endpoint-storage-event-hub.md
-          - name: Troubleshoot VNet cluster creation, connectivity, and operation
-            href: vnet-deploy-troubleshoot.md
-        - name: Restrict outbound requests
-          href: security-network-restrict-outbound-access.md
-    - name: Encryption
+          - name: Cluster encryption overview
+            href: cluster-encryption-overview.md
+          - name: Enable double encryption
+            href: cluster-encryption-double.md
+          - name: Enable disk encryption
+            href: cluster-encryption-disk.md
+        - name: Managed identities
+          items:
+          - name: Managed identities overview
+            href: managed-identities-overview.md
+          - name: Configure managed identities on your cluster
+            href: configure-managed-identities-cluster.md
+          - name: Authenticate external tables with managed identities 
+            href: external-tables-managed-identities.md
+          - name: Ingest data using managed identity authentication
+            href: ingest-data-managed-identity.md
+        - name: Configure customer-managed-keys
+          items:
+            - name: Portal
+              displayName: Configure customer-managed-keys
+              href: customer-managed-keys-portal.md
+            - name: C#
+              displayName: Configure customer-managed-keys
+              href: customer-managed-keys-csharp.md
+            - name: Azure Resource Manager template
+              displayName: Configure customer-managed-keys
+              href: customer-managed-keys-resource-manager.md
+            - name: Azure CLI
+              displayName: Configure customer-managed-keys
+              href: customer-managed-keys-cli.md
+            - name: PowerShell
+              displayName: Configure customer-managed-keys
+              href: customer-managed-keys-powershell.md
+        - name: Create Azure AD app
+          href: provision-azure-ad-app.md
+        - name: Conditional Access
+          href: security-conditional-access.md
+    - name: Manage
       items:
-      - name: Cluster encryption overview
-        href: cluster-encryption-overview.md
-      - name: Enable double encryption
-        href: cluster-encryption-double.md
-      - name: Enable disk encryption
-        href: cluster-encryption-disk.md
-    - name: Managed identities
-      items:
-      - name: Managed identities overview
-        href: managed-identities-overview.md
-      - name: Configure managed identities on your cluster
-        href: configure-managed-identities-cluster.md
-      - name: Authenticate external tables with managed identities 
-        href: external-tables-managed-identities.md
-      - name: Ingest data using managed identity authentication
-        href: ingest-data-managed-identity.md
-    - name: Configure customer-managed-keys
-      items:
-        - name: Portal
-          displayName: Configure customer-managed-keys
-          href: customer-managed-keys-portal.md
-        - name: C#
-          displayName: Configure customer-managed-keys
-          href: customer-managed-keys-csharp.md
-        - name: Azure Resource Manager template
-          displayName: Configure customer-managed-keys
-          href: customer-managed-keys-resource-manager.md
-        - name: Azure CLI
-          displayName: Configure customer-managed-keys
-          href: customer-managed-keys-cli.md
-        - name: PowerShell
-          displayName: Configure customer-managed-keys
-          href: customer-managed-keys-powershell.md
-    - name: Create Azure AD app
-      href: provision-azure-ad-app.md
-    - name: Conditional Access
-      href: security-conditional-access.md
-  - name: Manage
-    items:
-    - name: Cluster
-      items:
-      - name: Use Advisor recommendations to optimize your cluster
-        href: azure-advisor.md
-      - name: Select cluster VM SKU
-        href: manage-cluster-choose-sku.md
-      - name: Automatic stop of inactive clusters
-        href: auto-stop-clusters.md
-      - name: Manage cluster horizontal scaling
-        href: manage-cluster-horizontal-scaling.md
-      - name: Manage cluster vertical scaling
-        href: manage-cluster-vertical-scaling.md
-      - name: Check cluster health
-        href: check-cluster-health.md
-      - name: Add cluster principal
+      - name: Cluster
         items:
+        - name: Use Advisor recommendations to optimize your cluster
+          href: azure-advisor.md
+        - name: Select cluster VM SKU
+          href: manage-cluster-choose-sku.md
+        - name: Automatic stop of inactive clusters
+          href: auto-stop-clusters.md
+        - name: Manage cluster permissions
+          href: manage-cluster-permissions.md
+        - name: Manage cluster locks
+          href: manage-cluster-locks.md
+        - name: Manage cluster horizontal scaling
+          href: manage-cluster-horizontal-scaling.md
+        - name: Manage cluster vertical scaling
+          href: manage-cluster-vertical-scaling.md
+        - name: Check cluster health
+          href: check-cluster-health.md
+        - name: Add cluster principal
+          items:
+            - name: C#
+              displayName: cluster principal
+              href: cluster-principal-csharp.md
+            - name: Python
+              displayName: cluster principal
+              href: cluster-principal-python.md
+            - name: Azure Resource Manager template
+              displayName: cluster principal
+              href: cluster-principal-resource-manager.md
+        - name: Manage cluster language extensions
+          displayName: Python, R
+          href: language-extensions.md
+      - name: Database
+        items:
+        - name: Manage database permissions
+          href: manage-database-permissions.md
+        - name: Configure a database using a Kusto Query Language script
+          href: database-script.md
+        - name: Add database principal
+          items:
+            - name: C#
+              displayName: database principal
+              href: database-principal-csharp.md
+            - name: Python
+              displayName: database principal
+              href: database-principal-python.md
+            - name: Azure Resource Manager template
+              displayName: database principal
+              href: database-principal-resource-manager.md
+        - name: Policies
+          items:
           - name: C#
-            displayName: cluster principal
-            href: cluster-principal-csharp.md
+            displayName: database policy, database policies
+            href: database-table-policies-csharp.md
           - name: Python
-            displayName: cluster principal
-            href: cluster-principal-python.md
-          - name: Azure Resource Manager template
-            displayName: cluster principal
-            href: cluster-principal-resource-manager.md
-      - name: Manage cluster language extensions
-        displayName: Python, R
-        href: language-extensions.md
-    - name: Database
-      items:
-      - name: Manage database permissions
-        href: manage-database-permissions.md
-      - name: Configure a database using a Kusto Query Language script
-        href: database-script.md
-      - name: Add database principal
+            displayName: database policy, database policies
+            href: database-table-policies-python.md
+      - name: Data
         items:
-          - name: C#
-            displayName: database principal
-            href: database-principal-csharp.md
-          - name: Python
-            displayName: database principal
-            href: database-principal-python.md
-          - name: Azure Resource Manager template
-            displayName: database principal
-            href: database-principal-resource-manager.md
-      - name: Policies
-        items:
-        - name: C#
-          displayName: database policy, database policies
-          href: database-table-policies-csharp.md
-        - name: Python
-          displayName: database policy, database policies
-          href: database-table-policies-python.md
-    - name: Data
+        - name: Purge data - Azure portal
+          href: data-purge-portal.md
+        - name: Delete data
+          href: delete-data.md
+        - name: Deal with duplicate data
+          href: dealing-with-duplicates.md
+    - name: Monitor
       items:
-      - name: Purge data - Azure portal
-        href: data-purge-portal.md
-      - name: Delete data
-        href: delete-data.md
-      - name: Deal with duplicate data
-        href: dealing-with-duplicates.md
-  - name: Monitor
+      - name: Monitor Azure Data Explorer with metrics
+        displayName: health, performance
+        href: using-metrics.md
+      - name: Use diagnostic logs to monitor ingestion, commands, queries, and tables
+        href: using-diagnostic-logs.md
+      - name: Use resource health to monitor cluster health
+        href: monitor-with-resource-health.md
+      - name: Use Azure Data Explorer Clusters Insights
+        href: data-explorer-insights.md
+      - name: Monitor batching ingestion with metrics
+        href: monitor-batching-ingestion.md
+    - name: Share data
+      items:
+        - name: Use Azure Data Share
+          href: data-share.md
+        - name: Follower databases
+          href: follower.md
+    - name: Troubleshoot
+      items:
+      - name: Creating a cluster
+        displayName: troubleshoot
+        href: troubleshoot-create-cluster.md
+      - name: Connecting to a cluster
+        displayName: troubleshoot
+        href: troubleshoot-connect-cluster.md
+      - name: Working with databases and tables
+        displayName: troubleshoot
+        href: troubleshoot-database-table.md
+  - name: Develop
     items:
-    - name: Monitor Azure Data Explorer with metrics
-      displayName: health, performance
-      href: using-metrics.md
-    - name: Use diagnostic logs to monitor ingestion, commands, queries, and tables
-      href: using-diagnostic-logs.md
-    - name: Use resource health to monitor cluster health
-      href: monitor-with-resource-health.md
-    - name: Use Azure Monitor insights
-      href: data-explorer-insights.md
-    - name: Monitor batching ingestion with metrics
-      href: monitor-batching-ingestion.md
-  - name: Kusto emulator
+    - name: API overview
+      href: kusto/api/index.md
+    - name: Sample app generator
+      href: sample-app-generator-wizard.md
+    - name: Connection strings
+      items:
+      - name: Connection strings overview
+        href: kusto/api/connection-strings/index.md
+      - name: Kusto connection strings
+        href: kusto/api/connection-strings/kusto.md
+      - name: Storage connection strings
+        href: kusto/api/connection-strings/storage-connection-strings.md
+      - name: Storage authentication methods
+        href: kusto/api/connection-strings/storage-authentication-methods.md
+      - name: SQL Server authentication methods
+        href: kusto/api/connection-strings/sql-authentication-methods.md
+      - name: Generate SAS token
+        href: kusto/api/connection-strings/generate-sas-token.md
+    - name: Integrate Kusto query editor in your apps
+      items:
+      - name: Integrate Azure Data Explorer capabilities overview
+        displayName: monaco web UI
+        href: kusto/api/monaco/monaco-overview.md
+      - name: Embed the web UI in an IFrame
+        displayName: monaco web UI
+        href: kusto/api/monaco/host-web-ux-in-iframe.md
+      - name: Integrate the Monaco Editor with Kusto query support
+        displayName: monaco monaco-kusto
+        href: kusto/api/monaco/monaco-kusto.md
+  - name: Integrate
     items:
-    - name: Kusto emulator overview
-      href: kusto-emulator-overview.md
-    - name: Install the Kusto emulator
-      href: kusto-emulator-install.md
-  - name: Share data
-    items:
-      - name: Use Azure Data Share
-        href: data-share.md
-      - name: Follower databases
-        href: follower.md
-  - name: Integrate with other tools
-    items:
+    - name: Tools and integrations overview
+      href: tools-integrations-overview.md
     - name: Orchestrate
       items:
       - name: Power Automate
@@ -489,15 +595,10 @@ items:
           displayName: Microsoft Flow, flow, flow connector
       - name: Logic Apps
         href: kusto/tools/logicapps.md
-    - name: Cosmos DB
-      href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
-    - name: Telegraf
-      href: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
-    - name: Apache Spark Connector
-      href: spark-connector.md
-      displayName: databricks
-    - name: Connect from Azure Synapse Apache Spark
-      href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
+      - name: Azure Pipelines
+        href: devops.md
+      - name: Sync Kusto
+        href: kusto/tools/synckusto.md
     - name: Notebooks
       items:
       - name: Analyze data in Jupyter Notebooks & Kqlmagic
@@ -513,142 +614,46 @@ items:
         - name: Use Kqlmagic
           displayName: Azure Data Studio
           href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
-    - name: Azure Pipelines
-      href: devops.md
-    - name: Sync Kusto
-      href: kusto/tools/synckusto.md
+    - name: Connect from Azure Synapse Apache Spark
+      href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
     - name: Migrate TSI to Azure Data Explorer
       href: /azure/time-series-insights/migration-to-adx
       displayName: Time Series Insights
-  - name: Troubleshoot
-    items:
-    - name: Creating a cluster
-      displayName: troubleshoot
-      href: troubleshoot-create-cluster.md
-    - name: Connecting to a cluster
-      displayName: troubleshoot
-      href: troubleshoot-connect-cluster.md
-    - name: Working with databases and tables
-      displayName: troubleshoot
-      href: troubleshoot-database-table.md
+    - name: Linked server
+      href: linked-server.md
+      displayName: SQL Server, ODBC
 - name: Kusto Query Language
   href: kusto/query/toc.yml
 - name: Management commands
   href: kusto/management/toc.yml
+- name: Guidance
+  items:
+  - name: Big data analytics with Azure Data Explorer
+    href: proof-of-concept-playbook.md
 - name: Reference
   items:
   - name: API
     href: kusto/api/toc.yml
-  - name: Functions library
-    items:
-    - name: List of functions
-      displayName: functions library
-      href: kusto/functions-library/functions-library.md
-    - name: bartlett_test_fl()
-      displayName: functions library, statistical test
-      href: kusto/functions-library/bartlett-test-fl.md
-    - name: binomial_test_fl()
-      displayName: functions library, statistical test
-      href: kusto/functions-library/binomial-test-fl.md
-    - name: comb_fl()
-      displayName: functions library, statistics
-      href: kusto/functions-library/comb-fl.md
-    - name: factorial_fl()
-      displayName: functions library, statistics
-      href: kusto/functions-library/factorial-fl.md
-    - name: kmeans_fl()
-      displayName: functions library, clustering, K-Means
-      href: kusto/functions-library/kmeans-fl.md
-    - name: ks_test_fl()
-      displayName: functions library, statistical test
-      href: kusto/functions-library/ks-test-fl.md
-    - name: normality_test_fl()
-      displayName: functions library, statistical test
-      href: kusto/functions-library/normality-test-fl.md
-    - name: levene_test_fl()
-      displayName: functions library, statistical test
-      href: kusto/functions-library/levene-test-fl.md
-    - name: mann-whitney-u-test-fl()
-      displayName: functions library, statistical test
-      href: kusto/functions-library/mann-whitney-u-test-fl.md
-    - name: pair_probabilities_fl()
-      displayName: functions library, jaccard, lift
-      href: kusto/functions-library/pair-probabilities-fl.md
-    - name: pairwise_dist_fl()
-      displayName: functions library, multivariate, distance, anomaly, pairwise
-      href: kusto/functions-library/pairwise-dist-fl.md      
-    - name: perm_fl()
-      displayName: functions library, statistics
-      href: kusto/functions-library/perm-fl.md
-    - name: predict_fl()
-      displayName: functions library, score, classify
-      href: kusto/functions-library/predict-fl.md
-    - name: predict_onnx_fl()
-      displayName: functions library, score, classify
-      href: kusto/functions-library/predict-onnx-fl.md
-    - name: quantize_fl()
-      displayName: functions library, binning
-      href: kusto/functions-library/quantize-fl.md
-    - name: series_dbl_exp_smoothing_fl()
-      displayName: functions library, exponential, filter, low-pass
-      href: kusto/functions-library/series-dbl-exp-smoothing-fl.md
-    - name: series_dot_product_fl()
-      displayName: functions library, inner product, scalar product
-      href: kusto/functions-library/series-dot-product-fl.md
-    - name: series_downsample_fl()
-      displayName: functions library, subsampling, sub-sampling
-      href: kusto/functions-library/series-downsample-fl.md
-    - name: series_exp_smoothing_fl()
-      displayName: functions library, exponential, filter, low-pass
-      href: kusto/functions-library/series-exp-smoothing-fl.md
-    - name: series_fit_lowess_fl()
-      displayName: functions library, filter, low-pass, smoothing, regression
-      href: kusto/functions-library/series-fit-lowess-fl.md
-    - name: series_fit_poly_fl()
-      displayName: functions library, filter, low-pass, smoothing, regression
-      href: kusto/functions-library/series-fit-poly-fl.md
-    - name: series_fbprophet_forecast_fl()
-      displayName: functions library
-      href: kusto/functions-library/series-fbprophet-forecast-fl.md
-    - name: series_metric_fl()
-      displayName: functions library, PromQL, Prometheus
-      href: kusto/functions-library/series-metric-fl.md
-    - name: series_lag_fl()
-      displayName: functions library, filter, time shift, delay
-      href: kusto/functions-library/series-lag-fl.md
-    - name: series_moving_avg_fl()
-      displayName: functions library, filter, low-pass, smoothing
-      href: kusto/functions-library/series-moving-avg-fl.md
-    - name: series_rate_fl()
-      displayName: functions library, PromQL, Prometheus
-      href: kusto/functions-library/series-rate-fl.md
-    - name: series_rolling_fl()
-      displayName: functions library, rolling, sliding
-      href: kusto/functions-library/series-rolling-fl.md
-    - name: series_shapes_fl()
-      displayName: functions library, shape, trend, jump, detect
-      href: kusto/functions-library/series-shapes-fl.md
-    - name: series_uv_anomalies_fl()
-      displayName: functions library, anomaly detection, univariate
-      href: kusto/functions-library/series-uv-anomalies-fl.md
-    - name: series_uv_change_points_fl()
-      displayName: functions library, anomaly detection, univariate, change point
-      href: kusto/functions-library/series-uv-change-points-fl.md
-    - name: time_weighted_avg_fl()
-      displayName: functions library, binning
-      href: kusto/functions-library/time-weighted-avg-fl.md
-    - name: time_window_rolling_avg_fl()
-      displayName: functions library, rolling, sliding
-      href: kusto/functions-library/time-window-rolling-avg-fl.md
-    - name: two_sample_t_test_fl()
-      displayName: functions library, statistical test
-      href: kusto/functions-library/two-sample-t-test-fl.md
-    - name: wilcoxon_test_fl()
-      displayName: functions library, statistical test
-      href: kusto/functions-library/wilcoxon-test-fl.md
+  - name: Azure CLI Kusto
+    href: /cli/azure/kusto
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
     href: policy-reference.md
+  - name: Functions library
+    href: kusto/functions-library/toc.yml
+  - name: PowerShell Kusto
+    href: /powershell/module/az.kusto/#kusto
+  - name: Python plugin packages
+    href: python-package-reference.md
+  - name: Troubleshoot ingestion
+    items:
+    - name: Ingestion error codes
+      href: error-codes.md
+    - name: Ingestion behavior of invalid data
+      href: ingest-invalid-data.md
+      displayName: Failure, error code
+    - name: Ingestion FAQ
+      href: kusto/management/ingestion-faq.yml  
 - name: Resources
   items:
   - name: Forums
@@ -665,10 +670,11 @@ items:
     items:
     - name: Pricing page
       href: https://azure.microsoft.com/pricing/details/data-explorer/
-    - name: Cost estimator
-      href: https://aka.ms/adecostestimator
+    - name: Pricing calculator
+      href: pricing-calculator.md
     - name: Reserved capacity
       href: pricing-reserved-capacity.md
   - name: Service updates
     href: https://azure.microsoft.com/updates/?product=data-explorer
-    
+  - name: Find a partner
+    href: find-my-partner.md

@@ -1,9 +1,9 @@
 ---
 title: Queries - Azure Data Explorer
-description: This article describes Queries in Azure Data Explorer.
+description: Learn how to use queries to explore and process data in the context of databases. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/12/2023
 ---
 # Query operators
 

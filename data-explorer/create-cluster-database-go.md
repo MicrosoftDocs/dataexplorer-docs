@@ -3,12 +3,14 @@ title: 'Create an Azure Data Explorer cluster & database using Azure Go SDK'
 description: Learn how to create, list, and delete an Azure Data Explorer cluster and database with Azure Go SDK.
 ms.reviewer: abhishgu
 ms.topic: how-to
-ms.date: 10/28/2020
+ms.date: 09/06/2022
 ---
 
 # Create an Azure Data Explorer cluster and database using Go
 
 > [!div class="op_single_selector"]
+>
+> * [Web UI free cluster](start-for-free-web-ui.md)
 > * [Portal](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
@@ -17,7 +19,7 @@ ms.date: 10/28/2020
 > * [Go](create-cluster-database-go.md)
 > * [ARM template](create-cluster-database-resource-manager.md)
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it. 
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it.
 
 In this article, you create an Azure Data Explorer cluster and database using [Go](https://golang.org/). You can then list and delete your new cluster and database and execute operations on your resources.
 
@@ -72,7 +74,6 @@ func createCluster(sub, name, location, rgName string) {
 
 Use the [ListByResourceGroup](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#ClustersClient.ListByResourceGroup) function on `kusto.ClustersClient` to get a [kusto.ClusterListResult](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#ClusterListResult) that is then iterated to show the output in a tabular format.
 
-
 ```go
 func listClusters(sub, rgName string) {
     ...
@@ -89,7 +90,6 @@ func listClusters(sub, rgName string) {
 
 Use [CreateOrUpdate](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#DatabasesClient.CreateOrUpdate) function on [kusto.DatabasesClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#DatabasesClient) to create a new Azure Data Explorer database in an existing cluster. Wait for the process to complete before inspecting the results.
 
-
 ```go
 func createDatabase(sub, rgName, clusterName, location, dbName string) {
 	future, err := client.CreateOrUpdate(ctx, rgName, clusterName, dbName, kusto.ReadWriteDatabase{Kind: kusto.KindReadWrite, Location: &location})
@@ -104,7 +104,6 @@ func createDatabase(sub, rgName, clusterName, location, dbName string) {
 ### List databases
 
 Use [ListByCluster](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#DatabasesClient.ListByCluster) function on `kusto.DatabasesClient` to get [kusto.DatabaseListResult](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/kusto/mgmt/2018-09-07-preview/kusto#DatabaseListResult) that is then iterated to show the output in a tabular format.
-
 
 ```go
 func listDatabases(sub, rgName, clusterName string) {
@@ -157,14 +156,13 @@ func deleteCluster(sub, clusterName, rgName string) {
 ## Run the application
 
 When you run the sample code as is, the following actions are performed:
-    
+
 1. An Azure Data Explorer cluster is created.
 1. All the Azure Data Explorer clusters in the specified resource group are listed.
 1. An Azure Data Explorer database is created in the existing cluster.
 1. All the databases in the specified cluster are listed.
 1. The database is deleted.
 1. The cluster is deleted.
-
 
     ```go
     func main() {
@@ -203,10 +201,9 @@ When you run the sample code as is, the following actions are performed:
     export CLUSTER_NAME_PREFIX="<enter prefix (cluster name will be [prefix]-ADXTestCluster)>"
     export DATABASE_NAME_PREFIX="<enter prefix (database name will be [prefix]-ADXTestDB)>"
     ```
-    
+
     > [!TIP]
     > You're likely to use environment variables in production scenarios to provide credentials to your application. As mentioned in [Review the code](#review-the-code), for local development, use [auth.NewAuthorizerFromCLIWithResource](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromCLIWithResource) if you have Azure CLI installed and configured for authentication. In that situation, you don't need to create a service principal.
-
 
 1. Run the program:
 

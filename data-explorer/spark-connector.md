@@ -25,8 +25,8 @@ This topic describes how to install and configure the Azure Data Explorer Spark 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
-* Create a Spark cluster
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
+* A Spark cluster
 * Install Azure Data Explorer connector library:
     * Pre-built libraries for [Spark 2.4+Scala 2.11 or Spark 3+scala 2.12](https://github.com/Azure/azure-kusto-spark/releases) 
     * [Maven repo](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
@@ -116,7 +116,7 @@ Azure AD application authentication is the simplest and most common authenticati
 | Properties | Option String | Description |
 |--|--|--|
 | **KUSTO_AAD_APP_ID** | kustoAadAppId | Azure AD application (client) identifier. |
-| **KUSTO_AAD_AUTHORITY_ID** | kustoAadAuthorityID | Azure AD authentication authority. Azure AD Directory (tenant) ID. |
+| **KUSTO_AAD_AUTHORITY_ID** | kustoAadAuthorityID | Azure AD authentication authority. Azure AD Directory (tenant) ID. Optional - defaults to microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
 | **KUSTO_AAD_APP_SECRET** | kustoAadAppSecret | Azure AD application key for the client. |
 
 > [!NOTE]
@@ -129,7 +129,7 @@ Grant the following privileges on an Azure Data Explorer cluster:
 * For reading (data source), the Azure AD identity must have *viewer* privileges on the target database, or *admin* privileges on the target table.
 * For writing (data sink), the Azure AD identity must have *ingestor* privileges on the target database. It must also have *user* privileges on the target database to create new tables. If the target table already exists, you must configure *admin* privileges on the target table.
 
-For more information on Azure Data Explorer principal roles, see [role-based authorization](kusto/management/access-control/role-based-authorization.md). For managing security roles, see [security roles management](kusto/management/security-roles.md).
+For more information on Azure Data Explorer principal roles, see [role-based access control](kusto/management/access-control/role-based-access-control.md). For managing security roles, see [security roles management](kusto/management/security-roles.md).
 
 ## Spark sink: writing to Azure Data Explorer
 

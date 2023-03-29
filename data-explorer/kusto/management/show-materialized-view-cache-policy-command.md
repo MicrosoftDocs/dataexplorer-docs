@@ -3,7 +3,7 @@ title: .show materialized view cache policy command - Azure Data Explorer
 description: This article describes the .show materialized view cache policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 03/09/2023
 ---
 # .show materialized view cache policy
 
@@ -13,9 +13,11 @@ Show the materialized view cache policy. To speed up queries on data, Azure Data
 
 `.show` `materialized-view` *MaterializedViewName* `policy` `caching`
 
-## Arguments
+## Parameters
 
-*MaterializedViewName* - Specify the name of the materialized view.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view.|
 
 ## Returns
 

@@ -20,11 +20,11 @@ Azure Data Explorer pulls data from an external source and reads requests from a
 
 ## Supported data formats, properties, and permissions
 
-* **[Supported data formats](ingestion-supported-formats.md)**
+* **[Supported data formats](ingestion-supported-formats.md)**: The data formats that Azure Data Explorer can understand and ingest natively (for example Parquet, JSON)
 
 * **[Ingestion properties](ingestion-properties.md)**: The properties that affect how the data will be ingested (for example, tagging, mapping, creation time).
 
-* **Permissions**: To ingest data, the process requires [database ingestor level permissions](kusto/management/access-control/role-based-authorization.md). Other actions, such as query, may require database admin, database user, or table admin permissions.
+* **Permissions**: To ingest data, the process requires [database ingestor level permissions](kusto/management/access-control/role-based-access-control.md). Other actions, such as query, may require database admin, database user, or table admin permissions.
 
 ## Batching vs streaming ingestion
 
@@ -36,17 +36,19 @@ Azure Data Explorer pulls data from an external source and reads requests from a
 
 Azure Data Explorer supports several ingestion methods, each with its own target scenarios. These methods include ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion.
 
+For a list of data connectors, see [Data connectors overview](connector-overview.md).
+
 ### Ingestion using managed pipelines
 
 For organizations who wish to have management (throttling, retries, monitors, alerts, and more) done by an external service, using a connector is likely the most appropriate solution. Queued ingestion is appropriate for large data volumes. Azure Data Explorer supports the following Azure Pipelines:
 
 * **[Event Grid](https://azure.microsoft.com/services/event-grid/)**: A pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. For more information, see [Ingest Azure Blobs into Azure Data Explorer](ingest-data-event-grid.md).
 
-* **[Event hub](https://azure.microsoft.com/services/event-hubs/)**: A pipeline that transfers events from services to Azure Data Explorer. For more information, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md).
+* **[Event Hub](https://azure.microsoft.com/services/event-hubs/)**: A pipeline that transfers events from services to Azure Data Explorer. For more information, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md).
 
 * **[IoT Hub](https://azure.microsoft.com/services/iot-hub/)**: A pipeline that is used for the transfer of data from supported IoT devices to Azure Data Explorer. For more information, see [Ingest from IoT Hub](ingest-data-iot-hub.md).
 
-* **Azure Data Factory (ADF)**: A fully managed data integration service for analytic workloads in Azure. Azure Data Factory connects with over 90 supported sources to provide efficient and resilient data transfer. ADF prepares, transforms, and enriches data to give insights that can be monitored in different kinds of ways. This service can be used as a one-time solution, on a periodic timeline, or triggered by specific events.
+* **[Azure Data Factory (ADF)](https://azure.microsoft.com/products/data-factory/)**: A fully managed data integration service for analytic workloads in Azure. Azure Data Factory connects with over 90 supported sources to provide efficient and resilient data transfer. ADF prepares, transforms, and enriches data to give insights that can be monitored in different kinds of ways. This service can be used as a one-time solution, on a periodic timeline, or triggered by specific events.
   * [Integrate Azure Data Explorer with Azure Data Factory](data-factory-integration.md).
   * [Use Azure Data Factory to copy data from supported sources to Azure Data Explorer](./data-factory-load-data.md).
   * [Copy in bulk from a database to Azure Data Explorer by using the Azure Data Factory template](data-factory-template.md).
@@ -77,7 +79,7 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
 ### Tools
 
-* The **[ingestion wizard](ingest-data-one-click.md)**: Enables you to quickly ingest data by creating and adjusting tables from a wide range of source types. The ingestion wizard automatically suggests tables and mapping structures based on the data source in Azure Data Explorer. The wizard can be used for one-time ingestion, or to define continuous ingestion via Event Grid on the container to which the data was ingested.
+* The **[ingestion wizard](./ingest-data-wizard.md)**: Enables you to quickly ingest data by creating and adjusting tables from a wide range of source types. The ingestion wizard automatically suggests tables and mapping structures based on the data source in Azure Data Explorer. The wizard can be used for one-time ingestion, or to define continuous ingestion via Event Grid on the container to which the data was ingested.
 
 * **[LightIngest](lightingest.md)**: A command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
 
@@ -95,7 +97,7 @@ Use commands to ingest data directly to the engine. This method bypasses the Dat
 
 | Ingestion name | Data type | Maximum file size | Streaming, batching, direct | Most common scenarios | Considerations |
 | --- | --- | --- | --- | --- | --- |
-| [**Ingestion wizard**](ingest-data-one-click.md) | *sv, JSON | 1 GB uncompressed (see note)| Batching to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
+| [**Ingestion wizard**](./ingest-data-wizard.md) | *sv, JSON | 1 GB uncompressed (see note)| Batching to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
 | [**LightIngest**](lightingest.md) | All formats supported | 1 GB uncompressed (see note) | Batching via DM or direct ingestion to engine |  Data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction)| Case-sensitive, space-sensitive |
 | [**ADX Kafka**](ingest-data-kafka.md) |Avro, ApacheAvro, JSON, CSV, Parquet, and ORC |Unlimited. Inherits Java restrictions.| Batching, streaming |Existing pipeline, high volume consumption from the source.| Preference may be determined by which “multiple producer/consumer” service is already used, or how managed of a service is desired. |
 | [**ADX to Apache Spark**](spark-connector.md) | Every format supported by the Spark environment  | Unlimited | Batching | Existing pipeline, preprocessing on Spark before ingestion, fast way to create a safe (Spark) streaming pipeline from the various sources the Spark environment supports. | Consider cost of Spark cluster. For batch write, compare with Azure Data Explorer data connection for Event Grid. For Spark streaming, compare with the data connection for event hub.
@@ -135,7 +137,7 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
     In order to ingest data, a table needs to be created beforehand. Use one of the following options:
 
     * Create a table [with a command](kusto/management/create-table-command.md).
-    * Create a table using the [ingestion wizard](one-click-ingestion-new-table.md).
+    * Create a table using the [ingestion wizard](/azure/data-explorer/ingest-from-container).
 
     > [!Note]
     > If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.

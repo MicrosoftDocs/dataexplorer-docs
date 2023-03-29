@@ -3,17 +3,17 @@ title: Create a table in Azure Data Explorer
 description: Learn how to easily create a table in Azure Data Explorer with the table creation wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 07/13/2022
+ms.date: 09/11/2022
 ---
 
 # Create a table in Azure Data Explorer
 
-Creating a table is an important step in the process of [data ingestion](ingest-data-overview.md) and [query](write-queries.md) in Azure Data Explorer. After you've [created a cluster and database in Azure Data Explorer](create-cluster-database-portal.md), you can create a table. The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer web UI.
+Creating a table is an important step in the process of [data ingestion](ingest-data-overview.md) and [query](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) in Azure Data Explorer. The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer web UI.
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 > [!NOTE]
@@ -79,7 +79,7 @@ In **Source type**, select the data source you'll use to create your table mappi
 
 ### [Edit schema from a source](#tab/source)
 
-In the **Schema** tab, your [data format](ingest-data-one-click.md#file-formats) and compression are automatically identified in the left-hand pane. If incorrectly identified, use the **Data format** dropdown menu to select the correct format.
+In the **Schema** tab, your [data format](./ingest-data-wizard.md#file-formats) and compression are automatically identified in the left-hand pane. If incorrectly identified, use the **Data format** dropdown menu to select the correct format.
 
 * If your data format is JSON, you must also select JSON levels, from 1 to 10. The levels determine the table column data division.
 * If your data format is CSV, select the check box **Ignore the first record** to ignore the heading row of the file.
@@ -141,5 +141,5 @@ In the tiles below the **Create table** progress, explore **Quick queries** or *
 ## Next steps
 
 * [Data ingestion overview](ingest-data-overview.md)
-* [One-click ingestion](ingest-data-one-click.md)
-* [Write queries for Azure Data Explorer](write-queries.md)
+* [Ingestion wizard](./ingest-data-wizard.md)
+* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

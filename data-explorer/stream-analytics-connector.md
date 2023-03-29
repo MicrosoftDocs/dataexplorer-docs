@@ -1,22 +1,22 @@
 ---
-title: Ingest data from Azure Stream Analytics into Azure Data Explorer (Preview)
+title: Ingest data from Azure Stream Analytics into Azure Data Explorer
 description: In this article, you'll learn how to ingest (load) data into Azure Data Explorer from Azure Stream Analytics.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 06/26/2022
+ms.date: 01/02/2023
 ---
 
-# Ingest data from Azure Stream Analytics into Azure Data Explorer (Preview)
+# Ingest data from Azure Stream Analytics into Azure Data Explorer
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Azure Data Explorer offers ingestion from Event Hubs, IoT Hubs, blobs written to blob containers, and Azure Stream Analytics jobs.
+Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). Azure Stream Analytics is a real-time analytics and complex event-processing engine that's designed to process high volumes of fast streaming data from multiple sources simultaneously.
 
-[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) is a real-time analytics and complex event-processing engine that is designed to analyze and process high volumes of fast streaming data from multiple sources simultaneously. An Azure Stream Analytics *job* consists of an input source, a transformation query, and an output connection. There are several output types to which you can send transformed data. You can create, edit, and test Stream Analytics jobs using the [Azure portal](/azure/stream-analytics/stream-analytics-quick-create-portal), Azure Resource Manager (ARM) templates, [Azure PowerShell](/azure/stream-analytics/stream-analytics-quick-create-powershell), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations), [REST API](/rest/api/streamanalytics/), and [Visual Studio](/azure/stream-analytics/stream-analytics-quick-create-vs).
+An Azure Stream Analytics *job* consists of an input source, a transformation query, and an output connection. You can create, edit, and test Stream Analytics jobs using the [Azure portal](/azure/stream-analytics/stream-analytics-quick-create-portal), Azure Resource Manager (ARM) templates, [Azure PowerShell](/azure/stream-analytics/stream-analytics-quick-create-powershell), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations), [REST API](/rest/api/streamanalytics/), [Visual Studio](/azure/stream-analytics/stream-analytics-quick-create-vs), and the [Stream Analytics no code editor](/azure/stream-analytics/no-code-filter-ingest-data-explorer).
 
-In this article, you'll learn how to use a Streaming Analytics job to collect data from an event hub and send it to your Azure Data Explorer cluster using the Azure portal or an ARM template.
+In this article, you'll learn how to use a Stream Analytics *job* to collect data from an event hub and send it to your Azure Data Explorer cluster using the Azure portal or an ARM template.
 
 ## Prerequisites
 
-- Create a [cluster and database](create-cluster-database-portal.md) and a [table](one-click-table.md).
+- Create a [cluster and database](create-cluster-database-portal.md) and a [table](./create-table-wizard.md).
 - Create an event hub using the following sections of the Azure Stream Analytics tutorial:
     - [Create an event hub](/azure/stream-analytics/stream-analytics-real-time-fraud-detection#create-an-event-hub)
     - [Grant access to the event hub and get a connection string](/azure/stream-analytics/stream-analytics-real-time-fraud-detection#grant-access-to-the-event-hub-and-get-a-connection-string)
@@ -31,7 +31,7 @@ Use the following steps to create an [Azure Data Explorer output](/azure/stream-
 > [!IMPORTANT]
 >
 > - The Azure Data Explorer output connector only supports [Managed Identity](/azure/active-directory/managed-identities-azure-resources/overview) authentication. As part of creating the connector, database monitor and database ingestor permissions are granted to the Azure Stream Analytics job managed identity.
-> - When setting up the [Azure Data Explorer output connector](/azure/stream-analytics/azure-database-explorer-output), you specify the target cluster, database, and table name. For ingestion to succeed, make sure that the number, data types, and order of the columns in the Azure Stream Analytics query match the table schema in the Azure Data Explorer table.
+> - When setting up the [Azure Data Explorer output connector](/azure/stream-analytics/azure-database-explorer-output), you specify the target cluster, database, and table name. For ingestion to succeed, all of the columns defined in the Azure Stream Analytics query must match the column names and types in the Azure Data Explorer table. Column names are case-sensitive and can be in any order. If there are columns in the Azure Stream Analytics query that don't map to columns in the Azure Data Explorer table, an error is raised.
 
 > [!NOTE]
 >
@@ -48,7 +48,7 @@ Before you begin, make sure you have an existing Stream Analytics job or [create
 
 1. Under **Job topology**, select the **Outputs**.
 
-1. Select **Add** > **Azure Data Explorer (Preview)**.
+1. Select **Add** > **Azure Data Explorer**.
 
     :::image type="content" source="media/stream-analytics-connector/stream-analytics-job-output.png" alt-text="Screenshot of the Outputs page, showing how to create an Azure Data Explorer connection.":::
 
@@ -68,7 +68,7 @@ Before you begin, make sure you have an existing Stream Analytics job or [create
     | Cluster URI | The data ingestion URI of your cluster. You can specify the URI for the Azure Data Explorer or [Azure Synapse Data Explorer](/azure/synapse-analytics/data-explorer/ingest-data/data-explorer-ingest-data-overview#programmatic-ingestion-using-sdks) data ingestion endpoints. |
     | Database | The name of the database where you're sending your output. The database name must be unique within the cluster. |
     | Authentication | An [Azure Active Directory (Azure AD) managed identity](/azure/active-directory/managed-identities-azure-resources/overview) that allows your cluster to easily access other Azure AD protected resources. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. Managed identity configuration enables you to use customer-managed keys for your cluster. |
-    | Table | The name of the table where you're sending your output. The number, data types, and order of the columns in the output must match the schema of this table schema. |
+    | Table | The name of the table where you're sending your output. The column names and data types in the Azure Stream Analytics output must match the schema of the Azure Data Explorer table. |
 
     :::image type="content" source="media/stream-analytics-connector/stream-analytics-new-output.png" alt-text="Screenshot of New output dialog box, showing required information.":::
 

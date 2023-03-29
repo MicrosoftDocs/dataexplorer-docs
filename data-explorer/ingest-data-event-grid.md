@@ -3,7 +3,7 @@ title: 'Ingest Azure Blobs into Azure Data Explorer'
 description: In this article, you learn how to send storage account data to Azure Data Explorer using an Event Grid subscription.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 03/15/2022
+ms.date: 09/11/2022
 
 # Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
 ---
@@ -11,7 +11,7 @@ ms.date: 03/15/2022
 # Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications
 
 > [!div class="op_single_selector"]
-> * [One-click](one-click-ingestion-new-table.md)
+> * [Ingestion wizard](/azure/data-explorer/ingest-from-container)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -26,9 +26,8 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
-* Create [a storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
-* Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal). An Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
 
 ## Create a target table in Azure Data Explorer
 

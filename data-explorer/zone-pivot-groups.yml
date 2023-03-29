@@ -2,7 +2,7 @@
 # GitHub repository = 'MicrosoftDocs/dataexplorer-docs-pr'
 groups:
 - id: kql-flavors
-  title: Kusto query language flavors
+  title: Kusto Query Language flavors
   prompt: Select your Azure service
   pivots:
   - id: azuredataexplorer

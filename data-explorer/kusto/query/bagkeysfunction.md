@@ -1,25 +1,33 @@
 ---
 title: bag_keys() - Azure Data Explorer
-description: This article describes bag_keys() in Azure Data Explorer.
+description: Learn how to use the bag_keys() function to enumerate the root keys in a dynamic property bag object.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 11/23/2022
 ---
 # bag_keys()
 
-Enumerates all the root keys in a dynamic property-bag object.
+Enumerates all the root keys in a dynamic property bag object.
 
 ## Syntax
 
-`bag_keys(`*dynamic object*`)`
+`bag_keys(`*object*`)`
+
+## Parameters
+
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *object* | dynamic | &check; | The property bag object for which to enumerate keys. |
 
 ## Returns
 
 An array of keys, order is undetermined.
 
-## Examples
+## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XMSwrDIBCA4b2nmN0ouEnSBwg9iUjRjIRQaxdNICHt3WvzqN1kZjP8fAzZLq0LnreR/KDCIzYSSNEY7b2tBWgGaYrUlsIntKjQoQSsURVl9RYSZlTuoQlpkYnOstqT+kfNZg/Zxj6EtR7/PmzylFt6usZzjtoIZtgL/ND5SHDz4xMu4Gxz/Z6cxAfYZXgQDQEAAA==" target="_blank">Run the query</a>
+
 ```kusto
 datatable(index:long, d:dynamic) [
     1, dynamic({'a':'b', 'c':123}), 
@@ -32,6 +40,8 @@ datatable(index:long, d:dynamic) [
 ]
 | extend keys = bag_keys(d)
 ```
+
+**Output**
 
 |index|d|keys|
 |---|---|---|

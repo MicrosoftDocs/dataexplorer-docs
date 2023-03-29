@@ -3,7 +3,7 @@ title: 'Visualize data using an Azure Data Explorer Kusto query imported into Mi
 description: 'In this article, you learn how to import an Azure Data Explorer Kusto query into Microsoft Excel.'
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 08/30/2019
+ms.date: 09/06/2022
 
 # Customer intent: As a data analyst, I want to understand how to visualize my Azure Data Explorer data in Excel.
 ---
@@ -14,11 +14,7 @@ Azure Data Explorer provides two options for connecting to data in Excel: use th
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
-* An organizational email account that is a member of Azure Active directory, so you can connect to the [Azure Data Explorer help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples)
-<br>or</br>
-* Sign in to [the Azure Data Explorer web UI application](https://dataexplorer.azure.com/).
+* A Microsoft account or an Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
 
 ## Define Kusto query as an Excel data source
 

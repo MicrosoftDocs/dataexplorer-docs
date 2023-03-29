@@ -16,8 +16,8 @@ This article shows you how to create a new table, create schema mapping, and gen
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* [A cluster and database](create-cluster-database-portal.md).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 * [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 * LightIngest - download it as part of the [Microsoft.Azure.Kusto.Tools NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/). For installation instructions, see [Install LightIngest](lightingest.md#install-lightingest).
 
@@ -25,19 +25,19 @@ This article shows you how to create a new table, create schema mapping, and gen
 
 The wizard can be accessed either from the **Data** tab, or from the **Query** tab of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
-1. In the **Data** tab, from the **Quick actions** section, select **Ingest new data**. Alternatively, from the **All actions** section, select **Ingest new data** and then **Ingest**.
+1. In the **Data** tab, from the **Quick actions** section, select **Ingest data**. Alternatively, from the **All actions** section, select **Ingest data** and then **Ingest**.
 
-   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select one-click ingestion for a table.":::
+   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select the ingestion wizard for a table.":::
 
-1. In the **Query tab**, right-click a *database* and select **Ingest new data**.
+1. In the **Query tab**, right-click a *database* and select **Ingest data**.
 
    :::image type="content" source="media/ingestion-wizard-new-table/ingest-new-data-database-menu.png" alt-text="Ingest new data.":::
 
-In the **Ingest new data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
+In the **Ingest data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
 ## Destination tab
 
-1. In **Table**, check either **Existing table** or **Create new table**. When creating a new table, enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
+1. In **Table**, check either **Existing table** or **New table**. When creating a new table, enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
@@ -50,7 +50,7 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
 
 :::image type="content" source="media/generate-lightingest-command/source-tab-lightingest.png" alt-text="Screenshot of Source tab in Ingest new table window. ":::
 
-  1. Under **Source type**, select **From blob container** (blob container, ADLS Gen2 container).
+  1. Under **Source type**, select **Blob container** (blob container, ADLS Gen2 container).
   1. Select **Ingestion type**>**Historical data**.
   1. You can either **Add URL** manually by copying the Account Key/SAS URL to source, or **Select container** from your storage account.
       > [!NOTE]
@@ -74,7 +74,7 @@ In the **Ingest new data** window, the **Destination** tab is selected. The **Cl
     | Creation time pattern | Specify to override the ingestion time property of the created extent with a pattern, for example, to apply a date based on the folder structure of the container. See also [Creation time pattern](lightingest.md#how-to-ingest-data-using-creationtime). |
     | Blob name pattern | Specify the pattern used to identify the files to be ingested. Ingest all the files that match the blob name pattern in the given container. Supports wildcards. Recommended to enclose in double quotes. |
     | Tag | A [tag](kusto/management/extents-overview.md#extent-tagging) assigned to the ingested data. The tag can be any string. |
-    | Limit amount of files | Specify the number of files that can be ingested. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
+    | Limit number of files | Specify the number of files that can be ingested. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
     | Don't wait for ingestion to complete | If set, queues the blobs for ingestion without monitoring the ingestion process. If not set, LightIngest continues to poll the ingestion status until ingestion is complete.|
     | Display only selected items| List the files in the container, but doesn't ingest them.  |
 
@@ -115,7 +115,7 @@ When ingesting to a new table, alter various aspects of the table when creating 
 > [!NOTE]
 > For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.
 
-Select **Next: Summary** to generate the LightIngest command.
+Select **Next: Start Ingestion** to generate the LightIngest command.
 
 ## Generate the LightIngest command
 

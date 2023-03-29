@@ -39,10 +39,13 @@ The managed identity policy control commands are:
 
 After assigning the managed identity to your cluster and configuring the relevant managed identity policy usage, you can start using managed identity authentication in the following workflows:
 
-* **External Tables**: Create an external table with managed identity authentication. The authentication is stated as part of the connection string. For instructions on using external tables with managed identity authentication, see [Authenticate external tables with managed identities](external-tables-managed-identities.md).
-* **Event Hub Native Ingestion**: Use a managed identity with event hub native ingestion. For more information, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md).
-* **Python plugin**: Use a managed identity to authenticate to storage accounts of external artifacts that are used in the python plugin. For more information, see [Python plugin](./kusto/query/pythonplugin.md).
-* **SDK based ingestion** When queuing blobs for ingestion from your own storage accounts, you can use managed identities as an alternative to shared access signature (SAS) tokens and Shared Keys authentication methods. For more information, see [Queue blobs for ingestion using managed identity authentication](ingest-data-managed-identity.md).
+
+* **External Tables**: Create an external table with managed identity authentication. The authentication is stated as part of the connection string. For examples, see [storage connection string](./kusto/api/connection-strings/storage-connection-strings.md). For instructions for using external tables with managed identity authentication, see [Authenticate external tables with managed identities](external-tables-managed-identities.md)
+* **Continuous Export**: Run a continuous export on behalf of a managed identity. This is required to run continuous export jobs exporting data to an external table that uses impersonation authentication. This is also required if the query of the Continuous export references tables in other databases. To specify that, add the managed identity identifier in the optional parameters given in the `create-or-alter` command.
+* **Event Hubs Native Ingestion**: Use a managed identity with event hub native ingestion. For more information, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md).
+* **Python plugin**: Use a managed identity to authenticate to storage accounts of external artifacts that are used in the python plugin. Please note that the `SandboxArtifacts` usage needs to be defined on the cluster level managed identity policy. For more information, see [Python plugin](./kusto/query/pythonplugin.md).
+* **SDK based ingestion**: When queuing blobs for ingestion from your own storage accounts, you can use managed identities as an alternative to shared access signature (SAS) tokens and Shared Keys authentication methods. For more information, see [Queue blobs for ingestion using managed identity authentication](ingest-data-managed-identity.md).
+* **Ingest from storage**: Ingest data from files located in cloud storages into a target table using managed identity authentication. Refer to the [ingestion from storage](kusto/management/data-ingestion/ingest-from-storage.md) documentation for examples.
 
 > [!NOTE]
 > Attempting to use managed identities in any other flow will result in the following error message: `"Authentication with a Managed Identity is disabled for this flow"`

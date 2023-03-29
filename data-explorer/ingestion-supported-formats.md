@@ -3,7 +3,7 @@ title: Data formats supported by Azure Data Explorer for ingestion.
 description: Learn about the various data and compression formats supported by Azure Data Explorer for ingestion.
 ms.reviewer: tzgitlin
 ms.topic: conceptual
-ms.date: 08/29/2021
+ms.date: 09/13/2022
 ---
 
 # Data formats supported by Azure Data Explorer for ingestion
@@ -20,15 +20,15 @@ Data ingestion is the process by which data is added to a table and is made avai
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
-|ApacheAvro|`.avro`    |An [AVRO](https://avro.apache.org/docs/current/) format with support for [logical types](https://avro.apache.org/docs/current/spec.html#Logical+Types). The following compression codecs are supported: `null`, `deflate`, and `snappy`. Reader implementation of the `apacheavro` format is based on the official [Apache Avro library](https://github.com/apache/avro).|
-|Avro     |`.avro`     |A legacy implementation for [AVRO](https://avro.apache.org/docs/current/) format based on [.NET library](https://www.nuget.org/packages/Microsoft.Hadoop.Avro). The following compression codecs are supported: `null`, `deflate` (for `snappy` - use `ApacheAvro` data format).|
+|ApacheAvro|`.avro`    |An [AVRO](https://avro.apache.org/docs/current/) format with support for [logical types](https://avro.apache.org/docs/current/spec.html#Logical+Types). The following compression codecs are supported: `null`, `deflate`, and `snappy`. Reader implementation of the `apacheavro` format is based on the official [Apache Avro library](https://github.com/apache/avro). For information about ingesting Event Hub Capture Avro files, see [Ingesting Event Hub Capture Avro files](ingest-data-event-hub-overview.md#schema-mapping-for-event-hub-capture-avro-files). |
+|Avro     |`.avro`     |A legacy implementation for [AVRO](https://avro.apache.org/docs/current/) format based on [.NET library](https://www.nuget.org/packages/Microsoft.Hadoop.Avro). The following compression codecs are supported: `null`, `deflate` (for `snappy` - use `ApacheAvro` data format). |
 |CSV      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
 |JSON     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
 |MultiJSON|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace, `\n` or `\r\n`. Each property bag can be spread on multiple lines. This format is preferred over `JSON`, unless the data is non-property bags.|
 |ORC      |`.orc`      |An [ORC file](https://en.wikipedia.org/wiki/Apache_ORC).|
 |Parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet). |
-|PSV      |`.psv`      |A text file with pipe-separated values (<code>&#124;</code>).|
-|RAW      |`.raw`      |A text file whose entire contents is a single string value.|
+|PSV      |`.psv`      |A text file with pipe-separated values (<code>&#124;</code>). |
+|RAW      |`.raw`      |A text file whose entire contents is a single string value. |
 |SCsv     |`.scsv`     |A text file with semicolon-separated values (`;`).|
 |SOHsv    |`.sohsv`    |A text file with SOH-separated values. (SOH is ASCII codepoint 1; this format is used by Hive on HDInsight.)|
 |TSV      |`.tsv`      |A text file with tab-separated values (`\t`).|

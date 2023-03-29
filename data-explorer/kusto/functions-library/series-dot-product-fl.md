@@ -3,35 +3,36 @@ title: series_dot_product_fl() - Azure Data Explorer
 description: This article describes series_dot_product_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 10/18/2020
+ms.date: 03/13/2023
 ---
 # series_dot_product_fl()
 
 Calculates the dot product of two numerical vectors.
 
-The function `series_dot_product_fl()` takes an expression containing two dynamic numerical arrays as input and calculates their [dot product](https://en.wikipedia.org/wiki/Dot_product).
-
-> [!NOTE]
-> This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+The function `series_dot_product_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing two dynamic numerical arrays as input and calculates their [dot product](https://en.wikipedia.org/wiki/Dot_product).
 
 ## Syntax
 
 `series_dot_product_fl(`*vec1*`,` *vec2*`)`
   
-## Arguments
+## Parameters
 
-* *vec1*: Dynamic array cell of numeric values.
-* *vec2*: Dynamic array cell of numeric values, same length as *vec1*.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*vec1*|dynamic|&check;|An array of numeric values.|
+|*vec2*|dynamic|&check;|An array of numeric values that is the same length as *vec1*.|
 
-## Usage
+## Function definition
 
-`series_dot_product_fl()` is a user-defined function. You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database, as follows:
 
-# [Ad hoc](#tab/adhoc)
+### [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
+Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!IMPORTANT]
+> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_dot_product_fl()`, see [Example](#example).
+
 ```kusto
 let series_dot_product_fl=(vec1:dynamic, vec2:dynamic)
 {
@@ -39,20 +40,16 @@ let series_dot_product_fl=(vec1:dynamic, vec2:dynamic)
     let cum_sum = series_iir(elem_prod, dynamic([1]), dynamic([1,-1]));
     todouble(cum_sum[-1])
 };
-//
-union
-(print 1 | project v1=range(1, 3, 1), v2=range(4, 6, 1)),
-(print 1 | project v1=range(11, 13, 1), v2=range(14, 16, 1))
-| extend v3=series_dot_product_fl(v1, v2)
+// Write your query to use the function here.
 ```
 
-# [Persistent](#tab/persistent)
+### [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
 
-### One-time installation
+> [!IMPORTANT]
+> You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Calculate the dot product of 2 numerical arrays")
 series_dot_product_fl(vec1:dynamic, vec2:dynamic)
@@ -63,9 +60,35 @@ series_dot_product_fl(vec1:dynamic, vec2:dynamic)
 }
 ```
 
-### Usage
+---
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+## Example
+
+### [Query-defined](#tab/query-defined)
+
+To use a query-defined function, invoke it after the embedded function definition.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32Qy4oDIRBF935FLRXMwk7IIqG/JAxNRivBwUdjq0yYzL9P9SMPwhB39+o5JeUww4DJ4tCZmLs+RVN07k6u5RW12plLOHqrJVBqbkmwHwZ0HMHo0E8YtDeRLy7b3l0mw0yK/R3QxXdD8Y/n1iZ+t0hYZvCD+hDPSa6oWDw5mlg+HfJFdhjv2O+elWBjYLxPNmRQcAVyfqHOUFWbjuGMnD60lqBIXZul2kjYjpWQ70lC1SurCFYzza6A3xmDgbpu/90pr+M6GvEHdvJymnUBAAA=" target="_blank">Run the query</a>
+
+```kusto
+let series_dot_product_fl=(vec1:dynamic, vec2:dynamic)
+{
+    let elem_prod = series_multiply(vec1, vec2);
+    let cum_sum = series_iir(elem_prod, dynamic([1]), dynamic([1,-1]));
+    todouble(cum_sum[-1])
+};
+union
+(print 1 | project v1=range(1, 3, 1), v2=range(4, 6, 1)),
+(print 1 | project v1=range(11, 13, 1), v2=range(14, 16, 1))
+| extend v3=series_dot_product_fl(v1, v2)
+```
+
+### [Stored](#tab/stored)
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
+
 ```kusto
 union
 (print 1 | project v1=range(1, 3, 1), v2=range(4, 6, 1)),
@@ -74,5 +97,7 @@ union
 ```
 
 ---
+
+**Output**
 
 :::image type="content" source="images/series-dot-product-fl/dot-product-result.png" alt-text="Table showing the result of dot product of 2 vectors using user-defined function series_dot_product_fl in Azure Data Explorer." border="false":::

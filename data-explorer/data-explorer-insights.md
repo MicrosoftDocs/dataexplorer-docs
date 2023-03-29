@@ -1,15 +1,15 @@
 ---
-title: Azure Data Explorer Insights| Microsoft Docs
-description: This article describes how to use Azure Data Explorer Insights.
+title: Azure Data Explorer Clusters insights
+description: This article describes how to use Azure Data Explorer Clusters Insights.
 ms,reviewer: guregini
 ms.topic: conceptual
 ms.date: 05/24/2022
 ms.custom: subject-monitoring
 ---
 
-# Azure Data Explorer Insights
+# Azure Data Explorer Clusters Insights
 
-Azure Data Explorer Insights provides comprehensive monitoring of your clusters by delivering a unified view of your cluster performance, operations, usage, and failures.
+Azure Data Explorer Clusters Insights provides comprehensive monitoring of your clusters by delivering a unified view of your cluster performance, operations, usage, and failures.
 
 It offers:
 
@@ -17,7 +17,7 @@ It offers:
 - **Drill-down analysis**. You can drill down into a particular Azure Data Explorer cluster to perform detailed analysis.
 - **Customization**. You can change which metrics you want to see, modify or set thresholds that align with your limits, and save your own custom workbooks. Charts in a workbook can be pinned to Azure dashboards.
 
-This article will help you understand how to onboard and use Azure Data Explorer Insights.
+This article will help you understand how to onboard and use Azure Data Explorer Clusters Insights.
 
 ## View from Azure Monitor (at-scale perspective)
 
@@ -67,16 +67,16 @@ The **Export Performance** tab provides information on exported records, latenes
 
 ## View from an Azure Data Explorer Cluster resource (drill-down analysis)
 
-To access Azure Data Explorer Insights directly from an Azure Data Explorer cluster:
+To access Azure Data Explorer Clusters Insights directly from an Azure Data Explorer cluster:
 
 1. In the Azure portal, select **Azure Data Explorer Clusters**.
 
 2. From the list, choose an Azure Data Explorer cluster. In the monitoring section, select **Insights**.
 
-You can also access these views by selecting the resource name of an Azure Data Explorer cluster from within the Azure Monitor insights view.
+You can also access these views by selecting the resource name of an Azure Data Explorer cluster from within the Azure Monitor Insights view.
 
 > [!NOTE]
-> Azure Data Explorer Insights combines both logs and metrics to provide a global monitoring solution. The inclusion of logs-based visualizations requires users to [enable diagnostic logging of their Azure Data Explorer cluster and send them to a Log Analytics workspace](./using-diagnostic-logs.md?tabs=commands-and-queries#enable-diagnostic-logs). The diagnostic logs that should be enabled are **Command**, **Query**, **SucceededIngestion**, **FailedIngestion**, **IngestionBatching**, **TableDetails**, and **TableUsageStatistics**. (Enabling **SucceededIngestion** logs might be costly. Enable them only if you need to monitor successful ingestions.)
+> Azure Data Explorer Clusters Insights combines both logs and metrics to provide a global monitoring solution. The inclusion of logs-based visualizations requires users to [enable diagnostic logging of their Azure Data Explorer cluster and send them to a Log Analytics workspace](./using-diagnostic-logs.md?tabs=commands-and-queries#enable-diagnostic-logs). The diagnostic logs that should be enabled are **Command**, **Query**, **SucceededIngestion**, **FailedIngestion**, **IngestionBatching**, **TableDetails**, and **TableUsageStatistics**. (Enabling **SucceededIngestion** logs might be costly. Enable them only if you need to monitor successful ingestions.)
 
 :::image type="content" source="media/data-explorer-insights/enable-logs.png" alt-text="Screenshot of the button for configuring logs for monitoring.":::
 
@@ -155,7 +155,7 @@ You can pin any one of the metric sections (of the "at-scale" perspective) to an
 
 :::image type="content" source="media/data-explorer-insights/pin.png" alt-text="Screenshot of the pin to Azure dashboard icon selected.":::
 
-## Customize Azure Data Explorer Insights
+## Customize Azure Data Explorer Clusters Insights
 
 You can edit the workbook to customize it in support of your data analytics needs:
 
@@ -175,11 +175,11 @@ Customizations are saved to a custom workbook to prevent overwriting the default
 
 For general troubleshooting guidance, see [Troubleshooting workbook-based insights](/azure/azure-monitor/insights/troubleshoot-workbooks).
 
-The following sections will help you diagnose and troubleshoot of some of the common problems that you might encounter when using Azure Data Explorer Insights.
+The following sections will help you diagnose and troubleshoot of some of the common problems that you might encounter when using Azure Data Explorer Clusters Insights.
 
 ### Why don't I see all my subscriptions in the subscription picker?
 
-Azure Data Explorer Insights shows only subscriptions that contain Azure Data Explorer clusters chosen from the selected subscription filter. You select a subscription filter under **Directory + subscription** in the Azure portal.
+ shows only subscriptions that contain Azure Data Explorer clusters chosen from the selected subscription filter. You select a subscription filter under **Directory + subscription** in the Azure portal.
 
 :::image type="content" source="/azure/azure-monitor/insights/media/key-vaults-insights-overview/Subscriptions.png" alt-text="Screenshot of selecting a subscription filter.":::
 
@@ -190,6 +190,8 @@ To view your logs-based data, you need to [enable diagnostic logs](./using-diagn
 ### I've already enabled logs for my Azure Data Explorer cluster. Why am I still unable to see my data under Commands and Queries?
 
 Currently, diagnostic logs don't work retroactively. The data will start appearing after actions have been taken in Azure Data Explorer. It might take some time, ranging from hours to a day, depending on how active your Azure Data Explorer cluster is.
+
+[!INCLUDE [azure-monitor-vs-log-analytics](includes/azure-monitor-vs-log-analytics.md)]
 
 ## Next steps
 

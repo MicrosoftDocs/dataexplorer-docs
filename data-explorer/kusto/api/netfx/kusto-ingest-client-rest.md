@@ -263,9 +263,9 @@ internal static string PrepareIngestionMessage(string db, string table, string d
 
     message.Add("AdditionalProperties", new JObject(
                                             new JProperty("authorizationContext", identityToken),
-                                            new JProperty("jsonMappingReference", mappingRef),
+                                            new JProperty("mappingReference", mappingRef),
                                             // Data is in JSON format
-                                            new JProperty("format", "json")));
+                                            new JProperty("format", "multijson")));
     return message.ToString();
 }
 ```

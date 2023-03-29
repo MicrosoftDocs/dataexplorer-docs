@@ -11,9 +11,15 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates Az
 
 The Event Grid ingestion pipeline goes through several steps. You create a target table in Azure Data Explorer into which the [data in a particular format](#data-format) will be ingested. Then you create an Event Grid data connection in Azure Data Explorer. The Event Grid data connection needs to know [events routing](#events-routing) information, such as what table to send the data to and the table mapping. You also specify [ingestion properties](#ingestion-properties), which describe the data to be ingested, the target table, and the mapping. You can generate sample data and [upload blobs](#upload-blobs) or [rename blobs](#rename-blobs) to test your connection. [Delete blobs](#delete-blobs-using-storage-lifecycle) after ingestion.
 
-Event Grid ingestion can be managed through the [Azure portal](ingest-data-event-grid.md), using the [ingestion wizard](one-click-ingestion-new-table.md), programmatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md).
+Event Grid ingestion can be managed through the [Azure portal](ingest-data-event-grid.md), using the [ingestion wizard](/azure/data-explorer/ingest-from-container), programmatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
+
+[!INCLUDE [data-connection-auth](includes/data-connection-auth.md)]
+
+* So that the MI can fetch data from Azure Storage, it should have at least:
+  * [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) on the Azure Event Hubs.
+  * [Storage Blob Data Reader](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) on the Azure Storage account.
 
 ## Data format
 
@@ -109,5 +115,5 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
 * [Create an Event Grid data connection for Azure Data Explorer by using C#](data-connection-event-grid-csharp.md)
 * [Create an Event Grid data connection for Azure Data Explorer by using Python](data-connection-event-grid-python.md)
 * [Create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
-* [Ingest data from Azure Event Hubs into Azure Data Explorer using the ingestion wizard](one-click-event-hub.md)
-* [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](one-click-ingestion-new-table.md)
+* [Ingest data from Azure Event Hubs into Azure Data Explorer using the ingestion wizard](./event-hub-wizard.md)
+* [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container)

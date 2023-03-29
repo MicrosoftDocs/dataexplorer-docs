@@ -9,6 +9,8 @@ ms.date: 06/03/2019
 # Create an Azure Data Explorer cluster and database by using Python
 
 > [!div class="op_single_selector"]
+>
+> * [Web UI free cluster](start-for-free-web-ui.md)
 > * [Portal](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
@@ -59,7 +61,7 @@ For running the examples in this article, we need an Azure AD Application and se
     )
 
     location = 'Central US'
-    sku_name = 'Standard_D13_v2'
+    sku_name = 'Standard_E8ads_v5'
     capacity = 5
     tier = "Standard"
     resource_group_name = 'testrg'
@@ -77,7 +79,7 @@ For running the examples in this article, we need an Azure AD Application and se
    |**Setting** | **Suggested value** | **Field description**|
    |---|---|---|
    | cluster_name | *mykustocluster* | The desired name of your cluster.|
-   | sku_name | *Standard_D13_v2* | The SKU that will be used for your cluster. |
+   | sku_name | *Standard_E8ads_v5* | The SKU that will be used for your cluster. |
    | tier | *Standard* | The SKU tier. |
    | capacity | *number* | The number of instances of the cluster. |
    | resource_group_name | *testrg* | The resource group name where the cluster will be created. |

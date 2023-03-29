@@ -1,38 +1,43 @@
 ---
 title: array_length() - Azure Data Explorer
-description: This article describes array_length() in Azure Data Explorer.
+description: Learn how to use the array_length() function to calculate the number of elements in a dynamic array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 11/20/2022
 ---
 # array_length()
 
 Calculates the number of elements in a dynamic array.
 
+> **Deprecated aliases:** arraylength()
+
 ## Syntax
 
 `array_length(`*array*`)`
 
-## Arguments
+## Parameters
 
-* *array*: A `dynamic` value.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *array* | dynamic | &check; | The array for which to calculate length.
 
 ## Returns
 
-The number of elements in *array*, or `null` if *array* isn't an array.
+Returns the number of elements in *array*, or `null` if *array* isn't an array.
 
 ## Examples
 
+The following example shows the number of elements in the array.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKkqsjM9JzUsvydAoSCwqTo3PKs7P01CPNtRRMNJRMNZRUErLLy1SilXX1AQAe4KK2TMAAAA=" target="_blank">Run the query</a>
+
 ```kusto
-print array_length(parse_json('[1, 2, 3, "four"]')) == 4
-
-print array_length(parse_json('[8]')) == 1
-
-print array_length(parse_json('[{}]')) == 1
-
-print array_length(parse_json('[]')) == 0
-
-print array_length(parse_json('{}')) == null
-
-print array_length(parse_json('21')) == null
+print array_length(dynamic([1, 2, 3, "four"]))
 ```
+
+**Output**
+
+|print_0|
+|--|
+|4|

@@ -3,7 +3,7 @@ title: 'Add database principals for Azure Data Explorer by using Python'
 description: In this article, you learn how to add database principals for Azure Data Explorer by using Python.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 02/03/2020
+ms.date: 09/11/2022
 ---
 
 # Add database principals for Azure Data Explorer by using Python
@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 > * [Python](database-principal-python.md)
 > * [Azure Resource Manager template](database-principal-resource-manager.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. In this article, you add database principals for Azure Data Explorer by using Python.
+In this article, you'll use Python to add database principals for Azure Data Explorer.
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 
 ## Install Python package
 
@@ -67,7 +67,7 @@ tenant_id_for_principal = tenantId
 #User, App, or Group
 principal_type = "App"
 
-#Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, check https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.database_principal_assignments.create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, principal_assignment_name= principal_assignment_name, parameters=DatabasePrincipalAssignment(principal_id=principal_id, role=role, tenant_id=tenant_id_for_principal, principal_type=principal_type))
 ```
 

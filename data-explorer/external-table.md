@@ -13,7 +13,7 @@ An external table is a schema entity that references data stored outside the Azu
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 ## Create an external table
@@ -137,4 +137,4 @@ The resulting table includes data from all the files that fit the criteria defin
 * [Create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md)
 * [External tables overview](kusto/query/schema-entities/externaltables.md)
 * [external_table() function](kusto/query/externaltablefunction.md)
-* [Write queries for Azure Data Explorer](write-queries.md)
+* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

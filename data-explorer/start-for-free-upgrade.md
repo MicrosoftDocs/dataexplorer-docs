@@ -3,7 +3,7 @@ title: Upgrade a free Azure Data Explorer cluster.
 description: This article you'll learn how to upgrade a free cluster to into your data using your free cluster.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 06/02/2022
+ms.date: 09/12/2022
 ---
 
 # Upgrade a free Azure Data Explorer cluster
@@ -25,8 +25,10 @@ Use the following steps to upgrade your free cluster to a full cluster. If you'r
 
 > [!NOTE]
 > Once the migration has started and until it's completed, you can't delete the cluster and you can't create or delete new databases.
-> 
+>
 > In the last phase of the migration, when data is copied to the new cluster, queries continue to work as normal. No new data is ingested, but data can still be queued for ingestion and shortly after the migration is complete, the data is ingested into the new cluster.
+>
+> If you don't have Event Hubs owner permission on the cluster, the [ingest from Event Hubs data connection](start-for-free-event-hubs.md) will not migrated to the new cluster. You can create a new data connection to Event Hubs on the new cluster.
 
 1. Go to [My Cluster](https://aka.ms/kustofree) and select **Upgrade to Azure cluster**.
 
@@ -56,6 +58,6 @@ Use the following steps to upgrade your free cluster to a full cluster. If you'r
 ## Next steps
 
 - [Network security for Azure Data Explorer](security-network-overview.md)
-- [Ingest data into your cluster](ingest-data-one-click.md)
+- [What is the ingestion wizard?](./ingest-data-wizard.md)
 - [Visualize data with dashboards](azure-data-explorer-dashboards.md)
 - [Monitor your cluster with metrics](using-metrics.md)

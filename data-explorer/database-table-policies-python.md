@@ -18,7 +18,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * [A test table](python-ingest-data.md#create-a-table-on-your-cluster).
 
 ## Install the data libraries
@@ -60,7 +60,7 @@ resource_group_name = "testrg";
 cluster_name = "mykustocluster";
 database_name = "mykustodatabase";
 
-#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kustoManagementClient.databases.update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name,
                                            parameters=DatabaseUpdate(soft_delete_period=datetime.timedelta(days=10)))
 ```
@@ -93,7 +93,7 @@ resource_group_name = "testrg";
 cluster_name = "mykustocluster";
 database_name = "mykustodatabase";
 
-#Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kustoManagementClient.databases.update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name,
                                            parameters=DatabaseUpdate(hot_cache_period=datetime.timedelta(days=5)))
 ```

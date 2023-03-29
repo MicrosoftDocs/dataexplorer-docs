@@ -3,7 +3,7 @@ title: 'Ingest data with Azure Data Explorer .NET SDK'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using .NET SDK.
 ms.reviewer: vladikb
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 09/07/2022
 
 # Customer intent: As a .NET SDK developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -22,8 +22,8 @@ These libraries enable you to ingest (load) data into a cluster and query data f
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 
 ## Install the ingest library
 
@@ -58,7 +58,7 @@ Azure Data Explorer SDK provides a convenient way to set up the authentication m
 
 ### Construct the connection string
 
-Now you can construct the Azure Data Explorer connection string. You will create the destination table and mapping in a later step.
+Now you can construct the Azure Data Explorer connection string. You'll create the destination table and mapping in a later step.
 
 ```csharp
 var tenantId = "<TenantId>";
@@ -165,7 +165,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## Define batching policy for your table
 
-Batching incoming data optimizes data shard size, which is controlled by the [ingestion batching policy](kusto/management/batchingpolicy.md) and can be modified by the [ingestion batching policy control command](./kusto/management/show-table-ingestion-batching-policy.md). Use this policy to reduce latency of slowly arriving data.
+Batching incoming data optimizes data shard size, which is controlled by the [ingestion batching policy](kusto/management/batchingpolicy.md). Modify the policy with the [ingestion batching policy control command](./kusto/management/show-table-ingestion-batching-policy.md). Use this policy to reduce latency of slowly arriving data.
 
 ```csharp
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
@@ -180,9 +180,9 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 }
 ```
 
-We recommend defining a `Raw Data Size` value for ingested data and incrementally decreasing the size towards 250MB, while checking if performance improves.
+We recommend defining a `Raw Data Size` value for ingested data and incrementally decreasing the size towards 250 MB, while checking if performance improves.
 
-You can use the `Flush Immediately` property to skip batching, although this is not recommended for large-scale ingestion as it can cause poor performance. 
+You can use the `Flush Immediately` property to skip batching, although this isn't recommended for large-scale ingestion as it can cause poor performance. 
 
 ## Queue a message for ingestion
 
@@ -254,4 +254,4 @@ If you plan to follow our other articles, keep the resources you created. If not
 
 ## Next steps
 
-* [Write queries](write-queries.md)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

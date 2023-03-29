@@ -3,14 +3,14 @@ title: "Create an Event Hubs data connection for Azure Data Explorer by using Py
 description: In this article, you learn how to create an Event Hubs data connection for Azure Data Explorer by using Python.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 03/15/2022
+ms.date: 09/12/2022
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer by using Python
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [One-click](one-click-event-hub.md)
+> * [Ingestion wizard](./event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
@@ -21,11 +21,10 @@ In this article, you create an Event Hubs data connection for Azure Data Explore
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * [Python 3.4+](https://www.python.org/downloads/).
-* [Table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
-* [Database and table policies](database-table-policies-python.md) (optional).
-* [Event Hubs with data for ingestion](ingest-data-event-hub.md#create-an-event-hub).
+* A [table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
+* An [event hub](ingest-data-event-hub.md#create-an-event-hub) with data for ingestion.
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]
 
@@ -68,7 +67,7 @@ table_name = "mytable"
 mapping_rule_name = "mytablemappingrule"
 data_format = "csv"
 database_routing = "Multi"
-#Returns an instance of LROPoller, check https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller, check https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.data_connections.create_or_update(
             resource_group_name=resource_group_name,
             cluster_name=cluster_name,
@@ -105,5 +104,7 @@ print(poller.result())
 | consumer_group | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
 | databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-hub-overview.md#events-routing). |
+
+[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-python](includes/data-explorer-data-connection-clean-resources-python.md)]

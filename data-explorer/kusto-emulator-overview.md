@@ -40,10 +40,10 @@ There are some overlaps between the Kusto emulator and the [free cluster](start-
 |--|--|--|
 | Storage (uncompressed) | Only limited by host capacity | Approx. 100 GB |
 | Databases | Up to 10000 | Up to 10 |
-| Tables per database | Unlimited | Up to 100 |
-| Columns per table | Unlimited | Up to 200 |
+| Tables per database | 10000 | Up to 100 |
+| Columns per table | 10000 | Up to 200 |
 | External tables | To *local* files | No support |
-| Materialized views per database | Unlimited | Up to 5 |
+| Materialized views per database | 1000 | Up to 5 |
 | Managed ingestion pipelines | None | All of them |
 | Security features | None | Encrypted connection only |
 | Long term data management | No extent merge capability | Full support |

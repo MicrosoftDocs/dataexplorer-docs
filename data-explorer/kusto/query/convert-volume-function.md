@@ -1,9 +1,9 @@
 ---
 title: convert_volume() - Azure Data Explorer
-description: This article describes convert_volume() in Azure Data Explorer.
+description: Learn how to use the convert_volume() function to convert a volume input value from one unit to another.
 ms.reviewer: itsagui
 ms.topic: reference
-ms.date: 07/03/2022
+ms.date: 11/23/2022
 ---
 # convert_volume
 
@@ -13,13 +13,13 @@ Convert a volume value from one unit to another.
 
 `convert_volume(`*value*`,`*from*`,`*to*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| `value` | real | &check; | The value to be converted. |
-| `from` | string | &check; | The unit to convert from. For possible values, see [Conversion units](#conversion-units). |
-| `to` | string | &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
+| *value* | real | &check; | The value to be converted. |
+| *from* | string | &check; | The unit to convert from. For possible values, see [Conversion units](#conversion-units). |
+| *to* | string | &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
 ### Conversion units
 
@@ -78,15 +78,18 @@ Convert a volume value from one unit to another.
 
 ## Returns
 
-Returns the input value converted from one volume unit to another.
+Returns the input value converted from one volume unit to another. Invalid units return `null`.
 
-## Examples
+## Example
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJL8vPKc1N1TDUM9JRUHcuTcpM9k0tSS1SB/Ick4tS3fLzS9Q1Abo7scQ8AAAA)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJL8vPKc1N1TDUM9JRUHcuTcpM9k0tSS1SB/Ick4tS3fLzS9Q1Abo7scQ8AAAA" target="_blank">Run the query</a>
 
 ```kusto
 print result = convert_volume(1.2, 'CubicMeter', 'AcreFoot')
 ```
+
+**Output**
 
 |result|
 |---|

@@ -1,9 +1,9 @@
 ---
 title: datatable operator - Azure Data Explorer
-description: This article describes datatable operator in Azure Data Explorer.
+description: Learn how to use the datatable operator to define a table with given schema and data.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/23/2022
+ms.date: 11/24/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -16,26 +16,25 @@ Returns a table whose schema and values are defined in the query itself.
 
 ## Syntax
 
-`datatable` `(` *ColumnName* `:` *ColumnType* [`,` ...] `)` `[` *ScalarValue* [`,` *ScalarValue* ...] `]`
+`datatable(` *ColumnName* `:` *ColumnType* [`,` ...] `[` *ScalarValue* [`,` *ScalarValue* ...] `])`
 
-## Arguments
+## Parameters
 
 ::: zone pivot="azuredataexplorer"
 
-* *ColumnName*, *ColumnType*: These arguments define the schema of the table. The arguments use the same syntax as used when defining a table.
-  For more information, see [.create table](../management/create-table-command.md)).
-* *ScalarValue*: A constant scalar value to insert into the table. The number of values
-  must be an integer multiple of the columns in the table. The *n*'th value
-  must have a type that corresponds to column *n* % *NumColumns*.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ColumnName*:*ColumnType* | string | &check; | The name of column and type of data in that column that define the schema of the table.|
+| *ScalarValue* | scalar | &check; | The value to insert into the table. The number of values must be an integer multiple of the columns in the table. The *n*'th value must have a type that corresponds to column *n* % *NumColumns*. |
 
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
 
-* *ColumnName*, *ColumnType*: These arguments define the schema of the table.
-* *ScalarValue*: A constant scalar value to insert into the table. The number of values
-  must be an integer multiple of the columns in the table. The *n*'th value
-  must have a type that corresponds to column *n* % *NumColumns*.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ColumnName*: *ColumnType* | string | &check; | The name of column and type of data in that column that define the schema of the table.|
+| *ScalarValue* | scalar | &check; | The value to insert into the table. The number of values must be an integer multiple of the columns in the table. The *n*'th value must have a type that corresponds to column *n* % *NumColumns*. |
 
 ::: zone-end
 
@@ -44,6 +43,9 @@ Returns a table whose schema and values are defined in the query itself.
 This operator returns a data table of the given schema and data.
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XRS4vCMBAA4Lu/YsiphbiY1upa0IPYo8velz2kZtRgTCCNL1z/uxNZd6HYJAQyj++QUTLQrg0mCxmwVHQFvUcO1RFtKJvgtd1wWDqPVCBLdbFyr1cpfPWA1rM+ERMx6A9GfSFSDmzuvGUcfouTK9vhRbCSHaU5oKBMDGTPQMZuKW9zOXGCTuQqG9A3UK2cQfiQ1ISdet7Wh6/0Iv/XPw+10c0WFay1bwLUzu06+aLNj17xk3H8i6yI/EKj6uTGbe79wX33fuC0RY9AAzBok8c0UpjBkDJ4DmgVxDaY/o3mLb7vp72pd88BAAA=" target="_blank">Run the query</a>
 
 ```kusto
 datatable(Date:datetime, Event:string, MoreData:dynamic) [
@@ -56,7 +58,7 @@ datatable(Date:datetime, Event:string, MoreData:dynamic) [
 | extend key2 = MoreData.key2
 ```
 
-Result:
+**Output**
 
 |Date|Event|MoreData|key2|
 |---|---|---|---|

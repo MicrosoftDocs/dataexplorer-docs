@@ -14,4 +14,4 @@ Table type | Mapping type | Available adjustments|
 | | Existing mapping | Sort ascending, Sort descending
 
 > [!NOTE]
-> When adding a new column or updating a column, you can change mapping transformations. For more information, see [Mapping transformations](../ingest-data-one-click.md#mapping-transformations)
+> When adding a new column or updating a column, you can change mapping transformations. For more information, see [Mapping transformations](../ingest-data-wizard.md#mapping-transformations)

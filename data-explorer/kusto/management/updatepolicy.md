@@ -26,15 +26,30 @@ If the update policy is defined on the target table, multiple queries can run on
 
 ### Query limitations
 
-* The policy-related query can invoke stored functions, but can't include cross-database or cross-cluster queries.
+* The policy-related query can invoke stored functions, but can't access data external to the database; specifically:
+  * It can't perform cross-database queries.
+  * It can't perform cross-cluster queries.
+  * It can't access external data or external tables.
+  * It can't make callouts (by using a plugin).
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled or with a [Row Level Security policy](rowlevelsecuritypolicy.md) enabled.
-* When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
-    * Don't use the qualified name of the table. Instead, use `TableName`.
-    * Don't use `database("DatabaseName").TableName` or `cluster("ClusterName").database("DatabaseName").TableName`.
 * For update policy limitations in streaming ingestion, see [streaming ingestion limitations](../../ingest-data-streaming.md#limitations).
 
 > [!WARNING]
 > An incorrect query might prevent data ingestion into the source table.
+
+> The limitations above, and the "compatibility" between the query results and
+> the schema of the source and destination tables, might cause an incorrect
+> query to prevent data ingestion into the source table.
+>
+> Those limitations are validated when the policy is created and executed,
+> but not when arbitrary stored functions that the query might reference are
+> updated. Therefore it's important to make such changes with an eye towards
+> keeping the update policy intact.
+
+When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
+
+* Don't use the qualified name of the table. Instead, use `TableName`.
+* Don't use `database("DatabaseName").TableName` or `cluster("ClusterName").database("DatabaseName").TableName`.
 
 ## The update policy object
 
@@ -90,6 +105,9 @@ After ingesting data to the target table, you may want to remove it from the sou
 * The source data doesn't persist in durable storage as part of the ingestion operation
 * Operational performance improves. Post-ingestion resources are reduced for background grooming operations on [extents](../management/extents-overview.md) in the source table.
 
+> [!NOTE]
+> When the source table has a soft delete period of `0sec` (or `00:00:00`), any update policy referencing this table must be transactional.
+
 ## Performance impact
 
 Update policies can affect cluster performance, and ingestion for data extents is multiplied by the number of target tables. It's important to optimize the policy-related query. You can test an update policy's performance impact by invoking the policy on already-existing extents, before creating or altering the policy, or on the function used with the query.
@@ -110,9 +128,11 @@ let _extentId = toscalar(
     | top 1 by IngestionTime desc
     | project ExtentId
 );
-let MyFunction = 
+// This scopes the source table to the single recent extent.
+let MySourceTable = 
     MySourceTable
     | where ingestion_time() > ago(10m) and extent_id() == _extentId;
+// This invokes the function in the update policy (that internally references `MySourceTable`).
 MyFunction
 ```
 
@@ -183,7 +203,7 @@ In this example, use an update policy in conjunction with a simple function to p
 
     ```kusto
     .alter table MyTargetTable policy update 
-    @'[{ "IsEnabled": true, "Source": "MySourceTable", "Query": "ExtractMyLogs()", "IsTransactional": false, "PropagateIngestionProperties": false}]'
+    @'[{ "IsEnabled": true, "Source": "MySourceTable", "Query": "ExtractMyLogs()", "IsTransactional": true, "PropagateIngestionProperties": false}]'
     ```
 
 1. To empty the source table after data is ingested into the target table, define the retention policy on the source table to have 0s as its `SoftDeletePeriod`.

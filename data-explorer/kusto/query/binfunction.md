@@ -1,9 +1,9 @@
 ---
 title: bin() - Azure Data Explorer
-description: This article describes bin() in Azure Data Explorer.
+description: Learn how to use the bin() function to round values down to an integer multiple of a given bin size. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/09/2023
 adobe-target: true
 ---
 # bin()
@@ -13,26 +13,22 @@ Rounds values down to an integer multiple of a given bin size.
 Used frequently in combination with [`summarize by ...`](./summarizeoperator.md).
 If you have a scattered set of values, they'll be grouped into a smaller set of specific values.
 
-Null values, a null bin size, or a negative bin size will result in null.
-
-Alias to `floor()` function.
+> The `bin()` and `floor()` functions are equivalent
 
 ## Syntax
 
 `bin(`*value*`,`*roundTo*`)`
 
-## Arguments
+## Parameters
 
-* *value*: A number, date, or [timespan](scalar-data-types/timespan.md).
-* *roundTo*: The "bin size". A number or timespan that divides *value*.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *value* |  int, long, real, [timespan](scalar-data-types/timespan.md), or datetime | &check; | The value to round down. |
+| *roundTo* |  int, long, real, or [timespan](scalar-data-types/timespan.md) | &check; | The "bin size" that divides *value*. |
 
 ## Returns
 
-The nearest multiple of *roundTo* below *value*.
-
-```kusto
-(toint((value/roundTo))) * roundTo`
-```
+The nearest multiple of *roundTo* below *value*. Null values, a null bin size, or a negative bin size will result in null.
 
 ## Examples
 

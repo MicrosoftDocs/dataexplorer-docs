@@ -1,15 +1,16 @@
 ---
 title: Timezone - Azure Data Explorer
-description: This article gives a list of timezones in Azure Data Explorer.
+description: This article is about the timezones supported by the Internet Assigned Numbers Authority Time Zone Database (IANA) in Azure Data Explorer.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 07/12/2022
+ms.date: 02/20/2023
 ---
 # Timezones
 
 The following is a list of timezones supported by the [Internet Assigned Numbers Authority (IANA) Time Zone Database](https://www.iana.org/time-zones).
 
 Related functions:
+
 * [datetime_local_to_utc()](datetime-local-to-utc-function.md)
 * [datetime_utc_to_local()](datetime-utc-to-local-function.md)
 
@@ -266,11 +267,10 @@ Related functions:
 | Asia/Beirut                      |
 | Asia/Bishkek                     |
 | Asia/Brunei                      |
-| Asia/Calcutta                    |
+| Asia/Kolkata                     |
 | Asia/Chita                       |
 | Asia/Choibalsan                  |
 | Asia/Chongqing                   |
-| Asia/Chungking                   |
 | Asia/Colombo                     |
 | Asia/Dacca                       |
 | Asia/Damascus                    |
@@ -282,7 +282,7 @@ Related functions:
 | Asia/Gaza                        |
 | Asia/Harbin                      |
 | Asia/Hebron                      |
-| Asia/Ho\_Chi\_Minh               |
+| Asia/Ho\_Chi\_Minh\_City         |
 | Asia/Hong\_Kong                  |
 | Asia/Hovd                        |
 | Asia/Irkutsk                     |
@@ -319,9 +319,8 @@ Related functions:
 | Asia/Qatar                       |
 | Asia/Qostanay                    |
 | Asia/Qyzylorda                   |
-| Asia/Rangoon                     |
+| Asia/Yangon (Rangoon)            |
 | Asia/Riyadh                      |
-| Asia/Saigon                      |
 | Asia/Sakhalin                    |
 | Asia/Samarkand                   |
 | Asia/Seoul                       |
@@ -462,7 +461,7 @@ Related functions:
 | Europe/Istanbul                  |
 | Europe/Jersey                    |
 | Europe/Kaliningrad               |
-| Europe/Kiev                      |
+| Europe/Kyiv                      |
 | Europe/Kirov                     |
 | Europe/Lisbon                    |
 | Europe/Ljubljana                 |
@@ -587,10 +586,9 @@ Related functions:
 | Pacific/Yap                      |
 | Poland                           |
 | Portugal                         |
-| ROC                              |
 | ROK                              |
 | Singapore                        |
-| Turkey                           |
+| Türkiye                          |
 | UCT                              |
 | US/Alaska                        |
 | US/Aleutian                      |

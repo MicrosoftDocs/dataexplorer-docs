@@ -3,7 +3,7 @@ title: .alter materialized view row level security policy command- Azure Data Ex
 description: This article describes the .alter materialized view row level security policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 10/04/2021
+ms.date: 02/21/2023
 ---
 # .alter materialized view row level security policy
 
@@ -18,9 +18,19 @@ Enable or disable a materialized view's [row_level_security policy](rowlevelsecu
 
 For more information about running queries on the row level security policy, see [row_level_security policy](rowlevelsecuritypolicy.md).
 
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+
 ## Syntax
 
 `.alter` `materialized-view` *MaterializedViewName* `policy` `row_level_security` [`enable` | `disable`]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view for which to turn on or off the row level security policy.|
 
 ### Example
 

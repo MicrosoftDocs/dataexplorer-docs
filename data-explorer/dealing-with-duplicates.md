@@ -10,7 +10,7 @@ ms.date: 12/19/2018
 
 # Handle duplicate data in Azure Data Explorer
 
-Devices sending data to the Cloud maintain a local cache of the data. Depending on the data size, the local cache could be storing data for days or even months. You want to safeguard your analytical databases from malfunctioning devices that resend the cached data and cause data duplication in the analytical database. This topic outlines best practices for handling duplicate data for these types of scenarios.
+Devices sending data to the cloud maintain a local cache of the data. Depending on the data size, the local cache could be storing data for days or even months. You want to safeguard your analytical databases from malfunctioning devices that resend the cached data and cause data duplication in the analytical database. Duplicates can affect the number of records returned by a query. This is relevant when you need a precise count of records, such as counting events. This topic outlines best practices for handling duplicate data for these types of scenarios.
 
 The best solution for data duplication is preventing the duplication. If possible, fix the issue earlier in the data pipeline, which saves costs associated with data movement along the data pipeline and avoids spending resources on coping with duplicate data ingested into the system. However, in situations where the source system can't be modified, there are various ways to deal with this scenario.
 
@@ -92,4 +92,4 @@ Data duplication can be handled in multiple ways. Evaluate the options carefully
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Write queries for Azure Data Explorer](write-queries.md)
+> [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

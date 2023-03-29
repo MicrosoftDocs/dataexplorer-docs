@@ -3,7 +3,7 @@ title: Create a free Azure Data Explorer cluster.
 description: This article you'll learn how to create a free cluster, ingest data, and run queries to gain insights into your data using your free cluster.
 ms.reviewer: avnera
 ms.topic: how-to
-ms.date: 02/27/2022
+ms.date: 09/11/2022
 ---
 
 # Create a free Azure Data Explorer cluster
@@ -40,7 +40,7 @@ Start by creating your free cluster.
 
 ## Work with your free cluster
 
-:::image type="content" source="media/start-for-free-web-ui/start-for-free-overview-page.png" alt-text="Screenshot of a free cluster, showing the overview page.":::
+:::image type="content" source="media/start-for-free-web-ui/start-for-free-overview-page.png" alt-text="Screenshot of a free cluster, showing the overview page." lightbox="media/start-for-free-web-ui/start-for-free-overview-page.png":::
 
 On your cluster's overview page, you'll see the following:
 
@@ -48,6 +48,7 @@ On your cluster's overview page, you'll see the following:
 1. Your cluster's location, policies, and URI links for connecting to your cluster via our [APIs](kusto/api/index.md) or other tools.
 1. [Quick actions](#quick-actions) you can take to get started with your cluster.
 1. A list of databases in your cluster.
+1. A list of data connections in your cluster.
 
 ### Quick actions
 
@@ -55,9 +56,9 @@ Quick actions make it easy to get started with your cluster. You can create a da
 
 To start a quick action, under **Actions**, select the action you want to perform:
 
-* **Ingest**: Use this action to load data into your cluster. For more information, see [One-click ingestion wizard](ingest-data-one-click.md#ingestion-wizard).
-* **Query**: Use this action to run a query against data in your cluster. For more information, see [Run queries](web-query-data.md#run-queries).
-* **Create**: Use this action if you want to create a new database in your cluster.
+* **Ingest data**: Use this action to load data into your cluster. For more information, see the [ingestion wizard](./ingest-data-wizard.md#ingestion-wizard).
+* **Query data**: Use this action to run a query against data in your cluster. For more information, see [Run queries](web-query-data.md#run-queries).
+* **Create database**: Use this action if you want to create a new database in your cluster.
     1. In the **Create new database** card, select **Create**.
     1. On the **Create database** page, enter a name for the database, and then select **Create Database**.
 
@@ -66,5 +67,6 @@ To start a quick action, under **Actions**, select the action you want to perfor
 ## Next steps
 
 * [Upgrade your free cluster](start-for-free-upgrade.md)
+* [Manage Event Hubs data connections in your free cluster](start-for-free-event-hubs.md)
 * [Learn more about Azure Data Explorer](data-explorer-overview.md)
 * [Learn more about Kusto Query Language](kusto/query/index.md)

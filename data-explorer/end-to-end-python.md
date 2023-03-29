@@ -134,7 +134,7 @@ deployment_properties = {
     'parameters': parameters
 }
 
-#Returns an instance of LROPoller; see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller; see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = resource_client.deployments.create_or_update(
     resource_group_name,
     deployment_name,
@@ -177,7 +177,7 @@ kusto_client.execute_mgmt(database_name, create_column_mapping_command)
 print('Step 5: Add an Event Grid data connection. Azure Data Explorer will automatically ingest the data when new blobs are created.')
 kusto_management_client = KustoManagementClient(credentials, subscription_id)
 data_connections = kusto_management_client.data_connections
-#Returns an instance of LROPoller; see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller; see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = data_connections.create_or_update(resource_group_name=resource_group_name, cluster_name=kusto_cluster_name, database_name=kusto_database_name, data_connection_name=kusto_data_connection_name,
                                            parameters=EventGridDataConnection(storage_account_resource_id=storage_resource_id,
                                                                               event_hub_resource_id=event_hub_resource_id, consumer_group="$Default", location=location, table_name=kusto_table_name, mapping_rule_name=kusto_column_mapping_name, data_format="csv"))
@@ -224,7 +224,7 @@ poller.wait()
 To delete the resource group and clean up resources, use the following command:
 
 ```python
-#Returns an instance of LROPoller; see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+#Returns an instance of LROPoller; see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = resource_client.resource_groups.delete(resource_group_name=resource_group_name)
 poller.wait()
 ```
@@ -234,4 +234,4 @@ poller.wait()
 * To learn about other ways to create a cluster and database, see [Create an Azure Data Explorer cluster and database](create-cluster-database-python.md).
 * To learn more about ingestion methods, see [Azure Data Explorer data ingestion](ingest-data-overview.md).
 * To learn about the web application, see [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md).
-* [Write queries](write-queries.md) with Kusto Query Language.
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) with Kusto Query Language.

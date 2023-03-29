@@ -1,14 +1,16 @@
 ---
-title: 'Create an Azure Data Explorer cluster & DB using C#'
+title: 'Create an Azure Data Explorer cluster and database using C#'
 description: Learn how to create an Azure Data Explorer cluster and database by using the C#
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 06/03/2019
+ms.date: 09/06/2022
 ---
 
 # Create an Azure Data Explorer cluster and database by using C#
 
 > [!div class="op_single_selector"]
+>
+> * [Web UI free cluster](start-for-free-web-ui.md)
 > * [Portal](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
@@ -21,12 +23,13 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
 ## Prerequisites
 
-* Visual Studio 2019, download and use the **free** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Enable **Azure development** during the Visual Studio setup.
+* [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
 ## Authentication
+
 For running the examples in this article, we need an Azure AD Application and service principal that can access resources. Check [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) to create a free Azure AD Application and add role assignment at the subscription scope. It also shows how to get the `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 ## Create the Azure Data Explorer cluster
@@ -52,7 +55,7 @@ For running the examples in this article, we need an Azure AD Application and se
     var resourceGroupName = "testrg";
     var clusterName = "mykustocluster";
     var location = "Central US";
-    var skuName = "Standard_D13_v2";
+    var skuName = "Standard_E8ads_v5";
     var tier = "Standard";
     var capacity = 5;
     var sku = new AzureSku(skuName, tier, capacity);
@@ -63,13 +66,13 @@ For running the examples in this article, we need an Azure AD Application and se
    |**Setting** | **Suggested value** | **Field description**|
    |---|---|---|
    | clusterName | *mykustocluster* | The desired name of your cluster.|
-   | skuName | *Standard_D13_v2* | The SKU that will be used for your cluster. |
+   | skuName | *Standard_E8ads_v5* | The SKU that will be used for your cluster. |
    | tier | *Standard* | The SKU tier. |
    | capacity | *number* | The number of instances of the cluster. |
    | resourceGroupName | *testrg* | The resource group name where the cluster will be created. |
 
     > [!NOTE]
-    > **Create a cluster** is a long running operation, so it's highly recommended to use CreateOrUpdateAsync, instead of CreateOrUpdate. 
+    > **Create a cluster** is a long running operation, so it's highly recommended to use CreateOrUpdateAsync, instead of CreateOrUpdate.
 
 1. Run the following command to check whether your cluster was successfully created:
 

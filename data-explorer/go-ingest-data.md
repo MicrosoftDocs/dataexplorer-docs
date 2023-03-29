@@ -3,7 +3,7 @@ title: 'Ingest data with Azure Data Explorer Go SDK'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Go SDK.
 ms.reviewer: abhishgu
 ms.topic: how-to
-ms.date: 02/07/2022
+ms.date: 09/11/2022
 
 # Customer intent: As a Go developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -23,8 +23,8 @@ In this article, you first create a table and data mapping in a test cluster. Yo
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 * Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * Install [Go](https://golang.org/) with the following [Go SDK minimum requirements](kusto/api/golang/kusto-golang-client-library.md#minimum-requirements). 
 * Create an [App Registration and grant it permissions to the database](provision-azure-ad-app.md). Save the client ID and client secret for later use.
@@ -208,4 +208,4 @@ If you plan to follow our other articles, keep the resources you created. If not
 
 ## Next steps
 
-[Write queries](write-queries.md)
+[Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

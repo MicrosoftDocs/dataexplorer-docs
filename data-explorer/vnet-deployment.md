@@ -8,7 +8,7 @@ ms.date: 03/30/2022
 
 # Deploy Azure Data Explorer cluster into your Virtual Network
 
-> [!NOTE]
+> [!IMPORTANT]
 > Consider moving to an Azure Private Endpoint based solution for implementing network security with Azure Data Explorer. It is less error-prone and provides [feature parity](security-network-overview.md#comparison-and-recommendation).
 
 This article explains the resources that are present when you deploy an Azure Data Explorer cluster into a custom Azure Virtual Network. This information will help you deploy a cluster into a subnet in your Virtual Network (VNet). For more information on Azure Virtual Networks, see [What is Azure Virtual Network?](/azure/virtual-network/virtual-networks-overview)
@@ -52,10 +52,9 @@ The total number of IP addresses:
 | **Total** | **#engine_instances + 9** |
 
 > [!IMPORTANT]
-> Subnet size must be planned in advance since it can't be changed after Azure Data Explorer is deployed. Therefore, reserve needed subnet size accordingly.
-
-> [!NOTE]
-> Please don't deploy any Azure Resource or Service in the Subnet which is planned to deploy the Azure Data Exploer. Azure Data Explorer also won't resume from suspended if any service or resource running in the subnet.
+>
+> - Make sure that you plan the subnet size before deploying Azure Data Explorer. Once deployed, the subnet size cannot be changed.
+> - Make sure that you don't deploy any other Azure resources or services in the Subnet where you plan to deploy Azure Data Explorer. Doing so will prevent Azure Data Explorer starting when resuming from a suspended state.
 
 ## Service endpoints for connecting to Azure Data Explorer
 
@@ -153,12 +152,13 @@ The following sections list the relevant IP addresses for management and health 
 | North Europe | 52.142.91.221 |
 | Norway East | 51.120.49.100 |
 | Norway West | 51.120.133.5 |
+| Poland Central | 20.215.208.177 |
 | South Africa North | 102.133.129.138 |
 | South Africa West | 102.133.0.97 |
 | South Central US | 20.45.3.60 |
 | Southeast Asia | 40.119.203.252 |
 | South India | 40.81.72.110, 104.211.224.189 |
-| Switzerland North | 51.107.42.144 |
+| Switzerland North | 20.203.198.33 |
 | Switzerland West | 51.107.98.201 |
 | UAE Central | 20.37.82.194 |
 | UAE North | 20.46.146.7 |
@@ -380,3 +380,4 @@ This template creates the cluster, virtual network, subnet, network security gro
 
 * Virtual network resources with deployed clusters don't support the [move to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription) operation.
 * Public IP address resources used for the cluster engine or the data management service don't support the move to a new resource group or subscription operation.
+

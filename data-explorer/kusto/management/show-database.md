@@ -3,7 +3,7 @@ title: .show database - Azure Data Explorer
 description: This article describes .show database in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/21/2023
 ---
 # .show database
 
@@ -11,13 +11,17 @@ Returns a table showing the properties of the context database.
 
 To return a table in which every record corresponds to a database in the cluster that the user has access to, see [`.show databases`](show-databases.md).
 
-**Syntax**
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
+## Syntax
 
 `.show` `database` [`details` | `identity` | `policies` | `datastats`]
 
 The default call without any options specified is equal to 'identity' option.
 
-**Output for 'identity' option**
+## Output for 'identity' option
  
 |Output parameter |Type |Description 
 |---|---|---
@@ -30,7 +34,7 @@ The default call without any options specified is equal to 'identity' option.
 |CurrentUserIsUnrestrictedViewer |Boolean | Specifies if the current user is an unrestricted viewer on the database.
 |DatabaseId |Guid |The database's unique ID.
 
-**Output for 'details' option**
+## Output for 'details' option
  
 |Output parameter |Type |Description 
 |---|---|---
@@ -53,8 +57,7 @@ The default call without any options specified is equal to 'identity' option.
 |NumberOfExternalTables |Int64 |The database's number of external tables.
 |NumberOfMaterializedViews |Int64 |The database's number of materialized views.
 
-
-**Output for 'policies' option**
+## Output for 'policies' option
  
 |Output parameter |Type |Description 
 |---|---|---
@@ -73,7 +76,7 @@ The default call without any options specified is equal to 'identity' option.
 |StreamingIngestionPolicy |String | The database's Streaming Ingestion policy (serialized in JSON format).
 |IngestionBatchingPolicy |String | The database's Ingestion Batching policy (serialized in JSON format).
 
-**Output for 'datastats' option**
+## Output for 'datastats' option
 
 |Output parameter |Type |Description 
 |---|---|---
@@ -84,13 +87,15 @@ The default call without any options specified is equal to 'identity' option.
 |DatabaseAccessMode  |String |How the cluster is attached to the database. For example, if the database is attached in ReadOnly mode then the cluster will fail all requests to modify the database in any way. 
 |PrettyName |String |The database's pretty name.
 |DatabaseId |Guid |The database's unique ID.
-|OriginalSize |Real | The database's extents total original size.
-|ExtentSize |Real | The database's extents total size (data + indices).
-|CompressedSize |Real | The database's extents total data compressed size.
-|IndexSize |Real | The database's extents total index size.
-|RowCount |Long | The database's extents total row count.
-|HotOriginalSize |Real | The database's hot extents total original size.
-|HotExtentSize |Real | The database's hot extents total size (data + indices).
-|HotCompressedSize |Real | The database's hot extents total data compressed size.
-|HotIndexSize |Real | The database's hot extents total index size.
-|HotRowCount |Long | The database's hot extents total row count.
+|OriginalSize |Real | The database's extents total original size`*`.
+|ExtentSize |Real | The database's extents total size (data + indices)`*`.
+|CompressedSize |Real | The database's extents total data compressed size`*`.
+|IndexSize |Real | The database's extents total index size`*`.
+|RowCount |Long | The database's extents total row count`*`.
+|HotOriginalSize |Real | The database's hot extents total original size`*`.
+|HotExtentSize |Real | The database's hot extents total size (data + indices)`*`.
+|HotCompressedSize |Real | The database's hot extents total data compressed size`*`.
+|HotIndexSize |Real | The database's hot extents total index size`*`.
+|HotRowCount |Long | The database's hot extents total row count`*`.
+
+`*` *Values may be up to 15 minutes old, as they are taken from a cached summary of the database's extents.*

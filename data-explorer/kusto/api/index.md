@@ -3,7 +3,7 @@ title: Azure Data Explorer API Overview - Azure Data Explorer
 description: This article describes API in Azure Data Explorer.
 ms.reviewer: vladikb
 ms.topic: reference
-ms.date: 01/30/2022
+ms.date: 09/11/2022
 ---
 # Azure Data Explorer API Overview
 
@@ -17,7 +17,7 @@ The Azure Data Explorer service supports the following communication endpoints:
 
 ## REST API
 
-The primary means of communicating with any Azure Data Explorer service, is by using the service's [REST API](rest/index.md).
+The primary means of communicating with any Azure Data Explorer service is by using the service's [REST API](rest/index.md).
 With this fully documented endpoint, callers can:
 
 * Query data
@@ -35,7 +35,7 @@ A number of [client libraries](client-libraries.md) are also available to use th
 Azure Data Explorer also supports the Microsoft SQL Server communication protocol (MS-TDS), and includes a limited support for running T-SQL queries.
 This protocol enables users to run queries on Azure Data Explorer using a well-known query syntax (T-SQL) and database client tools such as LINQPad, sqlcmd, Tableau, Excel, and Power BI.
 
-For more information, see [MS-TDS](tds/index.md).
+For more information, see [MS-TDS](../../t-sql.md).
 
 ## Client libraries
 
@@ -50,7 +50,7 @@ Azure Data Explorer provides a number of client libraries that make use of the a
 * PowerShell
 
 > [!TIP]
-> You can use the one-click sample app generator to create a working app, tailored to your cluster, to ingest and query your data in your preferred programming language. The generated code can be used as a baseline to write your own apps, altering the code as you go, or you can copy sections of code into your own apps. For more information, see [one-click sample app generator](../../sample-app-generator-one-click.md).
+> You can use the sample app generator wizard to create a working app tailored to your cluster, to ingest and query your data in your preferred programming language. The generated code can be used as a baseline to write your own apps, alter the code as you go, or you can copy sections of code into your own apps. For more information, see [sample app generator wizard](../../sample-app-generator-wizard.md).
 
 ### .NET Framework Libraries
 

@@ -1,43 +1,46 @@
 ---
 title: make_set() (aggregation function) - Azure Data Explorer
-description: This article describes make_set() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the make_set() function to return a JSON array of the distinct values that the expression takes in the group. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/14/2022
+ms.date: 03/12/2023
 ---
 # make_set() (aggregation function)
 
-Creates a `dynamic` JSON array of the set of distinct values that *Expr* takes in the group.
+Creates a `dynamic` array of the set of distinct values that *expr* takes in the group.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
+> **Deprecated aliases:** makeset()
+
 ## Syntax
 
- `make_set` `(`*Expr* [`,` *MaxSize*]`)`
+ `make_set(`*expr* [`,` *maxSize*]`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr* | string | &check; | Expression used for the aggregation calculation. |
-| *MaxSize* |  |  | Integer limit on the maximum number of elements returned. *MaxSize* value can't exceed 1048576. The default is *1048576*. |
+| *expr* | string | &check; | The expression used for the aggregation calculation. |
+| *maxSize* | int |  | The maximum number of elements returned. The default and max value is 1048576. |
 
 > [!NOTE]
-> `makeset()` has been deprecated in favor of `make_set`. The legacy version has a default *MaxSize* limit of 128.
+> The deprecated version has a default *maxSize* limit of 128.
 
 ## Returns
 
-Returns a `dynamic` JSON array of the set of distinct values that *Expr* takes in the group.
+Returns a `dynamic` array of the set of distinct values that *expr* takes in the group.
 The array's sort order is undefined.
 
 > [!TIP]
-> To only count distinct values, use [dcount()](dcount-aggfunction.md).
+> To only count distinct values, use [dcount()](dcount-aggfunction.md) or [count_distinct()](count-distinct-aggfunction.md).
 
 ## Example
 
-This example shows the set of States grouped with the same amount of crop damage.
+This example shows the set of states grouped with the same amount of crop damage.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoLs3NTSzKrEpVKC5JLEktts1NzE6NL04t0QgG8TUVkioVXBJzE9NTnYvyC4oBmxrbeD8AAAA=)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoLs3NTSzKrEpVKC5JLEktts1NzE6NL04t0QgG8TUVkioVXBJzE9NTnYvyC4oBmxrbeD8AAAA=" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents 
@@ -48,7 +51,7 @@ The results table shown includes only the first 10 rows.
 
 | DamageCrops | states |
 |--|--|
-| 0 | ["NORTH CAROLINA","WISCONSIN","NEW YORK","ALASKA","DELAWARE","OKLAHOMA","INDIANA","ILLINOIS","MINNESOTA","SOUTH DAKOTA","TEXAS","UTAH","COLORADO","VERMONT","NEW JERSEY","VIRGINIA","CALIFORNIA","PENNSYLVANIA","MONTANA","WASHINGTON","OREGON","HAWAII","IDAHO","PUERTO RICO","MICHIGAN","FLORIDA","WYOMING","GULF OF MEXICO","NEVADA","LOUISIANA","TENNESSEE","KENTUCKY","MISSISSIPPI","ALABAMA","GEORGIA","SOUTH CAROLINA","OHIO","NEW MEXICO","ATLANTIC SOUTH","NEW HAMPSHIRE","ATLANTIC NORTH","NORTH DAKOTA","IOWA","NEBRASKA","WEST VIRGINIA","MARYLAND","KANSAS","MISSOURI","ARKANSAS","ARIZONA","MASSACHUSETTS","MAINE","CONNECTICUT","GUAM","HAWAII WATERS","AMERICAN SAMOA","LAKE HURON","DISTRICT OF COLUMBIA","RHODE ISLAND","VIRGIN ISLANDS","LAKE MICHIGAN","LAKE SUPERIOR","LAKE ST CLAIR","LAKE ERIE","LAKE ONTARIO","E PACIFIC","GULF OF ALASKA"] |
+| 0 | ["NORTH CAROLINA","WISCONSIN","NEW YORK","ALASKA","DELAWARE","OKLAHOMA","INDIANA","ILLINOIS","MINNESOTA","SOUTH DAKOTA","TEXAS","UTAH","COLORADO","VERMONT","NEW JERSEY","VIRGINIA","CALIFORNIA","PENNSYLVANIA","MONTANA","WASHINGTON","OREGON","HAWAII","IDAHO","PUERTO RICO","MICHIGAN","FLORIDA","WYOMING","GULF OF MEXICO","NEVADA","LOUISIANA","TENNESSEE","KENTUCKY","MISSISSIPPI","ALABAMA","GEORGIA","SOUTH CAROLINA","OHIO","NEW MEXICO","ATLANTIC SOUTH","NEW HAMPSHIRE","ATLANTIC NORTH","NORTH DAKOTA","IOWA","NEBRASKA","WEST VIRGINIA","MARYLAND","KANSAS","MISSOURI","ARKANSAS","ARIZONA","MASSACHUSETTS","MAINE","CONNECTICUT","GUAM","HAWAII WATERS","AMERICAN SAMOA","LAKE HURON","DISTRICT OF COLUMBIA","RHODE ISLAND","LAKE MICHIGAN","LAKE SUPERIOR","LAKE ST CLAIR","LAKE ERIE","LAKE ONTARIO","E PACIFIC","GULF OF ALASKA"] |
 | 30000 | ["TEXAS","NEBRASKA","IOWA","MINNESOTA","WISCONSIN"] |
 | 4000000 | ["CALIFORNIA","KENTUCKY","NORTH DAKOTA","WISCONSIN","VIRGINIA"] |
 | 3000000 | ["CALIFORNIA","ILLINOIS","MISSOURI","SOUTH CAROLINA","NORTH CAROLINA","MISSISSIPPI","NORTH DAKOTA","OHIO"] |

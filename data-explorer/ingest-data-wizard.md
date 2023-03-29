@@ -3,29 +3,27 @@ title: Ingest data into Azure Data Explorer using the ingestion wizard
 description: Overview of ingesting (loading) data into Azure Data Explorer simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 09/04/2022
+ms.date: 02/13/2023
 ---
 
 # What is the ingestion wizard?
 
-The ingestion wizard makes the data ingestion process easy, fast, and intuitive. Using the ingestion wizard helps you ramp-up quickly to start ingesting data, creating database tables, mapping structures. Select data from different kinds of sources in different data formats, either as a one-time or continuous ingestion process.
+The ingestion wizard is a user interface for ingesting data in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). The ingestion wizard can be used to ingest data in various forms, as a one-time or continuous ingestion, and create database tables and mapping structures.
 
-The following features make the ingestion wizard so useful:
+The ingestion wizard provides the following features:
 
 * Intuitive experience guided by the ingestion wizard
 * Ingest data in a matter of minutes
 * Ingest data from different kinds of sources: local file, blobs, and containers (up to 10,000 blobs)
-* Ingest data in a variety of [formats](#file-formats)
+* Ingest data in various [formats](#file-formats)
 * Ingest data into new or existing tables
 * Table mapping and schema are suggested to you and easy to change
-* Continue ingestion easily and quickly from a container with [Event Grid](one-click-ingestion-new-table.md#create-continuous-ingestion)
-
-The ingestion wizard is useful when ingesting data for the first time, or when your data's schema is unfamiliar to you.
+* Continue ingestion easily and quickly from a container with [Event Grid](/azure/data-explorer/ingest-from-container#create-continuous-ingestion)
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 > [!NOTE]
@@ -33,24 +31,23 @@ The ingestion wizard is useful when ingesting data for the first time, or when y
 
 ## Access the ingestion wizard
 
-The ingestion wizard guides you through the ingestion process.
+There are many entry points to the ingestion wizard.
 
-* To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), use one of the following methods:
-  * Select **Data** in the left pane. Within the **Data Management** page, select a type of ingestion and select **Ingest**.
+* In the web UI, select **Data** in the left pane. Within the **Data Management** page, select a type of ingestion and select **Ingest**.
 
-      :::image type="content" source="media/ingest-data-wizard/select-data-pane.png" alt-text="Screenshot of options to ingest data from the data management window of the Azure Data Explorer web UI interface - Azure Data Explorer." lightbox="media/ingest-data-wizard/select-data-pane.png":::
+    :::image type="content" source="media/ingest-data-wizard/select-data-pane.png" alt-text="Screenshot of options to ingest data from the data management window of the Azure Data Explorer web UI interface - Azure Data Explorer." lightbox="media/ingest-data-wizard/select-data-pane.png":::
 
-  * Select **Query** in the left pane. Right-click the *database* or *table* and select **Ingest new data**.
+* In the web UI, select **Query** in the left pane. Right-click the database or table and select **Ingest data**.
 
-      :::image type="content" source="media/ingest-data-wizard/ingest-new-data-database-menu.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI.":::
+    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI.":::
 
-* To access the ingestion wizard from the **Azure Data Explorer** home screen in your cluster, complete the first two steps ([cluster creation and database creation](#prerequisites)) and then select **Ingest**.
+* In the web UI, select **My cluster** in the left pane and then select **Ingest**.
 
     :::image type="content" source="media/ingest-data-wizard/cluster-ingestion.png" alt-text="Ingest new data from welcome to Azure Data Explorer.":::
 
-* To access the wizard from the Azure portal, select **Query** from the left menu, right-click on the **database** or **table**, and select **Ingest new data**.
+* To access the ingestion wizard from the Azure portal, select **Query** from the left menu, right-click on the database or table, and select **Ingest data**.
 
-    :::image type="content" source="media/ingest-data-wizard/ingest-from-portal.png" alt-text="Access the ingestion wizard from Azure portal.":::
+    :::image type="content" source="media/ingest-data-wizard/ingestion-azure-portal.png" alt-text="Access the ingestion wizard from Azure portal.":::
 
 ## Ingestion wizard
 
@@ -59,17 +56,17 @@ The ingestion wizard guides you through the ingestion process.
 >
 > For sample scenarios, see:
 >
-> * Ingest into [a new table from a container in CSV format](one-click-ingestion-new-table.md)
-> * Ingest into an [existing table from a local file in JSON format](one-click-ingestion-existing-table.md)
+> * Ingest into [a new table from a container in CSV format](/azure/data-explorer/ingest-from-container)
+> * Ingest into an [existing table from a local file in JSON format](/azure/data-explorer/ingest-from-local-file)
 
 The wizard guides you through the following options:
 
-* Ingest into an [existing table](one-click-ingestion-existing-table.md)
-* Ingest into [a new table](one-click-ingestion-new-table.md)
+* Ingest into an [existing table](/azure/data-explorer/ingest-from-local-file)
+* Ingest into [a new table](/azure/data-explorer/ingest-from-container)
 * Ingest data from:
   * Blob storage: up to 10 blobs
-  * [A local file](one-click-ingestion-existing-table.md): up to 10 files
-  * [A container](one-click-ingestion-new-table.md) (blob container, ADLS Gen1 container, ADLS Gen2 container)
+  * [A local file](/azure/data-explorer/ingest-from-local-file): up to 10 files
+  * [A container](/azure/data-explorer/ingest-from-container) (blob container, ADLS Gen1 container, ADLS Gen2 container)
 
 ### Schema mapping
 
@@ -78,7 +75,7 @@ The service automatically generates schema and ingestion properties, which you c
 In the **Schema** tab, do the following actions:
 
 * Confirm the autogenerated compression type.
-* Choose the [format of your data](#file-formats). Different formats will allow you to make further changes.
+* Choose the [format of your data](#file-formats). Different formats allow you to make further changes.
 * Change mapping in the [Editor window](#editor-window).
 
 #### File formats
@@ -92,7 +89,7 @@ In the **Editor** window of the **Schema** tab, you can adjust data table column
 [!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
 
 >[!NOTE]
-> At any time, you can open the [command editor](one-click-ingestion-new-table.md#command-editor) above the **Editor** pane. In the command editor, you can view and copy the automatic commands generated from your inputs.
+> At any time, you can open the [command editor](/azure/data-explorer/ingest-from-container#command-editor) above the **Editor** pane. In the command editor, you can view and copy the automatic commands generated from your inputs.
 
 #### Mapping transformations
 
@@ -107,23 +104,36 @@ Mapping transformations can be performed on a column of **Type** string or datet
 
 ### Data ingestion
 
-Once you have completed schema mapping and column manipulations, the ingestion wizard will start the data ingestion process.
+Once you have completed schema mapping and column manipulations, the ingestion wizard starts the data ingestion process.
 
-* When ingesting data from **non-container** sources, the ingestion will take immediate effect.
+* When you ingest data from **non-container** sources, the ingestion takes immediate effect.
 
 * If your data source is a **container**:
 
-  * Azure Data Explorer's [batching policy](kusto/management/batchingpolicy.md) will aggregate your data.
+  * Azure Data Explorer's [batching policy](kusto/management/batchingpolicy.md) aggregates your data.
   * After ingestion, you can download the ingestion report and review the performance of each blob that was addressed.
-  * You can select **Create continuous ingestion** and set up [continuous ingestion using Event Grid](one-click-ingestion-new-table.md#create-continuous-ingestion).
+  * You can select **Create continuous ingestion** and set up [continuous ingestion using Event Grid](/azure/data-explorer/ingest-from-container#create-continuous-ingestion).
 
 ### Initial data exploration
 
-After ingestion, the wizard gives you options to use **[Quick commands](one-click-ingestion-existing-table.md#explore-quick-queries-and-tools)** for initial exploration of your data.
+After ingestion, the wizard gives you options to use **[Quick commands](/azure/data-explorer/ingest-from-local-file#explore-quick-queries-and-tools)** for initial exploration of your data.
+
+## More data management actions
+
+Discover the available options within each [Data management](https://dataexplorer.azure.com/oneclick) tab by selecting the links in the following table.
+
+|Tab  |Ingestion options  |
+|---------|---------|
+|**Manage**     | Create [tables](https://dataexplorer.azure.com/oneclick/createtable), [external tables](external-table.md) and update [batching](./kusto/management/batchingpolicy.md) and [retention](./kusto/management/retentionpolicy.md) policies.      |
+|**One-time ingestion**    | Ingest from [local files, blob storage](./ingest-data-wizard.md), or a [container](/azure/data-explorer/ingest-from-container).      |
+|**Continuous ingestion**     | Configure continuous ingestion from [Event Hubs](./event-hub-wizard.md) or a blob container.        |
+|**Backfill**     |  Ingest data from sources as a one time or [continuous ingestion](/azure/data-explorer/ingest-from-container).       |
+|**SDKs**     |  The [sample app generator wizard](https://dataexplorer.azure.com/oneclick/generatecode?programingLang=Python) is a tool that allows you to create a working app to [ingest and query your data in your preferred programming language](./sample-app-generator-wizard.md). Learn more about connectors to expand and explore the capabilities of Azure Data Explorer.    |
+
 
 ## Next steps
 
-* [Ingest JSON data from a local file to an existing table in Azure Data Explorer using the ingestion wizard](one-click-ingestion-existing-table.md)
-* [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](one-click-ingestion-new-table.md)
+* [Ingest JSON data from a local file to an existing table in Azure Data Explorer using the ingestion wizard](/azure/data-explorer/ingest-from-local-file)
+* [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container)
 * [Query data in Azure Data Explorer web UI](web-query-data.md)
-* [Write queries for Azure Data Explorer using Kusto Query Language](write-queries.md)
+* [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

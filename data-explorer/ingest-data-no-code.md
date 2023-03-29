@@ -3,7 +3,7 @@ title: 'Tutorial: Ingest monitoring data in Azure Data Explorer without code'
 description: In this tutorial, you learn how to ingest monitoring data to Azure Data Explorer without one line of code and query that data.
 ms.reviewer: kerend
 ms.topic: tutorial
-ms.date: 06/20/2022
+ms.date: 11/09/2022
 
 # Customer intent: I want to ingest monitoring data to Azure Data Explorer without one line of code, so that I can explore and analyze my data by using queries.
 ---
@@ -28,7 +28,7 @@ In this tutorial, you'll learn how to:
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md). In this tutorial, the database name is *TestDatabase*.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md). In this tutorial, the database name is *TestDatabase*.
 
 ## Azure Monitor data provider: diagnostic metrics and logs and activity logs
 
@@ -604,7 +604,7 @@ The following query analyzes how many ingestions accrued in a minute, including 
 ```kusto
 DiagnosticLogs
 | where Timestamp > ago(15m) and OperationName has 'INGEST'
-| summarize count(), any(Database, Table, IngestionSourcePath) by bin(Timestamp, 1m)
+| summarize count(), take_any(Database, Table, IngestionSourcePath) by bin(Timestamp, 1m)
 ```
 
 Query results:
@@ -636,6 +636,6 @@ Query results:
 
 ## Next steps
 
-* Learn to write many more queries on the data you extracted from Azure Data Explorer by using [Write queries for Azure Data Explorer](write-queries.md).
+* Learn to write many more queries on the data you extracted from Azure Data Explorer by using [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators).
 * [Monitor Azure Data Explorer ingestion operations using diagnostic logs](using-diagnostic-logs.md)
 * [Use metrics to monitor cluster health](using-metrics.md)

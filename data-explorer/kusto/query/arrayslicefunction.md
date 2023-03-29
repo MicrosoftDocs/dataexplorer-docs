@@ -1,9 +1,9 @@
 ---
 title: array_slice() - Azure Data Explorer
-description: This article describes array_slice() in Azure Data Explorer.
+description: Learn how to use the array_slice() function to extract a slice of a dynamic array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/03/2018
+ms.date: 11/03/2022
 ---
 # array_slice()
 
@@ -13,46 +13,63 @@ Extracts a slice of a dynamic array.
 
 `array_slice`(*array*, *start*, *end*)
 
-## Arguments
+## Parameters
 
-* *array*: Input array to extract the slice from must be dynamic array.
-* *start*: zero-based (inclusive) start index of the slice, negative values are converted to array_length+start.
-* *end*: zero-based (inclusive) end index of the slice, negative values are converted to array_length+end.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *array* | dynamic | &check; | The array from which to extract the slice.|
+| *start*| int | &check; | The start index of the slice (inclusive). Negative values are converted to `array_length`+`start`.|
+| *end*| int | &check; | The last index of the slice. (inclusive). Negative values are converted to `array_length`+`end`.|
 
-Note: out of bounds indices are ignored.
+> [!NOTE]
+> Out of bounds indices are ignored.
 
 ## Returns
 
-Dynamic array of the values in the range [`start..end`] from `array`.
+Returns a dynamic array of the values in the range [`start..end`] from `array`.
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+The following examples return a slice of the array.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMY7VVOCqUUitKEnNS1EozslMTk2xBapKrIwHczSAbB0FQx0FI00AeoUyQ0IAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 print arr=dynamic([1,2,3]) 
 | extend sliced=array_slice(arr, 1, 2)
 ```
 
-|`arr`|`sliced`|
+**Output**
+
+|arr|sliced|
 |---|---|
 |[1,2,3]|[2,3]|
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUtRKM7JTE5NsQWqTKyMB3M0gGwdBSMdBV1DTQAv2T4vRwAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 
 | extend sliced=array_slice(arr, 2, -1)
 ```
 
-|`arr`|sliced|
+**Output**
+
+|arr|sliced|
 |---|---|
 |[1,2,3,4,5]|[3,4,5]|
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUtRKM7JTE5NsQWqTKyMB3M0gGwdBV1jIDbSBABajMjTSAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 
 | extend sliced=array_slice(arr, -3, -2)
 ```
 
-|`arr`|sliced|
+**Output**
+
+|arr|sliced|
 |---|---|
 |[1,2,3,4,5]|[3,4]|

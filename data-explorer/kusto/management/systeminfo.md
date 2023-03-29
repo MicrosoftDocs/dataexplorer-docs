@@ -14,5 +14,5 @@ This section summarizes commands that are available to `Database Admins` and `Da
 * [`.show commands-and-queries`](commands-and-queries.md) - displays information on completed commands and queries, and their resources utilization.
 * [`.show journal`](journal.md) - displays history of the metadata operations.
 * [`.show operations`](operations.md) - displays administrative operations both running and completed, since Admin node was last elected.
-* [`.show failed ingestions`](ingestionfailures.md) - displays information on failures encountered during data ingestion to the cluster.
+* [`.show ingestion failures`](ingestionfailures.md) - displays information on failures encountered during data ingestion to the cluster.
 * [`.show table data statistics`](show-table-data-statistics.md) - displays table data statistics per column.

@@ -10,7 +10,7 @@ ms.date: 03/15/2022
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [One-click](one-click-event-hub.md)
+> * [Ingestion wizard](./event-hub-wizard.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
@@ -21,9 +21,9 @@ In this article, you create an Event Hubs data connection for Azure Data Explore
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
-* Create [a table and column mapping](ingest-data-event-hub.md#create-a-target-table-in-azure-data-explorer).
-* Create [an event hub](/azure/event-hubs/event-hubs-create).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* A [table and column mapping](ingest-data-event-hub.md#create-a-target-table-in-azure-data-explorer).
+* An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
 
 ## Azure Resource Manager template for adding an Event Hubs data connection
 
@@ -130,11 +130,12 @@ The following example shows an Azure Resource Manager template for adding an Eve
     },
     "resources": [{
             "type": "Microsoft.Kusto/Clusters/Databases/DataConnections",
-            "apiVersion": "2019-09-07",
+            "apiVersion": "2022-02-01",
             "name": "[concat(parameters('Clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'), '/', parameters('dataconnections_kustodc_name'))]",
             "location": "[parameters('location')]",
             "kind": "EventHub",
             "properties": {
+                "managedIdentityResourceId": "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]",
                 "eventHubResourceId": "[resourceId(parameters('subscriptionId'), parameters('resourceGroup'), 'Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_eventhubns_name'), parameters('EventHubs_eventhubdemo_name'))]",
                 "consumerGroup": "[parameters('consumergroup_default_name')]",
                 "tableName": "[parameters('tables_kustotable_name')]",
@@ -146,5 +147,7 @@ The following example shows an Azure Resource Manager template for adding an Eve
     ]
 }
 ```
+
+[!INCLUDE [event-hub-connection-caution](includes/event-hub-connection-caution.md)]
 
 [!INCLUDE [data-explorer-clean-resources](includes/data-explorer-clean-resources.md)]

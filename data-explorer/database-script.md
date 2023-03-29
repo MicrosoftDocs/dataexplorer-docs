@@ -7,13 +7,14 @@ ms.date: 03/29/2023
 ---
 # Configure a database using a Kusto Query Language script
 
-You can run a Kusto Query Language script to configure your database during Azure Resource Management (ARM) template deployment. A script is a list of one or more [control commands](kusto/management/index.md), each separated by one line break, and is created as a resource that will be accessed with the ARM template. The script can only run control commands that start with the following verbs:
+You can run a Kusto Query Language script to configure your database during Azure Resource Management template (ARM template) deployment. A script is a list of one or more [control commands](kusto/management/index.md), each separated by one line break, and is created as a resource that will be accessed with the ARM template. The script can only run control commands that start with the following verbs:
 
 * `.create`
 * `.create-or-alter`
 * `.create-merge`
 * `.alter`
 * `.alter-merge`
+* `.add`
 
 In general, we recommended using the idempotent version of commands so that if they're called more than once with the same input parameters, they have no additional effect. In other words, running the command multiple times has the same effect as running it once. For example, where possible, we recommend using the idempotent command `.create-or-alter` over the regular `.create` command.
 
@@ -25,7 +26,7 @@ There are various methods you can use to configure a database with scripts. We'l
 
 1. [*Inline script*](#inline-script): The script is provided inline as a parameter to a JSON ARM template.
 1. [*Bicep script*](#bicep-script): The script is provided as a separate file used by a Bicep ARM template.
-1. [*Storage Account*](#storage-account-script): The script is created as a blob in an Azure storage account and its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) provided as parameters to the ARM template.
+1. [*Storage Account*](#storage-account-script): The script is created as a blob in an Azure storage account and its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview) provided as parameters to the ARM template.
 
 > [!NOTE]
 > Each cluster can have a maximum of 50 scripts.
@@ -45,14 +46,14 @@ Notice the two commands are idempotent. When first run, they create the tables, 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 
 ## Security
 
 The principal, such as a user or service principal, used to deploy a script must have the following security roles:
 
 * [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role on the cluster
-* [Admin](./kusto/management/access-control/role-based-authorization.md) role on the database
+* [Admin](./kusto/management/access-control/role-based-access-control.md) role on the database
 
 > [!IMPORTANT]
 > The principal provisioning the cluster automatically gets the `All Databases Admin` role on the cluster.
@@ -120,7 +121,7 @@ Use the following settings:
 | *continueOnErrors* | A flag indicating whether to continue if one of the commands fails. Default value: false. |
 | *clusterName* | The name of the cluster where the script will run. |
 | *databaseName* | The name of the database under which the script will run. |
-| *scriptName* | The name of the script when using an external file to supply the script.  This is the name of the actual ARM resource of type *script*.|
+| *scriptName* | The name of the script when using an external file to supply the script.  This is the name of the actual ARM template resource of type *script*.|
 
 ### Omit update tag
 
@@ -255,7 +256,7 @@ Use the following settings:
 
 | **Setting** | **Description** |
 |--|--|
-| *scriptUrl* | The URL of the blob. For example 'https://myaccount.blob.core.windows.net/mycontainer/myblob'. |
+| *scriptUrl* | The URL of the blob. For example, 'https://myaccount.blob.core.windows.net/mycontainer/myblob'. |
 | *scriptUrlSastoken* | A string with the [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview). |
 | *forceUpdateTag* | A unique string. If changed, the script will be applied again. |
 | *continueOnErrors* | A flag indicating whether to continue if one of the commands fails. Default value: false. |
@@ -265,8 +266,8 @@ Use the following settings:
 
 ## Limitations
 
-*  Script is only supported in Azure Data Explorer ; it isn't supported in Synapse Data Explorer pools
-*  Two scripts can't be added / modified / removed in parallel on the same cluster. This results in the following error: `Code="ServiceIsInMaintenance"`.  You can work around the issue by placing a dependency between the two scripts so that they are created / updated sequentially.
+* Script is only supported in Azure Data Explorer; it isn't supported in Synapse Data Explorer pools
+* Two scripts can't be added, modified, or removed in parallel on the same cluster. This results in the following error: `Code="ServiceIsInMaintenance"`.  You can work around the issue by placing a dependency between the two scripts so that they're created or updated sequentially.
 
 ## Troubleshooting
 

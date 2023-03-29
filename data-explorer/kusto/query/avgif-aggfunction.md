@@ -1,43 +1,42 @@
 ---
 title: avgif() (aggregation function) - Azure Data Explorer
-description: This article describes avgif() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the avgif() function to return the average value of an expression where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/10/2022
+ms.date: 11/16/2022
 ---
 # avgif() (aggregation function)
 
-Calculates the [average](avg-aggfunction.md) of *Expr* across the group for which *Predicate* evaluates to `true`.
+Calculates the [average](avg-aggfunction.md) of *expr* in records for which *predicate* evaluates to `true`.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
-`avgif` `(`*Expr*`,` *Predicate*`)`
+`avgif` `(`*expr*`,` *predicate*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr* | string | &check; | Expression used for aggregation calculation. Records with `null` values are ignored and not included in the calculation. |
-| *Predicate* | string | &check; | Predicate that if true, the *Expr* calculated value will be added to the average. |
+| *expr* | string | &check; | The expression used for aggregation calculation. Records with `null` values are ignored and not included in the calculation. |
+| *predicate* | string | &check; | The predicate that if true, the *expr* calculated value will be added to the average. |
 
 ## Returns
 
-Returns the average value of *Expr* across the group where *Predicate* evaluates to `true`.
+Returns the average value of *expr* in records where *predicate* evaluates to `true`.
 
 ## Example
 
 This example calculates the average damage by state in cases where there was any damage.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVXAsSy1KTE9NScwFkrYl+Tn5eekaiWXpGgouYCHnovyCYk1NHai68IzUPBd0tZlpGkiKdZDYCnYGmpoKSZUKwSWJJakAP4a4kIQAAAA=)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVXAsSy1KTE9NScwFkrYl+Tn5eekaiWXpGgouYCHnovyCYk1NHai68IzUPBd0tZlpGkiKdZDYCnYGmpoKSZUKwSWJJakAP4a4kIQAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
 | summarize Averagedamage=tolong(avg( DamageCrops)),AverageWhenDamage=tolong(avgif(DamageCrops,DamageCrops >0)) by State
 ```
-
-**Results**
 
 The results table shown includes only the first 10 rows.
 
