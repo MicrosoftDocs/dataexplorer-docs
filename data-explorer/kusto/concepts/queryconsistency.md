@@ -34,10 +34,12 @@ Before a query starts actual execution, its consistency mode is first determined
 1. Users of the .NET SDK can also set the query consistency through the [Kusto connection string](../api/connection-strings/kusto.md).
    Doing so affects all queries sent through that connection string (by setting the client request property automatically.)
 
-1. Alternatively, it is possible to control the consistency mode by setting a [Query consistency policy](../management/query-consistency-policy.md).
-   Doing so affects all queries sent to the service which are associated with that workload group, so users don't need to specify it manually.
-   (If both are specified, per-query settings take precedence.) This policy also lets the admin control the latency of weakly-consistent
-   queries, and other control parameters; see [Query weak consistency policy](../management/query-weak-consistency-policy.md) for more details.
+1. Alternatively, it is possible to control the consistency mode by setting a [Query consistency policy](../management/query-consistency-policy.md)
+   at the workload group level. Doing so affects all queries sent to the service which are associated with that workload group, so users don't need
+   to specify it manually.
+   
+1. The [Query weak consistency policy](../management/query-weak-consistency-policy.md) provides further control over the latency of *weakly*-consistent
+   queries, as well as other parameters.
 
 |Consistency               |Set client request property to      |Set query consistency policy to|
 |--------------------------|------------------------------------|-------------------------------|
