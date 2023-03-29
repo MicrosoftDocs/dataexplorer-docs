@@ -3,7 +3,7 @@ title: .alter extent tags - Azure Data Explorer
 description: This article describes the alter extent command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/02/2020
+ms.date: 02/19/2023
 ---
 
 # .alter extent tags
@@ -12,32 +12,39 @@ The command runs in the context of a specific database. It alters the specified 
 
 The extents whose tags should be altered are specified using a Kusto query that returns a recordset with a column called "ExtentId".
 
-Requires [Table admin permission](../management/access-control/role-based-authorization.md) for all involved tables.
-
 > [!NOTE]
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+
 ## Syntax
 
-`.alter` [`async`] `extent` `tags` `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)` <| *query*
+`.alter` [`async`] `table` '*TableName*' `extent` `tags` `(`*Tags*`)` `with` `(` `extentCreatedOnFrom`='*FromDate*' `,` `extentCreatedOnTo`='*ToDate*'`)` <| *Query*
 
-`.alter-merge` [`async`] `extent` `tags` `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)` <| *query*
+`.alter-merge` [`async`] `table` '*TableName*' `extent` `tags` `(`*Tags*`)` `with` `(` `extentCreatedOnFrom`='*FromDate*' `,` `extentCreatedOnTo`='*ToDate*'`)` <| *Query*
 
-* `.alter` or `.alter-merge`:
-  * `.alter` sets the collection of the extent's tags to the specified tags, while overriding the extent's existing tags.
-  * `.alter-merge` sets the collection of the extent's tags to the union of the specified tags and the extent's existing tags.
+* `.alter` sets the collection of the extent's tags to the specified tags, while overriding the extent's existing tags.
+* `.alter-merge` sets the collection of the extent's tags to the union of the specified tags and the extent's existing tags.
 
-* `async` (optional): Execute the command asynchronously.
-   * An Operation ID (Guid) is returned. 
-   * The operation's status can be monitored. Use the [`.show operations`](operations.md#show-operations) command.
-   * You can retrieve the results of a successful execution. Use the [`.show operation details`](operations.md#show-operation-details) command.
+> [!NOTE]
+> For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range 
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|`async`|string||If specified, the command will run asynchronously. The return output when run with `async` is an operation ID (guid) that can be used to monitor the operation's status. Use [`.show operations`](operations.md#show-operations) or [`.show operation details`](operations.md#show-operation-details).|
+|*Tags*|string|&check;|One or more comma-separated extent tags. Each tag should be enclosed in single quotes (`'`).|
+|*Query*|string|&check;|Specifies the extents whose tags should be altered.|
 
 ## Restrictions
 
 All extents must be in the context database, and must belong to the same table.
 
-## Return output
+## Returns
 
 |Output parameter |Type |Description|
 |---|---|---|
@@ -50,29 +57,28 @@ All extents must be in the context database, and must belong to the same table.
 
 ### Alter tags 
 
-Alter tags of all the extents in table `MyTable` to `MyTag`
+Alter tags of all the extents within the specified creation time range in table `MyTable` to `MyTag`
 
 ```kusto
-.alter extent tags ('MyTag') <| .show table MyTable extents
+.alter table MyTable extent tags ('MyTag') with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| .show table MyTable extents
 ```
 
 ### Alter tags of specific extents
 
-Alter tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`
+Alter tags of all the extents within the specified creation time range in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`
 
 ```kusto
-.alter extent tags ('drop-by:MyNewTag','MyOtherNewTag') <| .show table MyTable extents where tags has 'drop-by:MyTag'
+.alter table MyTable extent tags ('drop-by:MyNewTag','MyOtherNewTag') with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| .show table MyTable extents where tags has 'drop-by:MyTag'
 ```
 
 ### Alter-merge tags of specific extents
 
-Alter-merges tags of all the extents in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`, by
+Alter-merges tags of all the extents within the specified creation time range in table `MyTable`, tagged with `drop-by:MyTag` to `drop-by:MyNewTag` and `MyOtherNewTag`, by
 appending 2 new tags to their existing collection of tags
 
 ```kusto
-.alter-merge extent tags ('drop-by:MyNewTag','MyOtherNewTag') <| .show table MyTable extents where tags has 'drop-by:MyTag'
+.alter-merge table MyTable extent tags ('drop-by:MyNewTag','MyOtherNewTag') with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| .show table MyTable extents where tags has 'drop-by:MyTag'
 ```
-
 
 ## Sample output
 

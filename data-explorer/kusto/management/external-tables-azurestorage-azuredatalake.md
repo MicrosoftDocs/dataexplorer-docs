@@ -3,106 +3,87 @@ title: Create and alter Azure Storage external tables - Azure Data Explorer
 description: This article describes how to create and alter external tables based on Azure Blob Storage or Azure Data Lake
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 03/08/2023
 ---
 
 # Create and alter Azure Storage external tables
 
-The following command describes how to create an external table located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2. 
+The following command describes how to create an external table located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
 
 For an introduction to the external Azure Storage tables feature, see [Query data in Azure Data Lake using Azure Data Explorer](../../data-lake-query-data.md).
 
+## Permissions
+
+To `.create` requires at least [Database User](../management/access-control/role-based-access-control.md) permissions and to `.alter` requires at least [Table Admin](../management/access-control/role-based-access-control.md) permissions.
+
+To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
+
+## Authentication and authorization
+
+The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method.
+
+The following table lists the supported authentication methods for Azure Storage external tables and the permissions needed to read or write to the table.
+
+| Authentication method | Azure Blob Storage / Data Lake Storage Gen2 | Data Lake Storage Gen1 |
+|--|--|--|
+|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Read permissions: Storage Blob Data Reader<br/>Write permissions:Storage Blob Data Contributor|Read permissions: Reader<br/>Write permissions: Contributor|
+|[Managed identity](../api/connection-strings/storage-authentication-methods.md#managed-identity)|Read permissions: Storage Blob Data Reader<br/>Write permissions: Storage Blob Data Contributor|Read permissions: Reader<br/>Write permissions: Contributor|
+|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Read permissions: List + Read<br/>Write permissions: Write|This authentication method isn't supported in Gen1.|
+|[Azure AD access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|||
+|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
+
 ## .create or .alter external table
 
-**Syntax**
+### Syntax
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *[TableName](#table-name)* `(` *[Schema](#schema)* `)`  
-`kind` `=` `storage`  
-[`partition` `by` `(` *[Partitions](#partitions)* `)` [`pathformat` `=` `(` *[PathFormat](#path-format)* `)`]]  
-`dataformat` `=` *[Format](#format)*  
-`(` *[StorageConnectionString](#connection-string)* [`,` ...] `)`   
-[`with` `(`*[PropertyName](#properties)* `=` *[Value](#properties)* `,` ... `)`]  
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *tableName* `(`*schema*`)` `kind` `=` `storage` [`partition` `by` `(`*partitions*`)` [`pathformat` `=` `(`*path-format*`)`]] `dataformat` `=` *format* `(`*storageConnectionString* [`,` ...] `)` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]  
 
 Creates or alters a new external table in the database in which the command is executed.
 
 > [!NOTE]
+>
 > * If the table exists, `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
 > * The external table is not accessed during creation time. It will only be accessed during query / export. You can use the `validateNotEmpty` (optional) property during creation time to make sure the external table definition is valid and that the underlying storage is accessible.
-> * The operation requires [database user permission](../management/access-control/role-based-authorization.md) for `.create` and [table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. When creating or altering an external table using managed identity authentication, [All Databases admin permission](../management/access-control/role-based-authorization.md) is required.
 
-**Parameters**
+### Parameters
 
-<a name="table-name"></a>
-*TableName*
-
-External table name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.
-An external table can't have the same name as a regular table in the same database.
-
-<a name="schema"></a>
-*Schema*
-
-External data schema is described using the following format:
-
-&nbsp;&nbsp;*ColumnName* `:` *ColumnType* [`,` *ColumnName* `:` *ColumnType* ...]
-
-where *ColumnName* adheres to [entity naming](../query/schema-entities/entity-names.md) rules, and *ColumnType* is one of [supported data types](../query/scalar-data-types/index.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*tableName*|string|&check;|An external table name that adheres to the [entity names](../query/schema-entities/entity-names.md) rules. An external table can't have the same name as a regular table in the same database.|
+|*schema*|string|&check;|The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*. If the schema is unknown, use [infer\_storage\_schema](../query/inferstorageschemaplugin.md) to infer the schema based on external file contents.|
+|*kind*|string|&check;|The type of the external table. In this case, `storage` should be used instead of `sql`. Deprecated terms: `blob` for Blob Azure Storage or Azure Data Lake Gen 2 Storage, and `adl` for Azure Data Lake Gen 1 Storage.|
+|*partitions*|string|| A comma-separated list of columns by which the external table is partitioned. Partition column can exist in the data file itself, or as part of the file path. See [partitions formatting](#partitions-formatting) to learn how this value should look.|
+|*pathFormat*|string||An external data folder URI path format to use with partitions. See [partitions formatting](#partitions-formatting).|
+|*format*|string|&check;|The data format, which can be any of the [ingestion formats](../../ingestion-supported-formats.md). It's recommended to use the `Parquet` format for external tables to improve query and export performance, unless you use `JSON` paths mapping. When using an external table for [export scenario](data-export/export-data-to-an-external-table.md), you're limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.|
+|*storageConnectionString*|string|&check;|One or more comma-separated paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 file systems or Azure Data Lake Gen 1 containers, including credentials. The external table storage type is determined by the provided connection strings. See [storage connection strings](../api/connection-strings/storage-connection-strings.md) for details.|
+|*propertyName*, *propertyValue*|string||A comma-separated list of key-value property pairs. See [optional properties](#optional-properties).|
 
 > [!TIP]
-> If the external data schema is unknown, use the [infer\_storage\_schema](../query/inferstorageschemaplugin.md) plug-in, which helps infer the schema based on external file contents.
+> Provide more than a single storage account to avoid storage throttling while [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided.
 
 > [!TIP]
 > For CSV data files, having files with non-identical schema under the same storage container might result in data appearing shifted or missing. If some CSV files miss columns or have extra columns, move them to a different storage container(s) and define another external table(s) matching their schema, so that each external table covers a set of storage containers containing files of an identical schema.
 
-<a name="kind"></a>
-*Kind*
+### Partitions formatting
 
-The type of the external table. In this case, `storage` should to be used (rather than `sql`).
+The partitions list is any combination of partition columns, specified using one of the forms described in the following table.
 
->[!NOTE]
-> Deprecated terms:  `blob` for Blob Azure Storage or Azure Data Lake Gen 2 Storage, `adl` for Azure Data Lake Gen 1 Storage.
+|Partition Type|Syntax|Notes|
+|--|--|--|
+|Virtual column|*PartitionName* `:` (`datetime` \| `string`)|Read more on [virtual columns](#virtual-columns).|
+|String column value|*PartitionName* `:` `string` `=` *ColumnName*||
+|String column value [hash](../query/hashfunction.md)|*PartitionName* `:` `long` `=` `hash(`*ColumnName*`,` *Number*`)`|The hash is modulo *Number*.|
+|Truncated datetime column (value)|*PartitionName* `:` `datetime` `=` (`startofyear` \| `startofmonth` \| `startofweek` \| `startofday`) `(` *ColumnName* `)`|See documentation on [startofyear](../query/startofyearfunction.md), [startofmonth](../query/startofmonthfunction.md), [startofweek](../query/startofweekfunction.md), or [startofday](../query/startofdayfunction.md) functions.|
+|Truncated Datetime Column Value (bin)|*PartitionName* `:` `datetime` `=` `bin` `(` *ColumnName* `,` *TimeSpan* `)`|Read more about the [bin](../query/binfunction.md) function.|
 
-<a name="partitions"></a>
-*Partitions*
+*PathFormat* is a way to specify the format for the external data folder URI path in addition to partitions. It consists of a sequence of partition elements and text separators. A partition element refers to a partition that is declared in the partition `by` clause, and the text separator is any text enclosed in quotes. Consecutive partition elements must be set apart using the text separator.
 
-Comma-separated list of columns by which an external table is partitioned. Partition column can exist in the data file itself, or as part of the file path (read more on [virtual columns](#virtual-columns)).
+[ *StringSeparator* ] *Partition* [ *StringSeparator* ] [*Partition* [ *StringSeparator* ] ...]
 
-Partitions list is any combination of partition columns, specified using one of the following forms:
+To construct the original file path prefix, partition elements are rendered as strings and separated with corresponding text separators. You can use the `datetime_pattern` macro (`datetime_pattern(`*DateTimeFormat*`,` *PartitionName*`)`) to specify the format used for rendering a datetime partition value. The macro adheres to the .NET format specification, and allows format specifiers to be enclosed in curly brackets. For example, the following two formats are equivalent:
 
-* Partition, representing a [virtual column](#virtual-columns).
-
-  *PartitionName* `:` (`datetime` | `string`)
-
-* Partition, based on a string column value.
-
-  *PartitionName* `:` `string` `=` *ColumnName*
-
-* Partition, based on a string column value [hash](../query/hashfunction.md), modulo *Number*.
-
-  *PartitionName* `:` `long` `=` `hash` `(` *ColumnName* `,` *Number* `)`
-
-* Partition, based on truncated value of a datetime column. See documentation on [startofyear](../query/startofyearfunction.md), [startofmonth](../query/startofmonthfunction.md), [startofweek](../query/startofweekfunction.md), [startofday](../query/startofdayfunction.md) or [bin](../query/binfunction.md) functions.
-
-  *PartitionName* `:` `datetime` `=` (`startofyear` \| `startofmonth` \| `startofweek` \| `startofday`) `(` *ColumnName* `)`  
-  *PartitionName* `:` `datetime` `=` `bin` `(` *ColumnName* `,` *TimeSpan* `)`
-
-To check partitioning definition correctness, use the property `sampleUris` or `filesPreview` when creating an external table.
-
-<a name="path-format"></a>
-*PathFormat*
-
-External data folder URI path format, which can be specified in addition to partitions. Path format is a sequence of partition elements and text separators:
-
-&nbsp;&nbsp;[*StringSeparator*] *Partition* [*StringSeparator*] [*Partition* [*StringSeparator*] ...]  
-
-where *Partition* refers to a partition declared in `partition` `by` clause, and *StringSeparator* is any text enclosed in quotes. Consecutive partition elements must be set apart using *StringSeparator*.
-
-Original file path prefix can be constructed using partition elements rendered as strings and separated with corresponding text separators. To specify format used for rendering a datetime partition value, the following macro can be used:
-
-&nbsp;&nbsp;`datetime_pattern` `(` *DateTimeFormat* `,` *PartitionName* `)`  
-
-where *DateTimeFormat* adheres to the .NET format specification, with an extension allowing to enclose format specifiers into curly brackets. For example, the following two formats are equivalent:
-
-&nbsp;&nbsp;`'year='yyyy'/month='MM` and `year={yyyy}/month={MM}`
+* 'year='yyyy'/month='MM
+* year={yyyy}/month={MM}
 
 By default, datetime values are rendered using the following formats:
 
@@ -116,36 +97,10 @@ By default, datetime values are rendered using the following formats:
 | `bin(`*Column*`, 1h)` | `yyyy/MM/dd/HH` |
 | `bin(`*Column*`, 1m)` | `yyyy/MM/dd/HH/mm` |
 
-If *PathFormat* is omitted from the external table definition, it's assumed that all partitions, in exactly the same order as they're defined, are separated using `/` separator. Partitions are rendered using their default string presentation.
-
-To check path format definition correctness, use the property `sampleUris` or `filesPreview` when creating an external table.
-
-> [!NOTE]
-> *PathFormat* can only describe the storage "folder" URI path. To filter by file name, use `NamePrefix` and/or `FileExtension` external table properties.
-
-<a name="format"></a>
-*Format*
-
-The data format, any of the [ingestion formats](../../ingestion-supported-formats.md).
-
-> [!NOTE]
-> Using external table for [export scenario](data-export/export-data-to-an-external-table.md) is limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.
-
 > [!TIP]
-> We recommended using the *Parquet* format for external tables to improve query and export performance unless: you define virtual columns, use JSON paths mapping, or the external table data is in Azure Data Lake Storage (ADLS) Gen1. 
+> To check *Partitions* and *PathFormat* definition correctness, use the property `sampleUris` or `filesPreview` when creating an external table.
 
-<a name="connection-string"></a>
-*StorageConnectionString*
-
-One or more paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 filesystems or Azure Data Lake Gen 1 containers, including credentials.
-The external table storage type is determined by the provided connection strings.
-See [storage connection strings](../api/connection-strings/storage-connection-strings.md) for details. 
-
-> [!TIP]
-> Provide more than a single storage account to avoid storage throttling while [exporting](data-export/export-data-to-an-external-table.md) large amounts of data to the external table. Export will distribute the writes between all accounts provided. 
-
-<a name="properties"></a>
-*Optional Properties*
+### Optional properties
 
 | Property         | Type     | Description       |
 |------------------|----------|-------------------------------------------------------------------------------------|
@@ -156,16 +111,15 @@ See [storage connection strings](../api/connection-strings/storage-connection-st
 | `namePrefix`     | `string` | If set, indicates the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
 | `fileExtension`  | `string` | If set, indicates file extensions of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
 | `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
-| `sampleUris`     | `bool`   | If set, the command result provides several examples of simulated external data files URI as they are expected by the external table definition. This option helps validate whether the *[Partitions](#partitions)* and *[PathFormat](#path-format)* parameters are defined properly. |
-| `filesPreview`   | `bool`   | If set, one of the command result tables contains a preview of [.show external table artifacts](#show-external-table-artifacts) command. Like `sampleUri`, the option helps validate the *[Partitions](#partitions)* and *[PathFormat](#path-format)* parameters of external table definition. |
+| `sampleUris`     | `bool`   | If set, the command result provides several examples of simulated external data files URI as they're expected by the external table definition. This option helps validate whether the *Partitions* and *PathFormat* parameters are defined properly. |
+| `filesPreview`   | `bool`   | If set, one of the command result tables contains a preview of [.show external table artifacts](#show-external-table-artifacts) command. Like `sampleUri`, the option helps validate the *Partitions* and *PathFormat* parameters of external table definition. |
 | `validateNotEmpty` | `bool`   | If set, the connection strings are validated for having content in them. The command will fail if the specified URI location doesn't exist, or if there are insufficient permissions to access it. |
-| `dryRun` | `bool` | If set, the external table definition is not persisted. This option is useful for validating the external table definition, especially in conjunction with the `filesPreview` or `sampleUris` parameter. |
+| `dryRun` | `bool` | If set, the external table definition isn't persisted. This option is useful for validating the external table definition, especially in conjunction with the `filesPreview` or `sampleUris` parameter. |
 
 > [!TIP]
 > To learn more about the role `namePrefix` and `fileExtension` properties play in data file filtering during query, see [file filtering logic](#file-filtering) section.
- 
-<a name="examples"></a>
-**Examples** 
+
+### Examples
 
 A non-partitioned external table. Data files are expected to be placed directly under the container(s) defined:
 
@@ -247,7 +201,7 @@ external_table("ExternalTable")
 <a name="virtual-columns"></a>
 **Virtual columns**
 
-When data is exported from Spark, partition columns (that are provided to the dataframe writer's `partitionBy` method) are not written to data files. 
+When data is exported from Spark, partition columns (that are provided to the dataframe writer's `partitionBy` method) aren't written to data files.
 This process avoids data duplication because the data is already present in the folder names (for example, `column1=<value>/column2=<value>/`), and Spark can recognize it upon read.
 
 External tables support reading this data in the form of `virtual colums`. Virtual columns can be of either type `string` or `datetime`, and are specified using the following syntax:
@@ -276,9 +230,9 @@ external_table("ExternalTable")
 
 When querying an external table, the query engine improves performance by filtering out irrelevant external storage files. The process of iterating files and deciding whether a file should be processed is as follows:
 
-1. Build a URI pattern that represents a place where files are found. Initially, the URI pattern equals a connection string provided as part of the external table definition. If there are any partitions defined, they are rendered using *[PathFormat](#path-format)*, then appended to the URI pattern.
+1. Build a URI pattern that represents a place where files are found. Initially, the URI pattern equals a connection string provided as part of the external table definition. If there are any partitions defined, they're rendered using *PathFormat*, then appended to the URI pattern.
 
-2. For all files found under the URI patterns(s) created, check that:
+2. For all files found under the URI pattern(s) created, check that:
 
    * Partition values match predicates used in a query.
    * Blob name starts with `NamePrefix`, if such a property is defined.
@@ -294,11 +248,11 @@ Once all the conditions are met, the file is fetched and processed by the query 
 Returns a list of all files that will be processed when querying a given external table.
 
 > [!NOTE]
-> The operation requires [database user permission](../management/access-control/role-based-authorization.md).
+> The operation requires [database user permission](./access-control/role-based-access-control.md).
 
 **Syntax:** 
 
-`.show` `external` `table` *TableName* `artifacts` [`limit` *MaxResults*]
+`.show` `external` `table` *tableName* `artifacts` [`limit` *MaxResults*]
 
 where *MaxResults* is an optional parameter, which can be set to limit the number of results.
 
@@ -325,7 +279,6 @@ where *MaxResults* is an optional parameter, which can be set to limit the numbe
 |-------------------------------------------------------------------------| ---- | --------- |
 | `https://storageaccount.blob.core.windows.net/container1/folder/file.csv` | 10743 | `{}`   |
 
-
 For partitioned table, `Partition` column will contain extracted partition values:
 
 **Output:**
@@ -334,15 +287,14 @@ For partitioned table, `Partition` column will contain extracted partition value
 |-------------------------------------------------------------------------| ---- | --------- |
 | `https://storageaccount.blob.core.windows.net/container1/customer=john.doe/dt=20200101/file.csv` | 10743 | `{"Customer": "john.doe", "Date": "2020-01-01T00:00:00.0000000Z"}` |
 
-
 ## .create external table mapping
 
-`.create` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
+`.create` `external` `table` *ExternaltableName* `mapping` *MappingName* *MappingInJsonFormat*
 
-Creates a new mapping. For more information, see [Data Mappings](./mappings.md#json-mapping).
+Creates a new mapping. For more information, see [Data Mappings](./json-mapping.md).
 
-**Example** 
- 
+**Example**
+
 ```kusto
 .create external table MyExternalTable mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
 ```
@@ -355,12 +307,12 @@ Creates a new mapping. For more information, see [Data Mappings](./mappings.md#j
 
 ## .alter external table mapping
 
-`.alter` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
+`.alter` `external` `table` *ExternaltableName* `mapping` *MappingName* *MappingInJsonFormat*
 
-Alters an existing mapping. 
- 
-**Example** 
- 
+Alters an existing mapping.
+
+**Example**
+
 ```kusto
 .alter external table MyExternalTable mapping "Mapping1" '[{"Column": "rownumber", "Properties": {"Path": "$.rownumber"}}, {"Column": "rowguid", "Properties": {"Path": "$.rowguid"}}]'
 ```
@@ -373,14 +325,14 @@ Alters an existing mapping.
 
 ## .show external table mappings
 
-`.show` `external` `table` *ExternalTableName* `mapping` *MappingName* 
+`.show` `external` `table` *ExternaltableName* `mapping` *MappingName*
 
-`.show` `external` `table` *ExternalTableName* `mappings`
+`.show` `external` `table` *ExternaltableName* `mappings`
 
 Show the mappings (all or the one specified by name).
- 
-**Example** 
- 
+
+**Example**
+
 ```kusto
 .show external table MyExternalTable mapping "Mapping1" 
 
@@ -395,12 +347,12 @@ Show the mappings (all or the one specified by name).
 
 ## .drop external table mapping
 
-`.drop` `external` `table` *ExternalTableName* `mapping` *MappingName* 
+`.drop` `external` `table` *ExternaltableName* `mapping` *MappingName*
 
 Drops the mapping from the database.
- 
-**Example** 
- 
+
+**Example**
+
 ```kusto
 .drop external table MyExternalTable mapping "Mapping1" 
 ```

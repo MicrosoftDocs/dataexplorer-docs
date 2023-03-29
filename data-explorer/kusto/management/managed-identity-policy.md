@@ -3,7 +3,7 @@ title: Kusto ManagedIdentity policy - Azure Data Explorer
 description: This article describes ManagedIdentity policy in Azure Data Explorer.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 11/03/2021
+ms.date: 02/21/2023
 ---
 # Managed Identity policy
 
@@ -11,8 +11,9 @@ ms.date: 11/03/2021
 
 This policy can be enabled at the cluster and database levels. The policy is additive, meaning that for every operation that involves a managed identity, Azure Data Explorer will allow the operation if the usage is allowed at either the cluster or database level.
 
-> [!NOTE]
-> Creating and altering the managed identity policy requires [All Databases admin permission](../management/access-control/role-based-authorization.md).
+## Permissions
+
+Creating or altering a managed identity policy requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
 
 ## The ManagedIdentity policy object
 
@@ -51,8 +52,8 @@ The following values specify authentication to a `usage` using the configured ma
 | Value | Description | 
 |---|---|
 | `All` | All current and future usages are allowed. |
-| `AutomatedFlow`| Run a continuous export automated flow on behalf of a managed identity. |
+| `AutomatedFlows`| Run a continuous export automated flow on behalf of a managed identity. |
 | `DataConnection` | Authenticate to data connections to an Event Hub or an Event Grid. |
 |`ExternalTable` | Authenticate to external tables using connection strings configured with a managed identity. |
 | `NativeIngestion` |  Authenticate to an SDK for native ingestions from an external source. |
-| `SandboxArtifacts`| Authenticate to external artifacts referenced in the Python plugin with a managed identity. This usage needs to be defined on the cluster level managed identity policy. |
+| `SandboxArtifacts`| Authenticate to external artifacts referenced in sandboxed plugins (e.g., Python) with a managed identity. This usage needs to be defined on the cluster level managed identity policy. |

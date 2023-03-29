@@ -14,9 +14,8 @@ Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Tel
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
-* Download [Telegraf](https://portal.influxdata.com/downloads/).
-* Host Telegraf in a virtual machine (VM) or container. Telegraf can be hosted locally where the app or service being monitored is deployed, or remotely on a dedicated monitoring compute/container.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* [Telegraf](https://portal.influxdata.com/downloads/). Host Telegraf in a virtual machine (VM) or container. Telegraf can be hosted locally where the app or service being monitored is deployed, or remotely on a dedicated monitoring compute/container.
 
 ## Supported authentication methods
 
@@ -160,7 +159,7 @@ Since the collected metrics object is a complex type, the *fields* and *tags* co
     }
 
     // Create destination table with above query's results schema (if it doesn't exist already)
-    .set-or-append TargetTableName <| Transform_TargetTableName() | limit 0
+    .set-or-append TargetTableName <| Transform_TargetTableName() | take 0
 
     // Apply update policy on destination table
     .alter table TargetTableName policy update
@@ -181,7 +180,7 @@ There are multiple ways to flatten dynamic columns by using the [extend](kusto/q
 * **Use the extend operator**: We recommend using this approach as it's faster and robust. Even if the schema changes, it will not break queries or dashboards.
 
     ```kusto
-    Tablenmae
+    Tablename
     | extend facility_code=toint(fields.facility_code), message=tostring(fields.message), procid= tolong(fields.procid), severity_code=toint(fields.severity_code),
     SysLogTimestamp=unixtime_nanoseconds_todatetime(tolong(fields.timestamp)), version= todouble(fields.version),
     appname= tostring(tags.appname), facility= tostring(tags.facility),host= tostring(tags.host), hostname=tostring(tags.hostname), severity=tostring(tags.severity)

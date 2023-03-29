@@ -3,7 +3,7 @@ title: Kusto.ingest into command (pull data from storage) - Azure Data Explorer
 description: This article describes The .ingest into command (pull data from storage) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/23/2022
+ms.date: 03/08/2023
 ---
 # Ingest from storage
 
@@ -15,36 +15,42 @@ them, and ingest them together into a single target table.
 Data is appended to the table
 without affecting existing records, and without modifying the table's schema. Minimal required permission levels are required so that you can ingest data into all existing tables in a database or into a specific existing table. For more information, see [Permissions on the Engine Service](../../api/netfx/kusto-ingest-client-permissions.md#permissions-on-the-engine-service).
 
+## Permissions
+
+You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
+
 ## Syntax
 
 `.ingest` [`async`] `into` `table` *TableName* *SourceDataLocator* [`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
 
-## Arguments
+## Parameters
 
-* `async`: If specified, the command will return immediately, and continue
-  ingestion in the background. The results of the command will include
-  an `OperationId` value that can then be used with the `.show operation`
-  command to retrieve the ingestion completion status and results.
-  
-* *TableName*: The name of the table to ingest data into.
-  The table name is always relative to the database in context,
-  and its schema is the schema that will be assumed for the data
-  if no schema mapping object is provided.
-
-* *SourceDataLocator*: A literal of type `string`, or a comma-delimited list of such
-  literals surrounded by `(` and `)` characters, representing [storage connection strings](../../api/connection-strings/storage-connection-strings.md). Kusto uses a URI format to describe the storage files containing the data to pull. 
-  * A single connection string must refer to a single file hosted by a storage account. 
-  * Ingestion of multiple files can be done by specifying multiple connection strings separated with a comma, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/externaltables.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+|`async`|string||If specified, the command returns immediately and continues ingestion in the background. The results of the command include an `OperationId` value that can then be used with the `.show operation` command to retrieve the ingestion completion status and results.|
+|*TableName*|string|&check;|The name of the table into which to ingest data. The table name is always relative to the database in context. If no schema mapping object is provided, the schema of the database in context is used.|
+|*SourceDataLocator*|string|&check;|A single or comma-separated list of [storage connection strings](../../api/connection-strings/storage-connection-strings.md). A single connection string must refer to a single file hosted by a storage account. Ingestion of multiple files can be done by specifying multiple connection strings, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/externaltables.md).|
 
 > [!NOTE]
-> It is strongly recommended to use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals)
-> for the *SourceDataPointer* that includes actual credentials in it.
-> The service will be sure to scrub credentials
-> in its internal traces, error messages, etc.
+> We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for the *SourceDataPointer*. The service will scrub credentials in internal traces and error messages.
 
 [!INCLUDE [ingestion-properties](../../../includes/ingestion-properties.md)]
 
-## Results
+## Authentication and authorization
+
+Each storage connection string indicates the authorization method to use for access to the storage. Depending on the authorization method, the principal may need to be granted permissions on the external storage to perform the ingestion.
+
+The following table lists the supported authentication methods and the permissions needed for ingesting data from external storage.
+
+|Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
+|--|--|--|
+|[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Reader|Reader|
+|[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
+|[Azure AD access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
+|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
+|[Managed identity](../../api/connection-strings/storage-authentication-methods.md#managed-identity)|Storage Blob Data Reader|Reader|
+
+## Returns
 
 The result of the command is a table with as many records
 as there are data shards ("extents") generated by the command.
@@ -75,6 +81,12 @@ values) to ensure that the SAS is never recorded.
     h'https://contoso.blob.core.windows.net/container/file1.csv?...',
     h'https://contoso.blob.core.windows.net/container/file2.csv?...'
 )
+```
+
+The next example shows how to read a CSV file from Azure Blob Storage and ingest its contents into table `T` using managed identity authentication. For additional information on managed identity authentication method, see [Managed Identity Authentication Overview](../../api/connection-strings/storage-authentication-methods.md#managed-identity).
+
+```kusto
+.ingest into table T ('https://StorageAccount.blob.core.windows.net/Container/file.csv;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e')
 ```
 
 The next example is for ingesting data from Azure Data Lake Storage Gen 2

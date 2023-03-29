@@ -11,11 +11,13 @@ Returns the number of records in the input record set.
 
 ## Syntax
 
-`T | count`
+*T* `|` `count`
 
-## Arguments
+## Parameters
 
-*T*: The tabular data whose records are to be counted.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The tabular input whose records are to be counted. |
 
 ## Returns
 
@@ -24,7 +26,9 @@ This function returns a table with a single record and column of type
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents | count
 ```

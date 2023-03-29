@@ -3,7 +3,7 @@ title: bin() - Azure Data Explorer
 description: Learn how to use the bin() function to round values down to an integer multiple of a given bin size. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 01/09/2023
 adobe-target: true
 ---
 # bin()
@@ -13,7 +13,7 @@ Rounds values down to an integer multiple of a given bin size.
 Used frequently in combination with [`summarize by ...`](./summarizeoperator.md).
 If you have a scattered set of values, they'll be grouped into a smaller set of specific values.
 
-Alias to `floor()` function.
+> The `bin()` and `floor()` functions are equivalent
 
 ## Syntax
 
@@ -23,8 +23,8 @@ Alias to `floor()` function.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* |  int, long, real, timespan, or datetime | &check; | The value to round down. |
-| *roundTo* |  int, long, real, or timespan | &check; | The "bin size" that divides *value*. |
+| *value* |  int, long, real, [timespan](scalar-data-types/timespan.md), or datetime | &check; | The value to round down. |
+| *roundTo* |  int, long, real, or [timespan](scalar-data-types/timespan.md) | &check; | The "bin size" that divides *value*. |
 
 ## Returns
 

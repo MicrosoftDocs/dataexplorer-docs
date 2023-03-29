@@ -3,12 +3,12 @@ title: Start for free using Azure Data Explorer
 description: This article shows you how to get started with a free Azure Data Explorer cluster.
 ms.reviewer: avnera
 ms.topic: how-to
-ms.date: 07/26/2022
+ms.date: 01/25/2023
 ---
 
 # What is a free Azure Data Explorer cluster?
 
-Free cluster allows anyone with a Microsoft account or an Azure Active Directory user identity to create a free Azure Data Explorer cluster without needing an Azure subscription or a credit card.
+Free cluster allows anyone with a Microsoft account or an Azure Active Directory user identity to create a [free Azure Data Explorer cluster](start-for-free-web-ui.md) without needing an Azure subscription or a credit card.
 
 It's a frictionless way to create a free cluster that can be used for any purpose. It's the ideal solution for anyone who wants to get started quickly with Azure Data Explorer and experience the incredible engine performance and enjoy the productive Kusto Query Language.
 
@@ -56,10 +56,12 @@ The free cluster is a subset of the full Azure Data Explorer cluster that provid
 | Enterprise readiness (Customer managed keys, VNet, disk encryption, managed identities) | &check; | |
 | Autoscale | &check; | |
 | Azure Monitor and Insights | &check; | |
-| Event Hub and Event Grid connectors | &check; | |
+| Event Hubs and Event Grid connectors | &check; | Event Hubs only |
+| Azure Resource Manager (ARM) templates | &check; | |
 
 ## Next steps
 
 * [Get started with your free cluster](start-for-free-web-ui.md)
+* [Manage Event Hubs data connections in your free cluster](start-for-free-event-hubs.md)
 * [Learn more about Azure Data Explorer](data-explorer-overview.md)
 * [Learn more about Kusto Query Language](kusto/query/index.md)

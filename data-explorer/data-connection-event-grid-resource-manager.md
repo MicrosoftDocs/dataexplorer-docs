@@ -9,7 +9,7 @@ ms.date: 07/31/2022
 # Create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template
 
 > [!div class="op_single_selector"]
-> * [Ingestion wizard](./ingestion-wizard-new-table.md)
+> * [Ingestion wizard](/azure/data-explorer/ingest-from-container)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -21,10 +21,10 @@ In this article, you create an Event Grid data connection for Azure Data Explore
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
-* Create [a table and column mapping](ingest-data-event-grid.md#create-a-target-table-in-azure-data-explorer).
-* Create [an event hub](/azure/event-hubs/event-hubs-create).
-* Create [a storage account with an Event Grid subscription](ingest-data-event-grid.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* A [table and column mapping](ingest-data-event-grid.md#create-a-target-table-in-azure-data-explorer).
+* An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
+* A [storage account with an Event Grid subscription](ingest-data-event-grid.md).
 
 ## Azure Resource Manager template for adding an Event Grid data connection
 
@@ -138,11 +138,12 @@ The following example shows an Azure Resource Manager template for adding an Eve
     },
     "resources": [{
             "type": "Microsoft.Kusto/Clusters/Databases/DataConnections",
-            "apiVersion": "2019-09-07",
+            "apiVersion": "2022-02-01",
             "name": "[concat(parameters('Clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'), '/', parameters('dataconnections_kustodc_name'))]",
             "location": "[parameters('location')]",
             "kind": "EventGrid",
             "properties": {
+                "managedIdentityResourceId": "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]",
                 "storageAccountResourceId": "[resourceId(parameters('subscriptionId'), parameters('resourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('StorageAccounts_storagedemo_name'))]",
                 "eventHubResourceId": "[resourceId(parameters('subscriptionId'), parameters('resourceGroup'), 'Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_eventhubns_name'), parameters('EventHubs_eventhubdemo_name'))]",
                 "consumerGroup": "[parameters('consumergroup_default_name')]",

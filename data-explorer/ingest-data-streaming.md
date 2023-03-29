@@ -23,12 +23,12 @@ Two streaming ingestion types are supported:
 
 | Ingestion type | Description |
 | -- | -- |
-| **Event Hub** or **IoT Hub** | Hubs are configured as table streaming data sources.<br />For information about setting these up, see [**Event Hub**](ingest-data-event-hub.md) or [**IoT Hub**](ingest-data-iot-hub.md) data ingestion methods. |
+| Data connection | Event Hub, IoT Hub, and Event Grid data connections can use streaming ingestion, provided it is enabled on the cluster level. The decision to use streaming ingestion is done according to the streaming ingestion policy configured on the target table.<br />For information on managing data connections, see [**Event Hub**](ingest-data-event-hub.md), [**IoT Hub**](ingest-data-iot-hub.md) and [**Event Grid**](ingest-data-event-Grid.md). |
 | **Custom ingestion** | Custom ingestion requires you to write an application that uses one of the Azure Data Explorer [client libraries](kusto/api/client-libraries.md).<br />Use the information in this topic to configure custom ingestion. You may also find the [C# streaming ingestion sample application](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) helpful. |
 
 Use the following table to help you choose the ingestion type that's appropriate for your environment:
 
-|Criterion|Event Hub / IoT Hub|Custom Ingestion|
+|Criterion|Data connection|Custom Ingestion|
 |---------|---------|---------|
 |Data delay between ingestion initiation and the data available for query | Longer delay | Shorter delay  |
 |Development overhead | Fast and easy setup, no development overhead | High development overhead to create an application ingest the data, handle errors, and ensure data consistency |
@@ -188,7 +188,7 @@ Create a table to receive the streaming ingestion data and define its related po
 1. Copy one of the following commands into the **Query pane** and select **Run**. This defines the [streaming ingestion policy](kusto/management/streamingingestionpolicy.md) on the table you created or on the database that contains the table.
 
     > [!TIP]
-    > A policy that is defined at the database level applies to all existing and future tables in the database.
+    > A policy that is defined at the database level applies to all existing and future tables in the database. When you enable the policy at the database level, there is no need to enable it per table.
 
     * To define the policy on the table you created, use:
 
@@ -319,11 +319,13 @@ namespace StreamingIngestion
 ### [Python](#tab/python)
 
 ```python
-from azure.kusto.data import KustoConnectionStringBuilder
+from azure.kusto.data import (
+    KustoConnectionStringBuilder,
+    DataFormat
+)
 
 from azure.kusto.ingest import (
     IngestionProperties,
-    DataFormat,
     KustoStreamingIngestClient
 )
 

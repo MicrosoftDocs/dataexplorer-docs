@@ -18,7 +18,7 @@ in the form of default query limits. If you're considering removing these limits
 **Request concurrency** is a limit that a cluster imposes on several requests running at the same time.
 
 * The default value of the limit depends on the SKU the cluster is running on, and is calculated as: `Cores-Per-Node x 10`.
-  * For example, for a cluster that's set-up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
+  * For example, for a cluster that's set up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
 * The default value can be changed by configuring the [request rate limit policy](../management/request-rate-limit-policy.md) of the `default` workload group.
   * The actual number of requests that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
  
@@ -102,15 +102,22 @@ The following apply when using `set` statements, and/or when specifying flags in
 * If `notruncation` is set, and any of `truncationmaxsize`, `truncationmaxrecords`, or `query_take_max_records` are also set - `notruncation` is ignored.
 * If `truncationmaxsize`, `truncationmaxrecords` and/or `query_take_max_records` are set multiple times - the *lower* value for each property applies.
 
-## Limit on memory per iterator
+## Limit on memory consumed by query operators (E_RUNAWAY_QUERY)
 
-**Max memory per result set iterator** is another limit used by Kusto
-to protect against "runaway" queries. This limit, represented by the
-request option `maxmemoryconsumptionperiterator`, sets an upper bound
-on the amount of memory that a single query plan result set iterator
-can hold. This limit applies to the specific iterators that aren't streaming by nature, such as `join`.) Here are a few error messages that will return when this situation happens:
+Kusto limits the memory that each query operator can consume to protect against "runaway" queries.
+This limit might be reached by some query operators, such as `join` and `summarize`, that operate by
+holding significant data in memory. By default the limit is 5GB (per cluster node), and it can be increased by setting the request option
+`maxmemoryconsumptionperiterator`:
 
+<!-- csl -->
+```kusto
+set maxmemoryconsumptionperiterator=68719476736;
+MyTable | summarize count() by Use
 ```
+
+When this limit is reached, a partial query failure is emitted with a message that includes the text `E_RUNAWAY_QUERY`.
+
+```text
 The ClusterBy operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete E_RUNAWAY_QUERY.
 
 The DemultiplexedResultSetCache operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete (E_RUNAWAY_QUERY).
@@ -128,25 +135,29 @@ The TopNestedAggregator operator has exceeded the memory budget during evaluatio
 The TopNested operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete (E_RUNAWAY_QUERY).
 ```
 
-By default, this value is set to 5 GB. You may increase this value by up to half the physical memory of the machine:
+If `maxmemoryconsumptionperiterator` is set multiple times, for example in both client request properties and using a `set` statement, the lower value applies.
 
-```kusto
-set maxmemoryconsumptionperiterator=68719476736;
-MyTable | ...
+An additional limit that might trigger an `E_RUNAWAY_QUERY` partial query failure is a limit on the max accumulated size of
+strings held by a single operator. This limit cannot be overridden by the request option above:
+
+```text
+Runaway query (E_RUNAWAY_QUERY). Aggregation over string column exceeded the memory budget of 8GB during evaluation.
 ```
 
-If the query uses `summarize`, `join`, or `make-series` operators, you can use the [shuffle query](../query/shufflequery.md) strategy to reduce memory pressure on a single machine.
+When this limit is exceeded, most likely the relevant query operator is a `join`, `summarize`, or `make-series`.
+To work-around the limit, one should modify the query to use the [shuffle query](../query/shufflequery.md) strategy.
+(This is also likely to improve the performance of the query.)
 
-In other cases, you can sample the data set to avoid exceeding this limit. The two queries below show how to do the sampling. The first query is a statistical sampling, using a random number generator. The second query is deterministic sampling, done by hashing some column from the data set, usually some ID.
+In all cases of `E_RUNAWAY_QUERY`, an additional option (beyond increasing the limit by setting the request option and changing the
+query to use a shuffle strategy) is to switch to sampling.
+The two queries below show how to do the sampling. The first query is a statistical sampling, using a random number generator. The second query is deterministic sampling, done by hashing some column from the data set, usually some ID.
 
+<!-- csl -->
 ```kusto
 T | where rand() < 0.1 | ...
 
 T | where hash(UserId, 10) == 1 | ...
 ```
-
-If `maxmemoryconsumptionperiterator` is set multiple times, for example in both client request properties and using a `set` statement, the lower value applies.
-
 
 ## Limit on memory per node
 
@@ -193,13 +204,16 @@ control commands. This value can be increased if needed (capped at one hour).
    than the server timeout value requested by the user. This difference, is to allow for network latencies.
 * To automatically use the maximum allowed request timeout, set the client request property `norequesttimeout` to `true`.
 
+> [!NOTE]
+> See [set timeout limits](../../set-timeout-limits.md) for a step-by-step guide on how to set timeouts in the Azure Data Explorer web UI, Kusto.Explorer, Kusto.Cli, Power BI, and when using an SDK.
+
 ## Limit on query CPU resource usage
 
-Kusto lets you run queries and use as much CPU resources as the cluster has. 
-It attempts to do a fair round-robin between queries if more than one is running. This method yields the best performance for ad-hoc queries.
+Kusto lets you run queries and use as much CPU resources as the cluster has.
+It attempts to do a fair round-robin between queries if more than one is running. This method yields the best performance for query-defined functions.
 At other times, you may want to limit the CPU resources used for a particular
 query. If you run a "background job", for example, the system might tolerate higher
-latencies to give concurrent ad-hoc queries high priority.
+latencies to give concurrent inline queries high priority.
 
 Kusto supports specifying two [client request properties](../api/netfx/request-properties.md) when running a query.
 The properties are *query_fanout_threads_percent* and *query_fanout_nodes_percent*.
@@ -222,7 +236,7 @@ If the tree depth exceeds an internal threshold, the query is considered too com
 
 The following examples show common query patterns that can cause the query to exceed this limit and fail:
 
-* a long lists of binary operators that are chained together. For example:
+* a long list of binary operators that are chained together. For example:
 
 ```kusto
 T 

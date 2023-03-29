@@ -3,7 +3,7 @@ title: as operator - Azure Data Explorer
 description: Learn how to use the as operator to bind a name to the operator's input tabular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 03/14/2023
 ---
 # as operator
 
@@ -15,13 +15,13 @@ To optimize multiple uses of the `as` operator within a single query, see [Named
 
 *T* `|` `as` [`hint.materialized` `=` `true`] *Name*
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*T*| tabular | &check; |  A tabular expression.|
-| *Name*| string| &check; | A temporary name for the tabular expression|
-| * `hint.materialized`| bool |  | If set to `true`, the value of the tabular expression will be  materialized as if it was wrapped by a [materialize()](./materializefunction.md) function call.|
+|*T*| string | &check; | The tabular expression to rename.|
+| *Name*| string| &check; | The temporary name for the tabular expression.|
+| *`hint.materialized`*| bool |  | If set to `true`, the value of the tabular expression will be as if it was wrapped by a [materialize()](./materializefunction.md) function call.|
 
 > [!NOTE]
 >
@@ -30,9 +30,10 @@ To optimize multiple uses of the `as` operator within a single query, see [Named
 
 ## Examples
 
-In the following 2 example the union's generated TableName column will consist of 'T1' and 'T2'
+In the following two examples the union's generated TableName column will consist of 'T1' and 'T2'.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0UCguSS0AcrhqFBKLFULAjNK8zPw8hfLMkozi/NKi5FTbkMSknFS/xNxUBY0iPGZAjDDSBAAgKK6faAAAAA==)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0UCguSS0AcrhqFBKLFULAjNK8zPw8hfLMkozi/NKi5FTbkMSknFS/xNxUBY0iPGZAjDDSBAAgKK6faAAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 range x from 1 to 10 step 1 
@@ -40,9 +41,10 @@ range x from 1 to 10 step 1
 | union withsource=TableName (range x from 1 to 10 step 1 | as T2)
 ```
 
-Alternatively, you can write the same example, as follows:
+Alternatively, you can write the same example as follows:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAyvNy8zPUyjPLMkozi8tSk61DUlMykn1S8xNVdAoSsxLT1WoUEgrys9VMFQoyVcwNFAoLkktAHJqFBKLFUIMNXWIUWakCQB5tG07ZwAAAA==)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAyvNy8zPUyjPLMkozi8tSk61DUlMykn1S8xNVdAoSsxLT1WoUEgrys9VMFQoyVcwNFAoLkktAHJqFBKLFUIMNXWIUWakCQB5tG07ZwAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 union withsource=TableName (range x from 1 to 10 step 1 | as T1), (range x from 1 to 10 step 1 | as T2)

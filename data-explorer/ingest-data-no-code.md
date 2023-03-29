@@ -28,7 +28,7 @@ In this tutorial, you'll learn how to:
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md). In this tutorial, the database name is *TestDatabase*.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md). In this tutorial, the database name is *TestDatabase*.
 
 ## Azure Monitor data provider: diagnostic metrics and logs and activity logs
 
@@ -636,6 +636,6 @@ Query results:
 
 ## Next steps
 
-* Learn to write many more queries on the data you extracted from Azure Data Explorer by using [Write queries for Azure Data Explorer](write-queries.md).
+* Learn to write many more queries on the data you extracted from Azure Data Explorer by using [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators).
 * [Monitor Azure Data Explorer ingestion operations using diagnostic logs](using-diagnostic-logs.md)
 * [Use metrics to monitor cluster health](using-metrics.md)

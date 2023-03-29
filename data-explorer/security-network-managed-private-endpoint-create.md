@@ -8,12 +8,13 @@ ms.date: 04/05/2022
 
 # Create a managed private endpoint for Azure Data Explorer
 
-Managed private endpoints are required to connect to Azure resources that are highly protected. In this article, you'll learn how to create a managed private endpoint and connect it to your data source.
+Managed private endpoints are required to connect to Azure resources that are highly protected. They are one-way private connections that allow Azure Data Explorer to connect to other protected services. In this article, you'll learn how to create a managed private endpoint and connect it to your data source.
 
 ## Prerequisites
 
-* [Create an Azure Data Explorer Cluster](create-cluster-database-portal.md) that isn't injected in a virtual network
-* Create an [event hub](/azure/event-hubs/event-hubs-about) or a [Azure Storage](/azure/storage/blobs/storage-blobs-overview) blob
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An [Azure Data Explorer cluster](create-cluster-database-portal.md) that isn't injected in a virtual network.
+* An [event hub](/azure/event-hubs/event-hubs-about) or a [Azure Storage](/azure/storage/blobs/storage-blobs-overview) blob in a subscription that is registered to the Microsoft.Network resource provider. For more information, see [Register subscription to resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal).
 
 ## Create a managed private endpoint using the Azure portal
 

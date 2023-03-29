@@ -156,6 +156,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/kusto/query/regex-operator.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/matches-regex-operator",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/kusto/functions-library/normality_test_fl.md",
       "redirect_url": "/azure/data-explorer/kusto/functions-library/normality-test-fl",
       "redirect_document_id": true
@@ -346,6 +351,16 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/power-bi-connector.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/power-bi-imported-query.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": false
+    },    
+    {
       "source_path": "data-explorer/kusto/query/toutf8function.md",
       "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-from-string-function",
       "redirect_document_id": true
@@ -353,6 +368,181 @@
     {
       "source_path": "data-explorer/kusto/query/makestringfunction.md",
       "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-to-string-function",
+      "redirect_document_id": true
+    },
+    {
+			"source_path": "data-explorer/write-queries.md",
+			"redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
+			"redirect_document_id": false
+		},
+    {
+			"source_path": "data-explorer/kusto/query/tutorial.md",
+			"redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
+			"redirect_document_id": false
+		},
+    {
+      "source_path": "data-explorer/visualize-power-bi.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/floorfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/binfunction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/limitoperator.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/takeoperator",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/orderoperator.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/sort-operator",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/iiffunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/ifffunction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/getmonthfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/monthofyearfunction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/machine-learning-and-tsa.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/time-series-analysis",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/time-series-analysis.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/time-series-analysis",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/anomaly-detection.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/anomaly-detection",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/machine-learning-clustering.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/machine-learning-clustering",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/access-control/role-based-authorization.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/access-control/role-based-access-control",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/access-control/principals-and-identity-providers.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/access-control/referencing-security-principals",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/tdigest-mergefunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/merge-tdigest-function",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/rowrankfunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/rowrankdensefunction",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/clients.md",
+      "redirect_url": "/azure/data-explorer/connect-sql-server-emulation",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/aad.md",
+      "redirect_url": "/azure/data-explorer/connect-jdbc",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/index.md",
+      "redirect_url": "/azure/data-explorer/t-sql.md",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/t-sql.md",
+      "redirect_url": "/azure/data-explorer/t-sql",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/sqlknownissues.md",
+      "redirect_url": "/azure/data-explorer/t-sql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/tdskql.md",
+      "redirect_url": "/azure/data-explorer/query-sql-server-emulation",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/web-ui-samples-gallery.md",
+      "redirect_url": "/azure/data-explorer/web-ui-samples-dashboards",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/web-ui-overview.md",
+      "redirect_url": "/azure/data-explorer/web-query-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/ingestion-wizard-existing-table.md",
+      "redirect_url": "/azure/data-explorer/ingest-from-local-file",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/ingestion-wizard-new-table.md",
+      "redirect_url": "/azure/data-explorer/ingest-from-container",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/clean-extent-containers.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/extents-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/tds/linkedserver.md",
+      "redirect_url": "/azure/data-explorer/linked-server",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/kusto-explorer-refactor.md",
+      "redirect_url": "/azure/data-explorer/kusto/tools/kusto-explorer-code-features",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/kusto-explorer-codenav.md",
+      "redirect_url": "/azure/data-explorer/kusto/tools/kusto-explorer-code-features",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/kusto-explorer-code-analyzer.md",
+      "redirect_url": "/azure/data-explorer/kusto/tools/kusto-explorer-code-features",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/connect-sql-server-emulation.md",
+      "redirect_url": "/azure/data-explorer/sql-server-emulation-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/matlab.md",
+      "redirect_url": "/azure/data-explorer/connect-common-apps",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/query-sql-server-emulation.md",
+      "redirect_url": "/azure/data-explorer/sql-kql-queries-and-stored-functions",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-show-commands.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/materialized-views/materialized-view-show-command",
       "redirect_document_id": true
     }
   ]

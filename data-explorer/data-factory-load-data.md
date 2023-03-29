@@ -32,7 +32,7 @@ In this article, you use the Data Factory Copy Data tool to load data from Amazo
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * A source of data.
 
 ## Create a data factory
@@ -204,7 +204,7 @@ After you've created the linked service connection, the **Destination data store
 
     * Cancel the selection of the columns that you don't need to define your column mapping.
 
-    b. The second mapping occurs when this tabular data is ingested into Azure Data Explorer. Mapping is performed according to [CSV mapping rules](kusto/management/mappings.md#csv-mapping). Even if the source data isn't in CSV format, Azure Data Factory converts the data into a tabular format. Therefore, CSV mapping is the only relevant mapping at this stage. Do the following:
+    b. The second mapping occurs when this tabular data is ingested into Azure Data Explorer. Mapping is performed according to [CSV mapping rules](kusto/management/csv-mapping.md). Even if the source data isn't in CSV format, Azure Data Factory converts the data into a tabular format. Therefore, CSV mapping is the only relevant mapping at this stage. Do the following:
 
     * (Optional) Under **Azure Data Explorer (Kusto) sink properties**, add the relevant **Ingestion mapping name** so that column mapping can be used.
 

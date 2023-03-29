@@ -107,6 +107,7 @@ Use the application credentials to programmatically access your database by usin
 . . .
 string applicationClientId = "<myClientID>";
 string applicationKey = "<myApplicationKey>";
+string authority = "<the Azure Active Directory Id of the application>";
 . . .
 var kcsb = new KustoConnectionStringBuilder($"https://{clusterName}.kusto.windows.net/{databaseName}")
     .WithAadApplicationKeyAuthentication(

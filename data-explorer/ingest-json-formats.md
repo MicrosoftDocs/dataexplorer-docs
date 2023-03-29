@@ -8,12 +8,12 @@ ms.date: 09/14/2022
 
 # Ingest JSON formatted sample data into Azure Data Explorer
 
-This article shows you how to ingest JSON formatted data into an Azure Data Explorer database. You'll start with simple examples of raw and mapped JSON, continue to multi-lined JSON, and then tackle more complex JSON schemas containing arrays and dictionaries.  The examples detail the process of ingesting JSON formatted data using Kusto query language (KQL), C#, or Python. The Kusto query language `ingest` control commands are executed directly to the engine endpoint. In production scenarios, ingestion is executed to the Data Management service using client libraries or data connections. Read [Ingest data using the Azure Data Explorer Python library](python-ingest-data.md) and [Ingest data using the Azure Data Explorer .NET Standard SDK](./net-sdk-ingest-data.md) for a walk-through regarding ingesting data with these client libraries.
+This article shows you how to ingest JSON formatted data into an Azure Data Explorer database. You'll start with simple examples of raw and mapped JSON, continue to multi-lined JSON, and then tackle more complex JSON schemas containing arrays and dictionaries.  The examples detail the process of ingesting JSON formatted data using Kusto Query Language (KQL), C#, or Python. The Kusto Query Language `ingest` control commands are executed directly to the engine endpoint. In production scenarios, ingestion is executed to the Data Management service using client libraries or data connections. Read [Ingest data using the Azure Data Explorer Python library](python-ingest-data.md) and [Ingest data using the Azure Data Explorer .NET Standard SDK](./net-sdk-ingest-data.md) for a walk-through regarding ingesting data with these client libraries.
 
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 
 ## The JSON format
 
@@ -23,7 +23,9 @@ Azure Data Explorer supports two JSON file formats:
 * `multijson`: Multi-lined JSON. The parser ignores the line separators and reads a record from the previous position to the end of a valid JSON.
 
 > [!NOTE]
-> When ingesting using the [ingestion wizard](ingest-data-wizard.md), select **Ignore data format errors**, to ingest data in JSON format. If you leave this check box unselected, the data will be ingested in multijson format. For more information, see [edit the schema in the ingestion wizard](ingestion-wizard-existing-table.md#edit-the-schema).
+> When ingesting using the [ingestion wizard](ingest-data-wizard.md), the default format is `multijson`. The format can handle multiline JSON records and arrays of JSON records. When a parsing error is encountered, the entire file is discarded.
+> 
+> If you're using the JSON Line format, where each line is a single well-formatted JSON record, and you want to be able to handle records that are not well-formed, you can select the option to "Ignore data format errors." This will allow the valid records to be ingested while skipping the ones that are not well-formed.
 
 For more information, see [JSON Lines](https://jsonlines.org/).
 
@@ -51,7 +53,7 @@ In this example, you ingest JSON records as raw data to a single column table. T
 
 ### [KQL](#tab/kusto-query-language)
 
-Use Kusto query language to ingest data in a raw [JSON format](#the-json-format).
+Use Kusto Query Language to ingest data in a raw [JSON format](#the-json-format).
 
 1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
 
@@ -558,4 +560,4 @@ Array data types are an ordered collection of values. Ingestion of a JSON array 
 ## Next steps
 
 * [Data ingestion overview](ingest-data-overview.md)
-* [Write queries](write-queries.md)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

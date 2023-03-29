@@ -9,7 +9,7 @@ ms.date: 07/31/2022
 # Create an Event Grid data connection for Azure Data Explorer by using Python
 
 > [!div class="op_single_selector"]
-> * [Ingestion wizard](./ingestion-wizard-new-table.md)
+> * [Ingestion wizard](/azure/data-explorer/ingest-from-container)
 > * [Portal](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -23,14 +23,13 @@ For the Microsoft Azure Kusto Management Client Library, see [Microsoft Azure SD
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * [Python 3.4+](https://www.python.org/downloads/).
-* [Table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
-* [Database and table policies](database-table-policies-csharp.md) (optional).
-* [A storage account with an Event Grid subscription](ingest-data-event-grid.md).
+* A A [table and column mapping](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
+* A [storage account with an Event Grid subscription](ingest-data-event-grid.md).
 
 > [!NOTE]
-> You must have at least [Reader and Data Access](/azure/role-based-access-control/built-in-roles#reader-and-data-access) role-based authorization on the storage account to set up the Event Grid connection.
+> You must have at least [Reader and Data Access](/azure/role-based-access-control/built-in-roles#reader-and-data-access) role-based access control on the storage account to set up the Event Grid connection.
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](includes/data-explorer-data-connection-install-package-python.md)]
 

@@ -8,25 +8,25 @@ items:
     href: workload-groups.md
   - name: Workload group commands
     items:
-    - name: .alter-merge workload group command
+    - name: .alter-merge workload_group command
       href: alter-merge-workload-group-command.md
-    - name: .create or alter workload group command
+    - name: .create-or-alter workload_group command
       href: create-or-alter-workload-group-command.md
-    - name: .drop workload group command
+    - name: .drop workload_group command
       href: drop-workload-group-command.md
-    - name: .show workload group command
+    - name: .show workload_group(s) command
       href: show-workload-group-command.md
   - name: Request classification policy
     items:
     - name: Request classification policy
       href: request-classification-policy.md
-    - name: .alter cluster request classification policy commands
+    - name: .alter cluster policy request_classification command
       href: alter-cluster-policy-request-classification-command.md
-    - name: .alter-merge cluster request classification policy commands
+    - name: .alter-merge cluster policy request_classification command
       href: alter-merge-cluster-policy-request-classification-command.md
-    - name: .delete cluster request classification policy commands
+    - name: .delete cluster policy request_classification command
       href: delete-cluster-policy-request-classification-command.md
-    - name: .show cluster request classification policy commands
+    - name: .show cluster policy request_classification command
       href: show-cluster-policy-request-classification-command.md
   - name: Request limits policy
     href: request-limits-policy.md
@@ -117,38 +117,62 @@ items:
     items:
     - name: Materialized views overview
       href: materialized-views/materialized-view-overview.md
-    - name: ".create materialized-view"
-      href: materialized-views/materialized-view-create.md
-    - name: ".alter materialized-view"
-      href: materialized-views/materialized-view-alter.md
-    - name: ".create-or-alter materialized-view"
-      href: materialized-views/materialized-view-create-or-alter.md
-    - name: ".show materialized-view commands"
-      href: materialized-views/materialized-view-show-commands.md
-    - name: ".show materialized-view details"
-      href: materialized-views/materialized-view-show-details-command.md
-    - name: ".alter materialized-view docstring"
-      href: materialized-views/materialized-view-alter-docstring.md
-    - name: ".alter materialized-view folder"
-      href: materialized-views/materialized-view-alter-folder.md
-    - name: ".alter materialized-view lookback"
-      href: materialized-views/materialized-view-alter-lookback.md
-    - name: ".alter materialized-view autoUpdateSchema"
-      href: materialized-views/materialized-view-alter-autoUpdateSchema.md
-    - name: ".rename materialized-view"
-      href: materialized-views/materialized-view-rename.md
-    - name: ".drop materialized-view"
-      href: materialized-views/materialized-view-drop.md
-    - name: ".clear materialized-view data"
-      href: materialized-views/materialized-view-clear-data.md
-    - name: ".disable | .enable materialized-view"
-      href: materialized-views/materialized-view-enable-disable.md    
     - name: Materialized views limitations
       href: materialized-views/materialized-views-limitations.md
+    - name: Monitor materialized views
+      href: materialized-views/materialized-views-monitoring.md
     - name: Materialized views policies
       href: materialized-views/materialized-view-policies.md
     - name: Materialized views data purge
       href: materialized-views/materialized-view-purge.md
+    - name: .alter materialized-view
+      displayName: alter
+      href: materialized-views/materialized-view-alter.md
+    - name: .alter materialized-view autoUpdateSchema
+      displayName: alter auto update schema
+      href: materialized-views/materialized-view-alter-autoUpdateSchema.md
+    - name: .alter materialized-view docstring
+      displayName: alter materialized view
+      href: materialized-views/materialized-view-alter-docstring.md
+    - name: .alter materialized-view folder
+      displayName: alter materialized view
+      href: materialized-views/materialized-view-alter-folder.md
+    - name: .alter materialized-view lookback
+      displayName: alter materialized view
+      href: materialized-views/materialized-view-alter-lookback.md
+    - name: .clear materialized-view data
+      displayName: clear materialized view data
+      href: materialized-views/materialized-view-clear-data.md
+    - name: .create materialized-view
+      displayName: create materialized view
+      href: materialized-views/materialized-view-create.md
+    - name: .create-or-alter materialized-view
+      displayName: create or alter materialized view
+      href: materialized-views/materialized-view-create-or-alter.md
+    - name: .disable | .enable materialized-view
+      displayName: disable enable 
+      href: materialized-views/materialized-view-enable-disable.md    
+    - name: .drop materialized-view
+      displayName: drop materialized view
+      href: materialized-views/materialized-view-drop.md
+    - name: .rename materialized-view
+      displayName: rename materialized view
+      href: materialized-views/materialized-view-rename.md
+    - name: .show materialized-view(s)
+      displayName: show materialized view
+      href: materialized-views/materialized-view-show-command.md
+    - name: .show materialized-view schema
+      displayName: show materialized view schema
+      href: materialized-views/materialized-view-show-schema-command.md
+    - name: .show materialized-view extents
+      displayName: show materialized view extents
+      href: materialized-views/materialized-view-show-extents-command.md
+    - name: .show materialized-view failures
+      displayName: show materialized view failures
+      href: materialized-views/materialized-view-show-failures-command.md
+    - name: .show materialized-view(s) details
+      displayName: show materialized view details
+      href: materialized-views/materialized-view-show-details-command.md
   - name: Stored query results
     displayName: .set stored query, .show stored query, .drop stored query
     href: stored-query-results.md
@@ -167,7 +191,21 @@ items:
     - name: ".alter-merge column-docstrings"
       href: alter-merge-table-column.md
   - name: Data mappings
-    href: mappings.md
+    items:
+    - name: Data mappings overview
+      href: mappings.md
+    - name: "CSV mapping"
+      href: csv-mapping.md
+    - name: "JSON mapping"
+      href: json-mapping.md
+    - name: "AVRO mapping"
+      href: avro-mapping.md
+    - name: "Parquet mapping"
+      href: parquet-mapping.md
+    - name: "ORC mapping"
+      href: orc-mapping.md
+    - name: "W3CLOGFILE mapping"
+      href: w3c-log-file-mapping.md
   - name: Functions
     items:
     - name: Stored functions management overview
@@ -192,11 +230,11 @@ items:
     items:
     - name: Auto delete policy
       href: auto-delete-policy.md
-    - name: ".alter auto delete policy command"
+    - name: .alter table policy auto_delete command
       href: alter-auto-delete-policy-command.md
-    - name: ".delete auto delete policy command"
+    - name: .delete table policy auto_delete command
       href: delete-auto-delete-policy-command.md
-    - name: ".show auto delete policy command"
+    - name: .show table policy auto_delete command
       href: show-auto-delete-policy-command.md
   - name: Cache
     items:
@@ -226,13 +264,13 @@ items:
     items:
     - name: Callout policy
       href: calloutpolicy.md
-    - name: ".alter callout policy command"
+    - name: .alter cluster policy callout command
       href: alter-callout-policy-command.md
-    - name: ".alter-merge callout policy command"
+    - name: .alter-merge cluster policy callout command
       href: alter-merge-callout-policy-command.md
-    - name: ".delete callout policy command"
+    - name: .delete cluster policy callout command
       href: delete-callout-policy-command.md
-    - name: ".show callout policy command"
+    - name: .show cluster policy callout command
       href: show-cluster-callout-policy-command.md
   - name: Capacity
     items:
@@ -412,6 +450,8 @@ items:
     items:
     - name: Using sandboxes
       href: ../concepts/sandboxes.md
+    - name: Using sandboxes in non-modern sku
+      href: ../concepts/sandboxes-in-non-modern-skus.md
     - name: Sandbox policy
       href: sandboxpolicy.md
     - name: .alter cluster sandbox policy command
@@ -467,7 +507,7 @@ items:
       href: updatepolicy.md
     - name: .alter table update policy command
       href: alter-table-update-policy-command.md
-    - name: .alter-merge table update policy policy command
+    - name: .alter-merge table update policy command
       href: alter-merge-table-update-policy-command.md
     - name: .delete table update policy command
       href: delete-table-update-policy-command.md
@@ -477,12 +517,28 @@ items:
     items:
     - name: Query weak consistency policy
       href: query-weak-consistency-policy.md
-    - name: .alter query weak consistency policy
+    - name: .alter cluster policy query_weak_consistency
       href: alter-query-weak-consistency-policy.md
-    - name: .show query weak consistency policy
+    - name: .show cluster policy query_weak_consistency
       href: show-query-weak-consistency-policy.md
 - name: Security roles
-  href: security-roles.md
+  items:
+    - name: Security roles overview
+      href: security-roles.md
+    - name: Manage database roles
+      href: manage-database-security-roles.md
+    - name: Manage table roles
+      items:
+      - name: Manage table roles
+        href: manage-table-security-roles.md
+      - name: Manage table view access
+        href: manage-table-view-access.md
+    - name: Manage external table roles
+      href: manage-external-table-security-roles.md
+    - name: Manage materialized view roles
+      href: manage-materialized-view-security-roles.md
+    - name: Manage function roles
+      href: manage-function-security-roles.md
 - name: Data ingestion
   items:
   - name: Ingest from storage
@@ -504,6 +560,16 @@ items:
       href: data-ingestion/streaming-ingestion-schema-changes.md
     - name: Clear schema cache for streaming ingestion
       href: data-ingestion/clear-schema-cache-command.md
+  - name: .dup-next-ingest
+    href: dup-next-ingest.md
+    displayName: duplicate, ingestion, troubleshoot
+  - name: .dup-next-failed-ingest
+    displayName: duplicate, failure, ingestion, troubleshoot
+    href: dup-next-failed-ingest.md
+  - name: .show ingestion failures
+    href: ingestionfailures.md
+  - name: .show streaming ingestion failures
+    href: streamingingestionfailures.md   
 - name: Data export
   href: data-export/index.md
   items:
@@ -575,18 +641,20 @@ items:
 - name: Access control
   href: access-control/index.md
   items:
-  - name: Identities
-    href: access-control/principals-and-identity-providers.md
   - name: Azure Active Directory
     displayName: AAD, Azure AD
     href: access-control/aad.md
-  - name: Principal roles
-    href: access-control/role-based-authorization.md
-  - name: Allow cross-tenant queries and commands
-    href: ../../cross-tenant-query-and-commands.md
+  - name: Role-based access control
+    href: access-control/role-based-access-control.md
+    displayName: RBAC, security roles, principals
   - name: How-To Azure Active Directory authentication
     displayName: AAD, Azure AD
     href: access-control/how-to-authenticate-with-aad.md
+  - name: Referencing security principals
+    displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
+    href: ./access-control/referencing-security-principals.md
+  - name: Allow cross-tenant queries and commands
+    href: ../../cross-tenant-query-and-commands.md
 - name: Advanced data management
   items:
   - name: Extents (data shards)
@@ -607,21 +675,10 @@ items:
         href: replace-extents.md
       - name: .show extents
         href: show-extents.md
-    - name: Extent containers clean commands
-      href: clean-extent-containers.md
-  - name: Cluster follower
+  - name: Follower commands
+    displayName: Cluster commands, database commands, materialized view commands, table commands 
     href: cluster-follower.md
   - name: Data purge
     href: ../concepts/data-purge.md
   - name: Data soft delete
     href: ../concepts/data-soft-delete.md
-- name: Errors and failures
-  items:
-  - name: Ingestion FAQ
-    href: Ingestion-faq.yml
-  - name: Ingestion error codes
-    href: ../../error-codes.md
-  - name: Ingestion failures
-    href: ingestionfailures.md
-  - name: Streaming ingestion failures
-    href: streamingingestionfailures.md

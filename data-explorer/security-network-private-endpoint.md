@@ -59,6 +59,9 @@ Clients on a VNet using a private endpoint should use the same connection string
 
 By default, Azure Data Explorer creates a [private DNS zone](/azure/dns/private-dns-overview) attached to the VNet with the necessary updates for the private endpoints. However, if you're using your own DNS server, you may need to make more changes to your DNS configuration.
 
+> [!IMPORTANT]
+> For optimal configuration, we recommend that you align your deployment with the recommendations in the [Private Endpoint and DNS configuration at Scale](/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale) Cloud Adoption Framework article. Use the information in the article to automate Private DNS entry creation using Azure Policies, making it easier to manage your deployment as you scale.
+
 :::image type="content" source="media/security-network-private-endpoint/pe-dns-config-inline.png" alt-text="Screenshot of the DNS configuration page, showing the DNS configuration of the private endpoint." lightbox="media/security-network-private-endpoint/pe-dns-config.png":::
 
 Azure Data Explorer creates multiple customer visible FQDNs as part of the private endpoint deployment. In addition to the *query* and *ingestion* FQDN it comes with several FQDNs for blob / table / queue endpoints (needed for ingestion scenarios)
@@ -90,6 +93,10 @@ Azure Data Explorer supports creating managed private endpoints to the following
 ## Limitations
 
 Private endpoints aren't supported for virtual network injected Azure Data Explorer clusters.
+
+## Implications on cost
+
+Private endpoints or managed private endpoints are resources that incur additional costs. The cost varies depending on the selected solution architecture. For more information, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link/).
 
 ## Next steps
 

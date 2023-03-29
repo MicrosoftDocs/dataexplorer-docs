@@ -1,32 +1,34 @@
 ---
 title: .execute database script - Azure Data Explorer
-description: This article describes the .execute database script functionality in Azure Data Explorer.
+description: This article describes the `.execute database script` functionality in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/11/2021
+ms.date: 02/21/2023
 ---
 # .execute database script
 
 Executes batch of control commands in scope of a single database.
 
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+
 ## Syntax
 
 `.execute` `database` `script`  
-[`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]   
-`<|`  
- *Control-commands-script*
+[`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *control-commands-script*
 
 ### Parameters
 
-* *Control-commands-script*: Text with one or more control commands.
-* *PropertyName*: Optional properties from the following list:
+* *control-commands-script*: Text with one or more control commands.
+* *propertyName*, *propertyValue*: Optional properties from the following list:
 
 #### Optional properties
 
   | PropertyName            | Type            | Description                          |
   |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
-  | `ContinueOnErrors`            | `bool`        | If set to `false` - the script will stop on the first error. If set to `true` - the script execution continues. Default: `false`. |
-  | `ThrowOnErrors`            | `bool`        | If set to `true` - the script will throw an error (fail) on the first error. Does not work together with `ContinueOnErrors`, only one is allowed. Default: `false`. |
+  | `ContinueOnErrors`            | `bool`        | If set to `false` - the script stops on the first error. If set to `true` - the script execution continues. Default: `false`. |
+  | `ThrowOnErrors`            | `bool`        | If set to `true` - the script throws an error (fail) on the first error. Doesn't work together with `ContinueOnErrors`, only one is allowed. Default: `false`. |
 
 ## Output
 
@@ -43,7 +45,8 @@ Each command appearing in the script will be reported as a separate record in th
 >[!NOTE]
 >* The script text may include empty lines and comments between the commands.
 >* Commands are executed sequentially, in the order they appear in the input script.
->* Script execution is non-transactional, and no rollback is performed upon error. It's advised to use the idempotent form of commands when using `.execute database script`.
+>* Script execution is sequential, but non-transactional, and no rollback is performed upon error. It's advised to use the idempotent form of commands when using `.execute database script`.
+>* Execution of the command requires Database Admin permissions, in addition to permissions that may be required by each specific command.
 >* Default behavior of the command - fail on the first error, it can be changed using property argument.
 >* Read-only control commands (`.show` commands) aren't executed and are reported with status `Skipped`.
 
@@ -67,7 +70,7 @@ Each command appearing in the script will be reported as a separate record in th
 .create-or-alter function
   with (skipvalidation = "true") 
   SampleT1(myLimit: long) { 
-    T1 | limit myLimit
+    T1 | take myLimit
 }
 ```
 
@@ -75,4 +78,4 @@ Each command appearing in the script will be reported as a separate record in th
 |---|---|---|---|---|
 |1d28531b-58c8-4023-a5d3-16fa73c06cfa|TableCreate|.create-merge table T(a:string, b:string)|Completed||
 |67d0ea69-baa4-419a-93d3-234c03834360|RetentionPolicyAlter|.alter-merge table T policy retention softdelete = 10d|Completed||
-|0b0e8769-d4e8-4ff9-adae-071e52a650c7|FunctionCreateOrAlter|.create-or-alter function  with (skipvalidation = "true")SampleT1(myLimit: long) {T1 \| limit myLimit}|Completed||
+|0b0e8769-d4e8-4ff9-adae-071e52a650c7|FunctionCreateOrAlter|.create-or-alter function  with (skipvalidation = "true")SampleT1(myLimit: long) {T1 \| take myLimit}|Completed||

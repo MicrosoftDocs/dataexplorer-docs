@@ -3,7 +3,7 @@ title: .show table sharding policy command - Azure Data Explorer
 description: This article describes the .show table sharding policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 03/09/2023
 ---
 # .show table sharding policy
 
@@ -11,19 +11,19 @@ Show the table sharding policy. Use the [sharding policy](../management/sharding
 
 The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster should be sealed. When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
 
-## Syntax
+## Permissions
 
-**For a specified table**
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
+## Syntax
 
 `.show` `table` *TableName* `policy` `sharding`
 
-**For all tables**
+## Parameters
 
-`.show` `table` * `policy` `sharding`
-
-## Arguments
-
-*TableName* - Specify the name of the table. A wildcard (*) denotes all tables.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table for which to show the policy details. A wildcard (`*`) denotes all tables.|
 
 ## Returns
 

@@ -1,13 +1,13 @@
 ---
 title: variance() (aggregation function) - Azure Data Explorer
-description: Learn how to use the variance() aggregation function to calculate the variance of an expression in Azure Data Explorer.
+description: Learn how to use the variance() aggregation function to calculate the sample variance of the expression across the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 03/02/2023
 ---
 # variance() (aggregation function)
 
-Calculates the variance of *Expr* across the group, considering the group as a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29).
+Calculates the variance of *expr* across the group, considering the group as a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29).
 
 The following formula is used:
 
@@ -17,28 +17,29 @@ The following formula is used:
 
 ## Syntax
 
- `variance` `(`*Expr*`)`
+`variance(`*expr*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*Expr* | string | &check; | Expression that will be used for aggregation calculation.
+|*expr* | real | &check; | The expression used for the variance calculation.|
 
 ## Returns
 
-Returns the variance value of *Expr* across the group.
+Returns the variance value of *expr* across the group.
 
 ## Example
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBVKC5JLVAw5KpRKC7NzU0syqxKVchNzE6Nz8ksLtGo0NRRKAMKJuYlpwI5ADQ5+T5AAAAA)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBVKC5JLVAw5KpRKC7NzU0syqxKVchNzE6Nz8ksLtGo0NRRKAMKJuYlpwI5ADQ5+T5AAAAA" target="_blank">Run the query</a>
 
 ```kusto
 range x from 1 to 5 step 1
 | summarize make_list(x), variance(x) 
 ```
 
-**Results**
+**Output**
 
 |list_x|variance_x|
 |---|---|

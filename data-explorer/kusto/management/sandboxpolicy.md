@@ -3,7 +3,7 @@ title: Sandbox policy - Azure Data Explorer
 description: This article describes Sandbox policy in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/25/2021
+ms.date: 02/21/2023
 ---
 # Sandbox policy
 
@@ -13,7 +13,9 @@ Sandboxes run on the nodes of the Kusto engine. Some of their limitations are de
 
 Sandbox policies are managed at cluster-level and affect all the nodes in the cluster.
 
-To alter the policies, you'll need [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions.
+## Permissions
+
+You must have [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions to run this command.
 
 ## The policy object
 

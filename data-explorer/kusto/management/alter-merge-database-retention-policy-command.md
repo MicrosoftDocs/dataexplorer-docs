@@ -3,21 +3,26 @@ title: .alter-merge database retention policy command- Azure Data Explorer
 description: This article describes the .alter-merge database retention policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 02/21/2023
 ---
 # .alter-merge database retention policy
 
-Change a database's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based. 
- 
+Use this command to change a database's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It's used to remove data whose relevance is age-based.
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter-merge` `database` *DatabaseName* `policy` `retention` *PolicyObjects*
 
-## Arguments
+## Parameters
 
-*DatabaseName* - Specify the name of the database. 
-*PolicyObjects* - Define one or more policy objects.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database for which to alter the retention policy.|
+|*ArrayOfPolicyObjects*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [retention policy](retentionpolicy.md).|
 
 ### Example
 

@@ -3,13 +3,21 @@ title: ".show managed_identity policy command - Azure Data Explorer"
 description: This article describes the .show managed_identity policy command in Azure Data Explorer.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 11/03/2021
+ms.date: 03/09/2023
 ---
 # .show managed_identity policy
 
 This command returns the ManagedIdentity policy of the cluster or the specified database.
 
-## Arguments
+## Permissions
+
+To see the managed identity policy on the cluster, you must have AllDatabasesMonitor permissions.
+
+To see the managed identity policy on a database, you must have Database User, Database Viewer, or Database Monitor permissions.
+
+For more information, see [role-based access control](access-control/role-based-access-control.md).
+
+## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
