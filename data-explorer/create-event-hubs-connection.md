@@ -346,13 +346,18 @@ print(poller.result())
 
 ---
 
-## 3 - Clean up resources
+## 3 - Remove the data connection
 
 ### [Portal](#tab/portal)
 
+1. Go to your cluster and select **Databases**. Then, select the database you created.
+1. From the left menu, select **Data connections**.
+1. Select the checkbox next to the event hub data connection.
+1. From the top menu bar, select **Delete**.
+
 ### [Wizard](#tab/wizard)
 
-To remove the event hub connection, select **Manage Data Connection** from the **Monitor** cards.
+To immediately remove your data connection, select the **Manage Data Connection** card shown in the final wizard page. However, if you've already exited the wizard, we recommend removing the data connection through the Azure portal as explained in the previous tab
 
 ### [C#](#tab/c-sharp)
 
