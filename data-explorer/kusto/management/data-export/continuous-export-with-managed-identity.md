@@ -9,7 +9,7 @@ ms.date: 03/29/2023
 
 Continuous export jobs export data from Azure Data Explorer to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query.
 
-To successfully configure a continuous export job, you may need to use a [managed identity](../../../managed-identities-overview.md). A managed identity is required if the external table uses impersonation authentication or if the export query references tables in other databases. A continuous export job configured with a managed identity will perform the export on behalf of the managed identity.
+To successfully configure a continuous export job, you may need to use a [managed identity](../../../managed-identities-overview.md). A managed identity is required if the external table uses impersonation authentication or if the export query references tables in other databases. A continuous export job configured with a managed identity performs the export on behalf of the managed identity.
 
 In this article, you'll learn the steps necessary to configure a continuous export job with a managed identity.
 
@@ -29,8 +29,6 @@ To create an external table for your continuous export, see one of the following
 
 The following example shows how to set up an Azure Storage external table with impersonation authentication.
 
-The command creates an external table named `MyExternalTable` for `mycontainer` in an Azure Blob Storage account named `mystorageaccount`. The table has two columns, an integer `x` and a string `s`.
-
 To specify the use of [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation), the connection string ends with `;impersonate`.
 
 ```kusto
@@ -46,8 +44,6 @@ To specify the use of [impersonation authentication](../../api/connection-string
 ### [SQL Server](#tab/sql-server)
 
 The following example shows how to set up a SQL Server external table with impersonation authentication.
-
-The command creates an external table named `MySqlExternalTable` for the `MySqlTable` table stored in a SQL Server database named `MyDatabase`. The table has two columns, an integer `x` and a string `s`.
 
 To specify the use of [Active Directory Integrated authentication](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication), which is impersonation authentication, the connection string contains `;Authentication=Active Directory Integrated`.
 
@@ -118,7 +114,7 @@ Replace `<DatabaseName>` with the name of the database. For a system-assigned ma
 
 ## 5 - Grant external resource permissions
 
-When the external table uses impersonation authentication, the managed identity must have write permissions over the external data store referenced by the external table. Write permissions are required because the continuous export job will attempt to export data to the data store on behalf of the managed identity. The required permissions vary depending on the data store type.
+When the external table uses impersonation authentication, the managed identity must have write permissions over the external data store referenced by the external table. Write permissions are required because the continuous export job attempts to export data to the data store on behalf of the managed identity. The required permissions vary depending on the data store type.
 
 On the external data store, grant the managed identity the required write permissions:
 
