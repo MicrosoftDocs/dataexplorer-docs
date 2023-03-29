@@ -135,7 +135,7 @@ To create a continuous export job with a managed identity, use the [.create-or-a
 For example, the following command creates a continuous export job with a system-assigned managed identity:
 
 ```kusto
-.create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity=system) <| MyTable
+.create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity="system") <| MyTable
 ```
 
 ## Next steps
