@@ -27,7 +27,7 @@ In this section, you'll establish a connection between the event hub and your Az
 
 ### [Portal](#tab/portal)
 
-1. In the Azure portal, go to your cluster and select **Databases**. Then, select the database you created.
+1. In the Azure portal, go to your cluster and select **Databases**. Then, select the database that contains your target table.
 
     :::image type="content" source="media/ingest-data-event-hub/select-test-database.png" alt-text="Screenshot of Azure Data Explorer web U I left menu, showing the Test Database item, selected.":::
 
@@ -350,9 +350,11 @@ print(poller.result())
 
 ### [Portal](#tab/portal)
 
-1. Go to your cluster and select **Databases**. Then, select the database you created.
+To remove the event hub connection from the Azure portal, do the following:
+
+1. Go to your cluster and select **Databases**. Then, select the database that contains the target table.
 1. From the left menu, select **Data connections**.
-1. Select the checkbox next to the event hub data connection.
+1. Select the checkbox next to the relevant event hub data connection.
 1. From the top menu bar, select **Delete**.
 
 ### [Wizard](#tab/wizard)
