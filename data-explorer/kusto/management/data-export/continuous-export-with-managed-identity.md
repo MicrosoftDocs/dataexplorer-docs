@@ -7,9 +7,9 @@ ms.date: 03/29/2023
 ---
 # Use a managed identity to run a continuous export job
 
-Continuous export jobs export data from Azure Data Explorer to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query.
+[Continuous export jobs](continuous-data-export.md) export data from Azure Data Explorer to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query.
 
-To successfully configure a continuous export job, you may need to use a [managed identity](../../../managed-identities-overview.md). A managed identity is required if the external table uses impersonation authentication or if the export query references tables in other databases. A continuous export job configured with a managed identity performs the export on behalf of the managed identity.
+To successfully configure a continuous export job, you may need to use a [managed identity](../../../managed-identities-overview.md). A managed identity is required if the external table uses impersonation authentication or if the export query references tables in other databases. A continuous export job that has been configured with a managed identity performs the export on behalf of the managed identity.
 
 In this article, you'll learn the steps necessary to configure a continuous export job with a managed identity.
 
@@ -29,7 +29,7 @@ To create an external table for your continuous export, see one of the following
 
 The following example shows how to set up an Azure Storage external table with impersonation authentication.
 
-To specify the use of [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation), the connection string ends with `;impersonate`.
+To specify the use of [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation), the connection string ends with `;impersonate`. The connection string begins with `h@` in order to [obfuscate the string](../../query/scalar-data-types/string.md#obfuscated-string-literals).
 
 ```kusto
 .create external table MyExternalTable (x:int, s:string) kind=storage dataformat=csv 
