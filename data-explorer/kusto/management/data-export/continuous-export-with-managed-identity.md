@@ -3,13 +3,13 @@ title: Use a managed identity to run a continuous export job - Azure Data Explor
 description: This article describes how to use a managed identity for continuous export in Azure Data Explorer.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 03/26/2023
+ms.date: 03/29/2023
 ---
 # Use a managed identity to run a continuous export job
 
 Continuous export jobs export data from Azure Data Explorer to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query.
 
-To successfully configure a continuous export job, you may need to use a [managed identity](../../../managed-identities-overview.md). A managed identity is required if the external table uses impersonation authentication or if the export query references tables in other databases. A managed identity allows the continuous export job to generate an Azure Active Directory (Azure AD) bearer token to access resources its behalf.
+To successfully configure a continuous export job, you may need to use a [managed identity](../../../managed-identities-overview.md). A managed identity is required if the external table uses impersonation authentication or if the export query references tables in other databases. A continuous export job configured with a managed identity will perform the export on behalf of the managed identity.
 
 In this article, you'll learn the steps necessary to configure a continuous export job with a managed identity.
 
@@ -118,7 +118,7 @@ Replace `<DatabaseName>` with the name of the database. For a system-assigned ma
 
 ## 5 - Grant external resource permissions
 
-When the external table uses impersonation authentication, the managed identity must have write permissions over the external data store referenced by the external table. The required permissions vary depending on the data store type.
+When the external table uses impersonation authentication, the managed identity must have write permissions over the external data store referenced by the external table. Write permissions are required because the continuous export job will attempt to export data to the data store on behalf of the managed identity. The required permissions vary depending on the data store type.
 
 On the external data store, grant the managed identity the required write permissions:
 
