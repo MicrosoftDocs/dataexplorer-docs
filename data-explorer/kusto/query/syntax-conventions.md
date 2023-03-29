@@ -51,7 +51,9 @@ Consider the syntax for the [http_request plugin](http-request-plugin.md):
 
 *RequestHeaders* and *Options* are optional parameters of type [dynamic](scalar-data-types/dynamic.md). To provide an argument for the *Options* parameter, you must also provide an argument for the *RequestHeaders* parameter. The following example shows how to provide an empty value for the first optional parameter, *RequestHeaders*, in order to be able to specify a value for the second optional parameter, *Options*.
 
-`evaluate` `http_request` `(` "https://contoso.com/"`,` dynamic({})`,` dynamic({ EmployeeName: Nicole }) `)`
+```kusto
+evaluate http_request ( "https://contoso.com/", dynamic({}), dynamic({ EmployeeName: Nicole }) )
+```
 
 ## See also
 
