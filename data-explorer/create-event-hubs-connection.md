@@ -19,27 +19,7 @@ In this article, you'll connect to an event hub and ingest data into Azure Data 
 
 ## 1 - Create the target table
 
-To send data from an event hub to Azure Data Explorer, create a table to receive the data or use an existing table.
-
-To create a new table from the Azure portal, do the following:
-
-1. In the Azure portal, go to your cluster and select **Query**.
-
-    :::image type="content" source="media/ingest-data-event-hub/query-explorer-link.png" alt-text="Screenshot of the Azure portal U I left menu, showing the Query application option.":::
-
-1. Write a query to create a table using the [.create table command](kusto/management/create-table-command.md) in the query window and select **Run**. For example, the following command creates a `TestTable` table.
-
-    ```Kusto
-    .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
-    ```
-
-1. Write a query to create an [ingestion data mapping](kusto/management/create-ingestion-mapping-command.md) in the query window and select **Run**. For example, the following command creates a `TestMapping` JSON mapping for the `TestTable` table.
-
-    ```Kusto
-    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp", "Properties": {"Path": "$.timeStamp"}},{"column":"Name", "Properties": {"Path":"$.name"}} ,{"column":"Metric", "Properties": {"Path":"$.metric"}}, {"column":"Source", "Properties": {"Path":"$.source"}}]'
-    ```
-
----
+To transfer data from an event hub to Azure Data Explorer, you must first have a destination table for the data. You can create a table using the [.create table command](kusto/management/create-table-command.md), create a new table using the wizard in the following step, or use an existing table.
 
 ## 2 - Connect to the event hub
 
