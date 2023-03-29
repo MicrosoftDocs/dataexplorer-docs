@@ -76,6 +76,7 @@ using Microsoft.Azure.Management.Kusto; // Required package Microsoft.Azure.Mana
 using Microsoft.Azure.Management.Kusto.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory; // Required package Microsoft.IdentityModel.Clients.ActiveDirectory
 using Microsoft.Rest;
+
 namespace StreamingIngestion
 {
     class Program
@@ -134,6 +135,7 @@ using Microsoft.Azure.Management.Kusto; // Required package Microsoft.Azure.Mana
 using Microsoft.Azure.Management.Kusto.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory; // Required package Microsoft.IdentityModel.Clients.ActiveDirectory
 using Microsoft.Rest;
+
 namespace StreamingIngestion
 {
     class Program
@@ -211,6 +213,7 @@ using System.Threading.Tasks;
 using Kusto.Data; // Requires Package Microsoft.Azure.Kusto.Data
 using Kusto.Data.Common;
 using Kusto.Data.Net.Client;
+
 namespace StreamingIngestion
 {
     class Program
@@ -319,15 +322,8 @@ namespace StreamingIngestion
 ### [Python](#tab/python)
 
 ```python
-from azure.kusto.data import (
-    KustoConnectionStringBuilder,
-    DataFormat
-)
-
-from azure.kusto.ingest import (
-    IngestionProperties,
-    KustoStreamingIngestClient
-)
+from azure.kusto.data import KustoConnectionStringBuilder, DataFormat
+from azure.kusto.ingest import IngestionProperties, KustoStreamingIngestClient
 
 clusterPath = "https://<clusterName>.kusto.windows.net"
 appId = "<appId>"
@@ -537,6 +533,7 @@ using System.Threading.Tasks;
 using Kusto.Data; // Requires Package Microsoft.Azure.Kusto.Data
 using Kusto.Data.Common;
 using Kusto.Data.Net.Client;
+
 namespace StreamingIngestion
 {
     class Program
@@ -577,6 +574,7 @@ using Microsoft.Azure.Management.Kusto; // Required package Microsoft.Azure.Mana
 using Microsoft.Azure.Management.Kusto.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory; // Required package Microsoft.IdentityModel.Clients.ActiveDirectory
 using Microsoft.Rest;
+
 namespace StreamingIngestion
 {
     class Program
