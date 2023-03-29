@@ -17,13 +17,13 @@ In this article, you'll connect to an event hub and ingest data into Azure Data 
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
 
-## 1 - Create the target table
+## 1 - Create a target table
 
 To transfer data from an event hub to Azure Data Explorer, you must first have a destination table for the data. You can create a table using the [.create table command](kusto/management/create-table-command.md), create a new table using the wizard in the following step, or use an existing table.
 
-## 2 - Connect to the event hub
+## 2 - Connect to an event hub
 
-When this connection is in place, data that flows into the event hub streams to the target table.
+In this section, you'll create a connection between the event hub and your Azure Data Explorer table. When this connection is in place, data that flows into the event hub streams to the target table.
 
 > [!CAUTION]
 > If the event hub is moved to a different resource or subscription, you won't be able to make changes to the connection. Either update or recreate the connection.
@@ -45,7 +45,7 @@ When this connection is in place, data that flows into the event hub streams to 
     | Event hub namespace | A unique namespace name | The name you chose earlier that identifies your namespace. |
     | Event hub | *test-hub* | The event hub you created. |
     | Consumer group | *test-group* | The consumer group defined in the event hub you created. |
-    | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first record. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
+    | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first record. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
     | Compression | *None* | The compression type of the event hub messages payload. Supported compression types: *None, Gzip*.|
     | Managed Identity (recommended) | System-assigned | The managed identity used by the Data Explorer cluster for access to read from the event hub. We recommend using managed identities to control access to your event hub.<br /><br />**Note**:<br />When the data connection is created:<br/>\* *System-assigned* identities are automatically created if they don't exist<br />\* The managed identity is automatically assigned the *Azure Event Hubs Data Receiver* role and is added to your Data Explorer cluster. We recommend verifying that the role was assigned and that the identity was added to the cluster. |
 
@@ -58,7 +58,7 @@ When this connection is in place, data that flows into the event hub streams to 
 
     :::image type="content" source="media/event-hub-wizard/ingestion-in-web-ui.png" alt-text="Select the ingestion wizard in the Azure Data Explorer web UI.":::
 
-1. The **Ingest data** window opens with the **Destination** tab selected. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
+1. The **Ingest data** window opens with the **Destination** tab selected. The **Cluster** and **Database** fields are autopopulated. You may select a different cluster or database from the drop-down menus.
 
 1. Under **Table**, select **New table** and enter a name for the new table. Alternatively, use an existing table.
 
@@ -76,10 +76,10 @@ When this connection is in place, data that flows into the event hub streams to 
     | Data connection name | *TestDataConnection*  | The name that identifies your data connection.|
     | Consumer group |  | The consumer group defined in your event hub. |
     | Compression | | The compression type of the event hub messages payload.|
-    | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties will be added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
+    | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
     |Event retrieval start date| Coordinated Universal Time (UTC) | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created. |
 
-1. Set the ingestion policy. If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, you can select **Streaming ingestion**. If streaming is not enabled for the cluster, set the **Batching time**. For Event Hubs, the recommended [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
+1. Set the ingestion policy. If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, you can select **Streaming ingestion**. If streaming isn't enabled for the cluster, set the **Batching time**. For Event Hubs, the recommended [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
 
     :::image type="content" source="media/event-hub-wizard/event-hub-schema.png" alt-text="Screenshot of Schema page of ingestion wizard." lightbox="media/event-hub-wizard/event-hub-schema.png":::
 
@@ -95,7 +95,7 @@ When this connection is in place, data that flows into the event hub streams to 
 
 1. Select **Next: Summary**.
 
-1. In the **Continuous ingestion from Event Hub established** window, all steps will be marked with green check marks when establishment finishes successfully.
+1. In the **Continuous ingestion from Event Hub established** window, all steps are marked with green check marks when establishment finishes successfully.
 
 ### [C#](#tab/c-sharp)
 
@@ -151,7 +151,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | consumerGroup | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
 | compression | *Gzip* or *None* | The type of data compression. |
-| databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-hub-overview.md#events-routing). |
+| databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection is routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-hub-overview.md#events-routing). |
 
 ### [Python](#tab/python)
 
@@ -224,7 +224,7 @@ print(poller.result())
 | event_hub_resource_id | *Resource ID* | The resource ID of your event hub that holds the data for ingestion. |
 | consumer_group | *$Default* | The consumer group of your event hub.|
 | location | *Central US* | The location of the data connection resource.|
-| databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-hub-overview.md#events-routing). |
+| databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection is routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-hub-overview.md#events-routing). |
 
 ### [ARM template](#tab/arm-template)
 
