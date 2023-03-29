@@ -19,9 +19,9 @@ In this article, you'll connect to an event hub and ingest data into Azure Data 
 
 ## 1 - Create the target table
 
-To send data from an event hub to Azure Data Explorer, create a table to receive the data.
+To send data from an event hub to Azure Data Explorer, create a table to receive the data or use an existing table.
 
-### [Portal](#tab/portal)
+To create a new table from the Azure portal, do the following:
 
 1. In the Azure portal, go to your cluster and select **Query**.
 
@@ -38,21 +38,6 @@ To send data from an event hub to Azure Data Explorer, create a table to receive
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp", "Properties": {"Path": "$.timeStamp"}},{"column":"Name", "Properties": {"Path":"$.name"}} ,{"column":"Metric", "Properties": {"Path":"$.metric"}}, {"column":"Source", "Properties": {"Path":"$.source"}}]'
     ```
-
-### [Wizard](#tab/wizard)
-
-1. From the **Data** tab of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select **Ingest** from the **Ingest data from Event Hub** card.
-
-    :::image type="content" source="media/event-hub-wizard/ingestion-in-web-ui.png" alt-text="Select the ingestion wizard in the Azure Data Explorer web UI.":::
-
-1. The **Ingest data** window opens with the **Destination** tab selected. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
-
-1. Under **Table**, select **New table** and enter a name for the new table. Alternatively, use an existing table.
-
-    > [!NOTE]
-    > Table names must be between 1 and 1024 characters. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
-
-1. Select **Next: Source**.
 
 ---
 
@@ -88,6 +73,16 @@ When this connection is in place, data that flows into the event hub streams to 
     > If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
 
 ### [Wizard](#tab/wizard)
+
+1. From the **Data** tab of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select **Ingest** from the **Ingest data from Event Hub** card.
+
+    :::image type="content" source="media/event-hub-wizard/ingestion-in-web-ui.png" alt-text="Select the ingestion wizard in the Azure Data Explorer web UI.":::
+
+1. The **Ingest data** window opens with the **Destination** tab selected. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
+
+1. Under **Table**, select **New table** and enter a name for the new table. Alternatively, use an existing table.
+
+1. Select **Next: Source**.
 
 1. Under **Source type**, select **Event Hub**.
 
