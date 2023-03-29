@@ -18,11 +18,11 @@ The main purpose of the partitioning policy is to improve performance of queries
 
 The following are the only scenarios in which setting a data partitioning policy is recommended. In all other scenarios, setting the policy isn't advised.
 
-* **Frequent filters on a medium or high cardinality string column**:
-  * For example: multi-tenant solutions, or a metrics table where most or all queries filter on a column of type `string` such as the `TenantId` or the `MetricId`.
+* **Frequent filters on a medium or high cardinality `string` or `guid` column**:
+  * For example: multi-tenant solutions, or a metrics table where most or all queries filter on a column of type `string` or `guid`, such as the `TenantId` or the `MetricId`.
   * Medium cardinality is at least 10,000 distinct values.
-  * Set the [hash partition key](#hash-partition-key) to be the string column, and set the [`PartitionAssigmentMode` property](#partition-properties) to `uniform`.
-* **Frequent aggregations or joins on a high cardinality string column**:
+  * Set the [hash partition key](#hash-partition-key) to be the `string` or `guid` column, and set the [`PartitionAssigmentMode` property](#partition-properties) to `uniform`.
+* **Frequent aggregations or joins on a high cardinality `string` or `guid` column**:
   * For example, IoT information from many different sensors, or academic records of many different students. 
   * High cardinality is at least 1,000,000 distinct values, where the distribution of values in the column is approximately even.
   * In this case, set the [hash partition key](#hash-partition-key) to be the column frequently grouped-by or joined-on, and set the [`PartitionAssigmentMode` property](#partition-properties) to `ByPartition`.
@@ -43,16 +43,16 @@ The following are the only scenarios in which setting a data partitioning policy
 The following kinds of partition keys are supported.
 
 |Kind                                                   |Column Type |Partition properties                                               |Partition value                                        |
-|-------------------------------------------------------|------------|-------------------------------------------------------------------|-------------------------------------------------------|
-|[Hash](#hash-partition-key)                            |`string`    |`Function`, `MaxPartitionCount`, `Seed`, `PartitionAssignmentMode` | `Function`(`ColumnName`, `MaxPartitionCount`, `Seed`) |
-|[Uniform range](#uniform-range-datetime-partition-key) |`datetime`  |`RangeSize`, `Reference`, `OverrideCreationTime`                   | `bin_at`(`ColumnName`, `RangeSize`, `Reference`)      |
+|-------------------------------------------------------|------------------|-------------------------------------------------------------------|-------------------------------------------------------|
+|[Hash](#hash-partition-key)                            |`string` or `guid`|`Function`, `MaxPartitionCount`, `Seed`, `PartitionAssignmentMode` | `Function`(`ColumnName`, `MaxPartitionCount`, `Seed`) |
+|[Uniform range](#uniform-range-datetime-partition-key) |`datetime`        |`RangeSize`, `Reference`, `OverrideCreationTime`                   | `bin_at`(`ColumnName`, `RangeSize`, `Reference`)      |
 
 ### Hash partition key
 
 > [!NOTE]
 > The data partitioning operation adds significant processing load. We recommend applying a hash partition key on a `string`-type column in a table only under the following conditions:
 > * If the majority of queries use equality filters (`==`, `in()`).
-> * The majority of queries aggregate/join on a specific `string`-typed column of *large-dimension* (cardinality of 10M or higher) such as an `device_ID`, or `user_ID`.
+> * The majority of queries aggregate/join on a specific column of type `string` or `guid` which is of *large-dimension* (cardinality of 10M or higher), such as an `device_ID`, or `user_ID`.
 > * The usage pattern of the partitioned tables is in high concurrency query load, such as in monitoring or dashboarding applications. 
 
 * A hash-modulo function is used to partition the data.
