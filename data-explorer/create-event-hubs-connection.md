@@ -372,6 +372,8 @@ kusto_management_client.data_connections.delete(resource_group_name=resource_gro
 
 ### [ARM template](#tab/arm-template)
 
+---
+
 ## Next steps
 
 * [Query data in Azure Data Explorer](web-query-data.md)
