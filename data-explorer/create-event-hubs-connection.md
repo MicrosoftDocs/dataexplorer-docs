@@ -23,10 +23,7 @@ To transfer data from an event hub to Azure Data Explorer, you must first have a
 
 ## 2 - Connect to an event hub
 
-In this section, you'll create a connection between the event hub and your Azure Data Explorer table. When this connection is in place, data that flows into the event hub streams to the target table.
-
-> [!CAUTION]
-> If the event hub is moved to a different resource or subscription, you won't be able to make changes to the connection. Either update or recreate the connection.
+In this section, you'll establish a connection between the event hub and your Azure Data Explorer table. As long as this connection is in place, data is transmitted from the event hub into your target table. If the event hub is moved to a different resource or subscription, you'll need to update or recreate the connection.
 
 ### [Portal](#tab/portal)
 
