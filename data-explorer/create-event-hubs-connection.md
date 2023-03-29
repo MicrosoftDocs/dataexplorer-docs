@@ -348,21 +348,7 @@ print(poller.result())
 
 ## 3 - Clean up resources
 
-### [C#](#tab/c-sharp)
-
-To remove the event hub connection, run the following command:
-
-```c#
-kustoManagementClient.DataConnections.Delete(resourceGroupName, clusterName, databaseName, dataConnectionName);
-```
-
-### [Python](#tab/python)
-
-To remove the event hub connection, run the following command:
-
-```python
-kusto_management_client.data_connections.delete(resource_group_name=resource_group_name, cluster_name=kusto_cluster_name, database_name=kusto_database_name, data_connection_name=kusto_data_connection_name)
-```
+To remove the connection, delete the data connection in the Azure portal or using the data connections object delete method.
 
 ## Next steps
 
