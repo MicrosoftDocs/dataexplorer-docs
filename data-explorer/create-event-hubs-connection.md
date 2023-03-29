@@ -19,7 +19,7 @@ In this article, you'll connect to an event hub and ingest data into Azure Data 
 
 ## 1 - Create a target table
 
-To ingest data from an event hub to Azure Data Explorer, you need a destination table for the data. You can create a table using the [.create table command](kusto/management/create-table-command.md), create a new table using the wizard in the following step, or use an existing table.
+To ingest data from an event hub to Azure Data Explorer, you need a destination table for the data. Create a table using the [.create table command](kusto/management/create-table-command.md), create a new table using the wizard in the following step, or use an existing table.
 
 ## 2 - Connect to an event hub
 
