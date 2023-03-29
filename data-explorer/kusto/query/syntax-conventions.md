@@ -28,16 +28,16 @@ Consider the following example syntax:
 Usage of this command might look as follows:
 
 ```kusto
-.command MyTestDatabase action ( "test", "run", "debug" ) speedy = true
+.command TestDatabase action ( "test", "run", "debug" ) speedy = true
 ```
 
 Let's break down the example usage step-by-step:
 
 1. The name of the command, `.command`, is entered exactly as shown in the syntax.
-1. The value MyTestDatabase is passed as an argument for the required *Resource* parameter.
-1. The `action` keyword is entered exactly as shown.
-1. The strings "test", "run", and "debug" are passed as arguments for the *SomeAction* parameter. The "`,` ..." syntax indicates that more than one value can be provided for *SomeAction*. The first value, "test", is required. The second and third values, "run" and "debug", are optional.
-1. The optional property `speedy` is set to `true`. It could also be omitted, since it's enclosed in brackets and thus optional.
+1. The value TestDatabase is passed as an argument for the required *Resource* parameter.
+1. The `action` keyword and parentheses are entered exactly as shown.
+1. The strings "test", "run", and "debug" are passed as arguments for the *SomeAction* parameter. The "`,` ..." syntax indicates that one or more value can be provided for *SomeAction*.
+1. The optional property `speedy` is set to `true`, though it could have been omitted.
 
 ## Working with optional parameters
 
