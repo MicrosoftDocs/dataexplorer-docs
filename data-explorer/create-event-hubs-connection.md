@@ -358,7 +358,7 @@ To remove the event hub connection from the Azure portal, do the following:
 
 ### [Wizard](#tab/wizard)
 
-To immediately remove your data connection, select the **Manage Data Connection** card shown in the final wizard page. However, if you've already exited the wizard, we recommend removing the data connection through the Azure portal as explained in the previous tab
+From the final wizard page, select the **Manage Data Connection** card. If you've already exited the wizard, remove the data connection through the Azure portal as explained in the previous tab.
 
 ### [C#](#tab/c-sharp)
 
