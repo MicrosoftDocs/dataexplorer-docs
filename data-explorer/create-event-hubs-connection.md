@@ -352,9 +352,8 @@ print(poller.result())
 
 To remove the event hub connection from the Azure portal, do the following:
 
-1. Go to your cluster and select **Databases**. Then, select the database that contains the target table.
-1. From the left menu, select **Data connections**.
-1. Select the checkbox next to the relevant event hub data connection.
+1. Go to your cluster. From the left menu, select **Databases**. Then, select the database that contains the target table.
+1. From the left menu, select **Data connections**. Then, select the checkbox next to the relevant event hub data connection.
 1. From the top menu bar, select **Delete**.
 
 ### [Wizard](#tab/wizard)
