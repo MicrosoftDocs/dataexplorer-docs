@@ -10,12 +10,12 @@ ms.date: 03/30/2023
 Azure Data Explorer offers ingestion from [Event Hubs](/azure/event-hubs/event-hubs-about), a big data streaming platform and event ingestion service. Event Hubs can process millions of events per second in near real time.
 
 In this article, you'll connect to an event hub and ingest data into Azure Data Explorer. For an overview on ingesting from Event Hubs, see [Azure Event Hubs data connection](ingest-data-event-hub-overview.md).
-
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
-* A destination table and [ingestion mapping](kusto/management/mappings/index.md).
+* A destination table. Create a table with [.create table](kusto/management/create-table-command.md) or use an existing table.
+* An [ingestion mapping](kusto/management/mappings.md) for the table.
 * An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
 
 ## Connect to an event hub
