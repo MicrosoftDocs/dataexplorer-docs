@@ -344,7 +344,7 @@ print(poller.result())
 
 ---
 
-## 3 Remove an event hub connection
+## Remove an event hub connection
 
 ### [Portal](#tab/portal-2)
 
