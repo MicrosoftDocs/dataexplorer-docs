@@ -118,36 +118,11 @@ Select one of the following tabs to create an external table for your use case.
 
 ---
 
-## 4 - Grant Azure Data Explorer permissions
-
-The managed identity must have at least Database User permissions over the databases referenced in your continuous export query. For more information, see [role-based access control](../access-control/role-based-access-control.md).
-
-To grant permissions, run the following command:
-
-```kusto
-.add database <DatabaseName> users ('aadapp=<objectId>;<tenantId>')
-```
-
-Replace `<DatabaseName>` with the name of the database. For a system-assigned managed identity, replace `<objectId>` with `system`. For a user-assigned managed-identity, replace `<objectId>` with the managed identity object ID. Replace `<tenantId>` with the Azure Active Directory tenant ID.
-
-## 5 - Grant external resource permissions
-
-When the external table uses impersonation authentication, the managed identity must have write permissions over the external data store referenced by the external table. Write permissions are required because the continuous export job attempts to export data to the data store on behalf of the managed identity. The required permissions vary depending on the data store type.
-
-On the external data store, grant the managed identity the required write permissions:
-
-| External data store | Required permissions | Grant the permissions|
-|--|--|--|
-|Azure Blob Storage |Storage Blob Data Contributor|[Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)|
-|Data Lake Storage Gen2| Storage Blob Data Contributor|[Manage ACLs](/azure/storage/blobs/data-lake-storage-acl-azure-portal)
-|Data Lake Storage Gen1|Contributor|[Assign an Azure role](/azure/data-lake-store/data-lake-store-secure-data?branch=main#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts)
-|SQL Server|CREATE, UPDATE, and INSERT|[Grant permissions](/sql/relational-databases/security/permissions-database-engine)|
-
-## 6 - Create a continuous export job
+## 3 - Create a continuous export job
 
 To create a continuous export job with a managed identity, use the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property.
 
-* System-assigned managed identity: `managedIdentity=system`.
+* System-assigned managed identity: `managedIdentity="system"`.
 * User-assigned managed identity: `managedidentity=<objectId>`.
 
 For example, the following command creates a continuous export job with a system-assigned managed identity:
