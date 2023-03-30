@@ -49,6 +49,14 @@ In this section, you'll establish a connection between the event hub and your Az
 
 ### [Wizard](#tab/wizard)
 
+The following steps will guide you through creating an event hub connection through the ingestion wizard in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home).
+
+> [!NOTE]
+>
+> * To use the wizard, you must have at least [Database User](/data-explorer/kusto/management/access-control/role-based-access-control.md) permissions.
+> * To enable access between a cluster and a storage account without public access, see [Create a Managed Private Endpoint](security-network-private-endpoint-create.md).
+> * The cluster and event hub should be associated with the same tenants. If not, use one of the SDK options, such as C# or Python.
+
 1. From the **Data** tab of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select **Ingest** from the **Ingest data from Event Hub** card.
 
     :::image type="content" source="media/event-hub-wizard/ingestion-in-web-ui.png" alt-text="Select the ingestion wizard in the Azure Data Explorer web UI.":::
