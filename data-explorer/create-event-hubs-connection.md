@@ -1,8 +1,8 @@
 ---
-title: 'Create an Event Hubs data connection'
+title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Hubs.'
 ms.topic: how-to
-ms.date: 03/28/2023
+ms.date: 03/30/2023
 ---
 
 # Create an Event Hubs data connection
@@ -15,13 +15,10 @@ In this article, you'll connect to an event hub and ingest data into Azure Data 
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* A destination table and [ingestion mapping](kusto/management/mappings/index.md).
 * An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
 
-## 1 - Create a target table
-
-To ingest data from an event hub to Azure Data Explorer, you need a destination table for the data. Create a table using the [.create table command](kusto/management/create-table-command.md), create a new table using the wizard in the following step, or use an existing table.
-
-## 2 - Connect to an event hub
+## Connect to an event hub
 
 In this section, you'll establish a connection between the event hub and your Azure Data Explorer table. As long as this connection is in place, data is transmitted from the event hub into your target table. If the event hub is moved to a different resource or subscription, you'll need to update or recreate the connection.
 
@@ -346,9 +343,9 @@ print(poller.result())
 
 ---
 
-## 3 - Remove the data connection
+## 3 Remove an event hub connection
 
-### [Portal](#tab/portal)
+### [Portal](#tab/portal-2)
 
 To remove the event hub connection from the Azure portal, do the following:
 
@@ -356,11 +353,11 @@ To remove the event hub connection from the Azure portal, do the following:
 1. From the left menu, select **Data connections**. Then, select the checkbox next to the relevant event hub data connection.
 1. From the top menu bar, select **Delete**.
 
-### [Wizard](#tab/wizard)
+### [Wizard](#tab/wizard-2)
 
 From the final wizard page, select the **Manage Data Connection** card. If you've already exited the wizard, remove the data connection through the Azure portal as explained in the previous tab.
 
-### [C#](#tab/c-sharp)
+### [C#](#tab/c-sharp-2)
 
 To remove the event hub connection, run the following command:
 
@@ -368,15 +365,13 @@ To remove the event hub connection, run the following command:
 kustoManagementClient.DataConnections.Delete(resourceGroupName, clusterName, databaseName, dataConnectionName);
 ```
 
-### [Python](#tab/python)
+### [Python](#tab/python-2)
 
 To remove the event hub connection, run the following command:
 
 ```python
 kusto_management_client.data_connections.delete(resource_group_name=resource_group_name, cluster_name=kusto_cluster_name, database_name=kusto_database_name, data_connection_name=kusto_data_connection_name)
 ```
-
-### [ARM template](#tab/arm-template)
 
 ---
 
