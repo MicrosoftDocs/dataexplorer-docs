@@ -569,6 +569,11 @@
       "source_path": "data-explorer/data-connection-event-hub-resource-manager.md",
       "redirect_url": "/azure/data-explorer/create-event-hubs-connection",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/samples.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
+      "redirect_document_id": false
     }
   ]
 }
