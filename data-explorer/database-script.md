@@ -3,6 +3,7 @@ title: Configure a database using a Kusto Query Language script in Azure Data Ex
 description: Learn about how to use database script to run a Kusto Query Language script in Azure Data Explorer
 ms.reviewer: docohe
 ms.topic: how-to
+ms.custom: devx-track-bicep
 ms.date: 09/11/2022
 ---
 # Configure a database using a Kusto Query Language script

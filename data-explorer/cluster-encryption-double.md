@@ -3,6 +3,7 @@ title: Enable infrastructure encryption (double encryption) during cluster creat
 description: This article describes how to enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer.
 ms.reviewer: toleibov
 ms.topic: how-to
+ms.custom: devx-track-arm-template
 ms.date: 04/12/2022
 ---
 
