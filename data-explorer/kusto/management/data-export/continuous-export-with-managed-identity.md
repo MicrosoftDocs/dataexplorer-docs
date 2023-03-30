@@ -18,6 +18,49 @@ In this article, you'll learn the steps necessary to configure a continuous expo
 * An Azure Data Explorer cluster and database. [Create a cluster and database](../../../create-cluster-database-portal.md).
 * [Database Admin](../access-control/role-based-access-control.md) permissions on the Azure Data Explorer database.
 
+## 1 - Set up the managed identity
+
+There are two types of managed identities: system-assigned and user-assigned. A system-assigned identity is connected to your cluster and is removed when the cluster is removed. Only one system-assigned identity is permitted per Azure Data Explorer cluster. A user-assigned identity is a separate Azure resource. You can assign multiple user-assigned identities to your cluster.
+
+Select one of the following tabs to set up your preferred managed identity type.
+
+### [User-assigned](#tab/user-assigned)
+
+1. Follow the steps in [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity).
+
+1. Copy and save the managed identity object ID for use in later steps.
+
+1. Run the [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command to set a [managed identity policy](../../management/managed-identity-policy.md). For the managed identity to be used with continuous export, the `AutomatedFlows` usage must be specified in the `AllowedUsages` property. Replace `<objectId>` with the managed identity object ID from the previous step.
+
+    ```kusto
+    .alter cluster policy managed_identity ```[
+        {
+          "ObjectId": "<objectId>",
+          "AllowedUsages": "AutomatedFlows"
+        }
+    ]```
+    ```
+
+    > [!NOTE]
+    > To set the policy on a specific database instead of the cluster, use `database <DatabaseName>` instead of `cluster`.
+
+### [System-assigned](#tab/system-assigned)
+
+1. Follow the steps in [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity).
+
+1. Run the [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command to set the [managed identity policy](../../management/managed-identity-policy.md). For the managed identity to be used with continuous export, the `AutomatedFlows` usage must be specified in the `AllowedUsages` property.
+
+    ```kusto
+    .alter cluster policy managed_identity ```[
+        {
+          "ObjectId": "system",
+          "AllowedUsages": "AutomatedFlows"
+        }
+    ]```
+    ```
+
+    > [!NOTE]
+    > To set the policy on a specific database instead of the cluster, use `database <DatabaseName>` instead of `cluster`.
 ## 1 - Create an external table
 
 To create an external table for your continuous export, see one of the following articles:
