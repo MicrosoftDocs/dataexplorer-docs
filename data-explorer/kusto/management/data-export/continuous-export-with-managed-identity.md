@@ -74,78 +74,47 @@ Select one of the following tabs to set up your preferred managed identity type.
     .add database <DatabaseName> users ('aadapp=system;<tenantId>')
     ```
 
+---
+
+## 2 - Connect to the external resource
+
+An external table references data stored outside Azure Data Explorer. Azure Storage external tables can reference data stored in Azure Blob Storage, Azure Data Lake Gen1, and Azure Data Lake Gen2. SQL Server external tables reference data stored in SQL Server tables.
+
+Select one of the following tabs to create an external table for your use case.
+
 ### [Azure Storage](#tab/azure-storage)
 
-The following example shows how to set up an Azure Storage external table with impersonation authentication.
+1. Use the [Storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) to create a connection string that specifies the resource to access and its authentication information. For continuous export flows, we recommend using [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation).
 
-To specify the use of [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation), the connection string ends with `;impersonate`. The connection string begins with `h@` in order to [obfuscate the string](../../query/scalar-data-types/string.md#obfuscated-string-literals).
+    In the following example, `;impersonate` indicates to use impersonation authentication and `h@` is used to [obfuscate the string](../../query/scalar-data-types/string.md#obfuscated-string-literals).
 
-```kusto
-.create external table MyExternalTable (x:int, s:string) kind=storage dataformat=csv 
-( 
-   h@'https://mystorageaccount.blob.core.windows.net/mycontainer;impersonate' 
-)
-```
+    ```kusto
+    h@'https://mystorageaccount.blob.core.windows.net/mycontainer;impersonate'
+    ```
 
-> [!NOTE]
-> To create an external table for Azure Data Lake Storage Gen1 or Azure Data Lake Storage Gen2, use the [Storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) to modify the connection string as needed.
+1. When the external table uses impersonation authentication, the managed identity must have write permissions over the external data store. Write permissions are required because the continuous export job attempts to export data to the data store on behalf of the managed identity. Grant the managed identity the required write permissions:
+
+    | External data store | Required permissions | Grant the permissions|
+    |--|--|--|
+    |Azure Blob Storage |Storage Blob Data Contributor|[Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)|
+    |Data Lake Storage Gen2| Storage Blob Data Contributor|[Manage ACLs](/azure/storage/blobs/data-lake-storage-acl-azure-portal)
+    |Data Lake Storage Gen1|Contributor|[Assign an Azure role](/azure/data-lake-store/data-lake-store-secure-data?branch=main#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts)
+
+1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
 
 ### [SQL Server](#tab/sql-server)
 
-The following example shows how to set up a SQL Server external table with impersonation authentication.
+1. Create a SQL Server connection string that specifies the resource to access and its authentication information. For continuous export flows, we recommend using [Active Directory Integrated authentication](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication), which is impersonation authentication.
 
-To specify the use of [Active Directory Integrated authentication](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication), which is impersonation authentication, the connection string contains `;Authentication=Active Directory Integrated`.
+    In the following example, `;Authentication=Active Directory Integrated` indicates to use impersonation authentication.
 
-```kusto
-.create external table MySqlExternalTable (x:int, s:string) kind=sql table=MySqlTable
-( 
-   h@'Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=MyDatabase;'
-)
-```
+    ```kusto
+    h@'Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=MyDatabase;
+    ```
 
----
+1. When the external table uses impersonation authentication, the managed identity must have write permissions over the external data store. Write permissions are required because the continuous export job attempts to export data to the data store on behalf of the managed identity. Grant the managed identity CREATE, UPDATE, and INSERT permissions. To learn more, see [Permissions](/sql/relational-databases/security/permissions-database-engine).
 
-## 2 - Assign a managed identity to your cluster
-
-To assign a managed identity to your cluster, see one of the following guides:
-
-* [Assign a system-assigned managed identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity): A system-assigned identity is tied to your cluster and gets deleted when the cluster is deleted. Only one system-assigned identity is allowed per Azure Data Explorer cluster.
-
-* [Assign a user-assigned managed identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity): A user-assigned managed identity is a standalone Azure resource. Multiple user-assigned identities can be assigned to your cluster.
-
-## 3 - Set the managed identity policy
-
-For the managed identity to be used with continuous export, you must set a [ManagedIdentity policy](../managed-identity-policy.md) with the `AutomatedFlows` property. Set the policy on the cluster or database level with the [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command. See the examples in the following tabs.
-
-### [Cluster](#tab/cluster)
-
-To set the policy on the cluster, run the following command:
-
-```kusto
-.alter cluster policy managed_identity ```[
-    {
-      "ObjectId": "<objectId>",
-      "AllowedUsages": "AutomatedFlows"
-    }
-]```
-```
-
-For a system-assigned managed identity, replace `<objectId>` with `system`. For a user-assigned managed-identity, replace `<objectId>` with the managed identity object ID.
-
-### [Database](#tab/database)
-
-To set the policy on a database, run the following command:
-
-```kusto
-.alter database <DatabaseName> policy managed_identity ```[
-    {
-      "ObjectId": "<objectId>",
-      "AllowedUsages": "AutomatedFlows"
-    }
-]```
-```
-
-Replace `<DatabaseName>` with the name of the database that contains the external table. For a system-assigned managed identity, replace `<objectId>` with `system`. For a user-assigned managed-identity, replace `<objectId>` with the managed identity object ID.
+1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
 
 ---
 
