@@ -240,6 +240,8 @@ In this section, you'll establish a connection between the event hub and your Az
     
 ### [ARM template](#tab/arm-template)
 
+The following example shows an Azure Resource Manager template for adding an Event Hubs data connection. You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal) by using the form.
+
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
