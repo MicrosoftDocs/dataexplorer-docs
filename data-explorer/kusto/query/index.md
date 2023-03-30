@@ -71,8 +71,8 @@ For more information on control commands, see [Management (control commands) ove
 
 ## Next steps
 
-* [Tutorial: Write Kusto queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
-* [Samples for Kusto Queries](samples.md)
+* [Tutorial: Learn common operators](tutorials/learn-common-operators.md)
+* [Tutorial: Use aggregation functions](tutorials/use-aggregation-functions.md)
 * [KQL quick reference](../../kql-quick-reference.md)
 * [SQL to Kusto cheat sheet](sqlcheatsheet.md)
 * [Query best practices](best-practices.md)
