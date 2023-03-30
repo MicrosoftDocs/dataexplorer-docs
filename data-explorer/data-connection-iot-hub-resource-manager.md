@@ -3,6 +3,7 @@ title: 'Create an IoT Hub data connection for Azure Data Explorer by using Azure
 description: In this article, you learn how to create an IoT Hub data connection for Azure Data Explorer by using Azure Resource Manager template.
 ms.reviewer: lugoldbe
 ms.topic: how-to
+ms.custom: devx-track-arm-template
 ms.date: 03/15/2022
 ---
 

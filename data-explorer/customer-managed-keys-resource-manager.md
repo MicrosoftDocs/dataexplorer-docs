@@ -3,6 +3,7 @@ title: Configure customer-managed-keys in Azure Data Explorer using the Azure Re
 description: This article describes how to configure customer-managed keys encryption on your data in Azure Data Explorer using the Azure Resource Manager template.
 ms.reviewer: itsagui
 ms.topic: how-to
+ms.custom: devx-track-arm-template
 ms.date: 01/06/2020
 ---
 
