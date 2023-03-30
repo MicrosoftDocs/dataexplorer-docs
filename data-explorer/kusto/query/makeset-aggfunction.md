@@ -37,6 +37,7 @@ The array's sort order is undefined.
 
 ## Example
 
+### Set from a scalar column
 This example shows the set of states grouped with the same amount of crop damage.
 
 > [!div class="nextstepaction"]
@@ -61,6 +62,27 @@ The results table shown includes only the first 10 rows.
 | 18000 | ["WASHINGTON","WISCONSIN"] |
 | 107900000 | ["CALIFORNIA"] |
 | 28900000 | ["CALIFORNIA"] |
+
+### Set from a Array column
+This example shows the set of element in array.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY2wxBwrhcy8Eh0Fx6IiQyuFlMq8xNzMZE2uaC4FIDDUgYloRKs7GqrrKKg7GoFJY/VYTR0FsCJTFEVgaWdDkDRY1hxZ1hlJM6ZeqCxIL1esAleNQnFpbm5iUWZVqgLQnfHFqSW2uYnZqSAGyOGaEEejioNENAHdRSJ74QAAAA==" target="_blank">Run the query</a>
+
+```kusto
+datatable (Val: int, Arr1: dynamic)
+[
+    1, dynamic(['A1', 'A2', 'A3']), 
+    5, dynamic(['A2', 'C1']),
+    7, dynamic(['C2', 'A3']),
+    5, dynamic(['C2', 'A1'])
+] 
+| summarize Val_set=make_set(Val), Arr1_set=make_set(Arr1)
+```
+
+| Val_set | Arr1_set |
+|--|--|
+| [1,5,7] | ["A1","A2","A3","C1","C2"] |
 
 ## See also
 
