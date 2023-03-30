@@ -92,6 +92,8 @@ Select one of the following tabs to create an external table for your use case.
     h@'https://mystorageaccount.blob.core.windows.net/mycontainer;impersonate'
     ```
 
+1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
+
 1. When the external table uses impersonation authentication, the managed identity must have write permissions over the external data store. Write permissions are required because the continuous export job attempts to export data to the data store on behalf of the managed identity. Grant the managed identity the required write permissions:
 
     | External data store | Required permissions | Grant the permissions|
@@ -99,8 +101,6 @@ Select one of the following tabs to create an external table for your use case.
     |Azure Blob Storage |Storage Blob Data Contributor|[Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)|
     |Data Lake Storage Gen2| Storage Blob Data Contributor|[Manage ACLs](/azure/storage/blobs/data-lake-storage-acl-azure-portal)
     |Data Lake Storage Gen1|Contributor|[Assign an Azure role](/azure/data-lake-store/data-lake-store-secure-data?branch=main#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts)
-
-1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
 
 ### [SQL Server](#tab/sql-server)
 
@@ -112,9 +112,9 @@ Select one of the following tabs to create an external table for your use case.
     h@'Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=MyDatabase;
     ```
 
-1. When the external table uses impersonation authentication, the managed identity must have write permissions over the external data store. Write permissions are required because the continuous export job attempts to export data to the data store on behalf of the managed identity. Grant the managed identity CREATE, UPDATE, and INSERT permissions. To learn more, see [Permissions](/sql/relational-databases/security/permissions-database-engine).
-
 1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
+
+1. When the external table uses impersonation authentication, the managed identity must have write permissions over the external data store. Write permissions are required because the continuous export job attempts to export data to the data store on behalf of the managed identity. Grant the managed identity CREATE, UPDATE, and INSERT permissions. To learn more, see [Permissions](/sql/relational-databases/security/permissions-database-engine).
 
 ---
 
