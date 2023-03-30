@@ -21,6 +21,7 @@ In this tutorial, you'll learn how to:
 > * [Sort results](#sort-results)
 > * [Get the top *n* rows](#get-the-top-n-rows)
 > * [Create calculated columns](#create-calculated-columns)
+> * [Map values from one set to another](#map-values-from-one-set-to-another)
 
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
 
@@ -250,6 +251,33 @@ StormEvents
 |2007-06-28T18:00:00Z|2007-06-28T23:00:00Z|...|05:00:00|
 |2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|...|08:00:00|
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|...|03:00:00|
+
+## Map values from one set to another
+
+Static mapping is a useful technique for changing the presentation of your results. In KQL, one way to perform static mapping is by using a dynamic dictionary and accessors to map values from one set to another.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA23PvQrCQBAE4D5PMVylkCdQUkkEC0UIVmJxXpZ4kvthc4kc6rt7JBYqFtt9M8O2FNC5nhVtpffaNihQRyuNVrMMuKcDRGmIG7IqYiutbIgFFhD7/txqJfLJHIJudYhYOeOljZNgPchAIonnfJlVwbEpB7Khyx64XYgJ1TiOovi74vgT/E6kEs/uSipgbN3U+ZvnWLMmW7dxJ00Kf/94nNDpBfVsVEn9AAAA" target="_blank">Run the query</a>
+
+```kusto
+let sourceMapping = dynamic(
+  {
+    "Emergency Manager" : "Public",
+    "Utility Company" : "Private"
+  });
+StormEvents
+| where Source == "Emergency Manager" or Source == "Utility Company"
+| project EventId, Source, FriendlyName = sourceMapping[Source]
+```
+
+**Output**
+
+|EpisodeId|Source|FriendlyName|
+|---|---|
+|68796|Emergency Manager|Public|
+|...|...|...|
+|72609|Utility Company|Private|
+|...|...|...|
 
 ## Next steps
 
