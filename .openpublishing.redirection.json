@@ -544,6 +544,11 @@
       "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-show-commands.md",
       "redirect_url": "/azure/data-explorer/kusto/management/materialized-views/materialized-view-show-command",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/samples.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
+      "redirect_document_id": false
     }
   ]
 }
