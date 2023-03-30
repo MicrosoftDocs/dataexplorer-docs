@@ -41,10 +41,10 @@ Where *TopNestedClause* has the following syntax:
 |*Expr*|string|&check;|An expression over the input record indicating which value to return for this hierarchy level. Typically it's a column reference from *T*, or some calculation, such as `bin()`, over such a column.
 |*ConstExpr*|string||If specified, for each hierarchy level, 1 record will be added with the value that is the aggregation over all records that didn't "make it to the top".|
 |*AggName*|string||If specified, this identifier sets the column name in the output for the value of *Aggregation*.|
-|*Aggregation*|string||The aggregation function to apply to all records sharing the same value of *Expr*. The value of this aggregation determines which of the resulting records are "top". For the possible values, see [supported aggregation functions](#supporeted-aggregation-functions).|
+|*Aggregation*|string||The aggregation function to apply to all records sharing the same value of *Expr*. The value of this aggregation determines which of the resulting records are "top". For the possible values, see [supported aggregation functions](#supported-aggregation-functions).|
 |`asc` or `desc`|string||Controls whether selection is actually from the "bottom" or "top" of the range of aggregated values. The default is `desc`.|
 
-### Supporeted aggregation functions
+### Supported aggregation functions
 
 The following aggregation functions are supported:
 * [sum()](sum-aggfunction.md)
