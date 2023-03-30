@@ -3,6 +3,7 @@ title: 'Create an Azure Data Explorer cluster and database by using an Azure Res
 description: Learn how to create an Azure Data Explorer cluster and database by using an Azure Resource Manager template
 ms.reviewer: lugoldbe
 ms.topic: how-to
+ms.custom: devx-track-arm-template
 ms.date: 09/26/2019
 ---
 
