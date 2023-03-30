@@ -10,6 +10,7 @@ ms.date: 03/30/2023
 Azure Data Explorer offers ingestion from [Event Hubs](/azure/event-hubs/event-hubs-about), a big data streaming platform and event ingestion service. Event Hubs can process millions of events per second in near real time.
 
 In this article, you'll connect to an event hub and ingest data into Azure Data Explorer. For an overview on ingesting from Event Hubs, see [Azure Event Hubs data connection](ingest-data-event-hub-overview.md).
+
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
@@ -355,7 +356,7 @@ To remove the event hub connection from the Azure portal, do the following:
 
 ### [Wizard](#tab/wizard-2)
 
-From the final wizard page, select the **Manage Data Connection** card. If you've already exited the wizard, remove the data connection through the Azure portal as explained in the previous tab.
+From the final wizard page, select the **Manage Data Connection** card. If you have already exited the wizard, remove the data connection through the Azure portal as explained in the previous tab.
 
 ### [C#](#tab/c-sharp-2)
 
