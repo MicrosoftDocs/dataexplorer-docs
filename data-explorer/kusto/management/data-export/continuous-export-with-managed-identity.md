@@ -44,6 +44,12 @@ Select one of the following tabs to set up your preferred managed identity type.
     > [!NOTE]
     > To set the policy on a specific database instead of the cluster, use `database <DatabaseName>` instead of `cluster`.
 
+1. Run the following command to grant the managed identity [Database User](../access-control/role-based-access-control.md) permissions. Replace `<objectId>` with the managed identity object ID, and `<tenantId>` with the Azure Active Directory tenant ID. These permissions must be granted over any database used for the continuous export, such as the database that contains the external table or a database referenced in the query.
+
+    ```kusto
+    .add database <DatabaseName> users ('aadapp=<objectId>;<tenantId>')
+    ```
+
 ### [System-assigned](#tab/system-assigned)
 
 1. Follow the steps in [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity).
@@ -61,12 +67,12 @@ Select one of the following tabs to set up your preferred managed identity type.
 
     > [!NOTE]
     > To set the policy on a specific database instead of the cluster, use `database <DatabaseName>` instead of `cluster`.
-## 1 - Create an external table
 
-To create an external table for your continuous export, see one of the following articles:
+1. Run the following command to grant the managed identity [Database User](../access-control/role-based-access-control.md) permissions. Replace `<tenantId>` with the Azure Active Directory tenant ID. These permissions must be granted over any database used for the continuous export, such as the database that contains the external table or a database referenced in the query.
 
-* [Create an Azure Storage external table](../external-tables-azurestorage-azuredatalake.md)
-* [Create an SQL Server external table](../external-sql-tables.md)
+    ```kusto
+    .add database <DatabaseName> users ('aadapp=system;<tenantId>')
+    ```
 
 ### [Azure Storage](#tab/azure-storage)
 
