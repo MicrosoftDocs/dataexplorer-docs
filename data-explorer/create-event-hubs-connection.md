@@ -59,7 +59,7 @@ The following steps will guide you through creating an event hub connection thro
 
 1. From the **Data** tab of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select **Ingest** from the **Ingest data from Event Hub** card.
 
-    :::image type="content" source="media/event-hub-wizard/ingestion-in-web-ui.png" alt-text="Select the ingestion wizard in the Azure Data Explorer web UI.":::
+    :::image type="content" source="media/event-hub-wizard/ingestion-in-web-ui.png" alt-text="Screenshot showing the ingestion wizard in the Azure Data Explorer web UI.":::
 
 1. The **Ingest data** window opens with the **Destination** tab selected. The **Cluster** and **Database** fields are autopopulated. You may select a different cluster or database from the drop-down menus.
 
