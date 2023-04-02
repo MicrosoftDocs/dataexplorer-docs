@@ -18,20 +18,6 @@ To `.create` requires at least [Database User](../management/access-control/role
 
 To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
 
-## Authentication and authorization
-
-The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method.
-
-The following table lists the supported authentication methods for Azure Storage external tables and the permissions needed to read or write to the table.
-
-| Authentication method | Azure Blob Storage / Data Lake Storage Gen2 | Data Lake Storage Gen1 |
-|--|--|--|
-|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Read permissions: Storage Blob Data Reader<br/>Write permissions:Storage Blob Data Contributor|Read permissions: Reader<br/>Write permissions: Contributor|
-|[Managed identity](../api/connection-strings/storage-authentication-methods.md#managed-identity)|Read permissions: Storage Blob Data Reader<br/>Write permissions: Storage Blob Data Contributor|Read permissions: Reader<br/>Write permissions: Contributor|
-|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Read permissions: List + Read<br/>Write permissions: Write|This authentication method isn't supported in Gen1.|
-|[Azure AD access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|||
-|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
-
 ## .create or .alter external table
 
 ### Syntax
@@ -118,6 +104,20 @@ By default, datetime values are rendered using the following formats:
 
 > [!TIP]
 > To learn more about the role `namePrefix` and `fileExtension` properties play in data file filtering during query, see [file filtering logic](#file-filtering) section.
+
+## Authentication and authorization
+
+The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method.
+
+The following table lists the supported authentication methods for Azure Storage external tables and the permissions needed to read or write to the table.
+
+| Authentication method | Azure Blob Storage / Data Lake Storage Gen2 | Data Lake Storage Gen1 |
+|--|--|--|
+|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Read permissions: Storage Blob Data Reader<br/>Write permissions:Storage Blob Data Contributor|Read permissions: Reader<br/>Write permissions: Contributor|
+|[Managed identity](../api/connection-strings/storage-authentication-methods.md#managed-identity)|Read permissions: Storage Blob Data Reader<br/>Write permissions: Storage Blob Data Contributor|Read permissions: Reader<br/>Write permissions: Contributor|
+|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Read permissions: List + Read<br/>Write permissions: Write|This authentication method isn't supported in Gen1.|
+|[Azure AD access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|||
+|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
 
 ### Examples
 
