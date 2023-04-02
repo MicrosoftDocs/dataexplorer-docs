@@ -88,7 +88,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 External tables refer to data located in Azure Storage, such as Azure Blob Storage, Azure Data Lake Gen1, and Azure Data Lake Gen2, or SQL Server.
 
-Select one of the following tabs to set up an external table.
+Select one of the following tabs to set up an Azure Storage or SQL Server external table.
 
 ### [Azure Storage](#tab/azure-storage)
 
