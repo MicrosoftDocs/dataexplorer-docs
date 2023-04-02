@@ -38,7 +38,8 @@ The array's sort order is undefined.
 ## Example
 
 ### Set from a scalar column
-This example shows the set of states grouped with the same amount of crop damage.
+
+The following example shows the set of states grouped with the same amount of crop damage.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoLs3NTSzKrEpVKC5JLEktts1NzE6NL04t0QgG8TUVkioVXBJzE9NTnYvyC4oBmxrbeD8AAAA=" target="_blank">Run the query</a>
@@ -63,8 +64,9 @@ The results table shown includes only the first 10 rows.
 | 107900000 | ["CALIFORNIA"] |
 | 28900000 | ["CALIFORNIA"] |
 
-### Set from a Array column
-This example shows the set of element in array.
+### Set from array column
+
+The following example shows the set of elements in an array.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY2wxBwrhcy8Eh0Fx6IiQyuFlMq8xNzMZE2uaC4FIDDUgYloRKs7GqrrKKg7GoFJY/VYTR0FsCJTFEVgaWdDkDRY1hxZ1hlJM6ZeqCxIL1esAleNQnFpbm5iUWZVqgLQnfHFqSW2uYnZqSAGyOGaEEejioNENAHdRSJ74QAAAA==" target="_blank">Run the query</a>
