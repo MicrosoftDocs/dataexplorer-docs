@@ -138,7 +138,7 @@ Select one of the following tabs to create a continuous export job that will run
 
 ### [User-assigned](#tab/user-assigned)
 
-Create a continuous export job with a managed identity by running the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property set to the managed identity object ID.
+Run the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property set to the managed identity object ID.
 
 For example, the following command creates a continuous export job named `MyExport` to export the data in `MyTable` to `MyExternalTable` on behalf of a user-assigned managed identity.
 
@@ -148,7 +148,7 @@ For example, the following command creates a continuous export job named `MyExpo
 
 ### [System-assigned](#tab/system-assigned)
 
-Create a continuous export job with a managed identity by running the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property set to `system`.
+Run the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property set to `system`.
 
 For example, the following command creates a continuous export job named `MyExport` to export the data in `MyTable` to `MyExternalTable` on behalf of your system-assigned managed identity.
 
