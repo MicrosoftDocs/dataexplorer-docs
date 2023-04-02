@@ -114,7 +114,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
     | External data store | Required permissions | Grant the permissions|
     |--|--|--|
     |Azure Blob Storage |Storage Blob Data Contributor|[Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)|
-    |Data Lake Storage Gen2| Storage Blob Data Contributor|[Manage ACLs](/azure/storage/blobs/data-lake-storage-acl-azure-portal)
+    |Data Lake Storage Gen2| Storage Blob Data Contributor|[Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)|
     |Data Lake Storage Gen1|Contributor|[Assign an Azure role](/azure/data-lake-store/data-lake-store-secure-data?branch=main#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts)
 
 ### [SQL Server](#tab/sql-server)
