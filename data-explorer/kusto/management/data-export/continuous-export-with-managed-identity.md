@@ -142,16 +142,18 @@ In the following steps, you'll create an external table and authorize the manage
 
 ## 3 - Create a continuous export job
 
-To create a continuous export job with a managed identity, use the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property.
+1. Format the `managedIdentity` property for use in the next step.
 
-* System-assigned managed identity: `managedIdentity="system"`.
-* User-assigned managed identity: `managedidentity=<objectId>`.
+   * System-assigned managed identity: `managedIdentity="system"`.
+   * User-assigned managed identity: `managedidentity=<objectId>`.
 
-For example, the following command creates a continuous export job with a system-assigned managed identity:
+1. Run the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property to create a continuous export job.
 
-```kusto
-.create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity="system") <| MyTable
-```
+    For example, the following command creates a continuous export job with a system-assigned managed identity:
+
+    ```kusto
+    .create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity="system") <| MyTable
+    ```
 
 ## Next steps
 
