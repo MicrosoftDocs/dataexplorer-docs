@@ -70,6 +70,5 @@ This command:
 
 ## Limitations
 
-If a Purge command was executed on this database, the undo drop table command can't be executed to a version earlier to the purge execution.
-
-Extent can be recovered only if the hard delete period of the extent container it resides in wasn't reached yet.
+* If a Purge command was executed on this database, the undo drop table command can't be executed to a version earlier to the purge execution.
+* Extent can be recovered only if the hard delete period of the extent container it resides in wasn't reached yet.
