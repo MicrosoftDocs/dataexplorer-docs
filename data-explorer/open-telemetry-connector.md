@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
     .create-merge table <Traces-Table-Name> (TraceId:string, SpanId:string, ParentId:string, SpanName:string, SpanStatus:string, SpanKind:string, StartTime:datetime, EndTime:datetime, ResourceAttributes:dynamic, TraceAttributes:dynamic, Events:dynamic, Links:dynamic) 
     ```
 
-## Set up streaming or batching ingestion
+## Set up streaming ingestion
 
 Azure Data Explorer has two main types of ingestion: batching and streaming. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion). The *streaming* method is called *managed* in the OTel collector. Streaming ingestion may be a good choice for you if you need the logs and traces are to be available in near real time. However, streaming ingestion uses more resources than batched ingestion. The OTel framework itself batches data, which should be considered when choosing which method to use for ingestion.
 
