@@ -9,7 +9,7 @@ ms.date: 04/02/2023
 
 A [continuous export job](continuous-data-export.md) exports data to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query.
 
-When the external table uses impersonation authentication or the query references tables in other databases, the job must be configured with a [managed identity](../../../managed-identities-overview.md). Then, the continuous export can be performed on behalf of the managed identity, which is used for authentication across the Azure resources.
+When the external table uses impersonation authentication or the query references tables in other databases, the job must be configured with a [managed identity](../../../managed-identities-overview.md). A continuous export job configured with a managed identity is performed on behalf of the managed identity, which is used for authentication across the Azure resources.
 
 In this article, you'll learn how to configure a system-assigned or user-assigned managed identity and use that identity to create a continuous export job to an Azure Storage or SQL Server external table.
 
