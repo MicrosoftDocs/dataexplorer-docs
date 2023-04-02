@@ -18,7 +18,7 @@ In this article, you'll learn how to configure a system-assigned or user-assigne
 * An Azure Data Explorer cluster and database. [Create a cluster and database](../../../create-cluster-database-portal.md).
 * [Database Admin](../access-control/role-based-access-control.md) permissions on the Azure Data Explorer database.
 
-## 1 - Set up the managed identity
+## 1 - Set up a managed identity
 
 There are two types of managed identities:
 
@@ -88,7 +88,7 @@ In the following steps, you'll assign a managed identity to your cluster, set a 
 
 ---
 
-## 2 - Connect to the external resource
+## 2 - Connect to an external resource
 
 When you create an external table in Azure Data Explorer, it can refer to data located in Azure Storage, such as Azure Blob Storage, Azure Data Lake Gen1, and Azure Data Lake Gen2, or SQL Server.
 
