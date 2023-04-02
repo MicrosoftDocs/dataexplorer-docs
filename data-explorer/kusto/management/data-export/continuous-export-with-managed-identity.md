@@ -88,7 +88,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 When you create an external table in Azure Data Explorer, it can refer to data located in Azure Storage, such as Azure Blob Storage, Azure Data Lake Gen1, and Azure Data Lake Gen2, or SQL Server.
 
-Select one of the following tabs to create and connect to the external table for your use case.
+Select one of the following tabs to set up an external table.
 
 ### [Azure Storage](#tab/azure-storage)
 
@@ -134,7 +134,7 @@ Select one of the following tabs to create and connect to the external table for
 
 ## 3 - Create a continuous export job
 
-Select one of the tabs to create a continuous export job with a user-assigned or system-assigned managed identity.
+Select one of the following tabs to create a continuous export job that will run on behalf of a user-assigned or system-assigned managed identity.
 
 ### [User-assigned](#tab/user-assigned)
 
