@@ -157,6 +157,6 @@ In the following steps, you'll create an external table and authorize the manage
 
 ## Next steps
 
-* To see your continuous export configurations, run the [.show continuous-exports](show-continuous-export.md) command.
+* To see your continuous exports, run the [.show continuous-exports](show-continuous-export.md) command.
 * Read the [continuous export overview](continuous-data-export.md).
 * Learn more about [managed identities](../../../managed-identities-overview.md).
