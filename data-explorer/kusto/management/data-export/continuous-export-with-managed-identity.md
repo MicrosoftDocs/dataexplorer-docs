@@ -20,7 +20,11 @@ In this article, you'll learn how to configure a system-assigned or user-assigne
 
 ## 1 - Set up the managed identity
 
-There are two types of managed identities: system-assigned and user-assigned. A system-assigned identity is connected to your cluster and is removed when the cluster is removed. Only one system-assigned identity is permitted per Azure Data Explorer cluster. A user-assigned identity is a separate Azure resource. You can assign multiple user-assigned identities to your cluster.
+There are two types of managed identities:
+
+* **System-assigned**: A system-assigned identity is connected to your cluster and is removed when the cluster is removed. Only one system-assigned identity is allowed per cluster.
+
+* **User-assigned**: A user-assigned managed identity is a standalone Azure resource. Multiple user-assigned identities can be assigned to your cluster.
 
 Select one of the following tabs to set up your preferred managed identity type.
 
