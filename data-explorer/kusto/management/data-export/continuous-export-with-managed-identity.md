@@ -30,8 +30,6 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ### [User-assigned](#tab/user-assigned)
 
-In the following steps, you'll assign a managed identity to your cluster, set a policy to allow the identity to be used with continuous export, and authorize the identity to access the necessary Azure Data Explorer databases.
-
 1. Follow the steps to [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity).
 
 1. Copy and save the managed identity object ID for use in the following steps.
@@ -59,8 +57,6 @@ In the following steps, you'll assign a managed identity to your cluster, set a 
     Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity object ID, and `<tenantId>` with the Azure Active Directory tenant ID.
 
 ### [System-assigned](#tab/system-assigned)
-
-In the following steps, you'll assign a managed identity to your cluster, set a policy to allow the identity to be used with continuous export, and authorize the identity to access the necessary Azure Data Explorer databases.
 
 1. Follow the steps to [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity).
 
@@ -96,8 +92,6 @@ Select one of the following tabs to create and connect to the external table for
 
 ### [Azure Storage](#tab/azure-storage)
 
-In the following steps, you'll create an external table and authorize the managed identity to access the external data store.
-
 1. Create a connection string based on the [storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates). This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation).
 
 1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
@@ -120,8 +114,6 @@ In the following steps, you'll create an external table and authorize the manage
     |Data Lake Storage Gen1|Contributor|[Assign an Azure role](/azure/data-lake-store/data-lake-store-secure-data?branch=main#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts)
 
 ### [SQL Server](#tab/sql-server)
-
-In the following steps, you'll create an external table and authorize the managed identity to access the external data store.
 
 1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [Active Directory Integrated authentication](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication), which is impersonation authentication.
 
