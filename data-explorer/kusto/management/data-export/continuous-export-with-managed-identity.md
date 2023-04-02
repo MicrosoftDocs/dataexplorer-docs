@@ -30,11 +30,11 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ### [User-assigned](#tab/user-assigned)
 
-1. Follow the steps in [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity).
+1. Follow the steps to [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity).
 
-1. Copy and save the managed identity object ID for use in later steps.
+1. Copy and save the managed identity object ID for use in the following steps.
 
-1. Run the [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command to set a [managed identity policy](../../management/managed-identity-policy.md). For the managed identity to be used with continuous export, the `AutomatedFlows` usage must be specified in the `AllowedUsages` property. Replace `<objectId>` with the managed identity object ID from the previous step.
+1. Run the following [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
     ```kusto
     .alter cluster policy managed_identity ```[
@@ -46,19 +46,21 @@ Select one of the following tabs to set up your preferred managed identity type.
     ```
 
     > [!NOTE]
-    > To set the policy on a specific database instead of the cluster, use `database <DatabaseName>` instead of `cluster`.
+    > To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
 
-1. Run the following command to grant the managed identity [Database User](../access-control/role-based-access-control.md) permissions. Replace `<objectId>` with the managed identity object ID, and `<tenantId>` with the Azure Active Directory tenant ID. These permissions must be granted over any database used for the continuous export, such as the database that contains the external table or a database referenced in the query.
+1. Run the following command to grant the managed identity [Database User](../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
 
     ```kusto
     .add database <DatabaseName> users ('aadapp=<objectId>;<tenantId>')
     ```
 
+    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity object ID, and `<tenantId>` with the Azure Active Directory tenant ID.
+
 ### [System-assigned](#tab/system-assigned)
 
-1. Follow the steps in [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity).
+1. Follow the steps to [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity).
 
-1. Run the [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command to set the [managed identity policy](../../management/managed-identity-policy.md). For the managed identity to be used with continuous export, the `AutomatedFlows` usage must be specified in the `AllowedUsages` property.
+1. Run the following [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
     ```kusto
     .alter cluster policy managed_identity ```[
@@ -70,13 +72,15 @@ Select one of the following tabs to set up your preferred managed identity type.
     ```
 
     > [!NOTE]
-    > To set the policy on a specific database instead of the cluster, use `database <DatabaseName>` instead of `cluster`.
+    > To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
 
-1. Run the following command to grant the managed identity [Database User](../access-control/role-based-access-control.md) permissions. Replace `<tenantId>` with the Azure Active Directory tenant ID. These permissions must be granted over any database used for the continuous export, such as the database that contains the external table or a database referenced in the query.
+1. Run the following command to grant the managed identity [Database User](../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
 
     ```kusto
     .add database <DatabaseName> users ('aadapp=system;<tenantId>')
     ```
+
+    Replace `<DatabaseName>` with the relevant database and `<tenantId>` with the Azure Active Directory tenant ID.
 
 ---
 
