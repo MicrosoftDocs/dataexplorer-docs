@@ -84,7 +84,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ---
 
-## 2 - Connect to an external resource
+## 2 - Set up an external table
 
 When you create an external table in Azure Data Explorer, it can refer to data located in Azure Storage, such as Azure Blob Storage, Azure Data Lake Gen1, and Azure Data Lake Gen2, or SQL Server.
 
