@@ -30,6 +30,8 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ### [User-assigned](#tab/user-assigned)
 
+In the following steps, you'll assign a managed identity to your cluster, set a policy to allow the identity to be used with continuous export, and authorize the identity to access the necessary Azure Data Explorer databases.
+
 1. Follow the steps to [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity).
 
 1. Copy and save the managed identity object ID for use in the following steps.
@@ -57,6 +59,8 @@ Select one of the following tabs to set up your preferred managed identity type.
     Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity object ID, and `<tenantId>` with the Azure Active Directory tenant ID.
 
 ### [System-assigned](#tab/system-assigned)
+
+In the following steps, you'll assign a managed identity to your cluster, set a policy to allow the identity to be used with continuous export, and authorize the identity to access the necessary Azure Data Explorer databases.
 
 1. Follow the steps to [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity).
 
