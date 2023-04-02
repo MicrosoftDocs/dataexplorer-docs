@@ -86,7 +86,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ## 2 - Set up an external table
 
-When you create an external table in Azure Data Explorer, it can refer to data located in Azure Storage, such as Azure Blob Storage, Azure Data Lake Gen1, and Azure Data Lake Gen2, or SQL Server.
+External tables refer to data located in Azure Storage, such as Azure Blob Storage, Azure Data Lake Gen1, and Azure Data Lake Gen2, or SQL Server.
 
 Select one of the following tabs to set up an external table.
 
@@ -140,7 +140,7 @@ Select one of the following tabs to create a continuous export job that will run
 
 Run the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property set to the managed identity object ID.
 
-For example, the following command creates a continuous export job named `MyExport` to export the data in `MyTable` to `MyExternalTable` on behalf of a user-assigned managed identity.
+For example, the following command creates a continuous export job named `MyExport` to export the data in `MyTable` to `MyExternalTable` on behalf of a user-assigned managed identity. `<objectId>` should be a managed identity object ID.
 
 ```kusto
 .create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity=<objectId>) <| MyTable
