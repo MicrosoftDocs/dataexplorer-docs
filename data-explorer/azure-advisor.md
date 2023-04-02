@@ -62,11 +62,10 @@ Cost recommendations include:
 
 * [Unused running Azure Data Explorer cluster](#unused-running-azure-data-explorer-cluster)
 * [Unused stopped Azure Data Explorer cluster](#unused-stopped-azure-data-explorer-cluster)
-* [Change Data Explorer clusters to a more cost effective and better performing SKU] (#change-data-explorer-clusters-to-a-more-cost-effective-and-better-performing-sku)
+* [Change Data Explorer clusters to a more cost effective and better performing SKU](#change-data-explorer-clusters-to-a-more-cost-effective-and-better-performing-sku)
 * [Reduce cache for Azure Data Explorer tables](#reduce-cache-for-azure-data-explorer-tables)
 * [Run a cleanup command to delete unused storage artifacts](#delete-unused-storage-artifacts)
 * [Enable Optimized autoscale](#enable-optimized-autoscale)
-* Change Data Explorer clusters to a more cost effective and better performing SKU
 
 #### Unused running Azure Data Explorer cluster
 
@@ -89,7 +88,7 @@ The recommendation is to delete the cluster to reduce cost.
 > Stopped clusters may still contain data. Before deleting the cluster, verify that the data is no longer needed. Once the cluster is deleted, the data will no longer be accessible.
 
 
-#### Change Data Explorer clusters to a more cost effective and better performing SKU   (IK SECTION)
+#### Change Data Explorer clusters to a more cost effective and better performing SKU
 
 The recommendation **Change Data Explorer clusters to a more cost effective and better performing SKU** is given to a cluster whose cluster is operating under a non-optimal SKU. We recommend migrating to a more cost effective and better performing SKU. This SKU should reduce your costs and improve overall performance. We have calculated the required instance count that meets the cache requirements of your cluster, while ensuring that performance will not be negatively impacted. 
 
