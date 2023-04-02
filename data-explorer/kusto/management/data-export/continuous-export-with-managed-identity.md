@@ -134,18 +134,27 @@ Select one of the following tabs to create and connect to the external table for
 
 ## 3 - Create a continuous export job
 
-1. Format the `managedIdentity` property for use in the next step.
+Select one of the tabs to create a continuous export job with a user-assigned or system-assigned managed identity.
 
-   * System-assigned managed identity: `managedIdentity="system"`.
-   * User-assigned managed identity: `managedidentity=<objectId>`.
+### [User-assigned](#tab/user-assigned)
 
-1. Run the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property to create a continuous export job.
+Create a continuous export job with a managed identity by running the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property set to the managed identity object ID.
 
-    For example, the following command creates a continuous export job with a system-assigned managed identity:
+For example, the following command will export the data in `MyTable` to `MyExternalTable` on behalf of a user-assigned managed identity.
 
-    ```kusto
-    .create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity="system") <| MyTable
-    ```
+```kusto
+.create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity=<objectId>) <| MyTable
+```
+
+### [System-assigned](#tab/system-assigned)
+
+Create a continuous export job with a managed identity by running the [.create-or-alter continuous-export](create-alter-continuous.md) command with the `managedIdentity` property set to `system`.
+
+For example, the following command will export the data in `MyTable` to `MyExternalTable` on behalf of your system-assigned managed identity.
+
+```kusto
+.create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity="system") <| MyTable
+```
 
 ## Next steps
 
