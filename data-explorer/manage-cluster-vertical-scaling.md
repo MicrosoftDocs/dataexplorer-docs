@@ -14,7 +14,7 @@ Since demand on a cluster can’t be predicted with absolute accuracy, a better 
 
 There are two workflows for scaling an Azure Data Explorer cluster:
 
-* [Horizontal scaling](manage-cluster-horizontal-scaling.md), also called scaling in and out.
+* [Horizontal scaling](manage-cluster-horizontal-scaling.md),  also called scaling in and out.
 * Vertical scaling, also called scaling up and down.
 
 This article explains the vertical scaling workflow:
