@@ -133,21 +133,11 @@ items:
       - name: Event Hubs data connection
         displayName: ingest, ingestion
         href: ingest-data-event-hub-overview.md
-      - name: Azure portal
+      - name: Create an Event Hubs data connection
+        href: create-event-hubs-connection.md
+      - name: Manage Event Hubs in your free cluster
         displayName: Event hub, ingest, data connection
-        href: ingest-data-event-hub.md
-      - name: Ingestion wizard
-        displayName: Event hub, ingest, data connection
-        href: event-hub-wizard.md
-      - name: C#
-        displayName: Event hub, ingest, data connection
-        href: data-connection-event-hub-csharp.md
-      - name: Python
-        displayName: Event hub, ingest
-        href: data-connection-event-hub-python.md
-      - name: Azure Resource Manager template
-        displayName: Event hub, ingest, data connection
-        href: data-connection-event-hub-resource-manager.md
+        href: start-for-free-event-hubs.md
     - name: Event Grid
       items:
       - name: Event Grid data connection
@@ -646,6 +636,8 @@ items:
     href: kusto/functions-library/toc.yml
   - name: PowerShell Kusto
     href: /powershell/module/az.kusto/#kusto
+  - name: Python plugin packages
+    href: python-package-reference.md
   - name: Troubleshoot ingestion
     items:
     - name: Ingestion error codes

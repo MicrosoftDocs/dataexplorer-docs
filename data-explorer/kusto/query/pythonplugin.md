@@ -39,20 +39,20 @@ The following variables are reserved for interaction between Kusto Query Languag
 
 ## Enable the plugin
 
-* The plugin is disabled by default.
-* To enable the plugin, see the list of [prerequisites](../concepts/sandboxes.md#prerequisites-and-limitations).
-* Enable or disable the plugin in the Azure portal, in your cluster's [Configuration tab](../../language-extensions.md).
+The plugin is disabled by default. Before you start, review the list of [prerequisites](../concepts/sandboxes.md#prerequisites-and-limitations).
+
+To enable the plugin and select the version of the Python image, see [Enable language extensions on your cluster](../../language-extensions.md#enable-language-extensions-on-your-cluster).
 
 ## Python sandbox image
 
-* The Python sandbox image is based on *Anaconda 5.2.0* distribution with the *Python 3.6* engine.
-  See the list of [Anaconda packages](http://docs.anaconda.com/anaconda/packages/old-pkg-lists/5.2.0/py3.6_win-64/).
-  
-  > [!NOTE]
-  > A small percentage of packages might be incompatible with the limitations enforced by the sandbox where the plugin is run.
-  
-* The Python image also contains common ML packages: `tensorflow`, `keras`, `torch`, `hdbscan`, `xgboost`, and other useful packages.
-* The plugin imports *numpy* (as `np`) & *pandas* (as `pd`) by default.  You can import other modules as needed.
+To change the version of the Python image, see [Change the Python language extensions image on your cluster](../../language-extensions.md#change-the-python-language-extensions-image-on-your-cluster).
+
+To see the list of packages for the different Python images, see [Python package reference](../../python-package-reference.md).
+
+> [!NOTE]
+>
+> * By default, the plugin imports *numpy* as **np** and *pandas* as **pd**. Optionally, you can import other modules as needed.
+> * Some packages might be incompatible with the limitations enforced by the sandbox where the plugin is run.
 
 ## Use Ingestion from query and update policy
 

@@ -102,6 +102,12 @@ To verify that the managed private endpoint's connection state is set to approve
 
 1. Select **Private endpoint connections**. In the table, in the **Connection state** column, verify that the managed private endpoint is approved.
 
+If you are unable to create a managed private endpoint, make sure the subscription is registered for the *Microsoft.Network* [resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1):
+
+1. In the Azure portal, navigate to your subscription and then select **Resource Providers**
+
+1. Search for *Microsoft.Network* and register the resource provider.
+
 ## Other troubleshooting guidelines
 
 If all the checks were successful and you still aren't able to establish a connection to the cluster, then you should contact your corporate security team that is responsible for firewalls and networking in general.

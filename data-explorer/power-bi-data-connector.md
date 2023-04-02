@@ -53,9 +53,9 @@ In the following steps, we'll be using the StormEvents table from our [help clus
     | take 1000
     ```
 
-1. From the **Share**  menu, select **Query to Power BI**
+1. From the **Export**  menu, select **Query to Power BI**.
 
-    :::image type="content" source="media/power-bi-data-connector/share-query.png" alt-text="Screenshot of Azure Data Explorer web UI, showing the open Share menu with the Query to Power BI option highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/query-to-power-bi.png" alt-text="Screenshot of Azure Data Explorer web UI, showing the open Share menu with the Query to Power BI option highlighted.":::
 
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Transform data**.

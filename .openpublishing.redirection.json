@@ -539,6 +539,41 @@
       "source_path": "data-explorer/query-sql-server-emulation.md",
       "redirect_url": "/azure/data-explorer/sql-kql-queries-and-stored-functions",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-show-commands.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/materialized-views/materialized-view-show-command",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/event-hub-wizard.md",
+      "redirect_url": "/azure/data-explorer/create-event-hubs-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/ingest-data-event-hub.md",
+      "redirect_url": "/azure/data-explorer/create-event-hubs-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/data-connection-event-hub-csharp.md",
+      "redirect_url": "/azure/data-explorer/create-event-hubs-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/data-connection-event-hub-python.md",
+      "redirect_url": "/azure/data-explorer/create-event-hubs-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/data-connection-event-hub-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/create-event-hubs-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/samples.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
+      "redirect_document_id": false
     }
   ]
 }

@@ -56,11 +56,12 @@ The free cluster is a subset of the full Azure Data Explorer cluster that provid
 | Enterprise readiness (Customer managed keys, VNet, disk encryption, managed identities) | &check; | |
 | Autoscale | &check; | |
 | Azure Monitor and Insights | &check; | |
-| Event Hub and Event Grid connectors | &check; | |
+| Event Hubs and Event Grid connectors | &check; | Event Hubs only |
 | Azure Resource Manager (ARM) templates | &check; | |
 
 ## Next steps
 
 * [Get started with your free cluster](start-for-free-web-ui.md)
+* [Manage Event Hubs data connections in your free cluster](start-for-free-event-hubs.md)
 * [Learn more about Azure Data Explorer](data-explorer-overview.md)
 * [Learn more about Kusto Query Language](kusto/query/index.md)
