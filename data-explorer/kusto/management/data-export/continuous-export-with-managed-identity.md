@@ -56,11 +56,13 @@ Select one of the following tabs to set up your preferred managed identity type.
     .add database <DatabaseName> users ('aadapp=<objectId>;<tenantId>')
     ```
 
-    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity object ID, and `<tenantId>` with the Azure Active Directory tenant ID.
+    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity principal ID from step 2, and `<tenantId>` with the Azure Active Directory tenant ID from step 2.
 
 ### [System-assigned](#tab/system-assigned)
 
 1. Follow the steps to [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity).
+
+1. Copy and save the **Object (principal) ID** for use in a later step.
 
 1. Run the following [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
@@ -79,10 +81,10 @@ Select one of the following tabs to set up your preferred managed identity type.
 1. Run the following command to grant the managed identity [Database User](../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
 
     ```kusto
-    .add database <DatabaseName> users ('aadapp=system;<tenantId>')
+    .add database <DatabaseName> users ('aadapp=<objectId>')
     ```
 
-    Replace `<DatabaseName>` with the relevant database and `<tenantId>` with the Azure Active Directory tenant ID.
+    Replace `<DatabaseName>` with the relevant database and `<objectId>` with the managed identity ID from step 2.
 
 ---
 
