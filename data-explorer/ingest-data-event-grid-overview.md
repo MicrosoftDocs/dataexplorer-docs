@@ -111,9 +111,6 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
 
 ## Next steps
 
-* [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md)
-* [Create an Event Grid data connection for Azure Data Explorer by using C#](data-connection-event-grid-csharp.md)
-* [Create an Event Grid data connection for Azure Data Explorer by using Python](data-connection-event-grid-python.md)
-* [Create an Event Grid data connection for Azure Data Explorer by using Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
+* [Create an Event Grid data connection](create-event-grid-connection.md.md)
 * [Ingest data from Azure Event Hubs into Azure Data Explorer using the ingestion wizard](./event-hub-wizard.md)
 * [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container)
