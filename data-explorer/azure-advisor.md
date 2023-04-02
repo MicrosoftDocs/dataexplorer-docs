@@ -62,10 +62,11 @@ Cost recommendations include:
 
 * [Unused running Azure Data Explorer cluster](#unused-running-azure-data-explorer-cluster)
 * [Unused stopped Azure Data Explorer cluster](#unused-stopped-azure-data-explorer-cluster)
-* [Correctly size Azure Data Explorer cluster to optimize cost](#correctly-size-azure-data-explorer-clusters-to-optimize-cost)
+* [Change Data Explorer clusters to a more cost effective and better performing SKU] (#change-data-explorer-clusters-to-a-more-cost-effective-and-better-performing-sku)
 * [Reduce cache for Azure Data Explorer tables](#reduce-cache-for-azure-data-explorer-tables)
 * [Run a cleanup command to delete unused storage artifacts](#delete-unused-storage-artifacts)
 * [Enable Optimized autoscale](#enable-optimized-autoscale)
+* Change Data Explorer clusters to a more cost effective and better performing SKU
 
 #### Unused running Azure Data Explorer cluster
 
@@ -88,17 +89,23 @@ The recommendation is to delete the cluster to reduce cost.
 > Stopped clusters may still contain data. Before deleting the cluster, verify that the data is no longer needed. Once the cluster is deleted, the data will no longer be accessible.
 
 
-#### Correctly size Azure Data Explorer clusters to optimize cost
+#### Change Data Explorer clusters to a more cost effective and better performing SKU   (IK SECTION)
 
-The recommendation **right-size Azure Data Explorer clusters for optimal cost** is given to a cluster whose size or VM SKU aren't cost-optimized. This recommendation is based on parameters such as its data capacity, CPU and ingestion utilization during the last week. You can reduce costs by resizing to the recommended cluster configuration using [scale-down](manage-cluster-vertical-scaling.md) and [scale-in](manage-cluster-horizontal-scaling.md).
+The recommendation **Change Data Explorer clusters to a more cost effective and better performing SKU** is given to a cluster whose cluster is operating under a non-optimal SKU. We recommend migrating to a more cost effective and better performing SKU. This SKU should reduce your costs and improve overall performance. We have calculated the required instance count that meets the cache requirements of your cluster, while ensuring that performance will not be negatively impacted. 
 
-It is recommended to use the [optimized autoscale configuration](manage-cluster-horizontal-scaling.md#optimized-autoscale). If you're using optimized autoscale and you see a size recommendation on your cluster, either your current VM SKU or the optimized autoscale minimum and maximum instance count boundaries aren't optimized. The recommended instance count should be included in your defined boundaries. For more information, see [VM SKUs](manage-cluster-choose-sku.md) and [pricing](https://azure.microsoft.com/pricing/details/data-explorer/).
+As part of the recommendation, we recommend enabling Optimized Autoscale (for those clusters that have not enabled it already). The Optimized Autoscale recommendations also include a Min and Max values recommendation. The Max value is set to the recommendation recommended SKU count. If the cluster has plans to organically grow, it is recommended to manually increase this number. In many cases, following SKU migrations, Optimized Autoscale will perform a more in-depth analysis of the cluster's performance, and will further scale in the cluster. This will result additional cost reductions. 
+
+The SKU recommendation takes into account the current zones definitions of a cluster, and all recommended target SKUs, will either match or improve the Compute zones support of the cluster. Adding more Compute zones does not impact the cost of the cluster. 
+
+The SKU recommendation is updated every few hours. The recommendation checks for capacity availability of the selected SKU in the region. However, it is important to note that capacity availability is dynamic and can change over time. A capacity check is performed prior to running the recommendation, to ensure that capacity is still available to perform the migration. 
 
 > [!TIP]
-> The optimized autoscale configuration doesn’t change the instance count immediately. For immediate changes, use [manual scale](manage-cluster-horizontal-scaling.md#manual-scale) to reset the recommended instance count, and then enable the optimized autoscale for future optimization.
+> The SKU recommendation does not make recommendations Max, Min instance count recommendations for a cluster that already has Optimized Autoscale configured. In case that your cluster has Optimzed Autoscale configured, it is advised to review the Max instance count and ensure that the max value is not lower than the instance count recommended by Advisor. 
 
-> [!IMPORTANT]
-> Due to new SKUs and logical improvements, it's possible that the recommendation won't be shown even if the current SKU is not optimized. 
+> [!Limitation]
+> The Advisor SKU recommendation does not currently support clusters with:
+> - VNET or Managed Private Enpoint configurations
+> - Clusters with deployed plugins (e.g Python)
 
 #### Reduce cache for Azure Data Explorer tables
 
@@ -124,17 +131,6 @@ Performance recommendations include the following:
 * [Correctly size the Azure Data Explorer cluster to optimize performance](#correctly-size-azure-data-explorer-clusters-to-optimize-performance)
 * [Update the cache policy for Azure Data Explorer tables](#update-cache-policy-for-azure-data-explorer-tables)
 
-#### Correctly size Azure Data Explorer clusters to optimize performance
-
-The recommendation **right-size Azure Data Explorer clusters for optimal performance** is given to a cluster whose size or VM SKU aren't performance-optimized. This recommendation is based on parameters such as its data capacity, and CPU and ingestion utilization during the last week. You can improve the performance by correctly sizing to the recommended cluster configuration using [scale-up](manage-cluster-vertical-scaling.md) and [scale-out](manage-cluster-horizontal-scaling.md).
-
-It's recommended to use the [optimized autoscale configuration](manage-cluster-horizontal-scaling.md#optimized-autoscale). If you use optimized autoscale and you see a size recommendation on your cluster, either your current VM SKU or the optimized autoscale minimum and maximum instance count boundaries aren't optimized. The recommended instance count should be included in your defined boundaries. For more information, see [VM SKUs](manage-cluster-choose-sku.md).
-
-> [!TIP]
-> The optimized autoscale configuration doesn’t change the instance count immediately. For instant changes, use [manual scale](manage-cluster-horizontal-scaling.md#manual-scale) to reset the recommended instance count, and then enable the optimized autoscale for future optimization.
-
-> [!IMPORTANT]
-> Due to new SKUs and logical improvements, it's possible that the recommendation won't be shown even if the current SKU is not optimized. 
 
 #### Update cache policy for Azure Data Explorer tables
 
