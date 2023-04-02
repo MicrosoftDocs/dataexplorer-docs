@@ -56,7 +56,7 @@ Select one of the following tabs to set up your preferred managed identity type.
     .add database <DatabaseName> users ('aadapp=<objectId>;<tenantId>')
     ```
 
-    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity principal ID from step 2, and `<tenantId>` with the Azure Active Directory tenant ID from step 2.
+    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Azure Active Directory **Tenant Id** from step 2.
 
 ### [System-assigned](#tab/system-assigned)
 
@@ -84,7 +84,7 @@ Select one of the following tabs to set up your preferred managed identity type.
     .add database <DatabaseName> users ('aadapp=<objectId>')
     ```
 
-    Replace `<DatabaseName>` with the relevant database and `<objectId>` with the managed identity ID from step 2.
+    Replace `<DatabaseName>` with the relevant database and `<objectId>` with the managed identity **Object (principal) ID** from step 2.
 
 ---
 
