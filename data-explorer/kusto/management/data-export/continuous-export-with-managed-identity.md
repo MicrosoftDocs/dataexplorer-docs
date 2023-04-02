@@ -147,7 +147,7 @@ Run the [.create-or-alter continuous-export](create-alter-continuous.md) command
 For example, the following command creates a continuous export job named `MyExport` to export the data in `MyTable` to `MyExternalTable` on behalf of a user-assigned managed identity. `<objectId>` should be a managed identity object ID.
 
 ```kusto
-.create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity=<objectId>) <| MyTable
+.create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity=<objectId>, intervalBetweenRuns=5m) <| MyTable
 ```
 
 ### [System-assigned](#tab/system-assigned)
@@ -157,7 +157,7 @@ Run the [.create-or-alter continuous-export](create-alter-continuous.md) command
 For example, the following command creates a continuous export job named `MyExport` to export the data in `MyTable` to `MyExternalTable` on behalf of your system-assigned managed identity.
 
 ```kusto
-.create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity="system") <| MyTable
+.create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity="system", intervalBetweenRuns=5m) <| MyTable
 ```
 
 ## Next steps
