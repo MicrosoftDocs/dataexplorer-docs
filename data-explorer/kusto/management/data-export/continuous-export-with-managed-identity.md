@@ -32,7 +32,9 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 1. Follow the steps to [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity).
 
-1. Copy and save the managed identity object ID for use in the following steps.
+1. In the Azure portal, in the left menu of your managed identity resource, select **Properties**. Copy and save the **Tenant Id** and **Principal Id** for use in the following steps.
+
+    :::image type="content" source="../../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity ids." lightbox="../../../media/continuous-export/managed-identity-ids.png":::
 
 1. Run the following [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
