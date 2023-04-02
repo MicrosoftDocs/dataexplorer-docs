@@ -404,6 +404,8 @@ The following example shows an Azure Resource Manager template for adding an Eve
 }
 ```
 
+---
+
 ## Remove an Event Grid connection
 
 ### [Portal](#tab/portal-2)
