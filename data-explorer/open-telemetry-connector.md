@@ -10,31 +10,60 @@ ms.reviewer: ramacg
 
 [OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) (OTel) is an open framework for application observability. The instrumentation is hosted by the Cloud Native Computing Foundation (CNCF), which provides standard interfaces for observability data, including [metrics](https://opentelemetry.io/docs/concepts/observability-primer/#reliability--metrics), [logs](https://opentelemetry.io/docs/concepts/observability-primer/#logs), and [traces](https://opentelemetry.io/docs/concepts/observability-primer/#distributed-traces).
 
-The [OpenTelemetry exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) supports ingestion of data from many receivers into Azure Data Explorer. In this article, you learn how to configure the OTel collector to ingest into Azure Data Explorer, you set up the collector to ingest sample data, and then you take a quick look at the data that has been ingested.
+The [OpenTelemetry exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) supports ingestion of data from many receivers into Azure Data Explorer. 
 
 > [!NOTE]
-> The configuration settings are summarized in the [readme documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/azuredataexplorerexporter/README.md).
+> * The configuration settings are summarized in the [readme documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/azuredataexplorerexporter/README.md).
+> * For the exporter source code, see [Azure Data Explorer exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter). 
+
+In this article, you learn how to:
+
+> [!div class="checklist"]
+> * 
+> * 
+> * 
+
+ Configure the OTel exporter to ingest into Azure Data Explorer, you set up the collector to ingest sample data, and then you take a quick look at the data that has been ingested.
 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/)
 * A cluster and a database: [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
 
-## Supported authentication methods
+## Set up your environment
 
-Azure Active Directory (Azure AD) applications with app keys are supported. To create and register an app in Azure AD, see [Register an application](/azure/active-directory/develop/quickstart-register-app#register-an-application). For information on service principals, see [Application and service principal objects in Azure AD](/azure/active-directory/develop/app-objects-and-service-principals).
+In this section, you'll prepare your environment to use the OTel exporter.
 
-> [!NOTE]
-> The designated principal must have an *ingestor* role. For more information, see [role-based access control](kusto/management/access-control/role-based-access-control.md).
+### Create an Azure AD app registration
 
-## Create tables
+Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the OTel exporter, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+
+1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create an Azure Active Directory application registration in Azure Data Explorer](provision-azure-ad-app.md).
+1. Save the following values to be used in later steps:
+    * Application (client) ID
+    * Directory (tenant) ID
+    * Client secret key value
+
+### Grant the Azure AD app permissions
+
+1. In the query tab of the [web UI](https://dataexplorer.azure.com/), connect to your cluster. For more information on how to connect, see [Add clusters](web-query-data.md#add-clusters).
+1. Browse to the database in which you want to ingest data.
+1. Run the following management command, replacing the placeholders. Replace *DatabaseName* with the name of the target database and *ApplicationID* with the previously saved value. This command grants the app the [database ingestor](kusto/management/access-control/role-based-access-control.md) role. For more information, see [Manage permissions with management commands](manage-database-permissions.md#manage-permissions-with-management-commands).
+
+    ```kusto
+    .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>') 'Azure Data Explorer App Registration'
+    ```
+
+    > [!NOTE]
+    > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](kusto/management/manage-database-security-roles.md#view-existing-security-roles).
+
+## Create target tables
 
 1. Browse to [Azure Data Explorer web UI](https://dataexplorer.azure.com/). 
 1. Select **Query** from the left menu. 
 1. Expand the target cluster in the left pane.
-1. Select the database to give your queries the correct context.
-
-1. Run the following commands are to create tables and schema mapping for the incoming data:
+1. Select the target database to give your queries the correct context.
+1. Run the following commands to create tables and schema mapping for the incoming data:
 
     ```kusto
     .create-merge table <Logs-Table-Name> (Timestamp:datetime, ObservedTimestamp:datetime, TraceId:string, SpanId:string, SeverityText:string, SeverityNumber:int, Body:string, ResourceAttributes:dynamic, LogsAttributes:dynamic) 
@@ -46,7 +75,7 @@ Azure Active Directory (Azure AD) applications with app keys are supported. To c
 
 ## Set up streaming or batching ingestion
 
-Azure Data Explorer has two main types of ingestion: batching and streaming. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion). The *streaming* method is called *managed* in the OTel collector. Streaming ingestion may be a good choice for you if you need the logs and traces are to be available in near real time. However, streaming ingestion uses more resources than batched ingestion. The OTeL framework itself batches data, which should be considered when choosing which method to use for ingestion.
+Azure Data Explorer has two main types of ingestion: batching and streaming. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion). The *streaming* method is called *managed* in the OTel collector. Streaming ingestion may be a good choice for you if you need the logs and traces are to be available in near real time. However, streaming ingestion uses more resources than batched ingestion. The OTel framework itself batches data, which should be considered when choosing which method to use for ingestion.
 
 > [!NOTE]
 > [Streaming ingestion](ingest-data-streaming.md) must be enabled on Azure Data Explorer cluster to enable the `managed` option.
@@ -67,7 +96,7 @@ In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [d
     |Field | Description | Suggested setting|
     |---|---|---|
     | Exporters| Type of exporter | Azure Data Explorer | 
-    |  cluster_uri |   Kusto cluster URI where the database and tables will be created |  https:// &lt;cluster>.kusto.windows.net |
+    |  cluster_uri |   URI of the Azure Data Explorer cluster that holds the database and tables |  https:// &lt;cluster>.kusto.windows.net |
     | application_id |  Client ID|  &lt;application id> |
     | application_key| Client secret |  &lt;application key> |
     | tenant_id | Tenant |  &lt;application tenant>|
@@ -76,9 +105,9 @@ In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [d
     | logs_table_name | The target table in the database db_name that stores exported logs data. | OTELLogs
     | traces_table_name | The target table in the database db_name that stores exported traces data. | OTELTraces
     | ingestion_type | Type of ingestion: managed (streaming) or batched | managed
-    | otelmetrics_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [metrics attributes] (https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#metrics). The default mapping can be changed using this parameter. | &lt;json metrics_table_name mapping>
-    | otellogs_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [logs attributes] (https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#logs). The default mapping can be changed using this parameter. | &lt;json logs_table_name mapping>
-    | oteltraces_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [trace attributes] (https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#traces). The default mapping can be changed using this parameter. |&lt;json traces_table_name mapping>
+    | otelmetrics_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [metrics attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#metrics). The default mapping can be changed using this parameter. | &lt;json metrics_table_name mapping>
+    | otellogs_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [logs attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#logs). The default mapping can be changed using this parameter. | &lt;json logs_table_name mapping>
+    | oteltraces_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [trace attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#traces). The default mapping can be changed using this parameter. |&lt;json traces_table_name mapping>
     | logLevel |  | info
     | extensions | Services: extension components to enable | [pprof, zpages, health_check]
     | traces | Services: traces components to enable   |  receivers: [otlp] <br> processors: [batch] <br> exporters: [azuredataexplorer]
@@ -120,7 +149,7 @@ service:
     logs:
       receivers: [otlp]
       processors: [batch]
-      exporters: [ azuredataexplorer]
+      exporters: [azuredataexplorer]
 ```
 
 ## Collect data with a sample application
@@ -150,7 +179,7 @@ Now that the collector is configured, you need to send data to be ingested. In t
     The open-telemetry-collector-host references the host where ADX OTEL exporter is configured and running.
 
 1. Run the sample spring-boot application with the following command line arguments:
-    
+
     ```
     java -javaagent:./opentelemetry-javaagent.jar -jar spring-petclinic-<version>-SNAPSHOT.jar    
     ```
@@ -173,8 +202,8 @@ Once the sample app has run, your data has been ingested into the defined tables
     
         You should get results that are similar, but not exactly the same, as the following table:
     
-        |Timestamp           |MetricName                 |MetricType|MetricUnit|MetricDescription                                                  |MetricValue|Host           |MetricAttributes                                                                                                                                                                                                                   |ResourceAttributes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-        |--------------------|---------------------------|----------|----------|-------------------------------------------------------------------|-----------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+        |Timestamp           |MetricName                 |MetricType|MetricUnit|MetricDescription                                                  |MetricValue|Host           |MetricAttributes                      |ResourceAttributes                            |
+        |--------------------|-------------|----------|----------|-----------|-----------|---------------|---------------|--------|
         |2022-07-01T12:55:33Z|http.server.active_requests|Sum       |requests  |The number of concurrent HTTP requests that are currently in-flight|0          |DESKTOP-SFS7RUQ|{"http.flavor":"1.1", "http.host":"localhost:8080", "scope.name":"io.opentelemetry.tomcat-7.0", "scope.version":"1.14.0-alpha", "http.method":"GET", "http.scheme":"http"}                                                              |{"host.name":"DESKTOP-SFS7RUQ", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "process.runtime.version":"18.0.1.1+2-6", "telemetry.sdk.language":"java", "host.arch":"amd64", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.auto.version":"1.14.0", "telemetry.sdk.name":"opentelemetry", "os.type":"windows", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.pid":5980, "service.name":"my-service", "telemetry.sdk.version":"1.14.0"}|
         |2022-07-01T12:55:33Z|http.server.duration_sum   |Histogram |ms        |The duration of the inbound HTTP request(Sum total of samples)     |114.9881   |DESKTOP-SFS7RUQ|{"http.flavor":"1.1", "http.host":"localhost:8080", "scope.name":"io.opentelemetry.tomcat-7.0", "scope.version":"1.14.0-alpha", "http.method":"GET", "http.scheme":"http", "http.route":"/owners/find", "http.status_code":200}           |{"host.name":"DESKTOP-SFS7RUQ", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "process.runtime.version":"18.0.1.1+2-6", "telemetry.sdk.language":"java", "host.arch":"amd64", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.auto.version":"1.14.0", "telemetry.sdk.name":"opentelemetry", "os.type":"windows", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.pid":5980, "service.name":"my-service", "telemetry.sdk.version":"1.14.0"}|
 
@@ -203,10 +232,10 @@ Once the sample app has run, your data has been ingested into the defined tables
         You should get results that are similar, but not exactly the same, as the following table:
 
 
-       |TraceId             |SpanId          |ParentId|SpanName|SpanStatus|SpanKind                                                                                                                                                                                                                                                                  |StartTime                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |EndTime                                                                    |ResourceAttributes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |TraceAttributes                                                                                                                                                                                                                                                                 |Events|Links|
-      |--------------------|----------------|--------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------|-----|
-      |573c0e4e002a9f7281f6d63eafe4ef87|dab70d0ba8902c5e|        |87d003d6-02c1-4f3d-8972-683243c35642|STATUS_CODE_UNSET|SPAN_KIND_CLIENT                                                                                                                                                                                                                                                          |2022-07-01T13:17:59Z                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |2022-07-01T13:17:59Z                                                       |{"telemetry.auto.version":"1.14.0", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "service.name":"my-service", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.language":"java", "telemetry.sdk.name":"opentelemetry", "host.arch":"amd64", "host.name":"DESKTOP-SFS7RUQ", "process.pid":34316, "process.runtime.version":"18.0.1.1+2-6", "os.type":"windows", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "telemetry.sdk.version":"1.14.0"}|{"db.user":"sa", "thread.id":1, "db.name":"87d003d6-02c1-4f3d-8972-683243c35642", "thread.name":"main", "db.system":"h2", "scope.name":"io.opentelemetry.jdbc", "scope.version":"1.14.0-alpha", "db.connection_string":"h2:mem:", "db.statement":"DROP TABLE vet_specialties IF EXISTS"}|[]    |[]   |
-      |84a9a8c4009d91476da02dfa40746c13|3cd4c0e91717969a|        |87d003d6-02c1-4f3d-8972-683243c35642|STATUS_CODE_UNSET|SPAN_KIND_CLIENT                                                                                                                                                                                                                                                          |2022-07-01T13:17:59Z                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |2022-07-01T13:17:59Z                                                       |{"telemetry.auto.version":"1.14.0", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "service.name":"my-service", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.language":"java", "telemetry.sdk.name":"opentelemetry", "host.arch":"amd64", "host.name":"DESKTOP-SFS7RUQ", "process.pid":34316, "process.runtime.version":"18.0.1.1+2-6", "os.type":"windows", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "telemetry.sdk.version":"1.14.0"}|{"db.user":"sa", "thread.id":1, "db.name":"87d003d6-02c1-4f3d-8972-683243c35642", "thread.name":"main", "db.system":"h2", "scope.name":"io.opentelemetry.jdbc", "scope.version":"1.14.0-alpha", "db.connection_string":"h2:mem:", "db.statement":"DROP TABLE vets IF EXISTS"}           |[]    |[]   |
+       |TraceId             |SpanId          |ParentId|SpanName|SpanStatus|SpanKind                              |StartTime          |EndTime                                                                    |ResourceAttributes                        |TraceAttributes                      |Events|Links|
+      |--------------------|----------------|--------|--------|----------|-----------------|----------------------|-------------|-----------|-----------------|------|-----|
+      |573c0e4e002a9f7281f6d63eafe4ef87|dab70d0ba8902c5e|        |87d003d6-02c1-4f3d-8972-683243c35642|STATUS_CODE_UNSET|SPAN_KIND_CLIENT         |2022-07-01T13:17:59Z       |2022-07-01T13:17:59Z                                                       |{"telemetry.auto.version":"1.14.0", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "service.name":"my-service", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.language":"java", "telemetry.sdk.name":"opentelemetry", "host.arch":"amd64", "host.name":"DESKTOP-SFS7RUQ", "process.pid":34316, "process.runtime.version":"18.0.1.1+2-6", "os.type":"windows", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "telemetry.sdk.version":"1.14.0"}|{"db.user":"sa", "thread.id":1, "db.name":"87d003d6-02c1-4f3d-8972-683243c35642", "thread.name":"main", "db.system":"h2", "scope.name":"io.opentelemetry.jdbc", "scope.version":"1.14.0-alpha", "db.connection_string":"h2:mem:", "db.statement":"DROP TABLE vet_specialties IF EXISTS"}|[]    |[]   |
+      |84a9a8c4009d91476da02dfa40746c13|3cd4c0e91717969a|        |87d003d6-02c1-4f3d-8972-683243c35642|STATUS_CODE_UNSET|SPAN_KIND_CLIENT        |2022-07-01T13:17:59Z       |2022-07-01T13:17:59Z    |{"telemetry.auto.version":"1.14.0", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "service.name":"my-service", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.language":"java", "telemetry.sdk.name":"opentelemetry", "host.arch":"amd64", "host.name":"DESKTOP-SFS7RUQ", "process.pid":34316, "process.runtime.version":"18.0.1.1+2-6", "os.type":"windows", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "telemetry.sdk.version":"1.14.0"}|{"db.user":"sa", "thread.id":1, "db.name":"87d003d6-02c1-4f3d-8972-683243c35642", "thread.name":"main", "db.system":"h2", "scope.name":"io.opentelemetry.jdbc", "scope.version":"1.14.0-alpha", "db.connection_string":"h2:mem:", "db.statement":"DROP TABLE vets IF EXISTS"}           |[]    |[]   |
 
 
 ## Further data processing
@@ -256,7 +285,6 @@ Using update policies, the collected data can further be processed as per applic
     .alter table HistoData policy update 
     @'[{ "IsEnabled": true, "Source": "RawMetricsData","Query": "ExtractHistoCountColumns()", "IsTransactional": false, "PropagateInge
     ```
-
 
 ## Next steps
 
