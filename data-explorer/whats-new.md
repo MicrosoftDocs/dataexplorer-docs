@@ -3,11 +3,37 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/02/2023
+ms.date: 04/02/2023
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## March 2023
+
+**General**
+
+| Article title | Description |
+|--|--|
+|[Python plugin packages for Azure Data Explorer](python-package-reference.md)| New article. Lists the available Python packages in the Azure Data Explorer Python plugin.|
+|- [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink.md) </br> - [Ingest data with the Apache log4J 2 connector](apache-log4j2-connector.md)| New articles. Describe how ingest data into Azure Data Explorer using the Serilog sink, and the Apache Log4j 2 connectors. |
+|[Manage Event Hubs data connections in your free Azure Data Explorer cluster](start-for-free-event-hubs.md)| New article. Describes how to manage Azure Event Hubs data connections in a free Azure Data Explorer cluster. |
+| [Manage language extensions in your Azure Data Explorer cluster](language-extensions.md) | Updated article. Steps added for changing the Python language extensions image in an Azure Data Explorer cluster. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| [Manage view access to tables in Azure Data Explorer](/azure/data-explorer/kusto/management/manage-table-view-access.md) | New article. Describes how to grant access to tables in Azure Data Explorer. |
+|- [.show materialized-view(s)](/azure/data-explorer/kusto/management/materialized-views/materialized-view-show-command.md) </br> - [.show materialized-view extents](/azure/data-explorer/kusto/management/materialized-views/materialized-view-show-extents-command.md) </br> - [.show materialized-view failures](/azure/data-explorer/kusto/management/materialized-views/materialized-view-show-failures-command.md) </br> - [.show materialized-view schema](/azure/data-explorer/kusto/management/materialized-views/materialized-view-show-schema-command.md) | New articles. Describe materialized-view commands. |
+| - [.alter materialized-view autoUpdateSchema](/azure/data-explorer/kusto/management/materialized-views/materialized-view-alter-autoupdateschema.md) </br> - [.alter materialized-view docstring](/azure/data-explorer/kusto/management/materialized-views/materialized-view-alter-docstring.md) </br> - [.alter materialized-view folder](/azure/data-explorer/kusto/management/materialized-views/materialized-view-alter-folder.md) </br> - [.alter materialized-view lookback](/azure/data-explorer/kusto/management/materialized-views/materialized-view-alter-lookback.md) </br> - [.alter materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-alter.md) </br> - [.clear materialized-view data](/azure/data-explorer/kusto/management/materialized-views/materialized-view-clear-data.md) </br> - [.create-or-alter materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-create-or-alter.md) </br> - [.create materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-create.md) </br> - [.drop materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-drop.md) </br> - [.disable .enable materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-enable-disable.md) </br> - [Materialized views](/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview.md) </br> - [.rename materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-rename.md) </br> - [.show materialized view details](/azure/data-explorer/kusto/management/materialized-views/materialized-view-show-details-command.md) </br> | Updated articles. Parameters and examples added.|
+|- [.alter extent tags](/azure/data-explorer/kusto/management/alter-extent.md) </br> - [.drop extent tags](/azure/data-explorer/kusto/management/drop-extent-tags.md) </br> - [.move extents](/azure/data-explorer/kusto/management/move-extents.md) </br> - [.replace extents](/azure/data-explorer/kusto/management/replace-extents.md) </br> | Updated articles. Command syntax updated.|
+
+**Query**
+
+| Article title | Description |
+|--|--|
+|- [Kusto.Explorer code features](/azure/data-explorer/kusto/tools/kusto-explorer-code-features.md) </br> - [Kusto Explorer options](/azure/data-explorer/kusto/tools/kusto-explorer-options.md) </br> - [Kusto.Explorer keyboard shortcuts (hot-keys)](/azure/data-explorer/kusto/tools/kusto-explorer-shortcuts.md) </br> - [Using Kusto.Explorer](/azure/data-explorer/kusto/tools/kusto-explorer-using.md) </br> - [Kusto.Explorer installation and user interface](/azure/data-explorer/kusto/tools/kusto-explorer.md) | Updated articles. Refreshed content.|
 
 ## February 2023
 
@@ -195,35 +221,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 | [Streaming ingestion failures](kusto/management/streamingingestionfailures.md) | New article. Describes the command to show streaming ingestion failures. |
 | [Streaming ingestion statistics](kusto/management/streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |
-
-## March 2022
-
-| Article title | Description |
-|--|--|
-| [Create a free cluster](start-for-free-web-ui.md) | New article. Describes how to create a free cluster, ingest data, and run queries. |
-| - [Create an Event Grid data connection using C\#](data-connection-event-grid-csharp.md)<br />- [Create an Event Grid data connection using Python](data-connection-event-grid-python.md)<br />- [Create an Event Grid data connection using Azure Resource Manager template](data-connection-event-grid-resource-manager.md)<br />- [Create an Event Hubs data connection using C\#](data-connection-event-hub-csharp.md)<br />- [Create an Event Hubs data connection using Python](data-connection-event-hub-python.md)<br />- [Create an Event Hubs data connection using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)<br />- [Create an IoT Hub data connection using C\# (Preview)](data-connection-iot-hub-csharp.md)<br />- [Create an IoT Hub data connection using Python (Preview)](data-connection-iot-hub-python.md)<br />- [Create an IoT Hub data connection using Azure Resource Manager template](data-connection-iot-hub-resource-manager.md) | Updated articles. Added `databaseRouting` parameter and setting. |
-| - [Event Grid data connection](ingest-data-event-grid-overview.md)<br />- [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated articles. Added events routing setting. |
-| - [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)<br />- [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated articles. Added new Events Routing features including alternative databases and tables. |
-| - [IoT Hub data connection](ingest-data-iot-hub-overview.md)<br />- [Ingest data from IoT Hub into Azure Data Explorer](ingest-data-iot-hub.md) | Updated articles. Added new sections on target databases (multi-database data connection). |
-
-**Functions library**
-
-| Article title | Description |
-|--|--|
-| [pairwise_dist_fl()](kusto/functions-library/pairwise-dist-fl.md) | New article. Describes the `pairwise_dist_fl()` user-defined function. |
-| [series_uv_anomalies_fl()](kusto/functions-library/series-uv-anomalies-fl.md) | New article. Describes the `series_uv_anomalies_fl()` user-defined function. |
-| [series_uv_change_points_fl()](kusto/functions-library/series-uv-change-points-fl.md) | New article. Describes the `series_uv_change_points_fl()` user-defined function. |
-
-**Management**
-
-| Article title | Description |
-|--|--|
-| [Clear schema cache for cross-cluster queries](kusto/management/clear-cross-cluster-schema-cache.md) | New article. Describes how to manually clear the cross-cluster query cache. |
-
-**Query**
-
-| Article title | Description |
-|--|--|
-| [http_request plugin / http_request_post plugin](kusto/query/http-request-plugin.md) | New article. Describes the http_request plugin. |
-| [Cross-database and cross-cluster queries](kusto/query/cross-cluster-or-database-queries.md) | Updated article. Updated links to cross-cluster queries and schema changes page. |
-| [Cross-cluster queries and schema changes](kusto/concepts/cross-cluster-and-schema-changes.md) | New article. Describes cross-cluster queries and schema changes. |
