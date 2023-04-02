@@ -128,7 +128,7 @@ Select one of the following tabs to create and connect to the external table for
     )
     ```
 
-1. Grant the managed identity [CREATE, UPDATE, and INSERT permissions](/sql/relational-databases/security/permissions-database-engine) over the SQL Server database. The managed identity needs write permissions because the continuous export job exports data to the database on behalf of the managed identity.
+1. Grant the managed identity CREATE, UPDATE, and INSERT permissions over the SQL Server database. The managed identity needs write permissions because the continuous export job exports data to the database on behalf of the managed identity. To learn more, see [Permissions](/sql/relational-databases/security/permissions-database-engine).
 
 ---
 
