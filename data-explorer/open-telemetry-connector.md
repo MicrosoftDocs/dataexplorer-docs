@@ -8,9 +8,9 @@ ms.reviewer: ramacg
 
 # Ingest data from OpenTelemetry to Azure Data Explorer
 
-[OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) (OTel) is an open framework for application observability. The instrumentation is hosted by the Cloud Native Computing Foundation (CNCF), which provides standard interfaces for observability data, including [metrics](https://opentelemetry.io/docs/concepts/observability-primer/#reliability--metrics), [logs](https://opentelemetry.io/docs/concepts/observability-primer/#logs), and [traces](https://opentelemetry.io/docs/concepts/observability-primer/#distributed-traces).
+[OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) (OTel) is an open framework for application observability. The instrumentation is hosted by the Cloud Native Computing Foundation (CNCF), which provides standard interfaces for observability data, including [metrics](https://opentelemetry.io/docs/concepts/observability-primer/#reliability--metrics), [logs](https://opentelemetry.io/docs/concepts/observability-primer/#logs), and [traces](https://opentelemetry.io/docs/concepts/observability-primer/#distributed-traces). The Collector is made up of the following three components: **receivers** deal with how to get data into the Collector, **processors** determine what to do with received data, and **exporters** are responsible for where to send the received data.
 
-The [OpenTelemetry exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) supports ingestion of data from many receivers into Azure Data Explorer. 
+The [Azure Data Explorer exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) supports ingestion of data from many receivers into Azure Data Explorer. 
 
 > [!NOTE]
 > * The configuration settings are summarized in the [readme documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/azuredataexplorerexporter/README.md).
@@ -22,8 +22,6 @@ In this article, you learn how to:
 > * 
 > * 
 > * 
-
- Configure the OTel exporter to ingest into Azure Data Explorer, you set up the collector to ingest sample data, and then you take a quick look at the data that has been ingested.
 
 ## Prerequisites
 
@@ -87,11 +85,11 @@ Run the following command for each of the three tables to enable streaming inges
 .alter table <Table-Name> policy streamingingestion enable
 ```
 
-## Configure the Azure Data Explorer collector
+## Configure the Azure Data Explorer exporter
 
 In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [deploy and run](https://opentelemetry.io/docs/collector/deployment/) the OpenTelemetry distribution with the following Azure Data Explorer exporter configuration.
 
-1. Configure the OTel collector using the following fields:
+1. Configure the exporter using the following fields:
 
     |Field | Description | Suggested setting|
     |---|---|---|
@@ -114,7 +112,7 @@ In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [d
     | metrics | Services: metrics components to enable | receivers: [otlp] <br> processors: [batch] <br> exporters: [logging, azuredataexplorer]
     | logs | Services: logs components to enable | receivers: [otlp] <br> processors: [batch] <br> exporters: [ azuredataexplorer]
 
-1. Use the "--config" flag to run the OpenTelemetry collector.
+1. Use the "--config" flag to run the Azure Data Explorer exporter.
 
 The following is an example configuration for the OTel collector:
 
