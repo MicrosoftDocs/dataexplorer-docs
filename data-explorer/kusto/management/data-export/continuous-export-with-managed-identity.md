@@ -90,23 +90,28 @@ In the following steps, you'll assign a managed identity to your cluster, set a 
 
 ## 2 - Connect to the external resource
 
-An external table references data stored outside Azure Data Explorer. Azure Storage external tables can reference data stored in Azure Blob Storage, Azure Data Lake Gen1, and Azure Data Lake Gen2. SQL Server external tables reference data stored in SQL Server tables.
+When you create an external table in Azure Data Explorer, it can refer to data located in Azure Storage, such as Azure Blob Storage, Azure Data Lake Gen1, and Azure Data Lake Gen2, or SQL Server.
 
-Select one of the following tabs to create an external table for your use case.
+Select one of the following tabs to create and connect to the external table for your use case.
 
 ### [Azure Storage](#tab/azure-storage)
 
-1. Use the [Storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) to create a connection string that specifies the resource to access and its authentication information. For continuous export flows, we recommend using [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation).
+In the following steps, you'll create an external table and authorize the managed identity to access the external data store.
 
-    In the following example, `;impersonate` indicates to use impersonation authentication and `h@` is used to [obfuscate the string](../../query/scalar-data-types/string.md#obfuscated-string-literals).
-
-    ```kusto
-    h@'https://mystorageaccount.blob.core.windows.net/mycontainer;impersonate'
-    ```
+1. Create a connection string based on the [storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates). This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation).
 
 1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
 
-1. When the external table uses impersonation authentication, the managed identity must have write permissions over the external data store. Write permissions are required because the continuous export job attempts to export data to the data store on behalf of the managed identity. Grant the managed identity the required write permissions:
+    For example, the following command creates `MyExternalTable` that refers to CSV-formatted data in `mycontainer` of `mystorageaccount` in Azure Blob Storage. The table has two columns, one for an integer `x` and one for a string `s`. The connection string ends with `;impersonate`, which indicates to use impersonation authentication to access the data store.
+
+    ```kusto
+    .create external table MyExternalTable (x:int, s:string) kind=storage dataformat=csv 
+    ( 
+        h@'https://mystorageaccount.blob.core.windows.net/mycontainer;impersonate' 
+    )
+    ```
+
+1. Grant the managed identity write permissions over the relevant external data store. The managed identity needs write permissions because the continuous export job exports data to the data store on behalf of the managed identity.
 
     | External data store | Required permissions | Grant the permissions|
     |--|--|--|
@@ -116,17 +121,22 @@ Select one of the following tabs to create an external table for your use case.
 
 ### [SQL Server](#tab/sql-server)
 
-1. Create a SQL Server connection string that specifies the resource to access and its authentication information. For continuous export flows, we recommend using [Active Directory Integrated authentication](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication), which is impersonation authentication.
+In the following steps, you'll create an external table and authorize the managed identity to access the external data store.
 
-    In the following example, `;Authentication=Active Directory Integrated` indicates to use impersonation authentication.
-
-    ```kusto
-    h@'Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=MyDatabase;
-    ```
+1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [Active Directory Integrated authentication](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication), which is impersonation authentication.
 
 1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
 
-1. When the external table uses impersonation authentication, the managed identity must have write permissions over the external data store. Write permissions are required because the continuous export job attempts to export data to the data store on behalf of the managed identity. Grant the managed identity CREATE, UPDATE, and INSERT permissions. To learn more, see [Permissions](/sql/relational-databases/security/permissions-database-engine).
+    For example, the following command creates `MySqlExternalTable` that refers to `MySqlTable` table in `MyDatabase` of SQL Server. The table has two columns, one for an integer `x` and one for a string `s`. The connection string contains `;Authentication=Active Directory Integrated`, which indicates to use impersonation authentication to access the table.
+
+    ```kusto
+    .create external table MySqlExternalTable (x:int, s:string) kind=sql table=MySqlTable
+    ( 
+       h@'Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=MyDatabase;'
+    )
+    ```
+
+1. Grant the managed identity [CREATE, UPDATE, and INSERT permissions](/sql/relational-databases/security/permissions-database-engine) over the SQL Server database. The managed identity needs write permissions because the continuous export job exports data to the database on behalf of the managed identity.
 
 ---
 
