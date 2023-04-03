@@ -38,10 +38,10 @@ The following example shows the syntax and an example usage for the [hash functi
 print hash("World")
 ```
 
-1. Enter the name of the function, `hash`, and the opening parenthesis exactly as shown in the syntax.
-1. Pass "World" as an argument for the required *source* parameter.
-1. Don't pass an argument for the optional *mod* parameter.
-1. Enter the closing parenthesis exactly as shown in the syntax.
+* The name of the function, `hash`, and the opening parenthesis are entered exactly as shown in the syntax.
+* "World" is passed as an argument for the required *source* parameter.
+* No argument is passed for the *mod* parameter, which is indicated to be optional by the square brackets in the syntax.
+* The closing parenthesis is entered exactly as shown.
 
 ### Tabular operator
 
@@ -58,10 +58,10 @@ StormEvents
 | sort by State asc, StartTime desc
 ```
 
-1. Pass the StormEvents table as an argument for the required *T* parameter.
-1. Enter `| sort by` exactly as shown in the syntax. In this case, the pipe character is part of the query statement syntax as represented by the block text. To learn more, see [What is a query statement](index.md#what-is-a-query-statement).
-1. Pass the State column as an argument for the required *column* parameter with the optional `asc` flag.
-1. Enter a comma, followed by another set of arguments: the StartTime column with the optional `desc` flag. This extra argument set is optional, as indicated by the [`,` ...] syntax.
+* The StormEvents table is passed as the argument for the required *T* parameter.
+* `| sort by` is entered exactly as shown in the syntax. In this case, the pipe character is part of the [tabular expression statement](tabularexpressionstatements.md) syntax as represented by the block text.
+* The State column is passed as an argument for the required *column* parameter with the optional `asc` flag.
+* After a comma, another set of arguments is passed: the StartTime column with the optional `desc` flag. The [`,` ...] syntax indicates that more argument sets may be passed for the previously specified parameters but aren't required.
 
 ## Working with optional parameters
 
