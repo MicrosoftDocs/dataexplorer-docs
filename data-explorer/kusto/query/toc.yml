@@ -1,6 +1,8 @@
 items:
 - name: Kusto query overview
   href: index.md
+- name: Syntax conventions
+  href: syntax-conventions.md
 - name: Quick reference guide
   href: ../../kql-quick-reference.md
 - name: Query best practices
@@ -1266,7 +1268,7 @@ items:
     - name: http_request plugin
       href: http-request-plugin.md
     - name: http_request_post plugin
-      href: http-request-plugin.md
+      href: http-request-post-plugin.md
     - name: mysql_request plugin
       href: mysqlrequest-plugin.md
     - name: sql_request plugin
