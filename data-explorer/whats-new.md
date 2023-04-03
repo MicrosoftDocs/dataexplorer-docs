@@ -16,7 +16,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 |[Python plugin packages for Azure Data Explorer](python-package-reference.md)| New article. Lists the available Python packages in the Azure Data Explorer Python plugin.|
-|- [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink.md) </br> - [Ingest data with the Apache log4J 2 connector](apache-log4j2-connector.md)| New articles. Describe how ingest data into Azure Data Explorer using the Serilog sink, and the Apache Log4j 2 connectors. |
+|- [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink.md) </br> - [Ingest data with the Apache log4J 2 connector](apache-log4j2-connector.md)| New articles. Describe how to ingest data into Azure Data Explorer using the Serilog sink, and the Apache Log4j 2 connectors. |
 |[Manage Event Hubs data connections in your free Azure Data Explorer cluster](start-for-free-event-hubs.md)| New article. Describes how to manage Azure Event Hubs data connections in a free Azure Data Explorer cluster. |
 | [Manage language extensions in your Azure Data Explorer cluster](language-extensions.md) | Updated article. Steps added for changing the Python language extensions image in an Azure Data Explorer cluster. |
 
