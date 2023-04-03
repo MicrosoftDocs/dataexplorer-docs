@@ -38,8 +38,6 @@ This example shows how to understand the syntax of the [hash function](hashfunct
 print hash("World")
 ```
 
-The following list explains how each part of the syntax is used in the example usage:
-
 * The name of the function, `hash`, and the opening parenthesis are entered exactly as shown.
 * "World" is passed as an argument for the required *source* parameter.
 * No argument is passed for the *mod* parameter, which is optional as indicated by the square brackets.
@@ -59,8 +57,6 @@ This example shows how to understand the syntax of the [sort operator](sort-oper
 StormEvents
 | sort by State asc, StartTime desc
 ```
-
-The following list explains how each part of the syntax is used in the example usage:
 
 * The StormEvents table is passed as an argument for the required *T* parameter.
 * `| sort by` is entered exactly as shown in the syntax. In this case, the pipe character is part of the [tabular expression statement](tabularexpressionstatements.md) syntax, as represented by the block text.
