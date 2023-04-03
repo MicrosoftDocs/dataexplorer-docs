@@ -12,7 +12,7 @@ In this article, you learn how to ingest blobs from your storage account into Az
 For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md).
 
 > [!NOTE]
-> You can set [ingestion properties](ingest-data-event-grid-overview.md#ingestion-properties) via the blob metadata. To achieve the best performance with the Event Grid connection, set the `rawSizeBytes` property.
+> To achieve the best performance with the Event Grid connection, set the `rawSizeBytes` ingestion property via the blob metadata. For more information, see [ingestion properties](ingest-data-event-grid-overview.md#ingestion-properties).
 
 ## Prerequisites
 
