@@ -38,7 +38,7 @@ The following example shows the syntax and an example usage for the [hash functi
 print hash("World")
 ```
 
-Let's break down the example usage step-by-step:
+The following steps explain the usage:
 
 1. Enter the name of the function, `hash`, and the opening parenthesis exactly as shown in the syntax.
 1. Pass "World" as an argument for the required *source* parameter.
@@ -63,7 +63,7 @@ StormEvents
 | sort by State asc, StartTime desc
 ```
 
-Let's break down the example usage step-by-step:
+The following steps explain the usage:
 
 1. Pass the StormEvents table as an argument for the required *T* parameter.
 1. Enter `| sort by` exactly as shown in the syntax. In this case, the pipe character is part of the query statement syntax as represented by the block text. To learn more, see [What is a query statement](index.md#what-is-a-query-statement).
