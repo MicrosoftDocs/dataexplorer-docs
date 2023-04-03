@@ -32,7 +32,7 @@ This example shows the syntax and an example usage of the [hash function](hashfu
 #### Example usage
 
 ```kusto
-print hash("World")
+hash("World")
 ```
 
 * The name of the function, `hash`, and the opening parenthesis are entered exactly as shown.
