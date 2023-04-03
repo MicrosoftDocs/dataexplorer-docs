@@ -26,7 +26,7 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 ### Scalar function
 
-This example shows how to understand the syntax of the [hash function](hashfunction.md).
+This example shows the syntax and an example usage of the [hash function](hashfunction.md), followed by an explanation of how each syntax component translates into the example usage.
 
 #### Syntax
 
@@ -45,7 +45,7 @@ print hash("World")
 
 ### Tabular operator
 
-This example shows how to understand the syntax of the [sort operator](sort-operator.md).
+This example shows the syntax and an example usage of the [sort operator](sort-operator.md), followed by an explanation of how each syntax component translates into the example usage.
 
 #### Syntax
 
