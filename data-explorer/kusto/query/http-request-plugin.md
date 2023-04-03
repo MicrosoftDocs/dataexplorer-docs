@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The `http_request` plugin sends an HTTP GET request and convert the response into a table.
+The `http_request` plugin sends an HTTP GET request and converts the response into a table.
 
 ## Prerequisites
 
