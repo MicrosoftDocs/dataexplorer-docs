@@ -23,7 +23,7 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 The following examples show the syntax and an example usage for a KQL scalar function and tabular operator.
 
-#### Scalar function
+### Scalar function
 
 The [hash function](hashfunction.md) syntax is as follows:
 
@@ -45,7 +45,7 @@ Let's break down the example usage step-by-step:
 1. Don't pass an argument for the optional *mod* parameter.
 1. Enter the closing parenthesis exactly as shown in the syntax.
 
-#### Tabular operator
+### Tabular operator
 
 The [sort operator](sort-operator.md) syntax is as follows:
 
