@@ -3,7 +3,7 @@ title: The case-sensitive == (equals) string operator - Azure Data Explorer
 description: Learn how to use the == (equals) operator to filter a record set for data matching a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/11/2022
+ms.date: 03/29/2023
 ---
 # == (equals) operator
 
@@ -26,7 +26,7 @@ For more information about other operators and to determine which operator is mo
 
 ## Syntax
 
-*T* `|` `where` *col* `==` `(`*expressions*`)`
+*T* `|` `where` *col* `==` `(`*expression*`,` ... `)`
 
 ## Parameters
 

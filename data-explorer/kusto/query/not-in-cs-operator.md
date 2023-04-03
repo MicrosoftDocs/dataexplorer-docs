@@ -3,7 +3,7 @@ title: The case-sensitive !in string operator - Azure Data Explorer
 description: Learn how to use the !in string operator to filter records for data without a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/02/2023
+ms.date: 03/29/2023
 ---
 # !in operator
 
@@ -17,7 +17,7 @@ Filters a record set for data without a case-sensitive string.
 
 ## Syntax
 
-*T* `|` `where` *col* `!in` `(`*expressions*`)`
+*T* `|` `where` *col* `!in` `(`*expression*`,` ... `)`
 
 ## Parameters
 
@@ -25,7 +25,7 @@ Filters a record set for data without a case-sensitive string.
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column by which to filter.|
-| *expressions* | scalar or tabular | &check; | One or more comma-separated expressions that specify the values for which to search. Each expression can be a [scalar](scalar-data-types/index.md) value or a [tabular expression](tabularexpressionstatements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 1,000,000 distinct values.|
+| *expression* | scalar or tabular | &check; | An expression that specifies the values for which to search. Each expression can be a [scalar](scalar-data-types/index.md) value or a [tabular expression](tabularexpressionstatements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 1,000,000 distinct values.|
 
 > [!NOTE]
 > An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
