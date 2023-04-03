@@ -168,8 +168,6 @@ $env:OTEL_LOGS_EXPORTER="otlp "
 $env:OTEL_EXPORTER_OTLP_ENDPOINT="http://<open-telemetry-collector-host>:4317"
 ```
 
----
-
 ### [Bash](#tab/bash)
     
 
