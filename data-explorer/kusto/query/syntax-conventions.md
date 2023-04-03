@@ -40,9 +40,10 @@ print hash("World")
 
 Let's break down the example usage step-by-step:
 
-1. The name of the function, `hash`, and the surrounding parentheses are entered exactly as shown in the syntax.
-1. The value "World" is passed as an argument for the required *source* parameter.
-1. The optional *mod* parameter is not provided an argument.
+1. Enter the name of the function, `hash`, and the opening parenthesis exactly as shown in the syntax.
+1. Pass "World" as an argument for the required *source* parameter.
+1. Don't pass an argument for the optional *mod* parameter.
+1. Enter the closing parenthesis exactly as shown in the syntax.
 
 #### KQL operator
 
@@ -62,12 +63,10 @@ StormEvents
 
 Let's break down the example usage step-by-step:
 
-1. The StormEvents table is passes as an argument for the required *T* parameter.
-1. `| sort by` is entered exactly as shown in the syntax.
-1. The State column is passed as an argument for the required *column* parameter.
-1. The optional `asc` flag is specified.
-1. A comma is entered, followed by another column, StartTime, with the optional `desc` flag. The extra column and flags are optional, as indicated by the [`,` ...] syntax. There could be no additional columns, or even more columns.
-1. Note that the optional `nulls first` and `nulls last` were never specified.
+1. Pass the StormEvents table as an argument for the required *T* parameter.
+1. Enter `| sort by` exactly as shown in the syntax.
+1. Pass the State column as an argument for the required *column* parameter with the optional `asc` flag.
+1. Enter a comma, followed by another set of arguments: the StartTime column with the optional `desc` flag. This extra set of column and flags is optional, as indicated by the [`,` ...] syntax.
 
 ## Working with optional parameters
 
