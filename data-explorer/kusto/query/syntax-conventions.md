@@ -64,7 +64,7 @@ StormEvents
 Let's break down the example usage step-by-step:
 
 1. Pass the StormEvents table as an argument for the required *T* parameter.
-1. Enter `| sort by` exactly as shown in the syntax.
+1. Enter `| sort by` exactly as shown in the syntax. In this case, the pipe character is part of the query statement syntax as represented by the block text. To learn more, see [What is a query statement](index.md#what-is-a-query-statement).
 1. Pass the State column as an argument for the required *column* parameter with the optional `asc` flag.
 1. Enter a comma, followed by another set of arguments: the StartTime column with the optional `desc` flag. This extra set of column and flags is optional, as indicated by the [`,` ...] syntax.
 
