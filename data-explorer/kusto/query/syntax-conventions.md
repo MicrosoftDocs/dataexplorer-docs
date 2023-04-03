@@ -19,25 +19,53 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 |\| (pipe)|Indicates that you can only use one of the syntax items separated by the pipe(s).|
 |`;`|Query statement terminator.|
 
-### Example of syntax conventions
+### Examples of syntax conventions
 
-Consider the following example syntax:
+#### Scalar function
 
-`.command` *Resource* `action` `(` *SomeAction*`,` ... `)` [ `speedy` `=` `true` | `false` ]
+Consider the [hash function](hashfunction.md) syntax:
 
-Usage of this command might look as follows:
+`hash(`*source* [`,` *mod*]`)`
+
+Usage of this function might look as follows:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/yaeltestcluster.eastus/databases/YaelTestDatabase?query=H4sIAAAAAAAAAysoyswrUchILM7QUArPL8pJUdIEANrIz6MTAAAA" target="_blank">Run the query</a>
 
 ```kusto
-.command TestDatabase action ( "test", "run", "debug" ) speedy = true
+print hash("World")
 ```
 
 Let's break down the example usage step-by-step:
 
-1. The name of the command, `.command`, is entered exactly as shown in the syntax.
-1. The value TestDatabase is passed as an argument for the required *Resource* parameter.
-1. The `action` keyword and parentheses are entered exactly as shown.
-1. The strings "test", "run", and "debug" are passed as arguments for the *SomeAction* parameter. The "`,` ..." syntax indicates that more than one value can be provided for *SomeAction*.
-1. The optional property `speedy` is set to `true`, though it could have been omitted.
+1. The name of the function, `hash`, and the surrounding parentheses are entered exactly as shown in the syntax.
+1. The value "World" is passed as an argument for the required *source* parameter.
+1. The optional *mod* parameter is not provided an argument.
+
+#### KQL operator
+
+Consider the [sort operator](sort-operator.md) syntax:
+
+*T* `| sort by` *column* [`asc` | `desc`] [`nulls first` | `nulls last`] [`,` ...]
+
+Usage of this operator might look as follows:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRyC9KSS1SSKpUCC5JLElVSCxO1gExi0pCMnNTFVJSi5MBfa8LRzAAAAA=" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| sort by State asc, StartTime desc
+```
+
+Let's break down the example usage step-by-step:
+
+1. The StormEvents table is passes as an argument for the required *T* parameter.
+1. `| sort by` is entered exactly as shown in the syntax.
+1. The State column is passed as an argument for the required *column* parameter.
+1. The optional `asc` flag is specified.
+1. A comma is entered, followed by another column, StartTime, with the optional `desc` flag. The extra column and flags are optional, as indicated by the [`,` ...] syntax. There could be no additional columns, or even more columns.
+1. Note that the optional `nulls first` and `nulls last` were never specified.
 
 ## Working with optional parameters
 
