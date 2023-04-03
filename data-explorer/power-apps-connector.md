@@ -3,7 +3,7 @@ title: Create Power Apps application to query data in Azure Data Explorer
 description: Learn how to create an application in Power Apps based on data in Azure Data Explorer
 ms.reviewer: olgolden
 ms.topic: how-to
-ms.date: 04/02/2023
+ms.date: 04/03/2023
 ---
 # Create :::no-loc text="Power Apps"::: application to query data in Azure Data Explorer
 
@@ -25,7 +25,7 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
     :::image type="content" source="media/power-apps-connector/new-connection.png" alt-text="Screenshot of the connections page, highlighting the create a new connection button.":::
 
-1. Search for **Azure Data Explorer** in the search bar. Select **Azure Data Explorer** from the resulting options.
+1. Search for *Azure Data Explorer*, and then select **Azure Data Explorer**.
 
     :::image type="content" source="media/power-apps-connector/search-adx.png" alt-text="Screenshot of the new connection page, showing the search and select Azure Data Explorer connection.":::
 
@@ -40,16 +40,20 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
     :::image type="content" source="media/power-apps-connector/create-new-app.png" alt-text="Screenshot of the apps page, showing the create a new canvas app button.":::
 
-1. Provide an app name, and under **Format**, select **Tablet**.
-
+1. Under **App name**, enter a name for your app. The format is set to **Tablet** by default.
+1. Select Create.
     :::image type="content" source="media/power-apps-connector/blank-canvas.png" alt-text="Screenshot of the new app page, showing highlighting the tablet layout option.":::
 
 ### Add Connector
 
-1. On the left menu, select **Data**\.
-1. Select **Add data**, expand **Connectors**, and then elect **Azure Data Explorer**.
+1. On the left menu, select **Data**.
 
-    :::image type="content" source="media/power-apps-connector/data-connectors-adx.png" alt-text="Screenshot of the app page, showing the add connector to Azure Data Explorer option.":::
+    :::image type="content" source="media/power-apps-connector/select-data.png" alt-text="Screenshot of the navigation menu in the new app page. The menu option titled Data is highlighted.":::
+
+1. Select **Add data**.
+1. Expand **Connectors**, and then select **Azure Data Explorer**.
+
+    :::image type="content" source="media/power-apps-connector/data-connectors-adx.png" alt-text="Screenshot of the app page showing a list of data connectors. The connector titled Azure Data Explorer is highlighted.":::
 
 Under **Data**, you'll now see the **Azure Data Explorer** app in the list of connectors.
 
