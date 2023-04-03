@@ -19,9 +19,10 @@ The [Azure Data Explorer exporter](https://github.com/open-telemetry/opentelemet
 In this article, you learn how to:
 
 > [!div class="checklist"]
-> * 
-> * 
-> * 
+> * Set up your environment
+> * Configure the Azure Data Explorer exporter
+> * Run the sample application
+> * Query incoming data
 
 ## Prerequisites
 
@@ -55,7 +56,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
     > [!NOTE]
     > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](kusto/management/manage-database-security-roles.md#view-existing-security-roles).
 
-## Create target tables
+### Create target tables
 
 1. Browse to [Azure Data Explorer web UI](https://dataexplorer.azure.com/). 
 1. Select **Query** from the left menu. 
@@ -71,7 +72,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
     .create-merge table <Traces-Table-Name> (TraceId:string, SpanId:string, ParentId:string, SpanName:string, SpanStatus:string, SpanKind:string, StartTime:datetime, EndTime:datetime, ResourceAttributes:dynamic, TraceAttributes:dynamic, Events:dynamic, Links:dynamic) 
     ```
 
-## Set up streaming ingestion
+### Set up streaming ingestion
 
 Azure Data Explorer has two main types of ingestion: batching and streaming. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion). The *streaming* method is called *managed* in the Azure Data Explorer exporter configuration. Streaming ingestion may be a good choice for you if you need the logs and traces are to be available in near real time. However, streaming ingestion uses more resources than batched ingestion. The OTel framework itself batches data, which should be considered when choosing which method to use for ingestion.
 
@@ -156,7 +157,9 @@ Now that the collector is configured, you need to send data to be ingested. In t
 
 1. Download the collector agent here: [Open telemetry collector agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
 
-1. To enable open telemetry for the sample application, set the following environment variables in a command line:
+1. To enable open telemetry for the sample application, set the following environment variables:
+
+### [Command Line](#tab/command-line)
 
     ```command_line
     $env:OTEL_SERVICE_NAME="pet-clinic-service"
@@ -164,8 +167,11 @@ Now that the collector is configured, you need to send data to be ingested. In t
     $env:OTEL_LOGS_EXPORTER="otlp "                   
     $env:OTEL_EXPORTER_OTLP_ENDPOINT="http://<open-telemetry-collector-host>:4317"
     ```
+
+---
+
+### [Bash](#tab/bash)
     
-    Alternatively, you can use the following commands in bash shell:
 
     ```bash
     export OTEL_SERVICE_NAME=pet-clinic-service 
@@ -174,7 +180,9 @@ Now that the collector is configured, you need to send data to be ingested. In t
     export OTEL_EXPORTER_OTLP_ENDPOINT=http://<open-telemetry-collector-host>:4317 
     ```
 
-    The open-telemetry-collector-host references the host where ADX OTEL exporter is configured and running.
+---
+
+    The open-telemetry-collector-host references the host where the Azure Data Explorer exporter is configured and running.
 
 1. Run the sample spring-boot application with the following command line arguments:
 
@@ -236,7 +244,7 @@ Once the sample app has run, your data has been ingested into the defined tables
       |84a9a8c4009d91476da02dfa40746c13|3cd4c0e91717969a|        |87d003d6-02c1-4f3d-8972-683243c35642|STATUS_CODE_UNSET|SPAN_KIND_CLIENT        |2022-07-01T13:17:59Z       |2022-07-01T13:17:59Z    |{"telemetry.auto.version":"1.14.0", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "service.name":"my-service", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.language":"java", "telemetry.sdk.name":"opentelemetry", "host.arch":"amd64", "host.name":"DESKTOP-SFS7RUQ", "process.pid":34316, "process.runtime.version":"18.0.1.1+2-6", "os.type":"windows", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "telemetry.sdk.version":"1.14.0"}|{"db.user":"sa", "thread.id":1, "db.name":"87d003d6-02c1-4f3d-8972-683243c35642", "thread.name":"main", "db.system":"h2", "scope.name":"io.opentelemetry.jdbc", "scope.version":"1.14.0-alpha", "db.connection_string":"h2:mem:", "db.statement":"DROP TABLE vets IF EXISTS"}           |[]    |[]   |
 
 
-## Further data processing
+### Further data processing
 
 Using update policies, the collected data can further be processed as per application need. For more information, see [Update policy overview](kusto/management/updatepolicy.md).
 
