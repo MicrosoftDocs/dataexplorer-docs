@@ -81,6 +81,10 @@ In this section, you'll establish a connection between Event Grid and your Azure
 
     :::image type="content" source="media/ingest-data-event-grid/create-event-grid-data-connection-review-create.png" alt-text="Screenshot of the Data Connection Review and create tab, showing a summary of the selected data connection settings.":::
 
+1. Wait until the deployment is completed. If your deployment failed, select **Operation details** next to the failed stage to get more information for the failure reason. Select **Redeploy** to try to deploy the resources again. You can alter the parameters before deployment.
+
+    :::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Screenshot of Deploy Event Grid overview page, showing a failed deployment.":::
+
 ### [Portal - storage](#tab/portal-storage)
 
 1. Browse to the storage account in the Azure portal. On the left menu, select **Events**
@@ -128,6 +132,10 @@ The **Data connection** pane opens with the **Basics** tab selected.
 1. Review the resources that were auto created for you and select **Create**.
 
     :::image type="content" source="media/ingest-data-event-grid/portal-review-create.png" alt-text="Screenshot of the Data Connection Review and create tab, showing a summary of the selected data connection settings.":::
+
+1. Wait until the deployment is completed. If your deployment failed, select **Operation details** next to the failed stage to get more information for the failure reason. Select **Redeploy** to try to deploy the resources again. You can alter the parameters before deployment.
+
+    :::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Screenshot of Deploy Event Grid overview page, showing a failed deployment.":::
 
 ### [C#](#tab/c-sharp)
 
