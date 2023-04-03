@@ -9,6 +9,8 @@ zone_pivot_groups: kql-flavors
 ---
 # Stored functions
 
+::: zone pivot="azuredataexplorer, azuremonitor"
+
 **Functions** are reusable queries or query parts. Functions can be stored as database
 entities (similar to, for example, tables) called **stored functions**. Functions can
 also be created in an ad-hoc fashion inside queries using a [let statement](../letstatement.md)
@@ -16,6 +18,8 @@ through a mechanism called **lambda expressions**.
 
 For more information on function invocation syntax and rules, see [user-defined functions](../functions/user-defined-functions.md).
 For more information on how to create and manage stored functions, see [managing functions](../../management/functions.md).
+
+::: zone-end
 
 ::: zone pivot="azuremonitor"
 
