@@ -21,15 +21,15 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 ## Examples
 
-The following examples show the syntax and an example usage for a KQL scalar function and tabular operator.
-
 ### Scalar function
 
-The [hash function](hashfunction.md) syntax is as follows:
+The following example shows the syntax and an example usage for the [hash function](hashfunction.md).
+
+#### Syntax
 
 `hash(`*source* [`,` *mod*]`)`
 
-**Example usage**
+#### Example usage
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/yaeltestcluster.eastus/databases/YaelTestDatabase?query=H4sIAAAAAAAAAysoyswrUchILM7QUArPL8pJUdIEANrIz6MTAAAA" target="_blank">Run the query</a>
@@ -47,11 +47,13 @@ Let's break down the example usage step-by-step:
 
 ### Tabular operator
 
-The [sort operator](sort-operator.md) syntax is as follows:
+The following example shows the syntax and an example usage for the [sort operator](sort-operator.md).
+
+#### Syntax
 
 *T* `| sort by` *column* [`asc` | `desc`] [`nulls first` | `nulls last`] [`,` ...]
 
-**Example usage**
+#### Example usage
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRyC9KSS1SSKpUCC5JLElVSCxO1gExi0pCMnNTFVJSi5MBfa8LRzAAAAA=" target="_blank">Run the query</a>
