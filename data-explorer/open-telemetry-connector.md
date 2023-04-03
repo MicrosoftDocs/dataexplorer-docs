@@ -8,7 +8,7 @@ ms.reviewer: ramacg
 
 # Ingest data from OpenTelemetry to Azure Data Explorer
 
-[OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) (OTel) is an open framework for application observability. The instrumentation is hosted by the Cloud Native Computing Foundation (CNCF), which provides standard interfaces for observability data, including [metrics](https://opentelemetry.io/docs/concepts/observability-primer/#reliability--metrics), [logs](https://opentelemetry.io/docs/concepts/observability-primer/#logs), and [traces](https://opentelemetry.io/docs/concepts/observability-primer/#distributed-traces). The Collector is made up of the following three components: **receivers** deal with how to get data into the Collector, **processors** determine what to do with received data, and **exporters** are responsible for where to send the received data.
+[OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) (OTel) is an open framework for application observability. The instrumentation is hosted by the Cloud Native Computing Foundation (CNCF), which provides standard interfaces for observability data, including [metrics](https://opentelemetry.io/docs/concepts/observability-primer/#reliability--metrics), [logs](https://opentelemetry.io/docs/concepts/observability-primer/#logs), and [traces](https://opentelemetry.io/docs/concepts/observability-primer/#distributed-traces). The OTel Collector is made up of the following three components: **receivers** deal with how to get data into the Collector, **processors** determine what to do with received data, and **exporters** are responsible for where to send the received data.
 
 The [Azure Data Explorer exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) supports ingestion of data from many receivers into Azure Data Explorer. 
 
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
 
 ## Set up streaming ingestion
 
-Azure Data Explorer has two main types of ingestion: batching and streaming. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion). The *streaming* method is called *managed* in the OTel collector. Streaming ingestion may be a good choice for you if you need the logs and traces are to be available in near real time. However, streaming ingestion uses more resources than batched ingestion. The OTel framework itself batches data, which should be considered when choosing which method to use for ingestion.
+Azure Data Explorer has two main types of ingestion: batching and streaming. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion). The *streaming* method is called *managed* in the Azure Data Explorer exporter configuration. Streaming ingestion may be a good choice for you if you need the logs and traces are to be available in near real time. However, streaming ingestion uses more resources than batched ingestion. The OTel framework itself batches data, which should be considered when choosing which method to use for ingestion.
 
 > [!NOTE]
 > [Streaming ingestion](ingest-data-streaming.md) must be enabled on Azure Data Explorer cluster to enable the `managed` option.
@@ -89,7 +89,7 @@ Run the following command for each of the three tables to enable streaming inges
 
 In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [deploy and run](https://opentelemetry.io/docs/collector/deployment/) the OpenTelemetry distribution with the following Azure Data Explorer exporter configuration.
 
-1. Configure the exporter using the following fields:
+1. Configure the Azure Data Explorer exporter using the following fields:
 
     |Field | Description | Suggested setting|
     |---|---|---|
@@ -114,7 +114,7 @@ In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [d
 
 1. Use the "--config" flag to run the Azure Data Explorer exporter.
 
-The following is an example configuration for the OTel collector:
+The following is an example configuration for the Azure Data Explorer exporter:
 
 ```yaml
 exporters:
