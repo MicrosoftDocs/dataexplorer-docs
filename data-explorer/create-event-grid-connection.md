@@ -442,3 +442,7 @@ To remove the event hub connection, run the following command:
 ```python
 kusto_management_client.data_connections.delete(resource_group_name=resource_group_name, cluster_name=kusto_cluster_name, database_name=kusto_database_name, data_connection_name=kusto_data_connection_name)
 ```
+
+## Next steps
+
+* [Process data from your event hub using Azure Stream Analytics](/azure/event-hubs/process-data-azure-stream-analytics)
