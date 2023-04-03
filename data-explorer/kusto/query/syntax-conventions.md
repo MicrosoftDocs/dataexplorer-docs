@@ -31,9 +31,6 @@ The following example shows the syntax and an example usage for the [hash functi
 
 #### Example usage
 
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/yaeltestcluster.eastus/databases/YaelTestDatabase?query=H4sIAAAAAAAAAysoyswrUchILM7QUArPL8pJUdIEANrIz6MTAAAA" target="_blank">Run the query</a>
-
 ```kusto
 print hash("World")
 ```
@@ -54,9 +51,6 @@ The following example shows the syntax and an example usage for the [sort operat
 *T* `| sort by` *column* [`asc` | `desc`] [`nulls first` | `nulls last`] [`,` ...]
 
 #### Example usage
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRyC9KSS1SSKpUCC5JLElVSCxO1gExi0pCMnNTFVJSi5MBfa8LRzAAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
