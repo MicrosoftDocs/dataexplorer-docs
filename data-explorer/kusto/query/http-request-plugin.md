@@ -4,35 +4,24 @@ description: Learn how to use the http_request plugin to send an HTTP request an
 services: data-explorer
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 03/20/2023
+ms.date: 04/03/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-# http_request plugin / http_request_post plugin
+# http_request plugin
 
 ::: zone pivot="azuredataexplorer"
 
-The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP request and convert the response into a table.
-
-> [!IMPORTANT]
-> Both plugins are disabled by default, as they allow queries to send data
-> and the user's security token to external user-specified network endpoints.
-> Once enabled, both plugins are further subject to the configured
-> [callout policy](../management/calloutpolicy.md) that cluster admins
-> can use to granularly control which URIs the request can be sent to.
+The `http_request` plugin sends an HTTP GET request and convert the response into a table.
 
 ## Prerequisites
 
-* [Enable the plugins](../management/enable-plugin.md) by running the following commands:
-  * `.enable plugin http_request`  
-  * `.enable plugin http_request_post`
-* Set the *Uri* as an allowed destination for `webapi` in the [Callout policy](../management/calloutpolicy.md). Otherwise, running the query results in an error.
+* Run `.enable plugin http_request` to [enable the plugin](../management/enable-plugin.md)
+* Set the URI to access as an allowed destination for `webapi` in the [Callout policy](../management/calloutpolicy.md)
 
 ## Syntax
 
 `evaluate` `http_request` `(` *Uri* [`,` *RequestHeaders* [`,` *Options*]] `)`
-
-`evaluate` `http_request_post` `(` *Uri* [`,` *RequestHeaders* [`,` *Options* [`,` *Content*]]] `)`
 
 ## Parameters
 
@@ -41,7 +30,6 @@ The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP req
 | *Uri* | string | &check; | The destination URI for the HTTP or HTTPS request. |
 | *RequestHeaders* | dynamic |  | A property bag containing [HTTP headers](#headers) to send with the request. |
 | *Options* | dynamic |  | A property bag containing additional properties of the request. |
-| *Content* | string |  | The body content to send with the request. The content is encoded in `UTF-8` and the media type for the `Content-Type` attribute is `application/json`. |
 
 > [!NOTE]
 >
@@ -50,20 +38,14 @@ The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP req
 
 ## Authentication and authorization
 
-The following table describes the two ways to specify authentication parameters.
-
-|Authentication method|Description|
-|--|--|
-|Azure Active Directory (impersonation)|In the *Options* parameter, specify the credentials under an `Authentication` key and set `AadResourceId` to the target web service resource ID.|
-|Query credentials|In the *RequestHeaders* or in the *Options* parameters, specify the credentials under the `Authorization` key.|
+To authenticate, use the HTTP standard `Authorization` header or any custom header supported by the web service.
 
 > [!NOTE]
-> If the query includes confidential information, make sure that the relevant parts of the query text are obfuscated so that they'll be omitted from any tracing.
-> For more information, see [obfuscated string literals](./scalar-data-types/string.md#obfuscated-string-literals).
+> If the query includes confidential information, make sure that the relevant parts of the query text are obfuscated so that they'll be omitted from any tracing. For more information, see [obfuscated string literals](./scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Returns
 
-Both plugins return a table that has a single record with the following dynamic columns:
+The plugin returns a table that has a single record with the following dynamic columns:
 
 * *ResponseHeaders*: A property bag with the response header.
 * *ResponseBody*: The response body parsed as a value of type `dynamic`.
@@ -91,7 +73,7 @@ custom headers:
 > sent seemingly-innocent queries that end up making unwanted changes by using
 > a Kusto query as the launchpad for such attacks.
 
-## Examples
+## Example
 
 The following example retrieves Azure retails prices for Azure Purview in west Europe:
 
@@ -116,19 +98,10 @@ evaluate http_request(Uri)
 | westeurope    |                                                | USD          | 2021-09-28T00:00:00Z | false                | EU West  | 0745df0d-ce4f-52db-ac31-ac574d4dcfe5 | Standard Capacity Unit                               | DZH318Z08M22 | Azure Purview Data Map                              |       0.411 | Analytics     | DZH318Q66D0F | Azure Purview | DZH318Z08M22/0002 | Standard                                 |                0 | Consumption | 1 Hour        |     0.411 |
 | westeurope    |                                                | USD          | 2021-09-28T00:00:00Z | false                | EU West  | 811e3118-5380-5ee8-a5d9-01d48d0a0627 | Standard vCore                                       | DZH318Z08M23 | Azure Purview Scanning Ingestion and Classification |        0.63 | Analytics     | DZH318Q66D0F | Azure Purview | DZH318Z08M23/0009 | Standard                                 |                0 | Consumption | 1 Hour        |      0.63 |
 
-The following example is for a hypothetical HTTPS web service that accepts additional request headers and must be authenticated to using Azure AD:
-
-<!-- csl -->
-```kusto
-let uri='https://example.com/node/js/on/eniac';
-let headers=dynamic({'x-ms-correlation-vector':'abc.0.1.0', 'authorization':'bearer ...Azure-AD-bearer-token-for-target-endpoint...'});
-evaluate http_request_post(uri, headers)
-```
-
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
 
-This capability isn't supported in Azure Monitor
+This capability isn't supported in Azure Monitor.
 
 ::: zone-end
