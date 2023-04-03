@@ -26,7 +26,7 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 ### Scalar function
 
-The following example shows the syntax and an example usage for the [hash function](hashfunction.md).
+The following example shows the syntax and an example usage for the [hash function](hashfunction.md). Following the example usage, there's a bullet-pointed list that explains how the syntax components were used in the example.
 
 #### Syntax
 
@@ -38,14 +38,14 @@ The following example shows the syntax and an example usage for the [hash functi
 print hash("World")
 ```
 
-* The name of the function, `hash`, and the opening parenthesis are entered exactly as shown in the syntax.
+* The name of the function, `hash`, and the opening parenthesis are entered exactly as shown.
 * "World" is passed as an argument for the required *source* parameter.
-* No argument is passed for the *mod* parameter, which is indicated to be optional by the square brackets in the syntax.
+* No argument is passed for the *mod* parameter, which is optional as indicated by the square brackets.
 * The closing parenthesis is entered exactly as shown.
 
 ### Tabular operator
 
-The following example shows the syntax and an example usage for the [sort operator](sort-operator.md).
+The following example shows the syntax and an example usage for the [sort operator](sort-operator.md). Following the example usage, there's a bullet-pointed list that explains how the syntax components were used in the example.
 
 #### Syntax
 
@@ -58,10 +58,10 @@ StormEvents
 | sort by State asc, StartTime desc
 ```
 
-* The StormEvents table is passed as the argument for the required *T* parameter.
-* `| sort by` is entered exactly as shown in the syntax. In this case, the pipe character is part of the [tabular expression statement](tabularexpressionstatements.md) syntax as represented by the block text.
+* The StormEvents table is passed as an argument for the required *T* parameter.
+* `| sort by` is entered exactly as shown in the syntax. In this case, the pipe character is part of the [tabular expression statement](tabularexpressionstatements.md) syntax, as represented by the block text.
 * The State column is passed as an argument for the required *column* parameter with the optional `asc` flag.
-* After a comma, another set of arguments is passed: the StartTime column with the optional `desc` flag. The [`,` ...] syntax indicates that more argument sets may be passed for the previously specified parameters but aren't required.
+* After a comma, another set of arguments is passed: the StartTime column with the optional `desc` flag. The [`,` ...] syntax indicates that more argument sets may be passed but aren't required.
 
 ## Working with optional parameters
 
