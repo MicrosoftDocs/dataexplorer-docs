@@ -25,8 +25,10 @@ Returns a dynamic array of the set of all distinct values that are in any of arr
 
 ## Example
 
+### Set from multiple dynamic arrray
+
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13MwQ7CIBCE4btPMcdiuNCefZZmU1djjUC2mLKkDy+cDL1+M/mF/JOR8ZDwgUMKmLAljnCXA5wT+zsUt/q4YvxTqaQ97ZVKT+SqRVreM4mQDtmqzbYYCxrPC7Tx1PNuaixKWHlJ2DjNX/8KfiDXCu1ufsyJVeDAAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13MMQ7CMAyF4Z1TvLFBXprMPQNHqKwSECCSKHXVJOLwuBMK62e/P3O4exTccnxjhEQ4rOITxtMHvogPV1RM+nGG/VFTqj3tSq0nHtUSL6+Zc+Y6FKpUqBkC2/8L6sGu591oLOX49ItojdgSO7psMq1e5i08YhiUNXdszRcYE8jtzQAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 range x from 1 to 3 step 1
@@ -34,16 +36,37 @@ range x from 1 to 3 step 1
 | extend z = y * 2
 | extend w = z * 2
 | extend a1 = pack_array(x,y,x,z), a2 = pack_array(x, y), a3 = pack_array(w)
-| project set_union(a1, a2, a3)
+| project a1,a2,a3,Out=set_union(a1, a2, a3)
 ```
 
 **Output**
 
-|Column1|
-|---|
-|[1,2,4,8]|
-|[2,4,8,16]|
-|[3,6,12,24]|
+|a1|a2|a3|`Out`|
+|---|---|---|---|
+|[1,2,1,4]|[1,2]|[8]|[1,2,4,8]|
+|[2,4,2,8]|[2,4]|[16]|[2,4,8,16]|
+|[3,6,3,12]|[3,6]|[24]|[3,6,12,24]|
+
+### Set from one dynamic arrray
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ3HoiJDK4WUyrzE3MxkTa5oLgUggHI1otUdDdV1FNQdjcCkMZQdq6mjgKbOGazOGazO2RhKxmpyxSpw1SikVpSk5qUo+JeW2BanlsSX5mXm54Et1lEAkZoAqIHyl48AAAA=" target="_blank">Run the query</a>
+
+```kusto
+datatable (Arr1: dynamic)
+[
+    dynamic(['A1', 'A2', 'A3', 'A2']), 
+    dynamic(['C1', 'C2', 'C3', 'C3'])
+] 
+| extend Out=set_union(Arr1, Arr1)
+```
+
+**Output**
+
+|Arr1|`Out`|
+|---|---|
+|["A1","A2","A3","A2"]|["A1","A2","A3"]|
+|["C1","C2","C3","C3"]|["C1","C2","C3"]|
 
 ## See also
 
