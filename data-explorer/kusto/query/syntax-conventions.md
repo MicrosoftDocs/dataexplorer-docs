@@ -19,7 +19,7 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 |\| (pipe)|Indicates that you can only use one of the syntax items separated by the pipe(s).|
 |`;`|Query statement terminator.|
 
-### Examples of syntax conventions
+## Examples
 
 The following examples show the syntax and an example usage for a KQL scalar function and tabular operator.
 
