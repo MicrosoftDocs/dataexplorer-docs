@@ -19,6 +19,9 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 |\| (pipe)|Indicates that you can only use one of the syntax items separated by the pipe(s).|
 |`;`|Query statement terminator.|
 
+> [!NOTE]
+> The pipe character is used for a different purpose in [tabular expression statements](tabularexpressionstatements.md). For an explanation, see [What is a query statement](index.md#what-is-a-query-statement).
+
 ## Examples
 
 ### Scalar function
@@ -34,8 +37,6 @@ The following example shows the syntax and an example usage for the [hash functi
 ```kusto
 print hash("World")
 ```
-
-The following steps explain the usage:
 
 1. Enter the name of the function, `hash`, and the opening parenthesis exactly as shown in the syntax.
 1. Pass "World" as an argument for the required *source* parameter.
@@ -56,8 +57,6 @@ The following example shows the syntax and an example usage for the [sort operat
 StormEvents
 | sort by State asc, StartTime desc
 ```
-
-The following steps explain the usage:
 
 1. Pass the StormEvents table as an argument for the required *T* parameter.
 1. Enter `| sort by` exactly as shown in the syntax. In this case, the pipe character is part of the query statement syntax as represented by the block text. To learn more, see [What is a query statement](index.md#what-is-a-query-statement).
