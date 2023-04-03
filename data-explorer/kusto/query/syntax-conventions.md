@@ -21,7 +21,7 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 ### Examples of syntax conventions
 
-The following examples show the syntax and a potential usage based on that syntax for a KQL scalar function and tabular operator.
+The following examples show the syntax and an example usage for a KQL scalar function and tabular operator.
 
 #### Scalar function
 
