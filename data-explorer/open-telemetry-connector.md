@@ -31,7 +31,7 @@ In this article, you learn how to:
 
 ## Set up your environment
 
-In this section, you'll prepare your environment to use the OTel exporter.
+In this section, you prepare your environment to use the OTel exporter.
 
 ### Create an Azure AD app registration
 
@@ -99,7 +99,7 @@ In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [d
     | application_id |  Client ID|  &lt;application id> |
     | application_key| Client secret |  &lt;application key> |
     | tenant_id | Tenant |  &lt;application tenant>|
-    | db_name | Database that will receive the logs | oteldb, or other database you have already created
+    | db_name | Database that receives the logs | oteldb, or other database you have already created
     | metrics_table_name | The target table in the database db_name that stores exported metric data. | OTELMetrics
     | logs_table_name | The target table in the database db_name that stores exported logs data. | OTELLogs
     | traces_table_name | The target table in the database db_name that stores exported traces data. | OTELTraces
@@ -157,32 +157,31 @@ Now that the collector is configured, you need to send data to be ingested. In t
 
 1. Download the collector agent here: [Open telemetry collector agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
 
-1. To enable open telemetry for the sample application, set the following environment variables:
+1. To enable open telemetry for the sample application, set the following environment variables. The open-telemetry-collector-host references the host where the Azure Data Explorer exporter is configured and running.
 
 ### [Command Line](#tab/command-line)
 
-    ```command_line
-    $env:OTEL_SERVICE_NAME="pet-clinic-service"
-    $env:OTEL_TRACES_EXPORTER="otlp"
-    $env:OTEL_LOGS_EXPORTER="otlp "                   
-    $env:OTEL_EXPORTER_OTLP_ENDPOINT="http://<open-telemetry-collector-host>:4317"
-    ```
+```command_line
+$env:OTEL_SERVICE_NAME="pet-clinic-service"
+$env:OTEL_TRACES_EXPORTER="otlp"
+$env:OTEL_LOGS_EXPORTER="otlp "                   
+$env:OTEL_EXPORTER_OTLP_ENDPOINT="http://<open-telemetry-collector-host>:4317"
+```
 
 ---
 
 ### [Bash](#tab/bash)
     
 
-    ```bash
-    export OTEL_SERVICE_NAME=pet-clinic-service 
-    export OTEL_TRACES_EXPORTER=otlp 
-    export OTEL_LOGS_EXPORTER=otlp  
-    export OTEL_EXPORTER_OTLP_ENDPOINT=http://<open-telemetry-collector-host>:4317 
-    ```
+```bash
+export OTEL_SERVICE_NAME=pet-clinic-service 
+export OTEL_TRACES_EXPORTER=otlp 
+export OTEL_LOGS_EXPORTER=otlp  
+export OTEL_EXPORTER_OTLP_ENDPOINT=http://<open-telemetry-collector-host>:4317 
+```
 
 ---
 
-    The open-telemetry-collector-host references the host where the Azure Data Explorer exporter is configured and running.
 
 1. Run the sample spring-boot application with the following command line arguments:
 
