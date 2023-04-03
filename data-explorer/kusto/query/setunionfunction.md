@@ -50,13 +50,13 @@ range x from 1 to 3 step 1
 ### Set from one dynamic arrray
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ3HoiJDK4WUyrzE3MxkTa5oLgUggHI1otUdDdV1FNQdjcCkMZQdq6mjgKbOGazOGazO2RhKxmpyxSpw1SikVpSk5qUo+JeW2BanlsSX5mXm54Et1lEAkZoAqIHyl48AAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ3HoiJDK4WUyrzE3MxkTa5oLgUggHI1otUdTdR1FNQdjcCkOZQdq6mjgKbOGazOGazC2RBMmgDVccUqcNUopFaUpOalKPiXltgWp5bEl+Zl5ueBLdZRAJGaAMqBZpGPAAAA" target="_blank">Run the query</a>
 
 ```kusto
 datatable (Arr1: dynamic)
 [
-    dynamic(['A1', 'A2', 'A3', 'A2']), 
-    dynamic(['C1', 'C2', 'C3', 'C3'])
+    dynamic(['A4', 'A2', 'A7', 'A2']), 
+    dynamic(['C4', 'C7', 'C1', 'C4'])
 ] 
 | extend Out=set_union(Arr1, Arr1)
 ```
@@ -65,8 +65,8 @@ datatable (Arr1: dynamic)
 
 |Arr1|`Out`|
 |---|---|
-|["A1","A2","A3","A2"]|["A1","A2","A3"]|
-|["C1","C2","C3","C3"]|["C1","C2","C3"]|
+|["A4","A2","A7","A2"]|["A4","A2","A7"]|
+|["C4","C7","C1","C4"]|["C4","C7","C1"]|
 
 ## See also
 
