@@ -42,12 +42,22 @@ When you create a data connection to your cluster, you specify the routing for w
 
 ### Route event data to an alternate database
 
-Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. You can do this in the Azure portal [Azure portal](ingest-data-iot-hub.md#target-database-multi-database-data-connection), [C#](data-connection-iot-hub-csharp.md#add-an-iot-hub-data-connection), [Python](data-connection-iot-hub-python.md#add-an-iot-hub-data-connection), or an [ARM template](data-connection-iot-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-iot-hub-data-connection). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
+Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. For an example of how to do this in the Azure portal, see [Turn on multi-database routing](#turn-on-multi-database-routing). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
 
 To specify an alternate database, set the *Database* [ingestion property](#ingestion-properties).
 
 > [!WARNING]
 > Specifying an alternate database without setting the connection as a multi-database data connection will cause the ingestion to fail.
+
+#### Turn on multi-database routing
+
+Before you can set an alternate target database, you must first allow routing the data to multiple databases. Use the following steps to allow routing the data to alternate databases:
+
+1. In the Azure portal, browse to your cluster.
+1. Select **Databases** > **Data connections**.
+1. Create or edit a data connection and in the **Data connection** pane, under **Data routing settings**, turn on the allow routing data to other database (multi-database data connection) option.
+
+    :::image type="content" source="media/ingest-data-iot-hub/data-connection-allow-multi-database.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data routing settings option set to allow.":::
 
 ### Route event data to an alternate table
 
