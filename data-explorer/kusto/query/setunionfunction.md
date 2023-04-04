@@ -25,7 +25,7 @@ Returns a dynamic array of the set of all distinct values that are in any of arr
 
 ## Example
 
-### Set from multiple dynamic arrray
+### Set from multiple dynamic array
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13MMQ7CMAyF4Z1TvLFBXprMPQNHqKwSECCSKHXVJOLwuBMK62e/P3O4exTccnxjhEQ4rOITxtMHvogPV1RM+nGG/VFTqj3tSq0nHtUSL6+Zc+Y6FKpUqBkC2/8L6sGu591oLOX49ItojdgSO7psMq1e5i08YhiUNXdszRcYE8jtzQAAAA==" target="_blank">Run the query</a>
@@ -47,7 +47,7 @@ range x from 1 to 3 step 1
 |[2,4,2,8]|[2,4]|[16]|[2,4,8,16]|
 |[3,6,3,12]|[3,6]|[24]|[3,6,12,24]|
 
-### Set from one dynamic arrray
+### Set from one dynamic array
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ3HoiJDK4WUyrzE3MxkTa5oLgUggHI1otUdTdR1FNQdjcCkOZQdq6mjgKbOGazOGazC2RBMmgDVccUqcNUopFaUpOalKPiXltgWp5bEl+Zl5ueBLdZRAJGaAMqBZpGPAAAA" target="_blank">Run the query</a>
