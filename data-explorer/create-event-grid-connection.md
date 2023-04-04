@@ -5,7 +5,7 @@ ms.topic: how-to
 ms.date: 04/04/2023
 ---
 
-# Create an Event Grid data connection in Azure Data Explorer
+# Create an Event Grid data connection for Azure Data Explorer
 
 In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that sets an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hubs.
 
