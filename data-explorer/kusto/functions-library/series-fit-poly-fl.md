@@ -44,45 +44,44 @@ Define the function using the following [let statement](../query/letstatement.md
 > [!IMPORTANT]
 > A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_fit_poly_fl()`, see [Examples](#examples).
 
-```kusto
+~~~kusto
 let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
-    let code=
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_fit_series = kargs["y_fit_series"]\n'
-        'fit_coeff = kargs["fit_coeff"]\n'
-        'degree = kargs["degree"]\n'
-        'x_series = kargs["x_series"]\n'
-        'x_istime = kargs["x_istime"]\n'
-        '\n'
-        'def fit(ts_row, x_col, y_col, deg):\n'
-        '    y = ts_row[y_col]\n'
-        '    if x_col == "": # If there is no x column creates sequential range [1, len(y)]\n'
-        '       x = np.arange(len(y)) + 1\n'
-        '    else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.\n'
-        '       if x_istime: \n'
-        '           x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))\n'
-        '           x = x - x.min()\n'
-        '           x = x / x.max()\n'
-        '           x = x * (len(x) - 1) + 1\n'
-        '       else:\n'
-        '           x = ts_row[x_col]\n'
-        '    coeff = np.polyfit(x, y, deg)\n'
-        '    p = np.poly1d(coeff)\n'
-        '    z = p(x)\n'
-        '    return z, coeff\n'
-        '\n'
-        'result = df\n'
-        'if len(df):\n'
-        '   result[[y_fit_series, fit_coeff]] = df.apply(fit, axis=1, args=(x_series, y_series, degree,), result_type="expand")\n'
-    ;
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_fit_series = kargs["y_fit_series"]
+        fit_coeff = kargs["fit_coeff"]
+        degree = kargs["degree"]
+        x_series = kargs["x_series"]
+        x_istime = kargs["x_istime"]
+        
+        def fit(ts_row, x_col, y_col, deg):
+            y = ts_row[y_col]
+            if x_col == "": # If there is no x column creates sequential range [1, len(y)]
+               x = np.arange(len(y)) + 1
+            else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.
+               if x_istime: 
+                   x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))
+                   x = x - x.min()
+                   x = x / x.max()
+                   x = x * (len(x) - 1) + 1
+               else:
+                   x = ts_row[x_col]
+            coeff = np.polyfit(x, y, deg)
+            p = np.poly1d(coeff)
+            z = p(x)
+            return z, coeff
+        
+        result = df
+        if len(df):
+           result[[y_fit_series, fit_coeff]] = df.apply(fit, axis=1, args=(x_series, y_series, degree,), result_type="expand")
+    ```;
     tbl
      | evaluate python(typeof(*), code, kwargs)
 };
 // Write your query to use the function here.
-```
+~~~
 
 ### [Stored](#tab/stored)
 
@@ -91,45 +90,44 @@ Define the stored function once using the following [`.create function`](../mana
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Examples](#examples).
 
-```kusto
+~~~kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Fit a polynomial of a specified degree to a series")
 series_fit_poly_fl(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=false)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
-    let code=
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_fit_series = kargs["y_fit_series"]\n'
-        'fit_coeff = kargs["fit_coeff"]\n'
-        'degree = kargs["degree"]\n'
-        'x_series = kargs["x_series"]\n'
-        'x_istime = kargs["x_istime"]\n'
-        '\n'
-        'def fit(ts_row, x_col, y_col, deg):\n'
-        '    y = ts_row[y_col]\n'
-        '    if x_col == "": # If there is no x column creates sequential range [1, len(y)]\n'
-        '       x = np.arange(len(y)) + 1\n'
-        '    else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.\n'
-        '       if x_istime: \n'
-        '           x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))\n'
-        '           x = x - x.min()\n'
-        '           x = x / x.max()\n'
-        '           x = x * (len(x) - 1) + 1\n'
-        '       else:\n'
-        '           x = ts_row[x_col]\n'
-        '    coeff = np.polyfit(x, y, deg)\n'
-        '    p = np.poly1d(coeff)\n'
-        '    z = p(x)\n'
-        '    return z, coeff\n'
-        '\n'
-        'result = df\n'
-        'if len(df):\n'
-        '   result[[y_fit_series, fit_coeff]] = df.apply(fit, axis=1, args=(x_series, y_series, degree,), result_type="expand")\n'
-    ;
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_fit_series = kargs["y_fit_series"]
+        fit_coeff = kargs["fit_coeff"]
+        degree = kargs["degree"]
+        x_series = kargs["x_series"]
+        x_istime = kargs["x_istime"]
+        
+        def fit(ts_row, x_col, y_col, deg):
+            y = ts_row[y_col]
+            if x_col == "": # If there is no x column creates sequential range [1, len(y)]
+               x = np.arange(len(y)) + 1
+            else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.
+               if x_istime: 
+                   x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))
+                   x = x - x.min()
+                   x = x / x.max()
+                   x = x * (len(x) - 1) + 1
+               else:
+                   x = ts_row[x_col]
+            coeff = np.polyfit(x, y, deg)
+            p = np.poly1d(coeff)
+            z = p(x)
+            return z, coeff
+        
+        result = df
+        if len(df):
+           result[[y_fit_series, fit_coeff]] = df.apply(fit, axis=1, args=(x_series, y_series, degree,), result_type="expand")
+    ```;
     tbl
      | evaluate python(typeof(*), code, kwargs)
 }
-```
+~~~
 
 ---
 
@@ -143,40 +141,39 @@ The following examples use the [invoke operator](../query/invokeoperator.md) to 
 
 To use a query-defined function, invoke it after the embedded function definition.
 
-```kusto
+~~~kusto
 let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
-    let code=
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_fit_series = kargs["y_fit_series"]\n'
-        'fit_coeff = kargs["fit_coeff"]\n'
-        'degree = kargs["degree"]\n'
-        'x_series = kargs["x_series"]\n'
-        'x_istime = kargs["x_istime"]\n'
-        '\n'
-        'def fit(ts_row, x_col, y_col, deg):\n'
-        '    y = ts_row[y_col]\n'
-        '    if x_col == "": # If there is no x column creates sequential range [1, len(y)]\n'
-        '       x = np.arange(len(y)) + 1\n'
-        '    else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.\n'
-        '       if x_istime: \n'
-        '           x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))\n'
-        '           x = x - x.min()\n'
-        '           x = x / x.max()\n'
-        '           x = x * (len(x) - 1) + 1\n'
-        '       else:\n'
-        '           x = ts_row[x_col]\n'
-        '    coeff = np.polyfit(x, y, deg)\n'
-        '    p = np.poly1d(coeff)\n'
-        '    z = p(x)\n'
-        '    return z, coeff\n'
-        '\n'
-        'result = df\n'
-        'if len(df):\n'
-        '   result[[y_fit_series, fit_coeff]] = df.apply(fit, axis=1, args=(x_series, y_series, degree,), result_type="expand")\n'
-    ;
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_fit_series = kargs["y_fit_series"]
+        fit_coeff = kargs["fit_coeff"]
+        degree = kargs["degree"]
+        x_series = kargs["x_series"]
+        x_istime = kargs["x_istime"]
+        
+        def fit(ts_row, x_col, y_col, deg):
+            y = ts_row[y_col]
+            if x_col == "": # If there is no x column creates sequential range [1, len(y)]
+               x = np.arange(len(y)) + 1
+            else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.
+               if x_istime: 
+                   x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))
+                   x = x - x.min()
+                   x = x / x.max()
+                   x = x * (len(x) - 1) + 1
+               else:
+                   x = ts_row[x_col]
+            coeff = np.polyfit(x, y, deg)
+            p = np.poly1d(coeff)
+            z = p(x)
+            return z, coeff
+        
+        result = df
+        if len(df):
+           result[[y_fit_series, fit_coeff]] = df.apply(fit, axis=1, args=(x_series, y_series, degree,), result_type="expand")
+    ```;
     tbl
      | evaluate python(typeof(*), code, kwargs)
 };
@@ -189,14 +186,14 @@ demo_make_series1
 | extend fnum = dynamic(null), coeff=dynamic(null), fnum1 = dynamic(null), coeff1=dynamic(null)
 | invoke series_fit_poly_fl('num', 'fnum', 'coeff', 5)
 | render timechart with(ycolumns=num, fnum)
-```
+~~~
 
 ### [Stored](#tab/stored)
 
 > [!IMPORTANT]
 > For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
 
-```kusto
+~~~kusto
 //
 // Fit fifth order polynomial to a regular (evenly spaced) time series, created with make-series
 //
@@ -206,7 +203,7 @@ demo_make_series1
 | extend fnum = dynamic(null), coeff=dynamic(null), fnum1 = dynamic(null), coeff1=dynamic(null)
 | invoke series_fit_poly_fl('num', 'fnum', 'coeff', 5)
 | render timechart with(ycolumns=num, fnum)
-```
+~~~
 
 ---
 
@@ -220,40 +217,39 @@ demo_make_series1
 
 To use a query-defined function, invoke it after the embedded function definition.
 
-```kusto
+~~~kusto
 let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
-    let code=
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_fit_series = kargs["y_fit_series"]\n'
-        'fit_coeff = kargs["fit_coeff"]\n'
-        'degree = kargs["degree"]\n'
-        'x_series = kargs["x_series"]\n'
-        'x_istime = kargs["x_istime"]\n'
-        '\n'
-        'def fit(ts_row, x_col, y_col, deg):\n'
-        '    y = ts_row[y_col]\n'
-        '    if x_col == "": # If there is no x column creates sequential range [1, len(y)]\n'
-        '       x = np.arange(len(y)) + 1\n'
-        '    else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.\n'
-        '       if x_istime: \n'
-        '           x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))\n'
-        '           x = x - x.min()\n'
-        '           x = x / x.max()\n'
-        '           x = x * (len(x) - 1) + 1\n'
-        '       else:\n'
-        '           x = ts_row[x_col]\n'
-        '    coeff = np.polyfit(x, y, deg)\n'
-        '    p = np.poly1d(coeff)\n'
-        '    z = p(x)\n'
-        '    return z, coeff\n'
-        '\n'
-        'result = df\n'
-        'if len(df):\n'
-        '   result[[y_fit_series, fit_coeff]] = df.apply(fit, axis=1, args=(x_series, y_series, degree,), result_type="expand")\n'
-    ;
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_fit_series = kargs["y_fit_series"]
+        fit_coeff = kargs["fit_coeff"]
+        degree = kargs["degree"]
+        x_series = kargs["x_series"]
+        x_istime = kargs["x_istime"]
+        
+        def fit(ts_row, x_col, y_col, deg):
+            y = ts_row[y_col]
+            if x_col == "": # If there is no x column creates sequential range [1, len(y)]
+               x = np.arange(len(y)) + 1
+            else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.
+               if x_istime: 
+                   x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))
+                   x = x - x.min()
+                   x = x / x.max()
+                   x = x * (len(x) - 1) + 1
+               else:
+                   x = ts_row[x_col]
+            coeff = np.polyfit(x, y, deg)
+            p = np.poly1d(coeff)
+            z = p(x)
+            return z, coeff
+        
+        result = df
+        if len(df):
+           result[[y_fit_series, fit_coeff]] = df.apply(fit, axis=1, args=(x_series, y_series, degree,), result_type="expand")
+    ```;
     tbl
      | evaluate python(typeof(*), code, kwargs)
 };
@@ -267,14 +263,14 @@ demo_make_series1
 | extend fnum = dynamic(null), coeff=dynamic(null)
 | invoke series_fit_poly_fl('num', 'fnum', 'coeff', 8, 'TimeStamp', True)
 | render timechart with(ycolumns=num, fnum)
-```
+~~~
 
 ### [Stored](#tab/stored)
 
 > [!IMPORTANT]
 > For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
 
-```kusto
+~~~kusto
 let max_t = datetime(2016-09-03);
 demo_make_series1
 | where TimeStamp between ((max_t-2d)..max_t)
@@ -285,7 +281,7 @@ demo_make_series1
 | extend fnum = dynamic(null), coeff=dynamic(null)
 | invoke series_fit_poly_fl('num', 'fnum', 'coeff', 8, 'TimeStamp', True)
 | render timechart with(ycolumns=num, fnum)
-```
+~~~
 
 ---
 
@@ -298,40 +294,39 @@ demo_make_series1
 
 To use a query-defined function, invoke it after the embedded function definition.
 
-```kusto
+~~~kusto
 let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_coeff', fit_coeff, 'degree', degree, 'x_series', x_series, 'x_istime', x_istime);
-    let code=
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_fit_series = kargs["y_fit_series"]\n'
-        'fit_coeff = kargs["fit_coeff"]\n'
-        'degree = kargs["degree"]\n'
-        'x_series = kargs["x_series"]\n'
-        'x_istime = kargs["x_istime"]\n'
-        '\n'
-        'def fit(ts_row, x_col, y_col, deg):\n'
-        '    y = ts_row[y_col]\n'
-        '    if x_col == "": # If there is no x column creates sequential range [1, len(y)]\n'
-        '       x = np.arange(len(y)) + 1\n'
-        '    else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.\n'
-        '       if x_istime: \n'
-        '           x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))\n'
-        '           x = x - x.min()\n'
-        '           x = x / x.max()\n'
-        '           x = x * (len(x) - 1) + 1\n'
-        '       else:\n'
-        '           x = ts_row[x_col]\n'
-        '    coeff = np.polyfit(x, y, deg)\n'
-        '    p = np.poly1d(coeff)\n'
-        '    z = p(x)\n'
-        '    return z, coeff\n'
-        '\n'
-        'result = df\n'
-        'if len(df):\n'
-        '   result[[y_fit_series, fit_coeff]] = df.apply(fit, axis=1, args=(x_series, y_series, degree,), result_type="expand")\n'
-    ;
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_fit_series = kargs["y_fit_series"]
+        fit_coeff = kargs["fit_coeff"]
+        degree = kargs["degree"]
+        x_series = kargs["x_series"]
+        x_istime = kargs["x_istime"]
+        
+        def fit(ts_row, x_col, y_col, deg):
+            y = ts_row[y_col]
+            if x_col == "": # If there is no x column creates sequential range [1, len(y)]
+               x = np.arange(len(y)) + 1
+            else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.
+               if x_istime: 
+                   x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))
+                   x = x - x.min()
+                   x = x / x.max()
+                   x = x * (len(x) - 1) + 1
+               else:
+                   x = ts_row[x_col]
+            coeff = np.polyfit(x, y, deg)
+            p = np.poly1d(coeff)
+            z = p(x)
+            return z, coeff
+        
+        result = df
+        if len(df):
+           result[[y_fit_series, fit_coeff]] = df.apply(fit, axis=1, args=(x_series, y_series, degree,), result_type="expand")
+    ```;
     tbl
      | evaluate python(typeof(*), code, kwargs)
 };
@@ -344,14 +339,14 @@ range x from 1 to 200 step 1
 | invoke series_fit_poly_fl('y', 'y_fit', 'coeff', 5, 'x')
 |fork (project-away coeff) (project coeff | mv-expand coeff)
 | render linechart
-```
+~~~
 
 ### [Stored](#tab/stored)
 
 > [!IMPORTANT]
 > For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
 
-```kusto
+~~~kusto
 range x from 1 to 200 step 1
 | project x = rand()*5 - 2.3
 | extend y = pow(x, 5)-8*pow(x, 3)+10*x+6
@@ -361,7 +356,7 @@ range x from 1 to 200 step 1
 | invoke series_fit_poly_fl('y', 'y_fit', 'coeff', 5, 'x')
 |fork (project-away coeff) (project coeff | mv-expand coeff)
 | render linechart
-```
+~~~
 
 ---
 
