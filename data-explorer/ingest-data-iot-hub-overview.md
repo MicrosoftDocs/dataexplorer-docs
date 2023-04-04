@@ -120,9 +120,4 @@ See the [sample project](https://github.com/Azure-Samples/azure-iot-samples-csha
 
 ## Next steps
 
-There are various methods to ingest data into IoT Hub. See the following links for walkthroughs of each method.
-
-* [Ingest data from IoT Hub into Azure Data Explorer](ingest-data-iot-hub.md)
-* [Create an IoT Hub data connection for Azure Data Explorer by using C# (Preview)](data-connection-iot-hub-csharp.md)
-* [Create an IoT Hub data connection for Azure Data Explorer by using Python (Preview)](data-connection-iot-hub-python.md)
-* [Create an IoT Hub data connection for Azure Data Explorer by using Azure Resource Manager template](data-connection-iot-hub-resource-manager.md)
+* [Create an IoT Hub data connection](create-iot-hub-connection.md)
