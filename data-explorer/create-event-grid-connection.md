@@ -5,7 +5,7 @@ ms.topic: how-to
 ms.date: 04/03/2023
 ---
 
-# Create an Event Grid data connection
+# Create an Event Grid data connection in Azure Data Explorer
 
 In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that sets an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hubs.
 
@@ -22,7 +22,7 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 * An [ingestion mapping](kusto/management/mappings.md) for the table.
 * A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal). An Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
 
-## Connect to an Event Grid
+## Create an Event Grid data connection
 
 In this section, you'll establish a connection between Event Grid and your Azure Data Explorer table.
 
@@ -88,7 +88,7 @@ In this section, you'll establish a connection between Event Grid and your Azure
 
     :::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Screenshot of Deploy Event Grid overview page, showing a failed deployment.":::
 
-### [Portal - storage](#tab/portal-storage)
+### [Portal - Azure storage](#tab/portal-storage)
 
 1. Browse to the storage account in the Azure portal. On the left menu, select **Events**
 1. In the main pane, select the **Azure Data Explorer** tab.
@@ -417,7 +417,7 @@ The following example shows an Azure Resource Manager template for adding an Eve
 
 ---
 
-## Remove an Event Grid connection
+## Remove an Event Grid data connection
 
 ### [Portal](#tab/portal-2)
 
