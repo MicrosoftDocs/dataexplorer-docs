@@ -78,3 +78,37 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
 
 > [!WARNING]
 > In case of a [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover), recreate the data connection.
+
+---
+
+## Remove an IoT Hub data connection
+
+### [Portal](#tab/portal-2)
+
+To remove the IoT hub connection from the Azure portal, do the following:
+
+1. Go to your cluster. From the left menu, select **Databases**. Then, select the database that contains the target table.
+1. From the left menu, select **Data connections**. Then, select the checkbox next to the relevant IoT Hub data connection.
+1. From the top menu bar, select **Delete**.
+
+### [C#](#tab/c-sharp-2)
+
+To remove the IoT Hub connection, run the following command:
+
+```c#
+kustoManagementClient.DataConnections.Delete(resourceGroupName, clusterName, databaseName, dataConnectionName);
+```
+
+### [Python](#tab/python-2)
+
+To remove the IoT Hub connection, run the following command:
+
+```python
+kusto_management_client.data_connections.delete(resource_group_name=resource_group_name, cluster_name=kusto_cluster_name, database_name=kusto_database_name, data_connection_name=kusto_data_connection_name)
+```
+
+---
+
+## Next steps
+
+* [Query data in Azure Data Explorer](web-query-data.md)
