@@ -30,8 +30,8 @@ This article explains the vertical scaling workflow:
 1. To change your SKU, select a new SKU and then select **Apply**.
 
 > [!NOTE]
-> * The vertical scaling process can take a few minutes, and during that time your cluster will be  suspended. 
-> * Scaling down can harm your cluster performance.
+> * During the vertical scaling process we first prepare the new VMSS in parallel to the old cluster's VMSS continuing to provide service. This process may take tens of minutes. Only when the new VMSS is ready, switchover is performed to the new VMSS. The parallel process makes the SKU migration experience relatively seamless, with minimal service disruption during the switchover process (~1-3 mins). Query performance may be impacted during SKU migration. The impact may vary due to different usage patterns.
+> * Clusters with VNET networking configuration may experience longer service disruptions. 
 > * The price is an estimate of the cluster's virtual machines and Azure Data Explorer service costs. Other costs are not included. See Azure Data Explorer [cost estimator](https://dataexplorer.azure.com/AzureDataExplorerCostEstimator.html) page for an estimate and the Azure Data Explorer [pricing page](https://azure.microsoft.com/pricing/details/data-explorer/) for full pricing information.
 
 You've now configured vertical scaling for your Azure Data Explorer cluster. Add another rule for a horizontal scaling. If you need assistance with cluster-scaling issues, [open a support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) in the Azure portal.
