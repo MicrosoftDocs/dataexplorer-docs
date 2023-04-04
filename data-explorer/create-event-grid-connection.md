@@ -286,7 +286,7 @@ The **Data connection** pane opens with the **Basics** tab selected.
 
 ### [ARM template](#tab/arm-template)
 
-The following example shows an Azure Resource Manager template for adding an Event Hubs data connection. You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) by using the form.
+The following example shows an Azure Resource Manager template for adding an Event Grid data connection. You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) by using the form.
 
 ```json
 {
@@ -421,15 +421,15 @@ The following example shows an Azure Resource Manager template for adding an Eve
 
 ### [Portal](#tab/portal-2)
 
-To remove the event hub connection from the Azure portal, do the following:
+To remove the Event Grid connection from the Azure portal, do the following:
 
 1. Go to your cluster. From the left menu, select **Databases**. Then, select the database that contains the target table.
-1. From the left menu, select **Data connections**. Then, select the checkbox next to the relevant event hub data connection.
+1. From the left menu, select **Data connections**. Then, select the checkbox next to the relevant Event Grid data connection.
 1. From the top menu bar, select **Delete**.
 
 ### [C#](#tab/c-sharp-2)
 
-To remove the event hub connection, run the following command:
+To remove the Event Grid connection, run the following command:
 
 ```c#
 kustoManagementClient.DataConnections.Delete(resourceGroupName, clusterName, databaseName, dataConnectionName);
@@ -437,7 +437,7 @@ kustoManagementClient.DataConnections.Delete(resourceGroupName, clusterName, dat
 
 ### [Python](#tab/python-2)
 
-To remove the event hub connection, run the following command:
+To remove the Event Grid connection, run the following command:
 
 ```python
 kusto_management_client.data_connections.delete(resource_group_name=resource_group_name, cluster_name=kusto_cluster_name, database_name=kusto_database_name, data_connection_name=kusto_data_connection_name)
