@@ -3,11 +3,13 @@ title: Configure a database using a Kusto Query Language script in Azure Data Ex
 description: Learn about how to use database script to run a Kusto Query Language script in Azure Data Explorer
 ms.reviewer: docohe
 ms.topic: how-to
-ms.date: 03/29/2023
+ms.date: 04/04/2023
 ---
 # Configure a database using a Kusto Query Language script
 
-You can run a Kusto Query Language script to configure your database during Azure Resource Management template (ARM template) deployment. A script is a list of one or more [control commands](kusto/management/index.md), each separated by one line break, and is created as a resource that will be accessed with the ARM template. The script can only run control commands that start with the following verbs:
+You can run a Kusto Query Language script to configure your database during Azure Resource Management template (ARM template) deployment. A script is a list of one or more [control commands](kusto/management/index.md), each separated by one line break, and is created as a resource that will be accessed with the ARM template.
+
+The script can only run control commands that start with the following verbs:
 
 * `.create`
 * `.create-or-alter`
@@ -15,6 +17,8 @@ You can run a Kusto Query Language script to configure your database during Azur
 * `.alter`
 * `.alter-merge`
 * `.add`
+
+Those commands must apply to the database and must therefore be "database level" (e.g. `.create-or-alter table`) as opposed to "cluster level" (e.g. `.alter cluster` policies).
 
 In general, we recommended using the idempotent version of commands so that if they're called more than once with the same input parameters, they have no additional effect. In other words, running the command multiple times has the same effect as running it once. For example, where possible, we recommend using the idempotent command `.create-or-alter` over the regular `.create` command.
 
