@@ -163,18 +163,9 @@ items:
       - name: IoT Hub data connection
         displayName: ingest data, ingestion
         href: ingest-data-iot-hub-overview.md
-      - name: Azure portal
-        displayName: IoT Hub, ingest, data connection
-        href: ingest-data-iot-hub.md
-      - name: C#
-        displayName: IoT Hub, ingest, data connection
-        href: data-connection-iot-hub-csharp.md
-      - name: Python
-        displayName: IoT Hub, ingest, data connection
-        href: data-connection-iot-hub-python.md
-      - name: Azure Resource Manager template
-        displayName: IoT Hub, ingest, data connection
-        href: data-connection-iot-hub-resource-manager.md
+      - name: Create an IoT Hub data connection
+        displayName: ingest ingestion
+        href: create-iot-hub-connection.md
     - name: Azure Data Factory
       items:
       - name: Integration with Data Factory
