@@ -30,11 +30,11 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
 
 1. In the left menu of your Azure Data Explorer cluster, select **Databases** then select the database that contains your target table.
 
-    :::image type="content" source="media/ingest-data-iot-hub/select-database.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing a list of databases with testdb selected.":::
+    :::image type="content" source="media/ingest-data-iot-hub/select-database.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing a list of databases with testdb selected.":::
 
 1. Select **Data connections** and **Add data connection**. From the dropdown, select **IoT Hub**.
 
-    :::image type="content" source="media/ingest-data-iot-hub/add-data-connection.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data Ingestion window with the Add data connection tab selected.":::
+    :::image type="content" source="media/ingest-data-iot-hub/add-data-connection.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing the Data Ingestion window with the Add data connection tab selected.":::
 
 1. Fill out the form with the following information.
 
@@ -47,7 +47,7 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
     | Consumer group |  The consumer group defined in the IoT Hub built-in endpoint |
     | Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties.|
 
-    :::image type="content" source="media/ingest-data-iot-hub/create-data-connection.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data connection form.":::
+    :::image type="content" source="media/ingest-data-iot-hub/create-data-connection.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing the Data connection form.":::
 
     > [!NOTE]
     >
@@ -56,7 +56,7 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
 
 1. Depending on your use case, you may want to turn on multi-database routing. For more information about database routing, see [Events routing](ingest-data-iot-hub-overview.md#events-routing).
 
-    :::image type="content" source="media/ingest-data-iot-hub/data-connection-allow-multi-database.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the Data routing settings option set to allow.":::
+    :::image type="content" source="media/ingest-data-iot-hub/data-connection-allow-multi-database.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing the Data routing settings option set to allow.":::
 
 1. Fill out the following routing settings:
 
@@ -67,7 +67,7 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
     | Mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **testdb**, which maps incoming data to the column names and data types of **testdb**. If not specified, an [identity data mapping](kusto/management/mappings.md#identity-mapping) derived from the table's schema is used. |
     | | |
 
-    :::image type="content" source="media/ingest-data-iot-hub/table-routing-settings.png" alt-text="Screenshot of the Azure Data Explorer Web U I , showing the default routing settings in the Target table form.":::
+    :::image type="content" source="media/ingest-data-iot-hub/table-routing-settings.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing the default routing settings in the Target table form.":::
 
     > [!NOTE]
     >
@@ -140,7 +140,7 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
     | sharedAccessPolicyName | *iothubforread* | The name of the shared access policy that defines the permissions for devices and services to connect to IoT Hub. |
     | consumerGroup | *$Default* | The consumer group of your event hub.|
     | location | *Central US* | The location of the data connection resource.|
-    | databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-iot-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-iot-hub-overview.md#events-routing). |
+    | databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection is routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-iot-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-iot-hub-overview.md#events-routing). |
 
 ### [Python](#tab/python)
 
@@ -213,7 +213,7 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
     | shared_access_policy_name | *iothubforread* | The name of the shared access policy that defines the permissions for devices and services to connect to IoT Hub. |
     | consumer_group | *$Default* | The consumer group of your event hub.|
     | location | *Central US* | The location of the data connection resource.|
-    | database_routing | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-iot-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-iot-hub-overview.md#events-routing). |
+    | database_routing | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection is routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-iot-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-iot-hub-overview.md#events-routing). |
 
 ### [ARM template](#tab/arm-template)
 
@@ -344,7 +344,7 @@ The following example shows an Azure Resource Manager template for adding an IoT
 
 ### [Portal](#tab/portal-2)
 
-To remove the IoT hub connection from the Azure portal, do the following:
+To remove the IoT Hub connection from the Azure portal, do the following:
 
 1. Go to your cluster. From the left menu, select **Databases**. Then, select the database that contains the target table.
 1. From the left menu, select **Data connections**. Then, select the checkbox next to the relevant IoT Hub data connection.
