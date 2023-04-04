@@ -91,6 +91,22 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     import com.microsoft.azure.kusto.data.KustoOperationResult;
     import com.microsoft.azure.kusto.data.KustoResultSetTable;
     import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
+
+    public class BasicQuery {
+      public static void main(String[] args) {
+        try {
+          String cluster_uri = "https://help.kusto.windows.net/";
+          ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
+
+          try (Client query_client = ClientFactory.createClient(kcsb)) {
+          } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+          }
+        } catch (Exception e) {
+          System.out.println("Error: " + e.getMessage());
+        }
+      }
+    }
     ```
 
     ---
@@ -102,11 +118,11 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     ```csharp
     var database = "Samples";
     var query = @"StormEvents
-                    | where EventType == 'Tornado'
-                    | extend TotalDamage = DamageProperty + DamageCrops
-                    | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
-                    | where DailyDamage > 100000000
-                    | order by DailyDamage desc";
+                  | where EventType == 'Tornado'
+                  | extend TotalDamage = DamageProperty + DamageCrops
+                  | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
+                  | where DailyDamage > 100000000
+                  | order by DailyDamage desc";
     ```
 
     ### [Python](#tab/python)
@@ -138,6 +154,15 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     ### [Java](#tab/java)
 
     ```java
+    String database = "Samples";
+    String query = """
+                   StormEvents
+                   | where EventType == 'Tornado'
+                   | extend TotalDamage = DamageProperty + DamageCrops
+                   | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
+                   | where DailyDamage > 100000000
+                   | order by DailyDamage desc
+                   """;
     ```
 
     ---
@@ -190,6 +215,13 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     ### [Java](#tab/java)
 
     ```java
+    KustoOperationResult response = query_client.execute(database, query);
+    KustoResultSetTable primary_results = response.getPrimaryResults();
+
+    System.out.println("Daily tornado damages over 100,000,000$:");
+    while (primary_results.next()) {
+      System.out.println(primary_results.getString("StartTime") + " - " + primary_results.getString("State") + " , " + primary_results.getString("DailyDamage"));
+    }
     ```
 
     ---
@@ -307,6 +339,44 @@ main();
 ### [Java](#tab/java)
 
 ```java
+package com.develop.basic.query;
+
+import com.microsoft.azure.kusto.data.Client;
+import com.microsoft.azure.kusto.data.ClientFactory;
+import com.microsoft.azure.kusto.data.KustoOperationResult;
+import com.microsoft.azure.kusto.data.KustoResultSetTable;
+import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
+
+public class BasicQuery {
+  public static void main(String[] args) {
+    try {
+      String cluster_uri = "https://help.kusto.windows.net/";
+      ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
+      try (Client query_client = ClientFactory.createClient(kcsb)) {
+        String database = "Samples";
+        String query = """
+                       StormEvents
+                       | where EventType == 'Tornado'
+                       | extend TotalDamage = DamageProperty + DamageCrops
+                       | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
+                       | where DailyDamage > 100000000
+                       | order by DailyDamage desc
+                       """;
+        KustoOperationResult response = query_client.execute(database, query);
+        KustoResultSetTable primary_results = response.getPrimaryResults();
+
+        System.out.println("Daily tornado damages over 100,000,000$:");
+        while (primary_results.next()) {
+          System.out.println(primary_results.getString("StartTime") + " - " + primary_results.getString("State") + " , " + primary_results.getString("DailyDamage"));
+        }
+      } catch (Exception e) {
+        System.out.println("Error: " + e.getMessage());
+      }
+    } catch (Exception e) {
+      System.out.println("Error: " + e.getMessage());
+    }
+  }
+}
 ```
 
 ---
@@ -385,8 +455,8 @@ while (response.Read())
 
 ```python
 state_col = 0
-damage_col = 2
 start_time_col = next(col.ordinal for col in response.primary_results[0].columns if col.column_name == "StartTime")
+damage_col = 2
 
 print("Daily damages over 100,000,000$:")
 for row in response.primary_results[0]:
@@ -411,6 +481,13 @@ for (row of response.primaryResults[0].rows()) {
 ### [Java](#tab/java)
 
 ```java
+Integer columnNoState = 0;
+Integer columnNoStartTime = primary_results.findColumn("StartTime");
+Integer columnNoDailyDamage = 2;
+
+while (primary_results.next()) {
+  System.out.println(primary_results.getString(columnNoStartTime) + " - " + primary_results.getString(columnNoState) + " , " + primary_results.getString(columnNoDailyDamage));
+}
 ```
 
 ---
@@ -446,7 +523,7 @@ import uuid;
 
 crp = ClientRequestProperties()
 # Set a custom client request identifier
-crp.client_request_id = "QueryDemo;" + str(uuid.uuid4())
+crp.client_request_id = "QueryDemo" + str(uuid.uuid4())
 # Set the query timeout to 1 minute
 crp.set_option(crp.request_timeout_option_name, datetime.timedelta(minutes=1))
 
@@ -461,7 +538,7 @@ const uuid = require('uuid');
 
 const crp = new ClientRequestProperties();
 // Set a custom client request identifier
-crp.clientRequestId = "QueryDemo;" + uuid.v4();
+crp.clientRequestId = "QueryDemo" + uuid.v4();
 // Set the query timeout to 1 minute
 crp.setServerTimeout(1000 * 60);
 
@@ -473,6 +550,17 @@ let response = await query_client.execute(database, query, crp);
 ### [Java](#tab/java)
 
 ```java
+import com.microsoft.azure.kusto.data.ClientRequestProperties;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
+ClientRequestProperties crp = new ClientRequestProperties();
+// Set a custom client request identifier
+crp.setClientRequestId("QueryDemo" + UUID.randomUUID());
+// Set the query timeout to 1 minute
+crp.setTimeoutInMilliSec(TimeUnit.MINUTES.toMillis(60));
+
+KustoOperationResult response = query_client.execute(database, query, crp);
 ```
 
 ---
@@ -569,6 +657,27 @@ for (row of response.primaryResults[0].rows()) {
 ### [Java](#tab/java)
 
 ```java
+String query = """
+               declare query_parameters(event_type:string, daily_damage:int);
+               StormEvents
+               | where EventType == event_type
+               | extend TotalDamage = DamageProperty + DamageCrops
+               | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
+               | where DailyDamage > daily_damage
+               | order by DailyDamage desc
+               """;
+
+ClientRequestProperties crp = new ClientRequestProperties();
+crp.setParameter("event_type", "Flash Flood");
+crp.setParameter("daily_damage", 200000000);
+
+KustoOperationResult response = query_client.execute(database, query, crp);
+KustoResultSetTable primary_results = response.getPrimaryResults();
+
+System.out.println("Daily flash flood damages over 200,000,000$:");
+while (primary_results.next()) {
+  System.out.println("DEBUG: " + primary_results.getString(columnNoStartTime) + " - " + primary_results.getString(columnNoState) + " , " + primary_results.getString(columnNoDailyDamage));
+}
 ```
 
 ---
@@ -644,7 +753,7 @@ def main():
 
   crp = ClientRequestProperties()
 
-  crp.client_request_id = "QueryDemo;" + str(uuid.uuid4())
+  crp.client_request_id = "QueryDemo" + str(uuid.uuid4())
   crp.set_option(crp.request_timeout_option_name, timedelta(minutes=1))
   crp.set_parameter("event_type", "Flash Flood")
   crp.set_parameter("daily_damage", str(200000000))
@@ -663,9 +772,9 @@ def main():
     response = query_client.execute_query(database, query, crp)
 
     state_col = 0
+    start_time_col = next(col.ordinal for col in response.primary_results[0].columns if col.column_name == "StartTime")
     damage_col = 2
 
-    start_time_col = next(col.ordinal for col in response.primary_results[0].columns if col.column_name == "StartTime")
 
     print("Daily flash flood damages over 200,000,000$:")
     for row in response.primary_results[0]:
@@ -699,7 +808,7 @@ async function main() {
 
   const crp = new ClientRequestProperties();
   // Set a custom client request identifier
-  crp.clientRequestId = "QueryDemo;" + uuid.v4();
+  crp.clientRequestId = "QueryDemo" + uuid.v4();
   // Set the query timeout to 1 minute
   crp.setTimeout(1000 * 60);
 
@@ -726,6 +835,60 @@ main();
 ### [Java](#tab/java)
 
 ```java
+package com.develop.basic.query;
+
+import com.microsoft.azure.kusto.data.Client;
+import com.microsoft.azure.kusto.data.ClientFactory;
+import com.microsoft.azure.kusto.data.KustoOperationResult;
+import com.microsoft.azure.kusto.data.KustoResultSetTable;
+import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
+import com.microsoft.azure.kusto.data.ClientRequestProperties;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
+public class BasicQuery {
+  public static void main(String[] args) {
+    try {
+      String cluster_uri = "https://help.kusto.windows.net/";
+      ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
+      try (Client query_client = ClientFactory.createClient(kcsb)) {
+        String database = "Samples";
+        String query = """
+                       declare query_parameters(event_type:string, daily_damage:int);
+                       StormEvents
+                       | where EventType == event_type
+                       | extend TotalDamage = DamageProperty + DamageCrops
+                       | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
+                       | where DailyDamage > daily_damage
+                       | order by DailyDamage desc
+                       """;
+        ClientRequestProperties crp = new ClientRequestProperties();
+        // Set a custom client request identifier
+        crp.setClientRequestId("QueryDemo" + UUID.randomUUID());
+        // Set the query timeout to 1 minute
+        crp.setTimeoutInMilliSec(TimeUnit.MINUTES.toMillis(60));
+        crp.setParameter("event_type", "Flash Flood");
+        crp.setParameter("daily_damage", 200000000);
+
+        KustoOperationResult response = query_client.execute(database, query, crp);
+        KustoResultSetTable primary_results = response.getPrimaryResults();
+
+        Integer columnNoState = 0;
+        Integer columnNoStartTime = primary_results.findColumn("StartTime");
+        Integer columnNoDailyDamage = 2;
+
+        System.out.println("Daily flash flood damages over 200,000,000$:");
+        while (primary_results.next()) {
+          System.out.println("DEBUG: " + primary_results.getString(columnNoStartTime) + " - " + primary_results.getString(columnNoState) + " , " + primary_results.getString(columnNoDailyDamage));
+        }
+      } catch (Exception e) {
+        System.out.println("Error: " + e.getMessage());
+      }
+    } catch (Exception e) {
+      System.out.println("Error: " + e.getMessage());
+    }
+  }
+}
 ```
 
 ---
