@@ -3,10 +3,10 @@ title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Hubs.'
 ms.topic: how-to
 ms.custom: devx-track-arm-template
-ms.date: 03/30/2023
+ms.date: 04/04/2023
 ---
 
-# Create an Event Hubs data connection
+# Create an Event Hubs data connection for Azure Data Explorer
 
 Azure Data Explorer offers ingestion from [Event Hubs](/azure/event-hubs/event-hubs-about), a big data streaming platform and event ingestion service. Event Hubs can process millions of events per second in near real time.
 
@@ -20,7 +20,7 @@ In this article, you'll connect to an event hub and ingest data into Azure Data 
 * An [ingestion mapping](kusto/management/mappings.md) for the table.
 * An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
 
-## Connect to an event hub
+## Create an event hub data connection
 
 In this section, you'll establish a connection between the event hub and your Azure Data Explorer table. As long as this connection is in place, data is transmitted from the event hub into your target table. If the event hub is moved to a different resource or subscription, you'll need to update or recreate the connection.
 
@@ -54,7 +54,7 @@ The following steps will guide you through creating an event hub connection thro
 
 > [!NOTE]
 >
-> * To use the wizard, you must have at least [Database User](/data-explorer/kusto/management/access-control/role-based-access-control.md) permissions.
+> * To use the wizard, you must have at least [Database User](kusto/management/access-control/role-based-access-control.md) permissions.
 > * To enable access between a cluster and a storage account without public access, see [Create a Managed Private Endpoint](security-network-private-endpoint-create.md).
 > * The cluster and event hub should be associated with the same tenants. If not, use one of the SDK options, such as C# or Python.
 
@@ -372,7 +372,7 @@ The following example shows an Azure Resource Manager template for adding an Eve
 
 ---
 
-## Remove an event hub connection
+## Remove an event hub data connection
 
 ### [Portal](#tab/portal-2)
 
