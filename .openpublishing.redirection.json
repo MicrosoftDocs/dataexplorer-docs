@@ -574,6 +574,26 @@
       "source_path": "data-explorer/kusto/query/samples.md",
       "redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
       "redirect_document_id": false
-    }
+    },
+    {
+      "source_path": "data-explorer/ingest-data-event-grid.md",
+      "redirect_url": "/azure/data-explorer/create-event-grid-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/data-connection-event-grid-csharp.md",
+      "redirect_url": "/azure/data-explorer/create-event-grid-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/data-connection-event-grid-python.md",
+      "redirect_url": "/azure/data-explorer/create-event-grid-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/data-connection-event-grid-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/create-event-grid-connection",
+      "redirect_document_id": false
+    },
   ]
 }
