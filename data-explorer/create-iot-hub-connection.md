@@ -79,6 +79,265 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
 > [!WARNING]
 > In case of a [manual failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover), recreate the data connection.
 
+### [C#](#tab/c-sharp)
+
+1. Install the [Microsoft.Azure.Management.Kusto NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+
+1. [Create an Azure AD application principal](/azure/active-directory/develop/howto-create-service-principal-portal) to use for authentication. You'll need the directory (tenant) ID, application ID, and client secret.
+
+1. Run the following code.
+
+    ```csharp
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+    var clientSecret = "PlaceholderClientSecret";//Client Secret
+    var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+    var credential = new ClientCredential(clientId, clientSecret);
+    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
+    
+    var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
+    
+    var kustoManagementClient = new KustoManagementClient(credentials)
+    {
+        SubscriptionId = subscriptionId
+    };
+    
+    var resourceGroupName = "testrg";
+    //The cluster and database that are created as part of the Prerequisites
+    var clusterName = "mykustocluster";
+    var databaseName = "mykustodatabase";
+    var dataConnectionName = "myeventhubconnect";
+    //The IoT hub that is created as part of the Prerequisites
+    var iotHubResourceId = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Devices/IotHubs/xxxxxx";
+    var sharedAccessPolicyName = "iothubforread";
+    var consumerGroup = "$Default";
+    var location = "Central US";
+    //The table and column mapping are created as part of the Prerequisites
+    var tableName = "StormEvents";
+    var mappingRuleName = "StormEvents_CSV_Mapping";
+    var dataFormat = DataFormat.CSV;
+    var databaseRouting = "Multi";
+    
+    await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, clusterName, databaseName, dataConnectionName,
+                new IotHubDataConnection(iotHubResourceId, consumerGroup, sharedAccessPolicyName, tableName: tableName, location: location, mappingRuleName: mappingRuleName, dataFormat: dataFormat, databaseRouting: databaseRouting));
+    ```
+
+    |**Setting** | **Suggested value** | **Field description**|
+    |---|---|---|
+    | tenantId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Your tenant ID. Also known as directory ID.|
+    | subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The subscription ID that you use for resource creation.|
+    | clientId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The client ID of the application that can access resources in your tenant.|
+    | clientSecret | *PlaceholderClientSecret* | The client secret of the application that can access resources in your tenant. |
+    | resourceGroupName | *testrg* | The name of the resource group containing your cluster.|
+    | clusterName | *mykustocluster* | The name of your cluster.|
+    | databaseName | *mykustodatabase* | The name of the target database in your cluster.|
+    | dataConnectionName | *myeventhubconnect* | The desired name of your data connection.|
+    | tableName | *StormEvents* | The name of the target table in the target database.|
+    | mappingRuleName | *StormEvents_CSV_Mapping* | The name of your column mapping related to the target table.|
+    | dataFormat | *csv* | The data format of the message.|
+    | iotHubResourceId | *Resource ID* | The resource ID of your IoT hub that holds the data for ingestion. |
+    | sharedAccessPolicyName | *iothubforread* | The name of the shared access policy that defines the permissions for devices and services to connect to IoT Hub. |
+    | consumerGroup | *$Default* | The consumer group of your event hub.|
+    | location | *Central US* | The location of the data connection resource.|
+    | databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-iot-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-iot-hub-overview.md#events-routing). |
+
+### [Python](#tab/python)
+
+1. Install the required libraries.
+
+    ```python
+    pip install azure-common
+    pip install azure-mgmt-kusto
+    ```
+
+1. [Create an Azure AD application principal](/azure/active-directory/develop/howto-create-service-principal-portal) to use for authentication. You'll need the directory (tenant) ID, application ID, and client secret.
+
+1. Run the following code.
+
+    ```Python
+    from azure.mgmt.kusto import KustoManagementClient
+    from azure.mgmt.kusto.models import IotHubDataConnection
+    from azure.common.credentials import ServicePrincipalCredentials
+    
+    #Directory (tenant) ID
+    tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Application ID
+    client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Client Secret
+    client_secret = "xxxxxxxxxxxxxx"
+    subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    credentials = ServicePrincipalCredentials(
+            client_id=client_id,
+            secret=client_secret,
+            tenant=tenant_id
+        )
+    kusto_management_client = KustoManagementClient(credentials, subscription_id)
+    
+    resource_group_name = "testrg"
+    #The cluster and database that are created as part of the Prerequisites
+    cluster_name = "mykustocluster"
+    database_name = "mykustodatabase"
+    data_connection_name = "myeventhubconnect"
+    #The IoT hub that is created as part of the Prerequisites
+    iot_hub_resource_id = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Devices/IotHubs/xxxxxx";
+    shared_access_policy_name = "iothubforread"
+    consumer_group = "$Default"
+    location = "Central US"
+    #The table and column mapping that are created as part of the Prerequisites
+    table_name = "StormEvents"
+    mapping_rule_name = "StormEvents_CSV_Mapping"
+    data_format = "csv"
+    database_routing = "Multi"
+    
+    #Returns an instance of LROPoller, check https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+    poller = kusto_management_client.data_connections.create_or_update(resource_group_name=resource_group_name, cluster_name=cluster_name, database_name=database_name, data_connection_name=data_connection_name,
+                                                parameters=IotHubDataConnection(iot_hub_resource_id=iot_hub_resource_id, shared_access_policy_name=shared_access_policy_name,
+                                                                                    consumer_group=consumer_group, table_name=table_name, location=location, mapping_rule_name=mapping_rule_name, data_format=data_format, database_routing=database_routing))
+    ```
+
+    |**Setting** | **Suggested value** | **Field description**|
+    |---|---|---|
+    | tenant_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Your tenant ID. Also known as directory ID.|
+    | subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The subscription ID that you use for resource creation.|
+    | client_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The client ID of the application that can access resources in your tenant.|
+    | client_secret | *xxxxxxxxxxxxxx* | The client secret of the application that can access resources in your tenant. |
+    | resource_group_name | *testrg* | The name of the resource group containing your cluster.|
+    | cluster_name | *mykustocluster* | The name of your cluster.|
+    | database_name | *mykustodatabase* | The name of the target database in your cluster.|
+    | data_connection_name | *myeventhubconnect* | The desired name of your data connection.|
+    | table_name | *StormEvents* | The name of the target table in the target database.|
+    | mapping_rule_name | *StormEvents_CSV_Mapping* | The name of your column mapping related to the target table.|
+    | data_format | *csv* | The data format of the message.|
+    | iot_hub_resource_id | *Resource ID* | The resource ID of your IoT hub that holds the data for ingestion.|
+    | shared_access_policy_name | *iothubforread* | The name of the shared access policy that defines the permissions for devices and services to connect to IoT Hub. |
+    | consumer_group | *$Default* | The consumer group of your event hub.|
+    | location | *Central US* | The location of the data connection resource.|
+    | database_routing | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-iot-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-iot-hub-overview.md#events-routing). |
+
+### [ARM template](#tab/arm-template)
+
+The following example shows an Azure Resource Manager template for adding an IoT Hub data connection.  You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) by using the form.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "IotHubs_iothubdemo_name": {
+            "type": "string",
+            "defaultValue": "iothubdemo",
+            "metadata": {
+                "description": "Specifies the IoT Hub name."
+            }
+        },
+        "iothubpolices_iothubowner_name": {
+            "type": "string",
+            "defaultValue": "iothubowner",
+            "metadata": {
+                "description": "Specifies the shared access policy name."
+            }
+        },
+        "consumergroup_default_name": {
+            "type": "string",
+            "defaultValue": "$Default",
+            "metadata": {
+                "description": "Specifies the consumer group of the IoT Hub."
+            }
+        },
+        "Clusters_kustocluster_name": {
+            "type": "string",
+            "defaultValue": "kustocluster",
+            "metadata": {
+                "description": "Specifies the name of the cluster"
+            }
+        },
+        "databases_kustodb_name": {
+            "type": "string",
+            "defaultValue": "kustodb",
+            "metadata": {
+                "description": "Specifies the name of the database"
+            }
+        },
+        "tables_kustotable_name": {
+            "type": "string",
+            "defaultValue": "kustotable",
+            "metadata": {
+                "description": "Specifies the name of the table"
+            }
+        },
+        "mapping_kustomapping_name": {
+            "type": "string",
+            "defaultValue": "kustomapping",
+            "metadata": {
+                "description": "Specifies the name of the mapping rule"
+            }
+        },
+        "dataformat_type": {
+            "type": "string",
+            "defaultValue": "csv",
+            "metadata": {
+                "description": "Specifies the data format"
+            }
+        },
+           "databaseRouting_type": {
+            "type": "string",
+            "defaultValue": "Single",
+            "metadata": {
+                "description": "The database routing for the connection. If you set the value to **Single**, the data connection will be routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* EventData property."
+            }
+        },
+        "dataconnections_kustodc_name": {
+            "type": "string",
+            "defaultValue": "kustodc",
+            "metadata": {
+                "description": "Name of the data connection to create"
+            }
+        },
+        "subscriptionId": {
+            "type": "string",
+            "defaultValue": "[subscription().subscriptionId]",
+            "metadata": {
+                "description": "Specifies the subscriptionId of the IoT Hub"
+            }
+        },
+        "resourceGroup": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().name]",
+            "metadata": {
+                "description": "Specifies the resourceGroup of the IoT Hub"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location for all resources."
+            }
+        }
+    },
+    "variables": {
+    },
+    "resources": [{
+            "type": "Microsoft.Kusto/Clusters/Databases/DataConnections",
+            "apiVersion": "2019-09-07",
+            "name": "[concat(parameters('Clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'), '/', parameters('dataconnections_kustodc_name'))]",
+            "location": "[parameters('location')]",
+            "kind": "IotHub",
+            "properties": {
+                "iotHubResourceId": "[resourceId(parameters('subscriptionId'), parameters('resourceGroup'), 'Microsoft.Devices/IotHubs', parameters('IotHubs_iothubdemo_name'))]",
+                "consumerGroup": "[parameters('consumergroup_default_name')]",
+                "sharedAccessPolicyName": "[parameters('iothubpolices_iothubowner_name')]",
+                "tableName": "[parameters('tables_kustotable_name')]",
+                "mappingRuleName": "[parameters('mapping_kustomapping_name')]",
+                "dataFormat": "[parameters('dataformat_type')]",
+                 "databaseRouting": "[parameters('databaseRouting_type')]"
+            }
+        }
+    ]
+}
+```
+
 ---
 
 ## Remove an IoT Hub data connection
