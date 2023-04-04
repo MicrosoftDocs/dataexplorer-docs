@@ -38,7 +38,7 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
       {
         static void Main(string[] args)
         {
-          string cluster_uri = "https://help.kusto.windows.net/";
+          var cluster_uri = "https://help.kusto.windows.net/";
           var kcsb = new KustoConnectionStringBuilder(cluster_uri)
               .WithAadUserPromptAuthentication();
 
@@ -60,6 +60,9 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
       kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
 
       with KustoClient(kcsb) as query_client:
+
+    if __name__ == "__main__":
+      main()
     ```
 
     ### [Node.js](#tab/nodejs)
@@ -67,6 +70,15 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     ```nodejs
     const KustoClient = require("azure-kusto-data").Client;
     const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+
+    async function main() {
+      const cluster_uri = "https://help.kusto.windows.net";
+      const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
+
+      const query_client = new KustoClient(kcsb);
+    }
+
+    main();
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -88,8 +100,8 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     ### [C\#](#tab/csharp)
 
     ```csharp
-    string database = "Samples";
-    string query = @"StormEvents
+    var database = "Samples";
+    var query = @"StormEvents
                     | where EventType == 'Tornado'
                     | extend TotalDamage = DamageProperty + DamageCrops
                     | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
@@ -112,6 +124,13 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
+    const database = "Samples";
+    const query = `StormEvents
+                   | where EventType == 'Tornado'
+                   | extend TotalDamage = DamageProperty + DamageCrops
+                   | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
+                   | where DailyDamage > 100000000
+                   | order by DailyDamage desc`;
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -133,7 +152,6 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
       int columnNoStartTime = response.GetOrdinal("StartTime");
       int columnNoState = response.GetOrdinal("State");
       int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
-
       Console.WriteLine("Daily tornado damages over 100,000,000$:");
 
       while (response.Read())
@@ -159,6 +177,12 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
+    let response = await query_client.execute(database, query);
+
+    console.log("Daily tornado damages over 100,000,000$:");
+    for (row of response.primaryResults[0].rows()) {
+      console.log(row["StartTime"].toString(), "-", row["State"].toString(), ",", row["DailyDamage"].toString(), "$");
+    }
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -252,6 +276,30 @@ if __name__ == "__main__":
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
+const KustoClient = require("azure-kusto-data").Client;
+const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+
+async function main() {
+  const cluster_uri = "https://help.kusto.windows.net";
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
+  const query_client = new KustoClient(kcsb);
+  
+  const database = "Samples";
+  const query = `StormEvents
+                 | where EventType == 'Tornado'
+                 | extend TotalDamage = DamageProperty + DamageCrops
+                 | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
+                 | where DailyDamage > 100000000
+                 | order by DailyDamage desc`;
+  let response = await query_client.execute(database, query);
+
+  console.log("Daily tornado damages over 100,000,000$:");
+  for (row of response.primaryResults[0].rows()) {
+    console.log(row["StartTime"].toString(), "-", row["State"].toString(), ",", row["DailyDamage"].toString(), "$");
+  }
+}
+
+main();
 ```
 
 <!-- ### [Go](#tab/go) -->
@@ -310,7 +358,7 @@ Daily damages tornado with damages over 100,000,000$:
 When the order of columns in a query result is known, it's more efficient to access the values of the columns by their ordinal position in the result set than by their column name. Optionally, at runtime you can use a library method to determine a column ordinal from its column name.
 
 > [!NOTE]
-> You can control the order of columns in a query result by using the [`project`](../../query/projectoperator.md) or [`project-away`](../../query/projectawayoperator.md) operators.
+> You can control the presence and order of columns in a query result by using the [`project`](../../query/projectoperator.md) or [`project-away`](../../query/projectawayoperator.md) operators.
 
 For example, you can modify the previous code to access the values of the `StartTime`, `State`, and `DailyDamage` columns by their ordinal positions in the result set:
 
@@ -322,7 +370,6 @@ In C#, you can only access the values of the columns by their ordinal positions 
 int columnNoStartTime = response.GetOrdinal("StartTime");
 int columnNoState = response.GetOrdinal("State");
 int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
-
 Console.WriteLine("Daily tornado damages over 100,000,000$:");
 
 while (response.Read())
@@ -339,7 +386,6 @@ while (response.Read())
 ```python
 state_col = 0
 damage_col = 2
-
 start_time_col = next(col.ordinal for col in response.primary_results[0].columns if col.column_name == "StartTime")
 
 print("Daily damages over 100,000,000$:")
@@ -350,6 +396,14 @@ for row in response.primary_results[0]:
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
+const columnNoState = 0;
+const columnNoStartTime = response.primaryResults[0].columns.find(c => c.name == "StartTime").ordinal;
+const columnNoDailyDamage = 2;
+console.log("Daily tornado damages over 100,000,000$:");
+
+for (row of response.primaryResults[0].rows()) {
+  console.log(row.getValueAt(columnNoStartTime).toString(), "-", row.getValueAt(columnNoState).toString(), ",", row.getValueAt(columnNoDailyDamage).toString(), "$");
+}
 ```
 
 <!-- ### [Go](#tab/go) -->
@@ -363,9 +417,9 @@ for row in response.primary_results[0]:
 
 ## Customize query behavior with client request properties
 
-You can customize the behavior of a query by setting client request properties. For more information, see [client request properties](../netfx/request-properties.md).
+You can customize the behavior of a query by setting client request properties. For more information on available options, see [client request properties](../netfx/request-properties.md).
 
-For example, you can replace the query_client.execute_query call in the previous code to set the query timeout to 1 minute and pass a customer request ID. To use the client request properties, you must import the `ClientRequestProperties` class.
+For example, you can replace the query_client.execute_query call in the previous code to pass a custom request ID and set the query timeout to 1 minute. To use the client request properties, you must import the `ClientRequestProperties` class.
 
 ### [C\#](#tab/csharp)
 
@@ -373,7 +427,9 @@ For example, you can replace the query_client.execute_query call in the previous
 using Kusto.Data.Common;
 
 var crp = new ClientRequestProperties();
+// Set a custom client request identifier
 crp.ClientRequestId = "QueryDemo" + Guid.NewGuid().ToString();
+// Set the query timeout to 1 minute
 crp.SetOption(ClientRequestProperties.OptionServerTimeout, "1m");
 
 using (var response = query_client.ExecuteQuery(database, query, crp))
@@ -384,21 +440,32 @@ using (var response = query_client.ExecuteQuery(database, query, crp))
 ### [Python](#tab/python)
 
 ```python
-from azure.kusto.data import KustoClient, KustoConnectionStringBuilder, ClientRequestProperties
+from azure.kusto.data import ClientRequestProperties
 from datetime import datetime
 import uuid;
 
 crp = ClientRequestProperties()
-
+# Set a custom client request identifier
 crp.client_request_id = "QueryDemo;" + str(uuid.uuid4())
+# Set the query timeout to 1 minute
 crp.set_option(crp.request_timeout_option_name, datetime.timedelta(minutes=1))
 
-response = query_client.execute_query(database=database, query=query, properties=crp)
+response = query_client.execute_query(database, query, crp)
 ```
 
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
+const ClientRequestProperties = require("azure-kusto-data").ClientRequestProperties;
+const uuid = require('uuid');
+
+const crp = new ClientRequestProperties();
+// Set a custom client request identifier
+crp.clientRequestId = "QueryDemo;" + uuid.v4();
+// Set the query timeout to 1 minute
+crp.setServerTimeout(1000 * 60);
+
+let response = await query_client.execute(database, query, crp);
 ```
 
 <!-- ### [Go](#tab/go) -->
@@ -412,7 +479,7 @@ response = query_client.execute_query(database=database, query=query, properties
 
 ## Use query parameters to protect user input
 
-You can use query parameters to prevent KQL injection and ensure the safe handling of user input passed to a KQL query. By not including user input as part of the query text, query parameters provide a secure method for managing input that is entered into a KQL query. This feature is crucial for maintaining the security and protection of your data, safeguarding it from potential malicious actors who may attempt to gain unauthorized access or corrupt your data. For more information about parameterized queries, see [Query parameters declaration statement](../../query/queryparametersstatement.md).
+This feature is important for maintaining the security and protection of your data, safeguarding it from potential malicious actors that may attempt to gain unauthorized access to or corrupt your data. For more information about parameterized queries, see [Query parameters declaration statement](../../query/queryparametersstatement.md).
 
 For example, you can modify the previous code to pass the *EventType* value and *DailyDamage* minimum value as parameters to the query. To use parameters:
 
@@ -440,7 +507,6 @@ using (var response = query_client.ExecuteQuery(database, query, crp))
   int columnNoStartTime = response.GetOrdinal("StartTime");
   int columnNoState = response.GetOrdinal("State");
   int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
-
   Console.WriteLine("Daily flash flood damages over 200,000,000$:");
 
   while (response.Read())
@@ -465,11 +531,10 @@ query = "declare query_parameters(event_type:string, daily_damage:int);"\
         "| order by DailyDamage desc"
 
 crp = ClientRequestProperties()
-
 crp.set_parameter("event_type", "Flash Flood")
 crp.set_parameter("daily_damage", str(200000000))
 
-response = query_client.execute_query(database=database, query=query, properties=crp)
+response = query_client.execute_query(=database, query, crp)
 
 print("Daily flash flood damages over 200,000,000$:")
 for row in response.primary_results[0]:
@@ -479,6 +544,24 @@ for row in response.primary_results[0]:
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
+const query = `declare query_parameters(event_type:string, daily_damage:int);
+               StormEvents
+               | where EventType == event_type
+               | extend TotalDamage = DamageProperty + DamageCrops
+               | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
+               | where DailyDamage > daily_damage
+               | order by DailyDamage desc`;
+
+const crp = new ClientRequestProperties();
+crp.setParameter("event_type", "Flash Flood");
+crp.setParameter("daily_damage", 200000000);
+
+let response = await query_client.execute(database, query, crp);
+
+console.log("Daily flash flood damages over 200,000,000$:");
+for (row of response.primaryResults[0].rows()) {
+  console.log(row.getValueAt(columnNoStartTime).toString(), "-", row.getValueAt(columnNoState).toString(), ",", row.getValueAt(columnNoDailyDamage).toString(), "$");
+}
 ```
 
 <!-- ### [Go](#tab/go) -->
@@ -577,7 +660,7 @@ def main():
             "| where DailyDamage > daily_damage" \
             "| order by DailyDamage desc"
 
-    response = query_client.execute_query(database=database, query=query, properties=crp)
+    response = query_client.execute_query(database, query, crp)
 
     state_col = 0
     damage_col = 2
@@ -595,6 +678,47 @@ if __name__ == "__main__":
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
+const KustoClient = require("azure-kusto-data").Client;
+const ClientRequestProperties = require("azure-kusto-data").ClientRequestProperties;
+const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+const uuid = require('uuid');
+
+async function main() {
+  const cluster_uri = "https://help.kusto.windows.net";
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
+  const query_client = new KustoClient(kcsb);
+  
+  const database = "Samples";
+  const query = `declare query_parameters(event_type:string, daily_damage:int);
+                 StormEvents
+                 | where EventType == event_type
+                 | extend TotalDamage = DamageProperty + DamageCrops
+                 | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
+                 | where DailyDamage > daily_damage
+                 | order by DailyDamage desc`;
+
+  const crp = new ClientRequestProperties();
+  // Set a custom client request identifier
+  crp.clientRequestId = "QueryDemo;" + uuid.v4();
+  // Set the query timeout to 1 minute
+  crp.setTimeout(1000 * 60);
+
+  crp.setParameter("event_type", "Flash Flood");
+  crp.setParameter("daily_damage", 200000000);
+
+  let response = await query_client.execute(database, query, crp);
+
+  const columnNoState = 0;
+  const columnNoStartTime = response.primaryResults[0].columns.find(c => c.name == "StartTime").ordinal;
+  const columnNoDailyDamage = 2;
+
+  console.log("Daily flash flood damages over 200,000,000$:");
+  for (row of response.primaryResults[0].rows()) {
+    console.log(row.getValueAt(columnNoStartTime).toString(), "-", row.getValueAt(columnNoState).toString(), ",", row.getValueAt(columnNoDailyDamage).toString(), "$");
+  }
+}
+
+main();
 ```
 
 <!-- ### [Go](#tab/go) -->

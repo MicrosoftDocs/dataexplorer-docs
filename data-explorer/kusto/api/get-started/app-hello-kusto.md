@@ -126,7 +126,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [C\#](#tab/csharp)
 
     ```csharp
-    string cluster_uri = "https://help.kusto.windows.net/";
+    var cluster_uri = "https://help.kusto.windows.net/";
     var kcsb = new KustoConnectionStringBuilder(cluster_uri).WithAadUserPromptAuthentication();
     ```
 
@@ -202,8 +202,8 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [C\#](#tab/csharp)
 
     ```csharp
-    string database = "Samples";
-    string query = "print Welcome='Hello Kusto!'";
+    var database = "Samples";
+    var query = "print Welcome='Hello Kusto!'";
     ```
 
     ### [Python](#tab/python)
