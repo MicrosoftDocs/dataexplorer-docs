@@ -2,10 +2,10 @@
 title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Hubs.'
 ms.topic: how-to
-ms.date: 03/30/2023
+ms.date: 04/04/2023
 ---
 
-# Create an Event Hubs data connection
+# Create an Event Hubs data connection in Azure Data Explorer
 
 Azure Data Explorer offers ingestion from [Event Hubs](/azure/event-hubs/event-hubs-about), a big data streaming platform and event ingestion service. Event Hubs can process millions of events per second in near real time.
 
@@ -19,7 +19,7 @@ In this article, you'll connect to an event hub and ingest data into Azure Data 
 * An [ingestion mapping](kusto/management/mappings.md) for the table.
 * An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
 
-## Connect to an event hub
+## Create an event hub data connection
 
 In this section, you'll establish a connection between the event hub and your Azure Data Explorer table. As long as this connection is in place, data is transmitted from the event hub into your target table. If the event hub is moved to a different resource or subscription, you'll need to update or recreate the connection.
 
@@ -371,7 +371,7 @@ The following example shows an Azure Resource Manager template for adding an Eve
 
 ---
 
-## Remove an event hub connection
+## Remove an event hub data connection
 
 ### [Portal](#tab/portal-2)
 
