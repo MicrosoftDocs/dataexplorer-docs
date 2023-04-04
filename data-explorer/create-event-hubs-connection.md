@@ -54,7 +54,7 @@ The following steps will guide you through creating an event hub connection thro
 
 > [!NOTE]
 >
-> * To use the wizard, you must have at least [Database User](/data-explorer/kusto/management/access-control/role-based-access-control.md) permissions.
+> * To use the wizard, you must have at least [Database User](kusto/management/access-control/role-based-access-control.md) permissions.
 > * To enable access between a cluster and a storage account without public access, see [Create a Managed Private Endpoint](security-network-private-endpoint-create.md).
 > * The cluster and event hub should be associated with the same tenants. If not, use one of the SDK options, such as C# or Python.
 
