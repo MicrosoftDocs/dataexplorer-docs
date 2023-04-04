@@ -408,7 +408,7 @@ node basic-query.js
 ### [Java](#tab/java)
 
 ```bash
-java HelloKusto
+java BasicQuery
 ```
 
 ---
