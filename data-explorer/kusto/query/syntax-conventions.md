@@ -37,7 +37,7 @@ hash("World")
 
 * The name of the function, `hash`, and the opening parenthesis are entered exactly as shown.
 * "World" is passed as an argument for the required *source* parameter.
-* No argument is passed for the *mod* parameter, which is optional as indicated by the square brackets. If an argument
+* No argument is passed for the *mod* parameter, which is optional as indicated by the square brackets.
 * The closing parenthesis is entered exactly as shown.
 
 ### Tabular operator
