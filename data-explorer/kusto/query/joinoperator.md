@@ -233,7 +233,7 @@ let Y = datatable(Key:string, Value2:long)
     'c',20,
     'c',30,
     'd',40,
-    'k',50,
+    'k',50
 ];
 X | join kind=inner Y on Key
 ```
