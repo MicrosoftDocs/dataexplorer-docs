@@ -42,7 +42,8 @@ To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the
 |Authentication method|Connection string syntax|Description|
 |--|--|--|--|
 |Account key|`;AccountKey=`|Append the account key to the connection string.|
-|Azure AD access token|`{ token: <token> }`|Provide the token in the *Options* argument.|
+|ARM resource ID|`{ armResourceId: <id> }`|Provide the ID in the `armResourceId` field of the *Options* argument.|
+|Azure AD access token|`{ token: <token> }`|Provide the token in the `token` field of the *Options* argument.|
 
 ## Set callout policy
 
