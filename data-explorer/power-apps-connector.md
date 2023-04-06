@@ -3,7 +3,7 @@ title: Create Power Apps application to query data in Azure Data Explorer
 description: Learn how to create an application in Power Apps based on data in Azure Data Explorer
 ms.reviewer: olgolden
 ms.topic: how-to
-ms.date: 04/03/2023
+ms.date: 04/04/2023
 ---
 # Create :::no-loc text="Power Apps"::: application to query data in Azure Data Explorer
 
@@ -18,8 +18,7 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
 ## Connect to Azure Data Explorer Connector
 
-1. Navigate to [https://make.powerapps.com/](https://make.powerapps.com/) and sign-in.
-
+1. Go to [https://make.powerapps.com/](https://make.powerapps.com/) and sign in.
 1. On the left menu, select **more** > **Connections**.
 1. Select **+ New connection**.
 
