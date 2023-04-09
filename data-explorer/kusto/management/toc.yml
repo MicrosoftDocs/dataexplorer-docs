@@ -123,6 +123,8 @@ items:
       items:
       - name: Create and alter SQL Server external tables
         href: external-sql-tables.md
+      - name: Query SQL Server external tables
+        href: external-sql-tables-query.md
     - name: ".drop external table"
       href: drop-external-table.md
     - name: ".show external table"
