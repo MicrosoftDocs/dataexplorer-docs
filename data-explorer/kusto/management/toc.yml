@@ -121,9 +121,9 @@ items:
         href: show-external-table-artifacts.md
     - name: SQL Server external tables
       items:
-      - name: Create and alter SQL Server external tables
+      - name: Create and alter external table
         href: external-sql-tables.md
-      - name: Query SQL Server external tables
+      - name: Query SQL external table
         href: external-sql-tables-query.md
     - name: ".drop external table"
       href: drop-external-table.md
