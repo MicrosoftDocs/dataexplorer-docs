@@ -8,7 +8,7 @@ ms.date: 03/20/2023
 # Export data to an external table
 
 You can export data by defining an [external table](../show-external-tables.md) and exporting data to it.
- The table properties are specified when [creating the external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table).
+ The table properties are specified when [creating the external table](../external-tables-azurestorage-azuredatalake.md).
  The export command references the external table by name.
 
 ## Permissions

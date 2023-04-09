@@ -136,7 +136,7 @@ external_table("ExternalTable")
 | `fileExtension`  | `string` | If set, indicates file extensions of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
 | `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
 | `sampleUris`     | `bool`   | If set, the command result provides several examples of simulated external data files URI as they're expected by the external table definition. This option helps validate whether the *Partitions* and *PathFormat* parameters are defined properly. |
-| `filesPreview`   | `bool`   | If set, one of the command result tables contains a preview of [.show external table artifacts](#show-external-table-artifacts) command. Like `sampleUri`, the option helps validate the *Partitions* and *PathFormat* parameters of external table definition. |
+| `filesPreview`   | `bool`   | If set, one of the command result tables contains a preview of [.show external table artifacts](kusto/management/show-external-table-artifacts.md) command. Like `sampleUri`, the option helps validate the *Partitions* and *PathFormat* parameters of external table definition. |
 | `validateNotEmpty` | `bool`   | If set, the connection strings are validated for having content in them. The command will fail if the specified URI location doesn't exist, or if there are insufficient permissions to access it. |
 | `dryRun` | `bool` | If set, the external table definition isn't persisted. This option is useful for validating the external table definition, especially in conjunction with the `filesPreview` or `sampleUris` parameter. |
 
@@ -144,7 +144,7 @@ external_table("ExternalTable")
 > The external table isn't accessed during creation, only during query and export. Use the `validateNotEmpty` optional property during creation to make sure the table definition is valid and the storage is accessible.
 
 > [!TIP]
-> To learn more about the role `namePrefix` and `fileExtension` properties play in data file filtering during query, see [file filtering logic](#file-filtering) section.
+> To learn more about the role `namePrefix` and `fileExtension` properties play in data file filtering during query, see [file filtering logic](#file-filtering-logic) section.
 
 ### File filtering logic
 
