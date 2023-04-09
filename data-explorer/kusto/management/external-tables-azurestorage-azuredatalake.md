@@ -8,10 +8,10 @@ ms.date: 04/09/2023
 
 # Create and alter Azure Storage external tables
 
-The following article describes how to create or alter an external table located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
+The commands in this article can be used to create or alter an Azure Storage [external table](../query/schema-entities/externaltables.md) in the database from which the command is executed. An Azure Storage external table references data located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
 
 > [!NOTE]
-> The external table is created in the database in which the command is executed. If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
+> If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
 
 ## Permissions
 
