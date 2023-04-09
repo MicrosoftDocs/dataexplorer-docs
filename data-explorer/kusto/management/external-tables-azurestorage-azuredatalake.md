@@ -10,25 +10,23 @@ ms.date: 04/09/2023
 
 The following article describes how to create or alter an external table located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
 
-The external table is created in the database in which the command is executed. If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
-
 > [!NOTE]
-> The external table isn't accessed during creation, only during query and export. Use the `validateNotEmpty` optional property during creation to make sure the table definition is valid and the storage is accessible.
+> The external table is created in the database in which the command is executed. If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
 
 ## Permissions
 
-|Action|Minimum permissions|
+|Command|Minimum permissions|
 |--|--|
 |`.create`|[Database User](../management/access-control/role-based-access-control.md)|
 |`.alter`|[Table Admin](../management/access-control/role-based-access-control.md)|
-|`.create-or-alter`|If the table exists, then [Table Admin](../management/access-control/role-based-access-control.md) permissions are required.<br/><br/>To create an external table with managed identity authentication [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions are required.|
+|`.create-or-alter`|If the table exists, then Table Admin permissions are required. Otherwise, Database User permissions.<br/>To create a table with managed identity authentication, [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions are required.|
 
 ## Syntax
 
 (`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema*`)` `kind` `=` `storage` [`partition` `by` `(`*Partitions*`)` [`pathformat` `=` `(`*PathFormat*`)`]] `dataformat` `=` *DataFormat* `(`*StorageConnectionString* [`,` ...] `)` [`with` `(`*Property* [`,` ...]`)`]  
 
 > [!NOTE]
-> The `kind` is `storage` for all Azure Storage external data store types. `blob` and `adl` are deprecated terms.|
+> `kind` is `storage` for all Azure Storage external data store types. `blob` and `adl` are deprecated terms.
 
 ## Parameters
 
@@ -37,7 +35,7 @@ The external table is created in the database in which the command is executed. 
 |*TableName*|string|&check;|An external table name that adheres to the [entity names](../query/schema-entities/entity-names.md) rules. An external table can't have the same name as a regular table in the same database.|
 |*Schema*|string|&check;|The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*. If the schema is unknown, use [infer\_storage\_schema](../query/inferstorageschemaplugin.md) to infer the schema based on external file contents.|
 |*Partitions*|string|| A comma-separated list of columns by which the external table is partitioned. Partition column can exist in the data file itself, or as part of the file path. See [partitions formatting](#partitions-formatting) to learn how this value should look.|
-|*PathFormat*|string||An external data folder URI path format to use with partitions. See [partitions formatting](#partitions-formatting).|
+|*PathFormat*|string||An external data folder URI path format to use with partitions. See [path format](#path-format).|
 |*DataFormat*|string|&check;|The data format, which can be any of the [ingestion formats](../../ingestion-supported-formats.md). We recommend using the `Parquet` format for external tables to improve query and export performance, unless you use `JSON` paths mapping. When using an external table for [export scenario](data-export/export-data-to-an-external-table.md), you're limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.|
 |*StorageConnectionString*|string|&check;|One or more comma-separated paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 file systems or Azure Data Lake Gen 1 containers, including credentials. The external table storage type is determined by the provided connection strings. See [storage connection strings](../api/connection-strings/storage-connection-strings.md).|
 |*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
@@ -56,15 +54,15 @@ The following table lists the supported authentication methods for Azure Storage
 
 | Authentication method | Azure Blob Storage / Data Lake Storage Gen2 | Data Lake Storage Gen1 |
 |--|--|--|
-|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Read permissions: Storage Blob Data Reader<br/>Write permissions:Storage Blob Data Contributor|Read permissions: Reader<br/>Write permissions: Contributor|
-|[Managed identity](../api/connection-strings/storage-authentication-methods.md#managed-identity)|Read permissions: Storage Blob Data Reader<br/>Write permissions: Storage Blob Data Contributor|Read permissions: Reader<br/>Write permissions: Contributor|
-|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Read permissions: List + Read<br/>Write permissions: Write|This authentication method isn't supported in Gen1.|
-|[Azure AD access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|||
-|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
+|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:**Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
+|[Managed identity](../api/connection-strings/storage-authentication-methods.md#managed-identity)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
+|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|**Read permissions:** List + Read<br/>**Write permissions:** Write|This authentication method isn't supported in Gen1.|
+|[Azure AD access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|No additional permissions required.|No additional permissions required.|
+|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|No additional permissions required.|This authentication method isn't supported in Gen1.|
 
 ## Partitions formatting
 
-The partitions list is any combination of partition columns, specified using one of the forms described in the following table.
+The partitions list is any combination of partition columns, specified using one of the forms shown in the following table.
 
 |Partition Type|Syntax|Notes|
 |--|--|--|
@@ -74,7 +72,9 @@ The partitions list is any combination of partition columns, specified using one
 |Truncated datetime column (value)|*PartitionName* `:` `datetime` `=` (`startofyear` \| `startofmonth` \| `startofweek` \| `startofday`) `(` *ColumnName* `)`|See documentation on [startofyear](../query/startofyearfunction.md), [startofmonth](../query/startofmonthfunction.md), [startofweek](../query/startofweekfunction.md), or [startofday](../query/startofdayfunction.md) functions.|
 |Truncated Datetime Column Value (bin)|*PartitionName* `:` `datetime` `=` `bin` `(` *ColumnName* `,` *TimeSpan* `)`|Read more about the [bin](../query/binfunction.md) function.|
 
-*PathFormat* is a way to specify the format for the external data folder URI path in addition to partitions. It consists of a sequence of partition elements and text separators. A partition element refers to a partition that is declared in the partition `by` clause, and the text separator is any text enclosed in quotes. Consecutive partition elements must be set apart using the text separator.
+### Path format
+
+The *PathFormat* parameter allows you to specify the format for the external data folder URI path in addition to partitions. It consists of a sequence of partition elements and text separators. A partition element refers to a partition that is declared in the partition `by` clause, and the text separator is any text enclosed in quotes. Consecutive partition elements must be set apart using the text separator.
 
 [ *StringSeparator* ] *Partition* [ *StringSeparator* ] [*Partition* [ *StringSeparator* ] ...]
 
@@ -139,6 +139,9 @@ external_table("ExternalTable")
 | `filesPreview`   | `bool`   | If set, one of the command result tables contains a preview of [.show external table artifacts](#show-external-table-artifacts) command. Like `sampleUri`, the option helps validate the *Partitions* and *PathFormat* parameters of external table definition. |
 | `validateNotEmpty` | `bool`   | If set, the connection strings are validated for having content in them. The command will fail if the specified URI location doesn't exist, or if there are insufficient permissions to access it. |
 | `dryRun` | `bool` | If set, the external table definition isn't persisted. This option is useful for validating the external table definition, especially in conjunction with the `filesPreview` or `sampleUris` parameter. |
+
+> [!NOTE]
+> The external table isn't accessed during creation, only during query and export. Use the `validateNotEmpty` optional property during creation to make sure the table definition is valid and the storage is accessible.
 
 > [!TIP]
 > To learn more about the role `namePrefix` and `fileExtension` properties play in data file filtering during query, see [file filtering logic](#file-filtering) section.
