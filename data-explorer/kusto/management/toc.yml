@@ -103,10 +103,14 @@ items:
       href: clear-table-data-command.md
   - name: External tables
     items:
-    - name: Create and alter Azure Storage external tables
-      href: external-tables-azurestorage-azuredatalake.md
-    - name: Create and alter SQL Server external tables
-      href: external-sql-tables.md
+    - name: Azure Storage external tables
+      items:
+      - name: Create and alter Azure Storage external tables
+        href: external-tables-azurestorage-azuredatalake.md
+    - name: SQL Server external tables
+      items:
+      - name: Create and alter SQL Server external tables
+        href: external-sql-tables.md
     - name: ".drop external table"
       href: drop-external-table.md
     - name: ".show external table"
