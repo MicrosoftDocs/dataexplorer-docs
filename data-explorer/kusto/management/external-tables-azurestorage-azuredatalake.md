@@ -250,3 +250,9 @@ external_table("ExternalTable")
 |TableName|TableType|Folder|DocString|Properties|ConnectionStrings|Partitions|PathFormat|
 |---------|---------|------|---------|----------|-----------------|----------|----------|
 |ExternalTable|Blob|ExternalTables|Docs|{"Format":"Csv","Compressed":false,"CompressionType":null,"FileExtension":null,"IncludeHeaders":"None","Encoding":null,"NamePrefix":null}|["https://storageaccount.blob.core.windows.net/container1;\*\*\*\*\*\*\*"]|[{"Mod":10,"Name":"CustomerId","ColumnName":"CustomerName","Ordinal":0},{"Function":"StartOfDay","Name":"Date","ColumnName":"Timestamp","Ordinal":1}]|"customer\_id=" CustomerId "/dt=" datetime\_pattern("yyyyMMdd",Date)|
+
+## Next steps
+
+* [Query external tables](../../data-lake-query-data.md).
+* [Export data to an external table](data-export/export-data-to-an-external-table.md).
+* [Continuous data export to an external table](data-export/continuous-data-export.md).
