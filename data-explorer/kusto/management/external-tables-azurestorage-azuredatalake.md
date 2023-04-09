@@ -15,11 +15,9 @@ The commands in this article can be used to create or alter an Azure Storage [ex
 
 ## Permissions
 
-|Command|Minimum permissions|
-|--|--|
-|`.create`|[Database User](../management/access-control/role-based-access-control.md)|
-|`.alter`|[Table Admin](../management/access-control/role-based-access-control.md)|
-|`.create-or-alter`|If the table exists, then Table Admin permissions are required. Otherwise, Database User permissions.<br/>To create a table with managed identity authentication, [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions are required.|
+To `.create` requires at least [Database User](../management/access-control/role-based-access-control.md) permissions, and to `.alter` requires at least [Table Admin](../management/access-control/role-based-access-control.md) permissions.
+
+To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
