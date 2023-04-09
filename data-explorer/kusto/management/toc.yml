@@ -105,7 +105,7 @@ items:
     items:
     - name: Azure Storage external tables
       items:
-      - name: Create and alter Azure Storage external tables
+      - name: Create or alter external table
         href: external-tables-azurestorage-azuredatalake.md
     - name: SQL Server external tables
       items:
