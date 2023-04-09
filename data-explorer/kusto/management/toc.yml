@@ -110,13 +110,13 @@ items:
       - name: Manage external table mappings
         items:
         - name: .alter external table mapping
-          href: alter-external-table-mapping.md  
+          href: external-table-mapping-alter.md  
         - name: .create external table mapping
-          href: create-external-table-mapping.md
+          href: external-table-mapping-create.md
         - name: .drop external table mapping
-          href: drop-external-table-mapping.md
+          href: external-table-mapping-drop.md
         - name: .show external table mapping
-          href: show-external-table-mapping.md
+          href: external-table-mapping-show.md
       - name: Show external table artifacts
         href: show-external-table-artifacts.md
     - name: SQL Server external tables
