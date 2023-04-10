@@ -143,18 +143,8 @@ items:
       - name: Event Grid data connection
         displayName: ingest
         href: ingest-data-event-grid-overview.md
-      - name: Azure portal
-        displayName: Event Grid, ingest, data connection
-        href: ingest-data-event-grid.md
-      - name: C#
-        displayName: Event Grid, ingest, data connection
-        href: data-connection-event-grid-csharp.md
-      - name: Python
-        displayName: Event Grid, ingest, data connection
-        href: data-connection-event-grid-python.md
-      - name: Azure Resource Manager template
-        displayName: Event Grid, ingest, data connection
-        href: data-connection-event-grid-resource-manager.md
+      - name: Create an Event Grid data connection
+        href: create-event-grid-connection.md
       - name: Manually create resources in Azure portal
         displayName: Manually create resources for Event Grid ingestion, Ingest
         href: ingest-data-event-grid-manual.md
@@ -163,18 +153,9 @@ items:
       - name: IoT Hub data connection
         displayName: ingest data, ingestion
         href: ingest-data-iot-hub-overview.md
-      - name: Azure portal
-        displayName: IoT Hub, ingest, data connection
-        href: ingest-data-iot-hub.md
-      - name: C#
-        displayName: IoT Hub, ingest, data connection
-        href: data-connection-iot-hub-csharp.md
-      - name: Python
-        displayName: IoT Hub, ingest, data connection
-        href: data-connection-iot-hub-python.md
-      - name: Azure Resource Manager template
-        displayName: IoT Hub, ingest, data connection
-        href: data-connection-iot-hub-resource-manager.md
+      - name: Create an IoT Hub data connection
+        displayName: ingest ingestion
+        href: create-iot-hub-connection.md
     - name: Azure Data Factory
       items:
       - name: Integration with Data Factory

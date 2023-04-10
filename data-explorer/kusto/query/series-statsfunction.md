@@ -3,7 +3,7 @@ title: series_stats() - Azure Data Explorer
 description: Learn how to use the series_stats() function to calculate the statistics for a numerical series using multiple columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 03/29/2023
 ---
 # series_stats()
 
@@ -14,13 +14,13 @@ Returns statistics for a numerical series in a table with a column for each stat
 
 ## Syntax
 
-`...` `|` `extend` `(` *Name1* [`,` *Name2*...] `)` `=` `series_stats` `(` *series* [`,` *ignore_nonfinite*] `)`
+`...` `|` `extend` `(` *Name*`,` ... `)` `=` `series_stats` `(` *series* [`,` *ignore_nonfinite*] `)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Name1*, *Name2*, etc. | string | | The column labels for the output table. If not provided, the system will generate them. If you provide a limited number of names, the table will show only those columns.|
+| *Name* | string | | The column labels for the output table. If not provided, the system will generate them. If you provide a limited number of names, the table will show only those columns.|
 | *series* | dynamic | &check; | An array of numeric values.|
 | *ignore_nonfinite* | bool | | Determines if the calculation includes non-finite values like `null`, `NaN`, `inf`, and so on. The default is `false`, which will result in `null` if non-finite values are present.|
 

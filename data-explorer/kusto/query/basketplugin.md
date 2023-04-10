@@ -22,6 +22,9 @@ The `basket` plugin finds frequent patterns of attributes in the data and return
 |*MaxDimensions*|int|| Sets the maximal number of uncorrelated dimensions per basket, limited by default, to minimize the query runtime. The default is 5. To use the default value, input the tilde: `~`.<br/><br/>Example: `T | evaluate basket('~', '~', 3)`|
 |*CustomWildcard*|string||Sets the wildcard value for a specific type in the result table that will indicate that the current pattern doesn't have a restriction on this column. The default is `null` except for string columns whose default value is an empty string. If the default is a good value in the data, a different wildcard value should be used, such as `*`. To use the default value, input the tilde: `~`.<br/><br/>Example: `T | evaluate basket('~', '~', '~', '*', int(-1), double(-1), long(0), datetime(1900-1-1))`|
 
+> [!NOTE]
+> To specify an optional parameter that follows an optional parameter, make sure to provide a value for the preceding optional parameter. For more information, see [Working with optional parameters](syntax-conventions.md#working-with-optional-parameters).
+
 ## Returns
 
 The `basket` plugin returns frequent patterns that pass a ratio threshold. The default threshold is 0.05.
