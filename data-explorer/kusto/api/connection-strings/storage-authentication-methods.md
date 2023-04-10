@@ -7,7 +7,7 @@ ms.date: 02/23/2023
 ---
 # Storage authentication methods
 
-To interact with external storage from Azure Data Explorer, you must specify the external storage connection string. The connection string defines the resource to access and its authentication information.
+To interact with external storage, you must specify the external storage connection string. The connection string defines the resource to access and its authentication information.
 
 This article describes the following authentication methods:
 
@@ -54,7 +54,7 @@ The principal must have the necessary permissions to perform the operation. For 
 
 ## Managed identity
 
-Azure Data Explorer uses the managed identity to make requests and access resources. For a system-assigned managed identity, append `;managed_identity=system` to the connection string. For a user-assigned managed identity, append `;managed_identity={object_id}` to the connection string.
+The managed identity is used to make requests and access resources. For a system-assigned managed identity, append `;managed_identity=system` to the connection string. For a user-assigned managed identity, append `;managed_identity={object_id}` to the connection string.
 
 |Managed identity type|Example|
 |--|--|--|
@@ -64,7 +64,7 @@ Azure Data Explorer uses the managed identity to make requests and access resour
 The managed identity must have the necessary permissions to perform the operation. For example in Azure Blob Storage, to read from the blob the managed identity needs the Storage Blob Data Reader role and to export to the blob the managed identity needs the Storage Blob Data Contributor role. To learn more, see [Azure Blob Storage / Data Lake Storage Gen2 access control](/azure/storage/blobs/data-lake-storage-access-control-model#role-based-access-control-azure-rbac) or [Data Lake Storage Gen1 access control](/azure/data-lake-store/data-lake-store-security-overview#azure-rbac-for-account-management).
 
 > [!NOTE]
-> Managed identity is only supported in specific Azure Data Explorer flows. For more information, see [Managed identities overview](../../../managed-identities-overview.md).
+> Managed identity is only supported in specific flows. For more information, see [Managed identities overview](../../../managed-identities-overview.md).
 
 ## Shared Access (SAS) token
 
