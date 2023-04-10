@@ -57,7 +57,7 @@ To create or alter a database ingestion mapping requires at least [Database Inge
 
 | Name | Kind | Mapping | Database | Table |
 |--|--|--|
-| mapping1 | CSV | [{"Properties":{"Path":"$.rownumber"},"column":"rownumber","datatype":"int"},{"Properties":{"Path":"$.rowguid"},"column":"rowguid","datatype":""}] | MyDatabase | MyTable |
+| mapping1 | JSON | [{"Properties":{"Path":"$.rownumber"},"column":"rownumber","datatype":"int"},{"Properties":{"Path":"$.rowguid"},"column":"rowguid","datatype":""}] | MyDatabase | MyTable |
 
 ## Next steps
 
