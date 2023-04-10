@@ -1,22 +1,33 @@
 ---
-title: Create Power Apps application to query data in Azure Data Explorer
+title: Tutorial- Create Power Apps application to query data in Azure Data Explorer
 description: Learn how to create an application in Power Apps based on data in Azure Data Explorer
 ms.reviewer: olgolden
-ms.topic: how-to
+ms.topic: Tutorial
 ms.date: 04/04/2023
 ---
-# Create :::no-loc text="Power Apps"::: application to query data in Azure Data Explorer
+# Tutorial: Create :::no-loc text="Power Apps"::: application to query data in Azure Data Explorer
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more.
 
-:::no-loc text="Power Apps"::: is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps that connect to your business data. The :::no-loc text="Power Apps"::: connector is useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. In this article, you'll create an :::no-loc text="Power Apps"::: application to query Azure Data Explorer data. During this process, you'll see the steps of data parameterization, retrieval, and presentation.
+:::no-loc text="Power Apps"::: is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps that connect to your business data. The :::no-loc text="Power Apps"::: connector is useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. In this article, you'll create a :::no-loc text="Power Apps"::: application to query Azure Data Explorer data.
+
+Specifically, you learn how to:
+
+> [!div class="checklist"]
+>
+> * Create a connection in Power Apps.
+> * Create a new App.
+> * Add a data connector.
+> * 
 
 ## Prerequisites
 
 * Power platform license. Get started at [https://powerapps.microsoft.com](https://powerapps.microsoft.com).
 * Familiarity with the [:::no-loc text="Power Apps"::: suite](/powerapps/powerapps-overview).
 
-## Connect to Azure Data Explorer Connector
+## 1- Connect to Azure Data Explorer Connector
+
+<!-- Intro-->
 
 1. Go to [https://make.powerapps.com/](https://make.powerapps.com/) and sign in.
 1. On the left menu, select **more** > **Connections**.
@@ -32,10 +43,12 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
     :::image type="content" source="media/power-apps-connector/create-connector.png" alt-text="Screenshot of the Azure Data Explorer connection dialog box, highlighting the create button.":::
 
-## Create App
+## 2- Create App
+
+<!-- Intro-->
 
 1. On the left menu, select **Apps**.
-1. Select **+ New app** > **Canvas** in the menu bar.
+1. Select **+ New app** > **Canvas**.
 
     :::image type="content" source="media/power-apps-connector/create-new-app.png" alt-text="Screenshot of the apps page, showing the create a new canvas app button.":::
 
@@ -45,12 +58,14 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
 ### Add Connector
 
-1. On the left menu, select **Data**.
+<!-- Intro-->
+
+1. On the left pane, select **Data**.
 
     :::image type="content" source="media/power-apps-connector/select-data.png" alt-text="Screenshot of the navigation menu in the new app page. The menu option titled Data is highlighted.":::
 
 1. Select **Add data**.
-1. Expand **Connectors**, and then select **Azure Data Explorer**.
+1. Expand **Connectors**, select **Azure Data Explorer**, and then select your **Azure Data Explorer** user.
 
     :::image type="content" source="media/power-apps-connector/data-connectors-adx.png" alt-text="Screenshot of the app page showing a list of data connectors. The connector titled Azure Data Explorer is highlighted.":::
 
@@ -60,38 +75,52 @@ Under **Data**, you'll now see the **Azure Data Explorer** app in the list of co
 
 ### Save Your App
 
-1. Select **File** in the menu bar.
-1. Select **Save** in the left-hand navigation.
+<!-- Intro-->
+
+1. One the rightmost side of the ribbon, select **V** > **Save as**.
+
+    The app name is auto-populated with the name you entered in an earlier step. You can choose to change the name in this step.
 
     :::image type="content" source="media/power-apps-connector/save-app.png" alt-text="Screenshot of the app page, showing the save button.":::
 
-1. Enter a meaningful name for your app. Select the **Save** button in the lower right.
+1. Select **Save**.
 
-### Advanced Settings
+Before you create a data table and add a data source, you need to enable **Dynamic schema** and set your data row limit. Both of these are configured in the canvas **Settings**.
+
+### Settings
+
+#### Data row limit
+
+Set how many records are retrieved from server-based connections where delegation is not supported.
 
 1. On the left menu, select **Settings**.
-1. Select **Advanced settings**.
-1. Select **Dynamic schema** from resulting options. Enable this feature.
-
-    :::image type="content" source="media/power-apps-connector/dynamic-schema.png" alt-text="Screenshot of the settings page, showing the turn on dynamic schema setting.":::
-
-1. Search for the **Data row limit for non-delegable queries** setting. Set your returned records limit.
+1. Under **General**, scroll to **Data row limit**, and then set your returned records limit. The default limit is 500.
 
     :::image type="content" source="media/power-apps-connector/set-limit.png" alt-text="Screenshot of the settings page, showing the return results limit setting.":::
 
     > [!NOTE]
-    > The default limit is 500, with a maximum of 2,000 returned records.
+    > The limit value for returned records is between 1 and 2,000.
+
+#### Dynamic schema
+
+To capture and enable dynamically returned fields, turn on the **Dynamic schema** feature.
+
+1. Go to **Settings**.
+1. Under **Settings**, select **Upcoming features**.
+1. In the search box, enter **Dynamic schema**.
+1. Turn on the feature.
+
+    :::image type="content" source="media/power-apps-connector/dynamic-schema.png" alt-text="Screenshot of the settings page, showing the turn on dynamic schema setting.":::
 
 > [!IMPORTANT]
 > Save your app again and restart as required.
 
 ### Add Dropdown
 
-1. Select **Insert** in the menu bar.
-1. Select **Input** in the resulting sub menu bar.
-1. Select **Drop down** in the resulting dropdown.
-1. Select on the **Advanced** tab in the right-hand popout.
-1. Populate the **Items** input box with: ["CALIFORNIA","MICHIGAN"]
+1. On the ribbon, select **Insert**.
+1. Select **Input**, and then select **Drop down**.
+1. Expand the **Properties** pane on the rightmost of the canvas, and then select the **Advanced** tab.
+1. Under **Data**, replace the placeholder text for **Items** with: ["CALIFORNIA","MICHIGAN"].
 
     :::image type="content" source="media/power-apps-connector/populate-dropdown.png" alt-text="Screenshot of the app page, showing the populate items in dropdown menu." lightbox="media/power-apps-connector/populate-dropdown.png":::
 
@@ -117,15 +146,14 @@ Under **Data**, you'll now see the **Azure Data Explorer** app in the list of co
 ### Add Data Table
 
 1. Select **Insert** in the menu bar.
-1. Select **Data table** in the resulting sub menu bar.
-1. Reposition the data table and consider adding a border for visibility.
-1. Select the **Properties** tab in the right-hand popout. Select Results from the **Data Source** dropdown.
-1. Select **Edit fields** link.
-1. Select **+ Add field** in the resulting popout.
+1. Select **Layout**, and then select **Data table**. Reposition the data table as needed.
+1. Select the **Properties** tab in the **Properties pane**, and then expand the **Data source** options.
+1. Select **Results**.
+1. Select the **Edit fields** link, and then select **+ Add field**.
 
     :::image type="content" source="media/power-apps-connector/insert-data-table-small.png" alt-text="Screenshot of the app page, showing the repositioning of a table and adding border." lightbox="media/power-apps-connector/insert-data-table.png":::
 
-1. Select desired fields and select **Add** button. A preview of the selected data table appears.
+1. Select desired fields and select **Add**. A preview of the selected data table appears.
 
     :::image type="content" source="media/power-apps-connector/preview-table.png" alt-text="Screenshot of the app page, showing a preview of the table populated with data.":::
 
@@ -141,6 +169,14 @@ Under **Data**, you'll now see the **Azure Data Explorer** app in the list of co
 * :::no-loc text="Power Apps"::: has a limit of up to 2,000 results records returned to the client. The overall memory for those records can't exceed 64 MB and a time of seven minutes to run.
 * The connector doesn't support the [fork](./kusto/query/forkoperator.md) and [facet](./kusto/query/facetoperator.md) operators.
 * **Timeout exceptions**: The connector has a timeout limitation of 7 minutes. To avoid potential timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](./kusto/query/best-practices.md).
+
+## Clean up resources
+
+If you're not going to continue to use your app, you can delete it with the following steps
+
+1. Select **Back**, and then **Leave** to leave the app.
+1. Select **More Commands** for **MyApp** > **Delete**.
+1. Select **Delete from cloud** to permanently uninstall the app for all users. You can't recover deleted items.
 
 ## Next steps
 
