@@ -7,7 +7,9 @@ ms.date: 04/10/2023
 ---
 # .create-or-alter ingestion mapping
 
-Creates or alters an ingestion mapping that can be associated with a specific format and a specific table or database. If the specified ingestion mapping doesn't exist, then the command will create it. If the ingestion mapping already exists, it will be changed.
+Creates or alters an ingestion mapping that can be associated with a specific format and a specific table or database.
+
+If the ingestion mapping doesn't exist, the command will create it. If the ingestion mapping already exists, the command will modify it.
 
 ## Permissions
 
