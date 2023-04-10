@@ -49,7 +49,7 @@ Multiple factors can affect ingestion throughput. When planning your ingestion p
 Using Kusto client libraries to ingest data into Azure Data Explorer remains the cheapest and the most robust option. We urge our customers to review their ingestion methods to optimize for COGS (costs of goods sold) and to take advantage of the Azure Storage pricing that will make blob transactions significantly cost effective.
 
 * **Limit the number of ingested data chunks**.
-    For better control of your Azure Data Explorer ingestion costs and to reduce your monthly bill, limit the number of ingested data chunks (files/blobs/streams).
+    For better control of your ingestion costs and to reduce your monthly bill, limit the number of ingested data chunks (files/blobs/streams).
 * **Ingest large chunks of data (up to 1GB of uncompressed data)**. 
     Many teams attempt to achieve low latency by ingesting tens of millions of tiny chunks of data, which is inefficient and costly. 
 * **Batching**. Any amount of batching at the client side would improve optimization. 
