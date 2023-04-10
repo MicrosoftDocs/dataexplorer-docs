@@ -33,7 +33,7 @@ To create a database ingestion mapping requires at least [Database Ingestor](acc
 >
 > * Once created, the mapping can be referenced by its name in ingestion commands, instead of specifying the complete mapping as part of the command.
 > * If a mapping with the same name is created in both the table scope and the database scope, the mapping in the table scope will have a higher priority.
-> * If a mapping with same name in the given scope already exists, `.create` will fail. Use [`.create-or-alter`](create-or-alter-ingestion-mapping.md) instead.
+> * If a mapping with same name in the given scope already exists, `.create` will fail. Use [`.create-or-alter`](create-or-alter-ingestion-mapping-command.md) instead.
 > * When ingesting into a table and referencing a mapping whose schema does not match the ingested table schema, the ingest operation will fail.
 
 ## Examples
