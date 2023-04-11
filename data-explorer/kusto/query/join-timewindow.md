@@ -1,15 +1,16 @@
 ---
 title: Joining within time window - Azure Data Explorer
-description: This article describes Joining within time window in Azure Data Explorer.
+description: Learn how to perform a time window join operation to match between two large data sets.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/03/2023
+ms.date: 04/11/2023
 ---
 # Time window join
 
 It's often useful to join between two large data sets on some high-cardinality key, such as an operation ID or a session ID, and further limit the right-hand-side ($right) records that need to match up with each left-hand-side ($left) record by adding a restriction on the "time-distance" between datetime columns on the left and on the right.
 
 The function is useful in a join, like in the following scenario:
+
 * Join between two large data sets according to some high-cardinality key, such as an operation ID or a session ID.
 * Limit the right-hand-side ($right) records that need to match up with each left-hand-side ($left) record, by adding a restriction on the "time-distance" between datetime columns on the left and on the right.
 
@@ -50,7 +51,6 @@ T
 |1|A|2017-10-01 00:03:00.0000000|
 |3|A|2017-10-01 00:04:00.0000000|
 |3|B|2017-10-01 00:10:00.0000000|
-
 
 **Problem statement**
 

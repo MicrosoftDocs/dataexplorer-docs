@@ -1,13 +1,13 @@
 ---
 title: session_count plugin - Azure Data Explorer
-description: This article describes session_count plugin in Azure Data Explorer.
+description: Learn how to use the session_count plugin to calculate the session count based on the ID column over a timeline.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 04/11/2023
 ---
 # session_count plugin
 
-Calculates sessions count based on ID column over a timeline. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+Calculates the session count based on the ID column over a timeline. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
 
