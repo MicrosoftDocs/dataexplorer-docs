@@ -2,8 +2,8 @@
 title: Tutorial- Create Power Apps application to query data in Azure Data Explorer
 description: Learn how to create an application in Power Apps based on data in Azure Data Explorer
 ms.reviewer: olgolden
-ms.topic: Tutorial
-ms.date: 04/04/2023
+ms.topic: tutorial
+ms.date: 04/11/2023
 ---
 # Tutorial: Create :::no-loc text="Power Apps"::: application to query data in Azure Data Explorer
 
@@ -39,7 +39,7 @@ Specifically, you learn how to:
 
     :::image type="content" source="media/power-apps-connector/search-adx.png" alt-text="Screenshot of the new connection page, showing the search and select Azure Data Explorer connection.":::
 
-1. Select **Create** on the **Azure Data Explorer** popup. Provide credentials as required.
+1. Select **Create** on the **Azure Data Explorer** window that appears. Provide credentials as required.
 
     :::image type="content" source="media/power-apps-connector/create-connector.png" alt-text="Screenshot of the Azure Data Explorer connection dialog box, highlighting the create button.":::
 
@@ -52,7 +52,7 @@ Specifically, you learn how to:
 
     :::image type="content" source="media/power-apps-connector/create-new-app.png" alt-text="Screenshot of the apps page, showing the create a new canvas app button.":::
 
-1. Under **App name**, enter a name for your app. The format is set to **Tablet** by default.
+1. Under **App name**, enter a name for your app. **Format** is set to **Tablet** by default.
 1. Select Create.
     :::image type="content" source="media/power-apps-connector/blank-canvas.png" alt-text="Screenshot of the new app page, showing highlighting the tablet layout option.":::
 
@@ -74,8 +74,6 @@ Under **Data**, you'll now see the **Azure Data Explorer** app in the list of co
    :::image type="content" source="media/power-apps-connector/adx-appears.png" alt-text="Screenshot of the app page, showing the Azure Data Explorer in the list of data connectors.":::
 
 ### Save Your App
-
-<!-- Intro-->
 
 1. One the rightmost side of the ribbon, select **V** > **Save as**.
 
