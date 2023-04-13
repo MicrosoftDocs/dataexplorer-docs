@@ -26,13 +26,13 @@ By using horizontal scaling, you can scale the instance count automatically, bas
 
 ### Manual scale
 
-Manual scale is the default setting during cluster creation. The cluster has a static capacity that doesn't change automatically. You select the static capacity by using the **Instance count** bar. The cluster's scaling remains at that setting until you make another change.
+In the Manual scale option the cluster has a static capacity that doesn't change automatically. You select the static capacity by using the **Instance count** bar. The cluster's scaling remains at that setting until you make another change.
 
    ![Manual scale method.](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
 ### Optimized autoscale
 
-Optimized autoscale is the recommended scaling method. This method optimizes cluster performance and cost, as follows:
+Optimized autoscale is the default setting during cluster creation and the recommended scaling method. This method optimizes cluster performance and cost, as follows:
 
 * If the cluster is underutilized, it is scaled in to lower cost without affecting the required performance.
 * If the cluster is overutilized, it is scaled out to maintain optimal performance.
