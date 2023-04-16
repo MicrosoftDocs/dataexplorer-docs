@@ -27,7 +27,7 @@ including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/s
 
 * [GitHub Repository](https://github.com/Azure/azure-kusto-python)
 
-    [![Build status badge](https://github.com/Azure/azure-kusto-python/actions/workflows/pythonpackage.yml/badge.svg)](https://github.com/Azure/azure-kusto-python/actions/workflows/pythonpackage.yml)
+    [![Build status badge](https://badge.fury.io/py/azure-kusto-python.svg)](https://github.com/Azure/azure-kusto-python/actions/workflows/build.yml)
 
 * Pypi packages:
 
