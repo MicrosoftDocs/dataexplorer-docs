@@ -101,8 +101,7 @@ let log_reduce_predict_fl=(tbl:(*), models_tbl: (name:string, timestamp: datetim
     ```;
     tbl
     | evaluate hint.distribution=per_node python(typeof(Count:int, LogReduce:string, example:string), code, kwargs)
-}
-;
+};
 HDFS_log_100k
 | take 1000
 | invoke log_reduce_predict_fl(models_tbl=ML_Models, model_name="HDFS_100K", reduce_col="data")
