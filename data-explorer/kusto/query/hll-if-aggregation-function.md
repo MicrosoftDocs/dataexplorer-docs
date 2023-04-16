@@ -3,7 +3,7 @@ title: hll_if() (aggregation function) - Azure Data Explorer
 description: Learn how to use the hll_if() function to calculate the intermediate results of the dcount() function.
 ms.reviewer: ziham
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 04/16/2023
 ---
 # hll_if() (aggregation function)
 
@@ -35,8 +35,6 @@ Returns the intermediate results of distinct count of *Expr* for which *Predicat
 > - You can use [`dcount_hll`](dcount-hllfunction.md), to calculate the distinct count from `hll`,`hll_merge`, or `hll_if` aggregation functions.
 
 ## Examples
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2OQQrCMBBF955imFUCuUIXXSiIYBcpuCw1ndBI2ylJqlQ8vDEBd/Ph/fdHR/bz8UlLDIcPvEbyBDr2kcAtIPDc3GpUgJf6qmuNMjFhm+feuzfBOE2dnZgHqPLtrNC8eUMKsrHdV4KqAjz9IJRw34s7WVbPDzKxZAWlFxqb0fJPsg6GtyV2SS7+Y/IL9SJmoLMAAAA=" target="_blank">Run the query</a>
