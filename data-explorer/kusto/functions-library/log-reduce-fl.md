@@ -173,6 +173,7 @@ HDFS_log
 
 **Output**
 
+```kusto
 | Count | LogReduce | Example |
 |--|--|--|
 | 55356 | 081110 | <NUM> <NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_<NUM> is added to invalidSet of <IP>	081110 220623 26 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_1239016582509138045 is added to invalidSet of 10.251.123.195:50010 |
