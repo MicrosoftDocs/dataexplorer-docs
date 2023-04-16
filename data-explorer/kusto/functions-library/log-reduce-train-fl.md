@@ -139,8 +139,7 @@ let log_reduce_train_fl=(tbl:(*), reduce_col:string, model_name:string,
     | extend LogReduce=''
     | evaluate python(typeof(model:string), code, kwargs)
     | project name=model_name, timestamp=now(), model
-}
-;
+};
 HDFS_log_100k
 | take 100000
 | invoke log_reduce_train_fl(reduce_col="data", model_name="HDFS_100K")
