@@ -15,7 +15,7 @@ The function `log_reduce_predict_fl()` parses semi structured textual columns, s
 
 ## Syntax
 
-`T | invoke log_reduce_predict_fl(`*models_tbl*`,` *model_name*`,` *reduce_col*`,` *anomaly_str*`)`
+*T* `|` `invoke` `log_reduce_predict_fl(`*models_tbl*`,` *model_name*`,` *reduce_col* [`,` *anomaly_str* ]`)`
 
 ## Parameters
 
