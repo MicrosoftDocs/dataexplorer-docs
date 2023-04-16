@@ -167,7 +167,6 @@ HDFS_log_100k
 
 **Output**
 
-```kusto
-ExtentId	                            OriginalSize	ExtentSize	CompressedSize	IndexSize	RowCount
-3734a525-cc08-44b9-a992-72de97b32414	10383	        11546	    10834	        712        	1
-```
+| ExtentId | OriginalSize | ExtentSize | CompressedSize | IndexSize | RowCount |
+|--|--|--|--|--|--|
+|3734a525-cc08-44b9-a992-72de97b32414 |10383 | 11546 | 10834 | 712 | 1 |
