@@ -81,8 +81,7 @@ let log_reduce_fl=(tbl:(*), reduce_col:string,
     tbl
     | extend LogReduce=''
     | evaluate python(typeof(Count:int, LogReduce:string, example:string), code, kwargs)
-}
-;
+};
 // Write your query to use the function here.
 ~~~
 
