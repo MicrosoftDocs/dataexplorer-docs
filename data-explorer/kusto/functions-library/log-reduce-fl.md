@@ -19,7 +19,7 @@ The function `log_reduce_fl()` finds common patterns in semi structured textual 
 
 ## Parameters
 
-The parameters description below is a summary, see [More about the algorithm](#more-about-the-algorithm) section for further details.
+The following parameters description is a summary. For further details, see [More about the algorithm](#more-about-the-algorithm) section.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
