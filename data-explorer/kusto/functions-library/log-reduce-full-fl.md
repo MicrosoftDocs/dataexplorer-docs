@@ -65,8 +65,7 @@ let log_reduce_full_fl=(tbl:(*), reduce_col:string, pattern_col:string, paramete
     ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
-}
-;
+};
 // Write your query to use the function here.
 ~~~
 
