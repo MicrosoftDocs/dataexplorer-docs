@@ -95,10 +95,10 @@ Use the [`.show continuous export failures`](show-continuous-failures.md) comman
 
 ## Continuous export from a table with Row Level Security
 
-To enable a Continuous Export with a query that references a table with [Row Level Security policy](../../management/rowlevelsecuritypolicy.md), these conditions must be met:
+To create a continuous export job with a query that references a table with [Row Level Security policy](../../management/rowlevelsecuritypolicy.md), the following conditions must be met:
 
-* A managed identity should be provided as part of the continuous export configuration.
-* The external table (To export to) should be using [impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation) as an authentication method.
+* A managed identity must be provided as part of the continuous export configuration.
+* The external table to which to export the data must be using [impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation) as an authentication method.
 
 ## Limitations
 
