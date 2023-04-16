@@ -656,9 +656,11 @@ items:
   - name: pow()
     href: powfunction.md
   - name: punycode_from_string()
-    href: punycode_from_string.md
+    displayName: puny code to from string
+    href: punycode-from-string.md
   - name: punycode_to_string()
-    href: punycode_to_string.md
+    displayName: puny code to from string
+    href: punycode-to-string.md
   - name: radians()
     href: radiansfunction.md
   - name: rand()

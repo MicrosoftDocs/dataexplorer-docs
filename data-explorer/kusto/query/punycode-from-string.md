@@ -41,4 +41,4 @@ Punycode is a representation of Unicode with the limited ASCII character subset 
 
 ## Next steps
 
-Use [punycode_to_string()](punycode_to_string.md) to retrieve the original decoded string.
+Use [punycode_to_string()](punycode-to-string.md) to retrieve the original decoded string.
