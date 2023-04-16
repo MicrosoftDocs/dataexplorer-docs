@@ -12,9 +12,11 @@ Decodes input string from punycode form. (https://en.wikipedia.org/wiki/Punycode
 
 `punycode_to_string('input_string')`
 
-## Arguments
+## Parameters
 
-*input_string*: Input `string`, a string to be decoded from punycode form. The function accepts one string argument.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *input_string* | `string` | &check; | A string to be decoded from punycode form. The function accepts one string argument.
 
 ## Returns
 
@@ -22,7 +24,10 @@ Decodes input string from punycode form. (https://en.wikipedia.org/wiki/Punycode
 * Returns an empty result if decoding failed.
 
 ## Example
-<!-- csl: https://help.kusto.windows.net/Samples -->
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJTc5PSU1RsFUoKM2rBLHjS/Lji0uAkuka6onJiSm5mam6aUWJeYmZxam6eQVJhonqmgCaLR+2PAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
  print decoded = punycode_to_string('acadmie-franaise-npb1a')
 ```

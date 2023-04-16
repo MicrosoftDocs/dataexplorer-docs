@@ -6,7 +6,6 @@ description: This article describes the punycode_from_string() command in Azure 
 # punycode_from_string()
 
 Encodes input string to [Punycode](https://en.wikipedia.org/wiki/Punycode) form.
-
 Punycode is a representation of Unicode with the limited ASCII character subset used for Internet hostnames.
 
 
@@ -14,9 +13,10 @@ Punycode is a representation of Unicode with the limited ASCII character subset 
 
 `punycode_from_string('input_string')`
 
-## Arguments
-
-*input_string*: Input `string`, a string to be encoded to punycode form. The function accepts one string argument.
+## Parameters
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *input_string* |  `string` | &check; | A string to be encoded to punycode form. The function accepts one string argument.
 
 ## Returns
 
@@ -25,7 +25,10 @@ Punycode is a representation of Unicode with the limited ASCII character subset 
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjNS85PSU1RsFUoKM2rBLHj04ryc+OLS4DS6RrqicmJKYdX5mam6qYVJeYdXp6YWZyqrgkA2GFbdjwAAAA=" target="_blank">Run the query</a>
+
 ```kusto
  print encoded = punycode_from_string('académie-française')
 ```
