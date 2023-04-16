@@ -44,7 +44,7 @@ To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the
 |Authentication method|Syntax|Description|
 |--|--|--|--|
 |Azure Resource Manager resource ID|`{ armResourceId: <id> }`|Provide the Azure Resource Manager resource ID in the `armResourceId` field of the *Options* argument. This ID, in combination with the Azure AD token in the `token` field of the *Options* argument or the token of the principal initiating the request, are used to authenticate to Cosmos DB. This is the recommended authentication method.|
-|Account key|`<connectionString>;AccountKey=`|Append the account key to the *ConnectionString* argument.|
+|Account key|`;AccountKey=`|Append the account key to the *ConnectionString* argument.|
 
 ## Set callout policy
 
