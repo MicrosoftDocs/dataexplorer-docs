@@ -52,8 +52,7 @@ let log_reduce_predict_full_fl=(tbl:(*), models_tbl: (name:string, timestamp: da
     ```;
     tbl
     | evaluate hint.distribution=per_node python(typeof(*), code, kwargs)
-}
-;
+};
 // Write your query to use the function here.
 ~~~
 
