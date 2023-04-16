@@ -280,6 +280,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[parse_urlquery()](parseurlqueryfunction.md)|Parses a url query string and returns a dynamic object contains the Query parameters.|
 |[parse_version()](parse-versionfunction.md)|Converts input string representation of version to a comparable decimal number.|
 |[replace_regex()](replace-regex-function.md)|Replace all regex matches with another string.|
+|[punycode_from_string()](punycode-from-string.md)| Encodes domain name to Punycode form.|
+|[punycode_to_string()](punycode-to-string.md)| Decodes domain name from Punycode form.|
 |[reverse()](reversefunction.md)|Function makes reverse of input string.|
 |[split()](splitfunction.md)|Splits a given string according to a given delimiter and returns a string array with the contained substrings.|
 |[strcat()](strcatfunction.md)|Concatenates between 1 and 64 arguments.|
