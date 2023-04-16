@@ -50,8 +50,7 @@ let log_reduce_predict_fl=(tbl:(*), models_tbl: (name:string, timestamp: datetim
     ```;
     tbl
     | evaluate hint.distribution=per_node python(typeof(Count:int, LogReduce:string, example:string), code, kwargs)
-}
-;
+};
 // Write your query to use the function here.
 ~~~
 
