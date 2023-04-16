@@ -146,8 +146,7 @@ let log_reduce_fl=(tbl:(*), reduce_col:string,
     tbl
     | extend LogReduce=''
     | evaluate python(typeof(Count:int, LogReduce:string, example:string), code, kwargs)
-}
-;
+};
 //
 // Finding common patterns in HDFS logs, a commonly used benchmark for log parsing
 //
