@@ -26,7 +26,7 @@ The following parameters description is a summary. For further details, see [Mor
 | *pattern_col* | string | &check; | The name of the string column to populate the pattern. |
 | *parameters_col* | string | &check; | The name of the string column to populate the pattern's parameters. |
 | *use_logram* | bool | | Enable or disable the Logram algorithm. Default value is `True`. |
-| *use_drain* | boolean | | Enable/disable the Drain algorithm. Default value is True. |
+| *use_drain* | bool | | Enable or disable the Drain algorithm. Default value is `True`. |
 | *custom_regexes* | dynamic | | A dynamic array containing pairs of regular expression and replacement symbols to be searched in each input row, and replaced with their respective matching symbol. Default value is dynamic([]). The default regex table replaces numbers, IPs and GUIDs. |
 | *custom_regexes_policy* | string | | Either 'prepend', 'append' or 'replace'. Controls whether custom_regexes are prepend/append/replace the default ones. Default value is 'prepend'. |
 | *delimiters* | dynamic | | A dynamic array containing delimiter strings. Default value is dynamic([" "]), defining space as the only single character delimiter. |
