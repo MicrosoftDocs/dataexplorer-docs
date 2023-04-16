@@ -3,7 +3,7 @@ title: cosmosdb_sql_request plugin - Azure Data Explorer
 description: Learn how to use the cosmosdb_sql_request plugin to send a SQL query to an Azure Cosmos DB SQL network endpoint to query small datasets.
 ms.reviewer: miwalia
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 04/16/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -25,15 +25,17 @@ The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL ne
 | *SqlQuery*| string | &check; | The query to execute. |
 | *SqlParameters* | dynamic | | The property bag object to pass as parameters along with the query. Parameter names must begin with `@`. |
 | *OutputSchema* | | | The names and types of the expected columns of the `cosmosdb_sql_request` plugin output. Use the following syntax: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`. Specifying this parameter enables multiple query optimizations. |
-| *Options* | dynamic | | A property bag object that holds more advanced settings. |
+| *Options* | dynamic | | A property bag object that holds more advanced settings. See [Supported options](#supported-options). |
 
-Supported *Options* settings include:
+### Supported options
 
-|Name|Description|
-|--|--|
-| `armResourceId` | API key from the Azure Resource Manager. </br>**Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc` |
-| `token` | Azure AD access token used to authenticate with the Azure Resource Manager.|
-| `preferredLocations` | Which region the data is queried from. </br>**Example:**`['East US']` |
+The following table explains the supported fields for the options parameter.
+
+|Name|Type|Description|
+|--|--|--|
+| `armResourceId` | string | API key from the Azure Resource Manager. If an account key isn't provided in the connection string argument, then `armResourceId` is required. In such a case, the `armResourceId` is used to authenticate to CosmosDB.</br>**Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc` |
+| `token` | string | An Azure AD access token of a principal with access to the Cosmos DB database. This token is used together with the `armResourceId` to authenticate with the Azure Resource Manager. If unspecified, the token of the principal that made the query is used.|
+| `preferredLocations` | string | The region from which to query the data. </br>**Example:**`['East US']` |
 
 ## Authentication and authorization
 
@@ -41,8 +43,8 @@ To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the
 
 |Authentication method|Connection string syntax|Description|
 |--|--|--|--|
-|Account key|`;AccountKey=`|Append the account key to the connection string.|
-|ARM resource ID with Azure AD access token|`{ armResourceId: <id>, token: <token> }`|Provide the ARM resource ID in the `armResourceId` field of the *Options* argument, and the Azure access token in the `token` field of the *Options* argument. This is the recommended authentication method.|
+|Azure Resource Manager resource ID|`{ armResourceId: <id> }`|Provide the Azure Resource Manager resource ID in the `armResourceId` field of the *Options* argument. This ID, in combination with the Azure AD token in the `token` field of the *Options* argument or the token of the principal initiating the request, are used to authenticate to Cosmos DB. This is the recommended authentication method.|
+|Account key|`<connectionString>;AccountKey=`|Append the account key to the *ConnectionString* argument.|
 
 ## Set callout policy
 
