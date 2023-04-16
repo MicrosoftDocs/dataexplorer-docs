@@ -1,15 +1,15 @@
 ---
-title: .create ingestion mapping - Azure Data Explorer
-description: This article describes .create ingestion mapping in Azure Data Explorer.
+title: .create-or-alter ingestion mapping - Azure Data Explorer
+description: This article describes .create-or-alter ingestion mapping in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 04/16/2023
 ---
-# .create ingestion mapping
+# .create-or-alter ingestion mapping
 
-Creates an ingestion mapping that can be associated with a specific format and a specific table or database.
+Creates or alters an ingestion mapping that can be associated with a specific format and a specific table or database.
 
-If a mapping with same name in the given scope already exists, `.create` will fail. Use [`.create-or-alter`](create-or-alter-ingestion-mapping-command.md) instead.
+If the ingestion mapping doesn't exist, the command will create it. If the ingestion mapping already exists, the command will modify it.
 
 ## Permissions
 
@@ -17,9 +17,9 @@ At least [Database Ingestor](access-control/role-based-access-control.md) permis
 
 ## Syntax
 
-`.create` `table` *TableName* `ingestion` *MappingKind* `mapping` *MappingName* *MappingFormattedAsJson*
+`.create-or-alter` `table` *TableName* `ingestion` *MappingKind* `mapping` *MappingName* *MappingFormattedAsJson*
 
-`.create` `database` *DatabaseName* `ingestion` *MappingKind* `mapping` *MappingName* *MappingFormattedAsJson*
+`.create-or-alter` `database` *DatabaseName* `ingestion` *MappingKind* `mapping` *MappingName* *MappingFormattedAsJson*
 
 ## Parameters
 
@@ -37,7 +37,7 @@ At least [Database Ingestor](access-control/role-based-access-control.md) permis
 > * If a mapping with the same name is created in both the table scope and the database scope, the mapping in the table scope will have a higher priority.
 > * When ingesting into a table and referencing a mapping whose schema does not match the ingested table schema, the ingest operation will fail.
 
-## Examples
+## Example
  
 ```kusto
 .create table MyTable ingestion csv mapping "Mapping1"
@@ -46,10 +46,10 @@ At least [Database Ingestor](access-control/role-based-access-control.md) permis
 '   { "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"}}'
 ']'
 
-.create database MyDatabase ingestion csv mapping "Mapping2"
+.create-or-alter table MyTable ingestion json mapping "Mapping1"
 '['
-'   { "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},'
-'   { "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"}}'
+'    { "column" : "rownumber", "datatype" : "int", "Properties":{"Path":"$.rownumber"}},'
+'    { "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}'
 ']'
 ```
 
@@ -57,17 +57,7 @@ At least [Database Ingestor](access-control/role-based-access-control.md) permis
 
 | Name | Kind | Mapping | Database | Table |
 |--|--|--|
-| mapping1 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` | MyDatabase | MyTable |
-| mapping2 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` | MyDatabase | |
-
-### Example: .create ingestion mapping with escape characters** 
- 
-```kusto
-.create table test_table ingestion json mapping "test_mapping_name"
-'['
-'{"column":"timeStamp","path":"$[\'timeStamp\']","datatype":"","transform":null},{"column":"name","path":"$[\'name\']","datatype":"","transform":null},{"column":"x-opt-partition-key","path":"$[\'x-opt-partition-key\']","datatype":"","transform":null}'
-']'
-```
+| mapping1 | JSON | [{"Properties":{"Path":"$.rownumber"},"column":"rownumber","datatype":"int"},{"Properties":{"Path":"$.rowguid"},"column":"rowguid","datatype":""}] | MyDatabase | MyTable |
 
 ## Next steps
 
