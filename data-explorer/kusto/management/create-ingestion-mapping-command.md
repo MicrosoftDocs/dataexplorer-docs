@@ -13,7 +13,7 @@ If a mapping with same name in the given scope already exists, `.create` will fa
 
 ## Permissions
 
-To create a database ingestion mapping requires at least [Database Ingestor](access-control/role-based-access-control.md) permissions, and to create a table ingestion mapping requires at least [Table Ingestor](access-control/role-based-access-control.md) permissions.
+At least [Database Ingestor](access-control/role-based-access-control.md) permissions are required to create a database ingestion mapping, and at least [Table Ingestor](access-control/role-based-access-control.md) permissions are required to create a table ingestion mapping.
 
 ## Syntax
 

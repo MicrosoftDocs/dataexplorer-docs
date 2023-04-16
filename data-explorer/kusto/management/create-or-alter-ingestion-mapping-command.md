@@ -3,7 +3,7 @@ title: .create-or-alter ingestion mapping - Azure Data Explorer
 description: This article describes .create-or-alter ingestion mapping in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/10/2023
+ms.date: 04/16/2023
 ---
 # .create-or-alter ingestion mapping
 
@@ -13,7 +13,7 @@ If the ingestion mapping doesn't exist, the command will create it. If the inges
 
 ## Permissions
 
-To create or alter a database ingestion mapping requires at least [Database Ingestor](access-control/role-based-access-control.md) permissions, and to create or alter a table ingestion mapping requires at least [Table Ingestor](access-control/role-based-access-control.md) permissions.
+At least [Database Ingestor](access-control/role-based-access-control.md) permissions are required to create a database ingestion mapping, and at least [Table Ingestor](access-control/role-based-access-control.md) permissions are required to create a table ingestion mapping.
 
 ## Syntax
 
