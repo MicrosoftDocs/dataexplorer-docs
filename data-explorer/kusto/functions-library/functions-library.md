@@ -91,8 +91,8 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 
 | Function Name | Description |
 |--|--|
-| [log_reduce_fl()](log-reduce-fl.md) | Find common patterns in textual logs, output a summary table. |
-| [log_reduce_full_fl()](log-reduce-full-fl.md) | Find common patterns in textual logs, output a full table. |
-| [log_reduce_predict_fl()](log-reduce-predict-fl.md) | Apply a trained model to find common patterns in textual logs, output a summary table. |
-| [log_reduce_predict_full_fl()](log-reduce-predict-full-fl.md) | Apply a trained model to find common patterns in textual logs, output a full table. |
-| [log_reduce_train_fl()](log-reduce-train-fl.md) | Find common patterns in textual logs, output a model. |
+| [log_reduce_fl()](log-reduce-fl.md) | Find common patterns in textual logs and output a summary table. |
+| [log_reduce_full_fl()](log-reduce-full-fl.md) | Find common patterns in textual logs and output a full table. |
+| [log_reduce_predict_fl()](log-reduce-predict-fl.md) | Apply a trained model to find common patterns in textual logs and output a summary table. |
+| [log_reduce_predict_full_fl()](log-reduce-predict-full-fl.md) | Apply a trained model to find common patterns in textual logs and output a full table. |
+| [log_reduce_train_fl()](log-reduce-train-fl.md) | Find common patterns in textual logs and output a model. |
