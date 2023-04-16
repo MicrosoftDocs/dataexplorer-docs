@@ -41,7 +41,7 @@ The following table describes the supported fields of the *Options* parameter.
 
 To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the authorization information in the connection string. The following table provides the supported authentication methods and the description for how to use that method.
 
-|Authentication method|Connection string syntax|Description|
+|Authentication method|Syntax|Description|
 |--|--|--|--|
 |Azure Resource Manager resource ID|`{ armResourceId: <id> }`|Provide the Azure Resource Manager resource ID in the `armResourceId` field of the *Options* argument. This ID, in combination with the Azure AD token in the `token` field of the *Options* argument or the token of the principal initiating the request, are used to authenticate to Cosmos DB. This is the recommended authentication method.|
 |Account key|`<connectionString>;AccountKey=`|Append the account key to the *ConnectionString* argument.|
