@@ -33,7 +33,7 @@ The following table describes the supported fields of the *Options* parameter.
 
 |Name|Type|Description|
 |--|--|--|
-| `armResourceId` | string | API key from the Azure Resource Manager. If an account key isn't provided in the connection string argument, this field is required. In such a case, the `armResourceId` is used to authenticate to CosmosDB.</br>**Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc` |
+| `armResourceId` | string | API key from the Azure Resource Manager. If an account key isn't provided in the connection string argument, this field is required. In such a case, the `armResourceId` is used to authenticate to Cosmos DB.</br>**Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc` |
 | `token` | string | An Azure AD access token of a principal with access to the Cosmos DB database. This token is used together with the `armResourceId` to authenticate with the Azure Resource Manager. If unspecified, the token of the principal that made the query is used.|
 | `preferredLocations` | string | The region from which to query the data. </br>**Example:** `['East US']` |
 
