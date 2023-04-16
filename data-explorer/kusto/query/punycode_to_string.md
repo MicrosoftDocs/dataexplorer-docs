@@ -7,8 +7,7 @@ ms.date: 04/16/2023
 
 # punycode_to_string()
 
-
-Decodes input string from punycode form. (https://en.wikipedia.org/wiki/Punycode)
+Decodes input string from [punycode](https://en.wikipedia.org/wiki/Punycode) form. Punycode is a representation of Unicode with the limited ASCII character subset used for Internet hostnames.
 
 ## Syntax
 
