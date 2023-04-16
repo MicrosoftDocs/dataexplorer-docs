@@ -39,7 +39,7 @@ The following table describes the supported fields of the *Options* parameter.
 
 ## Authentication and authorization
 
-To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the authorization information in the connection string. The following table provides the supported authentication methods and the description for how to use that method.
+To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the authorization information. The following table provides the supported authentication methods and the description for how to use that method.
 
 |Authentication method|Syntax|Description|
 |--|--|--|--|
