@@ -105,8 +105,7 @@ let log_reduce_predict_full_fl=(tbl:(*), models_tbl: (name:string, timestamp: da
     ```;
     tbl
     | evaluate hint.distribution=per_node python(typeof(*), code, kwargs)
-}
-;
+};
 HDFS_log_100k
 | extend Patterns='', Parameters=''
 | take 10
