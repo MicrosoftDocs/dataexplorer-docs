@@ -3,7 +3,7 @@ title: Tutorial- Create Power Apps application to query data in Azure Data Explo
 description: Learn how to create an application in Power Apps based on data in Azure Data Explorer
 ms.reviewer: olgolden
 ms.topic: tutorial
-ms.date: 04/11/2023
+ms.date: 04/16/2023
 ---
 # Tutorial: Create :::no-loc text="Power Apps"::: application to query data in Azure Data Explorer
 
@@ -18,7 +18,6 @@ Specifically, you learn how to:
 > * Create a connection in Power Apps.
 > * Create a new App.
 > * Add a data connector.
-> * 
 
 ## Prerequisites
 
@@ -71,13 +70,11 @@ Specifically, you learn how to:
 
 Under **Data**, you'll now see the **Azure Data Explorer** app in the list of connectors.
 
-   :::image type="content" source="media/power-apps-connector/adx-appears.png" alt-text="Screenshot of the app page, showing the Azure Data Explorer in the list of data connectors.":::
-
 ### Save Your App
 
 1. One the rightmost side of the ribbon, select **V** > **Save as**.
 
-    The app name is auto-populated with the name you entered in an earlier step. You can choose to change the name in this step.
+    The app name is auto-populated with the name you entered when you created the app. You can choose to change the name in this step.
 
     :::image type="content" source="media/power-apps-connector/save-app.png" alt-text="Screenshot of the app page, showing the save button.":::
 
@@ -101,6 +98,8 @@ Set how many records are retrieved from server-based connections where delegatio
 
 #### Dynamic schema
 
+Power Apps generally uses a fixed set of fields returned by the data source. However, some data sources may return a different set of fields depending on the service call parameter values. Such service calls are considered to have dynamic schema since fields in the service call response change dynamically depending on how the service is called.
+
 To capture and enable dynamically returned fields, turn on the **Dynamic schema** feature.
 
 1. Go to **Settings**.
@@ -113,12 +112,18 @@ To capture and enable dynamically returned fields, turn on the **Dynamic schema*
 > [!IMPORTANT]
 > Save your app again and restart as required.
 
+For more information on working with dynamic schema data sources in Power Apps, see [Dynamic schema](/power-apps/maker/canvas-apps/working-with-dynamic-schema).
+
 ### Add Dropdown
 
 1. On the ribbon, select **Insert**.
 1. Select **Input**, and then select **Drop down**.
 1. Expand the **Properties** pane on the rightmost of the canvas, and then select the **Advanced** tab.
-1. Under **Data**, replace the placeholder text for **Items** with: ["CALIFORNIA","MICHIGAN"].
+1. Under **Data**, replace the placeholder text for **Items** with: 
+
+    ```kusto
+    ["CALIFORNIA","MICHIGAN"].
+    ```
 
     :::image type="content" source="media/power-apps-connector/populate-dropdown.png" alt-text="Screenshot of the app page, showing the populate items in dropdown menu." lightbox="media/power-apps-connector/populate-dropdown.png":::
 
@@ -136,6 +141,8 @@ To capture and enable dynamically returned fields, turn on the **Dynamic schema*
     ).value
     )
     ```
+
+    You'll see a warning icon when the formula uses service calls that support dynamic schema. When you expand the formula bar, you'll see a new button named **Capture schema**.
 
 1. Select the **Capture schema** button. Allow time for processing.
 
