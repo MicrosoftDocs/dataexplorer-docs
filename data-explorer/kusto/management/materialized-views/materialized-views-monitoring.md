@@ -64,11 +64,10 @@ The `Result` dimension can have one of the following values:
 
 ## Materialized views in follower databases
 
-Materialized views can be defined in [follower databases](materialized-views-limitations.md#follower-databases). However, monitoring materialized views should be based on the leader database, where the materialized view is defined. Specifically:
+Materialized views can be defined in [follower databases](materialized-views-limitations.md#follower-databases). However, the monitoring of these materialized views should be based on the leader database, where the materialized view is defined. Specifically:
 
 * [Metrics](../../../using-metrics.md#materialized-view-metrics) related to materialized view execution (`MaterializedViewResult`, `MaterializedViewExtentsRebuild`) are only present in the leader database. Metrics related to monitoring (`MaterializedViewAgeSeconds`, `MaterializedViewHealth`, `MaterializedViewRecordsInDelta`) will also appear in the follower databases.
-
-* The [.show materialized-view failures](materialized-view-show-failures-command.md) only works in the leader database.
+* The [.show materialized-view failures command](materialized-view-show-failures-command.md) only works in the leader database.
 
 ## Track resource consumption
 
