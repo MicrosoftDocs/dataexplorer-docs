@@ -26,7 +26,7 @@ By using horizontal scaling, you can scale the instance count automatically, bas
 
 ### Manual scale
 
-In the Manual scale option the cluster has a static capacity that doesn't change automatically. You select the static capacity by using the **Instance count** bar. The cluster's scaling remains at that setting until you make another change.
+In the manual scale option, the cluster has a static capacity that doesn't change automatically. Select the static capacity by using the **Instance count** bar. The cluster's scaling remains at the selected setting until changed.
 
    ![Manual scale method.](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
