@@ -62,6 +62,13 @@ The `Result` dimension can have one of the following values:
     > [!NOTE]
     > MaxMemoryPerQueryPerNode can't be set to more than 50% of the total memory of each node.
 
+## Materialized views in follower databases
+
+Materialized views can be defined in [follower databases](materialized-views-limitations.md#follower-databases). However, the monitoring of these materialized views should be based on the leader database, where the materialized view is defined. Specifically:
+
+* [Metrics](../../../using-metrics.md#materialized-view-metrics) related to materialized view execution (`MaterializedViewResult`, `MaterializedViewExtentsRebuild`) are only present in the leader database. Metrics related to monitoring (`MaterializedViewAgeSeconds`, `MaterializedViewHealth`, `MaterializedViewRecordsInDelta`) will also appear in the follower databases.
+* The [.show materialized-view failures command](materialized-view-show-failures-command.md) only works in the leader database.
+
 ## Track resource consumption
 
 **Materialized views resource consumption:** the resources consumed by the materialized views materialization process can be tracked using the [`.show commands-and-queries`](../commands-and-queries.md#show-commands-and-queries) command. Filter the records for a specific view using the following (replace `DatabaseName` and `ViewName`):
