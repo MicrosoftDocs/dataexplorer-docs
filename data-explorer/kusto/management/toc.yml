@@ -73,6 +73,8 @@ items:
       href: alter-ingestion-mapping-command.md
     - name: ".create ingestion mapping"
       href: create-ingestion-mapping-command.md
+    - name: ".create-or-alter ingestion mapping"
+      href: create-or-alter-ingestion-mapping-command.md
     - name: ".drop ingestion mapping"
       href: drop-ingestion-mapping-command.md
     - name: ".show ingestion mapping"

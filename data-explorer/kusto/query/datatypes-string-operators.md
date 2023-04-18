@@ -3,7 +3,7 @@ title: String operators - Azure Data Explorer
 description: Learn about query operators for searching string data types.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 04/16/2023
 ---
 # String operators
 
@@ -93,7 +93,9 @@ For more information, see [Query best practices](best-practices.md).
 
 For example, the first of these queries will run faster:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKM9ILUpVCC5JLElVyEgsVlDyyy8qyVACyiTnl+aVWPNyBeNUn5yfV5KYmQfUlJdfBNcCAHN0g3JgAAAA" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents | where State has "North" | count;
 StormEvents | where State contains "nor" | count
