@@ -26,9 +26,7 @@ The string format is:
 ## Example
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgrzLNNLi0qSs0riS8AiiRnFiTmaGgCAGK4N8YdAAAA
-
-print fqn=current_principal()" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgrzLNNLi0qSs0riS8AiiRnFiTmaGgCAGK4N8YdAAAA" target="_blank">Run the query</a>
 
 ```kusto
 print fqn=current_principal()
