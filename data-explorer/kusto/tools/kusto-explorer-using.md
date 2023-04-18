@@ -37,8 +37,6 @@ This section describes how to run basic queries in Kusto.Explorer and how to add
 
 If you have table Logs, you can start exploring them:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-
 ```kusto
 StormEvents | count 
 ```
@@ -47,14 +45,10 @@ When your cursor is on this line, it's colored gray. Press **F5** to run the que
 
 Here are some more example queries:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-
 ```kusto
 // Take 10 lines from the table. Useful to get familiar with the data
 StormEvents | take 10 
 ```
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
 
 ```kusto
 // Filter by EventType == 'Flood' and State == 'California' (=~ means case insensitive) 
