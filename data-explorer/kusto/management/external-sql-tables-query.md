@@ -3,30 +3,36 @@ title: Query SQL Server external tables - Azure Data Explorer
 description: This article describes how to query external tables based on SQL Server tables.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/09/2023
+ms.date: 04/18/2023
 ---
 
 # Query SQL Server external tables
 
-You can query a SQL Server external table. For an example, see [Query data in Azure Data Lake](../../data-lake-query-data.md). 
+You can query a SQL Server external table. For an example, see [Query data in Azure Data Lake](../../data-lake-query-data.md).
 
 ## How it works
 
-SQL external table query implementation will execute `SELECT x, s FROM MySqlTable` statement, where `x` and `s` are external table column names. The rest of the query will execute on the Kusto side.
+SQL external table queries are translated from Kusto Query Language (KQL) to SQL. The implementation of SQL external table queries pushes down the KQL operators and filters, such as [where](../query/whereoperator.md), [project](../query/projectoperator.md), and [count](../query/countoperator.md), into the SQL query. These operators are then executed directly in the SQL query against the external table.
 
 ## Example
 
-Consider the following external table query:
+For example, consider an external table named `MySqlExternalTable` with two columns `x` and `s`. In this case, the following KQL query is translated into the following SQL query.
+
+**KQL query**
 
 ```kusto
-external_table('MySqlExternalTable') | count
+external_table(MySqlExternalTable)
+| where x > 5 
+| count
 ```
 
-Kusto will execute a `SELECT x, s FROM MySqlTable` query to the SQL database, followed by a count on Kusto side. 
-In such cases, performance is expected to be better if written in T-SQL directly (`SELECT COUNT(1) FROM MySqlTable`) 
-and executed using the [sql_request plugin](../query/sqlrequestplugin.md), instead of using the external table function. 
-Similarly, filters are not pushed to the SQL query.  
+**SQL query**
+
+```SQL
+SELECT COUNT(*) FROM (SELECT x, s FROM MySqlTable WHERE x > 5) AS Subquery1
+```
 
 > [!NOTE]
-> * Use the external table to query the SQL table when the query requires reading the entire table (or relevant columns) for further execution on Kusto side. 
+>
+> * Use the external table to query the SQL table when the query requires reading the entire table (or relevant columns) for further execution on Kusto side.
 > * When an SQL query can be optimized in T-SQL, use the [sql_request plugin](../query/sqlrequestplugin.md).
