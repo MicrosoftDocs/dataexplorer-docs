@@ -3,7 +3,7 @@ title: log_reduce_fl() - Azure Data Explorer
 description: This article describes the log_reduce_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/29/2023
+ms.date: 04/18/2023
 ---
 # log_reduce_fl()
 
@@ -173,7 +173,6 @@ HDFS_log
 
 **Output**
 
-```kusto
 | Count | LogReduce | Example |
 |--|--|--|
 | 55356 | 081110 | <NUM> <NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_<NUM> is added to invalidSet of <IP>	081110 220623 26 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_1239016582509138045 is added to invalidSet of 10.251.123.195:50010 |
@@ -192,4 +191,3 @@ HDFS_log
 | 6 | 081110 | <NUM> <NUM> INFO dfs.DataNode$DataXceiver: <*> <*> <*> <*> <*>: <*> <*> <*> <*> <*>	081110 215936 15714 INFO dfs.DataNode$DataXceiver: writeBlock blk_720939897861061328 received exception java.io.IOException: Could not read from stream |
 | 3 | 081110 | <NUM> <NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: <*> <*> <*> <*> <*> <*> <*> size <NUM> <*> <*> <*> <*> <*> <*> <*> <*>.	081110 220635 28 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: addStoredBlock request received for blk_-81196479666306310 on 10.250.17.177:50010 size 53457811 But it does not belong to any file. |
 | 1 | 081110 | <NUM> <NUM> <*> <*>: <*> <*> <*> <*> <*> <*> <*>. <*> <*> <*> <*> <*>.	081110 220631 19 WARN dfs.FSDataset: Unexpected error trying to delete block blk_-2012154052725261337. BlockInfo not found in volumeMap. |
-```
