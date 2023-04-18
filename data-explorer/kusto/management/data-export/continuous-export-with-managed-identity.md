@@ -18,7 +18,7 @@ In this article, you'll learn how to configure a system-assigned or user-assigne
 * An Azure Data Explorer cluster and database. [Create a cluster and database](../../../create-cluster-database-portal.md).
 * [Database Admin](../access-control/role-based-access-control.md) permissions on the Azure Data Explorer database.
 
-## 1 - Set up a managed identity
+## 1 - Configure a managed identity for continuous export
 
 There are two types of managed identities:
 
@@ -36,10 +36,10 @@ Select one of the following tabs to set up your preferred managed identity type.
 
     :::image type="content" source="../../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity ids." lightbox="../../../media/continuous-export/managed-identity-ids.png":::
 
-1. Run the following [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
+1. Run the following [.alter-merge managed_identity policy](../alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
     ```kusto
-    .alter cluster policy managed_identity ```[
+    .alter-merge cluster policy managed_identity ```[
         {
           "ObjectId": "<objectId>",
           "AllowedUsages": "AutomatedFlows"
@@ -50,10 +50,10 @@ Select one of the following tabs to set up your preferred managed identity type.
     > [!NOTE]
     > To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
 
-1. Run the following command to grant the managed identity [Database User](../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
+1. Run the following command to grant the managed identity [Database Viewer](../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
 
     ```kusto
-    .add database <DatabaseName> users ('aadapp=<objectId>;<tenantId>')
+    .add database <DatabaseName> viewers ('aadapp=<objectId>;<tenantId>')
     ```
 
     Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Azure Active Directory **Tenant Id** from step 2.
@@ -64,10 +64,10 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 1. Copy and save the **Object (principal) ID** for use in a later step.
 
-1. Run the following [.alter managed_identity policy](../alter-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
+1. Run the following [.alter-merge managed_identity policy](../alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
     ```kusto
-    .alter cluster policy managed_identity ```[
+    .alter-merge cluster policy managed_identity ```[
         {
           "ObjectId": "system",
           "AllowedUsages": "AutomatedFlows"
@@ -78,17 +78,17 @@ Select one of the following tabs to set up your preferred managed identity type.
     > [!NOTE]
     > To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
 
-1. Run the following command to grant the managed identity [Database User](../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
+1. Run the following command to grant the managed identity [Database Viewer](../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
 
     ```kusto
-    .add database <DatabaseName> users ('aadapp=<objectId>')
+    .add database <DatabaseName> viewers ('aadapp=<objectId>')
     ```
 
     Replace `<DatabaseName>` with the relevant database and `<objectId>` with the managed identity **Object (principal) ID** from step 2.
 
 ---
 
-## 2 - Set up an external table
+## 2 - Set up an external table for continuous export
 
 External tables refer to data located in Azure Storage, such as Azure Blob Storage, Azure Data Lake Gen1, and Azure Data Lake Gen2, or SQL Server.
 
