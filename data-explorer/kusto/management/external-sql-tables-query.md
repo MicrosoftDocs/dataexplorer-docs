@@ -8,7 +8,7 @@ ms.date: 04/18/2023
 
 # Query SQL Server external tables
 
-You can query a SQL Server external table. For an example, see [Query data in Azure Data Lake](../../data-lake-query-data.md).
+You can query a SQL Server external table just as you would query an Azure Data Explorer table. For a full example, see [Query data in Azure Data Lake](../../data-lake-query-data.md).
 
 ## How it works
 
