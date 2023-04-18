@@ -33,7 +33,7 @@ The following table describes the supported fields of the *Options* parameter.
 
 |Name|Type|Description|
 |--|--|--|
-| `armResourceId` | string | API key from the Azure Resource Manager. If an account key isn't provided in the connection string argument, this field is required. In such a case, the `armResourceId` is used to authenticate to Cosmos DB.</br>**Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc` |
+| `armResourceId` | string | The  Azure Resource Manager resource ID of the Cosmos DB database. If an account key isn't provided in the connection string argument, this field is required. In such a case, the `armResourceId` is used to authenticate to Cosmos DB.</br>**Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc` |
 | `token` | string | An Azure AD access token of a principal with access to the Cosmos DB database. This token is used together with the `armResourceId` to authenticate with the Azure Resource Manager. If unspecified, the token of the principal that made the query is used.|
 | `preferredLocations` | string | The region from which to query the data. </br>**Example:** `['East US']` |
 
@@ -43,7 +43,7 @@ To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the
 
 |Authentication method|Description|
 |--|--|
-|Azure Resource Manager resource ID|For secure authentication, we recommend providing the `armResourceId` and optionally the `token` fields of the *Options* argument. The `armResourceId` identifies the Cosmos DB database account, while the `token` should be a valid Azure AD bearer token for a principal with appropriate access permissions to the Cosmos DB database. If a `token` is provided, it will be used in combination with the `armResourceId` for authentication. If no `token` is provided, the Azure AD token of the requesting principal will be used for authentication. For more information, see [Supported options](#supported-options).|
+|Azure Resource Manager resource ID|For secure authentication, we recommend specifying the `armResourceId` and optionally the `token` the options. The `armResourceId` identifies the Cosmos DB database account, while the `token` should be a valid Azure AD bearer token for a principal with appropriate access permissions to the Cosmos DB database. If no `token` is provided, the Azure AD token of the requesting principal will be used for authentication. For more information, see [Supported options](#supported-options).|
 |Account key|You can add the account key directly to the *ConnectionString* argument. However, this approach may be less secure as it involves including the secret in the query text. Additionally, it may not be resilient to future changes in the account key. To enhance security, make sure to hide the secret as an [obfuscated string literal](scalar-data-types/string.md#obfuscated-string-literals).|
 
 ## Set callout policy
