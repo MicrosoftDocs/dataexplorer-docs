@@ -12,7 +12,7 @@ You can query a SQL Server external table just as you would query an Azure Data 
 
 ## How it works
 
-SQL external table queries are translated from Kusto Query Language (KQL) to SQL. The implementation of SQL external table queries pushes down the KQL operators and filters, such as [where](../query/whereoperator.md), [project](../query/projectoperator.md), and [count](../query/countoperator.md), into the SQL query. These operators are then executed directly in the SQL query against the external table.
+SQL external table queries are translated from Kusto Query Language (KQL) to SQL. The operators after the [external_table](../query/externaltablefunction.md) function call, such as [where](../query/whereoperator.md), [project](../query/projectoperator.md), [count](../query/countoperator.md), and so on, are pushed down and translated into a single SQL query to be executed against the target SQL table.
 
 ## Example
 
@@ -31,8 +31,3 @@ external_table(MySqlExternalTable)
 ```SQL
 SELECT COUNT(*) FROM (SELECT x, s FROM MySqlTable WHERE x > 5) AS Subquery1
 ```
-
-> [!NOTE]
->
-> * Use the external table to query the SQL table when the query requires reading the entire table (or relevant columns) for further execution on Kusto side.
-> * When a SQL query can be optimized in T-SQL, use the [sql_request plugin](../query/sqlrequestplugin.md).
