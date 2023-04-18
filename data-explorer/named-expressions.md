@@ -3,7 +3,7 @@ title: Named expressions in Azure Data Explorer
 description: Learn how to optimally use named expressions in Azure Data Explorer.
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 09/06/2022
+ms.date: 04/16/2023
 
 ---
 # Optimize queries that use named expressions
@@ -43,7 +43,9 @@ For example, the following query uses the non-deterministic tabular [sample oper
 
 **Behavior without using the materialize function**
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDDk5apRKE7MLchJhbATixVCQHRpXmZ+nkIIAOuM1MA7AAAA" target="_blank">Run the query</a>
+
 ```kusto
 range x from 1 to 100 step 1
 | sample 1
@@ -51,7 +53,7 @@ range x from 1 to 100 step 1
 | union T
 ```
 
-**Output:**
+**Output**
 
 |x|
 |---|
@@ -60,7 +62,9 @@ range x from 1 to 100 step 1
 
 **Behavior using the materialize function**
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDDk5apRKE7MLchJhbATixUyMvNK9HITS1KLMhNzMqtSU2xLikpTFUJA0qV5mfl5CiEAbnko81IAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 range x from 1 to 100 step 1
 | sample 1
@@ -68,13 +72,12 @@ range x from 1 to 100 step 1
 | union T
 ```
 
-**Output:**
+**Output**
 
 |x|
 |---|
 |95|
 |95|
-
 
 ### Scalar functions
 
@@ -82,18 +85,20 @@ Non-deterministic scalar functions can be forced to calculate exactly once by us
 
 For example, the following query uses the non-deterministic function, [rand()](kusto/query/randfunction.md):
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGoULBV0NBUqC5KzEvRMDQwMNCsteblygHKVEJlSvKLkxNzEos0EErAagqKMvOA+nVAqBKIAFmz1YBOAAAA" target="_blank">Run the query</a>
 
- ```kusto
- let x = () {rand(1000)};
- let y = () {toscalar(rand(1000))};
- print x, x, y, y
+```kusto
+let x = () {rand(1000)};
+let y = () {toscalar(rand(1000))};
+print x, x, y, y
 ```
 
- Returns:
+**Output**
 
- |print_0|print_1|print_2|print_3|
- |---|---|---|---|
- |166 |137 |70 |70|
+|print_0|print_1|print_2|print_3|
+|---|---|---|---|
+|166 |137 |70 |70|
 
 ## See also
 
