@@ -160,6 +160,8 @@ For example, the following command creates a continuous export job named `MyExpo
 .create-or-alter continuous-export MyExport over (MyTable) to table MyExternalTable with (managedIdentity="system", intervalBetweenRuns=5m) <| MyTable
 ```
 
+---
+
 ## Next steps
 
 * To see your continuous exports, run the [.show continuous-exports](show-continuous-export.md) command.
