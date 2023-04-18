@@ -35,4 +35,4 @@ SELECT COUNT(*) FROM (SELECT x, s FROM MySqlTable WHERE x > 5) AS Subquery1
 > [!NOTE]
 >
 > * Use the external table to query the SQL table when the query requires reading the entire table (or relevant columns) for further execution on Kusto side.
-> * When an SQL query can be optimized in T-SQL, use the [sql_request plugin](../query/sqlrequestplugin.md).
+> * When a SQL query can be optimized in T-SQL, use the [sql_request plugin](../query/sqlrequestplugin.md).
