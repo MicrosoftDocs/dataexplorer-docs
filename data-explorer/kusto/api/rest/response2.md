@@ -16,10 +16,11 @@ If the request fails, the HTTP response status code is a `4xx` or `5xx` error.
 The reason phrase will include additional information about the failure.
 The HTTP response body is a JSON object, as explained below.
 
-Note that the request may return a status code of `200 OK`, but the HTTP response body
-will indicate an error. This may happen when the error gets raised after
-the HTTP status line is already returned. The reader is expected to  explicitly check
-for such a condition.
+> [!Note]
+> The request may return a status code of `200 OK`, but the HTTP response body
+> will indicate an error. This may happen when the error gets raised after
+> the HTTP status line is already returned. The reader is expected to  explicitly check
+> for such a condition.
 
 ## HTTP response headers
 
