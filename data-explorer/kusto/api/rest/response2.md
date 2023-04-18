@@ -28,7 +28,7 @@ Irrespective of the success/failure of the request, two custom HTTP headers are 
 
 1. `x-ms-client-request-id`: The service returns an opaque string
    that identifies the request/response pair for correlation purposes.
-   If the request included a client request ID, it's value will appear here;
+   If the request included a client request ID, its value will appear here;
    otherwise, some random string is returned.
 
 1. `x-ms-activity-id`: The service returns an opaque string
