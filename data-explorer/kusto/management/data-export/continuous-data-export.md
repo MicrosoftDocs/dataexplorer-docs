@@ -3,13 +3,15 @@ title: Continuous data export - Azure Data Explorer
 description: This article describes Continuous data export in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 03/29/2023
 ---
 # Continuous data export overview
 
 This article describes continuous export of data from Kusto to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). 
 
-To enable continuous data export, [create an external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table. 
+To enable continuous data export, [create an external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table.
+
+In some cases, you must use a managed identity to successfully configure a continuous export job. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
 
 ## Permissions
 
