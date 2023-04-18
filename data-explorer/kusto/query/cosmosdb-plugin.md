@@ -3,7 +3,7 @@ title: cosmosdb_sql_request plugin - Azure Data Explorer
 description: Learn how to use the cosmosdb_sql_request plugin to send a SQL query to an Azure Cosmos DB SQL network endpoint to query small datasets.
 ms.reviewer: miwalia
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 04/18/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -41,10 +41,10 @@ The following table describes the supported fields of the *Options* parameter.
 
 To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the authorization information. The following table provides the supported authentication methods and the description for how to use that method.
 
-|Authentication method|Syntax|Description|
-|--|--|--|--|
-|Azure Resource Manager resource ID|`{ armResourceId: <id> }`|Provide the Azure Resource Manager resource ID in the `armResourceId` field of the *Options* argument. This ID, in combination with the Azure AD token in the `token` field of the *Options* argument or the token of the principal initiating the request, are used to authenticate to Cosmos DB. This is the recommended authentication method.|
-|Account key|`;AccountKey=`|Append the account key to the *ConnectionString* argument.|
+|Authentication method|Description|
+|--|--|
+|Azure Resource Manager resource ID|For secure authentication, we recommend providing the `armResourceId` and optionally the `token` fields of the *Options* argument. The `armResourceId` identifies the Cosmos DB database account, while the `token` should be a valid Azure AD bearer token for a principal with appropriate access permissions to the Cosmos DB database. If a `token` is provided, it will be used in combination with the `armResourceId` for authentication. If no `token` is provided, the Azure AD token of the requesting principal will be used for authentication. For more information, see [Supported options](#supported-options).|
+|Account key|You can add the account key directly to the *ConnectionString* argument. However, this approach may be less secure as it involves including the secret in the query text. Additionally, it may not be resilient to future changes in the account key. To enhance security, make sure to hide the secret as an [obfuscated string literal](scalar-data-types/string.md#obfuscated-string-literals).|
 
 ## Set callout policy
 
