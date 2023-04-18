@@ -5,7 +5,7 @@ ms.topic: reference
 ms.date: 04/09/2023
 ---
 
-## Show external table artifacts
+# Show external table artifacts
 
 This article describes how to show all files that will be processed when querying a given external table.
 

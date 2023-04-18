@@ -110,13 +110,23 @@ items:
       - name: Create or alter external table
         href: external-tables-azurestorage-azuredatalake.md
       - name: Manage external table mappings
-        href: manage-external-table-mappings.md
+        items:
+        - name: .alter external table mapping
+          href: external-table-mapping-alter.md  
+        - name: .create external table mapping
+          href: external-table-mapping-create.md
+        - name: .drop external table mapping
+          href: external-table-mapping-drop.md
+        - name: .show external table mapping
+          href: external-table-mapping-show.md
       - name: Show external table artifacts
         href: show-external-table-artifacts.md
     - name: SQL Server external tables
       items:
-      - name: Create and alter SQL Server external tables
+      - name: Create and alter external table
         href: external-sql-tables.md
+      - name: Query SQL external table
+        href: external-sql-tables-query.md
     - name: ".drop external table"
       href: drop-external-table.md
     - name: ".show external table"
