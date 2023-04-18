@@ -19,7 +19,7 @@ The function `log_reduce_fl()` finds common patterns in semi structured textual 
 
 ## Parameters
 
-The following parameters description is a summary. For further details, see [More about the algorithm](#more-about-the-algorithm) section.
+The following parameters description is a summary. For more information, see [More about the algorithm](#more-about-the-algorithm) section.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
@@ -29,26 +29,26 @@ The following parameters description is a summary. For further details, see [Mor
 | *custom_regexes* | dynamic | | A dynamic array containing pairs of regular expression and replacement symbols to be searched in each input row, and replaced with their respective matching symbol. Default value is `dynamic([])`. The default regex table replaces numbers, IPs and GUIDs. |
 | *custom_regexes_policy* | string | | Either 'prepend', 'append' or 'replace'. Controls whether custom_regexes are prepend/append/replace the default ones. Default value is 'prepend'. |
 | *delimiters* | dynamic | | A dynamic array containing delimiter strings. Default value is `dynamic([" "])`, defining space as the only single character delimiter. |
-| *similarity_th* | real | | Similarity threshold, used by the Drain algorithm. Increasing *similarity_th* will result in more refined clusters. Default value is 0.5. If Drain is disabled this parameter has no effect.
-| *tree_depth* | int | | Increasing *tree_depth* will improve the runtime of the Drain algorithm, but might reduce its accuracy. Default value is 4. If Drain is disabled this parameter has no effect. |
-| *trigram_th* | int | | Decreasing *trigram_th* will increase the chances of Logram to replace tokens with wildcards. Default value is 10. If Logram is disabled this parameter has no effect. |
-| *bigram_th* | int | | Decreasing *bigram_th* will increase the chances of Logram to replace tokens with wildcards. Default value is 15. If Logram is disabled this parameter has no effect. |
+| *similarity_th* | real | | Similarity threshold, used by the Drain algorithm. Increasing *similarity_th* results in more refined clusters. Default value is 0.5. If Drain is disabled, then this parameter has no effect.
+| *tree_depth* | int | | Increasing *tree_depth* improves the runtime of the Drain algorithm, but might reduce its accuracy. Default value is 4. If Drain is disabled, then this parameter has no effect. |
+| *trigram_th* | int | | Decreasing *trigram_th* increases the chances of Logram to replace tokens with wildcards. Default value is 10. If Logram is disabled, then this parameter has no effect. |
+| *bigram_th* | int | | Decreasing *bigram_th* increases the chances of Logram to replace tokens with wildcards. Default value is 15. If Logram is disabled, then this parameter has no effect. |
 
 ## More about the algorithm
 
-The function runs multiples passes over the rows to be reduced to common patterns. These are the passes:
+The function runs multiples passes over the rows to be reduced to common patterns. The following list explains the passes:
 
-* **Regular expression replacements**: in this pass each line is independently matched to a set of regular expressions, and each matched expression is replaced by a replacement symbol. The default regular expressions replace IPs, numbers and GUIDs with \<IP\>, \<GUID\> and \<NUM\>. The user can prepend/append additional regular expressions to those, or replace it with new ones or empty list by modifying *custom_regexes* and *custom_regexes_policy*. For example, to replace whole numbers with  \<WNUM\> set custom_regexes=pack_array('/^\d+$/', '\<WNUM\>'); to cancel regular expressions replacement set custom_regexes_policy='replace''. Note that for each line the function keeps list of the original expressions (before replacements) to be output as parameters of the generic replacement tokens.
+* **Regular expression replacements**: In this pass, each line is independently matched to a set of regular expressions, and each matched expression is replaced by a replacement symbol. The default regular expressions replace IPs, numbers and GUIDs with \<IP\>, \<GUID\> and \<NUM\>. The user can prepend/append more regular expressions to those, or replace it with new ones or empty list by modifying *custom_regexes* and *custom_regexes_policy*. For example, to replace whole numbers with  \<WNUM\> set custom_regexes=pack_array('/^\d+$/', '\<WNUM\>'); to cancel regular expressions replacement set custom_regexes_policy='replace''. For each line, the function keeps list of the original expressions (before replacements) to be output as parameters of the generic replacement tokens.
 
 * **Tokenization**: similar to the previous step, each line is processed independently and broken into tokens based on set of *delimiters*. For example, to define breaking to tokens by either comma, period or semicolon set *delimiters*=pack_array(',', '.', ';').
 
 * **Apply [Logram algorithm](https://arxiv.org/pdf/2001.03038.pdf)**: this pass is optional, pending *use_logram* is true. We recommend using Logram when large scale is required, and when parameters can appear in the first tokens of the log entry. OTOH, disable it when the log entries are short, as the algorithm tends to replace tokens with wildcards too often in such cases.
-The Logram algorithm considers 3-tuples and 2-tuples of tokens. If a 3-tuple of tokens is common in the log lines (it appears more than *trigram_th* times), then it is likely that all 3 tokens are part of the pattern. If the 3-tuple is rare, then it is likely that it contains a variable that should be replaced by a wildcard. For rare 3-tuples, we consider the frequency with which 2-tuples contained in the 3-tuple appear. If a 2-tuple is common (it appears more than *bigram_th* times), then the remaining token is likely to be a parameter, and not part of the pattern.\
-Note that the Logram algorithm is easy to parallelize. It requires two passes on the log corpus - the first one to count the frequency of each 3-tuple and 2-tuple, and the second one to apply the logic described above to each entry. To parallelize the algorithm, we only need to partition the log entries, and unify the frequency counts of different workers.
+The Logram algorithm considers 3-tuples and 2-tuples of tokens. If a 3-tuple of tokens is common in the log lines (it appears more than *trigram_th* times), then it's likely that all three tokens are part of the pattern. If the 3-tuple is rare, then it's likely that it contains a variable that should be replaced by a wildcard. For rare 3-tuples, we consider the frequency with which 2-tuples contained in the 3-tuple appear. If a 2-tuple is common (it appears more than *bigram_th* times), then the remaining token is likely to be a parameter, and not part of the pattern.\
+The Logram algorithm is easy to parallelize. It requires two passes on the log corpus: the first one to count the frequency of each 3-tuple and 2-tuple, and the second one to apply the logic previously described to each entry. To parallelize the algorithm, we only need to partition the log entries, and unify the frequency counts of different workers.
     
-* **Apply [Drain algorithm](https://jiemingzhu.github.io/pub/pjhe_icws2017.pdf)**: this pass is optional, pending *use_drain* is true. Drain is a log parsing algorithm based on a truncated depth prefix tree. Log messages are split according to their length, and for each length the first *tree_depth* tokens of the log message are used to build a prefix tree. If no match for the prefix tokens was found, a new branch is created. If a match for the prefix was found, we search for the most similar pattern among the patterns contained in the tree leaf. Pattern similarity is measured by the ratio of matched non-wildcard tokens out of all tokens. If the similarity of the most similar pattern is above the similarity threshold (the parameter *similarity_th*), then the log entry is matched to the pattern. For that pattern, the function replaces all non-matching tokens by wildcards. If the similarity of the most similar pattern is below the similarity threshold, a new pattern containing the log entry is created.\
-Note that we set default *tree_depth* to 4 based on testing various logs. Increasing this depth can improve runtime but might degrade patterns accuracy; decreasing it is more accurate but slower, as each node performs many more similarity tests.\
-Usually, Drain efficiently generalizes and reduces patterns (though it is hard to be parallelize). However, as it relies on a prefix tree, it might not be optimal in log entries containing parameters in the first tokens. This can be resolved in most cases by applying Logram first.
+* **Apply [Drain algorithm](https://jiemingzhu.github.io/pub/pjhe_icws2017.pdf)**: this pass is optional, pending *use_drain* is true. Drain is a log parsing algorithm based on a truncated depth prefix tree. Log messages are split according to their length, and for each length the first *tree_depth* tokens of the log message are used to build a prefix tree. If no match for the prefix tokens was found, a new branch is created. If a match for the prefix was found, we search for the most similar pattern among the patterns contained in the tree leaf. Pattern similarity is measured by the ratio of matched nonwildcard tokens out of all tokens. If the similarity of the most similar pattern is above the similarity threshold (the parameter *similarity_th*), then the log entry is matched to the pattern. For that pattern, the function replaces all nonmatching tokens by wildcards. If the similarity of the most similar pattern is below the similarity threshold, a new pattern containing the log entry is created.\
+We set default *tree_depth* to 4 based on testing various logs. Increasing this depth can improve runtime but might degrade patterns accuracy; decreasing it's more accurate but slower, as each node performs many more similarity tests.\
+Usually, Drain efficiently generalizes and reduces patterns (though it's hard to be parallelized). However, as it relies on a prefix tree, it might not be optimal in log entries containing parameters in the first tokens. This can be resolved in most cases by applying Logram first.
 
 ## Function definition
 
@@ -120,7 +120,7 @@ log_reduce_fl(tbl:(*), reduce_col:string,
 
 ## Example
 
-The following example use the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -188,6 +188,6 @@ HDFS_log
 | 12 | 081110 | <NUM> <NUM> INFO <*>: <*> <*> <*> <*> <*> block blk_<NUM> <*> <*>	081110 215955 18 INFO dfs.DataNode: 10.250.15.198:50010 Starting thread to transfer block blk_-3782569120714539446 to 10.251.203.129:50010 |
 | 12 | 081110 | <NUM> <NUM> INFO dfs.DataNode$DataXceiver: Received block blk_<NUM> src: <IP> dest: <IP> of size <NUM>	081110 215957 15226 INFO dfs.DataNode$DataXceiver: Received block blk_-3782569120714539446 src: /10.250.15.198:51013 dest: /10.250.15.198:50010 of size 14474705 |
 | 6 | 081110 | <NUM> <NUM> <*> dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: <*> <*> <*> <*> <*> <*> <*> <*> size <NUM>	081110 215924 27 WARN dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: Redundant addStoredBlock request received for blk_2522553781740514003 on 10.251.202.134:50010 size 67108864 |
-| 6 | 081110 | <NUM> <NUM> INFO dfs.DataNode$DataXceiver: <*> <*> <*> <*> <*>: <*> <*> <*> <*> <*>	081110 215936 15714 INFO dfs.DataNode$DataXceiver: writeBlock blk_720939897861061328 received exception java.io.IOException: Could not read from stream |
-| 3 | 081110 | <NUM> <NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: <*> <*> <*> <*> <*> <*> <*> size <NUM> <*> <*> <*> <*> <*> <*> <*> <*>.	081110 220635 28 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: addStoredBlock request received for blk_-81196479666306310 on 10.250.17.177:50010 size 53457811 But it does not belong to any file. |
+| 6 | 081110 | <NUM> <NUM> INFO dfs.DataNode$DataXceiver: <*> <*> <*> <*> <*>: <*> <*> <*> <*> <*>	081110 215936 15714 INFO dfs.DataNode$DataXceiver: writeBlock blk_720939897861061328 received exception java.io.IOException: Couldn't read from stream |
+| 3 | 081110 | <NUM> <NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: <*> <*> <*> <*> <*> <*> <*> size <NUM> <*> <*> <*> <*> <*> <*> <*> <*>.	081110 220635 28 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: addStoredBlock request received for blk_-81196479666306310 on 10.250.17.177:50010 size 53457811 But it doesn't belong to any file. |
 | 1 | 081110 | <NUM> <NUM> <*> <*>: <*> <*> <*> <*> <*> <*> <*>. <*> <*> <*> <*> <*>.	081110 220631 19 WARN dfs.FSDataset: Unexpected error trying to delete block blk_-2012154052725261337. BlockInfo not found in volumeMap. |
