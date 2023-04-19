@@ -1247,9 +1247,9 @@ items:
       href: pivotplugin.md 
   - name: Language plugins
     items:
-    - name: python plugin
+    - name: Python plugin
       href: pythonplugin.md
-    - name: r plugin
+    - name: R plugin
       href: rplugin.md
   - name: Machine learning plugins
     items:
