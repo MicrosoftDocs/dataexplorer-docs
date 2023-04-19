@@ -3,7 +3,7 @@ title: Kusto Node SDK - Azure Data Explorer
 description: This article describes Kusto Node SDK in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/29/2019
+ms.date: 04/19/2023
 ---
 # Kusto Node SDK
 
