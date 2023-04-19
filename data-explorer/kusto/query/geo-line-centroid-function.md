@@ -25,7 +25,7 @@ The centroid coordinate values in [GeoJSON Format](https://tools.ietf.org/html/r
 
 > [!NOTE]
 >
-> * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/) coordinate reference system.
+> * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
 > * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used to measure distance on Earth is a sphere. Line edges are [geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere.
 > * If input line edges are straight cartesian lines, consider using [geo_line_densify()](geo-line-densify-function.md) in order to convert planar edges to geodesics.
 > * If input is a multiline and contains more than one line, the result will be the centroid of lines union.

@@ -50,7 +50,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 Densified polygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If either the polygon or tolerance is invalid, the query will produce a null result.
 
 > [!NOTE]
-> The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/) coordinate reference system.
+> The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
 
 ## Examples
 
