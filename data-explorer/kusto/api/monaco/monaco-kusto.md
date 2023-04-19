@@ -58,7 +58,7 @@ You can set up your app to use *monaco-kusto* using one of the following methods
     ```
 
 1. Copy the static files from the *monaco* and *monaco-kusto* packages to the **monaco-editor** folder on your web server. Your app will need to access these static files.
-1. Use monaco's `loader.js` to load them. For an example, see [sample code](https://github.com/Azure/monaco-kusto/tree/master/samples/react/src/monaco-kusto.js)
+1. Use monaco to load them. For examples, see the [samples](https://github.com/Azure/monaco-kusto/tree/master/samples).
 
 ### [ESM (webpack)](#tab/esm)
 
