@@ -1,11 +1,11 @@
 ---
 title: Kusto .NET Client Libraries from PowerShell - Azure Data Explorer
-description: This article describes Using the .NET Client Libraries from PowerShell in Azure Data Explorer.
+description: This article describes how to use Kusto .NET Client Libraries from PowerShell in Azure Data Explorer.
 ms.reviewer: salevy
 ms.topic: reference
 ms.date: 04/19/2023
 ---
-# Using the .NET client libraries from PowerShell
+# Use Kusto .NET client libraries from PowerShell
 
 PowerShell scripts can use Kusto .NET client libraries through
 PowerShell's built-in integration with arbitrary (non-PowerShell) .NET libraries.

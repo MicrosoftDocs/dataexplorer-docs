@@ -85,5 +85,5 @@ items:
     href: golang/kusto-golang-client-library.md
 - name: PowerShell
   items:
-  - name: Calling Kusto from PowerShell
+  - name: Use Kusto .NET client libraries from PowerShell
     href: powershell/powershell.md
