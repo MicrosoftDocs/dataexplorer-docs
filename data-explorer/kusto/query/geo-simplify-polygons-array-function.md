@@ -27,7 +27,7 @@ Simplified polygon or a multipolygon in the [GeoJSON format](https://tools.ietf.
 > [!NOTE]
 >
 > * If input is a single polygon, please see [geo_polygon_simplify()](geo-polygon-simplify-function.md).
-> * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
+> * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
 > * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used for measurements on Earth is a sphere. Polygon edges are [geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere.
 > * If input polygon edges are straight cartesian lines, consider using [geo_polygon_densify()](geo-polygon-densify-function.md) to convert planar edges to geodesics.
 > * If input is a multipolygon and contains more than one polygon, the result will be the area of polygons union.
