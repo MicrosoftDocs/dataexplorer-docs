@@ -1,10 +1,10 @@
 items:
 - name: Kusto query overview
   href: index.md
+- name: Syntax conventions
+  href: syntax-conventions.md
 - name: Quick reference guide
   href: ../../kql-quick-reference.md
-- name: Samples
-  href: samples.md
 - name: Query best practices
   items:
   - name: Best practices
@@ -747,6 +747,12 @@ items:
     href: pifunction.md
   - name: pow()
     href: powfunction.md
+  - name: punycode_from_string()
+    displayName: puny code to from string
+    href: punycode-from-string.md
+  - name: punycode_to_string()
+    displayName: puny code to from string
+    href: punycode-to-string.md
   - name: radians()
     href: radiansfunction.md
   - name: rand()
@@ -1241,9 +1247,9 @@ items:
       href: pivotplugin.md 
   - name: Language plugins
     items:
-    - name: python plugin
+    - name: Python plugin
       href: pythonplugin.md
-    - name: r plugin
+    - name: R plugin
       href: rplugin.md
   - name: Machine learning plugins
     items:
@@ -1268,7 +1274,7 @@ items:
     - name: http_request plugin
       href: http-request-plugin.md
     - name: http_request_post plugin
-      href: http-request-plugin.md
+      href: http-request-post-plugin.md
     - name: mysql_request plugin
       href: mysqlrequest-plugin.md
     - name: sql_request plugin

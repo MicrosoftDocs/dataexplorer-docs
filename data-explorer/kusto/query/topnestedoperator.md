@@ -41,10 +41,10 @@ Where *TopNestedClause* has the following syntax:
 |*Expr*|string|&check;|An expression over the input record indicating which value to return for this hierarchy level. Typically it's a column reference from *T*, or some calculation, such as `bin()`, over such a column.
 |*ConstExpr*|string||If specified, for each hierarchy level, 1 record will be added with the value that is the aggregation over all records that didn't "make it to the top".|
 |*AggName*|string||If specified, this identifier sets the column name in the output for the value of *Aggregation*.|
-|*Aggregation*|string||The aggregation function to apply to all records sharing the same value of *Expr*. The value of this aggregation determines which of the resulting records are "top". For the possible values, see [supported aggregation functions](#supporeted-aggregation-functions).|
+|*Aggregation*|string||The aggregation function to apply to all records sharing the same value of *Expr*. The value of this aggregation determines which of the resulting records are "top". For the possible values, see [supported aggregation functions](#supported-aggregation-functions).|
 |`asc` or `desc`|string||Controls whether selection is actually from the "bottom" or "top" of the range of aggregated values. The default is `desc`.|
 
-### Supporeted aggregation functions
+### Supported aggregation functions
 
 The following aggregation functions are supported:
 * [sum()](sum-aggfunction.md)
@@ -241,3 +241,43 @@ StormEvents
 | project-away Ignore*
 | order by State asc, StartTime desc
 ```
+
+### Retrieve the latest records per identity
+
+If you have a table with an ID column and a timestamp column, you can use the top-nested operator to query the latest two records for each unique value of ID. The latest records are defined by the highest value of timestamp.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43QzW4CIRAH8DtPMeG0JmyyYLVq4sV48RlMD2PBigpscIya+PCFZpc2JrYNBAL5/fkYjZTa5mgqq2dwomj9hwCyzpwIXTsDjWTyUkCgnYkrvw3RIdngez4AALZmaQS+wIgHLkqqUo0c1Y1MfSCASy6eu/G3U7+51+xUk92wd8vg8aifw5e/oZxkOPoHnGY45uyN3YFCW/tUK6MhbMFq2NxAn527NXOH1yr/BtgPpDIr5S1afumy/5hKmcfql6jqLkqPaWPYm3eq8YL9K0R3fjerT8+D6uvwAQAA" target="_blank">Run the query</a>
+
+```kusto
+datatable(id: string, timestamp: datetime, otherInformation: string)   
+[
+    "Barak", datetime(2015-01-01), "1",
+    "Barak", datetime(2016-01-01), "2",
+    "Barak", datetime(2017-01-20), "3",
+    "Donald", datetime(2017-01-20), "4",
+    "Donald", datetime(2017-01-18), "5",
+    "Donald", datetime(2017-01-19), "6"
+]
+| top-nested of id by dummy0=max(1),  
+top-nested 2 of timestamp by dummy1=max(timestamp),  
+top-nested of otherInformation by dummy2=max(1)
+| project-away dummy0, dummy1, dummy2 
+```
+
+**Output**
+
+| id | timestamp | otherInformation |
+|---|---|---|
+| Barak | 2016-01-01T00:00:00Z | 2 |
+| Donald | 2017-01-19T00:00:00Z | 6 |
+| Barak | 2017-01-20T00:00:00Z | 3 |
+| Donald | 2017-01-20T00:00:00Z | 4 |
+
+Here's a step-by-step explanation of the query:
+
+1. The `datatable` creates a test dataset.
+1. The first `top-nested` clause returns all distinct values of `id`.
+1. The second `top-nested` clause selects the top two records with the highest `timestamp` for each id.
+1. The third `top-nested` clause adds the `otherInformation` column for each record.
+1. The `project-away` operator removes the dummy columns introduced by the top-nested operator.

@@ -2,7 +2,7 @@
 title: 'Tutorial: Use aggregation functions in Kusto Query Language - Azure Data Explorer'
 description: This tutorial describes how to use aggregation functions in the Kusto Query Language.
 ms.topic: tutorial
-ms.date: 01/18/2023
+ms.date: 03/28/2023
 ---
 
 # Tutorial: Use aggregation functions
@@ -21,6 +21,7 @@ In this tutorial, you'll learn how to:
 > * [Calculate percentages](#calculate-percentages)
 > * [Extract unique values](#extract-unique-values)
 > * [Bucket data by condition](#bucket-data-by-condition)
+> * [Perform aggregation over a sliding window](#perform-aggregations-over-a-sliding-window)
 
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
 
@@ -340,6 +341,56 @@ StormEvents
 ```
 
 :::image type="content" source="../images/kql-tutorials/injuries-bucket-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
+
+## Perform aggregations over a sliding window
+
+The following example shows how to summarize columns using a sliding window.
+
+The query calculates the minimum, maximum, and average property damage of tornados, floods, and wildfires using a sliding window of seven days. Each record in the result set aggregates the preceding seven days, and the results contain a record per day in the analysis period.
+
+Here's a step-by-step explanation of the query:
+
+1. Bin each record to a single day relative to `windowStart`.
+1. Add seven days to the bin value to set the end of the range for each record. If the value is out of the range of `windowStart` and `windowEnd`, adjust the value accordingly.
+1. Create an array of seven days for each record, starting from the current day of the record.
+1. Expand the array from step 3 with [mv-expand](../mvexpandoperator.md) in order to duplicate each record to seven records with one-day intervals between them.
+1. Perform the aggregations for each day. Due to step 4, this step actually summarizes the previous seven days.
+1. Exclude the first seven days from the final result because there's no seven-day lookback period for them.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VSy27CMBC85ytWOTnCCAJtc6BwKj1XBanHysgbaim2I2MeqfrxXVuQBEqjxPHas7OP2Qo9HJWR9rjywnmYgxQevdLIJuNxMQxvns2SqsUtjSRU32cA+VTOkpW3Ti8PaPwu+YHjFzqEaK6bGkEZYOnaOiOkTTmkr5W1Mmw+VCVL5TDNgNzw5JECbAg+D+un8GwXothSiobFgGvKLuOQS95PI4PRCPKOgr53YbZIPKosWWAcQCFh0dXB+9sE7j5XvkMKCs/9qPza+IfkPg3ZvF26myyLpUy6Uty5jvhn0eNSXWhDhE8Jrg9DPNWi9fAWPPXeluwiaoQ+EHS311o49Y2glWEvQostvjlbo/MN9VaL099DZ/dGMnHY3l5lsGkgqEJK6Xp+ls1d8ruWifeGgpJ5bGelJYDF7XwVchawT79tsmpLrgIAAA==" target="_blank">Run the query</a>
+
+```kusto
+let windowStart = datetime(2007-07-01);
+let windowEnd = windowStart + 13d;
+StormEvents
+| where EventType in ("Tornado", "Flood", "Wildfire") 
+| extend bin = bin_at(startofday(StartTime), 1d, windowStart) // 1
+| extend endRange = iff(bin + 7d > windowEnd, windowEnd, 
+                      iff(bin + 7d - 1d < windowStart, windowStart, 
+                        iff(bin + 7d - 1d < bin, bin, bin + 7d - 1d))) // 2
+| extend range = range(bin, endRange, 1d) // 3
+| mv-expand range to typeof(datetime) // 4
+| summarize min(DamageProperty), max(DamageProperty), round(avg(DamageProperty)) by Timestamp=bin_at(range, 1d, windowStart), EventType // 5
+| where Timestamp >= windowStart + 7d; // 6
+```
+
+**Output**
+
+The following result table is truncated. To see the full output, run the query.
+
+| Timestamp | EventType | min_DamageProperty | max_DamageProperty | avg_DamageProperty |
+|---|---|---|---|---|
+| 2007-07-08T00:00:00Z | Tornado | 0 | 30000 | 6905 |
+| 2007-07-08T00:00:00Z | Flood | 0 | 200000 | 9261 |
+| 2007-07-08T00:00:00Z | Wildfire | 0 | 200000 | 14033 |
+| 2007-07-09T00:00:00Z | Tornado | 0 | 100000 | 14783 |
+| 2007-07-09T00:00:00Z | Flood | 0 | 200000 | 12529 |
+| 2007-07-09T00:00:00Z | Wildfire | 0 | 200000 | 14033 |
+| 2007-07-10T00:00:00Z | Tornado | 0 | 100000 | 31400 |
+| 2007-07-10T00:00:00Z | Flood | 0 | 200000 | 12263 |
+| 2007-07-10T00:00:00Z | Wildfire | 0 | 200000 | 11694 |
+| ... | ... | ... |
 
 ## Next steps
 

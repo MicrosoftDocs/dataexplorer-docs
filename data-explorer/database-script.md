@@ -3,7 +3,7 @@ title: Configure a database using a Kusto Query Language script in Azure Data Ex
 description: Learn about how to use database script to run a Kusto Query Language script in Azure Data Explorer
 ms.reviewer: docohe
 ms.topic: how-to
-ms.date: 09/11/2022
+ms.date: 03/29/2023
 ---
 # Configure a database using a Kusto Query Language script
 
@@ -17,6 +17,9 @@ You can run a Kusto Query Language script to configure your database during Azur
 * `.add`
 
 In general, we recommended using the idempotent version of commands so that if they're called more than once with the same input parameters, they have no additional effect. In other words, running the command multiple times has the same effect as running it once. For example, where possible, we recommend using the idempotent command `.create-or-alter` over the regular `.create` command.
+
+> [!NOTE]
+> Scripts run in the context of a database and don't support cluster-wide commands such as cluster policies.
 
 There are various methods you can use to configure a database with scripts. We'll focus on the following methods using ARM template deployments:
 
