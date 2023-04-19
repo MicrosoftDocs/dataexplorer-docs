@@ -14,6 +14,11 @@ External tables can be defined to reference data in Azure Storage or SQL Server.
 
 In this article, you'll learn how to create external tables that authenticate with a managed identity.
 
+## Prerequisites
+
+* An Azure Data Explorer cluster and database. [Create a cluster and database](../../../create-cluster-database-portal.md).
+* [Database Admin](../access-control/role-based-access-control.md) permissions on the Azure Data Explorer database.
+
 ## Assign a managed identity to your cluster
 
 To use managed identities with your cluster, you first need to assign the managed identity to your cluster. This assignment provides the cluster with permissions to act on behalf of the assigned managed identity.
