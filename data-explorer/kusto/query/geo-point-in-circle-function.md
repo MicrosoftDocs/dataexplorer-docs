@@ -29,7 +29,7 @@ Indicates whether the geospatial coordinates are inside a circle. If the coordin
 
 > [!NOTE]
 >
->* The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
+>* The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/) coordinate reference system.
 >* The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used to measure distance on Earth is a sphere.
 >* A circle is a spherical cap on Earth. The radius of the cap is measured along the surface of the sphere.
 
