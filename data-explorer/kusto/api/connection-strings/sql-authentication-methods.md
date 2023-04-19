@@ -7,7 +7,7 @@ ms.date: 07/02/2022
 ---
 # SQL Server authentication methods
 
-To interact with external SQL databases, you must specify the external SQL database connection string. The connection string defines the resource to access and its authentication information.
+To interact with external SQL databases from Azure Data Explorer, you must specify the external SQL database connection string. The connection string defines the resource to access and its authentication information.
 
 The following authentication methods are supported:
 
@@ -38,7 +38,7 @@ The principal must have the necessary permissions on the SQL database to perform
 
 ## Managed identity
 
-Managed identities are used to make requests and access resources. For a system-assigned managed identity, append `;Authentication="Active Directory Managed Identity"` to the connection string. For a user-assigned managed identity, append `;Authentication="Active Directory Managed Identity";User Id={object_id}` to the connection string.
+Azure Data Explorer uses the managed identity to make requests and access resources. For a system-assigned managed identity, append `;Authentication="Active Directory Managed Identity"` to the connection string. For a user-assigned managed identity, append `;Authentication="Active Directory Managed Identity";User Id={object_id}` to the connection string.
 
 |Managed identity type|Example|
 |--|--|--|

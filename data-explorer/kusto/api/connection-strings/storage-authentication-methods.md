@@ -7,7 +7,7 @@ ms.date: 04/19/2023
 ---
 # Storage authentication methods
 
-To interact with external storage, you must specify the external storage connection string. The connection string defines the resource to access and its authentication information.
+To interact with external storage from Azure Data Explorer, you must specify the external storage connection string. The connection string defines the resource to access and its authentication information.
 
 This article describes the following authentication methods:
 
@@ -44,7 +44,7 @@ The following table summarizes the available authentication methods for differen
 
 ## Impersonation
 
-The requestor's principal identity is impersonated in order to access the resource. To use impersonation, append `;impersonate` to the connection string.
+Azure Data Explorer impersonates the requestor's principal identity to access the resource. To use impersonation, append `;impersonate` to the connection string.
 
 |Example|
 |--|
@@ -54,7 +54,7 @@ The principal must have the necessary permissions to perform the operation. For 
 
 ## Managed identity
 
-Managed identities are used to make requests and access resources. For a system-assigned managed identity, append `;managed_identity=system` to the connection string. For a user-assigned managed identity, append `;managed_identity={object_id}` to the connection string.
+Azure Data Explorer uses the managed identity to make requests and access resources. For a system-assigned managed identity, append `;managed_identity=system` to the connection string. For a user-assigned managed identity, append `;managed_identity={object_id}` to the connection string.
 
 |Managed identity type|Example|
 |--|--|--|
