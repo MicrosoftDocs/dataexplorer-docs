@@ -38,7 +38,7 @@ The principal must have the necessary permissions on the SQL database to perform
 
 ## Managed identity
 
-The managed identity is used to make requests and access resources. For a system-assigned managed identity, append `;Authentication="Active Directory Managed Identity"` to the connection string. For a user-assigned managed identity, append `;Authentication="Active Directory Managed Identity";User Id={object_id}` to the connection string.
+Managed identities are used to make requests and access resources. For a system-assigned managed identity, append `;Authentication="Active Directory Managed Identity"` to the connection string. For a user-assigned managed identity, append `;Authentication="Active Directory Managed Identity";User Id={object_id}` to the connection string.
 
 |Managed identity type|Example|
 |--|--|--|

@@ -54,7 +54,7 @@ The principal must have the necessary permissions to perform the operation. For 
 
 ## Managed identity
 
-The managed identity is used to make requests and access resources. For a system-assigned managed identity, append `;managed_identity=system` to the connection string. For a user-assigned managed identity, append `;managed_identity={object_id}` to the connection string.
+Managed identities are used to make requests and access resources. For a system-assigned managed identity, append `;managed_identity=system` to the connection string. For a user-assigned managed identity, append `;managed_identity={object_id}` to the connection string.
 
 |Managed identity type|Example|
 |--|--|--|
