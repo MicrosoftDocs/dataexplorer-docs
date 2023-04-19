@@ -3,11 +3,11 @@ title: Authentication over HTTPS - Azure Data Explorer
 description: This article describes Authentication over HTTPS in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/26/2023
+ms.date: 04/19/2023
 ---
 # Authentication over HTTPS
 
-To send a request to over HTTPS, the principal making the request
+To interact with your cluster over HTTPS, the principal making the request
 must authenticate by using the HTTP `Authorization` request header.
 
 ## Syntax
