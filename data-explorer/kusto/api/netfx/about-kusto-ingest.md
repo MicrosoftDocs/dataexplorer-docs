@@ -90,5 +90,4 @@ Kusto ingest client implementation is thread-safe and fully reentrant.
 
 * [Kusto.Ingest Examples](kusto-ingest-client-examples.md) shows code snippets that demonstrate various techniques of ingesting data into Kusto
 
-* [Data Ingestion without Kusto.Ingest Library](kusto-ingest-client-rest.md) explains how to implement Queued Kusto ingestion, by using Kusto REST APIs, and without being dependent on the `Kusto.Ingest` library
-
+* [How to ingest data with the REST API](kusto-ingest-client-rest.md) explains how to implement queued ingestion, by using REST APIs, and without being dependent on the `Kusto.Ingest` library.
