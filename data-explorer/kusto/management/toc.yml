@@ -605,6 +605,8 @@ items:
       href: data-export/continuous-data-export.md
     - name: Create or alter continuous export
       href: data-export/create-alter-continuous.md
+    - name: Use a managed identity
+      href: data-export/continuous-export-with-managed-identity.md
     - name: Disable or enable continuous export
       href: data-export/disable-enable-continuous.md
     - name: Drop continuous export
