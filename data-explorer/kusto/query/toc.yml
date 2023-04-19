@@ -747,6 +747,12 @@ items:
     href: pifunction.md
   - name: pow()
     href: powfunction.md
+  - name: punycode_from_string()
+    displayName: puny code to from string
+    href: punycode-from-string.md
+  - name: punycode_to_string()
+    displayName: puny code to from string
+    href: punycode-to-string.md
   - name: radians()
     href: radiansfunction.md
   - name: rand()
@@ -1241,9 +1247,9 @@ items:
       href: pivotplugin.md 
   - name: Language plugins
     items:
-    - name: python plugin
+    - name: Python plugin
       href: pythonplugin.md
-    - name: r plugin
+    - name: R plugin
       href: rplugin.md
   - name: Machine learning plugins
     items:

@@ -40,6 +40,7 @@ ms.date: 10/15/2022
 
 * Materialized views cannot be created in [follower databases](../../../follower.md). Follower databases are read-only and materialized views require write operations.  
 * Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
+* Use the leader cluster to monitor follower database materialized views. For more details, see [Materialized views in follower databases](materialized-views-monitoring.md#materialized-views-in-follower-databases).
 
 ## Other
 
