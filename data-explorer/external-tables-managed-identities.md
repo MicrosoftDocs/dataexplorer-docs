@@ -37,36 +37,67 @@ Select one of the following tabs to assign the preferred managed identity type t
 
     :::image type="content" source="../../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity ids." lightbox="../../../media/continuous-export/managed-identity-ids.png":::
 
+1. Run the following command to grant the managed identity [Database Viewer](../access-control/role-based-access-control.md) permissions over the database that will contain the external table.
+
+```kusto
+.add database <DatabaseName> viewers ('aadapp=<objectId>;<tenantId>')
+```
+
+Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Azure Active Directory **Tenant Id** from step 2.
+
 ### [System-assigned](#tab/system-assigned)
 
 1. Follow the steps to [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity).
 
 1. Copy and save the **Object (principal) ID** for later use.
+  
+1. Run the following command to grant the managed identity [Database Viewer](../access-control/role-based-access-control.md) permissions over the database that will contain the external table.
+
+    ```kusto
+    .add database <DatabaseName> viewers ('aadapp=<objectId>')
+    ```
+
+    Replace `<DatabaseName>` with the relevant database and `<objectId>` with the managed identity **Object (principal) ID** from step 2.
 
 ---
 
 ## 2 - Create a managed identity policy
 
-Now that you've assigned a user-assigned managed identity to your cluster, define the [managed identity policy](kusto/management/alter-managed-identity-policy-command.md), to allow the specific managed identity use the `ExternalTable`. The policy can either be defined in the cluster level or at a specific database level.
+Now that you've assigned a managed identity to your cluster, define the [managed identity policy](kusto/management/alter-managed-identity-policy-command.md). This policy will allow the specific managed identity access the external table. The policy can either be defined in the cluster level or at a specific database level.
 
-Enter the following policy alter-merge command for the database level:
+Select one of the following tabs to set the relevant managed identity policy.
 
-~~~kusto
-.alter-merge database DatabaseName policy managed_identity ```
-[
-  {
-    "ObjectId": "802bada6-4d21-44b2-9d15-e66b29e4d63e",
-    "AllowedUsages": "ExternalTable"
-  }
-]
+### [User-assigned](#tab/user-assigned)
+
+Run the following [.alter-merge managed_identity policy](../alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
+
+```kusto
+.alter-merge cluster policy managed_identity ```[
+    {
+      "ObjectId": "<objectId>",
+      "AllowedUsages": "AutomatedFlows"
+    }
+]```
 ```
-~~~
 
 > [!NOTE]
-> To define the policy at the cluster level, replace `database db` with `cluster`.
+> To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
+
+### [System-assigned](#tab/system-assigned)
+
+Run the following [.alter-merge managed_identity policy](../alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
+
+```kusto
+.alter-merge cluster policy managed_identity ```[
+    {
+      "ObjectId": "system",
+      "AllowedUsages": "AutomatedFlows"
+    }
+]```
+```
 
 > [!NOTE]
-> To override the existing policy, use the `alter` command instead of the `alter-merge` command.
+> To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
 
 ## Grant correct permissions to the external resource
 
