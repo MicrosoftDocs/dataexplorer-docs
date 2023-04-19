@@ -3,7 +3,7 @@ title: Storage authentication methods - Azure Data Explorer
 description: This article describes storage authentication methods used in connection strings in Azure Data Explorer.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 07/02/2022
+ms.date: 02/23/2023
 ---
 # Storage authentication methods
 
