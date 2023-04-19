@@ -3,15 +3,15 @@ title: Kusto.Ingest permissions - Azure Data Explorer
 description: This article describes Kusto.Ingest - Ingestion Permissions in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 04/19/2023
 ---
-# Kusto.Ingest - Ingestion permissions 
+# Kusto.Ingest ingestion permissions
 
-This article explains what permissions to set up on your service, for `Native` ingestion to work.
+This article explains what permissions to set up on your service for `Native` ingestion to work.
 
 ## Prerequisites
- 
-* To view and modify authorization settings on Kusto services and databases, see [Kusto control commands](../../management/security-roles.md).
+
+* To view and modify authorization settings, see [Security roles overview](../../management/security-roles.md).
 
 * Azure Active Directory (Azure AD) applications used as sample principals in the following examples:
     * Test Azure AD App (2a904276-1234-5678-9012-66fc53add60b; microsoft.com)
@@ -19,7 +19,7 @@ This article explains what permissions to set up on your service, for `Native` i
  
 ## Ingestion permission mode for queued ingestion
 
-Ingestion permission mode is defined in [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient). This mode limits the client code dependency on the Azure Data Explorer service. Ingestion is done by posting a Kusto ingestion message to an Azure queue. The queue, also known as the Ingestion service, is gotten from the Azure Data Explorer service. Intermediate storage artifacts will be created by the ingest client using the resources allocated by the Azure Data Explorer service.
+Ingestion permission mode is defined in [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient). In this mode, an ingestion message is sent to an Azure queue. The queue, also known as the ingestion service, is received from the Kusto service.  The ingest client will generate intermediate storage artifacts utilizing the resources allocated by the service.
 
 The diagram outlines the queued ingestion client interaction with Kusto.
 
