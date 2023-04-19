@@ -28,7 +28,7 @@ The following table explains how to hide your private information using the `h` 
 
 ## AAD-integrated authentication
 
-Using this authentication method, the user or application authenticates via Azure AD to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. To use AAD-integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string.
+Using this authentication method, the user or application authenticates to their cluster via Azure AD, and the same token is then used to access the SQL Server network endpoint. To use AAD-integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string.
 
 |Example|
 |--|
