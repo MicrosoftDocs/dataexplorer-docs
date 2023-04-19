@@ -22,11 +22,11 @@ Each step is described in greater detail, after the sample code.
 
 1. [Obtain an authentication token for accessing the ingestion service](#obtain-authentication-evidence-from-azure-ad)
 1. Query the ingestion service to obtain:
-    * [Ingestion resources (queues and blob containers)](#retrieve-azure-data-explorer-ingestion-resources)
+    * [Ingestion resources (queues and blob containers)](#retrieve-ingestion-resources)
     * [A Kusto identity token that will be added to every ingestion message](#obtain-a-kusto-identity-token)
 1. [Upload data to a blob on one of the blob containers obtained from Kusto in (2)](#upload-data-to-the-azure-blob-container)
-1. [Compose an ingestion message that identifies the target database and table and that points to the blob from (3)](#compose-the-azure-data-explorer-ingestion-message)
-1. [Post the ingestion message we composed in (4) to an ingestion queue obtained in (2)](#post-the-azure-data-explorer-ingestion-message-to-the-azure-data-explorer-ingestion-queue)**
+1. [Compose an ingestion message that identifies the target database and table and that points to the blob from (3)](#compose-the-ingestion-message)
+1. [Post the ingestion message we composed in (4) to an ingestion queue obtained in (2)](#post-the-ingestion-message-to-the-ingestion-queue)
 1. [Retrieve any error found by the service during ingestion](#check-for-error-messages-from-the-azure-queue)
 
 ```csharp
