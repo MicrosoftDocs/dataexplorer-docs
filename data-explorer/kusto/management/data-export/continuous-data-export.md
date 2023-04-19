@@ -9,7 +9,7 @@ ms.date: 03/29/2023
 
 This article describes continuous export of data from Kusto to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). 
 
-To enable continuous data export, [create an external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table.
+To enable continuous data export, [create an external table](../external-tables-azurestorage-azuredatalake.md) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table.
 
 In some cases, you must use a managed identity to successfully configure a continuous export job. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
 
@@ -99,7 +99,7 @@ Use the [`.show continuous export failures`](show-continuous-failures.md) comman
 
 To create a continuous export job with a query that references a table with [Row Level Security policy](../../management/rowlevelsecuritypolicy.md), you must:
 
-* Provide a managed identity as part of the continuous export configuration.
+* Provide a managed identity as part of the continuous export configuration. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
 * Use [impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation) authentication for the external table to which the data is exported.
 
 ## Limitations
