@@ -3,9 +3,9 @@ title: Kusto ingest client library best practices - Azure Data Explorer
 description: This article describes best practices for Kusto ingest client library.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/16/2019
+ms.date: 04/19/2023
 ---
-# Kusto ingest client library - Best practices
+# Kusto.Ingest client library best practices
 
 ## Select the right IngestClient flavor
 
@@ -46,7 +46,7 @@ Multiple factors can affect ingestion throughput. When planning your ingestion p
 
 ## Optimizing for COGS
 
-Using Kusto client libraries to ingest data into Azure Data Explorer remains the cheapest and the most robust option. We urge our customers to review their ingestion methods to optimize for COGS (costs of goods sold) and to take advantage of the Azure Storage pricing that will make blob transactions significantly cost effective.
+Using Kusto client libraries to ingest data into your cluster remains the cheapest and the most robust option. We urge our customers to review their ingestion methods to optimize for COGS (costs of goods sold) and to take advantage of the Azure Storage pricing that will make blob transactions significantly cost effective.
 
 * **Limit the number of ingested data chunks**.
     For better control of your ingestion costs and to reduce your monthly bill, limit the number of ingested data chunks (files/blobs/streams).

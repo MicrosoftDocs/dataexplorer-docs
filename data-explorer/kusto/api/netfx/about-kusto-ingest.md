@@ -5,7 +5,7 @@ ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 04/19/2023
 ---
-# Kusto ingest client library 
+# Kusto.Ingest client library
 
 `Microsoft.Azure.Kusto.Ingest` library is a .NET 4.7.2 library for ingesting data into your cluster.
 It takes dependencies on the following libraries and SDKs:
