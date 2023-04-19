@@ -7,7 +7,7 @@ ms.date: 04/19/2023
 ---
 # Kusto Python SDK
 
-The Kusto *Kusto Python Client* library lets you query your cluster using Python.
+The Kusto Python Client library lets you query your cluster using Python.
 The library is Python 2.x/3.x compatible. It supports all data types using the Python DB API interface.
 
 You can use the library, for example, from [Jupyter Notebooks](https://jupyter.org/) that are attached to Spark clusters,

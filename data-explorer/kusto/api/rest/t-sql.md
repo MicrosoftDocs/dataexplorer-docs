@@ -82,5 +82,5 @@ The response is in a format similar to the following.
 
 ## Next steps
 
-* Learn more about [T-SQL support](/azure/data-explorer/t-sql)
+* Learn more about [T-SQL limitations](/azure/data-explorer/t-sql#limitations)
 * See the [REST API overview](index.md)
