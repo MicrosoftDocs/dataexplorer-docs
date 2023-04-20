@@ -104,7 +104,6 @@ The SKU recommendation is updated every few hours. The recommendation checks for
 > [!Limitation]
 > The Advisor SKU recommendation does not currently support clusters with:
 > - VNET or Managed Private Enpoint configurations
-> - Clusters with deployed plugins (e.g Python)
 
 #### Reduce cache for Azure Data Explorer tables
 
