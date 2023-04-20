@@ -44,6 +44,9 @@ Within the results, you can group results by any column.
 
 1. Run the following query:
 
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4vyiEoWkSoXgksSikpDM3FSFlNTiZKhkSWJ2qoKhAQBQNnAYNgAAAA==" target="_blank">Run the query</a>
+
     ```kusto
     StormEvents
     | sort by StartTime desc
@@ -98,6 +101,9 @@ You can use one or more operators to filter the results of a column.
 
 1. Run the following query.
 
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMMQ7CMBAEe15xD6BwCloq0kdKPmCcFSHIOeu8gCzxeA4aRLUj7c6OVMv9Axvr7iVVjXJuMjIap2uGzKjJi+cCg5xijhcMpgXGJkc5hBC8LaYrEn/a/oP0+D5PrTj+y77QuyW4zXiDdOENqkYty4oAAAA=" target="_blank">Run the query</a>
+
     ```kusto
     StormEvents
     | sort by StartTime desc
@@ -147,6 +153,9 @@ Pivoting allows you to take a columns value and turn them into columns. For exam
 You can look for a specific expression within a result table.
 
 1. Run the following query:
+
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcEnMTUxPDSjKL0gtKqlUsFMwNTAwAMqWJGanKhgC2QAe2m3iNQAAAA==" target="_blank">Run the query</a>
 
     ```Kusto
     StormEvents
