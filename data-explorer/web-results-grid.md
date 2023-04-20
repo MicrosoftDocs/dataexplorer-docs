@@ -171,9 +171,26 @@ You can look for a specific expression within a result table.
 
     :::image type="content" source="media/web-query-data/search-results.png" alt-text="Screenshot of a table containing highlighted expressions from search results.":::
 
-## Search within a dynamic field
+## Search within a dynamic result
 
-To search for a value within a dynamic field, open the field and use the keyboard shortcut "Ctrl + F". This will open a free text search bar.
+You can perform free text search within a dynamic result.
+
+1. Run the following query:
+
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUHLz8Q/ydHFUAkqVJGanKhgaAAALk0E2MAAAAA==" target="_blank">Run the query</a>
+
+    ```kusto
+    StormEvents
+    | where State == "FLORIDA"
+    | take 10
+    ```
+
+1. Select the first result in the `StormSummary` column, which should be the column furthest to the right.
+
+1. To initiate a free text search bar, press the keyboard shortcut "Ctrl + F". Then, input "Florida". Notice that the location "FLORIDA" is found since the search function isn't case sensitive by default.
+
+    :::image type="content" source="media/web-query-data/search-in-dynamic-result.png" alt-text="Screenshot of search result from dynamic field search.":::
 
 ## Color results by value
 
@@ -189,7 +206,7 @@ You can color the rows of results based on a column value.
     | take 10
     ```
 
-1. Right click on a value in the `State` column.
+1. Right-click on a value in the `State` column.
 
 1. Select **Explore results**, and then select **Color by value**.
 
@@ -197,7 +214,7 @@ You can color the rows of results based on a column value.
 
 ## Get the path to a dynamic field
 
-Nested dynamic property-bag fields can become complex as you go deeper into their layers. In the results grid, the JPATH indicates the path through the dynamic property-bag object fields to arrive at the given field. 
+Nested dynamic property-bag fields can become complex as you go deeper into their layers. In the results grid, the JPATH indicates the path through the dynamic property-bag object fields to arrive at the given field.
 
 1. Run the following query:
 
@@ -215,7 +232,7 @@ Nested dynamic property-bag fields can become complex as you go deeper into thei
 
     :::image type="content" source="media/web-query-data/nested-jpath.png" alt-text="Screenshot of a nested JPATH."  lightbox="media/web-query-data/nested-jpath.png":::
 
-1. Select the icon to the right of the JPATH to copy it. Then, you can paste and use the JPATH as a filter or share it with others.
+1. Select the icon to the right of the JPATH to copy it. Then, paste and use the JPATH as a filter or share it with others.
 
 ## Filter by value of dynamic field
 
@@ -233,7 +250,7 @@ When exploring your results, you can add a specific dynamic field as a filter to
 
 1. Select the first result in the `StormSummary` column, which should be the column furthest to the right.
 
-1. Right-click on a field within a dynamic field and select **Add as filter**. For example, if we added the Location field from the previous example as a filter, the resulting query might look something like the following query:
+1. Right-click on a field within a dynamic field and select **Add as filter**. For example, if we added the Location field from the previous example as a filter, the resulting query might look something like the following query.
 
     ```kusto
     StormEvents
