@@ -101,7 +101,9 @@ Run the following [.alter-merge managed_identity policy](kusto/management/alter-
 
 ## 3 - Grant permissions to the external resource
 
-The managed identity must have permissions to the external resource in order to successfully authenticate. Select the tab for the type of external resource that your external table will reference, and assign the required permissions.
+The managed identity must have permissions to the external resource in order to successfully authenticate.
+
+Select the tab for the type of external resource that your external table will reference, and assign the required permissions.
 
 ### [Azure Storage](#tab/azure-storage)
 
