@@ -35,7 +35,7 @@ Select one of the following tabs to assign the preferred managed identity type t
 
 1. In the Azure portal, in the left menu of your managed identity resource, select **Properties**. Copy and save the **Tenant Id** and **Principal Id** for later use.
 
-    :::image type="content" source="../../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity ids." lightbox="../../../media/continuous-export/managed-identity-ids.png":::
+    :::image type="content" source="../../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity IDs." lightbox="../../../media/continuous-export/managed-identity-ids.png":::
 
 1. Run the following command to grant the managed identity [Database Viewer](../access-control/role-based-access-control.md) permissions over the database that will contain the external table.
 
@@ -63,7 +63,7 @@ Replace `<DatabaseName>` with the relevant database, `<objectId>` with the manag
 
 ## 2 - Create a managed identity policy
 
-Now that you've assigned a managed identity to your cluster, define the [managed identity policy](kusto/management/alter-managed-identity-policy-command.md). This policy will allow the specific managed identity access the external table. The policy can either be defined in the cluster level or at a specific database level.
+Now that you've assigned a managed identity to your cluster, define the [managed identity policy](kusto/management/alter-managed-identity-policy-command.md). This policy allows the specific managed identity to access the external table. The policy can either be defined in the cluster level or at a specific database level.
 
 Select one of the following tabs to set the relevant managed identity policy.
 
@@ -99,38 +99,71 @@ Run the following [.alter-merge managed_identity policy](../alter-merge-managed-
 > [!NOTE]
 > To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
 
-## Grant correct permissions to the external resource
+---
 
-To access an external resource, such as Azure Storage, you'll need to provide necessary external resource permissions to the managed identity.  
+## 3 - Grant permissions to the external resource
 
-If you're creating an Azure Storage External Table with a managed identity, the managed identity needs to be granted the following Azure Storage RBAC permissions. Grant these permissions by using the following guidance: [Azure Storage - Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal#assign-an-azure-role).
+The managed identity must have permissions to the external resource in order to successfully authenticate. Select the tab for the type of external resource that your external table will reference, and assign the required permissions.
 
-The RBAC permission levels to be granted depend on the activity to be performed:
+### [Azure Storage](#tab/azure-storage)
 
-Activity | Azure Storage permissions granted to managed identity
-|---|---|
-| **External table query operations** | Storage Blob Data Reader
-| **External table used for export operations** | Storage Blob Data Contributor
+The following table shows the required permissions by external resource. If you plan to import or query data from the external resource, grant read permissions. If you plan to export data to the external resource, grant write permissions.
 
-## Create an external table
+| External data store | Read permissions | Write permissions | Grant the permissions|
+|--|--|--|--|
+|Azure Blob Storage | Storage Blob Data Reader | Storage Blob Data Contributor |[Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)|
+|Data Lake Storage Gen2| Storage Blob Data Reader | Storage Blob Data Contributor |[Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)|
+|Data Lake Storage Gen1| Reader | Contributor |[Assign an Azure role](/azure/data-lake-store/data-lake-store-secure-data?branch=main#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts)
 
-There are two types of external tables, [Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md) and [SQL Server external tables](kusto/management/external-sql-tables.md), and both support authentication with managed identities. In this section, we'll demonstrate creation of Azure Storage external tables with managed identities.
+### [SQL Server](#tab/sql-server)
 
-To use a user-assigned managed identity with Azure Storage external tables, you need to append `;managed_identity=[managed-identity-object-id]` to the end of the connection string, for example: `https://StorageAccountName.blob.core.windows.net/Container;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e`
+If you plan to import or query data from the SQL database, grant table SELECT permissions. If you plan to export data to the SQL database, grant CREATE, UPDATE, and INSERT permissions. To learn more, see [Permissions](/sql/relational-databases/security/permissions-database-engine).
 
-> [!NOTE]
-> For system-assigned managed identities, you can use the reserved word `system` instead: <br>
->`https://StorageAccountName.blob.core.windows.net/Container[/BlobName];managed_identity=system`
-    
-This results in the following command, to create the external table with your managed identity:
+---
 
-```kusto
-.create external table tableName (col_a: string, col_b: string)
-kind = storage 
-dataformat = csv (
-'https://StorageAccountName.blob.core.windows.net/Container;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e'
-)
-```
+## 4 - Create an external table
+
+There are two types of external tables, [Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md) and [SQL Server external tables](kusto/management/external-sql-tables.md), and both support authentication with managed identities.
+
+Select one of the following tabs to set up an Azure Storage or SQL Server external table.
+
+### [Azure Storage](#tab/azure-storage)
+
+1. Create a connection string based on the [storage connection string templates](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates). This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/storage-authentication-methods.md#managed-identity).
+
+1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
+
+    For example, the following command creates `MyExternalTable` that refers to CSV-formatted data in `mycontainer` of `mystorageaccount` in Azure Blob Storage. The table has two columns, one for an integer `x` and one for a string `s`. The connection string ends with `;managed_identity=system`, which indicates to use a system-assigned managed identity for authentication to access the data store.
+
+    ```kusto
+    .create external table MyExternalTable (x:int, s:string) kind=storage dataformat=csv 
+    ( 
+        h@'https://mystorageaccount.blob.core.windows.net/mycontainer;managed_identity=system' 
+    )
+    ```
+
+    > [!NOTE]
+    > To authenticate with a user-assigned managed identity, replace `system` with the managed identity object ID.
+
+### [SQL Server](#tab/sql-server)
+
+1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/sql-authentication-methods.md#managed-identity).
+
+1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
+
+    For example, the following command creates `MySqlExternalTable` that refers to `MySqlTable` table in `MyDatabase` of SQL Server. The table has two columns, one for an integer `x` and one for a string `s`. The connection string contains `;Authentication="Active Directory Managed Identity";User Id=123456789`, which indicates to use a user-assigned managed identity with object ID `123456789` to access the table.
+
+    ```kusto
+    .create external table MySqlExternalTable (x:int, s:string) kind=sql table=MySqlTable
+    ( 
+       h@'Server=tcp:myserver.database.windows.net,1433;Authentication="Active Directory Managed Identity";User Id=123456789;Initial Catalog=MyDatabase;'
+    )
+    ```
+
+    > [!NOTE]
+    > To authenticate with a system-assigned managed identity, remove `;User Id={object_id}` and only specify `;Authentication="Active Directory Managed Identity"`.
+
+---
 
 ## Next steps
 
