@@ -131,17 +131,19 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 1. Run the [.create or .alter external table](kusto/management/external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
 
-    For example, the following command creates `MyExternalTable` that refers to CSV-formatted data in `mycontainer` of `mystorageaccount` in Azure Blob Storage. The table has two columns, one for an integer `x` and one for a string `s`. The connection string ends with `;managed_identity=system`, which indicates to use a system-assigned managed identity for authentication to access the data store.
+#### Example
 
-    ```kusto
-    .create external table MyExternalTable (x:int, s:string) kind=storage dataformat=csv 
-    ( 
-        h@'https://mystorageaccount.blob.core.windows.net/mycontainer;managed_identity=system' 
-    )
-    ```
+For example, the following command creates `MyExternalTable` that refers to CSV-formatted data in `mycontainer` of `mystorageaccount` in Azure Blob Storage. The table has two columns, one for an integer `x` and one for a string `s`. The connection string ends with `;managed_identity=system`, which indicates to use a system-assigned managed identity for authentication to access the data store.
 
-    > [!NOTE]
-    > To authenticate with a user-assigned managed identity, replace `system` with the managed identity object ID.
+```kusto
+.create external table MyExternalTable (x:int, s:string) kind=storage dataformat=csv 
+( 
+    h@'https://mystorageaccount.blob.core.windows.net/mycontainer;managed_identity=system' 
+)
+```
+
+> [!NOTE]
+> To authenticate with a user-assigned managed identity, replace `system` with the managed identity object ID.
 
 ### [SQL Server](#tab/sql-server)
 
@@ -149,17 +151,19 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 1. Run the [.create or .alter external table](kusto/management/external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
 
-    For example, the following command creates `MySqlExternalTable` that refers to `MySqlTable` table in `MyDatabase` of SQL Server. The table has two columns, one for an integer `x` and one for a string `s`. The connection string contains `;Authentication="Active Directory Managed Identity";User Id=123456789`, which indicates to use a user-assigned managed identity with object ID `123456789` to access the table.
+#### Example
 
-    ```kusto
-    .create external table MySqlExternalTable (x:int, s:string) kind=sql table=MySqlTable
-    ( 
-       h@'Server=tcp:myserver.database.windows.net,1433;Authentication="Active Directory Managed Identity";User Id=123456789;Initial Catalog=MyDatabase;'
-    )
-    ```
+For example, the following command creates `MySqlExternalTable` that refers to `MySqlTable` table in `MyDatabase` of SQL Server. The table has two columns, one for an integer `x` and one for a string `s`. The connection string contains `;Authentication="Active Directory Managed Identity";User Id=123456789`, which indicates to use a user-assigned managed identity with object ID `123456789` to access the table.
 
-    > [!NOTE]
-    > To authenticate with a system-assigned managed identity, remove `;User Id={object_id}` and only specify `;Authentication="Active Directory Managed Identity"`.
+```kusto
+.create external table MySqlExternalTable (x:int, s:string) kind=sql table=MySqlTable
+( 
+    h@'Server=tcp:myserver.database.windows.net,1433;Authentication="Active Directory Managed Identity";User Id=123456789;Initial Catalog=MyDatabase;'
+)
+```
+
+> [!NOTE]
+> To authenticate with a system-assigned managed identity, remove `;User Id={object_id}` and only specify `;Authentication="Active Directory Managed Identity"`.
 
 ---
 
