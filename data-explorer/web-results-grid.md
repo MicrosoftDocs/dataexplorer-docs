@@ -2,7 +2,7 @@
 title: 'Azure Data Explorer web UI results grid'
 description: In this guide, you'll learn how to work with the results grid in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 01/15/2023
+ms.date: 04/20/2023
 ---
 
 # Azure Data Explorer web UI results grid
@@ -161,3 +161,35 @@ You can look for a specific expression within a result table.
 1. All mentions of your searched expression are now highlighted in the table. You can navigate between them by clicking *Enter* to go forward or *Shift+Enter* to go backward, or you can use the *up* and *down* buttons next to the search box.
 
     :::image type="content" source="media/web-query-data/search-results.png" alt-text="Screenshot of a table containing highlighted expressions from search results.":::
+
+## Search within a dynamic field
+
+To search for a value within a dynamic field, open the field and use the keyboard shortcut "Ctrl + F". This will open a free text search bar.
+
+## Color results by value
+
+To color results based on column value, right click on the relevant column, select **Explore results**, and select **Color by value**.
+
+In the following screenshot, the results are colored by the value in the `State` column.
+
+:::image type="content" source="media/web-query-data/color-by-value.png" alt-text="Screenshot of color by value." lightbox="media/web-query-data/color-by-value.png":::
+
+## Get path to dynamic field
+
+Nested dynamic property-bag fields can become complex as you go deeper into their layers. In the results grid, when you open a dynamic column and select a field the JPATH to this field appears at the top. The JPATH indicates the path through the dynamic property-bag object fields to arrive at the given field. Then, you can copy this JPATH to use it as a filter or to share with others.
+
+The following screenshot shows the path to the `Location` field, which is nested under the `Details` field within the `StormSummary` column dynamic property-bag object. At the top of the window, the JPATH for the selected field is shown, along with an icon for copying the value.
+
+:::image type="content" source="media/web-query-data/nested-jpath.png" alt-text="Screenshot of a nested JPATH.":::
+
+## Filter by value of dynamic field
+
+To add a field and its value as a condition to a query, right-click on the field within a dynamic field and select **Add as filter**.
+
+For example, if we added the Location field from the previous example as a filter, the resulting query might look something like the following query:
+
+```kusto
+StormEvents
+| take 10
+| where ['StormSummary']['Details']['Location'] == "FLORIDA"
+```
