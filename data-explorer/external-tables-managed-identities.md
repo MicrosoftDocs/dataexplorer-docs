@@ -117,7 +117,7 @@ The following table shows the required permissions by external resource. To impo
 
 ### [SQL Server](#tab/sql-server)
 
-To import or query data from the SQL database, grant table SELECT permissions. To export data to the SQL database, grant CREATE, UPDATE, and INSERT permissions. To learn more, see [Permissions](/sql/relational-databases/security/permissions-database-engine).
+Grant the managed identity the necessary permissions on the SQL database. To import or query data from the SQL database, grant table SELECT permissions. To export data to the SQL database, grant CREATE, UPDATE, and INSERT permissions. To learn more, see [Permissions](/sql/relational-databases/security/permissions-database-engine).
 
 ---
 
