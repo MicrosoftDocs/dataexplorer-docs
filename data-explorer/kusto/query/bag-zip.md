@@ -100,10 +100,9 @@ Data
 | extend IsNewBagEmpty=isnull(NewBag)
 ```
 
-|result|
-|---|
-KeysArray ValuesArray NewBag IsNewBagEmpty
-a [1,'2',2.5]  TRUE
+| KeysArray | ValuesArray | NewBag | IsNewBagEmpty |
+|--|--|--|
+| a | [1,'2',2.5] | | TRUE |
 
 ## See also
 
