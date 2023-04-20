@@ -1,6 +1,6 @@
 ---
 title: bag_zip() - Azure Data Explorer 
-description: This article describes bag_zip() in Azure Data Explorer.
+description: Learn how to use bag_zip() to merge two dynamic arrays into a single property-bag of keys and values.
 ms.reviewer: elgevork
 ms.topic: reference
 ms.date: 04/05/2023
