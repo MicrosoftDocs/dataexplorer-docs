@@ -107,7 +107,7 @@ Select the tab for the type of external resource that your external table will r
 
 ### [Azure Storage](#tab/azure-storage)
 
-The following table shows the required permissions by external resource. To import or query data from the external resource, grant read permissions. To export data to the external resource, grant write permissions.
+The following table shows the required permissions by external resource. To import or query data from the external resource, grant the managed identity read permissions. To export data to the external resource, grant the managed identity write permissions.
 
 | External data store | Read permissions | Write permissions | Grant the permissions|
 |--|--|--|--|
@@ -117,7 +117,7 @@ The following table shows the required permissions by external resource. To impo
 
 ### [SQL Server](#tab/sql-server)
 
-Grant the managed identity the necessary permissions on the SQL database. To import or query data from the SQL database, grant table SELECT permissions. To export data to the SQL database, grant CREATE, UPDATE, and INSERT permissions. To learn more, see [Permissions](/sql/relational-databases/security/permissions-database-engine).
+To import or query data from the SQL database, grant the managed identity table SELECT permissions. To export data to the SQL database, grant the managed identity CREATE, UPDATE, and INSERT permissions. To learn more, see [Permissions](/sql/relational-databases/security/permissions-database-engine).
 
 ---
 
