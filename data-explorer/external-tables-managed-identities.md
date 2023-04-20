@@ -17,7 +17,7 @@ In this article, you'll learn how to create an external table that authenticates
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * [Database Admin](kusto/management/access-control/role-based-access-control.md) permissions on the Azure Data Explorer database.
 
-## 1 - Assign a managed identity to your cluster
+## 1 - Set up managed identity for use with external tables
 
 There are two types of managed identities:
 
@@ -29,77 +29,43 @@ Select one of the following tabs to assign the preferred managed identity type t
 
 ### [User-assigned](#tab/user-assigned)
 
-1. Follow the steps to [Add a user-assigned identity](configure-managed-identities-cluster.md#add-a-user-assigned-identity).
+1. Follow the steps to [Add a user-assigned identity](configure-managed-identities-cluster.md#add-a-user-assigned-identity). Save the **Object (principal) ID** for later use.
 
-1. In the Azure portal, in the left menu of your managed identity resource, select **Properties**. Copy and save the **Tenant Id** and **Principal Id** for later use.
-
-    :::image type="content" source="media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity IDs." lightbox="media/continuous-export/managed-identity-ids.png":::
-
-1. Run the following command to grant the managed identity [Database User](kusto/management/access-control/role-based-access-control.md) permissions over the database that will contain the external table.
+1. Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables. Replace `<objectId>` with the managed identity **Object (principal) ID** from the previous step.
 
     ```kusto
-    .add database <DatabaseName> users ('aadapp=<objectId>;<tenantId>')
+    .alter-merge cluster policy managed_identity ```[
+        {
+          "ObjectId": "<objectId>",
+          "AllowedUsages": "ExternalTable"
+        }
+    ]```
     ```
 
-    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Azure Active Directory **Tenant Id** from step 2.
+    > [!NOTE]
+    > To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
 
 ### [System-assigned](#tab/system-assigned)
 
 1. Follow the steps to [Add a system-assigned identity](configure-managed-identities-cluster.md#add-a-system-assigned-identity).
 
-1. Copy and save the **Object (principal) ID** for later use.
-  
-1. Run the following command to grant the managed identity [Database User](kusto/management/access-control/role-based-access-control.md) permissions over the database that will contain the external table.
+1. Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables.
 
     ```kusto
-    .add database <DatabaseName> users ('aadapp=<objectId>')
+    .alter-merge cluster policy managed_identity ```[
+        {
+          "ObjectId": "system",
+          "AllowedUsages": "ExternalTable"
+        }
+    ]```
     ```
 
-    Replace `<DatabaseName>` with the relevant database and `<objectId>` with the managed identity **Object (principal) ID** from step 2.
+    > [!NOTE]
+    > To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
 
 ---
 
-## 2 - Create a managed identity policy
-
-You must define a [managed identity policy](kusto/management/alter-managed-identity-policy-command.md) to allow the managed identity to access the external table. The policy can either be defined in the cluster level or at a specific database level.
-
-Select one of the following tabs to set the relevant managed identity policy.
-
-### [User-assigned](#tab/user-assigned)
-
-Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables.
-
-```kusto
-.alter-merge cluster policy managed_identity ```[
-    {
-      "ObjectId": "<objectId>",
-      "AllowedUsages": "ExternalTable"
-    }
-]```
-```
-
-> [!NOTE]
-> To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
-
-### [System-assigned](#tab/system-assigned)
-
-Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables.
-
-```kusto
-.alter-merge cluster policy managed_identity ```[
-    {
-      "ObjectId": "system",
-      "AllowedUsages": "ExternalTable"
-    }
-]```
-```
-
-> [!NOTE]
-> To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
-
----
-
-## 3 - Grant permissions to the external resource
+## 2 - Grant the managed identity external resource permissions
 
 The managed identity must have permissions to the external resource in order to successfully authenticate.
 
@@ -121,7 +87,7 @@ To import or query data from the SQL database, grant the managed identity table 
 
 ---
 
-## 4 - Create an external table
+## 3 - Create an external table
 
 There are two types of external tables, [Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md) and [SQL Server external tables](kusto/management/external-sql-tables.md), and both support authentication with managed identities.
 
