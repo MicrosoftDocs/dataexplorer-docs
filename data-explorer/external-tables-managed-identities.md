@@ -21,7 +21,7 @@ In this article, you'll learn how to create external tables that authenticate wi
 
 ## 1 - Assign a managed identity to your cluster
 
-To use managed identities with your cluster, you first need to assign the managed identity to your cluster. This assignment provides the cluster with permissions to act on behalf of the assigned managed identity. There are two types of managed identities:
+To use managed identities with your cluster, you first need to assign the managed identity to your cluster. There are two types of managed identities:
 
 * **System-assigned**: A system-assigned identity is connected to your cluster and is removed when the cluster is removed. Only one system-assigned identity is allowed per cluster.
 
@@ -39,11 +39,11 @@ Select one of the following tabs to assign the preferred managed identity type t
 
 1. Run the following command to grant the managed identity [Database Viewer](kusto/management/access-control/role-based-access-control.md) permissions over the database that will contain the external table.
 
-```kusto
-.add database <DatabaseName> viewers ('aadapp=<objectId>;<tenantId>')
-```
+    ```kusto
+    .add database <DatabaseName> viewers ('aadapp=<objectId>;<tenantId>')
+    ```
 
-Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Azure Active Directory **Tenant Id** from step 2.
+    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Azure Active Directory **Tenant Id** from step 2.
 
 ### [System-assigned](#tab/system-assigned)
 
@@ -63,19 +63,19 @@ Replace `<DatabaseName>` with the relevant database, `<objectId>` with the manag
 
 ## 2 - Create a managed identity policy
 
-Now that you've assigned a managed identity to your cluster, define the [managed identity policy](kusto/management/alter-managed-identity-policy-command.md). This policy allows the specific managed identity to access the external table. The policy can either be defined in the cluster level or at a specific database level.
+You must define a [managed identity policy](kusto/management/alter-managed-identity-policy-command.md) to allow the managed identity to access the external table. The policy can either be defined in the cluster level or at a specific database level.
 
 Select one of the following tabs to set the relevant managed identity policy.
 
 ### [User-assigned](#tab/user-assigned)
 
-Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
+Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables.
 
 ```kusto
 .alter-merge cluster policy managed_identity ```[
     {
       "ObjectId": "<objectId>",
-      "AllowedUsages": "AutomatedFlows"
+      "AllowedUsages": "ExternalTable"
     }
 ]```
 ```
@@ -85,13 +85,13 @@ Run the following [.alter-merge managed_identity policy](kusto/management/alter-
 
 ### [System-assigned](#tab/system-assigned)
 
-Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
+Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables.
 
 ```kusto
 .alter-merge cluster policy managed_identity ```[
     {
       "ObjectId": "system",
-      "AllowedUsages": "AutomatedFlows"
+      "AllowedUsages": "ExternalTable"
     }
 ]```
 ```
@@ -107,7 +107,7 @@ The managed identity must have permissions to the external resource in order to 
 
 ### [Azure Storage](#tab/azure-storage)
 
-The following table shows the required permissions by external resource. If you plan to import or query data from the external resource, grant read permissions. If you plan to export data to the external resource, grant write permissions.
+The following table shows the required permissions by external resource. To import or query data from the external resource, grant read permissions. To export data to the external resource, grant write permissions.
 
 | External data store | Read permissions | Write permissions | Grant the permissions|
 |--|--|--|--|
@@ -117,7 +117,7 @@ The following table shows the required permissions by external resource. If you 
 
 ### [SQL Server](#tab/sql-server)
 
-If you plan to import or query data from the SQL database, grant table SELECT permissions. If you plan to export data to the SQL database, grant CREATE, UPDATE, and INSERT permissions. To learn more, see [Permissions](/sql/relational-databases/security/permissions-database-engine).
+To import or query data from the SQL database, grant table SELECT permissions. To export data to the SQL database, grant CREATE, UPDATE, and INSERT permissions. To learn more, see [Permissions](/sql/relational-databases/security/permissions-database-engine).
 
 ---
 
