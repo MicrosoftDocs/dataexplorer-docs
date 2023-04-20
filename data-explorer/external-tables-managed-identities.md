@@ -35,10 +35,10 @@ Select one of the following tabs to assign the preferred managed identity type t
 
     :::image type="content" source="media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity IDs." lightbox="media/continuous-export/managed-identity-ids.png":::
 
-1. Run the following command to grant the managed identity [Database Viewer](kusto/management/access-control/role-based-access-control.md) permissions over the database that will contain the external table.
+1. Run the following command to grant the managed identity [Database User](kusto/management/access-control/role-based-access-control.md) permissions over the database that will contain the external table.
 
     ```kusto
-    .add database <DatabaseName> viewers ('aadapp=<objectId>;<tenantId>')
+    .add database <DatabaseName> users ('aadapp=<objectId>;<tenantId>')
     ```
 
     Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Azure Active Directory **Tenant Id** from step 2.
@@ -49,10 +49,10 @@ Select one of the following tabs to assign the preferred managed identity type t
 
 1. Copy and save the **Object (principal) ID** for later use.
   
-1. Run the following command to grant the managed identity [Database Viewer](kusto/management/access-control/role-based-access-control.md) permissions over the database that will contain the external table.
+1. Run the following command to grant the managed identity [Database User](kusto/management/access-control/role-based-access-control.md) permissions over the database that will contain the external table.
 
     ```kusto
-    .add database <DatabaseName> viewers ('aadapp=<objectId>')
+    .add database <DatabaseName> users ('aadapp=<objectId>')
     ```
 
     Replace `<DatabaseName>` with the relevant database and `<objectId>` with the managed identity **Object (principal) ID** from step 2.
