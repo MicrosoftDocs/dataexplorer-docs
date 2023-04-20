@@ -197,11 +197,25 @@ You can color the rows of results based on a column value.
 
 ## Get the path to a dynamic field
 
-Nested dynamic property-bag fields can become complex as you go deeper into their layers. In the results grid, when you open a dynamic column and select a field the JPATH to this field appears at the top. The JPATH indicates the path through the dynamic property-bag object fields to arrive at the given field. Then, you can copy this JPATH to use it as a filter or to share with others.
+Nested dynamic property-bag fields can become complex as you go deeper into their layers. In the results grid, the JPATH indicates the path through the dynamic property-bag object fields to arrive at the given field. 
 
-The following screenshot shows the path to the `Location` field, which is nested under the `Details` field within the `StormSummary` column dynamic property-bag object. At the top of the window, the JPATH for the selected field is shown, along with an icon for copying the value.
+1. Run the following query:
 
-:::image type="content" source="media/web-query-data/nested-jpath.png" alt-text="Screenshot of a nested JPATH."  lightbox="media/web-query-data/nested-jpath.png":::
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNAAAWuk9VBUAAAA=" target="_blank">Run the query</a>
+
+    ```kusto
+    StormEvents
+    | take 10
+    ```
+
+1. Select the first result in the `StormSummary` column, which should be the column furthest to the right.
+
+1. Select different fields within the result and see how the JPATH at the top of the window changes. For example, the following screenshot shows the path to the `Location` field, which is nested under the `Details` field within the `StormSummary` column dynamic property-bag object.
+
+    :::image type="content" source="media/web-query-data/nested-jpath.png" alt-text="Screenshot of a nested JPATH."  lightbox="media/web-query-data/nested-jpath.png":::
+
+1. Select the icon to the right of the JPATH to copy it. Then, you can paste and use the JPATH as a filter or share it with others.
 
 ## Filter by value of dynamic field
 
