@@ -73,10 +73,9 @@ Data
 | extend NewBag = bag_zip(KeysArray, ValuesArray)
 ```
 
-|result|
-|---|
-KeysArray ValuesArray NewBag
-['a',8,'b'] [1,'2',2.5] {'a': 1,'b': 2.5}
+| KeysArray | ValuesArray | NewBag |
+|--|--|--|
+| ['a',8,'b'] | [1,'2',2.5] | {'a': 1,'b': 2.5} |
 
 If values parameter isn't an array, all values are filled with nulls:
 
