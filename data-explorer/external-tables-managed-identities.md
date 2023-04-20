@@ -17,7 +17,7 @@ In this article, you'll learn how to create an external table that authenticates
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * [Database Admin](kusto/management/access-control/role-based-access-control.md) permissions on the Azure Data Explorer database.
 
-## 1 - Set up managed identity for use with external tables
+## 1 - Configure a managed identity for use with external tables
 
 There are two types of managed identities:
 
@@ -25,13 +25,13 @@ There are two types of managed identities:
 
 * **User-assigned**: A user-assigned managed identity is a standalone Azure resource. Multiple user-assigned identities can be assigned to your cluster.
 
-Select one of the following tabs to assign the preferred managed identity type to your cluster.
+Select one of the following tabs to set up the preferred managed identity type.
 
 ### [User-assigned](#tab/user-assigned)
 
-1. Follow the steps to [Add a user-assigned identity](configure-managed-identities-cluster.md#add-a-user-assigned-identity). Save the **Object (principal) ID** for later use.
+1. Follow the steps to [Add a user-assigned identity](configure-managed-identities-cluster.md#add-a-user-assigned-identity) to your cluster, and save the **Object (principal) ID** for later use.
 
-1. Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables. Replace `<objectId>` with the managed identity **Object (principal) ID** from the previous step.
+1. Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables. Replace `<objectId>` with the **Object (principal) ID** from the previous step.
 
     ```kusto
     .alter-merge cluster policy managed_identity ```[
@@ -47,7 +47,7 @@ Select one of the following tabs to assign the preferred managed identity type t
 
 ### [System-assigned](#tab/system-assigned)
 
-1. Follow the steps to [Add a system-assigned identity](configure-managed-identities-cluster.md#add-a-system-assigned-identity).
+1. Follow the steps to [Add a system-assigned identity](configure-managed-identities-cluster.md#add-a-system-assigned-identity) to your cluster.
 
 1. Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables.
 
