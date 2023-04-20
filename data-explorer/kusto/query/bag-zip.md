@@ -26,7 +26,8 @@ Returns a `dynamic` property-bag.
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFwSSxJVLBVSAFSJYlJOaka3qmVxY5FRYmVVgoplXmJuZnJOgphiTmlqWiimgrRvFwKQADla0SrJ6rrKKgngYhk9VhNHYSMIVDICChurGcSq8nLFWvNywWyl5erRiG1oiQ1L0XBL7XcKTEd6JCkxPT4qswChDNQbNcEAJQm8tKzAAAA" target="_blank">Run the query</a>
 ```kusto
 let Data = datatable(KeysArray:dynamic, ValuesArray:dynamic ) [dynamic(['a','b','c']), dynamic([1, '2', 3.4])];
 Data
