@@ -30,7 +30,7 @@ In the manual scale option, the cluster has a static capacity that doesn't chang
 
    ![Manual scale method.](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
-### Optimized autoscale
+### Optimized autoscale (recommended option)
 
 Optimized autoscale is the default setting during cluster creation and the recommended scaling method. This method optimizes cluster performance and cost, as follows:
 
@@ -98,8 +98,7 @@ To ensure that there's no overloading of resources, the following metrics are ev
 
 ### Custom autoscale
 
-By using custom autoscale, you can scale your cluster dynamically based on metrics that you specify. Use the following steps to configure custom autoscale.
-
+Though Optimized autoscale is the recommended scaling option, Azure Custom autoscale is also supported. By using custom autoscale, you can scale your cluster dynamically based on metrics that you specify. Use the following steps to configure custom autoscale.
 ![Scale rule.](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
 1. In the **Autoscale setting name** box, enter a name, such as *Scale-out: cache utilization*.
@@ -147,3 +146,5 @@ You've now configured horizontal scaling for your Azure Data Explorer cluster. A
 
 * [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)
 * [Manage cluster vertical scaling](manage-cluster-vertical-scaling.md) for appropriate sizing of a cluster.
+
+
