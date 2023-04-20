@@ -47,10 +47,9 @@ Data
 | extend NewBag = bag_zip(KeysArray, ValuesArray)
 ```
 
-|result|
-|---|
-KeysArray ValuesArray NewBag
-['a','b','c'] [1,'2'] {'a': 1,'b': '2','c': null}
+| KeysArray | ValuesArray | NewBag |
+|--|--|--|
+| ['a','b','c'] | [1,'2'] | {'a': 1,'b': '2','c': null} |
 
 If there are more values than keys, values with no matching keys are ignored:
 
