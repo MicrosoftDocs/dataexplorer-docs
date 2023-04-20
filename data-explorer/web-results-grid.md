@@ -180,7 +180,7 @@ Nested dynamic property-bag fields can become complex as you go deeper into thei
 
 The following screenshot shows the path to the `Location` field, which is nested under the `Details` field within the `StormSummary` column dynamic property-bag object. At the top of the window, the JPATH for the selected field is shown, along with an icon for copying the value.
 
-:::image type="content" source="media/web-query-data/nested-jpath.png" alt-text="Screenshot of a nested JPATH.":::
+:::image type="content" source="media/web-query-data/nested-jpath.png" alt-text="Screenshot of a nested JPATH."  lightbox="media/web-query-data/nested-jpath.png":::
 
 ## Filter by value of dynamic field
 
