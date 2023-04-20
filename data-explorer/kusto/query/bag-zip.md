@@ -11,7 +11,7 @@ Creates a dynamic property-bag from two input dynamic arrays. In the resulting p
 
 ## Syntax
 
-`bag_zip(KeysArray, ValuesArray)`
+`bag_zip(`*KeysArray*`,` *ValuesArray*`)`
 
 ## Parameters
 
