@@ -13,10 +13,12 @@ The bag_zip function accepts 2 `dynamic` arrays, and returns a `dynamic` propert
 
 `bag_zip(KeysArray, ValuesArray)`
 
-## Arguments
+## Parameters
 
-* KeysArray: A dynamic array that contains strings. These strings represent the property names for the resulting property-bag.
-* ValuesArray: A dynamic array, its items represent the property values for the resulting property-bag.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *KeysArray* | dynamic | &check; | An array of strings. These strings represent the property names for the resulting property-bag.|
+| *ValuesArray* | dynamic | &check; | An array whose values will be the property values for the resulting property-bag.|
 
 ## Returns
 
