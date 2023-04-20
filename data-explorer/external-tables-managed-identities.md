@@ -16,8 +16,8 @@ In this article, you'll learn how to create external tables that authenticate wi
 
 ## Prerequisites
 
-* An Azure Data Explorer cluster and database. [Create a cluster and database](../../../create-cluster-database-portal.md).
-* [Database Admin](../access-control/role-based-access-control.md) permissions on the Azure Data Explorer database.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* [Database Admin](kusto/management/access-control/role-based-access-control.md) permissions on the Azure Data Explorer database.
 
 ## 1 - Assign a managed identity to your cluster
 
@@ -31,13 +31,13 @@ Select one of the following tabs to assign the preferred managed identity type t
 
 ### [User-assigned](#tab/user-assigned)
 
-1. Follow the steps to [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity).
+1. Follow the steps to [Add a user-assigned identity](configure-managed-identities-cluster.md#add-a-user-assigned-identity).
 
 1. In the Azure portal, in the left menu of your managed identity resource, select **Properties**. Copy and save the **Tenant Id** and **Principal Id** for later use.
 
-    :::image type="content" source="../../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity IDs." lightbox="../../../media/continuous-export/managed-identity-ids.png":::
+    :::image type="content" source="media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity IDs." lightbox="media/continuous-export/managed-identity-ids.png":::
 
-1. Run the following command to grant the managed identity [Database Viewer](../access-control/role-based-access-control.md) permissions over the database that will contain the external table.
+1. Run the following command to grant the managed identity [Database Viewer](kusto/management/access-control/role-based-access-control.md) permissions over the database that will contain the external table.
 
 ```kusto
 .add database <DatabaseName> viewers ('aadapp=<objectId>;<tenantId>')
@@ -47,11 +47,11 @@ Replace `<DatabaseName>` with the relevant database, `<objectId>` with the manag
 
 ### [System-assigned](#tab/system-assigned)
 
-1. Follow the steps to [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity).
+1. Follow the steps to [Add a system-assigned identity](configure-managed-identities-cluster.md#add-a-system-assigned-identity).
 
 1. Copy and save the **Object (principal) ID** for later use.
   
-1. Run the following command to grant the managed identity [Database Viewer](../access-control/role-based-access-control.md) permissions over the database that will contain the external table.
+1. Run the following command to grant the managed identity [Database Viewer](kusto/management/access-control/role-based-access-control.md) permissions over the database that will contain the external table.
 
     ```kusto
     .add database <DatabaseName> viewers ('aadapp=<objectId>')
@@ -69,7 +69,7 @@ Select one of the following tabs to set the relevant managed identity policy.
 
 ### [User-assigned](#tab/user-assigned)
 
-Run the following [.alter-merge managed_identity policy](../alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
+Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
 ```kusto
 .alter-merge cluster policy managed_identity ```[
@@ -85,7 +85,7 @@ Run the following [.alter-merge managed_identity policy](../alter-merge-managed-
 
 ### [System-assigned](#tab/system-assigned)
 
-Run the following [.alter-merge managed_identity policy](../alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
+Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
 ```kusto
 .alter-merge cluster policy managed_identity ```[
@@ -131,7 +131,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 1. Create a connection string based on the [storage connection string templates](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates). This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/storage-authentication-methods.md#managed-identity).
 
-1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
+1. Run the [.create or .alter external table](kusto/management/external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
 
     For example, the following command creates `MyExternalTable` that refers to CSV-formatted data in `mycontainer` of `mystorageaccount` in Azure Blob Storage. The table has two columns, one for an integer `x` and one for a string `s`. The connection string ends with `;managed_identity=system`, which indicates to use a system-assigned managed identity for authentication to access the data store.
 
@@ -149,7 +149,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/sql-authentication-methods.md#managed-identity).
 
-1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
+1. Run the [.create or .alter external table](kusto/management/external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
 
     For example, the following command creates `MySqlExternalTable` that refers to `MySqlTable` table in `MyDatabase` of SQL Server. The table has two columns, one for an integer `x` and one for a string `s`. The connection string contains `;Authentication="Active Directory Managed Identity";User Id=123456789`, which indicates to use a user-assigned managed identity with object ID `123456789` to access the table.
 
@@ -170,4 +170,4 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 * Query the external table using [external_table()](kusto/query/externaltablefunction.md)
 * [Export data to an external table](kusto/management/data-export/export-data-to-an-external-table.md)
 * Configure [Continuous data export](kusto/management/data-export/continuous-data-export.md)
-* Learn more about [managed identities](../../../managed-identities-overview.md)
+* Learn more about [managed identities](managed-identities-overview.md)
