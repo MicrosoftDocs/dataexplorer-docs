@@ -174,7 +174,7 @@ In the following screenshot, the results are colored by the value in the `State`
 
 :::image type="content" source="media/web-query-data/color-by-value.png" alt-text="Screenshot of color by value." lightbox="media/web-query-data/color-by-value.png":::
 
-## Get path to dynamic field
+## Get the path to a dynamic field
 
 Nested dynamic property-bag fields can become complex as you go deeper into their layers. In the results grid, when you open a dynamic column and select a field the JPATH to this field appears at the top. The JPATH indicates the path through the dynamic property-bag object fields to arrive at the given field. Then, you can copy this JPATH to use it as a filter or to share with others.
 
