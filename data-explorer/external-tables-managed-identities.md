@@ -19,7 +19,7 @@ In this article, you'll learn how to create an external table that authenticates
 
 ## 1 - Assign a managed identity to your cluster
 
-To use managed identities with your cluster, you first need to assign the managed identity to your cluster. There are two types of managed identities:
+There are two types of managed identities:
 
 * **System-assigned**: A system-assigned identity is connected to your cluster and is removed when the cluster is removed. Only one system-assigned identity is allowed per cluster.
 
