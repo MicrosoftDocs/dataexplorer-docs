@@ -177,11 +177,23 @@ To search for a value within a dynamic field, open the field and use the keyboar
 
 ## Color results by value
 
-To color results based on column value, right click on the relevant column, select **Explore results**, and select **Color by value**.
+You can color the rows of results based on a column value.
 
-In the following screenshot, the results are colored by the value in the `State` column.
+1. Run the following query:
 
-:::image type="content" source="media/web-query-data/color-by-value.png" alt-text="Screenshot of color by value." lightbox="media/web-query-data/color-by-value.png":::
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNAAAWuk9VBUAAAA=" target="_blank">Run the query</a>
+
+    ```kusto
+    StormEvents
+    | take 10
+    ```
+
+1. Right click on a value in the `State` column.
+
+1. Select **Explore results**, and then select **Color by value**.
+
+    :::image type="content" source="media/web-query-data/color-by-value.png" alt-text="Screenshot of color by value." lightbox="media/web-query-data/color-by-value.png":::
 
 ## Get the path to a dynamic field
 
