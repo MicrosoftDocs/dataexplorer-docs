@@ -7,7 +7,7 @@ ms.date: 04/05/2023
 ---
 # bag_zip()
 
-The bag_zip function accepts 2 `dynamic` arrays, and returns a `dynamic` property-bag that zips the properties and values from the input arrays.
+Creates a dynamic property-bag from two input dynamic arrays. In the resulting property-bag, the values from the first input array are used as the property keys, while the values from the second input array are used as corresponding property values. 
 
 ## Syntax
 
