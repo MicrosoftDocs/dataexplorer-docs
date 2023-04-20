@@ -127,6 +127,8 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 ### [Azure Storage](#tab/azure-storage)
 
+To create an Azure Storage external table, do the following steps:
+
 1. Create a connection string based on the [storage connection string templates](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates). This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/storage-authentication-methods.md#managed-identity).
 
 1. Run the [.create or .alter external table](kusto/management/external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
@@ -146,6 +148,8 @@ The following command creates `MyExternalTable` that refers to CSV-formatted dat
 > To authenticate with a user-assigned managed identity, replace `system` with the managed identity object ID.
 
 ### [SQL Server](#tab/sql-server)
+
+To create a SQL Server external table, do the following steps:
 
 1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/sql-authentication-methods.md#managed-identity).
 
