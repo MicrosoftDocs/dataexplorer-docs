@@ -8,7 +8,7 @@ ms.date: 04/19/2023
 
 # Kusto Golang SDK
 
-Kusto Go Client library provides the capability to query, control, and ingest into your cluster using Go.
+The Kusto Go Client library provides the capability to query, control, and ingest into your cluster using Go.
 This SDK is a data plane type SDK used for interacting with your cluster. For the control plane, or resource administration, see [the GitHub library](https://github.com/Azure/azure-sdk-for-go/tree/main/sdk/resourcemanager/kusto).
 
 ## Minimum Requirements

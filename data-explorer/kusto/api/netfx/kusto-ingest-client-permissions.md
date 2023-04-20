@@ -19,7 +19,7 @@ This article explains what permissions to set up on your service for `Native` in
  
 ## Ingestion permission mode for queued ingestion
 
-Ingestion permission mode is defined in [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient). In this mode, an ingestion message is sent to an Azure queue. The queue, also known as the ingestion service, is received from the Kusto service.  The ingest client will generate intermediate storage artifacts utilizing the resources allocated by the service.
+Ingestion permission mode is defined in [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient). This mode limits the client code dependency on the engine service. In this mode, an ingestion message is sent to an Azure queue. The queue, also known as the ingestion service, is received from the engine service.  The ingest client generates intermediate storage artifacts utilizing the resources allocated by the engine service.
 
 The diagram outlines the queued ingestion client interaction with Kusto.
 
