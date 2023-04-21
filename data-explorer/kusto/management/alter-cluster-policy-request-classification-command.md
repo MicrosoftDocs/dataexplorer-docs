@@ -1,13 +1,13 @@
 ---
-title: ".alter cluster policy request classification command - Azure Data Explorer"
-description: "This article describes the alter cluster policy request classification command in Azure Data Explorer."
+title: .alter cluster policy request_classification command - Azure Data Explorer
+description: Learn how to use the .alter cluster policy request_classification command to alter the cluser's request classification policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 04/20/2023
 ---
 # .alter cluster policy request_classification policy
 
-Alter cluster's request classification policy.
+Alters the cluster's request classification policy.
 
 ## Permissions
 
