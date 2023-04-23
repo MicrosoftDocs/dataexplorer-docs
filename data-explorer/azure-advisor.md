@@ -115,7 +115,7 @@ The recommendation **delete unused storage artifacts** is given for a cluster th
 #### Enable Optimized autoscale
 
 
-The recommendation **enable Optimized autoscale** is given when enabling [Optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale) would have reduced the instance count on a cluster. This recommendation is based on usage patterns, cache utilization, ingestion utilization, and CPU. To make sure you don't exceed your planned budget, add a maximum instance count when you enable Optimized autoscale.
+The recommendation **enable Optimized autoscale** is given when enabling [Optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option) would have reduced the instance count on a cluster. This recommendation is based on usage patterns, cache utilization, ingestion utilization, and CPU. To make sure you don't exceed your planned budget, add a maximum instance count when you enable Optimized autoscale.
 
 
 ### Performance recommendations
@@ -124,7 +124,6 @@ The **Performance** recommendations help improve the performance of your Azure D
 Performance recommendations include the following: 
 * [Change Data Explorer clusters to a more cost effective and better performing SKU](#change-data-explorer-clusters-to-a-more-cost-effective-and-better-performing-sku)
 * [Update the cache policy for Azure Data Explorer tables](#update-cache-policy-for-azure-data-explorer-tables)
-
 
 #### Update cache policy for Azure Data Explorer tables
 
