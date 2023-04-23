@@ -126,21 +126,15 @@ You can add a filter operator to the query directly from the grid.
 
 ## Pivot
 
-The pivot mode feature is similar to Excel’s pivot table, enabling you to do advanced analysis in the grid itself.
+Pivot mode is similar to Excel’s pivot table. Pivot mode allows you to turn column values into columns. For example, you can pivot on the `State` column to make columns for "Florida", "Missouri", "Alabama", and so on.
 
-Pivoting allows you to take a columns value and turn them into columns. For example, you can pivot on *State* to make columns for Florida, Missouri, Alabama, and so on.
+1. On the right side of the results grid, select **Columns** to see the table tool panel. At the top of the panel, select **Pivot Mode**.
 
-1. On the right side of the grid, select **Columns** to see the table tool panel.
+    :::image type="content" source="media/web-query-data/tool-panel.png" alt-text="Screenshot showing how to access the pivot mode feature." lightbox="media/web-query-data/tool-panel.png":::
 
-    :::image type="content" source="media/web-query-data/tool-panel.png" alt-text="Screenshot showing how to access the pivot mode feature.":::
+1. Drag columns to the **Row groups**, **Values**, **Column labels** sections. For example, if you drag **EventType** to **Row groups**; **DamageProperty** to **Values**; and **State** to **Column labels**, then the result should look like the following pivot table.
 
-1. Select **Pivot Mode**, then drag columns as follows: **EventType** to **Row groups**; **DamageProperty** to **Values**; and **State** to **Column labels**.  
-
-    :::image type="content" source="media/web-query-data/pivot-mode.png" alt-text="Screenshot highlighting selected column names to create the pivot table.":::
-
-    The result should look like the following pivot table:
-
-    :::image type="content" source="media/web-query-data/pivot-table.png" alt-text="Screenshot of results in a pivot table.":::
+    :::image type="content" source="media/web-query-data/pivot-table.png" alt-text="Screenshot of results in a pivot table." lightbox="media/web-query-data/pivot-table.png":::
 
 ## Search in the results grid
 
