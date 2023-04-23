@@ -1,13 +1,13 @@
 ---
 title: .alter-merge table merge policy command- Azure Data Explorer
-description: This article describes the .alter-merge table merge policy command in Azure Data Explorer.
+description: Learn how to use the .alter-merge table merge policy command to change the table's merge policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/23/2023
+ms.date: 04/20/2023
 ---
 # .alter-merge table merge policy
 
-Use this command to change a table's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+Changes the table's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
 
 ## Permissions
 

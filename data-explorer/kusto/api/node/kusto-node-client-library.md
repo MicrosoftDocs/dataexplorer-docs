@@ -1,17 +1,17 @@
 ---
-title: Azure Data Explorer Node SDK - Azure Data Explorer
-description: This article describes Azure Data Explorer Node SDK in Azure Data Explorer.
+title: Kusto Node SDK - Azure Data Explorer
+description: This article describes Kusto Node SDK in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/29/2019
+ms.date: 04/19/2023
 ---
-# Azure Data Explorer Node SDK
+# Kusto Node SDK
 
-Azure Data Explorer Node SDK is compatible with Node LTS (currently v6.14) and built with ES6.
+The Kusto Node SDK is compatible with Node LTS (currently v6.14) and built with ES6.
 
-*Kusto Node Client* Library provides the capability to query Azure Data Explorer clusters using NodeJs. 
+*Kusto Node Client* Library provides the capability to query your cluster using NodeJs.
 
-*Kusto Node Ingest Client* is a Node library that can send data to Azure Data Explorer (i.e. ingest data). 
+*Kusto Node Ingest Client* is a Node library that can send data to your cluster (i.e. ingest data). 
 
 * [Kusto query sample](https://github.com/Azure/azure-kusto-node/blob/master/packages/azure-kusto-data/example.js)
 

@@ -1,13 +1,13 @@
 ---
-title: ".alter database ingestion batching policy command - Azure Data Explorer"
-description: "This article describes the .alter database ingestion batching policy command in Azure Data Explorer."
+title: .alter database ingestion batching policy command - Azure Data Explorer
+description: Learn how to use the .alter database ingestion batching policy command to set the ingestion batching policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/20/2023
 ---
 # .alter database ingestion batching policy
 
-Use this command to set the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy determines when data aggregation stops and a batch is sealed and ingested.
+Sets the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy determines when data aggregation stops and a batch is sealed and ingested.
 
 When setting the policy for a database, it applies for all its tables, except tables that were set with their own IngestionBatching policy. If the policy isn't set for a database, the [default values](batchingpolicy.md#defaults-and-limits) apply.
 

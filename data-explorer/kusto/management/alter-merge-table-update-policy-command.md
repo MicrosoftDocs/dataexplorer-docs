@@ -1,13 +1,13 @@
 ---
 title: .alter-merge table update policy command - Azure Data Explorer
-description: This article describes the .alter-merge table update policy command in Azure Data Explorer.
+description: Learn how to use the .alter-merge table update policy command to change the table's update policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/26/2023
+ms.date: 04/20/2023
 ---
 # .alter-merge table update policy
 
-Use this command to change the table update policy. The [update policy](updatepolicy.md) instructs Azure Data Explorer to automatically append data to a target table whenever new data is inserted into the source table, based on a transformation query that runs on the data inserted into the source table.
+Changes the table's update policy. The [update policy](updatepolicy.md) instructs Azure Data Explorer to automatically append data to a target table whenever new data is inserted into the source table, based on a transformation query that runs on the data inserted into the source table.
 
 > [!NOTE]
 >

@@ -1,13 +1,13 @@
 ---
 title: .alter-merge materialized-view retention policy command- Azure Data Explorer
-description: This article describes the .alter-merge materialized-view retention policy command in Azure Data Explorer.
+description: Learn how to use the .alter-merge materialized-view retention policy command to change the materialized view's retention policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/22/2023
+ms.date: 04/20/2023
 ---
 # .alter-merge materialized-view retention policy
 
-Use this command to change a materialized-view's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based. 
+Changes the materialized-view's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based.
 
 ## Permissions
 
