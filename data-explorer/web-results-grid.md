@@ -18,7 +18,7 @@ To learn how to run queries, see [Quickstart: Query data in the Azure Data Explo
 
 ## Expand a cell
 
-Expanding a cell can be useful in order to view long strings or dynamic fields like JSON.
+Expand a cell in order to view long strings or dynamic fields like JSON.
 
 1. Double-click a cell to open an expanded view. This view allows you to read long strings and formats dynamic data like JSON.
 1. Select the icon on the top right of the result grid to switch reading pane modes. Choose between the following reading pane modes: **Inline**, **Below**, and **Right**.
