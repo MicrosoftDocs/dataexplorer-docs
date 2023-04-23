@@ -7,7 +7,7 @@ ms.date: 04/23/2023
 
 # Azure Data Explorer web UI results grid
 
-In this guide, you'll learn how to work with query results in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) using the results grid feature. By using the results grid, you can enhance the efficiency and effectiveness of your data analysis. This article provides you with the necessary tools to customize and manipulate your results, helping you gain deeper insights and uncover hidden patterns in your data.
+In this guide, you'll learn how to work with query results in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) using the results grid feature. With the results grid, you can customize and manipulate your results, and enhance the efficiency and effectiveness of your data analysis.
 
 To learn how to run queries, see [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md).
 
@@ -18,7 +18,7 @@ To learn how to run queries, see [Quickstart: Query data in the Azure Data Explo
 
 ## Expand a cell
 
-Expand a cell to view [dynamic](kusto/query/scalar-data-types/dynamic.md) data or long strings. In the expanded view, dynamic data is presented like JSON to make it more readable. To expand a step, follow these steps:
+Expand a cell to view [dynamic](kusto/query/scalar-data-types/dynamic.md) data or long strings. In the expanded view, dynamic data is presented like JSON to make it more readable. To expand a cell, follow these steps:
 
 1. Double-click a cell to open the expanded view.
 1. Select the icon on the top right of the result grid to switch reading pane modes. Choose between the following reading pane modes: **Inline**, **Below**, and **Right**.
@@ -29,7 +29,7 @@ Expand a cell to view [dynamic](kusto/query/scalar-data-types/dynamic.md) data o
 
 Expand a row to see an overview of the different columns and their content. To expand a row, follow these steps:
 
-1. On the left-hand side of the row you want to expand, select the arrow icon **>**.
+1. On the left side of the row you want to expand, select the arrow icon **>**.
 
     :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Screenshot of an expanded row in the Azure Data Explorer web UI." lightbox="media/web-query-data/expand-row.png":::
 
@@ -140,9 +140,9 @@ Pivot mode is similar to Excel’s pivot table. Pivot mode allows you to turn co
 
 ## Search in the results grid
 
-To search for a particular expression within a result table, use the search capability. For an example of how to do so, follow these steps:
+To search for a specific expression within a result table, use the search capability. For example:
 
-1. Run the following query:
+1. Run the following query.
 
     > [!div class="nextstepaction"]
     > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcEnMTUxPDSjKL0gtKqlUsFMwNTAwAMqWJGanKhgC2QAe2m3iNQAAAA==" target="_blank">Run the query</a>
@@ -153,7 +153,7 @@ To search for a particular expression within a result table, use the search capa
     | take 1000
     ```
 
-1. In the top menu of the results grid, on the right-hand side, select **Search** and type in "Wabash".
+1. In the top menu of the results grid, on the right side, select **Search** and type in "Wabash".
 
     :::image type="content" source="media/web-query-data/search.png" alt-text="Screenshot highlighting the search bar in the table." lightbox="media/web-query-data/search.png":::
 
