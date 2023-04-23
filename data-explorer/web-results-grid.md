@@ -106,7 +106,7 @@ To quickly calculate the **Average**, **Count**, **Min**, **Max**, and **Sum** f
 
 1. Select a few of the numerical cells. To select multiple cells, click and drag your mouse over the cells you want to select, or hold down the "Ctrl" key while clicking on each cell. The **Average**, **Count**, **Min**, **Max**, and **Sum**  are automatically calculated for these cells.
 
-    :::image type="content" source="media/web-query-data/select-stats.png" alt-text="Screenshot of a table with selected functions.":::
+    :::image type="content" source="media/web-query-data/select-stats.png" alt-text="Screenshot of a table with selected functions." lightbox="media/web-query-data/select-stats.png":::
 
 ## Filter to query from grid
 
@@ -116,7 +116,7 @@ To add a filter operator to the query directly from the grid, follow these steps
 
 1. Right-click to open the cell actions menu. Select **Add selection as filters**.
 
-    :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="Screenshot of a dropdown menu with the Add selection as filter option to query directly from the grid.":::
+    :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="Screenshot of a dropdown menu with the Add selection as filter option to query directly from the grid." lightbox="media/web-query-data/add-selection-filter.png":::
 
 1. A query clause is added to your query in the query editor. For example, the query shown in the previous screenshot becomes the following query.
 
@@ -182,7 +182,7 @@ You can perform free text search within a dynamic result. For example:
 
 1. To initiate a free text search bar, press the keyboard shortcut "Ctrl + F". Then, input "Florida". Notice that the location "FLORIDA" is found since the search function isn't case sensitive by default.
 
-    :::image type="content" source="media/web-query-data/search-in-dynamic-result.png" alt-text="Screenshot of search result from dynamic field search.":::
+    :::image type="content" source="media/web-query-data/search-in-dynamic-result.png" alt-text="Screenshot of search result from dynamic field search." lightbox="media/web-query-data/search-in-dynamic-result.png":::
 
 ## Color results by value
 
