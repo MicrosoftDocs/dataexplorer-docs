@@ -98,7 +98,8 @@ To ensure that there's no overloading of resources, the following metrics are ev
 
 ### Custom autoscale
 
-Though Optimized autoscale is the recommended scaling option, Azure Custom autoscale is also supported. By using custom autoscale, you can scale your cluster dynamically based on metrics that you specify. Use the following steps to configure custom autoscale.
+Although [optimized autoscale](#optimized-autoscale-recommended-option) is the recommended scaling option, Azure custom autoscale is also supported. By using custom autoscale, you can scale your cluster dynamically based on metrics that you specify. Use the following steps to configure custom autoscale.
+
 ![Scale rule.](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
 1. In the **Autoscale setting name** box, enter a name, such as *Scale-out: cache utilization*.
