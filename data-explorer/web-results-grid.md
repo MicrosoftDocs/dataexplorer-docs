@@ -2,7 +2,7 @@
 title: 'Azure Data Explorer web UI results grid'
 description: In this guide, you'll learn how to work with the results grid in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 04/20/2023
+ms.date: 04/23/2023
 ---
 
 # Azure Data Explorer web UI results grid
@@ -14,19 +14,16 @@ To learn how to run queries, see [Quickstart: Query data in the Azure Data Explo
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Access to an Azure Data Explorer cluster and database. You may use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. Use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-database-portal.md).
 
 ## Expand a cell
 
-Expanding cells are useful to view long strings or dynamic fields such as JSON.
+Expanding a cell can be useful in order to view long strings or dynamic fields like JSON.
 
-1. Double-click a cell to open an expanded view. This view allows you to read long strings, and provides a JSON formatting for dynamic data.
+1. Double-click a cell to open an expanded view. This view allows you to read long strings and formats dynamic data like JSON.
+1. Select the icon on the top right of the result grid to switch reading pane modes. Choose between the following reading pane modes: **Inline**, **Below**, and **Right**.
 
-    :::image type="content" source="media/web-query-data/expand-cell.png" alt-text="Screenshot of the Azure Data Explorer web U I expanded cell to show long strings.":::
-
-1. Select on the icon on the top right of the result grid to switch reading pane modes. Choose between the following reading pane modes for expanded view: inline, below pane, and right pane.
-
-    :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="Screenshot highlighting the icon to change the reading pane to expanded view mode in the Azure Data Explorer web UI query results.":::
+    :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="Screenshot showing the icon to change the reading pane mode in the Azure Data Explorer web UI query results.":::
 
 ## Expand a row
 
