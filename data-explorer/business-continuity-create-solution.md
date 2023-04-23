@@ -130,7 +130,7 @@ Using an active-active configuration for disaster recovery increases the cost li
 
 #### Use optimized autoscale to optimize costs
 
-Use the [optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale) feature to configure horizontal scaling for the secondary clusters. They should be dimensioned so they can handle the ingestion load. Once the primary cluster isn't reachable, the secondary clusters will get more traffic and scale according to the configuration. 
+Use the [optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option) feature to configure horizontal scaling for the secondary clusters. They should be dimensioned so they can handle the ingestion load. Once the primary cluster isn't reachable, the secondary clusters will get more traffic and scale according to the configuration. 
 
 Using optimized autoscale in this example saved roughly 50% of the cost in comparison to having the same horizontal and vertical scale on all replicas.
 

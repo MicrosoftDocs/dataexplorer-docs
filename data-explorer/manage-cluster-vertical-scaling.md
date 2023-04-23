@@ -22,18 +22,16 @@ This article explains the vertical scaling workflow:
 ## Configure vertical scaling
 
 1. In the Azure portal, go to your Azure Data Explorer cluster resource. Under **Settings**, select **Scale up**.
-
 1. In the **Scale up** window, you'll see available SKUs for your cluster. For example, in the following figure, there are eight recommended SKUs available. Expand the **Storage optimized**, **Compute optimized**, and **Dev/test** dropdowns to see more options.
 
     ![Scale up.](media/manage-cluster-vertical-scaling/scale-up.png)
 
     The SKUs are disabled because they're the current SKU, or they aren't available in the region where the cluster is located.
-
 1. To change your SKU, select a new SKU and then select **Apply**.
 
 > [!NOTE]
-> * The vertical scaling process can take a few minutes, and during that time your cluster will be  suspended. 
-> * Scaling down can harm your cluster performance.
+> * During the vertical scaling process we first prepare the new VMSS in parallel to the old cluster's VMSS continuing to provide service. This process may take tens of minutes. Only when the new VMSS is ready, switchover is performed to the new VMSS. The parallel process makes the SKU migration experience relatively seamless, with minimal service disruption during the switchover process (~1-3 mins). Query performance may be impacted during SKU migration. The impact may vary due to different usage patterns.
+> * Clusters with VNET networking configuration may experience longer service disruptions. 
 > * The price is an estimate of the cluster's virtual machines and Azure Data Explorer service costs. Other costs are not included. See Azure Data Explorer [cost estimator](https://dataexplorer.azure.com/AzureDataExplorerCostEstimator.html) page for an estimate and the Azure Data Explorer [pricing page](https://azure.microsoft.com/pricing/details/data-explorer/) for full pricing information.
 
 You've now configured vertical scaling for your Azure Data Explorer cluster. Add another rule for a horizontal scaling. If you need assistance with cluster-scaling issues, [open a support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) in the Azure portal.
@@ -41,6 +39,6 @@ You've now configured vertical scaling for your Azure Data Explorer cluster. Add
 ## Next steps
 
 * [Manage cluster horizontal scaling](manage-cluster-horizontal-scaling.md) to dynamically scale out the instance count based on metrics that you specify.
-
 * Monitor your resource usage by following this article: [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md).
+
 
