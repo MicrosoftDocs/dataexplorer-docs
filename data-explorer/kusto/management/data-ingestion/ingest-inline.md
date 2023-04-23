@@ -26,6 +26,10 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 [`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
 `<|` *Data*
 
+`.ingest` `inline` `into` `table` *TableName*
+[`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
+`[` *Data* `]`
+
 ## Parameters
 
 | Name | Type | Required | Description |
