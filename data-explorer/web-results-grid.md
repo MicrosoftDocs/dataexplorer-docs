@@ -151,13 +151,15 @@ You can look for a specific expression within a result table.
     | take 1000
     ```
 
-1. Click on the **Search** button on the right and type in *"Wabash"*
+1. In the top menu of the results grid, on the right-hand side, select **Search** and type in "Wabash".
 
-    :::image type="content" source="media/web-query-data/search.png" alt-text="Screenshot highlighting the search bar in the table.":::
+    :::image type="content" source="media/web-query-data/search.png" alt-text="Screenshot highlighting the search bar in the table." lightbox="media/web-query-data/search.png":::
 
-1. All mentions of your searched expression are now highlighted in the table. You can navigate between them by clicking *Enter* to go forward or *Shift+Enter* to go backward, or you can use the *up* and *down* buttons next to the search box.
+1. All mentions of your searched expression are now highlighted in the table. You can navigate between them by clicking Enter to go forward, Shift+Enter to go backward, or by using the up and down buttons beside the search box to move around.
 
     :::image type="content" source="media/web-query-data/search-results.png" alt-text="Screenshot of a table containing highlighted expressions from search results.":::
+
+1. To only display rows that contain your search query, turn on the **Show only rows that fit search** option located at the top of the search window.
 
 ## Search within a dynamic result
 
