@@ -1,5 +1,6 @@
 ---
-title: External tables - Azure Data Explorer
+title: External tables - Azure Data 
+r
 description: This article describes External tables in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
@@ -30,7 +31,7 @@ Use the following commands to manage external tables:
 * [`.show external tables`](../../management/show-external-tables.md)
 * [`.show external table schema`](../../management/show-external-table-schema.md)
 
-For more information about how to query external tables, and ingested and uningested data, see how to [query data in Azure Data Lake using Azure Data Explore](../../../data-lake-query-data.md).
+For more information about how to query external tables, and ingested and uningested data, see how to [query data in Azure Data Lake using Azure Data Explorer](../../../data-lake-query-data.md).
 
 **Notes**
 
