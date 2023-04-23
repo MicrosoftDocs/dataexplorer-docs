@@ -7,7 +7,7 @@ ms.date: 04/23/2023
 
 # Azure Data Explorer web UI results grid
 
-In this guide, you'll learn how to work with query results in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) using the results grid feature. With the results grid, you can customize and manipulate your results, and enhance the efficiency and effectiveness of your data analysis.
+In this guide, you'll learn how to work with query results in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) using the results grid. With the results grid, you can customize and manipulate your results, and enhance the efficiency and effectiveness of your data analysis.
 
 To learn how to run queries, see [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md).
 
@@ -18,9 +18,9 @@ To learn how to run queries, see [Quickstart: Query data in the Azure Data Explo
 
 ## Expand a cell
 
-Expand a cell to view [dynamic](kusto/query/scalar-data-types/dynamic.md) data or long strings. In the expanded view, dynamic data is presented like JSON to make it more readable. To expand a cell, follow these steps:
+Expand a cell to view [dynamic](kusto/query/scalar-data-types/dynamic.md) data or long strings. In the detailed view, dynamic data is presented like JSON to make it more readable. To expand a cell, follow these steps:
 
-1. Double-click a cell to open the expanded view.
+1. Double-click a cell to open the detailed view.
 1. Select the icon on the top right of the result grid to switch reading pane modes. Choose between the following reading pane modes: **Inline**, **Below**, and **Right**.
 
     :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="Screenshot showing the icon to change the reading pane mode in the Azure Data Explorer web UI query results." lightbox="media/web-query-data/expanded-view-icon.png":::
@@ -87,7 +87,7 @@ To filter the results of a specific column, follow these steps:
 
     :::image type="content" source="media/web-query-data/filter-column.gif" alt-text="GIF showing how to filter on a column in the Azure Data Explorer web U I.":::
 
-## Run cell statistics
+## View cell statistics
 
 To quickly calculate the **Average**, **Count**, **Min**, **Max**, and **Sum** for several rows, select the relevant numerical cells. For example:
 
