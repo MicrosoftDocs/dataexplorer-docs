@@ -165,7 +165,7 @@ To search for a specific expression within a result table, use the search capabi
 
 ## Search within a dynamic result
 
-You can perform free text search within a dynamic result. For example:
+You can perform free text search within a dynamic result. To learn how to do so, follow these steps:
 
 1. Run the following query.
 
@@ -186,27 +186,19 @@ You can perform free text search within a dynamic result. For example:
 
 ## Color results by value
 
-You can color the rows of results based on a column value. For example:
+To color the rows of results based on a column value, follow these steps:
 
-1. Run the following query.
+1. Right-click on a value in the column by which to color the values.
 
-    > [!div class="nextstepaction"]
-    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNAAAWuk9VBUAAAA=" target="_blank">Run the query</a>
+    :::image type="content" source="media/web-query-data/color-by-value-option.png" alt-text="Screenshot of the option to color by value." lightbox="media/web-query-data/color-by-value-option.png":::
 
-    ```kusto
-    StormEvents
-    | take 10
-    ```
+1. Select **Explore results**, and then select **Color by value**. For example, the following screenshot shows the results colored by the `State` column.
 
-1. Right-click on a value in the `State` column.
-
-1. Select **Explore results**, and then select **Color by value**.
-
-    :::image type="content" source="media/web-query-data/color-by-value.png" alt-text="Screenshot of color by value." lightbox="media/web-query-data/color-by-value.png":::
+    :::image type="content" source="media/web-query-data/color-by-value-table.png" alt-text="Screenshot of color by value." lightbox="media/web-query-data/color-by-value-table.png":::
 
 ## Get the path to a dynamic field
 
-Nested dynamic property-bag fields can become complex as you go deeper into their layers. In the results grid, the JPATH indicates the path through the dynamic property-bag object fields to arrive at the given field. To learn how to work with JPATH, follow these steps:
+Nested dynamic property-bag fields can become complex as you go deeper into their layers. In the results grid, the JPATH indicates the path through the dynamic property-bag object fields to arrive at the given field. To learn how to find a JPATH, follow these steps:
 
 1. Run the following query.
 
@@ -228,7 +220,7 @@ Nested dynamic property-bag fields can become complex as you go deeper into thei
 
 ## Filter by value of dynamic field
 
-When exploring your results, you can add a specific dynamic field as a filter to your query. For example:
+You can add a specific dynamic field as a filter to your query. To learn how to do so, follow these steps:
 
 1. Run the following query.
 
