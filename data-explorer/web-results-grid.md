@@ -188,7 +188,7 @@ You can perform free text search within a dynamic result. For example:
 
 You can color the rows of results based on a column value. For example:
 
-1. Run the following query:
+1. Run the following query.
 
     > [!div class="nextstepaction"]
     > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNAAAWuk9VBUAAAA=" target="_blank">Run the query</a>
@@ -208,7 +208,7 @@ You can color the rows of results based on a column value. For example:
 
 Nested dynamic property-bag fields can become complex as you go deeper into their layers. In the results grid, the JPATH indicates the path through the dynamic property-bag object fields to arrive at the given field. To learn how to work with JPATH, follow these steps:
 
-1. Run the following query:
+1. Run the following query.
 
     > [!div class="nextstepaction"]
     > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNAAAWuk9VBUAAAA=" target="_blank">Run the query</a>
@@ -230,7 +230,7 @@ Nested dynamic property-bag fields can become complex as you go deeper into thei
 
 When exploring your results, you can add a specific dynamic field as a filter to your query. For example:
 
-1. Run the following query:
+1. Run the following query.
 
     > [!div class="nextstepaction"]
     > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNAAAWuk9VBUAAAA=" target="_blank">Run the query</a>
