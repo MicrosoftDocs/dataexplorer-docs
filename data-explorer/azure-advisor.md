@@ -92,7 +92,7 @@ The recommendation is to delete the cluster to reduce cost.
 
 The recommendation **right-size Azure Data Explorer clusters for optimal cost** is given to a cluster whose size or VM SKU aren't cost-optimized. This recommendation is based on parameters such as its data capacity, CPU and ingestion utilization during the last week. You can reduce costs by resizing to the recommended cluster configuration using [scale-down](manage-cluster-vertical-scaling.md) and [scale-in](manage-cluster-horizontal-scaling.md).
 
-It is recommended to use the [optimized autoscale configuration](manage-cluster-horizontal-scaling.md#optimized-autoscale). If you're using optimized autoscale and you see a size recommendation on your cluster, either your current VM SKU or the optimized autoscale minimum and maximum instance count boundaries aren't optimized. The recommended instance count should be included in your defined boundaries. For more information, see [VM SKUs](manage-cluster-choose-sku.md) and [pricing](https://azure.microsoft.com/pricing/details/data-explorer/).
+It is recommended to use the [optimized autoscale configuration](manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option). If you're using optimized autoscale and you see a size recommendation on your cluster, either your current VM SKU or the optimized autoscale minimum and maximum instance count boundaries aren't optimized. The recommended instance count should be included in your defined boundaries. For more information, see [VM SKUs](manage-cluster-choose-sku.md) and [pricing](https://azure.microsoft.com/pricing/details/data-explorer/).
 
 > [!TIP]
 > The optimized autoscale configuration doesn’t change the instance count immediately. For immediate changes, use [manual scale](manage-cluster-horizontal-scaling.md#manual-scale) to reset the recommended instance count, and then enable the optimized autoscale for future optimization.
@@ -114,7 +114,7 @@ The recommendation **delete unused storage artifacts** is given for a cluster th
 #### Enable Optimized autoscale
 
 
-The recommendation **enable Optimized autoscale** is given when enabling [Optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale) would have reduced the instance count on a cluster. This recommendation is based on usage patterns, cache utilization, ingestion utilization, and CPU. To make sure you don't exceed your planned budget, add a maximum instance count when you enable Optimized autoscale.
+The recommendation **enable Optimized autoscale** is given when enabling [Optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option) would have reduced the instance count on a cluster. This recommendation is based on usage patterns, cache utilization, ingestion utilization, and CPU. To make sure you don't exceed your planned budget, add a maximum instance count when you enable Optimized autoscale.
 
 
 ### Performance recommendations
@@ -128,7 +128,7 @@ Performance recommendations include the following:
 
 The recommendation **right-size Azure Data Explorer clusters for optimal performance** is given to a cluster whose size or VM SKU aren't performance-optimized. This recommendation is based on parameters such as its data capacity, and CPU and ingestion utilization during the last week. You can improve the performance by correctly sizing to the recommended cluster configuration using [scale-up](manage-cluster-vertical-scaling.md) and [scale-out](manage-cluster-horizontal-scaling.md).
 
-It's recommended to use the [optimized autoscale configuration](manage-cluster-horizontal-scaling.md#optimized-autoscale). If you use optimized autoscale and you see a size recommendation on your cluster, either your current VM SKU or the optimized autoscale minimum and maximum instance count boundaries aren't optimized. The recommended instance count should be included in your defined boundaries. For more information, see [VM SKUs](manage-cluster-choose-sku.md).
+It's recommended to use the [optimized autoscale configuration](manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option). If you use optimized autoscale and you see a size recommendation on your cluster, either your current VM SKU or the optimized autoscale minimum and maximum instance count boundaries aren't optimized. The recommended instance count should be included in your defined boundaries. For more information, see [VM SKUs](manage-cluster-choose-sku.md).
 
 > [!TIP]
 > The optimized autoscale configuration doesn’t change the instance count immediately. For instant changes, use [manual scale](manage-cluster-horizontal-scaling.md#manual-scale) to reset the recommended instance count, and then enable the optimized autoscale for future optimization.
