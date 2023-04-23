@@ -108,17 +108,21 @@ You can use one or more operators to filter the results of a column.
 
 ## Filter to query from grid
 
-Another easy way to filter the grid is to add a filter operator to the query directly from the grid.
+You can add a filter operator to the query directly from the grid.
 
-1. Select a cell with content you wish to create a query filter for.
+1. Select a cell with content for which you want to create a query filter.
 
-1. Right-click to open the cell actions menu. Select **Add selection as filter**.
+1. Right-click to open the cell actions menu. Select **Add selection as filters**.
 
     :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="Screenshot of a dropdown menu with the Add selection as filter option to query directly from the grid.":::
 
-1. A query clause will be added to your query in the query editor:
+1. A query clause will be added to your query in the query editor. For example, the query shown in the previous screenshot will become the following query.
 
-    :::image type="content" source="media/web-query-data/add-query-from-filter.png" alt-text="Screenshot of the query editor showing query clause added from filtering on the grid in Azure Data Explorer web U I.":::
+    ```kusto
+    StormEvents
+    | take 10
+    | where StartTime == datetime(2007-09-18T20:00:00Z)
+    ```
 
 ## Pivot
 
