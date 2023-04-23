@@ -1,6 +1,6 @@
 ---
 title: 'Azure Data Explorer web UI results grid'
-description: In this guide, you'll learn how to work with the results grid in the Azure Data Explorer web UI.
+description: Learn how to work with the results grid in the Azure Data Explorer web UI.
 ms.topic: how-to
 ms.date: 04/23/2023
 ---
@@ -58,7 +58,7 @@ Within a result set, you can group the results by any column. After this groupin
 
     :::image type="content" source="media/web-query-data/group-expanded.png" alt-text="Screenshot of a query results grid with California group expanded in the Azure Data Explorer web U I." border="false":::
 
-1. Once you've grouped data by a column, you can use a value aggregation function to calculate statistics for each group. To do this, go to the column menu, choose **Value Aggregation**, and select the function type to use for that column.
+1. Once you've grouped data by a column, you can use a value aggregation function to calculate statistics for each group. To do so, go to the column menu, choose **Value Aggregation**, and select the function type to use for that column.
 
     :::image type="content" source="media/web-query-data/aggregate.png" alt-text="Screenshot of aggregate results when grouping column by results in the Azure Data Explorer web UI." lightbox="media/web-query-data/aggregate.png":::
 
@@ -104,7 +104,7 @@ To quickly calculate the **Average**, **Count**, **Min**, **Max**, and **Sum** f
     | take 10
     ```
 
-1. Select a few of the numerical cells. To select multiple cells, click and drag your mouse over the cells you want to select, or hold down the "Ctrl" key while clicking on each cell. The **Average**, **Count**, **Min**, **Max**, and **Sum**  for these cells will be automatically calculated.
+1. Select a few of the numerical cells. To select multiple cells, click and drag your mouse over the cells you want to select, or hold down the "Ctrl" key while clicking on each cell. The **Average**, **Count**, **Min**, **Max**, and **Sum**  are automatically calculated for these cells.
 
     :::image type="content" source="media/web-query-data/select-stats.png" alt-text="Screenshot of a table with selected functions.":::
 
@@ -118,7 +118,7 @@ To add a filter operator to the query directly from the grid, follow these steps
 
     :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="Screenshot of a dropdown menu with the Add selection as filter option to query directly from the grid.":::
 
-1. A query clause will be added to your query in the query editor. For example, the query shown in the previous screenshot will become the following query.
+1. A query clause is added to your query in the query editor. For example, the query shown in the previous screenshot becomes the following query.
 
     ```kusto
     StormEvents
@@ -178,7 +178,7 @@ You can perform free text search within a dynamic result. For example:
     | take 10
     ```
 
-1. Select the first result in the `StormSummary` column, which should be the column furthest to the right.
+1. Select the first result in the `StormSummary` column, which should be the last column.
 
 1. To initiate a free text search bar, press the keyboard shortcut "Ctrl + F". Then, input "Florida". Notice that the location "FLORIDA" is found since the search function isn't case sensitive by default.
 
@@ -218,7 +218,7 @@ Nested dynamic property-bag fields can become complex as you go deeper into thei
     | take 10
     ```
 
-1. Select the first result in the `StormSummary` column, which should be the column furthest to the right.
+1. Select the first result in the `StormSummary` column, which should be the last column.
 
 1. Select different fields within the result and see how the JPATH at the top of the window changes. For example, the following screenshot shows the path to the `Location` field, which is nested under the `Details` field within the `StormSummary` column dynamic property-bag object.
 
@@ -240,7 +240,7 @@ When exploring your results, you can add a specific dynamic field as a filter to
     | take 10
     ```
 
-1. Select the first result in the `StormSummary` column, which should be the column furthest to the right.
+1. Select the first result in the `StormSummary` column, which should be the last column.
 
 1. Right-click on a field within a dynamic field and select **Add as filter**. For example, if we added the Location field from the previous example as a filter, the resulting query might look something like the following query.
 
