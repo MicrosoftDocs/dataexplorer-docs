@@ -90,17 +90,16 @@ The recommendation is to delete the cluster to reduce cost.
 
 #### Change Data Explorer clusters to a more cost effective and better performing SKU
 
-The recommendation **Change Data Explorer clusters to a more cost effective and better performing SKU** is given to a cluster whose cluster is operating under a non-optimal SKU. This SKU should reduce your costs and improve overall performance. We have calculated the required instance count that meets the cache requirements of your cluster, while ensuring that performance will not be negatively impacted. 
+The recommendation **Change Data Explorer clusters to a more cost effective and better performing SKU** is given to a cluster whose cluster is operating under a non-optimal SKU. This updated SKU should reduce your costs and improve overall performance. We have calculated the required instance count that meets the cache requirements of your cluster, while ensuring that performance will not be negatively impacted. 
 
-As part of the recommendation, we recommend enabling Optimized Autoscale (for those clusters that have not enabled it already). Optimized Autoscale will perform a more in-depth analysis of the cluster's performance, and if needed, will further scale-in the cluster. This will result in additional cost reductions. The Optimized Autoscale recommendations include a Min and Max instance count recommendation. The Max value is set to the recommended SKU instance count. If the cluster has plans to organically grow, it is recommended to manually increase this Max number. In case that Optimized Autoscale is already configured on your cluster, in some cases the recommendation may suggest to increase the Max instance count. 
+As part of the recommendation, we recommend enabling Optimized Autoscale if not yet enabled. Optimized Autoscale will perform a more in-depth analysis of the cluster's performance, and if needed, will further scale-in the cluster. This will result in additional cost reductions. The Optimized Autoscale recommendations include a Min and Max instance count recommendation. The Max value is set to the recommended SKU instance count. If the cluster has plans to organically grow, it is recommended to manually increase this Max number. If Optimized Autoscale is already configured on your cluster, in some cases the recommendation may suggest to increase the Max instance count. 
 
-The SKU recommendation takes into account the current zones definitions of a cluster and if the cluster supports zones will only recommend target SKUs that have a minimum of 2 zones. Adding more Compute availability zones does not incur any additional costs.
+The SKU recommendation takes into account the current zones definitions of a cluster and if the cluster supports zones will only recommend target SKUs that have a minimum of two zones. Adding more compute availability zones does not incur any additional costs.
 
-The Advisor SKU recommendation is updated every few hours. The recommendation checks for capacity availability of the selected SKU in the region. However, it is important to note that the capacity availability is dynamic and changes over time. 
+The advisor SKU recommendation is updated every few hours. The recommendation checks for capacity availability of the selected SKU in the region. However, it is important to note that capacity availability is dynamic and changes over time. 
 
-> [!Limitation]
-> The Advisor SKU recommendation does not currently support clusters with:
-> - VNET or Managed Private Enpoint configurations
+> [!NOTE]
+> The advisor SKU recommendation does not currently support clusters with VNET or managed private endpoint configurations.
 
 #### Reduce cache for Azure Data Explorer tables
 
@@ -123,7 +122,7 @@ The recommendation **enable Optimized autoscale** is given when enabling [Optimi
 
 The **Performance** recommendations help improve the performance of your Azure Data Explorer clusters. 
 Performance recommendations include the following: 
-* [Correctly size the Azure Data Explorer cluster to optimize performance](#correctly-size-azure-data-explorer-clusters-to-optimize-performance)
+* [Change Data Explorer clusters to a more cost effective and better performing SKU](#change-data-explorer-clusters-to-a-more-cost-effective-and-better-performing-sku)
 * [Update the cache policy for Azure Data Explorer tables](#update-cache-policy-for-azure-data-explorer-tables)
 
 
