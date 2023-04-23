@@ -33,7 +33,7 @@ Expand a row to see an overview of the different columns and their content. To e
 
     :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Screenshot of an expanded row in the Azure Data Explorer web UI." lightbox="media/web-query-data/expand-row.png":::
 
-1. Within the expanded row, some columns are expanded as indicated by a downward-pointing arrow, and some columns are collapsed as indicated by a right-pointing arrow. Select an arrow to switch between expanding and collapsing the content.
+1. Within the expanded row, expanded columns are indicated by a downward-pointing arrow, and collapsed columns are indicated by a right-pointing arrow. Select an arrow to switch between expanding and collapsing the content.
 
 ## Group column by results
 
@@ -56,7 +56,7 @@ Within a result set, you can group the results by any column. After this groupin
 
 1. In the grid, double-click on **California** to expand and see records for that state. This type of grouping can be helpful when doing exploratory analysis.
 
-    :::image type="content" source="media/web-query-data/group-expanded.png" alt-text="Screenshot of a query results grid with California group expanded in the Azure Data Explorer web U I." border="false":::
+    :::image type="content" source="media/web-query-data/group-expanded.png" alt-text="Screenshot of a query results grid with California group expanded in the Azure Data Explorer web U I." border="false" lightbox="media/web-query-data/group-expanded.png":::
 
 1. Once you've grouped data by a column, you can use a value aggregation function to calculate statistics for each group. To do so, go to the column menu, choose **Value Aggregation**, and select the function type to use for that column.
 
@@ -89,7 +89,7 @@ To filter the results of a specific column, follow these steps:
 
 ## Run cell statistics
 
-To quickly calculate the **Average**, **Count**, **Min**, **Max**, and **Sum** for several rows, select the relevant numerical cells. For an example, do the following:
+To quickly calculate the **Average**, **Count**, **Min**, **Max**, and **Sum** for several rows, select the relevant numerical cells. For example:
 
 1. Run the following query.
 
