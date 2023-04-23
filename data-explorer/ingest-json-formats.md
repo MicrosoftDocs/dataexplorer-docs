@@ -26,7 +26,7 @@ Azure Data Explorer supports two JSON file formats:
 
 > [!INFO]
 > Unlike the [parse_json](kusto/query/parsejsonfunction) function and the linked JSON lines documentation above, the `json`/`multijson` formats use a JSON5 parser.
-> Comments, single-quoted property and newlines (only in `multijson`) will be handled correctly.
+> Comments, single-quoted properties and newlines (only in `multijson`) will be handled correctly.
 
 > [!NOTE]
 > When ingesting using the [ingestion wizard](ingest-data-wizard.md), the default format is `multijson`. The format can handle multiline JSON records and arrays of JSON records. When a parsing error is encountered, the entire file is discarded.
