@@ -112,7 +112,7 @@ The following SKU series are available for Azure Data Explorer cluster VMs. The 
 > All compute optimized SKUs with 2 cores can be configured as dev clusters.
 > 
 > It is recommended to use L32asv3 / L32sv3 only in uses cases with either very large L16asv3/L16sv3 clusters reaching the 1000 cluster node limit, or clusters with extremely high concurrent request rates.
-> ECasv5 and ECadsv5 are Confidential Computing SKUs. For more details, read about [Confidential Computing VMs](/azure/confidential-computing/confidential-vm-overview). For Storage Optimized ECasv5 SKUs, in case you [Use your own customer-managed key](/azure/data-explorer/customer-managed-keys-portal) (CMK), CMK encryption is performed on both storage accounts and Premium Storage disks.
+> ECasv5 and ECadsv5 are confidential computing SKUs. For more details, read about [Confidential Computing VMs](/azure/confidential-computing/confidential-vm-overview). For storage optimized ECasv5 SKUs, in case you [Use your own customer-managed key](/azure/data-explorer/customer-managed-keys-portal) (CMK), CMK encryption is performed on both storage accounts and premium storage disks.
 
 * With Azure Data Explorer compute and storage isolation, you can start with the most optimal cost SKU and move to another SKU after maturing the usage pattern or data loss.
 * You can view the updated compute SKU list per region by using the Azure Data Explorer [ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus).
