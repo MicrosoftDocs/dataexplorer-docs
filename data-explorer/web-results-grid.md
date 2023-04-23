@@ -23,7 +23,7 @@ Expand a cell in order to view long strings or dynamic fields like JSON.
 1. Double-click a cell to open an expanded view. This view allows you to read long strings and formats dynamic data like JSON.
 1. Select the icon on the top right of the result grid to switch reading pane modes. Choose between the following reading pane modes: **Inline**, **Below**, and **Right**.
 
-    :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="Screenshot showing the icon to change the reading pane mode in the Azure Data Explorer web UI query results.":::
+    :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="Screenshot showing the icon to change the reading pane mode in the Azure Data Explorer web UI query results." lightbox="media/web-query-data/expanded-view-icon.png":::
 
 ## Expand a row
 
@@ -31,7 +31,7 @@ Expand the entire row to see an overview of the different columns and their cont
 
 1. On the left-hand side of the row you want to expand, select the arrow icon **>**.
 
-    :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Screenshot of an expanded row in the Azure Data Explorer web UI.":::
+    :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Screenshot of an expanded row in the Azure Data Explorer web UI." lightbox="media/web-query-data/expand-row.png":::
 
 1. Within the expanded row, some columns are expanded as indicated by a downward-pointing arrow, and some columns are collapsed as indicated by a right-pointing arrow. Select an arrows to switch between expanding and collapsing the content.
 
