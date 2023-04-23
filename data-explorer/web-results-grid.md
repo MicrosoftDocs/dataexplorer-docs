@@ -27,13 +27,13 @@ Expand a cell in order to view long strings or dynamic fields like JSON.
 
 ## Expand a row
 
-When working with a table with dozens of columns, expand the entire row to be able to easily see an overview of the different columns and their content.
+Expand the entire row to see an overview of the different columns and their content.
 
-1. Click on the arrow **>** to the left of the row you want to expand.
+1. On the left-hand side of the row you want to expand, select the arrow icon **>**.
 
     :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Screenshot of an expanded row in the Azure Data Explorer web UI.":::
 
-1. Within the expanded row, some columns are expanded (arrow pointing down), and some columns are collapsed (arrow pointing right). Click on these arrows to toggle between these two modes.
+1. Within the expanded row, some columns are expanded as indicated by a downward-pointing arrow, and some columns are collapsed as indicated by a right-pointing arrow. Select an arrows to switch between expanding and collapsing the content.
 
 ## Group column by results
 
