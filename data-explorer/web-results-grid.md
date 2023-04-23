@@ -126,7 +126,7 @@ To add a filter operator to the query directly from the grid, follow these steps
     | where StartTime == datetime(2007-09-18T20:00:00Z)
     ```
 
-## Pivot
+## Make a pivot table
 
 Pivot mode is similar to Excel’s pivot table. Pivot mode allows you to turn column values into columns. For example, you can pivot on the `State` column to make columns for "Florida", "Missouri", "Alabama", and so on. To create a pivot table, follow these steps:
 
