@@ -157,7 +157,7 @@ You can look for a specific expression within a result table.
 
 1. All mentions of your searched expression are now highlighted in the table. You can navigate between them by clicking Enter to go forward, Shift+Enter to go backward, or by using the up and down buttons beside the search box to move around.
 
-    :::image type="content" source="media/web-query-data/search-results.png" alt-text="Screenshot of a table containing highlighted expressions from search results.":::
+    :::image type="content" source="media/web-query-data/search-results.png" alt-text="Screenshot of a table containing highlighted expressions from search results."  lightbox="media/web-query-data/search-results.png":::
 
 1. To only display rows that contain your search query, turn on the **Show only rows that fit search** option located at the top of the search window.
 
