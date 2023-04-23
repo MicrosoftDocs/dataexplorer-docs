@@ -7,7 +7,7 @@ ms.date: 04/23/2023
 
 # Azure Data Explorer web UI results grid
 
-This guide will teach you how to work with your [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) results using the results grid feature. You'll use the results grid to make your data analysis more efficient and effective, and learn how to customize and manipulate your results to gain deeper insights and uncover hidden patterns in your data.
+In this guide, you'll learn how to work with query results in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) using the results grid feature. By using the results grid, you can enhance the efficiency and effectiveness of your data analysis. This article provides you with the necessary tools to customize and manipulate your results, helping you gain deeper insights and uncover hidden patterns in your data.
 
 To learn how to run queries, see [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md).
 
@@ -18,26 +18,26 @@ To learn how to run queries, see [Quickstart: Query data in the Azure Data Explo
 
 ## Expand a cell
 
-Expand a cell in order to view long strings or dynamic fields like JSON.
+Expand a cell to view [dynamic](kusto/query/scalar-data-types/dynamic.md) data or long strings. In the expanded view, dynamic data is presented like JSON to make it more readable. To expand a step, follow these steps:
 
-1. Double-click a cell to open an expanded view. This view allows you to read long strings and formats dynamic data like JSON.
+1. Double-click a cell to open the expanded view.
 1. Select the icon on the top right of the result grid to switch reading pane modes. Choose between the following reading pane modes: **Inline**, **Below**, and **Right**.
 
     :::image type="content" source="media/web-query-data/expanded-view-icon.png" alt-text="Screenshot showing the icon to change the reading pane mode in the Azure Data Explorer web UI query results." lightbox="media/web-query-data/expanded-view-icon.png":::
 
 ## Expand a row
 
-Expand the entire row to see an overview of the different columns and their content.
+Expand a row to see an overview of the different columns and their content. To expand a row, follow these steps:
 
 1. On the left-hand side of the row you want to expand, select the arrow icon **>**.
 
     :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Screenshot of an expanded row in the Azure Data Explorer web UI." lightbox="media/web-query-data/expand-row.png":::
 
-1. Within the expanded row, some columns are expanded as indicated by a downward-pointing arrow, and some columns are collapsed as indicated by a right-pointing arrow. Select an arrows to switch between expanding and collapsing the content.
+1. Within the expanded row, some columns are expanded as indicated by a downward-pointing arrow, and some columns are collapsed as indicated by a right-pointing arrow. Select an arrow to switch between expanding and collapsing the content.
 
 ## Group column by results
 
-Within the results, you can group results by any column.
+Within a result set, you can group the results by any column. After this grouping, you can perform further aggregations to investigate the data. To group and explore column results, follow these steps:
 
 1. Run the following query:
 
@@ -72,22 +72,24 @@ To hide or show empty columns, select the eye icon in the menu of the results gr
 
 ## Filter columns
 
-You can use one or more operators to filter the results of a column.
+To filter the results of a specific column, follow these steps:
 
-1. To filter a specific column, select the menu for that column.
+1. Select the menu for the column to filter.
 1. Select the filter icon.
 1. In the filter builder, select the desired operator.
-1. Type in the expression you wish to filter the column on. Results are filtered as you type.
+1. Type in the expression by which to filter the column. Results are filtered as you type.
 
     > [!NOTE]
     > The filter isn't case sensitive.
 
-1. To create a multi-condition filter, select a boolean operator to add another condition
+1. To create a multi-condition filter, select a boolean operator to add another condition.
 1. To remove the filter, delete the text from your first filter condition.
 
     :::image type="content" source="media/web-query-data/filter-column.gif" alt-text="GIF showing how to filter on a column in the Azure Data Explorer web U I.":::
 
 ## Run cell statistics
+
+To quickly calculate the **Average**, **Count**, **Min**, **Max**, and **Sum** for several rows, select the relevant numerical cells. For an example, do the following:
 
 1. Run the following query.
 
@@ -102,15 +104,15 @@ You can use one or more operators to filter the results of a column.
     | take 10
     ```
 
-1. In the results grid, select a few of the numerical cells. The table grid allows you to select multiple rows, columns, and cells and calculate aggregations on them. The Azure Data Explorer web UI currently supports the following functions for numeric values: **Average**, **Count**, **Min**, **Max**, and **Sum**.
+1. Select a few of the numerical cells. To select multiple cells, click and drag your mouse over the cells you want to select, or hold down the "Ctrl" key while clicking on each cell. The **Average**, **Count**, **Min**, **Max**, and **Sum**  for these cells will be automatically calculated.
 
     :::image type="content" source="media/web-query-data/select-stats.png" alt-text="Screenshot of a table with selected functions.":::
 
 ## Filter to query from grid
 
-You can add a filter operator to the query directly from the grid.
+To add a filter operator to the query directly from the grid, follow these steps:
 
-1. Select a cell with content for which you want to create a query filter.
+1. Select the cell with content for which you want to create a query filter.
 
 1. Right-click to open the cell actions menu. Select **Add selection as filters**.
 
@@ -126,7 +128,7 @@ You can add a filter operator to the query directly from the grid.
 
 ## Pivot
 
-Pivot mode is similar to Excel’s pivot table. Pivot mode allows you to turn column values into columns. For example, you can pivot on the `State` column to make columns for "Florida", "Missouri", "Alabama", and so on.
+Pivot mode is similar to Excel’s pivot table. Pivot mode allows you to turn column values into columns. For example, you can pivot on the `State` column to make columns for "Florida", "Missouri", "Alabama", and so on. To create a pivot table, follow these steps:
 
 1. On the right side of the results grid, select **Columns** to see the table tool panel. At the top of the panel, select **Pivot Mode**.
 
@@ -138,7 +140,7 @@ Pivot mode is similar to Excel’s pivot table. Pivot mode allows you to turn co
 
 ## Search in the results grid
 
-You can look for a specific expression within a result table.
+To search for a particular expression within a result table, use the search capability. For an example of how to do so, follow these steps:
 
 1. Run the following query:
 
@@ -163,9 +165,9 @@ You can look for a specific expression within a result table.
 
 ## Search within a dynamic result
 
-You can perform free text search within a dynamic result.
+You can perform free text search within a dynamic result. For example:
 
-1. Run the following query:
+1. Run the following query.
 
     > [!div class="nextstepaction"]
     > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUHLz8Q/ydHFUAkqVJGanKhgaAAALk0E2MAAAAA==" target="_blank">Run the query</a>
@@ -184,7 +186,7 @@ You can perform free text search within a dynamic result.
 
 ## Color results by value
 
-You can color the rows of results based on a column value.
+You can color the rows of results based on a column value. For example:
 
 1. Run the following query:
 
@@ -204,7 +206,7 @@ You can color the rows of results based on a column value.
 
 ## Get the path to a dynamic field
 
-Nested dynamic property-bag fields can become complex as you go deeper into their layers. In the results grid, the JPATH indicates the path through the dynamic property-bag object fields to arrive at the given field.
+Nested dynamic property-bag fields can become complex as you go deeper into their layers. In the results grid, the JPATH indicates the path through the dynamic property-bag object fields to arrive at the given field. To learn how to work with JPATH, follow these steps:
 
 1. Run the following query:
 
@@ -226,7 +228,7 @@ Nested dynamic property-bag fields can become complex as you go deeper into thei
 
 ## Filter by value of dynamic field
 
-When exploring your results, you can add a specific dynamic field as a filter to your query.
+When exploring your results, you can add a specific dynamic field as a filter to your query. For example:
 
 1. Run the following query:
 
