@@ -52,30 +52,23 @@ Within the results, you can group results by any column.
 
 1. Mouse-over the **State** column, select the menu, and select **Group by State**.
 
-    :::image type="content" source="media/web-query-data/group-by.png" alt-text="Screenshot of a table with query results grouped by state.":::
+    :::image type="content" source="media/web-query-data/group-by.png" alt-text="Screenshot of a table with query results grouped by state." lightbox="media/web-query-data/group-by.png":::
 
 1. In the grid, double-click on **California** to expand and see records for that state. This type of grouping can be helpful when doing exploratory analysis.
 
     :::image type="content" source="media/web-query-data/group-expanded.png" alt-text="Screenshot of a query results grid with California group expanded in the Azure Data Explorer web U I." border="false":::
 
-1. Mouse-over the **Group** column, then select **Reset columns**. This setting returns the grid to its original state.
+1. Once you've grouped data by a column, you can use a value aggregation function to calculate statistics for each group. To do this, go to the column menu, choose **Value Aggregation**, and select the function type to use for that column.
 
-    :::image type="content" source="media/web-query-data/reset-columns.png" alt-text="Screenshot of the reset columns setting highlighted in the column dropdown menu.":::
+    :::image type="content" source="media/web-query-data/aggregate.png" alt-text="Screenshot of aggregate results when grouping column by results in the Azure Data Explorer web UI." lightbox="media/web-query-data/aggregate.png":::
 
-### Use value aggregation
-
-After you've grouped by a column, you can then use the value aggregation function to calculate simple statistics per group.
-
-1. Select the menu for the column you want to evaluate.
-1. Select **Value Aggregation**, and then select the type of function you want to do on this column.
-
-    :::image type="content" source="media/web-query-data/aggregate.png" alt-text="Screenshot of aggregate results when grouping column by results in the Azure Data Explorer web U I. ":::
+1. To return the results grid to its original state, select the menu of the **Group** column. Then, select **Reset columns**.
 
 ## Hide empty columns
 
-You can hide/unhide empty columns by toggling the **eye** icon on the results grid menu.
+To hide or show empty columns, select the eye icon in the menu of the results grid.
 
-:::image type="content" source="media/web-query-data/hide-empty-columns.png" alt-text="Screenshot of eye icon to hide results grid in the Azure Data Explorer web U I.":::
+:::image type="content" source="media/web-query-data/hide-empty-columns.png" alt-text="Screenshot of eye icon to hide results grid in the Azure Data Explorer web UI."  lightbox="media/web-query-data/hide-empty-columns.png":::
 
 ## Filter columns
 
