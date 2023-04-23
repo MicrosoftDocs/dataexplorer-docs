@@ -189,10 +189,11 @@ You can perform free text search within a dynamic result. To learn how to do so,
 To color the rows of results based on a column value, follow these steps:
 
 1. Right-click on a value in the column by which to color the values.
+1. Select **Explore results**, and then select **Color by value**.
 
     :::image type="content" source="media/web-query-data/color-by-value-option.png" alt-text="Screenshot of the option to color by value." lightbox="media/web-query-data/color-by-value-option.png":::
 
-1. Select **Explore results**, and then select **Color by value**. For example, the following screenshot shows the results colored by the `State` column.
+   For example, the following screenshot shows the results colored by the `State` column.
 
     :::image type="content" source="media/web-query-data/color-by-value-table.png" alt-text="Screenshot of color by value." lightbox="media/web-query-data/color-by-value-table.png":::
 
