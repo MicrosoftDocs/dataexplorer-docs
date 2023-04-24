@@ -17,7 +17,7 @@ Delete a materialized-view's [retention policy](retentionpolicy.md). The retenti
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*MaterializedViewName*|string|&check;|The name of the materialized view.|
+|*MaterializedViewName*|string|&check;|The name of the materialized view for which to delete the retention policy.|
 
 ### Example
 

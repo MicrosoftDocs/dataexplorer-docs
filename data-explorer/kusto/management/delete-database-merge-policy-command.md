@@ -17,7 +17,7 @@ Delete a database's [merge policy](mergepolicy.md). The merge policy defines if 
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database.|
+|*DatabaseName*|string|&check;|The name of the database for which to delete the merge policy.|
 
 ### Example
 
