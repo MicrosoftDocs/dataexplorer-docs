@@ -17,7 +17,7 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 ## Syntax
 
-`.create-or-alter` `function` [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] *functionName*`(`*parameters*`)` `{` *body* `}`
+`.create-or-alter` `function` [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] *functionName* `(`*parameters*`)` `{` *body* `}`
 
 ## Parameters
 
