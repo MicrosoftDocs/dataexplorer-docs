@@ -35,26 +35,32 @@ Expand a row to see an overview of the different columns and their content. To e
 
 1. Within the expanded row, expanded columns are indicated by a downward-pointing arrow, and collapsed columns are indicated by a right-pointing arrow. Select an arrow to switch between expanding and collapsing the content.
 
-## Search within a detailed view
+## Search in a detailed view
 
 You can perform free text search within the detailed view of a result. To learn how to do so, follow these steps:
 
 1. Run the following query.
 
     > [!div class="nextstepaction"]
-    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUHLz8Q/ydHFUAkqVJGanKhgaAAALk0E2MAAAAA==" target="_blank">Run the query</a>
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpV8MzLKi3KTC32zEvJLEpNLlGwUzAAAKFa44UoAAAA" target="_blank">Run the query</a>
 
     ```kusto
     StormEvents
-    | where State == "FLORIDA"
-    | take 10
+    | where InjuriesIndirect > 0
     ```
 
-1. Select the first result in the `StormSummary` column, which should be the last column.
+1. [Expand a row](#expand-a-row) in the result grid.
 
-1. To initiate a free text search bar, press the keyboard shortcut "Ctrl + F". Then, input "Florida". Notice that the location "FLORIDA" is found since the search function isn't case sensitive by default.
+1. Select the detailed view window.
 
-    :::image type="content" source="media/web-query-data/search-in-dynamic-result.png" alt-text="Screenshot of search result from dynamic field search." lightbox="media/web-query-data/search-in-dynamic-result.png":::
+1. To initiate a free text search bar, press the keyboard shortcut "Ctrl + F".
+
+1. Input "injur". All instances of the searched term are highlighted.
+
+    :::image type="content" source="media/web-query-data/search-in-detailed-view.png" alt-text="Screenshot of search result from dynamic field search." lightbox="media/web-query-data/search-in-detailed-view.png":::
+
+> [!NOTE]
+> The search function isn't case sensitive by default.
 
 ## Get the path to a dynamic field
 
