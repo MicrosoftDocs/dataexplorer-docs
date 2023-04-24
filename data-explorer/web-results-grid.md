@@ -139,19 +139,22 @@ Within a result set, you can group the results by any column. After this groupin
 1. Run the following query:
 
     > [!div class="nextstepaction"]
-    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF4vyiEoWkSoXgksSikpDM3FSFlNTiZKhkSWJ2qoKhAQBQNnAYNgAAAA==" target="_blank">Run the query</a>
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZR8ErNTdV3T0lKTSxSC8/LLlQC15ugJMwAAAA==" target="_blank">Run the query</a>
 
     ```kusto
     StormEvents
-    | sort by StartTime desc
-    | take 10
+    | where EventType == "Lake-Effect Snow"
     ```
 
 1. Mouse-over the **State** column, select the menu, and select **Group by State**.
 
     :::image type="content" source="media/web-query-data/group-by.png" alt-text="Screenshot of a table with query results grouped by state." lightbox="media/web-query-data/group-by.png":::
 
-1. In the grid, double-click on **California** to expand and see records for that state. This type of grouping can be helpful when doing exploratory analysis.
+    The following screenshot shows the result after selecting **Group by State**.
+
+    :::image type="content" source="media/web-query-data/group-by-result.png" alt-text="Screenshot of records grouped by state." lightbox="media/web-query-data/group-by-result.png":::
+
+1. In the grid, double-click on a record to expand and see records for that state. For example, expand the records for "INDIANA". This type of grouping can be helpful when doing exploratory analysis.
 
     :::image type="content" source="media/web-query-data/group-expanded.png" alt-text="Screenshot of a query results grid with California group expanded in the Azure Data Explorer web U I." border="false" lightbox="media/web-query-data/group-expanded.png":::
 
