@@ -86,3 +86,13 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [perm_fl()](perm-fl.md) | Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
 | [two_sample_t_test_fl()](two-sample-t-test-fl.md) | Perform the two sample t-test. |
 | [wilcoxon_test_fl()](wilcoxon-test-fl.md) | Perform the Wilcoxon Test. |
+
+## Text analytics
+
+| Function Name | Description |
+|--|--|
+| [log_reduce_fl()](log-reduce-fl.md) | Find common patterns in textual logs and output a summary table. |
+| [log_reduce_full_fl()](log-reduce-full-fl.md) | Find common patterns in textual logs and output a full table. |
+| [log_reduce_predict_fl()](log-reduce-predict-fl.md) | Apply a trained model to find common patterns in textual logs and output a summary table. |
+| [log_reduce_predict_full_fl()](log-reduce-predict-full-fl.md) | Apply a trained model to find common patterns in textual logs and output a full table. |
+| [log_reduce_train_fl()](log-reduce-train-fl.md) | Find common patterns in textual logs and output a model. |
