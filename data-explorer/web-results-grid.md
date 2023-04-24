@@ -88,9 +88,25 @@ Nested dynamic property-bag fields can become complex as you go deeper into thei
 
 To add a specific dynamic field as a filter to your query, do the following:
 
-1. Expand the cell of a dynamic column.
+1. Run the following query.
 
-1. Right-click on a field within a dynamic data and select **Add as filter**.
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNAAAWuk9VBUAAAA=" target="_blank">Run the query</a>
+
+    ```kusto
+    StormEvents
+    | take 10
+    ```
+
+1. Select the first result in the `StormSummary` column, which should be the last column.
+
+1. Right-click on a field within a dynamic data and select **Add as filter**. For example, add the `Location` in the `Details` field as a filter.
+
+    :::image type="content" source="media/web-query-data/add-dynamic-field-as-filter.png" alt-text="Screenshot of add as filter option from dynamic field." lightbox="media/web-query-data/add-dynamic-field-as-filter.png":::
+
+1. In the query editor, a query clause is added to your query based on the selected dynamic field.
+
+    :::image type="content" source="media/web-query-data/condition-added-from-dynamic.png" alt-text="Screenshot of the query condition added from the dynamic field selection." lightbox="media/web-query-data/condition-added-from-dynamic.png":::
 
 ## Add filter from query result
 
