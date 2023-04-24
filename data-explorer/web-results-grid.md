@@ -241,12 +241,23 @@ To search for a specific expression within a result table, use the search capabi
 
 To color the rows of results based on a column value, follow these steps:
 
-1. Right-click on a value in the column by which to color the values.
+1. Run the following query.
+
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNAAAWuk9VBUAAAA=" target="_blank">Run the query</a>
+
+    ```kusto
+    StormEvents
+    | take 10
+    ```
+
+1. Right-click on a value in the `State` column.
+
 1. Select **Explore results**, and then select **Color by value**.
 
     :::image type="content" source="media/web-query-data/color-by-value-option.png" alt-text="Screenshot of the option to color by value." lightbox="media/web-query-data/color-by-value-option.png":::
 
-   For example, the following screenshot shows the results colored by the `State` column.
+1. The results are colored by the values in the `State` column.
 
     :::image type="content" source="media/web-query-data/color-by-value-table.png" alt-text="Screenshot of color by value." lightbox="media/web-query-data/color-by-value-table.png":::
 
