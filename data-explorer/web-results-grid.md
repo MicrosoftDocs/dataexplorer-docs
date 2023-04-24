@@ -35,6 +35,58 @@ Expand a row to see an overview of the different columns and their content. To e
 
 1. Within the expanded row, expanded columns are indicated by a downward-pointing arrow, and collapsed columns are indicated by a right-pointing arrow. Select an arrow to switch between expanding and collapsing the content.
 
+## Search within a detailed view
+
+You can perform free text search within the detailed view of a result. To learn how to do so, follow these steps:
+
+1. Run the following query.
+
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUHLz8Q/ydHFUAkqVJGanKhgaAAALk0E2MAAAAA==" target="_blank">Run the query</a>
+
+    ```kusto
+    StormEvents
+    | where State == "FLORIDA"
+    | take 10
+    ```
+
+1. Select the first result in the `StormSummary` column, which should be the last column.
+
+1. To initiate a free text search bar, press the keyboard shortcut "Ctrl + F". Then, input "Florida". Notice that the location "FLORIDA" is found since the search function isn't case sensitive by default.
+
+    :::image type="content" source="media/web-query-data/search-in-dynamic-result.png" alt-text="Screenshot of search result from dynamic field search." lightbox="media/web-query-data/search-in-dynamic-result.png":::
+
+## Get the path to a dynamic field
+
+Nested dynamic property-bag fields can become complex as you go deeper into their layers. In the results grid, the JPATH indicates the path through the dynamic property-bag object fields to arrive at the given field. To learn how to find a JPATH, follow these steps:
+
+1. Run the following query.
+
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNAAAWuk9VBUAAAA=" target="_blank">Run the query</a>
+
+    ```kusto
+    StormEvents
+    | take 10
+    ```
+
+1. Select the first result in the `StormSummary` column, which should be the last column.
+
+1. Select different fields within the result and see how the JPATH at the top of the window changes. For example, the following screenshot shows the path to the `Location` field, which is nested under the `Details` field within the `StormSummary` column dynamic property-bag object.
+
+    :::image type="content" source="media/web-query-data/nested-jpath.png" alt-text="Screenshot of a nested JPATH."  lightbox="media/web-query-data/nested-jpath.png":::
+
+1. Select the icon to the right of the JPATH to copy it. Then, paste and use the JPATH as a filter or share it with others.
+
+## Filter by value of dynamic field
+
+To add a specific dynamic field as a filter to your query, do the following:
+
+1. Expand the cell of a dynamic column.
+
+1. Right-click on a field within a dynamic data and select **Add as filter**.
+
+
 ## Group column by results
 
 Within a result set, you can group the results by any column. After this grouping, you can perform further aggregations to investigate the data. To group and explore column results, follow these steps:
@@ -163,27 +215,6 @@ To search for a specific expression within a result table, use the search capabi
 
 1. To only display rows that contain your search query, turn on the **Show only rows that fit search** option located at the top of the search window.
 
-## Search within a dynamic result
-
-You can perform free text search within a dynamic result. To learn how to do so, follow these steps:
-
-1. Run the following query.
-
-    > [!div class="nextstepaction"]
-    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUHLz8Q/ydHFUAkqVJGanKhgaAAALk0E2MAAAAA==" target="_blank">Run the query</a>
-
-    ```kusto
-    StormEvents
-    | where State == "FLORIDA"
-    | take 10
-    ```
-
-1. Select the first result in the `StormSummary` column, which should be the last column.
-
-1. To initiate a free text search bar, press the keyboard shortcut "Ctrl + F". Then, input "Florida". Notice that the location "FLORIDA" is found since the search function isn't case sensitive by default.
-
-    :::image type="content" source="media/web-query-data/search-in-dynamic-result.png" alt-text="Screenshot of search result from dynamic field search." lightbox="media/web-query-data/search-in-dynamic-result.png":::
-
 ## Color results by value
 
 To color the rows of results based on a column value, follow these steps:
@@ -196,33 +227,3 @@ To color the rows of results based on a column value, follow these steps:
    For example, the following screenshot shows the results colored by the `State` column.
 
     :::image type="content" source="media/web-query-data/color-by-value-table.png" alt-text="Screenshot of color by value." lightbox="media/web-query-data/color-by-value-table.png":::
-
-## Get the path to a dynamic field
-
-Nested dynamic property-bag fields can become complex as you go deeper into their layers. In the results grid, the JPATH indicates the path through the dynamic property-bag object fields to arrive at the given field. To learn how to find a JPATH, follow these steps:
-
-1. Run the following query.
-
-    > [!div class="nextstepaction"]
-    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNAAAWuk9VBUAAAA=" target="_blank">Run the query</a>
-
-    ```kusto
-    StormEvents
-    | take 10
-    ```
-
-1. Select the first result in the `StormSummary` column, which should be the last column.
-
-1. Select different fields within the result and see how the JPATH at the top of the window changes. For example, the following screenshot shows the path to the `Location` field, which is nested under the `Details` field within the `StormSummary` column dynamic property-bag object.
-
-    :::image type="content" source="media/web-query-data/nested-jpath.png" alt-text="Screenshot of a nested JPATH."  lightbox="media/web-query-data/nested-jpath.png":::
-
-1. Select the icon to the right of the JPATH to copy it. Then, paste and use the JPATH as a filter or share it with others.
-
-## Filter by value of dynamic field
-
-To add a specific dynamic field as a filter to your query, do the following:
-
-1. Expand the cell of a dynamic column.
-
-1. Right-click on a field within a dynamic data and select **Add as filter**.
