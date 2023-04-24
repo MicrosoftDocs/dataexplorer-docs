@@ -92,6 +92,29 @@ To add a specific dynamic field as a filter to your query, do the following:
 
 1. Right-click on a field within a dynamic data and select **Add as filter**.
 
+## Add filter from query result
+
+To add a filter operator to the query directly from the result grid, follow these steps:
+
+1. Run the following query.
+
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNAAAWuk9VBUAAAA=" target="_blank">Run the query</a>
+
+    ```kusto
+    StormEvents
+    | take 10
+    ```
+
+1. Select the cells with content for which you want to create a query filter. To select multiple cells, click and drag your mouse over the cells you want to select, or hold down the "Ctrl" key while clicking on each cell. For example, select multiple cells from the `State` and `EventType` columns.
+
+1. Right-click to open the cell actions menu. Select **Add selection as filters**.
+
+    :::image type="content" source="media/web-query-data/add-selection-as-filters.png" alt-text="Screenshot of a dropdown menu with the Add selection as filter option to query directly from the grid." lightbox="media/web-query-data/add-selection-as-filters.png":::
+
+1. In the query editor, a query clause is added to your query based on the selected cells.
+
+    :::image type="content" source="media/web-query-data/conditions-added-as-filters.png" alt-text="Screenshot of the conditions that were added as filters." lightbox="media/web-query-data/conditions-added-as-filters.png":::
 
 ## Group column by results
 
@@ -165,24 +188,6 @@ To quickly calculate the **Average**, **Count**, **Min**, **Max**, and **Sum** f
 1. Select a few of the numerical cells. To select multiple cells, click and drag your mouse over the cells you want to select, or hold down the "Ctrl" key while clicking on each cell. The **Average**, **Count**, **Min**, **Max**, and **Sum**  are automatically calculated for these cells.
 
     :::image type="content" source="media/web-query-data/select-stats.png" alt-text="Screenshot of a table with selected functions." lightbox="media/web-query-data/select-stats.png":::
-
-## Filter to query from grid
-
-To add a filter operator to the query directly from the grid, follow these steps:
-
-1. Select the cell with content for which you want to create a query filter.
-
-1. Right-click to open the cell actions menu. Select **Add selection as filters**.
-
-    :::image type="content" source="media/web-query-data/add-selection-filter.png" alt-text="Screenshot of a dropdown menu with the Add selection as filter option to query directly from the grid." lightbox="media/web-query-data/add-selection-filter.png":::
-
-1. A query clause is added to your query in the query editor. For example, the query shown in the previous screenshot becomes the following query.
-
-    ```kusto
-    StormEvents
-    | take 10
-    | where StartTime == datetime(2007-09-18T20:00:00Z)
-    ```
 
 ## Make a pivot table
 
