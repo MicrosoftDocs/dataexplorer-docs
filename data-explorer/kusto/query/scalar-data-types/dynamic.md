@@ -82,7 +82,7 @@ value, use the `parse_json` function. For example:
 ## Ingesting Data
 
 When ingesting data into a `dynamic` column, Kusto will implicitly call [`parse_json`](kusto/query/parsejsonfunction.md) on string values.
-This allows you do ingest `dictionary` and `array` values even when the ingestion format support only string values.
+This allows you to ingest `dictionary` and `array` values even when the ingestion format support only string values.
 
 The following example shows how you can create a table that holds a `dynamic` column 
 and then ingest records into it.
