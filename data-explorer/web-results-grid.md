@@ -33,7 +33,7 @@ Expand a row to open a detailed view of the row content. This detailed view show
 
     :::image type="content" source="media/web-query-data/expand-row-arrow.png" alt-text="Screenshot of an expanded row in the Azure Data Explorer web UI." lightbox="media/web-query-data/expand-row-arrow.png":::
 
-1. In the detailed view, columns are denoted as keys, and columns with dynamic data can be expanded or collapsed. Expanded columns are marked by a downward-pointing arrow, while collapsed columns are marked by a right-pointing arrow. You can toggle between expanding and collapsing the content by selecting the arrow beside the column key.
+1. In the detailed view, columns with dynamic data can be expanded or collapsed. Expanded columns are marked by a downward-pointing arrow, while collapsed columns are marked by a right-pointing arrow. You can toggle between expanding and collapsing the content by selecting the arrow beside the column key.
 
     :::image type="content" source="media/web-query-data/expand-columns.png" alt-text="Screenshot of columns with expanded or collapsed data." lightbox="media/web-query-data/expand-columns.png":::
 
