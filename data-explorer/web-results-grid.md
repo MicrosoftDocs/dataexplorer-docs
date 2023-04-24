@@ -84,7 +84,7 @@ Nested dynamic property-bag fields can become complex as you go deeper into thei
 
 1. Select the icon to the right of the JPATH to copy it. Then, paste and use the JPATH as a filter or share it with others.
 
-## Filter by value of dynamic field
+## Add filter from dynamic field
 
 To add a specific dynamic field as a filter to your query, do the following:
 
