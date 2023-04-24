@@ -18,7 +18,7 @@ To learn how to run queries, see [Quickstart: Query data in the Azure Data Explo
 
 ## Expand a cell
 
-Expand a cell to view [dynamic](kusto/query/scalar-data-types/dynamic.md) data or long strings. In the detailed view, dynamic data is presented like JSON to make it more readable. To expand a cell, follow these steps:
+Expand a cell to open a detailed view of the cell content, which is especially helpful for viewing [dynamic](kusto/query/scalar-data-types/dynamic.md) data or long strings. In the detailed view, dynamic data is presented like JSON. To expand a cell, follow these steps:
 
 1. Double-click a cell to open the detailed view.
 1. Select the icon on the top right of the result grid to switch reading pane modes. Choose between the following reading pane modes: **Inline**, **Below**, and **Right**.
@@ -27,13 +27,13 @@ Expand a cell to view [dynamic](kusto/query/scalar-data-types/dynamic.md) data o
 
 ## Expand a row
 
-Expand a row to see an overview of the different columns and their content. To expand a row, follow these steps:
+Expand a row to open a detailed view of the row content. This detailed view shows the different columns and their content. To expand a row, follow these steps:
 
 1. On the left side of the row you want to expand, select the arrow icon **>**.
 
     :::image type="content" source="media/web-query-data/expand-row-arrow.png" alt-text="Screenshot of an expanded row in the Azure Data Explorer web UI." lightbox="media/web-query-data/expand-row-arrow.png":::
 
-1. In the expanded row, columns are denoted as keys, and columns with dynamic data can be expanded or collapsed. Expanded columns are marked by a downward-pointing arrow, while collapsed columns are marked by a right-pointing arrow. You can toggle between expanding and collapsing the content by selecting the arrow beside the column key.
+1. In the detailed view, columns are denoted as keys, and columns with dynamic data can be expanded or collapsed. Expanded columns are marked by a downward-pointing arrow, while collapsed columns are marked by a right-pointing arrow. You can toggle between expanding and collapsing the content by selecting the arrow beside the column key.
 
     :::image type="content" source="media/web-query-data/expand-columns.png" alt-text="Screenshot of columns with expanded or collapsed data." lightbox="media/web-query-data/expand-columns.png":::
 
