@@ -3,7 +3,7 @@ title: .delete database retention policy command- Azure Data Explorer
 description: This article describes the .delete database retention policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/24/2023
 ---
 # .delete database retention policy
 
@@ -15,11 +15,17 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 ## Syntax
 
-`.delete` `database` *DatabaseName* `policy` `retention` 
+`.delete` `database` *DatabaseName* `policy` `retention`
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database for which to delete the retention policy.|
 
 ### Example
 
-Delete a retention policy:
+The following command deletes the retention policy at the database level.
 
 ```kusto
 .delete database MyDatabase policy retention 
