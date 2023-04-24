@@ -892,5 +892,8 @@ Daily flash flood damages over 200,000,000$:
 ## Next steps
 
 <!-- Advance to the next article to learn how to create... -->
+<!-- > [!div class="nextstepaction"]
+> [TBD](../../../kql-quick-reference.md) -->
+
 > [!div class="nextstepaction"]
-> [TBD](../../../kql-quick-reference.md)
+> [KQL quick reference](../../../kql-quick-reference.md)
