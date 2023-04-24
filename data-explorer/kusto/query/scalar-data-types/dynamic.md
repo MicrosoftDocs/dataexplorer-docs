@@ -78,32 +78,58 @@ value, use the `parse_json` function. For example:
 > (`"`) characters around strings and property-bag property names.
 > Therefore, it is generally easier to quote a JSON-encoded string literal by using
 > a single-quote (`'`) character.
-  
-The following example shows how you can define a table that holds a `dynamic` column (as well as
-a `datetime` column) and then ingest into it a single record. it also demonstrates how you
-can encode JSON strings in CSV files:
+
+## Ingesting Data
+
+When ingesting data into a `dynamic` column, Kusto will implicitly call [`parse_json`](kusto/query/parsejsonfunction.md) on string values.
+This allows you do ingest `dictionary` and `array` values even when the ingestion format support only string values.
+
+The following example shows how you can create a table that holds a `dynamic` column 
+and then ingest records into it.
 
 ```kusto
 // dynamic is just like any other type:
+.create table Test (id:string, val:dynamic)
+
+// When ingesting as CSV (default for ingest inline), you must quote and escape
+// JSON strings, as quotes and commas are not valid on their own.
+.ingest inline into table Test
+  ["csv-valid","{""Foo"":""Bar >\""<""}"]
+  ["csv-invalid","{'single-quoted': ''}"]
+
+// With the json format, parse_json will also be implicitly called on
+// string values ingested into dynamic columns.
+.ingest inline into table Test with (format="json") <|
+{"id":"json-string-valid","val":"{\"Foo\":\"Bar >\\\"<\"}"}
+{"id":"json-string-invalid","val":"{'single-quoted':''}"}
+
+// Note that in JSON, values don't have to be strings.
+// You can specify a nested object which will be used as the dynamic value directly.
+.ingest inline into table Test with (format="json") <|
+{"id":"json-object1","val":{"Foo": "Bar >\"<"}}
+
+// When specifying dynamic values as objects instead of strings,
+// the "json" format parser is used, which is less strict than the parse_json parser.
+// This means you *can* use single-quoted properties, for example.
+.ingest inline into table Test with (format="json") <|
+{'id':'json-object2','val':{'Foo': 'Bar >"<' /* this comment is fine */}}
 .create table Logs (Timestamp:datetime, Trace:dynamic)
 
-// Everything between the "[" and "]" is parsed as a CSV line would be:
-// 1. Since the JSON string includes double-quotes and commas (two characters
-//    that have a special meaning in CSV), we must CSV-quote the entire second field.
-// 2. CSV-quoting means adding double-quotes (") at the immediate beginning and end
-//    of the field (no spaces allowed before the first double-quote or after the second
-//    double-quote!)
-// 3. CSV-quoting also means doubling-up every instance of a double-quotes within
-//    the contents.
-.ingest inline into table Logs
-  [2015-01-01,"{""EventType"":""Demo"", ""EventValue"":""Double-quote love!""}"]
+// Output ingested values, including what type they were parsed as.
+Test | extend type = gettype(val)
 ```
 
 **Output**
 
-|Timestamp                   | Trace                                                 |
-|----------------------------|-------------------------------------------------------|
-|2015-01-01 00:00:00.0000000 | {"EventType":"Demo","EventValue":"Double-quote love!"}|
+| id                  | val                   | type       |
+|---------------------|-----------------------|------------|
+| csv-valid           | {"Foo":"Bar >\"<"}    | dictionary |
+| csv-invalid         | {'single-quoted': ''} | string     |
+| json-string-valid   | {"Foo":"Bar >\"<"}    | dictionary |
+| json-string-invalid | {'single-quoted':''}  | string     |
+| json-object1        | {"Foo":"Bar >\"<"}    | dictionary |
+| json-object2        | {"Foo":"Bar >\"<"}    | dictionary |
+
 
 ## Dynamic object accessors
 
