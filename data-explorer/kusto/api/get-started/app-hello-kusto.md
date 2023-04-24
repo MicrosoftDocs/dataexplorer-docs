@@ -1,11 +1,11 @@
 ---
 title: 'Hello Kusto: Create your first app - Azure Data Explorer'
-description: Learn how to create your first app to print Hello Kusto using Azure Data Explorer client libraries.
+description: Learn how to create your first app to print Hello Kusto using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 02/23/2023
+ms.date: 04/24/2023
 ---
-# Hello Kusto: Create your first Azure Data Explorer client app
+# Hello Kusto: Create your first Kusto client app
 
 In this article, you learn how to:
 
@@ -17,13 +17,13 @@ In this article, you learn how to:
 
 ## Prerequisites
 
-[Set up your development environment](app-set-up.md) to use the Azure Data Explorer client library.
+[Set up your development environment](app-set-up.md) to use the Kusto client library.
 
 ## Create your app
 
 In your preferred IDE or text editor, create a file named `hello-kusto` with the language appropriate extension, and then add code to do the following:
 
-1. Add the Azure Data Explorer client and string builder classes.
+1. Add the Kusto client and string builder classes.
 
     ### [C\#](#tab/csharp)
 
@@ -167,7 +167,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [C\#](#tab/csharp)
 
     ```csharp
-    using (var query_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
+    using (var kusto_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
     {
     }
     ```
@@ -175,13 +175,13 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [Python](#tab/python)
 
     ```python
-    with KustoClient(kcsb) as query_client:
+    with KustoClient(kcsb) as kusto_client:
     ```
 
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    const query_client = new KustoClient(kcsb);
+    const kusto_client = new KustoClient(kcsb);
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -189,7 +189,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [Java](#tab/java)
 
     ```java
-    try (Client query_client = ClientFactory.createClient(kcsb)) {
+    try (Client kusto_client = ClientFactory.createClient(kcsb)) {
     } catch (Exception e) {
       System.out.println("Error: " + e.getMessage());
     }
@@ -236,7 +236,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [C\#](#tab/csharp)
 
     ```csharp
-    using (var response = query_client.ExecuteQuery(database, query, null))
+    using (var response = kusto_client.ExecuteQuery(database, query, null))
     {
       response.Read();
       int columnNo = response.GetOrdinal("Welcome");
@@ -247,7 +247,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [Python](#tab/python)
 
     ```python
-    response = query_client.execute(database, query)
+    response = kusto_client.execute(database, query)
 
     print(response.primary_results[0][0]["Welcome"])
     ```
@@ -255,7 +255,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    let response = await query_client.execute(database, query);
+    let response = await kusto_client.execute(database, query);
 
     console.log(response.primaryResults[0][0]["Welcome"].toString());
     ```
@@ -265,7 +265,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [Java](#tab/java)
 
     ```java
-    KustoOperationResult response = query_client.execute(database, query);
+    KustoOperationResult response = kusto_client.execute(database, query);
 
     KustoResultSetTable primary_results = response.getPrimaryResults();
     primary_results.next();
@@ -324,12 +324,12 @@ namespace HelloKusto
       string cluster_uri = "https://help.kusto.windows.net/";
       var kcsb = new KustoConnectionStringBuilder(cluster_uri).WithAadUserPromptAuthentication();
     
-      using (var query_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
+      using (var kusto_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
       {
         string database = "Samples";
         string query = "print Welcome='Hello Kusto!'";
 
-        using (var response = query_client.ExecuteQuery(database, query, null))
+        using (var response = kusto_client.ExecuteQuery(database, query, null))
         {
           response.Read();
           int columnNo = response.GetOrdinal("Welcome");
@@ -350,11 +350,11 @@ def main():
   cluster_uri = "https://help.kusto.windows.net"
   kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
 
-  with KustoClient(kcsb) as query_client:
+  with KustoClient(kcsb) as kusto_client:
 
     database = "Samples"
     query = "print Welcome='Hello Kusto!'"
-    response = query_client.execute(database, query)
+    response = kusto_client.execute(database, query)
 
     print(response.primary_results[0][0]["Welcome"])
 
@@ -372,11 +372,11 @@ async function main()
 {
   const cluster_uri = "https://help.kusto.windows.net";
   const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
-  const query_client = new KustoClient(kcsb);
+  const kusto_client = new KustoClient(kcsb);
 
   const database = "Samples";
   const query = "print Welcome='Hello Kusto!'";
-  let response = await query_client.execute(database, query);
+  let response = await kusto_client.execute(database, query);
 
   console.log(response.primaryResults[0][0]["Welcome"].toString());
 }
@@ -403,10 +403,10 @@ public class HelloKusto
       String cluster_uri = "https://help.kusto.windows.net/";
       ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
 
-      try (Client query_client = ClientFactory.createClient(kcsb)) {
+      try (Client kusto_client = ClientFactory.createClient(kcsb)) {
         String database = "Samples";
         String query = "print Welcome='Hello Kusto!'";
-        KustoOperationResult response = query_client.execute(database, query);
+        KustoOperationResult response = kusto_client.execute(database, query);
 
         KustoResultSetTable primary_results = response.getPrimaryResults();
         primary_results.next();
