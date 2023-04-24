@@ -194,14 +194,12 @@ To quickly calculate the **Average**, **Count**, **Min**, **Max**, and **Sum** f
 1. Run the following query.
 
     > [!div class="nextstepaction"]
-    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMMQ7CMBAEe15xD6BwCloq0kdKPmCcFSHIOeu8gCzxeA4aRLUj7c6OVMv9Axvr7iVVjXJuMjIap2uGzKjJi+cCg5xijhcMpgXGJkc5hBC8LaYrEn/a/oP0+D5PrTj+y77QuyW4zXiDdOENqkYty4oAAAA=" target="_blank">Run the query</a>
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcEnMTUxPdS7KLyhWsFMwUEjMS4GKBQDFUotKKkHCQOUFRflZqcklCsEliUUlIZm5qTogZgmQApsYUlkAZCKZpoNmDFB5fmlRcioASkZ5RoUAAAA=" target="_blank">Run the query</a>
 
     ```kusto
     StormEvents
-    | sort by StartTime desc
-    | where DamageProperty > 5000
-    | project StartTime, State, EventType, DamageProperty, Source
-    | take 10
+    | where DamageCrops > 0 and DamageProperty > 0
+    | project StartTime, State, EventType, DamageCrops, DamageProperty, Source
     ```
 
 1. Select a few of the numerical cells. To select multiple cells, click and drag your mouse over the cells you want to select, or hold down the "Ctrl" key while clicking on each cell. The **Average**, **Count**, **Min**, **Max**, and **Sum**  are automatically calculated for these cells.
