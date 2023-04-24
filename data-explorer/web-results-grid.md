@@ -35,7 +35,7 @@ Expand a row to see an overview of the different columns and their content. To e
 
 1. Within the expanded row, expanded columns are indicated by a downward-pointing arrow, and collapsed columns are indicated by a right-pointing arrow. Select an arrow to switch between expanding and collapsing the content.
 
-## Search in a detailed view
+## Search in detailed view
 
 You can perform free text search within the detailed view of a result. To learn how to do so, follow these steps:
 
@@ -49,7 +49,7 @@ You can perform free text search within the detailed view of a result. To learn 
     | where InjuriesIndirect > 0
     ```
 
-1. [Expand a row](#expand-a-row) in the result grid.
+1. [Expand a row](#expand-a-row) in the result grid to open the detailed view.
 
 1. Select the detailed view window.
 
@@ -100,7 +100,7 @@ To add a specific dynamic field as a filter to your query, do the following:
 
 1. Select the first result in the `StormSummary` column, which should be the last column.
 
-1. Right-click on a field within a dynamic data and select **Add as filter**. For example, add the `Location` in the `Details` field as a filter.
+1. Right-click on a field within a dynamic data and select **Add as filter**. For example, right-click on the `Location` field and add it as a filter.
 
     :::image type="content" source="media/web-query-data/add-dynamic-field-as-filter.png" alt-text="Screenshot of add as filter option from dynamic field." lightbox="media/web-query-data/add-dynamic-field-as-filter.png":::
 
