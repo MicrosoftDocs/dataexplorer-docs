@@ -3,7 +3,7 @@ title: .delete materialized view partitioning policy command- Azure Data Explore
 description: This article describes the .delete materialized view partitioning policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/24/2023
 ---
 # .delete materialized view partitioning policy
 
@@ -15,7 +15,13 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.delete` `materialized-view` *MaterializedViewName* `policy` `partitioning` 
+`.delete` `materialized-view` *MaterializedViewName* `policy` `partitioning`
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view.|
 
 ### Example
 

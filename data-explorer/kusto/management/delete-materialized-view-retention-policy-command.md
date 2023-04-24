@@ -3,7 +3,7 @@ title: .delete materialized-view retention policy command- Azure Data Explorer
 description: This article describes the .delete materialized-view retention policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 10/03/2021
+ms.date: 04/24/2023
 ---
 # .delete materialized-view retention policy
 
@@ -11,11 +11,17 @@ Delete a materialized-view's [retention policy](retentionpolicy.md). The retenti
 
 ## Syntax
 
-`.delete` `materialized-view` *DatabaseName* `policy` `retention` 
+`.delete` `materialized-view` *MaterializedViewName* `policy` `retention`
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view.|
 
 ### Example
 
-Delete a retention policy:
+The following command deletes the retention policy for a materialized view named `MyMaterializedView`.
 
 ```kusto
 .delete materialized-view MyMaterializedView policy retention

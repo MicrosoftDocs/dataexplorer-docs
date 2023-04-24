@@ -15,15 +15,20 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 ## Syntax
 
-```kusto
-.delete table table_name policy extent_tags_retention
+`.delete` `table` *TableName* `policy` `extent_tags_retention`
 
-.delete database database_name policy extent_tags_retention
-```
+`.delete` `database` *DatabaseName* `policy` `extent_tags_retention`
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table.|
+|*DatabaseName*|string|&check;|The name of the database.|
 
 ## Example
 
-Delete the extent tags retention policy for the table named `MyTable`:
+The following command deletes the extent tags retention policy for a table named `MyTable`.
 
 ```kusto
 .delete table MyTable policy extent_tags_retention
