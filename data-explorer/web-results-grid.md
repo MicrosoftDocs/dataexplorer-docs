@@ -164,12 +164,6 @@ Within a result set, you can group the results by any column. After this groupin
 
 1. To return the results grid to its original state, select the menu of the **Group** column. Then, select **Reset columns**.
 
-## Hide empty columns
-
-To hide or show empty columns, select the eye icon in the menu of the results grid.
-
-:::image type="content" source="media/web-query-data/hide-empty-columns.png" alt-text="Screenshot of eye icon to hide results grid in the Azure Data Explorer web UI."  lightbox="media/web-query-data/hide-empty-columns.png":::
-
 ## Filter columns
 
 To filter the results of a specific column, follow these steps:
@@ -255,3 +249,9 @@ To color the rows of results based on a column value, follow these steps:
    For example, the following screenshot shows the results colored by the `State` column.
 
     :::image type="content" source="media/web-query-data/color-by-value-table.png" alt-text="Screenshot of color by value." lightbox="media/web-query-data/color-by-value-table.png":::
+
+## Hide empty columns
+
+To hide or show empty columns, select the eye icon in the menu of the results grid.
+
+:::image type="content" source="media/web-query-data/hide-empty-columns.png" alt-text="Screenshot of eye icon to hide results grid in the Azure Data Explorer web UI."  lightbox="media/web-query-data/hide-empty-columns.png":::
