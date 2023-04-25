@@ -5,7 +5,7 @@ ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 04/25/2023
 ---
-# .drop function
+# .drop function and .drop functions
 
 Drops a function from the database.
 
