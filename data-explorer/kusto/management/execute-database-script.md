@@ -3,7 +3,7 @@ title: .execute database script - Azure Data Explorer
 description: This article describes the `.execute database script` functionality in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/25/2023
 ---
 # .execute database script
 
@@ -16,21 +16,23 @@ You must have at least [Database Admin](access-control/role-based-access-control
 ## Syntax
 
 `.execute` `database` `script`  
-[`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *control-commands-script*
+[`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *ControlCommandsScript*
 
-### Parameters
+## Parameters
 
-* *control-commands-script*: Text with one or more control commands.
-* *propertyName*, *propertyValue*: Optional properties from the following list:
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*ControlCommandsScript*|string|&check;| Text with one or more control commands.|
+|*PropertyName*, *PropertyValue*|string|| Optional properties. See [Supported properties](#supported-properties).|
 
-#### Optional properties
+### Supported properties
 
-  | PropertyName            | Type            | Description                          |
-  |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
-  | `ContinueOnErrors`            | `bool`        | If set to `false` - the script stops on the first error. If set to `true` - the script execution continues. Default: `false`. |
-  | `ThrowOnErrors`            | `bool`        | If set to `true` - the script throws an error (fail) on the first error. Doesn't work together with `ContinueOnErrors`, only one is allowed. Default: `false`. |
+| PropertyName | Type | Description |
+|--|--|--|
+| `ContinueOnErrors` | `bool` | If set to `false` - the script stops on the first error. If set to `true` - the script execution continues. Default: `false`. |
+| `ThrowOnErrors` | `bool` | If set to `true` - the script throws an error (fail) on the first error. Doesn't work together with `ContinueOnErrors`, only one is allowed. Default: `false`. |
 
-## Output
+## Returns
 
 Each command appearing in the script will be reported as a separate record in the output table. Each record has the following fields:
 
