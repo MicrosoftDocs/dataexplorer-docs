@@ -1,13 +1,13 @@
 ---
 title: Journal management - Azure Data Explorer
-description: This article describes Journal management in Azure Data Explorer.
+description: This article describes journal management in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/19/2019
+ms.date: 04/25/2023
 ---
 # Journal management
 
- `Journal` contains information about metadata operations that are done on the Azure Data Explorer database.
+`Journal` contains information about metadata operations done on your database.
 
 The metadata operations can result from a control command that a user executed, or internal control commands that the system executed, such as drop extents by retention.
 

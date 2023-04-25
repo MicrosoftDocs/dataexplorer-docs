@@ -3,7 +3,7 @@ title: Extents merge policy - Azure Data Explorer
 description: This article describes Extents merge policy in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 04/25/2023
 ---
 # Merge policy
 
@@ -96,7 +96,7 @@ The following example shows the default policy:
 |365 days (8,760 hours)                                              | 250                             |
 
 > [!WARNING]
-> Consult with the Azure Data Explorer team before altering an extents merge policy.
+> Consult with the support team before altering an extents merge policy.
 
 When a database is created, it's set with the default merge policy values mentioned above. The policy is by default inherited by all tables created in the database, unless their policies are explicitly overridden at table-level.
 

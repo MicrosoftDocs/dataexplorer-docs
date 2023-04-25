@@ -3,11 +3,11 @@ title: Data sharding policy - Azure Data Explorer
 description: This article describes Data sharding policy in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/26/2022
+ms.date: 04/25/2023
 ---
 # Data sharding policy
 
-The sharding policy defines if and how [extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster are created. You can only query data in an extent once it's created.
+The sharding policy defines if and how [extents (data shards)](../management/extents-overview.md) in your cluster are created. You can only query data in an extent once it's created.
 
 > [!NOTE]
 >
@@ -34,7 +34,7 @@ The data sharding policy contains the following properties:
     * Defaults to 2,048 (2GB).
 
 > [!WARNING]
-> Consult with the Azure Data Explorer team before altering a data sharding policy.
+> Consult with the support team before altering a data sharding policy.
 
 When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
 

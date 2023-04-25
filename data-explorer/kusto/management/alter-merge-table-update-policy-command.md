@@ -7,7 +7,7 @@ ms.date: 04/20/2023
 ---
 # .alter-merge table update policy
 
-Changes the table's update policy. The [update policy](updatepolicy.md) instructs Azure Data Explorer to automatically append data to a target table whenever new data is inserted into the source table, based on a transformation query that runs on the data inserted into the source table.
+Changes the table's update policy. The [update policy](updatepolicy.md) causes data to be automatically appended to a target table whenever new data is inserted into the source table, based on a transformation query that runs on the data inserted into the source table.
 
 > [!NOTE]
 >
