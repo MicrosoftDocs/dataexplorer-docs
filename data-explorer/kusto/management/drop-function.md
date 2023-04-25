@@ -17,7 +17,7 @@ You must have at least [Function Admin](access-control/role-based-access-control
 
 `.drop` `function` *FunctionName* [`ifexists`]
 
-`.drop` `functions` `(` *FunctionName* [`,` ...] `)` [ifexists]
+`.drop` `functions` `(` *FunctionName* [`,` ...] `)` [`ifexists`]
 
 ## Parameters
 
