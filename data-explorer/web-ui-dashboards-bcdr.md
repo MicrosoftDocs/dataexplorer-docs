@@ -15,7 +15,7 @@ Azure Data Explorer Dashboards' business continuity and disaster recovery allows
 
 ### Accidental dashboard deletion
 
-Mistakes are bound to happen, and it is possible for users to unintentionally delete a dashboard. If you find yourself in this situation, please use the assistance of Microsoft support to restore your dashboard.
+Mistakes are bound to happen, and it is possible for users to unintentionally delete a dashboard. If you find yourself in this situation, please use the assistance of Microsoft support to restore your dashboard. 12 weeks from the deletion date, the dashboard can no longer be restored.
 
 ### Improper dashboard modification
 
@@ -45,5 +45,3 @@ These backups are also replicated in a paired region, helping to ensure a smooth
 
 > [!IMPORTANT]
 > Accidental deletion here refers to scenarios that arise as a result of an incident on our services and doesn't include accidental deletion of assets by customers.
-
-Additional measure of protection is that deleted dashboards are in a "soft deleted" stage for 12 weeks allowing recovery as needed. Customers can create a support ticket with Azure Data Explorer (Kusto) and have deleted dashboards recovered as long as they are still in the "soft delete" stage. Note that after 12 weeks deleted dashboards are permanently deleted and cannot be recovered.
