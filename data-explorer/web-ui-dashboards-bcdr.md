@@ -1,0 +1,49 @@
+---
+title: Dashboards business continuity and disaster recovery overview
+description: This article outlines the business continuity and disaster recovery capabilities within Azure Data Explorer Dashboards.
+ms.reviewer: izlisbon
+ms.topic: conceptual
+ms.date: 04/26/2023
+ms.custom: mode-portal
+---
+
+## Dashboards business continuity and disaster recovery overview
+
+Azure Data Explorer Dashboards' business continuity and disaster recovery allows your business to view and edit dashboards during disruptions. This article covers the topics of availability and disaster recovery for Azure Data Explorer Dashboards.
+
+## Human error
+
+### Accidental dashboard deletion
+
+Mistakes are bound to happen, and it is possible for users to unintentionally delete a dashboard. If you find yourself in this situation, please use the assistance of Microsoft support to restore your dashboard.
+
+### Improper dashboard modification
+
+In the event that a dashboard has been improperly modified, such as inadvertently deleting a tile and saving the alterations, it should be noted that Kusto Dashboard does not offer rollback or version control capabilities.
+
+## High availability
+
+High availability refers to the fault-tolerance of Azure Data Explorer Dashboards. This fault tolerance avoids single points of failure (SPOF) in the implementation. In Azure Data Explorer Dashboards, high availability includes the persistence layer and the compute layer.
+
+### Persistence layer
+
+Azure Data Explorer Dashboards leverages Azure Cosmos DB as its durable persistence layer.
+
+Azure Cosmos DB is used with a Geo-zone-redundant configuration. Azure Data Explorer Dashboards service is available in seven geographies across the world. Every geography will have an Azure Cosmos DB with at least one replica in a different region. Additionally, availability Zones are utilized in every Azure region that supports them.
+
+### Compute layer
+
+Azure Data Explorer Dashboards utilizes Azure App Service as its computational layer.
+
+Within a geography, Azure App Services are deployed in paired regions.
+
+## Disaster Recovery
+
+To protect against accidental deletion of data, Azure Data Explorer Dashboards use Azure Cosmos DB's continuous backup (a.k.a point-in-time backups) with a retention period of 30 days.
+
+These backups are also replicated in a paired region, helping to ensure a smooth recovery from a regional outage.
+
+> [!IMPORTANT]
+> Accidental deletion here refers to scenarios that arise as a result of an incident on our services and doesn't include accidental deletion of assets by customers.
+
+Additional measure of protection is that deleted dashboards are in a "soft deleted" stage for 12 weeks allowing recovery as needed. Customers can create a support ticket with Azure Data Explorer (Kusto) and have deleted dashboards recovered as long as they are still in the "soft delete" stage. Note that after 12 weeks deleted dashboards are permanently deleted and cannot be recovered.

@@ -71,6 +71,9 @@ items:
     - name: Create solutions
       displayName: BCDR, bcdr
       href: business-continuity-create-solution.md
+    - name: Dashboards business continuity
+      displayName: BCDR, bcdr
+      href: web-ui-dashboards-bcdr.md
   - name: EngineV3
     href: engine-v3.md
   - name: Security
@@ -81,8 +84,8 @@ items:
       href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
     - name: Security controls by Azure Policy
       href: security-controls-policy.md
-  - name: Data protection, business continuity and disaster recovery
-    href: web-ui-dashboards-data-protection.md    
+    - name: Dashboards data protection
+      href: web-ui-dashboards-data-protection.md
 - name: Explore data
   items:
   - name: Get data
