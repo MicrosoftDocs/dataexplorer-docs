@@ -19,7 +19,7 @@ Mistakes are bound to happen, and it is possible for users to unintentionally de
 
 ### Improper dashboard modification
 
-In the event that a dashboard has been improperly modified, such as inadvertently deleting a tile and saving the alterations, it should be noted that Kusto Dashboard does not offer rollback or version control capabilities.
+In the event that a dashboard has been improperly modified, such as inadvertently deleting a tile and saving the alterations, it should be noted that Kusto Dashboard does not offer rollback.
 
 ## High availability
 
@@ -29,7 +29,7 @@ High availability refers to the fault-tolerance of Azure Data Explorer Dashboard
 
 Azure Data Explorer Dashboards leverages Azure Cosmos DB as its durable persistence layer.
 
-Azure Cosmos DB is used with a Geo-zone-redundant configuration. Azure Data Explorer Dashboards service is available in seven geographies across the world. Every geography will have an Azure Cosmos DB with at least one replica in a different region. Additionally, availability Zones are utilized in every Azure region that supports them.
+Azure Cosmos DB is used with a Geo-zone-redundant configuration. Azure Data Explorer Dashboards service is available in seven geographies across the world. Every geography will have an Azure Cosmos DB with at least one replica in a pair region. Additionally, availability Zones are utilized in every Azure region that supports them.
 
 ### Compute layer
 
