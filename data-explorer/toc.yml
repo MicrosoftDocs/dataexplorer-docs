@@ -76,7 +76,7 @@ items:
     - name: Data visualization overview
       displayName: Kusto Web Explorer, KWE, Dashboards
       href: viz-overview.md
-    - name: Data Protection
+    - name: Data protection, business continuity and disaster recovery
       href: web-ui-dashboards-data-protection.md
   - name: Security
     items:
