@@ -22,17 +22,17 @@ Azure Data Explorer dashboards is a web application that enables you to run quer
 
 For more information, see, [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
 
-## Kusto query language visualizations
+## Kusto Query Language visualizations
 
-The Kusto query language [`render operator`](kusto/query/renderoperator.md) offers various visualizations such as tables, pie charts, and bar charts to depict query results. Query visualizations are helpful in anomaly detection and forecasting, machine learning, and more.
+The Kusto Query Language [`render operator`](kusto/query/renderoperator.md) offers various visualizations such as tables, pie charts, and bar charts to depict query results. Query visualizations are helpful in anomaly detection and forecasting, machine learning, and more.
 
 ## Power BI
 
 Azure Data Explorer provides the capability to connect to [Power BI](https://powerbi.microsoft.com) using various methods:
 
-* [Built-in native Power BI connector](power-bi-connector.md)
+* [Built-in native Power BI connector](power-bi-data-connector.md?tabs=connector)
 
-* [Query import from Azure Data Explorer into Power BI](power-bi-imported-query.md)
+* [Query import from Azure Data Explorer into Power BI](power-bi-data-connector.md)
 
 * [SQL query](power-bi-sql-query.md)
 

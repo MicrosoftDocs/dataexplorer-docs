@@ -8,6 +8,9 @@ ms.date: 03/30/2022
 
 # Troubleshoot access, ingestion, and operation of your Azure Data Explorer cluster in your virtual network
 
+> [!IMPORTANT]
+> Consider moving to an Azure Private Endpoint based solution for implementing network security with Azure Data Explorer. It is less error-prone and provides [feature parity](security-network-overview.md#comparison-and-recommendation).
+
 In this section you learn how to troubleshoot connectivity, operational, and cluster creation issues for a cluster that is deployed into your [Virtual Network](/azure/virtual-network/virtual-networks-overview).
 
 ## Access issues
@@ -153,3 +156,7 @@ If the cluster's subnet is configured to force tunnel all internet-bound traffic
 ### Check firewall rules
 
 If you force tunnel subnet outbound traffic to a firewall, make sure all dependencies FQDN (for example, *.blob.core.windows.net*) are allowed in the firewall configuration as described in [securing outbound traffic with firewall](vnet-deployment.md#securing-outbound-traffic-with-a-firewall).
+
+## Cluster suspension issues
+
+If the cluster fails to suspend, confirm that there aren't any locks on the networking resources in your subscription.

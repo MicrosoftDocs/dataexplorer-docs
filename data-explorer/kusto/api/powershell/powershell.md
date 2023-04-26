@@ -1,18 +1,18 @@
 ---
 title: Kusto .NET Client Libraries from PowerShell - Azure Data Explorer
-description: This article describes Using the .NET Client Libraries from PowerShell in Azure Data Explorer.
+description: This article describes how to use Kusto .NET Client Libraries from PowerShell in Azure Data Explorer.
 ms.reviewer: salevy
 ms.topic: reference
-ms.date: 08/02/2022
+ms.date: 04/19/2023
 ---
-# Using the .NET client libraries from PowerShell
+# Use Kusto .NET client libraries from PowerShell
 
-PowerShell scripts can use Azure Data Explorer .NET client libraries through
+PowerShell scripts can use Kusto .NET client libraries through
 PowerShell's built-in integration with arbitrary (non-PowerShell) .NET libraries.
 
 ## Getting the .NET client libraries for scripting with PowerShell
 
-To start working with the Azure Data Explorer .NET client libraries using PowerShell.
+To start working with the Kusto .NET client libraries using PowerShell.
 
 1. Download the [`Microsoft.Azure.Kusto.Tools` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
 1. Extract the contents of the 'tools' directory in the package using an archiving tool. For example, `7-zip`.
@@ -25,7 +25,7 @@ To start working with the Azure Data Explorer .NET client libraries using PowerS
    1. Instantiate a *query provider* or an *admin provider*.
    1. Run the queries or commands, as shown in the [examples](powershell.md#examples) below.
 
-For more information, see the [Azure Data Explorer client libraries](../netfx/about-kusto-data.md).
+For more information, see the [Kusto client libraries](../netfx/about-kusto-data.md).
 
 ## Examples
 
@@ -86,7 +86,7 @@ IsHealthy = True
 
 ```powershell
 $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvider($kcsb)
-$query = "StormEvents | limit 5"
+$query = "StormEvents | take 5"
 Write-Host "Executing query: '$query' with connection string: '$($kcsb.ToString())'"
 #   Optional: set a client request ID and set a client request property (e.g. Server Timeout)
 $crp = New-Object Kusto.Data.Common.ClientRequestProperties

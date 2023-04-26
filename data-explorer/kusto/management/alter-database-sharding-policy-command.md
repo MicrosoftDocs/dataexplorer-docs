@@ -1,24 +1,30 @@
 ---
-title: ".alter database sharding policy command - Azure Data Explorer"
-description: "This article describes the .alter database sharding policy command in Azure Data Explorer."
+title: .alter database sharding policy command - Azure Data Explorer
+description: Learn how to use the .alter database sharding policy command to change the database's sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/29/2022
+ms.date: 04/20/2023
 ---
 # .alter database sharding policy
 
-Change the database sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
+Changes the database sharding policy. The [sharding policy](../management/shardingpolicy.md) is used to manage data sharding for databases and tables by defining if and how [extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster should be sealed.
 
-The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster should be sealed. When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
+When a database is created, it contains the default data sharding policy. All tables created in the database inherit this policy unless the policy is explicitly overridden at the table level.
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter` `database` *DatabaseName* `policy` `sharding` *PolicyObject*
 
-## Arguments
+## Parameters
 
-- *DatabaseName* - Specify the name of the database.
-- *PolicyObject* - Define a policy object. For more information, see the [sharding policy](../management/shardingpolicy.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database for which to alter the sharding policy.|
+|*PolicyObject*|string|&check;|A policy object that defines the sharding policy. For more information, see the [sharding policy](../management/shardingpolicy.md).|
 
 ## Returns
 

@@ -3,12 +3,100 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 04/03/2023
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## March 2023
+
+**General**
+
+| Article title | Description |
+|--|--|
+|[Python plugin packages for Azure Data Explorer](python-package-reference.md)| New article. Lists the available Python packages in the Azure Data Explorer Python plugin.|
+|- [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink.md) </br> - [Ingest data with the Apache log4J 2 connector](apache-log4j2-connector.md)| New articles. Describe how to ingest data into Azure Data Explorer using the Serilog sink, and the Apache Log4j 2 connectors. |
+|[Manage Event Hubs data connections in your free Azure Data Explorer cluster](start-for-free-event-hubs.md)| New article. Describes how to manage Azure Event Hubs data connections in a free Azure Data Explorer cluster. |
+| [Manage language extensions in your Azure Data Explorer cluster](language-extensions.md) | Updated article. Steps added for changing the Python language extensions image in an Azure Data Explorer cluster. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| [Manage view access to tables in Azure Data Explorer](kusto/management/manage-table-view-access.md) | New article. Describes how to grant access to tables in Azure Data Explorer. |
+|- [Materialized views](kusto/management/materialized-views/materialized-view-overview.md) </br> - [.show materialized-view(s)](kusto/management/materialized-views/materialized-view-show-command.md) </br> - [.show materialized-view extents](kusto/management/materialized-views/materialized-view-show-extents-command.md) </br> - [.show materialized-view failures](kusto/management/materialized-views/materialized-view-show-failures-command.md) </br> - [.show materialized-view schema](kusto/management/materialized-views/materialized-view-show-schema-command.md) </br> - [.alter materialized-view autoUpdateSchema](kusto/management/materialized-views/materialized-view-alter-autoupdateschema.md) </br> - [.alter materialized-view docstring](kusto/management/materialized-views/materialized-view-alter-docstring.md) </br> - [.alter materialized-view folder](kusto/management/materialized-views/materialized-view-alter-folder.md) </br> - [.alter materialized-view lookback](kusto/management/materialized-views/materialized-view-alter-lookback.md) </br> - [.alter materialized-view](kusto/management/materialized-views/materialized-view-alter.md) </br> - [.clear materialized-view data](kusto/management/materialized-views/materialized-view-clear-data.md) </br> - [.create-or-alter materialized-view](kusto/management/materialized-views/materialized-view-create-or-alter.md) </br> - [.create materialized-view](kusto/management/materialized-views/materialized-view-create.md) </br> - [.drop materialized-view](kusto/management/materialized-views/materialized-view-drop.md) </br> - [.disable .enable materialized-view](kusto/management/materialized-views/materialized-view-enable-disable.md) </br> - [.rename materialized-view](kusto/management/materialized-views/materialized-view-rename.md) </br> - [.show materialized view details](kusto/management/materialized-views/materialized-view-show-details-command.md) | New and updated articles. Describe materialized-view commands. Parameters and examples added.|
+|- [.alter extent tags](kusto/management/alter-extent.md) </br> - [.drop extent tags](kusto/management/drop-extent-tags.md) </br> - [.move extents](kusto/management/move-extents.md) </br> - [.replace extents](kusto/management/replace-extents.md) </br> | Updated articles. Command syntax updated.|
+
+**Query**
+
+| Article title | Description |
+|--|--|
+|- [Kusto.Explorer code features](kusto/tools/kusto-explorer-code-features.md) </br> - [Kusto Explorer options](kusto/tools/kusto-explorer-options.md) </br> - [Kusto.Explorer keyboard shortcuts (hot-keys)](kusto/tools/kusto-explorer-shortcuts.md) </br> - [Using Kusto.Explorer](kusto/tools/kusto-explorer-using.md) </br> - [Kusto.Explorer installation and user interface](kusto/tools/kusto-explorer.md) | Updated articles. Refreshed content.|
+
+## February 2023
+
+**API**
+
+| Article title | Description |
+|--|--|
+| [Authentication over HTTPS](kusto/api/rest/authentication.md)| Updated article.  REST API authorization examples added. |
+
+**General**
+
+| Article title | Description |
+|--|--|
+|[Manage Azure Data Explorer cluster locks to prevent accidental deletion in your cluster](manage-cluster-locks.md)| New article. Describes how to manage cluster locks to prevent accidental deletion of data using the Azure portal.|
+|[Connect from common apps](connect-common-apps.md) | New article. Describes how to connect to Azure Data Explorer with SQL Server emulation from various apps.|
+|- [Connect to Azure Data Explorer with JDBC](connect-jdbc.md) </br> - [Connect to Azure Data Explorer with SQL Server emulation](sql-server-emulation-overview.md) </br> - [Connect to Azure Data Explorer with ODBC](connect-odbc.md) | New articles. Describes how to connect to Azure Data Explorer with different connection apps.|
+|[Azure Data Explorer as a linked server from SQL Server](linked-server.md)| New article. Describes how to connect Azure Data Explorer as a linked server from SQL Server.|
+|[Set timeout limits](set-timeout-limits.md)| New article. Describes how to set query timeout limits.|
+|[Data connectors overview](connector-overview.md)| New article. Describes available data connectors and their capabilities.|
+|- [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md) </br> - [Azure Data Explorer web UI results grid](web-results-grid.md) </br> - [Share queries from Azure Data Explorer web UI](web-share-queries.md) </br> - [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md) </br> - [Explore the samples gallery](web-ui-samples-query.md) | New articles. Describes how to use, query, visualize, and share queries in the Azure Data Explorer web UI.|
+|[Query data using T-SQL](t-sql.md)| Updated article. Support limitations added.|
+|[What is the ingestion wizard?](ingest-data-wizard.md) | Updated article. Management actions added.|
+
+## January 2023
+
+**General**
+
+| Article title | Description |
+|--|--|
+|- [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) </br> - [Referencing security principals](./kusto/management/access-control/referencing-security-principals.md) | Updated articles. Renewed and restructured referencing of security principals and identity providers.|
+
+**Functions library**
+
+| Article title | Description |
+|--|--|
+|- [plotly_anomaly_fl()](./kusto/functions-library/plotly-anomaly-fl.md) </br> - [plotly_scatter3d_fl()](./kusto/functions-library/plotly-scatter3d-fl.md) | New articles. Describes how to customize a plotly template. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+|- [.dup-next-failed-ingest](./kusto/management/dup-next-failed-ingest.md) <br/> - [.dup-next-ingest](./kusto/management/dup-next-ingest.md) | New articles. Describes how to troubleshoot data on demand. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [render operator](./kusto/query/renderoperator.md)<br />- [Anomaly chart](kusto/query/visualization-anomalychart.md) <br/> - [Area chart](kusto/query/visualization-areachart.md) <br/> - [Bar chart](kusto/query/visualization-barchart.md) <br/> - [Card](kusto/query/visualization-card.md) <br/> - [Column chart](kusto/query/visualization-columnchart.md) <br/> - [Ladder chart](kusto/query/visualization-ladderchart.md) <br/> - [Line chart](kusto/query/visualization-linechart.md) <br/> - [Pie chart](kusto/query/visualization-piechart.md) <br/> - [Pivot chart](kusto/query/visualization-pivotchart.md) <br/> - [Scatter chart](kusto/query/visualization-scatterchart.md) <br/> - [Stacked area chart](kusto/query/visualization-stackedareachart.md) <br/> - [Table](kusto/query/visualization-table.md) <br/> - [Time chart](kusto/query/visualization-timechart.md) <br/> - [Time pivot](kusto/query/visualization-timepivot.md) | Updated and new articles. Refreshed render overview and added topics describing each render visualization. |
+| [series_dot_product()](./kusto/query/series-dot-productfunction.md) | New article. Describes how to calculate the dot product of two numeric series.|
+| [hll_if() (aggregation function)](./kusto/query/hll-if-aggregation-function.md) | New article. Describes how to calculate the intermediate results of the `dcount()` function. |
+| [bag_set_key()](./kusto/query/bag-set-key-function.md) | New article. Describes how to set a given key to a given value in a dynamic property bag. |
+
+## December 2022
+
+**General**
+
+| Article title | Description |
+|--|--|
+|[Find an Azure Data Explorer partner](find-my-partner.md) | New article. Describes the Azure Data Explorer Find My Partner Program.|
+|[Manage Azure Data Explorer cluster permissions](manage-cluster-permissions.md)| New article. Describes how to manage role-based access controls for clusters.|
+|[Ingestion behavior of invalid data](ingest-invalid-data.md) | New article. Describes the possible outcomes of ingesting invalid data|
+|[Use data from Azure Data Explorer in Power BI](power-bi-data-connector.md)| New article. Describes how to use data from Azure Data Explorer in Power BI.|
+| - [Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)](ingest-data-cosmos-db-connection.md) <br/> - [Get latest versions of Azure Cosmos DB documents (Preview)](ingest-data-cosmos-db-queries.md) | New articles. Describes how to load data and get the latest versions of Azure Cosmos DB documents.|
+|[Configure a database using a Kusto Query Language script](database-script.md)| Updated article. Database scripts supports `.add` verb.|
 ## November 2022
 
 **Functions library**
@@ -66,7 +154,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [Use the ingestion wizard to ingest JSON data](ingestion-wizard-existing-table.md) <br />- [Web UI overview](web-ui-overview.md)|Updated articles. Added references to ingestion wizard and updated UI.|
+|- [Use the ingestion wizard to ingest JSON data](/azure/data-explorer/ingest-from-local-file) <br />- [Web UI overview](./web-query-data.md)|Updated articles. Added references to ingestion wizard and updated UI.|
 
 **Management**
 
@@ -106,8 +194,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [Ingest data from Azure Stream Analytics (Preview)](stream-analytics-connector.md) | New Article. Describes how to ingest (load) data from Azure Stream Analytics. |
-| [Azure Data Explorer web UI overview](web-ui-overview.md) | New Article. Describes the elements of web UI home page and the data analytics journey. |
-| [Explore the Azure Data Explorer web UI samples gallery](web-ui-samples-gallery.md) | New Article. Describes how to use the samples gallery in the web UI. |
+| [Azure Data Explorer web UI overview](./web-query-data.md) | New Article. Describes the elements of web UI home page and the data analytics journey. |
+| [Explore the Azure Data Explorer web UI samples gallery](./web-ui-samples-dashboards.md) | New Article. Describes how to use the samples gallery in the web UI. |
 | [Select a SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md) | Updated Article. New SKU list and refreshed content. |
 
 ## May 2022
@@ -132,73 +220,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 | [Streaming ingestion failures](kusto/management/streamingingestionfailures.md) | New article. Describes the command to show streaming ingestion failures. |
 | [Streaming ingestion statistics](kusto/management/streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |
-
-## March 2022
-
-| Article title | Description |
-|--|--|
-| [Create a free cluster](start-for-free-web-ui.md) | New article. Describes how to create a free cluster, ingest data, and run queries. |
-| - [Create an Event Grid data connection using C\#](data-connection-event-grid-csharp.md)<br />- [Create an Event Grid data connection using Python](data-connection-event-grid-python.md)<br />- [Create an Event Grid data connection using Azure Resource Manager template](data-connection-event-grid-resource-manager.md)<br />- [Create an Event Hubs data connection using C\#](data-connection-event-hub-csharp.md)<br />- [Create an Event Hubs data connection using Python](data-connection-event-hub-python.md)<br />- [Create an Event Hubs data connection using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)<br />- [Create an IoT Hub data connection using C\# (Preview)](data-connection-iot-hub-csharp.md)<br />- [Create an IoT Hub data connection using Python (Preview)](data-connection-iot-hub-python.md)<br />- [Create an IoT Hub data connection using Azure Resource Manager template](data-connection-iot-hub-resource-manager.md) | Updated articles. Added `databaseRouting` parameter and setting. |
-| - [Event Grid data connection](ingest-data-event-grid-overview.md)<br />- [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated articles. Added events routing setting. |
-| - [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)<br />- [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated articles. Added new Events Routing features including alternative databases and tables. |
-| - [IoT Hub data connection](ingest-data-iot-hub-overview.md)<br />- [Ingest data from IoT Hub into Azure Data Explorer](ingest-data-iot-hub.md) | Updated articles. Added new sections on target databases (multi-database data connection). |
-
-**Functions library**
-
-| Article title | Description |
-|--|--|
-| [pairwise_dist_fl()](kusto/functions-library/pairwise-dist-fl.md) | New article. Describes the `pairwise_dist_fl()` user-defined function. |
-| [series_uv_anomalies_fl()](kusto/functions-library/series-uv-anomalies-fl.md) | New article. Describes the `series_uv_anomalies_fl()` user-defined function. |
-| [series_uv_change_points_fl()](kusto/functions-library/series-uv-change-points-fl.md) | New article. Describes the `series_uv_change_points_fl()` user-defined function. |
-
-**Management**
-
-| Article title | Description |
-|--|--|
-| [Clear schema cache for cross-cluster queries](kusto/management/clear-cross-cluster-schema-cache.md) | New article. Describes how to manually clear the cross-cluster query cache. |
-
-**Query**
-
-| Article title | Description |
-|--|--|
-| [http_request plugin / http_request_post plugin](kusto/query/http-request-plugin.md) | New article. Describes the http_request plugin. |
-| [Cross-database and cross-cluster queries](kusto/query/cross-cluster-or-database-queries.md) | Updated article. Updated links to cross-cluster queries and schema changes page. |
-| [Cross-cluster queries and schema changes](kusto/concepts/cross-cluster-and-schema-changes.md) | New article. Describes cross-cluster queries and schema changes. |
-
-## February 2022
-
-| Article title | Description |
-|--|--|
-| [What is a free cluster?](start-for-free.md) | New article. Describes how to get started with a free Azure Data Explorer cluster. |
-| [Cross-tenant data connection](ingest-data-cross-tenant.md) | New article. Describes how to create cross-tenant data connections for Azure Event Hubs or Azure Event Grid services in a different tenant. |
-| [Automated provisioning](automated-deploy-overview.md) | New article. Maps different articles for automating the provisioning of clusters. |
-
-**Functions library**
-
-| Article title | Description |
-|--|--|
-| [series_lag_fl()](kusto/functions-library/series-lag-fl.md) | New article. Describes the `series_lag_fl()` user-defined function. |
-
-## January 2022
-
-| Article title | Description |
-|--|--|
-| [Use the sample app generator to create code to ingest and query your data](sample-app-generator-wizard.md) | New Article. Describes how to use the sample app generator for your preferred programming language. |
-
-**API**
-
-| Article title | Description |
-|--|--|
-| [Azure Data Explorer API overview](kusto/api/index.md) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.
-
-## December 2021
-
-| Article title | Description |
-|--|--|
-| [Use parameters in dashboards](dashboard-parameters.md) | Updated article. Added new section for cross-filters as dashboard parameters. |
-
-**Functions library**
-
-| Article title | Description |
-|--|--|
-| [time_window_rolling_avg_fl()](kusto/functions-library/time-window-rolling-avg-fl.md) | New Article. Describes the function that calculates the rolling average of a metric over a constant duration time window. |

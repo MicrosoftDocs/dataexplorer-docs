@@ -1,14 +1,14 @@
 ---
-title: 'Ingest data with Azure Data Explorer .NET SDK'
+title: 'Ingest data with Kusto .NET SDK'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using .NET SDK.
 ms.reviewer: vladikb
 ms.topic: how-to
-ms.date: 09/07/2022
+ms.date: 04/19/2023
 
 # Customer intent: As a .NET SDK developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
 
-# Ingest data using the Azure Data Explorer .NET SDK 
+# Ingest data using the Kusto .NET SDK
 
 > [!div class="op_single_selector"]
 > * [.NET](net-sdk-ingest-data.md)
@@ -17,13 +17,13 @@ ms.date: 09/07/2022
 > * [Go](go-ingest-data.md)
 > * [Java](java-ingest-data.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides two client libraries for .NET: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) and [a data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). For more information on .NET SDK, see [about .NET SDK](./kusto/api/netfx/about-the-sdk.md).
+There are two client libraries for .NET: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) and [a data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). For more information on .NET SDK, see [about .NET SDK](./kusto/api/netfx/about-the-sdk.md).
 These libraries enable you to ingest (load) data into a cluster and query data from your code. In this article, you first create a table and data mapping in a test cluster. You then queue an ingestion to the cluster and validate the results.
 
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md).
+* A cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 
 ## Install the ingest library
 
@@ -35,7 +35,7 @@ Install-Package Microsoft.Azure.Kusto.Ingest
 
 ### Authentication
 
-To authenticate an application, Azure Data Explorer SDK uses your AAD tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
+To authenticate an application, the SDK uses your AAD tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
 
 ```http
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
@@ -51,14 +51,14 @@ The tenant ID in this case is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`.
 
 This example uses an interactive AAD user authentication to access the cluster. You can also use AAD application authentication with certificate or application secret. Make sure to set the correct values for `tenantId` and `clusterUri` before running this code. 
 
-Azure Data Explorer SDK provides a convenient way to set up the authentication method as part of the connection string. For complete documentation on Azure Data Explorer connection strings, see [connection strings](kusto/api/connection-strings/kusto.md).
+The SDK provides a convenient way to set up the authentication method as part of the connection string. For complete documentation on connection strings, see [connection strings](kusto/api/connection-strings/kusto.md).
 
 > [!NOTE]
 > The current version of the SDK doesn't support interactive user authentication on .NET Core. If required, use AAD username/password or application authentication instead.
 
 ### Construct the connection string
 
-Now you can construct the Azure Data Explorer connection string. You'll create the destination table and mapping in a later step.
+Now you can construct the connection string. You'll create the destination table and mapping in a later step.
 
 ```csharp
 var tenantId = "<TenantId>";
@@ -215,7 +215,7 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
 
 ## Validate data was ingested into the table
 
-Wait five to ten minutes for the queued ingestion to schedule the ingestion and load the data into Azure Data Explorer. Then run the following code to get the count of records in the `StormEvents` table.
+Wait five to ten minutes for the queued ingestion to schedule the ingestion and load the data into your cluster. Then run the following code to get the count of records in the `StormEvents` table.
 
 ```csharp
 using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder))
@@ -254,4 +254,4 @@ If you plan to follow our other articles, keep the resources you created. If not
 
 ## Next steps
 
-* [Write queries](write-queries.md)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

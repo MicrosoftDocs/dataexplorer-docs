@@ -1,33 +1,38 @@
 ---
-title: ".alter ingestion mapping - Azure Data Explorer"
-description: "This article describes .alter ingestion mapping in Azure Data Explorer."
+title: .alter ingestion mapping - Azure Data Explorer
+description: Learn how to use the .alter ingestion mapping command to alter a table or database's existing ingestion mapping 
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/29/2022
+ms.date: 04/20/2023
 ---
 # .alter ingestion mapping
 
 Alters an existing ingestion mapping that is associated with a specific table/database and a specific format (full mapping replace).
 
-**Syntax**
+## Permissions
+
+The command to alter database ingestion mapping requires at least [Database Ingestor](access-control/role-based-access-control.md) permissions, and the command to alter table ingestion mapping requires at least [Table Ingestor](access-control/role-based-access-control.md) permissions.
+
+## Syntax
 
 `.alter` `table` *TableName* `ingestion` *MappingKind* `mapping` *MappingName* *ArrayOfMappingObjects*
 
 `.alter` `database` *DatabaseName* `ingestion` *MappingKind* `mapping` *MappingName* *ArrayOfMappingObjects*
 
 > [!NOTE]
-> * This mapping can be referenced by its name by ingestion commands, instead of specifying the complete mapping as part of the command.
-> * Valid values for _MappingKind_ are: `CSV`, `JSON`, `avro`, `parquet`, and `orc`.
+> This mapping can be referenced by its name by ingestion commands, instead of specifying the complete mapping as part of the command.
 
-## Arguments
+## Parameters
 
-* *TableName* - Specify the name of the table.
-* *DatabaseName* - Specify the name of the database.
-* *MappingKind* - Specify the type of mapping.
-* *MappingName* - Specify the name of the mapping.
-* *ArrayOfMappingObjects* - An array with one or more mapping objects defined.
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *TableName* | string | &check; | The name of the table.|
+| *DatabaseName* | string | &check; | The name of the database.|
+| *MappingKind* | string | &check; | The type of mapping. Valid values are `CSV`, `JSON`, `avro`, `parquet`, and `orc`.|
+| *MappingName* | string | &check; | The name of the mapping.|
+| *ArrayOfMappingObjects* | string | &check; | A serialized array with one or more mapping objects defined.|
 
-**Example** 
+## Examples
  
 ````kusto
 .alter table MyTable ingestion csv mapping "Mapping1"
@@ -41,8 +46,8 @@ Alters an existing ingestion mapping that is associated with a specific table/da
 .alter table MyTable ingestion json mapping "Mapping1"
 ```
 [
-    { "column" : "rownumber", "Properties":{"Path":"$.rownumber"}},
-    { "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}
+    { "column" : "rownumber", "DataType" : "int", "Properties":{"Path":"$.rownumber"}},
+    { "column" : "rowguid", "DataType":"string", "Properties":{"Path":"$.rowguid"}}
 ]
 ```
 
@@ -55,7 +60,7 @@ Alters an existing ingestion mapping that is associated with a specific table/da
 ```
 ````
 
-**Sample output**
+**Output**
 
 | Name     | Kind | Mapping                                                                                                                                                                          |
 |----------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

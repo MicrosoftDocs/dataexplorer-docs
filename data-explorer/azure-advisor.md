@@ -3,7 +3,7 @@ title: Use Azure Advisor recommendations to optimize your Azure Data Explorer cl
 description: This article describes Azure Advisor recommendations used to optimize your Azure Data Explorer cluster
 ms.reviewer: lizlotor
 ms.topic: how-to
-ms.date: 10/11/2021
+ms.date: 03/08/2023
 ---
 
 # Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster
@@ -62,7 +62,7 @@ Cost recommendations include:
 
 * [Unused running Azure Data Explorer cluster](#unused-running-azure-data-explorer-cluster)
 * [Unused stopped Azure Data Explorer cluster](#unused-stopped-azure-data-explorer-cluster)
-* [Correctly size Azure Data Explorer cluster to optimize cost](#correctly-size-azure-data-explorer-clusters-to-optimize-cost)
+* [Change Data Explorer clusters to a more cost effective and better performing SKU](#change-data-explorer-clusters-to-a-more-cost-effective-and-better-performing-sku)
 * [Reduce cache for Azure Data Explorer tables](#reduce-cache-for-azure-data-explorer-tables)
 * [Run a cleanup command to delete unused storage artifacts](#delete-unused-storage-artifacts)
 * [Enable Optimized autoscale](#enable-optimized-autoscale)
@@ -88,17 +88,18 @@ The recommendation is to delete the cluster to reduce cost.
 > Stopped clusters may still contain data. Before deleting the cluster, verify that the data is no longer needed. Once the cluster is deleted, the data will no longer be accessible.
 
 
-#### Correctly size Azure Data Explorer clusters to optimize cost
+#### Change Data Explorer clusters to a more cost effective and better performing SKU
 
-The recommendation **right-size Azure Data Explorer clusters for optimal cost** is given to a cluster whose size or VM SKU aren't cost-optimized. This recommendation is based on parameters such as its data capacity, CPU and ingestion utilization during the last week. You can reduce costs by resizing to the recommended cluster configuration using [scale-down](manage-cluster-vertical-scaling.md) and [scale-in](manage-cluster-horizontal-scaling.md).
+The recommendation **Change Data Explorer clusters to a more cost effective and better performing SKU** is given to a cluster whose cluster is operating under a non-optimal SKU. This updated SKU should reduce your costs and improve overall performance. We have calculated the required instance count that meets the cache requirements of your cluster, while ensuring that performance will not be negatively impacted. 
 
-It is recommended to use the [optimized autoscale configuration](manage-cluster-horizontal-scaling.md#optimized-autoscale). If you're using optimized autoscale and you see a size recommendation on your cluster, either your current VM SKU or the optimized autoscale minimum and maximum instance count boundaries aren't optimized. The recommended instance count should be included in your defined boundaries. For more information, see [VM SKUs](manage-cluster-choose-sku.md) and [pricing](https://azure.microsoft.com/pricing/details/data-explorer/).
+As part of the recommendation, we recommend enabling Optimized Autoscale if not yet enabled. Optimized Autoscale will perform a more in-depth analysis of the cluster's performance, and if needed, will further scale-in the cluster. This will result in additional cost reductions. The Optimized Autoscale recommendations include a Min and Max instance count recommendation. The Max value is set to the recommended SKU instance count. If the cluster has plans to organically grow, it is recommended to manually increase this Max number. If Optimized Autoscale is already configured on your cluster, in some cases the recommendation may suggest to increase the Max instance count. 
 
-> [!TIP]
-> The optimized autoscale configuration doesn’t change the instance count immediately. For immediate changes, use [manual scale](manage-cluster-horizontal-scaling.md#manual-scale) to reset the recommended instance count, and then enable the optimized autoscale for future optimization.
+The SKU recommendation takes into account the current zones definitions of a cluster and if the cluster supports zones will only recommend target SKUs that have a minimum of two zones. Adding more compute availability zones does not incur any additional costs.
 
-> [!IMPORTANT]
-> Due to new SKUs and logical improvements, it's possible that the recommendation won't be shown even if the current SKU is not optimized. 
+The advisor SKU recommendation is updated every few hours. The recommendation checks for capacity availability of the selected SKU in the region. However, it is important to note that capacity availability is dynamic and changes over time. 
+
+> [!NOTE]
+> The advisor SKU recommendation does not currently support clusters with VNET or managed private endpoint configurations.
 
 #### Reduce cache for Azure Data Explorer tables
 
@@ -107,7 +108,6 @@ The **reduce Azure Data Explorer table cache period for cluster cost optimizatio
 #### Delete unused storage artifacts
 
 The recommendation **delete unused storage artifacts** is given for a cluster that has unused storage artifacts left from maintenance and background operations on [data shards (extents)](kusto/management/extents-overview.md). Over time, internal extents merge operations can accumulate redundant and unused storage artifacts that remain beyond the data retention period. While this unreferenced data doesn’t negatively impact the performance, it can lead to more storage use than necessary.
-The recommended action is to run the [clean databases extentcontainers](kusto/management/clean-extent-containers.md#clean-databases-extentcontainers) command to detect and delete unused storage artifacts and reduce cost. 
 
 > [!IMPORTANT]
 > Data recoverability will be reset to the cleanup time and will not be available on data that was created before running the cleanup.
@@ -115,27 +115,15 @@ The recommended action is to run the [clean databases extentcontainers](kusto/ma
 #### Enable Optimized autoscale
 
 
-The recommendation **enable Optimized autoscale** is given when enabling [Optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale) would have reduced the instance count on a cluster. This recommendation is based on usage patterns, cache utilization, ingestion utilization, and CPU. To make sure you don't exceed your planned budget, add a maximum instance count when you enable Optimized autoscale.
+The recommendation **enable Optimized autoscale** is given when enabling [Optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option) would have reduced the instance count on a cluster. This recommendation is based on usage patterns, cache utilization, ingestion utilization, and CPU. To make sure you don't exceed your planned budget, add a maximum instance count when you enable Optimized autoscale.
 
 
 ### Performance recommendations
 
 The **Performance** recommendations help improve the performance of your Azure Data Explorer clusters. 
 Performance recommendations include the following: 
-* [Correctly size the Azure Data Explorer cluster to optimize performance](#correctly-size-azure-data-explorer-clusters-to-optimize-performance)
+* [Change Data Explorer clusters to a more cost effective and better performing SKU](#change-data-explorer-clusters-to-a-more-cost-effective-and-better-performing-sku)
 * [Update the cache policy for Azure Data Explorer tables](#update-cache-policy-for-azure-data-explorer-tables)
-
-#### Correctly size Azure Data Explorer clusters to optimize performance
-
-The recommendation **right-size Azure Data Explorer clusters for optimal performance** is given to a cluster whose size or VM SKU aren't performance-optimized. This recommendation is based on parameters such as its data capacity, and CPU and ingestion utilization during the last week. You can improve the performance by correctly sizing to the recommended cluster configuration using [scale-up](manage-cluster-vertical-scaling.md) and [scale-out](manage-cluster-horizontal-scaling.md).
-
-It's recommended to use the [optimized autoscale configuration](manage-cluster-horizontal-scaling.md#optimized-autoscale). If you use optimized autoscale and you see a size recommendation on your cluster, either your current VM SKU or the optimized autoscale minimum and maximum instance count boundaries aren't optimized. The recommended instance count should be included in your defined boundaries. For more information, see [VM SKUs](manage-cluster-choose-sku.md).
-
-> [!TIP]
-> The optimized autoscale configuration doesn’t change the instance count immediately. For instant changes, use [manual scale](manage-cluster-horizontal-scaling.md#manual-scale) to reset the recommended instance count, and then enable the optimized autoscale for future optimization.
-
-> [!IMPORTANT]
-> Due to new SKUs and logical improvements, it's possible that the recommendation won't be shown even if the current SKU is not optimized. 
 
 #### Update cache policy for Azure Data Explorer tables
 
@@ -155,6 +143,26 @@ You can think about the **Reduce table cache policy to match usage patterns** re
 
 * Tables with redundant cache policy –  which means that your table's actual query look-backs, or usage patterns, are lower than the configured cache policy. However, reducing the cache policy won’t result in an immediate cost saving, since the cluster is not data-bound. The cluster won’t scale in, even if you remove data from the hot cache.
 
+### Reliability recommendations
+
+The **Reliability recommendations** help you ensure and improve the continuity of your business-critical applications. 
+Reliability recommendations include the following:
+
+* [Cluster uses subnet without delegation](#cluster-uses-subnet-without-delegation)
+* [Cluster uses subnet with invalid IP configuration](#cluster-uses-subnet-with-invalid-ip-configuration)
+* [Cluster failed to install or resume due to virtual network issues](#cluster-failed-to-install-or-resume-due-to-virtual-network-issues)
+
+#### Cluster uses subnet without delegation
+
+The strong recommendation is given to a virtual network cluster that uses a subnet without delegation for 'Microsoft.Kusto/clusters'. When you delegate a subnet to a cluster, you allow that service to establish basic network configuration rules for the subnet, which helps the cluster operate its instances in a stable manner.
+
+#### Cluster uses subnet with invalid IP configuration
+
+The recommendation is given to a virtual network cluster where the subnet is also used by other services. The recommendation is to remove all other services from the subnet and only use it for your cluster.
+
+#### Cluster failed to install or resume due to virtual network issues
+
+The recommendation is given to a cluster that failed to install or resume due to virtual network issues. The recommendation is to use the [virtual network troubleshooting guide](vnet-deploy-troubleshoot.md) to resolve the issue.
 ## Next steps
 
 * [Manage cluster horizontal scaling (scale out) in Azure Data Explorer to accommodate changing demand](manage-cluster-horizontal-scaling.md)

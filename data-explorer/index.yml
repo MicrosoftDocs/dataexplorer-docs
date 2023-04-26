@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: shsagir
   ms.author: shsagir
-  ms.date: 11/13/2022
+  ms.date: 01/15/2023
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -39,7 +39,7 @@ landingContent:
       - linkListType: learn
         links:
           - text: "Free Pluralsight training: Azure Data Explorer"
-            url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer          
+            url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer
           - text: "Training module: Introduction to Azure Data Explorer"
             url:  /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
           - text: "Training module: Write your first query with Kusto Query Language"
@@ -52,6 +52,10 @@ landingContent:
             url: /training/modules/characterize-data-azure-data-explorer/
           - text: "Training module: Create dashboards in Azure Data Explorer"
             url: /training/modules/create-dashboards-azure-data-explorer/
+          - text: "Learning path: Data analysis in Azure Data Explorer with Kusto Query Language"
+            url: /training/paths/data-analysis-data-explorer-kusto-query-language/
+          - text: "Learning path: Create queries for Microsoft Sentinel using Kusto Query Language"
+            url: /training/paths/sc-200-utilize-kql-for-azure-sentinel/  
   # Card
   - title: Create cluster and database
     linkLists:
@@ -108,7 +112,7 @@ landingContent:
       - linkListType: tutorial
         links:
           - text: Write KQL queries
-            url: write-queries.md
+            url: /azure/data-explorer/kusto/query/tutorials/learn-common-operators
       - linkListType: how-to-guide
         links:
           - text: Query data in Azure Data Lake
@@ -116,7 +120,7 @@ landingContent:
           - text: Query data using Python
             url: python-query-data.md
           - text: Time series analysis
-            url: time-series-analysis.md
+            url: ./kusto/query/time-series-analysis.md
       - linkListType: reference
         links:
           - text: KQL quick reference
@@ -136,7 +140,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Power BI connector
-            url: power-bi-connector.md
+            url: power-bi-data-connector.md?tabs=connector
           - text: Grafana
             url: grafana.md
           - text: ODBC connector

@@ -38,19 +38,19 @@ Add a Log Analytics or Application Insights workspace to Azure Data Explorer cli
 
     :::image type="content" source="media/query-monitor-data/add-cluster.png" alt-text="Screenshot showing the add cluster window.":::
 
-  >[!NOTE]
->
->* There are different endpoints for the following:
->* Azure Government- `adx.monitor.azure.us/`
->* Azure China- `adx.monitor.azure.cn/`
->* If you add a connection to more than one Log Analytics/Application insights workspace, give each a different name. Otherwise they'll all have the same name in the left pane.
+    >[!NOTE]
+    >
+    >* There are different endpoints for the following:
+    >* Azure Government- `adx.monitor.azure.us/`
+    >* Azure China- `adx.monitor.azure.cn/`
+    >* If you add a connection to more than one Log Analytics/Application insights workspace, give each a different name. Otherwise they'll all have the same name in the left pane.
 
 1. After the connection is established, your Log Analytics or Application Insights workspace will appear in the left pane with your native Azure Data Explorer cluster.
 
     :::image type="content" source="media/query-monitor-data/la-adx-clusters.png" alt-text="Screenshot showing the Log Analytics and Azure Data Explorer clusters.":::
 
 > [!NOTE]
-> The number of Azure Monitor workspaces that can be mapped is limited to 100.
+> Queries you run from Azure Data Explorer on data in Azure Monitor are subject to [cross-resource query limits](/azure/azure-monitor/logs/cross-workspace-query#cross-resource-query-limits).
 
 ## Run queries
 
@@ -146,4 +146,4 @@ The following syntax options are available when calling the Application Insights
 
 ## Next steps
 
-[Write queries](write-queries.md)
+[Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

@@ -11,6 +11,13 @@ The following article contains a categorized list of [UDF (user-defined function
 
 The user-defined functions code is given in the articles.  It can be used within a let statement embedded in a query or can be persisted in a database using [`.create function`](../management/create-function.md).
 
+## General functions
+
+| Function Name | Description |
+|--|--|
+| [geoip_fl()](geoip-fl.md) | Retrieves geographic information of ip address. |
+| [get_packages_version_fl()](get-packages-version-fl.md) | Returns version information of the Python engine and the specified packages. |
+
 ## Machine learning functions
 
 | Function Name | Description |
@@ -18,6 +25,15 @@ The user-defined functions code is given in the articles.  It can be used within
 | [kmeans_fl()](kmeans-fl.md) | Clusterize using the k-means algorithm. |
 | [predict_fl()](predict-fl.md) | Predict using an existing trained machine learning model. |
 | [predict_onnx_fl()](predict-onnx-fl.md) | Predict using an existing trained machine learning model in ONNX format. |
+
+## Plotly functions
+
+The following section contains functions for rendering interactive [Plotly charts](https://plotly.com/python/).
+
+| Function Name | Description |
+|--|--|
+| [plotly_anomaly_fl()](plotly-anomaly-fl.md) | Render anomaly chart using a Plotly template. |
+| [plotly_scatter3d_fl()](plotly-scatter3d-fl.md) | Render 3D scatter chart using a Plotly template. |
 
 ## PromQL functions
 
@@ -66,6 +82,17 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [mann_whitney_u_test_fl()](mann-whitney-u-test-fl.md) | Perform a Mann-Whitney U Test. |
 | [pair_probabilities_fl()](pair-probabilities-fl.md) | Calculate various probabilities and related metrics for a pair of categorical variables. |
 |[pairwise_dist_fl()](pairwise-dist-fl.md)| Calculate pairwise distances between entities based on multiple nominal and numerical variables. |
+| [percentiles_linear_fl()](percentiles-linear-fl.md) | Calculate percentiles using linear interpolation between closest ranks |
 | [perm_fl()](perm-fl.md) | Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
 | [two_sample_t_test_fl()](two-sample-t-test-fl.md) | Perform the two sample t-test. |
 | [wilcoxon_test_fl()](wilcoxon-test-fl.md) | Perform the Wilcoxon Test. |
+
+## Text analytics
+
+| Function Name | Description |
+|--|--|
+| [log_reduce_fl()](log-reduce-fl.md) | Find common patterns in textual logs and output a summary table. |
+| [log_reduce_full_fl()](log-reduce-full-fl.md) | Find common patterns in textual logs and output a full table. |
+| [log_reduce_predict_fl()](log-reduce-predict-fl.md) | Apply a trained model to find common patterns in textual logs and output a summary table. |
+| [log_reduce_predict_full_fl()](log-reduce-predict-full-fl.md) | Apply a trained model to find common patterns in textual logs and output a full table. |
+| [log_reduce_train_fl()](log-reduce-train-fl.md) | Find common patterns in textual logs and output a model. |

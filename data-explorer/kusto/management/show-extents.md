@@ -3,7 +3,7 @@ title: .show extents - Azure Data Explorer
 description: This article describes the show extents command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/02/2020
+ms.date: 02/21/2023
 ---
 
 # .show extents
@@ -25,6 +25,14 @@ The types of `.show extents` commands are as follows:
 > is preferable over database-scope, and database-scope over cluster-scope. The
 > command variant that includes filtering extents is preferable to filtering the results
 > of the command using another query.
+
+## Permissions
+
+To see extents on the cluster, you must have AllDatabasesMonitor permissions.
+
+To see extents on a database, you must have Database User, Database Viewer, or Database Monitor permissions.
+
+For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Table scope
 

@@ -3,16 +3,19 @@ title: Continuous data export - Azure Data Explorer
 description: This article describes Continuous data export in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/03/2020
+ms.date: 03/29/2023
 ---
 # Continuous data export overview
 
 This article describes continuous export of data from Kusto to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). 
 
-To enable continuous data export, [create an external table](../external-tables-azurestorage-azuredatalake.md#create-or-alter-external-table) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table. 
+To enable continuous data export, [create an external table](../external-tables-azurestorage-azuredatalake.md) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table.
 
-> [!NOTE]
-> All continuous export commands require [database admin permissions](../access-control/role-based-authorization.md).
+In some cases, you must use a managed identity to successfully configure a continuous export job. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
+
+## Permissions
+
+All continuous export commands require at least [Database Admin](../access-control/role-based-access-control.md) permissions.
 
 ## Continuous export guidelines
 
@@ -21,9 +24,9 @@ To enable continuous data export, [create an external table](../external-tables-
 * **Frequency**:
   * Continuous export runs according to the time period configured for it in the `intervalBetweenRuns` property. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. The time interval can be as low as one minute, if the ingestion rate is high.
 
-> [!NOTE]
-> The `intervalBetweenRuns` serves as a recommendation only, and isn't guaranteed to be precise. Continuous export isn't suitable for exporting periodic aggregations.
-> For example, a configuration of `intervalBetweenRuns`=`1h` with an hourly aggregation (`T | summarize by bin(Timestamp, 1h)`) won't work as expected, since the continuous export won't run exactly on-the-hour. Therefore, each hourly bin will receive multiple entries in the exported data.
+    > [!NOTE]
+    > The `intervalBetweenRuns` serves as a recommendation only, and isn't guaranteed to be precise. Continuous export isn't suitable for exporting periodic aggregations.
+    > For example, a configuration of `intervalBetweenRuns`=`1h` with an hourly aggregation (`T | summarize by bin(Timestamp, 1h)`) won't work as expected, since the continuous export won't run exactly on-the-hour. Therefore, each hourly bin will receive multiple entries in the exported data.
 
 * **Number of files**:
   * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#number-of-files). Each continuous export iteration always writes to new files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs. The frequency parameter is `intervalBetweenRuns`.
@@ -92,12 +95,20 @@ Use the [`.show continuous export failures`](show-continuous-failures.md) comman
 * The [show commands-and-queries command](../commands-and-queries.md) can be used to estimate the resources consumption. 
   * Filter on `| where ClientActivityId startswith "RunContinuousExports"` to view the commands and queries associated with continuous export.
 
+## Continuous export from a table with Row Level Security
+
+To create a continuous export job with a query that references a table with [Row Level Security policy](../../management/rowlevelsecuritypolicy.md), you must:
+
+* Provide a managed identity as part of the continuous export configuration. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
+* Use [impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation) authentication for the external table to which the data is exported.
+
 ## Limitations
 
-* Continuous export can't be configured on a table with [row level security policy](../../management/rowlevelsecuritypolicy.md), or a table with [restricted view access policy](../restrictedviewaccesspolicy.md).
+* Continuous export can't be configured on a table with [restricted view access policy](../restrictedviewaccesspolicy.md).
 * Continuous export cannot be created on [follower databases](../../../follower.md) since follower databases are read-only and continuous export requires write operations.  
 * Continuous export will only work if records in source table are ingested to the table directly (either using one of the [ingestion methods](../../../ingest-data-overview.md#ingestion-methods-and-tools), using an [update policy](../updatepolicy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export may not process these records. See the limitations described in the [Database Cursors](../databasecursor.md#restrictions) page.
-* Continuous export doesn't support cross-database and cross-cluster calls.
+* Continuous export supports cross-database calls, only when configured with a managed identity.
+* Continuous export doesn't support cross-cluster calls.
 * Continuous export isn't designed to work over [materialized views](../materialized-views/materialized-view-overview.md), since a materialized view may be updated, while data exported to storage is always append only and never updated.
 * Continuous export isn't designed for low-latency streaming data out of Azure Data Explorer.
 * By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes in the cluster.

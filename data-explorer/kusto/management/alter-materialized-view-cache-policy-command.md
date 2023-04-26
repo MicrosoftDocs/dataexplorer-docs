@@ -1,24 +1,30 @@
 ---
-title: ".alter materialized view cache policy command - Azure Data Explorer"
-description: "This article describes the .alter materialized view cache policy command in Azure Data Explorer."
+title: .alter materialized view cache policy command - Azure Data Explorer
+description: Learn how to use the .alter materialized view cache policy command to change the materialized view's cache policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 01/06/2022
+ms.date: 04/20/2023
 ---
 # .alter materialized view cache policy
 
-Change the materialized view cache policy. To speed up queries on data, Azure Data Explorer caches it on its processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority.
+Changes the materialized view's cache policy. To speed up queries on data, Azure Data Explorer caches it on its processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter` `materialized view` *MaterializedViewName* `policy` `caching` *PolicyParameter*
+`.alter` `materialized view` *MaterializedViewName* `policy` `caching` *PolicyParameters*
 
-## Arguments
+## Parameters
 
-*MaterializedViewName* - Specify the name of the materialized view. 
-*PolicyParameter* - Define one or more policy parameters. For parameters, see [cache policy](cachepolicy.md). 
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;| The name of the materialized view.|
+|*PolicyParameters*|string|&check;|One or more policy parameters. For parameters, see [cache policy](cachepolicy.md).|
 
-## Example
+## Examples
 
 Set the caching policy to include the last 30 days.
 

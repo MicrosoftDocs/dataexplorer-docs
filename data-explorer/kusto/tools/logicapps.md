@@ -40,7 +40,7 @@ Logic App and :::no-loc text="Power Automate"::: are built on the same connector
 1. In the list of workflows, select your workflow.
 1. On the left menu, select **Designer**.
 1. Add a recurrence trigger, and under **Choose an operation**, search for **Azure Data Explorer**, and select then the **Azure** results tab.
-1. Select **Azure Data Explorer**, and then under **Actions** choose the action you want to use.
+1. Select **Azure Data Explorer**, and then under **Actions** choose the action you want to use. To learn more about each action, see [flow actions](../../flow.md#flow-actions).
 
     :::image type="content" source="images/logic-apps/logic-app-kusto-connector-inline.png" alt-text="Screenshot of the designer page, showing the Azure Data Explorer actions." lightbox="images/logic-apps/logic-app-kusto-connector.png":::
 

@@ -82,7 +82,7 @@ T1 | join T on ProductId | take 10
 
 ## Querying hierarchical data formats
 
-Azure Data Explorer allows querying hierarchical formats, such as `JSON`, `Parquet`, `Avro`, and `ORC`. To map hierarchical data schema to an external table schema (if it's different), use [external table mappings commands](kusto/management/external-tables-azurestorage-azuredatalake.md#create-external-table-mapping). For instance, if you want to query JSON log files with the following format:
+Azure Data Explorer allows querying hierarchical formats, such as `JSON`, `Parquet`, `Avro`, and `ORC`. To map hierarchical data schema to an external table schema (if it's different), use [external table mappings commands](kusto/management/external-table-mapping-create.md). For instance, if you want to query JSON log files with the following format:
 
 ```JSON
 {
@@ -270,4 +270,4 @@ Select VM SKUs with more cores and higher network throughput (memory is less imp
 
 ## Next steps
 
-* Query your data in the Azure Data Lake using Azure Data Explorer. Learn to [write queries](write-queries.md) and derive more insights from your data.
+* Query your data in the Azure Data Lake using Azure Data Explorer. Learn to [write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) and derive more insights from your data.

@@ -1,17 +1,19 @@
 ---
-title: ".alter database ingestion batching policy command - Azure Data Explorer"
-description: "This article describes the .alter database ingestion batching policy command in Azure Data Explorer."
+title: .alter database ingestion batching policy command - Azure Data Explorer
+description: Learn how to use the .alter database ingestion batching policy command to set the ingestion batching policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/27/2022
+ms.date: 04/20/2023
 ---
 # .alter database ingestion batching policy
 
-Set the [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested.
+Sets the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy determines when data aggregation stops and a batch is sealed and ingested.
 
 When setting the policy for a database, it applies for all its tables, except tables that were set with their own IngestionBatching policy. If the policy isn't set for a database, the [default values](batchingpolicy.md#defaults-and-limits) apply.
 
-[!INCLUDE [batching-policy-permissions](../../includes/batching-policy-permissions.md)]
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Defaults and limits
 
@@ -21,10 +23,12 @@ See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
 `.alter` `database` *DatabaseName* `policy` `ingestionbatching` *PolicyObject*
 
-## Arguments
+## Parameters
 
-- *DatabaseName* - Specify the name of the database.
-- *PolicyObject* - Define a policy object. For more information, see [ingestion batching policy](batchingpolicy.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database for which to alter the ingestion batching policy.|
+|*PolicyObject*|string|&check;|A policy object that defines the ingestion batching policy. For more information, see [ingestion batching policy](batchingpolicy.md).|
 
 ## Example
 

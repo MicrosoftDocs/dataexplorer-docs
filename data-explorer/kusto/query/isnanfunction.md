@@ -1,33 +1,32 @@
 ---
 title: isnan() - Azure Data Explorer
-description: This article describes isnan() in Azure Data Explorer.
+description: Learn how to use the isnan() function to check if the input is a not-a-number (NaN) value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/03/2023
 ---
 # isnan()
 
-Returns whether input is Not-a-Number (NaN) value.  
+Returns whether the input is a Not-a-Number (NaN) value.  
 
 ## Syntax
 
-`isnan(`*x*`)`
+`isnan(`*number*`)`
 
-## Arguments
+## Parameters
 
-* *x*: A real number.
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+|*number*|scalar|&check;| The value to check if NaN.|
 
 ## Returns
 
-A non-zero value (true) if x is NaN; and zero (false) otherwise.
-
-## See also
-
-* For checking if value is null, see [isnull()](isnullfunction.md).
-* For checking if value is finite, see [isfinite()](isfinitefunction.md).
-* For checking if value is infinite, see [isinf()](isinffunction.md).
+`true` if x is NaN and `false` otherwise.
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1XQNVQoyVcwVCguSS1QMOTlqlFIrShJzUtRqFSwVdDQNdSq0FRAEk3JLAOKG+oZaFXoVyKJZxbnJebZgkkNoBpNAG+vyvhkAAAA" target="_blank">Run the query</a>
 
 ```kusto
 range x from -1 to 1 step 1
@@ -36,8 +35,16 @@ range x from -1 to 1 step 1
 | extend isnan=isnan(div)
 ```
 
+**Output**
+
 |x|y|div|isnan|
 |---|---|---|---|
-|-1|1|-1|0|
-|0|0|NaN|1|
-|1|-1|-1|0|
+|-1|1|-1|false|
+|0|0|NaN|true|
+|1|-1|-1|false|
+
+## See also
+
+* To check if a value is null, see [isnull()](isnullfunction.md).
+* To check if a value is finite, see [isfinite()](isfinitefunction.md).
+* To check if a value is infinite, see [isinf()](isinffunction.md).

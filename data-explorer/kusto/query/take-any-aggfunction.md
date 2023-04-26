@@ -1,9 +1,9 @@
 ---
 title: take_any() (aggregation function) - Azure Data Explorer
-description: This article describes take_any() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the take_any() (aggregation function) to return the value of an arbitrarily selected record.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/09/2022
+ms.date: 02/20/2023
 ---
 # take_any() (aggregation function)
 
@@ -17,14 +17,15 @@ and returns the value of one or more expressions over each such record.
 
 ## Syntax
 
-`take_any` `(` (*Expr* [`,` *Expr2* ...]) | *\** `)`
+`take_any(`*expr_1* [`,` *expr_2* ...]`)`
 
-## Arguments
+`take_any(`*`)`
+
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr* | string | &check; | Expression used for selecting a record. |
-| *Expr2* | string |  | Additional expressions. |
+| *expr_N* | string | &check; | The expression used for selecting a record. If the wildcard value (`*`) is given in place of an expression, all records will be selected.|
 
 ## Returns
 
@@ -52,12 +53,15 @@ over a single record (per distinct group).
 
 Show indeterministic State:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUoScxOjU/Mq9QILkksSdUEALgBS0YoAAAA)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUoScxOjU/Mq9QILkksSdUEALgBS0YoAAAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
 | summarize take_any(State)
 ```
+
+**Output**
 
 |State|
 |---|
@@ -65,7 +69,8 @@ StormEvents
 
 Show all the details for a random record:
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSgoys9KTS5RCC5JLCoJycxN1VFwLcgszk9J9UzRAYmWgERAykMqC1JBOopLc3MTizKrUhVKErNT4xPzKjW0NAGzMGIFVgAAAA==)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSgoys9KTS5RCC5JLCoJycxN1VFwLcgszk9J9UzRAYmWgERAykMqC1JBOopLc3MTizKrUhVKErNT4xPzKjW0NAGzMGIFVgAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -73,13 +78,16 @@ StormEvents
 | summarize take_any(*)
 ```
 
+**Output**
+
 |StartTime|EpisodeId|State|EventType|
 |---|---|---|---|
 |2007-09-29 08:11:00.0000000|11091|ATLANTIC SOUTH|Waterspout|
 
 Show all the details of a random record for each State starting with 'A':
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAyWMMQ7CMBAEeyT+cEoFKJ+gSEGd9OggK8Ugx9bdQmTE4xMr7c7O9EwWuy9m+vHwl2WCQXoqIU41+hI4SXNtKs2WXniycuMQIlrpcvA04ja2u7UtNTaUjGr4J0a18INQ37jrXE6XszzKfl4BiZpjAH0AAAA=)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAyWMMQ7CMBAEeyT+cEoFKJ+gSEGd9OggK8Ugx9bdQmTE4xMr7c7O9EwWuy9m+vHwl2WCQXoqIU41+hI4SXNtKs2WXniycuMQIlrpcvA04ja2u7UtNTaUjGr4J0a18INQ37jrXE6XszzKfl4BiZpjAH0AAAA=" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -87,6 +95,8 @@ StormEvents
 | project StartTime, EpisodeId, State, EventType
 | summarize take_any(*) by State
 ```
+
+**Output**
 
 |State|StartTime|EpisodeId|EventType|
 |---|---|---|---|

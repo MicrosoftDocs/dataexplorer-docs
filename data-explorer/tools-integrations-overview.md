@@ -3,7 +3,7 @@ title: Azure Data Explorer tools and integrations overview - Azure Data Explorer
 description: This article describes tools and integrations in Azure Data Explorer.
 ms.reviewer: olgolden
 ms.topic: conceptual
-ms.date: 09/11/2022
+ms.date: 02/19/2023
 ---
 # Azure Data Explorer tools and integrations overview
 
@@ -17,25 +17,13 @@ This article supplies you with a list of Azure Data Explorer tools, connectors, 
 
 Data ingestion is the process used to load data records from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for query. Azure Data Explorer provides several tools and connectors for data ingestion.
 
+For a complete list of ingestion connectors, see [Data connectors Overview](connector-overview.md).
+
 ### Azure Data Explorer ingestion tools
 
 * [LightIngest](lightingest.md) - Help utility for ad-hoc data ingesting into Azure Data Explorer
-* Ingestion wizard: [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](./ingestion-wizard-new-table.md)
-or [from a local file to an existing table](./ingestion-wizard-existing-table.md)
-
-### Ingestion integrations
-
-* Event hub: [Ingest from event hub overview](ingest-data-event-hub-overview.md) and using the [Azure portal](ingest-data-event-hub.md), [C#](data-connection-event-hub-csharp.md), [Python](data-connection-event-hub-python.md) or [Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
-* Event Grid: [Ingest from Event Grid overview](ingest-data-event-grid-overview.md) and using the [Azure portal](ingest-data-event-grid.md), [C#](data-connection-event-grid-csharp.md), [Python](data-connection-event-grid-python.md) or [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
-* IoT Hub: [Ingest from IoT Hub overview](ingest-data-iot-hub-overview.md) and using the [Azure portal](ingest-data-iot-hub.md), [C#](data-connection-iot-hub-csharp.md), [Python](data-connection-iot-hub-python.md) or [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md)
-* [Logstash](ingest-data-logstash.md)
-* Azure Data Factory: [integration overview](data-factory-integration.md), [copy data](data-factory-load-data.md), [Copy in bulk using the Azure Data Factory template](data-factory-template.md), and [run Azure Data Explorer control commands using Azure Data Factory command activity](data-factory-command-activity.md)
-* [Azure Synapse Apache Spark](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
-* [Apache Spark](spark-connector.md)
-* [Apache Kafka](ingest-data-kafka.md)
-* [Telegraf](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer)
-* [Azure Cosmos DB](https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration)
-* [Power Automate](flow.md)
+* Ingestion wizard: [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
+or [from a local file to an existing table](/azure/data-explorer/ingest-from-local-file)
 
 ## Query data
 
@@ -46,7 +34,7 @@ There are several tools available for running queries in Azure Data Explorer.
 * [Azure Data Explorer web UI](web-query-data.md)
 * Kusto.Explorer
   * [installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
-  * Additional topics include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code refactoring](kusto/tools/kusto-explorer-refactor.md), [code navigation](kusto/tools/kusto-explorer-codenav.md), and [code analyze](kusto/tools/kusto-explorer-code-analyzer.md)
+  * Additional topics include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code features](kusto/tools/kusto-explorer-code-features.md)
 * [Kusto CLI](kusto/tools/kusto-cli.md)
 
 ### Query open source repositories

@@ -3,23 +3,26 @@ title: Show encoding policy - Azure Data Explorer
 description: This article describes the `.show encoding policy` command in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/28/2022
+ms.date: 03/09/2023
 ---
 # .show encoding policy
 
 Shows the encoding policy. For an overview of the encoding policy, see [Encoding policy](encoding-policy.md).
-This command requires [database monitor](access-control/role-based-authorization.md) permission.
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 
 `.show` *EntityType* *EntityIdentifier* `policy` `encoding`
 
-## Arguments
+## Parameters
 
-Name | Description | Values
----|---|---
-| *EntityType*| This field determines the type of *EntityIdentifier* |`database` or `table` or `column`
-|*EntityIdentifier* | The identifier for the entity. | Column references must include the table name scope. A wildcard `*` is allowed |
+|Name | Type | Required | Description |
+|--|--|--|--|
+| *EntityType* | string | &check; | This field determines the type of *EntityIdentifier*. The possible values are `database` or `table` or `column`.|
+| *EntityIdentifier* | string | &check; | The identifier for the entity. Column references must include the table name scope. A wildcard `*` to denote all entities for the given *EntityType* is allowed. |
 
 ## Example
 

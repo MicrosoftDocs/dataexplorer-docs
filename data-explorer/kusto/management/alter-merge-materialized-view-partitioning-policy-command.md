@@ -1,24 +1,30 @@
 ---
 title: .alter-merge materialized view partitioning policy command- Azure Data Explorer
-description: This article describes the .alter-merge materialized view partitioning policy command in Azure Data Explorer.
+description: Learn how to use the .alter-merge materialized view partitioning policy command to create the materialized view's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 11/29/2021
+ms.date: 04/20/2023
 ---
 # .alter-merge materialized view partitioning policy
 
-Change a materialized view [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md). The command requires [DatabaseAdmin](access-control/role-based-authorization.md) permissions.
+Creates the materialized view's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter-merge` `materialized-view` *MaterializedViewName* `policy` `partitioning` *ArrayOfPolicyObjects*
+`.alter-merge` `materialized-view` *MaterializedViewName* `policy` `partitioning` *PolicyObject*
 
-## Arguments
+## Parameters
 
-*MaterializedViewName* - Specify the name of the materialized view. 
-*ArrayOfPolicyObjects* - An array with one or more JSON policy objects.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view.|
+|*PolicyObject*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [partitioning policy](partitioningpolicy.md).|
 
-### Example
+## Example
 
 Change the policy at the materialized view level:
 

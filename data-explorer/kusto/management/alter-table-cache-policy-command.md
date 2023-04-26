@@ -1,25 +1,31 @@
 ---
-title: ".alter table cache policy command - Azure Data Explorer"
-description: "This article describes the .alter table cache policy command in Azure Data Explorer."
+title: .alter table cache policy command - Azure Data Explorer
+description: Learn how to use the .alter table cache policy command to change the table's cache policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 01/13/2022
+ms.date: 04/20/2023
 ---
 # .alter table cache policy
 
-Change the table cache policy. To speed up queries, Azure Data Explorer caches data on its processing nodes, in SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe data so that important data can take priority.
+Change's the table's cache policy. To speed up queries, Azure Data Explorer caches data on its processing nodes, in SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe data so that important data can take priority.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `caching` *PolicyParameters* 
+`.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `caching` *PolicyParameters*
 
-## Arguments
+## Parameters
 
-- *DatabaseName* - Specify the name of the database.
-- *TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
-- *PolicyParameters* - Define policy parameters, see also [cache policy](cachepolicy.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *DatabaseName* | string | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required.|
+| *TableName* | string | &check; | The name of the table. Use without *DatabaseName* when running in the required database's context.|
+| *PolicyParameters* | string | &check; | The policy parameters to set. See [cache policy](cachepolicy.md).|
 
-## Example
+## Examples
 
 ### Set cache policy of a table
 

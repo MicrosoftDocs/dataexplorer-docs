@@ -93,9 +93,9 @@ The following SKU series are available for Azure Data Explorer cluster VMs. The 
 
 | SKU Series | Available vCPU config | SKU type | Supports premium storage |
 |--|--|--|--|
-| [Lasv3](/azure/virtual-machines/lasv3-series) | 8, 16 | AMD | No |
-| [Lsv3](/azure/virtual-machines/lsv3-series) | 8, 16 | Intel | No |
-|  [Easv4](/azure/virtual-machines/eav4-easv4-series), [Easv5](/azure/virtual-machines/easv5-eadsv5-series) | 8, 16 | AMD | Yes |
+| [Lasv3](/azure/virtual-machines/lasv3-series) | 8, 16 , 32| AMD | No |
+| [Lsv3](/azure/virtual-machines/lsv3-series) | 8, 16 , 32| Intel | No |
+|  [Easv4](/azure/virtual-machines/eav4-easv4-series), [Easv5](/azure/virtual-machines/easv5-eadsv5-series), ECasv5| 8, 16 | AMD | Yes |
 | [Esv4](/azure/virtual-machines/ev4-esv4-series), [Esv5](/azure/virtual-machines/ev5-esv5-series) | 8, 16 | Intel | Yes |
 | [DSv2](/azure/virtual-machines/dv2-dsv2-series) | 8, 16 | Intel | Yes |
 
@@ -103,13 +103,16 @@ The following SKU series are available for Azure Data Explorer cluster VMs. The 
 
 | SKU Series | Available vCPU config | SKU type | Supports premium storage |
 |--|--|--|--|
-| [Eadsv5](/azure/virtual-machines/easv5-eadsv5-series) | 2, 4, 8, 16 | AMD | No |
+| [Eadsv5](/azure/virtual-machines/easv5-eadsv5-series), ECadsv5| 2, 4, 8, 16 | AMD | No |
 | [Edv4](/azure/virtual-machines/edv4-edsv4-series), [Edv5](/azure/virtual-machines/edv5-edsv5-series) | 2, 4, 8, 16 | Intel | No |
 | [Eav4](/azure/virtual-machines/eav4-easv4-series) | 2, 4, 8, 16 | AMD | No |
 | [Dv2](/azure/virtual-machines/dv2-dsv2-series) | 2, 4, 8, 16 | Intel | No |
 
 > [!NOTE]
 > All compute optimized SKUs with 2 cores can be configured as dev clusters.
+> 
+> It is recommended to use L32asv3 / L32sv3 only in uses cases with either very large L16asv3/L16sv3 clusters reaching the 1000 cluster node limit, or clusters with extremely high concurrent request rates.
+> ECasv5 and ECadsv5 are confidential computing SKUs. For more details, read about [Confidential Computing VMs](/azure/confidential-computing/confidential-vm-overview). For storage optimized ECasv5 SKUs, in case you [Use your own customer-managed key](/azure/data-explorer/customer-managed-keys-portal) (CMK), CMK encryption is performed on both storage accounts and premium storage disks.
 
 * With Azure Data Explorer compute and storage isolation, you can start with the most optimal cost SKU and move to another SKU after maturing the usage pattern or data loss.
 * You can view the updated compute SKU list per region by using the Azure Data Explorer [ListSkus API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus).
@@ -117,3 +120,10 @@ The following SKU series are available for Azure Data Explorer cluster VMs. The 
 ### Cache size
 
 Azure Data Explorer reserves a portion of the disk size shown in each of the Azure compute [SKU](#sku-options) specifications to be used for cluster operations. The exact cache size for each SKU is available in the [SKU selection section in the portal](https://ms.portal.azure.com/#create/Microsoft.AzureKusto).
+
+## Next steps
+
+* Learn how to use the [pricing calculator](pricing-calculator.md)
+
+
+

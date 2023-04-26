@@ -1,33 +1,32 @@
 ---
 title: isinf() - Azure Data Explorer
-description: This article describes isinf() in Azure Data Explorer.
+description: Learn how to use the isinf() function to check if the input is an infinite value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/03/2023
 ---
 # isinf()
 
-Returns whether input is an infinite (positive or negative) value.  
+Returns whether the input is an infinite (positive or negative) value.  
 
 ## Syntax
 
-`isinf(`*x*`)`
+`isinf(`*number*`)`
 
-## Arguments
+## Parameters
 
-* *x*: A real number.
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+|*number*|real|&check;| The value to check if infinite.|
 
 ## Returns
 
-A non-zero value (true) if x is a positive or negative infinite; and zero (false) otherwise.
-
-## See also
-
-* For checking if value is null, see [isnull()](isnullfunction.md).
-* For checking if value is finite, see [isfinite()](isfinitefunction.md).
-* For checking if value is NaN (Not-a-Number), see [isnan()](isnanfunction.md).
+`true` if x is a positive or negative infinite and `false` otherwise.
 
 ## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1XQNVQoyVcwVCguSS1QMOTlqlFIrShJzUtRqFSwVTDQM0ASScksA4oZ6hloVehXIolnFmfmpdmCSQ2gGk0AQSRax2AAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 range x from -1 to 1 step 1
@@ -36,8 +35,16 @@ range x from -1 to 1 step 1
 | extend isinf=isinf(div)
 ```
 
+**Output**
+
 |x|y|div|isinf|
 |---|---|---|---|
-|-1|0|-∞|1|
-|0|0|NaN|0|
-|1|0|∞|1|
+|-1|0|-∞|true|
+|0|0|NaN|false|
+|1|0|∞|true|
+
+## See also
+
+* To check if a value is null, see [isnull()](isnullfunction.md).
+* To check if a value is finite, see [isfinite()](isfinitefunction.md).
+* To check if a value is NaN (Not-a-Number), see [isnan()](isnanfunction.md).

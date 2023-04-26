@@ -1,27 +1,34 @@
 ---
-title: ".alter query weak consistency policy management - Azure Data Explorer"
-description: "This article describes the .alter query weak consistency policy command in Azure Data Explorer."
+title: .alter cluster policy query_weak_consistency management - Azure Data Explorer
+description: Learn how to use the .alter cluster policy query_weak_consistency command to cet the cluster's query weak consistency policy.
 ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 01/13/2022
+ms.date: 04/20/2023
 ---
-# .alter query weak consistency policy
+# .alter cluster policy query_weak_consistency
 
-The command sets the cluster [query weak consistency policy](./query-weak-consistency-policy.md), overriding the current policy, and then returns the updated policy. The updated policy can be later viewed using the [show command](show-query-weak-consistency-policy.md). If not altered, the [default policy](./query-weak-consistency-policy.md#default-policy) applies.
+Sets the cluster's [query weak consistency policy](./query-weak-consistency-policy.md), overriding the current policy, and then returns the updated policy. The updated policy can be later viewed using the [show command](show-query-weak-consistency-policy.md). If not altered, the [default policy](./query-weak-consistency-policy.md#default-policy) applies.
+
+## Permissions
+
+You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-This command has two flavors:
-* `.alter` `cluster` `policy` `query_weak_consistency` *PolicyObject* 
-* `.alter-merge` `cluster` `policy` `query_weak_consistency` *PolicyObject*
+`.alter` `cluster` `policy` `query_weak_consistency` *PolicyObject*
 
-The first flavor expects a complete JSON (that includes all policy properties), and any property that is omitted, will be set to its default. The second flavor may receive a subset of the policy properties, and only those will be modified (while the rest remain untouched). Examples will follow.
+`.alter-merge` `cluster` `policy` `query_weak_consistency` *PolicyObject*
 
-## Arguments
+> [!NOTE]
+> With `.alter` any property that isn't specified will be set to its default. With `.alter-merge`, only the properties that you specify will be modified while the rest remain unchanged.
 
-*PolicyObject* - a JSON policy object, see the [query weak consistency policy](./query-weak-consistency-policy.md#the-policy-object) for policy properties (also shown in the examples below).
+## Parameters
 
-## Result
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*PolicyObject*|string|&check;| A serialized JSON policy object. For the policy properties, see the [query weak consistency policy](./query-weak-consistency-policy.md#the-policy-object).|
+
+## Returns
 
 JSON serialization of the updated [query weak consistency policy object](./query-weak-consistency-policy.md#the-policy-object) 
 
@@ -48,7 +55,7 @@ JSON serialization of the updated [query weak consistency policy object](./query
 |---|---|---|---|---|
 |QueryWeakConsistencyPolicy||{"PercentageOfNodes": 10, "MinimumNumberOfNodes": 2, "MaximumNumberOfNodes": 20, "SuperSlackerNumberOfNodesThreshold": 5, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 10, "RefreshPeriodInSeconds": 300}| |Cluster
 
-For demonstrating the `alter-merge`, we will assume the following policy is set prior to executing the command:
+For demonstrating the `alter-merge`, we'll assume the following policy is set prior to executing the command:
 ```JSON
 {
   "PercentageOfNodes": 20,

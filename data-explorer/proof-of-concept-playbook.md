@@ -158,7 +158,7 @@ Be sure to refine your tests by adding multiple testing scenarios.
 Here are some testing scenarios:
 
 - **Azure Data Explorer test A**: We'll execute data ingestion, processing, and querying across multiple cluster SKU sizes (Storage Optimized or Compute Optimized), and different numbers of cluster instances.
-- **Azure Data Explorer test B**: We'll query processed data from our cluster using dashboards and querying tools such as the Azure Data Explorer [web UI](web-ui-overview.md).
+- **Azure Data Explorer test B**: We'll query processed data from our cluster using dashboards and querying tools such as the Azure Data Explorer [web UI](./web-query-data.md).
 
 The following is a high level example of tasks that you can use to help you plan your POC:
 
@@ -249,7 +249,7 @@ Here are some examples of high-level tasks:
 1. Write Kusto Queries to query data:
     - If you're migrating from SQL based system, you can use the [SQL to Kusto cheat sheet](kusto/query/sqlcheatsheet.md) to help you get started.
 1. Execute the tests:
-    - Many tests can be executed in parallel on your clusters using different client interfaces such as dashboards, PowerBIm and the Azure Data Explorer [web UI](web-ui-overview.md).
+    - Many tests can be executed in parallel on your clusters using different client interfaces such as dashboards, PowerBIm and the Azure Data Explorer [web UI](./web-query-data.md).
     - You can create [load test using JMeter or Grafana k6](kusto/api/load-test-cluster.md).
     - Record your results in a consumable and readily understandable format.
 1. Optimize the queries and cluster:

@@ -1,13 +1,13 @@
 ---
 title: sumif() (aggregation function) - Azure Data Explorer
-description: This article describes sumif() (aggregation function) in Azure Data Explorer.
+description: Learn how to use the sumif() (aggregation function) function to calculate the sum of an expression value in records for which the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/12/2022
+ms.date: 02/05/2023
 ---
 # sumif() (aggregation function)
 
-Calculates the sum of *Expr* in records for which *Predicate* evaluates to `true`.
+Calculates the sum of *expr* in records for which *predicate* evaluates to `true`.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
@@ -15,31 +15,32 @@ You can also use the [sum()](sum-aggfunction.md) function, which sums rows witho
 
 ## Syntax
 
-`sumif` `(`*Expr*`,`*Predicate*`)`
+`sumif(`*expr*`,`*predicate*`)`
 
-## Arguments
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr* | string | &check; | Expression that will be used for aggregation calculation. |
-| *Predicate* | string | &check; | Expression that will be used to filter rows. |
+| *expr* | string | &check; | The expression used for the aggregation calculation. |
+| *predicate* | string | &check; | The expression used to filter rows. If the predicate evaluates to `true`, the row will be included in the result.|
 
 ## Returns
 
-Returns the sum of *Expr* for which *Predicate* evaluates to `true`.
+Returns the sum of *expr* for which *predicate* evaluates to `true`.
 
 ## Example showing the sum of damages based on no casualty count
 
 This example shows the sum total damage for storms without casualties.
 
-**\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVXBJzE1MT/XLd04sLk3MKclMLbYFSmamaWhAZJyL8guKtSHsACA7taikUlNHwyU1sSSj2CWzKDW5RBvC8cxLAXM1bW0NNBWSKhWCSxJLUgF0hdWZeAAAAA==)**\]**
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVXBJzE1MT/XLd04sLk3MKclMLbYFSmamaWhAZJyL8guKtSHsACA7taikUlNHwyU1sSSj2CWzKDW5RBvC8cxLAXM1bW0NNBWSKhWCSxJLUgF0hdWZeAAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
 | summarize DamageNoCasualties=sumif((DamageCrops+DamageProperty),(DeathsDirect+DeathsIndirect)==0) by State
 ```
 
-**Results**
+**Output**
 
 The results table shown includes only the first 10 rows.
 
@@ -73,7 +74,7 @@ T
 | summarize sumif(day_of_birth, strlen(name) > 4)
 ```
 
-**Results**
+**Output**
 
 |sumif_day_of_birth|
 |----|

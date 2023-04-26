@@ -9,6 +9,76 @@ ms.date: 07/06/2022
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
 
+## March 2022
+
+| Article title | Description |
+|--|--|
+| [Create a free cluster](start-for-free-web-ui.md) | New article. Describes how to create a free cluster, ingest data, and run queries. |
+| - [Create an Event Grid data connection using C\#](data-connection-event-grid-csharp.md)<br />- [Create an Event Grid data connection using Python](data-connection-event-grid-python.md)<br />- [Create an Event Grid data connection using Azure Resource Manager template](data-connection-event-grid-resource-manager.md)<br />- [Create an Event Hubs data connection using C\#](data-connection-event-hub-csharp.md)<br />- [Create an Event Hubs data connection using Python](data-connection-event-hub-python.md)<br />- [Create an Event Hubs data connection using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)<br />- [Create an IoT Hub data connection using C\# (Preview)](data-connection-iot-hub-csharp.md)<br />- [Create an IoT Hub data connection using Python (Preview)](data-connection-iot-hub-python.md)<br />- [Create an IoT Hub data connection using Azure Resource Manager template](data-connection-iot-hub-resource-manager.md) | Updated articles. Added `databaseRouting` parameter and setting. |
+| - [Event Grid data connection](ingest-data-event-grid-overview.md)<br />- [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated articles. Added events routing setting. |
+| - [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)<br />- [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated articles. Added new Events Routing features including alternative databases and tables. |
+| - [IoT Hub data connection](ingest-data-iot-hub-overview.md)<br />- [Ingest data from IoT Hub into Azure Data Explorer](ingest-data-iot-hub.md) | Updated articles. Added new sections on target databases (multi-database data connection). |
+
+**Functions library**
+
+| Article title | Description |
+|--|--|
+| [pairwise_dist_fl()](kusto/functions-library/pairwise-dist-fl.md) | New article. Describes the `pairwise_dist_fl()` user-defined function. |
+| [series_uv_anomalies_fl()](kusto/functions-library/series-uv-anomalies-fl.md) | New article. Describes the `series_uv_anomalies_fl()` user-defined function. |
+| [series_uv_change_points_fl()](kusto/functions-library/series-uv-change-points-fl.md) | New article. Describes the `series_uv_change_points_fl()` user-defined function. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| [Clear schema cache for cross-cluster queries](kusto/management/clear-cross-cluster-schema-cache.md) | New article. Describes how to manually clear the cross-cluster query cache. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| [http_request plugin / http_request_post plugin](kusto/query/http-request-plugin.md) | New article. Describes the http_request plugin. |
+| [Cross-database and cross-cluster queries](kusto/query/cross-cluster-or-database-queries.md) | Updated article. Updated links to cross-cluster queries and schema changes page. |
+| [Cross-cluster queries and schema changes](kusto/concepts/cross-cluster-and-schema-changes.md) | New article. Describes cross-cluster queries and schema changes. |
+
+## February 2022
+
+| Article title | Description |
+|--|--|
+| [What is a free cluster?](start-for-free.md) | New article. Describes how to get started with a free Azure Data Explorer cluster. |
+| [Cross-tenant data connection](ingest-data-cross-tenant.md) | New article. Describes how to create cross-tenant data connections for Azure Event Hubs or Azure Event Grid services in a different tenant. |
+| [Automated provisioning](automated-deploy-overview.md) | New article. Maps different articles for automating the provisioning of clusters. |
+
+**Functions library**
+
+| Article title | Description |
+|--|--|
+| [series_lag_fl()](kusto/functions-library/series-lag-fl.md) | New article. Describes the `series_lag_fl()` user-defined function. |
+
+## January 2022
+
+| Article title | Description |
+|--|--|
+| [Use the sample app generator to create code to ingest and query your data](sample-app-generator-wizard.md) | New Article. Describes how to use the sample app generator for your preferred programming language. |
+
+**API**
+
+| Article title | Description |
+|--|--|
+| [Azure Data Explorer API overview](kusto/api/index.md) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.
+
+## December 2021
+
+| Article title | Description |
+|--|--|
+| [Use parameters in dashboards](dashboard-parameters.md) | Updated article. Added new section for cross-filters as dashboard parameters. |
+
+**Functions library**
+
+| Article title | Description |
+|--|--|
+| [time_window_rolling_avg_fl()](kusto/functions-library/time-window-rolling-avg-fl.md) | New Article. Describes the function that calculates the rolling average of a metric over a constant duration time window. |
+
 ## November 2021
 
 | Article title | Description |
@@ -42,9 +112,9 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Role-based Authorization in Kusto](kusto/management/access-control/role-based-authorization.md) | Updated article. Materialized views rename source table.
+| [Role-based access control in Kusto](kusto/management/access-control/role-based-access-control.md) | Updated article. Materialized views rename source table.
 | [Cache policy (hot and cold cache)](kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
-| [Role-based Authorization in Kusto](kusto/management/access-control/role-based-authorization.md)| Updated article. Using the AllDatabasesMonitor role.
+| [Role-based access control in Kusto](kusto/management/access-control/role-based-access-control.md)| Updated article. Using the AllDatabasesMonitor role.
 
 ## September 2021
 
@@ -101,8 +171,8 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | [Monitor batching ingestion with metrics](monitor-batching-ingestion.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
 | [Create an external table using the Azure Data Explorer web UI wizard](external-table.md) | Updated article. New UI.
 | [Use one-click ingestion to create an event hub data connection](./event-hub-wizard.md)| Updated article. New UI.
-| [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](./ingestion-wizard-existing-table.md) | Updated article. New UI.
-| [Ingest data from a container/ADLS into Azure Data Explorer](./ingestion-wizard-new-table.md) | Updated article. New UI.
+| [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](/azure/data-explorer/ingest-from-local-file) | Updated article. New UI.
+| [Ingest data from a container/ADLS into Azure Data Explorer](/azure/data-explorer/ingest-from-container) | Updated article. New UI.
 | [Create a table in Azure Data Explorer](./create-table-wizard.md) | Updated article. New UI.
 
 **Query**
@@ -226,7 +296,7 @@ Article title | Description
 [ipv4_is_in_range()](kusto/query/ipv4-is-in-range-function.md) | New article. Checks if IPv4 string address is in IPv4-prefix notation range.
 [ipv4_netmask_suffix()](kusto/query/ipv4-netmask-suffix-function.md) | New article. Returns the value of the IPv4 netmask suffix from IPv4 string address.
 [has_all operator](kusto/query/has-all-operator.md) | New article. `has_all` operator filters based on the provided set of values (all values must be present).
-[row_rank()](kusto/query/rowrankfunction.md) | New article. Returns the current row's rank in a [serialized row set](kusto/query/windowsfunctions.md#serialized-row-set).
+[row_rank()](./kusto/query/rowrankdensefunction.md) | New article. Returns the current row's rank in a [serialized row set](kusto/query/windowsfunctions.md#serialized-row-set).
 | [Null Values](kusto/query/scalar-data-types/null-values.md) | Updated article. New behavior in Engine V3.
 | [String operators](kusto/query/datatypes-string-operators.md) | Updated article. String term indexing for Engine V3.
 
@@ -260,7 +330,7 @@ Article title | Description
 
 Article title | Description
 ---|---
-[Clean extent containers commands](kusto/management/clean-extent-containers.md) | New article. Describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands.
+[Clean extent containers commands](/azure/data-explorer/kusto/management/extents-overview) | New article. Describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands.
 [Request classification policy (Preview)](kusto/management/request-classification-policy.md)<br>[Request classification policy (Preview) - Control commands](kusto/management/show-cluster-policy-request-classification-command.md) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
 [Request limits policy (Preview)](kusto/management/request-limits-policy.md) | New article. A workload group's request limits policy allows limiting the resources used by the request during its execution.
 [Request rate limit policy (Preview)](kusto/management/request-rate-limit-policy.md) | New article. The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group.
@@ -321,7 +391,7 @@ Article title | Description
 [.disable plugin](kusto/management/disable-plugin.md) | New article. Disables a plugin.
 [.enable plugin](kusto/management/enable-plugin.md) | New article. Enables a plugin.
 [.show plugins](kusto/management/show-plugins.md) | New article. Lists all plugins of the cluster.
-| [Cluster follower commands](kusto/management/cluster-follower.md) | Updated article. Syntax changed, added `.alter follower database prefetch-extents`. |
+| [Follower commands](kusto/management/cluster-follower.md) | Updated article. Syntax changed, added `.alter follower database prefetch-extents`. |
 
 **Functions library**
 

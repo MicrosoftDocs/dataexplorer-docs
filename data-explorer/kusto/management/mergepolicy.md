@@ -73,7 +73,7 @@ The following example shows the default policy:
   "OriginalSizeMBUpperBoundForMerge": 30000,
   "MaxExtentsToMerge": 100,
   "LoopPeriod": "01:00:00",
-  "MaxRangeInHours": 8,
+  "MaxRangeInHours": 24,
   "AllowRebuild": true,
   "AllowMerge": true,
   "Lookback": {

@@ -3,12 +3,12 @@ title: Client libraries overview - Azure Data Explorer
 description: This article lists the Client libraries in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 04/19/2023
 ---
 # Client libraries
 
 The following table lists the different libraries provided for query, ingestion, and ARM/RP management. 
-Use these libraries for Azure APIs and to programmatically invoke Azure Data Explorer functionality. 
+Use these libraries for Azure APIs and to programmatically interact with your cluster. 
 
 
 |    Language/Functionality        |    Query        |    Ingestion        |    ARM/RP Management        |
@@ -20,7 +20,7 @@ Use these libraries for Azure APIs and to programmatically invoke Azure Data Exp
 |    NodeJS        |    [npm](https://www.npmjs.com/package/azure-kusto-data) [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/packages/azure-kusto-data)        |    [npm](https://www.npmjs.com/package/azure-kusto-ingest)       [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/packages/azure-kusto-ingest)        |    [npm](https://www.npmjs.com/package/azure-arm-kusto/v/2.0.0)        |
 |    Python        |    [Pypi](https://pypi.org/project/azure-kusto-data/)    [GitHub](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)        |    [Pypi](https://pypi.org/project/azure-kusto-ingest/)      [GitHub](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)        |    [Pypi](https://pypi.org/project/azure-mgmt-kusto/)        |
 |    R        |    [CRAN](https://cran.r-project.org/web/packages/AzureKusto/index.html)               |             |            |
-|    Go        |    [GitHub](https://github.com/Azure/azure-kusto-go)        |    [GitHub](https://github.com/Azure/azure-kusto-go/tree/master/kusto/ingest)        |        [GitHub](https://github.com/Azure/azure-sdk-for-go/tree/master/services/kusto/mgmt)        |
+|    Go        |    [GitHub](https://github.com/Azure/azure-kusto-go)        |    [GitHub](https://github.com/Azure/azure-kusto-go/tree/master/kusto/ingest)        |        [GitHub](https://github.com/Azure/azure-sdk-for-go/tree/main/sdk/resourcemanager/kusto)        |
 |    Ruby        |             |             |    [Gems]( https://rubygems.org/gems/azure_mgmt_kusto)         |
 |    PowerShell        |    [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)        |    [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)        |    [Package](https://www.powershellgallery.com/packages/Az.Kusto/)         |
 |    Azure   CLI        |             |             |    [Azure CLI](/cli/azure/install-azure-cli)         |

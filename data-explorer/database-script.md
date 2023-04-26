@@ -3,7 +3,7 @@ title: Configure a database using a Kusto Query Language script in Azure Data Ex
 description: Learn about how to use database script to run a Kusto Query Language script in Azure Data Explorer
 ms.reviewer: docohe
 ms.topic: how-to
-ms.date: 09/11/2022
+ms.date: 03/29/2023
 ---
 # Configure a database using a Kusto Query Language script
 
@@ -14,14 +14,18 @@ You can run a Kusto Query Language script to configure your database during Azur
 * `.create-merge`
 * `.alter`
 * `.alter-merge`
+* `.add`
 
 In general, we recommended using the idempotent version of commands so that if they're called more than once with the same input parameters, they have no additional effect. In other words, running the command multiple times has the same effect as running it once. For example, where possible, we recommend using the idempotent command `.create-or-alter` over the regular `.create` command.
+
+> [!NOTE]
+> Scripts run in the context of a database and don't support cluster-wide commands such as cluster policies.
 
 There are various methods you can use to configure a database with scripts. We'll focus on the following methods using ARM template deployments:
 
 1. [*Inline script*](#inline-script): The script is provided inline as a parameter to a JSON ARM template.
 1. [*Bicep script*](#bicep-script): The script is provided as a separate file used by a Bicep ARM template.
-1. [*Storage Account*](#storage-account-script): The script is created as a blob in an Azure storage account and its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview)) provided as parameters to the ARM template.
+1. [*Storage Account*](#storage-account-script): The script is created as a blob in an Azure storage account and its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview) provided as parameters to the ARM template.
 
 > [!NOTE]
 > Each cluster can have a maximum of 50 scripts.
@@ -40,15 +44,15 @@ Notice the two commands are idempotent. When first run, they create the tables, 
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 
 ## Security
 
 The principal, such as a user or service principal, used to deploy a script must have the following security roles:
 
 * [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role on the cluster
-* [Admin](./kusto/management/access-control/role-based-authorization.md) role on the database
+* [Admin](./kusto/management/access-control/role-based-access-control.md) role on the database
 
 > [!IMPORTANT]
 > The principal provisioning the cluster automatically gets the `All Databases Admin` role on the cluster.

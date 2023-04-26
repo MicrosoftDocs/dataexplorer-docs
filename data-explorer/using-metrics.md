@@ -16,7 +16,7 @@ For more information about Azure Metrics Explorer, see [Metrics Explorer](/azure
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 
 ## Use metrics to monitor your Azure Data Explorer resources
 
@@ -45,12 +45,12 @@ The **Resource** and **Metric Namespace** pickers are pre-selected for your Azur
 
 The Azure Data Explorer metrics give insight into both overall performance and use of your resources, as well as information about specific actions, such as ingestion or query. The metrics in this article have been grouped by usage type. 
 
-The types of metrics are: 
-* [Cluster metrics](#cluster-metrics) 
-* [Export metrics](#export-metrics) 
-* [Ingestion metrics](#ingestion-metrics) 
+The types of metrics are:
+* [Cluster metrics](#cluster-metrics)
+* [Export metrics](#export-metrics)
+* [Ingestion metrics](#ingestion-metrics)
 * [Streaming ingest metrics](#streaming-ingest-metrics)
-* [Query metrics](#query-metrics) 
+* [Query metrics](#query-metrics)
 * [Materialized view metrics](#materialized-view-metrics)
 
 For an alphabetical list of Azure Monitor's metrics for Azure Data Explorers, see [supported Azure Data Explorer cluster metrics](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters).
@@ -99,13 +99,13 @@ To refine your analysis:
 | Blobs received    | Count | Sum, Max, Min | Number of blobs received from input stream by a component. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
 | Blobs processed   | Count | Sum, Max, Min | Number of blobs processed by a component. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
 | Blobs dropped     | Count | Sum, Max, Min | Number of blobs permanently dropped by a component. For each such blob, an `Ingestion result` metric with a failure reason is sent. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
-| Discovery latency | Seconds | Avg | Time from data enqueue until discovery by data connections. This time isn't included in the **Stage latency** or in the **Ingestion latency** metrics.  <br> <br> Discovery latency may increase in the following situations: <br><ul><li> When cross-region data connections are used. </li><br><li> In Event Hub data connections, if the number of Event Hub partitions isn't enough for the data egress volume. </li></ul> | Component Type, Component Name |
+| Discovery latency | Seconds | Avg | Time from data enqueue until discovery by data connections. This time isn't included in the **Stage latency** or in the **Ingestion latency** metrics.  <br> <br> Discovery latency may increase in the following situations: <br><ul><li> When cross-region data connections are used. </li><br><li> In Event Hubs data connections, if the number of Event Hubs partitions isn't enough for the data egress volume. </li></ul> | Component Type, Component Name |
 | Events received   | Count | Sum, Max, Min | Number of events received by data connections from input stream. | Component Type, Component Name |
 | Events processed  | Count | Sum, Max, Min | Number of events processed by data connections. | Component Type, Component Name | 
 | Events dropped    | Count | Sum, Max, Min | Number of events permanently dropped by data connections. | Component Type, Component Name | 
-| Events processed (for Event/IoT Hubs) | Count | Max, Min, Sum | Total number of events read from event hubs and processed by the cluster. These events are split into two groups: events rejected, and events accepted by the cluster engine. | Status |
+| Events processed (for Event/IoT Hubs) | Count | Max, Min, Sum | Total number of events read from Event Hubs and processed by the cluster. These events are split into two groups: events rejected, and events accepted by the cluster engine. | Status |
 | Ingestion latency | Seconds | Avg, Max, Min | Latency of data ingested, from the time the data was received in the cluster until it's ready for query. The ingestion latency period depends on the ingestion scenario. | None |
-| Ingestion result  | Count | Sum | Total number of sources that either failed or succeeded to be ingested.<br> `Status`: **Success** for successful ingestion or the failure category for failures. For a complete list of possible failure categories see [Ingestion error codes in Azure Data Explorer](error-codes.md). <br> `Failure Status Type`: Whether the failure is permanent or transient. For successful ingestion, this dimension is `None`.<br><br>**Note:**<br><ul><li> Event Hub and IoT Hub ingestion events are pre-aggregated into one blob, and then treated as a single source to be ingested. Therefore, pre-aggregated events appear as a single ingestion result after pre-aggregation.</li><br><li>Transient failures are retried internally a limited number of times. Each transient failure is reported as a transient ingestion result. Therefore, a single ingestion may result in more than one ingestion result. </li></ul> | Status, Failure Status Type |
+| Ingestion result  | Count | Sum | Total number of sources that either failed or succeeded to be ingested.<br> `Status`: **Success** for successful ingestion or the failure category for failures. For a complete list of possible failure categories see [Ingestion error codes in Azure Data Explorer](error-codes.md). <br> `Failure Status Type`: Whether the failure is permanent or transient. For successful ingestion, this dimension is `None`.<br><br>**Note:**<br><ul><li> Event Hubs and IoT Hub ingestion events are pre-aggregated into one blob, and then treated as a single source to be ingested. Therefore, pre-aggregated events appear as a single ingestion result after pre-aggregation.</li><br><li>Transient failures are retried internally a limited number of times. Each transient failure is reported as a transient ingestion result. Therefore, a single ingestion may result in more than one ingestion result. </li></ul> | Status, Failure Status Type |
 | Ingestion volume (in MB) | Count | Max, Sum | The total size of data ingested to the cluster (in MB) before compression. | Database |
 | Queue length | Count | Avg | Number of pending messages in a component's input queue. The batching manager component has one message per blob. The ingestion manager component has one message per batch. A batch is a single ingest command with one or more blobs.  | Component Type |
 | Queue oldest message | Seconds | Avg | Time in seconds from when the oldest message in a component's input queue has been inserted. | Component Type | 
@@ -140,9 +140,9 @@ Query performance metrics track query duration and total number of concurrent or
 |---|---|---|---|---|
 |MaterializedViewHealth                    | 1, 0    | Avg     |  Value is 1 if the view is considered healthy, otherwise 0. | Database, MaterializedViewName |
 |MaterializedViewAgeSeconds                | Seconds | Avg     | The `age` of the view is defined by the current time minus the last ingestion time processed by the view. Metric value is time in seconds (the lower the value is, the view is "healthier"). | Database, MaterializedViewName |
-|MaterializedViewResult                    | 1       | Avg     | Metric includes a `Result` dimension indicating the result of the last materialization cycle (see the [MaterializedViewResult metric](kusto/management/materialized-views/materialized-view-overview.md#materializedviewresult-metric) for details about possible values). Metric value always equals 1. | Database, MaterializedViewName, Result |
+|MaterializedViewResult                    | 1       | Avg     | Metric includes a `Result` dimension indicating the result of the last materialization cycle (see the [MaterializedViewResult metric](kusto/management/materialized-views/materialized-views-monitoring.md#materializedviewresult-metric) for details about possible values). Metric value always equals 1. | Database, MaterializedViewName, Result |
 |MaterializedViewRecordsInDelta            | Records count | Avg | The number of records currently in the non-processed part of the source table. For more information, see [how materialized views work](./kusto/management/materialized-views/materialized-view-overview.md#how-materialized-views-work)| Database, MaterializedViewName |
-|MaterializedViewExtentsRebuild            | Extents count | Avg | The number of extents rebuilt in the materialization cycle. | Database, MaterializedViewName|
+|MaterializedViewExtentsRebuild            | Extents count | Avg | The number of extents that required updates in the materialization cycle. | Database, MaterializedViewName|
 |MaterializedViewDataLoss                  | 1       | Max    | Metric is fired when unprocessed source data is approaching retention. Indicates that the materialized view is unhealthy. | Database, MaterializedViewName, Kind |
 
 ## Next steps

@@ -3,6 +3,7 @@ title: Enable infrastructure encryption (double encryption) during cluster creat
 description: This article describes how to enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer.
 ms.reviewer: toleibov
 ms.topic: how-to
+ms.custom: devx-track-arm-template
 ms.date: 04/12/2022
 ---
 
@@ -106,9 +107,9 @@ Add the 'EnableDoubleEncryption' type to tell Azure to enable infrastructure enc
 
 ---
 
-## Considerations
+## Limitations
 
-The following considerations apply to the encryption of [selected volumes](kusto/concepts/sandboxes.md#virtual-machine-sizes):
+The following limitations apply to the encryption of [selected volumes](kusto/concepts/sandboxes-in-non-modern-skus.md#virtual-machine-sizes):
 
 * Performance impact of up to a single digit
 * Can't be used with sandboxes

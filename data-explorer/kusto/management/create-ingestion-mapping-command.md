@@ -3,40 +3,47 @@ title: .create ingestion mapping - Azure Data Explorer
 description: This article describes .create ingestion mapping in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 04/16/2023
 ---
 # .create ingestion mapping
 
 Creates an ingestion mapping that can be associated with a specific format and a specific table or database.
 
-**Syntax**
+If a mapping with same name in the given scope already exists, `.create` will fail. Use [`.create-or-alter`](create-or-alter-ingestion-mapping-command.md) instead.
+
+## Permissions
+
+At least [Database Ingestor](access-control/role-based-access-control.md) permissions are required to create a database ingestion mapping, and at least [Table Ingestor](access-control/role-based-access-control.md) permissions are required to create a table ingestion mapping.
+
+## Syntax
 
 `.create` `table` *TableName* `ingestion` *MappingKind* `mapping` *MappingName* *MappingFormattedAsJson*
 
 `.create` `database` *DatabaseName* `ingestion` *MappingKind* `mapping` *MappingName* *MappingFormattedAsJson*
 
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *TableName* | string | &check; | The name of the table.|
+| *DatabaseName* | string | &check; | The name of the database.|
+| *MappingKind* | string | &check; | The type of mapping. Valid values are `csv`, `json`, `avro`, `parquet`, and `orc`.|
+| *MappingName* | string | &check; | The name of the mapping.|
+| *MappingFormattedAsJson* | string | &check; | The ingestion mapping definition formatted as a JSON value.|
+
 > [!NOTE]
+>
 > * Once created, the mapping can be referenced by its name in ingestion commands, instead of specifying the complete mapping as part of the command.
-> * Valid values for _MappingKind_ are: `CSV`, `JSON`, `avro`, `parquet`, and `orc`
-> * If a mapping by the same name already exists for the table:
->    * `.create` will fail
->    * `.create-or-alter` will alter the existing mapping
 > * If a mapping with the same name is created in both the table scope and the database scope, the mapping in the table scope will have a higher priority.
 > * When ingesting into a table and referencing a mapping whose schema does not match the ingested table schema, the ingest operation will fail.
- 
-**Example** 
+
+## Examples
  
 ```kusto
 .create table MyTable ingestion csv mapping "Mapping1"
 '['
 '   { "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},'
 '   { "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"}}'
-']'
-
-.create-or-alter table MyTable ingestion json mapping "Mapping1"
-'['
-'    { "column" : "rownumber", "datatype" : "int", "Properties":{"Path":"$.rownumber"}},'
-'    { "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}'
 ']'
 
 .create database MyDatabase ingestion csv mapping "Mapping2"
@@ -46,14 +53,14 @@ Creates an ingestion mapping that can be associated with a specific format and a
 ']'
 ```
 
-**Example output**
+**Output**
 
-| Name     | Kind | Mapping                                                                                                                                                                          |
-|----------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| mapping1 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` |
-| mapping2 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` |
+| Name | Kind | Mapping | Database | Table |
+|--|--|--|
+| mapping1 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` | MyDatabase | MyTable |
+| mapping2 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` | MyDatabase | |
 
-**Example: .create ingestion mapping with escape characters** 
+### Example: .create ingestion mapping with escape characters** 
  
 ```kusto
 .create table test_table ingestion json mapping "test_mapping_name"

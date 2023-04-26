@@ -3,30 +3,35 @@ title: Create and alter SQL Server external tables - Azure Data Explorer
 description: This article describes how to create and alter external tables based on SQL Server tables.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 04/09/2023
 ---
 
 # Create and alter SQL Server external tables
 
-Creates or alters an external SQL table in the database in which the command is executed.  
+Creates or alters an SQL Server [external table](../query/schema-entities/externaltables.md) in the database in which the command is executed.
+
+## Permissions
+
+To `.create` requires at least [Database User](../management/access-control/role-based-access-control.md) permissions and to `.alter` requires at least [Table Admin](../management/access-control/role-based-access-control.md) permissions.
+
+To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* ([columnName:columnType], ...)  
-`kind` `=` `sql`  
-`table` `=` *SqlTableName*  
-`(`*SqlServerConnectionString*`)`  
-[`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*], *property_name* `=` *value*`,`...`)`]
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlServerConnectionString*`)` [`with` `(`*Property* [`,` ... ]`)`]
 
 ## Parameters
 
-* *TableName* - External table name. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.
-* *SqlTableName* - The name of the SQL table. Not including the database name (example: "MySqlTable" and not "db1.MySqlTable"). If the name of the table contains a period (".") you can use ['Name.of.the.table'] notation.
-* *SqlServerConnectionString* - The connection string to the SQL Server. See the supported [SQL authentication methods](../api/connection-strings/sql-authentication-methods.md).
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TableName* | string | &check; | The name of the external table. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.|
+| *Schema* | string | &check; | The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.|
+|*SqlTableName*| string | &check; | The name of the SQL table. Not including the database name (example: "MySqlTable" and not "db1.MySqlTable"). If the name of the table contains a period (".") you can use ['Name.of.the.table'] notation.|
+| *SqlServerConnectionString*| string |&check;| The connection string to the SQL Server. See the supported [SQL authentication methods](../api/connection-strings/sql-authentication-methods.md).|
+|*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
 
 > [!NOTE]
-> * If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities.
-> * When creating or altering an external table using managed identity authentication, [All Databases admin permission](../management/access-control/role-based-authorization.md) is required.
+> If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities.
 
 > [!WARNING]
 > Connection strings and queries that include confidential information should be obfuscated so that they'll be omitted from any Kusto tracing. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).
@@ -43,11 +48,21 @@ Creates or alters an external SQL table in the database in which the command is 
 
 > [!NOTE]
 > * If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables. 
-> * Altering the schema or format of an external SQL table is not supported. 
+> * Altering the schema or format of an external SQL table is not supported.
 
-Requires [database user permission](../management/access-control/role-based-authorization.md) for `.create` and [table admin permission](../management/access-control/role-based-authorization.md) for `.alter`. 
- 
-**Example** 
+## Authentication and authorization
+
+The authentication method to access a SQL Server external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method.
+
+The following table lists the supported authentication methods for SQL Server external tables and the permissions needed to read or write to the table.
+
+|Authentication method|Read permissions|Write permissions|
+|--|--|--|
+|[Impersonation](../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
+|[Managed identity](../api/connection-strings/sql-authentication-methods.md#managed-identity)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
+|[Username and password](../api/connection-strings/sql-authentication-methods.md#username-and-password)|||
+
+## Example
 
 ```kusto
 .create external table MySqlExternalTable (x:long, s:string) 
@@ -71,27 +86,6 @@ with
 | TableName   | TableType | Folder         | DocString | Properties                            |
 |-------------|-----------|----------------|-----------|---------------------------------------|
 | MySqlExternalTable | Sql       | ExternalTables | Docs      | {<br>  "TargetEntityKind": "sqltable`",<br>  "TargetEntityName": "MySqlTable",<br>  "TargetEntityConnectionString": "Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=mydatabase;",<br>  "FireTriggers": true,<br>  "CreateIfNotExists": true,<br>  "PrimaryKey": "x"<br>} |
-
-## Querying an external table of type SQL
-
-Querying an external SQL table is supported. See [querying external tables](../../data-lake-query-data.md). 
-
-> [!Note]
-> SQL external table query implementation will execute `SELECT x, s FROM MySqlTable` statement, where `x` and `s` are external table column names. The rest of the query will execute on the Kusto side.
-
-Consider the following external table query: 
-
-```kusto
-external_table('MySqlExternalTable') | count
-```
-
-Kusto will execute a `SELECT x, s FROM MySqlTable` query to the SQL database, followed by a count on Kusto side. 
-In such cases, performance is expected to be better if written in T-SQL directly (`SELECT COUNT(1) FROM MySqlTable`) 
-and executed using the [sql_request plugin](../query/sqlrequestplugin.md), instead of using the external table function. 
-Similarly, filters are not pushed to the SQL query.  
-
-Use the external table to query the SQL table when the query requires reading the entire table (or relevant columns) for further execution on Kusto side. 
-When an SQL query can be optimized in T-SQL, use the [sql_request plugin](../query/sqlrequestplugin.md).
 
 ## Next steps
 
