@@ -18,7 +18,7 @@ groups:
   - id: azuremonitor
     title: Azure Monitor
   - id: fabric
-    title: Fabric  
+    title: Microsoft Fabric  
    
   
   
