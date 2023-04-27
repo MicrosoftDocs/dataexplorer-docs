@@ -384,6 +384,8 @@ Then the records in the source table for the move extents operation should alrea
 
 Because the operation uses [.move extents](../move-extents.md), the records will be *removed* from the specified table during the backfill (moved, not copied).
 
+Backfill by move extents is not supported for all [aggregation functions supported in materialized views](#supported-aggregation-functions). It will fail for aggregations such as `avg()`, `dcount()`, in which the underlying data stored in the view is different than the aggregation itself.
+
 The materialized view is backfilled *only* based on the specified table. Materialization of records in the source table of the view will start from view creation time, by default.
 
 If the source table of the materialized view is continuously ingesting data, creating the view by using move extents might result in some data loss. This is because records ingested into the source table, in the short time between the time of preparing the table to backfill from and the time that the view is created, won't be included in the materialized view. To handle this scenario, you can set the `source_ingestion_time_from` property to the start time of the materialized view over the source table.
