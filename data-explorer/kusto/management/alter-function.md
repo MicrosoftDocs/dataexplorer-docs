@@ -1,9 +1,9 @@
 ---
 title: .alter function - Azure Data Explorer
-description: This article describes .alter function in Azure Data Explorer.
+description: Learn how to use the .alter function command to alter an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/20/2023
 ---
 # .alter function
 
@@ -48,6 +48,6 @@ with (docstring = 'Demo function with parameter', folder='MyFolder')
  MyFunction2(myLimit: long)  {StormEvents | take myLimit}
 ```
 
-|Name |Parameters |Body|Folder|DocString
-|---|---|---|---|---
+|Name |Parameters |Body|Folder|DocString|
+|---|---|---|---|---|
 |MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|MyFolder|Demo function with parameter|

@@ -49,7 +49,7 @@ print result=current_principal_is_member_of(
 Using dynamic array instead of multiple arguments:
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12MywrCMBRE935Fd23BSPMgaZCA/yESbl4SbNqQNgv/3tqFC2dxYIbD5BLnrSl+rdOmbC3Fz5vO+2hjhknHVSefjC96Cd2p2ePeM6Rou/vRWgBXV1/UF/gWwJT4gnSxS2rPzU95lqVmdfBf+jmQs+IcHKaUIAqSIQZcIhmAICwEJWGQlHN2FSTIcTQBjTxgxDAEJDEYRJywbsDYGSba4/bR9x8D/i004AAAAA==)
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12MywrCMBRE935Fd23BSPMgaZCA/yESbl4SbNqQNgv/3tqFC2dxYIbD5BLnrSl+rdOmbC3Fz5vO+2hjhknHVSefjC96Cd2p2ePeM6Rou/vRWgBXV1/UF/gWwJT4gnSxS2rPzU95lqVmdfBf+jmQs+IcHKaUIAqSIQZcIhmAICwEJWGQlHN2FSTIcTQBjTxgxDAEJDEYRJywbsDYGSba4/bR9x8D/i004AAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 print result=current_principal_is_member_of(

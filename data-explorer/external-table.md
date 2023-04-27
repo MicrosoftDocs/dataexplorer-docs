@@ -90,7 +90,7 @@ The first source container will display files below **File filters**.
 In the right-hand side of the tab, you can preview your data. On the left-hand side, you can add [partitions](kusto/management/partitioningpolicy.md) to your table definitions to access the source data more quickly and achieve better performance.
 
 > [!NOTE]
-> Mappings are not part of the definition of an external table, and are not supported in this wizard. Mappings can be [configured later](kusto/management/external-tables-azurestorage-azuredatalake.md#create-external-table-mapping) if necessary. Some functionalities, such as deleting the last column in CSV files or changing column names in JSON files, require mappings in order to work correctly.
+> Mappings are not part of the definition of an external table, and are not supported in this wizard. Mappings can be [configured later](kusto/management/external-table-mapping-create.md) if necessary. Some functionalities, such as deleting the last column in CSV files or changing column names in JSON files, require mappings in order to work correctly.
 
 1. Select **Add partition**.
 

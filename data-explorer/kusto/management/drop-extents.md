@@ -3,7 +3,7 @@ title: .drop extents - Azure Data Explorer
 description: This article describes the drop extents command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 04/25/2023
 ---
 # .drop extents
 
@@ -12,7 +12,7 @@ Drops extents from a specified database or table.
 This command has several variants: In one, the extents to be dropped are specified by a Kusto query. In the other variants, extents are specified using a mini-language described below.
 
 > [!NOTE]
-> Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
+> Data shards are called **extents**, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
 > [!CAUTION]
@@ -28,18 +28,20 @@ If the *TableName* isn't specified, you must have at least [Database Admin](./ac
 
 ### Drop extents with a query
 
-Drop extents that are specified using a Kusto query.
-A recordset with a column called "ExtentId" is returned.
+`.drop` `extents` [`whatif`] `<|` *Query*
 
-`.drop` `extents` [`whatif`] <| *query*
+#### Parameters
 
-If `whatif` is used, it will just report them, without actually dropping.
+| Name | Type | Required | Description |
+|--|--|--|--|
+|`whatif`|string||If specified, the extent tags will be reported instead of being dropped.|
+| *Query* | string | &check; | A [Kusto Query Language (KQL)](../query/index.md) query that returns the extent tags to be dropped.|
 
 ### Drop a specific or multiple extents
 
 `.drop` `extents` `(`*ExtentIds*`)` [`from` *TableName*]
 
-### Parameters
+#### Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
@@ -50,7 +52,7 @@ If `whatif` is used, it will just report them, without actually dropping.
 
 `.drop` `extents` [`older` *N* (`days` | `hours`)] `from` (*TableName* | `all` `tables`) [`trim` `by` (`extentsize` | `datasize`) *Size* (`MB` | `GB` | `bytes`)] [`limit` *LimitCount*]
 
-### Parameters
+#### Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|

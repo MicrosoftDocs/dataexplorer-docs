@@ -1,13 +1,13 @@
 ---
-title: "alter cluster policy callout command - Azure Data Explorer"
-description: "This article describes the alter cluster policy callout command in Azure Data Explorer."
+title: alter cluster policy callout command - Azure Data Explorer
+description: Learn how to use the .alter cluster policy callout command to change the cluster's callout policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 04/20/2023
 ---
 # .alter cluster policy callout
 
-Change the cluster [callout policy](calloutpolicy.md).
+Changes the cluster's [callout policy](calloutpolicy.md).
 
 ## Permissions
 

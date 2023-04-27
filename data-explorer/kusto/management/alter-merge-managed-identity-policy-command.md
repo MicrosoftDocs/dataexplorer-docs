@@ -1,9 +1,9 @@
 ---
-title: ".alter-merge managed_identity policy command - Azure Data Explorer"
-description: This article describes the .alter-merge managed_identity policy command in Azure Data Explorer.
+title: .alter-merge managed_identity policy command - Azure Data Explorer
+description: Learn how to use the .alter-merge managed_identity policy command to update the ManagedIdentity policy of the cluster or database.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/20/2023
 ---
 # .alter-merge managed_identity policy
 
