@@ -3,12 +3,13 @@ title: Deploy Azure Data Explorer into your Virtual Network
 description: Learn how to deploy Azure Data Explorer into your Virtual Network
 ms.reviewer: basaba
 ms.topic: how-to
+ms.custom: devx-track-arm-template
 ms.date: 03/30/2022
 ---
 
 # Deploy Azure Data Explorer cluster into your Virtual Network
 
-> [!NOTE]
+> [!IMPORTANT]
 > Consider moving to an Azure Private Endpoint based solution for implementing network security with Azure Data Explorer. It is less error-prone and provides [feature parity](security-network-overview.md#comparison-and-recommendation).
 
 This article explains the resources that are present when you deploy an Azure Data Explorer cluster into a custom Azure Virtual Network. This information will help you deploy a cluster into a subnet in your Virtual Network (VNet). For more information on Azure Virtual Networks, see [What is Azure Virtual Network?](/azure/virtual-network/virtual-networks-overview)
@@ -380,4 +381,3 @@ This template creates the cluster, virtual network, subnet, network security gro
 
 * Virtual network resources with deployed clusters don't support the [move to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription) operation.
 * Public IP address resources used for the cluster engine or the data management service don't support the move to a new resource group or subscription operation.
-

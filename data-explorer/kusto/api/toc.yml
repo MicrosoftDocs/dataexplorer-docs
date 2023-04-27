@@ -19,6 +19,9 @@ items:
     href: rest/streaming-ingest.md
   - name: Query with T-SQL
     href: rest/t-sql.md
+  - name: How to ingest data with the REST API
+    displayName: Kusto.Ingest
+    href: netfx/kusto-ingest-client-rest.md
 - name: .NET SDK
   items:
   - name: General
@@ -56,9 +59,6 @@ items:
     - name: Code samples
       displayName: Kusto.Ingest
       href: netfx/kusto-ingest-client-examples.md
-    - name: HowTo Data Ingestion with REST API
-      displayName: Kusto.Ingest
-      href: netfx/kusto-ingest-client-rest.md
 - name: Bicep and ARM template resource types
   href: /azure/templates/microsoft.kusto/allversions
 - name: Resource provider operations
@@ -85,5 +85,5 @@ items:
     href: golang/kusto-golang-client-library.md
 - name: PowerShell
   items:
-  - name: Calling Kusto from PowerShell
+  - name: Use Kusto .NET client libraries from PowerShell
     href: powershell/powershell.md

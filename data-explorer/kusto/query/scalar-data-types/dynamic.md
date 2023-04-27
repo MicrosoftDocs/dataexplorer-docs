@@ -208,3 +208,7 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 Every field is indexed during data ingestion. The scope of the index is a single data shard. 
 
 To index dynamic columns, the ingestion process enumerates all “atomic” elements within the dynamic value (property names, values, array elements) and forwards them to the index builder. Otherwise, dynamic fields have the same inverted term index as string fields.
+
+## Next steps
+
+* To see an example query using dynamic objects and object accessors, see [Map values from one set to another](../tutorials/learn-common-operators.md#map-values-from-one-set-to-another).

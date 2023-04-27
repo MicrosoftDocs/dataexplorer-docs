@@ -3,15 +3,15 @@ title: .drop extent tags - Azure Data Explorer
 description: This article describes the drop extent tags command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/24/2023
 ---
 
 # .drop extent tags
 
-The command runs in the context of a specific database. It drops specific [extent tags](extents-overview.md#extent-tagging) from all or specific extents in the database and table.  
+Drops specific [extent tags](extents-overview.md#extent-tagging) from all or specific extents in the database and table. The command runs in the context of a specific database.
 
 > [!NOTE]
-> Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
+> Data shards are called **extents**, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
 There are two ways to specify which tags should be removed from which extents:
@@ -25,23 +25,40 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.drop` [`async`] `extent` `tags` `from` `table` *TableName* `(`'*Tag1*'[`,`'*Tag2*'`,`...`,`'*TagN*']`)`
+`.drop` [`async`] `table` *TableName* `extent` `tags` `(`*Tag* [`,` ...]`)` `with` `(` `extentCreatedOnFrom` `=` *FromDate* `,` `extentCreatedOnTo` `=` *ToDate*`)`
 
-`.drop` [`async`] `extent` `tags` <| *query*
+`.drop` [`async`] `table` *TableName* `extent` `tags` `with` `(` `extentCreatedOnFrom` `=` *FromDate* `,` `extentCreatedOnTo` `=` *ToDate*`)` `<|` *Query*
 
-`async` (optional): Execute the command asynchronously.
+## Parameters
 
-* An Operation ID (Guid) is returned.
-* The operation's status can be monitored. Use the [`.show operations`](operations.md#show-operations) command.
-* Use the [`.show operation details`](operations.md#show-operation-details) command to retrieve the results of a successful execution.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|`async`|string||If specified, the operation executes asynchronously.|
+|*TableName*|string|&check;|The name of the table for which to drop the extent tags.|
+|*Tag*|string|&check;|The names of the extent tags to drop.|
+|*FromDate*|datetime||The start date range.|
+|*ToDate*|datetime||The end date range.|
+|*Query*|string|&check;|A [Kusto Query Language (KQL)](../query/index.md) query that returns the extent tags to be dropped. See [Specify extents with a query](#specify-extents-with-a-query).|
+
+> [!NOTE]
+> For better performance, set `extentCreatedOnFrom` and `extentCreatedOnTo` parameters to the smallest possible range.
 
 ## Restrictions
 
 All extents must be in the context database, and must belong to the same table.
 
+## Returns
+
+An Operation ID (GUID) is returned.
+
+> [!TIP]
+>
+> * The operation's status can be monitored with the GUID. Use the [`.show operations`](operations.md#show-operations) command.
+> * Use the [`.show operation details`](operations.md#show-operation-details) command to retrieve the results of a successful execution.
+
 ## Specify extents with a query
 
-The extents and the tags to drop are specified using a Kusto query. It returns a recordset with a column called "ExtentId" and a column called "Tags".
+The extents and the tags to drop are specified using a Kusto query. It returns a record set with a column called "ExtentId" and a column called "Tags".
 
 > [!NOTE]
 > When using the [Kusto .NET client library](../api/netfx/about-kusto-data.md), the following methods will generate the required command:
@@ -49,13 +66,7 @@ The extents and the tags to drop are specified using a Kusto query. It returns a
 > * `CslCommandGenerator.GenerateExtentTagsDropByRegexCommand(string tableName, string regex)`
 > * `CslCommandGenerator.GenerateExtentTagsDropBySubstringCommand(string tableName, string substring)`
 
-### Syntax for .drop extent tags in query
-
-```kusto
-.drop extent tags <| ...query...
-```
-
-### Return output
+## Return output
 
 Output parameter |Type |Description
 ---|---|---
@@ -76,18 +87,18 @@ Drop the `drop-by:Partition000` tag from any extent in table that is tagged with
 
 ### Drop several tags
 
-Drop the the tags `drop-by:20160810104500`, `a random tag`, and `drop-by:20160810` from any extent in table that is tagged with either of them:
+Drop the tags `drop-by:20230312104500`, `a random tag`, and `drop-by:20230312` from any extent in table that is tagged with either of them:
 
 ```kusto
-.drop extent tags from table [My Table] ('drop-by:20160810104500','a random tag','drop-by:20160810')
+.drop table [My Table] extent tags ('drop-by:20230312104500','a random tag','drop-by:20230312') with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12))
 ```
 
-### Drop all `drop-by` tags
+### Drop all `drop-by` tags in a specified creation time range
 
-Drop all `drop-by` tags from extents in table `MyTable`:
+Drop all `drop-by` tags from extents in table `MyTable` in a specified creation time range:
 
 ```kusto
-.drop extent tags <| 
+.drop table MyTable extent tags with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| 
   .show table MyTable extents 
   | where isnotempty(Tags)
   | extend Tags = split(Tags, '\r\n') 
@@ -100,7 +111,7 @@ Drop all `drop-by` tags from extents in table `MyTable`:
 Drop all tags matching regex `drop-by:StreamCreationTime_20160915(\d{6})` from extents in table `MyTable`:
 
 ```kusto
-.drop extent tags <| 
+.drop table MyTable extent tags with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <| 
   .show table MyTable extents 
   | where isnotempty(Tags)
   | extend Tags = split(Tags, '\r\n')

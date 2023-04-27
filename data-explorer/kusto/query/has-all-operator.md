@@ -3,7 +3,7 @@ title: The case-insensitive has_all string operator - Azure Data Explorer
 description: Learn how to use the has_all string operator to filter a record set for data with one or more case-insensitive search strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/02/2023
+ms.date: 03/29/2023
 ---
 # has_all operator
 
@@ -13,7 +13,7 @@ For more information about other operators and to determine which operator is mo
 
 ## Syntax
 
-*T* `|` `where` *col* `has_all` `(`*expressions*`)`
+*T* `|` `where` *col* `has_all` `(`*expression*`,` ... `)`
 
 ## Parameters
 
@@ -21,7 +21,7 @@ For more information about other operators and to determine which operator is mo
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column by which to filter.|
-| *expressions* | scalar or tabular | &check; | One or more comma-separated expressions that specify the values for which to search. Each expression can be a [scalar value](scalar-data-types/index.md) or a [tabular expression](tabularexpressionstatements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 256 distinct values.|
+| *expression* | scalar or tabular | &check; |An expression that specifies the values for which to search. Each expression can be a [scalar value](scalar-data-types/index.md) or a [tabular expression](tabularexpressionstatements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 256 distinct values.|
 
 ## Returns
 

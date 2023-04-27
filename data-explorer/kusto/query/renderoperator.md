@@ -189,7 +189,6 @@ three kinds of columns:
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 InsightsMetrics
 | where Computer == "DC00.NA.contosohotels.com"

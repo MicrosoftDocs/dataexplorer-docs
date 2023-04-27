@@ -3,6 +3,7 @@ title: 'Add database principal for Azure Data Explorer by using an Azure Resourc
 description: In this article, you learn how to add database principals for Azure Data Explorer by using an Azure Resource Manager template.
 ms.reviewer: lugoldbe
 ms.topic: how-to
+ms.custom: devx-track-arm-template
 ms.date: 02/03/2020
 ---
 

@@ -27,7 +27,7 @@ Densified line in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and 
 
 > [!NOTE]
 >
-> The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/GandG/update/index.php?action=home) coordinate reference system.
+> The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
 
 **LineString definition**
 

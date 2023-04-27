@@ -1,13 +1,13 @@
 ---
 title: .alter-merge materialized view partitioning policy command- Azure Data Explorer
-description: This article describes the .alter-merge materialized view partitioning policy command in Azure Data Explorer.
+description: Learn how to use the .alter-merge materialized view partitioning policy command to create the materialized view's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/20/2023
 ---
 # .alter-merge materialized view partitioning policy
 
-Use this command to create a materialized view [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+Creates the materialized view's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Permissions
 

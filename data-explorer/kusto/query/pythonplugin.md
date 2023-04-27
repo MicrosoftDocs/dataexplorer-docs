@@ -244,6 +244,10 @@ range ID from 1 to 3 step 1
 
 ---
 
+## See also
+
+For more examples of UDF functions that use the Python plugin, see the [Functions library](../functions-library/functions-library.md).
+
 ::: zone-end
 
 ::: zone pivot="azuremonitor, fabric"

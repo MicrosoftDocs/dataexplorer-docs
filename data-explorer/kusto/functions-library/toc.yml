@@ -32,6 +32,21 @@ items:
 - name: levene_test_fl()
   displayName: functions library, statistical test
   href: levene-test-fl.md
+- name: log_reduce_fl()
+  displayName: functions library, log reduce, log parse, clustering, text analytics
+  href: log-reduce-fl.md
+- name: log_reduce_full_fl()
+  displayName: functions library, log reduce, log parse, clustering, text analytics
+  href: log-reduce-full-fl.md
+- name: log_reduce_predict_fl()
+  displayName: functions library, log reduce, log parse, clustering, text analytics
+  href: log-reduce-predict-fl.md
+- name: log_reduce_predict_full_fl()
+  displayName: functions library, log reduce, log parse, clustering, text analytics
+  href: log-reduce-predict-full-fl.md
+- name: log_reduce_train_fl()
+  displayName: functions library, log reduce, log parse, clustering, text analytics
+  href: log-reduce-train-fl.md
 - name: mann-whitney-u-test-fl()
   displayName: functions library, statistical test
   href: mann-whitney-u-test-fl.md

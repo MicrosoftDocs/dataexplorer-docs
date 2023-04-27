@@ -39,7 +39,7 @@ You must have at least [Database User](access-control/role-based-access-control.
 |`docstring`|string|A description of the function for UI purposes.|
 |`folder`|string|The name of a folder used for UI functions categorization.|
 |`view`|bool|Designates this function as a stored view.|
-|`skipvalidation`|bool|Determines whether or not to run validation logic on the function, and fail the process if the function isn't valid. The default is `true`.|
+|`skipvalidation`|bool|Determines whether or not to run validation logic on the function, and fail the process if the function isn't valid. The default is `false`.|
 
 ## Returns
 
