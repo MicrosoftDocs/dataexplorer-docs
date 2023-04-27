@@ -5,12 +5,12 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/22/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 
 # Samples for Kusto Queries
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 This article identifies common queries and how you can use the Kusto Query Language to meet them.
 

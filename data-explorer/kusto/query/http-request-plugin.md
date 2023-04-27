@@ -6,11 +6,11 @@ ms.reviewer: zivc
 ms.topic: reference
 ms.date: 03/08/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # http_request plugin / http_request_post plugin
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The `http_request` (GET) and `http_request_post` (POST) plugins send an HTTP request and convert the response into a table.
 

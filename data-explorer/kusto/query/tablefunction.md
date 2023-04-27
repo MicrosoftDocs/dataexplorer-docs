@@ -5,7 +5,7 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/16/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # table() (scope function)
 
@@ -88,7 +88,7 @@ receives a parameter `tableName` - which is passed into the table() function.
 };
 ```
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 > [!NOTE]
 > Such functions can be used only locally and not in the cross-cluster query.
