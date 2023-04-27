@@ -3,9 +3,9 @@ title: R plugin (Preview) - Azure Data Explorer
 description: Learn how to use the R plugin (Preview) to run a user-defined function using an R script.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 04/24/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # R plugin (Preview)
 
@@ -215,8 +215,8 @@ Make sure that the archive's name (first value in pack pair) has the *.zip suffi
 
 ::: zone-end
 
-::: zone pivot="azuremonitor"
+::: zone pivot="azuremonitor, fabric"
 
-This capability isn't supported in Azure Monitor
+This capability isn't supported.
 
 ::: zone-end

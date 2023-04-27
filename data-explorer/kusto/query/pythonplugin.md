@@ -3,13 +3,13 @@ title: Python plugin - Azure Data Explorer
 description: Learn how to use the Python plugin to run user-defined functions using a Python script.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/28/2023
+ms.date: 04/24/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
 # Python plugin
 
-::: zone pivot="azuredataexplorer, fabric"
+::: zone pivot="azuredataexplorer"
 
 The Python plugin runs a user-defined function (UDF) using a Python script. The Python script gets tabular data as its input, and produces tabular output.
 The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running on the cluster's nodes.
@@ -37,27 +37,12 @@ The following variables are reserved for interaction between Kusto Query Languag
 * `kargs`: The value of the *script_parameters* argument, as a Python dictionary.
 * `result`: A `pandas` DataFrame created by the Python script, whose value becomes the tabular data that gets sent to the Kusto query operator that follows the plugin.
 
-::: zone-end
-
-::: zone pivot="azuredataexplorer"
-
 ## Enable the plugin
 
 The plugin is disabled by default. Before you start, review the list of [prerequisites](../concepts/sandboxes.md#prerequisites-and-limitations).
 
 To enable the plugin and select the version of the Python image, see [Enable language extensions on your cluster](../../language-extensions.md#enable-language-extensions-on-your-cluster).
 
-::: zone-end
-
-::: zone pivot="fabric"
-
-## Enable the plugin
-
-The plugin is disabled by default. 
-
-To enable the plugin, 
-
-::: zone-end
 
 ## Python sandbox image
 
@@ -261,8 +246,8 @@ range ID from 1 to 3 step 1
 
 ::: zone-end
 
-::: zone pivot="azuremonitor"
+::: zone pivot="azuremonitor, fabric"
 
-This capability isn't supported in Azure Monitor
+This capability isn't supported.
 
 ::: zone-end
