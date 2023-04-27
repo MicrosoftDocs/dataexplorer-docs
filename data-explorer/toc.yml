@@ -522,6 +522,14 @@ items:
       href: kusto/api/index.md
     - name: Sample app generator
       href: sample-app-generator-wizard.md
+    - name: Get started
+      items:
+      - name: Set up your environment
+        href: kusto/api/get-started/app-set-up.md
+      - name: Create your first app
+        href: kusto/api/get-started/app-hello-kusto.md
+      - name: Create an app to run basic queries
+        href: kusto/api/get-started/app-basic-query.md
     - name: Connection strings
       items:
       - name: Connection strings overview
