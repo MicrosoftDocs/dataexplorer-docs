@@ -3,7 +3,7 @@ title: R plugin (Preview) - Azure Data Explorer
 description: Learn how to use the R plugin (Preview) to run a user-defined function using an R script.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/24/2023
+ms.date: 04/27/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -143,7 +143,7 @@ The example snips below assume local R machine on Windows environment.
     [1] "R version 3.4.4 (2018-03-15)"
     ```
 
-    If needed you can download it from [here](https://cran.r-project.org/bin/windows/base/old/3.4.4/).
+    If needed you can download it from [here](https://cran.r-project.org/).
 
 1. Launch the x64 RGui
 
