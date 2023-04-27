@@ -4,8 +4,13 @@ description: This article describes the ks_test_fl() user-defined function in Az
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # ks_test_fl()
+
+::: zone pivot="azuredataexplorer, azuremonitor"
+
 
 The function `ks_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Kolmogorov Smirnov Test](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test).
 
@@ -150,3 +155,11 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | Test #1 | [23.64, 20.57, 20.42] | [27.1, 22.12, 33.56] | 0.66666666666666674 | 0.3197243332709643 |
 | Test #2 | [20.85, 21.89, 23.41] | [35.09, 30.02, 26.52] | 1 | 0.03262165165202116 |
 | Test #3 | [20.13, 20.5, 21.7, 22.02] | [32.2, 32.79, 33.9, 34.22] | 1 | 0.01106563701580386 |
+
+::: zone-end
+
+::: zone pivot="fabric"
+
+This feature isn't supported.
+
+::: zone-end

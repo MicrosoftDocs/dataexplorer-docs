@@ -4,8 +4,12 @@ description: This article describes the normality_test_fl() user-defined functio
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # normality_test_fl()
+
+::: zone pivot="azuredataexplorer, azuremonitor"
 
 The function `normality_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Normality Test](https://en.wikipedia.org/wiki/Normality_test).
 
@@ -146,3 +150,11 @@ datatable(id:string, sample1:dynamic) [
 | Test #1 | [23.64, 20.57, 20.42, 27.1, 22.12, 33.56, 23.64, 20.57] | 7.4881873153941036 | 0.023657060728893706 |
 | Test #2 | [20.85, 21.89, 23.41, 35.09, 30.02, 26.52, 20.85, 21.89] | 3.29982750330276 | 0.19206647332255408 |
 | Test #3 | [20.13, 20.5, 21.7, 22.02, 32.2, 32.79, 33.9, 34.22, 20.13, 20.5] | 6.9868433851364324 | 0.030396685911910585 |
+
+::: zone-end
+
+::: zone pivot="fabric"
+
+This feature isn't supported.
+
+::: zone-end
