@@ -52,14 +52,14 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
 
 ### Install the package
 
-This section walks you through installing the the Kusto client library in your environment.
+This section walks you through installing the Kusto client library in your environment.
 
 The following table lists the client libraries and the corresponding package names.
 
 | Library Name | Description |
-| -- | -- |
+|--|--|
 | Kusto Data library | Provides a client for connecting to clusters. Use the client library to [query data](../../query/index.md) or run [management commands](../../management/index.md). |
-| Kusto Ingest library | Provides a client for ingesting data into into clusters. For more information, see [ingest data](../../../ingest-data-overview.md) into your cluster. |
+| Kusto Ingest library | Provides a client for ingesting data into clusters. For more information, see [ingest data](../../../ingest-data-overview.md) into your cluster. |
 
 Add the Kusto client libraries for your preferred language to your project, or use the package manager appropriate for your language to install the client libraries.
 

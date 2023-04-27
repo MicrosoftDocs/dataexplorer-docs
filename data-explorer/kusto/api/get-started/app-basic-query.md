@@ -22,7 +22,7 @@ In this article, you learn how to:
 
 ## Run a basic query and process the results
 
-In your preferred IDE or text editor, create a file named `basic-query` with the language appropriate extension, and then add code to do the following:
+In your preferred IDE or text editor, create a file named `basic-query` with the language appropriate extension, and then add the following code:
 
 1. Create a client app that connects to the [help cluster](https://dataexplorer.azure.com/clusters/help).
 
@@ -377,7 +377,7 @@ public class BasicQuery {
 
 ## Run your app
 
-In a command shell, run your app using the following command:
+In a command shell, use the following command to run your app:
 
 ### [C\#](#tab/csharp)
 
@@ -561,7 +561,7 @@ KustoOperationResult response = kusto_client.execute(database, query, crp);
 
 ## Use query parameters to protect user input
 
-This feature is important for maintaining the security and protection of your data, safeguarding it from potential malicious actors that may attempt to gain unauthorized access to or corrupt your data. For more information about parameterized queries, see [Query parameters declaration statement](../../query/queryparametersstatement.md).
+Query parameters are important for maintaining the security and protection of your data. It safeguards it from potential malicious actors that may attempt to gain unauthorized access to or corrupt your data. For more information about parameterized queries, see [Query parameters declaration statement](../../query/queryparametersstatement.md).
 
 For example, you can modify the previous code to pass the *EventType* value and *DailyDamage* minimum value as parameters to the query. To use parameters:
 

@@ -21,7 +21,7 @@ In this article, you learn how to:
 
 ## Create your app
 
-In your preferred IDE or text editor, create a file named `hello-kusto` with the language appropriate extension, and then add code to do the following:
+In your preferred IDE or text editor, create a file named `hello-kusto` with the language appropriate extension, and then add the following code:
 
 1. Add the Kusto client and string builder classes.
 
@@ -425,7 +425,7 @@ public class HelloKusto
 
 ## Run your app
 
-In a command shell, run your app using the following command:
+In a command shell, use the following command to run your app:
 
 ### [C\#](#tab/csharp)
 
