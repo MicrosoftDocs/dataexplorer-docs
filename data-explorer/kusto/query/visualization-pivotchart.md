@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # Pivot chart
 
-::: zone pivot="azuredataexplorer, fabric" fabric"
+::: zone pivot="azuredataexplorer, fabric"
 
 Displays a pivot table and chart. You can interactively select data, columns, rows and various chart types.
 

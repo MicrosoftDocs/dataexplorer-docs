@@ -5,7 +5,7 @@ ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 04/24/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all-all
+zone_pivot_groups: kql-flavors-all
 ---
 # Python plugin
 
