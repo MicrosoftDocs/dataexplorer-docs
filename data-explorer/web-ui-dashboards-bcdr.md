@@ -7,7 +7,7 @@ ms.date: 04/26/2023
 ms.custom: mode-portal
 ---
 
-## Dashboards business continuity and disaster recovery overview
+# Dashboards business continuity and disaster recovery overview
 
 Azure Data Explorer Dashboards' business continuity and disaster recovery allows your business to view and edit dashboards during disruptions. This article covers the topics of availability and disaster recovery for Azure Data Explorer Dashboards.
 
