@@ -546,7 +546,7 @@ items:
       - name: Integrate Azure Data Explorer capabilities overview
         displayName: monaco web UI
         href: kusto/api/monaco/monaco-overview.md
-      - name: Embed the web UI in an IFrame
+      - name: Embed the web UI in an Iframe
         displayName: monaco web UI
         href: kusto/api/monaco/host-web-ux-in-iframe.md
       - name: Integrate the Monaco Editor with Kusto query support
