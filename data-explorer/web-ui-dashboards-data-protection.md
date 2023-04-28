@@ -13,7 +13,7 @@ Azure Data Explorer Dashboards tell a story through visualizations, and is an ex
 
 This article discusses the steps that Microsoft takes to help keep your dashboards secure and private.
 
-This information will be particularly valuable for those who have prior experience with the Azure Data Explorer Web UI and are interested in learning about Microsoft's approach to safeguarding stored assets associated with [Azure Data Explorer Dashboards](https://dataexplorer.azure.com/dashboards).
+This information is useful for Azure Data Explorer Web UI users with prior experience who want to learn about Microsoft's approach to safeguarding assets stored by [Azure Data Explorer Dashboards](https://dataexplorer.azure.com/dashboards).
 
 ## Our commitment
 
@@ -25,9 +25,9 @@ Azure Data Explorer Dashboards is hosted entirely on Azure. Azure Data Explorer 
 
 Azure Data Explorer Dashboards uses Azure Cosmos DB as the primary repository for service metadata and customer data.
 
-Azure Data Explorer Dashboards uses AAD based authentication via Azure Active Directory and Microsoft accounts.
+Azure Data Explorer Dashboards uses Microsoft Azure Active Directory (Azure AD) based authentication via Azure AD and Microsoft accounts.
 
-Authorization is validated based on the user's explicit permissions, as well as permissions inherited through group membership. Dashboards' editors can manage the permissions for their dashboards.
+Authorization is validated based on the user's explicit permissions. Dashboards' editors can manage the permissions for their dashboards. Permissions can be given to Azure AD Users or Groups.
 
 ## Data privacy
 
@@ -41,19 +41,19 @@ For more information about the GDPR regulation, see the [overview page in the Mi
 
 ### Data residency and sovereignty
 
-Azure Data Explorer Dashboards is available in the following seven geographies across the world: United States, Canada, Europe, United Kingdom, India, Australia, and Brazil. All tenants that were added before Azure Data Explorer Dashboards was declared as Global Available were auto-assigned to Europe geography.
+Azure Data Explorer Dashboards is available in the following seven geographies across the world: United States, Canada, Europe, United Kingdom, India, Australia, and Brazil. All tenants that were added before Azure Data Explorer Dashboards was declared as Global Available were autoassigned to Europe geography.
 
-New tenants are assigned a geography based on the tenant's data boundary or the tenant's country/region. If there is no matching Geography, the default one will be Europe.
-To choose a different geography use the assistance of Microsoft support.
+New tenants are assigned a geography based on the tenant's data boundary or the tenant's country/region. If there's no matching Geography, the default one is Europe.
+To choose a different geography, use the assistance of Microsoft support.
 
 Azure Data Explorer Dashboards ensures that customer data remains within a specific geography, without moving or replicating it outside its boundaries. Data is geo-replicated to a secondary region within the same geography.
 
 ### Transferring your data
 
-We don't transfer customer data outside of your tenant's geography. However, we will transfer your data if we need to do any of the following actions:
+We don't transfer customer data outside of your tenant's geography. However, we transfer your data if we need to do any of the following actions:
 
 * Provide customer support
 * Troubleshoot the service
 * Comply with legal requirements
 
-Microsoft doesn't control or limit the geographies from which you or your users may access your data. If a user navigates to <https://dataexplorer.azure.com/dashboards> while not in the tenant's geography, the request will not get blocked. Instead the user will see a warning.
+Microsoft doesn't control or limit the geographies from which you or your users may access your data. If a user navigates to <https://dataexplorer.azure.com/dashboards> while not in the tenant's geography, the request won't get blocked.

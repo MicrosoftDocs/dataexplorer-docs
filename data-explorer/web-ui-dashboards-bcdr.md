@@ -15,11 +15,11 @@ Azure Data Explorer Dashboards' business continuity and disaster recovery allows
 
 ### Accidental dashboard deletion
 
-Mistakes are bound to happen, and it is possible for users to unintentionally delete a dashboard. If you find yourself in this situation, please use the assistance of Microsoft support to restore your dashboard. 12 weeks from the deletion date, the dashboard can no longer be restored.
+Mistakes are bound to happen, and it's possible for users to unintentionally delete a dashboard. If you find yourself in this situation, use the assistance of Microsoft support to restore your dashboard. Twelve weeks from the deletion date, the dashboard can no longer be restored.
 
 ### Improper dashboard modification
 
-In the event that a dashboard has been improperly modified, such as inadvertently deleting a tile and saving the alterations, it should be noted that Kusto Dashboard does not offer rollback.
+If a dashboard has been improperly modified, such as inadvertently deleting a tile and saving the alterations, it should be noted that Kusto Dashboard doesn't offer rollback.
 
 ## High availability
 
@@ -27,9 +27,9 @@ High availability refers to the fault-tolerance of Azure Data Explorer Dashboard
 
 ### Persistence layer
 
-Azure Data Explorer Dashboards leverages Azure Cosmos DB as its durable persistence layer.
+Azure Data Explorer Dashboards uses Azure Cosmos DB as its durable persistence layer.
 
-Azure Cosmos DB is used with a Geo-zone-redundant configuration. Azure Data Explorer Dashboards service is available in seven geographies across the world. Every geography will have an Azure Cosmos DB with at least one replica in a pair region. Additionally, availability Zones are utilized in every Azure region that supports them.
+Azure Cosmos DB is used with a Geo-zone-redundant configuration. Azure Data Explorer Dashboards service is available in seven geographies across the world. Every geography has an Azure Cosmos DB with at least one replica in a pair region. Additionally, availability Zones are utilized in every Azure region that supports them.
 
 ### Compute layer
 
