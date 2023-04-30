@@ -263,6 +263,14 @@ To color the rows of results based on a column value, follow these steps:
 
     :::image type="content" source="media/web-query-data/color-by-value-table.png" alt-text="Screenshot of color by value." lightbox="media/web-query-data/color-by-value-table.png":::
 
+## Color results by error level severity
+
+The results grid can color results based on error severity or verbosity level. To turn on this feature, alter your settings as described in [Highlight error levels](web-customize-settings.md#highlight-error-levels).
+
+| Error level color scheme in **Light** mode | Error level color scheme in **Dark** mode |
+|--|--|
+| :::image type="content" source="media/web-query-data/light-mode.png" alt-text="Screenshot of color legend in light mode."::: | :::image type="content" source="media/web-query-data/dark-mode.png" alt-text="Screenshot of color legend in dark mode."::: |
+
 ## Hide empty columns
 
 To hide or show empty columns, select the eye icon in the menu of the results grid.
