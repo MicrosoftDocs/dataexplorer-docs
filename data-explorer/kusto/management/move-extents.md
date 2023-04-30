@@ -28,25 +28,25 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 
 Move all extents:
 
-`.move` [`async`] `extents` `all` `from` `table` *sourceTableName* `to` `table` *destinationTableName* [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
+`.move` [`async`] `extents` `all` `from` `table` *sourceTableName* `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`]
 
 Move extents specified by ID:
 
-`.move` [`async`] `extents` `from` `table` *sourceTableName* `to` `table` *destinationTableName* [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `(` *GUID* [`,` ...] `)`
+`.move` [`async`] `extents` `from` `table` *SourceTableName* `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `(` *GUID* [`,` ...] `)`
 
 Move extents specified by query results:
 
-`.move` [`async`] `extents` `to` `table` *destinationTableName* [ `with` `(`*propertyName* `=` *propertyValue* [`,`...]`)`] `<|` *query*
+`.move` [`async`] `extents` `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue* [`,`...]`)`] `<|` *Query*
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |`async`|string||If specified, the command runs asynchronously.|
-|*sourceTableName*|string|&check;|The name of the table containing the extents to move.|
-|*destinationTableName*|string|&check;|The name of the table to which to move the extents.|
-|*propertyName*, *propertyValue*|string||One or more [Supported properties](#supported-properties).|
-|*query*|string|&check;|A query whose results specify the extent IDs in the source tables to move.|
+|*SourceTableName*|string|&check;|The name of the table containing the extents to move.|
+|*DestinationTableName*|string|&check;|The name of the table to which to move the extents.|
+|*PropertyName*, *PropertyValue*|string||One or more [Supported properties](#supported-properties).|
+|*Query*|string|&check;|A query whose results specify the extent IDs in the source tables to move.|
 
 ## Supported properties
 
