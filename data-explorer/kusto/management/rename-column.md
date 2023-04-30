@@ -39,7 +39,7 @@ Swaps the names of two existing columns in the same table.
 
 `.rename` `columns` *NewColumnName* `=` [ *DatabaseName*`.`]*TableName*`.`*CurrentColumnName* `,` ...
 
-## Parameters
+### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
