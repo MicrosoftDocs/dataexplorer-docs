@@ -7,7 +7,7 @@ ms.date: 04/25/2023
 ---
 # .alter ingestion time policy
 
-Turns on or turns off a table's [ingestion time policy](ingestiontimepolicy.md). This policy adds an optional policy for tables to create a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
+Turns on or turns off a table's [ingestion time policy](ingestiontimepolicy.md). This policy adds a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
 
 ## Permissions
 
