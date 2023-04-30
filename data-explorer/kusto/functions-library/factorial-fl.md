@@ -3,13 +3,13 @@ title: factorial_fl() - Azure Data Explorer
 description: This article describes factorial_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 04/30/2023
 ---
 # factorial_fl()
 
 Calculate factorial.
 
-The function `factorial_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that calculates [factorial](https://en.wikipedia.org/wiki/Factorial) of positive integers (*n!*). It's a simple wrapper of the Azure Data Explorer native [gamma()](../query/gammafunction.md) function.
+The function `factorial_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that calculates [factorial](https://en.wikipedia.org/wiki/Factorial) of positive integers (*n!*). It's a simple wrapper of the native [gamma()](../query/gammafunction.md) function.
 
 ## Syntax
 

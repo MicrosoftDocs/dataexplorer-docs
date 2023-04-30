@@ -3,11 +3,11 @@ title: predict_fl() - Azure Data Explorer
 description: This article describes the predict_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 04/30/2023
 ---
 # predict_fl()
 
-The function `predict_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that predicts using an existing trained machine learning model. This model was built using [Scikit-learn](https://scikit-learn.org/stable/), serialized to string, and saved in a standard Azure Data Explorer table.
+The function `predict_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that predicts using an existing trained machine learning model. This model was built using [Scikit-learn](https://scikit-learn.org/stable/), serialized to string, and saved in a standard table.
 
 ## Prerequisites
 
