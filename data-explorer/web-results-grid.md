@@ -263,7 +263,7 @@ To color the rows of results based on a column value, follow these steps:
 
     :::image type="content" source="media/web-query-data/color-by-value-table.png" alt-text="Screenshot of color by value." lightbox="media/web-query-data/color-by-value-table.png":::
 
-## Color results by error level severity
+## Color results by error level
 
 The results grid can color results based on error severity or verbosity level. To turn on this feature, alter your settings as described in [Highlight error levels](web-customize-settings.md#highlight-error-levels).
 
