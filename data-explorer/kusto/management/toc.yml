@@ -658,6 +658,7 @@ items:
     href: operations.md
   - name: Queries
     href: queries.md
+    displayName: .show running queries .cancel query 
   - name: Streaming ingestion statistics
     href: streamingingestionstatistics.md
 - name: Access control
