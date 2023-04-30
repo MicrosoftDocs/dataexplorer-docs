@@ -29,8 +29,6 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-Delete the row order policy:
-
 ```kusto
 .show table events policy roworder 
 ```
