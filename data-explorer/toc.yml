@@ -522,7 +522,7 @@ items:
       href: kusto/api/index.md
     - name: Sample app generator
       href: sample-app-generator-wizard.md
-    - name: Get started
+    - name: Write code with SDKs
       items:
       - name: Set up your environment
         href: kusto/api/get-started/app-set-up.md

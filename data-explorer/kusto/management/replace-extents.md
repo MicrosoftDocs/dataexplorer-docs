@@ -3,7 +3,7 @@ title: .replace extents - Azure Data Explorer
 description: This article describes the replace extents command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/30/2023
 ---
 # .replace extents
 
@@ -13,7 +13,7 @@ and then drops the specified extents from the destination table.
 All of the drop and move operations are done in a single transaction.
 
 > [!NOTE]
-> Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
+> Data shards are called **extents**, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (data shards) overview](extents-overview.md).
 
 ## Permissions
@@ -22,39 +22,43 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 
 ## Syntax
 
-`.replace` [`async`] `extents` `in` `table` *DestinationTableName* `with` `(` `extentCreatedOnFrom`='*FromDate*' `,` `extentCreatedOnTo`='*ToDate*'`)` `<| 
-{`*query for extents to be dropped from table*`},{`*query for extents to be moved to table*`}`
+`.replace` [`async`] `extents` `in` `table` *DestinationTableName* `with` `(` `extentCreatedOnFrom` `=` *FromDate*`,` `extentCreatedOnTo` `=`*ToDate* `)` `<|`
+`{`*ExtentsToDropQuery*`},{`*ExtentsToMoveQuery*`}`
 
-* `async` (optional): Execute the command asynchronously.
-    * An Operation ID (Guid) is returned.
-    * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command.
-    * The results of a successful execution can be retrieved. Use the [.show operation details](operations.md#show-operation-details) command.
+## Parameters
 
-To specify which extents should be dropped or moved, use one of two queries.
-* *query for extents to be dropped from table*: The results of this query specify the extent IDs that should be dropped from the destination table.
-* *query for extents to be moved to table*: The results of this query specify the extent IDs in the source tables that should be moved to the destination table.
-
-Both queries should return a recordset with a column called "ExtentId".
+|Name|Type|Required|Description|
+|--|--|--|--|
+|`async`|string||If specified, the command runs asynchronously.|
+|*DestinationTableName*|string|&check;|The name of the table to which to move the extents.|
+|*FromDate*|datetime||The query window start date.|
+|*ToDate*|datetime||The query window end date.|
+|*ExtentsToDropQuery*|string|&check;|The results of this query specify the extent IDs that should be dropped from the destination table. Should return a recordset with a column called "ExtentId".|
+|*ExtentsToMoveQuery*|string|&check;|The results of this query specify the extent IDs in the source tables that should be moved to the destination table. Should return a recordset with a column called "ExtentId".|
 
 > [!NOTE]
-> For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range
+> For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range.
 
 ## Restrictions
 
 * Both source and destination tables must be in the context database.
-* All extents specified by the *query for extents to be dropped from table* are expected to belong to the destination table.
+* All extents specified by the *ExtentsToDropQuery* are expected to belong to the destination table.
 * All columns in the source tables are expected to exist in the destination table with the same name and data type.
 
-## Return output (for sync execution)
+## Returns
 
-Output parameter |Type |Description
----|---|---
-OriginalExtentId |string |A unique identifier (GUID) for the original extent in the source table that has been moved to the destination table, or the extent in the destination table that has been dropped.
-ResultExtentId |string |A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Empty, if the extent was dropped from the destination table. Upon failure: "Failed".
-Details |string |Includes the failure details if the operation fails.
+When the command is run synchronously, a table with the following schema is returned.
+
+| Output parameter | Type | Description |
+|--|--|--|
+| OriginalExtentId | string | A unique identifier (GUID) for the original extent in the source table that has been moved to the destination table, or the extent in the destination table that has been dropped. |
+| ResultExtentId | string | A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Empty, if the extent was dropped from the destination table. Upon failure: "Failed". |
+| Details | string | Includes the failure details if the operation fails. |
+
+When the command is run asynchronously, an operation ID (GUID) is returned. Monitor the operation's status with the [.show operations](operations.md#show-operations) command, and retrieve the results of a successful execution with the [.show operation details](operations.md#show-operation-details) command.
 
 > [!NOTE]
-> The command will fail if extents returned by the *extents to be dropped from table* query don't exist in the destination table. This may happen if the extents were merged before the replace command was executed.
+> The command will fail if extents returned by the *ExtentsToDropQuery* query don't exist in the destination table. This may happen if the extents were merged before the replace command was executed.
 > To make sure the command fails on missing extents, check that the query returns the expected ExtentIds. Example #1 below will fail if the extent to drop doesn't exist in table *MyOtherTable*. Example #2, however, will succeed even though the extent to drop doesn't exist, since the query to drop didn't return any extent IDs.
 
 ## Examples
