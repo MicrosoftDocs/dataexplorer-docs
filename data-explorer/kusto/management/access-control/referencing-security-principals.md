@@ -3,15 +3,15 @@ title: Referencing security principals - Azure Data Explorer
 description: This article describes how to reference security principals and identity providers in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/08/2022
+ms.date: 04/30/2023
 ---
 # Referencing security principals
 
-The Azure Data Explorer authorization model allows for the use of Azure Active Directory (Azure AD) user and application identities and Microsoft Accounts (MSAs) as security principals. This article provides an overview of the supported principal types for both Azure AD and MSAs, and demonstrates how to properly reference these principals when assigning security roles using [management commands](../security-roles.md).
+The Kusto authorization model allows for the use of Azure Active Directory (Azure AD) user and application identities and Microsoft Accounts (MSAs) as security principals. This article provides an overview of the supported principal types for both Azure AD and MSAs, and demonstrates how to properly reference these principals when assigning security roles using [management commands](../security-roles.md).
 
 ## Azure Active Directory
 
-The recommended way to access Azure Data Explorer is by authenticating to the Azure AD service. Azure AD is an identity provider capable of authenticating security principals and coordinating with other identity providers, such as Microsoft's Active Directory.
+The recommended way to access your cluster is by authenticating to the Azure AD service. Azure AD is an identity provider capable of authenticating security principals and coordinating with other identity providers, such as Microsoft's Active Directory.
 
 Azure AD supports the following authentication scenarios:
 
@@ -21,7 +21,7 @@ Azure AD supports the following authentication scenarios:
 > [!NOTE]
 >
 > * Azure AD does not allow authentication of service accounts that are by definition on-premises AD entities. The Azure AD equivalent of an AD service account is the Azure AD application.
-> * Azure Data Explorer only supports Security Group (SG) principals and not Distribution Group (DG) principals. An attempt to set up access for a DG on the cluster will result in an error.
+> * Only supports Security Group (SG) principals and not Distribution Group (DG) principals are supported. An attempt to set up access for a DG on the cluster will result in an error.
 
 ### Referencing Azure AD principals and groups
 
@@ -64,7 +64,7 @@ The following example uses an app ID and tenant name to assign the app the user 
 
 ## Microsoft Accounts (MSAs)
 
-Azure Data Explorer supports user authentication for Microsoft Accounts (MSAs). MSAs are all of the Microsoft-managed non-organizational user accounts. For example, `hotmail.com`, `live.com`, `outlook.com`.
+User authentication for Microsoft Accounts (MSAs) is supported. MSAs are all of the Microsoft-managed non-organizational user accounts. For example, `hotmail.com`, `live.com`, `outlook.com`.
 
 ### Referencing MSA principals
 
