@@ -7,7 +7,7 @@ ms.date: 03/08/2023
 ---
 # .alter table update policy
 
-Use this command to change the table update policy. The [update policy](updatepolicy.md) causes data to be automatically appended to a target table whenever new data is inserted into the source table, based on a transformation query that runs on the data inserted into the source table.
+Use this command to change the table update policy. The [update policy](updatepolicy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
 
 > [!NOTE]
 > The source table and the table for which the update policy is defined must be in the same database.
