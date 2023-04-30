@@ -7,7 +7,7 @@ ms.date: 04/25/2023
 ---
 # .alter cluster cache policy
 
-Changes the cluster's cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. With the [cache policy](cachepolicy.md), your cluster can describe data artifacts so that important data can take priority.
+Changes the cluster's cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 
 ## Permissions
 
