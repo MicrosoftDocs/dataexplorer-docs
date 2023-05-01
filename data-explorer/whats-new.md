@@ -3,11 +3,45 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/03/2023
+ms.date: 05/01/2023
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## April 2023
+
+**API**
+
+| Article title | Description |
+|--|--|
+|- [Basic query: Create an app to run basic queries](/azure/data-explorer/kusto/api/get-started/app-basic-query.md) </br> - [Hello Kusto: Create your first Kusto client app](/azure/data-explorer/kusto/api/get-started/app-hello-kusto.md) </br> - [Set up your development environment to use Kusto client libraries](/azure/data-explorer/kusto/api/get-started/app-set-up.md) | New articles. Describe how to create your first Kusto client app.|
+
+**General**
+
+| Article title | Description |
+|--|--|
+|[Azure Data Explorer web UI results grid](web-results-grid.md)| Updated article. New features added.|
+
+**Functions library**
+
+| Article title | Description |
+|--|--|
+|[Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md)| Updated article. Textual analytics functions added.|
+|- [log_reduce_fl()](/azure/data-explorer/kusto/functions-library/log-reduce-fl.md) </br> - [log_reduce_full_fl()](/azure/data-explorer/kusto/functions-library/log-reduce-full-fl.md) </br> - [log_reduce_predict_fl()](/azure/data-explorer/kusto/functions-library/log-reduce-predict-fl.md) </br> - [log_reduce_predict_full_fl()](/azure/data-explorer/kusto/functions-library/log-reduce-predict-full-fl.md) </br> - [log_reduce_train_fl()](/azure/data-explorer/kusto/functions-library/log-reduce-train-fl.md)| New articles. Describe how to find common patterns in textual logs. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+|[Use a managed identity to run a continuous export job](/azure/data-explorer/kusto/management/data-export/continuous-export-with-managed-identity.md)| New article. Describes how to use a managed identity for continuous export.
+
+**Query**
+
+| Article title | Description |
+|--|--|
+|[Scalar function types at a glance](/azure/data-explorer/kusto/query/scalarfunctions.md) | Updated article. String functions added.|
+|- [punycode_from_string()](/azure/data-explorer/kusto/query/punycode-from-string.md) </br> - [punycode_to_string()](/azure/data-explorer/kusto/query/punycode-to-string.md)| New articles. Describe how to encode and decode Punycode from.|
 
 ## March 2023
 
@@ -206,17 +240,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [Ingest data using managed identity authentication](ingest-data-managed-identity.md) | New Article. Queue Azure Storage blobs for ingestion using managed identity authentication. |
 |- [Azure Data Explorer connector for Microsoft Power Automate](flow.md) <br />- [Usage examples for Power Automate connector](flow-usage.md) <br />- [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md) <br />- [Microsoft Logic App and Azure Data Explorer](kusto/tools/logicapps.md)| Updated articles. General availability (GA). Content refreshed. |
 | [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated Article. Added section on drillthrough. |
-
-## April 2022
-
-| Article title | Description |
-|--|--|
-| - [Enable disk encryption for your cluster](cluster-encryption-disk.md)<br />- [Secure your cluster with encryption](cluster-encryption-overview.md)<br />- [Enable double encryption for your cluster](cluster-encryption-double.md) | New articles. Describing securing your cluster using disk encryption. |
-| - [Create a managed private endpoint for your cluster](security-network-managed-private-endpoint-create.md)<br />- [Network security](security-network-overview.md)<br />- [Create a private endpoint for your cluster](security-network-private-endpoint-create.md)<br />- [Troubleshoot private endpoints](security-network-private-endpoint-troubleshoot.md)<br />- [Private endpoints for your cluster](security-network-private-endpoint.md)<br />- [Restrict outbound access from your cluster](security-network-restrict-outbound-access.md)<br />- [Restrict public access to your cluster](security-network-restrict-public-access.md)| New articles. Describes private endpoint security. |
-
-**Management**
-
-| Article title | Description |
-|--|--|
-| [Streaming ingestion failures](kusto/management/streamingingestionfailures.md) | New article. Describes the command to show streaming ingestion failures. |
-| [Streaming ingestion statistics](kusto/management/streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |
