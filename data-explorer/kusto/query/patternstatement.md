@@ -113,7 +113,7 @@ union App('a2').Data, App('a1').Metrics
 
 ### Normalization
 
-Syntax variations are allowed when invoking patterns. For example, the following union returns a single pattern expression since all the invocations are of the same pattern.
+There are syntax variations for invoking patterns. For example, the following union returns a single pattern expression since all the invocations are of the same pattern.
 
 ```kusto
 declare pattern app = (applicationId:string)[eventType:string]
