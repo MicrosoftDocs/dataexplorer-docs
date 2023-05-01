@@ -1,12 +1,12 @@
 ---
-title: Machine learning capability in Azure Data Explorer
-description: Use machine learning clustering for Root Cause Analysis in Azure Data Explorer.
+title: Machine learning capability - Azure Data Explorer
+description: Use machine learning clustering for Root Cause Analysis with Kusto Query Language (KQL).
 ms.reviewer: adieldar
 ms.topic: how-to
-ms.date: 04/29/2019
+ms.date: 05/01/2023
 ---
 
-# Machine learning capability in Azure Data Explorer
+# Machine learning capability
 
 Azure Data Explorer is a Big Data analytics platform. It's used to monitor service health, QoS, or malfunctioning devices. The built-in [anomaly detection and forecasting](anomaly-detection.md) functions check for anomalous behavior. Once such a pattern is detected, a Root Cause Analysis (RCA) is run to mitigate or resolve the anomaly.
 
