@@ -9,6 +9,20 @@ ms.date: 07/06/2022
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
 
+## April 2022
+
+| Article title | Description |
+|--|--|
+| - [Enable disk encryption for your cluster](cluster-encryption-disk.md)<br />- [Secure your cluster with encryption](cluster-encryption-overview.md)<br />- [Enable double encryption for your cluster](cluster-encryption-double.md) | New articles. Describing securing your cluster using disk encryption. |
+| - [Create a managed private endpoint for your cluster](security-network-managed-private-endpoint-create.md)<br />- [Network security](security-network-overview.md)<br />- [Create a private endpoint for your cluster](security-network-private-endpoint-create.md)<br />- [Troubleshoot private endpoints](security-network-private-endpoint-troubleshoot.md)<br />- [Private endpoints for your cluster](security-network-private-endpoint.md)<br />- [Restrict outbound access from your cluster](security-network-restrict-outbound-access.md)<br />- [Restrict public access to your cluster](security-network-restrict-public-access.md)| New articles. Describes private endpoint security. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| [Streaming ingestion failures](kusto/management/streamingingestionfailures.md) | New article. Describes the command to show streaming ingestion failures. |
+| [Streaming ingestion statistics](kusto/management/streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |
+
 ## March 2022
 
 | Article title | Description |
