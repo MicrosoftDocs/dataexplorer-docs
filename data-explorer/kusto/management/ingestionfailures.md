@@ -3,11 +3,9 @@ title: Ingestion failures - Azure Data Explorer
 description: This article describes Ingestion failures in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/09/2021
+ms.date: 04/25/2023
 ---
-# Ingestion failures
-
-## .show ingestion failures
+# .show ingestion failures
 
 This command returns a result set that includes any ingestion failures that occur when the
 [data ingestion control commands](../../ingest-data-overview.md#ingest-control-commands) run.
@@ -26,44 +24,59 @@ Failures from all parts of the ingestion process appear in the ingestion [metric
 >
 > The retention period for ingestion failures is 14 days.
 
-**Syntax**
+## Syntax
 
-|Syntax option|Description|
-|---|---| 
-|`.show` `ingestion` `failures`                                       |Returns all recorded ingestion failures  
-|`.show` `ingestion` `failures` <code>&#124;</code> `where` ...       |Returns a filtered set of ingestion failures
-|`.show` `ingestion` `failures` `with(OperationId="`*OperationId*`")` |Returns ingestion failures for a specific Operation ID
+To return all recorded ingestion failures:
 
-**Results**
+`.show` `ingestion` `failures`
+
+To return a filtered set of ingestion failures:
+
+`.show` `ingestion` `failures` `|` `where` *Condition*
+
+To return an ingestion failure for a specific operation ID:
+
+`.show` `ingestion` `failures` `with` `(` `OperationId` `=` *OperationId* `)`
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*Condition*|string|&check;|The condition to match in order for the ingestion failure to be returned.|
+|*OperationId|guid|&check;|The operation ID of the ingestion failure to return.|
+
+## Returns
  
-|Output parameter           |Type     |Description                                                                              |
-|---------------------------|---------|-----------------------------------------------------------------------------------------|
-|OperationId                |String   |Operation identifier that can be used to view additional operation details via the <br> [.show operations](operations.md) command </br> 
-|Database                   |String   |Database on which the failure occurred
-|Table                      |String   |Table on which the failure occurred
-|FailedOn                   |DateTime |Date/time (in UTC) when the failure was registered 
-|IngestionSourcePath        |String   |Identifies the ingestion source (usually, an Azure Blob URI) 
-|Details                    |String   |Failure details. Provides insight into the actual ingestion failure root cause
-|FailureKind                |String   |Type of the failure (Permanent/Transient)
-|RootActivityId             |String   |Root Activity ID.
-|OperationKind              |String   |The ingestion operation type (phase) during which the failure was registered
-|OriginatesFromUpdatePolicy |Boolean  |Indicates whether the failure was registered while executing an [Update Policy](./show-table-update-policy-command.md)
-|ErrorCode                  |String   |Ingestion error code  
-|Principal                  |Int      |The principal whosе credentials were used for the ingestion  
-|User                       |Int      |The user who performed the ingestion  
-|IngestionProperties        |Int      |The ingestion properties that were sent for the ingestion operation
-|NumberOfSources            |Int      |The number if ingestion sources represented by this failure record  
-|ShouldRetry | Boolean | For internal use
+| Output parameter | Type | Description |
+|--|--|--|
+| OperationId | String | Operation identifier that can be used to view additional operation details via the <br> [.show operations](operations.md) command </br> |
+| Database | String | Database on which the failure occurred |
+| Table | String | Table on which the failure occurred |
+| FailedOn | DateTime | Date/time (in UTC) when the failure was registered |
+| IngestionSourcePath | String | Identifies the ingestion source (usually, an Azure Blob URI) |
+| Details | String | Failure details. Provides insight into the actual ingestion failure root cause |
+| FailureKind | String | Type of the failure (Permanent/Transient) |
+| RootActivityId | String | Root Activity ID. |
+| OperationKind | String | The ingestion operation type (phase) during which the failure was registered |
+| OriginatesFromUpdatePolicy | Boolean | Indicates whether the failure was registered while executing an [Update Policy](./show-table-update-policy-command.md) |
+| ErrorCode | String | Ingestion error code |
+| Principal | Int | The principal whosе credentials were used for the ingestion |
+| User | Int | The user who performed the ingestion |
+| IngestionProperties | Int | The ingestion properties that were sent for the ingestion operation |
+| NumberOfSources | Int | The number if ingestion sources represented by this failure record |
+| ShouldRetry | Boolean | For internal use |
  
-**Example**
- 
-|OperationId |Database |Table |FailedOn |IngestionSourcePath |Details |FailureKind |RootActivityId |OperationKind |OriginatesFromUpdatePolicy |ErrorCode |Principal |User |IngestionProperties| NumberOfSources
-|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--
-|3827def6-0773-4f2a-859e-c02cf395deaf |DB1 |Table1 |2017-02-14 22:25:03.1147331 |...url... |Stream with ID '*****.csv' has a malformed CSV format* |Permanent |3c883942-e446-4999-9b00-d4c664f06ef6 |DataIngestPull |0 |Stream_ClosingQuoteMissing |aadapp=xxxxxx| | Format=Csv| 1
-|841fafa4-076a-4cba-9300-4836da0d9c75 |DB1 |Table1 |2017-02-14 22:34:11.2565943 |...url... |Stream with ID '*****.csv' has a malformed CSV format* |Permanent |48571bdb-b714-4f32-8ddc-4001838a956c |DataIngestPull | 0|Stream_ClosingQuoteMissing |aadapp=xxxxxx| | Format=Csv| 1
-|e198c519-5263-4629-a158-8d68f7a1022f |DB1 |Table1 |2017-02-14 22:34:44.5824741 |...url... |Stream with ID '*****.csv' has a malformed CSV format* |Permanent |5e31ab3c-e2c7-489a-827e-e89d2d691ec4 |DataIngestPull | 0|Stream_ClosingQuoteMissing |aadapp=xxxxxx| | Format=Csv| 1
-|a9f287a1-f3e6-4154-ad18-b86438da0929 |DB1 |Table1 |2017-02-14 22:36:26.5525250 |...url... |Unknown error occurred: Exception of type 'System.Exception' was thrown |Transient |9b7bb017-471e-48f6-9c96-d16fcf938d2a |DataIngestPull | 0|Unknown |aadapp=xxxxxx| | Format=Csv| 10
-|9edb3ecc-f4b4-4738-87e1-648eed2bd998 |DB1 |Table1 |2017-02-14 23:52:31.5460071 |...url... |Failed to download source from Azure storage - access forbidden |Permanent |21fa0dd6-cd7d-4493-b6f7-78916ce0d617 |DataIngestPull | 0|Download_Forbidden |aadapp=xxxxxx| | Format=Csv| 1
+## Example
+
+The following table is an example output from the `.show` `ingestion` `failures` command.
+
+| OperationId | Database | Table | FailedOn | IngestionSourcePath | Details | FailureKind | RootActivityId | OperationKind | OriginatesFromUpdatePolicy | ErrorCode | Principal | User | IngestionProperties | NumberOfSources |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| 3827def6-0773-4f2a-859e-c02cf395deaf | DB1 | Table1 | 2017-02-14 22:25:03.1147331 | ...url... | Stream with ID '*****.csv' has a malformed CSV format* | Permanent | 3c883942-e446-4999-9b00-d4c664f06ef6 | DataIngestPull | 0 | Stream_ClosingQuoteMissing | aadapp=xxxxxx |  | Format=Csv | 1 |
+| 841fafa4-076a-4cba-9300-4836da0d9c75 | DB1 | Table1 | 2017-02-14 22:34:11.2565943 | ...url... | Stream with ID '*****.csv' has a malformed CSV format* | Permanent | 48571bdb-b714-4f32-8ddc-4001838a956c | DataIngestPull | 0 | Stream_ClosingQuoteMissing | aadapp=xxxxxx |  | Format=Csv | 1 |
+| e198c519-5263-4629-a158-8d68f7a1022f | DB1 | Table1 | 2017-02-14 22:34:44.5824741 | ...url... | Stream with ID '*****.csv' has a malformed CSV format* | Permanent | 5e31ab3c-e2c7-489a-827e-e89d2d691ec4 | DataIngestPull | 0 | Stream_ClosingQuoteMissing | aadapp=xxxxxx |  | Format=Csv | 1 |
+| a9f287a1-f3e6-4154-ad18-b86438da0929 | DB1 | Table1 | 2017-02-14 22:36:26.5525250 | ...url... | Unknown error occurred: Exception of type 'System.Exception' was thrown | Transient | 9b7bb017-471e-48f6-9c96-d16fcf938d2a | DataIngestPull | 0 | Unknown | aadapp=xxxxxx |  | Format=Csv | 10 |
+| 9edb3ecc-f4b4-4738-87e1-648eed2bd998 | DB1 | Table1 | 2017-02-14 23:52:31.5460071 | ...url... | Failed to download source from Azure storage - access forbidden | Permanent | 21fa0dd6-cd7d-4493-b6f7-78916ce0d617 | DataIngestPull | 0 | Download_Forbidden | aadapp=xxxxxx |  | Format=Csv | 1 |
 
 ## See also
 
