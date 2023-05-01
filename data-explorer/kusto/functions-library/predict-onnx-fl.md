@@ -11,7 +11,6 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, azuremonitor"
 
-
 The function `predict_onnx_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that predicts using an existing trained machine learning model. This model has been converted to [ONNX](https://onnx.ai/) format, serialized to string, and saved in a standard table.
 
 ## Prerequisites
