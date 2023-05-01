@@ -15,7 +15,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [Basic query: Create an app to run basic queries](/azure/data-explorer/kusto/api/get-started/app-basic-query.md) </br> - [Hello Kusto: Create your first Kusto client app](/azure/data-explorer/kusto/api/get-started/app-hello-kusto.md) </br> - [Set up your development environment to use Kusto client libraries](/azure/data-explorer/kusto/api/get-started/app-set-up.md) | New articles. Describe how to create your first Kusto client app.|
+|- [Basic query: Create an app to run basic queries](kusto/api/get-started/app-basic-query.md) </br> - [Hello Kusto: Create your first Kusto client app](kusto/api/get-started/app-hello-kusto.md) </br> - [Set up your development environment to use Kusto client libraries](kusto/api/get-started/app-set-up.md) | New articles. Describe how to create your first Kusto client app.|
 
 **General**
 
@@ -27,21 +27,21 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|[Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md)| Updated article. Textual analytics functions added.|
-|- [log_reduce_fl()](/azure/data-explorer/kusto/functions-library/log-reduce-fl.md) </br> - [log_reduce_full_fl()](/azure/data-explorer/kusto/functions-library/log-reduce-full-fl.md) </br> - [log_reduce_predict_fl()](/azure/data-explorer/kusto/functions-library/log-reduce-predict-fl.md) </br> - [log_reduce_predict_full_fl()](/azure/data-explorer/kusto/functions-library/log-reduce-predict-full-fl.md) </br> - [log_reduce_train_fl()](/azure/data-explorer/kusto/functions-library/log-reduce-train-fl.md)| New articles. Describe how to find common patterns in textual logs. |
+|[Functions library](kusto/functions-library/functions-library.md)| Updated article. Textual analytics functions added.|
+|- [log_reduce_fl()](kusto/functions-library/log-reduce-fl.md) </br> - [log_reduce_full_fl()](kusto/functions-library/log-reduce-full-fl.md) </br> - [log_reduce_predict_fl()](kusto/functions-library/log-reduce-predict-fl.md) </br> - [log_reduce_predict_full_fl()](kusto/functions-library/log-reduce-predict-full-fl.md) </br> - [log_reduce_train_fl()](kusto/functions-library/log-reduce-train-fl.md)| New articles. Describe how to find common patterns in textual logs. |
 
 **Management**
 
 | Article title | Description |
 |--|--|
-|[Use a managed identity to run a continuous export job](/azure/data-explorer/kusto/management/data-export/continuous-export-with-managed-identity.md)| New article. Describes how to use a managed identity for continuous export.
+|[Use a managed identity to run a continuous export job](kusto/management/data-export/continuous-export-with-managed-identity.md)| New article. Describes how to use a managed identity for continuous export.
 
 **Query**
 
 | Article title | Description |
 |--|--|
-|[Scalar function types at a glance](/azure/data-explorer/kusto/query/scalarfunctions.md) | Updated article. String functions added.|
-|- [punycode_from_string()](/azure/data-explorer/kusto/query/punycode-from-string.md) </br> - [punycode_to_string()](/azure/data-explorer/kusto/query/punycode-to-string.md)| New articles. Describe how to encode and decode Punycode from.|
+|[Scalar function types at a glance](kusto/query/scalarfunctions.md) | Updated article. String functions added.|
+|- [punycode_from_string()](kusto/query/punycode-from-string.md) </br> - [punycode_to_string()](kusto/query/punycode-to-string.md)| New articles. Describe how to encode and decode Punycode from.|
 
 ## March 2023
 
