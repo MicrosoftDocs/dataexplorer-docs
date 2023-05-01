@@ -5,11 +5,11 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/08/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # sql_request plugin
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The `sql_request` plugin sends a SQL query to a SQL Server network endpoint and returns the results.
 If more than one rowset is returned by SQL, only the first one is used.

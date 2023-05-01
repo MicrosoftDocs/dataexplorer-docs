@@ -5,12 +5,12 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/14/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 
 # Pattern statement
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 A **pattern** is a construct that maps string tuples to tabular expressions. Each pattern must *declare* a pattern name and optionally *define* a pattern mapping. Patterns that define a mapping return a tabular expression when invoked. Any two statements must be separated by a semicolon.
 
