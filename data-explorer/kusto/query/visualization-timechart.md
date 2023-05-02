@@ -5,7 +5,7 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/03/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # Time chart
 
@@ -25,7 +25,7 @@ A time chart visual is a type of line graph. The first column of the query is th
 | *T* | string | &check; | Input table name.
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 ### Supported properties
 

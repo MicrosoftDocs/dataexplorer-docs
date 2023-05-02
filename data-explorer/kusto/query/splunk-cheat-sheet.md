@@ -2,7 +2,7 @@
 title: Splunk to Kusto map
 description: Learn how to write log queries in Kusto Query Language by comparing Splunk and Kusto Query Language concept mappings.
 ms.topic: conceptual
-ms.date: 01/31/2023
+ms.date: 05/01/2023
 ---
 
 # Splunk to Kusto Query Language map

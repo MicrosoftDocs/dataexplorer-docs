@@ -4,8 +4,13 @@ description: This article describes the two_sample_t_test_fl() user-defined func
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/05/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # two_sample_t_test_fl()
+
+
+::: zone pivot="azuredataexplorer, azuremonitor"
 
 The function `two_sample_t_test_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test).
 
@@ -166,3 +171,10 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | Test #1 | [23.64, 20.57, 20.42] | [27.1, 22.12, 33.56] | -1.7415675457565645 | 0.15655096653487446 |
 | Test #2 | [20.85, 21.89, 23.41] | [35.09, 30.02, 26.52], -3.2711673491022579 | 0.030755331219276136 |
 | Test #3 | [20.13, 20.5, 21.7, 22.02] | [32.2, 32.79, 33.9, 34.22] | -18.5515946201742 | 1.5823717131966134E-06 |
+::: zone-end
+
+::: zone pivot="fabric"
+
+This feature isn't supported.
+
+::: zone-end

@@ -5,11 +5,11 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/27/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # cluster() (scope function)
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 Changes the reference of the query to a remote cluster. To access a database within the same cluster, use the [database()](databasefunction.md) function. For more information, see [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md).
 

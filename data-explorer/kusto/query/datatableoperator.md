@@ -5,7 +5,7 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/24/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # datatable operator
 
@@ -20,7 +20,7 @@ Returns a table whose schema and values are defined in the query itself.
 
 ## Parameters
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 | Name | Type | Required | Description |
 |--|--|--|--|

@@ -37,7 +37,7 @@ The following section contains functions for rendering interactive [Plotly chart
 
 ## PromQL functions
 
-The following section contains common [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) functions. These functions can be used for analysis of metrics ingested to Azure Data Explorer by the [Prometheus](https://prometheus.io/) monitoring system. All functions assume that metrics in Azure Data Explorer are structured using the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/).
+The following section contains common [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) functions. These functions can be used for analysis of metrics ingested to your cluster by the [Prometheus](https://prometheus.io/) monitoring system. All functions assume that metrics in your cluster are structured using the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/).
 
 | Function Name | Description |
 |--|--|

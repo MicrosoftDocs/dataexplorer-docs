@@ -5,11 +5,11 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/03/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # Ladder chart
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
  Last two columns are the x-axis, other columns are y-axis
 
