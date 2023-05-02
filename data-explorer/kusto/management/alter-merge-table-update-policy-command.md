@@ -1,5 +1,5 @@
 ---
-title: .alter-merge table update policy command - Azure Data Explorer
+title:  .alter-merge table update policy command
 description: Learn how to use the .alter-merge table update policy command to change the table's update policy.
 ms.reviewer: yonil
 ms.topic: reference

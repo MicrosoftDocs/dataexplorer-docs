@@ -1,5 +1,5 @@
 ---
-title: .alter materialized view cache policy command - Azure Data Explorer
+title:  .alter materialized view cache policy command
 description: Learn how to use the .alter materialized view cache policy command to change the materialized view's cache policy.
 ms.reviewer: yonil
 ms.topic: reference

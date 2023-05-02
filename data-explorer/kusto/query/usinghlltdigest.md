@@ -1,5 +1,5 @@
 ---
-title: Kusto partition & compose intermediate aggregation results - Azure Data Explorer
+title:  Kusto partition & compose intermediate aggregation results
 description: Learn how to use the hll() and tdigest() functions to partition and compose intermediate results of aggregations.
 ms.reviewer: alexans
 ms.topic: reference

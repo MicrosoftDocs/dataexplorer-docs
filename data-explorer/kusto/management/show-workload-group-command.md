@@ -1,5 +1,5 @@
 ---
-title: .show workload group command - Azure Data Explorer
+title:  .show workload group command
 description: This article describes the .show workload group command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

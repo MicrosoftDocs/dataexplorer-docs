@@ -1,5 +1,5 @@
 ---
-title: Request properties and ClientRequestProperties - Azure Data Explorer
+title:  Request properties and ClientRequestProperties
 description: This article describes Request properties and ClientRequestProperties in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

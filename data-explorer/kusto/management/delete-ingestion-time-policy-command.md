@@ -1,5 +1,5 @@
 ---
-title: .delete ingestion time policy command- Azure Data Explorer
+title:  .delete ingestion time policy command
 description: This article describes the .delete ingestion time policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

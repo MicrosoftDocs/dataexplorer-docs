@@ -1,5 +1,5 @@
 ---
-title: factorial_fl() - Azure Data Explorer
+title:  factorial_fl()
 description: This article describes factorial_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

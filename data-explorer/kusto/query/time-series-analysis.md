@@ -1,11 +1,11 @@
 ---
-title: Analyze time series data using Azure Data Explorer
-description: Learn how to use Azure Data Explorer to analyze time series data.
+title: Analyze time series data
+description: Learn how to analyze time series data.
 ms.reviewer: adieldar
 ms.topic: how-to
 ms.date: 02/20/2023
 ---
-# Time series analysis in Azure Data Explorer
+# Time series analysis
 
 Azure Data Explorer (ADX) performs on-going collection of telemetry data from cloud services or IoT devices. This data can be analyzed for various insights such as monitoring service health, physical production processes, and usage trends. Analysis is done on time series of selected metrics to find a deviation in the pattern compared to its typical baseline pattern.
 ADX contains native support for creation, manipulation, and analysis of multiple time series.

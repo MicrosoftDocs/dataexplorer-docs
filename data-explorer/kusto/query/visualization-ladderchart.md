@@ -1,5 +1,5 @@
 ---
-title: Ladder chart visualization - Azure Data Explorer
+title:  Ladder chart visualization
 description: This article describes the ladder chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

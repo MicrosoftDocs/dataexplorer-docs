@@ -1,5 +1,5 @@
 ---
-title: plotly_anomaly_fl() - Azure Data Explorer
+title:  plotly_anomaly_fl()
 description: Learn how to use the plotly_anomaly_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

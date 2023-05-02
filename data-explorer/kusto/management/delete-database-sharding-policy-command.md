@@ -1,5 +1,5 @@
 ---
-title: .delete database sharding policy command - Azure Data Explorer
+title:  .delete database sharding policy command
 description: This article describes the .delete database sharding policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

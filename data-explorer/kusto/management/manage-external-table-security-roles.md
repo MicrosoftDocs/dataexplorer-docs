@@ -1,5 +1,5 @@
 ---
-title: Manage external external table roles - Azure Data Explorer
+title:  Manage external external table roles
 description: This article describes how to use management commands to view, add, and remove external table admins on the external table level in Azure Data Explorer.
 ms.topic: reference
 ms.date: 02/21/2023

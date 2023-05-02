@@ -1,5 +1,5 @@
 ---
-title: log_reduce_predict_full_fl() - Azure Data Explorer
+title:  log_reduce_predict_full_fl()
 description: This article describes the log_reduce_predict_full_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

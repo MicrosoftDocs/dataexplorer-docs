@@ -1,6 +1,6 @@
 ---
-title: Kusto IngestionBatching policy optimizes batching in Azure Data Explorer
-description: This article describes IngestionBatching policy in Azure Data Explorer
+title: Kusto IngestionBatching policy optimizes batching for ingestion
+description: This article describes IngestionBatching policy, which optimizes batching for ingestion.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/13/2022

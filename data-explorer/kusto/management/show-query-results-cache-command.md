@@ -1,5 +1,5 @@
 ---
-title: Show query results cache - Azure Data Explorer
+title:  Show query results cache
 description: This article describes .show query results cache in Azure Data Explorer.
 ms.reviewer: amitof
 ms.topic: reference

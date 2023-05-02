@@ -1,5 +1,5 @@
 ---
-title: cursor_current() - Azure Data Explorer
+title:  cursor_current()
 description: Learn how to use the cursor_current() function to return a string type value.
 ms.reviewer: alexans
 ms.topic: reference

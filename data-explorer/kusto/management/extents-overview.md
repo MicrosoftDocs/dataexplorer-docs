@@ -1,5 +1,5 @@
 ---
-title: Extents (data shards) - Azure Data Explorer
+title:  Extents (data shards)
 description: This article describes Extents (data shards) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

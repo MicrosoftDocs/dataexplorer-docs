@@ -1,5 +1,5 @@
 ---
-title: cursor_after() - Azure Data Explorer
+title:  cursor_after()
 description: Learn how to use the cursor_after() function to compare the ingestion time of the records of a table against the database cursor time.
 ms.reviewer: alexans
 ms.topic: reference

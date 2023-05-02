@@ -1,5 +1,5 @@
 ---
-title: .replace extents - Azure Data Explorer
+title:  .replace extents
 description: This article describes the replace extents command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

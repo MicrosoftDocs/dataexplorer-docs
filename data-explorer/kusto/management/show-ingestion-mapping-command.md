@@ -1,5 +1,5 @@
 ---
-title: .show ingestion mappings - Azure Data Explorer
+title:  .show ingestion mappings
 description: This article describes .show ingestion mappings in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

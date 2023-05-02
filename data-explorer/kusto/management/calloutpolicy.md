@@ -1,5 +1,5 @@
 ---
-title: Callout policy - Azure Data Explorer
+title:  Callout policy
 description: This article describes Callout policy in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

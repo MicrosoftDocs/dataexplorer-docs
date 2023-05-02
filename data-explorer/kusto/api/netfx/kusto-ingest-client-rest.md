@@ -1,5 +1,5 @@
 ---
-title: How to ingest data with the REST API - Azure Data Explorer
+title:  How to ingest data with the REST API
 description: This article describes how to ingest data without Kusto.Ingest library by using the REST API in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

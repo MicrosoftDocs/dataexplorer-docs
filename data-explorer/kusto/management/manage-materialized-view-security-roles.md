@@ -1,5 +1,5 @@
 ---
-title: Manage materialized view roles - Azure Data Explorer
+title:  Manage materialized view roles
 description: This article describes how to use management commands to view, add, and remove materialized view admins on the materialized view level in Azure Data Explorer.
 ms.topic: reference
 ms.date: 02/21/2023

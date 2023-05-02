@@ -1,5 +1,5 @@
 ---
-title: series_lag_fl() - Azure Data Explorer
+title:  series_lag_fl()
 description: This article describes series_lag_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

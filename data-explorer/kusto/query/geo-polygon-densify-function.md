@@ -1,5 +1,5 @@
 ---
-title: geo_polygon_densify() - Azure Data Explorer
+title:  geo_polygon_densify()
 description: Learn how to use the geo_polygon_densify() function to convert polygon or multipolygon planar edges to geodesics.
 ms.reviewer: mbrichko
 ms.topic: reference

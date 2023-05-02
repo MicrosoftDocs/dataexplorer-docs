@@ -1,5 +1,5 @@
 ---
-title: series_fbprophet_forecast_fl() - Azure Data Explorer
+title:  series_fbprophet_forecast_fl()
 description: This article describes the series_fbprophet_forecast_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

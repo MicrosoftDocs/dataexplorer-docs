@@ -1,5 +1,5 @@
 ---
-title: .alter table update policy command - Azure Data Explorer
+title:  .alter table update policy command
 description: This article describes the .alter table update policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

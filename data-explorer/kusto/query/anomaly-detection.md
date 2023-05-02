@@ -1,12 +1,12 @@
 ---
-title: Time series anomaly detection & forecasting in Azure Data Explorer
-description: Learn how to analyze time series data for anomaly detection and forecasting using Azure Data Explorer.
+title: Time series anomaly detection & forecasting
+description: Learn how to analyze time series data for anomaly detection and forecasting.
 ms.reviewer: adieldar
 ms.topic: how-to
 ms.date: 04/24/2019
 ---
 
-# Anomaly detection and forecasting in Azure Data Explorer
+# Anomaly detection and forecasting
 
 Azure Data Explorer performs on-going collection of telemetry data from cloud services or IoT devices. This data is analyzed for various insights such as monitoring service health, physical production processes, usage trends, and load forecast. The analysis is done on time series of selected metrics to locate a deviation pattern of the metric relative to its typical normal baseline pattern. Azure Data Explorer contains native support for creation, manipulation, and analysis of multiple time series. It can create and analyze thousands of time series in seconds, enabling near real time monitoring solutions and workflows.
 

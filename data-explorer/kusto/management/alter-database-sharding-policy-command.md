@@ -1,5 +1,5 @@
 ---
-title: .alter database sharding policy command - Azure Data Explorer
+title:  .alter database sharding policy command
 description: Learn how to use the .alter database sharding policy command to change the database's sharding policy.
 ms.reviewer: yonil
 ms.topic: reference

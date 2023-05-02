@@ -1,5 +1,5 @@
 ---
-title: pair_probabilities_fl() - Azure Data Explorer
+title:  pair_probabilities_fl()
 description: This article describes the pair_probabilities_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: andkar
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: Cross-cluster join - Azure Data Explorer
+title:  Cross-cluster join
 description: Learn how to perform the Cross-cluster join operation to join datasets residing on different clusters.
 ms.reviewer: alexans
 ms.topic: reference

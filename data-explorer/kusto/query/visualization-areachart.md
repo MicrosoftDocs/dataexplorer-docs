@@ -1,5 +1,5 @@
 ---
-title: Area chart visualization - Azure Data Explorer
+title:  Area chart visualization
 description: This article describes the area chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

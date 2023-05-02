@@ -1,5 +1,5 @@
 ---
-title: table() (scope function) - Azure Data Explorer
+title:  table() (scope function)
 description: Learn how to use the table() (scope function) function to reference a table.
 ms.reviewer: alexans
 ms.topic: reference

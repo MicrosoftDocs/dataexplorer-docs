@@ -1,5 +1,5 @@
 ---
-title: Cache policy (hot and cold cache) - Azure Data Explorer
+title:  Cache policy (hot and cold cache)
 description: This article describes Cache policy (hot and cold cache) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

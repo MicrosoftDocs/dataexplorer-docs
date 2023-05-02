@@ -1,5 +1,5 @@
 ---
-title: series_metric_fl() - Azure Data Explorer
+title:  series_metric_fl()
 description: This article describes the series_metric_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

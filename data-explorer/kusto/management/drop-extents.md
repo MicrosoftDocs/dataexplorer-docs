@@ -1,5 +1,5 @@
 ---
-title: .drop extents - Azure Data Explorer
+title:  .drop extents
 description: This article describes the drop extents command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

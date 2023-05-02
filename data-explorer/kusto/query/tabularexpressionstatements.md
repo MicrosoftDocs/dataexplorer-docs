@@ -1,5 +1,5 @@
 ---
-title: Tabular expression statements - Azure Data Explorer
+title:  Tabular expression statements
 description: Learn how to use tabular expression statements to produce tabular data sets.
 ms.reviewer: alexans
 ms.topic: reference

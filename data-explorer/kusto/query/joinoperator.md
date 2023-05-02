@@ -1,5 +1,5 @@
 ---
-title: join operator - Azure Data Explorer
+title:  join operator
 description: Learn how to use the join operator to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference

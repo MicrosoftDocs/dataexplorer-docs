@@ -1,5 +1,5 @@
 ---
-title: About the Kusto .NET SDK - Azure Data Explorer
+title:  About the Kusto .NET SDK
 description: This article describes the Kusto .NET SDK in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

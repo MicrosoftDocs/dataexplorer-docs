@@ -1,5 +1,5 @@
 ---
-title: extent_tags() - Azure Data Explorer
+title:  extent_tags()
 description: Learn how to use the extent_tags() function to return a dynamic array of the data shard that the current record is in.
 ms.reviewer: alexans
 ms.topic: reference

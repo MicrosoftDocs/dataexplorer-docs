@@ -1,5 +1,5 @@
 ---
-title: binomial_test_fl() - Azure Data Explorer
+title:  binomial_test_fl()
 description: This article describes the binomial_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

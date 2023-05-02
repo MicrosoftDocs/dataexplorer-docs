@@ -1,5 +1,5 @@
 ---
-title: Alias statement - Azure Data Explorer
+title:  Alias statement
 description: Learn how to use an alias statement to define an alias for a database that is used for a query.
 ms.reviewer: alexans
 ms.topic: reference

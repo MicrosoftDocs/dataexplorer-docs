@@ -1,5 +1,5 @@
 ---
-title: .show functions - Azure Data Explorer
+title:  .show functions
 description: This article describes .show functions in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

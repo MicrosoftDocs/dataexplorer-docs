@@ -1,5 +1,5 @@
 ---
-title: Scatter chart visualization - Azure Data Explorer
+title:  Scatter chart visualization
 description: This article describes the scatter chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

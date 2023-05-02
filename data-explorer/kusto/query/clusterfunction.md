@@ -1,5 +1,5 @@
 ---
-title: cluster() (scope function) - Azure Data Explorer
+title:  cluster() (scope function)
 description: Learn how to use the cluster() function to change the reference of the query to a remote cluster.
 ms.reviewer: alexans
 ms.topic: reference

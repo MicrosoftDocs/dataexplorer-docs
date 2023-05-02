@@ -1,5 +1,5 @@
 ---
-title: Bar chart visualization - Azure Data Explorer
+title:  Bar chart visualization
 description: This article describes the bar chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: ".show table ingestion batching policy command- Azure Data Explorer"
+title:  ".show table ingestion batching policy command"
 description: "This article describes the .show table ingestion batching policy command in Azure Data Explorer."
 ms.reviewer: orspodek
 ms.topic: reference
