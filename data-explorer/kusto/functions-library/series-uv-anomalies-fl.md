@@ -125,7 +125,7 @@ series_uv_anomalies_fl(tbl:(*), y_series:string, sensitivity:int=85, tsid:string
 
 The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
 
-### Use `series_uv_anomalies_fl()` to detect anomolies
+### Use `series_uv_anomalies_fl()` to detect anomalies
 
 ### [Query-defined](#tab/query-defined)
 
