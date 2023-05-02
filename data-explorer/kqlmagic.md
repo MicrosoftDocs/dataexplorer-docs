@@ -21,7 +21,7 @@ In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to conne
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Jupyter Notebook installed on your local machine or use [Azure Data Studio](/sql/azure-data-studio/notebooks/notebooks-kqlmagic).
+* Jupyter Notebook installed on your local machine. Otherwise, use [Azure Data Studio](/sql/azure-data-studio/notebooks/notebooks-kqlmagic).
 
 ## Install kqlmagic library
 
