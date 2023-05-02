@@ -3,13 +3,13 @@ title: comb_fl() - Azure Data Explorer
 description: This article describes comb_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/02/2023
+ms.date: 04/30/2023
 ---
 # comb_fl()
 
 Calculate *C(n, k)*
 
-The function `comb_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates *C(n, k)*, the number of [combinations](https://en.wikipedia.org/wiki/Combination) for selection of k items out of n, without order. It is based on the Azure Data Explorer native [gamma()](../query/gammafunction.md) function to calculate factorial. For more information, see [facorial_fl()](factorial-fl.md). For a selection of k items with order, use [perm_fl()](perm-fl.md)
+The function `comb_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates *C(n, k)*, the number of [combinations](https://en.wikipedia.org/wiki/Combination) for selection of k items out of n, without order. It's based on the native [gamma()](../query/gammafunction.md) function to calculate factorial. For more information, see [facorial_fl()](factorial-fl.md). For a selection of k items with order, use [perm_fl()](perm-fl.md).
 
 ## Syntax
 
