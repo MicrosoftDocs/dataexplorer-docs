@@ -20,12 +20,13 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 ## Syntax
 
-`.create` `table` *tableName* `based-on` *otherTable*  [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
+`.create` `table` *tableName* `based-on` *otherTable*  [`ifnotexists`] [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
+| `ifnotexists` | string | | If specified, the table will only be created if it doesn't already exist.|
 | *tableName* | string | &check; | The name of the table to create. The case-senestive name must be unique in the database. |
 | *otherTable* | string | &check; | The name of an existing table to use as the source for the columns, docstring, and folder of the table being created. |
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
@@ -44,6 +45,12 @@ This command returns the new table's schema in JSON format, similar to running t
 ```kusto
 .show table MyLogs schema as json
 ```
+
+> [!NOTE]
+>
+> * If the table already exists:
+>    * If `ifnotexists` flag is specified, the command is ignored (no change applied).
+>    * If `ifnotexists` flag is NOT specified, an error is returned.
 
 ## Example
 
