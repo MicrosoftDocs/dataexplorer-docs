@@ -27,7 +27,7 @@ For guidance and examples, see the [connection strings](../../api/connection-str
 
 ## User authentication
 
-User authentication happens when the user presents credentials to Azure AD or to some identity provider that federates with Azure AD, such as Active Directory Federation Services (AD FS). The user gets back a security token. That token can be presented to the engine service. The service will determines whether the token is valid, whether the token is issued by a trusted issuer, and what security claims the token contains.
+User authentication happens when the user presents credentials to Azure AD or to some identity provider that federates with Azure AD, such as Active Directory Federation Services (AD FS). The user gets back a security token. That token is presented to your cluster to determine whether the token is valid, is issued by a trusted issuer, and what security claims the token contains.
 
 On the client side, both interactive and unattended authentication are supported by using [MSAL (Microsoft Authentication Library)](/azure/active-directory/develop/msal-overview). Token-based authentication is also supported. With this kind of authentication, an application obtains a valid user token and can then access your cluster. If an application obtains a valid user token for some other resource, there must be a trust relationship between that resource and your cluster.
 
@@ -59,7 +59,7 @@ When the Kusto client library invokes [MSAL](/azure/active-directory/develop/msa
 - For user authentication, the Azure AD client application `ReplyUrl` (the URL to which Azure AD redirects, after authentication completes successfully). MSAL then captures this redirect and extracts the authorization code from it.
 - The cluster URI (typically `https://cluster.region.kusto.windows.net` in the global Azure).
 
-The token returned by MSAL to the Kusto client library has the Kusto service as the audience.
+The token returned by MSAL to the Kusto client library has the cluster URI as the audience.
 
 ## Authenticate programmatically
 
