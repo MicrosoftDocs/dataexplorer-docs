@@ -232,4 +232,4 @@ This chart allows us to see that the spike on Tuesday afternoon was because of e
 
 The Machine Learning plugins are helpful for many scenarios. The `autocluster` and `basket` implement an unsupervised learning algorithm and are easy to use. `Diffpatterns` implements a supervised learning algorithm and, although more complex, it's more powerful for extracting differentiation segments for RCA.
 
-These plugins are used interactively in ad-hoc scenarios and in automatic near real-time monitoring services. With KQL, time series anomaly detection is followed by a diagnosis process. The process is highly optimized to meet necessary performance standards.
+These plugins are used interactively in ad-hoc scenarios and in automatic near real-time monitoring services. Time series anomaly detection is followed by a diagnosis process. The process is highly optimized to meet necessary performance standards.
