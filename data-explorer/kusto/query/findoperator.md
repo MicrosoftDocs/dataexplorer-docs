@@ -1,5 +1,5 @@
 ---
-title: find operator - Azure Data Explorer
+title:  find operator
 description: Learn how to use the find operator to find rows that match a predicate across a set of tables.
 ms.reviewer: alexans
 ms.topic: reference

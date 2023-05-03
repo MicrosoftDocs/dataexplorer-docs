@@ -1,5 +1,5 @@
 ---
-title: .create-or-alter function - Azure Data Explorer
+title:  .create-or-alter function
 description: This article describes .create-or-alter function in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

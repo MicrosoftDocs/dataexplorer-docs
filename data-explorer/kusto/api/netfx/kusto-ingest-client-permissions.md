@@ -1,5 +1,5 @@
 ---
-title: Kusto.Ingest permissions - Azure Data Explorer
+title:  Kusto.Ingest permissions
 description: This article describes Kusto.Ingest - Ingestion Permissions in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

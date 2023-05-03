@@ -1,5 +1,5 @@
 ---
-title: Security roles - Azure Data Explorer
+title:  Security roles
 description: This article describes security roles in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

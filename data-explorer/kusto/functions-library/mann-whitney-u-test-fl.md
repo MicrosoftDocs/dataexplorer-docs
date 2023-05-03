@@ -1,5 +1,5 @@
 ---
-title: mann_whitney_u_test_fl() - Azure Data Explorer
+title:  mann_whitney_u_test_fl()
 description: This article describes the mann_whitney_u_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

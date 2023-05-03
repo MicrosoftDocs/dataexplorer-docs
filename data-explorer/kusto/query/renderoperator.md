@@ -1,5 +1,5 @@
 ---
-title: render operator - Azure Data Explorer
+title:  render operator
 description: Learn how to use the render operator to instruct the user agent to render a visualization of the query results.
 ms.reviewer: alexans
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: .alter table docstring - Azure Data Explorer
+title:  .alter table docstring
 description: Learn how to use the `.alter table docstring` command to alter the `docstring` value of an existing table. 
 ms.reviewer: orspodek
 ms.topic: reference

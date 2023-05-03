@@ -1,5 +1,5 @@
 ---
-title: .alter-merge cluster policy callout command- Azure Data Explorer
+title:  .alter-merge cluster policy callout command
 description: Learn how to use the .alter-merge cluster policy callout command to turn on or turn off a cluster's callout policy.
 ms.reviewer: yonil
 ms.topic: reference

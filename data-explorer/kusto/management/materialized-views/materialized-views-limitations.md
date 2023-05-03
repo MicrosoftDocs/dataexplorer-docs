@@ -1,5 +1,5 @@
 ---
-title: Materialized views limitations - Azure Data Explorer
+title:  Materialized views limitations
 description: This article describes materialized views limitations.
 ms.reviewer: yifats
 ms.topic: reference

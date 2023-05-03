@@ -1,6 +1,6 @@
 ---
-title: Time series anomaly detection & forecasting - Azure Data Explorer
-description: Learn how to analyze time series data for anomaly detection and forecasting using Kusto Query Language (KQL).
+title: Time series anomaly detection & forecasting
+description: Learn how to analyze time series data for anomaly detection and forecasting.
 ms.reviewer: adieldar
 ms.topic: how-to
 ms.date: 05/01/2023

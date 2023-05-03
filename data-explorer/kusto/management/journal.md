@@ -1,6 +1,6 @@
 ---
-title: Journal management - Azure Data Explorer
-description: This article describes journal management in Azure Data Explorer.
+title:  Journal management
+description: This article describes Journal management in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 04/25/2023
@@ -23,8 +23,8 @@ The metadata operations can result from a control command that a user executed, 
 
 |OriginalEntityState|UpdatedEntityState                                              |ChangeCommand                                                                                                          |Principal            |
 |-------------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------------|
-|.           		|Name: MyTable1, Attributes: Name='[MyTable1].[col1]', Type='I32'|.create table MyTable1 (col1:int)                                                                                      |imike@fabrikam.com
-|.          		|The database properties (too long to be displayed here)         |.create database TestDB persist (@"https://imfbkm.blob.core.windows.net/md", @"https://imfbkm.blob.core.windows.net/data")|Azure AD app id=76263cdb-abcd-545644e9c404
+|.               |Name: MyTable1, Attributes: Name='[MyTable1].[col1]', Type='I32'|.create table MyTable1 (col1:int)                                                                                      |imike@fabrikam.com
+|.              |The database properties (too long to be displayed here)         |.create database TestDB persist (@"https://imfbkm.blob.core.windows.net/md", @"https://imfbkm.blob.core.windows.net/data")|Azure AD app id=76263cdb-abcd-545644e9c404
 |Name: MyTable1, Attributes: Name='[MyTable1].[col1]', Type='I32'|Name: MyTable2, Attributes: Name='[MyTable1].[col1]', Type='I32'|.rename table MyTable1 to MyTable2|rdmik@fabrikam.com
 
 |Item                 |Description                                                              |                                
@@ -40,7 +40,7 @@ The metadata operations can result from a control command that a user executed, 
 |UpdatedEntityState   |The new state after the change                                           |
 |ChangeCommand        |The executed control command that triggered the metadata change          |
 |Principal            |The principal (user/app) that executed the control command               |
-	
+  
 ## .show journal
 
 The `.show journal` command returns a list of metadata changes on databases or the cluster that the user has admin access to.

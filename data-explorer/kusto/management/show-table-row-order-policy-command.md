@@ -1,5 +1,5 @@
 ---
-title: .show table row order policy command- Azure Data Explorer
+title:  .show table row order policy command
 description: This article describes the .show table row order policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
@@ -28,8 +28,6 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 Returns a JSON representation of the policy.
 
 ## Example
-
-Delete the row order policy:
 
 ```kusto
 .show table events policy roworder 

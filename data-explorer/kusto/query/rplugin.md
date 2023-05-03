@@ -1,5 +1,5 @@
 ---
-title: R plugin (Preview) - Azure Data Explorer
+title:  R plugin (Preview)
 description: Learn how to use the R plugin (Preview) to run a user-defined function using an R script.
 ms.reviewer: adieldar
 ms.topic: reference

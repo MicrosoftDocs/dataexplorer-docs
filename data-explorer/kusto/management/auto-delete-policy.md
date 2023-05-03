@@ -1,5 +1,5 @@
 ---
-title: Auto delete policy - Azure Data Explorer
+title:  Auto delete policy
 description: This article describes Auto delete policy in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: Kusto Access Control Overview - Azure Data Explorer
+title:  Kusto Access Control Overview
 description: This article describes Kusto Access Control Overview in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

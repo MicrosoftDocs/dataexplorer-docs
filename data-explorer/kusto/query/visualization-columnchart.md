@@ -1,5 +1,5 @@
 ---
-title: Column chart visualization - Azure Data Explorer
+title:  Column chart visualization
 description: This article describes the column chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

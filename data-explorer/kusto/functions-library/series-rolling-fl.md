@@ -1,5 +1,5 @@
 ---
-title: series_rolling_fl() - Azure Data Explorer
+title:  series_rolling_fl()
 description: This article describes the series_rolling_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: Capacity policy - Azure Data Explorer
+title:  Capacity policy
 description: This article describes Capacity policy in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

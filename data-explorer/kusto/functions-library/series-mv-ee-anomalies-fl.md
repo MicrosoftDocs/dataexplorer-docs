@@ -1,5 +1,5 @@
 ---
-title: series_mv_ee_anomalies_fl() - Azure Data Explorer
+title:  series_mv_ee_anomalies_fl()
 description: Learn how to use the series_mv_ee_anomalies_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

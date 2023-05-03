@@ -1,5 +1,5 @@
 ---
-title: .show table data statistics - Azure Data Explorer
+title:  .show table data statistics
 description: This article describes the .show table data statistics command in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

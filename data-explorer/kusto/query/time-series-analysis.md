@@ -1,6 +1,6 @@
 ---
-title: Time series analysis - Azure Data Explorer
-description: Learn how to use Kusto Query Language (KQL) to analyze time series data.
+title: Analyze time series data
+description: Learn how to analyze time series data.
 ms.reviewer: adieldar
 ms.topic: how-to
 ms.date: 05/01/2023

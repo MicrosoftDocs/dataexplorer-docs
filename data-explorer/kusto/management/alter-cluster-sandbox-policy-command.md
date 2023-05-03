@@ -1,5 +1,5 @@
 ---
-title: .alter cluster sandbox policy command - Azure Data Explorer
+title:  .alter cluster sandbox policy command
 description: Learn how to use the .alter cluster sandbox policy command to change the cluster sandbox policy.
 ms.reviewer: yonil
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: Pie chart visualization - Azure Data Explorer
+title:  Pie chart visualization
 description: This article describes the pie chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

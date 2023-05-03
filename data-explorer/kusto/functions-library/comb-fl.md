@@ -1,5 +1,5 @@
 ---
-title: comb_fl() - Azure Data Explorer
+title:  comb_fl()
 description: This article describes comb_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

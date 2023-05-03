@@ -1,5 +1,5 @@
 ---
-title: Stacked area chart visualization - Azure Data Explorer
+title:  Stacked area chart visualization
 description: This article describes the stacked area chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: Set statement - Azure Data Explorer
+title:  Set statement
 description: Learn how to use the set statement to set a query option for the duration of the query.
 ms.reviewer: alexans
 ms.topic: reference

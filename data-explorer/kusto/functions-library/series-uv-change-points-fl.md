@@ -1,5 +1,5 @@
 ---
-title: series_uv_change_points_fl() - Azure Data Explorer
+title:  series_uv_change_points_fl()
 description: This article describes the series_uv_change_points_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

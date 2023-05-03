@@ -1,5 +1,5 @@
 ---
-title: SQL to Kusto query translation - Azure Data Explorer
+title:  SQL to Kusto query translation
 description: Learn about the Kusto Query Language equivalent of SQL queries.
 ms.reviewer: alexans
 ms.topic: reference

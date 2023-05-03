@@ -1,5 +1,5 @@
 ---
-title: Extents merge policy - Azure Data Explorer
+title:  Extents merge policy
 description: This article describes Extents merge policy in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

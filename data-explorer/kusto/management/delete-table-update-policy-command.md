@@ -1,5 +1,5 @@
 ---
-title: .delete table update policy command - Azure Data Explorer
+title:  .delete table update policy command
 description: This article describes the .delete table update policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

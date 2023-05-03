@@ -1,5 +1,5 @@
 ---
-title: Regular expressions library - Azure Data Explorer
+title:  Regular expressions library
 description: This article lists the regular expression syntax accepted by RE2.
 ms.reviewer: alexans
 ms.topic: reference

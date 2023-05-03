@@ -1,5 +1,5 @@
 ---
-title: Ingestion failures - Azure Data Explorer
+title:  Ingestion failures
 description: This article describes Ingestion failures in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: .alter-merge table sharding policy command - Azure Data Explorer
+title:  .alter-merge table sharding policy command
 description: Learn how to use the .alter-merge table sharding policy command to change the table's sharding policy.
 ms.reviewer: yonil
 ms.topic: reference

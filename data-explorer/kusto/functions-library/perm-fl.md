@@ -1,5 +1,5 @@
 ---
-title: perm_fl() - Azure Data Explorer
+title:  perm_fl()
 description: This article describes perm_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

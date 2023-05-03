@@ -1,5 +1,5 @@
 ---
-title: Pattern statement - Azure Data Explorer
+title:  Pattern statement
 description: Learn how to use pattern statements to map string tuples to tabular expressions.
 ms.reviewer: alexans
 ms.topic: reference

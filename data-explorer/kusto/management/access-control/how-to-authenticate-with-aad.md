@@ -1,6 +1,6 @@
 ---
-title: Authenticate with Azure AD for access - Azure Data Explorer
-description: This article describes how to authenticate with Azure AD in Azure Data Explorer.
+title:  Authenticate with Azure AD for access
+description: This article describes How-To Authenticate with Azure AD for Azure Data Explorer Access in Azure Data Explorer.
 ms.reviewer: vladikb
 ms.topic: reference
 ms.custom: devx-track-js

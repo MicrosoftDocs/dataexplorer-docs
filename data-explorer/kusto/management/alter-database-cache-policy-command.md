@@ -1,5 +1,5 @@
 ---
-title: Alter database cache policy command - Azure Data Explorer
+title:  Alter database cache policy command
 description: Learn how to use the .alter database cache policy command to change the database cache policy.
 ms.reviewer: yonil
 ms.topic: reference

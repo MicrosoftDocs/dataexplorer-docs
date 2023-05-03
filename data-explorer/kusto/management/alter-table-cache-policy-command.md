@@ -1,5 +1,5 @@
 ---
-title: .alter table cache policy command - Azure Data Explorer
+title:  .alter table cache policy command
 description: Learn how to use the .alter table cache policy command to change the table's cache policy.
 ms.reviewer: yonil
 ms.topic: reference

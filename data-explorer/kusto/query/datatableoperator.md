@@ -1,5 +1,5 @@
 ---
-title: datatable operator - Azure Data Explorer
+title:  datatable operator
 description: Learn how to use the datatable operator to define a table with given schema and data.
 ms.reviewer: alexans
 ms.topic: reference

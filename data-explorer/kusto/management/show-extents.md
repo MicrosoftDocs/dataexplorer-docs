@@ -1,5 +1,5 @@
 ---
-title: .show extents - Azure Data Explorer
+title:  .show extents
 description: This article describes the show extents command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

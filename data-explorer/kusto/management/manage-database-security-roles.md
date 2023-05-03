@@ -1,5 +1,5 @@
 ---
-title: Manage database security roles - Azure Data Explorer
+title:  Manage database security roles
 description: This article describes how to use management commands to view, add, and remove security roles on the database level in Azure Data Explorer.
 ms.topic: reference
 ms.date: 04/25/2023

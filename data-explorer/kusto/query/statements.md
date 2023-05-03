@@ -1,5 +1,5 @@
 ---
-title: Query statements - Azure Data Explorer
+title:  Query statements
 description: This article lists the types of query statements.
 ms.reviewer: alexans
 ms.topic: reference

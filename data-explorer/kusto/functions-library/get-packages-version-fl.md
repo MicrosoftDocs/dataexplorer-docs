@@ -1,5 +1,5 @@
 ---
-title: get_packages_version_fl() - Azure Data Explorer
+title:  get_packages_version_fl()
 description: Learn how to use the get_packages_version_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

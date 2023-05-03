@@ -1,5 +1,5 @@
 ---
-title: ingestion_time() - Azure Data Explorer
+title:  ingestion_time()
 description: Learn how to use the ingestion_time() function to return the approximate time of the data's ingestion. 
 ms.reviewer: alexans
 ms.topic: reference

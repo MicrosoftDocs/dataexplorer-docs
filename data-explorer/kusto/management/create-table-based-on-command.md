@@ -1,5 +1,5 @@
 ---
-title: .create table based-on - Azure Data Explorer
+title:  .create table based-on
 description: This article describes the `.create table based-on` command in Azure Data Explorer
 ms.reviewer: mispecto
 ms.topic: reference

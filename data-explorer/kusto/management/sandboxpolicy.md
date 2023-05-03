@@ -1,5 +1,5 @@
 ---
-title: Sandbox policy - Azure Data Explorer
+title:  Sandbox policy
 description: This article describes Sandbox policy in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

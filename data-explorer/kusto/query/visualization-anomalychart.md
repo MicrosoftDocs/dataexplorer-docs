@@ -1,5 +1,5 @@
 ---
-title: Anomaly chart visualization - Azure Data Explorer
+title:  Anomaly chart visualization
 description: This article describes the anomaly chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

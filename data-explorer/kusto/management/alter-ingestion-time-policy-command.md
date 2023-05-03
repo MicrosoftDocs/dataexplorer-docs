@@ -1,5 +1,5 @@
 ---
-title: .alter ingestion time policy command- Azure Data Explorer
+title:  .alter ingestion time policy command
 description: Learn how to use the .alter ingestion time policy command to turn on or turn off a table's ingestion time policy.
 ms.reviewer: yonil
 ms.topic: reference

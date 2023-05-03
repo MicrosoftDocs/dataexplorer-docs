@@ -1,5 +1,5 @@
 ---
-title: sql_request plugin - Azure Data Explorer
+title:  sql_request plugin
 description: Learn how to use the sql_request plugin to send an SQL query to an SQL server network endpoint. 
 ms.reviewer: alexans
 ms.topic: reference

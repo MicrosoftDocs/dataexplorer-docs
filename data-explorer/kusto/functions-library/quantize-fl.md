@@ -1,5 +1,5 @@
 ---
-title: quantize_fl() - Azure Data Explorer
+title:  quantize_fl()
 description: This article describes the quantize_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

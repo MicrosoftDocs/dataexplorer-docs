@@ -1,5 +1,5 @@
 ---
-title: Use a managed identity to run a continuous export job - Azure Data Explorer
+title:  Use a managed identity to run a continuous export job
 description: This article describes how to use a managed identity for continuous export in Azure Data Explorer.
 ms.reviewer: shanisolomon
 ms.topic: reference

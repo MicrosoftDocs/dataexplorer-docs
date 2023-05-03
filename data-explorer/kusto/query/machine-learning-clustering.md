@@ -1,6 +1,6 @@
 ---
-title: Machine learning capability - Azure Data Explorer
-description: Use machine learning clustering for Root Cause Analysis with Kusto Query Language (KQL).
+title: Machine learning capability
+description: Use machine learning clustering for Root Cause Analysis.
 ms.reviewer: adieldar
 ms.topic: how-to
 ms.date: 05/01/2023

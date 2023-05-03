@@ -1,5 +1,5 @@
 ---
-title: Time pivot visualization - Azure Data Explorer
+title:  Time pivot visualization
 description: This article describes the time pivot visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

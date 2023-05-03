@@ -1,5 +1,5 @@
 ---
-title: .delete table cache policy command - Azure Data Explorer
+title:  .delete table cache policy command
 description: This article describes the .delete table cache policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

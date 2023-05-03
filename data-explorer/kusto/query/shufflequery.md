@@ -1,5 +1,5 @@
 ---
-title: Shuffle query - Azure Data Explorer
+title:  Shuffle query
 description: This article describes Shuffle query in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

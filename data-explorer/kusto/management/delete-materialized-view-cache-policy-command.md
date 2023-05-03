@@ -1,5 +1,5 @@
 ---
-title: .delete materialized view cache policy command - Azure Data Explorer
+title:  .delete materialized view cache policy command
 description: This article describes the .delete materialized view cache policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

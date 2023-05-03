@@ -1,5 +1,5 @@
 ---
-title: plotly_scatter3d_fl() - Azure Data Explorer
+title:  plotly_scatter3d_fl()
 description: Learn how to use the plotly_scatter3d_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: fork operator - Azure Data Explorer
+title:  fork operator
 description: Learn how to use the fork operator to run multiple consumer operators in parallel.
 ms.reviewer: alexans
 ms.topic: reference

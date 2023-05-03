@@ -1,5 +1,5 @@
 ---
-title: database() (scope function) - Azure Data Explorer
+title:  database() (scope function)
 description: Learn how to use the database() function to change the reference of the query to a specific database within the cluster scope.
 ms.reviewer: alexans
 ms.topic: reference
