@@ -5,9 +5,9 @@ ms.topic: reference
 ms.date: 03/08/2023
 ---
 
-# Manage view access to tables in Azure Data Explorer
+# Manage view access to tables within the same database
 
-In Azure Data Explorer, principals gain access to resources, such as databases and tables, based on their assigned [security roles](security-roles.md#security-roles). The `viewer` security role is only available at the database level, and assigning a principal this role gives them view access to all tables in the database.
+Principals gain access to resources, such as databases and tables, based on their assigned [security roles](security-roles.md#security-roles). The `viewer` security role is only available at the database level, and assigning a principal this role gives them view access to all tables in the database.
 
 In this article, you'll learn methods for controlling a principal's table view access.
 
@@ -29,5 +29,5 @@ Create a [follower database](../../follower.md) and follow only the relevant tab
 
 ## Next steps
 
-* Learn more about [role-based access control in Azure Data Explorer](access-control/role-based-access-control.md)
+* Learn more about [role-based access control](access-control/role-based-access-control.md)
 * Use management commands to assign [security roles](security-roles.md)

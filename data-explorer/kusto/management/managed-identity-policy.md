@@ -3,13 +3,13 @@ title:  Kusto ManagedIdentity policy
 description: This article describes ManagedIdentity policy in Azure Data Explorer.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/25/2023
 ---
 # Managed Identity policy
 
 *ManagedIdentity* is a policy that controls which managed identities can be used for what purposes. For example, you can configure a policy that allows a specific managed identity to be used for accessing a storage account for ingestion purposes.
 
-This policy can be enabled at the cluster and database levels. The policy is additive, meaning that for every operation that involves a managed identity, Azure Data Explorer will allow the operation if the usage is allowed at either the cluster or database level.
+This policy can be enabled at the cluster and database levels. The policy is additive, meaning that for every operation that involves a managed identity, the operation will be permitted if the usage is allowed at either the cluster or database level.
 
 ## Permissions
 

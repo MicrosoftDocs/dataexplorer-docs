@@ -3,11 +3,11 @@ title:  .delete ingestion time policy command
 description: This article describes the .delete ingestion time policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/24/2023
+ms.date: 04/25/2023
 ---
 # .delete ingestion time policy
 
-Delete a table's [ingestion time policy](ingestiontimepolicy.md). Azure Data Explorer can add an optional policy for tables to create a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column. 
+Delete a table's [ingestion time policy](ingestiontimepolicy.md). The policy adds a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
 
 ## Permissions
 

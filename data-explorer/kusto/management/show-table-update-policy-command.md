@@ -3,11 +3,11 @@ title:  .show table update policy command
 description: This article describes the .show table update policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/25/2023
 ---
 # .show table update policy
 
-Show the table update policy. The [update policy](updatepolicy.md) instructs Azure Data Explorer to automatically append data to a target table whenever new data is inserted into the source table, based on a transformation query that runs on the data inserted into the source table.
+Show the table update policy. The [update policy](updatepolicy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
 
 > [!NOTE]
 > The source table and the table for which the update policy is defined must be in the same database.

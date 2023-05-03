@@ -3,18 +3,18 @@ title:  Cache policy (hot and cold cache)
 description: This article describes Cache policy (hot and cold cache) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/03/2021
+ms.date: 04/25/2023
 ---
 # Cache policy (hot and cold cache) 
 
-Azure Data Explorer stores its ingested data in reliable storage (most commonly Azure Blob Storage),
-away from its actual processing (such as Azure Compute) nodes. To speed up queries on that data, Azure Data Explorer caches it, or parts of it, on its processing nodes, SSD, or even in RAM. Azure Data Explorer includes a sophisticated cache mechanism designed to intelligently decide which data objects to cache. The cache enables Azure Data Explorer to describe the data artifacts that it uses, so that more important data can take priority. For example, column indexes and column data shards.
+Ingested data is stored in reliable storage (most commonly Azure Blob Storage),
+away from its actual processing (such as Azure Compute) nodes. To speed up queries, parts of the data is cached on processing nodes, SSD, or even in RAM. There is a sophisticated cache mechanism designed to intelligently decide which data objects to cache. The cache policy allows your cluster to describe the data artifacts that it uses, so that more important data can take priority. For example, column indexes and column data shards.
 
 The best query performance is achieved when all ingested data is cached. Sometimes, certain data doesn't justify the cost of keeping it "warm" in local SSD storage.
 For example, many teams consider that rarely accessed older log records are of lesser importance.
 They prefer to have reduced performance when querying this data, rather than pay to keep it warm all the time.
 
-Azure Data Explorer cache provides a granular **cache policy** that customers can use to differentiate between: **hot data cache** and **cold data cache**. Azure Data Explorer cache uses 95% of the local SSD disk to keep all data that falls into the hot data cache category. If the cache policy requires more disk space than the available local SSD disk, the most recent data will preferentially be kept in the cache. The remaining 5% of the local SSD space is used to hold data that isn't categorized as hot. 
+The granular **cache policy** allows customers to differentiate between: **hot data cache** and **cold data cache**. The cache uses 95% of the local SSD disk to keep all data that falls into the hot data cache category. If the cache policy requires more disk space than the available local SSD disk, the most recent data will preferentially be kept in the cache. The remaining 5% of the local SSD space is used to hold data that isn't categorized as hot. 
 
 One useful implication of this design is that queries that load lots of cold data from reliable storage won't evict data from the hot data cache. These queries won't have a major impact on other queries involving the data in the hot data cache.
 
@@ -25,12 +25,12 @@ The main implications of setting the hot cache policy are:
 Use the [cache policy command](./show-table-cache-policy-command.md) to manage the cache policy.
 
 > [!TIP]
->Azure Data Explorer is designed for ad-hoc queries with intermediate result sets fitting the cluster's total RAM.
+> Your cluster is designed for ad-hoc queries with intermediate result sets fitting the cluster's total RAM.
 >For large jobs, like map-reduce, where you want to store intermediate results in persistent storage such as an SSD, use the continuous export feature. This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
  
 ## How cache policy is applied
 
-When data is ingested into Azure Data Explorer, the system keeps track of the date and time of the ingestion, and of the extent that was created. The extent's ingestion date and time value (or maximum value, if an extent was built from multiple pre-existing extents), is used to evaluate the cache policy.
+When data is ingested, the system keeps track of the date and time of the ingestion, and of the extent that was created. The extent's ingestion date and time value (or maximum value, if an extent was built from multiple pre-existing extents), is used to evaluate the cache policy.
 
 > [!NOTE]
 > You can specify a value for the ingestion date and time by using the ingestion property `creationTime`.

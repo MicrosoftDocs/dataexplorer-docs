@@ -2,12 +2,14 @@
 title:  Manage database security roles
 description: This article describes how to use management commands to view, add, and remove security roles on the database level in Azure Data Explorer.
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/25/2023
 ---
 
 # Manage database security roles
 
-Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the security roles they're assigned. In this article, you'll learn how to use management commands to [view existing security roles](#view-existing-security-roles) as well as [add and remove security roles](#add-and-remove-security-roles) on the database level.
+Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
+
+In this article, you'll learn how to use management commands to [view existing security roles](#view-existing-security-roles) as well as [add and remove security roles](#add-and-remove-security-roles) on the database level.
 
 ## Permissions
 
