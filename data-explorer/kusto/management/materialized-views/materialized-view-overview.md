@@ -70,7 +70,7 @@ Materialized views and update policies work differently and serve different use 
 
 A materialized view is made of two components:
 
-* A *materialized* part - an Azure Data Explorer table holding aggregated records from the source table, which have already been processed.  This table always holds a single record per the aggregation's group-by combination.
+* A *materialized* part - a table holding aggregated records from the source table, which have already been processed. This table always holds a single record per the aggregation's group-by combination.
 * A *delta* - the newly ingested records in the source table that haven't yet been processed.
 
 Querying the materialized view combines the materialized part with the delta part, providing an up-to-date result of the aggregation query. The offline materialization process ingests new records from the *delta* to the materialized table, and replaces existing records. The replacement is done by rebuilding extents that hold records to replace. If records in the *delta* constantly intersect with all data shards in the *materialized* part, each materialization cycle requires rebuilding the entire *materialized* part, and may not keep up with the ingestion rate. In that case, the view becomes unhealthy and the *delta* constantly grows.
@@ -117,7 +117,7 @@ There are 2 ways to query a materialized view:
 When querying the entire view, the materialized part is combined with the `delta` during query time. This includes aggregating the `delta` and joining it with the materialized part.
 
 * Querying the entire view performs better if the query includes filters on the group by keys of the materialized view query. See more tips about how to create your materialized view, based on your query pattern, in the [`.create materialized-view` performance tips](materialized-view-create.md#performance-tips) section.
-* Azure Data Explorer's query optimizer chooses summarize/join strategies that are expected to improve query performance. For example, the decision on whether to [shuffle](../../query/shufflequery.md) the query is based on number of records in `delta` part. The following [client request properties](../../api/netfx/request-properties.md) provide some control over the optimizations applied. You can test these properties with your materialized view queries and evaluate their impact on queries performance.
+* The query optimizer chooses summarize/join strategies that are expected to improve query performance. For example, the decision on whether to [shuffle](../../query/shufflequery.md) the query is based on number of records in `delta` part. The following [client request properties](../../api/netfx/request-properties.md) provide some control over the optimizations applied. You can test these properties with your materialized view queries and evaluate their impact on queries performance.
 
 |Client request property name|Type|Description|
 |------------------------|-------|-------------------|
