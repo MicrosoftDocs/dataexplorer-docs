@@ -3,11 +3,11 @@ title: series_rate_fl() - Azure Data Explorer
 description: This article describes the series_rate_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 04/30/2023
 ---
 # series_rate_fl()
 
-The function `series_rate_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the average rate of metric increase per second. Its logic follows PromQL [rate()](https://prometheus.io/docs/prometheus/latest/querying/functions/#rate) function. It should be used for time series of counter metrics ingested to Azure Data Explorer by [Prometheus](https://prometheus.io/) monitoring system, and retrieved by [series_metric_fl()](series-metric-fl.md).
+The function `series_rate_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the average rate of metric increase per second. Its logic follows PromQL [rate()](https://prometheus.io/docs/prometheus/latest/querying/functions/#rate) function. It should be used for time series of counter metrics ingested to your cluster by [Prometheus](https://prometheus.io/) monitoring system, and retrieved by [series_metric_fl()](series-metric-fl.md).
 
 ## Syntax
 

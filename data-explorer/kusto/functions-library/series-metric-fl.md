@@ -3,11 +3,11 @@ title: series_metric_fl() - Azure Data Explorer
 description: This article describes the series_metric_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 04/30/2023
 ---
 # series_metric_fl()
 
-The `series_metric_fl()` function is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that selects and retrieves time series of metrics ingested to Azure Data Explorer using the [Prometheus](https://prometheus.io/) monitoring system. This function assumes the data stored in Azure Data Explorer is structured following the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/). Specifically, each record contains:
+The `series_metric_fl()` function is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that selects and retrieves time series of metrics ingested to your cluster using the [Prometheus](https://prometheus.io/) monitoring system. This function assumes the data stored in your cluster is structured following the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/). Specifically, each record contains:
 
 * timestamp
 * metric name
