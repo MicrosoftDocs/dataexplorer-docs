@@ -6,7 +6,7 @@ ms.topic: reference
 ms.custom: devx-track-js
 ms.date: 04/25/2023
 ---
-# Authenticate with Azure Active Directory (Azure AD) for cluster access
+# Authenticate with Azure Active Directory (Azure AD)
 
 The recommended way to access your cluster is by authenticating to the
 **Azure Active Directory (Azure AD)** service; doing so guarantees privacy of the accessing principal's directory credentials.
