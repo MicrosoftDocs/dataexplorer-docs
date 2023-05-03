@@ -134,7 +134,8 @@ let log_reduce_full_fl=(tbl:(*), reduce_col:string, pattern_col:string, paramete
 //
 HDFS_log
 | take 100000
-| invoke log_reduce_full_fl(reduce_col="data")
+| extend Patterns="", Parameters=""
+| invoke log_reduce_full_fl(reduce_col="data", pattern_col="Patterns", parameters_col="Parameters")
 | take 10
 ~~~
 
@@ -149,7 +150,8 @@ HDFS_log
 //
 HDFS_log
 | take 100000
-| invoke log_reduce_full_fl(reduce_col="data")
+| extend Patterns="", Parameters=""
+| invoke log_reduce_full_fl(reduce_col="data", pattern_col="Patterns", parameters_col="Parameters")
 | take 10
 ```
 
