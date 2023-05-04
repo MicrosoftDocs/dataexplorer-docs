@@ -8,7 +8,7 @@ ms.date: 05/04/2023
 
 # Create an Azure Data Explorer cluster and database
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it. In this article, you'll learn how to create a cluster and a database using either the Azure portal, C#, Python, Go, the Azure CLI, Powershell, or an Azure Resource Manager (ARM) template.
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it. In this article, you'll learn how to create a cluster and a database using either the Azure portal, C#, Python, Go, the Azure CLI, Powershell, or an [Azure Resource Manager (ARM) template](/azure/azure-resource-manager/management/overview).
 
 >[!TIP]
 > You can also [create a free cluster](start-for-free-web-ui.md) with only a Microsoft account or an Azure Active Directory user identity.
@@ -103,6 +103,8 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
     ```
 
 ### [ARM template](#tab/arm)
+
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 ---
 
@@ -313,6 +315,140 @@ The following steps outline how to create an Azure Data Explorer cluster with a 
 
 ### [ARM template](#tab/arm)
 
+To learn how to deploy the following ARM template using Powershell, see [Use the ARM template](#use-the-arm-template). Alternatively, you can [deploy the template in the Azure Portal](/samples/azure/azure-quickstart-templates/kusto-cluster-database/) by selecting **Deploy to Azure**.
+
+### ARM template for cluster and database creation
+
+You can use this template for your own deployments, or customize it to meet your requirements. For information about creating templates, see [authoring Azure Resource Manager templates](/azure/azure-resource-manager/resource-group-authoring-templates). For the JSON syntax and properties to use in a template, see [Microsoft.Kusto resource types](/azure/templates/microsoft.kusto/allversions).
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusters_kustocluster_name": {
+            "type": "string",
+            "defaultValue": "[concat('kusto', uniqueString(resourceGroup().id))]",
+            "metadata": {
+                "description": "Name of the cluster to create"
+            }
+        },
+        "databases_kustodb_name": {
+            "type": "string",
+            "defaultValue": "kustodb",
+            "metadata": {
+                "description": "Name of the database to create"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location for all resources."
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('clusters_kustocluster_name')]",
+            "type": "Microsoft.Kusto/clusters",
+            "sku": {
+                "name": "Standard_E8ads_v5",
+                "tier": "Standard",
+                "capacity": 2
+            },
+            "apiVersion": "2022-12-29",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Created By": "GitHub quickstart template"
+            },
+            "properties": {
+                "trustedExternalTenants": [],
+                "optimizedAutoscale": {
+                    "version": 1,
+                    "isEnabled": true,
+                    "minimum": 2,
+                    "maximum": 10
+                },
+                "enableDiskEncryption": false,
+                "enableStreamingIngest": false,
+                "virtualNetworkConfiguration": {
+                    "subnetId": "<subnet resource id>",
+                    "enginePublicIpId": "<Engine service's public IP address resource id>",
+                    "dataManagementPublicIpId": "<Data management's service public IP address resource id>"
+                },
+                "keyVaultProperties": {
+                    "keyName": "<Key name>",
+                    "keyVaultUri": "<Key vault uri>",
+                    "userIdentity": "<ResourceId of user assigned managed identity>"
+                },
+                "enablePurge": false,
+                "enableDoubleEncryption": false,
+                "engineType": "V3"
+            },
+            "identity": {
+                "type": "SystemAssigned, UserAssigned",
+                "userAssignedIdentities": {
+                    "<ResourceId of managed identity>": {}
+                }
+            }
+        },
+        {
+            "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
+            "type": "Microsoft.Kusto/clusters/databases",
+            "apiVersion": "2022-12-29",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
+            ],
+            "properties": {
+                "softDeletePeriodInDays": 365,
+                "hotCachePeriodInDays": 31
+            }
+        }
+    ]
+}
+```
+
+### Use the ARM template
+
+The following steps explain how to deploy the ARM template using Powershell.
+
+1. Open [Azure Cloud Shell](https://shell.azure.com), and follow the instructions to sign in.
+1. Select **Copy** to copy the PowerShell script.
+
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
+    $clusterName = "${projectName}cluster"
+    $parameters = @{}
+    $parameters.Add("clusters_kustocluster_name", $clusterName)
+    $templateUri = "https://azure.microsoft.com/resources/templates/kusto-cluster-database/"
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -TemplateParameterObject $parameters
+    Write-Host "Press [ENTER] to continue ..."
+    ```
+
+1. Right-click the shell console, and then select **Paste**.
+
+    > [!NOTE]
+    > It takes a few minutes to create an Azure Data Explorer cluster and database.
+
+1. To verify the deployment, use the following Azure PowerShell script. If the Cloud Shell is still open, you don't need to copy/run the first line (Read-Host).
+
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
+    
+    Install-Module -Name Az.Kusto
+    $resourceGroupName = "${projectName}rg"
+    $clusterName = "${projectName}cluster"
+    
+    Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+    Write-Host "Press [ENTER] to continue ..."
+    ```
+
 ---
 
 ## Create an Azure Data Explorer database
@@ -473,6 +609,8 @@ In this section, you'll create a database within the cluster created in the prev
 
 ### [ARM template](#tab/arm)
 
+The cluster and database are created together with the ARM template in the previous section.
+
 ---
 
 ## Clean up resources
@@ -520,6 +658,17 @@ Remove-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster
 ```
 
 ### [ARM template](#tab/arm)
+
+If the Cloud Shell is still open, you don't need to copy/run the first line (Read-Host).
+
+```azurepowershell-interactive
+$projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
+
+Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
+
+Write-Host "Press [ENTER] to continue ..."
+```
 
 ---
 
