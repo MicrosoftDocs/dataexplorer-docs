@@ -756,4 +756,4 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## Next steps
 
-* [Ingest data into an Azure Data Explorer cluster and database](ingest-data-overview.md)
+* Read the [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
