@@ -16,6 +16,8 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * [A test table](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 
+---
+
 ## Install packages
 
 ### [C#](#tab/csharp)
@@ -31,6 +33,8 @@ pip install azure-common
 pip install azure-mgmt-kusto
 pip install azure-kusto-data (Optional, for changing table's policies)
 ```
+
+---
 
 ## Authentication
 
