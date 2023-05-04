@@ -27,16 +27,21 @@ The prerequisite steps depend on the method you plan to use to create your clust
 * [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Install the [Microsoft.Azure.Management.Kusto NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Get values for **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
+* [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 
 ### [Python](#tab/python)
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * [Python 3.4+](https://www.python.org/downloads/).
 * Install the [azure-common](https://pypi.org/project/azure-common/) and [azure-mgmt-kusto](https://pypi.org/project/azure-mgmt-kusto/) packages.
-* [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Get values for **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
+* [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 
 ### [Go](#tab/go)
+
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+* Install an appropriate version of [Go](https://golang.org/). For supported versions, see [Azure Kusto Module for Go](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kusto/armkusto).
+* [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 
 ### [Azure CLI](#tab/azcli)
 
@@ -263,6 +268,75 @@ The following steps outline how to create an Azure Data Explorer cluster with a 
 1. Confirm successful creation of the cluster. The creation succeeded if the result contains `provisioningState` with the `Succeeded` value.
 
 ### [Go](#tab/go)
+
+The following steps explain how to use the [sample application to create a cluster and database](https://github.com/Azure-Samples/azure-data-explorer-go-cluster-management/).
+
+1. Clone the sample code from GitHub.
+
+1. Set the required environment variables including service principal information from the [prerequisites](#prerequisites). Enter your subscription ID, resource group, and region where you want to create the cluster.
+
+    ```console
+    export AZURE_CLIENT_ID="<enter service principal client ID>"
+    export AZURE_CLIENT_SECRET="<enter service principal client secret>"
+    export AZURE_TENANT_ID="<enter tenant ID>"
+
+    export SUBSCRIPTION="<enter subscription ID>"
+    export RESOURCE_GROUP="<enter resource group name>"
+    export LOCATION="<enter azure location e.g. Southeast Asia>"
+
+    export CLUSTER_NAME_PREFIX="<enter prefix (cluster name will be [prefix]-ADXTestCluster)>"
+    export DATABASE_NAME_PREFIX="<enter prefix (database name will be [prefix]-ADXTestDB)>"
+    ```
+
+    > [!TIP]
+    > Use [auth.NewAuthorizerFromCLIWithResource](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromCLIWithResource) if you have Azure CLI installed and configured for authentication. In that situation, you don't need to create a service principal.
+
+1. Run the program with the following command:
+
+    ```console
+    go run main.go
+    ```
+
+    When you run the sample code as is, the following actions are performed:
+
+    1. An Azure Data Explorer cluster is created.
+    1. All the Azure Data Explorer clusters in the specified resource group are listed.
+    1. An Azure Data Explorer database is created as a part of the cluster created earlier.
+    1. All the databases in the specified cluster are listed.
+    1. The database is deleted.
+    1. The cluster is deleted.
+
+    > [!TIP]
+    > To try different combinations of operations, you can comment and uncomment the respective functions in `main.go`.
+
+    You'll get an output similar to the following:
+
+    ```console
+    waiting for cluster creation to complete - fooADXTestCluster
+    created cluster fooADXTestCluster
+    listing clusters in resource group <your resource group>
+    +-------------------+---------+----------------+-----------+-----------------------------------------------------------+
+    |       NAME        |  STATE  |    LOCATION    | INSTANCES |                            URI                           |
+    +-------------------+---------+----------------+-----------+-----------------------------------------------------------+
+    | fooADXTestCluster | Running | Southeast Asia |         1 | https://fooADXTestCluster.southeastasia.kusto.windows.net |
+    +-------------------+---------+----------------+-----------+-----------------------------------------------------------+
+    
+    waiting for database creation to complete - barADXTestDB
+    created DB fooADXTestCluster/barADXTestDB with ID /subscriptions/<your subscription ID>/resourceGroups/<your resource group>/providers/Microsoft.Kusto/Clusters/fooADXTestCluster/Databases/barADXTestDB and type Microsoft.Kusto/Clusters/Databases
+    
+    listing databases in cluster fooADXTestCluster
+    +--------------------------------+-----------+----------------+------------------------------------+
+    |              NAME              |   STATE   |    LOCATION    |                TYPE                |
+    +--------------------------------+-----------+----------------+------------------------------------+
+    | fooADXTestCluster/barADXTestDB | Succeeded | Southeast Asia | Microsoft.Kusto/Clusters/Databases |
+    +--------------------------------+-----------+----------------+------------------------------------+
+    
+    waiting for database deletion to complete - barADXTestDB
+    deleted DB barADXTestDB from cluster fooADXTestCluster
+
+    waiting for cluster deletion to complete - fooADXTestCluster
+    deleted Azure Data Explorer cluster fooADXTestCluster from resource group <your resource group>
+    ```
 
 ### [Azure CLI](#tab/azcli)
 
@@ -564,6 +638,8 @@ In this section, you'll create a database within the cluster created in the prev
 
 ### [Go](#tab/go)
 
+The cluster and database are created together with the sample application from the previous section.
+
 ### [Azure CLI](#tab/azcli)
 
 1. Create your database by using the following command:
@@ -641,6 +717,12 @@ cluster_operations.delete(resource_group_name = resource_group_name, cluster_nam
 
 ### [Go](#tab/go)
 
+If you didn't delete the cluster programmatically using the sample code, you can do so manually using the Azure CLI with the following command:
+
+```azurecli
+az kusto cluster delete --cluster-name <enter name> --resource-group <enter name>
+```
+
 ### [Azure CLI](#tab/azcli)
 
 When you delete a cluster, it also deletes all the databases in it. Use the following command to delete your cluster:
@@ -673,3 +755,5 @@ Write-Host "Press [ENTER] to continue ..."
 ---
 
 ## Next steps
+
+* [Ingest data into an Azure Data Explorer cluster and database](ingest-data-overview.md)
