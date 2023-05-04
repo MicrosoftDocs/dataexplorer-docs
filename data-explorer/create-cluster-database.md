@@ -40,9 +40,15 @@ The prerequisite steps depend on the method you plan to use to create your clust
 
 ### [Azure CLI](#tab/azcli)
 
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+
+### 
+
 ### [Powershell](#tab/powershell)
 
 ### [ARM template](#tab/arm)
+
+---
 
 ## Create an Azure Data Explorer cluster
 
@@ -206,6 +212,8 @@ The following steps outline how to create an Azure Data Explorer cluster with a 
 
 ### [ARM template](#tab/arm)
 
+---
+
 ## Create an Azure Data Explorer database
 
 In this section, you'll create a database within the cluster created in the previous section.
@@ -325,6 +333,8 @@ In this section, you'll create a database within the cluster created in the prev
 
 ### [ARM template](#tab/arm)
 
+---
+
 ## Clean up resources
 
 If you plan to follow other quickstarts and tutorials, keep the resources you created. Otherwise, delete the resources to avoid incurring costs.
@@ -358,5 +368,7 @@ cluster_operations.delete(resource_group_name = resource_group_name, cluster_nam
 ### [Powershell](#tab/powershell)
 
 ### [ARM template](#tab/arm)
+
+---
 
 ## Next steps
