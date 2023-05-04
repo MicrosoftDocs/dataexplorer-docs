@@ -310,6 +310,8 @@ items:
       href: k2bridge.md
   - name: Admin
     items:
+    - name: Automated provisioning
+      href: automated-deploy-overview.md
     - name: Create a cluster and database
       href: create-cluster-database.md
     - name: Create a free cluster
