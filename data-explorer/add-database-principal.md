@@ -12,7 +12,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-The prerequisites vary based on the method used to create the cluster and database. Choose the relevant tab for your preferred method.
+The prerequisites vary based on the method used to add the principal. Choose the relevant tab for your preferred method.
 
 ### [C#](#tab/csharp)
 
