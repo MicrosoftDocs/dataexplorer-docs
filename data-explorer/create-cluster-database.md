@@ -8,7 +8,7 @@ ms.date: 05/04/2023
 
 # Create an Azure Data Explorer cluster and database
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it. In this article, you'll learn how to create a cluster and a database using either the Azure portal, C#, Python, Go, the Azure CLI, Powershell, or an [Azure Resource Manager (ARM) template](/azure/azure-resource-manager/management/overview).
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it. In this article, you'll learn how to create a cluster and a database using either C#, Python, Go, the Azure CLI, Powershell, or an [Azure Resource Manager (ARM) template](/azure/azure-resource-manager/management/overview).
 
 >[!TIP]
 > You can also [create a free cluster](start-for-free-web-ui.md) with only a Microsoft account or an Azure Active Directory user identity.
@@ -16,11 +16,6 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 ## Prerequisites
 
 The prerequisite steps depend on the method you plan to use to create your cluster. Choose the relevant tab to get started.
-
-### [Portal](#tab/portal)
-
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Sign in to the [Azure portal](https://portal.azure.com/).
 
 ### [C#](#tab/csharp)
 
@@ -116,48 +111,6 @@ An Azure subscription. Create a [free Azure account](https://azure.microsoft.com
 ## Create an Azure Data Explorer cluster
 
 In this section, you'll create an Azure Data Explorer cluster that can contain databases and tables.
-
-### [Portal](#tab/portal)
-
-The following steps outline how to create an Azure Data Explorer cluster with a defined set of compute and storage resources in an Azure resource group.
-
-1. Select the **+ Create a resource** button in the upper-left corner of the portal.
-
-    :::image type="content" source="media/create-cluster-database-portal/create-resource.png" alt-text="Screenshot of the Create a resource button.":::
-
-1. Search for "Azure Data Explorer".
-
-    :::image type="content" source="media/create-cluster-database-portal/search-resources.png" alt-text="Search Azure Data Explorer":::
-
-1. Under **Azure Data Explorer**, select **Create**.
-
-    :::image type="content" source="media/create-cluster-database-portal/create-click.png" alt-text="Screenshot of the Create a cluster window":::
-
-1. Fill out the basic cluster details with the following information.
-
-    :::image type="content" source="media/create-cluster-database-portal/create-cluster-form.png" alt-text="Screenshot of the Azure portal create Azure Data Explorer cluster form.":::
-
-    **Setting** | **Suggested value** | **Field description**
-    |---|---|---|
-    | Subscription | Your subscription | Select the Azure subscription that you want to use for your cluster.|
-    | Resource group | Your resource group | Use an existing resource group or create a new resource group. |
-    | Cluster name | A unique cluster name | Choose a unique name that identifies your cluster. The domain name *[region].kusto.windows.net* is appended to the cluster name you provide. The name can contain only lowercase letters and numbers. It must contain from 4 to 22 characters.
-    | Region | *West US* or *West US 2* | Select *West US* or *West US 2* (if using availability zones) for this quickstart. For a production system, select the region that best meets your needs.
-    | Workload | *Dev/Test* | Select *Dev/Test* for this quickstart. For a production system, select the specification that best meets your needs.
-    | Compute specifications | *Dev(No SLA)_Standard_E2a_v4* | Select *Dev(No SLA)_Standard_E2a_v4* for this quickstart. For a production system, select the specification that best meets your needs.
-    | Availability zones | On | Turning on this feature will distribute the cluster storage and compute resources across multiple physical zones within a region for added protection and availability. By default, this feature is turned on if zones are supported in the region. If less than 3 zones are available for the compute instances, the portal will display the number of supported zones. Note that deployment to availability zones is possible only when creating the cluster, and can't be modified later. Read more about [Azure Availability Zones](/azure/availability-zones/az-overview).|
-
-1. Select **Review + create** to review your cluster details, and on the next screen select **Create** to provision the cluster. Provisioning typically takes about 10 minutes.
-
-1. When the deployment is complete, select **Go to resource**.
-
-    :::image type="content" source="media/create-cluster-database-portal/notification-resource.png" alt-text="Screenshot of the Go to resource button.":::
-
-> [!NOTE]
->
-> If the deployment fails with the error "SubscriptionNotRegistered", retry the operation.
->
-> Deployment fails when the resource provider isn't registered on the subscription described in [Azure resource providers and types](/azure/azure-resource-manager/management/resource-providers-and-types). When the deployment fails, the resource provider registers itself on the subscription, and the retry can then succeed.
 
 ### [C#](#tab/csharp)
 
@@ -529,25 +482,6 @@ The following steps explain how to deploy the ARM template using Powershell.
 
 In this section, you'll create a database within the cluster created in the previous section.
 
-### [Portal](#tab/portal)
-
-1. On the **Overview** tab, select **Create database**.
-
-    :::image type="content" source="media/create-cluster-database-portal/database-creation.png" alt-text="Screenshot of the Create a database window.":::
-
-1. Fill out the form with the following information.
-
-    |**Setting** | **Suggested value** | **Field description**
-    |---|---|---|
-    | Admin | *Default selected* | The admin field is disabled. New admins can be added after database creation. |
-    | Database name | *TestDatabase* | The name of database to create. The name must be unique within the cluster. |
-    | Retention period | *365* | The number of days that data is guaranteed to be kept available for querying. The period is measured from the time data is ingested. |
-    | Cache period | *31* | The number of days to keep frequently queried data available in SSD storage or RAM to optimize querying. |
-
-    :::image type="content" source="media/create-cluster-database-portal/create-test-database.png" alt-text="Create database form.":::
-
-1. Select **Create** to create the database. Creation typically takes less than a minute. When the process is complete, you're back on the cluster **Overview** tab.
-
 ### [C#](#tab/csharp)
 
 1. Create your database by using the following code:
@@ -692,12 +626,6 @@ The cluster and database are created together with the ARM template in the previ
 ## Clean up resources
 
 If you plan to follow other quickstarts and tutorials, keep the resources you created. Otherwise, delete the resources to avoid incurring costs.
-
-### [Portal](#tab/portal)
-
-1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group that contains your Data Explorer cluster.
-
-1. Select **Delete resource group** to delete the entire resource group. If using an existing resource group, you can choose to only delete the Data Explorer cluster.
 
 ### [C#](#tab/csharp)
 
