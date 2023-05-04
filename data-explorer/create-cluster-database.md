@@ -756,4 +756,5 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## Next steps
 
-* Read the [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
+* [Ingest data](ingest-data-overview.md)
+* [Query data](web-query-data.md)
