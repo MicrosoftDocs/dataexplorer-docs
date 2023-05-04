@@ -41,8 +41,38 @@ The prerequisite steps depend on the method you plan to use to create your clust
 ### [Azure CLI](#tab/azcli)
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
+* If using the [Azure CLI]((/cli/azure/install-azure-cli)) on your own machine, follow the steps in [Configure the CLI parameters](#configure-the-cli-parameters).
 
-### 
+### Configure the CLI parameters
+
+This article requires the Azure CLI version 2.0.4 or later. Run `az --version` to check your version. If you need to install or upgrade, see [Install the Azure CLI](/cli/azure/install-azure-cli).
+
+Follow these steps to configure the CLI parameters:
+
+1. Install extension to use the latest Kusto CLI version:
+
+    ```azurecli-interactive
+    az extension add -n kusto
+    ```
+
+1. Run the following command to sign in to Azure:
+
+    ```azurecli-interactive
+    az login
+    ```
+
+1. Set the subscription where you want your cluster to be created. Replace `MyAzureSub` with the name of the Azure subscription that you want to use:
+
+    ```azurecli-interactive
+    az account set --subscription MyAzureSub
+    ```
+
+1. Set the resource group where you want your cluster to be created. Replace `testrg` with the name of the resource group that you want to use:
+
+    ```azurecli-interactive
+    az group create --name testrg --location westus
+    ```
 
 ### [Powershell](#tab/powershell)
 
@@ -144,7 +174,7 @@ The following steps outline how to create an Azure Data Explorer cluster with a 
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-1. Confirm successful creation of the cluster. The creation succeeded if the result contains `ProvisioningState` with the `Succeeded` value.
+1. Confirm successful creation of the cluster. The creation succeeded if the result contains `provisioningState` with the `Succeeded` value.
 
 ### [Python](#tab/python)
 
@@ -202,11 +232,34 @@ The following steps outline how to create an Azure Data Explorer cluster with a 
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= cluster_name, custom_headers=None, raw=False)
     ```
 
-1. Confirm successful creation of the cluster. The creation succeeded if the result contains `ProvisioningState` with the `Succeeded` value.
+1. Confirm successful creation of the cluster. The creation succeeded if the result contains `provisioningState` with the `Succeeded` value.
 
 ### [Go](#tab/go)
 
 ### [Azure CLI](#tab/azcli)
+
+1. Create your cluster by using the following command:
+
+    ```azurecli-interactive
+    az kusto cluster create --cluster-name azureclitest --sku name="Standard_E8ads_v5" tier="Standard" --resource-group testrg --location westus
+    ```
+
+   |**Setting** | **Suggested value** | **Field description**|
+   |---|---|---|
+   | name | *azureclitest* | The desired name of your cluster.|
+   | sku | *Standard_E8ads_v5* | The SKU that will be used for your cluster. Parameters: *name* -  The SKU name. *tier* - The SKU tier. |
+   | resource-group | *testrg* | The resource group name where the cluster will be created. |
+   | location | *westus* | The location where the cluster will be created. |
+
+    There are other optional parameters that you can use, such as the capacity of the cluster.
+
+1. Run the following command to check whether your cluster was successfully created:
+
+    ```azurecli-interactive
+    az kusto cluster show --cluster-name azureclitest --resource-group testrg
+    ```
+
+1. Confirm successful creation of the cluster. The creation succeeded if the result contains `provisioningState` with the `Succeeded` value.
 
 ### [Powershell](#tab/powershell)
 
@@ -329,6 +382,25 @@ In this section, you'll create a database within the cluster created in the prev
 
 ### [Azure CLI](#tab/azcli)
 
+1. Create your database by using the following command:
+
+    ```azurecli-interactive
+    az kusto database create --cluster-name azureclitest --database-name clidatabase --resource-group testrg --read-write-database soft-delete-period=P365D hot-cache-period=P31D location=westus
+    ```
+
+   |**Setting** | **Suggested value** | **Field description**|
+   |---|---|---|
+   | cluster-name | *azureclitest* | The name of your cluster where the database will be created.|
+   | database-name | *clidatabase* | The name of your database.|
+   | resource-group | *testrg* | The resource group name where the cluster will be created. |
+   | read-write-database | *P365D* *P31D* *westus* | The database type. Parameters: *soft-delete-period* - Signifies the amount of time the data will be kept available to query. See [retention policy](kusto/management/retentionpolicy.md) for more information. *hot-cache-period* - Signifies the amount of time the data will be kept in cache. See [cache policy](kusto/management/cachepolicy.md) for more information. *location* -The location where the database will be created. |
+
+1. Run the following command to see the database that you created:
+
+    ```azurecli-interactive
+    az kusto database show --database-name clidatabase --resource-group testrg --cluster-name azureclitest
+    ```
+
 ### [Powershell](#tab/powershell)
 
 ### [ARM template](#tab/arm)
@@ -364,6 +436,12 @@ cluster_operations.delete(resource_group_name = resource_group_name, cluster_nam
 ### [Go](#tab/go)
 
 ### [Azure CLI](#tab/azcli)
+
+When you delete a cluster, it also deletes all the databases in it. Use the following command to delete your cluster:
+
+```azurecli-interactive
+az kusto cluster delete --cluster-name azureclitest --resource-group testrg
+```
 
 ### [Powershell](#tab/powershell)
 
