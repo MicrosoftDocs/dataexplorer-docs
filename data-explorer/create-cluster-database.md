@@ -12,9 +12,6 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
 In this article, you'll learn how to create a cluster and a database using either C#, Python, Go, the Azure CLI, Powershell, or an Azure Resource Manager (ARM) template. To learn how to create a cluster and database using the Azure portal, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 
->[!TIP]
-> You can also [create a free cluster](start-for-free-web-ui.md) with only a Microsoft account or an Azure Active Directory user identity.
-
 ## Prerequisites
 
 The prerequisites vary based on the method used to create the cluster and database. Choose the relevant tab for your preferred method.
