@@ -56,9 +56,7 @@ The following list outlines the prerequisites to creating a cluster and database
 
 ### Configure the CLI parameters
 
-The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow these steps sign in to Azure and to set your current subscription:
-
-Follow these steps to configure the CLI parameters:
+The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, do the following:
 
 1. Install extension to use the latest Kusto CLI version:
 
@@ -94,7 +92,7 @@ The following list outlines the prerequisites to creating a cluster and database
 
 ### Configure parameters
 
-The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow these steps to sign in to Azure and to set your current subscription:
+The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, do the following:
 
 1. Run the following command to sign in to Azure:
 
