@@ -162,10 +162,9 @@ In this section, you'll create an Azure Data Explorer cluster that can contain d
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-1. Confirm successful creation of the cluster. The creation succeeded if the result contains `provisioningState` with the `Succeeded` value.
+1. Confirm the successful creation of the cluster by verifying the result contains `provisioningState` as `Succeeded`.
 
 ### [Python](#tab/python)
-
 
 1. Create your cluster by using the following command:
 
@@ -220,7 +219,7 @@ In this section, you'll create an Azure Data Explorer cluster that can contain d
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= cluster_name, custom_headers=None, raw=False)
     ```
 
-1. Confirm successful creation of the cluster. The creation succeeded if the result contains `provisioningState` with the `Succeeded` value.
+1. Confirm the successful creation of the cluster by verifying the result contains `provisioningState` as `Succeeded`.
 
 ### [Go](#tab/go)
 
@@ -316,7 +315,7 @@ The following steps explain how to use the [sample application to create a clust
     az kusto cluster show --cluster-name azureclitest --resource-group testrg
     ```
 
-1. Confirm successful creation of the cluster. The creation succeeded if the result contains `provisioningState` with the `Succeeded` value.
+1. Confirm the successful creation of the cluster by verifying the result contains `provisioningState` as `Succeeded`.
 
 ### [Powershell](#tab/powershell)
 
@@ -340,7 +339,7 @@ The following steps explain how to use the [sample application to create a clust
     Get-AzKustoCluster -Name mykustocluster -ResourceGroupName testrg
     ```
 
-1. Confirm successful creation of the cluster. The creation succeeded if the result contains `provisioningState` with the `Succeeded` value.
+1. Confirm the successful creation of the cluster by verifying the result contains `provisioningState` as `Succeeded`.
 
 ### [ARM template](#tab/arm)
 
