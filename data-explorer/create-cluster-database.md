@@ -10,7 +10,7 @@ ms.date: 05/04/2023
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest (load) data into a database so that you can run queries against it.
 
-In this article, you'll learn how to create a cluster and a database using either C#, Python, Go, the Azure CLI, Powershell, or an Azure Resource Manager (ARM) template. To learn how to create a cluster and database using the Azure portal, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
+In this article, you'll learn how to create a cluster and a database using either C#, Python, Go, the Azure CLI, PowerShell, or an Azure Resource Manager (ARM) template. To learn how to create a cluster and database using the Azure portal, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
 
 ## Prerequisites
 
@@ -53,7 +53,7 @@ The following list outlines the prerequisites to creating a cluster and database
 
 ### Configure the CLI parameters
 
-The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, do the following:
+The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow these steps to set up the environment:
 
 1. Install extension to use the latest Kusto CLI version:
 
@@ -79,17 +79,17 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
     az group create --name testrg --location westus
     ```
 
-### [Powershell](#tab/powershell)
+### [PowerShell](#tab/powershell)
 
-The following list outlines the prerequisites to creating a cluster and database with Powershell.
+The following list outlines the prerequisites to creating a cluster and database with PowerShell.
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
-* If you choose to install and use [Powershell](/powershell/scripting/install/installing-powershell-on-windows) locally, follow the steps in [Configure parameters](#configure-parameters).
+* If you choose to install and use [PowerShell](/powershell/scripting/install/installing-powershell-on-windows) locally, follow the steps in [Configure parameters](#configure-parameters).
 
 ### Configure parameters
 
-The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, do the following:
+The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow these steps to set up the environment:
 
 1. Run the following command to sign in to Azure:
 
@@ -103,7 +103,7 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
 
-1. When running Azure CLI locally or in the Azure Cloud Shell, you need to install the Az.Kusto module on your device:
+1. When running Azure CLI locally or in the Azure Cloud Shell, you need to install the `Az.Kusto` module on your device:
 
     ```azurepowershell-interactive
      Install-Module -Name Az.Kusto
@@ -117,7 +117,7 @@ To create a cluster and database an ARM template, you need an Azure subscription
 
 ## Create an Azure Data Explorer cluster
 
-This section will guide you through the process of creating an Azure Data Explorer cluster. Choose the relevant tab for your preferred method to create the cluster.
+This section guides you through the process of creating an Azure Data Explorer cluster. Choose the relevant tab for your preferred method to create the cluster.
 
 ### [C#](#tab/csharp)
 
@@ -268,7 +268,7 @@ The following steps use a sample application to create a cluster and database.
     > [!TIP]
     > To try different combinations of operations, comment and uncomment functions in `main.go`.
 
-    You'll get an output similar to the following:
+    The output should look similar to the following example output:
 
     ```console
     waiting for cluster creation to complete - fooADXTestCluster
@@ -322,7 +322,7 @@ The following steps use a sample application to create a cluster and database.
 
 1. Confirm the successful creation of the cluster by verifying the result contains `provisioningState` as `Succeeded`.
 
-### [Powershell](#tab/powershell)
+### [PowerShell](#tab/powershell)
 
 1. Create your cluster by using the following command:
 
@@ -348,7 +348,7 @@ The following steps use a sample application to create a cluster and database.
 
 ### [ARM template](#tab/arm)
 
-To learn how to deploy the following ARM template using Powershell, see [Use the ARM template](#use-the-arm-template). Alternatively, you can [deploy the template in the Azure Portal](/samples/azure/azure-quickstart-templates/kusto-cluster-database/) by selecting **Deploy to Azure**.
+To learn how to deploy the following ARM template using PowerShell, see [Use the ARM template](#use-the-arm-template). Alternatively, you can [deploy the template in the Azure portal](/samples/azure/azure-quickstart-templates/kusto-cluster-database/) by selecting **Deploy to Azure**.
 
 ### ARM template
 
@@ -446,7 +446,7 @@ You can use this template for your own deployments, or customize it to meet your
 
 ### Use the ARM template
 
-The following steps explain how to deploy the ARM template using Powershell.
+The following steps explain how to deploy the ARM template using PowerShell.
 
 1. Open [Azure Cloud Shell](https://shell.azure.com), and follow the instructions to sign in.
 1. Select **Copy** to copy the PowerShell script.
@@ -601,7 +601,7 @@ The cluster and database are created together with the sample application from t
     az kusto database show --database-name clidatabase --resource-group testrg --cluster-name azureclitest
     ```
 
-### [Powershell](#tab/powershell)
+### [PowerShell](#tab/powershell)
 
 1. Create your database by using the following command:
 
@@ -665,7 +665,7 @@ When you delete a cluster, it also deletes all the databases in it. Use the foll
 az kusto cluster delete --cluster-name azureclitest --resource-group testrg
 ```
 
-### [Powershell](#tab/powershell)
+### [PowerShell](#tab/powershell)
 
 When you delete a cluster, it also deletes all the databases in it. Use the following command to delete your cluster:
 
