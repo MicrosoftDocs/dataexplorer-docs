@@ -27,9 +27,14 @@ The prerequisite steps depend on the method you plan to use to create your clust
 * [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Install the [Microsoft.Azure.Management.Kusto NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* [Create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) for authentication.
+* [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Get values for **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 
 ### [Python](#tab/python)
+
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* [Python 3.4+](https://www.python.org/downloads/).
+* Install the [azure-common](https://pypi.org/project/azure-common/) and [azure-mgmt-kusto](https://pypi.org/project/azure-mgmt-kusto/) packages.
+* [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Get values for **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 
 ### [Go](#tab/go)
 
@@ -137,6 +142,62 @@ The following steps outline how to create an Azure Data Explorer cluster with a 
 
 ### [Python](#tab/python)
 
+
+1. Create your cluster by using the following command:
+
+    ```Python
+    from azure.mgmt.kusto import KustoManagementClient
+    from azure.mgmt.kusto.models import Cluster, AzureSku
+    from azure.common.credentials import ServicePrincipalCredentials
+
+    #Directory (tenant) ID
+    tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Application ID
+    client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Client Secret
+    client_secret = "xxxxxxxxxxxxxx"
+    subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    credentials = ServicePrincipalCredentials(
+        client_id=client_id,
+        secret=client_secret,
+        tenant=tenant_id
+    )
+
+    location = 'Central US'
+    sku_name = 'Standard_E8ads_v5'
+    capacity = 5
+    tier = "Standard"
+    resource_group_name = 'testrg'
+    cluster_name = 'mykustocluster'
+    cluster = Cluster(location=location, sku=AzureSku(name=sku_name, capacity=capacity, tier=tier))
+    
+    kusto_management_client = KustoManagementClient(credentials, subscription_id)
+
+    cluster_operations = kusto_management_client.clusters
+    
+    poller = cluster_operations.begin_create_or_update(resource_group_name, cluster_name, cluster)
+    poller.wait()
+    ```
+
+   |**Setting** | **Suggested value** | **Field description**|
+   |---|---|---|
+   | cluster_name | *mykustocluster* | The desired name of your cluster.|
+   | sku_name | *Standard_E8ads_v5* | The SKU that will be used for your cluster. |
+   | tier | *Standard* | The SKU tier. |
+   | capacity | *number* | The number of instances of the cluster. |
+   | resource_group_name | *testrg* | The resource group name where the cluster will be created. |
+
+    > [!NOTE]
+    > **Create a cluster** is a long running operation. Method **begin_create_or_update** returns an instance of LROPoller, see [LROPoller class](/python/api/msrest/msrest.polling.lropoller) to get more information.
+
+1. Run the following command to check whether your cluster was successfully created:
+
+    ```Python
+    cluster_operations.get(resource_group_name = resource_group_name, cluster_name= cluster_name, custom_headers=None, raw=False)
+    ```
+
+1. Confirm successful creation of the cluster. The creation succeeded if the result contains `ProvisioningState` with the `Succeeded` value.
+
 ### [Go](#tab/go)
 
 ### [Azure CLI](#tab/azcli)
@@ -200,6 +261,62 @@ In this section, you'll create a database within the cluster created in the prev
 
 ### [Python](#tab/python)
 
+1. Create your database by using the following command:
+
+    ```Python
+    from azure.mgmt.kusto import KustoManagementClient
+    from azure.common.credentials import ServicePrincipalCredentials
+    from azure.mgmt.kusto.models import ReadWriteDatabase
+    from datetime import timedelta
+
+    #Directory (tenant) ID
+    tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Application ID
+    client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Client Secret
+    client_secret = "xxxxxxxxxxxxxx"
+    subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    credentials = ServicePrincipalCredentials(
+        client_id=client_id,
+        secret=client_secret,
+        tenant=tenant_id
+    )
+    
+    location = 'Central US'
+    resource_group_name = 'testrg'
+    cluster_name = 'mykustocluster'
+    soft_delete_period = timedelta(days=3650)
+    hot_cache_period = timedelta(days=3650)
+    database_name = "mykustodatabase"
+
+    kusto_management_client = KustoManagementClient(credentials, subscription_id)
+    
+    database_operations = kusto_management_client.databases
+    database = ReadWriteDatabase(location=location,
+     					soft_delete_period=soft_delete_period,
+     					hot_cache_period=hot_cache_period)
+    
+    poller = database_operations.begin_create_or_update(resource_group_name = resource_group_name, cluster_name = cluster_name, database_name = database_name, parameters = database)
+    poller.wait()
+    ```
+
+    > [!NOTE]
+    > If you are using Python version 0.4.0 or below, use Database instead of ReadWriteDatabase.
+
+   |**Setting** | **Suggested value** | **Field description**|
+   |---|---|---|
+   | cluster_name | *mykustocluster* | The name of your cluster where the database will be created.|
+   | database_name | *mykustodatabase* | The name of your database.|
+   | resource_group_name | *testrg* | The resource group name where the cluster will be created. |
+   | soft_delete_period | *3650 days, 0:00:00* | The amount of time that data will be kept available to query. |
+   | hot_cache_period | *3650 days, 0:00:00* | The amount of time that data will be kept in cache. |
+
+1. Run the following command to see the database that you created:
+
+    ```Python
+    database_operations.get(resource_group_name = resource_group_name, cluster_name = cluster_name, database_name = database_name)
+    ```
+
 ### [Go](#tab/go)
 
 ### [Azure CLI](#tab/azcli)
@@ -227,6 +344,12 @@ kustoManagementClient.Clusters.Delete(resourceGroupName, clusterName);
 ```
 
 ### [Python](#tab/python)
+
+When you delete a cluster, it also deletes all the databases in it. Use the following command to delete your cluster:
+
+```Python
+cluster_operations.delete(resource_group_name = resource_group_name, cluster_name = cluster_name)
+```
 
 ### [Go](#tab/go)
 
