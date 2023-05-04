@@ -19,7 +19,18 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 ## Install packages
 
 ### [C#](#tab/csharp)
+
+* Install the [Azure Data Explorer (Kusto) NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Install the [Microsoft.Azure.Kusto.Data NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). (Optional, for changing table policies)
+* Install the [MSAL NuGet package](https://www.nuget.org/packages/Microsoft.Identity.Client/) for authentication with Azure Active Directory (Azure AD).
+
 ### [Python](#tab/python)
+
+```
+pip install azure-common
+pip install azure-mgmt-kusto
+pip install azure-kusto-data (Optional, for changing table's policies)
+```
 
 ## Authentication
 
