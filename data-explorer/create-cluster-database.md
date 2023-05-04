@@ -17,9 +17,11 @@ In this article, you'll learn how to create a cluster and a database using eithe
 
 ## Prerequisites
 
-The prerequisite steps depend on the method you plan to use to create your cluster. Choose the relevant tab to get started.
+The prerequisites vary based on the method used to create the cluster and database. Choose the relevant tab for your preferred method.
 
 ### [C#](#tab/csharp)
+
+The following list outlines the prerequisites to creating a cluster and database with C#.
 
 * [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
@@ -28,6 +30,8 @@ The prerequisite steps depend on the method you plan to use to create your clust
 
 ### [Python](#tab/python)
 
+The following list outlines the prerequisites to creating a cluster and database with Python.
+
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * [Python 3.4+](https://www.python.org/downloads/).
 * Install the [azure-common](https://pypi.org/project/azure-common/) and [azure-mgmt-kusto](https://pypi.org/project/azure-mgmt-kusto/) packages.
@@ -35,12 +39,16 @@ The prerequisite steps depend on the method you plan to use to create your clust
 
 ### [Go](#tab/go)
 
+The following list outlines the prerequisites to creating a cluster and database with Go.
+
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * Install an appropriate version of [Go](https://golang.org/). For supported versions, see [Azure Kusto Module for Go](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kusto/armkusto).
 * [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 
 ### [Azure CLI](#tab/azcli)
+
+The following list outlines the prerequisites to creating a cluster and database with the Azure CLI.
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
@@ -78,6 +86,8 @@ Follow these steps to configure the CLI parameters:
 
 ### [Powershell](#tab/powershell)
 
+The following list outlines the prerequisites to creating a cluster and database with Powershell.
+
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
 * If you choose to install and use [Powershell](/powershell/scripting/install/installing-powershell-on-windows) locally, follow the steps in [Configure parameters](#configure-parameters).
@@ -106,13 +116,13 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
 
 ### [ARM template](#tab/arm)
 
-An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+To create a cluster and database an ARM template, you need an Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 ---
 
 ## Create an Azure Data Explorer cluster
 
-In this section, you'll create an Azure Data Explorer cluster that can contain databases and tables.
+This section will guide you through the process of creating an Azure Data Explorer cluster. Choose the relevant tab for your preferred method to create the cluster.
 
 ### [C#](#tab/csharp)
 
@@ -223,9 +233,9 @@ In this section, you'll create an Azure Data Explorer cluster that can contain d
 
 ### [Go](#tab/go)
 
-The following steps explain how to use the [sample application to create a cluster and database](https://github.com/Azure-Samples/azure-data-explorer-go-cluster-management/).
+The following steps use a sample application to create a cluster and database.
 
-1. Clone the sample code from GitHub.
+1. Clone the [sample code](https://github.com/Azure-Samples/azure-data-explorer-go-cluster-management/) from GitHub.
 
 1. Set the required environment variables including service principal information from the [prerequisites](#prerequisites). Enter your subscription ID, resource group, and region where you want to create the cluster.
 
@@ -261,7 +271,7 @@ The following steps explain how to use the [sample application to create a clust
     1. The cluster is deleted.
 
     > [!TIP]
-    > To try different combinations of operations, you can comment and uncomment the respective functions in `main.go`.
+    > To try different combinations of operations, comment and uncomment functions in `main.go`.
 
     You'll get an output similar to the following:
 
