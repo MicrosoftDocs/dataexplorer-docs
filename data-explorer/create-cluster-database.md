@@ -42,11 +42,11 @@ The prerequisite steps depend on the method you plan to use to create your clust
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
-* If using the [Azure CLI]((/cli/azure/install-azure-cli)) on your own machine, follow the steps in [Configure the CLI parameters](#configure-the-cli-parameters).
+* If you choose to install and use the Azure CLI locally, follow the steps in [Configure parameters](#configure-the-cli-parameters). This article requires the Azure CLI version 2.0.4 or later. Run `az --version` to check your version. If you need to install or upgrade, see [Install the Azure CLI](/cli/azure/install-azure-cli).
 
 ### Configure the CLI parameters
 
-This article requires the Azure CLI version 2.0.4 or later. Run `az --version` to check your version. If you need to install or upgrade, see [Install the Azure CLI](/cli/azure/install-azure-cli).
+The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow these steps sign in to Azure and to set your current subscription:
 
 Follow these steps to configure the CLI parameters:
 
@@ -75,6 +75,32 @@ Follow these steps to configure the CLI parameters:
     ```
 
 ### [Powershell](#tab/powershell)
+
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
+* If you choose to install and use [Powershell](/powershell/scripting/install/installing-powershell-on-windows) locally, follow the steps in [Configure parameters](#configure-parameters).
+
+### Configure parameters
+
+The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow these steps to sign in to Azure and to set your current subscription:
+
+1. Run the following command to sign in to Azure:
+
+    ```azurepowershell-interactive
+    Connect-AzAccount
+    ```
+
+1. Set the subscription where you want your cluster to be created:
+
+    ```azurepowershell-interactive
+     Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    ```
+
+1. When running Azure CLI locally or in the Azure Cloud Shell, you need to install the Az.Kusto module on your device:
+
+    ```azurepowershell-interactive
+     Install-Module -Name Az.Kusto
+    ```
 
 ### [ARM template](#tab/arm)
 
@@ -263,6 +289,28 @@ The following steps outline how to create an Azure Data Explorer cluster with a 
 
 ### [Powershell](#tab/powershell)
 
+1. Create your cluster by using the following command:
+
+    ```azurepowershell-interactive
+     New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location westus2 -SkuTier Standard -SkuCapacity 2 -SkuName 'Standard_E8ads_v5'
+    ```
+
+   |**Setting** | **Suggested value** | **Field description**|
+   |---|---|---|
+   | Name | *mykustocluster* | The desired name of your cluster.|
+   | Sku | *Standard_E8ads_v5* | The SKU that will be used for your cluster. |
+   | ResourceGroupName | *testrg* | The resource group name where the cluster will be created. |
+
+    There are other optional parameters that you can use, such as the capacity of the cluster.
+
+1. Run the following command to check whether your cluster was successfully created:
+
+    ```azurepowershell-interactive
+    Get-AzKustoCluster -Name mykustocluster -ResourceGroupName testrg
+    ```
+
+1. Confirm successful creation of the cluster. The creation succeeded if the result contains `provisioningState` with the `Succeeded` value.
+
 ### [ARM template](#tab/arm)
 
 ---
@@ -403,6 +451,26 @@ In this section, you'll create a database within the cluster created in the prev
 
 ### [Powershell](#tab/powershell)
 
+1. Create your database by using the following command:
+
+    ```azurepowershell-interactive
+    New-AzKustoDatabase -ResourceGroupName testrg -ClusterName mykustocluster -Name mykustodatabase -SoftDeletePeriod 3650:00:00:00 -HotCachePeriod 3650:00:00:00
+    ```
+
+   |**Setting** | **Suggested value** | **Field description**|
+   |---|---|---|
+   | ClusterName | *mykustocluster* | The name of your cluster where the database will be created.|
+   | Name | *mykustodatabase* | The name of your database.|
+   | ResourceGroupName | *testrg* | The resource group name where the cluster will be created. |
+   | SoftDeletePeriod | *3650:00:00:00* | The amount of time that data will be kept available to query. |
+   | HotCachePeriod | *3650:00:00:00* | The amount of time that data will be kept in cache. |
+
+1. Run the following command to see the database that you created:
+
+    ```azurepowershell-interactive
+    Get-AzKustoDatabase -ClusterName mykustocluster -ResourceGroupName testrg -Name mykustodatabase
+    ```
+
 ### [ARM template](#tab/arm)
 
 ---
@@ -444,6 +512,12 @@ az kusto cluster delete --cluster-name azureclitest --resource-group testrg
 ```
 
 ### [Powershell](#tab/powershell)
+
+When you delete a cluster, it also deletes all the databases in it. Use the following command to delete your cluster:
+
+```azurepowershell-interactive
+Remove-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster
+```
 
 ### [ARM template](#tab/arm)
 
