@@ -353,9 +353,9 @@ The following steps use a sample application to create a cluster and database.
 
 To learn how to deploy the following ARM template using Powershell, see [Use the ARM template](#use-the-arm-template). Alternatively, you can [deploy the template in the Azure Portal](/samples/azure/azure-quickstart-templates/kusto-cluster-database/) by selecting **Deploy to Azure**.
 
-### ARM template for cluster and database creation
+### ARM template
 
-You can use this template for your own deployments, or customize it to meet your requirements. For information about creating templates, see [authoring Azure Resource Manager templates](/azure/azure-resource-manager/resource-group-authoring-templates). For the JSON syntax and properties to use in a template, see [Microsoft.Kusto resource types](/azure/templates/microsoft.kusto/allversions).
+You can use this template for your own deployments, or customize it to meet your requirements. For the JSON syntax and properties to use in a template, see [Microsoft.Kusto resource types](/azure/templates/microsoft.kusto/allversions).
 
 ```json
 {
