@@ -616,11 +616,6 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "data-explorer/create-cluster-database-portal.md",
-      "redirect_url": "/azure/data-explorer/create-cluster-database",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "data-explorer/create-cluster-database-cli.md",
       "redirect_url": "/azure/data-explorer/create-cluster-database",
       "redirect_document_id": false
