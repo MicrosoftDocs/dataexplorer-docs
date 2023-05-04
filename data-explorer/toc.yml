@@ -470,14 +470,8 @@ items:
             - name: Azure Resource Manager template
               displayName: database principal
               href: database-principal-resource-manager.md
-        - name: Policies
-          items:
-          - name: C#
-            displayName: database policy, database policies
-            href: database-table-policies-csharp.md
-          - name: Python
-            displayName: database policy, database policies
-            href: database-table-policies-python.md
+        - name: Create policies programmatically
+          displayName: database policy, database policies, table policy, table policies, python, c#
       - name: Data
         items:
         - name: Purge data - Azure portal
