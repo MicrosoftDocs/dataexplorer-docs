@@ -614,6 +614,16 @@
       "source_path": "data-explorer/data-connection-event-grid-resource-manager.md",
       "redirect_url": "/azure/data-explorer/create-event-grid-connection",
       "redirect_document_id": false
-    }
+    },
+    {
+      "source_path": "data-explorer/database-table-policies-csharp.md",
+      "redirect_url": "/azure/data-explorer/database-table-policies",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/database-table-policies-python.md",
+      "redirect_url": "/azure/data-explorer/database-table-policies",
+      "redirect_document_id": false
+    },
   ]
 }
