@@ -109,7 +109,7 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
 
 ### [ARM template](#tab/arm)
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 ---
 
