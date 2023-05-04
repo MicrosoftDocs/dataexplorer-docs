@@ -614,6 +614,21 @@
       "source_path": "data-explorer/data-connection-event-grid-resource-manager.md",
       "redirect_url": "/azure/data-explorer/create-event-grid-connection",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/cluster-principal-csharp.md",
+      "redirect_url": "/azure/data-explorer/add-cluster-principal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/cluster-principal-python.md",
+      "redirect_url": "/azure/data-explorer/add-cluster-principal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/cluster-principal-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/add-cluster-principal",
+      "redirect_document_id": false
     }
   ]
 }
