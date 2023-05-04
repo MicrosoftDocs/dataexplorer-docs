@@ -14,7 +14,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 The prerequisites vary based on the method used to create the cluster and database. Choose the relevant tab for your preferred method.
 
-### [C#](tab/csharp)
+### [C#](#tab/csharp)
 
 The following list outlines the prerequisites to add a cluster principal with C#.
 
@@ -24,7 +24,7 @@ The following list outlines the prerequisites to add a cluster principal with C#
 * [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 * Install [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/) and [Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
 
-### [Python](tab/python)
+### [Python](#tab/python)
 
 The following list outlines the prerequisites to add a cluster principal with Python.
 
@@ -33,7 +33,7 @@ The following list outlines the prerequisites to add a cluster principal with Py
 * [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 * Install the [azure-common](https://pypi.org/project/azure-common/) and [azure-mgmt-kusto](https://pypi.org/project/azure-mgmt-kusto/) packages.
 
-### [ARM](tab/arm)
+### [ARM](#tab/arm)
 
 The following list outlines the prerequisites to add a cluster principal with an ARM template.
 
@@ -44,7 +44,7 @@ The following list outlines the prerequisites to add a cluster principal with an
 
 ## Add a cluster principal
 
-### [C#](tab/csharp)
+### [C#](#tab/csharp)
 
 Run the following code to add a cluster principal:
 
@@ -87,7 +87,7 @@ await kustoManagementClient.ClusterPrincipalAssignments.CreateOrUpdateAsync(reso
 | tenantIdForPrincipal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The tenant ID of the principal.|
 | principalType | *App* | The type of the principal, which can be 'User', 'App', or 'Group'|
 
-### [Python](tab/python)
+### [Python](#tab/python)
 
 Run the following code to add a cluster principal:
 
@@ -140,7 +140,7 @@ poller = kusto_management_client.cluster_principal_assignments.create_or_update(
 | tenant_id_for_principal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The tenant ID of the principal.|
 | principal_type | *App* | The type of the principal, which can be 'User', 'App', or 'Group'|
 
-### [ARM template](tab/arm)
+### [ARM template](#tab/arm)
 
 The following example shows an Azure Resource Manager template for adding a cluster principal.  You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) by using the form.
 
