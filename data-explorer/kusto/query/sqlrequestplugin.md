@@ -64,7 +64,7 @@ evaluate sql_request(
   'Server=tcp:contoso.database.windows.net,1433;'
     'Authentication="Active Directory Integrated";'
     'Initial Catalog=Fabrikam;',
-  'select * from [dbo].[Table]')
+  'select * from [dbo].[Table]') : (Id:long, Name:string)
 | where Id > 0
 | project Name
 ```
@@ -81,7 +81,7 @@ evaluate sql_request(
     'Initial Catalog=Fabrikam;'
     h'User ID=USERNAME;'
     h'Password=PASSWORD;',
-  'select * from [dbo].[Table]')
+  'select * from [dbo].[Table]') : (Id:long, Name:string)
 | where Id > 0
 | project Name
 ```
@@ -99,24 +99,7 @@ evaluate sql_request(
     'Authentication="Active Directory Integrated";'
     'Initial Catalog=Fabrikam;',
   'select *, @param0 as dt from [dbo].[Table]',
-  dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)}))
-| where Id > 0
-| project Name
-```
-
-### Send a SQL query with a query-defined output schema
-
-The following example sends a SQL query to an Azure SQL DB database
-retrieving all records from `[dbo].[Table]`, while selecting only specific columns.
-It uses explicit schema definitions that allow various optimizations to be evaluated before the
-actual query against SQL is run.
-
-```kusto
-evaluate sql_request(
-  'Server=tcp:contoso.database.windows.net,1433;'
-    'Authentication="Active Directory Integrated";'
-    'Initial Catalog=Fabrikam;',
-  'select Id, Name') : (Id:long, Name:string)
+  dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)})) : (Id:long, Name:string, dt:datetime)
 | where Id > 0
 | project Name
 ```
