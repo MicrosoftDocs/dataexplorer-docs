@@ -20,6 +20,8 @@ You'll learn how to programmatically create a resource group, a storage account 
 
 ## Install packages
 
+This article contains examples in C# and Python. Choose the tab for your preferred language, and install the required packages.
+
 ### [C#](#tab/csharp)
 
 * Install [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
