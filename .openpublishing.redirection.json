@@ -614,6 +614,36 @@
       "source_path": "data-explorer/data-connection-event-grid-resource-manager.md",
       "redirect_url": "/azure/data-explorer/create-event-grid-connection",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/create-cluster-database-cli.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/create-cluster-database-csharp.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/create-cluster-database-python.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/create-cluster-database-powershell.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/create-cluster-database-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/create-cluster-database-go.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database",
+      "redirect_document_id": false
     }
   ]
 }
