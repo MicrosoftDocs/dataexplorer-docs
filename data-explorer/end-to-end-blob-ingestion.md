@@ -41,6 +41,8 @@ pip install azure-kusto-data
 pip install azure-storage-blob
 ```
 
+---
+
 ## Azure Resource Manager template
 
 In this article, you use an Azure Resource Manager (ARM) template to create a resource group, a storage account and container, an event hub, and an Azure Data Explorer cluster and database. Save the following content in a file with the name `template.json`. You'll use this file to run the code example.
@@ -285,7 +287,6 @@ In this article, you use an Azure Resource Manager (ARM) template to create a re
 
 ### [C#](#tab/csharp)
 
-
 The following code example gives you a step-by-step process that results in data ingestion into Azure Data Explorer.
 
 You first create a resource group. You also create Azure resources such as a storage account and container, an event hub, and an Azure Data Explorer cluster and database, and add principals. You then create an Azure Event Grid subscription, along with a table and column mapping, in the Azure Data Explorer database. Finally, you create the data connection to configure Azure Data Explorer to ingest data from the new storage account.
@@ -426,7 +427,6 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | clientSecret | The client secret of the application that can access resources in your tenant. |
 
 ### [Python](#tab/python)
-
 
 The following code example gives you a step-by-step process that results in data ingestion into Azure Data Explorer.
 
@@ -579,6 +579,8 @@ poller.wait()
 | client_id | The client ID of the application that can access resources in your tenant.|
 | client_secret | The client secret of the application that can access resources in your tenant. |
 
+---
+
 ## Test the code example
 
 ### [C#](#tab/csharp)
@@ -653,6 +655,8 @@ poller.wait()
     print(response.primary_results[0].rows_count)
     ```
 
+---
+
 ## Clean up resources
 
 ### [C#](#tab/csharp)
@@ -672,6 +676,8 @@ To delete the resource group and clean up resources, use the following command:
 poller = resource_client.resource_groups.delete(resource_group_name=resource_group_name)
 poller.wait()
 ```
+
+---
 
 ## Next steps
 
