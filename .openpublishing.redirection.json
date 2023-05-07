@@ -614,6 +614,16 @@
       "source_path": "data-explorer/data-connection-event-grid-resource-manager.md",
       "redirect_url": "/azure/data-explorer/create-event-grid-connection",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/end-to-end-csharp.md",
+      "redirect_url": "/azure/data-explorer/end-to-end-blob-ingestion",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/end-to-end-python.md",
+      "redirect_url": "/azure/data-explorer/end-to-end-blob-ingestion",
+      "redirect_document_id": false
     }
   ]
 }
