@@ -659,28 +659,6 @@ poller.wait()
 
 ---
 
-## Clean up resources
-
-### [C#](#tab/csharp)
-
-To delete the resource group and clean up resources, use the following command:
-
-```csharp
-await resourceManagementClient.ResourceGroups.DeleteAsync(resourceGroupName);
-```
-
-### [Python](#tab/python)
-
-To delete the resource group and clean up resources, use the following command:
-
-```python
-#Returns an instance of LROPoller; see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
-poller = resource_client.resource_groups.delete(resource_group_name=resource_group_name)
-poller.wait()
-```
-
----
-
 ## Next steps
 
 * To learn other methods to create a cluster, see [Create an Azure Data Explorer cluster and database](create-cluster-database-csharp.md).
