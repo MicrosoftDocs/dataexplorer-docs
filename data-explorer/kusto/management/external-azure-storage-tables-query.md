@@ -11,7 +11,7 @@ In Azure Data Explorer, you can use [Kusto Query Language (KQL)](../query/index.
 
 ## How it works
 
-When you create an external table, you provide a connection string that contains information about the blobs in Azure Storage. When you write a query against the external table, all of the blobs specified in the connection string are enumerated with partitioning taken into account. This means that only the blobs that contain data satisfying the query conditions are accessed, rather than the entire dataset, reducing the amount of data that needs to be processed.
+When you create an external table, you provide a connection string that contains information about the blobs to access in Azure Storage. When you write a query against the external table, the blobs specified in the connection string are enumerated taking partitioning into account. This means that only blobs containing data that satisfies the query conditions are accessed, rather than the entire dataset.
 
 ## Optimize query performance with Parquet files
 
