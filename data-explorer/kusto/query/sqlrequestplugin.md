@@ -88,7 +88,7 @@ evaluate sql_request(
 
 ### Send a SQL query using an Azure AD access token
 
-The following example sends a SQL query to an Azure SQL DB database
+The following example sends a SQL query to an Azure SQL database
 retrieving all records from `[dbo].[Table]`, while appending another `datetime` column,
 and then processes the results on the Kusto side.
 It specifies a SQL parameter (`@param0`) to be used in the SQL query.
@@ -100,6 +100,22 @@ evaluate sql_request(
     'Initial Catalog=Fabrikam;',
   'select *, @param0 as dt from [dbo].[Table]',
   dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)})) : (Id:long, Name:string, dt: datetime)
+| where Id > 0
+| project Name
+```
+
+### Send a SQL query without a query-defined output schema
+
+The following example sends a SQL query to an Azure SQL database without an output schema. This is not recommended unless the schema is unknown,
+as it may harm the performance of the query.
+
+```kusto
+evaluate sql_request(
+  'Server=tcp:contoso.database.windows.net,1433;'
+    'Initial Catalog=Fabrikam;'
+    h'User ID=USERNAME;'
+    h'Password=PASSWORD;',
+  'select * from [dbo].[Table]')
 | where Id > 0
 | project Name
 ```

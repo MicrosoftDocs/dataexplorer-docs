@@ -136,6 +136,22 @@ evaluate mysql_request(
 | project Name
 ```
 
+### SQL query to an Azure MySQL database without a query-defined output schema
+
+The following example sends a SQL query to an Azure MySQL database without an output schema. This is not recommended unless the schema is unknown,
+as it may harm the performance of the query.
+
+```kusto
+evaluate mysql_request(
+    'Server=contoso.mysql.database.azure.com; Port = 3306;'
+    'Database=Fabrikam;'
+    h'UID=USERNAME;'
+    h'Pwd=PASSWORD;',
+    'select * from [dbo].[Table]')
+| where Id > 0
+| project Name
+```
+
 ::: zone-end
 
 ::: zone pivot="azuremonitor"

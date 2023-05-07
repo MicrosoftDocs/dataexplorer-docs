@@ -21,7 +21,7 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Syntax
 
-`evaluate` `psotgresql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters*] `)` [`:` *OutputSchema*]
+`evaluate` `postgresql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters*] `)` [`:` *OutputSchema*]
 
 ## Parameters
 
@@ -132,6 +132,22 @@ evaluate postgresql_request(
     h'Password=PASSWORD;',
     'select *, @param0 as dt from public."Table"',
     dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)})) : (Id: int, Name: string, dt: datetime)
+| where Id > 0
+| project Name
+```
+
+### SQL query to an Azure PostgreSql database without a query-defined output schema
+
+The following example sends a SQL query to an Azure PostgreSQL database without an output schema. This is not recommended unless the schema is unknown,
+as it may harm the performance of the query.
+
+```kusto
+evaluate postgresql_request(
+    'Host=contoso.postgres.database.azure.com; Port = 5432;'
+    'Database=Fabrikam;'
+    h'User Id=USERNAME;'
+    h'Password=PASSWORD;',
+    'select * from public."Table"')
 | where Id > 0
 | project Name
 ```
