@@ -7,7 +7,7 @@ ms.date: 03/06/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
-# mysql_request plugin (Preview)
+# postgresql_request plugin
 
 ::: zone pivot="azuredataexplorer"
 
