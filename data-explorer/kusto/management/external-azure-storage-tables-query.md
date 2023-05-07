@@ -15,4 +15,4 @@ When you create an external table, you provide a connection string that contains
 
 ## Optimize query performance with Parquet files
 
-To optimize query performance for Azure Storage external tables, we recommend using the Parquet data format. Parquet files may contain metadata, which is used by the query engine to speed up query processing. With metadata, the query engine can quickly retrieve information such as count, min, max, and other statistics for each blob, without having to scan all of the rows. The use of metadata can significantly speed up queries, especially queries that involve aggregations or filtering.
+To optimize query performance for Azure Storage external tables, we recommend using the Parquet data format. Parquet files usually contain metadata, which is used by the query engine to significantly speed up query processing. With metadata, the query engine can quickly retrieve information such as count, min/max per column, and other statistics for each blob, without having to scan all of the rows. The use of metadata can significantly speed up queries, especially queries that involve aggregations or filtering.
