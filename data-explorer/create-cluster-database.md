@@ -3,7 +3,7 @@ title: 'Create an Azure Data Explorer cluster and database'
 description: Learn how to create an Azure Data Explorer cluster and database.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 05/04/2023
+ms.date: 05/07/2023
 ---
 
 # Create an Azure Data Explorer cluster and database
@@ -14,11 +14,9 @@ In this article, you'll learn how to create a cluster and a database using eithe
 
 ## Prerequisites
 
-The prerequisites vary based on the method used to create the cluster and database. Choose the relevant tab for your preferred method.
+Prerequisites by method of cluster and database creation:
 
 ### [C#](#tab/csharp)
-
-The following list outlines the prerequisites to creating a cluster and database with C#.
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
@@ -27,8 +25,6 @@ The following list outlines the prerequisites to creating a cluster and database
 
 ### [Python](#tab/python)
 
-The following list outlines the prerequisites to creating a cluster and database with Python.
-
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * [Python 3.4+](https://www.python.org/downloads/).
 * Install the [azure-common](https://pypi.org/project/azure-common/) and [azure-mgmt-kusto](https://pypi.org/project/azure-mgmt-kusto/) packages.
@@ -36,16 +32,12 @@ The following list outlines the prerequisites to creating a cluster and database
 
 ### [Go](#tab/go)
 
-The following list outlines the prerequisites to creating a cluster and database with Go.
-
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * Install an appropriate version of [Go](https://golang.org/). For supported versions, see [Azure Kusto Module for Go](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kusto/armkusto).
 * [An Azure AD application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 
 ### [Azure CLI](#tab/azcli)
-
-The following list outlines the prerequisites to creating a cluster and database with the Azure CLI.
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
@@ -80,8 +72,6 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
     ```
 
 ### [PowerShell](#tab/powershell)
-
-The following list outlines the prerequisites to creating a cluster and database with PowerShell.
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
