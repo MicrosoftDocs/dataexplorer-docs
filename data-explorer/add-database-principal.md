@@ -46,7 +46,7 @@ The following list outlines the prerequisites to add a cluster principal with an
 
 ### [C#](#tab/csharp)
 
-Run the following code to add a dataa principal:
+Run the following code to add a database principal:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
