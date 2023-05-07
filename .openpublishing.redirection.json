@@ -614,6 +614,31 @@
       "source_path": "data-explorer/data-connection-event-grid-resource-manager.md",
       "redirect_url": "/azure/data-explorer/create-event-grid-connection",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-cli.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-portal.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-powershell.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-csharp.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
     }
   ]
 }
