@@ -109,6 +109,8 @@ items:
       items:
       - name: Create or alter external table
         href: external-tables-azurestorage-azuredatalake.md
+      - name: Query Azure Storage external tables
+        href: external-azure-storage-tables-query.md
       - name: Manage external table mappings
         items:
         - name: .alter external table mapping
@@ -125,7 +127,7 @@ items:
       items:
       - name: Create and alter external table
         href: external-sql-tables.md
-      - name: Query SQL external table
+      - name: Query SQL external tables
         href: external-sql-tables-query.md
     - name: ".drop external table"
       href: drop-external-table.md
