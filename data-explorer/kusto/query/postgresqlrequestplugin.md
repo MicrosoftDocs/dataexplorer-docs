@@ -1,4 +1,4 @@
- ---
+---
 title: postgresql_request plugin - Azure Data Explorer
 description: Learn how to use the postgresql_request plugin to send a SQL query to a PostgreSql server network endpoint.
 ms.reviewer: alexans

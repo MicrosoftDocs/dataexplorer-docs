@@ -57,7 +57,7 @@ retrieves all records from `[dbo].[Table]`, and then processes the results on th
  Kusto side. Authentication reuses the calling user's Azure AD token.
 
 > [!NOTE]
-> This example should not be taken as a recommendation to filter or project data in this manner. SQL queries should be constructed to return the smallest data set possible, since the Kusto optimizer doesn't attempt to optimize queries between Kusto and SQL.
+> This example should not be taken as a recommendation to filter or project data in this manner. SQL queries should be constructed to return the smallest data set possible.
 
 ```kusto
 evaluate sql_request(
@@ -99,7 +99,7 @@ evaluate sql_request(
     'Authentication="Active Directory Integrated";'
     'Initial Catalog=Fabrikam;',
   'select *, @param0 as dt from [dbo].[Table]',
-  dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)})) : (Id:long, Name:string, dt:datetime)
+  dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)})) : (Id:long, Name:string, dt: datetime)
 | where Id > 0
 | project Name
 ```

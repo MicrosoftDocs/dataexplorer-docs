@@ -1,4 +1,4 @@
- ---
+---
 title: mysql_request plugin - Azure Data Explorer
 description: Learn how to use the mysql_request plugin to send a SQL query to a MySQL server network endpoint.
 ms.reviewer: alexans
