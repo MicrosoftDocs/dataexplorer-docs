@@ -3,7 +3,7 @@ title: log_reduce_fl() - Azure Data Explorer
 description: This article describes the log_reduce_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/18/2023
+ms.date: 05/07/2023
 ---
 # log_reduce_fl()
 
