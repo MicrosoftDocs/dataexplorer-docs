@@ -20,8 +20,8 @@ The prerequisites vary based on the method used to create the cluster and databa
 
 The following list outlines the prerequisites to creating a cluster and database with C#.
 
-* [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
 * Install the [Microsoft.Azure.Management.Kusto NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 
@@ -111,7 +111,7 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
 
 ### [ARM template](#tab/arm)
 
-To create a cluster and database an ARM template, you need an Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 
 ---
 
