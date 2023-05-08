@@ -112,6 +112,20 @@ To simplify the process of getting credentials, you can add various flags after 
 |`-try_azcli_login`|Attempts to get a token from Azure CLI before authenticating with the specified connection string.|`%kql` `azureDataExplorer://code;cluster='help';database='Samples'` `-try_azcli_login`|
 |`-try_azcli_login_subscription`|Attempts to get a token from Azure CLI using the subscription as a parameter to get the right token before authenticating with the specified connection string.|`%kql` `azureDataExplorer://code;cluster='help';database='Samples'` `-try_azcli_login_subscription=<subscription_id>`|
 
+## Display connection information
+
+To see all existing connections, run the following command:
+
+```python
+%kql --conn
+```
+
+To check the details of a specific connection, run the following command:
+
+```python
+%kql --conn <database-name>@<cluster-name>
+```
+
 ## Query and visualize
 
 Query data using the [render operator](kusto/query/renderoperator.md) and visualize data using the ploy.ly library. This query and visualization supplies an integrated experience that uses native KQL. Kqlmagic supports most charts except `timepivot`, `pivotchart`, and `ladderchart`. Render is supported with all attributes except `kind`, `ysplit`, and `accumulate`.
