@@ -3,7 +3,7 @@ title: Client libraries overview - Azure Data Explorer
 description: This article lists the Client libraries in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/19/2023
+ms.date: 05/08/2023
 ---
 # Client libraries
 
