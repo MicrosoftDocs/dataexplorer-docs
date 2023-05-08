@@ -3,7 +3,7 @@ title: Use a Jupyter Notebook to analyze data in Azure Data Explorer
 description: This topic shows you how to analyze data in Azure Data Explorer using a Jupyter Notebook and the kqlmagic extension.
 ms.reviewer: maraheja
 ms.topic: how-to
-ms.date: 05/02/2023
+ms.date: 05/08/2023
 
 # Customer intent: I want to analyze data using Jupyter Notebooks and kqlmagic.
 ---
@@ -12,9 +12,7 @@ ms.date: 05/02/2023
 
 [Jupyter Notebook](https://jupyter.org/) is an open-source web application that allows you to create and share documents containing live code, equations, visualizations, and narrative text. It's useful for a wide range of tasks, such as data cleaning and transformation, numerical simulation, statistical modeling, data visualization, and machine learning.
 
-[Kqlmagic](https://github.com/microsoft/jupyter-Kqlmagic) extends the capabilities of the Python kernel in Jupyter Notebook so you can run [Kusto Query Language (KQL)](kusto/query/index.md) queries natively. You can combine Python and KQL to query and visualize data using the rich Plot.ly library integrated with the [render](kusto/query/renderoperator.md) operator.
-
-The kqlmagic extension is compatible with Jupyter Lab, Visual Studio Code Jupyter extension, and Azure Data Studio, and supported data sources include Azure Data Explorer, Azure Monitor logs, and Application Insights.
+[Kqlmagic](https://github.com/microsoft/jupyter-Kqlmagic) extends the capabilities of the Python kernel in Jupyter Notebook so you can run [Kusto Query Language (KQL)](kusto/query/index.md) queries natively. You can combine Python and KQL to query and visualize data using the rich Plot.ly library integrated with the [render](kusto/query/renderoperator.md) operator. The kqlmagic extension is compatible with Jupyter Lab, Visual Studio Code Jupyter extension, and Azure Data Studio, and supported data sources include Azure Data Explorer, Azure Monitor logs, and Application Insights.
 
 In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to connect to and query data stored in [Azure Data Explorer](https://dataexplorer.azure.com/home).
 
@@ -23,35 +21,81 @@ In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to conne
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Jupyter Notebook installed on your local machine. Otherwise, use [Azure Data Studio](/sql/azure-data-studio/notebooks/notebooks-kqlmagic).
 
-## Install kqlmagic library
+## Install kqlmagic
 
-1. Install kqlmagic:
+1. To install kqlmagic, run the following command:
 
     ```python
     !pip install Kqlmagic --no-cache-dir  --upgrade
     ```
 
-1. Load kqlmagic:
+1. To load the kqlmagic extension, run the following command:
 
     ```python
     %reload_ext Kqlmagic
     ```
 
     > [!NOTE]
-    > Change the Kernel version to Python 3.6 by clicking on Kernel > Change Kernel > Python 3.6
+    >
+    > * Change the kernel version to Python 3.6 by clicking on **Kernel** > **Change Kernel** > **Python 3.6**.
+    > * If the results are absent or not as expected, try reloading the kqlmagic extension.
 
-## Connect to the Azure Data Explorer Help cluster
+## Authenticate to a cluster
 
-Use the following command to connect to the *Samples* database hosted on the *Help* cluster. For non-Microsoft Azure AD users, replace the tenant name `Microsoft.com` with your Azure AD Tenant.
+There are many methods to connect to a cluster. Select the tab for your preferred method.
+
+### [Azure AD code](#tab/code)
+
+The Azure AD code method opens a pop-up window in which to provide a designated code for authentication.
+
+```python
+%kql azure_data-Explorer://code;cluster='<cluster-name>';database='<database-name>'
+```
+
+### [Azure AD application](#tab/application)
+
+THe Azure AD application method allows for a non-interactive sign-in using an Azure AD application ID and key.
+
+```python
+%kql azure_data-Explorer://tenant='<tenant-id>';clientid='<aad-appid>';clientsecret='<aad-appkey>';cluster='<cluster-name>';database='<database-name>'
+```
+
+### [Username and password](#tab/userpass)
+
+The Azure AD username and password method only works on corporate network. If a username is provided without a password, the user will be prompted to provide the password.
+
+```python
+%kql azure_data-Explorer://username='<username>';password='<password>';cluster='<cluster-name>';database='<database-name>'
+```
+
+### [Certificate](#tab/certificate)
+
+The certificate should be stored in a file accessible from the notebook. This file can be referenced in the connection string.
+
+```python
+%kql azure_data-Explorer://tenant='<tenant-id>';certificate='<certificate>';certificate_thumbprint='<thumbprint>';cluster='<cluster-name>';database='<database-name>'
+```
+
+### [Anonymous](#tab/anonymous)
+
+Anonymous authentication is equivalent to no authentication, which is only supported for local clusters.
+
+```python
+%kql azureDataExplorer://anonymous;cluster='<cluster-name>';database='<database-name>'
+```
+
+---
+
+> [!NOTE]
+> To parameterize the connection string, use unquoted values since they are interpreted as a Python expression.
+
+### Example
+
+The following command uses the Azure AD code method to authenticate to the `Samples` database hosted on the `help` cluster. For non-Microsoft Azure AD users, replace the tenant name `Microsoft.com` with your Azure AD Tenant.
 
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
 ```
-
-> [!NOTE]
->
-> If you are using your own Azure Data Explorer cluster, you must include the region in the connection string as follows:
-   ```%kql azuredataexplorer://tenant="yourcompany.com";code;cluster='mycluster.westus';database='mykustodb'```
 
 ## Query and visualize
 
