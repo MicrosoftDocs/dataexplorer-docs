@@ -40,7 +40,7 @@ In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to conne
     > * Change the kernel version to Python 3.6 by clicking on **Kernel** > **Change Kernel** > **Python 3.6**.
     > * If the results are absent or not as expected, try reloading the kqlmagic extension.
 
-## Authentication
+## Connect to a cluster
 
 There are various methods to authenticate to an Azure Data Explorer cluster and database using kqlmagic. Select the tab for your preferred method.
 
@@ -91,7 +91,7 @@ Anonymous authentication is equivalent to no authentication, which is only suppo
 > * To parameterize the connection string, use unquoted values since they are interpreted as a Python expression.
 > * To simplify the process of getting credentials, see [Advanced authentication options](#advanced-authentication-options).
 
-### Example of authentication
+### Example of cluster connection
 
 The following command uses the Azure AD code method to authenticate to the `Samples` database hosted on the `help` cluster. For non-Microsoft Azure AD users, replace the tenant name `Microsoft.com` with your Azure AD Tenant.
 
@@ -99,7 +99,7 @@ The following command uses the Azure AD code method to authenticate to the `Samp
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
 ```
 
-## Advanced authentication options
+## Advanced connection options
 
 To simplify the process of getting credentials, you can add various flags after the connection string. Refer to the following table for a description of these flags.
 
@@ -111,7 +111,7 @@ To simplify the process of getting credentials, you can add various flags after 
 |try_msi|Attempts to get a token from the MSI local endpoint before authenticating with the specified connection string. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|`-try_msi={"client_id":<id>}`|
 |try_token|Attempts to authenticate with a specified token before using the specified connection string. Expects a dictionary with Azure AD v1 or v2 token properties.|`-try_token={"tokenType":"bearer","accessToken":"<token>"}`
 
-### Example of advanced authentication options
+### Example of advanced connection options
 
 Any of the options described in the previous table can be added after a connection string. The following example uses the Azure CLI login option:
 
