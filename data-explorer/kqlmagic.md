@@ -40,13 +40,16 @@ In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to conne
     > * Change the kernel version to Python 3.6 by clicking on **Kernel** > **Change Kernel** > **Python 3.6**.
     > * If the results are absent or not as expected, try reloading the kqlmagic extension.
 
-## Authenticate to a cluster
+## Authentication
 
-There are many methods to connect to a cluster. Select the tab for your preferred method.
+There are many methods to authenticate to an Azure Data Explorer cluster and database using kqlmagic. Select the tab for your preferred method.
+
+> [!TIP]
+> To simplify the process of getting credentials, you can add various flags after the connection string. For more information, see [Advanced authentication options](#advanced-authentication-options).
 
 ### [Code](#tab/code)
 
-The Azure AD code method opens a pop-up window in which to provide a designated code for authentication.
+The Azure AD code method prompts MSAL interactive login, meaning it opens a pop-up window in which to provide a designated code for authentication.
 
 ```python
 %kql azure_data-Explorer://code;cluster='<cluster-name>';database='<database-name>'
@@ -96,6 +99,18 @@ The following command uses the Azure AD code method to authenticate to the `Samp
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
 ```
+
+## Advanced authentication options
+
+To simplify the process of getting credentials, you can add various flags after the connection string. Refer to the following table for a description of these flags.
+
+|Option|Description|Example|
+|--|--|--|
+|`-try_vscode_login`|Attempts to get a token from Visual Studio Code Azure Account login before authenticating with the specified connection string.||
+|`-try_msi`|Attempts to get a token from the MSI local endpoint before authenticating with the specified connection string. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|`-try_msi={"client_id":"00000000-0000-0000-0000-000000000000"}`|
+|`-try_token`|Attempts to authenticate with a specified token before using the specified connection string. Expects a dictionary with Azure AD v1 or v2 token properties.|`-try_token={"tokenType":"bearer","accessToken":"<your-token-string>"`|
+|`-try_azcli_login`|Attempts to get a token from Azure CLI before authenticating with the specified connection string.||
+|`-try_azcli_login_subscription`|Attempts to get a token from Azure CLI using the subscription as a parameter to get the right token before authenticating with the specified connection string.|`-try_azcli_login_subscription='49998620-4d47-4ab8-88d1-d92ea58902e9'`|
 
 ## Query and visualize
 
