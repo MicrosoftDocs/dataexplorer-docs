@@ -1,6 +1,6 @@
 ---
 title: Use a Jupyter Notebook to analyze data in Azure Data Explorer
-description: This topic shows you how to analyze data in Azure Data Explorer using a Jupyter Notebook and the kqlmagic extension.
+description: This article shows you how to analyze data in Azure Data Explorer using a Jupyter Notebook and the kqlmagic extension.
 ms.reviewer: maraheja
 ms.topic: how-to
 ms.date: 05/08/2023
@@ -46,7 +46,7 @@ There are various methods to authenticate to an Azure Data Explorer cluster and 
 
 ### [Code](#tab/code)
 
-The Azure AD code method prompts MSAL interactive login, meaning it opens a pop-up window in which to provide a designated code for authentication.
+The Azure AD code method prompts MSAL interactive sign-in, meaning it opens a pop-up window in which to provide a designated code for authentication.
 
 ```python
 %kql azure_data-Explorer://code;cluster='<cluster-name>';database='<database-name>'
@@ -54,7 +54,7 @@ The Azure AD code method prompts MSAL interactive login, meaning it opens a pop-
 
 ### [Application key](#tab/application)
 
-THe Azure AD application method allows for a non-interactive sign-in using an Azure AD application ID and key.
+The Azure AD application method allows for a non-interactive sign-in using an Azure AD application ID and key.
 
 ```python
 %kql azure_data-Explorer://tenant='<tenant-id>';clientid='<aad-appid>';clientsecret='<aad-appkey>';cluster='<cluster-name>';database='<database-name>'
@@ -62,7 +62,7 @@ THe Azure AD application method allows for a non-interactive sign-in using an Az
 
 ### [Username and password](#tab/userpass)
 
-The Azure AD username and password method only works on corporate network. If a username is provided without a password, the user will be prompted to provide the password.
+The Azure AD username and password method only works on corporate network. If a username is provided without a password, the user is prompted to provide the password.
 
 ```python
 %kql azure_data-Explorer://username='<username>';password='<password>';cluster='<cluster-name>';database='<database-name>'
@@ -89,7 +89,7 @@ Anonymous authentication is equivalent to no authentication, which is only suppo
 > [!TIP]
 >
 > * To parameterize the connection string, use unquoted values since they are interpreted as a Python expression.
-> * To simplify the process of getting credentials, see [Advanced authentication options](#advanced-authentication-options).
+> * To simplify the process of getting credentials, see [Advanced connection options](#advanced-connection-options).
 
 ### Example of cluster connection
 
@@ -107,13 +107,13 @@ To simplify the process of getting credentials, you can add various flags after 
 |--|--|--|
 |try_azcli_login|Attempts to get a token from Azure CLI before authenticating with the specified connection string.||
 |try_azcli_login_subscription|Attempts to get a token from Azure CLI using the subscription as a parameter to get the right token before authenticating with the specified connection string.|`-try_azcli_login_subscription=<subscription_id>`|
-|try_vscode_login|Attempts to get a token from Visual Studio Code Azure Account login before authenticating with the specified connection string.|
+|try_vscode_login|Attempts to get a token from Visual Studio Code Azure Account sign-in before authenticating with the specified connection string.|
 |try_msi|Attempts to get a token from the MSI local endpoint before authenticating with the specified connection string. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|`-try_msi={"client_id":<id>}`|
 |try_token|Attempts to authenticate with a specified token before using the specified connection string. Expects a dictionary with Azure AD v1 or v2 token properties.|`-try_token={"tokenType":"bearer","accessToken":"<token>"}`
 
 ### Example of advanced connection options
 
-Any of the options described in the previous table can be added after a connection string. The following example uses the Azure CLI login option:
+Any of the options described in the previous table can be added after a connection string. The following example uses the Azure CLI sign-in option:
 
 ```python
 %kql azureDataExplorer://code;cluster='help';database='Samples' -try_azcli_login
