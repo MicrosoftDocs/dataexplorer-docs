@@ -21,8 +21,8 @@ The function `series_cosine_similarity_fl()` is a [user-defined function (UDF)](
 |--|--|--|--|
 |*vec1*|dynamic|&check;|An array of numeric values.|
 |*vec2*|dynamic|&check;|An array of numeric values that is the same length as *vec1*.|
-|*vec1*|real| |The size of *vec1*. This is equivalent to the square root of the dot product of the vector with itself.|
-|*vec2*|real| |The size of *vec2*.|
+|*vec1_size*|real| |The size of *vec1*. This is equivalent to the square root of the dot product of the vector with itself.|
+|*vec2_size*|real| |The size of *vec2*.|
 
 ## Function definition
 
