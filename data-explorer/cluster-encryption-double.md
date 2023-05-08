@@ -34,8 +34,8 @@ You can enable infrastructure encryption during cluster creation using C#.
 
 Set up a managed identity using the Azure Data Explorer C# client:
 
-* Install the [Azure Data Explorer NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Install the [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet package](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) for authentication.
+* Install the [Azure Data Explorer NuGet package](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
+* Install the [Azure.Identity NuGet package](https://www.nuget.org/packages/Azure.Identity/) for authentication.
 * [Create an Azure Active Directory application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 ## Create your cluster
@@ -43,37 +43,28 @@ Set up a managed identity using the Azure Data Explorer C# client:
 1. Create your cluster using the `enableDoubleEncryption` property:
 
     ```csharp
-    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "PlaceholderClientSecret";//Client Secret
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Application ID
+    var clientSecret = "PlaceholderClientSecret"; //Client Secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
-    var credential = new ClientCredential(clientId, clientSecret);
-    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
-
-    var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-
-    var kustoManagementClient = new KustoManagementClient(credentials)
-    {
-        SubscriptionId = subscriptionId
-    };
-
+    var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+    var resourceManagementClient = new ArmClient(credentials, subscriptionId);
     var resourceGroupName = "testrg";
+    var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+    var resourceGroup = (await subscription.GetResourceGroupAsync(resourceGroupName)).Value;
+    var clusters = resourceGroup.GetKustoClusters();
     var clusterName = "mykustocluster";
-    var location = "East US";
-    var skuName = "Standard_E8ads_v5";
-    var tier = "Standard";
-    var capacity = 5;
-    var sku = new AzureSku(skuName, tier, capacity);
-    var enableDoubleEncryption = true;
-    var cluster = new Cluster(location, sku, enableDoubleEncryption: enableDoubleEncryption);
-    await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
+    var clusterData = new KustoClusterData(
+        location: AzureLocation.EastUS,
+        sku: new KustoSku(KustoSkuName.StandardE8adsV5, KustoSkuTier.Standard) { Capacity = 5 }
+    ) { IsDoubleEncryptionEnabled = true };
+    await clusters.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, clusterData);
     ```
 
 1. Run the following command to check if your cluster was successfully created:
 
     ```csharp
-    kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
+    clusterData = (await clusters.GetAsync(clusterName)).Value.Data;
     ```
 
     If the result contains `ProvisioningState` with the `Succeeded` value, then the cluster was created successfully.
@@ -100,7 +91,7 @@ Add the 'EnableDoubleEncryption' type to tell Azure to enable infrastructure enc
         "optimizedAutoscale": null,
         "enableDiskEncryption": false,
         "enableStreamingIngest": false,
-        "enableDoubleEncryption": true,
+        "enableDoubleEncryption": true
     }
 }
 ```

@@ -29,7 +29,7 @@ Assign a system-assigned identity that is tied to your cluster, and is deleted i
 
 ### Add a system-assigned identity using the Azure portal
 
-1. Sign in to the [Azure portal](https://portal.azure.com/).
+Sign in to the [Azure portal](https://portal.azure.com/).
 
 #### New Azure Data Explorer cluster
 
@@ -64,8 +64,8 @@ Assign a system-assigned identity that is tied to your cluster, and is deleted i
 
 To set up a managed identity using the Azure Data Explorer C# client:
 
-* Install the [Azure Data Explorer NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Install the [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet package](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) for authentication.
+* Install the [Azure Data Explorer NuGet package](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
+* Install the [Azure.Identity NuGet package](https://www.nuget.org/packages/Azure.Identity/) for authentication.
 * [Create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 #### Create or update your cluster
@@ -73,47 +73,38 @@ To set up a managed identity using the Azure Data Explorer C# client:
 1. Create or update your cluster using the `Identity` property:
 
     ```csharp
-    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "PlaceholderClientSecret";//Client Secret
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Application ID
+    var clientSecret = "PlaceholderClientSecret"; //Client Secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
-    var credential = new ClientCredential(clientId, clientSecret);
-    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
-
-    var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-
-    var kustoManagementClient = new KustoManagementClient(credentials)
-    {
-        SubscriptionId = subscriptionId
-    };
-
+    var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+    var resourceManagementClient = new ArmClient(credentials, subscriptionId);
     var resourceGroupName = "testrg";
+    var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+    var resourceGroup = (await subscription.GetResourceGroupAsync(resourceGroupName)).Value;
+    var clusters = resourceGroup.GetKustoClusters();
     var clusterName = "mykustocluster";
-    var location = "Central US";
-    var skuName = "Standard_E8ads_v5";
-    var tier = "Standard";
-    var capacity = 5;
-    var sku = new AzureSku(skuName, tier, capacity);
-    var identity = new Identity(IdentityType.SystemAssigned);
-    var cluster = new Cluster(location, sku, identity: identity);
-    await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
+    var clusterData = new KustoClusterData(
+        location: AzureLocation.CentralUS,
+        sku: new KustoSku(KustoSkuName.StandardE8adsV5, KustoSkuTier.Standard) { Capacity = 5 }
+    ) { Identity = new ManagedServiceIdentity(ManagedServiceIdentityType.SystemAssigned) };
+    await clusters.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, clusterData);
     ```
 
 2. Run the following command to check if your cluster was successfully created or updated with an identity:
 
     ```csharp
-    kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
+    clusterData = (await clusters.GetAsync(clusterName)).Value.Data;
     ```
 
     If the result contains `ProvisioningState` with the `Succeeded` value, then the cluster was created or updated, and should have the following properties:
 
     ```csharp
-    var principalId = cluster.Identity.PrincipalId;
-    var tenantId = cluster.Identity.TenantId;
+    var principalGuid = clusterData.Identity.PrincipalId.GetValueOrDefault();
+    var tenantGuid = clusterData.Identity.TenantId.GetValueOrDefault();
     ```
 
-`PrincipalId` and `TenantId` are replaced with GUIDs. The `TenantId` property identifies the Azure AD tenant to which the identity belongs. The `PrincipalId` is a unique identifier for the cluster's new identity. Within Azure AD, the service principal has the same name that you gave to your App Service or Azure Functions instance.
+    `PrincipalId` and `TenantId` are replaced with GUIDs. The `TenantId` property identifies the Azure AD tenant to which the identity belongs. The `PrincipalId` is a unique identifier for the cluster's new identity. Within Azure AD, the service principal has the same name that you gave to your App Service or Azure Functions instance.
 
 # [Resource Manager template](#tab/arm)
 
@@ -124,8 +115,10 @@ An Azure Resource Manager template can be used to automate deployment of your Az
 Adding the system-assigned type tells Azure to create and manage the identity for your cluster. Any resource of type `Microsoft.Kusto/clusters` can be created with an identity by including the following property in the resource definition:
 
 ```json
-"identity": {
-    "type": "SystemAssigned"
+{
+   "identity": {
+      "type": "SystemAssigned"
+   }
 }
 ```
 
@@ -133,13 +126,11 @@ For example:
 
 ```json
 {
-    "apiVersion": "2019-09-07",
-    "type": "Microsoft.Kusto/clusters",
-    "name": "[variables('clusterName')]",
-    "location": "[resourceGroup().location]",
-    "identity": {
-        "type": "SystemAssigned"
-    }
+   "identity": {
+      "type": "SystemAssigned",
+      "tenantId": "<TENANTID>",
+      "principalId": "<PRINCIPALID>"
+   }
 }
 ```
 
@@ -149,10 +140,12 @@ For example:
 When the cluster is created, it has the following additional properties:
 
 ```json
-"identity": {
-    "type": "SystemAssigned",
-    "tenantId": "<TENANTID>",
-    "principalId": "<PRINCIPALID>"
+{
+    "identity": {
+        "type": "SystemAssigned",
+        "tenantId": "<TENANTID>",
+        "principalId": "<PRINCIPALID>"
+    }
 }
 ```
 
@@ -184,9 +177,12 @@ Removing a system-assigned identity will also delete it from Azure AD. System-as
 Run the following to remove the system-assigned identity:
 
 ```csharp
-var identity = new Identity(IdentityType.None);
-var cluster = new Cluster(location, sku, identity: identity);
-await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
+var cluster = (await clusters.GetAsync(clusterName)).Value;
+var clusterPatch = new KustoClusterPatch(clusterData.Location)
+{
+    Identity = new ManagedServiceIdentity(ManagedServiceIdentityType.None)
+};
+await cluster.UpdateAsync(WaitUntil.Completed, clusterPatch);
 ```
 
 # [Resource Manager template](#tab/arm)
@@ -196,8 +192,10 @@ await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clus
 Run the following to remove the system-assigned identity:
 
 ```json
-"identity": {
-    "type": "None"
+{
+   "identity": {
+      "type": "None"
+   }
 }
 ```
 
@@ -224,8 +222,8 @@ Assign a user-assigned managed identity to your cluster. A cluster can have more
 
 To set up a managed identity using the Azure Data Explorer C# client:
 
-* Install the [Azure Data Explorer NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Install the [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet package](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) for authentication.
+* Install the [Azure Data Explorer NuGet package](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
+* Install the [Azure.Identity NuGet package](https://www.nuget.org/packages/Azure.Identity/) for authentication.
 * [Create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 #### Create or update your cluster
@@ -233,51 +231,46 @@ To set up a managed identity using the Azure Data Explorer C# client:
 1. Create or update your cluster using the `Identity` property:
 
     ```csharp
-    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "PlaceholderClientSecret";//Client Secret
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Application ID
+    var clientSecret = "PlaceholderClientSecret"; //Client Secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
-    var credential = new ClientCredential(clientId, clientSecret);
-    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
-
-    var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-
-    var kustoManagementClient = new KustoManagementClient(credentials)
-    {
-        SubscriptionId = subscriptionId
-    };
-
+    var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+    var resourceManagementClient = new ArmClient(credentials, subscriptionId);
     var resourceGroupName = "testrg";
+    var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+    var resourceGroup = (await subscription.GetResourceGroupAsync(resourceGroupName)).Value;
+    var clusters = resourceGroup.GetKustoClusters();
     var clusterName = "mykustocluster";
-    var location = "Central US";
-    var skuName = "Standard_E8ads_v5";
-    var tier = "Standard";
-    var capacity = 5;
-    var sku = new AzureSku(skuName, tier, capacity);
-    var identityName = "myIdentity";
-    var userIdentityResourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}";
-    var userAssignedIdentities = new Dictionary<string, IdentityUserAssignedIdentitiesValue>(1) { { userIdentityResourceId, new IdentityUserAssignedIdentitiesValue() } };
-    var identity = new Identity(type: IdentityType.UserAssigned, userAssignedIdentities: userAssignedIdentities);
-    var cluster = new Cluster(location, sku, identity: identity);
-    await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
+    var userIdentityResourceId = new ResourceIdentifier($"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identityName>");
+    var clusterData = new KustoClusterData(
+        location: AzureLocation.CentralUS,
+        sku: new KustoSku(KustoSkuName.StandardE8adsV5, KustoSkuTier.Standard) { Capacity = 5 }
+    )
+    {
+        Identity = new ManagedServiceIdentity(ManagedServiceIdentityType.UserAssigned)
+        {
+            UserAssignedIdentities = { { userIdentityResourceId, new UserAssignedIdentity() } }
+        }
+    };
+    await clusters.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, clusterData);
     ```
 
 2. Run the following command to check if your cluster was successfully created or updated with an identity:
 
     ```csharp
-    kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
+    clusterData = (await clusters.GetAsync(clusterName)).Value.Data;
     ```
 
     If the result contains `ProvisioningState` with the `Succeeded` value, then the cluster was created or updated, and should have the following properties:
 
     ```csharp
-    var userIdentity = cluster.Identity.UserAssignedIdentities[userIdentityResourceId];
-    var principalId = userIdentity.PrincipalId;
-    var clientId = userIdentity.ClientId;
+    var userIdentity = clusterData.Identity.UserAssignedIdentities[userIdentityResourceId];
+    var principalGuid = userIdentity.PrincipalId.GetValueOrDefault();
+    var clientGuid = userIdentity.ClientId.GetValueOrDefault();
     ```
 
-The `PrincipalId` is a unique identifier for the identity that's used for Azure AD administration. The `ClientId` is a unique identifier for the application's new identity that's used for specifying which identity to use during runtime calls.
+    The `PrincipalId` is a unique identifier for the identity that's used for Azure AD administration. The `ClientId` is a unique identifier for the application's new identity that's used for specifying which identity to use during runtime calls.
 
 # [Resource Manager template](#tab/arm)
 
@@ -288,11 +281,13 @@ An Azure Resource Manager template can be used to automate deployment of your Az
 Any resource of type `Microsoft.Kusto/clusters` can be created with a user-assigned identity by including the following property in the resource definition, replacing `<RESOURCEID>` with the resource ID of the desired identity:
 
 ```json
-"identity": {
-    "type": "UserAssigned",
-    "userAssignedIdentities": {
-        "<RESOURCEID>": {}
-    }
+{
+   "identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+         "<RESOURCEID>": {}
+      }
+   }
 }
 ```
 
@@ -319,14 +314,16 @@ For example:
 When the cluster is created, it has the following additional properties:
 
 ```json
-"identity": {
-    "type": "UserAssigned",
-    "userAssignedIdentities": {
-        "<RESOURCEID>": {
+{
+   "identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+         "<RESOURCEID>": {
             "principalId": "<PRINCIPALID>",
             "clientId": "<CLIENTID>"
-        }
-    }
+         }
+      }
+   }
 }
 ```
 
@@ -361,12 +358,15 @@ Remove the user-assigned identity using the Azure portal, C#, or Resource Manage
 Run the following to remove the user-assigned identity:
 
 ```csharp
-var identityName = "myIdentity";
-var userIdentityResourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}";
-var userAssignedIdentities = new Dictionary<string, IdentityUserAssignedIdentitiesValue>(1) { { userIdentityResourceId, null } };
-var identity = new Identity(type: IdentityType.UserAssigned, userAssignedIdentities: userAssignedIdentities);
-var cluster = new Cluster(location, sku, identity: identity);
-await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
+var cluster = (await clusters.GetAsync(clusterName)).Value;
+var clusterUpdate = new KustoClusterPatch(clusterData.Location)
+{
+    Identity = new ManagedServiceIdentity(ManagedServiceIdentityType.UserAssigned)
+    {
+        UserAssignedIdentities = { { userIdentityResourceId, null } }
+    }
+};
+await cluster.UpdateAsync(WaitUntil.Completed, clusterUpdate);
 ```
 
 # [Resource Manager template](#tab/arm)
@@ -376,11 +376,13 @@ await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clus
 Run the following to remove the user-assigned identity:
 
 ```json
-"identity": {
-    "type": "UserAssigned",
-    "userAssignedIdentities": {
-        "<RESOURCEID>": null
-    }
+{
+   "identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+         "<RESOURCEID>": null
+      }
+   }
 }
 ```
 
