@@ -3,7 +3,7 @@ title: 'Create an Azure Data Explorer cluster and database'
 description: Learn how to create an Azure Data Explorer cluster and database.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 05/07/2023
+ms.date: 05/08/2023
 ---
 
 # Create an Azure Data Explorer cluster and database
@@ -240,139 +240,139 @@ The following code shows how to create a cluster. To clone the code repository, 
 
 1. Run the following code to create the cluster:
 
-```golang
-import (
- "context"
- "log"
- "os"
- "strconv"
-
- "github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
- "github.com/Azure/azure-sdk-for-go/sdk/azidentity"
- "github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kusto/armkusto"
- "github.com/olekukonko/tablewriter"
-)
-
-const (
- subscriptionEnvVar      = "AZURE_SUBSCRIPTION_ID"
- resourceGroupEnvVar     = "AZURE_RESOURCE_GROUP"
- locationEnvVar          = "AZURE_LOCATION"
- clusterNamePrefixEnvVar = "CLUSTER_NAME_PREFIX"
- dbNamePrefixEnvVar      = "DATABASE_NAME_PREFIX"
-
- clusterName  = "ADXTestCluster"
- databaseName = "ADXTestDB"
-)
-
-func init() {
- subscription = os.Getenv(subscriptionEnvVar)
- if subscription == "" {
-  log.Fatalf("missing environment variable %s", subscriptionEnvVar)
- }
-
- rgName = os.Getenv(resourceGroupEnvVar)
- if rgName == "" {
-  log.Fatalf("missing environment variable %s", resourceGroupEnvVar)
- }
-
- location = os.Getenv(locationEnvVar)
- if location == "" {
-  log.Fatalf("missing environment variable %s", locationEnvVar)
- }
-
- clusterNamePrefix = os.Getenv(clusterNamePrefixEnvVar)
- if clusterNamePrefix == "" {
-  log.Fatalf("missing environment variable %s", clusterNamePrefixEnvVar)
- }
-
- dbNamePrefix = os.Getenv(dbNamePrefixEnvVar)
- if dbNamePrefix == "" {
-  log.Fatalf("missing environment variable %s", dbNamePrefixEnvVar)
- }
-}
-
-func getClustersClient(subscription string) *armkusto.ClustersClient {
- cred, err := azidentity.NewDefaultAzureCredential(nil)
- if err != nil {
-  log.Fatal(err)
- }
-
- client, err := armkusto.NewClustersClient(subscription, cred, nil)
- if err != nil {
-  log.Fatal(err)
- }
-
- return client
-}
-
-// 1 instance, Basic tier with compute type Dev(No SLA)_Standard_D11_v2
-func createCluster(sub, name, location, rgName string) {
- ctx := context.Background()
-
- numInstances := int32(1)
- client := getClustersClient(sub)
- result, err := client.BeginCreateOrUpdate(
-  ctx,
-  rgName,
-  name,
-  armkusto.Cluster{
-   Location: &location,
-   SKU: &armkusto.AzureSKU{
-    Name:     to.Ptr(armkusto.AzureSKUNameDevNoSLAStandardD11V2),
-    Capacity: &numInstances,
-    Tier:     to.Ptr(armkusto.AzureSKUTierBasic),
-   },
-  },
-  nil,
- )
- if err != nil {
-  log.Fatal("failed to start cluster creation ", err)
- }
-
- log.Printf("waiting for cluster creation to complete - %s\n", name)
- r, err := result.PollUntilDone(ctx, nil)
- if err != nil {
-  log.Fatal(err)
- }
-
- log.Printf("created cluster %s\n", *r.Name)
-}
-
-createCluster(subscription, clusterNamePrefix+clusterName, location, rgName)
-```
+    ```golang
+    import (
+     "context"
+     "log"
+     "os"
+     "strconv"
+    
+     "github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+     "github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+     "github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kusto/armkusto"
+     "github.com/olekukonko/tablewriter"
+    )
+    
+    const (
+     subscriptionEnvVar      = "AZURE_SUBSCRIPTION_ID"
+     resourceGroupEnvVar     = "AZURE_RESOURCE_GROUP"
+     locationEnvVar          = "AZURE_LOCATION"
+     clusterNamePrefixEnvVar = "CLUSTER_NAME_PREFIX"
+     dbNamePrefixEnvVar      = "DATABASE_NAME_PREFIX"
+    
+     clusterName  = "ADXTestCluster"
+     databaseName = "ADXTestDB"
+    )
+    
+    func init() {
+     subscription = os.Getenv(subscriptionEnvVar)
+     if subscription == "" {
+      log.Fatalf("missing environment variable %s", subscriptionEnvVar)
+     }
+    
+     rgName = os.Getenv(resourceGroupEnvVar)
+     if rgName == "" {
+      log.Fatalf("missing environment variable %s", resourceGroupEnvVar)
+     }
+    
+     location = os.Getenv(locationEnvVar)
+     if location == "" {
+      log.Fatalf("missing environment variable %s", locationEnvVar)
+     }
+    
+     clusterNamePrefix = os.Getenv(clusterNamePrefixEnvVar)
+     if clusterNamePrefix == "" {
+      log.Fatalf("missing environment variable %s", clusterNamePrefixEnvVar)
+     }
+    
+     dbNamePrefix = os.Getenv(dbNamePrefixEnvVar)
+     if dbNamePrefix == "" {
+      log.Fatalf("missing environment variable %s", dbNamePrefixEnvVar)
+     }
+    }
+    
+    func getClustersClient(subscription string) *armkusto.ClustersClient {
+     cred, err := azidentity.NewDefaultAzureCredential(nil)
+     if err != nil {
+      log.Fatal(err)
+     }
+    
+     client, err := armkusto.NewClustersClient(subscription, cred, nil)
+     if err != nil {
+      log.Fatal(err)
+     }
+    
+     return client
+    }
+    
+    // 1 instance, Basic tier with compute type Dev(No SLA)_Standard_D11_v2
+    func createCluster(sub, name, location, rgName string) {
+     ctx := context.Background()
+    
+     numInstances := int32(1)
+     client := getClustersClient(sub)
+     result, err := client.BeginCreateOrUpdate(
+      ctx,
+      rgName,
+      name,
+      armkusto.Cluster{
+       Location: &location,
+       SKU: &armkusto.AzureSKU{
+        Name:     to.Ptr(armkusto.AzureSKUNameDevNoSLAStandardD11V2),
+        Capacity: &numInstances,
+        Tier:     to.Ptr(armkusto.AzureSKUTierBasic),
+       },
+      },
+      nil,
+     )
+     if err != nil {
+      log.Fatal("failed to start cluster creation ", err)
+     }
+    
+     log.Printf("waiting for cluster creation to complete - %s\n", name)
+     r, err := result.PollUntilDone(ctx, nil)
+     if err != nil {
+      log.Fatal(err)
+     }
+    
+     log.Printf("created cluster %s\n", *r.Name)
+    }
+    
+    createCluster(subscription, clusterNamePrefix+clusterName, location, rgName)
+    ```
 
 1. List the clusters to ensure successful creation:
 
-```golang
-func listClusters(sub, rgName string) {
- log.Printf("listing clusters in resource group %s\n", rgName)
- ctx := context.Background()
-
- result := getClustersClient(sub).NewListByResourceGroupPager(rgName, nil)
-
- data := [][]string{}
-
- for result.More() {
-  temp, err := result.NextPage(ctx)
-  if err != nil {
-   log.Fatal(err)
-  }
-  for _, c := range temp.Value {
-   data = append(data, []string{*c.Name, string(*c.Properties.State), *c.Location, strconv.Itoa(int(*c.SKU.Capacity)), *c.Properties.URI})
-  }
- }
-
- table := tablewriter.NewWriter(os.Stdout)
- table.SetHeader([]string{"Name", "State", "Location", "Instances", "URI"})
-
- for _, v := range data {
-  table.Append(v)
- }
- table.Render()
-}
-
-listClusters(subscription, rgName)
-```
+    ```golang
+    func listClusters(sub, rgName string) {
+     log.Printf("listing clusters in resource group %s\n", rgName)
+     ctx := context.Background()
+    
+     result := getClustersClient(sub).NewListByResourceGroupPager(rgName, nil)
+    
+     data := [][]string{}
+    
+     for result.More() {
+      temp, err := result.NextPage(ctx)
+      if err != nil {
+       log.Fatal(err)
+      }
+      for _, c := range temp.Value {
+       data = append(data, []string{*c.Name, string(*c.Properties.State), *c.Location, strconv.Itoa(int(*c.SKU.Capacity)), *c.Properties.URI})
+      }
+     }
+    
+     table := tablewriter.NewWriter(os.Stdout)
+     table.SetHeader([]string{"Name", "State", "Location", "Instances", "URI"})
+    
+     for _, v := range data {
+      table.Append(v)
+     }
+     table.Render()
+    }
+    
+    listClusters(subscription, rgName)
+    ```
 
 ### [Azure CLI](#tab/azcli)
 
@@ -659,64 +659,64 @@ The following code shows how to create a database. The package imports and envir
 
 1. Run the following code to create the database:
 
-```golang
-func createDatabase(sub, rgName, clusterName, location, dbName string) {
- ctx := context.Background()
-
- client := getDBClient(sub)
- future, err := client.BeginCreateOrUpdate(ctx, rgName, clusterName, dbName, &armkusto.ReadWriteDatabase{Kind: to.Ptr(armkusto.KindReadWrite), Location: &location}, nil)
-
- if err != nil {
-  log.Fatal("failed to start database creation ", err)
- }
-
- log.Printf("waiting for database creation to complete - %s\n", dbName)
- resp, err := future.PollUntilDone(ctx, nil)
- if err != nil {
-  log.Fatal(err)
- }
-
- kdb := resp.GetDatabase()
- log.Printf("created DB %s with ID %s and type %s\n", *kdb.Name, *kdb.ID, *kdb.Type)
-}
-
-createDatabase(subscription, rgName, clusterNamePrefix+clusterName, location, dbNamePrefix+databaseName)
-```
+    ```golang
+    func createDatabase(sub, rgName, clusterName, location, dbName string) {
+     ctx := context.Background()
+    
+     client := getDBClient(sub)
+     future, err := client.BeginCreateOrUpdate(ctx, rgName, clusterName, dbName, &armkusto.ReadWriteDatabase{Kind: to.Ptr(armkusto.KindReadWrite), Location: &location}, nil)
+    
+     if err != nil {
+      log.Fatal("failed to start database creation ", err)
+     }
+    
+     log.Printf("waiting for database creation to complete - %s\n", dbName)
+     resp, err := future.PollUntilDone(ctx, nil)
+     if err != nil {
+      log.Fatal(err)
+     }
+    
+     kdb := resp.GetDatabase()
+     log.Printf("created DB %s with ID %s and type %s\n", *kdb.Name, *kdb.ID, *kdb.Type)
+    }
+    
+    createDatabase(subscription, rgName, clusterNamePrefix+clusterName, location, dbNamePrefix+databaseName)
+    ```
 
 1. List the databases to ensure successful creation:
 
-```golang
-func listDatabases(sub, rgName, clusterName string) {
- log.Printf("listing databases in cluster %s\n", clusterName)
-
- ctx := context.Background()
- result := getDBClient(sub).NewListByClusterPager(rgName, clusterName, nil)
-
- data := [][]string{}
-
- for result.More() {
-  temp, err := result.NextPage(ctx)
-  if err != nil {
-   log.Fatal(err)
-  }
-  for _, db := range temp.Value {
-   if *db.GetDatabase().Kind == armkusto.KindReadWrite {
-    data = append(data, []string{*db.GetDatabase().Name, string(*db.GetDatabase().Kind), *db.GetDatabase().Location, *db.GetDatabase().Type})
-   }
-  }
- }
-
- table := tablewriter.NewWriter(os.Stdout)
- table.SetHeader([]string{"Name", "State", "Location", "Type"})
-
- for _, v := range data {
-  table.Append(v)
- }
- table.Render()
-}
-
-listDatabases(subscription, rgName, clusterNamePrefix+clusterName)
-```
+    ```golang
+    func listDatabases(sub, rgName, clusterName string) {
+     log.Printf("listing databases in cluster %s\n", clusterName)
+    
+     ctx := context.Background()
+     result := getDBClient(sub).NewListByClusterPager(rgName, clusterName, nil)
+    
+     data := [][]string{}
+    
+     for result.More() {
+      temp, err := result.NextPage(ctx)
+      if err != nil {
+       log.Fatal(err)
+      }
+      for _, db := range temp.Value {
+       if *db.GetDatabase().Kind == armkusto.KindReadWrite {
+        data = append(data, []string{*db.GetDatabase().Name, string(*db.GetDatabase().Kind), *db.GetDatabase().Location, *db.GetDatabase().Type})
+       }
+      }
+     }
+    
+     table := tablewriter.NewWriter(os.Stdout)
+     table.SetHeader([]string{"Name", "State", "Location", "Type"})
+    
+     for _, v := range data {
+      table.Append(v)
+     }
+     table.Render()
+    }
+    
+    listDatabases(subscription, rgName, clusterNamePrefix+clusterName)
+    ```
 
 ### [Azure CLI](#tab/azcli)
 
