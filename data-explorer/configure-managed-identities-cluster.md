@@ -3,7 +3,7 @@ title: Configure managed identities for your Azure Data Explorer cluster
 description: Learn how to configure managed identities for Azure Data Explorer cluster.
 ms.reviewer: itsagui
 ms.topic: how-to
-ms.date: 11/25/2020
+ms.date: 05/08/2023
 ---
 # Configure managed identities for your Azure Data Explorer cluster
 

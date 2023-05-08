@@ -4,7 +4,7 @@ description: This article describes how to enable infrastructure encryption (dou
 ms.reviewer: toleibov
 ms.topic: how-to
 ms.custom: devx-track-arm-template
-ms.date: 04/12/2022
+ms.date: 05/08/2023
 ---
 
 # Enable double encryption for your cluster in Azure Data Explorer
