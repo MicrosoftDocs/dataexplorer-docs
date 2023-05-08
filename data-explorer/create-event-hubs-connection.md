@@ -3,7 +3,7 @@ title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Hubs.'
 ms.topic: how-to
 ms.custom: devx-track-arm-template
-ms.date: 04/04/2023
+ms.date: 05/08/2023
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer
@@ -109,39 +109,40 @@ The following steps will guide you through creating an event hub connection thro
 
 1. Run the following code.
 
-    ```c#
-    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "PlaceholderClientSecret";//Client Secret
+    ```csharp
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Application ID
+    var clientSecret = "PlaceholderClientSecret"; //Client Secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-    var authenticationContext = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
-    var credential = new ClientCredential(clientId, clientSecret);
-    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
-    
-    var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-    
-    var kustoManagementClient = new KustoManagementClient(credentials)
-    {
-        SubscriptionId = subscriptionId
-    };
-    
+    var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+    var resourceManagementClient = new ArmClient(credentials, subscriptionId);
     var resourceGroupName = "testrg";
     //The cluster and database that are created as part of the Prerequisites
-    var clusterName = "mycluster";
-    var databaseName = "mydatabase";
-    var dataConnectionName = "myeventhubconnect";
+    var clusterName = "mykustocluster";
+    var databaseName = "mykustodatabase";
+    var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+    var resourceGroup = (await subscription.GetResourceGroupAsync(resourceGroupName)).Value;
+    var cluster = (await resourceGroup.GetKustoClusterAsync(clusterName)).Value;
+    var database = (await cluster.GetKustoDatabaseAsync(databaseName)).Value;
+    var dataConnections = database.GetKustoDataConnections();
+    var eventHubConnectionName = "myeventhubconnect";
     //The event hub that is created as part of the Prerequisites
-    var eventHubResourceId = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.EventHub/namespaces/xxxxxx/eventhubs/xxxxxx";
+    var eventHubResourceId = new ResourceIdentifier("/subscriptions/<eventHubSubscriptionId>/resourceGroups/<eventHubResourceGroupName>/providers/Microsoft.EventHub/namespaces/<eventHubNamespaceName>/eventhubs/<eventHubName>");
     var consumerGroup = "$Default";
-    var location = "Central US";
+    var location = AzureLocation.CentralUS;
     //The table and column mapping are created as part of the Prerequisites
     var tableName = "StormEvents";
     var mappingRuleName = "StormEvents_CSV_Mapping";
-    var dataFormat = EventHubDataFormat.CSV;
-    var compression = "None";
-    var databaseRouting = "Multi";
-    await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, dataConnectionName,
-        new EventHubDataConnection(eventHubResourceId, consumerGroup, location: location, tableName: tableName, mappingRuleName: mappingRuleName, dataFormat: dataFormat, compression: compression, databaseRouting: databaseRouting));
+    var dataFormat = KustoEventHubDataFormat.Csv;
+    var compression = EventHubMessagesCompressionType.None;
+    var databaseRouting = KustoDatabaseRouting.Multi;
+    var eventHubConnectionData = new KustoEventHubDataConnection
+    {
+        EventHubResourceId = eventHubResourceId, ConsumerGroup = consumerGroup,
+        Location = location, TableName = tableName, MappingRuleName = mappingRuleName,
+        DataFormat = dataFormat, Compression = compression, DatabaseRouting = databaseRouting
+    };
+    await dataConnections.CreateOrUpdateAsync(WaitUntil.Completed, eventHubConnectionName, eventHubConnectionData);
     ```
 
     |**Setting** | **Suggested value** | **Field description**|

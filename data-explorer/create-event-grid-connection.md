@@ -2,7 +2,7 @@
 title: 'Create an Event Grid data connection - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Grid.'
 ms.topic: how-to
-ms.date: 04/04/2023
+ms.date: 05/08/2023
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer
@@ -149,42 +149,41 @@ The **Data connection** pane opens with the **Basics** tab selected.
 1. Run the following code.
 
     ```csharp
-    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "PlaceholderClientSecret";//Client Secret
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Application ID
+    var clientSecret = "PlaceholderClientSecret"; //Client Secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
-    var credential = new ClientCredential(clientId, clientSecret);
-    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
-    
-    var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-    
-    var kustoManagementClient = new KustoManagementClient(credentials)
-    {
-        SubscriptionId = subscriptionId
-    };
-    
+    var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+    var resourceManagementClient = new ArmClient(credentials, subscriptionId);
     var resourceGroupName = "testrg";
     //The cluster and database that are created as part of the Prerequisites
     var clusterName = "mykustocluster";
     var databaseName = "mykustodatabase";
-    var dataConnectionName = "myeventhubconnect";
+    var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+    var resourceGroup = (await subscription.GetResourceGroupAsync(resourceGroupName)).Value;
+    var cluster = (await resourceGroup.GetKustoClusterAsync(clusterName)).Value;
+    var database = (await cluster.GetKustoDatabaseAsync(databaseName)).Value;
+    var dataConnections = database.GetKustoDataConnections();
+    var eventGridConnectionName = "myeventgridconnect";
     //The event hub and storage account that are created as part of the Prerequisites
-    var eventHubResourceId = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.EventHub/namespaces/xxxxxx/eventhubs/xxxxxx";
-    var storageAccountResourceId = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Storage/storageAccounts/xxxxxx";
+    var eventHubResourceId = new ResourceIdentifier("/subscriptions/<storageAccountSubscriptionId>/resourceGroups/<storageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<storageAccountName>");
+    var storageAccountResourceId = new ResourceIdentifier("/subscriptions/<eventHubSubscriptionId>/resourceGroups/<eventHubResourceGroupName>/providers/Microsoft.EventHub/namespaces/<eventHubNamespaceName>/eventhubs/<eventHubName>");
     var consumerGroup = "$Default";
-    var location = "Central US";
+    var location = AzureLocation.CentralUS;
     //The table and column mapping are created as part of the Prerequisites
     var tableName = "StormEvents";
     var mappingRuleName = "StormEvents_CSV_Mapping";
-    var dataFormat = DataFormat.CSV;
-    var blobStorageEventType = "Microsoft.Storage.BlobCreated";
-    var databaseRouting = "Multi";
-    
-    await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, dataConnectionName,
-        new EventGridDataConnection(storageAccountResourceId, eventHubResourceId, consumerGroup, tableName: tableName, location: location, mappingRuleName: mappingRuleName, dataFormat: dataFormat, blobStorageEventType: blobStorageEventType, databaseRouting: databaseRouting));
+    var dataFormat = KustoEventGridDataFormat.Csv;
+    var blobStorageEventType = BlobStorageEventType.MicrosoftStorageBlobCreated;
+    var databaseRouting = KustoDatabaseRouting.Multi;
+    var eventGridConnectionData = new KustoEventGridDataConnection
+    {
+        StorageAccountResourceId = storageAccountResourceId, EventHubResourceId = eventHubResourceId,
+        ConsumerGroup = consumerGroup, TableName = tableName, Location = location, MappingRuleName = mappingRuleName,
+        DataFormat = dataFormat, BlobStorageEventType = blobStorageEventType, DatabaseRouting = databaseRouting
+    };
+    await dataConnections.CreateOrUpdateAsync(WaitUntil.Completed, eventGridConnectionName, eventGridConnectionData);
     ```
-
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
     | tenantId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Your tenant ID. Also known as directory ID.|
@@ -194,7 +193,7 @@ The **Data connection** pane opens with the **Basics** tab selected.
     | resourceGroupName | *testrg* | The name of the resource group containing your cluster.|
     | clusterName | *mykustocluster* | The name of your cluster.|
     | databaseName | *mykustodatabase* | The name of the target database in your cluster.|
-    | dataConnectionName | *myeventhubconnect* | The desired name of your data connection.|
+    | eventGridConnectionName | *myeventgridconnect* | The desired name of your data connection.|
     | tableName | *StormEvents* | The name of the target table in the target database.|
     | mappingRuleName | *StormEvents_CSV_Mapping* | The name of your column mapping related to the target table.|
     | dataFormat | *csv* | The data format of the message.|
