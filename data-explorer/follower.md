@@ -3,7 +3,7 @@ title: Use follower database feature to attach databases in Azure Data Explorer
 description: Learn about how to attach databases in Azure Data Explorer using the follower database feature.
 ms.reviewer: gabilehner
 ms.topic: how-to
-ms.date: 10/02/2022
+ms.date: 05/08/2023
 ---
 
 # Use follower databases
@@ -78,66 +78,50 @@ You can optionally make the database name in the follower cluster different from
 
 ### Required NuGet packages
 
-* Install [Microsoft.Azure.Management.Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Install [Microsoft.Rest.ClientRuntime.Azure.Authentication for authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
+* Install [Azure.ResourceManager.Kusto](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
+* Install [Azure.Identity for authentication](https://www.nuget.org/packages/Azure.Identity/).
 
 ### C\# example
 
 ```csharp
-var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "PlaceholderClientSecret";//Client Secret
-var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Application ID
+var clientSecret = "PlaceholderClientSecret"; //Client Secret
 var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-
-var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
-var resourceManagementClient = new KustoManagementClient(serviceCreds){
-    SubscriptionId = followerSubscriptionId
-};
-
+var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+var resourceManagementClient = new ArmClient(credentials, followerSubscriptionId);
 var followerResourceGroupName = "followerResourceGroup";
+var followerClusterName = "follower";
+var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+var resourceGroup = (await subscription.GetResourceGroupAsync(followerResourceGroupName)).Value;
+var cluster = (await resourceGroup.GetKustoClusterAsync(followerClusterName)).Value;
+var attachedDatabaseConfigurations = cluster.GetKustoAttachedDatabaseConfigurations();
+var attachedDatabaseConfigurationName = "attachedDatabaseConfiguration"
+var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var leaderResourceGroup = "leaderResourceGroup";
 var leaderClusterName = "leader";
-var followerClusterName = "follower";
-var attachedDatabaseConfigurationName = "uniqueNameForAttachedDatabaseConfiguration";
-var databaseName = "db"; // Can be specific database name or * for all databases
-var defaultPrincipalsModificationKind = "Union";
-var location = "North Central US";
-
-
-TableLevelSharingProperties tls;
-if (databaseName == "*")
+var attachedDatabaseConfigurationData = new KustoAttachedDatabaseConfigurationData
 {
-    // Table level sharing properties are not supported when using '*' all databases notation.
-    tls = null;
-}
-else
+    ClusterResourceId = new ResourceIdentifier($"/subscriptions/{leaderSubscriptionId}/resourceGroups/{leaderResourceGroup}/providers/Microsoft.Kusto/Clusters/{leaderClusterName}"),
+    DatabaseName = "<databaseName>", // Can be specific database name or * for all databases
+    DefaultPrincipalsModificationKind = KustoDatabaseDefaultPrincipalsModificationKind.Union,
+    Location = AzureLocation.NorthCentralUS
+};
+// Table level sharing properties are not supported when using '*' all databases notation.
+if (attachedDatabaseConfigurationData.DatabaseName != "*")
 {
     // Set up the table level sharing properties - the following is just an example.
-    var tablesToInclude = new List<string>
-    {
-        "table1",
-        "table2",
-        "table3"
-    };
-    var externalTablesToExclude = new List<string>
-    {
-        "Logs*"
-    };
-    tls = new TableLevelSharingProperties(tablesToInclude: tablesToInclude, externalTablesToExclude: externalTablesToExclude);
+    attachedDatabaseConfigurationData.TableLevelSharingProperties = new KustoDatabaseTableLevelSharingProperties();
+    attachedDatabaseConfigurationData.TableLevelSharingProperties.TablesToInclude.Add("table1");
+    attachedDatabaseConfigurationData.TableLevelSharingProperties.TablesToExclude.Add("table2");
+    attachedDatabaseConfigurationData.TableLevelSharingProperties.ExternalTablesToExclude.Add("exTable1");
+    attachedDatabaseConfigurationData.TableLevelSharingProperties.ExternalTablesToInclude.Add("exTable2");
+    attachedDatabaseConfigurationData.TableLevelSharingProperties.MaterializedViewsToInclude.Add("matTable1");
+    attachedDatabaseConfigurationData.TableLevelSharingProperties.MaterializedViewsToExclude.Add("matTable2");
+    attachedDatabaseConfigurationData.TableLevelSharingProperties.FunctionsToInclude.Add("func1");
+    attachedDatabaseConfigurationData.TableLevelSharingProperties.FunctionsToExclude.Add("func2");
 }
-
-
-AttachedDatabaseConfiguration attachedDatabaseConfigurationProperties = new AttachedDatabaseConfiguration()
-{
-    ClusterResourceId = $"/subscriptions/{leaderSubscriptionId}/resourceGroups/{leaderResourceGroup}/providers/Microsoft.Kusto/Clusters/{leaderClusterName}",
-    DatabaseName = databaseName,
-    DefaultPrincipalsModificationKind = defaultPrincipalsModificationKind,
-    Location = location,
-    TableLevelSharingProperties = tls
-};
-
-var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseConfigurations.CreateOrUpdate(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationName, attachedDatabaseConfigurationProperties);
+await attachedDatabaseConfigurations.CreateOrUpdateAsync(WaitUntil.Completed, attachedDatabaseConfigurationName, attachedDatabaseConfigurationData);
 ```
 
 ## [Python](#tab/python)
@@ -446,23 +430,21 @@ To verify that the database was successfully attached, find your attached databa
 The follower cluster can detach any attached follower database as follows:
 
 ```csharp
-var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "PlaceholderClientSecret";//Client Secret
-var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Application ID
+var clientSecret = "PlaceholderClientSecret"; //Client Secret
 var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-
-var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
-var resourceManagementClient = new KustoManagementClient(serviceCreds){
-    SubscriptionId = followerSubscriptionId
-};
-
+var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+var resourceManagementClient = new ArmClient(credentials, followerSubscriptionId);
 var followerResourceGroupName = "testrg";
-//The cluster and database that are created as part of the prerequisites
+//The cluster and database attached database configuration are created as part of the prerequisites
 var followerClusterName = "follower";
-var attachedDatabaseConfigurationsName = "uniqueName";
-
-resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
+var attachedDatabaseConfigurationsName = "attachedDatabaseConfiguration";
+var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+var resourceGroup = (await subscription.GetResourceGroupAsync(followerResourceGroupName)).Value;
+var cluster = (await resourceGroup.GetKustoClusterAsync(followerClusterName)).Value;
+var attachedDatabaseConfiguration = (await cluster.GetKustoAttachedDatabaseConfigurationAsync(attachedDatabaseConfigurationsName)).Value;
+await attachedDatabaseConfiguration.DeleteAsync(WaitUntil.Completed);
 ```
 
 ### Detach the attached follower database from the leader cluster using C\#
@@ -470,29 +452,27 @@ resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceG
 The leader cluster can detach any attached database as follows:
 
 ```csharp
-var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "PlaceholderClientSecret";//Client Secret
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Application ID
+var clientSecret = "PlaceholderClientSecret"; //Client Secret
 var leaderSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-
-var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
-var resourceManagementClient = new KustoManagementClient(serviceCreds){
-    SubscriptionId = leaderSubscriptionId
-};
-
+var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+var resourceManagementClient = new ArmClient(credentials, leaderSubscriptionId);
 var leaderResourceGroupName = "testrg";
-var followerResourceGroupName = "followerResourceGroup";
 var leaderClusterName = "leader";
+var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+var resourceGroup = (await subscription.GetResourceGroupAsync(leaderResourceGroupName)).Value;
+var cluster = (await resourceGroup.GetKustoClusterAsync(leaderClusterName)).Value;
+var followerSubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+var followerResourceGroupName = "followerResourceGroup";
+//The cluster and attached database configuration that are created as part of the Prerequisites
 var followerClusterName = "follower";
-//The cluster and database that are created as part of the Prerequisites
-var followerDatabaseDefinition = new FollowerDatabaseDefinition()
-    {
-        AttachedDatabaseConfigurationName = "uniqueName",
-        ClusterResourceId = $"/subscriptions/{followerSubscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}"
-    };
-
-resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
+var attachedDatabaseConfigurationsName = "attachedDatabaseConfiguration";
+var followerDatabaseDefinition = new KustoFollowerDatabaseDefinition(
+    clusterResourceId: new ResourceIdentifier($"/subscriptions/{followerSubscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}"),
+    attachedDatabaseConfigurationName: attachedDatabaseConfigurationsName
+);
+await cluster.DetachFollowerDatabasesAsync(WaitUntil.Completed, followerDatabaseDefinition);
 ```
 
 ## [Python](#tab/python)
