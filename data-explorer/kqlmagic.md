@@ -44,7 +44,7 @@ In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to conne
 
 There are many methods to connect to a cluster. Select the tab for your preferred method.
 
-### [Azure AD code](#tab/code)
+### [Code](#tab/code)
 
 The Azure AD code method opens a pop-up window in which to provide a designated code for authentication.
 
@@ -52,7 +52,7 @@ The Azure AD code method opens a pop-up window in which to provide a designated 
 %kql azure_data-Explorer://code;cluster='<cluster-name>';database='<database-name>'
 ```
 
-### [Azure AD application](#tab/application)
+### [Application key](#tab/application)
 
 THe Azure AD application method allows for a non-interactive sign-in using an Azure AD application ID and key.
 
@@ -70,7 +70,7 @@ The Azure AD username and password method only works on corporate network. If a 
 
 ### [Certificate](#tab/certificate)
 
-The certificate should be stored in a file accessible from the notebook. This file can be referenced in the connection string.
+The Azure AD certificate should be stored in a file accessible from the notebook. This file can be referenced in the connection string.
 
 ```python
 %kql azure_data-Explorer://tenant='<tenant-id>';certificate='<certificate>';certificate_thumbprint='<thumbprint>';cluster='<cluster-name>';database='<database-name>'
