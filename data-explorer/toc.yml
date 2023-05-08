@@ -428,16 +428,7 @@ items:
         - name: Check cluster health
           href: check-cluster-health.md
         - name: Add cluster principal
-          items:
-            - name: C#
-              displayName: cluster principal
-              href: cluster-principal-csharp.md
-            - name: Python
-              displayName: cluster principal
-              href: cluster-principal-python.md
-            - name: Azure Resource Manager template
-              displayName: cluster principal
-              href: cluster-principal-resource-manager.md
+          href: add-cluster-principal.md
         - name: Manage cluster language extensions
           displayName: Python, R
           href: language-extensions.md
@@ -448,16 +439,7 @@ items:
         - name: Configure a database using a Kusto Query Language script
           href: database-script.md
         - name: Add database principal
-          items:
-            - name: C#
-              displayName: database principal
-              href: database-principal-csharp.md
-            - name: Python
-              displayName: database principal
-              href: database-principal-python.md
-            - name: Azure Resource Manager template
-              displayName: database principal
-              href: database-principal-resource-manager.md
+          href: add-database-principal.md
         - name: Policies
           items:
           - name: C#

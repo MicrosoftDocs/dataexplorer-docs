@@ -3,7 +3,7 @@ title: 'Create an Azure Data Explorer cluster and database'
 description: Learn how to create an Azure Data Explorer cluster and database.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 05/04/2023
+ms.date: 05/08/2023
 ---
 
 # Create an Azure Data Explorer cluster and database
@@ -14,11 +14,9 @@ In this article, you'll learn how to create a cluster and a database using eithe
 
 ## Prerequisites
 
-The prerequisites vary based on the method used to create the cluster and database. Choose the relevant tab for your preferred method.
+Prerequisites by method of cluster and database creation:
 
 ### [C#](#tab/csharp)
-
-The following list outlines the prerequisites to creating a cluster and database with C#.
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
@@ -27,8 +25,6 @@ The following list outlines the prerequisites to creating a cluster and database
 
 ### [Python](#tab/python)
 
-The following list outlines the prerequisites to creating a cluster and database with Python.
-
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * [Python 3.4+](https://www.python.org/downloads/).
 * Install the [azure-common](https://pypi.org/project/azure-common/) and [azure-mgmt-kusto](https://pypi.org/project/azure-mgmt-kusto/) packages.
@@ -36,16 +32,12 @@ The following list outlines the prerequisites to creating a cluster and database
 
 ### [Go](#tab/go)
 
-The following list outlines the prerequisites to creating a cluster and database with Go.
-
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * Install an appropriate version of [Go](https://golang.org/). For supported versions, see [Azure Kusto Module for Go](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kusto/armkusto).
 * [An Azure AD application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 
 ### [Azure CLI](#tab/azcli)
-
-The following list outlines the prerequisites to creating a cluster and database with the Azure CLI.
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
@@ -80,8 +72,6 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
     ```
 
 ### [PowerShell](#tab/powershell)
-
-The following list outlines the prerequisites to creating a cluster and database with PowerShell.
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
@@ -228,9 +218,7 @@ This section guides you through the process of creating an Azure Data Explorer c
 
 ### [Go](#tab/go)
 
-The following steps use a sample application to create a cluster and database.
-
-1. Clone the [sample code](https://github.com/Azure-Samples/azure-data-explorer-go-cluster-management/) from GitHub.
+The following code shows how to create a cluster. To clone the code repository, see [Manage an Azure Data Explorer cluster using Azure Go SDK](https://github.com/Azure-Samples/azure-data-explorer-go-cluster-management/tree/main).
 
 1. Set the required environment variables including service principal information from the [prerequisites](#prerequisites). Enter your subscription ID, resource group, and region where you want to create the cluster.
 
@@ -250,51 +238,140 @@ The following steps use a sample application to create a cluster and database.
     > [!TIP]
     > Use [auth.NewAuthorizerFromCLIWithResource](https://pkg.go.dev/github.com/Azure/go-autorest/autorest/azure/auth?tab=doc#NewAuthorizerFromCLIWithResource) if you have Azure CLI installed and configured for authentication. In that situation, you don't need to create a service principal.
 
-1. Run the program with the following command:
+1. Run the following code to create the cluster:
 
-    ```console
-    go run main.go
+    ```golang
+    import (
+     "context"
+     "log"
+     "os"
+     "strconv"
+    
+     "github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+     "github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+     "github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kusto/armkusto"
+     "github.com/olekukonko/tablewriter"
+    )
+    
+    const (
+     subscriptionEnvVar      = "AZURE_SUBSCRIPTION_ID"
+     resourceGroupEnvVar     = "AZURE_RESOURCE_GROUP"
+     locationEnvVar          = "AZURE_LOCATION"
+     clusterNamePrefixEnvVar = "CLUSTER_NAME_PREFIX"
+     dbNamePrefixEnvVar      = "DATABASE_NAME_PREFIX"
+    
+     clusterName  = "ADXTestCluster"
+     databaseName = "ADXTestDB"
+    )
+    
+    func init() {
+     subscription = os.Getenv(subscriptionEnvVar)
+     if subscription == "" {
+      log.Fatalf("missing environment variable %s", subscriptionEnvVar)
+     }
+    
+     rgName = os.Getenv(resourceGroupEnvVar)
+     if rgName == "" {
+      log.Fatalf("missing environment variable %s", resourceGroupEnvVar)
+     }
+    
+     location = os.Getenv(locationEnvVar)
+     if location == "" {
+      log.Fatalf("missing environment variable %s", locationEnvVar)
+     }
+    
+     clusterNamePrefix = os.Getenv(clusterNamePrefixEnvVar)
+     if clusterNamePrefix == "" {
+      log.Fatalf("missing environment variable %s", clusterNamePrefixEnvVar)
+     }
+    
+     dbNamePrefix = os.Getenv(dbNamePrefixEnvVar)
+     if dbNamePrefix == "" {
+      log.Fatalf("missing environment variable %s", dbNamePrefixEnvVar)
+     }
+    }
+    
+    func getClustersClient(subscription string) *armkusto.ClustersClient {
+     cred, err := azidentity.NewDefaultAzureCredential(nil)
+     if err != nil {
+      log.Fatal(err)
+     }
+    
+     client, err := armkusto.NewClustersClient(subscription, cred, nil)
+     if err != nil {
+      log.Fatal(err)
+     }
+    
+     return client
+    }
+    
+    // 1 instance, Basic tier with compute type Dev(No SLA)_Standard_D11_v2
+    func createCluster(sub, name, location, rgName string) {
+     ctx := context.Background()
+    
+     numInstances := int32(1)
+     client := getClustersClient(sub)
+     result, err := client.BeginCreateOrUpdate(
+      ctx,
+      rgName,
+      name,
+      armkusto.Cluster{
+       Location: &location,
+       SKU: &armkusto.AzureSKU{
+        Name:     to.Ptr(armkusto.AzureSKUNameDevNoSLAStandardD11V2),
+        Capacity: &numInstances,
+        Tier:     to.Ptr(armkusto.AzureSKUTierBasic),
+       },
+      },
+      nil,
+     )
+     if err != nil {
+      log.Fatal("failed to start cluster creation ", err)
+     }
+    
+     log.Printf("waiting for cluster creation to complete - %s\n", name)
+     r, err := result.PollUntilDone(ctx, nil)
+     if err != nil {
+      log.Fatal(err)
+     }
+    
+     log.Printf("created cluster %s\n", *r.Name)
+    }
+    
+    createCluster(subscription, clusterNamePrefix+clusterName, location, rgName)
     ```
 
-    When you run the sample code as is, the following actions are performed:
+1. List the clusters to ensure successful creation:
 
-    1. An Azure Data Explorer cluster is created.
-    1. All the Azure Data Explorer clusters in the specified resource group are listed.
-    1. An Azure Data Explorer database is created as a part of the cluster created earlier.
-    1. All the databases in the specified cluster are listed.
-    1. The database is deleted.
-    1. The cluster is deleted.
-
-    > [!TIP]
-    > To try different combinations of operations, comment and uncomment functions in `main.go`.
-
-    The output should look similar to the following example output:
-
-    ```console
-    waiting for cluster creation to complete - fooADXTestCluster
-    created cluster fooADXTestCluster
-    listing clusters in resource group <your resource group>
-    +-------------------+---------+----------------+-----------+-----------------------------------------------------------+
-    |       NAME        |  STATE  |    LOCATION    | INSTANCES |                            URI                           |
-    +-------------------+---------+----------------+-----------+-----------------------------------------------------------+
-    | fooADXTestCluster | Running | Southeast Asia |         1 | https://fooADXTestCluster.southeastasia.kusto.windows.net |
-    +-------------------+---------+----------------+-----------+-----------------------------------------------------------+
+    ```golang
+    func listClusters(sub, rgName string) {
+     log.Printf("listing clusters in resource group %s\n", rgName)
+     ctx := context.Background()
     
-    waiting for database creation to complete - barADXTestDB
-    created DB fooADXTestCluster/barADXTestDB with ID /subscriptions/<your subscription ID>/resourceGroups/<your resource group>/providers/Microsoft.Kusto/Clusters/fooADXTestCluster/Databases/barADXTestDB and type Microsoft.Kusto/Clusters/Databases
+     result := getClustersClient(sub).NewListByResourceGroupPager(rgName, nil)
     
-    listing databases in cluster fooADXTestCluster
-    +--------------------------------+-----------+----------------+------------------------------------+
-    |              NAME              |   STATE   |    LOCATION    |                TYPE                |
-    +--------------------------------+-----------+----------------+------------------------------------+
-    | fooADXTestCluster/barADXTestDB | Succeeded | Southeast Asia | Microsoft.Kusto/Clusters/Databases |
-    +--------------------------------+-----------+----------------+------------------------------------+
+     data := [][]string{}
     
-    waiting for database deletion to complete - barADXTestDB
-    deleted DB barADXTestDB from cluster fooADXTestCluster
-
-    waiting for cluster deletion to complete - fooADXTestCluster
-    deleted Azure Data Explorer cluster fooADXTestCluster from resource group <your resource group>
+     for result.More() {
+      temp, err := result.NextPage(ctx)
+      if err != nil {
+       log.Fatal(err)
+      }
+      for _, c := range temp.Value {
+       data = append(data, []string{*c.Name, string(*c.Properties.State), *c.Location, strconv.Itoa(int(*c.SKU.Capacity)), *c.Properties.URI})
+      }
+     }
+    
+     table := tablewriter.NewWriter(os.Stdout)
+     table.SetHeader([]string{"Name", "State", "Location", "Instances", "URI"})
+    
+     for _, v := range data {
+      table.Append(v)
+     }
+     table.Render()
+    }
+    
+    listClusters(subscription, rgName)
     ```
 
 ### [Azure CLI](#tab/azcli)
@@ -552,8 +629,8 @@ In this section, you'll create a database within the cluster created in the prev
     
     database_operations = kusto_management_client.databases
     database = ReadWriteDatabase(location=location,
-     					soft_delete_period=soft_delete_period,
-     					hot_cache_period=hot_cache_period)
+          soft_delete_period=soft_delete_period,
+          hot_cache_period=hot_cache_period)
     
     poller = database_operations.begin_create_or_update(resource_group_name = resource_group_name, cluster_name = cluster_name, database_name = database_name, parameters = database)
     poller.wait()
@@ -578,7 +655,68 @@ In this section, you'll create a database within the cluster created in the prev
 
 ### [Go](#tab/go)
 
-The cluster and database are created together with the sample application from the previous section.
+The following code shows how to create a database. The package imports and environment variable initiation is the same as in the previous section. To clone the code repository, see [Manage an Azure Data Explorer cluster using Azure Go SDK](https://github.com/Azure-Samples/azure-data-explorer-go-cluster-management/tree/main).
+
+1. Run the following code to create the database:
+
+    ```golang
+    func createDatabase(sub, rgName, clusterName, location, dbName string) {
+     ctx := context.Background()
+    
+     client := getDBClient(sub)
+     future, err := client.BeginCreateOrUpdate(ctx, rgName, clusterName, dbName, &armkusto.ReadWriteDatabase{Kind: to.Ptr(armkusto.KindReadWrite), Location: &location}, nil)
+    
+     if err != nil {
+      log.Fatal("failed to start database creation ", err)
+     }
+    
+     log.Printf("waiting for database creation to complete - %s\n", dbName)
+     resp, err := future.PollUntilDone(ctx, nil)
+     if err != nil {
+      log.Fatal(err)
+     }
+    
+     kdb := resp.GetDatabase()
+     log.Printf("created DB %s with ID %s and type %s\n", *kdb.Name, *kdb.ID, *kdb.Type)
+    }
+    
+    createDatabase(subscription, rgName, clusterNamePrefix+clusterName, location, dbNamePrefix+databaseName)
+    ```
+
+1. List the databases to ensure successful creation:
+
+    ```golang
+    func listDatabases(sub, rgName, clusterName string) {
+     log.Printf("listing databases in cluster %s\n", clusterName)
+    
+     ctx := context.Background()
+     result := getDBClient(sub).NewListByClusterPager(rgName, clusterName, nil)
+    
+     data := [][]string{}
+    
+     for result.More() {
+      temp, err := result.NextPage(ctx)
+      if err != nil {
+       log.Fatal(err)
+      }
+      for _, db := range temp.Value {
+       if *db.GetDatabase().Kind == armkusto.KindReadWrite {
+        data = append(data, []string{*db.GetDatabase().Name, string(*db.GetDatabase().Kind), *db.GetDatabase().Location, *db.GetDatabase().Type})
+       }
+      }
+     }
+    
+     table := tablewriter.NewWriter(os.Stdout)
+     table.SetHeader([]string{"Name", "State", "Location", "Type"})
+    
+     for _, v := range data {
+      table.Append(v)
+     }
+     table.Render()
+    }
+    
+    listDatabases(subscription, rgName, clusterNamePrefix+clusterName)
+    ```
 
 ### [Azure CLI](#tab/azcli)
 

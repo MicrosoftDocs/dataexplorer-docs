@@ -616,6 +616,36 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/cluster-principal-csharp.md",
+      "redirect_url": "/azure/data-explorer/add-cluster-principal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/cluster-principal-python.md",
+      "redirect_url": "/azure/data-explorer/add-cluster-principal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/cluster-principal-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/add-cluster-principal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/database-principal-csharp.md",
+      "redirect_url": "/azure/data-explorer/add-database-principal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/database-principal-python.md",
+      "redirect_url": "/azure/data-explorer/add-database-principal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/database-principal-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/add-database-principal",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "data-explorer/create-cluster-database-cli.md",
       "redirect_url": "/azure/data-explorer/create-cluster-database",
       "redirect_document_id": false
