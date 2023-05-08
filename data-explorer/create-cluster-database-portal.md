@@ -3,7 +3,7 @@ title: "Quickstart: Create an Azure Data Explorer cluster and database"
 description: In this quickstart, you learn how to create an Azure Data Explorer cluster and database, and ingest data.
 ms.reviewer: mblythe
 ms.topic: quickstart
-ms.date: 01/16/2023
+ms.date: 05/04/2023
 ms.custom: mode-portal
 adobe-target: true
 
@@ -12,18 +12,9 @@ adobe-target: true
 
 # Quickstart: Create an Azure Data Explorer cluster and database
 
-> [!div class="op_single_selector"]
->
-> * [Web UI free cluster](start-for-free-web-ui.md)
-> - [Portal](create-cluster-database-portal.md)
-> - [CLI](create-cluster-database-cli.md)
-> - [PowerShell](create-cluster-database-powershell.md)
-> - [C#](create-cluster-database-csharp.md)
-> - [Python](create-cluster-database-python.md)
-> - [Go](create-cluster-database-go.md)
-> - [ARM template](create-cluster-database-resource-manager.md)
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest data into a database so that you can run queries against it.
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest data into a database so that you can run queries against it. In this quickstart, you create a cluster and a database.
+In this quickstart, you create a cluster and a database using the Azure portal. To create a cluster and database using C#, Python, Go, the Azure CLI, PowerShell, or an Azure Resource Manager (ARM) template, see [Create a cluster and database](create-cluster-database.md).
 
 >[!TIP]
 > You can also [create a free cluster](start-for-free-web-ui.md) with only a Microsoft account or an Azure Active Directory user identity.
