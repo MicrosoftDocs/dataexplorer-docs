@@ -248,7 +248,7 @@ In many analytics scenarios, you may want to create reusable notebooks that cont
 
 ## Next steps
 
-Run the help command to explore the following sample notebooks that contain all the supported features:
+Explore the sample notebooks:
 
 * [Get started with kqlmagic for Azure Data Explorer](https://mybinder.org/v2/gh/Microsoft/jupyter-kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
 * [Get started with kqlmagic for Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
