@@ -57,7 +57,7 @@ This architecture is more aggressive in its consolidation, using a single databa
 
 The characteristics of this architecture are:
 
-* **Provisioning a new tenant**: Requires creating a new database and [deploying the table schema entity](automated-deploy-overview.md#deploy-schema-entities) on it.
+* **Provisioning a new tenant**: Provisioning a new tenant doesn't require any database creation or schema adjustment. The new tenant ID is used in new records.
 
 * **Removing a tenant**: Requires a [soft delete](kusto/concepts/data-soft-delete.md) or [purge](kusto/concepts/data-purge.md) of the tenant's data. The former is more efficient, while the latter supports GDPR obligations. Multiple purges can be batched together, for example, at the end of week to limit the impact on resource consumption.
 
