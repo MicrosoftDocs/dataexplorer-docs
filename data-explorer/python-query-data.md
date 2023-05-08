@@ -41,13 +41,13 @@ import pandas as pd
 To authenticate an application, Azure Data Explorer uses your AAD tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
 
 ```
-https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
+https://login.microsoftonline.com/<YourDomain>/.well-known/openid-configuration/
 ```
 
-For example, if your domain is *contoso.com*, the URL is: [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Click this URL to see the results; the first line is as follows.
+For example, if your domain is *contoso.com*, the URL is: [https://login.microsoftonline.com/contoso.com/.well-known/openid-configuration/](https://login.microsoftonline.com/contoso.com/.well-known/openid-configuration/). Click this URL to see the results; the first line is as follows.
 
 ```
-"authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
+"authorization_endpoint":"https://login.microsoftonline.com/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
 The tenant ID in this case is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. Set the value for AAD_TENANT_ID before running this code.
