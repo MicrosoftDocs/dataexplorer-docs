@@ -106,11 +106,11 @@ To simplify the process of getting credentials, you can add various flags after 
 
 |Option|Description|Example|
 |--|--|--|
-|`-try_vscode_login`|Attempts to get a token from Visual Studio Code Azure Account login before authenticating with the specified connection string.||
-|`-try_msi`|Attempts to get a token from the MSI local endpoint before authenticating with the specified connection string. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|`-try_msi={"client_id":"00000000-0000-0000-0000-000000000000"}`|
-|`-try_token`|Attempts to authenticate with a specified token before using the specified connection string. Expects a dictionary with Azure AD v1 or v2 token properties.|`-try_token={"tokenType":"bearer","accessToken":"<your-token-string>"`|
-|`-try_azcli_login`|Attempts to get a token from Azure CLI before authenticating with the specified connection string.||
-|`-try_azcli_login_subscription`|Attempts to get a token from Azure CLI using the subscription as a parameter to get the right token before authenticating with the specified connection string.|`-try_azcli_login_subscription='49998620-4d47-4ab8-88d1-d92ea58902e9'`|
+|`-try_vscode_login`|Attempts to get a token from Visual Studio Code Azure Account login before authenticating with the specified connection string.|`%kql` `azureDataExplorer://code;cluster='help';database='Samples'` `-try_vscode_login`|
+|`-try_msi`|Attempts to get a token from the MSI local endpoint before authenticating with the specified connection string. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|`%kql` `azureDataExplorer://code;cluster='help';database='Samples'` `-try_msi={"client_id":<id>}`|
+|`-try_token`|Attempts to authenticate with a specified token before using the specified connection string. Expects a dictionary with Azure AD v1 or v2 token properties.|`%kql` `azureDataExplorer://code;cluster='help';database='Samples'` `-try_token={"tokenType":"bearer","accessToken":"<token>"}`|
+|`-try_azcli_login`|Attempts to get a token from Azure CLI before authenticating with the specified connection string.|`%kql` `azureDataExplorer://code;cluster='help';database='Samples'` `-try_azcli_login`|
+|`-try_azcli_login_subscription`|Attempts to get a token from Azure CLI using the subscription as a parameter to get the right token before authenticating with the specified connection string.|`%kql` `azureDataExplorer://code;cluster='help';database='Samples'` `-try_azcli_login_subscription=<subscription_id>`|
 
 ## Query and visualize
 
