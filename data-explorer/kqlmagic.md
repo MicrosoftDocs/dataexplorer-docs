@@ -111,7 +111,7 @@ To simplify the process of getting credentials, you can add various flags after 
 |try_msi|Attempts to get a token from the MSI local endpoint before authenticating with the specified connection string. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|`-try_msi={"client_id":<id>}`|
 |try_token|Attempts to authenticate with a specified token before using the specified connection string. Expects a dictionary with Azure AD v1 or v2 token properties.|`-try_token={"tokenType":"bearer","accessToken":"<token>"}`
 
-### Examples of advanced authentication options
+### Example of advanced authentication options
 
 Any of the options described in the previous table can be added after a connection string. The following example uses the Azure CLI login option:
 
