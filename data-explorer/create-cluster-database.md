@@ -114,30 +114,25 @@ This section guides you through the process of creating an Azure Data Explorer c
 1. Create your cluster by using the following code:
 
     ```csharp
-    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "PlaceholderClientSecret";//Client Secret
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Application ID
+    var clientSecret = "PlaceholderClientSecret"; //Client Secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
-    var credential = new ClientCredential(clientId, clientSecret);
-    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
-
-    var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-
-    var kustoManagementClient = new KustoManagementClient(credentials)
-    {
-        SubscriptionId = subscriptionId
-    };
-
+    var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+    var resourceManagementClient = new ArmClient(credentials, subscriptionId);
     var resourceGroupName = "testrg";
+    var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+    var resourceGroup = (await subscription.GetResourceGroupAsync(resourceGroupName)).Value;
+    var clusters = resourceGroup.GetKustoClusters();    
     var clusterName = "mykustocluster";
-    var location = "Central US";
-    var skuName = "Standard_E8ads_v5";
-    var tier = "Standard";
+    var skuName = KustoSkuName.StandardE8adsV5;
+    var skuTier = KustoSkuTier.Standard;
     var capacity = 5;
-    var sku = new AzureSku(skuName, tier, capacity);
-    var cluster = new Cluster(location, sku);
-    await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
+    var clusterData = new KustoClusterData(
+        location: AzureLocation.CentralUS,
+        sku: new KustoSku(skuName, skuTier) { Capacity = capacity }
+    );
+    await clusters.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, clusterData);
     ```
 
    |**Setting** | **Suggested value** | **Field description**|
@@ -154,7 +149,7 @@ This section guides you through the process of creating an Azure Data Explorer c
 1. Run the following command to check whether your cluster was successfully created:
 
     ```csharp
-    kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
+    clusterData = (await clusters.GetAsync(clusterName)).Value.Data;
     ```
 
 1. Confirm the successful creation of the cluster by verifying the result contains `provisioningState` as `Succeeded`.
@@ -570,12 +565,16 @@ In this section, you'll create a database within the cluster created in the prev
 1. Create your database by using the following code:
 
     ```csharp
-    var hotCachePeriod = new TimeSpan(3650, 0, 0, 0);
-    var softDeletePeriod = new TimeSpan(3650, 0, 0, 0);
+    var cluster = (await clusters.GetAsync(clusterName)).Value;
+    var databases = cluster.GetKustoDatabases();
     var databaseName = "mykustodatabase";
-    var database = new ReadWriteDatabase(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
-
-    await kustoManagementClient.Databases.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, database);
+    var softDeletePeriod = TimeSpan.FromDays(3650);
+    var hotCachePeriod = TimeSpan.FromDays(3650);
+    var databaseData = new KustoReadWriteDatabase
+    {
+        Location = clusterData.Location, SoftDeletePeriod = softDeletePeriod, HotCachePeriod = hotCachePeriod
+    };
+    await databases.CreateOrUpdateAsync(WaitUntil.Completed, databaseName, databaseData);
     ```
 
     > [!NOTE]
@@ -592,7 +591,7 @@ In this section, you'll create a database within the cluster created in the prev
 2. Run the following command to see the database that you created:
 
     ```csharp
-    kustoManagementClient.Databases.Get(resourceGroupName, clusterName, databaseName) as ReadWriteDatabase;
+    databaseData = (await databases.GetAsync(databaseName)).Value.Data as KustoReadWriteDatabase;
     ```
 
 ### [Python](#tab/python)
