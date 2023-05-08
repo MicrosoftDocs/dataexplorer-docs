@@ -107,8 +107,10 @@ items:
     items:
     - name: Azure Storage external tables
       items:
-      - name: Create or alter external table
+      - name: Create or alter Azure Blob Storage/ADLS external table
         href: external-tables-azurestorage-azuredatalake.md
+      - name: Create or alter Delta Lake external table
+        href: external-tables-azurestorage-deltalake.md
       - name: Manage external table mappings
         items:
         - name: .alter external table mapping
