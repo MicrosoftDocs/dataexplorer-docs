@@ -616,6 +616,16 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/database-table-policies-csharp.md",
+      "redirect_url": "/azure/data-explorer/database-table-policies",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/database-table-policies-python.md",
+      "redirect_url": "/azure/data-explorer/database-table-policies",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "data-explorer/cluster-principal-csharp.md",
       "redirect_url": "/azure/data-explorer/add-cluster-principal",
       "redirect_document_id": false

@@ -440,14 +440,9 @@ items:
           href: database-script.md
         - name: Add database principal
           href: add-database-principal.md
-        - name: Policies
-          items:
-          - name: C#
-            displayName: database policy, database policies
-            href: database-table-policies-csharp.md
-          - name: Python
-            displayName: database policy, database policies
-            href: database-table-policies-python.md
+        - name: Create policies programmatically
+          displayName: database policy, database policies, table policy, table policies, python, c#
+          href: database-table-policies.md
       - name: Data
         items:
         - name: Purge data - Azure portal
