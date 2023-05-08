@@ -442,7 +442,7 @@ items:
           href: add-database-principal.md
         - name: Create policies programmatically
           displayName: database policy, database policies, table policy, table policies, python, c#
-          href: database-table-policies-python.md
+          href: database-table-policies.md
       - name: Data
         items:
         - name: Purge data - Azure portal
