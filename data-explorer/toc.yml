@@ -81,6 +81,8 @@ items:
       href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
     - name: Security controls by Azure Policy
       href: security-controls-policy.md
+  - name: How to architect a multi-tenant solution
+    href: multi-tenant.md
 - name: Explore data
   items:
   - name: Get data
