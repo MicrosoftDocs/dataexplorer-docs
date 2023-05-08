@@ -13,7 +13,7 @@ The function `series_cosine_similarity_fl()` is a [user-defined function (UDF)](
 
 ## Syntax
 
-`series_cosine_similarity_fl(`*vec1*`,` *vec2*`,` *vec1_size*`,` *vec2_size*`)`
+`series_cosine_similarity_fl(`*vec1*`,` *vec2*`,` [ *vec1_size* [`,` *vec2_size* ]]`)`
   
 ## Parameters
 
@@ -21,8 +21,8 @@ The function `series_cosine_similarity_fl()` is a [user-defined function (UDF)](
 |--|--|--|--|
 |*vec1*|dynamic|&check;|An array of numeric values.|
 |*vec2*|dynamic|&check;|An array of numeric values that is the same length as *vec1*.|
-|*vec1*|real| |The size of vec1. This is equivalent to the square root of the dot product of the vector with itself.|
-|*vec2*|real| |The size of vec2.|
+|*vec1*|real| |The size of *vec1*. This is equivalent to the square root of the dot product of the vector with itself.|
+|*vec2*|real| |The size of *vec2*.|
 
 ## Function definition
 
@@ -71,6 +71,9 @@ series_cosine_similarity_fl(vec1:dynamic, vec2:dynamic, vec1_size:real=double(nu
 ### [Query-defined](#tab/query-defined)
 
 To use a query-defined function, invoke it after the embedded function definition.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42R0WoDIRBF3/0KH8clkGihD1n8FrHqhqHGteoGtqX/nkmyCVtKQ30b7vXcO0wMjddQMFTjxoopmIpHjLZgm80QNZyCk3s/J3tEt+E0qR+TJP9n2Jdgo/bj9BYDpClGcbP+IQr2xTi9SOE+c31v4Mdmchn95No19wYR/cN8kpHcOAyA9UKCRwMKrB+lwTOSFGLVeY1Vv7HqH1i1FFxvu2B93gK17Qgt2HfPLjFV6mzdu7Gl2Bl2Gy7FIqi1cA1U92Si9ywXTI3bdIhBW7oTPDkZVNq20rctqC4jCNG9vO7OCmRtfegBAAA=" target="_blank">Run the query</a>
 
 ```kusto
 let series_cosine_similarity_fl=(vec1:dynamic, vec2:dynamic, vec1_size:real=double(null), vec2_size:real=double(null))
