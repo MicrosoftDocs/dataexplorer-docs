@@ -44,9 +44,6 @@ In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to conne
 
 There are many methods to authenticate to an Azure Data Explorer cluster and database using kqlmagic. Select the tab for your preferred method.
 
-> [!TIP]
-> To simplify the process of getting credentials, you can add various flags after the connection string. For more information, see [Advanced authentication options](#advanced-authentication-options).
-
 ### [Code](#tab/code)
 
 The Azure AD code method prompts MSAL interactive login, meaning it opens a pop-up window in which to provide a designated code for authentication.
@@ -89,10 +86,12 @@ Anonymous authentication is equivalent to no authentication, which is only suppo
 
 ---
 
-> [!NOTE]
-> To parameterize the connection string, use unquoted values since they are interpreted as a Python expression.
+> [!TIP]
+>
+> * To parameterize the connection string, use unquoted values since they are interpreted as a Python expression.
+> * To simplify the process of getting credentials, see [Advanced authentication options](#advanced-authentication-options).
 
-### Example
+### Example of authentication
 
 The following command uses the Azure AD code method to authenticate to the `Samples` database hosted on the `help` cluster. For non-Microsoft Azure AD users, replace the tenant name `Microsoft.com` with your Azure AD Tenant.
 
@@ -104,13 +103,45 @@ The following command uses the Azure AD code method to authenticate to the `Samp
 
 To simplify the process of getting credentials, you can add various flags after the connection string. Refer to the following table for a description of these flags.
 
-|Option|Description|Example|
+|Option|Description|
 |--|--|--|
-|`-try_vscode_login`|Attempts to get a token from Visual Studio Code Azure Account login before authenticating with the specified connection string.|`%kql` `azureDataExplorer://code;cluster='help';database='Samples'` `-try_vscode_login`|
-|`-try_msi`|Attempts to get a token from the MSI local endpoint before authenticating with the specified connection string. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|`%kql` `azureDataExplorer://code;cluster='help';database='Samples'` `-try_msi={"client_id":<id>}`|
-|`-try_token`|Attempts to authenticate with a specified token before using the specified connection string. Expects a dictionary with Azure AD v1 or v2 token properties.|`%kql` `azureDataExplorer://code;cluster='help';database='Samples'` `-try_token={"tokenType":"bearer","accessToken":"<token>"}`|
-|`-try_azcli_login`|Attempts to get a token from Azure CLI before authenticating with the specified connection string.|`%kql` `azureDataExplorer://code;cluster='help';database='Samples'` `-try_azcli_login`|
-|`-try_azcli_login_subscription`|Attempts to get a token from Azure CLI using the subscription as a parameter to get the right token before authenticating with the specified connection string.|`%kql` `azureDataExplorer://code;cluster='help';database='Samples'` `-try_azcli_login_subscription=<subscription_id>`|
+|`-try_azcli_login`|Attempts to get a token from Azure CLI before authenticating with the specified connection string.|
+|`-try_azcli_login_subscription`|Attempts to get a token from Azure CLI using the subscription as a parameter to get the right token before authenticating with the specified connection string.|
+|`-try_vscode_login`|Attempts to get a token from Visual Studio Code Azure Account login before authenticating with the specified connection string.|
+|`-try_msi`|Attempts to get a token from the MSI local endpoint before authenticating with the specified connection string. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|
+|`-try_token`|Attempts to authenticate with a specified token before using the specified connection string. Expects a dictionary with Azure AD v1 or v2 token properties.|
+
+### Examples of advanced authentication options
+
+The following example uses the Azure CLI login option:
+
+```python
+%kql azureDataExplorer://code;cluster='help';database='Samples' -try_azcli_login
+```
+
+The following example uses the Azure CLI login option with a specified subscription:
+
+```python
+%kql azureDataExplorer://code;cluster='help';database='Samples' -try_azcli_login_subscription=<subscription_id>
+```
+
+The following example uses the VS code login option:
+
+```python
+%kql azureDataExplorer://code;cluster='help';database='Samples' -try_vscode_login
+```
+
+The following example uses the MSI login option:
+
+```python
+%kql azureDataExplorer://code;cluster='help';database='Samples' -try_msi={"client_id":<id>}
+```
+
+The following example uses the bring your own token option:
+
+```python
+%kql azureDataExplorer://code;cluster='help';database='Samples' -try_token={"tokenType":"bearer","accessToken":"<token>"}
+```
 
 ## Display connection information
 
