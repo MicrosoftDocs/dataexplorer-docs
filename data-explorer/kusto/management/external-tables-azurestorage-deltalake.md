@@ -8,7 +8,7 @@ ms.date: 05/08/2023
 
 # Create and alter Delta external tables on Azure Storage
 
-The commands in this article can be used to create or alter an Delta [external table](../query/schema-entities/externaltables.md) in the database from which the command is executed. An Delta external table references Delta Lake table data located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
+The commands in this article can be used to create or alter an Delta [external table](../query/schema-entities/externaltables.md) in the database from which the command is executed. A Delta external table references a Delta Lake table data located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
 
 > [!NOTE]
 > If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
@@ -28,14 +28,17 @@ To `.create-or-alter` an external table using managed identity authentication re
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*TableName*|string|&check;|An external table name that adheres to the [entity names](../query/schema-entities/entity-names.md) rules. An external table can't have the same name as a regular table in the same database.|
-|*Schema*|string|&check;|The optional external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.  If not specified, the actual external table schema will be automatically inferred from the Delta log based on the latest Delta table version. If a custom schema is provided, it will be applied on Delta table data - non-existing columns or columns with incompatible types will be filled with nulls. For a custom schema, one can use [infer\_storage\_schema](../query/inferstorageschemaplugin.md) to infer the schema based on external file contents.|
-|*StorageConnectionString*|string|&check;|Delta table root folder path, including credentials. Can point to Azure Blob Storage blob containers, Azure Data Lake Gen 2 file systems or Azure Data Lake Gen 1 containers. The external table storage type is determined by the provided connection strings. See [storage connection strings](../api/connection-strings/storage-connection-strings.md).|
+|*Schema*|string||The optional external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.  If not specified, it will be automatically inferred from the Delta log based on the latest Delta table version. Otherwise, the provided schema is applied on Delta table data.|
+|*StorageConnectionString*|string|&check;|Delta table root folder path, including credentials. Can point to Azure Blob Storage blob container, Azure Data Lake Gen 2 file system or Azure Data Lake Gen 1 container. The external table storage type is determined by the provided connection string. See [storage connection strings](../api/connection-strings/storage-connection-strings.md).|
 |*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
 
 > [!NOTE]
-> * Data format is always assumed to be Parquet.
-> * Partitions information is automatically inferred from the Delta log. Partition columns are added as virtual columns to the table schema. Read more on [Virtual columns](external-tables-azurestorage-azuredatalake.md#virtual-columns).
+> * If a custom schema is provided, non-existing columns or columns having incompatible types will be filled with null values.
+> * Information about partitions is automatically inferred from the Delta log. Partition columns are added as virtual columns to the table schema. Read more on [Virtual columns](external-tables-azurestorage-azuredatalake.md#virtual-columns).
 > * Path format is automatically inferred from the partitioning information. Read more on [Path format](external-tables-azurestorage-azuredatalake.md#path-format)
+
+> [!TIP]
+>  For a custom schema, one can use [infer\_storage\_schema](../query/inferstorageschemaplugin.md) to infer the schema based on external file contents.
 
 
 ## Authentication and authorization
@@ -90,7 +93,7 @@ kind=delta
 ## Limitations
 
 * Time travel is not supported yet. Only the latest Delta table version is used.
-* Export/Continuous Export is not supported yet.
+* Export/Continuous Export into Delta external tables is not supported yet.
 
 
 ## Next steps
