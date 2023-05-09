@@ -709,6 +709,41 @@
       "source_path": "data-explorer/kusto/management/access-control/referencing-security-principals.md",
       "redirect_url": "/azure/data-explorer/kusto/management/referencing-security-principals",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/end-to-end-csharp.md",
+      "redirect_url": "/azure/data-explorer/end-to-end-blob-ingestion",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/end-to-end-python.md",
+      "redirect_url": "/azure/data-explorer/end-to-end-blob-ingestion",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-cli.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-portal.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-powershell.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-csharp.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
     }
   ]
 }
