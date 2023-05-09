@@ -3,7 +3,7 @@ title: ".show cluster policy query_weak_consistency management - Azure Data Expl
 description: This article describes the `.show query weak consistency policy` command in Azure Data Explorer.
 ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/09/2023
 ---
 # .show cluster policy query_weak_consistency
 
@@ -15,11 +15,9 @@ You must have at least [AllDatabasesMonitor](access-control/role-based-access-co
 
 ## Syntax
 
-```kusto
-.show cluster policy query_weak_consistency
-```
+`.show` `cluster` `policy` `query_weak_consistency`
 
-## Output
+## Returns
 
 |Policy name | Entity name | Policy | Child entities | Entity type
 |---|---|---|---|---
@@ -27,8 +25,7 @@ You must have at least [AllDatabasesMonitor](access-control/role-based-access-co
 
 ## Example
 
-<!-- csl -->
-```
+```kql
 .show cluster policy query_weak_consistency 
 ```
 
