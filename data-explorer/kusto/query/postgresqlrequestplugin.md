@@ -39,7 +39,7 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Authentication and authorization
 
-To authorize to a PostgreSql Server network endpoint, you need to specify the authorization information in the connection string. The supported authorization method is via username and password.
+To authorize a PostgreSql Server network endpoint, you must specify the authorization information in the connection string. The supported authorization method is via username and password.
 
 ## Set callout policy
 
