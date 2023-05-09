@@ -138,8 +138,7 @@ evaluate postgresql_request(
 
 ### SQL query to an Azure PostgreSql database without a query-defined output schema
 
-The following example sends a SQL query to an Azure PostgreSQL database without an output schema. This is not recommended unless the schema is unknown,
-as it may harm the performance of the query.
+The following example sends a SQL query to an Azure PostgreSQL database without an output schema. This is not recommended unless the schema is unknown, as it may impact the performance of the query
 
 ```kusto
 evaluate postgresql_request(
