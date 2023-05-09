@@ -3,7 +3,7 @@ title: Install the Azure Data Explorer Kusto emulator
 description: In this article, you'll learn how to install the Azure Data Explorer Kusto emulator and run your first query.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 08/22/2022
+ms.date: 05/08/2023
 ---
 
 # Install the Azure Data Explorer Kusto emulator
@@ -12,6 +12,8 @@ You can install the Azure Data Explorer Kusto emulator in the following ways:
 
 - On your own device: Consider using this option if you need to provision a local development environment
 - On a CI/CD agent virtual machine (VM): Use this option if you require a CI/CD pipeline for running automated tests
+
+Azure Data Explorer Kusto emulator is available in both *Linux* and *Windows* *Docker container image*.
 
 In this article, you'll learn how to:
 
@@ -24,17 +26,20 @@ In this article, you'll learn how to:
 ## Prerequisites
 
 - The host operating system must be either:
-  - Windows Server 2022
-  - Windows Server 2019 Version 10.0.17763.2928 or newer
-  - Windows 11
+  - For Linux container only
+      - Any Linux distro supporting Docker client
+  - For both Windows and Linux container
+    - Windows Server 2022
+    - Windows Server 2019 Version 10.0.17763.2928 or newer
+    - Windows 11
 - 2 gigabytes (GB) of RAM minimum; we recommend using 4 GB or more
-- [Docker Client](https://docs.docker.com/desktop/windows/install/)
+- Docker Client for [Linux](https://docs.docker.com/desktop/install/linux-install/) or [Windows](https://docs.docker.com/desktop/windows/install/)
 
 ## Install the Kusto emulator
 
 The following steps are for using PowerShell to start the emulator using the [Kusto emulator container image](https://aka.ms/adx.emulator.image). For other options, see [Run emulator options](#run-emulator-options).
 
-1. Switch Docker to run with Windows containers. You may need to enable the feature in the Docker settings.
+1. (For Windows container only) Switch Docker to run with Windows containers. You may need to enable the feature in the Docker settings.
 
     :::image type="content" source="media/kusto-emulator/kusto-emulator-docker-windows-container.png" alt-text="Screenshot of the Docker settings, showing the Switch to Windows containers option.":::
 
@@ -46,15 +51,21 @@ The following steps are for using PowerShell to start the emulator using the [Ku
     > [!NOTE]
     > 
     > - The first time this command is run, Docker pulls the container image which is several GBs in size and may take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
-    > - The container must be run in process-isolation mode. This is the default on some versions of Docker. For other versions, you can start the container in Hyper-V isolation mode by adding `--isolation=hyperv` to the run command.
+    > - (For Windows container only) The container must be run in process-isolation mode. This is the default on some versions of Docker. For other versions, you can start the container in Hyper-V isolation mode by adding `--isolation=hyperv` to the run command.
 
-    - To start the emulator on a Windows Server operating system, make sure you use the `latest` or `stable` tag.
+    - To start the Linux container:
+
+        ```powershell
+        docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
+        ```
+
+    - To start the Windows container on Windows Server operating system, make sure you use the `latest` or `stable` tag:
 
         ```powershell
         docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
         ```
 
-    - To start the image container on a Windows 11, make sure you use the `windows11` tag:
+    - To start the Windows container on Windows 11, make sure you use the `windows11` tag:
 
         ```powershell
         docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:windows11
