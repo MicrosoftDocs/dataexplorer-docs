@@ -339,6 +339,20 @@ items:
           href: table-retention-policy-wizard.md
     - name: Secure
       items:
+        - name: Access control
+          href: kusto/access-control/index.md
+          items:
+          - name: Role-based access control
+            href: kusto/access-control/role-based-access-control.md
+            displayName: RBAC, security roles, principals
+          - name: Azure Active Directory
+            displayName: AAD, Azure AD
+            href: kusto/access-control/aad.md
+          - name: How-To Azure Active Directory authentication
+            displayName: AAD, Azure AD
+            href: kusto/access-control/how-to-authenticate-with-aad.md
+          - name: Allow cross-tenant queries and commands
+            href: kusto/access-control/cross-tenant-query-and-commands.md
         - name: Isolated compute
           href: isolated-compute.md
         - name: Network isolation (VNet)
