@@ -36,14 +36,16 @@ For more information, see [role-based access control](access-control/role-based-
 
 ## Table scope
 
-`.show` `table` *TableName* `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
-
-`.show` `tables` `(`*TableName* [`,` ...]`)` `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
+### Syntax
 
 Shows information about extents (data shards) that are present in the specified tables. The database is taken from the command's context.
 If `hot` is specified, shows only extents that are expected to be in the hot cache.
 
-## Parameters
+`.show` `table` *TableName* `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
+
+`.show` `tables` `(`*TableName* [`,` ...]`)` `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
+
+### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
@@ -51,7 +53,7 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
 |*ExtentId*|string||The ID of the extent to show.|
 |*Tag*|string||The name of a tag to filter by as specified.|
 
-## Recommendations
+### Recommendations
 
 * Using built-in filtering capabilities in the command is preferred over adding
   a query-based filter (such as adding `| where DatabaseName == '...'` and `TableName == '...'`).
@@ -67,12 +69,14 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
 
 ## Database scope
 
-`.show` `database` *DatabaseName* `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
-
 Shows information about extents (data shards) that are present in the specified database.
 If `hot` is specified - shows only extents that expected to be in the hot cache.
 
-## Parameters
+### Syntax
+
+`.show` `database` *DatabaseName* `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
+
+### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
@@ -87,7 +91,7 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 Shows information about extents (data shards) that are present in the cluster.
 If `hot` is specified - shows only extents that are expected to be in the hot cache.
 
-## Output
+## Returns
 
 |Output parameter |Type |Description |
 |---|---|---|
