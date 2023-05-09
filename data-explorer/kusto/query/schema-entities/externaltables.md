@@ -18,8 +18,8 @@ Supported external data stores are:
 
 See the following ways of creating external tables:
 
-* [Create and alter Azure Storage external tables](../../management/external-tables-azurestorage-azuredatalake.md)
-* [Create and alter delta external tables on Azure Storage](../../management/external-tables-azurestorage-deltalake.md)
+* [Create or alter Azure Blob Storage/ADLS external tables](../../management/external-tables-azurestorage-azuredatalake.md)
+* [Create or alter delta external tables](../../management/external-tables-azurestorage-deltalake.md)
 * [Create and alter SQL Server external tables](../../management/external-sql-tables.md)
 * [Create external table using Azure Data Explorer web UI Wizard](../../../external-table.md)
 
@@ -40,5 +40,5 @@ For more information about how to query external tables, and ingested and uninge
   * Can’t overlap with Kusto table names.
   * Follow the rules for [entity names](./entity-names.md).
 * Maximum limit of external tables per database is 1,000.
-* Kusto supports [export](../../management/data-export/export-data-to-an-external-table.md) and [continuous export](../../management/data-export/continuous-data-export.md) to an external table.
+* Azure Data Explorer supports [export](../../management/data-export/export-data-to-an-external-table.md) and [continuous export](../../management/data-export/continuous-data-export.md) to an external table.
 * [Data purge](../../concepts/data-purge.md) isn't applied on external tables. Records are never deleted from external tables.
