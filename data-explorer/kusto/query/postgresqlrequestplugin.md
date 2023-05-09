@@ -121,7 +121,7 @@ evaluate postgresql_request(
 
 The following example sends a SQL query to an Azure PostgreSql database
 retrieving all records from `public."Table"`, while appending another `datetime` column,
-and then processes the results on the Kusto side.
+and then processes the results on the Azure Data Explorer side.
 It specifies a SQL parameter (`@param0`) to be used in the SQL query.
 
 ```kusto
