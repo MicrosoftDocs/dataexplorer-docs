@@ -383,23 +383,8 @@ items:
             href: external-tables-managed-identities.md
           - name: Ingest data using managed identity authentication
             href: ingest-data-managed-identity.md
-        - name: Configure customer-managed-keys
-          items:
-            - name: Portal
-              displayName: Configure customer-managed-keys
-              href: customer-managed-keys-portal.md
-            - name: C#
-              displayName: Configure customer-managed-keys
-              href: customer-managed-keys-csharp.md
-            - name: Azure Resource Manager template
-              displayName: Configure customer-managed-keys
-              href: customer-managed-keys-resource-manager.md
-            - name: Azure CLI
-              displayName: Configure customer-managed-keys
-              href: customer-managed-keys-cli.md
-            - name: PowerShell
-              displayName: Configure customer-managed-keys
-              href: customer-managed-keys-powershell.md
+        - name: Configure customer-managed keys
+          href: customer-managed-keys.md
         - name: Create Azure AD app
           href: provision-azure-ad-app.md
         - name: Conditional Access
