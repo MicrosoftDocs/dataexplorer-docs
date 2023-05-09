@@ -43,7 +43,7 @@ If your cluster already has the desired managed identity assigned to it, copy it
 
 ## Set the managed identity policy in Azure Data Explorer
 
-In order to use the managed identity to ingest data into your cluster, allow the `NativeIngestion` usage option for the selected managed identity. Native ingestion refers to the ability to use an SDK for ingestion from an external source. For more information on the available SDKs, see [Client libraries](../client-libraries.md).
+In order to use the managed identity to ingest data into your cluster, allow the `NativeIngestion` usage option for the selected managed identity. Native ingestion refers to the ability to use an SDK for ingestion from an external source. For more information on the available SDKs, see [Client libraries](kusto/api/client-libraries.md).
 
 The usage Managed Identity policy can be defined at the cluster or database level of the target cluster.
 
