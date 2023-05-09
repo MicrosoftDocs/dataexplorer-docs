@@ -62,7 +62,7 @@ The following example shows how to define the callout policy for PostgreSql data
 ]
 ```
 
-The following example shows an `.alter callout policy` command for `postgresql` *CalloutType*:
+The following example shows a `.alter callout policy` command for `postgresql` *CalloutType*:
 
 ```kusto
 .alter cluster policy callout @'[{"CalloutType": "postgresql", "CalloutUriRegex": "\\.postgresql\\.database\\.azure\\.com", "CanCall": true}]'
