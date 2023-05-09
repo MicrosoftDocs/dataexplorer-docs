@@ -81,6 +81,8 @@ items:
       href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
     - name: Security controls by Azure Policy
       href: security-controls-policy.md
+  - name: Multi-tenant solutions
+    href: multi-tenant.md
 - name: Explore data
   items:
   - name: Get data
@@ -428,16 +430,7 @@ items:
         - name: Check cluster health
           href: check-cluster-health.md
         - name: Add cluster principal
-          items:
-            - name: C#
-              displayName: cluster principal
-              href: cluster-principal-csharp.md
-            - name: Python
-              displayName: cluster principal
-              href: cluster-principal-python.md
-            - name: Azure Resource Manager template
-              displayName: cluster principal
-              href: cluster-principal-resource-manager.md
+          href: add-cluster-principal.md
         - name: Manage cluster language extensions
           displayName: Python, R
           href: language-extensions.md
@@ -448,24 +441,10 @@ items:
         - name: Configure a database using a Kusto Query Language script
           href: database-script.md
         - name: Add database principal
-          items:
-            - name: C#
-              displayName: database principal
-              href: database-principal-csharp.md
-            - name: Python
-              displayName: database principal
-              href: database-principal-python.md
-            - name: Azure Resource Manager template
-              displayName: database principal
-              href: database-principal-resource-manager.md
-        - name: Policies
-          items:
-          - name: C#
-            displayName: database policy, database policies
-            href: database-table-policies-csharp.md
-          - name: Python
-            displayName: database policy, database policies
-            href: database-table-policies-python.md
+          href: add-database-principal.md
+        - name: Create policies programmatically
+          displayName: database policy, database policies, table policy, table policies, python, c#
+          href: database-table-policies.md
       - name: Data
         items:
         - name: Purge data - Azure portal
