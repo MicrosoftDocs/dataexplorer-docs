@@ -1,35 +1,46 @@
 ---
-title: Kusto bindings for Azure Functions overview (preview)
-description: Learn how to use Kusto bindings for Azure Functions.
+title: Azure Data Explorer bindings for Azure Functions overview (preview)
+description: Learn how to use Azure Data Explorer bindings for Azure Functions.
 ms.reviewer: ramacg
 ms.topic: conceptual
 ms.date: 09/13/2022
 ---
 
-# Integrating Azure Functions with Kusto using Input and Output Bindings
+# Integrating Azure Functions with Azure Data Explorer using input and output Bindings (preview)
 
-Azure Functions allow you to run serverless code in the cloud on a schedule or in response to an event. With Kusto input and output bindings for Azure Functions, you can easily integrate Kusto into your workflows, making it easy to ingest data and run queries against your Kusto cluster.
-
-## Kusto Input Binding
-
-Takes a KQL query or KQL function to run (with optional parameters) and returns the output to the function. Here are couple of scenarios as to how to use the bindings
+Azure Functions allow you to run serverless code in the cloud on a schedule or in response to an event. With Azure Data Explorer input and output bindings for Azure Functions, you can integrate Azure Data Explorer into your workflows to ingest data and run queries against your cluster.
 
 ## Prerequisites
 
-To follow these scenarios, you'll need the following:
+- An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+- An Azure Data Explorer cluster and database with sample data. [Create a cluster and database](create-cluster-database-portal.md).
+- A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
-- An Azure subscription
-- A Kusto database with sample data
-- An Azure Blob Storage account and container
-- Visual Studio or another code editor
+Try out the integration with our [sample project](https://github.com/Azure/Webjobs.Extensions.Kusto/tree/main/samples/samples-csharp/)
 
-A simple Azure functions project can be created on Visual Studio with the Microsoft.Azure.WebJobs.Extensions.Kusto NuGet package installed. The snippets that follow are samples to be used in the Azure Functions project created. A sample project can be found [here](https://github.com/Azure/Webjobs.Extensions.Kusto/tree/main/samples/samples-csharp/)
+## How to use Azure Data Explorer bindings for Azure Functions
 
-### Scenario 1: HTTP endpoint to query data from Kusto
+For information on how to use Azure Data Explorer bindings for Azure Functions, see the following topics:
 
-The scenario of using an HTTP trigger to query Kusto using an input binding is applicable in situations where you need to expose Kusto data through a REST API. By using an Azure Function with an HTTP trigger and a Kusto input binding, a simple REST API that allows for the query Kusto data using HTTP requests.
+- [Azure Data Explorer bindings for Azure Functions overview](/azure/azure-functions/functions-bindings-azure-data-explorer)
+- [Azure Data Explorer input bindings for Azure Functions](/azure/azure-functions/functions-bindings-azure-data-explorer-input)
+- [Azure Data Explorer output bindings for Azure Functions](/azure/azure-functions/functions-bindings-azure-data-explorer-output)
 
-This scenario is particularly useful in situations where you need to provide programmatic access to Kusto data for external applications or services. By exposing the Kusto data through a REST API, you can make it easier for other applications to consume the data without requiring them to connect directly to the Kusto database.
+## Scenarios for using Azure Data Explorer bindings for Azure Functions
+
+The following sections describe some common scenarios for using Azure Data Explorer bindings for Azure Functions.
+
+### Input bindings
+
+Input bindings run a Kusto Query Language (KQL) query or KQL function, optionally with parameters, and returns the output to the function.
+
+The following sections describe some how to use input bindings in some common scenarios.
+
+#### Scenario 1: An HTTP endpoint to query data from a cluster
+
+Using input bindings is applicable in situations where you need to expose Azure Data Explorer data through a REST API. In this scenario, you use an Azure Functions HTTP trigger to query data in your cluster. The scenario is particularly useful in situations where you need to provide programmatic access to Azure Data Explorer data for external applications or services. By exposing the your data through a REST API, applications can readily consume the data without requiring them to connect directly to your cluster.
+
+The code defines a function with an HTTP trigger and an Azure Data Explorer input binding. The input binding specifies the query to run against the **Products** table in the **productsdb** database. The function uses the **productId** column as the predicate passed through as a parameter.
 
 ```csharp
 {
@@ -55,15 +66,17 @@ This scenario is particularly useful in situations where you need to provide pro
 }
 ```
 
-This code defines an Azure Function with an HTTP trigger and a Kusto input binding. The Kusto input binding specifies the query to run against the Products table in the productsdb database, using the productId as the predicate passed through the context path in the HTTP API. This can then be invoked as follows
+The function can then be invoked, as follows:
 
 ```powershell
-curl https://myfunctionapp.azurewebsites.net/api/getproducts/1    
+curl https://myfunctionapp.azurewebsites.net/api/getproducts/1
 ```
 
-### Scenario 2: A scheduled trigger to export data from Kusto
+### Scenario 2: A scheduled trigger to export data from a cluster
 
-This scenario is applicable in situations where data needs to be exported on a time-based schedule.
+The following scenario is applicable in situations where data needs to be exported on a time-based schedule.
+
+The code defines a function with a timer trigger that exports an aggregation of sales data from the **productsdb** database to a CSV file in Azure Blob Storage.
 
 ```csharp
 public static async Task Run([TimerTrigger("0 0 1 * * *")] TimerInfo myTimer,
@@ -84,21 +97,21 @@ ILogger log)
         await outputBlob.UploadFromStreamAsync(stream);
     }
 }
-
 ```
 
-This code defines and Azure Function with a timer trigger that exports and aggregation of sales data from the productsdb database to a CSV file in Azure Blob Storage.
+## Output bindings
 
-## Kusto Output Binding
+Output bindings takes one or more rows and inserts them into an Azure Data Explorer table.
 
-Takes row(s) and inserts them into the Kusto table.
+The following sections describe some how to use output bindings in some common scenarios.
 
-## Scenario 1: HTTP endpoint to ingest data into Kusto
+## Scenario 1: HTTP endpoint to ingest data into a cluster
 
-This scenario is applicable in situations where incoming HTTP requests need to processed and ingesting them to Kusto. By using an output binding, incoming data from the request can be written into Kusto tables.
+The following scenario is applicable in situations where incoming HTTP requests need to be processed and ingested into your cluster. By using an output binding, incoming data from the request can be written into Azure Data Explorer tables.
+
+The code defines a function with an HTTP trigger and an Azure Data Explorer output binding. This function takes a JSON payload in the HTTP request body and writes it to the **products** table in the **productsdb** database.
 
 ```csharp
-
 public static IActionResult Run(
     [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "addproductuni")]
     HttpRequest req, ILogger log,
@@ -114,8 +127,9 @@ public static IActionResult Run(
     log.LogInformation("Ingested product {}", productString);
     return new CreatedResult($"/api/addproductuni", product);
 }
+```
 
-This code defines an Azure Function with an HTTP trigger and a Kusto output binding. This function takes a JSON payload in the HTTP request body and writes it to the products table in the productsdb database. This can then be invoked as follows
+The function can then be invoked, as follows:
 
 ```powershell
 curl -X POST https://myfunctionapp.azurewebsites.net/api/addproductuni -d '{"Name":"Product1","ProductID":1,"Cost":100,"ActivatedOn":"2023-01-02T00:00:00"}'
@@ -123,7 +137,9 @@ curl -X POST https://myfunctionapp.azurewebsites.net/api/addproductuni -d '{"Nam
 
 ## Scenario 2: Ingest data from RabbitMQ or other messaging systems supported on Azure
 
-This scenario is applicable in situations where data from a messaging system needs to be ingested into Kusto. By using an output binding, incoming data from the messaging system can be ingested into Kusto tables
+The following scenario is applicable in situations where data from a messaging system needs to be ingested into into your cluster. By using an output binding, incoming data from the messaging system can be ingested into Azure Data Explorer tables.
+
+The code defines a function with messages, data in JSON format, incoming through a RabbitMQ trigger that are ingested into the **products** table in the **productsdb** database.
 
 ```csharp
 public class QueueTrigger
@@ -142,6 +158,11 @@ public class QueueTrigger
 }
 ```
 
-This code defines an Azure Function with messages (JSON data) incoming through a RabbitMQ trigger that are ingested into the products table in the productsdb database in Kusto.
+For more information about functions, see [Azure Functions documentation](/azure/azure-functions/). The Azure Data Explorer extension is available on:
 
-To read more about functions refer to the [Azure Functions documentation](https://learn.microsoft.com/en-us/azure/azure-functions/). The Kusto extension is on [GitHub](https://github.com/Azure/Webjobs.Extensions.Kusto) and the NuGet package is on [NuGet.org](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Kusto/1.0.7-Preview)
+- [GitHub](https://github.com/Azure/Webjobs.Extensions.Kusto)
+- [NuGet.org](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Kusto/1.0.7-Preview)
+
+## Next steps
+
+- [Kusto Query Language (KQL) overview](kusto/query/index.md)
