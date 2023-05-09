@@ -75,19 +75,19 @@ The token returned by the Microsoft Authentication Library to the Azure Data Exp
 **Example: Obtain an Azure AD User token for an Azure Data Explorer cluster**
 
 ```csharp
-// Create Auth Context for Azure AD (common or tenant-specific endpoint):
-AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/{Azure AD TenantID or name}");
-
-// Provide your Application ID and redirect URI
-var clientAppID = "{your client app id}";
-var redirectUri = new Uri("{your client app redirect uri}");
-
-// acquireTokenTask will receive the bearer token for the authenticated user
-var acquireTokenTask = authContext.AcquireTokenAsync(
-    $"https://{clusterNameAndRegion}.kusto.windows.net",
-    clientAppID,
-    redirectUri,
-    new PlatformParameters(PromptBehavior.Auto, null)).GetAwaiter().GetResult();
+var appId = "<appId>";
+var appTenant = "<appTenant>";
+var redirectUri = "<appRedirectUri>";
+// Create a public authentication client for Azure AD
+var authClient = PublicClientApplicationBuilder.Create(appId)
+    .WithAuthority($"https://login.microsoftonline.com/{appTenant}")
+    .WithRedirectUri(redirectUri)
+    .Build();
+// acquireToken will receive the bearer token for the authenticated user
+var result = authClient.AcquireTokenInteractive(
+    new[] { $"https://<clusterName>.<region>.kusto.windows.net/.default" }
+).ExecuteAsync().Result;
+var acquireToken = result.AccessToken;
 ```
 
 ## Authorization
