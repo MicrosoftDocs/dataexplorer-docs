@@ -9,7 +9,7 @@ ms.date: 05/07/2023
 
 # Configure customer-managed keys
 
-Azure Data Explorer encrypts all data in a storage account at rest. By default, data is encrypted with Microsoft-managed keys. For additional control over encryption keys, you can supply customer-managed keys to use for data encryption.
+Azure Data Explorer encrypts all data in a storage account at rest. By default, data is encrypted with Microsoft-managed keys. For extra control over encryption keys, you can supply customer-managed keys to use for data encryption.
 
 Customer-managed keys must be stored in an [Azure Key Vault](/azure/key-vault/key-vault-overview). You can create your own keys and store them in a key vault, or you can use an Azure Key Vault API to generate keys. The Azure Data Explorer cluster and the key vault must be in the same region, but they can be in different subscriptions. For a detailed explanation on customer-managed keys, see [customer-managed keys with Azure Key Vault](/azure/storage/common/storage-service-encryption).
 
@@ -35,9 +35,9 @@ This following steps explain how to enable customer-managed keys encryption usin
 1. In the [Azure portal](https://portal.azure.com/), go to your [Azure Data Explorer cluster](create-cluster-database-portal.md#create-a-cluster) resource.
 1. Select **Settings** > **Encryption** in left pane of portal.
 1. In the **Encryption** pane, select **On** for the **Customer-managed key** setting.
-1. Click **Select Key**.
+1. Select **Select Key**.
 
-    :::image type="content" source="media/customer-managed-keys-portal/customer-managed-key-encryption-setting.png" alt-text="Configure customer-managed keys.":::
+    :::image type="content" source="media/customer-managed-keys-portal/customer-managed-key-encryption-setting.png" alt-text="Screenshot showing configure customer-managed keys.":::
 
 1. In the **Select key from Azure Key Vault** window, select an existing **Key vault** from the dropdown list. If you select **Create new** to [create a new Key Vault](/azure/key-vault/quick-create-portal#create-a-vault), you'll be routed to the **Create Key Vault** screen.
 
@@ -45,18 +45,18 @@ This following steps explain how to enable customer-managed keys encryption usin
 1. Version:
     * To ensure that this key always uses the latest key version, select the **Always use current key version** checkbox.
     * Otherwise, select **Version**.
-1. Click **Select**.
+1. Select **Select**.
 
-    :::image type="content" source="media/customer-managed-keys-portal/customer-managed-key-key-vault.png" alt-text="Select key from Azure Key Vault.":::
+    :::image type="content" source="media/customer-managed-keys-portal/customer-managed-key-key-vault.png" alt-text="Screenshot showing the Select key from Azure Key Vault.":::
 
 1. Under **Identity type**, select **System Assigned** or **User Assigned**.
 1. If you select **User Assigned**, pick a user assigned identity from the dropdown.
 
-    :::image type="content" source="media/customer-managed-keys-portal/customer-managed-key-select-user-type.png" alt-text="Select managed identity type.":::
+    :::image type="content" source="media/customer-managed-keys-portal/customer-managed-key-select-user-type.png" alt-text="Screenshot showing the option to select a managed identity type.":::
 
 1. In the **Encryption** pane that now contains your key, select **Save**. When CMK creation succeeds, you'll see a success message in **Notifications**.
 
-    :::image type="content" source="media/customer-managed-keys-portal/customer-managed-key-before-save.png" alt-text="Save customer-managed key.":::
+    :::image type="content" source="media/customer-managed-keys-portal/customer-managed-key-before-save.png" alt-text="Screenshot showing option to save a customer-managed key.":::
 
 If you select system assigned identity when enabling customer-managed keys for your Azure Data Explorer cluster, you'll create a system assigned identity for the cluster if one doesn't exist. In addition, you'll be providing the required get, wrapKey, and unwrapKey permissions to your Azure Data Explorer cluster on the selected Key Vault and get the Key Vault properties.
 
