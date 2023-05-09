@@ -76,7 +76,7 @@ Choose a storage optimized SKU for the best performance when querying large volu
 It's preferable to use a few nodes of larger VMs that use more RAM, than many smaller VMs. More RAM is needed for some query types that put higher demands on RAM, such as queries that use joins. So when scaling the cluster, we recommend scaling up to a larger SKU, and scaling out by adding more nodes as needed.
 
 > [!NOTE]
-> Scaling up the cluster, or changing SKU operation, results in up to 30 minutes of downtime. Scale out does not have this impact on cluster availability.
+> Scaling up the cluster's SKU, or changing SKU, is a relatively seamless, with minimal service disruption during the switchover process (~1-3 mins). Query performance may be impacted during SKU migration. The impact may vary due to different usage patterns.
 
 ### SKU Availability
 
@@ -124,6 +124,7 @@ Azure Data Explorer reserves a portion of the disk size shown in each of the Azu
 ## Next steps
 
 * Learn how to use the [pricing calculator](pricing-calculator.md)
+
 
 
 
