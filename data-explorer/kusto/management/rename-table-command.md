@@ -3,7 +3,7 @@ title: .rename table and .rename tables - Azure Data Explorer
 description: This article describes .rename table and .rename tables in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/30/2023
 ---
 # .rename table and .rename tables
 
@@ -19,17 +19,15 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 
 `.rename` `table` *OldName* `to` *NewName*
 
-`.rename` `tables` *NewName* = *OldName* [`ifexists`] [`,` ...]
+`.rename` `tables` *NewName* `=` *OldName* [`ifexists`] [`,` ...]
 
-> [!NOTE]
-> * *OldName* is the name of an existing table. An error is raised and
-  the whole command fails (has no effect) if *OldName* does not name
-  an existing table, unless `ifexists` is specified (in which case
-  this part of the rename command is ignored).
-> * *NewName* is the new name of the existing table that used to be called
-  *OldName*.
-> * If `ifexists` is specified, it modifies the behavior of the command to
-  ignore renaming parts of non-existent tables.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*OldName*|string|&check;|The name of an existing table. An error is raised and the whole command fails if *OldName* does not name an existing table, unless `ifexists` is specified.|
+|*NewName*|string|&check;|The new name for the table that used to be called *OldName*.|
+|`ifexists`|string||If specified, the command will handle the scenario where the table doesn't exist. Instead of failing, it will proceed without attempting to rename the table that doesn't exist.|
 
 **Remarks**
 
