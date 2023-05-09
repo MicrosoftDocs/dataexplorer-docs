@@ -3,7 +3,7 @@ title: The ingest inline command (push) - Azure Data Explorer
 description: This article describes the .ingest inline command (push).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/09/2023
 ---
 # .ingest inline command (push)
 
@@ -11,10 +11,11 @@ This command ingests data into a table by "pushing" the data
 that is embedded inline, in the command text itself.
 
 > [!NOTE]
-> This command's used for manual ad-hoc testing.
+> This command is intended for manual ad-hoc testing.
 > For production use, we recommended that you use other ingestion methods
 > that are better for bulk delivery of huge amounts of data,
-> such as [ingest from storage](./ingest-from-storage.md).
+> such as [ingest from storage](ingest-from-storage.md)
+> or [ingest from query](ingest-from-query.md).
 
 ## Permissions
 
@@ -66,3 +67,8 @@ You can generate inline ingests commands using the Kusto.Data client library.
 Compression lets you embed new lines in quoted fields.
     Kusto.Data.Common.CslCommandGenerator.GenerateTableIngestPushCommand(tableName, compressed: true, csvData: csvStream);
 -->
+
+## See also
+
+* [Ingest from storage](ingest-from-storage.md)
+* [Ingest from query](ingest-from-query.md)

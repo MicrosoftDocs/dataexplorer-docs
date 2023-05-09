@@ -3,7 +3,7 @@ title: .show databases schema - Azure Data Explorer
 description: This article describes .show databases schema in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/22/2023
+ms.date: 05/09/2023
 ---
 # .show database schema commands
 
@@ -13,15 +13,15 @@ The following commands show database schema as a table, JSON object, or CSL scri
 
 You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
-## .show databases schema
+## .show database schema
 
 ### Syntax
 
-`.show` `database` *DatabaseName* `schema` [`details`] [`if_later_than` *"Version"*] 
+`.show` `database` *DatabaseName* `schema` [`details`] [`if_later_than` *"Version"*]
 
-`.show` `databases` `(` *DatabaseName1*`,` ...`)` `schema` `details` 
- 
-`.show` `databases` `(` *DatabaseName1* `if_later_than` *"Version"*`,` ...`)` `schema` `details`
+`.show` `databases` `(`*DatabaseName* [`,` ...]`)` `schema` `details`
+
+`.show` `databases` `(`*DatabaseName* `if_later_than` *"Version"* [`,` ...]`)` `schema` `details`
 
 ### Parameters
 
@@ -38,7 +38,7 @@ When used with a version, the database is only returned if it's a later version 
 ### Examples
 
 #### Show database schema
- 
+
 The database 'TestDB' has one table called 'Events'.
 
 ```kusto
@@ -84,10 +84,10 @@ Because a version lower than the current database version was provided, the 'Tes
 ### Syntax
 
 `.show` `database` *DatabaseName* `schema` [`if_later_than` *"Version"*]  `as` `json`
- 
-`.show` `databases` `(` *DatabaseName1*`,` ...`)` `schema` `as` `json` [`with(` *Options* `)`]
- 
-`.show` `databases` `(` *DatabaseName1* `if_later_than` *"Version"*`,` ...`)` `schema` `as` `json` [`with(`*Options*`)`]
+
+`.show` `databases` `(`*DatabaseName* [`,` ...]`)` `schema` `as` `json` [`with` `(`*Options*`)`]
+
+`.show` `databases` `(`*DatabaseName* `if_later_than` *"Version"* [`,` ...]`)` `schema` `as` `json` [`with` `(`*Options*`)`]
 
 ### Parameters
 
@@ -133,7 +133,7 @@ Generates a CSL script with all the required commands to create a copy of the gi
 
 ### Syntax
 
-`.show` `database` *DatabaseName* `schema` `as` `csl` `script` [`with(` *Options* `)`]
+`.show` `database` *DatabaseName* `schema` `as` `csl` `script` [`with` `(`*Options*`)`]
 
 ### Parameters
 
@@ -160,7 +160,7 @@ The script, returned as a string, will contain:
 * Commands to create or alter all user-defined functions in the database.
 
 ### Examples
- 
+
 ```kusto
 .show database TestDB schema as csl script
 
