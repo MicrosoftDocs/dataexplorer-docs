@@ -2,7 +2,7 @@
 title: Query Azure Storage external tables - Azure Data Explorer
 description: This article describes how to query external tables based on Azure Storage tables.
 ms.topic: reference
-ms.date: 05/07/2023
+ms.date: 05/09/2023
 ---
 
 # Query Azure Storage external tables
@@ -22,6 +22,7 @@ When you write a query against an Azure Storage external table with partitioning
 We recommend using the Parquet data format to optimize query performance for Azure Storage external tables.
 
 * Parquet is a columnar storage format, meaning that data is stored in columns rather than rows. Queries that only need to access certain columns of the data can be much more efficient in Parquet, as only the relevant columns need to be read from Azure Storage.
+
 * Parquet files usually contain metadata, which is used by the query engine to significantly speed up query processing. With metadata, the query engine can quickly retrieve information such as count, min/max per column, and other statistics for each blob, without having to scan all of the rows.
+
 * When running a query with filters, the metadata in Parquet files can be used to identify which files or parts of files contain relevant data, allowing the query engine to skip over irrelevant pieces of data and only process the necessary parts, resulting in faster query processing.
-* ```
