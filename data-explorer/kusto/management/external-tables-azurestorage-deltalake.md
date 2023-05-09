@@ -62,7 +62,7 @@ The supported authentication methods are the same as those supported by [Azure S
 
 ## Examples
 
-### Creaet or alter a delta external table with an inferred schema
+### Create or alter a delta external table with an inferred schema
 
 In the following external table, the schema is automatically inferred from the latest delta table version.
 
