@@ -3,7 +3,7 @@ title: Ingest data using managed identity authentication
 description: Learn how to queue Azure Storage blobs for ingestion using managed identity authentication.
 ms.reviewer: miwalia
 ms.topic: how-to
-ms.date: 03/03/2022
+ms.date: 05/09/2023
 ---
 
 # Queue blobs for ingestion using managed identity authentication
@@ -43,26 +43,26 @@ If your cluster already has the desired managed identity assigned to it, copy it
 
 ## Set the managed identity policy in Azure Data Explorer
 
-In order to use the managed identity to ingest data into your cluster, you must first allow the `NativeIngestion` usage option for the selected managed identity.
+In order to use the managed identity to ingest data into your cluster, allow the `NativeIngestion` usage option for the selected managed identity. Native ingestion refers to the ability to use an SDK for ingestion from an external source. For more information on the available SDKs, see [Client libraries](../client-libraries.md).
+
 The usage Managed Identity policy can be defined at the cluster or database level of the target cluster.
 
-In the following example, replace `<Managed identity principal Id>` with the object ID of the required managed identity.
-
-To apply the policy at the database level, run:
+To apply the policy at the database level, run the following command:
 
 ```kusto
-.alter-merge database <database name> policy managed_identity "[ { 'ObjectId' : '<Managed identity principal Id>', 'AllowedUsages' : 'NativeIngestion' }]"
+.alter-merge database <database name> policy managed_identity "[ { 'ObjectId' : '<managed_identity_id>', 'AllowedUsages' : 'NativeIngestion' }]"
 ```
 
-To apply the policy at the cluster level, run:
+To apply the policy at the cluster level, run the following command:
 
 ```kusto
-.alter-merge cluster policy managed_identity "[ { 'ObjectId' : '<Managed identity object Id>', 'AllowedUsages' : 'NativeIngestion' }]"
+.alter-merge cluster policy managed_identity "[ { 'ObjectId' : '<managed_identity_id>', 'AllowedUsages' : 'NativeIngestion' }]"
 ```
+
+Replace `<managed_identity_id>` with the object ID of the required managed identity.
 
 > [!NOTE]
->
-> In order to secure the use of managed identities, you must have the `All Database Admin` permission on the cluster to edit the Managed Identity Policy.
+> You must have the `All Database Admin` permission on the cluster to edit the Managed Identity Policy.
 
 ## Queue blobs for ingestion with managed identity using Kusto SDK
 
