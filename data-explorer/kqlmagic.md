@@ -3,7 +3,7 @@ title: Use a Jupyter Notebook to analyze data in Azure Data Explorer
 description: This article shows you how to analyze data in Azure Data Explorer using a Jupyter Notebook and the kqlmagic extension.
 ms.reviewer: maraheja
 ms.topic: how-to
-ms.date: 05/08/2023
+ms.date: 05/10/2023
 
 # Customer intent: I want to analyze data using Jupyter Notebooks and kqlmagic.
 ---
@@ -42,11 +42,11 @@ In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to conne
 
 ## Connect to a cluster
 
-There are various methods to authenticate to an Azure Data Explorer cluster and database using kqlmagic. Select the tab for your preferred method.
+Select the tab for your preferred method to connect to your cluster.
 
 ### [Code](#tab/code)
 
-The Azure AD code method prompts MSAL interactive sign-in, meaning it opens a pop-up window in which to provide a designated code for authentication.
+The Azure AD code method prompts MSAL interactive sign-in. You'll receive a code to enter for authentication.
 
 ```python
 %kql azure_data-Explorer://code;cluster='<cluster-name>';database='<database-name>'
