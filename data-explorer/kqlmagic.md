@@ -105,7 +105,7 @@ To simplify the process of getting credentials, you can add one of the following
 |--|--|--|
 |try_azcli_login|Attempt to get authentication credentials from Azure CLI.|`-try_azcli_login`|
 |try_azcli_login_subscription|Attempt to get authentication credentials from Azure CLI based on the specified subscription.|`-try_azcli_login_subscription=<subscription_id>`|
-|try_vscode_login|Attempt to get authentication credentials from Visual Studio Code Azure Account sign-in.|`-try_vscode_login`|
+|try_vscode_login|Attempt to get authentication credentials from Visual Studio Code Azure account sign-in.|`-try_vscode_login`|
 |try_msi|Attempt to get authentication credentials from the MSI local endpoint. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|`-try_msi={"client_id":<id>}`|
 |try_token|Authenticate with a specified token. Expects a dictionary with Azure AD v1 or v2 token properties.|`-try_token={"tokenType":"bearer","accessToken":"<token>"}`
 
