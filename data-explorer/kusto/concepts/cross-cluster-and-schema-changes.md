@@ -24,4 +24,4 @@ To reduce the possibility of this issue arising, cached schemas expire one hour 
 Alternatively, you can refresh the schema manually by using the [Clear Cross Cluster Schema Cache](../management/clear-cross-cluster-schema-cache.md) command.
 
 > [!IMPORTANT]
-> If the clusters are in different tenants, you may need to edit the `trustedExternalTenants` property. Non-trusted external tenants may get an **Unauthorized error (401)** failure. For more information, see [How to allow principals from another tenant to access your cluster](../../cross-tenant-query-and-commands.md).
+> If the clusters are in different tenants, you may need to edit the `trustedExternalTenants` property. Non-trusted external tenants may get an **Unauthorized error (401)** failure. For more information, see [How to allow principals from another tenant to access your cluster](../access-control/cross-tenant-query-and-commands.md).

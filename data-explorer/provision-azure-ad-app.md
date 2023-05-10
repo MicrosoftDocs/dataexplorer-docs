@@ -121,7 +121,7 @@ var queryResult = client.ExecuteQuery($"{query}");
    > [!NOTE]
    > Specify the application id and key of the application registration (service principal) created earlier.
 
-For more information, see [authenticate with Azure AD for Azure Data Explorer access](kusto/management/access-control/how-to-authenticate-with-aad.md) and [use Azure Key Vault with .NET Core web app](/azure/key-vault/tutorial-net-create-vault-azure-web-app#create-a-net-core-web-app).
+For more information, see [authenticate with Azure AD for Azure Data Explorer access](kusto/access-control/how-to-authenticate-with-aad.md) and [use Azure Key Vault with .NET Core web app](/azure/key-vault/tutorial-net-create-vault-azure-web-app#create-a-net-core-web-app).
 
 ## Troubleshooting
 
