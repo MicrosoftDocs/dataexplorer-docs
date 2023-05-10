@@ -686,6 +686,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/kusto/management/access-control/index.md",
+      "redirect_url": "/azure/data-explorer/kusto/access-control/index",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/kusto/management/access-control/role-based-access-control.md",
       "redirect_url": "/azure/data-explorer/kusto/access-control/role-based-access-control",
       "redirect_document_id": true
@@ -709,6 +714,11 @@
       "source_path": "data-explorer/kusto/management/access-control/referencing-security-principals.md",
       "redirect_url": "/azure/data-explorer/kusto/management/referencing-security-principals",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/cross-tenant-query-and-commands.md",
+      "redirect_url": "/azure/data-explorer/kusto/access-control/cross-tenant-query-and-commands",
+      "redirect_document_id": false
     },
     {
       "source_path": "data-explorer/end-to-end-csharp.md",
