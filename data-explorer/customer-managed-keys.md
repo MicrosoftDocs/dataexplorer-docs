@@ -4,7 +4,7 @@ description: This article describes how to configure customer-managed keys encry
 ms.reviewer: astauben
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.date: 05/07/2023
+ms.date: 05/10/2023
 ---
 
 # Configure customer-managed keys
@@ -69,8 +69,8 @@ The following sections explain how to configure customer-managed keys encryption
 
 ### Install packages
 
-* Install the [Azure Data Explorer (Kusto) NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Install the [MSAL NuGet package](https://www.nuget.org/packages/Microsoft.Identity.Client/) for authentication with Azure Active Directory (Azure AD).
+* Install the [Azure Data Explorer (Kusto) NuGet package](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
+* Install the [Azure.Identity NuGet package](https://www.nuget.org/packages/Azure.Identity/) for authentication with Azure Active Directory (Azure AD).
 
 ### Authentication
 
@@ -85,44 +85,35 @@ By default, Azure Data Explorer encryption uses Microsoft-managed keys. Configur
 1. Update your cluster by using the following code:
 
     ```csharp
-    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";    // Azure AD Directory (tenant) ID
-    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";    // Application ID
-    var clientSecret = "PlaceholderClientSecret";           // Application secret
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; // Azure AD Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; // Application ID
+    var clientSecret = "PlaceholderClientSecret"; // Application secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-    
-    // Create a confidential authentication client for Azure AD:
-    var authClient = ConfidentialClientApplicationBuilder.Create(clientId)
-            .WithAuthority($"https://login.microsoftonline.com/{tenantId}")
-            .WithClientSecret(clientSecret)                 // can be replaced by .WithCertificate to authenticate with an X.509 certificate
-            .Build();
-
-    // Define scopes for accessing Azure management plane
-    string[] scopes = new string[] { "https://management.core.windows.net/.default" };
-
-    // Acquire application token
-    AuthenticationResult result = authClient.AcquireTokenForClient(scopes).ExecuteAsync().Result;
-
-    var credentials = new TokenCredentials(result.AccessToken, result.TokenType);
-    var kustoManagementClient = new KustoManagementClient(credentials)
-    {
-        SubscriptionId = subscriptionId
-    };
-
+    var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+    var resourceManagementClient = new ArmClient(credentials, subscriptionId);
     var resourceGroupName = "testrg";
     var clusterName = "mykustocluster";
-    var keyName = "myKey";
-    var keyVersion = "5b52b20e8d8a42e6bd7527211ae32654"; // Optional, leave as NULL for the latest version of the key.
-    var keyVaultUri = "https://mykeyvault.vault.azure.net/";
-    var keyVaultIdentity = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/identityResourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"; // Use NULL if you want to use system assigned identity.
-    var keyVaultProperties = new KeyVaultProperties(keyName, keyVaultUri, keyVersion, keyVaultIdentity);
-    var clusterUpdate = new ClusterUpdate(keyVaultProperties: keyVaultProperties);
-    await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdate);
+    var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+    var resourceGroup = (await subscription.GetResourceGroupAsync(resourceGroupName)).Value;
+    var clusters = resourceGroup.GetKustoClusters();
+    var cluster = (await clusters.GetAsync(clusterName)).Value;
+    var clusterPatch = new KustoClusterPatch(cluster.Data.Location)
+    {
+        KeyVaultProperties = new KustoKeyVaultProperties
+        {
+            KeyName = "<keyName>",
+            KeyVersion = "<keyVersion>", // Optional, leave as NULL for the latest version of the key.
+            KeyVaultUri = new Uri("https://<keyVaultName>.vault.azure.net/"),
+            UserIdentity = "/subscriptions/<identitySubscriptionId>/resourcegroups/<identityResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identityName>" // Use NULL if you want to use system assigned identity.
+        }
+    };
+    await cluster.UpdateAsync(WaitUntil.Completed, clusterPatch);
     ```
 
 1. Run the following command to check if your cluster was successfully updated:
 
     ```csharp
-    kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
+    var clusterData = (await resourceGroup.GetKustoClusterAsync(clusterName)).Value.Data;
     ```
 
     If the result contains `ProvisioningState` with the `Succeeded` value, then your cluster was successfully updated.
