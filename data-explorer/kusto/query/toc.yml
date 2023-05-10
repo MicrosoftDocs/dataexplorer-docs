@@ -1280,7 +1280,7 @@ items:
     - name: mysql_request plugin
       href: mysqlrequest-plugin.md
     - name: postgresql_request plugin
-      href: postgresqlrequestplugin.md
+      href: postgresql-request-plugin.md
     - name: sql_request plugin
       href: sqlrequestplugin.md
   - name: User and sequence analytics plugins
