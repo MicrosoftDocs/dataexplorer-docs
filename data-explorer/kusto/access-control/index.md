@@ -15,28 +15,9 @@ Azure Data Explorer access control is based on authentication and authorization.
 
 ## Authentication
 
-[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is the preferred method of authentication to Azure Data Explorer. Azure AD can authenticate security principals or federate with other identity providers, and it supports both user and application authentication.
+[Azure Active Directory (Azure AD)](aad.md) is the preferred method of authentication to Azure Data Explorer. Azure AD can authenticate security principals or federate with other identity providers, and it supports both user and application authentication.
 
-* **User authentication** (interactive sign-in): Used to authenticate human principals.
-* **Application authentication** (non-interactive sign-in): Used to authenticate services and applications that have to run and authenticate with no human user present.
-
-### User authentication
-
-User authentication is intended for requests linked to a specific human principal, and a token is used to connect the principal with their requests.
-
-To authenticate a user, they must present credentials to either Azure AD or an identity provider that works with Azure AD. If authentication is successful, the user receives a token to present to the Azure Data Explorer service.
-
-Azure Data Explorer provides two types of user authentication: interactive and token-based. Interactive authentication prompts the user to enter their credentials using Microsoft Authentication Library (MSAL). Alternatively, token-based authentication allows the application to obtain a valid user token.
-
-### Application authentication
-
-Application authentication is needed when requests are not associated with a specific user or when no user is available to provide credentials. In this case, the application authenticates to Azure AD or the federated IdP by presenting secret information. The following application authentication scenarios are supported:
-
-* Application authentication using an X.509v2 certificate installed locally.
-* Application authentication using an X.509v2 certificate given to the client library as a byte stream.
-* Application authentication using an Azure AD application ID and an Azure AD application key. The application ID and application key are like a username and password.
-* Application authentication using a previously obtained valid Azure AD token, issued to Azure Data Explorer.
-* Application authentication using a previously obtained valid Azure AD token, issued to some other resource. This method will work if there's a trust relationship between that resource and Azure Data Explorer.
+User authentication is used to verify the identity of human principals and can be carried out interactively, where a human user provides credentials, or programmatically using a token. Application authentication is used to authenticate services and applications that need to run and access resources without human intervention.
 
 ## Authorization
 
