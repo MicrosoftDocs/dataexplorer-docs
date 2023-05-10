@@ -49,47 +49,6 @@ Use the Azure AD application authentication flow when requests aren't associated
 * Application authentication using a previously obtained valid Azure AD token, issued to Azure Data Explorer.
 * Application authentication using a previously obtained valid Azure AD token, issued to some other resource. This method will work if there's a trust relationship between that resource and Azure Data Explorer.
 
-### Microsoft Accounts (MSAs)
-
-Microsoft Account (MSA) is the term used for all the Microsoft-managed non-organizational user accounts, such as `hotmail.com`, `live.com`, `outlook.com`.
-Kusto supports user authentication for MSAs (there's no security groups concept) that are identified by their User Principal Name (UPN).
-
-When an MSA principal is configured on an Azure Data Explorer resource, Azure Data Explorer **won't** attempt to resolve the UPN provided.
-
-### Authenticated SDK or REST calls
-
-* When using the REST API, authentication is done with the standard HTTP `Authorization` header
-* When using any of the Azure Data Explorer .NET libraries, authentication is controlled by specifying the authentication method and parameters in the [connection string](../api/connection-strings/kusto.md). Another method is to set the properties on the [client request properties](../api/netfx/request-properties.md) object.
-
-### Azure Data Explorer client SDK as an Azure AD client application
-
-When the Kusto client libraries invoke the Microsoft Authentication Library to acquire a token for communicating with Kusto, it provides the following information:
-
-* The Resource (Cluster URI, such as, `https://Cluster-and-region.kusto.windows.net`)
-* The Azure AD Client Application ID
-* The Azure AD Client Application Redirect URI
-* The Azure AD Tenant, that affects the Azure AD endpoint used for authentication. For example, for Azure AD tenant `microsoft.com`, the Azure AD endpoint is `https://login.microsoftonline.com/microsoft.com`)
-
-The token returned by the Microsoft Authentication Library to the Azure Data Explorer Client Library has the appropriate Azure Data Explorer cluster URL as the audience, and the "Access Azure Data Explorer" permission as the scope.
-
-**Example: Obtain an Azure AD User token for an Azure Data Explorer cluster**
-
-```csharp
-var appId = "<appId>";
-var appTenant = "<appTenant>";
-var redirectUri = "<appRedirectUri>";
-// Create a public authentication client for Azure AD
-var authClient = PublicClientApplicationBuilder.Create(appId)
-    .WithAuthority($"https://login.microsoftonline.com/{appTenant}")
-    .WithRedirectUri(redirectUri)
-    .Build();
-// acquireToken will receive the bearer token for the authenticated user
-var result = authClient.AcquireTokenInteractive(
-    new[] { $"https://<clusterName>.<region>.kusto.windows.net/.default" }
-).ExecuteAsync().Result;
-var acquireToken = result.AccessToken;
-```
-
 ## Authorization
 
 All authenticated principals undergo an authorization check before they may carry out an action on an Azure Data Explorer resource.
