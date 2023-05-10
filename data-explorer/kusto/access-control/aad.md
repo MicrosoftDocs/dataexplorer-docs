@@ -9,7 +9,7 @@ ms.date: 05/10/2023
 
 [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is a cloud-based identity and access management service. Azure AD can authenticate security principals or federate with other identity providers, such as Active Directory Federation Services (AD FS). We recommend authenticating through Azure Active Directory (Azure AD) service to access Azure Data Explorer, since doing so ensures Azure Data Explorer won't have access to the principal's directory credentials.
 
-We recommend using one of the [Kusto client libraries](../api/client-libraries.md) to access the Azure Data Explorer service programmatically. To access Azure Data Explorer, the client must authenticate to Azure AD in a two-step process. Firstly, the client requests an Azure AD token. Then, the client issues requests to Azure Data Explorer, providing the access token acquired in the first step as proof of identity. All authorization checks are performed using this identity.
+We recommend using one of the Kusto [client libraries](../api/client-libraries.md) to access the Azure Data Explorer service programmatically. To access Azure Data Explorer, the client must authenticate to Azure AD in a two-step process. Firstly, the client requests an Azure AD token. Then, the client issues requests to Azure Data Explorer, providing the access token acquired in the first step as proof of identity. All authorization checks are performed using this identity.
 
 There are three main authentication scenarios:
 
@@ -42,13 +42,13 @@ To authenticate a principal, you need to know their Azure AD directory. If you k
 
 ## The Azure AD local token cache
 
-With [Kusto client libraries](../api/client-libraries.md), Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user. However, the cache doesn't completely eliminate the need for interactive prompts, and users can't predict when they'll be prompted. Therefore, non-interactive logins can't be supported if using a user account to access Azure Data Explorer.
+With Kusto [client libraries](../api/client-libraries.md), Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user. However, the cache doesn't completely eliminate the need for interactive prompts, and users can't predict when they'll be prompted. Therefore, non-interactive logins can't be supported if using a user account to access Azure Data Explorer.
 
 ## User authentication
 
 User authentication happens when the user presents credentials to Azure AD or an identity provider that federates with Azure AD, such as Active Directory Federation Services (AD FS). The user gets back a security token that can be presented to the Azure Data Explorer service. Azure Data Explorer determines whether the token is valid, whether the token is issued by a trusted issuer, and what security claims the token contains.
 
-Azure Data Explorer supports the following methods of user authentication, including through the [Kusto client libraries](../api/client-libraries.md):
+Azure Data Explorer supports the following methods of user authentication, including through the Kusto [client libraries](../api/client-libraries.md):
 
 * Interactive user authentication with sign-in through the user interface.
 * User authentication with an Azure AD token issued for Azure Data Explorer.
@@ -80,7 +80,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 Application authentication is needed when requests aren't associated with a specific user or when no user is available to provide credentials. In this case, the application authenticates to Azure AD or the federated IdP by presenting secret information.
 
-Azure Data Explorer supports the following methods of application authentication, including through the [Kusto client libraries](../api/client-libraries.md):
+Azure Data Explorer supports the following methods of application authentication, including through the Kusto [client libraries](../api/client-libraries.md):
 
 * Application authentication with an Azure managed identity.
 * Application authentication with an X.509v2 certificate installed locally.
@@ -120,7 +120,7 @@ For Azure Data Explorer, the Azure AD client application is configured to reques
 
 ## Microsoft Authentication Library (MSAL)
 
-The Kusto [Kusto client libraries](../api/client-libraries.md) use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens for communicating with Azure Data Explorer. In this situation the Kusto client library is the Azure AD client application, as described in the previous section. Throughout the process of acquiring a token, the Kusto client libraries provide the following information:
+The Kusto Kusto [client libraries](../api/client-libraries.md) use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens for communicating with Azure Data Explorer. In this situation the Kusto client library is the Azure AD client application, as described in the previous section. Throughout the process of acquiring a token, the client libraries provide the following information:
 
 - The Azure AD authority URI (`https://login.microsoftonline.com` in the global Azure), and the Azure AD tenant, as received from the caller.
 - The Azure AD client application ID.
