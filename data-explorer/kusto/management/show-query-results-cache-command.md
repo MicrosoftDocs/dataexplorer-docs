@@ -3,7 +3,7 @@ title: Show query results cache - Azure Data Explorer
 description: This article describes .show query results cache in Azure Data Explorer.
 ms.reviewer: amitof
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/09/2023
 ---
 # .show database cache query_results
 
@@ -15,7 +15,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-`.show database cache query_results`
+`.show` `database` `cache` `query_results`
 
 ## Returns
  
