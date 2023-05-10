@@ -20,8 +20,11 @@ In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to conne
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Jupyter Notebook installed on your local machine. Otherwise, use [Azure Data Studio](/sql/azure-data-studio/notebooks/notebooks-kqlmagic).
+* We recommend using Python 3.6 with kqlmagic. To change the Jupyter Notebook kernel version to Python 3.6, click on **Kernel** > **Change Kernel** > **Python 3.6**.
 
 ## Install kqlmagic
+
+Once you install and load the kqlmagic extension, you can write KQL queries in your notebook. If the kernel stops or the results aren't as expected, reload the kqlmagic extension.
 
 1. To install kqlmagic, run the following command:
 
@@ -34,11 +37,6 @@ In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to conne
     ```python
     %reload_ext Kqlmagic
     ```
-
-    > [!NOTE]
-    >
-    > * Change the kernel version to Python 3.6 by clicking on **Kernel** > **Change Kernel** > **Python 3.6**.
-    > * If the results are absent or not as expected, try reloading the kqlmagic extension.
 
 ## Connect to a cluster
 
@@ -89,7 +87,7 @@ Anonymous authentication is equivalent to no authentication, which is only suppo
 > [!TIP]
 >
 > * To parameterize the connection string, use unquoted values since they are interpreted as a Python expression.
-> * To simplify the process of getting credentials, see [Advanced connection options](#advanced-connection-options).
+> * To simplify the process of getting credentials, see [Connection options](#connection-options).
 
 ### Example of cluster connection
 
@@ -99,19 +97,19 @@ The following command uses the Azure AD code method to authenticate to the `Samp
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
 ```
 
-## Advanced connection options
+## Connection options
 
-To simplify the process of getting credentials, you can add various flags after the connection string.
+To simplify the process of getting credentials, you can add one of the following option flags after the connection string.
 
 |Option|Description|Example syntax|
 |--|--|--|
-|try_azcli_login|Attempts to get a token from Azure CLI before authenticating with the specified connection string.|`-try_azcli_login`|
-|try_azcli_login_subscription|Attempts to get a token from Azure CLI using the subscription as a parameter to get the right token before authenticating with the specified connection string.|`-try_azcli_login_subscription=<subscription_id>`|
-|try_vscode_login|Attempts to get a token from Visual Studio Code Azure Account sign-in before authenticating with the specified connection string.|`-try_vscode_login`|
-|try_msi|Attempts to get a token from the MSI local endpoint before authenticating with the specified connection string. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|`-try_msi={"client_id":<id>}`|
-|try_token|Attempts to authenticate with a specified token before using the specified connection string. Expects a dictionary with Azure AD v1 or v2 token properties.|`-try_token={"tokenType":"bearer","accessToken":"<token>"}`
+|try_azcli_login|Attempt to get authentication credentials from Azure CLI.|`-try_azcli_login`|
+|try_azcli_login_subscription|Attempt to get authentication credentials from Azure CLI based on the specified subscription.|`-try_azcli_login_subscription=<subscription_id>`|
+|try_vscode_login|Attempt to get authentication credentials from Visual Studio Code Azure Account sign-in.|`-try_vscode_login`|
+|try_msi|Attempt to get authentication credentials from the MSI local endpoint. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|`-try_msi={"client_id":<id>}`|
+|try_token|Attempt to authenticate with a specified token. Expects a dictionary with Azure AD v1 or v2 token properties.|`-try_token={"tokenType":"bearer","accessToken":"<token>"}`
 
-### Example of advanced connection options
+### Example of connection option
 
 Any of the options described in the previous table can be added after a connection string. The following example uses the Azure CLI sign-in option:
 
