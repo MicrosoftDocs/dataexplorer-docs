@@ -4,60 +4,48 @@ description: This article describes Kusto Access Control Overview in Azure Data 
 ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 11/25/2019
+ms.date: 05/10/2023
 ---
-# Kusto Access Control Overview
+# Access Control Overview
 
-Access Control in Azure Data Explorer is based on two key factors.
+Azure Data Explorer access control is based on authentication and authorization. Each query and command on an Azure Data Explorer resource, such as a cluster or database, must pass both authentication and authorization checks.
+
 * [Authentication](#authentication): Validates the identity of the security principal making a request
 * [Authorization](#authorization): Validates that the security principal making a request is permitted to make that request on the target resource
 
-A query or a control command on an Azure Data Explorer cluster, database, or table, must pass both authentication and authorization checks.
-
 ## Authentication
 
-**Azure Active Directory (Azure AD)** is Azure's preferred multi-tenant cloud directory service. It can authenticate security principals or federate with other identity providers.
+[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is the preferred method of authentication to Azure Data Explorer. Azure AD can authenticate security principals or federate with other identity providers, and it supports both user and application authentication.
 
-Azure AD is the preferred method for authenticating to Azure Data Explorer in Microsoft. It supports a number of authentication scenarios.
 * **User authentication** (interactive sign-in): Used to authenticate human principals.
 * **Application authentication** (non-interactive sign-in): Used to authenticate services and applications that have to run and authenticate with no human user present.
 
 ### User authentication
 
-User authentication is done when the user presents credentials to:
-* Azure AD 
-* an identity provider that works with Azure AD
+User authentication is intended for requests linked to a specific human principal, and a token is used to connect the principal with their requests.
 
-If successful, the user receives a security token that can be presented to the Azure Data Explorer service. The Azure Data Explorer service doesn't care how the security token was obtained. It cares about whether the token is valid and what information is put there by Azure AD (or the federated IdP).
+To authenticate a user, they must present credentials to either Azure AD or an identity provider that works with Azure AD. If authentication is successful, the user receives a token to present to the Azure Data Explorer service.
 
-On the client side, Azure Data Explorer supports interactive authentication, where the Microsoft Authentication Library or similar code, requests the user to enter credentials. It also supports token-based authentication, where the application using Azure Data Explorer obtains a valid user token. 
-The application that uses Azure Data Explorer can also obtain a valid user token for another service. The user token is obtainable only if a trust relationship between that resource and Azure Data Explorer exists.
-
-For more information, see [Kusto connection strings](../api/connection-strings/kusto.md) for details on how to use the Kusto client libraries and authenticate by using Azure AD to Azure Data Explorer.
+Azure Data Explorer provides two types of user authentication: interactive and token-based. Interactive authentication prompts the user to enter their credentials using Microsoft Authentication Library (MSAL). Alternatively, token-based authentication allows the application to obtain a valid user token.
 
 ### Application authentication
 
-Use the Azure AD application authentication flow when requests aren't associated with a specific user or there's no user available to enter credentials. In the flow, the application authenticates to Azure AD (or the federated IdP) by presenting some secret information. The following scenarios are supported by the various Azure Data Explorer clients.
+Application authentication is needed when requests are not associated with a specific user or when no user is available to provide credentials. In this case, the application authenticates to Azure AD or the federated IdP by presenting secret information. The following application authentication scenarios are supported:
 
-* Application authentication using an X.509v2 certificate installed locally
-* Application authentication using an X.509v2 certificate given to the client library as a byte stream
-* Application authentication using an Azure AD application ID and an Azure AD application key.
-
-    > [!NOTE] 
-    > The ID and key are the equivalent of a username and password
-
+* Application authentication using an X.509v2 certificate installed locally.
+* Application authentication using an X.509v2 certificate given to the client library as a byte stream.
+* Application authentication using an Azure AD application ID and an Azure AD application key. The application ID and application key are like a username and password.
 * Application authentication using a previously obtained valid Azure AD token, issued to Azure Data Explorer.
 * Application authentication using a previously obtained valid Azure AD token, issued to some other resource. This method will work if there's a trust relationship between that resource and Azure Data Explorer.
 
 ## Authorization
 
-All authenticated principals undergo an authorization check before they may carry out an action on an Azure Data Explorer resource.
-Azure Data Explorer uses a [role-based access control model](role-based-access-control.md), where principals are ascribed to one or more security roles. Authorization succeeds as long as one of the principal's roles is authorized.
+Before carrying out an action on an Azure Data Explorer resource, all authenticated users must pass an authorization check. Azure Data Explorer uses a [role-based access control](role-based-access-control.md) model, where principals are ascribed to one or more security roles. Authorization is granted as long as one of the roles assigned to the user allows them to perform the specified action. For example, the Database User role grants security principals the right to read the data of a particular database, create tables in the database, and more.
 
-For example, the database user role grants security principals, users, or services, the right to:
-* read the data of a particular database
-* create tables in the database
-* create functions in the database
+The association of security principals to security roles can be defined individually or by using security groups that are defined in Azure AD. For more information on how to assign security roles, see [Security roles overview](../management/security-roles.md).
 
-The association of security principals to security roles can be defined individually,
-or by using security groups that are defined in Azure AD. The commands are defined in [Security roles management](../management/security-roles.md).
+## Next steps
+
+* Access Azure Data Explorer using the [client libraries](../api/client-libraries.md)
+* Build a [Kusto connection strings](../api/connection-strings/kusto.md)
+* Read the overview on [role-based access control](role-based-access-control.md)
