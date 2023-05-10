@@ -11,7 +11,8 @@ A workload group's request queuing policy controls queueing of requests for dela
 
 Queuing of requests can reduce the number of throttling errors during times of peak activity. It does so by queueing incoming requests up to a predefined short time period, while polling for available capacity during that time period.
 
-The policy may be defined only for workload groups with a [request rate limit policy](request-rate-limit-policy.md) that limits the max concurrent requests at the scope of the workload group.
+The policy may be defined only for workload groups with a [request rate limit policy](request-rate-limit-policy.md) that limits the max concurrent requests at the scope of the workload group. Use [.alter-merge workload group](alter-merge-workload-group-command.md#alter-the-request-queuing-policy) control command to turn on requesting queuing.
+
 
 ## The policy object
 
