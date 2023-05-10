@@ -19,7 +19,7 @@ Calculates polygon or multipolygon that contains all points within the given rad
 |--|--|--|--|
 | *lineString* | dynamic | &check; | A LineString or MultiLineString in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 | *radius* | real | &check; | Buffer radius in meters. Valid value must be positive.|
-| *tolerance* | | Defines the tolerance in meters that determines how much a polygon can deviate from the ideal radius. If unspecified, the default value `10` is used. Tolerance should be no lower than 0.0001% of the radius. Specifying tolerance bigger than radius will lower the tolerance to biggest possible value below the radius.|
+| *tolerance* | real | | Defines the tolerance in meters that determines how much a polygon can deviate from the ideal radius. If unspecified, the default value `10` is used. Tolerance should be no lower than 0.0001% of the radius. Specifying tolerance bigger than radius will lower the tolerance to biggest possible value below the radius.|
 
 ## Returns
 

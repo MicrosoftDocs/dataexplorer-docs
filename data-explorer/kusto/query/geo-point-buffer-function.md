@@ -20,7 +20,7 @@ Calculates polygon that contains all points within the given radius of the point
 | *longitude* | real | &check; | Geospatial coordinate longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
 | *latitude* | real | &check; | Geospatial coordinate latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
 | *radius* | real | &check; | Buffer radius in meters. Valid value must be positive.|
-| *tolerance* | | Defines the tolerance in meters that determines how much a polygon can deviate from the ideal radius. If unspecified, the default value `10` is used. Tolerance should be no lower than 0.0001% of the radius. Specifying tolerance bigger than radius will lower the tolerance to biggest possible value below the radius.|
+| *tolerance* | real || Defines the tolerance in meters that determines how much a polygon can deviate from the ideal radius. If unspecified, the default value `10` is used. Tolerance should be no lower than 0.0001% of the radius. Specifying tolerance bigger than radius will lower the tolerance to biggest possible value below the radius.|
 
 ## Returns
 
