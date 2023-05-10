@@ -253,12 +253,14 @@ In many analytics scenarios, you may want to create reusable notebooks that cont
 > [!TIP]
 > To receive information about all available configurations use `%config Kqlmagic`. To troubleshoot and capture Kusto errors, such as connection issues and incorrect queries, use `%config Kqlmagic.short_errors=False`
 
-## Next steps
-
-Explore the sample notebooks:
+## Sample notebooks
 
 * [Get started with kqlmagic for Azure Data Explorer](https://mybinder.org/v2/gh/Microsoft/jupyter-kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
 * [Get started with kqlmagic for Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
 * [Get started with kqlmagic for Azure Monitor logs](https://mybinder.org/v2/gh/Microsoft/jupyter-kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
 * [Parametrize your kqlmagic query with Python](https://mybinder.org/v2/gh/Microsoft/jupyter-kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
 * [Choose colors palette for your kqlmagic query chart result](https://mybinder.org/v2/gh/Microsoft/jupyter-kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
+
+## Next steps
+
+* Learn [Kusto Query Language (KQL)](kusto/query/index.md)
