@@ -25,7 +25,7 @@ The following examples show how to define trusted tenants in the portal and with
 
 1. Define the desired tenants permissions.
 
-:::image type="content" source="../../media/define-trusted-external-tenants/trusted-external-tenants.png" alt-text="Screenshot of the Security blade" lightbox="../../media/define-trusted-external-tenants/trusted-external-tenants.png":::
+:::image type="content" source="../../media/define-trusted-external-tenants/trusted-external-tenants.png" alt-text="Screenshot of the Security blade." lightbox="../../media/define-trusted-external-tenants/trusted-external-tenants.png":::
 
 ## [API](#tab/api)
 
