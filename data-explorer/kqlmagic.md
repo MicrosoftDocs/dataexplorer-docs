@@ -101,13 +101,13 @@ The following command uses the Azure AD code method to authenticate to the `Samp
 
 ## Advanced connection options
 
-To simplify the process of getting credentials, you can add various flags after the connection string. Refer to the following table for a description of these flags.
+To simplify the process of getting credentials, you can add various flags after the connection string.
 
 |Option|Description|Example syntax|
 |--|--|--|
-|try_azcli_login|Attempts to get a token from Azure CLI before authenticating with the specified connection string.||
+|try_azcli_login|Attempts to get a token from Azure CLI before authenticating with the specified connection string.|`-try_azcli_login`|
 |try_azcli_login_subscription|Attempts to get a token from Azure CLI using the subscription as a parameter to get the right token before authenticating with the specified connection string.|`-try_azcli_login_subscription=<subscription_id>`|
-|try_vscode_login|Attempts to get a token from Visual Studio Code Azure Account sign-in before authenticating with the specified connection string.|
+|try_vscode_login|Attempts to get a token from Visual Studio Code Azure Account sign-in before authenticating with the specified connection string.|`-try_vscode_login`|
 |try_msi|Attempts to get a token from the MSI local endpoint before authenticating with the specified connection string. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|`-try_msi={"client_id":<id>}`|
 |try_token|Attempts to authenticate with a specified token before using the specified connection string. Expects a dictionary with Azure AD v1 or v2 token properties.|`-try_token={"tokenType":"bearer","accessToken":"<token>"}`
 
