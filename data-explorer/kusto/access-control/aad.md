@@ -7,41 +7,32 @@ ms.date: 02/06/2022
 ---
 # Azure Active Directory authentication
 
-Azure Active Directory (Azure AD) is a multitenant cloud directory service. It's capable of authenticating security principals or federating with other identity providers, such as Microsoft Active Directory.
+[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is a cloud-based identity and access management service. Azure AD can authenticate security principals or federate with other identity providers, such as Active Directory Federation Services (AD FS).
 
-Azure AD allows applications of various kinds to uniformly authenticate and use Azure Data Explorer services.
-
-Azure AD supports several authentication scenarios. If a user is present, authenticate the user to Azure AD by using interactive authentication. In some cases, you might want a service to use Kusto even when no user is present. In such cases, authenticate the application by using an application secret, or any other supported method, as described in [Application authentication](#application-authentication).
-
-The following methods of authentication are supported by Azure Data Explorer, including through its .NET libraries:
-
-* Interactive user authentication. This mode features signing in through the user interface.
-* User authentication with an existing Azure AD token, previously issued for Kusto.
-* Application authentication with AppID and a shared secret.
-* Application authentication with Azure managed identity.
-* Application authentication with an X.509v2 certificate locally installed, or a certificate provided inline.
-* Application authentication with an existing Azure AD token, previously issued for Kusto.
-* User or application authentication with an Azure AD token issued for another resource. In this case, a trust relationship must exist between that resource and Azure Data Explorer.
-
-For guidance and examples, see the [connection strings](../api/connection-strings/kusto.md) reference.
+Azure AD supports both user and application authentication. [User authentication](#user-authentication) is used to verify the identity of human principals and can be carried out interactively, where a human user provides credentials, or programmatically using a token. [Application authentication](#application-authentication) is used to authenticate services and applications that need to run and access resources without human intervention.
 
 ## User authentication
 
-User authentication happens when the user presents credentials to Azure AD or to some identity provider that federates with Azure AD, such as Active Directory Federation Services (AD FS). The user gets back a security token. That token can be presented to the Azure Data Explorer service. Azure Data Explorer determines whether the token is valid, whether the token is issued by a trusted issuer, and what security claims the token contains.
+User authentication happens when the user presents credentials to Azure AD or an identity provider that federates with Azure AD, such as Active Directory Federation Services (AD FS). The user gets back a security token that can be presented to the Azure Data Explorer service. Azure Data Explorer determines whether the token is valid, whether the token is issued by a trusted issuer, and what security claims the token contains.
 
-On the client side, Azure Data Explorer supports both interactive and unattended authentication, by using the [MSAL (Microsoft Authentication Library)](/azure/active-directory/develop/msal-overview). Token-based authentication is also supported. With this kind of authentication, an application that is using Azure Data Explorer obtains a valid user token, and can then access Azure Data Explorer. If an application obtains a valid user token for some other resource, there must be a trust relationship between that resource and Azure Data Explorer.
+Azure Data Explorer supports the following methods of user authentication, including through the [client libraries](../api/client-libraries.md):
 
-## Application authentication
+* Interactive user authentication with sign-in through the user interface.
+* User authentication with an Azure AD token issued for Azure Data Explorer.
+* User authentication with an Azure AD token issued for another resource. In this case, a trust relationship must exist between that resource and Azure Data Explorer.
 
-When requests aren't associated with a specific user, or there's no user available to enter
-credentials, you can use the Azure AD application authentication process instead. The application authenticates to Azure AD (or to the federated identity provider) by presenting some secret information. The following scenarios for application authentication are supported by the various Kusto clients:
+### Application authentication
 
-* By using an X.509v2 certificate installed locally.
-* By using an X.509v2 certificate given to the client library as a byte stream.
-* By using an Azure AD application ID and an associated application key. (This is the equivalent of username/password authentication for applications.)
-* By using an Azure managed identity, associated with the service communicating with Azure Data Explorer.
-* By using a previously obtained, valid Azure AD token (issued to Kusto).
-* By using a previously obtained, valid Azure AD token (issued to some other resource). In this case, there must be a trust relationship between that resource and Kusto.
+Application authentication is needed when requests are not associated with a specific user or when no user is available to provide credentials. In this case, the application authenticates to Azure AD or the federated IdP by presenting secret information.
+
+Azure Data Explorer supports the following methods of application authentication, including through the [client libraries](../api/client-libraries.md):
+
+* Application authentication with an Azure managed identity.
+* Application authentication with an X.509v2 certificate installed locally.
+* Application authentication with an X.509v2 certificate given to the client library as a byte stream.
+* Application authentication with an Azure AD application ID and an Azure AD application key. The application ID and application key are like a username and password.
+* Application authentication with a previously obtained valid Azure AD token, issued to Azure Data Explorer.
+* Application authentication with an Azure AD token issued for another resource. In this case, a trust relationship must exist between that resource and Azure Data Explorer.
 
 ## Azure AD server application permissions
 
