@@ -34,11 +34,11 @@ Azure Data Explorer supports the following methods of application authentication
 * Application authentication with a previously obtained valid Azure AD token, issued to Azure Data Explorer.
 * Application authentication with an Azure AD token issued for another resource. In this case, a trust relationship must exist between that resource and Azure Data Explorer.
 
-## Azure AD server application permissions
+## Azure AD permissions
 
-Generally, an Azure AD service application can define multiple permissions, such as read-only or read-write. The Azure AD client application can decide which permissions it needs when it requests an authorization token. As part of acquiring the token, the user is asked to authorize the Azure AD client application to act on the user's behalf, with authorization to have these permissions. If the user approves, these permissions are listed in the scope claim of the token issued to the Azure AD client application.
+In Azure AD, a service application can have different permissions, and the client application can decide which permissions it needs. When the client requests an authorization token, the user is prompted to authorize the application to act on their behalf with those permissions. If approved, these permissions are listed in the scope claim of the token issued to the client application.
 
-The Azure AD client application is configured to request the **Access Kusto** permission from the user. Note that Azure AD refers to the user as the *resource owner*.
+For Azure Data Explorer, the Azure AD client application is configured to request the "Access Kusto" permission from the user, who is also referred to as the "resource owner".
 
 ## Kusto client SDK as an Azure AD client application
 
