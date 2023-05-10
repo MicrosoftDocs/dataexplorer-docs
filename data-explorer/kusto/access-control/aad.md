@@ -172,7 +172,7 @@ For Azure Data Explorer, the Azure AD client application is configured to reques
 
 ## Microsoft Authentication Library (MSAL)
 
-The Kusto Kusto [client libraries](../api/client-libraries.md) use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens for communicating with Azure Data Explorer. In this situation the Kusto client library is the Azure AD client application, as described in the previous section. Throughout the process of acquiring a token, the client libraries provide the following information:
+The Kusto [client libraries](../api/client-libraries.md) use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens for communicating with Azure Data Explorer. In this situation the Kusto client library is the Azure AD client application, as described in the previous section. Throughout the process of acquiring a token, the client libraries provide the following information:
 
 - The Azure AD authority URI (`https://login.microsoftonline.com` in the global Azure), and the Azure AD tenant, as received from the caller.
 - The Azure AD client application ID.
