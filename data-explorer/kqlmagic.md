@@ -20,7 +20,7 @@ In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to conne
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Jupyter Notebook installed on your local machine. Otherwise, use [Azure Data Studio](/sql/azure-data-studio/notebooks/notebooks-kqlmagic).
-* We recommend using Python 3.6 with kqlmagic. To change the Jupyter Notebook kernel version to Python 3.6, click on **Kernel** > **Change Kernel** > **Python 3.6**.
+* We recommend using Python 3.6 with kqlmagic. To change the Jupyter Notebook kernel version to Python 3.6, select **Kernel** > **Change Kernel** > **Python 3.6**.
 
 ## Install kqlmagic
 
@@ -86,7 +86,7 @@ Anonymous authentication is equivalent to no authentication, which is only suppo
 
 > [!TIP]
 >
-> * To parameterize the connection string, use unquoted values since they are interpreted as a Python expression.
+> * To parameterize the connection string, use unquoted values as they are interpreted as Python expressions.
 > * To simplify the process of getting credentials, see [Connection options](#connection-options).
 
 ### Example of cluster connection
