@@ -25,7 +25,7 @@ The following examples show how to define trusted tenants in the portal and with
 
 1. Define the desired tenants permissions.
 
-:::image type="content" source="media/define-trusted-external-tenants/trusted-external-tenants.png" alt-text="Screenshot of the Security blade" lightbox="media/define-trusted-external-tenants/trusted-external-tenants.png":::
+:::image type="content" source="../../media/define-trusted-external-tenants/trusted-external-tenants.png" alt-text="Screenshot of the Security blade" lightbox="../../media/define-trusted-external-tenants/trusted-external-tenants.png":::
 
 ## [API](#tab/api)
 
@@ -82,7 +82,7 @@ PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-1234567
 
 ## Add Principals
 
-After updating the `trustedExternalTenants` property, you can give access to principals from the approved tenants. Use the Azure portal to give a principal [cluster level permissions](manage-cluster-permissions.md) or [database permissions](manage-database-permissions.md). Alternatively, to give access to a database, table, function, or materialized view level, use [management commands](../management/security-roles.md).
+After updating the `trustedExternalTenants` property, you can give access to principals from the approved tenants. Use the Azure portal to give a principal [cluster level permissions](../../manage-cluster-permissions.md) or [database permissions](../../manage-database-permissions.md). Alternatively, to give access to a database, table, function, or materialized view level, use [management commands](../management/security-roles.md).
 
 ## Limitations
 

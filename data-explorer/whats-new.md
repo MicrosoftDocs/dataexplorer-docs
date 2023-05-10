@@ -94,7 +94,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) <br/> - [Referencing security principals](./kusto/management/access-control/referencing-security-principals.md) | Updated articles. Renewed and restructured referencing of security principals and identity providers.|
+|- [Allow cross-tenant queries and commands](kusto/access-control/cross-tenant-query-and-commands.md) <br/> - [Referencing security principals](./kusto/management/access-control/referencing-security-principals.md) | Updated articles. Renewed and restructured referencing of security principals and identity providers.|
 
 **Functions library**
 

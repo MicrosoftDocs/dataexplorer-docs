@@ -338,7 +338,7 @@ Article title | Description
 Article title | Description
 ---|---
 [Azure Policy Regulatory Compliance controls](security-controls-policy.md) | New article. This page lists the **compliance domains** and **security controls**.
-[Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | New article. In this article, you'll learn how to give cluster access to principals from another tenant.
+[Allow cross-tenant queries and commands](kusto/access-control/cross-tenant-query-and-commands.md) | New article. In this article, you'll learn how to give cluster access to principals from another tenant.
 
 **Management**
 
