@@ -37,7 +37,7 @@ The default [caching policy](cachepolicy.md) for the follower cluster uses the l
 
 |Option             |Description                                                                                                                              |
 |-------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-|**None**           |The [authorized principals](access-control/index.md#authorization) are defined in the source database of the leader cluster.     |
+|**None**           |The [authorized principals](../access-control/index.md#authorization) are defined in the source database of the leader cluster.     |
 |**replace**        |The override authorized principals replace the authorized principals from the source database in the leader cluster.  |
 |**union**(default) |The override authorized principals are combined with the authorized principals from the source database in the leader cluster. |
 

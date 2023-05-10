@@ -59,7 +59,7 @@ When an MSA principal is configured on an Azure Data Explorer resource, Azure Da
 ### Authenticated SDK or REST calls
 
 * When using the REST API, authentication is done with the standard HTTP `Authorization` header
-* When using any of the Azure Data Explorer .NET libraries, authentication is controlled by specifying the authentication method and parameters in the [connection string](../api/connection-strings/kusto.md). Another method is to set the properties on the [client request properties](../../api/netfx/request-properties.md) object.
+* When using any of the Azure Data Explorer .NET libraries, authentication is controlled by specifying the authentication method and parameters in the [connection string](../api/connection-strings/kusto.md). Another method is to set the properties on the [client request properties](../api/netfx/request-properties.md) object.
 
 ### Azure Data Explorer client SDK as an Azure AD client application
 
