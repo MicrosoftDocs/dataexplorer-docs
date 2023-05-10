@@ -4,7 +4,7 @@ description: In this article, you learn how to ingest blobs into Azure Data Expl
 ms.reviewer: lugoldbe
 ms.topic: tutorial
 ms.custom: devx-track-arm-template
-ms.date: 05/07/2023
+ms.date: 05/10/2023
 ---
 
 # End-to-end blob ingestion into Azure Data Explorer
@@ -24,11 +24,10 @@ This article contains examples in C# and Python. Choose the tab for your preferr
 
 ### [C#](#tab/csharp)
 
-* Install [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Install [Microsoft.Azure.Management.ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).
-* Install [Microsoft.Azure.Management.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/).
-* Install [Microsoft.Azure.Storage.Blob](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/).
-* Install [Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) for authentication.
+* Install [Azure.ResourceManager.Kusto](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
+* Install [Azure.ResourceManager.EventGrid](https://www.nuget.org/packages/Azure.ResourceManager.EventGrid/).
+* Install [Azure.Storage.Blobs](https://www.nuget.org/packages/Azure.Storage.Blobs/).
+* Install [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/) for authentication.
 
 ### [Python](#tab/python)
 
@@ -294,88 +293,78 @@ The following code example gives you a step-by-step process that results in data
 You first create a resource group. You also create Azure resources such as a storage account and container, an event hub, and an Azure Data Explorer cluster and database, and add principals. You then create an Azure Event Grid subscription, along with a table and column mapping, in the Azure Data Explorer database. Finally, you create the data connection to configure Azure Data Explorer to ingest data from the new storage account.
 
 ```csharp
-var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "PlaceholderClientSecret";//Client Secret
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Application ID
+var clientSecret = "PlaceholderClientSecret"; //Client Secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-string location = "West Europe";
-string locationSmallCase = "westeurope";
-string azureResourceTemplatePath = @"xxxxxxxxx\template.json";//Path to the Azure Resource Manager template JSON from the previous section
-
-string deploymentName = "e2eexample";
-string resourceGroupName = deploymentName + "resourcegroup";
-string eventHubName = deploymentName + "eventhub";
-string eventHubNamespaceName = eventHubName + "ns";
-string storageAccountName = deploymentName + "storage";
-string storageContainerName = deploymentName + "storagecontainer";
-string eventGridSubscriptionName = deploymentName + "eventgrid";
-string kustoClusterName = deploymentName + "kustocluster";
-string kustoDatabaseName = deploymentName + "kustodatabase";
-string kustoTableName = "Events";
-string kustoColumnMappingName = "Events_CSV_Mapping";
-string kustoDataConnectionName = deploymentName + "kustoeventgridconnection";
-
-//principals
-string principalIdForCluster = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-string roleForClusterPrincipal = "AllDatabasesAdmin";
-string tenantIdForClusterPrincipal = tenantId;
-string principalTypeForCluster = "App";
-string principalIdForDatabase = "xxxxxxxx@xxxxxxxx.com";//User Email
-string roleForDatabasePrincipal = "Admin";
-string tenantIdForDatabasePrincipal = tenantId;
-string principalTypeForDatabase = "User";
-
-var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
-var resourceManagementClient = new ResourceManagementClient(serviceCreds);
+var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+var resourceManagementClient = new ArmClient(credentials, subscriptionId);
+var deploymentName = "e2eexample";
 Console.WriteLine("Step 1: Create a new resource group in your Azure subscription to manage all the resources for using Azure Data Explorer.");
-resourceManagementClient.SubscriptionId = subscriptionId;
-await resourceManagementClient.ResourceGroups.CreateOrUpdateAsync(resourceGroupName,
-    new ResourceGroup() { Location = locationSmallCase });
-
-Console.WriteLine(
-    "Step 2: Create a Blob Storage, a container in the Storage account, an event hub, an Azure Data Explorer cluster, database, and add principals by using an Azure Resource Manager template.");
-var parameters = new Dictionary<string, Dictionary<string, object>>();
-parameters["eventHubNamespaceName"] = new Dictionary<string, object>(capacity: 1) {{"value", eventHubNamespaceName}};
-parameters["eventHubName"] = new Dictionary<string, object>(capacity: 1) {{"value", eventHubName }};
-parameters["storageAccountName"] = new Dictionary<string, object>(capacity: 1) {{"value", storageAccountName }};
-parameters["containerName"] = new Dictionary<string, object>(capacity: 1) {{"value", storageContainerName }};
-parameters["kustoClusterName"] = new Dictionary<string, object>(capacity: 1) {{"value", kustoClusterName }};
-parameters["kustoDatabaseName"] = new Dictionary<string, object>(capacity: 1) {{"value", kustoDatabaseName }};
-parameters["principalIdForCluster"] = new Dictionary<string, object>(capacity: 1) {{"value", principalIdForCluster }};
-parameters["roleForClusterPrincipal"] = new Dictionary<string, object>(capacity: 1) {{"value", roleForClusterPrincipal }};
-parameters["tenantIdForClusterPrincipal"] = new Dictionary<string, object>(capacity: 1) {{"value", tenantIdForClusterPrincipal }};
-parameters["principalTypeForCluster"] = new Dictionary<string, object>(capacity: 1) {{"value", principalTypeForCluster }};
-parameters["principalIdForDatabase"] = new Dictionary<string, object>(capacity: 1) {{"value", principalIdForDatabase }};
-parameters["roleForDatabasePrincipal"] = new Dictionary<string, object>(capacity: 1) {{"value", roleForDatabasePrincipal }};
-parameters["tenantIdForDatabasePrincipal"] = new Dictionary<string, object>(capacity: 1) {{"value", tenantIdForDatabasePrincipal }};
-parameters["principalTypeForDatabase"] = new Dictionary<string, object>(capacity: 1) {{"value", principalTypeForDatabase }};
-            
-string template = File.ReadAllText(azureResourceTemplatePath, Encoding.UTF8);
-await resourceManagementClient.Deployments.CreateOrUpdateAsync(resourceGroupName, deploymentName,
-    new Deployment(new DeploymentProperties(DeploymentMode.Incremental, template: template,
-        parameters: parameters)));
-
-Console.WriteLine(
-    "Step 3: Create an Event Grid subscription to publish blob events created in a specific container to an event hub.");
-var eventGridClient = new EventGridManagementClient(serviceCreds)
-{
-    SubscriptionId = subscriptionId
-};
-string storageResourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}";
-string eventHubResourceId = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{eventHubNamespaceName}/eventhubs/{eventHubName}";
-await eventGridClient.EventSubscriptions.CreateOrUpdateAsync(storageResourceId, eventGridSubscriptionName,
-    new EventSubscription()
+var subscriptions = resourceManagementClient.GetSubscriptions();
+var subscription = (await subscriptions.GetAsync(subscriptionId)).Value;
+var resourceGroups = subscription.GetResourceGroups();
+var resourceGroupName = deploymentName + "resourcegroup";
+var location = AzureLocation.WestEurope;
+var resourceGroupData = new ResourceGroupData(location);
+var resourceGroup = (await resourceGroups.CreateOrUpdateAsync(WaitUntil.Completed, resourceGroupName, resourceGroupData)).Value;
+Console.WriteLine("Step 2: Create a Blob Storage, a container in the Storage account, an event hub, an Azure Data Explorer cluster, database, and add principals by using an Azure Resource Manager template.");
+var deployments = resourceGroup.GetArmDeployments();
+var azureResourceTemplatePath = @"xxxxxxxxx\template.json"; //Path to the Azure Resource Manager template JSON from the previous section
+var eventHubName = deploymentName + "eventhub";
+var eventHubNamespaceName = eventHubName + "ns";
+var storageAccountName = deploymentName + "storage";
+var storageContainerName = deploymentName + "storagecontainer";
+var eventGridSubscriptionName = deploymentName + "eventgrid";
+var kustoClusterName = deploymentName + "kustocluster";
+var kustoDatabaseName = deploymentName + "kustodatabase";
+var kustoTableName = "Events";
+var kustoColumnMappingName = "Events_CSV_Mapping";
+var kustoDataConnectionName = deploymentName + "kustoeventgridconnection";
+var armDeploymentContent = new ArmDeploymentContent(
+    new ArmDeploymentProperties(ArmDeploymentMode.Incremental)
     {
-        Destination = new EventHubEventSubscriptionDestination(eventHubResourceId),
-        Filter = new EventSubscriptionFilter()
-        {
-            SubjectBeginsWith = $"/blobServices/default/containers/{storageContainerName}",
-            IncludedEventTypes = new List<string>(){"Microsoft.Storage.BlobCreated"}
-        }
-    });
-
+        Template = BinaryData.FromString(File.ReadAllText(azureResourceTemplatePath, Encoding.UTF8)),
+        Parameters = BinaryData.FromObjectAsJson(
+            JsonConvert.SerializeObject(
+                new Dictionary<string, Dictionary<string, string>>
+                {
+                    ["eventHubNamespaceName"] = new(capacity: 1) { { "value", eventHubNamespaceName } },
+                    ["eventHubName"] = new(capacity: 1) { { "value", eventHubName } },
+                    ["storageAccountName"] = new(capacity: 1) { { "value", storageAccountName } },
+                    ["containerName"] = new(capacity: 1) { { "value", storageContainerName } },
+                    ["kustoClusterName"] = new(capacity: 1) { { "value", kustoClusterName } },
+                    ["kustoDatabaseName"] = new(capacity: 1) { { "value", kustoDatabaseName } },
+                    ["principalIdForCluster"] = new(capacity: 1) { { "value", "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx" } }, //Application ID
+                    ["roleForClusterPrincipal"] = new(capacity: 1) { { "value", "AllDatabasesAdmin" } },
+                    ["tenantIdForClusterPrincipal"] = new(capacity: 1) { { "value", tenantId } },
+                    ["principalTypeForCluster"] = new(capacity: 1) { { "value", "App" } },
+                    ["principalIdForDatabase"] = new(capacity: 1) { { "value", "xxxxxxxx@xxxxxxxx.com" } }, //User Email
+                    ["roleForDatabasePrincipal"] = new(capacity: 1) { { "value", "Admin" } },
+                    ["tenantIdForDatabasePrincipal"] = new(capacity: 1) { { "value", tenantId } },
+                    ["principalTypeForDatabase"] = new(capacity: 1) { { "value", "User" } }
+                }
+            )
+        )
+    }
+);
+await deployments.CreateOrUpdateAsync(WaitUntil.Completed, deploymentName, armDeploymentContent);
+Console.WriteLine("Step 3: Create an Event Grid subscription to publish blob events created in a specific container to an event hub.");
+var storageResourceId = new ResourceIdentifier($"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}");
+var eventHubResourceId = new ResourceIdentifier($"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{eventHubNamespaceName}/eventhubs/{eventHubName}");
+var eventSubscriptions = resourceManagementClient.GetEventSubscriptions(storageResourceId);
+var eventSubscriptionData = new EventGridSubscriptionData
+{
+    Destination = new EventHubEventSubscriptionDestination { ResourceId = eventHubResourceId },
+    Filter = new EventSubscriptionFilter
+    {
+        SubjectBeginsWith = $"/blobServices/default/containers/{storageContainerName}",
+    }
+};
+eventSubscriptionData.Filter.IncludedEventTypes.Add(BlobStorageEventType.MicrosoftStorageBlobCreated.ToString());
+await eventSubscriptions.CreateOrUpdateAsync(WaitUntil.Completed, eventGridSubscriptionName, eventSubscriptionData);
 Console.WriteLine("Step 4: Create a table (with three columns: EventTime, EventId, and EventSummary) and column mapping in your Azure Data Explorer database.");
-var kustoUri = $"https://{kustoClusterName}.{locationSmallCase}.kusto.windows.net";
+var kustoUri = $"https://{kustoClusterName}.{location}.kusto.windows.net";
 var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 {
     InitialCatalog = kustoDatabaseName,
@@ -384,10 +373,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     ApplicationKey = clientSecret,
     Authority = tenantId
 };
-
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
 {
-    var command =
+    kustoClient.ExecuteControlCommand(
         CslCommandGenerator.GenerateTableCreateCommand(
             kustoTableName,
             new[]
@@ -395,30 +383,38 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
                 Tuple.Create("EventTime", "System.DateTime"),
                 Tuple.Create("EventId", "System.Int32"),
                 Tuple.Create("EventSummary", "System.String"),
-            });
-
-    kustoClient.ExecuteControlCommand(command);
-
-    command = CslCommandGenerator.GenerateTableMappingCreateCommand(
-        Data.Ingestion.IngestionMappingKind.Csv,
-        kustoTableName,
-        kustoColumnMappingName,
-        new ColumnMapping[] {
-            new ColumnMapping() { ColumnName = "EventTime", ColumnType = "dateTime", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "0" } } },
-            new ColumnMapping() { ColumnName = "EventId", ColumnType = "int", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "1" } } },
-            new ColumnMapping() { ColumnName = "EventSummary", ColumnType = "string", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "2" } } },
-        });
-    kustoClient.ExecuteControlCommand(command);
+            }
+        )
+    );
+    kustoClient.ExecuteControlCommand(
+        CslCommandGenerator.GenerateTableMappingCreateCommand(
+            IngestionMappingKind.Csv,
+            kustoTableName,
+            kustoColumnMappingName,
+            new ColumnMapping[]
+            {
+                new() { ColumnName = "EventTime", ColumnType = "dateTime", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "0" } } },
+                new() { ColumnName = "EventId", ColumnType = "int", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "1" } } },
+                new() { ColumnName = "EventSummary", ColumnType = "string", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "2" } } },
+            }
+        )
+    );
 }
-
 Console.WriteLine("Step 5: Add an Event Grid data connection. Azure Data Explorer will automatically ingest the data when new blobs are created.");
-var kustoManagementClient = new KustoManagementClient(serviceCreds)
+var cluster = (await resourceGroup.GetKustoClusterAsync(kustoClusterName)).Value;
+var database = (await cluster.GetKustoDatabaseAsync(kustoDatabaseName)).Value;
+var dataConnections = database.GetKustoDataConnections();
+var eventGridDataConnectionData = new KustoEventGridDataConnection
 {
-    SubscriptionId = subscriptionId
+    StorageAccountResourceId = storageResourceId,
+    EventGridResourceId = eventHubResourceId,
+    ConsumerGroup = "$Default",
+    Location = location,
+    TableName = kustoTableName,
+    MappingRuleName = kustoColumnMappingName,
+    DataFormat = KustoEventGridDataFormat.Csv
 };
-await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, kustoClusterName,
-                kustoDatabaseName, dataConnectionName: kustoDataConnectionName, new EventGridDataConnection(storageResourceId, eventHubResourceId, consumerGroup: "$Default", location: location, tableName:kustoTableName, mappingRuleName: kustoColumnMappingName, dataFormat: "csv"));
-
+await dataConnections.CreateOrUpdateAsync(WaitUntil.Completed, kustoDataConnectionName, eventGridDataConnectionData);
 ```
 
 | **Setting** | **Field description** |
@@ -590,14 +586,12 @@ poller.wait()
 1. Upload a file into the storage account.
 
     ```csharp
-    string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=xxxxxxxxxxxxxx;AccountKey=xxxxxxxxxxxxxx;EndpointSuffix=core.windows.net";
-    var cloudStorageAccount = CloudStorageAccount.Parse(storageConnectionString);
-    CloudBlobClient blobClient = cloudStorageAccount.CreateCloudBlobClient();
-    CloudBlobContainer container = blobClient.GetContainerReference(storageContainerName);
-    CloudBlockBlob blockBlob = container.GetBlockBlobReference("test.csv");
-    var blobContent = @"2007-01-01 00:00:00.0000000,2592,Several trees down
-    2007-01-01 00:00:00.0000000,4171,Winter Storm";
-    await blockBlob.UploadTextAsync(blobContent);
+    var container = new BlobContainerClient(
+        "DefaultEndpointsProtocol=https;AccountName=xxxxxxxxxxxxxx;AccountKey=xxxxxxxxxxxxxx;EndpointSuffix=core.windows.net",
+        storageContainerName
+    );
+    var blobContent = "2007-01-01 00:00:00.0000000,2592,Several trees down\n2007-01-01 00:00:00.0000000,4171,Winter Storm";
+    await container.UploadBlobAsync("test.csv", BinaryData.FromString(blobContent));
     ```
 
     |**Setting** | **Field description**|
@@ -619,12 +613,12 @@ poller.wait()
     using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder))
     {
         var query = $"{kustoTableName} | take 10";
-        using (var reader = kustoClient.ExecuteQuery(query) as DataTableReader2)
-        {// Print the contents of each of the result sets. 
-            while (reader.Read())
-            {
-                Console.WriteLine($"{reader[0]}, {reader[1]}, {reader[2]}");
-            }
+        
+        using var reader = kustoClient.ExecuteQuery(query) as DataTableReader2;
+        // Print the contents of each of the result sets. 
+        while (reader != null && reader.Read())
+        {
+            Console.WriteLine($"{reader[0]}, {reader[1]}, {reader[2]}");
         }
     }
     ```
