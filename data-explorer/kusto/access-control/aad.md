@@ -54,6 +54,28 @@ Azure Data Explorer supports the following methods of user authentication, inclu
 * User authentication with an Azure AD token issued for Azure Data Explorer.
 * User authentication with an Azure AD token issued for another resource. In this case, a trust relationship must exist between that resource and Azure Data Explorer.
 
+### Example of user authentication
+
+The following example uses [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to get an Azure AD user token to access Azure Data Explorer in a way that launches the interactive sign-in UI:
+
+```csharp
+var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
+// Create a public authentication client for Azure AD:
+var authClient = PublicClientApplicationBuilder.Create("<appId>")
+    .WithAuthority($"https://login.microsoftonline.com/<appTenant>")
+    .WithRedirectUri("<appRedirectUri>")
+    .Build();
+// Acquire user token for the interactive user for Azure Data Explorer:
+var result = authClient.AcquireTokenInteractive(
+    new[] { $"{kustoUri}/.default" } // Define scopes for accessing Azure Data Explorer cluster
+).ExecuteAsync().Result;
+// Extract Bearer access token 
+var bearerToken = result.AccessToken;
+// Create an HTTP request and set the Authorization header on your request:
+var request = WebRequest.Create(new Uri(kustoUri));
+request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
+```
+
 ### Application authentication
 
 Application authentication is needed when requests aren't associated with a specific user or when no user is available to provide credentials. In this case, the application authenticates to Azure AD or the federated IdP by presenting secret information.
@@ -66,6 +88,29 @@ Azure Data Explorer supports the following methods of application authentication
 * Application authentication with an Azure AD application ID and an Azure AD application key. The application ID and application key are like a username and password.
 * Application authentication with a previously obtained valid Azure AD token, issued to Azure Data Explorer.
 * Application authentication with an Azure AD token issued for another resource. In this case, a trust relationship must exist between that resource and Azure Data Explorer.
+
+### Example of application authentication
+
+The following example uses [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to get an Azure AD application token to access Azure Data Explorer. In this flow no prompt is presented, and
+the application must be registered with Azure AD and equipped with credentials needed to perform application authentication, such as an app key issued by Azure AD, or an X509v2 certificate that has been pre-registered with Azure AD.
+
+```csharp
+var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
+// Create a confidential authentication client for Azure AD:
+var authClient = ConfidentialClientApplicationBuilder.Create("<appId>")
+    .WithAuthority($"https://login.microsoftonline.com/<appTenant>")
+    .WithClientSecret("<appKey>") // can be replaced by .WithCertificate to authenticate with an X.509 certificate
+    .Build();
+// Acquire aplpication token for Azure Data Explorer:
+var result = authClient.AcquireTokenForClient(
+    new[] { $"{kustoUri}/.default" } // Define scopes for accessing Azure Data Explorer cluster
+).ExecuteAsync().Result;
+// Extract Bearer access token 
+var bearerToken = result.AccessToken;
+// Create an HTTP request and set the Authorization header on your request:
+var request = WebRequest.Create(new Uri(kustoUri));
+request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
+```
 
 ## Azure AD permissions
 
