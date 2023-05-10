@@ -172,6 +172,9 @@ items:
     - name: Apache Log4J 2
       displayName: ingest data, ingestion, connector
       href: apache-log4j2-connector.md
+    - name: NLog
+      displayName: ingest data, ingestion, connector
+      href: nlog-sink.md
     - name: Serilog
       displayName: ingest data, ingestion, connector
       href: serilog-sink.md
