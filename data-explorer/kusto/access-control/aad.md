@@ -3,7 +3,7 @@ title: Azure Active Directory authentication - Azure Data Explorer
 description: This article describes Azure Active Directory authentication in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/06/2022
+ms.date: 05/10/2023
 ---
 # Azure Active Directory authentication
 
