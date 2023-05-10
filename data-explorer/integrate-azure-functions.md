@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.date: 09/13/2022
 ---
 
-# Integrating Azure Functions with Azure Data Explorer using input and output Bindings (preview)
+# Integrating Azure Functions with Azure Data Explorer using input and output bindings (preview)
 
 Azure Functions allow you to run serverless code in the cloud on a schedule or in response to an event. With Azure Data Explorer input and output bindings for Azure Functions, you can integrate Azure Data Explorer into your workflows to ingest data and run queries against your cluster.
 
@@ -22,9 +22,9 @@ Try out the integration with our [sample project](https://github.com/Azure/Webjo
 
 For information on how to use Azure Data Explorer bindings for Azure Functions, see the following topics:
 
-- [Azure Data Explorer bindings for Azure Functions overview](/azure/azure-functions/functions-bindings-azure-data-explorer)
-- [Azure Data Explorer input bindings for Azure Functions](/azure/azure-functions/functions-bindings-azure-data-explorer-input)
-- [Azure Data Explorer output bindings for Azure Functions](/azure/azure-functions/functions-bindings-azure-data-explorer-output)
+- [Azure Data Explorer bindings for Azure Functions overview](https://aka.ms/adx-docs-af-overview)
+- [Azure Data Explorer input bindings for Azure Functions](https://aka.ms/adx-docs-af-input)
+- [Azure Data Explorer output bindings for Azure Functions](https://aka.ms/adx-docs-af-output)
 
 ## Scenarios for using Azure Data Explorer bindings for Azure Functions
 
@@ -38,7 +38,7 @@ The following sections describe some how to use input bindings in some common sc
 
 #### Scenario 1: An HTTP endpoint to query data from a cluster
 
-Using input bindings is applicable in situations where you need to expose Azure Data Explorer data through a REST API. In this scenario, you use an Azure Functions HTTP trigger to query data in your cluster. The scenario is particularly useful in situations where you need to provide programmatic access to Azure Data Explorer data for external applications or services. By exposing the your data through a REST API, applications can readily consume the data without requiring them to connect directly to your cluster.
+Using input bindings is applicable in situations where you need to expose Azure Data Explorer data through a REST API. In this scenario, you use an Azure Functions HTTP trigger to query data in your cluster. The scenario is particularly useful in situations where you need to provide programmatic access to Azure Data Explorer data for external applications or services. By exposing your data through a REST API, applications can readily consume the data without requiring them to connect directly to your cluster.
 
 The code defines a function with an HTTP trigger and an Azure Data Explorer input binding. The input binding specifies the query to run against the **Products** table in the **productsdb** database. The function uses the **productId** column as the predicate passed through as a parameter.
 
