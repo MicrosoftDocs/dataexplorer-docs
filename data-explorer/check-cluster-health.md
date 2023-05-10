@@ -38,5 +38,7 @@ There are several factors that impact the health of an Azure Data Explorer clust
 1. It's possible to add other metrics to the chart. Select the chart then **Add metric**. Select another metric - this example shows **CPU**.
 
     ![Add metric.](media/check-cluster-health/add-metric.png)
+    
+1. Review the resource and ingestion metrics listed in [cluster metrics](using-metrics.md#cluster-metrics) and review the recommendations in the metric description column.
 
 1. If you need assistance diagnosing issues with the health of a cluster, please open a support request in the [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
