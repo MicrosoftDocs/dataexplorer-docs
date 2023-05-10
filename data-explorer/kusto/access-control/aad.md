@@ -15,34 +15,7 @@ There are three main authentication scenarios:
 
 * [User authentication](#user-authentication): where an interactive application prompts the user for their credentials.
 * [Application authentication](#application-authentication): where an application authenticates itself using configured credentials.
-* [On-behalf-of authentication](#on-behlaf-of-authentication): where an application gets an Azure AD access token from another application and uses it to access Azure Data Explorer.
-
-## How-to specify the Azure AD resource ID
-
-To get an access token from Azure AD, the client must specify the resource for which the token is issued. The resource for an Azure Data Explorer endpoint is the URI of the endpoint without port information and path. For example, `https://help.kusto.windows.net`.
-
-Alternatively, clients may request an access token with a cloud-static resource ID, such as `https://kusto.kusto.windows.net` for public cloud services. Clients doing so must make sure that they only send this access token to an Azure Data Explorer service endpoint, based on the host name suffix, in this case `kusto.windows.net`. Sending the access token to untrusted service endpoints might result in token leakage, allowing the receiving service to perform operations on any Azure Data Explorer service endpoint to which the principal has access.
-
-## How-to specify the Azure AD tenant ID
-
-Azure AD is a multi-tenant service, and every organization can create an object called **directory** in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a **tenant**. Azure AD tenants are identified by a GUID, or the **tenant ID**. In many cases, the domain name of the organization can identity the Azure AD tenant.
-
-For example, an organization called "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.
-
-## How-to specify the Azure AD authority endpoint
-
-Azure AD has many endpoints for authentication. The Azure AD service endpoint used for authentication is also called the Azure AD authority URL or simply Azure AD authority.
-
-To authenticate a principal, you need to know their Azure AD directory. If you know the directory, then the Azure AD authority is `https://login.microsoftonline.com/{tenantId}` where `{tenantId}` is either the tenant ID or domain name. If you don't know the directory, then use the "common" Azure AD authority by replacing `{tenantId}` with `common`.
-
-> [!NOTE]
-> The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer
-> service deployed in a national cloud, set the corresponding national cloud Azure AD service endpoint.
-> To change the endpoint, set an environment variable `AadAuthorityUri` to the required URI.
-
-## The Azure AD local token cache
-
-With Kusto [client libraries](../api/client-libraries.md), Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user. However, the cache doesn't completely eliminate the need for interactive prompts, and users can't predict when they'll be prompted. Therefore, non-interactive logins can't be supported if using a user account to access Azure Data Explorer.
+* [On-behalf-of authentication](#on-behalf-of-authentication): where an application gets an Azure AD access token from another application and uses it to access Azure Data Explorer.
 
 ## User authentication
 
@@ -112,6 +85,85 @@ var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
+## On-behalf-of authentication
+
+In this scenario, an application is sent an Azure AD access token for some arbitrary resource managed by the application, and it uses that token to acquire a new Azure AD access token for the Azure Data Explorer resource so that the application could access Azure Data Explorer on behalf of the principal indicated by the original Azure AD access token.
+
+This flow is called the [OAuth2 token exchange flow](https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-04). It generally requires multiple configuration steps with Azure AD, and in some cases might require special consent from the administrator of the Azure AD tenant. The following sections describe the steps of the flow.
+
+### Step 1: Establish trust relationship between your application and the Azure Data Explorer service
+
+1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're
+   signed-in to the correct tenant (see top/right corner for the identity
+   used to sign in to the portal).
+
+2. On the resources pane, select **Azure Active Directory**, then **App registrations**.
+
+3. Locate the application that uses the on-behalf-of flow and open it.
+
+4. Select **API permissions**, then **Add a permission**.
+
+5. Search for the application named **Azure Data Explorer** and select it.
+
+6. Select **user_impersonation / Access Kusto**.
+
+7. Select **Add permission**.
+
+### Step 2: Perform token exchange in your server code
+
+```csharp
+// Create a confidential authentication client for Azure AD:
+var authClient = ConfidentialClientApplicationBuilder.Create("<appId>")
+    .WithAuthority($"https://login.microsoftonline.com/<appTenant>")
+    .WithClientSecret("<appKey>") // can be replaced by .WithCertificate to authenticate with an X.509 certificate
+    .Build();
+// Acquire on-behalf-of user token for the interactive user for Azure Data Explorer based on provided token:
+var result = authClient.AcquireTokenOnBehalfOf(
+    new[] { "https://<clusterName>.<region>.kusto.windows.net/.default" }, // Define scopes for accessing Azure Data Explorer cluster
+    new UserAssertion("<userAccessToken>") // Encode the "original" token that will be used for exchange
+).ExecuteAsync().Result;
+var accessTokenForAdx = result.AccessToken;
+```
+
+### Step 3: Provide the token to the Kusto client library and execute queries
+
+```csharp
+// Create KustoConnectionStringBuilder using the previously acquired Azure AD token
+var connectionStringBuilder = new KustoConnectionStringBuilder("https://<clusterName>.<region>.kusto.windows.net")
+    .WithAadUserTokenAuthentication(accessTokenForAdx);
+// Create an ADX query client base on the conneciton string object
+using var queryClient = KustoClientFactory.CreateCslQueryProvider(connectionStringBuilder);
+// Execute query
+var queryResult = await queryClient.ExecuteQueryAsync("<databaseName>", "<query>", null);
+```
+
+## How-to specify the Azure AD resource ID
+
+To get an access token from Azure AD, the client must specify the resource for which the token is issued. The resource for an Azure Data Explorer endpoint is the URI of the endpoint without port information and path. For example, `https://help.kusto.windows.net`.
+
+Alternatively, clients may request an access token with a cloud-static resource ID, such as `https://kusto.kusto.windows.net` for public cloud services. Clients doing so must make sure that they only send this access token to an Azure Data Explorer service endpoint, based on the host name suffix, in this case `kusto.windows.net`. Sending the access token to untrusted service endpoints might result in token leakage, allowing the receiving service to perform operations on any Azure Data Explorer service endpoint to which the principal has access.
+
+## How-to specify the Azure AD tenant ID
+
+Azure AD is a multi-tenant service, and every organization can create an object called **directory** in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a **tenant**. Azure AD tenants are identified by a GUID, or the **tenant ID**. In many cases, the domain name of the organization can identity the Azure AD tenant.
+
+For example, an organization called "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.
+
+## How-to specify the Azure AD authority endpoint
+
+Azure AD has many endpoints for authentication. The Azure AD service endpoint used for authentication is also called the Azure AD authority URL or simply Azure AD authority.
+
+To authenticate a principal, you need to know their Azure AD directory. If you know the directory, then the Azure AD authority is `https://login.microsoftonline.com/{tenantId}` where `{tenantId}` is either the tenant ID or domain name. If you don't know the directory, then use the "common" Azure AD authority by replacing `{tenantId}` with `common`.
+
+> [!NOTE]
+> The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer
+> service deployed in a national cloud, set the corresponding national cloud Azure AD service endpoint.
+> To change the endpoint, set an environment variable `AadAuthorityUri` to the required URI.
+
+## The Azure AD local token cache
+
+With Kusto [client libraries](../api/client-libraries.md), Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user. However, the cache doesn't completely eliminate the need for interactive prompts, and users can't predict when they'll be prompted. Therefore, non-interactive logins can't be supported if using a user account to access Azure Data Explorer.
+
 ## Azure AD permissions
 
 In Azure AD, a service application can have different permissions, and the client application can decide which permissions it needs. When the client requests an authorization token, the user is prompted to authorize the application to act on their behalf with those permissions. If approved, these permissions are listed in the scope claim of the token issued to the client application.
@@ -129,4 +181,3 @@ The Kusto Kusto [client libraries](../api/client-libraries.md) use [Microsoft Au
 - The cluster URI (typically `https://cluster.region.kusto.windows.net` in the global Azure).
 
 The token returned by MSAL to the Kusto client library has the Azure Data Explorer service as the audience.
-
