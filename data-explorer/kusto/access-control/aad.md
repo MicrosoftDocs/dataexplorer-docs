@@ -7,14 +7,22 @@ ms.date: 05/11/2023
 ---
 # Authenticate with Azure Active Directory
 
-[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is a cloud-based identity and access management service. Azure AD can authenticate security principals or federate with other identity providers. We recommend using Azure AD to authenticate to Azure Data Explorer, since doing so ensures Azure Data Explorer won't have access to the principal's directory credentials.
+[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is a cloud-based identity and access management service that can authenticate security principals and federate with other identity providers. We recommend using Azure AD to authenticate to Azure Data Explorer, as doing so ensures that the principal's directory credentials aren't accessible to Azure Data Explorer.
 
-To access Azure Data Explorer programmatically, we recommend using one of the Kusto [client libraries](../api/client-libraries.md). The client must authenticate to Azure AD in a two-step process. Firstly, the client requests an Azure AD token. Then, the client issues requests to Azure Data Explorer, providing the access token acquired in the first step as proof of identity. All authorization checks are performed using this identity.
+To authenticate with Azure AD, the client must communicate with the Azure AD service and request an access token specific to Azure Data Explorer. Then, the client can use the acquired access token as proof of identity when issuing requests to Azure Data Explorer.
 
-The main authenticating scenarios are as follows:
+To access Azure Data Explorer programmatically, we recommend using the Kusto [client libraries](../api/client-libraries.md) to make the authentication process simpler. With the client libraries, the authentication properties are set by the [Kusto connection string](../api/connection-strings/kusto.md).
+
+In case you cannot use one of the Kusto client libraries, this article provides needed information for you to implement Azure AD authentication flow yourself.
+
+## Authentication scenarios
+
+The main types of authentication scenarios are as follows:
 
 * [User authentication](#user-authentication): verifies the identity of human users either through interactive prompts that prompt the user for their credentials or programmatically via a token.
+
 * [Application authentication](#application-authentication): verifies the identity of a service or application that needs to access resources without human intervention by using configured credentials.
+
 * [On-behalf-of authentication](#on-behalf-of-authentication): allows an application to obtain an Azure AD access token from another application and use it to access Azure Data Explorer.
 
 ## Understanding Azure AD permissions
