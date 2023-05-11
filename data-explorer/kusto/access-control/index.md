@@ -27,6 +27,7 @@ The association of security principals to security roles can be defined individu
 
 ## Next steps
 
-* Access Azure Data Explorer using the [client libraries](../api/client-libraries.md)
-* Build a [Kusto connection strings](../api/connection-strings/kusto.md)
-* Read the overview on [role-based access control](role-based-access-control.md)
+* [Authenticate with Azure Active Directory](aad.md)
+* Use the [client libraries](../api/client-libraries.md)
+* Build [Kusto connection strings](../api/connection-strings/kusto.md)
+* Understand Azure Data Explorer [role-based access control](role-based-access-control.md)
