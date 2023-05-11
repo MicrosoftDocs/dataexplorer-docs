@@ -25,7 +25,7 @@ The main types of authentication scenarios are as follows:
 
 In Azure AD, a service application can define different types of permissions, like read-only or read-write, that a client application can request when it needs an authorization token. The client application decides which permissions it requires, and when a principal attempts to access a resource through the client application, they're asked to authorize the client application to act on their behalf with the specified permissions. If the principal agrees, the permissions are included in the scope claim of the authorization token that Azure AD issues to the client application.
 
-For Azure Data Explorer, the Azure AD client application is configured to request the "Access Kusto" permission from the user, who is also referred to as the "resource owner".
+For Azure Data Explorer, the Azure AD client application is configured to request the "Access Kusto" permission from the principal, who is also referred to as the "resource owner".
 
 ## Microsoft Authentication Library (MSAL)
 
