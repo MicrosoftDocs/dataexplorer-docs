@@ -3,13 +3,13 @@ title: Azure Active Directory authentication - Azure Data Explorer
 description: This article describes Azure Active Directory authentication in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/10/2023
+ms.date: 05/11/2023
 ---
 # Authenticate with Azure Active Directory
 
-[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is a cloud-based identity and access management service. Azure AD can authenticate security principals or federate with other identity providers, such as Active Directory Federation Services (AD FS). We recommend authenticating through Azure Active Directory (Azure AD) service to access Azure Data Explorer, since doing so ensures Azure Data Explorer won't have access to the principal's directory credentials.
+[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is a cloud-based identity and access management service. Azure AD can authenticate security principals or federate with other identity providers. We recommend using Azure Active Directory (Azure AD) to authenticate to Azure Data Explorer, since doing so ensures Azure Data Explorer won't have access to the principal's directory credentials.
 
-We recommend using one of the Kusto [client libraries](../api/client-libraries.md) to access the Azure Data Explorer service programmatically. To access Azure Data Explorer, the client must authenticate to Azure AD in a two-step process. Firstly, the client requests an Azure AD token. Then, the client issues requests to Azure Data Explorer, providing the access token acquired in the first step as proof of identity. All authorization checks are performed using this identity.
+To access Azure Data Explorer programmatically, we recommend using one of the Kusto [client libraries](../api/client-libraries.md). The client must authenticate to Azure AD in a two-step process. Firstly, the client requests an Azure AD token. Then, the client issues requests to Azure Data Explorer, providing the access token acquired in the first step as proof of identity. All authorization checks are performed using this identity.
 
 There are three main authentication scenarios:
 
@@ -17,9 +17,15 @@ There are three main authentication scenarios:
 * [Application authentication](#application-authentication): where an application authenticates itself using configured credentials.
 * [On-behalf-of authentication](#on-behalf-of-authentication): where an application gets an Azure AD access token from another application and uses it to access Azure Data Explorer.
 
+## Understanding Azure AD permissions
+
+In Azure AD, a service application can define different types of permissions, like read-only or read-write, that a client application can request when it needs an authorization token. The client application decides which permissions it requires, and when a principal attempts to access a resource through the client application, they're asked to authorize the client application to act on their behalf with the specified permissions. If the principal agrees, the permissions are included in the scope claim of the authorization token that Azure AD issues to the client application.
+
+For Azure Data Explorer, the Azure AD client application is configured to request the "Access Kusto" permission from the user, who is also referred to as the "resource owner".
+
 ## User authentication
 
-User authentication happens when the user presents credentials to Azure AD or an identity provider that federates with Azure AD, such as Active Directory Federation Services (AD FS). The user gets back a security token that can be presented to the Azure Data Explorer service. Azure Data Explorer determines whether the token is valid, whether the token is issued by a trusted issuer, and what security claims the token contains.
+User authentication happens when a human principal, or user, presents credentials to Azure AD or an identity provider that federates with Azure AD, such as Active Directory Federation Services (AD FS). The user gets back a security token that can be presented to the Azure Data Explorer service. Azure Data Explorer determines whether the token is valid, whether the token is issued by a trusted issuer, and what security claims the token contains.
 
 Azure Data Explorer supports the following methods of user authentication, including through the Kusto [client libraries](../api/client-libraries.md):
 
@@ -87,7 +93,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 ## On-behalf-of authentication
 
-In this scenario, an application is sent an Azure AD access token for some arbitrary resource managed by the application, and it uses that token to acquire a new Azure AD access token for the Azure Data Explorer resource so that the application could access Azure Data Explorer on behalf of the principal indicated by the original Azure AD access token.
+In this scenario, an application is sent an Azure AD access token for an arbitrary resource managed by the application, and the application uses that token to acquire a new Azure AD access token for the Azure Data Explorer resource. Then, the application can access Azure Data Explorer on behalf of the principal indicated by the original Azure AD access token.
 
 This flow is called the [OAuth2 token exchange flow](https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-04). It generally requires multiple configuration steps with Azure AD, and in some cases might require special consent from the administrator of the Azure AD tenant. The following sections describe the steps of the flow.
 
@@ -137,15 +143,11 @@ using var queryClient = KustoClientFactory.CreateCslQueryProvider(connectionStri
 var queryResult = await queryClient.ExecuteQueryAsync("<databaseName>", "<query>", null);
 ```
 
-## Web Client (JavaScript) authentication and authorization
+## Web Client (JavaScript) authentication
 
-**Azure AD application configuration**
+To set up authentication for a web client, you need to not only [provision an Azure AD application](../../provision-azure-ad-app.md) but also enable the single-page application (SPA) setting on the application. The SPA setting enables the OAuth authorization code flow to obtain tokens used by [MSAL.js 2.0](https://www.npmjs.com/package/@azure/msal-browser). To configure the app, follow the steps in the MSAL 2.0 [SPA app registration scenario](/azure/active-directory/develop/scenario-spa-app-registration).
 
-In addition to the standard [steps](../../provision-azure-ad-app.md) for setting up an Azure AD application, you'll also need to enable the single-page application (SPA) setting on your Azure AD application. This enables OAuth authorization code flow with PKCE for obtaining tokens used by [MSAL.js 2.0](https://www.npmjs.com/package/@azure/msal-browser) (MSAL 1.0 used a less secure implicit grant flow). Use the MSAL 2.0 steps in the [SPA app registration scenario](/azure/active-directory/develop/scenario-spa-app-registration) to configure the app accordingly.
-
-**Details**
-
-When the client is a JavaScript code running in the user's browser, the auth code flow is used. The authentication flow consists of two stages:
+When the client is JavaScript code running in the user's browser, the auth code flow is used. The authentication flow consists of two stages:
 
 1. The app is redirected to sign in to Azure AD. Once signed in, Azure AD redirects back to the app with an authorization code in the URI.
 
@@ -252,19 +254,19 @@ The following is a framework-independent code sample for connecting to the *Help
       const count = jsonResult.filter((x) => x.TableKind == "PrimaryResult")[0].Rows[0][0];
     ```
 
-## How-to specify the Azure AD resource ID
+## How-to specify an Azure AD resource ID
 
 To get an access token from Azure AD, the client must specify the resource for which the token is issued. The resource for an Azure Data Explorer endpoint is the URI of the endpoint without port information and path. For example, `https://help.kusto.windows.net`.
 
 Alternatively, clients may request an access token with a cloud-static resource ID, such as `https://kusto.kusto.windows.net` for public cloud services. Clients doing so must make sure that they only send this access token to an Azure Data Explorer service endpoint, based on the host name suffix, in this case `kusto.windows.net`. Sending the access token to untrusted service endpoints might result in token leakage, allowing the receiving service to perform operations on any Azure Data Explorer service endpoint to which the principal has access.
 
-## How-to specify the Azure AD tenant ID
+## How-to specify an Azure AD tenant ID
 
 Azure AD is a multi-tenant service, and every organization can create an object called **directory** in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a **tenant**. Azure AD tenants are identified by a GUID, or the **tenant ID**. In many cases, the domain name of the organization can identity the Azure AD tenant.
 
 For example, an organization called "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.
 
-## How-to specify the Azure AD authority endpoint
+## How-to specify an Azure AD authority endpoint
 
 Azure AD has many endpoints for authentication. The Azure AD service endpoint used for authentication is also called the Azure AD authority URL or simply Azure AD authority.
 
@@ -278,12 +280,6 @@ To authenticate a principal, you need to know their Azure AD directory. If you k
 ## The Azure AD local token cache
 
 With Kusto [client libraries](../api/client-libraries.md), Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user. However, the cache doesn't completely eliminate the need for interactive prompts, and users can't predict when they'll be prompted. Therefore, non-interactive logins can't be supported if using a user account to access Azure Data Explorer.
-
-## Azure AD permissions
-
-In Azure AD, a service application can have different permissions, and the client application can decide which permissions it needs. When the client requests an authorization token, the user is prompted to authorize the application to act on their behalf with those permissions. If approved, these permissions are listed in the scope claim of the token issued to the client application.
-
-For Azure Data Explorer, the Azure AD client application is configured to request the "Access Kusto" permission from the user, who is also referred to as the "resource owner".
 
 ## Microsoft Authentication Library (MSAL)
 
