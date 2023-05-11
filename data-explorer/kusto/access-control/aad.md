@@ -71,7 +71,7 @@ Azure Data Explorer supports the following methods of user authentication, inclu
 ### Methods of user authentication
 
 The easiest way to access Azure Data Explorer with user authentication is to use the Azure Data Explorer SDK
-and set the `Federated Authentication` property of the [Kusto connection string](../api/connection-strings/kusto.md) to `true`. The first time the SDK is used to send a request to the service the user is presented with a sign-in form to enter the Azure AD credentials. Upon successful authentication, the request is sent to Azure Data Explorer.
+and set the `Federated Authentication` property of the [Kusto connection string](../api/connection-strings/kusto.md#user-authentication-properties) to `true`. The first time the SDK is used to send a request to the service the user is presented with a sign-in form to enter the Azure AD credentials. Upon successful authentication, the request is sent to Azure Data Explorer.
 
 Applications that don't use a Kusto client library can still use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview). For an example, see [Azure AD and OpenID Connect](https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet).
 
