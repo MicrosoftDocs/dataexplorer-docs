@@ -7,7 +7,7 @@ ms.date: 05/11/2023
 ---
 # Authenticate with Azure Active Directory
 
-[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is a cloud-based identity and access management service. Azure AD can authenticate security principals or federate with other identity providers. We recommend using Azure Active Directory (Azure AD) to authenticate to Azure Data Explorer, since doing so ensures Azure Data Explorer won't have access to the principal's directory credentials.
+[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is a cloud-based identity and access management service. Azure AD can authenticate security principals or federate with other identity providers. We recommend using Azure AD to authenticate to Azure Data Explorer, since doing so ensures Azure Data Explorer won't have access to the principal's directory credentials.
 
 To access Azure Data Explorer programmatically, we recommend using one of the Kusto [client libraries](../api/client-libraries.md). The client must authenticate to Azure AD in a two-step process. Firstly, the client requests an Azure AD token. Then, the client issues requests to Azure Data Explorer, providing the access token acquired in the first step as proof of identity. All authorization checks are performed using this identity.
 
@@ -35,19 +35,19 @@ The Kusto [client libraries](../api/client-libraries.md) use [Microsoft Authenti
 
 The token returned by MSAL to the Kusto client library has the Azure Data Explorer service as the audience.
 
-## How-to specify an Azure AD resource ID
+## Azure AD resource ID
 
 The client must specify the resource for which the Azure AD token should be issued. The resource for an Azure Data Explorer endpoint is the URI of the endpoint without port information and path. For example, `https://help.kusto.windows.net`.
 
 Alternatively, clients may request an access token with a cloud-static resource ID, such as `https://kusto.kusto.windows.net` for public cloud services. Clients doing so must make sure that they only send this access token to an Azure Data Explorer service endpoint, based on the host name suffix, in this case `kusto.windows.net`. Sending the access token to untrusted service endpoints might result in token leakage, allowing the receiving service to perform operations on any Azure Data Explorer service endpoint to which the principal has access.
 
-## How-to specify an Azure AD tenant ID
+## Azure AD tenant ID
 
 Azure AD is a multi-tenant service, and every organization can create an object called **directory** in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a **tenant**. Azure AD tenants are identified by a GUID, or the **tenant ID**. In many cases, the domain name of the organization can identity the Azure AD tenant.
 
 For example, an organization called "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.
 
-## How-to specify an Azure AD authority endpoint
+## Azure AD authority endpoint
 
 Azure AD has many endpoints for authentication. The Azure AD service endpoint used for authentication is also called the Azure AD authority URL or simply Azure AD authority.
 
@@ -99,7 +99,7 @@ var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
-### Application authentication
+## Application authentication
 
 Application authentication is needed when requests aren't associated with a specific user or when no user is available to provide credentials. In this case, the application authenticates to Azure AD or the federated IdP by presenting secret information.
 
