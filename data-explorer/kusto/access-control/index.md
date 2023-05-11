@@ -4,9 +4,9 @@ description: This article describes Kusto Access Control Overview in Azure Data 
 ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 05/10/2023
+ms.date: 05/11/2023
 ---
-# Access Control Overview
+# Access control overview
 
 Azure Data Explorer access control is based on authentication and authorization. Each query and command on an Azure Data Explorer resource, such as a cluster or database, must pass both authentication and authorization checks.
 
