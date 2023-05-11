@@ -301,3 +301,7 @@ The following is a framework-independent code sample for connecting to the *Help
 ## Azure AD local token cache
 
 With Kusto [client libraries](../api/client-libraries.md), Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user. However, the cache doesn't completely eliminate the need for interactive prompts, and users can't predict when they'll be prompted. Therefore, non-interactive logins can't be supported if using a user account to access Azure Data Explorer.
+
+## Next steps
+
+* Create [Kusto connection strings](../api/connection-strings/kusto.md) to connect to a cluster using the [client libraries](../api/client-libraries.md)
