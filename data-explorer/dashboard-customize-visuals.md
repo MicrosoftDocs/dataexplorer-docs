@@ -76,7 +76,7 @@ OccupancyDetection
 :::image type="content" source="media/dashboard-customize-visuals/plotly-scatter3d.png" alt-text="Screenshot of plotly visual type.":::
 
 > [!NOTE]
-> For best performance, make sure that the python plugin image contains the latest versions of both the Python engine (currently 3.10.8) and Plotly package (currently 5.11.0). These versions can be checked with the [get_packages_version_fl()](kusto/functions-library/get-packages-version-fl.md) function. If you need to upgrade the image please contact us (shortly it would be self service).
+> For best performance, make sure that the python plugin image contains the latest versions of both the Python engine (currently 3.10.8) and Plotly package (currently 5.11.0). These versions can be checked with the [get_packages_version_fl()](kusto/functions-library/get-packages-version-fl.md) function. To upgrade the Python image see [Change the Python language extensions image on your cluster](language-extensions.md#change-the-python-language-extensions-image-on-your-cluster).
 Plotly visuals are useful for advanced charting including geographic, scientific, machine learning, 3d, animation and many other chart types. For more information, see [Plotly](https://plotly.com/python/).
 
 ### Conditional formatting
