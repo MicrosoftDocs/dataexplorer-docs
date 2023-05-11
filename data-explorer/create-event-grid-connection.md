@@ -21,7 +21,7 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 * A destination table. [Create a table](kusto/management/create-table-command.md) or use an existing table.
 * An [ingestion mapping](kusto/management/mappings.md) for the table.
 * A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal). An Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
-* Unless you have used Event Grid before, you'll need to [register the Event Grid resource provider](/azure/event-grid/blob-event-quickstart-portal#register-the-event-grid-resource-provider).
+* Have the [Event Grid resource provider registered](/azure/event-grid/blob-event-quickstart-portal#register-the-event-grid-resource-provider).
 
 ## Create an Event Grid data connection
 
