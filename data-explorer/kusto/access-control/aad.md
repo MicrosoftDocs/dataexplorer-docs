@@ -29,33 +29,32 @@ For Azure Data Explorer, the Azure AD client application is configured to reques
 
 ## Microsoft Authentication Library (MSAL)
 
-The Kusto [client libraries](../api/client-libraries.md) use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens for communicating with Azure Data Explorer. In this situation, the Kusto client library is the Azure AD client application, as described in the previous section. Throughout the process of acquiring a token, the client libraries provide the following information:
+The Kusto [client libraries](../api/client-libraries.md) use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens for communicating with Azure Data Explorer. Throughout the process of acquiring a token, the client libraries need to provide the following information:
 
-* The Azure Data Explorer cluster URI.
-* The Azure AD authority URI and tenant.
+* The [Azure AD resource ID](#azure-ad-resource-id) or cluster URI.
+* The [Azure AD tenant ID](#azure-ad-tenant-id).
+* The [Azure AD authority URI](#azure-ad-authority-uri).
 * The Azure AD client application ID.
 * For application authentication: the Azure AD client application credential, which is a secret or certificate.
 * For user authentication: the Azure AD client application `ReplyUrl`, or the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
-The token returned by MSAL to the Kusto client library has the Azure Data Explorer service as the audience.
+### Azure AD resource ID
 
-## Azure AD resource ID
+The client must specify the resource ID for which the Azure AD token should be issued. The resource ID for an Azure Data Explorer endpoint is the cluster URI without port information and path.
 
-The client must specify the resource for which the Azure AD token should be issued. The resource for an Azure Data Explorer endpoint is the URI of the endpoint without port information and path. For example, `https://help.kusto.windows.net`.
+For example, the resource ID for the `help` cluster is `https://help.kusto.windows.net`.
 
-Alternatively, clients may request an access token with a cloud-static resource ID, such as `https://kusto.kusto.windows.net` for public cloud services. Clients doing so must make sure that they only send this access token to an Azure Data Explorer service endpoint, based on the host name suffix, in this case `kusto.windows.net`. Sending the access token to untrusted service endpoints might result in token leakage, allowing the receiving service to perform operations on any Azure Data Explorer service endpoint to which the principal has access.
+### Azure AD tenant ID
 
-## Azure AD tenant ID
-
-Azure AD is a multi-tenant service, and every organization can create an object called **directory** in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a **tenant**. Azure AD tenants are identified by a GUID, or the **tenant ID**. In many cases, the domain name of the organization can identity the Azure AD tenant.
+Azure AD is a multi-tenant service, and every organization can create an object called *directory* in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a *tenant*. Azure AD tenants are identified by a GUID, or the *tenant ID*. In many cases, the domain name of the organization can identity the Azure AD tenant.
 
 For example, an organization called "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.
 
-## Azure AD authority endpoint
+### Azure AD authority URI
 
-Azure AD has many endpoints for authentication. The Azure AD service endpoint used for authentication is also called the Azure AD authority URL or simply Azure AD authority.
+The *Azure AD authority URI* is the endpoint used for authentication. The Azure AD directory, or tenant, determines the Azure AD authority URI.
 
-To authenticate a principal, you need to know their Azure AD directory. If you know the directory, then the Azure AD authority is `https://login.microsoftonline.com/{tenantId}` where `{tenantId}` is either the tenant ID or domain name. If you don't know the directory, then use the "common" Azure AD authority by replacing `{tenantId}` with `common`.
+If you know the principal's Azure AD directory, use `https://login.microsoftonline.com/{tenantId}` as the Azure AD authority URI where `{tenantId}` is either the tenant ID or domain name. If you don't know the principal's directory, then use the "common" Azure AD authority by replacing `{tenantId}` with `common`.
 
 > [!NOTE]
 > The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer
