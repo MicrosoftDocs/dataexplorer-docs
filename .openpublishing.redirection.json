@@ -758,7 +758,7 @@
     {
       "source_path": "data-explorer/kusto/access-control/how-to-authenticate-with-aad.md",
       "redirect_url": "/azure/data-explorer/kusto/access-control/aad",
-      "redirect_document_id": true
+      "redirect_document_id": false
     }
   ]
 }
