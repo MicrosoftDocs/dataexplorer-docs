@@ -15,14 +15,10 @@ To access Azure Data Explorer programmatically, we recommend using the Kusto [cl
 
 In case you cannot use one of the Kusto client libraries, this article provides needed information for you to implement Azure AD authentication flow yourself.
 
-## Authentication scenarios
-
 The main types of authentication scenarios are as follows:
 
 * [User authentication](#user-authentication): verifies the identity of human users either through interactive prompts that prompt the user for their credentials or programmatically via a token.
-
 * [Application authentication](#application-authentication): verifies the identity of a service or application that needs to access resources without human intervention by using configured credentials.
-
 * [On-behalf-of authentication](#on-behalf-of-authentication): allows an application to obtain an Azure AD access token from another application and use it to access Azure Data Explorer.
 
 ## Understanding Azure AD permissions
