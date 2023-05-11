@@ -187,7 +187,7 @@ public static IDataReader QueryKusto(ICslQueryProvider queryProvider)
 | `query_bin_auto_size` (*QueryBinAutoSize*) | literal | When evaluating the bin_auto() function, the bin size value to use. |
 | `query_cursor_after_default` (*OptionQueryCursorAfterDefault*) | string | The default parameter value of the cursor_after() function when called without parameters. |
 | `query_cursor_before_or_at_default` (*OptionQueryCursorBeforeOrAtDefault*) | string | The default parameter value of the cursor_before_or_at() function when called without parameters. |
-| query_cursor_current` (*OptionQueryCursorCurrent*) | string | Overrides the cursor value returned by the cursor_current() function. |
+| `query_cursor_current` (*OptionQueryCursorCurrent*) | string | Overrides the cursor value returned by the cursor_current() function. |
 | `query_cursor_disabled` (*OptionQueryCursorDisabled*) | bool | Disables usage of cursor functions in the context of the query. |
 | `query_cursor_scoped_tables` (*OptionQueryCursorScopedTables*) | dynamic | List of table names that should be scoped to cursor_after_default .. cursor_before_or_at_default (upper bound is optional). |
 | `query_datascope` (*OptionQueryDataScope*) | string | Controls the query's datascope -- whether the query applies to all data or just part of it. Supported values are 'default', 'all', or 'hotcache'. |
