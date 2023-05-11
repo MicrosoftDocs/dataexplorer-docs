@@ -11,11 +11,11 @@ ms.date: 05/11/2023
 
 To access Azure Data Explorer programmatically, we recommend using one of the Kusto [client libraries](../api/client-libraries.md). The client must authenticate to Azure AD in a two-step process. Firstly, the client requests an Azure AD token. Then, the client issues requests to Azure Data Explorer, providing the access token acquired in the first step as proof of identity. All authorization checks are performed using this identity.
 
-There are three main authentication scenarios:
+The main authenticating scenarios are as follows:
 
-* [User authentication](#user-authentication): where an interactive application prompts the user for their credentials.
-* [Application authentication](#application-authentication): where an application authenticates itself using configured credentials.
-* [On-behalf-of authentication](#on-behalf-of-authentication): where an application gets an Azure AD access token from another application and uses it to access Azure Data Explorer.
+* [User authentication](#user-authentication): verifies the identity of human users either through interactive prompts that prompt the user for their credentials or programmatically via a token.
+* [Application authentication](#application-authentication): verifies the identity of a service or application that needs to access resources without human intervention by using configured credentials.
+* [On-behalf-of authentication](#on-behalf-of-authentication): allows an application to obtain an Azure AD access token from another application and use it to access Azure Data Explorer.
 
 ## Understanding Azure AD permissions
 
