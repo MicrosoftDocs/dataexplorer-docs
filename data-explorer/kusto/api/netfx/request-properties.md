@@ -3,7 +3,7 @@ title: Request properties and ClientRequestProperties - Azure Data Explorer
 description: This article describes Request properties and ClientRequestProperties in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 05/11/2023
 ---
 # Request properties and ClientRequestProperties
 
@@ -181,7 +181,7 @@ or 'dynamic([ { "Name": "V1" } ])' (shuffle view V1 by all keys) [dynamic]
 * `max_memory_consumption_per_query_per_node` (*OptionMaxMemoryConsumptionPerQueryPerNode*): Overrides the default maximum amount of memory a whole query may allocate per node. [UInt64]
 * `maxmemoryconsumptionperiterator` (*OptionMaxMemoryConsumptionPerIterator*): Overrides the default maximum amount of memory a query operator may allocate. [UInt64]
 * `maxoutputcolumns` (*OptionMaxOutputColumns*): Overrides the default maximum number of columns a query is allowed to produce. [Long]
-* `norequesttimeout` (*OptionNoRequestTimeout*): Enables setting the request timeout to its maximum value. [Boolean]
+* `norequesttimeout` (*OptionNoRequestTimeout*): Enables setting the request timeout to its maximum value. This option can't be set as part of a [set statement](../../query/setstatement.md). [Boolean]
 * `notruncation` (*OptionNoTruncation*): Enables suppressing truncation of the query results returned to the caller. [Boolean]
 * `push_selection_through_aggregation` (*OptionPushSelectionThroughAggregation*): If true, push simple selection through aggregation [Boolean]
 * `query_bin_auto_at` (*QueryBinAutoAt*): When evaluating the bin_auto() function, the start value to use. [LiteralExpression]
@@ -226,7 +226,7 @@ in the query hierarchy for each subgroup of nodes; the size of the subgroup is s
 * `request_sandboxed_execution_disabled` (*OptionRequestSandboxedExecutionDisabled*): If specified, indicates that the request can't invoke code in the sandbox. [Boolean]
 * `request_user` (*OptionRequestUser*): Request user to be used in the reporting (for example, show queries). [String]
 * `results_progressive_enabled` (*OptionResultsProgressiveEnabled*): If set, enables the progressive query stream
-* `servertimeout` (*OptionServerTimeout*): Overrides the default request timeout. [TimeSpan]
+* `servertimeout` (*OptionServerTimeout*): Overrides the default request timeout. This option can't be set as part of a [set statement](../../query/setstatement.md). [TimeSpan]
 * `truncationmaxrecords` (*OptionTruncationMaxRecords*): Overrides the default maximum number of records a query is allowed to return to the caller (truncation). [Long]
 * `truncationmaxsize` (*OptionTruncationMaxSize*): Overrides the default maximum data size a query is allowed to return to the caller (truncation). [Long]
 * `validate_permissions` (*OptionValidatePermissions*): Validates user's permissions to perform the query and doesn't run the query itself. [Boolean]
