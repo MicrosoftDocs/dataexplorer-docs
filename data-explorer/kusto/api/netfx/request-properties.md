@@ -227,7 +227,4 @@ public static IDataReader QueryKusto(ICslQueryProvider queryProvider)
 | `servertimeout` (*OptionServerTimeout*) | timespan | Overrides the default request timeout. This option can't be set as part of a [set statement](../../query/setstatement.md). |
 | `truncationmaxrecords` (*OptionTruncationMaxRecords*) | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncationmaxsize` (*OptionTruncationMaxSize*) | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
-| `validate_permissions` (*OptionValidatePermissions*) | bool | Validates user's permissions to perform the query and doesn't run the query itself. The possible results for this property are:
-<br/>- "OK": permissions are present and valid.
-<br/>- "Incomplete": validation couldn't be completed as the query uses dynamic schema evaluation.
-<br/>- Returns KustoRequestDeniedException if permissions weren't set.|
+| `validate_permissions` (*OptionValidatePermissions*) | bool | Validates user's permissions to perform the query and doesn't run the query itself. The possible results for this property are:<br/>- "OK": permissions are present and valid.<br/>- "Incomplete": validation couldn't be completed as the query uses dynamic schema evaluation.<br/>- Returns KustoRequestDeniedException if permissions weren't set.|
