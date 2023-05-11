@@ -339,8 +339,6 @@ items:
         - name: Access control
           href: kusto/access-control/index.md
           items:
-          - name: Access control overview
-            href: kusto/access-control/index.md
           - name: Role-based access control
             href: kusto/access-control/role-based-access-control.md
             displayName: RBAC, security roles, principals
