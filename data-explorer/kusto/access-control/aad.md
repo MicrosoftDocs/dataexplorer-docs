@@ -29,28 +29,28 @@ For Azure Data Explorer, the Azure AD client application is configured to reques
 
 ## Microsoft Authentication Library (MSAL)
 
-The Kusto [client libraries](../api/client-libraries.md) use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens for communicating with Azure Data Explorer. Throughout the process of acquiring a token, the client libraries need to provide the following information:
+The Kusto [client libraries](../api/client-libraries.md) use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens for communicating with Azure Data Explorer. Throughout the process of acquiring a token, the client needs to provide the following information:
 
-* The [Azure AD resource ID](#azure-ad-resource-id) or cluster URI.
-* The [Azure AD tenant ID](#azure-ad-tenant-id).
-* The [Azure AD authority URI](#azure-ad-authority-uri).
+* The [resource](#specify-the-resource) or cluster URI.
+* The [Azure AD tenant ID](#specify-the-azure-ad-tenant-id)
+* The [Azure AD authority URI](#specify-the-azure-ad-authority-uri).
 * The Azure AD client application ID.
 * For application authentication: the Azure AD client application credential, which is a secret or certificate.
 * For user authentication: the Azure AD client application `ReplyUrl`, or the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
-### Azure AD resource ID
+### Specify the resource
 
 The client must specify the resource ID for which the Azure AD token should be issued. The resource ID for an Azure Data Explorer endpoint is the cluster URI without port information and path.
 
 For example, the resource ID for the `help` cluster is `https://help.kusto.windows.net`.
 
-### Azure AD tenant ID
+### Specify the Azure AD tenant ID
 
 Azure AD is a multi-tenant service, and every organization can create an object called *directory* in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a *tenant*. Azure AD tenants are identified by a GUID, or the *tenant ID*. In many cases, the domain name of the organization can identity the Azure AD tenant.
 
 For example, an organization called "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.
 
-### Azure AD authority URI
+### Specify the Azure AD authority URI
 
 The *Azure AD authority URI* is the endpoint used for authentication. The Azure AD directory, or tenant, determines the Azure AD authority URI.
 
