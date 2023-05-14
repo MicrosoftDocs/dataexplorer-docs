@@ -12,13 +12,13 @@ The [Azure Data Explorer web UI](https://dataexplorer.azure.com) provides an end
 
 ## Go to the query page
 
-To open the query page, go to the [Azure Data Explorer web UI](https://dataexplorer.azure.com). From the left menu, select **Query**.
+To open the query page, select **Query** from the main menu.
 
 :::image type="content" source="media/web-ui-query/query-widget.png" alt-text="Screenshot of the query widget in the main menu of the web UI." lightbox="media/web-ui-query/query-widget.png":::
 
 ## Add a cluster connection
 
-The following steps describe how to add a connection to a cluster in the web UI.
+The following steps describe how to add a cluster connection in the web UI.
 
 1. In the upper left pane, select **Add connection**.
 
@@ -26,7 +26,7 @@ The following steps describe how to add a connection to a cluster in the web UI.
 
 1. Select **Add** to add the connection.
 
-Within the left menu, you should see a connection to your cluster with all of the databases associated with that cluster listed underneath it.
+You should see a connection to your cluster with all of the databases associated with that cluster listed underneath it.
 
 :::image type="content" source="media/web-ui-query/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-query/help-cluster-web-ui.png":::
 
@@ -38,7 +38,7 @@ The following steps explain how to run a query in the web UI.
 
     :::image type="content" source="media/web-ui-query/query-context.png" alt-text="Screenshot of multiple query tabs and their context." lightbox="media/web-ui-query/query-context.png":::
 
-1. Write a query using the data in the selected database. For example, use the StormEvents table:
+1. Write a query using the data in the selected database. The following example takes a sample of 1000 records from the `StormEvents` table.
 
     > [!div class="nextstepaction"]
     > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMDQwMAAA5fwUfRgAAAA=" target="_blank">Run the query</a>
@@ -50,11 +50,7 @@ The following steps explain how to run a query in the web UI.
 
 1. To return all records matching the query, select **Run** or press Shift + Enter. Alternatively, to see a preview of 50 results, select the dropdown menu from the **Run** button and select **Preview results**.
 
-    :::image type="content" source="media/web-ui-query/preview-results.png" alt-text="Screenshot of preview results button.":::
-
-## Understand the results grid
-
-After you execute a query, the results are displayed in the results grid located below the query editor. The results grid presents the query results in a tabular format, with columns and rows that correspond to the data retrieved from your database. With the results grid, you can interactively sort, filter, group, and visualize the data in various ways. For more information, see [Azure Data Explorer web UI results grid](web-results-grid.md).
+    :::image type="content" source="media/web-ui-query/preview-results.png" alt-text="Screenshot of preview results button."  lightbox="media/web-ui-query/preview-results.png":::
 
 ## Manage query tabs
 
@@ -77,6 +73,10 @@ The web UI supports multiple query tabs at once, all with different query contex
 1. In case you accidentally remove a tab, select the back button to reopen a closed tab in the top right of the screen to restore the removed tab.
 
     :::image type="content" source="media/web-ui-query/undo-remove-tab.png" alt-text="Screenshot of button to restore a removed tab." lightbox="media/web-ui-query/undo-remove-tab.png":::
+
+## Understand the results grid
+
+After you execute a query, the results are displayed in the results grid located below the query editor. The results grid presents query results in a tabular format. With the results grid, you can interactively sort, filter, group, and visualize the data in various ways. For more information, see [Azure Data Explorer web UI results grid](web-results-grid.md).
 
 ## Query recall
 
