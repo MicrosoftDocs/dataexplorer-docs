@@ -1,9 +1,9 @@
 ---
 title: .delete database merge policy command- Azure Data Explorer
-description: This article describes the .delete database merge policy command in Azure Data Explorer.
+description: Learn how to use the `.delete database merge policy` command to delete a database's merge policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 05/14/2023
 ---
 # .delete database merge policy
 
