@@ -49,6 +49,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | Function Name | Description |
 |--|--|
 | [quantize_fl()](quantize-fl.md) | Quantize metric columns. |
+| [series_cosine_similarity_fl()](series-cosine-similarity-fl.md) | Calculate the cosine similarity of two numerical vectors. |
 | [series_dbl_exp_smoothing_fl()](series-dbl-exp-smoothing-fl.md) | Apply a double exponential smoothing filter on series. |
 | [series_dot_product_fl()](series-dot-product-fl.md) | Calculate the dot product of two numerical vectors. |
 | [series_downsample_fl()](series-downsample-fl.md) | Downsample time series by an integer factor. |
@@ -86,3 +87,13 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [perm_fl()](perm-fl.md) | Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
 | [two_sample_t_test_fl()](two-sample-t-test-fl.md) | Perform the two sample t-test. |
 | [wilcoxon_test_fl()](wilcoxon-test-fl.md) | Perform the Wilcoxon Test. |
+
+## Text analytics
+
+| Function Name | Description |
+|--|--|
+| [log_reduce_fl()](log-reduce-fl.md) | Find common patterns in textual logs and output a summary table. |
+| [log_reduce_full_fl()](log-reduce-full-fl.md) | Find common patterns in textual logs and output a full table. |
+| [log_reduce_predict_fl()](log-reduce-predict-fl.md) | Apply a trained model to find common patterns in textual logs and output a summary table. |
+| [log_reduce_predict_full_fl()](log-reduce-predict-full-fl.md) | Apply a trained model to find common patterns in textual logs and output a full table. |
+| [log_reduce_train_fl()](log-reduce-train-fl.md) | Find common patterns in textual logs and output a model. |

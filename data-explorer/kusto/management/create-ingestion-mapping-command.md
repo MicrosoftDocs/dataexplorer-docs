@@ -27,7 +27,7 @@ At least [Database Ingestor](access-control/role-based-access-control.md) permis
 |--|--|--|--|
 | *TableName* | string | &check; | The name of the table.|
 | *DatabaseName* | string | &check; | The name of the database.|
-| *MappingKind* | string | &check; | The type of mapping. Valid values are `CSV`, `JSON`, `avro`, `parquet`, and `orc`.|
+| *MappingKind* | string | &check; | The type of mapping. Valid values are `csv`, `json`, `avro`, `parquet`, and `orc`.|
 | *MappingName* | string | &check; | The name of the mapping.|
 | *MappingFormattedAsJson* | string | &check; | The ingestion mapping definition formatted as a JSON value.|
 

@@ -3,7 +3,7 @@ title: show auto delete policy command - Azure Data Explorer
 description: This article describes the show auto delete policy command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 04/30/2023
 ---
 # .show table policy auto_delete
 
@@ -21,7 +21,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 | Name                     | Type   | Required | Description                        |
 |--------------------------|--------|----------|------------------------------------|
-| *TableName*              | string | &check;  | Name of the table.                 |
+| *TableName*              | string | &check;  | The name of the table.                 |
 
 ## Returns
 

@@ -3,7 +3,7 @@ title: drop column - Azure Data Explorer
 description: This article describes drop column in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/24/2023
 ---
 # .drop column
 
@@ -25,9 +25,23 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.drop` `column` *TableName* `.` *ColumnName* [`ifexists`]
+`.drop` `column` *TableName*`.`*ColumnName* [`ifexists`]
 
-* `ifexists`: If specified, modifies the behavior so that the command won't fail on a non-existent column.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table containing the column to drop.|
+|*ColumnName*|string|&check;|The name of the column to drop.|
+|`ifexists`|string||If specified, the command won't fail on a non-existent column.|
+
+## Example
+
+The following command will drop the `Value` column from the `Test` database, if such a column exists. If the column doesn't exist, the command will not fail.
+
+```kusto
+.drop column Test.Value ifexists
+```
 
 ## Drop multiple table columns
 
@@ -43,4 +57,19 @@ Removes multiple columns from a table.
 
 ### Syntax
 
-`.drop` `table` *TableName* `columns` `(` *Col1* [`,` *Col2*]... `)`
+`.drop` `table` *TableName* `columns` `(` *ColumnName* [`,` ...] `)`
+
+### Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table containing the column to drop.|
+|*ColumnName*|string|&check;|The name of the column to drop.|
+
+### Example
+
+The following command will drop the `Value` and `Item` columns from the `Test` database.
+
+```kusto
+.drop table Test columns ( Value, Item )
+```

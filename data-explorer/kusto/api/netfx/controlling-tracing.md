@@ -4,20 +4,20 @@ description: This article describes controlling and suppressing Azure Data Explo
 ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 12/27/2021
+ms.date: 04/19/2023
 ---
-# Controlling and suppressing Azure Data Explorer SDK client-side tracing
+# Controlling and suppressing Kusto SDK client-side tracing
 
-The Azure Data Explorer client libraries use a common platform for tracing. The platform uses a large number of trace sources (`System.Diagnostics.TraceSource`), and each is connected to the default set of trace listeners (`System.Diagnostics.Trace.Listeners`) during its construction.
+The Kusto client libraries use a common platform for tracing. The platform uses a large number of trace sources (`System.Diagnostics.TraceSource`), and each is connected to the default set of trace listeners (`System.Diagnostics.Trace.Listeners`) during its construction.
 
 If an application has trace listeners associated with the default `System.Diagnostics.Trace` instance
-(for example, through its `app.config` file), then the Azure Data Explorer Client Libraries will emit traces to those listeners.
+(for example, through its `app.config` file), then the Kusto client libraries will emit traces to those listeners.
 
 The tracing can be suppressed or controlled programmatically or through a config file.
 
 ## Suppress tracing programmatically
 
-To suppress tracing from the Azure Data Explorer client libraries programmatically, invoke this piece of code when loading the relevant library:
+To suppress tracing from the Kusto client libraries programmatically, invoke this piece of code when loading the relevant library:
 
 ```csharp
 Kusto.Cloud.Platform.Utils.TraceSourceManager.SetTraceVerbosityForAll(

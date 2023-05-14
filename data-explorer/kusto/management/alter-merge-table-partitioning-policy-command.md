@@ -1,13 +1,13 @@
 ---
 title: .alter-merge table partitioning policy command- Azure Data Explorer
-description: This article describes the .alter-merge table partitioning policy command in Azure Data Explorer.
+description: Learn how to use the .alter-merge table partitioning policy command to change the table's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/23/2023
+ms.date: 04/20/2023
 ---
 # .alter-merge table partitioning policy
 
-Use this command to change a table's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+Changes the table's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Permissions
 

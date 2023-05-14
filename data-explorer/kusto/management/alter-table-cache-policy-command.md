@@ -1,13 +1,13 @@
 ---
-title: ".alter table cache policy command - Azure Data Explorer"
-description: "This article describes the .alter table cache policy command in Azure Data Explorer."
+title: .alter table cache policy command - Azure Data Explorer
+description: Learn how to use the .alter table cache policy command to change the table's cache policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/28/2023
+ms.date: 04/20/2023
 ---
 # .alter table cache policy
 
-Use this command to change the table cache policy. To speed up queries, Azure Data Explorer caches data on its processing nodes, in SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe data so that important data can take priority.
+Change's the table's cache policy. To speed up queries, Azure Data Explorer caches data on its processing nodes, in SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe data so that important data can take priority.
 
 ## Permissions
 

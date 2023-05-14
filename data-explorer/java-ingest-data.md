@@ -1,5 +1,5 @@
 ---
-title: 'Ingest data with Azure Data Explorer Java SDK'
+title: 'Ingest data with Kusto Java SDK'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Java SDK.
 ms.reviewer: abhishgu
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.date: 09/07/2022
 # Customer intent: As a Java developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
 
-# Ingest data using the Azure Data Explorer Java SDK
+# Ingest data using the Kusto Java SDK
 
 > [!div class="op_single_selector"]
 > * [.NET](net-sdk-ingest-data.md)

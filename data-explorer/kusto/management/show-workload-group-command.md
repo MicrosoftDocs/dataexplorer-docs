@@ -3,7 +3,7 @@ title: .show workload group command - Azure Data Explorer
 description: This article describes the .show workload group command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 05/09/2023
 ---
 # .show workload_group(s)
 
@@ -21,9 +21,9 @@ You must have [Cluster AllDatabasesAdmin](../management/access-control/role-base
 
 ## Parameters
 
-| Name                | Type   | Required | Description                                                                                                                                                                                                                       |
-|---------------------|--------|----------|-------------------------------------------------------------------------------------------|
-| *WorkloadGroupName* | string | &check;  | Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName']. |
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *WorkloadGroupName* | string | &check; | Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName']. |
 
 ## Examples
 
@@ -35,8 +35,8 @@ Show definition for **MyWorkloadGroup** workload group:
 .show workload_group MyWorkloadGroup
 ```
 
-**Output:**
+**Output**
 
-| WorkloadGroupName  | WorkloadGroup                                                                                                                                                 |
-|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| MyWorkloadGroup    | {"RequestRateLimitPolicies": [{"IsEnabled": true, "Scope": "WorkloadGroup", "LimitKind": "ConcurrentRequests", "Properties": {"MaxConcurrentRequests": 30}}]} |
+| WorkloadGroupName | WorkloadGroup |
+|--|--|
+| MyWorkloadGroup | {"RequestRateLimitPolicies": [{"IsEnabled": true, "Scope": "WorkloadGroup", "LimitKind": "ConcurrentRequests", "Properties": {"MaxConcurrentRequests": 30}}]} |

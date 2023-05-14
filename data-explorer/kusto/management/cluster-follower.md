@@ -13,7 +13,7 @@ The follower commands include [database level commands](#database-level-commands
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Database policy overrides
 
@@ -38,7 +38,7 @@ The default [caching policy](cachepolicy.md) for the follower cluster uses the l
 
 |Option             |Description                                                                                                                              |
 |-------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-|**None**           |The [authorized principals](access-control/index.md#authorization) are defined in the source database of the leader cluster.     |
+|**None**           |The [authorized principals](../access-control/index.md#authorization) are defined in the source database of the leader cluster.     |
 |**replace**        |The override authorized principals replace the authorized principals from the source database in the leader cluster.  |
 |**union**(default) |The override authorized principals are combined with the authorized principals from the source database in the leader cluster. |
 

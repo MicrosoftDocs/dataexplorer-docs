@@ -9,7 +9,7 @@ ms.date: 05/14/2023
 
 Creates a stored function or alters an existing function and stores it inside the database metadata.
 
-Rules for parameter types and CSL statements are the same as for [`let` statements](../query/letstatement.md).
+Rules for parameter types and CSL statements are the same as for [let statements](../query/letstatement.md).
 
 ## Permissions
 
@@ -17,9 +17,7 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 ## Syntax
 
-.`create-or-alter` `function` [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] *functionName*`(`*parameters*`)` `{` *body* `}`
-
-If the function with the provided *functionName* doesn't exist in the database metadata, the command creates a new function. Else, that function will be changed.
+`.create-or-alter` `function` [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] *functionName* `(`*parameters*`)` `{` *body* `}`
 
 ## Parameters
 
@@ -29,6 +27,9 @@ If the function with the provided *functionName* doesn't exist in the database m
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 |*parameters*  | string | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
 |*body*| string | &check; | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
+
+> [!NOTE]
+> If the function with the provided *functionName* doesn't exist in the database metadata, the command creates a new function. Else, that function will be changed.
 
 ### Supported properties
 
