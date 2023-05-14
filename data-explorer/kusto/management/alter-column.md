@@ -1,6 +1,6 @@
 ---
 title: .alter column - Azure Data Explorer
-description: This article describes .alter column in Azure Data Explorer.
+description: Learn how to use the .alter column command to alter the data type of an existing table column.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/21/2023

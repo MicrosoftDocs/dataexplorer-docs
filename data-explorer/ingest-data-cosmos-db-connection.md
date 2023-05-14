@@ -3,7 +3,7 @@ title: Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
 description: Learn how to ingest (load) data into Azure Data Explorer from Cosmos DB.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 04/04/2023
+ms.date: 05/03/2023
 ---
 
 # Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
@@ -38,7 +38,7 @@ The following shows a sample schema of an item in the Cosmos DB container:
 ```json
 {
     "id": "17313a67-362b-494f-b948-e2a8e95e237e",
-    "creationTime": "2022-04-28T07:36:49.5434296Z",
+    "name": "Cousteau",
     "_rid": "pL0MAJ0Plo0CAAAAAAAAAA==",
     "_self": "dbs/pL0MAA==/colls/pL0MAJ0Plo0=/docs/pL0MAJ0Plo0CAAAAAAAAAA==/",
     "_etag": "\"000037fc-0000-0700-0000-626a44110000\"",

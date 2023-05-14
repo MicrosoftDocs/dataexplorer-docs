@@ -9,6 +9,20 @@ ms.date: 07/06/2022
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
 
+## April 2022
+
+| Article title | Description |
+|--|--|
+| - [Enable disk encryption for your cluster](cluster-encryption-disk.md)<br />- [Secure your cluster with encryption](cluster-encryption-overview.md)<br />- [Enable double encryption for your cluster](cluster-encryption-double.md) | New articles. Describing securing your cluster using disk encryption. |
+| - [Create a managed private endpoint for your cluster](security-network-managed-private-endpoint-create.md)<br />- [Network security](security-network-overview.md)<br />- [Create a private endpoint for your cluster](security-network-private-endpoint-create.md)<br />- [Troubleshoot private endpoints](security-network-private-endpoint-troubleshoot.md)<br />- [Private endpoints for your cluster](security-network-private-endpoint.md)<br />- [Restrict outbound access from your cluster](security-network-restrict-outbound-access.md)<br />- [Restrict public access to your cluster](security-network-restrict-public-access.md)| New articles. Describes private endpoint security. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| [Streaming ingestion failures](kusto/management/streamingingestionfailures.md) | New article. Describes the command to show streaming ingestion failures. |
+| [Streaming ingestion statistics](kusto/management/streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |
+
 ## March 2022
 
 | Article title | Description |
@@ -112,9 +126,9 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Role-based access control in Kusto](kusto/management/access-control/role-based-access-control.md) | Updated article. Materialized views rename source table.
+| [Role-based access control in Kusto](kusto/access-control/role-based-access-control.md) | Updated article. Materialized views rename source table.
 | [Cache policy (hot and cold cache)](kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
-| [Role-based access control in Kusto](kusto/management/access-control/role-based-access-control.md)| Updated article. Using the AllDatabasesMonitor role.
+| [Role-based access control in Kusto](kusto/access-control/role-based-access-control.md)| Updated article. Using the AllDatabasesMonitor role.
 
 ## September 2021
 
@@ -324,7 +338,7 @@ Article title | Description
 Article title | Description
 ---|---
 [Azure Policy Regulatory Compliance controls](security-controls-policy.md) | New article. This page lists the **compliance domains** and **security controls**.
-[Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | New article. In this article, you'll learn how to give cluster access to principals from another tenant.
+[Allow cross-tenant queries and commands](kusto/access-control/cross-tenant-query-and-commands.md) | New article. In this article, you'll learn how to give cluster access to principals from another tenant.
 
 **Management**
 

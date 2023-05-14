@@ -3,11 +3,11 @@ title: Kusto Ingest Client Library - Azure Data Explorer
 description: This article describes the Kusto Ingest client library in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/09/2022
+ms.date: 04/19/2023
 ---
-# Kusto ingest client library 
+# Kusto.Ingest client library
 
-`Microsoft.Azure.Kusto.Ingest` library is a .NET 4.7.2 library for ingesting data to the Azure Data Explorer service.
+`Microsoft.Azure.Kusto.Ingest` library is a .NET 4.7.2 library for ingesting data into your cluster.
 It takes dependencies on the following libraries and SDKs:
 
 * [MSAL (Microsoft Authentication Library)](/azure/active-directory/develop/msal-overview) for Azure AD authentication
@@ -90,5 +90,4 @@ Kusto ingest client implementation is thread-safe and fully reentrant.
 
 * [Kusto.Ingest Examples](kusto-ingest-client-examples.md) shows code snippets that demonstrate various techniques of ingesting data into Kusto
 
-* [Data Ingestion without Kusto.Ingest Library](kusto-ingest-client-rest.md) explains how to implement Queued Kusto ingestion, by using Kusto REST APIs, and without being dependent on the `Kusto.Ingest` library
-
+* [How to ingest data with the REST API](kusto-ingest-client-rest.md) explains how to implement queued ingestion, by using REST APIs, and without being dependent on the `Kusto.Ingest` library.

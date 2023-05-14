@@ -3,7 +3,7 @@ title: Python plugin - Azure Data Explorer
 description: Learn how to use the Python plugin to run user-defined functions using a Python script.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 04/19/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors
 ---
@@ -242,6 +242,10 @@ range ID from 1 to 3 step 1
 |   3| Ashley Bowen |
 
 ---
+
+## See also
+
+For more examples of UDF functions that use the Python plugin, see the [Functions library](../functions-library/functions-library.md).
 
 ::: zone-end
 

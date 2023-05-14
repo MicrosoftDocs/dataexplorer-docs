@@ -1,13 +1,13 @@
 ---
-title: alter table policy auto_delete command - Azure Data Explorer"
-description: "This article describes the alter table policy auto_delete command in Azure Data Explorer."
+title: alter table policy auto_delete command - Azure Data Explorer
+description: Learn how to use the .alter table policy auto_delete command to alter the auto delete policy that's applied to a table.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 04/20/2023
 ---
 # .alter table policy auto_delete
 
-Alters the auto delete policy that is applied to a table. For more information, see [auto delete policy](auto-delete-policy.md).
+Alters the auto delete policy that's applied to a table. For more information, see [auto delete policy](auto-delete-policy.md).
 
 ## Permissions
 
