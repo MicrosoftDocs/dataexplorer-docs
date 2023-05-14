@@ -213,6 +213,9 @@ items:
     items:
     - name: Query data in the web UI
       items:
+        - name: Query data overview
+          href: web-ui-query-overview.md
+          displayName: web UI
         - name: Explore the sample gallery
           href: web-ui-samples-query.md
         - name: Customize settings
