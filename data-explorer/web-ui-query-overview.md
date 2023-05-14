@@ -8,7 +8,16 @@ ms.date: 05/14/2023
 
 # Azure Data Explorer web UI query data overview
 
-The [Azure Data Explorer web UI](https://dataexplorer.azure.com) provides an end-to-end data exploration experience, from [data ingestion](ingest-data-wizard.md) to data query and [dashboards](azure-data-explorer-dashboards.md). This article provides an overview of the web UI query page and explains how it can be used to access and interact with your data.
+The [Azure Data Explorer web UI](https://dataexplorer.azure.com) provides an end-to-end data exploration experience from [data ingestion](ingest-data-wizard.md) to data query and [dashboards](azure-data-explorer-dashboards.md). This article provides an overview of the web UI query page and explains how it can be used to access and interact with your data.
+
+In this overview, we'll cover:
+
+* Query editor
+* Results grid
+* Charting and visualization
+* Intellisense and auto-completion
+* Query history and recall
+* Cluster and database navigation
 
 ## Go to the query page
 
@@ -32,7 +41,7 @@ You should see a connection to your cluster with all of the databases associated
 
 ## Run a query
 
-The following steps explain how to run a query in the web UI.
+The following steps explain how to use the query editor in the web UI.
 
 1. Select the database on which you want to run the query to set the query context. In the top toolbar, you can see the selected query context.
 
