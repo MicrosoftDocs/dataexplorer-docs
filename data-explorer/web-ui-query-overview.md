@@ -62,9 +62,10 @@ The web UI supports multiple query tabs at once, all with different query contex
 
     :::image type="content" source="media/web-ui-query/add-new-tab.png" alt-text="Screenshot of button to add a new tab." lightbox="media/web-ui-query/add-new-tab.png":::
 
-1. Select the name of the database for the query context. The default name of a query tab is based on the cluster and context database.
+1. Select the database to use for the query context.
 
-    :::image type="content" source="media/web-ui-query/multiple-tabs-context.png" alt-text="Screenshot of multiple tabs with different contexts." lightbox="media/web-ui-query/multiple-tabs-context.png":::
+    > [!NOTE]
+    > The default name of a query tab is based on the cluster and context database.
 
 1. To change the name of a tab, select the pencil icon located on the tab and type in the new name for the tab.
 
