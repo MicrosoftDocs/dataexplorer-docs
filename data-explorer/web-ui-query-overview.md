@@ -33,33 +33,26 @@ The following steps describe how to add a cluster connection in the web UI.
 
 1. In the **Add connection** dialog box, enter the cluster **Connection URI** and **Display name**. To add a free, publicly available sample cluster, use "help" as the **Connection URI**.
 
-1. Select **Add** to add the connection.
+1. Select **Add** to add the connection. You should see your cluster and databases in the left pane. For example, the following image shows the `help` cluster connection.
 
-You should see a connection to your cluster with all of the databases associated with that cluster listed underneath it. For example, the help cluster should look as follows.
-
-:::image type="content" source="media/web-ui-query/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-query/help-cluster-web-ui.png":::
+    :::image type="content" source="media/web-ui-query/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-query/help-cluster-web-ui.png":::
 
 ## Run a query
 
 The following steps explain how to use the query editor in the web UI.
 
-1. Select the database on which you want to run the query to set the query context. In the top toolbar, you can see the selected query context.
+1. Select the database on which you want to run the query to set the query context. The query context is displayed in the top toolbar.
 
     :::image type="content" source="media/web-ui-query/query-context.png" alt-text="Screenshot of multiple query tabs and their context." lightbox="media/web-ui-query/query-context.png":::
 
-1. Write a query using the data in the selected database. The following example takes a sample of 1000 records from the `StormEvents` table.
-
-    > [!div class="nextstepaction"]
-    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUShJzE5VMDQwMAAA5fwUfRgAAAA=" target="_blank">Run the query</a>
+1. Write a query using the data in the selected database. The following example takes a sample of 1000 records from the `StormEvents` table in the `help` cluster.
 
     ```kusto
     StormEvents
     | take 1000
     ```
 
-1. To return all records matching the query, select **Run** or press *Shift + Enter*. Alternatively, to see a preview of 50 results, select the dropdown menu on the **Run** button and select **Preview results**.
-
-    :::image type="content" source="media/web-ui-query/run-preview-results.png" alt-text="Screenshot of preview results button." lightbox="media/web-ui-query/run-preview-results.png":::
+1. To return all records matching the query, select **Run** or press *Shift + Enter*. To see a preview of 50 results, select the dropdown menu on the **Run** button and select **Preview results**.
 
 ## Manage query tabs
 
