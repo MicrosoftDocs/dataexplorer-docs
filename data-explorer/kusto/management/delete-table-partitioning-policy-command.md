@@ -17,9 +17,15 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.delete` `table` *TableName* `policy` `partitioning`
 
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table for which to delete the policy.|
+
 ### Example
 
-Delete the policy at the table level:
+The following command deletes the partitioning policy at the table level.
 
 ```kusto
 .delete table MyTable policy partitioning 

@@ -3,12 +3,12 @@ title: Client libraries overview - Azure Data Explorer
 description: This article lists the Client libraries in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 04/19/2023
 ---
 # Client libraries
 
 The following table lists the different libraries provided for query, ingestion, and ARM/RP management. 
-Use these libraries for Azure APIs and to programmatically invoke Azure Data Explorer functionality. 
+Use these libraries for Azure APIs and to programmatically interact with your cluster. 
 
 
 |    Language/Functionality        |    Query        |    Ingestion        |    ARM/RP Management        |

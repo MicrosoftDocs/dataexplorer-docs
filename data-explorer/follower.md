@@ -601,7 +601,7 @@ Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -N
 
 ### Manage principals
 
-When attaching a database, specify the **"default principals modification kind"**. The default is to combine the override authorized principals with the leader database collection of [authorized principals](kusto/management/access-control/index.md#authorization)
+When attaching a database, specify the **"default principals modification kind"**. The default is to combine the override authorized principals with the leader database collection of [authorized principals](kusto/access-control/index.md#authorization)
 
 |**Kind** |**Description**  |
 |---------|---------|

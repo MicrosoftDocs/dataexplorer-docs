@@ -15,11 +15,17 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.delete` `table` *TableName* `policy` `retention` 
+`.delete` `table` *TableName* `policy` `retention`
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table for which to delete the policy.|
 
 ### Example
 
-Delete a retention policy:
+The following command deletes the retention policy at the table level.
 
 ```kusto
 .delete table Table1 policy retention

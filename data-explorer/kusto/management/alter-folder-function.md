@@ -1,13 +1,13 @@
 ---
 title: .alter function folder - Azure Data Explorer
-description: This article describes .alter function folder in Azure Data Explorer.
+description: Learn how to use the .alter function folder command to alter the folder value of an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/20/2023
 ---
 # .alter function folder
 
-Alters the Folder value of an existing function.
+Alters the folder value of an existing function.
 
 > [!NOTE]
 > If the function doesn't exist, an error is returned. For more information on how to create a new function, see [`.create function`](create-function.md).
@@ -29,20 +29,20 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 ## Returns
 
-|Output parameter |Type |Description
-|---|---|--- 
-|Name  |String |The name of the function. 
-|Parameters  |String |The parameters required by the function.
-|Body  |String |Zero or more let statements followed by a valid CSL expression to be evaluated upon function invocation.
-|Folder|String|A folder to use for UI functions categorization. This parameter doesn't change the way function is invoked.
-|DocString|String|A description of the function for UI purposes.
+|Output parameter |Type |Description|
+|---|---|---|
+|Name  |String |The name of the function.|
+|Parameters  |String |The parameters required by the function.|
+|Body  |String |Zero or more let statements followed by a valid CSL expression to be evaluated upon function invocation.|
+|Folder|String|A folder to use for UI functions categorization. This parameter doesn't change the way function is invoked.|
+|DocString|String|A description of the function for UI purposes.|
 
 ## Example
 
 ```kusto
 .alter function MyFunction1 folder "Updated Folder"
 ```
-    
+
 |Name |Parameters |Body|Folder|DocString
 |---|---|---|---|---
 |MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|Updated Folder|Some DocString|
@@ -50,7 +50,7 @@ You must have at least [Function Admin](../management/access-control/role-based-
 ```kusto
 .alter function MyFunction1 folder @"First Level\Second Level"
 ```
-    
+
 |Name |Parameters |Body|Folder|DocString
 |---|---|---|---|---
 |MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|First Level\Second Level|Some DocString|

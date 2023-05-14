@@ -3,11 +3,11 @@ title: Authentication over HTTPS - Azure Data Explorer
 description: This article describes Authentication over HTTPS in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/26/2023
+ms.date: 04/19/2023
 ---
 # Authentication over HTTPS
 
-To send a request to Azure Data Explorer over HTTPS, the principal making the request
+To interact with your cluster over HTTPS, the principal making the request
 must authenticate by using the HTTP `Authorization` request header.
 
 ## Syntax
@@ -22,11 +22,11 @@ must authenticate by using the HTTP `Authorization` request header.
 
 ## Get an access token
 
-There are many different methods to get an Azure AD access token. To learn more, see [user authentication](../../management/access-control/how-to-authenticate-with-aad.md#user-authentication) and [application authentication](../../management/access-control/how-to-authenticate-with-aad.md#application-authentication).
+There are many different methods to get an Azure AD access token. To learn more, see [user authentication](../../access-control/how-to-authenticate-with-aad.md#user-authentication) and [application authentication](../../access-control/how-to-authenticate-with-aad.md#application-authentication).
 
 ### Get an access token for a user principal using the Azure CLI
 
-The following steps return an access token for the user principal making the request. Make sure the user principal has access to the Azure Data Explorer resource you plan to access. For more information, see [role-based access control](../../management/access-control/role-based-access-control.md).
+The following steps return an access token for the user principal making the request. Make sure the user principal has access to the resource you plan to access. For more information, see [role-based access control](../../access-control/role-based-access-control.md).
 
 1. Sign in to the Azure CLI.
 
@@ -86,7 +86,7 @@ Azure AD service principals represent applications or services that need access 
 
       To learn about the different roles and how to assign them, see [security roles management](../../management/security-roles.md).
 
-1. Send an HTTP request to request an access token. Replace `<tenantId>`, `<appId>`, and `<password>` with the values obtained from the previous command. This request returns a JSON object containing the access token, which you can use as the value for the `Authorization` header in your requests to Azure Data Explorer.
+1. Send an HTTP request to request an access token. Replace `<tenantId>`, `<appId>`, and `<password>` with the values obtained from the previous command. This request returns a JSON object containing the access token, which you can use as the value for the `Authorization` header in your requests.
 
       ```azurecli
       curl -X POST https://login.microsoftonline.com/<tenantId>/oauth2/token \
@@ -98,5 +98,5 @@ Azure AD service principals represent applications or services that need access 
 
 ## See also
 
-* [Authentication overview](../../management/access-control/index.md)
-* [Guide to Azure AD authentication](../../management/access-control/how-to-authenticate-with-aad.md)
+* [Authentication overview](../../access-control/index.md)
+* [Guide to Azure AD authentication](../../access-control/how-to-authenticate-with-aad.md)

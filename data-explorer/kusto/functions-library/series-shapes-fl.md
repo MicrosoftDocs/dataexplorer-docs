@@ -220,7 +220,7 @@ union
 :::image type="content" source="images/series-shapes-fl/series-shapes-demo.png" alt-text="Graph showing 4 time series with trends and jumps." border="false":::
 
 The respective trend and jump scores:
-<!-- csl: https://help.kusto.windows.net/Samples -->
+
 ```kusto
 tsid	shapes
 1	    {

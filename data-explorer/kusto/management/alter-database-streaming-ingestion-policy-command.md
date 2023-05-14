@@ -1,13 +1,13 @@
 ---
-title: ".alter database streaming ingestion policy command - Azure Data Explorer"
-description: "This article describes the .alter database streaming ingestion policy command in Azure Data Explorer."
+title: .alter database streaming ingestion policy command - Azure Data Explorer
+description: Learn how to use the .alter database streaming ingestion policy command to change the database streaming ingestion policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/20/2023
 ---
 # .alter database streaming ingestion policy
 
-Use this command to change the database streaming ingestion policy. The [streaming policy](../management/streamingingestionpolicy.md) manages streaming ingestion of data into databases and tables.
+Changes the database streaming ingestion policy. The [streaming policy](../management/streamingingestionpolicy.md) manages streaming ingestion of data into databases and tables.
 
 Streaming ingestion is best suited for low latency scenarios where the ingestion time is under 10 seconds for varying data volume. It can optimize processing for multiple tables across one or more databases, especially when the tables receive only a few records per second but the ingestion volume is thousands of records per second.
 
