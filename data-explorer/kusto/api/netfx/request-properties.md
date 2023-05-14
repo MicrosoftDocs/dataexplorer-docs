@@ -172,13 +172,13 @@ public static IDataReader QueryKusto(ICslQueryProvider queryProvider)
 
 <!-- The following text can be re-produced by running: Kusto.Cli.exe -focus -execute:"#crp -doc" -->
 
-| Name | Type | Description |
+|Name|Type|Description|
 |--|--|--|
 | `client_max_redirect_count` (*OptionClientMaxRedirectCount*) | long | If set and positive, indicates the maximum number of HTTP redirects that the client will process. |
 | `deferpartialqueryfailures` (*OptionDeferPartialQueryFailures*) | bool | If true, disables reporting partial query failures as part of the result set. |
 | `materialized_view_shuffle` (*OptionMaterializedViewShuffleQuery*) | dynamic | A hint to use shuffle strategy for materialized views that are referenced in the query. The property is an array of materialized views names and the shuffle keys to use. Examples: 'dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])' (shuffle view V1 by K1, K2) or 'dynamic([ { "Name": "V1" } ])' (shuffle view V1 by all keys) |
-| `max_memory_consumption_per_query_per_node` (*OptionMaxMemoryConsumptionPerQueryPerNode*) | UInt64 | Overrides the default maximum amount of memory a whole query may allocate per node. |
-| `maxmemoryconsumptionperiterator` (*OptionMaxMemoryConsumptionPerIterator*) | UInt64 | Overrides the default maximum amount of memory a query operator may allocate. |
+| `max_memory_consumption_per_query_per_node` (*OptionMaxMemoryConsumptionPerQueryPerNode*) | int | Overrides the default maximum amount of memory a whole query may allocate per node. |
+| `maxmemoryconsumptionperiterator` (*OptionMaxMemoryConsumptionPerIterator*) | int | Overrides the default maximum amount of memory a query operator may allocate. |
 | `maxoutputcolumns` (*OptionMaxOutputColumns*) | long | Overrides the default maximum number of columns a query is allowed to produce. |
 | `norequesttimeout` (*OptionNoRequestTimeout*) | bool | Enables setting the request timeout to its maximum value. This option can't be set as part of a [set statement](../../query/setstatement.md). |
 | `notruncation` (*OptionNoTruncation*) | bool | Enables suppressing truncation of the query results returned to the caller. |
@@ -207,8 +207,8 @@ public static IDataReader QueryKusto(ICslQueryProvider queryProvider)
 | `query_results_cache_force_refresh` (*OptionQueryResultsCacheForceRefresh*) | bool | If set, forces query results cache refresh for a specific query. Must be used in combination with 'query_results_cache_max_age', and sent via ClientRequestProperties object (not as 'set' statement). |
 | `query_results_cache_max_age` (*OptionQueryResultsCacheMaxAge*) | timespan | If positive, controls the maximum age of the cached query results the service is allowed to return. |
 | `query_results_cache_per_shard` (*OptionQueryResultsCachePerShardEnabled*) | bool | If set, enables per-shard query cache. |
-| `query_results_progressive_row_count` (*OptionProgressiveQueryMinRowCountPerUpdate*) |  | Hint for Kusto as to how many records to send in each update (takes effect only if OptionResultsProgressiveEnabled is set) |
-| `query_results_progressive_update_period` (*OptionProgressiveProgressReportPeriod*) |  | Hint for Kusto as to how often to send progress frames (takes effect only if OptionResultsProgressiveEnabled is set) |
+| `query_results_progressive_row_count` (*OptionProgressiveQueryMinRowCountPerUpdate*) | | Hint for Kusto as to how many records to send in each update (takes effect only if *OptionResultsProgressiveEnabled* is set) |
+| `query_results_progressive_update_period` (*OptionProgressiveProgressReportPeriod*) |  | Hint for Kusto as to how often to send progress frames (takes effect only if *OptionResultsProgressiveEnabled* is set) |
 | `query_take_max_records` (*OptionTakeMaxRecords*) | long | Enables limiting query results to this number of records. |
 | `query_weakconsistency_session_id` (*OptionQueryWeakConsistencySessionId*) | string | Sets the query weak consistency session ID. Takes effect when 'queryconsistency' mode is set to 'weakconsistency_by_session_id'. |  |
 | `queryconsistency` (*OptionQueryConsistency*) | string | Controls query consistency. Supported values are 'strongconsistency', 'weakconsistency', 'weakconsistency_by_query', 'weakconsistency_by_database', or 'weakconsistency_by_session_id'. |
@@ -227,4 +227,4 @@ public static IDataReader QueryKusto(ICslQueryProvider queryProvider)
 | `servertimeout` (*OptionServerTimeout*) | timespan | Overrides the default request timeout. This option can't be set as part of a [set statement](../../query/setstatement.md). |
 | `truncationmaxrecords` (*OptionTruncationMaxRecords*) | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncationmaxsize` (*OptionTruncationMaxSize*) | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
-| `validate_permissions` (*OptionValidatePermissions*) | bool | Validates user's permissions to perform the query and doesn't run the query itself. The possible results for this property are:</br>- "OK": permissions are present and valid.</br>- "Incomplete": validation couldn't be completed as the query uses dynamic schema evaluation.</br>- Returns KustoRequestDeniedException if permissions weren't set.|
+| `validate_permissions` (*OptionValidatePermissions*) | bool | Validates user's permissions to perform the query and doesn't run the query itself. The possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed as the query uses dynamic schema evaluation), or `KustoRequestDeniedException` (if permissions weren't set).|
