@@ -1,9 +1,9 @@
 ---
 title: .delete table merge policy command- Azure Data Explorer
-description: This article describes the .delete table merge policy command in Azure Data Explorer.
+description: Learn how to use the `.delete table merge policy` command to delete a table's merge policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/14/2023
 ---
 # .delete table merge policy
 

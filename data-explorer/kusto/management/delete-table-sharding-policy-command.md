@@ -1,9 +1,9 @@
 ---
 title: .delete table sharding policy command - Azure Data Explorer
-description: This article describes the .delete table sharding policy command in Azure Data Explorer.
+description: Learn how to use the `.delete table sharding policy` command to delete a table's sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 05/14/2023
 ---
 # .delete table sharding policy
 
