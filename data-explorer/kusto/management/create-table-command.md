@@ -1,9 +1,9 @@
 ---
 title: .create table - Azure Data Explorer
-description: This article describes .create table in Azure Data Explorer.
+description: Learn how to use the `.create table` command to create a new empty table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/14/2023
 ---
 # .create table
 
@@ -37,8 +37,8 @@ You must have at least [Database User](access-control/role-based-access-control.
 > [!NOTE]
 > If a table with the same (case-sensitive) name already exists in the context of the database, the command returns success without changing the existing table, even in the following scenarios:
 >
-> - The specified schema doesn't match the schema of the existing table
-> - The `folder` or `docstring` parameters are specified with values different from the ones set in the table
+> * The specified schema doesn't match the schema of the existing table
+> * The `folder` or `docstring` parameters are specified with values different from the ones set in the table
 
 ## Example
 

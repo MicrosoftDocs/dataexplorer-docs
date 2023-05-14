@@ -1,9 +1,9 @@
 ---
 title: .delete cluster sandbox policy command - Azure Data Explorer
-description: This article describes the .delete cluster sandbox policy command in Azure Data Explorer.
+description: Learn how to use the `.delete cluster sandbox policy` command to delete the cluster sandbox policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/14/2023
 ---
 # .delete cluster sandbox policy
 

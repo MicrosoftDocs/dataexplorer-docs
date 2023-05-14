@@ -1,13 +1,13 @@
 ---
 title: Database cursors - Azure Data Explorer
-description: This article describes Database cursors in Azure Data Explorer.
+description: Learn how to use database cursors to query a database multiple times.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/09/2022
+ms.date: 05/14/2023
 ---
 # Database cursors
 
-A **database cursor** is a database-level object that lets you query a database multiple times. You'll get consistent results even if there are `data-append` or `data-retention` operations happening in parallel with the queries.
+A **database cursor** is a database-level object that lets you query a database multiple times. You get consistent results even if there are `data-append` or `data-retention` operations happening in parallel with the queries.
 
 Database cursors are designed to address two important scenarios:
 
@@ -66,9 +66,7 @@ This value is guaranteed to update, as-needed by the ingestion history, into suc
 
 The ingestion process first commits the data, so that it's available for querying, and only then assigns an actual cursor value to each record. If you attempt to query for data immediately following the ingestion completion using a database cursor, the results might not yet incorporate the last records added, because they haven't yet been assigned the cursor value. Also, retrieving the current database cursor value repeatedly might return the same value, even if ingestion was done in between, because only a cursor commit can update its value.
 
-Querying a table based on database cursors is only guaranteed to "work" (providing exactly-once guarantees) 
-if the records are ingested directly into that table. If you are using extents commands, such as [move extents](move-extents.md)/[.replace extents](replace-extents.md) to move data into the table, or if you are using [.rename table](rename-table-command.md), then querying this table using database cursors is not guaranteed to not miss any data. This is because the ingestion time 
-of the records is assigned when initially ingested, and does not change during the move extents operation. 
+Querying a table based on database cursors is only guaranteed to "work" (providing exactly-once guarantees) if the records are ingested directly into that table. If you're using extents commands, such as [move extents](move-extents.md)/[.replace extents](replace-extents.md) to move data into the table, or if you're using [.rename table](rename-table-command.md), then querying this table using database cursors isn't guaranteed to not miss any data. This is because the ingestion time of the records is assigned when initially ingested, and doesn't change during the move extents operation.
 Therefore, when the extents are moved into the target table, it's possible that the cursor value assigned to the records in these extents was already processed (and next query by database cursor will miss the new records).
 
 ## Example: Processing records exactly once
