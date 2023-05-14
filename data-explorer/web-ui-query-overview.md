@@ -8,9 +8,7 @@ ms.date: 05/14/2023
 
 # Azure Data Explorer web UI query data overview
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. One of the ways to interact with Azure Data Explorer is through the [web UI](https://dataexplorer.azure.com).
-
-The web UI provides an end-to-end data exploration experience, from [data ingestion](ingest-data-wizard.md) to data query and [dashboards](azure-data-explorer-dashboards.md). This article provides an overview of the web UI query page and explains how it can be used to access and interact with your data.
+The [Azure Data Explorer web UI](https://dataexplorer.azure.com) provides an end-to-end data exploration experience, from [data ingestion](ingest-data-wizard.md) to data query and [dashboards](azure-data-explorer-dashboards.md). This article provides an overview of the web UI query page and explains how it can be used to access and interact with your data.
 
 ## Go to the query page
 
