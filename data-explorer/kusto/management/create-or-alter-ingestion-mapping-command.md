@@ -1,9 +1,9 @@
 ---
 title: .create-or-alter ingestion mapping - Azure Data Explorer
-description: This article describes .create-or-alter ingestion mapping in Azure Data Explorer.
+description: Learn how to use the `.create-or-alter ingestion mapping` command to create or alter an ingestion mapping.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 05/14/2023
 ---
 # .create-or-alter ingestion mapping
 
@@ -38,7 +38,7 @@ At least [Database Ingestor](access-control/role-based-access-control.md) permis
 > * When ingesting into a table and referencing a mapping whose schema does not match the ingested table schema, the ingest operation will fail.
 
 ## Example
- 
+
 ```kusto
 .create table MyTable ingestion csv mapping "Mapping1"
 '['

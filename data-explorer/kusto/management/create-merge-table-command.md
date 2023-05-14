@@ -1,15 +1,15 @@
 ---
 title: .create-merge table - Azure Data Explorer
-description: This article describes .create-merge table in Azure Data Explorer.
+description: Learn how to use the `.create-merge table` command to create a new table or extend an existing table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/14/2023
 ---
 # .create-merge table
 
 Creates a new table or extends an existing table.
 
-The command must run in the context of a specific database. 
+The command must run in the context of a specific database.
 
 ## Permissions
 
