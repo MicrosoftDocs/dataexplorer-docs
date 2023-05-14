@@ -107,8 +107,10 @@ items:
     items:
     - name: Azure Storage external tables
       items:
-      - name: Create or alter external table
+      - name: Create or alter Azure Blob Storage/ADLS external table
         href: external-tables-azurestorage-azuredatalake.md
+      - name: Create or alter delta external table
+        href: external-tables-azurestorage-deltalake.md
       - name: Manage external table mappings
         items:
         - name: .alter external table mapping
@@ -125,7 +127,7 @@ items:
       items:
       - name: Create and alter external table
         href: external-sql-tables.md
-      - name: Query SQL external table
+      - name: Query a SQL external table
         href: external-sql-tables-query.md
     - name: ".drop external table"
       href: drop-external-table.md
@@ -559,6 +561,9 @@ items:
       href: manage-materialized-view-security-roles.md
     - name: Manage function roles
       href: manage-function-security-roles.md
+    - name: Referencing security principals
+      displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
+      href: referencing-security-principals.md
 - name: Data ingestion
   items:
   - name: Ingest from storage
@@ -658,25 +663,9 @@ items:
     href: operations.md
   - name: Queries
     href: queries.md
+    displayName: .show running queries .cancel query 
   - name: Streaming ingestion statistics
     href: streamingingestionstatistics.md
-- name: Access control
-  href: access-control/index.md
-  items:
-  - name: Azure Active Directory
-    displayName: AAD, Azure AD
-    href: access-control/aad.md
-  - name: Role-based access control
-    href: access-control/role-based-access-control.md
-    displayName: RBAC, security roles, principals
-  - name: How-To Azure Active Directory authentication
-    displayName: AAD, Azure AD
-    href: access-control/how-to-authenticate-with-aad.md
-  - name: Referencing security principals
-    displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
-    href: ./access-control/referencing-security-principals.md
-  - name: Allow cross-tenant queries and commands
-    href: ../../cross-tenant-query-and-commands.md
 - name: Advanced data management
   items:
   - name: Extents (data shards)

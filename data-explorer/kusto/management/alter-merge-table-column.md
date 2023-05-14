@@ -1,9 +1,9 @@
 ---
-title: ".alter-merge column-docstrings - Azure Data Explorer"
-description: "This article describes .alter-merge column-docstrings in Azure Data Explorer."
+title: .alter-merge column-docstrings - Azure Data Explorer
+description: Learn how to use the .alter-merge column-docstrings command to set the `DocString` property for one or more columns in a specified table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/22/2023
+ms.date: 04/20/2023
 ---
 # .alter-merge column-docstrings
 
@@ -25,7 +25,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 |*Col*|string|&check;|The column on which the operation is performed.|
 | *DocString*|string|&check;|Free text that you can attach to a table/function/column to describe the entity. This string is presented in various UX settings next to the entity names.|
 
-## Example 
+## Example
 
 ```kusto
 .alter-merge table Table1 column-docstrings (Column1:"DocString1", Column2:"DocString2")
