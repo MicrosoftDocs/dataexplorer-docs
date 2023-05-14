@@ -1,9 +1,9 @@
 ---
 title: .alter table sharding policy command - Azure Data Explorer
-description: This article describes the .alter table sharding policy command in Azure Data Explorer.
+description: Learn how to use the `.alter table sharding policy` command to change the table sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 05/14/2023
 ---
 # .alter table sharding policy
 
