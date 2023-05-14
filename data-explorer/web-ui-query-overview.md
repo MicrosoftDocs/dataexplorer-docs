@@ -26,7 +26,7 @@ The following steps describe how to add a cluster connection in the web UI.
 
 1. Select **Add** to add the connection.
 
-You should see a connection to your cluster with all of the databases associated with that cluster listed underneath it.
+You should see a connection to your cluster with all of the databases associated with that cluster listed underneath it. For example, the help cluster should look as follows.
 
 :::image type="content" source="media/web-ui-query/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-query/help-cluster-web-ui.png":::
 
@@ -48,9 +48,9 @@ The following steps explain how to run a query in the web UI.
     | take 1000
     ```
 
-1. To return all records matching the query, select **Run** or press Shift + Enter. Alternatively, to see a preview of 50 results, select the dropdown menu from the **Run** button and select **Preview results**.
+1. To return all records matching the query, select **Run** or press *Shift + Enter*. Alternatively, to see a preview of 50 results, select the dropdown menu on the **Run** button and select **Preview results**.
 
-    :::image type="content" source="media/web-ui-query/preview-results.png" alt-text="Screenshot of preview results button."  lightbox="media/web-ui-query/preview-results.png":::
+    :::image type="content" source="media/web-ui-query/run-preview-results.png" alt-text="Screenshot of preview results button." lightbox="media/web-ui-query/run-preview-results.png":::
 
 ## Manage query tabs
 
