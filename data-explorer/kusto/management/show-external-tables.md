@@ -3,7 +3,7 @@ title: show external table control command - Azure Data Explorer
 description: This article describes the show external table control command in Azure Data Explorer 
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/08/2023
 ---
 # .show external tables
 
@@ -21,7 +21,13 @@ You must have at least Database User, Database Viewer, Database Monitor to run t
 
 `.show` `external` `table` *TableName*
 
-## Output
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the external table to show.|
+
+## Returns
 
 | Output parameter | Type   | Description                                                         |
 |------------------|--------|---------------------------------------------------------------------|

@@ -3,7 +3,7 @@ title: Request properties and ClientRequestProperties - Azure Data Explorer
 description: This article describes Request properties and ClientRequestProperties in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/07/2022
+ms.date: 05/08/2023
 ---
 # Request properties and ClientRequestProperties
 
@@ -126,53 +126,44 @@ The following example shows sample client code for using request properties:
 }
 ```
 
-#### Csharp client
+#### C\# client
+
 ```csharp
-public static System.Data.IDataReader QueryKusto(
-    Kusto.Data.Common.ICslQueryProvider queryProvider)
+public static IDataReader QueryKusto(ICslQueryProvider queryProvider)
 {
-    var databaseName = "Samples";
     var query = "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc";
-    var queryParameters = new Dictionary<String, String>()
+    var queryParameters = new Dictionary<string, string>
     {
         { "n", "10" }, // Will be parsed as long, according to the declare query_parameters statement in the query
         { "d", "dynamic([\"ATLANTIC SOUTH\"])" } // Will be parsed as dynamic, according to the declare query_parameters statement in the query
     };
-
     // Query parameters (and many other properties) are provided
     // by a ClientRequestProperties object handed alongside
     // the query:
-    var clientRequestProperties = new Kusto.Data.Common.ClientRequestProperties(
-        principalIdentity: null,
-        options: null,
-        parameters: queryParameters);
-
-    // Having client code provide its own ClientRequestId is
-    // highly recommended. It not only allows the caller to
-    // cancel the query, but also makes it possible for the Kusto
-    // team to investigate query failures end-to-end:
-    clientRequestProperties.ClientRequestId
-        = "MyApp.MyActivity;"
-        + Guid.NewGuid().ToString();
-
+    var clientRequestProperties = new ClientRequestProperties(options: null, parameters: queryParameters)
+    {
+        PrincipalIdentity = null,
+        // Having client code provide its own ClientRequestId is
+        // highly recommended. It not only allows the caller to
+        // cancel the query, but also makes it possible for the Kusto
+        // team to investigate query failures end-to-end:
+        ClientRequestId = "MyApp.MyActivity;" + Guid.NewGuid()
+    };
     // This is an example for setting an option
     // ("notruncation", in this case). In most cases this is not
     // needed, but it's included here for completeness:
-    clientRequestProperties.SetOption(
-        Kusto.Data.Common.ClientRequestProperties.OptionNoTruncation,
-        true);
- 
+    clientRequestProperties.SetOption(ClientRequestProperties.OptionNoTruncation, true);
     try
     {
-        return queryProvider.ExecuteQuery(query, clientRequestProperties);
+        return queryProvider.ExecuteQuery(query, clientRequestProperties);
     }
-    catch (Exception ex)
+    catch (Exception)
     {
         Console.WriteLine(
-            "Failed invoking query '{0}' against Kusto."
-            + " If contacting support, please provide this string: 'ClientRequestId={1}'",
-            query, clientRequestProperties.ClientRequestId);
-        return null;
+            "Failed invoking query '{0}' against Kusto. If contacting support, please provide this string: 'ClientRequestId={1}'",
+            query, clientRequestProperties.ClientRequestId
+        );
+        return null;
     }
 }
 ```

@@ -15,10 +15,18 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.delete` `table` *TableName* `policy` `ingestiontime` 
+`.delete` `table` *TableName* `policy` `ingestiontime`
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table for which to delete the ingestion time policy.|
 
 ### Example
 
+The following command deletes the ingestion time policy for a table named `MyTable`.
+
 ```kusto
-.delete table table_name policy ingestiontime 
+.delete table `MyTable` policy ingestiontime 
 ```

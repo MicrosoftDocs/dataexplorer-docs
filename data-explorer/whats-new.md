@@ -3,11 +3,43 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/03/2023
+ms.date: 05/01/2023
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## April 2023
+
+**API**
+
+| Article title | Description |
+|--|--|
+| - [Set up your development environment to use Kusto client libraries](kusto/api/get-started/app-set-up.md)<br/>- [Hello Kusto: Create your first Kusto client app](kusto/api/get-started/app-hello-kusto.md)<br/> - [Basic query: Create an app to run basic queries](kusto/api/get-started/app-basic-query.md) | New articles. Describes how to write code with SDKs.|
+
+**General**
+
+| Article title | Description |
+|--|--|
+|[Azure Data Explorer web UI results grid](web-results-grid.md)| Updated article. New features added.|
+
+**Functions library**
+
+| Article title | Description |
+|--|--|
+|- [log_reduce_fl()](kusto/functions-library/log-reduce-fl.md) <br/> - [log_reduce_full_fl()](kusto/functions-library/log-reduce-full-fl.md) <br/> - [log_reduce_predict_fl()](kusto/functions-library/log-reduce-predict-fl.md) <br/> - [log_reduce_predict_full_fl()](kusto/functions-library/log-reduce-predict-full-fl.md) <br/> - [log_reduce_train_fl()](kusto/functions-library/log-reduce-train-fl.md)| New articles. Describes how to find common patterns in textual logs. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+|[Use a managed identity to run a continuous export job](kusto/management/data-export/continuous-export-with-managed-identity.md)| New article. Describes how to use a managed identity for continuous export.
+
+**Query**
+
+| Article title | Description |
+|--|--|
+|- [punycode_from_string()](kusto/query/punycode-from-string.md) <br/> - [punycode_to_string()](kusto/query/punycode-to-string.md)| New articles. Describes how to encode and decode Punycode.|
 
 ## March 2023
 
@@ -16,7 +48,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 |[Python plugin packages for Azure Data Explorer](python-package-reference.md)| New article. Lists the available Python packages in the Azure Data Explorer Python plugin.|
-|- [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink.md) </br> - [Ingest data with the Apache log4J 2 connector](apache-log4j2-connector.md)| New articles. Describe how to ingest data into Azure Data Explorer using the Serilog sink, and the Apache Log4j 2 connectors. |
+|- [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink.md) <br/> - [Ingest data with the Apache log4J 2 connector](apache-log4j2-connector.md)| New articles. Describe how to ingest data into Azure Data Explorer using the Serilog sink, and the Apache Log4j 2 connectors. |
 |[Manage Event Hubs data connections in your free Azure Data Explorer cluster](start-for-free-event-hubs.md)| New article. Describes how to manage Azure Event Hubs data connections in a free Azure Data Explorer cluster. |
 | [Manage language extensions in your Azure Data Explorer cluster](language-extensions.md) | Updated article. Steps added for changing the Python language extensions image in an Azure Data Explorer cluster. |
 
@@ -25,14 +57,14 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [Manage view access to tables in Azure Data Explorer](kusto/management/manage-table-view-access.md) | New article. Describes how to grant access to tables in Azure Data Explorer. |
-|- [Materialized views](kusto/management/materialized-views/materialized-view-overview.md) </br> - [.show materialized-view(s)](kusto/management/materialized-views/materialized-view-show-command.md) </br> - [.show materialized-view extents](kusto/management/materialized-views/materialized-view-show-extents-command.md) </br> - [.show materialized-view failures](kusto/management/materialized-views/materialized-view-show-failures-command.md) </br> - [.show materialized-view schema](kusto/management/materialized-views/materialized-view-show-schema-command.md) </br> - [.alter materialized-view autoUpdateSchema](kusto/management/materialized-views/materialized-view-alter-autoupdateschema.md) </br> - [.alter materialized-view docstring](kusto/management/materialized-views/materialized-view-alter-docstring.md) </br> - [.alter materialized-view folder](kusto/management/materialized-views/materialized-view-alter-folder.md) </br> - [.alter materialized-view lookback](kusto/management/materialized-views/materialized-view-alter-lookback.md) </br> - [.alter materialized-view](kusto/management/materialized-views/materialized-view-alter.md) </br> - [.clear materialized-view data](kusto/management/materialized-views/materialized-view-clear-data.md) </br> - [.create-or-alter materialized-view](kusto/management/materialized-views/materialized-view-create-or-alter.md) </br> - [.create materialized-view](kusto/management/materialized-views/materialized-view-create.md) </br> - [.drop materialized-view](kusto/management/materialized-views/materialized-view-drop.md) </br> - [.disable .enable materialized-view](kusto/management/materialized-views/materialized-view-enable-disable.md) </br> - [.rename materialized-view](kusto/management/materialized-views/materialized-view-rename.md) </br> - [.show materialized view details](kusto/management/materialized-views/materialized-view-show-details-command.md) | New and updated articles. Describe materialized-view commands. Parameters and examples added.|
-|- [.alter extent tags](kusto/management/alter-extent.md) </br> - [.drop extent tags](kusto/management/drop-extent-tags.md) </br> - [.move extents](kusto/management/move-extents.md) </br> - [.replace extents](kusto/management/replace-extents.md) </br> | Updated articles. Command syntax updated.|
+|- [Materialized views](kusto/management/materialized-views/materialized-view-overview.md) <br/> - [.show materialized-view(s)](kusto/management/materialized-views/materialized-view-show-command.md) <br/> - [.show materialized-view extents](kusto/management/materialized-views/materialized-view-show-extents-command.md) <br/> - [.show materialized-view failures](kusto/management/materialized-views/materialized-view-show-failures-command.md) <br/> - [.show materialized-view schema](kusto/management/materialized-views/materialized-view-show-schema-command.md) <br/> - [.alter materialized-view autoUpdateSchema](kusto/management/materialized-views/materialized-view-alter-autoupdateschema.md) <br/> - [.alter materialized-view docstring](kusto/management/materialized-views/materialized-view-alter-docstring.md) <br/> - [.alter materialized-view folder](kusto/management/materialized-views/materialized-view-alter-folder.md) <br/> - [.alter materialized-view lookback](kusto/management/materialized-views/materialized-view-alter-lookback.md) <br/> - [.alter materialized-view](kusto/management/materialized-views/materialized-view-alter.md) <br/> - [.clear materialized-view data](kusto/management/materialized-views/materialized-view-clear-data.md) <br/> - [.create-or-alter materialized-view](kusto/management/materialized-views/materialized-view-create-or-alter.md) <br/> - [.create materialized-view](kusto/management/materialized-views/materialized-view-create.md) <br/> - [.drop materialized-view](kusto/management/materialized-views/materialized-view-drop.md) <br/> - [.disable .enable materialized-view](kusto/management/materialized-views/materialized-view-enable-disable.md) <br/> - [.rename materialized-view](kusto/management/materialized-views/materialized-view-rename.md) <br/> - [.show materialized view details](kusto/management/materialized-views/materialized-view-show-details-command.md) | New and updated articles. Describe materialized-view commands. Parameters and examples added.|
+|- [.alter extent tags](kusto/management/alter-extent.md) <br/> - [.drop extent tags](kusto/management/drop-extent-tags.md) <br/> - [.move extents](kusto/management/move-extents.md) <br/> - [.replace extents](kusto/management/replace-extents.md) <br/> | Updated articles. Command syntax updated.|
 
 **Query**
 
 | Article title | Description |
 |--|--|
-|- [Kusto.Explorer code features](kusto/tools/kusto-explorer-code-features.md) </br> - [Kusto Explorer options](kusto/tools/kusto-explorer-options.md) </br> - [Kusto.Explorer keyboard shortcuts (hot-keys)](kusto/tools/kusto-explorer-shortcuts.md) </br> - [Using Kusto.Explorer](kusto/tools/kusto-explorer-using.md) </br> - [Kusto.Explorer installation and user interface](kusto/tools/kusto-explorer.md) | Updated articles. Refreshed content.|
+|- [Kusto.Explorer code features](kusto/tools/kusto-explorer-code-features.md) <br/> - [Kusto Explorer options](kusto/tools/kusto-explorer-options.md) <br/> - [Kusto.Explorer keyboard shortcuts (hot-keys)](kusto/tools/kusto-explorer-shortcuts.md) <br/> - [Using Kusto.Explorer](kusto/tools/kusto-explorer-using.md) <br/> - [Kusto.Explorer installation and user interface](kusto/tools/kusto-explorer.md) | Updated articles. Refreshed content.|
 
 ## February 2023
 
@@ -48,11 +80,11 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 |[Manage Azure Data Explorer cluster locks to prevent accidental deletion in your cluster](manage-cluster-locks.md)| New article. Describes how to manage cluster locks to prevent accidental deletion of data using the Azure portal.|
 |[Connect from common apps](connect-common-apps.md) | New article. Describes how to connect to Azure Data Explorer with SQL Server emulation from various apps.|
-|- [Connect to Azure Data Explorer with JDBC](connect-jdbc.md) </br> - [Connect to Azure Data Explorer with SQL Server emulation](sql-server-emulation-overview.md) </br> - [Connect to Azure Data Explorer with ODBC](connect-odbc.md) | New articles. Describes how to connect to Azure Data Explorer with different connection apps.|
+|- [Connect to Azure Data Explorer with JDBC](connect-jdbc.md) <br/> - [Connect to Azure Data Explorer with SQL Server emulation](sql-server-emulation-overview.md) <br/> - [Connect to Azure Data Explorer with ODBC](connect-odbc.md) | New articles. Describes how to connect to Azure Data Explorer with different connection apps.|
 |[Azure Data Explorer as a linked server from SQL Server](linked-server.md)| New article. Describes how to connect Azure Data Explorer as a linked server from SQL Server.|
 |[Set timeout limits](set-timeout-limits.md)| New article. Describes how to set query timeout limits.|
 |[Data connectors overview](connector-overview.md)| New article. Describes available data connectors and their capabilities.|
-|- [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md) </br> - [Azure Data Explorer web UI results grid](web-results-grid.md) </br> - [Share queries from Azure Data Explorer web UI](web-share-queries.md) </br> - [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md) </br> - [Explore the samples gallery](web-ui-samples-query.md) | New articles. Describes how to use, query, visualize, and share queries in the Azure Data Explorer web UI.|
+|- [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md) <br/> - [Azure Data Explorer web UI results grid](web-results-grid.md) <br/> - [Share queries from Azure Data Explorer web UI](web-share-queries.md) <br/> - [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md) <br/> - [Explore the samples gallery](web-ui-samples-query.md) | New articles. Describes how to use, query, visualize, and share queries in the Azure Data Explorer web UI.|
 |[Query data using T-SQL](t-sql.md)| Updated article. Support limitations added.|
 |[What is the ingestion wizard?](ingest-data-wizard.md) | Updated article. Management actions added.|
 
@@ -62,13 +94,13 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) </br> - [Referencing security principals](./kusto/management/access-control/referencing-security-principals.md) | Updated articles. Renewed and restructured referencing of security principals and identity providers.|
+|- [Allow cross-tenant queries and commands](kusto/access-control/cross-tenant-query-and-commands.md) <br/> - [Referencing security principals](./kusto/management/access-control/referencing-security-principals.md) | Updated articles. Renewed and restructured referencing of security principals and identity providers.|
 
 **Functions library**
 
 | Article title | Description |
 |--|--|
-|- [plotly_anomaly_fl()](./kusto/functions-library/plotly-anomaly-fl.md) </br> - [plotly_scatter3d_fl()](./kusto/functions-library/plotly-scatter3d-fl.md) | New articles. Describes how to customize a plotly template. |
+|- [plotly_anomaly_fl()](./kusto/functions-library/plotly-anomaly-fl.md) <br/> - [plotly_scatter3d_fl()](./kusto/functions-library/plotly-scatter3d-fl.md) | New articles. Describes how to customize a plotly template. |
 
 **Management**
 
@@ -161,7 +193,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 |[.cancel operation command](kusto/management/cancel-operation-command.md)| New article. Describes how to use the `.cancel operation` command.|
-|[How to authenticate with Azure Active Directory](kusto/management/access-control/how-to-authenticate-with-aad.md)| Updated article. Updated with Microsoft Authentication Library authentication.|
+|[How to authenticate with Azure Active Directory](kusto/access-control/how-to-authenticate-with-aad.md)| Updated article. Updated with Microsoft Authentication Library authentication.|
 |[.drop extents](kusto/management/drop-extents.md)| Updated article. Added examples to drop specific extents.|
 |[Queries management](kusto/management/queries.md)| Updated article. Added show by user command.
 |- [Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md)|Updated article. Added ingest from Amazon S3.
@@ -206,17 +238,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [Ingest data using managed identity authentication](ingest-data-managed-identity.md) | New Article. Queue Azure Storage blobs for ingestion using managed identity authentication. |
 |- [Azure Data Explorer connector for Microsoft Power Automate](flow.md) <br />- [Usage examples for Power Automate connector](flow-usage.md) <br />- [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md) <br />- [Microsoft Logic App and Azure Data Explorer](kusto/tools/logicapps.md)| Updated articles. General availability (GA). Content refreshed. |
 | [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated Article. Added section on drillthrough. |
-
-## April 2022
-
-| Article title | Description |
-|--|--|
-| - [Enable disk encryption for your cluster](cluster-encryption-disk.md)<br />- [Secure your cluster with encryption](cluster-encryption-overview.md)<br />- [Enable double encryption for your cluster](cluster-encryption-double.md) | New articles. Describing securing your cluster using disk encryption. |
-| - [Create a managed private endpoint for your cluster](security-network-managed-private-endpoint-create.md)<br />- [Network security](security-network-overview.md)<br />- [Create a private endpoint for your cluster](security-network-private-endpoint-create.md)<br />- [Troubleshoot private endpoints](security-network-private-endpoint-troubleshoot.md)<br />- [Private endpoints for your cluster](security-network-private-endpoint.md)<br />- [Restrict outbound access from your cluster](security-network-restrict-outbound-access.md)<br />- [Restrict public access to your cluster](security-network-restrict-public-access.md)| New articles. Describes private endpoint security. |
-
-**Management**
-
-| Article title | Description |
-|--|--|
-| [Streaming ingestion failures](kusto/management/streamingingestionfailures.md) | New article. Describes the command to show streaming ingestion failures. |
-| [Streaming ingestion statistics](kusto/management/streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |

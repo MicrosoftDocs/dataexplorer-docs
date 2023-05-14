@@ -26,13 +26,13 @@ By using horizontal scaling, you can scale the instance count automatically, bas
 
 ### Manual scale
 
-Manual scale is the default setting during cluster creation. The cluster has a static capacity that doesn't change automatically. You select the static capacity by using the **Instance count** bar. The cluster's scaling remains at that setting until you make another change.
+In the manual scale option, the cluster has a static capacity that doesn't change automatically. Select the static capacity by using the **Instance count** bar. The cluster's scaling remains at the selected setting until changed.
 
    ![Manual scale method.](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
-### Optimized autoscale
+### Optimized autoscale (recommended option)
 
-Optimized autoscale is the recommended scaling method. This method optimizes cluster performance and cost, as follows:
+Optimized autoscale is the default setting during cluster creation and the recommended scaling method. This method optimizes cluster performance and cost, as follows:
 
 * If the cluster is underutilized, it is scaled in to lower cost without affecting the required performance.
 * If the cluster is overutilized, it is scaled out to maintain optimal performance.
@@ -98,7 +98,7 @@ To ensure that there's no overloading of resources, the following metrics are ev
 
 ### Custom autoscale
 
-By using custom autoscale, you can scale your cluster dynamically based on metrics that you specify. Use the following steps to configure custom autoscale.
+Although [optimized autoscale](#optimized-autoscale-recommended-option) is the recommended scaling option, Azure custom autoscale is also supported. By using custom autoscale, you can scale your cluster dynamically based on metrics that you specify. Use the following steps to configure custom autoscale.
 
 ![Scale rule.](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
@@ -147,3 +147,5 @@ You've now configured horizontal scaling for your Azure Data Explorer cluster. A
 
 * [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)
 * [Manage cluster vertical scaling](manage-cluster-vertical-scaling.md) for appropriate sizing of a cluster.
+
+

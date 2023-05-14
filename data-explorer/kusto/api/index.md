@@ -3,7 +3,7 @@ title: Azure Data Explorer API Overview - Azure Data Explorer
 description: This article describes API in Azure Data Explorer.
 ms.reviewer: vladikb
 ms.topic: reference
-ms.date: 09/11/2022
+ms.date: 04/19/2023
 ---
 # Azure Data Explorer API Overview
 
@@ -54,7 +54,7 @@ Azure Data Explorer provides a number of client libraries that make use of the a
 
 ### .NET Framework Libraries
 
-.NET Framework Libraries are the recommended way to invoke Azure Data Explorer functionality programmatically.
+.NET Framework Libraries are the recommended way to interact with your cluster programmatically.
 A number of different libraries are available.
 
 * [Kusto.Data (Kusto Client Library)](./netfx/about-kusto-data.md): Can be used to query data, query metadata, and alter it.
@@ -65,33 +65,33 @@ The above libraries use Azure APIs, such as Azure Storage API and Azure Active D
 
 ### Python Libraries
 
-Azure Data Explorer provides a Python client library that permits callers to send data queries and control commands.
-For more information, see [Azure Data Explorer Python SDK](python/kusto-python-client-library.md).
+The Python client library permits callers to send data queries and control commands.
+For more information, see [Kusto Python SDK](python/kusto-python-client-library.md).
 
 ### R Library
 
-Azure Data Explorer provides an R client library that permits callers to send data queries and control commands.
-For more information, see [Azure Data Explorer R SDK](r/kusto-r-client-library.md).
+The R client library permits callers to send data queries and control commands.
+For more information, see [Kusto R SDK](r/kusto-r-client-library.md).
 
 ### Java SDK
 
-The Java client library provides the capability to query Azure Data Explorer clusters using Java.
-For more information, see [Azure Data Explorer Java SDK](java/kusto-java-client-library.md).
+The Java client library provides the capability to query clusters using Java.
+For more information, see [Kusto Java SDK](java/kusto-java-client-library.md).
 
 ### Node SDK
 
-Azure Data Explorer Node SDK is compatible with Node LTS (currently v6.14) and built with ES6.
-For more information, see [Azure Data Explorer Node SDK](node/kusto-node-client-library.md).
+The Node SDK is compatible with Node LTS (currently v6.14) and built with ES6.
+For more information, see [Kusto Node SDK](node/kusto-node-client-library.md).
 
 ### Go SDK
 
-Azure Data Explorer Go Client library provides the capability to query, control and ingest into Azure Data Explorer clusters using Go.
-For more information, see [Azure Data Explorer Golang SDK](golang/kusto-golang-client-library.md).
+The Go Client library provides the capability to query, control and ingest into your cluster using Go.
+For more information, see [Kusto Golang SDK](golang/kusto-golang-client-library.md).
 
 ### PowerShell
 
-Azure Data Explorer .NET Framework Libraries can be used by PowerShell scripts.
-For more information, see [Calling Azure Data Explorer from PowerShell](powershell/powershell.md).
+The .NET Framework Libraries can be used by PowerShell scripts.
+For more information, see [Use Kusto .NET client libraries from PowerShell](powershell/powershell.md).
 
 ## Monaco IDE integration
 

@@ -11,11 +11,17 @@ Delete a materialized-view's [retention policy](retentionpolicy.md). The retenti
 
 ## Syntax
 
-`.delete` `materialized-view` *DatabaseName* `policy` `retention` 
+`.delete` `materialized-view` *MaterializedViewName* `policy` `retention`
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*|string|&check;|The name of the materialized view for which to delete the retention policy.|
 
 ### Example
 
-Delete a retention policy:
+The following command deletes the retention policy for a materialized view named `MyMaterializedView`.
 
 ```kusto
 .delete materialized-view MyMaterializedView policy retention

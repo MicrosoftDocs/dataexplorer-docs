@@ -1,9 +1,9 @@
 ---
 title: .alter function docstring - Azure Data Explorer
-description: This article describes .alter function docstring in Azure Data Explorer.
+description: Learn how to use the .alter function docstring to change the `DocString` value of an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/20/2023
 ---
 # .alter function docstring
 
@@ -31,13 +31,13 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 ## Returns
 
-|Output parameter |Type |Description
-|---|---|--- 
-|Name  |String |The name of the function
-|Parameters  |String |The parameters required by the function
-|Body  |String |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated when the function is invoked
-|Folder|String|A folder used for UI functions categorization. This parameter doesn't change the way the function is invoked
-|DocString|String|A description of the function for UI purposes
+|Output parameter |Type |Description|
+|---|---|---|
+|Name  |String |The name of the function|
+|Parameters  |String |The parameters required by the function|
+|Body  |String |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated when the function is invoked|
+|Folder|String|A folder used for UI functions categorization. This parameter doesn't change the way the function is invoked|
+|DocString|String|A description of the function for UI purposes|
 
 ## Example
 
@@ -47,6 +47,6 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 **Output**
 
-|Name |Parameters |Body|Folder|DocString
-|---|---|---|---|---
+|Name |Parameters |Body|Folder|DocString|
+|---|---|---|---|---|
 |MyFunction2 |(myLimit: long)| {StormEvents &#124; take myLimit}|MyFolder|Updated docstring|

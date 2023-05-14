@@ -7,16 +7,21 @@ ms.date: 05/14/2023
 ---
 # .delete database merge policy
 
-Delete a database's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged. 
- 
+Delete a database's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
 
 ## Syntax
 
-`.delete` `database` *DatabaseName* `policy` `merge` 
+`.delete` `database` *DatabaseName* `policy` `merge`
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database for which to delete the merge policy.|
 
 ### Example
 
-Delete the policy at the database level:
+The following command deletes the merge policy at the database level.
 
 ```kusto
 .delete database database_name policy merge 
