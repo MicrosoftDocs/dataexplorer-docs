@@ -10,14 +10,19 @@ ms.date: 05/14/2023
 
 The [Azure Data Explorer web UI](https://dataexplorer.azure.com) provides an end-to-end data exploration experience from [data ingestion](ingest-data-wizard.md) to data query and [dashboards](azure-data-explorer-dashboards.md). This article provides an overview of the web UI query page and explains how it can be used to access and interact with your data.
 
-In this overview, we'll cover:
+The query page provides the following features:
 
-* Query editor
-* Results grid
-* Charting and visualization
-* Intellisense and auto-completion
-* Query history and recall
-* Cluster and database navigation
+* [Cluster and database navigation](#cluster-and-database-navigation): A navigation panel to browse and switch between different clusters and databases.
+* [Query editor](#use-the-query-editor): A text editor with intellisense and auto-completion to write queries to interact with your data.
+* [Query tabs](#manage-query-tabs): Manage different queries in different contexts simultaneously with query tabs.
+* [Results grid](#work-with-the-results-grid): A table-like display of query results that can be sorted, filtered, grouped, and visualized.
+* [Query statistics](#review-query-statistics): Information about query performance, including query duration, CPU and memory usage, and data scanned to help you optimize your queries.
+* [Query recall](#query-recall): A feature that allows you to recall and reuse previously executed queries.
+
+## Prerequisites
+
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* Sign-in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
 ## Go to the query page
 
@@ -25,19 +30,22 @@ To open the query page, select **Query** from the main menu.
 
 :::image type="content" source="media/web-ui-query/query-widget.png" alt-text="Screenshot of the query widget in the main menu of the web UI." lightbox="media/web-ui-query/query-widget.png":::
 
-## Add a cluster connection
+## Cluster and database navigation
 
-The following steps describe how to add a cluster connection in the web UI.
+To browse and switch between clusters and databases, use the navigation panel on the left of the query page. Queries are executed within the context of a selected database. To select a database for your query, select the desired resource in the left panel. If you need to add a cluster connection, follow these steps:
 
-1. In the upper left pane, select **Add connection**.
+1. In the upper left corner, select **Add connection**.
 
-1. In the **Add connection** dialog box, enter the cluster **Connection URI** and **Display name**. To add a free, publicly available sample cluster, use "help" as the **Connection URI**.
+1. In the **Add connection** dialog box, enter the cluster **Connection URI** and **Display name**. Use "help" for the **Connection URI** to add a free sample cluster.
 
-1. Select **Add** to add the connection. You should see your cluster and databases in the left pane. For example, the following image shows the `help` cluster connection.
+1. Select **Add** to add the connection. Your clusters and databases should now be visible in the left panel. For example, the following image shows the `help` cluster connection.
 
     :::image type="content" source="media/web-ui-query/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-query/help-cluster-web-ui.png":::
 
-## Run a query
+> [!TIP]
+> Add clusters and databases to your favorites list with the star icon next to the resource name. To view only your favorite resources, select the star icon next to the filter text box.
+
+## Use the query editor
 
 The following steps explain how to use the query editor in the web UI.
 
@@ -77,9 +85,11 @@ The web UI supports multiple query tabs at once, all with different query contex
 
     :::image type="content" source="media/web-ui-query/undo-remove-tab.png" alt-text="Screenshot of button to restore a removed tab." lightbox="media/web-ui-query/undo-remove-tab.png":::
 
-## Use the results grid
+## Work with the results grid
 
 After you execute a query, the results are displayed in the results grid located below the query editor. The results grid presents query results in a tabular format. With the results grid, you can interactively sort, filter, group, and visualize the data in various ways. For more information, see [Azure Data Explorer web UI results grid](web-results-grid.md).
+
+## Review query statistics
 
 ## Query recall
 
