@@ -14,7 +14,7 @@ In the query page, you can:
 
 > [!div class="checklist"]
 >
-> * [View your clusters and databases](#view-your-clusters-and-databases)
+> * [View clusters and databases](#view-clusters-and-databases)
 > * [Write and run queries](#write-and-run-queries)
 > * [Manage queries in multiple contexts](#manage-queries-in-multiple-contexts)
 > * [Explore and manipulate query results](#explore-and-manipulate-query-results)
@@ -24,7 +24,7 @@ In the query page, you can:
 
 :::image type="content" source="media/web-ui-query/query-page-overview-gif.gif" alt-text="Moving image of query page overview." lightbox="media/web-ui-query/query-page-overview-gif.gif":::
 
-## View your clusters and databases
+## View clusters and databases
 
 The navigation panel on the left-hand side of the query page allows you to browse and switch between your clusters and databases. Under each cluster, you can see the databases included in that cluster. Under each database, you can see the tables, functions, external tables, and materialized views included in that database.
 
