@@ -218,6 +218,7 @@ items:
           displayName: web UI
         - name: Add a cluster connection
           href: add-cluster-connection.md
+          displayName: connect to cluster
         - name: Customize settings
           href: web-customize-settings.md
         - name: Explore the sample gallery
