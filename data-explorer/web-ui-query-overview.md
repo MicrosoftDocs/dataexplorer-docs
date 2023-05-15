@@ -56,24 +56,20 @@ To return all records matching the query, select **Run** or press *Shift + Enter
 
 ## Manage queries in multiple contexts
 
-The web UI supports multiple query tabs at once, all with different query contexts. The following steps describe how to create and manage multiple tabs.
+With the use of query tabs, you can work on multiple queries simultaneously, all with their own query context. The query tabs allow you to switch between different databases and clusters without losing your work. To create a new tab, select the plus icon next to the right-most tab. To stay organized, rename your tabs by selecting the pencil icon located on the tab.
 
-1. Select the plus icon next to the existing tab to create a new tab.
+:::image type="content" source="media/web-ui-query/add-new-tab.png" alt-text="Screenshot of button to add a new tab." lightbox="media/web-ui-query/add-new-tab.png":::
 
-    :::image type="content" source="media/web-ui-query/add-new-tab.png" alt-text="Screenshot of button to add a new tab." lightbox="media/web-ui-query/add-new-tab.png":::
+> [!NOTE]
+> The default name of a query tab is based on the cluster and context database.
 
-    > [!NOTE]
-    > The default name of a query tab is based on the cluster and context database.
+To get a comprehensive view of all existing tabs, use the tabs list located in the top right corner. At the top of the tabs list, there's an option to **Close all tabs**.
 
-1. To change the name of a tab, select the pencil icon located on the tab and type in the new name for the tab.
+:::image type="content" source="media/web-ui-query/manage-tabs-shortcut.png" alt-text="Screenshot of icon for managing tabs." lightbox="media/web-ui-query/manage-tabs-shortcut.png":::
 
-1. Use the tabs list located in the top right corner to clearly view and manage all tabs.
+Restore a previously closed query tab by selecting the **Reopen closed tab** button located in the top right of the window. If you closed all tabs, selecting this button will restore all of the closed tabs.
 
-    :::image type="content" source="media/web-ui-query/manage-tabs-shortcut.png" alt-text="Screenshot of icon for managing tabs." lightbox="media/web-ui-query/manage-tabs-shortcut.png":::
-
-1. To restore a removed tab, select the **Reopen closed tab** button in the top right of the screen.
-
-    :::image type="content" source="media/web-ui-query/undo-remove-tab.png" alt-text="Screenshot of button to restore a removed tab." lightbox="media/web-ui-query/undo-remove-tab.png":::
+:::image type="content" source="media/web-ui-query/undo-remove-tab.png" alt-text="Screenshot of button to restore a removed tab." lightbox="media/web-ui-query/undo-remove-tab.png":::
 
 ## View and manipulate results
 
