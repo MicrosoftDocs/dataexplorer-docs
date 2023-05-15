@@ -21,7 +21,7 @@ To add a connection to your Azure Data Explorer cluster, do the following:
 
 1. From the main left menu, select **Query**.
 
-    :::image type="content" source="media/web-ui-query/query-widget.png" alt-text="Screenshot of the query widget in the main menu of the web UI." lightbox="media/web-ui-query/query-widget.png":::
+    :::image type="content" source="media/web-ui-add-cluster/query-widget.png" alt-text="Screenshot of the query widget in the main menu of the web UI." lightbox="media/web-ui-add-cluster/query-widget.png":::
 
 1. In the upper left corner, select **Add connection**.
 
@@ -29,10 +29,7 @@ To add a connection to your Azure Data Explorer cluster, do the following:
 
 1. Select **Add** to add the connection. Your clusters and databases should now be visible in the left panel. For example, the following image shows the `help` cluster connection.
 
-    :::image type="content" source="media/web-ui-query/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-query/help-cluster-web-ui.png":::
-
-> [!TIP]
-> Add clusters and databases to your favorites list with the star icon next to the resource name. To view only your favorite resources, select the star icon next to the filter text box.
+    :::image type="content" source="media/web-ui-add-cluster/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-add-cluster/help-cluster-web-ui.png":::
 
 ## Next steps
 
