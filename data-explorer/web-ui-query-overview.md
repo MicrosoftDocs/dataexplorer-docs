@@ -26,9 +26,13 @@ In the query page, you can:
 
 ## View clusters and databases
 
-The navigation panel on the left-hand side of the query page allows you to browse and switch between your clusters and databases. Under each cluster, you can see the databases included in that cluster. Under each database, you can see the tables, functions, external tables, and materialized views included in that database.
+The connection pane on the left-hand side of the query page allows you to browse and switch between your clusters and databases. Under each cluster, you can see the databases included in that cluster. Under each database, you can see the tables, functions, external tables, and materialized views included in that database.
 
-To learn how to add a connection to your cluster, see [Add a cluster connection in the Azure Data Explorer web UI](add-cluster-connection.md).
+Right click on a database to open a menu with options such as to create a table or ingest data into the selected database.
+
+:::image type="content" source="media/web-ui-query/connection-pane.png" alt-text="Screenshot of the connection pane." lightbox="media/web-ui-query/connection-pane.png":::
+
+To learn how to add a connection, see [Add a cluster connection in the Azure Data Explorer web UI](add-cluster-connection.md).
 
 > [!TIP]
 > Add clusters and databases to your favorites list with the star icon next to the resource name. To view only your favorite resources, select the star icon next to the filter text box.
