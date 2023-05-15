@@ -27,12 +27,6 @@ In the query page, you can:
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Sign-in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
-## Go to the query page
-
-To open the query page, select **Query** from the main menu.
-
-:::image type="content" source="media/web-ui-query/query-widget.png" alt-text="Screenshot of the query widget in the main menu of the web UI." lightbox="media/web-ui-query/query-widget.png":::
-
 ## Navigate between clusters and databases
 
 To browse and switch between clusters and databases, use the navigation panel on the left of the query page. Queries are executed within the context of a selected database. To select a database for your query, select the desired resource in the left panel.
