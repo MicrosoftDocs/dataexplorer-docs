@@ -3,7 +3,7 @@ title: Use a Jupyter Notebook to analyze data in Azure Data Explorer
 description: This article shows you how to analyze data in Azure Data Explorer using a Jupyter Notebook and the kqlmagic extension.
 ms.reviewer: maraheja
 ms.topic: how-to
-ms.date: 05/10/2023
+ms.date: 05/15/2023
 
 # Customer intent: I want to analyze data using Jupyter Notebooks and kqlmagic.
 ---
@@ -20,7 +20,7 @@ In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to conne
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Jupyter Notebook installed on your local machine. Otherwise, use [Azure Data Studio](/sql/azure-data-studio/notebooks/notebooks-kqlmagic).
-* We recommend using Python 3.6 with kqlmagic. To change the Jupyter Notebook kernel version to Python 3.6, select **Kernel** > **Change Kernel** > **Python 3.6**.
+* Python 3.6. To change the Jupyter Notebook kernel version to Python 3.6, select **Kernel** > **Change Kernel** > **Python 3.6**.
 
 ## Install kqlmagic
 
@@ -44,10 +44,10 @@ Select the tab for your preferred method to connect to your cluster.
 
 ### [Code](#tab/code)
 
-The Azure AD code method prompts MSAL interactive sign-in. You'll receive a code to enter for authentication.
+The Azure Active Directory (Azure AD) code method prompts MSAL interactive sign-in. You'll receive a code to enter for authentication.
 
 ```python
-%kql azure_data-Explorer://code;cluster='<cluster-name>';database='<database-name>'
+%kql AzureDataExplorer://code;cluster='<cluster-name>';database='<database-name>'
 ```
 
 ### [Application key](#tab/application)
@@ -55,7 +55,7 @@ The Azure AD code method prompts MSAL interactive sign-in. You'll receive a code
 The Azure AD application method allows for a non-interactive sign-in using an Azure AD application ID and key.
 
 ```python
-%kql azure_data-Explorer://tenant='<tenant-id>';clientid='<aad-appid>';clientsecret='<aad-appkey>';cluster='<cluster-name>';database='<database-name>'
+%kql AzureDataExplorer://tenant='<tenant-id>';clientid='<aad-appid>';clientsecret='<aad-appkey>';cluster='<cluster-name>';database='<database-name>'
 ```
 
 ### [Username and password](#tab/userpass)
@@ -63,7 +63,7 @@ The Azure AD application method allows for a non-interactive sign-in using an Az
 The Azure AD username and password method only works on corporate network. If a username is provided without a password, the user is prompted to provide the password.
 
 ```python
-%kql azure_data-Explorer://username='<username>';password='<password>';cluster='<cluster-name>';database='<database-name>'
+%kql AzureDataExplorer://username='<username>';password='<password>';cluster='<cluster-name>';database='<database-name>'
 ```
 
 ### [Certificate](#tab/certificate)
@@ -71,7 +71,7 @@ The Azure AD username and password method only works on corporate network. If a 
 The Azure AD certificate should be stored in a file accessible from the notebook. This file can be referenced in the connection string.
 
 ```python
-%kql azure_data-Explorer://tenant='<tenant-id>';certificate='<certificate>';certificate_thumbprint='<thumbprint>';cluster='<cluster-name>';database='<database-name>'
+%kql AzureDataExplorer://tenant='<tenant-id>';certificate='<certificate>';certificate_thumbprint='<thumbprint>';cluster='<cluster-name>';database='<database-name>'
 ```
 
 ### [Anonymous](#tab/anonymous)
