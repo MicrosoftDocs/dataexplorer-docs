@@ -72,18 +72,16 @@ The web UI supports multiple query tabs at once, all with different query contex
 
     :::image type="content" source="media/web-ui-query/add-new-tab.png" alt-text="Screenshot of button to add a new tab." lightbox="media/web-ui-query/add-new-tab.png":::
 
-1. Select the database to use for the query context.
-
     > [!NOTE]
     > The default name of a query tab is based on the cluster and context database.
 
 1. To change the name of a tab, select the pencil icon located on the tab and type in the new name for the tab.
 
-1. If you have multiple tabs open and want to manage them, use the tabs list located on the top right corner of the screen. The tabs list helps you to navigate between tabs and identify the current tab with an icon. The tabs list is helpful when you have multiple tabs open and want to focus on, switch between, or remove specific ones.
+1. Use the tabs list located in the top right corner to clearly view and manage all tabs.
 
     :::image type="content" source="media/web-ui-query/manage-tabs-shortcut.png" alt-text="Screenshot of icon for managing tabs." lightbox="media/web-ui-query/manage-tabs-shortcut.png":::
 
-1. In case you accidentally remove a tab, select the back button to reopen a closed tab in the top right of the screen to restore the removed tab.
+1. To restore a removed tab, select the **Reopen closed tab** button in the top right of the screen.
 
     :::image type="content" source="media/web-ui-query/undo-remove-tab.png" alt-text="Screenshot of button to restore a removed tab." lightbox="media/web-ui-query/undo-remove-tab.png":::
 
