@@ -31,7 +31,7 @@ The soft delete process is performed using the following steps:
 
 * Soft delete is only available on clusters running Engine V3.
 
-* Soft delete is only supported for native tables and isn't supported for external tables or materialized views.
+* Soft delete is only supported for native tables and materialized views. It isn't supported for external tables.
 
 * Before running soft delete, verify the predicate by running a query and checking that the results match the expected outcome. You can also run the command in `whatif` mode, that returns the number of records that are expected to be deleted.
 
@@ -42,6 +42,7 @@ The soft delete process is performed using the following steps:
 * Soft delete is executed against your engine endpoint: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-access-control.md) permissions on the relevant database.
 
 * Soft delete can affect materialized views based on a source table in which records are deleted. This can happen because every [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work) adds newly ingested data to the materialized part from the previous cycle. Therefore, if the command deletes newly ingested records before a new cycle begins, those records won't be added to the materialized view. Otherwise, deleting records won't affect the materialized view.
+Note that soft delete is also supported for Materialized Views (see [soft delete for materialized views](#soft-delete-for-materialized-views)).
 
 ## Deletion performance
 
@@ -74,7 +75,7 @@ In most cases, the deletion of records won't result in a change of COGS.
 
 ### Syntax
 
-`.delete` [`async`] `table` *TableName* `records <|` *Predicate*
+`.delete` [`async`] `table` *TableName* `records` [`with (`propertyName `=` propertyValue [`,` ...]`)`] `<|` *Predicate*
 
 ### Parameters
 
@@ -110,3 +111,16 @@ To delete all the records that contain data of a given user:
 ### Output
 
 The output of the command contains information about which extents were replaced.
+
+## Soft delete for materialized views
+
+Soft deleted can be executed also on materialized views, where the same concepts explained above are applied similarly for materialized views.
+
+### Syntax
+
+`.delete` [`async`] `materialized-view` *MaterializedViewName* `records` [`with (`propertyName `=` propertyValue [`,` ...]`)`] `<|` *Predicate*
+
+> [!NOTE]
+> The same restrictions on the *Predicate* mentioned above apply here as well.
+> Soft delete is expected to fail in case a materialization of the view is being executed concurrently (specifically, in case there is an intersection between the extents those two commands are executing on).
+> Usage of function 'materialized_view' is not allowed in *Predicate*.
