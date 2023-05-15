@@ -6,8 +6,6 @@ ms.topic: reference
 ms.date: 05/14/2023
 ---
 
-NOTE: SHOULDN'T BE STEPS. MAKE A GIF. MOVE ADD CONN TO OWN DOC.
-
 # Azure Data Explorer web UI query data overview
 
 The [Azure Data Explorer web UI](https://dataexplorer.azure.com) provides an end-to-end data exploration experience from [data ingestion](ingest-data-wizard.md) to data query and [dashboards](azure-data-explorer-dashboards.md). This article provides an overview of the web UI query page and explains how it can be used to access and interact with your data.
