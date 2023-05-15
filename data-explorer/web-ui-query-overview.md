@@ -32,7 +32,9 @@ To open the query page, select **Query** from the main menu.
 
 ## Cluster and database navigation
 
-To browse and switch between clusters and databases, use the navigation panel on the left of the query page. Queries are executed within the context of a selected database. To select a database for your query, select the desired resource in the left panel. If you need to add a cluster connection, follow these steps:
+To browse and switch between clusters and databases, use the navigation panel on the left of the query page. Queries are executed within the context of a selected database. To select a database for your query, select the desired resource in the left panel.
+
+If you need to add a cluster connection, follow these steps:
 
 1. In the upper left corner, select **Add connection**.
 
