@@ -91,13 +91,18 @@ After you execute a query, the results are displayed in the results grid located
 
 ## View query statistics
 
-Check query performance information such as query duration, CPU and memory usage, and data scanned to optimize your queries.
+Select **Stats** next to the results grid table to view query performance information such as query duration, CPU and memory usage, and data scanned to optimize your queries.
+
+:::image type="content" source="media/web-ui-query/query-stats.png" alt-text="Screenshot of the query statistics window.":::
 
 ## Recall past queries
 
-The recall query button allows you to quickly retrieve a previously executed query. Select the query you want and hit **Recall** to run it again from the data stored in the browser's cache. The results for the last 50 queries are stored in the cache, so if the user clears their browser cache then the results are removed.
+The recall query button allows you to quickly retrieve a previously executed query. Select the query you want and hit **Recall** to run it again from the data stored in the browser's cache.
 
 :::image type="content" source="media/web-ui-query/recall-button.png" alt-text="Screenshot of query recall button." lightbox="media/web-ui-query/recall-button.png":::
+
+> [!NOTE]
+> The results for the last 50 queries are stored in the cache, so if the user clears their browser cache then the results are removed.
 
 ## See also
 
