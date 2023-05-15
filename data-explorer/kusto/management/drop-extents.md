@@ -1,9 +1,9 @@
 ---
 title: .drop extents - Azure Data Explorer
-description: This article describes the drop extents command in Azure Data Explorer.
+description: Learn how to use the `.drop extents` command to drop extents from a specified database or table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/15/2023
 ---
 # .drop extents
 
