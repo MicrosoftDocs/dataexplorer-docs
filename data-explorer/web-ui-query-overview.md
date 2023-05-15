@@ -13,10 +13,11 @@ The [Azure Data Explorer web UI](https://dataexplorer.azure.com) provides an end
 The query page allows you to:
 
 * Navigate between clusters and databases
-* Write and run queries using a query editor with Intellisense and auto-completion
+* Write and run queries using a query editor with Intellisense and autocompletion
 * Manage queries in multiple contexts simultaneously
 * Work with query results in a table-like display that can be sorted, filtered, and grouped
 * View query statistics, such as query duration and CPU and memory usage
+* Share and export queries
 * Recall past queries
 
 ## Prerequisites
@@ -49,13 +50,13 @@ If you need to add a cluster connection, follow these steps:
 
 ## Write and run queries
 
-Interact with your data by using the query editor to write and run queries with intellisense and auto-completion. The following steps explain the basics of how to use the query editor in the web UI.
+Interact with your data by using the query editor to write and run queries with intellisense and autocompletion. The following steps explain the basics of how to use the query editor in the web UI.
 
 1. Select the database on which you want to run the query to set the query context. The query context is displayed in the top toolbar.
 
     :::image type="content" source="media/web-ui-query/query-context.png" alt-text="Screenshot of multiple query tabs and their context." lightbox="media/web-ui-query/query-context.png":::
 
-1. Write a query using the data in the selected database. As you type, you'll see suggestions and auto-completion options. The following query searches for rain storm events events.
+1. Write a query using the data in the selected database. As you type, there are suggestions and autocompletion options. The following query searches for rain storm events.
 
     ```kusto
     StormEvents
@@ -104,6 +105,11 @@ The recall query button allows you to quickly retrieve a previously executed que
 > [!NOTE]
 > The results for the last 50 queries are stored in the cache, so if the user clears their browser cache then the results are removed.
 
+## Share and export queries
+
+In the query page toolbar, there are several options to manage your queries and query results. You can pin a query to a dashboard, copy queries, copy query results, and export data to Power BI, Excel, and CSV formats. For more information, see [Share queries from Azure Data Explorer web UI](web-share-queries.md).
+
 ## See also
 
 * [Azure Data Explorer web UI keyboard shortcuts](web-ui-query-keyboard-shortcuts.md)
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
