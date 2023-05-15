@@ -77,9 +77,9 @@ After you execute a query, the results are displayed in the results grid located
 
 ## Monitor query statistics
 
-Select **Stats** next to the results grid table to view query performance information such as query duration, CPU and memory usage, and data scanned to optimize your queries.
+Select **Stats** to view query performance information such as query duration, CPU and memory usage, and data scanned. Query statistics can be useful when trying to optimize your queries. For information on potential optimizations, see [Query best practices](kusto/query/best-practices.md).
 
-:::image type="content" source="media/web-ui-query/query-stats.png" alt-text="Screenshot of the query statistics window.":::
+:::image type="content" source="media/web-ui-query/query-statistics.png" alt-text="Screenshot of the query statistics window." lightbox="media/web-ui-query/query-statistics.png":::
 
 ## Recall previous queries
 
@@ -88,7 +88,7 @@ The recall query button allows you to quickly retrieve a previously executed que
 :::image type="content" source="media/web-ui-query/recall-button.png" alt-text="Screenshot of query recall button." lightbox="media/web-ui-query/recall-button.png":::
 
 > [!NOTE]
-> The results for the last 50 queries are stored in the cache, so if the user clears their browser cache then the results are removed.
+> The results for the last 50 queries are stored in the cache, so if the browser cache is cleared then the results are removed.
 
 ## Share and export queries
 
