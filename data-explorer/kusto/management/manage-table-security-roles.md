@@ -1,8 +1,8 @@
 ---
 title: Manage table security roles - Azure Data Explorer
-description: This article describes how to use management commands to view, add, and remove security roles on the table level in Azure Data Explorer.
+description: Learn how to use management commands to view, add, and remove security roles on a table level.
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/15/2023
 ---
 
 # Manage table security roles

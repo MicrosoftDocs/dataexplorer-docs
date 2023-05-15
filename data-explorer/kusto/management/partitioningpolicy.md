@@ -1,9 +1,9 @@
 ---
 title: Partitioning policy - Azure Data Explorer
-description: This article describes the partitioning policy in Azure Data Explorer, and how it can be used to improve query performance.
+description: Learn how to use the partitioning policy to improve query performance.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/21/2023
+ms.date: 05/15/2023
 ---
 # Partitioning policy
 
@@ -32,6 +32,7 @@ The following are the only scenarios in which setting a data partitioning policy
   * If you need retention and caching policies to align with the datetime values in the column, instead of aligning with the time of ingestion, set the `OverrideCreationTime` property to `true`.
 
 > [!CAUTION]
+>
 > * There are no hard-coded limits set on the number of tables with the partitioning policy defined.
 >   * However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used.
 >   * For more information, see [capacity](#partitioning-capacity).
