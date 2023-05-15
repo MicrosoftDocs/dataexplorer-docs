@@ -14,10 +14,10 @@ In the query page, you can:
 
 > [!div class="checklist"]
 >
-> * [Navigate between clusters and databases](#navigate-between-clusters-and-databases)
+> * [View your clusters and databases](#view-your-clusters-and-databases)
 > * [Write and run queries](#write-and-run-queries)
 > * [Manage queries in multiple contexts](#manage-queries-in-multiple-contexts)
-> * [View and manipulate results](#view-and-manipulate-results)
+> * [Explore and manipulate query results](#explore-and-manipulate-query-results)
 > * [Monitor query statistics](#monitor-query-statistics)
 > * [Recall previous queries](#recall-previous-queries)
 > * [Share and export queries](#share-and-export-queries)
@@ -27,9 +27,9 @@ In the query page, you can:
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * Sign-in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
-## Navigate between clusters and databases
+## View your clusters and databases
 
-To browse and switch between clusters and databases, use the navigation panel on the left of the query page. Queries are executed within the context of a selected database. To select a database for your query, select the desired resource in the left panel.
+The navigation panel on the left-hand side of the query page allows you to browse and switch between your clusters and databases. Under each cluster, you can see the databases included in that cluster. Under each database, you can see the tables, functions, external tables, and materialized views included in that database.
 
 To learn how to add a connection to your cluster, see [Add a cluster connection in the Azure Data Explorer web UI](add-cluster-connection.md).
 
@@ -38,11 +38,11 @@ To learn how to add a connection to your cluster, see [Add a cluster connection 
 
 ## Write and run queries
 
-Use the query editor in the query page to interact with your data, with the support of Intellisense and auto-completion. First, select the database on which to run your query, and the query context will be displayed in the top toolbar.
+Use the query editor to interact with your data. Queries run in the context of a particular database. Select the relevant database from the left panel to set the query context. You can see the query context in the top toolbar.
 
 :::image type="content" source="media/web-ui-query/query-context.png" alt-text="Screenshot of multiple query tabs and their context." lightbox="media/web-ui-query/query-context.png":::
 
-The editor provides suggestions and auto-completion options as you write your query. The editor will alert you if you attempt to access data that isn't in the selected database as well as make suggestions to optimize your queries.
+The editor uses Intellisense and autocompletion to provide suggestions as you write your query. The editor alerts you if you attempt to access data that isn't in the selected database and make suggestions to optimize your queries.
 
 To return all records matching the query, select **Run** or press *Shift + Enter*. To see a preview of 50 results, select the dropdown menu on the **Run** button and select **Preview results**. If you have multiple queries in the same tab, make sure to select the query you want to run before running the query.
 
@@ -57,15 +57,15 @@ With the use of query tabs, you can work on multiple queries simultaneously, all
 > [!NOTE]
 > The default name of a query tab is based on the cluster and context database.
 
-To get a comprehensive view of all existing tabs, use the tabs list located in the top right corner. At the top of the tabs list, there's an option to **Close all tabs**.
+To get a comprehensive view of all existing tabs, use the tabs list located in the top right corner. At the top of the tabs list, you can choose to **Close all tabs**.
 
 :::image type="content" source="media/web-ui-query/manage-tabs-shortcut.png" alt-text="Screenshot of icon for managing tabs." lightbox="media/web-ui-query/manage-tabs-shortcut.png":::
 
-Restore a previously closed query tab by selecting the **Reopen closed tab** button located in the top right of the window. If you closed all tabs, selecting this button will restore all of the closed tabs.
+Restore a previously closed query tab by selecting the **Reopen closed tab** button located in the top right of the window. If you closed all tabs, selecting this button restores all of the closed tabs.
 
 :::image type="content" source="media/web-ui-query/undo-remove-tab.png" alt-text="Screenshot of button to restore a removed tab." lightbox="media/web-ui-query/undo-remove-tab.png":::
 
-## View and manipulate results
+## Explore and manipulate query results
 
 After you execute a query, the results are displayed in the results grid located below the query editor. The results grid presents query results in a tabular format, and provides functionality to sort, filter, group, and visualize the data in various ways. For more information, see [Azure Data Explorer web UI results grid](web-results-grid.md).
 
