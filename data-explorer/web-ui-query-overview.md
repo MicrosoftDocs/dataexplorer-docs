@@ -10,14 +10,14 @@ ms.date: 05/14/2023
 
 The [Azure Data Explorer web UI](https://dataexplorer.azure.com) provides an end-to-end data exploration experience from [data ingestion](ingest-data-wizard.md) to data query and [dashboards](azure-data-explorer-dashboards.md). This article provides an overview of the web UI query page and explains how it can be used to access and interact with your data.
 
-The query page provides the following features:
+The query page allows you to:
 
-* [Cluster and database navigation](#cluster-and-database-navigation): A navigation panel to browse and switch between different clusters and databases.
-* [Query editor](#use-the-query-editor): A text editor with intellisense and auto-completion to write queries to interact with your data.
-* [Query tabs](#manage-query-tabs): Manage different queries in different contexts simultaneously with query tabs.
-* [Results grid](#work-with-the-results-grid): A table-like display of query results that can be sorted, filtered, grouped, and visualized.
-* [Query statistics](#review-query-statistics): Information about query performance, including query duration, CPU and memory usage, and data scanned to help you optimize your queries.
-* [Query recall](#query-recall): A feature that allows you to recall and reuse previously executed queries.
+* Navigate between clusters and databases
+* Write and run queries using a query editor with Intellisense and auto-completion
+* Manage queries in multiple contexts simultaneously
+* Work with query results in a table-like display that can be sorted, filtered, and grouped
+* Check query statistics, such as query duration and CPU and memory usage
+* Recall previous queries
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ To open the query page, select **Query** from the main menu.
 
 :::image type="content" source="media/web-ui-query/query-widget.png" alt-text="Screenshot of the query widget in the main menu of the web UI." lightbox="media/web-ui-query/query-widget.png":::
 
-## Cluster and database navigation
+## Move between clusters and databases
 
 To browse and switch between clusters and databases, use the navigation panel on the left of the query page. Queries are executed within the context of a selected database. To select a database for your query, select the desired resource in the left panel.
 
@@ -47,24 +47,24 @@ If you need to add a cluster connection, follow these steps:
 > [!TIP]
 > Add clusters and databases to your favorites list with the star icon next to the resource name. To view only your favorite resources, select the star icon next to the filter text box.
 
-## Use the query editor
+## Write and run queries
 
-The following steps explain how to use the query editor in the web UI.
+Interact with your data by using the query editor to write and run queries with intellisense and auto-completion. The following steps explain the basics of how to use the query editor in the web UI.
 
 1. Select the database on which you want to run the query to set the query context. The query context is displayed in the top toolbar.
 
     :::image type="content" source="media/web-ui-query/query-context.png" alt-text="Screenshot of multiple query tabs and their context." lightbox="media/web-ui-query/query-context.png":::
 
-1. Write a query using the data in the selected database. The following example takes a sample of 1000 records from the `StormEvents` table in the `help` cluster.
+1. Write a query using the data in the selected database. As you type, you'll see suggestions and auto-completion options. The following query searches for rain storm events events.
 
     ```kusto
     StormEvents
-    | take 1000
+    | where EventType has "Rain"
     ```
 
 1. To return all records matching the query, select **Run** or press *Shift + Enter*. To see a preview of 50 results, select the dropdown menu on the **Run** button and select **Preview results**.
 
-## Manage query tabs
+## Manage multiple query tabs
 
 The web UI supports multiple query tabs at once, all with different query contexts. The following steps describe how to create and manage multiple tabs.
 
@@ -89,9 +89,11 @@ The web UI supports multiple query tabs at once, all with different query contex
 
 After you execute a query, the results are displayed in the results grid located below the query editor. The results grid presents query results in a tabular format. With the results grid, you can interactively sort, filter, group, and visualize the data in various ways. For more information, see [Azure Data Explorer web UI results grid](web-results-grid.md).
 
-## Review query statistics
+## View query statistics
 
-## Query recall
+Check query performance information such as query duration, CPU and memory usage, and data scanned to optimize your queries.
+
+## Recall past queries
 
 The recall query button allows you to quickly retrieve a previously executed query. Select the query you want and hit **Recall** to run it again from the data stored in the browser's cache. The results for the last 50 queries are stored in the cache, so if the user clears their browser cache then the results are removed.
 
