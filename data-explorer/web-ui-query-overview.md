@@ -16,8 +16,8 @@ The query page allows you to:
 * Write and run queries using a query editor with Intellisense and auto-completion
 * Manage queries in multiple contexts simultaneously
 * Work with query results in a table-like display that can be sorted, filtered, and grouped
-* Check query statistics, such as query duration and CPU and memory usage
-* Recall previous queries
+* View query statistics, such as query duration and CPU and memory usage
+* Recall past queries
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ To open the query page, select **Query** from the main menu.
 
 :::image type="content" source="media/web-ui-query/query-widget.png" alt-text="Screenshot of the query widget in the main menu of the web UI." lightbox="media/web-ui-query/query-widget.png":::
 
-## Move between clusters and databases
+## Navigate between clusters and databases
 
 To browse and switch between clusters and databases, use the navigation panel on the left of the query page. Queries are executed within the context of a selected database. To select a database for your query, select the desired resource in the left panel.
 
