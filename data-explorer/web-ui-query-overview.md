@@ -6,6 +6,8 @@ ms.topic: reference
 ms.date: 05/14/2023
 ---
 
+NOTE: SHOULDN'T BE STEPS. MAKE A GIF. MOVE ADD CONN TO OWN DOC.
+
 # Azure Data Explorer web UI query data overview
 
 The [Azure Data Explorer web UI](https://dataexplorer.azure.com) provides an end-to-end data exploration experience from [data ingestion](ingest-data-wizard.md) to data query and [dashboards](azure-data-explorer-dashboards.md). This article provides an overview of the web UI query page and explains how it can be used to access and interact with your data.
@@ -35,35 +37,22 @@ To open the query page, select **Query** from the main menu.
 
 To browse and switch between clusters and databases, use the navigation panel on the left of the query page. Queries are executed within the context of a selected database. To select a database for your query, select the desired resource in the left panel.
 
-If you need to add a cluster connection, follow these steps:
-
-1. In the upper left corner, select **Add connection**.
-
-1. In the **Add connection** dialog box, enter the cluster **Connection URI** and **Display name**. Use "help" for the **Connection URI** to add a free sample cluster.
-
-1. Select **Add** to add the connection. Your clusters and databases should now be visible in the left panel. For example, the following image shows the `help` cluster connection.
-
-    :::image type="content" source="media/web-ui-query/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-query/help-cluster-web-ui.png":::
+To learn how to add a connection to your cluster, see [Add a cluster connection in the Azure Data Explorer web UI](add-cluster-connection.md).
 
 > [!TIP]
 > Add clusters and databases to your favorites list with the star icon next to the resource name. To view only your favorite resources, select the star icon next to the filter text box.
 
 ## Write and run queries
 
-Interact with your data by using the query editor to write and run queries with intellisense and autocompletion. The following steps explain the basics of how to use the query editor in the web UI.
+Use the query editor in the query page to interact with your data, with the support of Intellisense and auto-completion. First, select the database on which to run your query, and the query context will be displayed in the top toolbar.
 
-1. Select the database on which you want to run the query to set the query context. The query context is displayed in the top toolbar.
+:::image type="content" source="media/web-ui-query/query-context.png" alt-text="Screenshot of multiple query tabs and their context." lightbox="media/web-ui-query/query-context.png":::
 
-    :::image type="content" source="media/web-ui-query/query-context.png" alt-text="Screenshot of multiple query tabs and their context." lightbox="media/web-ui-query/query-context.png":::
+The editor provides suggestions and auto-completion options as you write your query. The editor will alert you if you attempt to access data that isn't in the selected database as well as make suggestions to optimize your queries.
 
-1. Write a query using the data in the selected database. As you type, there are suggestions and autocompletion options. The following query searches for rain storm events.
+To return all records matching the query, select **Run** or press *Shift + Enter*. To see a preview of 50 results, select the dropdown menu on the **Run** button and select **Preview results**. If you have multiple queries in the same tab, make sure to select the query you want to run before running the query.
 
-    ```kusto
-    StormEvents
-    | where EventType has "Rain"
-    ```
-
-1. To return all records matching the query, select **Run** or press *Shift + Enter*. To see a preview of 50 results, select the dropdown menu on the **Run** button and select **Preview results**.
+:::image type="content" source="media/web-ui-query/run-button-dropdown.png" alt-text="Screenshot of the web UI run button dropdown options." lightbox="media/web-ui-query/run-button-dropdown.png":::
 
 ## Manage multiple query tabs
 
