@@ -213,13 +213,15 @@ items:
     items:
     - name: Query data in the web UI
       items:
-        - name: Query data overview
+        - name: Overview
           href: web-ui-query-overview.md
           displayName: web UI
-        - name: Explore the sample gallery
-          href: web-ui-samples-query.md
+        - name: Add a cluster connection
+          href: add-cluster-connection.md
         - name: Customize settings
           href: web-customize-settings.md
+        - name: Explore the sample gallery
+          href: web-ui-samples-query.md
         - name: Explore the results grid
           href: web-results-grid.md
         - name: Share queries
