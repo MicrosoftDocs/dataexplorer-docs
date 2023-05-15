@@ -24,11 +24,6 @@ In the query page, you can:
 
 :::image type="content" source="media/web-ui-query/query-page-overview-gif.gif" alt-text="Moving image of query page overview." lightbox="media/web-ui-query/query-page-overview-gif.gif":::
 
-## Prerequisites
-
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Sign-in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
-
 ## View your clusters and databases
 
 The navigation panel on the left-hand side of the query page allows you to browse and switch between your clusters and databases. Under each cluster, you can see the databases included in that cluster. Under each database, you can see the tables, functions, external tables, and materialized views included in that database.
