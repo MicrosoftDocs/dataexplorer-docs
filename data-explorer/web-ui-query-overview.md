@@ -14,13 +14,15 @@ The [Azure Data Explorer web UI](https://dataexplorer.azure.com) provides an end
 
 The query page allows you to:
 
-* Navigate between clusters and databases
-* Write and run queries using a query editor with Intellisense and autocompletion
-* Manage queries in multiple contexts simultaneously
-* Work with query results in a table-like display that can be sorted, filtered, and grouped
-* View query statistics, such as query duration and CPU and memory usage
-* Share and export queries
-* Recall past queries
+> [!div class="checklist"]
+>
+> * [Navigate between clusters and databases](#navigate-between-clusters-and-databases)
+> * [Write and run queries](#write-and-run-queries)
+> * [Manage queries in multiple contexts](#manage-queries-in-multiple-contexts)
+> * [View and manipulate results](#view-and-manipulate-results)
+> * [Monitor query statistics](#monitor-query-statistics)
+> * [Recall previous queries](#recall-previous-queries)
+> * [Share and export queries](#share-and-export-queries)
 
 ## Prerequisites
 
@@ -54,7 +56,7 @@ To return all records matching the query, select **Run** or press *Shift + Enter
 
 :::image type="content" source="media/web-ui-query/run-button-dropdown.png" alt-text="Screenshot of the web UI run button dropdown options." lightbox="media/web-ui-query/run-button-dropdown.png":::
 
-## Manage multiple query tabs
+## Manage queries in multiple contexts
 
 The web UI supports multiple query tabs at once, all with different query contexts. The following steps describe how to create and manage multiple tabs.
 
@@ -75,17 +77,17 @@ The web UI supports multiple query tabs at once, all with different query contex
 
     :::image type="content" source="media/web-ui-query/undo-remove-tab.png" alt-text="Screenshot of button to restore a removed tab." lightbox="media/web-ui-query/undo-remove-tab.png":::
 
-## Work with the results grid
+## View and manipulate results
 
 After you execute a query, the results are displayed in the results grid located below the query editor. The results grid presents query results in a tabular format. With the results grid, you can interactively sort, filter, group, and visualize the data in various ways. For more information, see [Azure Data Explorer web UI results grid](web-results-grid.md).
 
-## View query statistics
+## Monitor query statistics
 
 Select **Stats** next to the results grid table to view query performance information such as query duration, CPU and memory usage, and data scanned to optimize your queries.
 
 :::image type="content" source="media/web-ui-query/query-stats.png" alt-text="Screenshot of the query statistics window.":::
 
-## Recall past queries
+## Recall previous queries
 
 The recall query button allows you to quickly retrieve a previously executed query. Select the query you want and hit **Recall** to run it again from the data stored in the browser's cache.
 
