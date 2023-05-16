@@ -33,7 +33,7 @@ Operator       |Description                         |Example
 
 In [Kusto Query Language (KQL)](index.md), the data type of the result of an arithmetic operation is determined by the data types of the operands used in the operation. If one of the operands is of type `real`, the result will be of type `real`. If both operands are of type `int`, the result will also be of type `int`. This means that if you perform an operation with two integers, the result will be truncated to an integer, which may not always be what you want.
 
-The following table shows some example operations.
+The following table provides examples of arithmetic operations involving different data types and their corresponding results.
 
 | Operation | Result | Description |
 |--|--|--|
