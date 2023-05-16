@@ -103,7 +103,7 @@ Column name labels are added as the first row for each blob.
     sizeLimit=1000000000,
     namePrefix="export",
     includeHeaders="all",
-    encoding ="UTF8NoBOM"
+    encoding="UTF8NoBOM"
   )
   <| 
   Logs | where id == "1234" 
