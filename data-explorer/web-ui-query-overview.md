@@ -27,7 +27,7 @@ In the query page, you can:
 
 The connection pane on the left-hand side of the query page allows you to browse and switch between your clusters and databases. Under each cluster, you can see the databases included in that cluster. Under each database, you can see the tables, functions, external tables, and materialized views included in that database.
 
-Right click on a database to open a menu with options such as to create a table or ingest data into the selected database.
+Right select on a database to open a menu with options such as to create a table or ingest data into the selected database.
 
 :::image type="content" source="media/web-ui-query/connection-pane.png" alt-text="Screenshot of the connection pane." lightbox="media/web-ui-query/connection-pane.png":::
 
@@ -67,7 +67,7 @@ You can also view query statistics such as query duration, CPU and memory usage,
 
 ## Recall previous queries
 
-The recall query button allows you to quickly retrieve a previously executed query. Select the query you want and hit **Recall** to run it again from the data stored in the browser's cache.
+The recall query button allows you to quickly retrieve a previously executed query. Select the query you want and select **Recall** to run it again from the data stored in the browser's cache.
 
 :::image type="content" source="media/web-ui-query/recall-button.png" alt-text="Screenshot of query recall button." lightbox="media/web-ui-query/recall-button.png":::
 
