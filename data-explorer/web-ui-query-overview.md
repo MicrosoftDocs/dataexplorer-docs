@@ -52,7 +52,7 @@ To return all records matching the query, select **Run** or press *Shift + Enter
 
 With the use of query tabs, you can work on multiple queries simultaneously, all with their own query context. The query tabs allow you to switch between different databases and clusters without losing your work. To get a comprehensive view of all existing tabs, use the tabs list located in the top right corner.
 
-:::image type="content" source="media/web-ui-query/tabs-management.gif" alt-text="Screenshot of icon for managing tabs." lightbox="media/web-ui-query/tabs-management.gif":::
+:::image type="content" source="media/web-ui-query/tabs-management.gif" alt-text="Moving screenshot of multiple tabs." lightbox="media/web-ui-query/tabs-management.gif":::
 
 > [!NOTE]
 > The default name of a query tab is based on the cluster and context database.
@@ -61,9 +61,9 @@ With the use of query tabs, you can work on multiple queries simultaneously, all
 
 After you execute a query, the results are displayed in the results grid located below the query editor. The results grid presents query results in a tabular format, and provides functionality to sort, filter, group, and visualize the data in various ways. For more information, see [Azure Data Explorer web UI results grid](web-results-grid.md).
 
-Next to the table in the result grid, you can select **Stats** to view query performance information such as query duration, CPU and memory usage, and data scanned. Query statistics can be useful when trying to optimize your queries. For information on potential optimizations, see [Query best practices](kusto/query/best-practices.md).
+You can also view query statistics such as query duration, CPU and memory usage, and data scanned. These statistics can be useful when trying to optimize your queries. For information on potential optimizations, see [Query best practices](kusto/query/best-practices.md).
 
-:::image type="content" source="media/web-ui-query/query-statistics.png" alt-text="Screenshot of the query statistics window." lightbox="media/web-ui-query/query-statistics.png":::
+:::image type="content" source="media/web-ui-query/results-grid-with-stats.gif" alt-text="Moving screenshot of the results grid with statistics." lightbox="media/web-ui-query/results-grid-with-stats.gif":::
 
 ## Recall previous queries
 
