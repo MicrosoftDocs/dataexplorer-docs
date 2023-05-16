@@ -41,7 +41,7 @@ The following table shows some example operations.
 | `1` `/` `2.0` | `0.5` | One of the operands is of type `real`, so the result is `real`. |
 | `1` `/` `2` | `0` | Both of the operands are of type `int`, so the result is `int`. Integer division occurs and the decimal is truncated, resulting in `0` instead of `0.5`, as one might expect. |
 
-To avoid truncated results due to integer division, convert at least one of the integer values to `real` using [todouble() or toreal()](todoublefunction.md) before performing the operation.
+To avoid truncated results in arithmetic operations that involve integers, convert at least one of the `int` values to `real` using [todouble() or toreal()](todoublefunction.md) before performing the operation.
 
 ## Comment about the modulo operator
 
