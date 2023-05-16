@@ -29,17 +29,19 @@ Operator       |Description                         |Example
 > [!NOTE]
 > To convert from one numerical type to another, use `to*()` functions. For example, see [`tolong()`](tolongfunction.md) and [`toint()`](tointfunction.md).
 
-## Data types and arithmetic operations
+## Type rules for arithmetic operations
 
-With arithmetic operations, the type of the operands affects the type of the result. If one of the operands is of type `real`, the result will be of type `real`. On the other hand, if both operands are of type `int`, then the result will be of type `int`. The following table explains some example operations.
+In [Kusto Query Language (KQL)](index.md), the type of the result of an arithmetic operation is determined by the types of its operands. If one of the operands is of type `real`, the result will be of type `real`. If both operands are of type `int`, the result will also be of type `int`. This means that if you perform an operation with two integers, the result will be truncated to an integer, which may not always be what you want.
+
+The following table shows some example operations.
 
 |Operation|Description|
 |--|--|
 |`1.0` `/` `2` `=` `0.5`|One of the operands is `real`, so the result is `real`.|
 |`1` `/` `2.0` `=` `0.5`|One of the operands is `real`, so the result is `real`.|
-|`1` `/` `2` `=` `0`|Both of the operands are of type `int`, so the result is `int`. Integer division occurs and the decimal is truncated, resulting in `0` instead of 0.5, as one might expect.|
+|`1` `/` `2` `=` `0`|Both of the operands are of type `int`, so the result is `int`. Integer division occurs and the decimal is truncated, resulting in `0` instead of `0.5`, as one might expect.|
 
-To avoid truncated results due to integer division, convert at least one of the integer values to a `real` type using [todouble() or toreal()](../todoublefunction.md) before performing the operation. For example, for the final operation in the previous table, if you convert integer `1` to `real` and perform the division with integer `2`, the result will be `0.5` as expected.
+To avoid truncated results due to integer division, convert at least one of the integer values to a `real` type using [todouble() or toreal()](../todoublefunction.md) before performing the operation. For example, for the final operation in the previous table, if you convert integer `1` to `real` and perform the division with integer `2`, the result will be `0.5`.
 
 ## Comment about the modulo operator
 
