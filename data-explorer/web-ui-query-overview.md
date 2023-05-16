@@ -59,11 +59,9 @@ To create a new tab, select the plus icon next to the right-most tab. To stay or
 
 To get a comprehensive view of all existing tabs, use the tabs list located in the top right corner. At the top of the tabs list, you can choose to **Close all tabs**.
 
-:::image type="content" source="media/web-ui-query/manage-tabs-shortcut.png" alt-text="Screenshot of icon for managing tabs." lightbox="media/web-ui-query/manage-tabs-shortcut.png":::
-
 Restore a previously closed query tab by selecting the **Reopen closed tab** button located in the top right of the window. If you closed all tabs, selecting this button restores all of the closed tabs.
 
-:::image type="content" source="media/web-ui-query/undo-remove-tab.png" alt-text="Screenshot of button to restore a removed tab." lightbox="media/web-ui-query/undo-remove-tab.png":::
+:::image type="content" source="media/web-ui-query/tabs-management.gif" alt-text="Screenshot of icon for managing tabs." lightbox="media/web-ui-query/tabs-management.gif":::
 
 ## Explore and manipulate query results
 
