@@ -50,18 +50,12 @@ To return all records matching the query, select **Run** or press *Shift + Enter
 
 ## Manage queries in multiple contexts
 
-With the use of query tabs, you can work on multiple queries simultaneously, all with their own query context. The query tabs allow you to switch between different databases and clusters without losing your work.
+With the use of query tabs, you can work on multiple queries simultaneously, all with their own query context. The query tabs allow you to switch between different databases and clusters without losing your work. To get a comprehensive view of all existing tabs, use the tabs list located in the top right corner.
 
-To create a new tab, select the plus icon next to the right-most tab. To stay organized, rename your tabs by selecting the pencil icon located on the tab.
+:::image type="content" source="media/web-ui-query/tabs-management.gif" alt-text="Screenshot of icon for managing tabs." lightbox="media/web-ui-query/tabs-management.gif":::
 
 > [!NOTE]
 > The default name of a query tab is based on the cluster and context database.
-
-To get a comprehensive view of all existing tabs, use the tabs list located in the top right corner. At the top of the tabs list, you can choose to **Close all tabs**.
-
-Restore a previously closed query tab by selecting the **Reopen closed tab** button located in the top right of the window. If you closed all tabs, selecting this button restores all of the closed tabs.
-
-:::image type="content" source="media/web-ui-query/tabs-management.gif" alt-text="Screenshot of icon for managing tabs." lightbox="media/web-ui-query/tabs-management.gif":::
 
 ## Explore and manipulate query results
 
