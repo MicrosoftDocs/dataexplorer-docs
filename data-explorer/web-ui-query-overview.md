@@ -55,8 +55,6 @@ With the use of query tabs, you can work on multiple queries simultaneously, all
 
 To create a new tab, select the plus icon next to the right-most tab. To stay organized, rename your tabs by selecting the pencil icon located on the tab.
 
-:::image type="content" source="media/web-ui-query/add-new-tab.png" alt-text="Screenshot of button to add a new tab." lightbox="media/web-ui-query/add-new-tab.png":::
-
 > [!NOTE]
 > The default name of a query tab is based on the cluster and context database.
 
