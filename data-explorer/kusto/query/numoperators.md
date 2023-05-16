@@ -31,7 +31,7 @@ Operator       |Description                         |Example
 
 ## Type rules for arithmetic operations
 
-In [Kusto Query Language (KQL)](index.md), the data type of the result of an arithmetic operation is determined by the data types of the operands used in the operation. If one of the operands is of type `real`, the result will be of type `real`. If both operands are of type `int`, the result will also be of type `int`.
+In [Kusto Query Language (KQL)](index.md), the data type of the result of an arithmetic operation is determined by the data types of the operands. If one of the operands is of type `real`, the result will be of type `real`. If both operands are of type `int`, the result will also be of type `int`.
 
 Due to these rules, the result of arithmetic operations that involve only integers will be truncated to an integer, which may not always be what you want. To avoid truncated results, convert at least one of the `int` values to `real` using [todouble() or toreal()](todoublefunction.md) before performing the operation.
 
