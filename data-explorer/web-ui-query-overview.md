@@ -17,7 +17,7 @@ In the query page, you can:
 > * [View clusters and databases](#view-clusters-and-databases)
 > * [Write and run queries](#write-and-run-queries)
 > * [Manage queries in multiple contexts](#manage-queries-in-multiple-contexts)
-> * [Explore and manipulate query results](#explore-and-manipulate-query-results)
+> * [Explore and transform query results](#explore-and-transform-query-results)
 > * [Recall previous queries](#recall-previous-queries)
 > * [Share and export queries](#share-and-export-queries)
 
@@ -57,7 +57,7 @@ With the use of query tabs, you can work on multiple queries simultaneously, all
 > [!NOTE]
 > The default name of a query tab is based on the cluster and context database.
 
-## Explore and manipulate query results
+## Explore and transform query results
 
 After you execute a query, the results are displayed in the results grid located below the query editor. The results grid presents query results in a tabular format, and provides functionality to sort, filter, group, and visualize the data in various ways. For more information, see [Azure Data Explorer web UI results grid](web-results-grid.md).
 
