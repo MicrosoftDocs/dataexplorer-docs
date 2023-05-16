@@ -22,7 +22,7 @@ In the query page, you can:
 > * [Recall previous queries](#recall-previous-queries)
 > * [Share and export queries](#share-and-export-queries)
 
-:::image type="content" source="media/web-ui-query/query-page-overview.gif" alt-text="Moving image of query page overview." lightbox="media/web-ui-query/query-page-overview-gif.gif":::
+:::image type="content" source="media/web-ui-query/query-page-overview.gif" alt-text="Moving image of query page overview." lightbox="media/web-ui-query/query-page-overview.gif":::
 
 ## View clusters and databases
 
