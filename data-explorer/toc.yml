@@ -546,7 +546,7 @@ items:
         href: kusto/tools/synckusto.md
     - name: Notebooks
       items:
-      - name: Analyze data in Jupyter Notebooks & Kqlmagic
+      - name: Jupyter Notebooks with Kqlmagic
         href: kqlmagic.md
       - name: Azure Data Studio
         items:
