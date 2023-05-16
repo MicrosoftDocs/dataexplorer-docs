@@ -18,7 +18,6 @@ In the query page, you can:
 > * [Write and run queries](#write-and-run-queries)
 > * [Manage queries in multiple contexts](#manage-queries-in-multiple-contexts)
 > * [Explore and manipulate query results](#explore-and-manipulate-query-results)
-> * [Monitor query statistics](#monitor-query-statistics)
 > * [Recall previous queries](#recall-previous-queries)
 > * [Share and export queries](#share-and-export-queries)
 
@@ -41,7 +40,7 @@ To learn how to add a connection, see [Add a cluster connection in the Azure Dat
 
 Use the query editor to interact with your data. Queries run in the context of a particular database. Select the relevant database from the left panel to set the query context. You can see the query context in the top toolbar.
 
-:::image type="content" source="media/web-ui-query/query-context.png" alt-text="Screenshot of multiple query tabs and their context." lightbox="media/web-ui-query/query-context.png":::
+:::image type="content" source="media/web-ui-query/switch-query-context.gif" alt-text="Screenshot of multiple query tabs and their context." lightbox="media/web-ui-query/switch-query-context.gif":::
 
 The editor uses Intellisense and autocompletion to provide suggestions as you write your query. The editor alerts you if you attempt to access data that isn't in the selected database and make suggestions to optimize your queries.
 
@@ -70,9 +69,7 @@ Restore a previously closed query tab by selecting the **Reopen closed tab** but
 
 After you execute a query, the results are displayed in the results grid located below the query editor. The results grid presents query results in a tabular format, and provides functionality to sort, filter, group, and visualize the data in various ways. For more information, see [Azure Data Explorer web UI results grid](web-results-grid.md).
 
-## Monitor query statistics
-
-Select **Stats** to view query performance information such as query duration, CPU and memory usage, and data scanned. Query statistics can be useful when trying to optimize your queries. For information on potential optimizations, see [Query best practices](kusto/query/best-practices.md).
+Next to the table in the result grid, you can select **Stats** to view query performance information such as query duration, CPU and memory usage, and data scanned. Query statistics can be useful when trying to optimize your queries. For information on potential optimizations, see [Query best practices](kusto/query/best-practices.md).
 
 :::image type="content" source="media/web-ui-query/query-statistics.png" alt-text="Screenshot of the query statistics window." lightbox="media/web-ui-query/query-statistics.png":::
 
