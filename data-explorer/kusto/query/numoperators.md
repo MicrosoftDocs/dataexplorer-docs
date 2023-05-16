@@ -31,7 +31,7 @@ Operator       |Description                         |Example
 
 ## Type rules for arithmetic operations
 
-In [Kusto Query Language (KQL)](index.md), the type of the result of an arithmetic operation is determined by the data types of the operands used in the operation. If one of the operands is of type `real`, the result will be of type `real`. If both operands are of type `int`, the result will also be of type `int`. This means that if you perform an operation with two integers, the result will be truncated to an integer, which may not always be what you want.
+In [Kusto Query Language (KQL)](index.md), the data type of the result of an arithmetic operation is determined by the data types of the operands used in the operation. If one of the operands is of type `real`, the result will be of type `real`. If both operands are of type `int`, the result will also be of type `int`. This means that if you perform an operation with two integers, the result will be truncated to an integer, which may not always be what you want.
 
 The following table shows some example operations.
 
@@ -41,7 +41,7 @@ The following table shows some example operations.
 |`1` `/` `2.0` `=` `0.5`|One of the operands is `real`, so the result is `real`.|
 |`1` `/` `2` `=` `0`|Both of the operands are of type `int`, so the result is `int`. Integer division occurs and the decimal is truncated, resulting in `0` instead of `0.5`, as one might expect.|
 
-To avoid truncated results due to integer division, convert at least one of the integer values to a `real` type using [todouble() or toreal()](../todoublefunction.md) before performing the operation. For example, for the final operation in the previous table, if you convert integer `1` to `real` and perform the division with integer `2`, the result will be `0.5`.
+To avoid truncated results due to integer division, convert at least one of the integer values to `real` using [todouble() or toreal()](../todoublefunction.md) before performing the operation.
 
 ## Comment about the modulo operator
 
