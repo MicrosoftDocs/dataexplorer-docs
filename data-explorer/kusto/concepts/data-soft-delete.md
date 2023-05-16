@@ -31,7 +31,7 @@ The soft delete process is performed using the following steps:
 
 * Soft delete is only available on clusters running Engine V3.
 
-* Soft delete is only supported for native tables and materialized views. It isn't supported for external tables.
+* Soft delete is supported for native tables and materialized views. It isn't supported for external tables.
 
 * Before running soft delete, verify the predicate by running a query and checking that the results match the expected outcome. You can also run the command in `whatif` mode, that returns the number of records that are expected to be deleted.
 
@@ -40,9 +40,6 @@ The soft delete process is performed using the following steps:
 * Don't run soft delete and purge commands on the same table in parallel. First wait for one command to complete and only then run the other command.
 
 * Soft delete is executed against your engine endpoint: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-access-control.md) permissions on the relevant database.
-
-* Soft delete can affect materialized views based on a source table in which records are deleted. This can happen because every [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work) adds newly ingested data to the materialized part from the previous cycle. Therefore, if the command deletes newly ingested records before a new cycle begins, those records won't be added to the materialized view. Otherwise, deleting records won't affect the materialized view.
-Note that soft delete is also supported for Materialized Views (see [soft delete for materialized views](#soft-delete-for-materialized-views)).
 
 ## Deletion performance
 
@@ -71,7 +68,9 @@ In most cases, the deletion of records won't result in a change of COGS.
 * In most cases, there will be no increase because the `.delete` operation doesn't require the provisioning of extra resources.
 * In some cases, extents in which the majority of the records are deleted are periodically compacted by replacing them with new extents that only contain the records that haven't been deleted. This causes the deletion of the old storage artifacts that contain a large number of deleted records. The new extents are smaller and therefore consume less space in both the Storage account and in the hot cache. However, in most cases, the effect of this on COGS is negligible.
 
-## Triggering the deletion process
+## Soft delete for table
+
+Soft delete can affect materialized views that are based on a source table in which records are deleted. This can happen because every [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work) adds newly ingested data to the materialized part from the previous cycle. Therefore, if the command deletes newly ingested records before a new cycle begins, those records won't be added to the materialized view. Otherwise, deleting records won't affect the materialized view.
 
 ### Syntax
 
@@ -112,15 +111,39 @@ To delete all the records that contain data of a given user:
 
 The output of the command contains information about which extents were replaced.
 
-## Soft delete for materialized views
+## Soft delete for materialized view
 
-Soft deleted can be executed also on materialized views, where the same concepts explained above are applied similarly for materialized views.
+When soft delete is executed on materialized views, the same concepts and limitations explained above apply.
 
 ### Syntax
 
 `.delete` [`async`] `materialized-view` *MaterializedViewName* `records` [`with (`propertyName `=` propertyValue [`,` ...]`)`] `<|` *Predicate*
 
+### Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|`async`|string||If specified, indicates that the command runs in asynchronous mode.|
+|*MaterializedViewName*|string|&check;|The name of the materialized view from which to delete records.|
+|*Predicate*|string|&check;|The predicate that returns records to delete. Specified as a query.|
+
 > [!NOTE]
-> The same restrictions on the *Predicate* mentioned above apply here as well.
-> Soft delete is expected to fail in case a materialization of the view is being executed concurrently (specifically, in case there is an intersection between the extents those two commands are executing on).
-> Usage of function 'materialized_view' is not allowed in *Predicate*.
+> The same restrictions on the *Predicate* mentioned for table apply here as well.
+> Soft delete might fail in case of conflicts with the [materialization process](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work) running in the background. Retrying the operation can help in this case. To avoid conflicts, you can [disable the materialized view](../management/materialized-views/materialized-view-enable-disable.md) before executing soft delete, and re-enable it when the operation completes.
+> Usage of function [materialized_view()](../query/materialized-view-function.md) is not allowed in *Predicate*.
+> 
+#### Example
+
+To delete all the records that contain data of a given user:
+
+```kusto
+.delete materialized-view MyMaterializedView records <| MyMaterializedView | where UserId == 'X'
+```
+
+> [!NOTE]
+>
+> To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the RecordsMatchPredicate column when running the command in `whatif` mode:
+>
+> ```kusto
+> .delete materialized-view MyMaterializedView records with (whatif=true) <| MyMaterializedView | where UserId == 'X'
+> ```
