@@ -3,7 +3,7 @@ title: Numerical operators - Azure Data Explorer
 description: Learn how to use Numerical operators to calculate a value from two or more numbers.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 05/16/2023
 ---
 # Numerical operators
 
@@ -31,7 +31,7 @@ Operator       |Description                         |Example
 
 ## Type rules for arithmetic operations
 
-In [Kusto Query Language (KQL)](index.md), the type of the result of an arithmetic operation is determined by the types of its operands. If one of the operands is of type `real`, the result will be of type `real`. If both operands are of type `int`, the result will also be of type `int`. This means that if you perform an operation with two integers, the result will be truncated to an integer, which may not always be what you want.
+In [Kusto Query Language (KQL)](index.md), the type of the result of an arithmetic operation is determined by the data types of the operands used in the operation. If one of the operands is of type `real`, the result will be of type `real`. If both operands are of type `int`, the result will also be of type `int`. This means that if you perform an operation with two integers, the result will be truncated to an integer, which may not always be what you want.
 
 The following table shows some example operations.
 
