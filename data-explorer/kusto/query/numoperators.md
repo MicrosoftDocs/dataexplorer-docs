@@ -33,7 +33,7 @@ Operator       |Description                         |Example
 
 In [Kusto Query Language (KQL)](index.md), the data type of the result of an arithmetic operation is determined by the data types of the operands. If one of the operands is of type `real`, the result will be of type `real`. If both operands are of type `int`, the result will also be of type `int`.
 
-Due to these rules, the result of arithmetic operations that only involve integers will be truncated to an integer, which may not always be what you want. To avoid truncated results, convert at least one of the `int` values to `real` using [todouble() or toreal()](todoublefunction.md) before performing the operation.
+Due to these rules, the result of arithmetic operations that only involve integers will be truncated to an integer, which may not always be what you want. To avoid truncated results, convert at least one of the `int` values to `real` using the [real()](scalar-data-types/real.md) function before performing the operation.
 
 The following table shows arithmetic operations involving different data types and their corresponding results.
 
@@ -42,7 +42,7 @@ The following table shows arithmetic operations involving different data types a
 | `1.0` `/` `2` | `0.5` | One of the operands is of type `real`, so the result is `real`. |
 | `1` `/` `2.0` | `0.5` | One of the operands is of type `real`, so the result is `real`. |
 | `1` `/` `2` | `0` | Both of the operands are of type `int`, so the result is `int`. Integer division occurs and the decimal is truncated, resulting in `0` instead of `0.5`, as one might expect. |
-| `toreal(1)` `/` `2` | `0.5` | To avoid truncation due to integer division, one of the `int` operands was first converted to `real` using the `toreal()` function. |
+| `real(1)` `/` `2` | `0.5` | To avoid truncation due to integer division, one of the `int` operands was first converted to `real` using the `real()` function. |
 
 ## Comment about the modulo operator
 
