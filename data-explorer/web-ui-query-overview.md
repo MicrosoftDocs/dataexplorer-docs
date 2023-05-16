@@ -27,7 +27,7 @@ In the query page, you can:
 
 The connection pane on the left-hand side of the query page allows you to browse and switch between your clusters and databases. Under each cluster, you can see the databases included in that cluster. Under each database, you can see the tables, functions, external tables, and materialized views included in that database.
 
-Right select on a database to open a menu with options such as to create a table or ingest data into the selected database.
+From the connection pane, you can right-click on a database to open a menu with options such as to create a table or ingest data.
 
 :::image type="content" source="media/web-ui-query/connection-pane.png" alt-text="Screenshot of the connection pane." lightbox="media/web-ui-query/connection-pane.png":::
 
@@ -38,13 +38,11 @@ To learn how to add a connection, see [Add a cluster connection in the Azure Dat
 
 ## Write and run queries
 
-Use the query editor to interact with your data. Queries run in the context of a particular database. Select the relevant database from the left panel to set the query context. You can see the query context in the top toolbar.
+Use the query editor to interact with your data by running queries in the context of a specific database. To set the query context, select the relevant database from the left panel. The query context is displayed in the top toolbar.
 
 :::image type="content" source="media/web-ui-query/switch-query-context.gif" alt-text="Screenshot of multiple query tabs and their context." lightbox="media/web-ui-query/switch-query-context.gif":::
 
-The editor uses Intellisense and autocompletion to provide suggestions as you write your query. The editor alerts you if you attempt to access data that isn't in the selected database and make suggestions to optimize your queries.
-
-To return all records matching the query, select **Run** or press *Shift + Enter*. To see a preview of 50 results, select the dropdown menu on the **Run** button and select **Preview results**. If you have multiple queries in the same tab, make sure to select the query you want to run before running the query.
+The editor offers Intellisense and autocompletion, providing helpful suggestions as you write your query. The editor also alerts you when accessing data outside the selected database and suggests query optimizations. To return all records matching the query, select **Run** or press *Shift + Enter*. To see a preview of 50 results, select the dropdown menu on the **Run** button and select **Preview results**.
 
 :::image type="content" source="media/web-ui-query/run-button-dropdown.png" alt-text="Screenshot of the web UI run button dropdown options." lightbox="media/web-ui-query/run-button-dropdown.png":::
 
