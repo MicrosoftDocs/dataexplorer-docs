@@ -507,6 +507,12 @@ items:
         href: kusto/api/connection-strings/sql-authentication-methods.md
       - name: Generate SAS token
         href: kusto/api/connection-strings/generate-sas-token.md
+      - name: Kusto emulator
+        items:
+        - name: Kusto emulator overview
+          href: kusto-emulator-overview.md
+        - name: Install the Kusto emulator
+          href: kusto-emulator-install.md
     - name: Integrate Kusto query editor in your apps
       items:
       - name: Integrate Azure Data Explorer capabilities overview
