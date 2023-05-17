@@ -79,4 +79,5 @@ Since certain management commands can't be run in the **help** cluster, you can 
 
 * [Query data in the Azure Data Explorer web UI](web-query-data.md#run-queries)
 * [Visualize data with Azure Data Explorer dashboards (Preview)](azure-data-explorer-dashboards.md)
+* [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md)
 * See the [SQL to Kusto cheat sheet](kusto/query/sqlcheatsheet.md)
