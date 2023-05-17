@@ -20,6 +20,20 @@ Select the settings icon :::image type="icon" source="media/web-customize-settin
 
 :::image type="content" source="media/web-customize-settings/settings-pane.png" alt-text="Screenshot of the Settings window.":::
 
+## Set query recommendations
+
+The query editor provides suggestions and warnings as you write your queries. The suggestions and warnings may be related to performance, correctness, or general best practices. To customize your suggestions and warnings, do the following steps:
+
+1. In the **Settings** > **Editing** window, select **Set query recommendations**.
+
+    :::image type="content" source="media/web-customize-settings/set-query-recommendations-setting.png" alt-text="Screenshot of the setting menu option to set query recommendations." lightbox="media/web-customize-settings/set-query-recommendations-setting.png":::
+
+1. In the **Set query recommendations** dialog box, turn on or off specific **Suggestions** and **Warnings**. Use the **Activate suggestions** and **Activate warnings** at the top of the respective tabs to turn on or off all of the suggestions or warnings at once.
+
+    :::image type="content" source="media/web-customize-settings/set-query-recommendations-dialog.png" alt-text="Screenshot of the set query recommendations dialog box." lightbox="media/web-customize-settings/set-query-recommendations-dialog.png":::
+
+1. Select **Apply** to save the changes.
+
 ## Export and import environment settings
 
 The export and import actions help you protect your work environment and relocate it to other browsers and devices. The export action will export all your settings, cluster connections, and query tabs to a JSON file that can be imported into a different browser or device.
