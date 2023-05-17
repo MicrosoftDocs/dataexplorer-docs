@@ -12,6 +12,8 @@ The **follower database** feature allows you to attach a database located in a d
 
 Attaching a database to a different cluster using the follower capability is used as the infrastructure to share data between organizations and teams. The feature is useful to segregate compute resources to protect a production environment from non-production use cases. Follower can also be used to associate the cost of Azure Data Explorer cluster to the party that runs queries on the data.
 
+> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/follower).
+
 ## Which databases are followed?
 
 * A cluster can follow one database, several databases, or all databases of a leader cluster.
