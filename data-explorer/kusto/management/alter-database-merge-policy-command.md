@@ -1,5 +1,5 @@
 ---
-title: .alter database merge policy command - Azure Data Explorer
+title:  .alter database merge policy command
 description: Learn how to use the .alter database merge policy command to change the database's merge policy. 
 ms.reviewer: yonil
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: Database cursors - Azure Data Explorer
+title:  Database cursors
 description: This article describes Database cursors in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

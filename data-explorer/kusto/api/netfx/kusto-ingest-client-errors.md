@@ -1,5 +1,5 @@
 ---
-title: Kusto.Ingest errors & exceptions - Azure Data Explorer
+title:  Kusto.Ingest errors & exceptions
 description: This article describes Kusto.Ingest - Errors and Exceptions in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

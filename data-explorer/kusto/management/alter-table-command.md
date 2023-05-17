@@ -1,5 +1,5 @@
 ---
-title: .alter table - Azure Data Explorer
+title:  .alter table
 description: This article describes the .alter table command.
 ms.reviewer: orspodek
 ms.topic: reference

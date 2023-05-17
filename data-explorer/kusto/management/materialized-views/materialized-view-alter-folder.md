@@ -1,5 +1,5 @@
 ---
-title: .alter materialized view folder - Azure Data Explorer
+title:  .alter materialized view folder
 description: This article describes alter materialized view folder in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

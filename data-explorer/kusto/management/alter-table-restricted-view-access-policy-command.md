@@ -1,5 +1,5 @@
 ---
-title: .alter restricted view access policy command - Azure Data Explorer
+title:  .alter restricted view access policy command
 description: Learn how to use the .alter restricted view access policy command to turn on or turn off the table's restricted view access policy.
 ms.reviewer: yonil
 ms.topic: reference

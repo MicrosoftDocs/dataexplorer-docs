@@ -1,5 +1,5 @@
 ---
-title: Scalar Functions - Azure Data Explorer 
+title:  Scalar Functions 
 description: Learn how to use scalar functions to perform calculations that return a single value.
 ms.reviewer: alexans
 ms.topic: reference

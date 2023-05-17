@@ -1,5 +1,5 @@
 ---
-title: .show cluster capacity policy command- Azure Data Explorer
+title:  .show cluster capacity policy command
 description: This article describes the .show cluster capacity policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

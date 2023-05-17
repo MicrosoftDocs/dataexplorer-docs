@@ -1,5 +1,5 @@
 ---
-title: Data export - Azure Data Explorer
+title:  Data export
 description: This article describes Data export in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

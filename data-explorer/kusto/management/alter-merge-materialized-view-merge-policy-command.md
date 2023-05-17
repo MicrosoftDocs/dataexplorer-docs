@@ -1,5 +1,5 @@
 ---
-title: .alter-merge materialized view merge policy command- Azure Data Explorer
+title:  .alter-merge materialized view merge policy command
 description: Learn how to use the .alter-merge materialized view merge policy command to change the materialized view's merge policy.
 ms.reviewer: yifats
 ms.topic: reference
