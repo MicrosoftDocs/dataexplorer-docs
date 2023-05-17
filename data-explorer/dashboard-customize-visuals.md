@@ -83,7 +83,7 @@ Plotly visuals are useful for advanced charting including geographic, scientific
 
 ### Funnel chart
 
-A funnel chart visualizes a linear process that has sequential, connected stages.
+A funnel chart visualizes a linear process that has sequential, connected stages. Each funnel stage represents a percentage of the total. So, in most cases, a funnel chart is shaped like a funnel, with the first stage being the largest, and each subsequent stage smaller than its predecessor.
 
 The following example uses data from the `ContosoSales` database from the publicly available [help cluster](https://dataexplorer.azure.com/clusters/help) to show the number of sales for washers and dryers in Canada out of the total sum of sales in 2007.
 
