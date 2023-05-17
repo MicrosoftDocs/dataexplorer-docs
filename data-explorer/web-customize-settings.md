@@ -34,6 +34,16 @@ The query editor provides suggestions and warnings as you write your queries. Th
 
 1. Select **Apply** to save the changes.
 
+## Control timeout limits
+
+Query and admin commands have a default timeout limit. To extend or reduce these limits, do the following steps:
+
+1. In the **Settings** > **Connection** window, adjust the **Query timeout** or the **Admin command timeout**.
+
+    :::image type="content" source="media/web-customize-settings/set-timeout-setting.png" alt-text="Screenshot of the setting menu option to set query recommendations." lightbox="media/web-customize-settings/set-timeout-setting.png":::
+
+1. The changes are automatically saved.
+
 ## Export and import environment settings
 
 The export and import actions help you protect your work environment and relocate it to other browsers and devices. The export action will export all your settings, cluster connections, and query tabs to a JSON file that can be imported into a different browser or device.
