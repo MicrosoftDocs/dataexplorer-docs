@@ -11,10 +11,10 @@ This article shows you how to ingest data into Azure Data Explorer from IoT Hub,
 
 For general information about ingesting into Azure Data Explorer from IoT Hub, see [Connect to IoT Hub](ingest-data-iot-hub-overview.md).
 
-> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/create-iot-hub-connection).
-
 > [!NOTE]
 > Only events enqueued after you create the data connection are ingested.
+
+> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/create-iot-hub-connection).
 
 ## Prerequisites
 

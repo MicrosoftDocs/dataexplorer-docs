@@ -18,10 +18,10 @@ Your Azure Data Explorer cluster can be granted two types of identities:
 
 This article shows you how to add and remove system-assigned and user-assigned managed identities for Azure Data Explorer clusters.
 
-> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/configure-managed-identities-cluster).
-
 > [!Note]
 > Managed identities for Azure Data Explorer won't behave as expected if your Azure Data Explorer cluster is migrated across subscriptions or tenants. The app will need to obtain a new identity, which can be done by [disabling](#remove-a-system-assigned-identity) and [re-enabling](#add-a-system-assigned-identity) the feature. Access policies of downstream resources will also need to be updated to use the new identity.
+
+> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/configure-managed-identities-cluster).
 
 ## Add a system-assigned identity
 
