@@ -20,9 +20,7 @@ The tracing can be suppressed or controlled programmatically or through a config
 To suppress tracing from the Kusto client libraries programmatically, invoke this piece of code when loading the relevant library:
 
 ```csharp
-Kusto.Cloud.Platform.Utils.TraceSourceManager.SetTraceVerbosityForAll(
-    Kusto.Cloud.Platform.Utils.TraceVerbosity.Fatal
-    );
+TraceSourceManager.SetTraceVerbosityForAll(TraceVerbosity.Fatal);
 ```
 
 ## Use a config file to suppress tracing
@@ -30,7 +28,7 @@ Kusto.Cloud.Platform.Utils.TraceSourceManager.SetTraceVerbosityForAll(
 To suppress tracing from the client libraries through a config file, modify the file `Kusto.Cloud.Platform.dll.tweaks` (which is included with the `Kusto.Data` library).
 
 ```xml
-    //Overrides the default trace verbosity level
+    <!--Overrides the default trace verbosity level-->
     <add key="Kusto.Cloud.Platform.Utils.Tracing.OverrideTraceVerbosityLevel" value="0" />
 ```
 
@@ -40,10 +38,10 @@ To suppress tracing from the client libraries through a config file, modify the 
 An alternative, is:
 
 ```csharp
-Kusto.Cloud.Platform.Utils.Anchor.Tweaks.SetProgrammaticAppSwitch(
+Anchor.Tweaks.SetProgrammaticAppSwitch(
     "Kusto.Cloud.Platform.Utils.Tracing.OverrideTraceVerbosityLevel",
     "0"
-    );
+);
 ```
 
 ## Enable client libraries tracing
