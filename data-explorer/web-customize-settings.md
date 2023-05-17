@@ -34,13 +34,13 @@ The query editor provides suggestions and warnings as you write your queries. Th
 
 1. Select **Apply** to save the changes.
 
-## Control timeout limits
+## Adjust timeout limits
 
 Query and admin commands have a default timeout limit. To extend or reduce these limits, do the following steps:
 
 1. In the **Settings** > **Connection** window, adjust the **Query timeout** or the **Admin command timeout**.
 
-    :::image type="content" source="media/web-customize-settings/set-timeout-setting.png" alt-text="Screenshot of the setting menu option to set query recommendations." lightbox="media/web-customize-settings/set-timeout-setting.png":::
+    :::image type="content" source="media/web-customize-settings/set-timeout-setting.png" alt-text="Screenshot of the setting menu option to set timeout limits." lightbox="media/web-customize-settings/set-timeout-setting.png":::
 
 1. The changes are automatically saved.
 
