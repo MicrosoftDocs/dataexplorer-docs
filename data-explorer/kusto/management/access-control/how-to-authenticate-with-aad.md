@@ -4,7 +4,7 @@ description: This article describes How-To Authenticate with Azure AD for Azure 
 ms.reviewer: vladikb
 ms.topic: reference
 ms.custom: devx-track-js
-ms.date: 04/25/2023
+ms.date: 05/08/2023
 ---
 # Authenticate with Azure Active Directory (Azure AD)
 
@@ -137,23 +137,20 @@ The full step-by-step process is described in [Configure delegated permissions f
 The following brief code snippet demonstrates using [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure AD user token to access a cluster (launches sign-in UI):
 
 ```csharp
-// Create an HTTP request
-WebRequest request = WebRequest.Create(new Uri($"https://{serviceName}.{region}.kusto.windows.net"));
-
+var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
 // Create a public authentication client for Azure AD:
-var authClient = PublicClientApplicationBuilder.Create("<your client app ID>")
-            .WithAuthority("https://login.microsoftonline.com/{Azure AD Tenant ID or name}")
-            .WithRedirectUri(@"<your client app redirect URI>")
-            .Build();
-
-// Define scopes for accessing a cluster
-string[] scopes = new string[] { $"https://{serviceName}.{region}.kusto.windows.net/.default" };
-
-// Acquire user token for the interactive user:
-AuthenticationResult result = authClient.AcquireTokenInteractive(scopes).ExecuteAsync().Result;
-
-// Extract Bearer access token and set the Authorization header on your request:
-string bearerToken = result.AccessToken;
+var authClient = PublicClientApplicationBuilder.Create("<appId>")
+    .WithAuthority($"https://login.microsoftonline.com/<appTenant>")
+    .WithRedirectUri("<appRedirectUri>")
+    .Build();
+// Acquire user token for the interactive user for Azure Data Explorer:
+var result = authClient.AcquireTokenInteractive(
+    new[] { $"{kustoUri}/.default" } // Define scopes for accessing Azure Data Explorer cluster
+).ExecuteAsync().Result;
+// Extract Bearer access token 
+var bearerToken = result.AccessToken;
+// Create an HTTP request and set the Authorization header on your request:
+var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
@@ -165,23 +162,20 @@ to perform application authentication (such as an app key issued by Azure AD,
 or an X509v2 certificate that has been pre-registered with Azure AD).
 
 ```csharp
-// Create an HTTP request
-WebRequest request = WebRequest.Create(new Uri("https://{serviceName}.{region}.kusto.windows.net"));
-
+var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
 // Create a confidential authentication client for Azure AD:
-var authClient = ConfidentialClientApplicationBuilder.Create("<your client app ID>")
-            .WithAuthority("https://login.microsoftonline.com/{Azure AD Tenant ID or name}")
-            .WithClientSecret("<your client app secret key>") // can be replaced by .WithCertificate to authenticate with an X.509 certificate
-            .Build();
-
-// Define scopes for accessing a cluster
-string[] scopes = new string[] { $"https://{serviceName}.{region}.kusto.windows.net/.default" };
-
-// Acquire aplpication token:
-AuthenticationResult result = authClient.AcquireTokenForClient(scopes).ExecuteAsync().Result;
-
-// Extract Bearer access token and set the Authorization header on your request:
-string bearerToken = result.AccessToken;
+var authClient = ConfidentialClientApplicationBuilder.Create("<appId>")
+    .WithAuthority($"https://login.microsoftonline.com/<appTenant>")
+    .WithClientSecret("<appKey>") // can be replaced by .WithCertificate to authenticate with an X.509 certificate
+    .Build();
+// Acquire aplpication token for Azure Data Explorer:
+var result = authClient.AcquireTokenForClient(
+    new[] { $"{kustoUri}/.default" } // Define scopes for accessing Azure Data Explorer cluster
+).ExecuteAsync().Result;
+// Extract Bearer access token 
+var bearerToken = result.AccessToken;
+// Create an HTTP request and set the Authorization header on your request:
+var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
@@ -220,35 +214,28 @@ the administrator of the Azure AD tenant.
 
 ```csharp
 // Create a confidential authentication client for Azure AD:
-var authClient = ConfidentialClientApplicationBuilder.Create("<your client app ID>")
-            .WithAuthority("https://login.microsoftonline.com/{Azure AD Tenant ID or name}")
-            .WithClientSecret("<your client app secret key>") // can be replaced by .WithCertificate to authenticate with an X.509 certificate
-            .Build();
-
-// Define scopes for accessing a cluster
-string[] scopes = new string[] { $"https://{serviceName}.{region}.kusto.windows.net/.default" };
-
-// Encode the "original" token that will be used for exchange
-var userAssertion = new UserAssertion(accessToken);
-
-// Acquire on-behalf-of user token for the interactive user based on provided token:
-AuthenticationResult result = authClient.AcquireTokenOnBehalfOf(scopes, userAssertion).ExecuteAsync().Result;
-
-string accessTokenForAdx = result.AccessToken;
+var authClient = ConfidentialClientApplicationBuilder.Create("<appId>")
+    .WithAuthority($"https://login.microsoftonline.com/<appTenant>")
+    .WithClientSecret("<appKey>") // can be replaced by .WithCertificate to authenticate with an X.509 certificate
+    .Build();
+// Acquire on-behalf-of user token for the interactive user for Azure Data Explorer based on provided token:
+var result = authClient.AcquireTokenOnBehalfOf(
+    new[] { "https://<clusterName>.<region>.kusto.windows.net/.default" }, // Define scopes for accessing Azure Data Explorer cluster
+    new UserAssertion("<userAccessToken>") // Encode the "original" token that will be used for exchange
+).ExecuteAsync().Result;
+var accessTokenForAdx = result.AccessToken;
 ```
 
 **Step 3: Provide the token to Kusto client library and execute queries**
 
 ```csharp
 // Create KustoConnectionStringBuilder using the previously acquired Azure AD token
-var kcsb = new KustoConnectionStringBuilder($"https://{serviceName}.{region}.kusto.windows.net")
-            .WithAadUserTokenAuthentication(accessTokenForAdx);
-
+var connectionStringBuilder = new KustoConnectionStringBuilder("https://<clusterName>.<region>.kusto.windows.net")
+    .WithAadUserTokenAuthentication(accessTokenForAdx);
 // Create an ADX query client base on the conneciton string object
-var queryClient = KustoClientFactory.CreateCslQueryProvider(kcsb);
-
+using var queryClient = KustoClientFactory.CreateCslQueryProvider(connectionStringBuilder);
 // Execute query
-var queryResult = queryclient.ExecuteQuery(databaseName, query, null);
+var queryResult = await queryClient.ExecuteQueryAsync("<databaseName>", "<query>", null);
 ```
 
 ## Web Client (JavaScript) authentication and authorization

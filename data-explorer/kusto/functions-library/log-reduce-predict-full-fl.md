@@ -3,7 +3,7 @@ title:  log_reduce_predict_full_fl()
 description: This article describes the log_reduce_predict_full_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/18/2023
+ms.date: 05/07/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---

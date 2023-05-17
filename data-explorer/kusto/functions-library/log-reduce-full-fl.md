@@ -3,7 +3,7 @@ title:  log_reduce_full_fl()
 description: This article describes the log_reduce_full_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/18/2023
+ms.date: 05/07/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -139,7 +139,8 @@ let log_reduce_full_fl=(tbl:(*), reduce_col:string, pattern_col:string, paramete
 //
 HDFS_log
 | take 100000
-| invoke log_reduce_full_fl(reduce_col="data")
+| extend Patterns="", Parameters=""
+| invoke log_reduce_full_fl(reduce_col="data", pattern_col="Patterns", parameters_col="Parameters")
 | take 10
 ~~~
 
@@ -154,7 +155,8 @@ HDFS_log
 //
 HDFS_log
 | take 100000
-| invoke log_reduce_full_fl(reduce_col="data")
+| extend Patterns="", Parameters=""
+| invoke log_reduce_full_fl(reduce_col="data", pattern_col="Patterns", parameters_col="Parameters")
 | take 10
 ```
 
