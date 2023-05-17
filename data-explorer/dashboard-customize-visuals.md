@@ -85,7 +85,7 @@ Plotly visuals are useful for advanced charting including geographic, scientific
 
 A funnel chart visualizes a linear process that has sequential, connected stages.
 
-The following example uses data from the *ContosoSales* database from the publicly available [help cluster](https://dataexplorer.azure.com/clusters/help) to show the number of sales for washers and dryers in Canada out of the total sum of sales in 2007.
+The following example uses data from the `ContosoSales` database from the publicly available [help cluster](https://dataexplorer.azure.com/clusters/help) to show the number of sales for washers and dryers in Canada out of the total sum of sales in 2007.
 
 ```kusto
 
