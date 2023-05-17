@@ -8,7 +8,7 @@ ms.date: 05/17/2023
 
 # Azure Data Explorer web UI query overview
 
-The [Azure Data Explorer web UI](https://dataexplorer.azure.com) provides an end-to-end data exploration experience from [data ingestion](ingest-data-wizard.md) to data query and [customizable dashboards](azure-data-explorer-dashboards.md) to visualize data and insights. This article provides an overview of the web UI query page and explains how it can be used to interact with your data. On the home page, there are specific guides to help get you started querying data. To learn more, see [Explore the samples gallery](web-ui-samples-query.md).
+The [Azure Data Explorer web UI](https://dataexplorer.azure.com) provides an end-to-end data exploration experience from [data ingestion](ingest-data-wizard.md) to data query and [customizable dashboards](azure-data-explorer-dashboards.md) to visualize data and insights. This article provides an overview of the web UI query page and explains how it can be used to interact with your data.
 
 In the query page, you can:
 
@@ -22,6 +22,8 @@ In the query page, you can:
 > * [Share and export queries](#share-and-export-queries)
 
 :::image type="content" source="media/web-ui-query/query-page-overview.gif" alt-text="Moving image of query page overview." lightbox="media/web-ui-query/query-page-overview.gif":::
+
+On the Azure Data Explorer web UI home page, there are guides to help get you started querying different types of data. To learn more, see [Explore the samples gallery](web-ui-samples-query.md).
 
 ## View clusters and databases
 
