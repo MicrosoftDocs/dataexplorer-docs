@@ -101,7 +101,7 @@ To download a KQL file of the query, follow these steps:
 
 ## Open in Excel
 
-To provide access to live results of your query in an Excel workbook, follow these steps:
+To access live results of your query in an Excel workbook, follow these steps:
 
 1. In the query window, create and select the query that you want to share.
 

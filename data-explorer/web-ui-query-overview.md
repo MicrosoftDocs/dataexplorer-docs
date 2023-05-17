@@ -29,7 +29,7 @@ On the Azure Data Explorer web UI home page, there are guides to help get you st
 
 The connection pane on the left-hand side of the query page allows you to browse and switch between your clusters and databases. Under each cluster, you can see the databases included in that cluster. Under each database, you can see the tables, functions, external tables, and materialized views included in that database.
 
-From the connection pane, you can right-click on a database to open a menu with options such as to create a table or ingest data.
+From the connection pane, right-click on a database to open a menu with options to **Ingest data**, **Create table**, and more.
 
 :::image type="content" source="media/web-ui-query/connection-pane.png" alt-text="Screenshot of the connection pane." lightbox="media/web-ui-query/connection-pane.png":::
 
@@ -77,6 +77,8 @@ The recall query button allows you to quickly retrieve a previously executed que
 ## Share and export queries
 
 In the query page toolbar, there are several options to manage your queries and query results. You can pin a query to a dashboard, copy queries, copy query results, and export data to Power BI, Excel, and CSV formats. For more information, see [Share queries from Azure Data Explorer web UI](web-share-queries.md).
+
+:::image type="content" source="media/web-ui-querytoolbar-options.png" alt-text="Screenshot of extended toolbar options." lightbox="media/web-ui-query/toolbar-options.png":::
 
 ## See also
 
