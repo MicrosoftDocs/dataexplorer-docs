@@ -11,6 +11,8 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
+Treemaps display hierarchical data as a set of nested rectangles. Each level of the hierarchy is represented by a colored rectangle (branch) containing smaller rectangles (leaves)
+
 > [!NOTE]
 >
 > * This visualization can only be used in the context of the [render operator](renderoperator.md).
