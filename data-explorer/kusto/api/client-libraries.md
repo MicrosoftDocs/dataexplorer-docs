@@ -7,8 +7,10 @@ ms.date: 05/08/2023
 ---
 # Client libraries
 
-The following table lists the different libraries provided for query, ingestion, and ARM/RP management. 
-Use these libraries for Azure APIs and to programmatically interact with your cluster. 
+The following table lists the different libraries provided for query, ingestion, and ARM/RP management.
+Use these libraries for Azure APIs and to programmatically interact with your cluster.
+
+> For previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/kusto/api/client-libraries).
 
 | Language/Functionality | Query | Ingestion | ARM/RP Management |
 |--|--|--|--|--|

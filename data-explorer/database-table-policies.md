@@ -10,6 +10,8 @@ ms.date: 05/04/2023
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. In this article, you'll create database and table policies for Azure Data Explorer by using C# or Python.
 
+> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/database-table-policies).
+
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).

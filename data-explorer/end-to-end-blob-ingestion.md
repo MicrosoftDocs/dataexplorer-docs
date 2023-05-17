@@ -13,6 +13,8 @@ Azure Data Explorer is a fast and scalable data exploration service for log and 
 
 You'll learn how to programmatically create a resource group, a storage account and container, an event hub, and an Azure Data Explorer cluster and database. You'll also learn how to programmatically configure Azure Data Explorer to ingest data from the new storage account.
 
+> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/end-to-end-blob-ingestion).
+
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
