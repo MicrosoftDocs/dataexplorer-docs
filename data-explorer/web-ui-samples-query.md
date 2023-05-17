@@ -2,7 +2,7 @@
 title: Explore sample data in the Azure Data Explorer web UI samples gallery
 description: In this how-to article, you learn how to query data in the samples gallery in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 01/29/2023
+ms.date: 05/17/2023
 ---
 # Explore the samples gallery
 
@@ -61,7 +61,7 @@ The **SampleMetrics** dataset consists of the following tables:
 
 In the query edit window, place your cursor in a query and select **Run** at the top of the window, or press *Shift* + *Enter* to run a query. Results are displayed in the query results pane, directly below the query editor window.
 
-Before running any query or command, take a moment to read the comments above it. The comments include important information. For example, why certain control commands won't work in the **help** cluster due to lack of permissions.
+Before running any query or command, take a moment to read the comments above it. The comments include important information. For example, why certain control commands won't work in the **help** cluster due to lack of permissions. The query editor provides suggestions and warnings as you write queries. To customize which suggestions and warnings you receive, see [Set query recommendations](web-customize-settings.md#set-query-recommendations).
 
 :::image type="content" source="media/web-ui-samples-gallery/web-ui-query-window.png" alt-text="Screenshot showing the query editor window with sample tutorials." lightbox="media/web-ui-samples-gallery/web-ui-query-window.png":::
 
