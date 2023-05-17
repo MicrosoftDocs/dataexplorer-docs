@@ -17,7 +17,7 @@ If the stream of data into each table is high (over 4 GB per hour), consider usi
 
 To learn more about different ingestion methods, see [data ingestion overview](ingest-data-overview.md).
 
-> For code samples based on previous SDK versions, see the [Azure Data Explorer Documentation Archive](/previous-versions/azure/data-explorer/ingest-data-streaming).
+> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/ingest-data-streaming).
 
 ## Choose the appropriate streaming ingestion type
 

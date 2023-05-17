@@ -13,7 +13,7 @@ When you create a cluster, data is [automatically encrypted](/azure/storage/comm
 
 When double encryption is enabled, data in the storage account is encrypted twice, using two different algorithms.
 
-> For code samples based on previous SDK versions, see the [Azure Data Explorer Documentation Archive](/previous-versions/azure/data-explorer/cluster-encryption-double).
+> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/cluster-encryption-double).
 
 > [!IMPORTANT]
 >

@@ -12,7 +12,7 @@ Azure Data Explorer offers ingestion from [Event Hubs](/azure/event-hubs/event-h
 
 In this article, you'll connect to an event hub and ingest data into Azure Data Explorer. For an overview on ingesting from Event Hubs, see [Azure Event Hubs data connection](ingest-data-event-hub-overview.md).
 
-> For code samples based on previous SDK versions, see the [Azure Data Explorer Documentation Archive](/previous-versions/azure/data-explorer/create-event-hubs-connection).
+> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/create-event-hubs-connection).
 
 ## Prerequisites
 
