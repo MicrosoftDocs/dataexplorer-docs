@@ -5,9 +5,9 @@ ms.reviewer: slneimer
 ms.topic: reference
 ms.date: 05/17/2023
 ---
-# .delete table records
+# .delete table records - soft delete command
 
-To soft delete individual records without a system guarantee that the storage artifacts containing these records are deleted as well, use the following command. This command marks records as deleted but doesn't necessarily delete the data from storage artifacts.
+To soft delete individual records without a system guarantee that the storage artifacts containing these records are deleted as well, use the following command. This command marks records as deleted but doesn't necessarily delete the data from storage artifacts. For more information, see [Soft delete](../concepts/data-soft-delete.md).
 
 To delete individual records with a system guarantee that the storage artifacts containing these records are deleted as well, see [Data purge](../concepts/data-purge.md).
 
@@ -89,5 +89,5 @@ To delete all the materialized view records that contain data of a given user:
 
 ## See also
 
-* * [Soft delete](../concepts/data-soft-delete.md)
+* [Soft delete](../concepts/data-soft-delete.md)
 * [Materialized views](materialized-views/materialized-view-overview.md)
