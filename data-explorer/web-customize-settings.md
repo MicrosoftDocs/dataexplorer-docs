@@ -2,7 +2,7 @@
 title: 'Customize settings in the Azure Data Explorer web UI'
 description: In this guide, you'll learn how to customize your settings in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 02/13/2023
+ms.date: 05/17/2023
 ---
 
 # Customize settings in the Azure Data Explorer web UI
@@ -27,7 +27,9 @@ The export and import actions help you protect your work environment and relocat
 ### Export environment settings
 
 1. In the **Settings** > **General** window, select **Export**.
+
 1. The **adx-export.json** file will be downloaded to your local storage.
+
 1. Select **Clear local state** to revert your environment to its original state. This setting deletes all your cluster connections and closes open tabs.
 
 > [!NOTE]
@@ -66,27 +68,17 @@ Error level color scheme in **Light** mode | Error level color scheme in **Dark*
 
 For highlighted error levels, the column must be of [data type](kusto/query/scalar-data-types/index.md) `int`, `long`, or `string`.
 
-- If the column is of type `long` or `int`:
-  - The column name must be *Level*
-  - Values may only include numbers between 1 and 5.
-- If the column is of type `string`:
-  - The column name can optionally be *Level* to improve performance.
-  - The column can only include the following values:
-    - critical, crit, fatal, assert, high
-    - error, e
-    - warning, w, monitor
-    - information
-    - verbose, verb, d
-
-## Change datetime to specific time zone
-
-You can change the displayed datetime values to reflect a specific time zone. This change affects the display only, and doesn't change the underlying data in Azure Data Explorer.
-
-1. Select the **Settings** icon next to your user name.
-1. Select the **General** tab, and select a time zone from the dropdown menu.
-1. View the selected time zone in the results grid menu bar.
-
-    :::image type="content" source="media/web-customize-settings/query-time-utc.png" alt-text="Screenshot of Query time changed to UTC in results grid menu.":::
+* If the column is of type `long` or `int`:
+  * The column name must be *Level*
+  * Values may only include numbers between 1 and 5.
+* If the column is of type `string`:
+  * The column name can optionally be *Level* to improve performance.
+  * The column can only include the following values:
+    * critical, crit, fatal, assert, high
+    * error, e
+    * warning, w, monitor
+    * information
+    * verbose, verb, d
 
 ## Next steps
 
