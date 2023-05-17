@@ -334,6 +334,63 @@ items:
           href: table-retention-policy-wizard.md
     - name: Customize settings in the web UI
       href: web-customize-settings.md
+    - name: Manage
+      items:
+      - name: Cluster
+        items:
+        - name: Use Advisor recommendations to optimize your cluster
+          href: azure-advisor.md
+        - name: Select cluster VM SKU
+          href: manage-cluster-choose-sku.md
+        - name: Automatic stop of inactive clusters
+          href: auto-stop-clusters.md
+        - name: Manage cluster permissions
+          href: manage-cluster-permissions.md
+        - name: Manage cluster locks
+          href: manage-cluster-locks.md
+        - name: Manage cluster horizontal scaling
+          href: manage-cluster-horizontal-scaling.md
+        - name: Manage cluster vertical scaling
+          href: manage-cluster-vertical-scaling.md
+        - name: Check cluster health
+          href: check-cluster-health.md
+        - name: Add cluster principal
+          href: add-cluster-principal.md
+        - name: Manage cluster language extensions
+          displayName: Python, R
+          href: language-extensions.md
+      - name: Database
+        items:
+        - name: Manage database permissions
+          href: manage-database-permissions.md
+        - name: Configure a database using a Kusto Query Language script
+          href: database-script.md
+        - name: Add database principal
+          href: add-database-principal.md
+        - name: Create policies programmatically
+          displayName: database policy, database policies, table policy, table policies, python, c#
+          href: database-table-policies.md
+      - name: Data
+        items:
+        - name: Purge data - Azure portal
+          href: data-purge-portal.md
+        - name: Delete data
+          href: delete-data.md
+        - name: Deal with duplicate data
+          href: dealing-with-duplicates.md
+    - name: Monitor
+      items:
+      - name: Monitor Azure Data Explorer with metrics
+        displayName: health, performance
+        href: using-metrics.md
+      - name: Use diagnostic logs to monitor ingestion, commands, queries, and tables
+        href: using-diagnostic-logs.md
+      - name: Use resource health to monitor cluster health
+        href: monitor-with-resource-health.md
+      - name: Use Azure Data Explorer Clusters Insights
+        href: data-explorer-insights.md
+      - name: Monitor batching ingestion with metrics
+        href: monitor-batching-ingestion.md
     - name: Secure
       items:
         - name: Access control
@@ -405,63 +462,6 @@ items:
           href: provision-azure-ad-app.md
         - name: Conditional Access
           href: security-conditional-access.md
-    - name: Manage
-      items:
-      - name: Cluster
-        items:
-        - name: Use Advisor recommendations to optimize your cluster
-          href: azure-advisor.md
-        - name: Select cluster VM SKU
-          href: manage-cluster-choose-sku.md
-        - name: Automatic stop of inactive clusters
-          href: auto-stop-clusters.md
-        - name: Manage cluster permissions
-          href: manage-cluster-permissions.md
-        - name: Manage cluster locks
-          href: manage-cluster-locks.md
-        - name: Manage cluster horizontal scaling
-          href: manage-cluster-horizontal-scaling.md
-        - name: Manage cluster vertical scaling
-          href: manage-cluster-vertical-scaling.md
-        - name: Check cluster health
-          href: check-cluster-health.md
-        - name: Add cluster principal
-          href: add-cluster-principal.md
-        - name: Manage cluster language extensions
-          displayName: Python, R
-          href: language-extensions.md
-      - name: Database
-        items:
-        - name: Manage database permissions
-          href: manage-database-permissions.md
-        - name: Configure a database using a Kusto Query Language script
-          href: database-script.md
-        - name: Add database principal
-          href: add-database-principal.md
-        - name: Create policies programmatically
-          displayName: database policy, database policies, table policy, table policies, python, c#
-          href: database-table-policies.md
-      - name: Data
-        items:
-        - name: Purge data - Azure portal
-          href: data-purge-portal.md
-        - name: Delete data
-          href: delete-data.md
-        - name: Deal with duplicate data
-          href: dealing-with-duplicates.md
-    - name: Monitor
-      items:
-      - name: Monitor Azure Data Explorer with metrics
-        displayName: health, performance
-        href: using-metrics.md
-      - name: Use diagnostic logs to monitor ingestion, commands, queries, and tables
-        href: using-diagnostic-logs.md
-      - name: Use resource health to monitor cluster health
-        href: monitor-with-resource-health.md
-      - name: Use Azure Data Explorer Clusters Insights
-        href: data-explorer-insights.md
-      - name: Monitor batching ingestion with metrics
-        href: monitor-batching-ingestion.md
     - name: Share data
       items:
         - name: Use Azure Data Share
