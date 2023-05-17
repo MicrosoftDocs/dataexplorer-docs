@@ -2,7 +2,7 @@
 title: 'Create an Event Grid data connection - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Grid.'
 ms.topic: how-to
-ms.date: 05/08/2023
+ms.date: 05/17/2023
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer
@@ -10,6 +10,8 @@ ms.date: 05/08/2023
 In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that sets an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hubs.
 
 For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md).
+
+> For code samples based on previous SDK versions, see the [Azure Data Explorer Documentation Archive](/previous-versions/azure/data-explorer/create-event-grid-connection).
 
 > [!NOTE]
 > To achieve the best performance with the Event Grid connection, set the `rawSizeBytes` ingestion property via the blob metadata. For more information, see [ingestion properties](ingest-data-event-grid-overview.md#ingestion-properties).

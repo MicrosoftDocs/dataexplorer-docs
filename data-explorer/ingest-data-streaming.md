@@ -3,7 +3,7 @@ title: Configure streaming ingestion on your Azure Data Explorer cluster
 description: Learn how to configure your Azure Data Explorer cluster and start loading data with streaming ingestion.
 ms.reviewer: alexefro
 ms.topic: how-to
-ms.date: 09/01/2021
+ms.date: 05/17/2023
 ---
 
 # Configure streaming ingestion on your Azure Data Explorer cluster
@@ -16,6 +16,8 @@ Streaming ingestion is useful for loading data when you need low latency between
 If the stream of data into each table is high (over 4 GB per hour), consider using [batch ingestion](kusto/management/batchingpolicy.md).
 
 To learn more about different ingestion methods, see [data ingestion overview](ingest-data-overview.md).
+
+> For code samples based on previous SDK versions, see the [Azure Data Explorer Documentation Archive](/previous-versions/azure/data-explorer/ingest-data-streaming).
 
 ## Choose the appropriate streaming ingestion type
 
