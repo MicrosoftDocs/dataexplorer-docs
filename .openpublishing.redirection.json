@@ -616,6 +616,16 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/database-table-policies-csharp.md",
+      "redirect_url": "/azure/data-explorer/database-table-policies",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/database-table-policies-python.md",
+      "redirect_url": "/azure/data-explorer/database-table-policies",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "data-explorer/cluster-principal-csharp.md",
       "redirect_url": "/azure/data-explorer/add-cluster-principal",
       "redirect_document_id": false
@@ -673,6 +683,76 @@
     {
       "source_path": "data-explorer/create-cluster-database-go.md",
       "redirect_url": "/azure/data-explorer/create-cluster-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/access-control/index.md",
+      "redirect_url": "/azure/data-explorer/kusto/access-control/index",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/access-control/role-based-access-control.md",
+      "redirect_url": "/azure/data-explorer/kusto/access-control/role-based-access-control",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/access-control/aad.md",
+      "redirect_url": "/azure/data-explorer/kusto/access-control/aad",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/access-control/how-to-authenticate-with-aad.md",
+      "redirect_url": "/azure/data-explorer/kusto/access-control/how-to-authenticate-with-aad",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/access-control/cross-tenant-query-and-commands.md",
+      "redirect_url": "/azure/data-explorer/kusto/access-control/cross-tenant-query-and-commands",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/access-control/referencing-security-principals.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/referencing-security-principals",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/cross-tenant-query-and-commands.md",
+      "redirect_url": "/azure/data-explorer/kusto/access-control/cross-tenant-query-and-commands",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/end-to-end-csharp.md",
+      "redirect_url": "/azure/data-explorer/end-to-end-blob-ingestion",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/end-to-end-python.md",
+      "redirect_url": "/azure/data-explorer/end-to-end-blob-ingestion",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-cli.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-portal.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-powershell.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/customer-managed-keys-csharp.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
       "redirect_document_id": false
     }
   ]

@@ -2,7 +2,7 @@
 title: Set timeouts in Azure Data Explorer
 description: Learn how to set the query timeout length in various Azure Data Explorer tools, such as Kusto.Explorer and the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 01/09/2023
+ms.date: 05/08/2023
 ---
 
 # Set timeout limits
@@ -150,8 +150,7 @@ To set timeouts when using an SDK, you'll need to use [client request properties
 The following example shows how set a timeout when using the .NET SDK.
 
 ```csharp
-var crp = new ClientRequestProperties(…);
-crp.ClientRequestId = "…";
+var crp = new ClientRequestProperties(...) { ClientRequestId = "<clientRequestId>" };
 crp.SetOption(ClientRequestProperties.OptionServerTimeout, TimeSpan.FromMinutes(35));
 // Now pass crp to ExecuteQuery/ExecuteControlCommand/etc.
 ```
