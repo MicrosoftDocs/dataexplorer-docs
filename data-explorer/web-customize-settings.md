@@ -44,6 +44,8 @@ Query and admin commands have a default timeout limit. To extend or reduce these
 
 1. The changes are automatically saved.
 
+To learn how to set timeout limits outside of the web UI, see [Set timeout limits](set-timeout-limits.md).
+
 ## Export and import environment settings
 
 The export and import actions help you protect your work environment and relocate it to other browsers and devices. The export action will export all your settings, cluster connections, and query tabs to a JSON file that can be imported into a different browser or device.
