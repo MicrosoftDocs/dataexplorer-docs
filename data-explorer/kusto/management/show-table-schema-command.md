@@ -3,40 +3,38 @@ title:  .show table schema
 description: This article describes .show table schema in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/09/2023
 ---
 # .show table schema
 
 Gets the schema to use in create/alter commands and additional table metadata.
 
-```kusto
-.show table TableName cslschema 
-```
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
+## Syntax
+
+Get the schema to use in create/alter commands and additional table metadata:
+
+`.show` `table` *TableName* `cslschema`
+
+Get the schema in JSON format and additional table metadata:
+
+`.show` `table` *TableName* `schema` `as` `json`
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table for which to show the schema.|
+
+## Returns
 
 | Output parameter | Type   | Description                                               |
 |------------------|--------|-----------------------------------------------------------|
 | TableName        | String | The name of the table.                                    |
-| Schema           | String | The table schema as should be used for table create/alter |
+| Schema           | String | The table schema either as should be used for table create/alter or in JSON format|
 | DatabaseName     | String | The database to which the table belongs                   |
 | Folder           | String | Table's folder                                            |
 | DocString        | String | Table's docstring                                         |
-
-## .show table schema as JSON
-
-Gets the schema in JSON format and additional table metadata.
-
-```kusto
-.show table TableName schema as json
-```
-
-| Output parameter | Type   | Description                             |
-|------------------|--------|-----------------------------------------|
-| TableName        | String | The name of the table                   |
-| Schema           | String | The table schema in JSON format         |
-| DatabaseName     | String | The database to which the table belongs |
-| Folder           | String | Table's folder                          |
-| DocString        | String | Table's docstring                       |
-
-## Permissions
-
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).

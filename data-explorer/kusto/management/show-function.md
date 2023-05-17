@@ -3,7 +3,7 @@ title:  .show functions
 description: This article describes .show functions in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/08/2023
 ---
 # .show function(s)
 
@@ -16,9 +16,11 @@ You must have at least Database User, Database Viewer, or Database Monitor to ru
 
 ## .show functions
 
-```kusto
-.show functions
-```
+### Syntax
+
+`.show` `functions`
+
+### Returns
 
 |Output parameter |Type |Description
 |---|---|--- 
@@ -38,24 +40,21 @@ You must have at least Database User, Database Viewer, or Database Monitor to ru
 
 ## .show function
 
-```kusto
-.show function MyFunc1
-```
+### Syntax
 
 Lists the details of one specific stored function. 
 For a list of **all** functions, see [.show functions](#show-functions).
 
-**Syntax**
+`.show` `function` *FunctionName* [`with (`*PropertyName* `=` *PropertyValue* [`,` ...]`)`]
 
-`.show` `function` *FunctionName* [`with (`*PropertyName* = *PropertyValue* [, ...] )]
-
-## Parameters
+### Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*FunctionName* | string | &check; | Name of stored function.
+|*FunctionName* | string | &check; | The name of stored function.
+|*PropertyName*/*PropertyValue*| string | | Indicate additional information to use when showing function details. All properties are optional. See [Supported properties](#supported-properties).
 
- *PropertyName*/*PropertyValue* indicate additional information to use when showing function details. All properties are optional. The supported properties are:
+### Supported properties
 
 | Property name | Property values | Description | Default |
 |---|---|---|---|
@@ -63,7 +62,7 @@ For a list of **all** functions, see [.show functions](#show-functions).
 |`Builtin` | `true` or `false` | If `true` and used by cluster admin, shows built in function(s). | Defaults to `false`
 | `IncludeHiddenFunctions` | `true` or `false` | If `true`, show hidden function(s). | Defaults to `false`.
 
-**Output**
+### Returns
 
 |Output parameter |Type |Description
 |---|---|--- 
@@ -76,7 +75,7 @@ For a list of **all** functions, see [.show functions](#show-functions).
 > [!NOTE]
 > If the function does not exist, an error is returned.
 
-**Example** 
+### Example
 
 ```kusto
 .show function MyFunction1 with(ShowObfuscatedStrings = true)

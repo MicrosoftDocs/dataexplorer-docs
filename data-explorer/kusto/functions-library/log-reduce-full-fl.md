@@ -3,9 +3,7 @@ title:  log_reduce_full_fl()
 description: This article describes the log_reduce_full_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/18/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 05/07/2023
 ---
 # log_reduce_full_fl()
 
@@ -139,7 +137,8 @@ let log_reduce_full_fl=(tbl:(*), reduce_col:string, pattern_col:string, paramete
 //
 HDFS_log
 | take 100000
-| invoke log_reduce_full_fl(reduce_col="data")
+| extend Patterns="", Parameters=""
+| invoke log_reduce_full_fl(reduce_col="data", pattern_col="Patterns", parameters_col="Parameters")
 | take 10
 ~~~
 
@@ -154,7 +153,8 @@ HDFS_log
 //
 HDFS_log
 | take 100000
-| invoke log_reduce_full_fl(reduce_col="data")
+| extend Patterns="", Parameters=""
+| invoke log_reduce_full_fl(reduce_col="data", pattern_col="Patterns", parameters_col="Parameters")
 | take 10
 ```
 
@@ -164,21 +164,13 @@ HDFS_log
 
 | data | Patterns | Parameters |
 |--|--|--|
-| 081110 | 215858 | 15485 INFO dfs.DataNode$PacketResponder: Received block blk_5080254298708411681 of size 67108864 from /10.251.43.21	081110 \<NUM> \<NUM> INFO dfs.DataNode$PacketResponder: Received block blk_\<NUM> of size \<NUM> from \<IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15485"", ""parameter_2"": ""5080254298708411681"", ""parameter_3"": ""67108864"", ""parameter_4"": ""/10.251.43.21""}" |
-| 081110 | 215858 | 15494 INFO dfs.DataNode$DataXceiver: Receiving block blk_-7037346755429293022 src: /10.251.43.21:45933 dest: /10.251.43.21:50010	081110 \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_\<NUM> src: \<IP> dest: \<IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15494"", ""parameter_2"": ""-7037346755429293022"", ""parameter_3"": ""/10.251.43.21:45933"", ""parameter_4"": ""/10.251.43.21:50010""}" |
-| 081110 | 215858 | 15496 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for block blk_-7746692545918257727 terminating	081110 \<NUM> \<NUM> INFO dfs.DataNode$PacketResponder: PacketResponder \<NUM> for block blk_\<NUM> terminating	"{""parameter_0"": ""215858"", ""parameter_1"": ""15496"", ""parameter_2"": ""2"", ""parameter_3"": ""-7746692545918257727""}" |
-| 081110 | 215858 | 15496 INFO dfs.DataNode$PacketResponder: Received block blk_-7746692545918257727 of size 67108864 from /10.251.107.227	081110 \<NUM> \<NUM> INFO dfs.DataNode$PacketResponder: Received block blk_\<NUM> of size \<NUM> from \<IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15496"", ""parameter_2"": ""-7746692545918257727"", ""parameter_3"": ""67108864"", ""parameter_4"": ""/10.251.107.227""}" |
-| 081110 | 215858 | 15511 INFO dfs.DataNode$DataXceiver: Receiving block blk_-8578644687709935034 src: /10.251.107.227:39600 dest: /10.251.107.227:50010	081110 \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_\<NUM> src: \<IP> dest: \<IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15511"", ""parameter_2"": ""-8578644687709935034"", ""parameter_3"": ""/10.251.107.227:39600"", ""parameter_4"": ""/10.251.107.227:50010""}" |
-| 081110 | 215858 | 15514 INFO dfs.DataNode$DataXceiver: Receiving block blk_722881101738646364 src: /10.251.75.79:58213 dest: /10.251.75.79:50010	081110 \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_\<NUM> src: \<IP> dest: \<IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15514"", ""parameter_2"": ""722881101738646364"", ""parameter_3"": ""/10.251.75.79:58213"", ""parameter_4"": ""/10.251.75.79:50010""}" |
-| 081110 | 215858 | 15517 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for block blk_-7110736255599716271 terminating	081110 \<NUM> \<NUM> INFO dfs.DataNode$PacketResponder: PacketResponder \<NUM> for block blk_\<NUM> terminating	"{""parameter_0"": ""215858"", ""parameter_1"": ""15517"", ""parameter_2"": ""2"", ""parameter_3"": ""-7110736255599716271""}" |
-| 081110 | 215858 | 15517 INFO dfs.DataNode$PacketResponder: Received block blk_-7110736255599716271 of size 67108864 from /10.251.42.246	081110 \<NUM> \<NUM> INFO dfs.DataNode$PacketResponder: Received block blk_\<NUM> of size \<NUM> from \<IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15517"", ""parameter_2"": ""-7110736255599716271"", ""parameter_3"": ""67108864"", ""parameter_4"": ""/10.251.42.246""}" |
-| 081110 | 215858 | 15533 INFO dfs.DataNode$DataXceiver: Receiving block blk_7257432994295824826 src: /10.251.26.8:41803 dest: /10.251.26.8:50010	081110 \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_\<NUM> src: \<IP> dest: \<IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15533"", ""parameter_2"": ""7257432994295824826"", ""parameter_3"": ""/10.251.26.8:41803"", ""parameter_4"": ""/10.251.26.8:50010""}" |
-| 081110 | 215858 | 15533 INFO dfs.DataNode$DataXceiver: Receiving block blk_-7771332301119265281 src: /10.251.43.210:34258 dest: /10.251.43.210:50010	081110 \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_\<NUM> src: \<IP> dest: \<IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15533"", ""parameter_2"": ""-7771332301119265281"", ""parameter_3"": ""/10.251.43.210:34258"", ""parameter_4"": ""/10.251.43.210:50010""}" |
-
-::: zone-end
-
-::: zone pivot="fabric"
-
-This feature isn't supported.
-
-::: zone-end
+| 081110 103639 19 INFO dfs.FSDataset: Deleting block blk_-8612543573008263745 file /mnt/hadoop/dfs/data/current/subdir28/blk_-8612543573008263745  | 081110 \<NUM> \<NUM> INFO dfs.FSDataset: Deleting block blk_\<NUM> file <*> | {"parameter_0": "103639", "parameter_1": "19", "parameter_2": "-8612543573008263745", "parameter_3": "/mnt/hadoop/dfs/data/current/subdir28/blk_-8612543573008263745"} |
+| 081110 103639 19 INFO dfs.FSDataset: Deleting block blk_-8613903590844336898 file /mnt/hadoop/dfs/data/current/subdir16/blk_-8613903590844336898 | 081110 \<NUM> \<NUM> INFO dfs.FSDataset: Deleting block blk_\<NUM> file <*> | {"parameter_0": "103639", "parameter_1": "19", "parameter_2": "-8613903590844336898", "parameter_3": "/mnt/hadoop/dfs/data/current/subdir16/blk_-8613903590844336898"} |
+|081110 103639 19 INFO dfs.FSDataset: Deleting block blk_-861615421914753290 file /mnt/hadoop/dfs/data/current/subdir38/blk_-861615421914753290| 081110 \<NUM> \<NUM> INFO dfs.FSDataset: Deleting block blk_\<NUM> file <*> |{"parameter_0": "103639", "parameter_1": "19", "parameter_2": "-861615421914753290", "parameter_3": "/mnt/hadoop/dfs/data/current/subdir38/blk_-861615421914753290"}|
+| 081110 103639 19 INFO dfs.FSDataset: Deleting block blk_-8618279055399239070 file /mnt/hadoop/dfs/data/current/subdir24/blk_-8618279055399239070 | 081110 \<NUM> \<NUM> INFO dfs.FSDataset: Deleting block blk_\<NUM> file <*> | {"parameter_0": "103639", "parameter_1": "19", "parameter_2": "-8618279055399239070", "parameter_3": "/mnt/hadoop/dfs/data/current/subdir24/blk_-8618279055399239070"} |
+| 081110 103639 19 INFO dfs.FSDataset: Deleting block blk_-8642708880775555455 file /mnt/hadoop/dfs/data/current/subdir23/blk_-8642708880775555455 | 081110 \<NUM> \<NUM> INFO dfs.FSDataset: Deleting block blk_\<NUM> file <*> | {"parameter_0": "103639", "parameter_1": "19", "parameter_2": "-8642708880775555455", "parameter_3": "/mnt/hadoop/dfs/data/current/subdir23/blk_-8642708880775555455"}|
+| 081110 103639 19 INFO dfs.FSDataset: Deleting block blk_8643723287965289045 file /mnt/hadoop/dfs/data/current/subdir34/blk_8643723287965289045|081110 \<NUM> \<NUM> INFO dfs.FSDataset: Deleting block blk_\<NUM> file <*>|{"parameter_0": "103639", "parameter_1": "19", "parameter_2": "8643723287965289045", "parameter_3": "/mnt/hadoop/dfs/data/current/subdir34/blk_8643723287965289045"}|
+|081110 103639 19 INFO dfs.FSDataset: Deleting block blk_8644505812094886071 file /mnt/hadoop/dfs/data/current/subdir36/blk_8644505812094886071|081110 \<NUM> \<NUM> INFO dfs.FSDataset: Deleting block blk_\<NUM> file <*>|{"parameter_0": "103639", "parameter_1": "19", "parameter_2": "8644505812094886071", "parameter_3": "/mnt/hadoop/dfs/data/current/subdir36/blk_8644505812094886071"}|
+|081110 103639 19 INFO dfs.FSDataset: Deleting block blk_-8652622605188939751 file /mnt/hadoop/dfs/data/current/subdir12/blk_-8652622605188939751|081110 \<NUM> \<NUM> INFO dfs.FSDataset: Deleting block blk_\<NUM> file <*>|{"parameter_0": "103639", "parameter_1": "19", "parameter_2": "-8652622605188939751", "parameter_3": "/mnt/hadoop/dfs/data/current/subdir12/blk_-8652622605188939751"}|
+|081110 103639 19 INFO dfs.FSDataset: Deleting block blk_-8655165676931318739 file /mnt/hadoop/dfs/data/current/subdir28/blk_-8655165676931318739|081110 \<NUM> \<NUM> INFO dfs.FSDataset: Deleting block blk_\<NUM> file <*>|{"parameter_0": "103639", "parameter_1": "19", "parameter_2": "-8655165676931318739", "parameter_3": "/mnt/hadoop/dfs/data/current/subdir28/blk_-8655165676931318739"}|
+|081110 103639 19 INFO dfs.FSDataset: Deleting block blk_8660984331119557052 file /mnt/hadoop/dfs/data/current/subdir39/blk_8660984331119557052|081110 \<NUM> \<NUM> INFO dfs.FSDataset: Deleting block blk_\<NUM> file <*>|{"parameter_0": "103639", "parameter_1": "19", "parameter_2": "8660984331119557052", "parameter_3": "/mnt/hadoop/dfs/data/current/subdir39/blk_8660984331119557052"}|

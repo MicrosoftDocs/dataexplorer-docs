@@ -3,7 +3,7 @@ title:  .show cluster databases
 description: This article describes .show cluster databases in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/08/2023
 ---
 # .show cluster databases
 
@@ -18,7 +18,13 @@ You must have at least [AllDatabasesMonitor](access-control/role-based-access-co
 
 `.show` `cluster` `databases` [`details` | `identity` | `policies` | `datastats`]
 
-`.show` `cluster` `databases` `(`database1`,` database2`,` ... databaseN`)`
+`.show` `cluster` `databases` `(`*DatabaseName* [`,` ... ]`)`
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database to show.|
 
 ## Returns
  

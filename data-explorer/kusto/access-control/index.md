@@ -36,7 +36,7 @@ If successful, the user receives a security token that can be presented to the K
 On the client side, interactive authentication is supported, where the Microsoft Authentication Library or similar code, requests the user to enter credentials. Token-based authentication is also supported, where the application using Kusto obtains a valid user token.
 The application that uses Kusto can also obtain a valid user token for another service. The user token is obtainable only if a trust relationship between that resource and Kusto exists.
 
-For more information, see [Kusto connection strings](../../api/connection-strings/kusto.md) for details on how to use the Kusto client libraries and authenticate by using Azure AD to Kusto.
+For more information, see [Kusto connection strings](../api/connection-strings/kusto.md) for details on how to use the Kusto client libraries and authenticate by using Azure AD to Azure Data Explorer.
 
 ### Application authentication
 
@@ -62,7 +62,7 @@ When an MSA principal is configured on a Kusto resource, Kusto **won't** attempt
 ### Authenticated SDK or REST calls
 
 * When using the REST API, authentication is done with the standard HTTP `Authorization` header
-* When using any of the Kusto .NET libraries, authentication is controlled by specifying the authentication method and parameters in the [connection string](../../api/connection-strings/kusto.md). Another method is to set the properties on the [client request properties](../../api/netfx/request-properties.md) object.
+* When using any of the Azure Data Explorer .NET libraries, authentication is controlled by specifying the authentication method and parameters in the [connection string](../api/connection-strings/kusto.md). Another method is to set the properties on the [client request properties](../api/netfx/request-properties.md) object.
 
 ### Kusto client SDK as an Azure AD client application
 
@@ -78,19 +78,19 @@ The token returned by the Microsoft Authentication Library to the Kusto Client L
 **Example: Obtain an Azure AD User token for a cluster**
 
 ```csharp
-// Create Auth Context for Azure AD (common or tenant-specific endpoint):
-AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/{Azure AD TenantID or name}");
-
-// Provide your Application ID and redirect URI
-var clientAppID = "{your client app id}";
-var redirectUri = new Uri("{your client app redirect uri}");
-
-// acquireTokenTask will receive the bearer token for the authenticated user
-var acquireTokenTask = authContext.AcquireTokenAsync(
-    $"https://{clusterNameAndRegion}.kusto.windows.net",
-    clientAppID,
-    redirectUri,
-    new PlatformParameters(PromptBehavior.Auto, null)).GetAwaiter().GetResult();
+var appId = "<appId>";
+var appTenant = "<appTenant>";
+var redirectUri = "<appRedirectUri>";
+// Create a public authentication client for Azure AD
+var authClient = PublicClientApplicationBuilder.Create(appId)
+    .WithAuthority($"https://login.microsoftonline.com/{appTenant}")
+    .WithRedirectUri(redirectUri)
+    .Build();
+// acquireToken will receive the bearer token for the authenticated user
+var result = authClient.AcquireTokenInteractive(
+    new[] { $"https://<clusterName>.<region>.kusto.windows.net/.default" }
+).ExecuteAsync().Result;
+var acquireToken = result.AccessToken;
 ```
 
 ## Authorization
@@ -105,4 +105,4 @@ For example, the database user role grants security principals, users, or servic
 * create functions in the database
 
 The association of security principals to security roles can be defined individually,
-or by using security groups that are defined in Azure AD. The commands are defined in [Security roles management](../security-roles.md).
+or by using security groups that are defined in Azure AD. The commands are defined in [Security roles management](../management/security-roles.md).

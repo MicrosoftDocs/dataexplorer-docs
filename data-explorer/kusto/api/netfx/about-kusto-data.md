@@ -35,10 +35,10 @@ Following are a few examples. More samples can be found [here](https://github.co
 The following code demonstrates counting the rows of a table named `StormEvents` in a database named `Samples`:
 
 ```csharp
-var client = Kusto.Data.Net.Client.KustoClientFactory.CreateCslQueryProvider("https://help.kusto.windows.net/Samples;Fed=true");
-var reader = client.ExecuteQuery("StormEvents | count");
+using var client = KustoClientFactory.CreateCslQueryProvider("https://help.kusto.windows.net/Samples;Fed=true");
+using var reader = client.ExecuteQuery("StormEvents | count");
 // Read the first row from reader -- it's 0'th column is the count of records in MyTable
-// Don't forget to dispose of reader when done.
+Console.WriteLine($"RowCount={reader.GetInt64(0)}");
 ```
 
 ## Example: Enumerating the accessible databases
@@ -47,17 +47,14 @@ var reader = client.ExecuteQuery("StormEvents | count");
 > We recommend that data readers and clients are disposed of after use to release network resources. Accumulation of these resources can result in unexpected network errors and timeouts.
 
 ```csharp
-var kcsb = new KustoConnectionStringBuilder(cluster URI here). WithAadUserPromptAuthentication();
-using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
+var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
+var connectionStringBuilder = new KustoConnectionStringBuilder(kustoUri).WithAadUserPromptAuthentication();
+using var client = KustoClientFactory.CreateCslAdminProvider(connectionStringBuilder);
+var databasesShowCommand = CslCommandGenerator.GenerateDatabasesShowCommand();
+using var reader = client.ExecuteControlCommand(databasesShowCommand);
+while (reader.Read())
 {
-    var databasesShowCommand = CslCommandGenerator.GenerateDatabasesShowCommand();
-    using (var reader = client.ExecuteControlCommand(databasesShowCommand))
-    {
-        while (reader.Read())
-        {
-            Console.WriteLine("DatabaseName={0}", reader.GetString(0));
-        }
-    }
+    Console.WriteLine($"DatabaseName={reader.GetString(0)}");
 }
 ```
 

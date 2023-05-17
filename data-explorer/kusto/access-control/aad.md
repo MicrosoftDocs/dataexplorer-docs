@@ -23,7 +23,7 @@ The following methods of authentication are supported, including through its .NE
 * Application authentication with an existing Azure AD token, previously issued for Kusto.
 * User or application authentication with an Azure AD token issued for another resource. In this case, a trust relationship must exist between that resource and your cluster.
 
-For guidance and examples, see the [connection strings](../../api/connection-strings/kusto.md) reference.
+For guidance and examples, see the [connection strings](../api/connection-strings/kusto.md) reference.
 
 ## User authentication
 
@@ -65,5 +65,5 @@ The token returned by MSAL to the Kusto client library has the cluster URI as th
 
 The following articles explain how to authenticate to Kusto with Azure AD programmatically:
 
-* [How to provision an Azure AD application](../../../provision-azure-ad-app.md)
+* [How to provision an Azure AD application](../../provision-azure-ad-app.md)
 * [How to perform Azure AD authentication](how-to-authenticate-with-aad.md)
