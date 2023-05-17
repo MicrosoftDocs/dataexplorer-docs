@@ -10,6 +10,8 @@ ms.date: 05/08/2023
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. In this article, you'll learn how to add cluster principals for Azure Data Explorer by using C#, Python, or an Azure Resource Manager (ARM) template.
 
+> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/add-cluster-principal).
+
 ## Prerequisites
 
 The prerequisites vary based on the method used to add the principal. Choose the relevant tab for your preferred method.
