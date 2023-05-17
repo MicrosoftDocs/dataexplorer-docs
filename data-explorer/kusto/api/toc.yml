@@ -24,12 +24,10 @@ items:
     href: netfx/kusto-ingest-client-rest.md
 - name: .NET SDK
   items:
-  - name: General
-    items:
-    - name: About the SDK
-      href: netfx/about-the-sdk.md
-    - name: Controlling tracing
-      href: netfx/controlling-tracing.md
+  - name: About the SDK
+    href: netfx/about-the-sdk.md
+  - name: Controlling tracing
+    href: netfx/controlling-tracing.md
   - name: Kusto.Data
     items:
     - name: Kusto.Data overview
