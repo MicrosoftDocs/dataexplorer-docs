@@ -25,11 +25,15 @@ In this article, you'll learn how to:
 
 ## Prerequisites
 
-- The host operating system must be either:
+- The host operating system must be one of the following:
   - Windows Server 2022
   - Windows Server 2019 Version 10.0.17763.2928 or newer
   - Windows 11
-  - Any Linux distro that supports Docker Client
+  - Any Linux distro that supports Docker Client for Linux
+
+    > [!IMPORTANT]
+    > Linux distros only support the Linux container image.
+
 - 2 gigabytes (GB) of RAM minimum; we recommend using 4 GB or more
 - Docker Client for [Windows](https://docs.docker.com/desktop/windows/install/) or [Linux](https://docs.docker.com/desktop/install/linux-install/)
 
