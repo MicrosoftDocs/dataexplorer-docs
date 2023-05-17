@@ -42,13 +42,13 @@ Use the query editor to interact with your data by running queries in the contex
 
 :::image type="content" source="media/web-ui-query/switch-query-context.gif" alt-text="Screenshot of multiple query tabs and their context." lightbox="media/web-ui-query/switch-query-context.gif":::
 
-The editor offers Intellisense and autocompletion, providing helpful suggestions as you write your query. The editor also alerts you when accessing data outside the selected database and suggests query optimizations. To return all records matching the query, select **Run** or press *Shift + Enter*. To see a preview of 50 results, select the dropdown menu on the **Run** button and select **Preview results**.
+The editor offers [Kusto Query Language (KQL)](kusto/query/index.md) Intellisense and autocompletion, providing helpful suggestions as you write your query. The editor also alerts you when accessing data outside the selected database and suggests query optimizations. To return all records matching the query, select **Run** or press *Shift + Enter*. To see a preview of 50 results, select the dropdown menu on the **Run** button and select **Preview results** or press *Alt + Shift + Enter*.
 
 :::image type="content" source="media/web-ui-query/run-button-dropdown.png" alt-text="Screenshot of the web UI run button dropdown options." lightbox="media/web-ui-query/run-button-dropdown.png":::
 
 ## Manage queries in multiple contexts
 
-With the use of query tabs, you can work on multiple queries simultaneously, all with their own query context. The query tabs allow you to switch between different databases and clusters without losing your work. To get a comprehensive view of all existing tabs, use the tabs list located in the top right corner.
+With the use of query tabs, you can work on multiple queries simultaneously, all with their own query context. The query tabs allow you to switch between different databases and clusters without losing your work. To rename a query tab, double-click on the tab title or click the pencil icon on the tab. To get a comprehensive view of all existing tabs, use the tabs list located in the top right corner.
 
 :::image type="content" source="media/web-ui-query/tabs-management.gif" alt-text="Moving screenshot of multiple tabs." lightbox="media/web-ui-query/tabs-management.gif":::
 
