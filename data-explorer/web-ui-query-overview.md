@@ -78,7 +78,7 @@ The recall query button allows you to quickly retrieve a previously executed que
 
 In the query page toolbar, there are several options to manage your queries and query results. You can pin a query to a dashboard, copy queries, copy query results, and export data to Power BI, Excel, and CSV formats. For more information, see [Share queries from Azure Data Explorer web UI](web-share-queries.md).
 
-:::image type="content" source="media/web-ui-querytoolbar-options.png" alt-text="Screenshot of extended toolbar options." lightbox="media/web-ui-query/toolbar-options.png":::
+:::image type="content" source="media/web-ui-query/toolbar-options.png" alt-text="Screenshot of extended toolbar options." lightbox="media/web-ui-query/toolbar-options.png":::
 
 ## See also
 
