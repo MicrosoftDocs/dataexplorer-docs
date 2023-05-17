@@ -5,7 +5,7 @@ ms.reviewer: slneimer
 ms.topic: reference
 ms.date: 05/17/2023
 ---
-# Soft delete
+# Soft delete overview
 
 As a data platform, Azure Data Explorer supports the ability to delete individual records. Record deletion is commonly achieved using one of the following methods:
 
