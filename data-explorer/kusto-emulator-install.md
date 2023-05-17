@@ -32,7 +32,7 @@ In this article, you'll learn how to:
   - Any Linux distro that supports Docker Client for Linux
 
     > [!IMPORTANT]
-    > Linux distros only support the Linux container image.
+    > Linux distros only support Linux container images.
 
 - 2 gigabytes (GB) of RAM minimum; we recommend using 4 GB or more
 - Docker Client for [Windows](https://docs.docker.com/desktop/windows/install/) or [Linux](https://docs.docker.com/desktop/install/linux-install/)
