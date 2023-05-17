@@ -7,7 +7,7 @@ ms.date: 04/19/2023
 ---
 # Kusto.Ingest ingestion permissions
 
-This article explains what permissions to set up on your service for `Native` ingestion to work.
+This article explains what permissions to set up on your service for native ingestion to work. Native ingestion refers to the use of a Kusto SDK to perform data ingestion. For more information on the available SDKs, see [Client libraries](../client-libraries.md).
 
 ## Prerequisites
 

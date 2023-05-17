@@ -24,8 +24,8 @@ All authorization checks are performed using this identity.
 
 In most cases, the recommendation is to use one of the Kusto SDKs to access the
 service programmatically, as they remove much of the hassle of implementing the
-flow (and much more). For more information, see the [.NET SDK](../../api/netfx/about-the-sdk.md).
-The authentication properties are then set by the [Kusto connection string](../../api/connection-strings/kusto.md).
+flow (and much more). For more information, see the [.NET SDK](../api/netfx/about-the-sdk.md).
+The authentication properties are then set by the [Kusto connection string](../api/connection-strings/kusto.md).
 If that isn't possible, continue reading for detailed information on how to implement this flow yourself.
 
 The main authenticating scenarios are:
@@ -131,8 +131,8 @@ successful authentication the request will be sent.
 Applications that don't use the Kusto SDK can still use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) instead of implementing the Azure AD service security protocol client. See [Azure AD and OpenID Connect](https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet)
 for an example of doing so from a .NET application.
 
-If your application is intended to serve as front-end and authenticate users for a cluster, the application must be granted delegated permissions on the cluster.
-The full step-by-step process is described in [Configure delegated permissions for the application registration](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
+If your application is intended to serve as front-end and authenticate users for an Azure Data Explorer cluster, the application must be granted delegated permissions on Azure Data Explorer.
+The full step-by-step process is described in [Configure delegated permissions for the application registration](../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
 
 The following brief code snippet demonstrates using [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure AD user token to access a cluster (launches sign-in UI):
 
@@ -242,7 +242,7 @@ var queryResult = await queryClient.ExecuteQueryAsync("<databaseName>", "<query>
 
 **Azure AD application configuration**
 
-In addition to the standard [steps](../../../provision-azure-ad-app.md) for setting up an Azure AD application, you'll also need to enable the single-page application (SPA) setting on your Azure AD application. This enables OAuth authorization code flow with PKCE for obtaining tokens used by [MSAL.js 2.0](https://www.npmjs.com/package/@azure/msal-browser) (MSAL 1.0 used a less secure implicit grant flow). Use the MSAL 2.0 steps in the [SPA app registration scenario](/azure/active-directory/develop/scenario-spa-app-registration) to configure the app accordingly.
+In addition to the standard [steps](../../provision-azure-ad-app.md) for setting up an Azure AD application, you'll also need to enable the single-page application (SPA) setting on your Azure AD application. This enables OAuth authorization code flow with PKCE for obtaining tokens used by [MSAL.js 2.0](https://www.npmjs.com/package/@azure/msal-browser) (MSAL 1.0 used a less secure implicit grant flow). Use the MSAL 2.0 steps in the [SPA app registration scenario](/azure/active-directory/develop/scenario-spa-app-registration) to configure the app accordingly.
 
 **Details**
 

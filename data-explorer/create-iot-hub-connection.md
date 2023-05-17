@@ -2,7 +2,7 @@
 title: 'Create an IoT Hub data connection - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from IoT Hub.'
 ms.topic: how-to
-ms.date: 04/04/2023
+ms.date: 05/17/2023
 ---
 
 # Create an IoT Hub data connection for Azure Data Explorer
@@ -13,6 +13,8 @@ For general information about ingesting into Azure Data Explorer from IoT Hub, s
 
 > [!NOTE]
 > Only events enqueued after you create the data connection are ingested.
+
+> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/create-iot-hub-connection).
 
 ## Prerequisites
 
@@ -88,39 +90,38 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
 1. Run the following code.
 
     ```csharp
-    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "PlaceholderClientSecret";//Client Secret
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Application ID
+    var clientSecret = "PlaceholderClientSecret"; //Client Secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
-    var credential = new ClientCredential(clientId, clientSecret);
-    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
-    
-    var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-    
-    var kustoManagementClient = new KustoManagementClient(credentials)
-    {
-        SubscriptionId = subscriptionId
-    };
-    
+    var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+    var resourceManagementClient = new ArmClient(credentials, subscriptionId);
     var resourceGroupName = "testrg";
     //The cluster and database that are created as part of the Prerequisites
     var clusterName = "mykustocluster";
     var databaseName = "mykustodatabase";
-    var dataConnectionName = "myeventhubconnect";
+    var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+    var resourceGroup = (await subscription.GetResourceGroupAsync(resourceGroupName)).Value;
+    var cluster = (await resourceGroup.GetKustoClusterAsync(clusterName)).Value;
+    var database = (await cluster.GetKustoDatabaseAsync(databaseName)).Value;
+    var dataConnections = database.GetKustoDataConnections();
+    var iotHubConnectionName = "myiothubconnect";
     //The IoT hub that is created as part of the Prerequisites
-    var iotHubResourceId = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Devices/IotHubs/xxxxxx";
+    var iotHubResourceId = new ResourceIdentifier("/subscriptions/<iotHubSubscriptionId>/resourceGroups/<iotHubResourceGroupName>/providers/Microsoft.Devices/IotHubs/<iotHubName>");
     var sharedAccessPolicyName = "iothubforread";
     var consumerGroup = "$Default";
-    var location = "Central US";
+    var location = AzureLocation.CentralUS;
     //The table and column mapping are created as part of the Prerequisites
     var tableName = "StormEvents";
     var mappingRuleName = "StormEvents_CSV_Mapping";
-    var dataFormat = DataFormat.CSV;
-    var databaseRouting = "Multi";
-    
-    await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, clusterName, databaseName, dataConnectionName,
-                new IotHubDataConnection(iotHubResourceId, consumerGroup, sharedAccessPolicyName, tableName: tableName, location: location, mappingRuleName: mappingRuleName, dataFormat: dataFormat, databaseRouting: databaseRouting));
+    var dataFormat = KustoIotHubDataFormat.Csv;
+    var databaseRouting = KustoDatabaseRouting.Multi;
+    var iotHubConnectionData = new KustoIotHubDataConnection {
+        IotHubResourceId = iotHubResourceId, ConsumerGroup = consumerGroup, SharedAccessPolicyName = sharedAccessPolicyName,
+        Location = location, TableName = tableName, MappingRuleName = mappingRuleName,
+        DataFormat = dataFormat, DatabaseRouting = databaseRouting
+    };
+    await dataConnections.CreateOrUpdateAsync(WaitUntil.Completed, iotHubConnectionName, iotHubConnectionData);
     ```
 
     |**Setting** | **Suggested value** | **Field description**|
@@ -132,7 +133,7 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
     | resourceGroupName | *testrg* | The name of the resource group containing your cluster.|
     | clusterName | *mykustocluster* | The name of your cluster.|
     | databaseName | *mykustodatabase* | The name of the target database in your cluster.|
-    | dataConnectionName | *myeventhubconnect* | The desired name of your data connection.|
+    | iotHubConnectionName | *myiothubconnect* | The desired name of your data connection.|
     | tableName | *StormEvents* | The name of the target table in the target database.|
     | mappingRuleName | *StormEvents_CSV_Mapping* | The name of your column mapping related to the target table.|
     | dataFormat | *csv* | The data format of the message.|

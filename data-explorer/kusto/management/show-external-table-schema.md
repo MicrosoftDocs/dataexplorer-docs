@@ -3,7 +3,7 @@ title:  show external table schema control command
 description: This article describes the show external table schema control command in Azure Data Explorer 
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/08/2023
 ---
 # .show external table schema
 
@@ -15,13 +15,19 @@ This command is relevant to any external table of any type. For an overview of e
 
 You must have at least Database User, Database Viewer, or Database Monitor, or External Table Admin permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
-## Syntax 
+## Syntax
 
 `.show` `external` `table` *TableName* `schema` `as` (`json` | `csl`)
 
 `.show` `external` `table` *TableName* `cslschema`
 
-## Output
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table for which to show the schema.|
+
+## Returns
 
 | Output parameter | Type   | Description                        |
 |------------------|--------|------------------------------------|
