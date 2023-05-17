@@ -31,7 +31,7 @@ zone_pivot_groups: kql-flavors
 
 All properties are optional.
 
-|**PropertyName**|**PropertyValue**                                                                   |
+|***PropertyName***|***PropertyValue***                                                                   |
 |--------------|----------------------------------------------------------------------------------|
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 
