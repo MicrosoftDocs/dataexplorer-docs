@@ -223,6 +223,8 @@ items:
           href: web-share-queries.md
         - name: Keyboard shortcuts
           href: web-ui-query-keyboard-shortcuts.md
+        - name: Write KQL queries
+          href: web-ui-write-queries.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
