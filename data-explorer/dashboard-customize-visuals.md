@@ -106,7 +106,7 @@ let washersAndDryersSales = interestingSales
 | where ProductSubcategoryName == "Washers & Dryers"
 | summarize sum(SalesAmount)
 | extend Name="Washers & Dryers";
-//washesAndDryersSales
+//washersAndDryersSales
 let canadaSales = interestingSales
 | where ProductCategoryName == "Home Appliances"
 | where ProductSubcategoryName == "Washers & Dryers"
