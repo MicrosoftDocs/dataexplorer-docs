@@ -75,7 +75,7 @@ The export and import actions help you protect your work environment and relocat
 
 ## Highlight error levels
 
-Kusto tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on).
+Azure Data Explorer tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on).
 
 ### Turn on error level highlighting
 
