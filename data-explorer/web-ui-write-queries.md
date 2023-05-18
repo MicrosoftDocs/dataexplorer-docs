@@ -16,7 +16,15 @@ The query editor has built-in KQL Intellisense that offers contextual suggestion
 
 ## Inline KQL documentation
 
-KQL documentation is directly accessible from the query editor. To view the documentation inline, hover over the operator or function when it appears in the KQL Intellisense, then select the right arrow icon to open the documentation. From there, you can also open the full documentation in your browser by selecting **View online**.
+The query editor provides inline access to documentation for KQL operators, functions, and management commands.
+
+To view the documentation:
+
+1. Hover over the operator, function, or command in the Intellisense.
+
+1. Select the right arrow icon to open a preview of the documentation inline.
+
+1. To open the documentation in your browser, select **View online**.
 
 :::image type="content" source="media/web-ui-kql/inline-documentation.png" alt-text="Screenshot of inline KQL operator documentation." lightbox="media/web-ui-kql/inline-documentation.png":::
 
@@ -24,29 +32,43 @@ KQL documentation is directly accessible from the query editor. To view the docu
 
 Quick fix is relevant for three main scenarios: to fix the query based on a suggestion or warning, to extract a value into a variable, and to define functions before their use.
 
-To use quick fix:
-
-1. Select the relevant query term.
-1. To open the quick fix action options, select the lightbulb icon or use the *Ctrl + .*.
-1. Select the desired quick fix option.
-
 ### Fix query based on suggestion or warning
 
-The query editor provides suggestions and warnings as you write your queries. Hover over the highlighted term to see the warning or suggestion and apply the quick fix.
+The query editor provides suggestions and warnings as you write your queries. To customize the suggestions and warnings that you receive, see [Customize settings in Azure Data Explorer web UI](web-customize-settings.md).
 
-To customize the suggestions and warnings that you receive, see [Customize settings in Azure Data Explorer web UI](web-customize-settings.md).
+To fix a query based on a suggestion or warning:
+
+1. Hover over the term to view the suggestion or warning.
+
+1. Select **Quick fix** to show the available quick fix options.
+
+1. Select the desired quick fix option.
 
 :::image type="content" source="media/web-ui-kql/quick-fix-suggestion.gif" alt-text="Screenshot of quick fix based on performance suggestion." lightbox="media/web-ui-kql/quick-fix-suggestion.gif":::
 
 ### Extract value into a variable
 
-Extract any literal expression out into a variable using quick fix.
+To extract a value out into a variable:
+
+1. Select the value to extract.
+
+1. Select the lightbulb icon or use the *Ctrl + .* keyboard shortcut to open the quick fix options.
+
+1. Select **Extract value**.
 
 :::image type="content" source="media/web-ui-kql/quick-fix-extract-value.gif" alt-text="Screenshot of quick fix to extract value to variable." lightbox="media/web-ui-kql/quick-fix-extract-value.gif":::
 
-### Define functions before use
+### Define functions inline
 
-Use quick fix to define functions before their use, which can improve readability and maintainability of your queries.
+Use quick fix to define an existing function inline before its use, which can improve readability and maintainability of your queries.
+
+To show a function definition:
+
+1. Write and select the function name.
+
+1. Select the lightbulb icon or use the *Ctrl + .* keyboard shortcut to open the quick fix options.
+
+1. To define the function inline, select **Inline (Inline function)** or **Inline Recursive (Inline function)**.
 
 :::image type="content" source="media/web-ui-kql/quick-fix-define-function.gif" alt-text="Moving screenshot of the define function quick fix feature." lightbox="media/web-ui-kql/quick-fix-define-function.gif":::
 
@@ -56,7 +78,7 @@ The **KQL tools** in the toolbar contains useful query-writing resources. There 
 
 :::image type="content" source="media/web-ui-kql/kql-tools.jpg" alt-text="Screenshot of the KQL tools option in the web UI toolbar." lightbox="media/web-ui-kql/kql-tools.jpg":::
 
-## See also
+## Next steps
 
 * [Tutorial: Learn common operators](kusto/query/tutorials/learn-common-operators.md)
 * [Tutorial: Use aggregation functions](kusto/query/tutorials/use-aggregation-functions.md)
