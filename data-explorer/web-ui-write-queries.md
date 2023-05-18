@@ -32,6 +32,8 @@ The quick fix feature helps you adhere to best practices while writing queries. 
 
 ### Define functions before use
 
+:::image type="content" source="media/web-ui-kql/quick-fix-define-function.gif" alt-text="Moving screenshot of the define function quick fix feature." lightbox="media/web-ui-kql/quick-fix-define-function.gif":::
+
 ## Set query recommendations
 
 In your settings, under **Editing**, the **Set query recommendations** option allows you to tailor the query editor recommendations to your specific needs. This setting gives you control over the types of suggestions and warnings that appear, so that you can align them with your preferences and requirements.
