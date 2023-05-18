@@ -1,7 +1,7 @@
 ---
 title: Write Kusto Query Language queries in the Azure Data Explorer web UI
 description: In this article, you learn how to write Kusto Query Language (KQL) queries in the Azure Data Explorer web UI.
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 05/17/2023
 ---
 # Write KQL queries in the Azure Data Explorer web UI
@@ -10,7 +10,9 @@ The [Azure Data Explorer web UI](https://dataexplorer.azure.com/) query editor i
 
 ## KQL tools
 
-The **KQL tools** in the toolbar contains useful query-writing resources. There are options to **Duplicate query**, **Open command palette**, and view **Resources**, such as the [KQL to SQL cheat sheet](kusto/query/sqlcheatsheet.md), [keyboard shortcuts](web-ui-query-keyboard-shortcuts.md), and [KQL quick reference documentation](kql-quick-reference.md). 
+The **KQL tools** in the toolbar contains useful query-writing resources. There are options to **Duplicate query**, **Open command palette**, and view **Resources**, such as the [KQL to SQL cheat sheet](kusto/query/sqlcheatsheet.md), [keyboard shortcuts](web-ui-query-keyboard-shortcuts.md), and [KQL quick reference documentation](kql-quick-reference.md).
+
+:::image type="content" source="media/web-ui-kql/kql-tools.jpg" alt-text="Screenshot of the KQL tools option in the web UI toolbar." lightbox="media/web-ui-kql/kql-tools.jpg":::
 
 ## Intellisense and autocomplete
 
@@ -23,3 +25,10 @@ The quick fix feature helps you adhere to best practices while writing queries. 
 ## Query recommendations
 
 In your settings, under **Editing**, the **Set query recommendations** option allows you to tailor the query editor recommendations to your specific needs. This setting gives you control over the types of suggestions and warnings that appear, so that you can align them with your preferences and requirements.
+
+## See also
+
+* [Tutorial: Learn common operators](kusto/query/tutorials/learn-common-operators.md)
+* [Tutorial: Use aggregation functions](kusto/query/tutorials/use-aggregation-functions.md)
+* [Tutorial: Join data from multiple tables](kusto/query/tutorials/join-data-from-multiple-tables.md)
+* [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md)
