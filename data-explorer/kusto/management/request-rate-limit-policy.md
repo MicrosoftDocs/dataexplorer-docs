@@ -29,24 +29,30 @@ A request rate limit of kind `ConcurrentRequests` includes the following propert
 | MaxConcurrentRequests | int  | The maximum number of concurrent requests. | [`0`, `10000`]   |
 
 When a request exceeds the limit on maximum number of concurrent requests:
-
-* The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
-* The error message will include the *origin* of the throttling and the *capacity* that's been exceeded. For example:
+  * The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
+  * The error message will include the *origin* of the throttling and the *capacity* that's been exceeded. For example:
+    * Examples:
   
-  * A throttled `.create table` command, that was classified to the `default` workload group, which has a limit of 80 concurrent requests at the scope of the workload group:
+      1. A throttled `.create table` command, that was classified to the `default` workload group, which has a limit of 80 concurrent requests at the scope of the workload group: 
+      
+         ```
+         The control command was aborted due to throttling. Retrying after some backoff might succeed. CommandType: 'TableCreate', Capacity: 80, Origin: 'RequestRateLimitPolicy/WorkloadGroup/default'.
+         ```
+       
+      1. A throttled query, that was classified to a workload group named `MyWorkloadGroup`, which has a limit of 50 concurrent requests at the scope of the workload group:
 
-    The control command was aborted due to throttling. Retrying after some backoff might succeed. CommandType: 'TableCreate', Capacity: 80, Origin: 'RequestRateLimitPolicy/WorkloadGroup/default'.
-  
-  * A throttled query, that was classified to a workload group named `MyWorkloadGroup`, which has a limit of 50 concurrent requests at the scope of the workload group:
+         ```
+         The query was aborted due to throttling. Retrying after some backoff might succeed. Capacity: 50, Origin: 'RequestRateLimitPolicy/WorkloadGroup/MyWorkloadGroup'.
+         ```
+             
+      1. A throttled query that was classified to a workload group named `MyWorkloadGroup`, which has a limit of 10 concurrent requests at the scope of a principal:
 
-    The query was aborted due to throttling. Retrying after some backoff might succeed. Capacity: 50, Origin: 'RequestRateLimitPolicy/WorkloadGroup/MyWorkloadGroup'.
-
-  * A throttled query that was classified to a workload group named `MyWorkloadGroup`, which has a limit of 10 concurrent requests at the scope of a principal:
-
+         ```
          The query was aborted due to throttling. Retrying after some backoff might succeed. Capacity: 10, Origin: 'RequestRateLimitPolicy/WorkloadGroup/MyWorkloadGroup/Principal/aaduser=9e04c4f5-1abd-48d4-a3d2-9f58615b4724;6ccf3fe8-6343-4be5-96c3-29a128dd9570'.
+         ```
   
-* The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
-* The exception type will be `QueryThrottledException` for queries, and `ControlCommandThrottledException` for control commands.
+  * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
+  * The exception type will be `QueryThrottledException` for queries, and `ControlCommandThrottledException` for control commands.
   
 > [!NOTE]
 > Control commands may also be throttled as a result of exceeding the limit defined by the cluster's [capacity policy](./show-cluster-capacity-policy-command.md).
@@ -62,24 +68,28 @@ A request rate limit of kind `ResourceUtilization` includes the following proper
 | TimeWindow     | `timespan`     | The sliding time window during which the limit is applied.     | [`00:01:00`, `1.00:00:00`]        |
 
 When a request exceeds the limit on resources utilization:
+  * The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
+  * The error message will include the the *origin* of the throttling and the *quota* that's been exceeded. For example:
+    * Examples:
+  
+      1. A throttled request, that was classified to a workload group named `Automated Requests`, which has a limit of 1000 requests per hour at the scope of a principal:
 
-* The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
-* The error message will include the the *origin* of the throttling and the *quota* that's been exceeded. For example:
-
-  * A throttled request, that was classified to a workload group named `Automated Requests`, which has a limit of 1000 requests per hour at the scope of a principal:
-
+         ```
          The request was denied due to exceeding quota limitations. Resource: 'RequestCount', Quota: '1000', TimeWindow: '01:00:00', Origin: 'RequestRateLimitPolicy/WorkloadGroup/Automated Requests/Principal/aadapp=9e04c4f5-1abd-48d4-a3d2-9f58615b4724;6ccf3fe8-6343-4be5-96c3-29a128dd9570'.
+         ```
+         
+      1. A throttled request, that was classified to a workload group named `Automated Requests`, which has a limit of 2000 total CPU seconds per hour at the scope of the workload group:
 
-  * A throttled request, that was classified to a workload group named `Automated Requests`, which has a limit of 2000 total CPU seconds per hour at the scope of the workload group:
-
+         ```
          The request was denied due to exceeding quota limitations. Resource: 'TotalCpuSeconds', Quota: '2000', TimeWindow: '01:00:00', Origin: 'RequestRateLimitPolicy/WorkloadGroup/Automated Requests'.
-
-* The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
-* The exception type will be `QuotaExceededException`.
+         ```
+         
+  * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
+  * The exception type will be `QuotaExceededException`.
 
 ### Examples
 
-The following policies allow up to:
+1. The following policies allow up to:
 
 * 500 concurrent requests for the workload group.
 * 25 concurrent requests per principal.
@@ -116,7 +126,7 @@ The following policies allow up to:
 ]
 ```
 
-The following policies will block all requests classified to the workload group:
+2. The following policies will block all requests classified to the workload group:
 
 ```json
 [
@@ -148,18 +158,20 @@ The `default` workload group has the following policy defined by default. This p
 ]
 ```
 
+#### Notes
+
 * Rate limits are enforced at the level defined by the workload group's [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md).
 * The default limit on maximum concurrent requests depends on the SKU of the cluster, and is calculated as: `Cores-Per-Node x 10`.
-  * For example: A cluster that's set-up with Azure D14_v2 nodes, where each node has 16 vCores, will have a default limit of `16` x `10` = `160`.
-  * This default limits applies to the `default` workload group, and any newly created workload group that doesn't have request rate limit policies speficied at the time of its creation.
+    * For example: A cluster that's set-up with Azure D14_v2 nodes, where each node has 16 vCores, will have a default limit of `16` x `10` = `160`.
+    * This default limits applies to the `default` workload group, and any newly created workload group that doesn't have request rate limit policies speficied at the time of its creation.
 * If a workload group has no limit on maximum concurrent requests defined, then the maximum allowed value of `10000` applies.
 * When altering the policy for the `default` workload group, a limit must be defined for the workload group's max concurrent requests.
 * The cluster's [capacity policy](capacitypolicy.md) may also limit the request rate of requests that fall under a specific category, for example *ingestions*.
-  * If either of the limits defined by the [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a control command will be throttled.
+    * If either of the limits defined by the [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a control command will be throttled.
 * When request rate limits of kind `ConcurrentRequests` are applied, the output of [`.show capacity`](diagnostics.md#show-capacity) may change based on those limits.
-  * [`.show capacity`](diagnostics.md#show-capacity) can show the capacities for the principal that ran the request, according to: the context of the request, the workload group it was classified into, and its effective policies.
-  * When running `.show capacity with(scope=workloadgroup)`, different principals may see different outputs if their requests are classified into different workload groups.
-  * Otherwise, the request context is ignored, and the output is only affected by the cluster's [capacity policy](capacitypolicy.md).
+    * [`.show capacity`](diagnostics.md#show-capacity) can show the capacities for the principal that ran the request, according to: the context of the request, the workload group it was classified into, and its effective policies.
+    * When running `.show capacity with(scope=workloadgroup)`, different principals may see different outputs if their requests are classified into different workload groups.
+    * Otherwise, the request context is ignored, and the output is only affected by the cluster's [capacity policy](capacitypolicy.md).
 
 ## Control commands
 
