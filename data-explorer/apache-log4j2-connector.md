@@ -209,7 +209,7 @@ Use the following steps to:
 
     Your output should look similar to the following table:
 
-    :::image type="content" source="media/apache-log4j2-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
+    :::image type="content" lightbox="media/apache-log4j2-connector/take-10-results.png" source="media/apache-log4j2-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
 
 ## See also
 
