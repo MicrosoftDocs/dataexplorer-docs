@@ -22,7 +22,7 @@ KQL documentation is directly accessible from the query editor. To view the docu
 
 ## Enhance queries with Quick fix
 
-The quick fix feature helps you adhere to best practices while writing queries. Quick fix is relevant for three main scenarios: to apply suggestions or warnings, to extract a value into a variable, and to define functions before their use to improve clarity and maintainability.
+Quick fix is relevant for three main scenarios: to apply suggestions or warnings, to extract a value into a variable, and to define functions before their use.
 
 To use quick fix:
 
@@ -34,9 +34,9 @@ To use quick fix:
 
 The query editor provides suggestions and warnings as you write your queries. Hover over the highlighted term to see the warning or suggestion and apply the quick fix.
 
-:::image type="content" source="media/web-ui-kql/quick-fix-suggestion.gif" alt-text="Screenshot of quick fix based on performance suggestion." lightbox="media/web-ui-kql/quick-fix-suggestion.gif":::
-
 To customize the suggestions and warnings that you receive, see [Customize settings in Azure Data Explorer web UI](web-customize-settings.md).
+
+:::image type="content" source="media/web-ui-kql/quick-fix-suggestion.gif" alt-text="Screenshot of quick fix based on performance suggestion." lightbox="media/web-ui-kql/quick-fix-suggestion.gif":::
 
 ### Extract value into a variable
 
