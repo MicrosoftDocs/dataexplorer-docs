@@ -28,11 +28,7 @@ To view the documentation:
 
 :::image type="content" source="media/web-ui-kql/inline-documentation.png" alt-text="Screenshot of inline KQL operator documentation." lightbox="media/web-ui-kql/inline-documentation.png":::
 
-## Enhance queries with quick fix
-
-Quick fix is relevant for three main scenarios: to fix the query based on a suggestion or warning, to extract a value into a variable, and to define functions before their use.
-
-### Fix query based on suggestion or warning
+## Quick fix: Query suggestion or warning
 
 The query editor provides suggestions and warnings as you write your queries. To customize the suggestions and warnings that you receive, see [Customize settings in Azure Data Explorer web UI](web-customize-settings.md).
 
@@ -46,7 +42,7 @@ To fix a query based on a suggestion or warning:
 
 :::image type="content" source="media/web-ui-kql/quick-fix-suggestion.gif" alt-text="Screenshot of quick fix based on performance suggestion." lightbox="media/web-ui-kql/quick-fix-suggestion.gif":::
 
-### Extract value into a variable
+## Quick fix: Extract value into a variable
 
 To extract a value out into a variable:
 
@@ -58,7 +54,7 @@ To extract a value out into a variable:
 
 :::image type="content" source="media/web-ui-kql/quick-fix-extract-value.gif" alt-text="Screenshot of quick fix to extract value to variable." lightbox="media/web-ui-kql/quick-fix-extract-value.gif":::
 
-### Define functions inline
+## Quick fix: Define functions inline
 
 Use quick fix to define an existing function inline before its use, which can improve readability and maintainability of your queries.
 
