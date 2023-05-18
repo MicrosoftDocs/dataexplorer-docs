@@ -26,6 +26,8 @@ The quick fix feature helps you adhere to best practices while writing queries. 
 
 ### Apply suggestions or warnings
 
+:::image type="content" source="media/web-ui-kql/quick-fix-optimization.png" alt-text="Screenshot of quick fix based on performance suggestion." lightbox="media/web-ui-kql/quick-fix-optimization.png":::
+
 ### Convert a value into a variable
 
 ### Define functions before use
