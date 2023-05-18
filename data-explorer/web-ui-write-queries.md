@@ -30,7 +30,7 @@ To view the documentation:
 
 ## Quick fix: Query suggestion or warning
 
-The query editor provides suggestions and warnings as you write your queries. The quick fix feature can be used to adjust the query based on these suggestions and warnings. To customize the suggestions and warnings that you receive, see [Customize settings in Azure Data Explorer web UI](web-customize-settings.md).
+The query editor provides suggestions and warnings as you write your queries. The quick fix feature can be used to adjust the query based on these suggestions and warnings.
 
 To fix a query based on a suggestion or warning:
 
@@ -41,6 +41,9 @@ To fix a query based on a suggestion or warning:
 1. Select the desired quick fix option.
 
 :::image type="content" source="media/web-ui-kql/quick-fix-suggestion.gif" alt-text="Screenshot of quick fix based on performance suggestion." lightbox="media/web-ui-kql/quick-fix-suggestion.gif":::
+
+> [!TIP]
+> To customize the suggestions and warnings that you receive, see [Customize settings in Azure Data Explorer web UI](web-customize-settings.md).
 
 ## Quick fix: Extract value into a variable
 
