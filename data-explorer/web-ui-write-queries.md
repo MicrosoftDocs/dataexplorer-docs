@@ -8,7 +8,7 @@ ms.date: 05/18/2023
 
 The [Azure Data Explorer web UI](https://dataexplorer.azure.com/) query editor offers various features to help you write [Kusto Query Language (KQL)](kusto/query/index.md) queries. Some of these features include built-in KQL Intellisense and autocomplete, inline documentation, and quick fix pop-ups. In this article, we'll highlight what you should know when writing KQL queries in the web UI.
 
-## Intellisense and autocomplete
+## KQL Intellisense and autocomplete
 
 The query editor has built-in KQL Intellisense that offers contextual suggestions for functions and operators, and autocomplete that helps completes your queries to save you time and effort.
 
