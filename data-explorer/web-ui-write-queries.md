@@ -16,7 +16,9 @@ The **KQL tools** in the toolbar contains useful query-writing resources. There 
 
 ## Intellisense and autocomplete
 
-The query editor has built-in KQL Intellisence that offers contextual suggestions for functions and operators, and autocomplete that completes your queries, saving time and effort. There are also direct links to documentation from inside the Intellisense. To access the documentation...
+The query editor has built-in KQL Intellisense that offers contextual suggestions for functions and operators, and autocomplete that helps completes your queries to save you time and effort. There are also direct links to documentation from inside the Intellisense. To access the documentation...
+
+:::image type="content" source="media/web-ui-kql/intellisense-autocomplete.gif" alt-text="Moving screenshot showing how intellisense and autocomplete work." lightbox="media/web-ui-kql/intellisense-autocomplete.gif":::
 
 ## Quick fix
 
