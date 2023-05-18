@@ -34,7 +34,7 @@ To use quick fix:
 
 The query editor provides suggestions and warnings as you write your queries. Hover over the highlighted term to see the warning or suggestion and apply the quick fix.
 
-:::image type="content" source="media/web-ui-kql/quick-fix-suggestion.png" alt-text="Screenshot of quick fix based on performance suggestion." lightbox="media/web-ui-kql/quick-fix-suggestion.png":::
+:::image type="content" source="media/web-ui-kql/quick-fix-suggestion.gif" alt-text="Screenshot of quick fix based on performance suggestion." lightbox="media/web-ui-kql/quick-fix-suggestion.gif":::
 
 To customize the suggestions and warnings that you receive, see [Customize settings in Azure Data Explorer web UI](web-customize-settings.md).
 
