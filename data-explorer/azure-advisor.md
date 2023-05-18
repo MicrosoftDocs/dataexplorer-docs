@@ -138,7 +138,7 @@ The **Operational Excellence** or "best practice" recommendations are recommenda
 #### Reduce table cache policy to match usage patterns
 
 This recommendation focuses on updating the cache policy based on actual usage during the last month to reduce the hot cache for a table. Unlike the previous cost recommendation, this particular recommendation is applicable to clusters where the number of instances is determined by CPU and ingestion load rather than the amount of data stored in the hot cache. In such cases, changing the cache policy alone is insufficient to reduce the number of instances, further optimizations such as changing the SKU, reducing CPU load, and enabling autoscale are recommended to efficiently scale in.
-This recomendation can be availble for tables which thier actual query look-backs, or usage patterns, are lower than the configured cache policy. However, reducing the cache policy won’t result in an immediate cost saving, since the cluster is not data-bound. The cluster won’t scale in, even if you remove data from the hot cache.
+This recommendation can be useful for tables where the actual query lookback based on usage patterns is lower than the configured cache policy. However, reducing the cache policy won’t directly lead to cost savings. The number of cluster instances is determined by CPU and ingestion load, irrespective of the amount of data stored in the hot cache. Therefore, removing data from the hot cache won't directly cause the cluster to scale in.
 
 ### Reliability recommendations
 
