@@ -8,13 +8,13 @@ ms.date: 05/18/2023
 
 The [Azure Data Explorer web UI](https://dataexplorer.azure.com/) query editor offers various features to help you write [Kusto Query Language (KQL)](kusto/query/index.md) queries. Some of these features include built-in KQL Intellisense and autocomplete, inline documentation, and quick fix pop-ups. In this article, we'll highlight what you should know when writing KQL queries in the web UI.
 
-## KQL Intellisense and autocomplete
+## Intellisense and autocomplete
 
 The query editor has built-in KQL Intellisense that offers contextual suggestions for functions and operators, and autocomplete that helps completes your queries to save you time and effort.
 
 :::image type="content" source="media/web-ui-kql/intellisense-autocomplete.gif" alt-text="Moving screenshot showing how intellisense and autocomplete work." lightbox="media/web-ui-kql/intellisense-autocomplete.gif":::
 
-## Inline KQL documentation
+## View documentation inline
 
 The query editor provides inline access to documentation for KQL operators, functions, and management commands.
 
@@ -28,7 +28,7 @@ To view the documentation:
 
 :::image type="content" source="media/web-ui-kql/inline-documentation.png" alt-text="Screenshot of inline KQL operator documentation." lightbox="media/web-ui-kql/inline-documentation.png":::
 
-## Enhance queries with Quick fix
+## Enhance queries with quick fix
 
 Quick fix is relevant for three main scenarios: to fix the query based on a suggestion or warning, to extract a value into a variable, and to define functions before their use.
 
