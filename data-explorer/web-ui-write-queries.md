@@ -22,7 +22,7 @@ KQL documentation is directly accessible from the query editor. To view the docu
 
 ## Enhance queries with Quick fix
 
-Quick fix is relevant for three main scenarios: to apply suggestions or warnings, to extract a value into a variable, and to define functions before their use.
+Quick fix is relevant for three main scenarios: to fix the query based on a suggestion or warning, to extract a value into a variable, and to define functions before their use.
 
 To use quick fix:
 
@@ -30,7 +30,7 @@ To use quick fix:
 1. To open the quick fix action options, select the lightbulb icon or use the *Ctrl + .*.
 1. Select the desired quick fix option.
 
-### Apply suggestions or warnings
+### Fix query based on suggestion or warning
 
 The query editor provides suggestions and warnings as you write your queries. Hover over the highlighted term to see the warning or suggestion and apply the quick fix.
 
