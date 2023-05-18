@@ -30,7 +30,7 @@ To view the documentation:
 
 ## Quick fix: Query suggestion or warning
 
-The query editor provides suggestions and warnings as you write your queries. To customize the suggestions and warnings that you receive, see [Customize settings in Azure Data Explorer web UI](web-customize-settings.md).
+The query editor provides suggestions and warnings as you write your queries. The quick fix feature can be used to adjust the query based on these suggestions and warnings. To customize the suggestions and warnings that you receive, see [Customize settings in Azure Data Explorer web UI](web-customize-settings.md).
 
 To fix a query based on a suggestion or warning:
 
@@ -44,7 +44,7 @@ To fix a query based on a suggestion or warning:
 
 ## Quick fix: Extract value into a variable
 
-To extract a value out into a variable:
+The quick fix feature can also be used to extract a value out into a variable:
 
 1. Select the value to extract.
 
@@ -56,7 +56,7 @@ To extract a value out into a variable:
 
 ## Quick fix: Define functions inline
 
-Use quick fix to define an existing function inline before its use, which can improve readability and maintainability of your queries.
+The quick fix feature can also be used to define an existing function inline before its use. Adding an inline function definition may be useful to improve readability and maintainability of your queries.
 
 To show a function definition:
 
