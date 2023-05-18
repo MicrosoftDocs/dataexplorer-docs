@@ -212,7 +212,7 @@ To configure your Cosmos DB connection:
                     "name": "[variables('roleAssignmentId')]",
                     "scope": "[format('Microsoft.DocumentDb/databaseAccounts/{0}', parameters('cosmosDbAccount'))]",
                     "properties": {
-                        // "description": "Giving RBAC reader on Cosmos DB",
+                        "description": "Giving RBAC reader on Cosmos DB",
                         "principalId": "[parameters('clusterPrincipalId')]",
                         "principalType": "ServicePrincipal",
                         "roleDefinitionId": "[variables('rbacRoleDefinitionId')]"
