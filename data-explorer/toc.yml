@@ -561,6 +561,8 @@ items:
     - name: Linked server
       href: linked-server.md
       displayName: SQL Server, ODBC
+    - name: Purview
+      href: purview.md
 - name: Kusto Query Language
   href: kusto/query/toc.yml
 - name: Management commands
