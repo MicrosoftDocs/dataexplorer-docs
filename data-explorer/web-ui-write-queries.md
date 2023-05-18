@@ -30,6 +30,8 @@ The quick fix feature helps you adhere to best practices while writing queries. 
 
 ### Convert a value into a variable
 
+:::image type="content" source="media/web-ui-kql/quick-fix-extract-value.gif" alt-text="Screenshot of quick fix to extract value to variable." lightbox="media/web-ui-kql/quick-fix-extract-value.gif":::
+
 ### Define functions before use
 
 :::image type="content" source="media/web-ui-kql/quick-fix-define-function.gif" alt-text="Moving screenshot of the define function quick fix feature." lightbox="media/web-ui-kql/quick-fix-define-function.gif":::
