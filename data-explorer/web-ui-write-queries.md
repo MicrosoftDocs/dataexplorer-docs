@@ -2,7 +2,7 @@
 title: Write Kusto Query Language queries in the Azure Data Explorer web UI
 description: In this article, you learn how to write Kusto Query Language (KQL) queries in the Azure Data Explorer web UI.
 ms.topic: conceptual
-ms.date: 05/17/2023
+ms.date: 05/18/2023
 ---
 # Write KQL queries in the Azure Data Explorer web UI
 
@@ -14,7 +14,7 @@ The query editor has built-in KQL Intellisense that offers contextual suggestion
 
 :::image type="content" source="media/web-ui-kql/intellisense-autocomplete.gif" alt-text="Moving screenshot showing how intellisense and autocomplete work." lightbox="media/web-ui-kql/intellisense-autocomplete.gif":::
 
-## Access KQL documentation
+## Inline KQL documentation
 
 KQL documentation is directly accessible from the query editor. To view the documentation inline, hover over the operator or function when it appears in the KQL Intellisense, then select the right arrow icon to open the documentation. From there, you can also open the full documentation in your browser by selecting **View online**.
 
@@ -22,27 +22,35 @@ KQL documentation is directly accessible from the query editor. To view the docu
 
 ## Enhance queries with Quick fix
 
-The quick fix feature helps you adhere to best practices while writing queries. Quick fix is relevant for three main scenarios: to apply suggested fixes or warnings, to convert a value into a variable, and to define functions before their use, thereby improving clarity and maintainability.
+The quick fix feature helps you adhere to best practices while writing queries. Quick fix is relevant for three main scenarios: to apply suggestions or warnings, to extract a value into a variable, and to define functions before their use to improve clarity and maintainability.
+
+To use quick fix:
+
+1. Select the relevant query term.
+1. To open the quick fix action options, select the lightbulb icon or use the *Ctrl + .*.
+1. Select the desired quick fix option.
 
 ### Apply suggestions or warnings
 
-:::image type="content" source="media/web-ui-kql/quick-fix-optimization.png" alt-text="Screenshot of quick fix based on performance suggestion." lightbox="media/web-ui-kql/quick-fix-optimization.png":::
+The query editor provides suggestions and warnings as you write your queries. Hover over the highlighted term to see the warning or suggestion and apply the quick fix.
 
-### Convert a value into a variable
+:::image type="content" source="media/web-ui-kql/quick-fix-suggestion.png" alt-text="Screenshot of quick fix based on performance suggestion." lightbox="media/web-ui-kql/quick-fix-suggestion.png":::
+
+To customize the suggestions and warnings that you receive, see [Customize settings in Azure Data Explorer web UI](web-customize-settings.md).
+
+### Extract value into a variable
+
+Extract any literal expression out into a variable using quick fix.
 
 :::image type="content" source="media/web-ui-kql/quick-fix-extract-value.gif" alt-text="Screenshot of quick fix to extract value to variable." lightbox="media/web-ui-kql/quick-fix-extract-value.gif":::
 
 ### Define functions before use
 
+Use quick fix to define functions before their use, which can improve readability and maintainability of your queries.
+
 :::image type="content" source="media/web-ui-kql/quick-fix-define-function.gif" alt-text="Moving screenshot of the define function quick fix feature." lightbox="media/web-ui-kql/quick-fix-define-function.gif":::
 
-## Set query recommendations
-
-In your settings, under **Editing**, the **Set query recommendations** option allows you to tailor the query editor recommendations to your specific needs. This setting gives you control over the types of suggestions and warnings that appear, so that you can align them with your preferences and requirements.
-
-:::image type="content" source="media/web-ui-kql/set-query-recommendations-dialog.png" alt-text="Screenshot of the set query recommendations dialog box." lightbox="media/web-ui-kql/set-query-recommendations-dialog.png":::
-
-## KQL tools
+## Use KQL tools
 
 The **KQL tools** in the toolbar contains useful query-writing resources. There are options to **Duplicate query**, **Open command palette**, and view **Resources**, such as the [KQL to SQL cheat sheet](kusto/query/sqlcheatsheet.md), [keyboard shortcuts](web-ui-query-keyboard-shortcuts.md), and [KQL quick reference documentation](kql-quick-reference.md).
 
