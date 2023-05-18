@@ -1,7 +1,7 @@
 ---
 title: Write Kusto Query Language queries in the Azure Data Explorer web UI
 description: In this article, you learn how to write Kusto Query Language (KQL) queries in the Azure Data Explorer web UI.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/18/2023
 ---
 # Write Kusto Query Language queries in the Azure Data Explorer web UI
@@ -52,7 +52,7 @@ To extract a value out into a variable:
 
 1. Select the value to extract.
 
-1. Select the lightbulb icon or use the *Ctrl + .* keyboard shortcut to open the quick fix options.
+1. Select the lightbulb icon or press *Ctrl + .* to open the quick fix options.
 
 1. Select **Extract value**.
 
@@ -66,7 +66,7 @@ To show a function definition:
 
 1. Write and select the function name.
 
-1. Select the lightbulb icon or use the *Ctrl + .* keyboard shortcut to open the quick fix options.
+1. Select the lightbulb icon or press *Ctrl + .* to open the quick fix options.
 
 1. To define the function inline, select **Inline (Inline function)** or **Inline Recursive (Inline function)**.
 
