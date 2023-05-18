@@ -1,9 +1,9 @@
 ---
 title: Referencing security principals - Azure Data Explorer
-description: This article describes how to reference security principals and identity providers in Azure Data Explorer.
+description: Learn how to reference security principals and identity providers.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/08/2022
+ms.date: 05/18/2023
 ---
 # Referencing security principals
 

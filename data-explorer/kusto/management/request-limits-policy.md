@@ -1,9 +1,9 @@
 ---
 title: Request limits policy - Azure Data Explorer
-description: This article describes the request limits policy in Azure Data Explorer.
+description: Learn how to use the request limits policy to limit the resources used by the request during its execution.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/30/2021
+ms.date: 05/18/2023
 ---
 # Request limits policy
 

@@ -1,9 +1,9 @@
 ---
 title: .replace extents - Azure Data Explorer
-description: This article describes the replace extents command in Azure Data Explorer.
+description: Learn how to use the `.replace extents` command to move extents from a source table to a destination table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/30/2023
+ms.date: 05/18/2023
 ---
 # .replace extents
 
