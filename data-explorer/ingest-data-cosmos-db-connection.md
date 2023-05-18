@@ -3,7 +3,7 @@ title: Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
 description: Learn how to ingest (load) data into Azure Data Explorer from Cosmos DB.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 05/03/2023
+ms.date: 05/17/2023
 ---
 
 # Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
@@ -143,12 +143,14 @@ To configure your Cosmos DB connection:
 
     1. In the Azure Data Explorer web UI, select **Query** from the left navigation menu, and then select the cluster or database for the data connection.
 
-1. Grant the connector permission to access your Cosmos DB account. Providing the connector access to your Cosmos DB, allows it to access and retrieve data from your database. You'll need your cluster's principal ID, which you can find in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity).
+1. Grant the data connection permission to access your Cosmos DB account. Providing the data connection access to your Cosmos DB allows it to access and retrieve data from your database. You'll need your cluster's principal ID, which you can find in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity).
 
     > [!NOTE]
     >
-    > - The following steps assign the [Cosmos DB Built-in Data Reader](/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions) to the principal ID as it contains the [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed and the Microsoft.DocumentDB/databaseAccounts/readMetadata](/azure/cosmos-db/how-to-setup-rbac#permission-model) action required for the connection. If you need more granular control of your permissions, you can define a custom role with only the required action and assign it to the principal ID.
-    > - You can't assign the **Cosmos DB Built-in Data Reader** role using the Azure portal *Role Assignment* feature.
+    > - The following steps assign these roles to the principal ID:
+    >   - [Cosmos DB Built-in Data Reader](/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions) (Data Plane)
+    >     - You can't assign the **Cosmos DB Built-in Data Reader** role using the Azure portal *Role Assignment* feature.
+    >   - [Cosmos DB Account Reader Role](/azure/role-based-access-control/built-in-roles) (RBAC / Control Plane)
 
     Use one of the following options to grant access to your Cosmos DB account:
 
@@ -156,38 +158,67 @@ To configure your Cosmos DB connection:
 
         ```azurecli
         az cosmosdb sql role assignment create --account-name <CosmosDbAccountName> --resource-group <CosmosDbResourceGroup> --role-definition-id 00000000-0000-0000-0000-000000000001 --principal-id <ClusterPrincipalId> --scope "/"
+
+        az role assignment create --role fbdf93bf-df7d-467e-a4d2-9458aa1360c8 --assignee <ClusterPrincipalId> --scope <CosmosDBAccountResourceId>
         ```
 
         | Placeholder | Description |
         |--|--|
         | **\<CosmosDBAccountName>** | The name of your Cosmos DB account. |
         | **\<CosmosDBResourceGroup>** | The name of the resource group that contains your Cosmos DB account. |
+        | **\<CosmosDBAccountResourceId>** | The Azure resource ID (starting with `subscriptions/`) of your Cosmos DB account. |
         | **\<ClusterPrincipalId>** | The principal ID of the managed identity assigned to your cluster. You can find your cluster's principle ID in the Azure portal. For more information, see [Configure managed identities for your cluster](configure-managed-identities-cluster.md#add-a-system-assigned-identity). |
 
     - **Grant access using an ARM Template**: Deploy the following template in the Cosmos DB account resource group:
 
         ```json
         {
-          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {
-            "clusterPrincipalId": { "type": "string", "metadata": { "description": "The principle ID of your cluster." } },
-            "cosmosDbAccount": { "type": "string", "metadata": { "description": "The name of your Cosmos DB account." } }
-          },
-          "variables": {
-            "cosmosDataReader": "00000000-0000-0000-0000-000000000001",
-            "roleDefinitionId": "[format('/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DocumentDB/databaseAccounts/{2}/sqlRoleDefinitions/{3}', subscription().subscriptionId, resourceGroup().name, parameters('cosmosDbAccount'), variables('cosmosDataReader'))]"
-          },
-          "resources": [{
-            "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments",
-            "apiVersion": "2022-08-15",
-            "name": "[concat(parameters('cosmosDbAccount'), '/', guid(parameters('clusterPrincipalId'), parameters('cosmosDbAccount')))]",
-            "properties": {
-            "principalId": "[parameters('clusterPrincipalId')]",
-            "roleDefinitionId": "[variables('roleDefinitionId')]",
-            "scope": "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosDbAccount'))]"
-            }
-          }]
+            "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "parameters": {
+                "clusterPrincipalId": {
+                    "type": "string",
+                    "metadata": { "description": "The principle ID of your cluster." }
+                },
+                "cosmosDbAccount": {
+                    "type": "string",
+                    "metadata": { "description": "The name of your Cosmos DB account." }
+                },
+                "cosmosDbAccountResourceId": {
+                    "type": "string",
+                    "metadata": { "description": "The resource ID of your Cosmos DB account." }
+                }
+            },
+            "variables": {
+                "cosmosDataReader": "00000000-0000-0000-0000-000000000001",
+                "dataRoleDefinitionId": "[format('/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DocumentDB/databaseAccounts/{2}/sqlRoleDefinitions/{3}', subscription().subscriptionId, resourceGroup().name, parameters('cosmosDbAccount'), variables('cosmosDataReader'))]",
+                "roleAssignmentId": "[guid(parameters('cosmosDbAccountResourceId'), parameters('clusterPrincipalId'))]",
+                "rbacRoleDefinitionId": "[format('/subscriptions/{0}/providers/Microsoft.Authorization/roleDefinitions/{1}', subscription().subscriptionId, 'fbdf93bf-df7d-467e-a4d2-9458aa1360c8')]",
+            },
+            "resources": [
+                {
+                    "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments",
+                    "apiVersion": "2022-08-15",
+                    "name": "[concat(parameters('cosmosDbAccount'), '/', guid(parameters('clusterPrincipalId'), parameters('cosmosDbAccount')))]",
+                    "properties": {
+                        "principalId": "[parameters('clusterPrincipalId')]",
+                        "roleDefinitionId": "[variables('dataRoleDefinitionId')]",
+                        "scope": "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosDbAccount'))]"
+                    }
+                },
+                {
+                    "type": "Microsoft.Authorization/roleAssignments",
+                    "apiVersion": "2022-04-01",
+                    "name": "[variables('roleAssignmentId')]",
+                    "scope": "[format('Microsoft.DocumentDb/databaseAccounts/{0}', parameters('cosmosDbAccount'))]",
+                    "properties": {
+                        // "description": "Giving RBAC reader on Cosmos DB",
+                        "principalId": "[parameters('clusterPrincipalId')]",
+                        "principalType": "ServicePrincipal",
+                        "roleDefinitionId": "[variables('rbacRoleDefinitionId')]"
+                    }
+                }
+            ]
         }
         ```
 
