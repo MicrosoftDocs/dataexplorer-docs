@@ -50,5 +50,6 @@ range x from 1 to 5 step 1
 
 ## See also
 
-* For string matching, see [replace_string()](replace-string-function.md).
+* For a replacement of a single string, see [replace_string()](replace-string-function.md).
+* For a replacement of multiple strings, see [replace_strings()](replace-strings-function.md).
 * For replacing a set of characters, see [translate()](translatefunction.md).
