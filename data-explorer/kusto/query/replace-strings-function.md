@@ -9,6 +9,8 @@ ms.date: 05/21/2023
 
 Replaces all strings matches with specified strings.
 
+To replace an individual string, see [replace_string()](replace-string-function.md).
+
 ## Syntax
 
 `replace_strings(`*text*`,` *lookups*`,` *rewrites*`)`

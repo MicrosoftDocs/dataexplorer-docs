@@ -11,6 +11,8 @@ Replaces all string matches with a specified string.
 
 > **Deprecated aliases:** replace()
 
+To replace multiple strings, see [replace_strings()](replace-strings-function.md).
+
 ## Syntax
 
 `replace_string(`*text*`,` *lookup*`,` *rewrite*`)`
