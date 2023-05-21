@@ -35,7 +35,7 @@ This article explains the vertical scaling workflow:
 
 * We recommend enabling [Optimized Autoscale](/azure/data-explorer/manage-cluster-horizontal-scaling) to allow the cluster to scale-in following migration. For SKU migration recommendation, see [Change Data Explorer clusters to a more cost effective and better performing SKU](/azure/data-explorer/azure-advisor).
 * Clusters with VNET networking configuration may experience longer service disruptions. 
-* The price is an estimate of the cluster's virtual machines and Azure Data Explorer service costs. Other costs are not included. See Azure Data Explorer [cost estimator](https://dataexplorer.azure.com/AzureDataExplorerCostEstimator.html) page for an estimate and the Azure Data Explorer [pricing page](https://azure.microsoft.com/pricing/details/data-explorer/) for full pricing information.
+* The price is an estimate of the cluster's virtual machines and Azure Data Explorer service costs. Other costs are not included. For an estimate, see the Azure Data Explorer [cost estimator](https://dataexplorer.azure.com/AzureDataExplorerCostEstimator.html). For full pricing, see the Azure Data Explorer [pricing page](https://azure.microsoft.com/pricing/details/data-explorer/).
 
 
 You've now configured vertical scaling for your Azure Data Explorer cluster. Add another rule for a horizontal scaling. If you need assistance with cluster-scaling issues, [open a support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) in the Azure portal.
