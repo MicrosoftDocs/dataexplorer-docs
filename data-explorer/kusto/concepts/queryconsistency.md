@@ -18,30 +18,30 @@ For example, if 1000 records are ingested each minute into a table in the databa
 > [!NOTE]
 > We recommend using the default strong consistency mode and only switching to weak consistency mode when it's necessary to reduce the load on the database admin node.
 
-## When to use weak consistency
+## Use cases for strong consistency
 
-Weak consistency is appropriate for situations in which you want to reduce the load from the database admin node and don’t have a strong dependency on updates that occurred in the database in the last few minutes.
+Strong consistency is best when you have a strong dependency on updates that occurred in the database in the last few minutes.
 
-For example, weak consistency would be appropriate when running the following query, which counts the number of error records per week in the last 90 days. Your insights are unlikely to be impacted if records ingested in the past few minutes are omitted.
-
-```kusto
-my_table
-| where timestamp between(ago(90d) .. now())
-| where level == "error"
-| summarize count() by level, startofweek(Timestamp)
-```
-
-## When not to use weak consistency
-
-Weak consistency should be avoided when you have a strong dependency on updates that occurred in the database in the last few minutes.
-
-For example, strong consistency is better when running the following query, which counts the number of error records in the 5 minutes and triggers an alert if that count is larger than 0.
+For example, the following query counts the number of error records in the 5 minutes and triggers an alert if that count is larger than 0. This use case is best handled with strong consistency, since your insights may be significantly altered if you did not have access to records ingested in the past few minutes, as may be the case with weak consistency.
 
 ```kusto
 my_table
 | where timestamp between(ago(5m)..now())
 | where level == "error"
 | count
+```
+
+## Use cases for weak consistency
+
+Weak consistency is best for when you don’t have a strong dependency on updates that occurred in the database in the last few minutes, and you want to reduce the load from the database admin node.
+
+For example, the following query counts the number of error records per week in the last 90 days. Weak consistency is appropriate in this case, since your insights are unlikely to be impacted if records ingested in the past few minutes are omitted.
+
+```kusto
+my_table
+| where timestamp between(ago(90d) .. now())
+| where level == "error"
+| summarize count() by level, startofweek(Timestamp)
 ```
 
 *Weakly consistent queries* don't have that guarantee. Clients making queries might observe some latency
