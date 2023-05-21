@@ -46,13 +46,15 @@ my_table
 | summarize count() by level, startofweek(Timestamp)
 ```
 
-## Weakly consistent query heads
+## Query weak consistency policy
 
-The default behavior is to allow 20% of the nodes in the cluster, with a minimum of 2 nodes, and a maximum of 30 nodes to serve as weakly consistent query heads.For example, for a cluster with 15 nodes, 3 nodes can serve as weakly consistent query heads.
+The cluster-level [query weak consistency policy](../management/query-weak-consistency-policy.md) controls various parameters related to weak consistency.
 
-Use the cluster-level [query weak consistency policy](../management/query-weak-consistency-policy.md) to control these parameters. We recommend starting with the default values and only adjusting if necessary.
+For instance, the default behavior is to allow 20% of the nodes in the cluster, with a minimum of 2 nodes and a maximum of 30 nodes, to serve as weakly consistent query heads. In this case, a cluster with 15 nodes could have 3 nodes that serve as weakly consistent query heads. However, you can adjust these parameters in the query weak consistency policy.
 
 The query weak consistency policy also allows you to control the refresh rate of the database metadata on the weakly consistency query heads. By default, these nodes will refresh the latest database metadata every 2 minutes. This process that usually takes up to a few seconds, unless the amount of changes that occur in that period is very high.
+
+We recommend starting with the default values and only adjusting if necessary.
 
 ## Weak consistency modes
 
@@ -77,7 +79,7 @@ The affinity by query text mode is beneficial when queries leverage the [Query r
 
 The affinity by session ID mode ensures that queries belonging to the same user activity or session are executed against the same version of the database, although not necessarily the most recent one. To use this mode, the session ID needs to be explicitly specified in each query's client request properties. This mode is helpful in scenarios where consistent execution within a session is essential.
 
-## Controlling query consistency
+## How to control query consistency
 
 Before a query starts actual execution, its consistency mode is first determined.
 
