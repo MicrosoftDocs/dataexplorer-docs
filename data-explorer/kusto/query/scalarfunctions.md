@@ -281,7 +281,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[parse_version()](parse-versionfunction.md)|Converts input string representation of version to a comparable decimal number.|
 |[replace_regex()](replace-regex-function.md)|Replace all regex matches with another string.|
 |[replace_string()](replace-string-function.md)|Replace all single string matches with a specified string.|
-|[replace_strings()](replace-strings-function.md)|Replace all multiple strings matches with another strings.|
+|[replace_strings()](replace-strings-function.md)|Replace all multiple strings matches with specified strings.|
 |[punycode_from_string()](punycode-from-string.md)| Encodes domain name to Punycode form.|
 |[punycode_to_string()](punycode-to-string.md)| Decodes domain name from Punycode form.|
 |[reverse()](reversefunction.md)|Function makes reverse of input string.|
