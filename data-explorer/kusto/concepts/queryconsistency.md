@@ -79,7 +79,10 @@ The affinity by query text mode is beneficial when queries leverage the [Query r
 
 The affinity by session ID mode ensures that queries belonging to the same user activity or session are executed against the same version of the database, although not necessarily the most recent one. To use this mode, the session ID needs to be explicitly specified in each query's client request properties. This mode is helpful in scenarios where consistent execution within a session is essential.
 
-## How to control query consistency
+## How to specify query consistency
+
+Specifying the query consistency mode can be done either by the client sending the request, or using a server side policy. If it isn’t specified by either, the default mode of strong consistency applies.
+
 
 Before a query starts actual execution, its consistency mode is first determined.
 
