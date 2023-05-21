@@ -76,7 +76,7 @@ Choose a storage optimized SKU for the best performance when querying large volu
 It's preferable to use a few nodes of larger VMs that use more RAM, than many smaller VMs. More RAM is needed for some query types that put higher demands on RAM, such as queries that use joins. So when scaling the cluster, we recommend scaling up to a larger SKU, and scaling out by adding more nodes as needed.
 
 > [!NOTE]
-> Scaling up the cluster's SKU, or changing SKU, is a relatively seamless, with minimal service disruption during the switchover process (~1-3 mins). Query performance may be impacted during SKU migration. The impact may vary due to different usage patterns.
+> Changing or scaling up the cluster's SKU may cause a 1 to 3 minute service disruption. Query performance may be affected during the SKU migration, and the extent of impact may vary depending on usage patterns.
 
 ### SKU Availability
 
