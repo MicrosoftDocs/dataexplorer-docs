@@ -44,11 +44,8 @@ items:
 - name: Tutorials
   items:
   - name: E2E programmatic Blob ingestion
-    items:
-      - name: C#
-        href: end-to-end-csharp.md
-      - name: Python
-        href: end-to-end-python.md
+    href: end-to-end-blob-ingestion.md
+    displayName: python, C#, end to end ingestion
   - name: Ingest and query monitoring data
     href: ingest-data-no-code.md
   - name: Kusto Query Language
@@ -81,6 +78,8 @@ items:
       href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
     - name: Security controls by Azure Policy
       href: security-controls-policy.md
+  - name: Multi-tenant solutions
+    href: multi-tenant.md
 - name: Explore data
   items:
   - name: Get data
@@ -310,23 +309,11 @@ items:
       href: k2bridge.md
   - name: Admin
     items:
-    - name: Create cluster and database
-      items:
-      - name: Azure CLI
-        href: create-cluster-database-cli.md
-      - name: PowerShell
-        href: create-cluster-database-powershell.md
-      - name: C#
-        href: create-cluster-database-csharp.md
-      - name: Python
-        href: create-cluster-database-python.md
-      - name: Go
-        href: create-cluster-database-go.md
-      - name: Automated provisioning
-        href: automated-deploy-overview.md
-      - name: Azure Resource Manager template
-        href: create-cluster-database-resource-manager.md
-    - name: Create free cluster
+    - name: Automated provisioning
+      href: automated-deploy-overview.md
+    - name: Create a cluster and database
+      href: create-cluster-database.md
+    - name: Create a free cluster
       items:
       - name: Create a free cluster
         href: start-for-free-web-ui.md
@@ -349,6 +336,20 @@ items:
           href: table-retention-policy-wizard.md
     - name: Secure
       items:
+        - name: Access control
+          href: kusto/access-control/index.md
+          items:
+          - name: Role-based access control
+            href: kusto/access-control/role-based-access-control.md
+            displayName: RBAC, security roles, principals
+          - name: Azure Active Directory
+            displayName: AAD, Azure AD
+            href: kusto/access-control/aad.md
+          - name: How-To Azure Active Directory authentication
+            displayName: AAD, Azure AD
+            href: kusto/access-control/how-to-authenticate-with-aad.md
+          - name: Allow cross-tenant queries and commands
+            href: kusto/access-control/cross-tenant-query-and-commands.md
         - name: Isolated compute
           href: isolated-compute.md
         - name: Network isolation (VNet)
@@ -398,23 +399,8 @@ items:
             href: external-tables-managed-identities.md
           - name: Ingest data using managed identity authentication
             href: ingest-data-managed-identity.md
-        - name: Configure customer-managed-keys
-          items:
-            - name: Portal
-              displayName: Configure customer-managed-keys
-              href: customer-managed-keys-portal.md
-            - name: C#
-              displayName: Configure customer-managed-keys
-              href: customer-managed-keys-csharp.md
-            - name: Azure Resource Manager template
-              displayName: Configure customer-managed-keys
-              href: customer-managed-keys-resource-manager.md
-            - name: Azure CLI
-              displayName: Configure customer-managed-keys
-              href: customer-managed-keys-cli.md
-            - name: PowerShell
-              displayName: Configure customer-managed-keys
-              href: customer-managed-keys-powershell.md
+        - name: Configure customer-managed keys
+          href: customer-managed-keys.md
         - name: Create Azure AD app
           href: provision-azure-ad-app.md
         - name: Conditional Access
@@ -440,16 +426,7 @@ items:
         - name: Check cluster health
           href: check-cluster-health.md
         - name: Add cluster principal
-          items:
-            - name: C#
-              displayName: cluster principal
-              href: cluster-principal-csharp.md
-            - name: Python
-              displayName: cluster principal
-              href: cluster-principal-python.md
-            - name: Azure Resource Manager template
-              displayName: cluster principal
-              href: cluster-principal-resource-manager.md
+          href: add-cluster-principal.md
         - name: Manage cluster language extensions
           displayName: Python, R
           href: language-extensions.md
@@ -460,24 +437,10 @@ items:
         - name: Configure a database using a Kusto Query Language script
           href: database-script.md
         - name: Add database principal
-          items:
-            - name: C#
-              displayName: database principal
-              href: database-principal-csharp.md
-            - name: Python
-              displayName: database principal
-              href: database-principal-python.md
-            - name: Azure Resource Manager template
-              displayName: database principal
-              href: database-principal-resource-manager.md
-        - name: Policies
-          items:
-          - name: C#
-            displayName: database policy, database policies
-            href: database-table-policies-csharp.md
-          - name: Python
-            displayName: database policy, database policies
-            href: database-table-policies-python.md
+          href: add-database-principal.md
+        - name: Create policies programmatically
+          displayName: database policy, database policies, table policy, table policies, python, c#
+          href: database-table-policies.md
       - name: Data
         items:
         - name: Purge data - Azure portal
@@ -522,6 +485,14 @@ items:
       href: kusto/api/index.md
     - name: Sample app generator
       href: sample-app-generator-wizard.md
+    - name: Write code with SDKs
+      items:
+      - name: Set up your environment
+        href: kusto/api/get-started/app-set-up.md
+      - name: Create your first app
+        href: kusto/api/get-started/app-hello-kusto.md
+      - name: Create an app to run basic queries
+        href: kusto/api/get-started/app-basic-query.md
     - name: Connection strings
       items:
       - name: Connection strings overview
@@ -569,7 +540,7 @@ items:
         href: kusto/tools/synckusto.md
     - name: Notebooks
       items:
-      - name: Analyze data in Jupyter Notebooks & Kqlmagic
+      - name: Jupyter Notebooks with Kqlmagic
         href: kqlmagic.md
       - name: Azure Data Studio
         items:

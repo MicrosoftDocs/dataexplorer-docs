@@ -1,13 +1,13 @@
 ---
 title: Alter database extent tags retention policy management - Azure Data Explorer
-description: "This article describes the .alter extent tags retention policy command for databases in Azure Data Explorer."
+description: Learn how to use the .alter extent tags retention policy command to change the database-level extent tags retention policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 04/20/2023
 ---
 # .alter database extent tags retention policy
 
-Alters a database-level extent tags retention policy. For more information, see [extent tags retention policy](extent-tags-retention-policy.md).
+Alters the database-level extent tags retention policy. For more information, see [extent tags retention policy](extent-tags-retention-policy.md).
 
 ## Permissions
 

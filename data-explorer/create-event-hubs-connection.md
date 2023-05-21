@@ -3,7 +3,7 @@ title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Hubs.'
 ms.topic: how-to
 ms.custom: devx-track-arm-template
-ms.date: 04/04/2023
+ms.date: 05/17/2023
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer
@@ -11,6 +11,8 @@ ms.date: 04/04/2023
 Azure Data Explorer offers ingestion from [Event Hubs](/azure/event-hubs/event-hubs-about), a big data streaming platform and event ingestion service. Event Hubs can process millions of events per second in near real time.
 
 In this article, you'll connect to an event hub and ingest data into Azure Data Explorer. For an overview on ingesting from Event Hubs, see [Azure Event Hubs data connection](ingest-data-event-hub-overview.md).
+
+> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/create-event-hubs-connection).
 
 ## Prerequisites
 
@@ -54,7 +56,7 @@ The following steps will guide you through creating an event hub connection thro
 
 > [!NOTE]
 >
-> * To use the wizard, you must have at least [Database User](kusto/management/access-control/role-based-access-control.md) permissions.
+> * To use the wizard, you must have at least [Database User](kusto/access-control/role-based-access-control.md) permissions.
 > * To enable access between a cluster and a storage account without public access, see [Create a Managed Private Endpoint](security-network-private-endpoint-create.md).
 > * The cluster and event hub should be associated with the same tenants. If not, use one of the SDK options, such as C# or Python.
 
@@ -109,39 +111,40 @@ The following steps will guide you through creating an event hub connection thro
 
 1. Run the following code.
 
-    ```c#
-    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-    var clientSecret = "PlaceholderClientSecret";//Client Secret
+    ```csharp
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Application ID
+    var clientSecret = "PlaceholderClientSecret"; //Client Secret
     var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-    var authenticationContext = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
-    var credential = new ClientCredential(clientId, clientSecret);
-    var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
-    
-    var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-    
-    var kustoManagementClient = new KustoManagementClient(credentials)
-    {
-        SubscriptionId = subscriptionId
-    };
-    
+    var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+    var resourceManagementClient = new ArmClient(credentials, subscriptionId);
     var resourceGroupName = "testrg";
     //The cluster and database that are created as part of the Prerequisites
-    var clusterName = "mycluster";
-    var databaseName = "mydatabase";
-    var dataConnectionName = "myeventhubconnect";
+    var clusterName = "mykustocluster";
+    var databaseName = "mykustodatabase";
+    var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+    var resourceGroup = (await subscription.GetResourceGroupAsync(resourceGroupName)).Value;
+    var cluster = (await resourceGroup.GetKustoClusterAsync(clusterName)).Value;
+    var database = (await cluster.GetKustoDatabaseAsync(databaseName)).Value;
+    var dataConnections = database.GetKustoDataConnections();
+    var eventHubConnectionName = "myeventhubconnect";
     //The event hub that is created as part of the Prerequisites
-    var eventHubResourceId = "/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/xxxxxx/providers/Microsoft.EventHub/namespaces/xxxxxx/eventhubs/xxxxxx";
+    var eventHubResourceId = new ResourceIdentifier("/subscriptions/<eventHubSubscriptionId>/resourceGroups/<eventHubResourceGroupName>/providers/Microsoft.EventHub/namespaces/<eventHubNamespaceName>/eventhubs/<eventHubName>");
     var consumerGroup = "$Default";
-    var location = "Central US";
+    var location = AzureLocation.CentralUS;
     //The table and column mapping are created as part of the Prerequisites
     var tableName = "StormEvents";
     var mappingRuleName = "StormEvents_CSV_Mapping";
-    var dataFormat = EventHubDataFormat.CSV;
-    var compression = "None";
-    var databaseRouting = "Multi";
-    await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, dataConnectionName,
-        new EventHubDataConnection(eventHubResourceId, consumerGroup, location: location, tableName: tableName, mappingRuleName: mappingRuleName, dataFormat: dataFormat, compression: compression, databaseRouting: databaseRouting));
+    var dataFormat = KustoEventHubDataFormat.Csv;
+    var compression = EventHubMessagesCompressionType.None;
+    var databaseRouting = KustoDatabaseRouting.Multi;
+    var eventHubConnectionData = new KustoEventHubDataConnection
+    {
+        EventHubResourceId = eventHubResourceId, ConsumerGroup = consumerGroup,
+        Location = location, TableName = tableName, MappingRuleName = mappingRuleName,
+        DataFormat = dataFormat, Compression = compression, DatabaseRouting = databaseRouting
+    };
+    await dataConnections.CreateOrUpdateAsync(WaitUntil.Completed, eventHubConnectionName, eventHubConnectionData);
     ```
 
     |**Setting** | **Suggested value** | **Field description**|

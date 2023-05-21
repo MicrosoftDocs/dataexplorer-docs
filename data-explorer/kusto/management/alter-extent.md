@@ -1,16 +1,16 @@
 ---
 title: .alter extent tags - Azure Data Explorer
-description: This article describes the alter extent command in Azure Data Explorer.
+description: Learn how to use the alter extent command to change the extent tags.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/19/2023
+ms.date: 04/20/2023
 ---
 
 # .alter extent tags
 
 The command runs in the context of a specific database. It alters the specified [extent tags](extents-overview.md#extent-tagging) of all of the extents returned by the query.
 
-The extents whose tags should be altered are specified using a Kusto query that returns a recordset with a column called "ExtentId".
+The extents whose tags should be altered are specified using a Kusto query that returns a record set with a column called "ExtentId".
 
 > [!NOTE]
 > Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
@@ -55,7 +55,7 @@ All extents must be in the context database, and must belong to the same table.
 
 ## Examples
 
-### Alter tags 
+### Alter tags
 
 Alter tags of all the extents within the specified creation time range in table `MyTable` to `MyTag`
 

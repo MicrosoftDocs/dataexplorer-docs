@@ -36,7 +36,6 @@ This article lists the Python packages available in the Azure Data Explorer [Pyt
 | cymem | 2.0.7 |
 | Cython | 0.29.28 |
 | daal | 2021.6.0 |
-| daal4py | 2021.6.3 |
 | dask | 2022.10.2 |
 | diff-match-patch | 20200713 |
 | dill | 0.3.6 |
@@ -65,7 +64,6 @@ This article lists the Python packages available in the Azure Data Explorer [Pyt
 | locket | 1.0.0 |
 | lxml | 4.9.1 |
 | MarkupSafe | 2.1.2 |
-| matplotlib | 3.7.1 |
 | mlxtend | 0.21.0 |
 | mpmath | 1.3.0 |
 | msgpack | 1.0.5 |
