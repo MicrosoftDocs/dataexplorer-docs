@@ -31,6 +31,8 @@ my_table
 | count
 ```
 
+In addition, strong consistency should be used when database metadata is very large. For instance, if there are millions of [data extents](../management/extents-overview.md) in the database. Is weak consistency is used in this case, then weakly consistent query heads would spend resources on frequently downloading and deserializing large metadata artifacts from persistent storage, which would increase the potential for transient failures in these downloads and other operations running against the same persistent storage.
+
 ## Use cases for weak consistency
 
 Weak consistency is best for when you don’t have a strong dependency on updates that occurred in the database in the last few minutes, and you want to reduce the load from the database admin node.
@@ -44,16 +46,42 @@ my_table
 | summarize count() by level, startofweek(Timestamp)
 ```
 
-*Weakly consistent queries* don't have that guarantee. Clients making queries might observe some latency
-(usually 1-2 minutes) between changes and queries reflecting those changes.
+## Weak consistency modes
 
-* The advantage of running queries with weak consistency is that it reduces the load on the cluster node that handles database changes.
+There are 4 modes of weak query consistency:
 
-* Weakly consistent queries execute on a cluster node that is other than the one managing the database. This can be any "random" node in the cluster (the default), or affinitized according to either the query text (*query-affinitized weakly consistent queries*), or the database-in-scope of the query (*database-affinitized weakly consistent queries*).
-  * The advantage of using affinity by the query text is improved performance when also using the [query results cache](../query/query-results-cache.md).
-  * The advantage of using affinity by the context database name is improved efficiency in the scenario of large clusters (>10 nodes) and many databases (>100).
+| Mode | Description |
+|--|--|
+| Random| Queries are routed randomly to one of the nodes in the cluster that can serve as a weakly consistent query head.|
+| Affinitized by database| All queries that run in the context of the same database get routed to the same weakly consistent query head. |
+| Affinitized by query text| All queries that have the same hash for their query text get routed to the same weakly consistent query head. |
+| Affinitized by session ID| All queries that have the same hash for their session ID (provided separately, explained below) get routed to the same weakly consistent query head. |
 
-In general, we recommend that you first try the strongly consistent mode. Switch to using weakly consistent queries only if necessary.
+### Affinity by database
+
+This mode of weak consistency can be helpful if it is important that queries running against the same database will all get executed against the same (though, not most recent) version of the database.
+
+If, however, there’s an imbalance in the amount of queries running against databases in the cluster (e.g. 70% of queries are run in the context of a specific database), then the query head serving queries for that database will be more loaded than other query heads in the cluster, which is suboptimal.
+
+### Affinity by query text
+
+This mode of weak consistency can be helpful when queries are also leveraging the Query results cache. This way, repeating weakly consistent queries that are run frequently by the same identity leverages results cached from recent executions of the same query on the same query head, and reduce the load on the cluster.
+
+### Affinity by session ID
+
+This mode of weak consistency can be helpful if it is important that queries that belong to the same user activity/session will all get executed against the same (though, not most recent) version of the database.
+
+It does, however, require you to explicitly specify the session ID as part of each query’s client request properties.
+
+## Weakly consistent query heads
+
+The default behavior is to allow 20% of the nodes in the cluster, with a minimum of 2 nodes, and a maximum of 30 nodes to serve as weakly consistent query heads.
+
+For example, for a cluster with 15 nodes, 3 nodes can serve as weakly consistent query heads. These parameters can be controlled using the cluster-level [Query weak consistency policy](../management/query-weak-consistency-policy.md).
+
+The same policy allows controlling the refresh rate of the database metadata on the weakly consistency query heads. By default, these nodes will refresh the latest database metadata every 2 minutes. This process that usually takes up to a few seconds, unless the amount of changes that occur in that period is very high.
+
+We recommend starting with the default values and only adjusting if necessary.
 
 ## Controlling query consistency
 
@@ -67,7 +95,7 @@ Before a query starts actual execution, its consistency mode is first determined
 1. Alternatively, it is possible to control the consistency mode on the server side, by setting a [Query consistency policy](../management/query-consistency-policy.md)
    at the workload group level. Doing so affects all queries sent to the service which are associated with that workload group, so users don't need
    to specify it manually.
-   
+
 |Consistency               |Set client request property to      |Set query consistency policy to|
 |--------------------------|------------------------------------|-------------------------------|
 |Strong                    |`strongconsistency`                 |`Strong`                       |
