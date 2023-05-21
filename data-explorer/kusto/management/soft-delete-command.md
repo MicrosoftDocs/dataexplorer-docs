@@ -50,7 +50,7 @@ To delete all the records that contain data of a given user:
 > .delete table MyTable records with (whatif=true) <| MyTable | where UserId == 'X'
 > ```
 
-## Soft delete for materialized view
+## .delete materialized-view records - soft delete command
 
 When soft delete is executed on materialized views, the same concepts and limitations apply.
 
