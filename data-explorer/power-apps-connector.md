@@ -1,23 +1,15 @@
 ---
-title: Tutorial- Create Power Apps application to query data in Azure Data Explorer
+title: Use Power Apps to query data in Azure Data Explorer
 description: Learn how to create an application in Power Apps based on data in Azure Data Explorer
 ms.reviewer: olgolden
-ms.topic: tutorial
-ms.date: 04/16/2023
+ms.topic: how-to
+ms.date: 05/21/2023
 ---
-# Tutorial: Create :::no-loc text="Power Apps"::: application to query data in Azure Data Explorer
+# Use :::no-loc text="Power Apps"::: to query data in Azure Data Explorer
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more.
 
 :::no-loc text="Power Apps"::: is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps that connect to your business data. The :::no-loc text="Power Apps"::: connector is useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. In this article, you'll create a :::no-loc text="Power Apps"::: application to query Azure Data Explorer data.
-
-Specifically, you learn how to:
-
-> [!div class="checklist"]
->
-> * Create a connection in Power Apps.
-> * Create a new App.
-> * Add a data connector.
 
 ## Prerequisites
 
@@ -56,8 +48,6 @@ Specifically, you learn how to:
     :::image type="content" source="media/power-apps-connector/blank-canvas.png" alt-text="Screenshot of the new app page, showing highlighting the tablet layout option.":::
 
 ### Add Connector
-
-<!-- Intro-->
 
 1. On the left pane, select **Data**.
 
@@ -174,14 +164,6 @@ For more information on working with dynamic schema data sources in Power Apps, 
 * :::no-loc text="Power Apps"::: has a limit of up to 2,000 results records returned to the client. The overall memory for those records can't exceed 64 MB and a time of seven minutes to run.
 * The connector doesn't support the [fork](./kusto/query/forkoperator.md) and [facet](./kusto/query/facetoperator.md) operators.
 * **Timeout exceptions**: The connector has a timeout limitation of 7 minutes. To avoid potential timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](./kusto/query/best-practices.md).
-
-## Clean up resources
-
-If you're not going to continue to use your app, you can delete it with the following steps
-
-1. Select **Back**, and then **Leave** to leave the app.
-1. Select **More Commands** for **MyApp** > **Delete**.
-1. Select **Delete from cloud** to permanently uninstall the app for all users. You can't recover deleted items.
 
 ## Next steps
 
