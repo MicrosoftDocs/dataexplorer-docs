@@ -3,13 +3,20 @@ title: Query consistency - Azure Data Explorer
 description: This article describes Query consistency in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/22/2022
+ms.date: 05/21/2023
 ---
 # Query consistency
 
-## Consistency modes
+There are two supported query consistency modes: strong and weak. By default, queries run with strong consistency.
 
-Azure Data Explorer supports two query consistency modes: **strong** and **weak**.
+With strong consistency, the query planning stage and the query finalization stage occur on the same node that's in charge of managing updates in the database. This node is called the *database admin node*. The cluster has a single database admin node. The database admin node is responsible for orchestrating control commands run in the context of databases it manages, and committing the changes to the database metadata. Strong consistency ensures immediate access to the most recent updates made to the database, such as data appends, deletions, and schema modifications. However, during periods of high load, the database admin node can become overwhelmed, affecting its availability.
+
+With weak consistency, the query load is distributed among additional nodes in the cluster that can serve as *query heads*. While this reduces the load on the database admin node, it may introduce a slight delay before query results reflect the latest database updates. Typically, this delay ranges from 1 to 2 minutes.
+
+For example, if 1000 records are ingested each minute into a table in the database, queries over that table running with strong consistency will have access to the most-recently ingested records, whereas queries over that table running with weak consistency may not have access to a few thousands of records from the last few minutes.
+
+> [!NOTE]
+> We recommend using the default strong consistency mode and only switching to weak consistency mode when it's necessary to reduce the load on the database admin node.
 
 *Strongly consistent queries* (default) have a "read-my-changes" guarantee.
 If you send a control command and receive acknowledgment that the command has completed successfully, then you'll be guaranteed any query immediately following will observe the results of the command.
