@@ -113,3 +113,4 @@ To create a continuous export job with a query that references a table with [Row
 * Continuous export isn't designed for low-latency streaming data out of Azure Data Explorer.
 * By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes in the cluster.
 * If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](../../../ingest-data-event-grid-overview.md#known-event-grid-issues).
+* Continuous export can be configured to an external table with the following formats: `CSV`, `TSV`, `JSON`, and `Parquet`.
