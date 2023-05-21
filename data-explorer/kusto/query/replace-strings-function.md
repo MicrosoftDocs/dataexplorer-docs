@@ -20,7 +20,7 @@ To replace an individual string, see [replace_string()](replace-string-function.
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*text*|string|&check;|The source string.|
-|*lookups*|dynamic|&check;|The array that include lookup strings. Array element that isn't a string is ignored.|
+|*lookups*|dynamic|&check;|The array that includes lookup strings. Array element that isn't a string is ignored.|
 |*rewrites*|dynamic|&check;|The array that includes rewrites. Array element that isn't a string is ignored (no replacement made).|
 
 ## Returns
@@ -70,7 +70,7 @@ print Message="A magic trick can turn a cat into a dog"
 ### Replacement order
 
 The order of match elements matters: the earlier match takes the precedence.
-Note the difference between Outcome1 and Outcome2: 'This' vs 'Thwas'.
+Note the difference between Outcome1 and Outcome2: `This` vs `Thwas`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/adxdocscluster.westeurope/databases/KDA2?query=H4sIAAAAAAAAA52OzQrCMBAG732Kj17aQqHovW+gCNKbiIR2rcHmhyZBBR/exAZ7EEUMIYdlJzN65NJiTcawnuq0OXEDf5kEXZnQA0Ed4QyXPUbSA2vpYKxnepMXaXL3W5Zkh42zrRK0QP22liCeKClfg+4mmeBtvsuCNiuR+XdflKgqrJQ6O434yRfkwgITkO0kFiTtDBSzLjYu/2ycdE/tr42hbWY+Nz4A0RAvioUBAAA=" target="_blank">Run the query</a>
@@ -93,9 +93,9 @@ Note the difference between Outcome1 and Outcome2: 'This' vs 'Thwas'.
 |---|---|---|
 |This is an example of using replace_strings()|This was an example of using replace_strings()|Thwas was an example of using replace_strings()|
 
-### Non-string replacement
+### Nonstring replacement
 
-Replace elements that are not strings are not replaced and the original string is kept. The match is still considered to be valid, and other possible replacements are not performed on the matched string. In the following example, 'This' is not replaced with the numeric `12345`, and it remains in the output unaffected by possible match with 'is'.
+Replace elements that aren't strings aren't replaced and the original string is kept. The match is still considered being valid, and other possible replacements aren't performed on the matched string. In the following example, 'This' isn't replaced with the numeric `12345`, and it remains in the output unaffected by possible match with 'is'.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/adxdocscluster.westeurope/databases/KDA2?query=H4sIAAAAAAAAA2WNywrCMBBF9/2KSzdpoVB8LfsHiiDuRCS0Yww2DzoJKvjxplh00WGYxeWeOX7QNmBHzFJRkx9vmpFWWtBTGt8T3BWRtVUYyPeypQuHxCguyjx7p1Yg22EfQ+sMoZm1MkwzOapf0L2sNLotTmK0igoi3XNZoa6xde4ePaYnc2SxXK03iXjIERmJw9dryIZ/v/wA1+QCUt8AAAA=" target="_blank">Run the query</a>
