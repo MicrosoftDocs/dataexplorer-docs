@@ -32,7 +32,7 @@ Returns *text* after replacing all matches of *lookups* with evaluations of *rew
 ### Simple replacement
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/adxdocscluster.westeurope/databases/KDA2?query=H4sIAAAAAAAAA22NwQrCMBBE737F0EtaKPQLevCuCF5FJKRLCDWbkGxBwY93i0Uv7mkY5r3NJbDgSLVaT2OzR7Q+OEgJboazDFkKw2oU6DJpnJJvdi/QQ4gnnBZxKRJGFMp36+hWFWZf2x222+z9t5iebGNw7cWo1vQwqjTXrscw4JDSvGRskj/IulUkB0+JlVqh8+d1JJYf0r0BzELQkNwAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NwQrCMBBE74X+w9BLWij0C3rwrghei0hIlxBqNiFJQcGPd4sFPbinYZj3NibHBSfKWVsamwO8ts6gJGcWGM0oa2JoiQWyDBLnYJu6eoEehXjGeS0meMKIRPGuDd2y0GxzW1fYb/f332Z+svbOtJMSs+qhxKquXY9hwDGEZY3YNf+YbSxMdJYCC7ZRl893T1x+mO4NCQvYwOEAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 print Message="A magic trick can turn a cat into a dog"
@@ -52,7 +52,7 @@ print Message="A magic trick can turn a cat into a dog"
 Replacement with an empty string removes the matching string.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/adxdocscluster.westeurope/databases/KDA2?query=H4sIAAAAAAAAA22OwQrCMBBE7/2KoZe0UOgX9OBdEbyKyJIsIdRsQpKCgh9vikU9uKdhmPfYmJwUHDhnsjy1O3iyTqMkp2doEpQlCajGgroMNZpg2+YJvhcWg+NSdPCMCYnjjTRfc4XF5q7Bdpt9+BTmIeSd7s5qtasB6setLv2AccQ+hHmJ2Gx/WOMyxciUVkGlVuj0/sGzlC/SvwDOc7zo5QAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OywrCMBBF94X+w6WbtBDoF3ThXhHcisiQDCHUPEhSUPDjTbFgF87qMsw5c2OyvuDEOZPhqTvAkbEKJVk1Q5FHWZIH1VhQL0ONOpiubd7gZ2GvcV6KCo4xIXF8kOJ7rrQ3uW8bbLP55W+jX56cVf1VrA+EhNjpxW2QGEccQ5iXiM33D9Y2U4xMaTVUbKUu3xqOfdkxwwehFI6X6gAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 print Message="A magic trick can turn a cat into a dog"
@@ -73,7 +73,7 @@ The order of match elements matters: the earlier match takes the precedence.
 Note the difference between Outcome1 and Outcome2: `This` vs `Thwas`.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/adxdocscluster.westeurope/databases/KDA2?query=H4sIAAAAAAAAA52OzQrCMBAG732Kj17aQqHovW+gCNKbiIR2rcHmhyZBBR/exAZ7EEUMIYdlJzN65NJiTcawnuq0OXEDf5kEXZnQA0Ed4QyXPUbSA2vpYKxnepMXaXL3W5Zkh42zrRK0QP22liCeKClfg+4mmeBtvsuCNiuR+XdflKgqrJQ6O434yRfkwgITkO0kFiTtDBSzLjYu/2ycdE/tr42hbWY+Nz4A0RAvioUBAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8vPTTVSsFUoSi3ISUxOjS8uKcrMSy/W4OVSgALf1OLixPRUHYRISmVeYm5mska0emaxuo6CekgGkI7V1FHQ11fwyc/PLi1QgBqDTU95IrImkJ4giN25qXklSDo0AS8KRWGaAAAA" target="_blank">Run the query</a>
 
 ```kusto
  print Message="This is an example of using replace_strings()"
@@ -98,7 +98,7 @@ Note the difference between Outcome1 and Outcome2: `This` vs `Thwas`.
 Replace elements that aren't strings aren't replaced and the original string is kept. The match is still considered being valid, and other possible replacements aren't performed on the matched string. In the following example, 'This' isn't replaced with the numeric `12345`, and it remains in the output unaffected by possible match with 'is'.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/adxdocscluster.westeurope/databases/KDA2?query=H4sIAAAAAAAAA2WNywrCMBBF9/2KSzdpoVB8LfsHiiDuRCS0Yww2DzoJKvjxplh00WGYxeWeOX7QNmBHzFJRkx9vmpFWWtBTGt8T3BWRtVUYyPeypQuHxCguyjx7p1Yg22EfQ+sMoZm1MkwzOapf0L2sNLotTmK0igoi3XNZoa6xde4ePaYnc2SxXK03iXjIERmJw9dryIZ/v/wA1+QCUt8AAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NywrCMBBF94X+w6WbNlAovpb9A0UQdyIS2jEGmwdNggp+vCkGFHQYZnG5Z44dpfbYkHNcUFvsL9IhLtegO1d2IJgzgpNaYCQ78I5OzkdGuIoVefaMNU+6xzb4zihC+1PLM6RJlvqT9A/NleyqQzmJyxplvEdWo2mwNuYaLNKbP8xsvliuInLjEzMhu7dakfZfAHsBMAz0MeQAAAA=" target="_blank">Run the query</a>
 
 ```kusto
  print Message="This is an example of using replace_strings()"
