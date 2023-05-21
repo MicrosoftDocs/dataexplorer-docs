@@ -46,42 +46,36 @@ my_table
 | summarize count() by level, startofweek(Timestamp)
 ```
 
+## Weakly consistent query heads
+
+The default behavior is to allow 20% of the nodes in the cluster, with a minimum of 2 nodes, and a maximum of 30 nodes to serve as weakly consistent query heads.For example, for a cluster with 15 nodes, 3 nodes can serve as weakly consistent query heads.
+
+Use the cluster-level [query weak consistency policy](../management/query-weak-consistency-policy.md) to control these parameters. We recommend starting with the default values and only adjusting if necessary.
+
+The query weak consistency policy also allows you to control the refresh rate of the database metadata on the weakly consistency query heads. By default, these nodes will refresh the latest database metadata every 2 minutes. This process that usually takes up to a few seconds, unless the amount of changes that occur in that period is very high.
+
 ## Weak consistency modes
 
-There are 4 modes of weak query consistency:
+The following table summarizes the 4 modes of weak query consistency.
 
 | Mode | Description |
 |--|--|
 | Random| Queries are routed randomly to one of the nodes in the cluster that can serve as a weakly consistent query head.|
-| Affinitized by database| All queries that run in the context of the same database get routed to the same weakly consistent query head. |
-| Affinitized by query text| All queries that have the same hash for their query text get routed to the same weakly consistent query head. |
-| Affinitized by session ID| All queries that have the same hash for their session ID (provided separately, explained below) get routed to the same weakly consistent query head. |
+| [Affinity by database](#affinity-by-database)| Queries within the same database are routed to the same weakly consistent query head, ensuring consistent execution for that database. |
+| [Affinity by query text](#affinity-by-query-text)| Queries with the same query text hash are routed to the same weakly consistent query head, which is beneficial for leveraging query caching. |
+| [Affinity by session ID](#affinity-by-session-id)| Queries with the same session ID hash are routed to the same weakly consistent query head, ensuring consistent execution within a session. |
 
 ### Affinity by database
 
-This mode of weak consistency can be helpful if it is important that queries running against the same database will all get executed against the same (though, not most recent) version of the database.
-
-If, however, there’s an imbalance in the amount of queries running against databases in the cluster (e.g. 70% of queries are run in the context of a specific database), then the query head serving queries for that database will be more loaded than other query heads in the cluster, which is suboptimal.
+The affinity by database mode ensures that queries running against the same database are executed against the same version of the database, although not necessarily the most recent version of the database. This mode is useful when ensuring consistent execution within a specific database is important. However, if there's an imbalance in the number of queries across databases, then this mode may result in uneven load distribution.
 
 ### Affinity by query text
 
-This mode of weak consistency can be helpful when queries are also leveraging the Query results cache. This way, repeating weakly consistent queries that are run frequently by the same identity leverages results cached from recent executions of the same query on the same query head, and reduce the load on the cluster.
+The affinity by query text mode is beneficial when queries leverage the [Query results cache](../query/query-results-cache.md). This mode routes repeating queries frequently executed by the same identity to the same query head, allowing them to benefit from cached results and reducing the load on the cluster.
 
 ### Affinity by session ID
 
-This mode of weak consistency can be helpful if it is important that queries that belong to the same user activity/session will all get executed against the same (though, not most recent) version of the database.
-
-It does, however, require you to explicitly specify the session ID as part of each query’s client request properties.
-
-## Weakly consistent query heads
-
-The default behavior is to allow 20% of the nodes in the cluster, with a minimum of 2 nodes, and a maximum of 30 nodes to serve as weakly consistent query heads.
-
-For example, for a cluster with 15 nodes, 3 nodes can serve as weakly consistent query heads. These parameters can be controlled using the cluster-level [Query weak consistency policy](../management/query-weak-consistency-policy.md).
-
-The same policy allows controlling the refresh rate of the database metadata on the weakly consistency query heads. By default, these nodes will refresh the latest database metadata every 2 minutes. This process that usually takes up to a few seconds, unless the amount of changes that occur in that period is very high.
-
-We recommend starting with the default values and only adjusting if necessary.
+The affinity by session ID mode ensures that queries belonging to the same user activity or session are executed against the same version of the database, although not necessarily the most recent one. To use this mode, the session ID needs to be explicitly specified in each query's client request properties. This mode is helpful in scenarios where consistent execution within a session is essential.
 
 ## Controlling query consistency
 
