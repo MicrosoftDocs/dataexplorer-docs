@@ -70,6 +70,5 @@ In most cases, the deletion of records won't result in a change of COGS.
 * In most cases, there will be no increase because the `.delete` operation doesn't require the provisioning of extra resources.
 * In some cases, extents in which the majority of the records are deleted are periodically compacted by replacing them with new extents that only contain the records that haven't been deleted. This causes the deletion of the old storage artifacts that contain a large number of deleted records. The new extents are smaller and therefore consume less space in both the Storage account and in the hot cache. However, in most cases, the effect of this on COGS is negligible.
 
-## Soft delete for table
 
 Soft delete of records in a source table for a materialized view can affect the materialized view in some circumstances. Every [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work) adds newly ingested data to the materialized part from the previous cycle. If the soft delete command deletes newly ingested records before a new cycle begins, those records won't be added to the materialized view. Otherwise, deleting records won't affect the materialized view.
