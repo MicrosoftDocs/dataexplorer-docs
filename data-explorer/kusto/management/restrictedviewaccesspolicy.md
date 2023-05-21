@@ -7,14 +7,16 @@ ms.date: 05/21/2023
 ---
 # Restricted view access policy
 
-The restricted view access policy is an optional security feature that governs view permissions for tables in a database. When enabled, it adds an extra layer of permission requirements for security principals to access and view the table. By default, the policy is disabled.
+The restricted view access policy is an optional security feature that governs view permissions for tables in a database. By default, the policy is disabled. When enabled, the policy adds an extra layer of permission requirements for security principals to access and view the table.
 
-When the restricted view access policy is enabled, only principals assigned the [UnrestrictedViewer](./access-control/role-based-access-control.md) role have the necessary permissions to query the data in the table. Even principals with roles like Table Admin, Cluster Admin, or Database Admin are restricted unless granted the UnrestrictedViewer role. To see all available security roles and their permissions, see [Azure Data Explorer role-based access control](../access-control/role-based-access-control.md).
+Only principals assigned the [UnrestrictedViewer](./access-control/role-based-access-control.md) role have the necessary permissions to query a table with an enabled restricted view access policy. Even principals with roles like Table Admin, Database Admin, or Cluster Admin are restricted unless granted the UnrestrictedViewer role. To see all available security roles and their permissions, see [Azure Data Explorer role-based access control](../access-control/role-based-access-control.md).
+
+> [!NOTE]
+> The UnrestrictedViewer role needs to be combined with another role assigned at the database level, such as Database Admin, Database User, or Database Viewer. If a principal doesn't have any of these prerequisite roles, they won't be able to query the database, which means they won't be able to query any table within the database.
 
 While the restricted view access policy is specific to individual tables, the UnrestrictedViewer role operates at the database level. Thereby, a principal with the UnrestrictedViewer role has view permissions for all tables within the database. For more detailed information on managing table view access, see [Manage view access to tables in Azure Data Explorer](manage-table-view-access.md).
 
-> [!NOTE]
-> Principals with the [Database Admin](./access-control/role-based-access-control.md) role have the authority to assign or remove roles for other principals.
+Principals with [Database Admin](./access-control/role-based-access-control.md) permissions can add or remove database-level security roles. For more information, see [Manage database security roles](manage-database-security-roles.md).
 
 ## Limitations
 
