@@ -252,7 +252,7 @@ X | join kind=inner Y on Key
 >
 > * (b,10) from the right side, was joined twice: with both (b,2) and (b,3) on the left.
 > * (c,4) on the left side, was joined twice: with both (c,20) and (c,30) on the right.
-> * k is joined once from both side.
+> * (k,5) from the left and (k, 50) from the right was joined once.
 
 ### Innerunique-join flavor
 
