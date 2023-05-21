@@ -3,7 +3,7 @@ title: Customize Azure Data Explorer dashboard visuals
 description: Easily customize your Azure Data Explorer dashboard visuals
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 05/15/2023
+ms.date: 05/21/2023
 ---
 
 # Customize Azure Data Explorer dashboard visuals
@@ -66,7 +66,7 @@ OccupancyDetection
 | project Temperature, Humidity, CO2, Occupancy
 | where rand() < 0.1
 | evaluate python(typeof(plotly:string),
-```if 1:wh
+```if 1:
     import plotly.express as px
     fig = px.scatter_3d(df, x='Temperature', y='Humidity', z='CO2', color='Occupancy')
     fig.update_layout(title=dict(text="Occupancy detection, plotly 5.11.0"))

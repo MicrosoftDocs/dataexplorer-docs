@@ -3,9 +3,9 @@ title: Treemap visualization - Azure Data Explorer
 description: Learn how to use the treemap visualization to visualize data.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 05/21/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # Treemap
 
@@ -50,8 +50,8 @@ StormEvents
 :::image type="content" source="images/visualization-treemap/treemap.png" alt-text="Screenshot of treemap visualization output." lightbox="images/visualization-treemap/treemap.png":::
 ::: zone-end
 
-::: zone pivot="azuremonitor"
+::: zone pivot="azuremonitor, fabric"
 
-This visualization isn't supported in Azure Monitor.
+This visualization isn't supported.
 
 ::: zone-end
