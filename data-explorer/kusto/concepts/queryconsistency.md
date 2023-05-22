@@ -80,7 +80,7 @@ Specify the query consistency mode by the client sending the request or using a 
 * Server side policy: Use the `QueryConsistency` property of the [Query consistency policy](../management/query-consistency-policy.md). This method sets the query consistency mode at the workload group level, which eliminates the need for users to specify the consistency mode in their client request properties and allows for enforcing desired consistency modes. For more information, see [Query consistency policy](../management/query-consistency-policy.md).
 
 > [!NOTE]
-> If using the .NET SDK, you can set the query consistency through the connection string. This setting will apply to all queries sent through that particular connection string. For more information, see [Connection string properties](../api/connection-strings/kusto.md#connection-string-properties).
+> If using the [Kusto .NET SDK](../api/netfx/about-the-sdk.md), you can set the query consistency through the connection string. This setting will apply to all queries sent through that particular connection string. For more information, see [Connection string properties](../api/connection-strings/kusto.md#connection-string-properties).
 
 ## Next steps
 
