@@ -19,7 +19,7 @@ There are several factors that impact the health of an Azure Data Explorer clust
     | project IsHealthy, NotHealthyReason, IsAttentionRequired, AttentionRequiredReason, IsScaleOutRequired
     ```
     
-    **Results**
+    **Output**
 
     |Output parameter |Description|
     |---|---|
