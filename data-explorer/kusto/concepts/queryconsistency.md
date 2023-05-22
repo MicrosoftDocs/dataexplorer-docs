@@ -22,7 +22,7 @@ For example, if 1000 records are ingested each minute into a table in the databa
 
 ## Use cases for strong consistency
 
-Strong consistency is best when you have a strong dependency on updates that occurred in the database in the last few minutes.
+If you have a strong dependency on updates that occurred in the database in the last few minutes, use strong consistency.
 
 For example, the following query counts the number of error records in the 5 minutes and triggers an alert if that count is larger than 0. This use case is best handled with strong consistency, since your insights may be significantly altered if you did not have access to records ingested in the past few minutes, as may be the case with weak consistency.
 
@@ -37,7 +37,7 @@ In addition, strong consistency should be used when database metadata is very la
 
 ## Use cases for weak consistency
 
-Weak consistency is best for when you don’t have a strong dependency on updates that occurred in the database in the last few minutes, and you want to reduce the load from the database admin node.
+If you don’t have a strong dependency on updates that occurred in the database in the last few minutes, and you want to reduce the load from the database admin node, use weak consistency.
 
 For example, the following query counts the number of error records per week in the last 90 days. Weak consistency is appropriate in this case, since your insights are unlikely to be impacted if records ingested in the past few minutes are omitted.
 
