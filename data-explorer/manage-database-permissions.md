@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 05/22/2023
 ---
 
-# Manage Azure Data Explorer database permissions in the Azure Portal
+# Manage Azure Data Explorer database permissions in the Azure portal
 
 Azure Data Explorer allows you to control access to databases and tables using a *role-based access control* model. Under this model, *principals* (users, groups, and apps) are mapped to *roles*. Principals can access resources according to the roles they're assigned. For a list of available roles, see [role-based access control](/kusto/management/access-control/role-based-access-control.md)
 
