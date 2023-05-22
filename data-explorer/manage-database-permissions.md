@@ -52,5 +52,4 @@ This article describes the available roles and how to assign principals to those
 * Learn about [Azure Data Explorer role-based access control](kusto/access-control/role-based-access-control.md).
 * To set cluster level permissions, see [Manage cluster permissions](../../manage-cluster-permissions.md).
 * To set permissions for a database with management commands, see [Manage database security roles](kusto/management/manage-database-security-roles.md).
-* To set permissions for a table with management commands, see [Manage table security roles](kusto/management/manage-table-security-roles.md).
 * To grant a principal view access to a subset of tables, see [Manage table view access](../management/manage-table-view-access.md).
