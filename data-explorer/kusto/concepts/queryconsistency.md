@@ -75,36 +75,30 @@ The affinity by session ID mode ensures that queries belonging to the same user 
 
 You can specify the query consistency mode by the client sending the request or using a server side policy. If it isn’t specified by either, the default mode of strong consistency applies.
 
-* [Client sending the request](#set-query-consistency-by-client-sending-the-request): Specify the query consistency mode with the `queryconsistency` client request property. This method only affects a specific query and doesn't affect the overall effective consistency mode, which is determined by the default or the server-side policy. For more information, see [client request properties](../api/netfx/request-properties.md).
+* Client sending the request: Specify the query consistency mode with the `queryconsistency` client request property. This method only affects a specific query and doesn't affect the overall effective consistency mode, which is determined by the default or the server-side policy. For more information, see [client request properties](../api/netfx/request-properties.md).
 
-* [Server side policy](#set-query-consistency-by-server-side-policy): Specify the query consistency mode in the `QueryConsistency` property of the query consistency policy. This method eliminates the need for users to specify the consistency mode in their client request properties and allows for enforcing desired consistency modes. For more information, see [Query consistency policy](../management/query-consistency-policy.md).
+    For example, set the query consistency mode to weak consistency in a client request property before a specific query.
 
-### Examples
+    ```kusto
+    let queryconsistency=weakconsistency;
+    // Your query here.
+    ```
 
-#### Set query consistency by client sending the request
+* Server side policy: Specify the query consistency mode in the `QueryConsistency` property of the query consistency policy at the workload group level. This method eliminates the need for users to specify the consistency mode in their client request properties and allows for enforcing desired consistency modes. For more information, see [Query consistency policy](../management/query-consistency-policy.md).
 
-The following example demonstrates how to set the query consistency in a client request property before a specific query.
+    For example, set the policy for the default workload group to `Weak`. By setting `IsRelaxable` to `false`, weak consistency is enforced for all queries within that group, preventing the client request properties from overriding the query consistency mode.
 
-```kusto
-let queryconsistency=weakconsistency;
-// Your query here.
-```
-
-#### Set query consistency by server side policy
-
-The following command sets the policy for the default workload group to `Weak`. The policy also enforces weak consistency for all queries in that group, ignoring the user-specified consistency mode in the client request properties, by setting `IsRelaxable` to `false` prevents the value set by the user in the client request properties to override the one that was set in the query consistency policy.
-
-```kusto
-.alter-merge workload_group default ```
-{
-  "QueryConsistencyPolicy": {
-     "QueryConsistency": {
-        "IsRelaxable": false,
-        "Value": "Weak"
-     }
-  }
-} ```
-```
+    ```kusto
+    .alter-merge workload_group default ```
+    {
+      "QueryConsistencyPolicy": {
+         "QueryConsistency": {
+            "IsRelaxable": false,
+            "Value": "Weak"
+         }
+      }
+    } ```
+    ```
 
 ## Next steps
 
