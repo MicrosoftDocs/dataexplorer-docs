@@ -19,7 +19,7 @@ This article describes the available roles and how to assign principals to those
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 
-1. Navigate to your Azure Data Explorer cluster.
+1. Go to your Azure Data Explorer cluster.
 
 1. In the **Overview** section, select the database where you want to manage permissions. For roles that apply to all databases, skip this phase and go directly to the next step.
 
@@ -37,7 +37,7 @@ This article describes the available roles and how to assign principals to those
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 
-1. Navigate to your Azure Data Explorer cluster.
+1. Go to your Azure Data Explorer cluster.
 
 1. In the **Overview** section, select the database where you want to manage permissions. For roles that apply to all databases, go directly to the next step.
 
