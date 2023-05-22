@@ -23,7 +23,6 @@ There are several factors that impact the health of an Azure Data Explorer clust
 
     |Output parameter |Description|
     |---|---|
-```suggestion
     |IsHealthy |An output of 1 indicates that the cluster is healthy. An output of 0 indicates that the cluster is unhealthy.|
     |NotHealthyReason |The reason that the cluster is unhealthy. This field is only relevant when the output of *IsHealthy* is 0.|
     |IsAttentionRequired |An output of 1 indicates that the cluster requires attention.|
