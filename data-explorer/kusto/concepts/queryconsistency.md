@@ -33,7 +33,7 @@ my_table
 | count
 ```
 
-In addition, strong consistency should be used when database metadata is very large. For instance, if there are millions of [data extents](../management/extents-overview.md) in the database, using weak consistency would result in downloading and deserializing extensive metadata artifacts from persistent storage, which may increase the likelihood of transient failures in downloads and related operations.
+In addition, strong consistency should be used when database metadata is very large. For instance, if there are millions of [data extents](../management/extents-overview.md) in the database, using weak consistency would result in query heads downloading and deserializing extensive metadata artifacts from persistent storage, which may increase the likelihood of transient failures in downloads and related operations.
 
 ## Use cases for weak consistency
 
@@ -47,16 +47,6 @@ my_table
 | where level == "error"
 | summarize count() by level, startofweek(Timestamp)
 ```
-
-## Query weak consistency policy
-
-The cluster-level [query weak consistency policy](../management/query-weak-consistency-policy.md) controls various parameters related to weak consistency.
-
-For instance, the default behavior is to allow 20% of the nodes in the cluster, with a minimum of 2 nodes and a maximum of 30 nodes, to serve as weakly consistent query heads. In this case, a cluster with 15 nodes could have 3 nodes that serve as weakly consistent query heads. However, you can adjust these parameters in the query weak consistency policy.
-
-The query weak consistency policy also allows you to control the refresh rate of the database metadata on the weakly consistency query heads. By default, these nodes will refresh the latest database metadata every 2 minutes. This process that usually takes up to a few seconds, unless the amount of changes that occur in that period is very high.
-
-We recommend starting with the default values and only adjusting if necessary.
 
 ## Weak consistency modes
 
@@ -140,28 +130,6 @@ The following command sets the policy for the default workload group to `Weak` a
 } ```
 ```
 
+## Next steps
 
-### Specifying in client request properties
-### Specifying in the query consistency policy -- Maybe remove the earlier heading about this policy??
-
-Before a query starts actual execution, its consistency mode is first determined.
-
-1. The consistency mode can be controlled per-query, by setting the `queryconsistency` [client request property](../api/netfx/request-properties.md).
-
-1. Users of the .NET SDK can also set the query consistency through the [Kusto connection string](../api/connection-strings/kusto.md).
-   Doing so affects all queries sent through that connection string (by setting the client request property automatically.)
-
-1. Alternatively, it is possible to control the consistency mode on the server side, by setting a [Query consistency policy](../management/query-consistency-policy.md)
-   at the workload group level. Doing so affects all queries sent to the service which are associated with that workload group, so users don't need
-   to specify it manually.
-
-|Consistency               |Set client request property to      |Set query consistency policy to|
-|--------------------------|------------------------------------|-------------------------------|
-|Strong                    |`strongconsistency`                 |`Strong`                       |
-|Weak (random)             |`weakconsistency`                   |`Weak`                         |
-|Weak (query text affinity)|`affinitizedweakconsistency`        |`WeakAffinitizedByQuery`       |
-|Weak (database affinity)  |`databaseaffinitizedweakconsistency`|`WeakAffinitizedByDatabase`    |
-
-## Controlling the weak consistency service
-
-The cluster-level [query weak consistency policy](../management/query-weak-consistency-policy.md) provides further control over execution of queries running with *weak* consistency.
+* To customize parameters for queries running with weak consistency, use the [Query weak consistency policy](../management/query-weak-consistency-policy.md).
