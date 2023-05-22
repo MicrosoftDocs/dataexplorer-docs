@@ -26,8 +26,8 @@ There are several factors that impact the health of an Azure Data Explorer clust
 ```suggestion
     |IsHealthy |An output of 1 indicates that the cluster is healthy. An output of 0 indicates that the cluster is unhealthy.|
     |NotHealthyReason |The reason that the cluster is unhealthy. This field is only relevant when the output of *IsHealthy* is 0.|
-    |IsAttentionRequired |An output of 1 indicates the cluster requires attention.|
-    |AttentionRequiredReason |The attention required reason if the output of *IsAttentionRequired* is 1.|
+    |IsAttentionRequired |An output of 1 indicates that the cluster requires attention.|
+    |AttentionRequiredReason |The reason that the cluster requires attention. This field is only relevant when the output of *IsAttentionRequired* is 1.|
     |IsScaleOutRequired |An output of 1 indicates it is recommended to [scale out](manage-cluster-horizontal-scaling.md) the cluster.|
 
 1. Sign into the [Azure portal](https://portal.azure.com), and navigate to your cluster.
