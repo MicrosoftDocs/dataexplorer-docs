@@ -33,6 +33,20 @@ This article describes the available roles and how to assign principals to those
 
     :::image type="content" source="media/manage-database-permissions/new-principals.png" alt-text="Screenshot of the Azure portal New Principals page. A principal name and image are selected and highlighted. The Select button is also highlighted." border="false":::
 
+## Remove database principals
+
+1. Sign in to the [Azure portal](https://portal.azure.com/).
+
+1. Navigate to your Azure Data Explorer cluster.
+
+1. In the **Overview** section, select the database where you want to manage permissions. For roles that apply to all databases, go directly to the next step.
+
+    ![Select database.](media/manage-database-permissions/select-database.png)
+
+1. Select **Permissions**, and then select the principal to remove.
+
+1. Select **Remove**.
+
 ## Next steps
 
 * Learn about [Azure Data Explorer role-based access control](kusto/access-control/role-based-access-control.md).
