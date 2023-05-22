@@ -7,7 +7,7 @@ ms.date: 05/22/2023
 ---
 # Maintain data consistency with strong and weak query consistency
 
-Query consistency refers to how queries and updates are synchronized. The objective of query consistency is to ensure accurate and up-to-date results based on data modifications. Queries can coincide with ongoing updates, which necessitates balancing requirements for performance and data accuracy.
+Query consistency refers to how queries and updates are synchronized. The objective of query consistency is to ensure accurate and up-to-date results based on data modifications. Queries can coincide with ongoing data updates, which necessitates balancing requirements for performance and data accuracy.
 
 There are two supported modes of query consistency:
 
