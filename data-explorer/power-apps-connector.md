@@ -133,7 +133,7 @@ To capture and enable dynamically returned fields, turn on the **Dynamic schema*
 1. Select **Results**.
 1. Select **Edit fields**, and then select **+ Add field**.
 
-    :::image type="content" source="media/power-apps-connector/insert-data-table-small.png" alt-text="Screenshot of the app page, showing the repositioning of a table and adding border." lightbox="media/power-apps-connector/insert-data-table.png":::
+    :::image type="content" source="media/power-apps-connector/insert-data-table.png" alt-text="Screenshot of the app page, showing the repositioning of a table and adding border." lightbox="media/power-apps-connector/insert-data-table.png":::
 
 1. Select desired fields and select **Add**. A preview of the selected data table appears.
 
