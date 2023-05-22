@@ -1,9 +1,9 @@
 ---
 title: Security roles - Azure Data Explorer
-description: This article describes security roles in Azure Data Explorer.
+description: Learn how to use security roles to provide principals access to resources.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/25/2023
+ms.date: 05/22/2023
 ---
 # Security roles overview
 
