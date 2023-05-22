@@ -3,20 +3,22 @@ title: Query consistency - Azure Data Explorer
 description: This article describes Query consistency in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/21/2023
+ms.date: 05/22/2023
 ---
-# Query consistency
+# Maintain data consistency with strong and weak query consistency
 
-There are two supported query consistency modes: strong and weak. By default, queries run with strong consistency.
+Query consistency refers to how queries and updates are synchronized. The objective of query consistency is to ensure accurate and up-to-date results based on data modifications. Queries can coincide with ongoing updates, which necessitates balancing requirements for performance and data accuracy.
 
-With strong consistency, the query planning stage and the query finalization stage occur on the same node that's in charge of managing updates in the database. This node is called the *database admin node*. The cluster has a single database admin node. The database admin node is responsible for orchestrating control commands run in the context of databases it manages, and committing the changes to the database metadata. Strong consistency ensures immediate access to the most recent updates made to the database, such as data appends, deletions, and schema modifications. However, during periods of high load, the database admin node can become overwhelmed, affecting its availability.
+There are two supported modes of query consistency:
 
-With weak consistency, the query load is distributed among additional nodes in the cluster that can serve as *query heads*. While this reduces the load on the database admin node, it may introduce a slight delay before query results reflect the latest database updates. Typically, this delay ranges from 1 to 2 minutes.
+* [Strong consistency](#use-cases-for-strong-consistency): Strong consistency ensures immediate access to the most recent updates, such as data appends, deletions, and schema modifications. With strong consistency, query planning stage and the query finalization stage occur on the *database admin node* node, which is also responsible for orchestrating [management commands](../management/index.md) and committing the changes to the database metadata. During periods of high load, the database admin node may become overwhelmed, affecting its availability.
+
+* [Weak consistency](#use-cases-for-weak-consistency): With weak consistency, the query load is distributed among additional nodes in the cluster that can serve as *query heads*. While this reduces the load on the database admin node, it may introduce a delay before query results reflect the latest database updates. Typically, this delay ranges from 1 to 2 minutes.
 
 For example, if 1000 records are ingested each minute into a table in the database, queries over that table running with strong consistency will have access to the most-recently ingested records, whereas queries over that table running with weak consistency may not have access to a few thousands of records from the last few minutes.
 
 > [!NOTE]
-> We recommend using the default strong consistency mode and only switching to weak consistency mode when it's necessary to reduce the load on the database admin node.
+> By default, queries run with strong consistency. We recommend only switching to weak consistency when necessary to reduce load on the database admin node.
 
 ## Use cases for strong consistency
 
@@ -83,6 +85,8 @@ The affinity by session ID mode ensures that queries belonging to the same user 
 
 Specifying the query consistency mode can be done either by the client sending the request, or using a server side policy. If it isn’t specified by either, the default mode of strong consistency applies.
 
+### Specifying in client request properties
+### Specifying in the query consistency policy -- Maybe remove the earlier heading about this policy??
 
 Before a query starts actual execution, its consistency mode is first determined.
 
