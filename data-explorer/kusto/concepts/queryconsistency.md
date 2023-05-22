@@ -100,6 +100,9 @@ You can specify the query consistency mode by the client sending the request or 
     } ```
     ```
 
+> [!NOTE]
+> If using the .NET SDK, you can set the query consistency through the connection string. This setting will apply to all queries sent through that particular connection string. For more information, see [Connection string properties](../api/connection-strings/kusto.md#connection-string-properties).
+
 ## Next steps
 
 * To customize parameters for queries running with weak consistency, use the [Query weak consistency policy](../management/query-weak-consistency-policy.md).
