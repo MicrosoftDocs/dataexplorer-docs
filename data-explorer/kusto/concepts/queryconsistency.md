@@ -33,7 +33,7 @@ my_table
 | count
 ```
 
-In addition, strong consistency should be used when database metadata is very large. For instance, if there are millions of [data extents](../management/extents-overview.md) in the database. If weak consistency is used in this case, then weakly consistent query heads would spend resources on frequently downloading and deserializing large metadata artifacts from persistent storage, which would increase the potential for transient failures in these downloads and other operations running against the same persistent storage.
+In addition, strong consistency should be used when database metadata is very large. For instance, if there are millions of [data extents](../management/extents-overview.md) in the database, using weak consistency would result in downloading and deserializing extensive metadata artifacts from persistent storage, which may increase the likelihood of transient failures in downloads and related operations.
 
 ## Use cases for weak consistency
 
