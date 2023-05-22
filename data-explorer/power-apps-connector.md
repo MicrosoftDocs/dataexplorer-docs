@@ -61,13 +61,13 @@ Under **Data**, you'll now see the **Azure Data Explorer** app in the list of co
 
 Before you create a data table and add a data source, you need to enable **Dynamic schema** and set your data row limit. Both of these are configured in the canvas **Settings**.
 
-### Settings
+### Configure Settings
 
 #### Data row limit
 
 Set how many records are retrieved from server-based connections where delegation is not supported.
 
-1. On the ribbon, select **Settings**.
+1. On the menu bar, select **Settings**.
 1. In **General** settings, scroll to **Data row limit**, and then set your returned records limit. The default limit is 500.
 
     :::image type="content" source="media/power-apps-connector/set-limit.png" alt-text="Screenshot of the settings page, showing the return results limit setting.":::
@@ -89,11 +89,11 @@ To capture and enable dynamically returned fields, turn on the **Dynamic schema*
 
     :::image type="content" source="media/power-apps-connector/dynamic-schema.png" alt-text="Screenshot of the settings page, showing the turn on dynamic schema setting.":::
 
-1. Select the **Save** icon on the rightmost side of the ribbon, and refresh your canvas.
+1. Select the **Save** icon on the rightmost of the menu bar, and refresh your canvas.
 
 ### Add Dropdown
 
-1. On the ribbon, select **+Insert**.
+1. On the menu bar, select **+Insert**.
 1. Select **Input**, and then select **Drop down**. The Drop Down properties pane appears on the rightmost of the canvas.
 1. In the properties pane, select the **Advanced** tab.
 1. Under **Data**, replace the placeholder text for **Items** with:
@@ -127,7 +127,7 @@ To capture and enable dynamically returned fields, turn on the **Dynamic schema*
 
 ### Add Data Table
 
-1. Select **Insert** in the menu bar.
+1. Select **+Insert** in the menu bar.
 1. Select **Layout** > **Data table**. Reposition the data table as needed.
 1. Select the **Properties** tab in the **Properties pane**, and then expand the **Data source** options.
 1. Select **Results**.
@@ -141,7 +141,7 @@ To capture and enable dynamically returned fields, turn on the **Dynamic schema*
 
 ### Validate
 
-1. Select the **Preview the app** button in the upper right of the screen.
+1. Select the **Play** button on the rightmost of the menu bar, or select **F5** to preview the app.
 1. Try the dropdown, scroll through the data table, and confirm successful data retrieval and presentation.
 
     :::image type="content" source="media/power-apps-connector/preview-app.png" alt-text="Screenshot of the app page, showing a preview the new app with data from Azure Data Explorer.":::
