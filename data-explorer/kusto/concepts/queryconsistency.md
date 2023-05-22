@@ -11,9 +11,9 @@ Query consistency refers to how queries and updates are synchronized. The object
 
 There are two supported modes of query consistency:
 
-* [Strong consistency](#use-cases-for-strong-consistency): Strong consistency ensures immediate access to the most recent updates, such as data appends, deletions, and schema modifications. With strong consistency, query planning stage and the query finalization stage occur on the *database admin node* node, which is also responsible for orchestrating [management commands](../management/index.md) and committing the changes to the database metadata. During periods of high load, the database admin node may become overwhelmed, affecting its availability.
+* [Strong consistency](#use-cases-for-strong-consistency): Strong consistency ensures immediate access to the most recent updates, such as data appends, deletions, and schema modifications. With strong consistency, query planning stage and the query finalization stage occur on the *database admin node* node. This node is also responsible for orchestrating [management commands](../management/index.md) and committing the changes to the database metadata. During periods of high load, the database admin node may become overwhelmed, affecting its availability.
 
-* [Weak consistency](#use-cases-for-weak-consistency): With weak consistency, the query load is distributed among additional nodes in the cluster that can serve as *query heads*. While this reduces the load on the database admin node, it may introduce a delay before query results reflect the latest database updates. Typically, this delay ranges from 1 to 2 minutes.
+* [Weak consistency](#use-cases-for-weak-consistency): With weak consistency, the query load is distributed among other nodes in the cluster that can serve as *query heads*. While this reduces the load on the database admin node, it may introduce a delay before query results reflect the latest database updates. Typically, this delay ranges from 1 to 2 minutes.
 
 For example, if 1000 records are ingested each minute into a table in the database, queries over that table running with strong consistency will have access to the most-recently ingested records, whereas queries over that table running with weak consistency may not have access to a few thousands of records from the last few minutes.
 
@@ -24,7 +24,7 @@ For example, if 1000 records are ingested each minute into a table in the databa
 
 If you have a strong dependency on updates that occurred in the database in the last few minutes, use strong consistency.
 
-For example, the following query counts the number of error records in the 5 minutes and triggers an alert if that count is larger than 0. This use case is best handled with strong consistency, since your insights may be significantly altered if you did not have access to records ingested in the past few minutes, as may be the case with weak consistency.
+For example, the following query counts the number of error records in the 5 minutes and triggers an alert if that count is larger than 0. This use case is best handled with strong consistency, since your insights may be altered if you don't have access to records ingested in the past few minutes, as may be the case with weak consistency.
 
 ```kusto
 my_table
@@ -33,7 +33,7 @@ my_table
 | count
 ```
 
-In addition, strong consistency should be used when database metadata is very large. For instance, if there are millions of [data extents](../management/extents-overview.md) in the database, using weak consistency would result in query heads downloading and deserializing extensive metadata artifacts from persistent storage, which may increase the likelihood of transient failures in downloads and related operations.
+In addition, strong consistency should be used when database metadata is large. For instance, if there are millions of [data extents](../management/extents-overview.md) in the database, using weak consistency would result in query heads downloading and deserializing extensive metadata artifacts from persistent storage, which may increase the likelihood of transient failures in downloads and related operations.
 
 ## Use cases for weak consistency
 
@@ -50,7 +50,7 @@ my_table
 
 ## Weak consistency modes
 
-The following table summarizes the 4 modes of weak query consistency.
+The following table summarizes the four modes of weak query consistency.
 
 | Mode | Description |
 |--|--|
@@ -73,25 +73,15 @@ The affinity by session ID mode ensures that queries belonging to the same user 
 
 ## How to specify query consistency
 
-Specifying the query consistency mode can be done either by the [client sending the request](#specify-query-consistency-in-client-request-properties), or using a [server side policy](#specify-query-consistency-with-the-query-weak-consistency-policy). If it isn’t specified by either, the default mode of strong consistency applies.
+You can specify the query consistency mode by the client sending the request or using a server side policy. If it isn’t specified by either, the default mode of strong consistency applies.
 
-### Specify query consistency in client request properties
+* [Client sending the request](#set-query-consistency-by-client-sending-the-request): Specify the query consistency mode with the `queryconsistency` client request property. This method only affects a specific query and doesn't affect the overall effective consistency mode, which is determined by the default or the server-side policy. For more information, see [client request properties](../api/netfx/request-properties.md).
 
-You can set the query consistency mode by specifying it in the [client request properties](../api/netfx/request-properties.md) for a specific query. This setting only affects that particular query and does not impact the overall effective consistency mode, which is determined by the default (strong) or the server-side policy.
+* [Server side policy](#set-query-consistency-by-server-side-policy): Specify the query consistency mode in the `QueryConsistency` property of the query consistency policy. This method eliminates the need for users to specify the consistency mode in their client request properties and allows for enforcing desired consistency modes. For more information, see [Query consistency policy](../management/query-consistency-policy.md).
 
-The available values for the `queryconsistency` client request property are:
+### Examples
 
-|Mode|Client request property value|
-|--|--|
-|Strong|`strongconsistency`|
-|Weak (Random)|`weakconsistency`|
-|Weak (Affinity by database)|`weakconsistency_by_database`|
-|Weak (Affinity by query text)|`weakconsistency_by_query`|
-|Weak (Affinity by session ID)|`weakconsistency_by_session_id`|
-
-When setting the `queryconsistency` option to `weakconsistency_by_session_id`, one should also set the query option named `query_weakconsistency_session_id` with a string value that represents the session’s ID.
-
-#### Example
+#### Set query consistency by client sending the request
 
 The following example demonstrates how to set the query consistency in a client request property before a specific query.
 
@@ -100,23 +90,9 @@ let queryconsistency=weakconsistency;
 // Your query here.
 ```
 
-### Specify query consistency with the query weak consistency policy
+#### Set query consistency by server side policy
 
-You can set the query consistency mode on the server side using a [Query consistency policy](../management/query-consistency-policy.md) at the workload group level. This method eliminates the need for users to specify the consistency mode in their client request properties and allows cluster admins to enforce desired consistency modes. For example, setting `IsRelaxable` to `false` prevents the value set by the user in the client request properties to override the one that was set in the query consistency policy.
-
-The available values for the `QueryConsistency` policy property are:
-
-|Mode|Query consistency policy value|
-|--|--|
-|Strong|`Strong`|
-|Weak (Random)|`Weak`|
-|Weak (Affinity by database)|`WeakAffinitizedByDatabase`|
-|Weak (Affinity by query text)|`WeakAffinitizedByQuery`|
-|Weak (Affinity by session ID)|`WeakAffinitizedBySessionId`|
-
-#### Example
-
-The following command sets the policy for the default workload group to `Weak` and enforces weak consistency for all queries in that group, ignoring the user-specified consistency mode in the client request properties.
+The following command sets the policy for the default workload group to `Weak`. The policy also enforces weak consistency for all queries in that group, ignoring the user-specified consistency mode in the client request properties, by setting `IsRelaxable` to `false` prevents the value set by the user in the client request properties to override the one that was set in the query consistency policy.
 
 ```kusto
 .alter-merge workload_group default ```
