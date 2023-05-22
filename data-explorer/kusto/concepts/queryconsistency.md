@@ -7,9 +7,7 @@ ms.date: 05/22/2023
 ---
 # Query consistency
 
-Query consistency refers to how queries and updates are synchronized. The objective of query consistency is to deliver query results that are up-to-date while taking into account the needs for both performance and data accuracy.
-
-There are two supported modes of query consistency:
+Query consistency refers to how queries and updates are synchronized. There are two supported modes of query consistency:
 
 * [Strong consistency](#use-cases-for-strong-consistency): Strong consistency ensures immediate access to the most recent updates, such as data appends, deletions, and schema modifications. With strong consistency, query planning stage and the query finalization stage occur on the *database admin node* node. This node is also responsible for orchestrating [management commands](../management/index.md) and committing the changes to the database metadata. During periods of high load, the database admin node may become overwhelmed, affecting its availability.
 
