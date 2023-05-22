@@ -5,7 +5,7 @@ ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/22/2023
 ---
-# Maintain data consistency with strong and weak query consistency
+# Query consistency
 
 Query consistency refers to how queries and updates are synchronized. The objective of query consistency is to deliver query results that are up-to-date while taking into account the needs for both performance and data accuracy.
 
