@@ -66,14 +66,8 @@ StormEvents
 |--|
 |58608932|
 
-## Understand the output
-
-Let's take a look at the output of both cases and understand why they don't exactly align.
-
-|Method|Output|Description|
-|--|--|--|
-|Estimate the original size of ingested data|60192011|This method is based on the assumption that the data was transferred in CSV format. This estimation takes into account the approximate lengths of numeric values, such as integers, longs, datetimes, and guids, by considering their string representations.|
-|Estimate table size in terms of access bytes|58608932|This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory and gain a deeper understanding of the data's storage requirements.|
+> [!NOTE]
+> The output is smaller even though the calculation is done over the same table. This is because this method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings.
 
 ## Work with multiple tables
 
