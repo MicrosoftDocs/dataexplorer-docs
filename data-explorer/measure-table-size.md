@@ -24,12 +24,10 @@ Use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) functi
 
 This function returns an estimated data size in bytes of selected columns. To get the estimate for the entire table, use the [sum()](kusto/query/sum-aggfunction.md) aggregation function. This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory.
 
-### Work with multiple tables
-
-You can use the [union](kusto/query/unionoperator.md) operator along with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function to estimate the combined data size of multiple tables. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
+To estimate the combined data size of multiple tables, use the [union](kusto/query/unionoperator.md) operator along with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
 
 > [!NOTE]
-> This approach may inflate the estimated data size due to empty columns, as `union` combines all columns from the specified tables and `estimate_data_size()` takes into account empty columns when calculating the data size.
+> Using `union` with `estimate_data_size()` can result in an inflated estimate due to empty columns. The `union` operation combines all columns from the specified tables, while `estimate_data_size()` considers empty columns in the data size calculation.
 
 ## Examples
 
