@@ -31,7 +31,7 @@ The following query estimates the original data size of the `StormEvents` table.
 > [!TIP]
 > To format the bytes result to `MB`, `GB`, or another unit, use [format_bytes()](kusto/query/format-bytesfunction.md).
 
-## Estimate size of a table in bytes
+## Estimate size of a table based on data types
 
 To estimate the data size based on the actual data types and their respective byte sizes, use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function. This function returns an estimated data size in bytes of selected columns. To get the estimate for the entire table, use the [sum()](kusto/query/sum-aggfunction.md) aggregation function.
 
@@ -40,14 +40,19 @@ This method provides a more precise estimation by considering the byte sizes of 
 The following query estimates the original data size of the `StormEvents` table in bytes.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRSK0oSc1LUSjOrEpNLS5RsFUAkpm5iSWp8SmJJYnxIHENLU2gwuLS3NzEIiAXxNKAqtdENcHdCWhAGtD4xJL4pMqS1GINoNp4qFodIx0ldyclTQDsmXiFgAAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRSK0oSc1LUSjOrEp1LS7JzE0sSfVPc87PKc3NU7BVSIUKxackliTGgxRpaGkCdRWX5uYmFgG5CiX5JYk5/kWZ6Zl5iTnBQBFboJwGNuM0AQfGaJJ5AAAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
-| extend sizeEst = estimate_data_size(*)
-| summarize sum(sizeEst)
-| project sizeEst
+| extend sizeEstimateOfColumn = estimate_data_size(*)
+| summarize totalOriginalSize=sum(sizeEstimateOfColumn)
 ```
+
+**Output**
+
+|totalOriginalSize|
+|--|
+|58608932|
 
 ## Estimate size of multiple tables
 
@@ -58,14 +63,17 @@ In this case, the `estimate_data_size()` function may calculate the data size wh
 The following query estimates the data size based for the `StormEvents` and `PopulationData` tables.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WNuw7CMAxFd77C6pSiTOxZKlA3hAR75LZGBDVJlTi8xMfjQhcWS/fq3OMSXAxwd3zJsaSejD1hN9IePcGRY/K7GwXOGg5xKiOy0FtkXL2BHkxhgOxeRJnBgFznkckOAti5V+tawFy8xyQRODKORrJaVvW/p21Ec5anyLZ7MmX1XeiNrtqmmuEpxSv1/DPpZfQBpnGSv8QAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22MsQ7CMAxEd77CY4v4hUzQlSKVPTLUgKXYQYlTEOLjMRIj4717d005KzzYbjW3cqYQj3hKtEchmCwXGRZSqxs45HtLaG7v0HD1Bnoa6QyVXzRUY0Gj8bLNqYlCAPqhOLsdv1K37n1VmwgWj2DZMI2Fr6yYJifBu+7fXf8Bmb5D9qUAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 union withsource=_TableName StormEvents, PopulationData
-| extend sizeEst = estimate_data_size(*)
-| summarize totalSize=sum(sizeEst)
-| project totalSize
+| extend sizeEstimateOfColumn = estimate_data_size(*)
+| summarize totalOriginalSize=sum(sizeEstimateOfColumn)
 ```
+
+|totalOriginalSize|
+|--|
+|59737411|
 
 ## Format
 
