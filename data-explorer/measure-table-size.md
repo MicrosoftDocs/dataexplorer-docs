@@ -16,13 +16,13 @@ Understanding the size of your tables can be helpful for efficient resource mana
 
 Use the [.show table details](kusto/management/show-table-details-command.md) to estimate the original data size of a table. For an example, see [Use .show table details](#use-show-table-details).
 
-This command provides an estimation of the uncompressed size of data ingested into your table based on the assumption that the data was transferred in CSV format. This estimation takes into account the approximate lengths of numeric values, such as integers, longs, datetimes, and guids, by considering their string representations. By using this approach, the command quickly calculates an overview of the data size.
+This command provides an estimation of the uncompressed size of data ingested into your table based on the assumption that the data was transferred in CSV format. The estimation is based on approximate lengths of numeric values, such as integers, longs, datetimes, and guids, by considering their string representations.
 
 ## Estimate table size in terms of access bytes
 
-Use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function to estimate table size based on data types and their respective byte sizes. For an example, see [Use estimate_data_size()](#use-estimate_data_size).
+Use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) along with the [sum()](kusto/query/sum-aggfunction.md) aggregation function to estimate table size based on data types and their respective byte sizes. For an example, see [Use estimate_data_size()](#use-estimate_data_size).
 
-This function returns an estimated data size in bytes of selected columns. To get the estimate for the entire table, use the [sum()](kusto/query/sum-aggfunction.md) aggregation function. This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory.
+This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory.
 
 ### Work with multiple tables
 
