@@ -22,9 +22,18 @@ The following query estimates the original data size of the `StormEvents` table.
 | project TotalOriginalSize
 ```
 
+**Output**
+
+|TotalOriginalSize|
+|--|
+|60192011|
+
+> [!TIP]
+> To format the bytes result to `MB`, `GB`, or another unit, use [format_bytes()](kusto/query/format-bytesfunction.md).
+
 ## Estimate size of a table in bytes
 
-To estimate the data size based on the actual data types and their respective byte sizes, use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function. This function returns an estimated data size in bytes of selected columns. To get the estimate for the entire table, use the [sum()](kusto/query/sum-aggfunction.md) aggregation function. Then, format the information to bytes with the [format_bytes()](kusto/query/format-bytesfunction.md) function.
+To estimate the data size based on the actual data types and their respective byte sizes, use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function. This function returns an estimated data size in bytes of selected columns. To get the estimate for the entire table, use the [sum()](kusto/query/sum-aggfunction.md) aggregation function.
 
 This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory and gain a deeper understanding of the data's storage requirements.
 
@@ -35,9 +44,9 @@ The following query estimates the original data size of the `StormEvents` table 
 
 ```kusto
 StormEvents
-| extend sizeest = estimate_data_size(*)
-| summarize sum(sizeest)
-| extend sizeGB = format_bytes(sum_sizeest,2,"GB")
+| extend sizeEst = estimate_data_size(*)
+| summarize sum(sizeEst)
+| project sizeEst
 ```
 
 ## Estimate size of multiple tables
@@ -53,12 +62,15 @@ The following query estimates the data size based for the `StormEvents` and `Pop
 
 ```kusto
 union withsource=_TableName StormEvents, PopulationData
-| extend sizeest = estimate_data_size(*)
-| summarize total=sum(sizeest)
-| extend sizeGB = format_bytes(total,2,"GB")
-| project total, sizeGB
+| extend sizeEst = estimate_data_size(*)
+| summarize totalSize=sum(sizeEst)
+| project totalSize
 ```
+
+## Format
+
+Then, format the information to bytes with the [format_bytes()](kusto/query/format-bytesfunction.md) function.
 
 ## How should I measure the size of my table?
 
-We recommend using [.show table details](kusto/management/show-table-details-command.md) command. Nonetheless, the choice of method depends on your specific use case and the information you seek to obtain. Whether you need to estimate the original data size, assess the combined data size from multiple tables, or consider byte sizes of actual data types, these methods provide valuable insights into the size of your tables in Azure Data Explorer.
+We recommend using [.show table details](kusto/management/show-table-details-command.md) command. Nonetheless, the choice of method depends on your specific use case and the information you seek to obtain. Whether you need to estimate the original data size, consider byte sizes of actual data types, or assess the combined data size from multiple tables, these methods provide valuable insights into the size of your tables in Azure Data Explorer.
