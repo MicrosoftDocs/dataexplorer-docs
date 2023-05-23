@@ -1,5 +1,5 @@
 ---
-title: Show external table artifacts - Azure Data Explorer
+title:  Show external table artifacts
 description: Learn how to show external table artifacts for Azure Blob Storage or Azure Data Lake external tables.
 ms.topic: reference
 ms.date: 04/09/2023

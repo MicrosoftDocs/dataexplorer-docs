@@ -1,5 +1,5 @@
 ---
-title: Commands management - Azure Data Explorer
+title:  Commands management
 description: This article describes commands management in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

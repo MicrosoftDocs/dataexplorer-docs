@@ -1,5 +1,5 @@
 ---
-title: Numerical operators - Azure Data Explorer
+title:  Numerical operators
 description: Learn how to use Numerical operators to calculate a value from two or more numbers.
 ms.reviewer: alexans
 ms.topic: reference

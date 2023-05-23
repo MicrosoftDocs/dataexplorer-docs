@@ -1,5 +1,5 @@
 ---
-title: .alter ingestion mapping - Azure Data Explorer
+title:  .alter ingestion mapping
 description: Learn how to use the .alter ingestion mapping command to alter a table or database's existing ingestion mapping 
 ms.reviewer: orspodek
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: Continuous data export - Azure Data Explorer
+title:  Continuous data export
 description: This article describes Continuous data export in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
@@ -31,7 +31,7 @@ All continuous export commands require at least [Database Admin](../access-contr
 * **Number of files**:
   * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#number-of-files). Each continuous export iteration always writes to new files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs. The frequency parameter is `intervalBetweenRuns`.
 * **External table storage accounts**:
-  * For best performance, the Azure Data Explorer cluster and the storage account(s) should be colocated in the same Azure region.
+  * For best performance, the cluster and the storage account(s) should be colocated in the same Azure region.
   * Continuous export works in a distributed manner, such that all nodes in the cluster are exporting concurrently. On large clusters, and if the exported data volume is large, this might lead to storage throttling. It's recommended to configure multiple storage accounts for the external table. See [storage failures during export commands](export-data-to-storage.md#failures-during-export-commands) for more details.
 
 ## Exactly once export
@@ -110,7 +110,7 @@ To create a continuous export job with a query that references a table with [Row
 * Continuous export supports cross-database calls, only when configured with a managed identity.
 * Continuous export doesn't support cross-cluster calls.
 * Continuous export isn't designed to work over [materialized views](../materialized-views/materialized-view-overview.md), since a materialized view may be updated, while data exported to storage is always append only and never updated.
-* Continuous export isn't designed for low-latency streaming data out of Azure Data Explorer.
+* Continuous export isn't designed for low-latency streaming data out of your cluster.
 * By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes in the cluster.
 * If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](../../../ingest-data-event-grid-overview.md#known-event-grid-issues).
 * Continuous export can be configured to an external table with the following formats: `CSV`, `TSV`, `JSON`, and `Parquet`.

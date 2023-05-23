@@ -1,5 +1,5 @@
 ---
-title: Monitor materialized views - Azure Data Explorer
+title:  Monitor materialized views
 description: This article describes how to monitor materialized views in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

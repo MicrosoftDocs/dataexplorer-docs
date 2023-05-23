@@ -1,5 +1,5 @@
 ---
-title: .create ingestion mapping - Azure Data Explorer
+title:  .create ingestion mapping
 description: This article describes .create ingestion mapping in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

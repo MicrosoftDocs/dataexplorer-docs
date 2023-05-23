@@ -1,5 +1,5 @@
 ---
-title: Show continuous data export artifacts - Azure Data Explorer
+title:  Show continuous data export artifacts
 description: This article describes how to show continuous data export artifacts in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

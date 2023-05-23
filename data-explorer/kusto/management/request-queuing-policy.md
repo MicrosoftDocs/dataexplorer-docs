@@ -1,5 +1,5 @@
 ---
-title: Request queuing policy - Azure Data Explorer
+title:  Request queuing policy
 description: This article describes the request queuing policy in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference
