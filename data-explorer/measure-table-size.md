@@ -4,7 +4,14 @@ description: Learn how to estimate table size in Azure Data Explorer.
 ms.topic: reference
 ms.date: 05/23/2023
 ---
-# Estimate table size in Azure Data Explorer
+Understanding the size of your tables can be helpful for efficient resource management and optimized query performance.
+
+In this article, learn how to:
+
+* [Estimate the original size of ingested data](#estimate-the-original-size-of-ingested-data): By understanding the amount of data being ingested into your tables, this method can help you make informed decisions about resource management and capacity planning.
+
+* [Estimate table size in terms of access bytes](#estimate-table-size-in-terms-of-access-bytes): By understanding the impact of different query patterns on data access, this method can help you make informed decisions about indexing, partitioning, and data organization strategies.
+
 
 Understanding the size of your tables is helpful for efficient resource management and optimized query performance. This document outlines various approaches to estimate the uncompressed data size of ingested data in your tables.
 
