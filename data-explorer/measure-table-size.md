@@ -42,7 +42,11 @@ StormEvents
 
 ## Estimate size of multiple tables
 
-To estimate the size of data in multiple tables, use the [union](kusto/query/unionoperator.md) operator combined with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function. The union operation combines all columns from all tables, creating a super-set of data. The `estimate_data_size(*)` function calculates the data size by considering many empty columns. Although this method may inflate the estimated data input due to the presence of empty columns, it provides valuable insights into the memory footprint if all data from all tables were combined.
+To estimate the size of data in multiple tables, use the [union](kusto/query/unionoperator.md) operator combined with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function. The union operation combines all columns from all tables, creating a super-set of data.
+
+In this case, the `estimate_data_size()` function may calculate the data size while considering many empty columns. With the empty columns, this method may inflate the estimated data input. Nonetheless, it can provide insight into the memory footprint in the case that all data from the specified tables were combined.
+
+The following query estimates the data size based for the `StormEvents` and `PopulationData` tables.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WNuw7CMAxFd77C6pSiTOxZKlA3hAR75LZGBDVJlTi8xMfjQhcWS/fq3OMSXAxwd3zJsaSejD1hN9IePcGRY/K7GwXOGg5xKiOy0FtkXL2BHkxhgOxeRJnBgFznkckOAti5V+tawFy8xyQRODKORrJaVvW/p21Ec5anyLZ7MmX1XeiNrtqmmuEpxSv1/DPpZfQBpnGSv8QAAAA=" target="_blank">Run the query</a>
