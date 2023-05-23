@@ -20,7 +20,27 @@ Use the [.show table details](kusto/management/show-table-details-command.md) to
 
 This command provides an estimation of the uncompressed size of data ingested into your table based on the assumption that the data was transferred in CSV format. This estimation takes into account the approximate lengths of numeric values, such as integers, longs, datetimes, and guids, by considering their string representations. By using this approach, the command quickly calculates an overview of the data size.
 
-### Example
+For an example, see [Use .show table details](#use-show-table-details).
+
+## Estimate table size in terms of access bytes
+
+Use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function to estimate table size based on data types and their respective byte sizes.
+
+This function returns an estimated data size in bytes of selected columns. To get the estimate for the entire table, use the [sum()](kusto/query/sum-aggfunction.md) aggregation function. This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory and gain a deeper understanding of the data's storage requirements.
+
+For an example, see [Use estimate_data_size()](#use-estimate_data_size).
+
+### Working with multiple tables
+
+To estimate the combined data size of multiple tables, you can use the [union](kusto/query/unionoperator.md) operator along with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function. However, it's important to note that this approach may inflate the estimated data input due to empty columns.
+
+By using `union`, you get a super-set of all columns from the specified tables. Then, the `estimate_data_size()` function calculates the data size, even considering empty columns. This approach offers insight into the memory footprint required if all data from the tables were combined.
+
+For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
+
+## Examples
+
+### Use .show table details
 
 The following query estimates the original data size of the `StormEvents` table.
 
@@ -41,13 +61,7 @@ The following query estimates the original data size of the `StormEvents` table.
 > [!TIP]
 > To format the bytes result to `MB`, `GB`, or another unit, use [format_bytes()](kusto/query/format-bytesfunction.md).
 
-## Estimate table size in terms of access bytes
-
-Use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function to estimate table size based on data types and their respective byte sizes.
-
-This function returns an estimated data size in bytes of selected columns. To get the estimate for the entire table, use the [sum()](kusto/query/sum-aggfunction.md) aggregation function. This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory and gain a deeper understanding of the data's storage requirements.
-
-### Example
+### Use estimate_data_size()
 
 The following query estimates the original data size of the `StormEvents` table in bytes.
 
@@ -69,13 +83,7 @@ StormEvents
 > [!NOTE]
 > The output is smaller even though the calculation is done over the same table. This is because this method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings.
 
-## Working with multiple tables
-
-To estimate the combined data size of multiple tables, you can use the [union](kusto/query/unionoperator.md) operator along with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function. However, it's important to note that this approach may inflate the estimated data input due to empty columns.
-
-By using `union`, you get a super-set of all columns from the specified tables. Then, the `estimate_data_size()` function calculates the data size, even considering empty columns. This approach offers insight into the memory footprint required if all data from the tables were combined.
-
-### Example
+### Use union with estimate_data_size()
 
 The following query estimates the data size based for all tables in the `Samples` database.
 
