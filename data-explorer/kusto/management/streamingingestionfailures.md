@@ -1,13 +1,11 @@
 ---
-title: Streaming ingestion failures - Azure Data Explorer
-description: This article describes the command to show streaming ingestion failures in Azure Data Explorer.
+title: .show streaming ingestion failures - Azure Data Explorer
+description: Learn how to use the `# .show streamingingestion failures` command to show streaming ingestion failures when data is ingested.
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/23/2023
 ---
 
-# Streaming ingestion failures
-
-## .show streamingingestion failures
+# .show streaming ingestion failures
 
 This command returns a result set that includes aggregated streaming ingestion failures that occur when [data is ingested using one of the streaming ingestion types](../../ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type).
 
