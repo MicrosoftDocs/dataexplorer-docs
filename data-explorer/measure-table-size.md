@@ -62,7 +62,7 @@ StormEvents
 
 **Output**
 
-|totalOriginalSize|
+|totalSize|
 |--|
 |58608932|
 
