@@ -6,9 +6,7 @@ ms.date: 05/23/2023
 ---
 # Measure table size in Azure Data Explorer
 
-Understanding the size of your tables can be helpful for efficient resource management and optimized query performance.
-
-In this article, learn how to:
+Understanding the size of your tables can be helpful for efficient resource management and optimized query performance. In this article, learn how to:
 
 * [Estimate the original size of ingested data](#estimate-the-original-size-of-ingested-data): Understand the amount of data being ingested into your tables to help you make informed decisions about resource management and capacity planning.
 
@@ -16,27 +14,22 @@ In this article, learn how to:
 
 ## Estimate the original size of ingested data
 
-Use the [.show table details](kusto/management/show-table-details-command.md) to estimate the original data size of a table.
+Use the [.show table details](kusto/management/show-table-details-command.md) to estimate the original data size of a table. For an example, see [Use .show table details](#use-show-table-details).
 
 This command provides an estimation of the uncompressed size of data ingested into your table based on the assumption that the data was transferred in CSV format. This estimation takes into account the approximate lengths of numeric values, such as integers, longs, datetimes, and guids, by considering their string representations. By using this approach, the command quickly calculates an overview of the data size.
 
-For an example, see [Use .show table details](#use-show-table-details).
-
 ## Estimate table size in terms of access bytes
 
-Use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function to estimate table size based on data types and their respective byte sizes.
+Use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function to estimate table size based on data types and their respective byte sizes. For an example, see [Use estimate_data_size()](#use-estimate_data_size).
 
 This function returns an estimated data size in bytes of selected columns. To get the estimate for the entire table, use the [sum()](kusto/query/sum-aggfunction.md) aggregation function. This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory and gain a deeper understanding of the data's storage requirements.
 
-For an example, see [Use estimate_data_size()](#use-estimate_data_size).
-
 ### Work with multiple tables
 
-You can use the [union](kusto/query/unionoperator.md) operator along with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function to estimate the combined data size of multiple tables.
+You can use the [union](kusto/query/unionoperator.md) operator along with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function to estimate the combined data size of multiple tables. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
 
-This approach may inflate the estimated data input due to empty columns. The inflation occurs because `union` creates a super-set of all columns from the specified tables, and `estimate_data_size()` calculates the data size even considering empty columns. This approach offers insight into the memory footprint required if all data from the tables were combined.
-
-For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
+> [!NOTE]
+> This approach may inflate the estimated data size due to empty columns, as `union` combines all columns from the specified tables and `estimate_data_size()` takes into account empty columns when calculating the data size.
 
 ## Examples
 
