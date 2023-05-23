@@ -20,6 +20,21 @@ The [.show table details](kusto/management/show-table-details-command.md) comman
 | project TotalOriginalSize
 ```
 
+
+## Estimate size of multiple tables
+
+To estimate the size of data in multiple tables, use the [union](kusto/query/unionoperator.md) operator combined with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function. The union operation combines all columns from all tables, creating a super-set of data. The `estimate_data_size(*)` function calculates the data size by considering many empty columns. Although this method may inflate the estimated data input due to the presence of empty columns, it provides valuable insights into the memory footprint if all data from all tables were combined.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WNuw7CMAxFd77C6pSiTOxZKlA3hAR75LZGBDVJlTi8xMfjQhcWS/fq3OMSXAxwd3zJsaSejD1hN9IePcGRY/K7GwXOGg5xKiOy0FtkXL2BHkxhgOxeRJnBgFznkckOAti5V+tawFy8xyQRODKORrJaVvW/p21Ec5anyLZ7MmX1XeiNrtqmmuEpxSv1/DPpZfQBpnGSv8QAAAA=" target="_blank">Run the query</a>
+
+```kusto
+union withsource=_TableName StormEvents, PopulationData
+| extend sizeest = estimate_data_size(*)
+| summarize total=sum(sizeest)
+| extend sizeGB = format_bytes(total,2,"GB")
+| project total, sizeGB
+```
 ## Estimate table size based on bytes of actual data types
 
 To estimate the data size based on the actual data types and their respective byte sizes, you can use the estimate data size function in combination with the sum and format_bytes operators. This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integers require 4 bytes, while longs, doubles, and datetimes require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory and gain a deeper understanding of the data's storage requirements.
