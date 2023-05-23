@@ -22,7 +22,7 @@ This command provides an estimation of the uncompressed size of data ingested in
 
 Use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function to estimate table size based on data types and their respective byte sizes. For an example, see [Use estimate_data_size()](#use-estimate_data_size).
 
-This function returns an estimated data size in bytes of selected columns. To get the estimate for the entire table, use the [sum()](kusto/query/sum-aggfunction.md) aggregation function. This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory and gain a deeper understanding of the data's storage requirements.
+This function returns an estimated data size in bytes of selected columns. To get the estimate for the entire table, use the [sum()](kusto/query/sum-aggfunction.md) aggregation function. This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory.
 
 ### Work with multiple tables
 
