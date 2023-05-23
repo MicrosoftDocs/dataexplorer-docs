@@ -1,5 +1,5 @@
 ---
-title: series_moving_avg_fl() - Azure Data Explorer
+title:  series_moving_avg_fl()
 description: This article describes series_moving_avg_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

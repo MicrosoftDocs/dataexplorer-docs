@@ -1,5 +1,5 @@
 ---
-title: .drop table and .drop tables - Azure Data Explorer
+title:  .drop table and .drop tables
 description: This article describes .drop table and .drop tables in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
