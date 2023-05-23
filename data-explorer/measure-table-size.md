@@ -68,24 +68,3 @@ StormEvents
 
 > [!NOTE]
 > The output is smaller even though the calculation is done over the same table. This is because this method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings.
-
-## Work with multiple tables
-
-To estimate the combined data size of multiple tables, you can use the [union](kusto/query/unionoperator.md) operator along with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function. By using `union`, you get a super-set of all columns from the specified tables. Then, the `estimate_data_size()` function calculates the data size, even considering empty columns. Although the inclusion of empty columns may inflate the estimated data input, this approach offers valuable insights into the memory footprint required if all data from the tables were combined.
-
-### Example
-
-The following query estimates the data size based for the `StormEvents` and `PopulationData` tables.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22MsQ7CMAxEd77CY4v4hUzQlSKVPTLUgKXYQYlTEOLjMRIj4717d005KzzYbjW3cqYQj3hKtEchmCwXGRZSqxs45HtLaG7v0HD1Bnoa6QyVXzRUY0Gj8bLNqYlCAPqhOLsdv1K37n1VmwgWj2DZMI2Fr6yYJifBu+7fXf8Bmb5D9qUAAAA=" target="_blank">Run the query</a>
-
-```kusto
-union withsource=_TableName StormEvents, PopulationData
-| extend sizeEstimateOfColumn = estimate_data_size(*)
-| summarize totalOriginalSize=sum(sizeEstimateOfColumn)
-```
-
-|totalOriginalSize|
-|--|
-|59737411|
