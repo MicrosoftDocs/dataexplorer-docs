@@ -1,5 +1,5 @@
 ---
-title: delete cluster policy request_classification command - Azure Data Explorer
+title:  delete cluster policy request_classification command
 description: This article describes the delete cluster policy request_classification command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

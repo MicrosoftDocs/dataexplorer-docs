@@ -1,5 +1,5 @@
 ---
-title: .delete table ingestion batching policy command - Azure Data Explorer
+title:  .delete table ingestion batching policy command
 description: This article describes the .delete table ingestion batching policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

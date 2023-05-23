@@ -1,5 +1,5 @@
 ---
-title: .show database merge policy command- Azure Data Explorer
+title:  .show database merge policy command
 description: This article describes the .show database merge policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

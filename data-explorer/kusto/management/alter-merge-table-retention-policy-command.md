@@ -1,5 +1,5 @@
 ---
-title: .alter-merge table retention policy command- Azure Data Explorer
+title:  .alter-merge table retention policy command
 description: Learn how to use the .alter-merge table retention policy command to change the table's retention policy.
 ms.reviewer: yonil
 ms.topic: reference

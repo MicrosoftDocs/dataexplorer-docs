@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Use aggregation functions in Kusto Query Language - Azure Data Explorer'
+title:  'Tutorial: Use aggregation functions in Kusto Query Language'
 description: This tutorial describes how to use aggregation functions in the Kusto Query Language.
 ms.topic: tutorial
 ms.date: 03/28/2023

@@ -1,15 +1,13 @@
 ---
-title: SQL to Kusto query translation - Azure Data Explorer
+title:  SQL to Kusto query translation
 description: Learn about the Kusto Query Language equivalent of SQL queries.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/31/2023
+ms.date: 05/01/2023
 ---
-# SQL to Kusto cheat sheet
+# SQL to Kusto Query Language cheat sheet
 
-If you're familiar with SQL and want to learn KQL, you can use Azure Data Explorer to translate SQL queries into KQL.
-
-To translate an SQL query, preface the SQL query with a comment line, `--`, and the keyword `explain`. The output will show the KQL version of the query, which can help you understand the KQL syntax and concepts.
+If you're familiar with SQL and want to learn KQL, translate SQL queries into KQL by prefacing the SQL query with a comment line, `--`, and the keyword `explain`. The output will show the KQL version of the query, which can help you understand the KQL syntax and concepts.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9PV5XKNCPBx9PRT4Ap29XF1DlFw9g/1C4l38nTX0NJUSCxWcFZwC/L3VQguyS/KdS1LzSspBgDZdzUzNQAAAA==" target="_blank">Run the query</a>

@@ -1,5 +1,5 @@
 ---
-title: Kusto retention policy controls how data is removed - Azure Data Explorer
+title:  Kusto retention policy controls how data is removed
 description: This article describes retention policies in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

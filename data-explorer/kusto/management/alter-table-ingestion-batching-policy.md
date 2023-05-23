@@ -1,5 +1,5 @@
 ---
-title: .alter table ingestion batching policy command - Azure Data Explorer
+title:  .alter table ingestion batching policy command
 description: Learn how to use the .alter table ingestion batching policy command to set the table's ingestion batching policy.
 ms.reviewer: yonil
 ms.topic: reference

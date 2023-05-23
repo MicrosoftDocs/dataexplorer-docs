@@ -3,7 +3,7 @@ title: Configure streaming ingestion on your Azure Data Explorer cluster
 description: Learn how to configure your Azure Data Explorer cluster and start loading data with streaming ingestion.
 ms.reviewer: alexefro
 ms.topic: how-to
-ms.date: 09/01/2021
+ms.date: 05/17/2023
 ---
 
 # Configure streaming ingestion on your Azure Data Explorer cluster
@@ -16,6 +16,8 @@ Streaming ingestion is useful for loading data when you need low latency between
 If the stream of data into each table is high (over 4 GB per hour), consider using [batch ingestion](kusto/management/batchingpolicy.md).
 
 To learn more about different ingestion methods, see [data ingestion overview](ingest-data-overview.md).
+
+> For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/ingest-data-streaming).
 
 ## Choose the appropriate streaming ingestion type
 
@@ -72,40 +74,35 @@ To enable streaming ingestion while creating a new Azure Data Explorer cluster, 
 
 ```csharp
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Kusto; // Required package Microsoft.Azure.Management.Kusto
-using Microsoft.Azure.Management.Kusto.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory; // Required package Microsoft.IdentityModel.Clients.ActiveDirectory
-using Microsoft.Rest;
-
-namespace StreamingIngestion
+using Azure;
+using Azure.Core;
+using Azure.Identity; // Required package Azure.Identity
+using Azure.ResourceManager;
+using Azure.ResourceManager.Kusto; // Required package Azure.ResourceManager.Kusto
+using Azure.ResourceManager.Kusto.Models;
+namespace StreamingIngestion;
+class Program
 {
-    class Program
+    static async Task Main(string[] args)
     {
-        static async Task Main(string[] args)
-        {
-            string appId = "<appId>";
-            string appKey = "<appKey>";
-            string appTenant = "<appTenant>";
-            string clusterName = "<clusterName>";
-            string resourceGroupName = "<resourceGroupName>";
-            string subscriptionId = "<subscriptionId>";
-            string location = "<location>";
-            string skuName = "<skuName>";
-            string tier = "<tier>";
-
-            var authenticationContext = new AuthenticationContext($"https://login.windows.net/{appTenant}");
-            var credential = new ClientCredential(appId, appKey);
-            var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
-
-            var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-            var kustoManagementClient = new KustoManagementClient(credentials)
-            {
-                SubscriptionId = subscriptionId
-            };
-
-            var cluster = new Cluster(location, new AzureSku(skuName, tier), enableStreamingIngest:true);
-            await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
-        }
+        var appId = "<appId>";
+        var appKey = "<appKey>";
+        var appTenant = "<appTenant>";
+        var subscriptionId = "<subscriptionId>";
+        var credentials = new ClientSecretCredential(appTenant, appId, appKey);
+        var resourceManagementClient = new ArmClient(credentials, subscriptionId);
+        var resourceGroupName = "<resourceGroupName>";
+        var clusterName = "<clusterName>";
+        
+        var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+        var resourceGroup = (await subscription.GetResourceGroupAsync(resourceGroupName)).Value;
+        var clusters = resourceGroup.GetKustoClusters();
+        
+        var location = new AzureLocation("<location>");
+        var skuName = new KustoSkuName("<skuName>");
+        var skuTier = new KustoSkuTier("<skuTier>");
+        var clusterData = new KustoClusterData(location, new KustoSku(skuName, skuTier)) { IsStreamingIngestEnabled = true };
+        await clusters.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, clusterData);
     }
 }
 ```
@@ -127,41 +124,33 @@ If you have an existing cluster, you can enable streaming ingestion using the Az
 
 #### [C#](#tab/azure-csharp)
 
-You can enable streaming ingestion while creating a new Azure Data Explorer cluster.
+You can enable streaming ingestion while updating an existing Azure Data Explorer cluster.
 
 ```csharp
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Kusto; // Required package Microsoft.Azure.Management.Kusto
-using Microsoft.Azure.Management.Kusto.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory; // Required package Microsoft.IdentityModel.Clients.ActiveDirectory
-using Microsoft.Rest;
-
-namespace StreamingIngestion
+using Azure;
+using Azure.Identity; // Required package Azure.Identity
+using Azure.ResourceManager;
+using Azure.ResourceManager.Kusto; // Required package Azure.ResourceManager.Kusto
+using Azure.ResourceManager.Kusto.Models;
+namespace StreamingIngestion;
+class Program
 {
-    class Program
+    static async Task Main(string[] args)
     {
-        static async Task Main(string[] args)
-        {
-            string appId = "<appId>";
-            string appKey = "<appKey>";
-            string appTenant = "<appTenant>";
-            string clusterName = "<clusterName>";
-            string resourceGroupName = "<resourceGroupName>";
-            string subscriptionId = "<subscriptionId>";
-
-            var authenticationContext = new AuthenticationContext($"https://login.windows.net/{appTenant}");
-            var credential = new ClientCredential(appId, appKey);
-            var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
-
-            var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-            var kustoManagementClient = new KustoManagementClient(credentials)
-            {
-                SubscriptionId = subscriptionId
-            };
-
-            var clusterUpdateParameters = new ClusterUpdate(enableStreamingIngest: true);
-            await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdateParameters);
-        }
+        var appId = "<appId>";
+        var appKey = "<appKey>";
+        var appTenant = "<appTenant>";
+        var subscriptionId = "<subscriptionId>";
+        var credentials = new ClientSecretCredential(appTenant, appId, appKey);
+        var resourceManagementClient = new ArmClient(credentials, subscriptionId);
+        var resourceGroupName = "<resourceGroupName>";
+        var clusterName = "<clusterName>";
+        var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+        var resourceGroup = (await subscription.GetResourceGroupAsync(resourceGroupName)).Value;
+        var cluster = (await resourceGroup.GetKustoClusterAsync(clusterName)).Value;
+        var clusterPatch = new KustoClusterPatch(cluster.Data.Location) { IsStreamingIngestEnabled = true };
+        await cluster.UpdateAsync(WaitUntil.Completed, clusterPatch);
     }
 }
 ```
@@ -209,51 +198,42 @@ Create a table to receive the streaming ingestion data and define its related po
 #### [C#](#tab/azure-csharp)
 
 ```csharp
-using System.Threading.Tasks;
 using Kusto.Data; // Requires Package Microsoft.Azure.Kusto.Data
 using Kusto.Data.Common;
 using Kusto.Data.Net.Client;
-
-namespace StreamingIngestion
+namespace StreamingIngestion;
+class Program
 {
-    class Program
+    static async Task Main(string[] args)
     {
-        static async Task Main(string[] args)
-        {
-            string clusterPath = "https://<clusterName>.kusto.windows.net";
-            string appId = "<appId>";
-            string appKey = "<appKey>";
-            string appTenant = "<appTenant>";
-            string dbName = "<dbName>";
-            string tableName = "<tableName>";
-
-            // Create Kusto connection string with App Authentication
-            var csb =
-                new KustoConnectionStringBuilder(clusterPath)
-                    .WithAadApplicationKeyAuthentication(
-                        applicationClientId: appId,
-                        applicationKey: appKey,
-                        authority: appTenant
-                    );
-
-            var tableSchema = new TableSchema(
-                tableName,
-                new ColumnSchema[]
-                {
-                    new ColumnSchema("TimeStamp", "System.DateTime"),
-                    new ColumnSchema("Name", "System.String"),
-                    new ColumnSchema("Metric", "System.int"),
-                    new ColumnSchema("Source", "System.String"),
-                });
-            var tableCreateCommand = CslCommandGenerator.GenerateTableCreateCommand(tableSchema);
-            var tablePolicyAlterCommand = CslCommandGenerator.GenerateTableAlterStreamingIngestionPolicyCommand(tableName, isEnabled: true);
-
-            using (var client = KustoClientFactory.CreateCslAdminProvider(csb))
+        var clusterPath = "https://<clusterName>.<region>.kusto.windows.net";
+        var appId = "<appId>";
+        var appKey = "<appKey>";
+        var appTenant = "<appTenant>";
+        // Create Kusto connection string with App Authentication
+        var connectionStringBuilder = new KustoConnectionStringBuilder(clusterPath)
+            .WithAadApplicationKeyAuthentication(
+                applicationClientId: appId,
+                applicationKey: appKey,
+                authority: appTenant
+            );
+        using var client = KustoClientFactory.CreateCslAdminProvider(connectionStringBuilder);
+        
+        var tableName = "<tableName>";
+        var tableSchema = new TableSchema(
+            tableName,
+            new ColumnSchema[]
             {
-                client.ExecuteControlCommand(tableCreateCommand);
-                client.ExecuteControlCommand(tablePolicyAlterCommand);
-            }
-        }
+                new("TimeStamp", "System.DateTime"),
+                new("Name", "System.String"),
+                new("Metric", "System.int"),
+                new("Source", "System.String"),
+            });
+        var tableCreateCommand = CslCommandGenerator.GenerateTableCreateCommand(tableSchema);
+        var tablePolicyAlterCommand = CslCommandGenerator.GenerateTableAlterStreamingIngestionPolicyCommand(tableName, isEnabled: true);
+        
+        await client.ExecuteControlCommandAsync(tableCreateCommand);
+        await client.ExecuteControlCommandAsync(tablePolicyAlterCommand);
     }
 }
 ```
@@ -267,54 +247,37 @@ Create your application for ingesting data to your cluster using your preferred 
 ### [C#](#tab/csharp)
 
 ```csharp
-using Kusto.Data;
-using Kusto.Ingest;
 using System.IO;
+using System.Threading.Tasks;
+using Kusto.Data; // Requires Package Microsoft.Azure.Kusto.Data
 using Kusto.Data.Common;
-
-namespace StreamingIngestion
+using Kusto.Ingest; // Requires Package Microsoft.Azure.Kusto.Ingest
+namespace StreamingIngestion;
+class Program
 {
-    class Program
+    static async Task Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            string clusterPath = "https://<clusterName>.kusto.windows.net";
-            string appId = "<appId>";
-            string appKey = "<appKey>";
-            string appTenant = "<appTenant>";
-            string dbName = "<dbName>";
-            string tableName = "<tableName>";
-
-            // Create Kusto connection string with App Authentication
-            var csb =
-                new KustoConnectionStringBuilder(clusterPath)
-                    .WithAadApplicationKeyAuthentication(
-                        applicationClientId: appId,
-                        applicationKey: appKey,
-                        authority: appTenant
-                    );
-
-            // Create a disposable client that will execute the ingestion
-            using (IKustoIngestClient client = KustoIngestFactory.CreateStreamingIngestClient(csb))
-            {
-                // Initialize client properties
-                var ingestionProperties =
-                    new KustoIngestionProperties(
-                        databaseName: dbName,
-                        tableName: tableName
-                    );
-
-                // Ingest from a compressed file
-                var fileStream = File.Open("MyFile.gz", FileMode.Open);
-                // Create source options
-                var sourceOptions = new StreamSourceOptions()
-                {
-                    CompressionType = DataSourceCompressionType.GZip,
-                };
-                // Ingest from stream
-                var status = client.IngestFromStreamAsync(fileStream, ingestionProperties, sourceOptions).GetAwaiter().GetResult();
-            }
-        }
+        var clusterPath = "https://<clusterName>.<region>.kusto.windows.net";
+        var appId = "<appId>";
+        var appKey = "<appKey>";
+        var appTenant = "<appTenant>";
+        // Create Kusto connection string with App Authentication
+        var connectionStringBuilder = new KustoConnectionStringBuilder(clusterPath)
+            .WithAadApplicationKeyAuthentication(
+                applicationClientId: appId,
+                applicationKey: appKey,
+                authority: appTenant
+            );
+        // Create a disposable client that will execute the ingestion
+        using var client = KustoIngestFactory.CreateStreamingIngestClient(connectionStringBuilder);
+        // Ingest from a compressed file
+        var fileStream = File.Open("MyFile.gz", FileMode.Open);
+        // Initialize client properties
+        var ingestionProperties = new KustoIngestionProperties(databaseName: "<databaseName>", tableName: "<tableName>");
+        // Create source options
+        var sourceOptions = new StreamSourceOptions { CompressionType = DataSourceCompressionType.GZip, };
+        // Ingest from stream
+        await client.IngestFromStreamAsync(fileStream, ingestionProperties, sourceOptions);
     }
 }
 ```
@@ -325,7 +288,7 @@ namespace StreamingIngestion
 from azure.kusto.data import KustoConnectionStringBuilder, DataFormat
 from azure.kusto.ingest import IngestionProperties, KustoStreamingIngestClient
 
-clusterPath = "https://<clusterName>.kusto.windows.net"
+clusterPath = "https://<clusterName>.<region>.kusto.windows.net"
 appId = "<appId>"
 appKey = "<appKey>"
 appTenant = "<appTenant>"
@@ -364,7 +327,7 @@ import { KustoConnectionStringBuilder } from "azure-kusto-data";
 // const {DataFormat} = require("azure-kusto-ingest").IngestionPropertiesEnums;
 // const StreamingIngestClient = require("azure-kusto-ingest").StreamingIngestClient;
 
-const clusterPath = "https://<clusterName>.kusto.windows.net";
+const clusterPath = "https://<clusterName>.<region>.kusto.windows.net";
 const appId = "<appId>";
 const appKey = "<appKey>";
 const appTenant = "<appTenant>";
@@ -405,7 +368,7 @@ import (
 )
 
 func ingest() {
-    clusterPath := "https://<clusterName>.kusto.windows.net"
+    clusterPath := "https://<clusterName>.<region>.kusto.windows.net"
     appId := "<appId>"
     appKey := "<appKey>"
     appTenant := "<appTenant>"
@@ -458,7 +421,7 @@ import java.io.InputStream;
 
 public class FileIngestion {
     public static void main(String[] args) throws Exception {
-        String clusterPath = "https://<clusterName>.kusto.windows.net";
+        String clusterPath = "https://<clusterName>.<region>.kusto.windows.net";
         String appId = "<appId>";
         String appKey = "<appKey>";
         String appTenant = "<appTenant>";
@@ -533,35 +496,25 @@ using System.Threading.Tasks;
 using Kusto.Data; // Requires Package Microsoft.Azure.Kusto.Data
 using Kusto.Data.Common;
 using Kusto.Data.Net.Client;
-
-namespace StreamingIngestion
+namespace StreamingIngestion;
+class Program
 {
-    class Program
+    static async Task Main(string[] args)
     {
-        static async Task Main(string[] args)
-        {
-            string clusterPath = "https://<clusterName>.kusto.windows.net";
-            string appId = "<appId>";
-            string appKey = "<appKey>";
-            string appTenant = "<appTenant>";
-            string dbName = "<dbName>";
-            string tableName = "<tableName>";
-            
-            // Create Kusto connection string with App Authentication
-            var csb =
-                new KustoConnectionStringBuilder(clusterPath)
-                    .WithAadApplicationKeyAuthentication(
-                        applicationClientId: appId,
-                        applicationKey: appKey,
-                        authority: appTenant
-                    );
-            
-            var tablePolicyDropCommand = CslCommandGenerator.GenerateTableStreamingIngestionPolicyDropCommand(dbName, tableName);
-            using (var client = KustoClientFactory.CreateCslAdminProvider(csb))
-            {
-                client.ExecuteControlCommand(tablePolicyDropCommand);
-            }
-        }
+        var clusterPath = "https://<clusterName>.<region>.kusto.windows.net";
+        var appId = "<appId>";
+        var appKey = "<appKey>";
+        var appTenant = "<appTenant>";
+        // Create Kusto connection string with App Authentication
+        var connectionStringBuilder = new KustoConnectionStringBuilder(clusterPath)
+            .WithAadApplicationKeyAuthentication(
+                applicationClientId: appId,
+                applicationKey: appKey,
+                authority: appTenant
+            );
+        using var client = KustoClientFactory.CreateCslAdminProvider(connectionStringBuilder);
+        var tablePolicyDropCommand = CslCommandGenerator.GenerateTableStreamingIngestionPolicyDropCommand("<dbName>", "<tableName>");
+        await client.ExecuteControlCommandAsync(tablePolicyDropCommand);
     }
 }
 ```
@@ -570,37 +523,29 @@ To disable streaming ingestion on your cluster, run the following code:
 
 ```csharp
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Kusto; // Required package Microsoft.Azure.Management.Kusto
-using Microsoft.Azure.Management.Kusto.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory; // Required package Microsoft.IdentityModel.Clients.ActiveDirectory
-using Microsoft.Rest;
-
-namespace StreamingIngestion
+using Azure;
+using Azure.Identity; // Required package Azure.Identity
+using Azure.ResourceManager;
+using Azure.ResourceManager.Kusto; // Required package Azure.ResourceManager.Kusto
+using Azure.ResourceManager.Kusto.Models;
+namespace StreamingIngestion;
+class Program
 {
-    class Program
+    static async Task Main(string[] args)
     {
-        static async Task Main(string[] args)
-        {
-            string appId = "<appId>";
-            string appKey = "<appKey>";
-            string appTenant = "<appTenant>";
-            string clusterName = "<clusterName>";
-            string resourceGroupName = "<resourceGroupName>";
-            string subscriptionId = "<subscriptionId>";
-            
-            var authenticationContext = new AuthenticationContext($"https://login.windows.net/{appTenant}");
-            var credential = new ClientCredential(appId, appKey);
-            var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
-            
-            var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
-            var kustoManagementClient = new KustoManagementClient(credentials)
-            {
-                SubscriptionId = subscriptionId
-        };
-        
-            var clusterUpdateParameters = new ClusterUpdate(enableStreamingIngest: false);
-            await kustoManagementClient.Clusters.UpdateAsync(resourceGroupName, clusterName, clusterUpdateParameters);
-        }
+        var appId = "<appId>";
+        var appKey = "<appKey>";
+        var appTenant = "<appTenant>";
+        var subscriptionId = "<subscriptionId>";
+        var credentials = new ClientSecretCredential(appTenant, appId, appKey);
+        var resourceManagementClient = new ArmClient(credentials, subscriptionId);
+        var resourceGroupName = "<resourceGroupName>";
+        var clusterName = "<clusterName>";
+        var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+        var resourceGroup = (await subscription.GetResourceGroupAsync(resourceGroupName)).Value;
+        var cluster = (await resourceGroup.GetKustoClusterAsync(clusterName)).Value;
+        var clusterPatch = new KustoClusterPatch(cluster.Data.Location) { IsStreamingIngestEnabled = false };
+        await cluster.UpdateAsync(WaitUntil.Completed, clusterPatch);
     }
 }
 ```

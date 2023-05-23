@@ -1,5 +1,5 @@
 ---
-title: Create and alter SQL Server external tables - Azure Data Explorer
+title:  Create and alter SQL Server external tables
 description: This article describes how to create and alter external tables based on SQL Server tables.
 ms.reviewer: orspodek
 ms.topic: reference
