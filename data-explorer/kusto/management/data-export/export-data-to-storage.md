@@ -167,20 +167,6 @@ Authentication or authorization failures during export commands can occur when t
 
 On export, Kusto data types are mapped to Parquet data types using the following rules:
 
-| Kusto Data Type | Parquet Data Type | Parquet Annotation | Comments |
-| --------------- | ----------------- | ------------------ | -------- |
-| `bool`     | `BOOLEAN` | | |
-| `datetime` | `INT96` | | |
-| `dynamic`  | `BYTE_ARRAY` | UTF-8 | Serialized as JSON string |
-| `guid` | `BYTE_ARRAY` | UTF-8 | |
-| `int` | `INT32` | | |
-| `long` | `INT64` | | |
-| `real` | `DOUBLE` | | |
-| `string` | `BYTE_ARRAY` | UTF-8 | |
-| `timespan` | `INT64` | | Stored as ticks (100-nanosecond units) count |
-| `decimal` | `BYTE_ARRAY` | DECIMAL | |
-
-When specifying 'useNativeParquetWriter=true', Kusto data types are mapped to Parquet data types using the following rules:
 
 | Kusto Data Type | Parquet Data Type | Parquet Annotation | Comments |
 | --------------- | ----------------- | ------------------ | -------- |
@@ -194,3 +180,18 @@ When specifying 'useNativeParquetWriter=true', Kusto data types are mapped to Pa
 | `string` | `BYTE_ARRAY` | UTF-8 | |
 | `timespan` | `INT64` | | Stored as ticks (100-nanosecond units) count |
 | `decimal` | `FIXED_LENGTH_BYTE_ARRAY` | DECIMAL | |
+
+When specifying 'useNativeParquetWriter=false', Kusto data types are mapped to Parquet data types using the following rules:
+
+| Kusto Data Type | Parquet Data Type | Parquet Annotation | Comments |
+| --------------- | ----------------- | ------------------ | -------- |
+| `bool`     | `BOOLEAN` | | |
+| `datetime` | `INT96` | | |
+| `dynamic`  | `BYTE_ARRAY` | UTF-8 | Serialized as JSON string |
+| `guid` | `BYTE_ARRAY` | UTF-8 | |
+| `int` | `INT32` | | |
+| `long` | `INT64` | | |
+| `real` | `DOUBLE` | | |
+| `string` | `BYTE_ARRAY` | UTF-8 | |
+| `timespan` | `INT64` | | Stored as ticks (100-nanosecond units) count |
+| `decimal` | `BYTE_ARRAY` | DECIMAL | |
