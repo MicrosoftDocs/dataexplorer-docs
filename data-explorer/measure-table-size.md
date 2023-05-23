@@ -24,7 +24,7 @@ Use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) along 
 
 This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory.
 
-### Work with multiple tables
+### Estimate size of multiple tables
 
 You can use the [union](kusto/query/unionoperator.md) operator along with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function to estimate the combined data size of multiple tables. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
 
