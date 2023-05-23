@@ -33,3 +33,7 @@ StormEvents
 | summarize sum(sizeest)
 | extend sizeGB = format_bytes(sum_sizeest,2,"GB")
 ```
+
+## How should I measure the size of my table?
+
+We recommend using [.show table details](kusto/management/show-table-details-command.md) command. Nonetheless, the choice of method depends on your specific use case and the information you seek to obtain. Whether you need to estimate the original data size, assess the combined data size from multiple tables, or consider byte sizes of actual data types, these methods provide valuable insights into the size of your tables in Azure Data Explorer.
