@@ -6,11 +6,13 @@ ms.date: 05/23/2023
 ---
 # Estimate table size in Azure Data Explorer
 
-To effectively manage resources and optimize query performance, it's helpful to understand the size of your tables. This document explains various methods to estimate table size using [Kusto Query Language (KQL)](kusto/query/index.md).
+Understanding the size of your tables is helpful for efficient resource management and optimized query performance. This document outlines various approaches to estimate the uncompressed data size of ingested data in your tables.
 
-## Estimate table size
+## Estimate size of a table
 
-The [.show table details](kusto/management/show-table-details-command.md) command is a straightforward and reliable way to estimate the original data size of a table. The command provides an estimation based on the assumption that the data was transferred in CSV format. This assumption means that the command takes into account the approximate lengths of numeric values, such as integers, longs, datetimes, and guids to quickly get an overview of the data size.
+The [.show table details](kusto/management/show-table-details-command.md) command is a straightforward and reliable way to estimate the original data size of a table. The command provides an estimation based on the assumption that the data was transferred in CSV format. This estimation takes into account the approximate lengths of numeric values, such as integers, longs, datetimes, and guids, by considering their string representations. By using this approach, the command quickly calculates an overview of the data size.
+
+The following query uses the `.show` `table` `details` command to estimate the original data size of the `StormEvents` table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrzsgvVyhJTMpJVQguyS/KdS1LzSspVkhJLUnMzCnmqlEoKMrPSk0uUQjJL0nM8S/KTM/MS8wJzqxKBQAIuj6COwAAAA==" target="_blank">Run the query</a>
