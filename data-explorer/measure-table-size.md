@@ -22,6 +22,23 @@ The following query uses the `.show` `table` `details` command to estimate the o
 | project TotalOriginalSize
 ```
 
+## Estimate size of a table in bytes
+
+To estimate the data size based on the actual data types and their respective byte sizes, use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function. This function returns an estimated data size in bytes of selected columns. To get the estimate for the entire table, use the [sum()](kusto/query/sum-aggfunction.md) aggregation function. Then, format the information to bytes with the [format_bytes()](kusto/query/format-bytesfunction.md) function.
+
+This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory and gain a deeper understanding of the data's storage requirements.
+
+The following query estimates the original data size of the `StormEvents` table in bytes.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRSK0oSc1LUSjOrEpNLS5RsFUAkpm5iSWp8SmJJYnxIHENLU2gwuLS3NzEIiAXxNKAqtdENcHdCWhAGtD4xJL4pMqS1GINoNp4qFodIx0ldyclTQDsmXiFgAAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| extend sizeest = estimate_data_size(*)
+| summarize sum(sizeest)
+| extend sizeGB = format_bytes(sum_sizeest,2,"GB")
+```
 
 ## Estimate size of multiple tables
 
