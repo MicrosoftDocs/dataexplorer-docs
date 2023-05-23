@@ -1,9 +1,9 @@
 ---
 title: .show extents - Azure Data Explorer
-description: This article describes the show extents command in Azure Data Explorer.
+description: Learn how to use the `.show extents` command to show the extents for a specified scope.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 05/23/2023
 ---
 
 # .show extents
@@ -58,14 +58,14 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
 * Using built-in filtering capabilities in the command is preferred over adding
   a query-based filter (such as adding `| where DatabaseName == '...'` and `TableName == '...'`).
 * If the optional list of extent IDs is provided, the returned data set is limited to those extents only.
-    * This method is much faster than filtering (adding `| where ExtentId in(...)`) to the results of "bare" commands.
+  * This method is faster than filtering (adding `| where ExtentId in(...)`) to the results of "bare" commands.
 * If `tags` filters are specified:
-    * The returned list is limited to those extents whose tags collection obeys *all* of the provided tags filters.
-    * This method is much faster than filtering (adding `| where Tags has '...' and Tags contains '...'` to) the results of "bare" commands.
-    * `has` filters are equality filters. Extents that aren't tagged with either of the specified tags will be filtered out.
-    * `!has` filters are equality negative filters. Extents that are tagged with either of the specified tags will be filtered out.
-    * `contains` filters are case-insensitive substring filters. Extents that don't have the specified strings as a substring of any of their tags will be filtered out.
-    * `!contains` filters are case-insensitive substring negative filters. Extents that have the specified strings as a substring of any of their tags will be filtered out.
+  * The returned list is limited to those extents whose tags collection obeys *all* of the provided tags filters.
+  * This method is faster than filtering (adding `| where Tags has '...' and Tags contains '...'` to) the results of "bare" commands.
+  * `has` filters are equality filters. Extents that aren't tagged with either of the specified tags are filtered out.
+  * `!has` filters are equality negative filters. Extents that are tagged with either of the specified tags are filtered out.
+  * `contains` filters are case-insensitive substring filters. Extents that don't have the specified strings as a substring of any of their tags are filtered out.
+  * `!contains` filters are case-insensitive substring negative filters. Extents that have the specified strings as a substring of any of their tags are filtered out.
 
 ## Database scope
 
@@ -118,20 +118,20 @@ If `hot` is specified - shows only extents that are expected to be in the hot ca
 
 Extent `E` in table `T` is tagged with tags `aaa`, `BBB`, and `ccc`.
 
-* This query will return `E`:
-    
+* This query returns `E`:
+
    ```kusto
     .show table T extents where tags has 'aaa' and tags contains 'bb'
    ```
-   
-* This query won't return `E` since it isn't tagged with `aa`:
-    
+
+* This query doesn't return `E` since it isn't tagged with `aa`:
+
    ```kusto
     .show table T extents where tags has 'aa' and tags contains 'bb'
    ```
-    
-* This query will return `E`:
-    
+
+* This query returns `E`:
+
    ```kusto
     .show table T extents where tags contains 'aaa' and tags contains 'bb' 
    ```
