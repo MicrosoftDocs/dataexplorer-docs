@@ -59,6 +59,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [series_fbprophet_forecast_fl()](series-fbprophet-forecast-fl.md) | Forecast time series values using the Prophet algorithm. |
 | [series_lag_fl()](series-lag-fl.md) | Apply a lag filter on series. |
 | [series_moving_avg_fl()](series-moving-avg-fl.md) | Apply a moving average filter on series. |
+| [series_moving_var_fl()](series-moving-var-fl.md) | Apply a moving variance filter on series. |
 | [series_mv_ee_anomalies_fl()](series-mv-ee-anomalies-fl.md) | Multivariate Anomaly Detection for series using elliptical envelope model. |
 | [series_mv_if_anomalies_fl()](series-mv-if-anomalies-fl.md) | Multivariate Anomaly Detection for series using isolation forest model. |
 | [series_mv_oc_anomalies_fl()](series-mv-oc-anomalies-fl.md) | Multivariate Anomaly Detection for series using one class SVM model. |
