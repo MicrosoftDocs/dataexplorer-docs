@@ -30,11 +30,11 @@ This function returns an estimated data size in bytes of selected columns. To ge
 
 For an example, see [Use estimate_data_size()](#use-estimate_data_size).
 
-### Working with multiple tables
+### Work with multiple tables
 
-To estimate the combined data size of multiple tables, you can use the [union](kusto/query/unionoperator.md) operator along with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function. However, it's important to note that this approach may inflate the estimated data input due to empty columns.
+You can use the [union](kusto/query/unionoperator.md) operator along with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function to estimate the combined data size of multiple tables.
 
-By using `union`, you get a super-set of all columns from the specified tables. Then, the `estimate_data_size()` function calculates the data size, even considering empty columns. This approach offers insight into the memory footprint required if all data from the tables were combined.
+This approach may inflate the estimated data input due to empty columns. The inflation occurs because `union` creates a super-set of all columns from the specified tables, and `estimate_data_size()` calculates the data size even considering empty columns. This approach offers insight into the memory footprint required if all data from the tables were combined.
 
 For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
 
