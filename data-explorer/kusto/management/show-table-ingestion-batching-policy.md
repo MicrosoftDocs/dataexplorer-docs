@@ -1,13 +1,13 @@
 ---
-title: ".show table ingestion batching policy command- Azure Data Explorer"
-description: "This article describes the .show table ingestion batching policy command in Azure Data Explorer."
+title: .show table ingestion batching policy command- Azure Data Explorer
+description: Learn how to use the `.show table ingestion batching policy` command to display the table's ingestion batching policy.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 05/23/2023
 ---
 # .show table ingestion batching policy
 
-Display the table [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
+Displays the table's [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
 
 ## Permissions
 
@@ -29,7 +29,7 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-The following command will return the batching policy on a table.
+The following command returns the batching policy on a table.
 
 ```kusto
 .show table MyTable policy ingestionbatching

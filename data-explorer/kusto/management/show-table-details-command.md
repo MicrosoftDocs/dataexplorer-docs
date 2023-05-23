@@ -1,9 +1,9 @@
 ---
 title: .show table details - Azure Data Explorer
-description: This article describes .show table details in Azure Data Explorer.
+description: Learn how to use the `.show table details` to show the properties of the specified tables in the database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/09/2023
+ms.date: 05/23/2023
 ---
 # .show table details
 
@@ -57,7 +57,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `*` *Taking into account policies of parent entities (such as database/cluster).*
 
-`**` *Values may be up to 15 minutes old, as they are taken from a cached summary of the table's extents.*
+`**` *Values may be up to 15 minutes old, as they're taken from a cached summary of the table's extents.*
 
 **Output example**
 
