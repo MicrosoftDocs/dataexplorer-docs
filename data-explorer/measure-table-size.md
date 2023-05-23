@@ -20,3 +20,16 @@ The [.show table details](kusto/management/show-table-details-command.md) comman
 | project TotalOriginalSize
 ```
 
+## Estimate table size based on bytes of actual data types
+
+To estimate the data size based on the actual data types and their respective byte sizes, you can use the estimate data size function in combination with the sum and format_bytes operators. This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integers require 4 bytes, while longs, doubles, and datetimes require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory and gain a deeper understanding of the data's storage requirements.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRSK0oSc1LUSjOrEpNLS5RsFUAkpm5iSWp8SmJJYnxIHENLU2gwuLS3NzEIiAXxNKAqtdENcHdCWhAGtD4xJL4pMqS1GINoNp4qFodIx0ldyclTQDsmXiFgAAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| extend sizeest = estimate_data_size(*)
+| summarize sum(sizeest)
+| extend sizeGB = format_bytes(sum_sizeest,2,"GB")
+```
