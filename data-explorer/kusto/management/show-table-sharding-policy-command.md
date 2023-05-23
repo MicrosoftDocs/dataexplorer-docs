@@ -1,9 +1,9 @@
 ---
 title: .show table sharding policy command - Azure Data Explorer
-description: This article describes the .show table sharding policy command in Azure Data Explorer.
+description: Learn how to use the `.show table sharding policy` command to show the table's sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 05/23/2023
 ---
 # .show table sharding policy
 
