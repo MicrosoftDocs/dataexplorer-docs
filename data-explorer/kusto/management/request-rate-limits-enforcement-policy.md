@@ -1,5 +1,5 @@
 ---
-title: Request rate limits enforcement policy - Azure Data Explorer
+title:  Request rate limits enforcement policy
 description: This article describes the request rate limits enforcement policy in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

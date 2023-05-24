@@ -1,5 +1,5 @@
 ---
-title: .show table retention policy command- Azure Data Explorer
+title: .show table retention policy command
 description: Learn how to use the `.show table retention policy` command to display the table's retention policy.
 ms.reviewer: yonil
 ms.topic: reference

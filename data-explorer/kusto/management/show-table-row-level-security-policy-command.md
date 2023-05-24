@@ -1,9 +1,9 @@
 ---
-title: .show table row level security policy command- Azure Data Explorer
+title: .show table row level security policy command
 description: Learn how to use the `.show table row level security policy` command to display the table's row level security policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 05/24/2023
 ---
 # .show table row level security policy
 

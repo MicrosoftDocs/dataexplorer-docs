@@ -1,9 +1,9 @@
 ---
-title: .show table merge policy command- Azure Data Explorer
+title: .show table merge policy command
 description: Learn how to use the `.show table merge policy` command to display the table's merge policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 05/24/2023
 ---
 # .show table merge policy
 

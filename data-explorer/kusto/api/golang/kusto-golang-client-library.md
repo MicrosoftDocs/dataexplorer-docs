@@ -1,6 +1,6 @@
 ---
-title: Azure Data Explorer Go SDK
-description: This article describes Azure Data Explorer Go SDK.
+title: Kusto Go SDK
+description: This article describes Kusto Go SDK.
 ms.reviewer: vladikb
 ms.topic: reference
 ms.date: 04/19/2023

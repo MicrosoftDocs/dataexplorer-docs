@@ -1,9 +1,9 @@
 ---
-title: .show table streaming ingestion policy command - Azure Data Explorer
+title: .show table streaming ingestion policy command
 description: Learn how to use the `.show table streaming ingestion policy` command to display the table's streaming ingestion policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 05/24/2023
 ---
 # .show table streaming ingestion policy
 

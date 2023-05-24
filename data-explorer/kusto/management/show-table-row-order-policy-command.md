@@ -1,5 +1,5 @@
 ---
-title: .show table row order policy command- Azure Data Explorer
+title: .show table row order policy command
 description: Learn how to use the `.show table row order policy` command to display the table's row order policy.
 ms.reviewer: yonil
 ms.topic: reference

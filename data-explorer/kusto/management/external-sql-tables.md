@@ -1,9 +1,9 @@
 ---
-title: Create and alter SQL Server external tables - Azure Data Explorer
-description: This article describes how to create and alter external tables based on SQL Server tables.
+title: Create and alter SQL Server external tables
+description: Learn how to create and alter an SQL Server external table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/09/2023
+ms.date: 05/24/2023
 ---
 
 # Create and alter SQL Server external tables
@@ -47,7 +47,8 @@ To `.create-or-alter` an external table using managed identity authentication re
 | `primarykey`        | `string`        | If `createifnotexists` is `true`, the resulting column name will be used as the SQL table's primary key if it is created by this command.                  |
 
 > [!NOTE]
-> * If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables. 
+>
+> * If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
 > * Altering the schema or format of an external SQL table is not supported.
 
 ## Authentication and authorization
