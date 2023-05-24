@@ -1,5 +1,5 @@
 ---
-title: .alter-merge materialized view partitioning policy command- Azure Data Explorer
+title:  .alter-merge materialized view partitioning policy command
 description: Learn how to use the .alter-merge materialized view partitioning policy command to create the materialized view's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference

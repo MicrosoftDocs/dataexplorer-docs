@@ -1,5 +1,5 @@
 ---
-title: .alter-merge table partitioning policy command- Azure Data Explorer
+title:  .alter-merge table partitioning policy command
 description: Learn how to use the .alter-merge table partitioning policy command to change the table's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference

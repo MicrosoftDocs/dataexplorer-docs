@@ -1,5 +1,5 @@
 ---
-title: Query SQL Server external tables - Azure Data Explorer
+title:  Query SQL Server external tables
 description: This article describes how to query external tables based on SQL Server tables.
 ms.reviewer: orspodek
 ms.topic: reference

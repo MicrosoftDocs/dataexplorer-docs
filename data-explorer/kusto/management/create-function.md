@@ -1,9 +1,9 @@
 ---
-title: .create function - Azure Data Explorer
+title: .create function
 description: Learn how to use the `.create function` command to create a stored function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 05/24/2023
 ---
 # .create function
 

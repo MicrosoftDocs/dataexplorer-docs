@@ -1,9 +1,9 @@
 ---
-title: Commands and queries management - Azure Data Explorer
+title: Commands and queries management
 description: Learn how to use the `.show commands and queries` command to view a table with admin commands and queries that have reached a final state.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 05/24/2023
 ---
 # Commands and queries management
 

@@ -1,5 +1,5 @@
 ---
-title: .show database - Azure Data Explorer
+title:  .show database
 description: This article describes .show database in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

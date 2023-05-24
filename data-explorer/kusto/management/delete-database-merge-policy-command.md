@@ -1,5 +1,5 @@
 ---
-title: .delete database merge policy command- Azure Data Explorer
+title:  .delete database merge policy command
 description: This article describes the .delete database merge policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

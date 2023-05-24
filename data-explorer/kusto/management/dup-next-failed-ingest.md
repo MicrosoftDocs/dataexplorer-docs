@@ -1,5 +1,5 @@
 ---
-title: .dup-next-failed-ingest - Azure Data Explorer
+title:  .dup-next-failed-ingest
 description: Learn how to troubleshoot your data ingestion on demand using the .dup-next-failed-ingest command.
 ms.topic: reference
 ms.date: 02/21/2023

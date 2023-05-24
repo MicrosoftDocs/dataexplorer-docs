@@ -1,5 +1,5 @@
 ---
-title: series_shapes_fl() - Azure Data Explorer
+title:  series_shapes_fl()
 description: This article describes the series_shapes_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

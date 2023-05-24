@@ -1,5 +1,5 @@
 ---
-title: .alter function docstring - Azure Data Explorer
+title:  .alter function docstring
 description: Learn how to use the .alter function docstring to change the `DocString` value of an existing function.
 ms.reviewer: orspodek
 ms.topic: reference

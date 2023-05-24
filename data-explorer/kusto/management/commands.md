@@ -1,9 +1,9 @@
 ---
-title: Commands management - Azure Data Explorer
+title: Commands management
 description: Learn how to use the `.show commands` command to view a table with admin commands that have reached a final state.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 05/24/2023
 ---
 # Commands management
 

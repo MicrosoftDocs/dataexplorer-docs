@@ -3,7 +3,7 @@ title: Ingest from storage using Event Grid subscription - Azure Data Explorer
 description: This article describes Ingest from storage using Event Grid subscription in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 07/31/2022
+ms.date: 05/08/2023
 ---
 # Event Grid data connection
 
@@ -78,14 +78,21 @@ Setting a database ingestion property that is different than the data connection
 For more information, see [upload blobs](#upload-blobs).
 
 ```csharp
+var container = new BlobContainerClient("<storageAccountConnectionString>", "<containerName>");
+await container.CreateIfNotExistsAsync();
+var blob = container.GetBlobClient("<blobName>");
 // Blob is dynamically routed to table `Events`, ingested using `EventsMapping` data mapping
-blob = container.GetBlockBlobReference(blobName2);
-blob.Metadata.Add("rawSizeBytes", "4096"); // the uncompressed size is 4096 bytes
-blob.Metadata.Add("kustoTable", "Events");
-blob.Metadata.Add("kustoDataFormat", "json");
-blob.Metadata.Add("kustoIngestionMappingReference", "EventsMapping");
-blob.Metadata.Add("kustoDatabase", "AnotherDB");
-blob.UploadFromFile(jsonCompressedLocalFileName);
+await blob.SetMetadataAsync(
+    new Dictionary<string, string>
+    {
+        { "rawSizeBytes", "4096" }, // the uncompressed size is 4096 bytes
+        { "kustoTable", "Events" },
+        { "kustoDataFormat", "json" },
+        { "kustoIngestionMappingReference", "EventsMapping" },
+        { "kustoDatabase", "AnotherDB" }
+    }
+);
+await blob.UploadAsync(BinaryData.FromString(File.ReadAllText("<filePath>")));
 ```
 
 ## Upload blobs
