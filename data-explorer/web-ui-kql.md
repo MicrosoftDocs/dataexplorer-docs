@@ -12,6 +12,14 @@ The [Azure Data Explorer web UI](https://dataexplorer.azure.com/) query editor o
 
 The query editor has built-in KQL Intellisense that offers contextual suggestions for functions and operators, and autocomplete that helps completes your queries to save you time and effort.
 
+To use KQL Intellisense and autocomplete:
+
+1. Start typing a query in the query editor.
+
+1. KQL Intellisense will activate, presenting dropdown options for entities, operators, functions, and more. Move between these options using the arrow keys on your keyboard, and select one by pressing *Enter* or selecting the option with your mouse.
+
+1. If you notice underlined keywords, hover over them to reveal errors or suggestions that triggered the highlighting.
+
 :::image type="content" source="media/web-ui-kql/intellisense-autocomplete.gif" alt-text="Moving screenshot showing how intellisense and autocomplete work." lightbox="media/web-ui-kql/intellisense-autocomplete.gif":::
 
 ## View documentation inline
