@@ -8,7 +8,7 @@ ms.date: 05/24/2023
 
 Understanding the size of your tables can be helpful for efficient resource management and optimized query performance. In this article, you'll learn different methods to estimate table sizes and how to use them effectively.
 
-## Estimate the original size of ingested data
+## Estimate original size of ingested data
 
 Use the [.show table details](kusto/management/show-table-details-command.md) to estimate the original data size of a table. For an example, see [Use .show table details](#use-show-table-details).
 
