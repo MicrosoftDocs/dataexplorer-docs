@@ -37,4 +37,4 @@ To view the properties of an Azure Data Explorer resource, follow these steps:
     > [!NOTE]
     > Tables have limited metadata. For more details, select **Related assets** and then select the parent database.
 
-1. Select the **Properties** tab. View properties such as the **createTime**, **location**, **resourceGroupName**, **subscriptionId**, and more.
+1. Select the **Properties** tab. View the resource **createTime**, **location**, **resourceGroupName**, **subscriptionId**, and more.
