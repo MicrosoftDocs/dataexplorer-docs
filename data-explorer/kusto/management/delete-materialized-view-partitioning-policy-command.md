@@ -1,13 +1,13 @@
 ---
-title:  .delete materialized view partitioning policy command
-description: This article describes the .delete materialized view partitioning policy command in Azure Data Explorer.
+title: .delete materialized view partitioning policy command
+description: Learn how to use the `.delete materialized view partitioning policy` command to delete a materialized view's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/24/2023
+ms.date: 05/24/2023
 ---
 # .delete materialized view partitioning policy
 
-Deletes a materialized view [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+Deletes the materialized view's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Permissions
 
