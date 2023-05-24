@@ -84,7 +84,13 @@ To show a function definition:
 
 ## Use KQL tools
 
-The **KQL tools** in the toolbar contains useful query-writing resources. There are options to **Duplicate query**, **Open command palette**, and view **Resources**, such as the [KQL to SQL cheat sheet](kusto/query/sqlcheatsheet.md), [keyboard shortcuts](web-ui-query-keyboard-shortcuts.md), and [KQL quick reference documentation](kql-quick-reference.md).
+The **KQL tools** in the toolbar help you quickly duplicate a query, open the command palette, or access documentation.
+
+To use KQL tools:
+
+1. In the toolbar, select **KQL tools**.
+
+1. Choose from options like **Duplicate query**, **Open command palette**, or hover over **Resources** to access documentation links.
 
 :::image type="content" source="media/web-ui-kql/kql-tools.jpg" alt-text="Screenshot of the KQL tools option in the web UI toolbar." lightbox="media/web-ui-kql/kql-tools.jpg":::
 
