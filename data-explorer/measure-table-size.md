@@ -8,7 +8,7 @@ ms.date: 05/24/2023
 
 Understanding the size of your tables can be helpful for efficient resource management and optimized query performance. In this article, you'll learn different methods to estimate table sizes and how to use them effectively.
 
-## Estimate original size of ingested data
+## Original size of ingested data
 
 Use the [.show table details](kusto/management/show-table-details-command.md) to estimate the original data size of a table. For an example, see [Use .show table details](#use-show-table-details).
 
@@ -16,7 +16,7 @@ This command provides an estimation of the uncompressed size of data ingested in
 
 **Example use case:** Track the size of incoming data over time to make informed decisions about capacity planning.
 
-## Estimate table size in terms of access bytes
+## Table size in terms of access bytes
 
 Use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) along with the [sum()](kusto/query/sum-aggfunction.md) aggregation function to estimate table size based on data types and their respective byte sizes. For an example, see [Use estimate_data_size()](#use-estimate_data_size).
 
@@ -24,7 +24,7 @@ This method provides a more precise estimation by considering the byte sizes of 
 
 **Example use case:** Determine the cost of a query in terms of bytes to be scanned.
 
-## Estimate combined size of multiple tables
+## Combined size of multiple tables
 
 You can use the [union](kusto/query/unionoperator.md) operator along with the previously described method to estimate the table size in terms of access bytes for multiple tables. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
 
