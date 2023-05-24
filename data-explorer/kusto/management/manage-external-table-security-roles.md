@@ -88,7 +88,7 @@ The following example removes all principals in the group from the `admins` role
 
 #### Add new admins and remove the old with .set
 
-THe following example removes existing `admins` and adds the provided principals as `admins` on the `Samples` external table.
+The following example removes existing `admins` and adds the provided principals as `admins` on the `Samples` external table.
 
 ```kusto
 .set external table Samples admins ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
