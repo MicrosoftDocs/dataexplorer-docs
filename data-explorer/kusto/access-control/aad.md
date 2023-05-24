@@ -13,7 +13,7 @@ To authenticate with Azure AD, the client must communicate with the Azure AD ser
 
 To access Azure Data Explorer programmatically, we recommend using the Kusto [client libraries](../api/client-libraries.md) to make the authentication process simpler. With the client libraries, the authentication properties are set by the [Kusto connection string](../api/connection-strings/kusto.md).
 
-In case you cannot use one of the Kusto client libraries, this article provides needed information for you to implement Azure AD authentication flow yourself.
+In case you can't use one of the Kusto client libraries, this article provides needed information for you to implement Azure AD authentication flow yourself.
 
 The main types of authentication scenarios are as follows:
 
