@@ -1,13 +1,13 @@
 ---
-title: .delete table partitioning policy command- Azure Data Explorer
-description: This article describes the .delete table partitioning policy command in Azure Data Explorer.
+title: .delete table partitioning policy command
+description: Learn how to use the `.delete table partitioning policy` command to delete a table's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/24/2023
+ms.date: 05/24/2023
 ---
 # .delete table partitioning policy
 
-Deletes a table [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+Deletes a table's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Permissions
 

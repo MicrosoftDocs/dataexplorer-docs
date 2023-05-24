@@ -1,5 +1,5 @@
 ---
-title: show external table schema control command - Azure Data Explorer
+title:  show external table schema control command
 description: This article describes the show external table schema control command in Azure Data Explorer 
 ms.reviewer: yifats
 ms.topic: reference

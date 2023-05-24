@@ -1,11 +1,15 @@
 ---
-title: series_rolling_fl() - Azure Data Explorer
+title:  series_rolling_fl()
 description: This article describes the series_rolling_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # series_rolling_fl()
+
+::: zone pivot="azuredataexplorer, azuremonitor"
 
 The function `series_rolling_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
@@ -66,23 +70,22 @@ Define the function using the following [let statement](../query/letstatement.md
 let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
-    let code =
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_rolling_series = kargs["y_rolling_series"]\n'
-        'n = kargs["n"]\n'
-        'aggr = kargs["aggr"]\n'
-        'aggr_params = kargs["aggr_params"]\n'
-        'center = kargs["center"]\n'
-        'result = df\n'
-        'in_s = df[y_series]\n'
-        'func = getattr(np, aggr, None)\n'
-        'if not func:\n'
-        '    import scipy.stats\n'
-        '    func = getattr(scipy.stats, aggr)\n'
-        'if func:\n'
-        '    result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))\n'
-        '\n';
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_rolling_series = kargs["y_rolling_series"]
+        n = kargs["n"]
+        aggr = kargs["aggr"]
+        aggr_params = kargs["aggr_params"]
+        center = kargs["center"]
+        result = df
+        in_s = df[y_series]
+        func = getattr(np, aggr, None)
+        if not func:
+            import scipy.stats
+            func = getattr(scipy.stats, aggr)
+        if func:
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 };
@@ -101,23 +104,22 @@ Define the stored function once using the following [`.create function`](../mana
 series_rolling_fl(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic, center:bool=true)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
-    let code =
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_rolling_series = kargs["y_rolling_series"]\n'
-        'n = kargs["n"]\n'
-        'aggr = kargs["aggr"]\n'
-        'aggr_params = kargs["aggr_params"]\n'
-        'center = kargs["center"]\n'
-        'result = df\n'
-        'in_s = df[y_series]\n'
-        'func = getattr(np, aggr, None)\n'
-        'if not func:\n'
-        '    import scipy.stats\n'
-        '    func = getattr(scipy.stats, aggr)\n'
-        'if func:\n'
-        '    result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))\n'
-        '\n';
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_rolling_series = kargs["y_rolling_series"]
+        n = kargs["n"]
+        aggr = kargs["aggr"]
+        aggr_params = kargs["aggr_params"]
+        center = kargs["center"]
+        result = df
+        in_s = df[y_series]
+        func = getattr(np, aggr, None)
+        if not func:
+            import scipy.stats
+            func = getattr(scipy.stats, aggr)
+        if func:
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 }
@@ -138,23 +140,22 @@ To use a query-defined function, invoke it after the embedded function definitio
 let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
-    let code =
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_rolling_series = kargs["y_rolling_series"]\n'
-        'n = kargs["n"]\n'
-        'aggr = kargs["aggr"]\n'
-        'aggr_params = kargs["aggr_params"]\n'
-        'center = kargs["center"]\n'
-        'result = df\n'
-        'in_s = df[y_series]\n'
-        'func = getattr(np, aggr, None)\n'
-        'if not func:\n'
-        '    import scipy.stats\n'
-        '    func = getattr(scipy.stats, aggr)\n'
-        'if func:\n'
-        '    result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))\n'
-        '\n';
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_rolling_series = kargs["y_rolling_series"]
+        n = kargs["n"]
+        aggr = kargs["aggr"]
+        aggr_params = kargs["aggr_params"]
+        center = kargs["center"]
+        result = df
+        in_s = df[y_series]
+        func = getattr(np, aggr, None)
+        if not func:
+            import scipy.stats
+            func = getattr(scipy.stats, aggr)
+        if func:
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 };
@@ -200,23 +201,22 @@ To use a query-defined function, invoke it after the embedded function definitio
 let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
-    let code =
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_rolling_series = kargs["y_rolling_series"]\n'
-        'n = kargs["n"]\n'
-        'aggr = kargs["aggr"]\n'
-        'aggr_params = kargs["aggr_params"]\n'
-        'center = kargs["center"]\n'
-        'result = df\n'
-        'in_s = df[y_series]\n'
-        'func = getattr(np, aggr, None)\n'
-        'if not func:\n'
-        '    import scipy.stats\n'
-        '    func = getattr(scipy.stats, aggr)\n'
-        'if func:\n'
-        '    result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))\n'
-        '\n';
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_rolling_series = kargs["y_rolling_series"]
+        n = kargs["n"]
+        aggr = kargs["aggr"]
+        aggr_params = kargs["aggr_params"]
+        center = kargs["center"]
+        result = df
+        in_s = df[y_series]
+        func = getattr(np, aggr, None)
+        if not func:
+            import scipy.stats
+            func = getattr(scipy.stats, aggr)
+        if func:
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 };
@@ -266,23 +266,22 @@ To use a query-defined function, invoke it after the embedded function definitio
 let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
-    let code =
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_rolling_series = kargs["y_rolling_series"]\n'
-        'n = kargs["n"]\n'
-        'aggr = kargs["aggr"]\n'
-        'aggr_params = kargs["aggr_params"]\n'
-        'center = kargs["center"]\n'
-        'result = df\n'
-        'in_s = df[y_series]\n'
-        'func = getattr(np, aggr, None)\n'
-        'if not func:\n'
-        '    import scipy.stats\n'
-        '    func = getattr(scipy.stats, aggr)\n'
-        'if func:\n'
-        '    result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))\n'
-        '\n';
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_rolling_series = kargs["y_rolling_series"]
+        n = kargs["n"]
+        aggr = kargs["aggr"]
+        aggr_params = kargs["aggr_params"]
+        center = kargs["center"]
+        result = df
+        in_s = df[y_series]
+        func = getattr(np, aggr, None)
+        if not func:
+            import scipy.stats
+            func = getattr(scipy.stats, aggr)
+        if func:
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 };
@@ -313,3 +312,11 @@ range x from 1 to 100 step 1
 **Output**
 
 :::image type="content" source="images/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
+
+::: zone-end
+
+::: zone pivot="fabric"
+
+This feature isn't supported.
+
+::: zone-end

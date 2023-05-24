@@ -1,11 +1,11 @@
 ---
-title: Capacity policy - Azure Data Explorer
-description: This article describes Capacity policy in Azure Data Explorer.
+title: Capacity policy
+description: Learn how to use the capacity policy to control the compute resources of data management operations on a cluster.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/16/2021
+ms.date: 05/14/2023
 ---
-# Capacity policy 
+# Capacity policy
 
 A capacity policy is used for controlling the compute resources of data management operations on the cluster.
 
@@ -28,7 +28,7 @@ The capacity policy is made of:
 |ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent ingestion operations in a cluster.               |
 |CoreUtilizationCoefficient         |double  |A coefficient for the percentage of cores to use when calculating the ingestion capacity. The calculation's result will always be normalized by `ClusterMaximumConcurrentOperations` <br> The cluster's total ingestion capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by: <br> Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
 
-> [!Note]
+> [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in ingestion operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Extents merge capacity
@@ -45,7 +45,7 @@ The cluster's total extents merge capacity, as shown by [`.show capacity`](../ma
 The effective value for `Concurrent operations per node` gets automatically adjusted by the system in the range [`MinimumConcurrentOperationsPerNode`,`MaximumConcurrentOperationsPerNode`], as long as the success rate of the
 merge operations is 90% or higher.
 
-> [!Note]
+> [!NOTE]
 > In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Extents purge rebuild capacity
@@ -58,7 +58,7 @@ The cluster's total extents purge rebuild capacity (as shown by [`.show capacity
 
 `Number of nodes in cluster` x `MaximumConcurrentOperationsPerNode`
 
-> [!Note]
+> [!NOTE]
 > In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Export capacity
@@ -72,7 +72,7 @@ The cluster's total export capacity, as shown by [`.show capacity`](../managemen
 
 Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
 
-> [!Note]
+> [!NOTE]
 > In clusters with three or more nodes, the admin node doesn't participate in export operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Extents partition capacity
@@ -106,17 +106,17 @@ The effective value for `concurrent operations` is automatically adjusted by the
 ### Extents rebuild capacity
 
 For more information about extents rebuild operations, see [how materialized views work](materialized-views/materialized-view-overview.md#how-materialized-views-work).
-This setting is only relevant to Engine V2 clusters. This setting is not relevant to [EngineV3](../../engine-v3.md) clusters.
+This setting is only relevant to Engine V2 clusters. This setting isn't relevant to [EngineV3](../../engine-v3.md) clusters.
 
 The maximum number of extents rebuild is calculated by:
-    
+  
 ```kusto
 Maximum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * `MaximumConcurrentOperationsPerNode`)
 ```
 
 * Default values are 50 total concurrency rebuilds and maximum 5 per node.
 * The `ExtentsRebuildCapacity` policy serves as an upper limit only. The actual value used is dynamically determined by the system, based on current cluster's conditions (memory, CPU) and an estimation of the amount of resources required by the rebuild operation. In practice, concurrency can be much lower than the value specified in capacity policy.
-    * The `MaterializedViewExtentsRebuild` metric provides information about how many extents were rebuilt in each materialization cycle. For more information, see [materialized views monitoring](materialized-views/materialized-views-monitoring.md).
+* The `MaterializedViewExtentsRebuild` metric provides information about how many extents were rebuilt in each materialization cycle. For more information, see [materialized views monitoring](materialized-views/materialized-views-monitoring.md).
 
 ## Stored query results capacity
 
@@ -171,7 +171,7 @@ The default capacity policy has the following JSON representation:
 ## Control commands
 
 > [!WARNING]
-> Consult with the Azure Data Explorer team before altering a capacity policy.
+> Consult with the support team before altering a capacity policy.
 
 * Use [`.show cluster policy capacity`](./show-cluster-capacity-policy-command.md) to show the current capacity policy of the cluster.
 
@@ -182,20 +182,21 @@ The default capacity policy has the following JSON representation:
 Kusto limits the number of concurrent requests for the following user-initiated commands:
 
 * **Ingestions**
-   * This category includes commands that [ingest from storage](data-ingestion/ingest-from-storage.md), [ingest from a query](data-ingestion/ingest-from-query.md), and [ingest inline](data-ingestion/ingest-inline.md).
-   * The limit is as defined by the [ingestion capacity](#ingestion-capacity).
+  * This category includes commands that [ingest from storage](data-ingestion/ingest-from-storage.md), [ingest from a query](data-ingestion/ingest-from-query.md), and [ingest inline](data-ingestion/ingest-inline.md).
+  * The limit is as defined by the [ingestion capacity](#ingestion-capacity).
 * **Purges**
-   * The global limit is currently fixed at one per cluster.
-   * The [purge rebuild capacity](#extents-purge-rebuild-capacity) is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands won't be blocked or throttled because of this process, but will complete faster or slower depending on the purge rebuild capacity.
+  * The global limit is currently fixed at one per cluster.
+  * The [purge rebuild capacity](#extents-purge-rebuild-capacity) is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands won't be blocked or throttled because of this process, but will complete faster or slower depending on the purge rebuild capacity.
 * **Exports**
-   * The limit is as defined in the [export capacity](#export-capacity).
+  * The limit is as defined in the [export capacity](#export-capacity).
 
 When the cluster detects that an operation has exceeded the limit on concurrent requests:
-  * The command's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
-  * The error message will include the *command type*, the *origin* of the throttling and the *capacity* that's been exceeded. For example:
-    * For example: `The control command was aborted due to throttling. Retrying after some backoff might succeed. CommandType: 'TableSetOrAppend', Capacity: 18, Origin: 'CapacityPolicy/Ingestion'`.
-  * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
-  * The exception type will be `ControlCommandThrottledException`.
+
+* The command's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
+* The error message will include the *command type*, the *origin* of the throttling and the *capacity* that's been exceeded. For example:
+  * For example: `The control command was aborted due to throttling. Retrying after some backoff might succeed. CommandType: 'TableSetOrAppend', Capacity: 18, Origin: 'CapacityPolicy/Ingestion'`.
+* The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
+* The exception type will be `ControlCommandThrottledException`.
 
 > [!NOTE]
 > Control commands may also be throttled as a result of exceeding the limit defined by a workload group's [Request rate limit policy](request-rate-limit-policy.md).

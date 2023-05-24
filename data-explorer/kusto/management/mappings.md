@@ -1,5 +1,5 @@
 ---
-title: Data mappings - Azure Data Explorer
+title:  Data mappings
 description: This article describes Data mappings in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
@@ -63,10 +63,45 @@ Some of the data format mappings (Parquet, JSON and AVRO) support simple and use
 
 | Path-dependant transformation | Description                                                                                                                                                             | Conditions                               |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
-| PropertyBagArrayToDictionary  | Transforms JSON array of properties, such as {events:[{"n1":"v1"},{"n2":"v2"}]}, to dictionary and serializes it to valid JSON document, such as {"n1":"v1","n2":"v2"}. | Can be applied only when `Path` is used. |
+| PropertyBagArrayToDictionary  | Transforms JSON array of properties, such as `{events:[{"n1":"v1"},{"n2":"v2"}]}`, to dictionary and serializes it to valid JSON document, such as `{"n1":"v1","n2":"v2"}`. | Can be applied only when `Path` is used. |
 | SourceLocation                | Name of the storage artifact that provided the data, type string (for example, the blob's "BaseUri" field).                                                             |                                          |
 | SourceLineNumber              | Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).                                                                |                                          |
 | DateTimeFromUnixSeconds       | Converts number representing unix-time (seconds since 1970-01-01) to UTC datetime string.                                                                               |                                          |
 | DateTimeFromUnixMilliseconds  | Converts number representing unix-time (milliseconds since 1970-01-01) to UTC datetime string.                                                                          |                                          |
 | DateTimeFromUnixMicroseconds  | Converts number representing unix-time (microseconds since 1970-01-01) to UTC datetime string.                                                                          |                                          |
 | DateTimeFromUnixNanoseconds   | Converts number representing unix-time (nanoseconds since 1970-01-01) to UTC datetime string.                                                                           |                                          |
+| DropMappedFields | Maps an object in the JSON document to a column and removes any nested fields already referenced by other column mappings |
+
+### Mapping transformation examples
+
+#### Example of using `DropMappedField` transformation.
+
+Given the following JSON contents:
+
+```json
+{
+    "Time": "2012-01-15T10:45",
+    "Props": {
+        "EventName": "CustomEvent",
+        "Revenue": 0.456
+    }
+}
+```
+
+The following data mapping maps entire `Props` object into dynamic column `Props` while excluding
+already mapped columns (`Props.EventName` is already mapped into column `EventName`, so it's
+excluded).
+
+```json
+[
+    { "Column": "Time", "Properties": { "Path": "$.Time" } },
+    { "Column": "EventName", "Properties": { "Path": "$.Props.EventName" } },
+    { "Column": "Props", "Properties": { "Path": "$.Props", "Transform":"DropMappedFields" } },
+]
+```
+
+The ingested data looks as follows:
+
+|  Time |        EventName           |   Props   |
+|-------|----------------------------|-----------|
+| `2012-01-15T10:45` | `CustomEvent` |  `{"Revenue": 0.456}`  |

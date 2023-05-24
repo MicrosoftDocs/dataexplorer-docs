@@ -1,5 +1,5 @@
 ---
-title: Kusto Ingest Client Library - Azure Data Explorer
+title:  Kusto Ingest Client Library
 description: This article describes the Kusto Ingest client library in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

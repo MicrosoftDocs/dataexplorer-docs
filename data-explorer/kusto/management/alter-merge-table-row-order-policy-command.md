@@ -1,5 +1,5 @@
 ---
-title: .alter-merge table row order policy command- Azure Data Explorer
+title:  .alter-merge table row order policy command
 description: Learn how to use the .alter-merge table row order policy command to change the table's row order policy.
 ms.reviewer: yonil
 ms.topic: reference

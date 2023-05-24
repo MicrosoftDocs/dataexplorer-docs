@@ -88,45 +88,39 @@ Use C# to ingest data in raw [JSON format](#the-json-format).
 1. Create the `RawEvents` table.
 
     ```csharp
-    var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net/";
-    var kustoConnectionStringBuilder =
-        new KustoConnectionStringBuilder(ingestUri)
-        {
-            FederatedSecurity = true,
-            InitialCatalog = database,
-            UserID = user,
-            Password = password,
-            Authority = tenantId
-        };
-    var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder);
-
-    var table = "RawEvents";
-    var command =
-        CslCommandGenerator.GenerateTableCreateCommand(
-            table,
-            new[]
-            {
-                Tuple.Create("Events", "System.Object"),
-            });
-
-    kustoClient.ExecuteControlCommand(command);
+    var kustoUri = "https://<clusterName>.<region>.kusto.windows.net/";
+    var connectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
+    {
+        FederatedSecurity = true,
+        UserID = userId,
+        Password = password,
+        Authority = tenantId,
+        InitialCatalog = databaseName
+    };
+    using var kustoClient = KustoClientFactory.CreateCslAdminProvider(connectionStringBuilder);
+    var tableName = "RawEvents";
+    var command = CslCommandGenerator.GenerateTableCreateCommand(
+        tableName,
+        new[] { Tuple.Create("Events", "System.Object") }
+    );
+    await kustoClient.ExecuteControlCommandAsync(command);
     ```
 
 1. Create the JSON mapping.
 
     ```csharp
-    var tableMapping = "RawEventMapping";
-    var command =
-        CslCommandGenerator.GenerateTableMappingCreateCommand(
-            Data.Ingestion.IngestionMappingKind.Json,
-            tableName,
-            tableMapping,
-            new[] {
-            new ColumnMapping {ColumnName = "Events", Properties = new Dictionary<string, string>() {
-                {"path","$"} }
-            } });
-
-    kustoClient.ExecuteControlCommand(command);
+    var tableMappingName = "RawEventMapping";
+    command = CslCommandGenerator.GenerateTableMappingCreateCommand(
+        IngestionMappingKind.Json,
+        tableName,
+        tableMappingName,
+        new ColumnMapping[]
+        {
+            new() { ColumnName = "Events", Properties = new Dictionary<string, string> { { "path", "$" } } }
+        }
+    );
+    
+    await kustoClient.ExecuteControlCommandAsync(command);
     ```
 
     This command creates a mapping, and maps the JSON root path `$` to the `Event` column.
@@ -134,30 +128,25 @@ Use C# to ingest data in raw [JSON format](#the-json-format).
 1. Ingest data into the `RawEvents` table.
 
     ```csharp
-    var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net/";
+    var ingestUri = "https://ingest-<clusterName>.<region>.kusto.windows.net/";
+    
+    var ingestConnectionStringBuilder = new KustoConnectionStringBuilder(ingestUri)
+    {
+        FederatedSecurity = true,
+        UserID = userId,
+        Password = password,
+        Authority = tenantId,
+        InitialCatalog = databaseName
+    };
+    using var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConnectionStringBuilder);
+    
     var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json";
-    var ingestConnectionStringBuilder =
-        new KustoConnectionStringBuilder(ingestUri)
-        {
-            FederatedSecurity = true,
-            InitialCatalog = database,
-            UserID = user,
-            Password = password,
-            Authority = tenantId
-        };
-    var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConnectionStringBuilder);
-
-    var properties =
-        new KustoQueuedIngestionProperties(database, table)
-        {
-            Format = DataSourceFormat.json,
-            IngestionMapping = new IngestionMapping()
-            {
-                IngestionMappingReference = tableMapping
-            }
-        };
-
-    await ingestClient.IngestFromStorageAsync(blobPath, properties).ConfigureAwait(false);
+    var properties = new KustoQueuedIngestionProperties(databaseName, tableName)
+    {
+        Format = DataSourceFormat.json,
+        IngestionMapping = new IngestionMapping { IngestionMappingReference = tableMappingName }
+    };
+    await ingestClient.IngestFromStorageAsync(blobPath, properties);
     ```
 
 > [!NOTE]
@@ -240,44 +229,40 @@ In this example, you ingest JSON records data. Each JSON property is mapped to a
 
 1. Create a new table, with a similar schema to the JSON input data. We'll use this table for all the following examples and ingest commands.
 
-    ```csharp
-    var table = "Events";
-    var command =
-        CslCommandGenerator.GenerateTableCreateCommand(
-            table,
-            new[]
-            {
-                Tuple.Create("Time", "System.DateTime"),
-                Tuple.Create("Device", "System.String"),
-                Tuple.Create("MessageId", "System.String"),
-                Tuple.Create("Temperature", "System.Double"),
-                Tuple.Create("Humidity", "System.Double"),
-            });
-
-    kustoClient.ExecuteControlCommand(command);
+     ```csharp
+    var tableName = "Events";
+    var command = CslCommandGenerator.GenerateTableCreateCommand(
+        tableName,
+        new[]
+        {
+            Tuple.Create("Time", "System.DateTime"),
+            Tuple.Create("Device", "System.String"),
+            Tuple.Create("MessageId", "System.String"),
+            Tuple.Create("Temperature", "System.Double"),
+            Tuple.Create("Humidity", "System.Double")
+        }
+    );
+    await kustoClient.ExecuteControlCommandAsync(command);
     ```
 
 1. Create the JSON mapping.
 
     ```csharp
-    var tableMapping = "FlatEventMapping";
-    var table = "Events";
-
-    var command =
-         CslCommandGenerator.GenerateTableMappingCreateCommand(
-            Data.Ingestion.IngestionMappingKind.Json,
-            table,
-            tableMapping,
-            new[]
-            {
-               new ColumnMapping() {ColumnName = "Time", Properties = new Dictionary<string, string>() {{ MappingConsts.Path, "$.timestamp"} } },
-               new ColumnMapping() {ColumnName = "Device", Properties = new Dictionary<string, string>() {{ MappingConsts.Path, "$.deviceId" } } },
-               new ColumnMapping() {ColumnName = "MessageId", Properties = new Dictionary<string, string>() {{ MappingConsts.Path, "$.messageId" } } },
-               new ColumnMapping() {ColumnName = "Temperature", Properties = new Dictionary<string, string>() {{ MappingConsts.Path, "$.temperature" } } },
-               new ColumnMapping() { ColumnName= "Humidity", Properties = new Dictionary<string, string>() {{ MappingConsts.Path, "$.humidity" } } },
-            });
-
-    kustoClient.ExecuteControlCommand(command);
+    var tableMappingName = "FlatEventMapping";
+    command = CslCommandGenerator.GenerateTableMappingCreateCommand(
+        IngestionMappingKind.Json,
+        tableName,
+        tableMappingName,
+        new ColumnMapping[]
+        {
+            new() { ColumnName = "Time", Properties = new Dictionary<string, string> { { MappingConsts.Path, "$.timestamp" } } },
+            new() { ColumnName = "Device", Properties = new Dictionary<string, string> { { MappingConsts.Path, "$.deviceId" } } },
+            new() { ColumnName = "MessageId", Properties = new Dictionary<string, string> { { MappingConsts.Path, "$.messageId" } } },
+            new() { ColumnName = "Temperature", Properties = new Dictionary<string, string> { { MappingConsts.Path, "$.temperature" } } },
+            new() { ColumnName = "Humidity", Properties = new Dictionary<string, string> { { MappingConsts.Path, "$.humidity" } } }
+        }
+    );
+    await kustoClient.ExecuteControlCommandAsync(command);
     ```
 
     In this mapping, as defined by the table schema, the `timestamp` entries will be ingested to the column `Time` as `datetime` data types.
@@ -286,16 +271,11 @@ In this example, you ingest JSON records data. Each JSON property is mapped to a
 
     ```csharp
     var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json";
-    var properties =
-        new KustoQueuedIngestionProperties(database, table)
-        {
-            Format = DataSourceFormat.json,
-            IngestionMapping = new IngestionMapping()
-            {
-                IngestionMappingReference = tableMapping
-            }
-        };
-
+    var properties = new KustoQueuedIngestionProperties(databaseName, tableName)
+    {
+        Format = DataSourceFormat.json,
+        IngestionMapping = new IngestionMapping { IngestionMappingReference = tableMappingName }
+    };
     await ingestClient.IngestFromStorageAsync(blobPath, properties).ConfigureAwait(false);
     ```
 
@@ -353,18 +333,13 @@ Ingest data into the `Events` table.
 Ingest data into the `Events` table.
 
 ```csharp
-var tableMapping = "FlatEventMapping";
+var tableMappingName = "FlatEventMapping";
 var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/multilined.json";
-var properties =
-    new KustoQueuedIngestionProperties(database, table)
-    {
-        Format = DataSourceFormat.multijson,
-        IngestionMapping = new IngestionMapping()
-        {
-            IngestionMappingReference = tableMapping
-        }
-    };
-
+var properties = new KustoQueuedIngestionProperties(databaseName, tableName)
+{
+    Format = DataSourceFormat.multijson,
+    IngestionMapping = new IngestionMapping { IngestionMappingReference = tableMappingName }
+};
 await ingestClient.IngestFromStorageAsync(blobPath, properties).ConfigureAwait(false);
 ```
 
@@ -455,23 +430,22 @@ Array data types are an ordered collection of values. Ingestion of a JSON array 
 1. Create an update function that expands the collection of `records` so that each value in the collection receives a separate row, using the `mv-expand` operator. We'll use table `RawEvents` as a source table and `Events` as a target table.
 
     ```csharp
-    var command =
-        CslCommandGenerator.GenerateCreateFunctionCommand(
-            "EventRecordsExpand",
-            "UpdateFunctions",
-            string.Empty,
-            null,
-            @"RawEvents
-                | mv-expand records = Event
-                | project
-                    Time = todatetime(records['timestamp']),
-                    Device = tostring(records['deviceId']),
-                    MessageId = tostring(records['messageId']),
-                    Temperature = todouble(records['temperature']),
-                    Humidity = todouble(records['humidity'])",
-            ifNotExists: false);
-
-    kustoClient.ExecuteControlCommand(command);
+    var command = CslCommandGenerator.GenerateCreateFunctionCommand(
+        "EventRecordsExpand",
+        "UpdateFunctions",
+        string.Empty,
+        null,
+        @"RawEvents
+        | mv-expand records = Event
+        | project
+            Time = todatetime(records['timestamp']),
+            Device = tostring(records['deviceId']),
+            MessageId = tostring(records['messageId']),
+            Temperature = todouble(records['temperature']),
+            Humidity = todouble(records['humidity'])",
+        ifNotExists: false
+    );
+    await kustoClient.ExecuteControlCommandAsync(command);
     ```
 
     > [!NOTE]
@@ -480,29 +454,22 @@ Array data types are an ordered collection of values. Ingestion of a JSON array 
 1. Add the update policy to the target table. This policy will automatically run the query on any newly ingested data in the `RawEvents` intermediate table and ingest its results into the `Events` table. Define a zero-retention policy to avoid persisting the intermediate table.
 
     ```csharp
-    var command =
-        ".alter table Events policy update @'[{'Source': 'RawEvents', 'Query': 'EventRecordsExpand()', 'IsEnabled': 'True'}]";
-
-    kustoClient.ExecuteControlCommand(command);
+    command = ".alter table Events policy update @'[{'Source': 'RawEvents', 'Query': 'EventRecordsExpand()', 'IsEnabled': 'True'}]";
+    await kustoClient.ExecuteControlCommandAsync(command);
     ```
 
 1. Ingest data into the `RawEvents` table.
 
     ```csharp
-    var table = "RawEvents";
-    var tableMapping = "RawEventMapping";
     var blobPath = "https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json";
-    var properties =
-        new KustoQueuedIngestionProperties(database, table)
-        {
-            Format = DataSourceFormat.multijson,
-            IngestionMapping = new IngestionMapping()
-            {
-                IngestionMappingReference = tableMapping
-            }
-        };
-
-    await ingestClient.IngestFromStorageAsync(blobPath, properties).ConfigureAwait(false);
+    var tableName = "RawEvents";
+    var tableMappingName = "RawEventMapping";
+    var properties = new KustoQueuedIngestionProperties(databaseName, tableName)
+    {
+        Format = DataSourceFormat.multijson,
+        IngestionMapping = new IngestionMapping { IngestionMappingReference = tableMappingName }
+    };
+    await ingestClient.IngestFromStorageAsync(blobPath, properties);
     ```
 
 1. Review data in the `Events` table.
