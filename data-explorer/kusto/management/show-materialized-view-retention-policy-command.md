@@ -1,5 +1,5 @@
 ---
-title: .show materialized-view retention policy command- Azure Data Explorer
+title:  .show materialized-view retention policy command
 description: This article describes the .show materialized-view retention policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

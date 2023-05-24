@@ -1,5 +1,5 @@
 ---
-title: .move extents - Azure Data Explorer
+title:  .move extents
 description: This article describes the move extents command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
