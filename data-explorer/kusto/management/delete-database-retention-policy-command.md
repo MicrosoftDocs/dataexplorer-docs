@@ -1,6 +1,6 @@
 ---
-title: .delete database retention policy command- Azure Data Explorer
-description: This article describes the .delete database retention policy command in Azure Data Explorer.
+title: .delete database retention policy command
+description: Learn how to use the `.delete database retention policy` command to delete a database's retention policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 04/24/2023

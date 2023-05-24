@@ -1,5 +1,5 @@
 ---
-title: Streaming ingestion policy - Azure Data Explorer
+title: Streaming ingestion policy
 description: Learn how to use the streaming ingestion policy to optimize operational processing of many tables where the stream of data is small.
 ms.reviewer: orspodek
 ms.topic: reference

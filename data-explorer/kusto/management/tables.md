@@ -1,5 +1,5 @@
 ---
-title: Tables management - Azure Data Explorer
+title: Tables management
 description: Learn how to use table management commands to display, create, and alter tables.
 ms.reviewer: orspodek
 ms.topic: reference

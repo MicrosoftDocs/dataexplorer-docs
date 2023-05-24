@@ -1,5 +1,5 @@
 ---
-title: Storage connection strings - Azure Data Explorer
+title:  Storage connection strings
 description: This article describes storage connection strings in Azure Data Explorer.
 ms.reviewer: shanisolomon
 ms.topic: reference

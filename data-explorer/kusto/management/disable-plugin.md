@@ -1,5 +1,5 @@
 ---
-title: Disable plugin commands- Azure Data Explorer
+title:  Disable plugin commands
 description: This article describes plugins management command .disable plugin in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

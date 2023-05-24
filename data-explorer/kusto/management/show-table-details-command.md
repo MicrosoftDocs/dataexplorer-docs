@@ -1,5 +1,5 @@
 ---
-title: .show table details - Azure Data Explorer
+title:  .show table details
 description: This article describes .show table details in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

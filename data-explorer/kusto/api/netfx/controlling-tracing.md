@@ -1,5 +1,5 @@
 ---
-title: Azure Data Explorer control and suppress SDK client side tracing - Azure Data Explorer
+title:  Azure Data Explorer control and suppress SDK client side tracing
 description: This article describes controlling and suppressing Azure Data Explorer SDK client-side tracing in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

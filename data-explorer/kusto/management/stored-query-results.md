@@ -1,5 +1,5 @@
 ---
-title: Stored query results - Azure Data Explorer
+title: Stored query results
 description: Learn how to create and use stored query results to store the results of a query on the service for up to 24 hours.
 ms.reviewer: mispecto
 ms.topic: reference

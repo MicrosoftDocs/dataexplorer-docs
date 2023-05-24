@@ -1,5 +1,5 @@
 ---
-title: System information - Azure Data Explorer
+title: System information
 description: Learn how to use system information commands available to database admins and database monitors to explore usage, track operations and investigate ingestion failures.
 ms.reviewer: orspodek
 ms.topic: reference

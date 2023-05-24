@@ -1,5 +1,5 @@
 ---
-title: .alter-merge table - Azure Data Explorer
+title:  .alter-merge table
 description: Learn how to use the .alter-merge table command to secure data in existing columns or add new columns to an existing table.
 ms.reviewer: orspodek
 ms.topic: reference

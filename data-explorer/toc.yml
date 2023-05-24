@@ -172,6 +172,9 @@ items:
     - name: Apache Log4J 2
       displayName: ingest data, ingestion, connector
       href: apache-log4j2-connector.md
+    - name: NLog
+      displayName: ingest data, ingestion, connector
+      href: nlog-sink.md
     - name: Serilog
       displayName: ingest data, ingestion, connector
       href: serilog-sink.md
@@ -213,10 +216,16 @@ items:
     items:
     - name: Query data in the web UI
       items:
-        - name: Explore the sample gallery
-          href: web-ui-samples-query.md
+        - name: Overview
+          href: web-ui-query-overview.md
+          displayName: web UI
+        - name: Add a cluster connection
+          href: add-cluster-connection.md
+          displayName: connect to cluster
         - name: Customize settings
           href: web-customize-settings.md
+        - name: Explore the sample gallery
+          href: web-ui-samples-query.md
         - name: Explore the results grid
           href: web-results-grid.md
         - name: Share queries
@@ -334,6 +343,8 @@ items:
         - name: Create retention table policy
           displayName: one-click, wizard
           href: table-retention-policy-wizard.md
+    - name: Customize settings in the web UI
+      href: web-customize-settings.md
     - name: Secure
       items:
         - name: Access control
@@ -553,6 +564,8 @@ items:
         - name: Use Kqlmagic
           displayName: Azure Data Studio
           href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
+    - name: Azure Functions
+      href: integrate-azure-functions.md
     - name: Connect from Azure Synapse Apache Spark
       href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
     - name: Migrate TSI to Azure Data Explorer

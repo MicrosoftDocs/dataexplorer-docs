@@ -1,5 +1,5 @@
 ---
-title: Request rate limit policy - Azure Data Explorer
+title:  Request rate limit policy
 description: This article describes the request rate limit policy in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

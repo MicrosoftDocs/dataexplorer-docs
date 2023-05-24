@@ -1,5 +1,5 @@
 ---
-title: .show streaming ingestion failures - Azure Data Explorer
+title: .show streaming ingestion failures
 description: Learn how to use the `.show streamingingestion failures` command to show streaming ingestion failures when data is ingested.
 ms.topic: reference
 ms.date: 05/23/2023
