@@ -30,8 +30,9 @@ The default [caching policy](cachepolicy.md) for the follower cluster uses the l
 |**union**(default) |The source database in the leader cluster database and table-level caching policies are combined with the policies defined in the database and table-level override policies.   |
 
 > [!NOTE]
->  * If the collection of override database and table-level caching policies is *empty*, then everything is cached by default.
->  * You can set the database-level caching policy override to `0d`, and nothing will be cached by default.
+>
+> * If the collection of override database and table-level caching policies is *empty*, then everything is cached by default.
+> * You can set the database-level caching policy override to `0d`, and nothing will be cached by default.
 
 ### Authorized principals
 

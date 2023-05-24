@@ -1,28 +1,29 @@
 ---
-title:  Kusto retention policy controls how data is removed
-description: This article describes retention policies in Azure Data Explorer.
+title: Retention policy
+description: Learn how to use the retention policy to control how data is removed.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 05/24/2023
 ---
 # Retention policy
 
 The retention policy controls the mechanism that automatically removes data from tables or [materialized views](materialized-views/materialized-view-overview.md). It's useful to remove data that continuously flows into a table, and whose relevance is age-based. For example, the policy can be used for a table that holds diagnostics events that may become uninteresting after two weeks.
 
-The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it.
+The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it. When the policy is configured both at the database and table level, the retention policy in the table takes precedence over the database policy.
 
 Setting up a retention policy is important for clusters that are continuously ingesting data, which will limit costs.
 
-Data that is "outside" the retention policy is eligible for removal. There is no specific guarantee when removal occurs. Data may "linger" even if the retention policy is triggered.
+Data that is "outside" the retention policy is eligible for removal. There's no specific guarantee when removal occurs. Data may "linger" even if the retention policy is triggered.
 
 The retention policy is most commonly set to limit the age of the data since ingestion. For more information, see [SoftDeletePeriod](#the-policy-object).
 
 > [!NOTE]
+>
 > * The deletion time is imprecise. The system guarantees that data won't be
 deleted before the limit is exceeded, but deletion isn't immediate following that point.
 > * A soft-delete period of 0 can be set as part of a table-level retention policy, but not as part of a database-level retention policy.
->	* When this is done, the ingested data won't be committed to the source table, avoiding the need to persist the data. As a result, `Recoverability` can only be set to `Disabled`.
->	* Such a configuration is useful mainly when the data gets ingested into a table.
+> * When this is done, the ingested data won't be committed to the source table, avoiding the need to persist the data. As a result, `Recoverability` can only be set to `Disabled`.
+> * Such a configuration is useful mainly when the data gets ingested into a table.
 > A transactional [update policy](updatepolicy.md) is used to transform it and redirect the output into another table.
 
 ## The policy object
@@ -30,13 +31,14 @@ deleted before the limit is exceeded, but deletion isn't immediate following tha
 A retention policy includes the following properties:
 
 * **SoftDeletePeriod**:
-    * Time span for which it's guaranteed that the data is kept available to query. The period is measured starting from the time the data was ingested.
-    * Defaults to `100 years`.
-    * When altering the soft-delete period of a table or database, the new value applies to both existing and new data.
+  * Time span for which it's guaranteed that the data is kept available to query. The period is measured starting from the time the data was ingested.
+  * Defaults to `100 years`.
+  * When altering the soft-delete period of a table or database, the new value applies to both existing and new data.
 * **Recoverability**:
-    * Data recoverability (Enabled/Disabled) after the data was deleted.
-    * Defaults to `Enabled`.
-    * If set to `Enabled`, the data will be recoverable for 14 days after it's been soft-deleted.
+  * Data recoverability (Enabled/Disabled) after the data was deleted.
+  * Defaults to `Enabled`.
+  * If set to `Enabled`, the data will be recoverable for 14 days after it's been soft-deleted.
+  * It is not possible to configure the recoverability period.
 
 ## Control commands
 

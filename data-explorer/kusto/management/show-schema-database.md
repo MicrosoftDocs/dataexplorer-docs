@@ -1,9 +1,9 @@
 ---
-title:  .show databases schema
-description: This article describes .show databases schema in Azure Data Explorer.
+title: .show database schema
+description: Learn how to use the `.show database schema` command to show the database schema as a table, JSON object, or CSL script.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/09/2023
+ms.date: 05/24/2023
 ---
 # .show database schema commands
 
@@ -149,7 +149,7 @@ Generates a CSL script with all the required commands to create a copy of the gi
 |`IncludeEncodingPolicies`| bool | Defaults to `true`. If `true`, encoding policies at the database/table/column level are included.|
 |`IncludeSecuritySettings`| bool | Defaults to `true`. If `true`, the following options are included:<br/>- Authorized principals at the database/table level.<br/>- Row level security policies at the table level.<br/>- Restricted view access policies at the table level.|
 |`IncludeIngestionMappings`| bool | Defaults to `true`. If `true`, ingestion mappings at the table level are included.|
-|`ShowObfuscatedStrings`| bool | Defaults to `false`. If `true`, credentials persisted in Kusto configurations are returned. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the command will fail.|
+|`ShowObfuscatedStrings`| bool | Defaults to `false`. If `true`, credentials persisted in Kusto configurations are returned. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the command fails.|
 
 ### Returns
 

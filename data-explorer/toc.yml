@@ -172,6 +172,9 @@ items:
     - name: Apache Log4J 2
       displayName: ingest data, ingestion, connector
       href: apache-log4j2-connector.md
+    - name: NLog
+      displayName: ingest data, ingestion, connector
+      href: nlog-sink.md
     - name: Serilog
       displayName: ingest data, ingestion, connector
       href: serilog-sink.md
@@ -213,6 +216,12 @@ items:
     items:
     - name: Query data in the web UI
       items:
+        - name: Overview
+          href: web-ui-query-overview.md
+          displayName: web UI
+        - name: Add a cluster connection
+          href: add-cluster-connection.md
+          displayName: connect to cluster
         - name: Explore the sample gallery
           href: web-ui-samples-query.md
         - name: Explore the results grid
@@ -221,6 +230,8 @@ items:
           href: web-share-queries.md
         - name: Keyboard shortcuts
           href: web-ui-query-keyboard-shortcuts.md
+        - name: Write KQL queries
+          href: web-ui-kql.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor

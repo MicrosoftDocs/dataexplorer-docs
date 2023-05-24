@@ -1,13 +1,13 @@
 ---
-title:  .show table partitioning policy command
-description: This article describes the .show table partitioning policy command in Azure Data Explorer.
+title: .show table partitioning policy command
+description: Learn how to use the `.show table partitioning policy` command to display the table's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 05/23/2023
 ---
 # .show table partitioning policy
 
-Displays a table [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+Displays the table's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Permissions
 
@@ -15,7 +15,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-`.show` `table` *TableName* `policy` `partitioning` 
+`.show` `table` *TableName* `policy` `partitioning`
 
 ## Parameters
 
