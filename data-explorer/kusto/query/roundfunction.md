@@ -1,5 +1,5 @@
 ---
-title: round() - Azure Data Explorer
+title:  round()
 description: Learn how to use the round() function to round the number to the specified precision.
 ms.reviewer: alexans
 ms.topic: reference
@@ -30,6 +30,7 @@ that the `round()` function rounds a number to a specific number of digits while
 ## Examples
 
 ```kusto
+round(2.98765, 3)   // 2.988
 round(2.15, 1)      // 2.2
 round(2.15)         // 2 // equivalent to round(2.15, 0)
 round(-50.55, -2)   // -100

@@ -1,9 +1,9 @@
 ---
-title: .clear table data - Azure Data Explorer
-description: This article describes the `.clear table data` command in Azure Data Explorer.
+title: .clear table data
+description: Learn how to use the `.clear table data` command to clear data from an existing table.
 ms.reviewer: vrozov
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/24/2023
 ---
 # .clear table data
 

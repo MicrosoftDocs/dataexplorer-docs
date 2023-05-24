@@ -1,5 +1,5 @@
 ---
-title: .alter-merge database streaming ingestion policy command - Azure Data Explorer
+title:  .alter-merge database streaming ingestion policy command
 description: Learn how to use the .alter-merge database streaming ingestion policy command to change the database streaming policy.
 ms.reviewer: yonil
 ms.topic: reference

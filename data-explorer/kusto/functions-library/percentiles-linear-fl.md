@@ -1,5 +1,5 @@
 ---
-title: percentiles_linear_fl() - Azure Data Explorer
+title:  percentiles_linear_fl()
 description: Learn how to use the percentiles_linear_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
