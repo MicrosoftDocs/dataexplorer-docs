@@ -1,5 +1,5 @@
 ---
-title: pairwise_dist_fl() - Azure Data Explorer
+title:  pairwise_dist_fl()
 description: This article describes the pairwise_dist_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: andkar
 ms.topic: reference

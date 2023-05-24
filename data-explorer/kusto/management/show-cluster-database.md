@@ -1,5 +1,5 @@
 ---
-title: .show cluster databases - Azure Data Explorer
+title: .show cluster databases
 description: Learn how to use the `.show cluster databases` command to show the databases attached to the invoked cluster.
 ms.reviewer: orspodek
 ms.topic: reference

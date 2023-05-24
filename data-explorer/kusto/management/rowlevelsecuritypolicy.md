@@ -1,5 +1,5 @@
 ---
-title: Row Level Security - Azure Data Explorer
+title: Row Level Security
 description: Learn how to use the Row Level Security policy to control access to rows in a database table.
 ms.reviewer: orspodek
 ms.topic: reference

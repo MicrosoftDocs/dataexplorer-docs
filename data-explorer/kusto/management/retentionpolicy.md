@@ -1,15 +1,15 @@
 ---
-title: Retention policy - Azure Data Explorer
+title: Retention policy
 description: Learn how to use the retention policy to control how data is removed.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/22/2023
+ms.date: 05/24/2023
 ---
 # Retention policy
 
 The retention policy controls the mechanism that automatically removes data from tables or [materialized views](materialized-views/materialized-view-overview.md). It's useful to remove data that continuously flows into a table, and whose relevance is age-based. For example, the policy can be used for a table that holds diagnostics events that may become uninteresting after two weeks.
 
-The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it.
+The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it. When the policy is configured both at the database and table level, the retention policy in the table takes precedence over the database policy.
 
 Setting up a retention policy is important for clusters that are continuously ingesting data, which will limit costs.
 
@@ -38,6 +38,7 @@ A retention policy includes the following properties:
   * Data recoverability (Enabled/Disabled) after the data was deleted.
   * Defaults to `Enabled`.
   * If set to `Enabled`, the data will be recoverable for 14 days after it's been soft-deleted.
+  * It is not possible to configure the recoverability period.
 
 ## Control commands
 

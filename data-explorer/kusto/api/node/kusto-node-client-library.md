@@ -1,5 +1,5 @@
 ---
-title: Kusto Node SDK - Azure Data Explorer
+title:  Kusto Node SDK
 description: This article describes Kusto Node SDK in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

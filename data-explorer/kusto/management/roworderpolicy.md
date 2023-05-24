@@ -1,9 +1,9 @@
 ---
-title: Row order policy - Azure Data Explorer
+title: Row order policy
 description: Learn how to use the row order policy to order rows in a data shard.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/22/2023
+ms.date: 05/24/2023
 ---
 # Row order policy
 
