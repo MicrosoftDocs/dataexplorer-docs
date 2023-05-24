@@ -1,5 +1,5 @@
 ---
-title: ".show managed_identity policy command - Azure Data Explorer"
+title:  ".show managed_identity policy command"
 description: This article describes the .show managed_identity policy command in Azure Data Explorer.
 ms.reviewer: slneimer
 ms.topic: reference

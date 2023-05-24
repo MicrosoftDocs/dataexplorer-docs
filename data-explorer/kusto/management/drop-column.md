@@ -1,5 +1,5 @@
 ---
-title: drop column - Azure Data Explorer
+title:  drop column
 description: This article describes drop column in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

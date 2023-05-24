@@ -1,5 +1,5 @@
 ---
-title: .create-or-alter workload_group - Azure Data Explorer
+title:  .create-or-alter workload_group
 description: This article describes the create-or-alter workload_group command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

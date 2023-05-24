@@ -1,5 +1,5 @@
 ---
-title: .alter database prettyname - Azure Data Explorer
+title:  .alter database prettyname
 description: Learn how to use the .alter database pretty name command to alter the database's name.
 ms.reviewer: orspodek
 ms.topic: reference

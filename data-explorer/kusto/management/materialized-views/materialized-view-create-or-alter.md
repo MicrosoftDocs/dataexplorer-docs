@@ -1,5 +1,5 @@
 ---
-title: .create-or-alter materialized view - Azure Data Explorer
+title:  .create-or-alter materialized view
 description: This article describes `.create-or-alter materialized view` in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

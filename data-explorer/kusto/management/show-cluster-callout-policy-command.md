@@ -1,5 +1,5 @@
 ---
-title: show cluster policy callout command- Azure Data Explorer
+title:  show cluster policy callout command
 description: This article describes the show cluster policy callout command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

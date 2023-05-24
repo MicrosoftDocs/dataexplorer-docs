@@ -1,5 +1,5 @@
 ---
-title: Evaluate query performance in your Azure Data Explorer cluster
+title: Evaluate query performance in your cluster
 description: In this article, you'll learn how to evaluate query performance in your Azure Data Explorer cluster.
 ms.reviewer: sujosyul
 ms.topic: how-to
