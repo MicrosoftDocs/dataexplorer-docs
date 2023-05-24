@@ -110,6 +110,9 @@ items:
 - name: series_moving_avg_fl()
   displayName: functions library, filter, low-pass, smoothing
   href: series-moving-avg-fl.md
+- name: series_moving_var_fl()
+  displayName: functions library, filter, rolling, variance, standard deviation, std
+  href: series-moving-var-fl.md
 - name: series_mv_ee_anomalies_fl()
   displayName: functions library, anomaly detection, multivariate, elliptical envelope
   href: series-mv-ee-anomalies-fl.md

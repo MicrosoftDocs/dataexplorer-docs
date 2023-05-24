@@ -664,7 +664,7 @@ items:
   - name: Queries
     href: queries.md
     displayName: .show running queries .cancel query 
-  - name: Streaming ingestion statistics
+  - name: .show streaming ingestion statistics
     href: streamingingestionstatistics.md
 - name: Advanced data management
   items:
