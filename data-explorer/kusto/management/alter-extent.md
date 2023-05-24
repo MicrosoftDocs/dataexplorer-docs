@@ -1,5 +1,5 @@
 ---
-title: .alter extent tags - Azure Data Explorer
+title:  .alter extent tags
 description: Learn how to use the alter extent command to change the extent tags.
 ms.reviewer: orspodek
 ms.topic: reference

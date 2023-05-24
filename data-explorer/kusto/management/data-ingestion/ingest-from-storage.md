@@ -1,5 +1,5 @@
 ---
-title: Kusto.ingest into command (pull data from storage) - Azure Data Explorer
+title:  Kusto.ingest into command (pull data from storage)
 description: This article describes The .ingest into command (pull data from storage) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

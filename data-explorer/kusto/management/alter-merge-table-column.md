@@ -1,5 +1,5 @@
 ---
-title: .alter-merge column-docstrings - Azure Data Explorer
+title:  .alter-merge column-docstrings
 description: Learn how to use the .alter-merge column-docstrings command to set the `DocString` property for one or more columns in a specified table.
 ms.reviewer: orspodek
 ms.topic: reference

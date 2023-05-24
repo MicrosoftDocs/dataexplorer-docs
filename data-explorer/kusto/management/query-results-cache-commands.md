@@ -1,5 +1,5 @@
 ---
-title: Query results cache commands - Azure Data Explorer
+title:  Query results cache commands
 description: This article describes Query results cache in Azure Data Explorer.
 ms.reviewer: amitof
 ms.topic: reference

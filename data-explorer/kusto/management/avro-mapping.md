@@ -1,5 +1,5 @@
 ---
-title: AVRO Mapping - Azure Data Explorer
+title:  AVRO Mapping
 description: Learn how to use AVRO mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
 ms.date: 03/08/2023
