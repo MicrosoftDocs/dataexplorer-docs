@@ -1,5 +1,5 @@
 ---
-title: .clear materialized view data - Azure Data Explorer
+title:  .clear materialized view data
 description: This article describes the `.clear materialized-view data` command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

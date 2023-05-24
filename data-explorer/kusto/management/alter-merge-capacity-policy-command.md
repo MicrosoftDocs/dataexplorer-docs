@@ -1,5 +1,5 @@
 ---
-title: .alter-merge capacity policy command- Azure Data Explorer
+title:  .alter-merge capacity policy command
 description: Learn how to use the .alter-merge capacity policy command to turn on or turn off a cluster's capacity policy.
 ms.reviewer: yonil
 ms.topic: reference

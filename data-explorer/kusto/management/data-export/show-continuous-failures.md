@@ -1,5 +1,5 @@
 ---
-title: Show continuous data export failures - Azure Data Explorer
+title:  Show continuous data export failures
 description: This article describes how to show continuous data export failures in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

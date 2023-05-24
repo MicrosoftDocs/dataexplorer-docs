@@ -1,5 +1,5 @@
 ---
-title: .show materialized-view failures commands - Azure Data Explorer
+title:  .show materialized-view failures commands
 description: This article describes show materialized-view failures commands in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

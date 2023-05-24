@@ -1,9 +1,9 @@
 ---
-title: .drop table and .drop tables - Azure Data Explorer
-description: This article describes .drop table and .drop tables in Azure Data Explorer.
+title: .drop table and .drop tables
+description: Learn how to use the  `.drop table` and `.drop tables` commands to remove one or more tables from a database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/15/2023
 ---
 # .drop table and .drop tables
 
