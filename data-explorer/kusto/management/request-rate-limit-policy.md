@@ -1,9 +1,9 @@
 ---
-title: Request rate limit policy - Azure Data Explorer
+title: Request rate limit policy
 description: Learn how to use the request rate limit policy to limit the number of concurrent requests classified into a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/21/2023
+ms.date: 05/24/2023
 ---
 # Request rate limit policy
 

@@ -1,9 +1,9 @@
 ---
-title: Request classification policy - Azure Data Explorer
+title: Request classification policy
 description: Learn how to use the request classification policy to assign incoming requests to a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/18/2023
+ms.date: 05/24/2023
 ---
 # Request classification policy
 

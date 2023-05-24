@@ -1,13 +1,13 @@
 ---
-title: Security roles - Azure Data Explorer
+title:  Security roles
 description: This article describes security roles in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/25/2023
+ms.date: 04/25/2023
 ---
 # Security roles overview
 
-Azure Data Explorer uses a role-based access control (RBAC) model in which principals get access to resources according to the security roles they're assigned.
+Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
 When a principal attempts an operation, the system performs an authorization check to make sure the principal is associated with at least one security role that grants permissions to perform the operation. Failing an authorization check aborts the operation.
 
@@ -37,7 +37,7 @@ The following table describes the level of access granted for each role and show
 |`ingestors` | Ingest data to the object without access to query. |&check;|&check;||||
 |`monitors` | View metadata such as schemas, operations, and permissions.|&check;|||||
 
-For a full description of the security roles at each scope, see [Azure Data Explorer role-based access control](access-control/role-based-access-control.md).
+For a full description of the security roles at each scope, see [Kusto role-based access control](access-control/role-based-access-control.md).
 
 > [!NOTE]
 > It isn't possible to assign the `viewer` role for only some tables in the database. For different approaches on how to grant a principal view access to a subset of tables, see [manage table view access](manage-table-view-access.md).
@@ -47,5 +47,5 @@ For a full description of the security roles at each scope, see [Azure Data Expl
 
 ## Next steps
 
-* Read more about Azure Data Explorer [role-based access control](access-control/role-based-access-control.md)
+* Read more about [Kusto role-based access control](access-control/role-based-access-control.md)
 * Learn how to [reference security principals](access-control/referencing-security-principals.md)

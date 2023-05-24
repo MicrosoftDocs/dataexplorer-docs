@@ -1,9 +1,9 @@
 ---
-title: .rename table and .rename tables - Azure Data Explorer
+title: .rename table and .rename tables
 description: Learn how to use the `.rename table` and `.rename tables` commands to change the name of an existing table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/18/2023
+ms.date: 05/24/2023
 ---
 # .rename table and .rename tables
 
