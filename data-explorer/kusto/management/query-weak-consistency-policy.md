@@ -1,9 +1,9 @@
 ---
-title:  Query weak consistency policy
-description: This article describes the query weak consistency policy in Azure Data Explorer.
+title: Query weak consistency policy
+description: Learn how to use the query weak consistency policy to configure the weak consistency service.
 ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/24/2023
 ---
 # Query weak consistency policy
 
