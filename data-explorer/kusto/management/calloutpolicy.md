@@ -1,7 +1,5 @@
 ---
 title:  Callout policy
-description: This article describes Callout policy
-title: Callout policy - Azure Data Explorer
 description: Learn how to update a cluster's callout policy to manage authorized domains for external calls.
 ms.reviewer: orspodek
 ms.topic: reference
