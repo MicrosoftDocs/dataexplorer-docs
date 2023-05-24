@@ -1,9 +1,9 @@
 ---
-title: Queries management - Azure Data Explorer
+title: Queries management
 description: Learn how to use management commands to manage your queries.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 05/24/2023
 ---
 # Queries management
 

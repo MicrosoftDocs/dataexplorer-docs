@@ -1,5 +1,5 @@
 ---
-title: Request limits policy - Azure Data Explorer
+title:  Request limits policy
 description: This article describes the request limits policy in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

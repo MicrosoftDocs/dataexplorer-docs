@@ -1,9 +1,9 @@
 ---
-title: Partitioning policy - Azure Data Explorer
+title: Partitioning policy
 description: Learn how to use the partitioning policy to improve query performance.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 05/24/2023
 ---
 # Partitioning policy
 

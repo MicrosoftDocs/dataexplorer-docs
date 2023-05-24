@@ -1,9 +1,9 @@
 ---
-title: .move extents - Azure Data Explorer
+title: .move extents
 description: Learn how to use the `.move extents` command to move extents from a source table to a destination table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 05/24/2023
 ---
 
 # .move extents

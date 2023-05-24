@@ -1,9 +1,9 @@
 ---
-title: Query consistency policy - Azure Data Explorer
+title: Query consistency policy
 description: Learn how to use the query consistency policy to control the consistency mode of queries.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 05/24/2023
 ---
 # Query consistency policy
 

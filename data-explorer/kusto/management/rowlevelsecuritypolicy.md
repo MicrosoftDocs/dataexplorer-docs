@@ -1,5 +1,5 @@
 ---
-title: Row Level Security - Azure Data Explorer
+title:  Row Level Security
 description: This article describes Row Level Security in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
