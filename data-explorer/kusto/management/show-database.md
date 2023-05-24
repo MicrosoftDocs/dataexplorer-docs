@@ -1,9 +1,9 @@
 ---
-title: .show database - Azure Data Explorer
+title: .show database
 description: Learn how to use the `.show database` command to show the properties of the specified database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/24/2023
 ---
 # .show database
 

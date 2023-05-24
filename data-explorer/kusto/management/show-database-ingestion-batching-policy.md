@@ -1,9 +1,9 @@
 ---
-title: .show database ingestion batching policy command- Azure Data Explorer
+title: .show database ingestion batching policy command
 description: Learn how to use the `.show database ingestion batching policy` command to show the database's ingestion batching policy.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/22/2023
+ms.date: 05/24/2023
 ---
 # .show database ingestion batching policy
 

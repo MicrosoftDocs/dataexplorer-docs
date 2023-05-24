@@ -1,5 +1,5 @@
 ---
-title: take operator - Azure Data Explorer
+title:  take operator
 description: Learn how to use the take operator to return a specified number of rows.
 ms.reviewer: alexans
 ms.topic: reference
@@ -10,7 +10,7 @@ ms.date: 03/16/2023
 Return up to the specified number of rows.
 
 There is no guarantee which records are returned, unless
-the source data is sorted.
+the source data is sorted. If the data is sorted, then the top values will be returned.
 
 > The `take` and `limit` operators are equivalent
 

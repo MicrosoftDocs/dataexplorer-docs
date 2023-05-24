@@ -1,9 +1,9 @@
 ---
-title: .show database retention policy command- Azure Data Explorer
+title: .show database retention policy command
 description: Learn how to use the `.show database retention policy` command to show the database's retention policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/22/2023
+ms.date: 05/24/2023
 ---
 # .show database retention policy
 
