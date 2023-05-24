@@ -64,7 +64,7 @@ three kinds of columns:
 | [`treemap`](visualization-treemap.md) | Displays hierarchical data as a set of nested rectangles.
 
 > [!NOTE]
-> The ladderchart, pivotchart, and timepivot visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
+> The ladderchart, pivotchart, timepivot, and treemap visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
 
 ::: zone-end
 
@@ -152,7 +152,6 @@ Some visualizations support splitting into multiple y-axis values:
 |`none`    |A single y-axis is displayed for all series data. (Default)       |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
-
 
 ## How to render continuous data
 
