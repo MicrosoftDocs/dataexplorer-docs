@@ -10,13 +10,13 @@ The [Azure Data Explorer web UI](https://dataexplorer.azure.com/) query editor o
 
 ## KQL Intellisense and autocomplete
 
-The query editor has built-in KQL Intellisense that offers contextual suggestions for functions and operators, and autocomplete that helps completes your queries to save you time and effort.
+The query editor has built-in KQL Intellisense that offers contextual suggestions for functions and operators, and autocomplete that completes your queries to save you time and effort.
 
 To use KQL Intellisense and autocomplete:
 
 1. Start typing a query in the query editor.
 
-1. KQL Intellisense will activate, presenting dropdown options for entities, operators, functions, and more. Move between these options using the arrow keys on your keyboard, and select one by pressing *Enter* or selecting the option with your mouse.
+1. KQL Intellisense activates, presenting dropdown options for entities, operators, functions, and more. Move between these options using the arrow keys on your keyboard, and select one by pressing *Enter* or selecting the option with your mouse.
 
 1. If you notice underlined keywords, hover over them to reveal errors or suggestions that triggered the highlighting.
 
@@ -58,11 +58,11 @@ To fix a query based on a suggestion or warning:
 
 ## Quick fix: Extract value into a variable
 
-The quick fix feature can also be used to extract a value out into a variable:
+The quick fix feature can also be used to extract out a value into a variable:
 
 1. Select the value to extract.
 
-1. Select the lightbulb icon or press *Ctrl + .* to open the quick fix options.
+1. Select the light bulb icon or press *Ctrl + .* to open the quick fix options.
 
 1. Select **Extract value**.
 
@@ -76,7 +76,7 @@ To show a function definition:
 
 1. Write and select the function name.
 
-1. Select the lightbulb icon or press *Ctrl + .* to open the quick fix options.
+1. Select the light bulb icon or press *Ctrl + .* to open the quick fix options.
 
 1. To define the function inline, select **Inline (Inline function)** or **Inline Recursive (Inline function)**.
 
@@ -90,7 +90,7 @@ To use KQL tools:
 
 1. In the toolbar, select **KQL tools**.
 
-1. Choose from options like **Duplicate query**, **Open command palette**, or hover over **Resources** to access documentation links. This includes resources such as the [KQL to SQL cheat sheet](kusto/query/sqlcheatsheet.md), [Keyboard shortcuts](web-ui-query-keyboard-shortcuts.md), and [KQL quick reference documentation](kql-quick-reference.md).
+1. Choose from options like **Duplicate query**, **Open command palette**, or hover over **Resources** to access documentation links. This list includes resources such as the [KQL to SQL cheat sheet](kusto/query/sqlcheatsheet.md), [Keyboard shortcuts](web-ui-query-keyboard-shortcuts.md), and [KQL quick reference documentation](kql-quick-reference.md).
 
 :::image type="content" source="media/web-ui-kql/kql-tools.jpg" alt-text="Screenshot of the KQL tools option in the web UI toolbar." lightbox="media/web-ui-kql/kql-tools.jpg":::
 
