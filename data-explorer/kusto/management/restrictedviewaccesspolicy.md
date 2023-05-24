@@ -7,7 +7,7 @@ ms.date: 05/21/2023
 ---
 # Restricted view access policy
 
-The restricted view access policy is an optional security feature that governs view permissions for tables in a database. By default, the policy is disabled. When enabled, the policy adds an extra layer of permission requirements for principals to access and view the table.
+The restricted view access policy is an optional security feature that governs view permissions on a table. By default, the policy is disabled. When enabled, the policy adds an extra layer of permission requirements for principals to access and view the table.
 
 For a table with an enabled restricted view access policy, only principals assigned the [UnrestrictedViewer](./access-control/role-based-access-control.md) role have the necessary permissions to access and view the table. Even principals with roles like Table Admin, Database Admin, or Cluster Admin are restricted unless granted the UnrestrictedViewer role.
 
