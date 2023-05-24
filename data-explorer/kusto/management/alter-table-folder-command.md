@@ -1,5 +1,5 @@
 ---
-title: .alter table folder - Azure Data Explorer
+title:  .alter table folder
 description: Learn how to use the .alter table folder command to alter the folder value of an existing table.
 ms.reviewer: orspodek
 ms.topic: reference

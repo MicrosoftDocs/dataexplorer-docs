@@ -1,5 +1,5 @@
 ---
-title: Create or alter continuous data export - Azure Data Explorer
+title:  Create or alter continuous data export
 description: This article describes how to create or alter continuous data export in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

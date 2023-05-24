@@ -1,9 +1,9 @@
 ---
-title: .show materialized view partitioning policy command- Azure Data Explorer
+title: .show materialized view partitioning policy command
 description: Learn how to use the `.show materialized view partitioning policy` command to show the materialized view's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 05/24/2023
 ---
 # .show materialized view partitioning policy
 

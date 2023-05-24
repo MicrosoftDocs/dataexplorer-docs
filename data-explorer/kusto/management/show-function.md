@@ -1,9 +1,9 @@
 ---
-title: .show functions - Azure Data Explorer
+title: .show functions
 description: Learn how to use the `.show functions` command to list all the stored functions in the specified database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 05/24/2023
 ---
 # .show function(s)
 

@@ -1,5 +1,5 @@
 ---
-title: series_dbl_exp_smoothing_fl() - Azure Data Explorer
+title:  series_dbl_exp_smoothing_fl()
 description: This article describes the series_dbl_exp_smoothing_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: joruales
 ms.topic: reference

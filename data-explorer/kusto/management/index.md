@@ -1,5 +1,5 @@
 ---
-title: Management (control commands) overview - Azure Data Explorer
+title:  Management (control commands) overview
 description: This article describes Management (control commands) overview in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

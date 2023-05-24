@@ -1,11 +1,15 @@
 ---
-title: binomial_test_fl() - Azure Data Explorer
+title:  binomial_test_fl()
 description: This article describes the binomial_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # binomial_test_fl()
+
+::: zone pivot="azuredataexplorer, azuremonitor"
 
 The function `binomial_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [binomial test](https://en.wikipedia.org/wiki/Binomial_test).
 
@@ -160,3 +164,12 @@ datatable(id:string, x:int, n:int) [
 | Test #1 | 3 | 5 | 0.05792 |
 | Test #2 | 5 | 5 | 0.00032 |
 | Test #3 | 3 | 15 | 0.601976790745087 |
+
+
+::: zone-end
+
+::: zone pivot="fabric"
+
+This feature isn't supported.
+
+::: zone-end

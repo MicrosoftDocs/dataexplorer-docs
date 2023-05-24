@@ -1,5 +1,5 @@
 ---
-title: Drop continuous data export - Azure Data Explorer
+title:  Drop continuous data export
 description: This article describes how to drop continuous data export in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

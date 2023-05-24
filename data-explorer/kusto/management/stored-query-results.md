@@ -1,5 +1,5 @@
 ---
-title: Stored query results - Azure Data Explorer
+title:  Stored query results
 description: This article describes how to create and use stored query results in Azure Data Explorer.
 ms.reviewer: mispecto
 ms.topic: reference

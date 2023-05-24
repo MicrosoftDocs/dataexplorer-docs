@@ -1,9 +1,9 @@
 ---
-title: .show extent tags retention policy management - Azure Data Explorer
+title: .show extent tags retention policy management
 description: Learn how to use the `.show extent tags retention policy` command to show the extent tags' retention policy on a table or database-level.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 05/24/2023
 ---
 # .show extent tags retention policy
 

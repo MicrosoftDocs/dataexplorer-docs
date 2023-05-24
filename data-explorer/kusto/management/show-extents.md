@@ -1,9 +1,9 @@
 ---
-title: .show extents - Azure Data Explorer
+title: .show extents
 description: Learn how to use the `.show extents` command to show the extents for a specified scope.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 05/24/2023
 ---
 
 # .show extents
