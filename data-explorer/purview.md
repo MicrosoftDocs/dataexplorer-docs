@@ -2,7 +2,7 @@
 title: Integrate Azure Data Explorer with Microsoft Purview
 description: Learn how to use Azure Data Explorer with Microsoft Purview.
 ms.topic: conceptual
-ms.date: 05/18/2023
+ms.date: 05/24/2023
 ---
 
 # Integrate Azure Data Explorer with Microsoft Purview
