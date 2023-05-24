@@ -91,7 +91,7 @@ The following example removes all principals in the group from the `admins` role
 
 #### Add new admins and remove the old with .set
 
-THe following example removes existing `admins` and adds the provided principals as `admins` on the `SampleView` materialized view.
+The following example removes existing `admins` and adds the provided principals as `admins` on the `SampleView` materialized view.
 
 ```kusto
 .set materialized view SampleView admins ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
