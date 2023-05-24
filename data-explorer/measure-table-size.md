@@ -14,7 +14,7 @@ Use the [.show table details](kusto/management/show-table-details-command.md) to
 
 This command provides an estimation of the uncompressed size of data ingested into your table based on the assumption that the data was transferred in CSV format. The estimation is based on approximate lengths of numeric values, such as integers, longs, datetimes, and guids, by considering their string representations.
 
-**Use case:** Track the size of incoming data over time to make informed decisions about capacity planning.
+**Example use case:** Track the size of incoming data over time to make informed decisions about capacity planning.
 
 ## Estimate table size in terms of access bytes
 
@@ -22,13 +22,13 @@ Use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) along 
 
 This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory.
 
-**Use case:** Determine the cost of a query in terms of bytes to be scanned.
+**Example use case:** Determine the cost of a query in terms of bytes to be scanned.
 
 ## Estimate size of multiple tables
 
 You can use the [union](kusto/query/unionoperator.md) operator along with the previously described method to estimate the table size in terms of access bytes for multiple tables. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
 
-**Use case**: Assess the memory requirements for consolidating data from multiple tables into a single dataset.
+**Example use case:** Assess the memory requirements for consolidating data from multiple tables into a single dataset.
 
 > [!NOTE]
 > This approach may inflate the estimated data size due to empty columns, as `union` combines all columns from the specified tables and `estimate_data_size()` takes into account empty columns when calculating the data size.
