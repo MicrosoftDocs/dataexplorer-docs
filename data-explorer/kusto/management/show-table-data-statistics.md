@@ -1,9 +1,9 @@
 ---
-title: .show table data statistics - Azure Data Explorer
+title: .show table data statistics
 description: Learn how to use the `.show table data statistics` command to show the table's data statistics estimation by table column and storage engine version.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 05/24/2023
 ---
 # .show table data statistics
 

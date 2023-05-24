@@ -1,5 +1,5 @@
 ---
-title: .show materialized view row level security policy command- Azure Data Explorer
+title: .show materialized view row level security policy command
 description: Learn how to use the `.show materialized view row level security policy` command to show the materialized view's row level security policy.
 ms.reviewer: yonil
 ms.topic: reference

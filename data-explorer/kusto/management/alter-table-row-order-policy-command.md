@@ -1,5 +1,5 @@
 ---
-title: ".alter table row order policy command- Azure Data Explorer"
+title:  ".alter table row order policy command"
 description: "This article describes the .alter table row order policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference

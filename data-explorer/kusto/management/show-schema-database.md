@@ -1,9 +1,9 @@
 ---
-title: .show database schema - Azure Data Explorer
+title: .show database schema
 description: Learn how to use the `.show database schema` command to show the database schema as a table, JSON object, or CSL script.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 05/24/2023
 ---
 # .show database schema commands
 

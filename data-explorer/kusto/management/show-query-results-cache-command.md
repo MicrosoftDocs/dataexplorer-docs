@@ -1,9 +1,9 @@
 ---
-title: .show database cache query_results - Azure Data Explorer
+title: .show database cache query_results
 description: Learn how to use the `.show cache query_results` command to show statistics related to the query results cache in the context of a database.
 ms.reviewer: amitof
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 05/24/2023
 ---
 # .show database cache query_results
 
