@@ -15,6 +15,7 @@ The render operator must be the last operator in the query, and can only be used
 
 The data model of the render operator looks at the tabular data as if it has
 three kinds of columns:
+
 * The x axis column (indicated by the `xcolumn` property).
 * The series columns (any number of columns indicated by the `series` property.) For each record, the combined values of these columns defines a single series, and the chart has as many series as there are distinct combined values.
 * The y axis columns (any number of columns indicated by the `ycolumns` property). For each record, the series has as many measurements ("points" in the chart) as there are y-axis columns.
@@ -60,6 +61,7 @@ three kinds of columns:
 | [`table`](visualization-table.md)                       | Default - results are shown as a table.                                                                                                                                                                           |
 | [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes.                                                                                                                     |
 | [`timepivot`](visualization-timepivot.md)               | Interactive navigation over the events time-line (pivoting on time axis)                                                                                                                                          |
+| [`treemap`](visualization-treemap.md) | Displays hierarchical data as a set of nested rectangles.
 
 > [!NOTE]
 > The ladderchart, pivotchart, and timepivot visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
