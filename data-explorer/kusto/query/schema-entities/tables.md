@@ -70,4 +70,4 @@ counter("StormEvents")
 
 ## See also
 
-* [Understand and estimate the size of a table](../../../measure-table-size.md)
+* [Understand and estimate the size of a table](../../../estimate-table-size.md)

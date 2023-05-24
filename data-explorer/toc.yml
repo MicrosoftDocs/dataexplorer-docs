@@ -334,6 +334,8 @@ items:
         - name: Create retention table policy
           displayName: one-click, wizard
           href: table-retention-policy-wizard.md
+      - name: Understand and estimate table size
+        href: estimate-table-size.md
     - name: Secure
       items:
         - name: Access control
