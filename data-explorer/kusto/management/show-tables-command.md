@@ -1,9 +1,9 @@
 ---
-title: .show tables - Azure Data Explorer
-description: This article describes .show tables in Azure Data Explorer.
+title: .show tables
+description: Learn how to use the `.show tables` command to show a set that contains the specified tables in the database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/09/2023
+ms.date: 05/23/2023
 ---
 # .show tables
 

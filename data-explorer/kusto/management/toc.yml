@@ -664,7 +664,7 @@ items:
   - name: Queries
     href: queries.md
     displayName: .show running queries .cancel query 
-  - name: Streaming ingestion statistics
+  - name: .show streaming ingestion statistics
     href: streamingingestionstatistics.md
 - name: Advanced data management
   items:
@@ -692,4 +692,8 @@ items:
   - name: Data purge
     href: ../concepts/data-purge.md
   - name: Data soft delete
-    href: ../concepts/data-soft-delete.md
+    items:
+    - name: Soft delete overview
+      href: ../concepts/data-soft-delete.md
+    - name: Soft delete command
+      href: soft-delete-command.md

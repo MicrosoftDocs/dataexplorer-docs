@@ -1,5 +1,5 @@
 ---
-title: SQL Server authentication methods - Azure Data Explorer
+title:  SQL Server authentication methods
 description: This article describes SQL Server authentication methods used in SQL Server connection strings in Azure Data Explorer.
 ms.reviewer: shanisolomon
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: .undo drop table - Azure Data Explorer
+title: .undo drop table
 description: Learn how to use the `.undo drop table` command to revert a drop table operation to a specific database version.
 ms.reviewer: orspodek
 ms.topic: reference

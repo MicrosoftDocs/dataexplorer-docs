@@ -1,9 +1,9 @@
 ---
-title: .show table schema - Azure Data Explorer
-description: This article describes .show table schema in Azure Data Explorer.
+title: .show table schema
+description: Learn how to use the `.show table schema` command to display the specified table's schema.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/09/2023
+ms.date: 05/24/2023
 ---
 # .show table schema
 

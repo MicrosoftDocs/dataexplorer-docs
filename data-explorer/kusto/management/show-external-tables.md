@@ -1,9 +1,9 @@
 ---
-title: show external table control command - Azure Data Explorer
-description: This article describes the show external table control command in Azure Data Explorer 
+title: .show external table control command
+description: Learn how to use the `.show external tables` command to show the specified external tables in the database. 
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 05/24/2023
 ---
 # .show external tables
 

@@ -1,9 +1,9 @@
 ---
-title: ".show cluster policy query_weak_consistency management - Azure Data Explorer"
-description: This article describes the `.show query weak consistency policy` command in Azure Data Explorer.
+title: .show cluster policy query_weak_consistency
+description: Learn how to use the `.show query weak consistency policy` command to show the query weak consistency policy of the cluster.
 ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 05/09/2023
+ms.date: 05/24/2023
 ---
 # .show cluster policy query_weak_consistency
 

@@ -1,13 +1,15 @@
 ---
-title: Manage materialized view roles - Azure Data Explorer
-description: This article describes how to use management commands to view, add, and remove materialized view admins on the materialized view level in Azure Data Explorer.
+title: Manage materialized view roles
+description: Learn how to use management commands to view, add, and remove materialized view admins on a materialized view level.
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/24/2023
 ---
 
 # Manage materialized view roles
 
-Azure Data Explorer uses a role-based access control model in which principals get access to resources according to the roles they're assigned. On materialized views, the only security role is `admins`. Materialized view `admins` have the ability to view, modify, and remove the materialized view.
+Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
+
+On materialized views, the only security role is `admins`. Materialized view `admins` have the ability to view, modify, and remove the materialized view.
 
 In this article, you'll learn how to use management commands to [view existing admins](#view-existing-admins) as well as [add and remove admins](#add-and-remove-admins) on materialized views.
 
@@ -89,7 +91,7 @@ The following example removes all principals in the group from the `admins` role
 
 #### Add new admins and remove the old with .set
 
-THe following example removes existing `admins` and adds the provided principals as `admins` on the `SampleView` materialized view.
+The following example removes existing `admins` and adds the provided principals as `admins` on the `SampleView` materialized view.
 
 ```kusto
 .set materialized view SampleView admins ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')

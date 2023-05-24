@@ -1,5 +1,5 @@
 ---
-title: Workload groups - Azure Data Explorer
+title: Workload groups
 description: Learn how to use workload groups to govern incoming requests to the cluster.
 ms.reviewer: yonil
 ms.topic: reference
