@@ -1,5 +1,5 @@
 ---
-title: Azure Data Explorer API Overview - Azure Data Explorer
+title:  Azure Data Explorer API Overview
 description: This article describes API in Azure Data Explorer.
 ms.reviewer: vladikb
 ms.topic: reference

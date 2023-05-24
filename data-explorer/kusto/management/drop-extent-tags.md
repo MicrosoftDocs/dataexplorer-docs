@@ -1,5 +1,5 @@
 ---
-title: .drop extent tags - Azure Data Explorer
+title: .drop extent tags
 description: Learn how to use the `.drop extent tags` command to drop extent tags from a specified table in a database.
 ms.reviewer: orspodek
 ms.topic: reference

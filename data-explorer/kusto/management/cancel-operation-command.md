@@ -1,5 +1,5 @@
 ---
-title: Cancel operation command - Azure Data Explorer
+title:  Cancel operation command
 description: This article describes the `.cancel operation` command in Azure Data Explorer.
 ms.reviewer: odkadosh
 ms.topic: reference

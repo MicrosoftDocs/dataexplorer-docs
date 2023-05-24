@@ -1,5 +1,5 @@
 ---
-title: Stored functions - Azure Data Explorer
+title:  Stored functions
 description: This article describes Stored functions in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

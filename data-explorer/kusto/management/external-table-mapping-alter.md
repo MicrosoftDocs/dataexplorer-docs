@@ -1,5 +1,5 @@
 ---
-title: .alter external table mapping - Azure Data Explorer
+title:  .alter external table mapping
 description: Learn how to alter an external table mapping for Azure Blob Storage or Azure Data Lake external tables.
 ms.topic: reference
 ms.date: 04/09/2023

@@ -1,5 +1,5 @@
 ---
-title: The .show cluster policy request_classification command - Azure Data Explorer
+title:  The .show cluster policy request_classification command
 description: This article describes the show cluster policy request_classification command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

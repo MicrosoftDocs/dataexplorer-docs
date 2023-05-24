@@ -1,5 +1,5 @@
 ---
-title: .alter function - Azure Data Explorer
+title:  .alter function
 description: Learn how to use the .alter function command to alter an existing function.
 ms.reviewer: orspodek
 ms.topic: reference

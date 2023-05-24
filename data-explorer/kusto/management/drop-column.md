@@ -1,9 +1,9 @@
 ---
-title: .drop column - Azure Data Explorer
+title: .drop column
 description: Learn how to use the `.drop column` command to remove a column from a table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 05/24/2023
 ---
 # .drop column
 

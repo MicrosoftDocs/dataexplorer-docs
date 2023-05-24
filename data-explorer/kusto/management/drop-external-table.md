@@ -1,9 +1,9 @@
 ---
-title: .drop external table control command - Azure Data Explorer
+title: .drop external table control command
 description: Learn how to use the `.drop external table` command to drop an external table. 
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 05/24/2023
 ---
 # .drop external table
 

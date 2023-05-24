@@ -1,9 +1,9 @@
 ---
-title: .disable plugin command- Azure Data Explorer
+title: .disable plugin command
 description: Learn how to use the `.disable plugin` command to disable a plugin. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 05/24/2023
 ---
 # .disable plugin
 
