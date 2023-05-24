@@ -341,8 +341,6 @@ items:
         - name: Create retention table policy
           displayName: one-click, wizard
           href: table-retention-policy-wizard.md
-      - name: Understand and estimate table size
-        href: estimate-table-size.md
     - name: Customize settings in the web UI
       href: web-customize-settings.md
     - name: Secure
@@ -490,6 +488,8 @@ items:
       - name: Working with databases and tables
         displayName: troubleshoot
         href: troubleshoot-database-table.md
+    - name: Understand and estimate table size
+      href: estimate-table-size.md
   - name: Develop
     items:
     - name: API overview
