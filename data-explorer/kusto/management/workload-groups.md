@@ -1,5 +1,5 @@
 ---
-title: Workload groups - Azure Data Explorer
+title:  Workload groups
 description: This article describes workload groups in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

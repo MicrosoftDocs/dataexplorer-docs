@@ -1,9 +1,9 @@
 ---
-title: .delete table policy auto_delete command - Azure Data Explorer
+title: .delete table policy auto_delete command
 description: Learn how to use the `.delete table policy auto_delete` command to delete the auto delete policy of a table.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 05/24/2023
 ---
 # .delete table policy auto_delete
 

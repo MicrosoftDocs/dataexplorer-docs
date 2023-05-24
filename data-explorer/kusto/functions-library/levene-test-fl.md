@@ -1,11 +1,16 @@
 ---
-title: levene_test_fl() - Azure Data Explorer
+title:  levene_test_fl()
 description: This article describes the levene_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # levene_test_fl()
+
+::: zone pivot="azuredataexplorer, azuremonitor"
+
 
 The function `levene_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Levene Test](https://en.wikipedia.org/wiki/Levene%27s_test).
 
@@ -150,3 +155,11 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | Test #1 | [23.64, 20.57, 20.42] | [27.1, 22.12, 33.56] | 1.5587395987367387 | 0.27993504690044563 |
 | Test #2 | [20.85, 21.89, 23.41] | [35.09, 30.02, 26.52] | 1.6402495788130482 | 0.26950872948841353 |
 | Test #3 | [20.13, 20.5, 21.7, 22.02] | [32.2, 32.79, 33.9, 34.22] | 0.0032989690721642395 | 0.95606240301049072 |
+
+::: zone-end
+
+::: zone pivot="fabric"
+
+This feature isn't supported.
+
+::: zone-end

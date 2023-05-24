@@ -1,5 +1,5 @@
 ---
-title: Database cursors - Azure Data Explorer
+title: Database cursors
 description: Learn how to use database cursors to query a database multiple times.
 ms.reviewer: orspodek
 ms.topic: reference

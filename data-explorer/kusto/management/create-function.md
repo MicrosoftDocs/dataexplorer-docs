@@ -1,9 +1,9 @@
 ---
-title: .create function - Azure Data Explorer
-description: This article describes the .create function in Azure Data Explorer.
+title: .create function
+description: Learn how to use the `.create function` command to create a stored function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/24/2023
 ---
 # .create function
 
@@ -54,9 +54,9 @@ You must have at least [Database User](access-control/role-based-access-control.
 > [!NOTE]
 >
 > * If the function already exists:
->    * If `ifnotexists` flag is specified, the command is ignored (no change applied).
->    * If `ifnotexists` flag is NOT specified, an error is returned.
->    * For altering an existing function, see [`.alter function`](alter-function.md)
+>   * If `ifnotexists` flag is specified, the command is ignored (no change applied).
+>   * If `ifnotexists` flag is NOT specified, an error is returned.
+>   * For altering an existing function, see [`.alter function`](alter-function.md)
 > * Not all data types are supported in `let` statements. Supported types are: boolean, string, long, datetime, timespan, double, and dynamic.
 > * Use `skipvalidation` to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.
 

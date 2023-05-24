@@ -1,5 +1,5 @@
 ---
-title: Alter capacity policy command - Azure Data Explorer
+title:  Alter capacity policy command
 description: Learn how to use the .alter capacity policy command to change the cluster's capacity policy.
 ms.reviewer: yonil
 ms.topic: reference

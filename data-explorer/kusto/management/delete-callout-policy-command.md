@@ -1,5 +1,5 @@
 ---
-title: .delete cluster policy callout command- Azure Data Explorer
+title: .delete cluster policy callout command
 description: Learn how to use the `.delete cluster policy callout` command to delete the callout policy defined for a cluster.
 ms.reviewer: yonil
 ms.topic: reference

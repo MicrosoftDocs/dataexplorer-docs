@@ -1,5 +1,5 @@
 ---
-title: Request classification policy - Azure Data Explorer
+title:  Request classification policy
 description: This article describes the request classification policy in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

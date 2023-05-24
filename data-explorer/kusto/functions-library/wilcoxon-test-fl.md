@@ -1,11 +1,16 @@
 ---
-title: wilcoxon_test_fl() - Azure Data Explorer
+title:  wilcoxon_test_fl()
 description: This article describes the wilcoxon_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # wilcoxon_test_fl()
+
+
+::: zone pivot="azuredataexplorer, azuremonitor"
 
 The function `wilcoxon_test_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that performs the [Wilcoxon Test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test).
 
@@ -146,3 +151,11 @@ datatable(id:string, sample1:dynamic) [
 | Test #1 | [23.64, 20.57, 20.42] | 0, 0.10880943004054568 |
 | Test #2 | [20.85, 21.89, 23.41] | 0, 0.10880943004054568 |
 | Test #3 | [20.13, 20.5, 21.7, 22.02] | 0, 0.06788915486182899 |
+
+::: zone-end
+
+::: zone pivot="fabric"
+
+This feature isn't supported.
+
+::: zone-end
