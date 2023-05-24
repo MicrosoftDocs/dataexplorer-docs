@@ -1,5 +1,5 @@
 ---
-title: .show external table mapping - Azure Data Explorer
+title:  .show external table mapping
 description: Learn how to show external table mappings for Azure Blob Storage or Azure Data Lake external tables.
 ms.topic: reference
 ms.date: 04/09/2023

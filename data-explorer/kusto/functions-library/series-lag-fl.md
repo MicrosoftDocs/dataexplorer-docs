@@ -1,11 +1,16 @@
 ---
-title: series_lag_fl() - Azure Data Explorer
+title:  series_lag_fl()
 description: This article describes series_lag_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # series_lag_fl()
+
+
+::: zone pivot="azuredataexplorer, azuremonitor"
 
 Applies a lag on a series.
 
@@ -114,3 +119,12 @@ demo_make_series1
 **Output**
 
 :::image type="content" source="images/series-lag-fl/series-lag-1-day.png" alt-text="Graph of a time series shifted by one day." border="false":::
+
+
+::: zone-end
+
+::: zone pivot="fabric"
+
+This feature isn't supported.
+
+::: zone-end

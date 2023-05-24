@@ -1,5 +1,5 @@
 ---
-title: Kusto.Ingest code examples - Azure Data Explorer
+title:  Kusto.Ingest code examples
 description: This article describes Kusto.Ingest ingestion code examples in Azure Data Explorer.
 ms.reviewer: ohbitton
 ms.topic: reference

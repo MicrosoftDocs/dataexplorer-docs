@@ -1,5 +1,5 @@
 ---
-title: Streaming Ingestion statistics - Azure Data Explorer
+title:  Streaming Ingestion statistics
 description: This article describes the command to show streaming ingestion statistics in Azure Data Explorer.
 ms.topic: reference
 ms.date: 02/21/2023

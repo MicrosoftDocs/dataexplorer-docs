@@ -1,5 +1,5 @@
 ---
-title: Restricted view access policy - Azure Data Explorer
+title:  Restricted view access policy
 description: This article describes the restricted view access policy in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
