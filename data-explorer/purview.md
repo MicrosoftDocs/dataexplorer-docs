@@ -25,4 +25,16 @@ For information on how to connect to Azure Data Explorer in Microsoft Purview, s
 
 The following sections describe some common scenarios for using Azure Data Explorer with Microsoft Purview.
 
-### Scenario 1:
+### Scenario 1: View resource properties in multi-tenant deployment
+
+In Purview, you can configure scans on multiple clusters to gain insights into various cluster resources and their properties. This feature allows you to easily move between scans and get a summary of different cluster resources. For example, you can identify which databases are located in specific regions across multiple clusters.
+
+To view the properties of an Azure Data Explorer resource, follow these steps:
+
+1. [Set up a scan of your cluster in Microsoft Purview](/azure/purview/register-scan-azure-data-explorer#scan).
+1. Select the desired resource.
+
+    > [!NOTE]
+    > Tables have limited metadata. For more details, select **Related assets** and then select the parent database.
+
+1. Select the **Properties** tab. View properties such as the **createTime**, **location**, **resourceGroupName**, **subscriptionId**, and more.
