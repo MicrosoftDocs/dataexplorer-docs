@@ -22,7 +22,10 @@ To view the documentation:
 
 1. Hover over the operator, function, or command in the Intellisense.
 
-1. Select the right arrow icon to open a preview of the documentation inline.
+1. Select the right arrow icon to open an inline preview of the documentation.
+
+    > [!NOTE]
+    > The preview remains active until you close it or end your session, even for other operators and functions.
 
 1. To open the documentation in your browser, select **View online**.
 
