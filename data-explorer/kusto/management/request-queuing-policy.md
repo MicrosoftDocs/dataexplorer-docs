@@ -13,6 +13,8 @@ Queuing of requests can reduce the number of throttling errors during times of p
 
 The policy may be defined only for workload groups with a [request rate limit policy](request-rate-limit-policy.md) that limits the max concurrent requests at the scope of the workload group.
 
+Use the [.alter-merge workload group](alter-merge-workload-group-command.md#alter-the-request-queuing-policy) control command to enable request queuing.
+
 ## The policy object
 
 The policy includes a single property:
