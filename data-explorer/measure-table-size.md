@@ -26,7 +26,7 @@ This method provides a more precise estimation by considering the byte sizes of 
 
 ## Combined size of multiple tables
 
-You can use the [union](kusto/query/unionoperator.md) operator along with the previously described method to estimate the table size in terms of access bytes for multiple tables. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
+You can use the [union](kusto/query/unionoperator.md) operator along with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) and [sum()](kusto/query/sum-aggfunction.md) functions to estimate the combined size of multiple tables in terms of access bytes. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
 
 **Example use case:** Assess the memory requirements for consolidating data from multiple tables into a single dataset.
 
