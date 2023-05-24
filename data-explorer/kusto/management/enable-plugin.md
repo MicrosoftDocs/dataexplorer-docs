@@ -1,9 +1,9 @@
 ---
-title:  Enable plugin command
-description: This article describes plugins management command .enable plugin in Azure Data Explorer.
+title: .enable plugin command
+description: Learn how to use the `.enable plugin` command to enable a plugin.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/24/2023
 ---
 # .enable plugin
 

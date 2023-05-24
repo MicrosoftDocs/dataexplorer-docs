@@ -1,8 +1,8 @@
 ---
-title:  .alter external table mapping
-description: Learn how to alter an external table mapping for Azure Blob Storage or Azure Data Lake external tables.
+title: .alter external table mapping
+description: Learn how to use the `.alter external table mapping` command to alter an external table mapping for Azure Blob Storage or Azure Data Lake external tables.
 ms.topic: reference
-ms.date: 04/09/2023
+ms.date: 05/24/2023
 ---
 
 # .alter external table mapping
@@ -36,4 +36,3 @@ Returns a table containing the mapping name, mapping kind, and new mapping defin
 | Name | Kind | Mapping |
 |--|--|--|
 | mapping1 | JSON | [{"ColumnName":"rownumber","Properties":{"Path":"$.rownumber"}},{"ColumnName":"rowguid","Properties":{"Path":"$.rowguid"}}] |
-
