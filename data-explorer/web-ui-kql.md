@@ -18,7 +18,7 @@ The query editor has built-in KQL Intellisense that offers contextual suggestion
 
 The query editor provides inline access to documentation for KQL operators, functions, and management commands.
 
-To view the documentation:
+To view inline documentation:
 
 1. Hover over the operator, function, or command in the Intellisense.
 
@@ -27,7 +27,7 @@ To view the documentation:
     > [!NOTE]
     > The preview remains active until you close it or end your session, even for other operators and functions.
 
-1. To open the documentation in your browser, select **View online**.
+1. If you'd like to open the full documentation in your browser, select **View online**.
 
 :::image type="content" source="media/web-ui-kql/inline-documentation.png" alt-text="Screenshot of inline KQL operator documentation." lightbox="media/web-ui-kql/inline-documentation.png":::
 
