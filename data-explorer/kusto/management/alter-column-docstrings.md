@@ -1,5 +1,5 @@
 ---
-title: .alter column-docstrings - Azure Data Explorer
+title:  .alter column-docstrings
 description: Learn how to use the .alter column-docstrings command to set the `DocString` property of one or more columns of the specified table.
 ms.reviewer: orspodek
 ms.topic: reference

@@ -1,8 +1,8 @@
 ---
-title: .droo external table mapping - Azure Data Explorer
+title: .drop external table mapping
 description: Learn how to use the `.drop external table mapping` command to drop an external table mapping for Azure Blob Storage or Azure Data Lake external tables.
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 05/24/2023
 ---
 
 # .drop external table mapping

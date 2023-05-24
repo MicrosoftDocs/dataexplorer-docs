@@ -130,10 +130,10 @@ Discover the available options within each [Data management](https://dataexplore
 |**Backfill**     |  Ingest data from sources as a one time or [continuous ingestion](/azure/data-explorer/ingest-from-container).       |
 |**SDKs**     |  The [sample app generator wizard](https://dataexplorer.azure.com/oneclick/generatecode?programingLang=Python) is a tool that allows you to create a working app to [ingest and query your data in your preferred programming language](./sample-app-generator-wizard.md). Learn more about connectors to expand and explore the capabilities of Azure Data Explorer.    |
 
-
 ## Next steps
 
 * [Ingest JSON data from a local file to an existing table in Azure Data Explorer using the ingestion wizard](/azure/data-explorer/ingest-from-local-file)
 * [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container)
 * [Query data in Azure Data Explorer web UI](web-query-data.md)
 * [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md)

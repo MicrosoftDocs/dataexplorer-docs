@@ -1,9 +1,9 @@
 ---
-title: .execute database script - Azure Data Explorer
+title: .execute database script
 description: Learn how to use the `.execute database script` command to execute a batch of control commands in the scope of a single database.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 05/24/2023
 ---
 # .execute database script
 

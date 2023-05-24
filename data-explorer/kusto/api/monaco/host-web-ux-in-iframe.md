@@ -1,11 +1,11 @@
 ---
-title: Embed the Azure Data Explorer web UI in an **IFrame**.
-description: Learn how to embed the Azure Data Explorer web UI in an **IFrame**.
+title: Embed the web UI in an **IFrame**
+description: Learn how to embed the web UI in an **IFrame**.
 ms.reviewer: izlisbon
 ms.topic: how-to
 ms.date: 11/22/2022
 ---
-# Embed the Azure Data Explorer web UI in an IFrame
+# Embed the web UI in an IFrame
 
 The Azure Data Explorer web UI can be embedded in an IFrame and hosted in third-party websites. This article describes how to embed the Azure Data Explorer web UI in an IFrame.
 

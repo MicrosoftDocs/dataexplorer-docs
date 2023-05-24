@@ -1,5 +1,5 @@
 ---
-title: Plugins command show plugins - Azure Data Explorer
+title:  Plugins command show plugins
 description: This article describes plugins management commands in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference

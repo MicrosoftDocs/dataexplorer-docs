@@ -1,8 +1,8 @@
 ---
-title: .dup-next-ingest - Azure Data Explorer
+title: .dup-next-ingest
 description: Learn how to use the `.dup-next-ingest` command to troubleshoot your data ingestion pull flow.
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 05/24/2023
 ---
 
 # .dup-next-ingest

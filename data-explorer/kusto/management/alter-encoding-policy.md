@@ -1,5 +1,5 @@
 ---
-title: Alter encoding policy - Azure Data Explorer
+title:  Alter encoding policy
 description: Learn how to use the .alter encoding policy command to change the encoding policy.
 ms.reviewer: alexans
 ms.topic: reference

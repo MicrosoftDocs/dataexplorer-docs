@@ -1,5 +1,5 @@
 ---
-title: Diagnostic information - Azure Data Explorer
+title:  Diagnostic information
 description: This article describes Diagnostic information in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

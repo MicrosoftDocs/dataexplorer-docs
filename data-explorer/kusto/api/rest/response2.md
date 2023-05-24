@@ -1,5 +1,5 @@
 ---
-title: Query V2 HTTP response - Azure Data Explorer
+title:  Query V2 HTTP response
 description: This article describes Query V2 HTTP response in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

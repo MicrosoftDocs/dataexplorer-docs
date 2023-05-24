@@ -1,15 +1,15 @@
 ---
-title: Role-based access control in Kusto - Azure Data Explorer
+title:  Role-based access control in Kusto
 description: This article describes role-based access control in Kusto in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/21/2023
 ---
-# Azure Data Explorer role-based access control
+# Kusto role-based access control
 
-Azure Data Explorer uses a role-based access control (RBAC) model in which [principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals) get access to resources based on their assigned roles. Roles are defined for a specific cluster, database, table, external table, materialized view, or function. When defined for a cluster, the role applies to all databases in the cluster. When defined for a database, the role applies to all entities in the database.
+Kusto uses a role-based access control (RBAC) model in which [principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals) get access to resources based on their assigned roles. Roles are defined for a specific cluster, database, table, external table, materialized view, or function. When defined for a cluster, the role applies to all databases in the cluster. When defined for a database, the role applies to all entities in the database.
 
-ARM permissions, such as being a subscription owner or a cluster owner, grant access to resources in the control plane. To access data within Azure Data Explorer, the separate data plane permissions described in this document are required.
+ARM permissions, such as being a subscription owner or a cluster owner, grant access to resources in the control plane. To access data, the separate data plane permissions described in this document are required.
 
 ## Roles and permissions
 

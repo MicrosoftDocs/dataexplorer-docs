@@ -3,7 +3,7 @@ title: 'Add database principals for Azure Data Explorer'
 description: In this article, you learn how to add database principals for Azure Data Explorer.
 ms.reviewer: lugoldbe
 ms.topic: how-to
-ms.date: 05/04/2023
+ms.date: 05/08/2023
 ---
 
 # Add database principals for Azure Data Explorer
@@ -22,7 +22,8 @@ The following list outlines the prerequisites to add a cluster principal with C#
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 * [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
 * [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
-* Install [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/) and [Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
+* Install [Azure.ResourceManager.Kusto](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
+* Install [Azure.Identity NuGet package](https://www.nuget.org/packages/Azure.Identity/) for authentication.
 
 ### [Python](#tab/python)
 
@@ -49,29 +50,33 @@ The following list outlines the prerequisites to add a cluster principal with an
 Run the following code to add a database principal:
 
 ```csharp
-var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
-var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "PlaceholderClientSecret";//Client Secret
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
+var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Application ID
+var clientSecret = "PlaceholderClientSecret"; //Client Secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
-
-var serviceCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, clientId, clientSecret);
-var kustoManagementClient = new KustoManagementClient(serviceCreds)
-{
-    SubscriptionId = subscriptionId
-};
-
+var credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
+var resourceManagementClient = new ArmClient(credentials, subscriptionId);
 var resourceGroupName = "testrg";
-//The cluster and database that are created as part of the Prerequisites
+//The cluster that is created as part of the Prerequisites
 var clusterName = "mykustocluster";
 var databaseName = "mykustodatabase";
-string principalAssignmentName = "databasePrincipalAssignment1";
-string principalId = "xxxxxxxx";//User email, application ID, or security group name
-string role = "Admin";//Admin, Ingestor, Monitor, User, UnrestrictedViewers, Viewer
-string tenantIdForPrincipal = tenantId;
-string principalType = "App";//User, App, or Group
-
-var databasePrincipalAssignment = new DatabasePrincipalAssignment(principalId, role, principalType, tenantId: tenantIdForPrincipal);
-await kustoManagementClient.DatabasePrincipalAssignments.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, principalAssignmentName, databasePrincipalAssignment);
+var subscription = await resourceManagementClient.GetDefaultSubscriptionAsync();
+var resourceGroup = (await subscription.GetResourceGroupAsync(resourceGroupName)).Value;
+var cluster = (await resourceGroup.GetKustoClusterAsync(clusterName)).Value;
+var database = (await cluster.GetKustoDatabaseAsync(databaseName)).Value;
+var databasePrincipalAssignments = database.GetKustoDatabasePrincipalAssignments();
+var databasePrincipalAssignmentName = "mykustodatabaseprincipalassignment";
+var principalId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //User email, application ID, or security group name
+var role = KustoDatabasePrincipalRole.Admin; //Admin, Ingestor, Monitor, User, UnrestrictedViewers, Viewer
+var tenantIdForPrincipal = new Guid("xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx");
+var principalType = KustoPrincipalAssignmentType.App; //User, App, or Group
+var databasePrincipalAssignmentData = new KustoDatabasePrincipalAssignmentData
+{
+    DatabasePrincipalId = principalId, Role = role, PrincipalType = principalType, TenantId = tenantIdForPrincipal
+};
+await databasePrincipalAssignments.CreateOrUpdateAsync(
+    WaitUntil.Completed, databasePrincipalAssignmentName, databasePrincipalAssignmentData
+);
 ```
 
 |**Setting** | **Suggested value** | **Field description**|
@@ -83,7 +88,7 @@ await kustoManagementClient.DatabasePrincipalAssignments.CreateOrUpdateAsync(res
 | resourceGroupName | *testrg* | The name of the resource group containing your cluster.|
 | clusterName | *mykustocluster* | The name of your cluster.|
 | databaseName | *mykustodatabase* | The name of your database.|
-| principalAssignmentName | *databasePrincipalAssignment1* | The name of your database principal resource.|
+| databasePrincipalAssignmentName | *mykustodatabaseprincipalassignment* | The name of your database principal resource.|
 | principalId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The principal ID, which can be user email, application ID, or security group name.|
 | role | *Admin* | The role of your database principal, which can be 'Admin', 'Ingestor', 'Monitor', 'User', 'UnrestrictedViewers', 'Viewer'.|
 | tenantIdForPrincipal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | The tenant ID of the principal.|
