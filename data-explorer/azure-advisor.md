@@ -50,7 +50,7 @@ There are various Azure Advisor recommendation types. Use the relevant recommend
 
 ## Recommendation types
 
-Both cost and performance recommendations are currently available.
+Cost, performance, reliability, and service excellence recommendations are currently available.
 
 > [!IMPORTANT]
 > Your actual yearly savings may vary. The yearly savings presented are based on 'pay-as-you-go' prices. These potential saving don't take into account Azure Reserved Virtual Machine Instance (RIs) billing discounts.
@@ -103,7 +103,7 @@ The advisor SKU recommendation is updated every few hours. The recommendation ch
 
 #### Reduce cache for Azure Data Explorer tables
 
-The **reduce Azure Data Explorer table cache period for cluster cost optimization** recommendation is given for a cluster that can reduce its table's [cache policy](kusto/management/cachepolicy.md). This recommendation is based on the query look-back period during the last 30 days. To see where savings are possible, you can view the most relevant 40 tables per database for potential cache savings. This recommendation is only offered if the cluster can scale-in or scale-down after a cache policy change. Advisor checks if the cluster is "bounded by data", meaning the cluster has low CPU and low ingestion utilization, but because of high data capacity the cluster can't scale-in or scale-down.
+The **reduce Azure Data Explorer table cache period for cluster cost optimization** recommendation is given for a cluster that can reduce its table's [cache policy](kusto/management/cachepolicy.md). This recommendation is based on the query look-back period during the last 30 days. To see where savings are possible, you can view the most relevant 5 tables per database for potential cache savings. This recommendation is only offered if the cluster can scale-in or scale-down after a cache policy change. Advisor checks if the cluster is "bounded by data", meaning the cluster has low CPU and low ingestion utilization, but because of high data capacity the cluster can't scale-in or scale-down.
 
 #### Delete unused storage artifacts
 
@@ -127,7 +127,7 @@ Performance recommendations include the following:
 
 #### Update cache policy for Azure Data Explorer tables
 
-The **review Azure Data Explorer table cache-period policy for better performance** recommendation is given for a cluster that requires a different look-back period time filter, or a larger [cache policy](kusto/management/cachepolicy.md). This recommendation is based on the query look-back period of the last 30 days. Most queries run in the last 30 days accessed data not in the cache, which can increase the query run-time. You can view the top 40 tables per database that accessed out-of-cache data, ordered by querying percentage.
+The **review Azure Data Explorer table cache-period policy for better performance** recommendation is given for a cluster that requires a different look-back period time filter, or a larger [cache policy](kusto/management/cachepolicy.md). This recommendation is based on the query look-back period of the last 30 days. Most queries run in the last 30 days accessed data not in the cache, which can increase the query run-time. You can view the top 5 tables per database that accessed out-of-cache data, ordered by querying percentage.
 
 You may also get a performance recommendation to reduce the cache policy. This can happen if the cluster is data-bound. A cluster is data-bound if the data to be cached according to the caching policy is larger that the total size of the cluster's cache. Reducing the cache policy for data-bound clusters will reduce the number of cache misses and potentially improves performance.
 
@@ -137,11 +137,8 @@ The **Operational Excellence** or "best practice" recommendations are recommenda
 
 #### Reduce table cache policy to match usage patterns
 
-You can think about the **Reduce table cache policy to match usage patterns** recommendation as a 'best practice for cleanup' recommendation. The recommendation shows suggestions for:
-
-* Unused tables – for example, let's say the table `ExampleTable` in database `ExampleDatabase` is not being used, with 0 queries run on this table. Since the table is not being used, you might want to delete or reduce the cache policy of this table. If the hot data saving is not significant, implementing this recommendation won't result in an immediate cost reduction for the cluster. The idea is to help you identify unused tables, so you can delete them or reduce the cache policy.
-
-* Tables with redundant cache policy –  which means that your table's actual query look-backs, or usage patterns, are lower than the configured cache policy. However, reducing the cache policy won’t result in an immediate cost saving, since the cluster is not data-bound. The cluster won’t scale in, even if you remove data from the hot cache.
+This recommendation focuses on updating the cache policy based on actual usage during the last month to reduce the hot cache for a table. Unlike the previous cost recommendation, this particular recommendation is applicable to clusters where the number of instances is determined by CPU and ingestion load rather than the amount of data stored in the hot cache. In such cases, changing the cache policy alone is insufficient to reduce the number of instances, further optimizations such as changing the SKU, reducing CPU load, and enabling autoscale are recommended to efficiently scale in.
+This recommendation can be useful for tables where the actual query lookback based on usage patterns is lower than the configured cache policy. However, reducing the cache policy won’t directly lead to cost savings. The number of cluster instances is determined by CPU and ingestion load, irrespective of the amount of data stored in the hot cache. Therefore, removing data from the hot cache won't directly cause the cluster to scale in.
 
 ### Reliability recommendations
 

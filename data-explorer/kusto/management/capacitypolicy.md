@@ -1,5 +1,5 @@
 ---
-title: Capacity policy - Azure Data Explorer
+title: Capacity policy
 description: Learn how to use the capacity policy to control the compute resources of data management operations on a cluster.
 ms.reviewer: orspodek
 ms.topic: reference
@@ -171,7 +171,7 @@ The default capacity policy has the following JSON representation:
 ## Control commands
 
 > [!WARNING]
-> Consult with the Azure Data Explorer team before altering a capacity policy.
+> Consult with the support team before altering a capacity policy.
 
 * Use [`.show cluster policy capacity`](./show-cluster-capacity-policy-command.md) to show the current capacity policy of the cluster.
 

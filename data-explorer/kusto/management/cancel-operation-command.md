@@ -1,9 +1,9 @@
 ---
-title: Cancel operation command - Azure Data Explorer
+title: Cancel operation command
 description: Learn how to use the `.cancel operation` command to cancel a long-running operation.
 ms.reviewer: odkadosh
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 05/24/2023
 ---
 # .cancel operation command
 

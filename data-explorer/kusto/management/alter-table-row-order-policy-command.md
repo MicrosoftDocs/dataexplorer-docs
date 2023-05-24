@@ -1,9 +1,9 @@
 ---
-title: .alter table row order policy command- Azure Data Explorer
+title: .alter table row order policy command
 description: Learn how to use the `.alter table row order policy` command to change a table's row order policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 05/24/2023
 ---
 # .alter table row order policy
 

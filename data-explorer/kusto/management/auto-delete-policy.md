@@ -1,9 +1,9 @@
 ---
-title: Auto delete policy - Azure Data Explorer
+title: Auto delete policy
 description: Learn about the auto delete policy to set an expiry date for the table.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 05/24/2023
 ---
 # Auto delete policy
 

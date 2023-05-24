@@ -1,5 +1,5 @@
 ---
-title: Materialized view rename - Azure Data Explorer
+title:  Materialized view rename
 description: This article describes rename materialized view command in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference

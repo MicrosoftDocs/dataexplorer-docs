@@ -1,5 +1,5 @@
 ---
-title: .create-or-alter ingestion mapping - Azure Data Explorer
+title:  .create-or-alter ingestion mapping
 description: This article describes .create-or-alter ingestion mapping in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
