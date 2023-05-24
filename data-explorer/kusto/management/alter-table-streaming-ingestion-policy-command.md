@@ -1,9 +1,9 @@
 ---
-title:  ".alter table streaming ingestion policy command"
-description: "This article describes the .alter table streaming ingestion policy command in Azure Data Explorer."
+title: .alter table streaming ingestion policy command
+description: Learn how to use the `.alter table streaming ingestion policy` command to change the table streaming policy ingestion.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 05/24/2023
 ---
 # .alter table streaming ingestion policy
 
