@@ -1,5 +1,5 @@
 ---
-title: .delete table row order policy command- Azure Data Explorer
+title: .delete table row order policy command
 description: Learn how to use the `.delete table row order policy` command to delete a table's row order policy.
 ms.reviewer: yonil
 ms.topic: reference

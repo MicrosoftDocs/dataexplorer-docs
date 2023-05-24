@@ -1,9 +1,9 @@
 ---
-title: .delete table partitioning policy command- Azure Data Explorer
+title: .delete table partitioning policy command
 description: Learn how to use the `.delete table partitioning policy` command to delete a table's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 05/24/2023
 ---
 # .delete table partitioning policy
 

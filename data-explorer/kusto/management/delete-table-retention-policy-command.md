@@ -1,5 +1,5 @@
 ---
-title: .delete table retention policy command- Azure Data Explorer
+title: .delete table retention policy command
 description: Learn how to use the `.delete table retention policy` command to delete a table's retention policy.
 ms.reviewer: yonil
 ms.topic: reference

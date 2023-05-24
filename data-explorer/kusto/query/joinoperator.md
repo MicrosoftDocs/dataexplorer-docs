@@ -1,12 +1,12 @@
 ---
-title: join operator - Azure Data Explorer
+title:  join operator
 description: Learn how to use the join operator to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/12/2023
 ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # join operator
 
@@ -37,7 +37,7 @@ Merge the rows of two tables to form a new table by matching values of the speci
 
 ### Supported parameters
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 |Parameters name |Values |Description  |
 |---|---|---|
@@ -224,6 +224,7 @@ let X = datatable(Key:string, Value1:long)
     'a',1,
     'b',2,
     'b',3,
+    'k',5,
     'c',4
 ];
 let Y = datatable(Key:string, Value2:long)
@@ -231,7 +232,8 @@ let Y = datatable(Key:string, Value2:long)
     'b',10,
     'c',20,
     'c',30,
-    'd',40
+    'd',40,
+    'k',50
 ];
 X | join kind=inner Y on Key
 ```
@@ -244,11 +246,13 @@ X | join kind=inner Y on Key
 |b|2|b|10|
 |c|4|c|20|
 |c|4|c|30|
+|k|5|k|50|
 
 > [!NOTE]
 >
 > * (b,10) from the right side, was joined twice: with both (b,2) and (b,3) on the left.
 > * (c,4) on the left side, was joined twice: with both (c,20) and (c,30) on the right.
+> * (k,5) from the left and (k, 50) from the right was joined once.
 
 ### Innerunique-join flavor
 

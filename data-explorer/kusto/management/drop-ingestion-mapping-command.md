@@ -1,5 +1,5 @@
 ---
-title: .drop ingestion mapping - Azure Data Explorer
+title:  .drop ingestion mapping
 description: This article describes .drop ingestion mapping in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

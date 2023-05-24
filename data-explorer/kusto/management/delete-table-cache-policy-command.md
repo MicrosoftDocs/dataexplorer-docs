@@ -1,9 +1,9 @@
 ---
-title: .delete table cache policy command - Azure Data Explorer
+title: .delete table cache policy command
 description: Learn how to use the `.delete table cache policy` command to delete a table's cache policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 05/24/2023
 ---
 # .delete table cache policy
 

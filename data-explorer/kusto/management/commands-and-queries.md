@@ -1,5 +1,5 @@
 ---
-title: Commands and queries management - Azure Data Explorer
+title:  Commands and queries management
 description: This article describes Commands and queries management in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

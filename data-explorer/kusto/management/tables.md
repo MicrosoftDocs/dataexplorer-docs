@@ -1,5 +1,5 @@
 ---
-title: Tables management - Azure Data Explorer
+title:  Tables management
 description: This article describes Tables management in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
