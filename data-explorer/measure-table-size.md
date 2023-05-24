@@ -2,7 +2,7 @@
 title: Measure table size in Azure Data Explorer
 description: Learn how to estimate table size in Azure Data Explorer.
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 05/24/2023
 ---
 # Understand and estimate table sizes in Azure Data Explorer
 
@@ -14,15 +14,21 @@ Use the [.show table details](kusto/management/show-table-details-command.md) to
 
 This command provides an estimation of the uncompressed size of data ingested into your table based on the assumption that the data was transferred in CSV format. The estimation is based on approximate lengths of numeric values, such as integers, longs, datetimes, and guids, by considering their string representations.
 
+**Use case:** Track the size of incoming data over time to make informed decisions about capacity planning.
+
 ## Estimate table size in terms of access bytes
 
 Use the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) along with the [sum()](kusto/query/sum-aggfunction.md) aggregation function to estimate table size based on data types and their respective byte sizes. For an example, see [Use estimate_data_size()](#use-estimate_data_size).
 
 This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory.
 
-### Estimate size of multiple tables
+**Use case:** Determine the cost of a query in terms of bytes to be scanned.
 
-You can use the [union](kusto/query/unionoperator.md) operator along with the [estimate_data_size()](kusto/query/estimate-data-sizefunction.md) function to estimate the combined data size of multiple tables. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
+## Estimate size of multiple tables
+
+You can use the [union](kusto/query/unionoperator.md) operator along with the previously described method to estimate the table size in terms of access bytes for multiple tables. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
+
+**Use case**: Assess the memory requirements for consolidating data from multiple tables into a single dataset.
 
 > [!NOTE]
 > This approach may inflate the estimated data size due to empty columns, as `union` combines all columns from the specified tables and `estimate_data_size()` takes into account empty columns when calculating the data size.
