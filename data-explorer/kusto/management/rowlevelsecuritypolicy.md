@@ -124,7 +124,7 @@ If you want nonauthorized table users to receive an error instead of returning a
 }
 ```
 
-You can combine this approach with other examples. For example, you can display different results to users in different AAD Groups, and produce an error for everyone else.
+You can combine this approach with other examples. For example, you can display different results to users in different Azure AD Groups, and produce an error for everyone else.
 
 ### Control permissions on follower databases
 
