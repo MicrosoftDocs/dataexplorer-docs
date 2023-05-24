@@ -1,5 +1,5 @@
 ---
-title: rename column - Azure Data Explorer
+title:  rename column
 description: This article describes rename column in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

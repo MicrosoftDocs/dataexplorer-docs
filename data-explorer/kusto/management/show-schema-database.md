@@ -1,5 +1,5 @@
 ---
-title: .show databases schema - Azure Data Explorer
+title:  .show databases schema
 description: This article describes .show databases schema in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

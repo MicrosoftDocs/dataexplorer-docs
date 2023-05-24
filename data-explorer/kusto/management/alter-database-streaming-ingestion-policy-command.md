@@ -1,5 +1,5 @@
 ---
-title: .alter database streaming ingestion policy command - Azure Data Explorer
+title:  .alter database streaming ingestion policy command
 description: Learn how to use the .alter database streaming ingestion policy command to change the database streaming ingestion policy.
 ms.reviewer: yonil
 ms.topic: reference

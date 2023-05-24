@@ -1,5 +1,5 @@
 ---
-title: ".alter table streaming ingestion policy command - Azure Data Explorer"
+title:  ".alter table streaming ingestion policy command"
 description: "This article describes the .alter table streaming ingestion policy command in Azure Data Explorer."
 ms.reviewer: yonil
 ms.topic: reference

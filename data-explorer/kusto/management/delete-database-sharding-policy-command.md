@@ -1,15 +1,15 @@
 ---
-title: .delete database sharding policy command - Azure Data Explorer
+title: .delete database sharding policy command
 description: Learn how to use the `.delete database sharding policy` command to delete the database sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 05/24/2023
 ---
 # .delete database sharding policy
 
 Use this command to delete the database sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
 
-The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster should be sealed. When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
+The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in your cluster should be sealed. When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
 
 ## Permissions
 

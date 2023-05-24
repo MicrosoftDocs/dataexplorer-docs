@@ -1,5 +1,5 @@
 ---
-title: .delete restricted view access policy command - Azure Data Explorer
+title:  .delete restricted view access policy command
 description: This article describes the .delete restricted view access policy command in Azure Data Explorer.
 ms.reviewer: yonil
 ms.topic: reference

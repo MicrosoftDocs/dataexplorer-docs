@@ -1,5 +1,5 @@
 ---
-title: Ingestion failures - Azure Data Explorer
+title:  Ingestion failures
 description: This article describes Ingestion failures in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
@@ -18,7 +18,7 @@ Failures from all parts of the ingestion process appear in the ingestion [metric
 > [!NOTE]
 > Ingestion failures that occur during other parts of the ingestion flow will not appear in the result set of this command. Such a failure may occur, for example, before data ingestion control commands are sent to the Kusto Data Engine service.
 > 
-> Ingestion failures should be monitored by [metrics](../../using-metrics.md), and optionally using ingestion logs. To set up ingestion logs, see [Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](../../using-diagnostic-logs.md).
+> Ingestion failures should be monitored by [metrics](../../using-metrics.md), and optionally using ingestion logs. To set up ingestion logs, see [Monitor ingestion, commands, queries, and tables using diagnostic logs](../../using-diagnostic-logs.md).
 > 
 > For more information on monitoring failures that occur in flows that involve [queued ingestion](../api/netfx/about-kusto-ingest.md#queued-ingestion), see [this guide](../api/netfx/kusto-ingest-client-status.md).
 >

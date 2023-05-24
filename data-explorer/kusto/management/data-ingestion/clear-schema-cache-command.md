@@ -1,5 +1,5 @@
 ---
-title: Clearing cached schema for streaming ingestion - Azure Data Explorer
+title:  Clearing cached schema for streaming ingestion
 description: This article describes management command for clearing cached database schema in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
