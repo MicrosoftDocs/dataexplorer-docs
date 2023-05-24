@@ -24,7 +24,7 @@ This method provides a more precise estimation by considering the byte sizes of 
 
 **Example use case:** Determine the cost of a query in terms of bytes to be scanned.
 
-## Estimate size of multiple tables
+## Estimate combined size of multiple tables
 
 You can use the [union](kusto/query/unionoperator.md) operator along with the previously described method to estimate the table size in terms of access bytes for multiple tables. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
 
