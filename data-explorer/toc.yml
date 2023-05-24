@@ -566,7 +566,7 @@ items:
     - name: Linked server
       href: linked-server.md
       displayName: SQL Server, ODBC
-    - name: Purview
+    - name: Microsoft Purview
       href: purview.md
 - name: Kusto Query Language
   href: kusto/query/toc.yml
