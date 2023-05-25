@@ -3,7 +3,7 @@ title: Ingest from storage using Event Grid subscription - Azure Data Explorer
 description: This article describes Ingest from storage using Event Grid subscription in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 07/31/2022
+ms.date: 05/08/2023
 ---
 # Event Grid data connection
 
@@ -78,14 +78,21 @@ Setting a database ingestion property that is different than the data connection
 For more information, see [upload blobs](#upload-blobs).
 
 ```csharp
+var container = new BlobContainerClient("<storageAccountConnectionString>", "<containerName>");
+await container.CreateIfNotExistsAsync();
+var blob = container.GetBlobClient("<blobName>");
 // Blob is dynamically routed to table `Events`, ingested using `EventsMapping` data mapping
-blob = container.GetBlockBlobReference(blobName2);
-blob.Metadata.Add("rawSizeBytes", "4096"); // the uncompressed size is 4096 bytes
-blob.Metadata.Add("kustoTable", "Events");
-blob.Metadata.Add("kustoDataFormat", "json");
-blob.Metadata.Add("kustoIngestionMappingReference", "EventsMapping");
-blob.Metadata.Add("kustoDatabase", "AnotherDB");
-blob.UploadFromFile(jsonCompressedLocalFileName);
+await blob.SetMetadataAsync(
+    new Dictionary<string, string>
+    {
+        { "rawSizeBytes", "4096" }, // the uncompressed size is 4096 bytes
+        { "kustoTable", "Events" },
+        { "kustoDataFormat", "json" },
+        { "kustoIngestionMappingReference", "EventsMapping" },
+        { "kustoDatabase", "AnotherDB" }
+    }
+);
+await blob.UploadAsync(BinaryData.FromString(File.ReadAllText("<filePath>")));
 ```
 
 ## Upload blobs
@@ -94,7 +101,7 @@ You can create a blob from a local file, set ingestion properties to the blob me
 
 > [!NOTE]
 >
-> * Use `BlockBlob` to generate data. `AppendBlob` is not supported.
+> * We highly recommended using `BlockBlob` to generate data, as using `AppendBlob` may result in unexpected behavior.
 > * Using Azure Data Lake Gen2 storage SDK requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to "true".
 > For a detailed example of Data Lake Gen2 SDK correct usage, see [upload file using Azure Data Lake SDK](data-connection-event-grid-csharp.md#upload-file-using-azure-data-lake-sdk).
 > * When the event hub endpoint doesn't acknowledge receipt of an event, Azure Event Grid activates a retry mechanism. If this retry delivery fails, Event Grid can deliver the undelivered events to a storage account using a process of *dead-lettering*. For more information, see [Event Grid message delivery and retry](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration).

@@ -1,5 +1,5 @@
 ---
-title: Kusto Java SDK - Azure Data Explorer
+title:  Kusto Java SDK
 description: This article describes Kusto Java SDK.
 ms.reviewer: vladikbr
 ms.topic: reference

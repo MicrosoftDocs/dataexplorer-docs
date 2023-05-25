@@ -1,6 +1,6 @@
 ---
-title: Integrate Azure Data Explorer capabilities in your app.
-description: Learn about the different ways you can integrate Azure Data Explorer capabilities in your apps.
+title: Integrate capabilities in your app.
+description: Learn about the different ways you can integrate capabilities in your apps.
 ms.reviewer: izlisbon
 ms.topic: conceptual
 ms.date: 11/22/2022

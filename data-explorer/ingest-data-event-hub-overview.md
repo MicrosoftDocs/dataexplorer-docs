@@ -3,7 +3,7 @@ title: Ingest from event hub - Azure Data Explorer
 description: This article describes how to ingest data from Azure Event Hubs into Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 09/13/2022
+ms.date: 05/08/2023
 ---
 # Azure Event Hubs data connection
 
@@ -83,26 +83,20 @@ The following example shows you how to set the event hub details and send weathe
 The data is in JSON format and *mapping1* is pre-defined on table *WeatherMetrics*.
 
 ```csharp
-// This sample uses Microsoft.ServiceBus.Messaging which is a .Net Framework library. The concept is similar using the Microsoft.Azure.ServiceBus library.  
-var eventHubNamespaceConnectionString=<connection_string>;
-var eventHubName=<event_hub>;
-
-// Create the data
-var metric = new Metric { Timestamp = DateTime.UtcNow, MetricName = "Temperature", Value = 32 };
-var data = JsonConvert.SerializeObject(metric);
-
+// This sample uses Azure.Messaging.EventHubs which is a .Net Framework library.
+await using var producerClient = new EventHubProducerClient("<eventHubConnectionString>");
 // Create the event and add optional "dynamic routing" properties
-var eventData = new EventData(Encoding.UTF8.GetBytes(data));
+var eventData = new EventData(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(
+    new { Timestamp = DateTime.UtcNow, MetricName = "Temperature", Value = 32 }
+)));
 eventData.Properties.Add("Database", "MetricsDB");
 eventData.Properties.Add("Table", "WeatherMetrics");
 eventData.Properties.Add("Format", "json");
 eventData.Properties.Add("IngestionMappingReference", "mapping1");
 eventData.Properties.Add("Tags", "['myDataTag']");
-
+var events = new[] { eventData };
 // Send events
-var eventHubClient = EventHubClient.CreateFromConnectionString(eventHubNamespaceConnectionString, eventHubName);
-eventHubClient.Send(eventData);
-eventHubClient.Close();
+await producerClient.SendAsync(events);
 ```
 
 ## Event system properties mapping

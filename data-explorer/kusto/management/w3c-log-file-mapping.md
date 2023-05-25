@@ -1,5 +1,5 @@
 ---
-title: W3CLOGFILE Mapping - Azure Data Explorer
+title:  W3CLOGFILE Mapping
 description: Learn how to use W3CLOGFILE mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
 ms.date: 03/08/2023

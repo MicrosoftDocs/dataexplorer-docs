@@ -1,5 +1,5 @@
 ---
-title: JSON Mapping - Azure Data Explorer
+title:  JSON Mapping
 description: Learn how to use JSON mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
 ms.date: 03/08/2023
