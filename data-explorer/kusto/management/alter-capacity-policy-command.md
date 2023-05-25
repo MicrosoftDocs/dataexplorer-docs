@@ -1,11 +1,11 @@
 ---
-title:  Alter capacity policy command
-description: Learn how to use the .alter capacity policy command to change the cluster's capacity policy.
+title:  .alter capacity policy command
+description: Learn how to use the `.alter capacity policy` command to change the cluster's capacity policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 02/21/2023
 ---
-# .alter capacity policy
+# .alter capacity policy command
 
 Changes the cluster's [capacity policy](capacitypolicy.md). A capacity policy controls the computational resources for data management operations on the cluster.
 
