@@ -202,13 +202,13 @@ items:
     items:
     - name: Columns management
       href: columns.md
-    - name: ".alter column"
+    - name: .alter column command
       href: alter-column.md
     - name: ".drop column"
       href: drop-column.md
     - name: ".rename column"
       href: rename-column.md
-    - name: ".alter column-docstrings"
+    - name: .alter column-docstrings command
       href: alter-column-docstrings.md
     - name: ".alter-merge column-docstrings"
       href: alter-merge-table-column.md
@@ -262,9 +262,9 @@ items:
     items:
     - name: Cache policy (hot and cold cache)
       href: cachepolicy.md
-    - name: ".alter cluster cache policy command"
+    - name: .alter cluster cache policy command
       href: alter-cluster-cache-policy-command.md
-    - name: ".alter database cache policy command"
+    - name: .alter database cache policy command
       href: alter-database-cache-policy-command.md
     - name: ".alter materialized view cache policy command"
       href: alter-materialized-view-cache-policy-command.md
@@ -298,7 +298,7 @@ items:
     items:
     - name: Capacity policy
       href: capacitypolicy.md
-    - name: ".alter capacity policy command"
+    - name: .alter capacity policy command
       href: alter-capacity-policy-command.md
     - name: ".alter-merge capacity policy command"
       href: alter-merge-capacity-policy-command.md
@@ -316,7 +316,7 @@ items:
     items:
     - name: Ingestion batching policy
       href: batchingpolicy.md
-    - name: ".alter database ingestion batching policy command"
+    - name: .alter database ingestion batching policy command
       href: alter-database-ingestion-batching-policy.md
     - name: ".alter table ingestion batching policy command"
       href: alter-table-ingestion-batching-policy.md

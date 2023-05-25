@@ -1,11 +1,11 @@
 ---
-title:  Alter cluster cache policy command
-description: Learn how to use the .alter cluster cache policy command to change the cluster's cache policy.
+title:  .alter cluster cache policy command
+description: Learn how to use the `.alter cluster cache policy` command to change the cluster's cache policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/25/2023
 ---
-# .alter cluster cache policy
+# .alter cluster cache policy command
 
 Changes the cluster's cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 
