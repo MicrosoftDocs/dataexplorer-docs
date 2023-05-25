@@ -144,18 +144,13 @@ You can use any of the following tools to connect to and interact with the emula
 
 In the following sections, you'll use Kusto.Explorer to create a database, ingest data, and query it. To learn more, see [Using Kusto.Explorer](kusto/tools/kusto-explorer-using.md).
 
-Regardless of the tool you are using, there are 2 key aspects to the connection:
-
-1. You must connect with http (not https)
-1. You must connect without AAD authentication
-
-This is because the Kusto Emulator doesn't support either.
-
-For instance, in Kusto Explorer, the connection would look like this:
-
-![Kusto Explorer Connection](media/kusto-emulator/ke-connection.png)
-
-and you will need to remove the `AAD Federated Security=True` portion of the connection string (to disable AAD authentication).
+> [!IMPORTANT]
+> The Kusto Emulator doesn't support HTTPS or Azure Active Directory (Azure AD) authentication. The following image highlights the affected fields in the **Add connection** properties.
+>
+> - The **Cluster connection** must begin with `http://` and not `https://`.
+> - In **Security** > **Advanced: Connection String**, you'll need to remove the `AAD Federated Security=True` portion of the connection string to disable Azure AD authentication.
+>
+> :::image type="content" source="media/kusto-emulator/kusto-emulator-connection.png" alt-text="Screenshot of Kusto Explorer connection.":::
 
 ## Create a database
 
