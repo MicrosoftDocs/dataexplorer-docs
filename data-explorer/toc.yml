@@ -529,6 +529,12 @@ items:
       - name: Integrate the Monaco Editor with Kusto query support
         displayName: monaco monaco-kusto
         href: kusto/api/monaco/monaco-kusto.md
+    - name: Kusto emulator
+      items:
+      - name: Kusto emulator overview
+        href: kusto-emulator-overview.md
+      - name: Install the Kusto emulator
+        href: kusto-emulator-install.md
   - name: Integrate
     items:
     - name: Tools and integrations overview
