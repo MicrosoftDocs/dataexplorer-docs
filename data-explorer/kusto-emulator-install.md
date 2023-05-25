@@ -144,6 +144,19 @@ You can use any of the following tools to connect to and interact with the emula
 
 In the following sections, you'll use Kusto.Explorer to create a database, ingest data, and query it. To learn more, see [Using Kusto.Explorer](kusto/tools/kusto-explorer-using.md).
 
+Regardless of the tool you are using, there are 2 key aspects to the connection:
+
+1. You must connect with http (not https)
+1. You must connect without AAD authentication
+
+This is because the Kusto Emulator doesn't support either.
+
+For instance, in Kusto Explorer, the connection would look like this:
+
+![Kusto Explorer Connection](media/kusto-emulator/ke-connection.png)
+
+and you will need to remove the `AAD Federated Security=True` portion of the connection string (to disable AAD authentication).
+
 ## Create a database
 
 You'll need a database in your emulator for your data. You can create the following types of database:
