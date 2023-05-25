@@ -1,9 +1,9 @@
 ---
-title: .undo drop table
+title: `.undo drop table` command
 description: Learn how to use the `.undo drop table` command to revert a drop table operation to a specific database version.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 05/25/2023
 ---
 # .undo drop table
 
