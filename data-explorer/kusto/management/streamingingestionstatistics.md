@@ -1,5 +1,5 @@
 ---
-title: '.show streamingingestion' statistics
+title: .show streaming ingestion statistics command
 description: Learn how to use the `.show streamingingestion statistics` command to show aggregated statistics for the streaming ingestion to the cluster.
 ms.topic: reference
 ms.date: 05/23/2023
