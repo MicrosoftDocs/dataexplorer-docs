@@ -45,31 +45,31 @@ items:
   - name: Databases
     href: databases.md
     items:
-    - name: ".show databases"
+    - name: .show databases command
       href: show-databases.md
-    - name: ".show database"
+    - name: .show database command
       href: show-database.md
-    - name: ".show cluster databases"
+    - name: .show cluster databases command
       href: show-cluster-database.md
-    - name: ".alter database prettyname"
+    - name: .alter database prettyname command
       href: alter-database.md
-    - name: ".show database(s) schema"
+    - name: .show database(s) schema command
       href: show-schema-database.md
-    - name: ".execute database script"
+    - name: .execute database script command
       href: execute-database-script.md
   - name: Tables
     items:
     - name: Tables management
       href: tables.md
-    - name: ".alter-merge table"
+    - name: .alter-merge table
       href: alter-merge-table-command.md
-    - name: ".alter table"
+    - name: .alter table command 
       href: alter-table-command.md
-    - name: ".alter table docstring"
+    - name: .alter table docstring command
       href: alter-table-docstring-command.md
-    - name: ".alter table folder"
+    - name: .alter table folder command
       href: alter-table-folder-command.md
-    - name: ".alter ingestion mapping"
+    - name: .alter ingestion mapping command
       href: alter-ingestion-mapping-command.md
     - name: ".create ingestion mapping"
       href: create-ingestion-mapping-command.md
@@ -232,15 +232,15 @@ items:
     items:
     - name: Stored functions management overview
       href: functions.md
-    - name: ".alter function"
+    - name: .alter function command
       href: alter-function.md
-    - name: ".alter function docstring"
+    - name: .alter function docstring command
       href: alter-docstring-function.md
-    - name: ".alter function folder"
+    - name: .alter function folder command
       href: alter-folder-function.md
-    - name: ".create function"
+    - name: .create function command
       href: create-function.md
-    - name: ".create-or-alter function"
+    - name: .create-or-alter function command
       href: create-alter-function.md
     - name: ".drop function"
       href: drop-function.md
@@ -262,17 +262,17 @@ items:
     items:
     - name: Cache policy (hot and cold cache)
       href: cachepolicy.md
-    - name: ".alter cluster cache policy command"
+    - name: .alter cluster cache policy command
       href: alter-cluster-cache-policy-command.md
-    - name: ".alter database cache policy command"
+    - name: .alter database cache policy command
       href: alter-database-cache-policy-command.md
-    - name: ".alter materialized view cache policy command"
+    - name: .alter materialized-view cache policy command
       href: alter-materialized-view-cache-policy-command.md
     - name: ".alter table cache policy command"
       href: alter-table-cache-policy-command.md
     - name: ".delete database cache policy command"
       href: delete-database-cache-policy-command.md
-    - name: ".delete materialized view cache policy command"
+    - name: .delete materialized view cache policy command
       href: delete-materialized-view-cache-policy-command.md
     - name: ".delete table cache policy command"
       href: delete-table-cache-policy-command.md
@@ -298,17 +298,17 @@ items:
     items:
     - name: Capacity policy
       href: capacitypolicy.md
-    - name: ".alter capacity policy command"
+    - name: .alter capacity policy command
       href: alter-capacity-policy-command.md
-    - name: ".alter-merge capacity policy command"
+    - name: .alter-merge capacity policy command
       href: alter-merge-capacity-policy-command.md
-    - name: ".show capacity policy command"
+    - name: .show capacity policy command
       href: show-cluster-capacity-policy-command.md
   - name: Encoding policy
     items:
     - name: Encoding policy
       href: encoding-policy.md
-    - name: ".alter encoding policy command"
+    - name: .alter encoding policy command
       href: alter-encoding-policy.md
     - name: ".show encoding policy command"
       href: show-encoding-policy.md
@@ -342,9 +342,9 @@ items:
     items:
     - name: ManagedIdentity policy
       href: managed-identity-policy.md
-    - name: .alter managed identity policy command
+    - name: .alter managed_identity policy command
       href: alter-managed-identity-policy-command.md
-    - name: .alter-merge managed identity policy command
+    - name: .alter-merge managed_identity policy command
       href: alter-merge-managed-identity-policy-command.md
     - name: .delete managed identity policy command
       href: delete-managed-identity-policy-command.md
@@ -356,7 +356,7 @@ items:
       href: mergepolicy.md
     - name: .alter database merge policy command
       href: alter-database-merge-policy-command.md
-    - name: .alter materialized view merge policy command
+    - name: .alter materialized-view merge policy command
       href: alter-materialized-view-merge-policy-command.md
     - name: .alter table merge policy command
       href: alter-table-merge-policy-command.md
@@ -378,7 +378,7 @@ items:
     items:
     - name: Partitioning policy
       href: partitioningpolicy.md
-    - name: .alter materialized view partitioning policy command
+    - name: .alter materialized-view partitioning policy command
       href: alter-materialized-view-partitioning-policy-command.md
     - name: .alter table partitioning policy command
       href: alter-table-partitioning-policy-command.md
@@ -400,7 +400,7 @@ items:
       href: retentionpolicy.md
     - name: .alter database retention policy command
       href: alter-database-retention-policy-command.md
-    - name: .alter materialized view retention policy command
+    - name: .alter materialized-view retention policy command
       href: alter-materialized-view-retention-policy-command.md
     - name: .alter table retention policy command
       href: alter-table-retention-policy-command.md
@@ -426,7 +426,7 @@ items:
     items:
     - name: Extent tags retention policy
       href: extent-tags-retention-policy.md
-    - name: ".alter database extent tags retention policy"
+    - name: .alter database extent tags retention policy command
       href: alter-extent-tags-retention-policy.md
     - name: ".alter table extent tags retention policy"
       href: alter-table-extent-tags-retention-policy.md
@@ -448,7 +448,7 @@ items:
     items:
     - name: Row level security policy
       href: rowlevelsecuritypolicy.md
-    - name: .alter materialized view row level security policy command
+    - name: .alter materialized-view row level security policy command
       href: alter-materialized-view-row-level-security-policy-command.md
     - name: .alter table row level security policy command
       href: alter-table-row-level-security-policy-command.md
@@ -674,7 +674,7 @@ items:
       href: extents-overview.md
     - name: Extents commands
       items:
-      - name: .alter extent
+      - name: .alter extent tags command
         href: alter-extent.md
       - name: .drop extents
         href: drop-extents.md
