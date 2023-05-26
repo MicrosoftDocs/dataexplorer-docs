@@ -19,114 +19,136 @@ Add the following code to your website:
 
 ```html
 <iframe
-  src="https://dataexplorer.azure.com/clusters/<cluster>?f-IFrameAuth=true"
+  src="https://dataexplorer.azure.com/?f-IFrameAuth=true&f-UseMeControl=false&workapce=<guid>"
 ></iframe>
 ```
 
-The `f-IFrameAuth` query parameter tells the Azure Data Explorer web UI *not* to redirect to get an authentication token. This action is necessary, since the hosting website is responsible for providing an authentication token to the embedded IFrame.
+The `f-IFrameAuth` query parameter tells the Azure Data Explorer web UI *not* to redirect to get an authentication token and the `f-UseMeControl=false` query parameter tells the Azure Data Explorer web UI *not* to show the user account information UX. These actions are necessary, since the hosting website is responsible for authentication.
 
-Replace `<cluster>` with the hostname of the cluster you want to load into the connection pane, such as `help.kusto.windows.net`. By default, *iframe-embedded* mode doesn't provide a way to add clusters from the UI, since the assumption is that the hosting website is aware of the required cluster.
+If `workspace=<guid>` isn't set, the data (tabs, connections and settings) displayed in the iframe will match the data found at https://dataexplorer.azure.com when it's not embedded within an iframe.
 
 ### Handle authentication
 
-1. When set to *IFrame* mode (`f-IFrameAuth=true`), the Azure Data Explorer web UI won't try to redirect for authentication. The message posting mechanism that browsers use, is used to request and receive a token. During page loading, the following message will be posted to the parent window:
+When embedding the ADX web UI the hosting page is responsible for authentication.
+
+:::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-sequencediagram.png" alt-text="Sequence diagram for authentication in an embedded ADX iframe":::
+
+:::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-scopes.png" alt-text="Scopes required for embedding ADX iframe":::
+
+1. Listen for "getToken" message:
 
     ```javascript
-    window.parent.postMessage({
-      signature: "queryExplorer",
-      type: "getToken",
-      scope: "${Can be either 'query' or a custom scope}",
-    }, "*"
-    );
-    window.addEventListener(
-      "message",
-      event => this.handleIncomingMessage(event),
-      false
-    );
+    window.addEventListener('message', (event) => {
+       if (event.data.type === "getToken") {
+         // - Get access token From AAD
+         // - post a "postToken" message with an access token and event.data.scope
+       }
+    })    
    ```
 
-1. Then, it will listen for a message with the following structure:
+2. Get access token From AAD
+    Obtain a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from [Azure Active Directory (Azure AD) authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).  
+      Use this table to decide how to map `event.data.scope` the AAD scopes:
 
-    ```json
-    {
-      "type": "postToken",
-      "message": "${the actual authentication token}",
-      "scope": "${The scope that was received in the message from the IFrame}"
+      | resource         | event.data.scope                                            | AAD Scopes                                                  |
+      | ---------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+      | ADX Cluster      | `query`                                                     | `https://{serviceName}.{region}.kusto.windows.net/.default` |
+      | Graph            | `People.Read`                                               | `People.Read`, `User.ReadBasic.All`, `Group.Read.All`       |
+      | ADX Dashboards   | `https://rtd-metadata.azurewebsites.net/user_impersonation` | `https://rtd-metadata.azurewebsites.net/user_impersonation` |
+
+    Scope :  
+    | AAD Scopes | Description |
+    | ---------- | ----------- |
+    | https://{serviceName}.{region}.kusto.windows.net/.default | Give access to ADX Cluster, without this all the queries will fail with a time out error |
+    | People.Read | Requires to load user information. Without this users will be identified with their Object ID instead of their email |
+    | User.ReadBasic.All | Requires to load user information. Without this users will be identified with their Object ID instead of their email |
+  
+  For example,
+
+  ```typescript
+    function mapScope(scope: string): string {
+        switch(scope){   
+            case "query": return ["https://{serviceName}.{region}.kusto.windows.net/.default"];
+            case "People.Read": return ["People.Read", "User.ReadBasic.All", "Group.Read.All"];
+            default: return [scope]  
     }
+    var aadScopes = mapScope(event.data.scope);
     ```
 
-1. The provided token should be a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from the [Azure Active Directory (Azure AD) authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
-When generating the token:
+    > [!IMPORTANT]
+    > Service principals are not supported, only user authentication.
 
-    - If the scope isn't a query, use the scope from the message.
-    - If the scope is a query, use the scope of your service, as described in the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).
+3. Post a "postToken" message with the access token:
 
-    For example, you can calculate the scope as follows:
-
-    ```javascript
-    const scope = event.data.scope === 'query' ? $"https://{serviceName}.{region}.kusto.windows.net/.default" : event.data.scope;
+   ```javascript
+        iframeWindow.postMessage({
+            "type": "postToken",
+            "message": // accessToken from AAD,
+            "scope": // scope as passed in the "getToken" message
+        }, '*');
+      }
     ```
 
 > [!IMPORTANT]
-> The hosting window must refresh the token before expiration and use the same mechanism to provide the updated token to the app. Otherwise, once the token expires, service calls will fail.
+> The hosting window must refresh the token before expiration by sending a new "postToken" message with updated tokens. Otherwise, once the tokens expire, service calls will fail.
 
-### Embed dashboards (preview)
+### Embedding dashboards
 
-To embed a dashboard, you'll need to make a few changes to the steps.
+To embed a dashboard, a trust relationship needs to be established between the Host's AAD App and Azure Data Explorer dashboard service (a.k.a RTD Metadata Service).
 
-1. Change the URL of the IFrame, to include the `f-IFrameAuth=true` feature flag.
+1. Follow the steps in [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication).
+2. Open the [Azure portal](https://portal.azure.com/) and make sure that you're signed-in to the correct tenant. Look at the top right corner to verify the identity used to sign into the portal.
+3. In the resources pane, select **Azure Active Directory** > **App registrations**.
+4. Locate the app that uses the on-behalf-of flow and open this app.
+5. Select **Manifest**.
+6. Select **requiredResourceAccess**.
+7. In the manifest, and add the following entry:
 
-    ```html
-    <iframe
-      src="https://dataexplorer.azure.com/dashboards?f-IFrameAuth=true"
-    ></iframe>
+    ```json
+      {
+        "resourceAppId": "35e917a9-4d95-4062-9d97-5781291353b9",
+        "resourceAccess": [
+            {
+                "id": "388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c",
+                "type": "Scope"
+            }
+        ]
+      }
     ```
 
-    > [!NOTE]
-    > For embedding dashboards only, without the query area, we recommend setting the following feature flags:
-    >
-    > ```html
-    > "f-PersistAfterEachRun": true,
-    > "f-IFrameAuth": true,
-    > "f-Homepage": false,
-    > "f-ShowPageHeader": false,
-    > "f-ShowNavigation": false,
-    > "f-DisableExploreQuery": false,
-    > ```
+    `35e917a9-4d95-4062-9d97-5781291353b9` is the application ID of ADX Dashboard Service.
+    `388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c` is the user_impersonation permission.
 
-1. Establish a trust relationship between your app and the Azure Data Explorer service.
+8. Save your changes in the **Manifest**.
+9. Select **API permissions**, and validate you have a new entry: **RTD Metadata Service**.
+10. Add permissions "People.Read", "User.ReadBasic.All" and "Group.Read.All" under Microsoft Graph.
+11. Open the Azure PowerShell and add the following new service principal for that app:
 
-    In addition to the steps in [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication), you also need to establish trust relationship between your app and the dashboards service:
+    ```powershell
+    New-AzureADServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
+    ```
 
-    1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're signed-in to the correct tenant. Look at the top right corner to verify the identity used to sign into the portal.
-    1. In the resources pane, select **Azure Active Directory** > **App registrations**.
-    1. Locate the app that uses the on-behalf-of flow and open this app.
-    1. Select **Manifest**.
-    1. Select **requiredResourceAccess**.
-    1. In the manifest, and add the following entry:
+    If you encounter `Request_MultipleObjectsWithSameKeyValue` error, it means the app is already in the tenant, which can be seen as success.
 
-        ```json
-         {
-            "resourceAppId": "35e917a9-4d95-4062-9d97-5781291353b9",
-            "resourceAccess": [
-                {
-                    "id": "388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c",
-                    "type": "Scope"
-                }
-            ]
-        }
-        ```
+12. To consent for all users, In the **API permissions** page, select **Grant admin consent**.
 
-    1. Save your changes in the **Manifest**.
-    1. Select **API permissions**, and validate you have a new entry: **RTD Metadata Service**.
-    1. If you are using the dashboards sharing feature, you need to add "email" and "profile" permissions under Microsoft Graph.
-    1. Open the Azure PowerShell and add the following new service principal for that app:
-
-        ```powershell
-        New-AzureADServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
-        ```
-
-    1. In the **API permissions** page, select **Grant admin consent**.
+> [!NOTE]
+> For embedding dashboards only, without the query area, use this setup:
+>
+> ```html
+>  <iframe src="https://dataexplorer.azure.com/dashboards?[feature-flags]" />
+> ```
+>
+> where `[feature-flags]` is:
+>
+> ```html
+> "f-IFrameAuth": true,
+> "f-PersistAfterEachRun": true,
+> "f-Homepage": false,
+> "f-ShowPageHeader": false,
+> "f-ShowNavigation": false,
+> "f-DisableExploreQuery": false,
+> ```
 
 ### Feature flags
 
@@ -145,7 +167,8 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-ShowOpenNewWindowButton | Show the **open in web** UI button that opens a new browser window and point to https://dataexplorer.azure.com with the right cluster and database in scope | false |
 | f-ShowFileMenu | Show the file menu (**download**, **tab**, **content**, and so on) | true |
 | f-ShowToS | Show **link to the terms of service for Azure Data Explorer** from the settings dialog | true |
-| f-ShowPersona | Show the user name from the settings menu, in the top-right corner | true |
+| f-ShowPersona | Show the user name from the settings menu, in the top-right corner. | true |
+| f-UseMeControl | Show the user's account information | true |
 | f-IFrameAuth | If true, the web explorer will expect the IFrame to handle authentication and provide a token via a message. This process will always be true for IFrame scenarios | false |
 | f-PersistAfterEachRun | Usually, browsers persist in the unload event. However, the unload event isn't always triggered when hosting in an IFrame. This flag will then trigger **persisting local state** after each query run. As a result, any data loss that occurs, will only affect text that had never been run, thus limiting its impact | false |
 | f-ShowSmoothIngestion | If true, show the ingestion wizard experience when right-clicking on a database | true |
@@ -172,3 +195,4 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 
 - [Kusto Query Language (KQL) overview](../../query/index.md)
 - [Write Kusto queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+- [Non official github example](https://github.com/izikl/kwe-embed-example)
