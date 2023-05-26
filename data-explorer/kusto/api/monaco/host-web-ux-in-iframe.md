@@ -1,19 +1,19 @@
 ---
-title: Embed the Azure Data Explorer web UI in an **IFrame**.
-description: Learn how to embed the Azure Data Explorer web UI in an **IFrame**.
+title: Embed the Azure Data Explorer web UI in an **iframe**.
+description: Learn how to embed the Azure Data Explorer web UI in an **iframe**.
 ms.reviewer: izlisbon
 ms.topic: how-to
 ms.date: 11/22/2022
 ---
-# Embed the Azure Data Explorer web UI in an IFrame
+# Embed the Azure Data Explorer web UI in an iframe
 
-The Azure Data Explorer web UI can be embedded in an IFrame and hosted in third-party websites. This article describes how to embed the Azure Data Explorer web UI in an IFrame.
+The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites. This article describes how to embed the Azure Data Explorer web UI in an iframe.
 
 :::image type="content" source="../images/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web U I.":::
 
 All functionality is tested for accessibility and supports dark and light on-screen themes.
 
-## How to embed the web UI in an IFrame
+## How to embed the web UI in an iframe
 
 Add the following code to your website:
 
@@ -25,7 +25,7 @@ Add the following code to your website:
 
 The `f-IFrameAuth` query parameter tells the Azure Data Explorer web UI *not* to redirect to get an authentication token and the `f-UseMeControl=false` query parameter tells the Azure Data Explorer web UI *not* to show the user account information UX. These actions are necessary, since the hosting website is responsible for authentication.
 
-The `workspace=<guid>` query parameter creates a separate workspace for the embedded iframe, to avoid data sharing with the non-embedded version of <https://dataexplorer.azure.com>.
+The `workspace=<guid>` query parameter creates a separate workspace for the embedded iframe, to avoid data sharing with the nonembedded version of <https://dataexplorer.azure.com>.
 
 ### Handle authentication
 
@@ -40,18 +40,18 @@ When embedding the ADX web UI the hosting page is responsible for authentication
     ```javascript
     window.addEventListener('message', (event) => {
        if (event.data.type === "getToken") {
-         // - Get access token From AAD
+         // - Get access token From Azure AD
          // - post a "postToken" message with an access token and event.data.scope
        }
     })    
    ```
 
-2. Get access token From AAD 
+2. Get access token From Azure AD
 
-    Obtain a [JWT token](https://tools.ietf.org/html/rfc7519) from [Azure Active Directory (Azure AD) authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).  
-      Use this table to decide how to map `event.data.scope` the AAD scopes:
+    Obtain a [JWT token](https://tools.ietf.org/html/rfc7519) from [Microsoft Azure Active Directory (Azure AD) authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).  
+      Use this table to decide how to map `event.data.scope` the Azure AD scopes:
 
-      | resource         | event.data.scope                                            | AAD Scopes                                                  |
+      | resource         | event.data.scope                                            | Azure AD Scopes                                             |
       | ---------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
       | ADX Cluster      | `query`                                                     | `https://{serviceName}.{region}.kusto.windows.net/.default` |
       | Graph            | `People.Read`                                               | `People.Read`, `User.ReadBasic.All`, `Group.Read.All`       |
@@ -77,7 +77,7 @@ When embedding the ADX web UI the hosting page is responsible for authentication
    ```javascript
         iframeWindow.postMessage({
             "type": "postToken",
-            "message": // accessToken from AAD,
+            "message": // accessToken from Azure AD,
             "scope": // scope as passed in the "getToken" message
         }, '*');
       }
@@ -88,7 +88,7 @@ When embedding the ADX web UI the hosting page is responsible for authentication
 
 ### Embedding dashboards
 
-To embed a dashboard, a trust relationship needs to be established between the Host's AAD App and Azure Data Explorer dashboard service (a.k.a RTD Metadata Service).
+To embed a dashboard, a trust relationship needs to be established between the Host's Azure AD App and Azure Data Explorer dashboard service (a.k.a RTD Metadata Service).
 
 1. Follow the steps in [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication).
 2. Open the [Azure portal](https://portal.azure.com/) and make sure that you're signed-in to the correct tenant. Look at the top right corner to verify the identity used to sign into the portal.
@@ -147,7 +147,7 @@ To embed a dashboard, a trust relationship needs to be established between the H
 ### Feature flags
 
 > [!IMPORTANT]
-> The `f-IFrameAuth=true` flag is required for the IFrame to work. The other flags are optional.
+> The `f-IFrameAuth=true` flag is required for the iframe to work. The other flags are optional.
 
 The hosting app may want to control certain aspects of the user experience. For example, hide the connection pane, or disable connecting to other clusters.
 For this scenario, the web explorer supports feature flags.
@@ -163,13 +163,13 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-ShowToS | Show **link to the terms of service for Azure Data Explorer** from the settings dialog | true |
 | f-ShowPersona | Show the user name from the settings menu, in the top-right corner. | true |
 | f-UseMeControl | Show the user's account information | true |
-| f-IFrameAuth | If true, the web explorer will expect the IFrame to handle authentication and provide a token via a message. This process will always be true for IFrame scenarios | false |
-| f-PersistAfterEachRun | Usually, browsers persist in the unload event. However, the unload event isn't always triggered when hosting in an IFrame. This flag will then trigger **persisting local state** after each query run. As a result, any data loss that occurs, will only affect text that had never been run, thus limiting its impact | false |
+| f-IFrameAuth | If true, the web explorer expects the iframe to handle authentication and provide a token via a message. This parameter is required for iframe scenarios. | false |
+| f-PersistAfterEachRun | Usually, browsers persist in the unload event. However, the unload event isn't always triggered when hosting in an iframe. This flag will then trigger **persisting local state** after each query run. As a result, any data loss that occurs, will only affect text that had never been run, thus limiting its impact | false |
 | f-ShowSmoothIngestion | If true, show the ingestion wizard experience when right-clicking on a database | true |
 | f-RefreshConnection | If true, always refreshes the schema when loading the page and never depends on local storage | false |
 | f-ShowPageHeader | If true, shows the page header that includes the Azure Data Explorer title and settings | true |
 | f-HideConnectionPane | If true, the left connection pane doesn't display | false |
-| f-SkipMonacoFocusOnInit | Fixes the focus issue when hosting on IFrame | false |
+| f-SkipMonacoFocusOnInit | Fixes the focus issue when hosting on iframe | false |
 | f-Homepage | Enable the homepage and rerouting new users to it | true |
 | f-ShowNavigation | IF true, shows the navigation pane on the left | true |
 | f-DisableDashboardTopBar | IF true, hides the top bar in the dashboard | false |
@@ -189,4 +189,4 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 
 - [Kusto Query Language (KQL) overview](../../query/index.md)
 - [Write Kusto queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
-- [Non official github example](https://github.com/izikl/kwe-embed-example)
+- [Non official GitHub example](https://github.com/izikl/kwe-embed-example)
