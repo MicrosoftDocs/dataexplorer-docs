@@ -25,7 +25,7 @@ Add the following code to your website:
 
 The `f-IFrameAuth` query parameter tells the Azure Data Explorer web UI *not* to redirect to get an authentication token and the `f-UseMeControl=false` query parameter tells the Azure Data Explorer web UI *not* to show the user account information UX. These actions are necessary, since the hosting website is responsible for authentication.
 
-If `workspace=<guid>` isn't set, the data (tabs, connections and settings) displayed in the iframe will match the data found at https://dataexplorer.azure.com when it's not embedded within an iframe.
+The `workspace=<guid>` query parameter creates a separate workspace for the embedded iframe, to avoid data sharing with the non-embedded version of <https://dataexplorer.azure.com>.
 
 ### Handle authentication
 
@@ -46,8 +46,9 @@ When embedding the ADX web UI the hosting page is responsible for authentication
     })    
    ```
 
-2. Get access token From AAD
-    Obtain a [JWT token](https://tools.ietf.org/html/rfc7519) obtained from [Azure Active Directory (Azure AD) authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).  
+2. Get access token From AAD 
+
+    Obtain a [JWT token](https://tools.ietf.org/html/rfc7519) from [Azure Active Directory (Azure AD) authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).  
       Use this table to decide how to map `event.data.scope` the AAD scopes:
 
       | resource         | event.data.scope                                            | AAD Scopes                                                  |
@@ -55,24 +56,17 @@ When embedding the ADX web UI the hosting page is responsible for authentication
       | ADX Cluster      | `query`                                                     | `https://{serviceName}.{region}.kusto.windows.net/.default` |
       | Graph            | `People.Read`                                               | `People.Read`, `User.ReadBasic.All`, `Group.Read.All`       |
       | ADX Dashboards   | `https://rtd-metadata.azurewebsites.net/user_impersonation` | `https://rtd-metadata.azurewebsites.net/user_impersonation` |
-
-    Scope :  
-    | AAD Scopes | Description |
-    | ---------- | ----------- |
-    | https://{serviceName}.{region}.kusto.windows.net/.default | Give access to ADX Cluster, without this all the queries will fail with a time out error |
-    | People.Read | Requires to load user information. Without this users will be identified with their Object ID instead of their email |
-    | User.ReadBasic.All | Requires to load user information. Without this users will be identified with their Object ID instead of their email |
   
-  For example,
+    For example,
 
-  ```typescript
-    function mapScope(scope: string): string {
-        switch(scope){   
-            case "query": return ["https://{serviceName}.{region}.kusto.windows.net/.default"];
-            case "People.Read": return ["People.Read", "User.ReadBasic.All", "Group.Read.All"];
-            default: return [scope]  
-    }
-    var aadScopes = mapScope(event.data.scope);
+    ```typescript
+        function mapScope(scope: string): string {
+            switch(scope){   
+                case "query": return ["https://kwedemo.westus.kusto.windows.net/.default"];
+                case "People.Read": return ["People.Read", "User.ReadBasic.All", "Group.Read.All"];
+                default: return [scope]  
+        }
+        var aadScopes = mapScope(event.data.scope);
     ```
 
     > [!IMPORTANT]
