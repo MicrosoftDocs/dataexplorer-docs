@@ -1,5 +1,5 @@
 ---
-title: Export data to storage - Azure Data Explorer
+title:  Export data to storage
 description: This article describes Export data to storage in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
@@ -12,7 +12,7 @@ external storage, specified by a [storage connection string](../../api/connectio
 
 ## Permissions
 
-You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Viewer](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -103,7 +103,7 @@ Column name labels are added as the first row for each blob.
     sizeLimit=1000000000,
     namePrefix="export",
     includeHeaders="all",
-    encoding ="UTF8NoBOM"
+    encoding="UTF8NoBOM"
   )
   <| 
   Logs | where id == "1234" 

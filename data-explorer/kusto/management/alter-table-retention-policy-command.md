@@ -1,5 +1,5 @@
 ---
-title: .alter table retention policy command- Azure Data Explorer
+title:  .alter table retention policy command
 description: Learn how to use the .alter table retention policy command to changes the table's retention policy.
 ms.reviewer: yonil
 ms.topic: reference

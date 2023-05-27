@@ -1,5 +1,5 @@
 ---
-title: series_downsample_fl() - Azure Data Explorer
+title:  series_downsample_fl()
 description: This article describes the series_downsample_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference

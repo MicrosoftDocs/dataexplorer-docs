@@ -18,7 +18,7 @@ If you're not able to connect to a cluster in Azure Data Explorer, follow these 
     
 1. If you are connecting from an external tenant, ensure the cluster has correct permissions.
 
-    For more information about cross tenant scenarios, see [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md).
+    For more information about cross tenant scenarios, see [Allow cross-tenant queries and commands](kusto/access-control/cross-tenant-query-and-commands.md).
 
 1. Verify that the cluster hasn't been deleted: review the activity log in your subscription.
 

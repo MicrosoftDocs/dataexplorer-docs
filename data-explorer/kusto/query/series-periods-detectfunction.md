@@ -1,5 +1,5 @@
 ---
-title: series_periods_detect() - Azure Data Explorer
+title:  series_periods_detect()
 description: Learn how to use the series_periods_detect() function to find the most significant periods that exist in a time series.
 ms.reviewer: alexans
 ms.topic: reference
@@ -23,8 +23,6 @@ Finds the most significant periods that exist in a time series.
 | *num_periods* | long | &check; | The maximum required number of periods. This number will be the length of the output dynamic arrays.|
 
 > [!IMPORTANT]
->
-> * The algorithm can detect periods containing at least 4 points and at most half of the series length.
 >
 > * The algorithm can detect periods containing at least 4 points and at most half of the series length.
 > * Set the *min_period* a little below and *max_period* a little above the periods you expect to find in the time series. For example, if you have an hourly aggregated signal, and you look for both daily and weekly periods (24 and 168 hours respectively), you can set *min_period*=0.8\*24, *max_period*=1.2\*168, and leave 20% margins around these periods.

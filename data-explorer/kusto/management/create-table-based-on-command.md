@@ -1,16 +1,17 @@
 ---
-title: .create table based-on - Azure Data Explorer
-description: This article describes the `.create table based-on` command in Azure Data Explorer
+title: .create table based-on
+description: Learn how to use the `.create table based-on` command to create a new empty table based on an existing table.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/14/2023
 ---
 # .create table based-on
 
-Creates a new empty table based on existing table. This command must run in the context of a specific database.
+Creates a new empty table based on an existing table. This command must run in the context of a specific database.
 
 > [!NOTE]
 > All properties of the source table are copied to the new table, with the following exceptions:
+>
 > * [Update policy](updatepolicy.md)
 > * [Authorized principals](security-roles.md): When using the `.create table based-on` command, the current principal is added to the table admins.
 
@@ -20,12 +21,13 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 ## Syntax
 
-`.create` `table` *tableName* `based-on` *otherTable*  [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
+`.create` `table` *tableName* `based-on` *otherTable*  [`ifnotexists`] [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
+| `ifnotexists` | string | | If specified, the table will only be created if it doesn't already exist.|
 | *tableName* | string | &check; | The name of the table to create. The case-senestive name must be unique in the database. |
 | *otherTable* | string | &check; | The name of an existing table to use as the source for the columns, docstring, and folder of the table being created. |
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
@@ -44,6 +46,12 @@ This command returns the new table's schema in JSON format, similar to running t
 ```kusto
 .show table MyLogs schema as json
 ```
+
+> [!NOTE]
+>
+> * If the table already exists:
+>    * If `ifnotexists` flag is specified, the command is ignored (no change applied).
+>    * If `ifnotexists` flag is NOT specified, an error is returned.
 
 ## Example
 

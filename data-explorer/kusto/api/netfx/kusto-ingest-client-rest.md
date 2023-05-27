@@ -1,9 +1,9 @@
 ---
-title: How to ingest data with the REST API - Azure Data Explorer
+title:  How to ingest data with the REST API
 description: This article describes how to ingest data without Kusto.Ingest library by using the REST API in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/19/2023
+ms.date: 05/08/2023
 ---
 # How to ingest data with the REST API
 
@@ -42,29 +42,24 @@ internal class IngestionResourcesSnapshot
 
 public static void IngestSingleFile(string file, string db, string table, string ingestionMappingRef)
 {
-    // Your ingestion service URI, typically ingest-<your cluster name>.kusto.windows.net
-    string DmServiceBaseUri = @"https://ingest-{serviceNameAndRegion}.kusto.windows.net";
-
+    // Your Azure Data Explorer ingestion service URI, typically ingest-<your cluster name>.kusto.windows.net
+    var dmServiceBaseUri = @"https://ingest-{serviceNameAndRegion}.kusto.windows.net";
     // 1. Authenticate the interactive user (or application) to access Kusto ingestion service
-    string bearerToken = AuthenticateInteractiveUser(DmServiceBaseUri);
-
+    var bearerToken = AuthenticateInteractiveUser(dmServiceBaseUri);
     // 2a. Retrieve ingestion resources
-    IngestionResourcesSnapshot ingestionResources = RetrieveIngestionResources(DmServiceBaseUri, bearerToken);
-
+    var ingestionResources = RetrieveIngestionResources(dmServiceBaseUri, bearerToken);
     // 2b. Retrieve Kusto identity token
-    string identityToken = RetrieveKustoIdentityToken(DmServiceBaseUri, bearerToken);
-
-    // 3. Upload file to one of the previously obtained blob containers.
+    var identityToken = RetrieveKustoIdentityToken(dmServiceBaseUri, bearerToken);
+    // 3. Upload file to one of the blob containers we got from Azure Data Explorer.
     // This example uses the first one, but when working with multiple blobs,
     // one should round-robin the containers in order to prevent throttling
-    long blobSizeBytes = 0;
-    string blobName = $"TestData{DateTime.UtcNow.ToString("yyyy-MM-dd_HH-mm-ss.FFF")}";
-    string blobUriWithSas = UploadFileToBlobContainer(file, ingestionResources.TempStorageContainers.First(),
-                                                            "temp001", blobName, out blobSizeBytes);
-
+    var blobName = $"TestData{DateTime.UtcNow:yyyy-MM-dd_HH-mm-ss.FFF}";
+    var blobUriWithSas = UploadFileToBlobContainer(
+        file, ingestionResources.TempStorageContainers.First(), blobName,
+        out var blobSizeBytes
+    );
     // 4. Compose ingestion command
-    string ingestionMessage = PrepareIngestionMessage(db, table, blobUriWithSas, blobSizeBytes, ingestionMappingRef, identityToken);
-
+    var ingestionMessage = PrepareIngestionMessage(db, table, blobUriWithSas, blobSizeBytes, ingestionMappingRef, identityToken);
     // 5. Post ingestion command to one of the previously obtained ingestion queues.
     // This example uses the first one, but when working with multiple blobs,
     // one should round-robin the queues in order to prevent throttling
@@ -99,16 +94,14 @@ Here we use [Microsoft Authentication Library (MSAL)](/azure/active-directory/de
 internal static string AuthenticateInteractiveUser(string resource)
 {
     // Create an authentication client for Azure AD:
-    var authClient = PublicClientApplicationBuilder.Create("<your client app ID>")
-                .WithAuthority("https://login.microsoftonline.com/{Azure AD Tenant ID or name}")
-                .WithRedirectUri(@"<your client app redirect URI>")
-                .Build();
-
-    // Define scopes:
-    string[] scopes = new string[] { $"{resource}/.default" };
-
-    // Acquire user token for the interactive user:
-    AuthenticationResult result = authClient.AcquireTokenInteractive(scopes).ExecuteAsync().Result;
+    var authClient = PublicClientApplicationBuilder.Create("<appId>")
+        .WithAuthority("https://login.microsoftonline.com/<appTenant>")
+        .WithRedirectUri("<appRedirectUri>")
+        .Build();
+    // Acquire user token for the interactive user for Azure Data Explorer:
+    var result = authClient.AcquireTokenInteractive(
+        new[] { $"{resource}/.default" } // Define scopes
+    ).ExecuteAsync().Result;
     return result.AccessToken;
 }
 ```
@@ -122,63 +115,50 @@ The Data Management service will process any messages containing ingestion reque
 // Retrieve ingestion resources (queues and blob containers) with SAS from specified ingestion service using supplied access token
 internal static IngestionResourcesSnapshot RetrieveIngestionResources(string ingestClusterBaseUri, string accessToken)
 {
-    string ingestClusterUri = $"{ingestClusterBaseUri}/v1/rest/mgmt";
-    string requestBody = $"{{ \"csl\": \".get ingestion resources\" }}";
-
-    IngestionResourcesSnapshot ingestionResources = new IngestionResourcesSnapshot();
-
-    using (WebResponse response = SendPostRequest(ingestClusterUri, accessToken, requestBody))
-    using (StreamReader sr = new StreamReader(response.GetResponseStream()))
-    using (JsonTextReader jtr = new JsonTextReader(sr))
+    var ingestClusterUri = $"{ingestClusterBaseUri}/v1/rest/mgmt";
+    var requestBody = "{ \"csl\": \".get ingestion resources\" }";
+    var ingestionResources = new IngestionResourcesSnapshot();
+    using var response = SendPostRequest(ingestClusterUri, accessToken, requestBody);
+    using var sr = new StreamReader(response.GetResponseStream());
+    using var jtr = new JsonTextReader(sr);
+    var responseJson = JObject.Load(jtr);
+    // Input queues
+    var tokens = responseJson.SelectTokens("Tables[0].Rows[?(@.[0] == 'SecuredReadyForAggregationQueue')]");
+    foreach (var token in tokens)
     {
-        JObject responseJson = JObject.Load(jtr);
-        IEnumerable<JToken> tokens;
-
-        // Input queues
-        tokens = responseJson.SelectTokens("Tables[0].Rows[?(@.[0] == 'SecuredReadyForAggregationQueue')]");
-        foreach (var token in tokens)
-        {
-            ingestionResources.IngestionQueues.Add((string) token[1]);
-        }
-
-        // Temp storage containers
-        tokens = responseJson.SelectTokens("Tables[0].Rows[?(@.[0] == 'TempStorage')]");
-        foreach (var token in tokens)
-        {
-            ingestionResources.TempStorageContainers.Add((string)token[1]);
-        }
-
-        // Failure notifications queue
-        var singleToken =
-            responseJson.SelectTokens("Tables[0].Rows[?(@.[0] == 'FailedIngestionsQueue')].[1]").FirstOrDefault();
-        ingestionResources.FailureNotificationsQueue = (string)singleToken;
-
-        // Success notifications queue
-        singleToken =
-            responseJson.SelectTokens("Tables[0].Rows[?(@.[0] == 'SuccessfulIngestionsQueue')].[1]").FirstOrDefault();
-        ingestionResources.SuccessNotificationsQueue = (string)singleToken;
+        ingestionResources.IngestionQueues.Add((string)token[1]);
     }
-
+    // Temp storage containers
+    tokens = responseJson.SelectTokens("Tables[0].Rows[?(@.[0] == 'TempStorage')]");
+    foreach (var token in tokens)
+    {
+        ingestionResources.TempStorageContainers.Add((string)token[1]);
+    }
+    // Failure notifications queue
+    var singleToken =
+        responseJson.SelectTokens("Tables[0].Rows[?(@.[0] == 'FailedIngestionsQueue')].[1]").FirstOrDefault();
+    ingestionResources.FailureNotificationsQueue = (string)singleToken;
+    // Success notifications queue
+    singleToken =
+        responseJson.SelectTokens("Tables[0].Rows[?(@.[0] == 'SuccessfulIngestionsQueue')].[1]").FirstOrDefault();
+    ingestionResources.SuccessNotificationsQueue = (string)singleToken;
     return ingestionResources;
 }
 
 // Executes a POST request on provided URI using supplied Access token and request body
 internal static WebResponse SendPostRequest(string uriString, string authToken, string body)
 {
-    WebRequest request = WebRequest.Create(uriString);
-
+    var request = WebRequest.Create(uriString);
     request.Method = "POST";
     request.ContentType = "application/json";
     request.ContentLength = body.Length;
     request.Headers.Set(HttpRequestHeader.Authorization, $"Bearer {authToken}");
-
-    Stream bodyStream = request.GetRequestStream();
-    using (StreamWriter sw = new StreamWriter(bodyStream))
+    using var bodyStream = request.GetRequestStream();
+    using (var sw = new StreamWriter(bodyStream))
     {
         sw.Write(body);
         sw.Flush();
     }
-
     bodyStream.Close();
     return request.GetResponse();
 }
@@ -192,19 +172,15 @@ Ingest messages are handed off to your cluster via a non-direct channel (Azure q
 // Retrieves a Kusto identity token that will be added to every ingest message
 internal static string RetrieveKustoIdentityToken(string ingestClusterBaseUri, string accessToken)
 {
-    string ingestClusterUri = $"{ingestClusterBaseUri}/v1/rest/mgmt";
-    string requestBody = $"{{ \"csl\": \".get kusto identity token\" }}";
-    string jsonPath = "Tables[0].Rows[*].[0]";
-
-    using (WebResponse response = SendPostRequest(ingestClusterUri, accessToken, requestBody))
-    using (StreamReader sr = new StreamReader(response.GetResponseStream()))
-    using (JsonTextReader jtr = new JsonTextReader(sr))
-    {
-        JObject responseJson = JObject.Load(jtr);
-        JToken identityToken = responseJson.SelectTokens(jsonPath).FirstOrDefault();
-
-        return ((string)identityToken);
-    }
+    var ingestClusterUri = $"{ingestClusterBaseUri}/v1/rest/mgmt";
+    var requestBody = "{ \"csl\": \".get kusto identity token\" }";
+    var jsonPath = "Tables[0].Rows[*].[0]";
+    using var response = SendPostRequest(ingestClusterUri, accessToken, requestBody);
+    using var sr = new StreamReader(response.GetResponseStream());
+    using var jtr = new JsonTextReader(sr);
+    var responseJson = JObject.Load(jtr);
+    var identityToken = responseJson.SelectTokens(jsonPath).FirstOrDefault();
+    return (string)identityToken;
 }
 ```
 
@@ -214,19 +190,17 @@ This step is about uploading a local file to an Azure Blob that will be handed o
 
 ```csharp
 // Uploads a single local file to an Azure Blob container, returns blob URI and original data size
-internal static string UploadFileToBlobContainer(string filePath, string blobContainerUri, string containerName, string blobName, out long blobSize)
+internal static string UploadFileToBlobContainer(string filePath, string blobContainerUri, string blobName, out long blobSize)
 {
     var blobUri = new Uri(blobContainerUri);
-    CloudBlobContainer blobContainer = new CloudBlobContainer(blobUri);
-    CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(blobName);
-
-    using (Stream stream = File.OpenRead(filePath))
+    var blobContainer = new BlobContainerClient(blobUri);
+    var blob = blobContainer.GetBlobClient(blobName);
+    using (var stream = File.OpenRead(filePath))
     {
-        blockBlob.UploadFromStream(stream);
-        blobSize = blockBlob.Properties.Length;
+        blob.UploadAsync(BinaryData.FromStream(stream));
+        blobSize = blob.GetProperties().Value.ContentLength;
     }
-
-    return string.Format("{0}{1}", blockBlob.Uri.AbsoluteUri, blobUri.Query);
+    return $"{blob.Uri.AbsoluteUri}{blobUri.Query}";
 }
 ```
 
@@ -249,23 +223,26 @@ Here are some points to consider.
 ```csharp
 internal static string PrepareIngestionMessage(string db, string table, string dataUri, long blobSizeBytes, string mappingRef, string identityToken)
 {
-    var message = new JObject();
-
-    message.Add("Id", Guid.NewGuid().ToString());
-    message.Add("BlobPath", dataUri);
-    message.Add("RawDataSize", blobSizeBytes);
-    message.Add("DatabaseName", db);
-    message.Add("TableName", table);
-    message.Add("RetainBlobOnSuccess", true);   // Do not delete the blob on success
-    message.Add("FlushImmediately", true);      // Do not aggregate
-    message.Add("ReportLevel", 2);              // Report failures and successes (might incur perf overhead)
-    message.Add("ReportMethod", 0);             // Failures are reported to an Azure Queue
-
-    message.Add("AdditionalProperties", new JObject(
-                                            new JProperty("authorizationContext", identityToken),
-                                            new JProperty("mappingReference", mappingRef),
-                                            // Data is in JSON format
-                                            new JProperty("format", "multijson")));
+    var message = new JObject
+    {
+        { "Id", Guid.NewGuid().ToString() },
+        { "BlobPath", dataUri },
+        { "RawDataSize", blobSizeBytes },
+        { "DatabaseName", db },
+        { "TableName", table },
+        { "RetainBlobOnSuccess", true }, // Do not delete the blob on success
+        { "FlushImmediately", true }, // Do not aggregate
+        { "ReportLevel", 2 }, // Report failures and successes (might incur perf overhead)
+        { "ReportMethod", 0 }, // Failures are reported to an Azure Queue
+        {
+            "AdditionalProperties", new JObject(
+                new JProperty("authorizationContext", identityToken),
+                new JProperty("mappingReference", mappingRef),
+                // Data is in JSON format
+                new JProperty("format", "multijson")
+            )
+        }
+    };
     return message.ToString();
 }
 ```
@@ -281,10 +258,8 @@ If you are using .Net storage client versions above v12, you must properly encod
 ```csharp
 internal static void PostMessageToQueue(string queueUriWithSas, string message)
 {
-    CloudQueue queue = new CloudQueue(new Uri(queueUriWithSas));
-    CloudQueueMessage queueMessage = new CloudQueueMessage(message);
-
-    queue.AddMessage(queueMessage, null, null, null, null);
+    var queue = new QueueClient(new Uri(queueUriWithSas));
+    queue.SendMessage(message);
 }
 ```
 
@@ -295,15 +270,9 @@ After ingestion, we check for failure messages from the relevant queue that the 
 ```csharp
 internal static IEnumerable<string> PopTopMessagesFromQueue(string queueUriWithSas, int count)
 {
-    List<string> messages = Enumerable.Empty<string>().ToList();
-    CloudQueue queue = new CloudQueue(new Uri(queueUriWithSas));
-    var messagesFromQueue = queue.GetMessages(count);
-    foreach (var m in messagesFromQueue)
-    {
-        messages.Add(m.AsString);
-        queue.DeleteMessage(m);
-    }
-
+    var queue = new QueueClient(new Uri(queueUriWithSas));
+    var messagesFromQueue = queue.ReceiveMessages(maxMessages: count).Value;
+    var messages = messagesFromQueue.Select(m => m.MessageText);
     return messages;
 }
 ```

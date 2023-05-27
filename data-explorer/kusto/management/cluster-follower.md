@@ -1,5 +1,5 @@
 ---
-title: Follower commands - Azure Data Explorer
+title:  Follower commands
 description: Learn how to use follower commands to manage your follower configuration.
 ms.reviewer: orspodek
 ms.topic: reference
@@ -13,7 +13,7 @@ The follower commands include [database level commands](#database-level-commands
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Database policy overrides
 
@@ -30,14 +30,15 @@ The default [caching policy](cachepolicy.md) for the follower cluster uses the l
 |**union**(default) |The source database in the leader cluster database and table-level caching policies are combined with the policies defined in the database and table-level override policies.   |
 
 > [!NOTE]
->  * If the collection of override database and table-level caching policies is *empty*, then everything is cached by default.
->  * You can set the database-level caching policy override to `0d`, and nothing will be cached by default.
+>
+> * If the collection of override database and table-level caching policies is *empty*, then everything is cached by default.
+> * You can set the database-level caching policy override to `0d`, and nothing will be cached by default.
 
 ### Authorized principals
 
 |Option             |Description                                                                                                                              |
 |-------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-|**None**           |The [authorized principals](access-control/index.md#authorization) are defined in the source database of the leader cluster.     |
+|**None**           |The [authorized principals](../access-control/index.md#authorization) are defined in the source database of the leader cluster.     |
 |**replace**        |The override authorized principals replace the authorized principals from the source database in the leader cluster.  |
 |**union**(default) |The override authorized principals are combined with the authorized principals from the source database in the leader cluster. |
 

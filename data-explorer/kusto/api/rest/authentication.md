@@ -1,5 +1,5 @@
 ---
-title: Authentication over HTTPS - Azure Data Explorer
+title:  Authentication over HTTPS
 description: This article describes Authentication over HTTPS in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
@@ -22,11 +22,11 @@ must authenticate by using the HTTP `Authorization` request header.
 
 ## Get an access token
 
-There are many different methods to get an Azure AD access token. To learn more, see [user authentication](../../management/access-control/how-to-authenticate-with-aad.md#user-authentication) and [application authentication](../../management/access-control/how-to-authenticate-with-aad.md#application-authentication).
+There are many different methods to get an Azure AD access token. To learn more, see [user authentication](../../access-control/how-to-authenticate-with-aad.md#user-authentication) and [application authentication](../../access-control/how-to-authenticate-with-aad.md#application-authentication).
 
 ### Get an access token for a user principal using the Azure CLI
 
-The following steps return an access token for the user principal making the request. Make sure the user principal has access to the resource you plan to access. For more information, see [role-based access control](../../management/access-control/role-based-access-control.md).
+The following steps return an access token for the user principal making the request. Make sure the user principal has access to the resource you plan to access. For more information, see [role-based access control](../../access-control/role-based-access-control.md).
 
 1. Sign in to the Azure CLI.
 
@@ -98,5 +98,5 @@ Azure AD service principals represent applications or services that need access 
 
 ## See also
 
-* [Authentication overview](../../management/access-control/index.md)
-* [Guide to Azure AD authentication](../../management/access-control/how-to-authenticate-with-aad.md)
+* [Authentication overview](../../access-control/index.md)
+* [Guide to Azure AD authentication](../../access-control/how-to-authenticate-with-aad.md)

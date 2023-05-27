@@ -1,15 +1,15 @@
 ---
-title: External tables - Azure Data Explorer
+title:  External tables
 description: This article describes External tables in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/25/2022
+ms.date: 05/01/2023
 ---
 # External tables
 
-An **external table** is a Kusto schema entity that references data stored outside the Azure Data Explorer database.
+An **external table** is a schema entity that references data stored outside a database in your cluster.
 
-Similar to [tables](tables.md), an external table has a well-defined schema (an ordered list of column name and data type pairs). Unlike tables where data is ingested into Azure Data Explorer cluster, external tables operate on data stored and managed outside Azure Data Explorer cluster.
+Similar to [tables](tables.md), an external table has a well-defined schema (an ordered list of column name and data type pairs). Unlike tables where data is ingested into your cluster, external tables operate on data stored and managed outside your cluster.
 
 Supported external data stores are:
 
@@ -18,7 +18,8 @@ Supported external data stores are:
 
 See the following ways of creating external tables:
 
-* [Create and alter Azure Storage external tables](../../management/external-tables-azurestorage-azuredatalake.md)
+* [Create or alter Azure Blob Storage/ADLS external tables](../../management/external-tables-azurestorage-azuredatalake.md)
+* [Create or alter delta external tables](../../management/external-tables-azurestorage-deltalake.md)
 * [Create and alter SQL Server external tables](../../management/external-sql-tables.md)
 * [Create external table using Azure Data Explorer web UI Wizard](../../../external-table.md)
 
@@ -30,7 +31,7 @@ Use the following commands to manage external tables:
 * [`.show external tables`](../../management/show-external-tables.md)
 * [`.show external table schema`](../../management/show-external-table-schema.md)
 
-For more information about how to query external tables, and ingested and uningested data, see how to [query data in Azure Data Lake using Azure Data Explorer](../../../data-lake-query-data.md).
+For more information about how to query external tables, and ingested and uningested data, see [Query data in Azure Data Lake using Azure Data Explorer](../../../data-lake-query-data.md).
 
 **Notes**
 
@@ -39,5 +40,5 @@ For more information about how to query external tables, and ingested and uninge
   * Can’t overlap with Kusto table names.
   * Follow the rules for [entity names](./entity-names.md).
 * Maximum limit of external tables per database is 1,000.
-* Kusto supports [export](../../management/data-export/export-data-to-an-external-table.md) and [continuous export](../../management/data-export/continuous-data-export.md) to an external table.
+* Azure Data Explorer supports [export](../../management/data-export/export-data-to-an-external-table.md) and [continuous export](../../management/data-export/continuous-data-export.md) to an external table.
 * [Data purge](../../concepts/data-purge.md) isn't applied on external tables. Records are never deleted from external tables.

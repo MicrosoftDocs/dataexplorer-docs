@@ -3,7 +3,7 @@ title: 'Ingest data with Kusto .NET SDK'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using .NET SDK.
 ms.reviewer: vladikb
 ms.topic: how-to
-ms.date: 04/19/2023
+ms.date: 05/08/2023
 
 # Customer intent: As a .NET SDK developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -38,13 +38,13 @@ Install-Package Microsoft.Azure.Kusto.Ingest
 To authenticate an application, the SDK uses your AAD tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
 
 ```http
-https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
+https://login.microsoftonline.com/<YourDomain>/.well-known/openid-configuration/
 ```
 
-For example, if your domain is *contoso.com*, the URL is: [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Click this URL to see the results; the first line is as follows. 
+For example, if your domain is *contoso.com*, the URL is: [https://login.microsoftonline.com/contoso.com/.well-known/openid-configuration/](https://login.microsoftonline.com/contoso.com/.well-known/openid-configuration/). Click this URL to see the results; the first line is as follows. 
 
 ```console
-"authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
+"authorization_endpoint":"https://login.microsoftonline.com/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
 The tenant ID in this case is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`.
@@ -61,9 +61,8 @@ The SDK provides a convenient way to set up the authentication method as part of
 Now you can construct the connection string. You'll create the destination table and mapping in a later step.
 
 ```csharp
-var tenantId = "<TenantId>";
 var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net/";
-
+var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri).WithAadUserPromptAuthentication(tenantId);
 ```
 
@@ -84,39 +83,38 @@ Create a table named `StormEvents` that matches the schema of the data in the `S
 
 ```csharp
 var databaseName = "<DatabaseName>";
-var table = "StormEvents";
+var tableName = "StormEvents";
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
 {
-    var command =
-        CslCommandGenerator.GenerateTableCreateCommand(
-            table,
-            new[]
-            {
-                Tuple.Create("StartTime", "System.DateTime"),
-                Tuple.Create("EndTime", "System.DateTime"),
-                Tuple.Create("EpisodeId", "System.Int32"),
-                Tuple.Create("EventId", "System.Int32"),
-                Tuple.Create("State", "System.String"),
-                Tuple.Create("EventType", "System.String"),
-                Tuple.Create("InjuriesDirect", "System.Int32"),
-                Tuple.Create("InjuriesIndirect", "System.Int32"),
-                Tuple.Create("DeathsDirect", "System.Int32"),
-                Tuple.Create("DeathsIndirect", "System.Int32"),
-                Tuple.Create("DamageProperty", "System.Int32"),
-                Tuple.Create("DamageCrops", "System.Int32"),
-                Tuple.Create("Source", "System.String"),
-                Tuple.Create("BeginLocation", "System.String"),
-                Tuple.Create("EndLocation", "System.String"),
-                Tuple.Create("BeginLat", "System.Double"),
-                Tuple.Create("BeginLon", "System.Double"),
-                Tuple.Create("EndLat", "System.Double"),
-                Tuple.Create("EndLon", "System.Double"),
-                Tuple.Create("EpisodeNarrative", "System.String"),
-                Tuple.Create("EventNarrative", "System.String"),
-                Tuple.Create("StormSummary", "System.Object"),
-            });
-
-    kustoClient.ExecuteControlCommand(databaseName, command);
+    var command = CslCommandGenerator.GenerateTableCreateCommand(
+        tableName,
+        new[]
+        {
+            Tuple.Create("StartTime", "System.DateTime"),
+            Tuple.Create("EndTime", "System.DateTime"),
+            Tuple.Create("EpisodeId", "System.Int32"),
+            Tuple.Create("EventId", "System.Int32"),
+            Tuple.Create("State", "System.String"),
+            Tuple.Create("EventType", "System.String"),
+            Tuple.Create("InjuriesDirect", "System.Int32"),
+            Tuple.Create("InjuriesIndirect", "System.Int32"),
+            Tuple.Create("DeathsDirect", "System.Int32"),
+            Tuple.Create("DeathsIndirect", "System.Int32"),
+            Tuple.Create("DamageProperty", "System.Int32"),
+            Tuple.Create("DamageCrops", "System.Int32"),
+            Tuple.Create("Source", "System.String"),
+            Tuple.Create("BeginLocation", "System.String"),
+            Tuple.Create("EndLocation", "System.String"),
+            Tuple.Create("BeginLat", "System.Double"),
+            Tuple.Create("BeginLon", "System.Double"),
+            Tuple.Create("EndLat", "System.Double"),
+            Tuple.Create("EndLon", "System.Double"),
+            Tuple.Create("EpisodeNarrative", "System.String"),
+            Tuple.Create("EventNarrative", "System.String"),
+            Tuple.Create("StormSummary", "System.Object"),
+        }
+    );
+    await kustoClient.ExecuteControlCommandAsync(databaseName, command);
 }
 ```
 
@@ -126,40 +124,41 @@ Map the incoming CSV data to the column names used when creating the table.
 Provision a [CSV column mapping object](kusto/management/create-ingestion-mapping-command.md) on that table.
 
 ```csharp
-var tableMapping = "StormEvents_CSV_Mapping";
+var tableMappingName = "StormEvents_CSV_Mapping";
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
 {
-    var command =
-        CslCommandGenerator.GenerateTableMappingCreateCommand(
-            Data.Ingestion.IngestionMappingKind.Csv,
-            table,
-            tableMapping,
-            new[] {
-                new ColumnMapping() { ColumnName = "StartTime", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "0" } } },
-                new ColumnMapping() { ColumnName = "EndTime", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "1" } } },
-                new ColumnMapping() { ColumnName = "EpisodeId", Properties = new Dictionary<string, string>() { { MappingConsts.Ordinal, "2" } } },
-                new ColumnMapping() { ColumnName = "EventId", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "3" } } },
-                new ColumnMapping() { ColumnName = "State", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "4" } } },
-                new ColumnMapping() { ColumnName = "EventType", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "5" } } },
-                new ColumnMapping() { ColumnName = "InjuriesDirect", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "6" } } },
-                new ColumnMapping() { ColumnName = "InjuriesIndirect", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "7" } } },
-                new ColumnMapping() { ColumnName = "DeathsDirect", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "8" } } },
-                new ColumnMapping() { ColumnName = "DeathsIndirect", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "9" } } },
-                new ColumnMapping() { ColumnName = "DamageProperty", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "10" } } },
-                new ColumnMapping() { ColumnName = "DamageCrops", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "11" } } },
-                new ColumnMapping() { ColumnName = "Source", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "12" } } },
-                new ColumnMapping() { ColumnName = "BeginLocation", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "13" } } },
-                new ColumnMapping() { ColumnName = "EndLocation", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "14" } } },
-                new ColumnMapping() { ColumnName = "BeginLat", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "15" } } },
-                new ColumnMapping() { ColumnName = "BeginLon", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "16" } } },
-                new ColumnMapping() { ColumnName = "EndLat", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "17" } } },
-                new ColumnMapping() { ColumnName = "EndLon", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "18" } } },
-                new ColumnMapping() { ColumnName = "EpisodeNarrative", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "19" } } },
-                new ColumnMapping() { ColumnName = "EventNarrative", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "20" } } },
-                new ColumnMapping() { ColumnName = "StormSummary", Properties =  new Dictionary<string, string>() { { MappingConsts.Ordinal, "21" } } }
-        });
-
-    kustoClient.ExecuteControlCommand(databaseName, command);
+    var command = CslCommandGenerator.GenerateTableMappingCreateCommand(
+        IngestionMappingKind.Csv,
+        tableName,
+        tableMappingName,
+        new ColumnMapping[]
+        {
+            new() { ColumnName = "StartTime", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "0" } } },
+            new() { ColumnName = "EndTime", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "1" } } },
+            new() { ColumnName = "EpisodeId", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "2" } } },
+            new() { ColumnName = "EventId", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "3" } } },
+            new() { ColumnName = "State", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "4" } } },
+            new() { ColumnName = "EventType", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "5" } } },
+            new() { ColumnName = "InjuriesDirect", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "6" } } },
+            new() { ColumnName = "InjuriesIndirect", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "7" } } },
+            new() { ColumnName = "DeathsDirect", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "8" } } },
+            new() { ColumnName = "DeathsIndirect", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "9" } } },
+            new() { ColumnName = "DamageProperty", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "10" } } },
+            new() { ColumnName = "DamageCrops", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "11" } } },
+            new() { ColumnName = "Source", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "12" } } },
+            new() { ColumnName = "BeginLocation", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "13" } } },
+            new() { ColumnName = "EndLocation", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "14" } } },
+            new() { ColumnName = "BeginLat", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "15" } } },
+            new() { ColumnName = "BeginLon", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "16" } } },
+            new() { ColumnName = "EndLat", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "17" } } },
+            new() { ColumnName = "EndLon", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "18" } } },
+            new() { ColumnName = "EpisodeNarrative", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "19" } } },
+            new() { ColumnName = "EventNarrative", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "20" } } },
+            new() { ColumnName = "StormSummary", Properties = new Dictionary<string, string> { { MappingConsts.Ordinal, "21" } } }
+        }
+    );
+    
+    await kustoClient.ExecuteControlCommandAsync(databaseName, command);
 }
 ```
 
@@ -170,12 +169,15 @@ Batching incoming data optimizes data shard size, which is controlled by the [in
 ```csharp
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
 {
-    var command =
-        CslCommandGenerator.GenerateTableAlterIngestionBatchingPolicyCommand(
+    var command = CslCommandGenerator.GenerateTableAlterIngestionBatchingPolicyCommand(
         databaseName,
-        table,
-        new IngestionBatchingPolicy(maximumBatchingTimeSpan: TimeSpan.FromSeconds(10.0), maximumNumberOfItems: 100, maximumRawDataSizeMB: 1024));
-
+        tableName,
+        new IngestionBatchingPolicy(
+            maximumBatchingTimeSpan: TimeSpan.FromSeconds(10),
+            maximumNumberOfItems: 100,
+            maximumRawDataSizeMB: 1024
+        )
+    );
     kustoClient.ExecuteControlCommand(command);
 }
 ```
@@ -192,25 +194,20 @@ Queue a message to pull data from blob storage and ingest the data. A connection
 > The following code snippets create an instance of a client for almost every call. This is done to make each snippet individually runnable. In production, the client instances are reentrant, and should be kept as long as needed. A single client instance per URI is sufficient, even when working with multiple databases (database can be specified on a command level).
 
 ```csharp
-var ingestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net";
+var ingestUri = "https://ingest-<clusterName>.<region>.kusto.windows.net";
 var ingestConnectionStringBuilder = new KustoConnectionStringBuilder(ingestUri).WithAadUserPromptAuthentication(tenantId);
-
-using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConnectionStringBuilder))
+using var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConnectionStringBuilder);
+var properties = new KustoQueuedIngestionProperties(databaseName, tableName)
 {
-    var properties =
-        new KustoQueuedIngestionProperties(database, table)
-        {
-            Format = DataSourceFormat.csv,
-            IngestionMapping = new IngestionMapping()
-            { 
-                IngestionMappingReference = tableMapping,
-                IngestionMappingKind = IngestionMappingKind.Csv
-            },
-            IgnoreFirstRecord = true
-        };
-
-    ingestClient.IngestFromStorageAsync(blobPath, ingestionProperties: properties).GetAwaiter().GetResult();
-}
+    Format = DataSourceFormat.csv,
+    IngestionMapping = new IngestionMapping
+    {
+        IngestionMappingReference = tableMappingName,
+        IngestionMappingKind = IngestionMappingKind.Csv
+    },
+    IgnoreFirstRecord = true
+};
+await ingestClient.IngestFromStorageAsync(blobPath, properties);
 ```
 
 ## Validate data was ingested into the table
@@ -218,13 +215,10 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
 Wait five to ten minutes for the queued ingestion to schedule the ingestion and load the data into your cluster. Then run the following code to get the count of records in the `StormEvents` table.
 
 ```csharp
-using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder))
-{
-    var query = $"{table} | count";
-
-    var results = cslQueryProvider.ExecuteQuery<long>(databaseName, query);
-    Console.WriteLine(results.Single());
-}
+using var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder);
+var query = $"{tableName} | count";
+var results = cslQueryProvider.ExecuteQuery<long>(databaseName, query);
+Console.WriteLine(results.Single());
 ```
 
 ## Run troubleshooting queries

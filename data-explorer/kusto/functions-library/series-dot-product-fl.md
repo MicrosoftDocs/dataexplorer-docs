@@ -1,5 +1,5 @@
 ---
-title: series_dot_product_fl() - Azure Data Explorer
+title:  series_dot_product_fl()
 description: This article describes series_dot_product_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
@@ -10,6 +10,10 @@ ms.date: 03/13/2023
 Calculates the dot product of two numerical vectors.
 
 The function `series_dot_product_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing two dynamic numerical arrays as input and calculates their [dot product](https://en.wikipedia.org/wiki/Dot_product).
+
+> [!NOTE]
+>
+> Use the native function [series_dot_product()](../query/series-dot-productfunction.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
 
 ## Syntax
 
@@ -100,4 +104,4 @@ union
 
 **Output**
 
-:::image type="content" source="images/series-dot-product-fl/dot-product-result.png" alt-text="Table showing the result of dot product of 2 vectors using user-defined function series_dot_product_fl in Azure Data Explorer." border="false":::
+:::image type="content" source="images/series-dot-product-fl/dot-product-result.png" alt-text="Table showing the result of dot product of 2 vectors using user-defined function series_dot_product_fl." border="false":::

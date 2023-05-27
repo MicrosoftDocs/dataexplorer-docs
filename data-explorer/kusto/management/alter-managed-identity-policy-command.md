@@ -1,11 +1,11 @@
 ---
-title: .alter managed_identity policy command - Azure Data Explorer
-description: Learn how to use the .alter managed_identity policy command to set the ManagedIdentity policy of the cluster or database.
+title:  .alter managed_identity policy command
+description: Learn how to use the `.alter managed_identity policy` command to set the ManagedIdentity policy of the cluster or database.
 ms.reviewer: slneimer
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter managed_identity policy
+# .alter managed_identity policy command
 
 Sets the ManagedIdentity policy of the cluster or the specified database, overriding the existing policy.
 

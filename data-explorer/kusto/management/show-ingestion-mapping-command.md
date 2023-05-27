@@ -1,9 +1,9 @@
 ---
-title: .show ingestion mappings - Azure Data Explorer
-description: This article describes .show ingestion mappings in Azure Data Explorer.
+title: .show ingestion mapping
+description: Learn how to use the `.show ingestion mapping` command to view the ingestion mapping for a table or database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 05/24/2023
 ---
 # .show ingestion mapping
 
@@ -13,11 +13,11 @@ Use this command to view a specific ingestion mapping, or all ingestion mappings
 
 View a specific mapping:
 
-`.show` [`table`|`database`] *EntityName* `ingestion` *MappingKind* `mapping` *MappingName*
+`.show` (`table` | `database`) *EntityName* `ingestion` *MappingKind* `mapping` *MappingName*
 
 View all mappings or all mappings of a specific type:
 
-`.show` [`table`|`database`] *EntityName* `ingestion` [ *MappingKind* ] `mappings`
+`.show` (`table` | `database`) *EntityName* `ingestion` [ *MappingKind* ] `mappings`
 
 ## Parameters
 

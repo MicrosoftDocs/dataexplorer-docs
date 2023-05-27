@@ -1,15 +1,15 @@
 ---
-title: Cross-database & cross-cluster queries - Azure Data Explorer
+title:  Cross-database & cross-cluster queries
 description: This article describes cross-database and cross-cluster queries in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # Cross-database and cross-cluster queries
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 Queries execute with one specific database being "in context". This database is used by default
 to check permissions, and every entity reference in the query that has no explicit cluster or database qualification
@@ -60,7 +60,7 @@ database("OtherDb1").Table1 | join cluster("OtherCluster").database("OtherDb2").
 ```
 
 > [!IMPORTANT]
-> If the clusters are in different tenants, you may need to edit the `trustedExternalTenants` property. Non-trusted external tenants may get an **Unauthorized error (401)** failure. For more information, see [How to allow principals from another tenant to access your cluster](../../cross-tenant-query-and-commands.md).
+> If the clusters are in different tenants, you may need to edit the `trustedExternalTenants` property. Non-trusted external tenants may get an **Unauthorized error (401)** failure. For more information, see [How to allow principals from another tenant to access your cluster](../access-control/cross-tenant-query-and-commands.md).
 
 When *qualified name* appears as an operand of the [union operator](./unionoperator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
 

@@ -1,15 +1,15 @@
 ---
-title: Row Level Security - Azure Data Explorer
-description: This article describes Row Level Security in Azure Data Explorer.
+title: Row Level Security
+description: Learn how to use the Row Level Security policy to control access to rows in a database table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/11/2020
+ms.date: 05/22/2023
 ---
 # Row Level Security
 
 Use group membership or execution context to control access to rows in a database table.
 
-Row Level Security (RLS) simplifies the design and coding of security. It lets you apply restrictions on data row access in your application. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company. 
+Row Level Security (RLS) simplifies the design and coding of security. It lets you apply restrictions on data row access in your application. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company.
 
 The access restriction logic is located in the database tier, rather than away from the data in another application tier. The database system applies the access restrictions every time data access is attempted from any tier. This logic makes your security system more reliable and robust by reducing the surface area of your security system.
 
@@ -20,22 +20,23 @@ RLS lets you provide access to other applications and users, only to a certain p
 * All of the above
 
 > [!NOTE]
-> When an RLS policy is enabled on a table, access is entirely replaced by the RLS query that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types of users to whom you want to give access. 
+> When an RLS policy is enabled on a table, access is entirely replaced by the RLS query that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types of users to whom you want to give access.
 
 For more information, see [control commands for managing the Row Level Security policy](./show-table-row-level-security-policy-command.md).
 
 > [!TIP]
 > These functions are often useful for row_level_security queries:
+>
 > * [current_principal()](../query/current-principalfunction.md)
 > * [current_principal_details()](../query/current-principal-detailsfunction.md)
 > * [current_principal_is_member_of()](../query/current-principal-ismemberoffunction.md)
-
 
 ## Limitations
 
 There's no limit on the number of tables on which Row Level Security policy can be configured.
 
 The RLS policy can't be enabled on a table:
+
 * referenced by a query of an [update policy](./updatepolicy.md).
 * on which [restricted view access policy](./restrictedviewaccesspolicy.md) is configured.
 
@@ -93,7 +94,7 @@ union DataForGroup1, DataForGroup2, DataForGroup3
 
 ### Apply the same RLS function on multiple tables
 
-First, define a function that receives the table name as a string parameter, and references the table using the `table()` operator. 
+First, define a function that receives the table name as a string parameter, and references the table using the `table()` operator.
 
 For example:
 
@@ -106,7 +107,6 @@ For example:
 
 Then configure RLS on multiple tables this way:
 
-
 ```kusto
 .alter table Customers1 policy row_level_security enable "RLSForCustomersTables('Customers1')"
 .alter table Customers2 policy row_level_security enable "RLSForCustomersTables('Customers2')"
@@ -115,7 +115,7 @@ Then configure RLS on multiple tables this way:
 
 ### Produce an error upon unauthorized access
 
-If you want non-authorized table users to receive an error instead of returning an empty table, use the [`assert()`](../query/assert-function.md) function. The following example shows you how to produce this error in an RLS function:
+If you want nonauthorized table users to receive an error instead of returning an empty table, use the [`assert()`](../query/assert-function.md) function. The following example shows you how to produce this error in an RLS function:
 
 ```kusto
 .create-or-alter function RLSForCustomersTables() {
@@ -124,7 +124,7 @@ If you want non-authorized table users to receive an error instead of returning 
 }
 ```
 
-You can combine this approach with other examples. For example, you can display different results to users in different AAD Groups, and produce an error for everyone else.
+You can combine this approach with other examples. For example, you can display different results to users in different Azure AD Groups, and produce an error for everyone else.
 
 ### Control permissions on follower databases
 
@@ -165,7 +165,7 @@ let PartialData = MyTable | where IsRestrictedUser and (...);
 union AllData, PartialData
 ```
 
-If the user isn't part of *some_group@domain.com*, then `IsRestrictedUser` will be evaluated to `false`. The query that will be evaluated is similar to this one:
+If the user isn't part of *some_group@domain.com*, then `IsRestrictedUser` is evaluated to `false`. The query that is evaluated is similar to this one:
 
 ```kusto
 let AllData = MyTable;           // the condition evaluates to `true`, so the filter is dropped

@@ -1,9 +1,9 @@
 ---
-title: Show extent tags retention policy management - Azure Data Explorer
-description: This article describes the show extent tags retention policy command in Azure Data Explorer.
+title: .show extent tags retention policy management
+description: Learn how to use the `.show extent tags retention policy` command to show the extent tags' retention policy on a table or database-level.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/24/2023
 ---
 # .show extent tags retention policy
 
@@ -15,11 +15,13 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-```kusto
-.show table table_name policy extent_tags_retention
+`.show`  ( `table` | `database` ) *EntityName* `policy` `extent_tags_retention`
 
-.show database database_name policy extent_tags_retention
-```
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*EntityName*|string|&check;|The table or database name for which to show the extent tags retention policy.|
 
 ## Returns
 

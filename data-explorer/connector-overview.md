@@ -3,7 +3,7 @@ title: Overview of data connectors in Azure Data Explorer
 description: This article summarizes available data connectors and their capabilities.
 ms.reviewer: aksdi
 ms.topic: reference
-ms.date: 03/15/2023
+ms.date: 05/10/2023
 ---
 # Data connectors overview
 
@@ -19,11 +19,12 @@ The following table summarizes the available connectors in Azure Data Explorer a
 | [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export** <br /><br />**Ingestion** | &#x2717; | First party | Telemetry |
 | [Azure Cosmos DB](#azure-cosmos-db) | **Ingestion** | &check; | First party | Change feed |
 | [Azure Data Factory](#azure-data-factory) | **Export** <br /><br />**Ingestion** | &#x2717; | First party | Data orchestration |
-| [Azure Event Grid ](#azure-event-grid) | **Ingestion** | &check; | First party | Event processing |
+| [Azure Event Grid](#azure-event-grid) | **Ingestion** | &check; | First party | Event processing |
 | [Azure Event Hubs](#azure-event-hubs) | **Ingestion** | &check; | First party | Messaging |
 | [Azure IoT Hubs](#azure-iot-hubs) | **Ingestion** | &check; | First party | IoT data |
 | [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** | &check; | First party | Event processing |
 | [Logstash](#logstash) | **Ingestion** | &#x2717; | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs |
+| [NLog](#nlog) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-nlog-sink) | Telemetry, Logs, Metrics |
 | [Open Telemetry](#open-telemetry) | **Ingestion** | &check; | [Open source](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) | Traces, Metrics, Logs |
 | [Power Automate](#power-automate) | **Export** <br /><br />**Ingestion** | &#x2717; | First party | Data orchestration |
 | [Serilog](#serilog) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/serilog-sinks-azuredataexplorer) | Logs |
@@ -60,7 +61,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-spark/
 * **Documentation:** [Azure Data Explorer Connector for Apache Spark](spark-connector.md)
-* **Community Blog:** [Data pre-processing for Azure Data Explorer with Apache Spark](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/data-pre-processing-for-azure-data-explorer-with-apache-spark/ba-p/2727993/)
+* **Community Blog:** [Data preprocessing for Azure Data Explorer with Apache Spark](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/data-pre-processing-for-azure-data-explorer-with-apache-spark/ba-p/2727993/)
 
 ## Apache Spark for Azure Synapse Analytics
 
@@ -128,6 +129,17 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Repository:** Microsoft Azure - https://github.com/Azure/logstash-output-kusto/
 * **Documentation:** [Ingest data from Logstash to Azure Data Explorer](ingest-data-logstash.md)
 * **Community Blog:** [How to migrate from Elasticsearch to Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/how-to-migrate-from-elasticsearch-to-azure-data-explorer/ba-p/1621539/)
+
+## NLog
+
+* **Description:** NLog is a flexible and free logging platform for various .NET platforms, including .NET standard. NLog allows you to write to several targets, such as a database, file, or console. With NLog you can change the logging configuration on-the-fly. The NLog sink is a target for NLog that allows you to send your log messages to an Azure Data Explorer cluster. The plugin is built on top of the Azure-Kusto-Data library and provides an efficient way to sink your logs to your cluster.
+* **Functionality:** Ingestion
+* **Ingestion type supported:** Batching, Streaming
+* **Use cases:** Telemetry, Logs, Metrics
+* **Underlying SDK:** [.NET](kusto/api/netfx/about-the-sdk.md)
+* **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-nlog-sink
+* **Documentation:** [Ingest data with the NLog sink into Azure Data Explorer](nlog-sink.md)
+* **Community Blog:** [Getting started with NLog sink and Azure Data Explorer](https://aka.ms/adx-docs-nlog-blog)
 
 ## Open Telemetry
 

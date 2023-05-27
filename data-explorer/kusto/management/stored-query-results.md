@@ -1,9 +1,9 @@
 ---
-title: Stored query results - Azure Data Explorer
-description: This article describes how to create and use stored query results in Azure Data Explorer.
+title: Stored query results
+description: Learn how to create and use stored query results to store the results of a query on the service for up to 24 hours.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/23/2023
 ---
 
 # Stored query results
@@ -34,21 +34,21 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-`.set` [`async`] `stored_query_result` *storedQueryResultName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
+`.set` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *Query*
 
-`.set-or-replace` [`async`] `stored_query_result` *storedQueryResultName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
+`.set-or-replace` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *Query*
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *async* | string | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
-| *storedQueryResultName* | string | &check; | Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.|
-| *propertyName*, *propertyValue* | string |  | One or more [supported properties](#supported-properties). |
-| *query* | string | &check; | The text of a query whose results will be stored.|
+| `async` | string | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
+| *StoredQueryResultName* | string | &check; | Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.|
+| *PropertyName*, *PropertyValue* | string |  | One or more [supported properties](#supported-properties). |
+| *Query* | string | &check; | The text of a query whose results will be stored.|
 
 > [!NOTE]
-> If the *storedQueryResultName* exists, `.set` will fail with an error. In contrast, `.set-or-replace` will delete the existing stored-query-result if it exists and then create a new one with the same name.
+> If the *StoredQueryResultName* exists, `.set` will fail with an error. In contrast, `.set-or-replace` will delete the existing stored-query-result if it exists and then create a new one with the same name.
 
 ## Supported properties
 

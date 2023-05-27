@@ -1,13 +1,13 @@
 ---
-title: .show table data statistics - Azure Data Explorer
-description: This article describes the .show table data statistics command in Azure Data Explorer.
+title: .show table data statistics
+description: Learn how to use the `.show table data statistics` command to show the table's data statistics estimation by table column and storage engine version.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 05/24/2023
 ---
 # .show table data statistics
 
-Displays table data statistics estimation by table column and storage engine version.
+Displays the table data statistics estimation by table column and storage engine version.
 
 > [!NOTE]
 > This command only returns statistics for data stored in columnar stores. Row store data statistics are not returned.
@@ -18,20 +18,20 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-`.show` `table` *tableName* `data` `statistics` [ `with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)` ]
+`.show` `table` *TableName* `data` `statistics` [ `with` `(` *PropertyName* `=` *PropertyValue* [`,` ...]`)` ]
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*TableName*|string|&check;|The name of the table for which to show statistics.|
-|*propertyName*, *propertyValue*|string||A comma-separated list of optional [properties](#properties).|
+|*PropertyName*, *PropertyValue*|string||A comma-separated list of optional [Supported properties](#supported-properties).|
 
-### Properties
+### Supported properties
 
 The following properties can be specified. All properties are optional.
 
-|Property name| Description | Property values| 
+|Property name| Description | Property values|
 |--|--|--|
 | `samplepercent` | Scans the specified percentage of data. | Integer between 0 and 100 |
 | `scope` | Defines if only the hot cache is scanned or if the whole data is scanned.| Specify `"hotcache"` to only scan hot cache data, or `"all"` to scan all the data. |
@@ -57,13 +57,14 @@ The command returns a result table that contains the following information.
 | `IndexSize` | long | Size of numeric indexes in bytes. For Engine V2, the value includes text index size as well. |
 | `IndexSizePercent` | real | Ratio of the index size to original data size in bytes. |
 | `StorageEngineVersion` | string | Engine version. If data exists for multiple engine versions, the output includes an entry for each version. |
-| `PresentRowCount`	| long | Total rows count, excluding [deleted](../concepts/data-soft-delete.md) rows. |
+| `PresentRowCount`| long | Total rows count, excluding [deleted](../concepts/data-soft-delete.md) rows. |
 | `DeletedRowCount` | long | [Deleted](../concepts/data-soft-delete.md) rows count. |
-| `SamplePercent` | real | Actual data sampling percentage, which may differ from the hint provided in `samplepercent` option. |
-| `IncludeColdData`	| bool | Whether cold data was taken into account when calculating statistics estimate. |
+| `SamplePercent`| real | Actual data sampling percentage, which may differ from the hint provided in `samplepercent` option. |
+| `IncludeColdData`| bool | Whether cold data was taken into account when calculating statistics estimate. |
 
 > [!NOTE]
 > For [Engine V3](../../engine-v3.md), `ExtentSize` doesn't include shared text index size. There are two ways to calculate total table data size:
+>
 > * Sum all `ExtentSize` values and add the `SharedIndexSize` value.
 > * Run the [.show table details](show-table-details-command.md) command, and use the `TotalExtentSize` value.
 

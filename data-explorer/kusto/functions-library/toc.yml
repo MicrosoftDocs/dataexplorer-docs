@@ -77,6 +77,9 @@ items:
 - name: quantize_fl()
   displayName: functions library, binning
   href: quantize-fl.md
+- name: series_cosine_similarity_fl()
+  displayName: functions library, embedding, vector, cosine, similarity
+  href: series-cosine-similarity-fl.md
 - name: series_dbl_exp_smoothing_fl()
   displayName: functions library, exponential, filter, low-pass
   href: series-dbl-exp-smoothing-fl.md
@@ -107,6 +110,9 @@ items:
 - name: series_moving_avg_fl()
   displayName: functions library, filter, low-pass, smoothing
   href: series-moving-avg-fl.md
+- name: series_moving_var_fl()
+  displayName: functions library, filter, rolling, variance, standard deviation, std
+  href: series-moving-var-fl.md
 - name: series_mv_ee_anomalies_fl()
   displayName: functions library, anomaly detection, multivariate, elliptical envelope
   href: series-mv-ee-anomalies-fl.md

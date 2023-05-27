@@ -1,5 +1,5 @@
 ---
-title: Create materialized view - Azure Data Explorer
+title:  Create materialized view
 description: This article describes how to create materialized views in Azure Data Explorer.
 ms.reviewer: yifats
 ms.topic: reference
@@ -383,6 +383,8 @@ T | summarize arg_max(Timestamp, *) by EventId
 Then the records in the source table for the move extents operation should already be deduped by `EventID`.
 
 Because the operation uses [.move extents](../move-extents.md), the records will be *removed* from the specified table during the backfill (moved, not copied).
+
+Backfill by move extents is not supported for all [aggregation functions supported in materialized views](#supported-aggregation-functions). It will fail for aggregations such as `avg()`, `dcount()`, in which the underlying data stored in the view is different than the aggregation itself.
 
 The materialized view is backfilled *only* based on the specified table. Materialization of records in the source table of the view will start from view creation time, by default.
 

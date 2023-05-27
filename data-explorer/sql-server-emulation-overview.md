@@ -2,7 +2,7 @@
 title: Query data in Azure Data Explorer with SQL Server emulation - Azure Data Explorer
 description: This article provides an overview on SQL Server emulation in Azure Data Explorer.
 ms.topic: reference
-ms.date: 02/26/2023
+ms.date: 05/08/2023
 ---
 # Query data in Azure Data Explorer using SQL Server emulation
 

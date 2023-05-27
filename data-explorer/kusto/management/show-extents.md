@@ -1,15 +1,15 @@
 ---
-title: .show extents - Azure Data Explorer
-description: This article describes the show extents command in Azure Data Explorer.
+title: .show extents
+description: Learn how to use the `.show extents` command to show the extents for a specified scope.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/24/2023
 ---
 
 # .show extents
 
 > [!NOTE]
-> Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
+> Data shards are called **extents**, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).
 
 The types of `.show extents` commands are as follows:
@@ -36,33 +36,53 @@ For more information, see [role-based access control](access-control/role-based-
 
 ## Table scope
 
-`.show` `table` *TableName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
-
-`.show` `tables` `(`*TableName1*`,`...`,`*TableNameN*`)` `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
+### Syntax
 
 Shows information about extents (data shards) that are present in the specified tables. The database is taken from the command's context.
 If `hot` is specified, shows only extents that are expected to be in the hot cache.
 
-## Recommendations
+`.show` `table` *TableName* `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
+
+`.show` `tables` `(`*TableName* [`,` ...]`)` `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
+
+### Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*|string|&check;|The name of the table.|
+|*ExtentId*|string||The ID of the extent to show.|
+|*Tag*|string||The name of a tag to filter by as specified.|
+
+### Recommendations
 
 * Using built-in filtering capabilities in the command is preferred over adding
   a query-based filter (such as adding `| where DatabaseName == '...'` and `TableName == '...'`).
 * If the optional list of extent IDs is provided, the returned data set is limited to those extents only.
-    * This method is much faster than filtering (adding `| where ExtentId in(...)`) to the results of "bare" commands.
+  * This method is faster than filtering (adding `| where ExtentId in(...)`) to the results of "bare" commands.
 * If `tags` filters are specified:
-    * The returned list is limited to those extents whose tags collection obeys *all* of the provided tags filters.
-    * This method is much faster than filtering (adding `| where Tags has '...' and Tags contains '...'` to) the results of "bare" commands.
-    * `has` filters are equality filters. Extents that aren't tagged with either of the specified tags will be filtered out.
-    * `!has` filters are equality negative filters. Extents that are tagged with either of the specified tags will be filtered out.
-    * `contains` filters are case-insensitive substring filters. Extents that don't have the specified strings as a substring of any of their tags will be filtered out.
-    * `!contains` filters are case-insensitive substring negative filters. Extents that have the specified strings as a substring of any of their tags will be filtered out.
+  * The returned list is limited to those extents whose tags collection obeys *all* of the provided tags filters.
+  * This method is faster than filtering (adding `| where Tags has '...' and Tags contains '...'` to) the results of "bare" commands.
+  * `has` filters are equality filters. Extents that aren't tagged with either of the specified tags are filtered out.
+  * `!has` filters are equality negative filters. Extents that are tagged with either of the specified tags are filtered out.
+  * `contains` filters are case-insensitive substring filters. Extents that don't have the specified strings as a substring of any of their tags are filtered out.
+  * `!contains` filters are case-insensitive substring negative filters. Extents that have the specified strings as a substring of any of their tags are filtered out.
 
 ## Database scope
 
-`.show` `database` *DatabaseName* `extents` [`(`*ExtentId1*`,`...`,`*ExtentIdN*`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag1* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *Tag2*...]]
-
 Shows information about extents (data shards) that are present in the specified database.
 If `hot` is specified - shows only extents that expected to be in the hot cache.
+
+### Syntax
+
+`.show` `database` *DatabaseName* `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
+
+### Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database.|
+|*ExtentId*|string||The ID of the extent to show.|
+|*Tag*|string||The name of a tag to filter by as specified.|
 
 ## Cluster scope
 
@@ -71,7 +91,7 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 Shows information about extents (data shards) that are present in the cluster.
 If `hot` is specified - shows only extents that are expected to be in the hot cache.
 
-## Output
+## Returns
 
 |Output parameter |Type |Description |
 |---|---|---|
@@ -98,20 +118,20 @@ If `hot` is specified - shows only extents that are expected to be in the hot ca
 
 Extent `E` in table `T` is tagged with tags `aaa`, `BBB`, and `ccc`.
 
-* This query will return `E`:
-    
+* This query returns `E`:
+
    ```kusto
     .show table T extents where tags has 'aaa' and tags contains 'bb'
    ```
-   
-* This query won't return `E` since it isn't tagged with `aa`:
-    
+
+* This query doesn't return `E` since it isn't tagged with `aa`:
+
    ```kusto
     .show table T extents where tags has 'aa' and tags contains 'bb'
    ```
-    
-* This query will return `E`:
-    
+
+* This query returns `E`:
+
    ```kusto
     .show table T extents where tags contains 'aaa' and tags contains 'bb' 
    ```

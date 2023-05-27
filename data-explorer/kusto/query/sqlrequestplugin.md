@@ -1,15 +1,15 @@
 ---
-title: sql_request plugin - Azure Data Explorer
+title:  sql_request plugin
 description: Learn how to use the sql_request plugin to send an SQL query to an SQL server network endpoint. 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/08/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # sql_request plugin
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The `sql_request` plugin sends a SQL query to a SQL Server network endpoint and returns the results.
 If more than one rowset is returned by SQL, only the first one is used.
@@ -41,8 +41,8 @@ SQL Server endpoint.
 
 |Authentication method|Syntax|How|Description|
 |--|--|--|
-|Azure AD-integrated|`Authentication="Active Directory Integrated"`|Add to the *ConnectionString* parameter.|This is the preferred authentication method. The user or application authenticates via Azure AD to Azure Data Explorer, and the same token is used to access the SQL Server network endpoint.<br/>The principal must have the appropriate permissions on the SQL resource to perform the requested action. For example, to read from the database the principal needs table SELECT permissions, and to write to an existing table the principal needs UPDATE and INSERT permissions. To write to a new table, CREATE permissions are also required.|
-|Username and password|`User ID=...; Password=...;`|Add to the *ConnectionString* parameter.|When possible, avoid this method as secret information is sent through Azure Data Explorer.|
+|Azure AD-integrated|`Authentication="Active Directory Integrated"`|Add to the *ConnectionString* parameter.|This is the preferred authentication method. The user or application authenticates via Azure AD to your cluster, and the same token is used to access the SQL Server network endpoint.<br/>The principal must have the appropriate permissions on the SQL resource to perform the requested action. For example, to read from the database the principal needs table SELECT permissions, and to write to an existing table the principal needs UPDATE and INSERT permissions. To write to a new table, CREATE permissions are also required.|
+|Username and password|`User ID=...; Password=...;`|Add to the *ConnectionString* parameter.|When possible, avoid this method as it may be less secure.|
 |Azure AD access token|`dynamic({'token': h"eyJ0..."})`|Add in the *Options* parameter.|The access token is passed as `token` property in the *Options* argument of the plugin.|
 
 > [!NOTE]
@@ -57,14 +57,14 @@ retrieves all records from `[dbo].[Table]`, and then processes the results on th
  Kusto side. Authentication reuses the calling user's Azure AD token.
 
 > [!NOTE]
-> This example should not be taken as a recommendation to filter or project data in this manner. SQL queries should be constructed to return the smallest data set possible, since the Kusto optimizer doesn't attempt to optimize queries between Kusto and SQL.
+> This example should not be taken as a recommendation to filter or project data in this manner. SQL queries should be constructed to return the smallest data set possible.
 
 ```kusto
 evaluate sql_request(
   'Server=tcp:contoso.database.windows.net,1433;'
     'Authentication="Active Directory Integrated";'
     'Initial Catalog=Fabrikam;',
-  'select * from [dbo].[Table]')
+  'select * from [dbo].[Table]') : (Id:long, Name:string)
 | where Id > 0
 | project Name
 ```
@@ -81,14 +81,14 @@ evaluate sql_request(
     'Initial Catalog=Fabrikam;'
     h'User ID=USERNAME;'
     h'Password=PASSWORD;',
-  'select * from [dbo].[Table]')
+  'select * from [dbo].[Table]') : (Id:long, Name:string)
 | where Id > 0
 | project Name
 ```
 
 ### Send a SQL query using an Azure AD access token
 
-The following example sends a SQL query to an Azure SQL DB database
+The following example sends a SQL query to an Azure SQL database
 retrieving all records from `[dbo].[Table]`, while appending another `datetime` column,
 and then processes the results on the Kusto side.
 It specifies a SQL parameter (`@param0`) to be used in the SQL query.
@@ -99,24 +99,22 @@ evaluate sql_request(
     'Authentication="Active Directory Integrated";'
     'Initial Catalog=Fabrikam;',
   'select *, @param0 as dt from [dbo].[Table]',
-  dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)}))
+  dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)})) : (Id:long, Name:string, dt: datetime)
 | where Id > 0
 | project Name
 ```
 
-### Send a SQL query with a query-defined output schema
+### Send a SQL query without a query-defined output schema
 
-The following example sends a SQL query to an Azure SQL DB database
-retrieving all records from `[dbo].[Table]`, while selecting only specific columns.
-It uses explicit schema definitions that allow various optimizations to be evaluated before the
-actual query against SQL is run.
+The following example sends a SQL query to an Azure SQL database without an output schema. This is not recommended unless the schema is unknown, as it may impact the performance of the query
 
 ```kusto
 evaluate sql_request(
   'Server=tcp:contoso.database.windows.net,1433;'
-    'Authentication="Active Directory Integrated";'
-    'Initial Catalog=Fabrikam;',
-  'select Id, Name') : (Id:long, Name:string)
+    'Initial Catalog=Fabrikam;'
+    h'User ID=USERNAME;'
+    h'Password=PASSWORD;',
+  'select * from [dbo].[Table]')
 | where Id > 0
 | project Name
 ```

@@ -1,13 +1,13 @@
 ---
-title: .execute database script - Azure Data Explorer
-description: This article describes the `.execute database script` functionality in Azure Data Explorer.
+title: .execute database script
+description: Learn how to use the `.execute database script` command to execute a batch of control commands in the scope of a single database.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/24/2023
 ---
 # .execute database script
 
-Executes batch of control commands in scope of a single database.
+Executes a batch of control commands in the scope of a single database.
 
 ## Permissions
 
@@ -16,21 +16,23 @@ You must have at least [Database Admin](access-control/role-based-access-control
 ## Syntax
 
 `.execute` `database` `script`  
-[`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *control-commands-script*
+[`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *ControlCommandsScript*
 
-### Parameters
+## Parameters
 
-* *control-commands-script*: Text with one or more control commands.
-* *propertyName*, *propertyValue*: Optional properties from the following list:
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*ControlCommandsScript*|string|&check;| Text with one or more control commands.|
+|*PropertyName*, *PropertyValue*|string|| Optional properties. See [Supported properties](#supported-properties).|
 
-#### Optional properties
+### Supported properties
 
-  | PropertyName            | Type            | Description                          |
-  |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
-  | `ContinueOnErrors`            | `bool`        | If set to `false` - the script stops on the first error. If set to `true` - the script execution continues. Default: `false`. |
-  | `ThrowOnErrors`            | `bool`        | If set to `true` - the script throws an error (fail) on the first error. Doesn't work together with `ContinueOnErrors`, only one is allowed. Default: `false`. |
+| PropertyName | Type | Description |
+|--|--|--|
+| `ContinueOnErrors` | `bool` | If set to `false` - the script stops on the first error. If set to `true` - the script execution continues. Default: `false`. |
+| `ThrowOnErrors` | `bool` | If set to `true` - the script throws an error (fail) on the first error. Doesn't work together with `ContinueOnErrors`, only one is allowed. Default: `false`. |
 
-## Output
+## Returns
 
 Each command appearing in the script will be reported as a separate record in the output table. Each record has the following fields:
 
@@ -43,6 +45,7 @@ Each command appearing in the script will be reported as a separate record in th
 |Reason|String|Detailed information about command execution outcome.
 
 >[!NOTE]
+>
 >* The script text may include empty lines and comments between the commands.
 >* Commands are executed sequentially, in the order they appear in the input script.
 >* Script execution is sequential, but non-transactional, and no rollback is performed upon error. It's advised to use the idempotent form of commands when using `.execute database script`.
@@ -51,8 +54,9 @@ Each command appearing in the script will be reported as a separate record in th
 >* Read-only control commands (`.show` commands) aren't executed and are reported with status `Skipped`.
 
 >[!Tip]
+>
 >* This command is useful if you want to "clone"/"duplicate" an existing database. You can use the [`.show database schema command`](show-schema-database.md) on the existing database (the source database), and use its output as the *Control-commands-script* of ".execute database script".
->* If you want to "clone"/"duplicate" the cluster, you can use export its [ARM template](/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource) and recreate the resource. 
+>* If you want to "clone"/"duplicate" the cluster, you can use export its [ARM template](/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource) and recreate the resource.
 
 ## Example
 

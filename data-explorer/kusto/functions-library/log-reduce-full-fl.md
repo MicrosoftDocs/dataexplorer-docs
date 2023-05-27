@@ -1,11 +1,16 @@
 ---
-title: log_reduce_full_fl() - Azure Data Explorer
+title:  log_reduce_full_fl()
 description: This article describes the log_reduce_full_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/18/2023
+ms.date: 05/07/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # log_reduce_full_fl()
+
+::: zone pivot="azuredataexplorer, azuremonitor"
+
 
 The function `log_reduce_full_fl()` finds common patterns in semi structured textual columns, such as log lines, and clusters the lines according to the extracted patterns. The function's algorithm and most of the parameters are identical to [log_reduce_fl()](log-reduce-fl.md). However, `log_reduce_fl()` outputs a patterns summary table, whereas this function outputs a full table containing the pattern and parameters per each line.
 
@@ -134,7 +139,8 @@ let log_reduce_full_fl=(tbl:(*), reduce_col:string, pattern_col:string, paramete
 //
 HDFS_log
 | take 100000
-| invoke log_reduce_full_fl(reduce_col="data")
+| extend Patterns="", Parameters=""
+| invoke log_reduce_full_fl(reduce_col="data", pattern_col="Patterns", parameters_col="Parameters")
 | take 10
 ~~~
 
@@ -149,7 +155,8 @@ HDFS_log
 //
 HDFS_log
 | take 100000
-| invoke log_reduce_full_fl(reduce_col="data")
+| extend Patterns="", Parameters=""
+| invoke log_reduce_full_fl(reduce_col="data", pattern_col="Patterns", parameters_col="Parameters")
 | take 10
 ```
 
@@ -159,13 +166,21 @@ HDFS_log
 
 | data | Patterns | Parameters |
 |--|--|--|
-| 081110 | 215858 | 15485 INFO dfs.DataNode$PacketResponder: Received block blk_5080254298708411681 of size 67108864 from /10.251.43.21	081110 <NUM> <NUM> INFO dfs.DataNode$PacketResponder: Received block blk_<NUM> of size <NUM> from <IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15485"", ""parameter_2"": ""5080254298708411681"", ""parameter_3"": ""67108864"", ""parameter_4"": ""/10.251.43.21""}" |
-| 081110 | 215858 | 15494 INFO dfs.DataNode$DataXceiver: Receiving block blk_-7037346755429293022 src: /10.251.43.21:45933 dest: /10.251.43.21:50010	081110 <NUM> <NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_<NUM> src: <IP> dest: <IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15494"", ""parameter_2"": ""-7037346755429293022"", ""parameter_3"": ""/10.251.43.21:45933"", ""parameter_4"": ""/10.251.43.21:50010""}" |
-| 081110 | 215858 | 15496 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for block blk_-7746692545918257727 terminating	081110 <NUM> <NUM> INFO dfs.DataNode$PacketResponder: PacketResponder <NUM> for block blk_<NUM> terminating	"{""parameter_0"": ""215858"", ""parameter_1"": ""15496"", ""parameter_2"": ""2"", ""parameter_3"": ""-7746692545918257727""}" |
-| 081110 | 215858 | 15496 INFO dfs.DataNode$PacketResponder: Received block blk_-7746692545918257727 of size 67108864 from /10.251.107.227	081110 <NUM> <NUM> INFO dfs.DataNode$PacketResponder: Received block blk_<NUM> of size <NUM> from <IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15496"", ""parameter_2"": ""-7746692545918257727"", ""parameter_3"": ""67108864"", ""parameter_4"": ""/10.251.107.227""}" |
-| 081110 | 215858 | 15511 INFO dfs.DataNode$DataXceiver: Receiving block blk_-8578644687709935034 src: /10.251.107.227:39600 dest: /10.251.107.227:50010	081110 <NUM> <NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_<NUM> src: <IP> dest: <IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15511"", ""parameter_2"": ""-8578644687709935034"", ""parameter_3"": ""/10.251.107.227:39600"", ""parameter_4"": ""/10.251.107.227:50010""}" |
-| 081110 | 215858 | 15514 INFO dfs.DataNode$DataXceiver: Receiving block blk_722881101738646364 src: /10.251.75.79:58213 dest: /10.251.75.79:50010	081110 <NUM> <NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_<NUM> src: <IP> dest: <IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15514"", ""parameter_2"": ""722881101738646364"", ""parameter_3"": ""/10.251.75.79:58213"", ""parameter_4"": ""/10.251.75.79:50010""}" |
-| 081110 | 215858 | 15517 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for block blk_-7110736255599716271 terminating	081110 <NUM> <NUM> INFO dfs.DataNode$PacketResponder: PacketResponder <NUM> for block blk_<NUM> terminating	"{""parameter_0"": ""215858"", ""parameter_1"": ""15517"", ""parameter_2"": ""2"", ""parameter_3"": ""-7110736255599716271""}" |
-| 081110 | 215858 | 15517 INFO dfs.DataNode$PacketResponder: Received block blk_-7110736255599716271 of size 67108864 from /10.251.42.246	081110 <NUM> <NUM> INFO dfs.DataNode$PacketResponder: Received block blk_<NUM> of size <NUM> from <IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15517"", ""parameter_2"": ""-7110736255599716271"", ""parameter_3"": ""67108864"", ""parameter_4"": ""/10.251.42.246""}" |
-| 081110 | 215858 | 15533 INFO dfs.DataNode$DataXceiver: Receiving block blk_7257432994295824826 src: /10.251.26.8:41803 dest: /10.251.26.8:50010	081110 <NUM> <NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_<NUM> src: <IP> dest: <IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15533"", ""parameter_2"": ""7257432994295824826"", ""parameter_3"": ""/10.251.26.8:41803"", ""parameter_4"": ""/10.251.26.8:50010""}" |
-| 081110 | 215858 | 15533 INFO dfs.DataNode$DataXceiver: Receiving block blk_-7771332301119265281 src: /10.251.43.210:34258 dest: /10.251.43.210:50010	081110 <NUM> <NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_<NUM> src: <IP> dest: <IP>	"{""parameter_0"": ""215858"", ""parameter_1"": ""15533"", ""parameter_2"": ""-7771332301119265281"", ""parameter_3"": ""/10.251.43.210:34258"", ""parameter_4"": ""/10.251.43.210:50010""}" |
+| 081110 | 215858 | 15485 INFO dfs.DataNode$PacketResponder: Received block blk_5080254298708411681 of size 67108864 from /10.251.43.21  081110 \<NUM> \<NUM> INFO dfs.DataNode$PacketResponder: Received block blk_\<NUM> of size \<NUM> from \<IP>  "{""parameter_0"": ""215858"", ""parameter_1"": ""15485"", ""parameter_2"": ""5080254298708411681"", ""parameter_3"": ""67108864"", ""parameter_4"": ""/10.251.43.21""}" |
+| 081110 | 215858 | 15494 INFO dfs.DataNode$DataXceiver: Receiving block blk_-7037346755429293022 src: /10.251.43.21:45933 dest: /10.251.43.21:50010  081110 \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_\<NUM> src: \<IP> dest: \<IP>  "{""parameter_0"": ""215858"", ""parameter_1"": ""15494"", ""parameter_2"": ""-7037346755429293022"", ""parameter_3"": ""/10.251.43.21:45933"", ""parameter_4"": ""/10.251.43.21:50010""}" |
+| 081110 | 215858 | 15496 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for block blk_-7746692545918257727 terminating  081110 \<NUM> \<NUM> INFO dfs.DataNode$PacketResponder: PacketResponder \<NUM> for block blk_\<NUM> terminating  "{""parameter_0"": ""215858"", ""parameter_1"": ""15496"", ""parameter_2"": ""2"", ""parameter_3"": ""-7746692545918257727""}" |
+| 081110 | 215858 | 15496 INFO dfs.DataNode$PacketResponder: Received block blk_-7746692545918257727 of size 67108864 from /10.251.107.227  081110 \<NUM> \<NUM> INFO dfs.DataNode$PacketResponder: Received block blk_\<NUM> of size \<NUM> from \<IP>  "{""parameter_0"": ""215858"", ""parameter_1"": ""15496"", ""parameter_2"": ""-7746692545918257727"", ""parameter_3"": ""67108864"", ""parameter_4"": ""/10.251.107.227""}" |
+| 081110 | 215858 | 15511 INFO dfs.DataNode$DataXceiver: Receiving block blk_-8578644687709935034 src: /10.251.107.227:39600 dest: /10.251.107.227:50010  081110 \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_\<NUM> src: \<IP> dest: \<IP>  "{""parameter_0"": ""215858"", ""parameter_1"": ""15511"", ""parameter_2"": ""-8578644687709935034"", ""parameter_3"": ""/10.251.107.227:39600"", ""parameter_4"": ""/10.251.107.227:50010""}" |
+| 081110 | 215858 | 15514 INFO dfs.DataNode$DataXceiver: Receiving block blk_722881101738646364 src: /10.251.75.79:58213 dest: /10.251.75.79:50010  081110 \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_\<NUM> src: \<IP> dest: \<IP>  "{""parameter_0"": ""215858"", ""parameter_1"": ""15514"", ""parameter_2"": ""722881101738646364"", ""parameter_3"": ""/10.251.75.79:58213"", ""parameter_4"": ""/10.251.75.79:50010""}" |
+| 081110 | 215858 | 15517 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for block blk_-7110736255599716271 terminating  081110 \<NUM> \<NUM> INFO dfs.DataNode$PacketResponder: PacketResponder \<NUM> for block blk_\<NUM> terminating  "{""parameter_0"": ""215858"", ""parameter_1"": ""15517"", ""parameter_2"": ""2"", ""parameter_3"": ""-7110736255599716271""}" |
+| 081110 | 215858 | 15517 INFO dfs.DataNode$PacketResponder: Received block blk_-7110736255599716271 of size 67108864 from /10.251.42.246  081110 \<NUM> \<NUM> INFO dfs.DataNode$PacketResponder: Received block blk_\<NUM> of size \<NUM> from \<IP>  "{""parameter_0"": ""215858"", ""parameter_1"": ""15517"", ""parameter_2"": ""-7110736255599716271"", ""parameter_3"": ""67108864"", ""parameter_4"": ""/10.251.42.246""}" |
+| 081110 | 215858 | 15533 INFO dfs.DataNode$DataXceiver: Receiving block blk_7257432994295824826 src: /10.251.26.8:41803 dest: /10.251.26.8:50010  081110 \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_\<NUM> src: \<IP> dest: \<IP>  "{""parameter_0"": ""215858"", ""parameter_1"": ""15533"", ""parameter_2"": ""7257432994295824826"", ""parameter_3"": ""/10.251.26.8:41803"", ""parameter_4"": ""/10.251.26.8:50010""}" |
+| 081110 | 215858 | 15533 INFO dfs.DataNode$DataXceiver: Receiving block blk_-7771332301119265281 src: /10.251.43.210:34258 dest: /10.251.43.210:50010  081110 \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_\<NUM> src: \<IP> dest: \<IP>  "{""parameter_0"": ""215858"", ""parameter_1"": ""15533"", ""parameter_2"": ""-7771332301119265281"", ""parameter_3"": ""/10.251.43.210:34258"", ""parameter_4"": ""/10.251.43.210:50010""}" |
+
+::: zone-end
+
+::: zone pivot="fabric"
+
+This feature isn't supported.
+
+::: zone-end

@@ -50,7 +50,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
 
 1. In the query tab of the [web UI](https://dataexplorer.azure.com/), connect to your cluster. For more information on how to connect, see [Add clusters](web-query-data.md#add-clusters).
 1. Browse to the database in which you want to ingest data.
-1. Run the following management command, replacing the placeholders. Replace *DatabaseName* with the name of the target database and *ApplicationID* with the previously saved value. This command grants the app the [database ingestor](kusto/management/access-control/role-based-access-control.md) role. For more information, see [Manage permissions with management commands](manage-database-permissions.md#manage-permissions-with-management-commands).
+1. Run the following management command, replacing the placeholders. Replace *DatabaseName* with the name of the target database and *ApplicationID* with the previously saved value. This command grants the app the [database ingestor](kusto/access-control/role-based-access-control.md) role. For more information, see [Manage permissions with management commands](manage-database-permissions.md#manage-permissions-with-management-commands).
 
     ```kusto
     .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>') 'Azure Data Explorer App Registration'
@@ -83,7 +83,7 @@ Use the following steps to:
 * Configure the variables used by the sink
 * Build and run the app
 
-1. Add the following using statements to your app:
+1. Add the following code to your app:
 
     ```csharp
     using Serilog.Sinks.AzureDataExplorer;
@@ -108,10 +108,10 @@ Use the following steps to:
     | *IngestionEndPointUri* | The ingest URI for your cluster in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. |
     | *DatabaseName* | The case-sensitive name of the target database. |
     | *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create a table and ingestion mapping](#create-a-table-and-ingestion-mapping). |
-    | *AppId* | Application client ID required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-    | *AppKey* | Application key required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+    | *AppId* | The application client ID required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+    | *AppKey* | The application key required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
     | *Tenant* | The ID of the tenant in which the application is registered. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-    | *BufferBaseFileName* | Optional base file name for the buffer file. Set this value if you require your logs to be durable against loss resulting connection failures to your cluster. For example, `C:/Temp/Serilog` |
+    | *BufferBaseFileName* | Optional base file name for the buffer file. Set this value if you require your logs to be durable against loss resulting connection failures to your cluster. For example, `C:/Temp/Serilog`. |
 
     For more options, see [Sink Options](https://github.com/Azure/serilog-sinks-azuredataexplorer#options).
 
@@ -158,7 +158,7 @@ Use the sample log generator app as an example showing how to configure and use 
 
     You can set the environment variables manually or using the following commands:
 
-    #### [Windows](#tab/windows)
+    ### [Windows](#tab/windows)
 
     ```powershell
     $env:ingestionURI="<ingestionURI>"
@@ -169,7 +169,7 @@ Use the sample log generator app as an example showing how to configure and use 
     $env:tableName="<tableName>"
     ```
 
-    #### [Mac/Linux](#tab/linux)
+    ### [Mac/Linux](#tab/linux)
 
     ```bash
     export ingestionURI="<ingestionURI>"
@@ -182,13 +182,13 @@ Use the sample log generator app as an example showing how to configure and use 
 
     ---
 
-1. Within your terminal, navigate to the root folder of the cloned repo and run the following `dotnet` command to build the app:
+1. In your terminal, navigate to the root folder of the cloned repo and run the following .NET command to build the app:
 
     ```powershell
     dotnet build src
     ```
 
-1. Within your terminal, navigate to the samples folder and run the following `dotnet` command to run the app:
+1. In your terminal, navigate to the samples folder and run the following .NET command to run the app:
 
     ```powershell
     dotnet build run

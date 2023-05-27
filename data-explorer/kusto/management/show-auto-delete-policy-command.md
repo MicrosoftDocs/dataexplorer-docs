@@ -1,13 +1,13 @@
 ---
-title: show auto delete policy command - Azure Data Explorer
-description: This article describes the show auto delete policy command in Azure Data Explorer.
+title: .show table policy auto_delete command
+description: Learn how to use the `.show table policy auto_delete` command to show the auto delete policy that's applied to a table.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 05/24/2023
 ---
 # .show table policy auto_delete
 
-Shows the auto delete policy that is applied to a table. For more information, see [auto delete policy](auto-delete-policy.md).
+Shows the auto delete policy that's applied to a table. For more information, see [auto delete policy](auto-delete-policy.md).
 
 ## Permissions
 
@@ -21,7 +21,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 | Name                     | Type   | Required | Description                        |
 |--------------------------|--------|----------|------------------------------------|
-| *TableName*              | string | &check;  | Name of the table.                 |
+| *TableName*              | string | &check;  | The name of the table.                 |
 
 ## Returns
 

@@ -1,11 +1,15 @@
 ---
-title: log_reduce_fl() - Azure Data Explorer
+title:  log_reduce_fl()
 description: This article describes the log_reduce_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/18/2023
+ms.date: 05/07/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # log_reduce_fl()
+
+::: zone pivot="azuredataexplorer, azuremonitor"
 
 The function `log_reduce_fl()` finds common patterns in semi structured textual columns, such as log lines, and clusters the lines according to the extracted patterns. It outputs a summary table containing the found patterns sorted top down by their respective frequency.
 
@@ -38,7 +42,7 @@ The following parameters description is a summary. For more information, see [Mo
 
 The function runs multiples passes over the rows to be reduced to common patterns. The following list explains the passes:
 
-* **Regular expression replacements**: In this pass, each line is independently matched to a set of regular expressions, and each matched expression is replaced by a replacement symbol. The default regular expressions replace IPs, numbers and GUIDs with \<IP\>, \<GUID\> and \<NUM\>. The user can prepend/append more regular expressions to those, or replace it with new ones or empty list by modifying *custom_regexes* and *custom_regexes_policy*. For example, to replace whole numbers with  \<WNUM\> set custom_regexes=pack_array('/^\d+$/', '\<WNUM\>'); to cancel regular expressions replacement set custom_regexes_policy='replace''. For each line, the function keeps list of the original expressions (before replacements) to be output as parameters of the generic replacement tokens.
+* **Regular expression replacements**: In this pass, each line is independently matched to a set of regular expressions, and each matched expression is replaced by a replacement symbol. The default regular expressions replace IPs, numbers and GUIDs with \/<IP\>, \<GUID\> and \/<NUM\>. The user can prepend/append more regular expressions to those, or replace it with new ones or empty list by modifying *custom_regexes* and *custom_regexes_policy*. For example, to replace whole numbers with  \<WNUM\> set custom_regexes=pack_array('/^\d+$/', '\<WNUM\>'); to cancel regular expressions replacement set custom_regexes_policy='replace''. For each line, the function keeps list of the original expressions (before replacements) to be output as parameters of the generic replacement tokens.
 
 * **Tokenization**: similar to the previous step, each line is processed independently and broken into tokens based on set of *delimiters*. For example, to define breaking to tokens by either comma, period or semicolon set *delimiters*=pack_array(',', '.', ';').
 
@@ -98,9 +102,9 @@ log_reduce_fl(tbl:(*), reduce_col:string,
               use_logram:bool=True, use_drain:bool=True, custom_regexes: dynamic = dynamic([]), custom_regexes_policy: string = 'prepend',
               delimiters:dynamic = dynamic(' '), similarity_th:double=0.5, tree_depth:int = 4, trigram_th:int=10, bigram_th:int=15)
 {
-    let default_regex_table = pack_array('(/|)([0-9]+\\.){3}[0-9]+(:[0-9]+|)(:|)', '<IP>', 
+    let default_regex_table = pack_array('(/|)([0-9]+\\.){3}[0-9]+(:[0-9]+|)(:|)', '\<IP>', 
                                          '([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})', '<GUID>', 
-                                         '(?<=[^A-Za-z0-9])(\\-?\\+?\\d+)(?=[^A-Za-z0-9])|[0-9]+$', '<NUM>');
+                                         '(?<=[^A-Za-z0-9])(\\-?\\+?\\d+)(?=[^A-Za-z0-9])|[0-9]+$', '\<NUM>');
     let kwargs = bag_pack('reduced_column', reduce_col, 'delimiters', delimiters,'output_column', 'LogReduce', 'parameters_column', '', 
                           'trigram_th', trigram_th, 'bigram_th', bigram_th, 'default_regexes', default_regex_table, 
                           'custom_regexes', custom_regexes, 'custom_regexes_policy', custom_regexes_policy, 'tree_depth', tree_depth, 'similarity_th', similarity_th, 
@@ -131,9 +135,9 @@ let log_reduce_fl=(tbl:(*), reduce_col:string,
               use_logram:bool=True, use_drain:bool=True, custom_regexes: dynamic = dynamic([]), custom_regexes_policy: string = 'prepend',
               delimiters:dynamic = dynamic(' '), similarity_th:double=0.5, tree_depth:int = 4, trigram_th:int=10, bigram_th:int=15)
 {
-    let default_regex_table = pack_array('(/|)([0-9]+\\.){3}[0-9]+(:[0-9]+|)(:|)', '<IP>', 
+    let default_regex_table = pack_array('(/|)([0-9]+\\.){3}[0-9]+(:[0-9]+|)(:|)', '\<IP>', 
                                          '([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})', '<GUID>', 
-                                         '(?<=[^A-Za-z0-9])(\\-?\\+?\\d+)(?=[^A-Za-z0-9])|[0-9]+$', '<NUM>');
+                                         '(?<=[^A-Za-z0-9])(\\-?\\+?\\d+)(?=[^A-Za-z0-9])|[0-9]+$', '\<NUM>');
     let kwargs = bag_pack('reduced_column', reduce_col, 'delimiters', delimiters,'output_column', 'LogReduce', 'parameters_column', '', 
                           'trigram_th', trigram_th, 'bigram_th', bigram_th, 'default_regexes', default_regex_table, 
                           'custom_regexes', custom_regexes, 'custom_regexes_policy', custom_regexes_policy, 'tree_depth', tree_depth, 'similarity_th', similarity_th, 
@@ -175,19 +179,27 @@ HDFS_log
 
 | Count | LogReduce | Example |
 |--|--|--|
-| 55356 | 081110 | <NUM> <NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_<NUM> is added to invalidSet of <IP>	081110 220623 26 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_1239016582509138045 is added to invalidSet of 10.251.123.195:50010 |
-| 10278 | 081110 | <NUM> <NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockMap updated: <IP> is added to blk_<NUM> size <NUM>	081110 215858 27 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.11.85:50010 is added to blk_5080254298708411681 size 67108864 |
-| 10256 | 081110 | <NUM> <NUM> INFO dfs.DataNode$PacketResponder: PacketResponder <NUM> for block blk_<NUM> terminating	081110 215858 15496 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for block blk_-7746692545918257727 terminating |
-| 10256 | 081110 | <NUM> <NUM> INFO dfs.DataNode$PacketResponder: Received block blk_<NUM> of size <NUM> from <IP>	081110 215858 15485 INFO dfs.DataNode$PacketResponder: Received block blk_5080254298708411681 of size 67108864 from /10.251.43.21 |
-| 9140 | 081110 | <NUM> <NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_<NUM> src: <IP> dest: <IP>	081110 215858 15494 INFO dfs.DataNode$DataXceiver: Receiving block blk_-7037346755429293022 src: /10.251.43.21:45933 dest: /10.251.43.21:50010 |
-| 3047 | 081110 | <NUM> <NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /user/root/rand3/_temporary/_task_<NUM>_<NUM>_m_<NUM>_<NUM>/part-<NUM>. <*>	081110 215858 26 INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /user/root/rand3/_temporary/_task_200811101024_0005_m_001805_0/part-01805. blk_-7037346755429293022 |
-| 1402 | 081110 | <NUM> <NUM> INFO <*>: <*> block blk_<NUM> <*> <*>	081110 215957 15556 INFO dfs.DataNode$DataTransfer: 10.250.15.198:50010:Transmitted block blk_-3782569120714539446 to /10.251.203.129:50010 |
-| 177 | 081110 | <NUM> <NUM> INFO <*>: <*> <*> <*> <*>	081110 215859 13 INFO dfs.DataBlockScanner: Verification succeeded for blk_-7244926816084627474 |
-| 36 | 081110 | <NUM> <NUM> INFO <*>: <*> <*> <*> for block <*>	081110 215924 15636 INFO dfs.DataNode$BlockReceiver: Receiving empty packet for block blk_3991288654265301939 |
-| 12 | 081110 | <NUM> <NUM> INFO dfs.FSNamesystem: BLOCK* <*> <*> <*> <*> <*> <*> <*> <*>	081110 215953 19 INFO dfs.FSNamesystem: BLOCK* ask 10.250.15.198:50010 to replicate blk_-3782569120714539446 to datanode(s) 10.251.203.129:50010 |
-| 12 | 081110 | <NUM> <NUM> INFO <*>: <*> <*> <*> <*> <*> block blk_<NUM> <*> <*>	081110 215955 18 INFO dfs.DataNode: 10.250.15.198:50010 Starting thread to transfer block blk_-3782569120714539446 to 10.251.203.129:50010 |
-| 12 | 081110 | <NUM> <NUM> INFO dfs.DataNode$DataXceiver: Received block blk_<NUM> src: <IP> dest: <IP> of size <NUM>	081110 215957 15226 INFO dfs.DataNode$DataXceiver: Received block blk_-3782569120714539446 src: /10.250.15.198:51013 dest: /10.250.15.198:50010 of size 14474705 |
-| 6 | 081110 | <NUM> <NUM> <*> dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: <*> <*> <*> <*> <*> <*> <*> <*> size <NUM>	081110 215924 27 WARN dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: Redundant addStoredBlock request received for blk_2522553781740514003 on 10.251.202.134:50010 size 67108864 |
-| 6 | 081110 | <NUM> <NUM> INFO dfs.DataNode$DataXceiver: <*> <*> <*> <*> <*>: <*> <*> <*> <*> <*>	081110 215936 15714 INFO dfs.DataNode$DataXceiver: writeBlock blk_720939897861061328 received exception java.io.IOException: Couldn't read from stream |
-| 3 | 081110 | <NUM> <NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: <*> <*> <*> <*> <*> <*> <*> size <NUM> <*> <*> <*> <*> <*> <*> <*> <*>.	081110 220635 28 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: addStoredBlock request received for blk_-81196479666306310 on 10.250.17.177:50010 size 53457811 But it doesn't belong to any file. |
-| 1 | 081110 | <NUM> <NUM> <*> <*>: <*> <*> <*> <*> <*> <*> <*>. <*> <*> <*> <*> <*>.	081110 220631 19 WARN dfs.FSDataset: Unexpected error trying to delete block blk_-2012154052725261337. BlockInfo not found in volumeMap. |
+| 55356 | 081110 | \<NUM> \<NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_\<NUM> is added to invalidSet of \<IP>  081110 220623 26 INFO dfs.FSNamesystem: BLOCK* NameSystem.delete: blk_1239016582509138045 is added to invalidSet of 10.251.123.195:50010 |
+| 10278 | 081110 | \<NUM> \<NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockMap updated: \<IP> is added to blk_\<NUM> size \<NUM>  081110 215858 27 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: blockMap updated: 10.250.11.85:50010 is added to blk_5080254298708411681 size 67108864 |
+| 10256 | 081110 | \<NUM> \<NUM> INFO dfs.DataNode$PacketResponder: PacketResponder \<NUM> for block blk_\<NUM> terminating  081110 215858 15496 INFO dfs.DataNode$PacketResponder: PacketResponder 2 for block blk_-7746692545918257727 terminating |
+| 10256 | 081110 | \<NUM> \<NUM> INFO dfs.DataNode$PacketResponder: Received block blk_\<NUM> of size \<NUM> from \<IP>  081110 215858 15485 INFO dfs.DataNode$PacketResponder: Received block blk_5080254298708411681 of size 67108864 from /10.251.43.21 |
+| 9140 | 081110 | \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_\<NUM> src: \<IP> dest: \<IP>  081110 215858 15494 INFO dfs.DataNode$DataXceiver: Receiving block blk_-7037346755429293022 src: /10.251.43.21:45933 dest: /10.251.43.21:50010 |
+| 3047 | 081110 | \<NUM> \<NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /user/root/rand3/_temporary/_task_\<NUM>_\<NUM>_m_\<NUM>_\<NUM>/part-\<NUM>. <*>  081110 215858 26 INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /user/root/rand3/_temporary/_task_200811101024_0005_m_001805_0/part-01805. blk_-7037346755429293022 |
+| 1402 | 081110 | \<NUM> \<NUM> INFO <*>: <*> block blk_\<NUM> <*> <*>  081110 215957 15556 INFO dfs.DataNode$DataTransfer: 10.250.15.198:50010:Transmitted block blk_-3782569120714539446 to /10.251.203.129:50010 |
+| 177 | 081110 | \<NUM> \<NUM> INFO <*>: <*> <*> <*> <*>  081110 215859 13 INFO dfs.DataBlockScanner: Verification succeeded for blk_-7244926816084627474 |
+| 36 | 081110 | \<NUM> \<NUM> INFO <*>: <*> <*> <*> for block <*>  081110 215924 15636 INFO dfs.DataNode$BlockReceiver: Receiving empty packet for block blk_3991288654265301939 |
+| 12 | 081110 | \<NUM> \<NUM> INFO dfs.FSNamesystem: BLOCK* <*> <*> <*> <*> <*> <*> <*> <*>  081110 215953 19 INFO dfs.FSNamesystem: BLOCK* ask 10.250.15.198:50010 to replicate blk_-3782569120714539446 to datanode(s) 10.251.203.129:50010 |
+| 12 | 081110 | \<NUM> \<NUM> INFO <*>: <*> <*> <*> <*> <*> block blk_\<NUM> <*> <*>  081110 215955 18 INFO dfs.DataNode: 10.250.15.198:50010 Starting thread to transfer block blk_-3782569120714539446 to 10.251.203.129:50010 |
+| 12 | 081110 | \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Received block blk_\<NUM> src: \<IP> dest: \<IP> of size \<NUM>  081110 215957 15226 INFO dfs.DataNode$DataXceiver: Received block blk_-3782569120714539446 src: /10.250.15.198:51013 dest: /10.250.15.198:50010 of size 14474705 |
+| 6 | 081110 | \<NUM> \<NUM> <*> dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: <*> <*> <*> <*> <*> <*> <*> <*> size \<NUM>  081110 215924 27 WARN dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: Redundant addStoredBlock request received for blk_2522553781740514003 on 10.251.202.134:50010 size 67108864 |
+| 6 | 081110 | \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: <*> <*> <*> <*> <*>: <*> <*> <*> <*> <*>  081110 215936 15714 INFO dfs.DataNode$DataXceiver: writeBlock blk_720939897861061328 received exception java.io.IOException: Couldn't read from stream |
+| 3 | 081110 | \<NUM> \<NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: <*> <*> <*> <*> <*> <*> <*> size \<NUM> <*> <*> <*> <*> <*> <*> <*> <*>.  081110 220635 28 INFO dfs.FSNamesystem: BLOCK* NameSystem.addStoredBlock: addStoredBlock request received for blk_-81196479666306310 on 10.250.17.177:50010 size 53457811 But it doesn't belong to any file. |
+| 1 | 081110 | \<NUM> \<NUM> <*> <*>: <*> <*> <*> <*> <*> <*> <*>. <*> <*> <*> <*> <*>.  081110 220631 19 WARN dfs.FSDataset: Unexpected error trying to delete block blk_-2012154052725261337. BlockInfo not found in volumeMap. |
+
+::: zone-end
+
+::: zone pivot="fabric"
+
+This feature isn't supported.
+
+::: zone-end

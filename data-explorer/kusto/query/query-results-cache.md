@@ -1,5 +1,5 @@
 ---
-title: Query results cache - Azure Data Explorer
+title:  Query results cache
 description: Learn how to use the query results cache functionality to get cached results.
 ms.reviewer: amitof
 ms.topic: reference
