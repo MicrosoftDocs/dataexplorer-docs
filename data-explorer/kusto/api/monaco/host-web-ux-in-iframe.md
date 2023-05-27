@@ -88,9 +88,9 @@ When embedding the ADX web UI the hosting page is responsible for authentication
 
 ### Embedding dashboards
 
-To embed a dashboard, a trust relationship needs to be established between the Host's Azure AD App and Azure Data Explorer dashboard service (a.k.a RTD Metadata Service).
+To embed a dashboard, a trust relationship needs to be established between the Host's Azure AD App and Azure Data Explorer Dashboard Service Azure AD app (a.k.a RTD Metadata Service).
 
-1. Follow the steps in [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication).
+1. Follow the steps in [Web Client (JavaScript) authentication and authorization](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication#web-client-javascript-authentication-and-authorization).
 2. Open the [Azure portal](https://portal.azure.com/) and make sure that you're signed-in to the correct tenant. Look at the top right corner to verify the identity used to sign into the portal.
 3. In the resources pane, select **Azure Active Directory** > **App registrations**.
 4. Locate the app that uses the on-behalf-of flow and open this app.
@@ -110,12 +110,12 @@ To embed a dashboard, a trust relationship needs to be established between the H
       }
     ```
 
-    `35e917a9-4d95-4062-9d97-5781291353b9` is the application ID of ADX Dashboard Service.
-    `388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c` is the user_impersonation permission.
+    - `35e917a9-4d95-4062-9d97-5781291353b9` is the application ID of ADX Dashboard Service.  
+    - `388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c` is the user_impersonation permission.
 
 8. Save your changes in the **Manifest**.
 9. Select **API permissions**, and validate you have a new entry: **RTD Metadata Service**.
-10. Add permissions "People.Read", "User.ReadBasic.All" and "Group.Read.All" under Microsoft Graph.
+10. Add permissions `People.Read`, `User.ReadBasic.All` and `Group.Read.All` under Microsoft Graph.
 11. Open the Azure PowerShell and add the following new service principal for that app:
 
     ```powershell
