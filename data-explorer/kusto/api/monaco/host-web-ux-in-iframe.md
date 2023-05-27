@@ -29,11 +29,13 @@ The `workspace=<guid>` query parameter creates a separate workspace for the embe
 
 ### Handle authentication
 
-When embedding the ADX web UI the hosting page is responsible for authentication.
+When embedding the ADX web UI the hosting page is responsible for authentication. The below diagrams describes the auth flow.
 
 :::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-sequencediagram.png" alt-text="Sequence diagram for authentication in an embedded ADX iframe":::
 
 :::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-scopes.png" alt-text="Scopes required for embedding ADX iframe":::
+
+Follow those steps to handle authentication:
 
 1. Listen for "getToken" message:
 
