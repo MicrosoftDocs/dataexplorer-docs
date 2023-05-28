@@ -140,5 +140,5 @@ For ingestion scenarios, see the following articles:
 To get started querying data, see the following articles:
 
 * [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
-* [Write Kusto Query Language queries in the Azure Data Explorer web UI](web-ui-kql.md)
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
 * [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)

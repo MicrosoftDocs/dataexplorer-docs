@@ -181,5 +181,8 @@ Review the resources, and select **Create**.
 
 ## Next steps
 
-* [Query data in Azure Data Explorer web UI](web-query-data.md)
-* [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+To get started querying data, see the following articles:
+
+* [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
+* [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)
