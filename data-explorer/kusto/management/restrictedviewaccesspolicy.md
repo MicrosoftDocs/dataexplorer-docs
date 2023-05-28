@@ -1,6 +1,6 @@
 ---
-title:  Restricted view access policy
-description: This article describes the restricted view access policy in Azure Data Explorer.
+title: Restricted view access policy
+description: Learn how to use the restricted view access policy to limit the principals who can query specified tables in a database.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/21/2023

@@ -5,7 +5,7 @@ ms.reviewer: yonil
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter cluster policy request_classification policy
+# .alter cluster policy request_classification command
 
 Alters the cluster's request classification policy.
 

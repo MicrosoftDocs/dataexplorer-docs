@@ -1,9 +1,9 @@
 ---
-title:  .show table update policy command
-description: This article describes the .show table update policy command in Azure Data Explorer.
+title: .show table update policy command
+description: Learn how to use the `.show table update policy` command to show the table's update policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/24/2023
 ---
 # .show table update policy
 

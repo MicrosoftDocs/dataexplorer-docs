@@ -1,9 +1,9 @@
 ---
-title:  .show table ingestion time policy command
-description: This article describes the .show table ingestion time policy command in Azure Data Explorer.
+title: .show table ingestion time policy command
+description: Learn how to use the `.show table ingestion time policy` command to display the table's ingestion time policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/24/2023
 ---
 # .show table ingestion time policy
 
@@ -15,7 +15,7 @@ You must have at least Database User, Database Viewer, or Database Monitor to ru
 
 ## Syntax
 
-`.show` `table` *TableName* `policy` `ingestiontime` 
+`.show` `table` *TableName* `policy` `ingestiontime`
 
 ## Parameters
 

@@ -1,9 +1,9 @@
 ---
-title:  Kusto update policy
-description: This article describes Update policy in Azure Data Explorer.
+title: Kusto update policy
+description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/18/2021
+ms.date: 05/23/2023
 ---
 # Update policy overview
 
