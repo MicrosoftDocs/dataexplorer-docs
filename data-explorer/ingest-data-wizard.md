@@ -3,7 +3,7 @@ title: Ingest data into Azure Data Explorer using the ingestion wizard
 description: Overview of ingesting (loading) data into Azure Data Explorer simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 02/13/2023
+ms.date: 05/28/2023
 ---
 
 # What is the ingestion wizard?
@@ -132,8 +132,13 @@ Discover the available options within each [Data management](https://dataexplore
 
 ## Next steps
 
+For ingestion scenarios, see the following articles:
+
 * [Ingest JSON data from a local file to an existing table in Azure Data Explorer using the ingestion wizard](/azure/data-explorer/ingest-from-local-file)
 * [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container)
-* [Query data in Azure Data Explorer web UI](web-query-data.md)
-* [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
-* [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md)
+
+To get started querying data, see the following articles:
+
+* [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
+* [Write Kusto Query Language queries in the Azure Data Explorer web UI](web-ui-kql.md)
+* [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)
