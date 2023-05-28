@@ -4,20 +4,12 @@ description: This article describes series_lag_fl() user-defined function in Azu
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
 ---
 # series_lag_fl()
-
-::: zone pivot="azuredataexplorer"
 
 Applies a lag on a series.
 
 The function `series_lag_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing a dynamic numerical array as input and shifts it backward. It's commonly used for shifting time series to test whether a pattern is new or it matches historical data.
-
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 
 ## Syntax
 
@@ -118,11 +110,3 @@ demo_make_series1
 **Output**
 
 :::image type="content" source="images/series-lag-fl/series-lag-1-day.png" alt-text="Graph of a time series shifted by one day." border="false":::
-
-::: zone-end
-
-::: zone pivot="azuremonitor, fabric"
-
-This feature isn't supported.
-
-::: zone-end
