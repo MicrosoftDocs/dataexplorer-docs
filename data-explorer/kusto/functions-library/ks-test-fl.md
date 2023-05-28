@@ -9,8 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # ks_test_fl()
 
-::: zone pivot="azuredataexplorer, azuremonitor"
-
+::: zone pivot="azuredataexplorer"
 
 The function `ks_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Kolmogorov Smirnov Test](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test).
 
@@ -158,7 +157,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 

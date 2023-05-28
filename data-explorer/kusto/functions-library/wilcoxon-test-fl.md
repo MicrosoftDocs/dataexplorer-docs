@@ -9,8 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # wilcoxon_test_fl()
 
-
-::: zone pivot="azuredataexplorer, azuremonitor"
+::: zone pivot="azuredataexplorer"
 
 The function `wilcoxon_test_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that performs the [Wilcoxon Test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test).
 
@@ -154,7 +153,7 @@ datatable(id:string, sample1:dynamic) [
 
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 

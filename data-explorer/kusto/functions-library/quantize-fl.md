@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # quantize_fl()
 
-::: zone pivot="azuredataexplorer, azuremonitor"
+::: zone pivot="azuredataexplorer"
 
 The function `quantize_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that bins metric columns. It quantizes metric columns to categorical labels, based on the K-Means algorithm.
 
@@ -199,7 +199,7 @@ union
 
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 

@@ -9,8 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # log_reduce_full_fl()
 
-::: zone pivot="azuredataexplorer, azuremonitor"
-
+::: zone pivot="azuredataexplorer"
 
 The function `log_reduce_full_fl()` finds common patterns in semi structured textual columns, such as log lines, and clusters the lines according to the extracted patterns. The function's algorithm and most of the parameters are identical to [log_reduce_fl()](log-reduce-fl.md). However, `log_reduce_fl()` outputs a patterns summary table, whereas this function outputs a full table containing the pattern and parameters per each line.
 
@@ -179,7 +178,7 @@ HDFS_log
 
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 
