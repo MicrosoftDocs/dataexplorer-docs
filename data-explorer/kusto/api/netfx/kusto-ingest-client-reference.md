@@ -1,5 +1,5 @@
 ---
-title: Kusto.Ingest client interfaces and factory classes - Azure Data Explorer
+title:  Kusto.Ingest client interfaces and factory classes
 description: This article describes Kusto.Ingest client interfaces and factory classes in Azure Data Explorer.
 ms.reviewer: ohbitton
 ms.topic: reference

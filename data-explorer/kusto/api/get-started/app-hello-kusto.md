@@ -1,5 +1,5 @@
 ---
-title: 'Hello Kusto: Create your first app - Azure Data Explorer'
+title:  'Hello Kusto: Create your first app'
 description: Learn how to create your first app to print Hello Kusto using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to

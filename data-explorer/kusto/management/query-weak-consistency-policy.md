@@ -1,9 +1,9 @@
 ---
-title: Query weak consistency policy - Azure Data Explorer
-description: This article describes the query weak consistency policy in Azure Data Explorer.
+title: Query weak consistency policy
+description: Learn how to use the query weak consistency policy to configure the weak consistency service.
 ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 08/16/2021
+ms.date: 05/24/2023
 ---
 # Query weak consistency policy
 
@@ -32,7 +32,7 @@ The query weak consistency policy includes the following properties:
 > Prefetch operation requires pulling all databases metadata from Azure storage every few minutes (in all weak consistency nodes). This operation puts a load on the underlying storage resources and has impact on cluster performance.
 
 > [!WARNING]
-> Consult with the Azure Data Explorer team before altering this property.
+> Consult with the support team before altering this property.
 
 ## Default policy
 

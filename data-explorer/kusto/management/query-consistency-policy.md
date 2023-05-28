@@ -1,9 +1,9 @@
 ---
-title: Query consistency policy - Azure Data Explorer
-description: This article describes the query consistency policy in Azure Data Explorer.
+title: Query consistency policy
+description: Learn how to use the query consistency policy to control the consistency mode of queries.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 09/01/2021
+ms.date: 05/24/2023
 ---
 # Query consistency policy
 
@@ -25,9 +25,10 @@ The following limits are configurable:
 
 > [!NOTE]
 > The default value applies in the following cases:
->  * The policy isn't defined, and the client request option isn't set.
->  * The policy is defined, the option isn't defined, and the client request option isn't set.
->  * The policy is defined, the option is defined with `null` as its `Value`, and the client request option isn't set.
+>
+> * The policy isn't defined, and the client request option isn't set.
+> * The policy is defined, the option isn't defined, and the client request option isn't set.
+> * The policy is defined, the option is defined with `null` as its `Value`, and the client request option isn't set.
 
 ### Example
 

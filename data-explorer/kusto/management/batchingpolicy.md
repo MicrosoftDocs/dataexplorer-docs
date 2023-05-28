@@ -1,9 +1,9 @@
 ---
-title: Kusto IngestionBatching policy optimizes batching in Azure Data Explorer
-description: This article describes IngestionBatching policy in Azure Data Explorer
+title: Kusto IngestionBatching policy optimizes batching for ingestion
+description: Learn how to use the IngestionBatching policy to optimize batching for ingestion.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/13/2022
+ms.date: 05/24/2023
 ---
 # IngestionBatching policy
 
@@ -78,4 +78,4 @@ Latencies can result from many causes that can be addressed using batching polic
 | Data latency matches the `time` setting, with too little data to reach the `size` or `count` limit | Reduce the `time` limit |
 | Inefficient batching due to a large number of very small files | Increase the size of the source files. If using Kafka Sink, configure it to send data in ~100 KB chunks or higher. If you have many small files, increase the `count` (up to 2000) in the database or table ingestion policy. |
 | Batching a large amount of uncompressed data | This is common when ingesting Parquet files. Incrementally decrease `size` for the table or database batching policy towards 250 MB and check for improvement. |
-| Backlog because the cluster is under scaled | Accept any Azure advisor suggestions to scale aside or scale up your cluster. Alternatively, manually scale your cluster to see if the backlog is closed. If these options don't work, contact Azure Data Explorer support for assistance. |
+| Backlog because the cluster is under scaled | Accept any Azure advisor suggestions to scale aside or scale up your cluster. Alternatively, manually scale your cluster to see if the backlog is closed. If these options don't work, contact support for assistance. |

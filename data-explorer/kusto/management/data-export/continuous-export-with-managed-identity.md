@@ -1,5 +1,5 @@
 ---
-title: Use a managed identity to run a continuous export job - Azure Data Explorer
+title:  Use a managed identity to run a continuous export job
 description: This article describes how to use a managed identity for continuous export in Azure Data Explorer.
 ms.reviewer: shanisolomon
 ms.topic: reference
@@ -15,8 +15,8 @@ In this article, you'll learn how to configure a system-assigned or user-assigne
 
 ## Prerequisites
 
-* An Azure Data Explorer cluster and database. [Create a cluster and database](../../../create-cluster-database-portal.md).
-* [Database Admin](../access-control/role-based-access-control.md) permissions on the Azure Data Explorer database.
+* A cluster and database. [Create a cluster and database](../../../create-cluster-database-portal.md).
+* [Database Admin](../access-control/role-based-access-control.md) permissions on the database.
 
 ## 1 - Configure a managed identity for continuous export
 

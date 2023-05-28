@@ -1,11 +1,11 @@
 ---
-title: render operator - Azure Data Explorer
+title:  render operator
 description: Learn how to use the render operator to instruct the user agent to render a visualization of the query results.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/25/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # render operator
 
@@ -15,6 +15,7 @@ The render operator must be the last operator in the query, and can only be used
 
 The data model of the render operator looks at the tabular data as if it has
 three kinds of columns:
+
 * The x axis column (indicated by the `xcolumn` property).
 * The series columns (any number of columns indicated by the `series` property.) For each record, the combined values of these columns defines a single series, and the chart has as many series as there are distinct combined values.
 * The y axis columns (any number of columns indicated by the `ycolumns` property). For each record, the series has as many measurements ("points" in the chart) as there are y-axis columns.
@@ -42,7 +43,7 @@ three kinds of columns:
 
 ### Visualization
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 | *visualization*                                         | Description                                                                                                                                                                                                       |
 |---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -60,9 +61,10 @@ three kinds of columns:
 | [`table`](visualization-table.md)                       | Default - results are shown as a table.                                                                                                                                                                           |
 | [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes.                                                                                                                     |
 | [`timepivot`](visualization-timepivot.md)               | Interactive navigation over the events time-line (pivoting on time axis)                                                                                                                                          |
+| [`treemap`](visualization-treemap.md) | Displays hierarchical data as a set of nested rectangles.
 
 > [!NOTE]
-> The ladderchart, pivotchart, and timepivot visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
+> The ladderchart, pivotchart, timepivot, and treemap visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
 
 ::: zone-end
 
@@ -85,7 +87,7 @@ three kinds of columns:
 *PropertyName*/*PropertyValue* indicate additional information to use when rendering.
   All properties are optional. The supported properties are:
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -139,7 +141,7 @@ The supported values of this property are:
 |`scatterchart` |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point. Series column is optional. For more information, see [Geospatial visualizations](geospatial-visualizations.md). |
 |`piechart`     |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point, color-axis and numeric. Supported in Kusto Explorer desktop. For more information, see [Geospatial visualizations](geospatial-visualizations.md).|
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 #### `ysplit` property
 
@@ -150,7 +152,6 @@ Some visualizations support splitting into multiple y-axis values:
 |`none`    |A single y-axis is displayed for all series data. (Default)       |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
-
 
 ## How to render continuous data
 

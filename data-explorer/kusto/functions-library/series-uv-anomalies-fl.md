@@ -1,5 +1,5 @@
 ---
-title: series_uv_anomalies_fl() - Azure Data Explorer
+title:  series_uv_anomalies_fl()
 description: This article describes the series_uv_anomalies_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
@@ -15,7 +15,7 @@ The function `series_uv_anomalies_fl()` is a [user-defined function (UDF)](../qu
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](../../create-cluster-database-portal.md).
+* A cluster and database. [Create a cluster and database](../../create-cluster-database-portal.md).
 * [Enable the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. This is necessary because this function contains inline Python.
 * [Create an Anomaly Detector resource and obtain its key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
 * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster to access the anomaly detection service endpoint.
@@ -125,7 +125,7 @@ series_uv_anomalies_fl(tbl:(*), y_series:string, sensitivity:int=85, tsid:string
 
 The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
 
-### Use `series_uv_anomalies_fl()` to detect anomolies
+### Use `series_uv_anomalies_fl()` to detect anomalies
 
 ### [Query-defined](#tab/query-defined)
 
