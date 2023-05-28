@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # series_rolling_fl()
 
-::: zone pivot="azuredataexplorer, azuremonitor"
+::: zone pivot="azuredataexplorer"
 
 The function `series_rolling_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
@@ -315,7 +315,7 @@ range x from 1 to 100 step 1
 
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 

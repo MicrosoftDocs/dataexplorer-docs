@@ -2,7 +2,7 @@
 title: Write Kusto Query Language queries in the Azure Data Explorer web UI
 description: In this article, you learn how to write Kusto Query Language (KQL) queries in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 05/24/2023
+ms.date: 05/28/2023
 ---
 # Write Kusto Query Language queries in the Azure Data Explorer web UI
 
@@ -100,3 +100,4 @@ To use KQL tools:
 * [Tutorial: Use aggregation functions](kusto/query/tutorials/use-aggregation-functions.md)
 * [Tutorial: Join data from multiple tables](kusto/query/tutorials/join-data-from-multiple-tables.md)
 * [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md)
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

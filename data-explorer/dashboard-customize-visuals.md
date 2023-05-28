@@ -3,7 +3,7 @@ title: Customize Azure Data Explorer dashboard visuals
 description: Easily customize your Azure Data Explorer dashboard visuals
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 05/21/2023
+ms.date: 05/28/2023
 ---
 
 # Customize Azure Data Explorer dashboard visuals
@@ -195,4 +195,5 @@ Each visual can have one or more conditional formatting rules defined. When mult
 ## Next steps
 
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
-* [Query data in Azure Data Explorer](web-query-data.md)
+* Explore query results with the [web UI results grid](web-results-grid.md)
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
