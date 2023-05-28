@@ -1,11 +1,11 @@
 ---
-title:  .alter cluster policy query_weak_consistency management
-description: Learn how to use the .alter cluster policy query_weak_consistency command to cet the cluster's query weak consistency policy.
+title:  .alter cluster policy query_weak_consistency management command
+description: Learn how to use the `.alter cluster policy query_weak_consistency` command to cet the cluster's query weak consistency policy.
 ms.reviewer: yabenyaa
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter cluster policy query_weak_consistency
+# .alter cluster policy query_weak_consistency command
 
 Sets the cluster's [query weak consistency policy](./query-weak-consistency-policy.md), overriding the current policy, and then returns the updated policy. The updated policy can be later viewed using the [show command](show-query-weak-consistency-policy.md). If not altered, the [default policy](./query-weak-consistency-policy.md#default-policy) applies.
 
