@@ -9,7 +9,12 @@ ms.date: 04/18/2023
 
 A [continuous export job](continuous-data-export.md) exports data to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query.
 
-Under certain circumstances, the continuous export job should be configured with a [managed identity](../../../managed-identities-overview.md). For example, when the external table uses impersonation authentication or the query references tables in other databases. A continuous export job configured with a managed identity is performed on behalf of the managed identity.
+Under certain circumstances, the continuous export job should be configured with a [managed identity](../../../managed-identities-overview.md). W
+* When the external table uses impersonation authentication.
+* When the query references tables in other databases.
+* When the query references tables with row level security policy enabled.
+
+A continuous export job configured with a managed identity is performed on behalf of the managed identity.
 
 In this article, you'll learn how to configure a system-assigned or user-assigned managed identity and set up that identity to create a continuous export job.
 
