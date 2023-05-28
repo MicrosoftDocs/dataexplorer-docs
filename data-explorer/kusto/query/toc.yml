@@ -211,6 +211,8 @@ items:
         href: visualization-timechart.md
       - name: timepivot
         href: visualization-timepivot.md
+      - name: treemap
+        href: visualization-treemap.md
   - name: sample operator
     href: sampleoperator.md
   - name: sample-distinct operator
@@ -1388,11 +1390,5 @@ items:
       href: ../tools/kusto-explorer-troubleshooting.md
   - name: Kusto.Cli
     href: ../tools/kusto-cli.md
-  - name: Kusto emulator
-    items:
-    - name: Kusto emulator overview
-      href: ../../kusto-emulator-overview.md
-    - name: Install the Kusto emulator
-      href: ../../kusto-emulator-install.md
   - name: Kusto extension for Azure Data Studio >>
     href: /sql/azure-data-studio/extensions/kusto-extension

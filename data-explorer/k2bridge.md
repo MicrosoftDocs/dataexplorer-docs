@@ -51,7 +51,7 @@ Before you can visualize data from Azure Data Explorer in Kibana, have the follo
 If you choose to use an Azure Active Directory (Azure AD) service principal, you will need to [create an Azure AD service principal](/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). For the installation, you will need the ClientID and a Secret.
 We recommend a service principal with viewer permission and discourage you from using higher-level permissions. To assign permissions, see [Manage database permissions in the Azure portal](manage-database-permissions.md) or use management commands to [Manage database security roles](kusto/management/manage-database-security-roles.md).
 
-If you choose to use a sytem assigned identity, you will need to get the agent pool managed identity **ClientID** (located in the generated "[_MC_xxxx_]" [resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks)) 
+If you choose to use a system assigned identity, you will need to get the agent pool managed identity **ClientID** (located in the generated "[_MC_xxxx_]" [resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks)) 
 
 
 ## Run K2Bridge on Azure Kubernetes Service (AKS)

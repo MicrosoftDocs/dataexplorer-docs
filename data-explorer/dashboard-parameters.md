@@ -3,7 +3,7 @@ title: Parameters in Azure Data Explorer dashboards
 description: Use parameters as a building block for dashboard filters.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 02/13/2023
+ms.date: 05/28/2023
 ---
 
 # Use parameters in Azure Data Explorer dashboards
@@ -390,5 +390,6 @@ In single and multiple selection filters, type the value that you want. The filt
 
 ## Next Steps
 
-* [Customize dashboard visuals](dashboard-customize-visuals.md)
-* [Query data in Azure Data Explorer](web-query-data.md)
+* Get data with the [ingestion wizard](ingest-data-wizard.md)
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
+* [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)

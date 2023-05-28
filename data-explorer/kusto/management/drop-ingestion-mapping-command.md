@@ -1,9 +1,9 @@
 ---
-title:  .drop ingestion mapping
-description: This article describes .drop ingestion mapping in Azure Data Explorer.
+title: .drop ingestion mapping
+description: Learn how to use the `.drop ingestion mapping` command to drop the ingestion mapping from a table or a database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/15/2023
 ---
 # .drop ingestion mapping
 

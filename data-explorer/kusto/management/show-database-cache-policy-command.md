@@ -1,9 +1,9 @@
 ---
-title:  .show database cache policy command
-description: This article describes the .show database cache policy command in Azure Data Explorer.
+title: .show database cache policy command
+description: Learn how to use the `.show database cache policy` command to show the database cache policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/24/2023
 ---
 # .show database cache policy
 

@@ -3,7 +3,7 @@ title: Manage database permissions in Azure Data Explorer
 description: This article describes role-based access controls for databases and tables in Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: how-to
-ms.date: 05/22/2023
+ms.date: 05/28/2023
 ---
 
 # Manage Azure Data Explorer database permissions in the Azure portal
@@ -41,7 +41,7 @@ This article describes the available roles and how to assign principals to those
 
 1. In the **Overview** section, select the database where you want to manage permissions. For roles that apply to all databases, go directly to the next step.
 
-    ![Select database.](media/manage-database-permissions/select-database.png)
+    ![Screenshot of select database.](media/manage-database-permissions/select-database.png)
 
 1. Select **Permissions**, and then select the principal to remove.
 
