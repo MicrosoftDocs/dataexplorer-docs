@@ -42,7 +42,7 @@ Define the function using the following [let statement](../query/letstatement.md
 > A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `wilcoxon_test_fl()`, see [Example](#example).
 
 ~~~kusto
-<!-- let wilcoxon_test_fl = (tbl:(*), data:string, test_statistic:string, p_value:string)
+let wilcoxon_test_fl = (tbl:(*), data:string, test_statistic:string, p_value:string)
 {
     let kwargs = bag_pack('data', data, 'test_statistic', test_statistic, 'p_value', p_value);
     let code = ```if 1:
@@ -101,7 +101,7 @@ The following example uses the [invoke operator](../query/invokeoperator.md) to 
 To use a query-defined function, invoke it after the embedded function definition.
 
 ~~~kusto
-<!-- let wilcoxon_test_fl = (tbl:(*), data:string, test_statistic:string, p_value:string)
+let wilcoxon_test_fl = (tbl:(*), data:string, test_statistic:string, p_value:string)
 {
     let kwargs = bag_pack('data', data, 'test_statistic', test_statistic, 'p_value', p_value);
     let code = ```if 1:

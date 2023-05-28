@@ -47,35 +47,32 @@ Define the function using the following [let statement](../query/letstatement.md
 let series_fit_lowess_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_size:int=5, x_series:string='', x_istime:bool=False)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_size', fit_size, 'x_series', x_series, 'x_istime', x_istime);
-    let code=
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_fit_series = kargs["y_fit_series"]\n'
-        'fit_size = kargs["fit_size"]\n'
-        'x_series = kargs["x_series"]\n'
-        'x_istime = kargs["x_istime"]\n'
-        '\n'
-        'import statsmodels.api as sm\n'
-        'def lowess_fit(ts_row, x_col, y_col, fsize):\n'
-        '    y = ts_row[y_col]\n'
-        '    fraction = fsize/len(y)\n'
-        '    if x_col == "": # If there is no x column creates sequential range [1, len(y)]\n'
-        '       x = np.arange(len(y)) + 1\n'
-        '    else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.\n'
-        '       if x_istime: \n'
-        '           x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))\n'
-        '           x = x - x.min()\n'
-        '           x = x / x.max()\n'
-        '           x = x * (len(x) - 1) + 1\n'
-        '       else:\n'
-        '           x = ts_row[x_col]\n'
-        '    lowess = sm.nonparametric.lowess\n'
-        '    z = lowess(y, x, return_sorted=False, frac=fraction)\n'
-        '    return list(z)\n'
-        '\n'
-        'result = df\n'
-        'result[y_fit_series] = df.apply(lowess_fit, axis=1, args=(x_series, y_series, fit_size))\n'
-    ;
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_fit_series = kargs["y_fit_series"]
+        fit_size = kargs["fit_size"]
+        x_series = kargs["x_series"]
+        x_istime = kargs["x_istime"]
+        import statsmodels.api as sm
+        def lowess_fit(ts_row, x_col, y_col, fsize):
+            y = ts_row[y_col]
+            fraction = fsize/len(y)
+            if x_col == "": # If there is no x column creates sequential range [1, len(y)]
+               x = np.arange(len(y)) + 1
+            else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.
+               if x_istime: 
+                   x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))
+                   x = x - x.min()
+                   x = x / x.max()
+                   x = x * (len(x) - 1) + 1
+               else:
+                   x = ts_row[x_col]
+            lowess = sm.nonparametric.lowess
+            z = lowess(y, x, return_sorted=False, frac=fraction)
+            return list(z)
+        result = df
+        result[y_fit_series] = df.apply(lowess_fit, axis=1, args=(x_series, y_series, fit_size))
+    ```;
     tbl
      | evaluate python(typeof(*), code, kwargs)
 };
@@ -94,35 +91,32 @@ Define the stored function once using the following [`.create function`](../mana
 series_fit_lowess_fl(tbl:(*), y_series:string, y_fit_series:string, fit_size:int=5, x_series:string='', x_istime:bool=False)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_size', fit_size, 'x_series', x_series, 'x_istime', x_istime);
-    let code=
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_fit_series = kargs["y_fit_series"]\n'
-        'fit_size = kargs["fit_size"]\n'
-        'x_series = kargs["x_series"]\n'
-        'x_istime = kargs["x_istime"]\n'
-        '\n'
-        'import statsmodels.api as sm\n'
-        'def lowess_fit(ts_row, x_col, y_col, fsize):\n'
-        '    y = ts_row[y_col]\n'
-        '    fraction = fsize/len(y)\n'
-        '    if x_col == "": # If there is no x column creates sequential range [1, len(y)]\n'
-        '       x = np.arange(len(y)) + 1\n'
-        '    else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.\n'
-        '       if x_istime: \n'
-        '           x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))\n'
-        '           x = x - x.min()\n'
-        '           x = x / x.max()\n'
-        '           x = x * (len(x) - 1) + 1\n'
-        '       else:\n'
-        '           x = ts_row[x_col]\n'
-        '    lowess = sm.nonparametric.lowess\n'
-        '    z = lowess(y, x, return_sorted=False, frac=fraction)\n'
-        '    return list(z)\n'
-        '\n'
-        'result = df\n'
-        'result[y_fit_series] = df.apply(lowess_fit, axis=1, args=(x_series, y_series, fit_size))\n'
-    ;
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_fit_series = kargs["y_fit_series"]
+        fit_size = kargs["fit_size"]
+        x_series = kargs["x_series"]
+        x_istime = kargs["x_istime"]
+        import statsmodels.api as sm
+        def lowess_fit(ts_row, x_col, y_col, fsize):
+            y = ts_row[y_col]
+            fraction = fsize/len(y)
+            if x_col == "": # If there is no x column creates sequential range [1, len(y)]
+               x = np.arange(len(y)) + 1
+            else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.
+               if x_istime: 
+                   x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))
+                   x = x - x.min()
+                   x = x / x.max()
+                   x = x * (len(x) - 1) + 1
+               else:
+                   x = ts_row[x_col]
+            lowess = sm.nonparametric.lowess
+            z = lowess(y, x, return_sorted=False, frac=fraction)
+            return list(z)
+        result = df
+        result[y_fit_series] = df.apply(lowess_fit, axis=1, args=(x_series, y_series, fit_size))
+    ```;
     tbl
      | evaluate python(typeof(*), code, kwargs)
 }
@@ -144,35 +138,32 @@ To use a query-defined function, invoke it after the embedded function definitio
 let series_fit_lowess_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_size:int=5, x_series:string='', x_istime:bool=False)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_size', fit_size, 'x_series', x_series, 'x_istime', x_istime);
-    let code=
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_fit_series = kargs["y_fit_series"]\n'
-        'fit_size = kargs["fit_size"]\n'
-        'x_series = kargs["x_series"]\n'
-        'x_istime = kargs["x_istime"]\n'
-        '\n'
-        'import statsmodels.api as sm\n'
-        'def lowess_fit(ts_row, x_col, y_col, fsize):\n'
-        '    y = ts_row[y_col]\n'
-        '    fraction = fsize/len(y)\n'
-        '    if x_col == "": # If there is no x column creates sequential range [1, len(y)]\n'
-        '       x = np.arange(len(y)) + 1\n'
-        '    else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.\n'
-        '       if x_istime: \n'
-        '           x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))\n'
-        '           x = x - x.min()\n'
-        '           x = x / x.max()\n'
-        '           x = x * (len(x) - 1) + 1\n'
-        '       else:\n'
-        '           x = ts_row[x_col]\n'
-        '    lowess = sm.nonparametric.lowess\n'
-        '    z = lowess(y, x, return_sorted=False, frac=fraction)\n'
-        '    return list(z)\n'
-        '\n'
-        'result = df\n'
-        'result[y_fit_series] = df.apply(lowess_fit, axis=1, args=(x_series, y_series, fit_size))\n'
-    ;
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_fit_series = kargs["y_fit_series"]
+        fit_size = kargs["fit_size"]
+        x_series = kargs["x_series"]
+        x_istime = kargs["x_istime"]
+        import statsmodels.api as sm
+        def lowess_fit(ts_row, x_col, y_col, fsize):
+            y = ts_row[y_col]
+            fraction = fsize/len(y)
+            if x_col == "": # If there is no x column creates sequential range [1, len(y)]
+               x = np.arange(len(y)) + 1
+            else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.
+               if x_istime: 
+                   x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))
+                   x = x - x.min()
+                   x = x / x.max()
+                   x = x * (len(x) - 1) + 1
+               else:
+                   x = ts_row[x_col]
+            lowess = sm.nonparametric.lowess
+            z = lowess(y, x, return_sorted=False, frac=fraction)
+            return list(z)
+        result = df
+        result[y_fit_series] = df.apply(lowess_fit, axis=1, args=(x_series, y_series, fit_size))
+    ```;
     tbl
      | evaluate python(typeof(*), code, kwargs)
 };
@@ -220,35 +211,32 @@ To use a query-defined function, invoke it after the embedded function definitio
 let series_fit_lowess_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_size:int=5, x_series:string='', x_istime:bool=False)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_size', fit_size, 'x_series', x_series, 'x_istime', x_istime);
-    let code=
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_fit_series = kargs["y_fit_series"]\n'
-        'fit_size = kargs["fit_size"]\n'
-        'x_series = kargs["x_series"]\n'
-        'x_istime = kargs["x_istime"]\n'
-        '\n'
-        'import statsmodels.api as sm\n'
-        'def lowess_fit(ts_row, x_col, y_col, fsize):\n'
-        '    y = ts_row[y_col]\n'
-        '    fraction = fsize/len(y)\n'
-        '    if x_col == "": # If there is no x column creates sequential range [1, len(y)]\n'
-        '       x = np.arange(len(y)) + 1\n'
-        '    else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.\n'
-        '       if x_istime: \n'
-        '           x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))\n'
-        '           x = x - x.min()\n'
-        '           x = x / x.max()\n'
-        '           x = x * (len(x) - 1) + 1\n'
-        '       else:\n'
-        '           x = ts_row[x_col]\n'
-        '    lowess = sm.nonparametric.lowess\n'
-        '    z = lowess(y, x, return_sorted=False, frac=fraction)\n'
-        '    return list(z)\n'
-        '\n'
-        'result = df\n'
-        'result[y_fit_series] = df.apply(lowess_fit, axis=1, args=(x_series, y_series, fit_size))\n'
-    ;
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_fit_series = kargs["y_fit_series"]
+        fit_size = kargs["fit_size"]
+        x_series = kargs["x_series"]
+        x_istime = kargs["x_istime"]
+        import statsmodels.api as sm
+        def lowess_fit(ts_row, x_col, y_col, fsize):
+            y = ts_row[y_col]
+            fraction = fsize/len(y)
+            if x_col == "": # If there is no x column creates sequential range [1, len(y)]
+               x = np.arange(len(y)) + 1
+            else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.
+               if x_istime: 
+                   x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))
+                   x = x - x.min()
+                   x = x / x.max()
+                   x = x * (len(x) - 1) + 1
+               else:
+                   x = ts_row[x_col]
+            lowess = sm.nonparametric.lowess
+            z = lowess(y, x, return_sorted=False, frac=fraction)
+            return list(z)
+        result = df
+        result[y_fit_series] = df.apply(lowess_fit, axis=1, args=(x_series, y_series, fit_size))
+    ```;
     tbl
      | evaluate python(typeof(*), code, kwargs)
 };
@@ -298,35 +286,32 @@ To use a query-defined function, invoke it after the embedded function definitio
 let series_fit_lowess_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_size:int=5, x_series:string='', x_istime:bool=False)
 {
     let kwargs = bag_pack('y_series', y_series, 'y_fit_series', y_fit_series, 'fit_size', fit_size, 'x_series', x_series, 'x_istime', x_istime);
-    let code=
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_fit_series = kargs["y_fit_series"]\n'
-        'fit_size = kargs["fit_size"]\n'
-        'x_series = kargs["x_series"]\n'
-        'x_istime = kargs["x_istime"]\n'
-        '\n'
-        'import statsmodels.api as sm\n'
-        'def lowess_fit(ts_row, x_col, y_col, fsize):\n'
-        '    y = ts_row[y_col]\n'
-        '    fraction = fsize/len(y)\n'
-        '    if x_col == "": # If there is no x column creates sequential range [1, len(y)]\n'
-        '       x = np.arange(len(y)) + 1\n'
-        '    else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.\n'
-        '       if x_istime: \n'
-        '           x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))\n'
-        '           x = x - x.min()\n'
-        '           x = x / x.max()\n'
-        '           x = x * (len(x) - 1) + 1\n'
-        '       else:\n'
-        '           x = ts_row[x_col]\n'
-        '    lowess = sm.nonparametric.lowess\n'
-        '    z = lowess(y, x, return_sorted=False, frac=fraction)\n'
-        '    return list(z)\n'
-        '\n'
-        'result = df\n'
-        'result[y_fit_series] = df.apply(lowess_fit, axis=1, args=(x_series, y_series, fit_size))\n'
-    ;
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_fit_series = kargs["y_fit_series"]
+        fit_size = kargs["fit_size"]
+        x_series = kargs["x_series"]
+        x_istime = kargs["x_istime"]
+        import statsmodels.api as sm
+        def lowess_fit(ts_row, x_col, y_col, fsize):
+            y = ts_row[y_col]
+            fraction = fsize/len(y)
+            if x_col == "": # If there is no x column creates sequential range [1, len(y)]
+               x = np.arange(len(y)) + 1
+            else: # if x column exists check whether its a time column. If so, normalize it to the [1, len(y)] range, else take it as is.
+               if x_istime: 
+                   x = pd.to_numeric(pd.to_datetime(ts_row[x_col]))
+                   x = x - x.min()
+                   x = x / x.max()
+                   x = x * (len(x) - 1) + 1
+               else:
+                   x = ts_row[x_col]
+            lowess = sm.nonparametric.lowess
+            z = lowess(y, x, return_sorted=False, frac=fraction)
+            return list(z)
+        result = df
+        result[y_fit_series] = df.apply(lowess_fit, axis=1, args=(x_series, y_series, fit_size))
+    ```;
     tbl
      | evaluate python(typeof(*), code, kwargs)
 };

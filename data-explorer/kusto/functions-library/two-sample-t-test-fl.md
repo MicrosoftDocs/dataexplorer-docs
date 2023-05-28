@@ -50,22 +50,22 @@ Define the function using the following [let statement](../query/letstatement.md
 let two_sample_t_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string, equal_var:bool=true)
 {
     let kwargs = bag_pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value, 'equal_var', equal_var);
-    let code =
-        'from scipy import stats\n'
-        'import pandas\n'
-        '\n'
-        'data1 = kargs["data1"]\n'
-        'data2 = kargs["data2"]\n'
-        'test_statistic = kargs["test_statistic"]\n'
-        'p_value = kargs["p_value"]\n'
-        'equal_var = kargs["equal_var"]\n'
-        '\n'
-        'def func(row):\n'
-        '    statistics = stats.ttest_ind(row[data1], row[data2], equal_var=equal_var)\n'
-        '    return statistics[0], statistics[1]\n'
-        'result = df\n'
-        'result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")\n'
-    ;
+    let code = ```if 1:
+        from scipy import stats
+        import pandas
+        
+        data1 = kargs["data1"]
+        data2 = kargs["data2"]
+        test_statistic = kargs["test_statistic"]
+        p_value = kargs["p_value"]
+        equal_var = kargs["equal_var"]
+        
+        def func(row):
+            statistics = stats.ttest_ind(row[data1], row[data2], equal_var=equal_var)
+            return statistics[0], statistics[1]
+        result = df
+        result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 };
@@ -84,22 +84,22 @@ Define the stored function once using the following [`.create function`](../mana
 two_sample_t_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string, equal_var:bool=true)
 {
     let kwargs = bag_pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value, 'equal_var', equal_var);
-    let code =
-        'from scipy import stats\n'
-        'import pandas\n'
-        '\n'
-        'data1 = kargs["data1"]\n'
-        'data2 = kargs["data2"]\n'
-        'test_statistic = kargs["test_statistic"]\n'
-        'p_value = kargs["p_value"]\n'
-        'equal_var = kargs["equal_var"]\n'
-        '\n'
-        'def func(row):\n'
-        '    statistics = stats.ttest_ind(row[data1], row[data2], equal_var=equal_var)\n'
-        '    return statistics[0], statistics[1]\n'
-        'result = df\n'
-        'result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")\n'
-    ;
+    let code = ```if 1:
+        from scipy import stats
+        import pandas
+        
+        data1 = kargs["data1"]
+        data2 = kargs["data2"]
+        test_statistic = kargs["test_statistic"]
+        p_value = kargs["p_value"]
+        equal_var = kargs["equal_var"]
+        
+        def func(row):
+            statistics = stats.ttest_ind(row[data1], row[data2], equal_var=equal_var)
+            return statistics[0], statistics[1]
+        result = df
+        result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 }
@@ -119,22 +119,22 @@ To use a query-defined function, invoke it after the embedded function definitio
 let two_sample_t_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string, equal_var:bool=true)
 {
     let kwargs = bag_pack('data1', data1, 'data2', data2, 'test_statistic', test_statistic, 'p_value', p_value, 'equal_var', equal_var);
-    let code =
-        'from scipy import stats\n'
-        'import pandas\n'
-        '\n'
-        'data1 = kargs["data1"]\n'
-        'data2 = kargs["data2"]\n'
-        'test_statistic = kargs["test_statistic"]\n'
-        'p_value = kargs["p_value"]\n'
-        'equal_var = kargs["equal_var"]\n'
-        '\n'
-        'def func(row):\n'
-        '    statistics = stats.ttest_ind(row[data1], row[data2], equal_var=equal_var)\n'
-        '    return statistics[0], statistics[1]\n'
-        'result = df\n'
-        'result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")\n'
-    ;
+    let code = ```if 1:
+        from scipy import stats
+        import pandas
+        
+        data1 = kargs["data1"]
+        data2 = kargs["data2"]
+        test_statistic = kargs["test_statistic"]
+        p_value = kargs["p_value"]
+        equal_var = kargs["equal_var"]
+        
+        def func(row):
+            statistics = stats.ttest_ind(row[data1], row[data2], equal_var=equal_var)
+            return statistics[0], statistics[1]
+        result = df
+        result[[test_statistic, p_value]]  = df.apply(func, axis=1, result_type = "expand")
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 };
