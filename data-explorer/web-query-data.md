@@ -116,6 +116,6 @@ Another option is to select **Clear local state** from the **Settings** > **Gene
 
 ## Next steps
 
-* Read the [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
-* Explore results with the [Azure Data Explorer web UI results grid](web-results-grid.md)
-* [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md)
+* Read the [web UI query overview](web-ui-query-overview.md)
+* Explore results with the [web UI results grid](web-results-grid.md)
+* [Customize settings in the web UI](web-customize-settings.md)
