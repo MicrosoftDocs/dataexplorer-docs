@@ -3,7 +3,7 @@ title:  Role-based access control in Kusto
 description: This article describes role-based access control in Kusto.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/22/2023
+ms.date: 05/28/2023
 ---
 # Kusto role-based access control
 
