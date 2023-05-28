@@ -38,7 +38,7 @@ This article describes the available roles and how to assign principals to those
 
 1. In the **Overview** section, select the database where you want to manage permissions. For roles that apply to all databases, go directly to the next step.
 
-    ![Select database.](media/manage-database-permissions/select-database.png)
+    ![Screenshot of select database.](media/manage-database-permissions/select-database.png)
 
 1. Select **Permissions**, and then select the principal to remove.
 
