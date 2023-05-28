@@ -9,8 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # series_lag_fl()
 
-
-::: zone pivot="azuredataexplorer, azuremonitor"
+::: zone pivot="azuredataexplorer"
 
 Applies a lag on a series.
 
@@ -120,10 +119,9 @@ demo_make_series1
 
 :::image type="content" source="images/series-lag-fl/series-lag-1-day.png" alt-text="Graph of a time series shifted by one day." border="false":::
 
-
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 

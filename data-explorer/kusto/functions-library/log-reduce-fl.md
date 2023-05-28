@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # log_reduce_fl()
 
-::: zone pivot="azuredataexplorer, azuremonitor"
+::: zone pivot="azuredataexplorer"
 
 The function `log_reduce_fl()` finds common patterns in semi structured textual columns, such as log lines, and clusters the lines according to the extracted patterns. It outputs a summary table containing the found patterns sorted top down by their respective frequency.
 
@@ -198,7 +198,7 @@ HDFS_log
 
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 
