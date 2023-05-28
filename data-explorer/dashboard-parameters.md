@@ -390,5 +390,6 @@ In single and multiple selection filters, type the value that you want. The filt
 
 ## Next Steps
 
-* [Customize dashboard visuals](dashboard-customize-visuals.md)
-* [Query data in Azure Data Explorer](web-query-data.md)
+* Get data with the [ingestion wizard](ingest-data-wizard.md)
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
+* [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)

@@ -35,6 +35,6 @@ To add a connection to your Azure Data Explorer cluster, do the following:
 
 ## Next steps
 
-* Ingest data with the [ingestion wizard](ingest-data-wizard.md)
+* Get data with the [ingestion wizard](ingest-data-wizard.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
 * [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)

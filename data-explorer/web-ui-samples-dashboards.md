@@ -41,5 +41,5 @@ A Microsoft account or an Azure Active Directory user identity to sign in to the
 
 ## Next steps
 
-- [Query data in the Azure Data Explorer web UI](web-query-data.md#run-queries)
-- [Visualize data with Azure Data Explorer dashboards (Preview)](azure-data-explorer-dashboards.md)
+* [Query data in the web UI](web-ui-query-overview.md)
+* [Visualize data with Azure Data Explorer dashboards (Preview)](azure-data-explorer-dashboards.md)
