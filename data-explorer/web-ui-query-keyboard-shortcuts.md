@@ -3,7 +3,7 @@ title: Azure Data Explorer web UI query keyboard shortcuts
 description: This article describes Azure Data Explorer query keyboard shortcuts (hot-keys) in Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
-ms.date: 09/20/2022
+ms.date: 05/28/2023
 ---
 
 # Azure Data Explorer web UI keyboard shortcuts

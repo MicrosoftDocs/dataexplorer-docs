@@ -2,7 +2,7 @@
 title: 'Azure Data Explorer web UI results grid'
 description: Learn how to work with the results grid in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 04/30/2023
+ms.date: 05/28/2023
 ---
 
 # Azure Data Explorer web UI results grid
@@ -277,8 +277,9 @@ To hide or show empty columns, select the eye icon in the menu of the results gr
 
 :::image type="content" source="media/web-query-data/hide-empty-columns.png" alt-text="Screenshot of eye icon to hide results grid in the Azure Data Explorer web UI."  lightbox="media/web-query-data/hide-empty-columns.png":::
 
-## See also
+## Next steps
 
-* [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
+* Get data with the [ingestion wizard](ingest-data-wizard.md)
+* [Query data in the web UI](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

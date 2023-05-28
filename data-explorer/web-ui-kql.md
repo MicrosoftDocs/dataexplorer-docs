@@ -2,7 +2,7 @@
 title: Write Kusto Query Language queries in the Azure Data Explorer web UI
 description: In this article, you learn how to write Kusto Query Language (KQL) queries in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 05/24/2023
+ms.date: 05/28/2023
 ---
 # Write Kusto Query Language queries in the Azure Data Explorer web UI
 

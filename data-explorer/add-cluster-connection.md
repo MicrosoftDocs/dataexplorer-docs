@@ -3,7 +3,7 @@ title: Add a cluster connection in the Azure Data Explorer web UI
 description: This article describes how to add a cluster connection in the Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
-ms.date: 05/17/2023
+ms.date: 05/28/2023
 ---
 
 # Add a cluster connection in the Azure Data Explorer web UI

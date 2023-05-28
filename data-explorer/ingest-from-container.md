@@ -3,7 +3,7 @@ title: Ingest data from a container or Azure Data Lake Storage into Data Explore
 description: Ingest (load) data into a new Azure Data Explorer table from a container or ADLS, either as a one-time or continuous operation.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 09/04/2022
+ms.date: 05/28/2023
 ---
 
 # Ingest data from a container into Azure Data Explorer
@@ -181,8 +181,6 @@ Review the resources, and select **Create**.
 
 ## Next steps
 
-To get started querying data, see the following articles:
-
-* [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
+* [Query data in the Azure Data Explorer web UI](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
 * [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)

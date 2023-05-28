@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 05/16/2023
 ---
 
-# Visualize data with Azure Data Explorer dashboards
+# Visualize data with Azure Data Explorer dashboards 
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Explore your data from end-to-end in the Azure Data Explorer web application, starting with [data ingestion](ingest-data-wizard.md), running [queries](web-query-data.md), and ultimately building dashboards. 
 
@@ -250,6 +250,6 @@ You can update an existing dashboard, or restore a previous version, as follows:
 
 ## Next Steps
 
-* [Ingest data in the Azure Data Explorer web UI](ingest-data-wizard.md)
+* Get data with the [ingestion wizard](ingest-data-wizard.md)
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
 * [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)

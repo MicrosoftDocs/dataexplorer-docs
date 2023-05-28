@@ -2,7 +2,7 @@
 title: "Quickstart: Visualize sample data dashboards in Azure Data Explorer web UI"
 description: In this how-to article, you learn how to use the visualize sample data dashboards from the samples gallery in the Azure Data Explorer web UI.
 ms.topic: quickstart
-ms.date: 01/26/2023
+ms.date: 05/28/2023
 ---
 
 # Quickstart: Visualize sample data dashboards
@@ -42,4 +42,4 @@ A Microsoft account or an Azure Active Directory user identity to sign in to the
 ## Next steps
 
 * [Query data in the web UI](web-ui-query-overview.md)
-* [Visualize data with Azure Data Explorer dashboards (Preview)](azure-data-explorer-dashboards.md)
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

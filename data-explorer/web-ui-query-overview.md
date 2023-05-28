@@ -3,7 +3,7 @@ title: Azure Data Explorer web UI query overview
 description: This article describes the query page in Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
-ms.date: 05/17/2023
+ms.date: 05/28/2023
 ---
 
 # Azure Data Explorer web UI query overview
