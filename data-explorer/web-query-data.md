@@ -116,7 +116,6 @@ Another option is to select **Clear local state** from the **Settings** > **Gene
 
 ## Next steps
 
-* [Work with the results grid](web-results-grid.md)
-* [Customize your Azure Data Explorer settings](web-customize-settings.md)
-* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
-* [Share your queries](web-share-queries.md)
+* Read the [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
+* Explore results with the [Azure Data Explorer web UI results grid](web-results-grid.md)
+* [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md)
