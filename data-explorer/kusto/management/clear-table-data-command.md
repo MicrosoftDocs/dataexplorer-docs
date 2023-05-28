@@ -1,11 +1,11 @@
 ---
-title: .clear table data
+title: .clear table data command
 description: Learn how to use the `.clear table data` command to clear data from an existing table.
 ms.reviewer: vrozov
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .clear table data
+# .clear table data command
 
 Clears the data of an existing table, including streaming ingestion data.
 
