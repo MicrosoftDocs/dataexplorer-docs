@@ -276,3 +276,9 @@ The results grid can color results based on error severity or verbosity level. T
 To hide or show empty columns, select the eye icon in the menu of the results grid.
 
 :::image type="content" source="media/web-query-data/hide-empty-columns.png" alt-text="Screenshot of eye icon to hide results grid in the Azure Data Explorer web UI."  lightbox="media/web-query-data/hide-empty-columns.png":::
+
+## See also
+
+* [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

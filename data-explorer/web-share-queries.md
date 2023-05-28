@@ -123,3 +123,9 @@ To export the query results to a CSV file, follow these steps:
 1. Select **Export** > **Export to CSV**.
 
     :::image type="content" source="media/web-share-query/export-to-csv.png" alt-text="Screenshot of the export to CSV button." lightbox="media/web-share-query/export-to-csv.png":::
+
+## See also
+
+* [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

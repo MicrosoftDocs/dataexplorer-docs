@@ -100,3 +100,4 @@ To use KQL tools:
 * [Tutorial: Use aggregation functions](kusto/query/tutorials/use-aggregation-functions.md)
 * [Tutorial: Join data from multiple tables](kusto/query/tutorials/join-data-from-multiple-tables.md)
 * [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md)
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

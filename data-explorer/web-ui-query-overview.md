@@ -82,6 +82,6 @@ In the query page toolbar, there are several options to manage your queries and 
 
 ## See also
 
-* [Explore the samples gallery](web-ui-samples-query.md)
-* [Azure Data Explorer web UI keyboard shortcuts](web-ui-query-keyboard-shortcuts.md)
+* Explore your query results with the [web UI results grid](web-results-grid.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
+* [Customize settings in the web UI](web-customize-settings.md)

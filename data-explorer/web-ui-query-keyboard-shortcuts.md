@@ -55,8 +55,9 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | [Column header] Toggle the sorting state              | <kbd>Enter</kbd>                                  |
 | [Column header] Open the menu for the focused header  | <kbd>Shift</kbd>+<kbd>Enter</kbd>                 |
 
-## Next steps
+## See also
 
-- [Query data in the Azure Data Explorer web UI](web-query-data.md)
-- [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
-- [Azure Data Explorer web UI overview](./web-query-data.md)
+* [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
+* [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
