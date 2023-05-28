@@ -1,11 +1,11 @@
 ---
-title: .create-merge tables
+title: .create-merge tables command
 description: Learn how to use the `.create-merge tables` command to create and extend the schemas of existing tables in a single bulk operation.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .create-merge tables
+# .create-merge tables command
 
 Lets you create and extend the schemas of existing tables in a single bulk operation, in the context of a specific database.
 

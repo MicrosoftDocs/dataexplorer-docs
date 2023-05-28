@@ -1,11 +1,11 @@
 ---
 title:  .alter-merge table streaming ingestion policy command
-description: Learn how to use the .alter-merge table streaming ingestion policy command to change the table's streaming ingestion policy. 
+description: Learn how to use the `.alter-merge table streaming ingestion policy` command to change the table's streaming ingestion policy. 
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter-merge table streaming ingestion policy
+# .alter-merge table streaming ingestion policy command
 
 Changes the table's streaming ingestion policy. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
 
