@@ -1,5 +1,5 @@
 ---
-title: Kusto IngestionBatching policy optimizes batching for ingestion
+title: IngestionBatching policy
 description: Learn how to use the IngestionBatching policy to optimize batching for ingestion.
 ms.reviewer: orspodek
 ms.topic: reference
