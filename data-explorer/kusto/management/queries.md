@@ -1,11 +1,11 @@
 ---
-title: Queries management
+title: Query management commands
 description: Learn how to use management commands to manage your queries.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# Queries management
+# Query management commands
 
 ## .show queries
 
