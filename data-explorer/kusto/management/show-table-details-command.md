@@ -68,4 +68,4 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## See also
 
-* [Estimate table size](../../estimate-table-size.md)
+* [Estimate table size](../query/estimate-table-size.md)

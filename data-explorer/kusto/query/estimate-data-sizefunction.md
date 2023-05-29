@@ -44,4 +44,4 @@ range x from 1 to 10 step 1                    // x (long) is 8
 
 ## See also
 
-* [Estimate table size](../../estimate-table-size.md)
+* [Estimate table size](estimate-table-size.md)

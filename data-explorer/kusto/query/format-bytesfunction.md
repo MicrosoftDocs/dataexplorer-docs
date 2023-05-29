@@ -47,4 +47,4 @@ v5 = format_bytes(20010332, 0, "KB")
 
 ## See also
 
-* [Estimate table size](../../estimate-table-size.md)
+* [Estimate table size](estimate-table-size.md)
