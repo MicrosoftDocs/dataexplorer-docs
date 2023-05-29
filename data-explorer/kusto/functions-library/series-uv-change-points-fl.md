@@ -1,11 +1,15 @@
 ---
-title: series_uv_change_points_fl() - Azure Data Explorer
+title:  series_uv_change_points_fl()
 description: This article describes the series_uv_change_points_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # series_uv_change_points_fl()
+
+::: zone pivot="azuredataexplorer"
 
 The function `series_uv_change_points_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that finds change points in time series by calling the [Univariate Anomaly Detection API](/azure/cognitive-services/anomaly-detector/overview), part of [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services). The function accepts a limited set of time series as numerical dynamic arrays, the change point detection threshold, and the minimum size of the stable trend window. Each time series is converted into the required JSON format and posts it to the Anomaly Detector service endpoint. The service response contains dynamic arrays of change points, their respective confidence, and the detected seasonality.
 
@@ -15,8 +19,8 @@ The function `series_uv_change_points_fl()` is a [user-defined function (UDF)](.
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](../../create-cluster-database-portal.md).
-* [Enable the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. This is necessary because this function contains inline Python.
+* A cluster and database. [Create a cluster and database](../../create-cluster-database-portal.md).
+* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 * [Create an Anomaly Detector resource and obtain its key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
 * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster to access the anomaly detection service endpoint.
 * Modify the [callout policy](../management/calloutpolicy.md) for type `webapi` to access the anomaly detection service endpoint.
@@ -199,3 +203,11 @@ ts
 The following graph shows change points on a time series.
 
 ![Graph showing change points on a time series.](images/series-uv-change-points-fl/uv-change-points-example-1.png)
+
+::: zone-end
+
+::: zone pivot="azuremonitor, fabric"
+
+This feature isn't supported.
+
+::: zone-end

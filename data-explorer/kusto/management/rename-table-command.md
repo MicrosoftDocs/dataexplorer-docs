@@ -1,9 +1,9 @@
 ---
-title: .rename table and .rename tables - Azure Data Explorer
-description: This article describes .rename table and .rename tables in Azure Data Explorer.
+title: .rename table and .rename tables
+description: Learn how to use the `.rename table` and `.rename tables` commands to change the name of an existing table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/30/2023
+ms.date: 05/24/2023
 ---
 # .rename table and .rename tables
 
@@ -25,18 +25,18 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*OldName*|string|&check;|The name of an existing table. An error is raised and the whole command fails if *OldName* does not name an existing table, unless `ifexists` is specified.|
+|*OldName*|string|&check;|The name of an existing table. An error is raised and the whole command fails if *OldName* doesn't name an existing table, unless `ifexists` is specified.|
 |*NewName*|string|&check;|The new name for the table that used to be called *OldName*.|
 |`ifexists`|string||If specified, the command will handle the scenario where the table doesn't exist. Instead of failing, it will proceed without attempting to rename the table that doesn't exist.|
 
 **Remarks**
 
 This command operates on tables of the database in scope only.
-Table names cannot be qualified with cluster or database names.
+Table names can't be qualified with cluster or database names.
 
 This command doesn't create new tables, nor does it remove existing tables.
 The transformation described by the command must be such that the number
-of tables in the database does not change.
+of tables in the database doesn't change.
 
 The command **does** support swapping table names, or more complex
 permutations, as long as they adhere to the rules above. For example, ingest data into multiple staging tables,
@@ -50,11 +50,12 @@ The following command will swap `A` and `A_TEMP` (so that the `A_TEMP` table wil
 
 ```kusto
 .rename tables A=A_TEMP, NEWB=B, A_TEMP=A
-``` 
+```
 
 The following sequence of commands:
+
 1. Creates a new temporary table
-1. Replaces an existing or non-existing table with the new table
+1. Replaces an existing or nonexisting table with the new table
 
 ```kusto
 // Drop the temporary table if it exists

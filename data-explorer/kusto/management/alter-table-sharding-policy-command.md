@@ -1,15 +1,15 @@
 ---
-title: .alter table sharding policy command - Azure Data Explorer
-description: This article describes the .alter table sharding policy command in Azure Data Explorer.
+title: .alter table sharding policy command
+description: Learn how to use the `.alter table sharding policy` command to change the table sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 05/24/2023
 ---
-# .alter table sharding policy
+# .alter table sharding policy command
 
 Use this command to change the table sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
 
-The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster should be sealed. When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
+The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in your cluster should be sealed. When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
 
 ## Permissions
 

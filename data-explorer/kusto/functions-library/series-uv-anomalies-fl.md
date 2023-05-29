@@ -1,11 +1,15 @@
 ---
-title: series_uv_anomalies_fl() - Azure Data Explorer
+title:  series_uv_anomalies_fl()
 description: This article describes the series_uv_anomalies_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/05/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # series_uv_anomalies_fl()
+
+::: zone pivot="azuredataexplorer"
 
 The function `series_uv_anomalies_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that detects anomalies in time series by calling the [Univariate Anomaly Detection API](/azure/cognitive-services/anomaly-detector/overview), part of [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services). The function accepts a limited set of time series as numerical dynamic arrays and the required anomaly detection sensitivity level. Each time series is converted into the required JSON format and posts it to the Anomaly Detector service endpoint. The service response contains dynamic arrays of high/low/all anomalies, the modeled baseline time series, its normal high/low boundaries (a value above or below the high/low boundary is an anomaly) and the detected seasonality.
 
@@ -15,8 +19,8 @@ The function `series_uv_anomalies_fl()` is a [user-defined function (UDF)](../qu
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](../../create-cluster-database-portal.md).
-* [Enable the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster. This is necessary because this function contains inline Python.
+* A cluster and database. [Create a cluster and database](../../create-cluster-database-portal.md).
+* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 * [Create an Anomaly Detector resource and obtain its key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
 * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster to access the anomaly detection service endpoint.
 * Modify the [callout policy](../management/calloutpolicy.md) for type `webapi` to access the anomaly detection service endpoint.
@@ -125,7 +129,7 @@ series_uv_anomalies_fl(tbl:(*), y_series:string, sensitivity:int=85, tsid:string
 
 The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
 
-### Use `series_uv_anomalies_fl()` to detect anomolies
+### Use `series_uv_anomalies_fl()` to detect anomalies
 
 ### [Query-defined](#tab/query-defined)
 
@@ -274,3 +278,11 @@ The following graph shows anomalies detected by the Univariate Anomaly Detection
 The following graph shows the anomalies detected by native function on TS1.
 
 ![Graph showing anomalies using the native function on a time series.](images/series-uv-anomalies-fl/native-anomalies-example-2.png)
+
+::: zone-end
+
+::: zone pivot="azuremonitor, fabric"
+
+This feature isn't supported.
+
+::: zone-end

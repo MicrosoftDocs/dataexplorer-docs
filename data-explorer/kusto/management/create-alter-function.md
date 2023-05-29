@@ -1,11 +1,11 @@
 ---
-title: .create-or-alter function - Azure Data Explorer
-description: This article describes .create-or-alter function in Azure Data Explorer.
+title: .create-or-alter function command
+description: Learn how to use the `.create-or-alter function` command to create a stored function or alter an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/23/2023
+ms.date: 05/24/2023
 ---
-# .create-or-alter function
+# .create-or-alter function command
 
 Creates a stored function or alters an existing function and stores it inside the database metadata.
 

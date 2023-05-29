@@ -1,17 +1,21 @@
 ---
-title: bartlett_test_fl() - Azure Data Explorer
+title:  bartlett_test_fl()
 description: This article describes the bartlett_test_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/09/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # bartlett_test_fl()
+
+::: zone pivot="azuredataexplorer"
 
 The `bartlett_test_fl()` function is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) that performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
 
 ## Prerequisites
 
-* The `python()` plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 
 ## Syntax
 
@@ -151,3 +155,11 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | Test #1 | [23.64, 20.57, 20.42] | [27.1, 22.12, 33.56] | 1.7660796224425723 | 0.183868001738637 |
 | Test #2 | [20.85, 21.89, 23.41] | [35.09, 30.02, 26.52] | 1.9211710616896014 | 0.16572762069132516 |
 | Test #3 | [20.13, 20.5, 21.7, 22.02] | [32.2, 32.79, 33.9, 34.22] | 0.0026985713829234454 | 0.958570306268548 |
+
+::: zone-end
+
+::: zone pivot="azuremonitor, fabric"
+
+This feature isn't supported.
+
+::: zone-end

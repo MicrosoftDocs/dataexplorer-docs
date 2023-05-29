@@ -1,11 +1,11 @@
 ---
-title: .alter function folder - Azure Data Explorer
-description: Learn how to use the .alter function folder command to alter the folder value of an existing function.
+title: .alter function folder command
+description: Learn how to use the `.alter function folder` command to alter the folder value of an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 05/25/2023
 ---
-# .alter function folder
+# .alter function folder command
 
 Alters the folder value of an existing function.
 

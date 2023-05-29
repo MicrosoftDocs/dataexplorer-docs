@@ -1,5 +1,5 @@
 ---
-title: series_lag_fl() - Azure Data Explorer
+title:  series_lag_fl()
 description: This article describes series_lag_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
@@ -10,10 +10,6 @@ ms.date: 03/13/2023
 Applies a lag on a series.
 
 The function `series_lag_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing a dynamic numerical array as input and shifts it backward. It's commonly used for shifting time series to test whether a pattern is new or it matches historical data.
-
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 
 ## Syntax
 

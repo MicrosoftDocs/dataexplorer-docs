@@ -1,13 +1,11 @@
 ---
-title: Streaming ingestion failures - Azure Data Explorer
-description: This article describes the command to show streaming ingestion failures in Azure Data Explorer.
+title: .show streaming ingestion failures
+description: Learn how to use the `.show streamingingestion failures` command to show streaming ingestion failures when data is ingested.
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/23/2023
 ---
 
-# Streaming ingestion failures
-
-## .show streamingingestion failures
+# .show streaming ingestion failures
 
 This command returns a result set that includes aggregated streaming ingestion failures that occur when [data is ingested using one of the streaming ingestion types](../../ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type).
 
@@ -20,7 +18,7 @@ This command returns a result set that includes aggregated streaming ingestion f
 
 ## Permissions
 
-If you have Database Admin or Database Monitor permissions, you'll see all failed operations. Otherwise, you'll only see operations that you created. For more information about permissions, see [role-based access control](access-control/role-based-access-control.md).
+If you have Database Admin or Database Monitor permissions, you see all failed operations. Otherwise, you only see operations that you created. For more information about permissions, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 
@@ -49,5 +47,5 @@ If you have Database Admin or Database Monitor permissions, you'll see all faile
 
 | Database | Table | Principal | RootActivityId | IngestionProperties | Count | FirstFailureOn | LastFailureOn | FailureKind | ErrorCode | Details |
 |--|--|--|--|--|--|--|--|--|--|--|
-| DB1 | Table1 | aadapp=xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx | 04411033-5ffb-410f-bc6d-a24d50790a80 | { "Mapping": "Mapping_name", "Format": "Csv", "Compressed": true, "IngestionSource": "Storage" } | 2 | 2020-10-11 12:06:35.8362967 | 2020-10-11 12:06:35.8362967 | Transient | Kusto.DataNode.Exceptions.StreamingIngestionServiceException | Server error in performing streaming ingestion into xxxx : Cannot determine row store for ingestion |
+| DB1 | Table1 | aadapp=xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx | 04411033-5ffb-410f-bc6d-a24d50790a80 | { "Mapping": "Mapping_name", "Format": "Csv", "Compressed": true, "IngestionSource": "Storage" } | 2 | 2020-10-11 12:06:35.8362967 | 2020-10-11 12:06:35.8362967 | Transient | Kusto.DataNode.Exceptions.StreamingIngestionServiceException | Server error in performing streaming ingestion into xxxx : Can't determine row store for ingestion |
 | DB1 | Table1 | aadapp=xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx | d025b3e1-8f3d-4864-be0a-de54ce5246be | { "Mapping": null, "Format": "Csv", "Compressed": false, "IngestionSource": "Stream" } | 3 | 2020-10-11 12:07:40.8362967 | 2020-10-11 12:08:35.8362967 | Permanent | Kusto.DataNode.Exceptions.StreamingIngestionServiceException | Database metadata is unavailable. |

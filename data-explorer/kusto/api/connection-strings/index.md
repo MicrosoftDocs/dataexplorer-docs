@@ -1,5 +1,5 @@
 ---
-title: Connection Strings - Azure Data Explorer
+title:  Connection Strings
 description: This article describes Connection Strings in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference

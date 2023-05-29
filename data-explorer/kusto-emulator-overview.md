@@ -3,7 +3,7 @@ title: Azure Data Explorer Kusto emulator overview
 description: In this article, you'll learn about the Azure Data Explorer Kusto emulator
 ms.reviewer: vplauzon
 ms.topic: conceptual
-ms.date: 08/22/2022
+ms.date: 05/08/2023
 ---
 # Azure Data Explorer Kusto emulator
 
@@ -17,7 +17,7 @@ The Kusto emulator is a local environment that encapsulates the [Kusto Query Eng
 
 ## Architecture
 
-The Kusto emulator is packaged as a *Docker Windows container image*. It exposes a query endpoint over HTTP that can be used with any client including [Kusto.Explorer](kusto/tools/kusto-explorer-using.md), [Kusto.CLI](kusto/tools/kusto-cli.md), or [Kusto.Data SDKs](kusto/api/netfx/about-kusto-data.md).
+The emulator is available as a *Windows* or *Linux* Docker container image. It exposes a query endpoint over HTTP that can be used with any client including [Kusto.Explorer](kusto/tools/kusto-explorer-using.md), [Kusto.CLI](kusto/tools/kusto-cli.md), or [Kusto.Data SDKs](kusto/api/netfx/about-kusto-data.md).
 
 ![Schematic representation of Kusto emulator architecture.](media/kusto-emulator/kusto-emulator-architecture.png)
 

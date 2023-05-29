@@ -1,11 +1,15 @@
 ---
-title: quantize_fl() - Azure Data Explorer
+title:  quantize_fl()
 description: This article describes the quantize_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/05/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # quantize_fl()
+
+::: zone pivot="azuredataexplorer"
 
 The function `quantize_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that bins metric columns. It quantizes metric columns to categorical labels, based on the K-Means algorithm.
 
@@ -192,3 +196,11 @@ union
 | 13 | Med | 7.75-17.5 |
 | 14 | Med | 7.75-17.5 |
 | 15 | Med | 7.75-17.5 |
+
+::: zone-end
+
+::: zone pivot="azuremonitor, fabric"
+
+This feature isn't supported.
+
+::: zone-end

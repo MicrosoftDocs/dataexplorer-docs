@@ -1,11 +1,11 @@
 ---
-title: .create tables - Azure Data Explorer
-description: This article describes .create tables in Azure Data Explorer.
+title: .create tables command
+description: Learn how to use the `.create tables` command to create new empty tables as a bulk operation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/24/2023
 ---
-# .create tables
+# .create tables command
 
 Creates new empty tables as a bulk operation.
 

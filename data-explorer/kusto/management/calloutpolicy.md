@@ -1,13 +1,13 @@
 ---
-title: Callout policy - Azure Data Explorer
-description: This article describes Callout policy in Azure Data Explorer.
+title:  Callout policy
+description: Learn how to update a cluster's callout policy to manage authorized domains for external calls.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 05/24/2023
 ---
 # Callout policy
 
-Azure Data Explorer clusters can communicate with external services in many different scenarios.
+Your cluster can communicate with external services in many different scenarios.
 Cluster administrators can manage the authorized domains for external calls by updating the cluster's callout policy.
 
 ## Properties of a callout
@@ -26,7 +26,7 @@ Callout policies are managed at cluster-level and are classified into the follow
 
 | Callout policy type | Description                                                                                                                                                           |
 |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| kusto               | Controls Azure Data Explorer cross-cluster queries.                                                                                                                   |
+| kusto               | Controls cross-cluster queries.                                                                                                                   |
 | sql                 | Controls the [SQL plugin](../query/sqlrequestplugin.md).                                                                                                              |
 | mysql               | Controls the [MySQL plugin](../query/mysqlrequest-plugin.md).                                                                                                         |
 | azure_digital_twins | Controls the [Azure Digital Twins plugin](../query/azure-digital-twins-query-request-plugin.md).                                                                      |
@@ -37,7 +37,7 @@ Callout policies are managed at cluster-level and are classified into the follow
 
 ## Predefined callout policies
 
-The following table shows a set of predefined callout policies that are preconfigured on Azure Data Explorer clusters to enable callouts to selected services:
+The following table shows a set of predefined callout policies that are preconfigured on your cluster to enable callouts to selected services:
 
 | Service             | Designation           | Permitted domains                                                                                                         |
 |---------------------|-----------------------|---------------------------------------------------------------------------------------------------------------------------|

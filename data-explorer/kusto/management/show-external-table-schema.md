@@ -1,13 +1,13 @@
 ---
-title: show external table schema control command - Azure Data Explorer
-description: This article describes the show external table schema control command in Azure Data Explorer 
+title: .show external table schema control command
+description: Learn how to use the `.show external table schema` command to show the schema of the external table. 
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 05/24/2023
 ---
 # .show external table schema
 
-Returns the schema of the external table, as JSON or CSL. 
+Returns the schema of the external table, as JSON or CSL.
 
 This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
 
@@ -56,10 +56,8 @@ You must have at least Database User, Database Viewer, or Database Monitor, or E
 |-----------|----------------------------------|--------------|----------------|-----------|
 | T         | {"Name":"ExternalBlob",<br>"Folder":"ExternalTables",<br>"DocString":"Docs",<br>"OrderedColumns":[{"Name":"x","Type":"System.Int64","CslType":"long","DocString":""},{"Name":"s","Type":"System.String","CslType":"string","DocString":""}]} | DB           | ExternalTables | Docs      |
 
-
 *csl:*
 
 | TableName | Schema          | DatabaseName | Folder         | DocString |
 |-----------|-----------------|--------------|----------------|-----------|
 | T         | x:long,s:string | DB           | ExternalTables | Docs      |
-

@@ -1,11 +1,11 @@
 ---
-title: ".delete database ingestion batching policy command - Azure Data Explorer"
-description: "This article describes the delete database ingestion batching policy command in Azure Data Explorer."
+title: .delete database ingestion batching policy command
+description: Learn how to use the `.delete database ingestion batching policy` command to delete the database ingestion batching policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 05/24/2023
 ---
-# .delete database ingestion batching policy
+# .delete database ingestion batching policy command
 
 Use this command to remove the database [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
 

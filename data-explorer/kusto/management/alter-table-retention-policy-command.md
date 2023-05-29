@@ -1,11 +1,11 @@
 ---
-title: .alter table retention policy command- Azure Data Explorer
-description: Learn how to use the .alter table retention policy command to changes the table's retention policy.
+title:  .alter table retention policy command
+description: Learn how to use the `.alter table retention policy` command to changes the table's retention policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 03/08/2023
 ---
-# .alter table retention policy
+# .alter table retention policy command
 
 Changes the table's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based. The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it.
 

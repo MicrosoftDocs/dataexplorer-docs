@@ -1,11 +1,11 @@
 ---
-title: union operator - Azure Data Explorer
+title:  union operator
 description: This article describes union operator in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/13/2020
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # union operator
 
@@ -20,7 +20,7 @@ Takes two or more tables and returns the rows of all of them.
 
 ## Parameters
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 |Name|Type|Required|Description|
 |--|--|--|--|
@@ -57,10 +57,6 @@ Takes two or more tables and returns the rows of all of them.
 > * The `union` scope can include [let statements](./letstatement.md) if attributed with the `view` keyword.
 > * The `union` scope will not include [functions](../management/functions.md). To include a function, define a [let statement](./letstatement.md) with the `view` keyword.
 > * There's no guarantee of the order in which the union legs will appear, but if each leg has an `order by` operator, then each leg will be sorted.
-
-## Performance considerations
-
-If the `union` input is [tables](../management/tables.md) as opposed to [tabular expressions](./tabularexpressionstatements.md), and the `union` is followed by a [where operator](./whereoperator.md), consider replacing both with [find](./findoperator.md).
 
 ## Returns
 

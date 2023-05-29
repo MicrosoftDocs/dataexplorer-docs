@@ -1,11 +1,15 @@
 ---
-title: series_fit_poly_fl() - Azure Data Explorer
+title:  series_fit_poly_fl()
 description: This article describes the series_fit_poly_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/16/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # series_fit_poly_fl()
+
+::: zone pivot="azuredataexplorer"
 
 The function `series_fit_poly_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies a polynomial regression on a series. This function takes a table containing multiple series (dynamic numerical arrays) and generates the best fit high-order polynomial for each series using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). This function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
 
@@ -365,3 +369,11 @@ range x from 1 to 200 step 1
 :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="Graph of fit of fifth order polynomial with noise on x & y axes":::
 
 :::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="Coefficients of fit of fifth order polynomial with noise." border="false":::
+
+::: zone-end
+
+::: zone pivot="azuremonitor, fabric"
+
+This feature isn't supported.
+
+::: zone-end

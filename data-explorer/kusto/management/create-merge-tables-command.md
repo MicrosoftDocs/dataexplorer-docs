@@ -1,11 +1,11 @@
 ---
-title: .create-merge tables - Azure Data Explorer
-description: This article describes the .create-merge tables command in Azure Data Explorer.
+title: .create-merge tables command
+description: Learn how to use the `.create-merge tables` command to create and extend the schemas of existing tables in a single bulk operation.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/24/2023
 ---
-# .create-merge tables
+# .create-merge tables command
 
 Lets you create and extend the schemas of existing tables in a single bulk operation, in the context of a specific database.
 
@@ -36,9 +36,9 @@ This command requires [Database User](access-control/role-based-access-control.m
 
 * Specified tables that don't exist will be created.
 * Specified tables that already exist will have their schemas extended.
-    * Non-existent columns will be added at the _end_ of the existing table's schema.
-    * Existing columns that aren't specified in the command won't be removed from the existing table's schema.
-    * Existing columns that are specified with a data type in the command that is different from the one in the existing table's schemas will lead to a failure. No tables will be created or extended.
+  * Nonexistent columns are added at the *end* of the existing table's schema.
+  * Existing columns that aren't specified in the command won't be removed from the existing table's schema.
+  * Existing columns that are specified with a data type in the command that is different from the one in the existing table's schemas lead to a failure. No tables are created.
 
 ## Example
 

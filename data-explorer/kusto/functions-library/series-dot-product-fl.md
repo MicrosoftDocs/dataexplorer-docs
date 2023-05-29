@@ -1,5 +1,5 @@
 ---
-title: series_dot_product_fl() - Azure Data Explorer
+title:  series_dot_product_fl()
 description: This article describes series_dot_product_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
@@ -104,4 +104,4 @@ union
 
 **Output**
 
-:::image type="content" source="images/series-dot-product-fl/dot-product-result.png" alt-text="Table showing the result of dot product of 2 vectors using user-defined function series_dot_product_fl in Azure Data Explorer." border="false":::
+:::image type="content" source="images/series-dot-product-fl/dot-product-result.png" alt-text="Table showing the result of dot product of 2 vectors using user-defined function series_dot_product_fl." border="false":::

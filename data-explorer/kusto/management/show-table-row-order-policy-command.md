@@ -1,13 +1,13 @@
 ---
-title: .show table row order policy command- Azure Data Explorer
-description: This article describes the .show table row order policy command in Azure Data Explorer.
+title: .show table row order policy command
+description: Learn how to use the `.show table row order policy` command to display the table's row order policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 05/23/2023
 ---
 # .show table row order policy
 
-Display a table's [row order policy](roworderpolicy.md). The row order policy is an optional policy set on tables, that suggests the desired ordering of rows in a data shard. The purpose of the policy is to improve performance of queries which are known to be narrowed to a small subset of values in the ordered columns.
+Display the table's [row order policy](roworderpolicy.md). The row order policy is an optional policy set on tables, that suggests the desired ordering of rows in a data shard. The purpose of the policy is to improve performance of queries that are known to be narrowed to a small subset of values in the ordered columns.
 
 ## Permissions
 
@@ -15,7 +15,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-`.show` `table` *TableName* `policy` `roworder` 
+`.show` `table` *TableName* `policy` `roworder`
 
 ## Parameters
 
