@@ -1,11 +1,11 @@
 ---
-title:  .alter-merge table
-description: Learn how to use the .alter-merge table command to secure data in existing columns or add new columns to an existing table.
+title:  .alter-merge table command
+description: Learn how to use the `.alter-merge table` command to secure data in existing columns or add new columns to an existing table.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter-merge table
+# .alter-merge table command
 
 The `.alter-merge table` command:
 

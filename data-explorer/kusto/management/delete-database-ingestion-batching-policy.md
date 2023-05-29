@@ -5,7 +5,7 @@ ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .delete database ingestion batching policy
+# .delete database ingestion batching policy command
 
 Use this command to remove the database [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
 

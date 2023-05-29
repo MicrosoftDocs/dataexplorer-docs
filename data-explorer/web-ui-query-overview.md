@@ -1,9 +1,9 @@
 ---
-title: Azure Data Explorer web UI query page overview
+title: Azure Data Explorer web UI query overview
 description: This article describes the query page in Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
-ms.date: 05/17/2023
+ms.date: 05/28/2023
 ---
 
 # Azure Data Explorer web UI query overview
@@ -82,6 +82,6 @@ In the query page toolbar, there are several options to manage your queries and 
 
 ## See also
 
-* [Explore the samples gallery](web-ui-samples-query.md)
-* [Azure Data Explorer web UI keyboard shortcuts](web-ui-query-keyboard-shortcuts.md)
+* Explore query results with the [web UI results grid](web-results-grid.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
+* [Customize settings in the web UI](web-customize-settings.md)

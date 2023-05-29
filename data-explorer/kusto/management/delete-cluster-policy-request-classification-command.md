@@ -4,7 +4,7 @@ description: Learn how to use the `.delete cluster policy request_classification
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .delete cluster policy request_classification
+# .delete cluster policy request_classification command
 
 Delete the cluster's request classification policy.
 

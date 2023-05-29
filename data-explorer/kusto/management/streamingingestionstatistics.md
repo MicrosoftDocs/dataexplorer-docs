@@ -1,13 +1,10 @@
 ---
-title:  Streaming Ingestion statistics
-description: This article describes the command to show streaming ingestion statistics in Azure Data Explorer.
+title: .show streaming ingestion statistics command
+description: Learn how to use the `.show streamingingestion statistics` command to show aggregated statistics for the streaming ingestion to the cluster.
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/23/2023
 ---
-
-# Streaming ingestion statistics
-
-## .show streamingingestion statistics
+# .show streaming ingestion statistics
 
 This command returns a result set that includes aggregated statistics for the [streaming ingestion](../../ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type) to the cluster.
 

@@ -5,7 +5,7 @@ ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .alter table update policy
+# .alter table update policy command
 
 Use this command to change the table update policy. The [update policy](updatepolicy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
 

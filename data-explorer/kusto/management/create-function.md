@@ -1,11 +1,11 @@
 ---
-title: .create function
+title: .create function command
 description: Learn how to use the `.create function` command to create a stored function.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .create function
+# .create function command
 
 Creates a stored function, which is a reusable KQL query,  with the given name. The function definition is persisted with the database metadata.
 

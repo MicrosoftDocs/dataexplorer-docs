@@ -1,9 +1,9 @@
 ---
-title:  .show database merge policy command
-description: This article describes the .show database merge policy command in Azure Data Explorer.
+title: .show database merge policy command
+description: Learn how to use the `.show database merge policy` command to show the database's merge policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 05/24/2023
 ---
 # .show database merge policy
 
@@ -15,7 +15,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Syntax
 
-`.show` `database` *DatabaseName* `policy` `merge` 
+`.show` `database` *DatabaseName* `policy` `merge`
 
 ## Parameters
 

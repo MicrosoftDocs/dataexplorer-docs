@@ -230,6 +230,8 @@ items:
           href: web-share-queries.md
         - name: Keyboard shortcuts
           href: web-ui-query-keyboard-shortcuts.md
+        - name: Write KQL queries
+          href: web-ui-kql.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
@@ -529,6 +531,12 @@ items:
       - name: Integrate the Monaco Editor with Kusto query support
         displayName: monaco monaco-kusto
         href: kusto/api/monaco/monaco-kusto.md
+    - name: Kusto emulator
+      items:
+      - name: Kusto emulator overview
+        href: kusto-emulator-overview.md
+      - name: Install the Kusto emulator
+        href: kusto-emulator-install.md
   - name: Integrate
     items:
     - name: Tools and integrations overview

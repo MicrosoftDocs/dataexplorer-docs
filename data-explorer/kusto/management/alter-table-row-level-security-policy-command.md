@@ -1,11 +1,11 @@
 ---
 title:  .alter table row level security policy command
-description: This article describes the .alter table row level security policy command in Azure Data Explorer.
+description: Learn how to use the `.alter table row level security policy` command to enable or disable a table's row level security policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 05/28/2023
 ---
-# .alter table row level security policy
+# .alter table row level security policy command
 
 Turn on or turn off a table's [row_level_security policy](rowlevelsecuritypolicy.md). The Row Level Security simplifies the design and coding of security. It lets you apply restrictions on data row access in your application. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company.
 

@@ -3,7 +3,7 @@ title: Add a cluster connection in the Azure Data Explorer web UI
 description: This article describes how to add a cluster connection in the Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
-ms.date: 05/17/2023
+ms.date: 05/28/2023
 ---
 
 # Add a cluster connection in the Azure Data Explorer web UI
@@ -35,5 +35,6 @@ To add a connection to your Azure Data Explorer cluster, do the following:
 
 ## Next steps
 
-* Ingest data with the [ingestion wizard](ingest-data-wizard.md)
-* Query data with [Kusto Query Language (KQL)](kusto/query/index.md)
+* Get data with the [ingestion wizard](ingest-data-wizard.md)
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
+* [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)

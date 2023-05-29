@@ -1,11 +1,11 @@
 ---
 title:  .alter table partitioning policy command
-description: Learn how to use the .alter table partitioning policy command to change the table's partitioning policy.
+description: Learn how to use the `.alter table partitioning policy` command to change the table's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter table partitioning policy
+# .alter table partitioning policy command
 
 Change's the table's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 

@@ -5,7 +5,7 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .disable plugin
+# .disable plugin command
 
 Disables a plugin.
 

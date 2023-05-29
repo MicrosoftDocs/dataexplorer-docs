@@ -1,9 +1,9 @@
 ---
-title:  Request limits policy
-description: This article describes the request limits policy in Azure Data Explorer.
+title: Request limits policy
+description: Learn how to use the request limits policy to limit the resources used by the request during its execution.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/30/2021
+ms.date: 05/24/2023
 ---
 # Request limits policy
 
@@ -27,13 +27,13 @@ The following limits are configurable:
 | MaxFanoutNodesPercentage   | `int`     | The percentage of nodes on the cluster to fan out query execution to. Functions in a similar manner to `MaxFanoutThreadsPercentage`.    | [`1`, `100`]                              |  `query_fanout_nodes_percent`               |
 | MaxResultRecords           | `long`     | maximum number of records a request is allowed to return to the caller, above which the results are truncated.    | [`1`, `9223372036854775807`]   | `truncationmaxrecords`  |
 | MaxResultBytes     | `long`           | The maximum data size (in bytes) a request is allowed to return to the caller, above which the results are truncated.  | [`1`, `9223372036854775807`]    | `truncationmaxsize`    |
-| MaxExecutionTime     | `timespan`   | The maximum duration the request may run for.<br/>**Notes:**<br/>1) This can be used to place an more limits on top of the [*default* limits on execution time](../concepts/querylimits.md#limit-execution-timeout), but not extend them.<br/>2) Timeout processing isn't at the resolution of *seconds*, rather it's designed to prevent a query from running for *minutes*.<br/>3) The time it takes to read the payload back at the client isn't treated as part of the timeout. It depends on how quickly the caller pulls the data from the stream.<br/>4) Total execution time may exceed the configured value if aborting execution takes longer to complete. | (`00:00:00`, `01:00:00`]   | `servertimeout`    |
+| MaxExecutionTime     | `timespan`   | The maximum duration the request may run for.<br/>**Notes:**<br/>1) This can be used to place more limits on top of the [*default* limits on execution time](../concepts/querylimits.md#limit-execution-timeout), but not extend them.<br/>2) Timeout processing isn't at the resolution of *seconds*, rather it's designed to prevent a query from running for *minutes*.<br/>3) The time it takes to read the payload back at the client isn't treated as part of the timeout. It depends on how quickly the caller pulls the data from the stream.<br/>4) Total execution time may exceed the configured value if aborting execution takes longer to complete. | (`00:00:00`, `01:00:00`]   | `servertimeout`    |
 
 ### Notes
 
 * A limit that isn't defined, or is defined as `null`, is taken from the `default` workload group's request limits policy.
-* When altering the policy for the `default` workload group, a limit must be defined and have a non-`null` value.
-* The truncation limits `MaxResultRecords` and `MaxResultBytes` affect the final result of the query, as delivered back to the client. They don't apply to intermediates results of subqueries, such as those that result from having cross-cluster references.
+* When you alter the policy for the `default` workload group, a limit must be defined and have a non-`null` value.
+* The truncation limits `MaxResultRecords` and `MaxResultBytes` affect the final result of the query, as delivered back to the client. They don't apply to intermediate results of subqueries, such as those that result from having cross-cluster references.
 * In the default policy for the `default` workload group, all limits have `IsRelaxable` set to `true`.
 * Backwards compatibility:
   * Requests limits are disabled, and limits set in the policy don't apply for the following types of commands, when they're classified to the `default` workload group:

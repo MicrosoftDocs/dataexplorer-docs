@@ -1,9 +1,9 @@
 ---
-title:  Request queuing policy
-description: This article describes the request queuing policy in Azure Data Explorer.
+title: Request queuing policy
+description: Learn how to use the request queuing policy to control queueing of requests for delayed execution.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/02/2021
+ms.date: 05/24/2023
 ---
 # Request queuing policy (Preview)
 

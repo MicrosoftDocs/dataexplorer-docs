@@ -1,11 +1,11 @@
 ---
-title:  .alter table docstring
+title:  .alter table docstring command
 description: Learn how to use the `.alter table docstring` command to alter the `docstring` value of an existing table. 
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter table docstring
+# .alter table docstring command
 
 Alters the `docstring` value of an existing table.
 

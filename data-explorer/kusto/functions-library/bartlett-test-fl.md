@@ -9,13 +9,13 @@ zone_pivot_groups: kql-flavors-all
 ---
 # bartlett_test_fl()
 
-::: zone pivot="azuredataexplorer, azuremonitor"
+::: zone pivot="azuredataexplorer"
 
 The `bartlett_test_fl()` function is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) that performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
 
 ## Prerequisites
 
-* The `python()` plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 
 ## Syntax
 
@@ -158,7 +158,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 

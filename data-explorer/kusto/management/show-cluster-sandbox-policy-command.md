@@ -1,9 +1,9 @@
 ---
-title:  .show cluster sandbox policy command
-description: This article describes the .show cluster sandbox policy command in Azure Data Explorer.
+title: .show cluster sandbox policy command
+description: Learn how to use the `.show cluster sandbox policy` command to display the cluster's sandbox policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/24/2023
 ---
 # .show cluster sandbox policy
 

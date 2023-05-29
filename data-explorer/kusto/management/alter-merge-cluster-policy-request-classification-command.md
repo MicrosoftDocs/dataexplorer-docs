@@ -1,11 +1,11 @@
 ---
 title:  .alter-merge cluster policy request_classification command
-description: Learn how to use the alter-merge cluster policy request_classification command to enable or disable the cluster's request classification policy.
+description: Learn how to use the `alter-merge cluster policy request_classification` command to enable or disable the cluster's request classification policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter-merge cluster policy request_classification
+# .alter-merge cluster policy request_classification command
 
 Enables or disables the cluster's request classification policy.
 

@@ -595,7 +595,7 @@ For more information about using control commands to configure the authorized pr
 
 ### Manage permissions
 
-Managing read-only database permission is the same as for all database types. See [manage permissions in the Azure portal](manage-database-permissions.md#manage-permissions-in-the-azure-portal).
+Managing read-only database permission is the same as for all database types. To assign permissions, see [Manage database permissions in the Azure portal](manage-database-permissions.md) or use management commands to [Manage database security roles](kusto/management/manage-database-security-roles.md).
 
 ### Configure caching policy
 

@@ -1,11 +1,11 @@
 ---
 title:  .alter database ingestion batching policy command
-description: Learn how to use the .alter database ingestion batching policy command to set the ingestion batching policy.
+description: Learn how to use the `.alter database ingestion batching policy` command to set the ingestion batching policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 05/25/2023
 ---
-# .alter database ingestion batching policy
+# .alter database ingestion batching policy command
 
 Sets the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy determines when data aggregation stops and a batch is sealed and ingested.
 
