@@ -5,6 +5,8 @@ items:
   href: syntax-conventions.md
 - name: Quick reference guide
   href: ../../kql-quick-reference.md
+- name: Estimate table size
+  href: estimate-table-size.md
 - name: Query best practices
   items:
   - name: Best practices

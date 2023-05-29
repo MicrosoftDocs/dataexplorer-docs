@@ -490,8 +490,6 @@ items:
       - name: Working with databases and tables
         displayName: troubleshoot
         href: troubleshoot-database-table.md
-    - name: Understand and estimate table size
-      href: estimate-table-size.md
   - name: Develop
     items:
     - name: API overview
