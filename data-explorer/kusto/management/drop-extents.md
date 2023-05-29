@@ -1,11 +1,11 @@
 ---
-title: .drop extents
+title: .drop extents command
 description: Learn how to use the `.drop extents` command to drop extents from a specified database or table.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/15/2023
 ---
-# .drop extents
+# .drop extents command
 
 Drops extents from a specified database or table.
 

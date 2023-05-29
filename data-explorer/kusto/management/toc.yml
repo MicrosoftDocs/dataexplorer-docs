@@ -75,7 +75,7 @@ items:
       href: create-ingestion-mapping-command.md
     - name: .create-or-alter ingestion mapping command
       href: create-or-alter-ingestion-mapping-command.md
-    - name: ".drop ingestion mapping"
+    - name: .drop ingestion mapping command
       href: drop-ingestion-mapping-command.md
     - name: ".show ingestion mapping"
       href: show-ingestion-mapping-command.md
@@ -89,7 +89,8 @@ items:
       href: create-merge-table-command.md
     - name: .create-merge tables command
       href: create-merge-tables-command.md
-    - name: ".drop tables"
+    - name: .drop table command
+      displayName: .drop tables 
       href: drop-table-command.md
     - name: ".rename tables"
       href: rename-table-command.md
@@ -129,7 +130,7 @@ items:
         href: external-sql-tables.md
       - name: Query a SQL external table
         href: external-sql-tables-query.md
-    - name: ".drop external table"
+    - name: .drop external table command
       href: drop-external-table.md
     - name: ".show external table"
       href: show-external-tables.md
@@ -204,9 +205,9 @@ items:
       href: columns.md
     - name: .alter column command
       href: alter-column.md
-    - name: ".drop column"
+    - name: .drop column command
       href: drop-column.md
-    - name: ".rename column"
+    - name: .rename column command
       href: rename-column.md
     - name: .alter column-docstrings command
       href: alter-column-docstrings.md
@@ -243,6 +244,7 @@ items:
     - name: .create-or-alter function command
       href: create-alter-function.md
     - name: .drop function command
+      displayName: .drop functions
       href: drop-function.md
     - name: .show functions command
       href: show-function.md
@@ -542,7 +544,8 @@ items:
       href: alter-table-update-policy-command.md
     - name: .alter-merge table update policy command
       href: alter-merge-table-update-policy-command.md
-    - name: .delete table update policy command
+    - name: .delete table policy update command
+      displayName: .delete table update policy
       href: delete-table-update-policy-command.md
     - name: .show table update policy command
       href: show-table-update-policy-command.md
@@ -637,11 +640,11 @@ items:
   href: databasecursor.md
 - name: Plugin commands
   items:
-  - name: .show plugins
+  - name: .show plugins command
     href: show-plugins.md
-  - name: .enable plugin
+  - name: .enable plugin command
     href: enable-plugin.md
-  - name: .disable plugin
+  - name: .disable plugin command
     href: disable-plugin.md
 - name: Query results cache
   href: query-results-cache-commands.md
@@ -687,9 +690,9 @@ items:
       items:
       - name: .alter extent tags command
         href: alter-extent.md
-      - name: .drop extents
+      - name: .drop extents command
         href: drop-extents.md
-      - name: .drop extent tags
+      - name: .drop table extent tags command
         href: drop-extent-tags.md
       - name: .move extents
         href: move-extents.md
