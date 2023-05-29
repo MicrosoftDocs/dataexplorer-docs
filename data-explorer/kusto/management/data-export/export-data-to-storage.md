@@ -171,7 +171,7 @@ On export, Kusto data types are mapped to Parquet data types using the following
 | Kusto Data Type | Parquet Data Type | Parquet Annotation | Comments |
 | --------------- | ----------------- | ------------------ | -------- |
 | `bool`     | `BOOLEAN` | | |
-| `datetime` | `INT64` | TIMESTAMP_MICROS | Not supported by Synapse SQL |
+| `datetime` | `INT64` | TIMESTAMP_MICROS | |
 | `dynamic`  | `BYTE_ARRAY` | UTF-8 | Serialized as JSON string |
 | `guid` | `BYTE_ARRAY` | UTF-8 | |
 | `int` | `INT32` | | |
