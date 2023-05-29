@@ -1,8 +1,8 @@
 ---
 title: Integrate Azure Data Explorer with Microsoft Purview
-description: Learn how to use Azure Data Explorer with Microsoft Purview.
+description: Learn how to use Azure Data Explorer with Purview.
 ms.topic: conceptual
-ms.date: 05/24/2023
+ms.date: 05/29/2023
 ---
 
 # Integrate Azure Data Explorer with Microsoft Purview
@@ -14,16 +14,16 @@ Microsoft Purview simplifies data governance by offering a unified service to ma
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
 
-## Connect to Azure Data Explorer in Microsoft Purview
+## Connect to Azure Data Explorer in Purview
 
-For information on how to connect to Azure Data Explorer in Microsoft Purview, see the following topics:
+For information on how to connect to Azure Data Explorer in Purview, see the following topics:
 
-* [Connect to and manage Azure Data Explorer in Microsoft Purview](/azure/purview/register-scan-azure-data-explorer)
+* [Connect to and manage Azure Data Explorer in Purview](/azure/purview/register-scan-azure-data-explorer)
 * [HowTo: Azure Data Explorer integration into Azure Purview](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/howto-azure-data-explorer-integration-into-azure-purview/ba-p/1963911)
 
 ## Use cases
 
-The following sections describe some common use cases for integrating Azure Data Explorer with Microsoft Purview.
+The following sections describe some common use cases for integrating Azure Data Explorer with Purview.
 
 ### View resource properties in multi-tenant deployment
 
@@ -31,7 +31,7 @@ In Purview, you can configure scans on multiple clusters to gain insights into v
 
 To view the properties of an Azure Data Explorer resource, follow these steps:
 
-1. [Set up a scan of your cluster in Microsoft Purview](/azure/purview/register-scan-azure-data-explorer#scan).
+1. [Set up a scan of your cluster in Purview](/azure/purview/register-scan-azure-data-explorer#scan).
 1. Select the desired resource.
 
     > [!NOTE]
