@@ -92,7 +92,8 @@ items:
     - name: .drop table command
       displayName: .drop tables 
       href: drop-table-command.md
-    - name: ".rename tables"
+    - name: .rename table command
+      displayName: .rename tables
       href: rename-table-command.md
     - name: ".show tables"
       href: show-tables-command.md
@@ -114,13 +115,13 @@ items:
         href: external-tables-azurestorage-deltalake.md
       - name: Manage external table mappings
         items:
-        - name: .alter external table mapping
+        - name: .alter external table mapping command
           href: external-table-mapping-alter.md  
-        - name: .create external table mapping
+        - name: .create external table mapping command
           href: external-table-mapping-create.md
-        - name: .drop external table mapping
+        - name: .drop external table mapping command
           href: external-table-mapping-drop.md
-        - name: .show external table mapping
+        - name: .show external table mapping command
           href: external-table-mapping-show.md
       - name: Show external table artifacts
         href: show-external-table-artifacts.md
@@ -208,6 +209,7 @@ items:
     - name: .drop column command
       href: drop-column.md
     - name: .rename column command
+      displayName: .rename columns
       href: rename-column.md
     - name: .alter column-docstrings command
       href: alter-column-docstrings.md
@@ -599,13 +601,13 @@ items:
       href: data-ingestion/streaming-ingestion-schema-changes.md
     - name: Clear schema cache for streaming ingestion
       href: data-ingestion/clear-schema-cache-command.md
-  - name: .dup-next-ingest
+  - name: .dup-next-ingest command
     href: dup-next-ingest.md
     displayName: duplicate, ingestion, troubleshoot
-  - name: .dup-next-failed-ingest
+  - name: .dup-next-failed-ingest command
     displayName: duplicate, failure, ingestion, troubleshoot
     href: dup-next-failed-ingest.md
-  - name: .show ingestion failures
+  - name: .show ingestion failures command
     href: ingestionfailures.md
   - name: .show streaming ingestion failures
     href: streamingingestionfailures.md   
@@ -673,11 +675,12 @@ items:
     href: diagnostics.md
   - name: Journal
     href: journal.md
-  - name: Operations
+  - name: .show operation command
+    displayName: Operations management, operations, .show Operations
     href: operations.md
-  - name: Queries
-    href: queries.md
+  - name: Query management commands
     displayName: .show running queries .cancel query 
+    href: queries.md
   - name: .show streaming ingestion statistics
     href: streamingingestionstatistics.md
 - name: Advanced data management
@@ -694,9 +697,9 @@ items:
         href: drop-extents.md
       - name: .drop table extent tags command
         href: drop-extent-tags.md
-      - name: .move extents
+      - name: .move extents command
         href: move-extents.md
-      - name: .replace extents
+      - name: .replace extents command
         href: replace-extents.md
       - name: .show extents
         href: show-extents.md

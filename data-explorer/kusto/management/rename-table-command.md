@@ -1,11 +1,11 @@
 ---
-title: .rename table and .rename tables
-description: Learn how to use the `.rename table` and `.rename tables` commands to change the name of an existing table.
+title: .rename table command
+description: Learn how to use the `.rename table` command to change the name of an existing table.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .rename table and .rename tables
+# .rename table command
 
 Changes the name of an existing table.
 
