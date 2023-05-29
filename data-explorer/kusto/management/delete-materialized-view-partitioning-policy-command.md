@@ -1,11 +1,11 @@
 ---
-title: .delete materialized view partitioning policy command
-description: Learn how to use the `.delete materialized view partitioning policy` command to delete a materialized view's partitioning policy.
+title: .delete materialized-view partitioning policy command
+description: Learn how to use the `.delete materialized-view partitioning policy` command to delete a materialized view's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .delete materialized view partitioning policy
+# .delete materialized-view partitioning policy command
 
 Deletes the materialized view's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 

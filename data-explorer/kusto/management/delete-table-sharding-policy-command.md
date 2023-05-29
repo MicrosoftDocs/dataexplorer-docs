@@ -1,11 +1,11 @@
 ---
-title: .delete table sharding policy command
-description: Learn how to use the `.delete table sharding policy` command to delete a table's sharding policy.
+title: .delete table policy sharding command
+description: Learn how to use the `.delete table policy sharding` command to delete a table's sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .delete table sharding policy
+# .delete table policy sharding command
 
 Delete the table sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
 
