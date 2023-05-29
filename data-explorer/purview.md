@@ -21,9 +21,9 @@ For information on how to connect to Azure Data Explorer in Purview, see the fol
 * [Connect to and manage Azure Data Explorer in Purview](/azure/purview/register-scan-azure-data-explorer)
 * [HowTo: Azure Data Explorer integration into Azure Purview](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/howto-azure-data-explorer-integration-into-azure-purview/ba-p/1963911)
 
-## Use cases
+## Example use case
 
-The following sections describe some common use cases for integrating Azure Data Explorer with Purview.
+The following section describes an example use case for integrating Azure Data Explorer with Purview.
 
 ### View resource properties in multi-tenant deployment
 
