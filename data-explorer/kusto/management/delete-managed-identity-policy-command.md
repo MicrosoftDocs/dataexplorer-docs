@@ -5,7 +5,7 @@ ms.reviewer: slneimer
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .delete managed_identity policy
+# .delete managed_identity policy command
 
 Deletes the ManagedIdentity policy of the cluster or the specified database.
 

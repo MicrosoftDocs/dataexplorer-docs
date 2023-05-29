@@ -61,7 +61,7 @@ items:
     items:
     - name: Tables management
       href: tables.md
-    - name: .alter-merge table
+    - name: .alter-merge table command
       href: alter-merge-table-command.md
     - name: .alter table command 
       href: alter-table-command.md
@@ -71,23 +71,23 @@ items:
       href: alter-table-folder-command.md
     - name: .alter ingestion mapping command
       href: alter-ingestion-mapping-command.md
-    - name: ".create ingestion mapping"
+    - name: .create ingestion mapping command
       href: create-ingestion-mapping-command.md
-    - name: ".create-or-alter ingestion mapping"
+    - name: .create-or-alter ingestion mapping command
       href: create-or-alter-ingestion-mapping-command.md
     - name: ".drop ingestion mapping"
       href: drop-ingestion-mapping-command.md
     - name: ".show ingestion mapping"
       href: show-ingestion-mapping-command.md
-    - name: ".create table"
+    - name: .create table command
       href: create-table-command.md
-    - name: ".create table based-on"
+    - name: .create table based-on command
       href: create-table-based-on-command.md
-    - name: ".create tables"
+    - name: .create tables command
       href: create-tables-command.md
-    - name: ".create-merge table"
+    - name: .create-merge table command
       href: create-merge-table-command.md
-    - name: ".create-merge tables"
+    - name: .create-merge tables command
       href: create-merge-tables-command.md
     - name: ".drop tables"
       href: drop-table-command.md
@@ -101,7 +101,7 @@ items:
       href: show-table-details-command.md
     - name: ".show table schema"
       href: show-table-schema-command.md
-    - name: ".clear table data"
+    - name: .clear table data command
       href: clear-table-data-command.md
   - name: External tables
     items:
@@ -210,7 +210,7 @@ items:
       href: rename-column.md
     - name: .alter column-docstrings command
       href: alter-column-docstrings.md
-    - name: ".alter-merge column-docstrings"
+    - name: .alter-merge column-docstrings command
       href: alter-merge-table-column.md
   - name: Data mappings
     items:
@@ -242,9 +242,9 @@ items:
       href: create-function.md
     - name: .create-or-alter function command
       href: create-alter-function.md
-    - name: ".drop function"
+    - name: .drop function command
       href: drop-function.md
-    - name: ".show functions"
+    - name: .show functions command
       href: show-function.md
 - name: Policies
   items:
@@ -269,10 +269,12 @@ items:
     - name: .alter materialized-view cache policy command
       href: alter-materialized-view-cache-policy-command.md
     - name: .alter table cache policy command
+    - name: .alter table cache policy command
       href: alter-table-cache-policy-command.md
     - name: .delete database cache policy command
+    - name: .delete database cache policy command
       href: delete-database-cache-policy-command.md
-    - name: .delete materialized view cache policy command
+    - name: .delete materialized-view cache policy command
       href: delete-materialized-view-cache-policy-command.md
     - name: .delete table policy caching command
       displayName: .delete table cache policy, .delete table caching policy
@@ -315,13 +317,13 @@ items:
       href: show-encoding-policy.md
   - name: Ingestion batching 
     items:
-    - name: Ingestion batching policy
+    - name: Ingestionbatching policy
       href: batchingpolicy.md
     - name: .alter database ingestion batching policy command
       href: alter-database-ingestion-batching-policy.md
-    - name: ".alter table ingestion batching policy command"
+    - name: .alter table ingestion batching policy command
       href: alter-table-ingestion-batching-policy.md
-    - name: ".delete database ingestion batching policy command"
+    - name: .delete database ingestion batching policy command
       href: delete-database-ingestion-batching-policy.md
     - name: .delete table policy ingestionbatching command
       displayName: .delete table ingestionbatching policy, .delete table ingestion batching policy
@@ -389,7 +391,7 @@ items:
       href: alter-merge-materialized-view-partitioning-policy-command.md
     - name: .alter-merge table partitioning policy command
       href: alter-merge-table-partitioning-policy-command.md
-    - name: .delete materialized view partitioning policy command
+    - name: .delete materialized-view partitioning policy command
       href: delete-materialized-view-partitioning-policy-command.md
     - name: .delete table policy partitioning command
       displayName: .delete table partitioning policy
@@ -416,7 +418,7 @@ items:
       href: alter-merge-table-retention-policy-command.md
     - name: .delete database retention policy command
       href: delete-database-retention-policy-command.md
-    - name: .delete materialized view retention policy command
+    - name: .delete materialized-view retention policy command
       href: delete-materialized-view-retention-policy-command.md
     - name: .delete table policy retention command
       displayName: .delete table retention policy
@@ -433,9 +435,9 @@ items:
       href: extent-tags-retention-policy.md
     - name: .alter database extent tags retention policy command
       href: alter-extent-tags-retention-policy.md
-    - name: ".alter table extent tags retention policy"
+    - name: .alter table extent tags retention policy command
       href: alter-table-extent-tags-retention-policy.md
-    - name: .delete extent tags retention policy
+    - name: .delete extent tags retention policy command
       href: delete-extent-tags-retention-policy.md
     - name: .show extent tags retention policy
       href: show-extent-tags-retention-policy.md
@@ -443,7 +445,7 @@ items:
     items:
     - name: Restricted view access policy
       href: restrictedviewaccesspolicy.md
-    - name: .alter table restricted view access policy
+    - name: .alter table restricted view access policy command
       href: alter-table-restricted-view-access-policy-command.md
     - name: .delete table policy restricted_view_access command
       displayName: .delete table restricted view access policy, .delete table restricted_view_access policy
@@ -464,7 +466,7 @@ items:
       href: show-table-row-level-security-policy-command.md
   - name: Row order
     items:
-    - name: Row order policy
+    - name: Row order policy command
       href: roworderpolicy.md
     - name: .alter table row order policy command
       href: alter-table-row-order-policy-command.md
@@ -548,7 +550,7 @@ items:
     items:
     - name: Query weak consistency policy
       href: query-weak-consistency-policy.md
-    - name: .alter cluster policy query_weak_consistency
+    - name: .alter cluster policy query_weak_consistency command
       href: alter-query-weak-consistency-policy.md
     - name: .show cluster policy query_weak_consistency
       href: show-query-weak-consistency-policy.md
@@ -647,7 +649,7 @@ items:
   - name: Show cache
     displayName: show database cache query results
     href: show-query-results-cache-command.md
-  - name: Clear cache
+  - name: .clear cache query_results command
     displayName: clear query results cache
     href: clear-query-results-cache-command.md
 - name: Cross-cluster schema
