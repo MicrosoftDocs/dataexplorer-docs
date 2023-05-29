@@ -113,13 +113,13 @@ items:
         href: external-tables-azurestorage-deltalake.md
       - name: Manage external table mappings
         items:
-        - name: .alter external table mapping
+        - name: .alter external table mapping command
           href: external-table-mapping-alter.md  
-        - name: .create external table mapping
+        - name: .create external table mapping command
           href: external-table-mapping-create.md
-        - name: .drop external table mapping
+        - name: .drop external table mapping command
           href: external-table-mapping-drop.md
-        - name: .show external table mapping
+        - name: .show external table mapping command
           href: external-table-mapping-show.md
       - name: Show external table artifacts
         href: show-external-table-artifacts.md
@@ -585,10 +585,10 @@ items:
       href: data-ingestion/streaming-ingestion-schema-changes.md
     - name: Clear schema cache for streaming ingestion
       href: data-ingestion/clear-schema-cache-command.md
-  - name: .dup-next-ingest
+  - name: .dup-next-ingest command
     href: dup-next-ingest.md
     displayName: duplicate, ingestion, troubleshoot
-  - name: .dup-next-failed-ingest
+  - name: .dup-next-failed-ingest command
     displayName: duplicate, failure, ingestion, troubleshoot
     href: dup-next-failed-ingest.md
   - name: .show ingestion failures
@@ -626,11 +626,11 @@ items:
   href: databasecursor.md
 - name: Plugin commands
   items:
-  - name: .show plugins
+  - name: .show plugins command
     href: show-plugins.md
-  - name: .enable plugin
+  - name: .enable plugin command
     href: enable-plugin.md
-  - name: .disable plugin
+  - name: .disable plugin command
     href: disable-plugin.md
 - name: Query results cache
   href: query-results-cache-commands.md
