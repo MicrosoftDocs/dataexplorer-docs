@@ -1,11 +1,11 @@
 ---
-title: .delete table streaming ingestion policy command
-description: Learn how to use the `.delete table streaming ingestion policy` command to delete a table's streaming ingestion policy.
+title: .delete table policy streamingingestion command
+description: Learn how to use the `.delete table policy streamingingestion` command to delete a table's streaming ingestion policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .delete table streaming ingestion policy
+# .delete table policy streamingingestion command
 
 Delete the table streaming ingestion policy. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
 

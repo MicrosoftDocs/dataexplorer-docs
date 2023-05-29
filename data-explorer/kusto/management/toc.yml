@@ -268,19 +268,20 @@ items:
       href: alter-database-cache-policy-command.md
     - name: .alter materialized-view cache policy command
       href: alter-materialized-view-cache-policy-command.md
-    - name: ".alter table cache policy command"
+    - name: .alter table cache policy command
       href: alter-table-cache-policy-command.md
-    - name: ".delete database cache policy command"
+    - name: .delete database cache policy command
       href: delete-database-cache-policy-command.md
     - name: .delete materialized view cache policy command
       href: delete-materialized-view-cache-policy-command.md
-    - name: ".delete table cache policy command"
+    - name: .delete table policy caching command
+      displayName: .delete table cache policy, .delete table caching policy
       href: delete-table-cache-policy-command.md
-    - name: ".show database cache policy command"
+    - name: .show database cache policy command
       href: show-database-cache-policy-command.md
-    - name: ".show materialized view cache policy command"
+    - name: .show materialized view cache policy command
       href: show-materialized-view-cache-policy-command.md
-    - name: ".show table cache policy command"
+    - name: .show table cache policy command
       href: show-table-cache-policy-command.md
   - name: Callout
     items:
@@ -322,7 +323,8 @@ items:
       href: alter-table-ingestion-batching-policy.md
     - name: ".delete database ingestion batching policy command"
       href: delete-database-ingestion-batching-policy.md
-    - name: ".delete table ingestion batching policy command"
+    - name: .delete table policy ingestionbatching command
+      displayName: .delete table ingestionbatching policy, .delete table ingestion batching policy
       href: delete-table-ingestion-batching-policy.md
     - name: ".show database ingestion batching policy command"
       href: show-database-ingestion-batching-policy.md
@@ -368,7 +370,8 @@ items:
       href: alter-merge-materialized-view-merge-policy-command.md
     - name: .delete database merge policy command
       href: delete-database-merge-policy-command.md
-    - name: .delete table merge policy command
+    - name: .delete table policy merge command
+      displayName: .delete table merge policy
       href: delete-table-merge-policy-command.md
     - name: .show database merge policy command
       href: show-database-merge-policy-command.md
@@ -388,7 +391,8 @@ items:
       href: alter-merge-table-partitioning-policy-command.md
     - name: .delete materialized view partitioning policy command
       href: delete-materialized-view-partitioning-policy-command.md
-    - name: .delete table partitioning policy command
+    - name: .delete table policy partitioning command
+      displayName: .delete table partitioning policy
       href: delete-table-partitioning-policy-command.md
     - name: .show materialized view partitioning policy command
       href: show-materialized-view-partitioning-policy-command.md
@@ -414,7 +418,8 @@ items:
       href: delete-database-retention-policy-command.md
     - name: .delete materialized view retention policy command
       href: delete-materialized-view-retention-policy-command.md
-    - name: .delete table retention policy command
+    - name: .delete table policy retention command
+      displayName: .delete table retention policy
       href: delete-table-retention-policy-command.md
     - name: .show database retention policy command
       href: show-database-retention-policy-command.md
@@ -440,7 +445,8 @@ items:
       href: restrictedviewaccesspolicy.md
     - name: .alter table restricted view access policy
       href: alter-table-restricted-view-access-policy-command.md
-    - name: .delete table restricted view access policy
+    - name: .delete table policy restricted_view_access command
+      displayName: .delete table restricted view access policy, .delete table restricted_view_access policy
       href: delete-table-restricted-view-access-policy-command.md
     - name: .show table restricted view access policy
       href: show-table-restricted-view-access-policy-command.md
@@ -464,7 +470,8 @@ items:
       href: alter-table-row-order-policy-command.md
     - name: .alter-merge table row order policy command
       href: alter-merge-table-row-order-policy-command.md
-    - name: .delete table row order policy command
+    - name: .delete table policy roworder command
+      displayName: .delete table row order policy, .delete table roworder policy
       href: delete-table-row-order-policy-command.md
     - name: .show table row order policy command
       href: show-table-row-order-policy-command.md
@@ -496,7 +503,8 @@ items:
       href: alter-merge-table-sharding-policy-command.md
     - name: .delete database sharding policy command
       href: delete-database-sharding-policy-command.md
-    - name: .delete table sharding policy command
+    - name: .delete table policy sharding command
+      displayName: .delete table sharding policy
       href: delete-table-sharding-policy-command.md
     - name: .show database sharding policy command
       href: show-database-sharding-policy-command.md
@@ -516,7 +524,8 @@ items:
       href: alter-merge-table-streaming-ingestion-policy-command.md
     - name: .delete database streaming ingestion policy command
       href: delete-database-streaming-ingestion-policy-command.md
-    - name: .delete table streaming ingestion policy command
+    - name: .delete table policy streamingingestion command
+      displayName: .delete table streaming ingestion policy, .delete table policy streaming ingestion
       href: delete-table-streaming-ingestion-policy-command.md
     - name: .show database streaming ingestion policy command
       href: show-database-streaming-ingestion-policy-command.md
