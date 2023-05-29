@@ -5,7 +5,7 @@ ms.reviewer: yifats
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show table policy auto_delete
+# .show table policy auto_delete command
 
 Shows the auto delete policy that's applied to a table. For more information, see [auto delete policy](auto-delete-policy.md).
 
