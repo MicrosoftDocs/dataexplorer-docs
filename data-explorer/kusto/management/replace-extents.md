@@ -1,11 +1,11 @@
 ---
-title: .replace extents
+title: .replace extents command
 description: Learn how to use the `.replace extents` command to move extents from a source table to a destination table.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .replace extents
+# .replace extents command
 
 This command runs in the context of a specific database.
 It moves the specified extents from their source tables to the destination table,

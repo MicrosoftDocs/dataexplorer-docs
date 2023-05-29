@@ -3,7 +3,7 @@ title: Ingest JSON data from a local file to an existing table in Azure Data Exp
 description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 09/14/2022
+ms.date: 05/28/2023
 ---
 # Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer
 
@@ -115,7 +115,12 @@ In the **Data ingestion completed** window, all three steps are marked with gree
 
 ## Next steps
 
-* Get an [overview of the ingestion wizard](ingest-data-wizard.md)
-* Learn how to [Ingest data from a container/ADLS into Azure Data Explorer](/azure/data-explorer/ingest-from-container)
-* [Query data](web-query-data.md) in the Azure Data Explorer web UI
-* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) for Azure Data Explorer using [Kusto Query Language (KQL)](kusto/query/index.md)
+For another ingestion scenario, see the following article:
+
+* [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container)
+
+To get started querying data, see the following articles:
+
+* [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
+* [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)

@@ -1,11 +1,11 @@
 ---
-title: .execute database script
+title: .execute database script command
 description: Learn how to use the `.execute database script` command to execute a batch of control commands in the scope of a single database.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .execute database script
+# .execute database script command
 
 Executes a batch of control commands in the scope of a single database.
 

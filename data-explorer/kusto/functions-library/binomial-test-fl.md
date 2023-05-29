@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # binomial_test_fl()
 
-::: zone pivot="azuredataexplorer, azuremonitor"
+::: zone pivot="azuredataexplorer"
 
 The function `binomial_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [binomial test](https://en.wikipedia.org/wiki/Binomial_test).
 
@@ -165,10 +165,9 @@ datatable(id:string, x:int, n:int) [
 | Test #2 | 5 | 5 | 0.00032 |
 | Test #3 | 3 | 15 | 0.601976790745087 |
 
-
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 
