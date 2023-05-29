@@ -1,9 +1,9 @@
 ---
-title:  .show cluster capacity policy command
-description: This article describes the .show cluster capacity policy command in Azure Data Explorer.
+title: .show cluster capacity policy command
+description: Learn how to use the `.show cluster capacity policy` command to display a cluster's capacity policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/24/2023
 ---
 # .show cluster capacity policy
 
@@ -15,7 +15,7 @@ You must have at least [AllDatabasesMonitor](access-control/role-based-access-co
 
 ## Syntax
 
-`.show` `cluster` `policy` `capacity` 
+`.show` `cluster` `policy` `capacity`
 
 ## Returns
 

@@ -1,11 +1,11 @@
 ---
-title:  .create ingestion mapping
-description: This article describes .create ingestion mapping in Azure Data Explorer.
+title: .create ingestion mapping command
+description: Learn how to use the `.create ingestion mapping` command to create an ingestion mapping.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 05/24/2023
 ---
-# .create ingestion mapping
+# .create ingestion mapping command
 
 Creates an ingestion mapping that can be associated with a specific format and a specific table or database.
 
@@ -38,7 +38,7 @@ At least [Database Ingestor](access-control/role-based-access-control.md) permis
 > * When ingesting into a table and referencing a mapping whose schema does not match the ingested table schema, the ingest operation will fail.
 
 ## Examples
- 
+
 ```kusto
 .create table MyTable ingestion csv mapping "Mapping1"
 '['
@@ -60,8 +60,8 @@ At least [Database Ingestor](access-control/role-based-access-control.md) permis
 | mapping1 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` | MyDatabase | MyTable |
 | mapping2 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` | MyDatabase | |
 
-### Example: .create ingestion mapping with escape characters** 
- 
+### Example: .create ingestion mapping with escape characters**
+
 ```kusto
 .create table test_table ingestion json mapping "test_mapping_name"
 '['

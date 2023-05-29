@@ -1,16 +1,18 @@
 ---
 title: Data soft delete - Azure Data Explorer
-description: This article describes Data soft delete in Azure Data Explorer.
+description: This article describes data soft delete in Azure Data Explorer.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 03/02/2023
+ms.date: 05/17/2023
 ---
-# Soft delete
+# Soft delete overview
 
-As a data platform, Azure Data Explorer supports the ability to delete individual records. This is commonly achieved using one of the following methods:
+As a data platform, Azure Data Explorer supports the ability to delete individual records. Record deletion is commonly achieved using one of the following methods:
 
-* To delete records with a system guarantee that the storage artifacts containing these records are deleted as well, use [.purge](./data-purge.md)
-* To delete records without such a guarantee, use `.delete` as described in this topic - this marks records as deleted but doesn't necessarily delete the data from storage artifacts. This deletion method is much faster than purge.
+* To delete records with a system guarantee that the storage artifacts containing these records are deleted as well, use [`.purge`](./data-purge.md)
+* To delete records without such a guarantee, use `.delete` as described in this article - this command marks records as deleted but doesn't necessarily delete the data from storage artifacts. This deletion method is faster than purge. 
+
+For information on how to use the command, see [Syntax](../management/soft-delete-command.md)
 
 ## Use cases
 
@@ -31,9 +33,9 @@ The soft delete process is performed using the following steps:
 
 * Soft delete is only available on clusters running Engine V3.
 
-* Soft delete is only supported for native tables and isn't supported for external tables or materialized views.
+* Soft delete is supported for native tables and materialized views. It isn't supported for external tables.
 
-* Before running soft delete, verify the predicate by running a query and checking that the results match the expected outcome. You can also run the command in `whatif` mode, that returns the number of records that are expected to be deleted.
+* Before running soft delete, verify the predicate by running a query and checking that the results match the expected outcome. You can also run the command in `whatif` mode, which returns the number of records that are expected to be deleted.
 
 * Don't run multiple parallel soft delete operations on the same table, as this may result in failures of some or all the commands. However, it's possible to run multiple parallel soft delete operations on different tables.
 
@@ -41,8 +43,7 @@ The soft delete process is performed using the following steps:
 
 * Soft delete is executed against your engine endpoint: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-access-control.md) permissions on the relevant database.
 
-* Soft delete can affect materialized views based on a source table in which records are deleted. This can happen because every [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work) adds newly ingested data to the materialized part from the previous cycle. Therefore, if the command deletes newly ingested records before a new cycle begins, those records won't be added to the materialized view. Otherwise, deleting records won't affect the materialized view.
-
+* Deleting records from a table that is a source table of a [materialized view](../management/materialized-views/materialized-view-overview.md), can have an impact on the materialized view. If records being deleted were not yet processed by the [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work), these records will be missing in the view, since they will never be processed. Similarly, the deletion will not have an impact on the materialized view if the records have already been processed.
 ## Deletion performance
 
 The main considerations that can impact the [deletion process](#deletion-process) performance are:
@@ -58,9 +59,9 @@ Unlike `.purge`, the `.delete` command doesn't reingest the data. It just marks 
 
 Query performance isn't expected to noticeably change following the deletion of records.
 
-Performance degradation isn't expected because the filter that is automatically added on all queries that filter out records that were deleted is very efficient.
+Performance degradation isn't expected because the filter that is automatically added on all queries that filter out records that were deleted is efficient.
 
-However, query performance is also not guaranteed to improve. While this may happen for some types of queries, it may not happen for some others. In order to improve query performance, extents in which the majority of the records are deleted are periodically compacted by replacing them with new extents that only contain the records that haven't been deleted.
+However, query performance is also not guaranteed to improve. While performance improvement may happen for some types of queries, it may not happen for some others. In order to improve query performance, extents in which most of the records are deleted are periodically compacted by replacing them with new extents that only contain the records that haven't been deleted.
 
 ## Impact on COGS (cost of goods sold)
 
@@ -70,43 +71,4 @@ In most cases, the deletion of records won't result in a change of COGS.
 * In most cases, there will be no increase because the `.delete` operation doesn't require the provisioning of extra resources.
 * In some cases, extents in which the majority of the records are deleted are periodically compacted by replacing them with new extents that only contain the records that haven't been deleted. This causes the deletion of the old storage artifacts that contain a large number of deleted records. The new extents are smaller and therefore consume less space in both the Storage account and in the hot cache. However, in most cases, the effect of this on COGS is negligible.
 
-## Triggering the deletion process
 
-### Syntax
-
-`.delete` [`async`] `table` *TableName* `records <|` *Predicate*
-
-### Parameters
-
-|Name|Type|Required|Description|
-|--|--|--|--|
-|`async`|string||If specified, indicates that the command runs in asynchronous mode.|
-|*TableName*|string|&check;|The name of the table from which to delete records.|
-|*Predicate*|string|&check;|The predicate that returns records to delete. Specified as a query.|
-
-> [!NOTE]
-> The following restrictions apply to the *Predicate*:
->
-> * The predicate should have at least one `where` operator.
-> * The predicate can only use the following operators: `extend`, `where` and `project`.
-> * The predicate can't reference other tables, nor use `externaldata`.
-
-#### Example
-
-To delete all the records that contain data of a given user:
-
-```kusto
-.delete table MyTable records <| MyTable | where UserId == 'X'
-```
-
-> [!NOTE]
->
-> To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the RecordsMatchPredicate column when running the command in `whatif` mode:
->
-> ```kusto
-> .delete table MyTable records with (whatif=true) <| MyTable | where UserId == 'X'
-> ```
-
-### Output
-
-The output of the command contains information about which extents were replaced.

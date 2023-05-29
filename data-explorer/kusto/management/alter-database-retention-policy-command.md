@@ -1,11 +1,11 @@
 ---
 title:  .alter database retention policy command
-description: Learn how to use the .alter database retention policy command to change the database's retention policy. 
+description: Learn how to use the `.alter database retention policy` command to change the database's retention policy. 
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 05/25/2023
 ---
-# .alter database retention policy
+# .alter database retention policy command
 
 Changes the database's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. The policy removes data whose relevance is age-based.
 

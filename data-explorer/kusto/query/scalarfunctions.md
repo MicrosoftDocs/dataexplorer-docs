@@ -319,6 +319,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[format_ipv4_mask()](format-ipv4-mask-function.md)|Parses input with a netmask and returns string representing IPv4 address as CIDR notation.|
 |[ipv6_is_in_range()](ipv6-is-in-range-function.md)|Checks if an IPv6 string address is in IPv6-prefix notation range.|
 |[ipv6_is_in_any_range()](ipv6-is-in-any-range-function.md)|Checks if an IPv6 string address is in any of the IPv6-prefix notation ranges.|
+|[geo_info_from_ip_address()](geo-info-from-ip-address-function.md)|Retrieves geolocation information about IPv4 or IPv6 addresses.|
 
 ## IPv4 text match functions
 

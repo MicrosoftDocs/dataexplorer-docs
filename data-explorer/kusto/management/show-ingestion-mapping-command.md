@@ -1,9 +1,9 @@
 ---
-title:  .show ingestion mappings
-description: This article describes .show ingestion mappings in Azure Data Explorer.
+title: .show ingestion mapping
+description: Learn how to use the `.show ingestion mapping` command to view the ingestion mapping for a table or database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/09/2023
+ms.date: 05/24/2023
 ---
 # .show ingestion mapping
 

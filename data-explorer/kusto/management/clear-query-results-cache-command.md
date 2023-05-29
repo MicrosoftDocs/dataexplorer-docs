@@ -1,11 +1,12 @@
 ---
-title:  Clear query results cache
-description: Find out how to clear cached query results in Azure Data Explorer. Learn which command to use and see an example.
+title: .clear cache query_results command
+description: Learn how to use the `.clear cache query_results` command to clear all cached query results.
+ clear cached query results.
 ms.reviewer: amitof
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/28/2023
 ---
-# Clear query results cache
+# .clear cache query_results command
 
 Clear all [cached query results](../query/query-results-cache.md) made against the context database.
 

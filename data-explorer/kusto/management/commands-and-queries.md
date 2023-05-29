@@ -1,25 +1,25 @@
 ---
-title:  Commands and queries management
-description: This article describes Commands and queries management in Azure Data Explorer.
+title: Commands and queries management
+description: Learn how to use the `.show commands and queries` command to view a table with admin commands and queries that have reached a final state.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/19/2019
+ms.date: 05/24/2023
 ---
 # Commands and queries management
 
-## .show commands-and-queries 
+## .show commands-and-queries
 
 `.show` `commands-and-queries` returns a table with admin commands and queries that have reached a final state. These commands and queries are available for 30 days.
 
-The information presented in the output of the command is similar to [`.show` commands](commands.md) 
+The information presented in the output of the command is similar to [`.show` commands](commands.md)
 and [`.show` queries](queries.md), however it essentially lets you join both result sets in a simple manner.
 
 **Syntax**
 
 `.show` `commands-and-queries`
- 
+
 **Output**
- 
+
 The output schema is as follows:
 
 | ColumnName               | ColumnType |

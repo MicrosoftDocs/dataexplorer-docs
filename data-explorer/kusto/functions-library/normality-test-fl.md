@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # normality_test_fl()
 
-::: zone pivot="azuredataexplorer, azuremonitor"
+::: zone pivot="azuredataexplorer"
 
 The function `normality_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Normality Test](https://en.wikipedia.org/wiki/Normality_test).
 
@@ -153,7 +153,7 @@ datatable(id:string, sample1:dynamic) [
 
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 

@@ -1,11 +1,11 @@
 ---
-title:  ".alter table row order policy command"
-description: "This article describes the .alter table row order policy command in Azure Data Explorer."
+title: .alter table row order policy command
+description: Learn how to use the `.alter table row order policy` command to change a table's row order policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 05/24/2023
 ---
-# .alter table row order policy
+# .alter table row order policy command
 
 Use this command to change a table's [row order policy](roworderpolicy.md). The row order policy is an optional table policy that defines the row order in a data shard. This policy can improve performance for queries that relate to a small set of values that can be ordered.
 
@@ -48,6 +48,6 @@ The following example sets the row order policy on the `TenantId` column (ascend
 .show table events policy roworder 
 ```
 
-|TableName|RowOrderPolicy| 
+|TableName|RowOrderPolicy|
 |---|---|
 |events|(TenantId asc, Timestamp desc)|

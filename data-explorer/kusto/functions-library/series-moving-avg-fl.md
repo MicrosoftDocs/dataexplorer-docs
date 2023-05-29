@@ -9,7 +9,7 @@ ms.date: 03/13/2023
 
 Applies a moving average filter on a series.
 
-The function `series_moving_avg_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing a dynamic numerical array as input and applies a [simple moving average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) filter.
+The function `series_moving_avg_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing a dynamic numerical array as input and applies on it a [simple moving average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) filter.
 
 ## Syntax
 

@@ -1,11 +1,11 @@
 ---
-title:  .dup-next-ingest
-description: Learn how to troubleshoot your data ingestion on demand using the .dup-next-ingest command.
+title: .dup-next-ingest command
+description: Learn how to use the `.dup-next-ingest` command to troubleshoot your data ingestion pull flow.
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/24/2023
 ---
 
-# .dup-next-ingest
+# .dup-next-ingest command
 
 Use the `.dup-next-ingest` command for on-demand troubleshooting of your data ingestion pull flow.
 

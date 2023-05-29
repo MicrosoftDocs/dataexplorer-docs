@@ -1,9 +1,9 @@
 ---
-title:  .show database sharding policy command
-description: This article describes the .show database sharding policy command in Azure Data Explorer.
+title: .show database sharding policy command
+description: Learn how to use the `.show database sharding policy` command to show the database's sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/24/2023
 ---
 # .show database sharding policy
 

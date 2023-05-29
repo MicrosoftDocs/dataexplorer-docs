@@ -1,8 +1,8 @@
 ---
-title:  Manage external external table roles
-description: This article describes how to use management commands to view, add, and remove external table admins on the external table level in Azure Data Explorer.
+title: Manage external external table roles
+description: Learn how to use management commands to view, add, and remove external table admins on an external table level.
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/24/2023
 ---
 
 # Manage external table roles
@@ -88,7 +88,7 @@ The following example removes all principals in the group from the `admins` role
 
 #### Add new admins and remove the old with .set
 
-THe following example removes existing `admins` and adds the provided principals as `admins` on the `Samples` external table.
+The following example removes existing `admins` and adds the provided principals as `admins` on the `Samples` external table.
 
 ```kusto
 .set external table Samples admins ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')

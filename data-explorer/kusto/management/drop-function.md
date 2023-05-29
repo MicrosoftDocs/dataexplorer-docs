@@ -1,13 +1,13 @@
 ---
-title:  .drop function
-description: This article describes .drop function in Azure Data Explorer.
+title: .drop function command
+description: Learn how to use the `.drop function` command to drop one or more functions from a database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/24/2023
 ---
-# .drop function and .drop functions
+# .drop function command
 
-Drops a function from the database.
+Drops one or more functions from the database.
 
 ## Permissions
 

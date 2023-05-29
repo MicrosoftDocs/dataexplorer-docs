@@ -1,11 +1,11 @@
 ---
-title:  .delete materialized-view retention policy command
-description: This article describes the .delete materialized-view retention policy command in Azure Data Explorer.
+title: .delete materialized-view retention policy command
+description: Learn how to use the `.delete materialized-view retention policy` command to delete a materialized view's retention policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/24/2023
+ms.date: 05/24/2023
 ---
-# .delete materialized-view retention policy
+# .delete materialized-view retention policy command
 
 Delete a materialized-view's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based. The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it.
 

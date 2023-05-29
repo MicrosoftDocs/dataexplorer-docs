@@ -12,6 +12,8 @@ ms.custom: mode-portal
 
 Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share [Kusto Query Language (KQL)](kusto/query/index.md) commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer web UI](https://dataexplorer.azure.com). In this quickstart, you'll learn how to query data in the stand-alone Azure Data Explorer web UI.
 
+In the Azure Data Explorer web UI, the query editor provides suggestions and warnings as you write your queries. To customize which suggestions and warnings you receive, see [Set query recommendations](web-customize-settings.md#set-query-recommendations).
+
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
@@ -27,8 +29,8 @@ If you want to run queries on a different cluster, you must add a connection to 
 To add a new cluster connection, do the following:
 
 1. On the left menu, select **Query**.
-1. In the upper left pane, select **Add cluster**.
-1. In the **Add cluster** dialog box, enter the cluster **Connection URI** and **Display name**.
+1. In the upper left pane, select **Add connection**.
+1. In the **Add connection** dialog box, enter the cluster **Connection URI** and **Display name**.
 1. Select **Add** to add the connection.
 
 If you don't see the **help** cluster, add it using the previous steps. Use "help" as the **Connection URI**.
@@ -114,7 +116,6 @@ Another option is to select **Clear local state** from the **Settings** > **Gene
 
 ## Next steps
 
-* [Work with the results grid](web-results-grid.md)
-* [Customize your Azure Data Explorer settings](web-customize-settings.md)
-* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
-* [Share your queries](web-share-queries.md)
+* Read the [web UI query overview](web-ui-query-overview.md)
+* Explore results with the [web UI results grid](web-results-grid.md)
+* [Customize settings in the web UI](web-customize-settings.md)

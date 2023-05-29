@@ -1,14 +1,14 @@
 ---
-title:  .drop extent tags
-description: This article describes the drop extent tags command in Azure Data Explorer.
+title: .drop table extent tags command
+description: Learn how to use the `.drop table extent tags` command to drop extent tags from a specified table in a database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/24/2023
+ms.date: 05/15/2023
 ---
 
-# .drop extent tags
+# .drop table extent tags
 
-Drops specific [extent tags](extents-overview.md#extent-tagging) from all or specific extents in the database and table. The command runs in the context of a specific database.
+Drops specific [extent tags](extents-overview.md#extent-tagging) from all or specific extents a table. The command runs in the context of a specific database.
 
 > [!NOTE]
 > Data shards are called **extents**, and all commands use "extent" or "extents" as a synonym.

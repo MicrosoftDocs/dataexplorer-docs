@@ -1,9 +1,9 @@
 ---
-title:  Workload groups
-description: This article describes workload groups in Azure Data Explorer.
+title: Workload groups
+description: Learn how to use workload groups to govern incoming requests to the cluster.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 05/23/2023
 ---
 # Workload groups
 
@@ -19,7 +19,7 @@ Workload groups are defined at the cluster level. Up to 10 custom workload group
 The pre-defined workload groups are:
 
 * [`internal` workload group](#internal-workload-group)
-* [`default` workload group](#default-workload-group) 
+* [`default` workload group](#default-workload-group)
 * [`$materialized-views` workload group](#materialized-views-workload-group)
 
 ### Default workload group
@@ -39,6 +39,7 @@ You can:
 Monitor what gets classified to the internal workload group and the statistics of those requests using the [Monitoring recommendations](#monitoring).
 
 > [!NOTE]
+>
 > * A limit on the maximum amount of concurrent *queries* may have been defined on some cluster using the optional *"Query throttling policy"*, which has been deprecated.
 > * In these clusters, the limit on the maximum amount of concurrent *queries* was automatically applied on the `default` workload group's [request rate limits policies](request-rate-limit-policy.md).
 > * While the old limit applied only to *queries*, the new limit applies to *all requests* - queries and control commands.
@@ -54,7 +55,6 @@ You can't:
 * Classify requests into the `internal` workload group.
 
 You can [monitor](#monitoring) what gets classified to the `internal` workload group, and statistics of those requests.
-
 
 ### Materialized views workload group
 
