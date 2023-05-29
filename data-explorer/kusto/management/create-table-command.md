@@ -1,11 +1,11 @@
 ---
-title: .create table
+title: .create table command
 description: Learn how to use the `.create table` command to create a new empty table.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .create table
+# .create table command
 
 Creates a new empty table.
 

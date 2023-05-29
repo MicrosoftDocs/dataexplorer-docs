@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # geoip_fl()
 
-::: zone pivot="azuredataexplorer, azuremonitor"
+::: zone pivot="azuredataexplorer"
 
 `geoip_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves geographic information of ip address.
 
@@ -220,10 +220,9 @@ datatable(ip:string) [
 | 205.251.242.103 | United States | Virginia | Ashburn | -77.4903 | 39.0469 |
 | 8.8.8.8 | United States | California | Los Angeles | -118.2441 | 34.0544 |
 
-
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 

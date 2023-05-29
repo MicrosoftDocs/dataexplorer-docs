@@ -1,11 +1,11 @@
 ---
 title:  .alter-merge database merge policy command
-description: Learn how to use the .alter-merge database merge policy command to change the database's merge policy.
+description: Learn how to use the `.alter-merge database merge policy` command to change the database's merge policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter-merge database merge policy
+# .alter-merge database merge policy command
 
 Changes the database's [merge policy](mergepolicy.md). The merge policy defines if and how [extents (data shards)](../management/extents-overview.md) in the cluster should get merged.
 

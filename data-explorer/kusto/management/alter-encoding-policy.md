@@ -1,11 +1,11 @@
 ---
-title:  Alter encoding policy
-description: Learn how to use the .alter encoding policy command to change the encoding policy.
+title: .alter encoding policy command
+description: Learn how to use the `.alter encoding policy` command to change the encoding policy.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter encoding policy
+# .alter encoding policy command
 
 Alters the encoding policy. For an overview of the encoding policy, see [Encoding policy](encoding-policy.md).
 

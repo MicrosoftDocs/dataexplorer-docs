@@ -1,9 +1,9 @@
 ---
-title:  .move extents
-description: This article describes the move extents command in Azure Data Explorer.
+title: .move extents
+description: Learn how to use the `.move extents` command to move extents from a source table to a destination table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/30/2023
+ms.date: 05/24/2023
 ---
 
 # .move extents
@@ -89,7 +89,7 @@ Move two specific extents (by their extent IDs) in a specified creation time ran
 .move extents from table MyTable to table MyOtherTable with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) (AE6CD250-BE62-4978-90F2-5CB7A10D16D7,399F9254-4751-49E3-8192-C1CA78020706)
 ```
 
-### Move all extents in a specified creation time range from specific tables 
+### Move all extents in a specified creation time range from specific tables
 
 Move all extents in a specified creation time range from specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`:
 
@@ -107,7 +107,7 @@ Move all extents in a specified creation time range from specific tables (`MyTab
 
 |OriginalExtentId |ResultExtentId| Details
 |---|---|---
-|e133f050-a1e2-4dad-8552-1f5cf47cab69 |0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687| 
-|cdbeb35b-87ea-499f-b545-defbae091b57 |a90a303c-8a14-4207-8f35-d8ea94ca45be| 
-|4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f| 
-|2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df| 
+|e133f050-a1e2-4dad-8552-1f5cf47cab69 |0d96ab2d-9dd2-4d2c-a45e-b24c65aa6687|
+|cdbeb35b-87ea-499f-b545-defbae091b57 |a90a303c-8a14-4207-8f35-d8ea94ca45be|
+|4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f|
+|2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df|

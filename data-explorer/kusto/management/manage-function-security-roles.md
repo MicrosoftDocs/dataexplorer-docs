@@ -1,8 +1,8 @@
 ---
-title:  Manage function roles
-description: This article describes how to use management commands to view, add, and remove function admins on the function level in Azure Data Explorer.
+title: Manage function roles
+description: Learn how to use management commands to view, add, and remove function admins on a function level.
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/24/2023
 ---
 
 # Manage function roles
@@ -91,7 +91,7 @@ The following example removes all principals in the group from the `admins` role
 
 #### Add new admins and remove the old with .set
 
-THe following example removes existing `admins` and adds the provided principals as `admins` on the `SampleFunction` function.
+The following example removes existing `admins` and adds the provided principals as `admins` on the `SampleFunction` function.
 
 ```kusto
 .set function SampleFunction admins ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')

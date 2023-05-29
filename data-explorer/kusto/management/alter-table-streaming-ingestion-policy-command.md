@@ -1,17 +1,17 @@
 ---
-title:  ".alter table streaming ingestion policy command"
-description: "This article describes the .alter table streaming ingestion policy command in Azure Data Explorer."
+title: .alter table streaming ingestion policy command
+description: Learn how to use the `.alter table streaming ingestion policy` command to change the table streaming policy ingestion.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 05/24/2023
 ---
-# .alter table streaming ingestion policy
+# .alter table streaming ingestion policy command
 
 Use this command to change the table streaming policy ingestion. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
 
 Use in low latency scenarios, where ingestion time is less than 10 seconds for varying data volume. You can optimize processing for many tables in one or more databases, when tables receive a few records per second, whereas the ingestion volume is thousands of records per second.
 
-Use the classic bulk ingestion instead of streaming ingestion when the amount of data grows to more than 4 Gb per hour per table. 
+Use the classic bulk ingestion instead of streaming ingestion when the amount of data grows to more than 4 Gb per hour per table.
 
 To learn how to implement streaming ingestion, see [streaming policy](../management/streamingingestionpolicy.md).
 

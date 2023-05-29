@@ -1,9 +1,9 @@
 ---
-title:  .show table cache policy command
-description: This article describes the .show table cache policy command in Azure Data Explorer.
+title: .show table cache policy command
+description: Learn how to use the `.show table cache policy` command to the table's cache policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/24/2023
 ---
 # .show table cache policy
 
