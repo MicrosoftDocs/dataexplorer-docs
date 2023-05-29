@@ -9,7 +9,7 @@ ms.date: 05/28/2023
 
 Kusto uses a role-based access control (RBAC) model in which [principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals) get access to resources based on their assigned roles. Roles are defined for a specific cluster, database, table, external table, materialized view, or function. When defined for a cluster, the role applies to all databases in the cluster. When defined for a database, the role applies to all entities in the database.
 
-Azure Resource Manager (ARM) permissions, such as being a subscription owner or a cluster owner, grant access to resources in the control plane. However, to access data within a Kusto resource, you need the data plane permissions outlined in this document. Data plane permissions are separate from control plane permissions and specifically govern operations within Kusto resources.
+Azure Resource Manager (ARM) permissions, such as being a subscription owner or a cluster owner, grant access to resources in the control plane. However, to access data within a Kusto resource, you need the data plane permissions outlined in this document. Data plane permissions are separate from control plane permissions and specifically govern operations within Kusto resources. For more information, see [Azure control plane and data plane](/azure/azure-resource-manager/management/control-plane-and-data-plane).
 
 > [!NOTE]
 > ARM permissions are required for actions in the control plane. For example, to delete a database, you must have at least **Contributor** permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
