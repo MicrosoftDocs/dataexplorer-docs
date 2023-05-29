@@ -1,13 +1,13 @@
 ---
-title: .drop function
-description: Learn how to use the `.drop function` and `.drop functions` commands to drop one or more functions from a database.
+title: .drop function command
+description: Learn how to use the `.drop function` command to drop one or more functions from a database.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .drop function and .drop functions
+# .drop function command
 
-Drops a function from the database.
+Drops one or more functions from the database.
 
 ## Permissions
 
