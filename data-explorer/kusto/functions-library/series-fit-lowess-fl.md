@@ -10,7 +10,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # series_fit_lowess_fl()
 
-::: zone pivot="azuredataexplorer, azuremonitor"
+::: zone pivot="azuredataexplorer"
 
 The function `series_fit_lowess_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies a [LOWESS regression](https://www.wikipedia.org/wiki/Local_regression) on a series. This function takes a table with multiple series (dynamic numerical arrays) and generates a *LOWESS Curve*, which is a smoothed version of the original series.
 
@@ -351,10 +351,9 @@ range x from 1 to 200 step 1
 
 :::image type="content" source="images/series-fit-lowess-fl/lowess-vs-poly-fifth-order-noise.png" alt-text="Graphs of LOWESS vs polynomial fit for a fifth order polynomial with noise on x & y axes":::
 
-
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 

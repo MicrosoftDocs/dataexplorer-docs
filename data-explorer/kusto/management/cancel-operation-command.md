@@ -1,5 +1,5 @@
 ---
-title: Cancel operation command
+title: .cancel operation command
 description: Learn how to use the `.cancel operation` command to cancel a long-running operation.
 ms.reviewer: odkadosh
 ms.topic: reference

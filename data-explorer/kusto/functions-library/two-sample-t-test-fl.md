@@ -9,8 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # two_sample_t_test_fl()
 
-
-::: zone pivot="azuredataexplorer, azuremonitor"
+::: zone pivot="azuredataexplorer"
 
 The function `two_sample_t_test_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test).
 
@@ -173,7 +172,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | Test #3 | [20.13, 20.5, 21.7, 22.02] | [32.2, 32.79, 33.9, 34.22] | -18.5515946201742 | 1.5823717131966134E-06 |
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 

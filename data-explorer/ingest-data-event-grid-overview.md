@@ -101,7 +101,7 @@ You can create a blob from a local file, set ingestion properties to the blob me
 
 > [!NOTE]
 >
-> * We highly recommended using `BlockBlob` to generate data, as using `AppendBlob` may result in unexpected behavior.
+> * We highly recommend using `BlockBlob` to generate data, as using `AppendBlob` may result in unexpected behavior.
 > * Using Azure Data Lake Gen2 storage SDK requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to "true".
 > For a detailed example of Data Lake Gen2 SDK correct usage, see [upload file using Azure Data Lake SDK](data-connection-event-grid-csharp.md#upload-file-using-azure-data-lake-sdk).
 > * When the event hub endpoint doesn't acknowledge receipt of an event, Azure Event Grid activates a retry mechanism. If this retry delivery fails, Event Grid can deliver the undelivered events to a storage account using a process of *dead-lettering*. For more information, see [Event Grid message delivery and retry](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration).

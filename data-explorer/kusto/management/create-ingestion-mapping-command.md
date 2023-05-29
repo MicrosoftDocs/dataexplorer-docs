@@ -1,11 +1,11 @@
 ---
-title: .create ingestion mapping
+title: .create ingestion mapping command
 description: Learn how to use the `.create ingestion mapping` command to create an ingestion mapping.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .create ingestion mapping
+# .create ingestion mapping command
 
 Creates an ingestion mapping that can be associated with a specific format and a specific table or database.
 

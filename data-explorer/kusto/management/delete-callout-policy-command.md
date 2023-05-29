@@ -5,7 +5,7 @@ ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/14/2023
 ---
-# .delete cluster policy callout
+# .delete cluster policy callout command
 
 Delete the [callout policy](calloutpolicy.md) defined for the cluster.
 

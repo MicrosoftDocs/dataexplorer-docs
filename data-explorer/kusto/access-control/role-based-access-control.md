@@ -41,10 +41,8 @@ The **Manage** column offers ways to add or remove role principals.
 |Materialized view|Admin |Full permission to alter the view, delete the view, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-materialized-view-security-roles.md)|
 |Function|Admin |Full permission to alter the function, delete the function, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-function-security-roles.md)|
 
-## Next steps
+## See also
 
-* To set cluster level permissions, see [manage cluster permissions](../../manage-cluster-permissions.md).
-* To set permissions for a database, use the [Azure portal](../../manage-database-permissions.md) or [use management commands](../management/security-roles.md).
-* To set permissions for a table, external table, function, or materialized view, [use management commands](../management/security-roles.md).
-* To grant a principal from a different tenant access to a resource, see [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md).
-* To grant a principal view access to a subset of tables, see [manage table view access](../management/manage-table-view-access.md).
+* [Manage cluster permissions](../../manage-cluster-permissions.md)
+* [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md)
+* [Manage view access to tables within the same database](../management/manage-table-view-access.md)
