@@ -1,11 +1,11 @@
 ---
-title: .show table ingestion time policy command
-description: Learn how to use the `.show table ingestion time policy` command to display the table's ingestion time policy.
+title: .show table policy ingestiontime command
+description: Learn how to use the `.show table policy ingestiontime` command to display the table's ingestion time policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show table ingestion time policy
+# .show table policy ingestiontime command
 
 Display a table's [ingestion time policy](ingestiontimepolicy.md). This policy creates a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
 
