@@ -1,11 +1,11 @@
 ---
-title: .show databases
-description: Learn how to use the `.show databases` to show records of databases in the cluster that the user has access to.
+title: .show databases command
+description: Learn how to use the `.show databases` command to show records of databases in the cluster that the user has access to.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show databases
+# .show databases command
 
 Returns a table in which every record corresponds to a database in the cluster that the user has access to.
 
