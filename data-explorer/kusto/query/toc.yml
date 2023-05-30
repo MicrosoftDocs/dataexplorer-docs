@@ -96,7 +96,7 @@ items:
     href: tabularexpressionstatements.md
   - name: Batches
     href: batches.md
-  - name: // (Comment)
+  - name: Add a comment in KQL
     href: comment.md
 - name: Tabular operators
   items:

@@ -1,11 +1,11 @@
 ---
-title:  // (Comment)
+title:  Add a comment in KQL
 description: Learn how to comment single and multi-lines in Kusto Query Language.
 ms.reviewer: andresilva
 ms.topic: reference
 ms.date: 05/30/2023
 ---
-# // (Comment)
+# Add a comment in KQL
 
 Indicates user-provided text. Comments can be inserted on a separate line, nested at the end or within a KQL query or command. The engine does not evaluate the comment. 
 
