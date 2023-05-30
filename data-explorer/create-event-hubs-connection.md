@@ -2,7 +2,7 @@
 title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Hubs.'
 ms.topic: how-to
-ms.custom: devx-track-arm-template
+ms.custom:
 ms.date: 05/23/2023
 ---
 
