@@ -22,7 +22,7 @@ Use the two slashes (//) for single and multi-line comments. The following table
 | Hot Key  | Description  |
 | ------------ | ------------ |
 | `Ctrl`+`K`, `Ctrl`+`C`  | Comment current line or selected lines.  |
-| `Ctrl`+`K`, `Ctrl`+`U`  | Uncomment current line or selected lines  |
+| `Ctrl`+`K`, `Ctrl`+`U`  | Uncomment current line or selected lines.  |
 
 ## Example
 
