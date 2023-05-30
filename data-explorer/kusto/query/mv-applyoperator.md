@@ -11,7 +11,7 @@ Applies a subquery to each record, and returns the union of the results of
 all subqueries.
 
 For example, assume a table `T` has a column `Metric` of type `dynamic`
-whose values are arrays of `real` numbers. The following query will locate the
+whose values are arrays of `real` numbers. The following query locates the
 two biggest values in each `Metric` value, and return the records corresponding
 to these values.
 
@@ -79,9 +79,9 @@ and *SubQuery* has the same syntax of any query statement.
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*ItemIndex*|string||Indicates the name of a column of type `long` that's appended to the input as part of the array-expansion phase and indicates the 0-based array index of the expanded value.|
-|*Name*|string||The name to assign the array-expanded values of each array-expanded expression. If not specified, the name of the column will be used if available. A random name is generated if *ArrayExpression* isn't a simple column name.|
-|*ArrayExpression*|dynamic|&check;|The array whose values will be array-expanded. If the expression is the name of a column in the input, the input column is removed from the input and a new column of the same name, or *ColumnName* if specified, appears in the output.|
-|*Typename*|string||The name of the type that the individual elements of the `dynamic` array *ArrayExpression* take. Elements that don't conform to this type will be replaced by a null value. If unspecified, `dynamic` is used by default.|
+|*Name*|string||The name to assign the array-expanded values of each array-expanded expression. If not specified, the name of the column is used if available. A random name is generated if *ArrayExpression* isn't a simple column name.|
+|*ArrayExpression*|dynamic|&check;|The array whose values are array-expanded. If the expression is the name of a column in the input, the input column is removed from the input and a new column of the same name, or *ColumnName* if specified, appears in the output.|
+|*Typename*|string||The name of the type that the individual elements of the `dynamic` array *ArrayExpression* take. Elements that don't conform to this type are replaced by a null value. If unspecified, `dynamic` is used by default.|
 |*RowLimit*|int||A limit on the number of records to generate from each record of the input. If unspecified, 2147483647 is used.|
 |*SubQuery*|string||A tabular query expression with an implicit tabular source that gets applied to each array-expanded subtable.|
 
