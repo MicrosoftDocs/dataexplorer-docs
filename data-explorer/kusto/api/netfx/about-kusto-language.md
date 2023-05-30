@@ -40,6 +40,11 @@ To use Kusto.Language:
 
 In order for the parser to understand the existence and schema of a database, table, or function, the parser must be told about these entities. There are two ways to set up the database schema: by declaring the schemas manually or by using database schemas from the server.
 
+You tell the parser about the tables and functions by adding `DatabaseSymbol` instances to the `GlobalState` instance you use with the `ParseAndAnalyze` method.
+You can declare tables by constructing `TableSymbol` instances.
+You can declare functions by constructing `FunctionSymbol` instances. Functions can be declared with our without parameters.
+Once you have all the tables and function symbols you can create a `DatabaseSymbol`.
+
 ## Examples
 
 ### Parse a query
