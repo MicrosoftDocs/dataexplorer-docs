@@ -236,7 +236,7 @@ items:
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
       href: query-monitor-data.md
-    - name: Query data in Power Apps
+    - name: Use Power Apps to query data in Azure Data Explorer
       href: power-apps-connector.md
     - name: Query data using Python
       href: python-query-data.md
