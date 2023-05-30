@@ -1,11 +1,11 @@
 ---
-title: .show workload group command
-description: Learn how to use the `.show workload group` command to show the specified workload group definitions.
+title: .show workload_group command
+description: Learn how to use the `.show workload_group` command to show the specified workload group definitions.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/23/2023
 ---
-# .show workload_group(s)
+# .show workload_group command
 
 Shows a specific workload group or all workload group definitions.
 

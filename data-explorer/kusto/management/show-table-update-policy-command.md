@@ -1,11 +1,11 @@
 ---
-title: .show table update policy command
-description: Learn how to use the `.show table update policy` command to show the table's update policy.
+title: .show table policy update command
+description: Learn how to use the `.show table policy update` command to show the table's update policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show table update policy
+# .show table policy update command
 
 Show the table update policy. The [update policy](updatepolicy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
 
