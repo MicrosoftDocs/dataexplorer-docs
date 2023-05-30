@@ -8,7 +8,7 @@ ms.date: 04/16/2023
 # punycode_from_string()
 
 Encodes input string to [Punycode](https://en.wikipedia.org/wiki/Punycode) form.
-The result string will contain only ASCII characters. The result string does not start with "xn--".
+The result string contains only ASCII characters. The result string doesn't start with "xn--".
 
 
 ## Syntax
