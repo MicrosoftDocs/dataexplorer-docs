@@ -10,7 +10,7 @@ Understanding the size of a table can be helpful for efficient resource manageme
 
 ## Original size of ingested data
 
-Use the [.show table details](../management/show-table-details-command.md) to estimate the original data size of a table. For an example, see [Use .show table details](#use-show-table-details).
+Use the [.show table details](show-table-details-command.md) to estimate the original data size of a table. For an example, see [Use .show table details](#use-show-table-details).
 
 This command provides an estimation of the uncompressed size of data ingested into your table based on the assumption that the data was transferred in CSV format. The estimation is based on approximate lengths of numeric values, such as integers, longs, datetimes, and guids, by considering their string representations.
 
@@ -18,7 +18,7 @@ This command provides an estimation of the uncompressed size of data ingested in
 
 ## Table size in terms of access bytes
 
-Use the [estimate_data_size()](estimate-data-sizefunction.md) along with the [sum()](sum-aggfunction.md) aggregation function to estimate table size based on data types and their respective byte sizes. For an example, see [Use estimate_data_size()](#use-estimate_data_size).
+Use the [estimate_data_size()](../query/estimate-data-sizefunction.md) along with the [sum()](../query/sum-aggfunction.md) aggregation function to estimate table size based on data types and their respective byte sizes. For an example, see [Use estimate_data_size()](#use-estimate_data_size).
 
 This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory.
 
@@ -26,7 +26,7 @@ This method provides a more precise estimation by considering the byte sizes of 
 
 ## Combined size of multiple tables
 
-You can use the [union](unionoperator.md) operator along with the [estimate_data_size()](estimate-data-sizefunction.md) and [sum()](sum-aggfunction.md) functions to estimate the combined size of multiple tables in terms of access bytes. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
+You can use the [union](../query/unionoperator.md) operator along with the [estimate_data_size()](../query/estimate-data-sizefunction.md) and [sum()](../query/sum-aggfunction.md) functions to estimate the combined size of multiple tables in terms of access bytes. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
 
 **Example use case:** Assess the memory requirements for consolidating data from multiple tables into a single dataset.
 
@@ -54,7 +54,7 @@ The following query estimates the original data size of the `StormEvents` table.
 |60192011|
 
 > [!TIP]
-> To format the bytes result to `MB`, `GB`, or another unit, use [format_bytes()](format-bytesfunction.md).
+> To format the bytes result to `MB`, `GB`, or another unit, use [format_bytes()](../query/format-bytesfunction.md).
 
 ### Use estimate_data_size()
 
