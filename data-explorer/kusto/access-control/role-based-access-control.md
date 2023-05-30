@@ -9,10 +9,7 @@ ms.date: 05/28/2023
 
 Kusto uses a role-based access control (RBAC) model in which [principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals) get access to resources based on their assigned roles. Roles are defined for a specific cluster, database, table, external table, materialized view, or function. When defined for a cluster, the role applies to all databases in the cluster. When defined for a database, the role applies to all entities in the database.
 
-Azure Resource Manager (ARM) roles, such as subscription owner or cluster owner, provide permissions for managing resources in the control plane. However, to access data within a Kusto resource, you need the data plane permissions outlined in this document. These data plane permissions are separate from control plane permissions and specifically govern operations within Kusto resources. For more information, see [Azure control plane and data plane](/azure/azure-resource-manager/management/control-plane-and-data-plane).
-
-> [!NOTE]
-> To delete a database, you need at least **Contributor** ARM permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
+Azure Resource Manager (ARM) roles, such as subscription owner or cluster owner, provide permissions for resource administration. The Kusto roles described in this document grant permissions for data access and administration within Kusto resources.
 
 ## Roles and permissions
 
@@ -40,6 +37,9 @@ The **Manage** column offers ways to add or remove role principals.
 |External Table|Admin | Full permission in the scope of a particular external table.| Database User or Database Viewer |[Management commands](../management/manage-external-table-security-roles.md)|
 |Materialized view|Admin |Full permission to alter the view, delete the view, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-materialized-view-security-roles.md)|
 |Function|Admin |Full permission to alter the function, delete the function, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-function-security-roles.md)|
+
+> [!NOTE]
+> To delete a database, you need at least **Contributor** ARM permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
 ## See also
 
