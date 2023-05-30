@@ -45,6 +45,8 @@ You can declare tables by constructing `TableSymbol` instances.
 You can declare functions by constructing `FunctionSymbol` instances. Functions can be declared with our without parameters.
 Once you have all the tables and function symbols you can create a `DatabaseSymbol`.
 
+If you already have an existing Kusto database defined, you can construct all the necessary symbols by using requesting all the schema information from the server. The APIs necessary to load the symbols are available in the [Kusto.Toolkit](https://www.nuget.org/packages/Kusto.Toolkit/) package.
+
 ## Examples
 
 ### Parse a query
