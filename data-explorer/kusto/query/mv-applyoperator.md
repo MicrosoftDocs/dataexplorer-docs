@@ -137,6 +137,31 @@ _data
 |1    |[1,3,5,7]|12       |
 |0    |[2,4,6,8]|14       |
 
+### Selecting few elements in 2 arrays
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22Py2rDMBBF94H8w91ZBgUiOW5KoAvb+y67CaYojVJM9DCO2uKSj+9IdUwolZiBOzNnHkcV6B+MBntRZte5wFENg9gdR6ds95aUvKl8udhDcEyS7bNKZBxZJZMvsjbn+H1ziVhzFGTbmFsugO09Xye+Tnxd/suXHIJmlmtKRr6455vEN4lviuQ3qctc8sCxofGS7LGlA1pa4gr7uVJ9b0Y8669471N0fFIyKongEcZe+xMz3r3n8A6MFgi+h8ThhkoKXXH5sFYN3beeG1p11q+muwQ2RWgpN7X/m5O0V/4Dmq/ptIsBAAA=" target="_blank">Run the query</a>
+
+```kusto
+datatable (Val:int, Arr1:dynamic, Arr2:dynamic)
+[ 1, dynamic(['A1', 'A2', 'A3']),       dynamic([10, 30, 7]), 
+  7, dynamic(['B1', 'B2', 'B5']),       dynamic([15, 11, 50]),
+  3, dynamic(['C1', 'C2', 'C3', 'C4']), dynamic([6, 40, 20, 8])
+] 
+| mv-apply NewArr1=Arr1, NewArr2=Arr2 to typeof(long) on (
+ top 2 by NewArr2
+ | summarize NewArr1=make_list(NewArr1), newArr2=make_list(NewArr2)
+)
+```
+
+**Output**
+
+|Val1|Arr1|Arr2|`NewArr1`|`NewArr2`|
+|-----|-----------|--------|-----|-----|
+|1    |["A1","A2","A3"]|[10,30,7]|["A2',"A1"]|[30,10] |
+|7    |["B1","B2","B5"]|[15,11,50]|["B5","B1"]|[50,15] |
+|3    |["C1","C2","C3","C4"]|[6,40,20,8]|["C2","C3"]|[40,20] |
+
 ### Using `with_itemindex` for working with a subset of the array
 
 > [!div class="nextstepaction"]
