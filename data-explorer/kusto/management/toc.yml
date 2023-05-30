@@ -669,19 +669,22 @@ items:
     href: commands.md
   - name: Commands and queries
     href: commands-and-queries.md
-  - name: Data statistics
+  - name: Estimate table size
+    href: estimate-table-size.md
+  - name: Table column statistics
     href: show-table-data-statistics.md
   - name: Diagnostics
     href: diagnostics.md
   - name: Journal
     href: journal.md
-  - name: .show operation command
+  - name: Operations
     displayName: Operations management, operations, .show Operations
     href: operations.md
   - name: Query management commands
     displayName: .show running queries .cancel query 
     href: queries.md
-  - name: .show streaming ingestion statistics
+  - name: Streaming ingestion statistics
+    displayName: .show streaming ingestion statistics
     href: streamingingestionstatistics.md
 - name: Advanced data management
   items:
