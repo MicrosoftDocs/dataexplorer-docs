@@ -49,9 +49,9 @@ The result string contains only ASCII characters. The result string doesn't star
 | extend encoded_domain = strcat('xn--', encoded_host, '.', domain_vec[1])
 ```
 
-|domain	domain_vec	encoded_host	encoded_domain|
-|---|
-|艺术.com	["艺术","com"]	cqv902d	xn--cqv902d.com|
+|domain|	domain_vec |	encoded_host |	encoded_domain|
+|---|---|---|---|
+|艺术.com | ["艺术","com"] | cqv902d | xn--cqv902d.com|
 
 
 ## Next steps
