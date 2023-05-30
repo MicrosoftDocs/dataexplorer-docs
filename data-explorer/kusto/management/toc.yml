@@ -14,7 +14,8 @@ items:
       href: create-or-alter-workload-group-command.md
     - name: .drop workload_group command
       href: drop-workload-group-command.md
-    - name: .show workload_group(s) command
+    - name: .show workload_group command
+      displayName: .show workload_groups 
       href: show-workload-group-command.md
   - name: Request classification policy
     items:
@@ -27,6 +28,7 @@ items:
     - name: .delete cluster policy request_classification command
       href: delete-cluster-policy-request-classification-command.md
     - name: .show cluster policy request_classification command
+      displayName: .show cluster policy request classification
       href: show-cluster-policy-request-classification-command.md
   - name: Request limits policy
     href: request-limits-policy.md
@@ -53,7 +55,8 @@ items:
       href: show-cluster-database.md
     - name: .alter database prettyname command
       href: alter-database.md
-    - name: .show database(s) schema command
+    - name: .show database schema command
+      displayName: .show databases schema
       href: show-schema-database.md
     - name: .execute database script command
       href: execute-database-script.md
@@ -95,13 +98,14 @@ items:
     - name: .rename table command
       displayName: .rename tables
       href: rename-table-command.md
-    - name: ".show tables"
+    - name: .show tables command
       href: show-tables-command.md
-    - name: ".undo drop table"
+    - name: .undo drop table command
       href: undo-drop-table-command.md
-    - name: ".show table details"
+    - name: .show table details command
+      displayName: .show tables details
       href: show-table-details-command.md
-    - name: ".show table schema"
+    - name: .show table schema command
       href: show-table-schema-command.md
     - name: .clear table data command
       href: clear-table-data-command.md
@@ -123,7 +127,7 @@ items:
           href: external-table-mapping-drop.md
         - name: .show external table mapping command
           href: external-table-mapping-show.md
-      - name: Show external table artifacts
+      - name: .show external table artifacts command
         href: show-external-table-artifacts.md
     - name: SQL Server external tables
       items:
@@ -133,9 +137,10 @@ items:
         href: external-sql-tables-query.md
     - name: .drop external table command
       href: drop-external-table.md
-    - name: ".show external table"
+    - name: .show external table command
       href: show-external-tables.md
-    - name: ".show external table schema"
+      displayName: .show external tables
+    - name: .show external table schema command
       href: show-external-table-schema.md
   - name: Materialized views
     items:
@@ -249,6 +254,7 @@ items:
       displayName: .drop functions
       href: drop-function.md
     - name: .show functions command
+      displayName: .show function
       href: show-function.md
 - name: Policies
   items:
@@ -283,11 +289,14 @@ items:
     - name: .delete table policy caching command
       displayName: .delete table cache policy, .delete table caching policy
       href: delete-table-cache-policy-command.md
-    - name: .show database cache policy command
+    - name: .show database policy caching command
+      displayName: .show database cache policy, .show database caching policy
       href: show-database-cache-policy-command.md
-    - name: .show materialized view cache policy command
+    - name: .show materialized-view policy caching command
+      displayName: .show materialized view cache policy, .show materialized-view cache policy
       href: show-materialized-view-cache-policy-command.md
-    - name: .show table cache policy command
+    - name: .show table policy caching command
+      displayName: .show table cache policy, .show table caching policy
       href: show-table-cache-policy-command.md
   - name: Callout
     items:
@@ -309,7 +318,8 @@ items:
       href: alter-capacity-policy-command.md
     - name: .alter-merge capacity policy command
       href: alter-merge-capacity-policy-command.md
-    - name: .show capacity policy command
+    - name: .show cluster policy capacity command
+      displayName: .show cluster capacity policy
       href: show-cluster-capacity-policy-command.md
   - name: Encoding policy
     items:
@@ -317,7 +327,8 @@ items:
       href: encoding-policy.md
     - name: .alter encoding policy command
       href: alter-encoding-policy.md
-    - name: ".show encoding policy command"
+    - name: .show policy encoding command
+      displayName: .show encoding policy
       href: show-encoding-policy.md
   - name: Ingestion batching 
     items:
@@ -332,9 +343,11 @@ items:
     - name: .delete table policy ingestionbatching command
       displayName: .delete table ingestionbatching policy, .delete table ingestion batching policy
       href: delete-table-ingestion-batching-policy.md
-    - name: ".show database ingestion batching policy command"
+    - name: .show database policy ingestionbatching command
+      displayName: .show database ingestionbatching policy, .show database ingestion batching policy
       href: show-database-ingestion-batching-policy.md
-    - name: ".show table ingestion batching policy command"
+    - name: .show table policy ingestionbatching command
+      displayName: .show table ingestionbatching policy, .show table ingestion batching policy
       href: show-table-ingestion-batching-policy.md
   - name: Ingestiontime
     items:
@@ -344,7 +357,8 @@ items:
       href: alter-ingestion-time-policy-command.md
     - name: .delete ingestion time policy command
       href: delete-ingestion-time-policy-command.md
-    - name: .show ingestion time policy command
+    - name: .show table policy ingestiontime command
+      displayName: .show table ingestion time policy, .show table ingestiontime policy
       href: show-table-ingestion-time-policy-command.md
   - name: ManagedIdentity
     items:
@@ -379,9 +393,11 @@ items:
     - name: .delete table policy merge command
       displayName: .delete table merge policy
       href: delete-table-merge-policy-command.md
-    - name: .show database merge policy command
+    - name: .show database policy merge command
+      displayName: .show database merge policy
       href: show-database-merge-policy-command.md
-    - name: .show table merge policy command
+    - name: .show table policy merge command
+      displayName: .show table merge policy
       href: show-table-merge-policy-command.md
   - name: Partitioning
     items:
@@ -400,9 +416,11 @@ items:
     - name: .delete table policy partitioning command
       displayName: .delete table partitioning policy
       href: delete-table-partitioning-policy-command.md
-    - name: .show materialized view partitioning policy command
+    - name: .show materialized-view policy partitioning command
+      displayName: .show materialized view partitioning policy, .show materialized-view partitioning policy
       href: show-materialized-view-partitioning-policy-command.md
-    - name: .show table partitioning policy command
+    - name: .show table policy partitioning command
+      displayName: .show table partitioning policy
       href: show-table-partitioning-policy-command.md
   - name: Retention
     items:
@@ -410,7 +428,8 @@ items:
       href: retentionpolicy.md
     - name: .alter database retention policy command
       href: alter-database-retention-policy-command.md
-    - name: .alter materialized-view retention policy command
+    - name: .alter materialized-view policy retention command
+      displayName: .alter materialized-view retention policy, .alter materialized view retention policy
       href: alter-materialized-view-retention-policy-command.md
     - name: .alter table retention policy command
       href: alter-table-retention-policy-command.md
@@ -427,11 +446,14 @@ items:
     - name: .delete table policy retention command
       displayName: .delete table retention policy
       href: delete-table-retention-policy-command.md
-    - name: .show database retention policy command
+    - name: .show database policy retention command
+      displayName: .show database retention policy
       href: show-database-retention-policy-command.md
-    - name: .show materialized view retention policy command
+    - name: .show materialized-view policy retention command
+      displayName: .show materialized-view retention policy, .show materialized view retention policy
       href: show-materialized-view-retention-policy-command.md
-    - name: .show table retention policy command
+    - name: .show table policy retention command
+      displayName: .show table retention policy
       href: show-table-retention-policy-command.md  
   - name: Extent tags retention
     items:
@@ -443,7 +465,8 @@ items:
       href: alter-table-extent-tags-retention-policy.md
     - name: .delete extent tags retention policy command
       href: delete-extent-tags-retention-policy.md
-    - name: .show extent tags retention policy
+    - name: .show policy extent_tags_retention command
+      displayName: .show extent tags retention policy, .show extent_tags_retention policy, .show policy extent tags retention, .show policy extent tags retention
       href: show-extent-tags-retention-policy.md
   - name: Restricted view access
     items:
@@ -454,7 +477,8 @@ items:
     - name: .delete table policy restricted_view_access command
       displayName: .delete table restricted view access policy, .delete table restricted_view_access policy
       href: delete-table-restricted-view-access-policy-command.md
-    - name: .show table restricted view access policy
+    - name: .show table policy restricted_view_access command
+      displayName: .show table restricted view access policy, .show table restricted_view_access policy
       href: show-table-restricted-view-access-policy-command.md
   - name: Row level security
     items:
@@ -464,9 +488,11 @@ items:
       href: alter-materialized-view-row-level-security-policy-command.md
     - name: .alter table row level security policy command
       href: alter-table-row-level-security-policy-command.md
-    - name: .show materialized view row level security policy command
+    - name: .show materialized policy row_level_security command
+      displayName: .show materialized view row level security policy, .show materialized-view row_level_security policy, .show materialized view row_level_security policy
       href: show-materialized-view-row-level-security-policy-command.md
-    - name: .show table row level security policy command
+    - name: .show table policy row_level_security command
+      displayName: .show table row level security policy, .show table row_level_security policy
       href: show-table-row-level-security-policy-command.md
   - name: Row order
     items:
@@ -479,7 +505,8 @@ items:
     - name: .delete table policy roworder command
       displayName: .delete table row order policy, .delete table roworder policy
       href: delete-table-row-order-policy-command.md
-    - name: .show table row order policy command
+    - name: .show table policy roworder command
+      displayName: .show table row order policy, .show table roworder policy
       href: show-table-row-order-policy-command.md
   - name: Sandbox
     items:
@@ -493,7 +520,8 @@ items:
       href: alter-cluster-sandbox-policy-command.md
     - name: .delete cluster sandbox policy command
       href: delete-cluster-sandbox-policy-command.md
-    - name: .show cluster sandbox policy command
+    - name: .show cluster policy sandbox command
+      displayName: .show cluster sandbox policy
       href: show-cluster-sandbox-policy-command.md
   - name: Sharding
     items:
@@ -512,9 +540,11 @@ items:
     - name: .delete table policy sharding command
       displayName: .delete table sharding policy
       href: delete-table-sharding-policy-command.md
-    - name: .show database sharding policy command
+    - name: .show database policy sharding command
+      displayName: .show database sharding policy
       href: show-database-sharding-policy-command.md
-    - name: .show table sharding policy command
+    - name: .show table policy sharding command
+      displayName: .show table sharding policy
       href: show-table-sharding-policy-command.md
   - name: Streaming ingestion
     items:
@@ -533,9 +563,11 @@ items:
     - name: .delete table policy streamingingestion command
       displayName: .delete table streaming ingestion policy, .delete table policy streaming ingestion
       href: delete-table-streaming-ingestion-policy-command.md
-    - name: .show database streaming ingestion policy command
+    - name: .show database policy streamingingestion command
+      displayName: .show database streaming ingestion policy, .show database streamingingestion policy
       href: show-database-streaming-ingestion-policy-command.md
-    - name: .show table streaming ingestion policy command
+    - name: .show table policy streamingingestion command
+      displayName: .show table streaming ingestion policy, .show table streaming policy
       href: show-table-streaming-ingestion-policy-command.md
   - name: Update
     items:
@@ -549,7 +581,8 @@ items:
     - name: .delete table policy update command
       displayName: .delete table update policy
       href: delete-table-update-policy-command.md
-    - name: .show table update policy command
+    - name: .show table policy update command
+      displayName: .show table update policy
       href: show-table-update-policy-command.md
   - name: Query weak consistency
     items:
@@ -557,7 +590,8 @@ items:
       href: query-weak-consistency-policy.md
     - name: .alter cluster policy query_weak_consistency command
       href: alter-query-weak-consistency-policy.md
-    - name: .show cluster policy query_weak_consistency
+    - name: .show cluster policy query_weak_consistency command
+      displayName: .show cluster policy query weak consistency, .show cluster query_weak_consistency policy, .show query weak consistency policy
       href: show-query-weak-consistency-policy.md
 - name: Security roles
   items:
@@ -609,7 +643,8 @@ items:
     href: dup-next-failed-ingest.md
   - name: .show ingestion failures command
     href: ingestionfailures.md
-  - name: .show streaming ingestion failures
+  - name: .show streamingingestion failures command
+    displayName: .show streaming ingestion failures
     href: streamingingestionfailures.md   
 - name: Data export
   href: data-export/index.md
@@ -651,8 +686,8 @@ items:
 - name: Query results cache
   href: query-results-cache-commands.md
   items:
-  - name: Show cache
-    displayName: show database cache query results
+  - name: .show database cache query_results command
+    displayName: .show database cache query results
     href: show-query-results-cache-command.md
   - name: .clear cache query_results command
     displayName: clear query results cache
@@ -671,7 +706,7 @@ items:
     href: commands-and-queries.md
   - name: Estimate table size
     href: estimate-table-size.md
-  - name: Table column statistics
+  - name: .show table data statistics command
     href: show-table-data-statistics.md
   - name: Diagnostics
     href: diagnostics.md
@@ -683,7 +718,7 @@ items:
   - name: Query management commands
     displayName: .show running queries .cancel query 
     href: queries.md
-  - name: Streaming ingestion statistics
+  - name: .show streamingingestion statistics command
     displayName: .show streaming ingestion statistics
     href: streamingingestionstatistics.md
 - name: Advanced data management
