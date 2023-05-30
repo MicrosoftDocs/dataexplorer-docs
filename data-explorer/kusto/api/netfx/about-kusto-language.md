@@ -27,11 +27,11 @@ To use Kusto.Language:
 
 The following sections provide an explanation of common features and use cases for the Kusto.Language library, including:
 
-|Feature|Description|Example|
-|--|--|--|
-|Query parsing|Parse queries and validate them against a specific schema to make sure that your queries adhere to the expected syntax and structure.|[Parse a query](#parse-a-query)|
-|Semantic analysis|Analyze the parse tree of a query in order to determine which piece of syntax refers to which exact column, variable, function or table. You can even modify the parse tree to optimize or correct a query based on your needs.|[Perform semantic analysis](#perform-semantic-analysis)|
-|Error handling|Check for errors detected during parsing or semantic analysis.|[Check for errors](#check-for-errors)|
+| Feature | Description |
+|--|--|
+| Query parsing | Parse queries and validate them against a specific schema to make sure that your queries adhere to the expected syntax and structure. For an example, see [Parse a query](#parse-a-query). |
+| Semantic analysis | Analyze the parse tree of a query in order to determine which piece of syntax refers to which exact column, variable, function or table. You can even modify the parse tree to optimize or correct a query based on your needs. For an example, see [Perform semantic analysis](#perform-semantic-analysis). |
+| Error handling | Check for errors detected during parsing or semantic analysis. For an example, see [Check for errors](#check-for-errors). |
 
 > [!NOTE]
 > In order to have the parser understand the existence of any particular database tables or functions, it must be told about them first. For more information, see [Declare schemas](#declare-schemas).
