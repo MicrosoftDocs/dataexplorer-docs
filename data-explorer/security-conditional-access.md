@@ -21,7 +21,7 @@ In the following example, you'll learn how to configure a Conditional Access pol
 Using this feature requires an Azure AD Premium license. To find the right license for your requirements, see [Compare available features of Azure AD](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 
 > [!NOTE]
-> Conditional Access policies are only applied to Azure Data Explorer's data plane operations and doesn't affect any control plane operations. For more information, see [Azure control and data plane](/azure/azure-resource-manager/management/control-plane-and-data-plane).
+> Conditional Access policies are only applied to Azure Data Explorer's data administration operations and don't affect any resource administration operations.
 
 > [!TIP]
 > Conditional Access policies are applied at the tenant level; hence, it's applied to all clusters in the tenant.

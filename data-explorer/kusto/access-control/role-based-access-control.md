@@ -9,7 +9,7 @@ ms.date: 05/30/2023
 
 Kusto uses a role-based access control (RBAC) model in which [principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals) get access to resources based on their assigned roles. Roles are defined for a specific cluster, database, table, external table, materialized view, or function. When defined for a cluster, the role applies to all databases in the cluster. When defined for a database, the role applies to all entities in the database.
 
-Azure Resource Manager (ARM) roles, such as subscription owner or cluster owner, provide permissions for resource administration. The Kusto roles described in this document grant permissions for data access and administration within Kusto resources.
+Azure Resource Manager (ARM) roles, such as subscription owner or cluster owner, provide permissions for resource administration. For data administration within Kusto resources, you need the The Kusto roles described in this document.
 
 ## Roles and permissions
 
