@@ -11,6 +11,9 @@ Kusto uses a role-based access control (RBAC) model in which [principals](/azure
 
 Azure Resource Manager (ARM) roles, such as subscription owner or cluster owner, provide permissions for resource administration. For data administration within Kusto resources, you need the The Kusto roles described in this document.
 
+> [!NOTE]
+> To delete a database, you need at least **Contributor** ARM permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
+
 ## Roles and permissions
 
 The following table outlines the roles and permissions available at each scope.
@@ -37,9 +40,6 @@ The **Manage** column offers ways to add or remove role principals.
 |External Table|Admin | Full permission in the scope of a particular external table.| Database User or Database Viewer |[Management commands](../management/manage-external-table-security-roles.md)|
 |Materialized view|Admin |Full permission to alter the view, delete the view, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-materialized-view-security-roles.md)|
 |Function|Admin |Full permission to alter the function, delete the function, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-function-security-roles.md)|
-
-> [!NOTE]
-> To delete a database, you need at least **Contributor** ARM permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
 ## See also
 
