@@ -1,11 +1,11 @@
 ---
-title: .show database
+title: .show database command
 description: Learn how to use the `.show database` command to show the properties of the specified database.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show database
+# .show database command
 
 Returns a table showing the properties of the context database.
 

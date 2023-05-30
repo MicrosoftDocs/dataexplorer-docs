@@ -1,11 +1,11 @@
 ---
-title: .show cluster databases
+title: .show cluster databases command
 description: Learn how to use the `.show cluster databases` command to show the databases attached to the invoked cluster.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/22/2023
 ---
-# .show cluster databases
+# .show cluster databases command
 
 Returns a table showing all the databases attached to the cluster and to which the user invoking the command has access. If specific database names are used, only those databases would
 be included.
