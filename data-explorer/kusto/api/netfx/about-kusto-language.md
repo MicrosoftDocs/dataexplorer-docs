@@ -9,6 +9,19 @@ ms.date: 05/30/2023
 
 The Kusto.Language Library is a .NET implementation of a parser for the [Kusto Query Language (KQL)](../../query/index.md). This library provides developers with tools to parse, analyze, and manipulate KQL queries. Whether you need to validate query syntax, extract structured information, or automate data analysis tasks, the Kusto.Language Library is a valuable resource.
 
+## Overview
+
+The following sections provide an explanation of common features and use cases for the Kusto.Language library, including:
+
+| Feature | Description |
+|--|--|
+| Query parsing | Parse queries and validate them against a specific schema to make sure that your queries adhere to the expected syntax and structure. For an example, see [Parse a query](#parse-a-query). |
+| Semantic analysis | Analyze the parse tree of a query in order to determine which piece of syntax refers to which exact column, variable, function or table. You can even modify the parse tree to optimize or correct a query based on your needs. For an example, see [Perform semantic analysis](#perform-semantic-analysis). |
+| Error handling | Check for errors detected during parsing or semantic analysis. For an example, see [Check for errors](#check-for-errors). |
+
+> [!NOTE]
+> In order to have the parser understand the existence of any particular database tables or functions, it must be told about them first. For more information, see [Declare schemas](#declare-schemas).
+
 ## Get started
 
 To use Kusto.Language:
@@ -23,22 +36,9 @@ To use Kusto.Language:
     using Kusto.Language.Syntax;
     ```
 
-## Features
+## Set up your environment
 
-The following sections provide an explanation of common features and use cases for the Kusto.Language library, including:
-
-| Feature | Description |
-|--|--|
-| Query parsing | Parse queries and validate them against a specific schema to make sure that your queries adhere to the expected syntax and structure. For an example, see [Parse a query](#parse-a-query). |
-| Semantic analysis | Analyze the parse tree of a query in order to determine which piece of syntax refers to which exact column, variable, function or table. You can even modify the parse tree to optimize or correct a query based on your needs. For an example, see [Perform semantic analysis](#perform-semantic-analysis). |
-| Error handling | Check for errors detected during parsing or semantic analysis. For an example, see [Check for errors](#check-for-errors). |
-
-> [!NOTE]
-> In order to have the parser understand the existence of any particular database tables or functions, it must be told about them first. For more information, see [Declare schemas](#declare-schemas).
-
-## Declare schemas
-
-// TODO
+In order for the parser to understand the existence and schema of a database, table, or function, the parser must be told about these entities. There are two ways to set up the database schema: by declaring the schemas manually or by using database schemas from the server.
 
 ## Examples
 
