@@ -70,4 +70,4 @@ counter("StormEvents")
 
 ## See also
 
-* [Estimate table size](../estimate-table-size.md)
+* [Estimate table size](../../management/estimate-table-size.md)
