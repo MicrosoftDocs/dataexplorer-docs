@@ -96,6 +96,8 @@ items:
     href: tabularexpressionstatements.md
   - name: Batches
     href: batches.md
+  - name: // (Comment)
+    href: comment.md
 - name: Tabular operators
   items:
   - name: Query operators
