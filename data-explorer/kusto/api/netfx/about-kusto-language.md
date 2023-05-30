@@ -7,13 +7,13 @@ ms.date: 05/30/2023
 
 # Kusto.Language client library
 
-The Kusto.Language Library is a .NET implementation of a parser for the [Kusto Query Language (KQL)](../../query/index.md). This library provides developers with tools to parse, analyze, and manipulate KQL queries. Whether you need to validate query syntax, extract structured information, or automate data analysis tasks, the Kusto.Language Library is a valuable resource.
+The Kusto.Language library is a .NET implementation of a parser for the [Kusto Query Language (KQL)](../../query/index.md). This library provides developers with tools to parse, analyze, and manipulate KQL queries. Whether you need to validate query syntax, extract structured information, or automate data analysis tasks, the Kusto.Language Library is a valuable resource.
 
-## Overview
+## Use cases
 
-The following table explains the primary features of the the Kusto.Language library.
+The following table explains the primary features and use cases of the the Kusto.Language library.
 
-| Feature | Description |
+| Use case | Description |
 |--|--|
 | Query parsing | Parse queries and validate them against a specific schema to make sure that your queries adhere to the expected syntax and structure. For an example, see [Parse a query](#parse-a-query). |
 | Semantic analysis | Analyze the parse tree of a query in order to determine which piece of syntax refers to which exact column, variable, function or table. You can even modify the parse tree to optimize or correct a query based on your needs. For an example, see [Perform semantic analysis](#perform-semantic-analysis). |
@@ -23,7 +23,7 @@ The following table explains the primary features of the the Kusto.Language libr
 
 To use Kusto.Language:
 
-1. Get the package [Microsoft.Azure.Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/) from Nuget.
+1. Install [Microsoft.Azure.Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/).
 
 1. Include the following namespaces in your code:
 
@@ -33,18 +33,16 @@ To use Kusto.Language:
     using Kusto.Language.Syntax;
     ```
 
-## Set up your environment
+1. Define the database schema. In order for the parser to understand the existence and schema of a database, table, or function, the parser must be told about these entities. T You can either declare the schemas manually or use schemas from the server. For an example of how to define a schema manually, see [Define a database schema](#define-a-database-schema). To use schemas from the server, install [Kusto.Toolkit](https://www.nuget.org/packages/Kusto.Toolkit/).
 
-In order for the parser to understand the existence and schema of a database, table, or function, the parser must be told about these entities. There are two ways to set up the database schema: by declaring the schemas manually or by using database schemas from the server.
+## Examples
+
+## Define a database schema
 
 You tell the parser about the tables and functions by adding `DatabaseSymbol` instances to the `GlobalState` instance you use with the `ParseAndAnalyze` method.
 You can declare tables by constructing `TableSymbol` instances.
 You can declare functions by constructing `FunctionSymbol` instances. Functions can be declared with our without parameters.
-Once you have all the tables and function symbols you can create a `DatabaseSymbol`.
-
-If you already have an existing Kusto database defined, you can construct all the necessary symbols by using requesting all the schema information from the server. The APIs necessary to load the symbols are available in the [Kusto.Toolkit](https://www.nuget.org/packages/Kusto.Toolkit/) package.
-
-## Examples
+Once you have all the tables and function symbols you can create a `DatabaseSymbol`. 
 
 ### Parse a query
 
