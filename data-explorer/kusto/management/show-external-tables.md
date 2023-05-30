@@ -1,13 +1,13 @@
 ---
-title: .show external table control command
-description: Learn how to use the `.show external tables` command to show the specified external tables in the database. 
+title: .show external table command
+description: Learn how to use the `.show external table` command to show the specified external tables in the database. 
 ms.reviewer: yifats
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show external tables
+# .show external table command
 
-Returns all external tables in the database (or a specific external table).
+Returns a specified external table or all external tables in the database.
 
 This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
 
