@@ -11,7 +11,7 @@ The Kusto.Language Library is a .NET implementation of a parser for the [Kusto Q
 
 ## Overview
 
-The following sections provide an explanation of common features and use cases for the Kusto.Language library, including:
+The following table explains the primary features of the the Kusto.Language library.
 
 | Feature | Description |
 |--|--|
