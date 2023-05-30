@@ -40,7 +40,7 @@ The result string will contain only ASCII characters. The result string does not
 |acadmie-franaise-npb1a|
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjJz03MzLNVf9G569mc9XrJ+bnqvFw1CqkVJal5KVDZ+LLUZAVbheKCnMwSDYiQjoK6nromksrUvOT8lNSU+Iz84hKg2oLSvEqQQHxaUX5ufHEJ0K50jZJ8KANhbLRBrCY2YyAqQJaWFCUnlmioV+Tp6qrroFgDdoMOkhujDWM1AQ07DZjWAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjJz03MzLNVf9G569mc9XrJ+bnqvFw1CqkVJal5KVDZ+LLUZAVbheKCnMwSDYiQjoK6nromksrUvOT8lNSU+Iz84hKg2oLSvEqQQHxaUX5ufHEJ0K50jZJ8KANhbLRBrCY2YyAqQJaWFCUnlmioV+Tp6qrroFgDdoMOkhujDWM1AQ07DZjWAAAA" target="_blank">Run the query</a>
 
 ```kusto
  print domain='艺术.com'
