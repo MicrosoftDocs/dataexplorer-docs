@@ -137,7 +137,7 @@ _data
 |1    |[1,3,5,7]|12       |
 |0    |[2,4,6,8]|14       |
 
-### Selecting few elements in 2 arrays
+### Select elements in arrays
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PQYvCMBCF7/kV79YEsmBSu4rgoe3doxcpEjW7FJO21KhU/PGmsVZZNsM8eDPzzZCDcj52RoOulVmUleNI21YsDl2lbLkPTr4cIxsIjsHRTZSKiCNKZdA4KhjH840jYsIR+5z1PQLMPvEs4FnAs+RfPOEQ/mQy8U2Px594HvA84HkcdBqWjCPfHFN/XPqcF4wUIHfYy5dqGtNhpa/9V5e98MHJ3km4Gq5rdP1DTV39MtQVKPHVBhK7FykJ7jidrVVtedPjOquOemvKk6NDhb2X/+1JRtgDW1SAO4MBAAA=" target="_blank">Run the query</a>
