@@ -25,7 +25,7 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 ## Returns
 
-The command returns all workload groups in the cluster, after the drop, which is the output of the [`.show workload_groups`](show-workload-group-command.md#show-workload_groups) command.
+The command returns all workload groups in the cluster, after the drop, which is the output of the [`.show workload_group`](show-workload-group-command.md#show-workload_groups-command) command.
 
 Following is the schema of the output returned:
 
