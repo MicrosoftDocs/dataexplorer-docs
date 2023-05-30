@@ -1,11 +1,11 @@
 ---
-title: .show database cache query_results
+title: .show database cache query_results command
 description: Learn how to use the `.show cache query_results` command to show statistics related to the query results cache in the context of a database.
 ms.reviewer: amitof
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show database cache query_results
+# .show database cache query_results command
 
 Returns a table showing statistics related to the [query results cache](../query/query-results-cache.md) made against the context database.
 

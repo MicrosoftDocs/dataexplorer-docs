@@ -5,7 +5,7 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/23/2023
 ---
-# .show plugins
+# .show plugins command
 
 Lists all plugins of the cluster.
 

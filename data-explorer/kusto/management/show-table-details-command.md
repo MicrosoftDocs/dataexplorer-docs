@@ -1,11 +1,11 @@
 ---
-title: .show table details
-description: Learn how to use the `.show table details` to show the properties of the specified tables in the database.
+title: .show table details command
+description: Learn how to use the `.show table details` command to show the properties of the specified tables in the database.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show table details
+# .show table details command
 
 Returns a set that contains the specified table or all tables in the database with a detailed summary of each table's properties.
 

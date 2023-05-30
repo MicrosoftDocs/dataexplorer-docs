@@ -1,11 +1,11 @@
 ---
-title: .show table ingestion batching policy command
-description: Learn how to use the `.show table ingestion batching policy` command to display the table's ingestion batching policy.
+title: .show table policy ingestionbatching command
+description: Learn how to use the `.show table policy ingestionbatching` command to display the table's ingestion batching policy.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show table ingestion batching policy
+# .show table policy ingestionbatching command
 
 Displays the table's [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
 
