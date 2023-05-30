@@ -140,7 +140,7 @@ _data
 ### Selecting few elements in 2 arrays
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22Py2rDMBBF94H8w91ZBgUiOW5KoAvb+y67CaYojVJM9DCO2uKSj+9IdUwolZiBOzNnHkcV6B+MBntRZte5wFENg9gdR6ds95aUvKl8udhDcEyS7bNKZBxZJZMvsjbn+H1ziVhzFGTbmFsugO09Xye+Tnxd/suXHIJmlmtKRr6455vEN4lviuQ3qctc8sCxofGS7LGlA1pa4gr7uVJ9b0Y8669471N0fFIyKongEcZe+xMz3r3n8A6MFgi+h8ThhkoKXXH5sFYN3beeG1p11q+muwQ2RWgpN7X/m5O0V/4Dmq/ptIsBAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PQYvCMBCF7/kV79YEsmBSu4rgoe3doxcpEjW7FJO21KhU/PGmsVZZNsM8eDPzzZCDcj52RoOulVmUleNI21YsDl2lbLkPTr4cIxsIjsHRTZSKiCNKZdA4KhjH840jYsIR+5z1PQLMPvEs4FnAs+RfPOEQ/mQy8U2Px594HvA84HkcdBqWjCPfHFN/XPqcF4wUIHfYy5dqGtNhpa/9V5e98MHJ3km4Gq5rdP1DTV39MtQVKPHVBhK7FykJ7jidrVVtedPjOquOemvKk6NDhb2X/+1JRtgDW1SAO4MBAAA=" target="_blank">Run the query</a>
 
 ```kusto
 datatable (Val:int, Arr1:dynamic, Arr2:dynamic)
@@ -150,7 +150,7 @@ datatable (Val:int, Arr1:dynamic, Arr2:dynamic)
 ] 
 | mv-apply NewArr1=Arr1, NewArr2=Arr2 to typeof(long) on (
  top 2 by NewArr2
- | summarize NewArr1=make_list(NewArr1), newArr2=make_list(NewArr2)
+ | summarize NewArr1=make_list(NewArr1), NewArr2=make_list(NewArr2)
 )
 ```
 
