@@ -5,7 +5,7 @@ ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/25/2023
 ---
-# .undo drop table
+# .undo drop table command
 
 The `.undo` `drop` `table` command reverts a drop table operation to a specific database version. The database version must be the version just prior to the table deletion.
 

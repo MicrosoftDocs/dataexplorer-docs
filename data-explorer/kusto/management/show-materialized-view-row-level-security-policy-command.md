@@ -1,11 +1,11 @@
 ---
-title: .show materialized view row level security policy command
-description: Learn how to use the `.show materialized view row level security policy` command to show the materialized view's row level security policy.
+title: .show materialized-view policy row_level_security command
+description: Learn how to use the `.show materialized-view policy row_level_security` command to show the materialized view's row level security policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/23/2023
 ---
-# .show materialized view row level security policy
+# .show materialized-view policy row_level_security command
 
 Display the materialized view's [row_level_security policy](rowlevelsecuritypolicy.md). The Row Level Security simplifies the design and coding of security. It lets you apply restrictions on data row access in your application. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company.
 

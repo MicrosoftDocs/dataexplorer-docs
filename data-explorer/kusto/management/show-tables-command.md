@@ -1,11 +1,11 @@
 ---
-title: .show tables
+title: .show tables command
 description: Learn how to use the `.show tables` command to show a set that contains the specified tables in the database.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/23/2023
 ---
-# .show tables
+# .show tables command
 
 Returns a set that contains the specified tables or all tables in the database.
 
