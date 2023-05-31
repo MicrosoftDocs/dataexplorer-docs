@@ -37,7 +37,7 @@ In addition, strong consistency should be used when database metadata is large. 
 
 If you don’t have a strong dependency on updates that occurred in the database in the last few minutes, and you need high query concurrency, use weak consistency.
 
-For example, the following query counts the number of error records per week in the last 90 days. Weak consistency is appropriate in this case, since your insights are unlikely to be impacted.  records ingested in the past few minutes are omitted.
+For example, the following query counts the number of error records per week in the last 90 days. Weak consistency is appropriate in this case, since your insights are unlikely to be impacted records ingested in the past few minutes are omitted.
 
 ```kusto
 my_table
