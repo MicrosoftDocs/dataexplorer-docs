@@ -1,11 +1,11 @@
 ---
-title: .show external table schema control command
-description: Learn how to use the `.show external table schema` command to show the schema of the external table. 
+title: .show external table schema command
+description: Learn how to use the `.show external table schema` command to show the schema of the external table as JSON or CSL. 
 ms.reviewer: yifats
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show external table schema
+# .show external table schema command
 
 Returns the schema of the external table, as JSON or CSL.
 

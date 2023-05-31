@@ -1,11 +1,11 @@
 ---
-title: .drop external table control command
+title: .drop external table command
 description: Learn how to use the `.drop external table` command to drop an external table. 
 ms.reviewer: yifats
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .drop external table
+# .drop external table command
 
 Drops an external table.
 

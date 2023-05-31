@@ -1,11 +1,11 @@
 ---
-title: .show table streaming ingestion policy command
-description: Learn how to use the `.show table streaming ingestion policy` command to display the table's streaming ingestion policy.
+title: .show table policy streamingingestion command
+description: Learn how to use the `.show table policy streamingingestion` command to display the table's streaming ingestion policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show table streaming ingestion policy
+# .show table policy streamingingestion command
 
 Displays the table's streaming ingestion policy. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
 

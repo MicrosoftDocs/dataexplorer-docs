@@ -1,11 +1,11 @@
 ---
-title: .create external table mapping
+title: .create external table mapping command
 description: Learn how to use the `.create external table mapping` command to create an external table mapping for Azure Blob Storage or Azure Data Lake external tables.
 ms.topic: reference
 ms.date: 05/24/2023
 ---
 
-# .create external table mapping
+# .create external table mapping command
 
 Create a new external table data mapping. For more information, see [Data mappings](./mappings.md).
 

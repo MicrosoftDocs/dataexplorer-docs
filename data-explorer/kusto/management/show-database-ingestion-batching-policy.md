@@ -1,11 +1,11 @@
 ---
-title: .show database ingestion batching policy command
-description: Learn how to use the `.show database ingestion batching policy` command to show the database's ingestion batching policy.
+title: .show database policy ingestionbatching command
+description: Learn how to use the `.show database policy ingestionbatching` command to show the database's ingestion batching policy.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show database ingestion batching policy
+# .show database policy ingestionbatching command
 
 Display the database's [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
 

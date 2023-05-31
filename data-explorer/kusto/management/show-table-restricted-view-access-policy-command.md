@@ -1,13 +1,13 @@
 ---
-title: .show restricted view access policy command
-description: Learn how to use the `.show restricted view access policy` command to display the details of the table's restricted view access policy.
+title: .show table policy restricted_view_access command
+description: Learn how to use the `.show table policy restricted_view_access` command to display the details of the table's restricted view access policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show restricted view access policy
+# .show table policy restricted_view_access command
 
-Display the optional table [restricted view access policy](restrictedviewaccesspolicy.md). When this policy is enabled for a table, data in the table can only be queried by principals who have an [UnrestrictedViewer](./access-control/role-based-access-control.md) role in the database. Deleting a policy is similar to disabling a policy. 
+Display the optional table [restricted view access policy](restrictedviewaccesspolicy.md). When this policy is enabled for a table, data in the table can only be queried by principals who have an [UnrestrictedViewer](./access-control/role-based-access-control.md) role in the database. Deleting a policy is similar to disabling a policy.
 
 ## Permissions
 

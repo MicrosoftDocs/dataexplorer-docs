@@ -1,11 +1,11 @@
 ---
-title: .show database sharding policy command
-description: Learn how to use the `.show database sharding policy` command to show the database's sharding policy.
+title: .show database policy sharding command
+description: Learn how to use the `.show database policy sharding` command to show the database's sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show database sharding policy
+# .show database policy sharding command
 
 Show the database sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
 
