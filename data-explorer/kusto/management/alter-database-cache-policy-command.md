@@ -1,11 +1,11 @@
 ---
-title: .alter database cache policy command
-description: Learn how to use the `.alter database cache policy` command to change the database cache policy.
+title: .alter database policy caching command
+description: Learn how to use the `.alter database policy caching` command to change the database cache policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/25/2023
 ---
-# .alter database cache policy command
+# .alter database policy caching command
 
 Changes the database cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 
