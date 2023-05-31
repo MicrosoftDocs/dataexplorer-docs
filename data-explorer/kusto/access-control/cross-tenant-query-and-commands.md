@@ -86,4 +86,4 @@ After updating the `trustedExternalTenants` property, you can give access to pri
 
 ## Limitations
 
-The configuration of this feature applies solely to Azure Active Directory identities (Users, Applications) trying to connect to the Azure Data Explorer data plane. It has no impact on cross Azure Active Directory ingestion.
+The configuration of this feature applies solely to Azure Active Directory identities (Users, Applications) trying to connect to Azure Data Explorer. It has no impact on cross Azure Active Directory ingestion.

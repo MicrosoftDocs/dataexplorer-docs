@@ -148,9 +148,9 @@ To configure your Cosmos DB connection:
     > [!NOTE]
     >
     > - The following steps assign these roles to the principal ID:
-    >   - [Cosmos DB Built-in Data Reader](/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions) (Data Plane)
+    >   - [Cosmos DB Built-in Data Reader](/azure/cosmos-db/how-to-setup-rbac#built-in-role-definitions)
     >     - You can't assign the **Cosmos DB Built-in Data Reader** role using the Azure portal *Role Assignment* feature.
-    >   - [Cosmos DB Account Reader Role](/azure/role-based-access-control/built-in-roles) (RBAC / Control Plane)
+    >   - [Cosmos DB Account Reader Role](/azure/role-based-access-control/built-in-roles)
 
     Use one of the following options to grant access to your Cosmos DB account:
 
