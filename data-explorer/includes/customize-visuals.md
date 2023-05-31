@@ -7,7 +7,7 @@ ms.date: 12/14/2022
 
 Use the following properties to customize visuals.
 
-:::image type="content" source="media/dashboard-customize-visuals/visual-customization-sidebar.png" alt-text="Visual customization sidebar.":::
+:::image type="content" source="../media/dashboard-customize-visuals/visual-customization-sidebar.png" alt-text="Visual customization sidebar.":::
 
 |Section  |Description | Visual types
 |---------|---------|-----|

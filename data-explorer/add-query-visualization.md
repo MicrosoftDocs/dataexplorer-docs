@@ -16,7 +16,7 @@ In this article, you'll learn how to customize different visuals from query resu
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. Use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-database-portal.md).
 
-## Add a visual
+## Add a visual to a query
 
 1. [Run a query](web-ui-query-overview.md#write-and-run-queries) in the Azure Data Explorer web UI. For example, you can use the following query: 
 
@@ -35,5 +35,10 @@ In this article, you'll learn how to customize different visuals from query resu
 
     A pane opens on the right side, with the **Visual Formatting** tab selected.
 
+1. Select the **Visual type** from the dropdown. For a list of available visualizations, see [Visualizations](kusto/query/renderoperator.md#visualization). 
+
+    :::image type="content" source="media/add-query-visualization/select-visual-type.png" alt-text="Screenshot of visual type dropdown in Azure Data Explorer web UI.":::
 
 [!INCLUDE [customize-visuals](includes/customize-visuals.md)]
+
+## Change an existing visualization
