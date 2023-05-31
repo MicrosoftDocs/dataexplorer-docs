@@ -2,7 +2,7 @@
 title: Manage database security roles
 description: Learn how to use management commands to view, add, and remove security roles on a database level.
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 05/28/2023
 ---
 
 # Manage database security roles
@@ -10,6 +10,9 @@ ms.date: 05/24/2023
 Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
 In this article, you'll learn how to use management commands to [view existing security roles](#view-existing-security-roles) as well as [add and remove security roles](#add-and-remove-security-roles) on the database level.
+
+> [!NOTE]
+> To delete a database, you need at least **Contributor** Azure Resource Manager (ARM) permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
 ## Permissions
 
@@ -21,7 +24,7 @@ The following table shows the possible security roles on the database level and 
 
 |Role|Permissions|
 |--|--|
-|`admins` | View, modify, and remove the database and database entities.|
+|`admins` | View and modify the database and database entities.|
 |`users` | View the database and create new database entities.|
 |`viewers` | View tables in the database where [RestrictedViewAccess](restrictedviewaccesspolicy.md) isn't turned on.|
 |`unrestrictedviewers`| View the tables in the database even where [RestrictedViewAccess](restrictedviewaccesspolicy.md) is turned on. The principal must also have `admins`, `viewers` or `users` permissions. |
