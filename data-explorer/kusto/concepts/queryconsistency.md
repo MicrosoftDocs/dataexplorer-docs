@@ -22,7 +22,7 @@ For example, if 1000 records are ingested each minute into a table in the databa
 
 If you have a strong dependency on updates that occurred in the database in the last few minutes, use strong consistency.
 
-For example, the following query counts the number of error records in the 5 minutes and triggers an aler.  that count is larger than 0. This use case is best handled with strong consistency, since your insights may be altere.  you don't have access to records ingested in the past few minutes, as may be the case with weak consistency.
+For example, the following query counts the number of error records in the 5 minutes and triggers an alert that count is larger than 0. This use case is best handled with strong consistency, since your insights may be altered you don't have access to records ingested in the past few minutes, as may be the case with weak consistency.
 
 ```kusto
 my_table
@@ -37,7 +37,7 @@ In addition, strong consistency should be used when database metadata is large. 
 
 If you don’t have a strong dependency on updates that occurred in the database in the last few minutes, and you need high query concurrency, use weak consistency.
 
-For example, the following query counts the number of error records per week in the last 90 days. Weak consistency is appropriate in this case, since your insights are unlikely to be impacte.  records ingested in the past few minutes are omitted.
+For example, the following query counts the number of error records per week in the last 90 days. Weak consistency is appropriate in this case, since your insights are unlikely to be impacted.  records ingested in the past few minutes are omitted.
 
 ```kusto
 my_table
