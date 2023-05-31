@@ -222,6 +222,9 @@ items:
         - name: Add a cluster connection
           href: add-cluster-connection.md
           displayName: connect to cluster
+        - name: Add a query visualization
+          displayName: render, visualize, chart, graph, web UI
+          href: add-query-visualization.md
         - name: Explore the sample gallery
           href: web-ui-samples-query.md
         - name: Explore the results grid
