@@ -23,7 +23,7 @@ When implementing custom ingestion application it is highly recommended to handl
 
 ## Clearing the schema cache
 
-The schema cache is kept while the cluster is online and the system will automatically refresh the cache if there are schema changes. However, these changes in the schema cache can take several minutes to be updated. Relying on the automatic refresh of the system may cause uncoordinated ingestion failures. 
+The schema cache is kept while the cluster is online. If there are schema changes, the system will automatically refresh the cache, but this may take several minutes. If you rely on the automatic refresh, you may experience uncoordinated ingestion failures. 
 
 Reduce the effects of propagation delay by explicitly clearing the schema cache on the cluster nodes.
 Clear the schema cache using one of the [Clear schema cache for streaming ingestion](clear-schema-cache-command.md) management commands.
