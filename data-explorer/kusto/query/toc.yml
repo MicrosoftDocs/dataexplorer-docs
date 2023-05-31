@@ -98,8 +98,6 @@ items:
     href: tabularexpressionstatements.md
   - name: Batches
     href: batches.md
-  - name: Add a comment in KQL
-    href: comment.md
 - name: Tabular operators
   items:
   - name: Query operators
