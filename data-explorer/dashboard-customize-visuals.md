@@ -18,6 +18,22 @@ In this article, you'll learn how to customize different visuals. For general in
 
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
 
+## Customize visuals
+
+To make any changes in your dashboard, you'll first need to switch from viewing to editing mode.
+
+1. On the top menu, select **Viewing** and toggle to **Editing** mode.
+
+    :::image type="content" source="media/dashboard-customize-visuals/enter-editing-mode.png" alt-text="Screenshot of entering editing mode in dashboards in Azure Data Explorer web UI.":::
+
+1. Browse to the tile you wish to change. Select the **Edit** icon.
+
+    :::image type="content" source="media/dashboard-customize-visuals/edit-tile.png" alt-text="Screenshot of how to edit a tile in dashboards in Azure Data Explorer web UI.":::
+
+1. Once you've finished making changes in the visual pane, select **Apply changes** to return to the dashboard and view your changes.
+
+    :::image type="content" source="media/dashboard-customize-visuals/save-changes-dashboard.png" alt-text="Screenshot of how to save the changes to your dashboard tile in Azure Data Explorer web UI.":::
+
 [!INCLUDE [customize-visuals](includes/customize-visuals.md)]
 
 ### Dashboard-specific visuals
