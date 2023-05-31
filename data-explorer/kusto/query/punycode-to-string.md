@@ -7,7 +7,7 @@ ms.date: 04/16/2023
 
 # punycode_to_string()
 
-Decodes input string from [punycode](https://en.wikipedia.org/wiki/Punycode) form. The string should not contain the initial xn-- and must contain only ASCII characters.
+Decodes input string from [punycode](https://en.wikipedia.org/wiki/Punycode) form. The string shouldn't contain the initial xn--, and must contain only ASCII characters.
 
 ## Syntax
 
