@@ -29,7 +29,7 @@ The `workspace=<guid>` query parameter creates a separate workspace for the embe
 
 ### Handle authentication
 
-When embedding the ADX web UI the hosting page is responsible for authentication. The below diagrams describes the auth flow.
+When embedding the ADX web UI, the hosting page is responsible for authentication. The below diagrams describes the auth flow.
 
 :::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-sequencediagram.png" alt-text="Sequence diagram for authentication in an embedded ADX iframe":::
 
@@ -51,7 +51,7 @@ Follow those steps to handle authentication:
 2. Get access token From Azure AD
 
     Obtain a [JWT token](https://tools.ietf.org/html/rfc7519) from [Microsoft Azure Active Directory (Azure AD) authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).  
-      Use this table to decide how to map `event.data.scope` the Azure AD scopes:
+      Use this table to decide how to map `event.data.scope` to Azure AD scopes:
 
       | resource         | event.data.scope                                            | Azure AD Scopes                                             |
       | ---------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
