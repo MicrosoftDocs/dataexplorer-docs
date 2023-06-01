@@ -147,6 +147,8 @@ items:
       - name: Manually create resources in Azure portal
         displayName: Manually create resources for Event Grid ingestion, Ingest
         href: ingest-data-event-grid-manual.md
+      - name: Use an Event Grid data connection
+        href: use-event-grid-connection.md
     - name: IoT Hub
       items:
       - name: IoT Hub data connection

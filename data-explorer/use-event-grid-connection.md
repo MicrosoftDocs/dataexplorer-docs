@@ -1,0 +1,149 @@
+---
+title: 'Use an Event Grid data connection - Azure Data Explorer'
+description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Grid.'
+ms.topic: how-to
+ms.date: 06/01/2023
+---
+
+# Use an Event Grid data connection
+
+This article shows how to use an Event Grid data connection in Azure Data Explorer. You'll programmatically upload data to Azure Blob Storage or Azure Data Lake, which will trigger the Event Grid data connection and ingest the data into your Azure Data Explorer cluster.
+
+## Prerequisites
+
+* [Create an Event Grid data connection](create-event-grid-connection.md)
+
+## Use the connection
+
+Select the relevant tab for your Event Grid data connection.
+
+### [Azure Blob Storage](#tab/azure-blob-storage)
+
+The following steps uploads sample data to your Azure Blob Storage. Then, this data will be ingested into Azure Data Explorer via the Event Grid data connection.
+
+1. Define variables for use in the following steps.
+
+    ```csharp
+    var azureStorageAccountConnectionString=<storage_account_connection_string>;
+    var containerName = <container_name>;
+    var blobName = <blob_name>;
+    var localFileName = <file_to_upload>;
+    var uncompressedSizeInBytes = <uncompressed_size_in_bytes>;
+    var mapping = <mappingReference>;
+    ```
+
+1. Create a new container in your storage account.
+
+    ```csharp
+    var azureStorageAccount = CloudStorageAccount.Parse(azureStorageAccountConnectionString);
+    var blobClient = azureStorageAccount.CreateCloudBlobClient();
+    var container = blobClient.GetContainerReference(containerName);
+    container.CreateIfNotExists();
+    ```
+
+1. Set metadata and upload a file to the blob.
+
+    ```csharp
+    var blob = container.GetBlockBlobReference(blobName);
+    blob.Metadata.Add("rawSizeBytes", uncompressedSizeInBytes);
+    blob.Metadata.Add("kustoIngestionMappingReference", mapping);
+    blob.UploadFromFile(localFileName);
+    ```
+
+1. Confirm success of the upload by listing the blobs in you container.
+
+    ```csharp
+    var blobs = container.ListBlobs();
+    ```
+
+1. Check Azure Data Explorer to see that the content was ingested into your cluster.
+
+> [!NOTE]
+> Azure Data Explorer won't delete the blobs post ingestion. Retain the blobs for three to five days by using [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion.
+
+---
+
+### [Azure Data Lake](#tab/azure-data-lake)
+
+To upload files to Data Lake Storage Gen2, use the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/). The following steps demonstrate the use of Azure.Storage.Files.DataLake v12.5.0 to create a new filesystem in Azure Data Lake storage and upload a local file with metadata to that filesystem.
+
+1. Define variables for use in the following steps.
+
+    ```csharp
+    var accountName = <storage_account_name>;
+    var accountKey = <storage_account_key>;
+    var fileSystemName = <file_system_name>;
+    var fileName = <file_name>;
+    var localFileName = <file_to_upload>;
+    var uncompressedSizeInBytes = <uncompressed_size_in_bytes>;
+    var mapping = <mapping_reference>;
+    var sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
+    var dfsUri = "https://" + accountName + ".dfs.core.windows.net";
+    var dataLakeServiceClient = new DataLakeServiceClient(new Uri(dfsUri), sharedKeyCredential);
+    ```
+
+1. Create the filesystem.
+
+    ```csharp
+    var dataLakeFileSystemClient = dataLakeServiceClient.CreateFileSystem(fileSystemName).Value;
+    ```
+
+1. Define file metadata and uploading options.
+
+    ```csharp
+    IDictionary<String, String> metadata = new Dictionary<string, string>();
+    metadata.Add("rawSizeBytes", uncompressedSizeInBytes);
+    metadata.Add("kustoIngestionMappingReference", mapping);
+    var uploadOptions = new DataLakeFileUploadOptions
+    {
+        Metadata = metadata,
+        Close = true // Note: The close option triggers the event being processed by the data connection
+    };
+    ```
+
+    > [!NOTE]
+    > When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, the file creation triggers an Event Grid event with size 0, which Azure Data Explorer ignores when ingesting the data. File flushing with the *close* parameter set to *true* triggers another event indicating that this is the final update and the file stream has been closed. This *FlushAndClose* event is processed by Azure Data Explorer during ingestion. In the upload file code snippet, the *Close* parameter is set to *true* causing the Upload method to trigger the *FlushAndClose* event.
+
+1. Write to the file.
+
+    ```csharp
+    var dataLakeFileClient = dataLakeFileSystemClient.GetFileClient(fileName);
+    dataLakeFileClient.Upload(localFileName, uploadOptions);
+    ```
+
+1. Check Azure Data Explorer to see that the content was ingested into your cluster.
+
+> [!NOTE]
+To reduce traffic coming from Event Grid and the subsequent processing when ingesting events into Azure Data Explorer, we highly recommend [filtering](ingest-data-event-grid-manual.md#create-an-event-grid-subscription) the *data.api* key to only include *FlushAndClose* events, thereby removing file creation events with size 0. For more information about flushing, see [Azure Data Lake flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush).
+
+### Ingest renamed blobs
+
+In ADLSv2, it is possible to rename directories. However, it's important to note that renaming a directory does not trigger blob renamed events or initiate the ingestion of blobs contained within the directory. If you want to ensure the ingestion of blobs after renaming a directory, you should directly rename the individual blobs within the directory.
+
+The following code sample shows how to rename a blob in an ADLSv2 storage account.
+
+```csharp
+var accountName = <storage_account_name>;
+var accountKey = <storage_account_key>;
+var fileSystemName = <file_system_name>;
+var sourceFilePath = <source_file_path>;
+var destinationFilePath = <destination_file_path>;
+var sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
+var dfsUri = "https://" + accountName + ".dfs.core.windows.net";
+var dataLakeServiceClient = new DataLakeServiceClient(new Uri(dfsUri), sharedKeyCredential);
+// Get a client to the the filesystem
+var dataLakeFileSystemClient = dataLakeServiceClient.GetFileSystemClient(fileSystemName);
+// Rename a file in the file system
+var dataLakeFileClient = dataLakeFileSystemClient.GetFileClient(sourceFilePath);
+dataLakeFileClient.Rename(destinationFilePath);
+```
+
+> [!NOTE]
+> If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
+
+---
+
+## Next steps
+
+* [Query data in the Web UI](web-ui-query-overview.md)
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
