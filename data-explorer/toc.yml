@@ -238,7 +238,7 @@ items:
       items:
       - name: Query data in Azure Monitor
         href: query-monitor-data.md
-      - name: Query exported data from Azure Monitor
+      - name: Export and query Azure Monitor data
         href: query-exported-azure-monitor-data.md
     - name: Query data using Power Apps
       href: power-apps-connector.md
