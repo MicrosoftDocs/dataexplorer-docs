@@ -55,7 +55,7 @@ If you've added a visual through the UI, you can change this visual by selecting
 
 If you've created a visual using the [render operator](kusto/query/renderoperator.md), you can edit the visual by selecting **Visual** in the results grid. 
 
-:::image type="content" source="media/add-query-visualization/change-rendered-visual.png" alt-text="Screenshot of rendered visual as a bar chart that has been changed to a column chart in the visual formatting pane in Azure Data Explorer web UI.":::
+:::image type="content" source="media/add-query-visualization/change-rendered-visual.png" alt-text="Screenshot of rendered visual as a bar chart that has been changed to a column chart in the visual formatting pane in Azure Data Explorer web UI." lightbox="media/add-query-visualization/change-rendered-visual.png":::
 
 > [!IMPORTANT]
 > Notice that the visual formatting pane has changed the visual representation, but has not modified the original query. 
