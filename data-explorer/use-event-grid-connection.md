@@ -19,7 +19,7 @@ Select the relevant tab for your Event Grid data connection.
 
 ### [Azure Blob Storage](#tab/azure-blob-storage)
 
-The following steps uploads sample data to your Azure Blob Storage. Then, this data will be ingested into Azure Data Explorer via the Event Grid data connection.
+The following steps show how to upload data to your Azure Blob Storage. Then, this data is ingested into Azure Data Explorer via the Event Grid data connection.
 
 1. Define variables for use in the following steps.
 
@@ -50,7 +50,7 @@ The following steps uploads sample data to your Azure Blob Storage. Then, this d
     blob.UploadFromFile(localFileName);
     ```
 
-1. Confirm success of the upload by listing the blobs in you container.
+1. Confirm success of the upload by listing the blobs in your container.
 
     ```csharp
     var blobs = container.ListBlobs();
@@ -118,7 +118,7 @@ To reduce traffic coming from Event Grid and the subsequent processing when inge
 
 ### Ingest renamed blobs
 
-In ADLSv2, it is possible to rename directories. However, it's important to note that renaming a directory does not trigger blob renamed events or initiate the ingestion of blobs contained within the directory. If you want to ensure the ingestion of blobs after renaming a directory, you should directly rename the individual blobs within the directory.
+In ADLSv2, it's possible to rename directories. However, it's important to note that renaming a directory doesn't trigger blob renamed events or initiate the ingestion of blobs contained within the directory. If you want to ensure the ingestion of blobs after renaming a directory, you should directly rename the individual blobs within the directory.
 
 The following code sample shows how to rename a blob in an ADLSv2 storage account.
 
