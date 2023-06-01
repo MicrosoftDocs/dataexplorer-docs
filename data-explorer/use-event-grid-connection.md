@@ -1,6 +1,6 @@
 ---
 title: 'Use an Event Grid data connection - Azure Data Explorer'
-description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Grid.'
+description: 'In this article, you learn how to use an Event Grid data connection in Azure Data Explorer.'
 ms.topic: how-to
 ms.date: 06/01/2023
 ---
