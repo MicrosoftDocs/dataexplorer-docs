@@ -19,7 +19,7 @@ Select the relevant tab for your Event Grid data connection.
 
 ### [Azure Blob Storage](#tab/azure-blob-storage)
 
-To upload files to Azure Blob Storage, use the [Azure Blob Storage SDK](https://www.nuget.org/packages/Azure.Storage.Blobs/). The following steps show how to upload data to your Azure Blob Storage using the SDK. The upload triggers the Event Grid data connection, which ingests the data into Azure Data Explorer.
+The following steps use the [Azure Blob Storage SDK](https://www.nuget.org/packages/Azure.Storage.Blobs/) to upload a file to Azure Blob Storage. The upload triggers the Event Grid data connection, which ingests the data into Azure Data Explorer.
 
 1. Define variables for use in the following steps.
 
@@ -63,7 +63,7 @@ To upload files to Azure Blob Storage, use the [Azure Blob Storage SDK](https://
 
 ### [Azure Data Lake](#tab/azure-data-lake)
 
-To upload files to Data Lake Storage Gen2, use the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/). The following steps demonstrate the use of Azure.Storage.Files.DataLake v12.5.0 to create a new filesystem in Azure Data Lake storage and upload a local file with metadata to that filesystem. The upload triggers the Event Grid data connection, which ingests the data into Azure Data Explorer.
+The following steps use the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file to Data Lake Storage Gen2. The upload triggers the Event Grid data connection, which ingests the data into Azure Data Explorer.
 
 1. Define variables for use in the following steps.
 
