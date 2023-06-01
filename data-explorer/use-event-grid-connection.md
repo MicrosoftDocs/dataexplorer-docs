@@ -61,8 +61,6 @@ The following steps show how to upload data to your Azure Blob Storage. Then, th
 > [!NOTE]
 > Azure Data Explorer won't delete the blobs post ingestion. Retain the blobs for three to five days by using [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion.
 
----
-
 ### [Azure Data Lake](#tab/azure-data-lake)
 
 To upload files to Data Lake Storage Gen2, use the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/). The following steps demonstrate the use of Azure.Storage.Files.DataLake v12.5.0 to create a new filesystem in Azure Data Lake storage and upload a local file with metadata to that filesystem.
