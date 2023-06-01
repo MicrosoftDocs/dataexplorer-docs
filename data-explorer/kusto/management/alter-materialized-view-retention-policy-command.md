@@ -1,11 +1,11 @@
 ---
-title:  .alter materialized-view retention policy command
-description: Learn how to use the `.alter materialized-view retention` policy command to change the materialized view's retention policy.
+title:  .alter materialized-view policy retention command
+description: Learn how to use the `.alter materialized-view policy retention` command to change the materialized view's retention policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter materialized-view retention policy command
+# .alter materialized-view policy retention command
 
 Changes the materialized view's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It's used to remove data whose relevance is age-based.
 
