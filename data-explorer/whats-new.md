@@ -27,16 +27,16 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|[Create and alter delta external tables on Azure Storage](/azure/data-explorer/kusto/management/external-tables-azurestorage-deltalake.md)| New article. Describes how to create and alter delta external tables on Azure Storage.|
+|[Create and alter delta external tables on Azure Storage](kusto/management/external-tables-azurestorage-deltalake.md)| New article. Describes how to create and alter delta external tables on Azure Storage.|
 
 **Query**
 
 | Article title | Description |
 |--|--|
-|[postgresql_request plugin](/azure/data-explorer/kusto/query/postgresql-request-plugin.md)| New article. Describes how to use the postgresql_request plugin to send a SQL query to a PostgreSql server network endpoint.|
-|[Treemap](/azure/data-explorer/kusto/query/visualization-treemap.md)| New article. Describes how to use the treemap visualization to visualize data.|
-|[geo_info_from_ip_address()](/azure/data-explorer/kusto/query/geo-info-from-ip-address-function.md)| New article. Describes how to use the geo_info_from_ip_address() function to retrieve geolocation information about IPv4 or IPv6 addresses.|
-|[bag_zip()](/azure/data-explorer/kusto/query/bag-zip.md)| New article. Describes how to use the bag_zip() function to merge two dynamic arrays into a single property-bag of keys and values.|
+|[postgresql_request plugin](kusto/query/postgresql-request-plugin.md)| New article. Describes how to use the postgresql_request plugin to send a SQL query to a PostgreSql server network endpoint.|
+|[Treemap](kusto/query/visualization-treemap.md)| New article. Describes how to use the treemap visualization to visualize data.|
+|[geo_info_from_ip_address()](kusto/query/geo-info-from-ip-address-function.md)| New article. Describes how to use the geo_info_from_ip_address() function to retrieve geolocation information about IPv4 or IPv6 addresses.|
+|[bag_zip()](kusto/query/bag-zip.md)| New article. Describes how to use the bag_zip() function to merge two dynamic arrays into a single property-bag of keys and values.|
 
 ## April 2023
 
