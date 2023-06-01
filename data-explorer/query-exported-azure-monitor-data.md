@@ -16,15 +16,15 @@ The process flow is to:
 1. Create an external table in your Azure Data Explorer cluster and mapping for the data types.
 1. Query data from Azure Data Explorer.
 
-:::image type="content" source="media/azure-data-explorer-query-storage/exported-data-query.png" alt-text="Diagram that shows Azure Data Explorer exported data querying flow.":::
+:::image type="content" source="media/query-exported-monitor-data/exported-data-query.png" alt-text="Diagram that shows Azure Data Explorer exported data querying flow.":::
 
 ## Send data to Azure Storage
 
 Azure Monitor logs can be exported to a storage account by using any of the following options:
 
-- Export all data from your Log Analytics workspace to a storage account or event hub. Use the Log Analytics workspace data export feature of Azure Monitor Logs. For more information, see [Log Analytics workspace data export in Azure Monitor](./logs-data-export.md).
-- Scheduled export from a log query by using a logic app workflow. This method is similar to the data export feature but allows you to send filtered or aggregated data to Azure Storage. This method is subject to [log query limits](../service-limits.md#log-analytics-workspaces). For more information, see [Archive data from a Log Analytics workspace to Azure Storage by using Azure Logic Apps](./logs-export-logic-app.md).
-- One-time export by using a logic app workflow. For more information, see [Azure Monitor Logs connector for Azure Logic Apps](../../connectors/connectors-azure-monitor-logs.md).
+- Export all data from your Log Analytics workspace to a storage account or event hub. Use the Log Analytics workspace data export feature of Azure Monitor Logs. For more information, see [Log Analytics workspace data export in Azure Monitor](/azure/azure-monitor/logs/logs-data-export).
+- Scheduled export from a log query by using a logic app workflow. This method is similar to the data export feature but allows you to send filtered or aggregated data to Azure Storage. This method is subject to [log query limits](/azure/azure-monitor/service-limits#log-analytics-workspaces). For more information, see [Archive data from a Log Analytics workspace to Azure Storage by using Azure Logic Apps](/azure/azure-monitor/logs/logs-export-logic-app.md).
+- One-time export by using a logic app workflow. For more information, see [Azure Monitor Logs connector for Azure Logic Apps](/azure/connectors/connectors-azure-monitor-logs).
 - One-time export to a local machine by using a PowerShell script. For more information, see [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport).
 
 > [!TIP]
@@ -36,7 +36,7 @@ Use [external tables](/azure/data-explorer/kusto/query/schema-entities/externalt
 
 To create a reference, you require the schema of the exported table. Use the [getschema](/azure/data-explorer/kusto/query/getschemaoperator) operator from Log Analytics to retrieve this information, which includes the table's columns and their data types.
 
-:::image type="content" source="media\azure-data-explorer-query-storage\exported-data-map-schema.jpg" alt-text="Screenshot that shows a Log Analytics table schema.":::
+:::image type="content" source="media\query-exported-monitor-data\exported-data-map-schema.jpg" alt-text="Screenshot that shows a Log Analytics table schema.":::
 
 You can now use the output to create the Kusto query for building the external table.
 Follow the guidance in [Create and alter external tables in Azure Storage or Azure Data Lake](/azure/data-explorer/kusto/management/external-tables-azurestorage-azuredatalake) to create an external table in a JSON format. Then run the query from your Azure Data Explorer database.
@@ -113,7 +113,7 @@ Write-Host -ForegroundColor Green $createMapping
 
 The following image shows an example of the output:
 
-:::image type="content" source="media/azure-data-explorer-query-storage/external-table-create-command-output.png" alt-text="Screenshot that shows the ExternalTable create command output.":::
+:::image type="content" source="media/query-exported-monitor-data/external-table-create-command-output.png" alt-text="Screenshot that shows the ExternalTable create command output.":::
 
 >[!TIP]
 > * Copy, paste, and then run the output of the script in your Azure Data Explorer client tool to create the table and mapping.
@@ -127,7 +127,7 @@ After you configure the mapping, you can query the exported data from Azure Data
 external_table("HBTest","map") | take 10000
 ```
 
-[![Screenshot that shows the Query Log Analytics exported data.](media/azure-data-explorer-query-storage/external-table-query.png)](media/azure-data-explorer-query-storage/external-table-query.png#lightbox)
+[![Screenshot that shows the Query Log Analytics exported data.](media/query-exported-monitor-data/external-table-query.png)](media/query-exported-monitor-data/external-table-query.png#lightbox)
 
 ## Next steps
 
