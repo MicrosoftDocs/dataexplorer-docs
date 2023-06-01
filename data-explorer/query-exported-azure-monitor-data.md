@@ -23,7 +23,7 @@ The process flow is to:
 Azure Monitor logs can be exported to a storage account by using any of the following options:
 
 - Export all data from your Log Analytics workspace to a storage account or event hub. Use the Log Analytics workspace data export feature of Azure Monitor Logs. For more information, see [Log Analytics workspace data export in Azure Monitor](/azure/azure-monitor/logs/logs-data-export).
-- Scheduled export from a log query by using a logic app workflow. This method is similar to the data export feature but allows you to send filtered or aggregated data to Azure Storage. This method is subject to [log query limits](/azure/azure-monitor/service-limits#log-analytics-workspaces). For more information, see [Archive data from a Log Analytics workspace to Azure Storage by using Azure Logic Apps](/azure/azure-monitor/logs/logs-export-logic-app.md).
+- Scheduled export from a log query by using a logic app workflow. This method is similar to the data export feature but allows you to send filtered or aggregated data to Azure Storage. This method is subject to [log query limits](/azure/azure-monitor/service-limits#log-analytics-workspaces). For more information, see [Archive data from a Log Analytics workspace to Azure Storage by using Azure Logic Apps](/azure/azure-monitor/logs/logs-export-logic-app).
 - One-time export by using a logic app workflow. For more information, see [Azure Monitor Logs connector for Azure Logic Apps](/azure/connectors/connectors-azure-monitor-logs).
 - One-time export to a local machine by using a PowerShell script. For more information, see [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport).
 
