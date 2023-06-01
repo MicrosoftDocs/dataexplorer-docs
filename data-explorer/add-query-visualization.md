@@ -51,7 +51,7 @@ If you've added a visual through the UI, you can change this visual by selecting
 
 :::image type="content" source="media/add-query-visualization/edit-visual.png" alt-text="Screenshot of edit visual tab in the results grid in Azure Data Explorer web UI.":::
 
-## Visual created in query
+### Visual created in query
 
 If you've created a visual using the [render operator](kusto/query/renderoperator.md), you can edit the visual by selecting **Visual** in the results grid. 
 
