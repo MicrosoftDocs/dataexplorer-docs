@@ -7,7 +7,7 @@ ms.date: 06/01/2023
 
 # Use an Event Grid data connection
 
-This article shows how to use an Event Grid data connection in Azure Data Explorer. You'll programmatically upload data to Azure Blob Storage or Azure Data Lake. This upload triggers the Event Grid data connection, causing the data to be ingested into your Azure Data Explorer cluster.
+In this article, you'll learn how to programmatically upload data to Azure Blob Storage or Azure Data Lake. If you've set up an Event Grid data connection on the storage, the upload process will automatically trigger the Event Grid data connection and cause the data to be ingested into your Azure Data Explorer cluster.
 
 ## Prerequisites
 
