@@ -276,7 +276,8 @@ items:
       href: alter-cluster-cache-policy-command.md
     - name: .alter database cache policy command
       href: alter-database-cache-policy-command.md
-    - name: .alter materialized-view cache policy command
+    - name: .alter materialized-view policy caching command
+      displayName: .alter materialized-view cache policy
       href: alter-materialized-view-cache-policy-command.md
     - name: .alter table cache policy command
     - name: .alter table cache policy command
@@ -305,6 +306,7 @@ items:
     - name: .alter cluster policy callout command
       href: alter-callout-policy-command.md
     - name: .alter-merge cluster policy callout command
+      displayName: .alter-merge cluster callout policy
       href: alter-merge-callout-policy-command.md
     - name: .delete cluster policy callout command
       href: delete-callout-policy-command.md
@@ -316,7 +318,8 @@ items:
       href: capacitypolicy.md
     - name: .alter capacity policy command
       href: alter-capacity-policy-command.md
-    - name: .alter-merge capacity policy command
+    - name: .alter-merge cluster policy capacity command
+      displayName: .alter-merge cluster capacity policy
       href: alter-merge-capacity-policy-command.md
     - name: .show cluster policy capacity command
       displayName: .show cluster capacity policy
@@ -325,7 +328,8 @@ items:
     items:
     - name: Encoding policy
       href: encoding-policy.md
-    - name: .alter encoding policy command
+    - name: .alter column policy encoding command
+      displayName: .alter encoding policy, .alter column encoding policy
       href: alter-encoding-policy.md
     - name: .show policy encoding command
       displayName: .show encoding policy
@@ -353,7 +357,8 @@ items:
     items:
     - name: Ingestion time policy
       href: ingestiontimepolicy.md
-    - name: .alter ingestion time policy command
+    - name: .alter table policy ingestiontime command
+      displayName: .alter table ingestion time policy, .alter ingestiontime policy, .alter tables policy ingestiontime 
       href: alter-ingestion-time-policy-command.md
     - name: .delete ingestion time policy command
       href: delete-ingestion-time-policy-command.md
@@ -378,7 +383,8 @@ items:
       href: mergepolicy.md
     - name: .alter database merge policy command
       href: alter-database-merge-policy-command.md
-    - name: .alter materialized-view merge policy command
+    - name: .alter materialized-view policy merge command
+      displayName: .alter materialized-view merge policy
       href: alter-materialized-view-merge-policy-command.md
     - name: .alter table merge policy command
       href: alter-table-merge-policy-command.md
@@ -403,7 +409,8 @@ items:
     items:
     - name: Partitioning policy
       href: partitioningpolicy.md
-    - name: .alter materialized-view partitioning policy command
+    - name: .alter materialized-view policy partitioning command
+      displayName: .alter materialized-view partitioning policy
       href: alter-materialized-view-partitioning-policy-command.md
     - name: .alter table partitioning policy command
       href: alter-table-partitioning-policy-command.md
@@ -459,7 +466,8 @@ items:
     items:
     - name: Extent tags retention policy
       href: extent-tags-retention-policy.md
-    - name: .alter database extent tags retention policy command
+    - name: .alter database policy extent_tags_retention command
+      displayName: .alter database extent tags retention policy, .alter database extent_tags_retention policy
       href: alter-extent-tags-retention-policy.md
     - name: .alter table extent tags retention policy command
       href: alter-table-extent-tags-retention-policy.md
@@ -484,7 +492,8 @@ items:
     items:
     - name: Row level security policy
       href: rowlevelsecuritypolicy.md
-    - name: .alter materialized-view row level security policy command
+    - name: .alter materialized-view policy row_level_security command
+      displayName: .alter materialized-view row level security policy
       href: alter-materialized-view-row-level-security-policy-command.md
     - name: .alter table row level security policy command
       href: alter-table-row-level-security-policy-command.md

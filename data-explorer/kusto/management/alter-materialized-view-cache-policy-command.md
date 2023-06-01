@@ -1,11 +1,11 @@
 ---
-title:  .alter materialized view cache policy command
-description: Learn how to use the `.alter materialized-view cache policy` command to change the materialized view's cache policy.
+title:  .alter materialized-view policy caching command
+description: Learn how to use the `.alter materialized-view policy caching` command to change the materialized view's cache policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter materialized view cache policy command
+# .alter materialized-view policy caching command
 
 Changes the materialized view's cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 
@@ -15,7 +15,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.alter` `materialized view` *MaterializedViewName* `policy` `caching` *PolicyParameters*
+`.alter` `materialized-view` *MaterializedViewName* `policy` `caching` *PolicyParameters*
 
 ## Parameters
 
