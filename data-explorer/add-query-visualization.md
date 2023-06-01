@@ -42,3 +42,39 @@ In this article, you'll learn how to customize different visuals from query resu
 [!INCLUDE [customize-visuals](includes/customize-visuals.md)]
 
 ## Change an existing visualization
+
+There are two ways to use the visual formatting pane to change an existing visualization.
+
+### Visual created with UI
+
+If you've added a visual through the UI, you can change this visual by selecting the **+ Edit visual** tab in the results grid.
+
+:::image type="content" source="media/add-query-visualization/edit-visual.png" alt-text="Screenshot of edit visual tab in the results grid in Azure Data Explorer web UI.":::
+
+## Visual created in query
+
+If you've created a visual using the [render operator](kusto/query/renderoperator.md), you can edit the visual by selecting **Visual** in the results grid. 
+
+:::image type="content" source="media/add-query-visualization/change-rendered-visual.png" alt-text="Screenshot of rendered visual as a bar chart that has been changed to a column chart in the visual formatting pane in Azure Data Explorer web UI.":::
+
+> [!IMPORTANT]
+> Notice that the visual formatting pane has changed the visual representation, but has not modified the original query. 
+
+## Pin to dashboard
+
+After you have formatted your visual, you can pin this visual to a new or existing dashboard.
+
+1. From the visual formatting pane, select **Pin to dashboard**.
+
+    :::image type="content" source="media/add-query-visualization/pin-to-dashboard.png" alt-text="Screenshot of pin to dashboard tab in Azure Data Explorer web UI.":::
+
+1. The pin to dashboard dialog opens. Enter a **Tile name** for this visual and select a new or existing dashboard.
+
+    :::image type="content" source="media/add-query-visualization/pin-to-dashboard-menu.png" alt-text="Screenshot of dialog for pinning visual to dashboard in Azure Data Explorer web UI.":::
+
+1. Select **Pin**.
+
+## Next steps
+
+* [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
+* [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
