@@ -100,7 +100,7 @@ The following steps use the [Azure Data Lake SDK](https://www.nuget.org/packages
     ```
 
     > [!NOTE]
-    > When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, the file creation triggers an Event Grid event with size 0, which Azure Data Explorer ignores when ingesting the data. File flushing with the *close* parameter set to *true* triggers another event indicating that this is the final update and the file stream has been closed. This *FlushAndClose* event is processed by Azure Data Explorer during ingestion. In the upload file code snippet, the *Close* parameter is set to *true* causing the Upload method to trigger the *FlushAndClose* event.
+    > When uploading a file using the Azure Data Lake SDK, the initial file creation event has a size of 0, which is ignored by Azure Data Explorer during data ingestion. To ensure proper ingestion, set the *close* parameter to `true` in the upload file code snippet. By doing so, the upload method triggers a *FlushAndClose* event, indicating that the final update has been made and the file stream is closed.
 
 1. Write to the file.
 
