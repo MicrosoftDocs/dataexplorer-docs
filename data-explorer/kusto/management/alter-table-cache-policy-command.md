@@ -1,11 +1,11 @@
 ---
-title:  .alter table cache policy command
-description: Learn how to use the `.alter table cache policy` command to change the table's cache policy.
+title:  .alter table policy caching command
+description: Learn how to use the `.alter table policy caching` command to change the table's cache policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 06/04/2023
 ---
-# .alter table cache policy command
+# .alter table policy caching command
 
 Change's the table's cache policy. To speed up queries, data is cached on processing nodes, in SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 
