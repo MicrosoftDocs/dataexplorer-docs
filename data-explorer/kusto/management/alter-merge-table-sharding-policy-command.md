@@ -1,11 +1,11 @@
 ---
-title:  .alter-merge table sharding policy command
-description: Learn how to use the `.alter-merge table sharding policy` command to change the table's sharding policy.
+title: .alter-merge table policy sharding command
+description: Learn how to use the `.alter-merge table policy sharding` command to change the table's sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 06/04/2023
 ---
-# .alter-merge table sharding policy command
+# .alter-merge table policy sharding command
 
 Changes the table sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
 
