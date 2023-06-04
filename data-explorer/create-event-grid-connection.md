@@ -420,9 +420,9 @@ The following example shows an Azure Resource Manager template for adding an Eve
 
 ---
 
-## Upload data to Azure Storage
+## Use the Event Grid data connection
 
-This section shows how to upload data to Azure Blob Storage and Azure Data Lake for the Event Grid connection to succeed in ingesting data. With proper configuration, the upload of new data to the storage account causes the data to be ingested into your Azure Data Explorer cluster.
+This section shows how to trigger ingestion from Azure Blob Storage or Azure Data Lake Gen 2 to your cluster following blob creation or blob renaming.
 
 Select the relevant tab for your Event Grid data connection.
 
