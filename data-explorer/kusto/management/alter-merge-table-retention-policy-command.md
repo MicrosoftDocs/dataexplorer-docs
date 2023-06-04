@@ -1,11 +1,11 @@
 ---
-title:  .alter-merge table retention policy command
-description: Learn how to use the `.alter-merge table retention policy` command to change the table's retention policy.
+title:  .alter-merge table policy retention command
+description: Learn how to use the `.alter-merge table policy retention` command to change the table's retention policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 06/04/2023
 ---
-# .alter-merge table retention policy command
+# .alter-merge table policy retention command
 
 Changes the table's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based. The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it.
 

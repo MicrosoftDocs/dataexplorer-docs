@@ -1,9 +1,9 @@
 ---
-title:  .alter-merge workload group command
-description: Learn how to use the `.alter-merge workload group` command to alter a workload group.
+title:  .alter-merge workload_group command
+description: Learn how to use the `.alter-merge workload_group` command to alter a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 06/04/2023
 
 ---
 # .alter-merge workload_group command
