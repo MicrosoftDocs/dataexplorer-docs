@@ -52,7 +52,7 @@ When you create a data connection to your cluster, you specify the routing for w
 
 ### Route event data to an alternate database
 
-Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. You can do this in the Azure portal [Azure portal](ingest-data-event-grid.md#create-an-event-grid-data-connection), [C#](data-connection-event-grid-csharp.md#add-an-event-grid-data-connection), [Python](data-connection-event-grid-python.md#add-an-event-grid-data-connection), or an [ARM template](data-connection-event-grid-resource-manager.md#azure-resource-manager-template-for-adding-an-event-grid-data-connection). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
+Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. You can do this in the Azure portal, C#, Python, or an ARM template. The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster. For more information, see [Create an Event Grid data connection for Azure Data Explorer](create-event-grid-connection.md).
 
 To specify an alternate database, set the *Database* [ingestion property](#ingestion-properties).
 
@@ -102,7 +102,7 @@ You can create a blob from a local file, set ingestion properties to the blob me
 > [!NOTE]
 >
 > * We highly recommend using `BlockBlob` to generate data, as using `AppendBlob` may result in unexpected behavior.
-> * Using Azure Data Lake Gen2 storage SDK requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to "true". For a detailed example of Data Lake Gen2 SDK correct usage, see [Use Event Grid data connection](use-event-grid-connection.md).
+> * Using Azure Data Lake Gen2 storage SDK requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to `true`. For a detailed example of Data Lake Gen2 SDK correct usage, see [Upload data to Azure Storage](create-event-grid-connection.md#upload-data-to-azure-storage).
 > * When the event hub endpoint doesn't acknowledge receipt of an event, Azure Event Grid activates a retry mechanism. If this retry delivery fails, Event Grid can deliver the undelivered events to a storage account using a process of *dead-lettering*. For more information, see [Event Grid message delivery and retry](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration).
 
 ## Rename blobs
@@ -112,7 +112,7 @@ When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data
 > [!NOTE]
 >
 > * Directory renaming is possible in ADLSv2, but it doesn't trigger *blob renamed* events and ingestion of blobs inside the directory. To ingest blobs following renaming, directly rename the desired blobs.
-> * If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md#create-an-event-grid-data-connection) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
+> * If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
 
 ## Delete blobs using storage lifecycle
 
