@@ -25,7 +25,7 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 * A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal). An Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
 * Have the [Event Grid resource provider registered](/azure/event-grid/blob-event-quickstart-portal#register-the-event-grid-resource-provider).
 
-## Create the data connection
+## Create an Event Grid data connection
 
 In this section, you'll establish a connection between Event Grid and your Azure Data Explorer table.
 
