@@ -1,11 +1,11 @@
 ---
-title: .alter encoding policy command
-description: Learn how to use the `.alter encoding policy` command to change the encoding policy.
+title: .alter column policy encoding command
+description: Learn how to use the `.alter column policy encoding` command to change the encoding policy.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter encoding policy command
+# .alter column policy encoding command
 
 Alters the encoding policy. For an overview of the encoding policy, see [Encoding policy](encoding-policy.md).
 
