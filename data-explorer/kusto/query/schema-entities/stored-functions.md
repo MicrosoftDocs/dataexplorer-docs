@@ -16,7 +16,7 @@ zone_pivot_groups: kql-flavors
 To create and manage stored functions, see the [Stored functions management overview](../../management/functions.md).
 
 > [!NOTE]
-> Designate a stored function as a [View](views.md) to enable the function to participate in search and union * scenarios. For more information, see [Stored views](views#stored-views).
+> Designate a stored function as a [View](../../query/schema-entities/views.md) to enable the function to participate in search and union * scenarios. For more information, see [Stored views](views#stored-views).
 
 ::: zone-end
 
