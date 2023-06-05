@@ -107,7 +107,7 @@ You can create a blob from a local file, set ingestion properties to the blob me
 
 ## Rename blobs
 
-When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data Explorer. For example, see [Rename blob](create-event-grid-connection.md?tabs=azure-data-lake#rename-blob).
+When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data Explorer. For example, see [Rename blobs](create-event-grid-connection.md?tabs=azure-data-lake#rename-blobs).
 
 > [!NOTE]
 >
