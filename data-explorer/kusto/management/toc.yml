@@ -9,6 +9,7 @@ items:
   - name: Workload group commands
     items:
     - name: .alter-merge workload_group command
+      displayName: .alter-merge workload group
       href: alter-merge-workload-group-command.md
     - name: .create-or-alter workload_group command
       href: create-or-alter-workload-group-command.md
@@ -284,8 +285,8 @@ items:
     - name: .alter materialized-view policy caching command
       displayName: .alter materialized-view cache policy
       href: alter-materialized-view-cache-policy-command.md
-    - name: .alter table cache policy command
-    - name: .alter table cache policy command
+    - name: .alter table policy caching command
+      displayName: .alter table cache policy command
       href: alter-table-cache-policy-command.md
     - name: .delete database cache policy command
     - name: .delete database cache policy command
@@ -348,7 +349,8 @@ items:
     - name: .alter database policy ingestionbatching command
       displayName: .alter database ingestion batching policy, .alter database ingestionbatching policy 
       href: alter-database-ingestion-batching-policy.md
-    - name: .alter table ingestion batching policy command
+    - name: .alter table policy ingestionbatching command
+      displayName: .alter table ingestion batching policy, .alter tables policy ingestionbatching
       href: alter-table-ingestion-batching-policy.md
     - name: .delete database ingestion batching policy command
       href: delete-database-ingestion-batching-policy.md
@@ -395,7 +397,8 @@ items:
     - name: .alter materialized-view policy merge command
       displayName: .alter materialized-view merge policy
       href: alter-materialized-view-merge-policy-command.md
-    - name: .alter table merge policy command
+    - name: .alter table policy merge command
+      displayName: .alter table merge policy
       href: alter-table-merge-policy-command.md
     - name: .alter-merge database policy merge command
       displayName: .alter-merge database merge policy
@@ -424,7 +427,8 @@ items:
     - name: .alter materialized-view policy partitioning command
       displayName: .alter materialized-view partitioning policy
       href: alter-materialized-view-partitioning-policy-command.md
-    - name: .alter table partitioning policy command
+    - name: .alter table policy partitioning command 
+      displayName: .alter table partitioning policy
       href: alter-table-partitioning-policy-command.md
     - name: .alter-merge materialized view partitioning policy command
       href: alter-merge-materialized-view-partitioning-policy-command.md
@@ -452,7 +456,8 @@ items:
     - name: .alter materialized-view policy retention command
       displayName: .alter materialized-view retention policy, .alter materialized view retention policy
       href: alter-materialized-view-retention-policy-command.md
-    - name: .alter table retention policy command
+    - name: .alter table policy retention command
+      displayName: .alter table retention policy
       href: alter-table-retention-policy-command.md
     - name: .alter-merge database policy retention command
       displayName: .alter-merge database retention policy
@@ -460,7 +465,8 @@ items:
     - name: .alter-merge materialized-view policy retention command
       displayName: .alter-merge materialized view retention policy, .alter-merge materialized-view retention policy
       href: alter-merge-materialized-view-retention-policy-command.md
-    - name: .alter-merge table retention policy command
+    - name: .alter-merge table policy retention command
+      displayName: .alter-merge table retention policy
       href: alter-merge-table-retention-policy-command.md
     - name: .delete database retention policy command
       href: delete-database-retention-policy-command.md
@@ -485,7 +491,8 @@ items:
     - name: .alter database policy extent_tags_retention command
       displayName: .alter database extent tags retention policy, .alter database extent_tags_retention policy
       href: alter-extent-tags-retention-policy.md
-    - name: .alter table extent tags retention policy command
+    - name: .alter table policy extent_tags_retention command
+      displayName: .alter table extent tags retention policy
       href: alter-table-extent-tags-retention-policy.md
     - name: .delete extent tags retention policy command
       href: delete-extent-tags-retention-policy.md
@@ -496,7 +503,8 @@ items:
     items:
     - name: Restricted view access policy
       href: restrictedviewaccesspolicy.md
-    - name: .alter table restricted view access policy command
+    - name: .alter table policy restricted_view_access command
+      displayName: .alter table restricted view access policy, .alter tables policy restricted_view_access
       href: alter-table-restricted-view-access-policy-command.md
     - name: .delete table policy restricted_view_access command
       displayName: .delete table restricted view access policy, .delete table restricted_view_access policy
@@ -511,7 +519,8 @@ items:
     - name: .alter materialized-view policy row_level_security command
       displayName: .alter materialized-view row level security policy
       href: alter-materialized-view-row-level-security-policy-command.md
-    - name: .alter table row level security policy command
+    - name: .alter table policy row_level_security command
+      displayName: .alter table row level security policy, .alter table row_level_security policy
       href: alter-table-row-level-security-policy-command.md
     - name: .show materialized policy row_level_security command
       displayName: .show materialized view row level security policy, .show materialized-view row_level_security policy, .show materialized view row_level_security policy
@@ -523,9 +532,11 @@ items:
     items:
     - name: Row order policy command
       href: roworderpolicy.md
-    - name: .alter table row order policy command
+    - name: .alter table policy roworder command
+      displayName: .alter table row order policy, .alter table roworder policy
       href: alter-table-row-order-policy-command.md
-    - name: .alter-merge table row order policy command
+    - name: .alter-merge table policy roworder command
+      displayName: .alter-merge table row order policy
       href: alter-merge-table-row-order-policy-command.md
     - name: .delete table policy roworder command
       displayName: .delete table row order policy, .delete table roworder policy
@@ -556,12 +567,14 @@ items:
     - name: .alter database policy sharding command
       displayName: .alter database sharding policy
       href: alter-database-sharding-policy-command.md
-    - name: .alter table sharding policy command
+    - name: .alter table policy sharding command
+      displayName: .alter table sharding policy
       href: alter-table-sharding-policy-command.md
     - name: .alter-merge database policy sharding
       displayName: .alter-merge database sharding policy
       href: alter-merge-database-sharding-policy-command.md
-    - name: .alter-merge table sharding policy command
+    - name: .alter-merge table policy sharding command
+      displayName: .alter-merge table sharding policy
       href: alter-merge-table-sharding-policy-command.md
     - name: .delete database sharding policy command
       href: delete-database-sharding-policy-command.md
@@ -581,12 +594,14 @@ items:
     - name: .alter database policy streamingingestion command
       displayName: .alter database streamingingestion policy, .alter database streaming ingestion policy
       href: alter-database-streaming-ingestion-policy-command.md
-    - name: .alter table streaming ingestion policy command
+    - name: .alter table policy streamingingestion command
+      displayName: .alter table streaming ingestion policy, .alter table streamingingestion policy
       href: alter-table-streaming-ingestion-policy-command.md
     - name: .alter-merge database policy streamingingestion command
       displayName: .alter-merge database streaming ingestion policy, .alter-merge database streamingingestion policy
       href: alter-merge-database-streaming-ingestion-policy-command.md
-    - name: .alter-merge table streaming ingestion policy command
+    - name: .alter-merge table policy streamingingestion command
+      displayName: .alter-merge table streaming ingestion policy, .alter-merge table policy streaming ingestion
       href: alter-merge-table-streaming-ingestion-policy-command.md
     - name: .delete database streaming ingestion policy command
       href: delete-database-streaming-ingestion-policy-command.md
@@ -604,9 +619,11 @@ items:
     - name: Update policy
       displayName: SQL triggers
       href: updatepolicy.md
-    - name: .alter table update policy command
+    - name: .alter table policy update command
+      displayName: .alter table update policy
       href: alter-table-update-policy-command.md
-    - name: .alter-merge table update policy command
+    - name: .alter-merge table policy update command
+      displayName: .alter-merge table update policy
       href: alter-merge-table-update-policy-command.md
     - name: .delete table policy update command
       displayName: .delete table update policy
@@ -719,8 +736,8 @@ items:
   - name: .show database cache query_results command
     displayName: .show database cache query results
     href: show-query-results-cache-command.md
-  - name: .clear cache query_results command
-    displayName: clear query results cache
+  - name: .clear database cache query_results command
+    displayName: clear query results cache, .clear database query_results cache
     href: clear-query-results-cache-command.md
 - name: Cross-cluster schema
   items:
