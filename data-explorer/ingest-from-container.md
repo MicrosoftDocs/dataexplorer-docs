@@ -33,11 +33,11 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 ## Ingest data
 
-1. In the left menu of the Azure Data Explorer web UI, select **Data**.
+1. In the left menu of the Azure Data Explorer web UI, select **Query**.
 
-1. From the **Quick actions** section, select **Ingest data**. Alternatively, from the **All** section, select **Ingest data** and then **Ingest**.
+1. Select the database where you want to ingest the data.
 
-    :::image type="content" source="media/ingestion-wizard-new-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select ingestion for a table.":::
+1. Right-click on the selected database. From the options, select **Ingest data**.
 
 1. In the **Ingest data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
