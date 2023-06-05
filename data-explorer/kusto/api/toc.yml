@@ -57,6 +57,10 @@ items:
     - name: Code samples
       displayName: Kusto.Ingest
       href: netfx/kusto-ingest-client-examples.md
+  - name: Kusto.Language
+    items:
+    - name: Kusto.Language overview
+      href: netfx/about-kusto-language.md
 - name: Bicep and ARM template resource types
   href: /azure/templates/microsoft.kusto/allversions
 - name: Resource provider operations
