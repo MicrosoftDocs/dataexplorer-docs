@@ -22,7 +22,7 @@ An external table is a schema entity that references data stored outside the Azu
 
 1. Right-click on the database where you want to create the external table. From the options, select **Create external table**.
 
-    :::image type="content" source="media/external-table/ingest-new-data-database-menu.png" alt-text="Screenshot of how to access the wizard to create an external table in the Azure Data Explorer web UI.":::
+    :::image type="content" source="media/external-table/query-create-external-table.png" alt-text="Screenshot of the option to create an external table from the query page.":::
 
 The **Create external table** window opens with the **Destination** tab selected.
 
