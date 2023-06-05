@@ -139,7 +139,7 @@ To embed a dashboard, a trust relationship must be established between the host'
 
 1. In the **Manifest**, save your changes.
 1. Select **API permissions** and validate you have a new entry: **RTD Metadata Service**.
-1. Under Microsoft Graph, add permissions for `People.Read`, `User.ReadBasic.All` and `Group.Read.All`.
+1. Under Microsoft Graph, add permissions for `People.Read`, `User.ReadBasic.All`, and `Group.Read.All`.
 1. In Azure PowerShell, add the following new service principal for the app:
 
     ```powershell
