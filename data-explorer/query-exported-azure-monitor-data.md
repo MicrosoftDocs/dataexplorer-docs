@@ -3,7 +3,7 @@ title: Query exported data from Azure Monitor in Azure Data Explorer
 description: Use Azure Data Explorer to query data that was exported from your Log Analytics workspace to an Azure Storage account.
 ms.topic: conceptual
 ms.reviewer: osalzberg
-ms.date: 06/01/2023
+ms.date: 06/05/2023
 ---
 
 # Query exported data from Azure Monitor in Azure Data Explorer
@@ -44,7 +44,7 @@ To create an external table:
 
 ## Query the exported data from Azure Data Explorer
 
-After you configure the mapping, you can query the exported data from Azure Data Explorer. Your query requires the [external_table](/azure/data-explorer/kusto/query/externaltablefunction) function, as shown in the following example:
+Query the exported data from Azure Data Explorer with the [external_table](/azure/data-explorer/kusto/query/externaltablefunction) function, as shown in the following example:
 
 ```kusto
 external_table("HBTest","map") | take 10000
