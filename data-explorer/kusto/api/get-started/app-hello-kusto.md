@@ -164,6 +164,9 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
 
 1. Create a client object that uses the connection string builder object to connect to the cluster.
 
+    > [!NOTE]
+    > We highly recommended that you cache and reuse the Kusto client instance. Frequently recreating Kusto clients may lead to performance degradation in your application.
+
     ### [C\#](#tab/csharp)
 
     ```csharp
