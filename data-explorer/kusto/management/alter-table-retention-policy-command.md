@@ -1,6 +1,6 @@
 ---
-title:  .alter table retention policy command
-description: Learn how to use the `.alter table retention policy` command to changes the table's retention policy.
+title:  .alter table policy retention command
+description: Learn how to use the `.alter table policy retention` command to changes the table's retention policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 03/08/2023
