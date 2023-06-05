@@ -31,11 +31,11 @@ The `workspace=<guid>` query parameter creates a separate workspace for the embe
 
 When embedding the web UI, the hosting page is responsible for authentication. The following diagrams describe the authentication flow.
 
-:::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-sequencediagram.png" alt-text="Sequence diagram for authentication in an embedded ADX iframe":::
+:::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" lightbox="../images/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" alt-text="Diagram that shows the authentication flow for an embedded web U I iframe.":::
 
-:::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-scopes.png" alt-text="Scopes required for embedding ADX iframe":::
+:::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-scopes.png" lightbox="../images/host-web-ux-in-iframe/adx-embed-scopes.png" alt-text="Diagram that shows the scopes required for embedding the web U I iframe.":::
 
-Follow those steps to handle authentication:
+Use the following steps to handle authentication:
 
 1. Listen for the **getToken** message.
 
@@ -48,7 +48,7 @@ Follow those steps to handle authentication:
     })    
    ```
 
-2. Get the access token from Azure Data Explorer (Azure AD).
+1. Get the access token from Azure Data Explorer (Azure AD).
 
     Obtain a [JWT token](https://tools.ietf.org/html/rfc7519) from the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization). Use the following table to decide how to map `event.data.scope` to Azure AD scopes:
 
@@ -71,9 +71,9 @@ Follow those steps to handle authentication:
     ```
 
     > [!IMPORTANT]
-    > Service principals are not supported, only user authentication.
+    > You can only use User Principal Name (UPN) for authentication, service principals are not supported.
 
-3. Post a "postToken" message with the access token:
+1. Post a **postToken** message with the access token:
 
    ```javascript
         iframeWindow.postMessage({
@@ -85,7 +85,7 @@ Follow those steps to handle authentication:
     ```
 
 > [!IMPORTANT]
-> The hosting window must refresh the token before expiration by sending a new "postToken" message with updated tokens. Otherwise, once the tokens expire, service calls will fail.
+> The hosting window must refresh the token before expiration by sending a new **postToken** message with updated tokens. Otherwise, once the tokens expire, service calls will fail.
 
 ### Embed dashboards
 
