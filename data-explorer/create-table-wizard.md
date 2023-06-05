@@ -21,11 +21,9 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 ## Create a table
 
-1. In the left menu, select **Data**.
+1. In the left menu, select **Query**.
 
-    :::image type="content" source="media/create-table-wizard/select-create-table.png" alt-text="Screenshot of the Azure Data Explorer web UI showing how to create a table.":::
-
-1. From the **Quick actions** section, select **Create table**. Alternatively, from the **All** actions section, select **Create table** and then **Create**.
+1. Right-click on the database where you want to create the table. From the options, select **Create table**.
 
 ### Destination tab
 

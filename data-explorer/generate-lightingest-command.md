@@ -23,15 +23,15 @@ This article shows you how to create a new table, create schema mapping, and gen
 
 ## Access the wizard
 
-The wizard can be accessed either from the **Data** tab, or from the **Query** tab of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
+To access the wizard:
 
-1. In the **Data** tab, from the **Quick actions** section, select **Ingest data**. Alternatively, from the **All actions** section, select **Ingest data** and then **Ingest**.
+1. In the left menu of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select **Query**.
 
-   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select the ingestion wizard for a table.":::
+1. Select the database where you want to ingest the data.
 
-1. In the **Query tab**, right-click a *database* and select **Ingest data**.
+1. Right-click on the selected database. From the options, select **Ingest data**.
 
-   :::image type="content" source="media/ingestion-wizard-new-table/ingest-new-data-database-menu.png" alt-text="Ingest new data.":::
+    :::image type="content" source="media/ingestion-wizard-new-table/ingest-new-data-database-menu.png" alt-text="Ingest new data.":::
 
 In the **Ingest data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
