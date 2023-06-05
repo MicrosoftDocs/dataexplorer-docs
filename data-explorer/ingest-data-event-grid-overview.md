@@ -3,7 +3,7 @@ title: Ingest from storage using Event Grid subscription - Azure Data Explorer
 description: This article describes Ingest from storage using Event Grid subscription in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 05/08/2023
+ms.date: 06/05/2023
 ---
 # Event Grid data connection
 
@@ -102,12 +102,12 @@ You can create a blob from a local file, set ingestion properties to the blob me
 > [!NOTE]
 >
 > * We highly recommend using `BlockBlob` to generate data, as using `AppendBlob` may result in unexpected behavior.
-> * Using Azure Data Lake Gen2 storage SDK requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to `true`. For a detailed example of Data Lake Gen2 SDK correct usage, see [Upload data to Azure Storage](create-event-grid-connection.md#use-the-event-grid-data-connection).
+> * Using Azure Data Lake Gen2 storage SDK requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to `true`. For a detailed example of Data Lake Gen2 SDK correct usage, see [Use the Event Grid data connection](create-event-grid-connection.md?tabs=azure-data-lake#use-the-event-grid-data-connection).
 > * When the event hub endpoint doesn't acknowledge receipt of an event, Azure Event Grid activates a retry mechanism. If this retry delivery fails, Event Grid can deliver the undelivered events to a storage account using a process of *dead-lettering*. For more information, see [Event Grid message delivery and retry](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration).
 
 ## Rename blobs
 
-When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data Explorer. For example, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md#generate-sample-data).
+When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data Explorer. For example, see [Rename blob](create-event-grid-connection.md?tabs=azure-data-lake#rename-blob).
 
 > [!NOTE]
 >
