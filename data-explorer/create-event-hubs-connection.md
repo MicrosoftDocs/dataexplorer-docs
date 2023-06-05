@@ -3,7 +3,7 @@ title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Hubs.'
 ms.topic: how-to
 ms.custom:
-ms.date: 05/23/2023
+ms.date: 06/01/2023
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer
@@ -462,4 +462,6 @@ kusto_management_client.data_connections.delete(resource_group_name=resource_gro
 
 ## Next steps
 
-* [Query data in Azure Data Explorer](web-query-data.md)
+* Check the connection with the [Event hub sample message app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)
+* [Query data in the Web UI](web-ui-query-overview.md)
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
