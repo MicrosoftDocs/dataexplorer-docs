@@ -20,7 +20,7 @@ This document describes using the ingestion wizard to ingest JSON data from a lo
 
 1. Right-click on the database where you want to ingest the data. From the options, select **Ingest data**.
 
-    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI.":::
+    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI." lightbox="media/ingest-data-wizard/ingest-data-from-query-page.png":::
 
 ## Select an ingestion type
 

@@ -35,7 +35,7 @@ There are many entry points to the ingestion wizard.
 
 * In the web UI, select **Query** in the left pane. Right-click the database or table and select **Ingest data**.
 
-    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI.":::
+    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI." lightbox="media/ingest-data-wizard/ingest-data-from-query-page.png":::
 
 * In the web UI, select **My cluster** in the left pane and then select **Ingest**.
 
