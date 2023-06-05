@@ -23,7 +23,7 @@ Add the following code to your website:
 ></iframe>
 ```
 
-The `f-IFrameAuth` query parameter tells the Azure Data Explorer web UI *not* to redirect to get an authentication token and the `f-UseMeControl=false` query parameter tells the Azure Data Explorer web UI *not* to show the user account information UX. These actions are necessary, since the hosting website is responsible for authentication.
+The `f-IFrameAuth` query parameter tells the web UI *not* to redirect to get an authentication token and the `f-UseMeControl=false` parameter tells the web UI *not* to show the user account information pop-up window. These actions are necessary since the hosting website is responsible for authentication.
 
 The `workspace=<guid>` query parameter creates a separate workspace for the embedded iframe, to avoid data sharing with the nonembedded version of <https://dataexplorer.azure.com>.
 
