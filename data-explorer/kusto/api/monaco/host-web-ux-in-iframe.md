@@ -42,15 +42,15 @@ Use the following steps to handle authentication:
     ```javascript
     window.addEventListener('message', (event) => {
        if (event.data.type === "getToken") {
-         // - PLACEHOLDER: Get the access token from Azure AD
-         // - PLACEHOLDER: Post a "postToken" message with an access token and an event.data.scope
+         // - PLACEHOLDER-1: Get the access token from Azure AD
+         // - PLACEHOLDER-2: Post a "postToken" message with an access token and an event.data.scope
        }
     })    
    ```
 
-1. Get the access token from Azure Data Explorer (Azure AD).
+1. [PLACEHOLDER-1] Get the access token from Microsoft Azure Active Directory (Azure AD).
 
-    Obtain a [JWT token](https://tools.ietf.org/html/rfc7519) from the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization). Use the following table to decide how to map `event.data.scope` to Azure AD scopes:
+    Use the following table to decide how to map `event.data.scope` to Azure AD scopes:
 
       | resource         | event.data.scope                                            | Azure AD Scopes                                             |
       | ---------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
@@ -62,18 +62,41 @@ Use the following steps to handle authentication:
 
     ```typescript
         function mapScope(scope: string): string {
-            switch(scope){   
-                case "query": return ["https://kwedemo.westus.kusto.windows.net/.default"];
+            switch(scope) {
+                case "query": return ["https://your_cluster.your_region.kusto.windows.net/.default"];
                 case "People.Read": return ["People.Read", "User.ReadBasic.All", "Group.Read.All"];
-                default: return [scope]  
+                default: return [scope]
+            }
         }
-        var aadScopes = mapScope(event.data.scope);
+    ```
+
+    Obtain a [JWT token](https://tools.ietf.org/html/rfc7519) from the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization) for the mapped scopes.
+
+    An example using @azure/msal-react:
+
+    ```typescript
+    import { useMsal } from "@azure/msal-react";
+    ```
+
+    ```typescript
+    const { instance, accounts } = useMsal();
+    ```
+
+    ```typescript
+    instance.acquireTokenSilent({
+      scopes: mapScope(event.data.scope),
+      account: accounts[0],
+    })
+    .then((response) =>
+        var accessToken = response.accessToken
+        // - PLACEHOLDER-2: Post a "postToken" message with an access token and an event.data.scope
+    )
     ```
 
     > [!IMPORTANT]
     > You can only use User Principal Name (UPN) for authentication, service principals are not supported.
 
-1. Post a **postToken** message with the access token:
+1. [PLACEHOLDER-2] Post a **postToken** message with the access token:
 
    ```javascript
         iframeWindow.postMessage({
