@@ -34,7 +34,7 @@ Azure Monitor logs can be exported to a storage account by using any of the foll
 
 [External tables](/azure/data-explorer/kusto/query/schema-entities/externaltables) link Azure Data Explorer to a storage account. An external table is a schema entity that references data stored outside of a database. Like tables, an external table has a well-defined schema. Unlike tables, data is stored and managed outside of your cluster. The exported data from the previous section is saved in JSON lines.
 
-To create an external table:
+To create an external table to access the exported Azure Monitor data:
 
 1. Use the [getschema](/azure/data-explorer/kusto/query/getschemaoperator) operator from Log Analytics to get the schema of the exported table. This information includes the table's columns and their data types.
 
