@@ -25,11 +25,11 @@ Add the following code to your website:
 
 The `f-IFrameAuth` query parameter tells the web UI *not* to redirect to get an authentication token and the `f-UseMeControl=false` parameter tells the web UI *not* to show the user account information pop-up window. These actions are necessary since the hosting website is responsible for authentication.
 
-The `workspace=<guid>` query parameter creates a separate workspace for the embedded iframe, to avoid data sharing with the nonembedded version of <https://dataexplorer.azure.com>.
+The `workspace=<guid>` query parameter creates a separate workspace for the embedded iframe, to avoid data sharing with the nonembedded version of `https://dataexplorer.azure.com`.
 
 ### Handle authentication
 
-When embedding the ADX web UI, the hosting page is responsible for authentication. The below diagrams describes the auth flow.
+When embedding the web UI, the hosting page is responsible for authentication. The following diagrams describe the authentication flow.
 
 :::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-sequencediagram.png" alt-text="Sequence diagram for authentication in an embedded ADX iframe":::
 
@@ -37,21 +37,20 @@ When embedding the ADX web UI, the hosting page is responsible for authenticatio
 
 Follow those steps to handle authentication:
 
-1. Listen for "getToken" message:
+1. Listen for the **getToken** message.
 
     ```javascript
     window.addEventListener('message', (event) => {
        if (event.data.type === "getToken") {
-         // - Get access token From Azure AD
-         // - post a "postToken" message with an access token and event.data.scope
+         // - PLACEHOLDER: Get the access token from Azure AD
+         // - PLACEHOLDER: Post a "postToken" message with an access token and an event.data.scope
        }
     })    
    ```
 
-2. Get access token From Azure AD
+2. Get the access token from Azure Data Explorer (Azure AD).
 
-    Obtain a [JWT token](https://tools.ietf.org/html/rfc7519) from [Microsoft Azure Active Directory (Azure AD) authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization).  
-      Use this table to decide how to map `event.data.scope` to Azure AD scopes:
+    Obtain a [JWT token](https://tools.ietf.org/html/rfc7519) from the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization). Use the following table to decide how to map `event.data.scope` to Azure AD scopes:
 
       | resource         | event.data.scope                                            | Azure AD Scopes                                             |
       | ---------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
@@ -88,17 +87,17 @@ Follow those steps to handle authentication:
 > [!IMPORTANT]
 > The hosting window must refresh the token before expiration by sending a new "postToken" message with updated tokens. Otherwise, once the tokens expire, service calls will fail.
 
-### Embedding dashboards
+### Embed dashboards
 
-To embed a dashboard, a trust relationship needs to be established between the Host's Azure AD App and Azure Data Explorer Dashboard Service Azure AD app (a.k.a RTD Metadata Service).
+To embed a dashboard, a trust relationship must be established between the host's Azure AD app and the Azure Data Explorer dashboard service (**RTD Metadata Service**).
 
 1. Follow the steps in [Web Client (JavaScript) authentication and authorization](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication#web-client-javascript-authentication-and-authorization).
-2. Open the [Azure portal](https://portal.azure.com/) and make sure that you're signed-in to the correct tenant. Look at the top right corner to verify the identity used to sign into the portal.
-3. In the resources pane, select **Azure Active Directory** > **App registrations**.
-4. Locate the app that uses the on-behalf-of flow and open this app.
-5. Select **Manifest**.
-6. Select **requiredResourceAccess**.
-7. In the manifest, and add the following entry:
+1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're signed into the correct tenant. In the top-right corner, verify the identity used to sign into the portal.
+1. In the resources pane, select **Azure Active Directory** > **App registrations**.
+1. Locate the app that uses the **on-behalf-of** flow and open it.
+1. Select **Manifest**.
+1. Select **requiredResourceAccess**.
+1. In the manifest, add the following entry:
 
     ```json
       {
@@ -115,21 +114,22 @@ To embed a dashboard, a trust relationship needs to be established between the H
     - `35e917a9-4d95-4062-9d97-5781291353b9` is the application ID of ADX Dashboard Service.  
     - `388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c` is the user_impersonation permission.
 
-8. Save your changes in the **Manifest**.
-9. Select **API permissions**, and validate you have a new entry: **RTD Metadata Service**.
-10. Add permissions `People.Read`, `User.ReadBasic.All` and `Group.Read.All` under Microsoft Graph.
-11. Open the Azure PowerShell and add the following new service principal for that app:
+1. In the **Manifest**, save your changes.
+1. Select **API permissions** and validate you have a new entry: **RTD Metadata Service**.
+1. Under Microsoft Graph, add permissions for `People.Read`, `User.ReadBasic.All` and `Group.Read.All`.
+1. In Azure PowerShell, add the following new service principal for the app:
 
     ```powershell
     New-AzureADServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
     ```
 
-    If you encounter `Request_MultipleObjectsWithSameKeyValue` error, it means the app is already in the tenant, which can be seen as success.
 
-12. To consent for all users, In the **API permissions** page, select **Grant admin consent**.
+    If you encounter the `Request_MultipleObjectsWithSameKeyValue` error, it means that the app is already in the tenant indicating it was added successfully.
+
+1. In the **API permissions** page, select **Grant admin consent** to consent for all users.
 
 > [!NOTE]
-> For embedding dashboards only, without the query area, use this setup:
+> To embed a dashboard without the query area, use the following setup:
 >
 > ```html
 >  <iframe src="https://dataexplorer.azure.com/dashboards?[feature-flags]" />
@@ -166,7 +166,7 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-ShowPersona | Show the user name from the settings menu, in the top-right corner. | true |
 | f-UseMeControl | Show the user's account information | true |
 | f-IFrameAuth | If true, the web explorer expects the iframe to handle authentication and provide a token via a message. This parameter is required for iframe scenarios. | false |
-| f-PersistAfterEachRun | Usually, browsers persist in the unload event. However, the unload event isn't always triggered when hosting in an iframe. This flag will then trigger **persisting local state** after each query run. As a result, any data loss that occurs, will only affect text that had never been run, thus limiting its impact | false |
+| f-PersistAfterEachRun | Usually, browsers persist in the unload event. However, the unload event isn't always triggered when hosting in an iframe. This flag triggers the **persisting local state** event after each query run. This limits any data loss that may occur, to only affect new query text that has never run. | false |
 | f-ShowSmoothIngestion | If true, show the ingestion wizard experience when right-clicking on a database | true |
 | f-RefreshConnection | If true, always refreshes the schema when loading the page and never depends on local storage | false |
 | f-ShowPageHeader | If true, shows the page header that includes the Azure Data Explorer title and settings | true |
