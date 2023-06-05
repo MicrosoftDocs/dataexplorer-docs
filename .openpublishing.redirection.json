@@ -754,6 +754,16 @@
       "source_path": "data-explorer/customer-managed-keys-csharp.md",
       "redirect_url": "/azure/data-explorer/customer-managed-keys",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kql-quick-reference.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/kql-quick-reference",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/named-expressions",
+      "redirect_url": "/azure/data-explorer/kusto/query/named-expressions",
+      "redirect_document_id": true
     }
   ]
 }
