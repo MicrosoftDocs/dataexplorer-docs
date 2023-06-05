@@ -60,8 +60,8 @@ Use the following steps to handle authentication:
   
     For example,
 
-    ```typescript
-        function mapScope(scope: string): string {
+    ```javascript
+        function mapScope(scope) {
             switch(scope) {
                 case "query": return ["https://your_cluster.your_region.kusto.windows.net/.default"];
                 case "People.Read": return ["People.Read", "User.ReadBasic.All", "Group.Read.All"];
@@ -74,15 +74,15 @@ Use the following steps to handle authentication:
 
     An example using @azure/msal-react:
 
-    ```typescript
+    ```javascript
     import { useMsal } from "@azure/msal-react";
     ```
 
-    ```typescript
+    ```javascript
     const { instance, accounts } = useMsal();
     ```
 
-    ```typescript
+    ```javascript
     instance.acquireTokenSilent({
       scopes: mapScope(event.data.scope),
       account: accounts[0],
@@ -177,7 +177,7 @@ To embed a dashboard, a trust relationship must be established between the host'
 The hosting app may want to control certain aspects of the user experience. For example, hide the connection pane, or disable connecting to other clusters.
 For this scenario, the web explorer supports feature flags.
 
-A feature flag can be used in the URL as a query parameter. To disable adding other clusters, use https://dataexplorer.azure.com/?f-ShowConnectionButtons=false in the hosting app.
+A feature flag can be used in the URL as a query parameter. To disable adding other clusters, use <https://dataexplorer.azure.com/?f-ShowConnectionButtons=false> in the hosting app.
 
 | setting | Description | Default Value |
 |---|---|---|
