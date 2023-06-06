@@ -3,7 +3,7 @@ title: Embed the Azure Data Explorer web UI in an **iframe**.
 description: Learn how to embed the Azure Data Explorer web UI in an **iframe**.
 ms.reviewer: izlisbon
 ms.topic: how-to
-ms.date: 11/22/2022
+ms.date: 6/6/2023
 ---
 # Embed the Azure Data Explorer web UI in an iframe
 
@@ -37,28 +37,26 @@ When embedding the web UI, the hosting page is responsible for authentication. T
 
 Use the following steps to handle authentication:
 
-1. Listen for the **getToken** message.
+1. In your application, listen for the **getToken** message.
 
     ```javascript
     window.addEventListener('message', (event) => {
        if (event.data.type === "getToken") {
-         // - PLACEHOLDER-1: Get the access token from Azure AD
-         // - PLACEHOLDER-2: Post a "postToken" message with an access token and an event.data.scope
+         // CODE-1: Replace this placeholder with code to get the access token from Azure AD and
+         //         then post a "postToken" message with an access token and an event.data.scope
        }
     })    
    ```
 
-1. [PLACEHOLDER-1] Get the access token from Microsoft Azure Active Directory (Azure AD).
+1. Define a function to map the `event.data.scope` to Azure AD scope. Use the following table to decide how to map `event.data.scope` to Azure Active Directory (Azure AD) scopes:
 
-    Use the following table to decide how to map `event.data.scope` to Azure AD scopes:
-
-      | resource         | event.data.scope                                            | Azure AD Scopes                                             |
-      | ---------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-      | ADX Cluster      | `query`                                                     | `https://{serviceName}.{region}.kusto.windows.net/.default` |
-      | Graph            | `People.Read`                                               | `People.Read`, `User.ReadBasic.All`, `Group.Read.All`       |
-      | ADX Dashboards   | `https://rtd-metadata.azurewebsites.net/user_impersonation` | `https://rtd-metadata.azurewebsites.net/user_impersonation` |
+    | Resource         | event.data.scope                                            | Azure AD Scope                                                    |
+    | ---------------- | ----------------------------------------------------------- | -----------------------------------------------------------       |
+    | Cluster          | `query`                                                     | `https://{your_cluster}.{your_region}.kusto.windows.net/.default` |
+    | Graph            | `People.Read`                                               | `People.Read`, `User.ReadBasic.All`, `Group.Read.All`             |
+    | Dashboards       | `https://rtd-metadata.azurewebsites.net/user_impersonation` | `https://rtd-metadata.azurewebsites.net/user_impersonation`       |
   
-    For example,
+    For example, the following function maps scopes based on the information in the table.
 
     ```javascript
         function mapScope(scope) {
@@ -70,39 +68,34 @@ Use the following steps to handle authentication:
         }
     ```
 
-    Obtain a [JWT token](https://tools.ietf.org/html/rfc7519) from the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization) for the mapped scopes.
+1. Get a [JWT access token](https://tools.ietf.org/html/rfc7519) from the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization) for the scope. This code replaces placeholder CODE-1.
 
-    An example using @azure/msal-react:
+    For example, you can use @azure/msal-react to get the access token. The example uses the **mapScope** function you defined earlier.
 
     ```javascript
     import { useMsal } from "@azure/msal-react";
-    ```
-
-    ```javascript
     const { instance, accounts } = useMsal();
-    ```
 
-    ```javascript
     instance.acquireTokenSilent({
       scopes: mapScope(event.data.scope),
       account: accounts[0],
     })
     .then((response) =>
         var accessToken = response.accessToken
-        // - PLACEHOLDER-2: Post a "postToken" message with an access token and an event.data.scope
+        // - CODE-2: Replace this placeholder with code to post a "postToken" message with an access token and an event.data.scope
     )
     ```
 
     > [!IMPORTANT]
     > You can only use User Principal Name (UPN) for authentication, service principals are not supported.
 
-1. [PLACEHOLDER-2] Post a **postToken** message with the access token:
+1. Post a **postToken** message with the access token. This code replaces placeholder CODE-2:
 
    ```javascript
         iframeWindow.postMessage({
             "type": "postToken",
-            "message": // accessToken from Azure AD,
-            "scope": // scope as passed in the "getToken" message
+            "message": // the access token your obtained earlier
+            "scope": // event.data.scope as passed to the "getToken" message
         }, '*');
       }
     ```
