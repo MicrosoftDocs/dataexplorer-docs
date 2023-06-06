@@ -59,6 +59,10 @@ To make sure that the parser recognizes your specific database, tables, and func
     var code = KustoCode.ParseAndAnalyze(query, globalsWithMyDb);
     ```
 
+## Use schemas from the server
+
+If you already have a database, manually declaring all the entity schemas can be a tedious and unnecessary task. Instead, you can query the database and retrieve the required schema information. The [Kusto.Toolkit](https://www.nuget.org/packages/Kusto.Toolkit/) library provides APIs to load symbols directly from your cluster.
+
 ## Work with multiple databases or clusters
 
 1. If you need to include multiple databases, create a `ClusterSymbol`. For example:
@@ -77,10 +81,6 @@ To make sure that the parser recognizes your specific database, tables, and func
     ```
 
 1. Use the relevant globals in the `ParseAndAnalyze` method to perform semantic analysis.
-
-## Use schemas from the server
-
-If you already have a database, manually declaring all the entity schemas can be a tedious and unnecessary task. Instead, you can query the database and retrieve the required schema information. The [Kusto.Toolkit](https://www.nuget.org/packages/Kusto.Toolkit/) library provides APIs to load symbols directly from your cluster.
 
 ## Next steps
 
