@@ -761,7 +761,7 @@
       "redirect_document_id": true
     },
     {
-      "source_path": "data-explorer/named-expressions",
+      "source_path": "data-explorer/named-expressions.md",
       "redirect_url": "/azure/data-explorer/kusto/query/named-expressions",
       "redirect_document_id": true
     }
