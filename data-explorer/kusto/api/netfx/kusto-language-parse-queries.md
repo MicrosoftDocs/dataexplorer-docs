@@ -91,6 +91,30 @@ if (diagnostics.Count > 0) { ... }
 > [!NOTE]
 > Check the `Severity` property to see if the diagnostic is an error, warning, or another type of diagnostic.
 
+## Find the table for a column
+
+If a column is part of a database table, find that table using the `GetTable` method on the `GlobalState` that includes the database table definition.
+
+```csharp
+var table = code.Globals.GetTable(column);
+```
+
+## Find the database for a table
+
+If a table symbol is declared as part of a database, discover which database is associated with the table using the `GetDatabase` method on the `GlobalState` that includes the definition of the database and table.
+
+```csharp
+var database = code.Globals.GetDatabase(table);
+```
+
+## Find the cluster for a database
+
+Find the cluster that a database belongs to using the `GetCluster` method on the `GlobalState` that includes the definition of both the cluster and database symbols.
+
+```csharp
+var cluster = code.Globals.GetCluster(database);
+```
+
 ## Next steps
 
 * Use [Kusto.Toolkit](https://www.nuget.org/packages/Kusto.Toolkit/) to find all of the columns or tables referenced in a query
