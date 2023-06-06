@@ -38,7 +38,37 @@ The following steps provide an example of how to parse and navigate a parsed que
     var referencesToA = code.Syntax.GetDescendants<NameReference>(n => n.SimpleName == "a");
     Assert.AreEqual(2, referencesToA.Count);
     ```
+
 ## Parse a query with semantic analysis
+
+Semantic analysis allows you to identify the exact columns, variables, functions, or tables associated with different parts of the query syntax.
+
+In the previous section, there wasn't a distinction made between the column `a` declared by the `project` operator and the column `a` that originally existed in the table. In order to correctly distinguish between the two, have the parser perform semantic analysis.
+
+The following steps provide an example of how to perform semantic analysis with the parser.
+
+1. [Define schemas](kusto-language-define-schemas.md) for the entities referenced in your queries.
+
+    ```csharp
+    var globals = GlobalState.Default.WithDatabase(
+        new DatabaseSymbol("db",
+        new TableSymbol("T", "(a: real, b: real)")));
+    ```
+
+1. Use the `KustoCode.ParseAndAnalyze` method with the globals that contain the relevant entity schemas.
+
+    ```dotnetcli
+    var query = "T | project a = a + b | where a > 10.0";
+    var code = KustoCode.ParseAndAnalyze(query, globals);
+    ```
+
+1. Navigate the tree and access new properties, such as `ReferencedSymbol` and `ResultType`. The following example uses the ReferencedSymbol property to check how many times the column `a` from the original table was referenced.
+
+    ```csharp
+    var columnA = globals.Database.Tables.First(t => t.Name == "db").GetColumn("a");
+    var referencesToA = code.Syntax.GetDescendants<NameReference>(n => n.ReferencedSymbol == columnA);
+    Assert.AreEqual(1, referencesToA.Count);
+    ```
 
 ## Check a parsed query for errors
 
