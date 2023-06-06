@@ -1,11 +1,11 @@
 ---
-title: .show functions
+title: .show functions command
 description: Learn how to use the `.show functions` command to list all the stored functions in the specified database.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show function(s)
+# .show functions command
 
 Lists all the stored functions in the currently-selected database.
 To return only one specific function, see [.show function](#show-function).

@@ -1,11 +1,11 @@
 ---
-title: .show table retention policy command
-description: Learn how to use the `.show table retention policy` command to display the table's retention policy.
+title: .show table policy retention command
+description: Learn how to use the `.show table policy retention` command to display the table's retention policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/23/2023
 ---
-# .show table retention policy
+# .show table policy retention command
 
 Display the table's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It's used to remove data whose relevance is age-based. The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it.
 

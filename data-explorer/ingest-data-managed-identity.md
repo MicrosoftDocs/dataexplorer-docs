@@ -33,7 +33,7 @@ If your cluster already has the desired managed identity assigned to it, copy it
 1. In the Azure portal, navigate to the storage account that contains the data you want to ingest.
 
 1. Select **Access Control** and then select **+ Add** > **Add Role Assignment**.
-1. Grant the managed Identity **Storage Blob Data Reader**, or **DeleteSourceOnSuccess** if you intend to use the **DeleteSourceOnSuccess** source option, permissions to the storage account.
+1. Grant the managed identity **Storage Blob Data Reader**, or **Storage Blob Data Contributor** if you intend to use the **DeleteSourceOnSuccess** source option, permissions to the storage account.
 
 > [!IMPORTANT]
 >

@@ -143,6 +143,7 @@ items:
         displayName: ingest
         href: ingest-data-event-grid-overview.md
       - name: Create an Event Grid data connection
+        displayName: rename blob, upload to azure storage, use event grid, remove event grid
         href: create-event-grid-connection.md
       - name: Manually create resources in Azure portal
         displayName: Manually create resources for Event Grid ingestion, Ingest
@@ -235,8 +236,12 @@ items:
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
-      href: query-monitor-data.md
-    - name: Query data in Power Apps
+      items:
+      - name: Query data in Azure Monitor
+        href: query-monitor-data.md
+      - name: Export and query Azure Monitor data
+        href: query-exported-azure-monitor-data.md
+    - name: Query data using Power Apps
       href: power-apps-connector.md
     - name: Query data using Python
       href: python-query-data.md
@@ -580,6 +585,8 @@ items:
     - name: Linked server
       href: linked-server.md
       displayName: SQL Server, ODBC
+    - name: Microsoft Purview
+      href: purview.md
 - name: Kusto Query Language
   href: kusto/query/toc.yml
 - name: Management commands

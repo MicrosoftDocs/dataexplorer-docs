@@ -756,6 +756,30 @@ Orion Innovation is a Leader in Digital transformation services with a Design le
 - [Orion Systems Integrators, LLC website](https://www.orioninc.com)
 - [Microsoft partner site for Orion Systems Integrators, LLC](https://appsource.microsoft.com/marketplace/partner-dir/adbbbd82-76e5-4952-8531-3cc59f3c1fdd/overview)
 
+## SkyPoint Cloud
+
+:::image type="icon" source="media/findmypartner/skypepointcloud-logo.png":::
+
+SkyPoint Cloud is a SaaS and Professional Services consultancy company headquartered in Portland, OR. SkyPoint’s Modern Data Stack Platform (MDSP) SaaS solution is a data ingestion hub to manage, clean, and analyze your data with automated pipelines and a myriad of integrations. SkyPoint Cloud Solutions Group (CSG) is our consultancy arm that provides custom data solutions, application development, managed business intelligence, training and mentoring for public and private sector clients.
+
+**Partner type**
+
+- SI
+- ISV
+
+**Focus geography**
+
+- USA
+
+**Contact**
+
+- [https://skypointcloud.com/contact/](https://skypointcloud.com/contact/)
+
+**Additional information**
+
+- [SkyPoint Cloud website](https://skypointcloud.com/)
+- [Microsoft partner site for SkyPoint Cloud](https://appsource.microsoft.com/marketplace/partner-dir/19393f3e-7639-4afe-bd82-ffb6e79b24b3)
+
 ## Terawe Corporation
 
 :::image type="icon" source="media/findmypartner/terawe-logo.png":::

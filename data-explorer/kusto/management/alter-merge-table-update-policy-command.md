@@ -1,11 +1,11 @@
 ---
-title:  .alter-merge table update policy command
-description: Learn how to use the `.alter-merge table update policy` command to change the table's update policy.
+title:  .alter-merge table policy update command
+description: Learn how to use the `.alter-merge table policy` command to change the table's update policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 06/04/2023
 ---
-# .alter-merge table update policy command
+# .alter-merge table policy update command
 
 Changes the table's update policy. The [update policy](updatepolicy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
 
