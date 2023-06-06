@@ -1,11 +1,11 @@
 ---
-title: .alter table streaming ingestion policy command
-description: Learn how to use the `.alter table streaming ingestion policy` command to change the table streaming policy ingestion.
+title: .alter table policy streamingingestion command
+description: Learn how to use the `.alter table policy streamingingestion` command to change the table streaming policy ingestion.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 06/05/2023
 ---
-# .alter table streaming ingestion policy command
+# .alter table policy streamingingestion command
 
 Use this command to change the table streaming policy ingestion. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
 
