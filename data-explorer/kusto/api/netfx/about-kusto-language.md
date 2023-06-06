@@ -7,7 +7,7 @@ ms.date: 06/06/2023
 
 # Kusto.Language overview
 
-The [Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/) library provides a .NET implementation of a parser for the [Kusto Query Language (KQL)](../../query/index.md). parse queries, perform semantic analysis, check for errors, and optimize your queries.
+The [Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/) library provides a .NET implementation of a parser for the [Kusto Query Language (KQL)](../../query/index.md). Kusto.Language allows you to parse queries, perform semantic analysis, check for errors, and optimize your queries.
 
 ## Query parsing
 
