@@ -19,7 +19,7 @@ Perform semantic analysis in order to identify which piece of query syntax refer
 
 ## Error handling
 
-Identify syntactic and semantic errors in your queries. For queries that are parsed without semantic analysis, only syntax errors will be found. This feature assists in early detection and resolution of issues, ensuring that queries are error-free and produce the expected results.
+Identify syntactic and semantic errors in your queries. For queries that are parsed without semantic analysis, only syntax errors are found. This feature helps with early detection and resolution of issues, ensuring that queries are error-free and produce the expected results.
 
 ## Query optimization
 

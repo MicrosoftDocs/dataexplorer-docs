@@ -32,7 +32,7 @@ The following steps provide an example of how to parse and navigate a parsed que
     var code = KustoCode.Parse(query);
     ```
 
-1. Navigate the tree using a variety of API's, such as `GetDescendants`, `GetAncestors`, `GetChild`, `Parent`, `WalkNodes`, `GetTokenAt`, or `GetNodeAt`. The following example finds all the places where the name `a` was referenced.
+1. Navigate the tree using various APIs, such as `GetDescendants`, `GetAncestors`, `GetChild`, `Parent`, `WalkNodes`, `GetTokenAt`, or `GetNodeAt`. The following example finds all the places where the name `a` was referenced.
 
     ```csharp
     var referencesToA = code.Syntax.GetDescendants<NameReference>(n => n.SimpleName == "a");
@@ -72,7 +72,7 @@ The following steps provide an example of how to perform semantic analysis with 
 
 ## Check a parsed query for errors
 
-Use the `GetDiagnostics` method to identify syntactic and semantic errors in your queries. For queries that are parsed without semantic analysis, only syntax errors will be found.
+Use the `GetDiagnostics` method to identify syntactic and semantic errors in your queries. For queries that are parsed without semantic analysis, only syntax errors are found.
 
 The following example shows how to parse a query and check it for errors.
 

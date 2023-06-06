@@ -25,7 +25,7 @@ In order to perform semantic analysis, define schemas for the entities reference
 
 ## Declare schemas
 
-To make sure that the parser recognizes your specific database, tables, and functions, you need to declare the schemas of these entities as shown in the following steps.
+To make sure that the parser recognizes your specific database, tables, and functions, declare the schemas of these entities as shown in the following steps.
 
 1. Create `TableSymbol` instances for each table in your database. For example:
 
@@ -71,7 +71,7 @@ If you already have a database, manually declaring all the entity schemas can be
     var mycluster = new ClusterSymbol("mycluster.kusto.windows.net", mydb);
     ```
 
-1. Add the `ClusterSymbol` to the `GlobalState` as the default cluster with a default database, or add it as an additional cluster. Access any non-default clusters or databases using the `cluster()` or `database()` functions.
+1. Add the `ClusterSymbol` to the `GlobalState` as the default cluster with a default database, or add it as an extra cluster. Access any nondefault clusters or databases using the `cluster()` or `database()` functions.
 
     ```csharp
     // Option 1: Add the cluster as the default with a specified default database.
