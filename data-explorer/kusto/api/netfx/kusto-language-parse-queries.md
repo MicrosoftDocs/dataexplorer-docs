@@ -23,6 +23,21 @@ With [Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Langu
 
 ## Parse a query
 
+The following steps provide an example of how to parse and navigate a parsed query.
+
+1. Provide your query as an argument to the `KustoCode.Parse` method as a string. The following example returns a `KustoCode` instance that contains the parsed syntax tree.
+
+    ```csharp
+    var query = "T | project a = a + b | where a > 10.0";
+    var code = KustoCode.Parse(query);
+    ```
+
+1. Navigate the tree using a variety of API's, such as `GetDescendants`, `GetAncestors`, `GetChild`, `Parent`, `WalkNodes`, `GetTokenAt`, or `GetNodeAt`. The following example finds all the places where the name `a` was referenced.
+
+    ```csharp
+    var referencesToA = code.Syntax.GetDescendants<NameReference>(n => n.SimpleName == "a");
+    Assert.AreEqual(2, referencesToA.Count);
+    ```
 ## Parse a query with semantic analysis
 
 ## Check a parsed query for errors
