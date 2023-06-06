@@ -25,7 +25,7 @@ Add the following code to your website:
 
 The `f-IFrameAuth` query parameter tells the web UI *not* to redirect to get an authentication token and the `f-UseMeControl=false` parameter tells the web UI *not* to show the user account information pop-up window. These actions are necessary since the hosting website is responsible for authentication.
 
-The `workspace=<guid>` query parameter creates a separate workspace for the embedded iframe, to avoid data sharing with the nonembedded version of `https://dataexplorer.azure.com`.
+The `workspace=<guid>` query parameter creates a separate workspace for the embedded iframe. Workspace is a logic unit that contains tabs, queries, settings and connections. By setting it to a unique value, it prevents data sharing between the embedded and the non-embedded version of `https://dataexplorer.azure.com`.
 
 ### Handle authentication
 
@@ -210,4 +210,4 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 
 - [Kusto Query Language (KQL) overview](../../query/index.md)
 - [Write Kusto queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
-- [Non official GitHub example](https://github.com/izikl/kwe-embed-example)
+- [Embedding sample](https://github.com/Azure/azure-kusto-webexplorer-embedding)
