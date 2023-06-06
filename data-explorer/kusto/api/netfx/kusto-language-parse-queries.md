@@ -90,3 +90,7 @@ if (diagnostics.Count > 0) { ... }
 
 > [!NOTE]
 > Check the `Severity` property to see if the diagnostic is an error, warning, or another type of diagnostic.
+
+## Next steps
+
+* Use [Kusto.Toolkit](https://www.nuget.org/packages/Kusto.Toolkit/) to find all of the columns or tables referenced in a query
