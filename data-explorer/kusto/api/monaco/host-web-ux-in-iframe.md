@@ -41,7 +41,7 @@ Use the following steps to handle authentication:
 
     ```javascript
     window.addEventListener('message', (event) => {
-       if (event.data.type === "getToken") {
+       if (event.data.signature === "queryExplorer" && event.data.type === "getToken") {
          // CODE-1: Replace this placeholder with code to get the access token from Azure AD and
          //         then post a "postToken" message with an access token and an event.data.scope
        }
