@@ -57,7 +57,7 @@ The following steps provide an example of how to perform semantic analysis with 
 
 1. Use the `KustoCode.ParseAndAnalyze` method with the globals that contain the relevant entity schemas.
 
-    ```dotnetcli
+    ```csharp
     var query = "T | project a = a + b | where a > 10.0";
     var code = KustoCode.ParseAndAnalyze(query, globals);
     ```
