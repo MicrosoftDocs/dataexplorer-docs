@@ -104,7 +104,7 @@ Use the following steps to handle authentication:
     > The hosting window must refresh the token before expiration by sending a new **postToken** message with updated tokens. Otherwise, once the tokens expire, service calls will fail.
 
 > [!TIP]
-> In our sample project, you can view an [application](https://github.com/izikl/kwe-embed-example/blob/master/src/App.js) that uses authentication.
+> In our sample project, you can view an [application](https://github.com/Azure/azure-kusto-webexplorer-embedding/blob/main/src/app.js) that uses authentication.
 
 ### Embed dashboards
 
