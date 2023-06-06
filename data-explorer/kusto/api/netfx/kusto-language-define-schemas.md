@@ -80,7 +80,22 @@ If you already have a database, manually declaring all the entity schemas can be
     var globalsWithMyClusterAdded = GlobalState.Globals.AddOrReplaceCluster(mycluster);
     ```
 
-1. Use the relevant globals in the `ParseAndAnalyze` method to perform semantic analysis.
+1. Use the relevant globals in the `ParseAndAnalyze` method to [parse a query with semantic analysis](kusto-language-parse-queries.md#parse-a-query-with-semantic-analysis).
+
+### Add built-in functions and aggregates
+
+Even if functions don't exist in the server, you can add them to the global state instance when you call the `ParseAndAnalyze` method.
+
+The following example adds a fake minimum maximum function for use in the query analysis.
+
+```csharp
+var fnMinMax = new FunctionSymbol("minmax", ScalarTypes.Real, new Parameter("x", ScalarTypes.Real));
+var globals = GlobalState.Default.WithAggregates(globals.Aggregates.Concat(new [] {fnMinMax}).ToArray());
+var code = KustoCode.ParseAndAnalyze("T | summarize minmax(c)", globals);
+```
+
+> [!NOTE]
+> If you remove functions or aggregates from the global state, the parser will produce an error when they're used.
 
 ## Next steps
 
