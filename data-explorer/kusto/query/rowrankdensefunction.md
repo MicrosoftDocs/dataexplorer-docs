@@ -20,6 +20,7 @@ The row rank starts by default at `1` for the first row, and is incremented by `
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*Term*|string|&check;|An expression indicating the value to consider for the rank. The rank is increased whenever the *Term* changes.|
+| *restart*| bool | | Indicates when the numbering is to be restarted to the *StartingIndex* value. The default is `false`.|
   
 ## Returns
 
@@ -54,3 +55,33 @@ SEA      | LH       | 3           | 2
 SEA      | UA       | 3           | 2
 SEA      | EL       | 3           | 2
 SEA      | LY       | 100         | 3
+
+
+The following example shows how to rank the `Airline` by the number of departures per each partition. Here, we partition the data by `Airport`: 
+
+```kusto
+datatable (Airport:string, Airline:string, Departures:long)
+[
+  "SEA", "LH", 3,
+  "SEA", "LY", 100,
+  "SEA", "UA", 3,
+  "SEA", "BA", 2,
+  "SEA", "EL", 3,
+  "AMS", "EL", 1,
+  "AMS", "BA", 1
+]
+| sort by Airport desc, Departures asc
+| extend Rank=row_rank_dense(Departures, prev(Airport) != Airport)
+```
+
+**Output**
+
+Airport  | Airline  | Departures  | Rank
+---------|----------|-------------|------
+SEA      | BA       | 2           | 1
+SEA      | LH       | 3           | 2
+SEA      | UA       | 3           | 2
+SEA      | EL       | 3           | 2
+SEA      | LY       | 100         | 3
+AMS      | EL       | 1           | 1
+AMS      | BA       | 1           | 1
