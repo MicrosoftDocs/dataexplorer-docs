@@ -100,8 +100,10 @@ Use the following steps to handle authentication:
       }
     ```
 
-> [!IMPORTANT]
-> The hosting window must refresh the token before expiration by sending a new **postToken** message with updated tokens. Otherwise, once the tokens expire, service calls will fail.
+    > [!IMPORTANT]
+    > The hosting window must refresh the token before expiration by sending a new **postToken** message with updated tokens. Otherwise, once the tokens expire, service calls will fail.
+
+In our sample project, you can view an [application](https://github.com/izikl/kwe-embed-example/blob/master/src/App.js) that uses authentication.
 
 ### Embed dashboards
 
