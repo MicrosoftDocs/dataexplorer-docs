@@ -12,7 +12,7 @@ Here are several best practices to follow to make your query run faster.
 
 | Action | Use | Don't use | Notes |
 |--|--|--|--|
-| **Time filters** | Use time filters first. |  | Kusto is highly optimized to use time filters. |
+| **Reduce the amount of data being queries** | Use mechanisms such as the `where` operator to reduce the amount of data being processed. |  | See below for efficient ways to reduce the amount of data being processed. |
 | **String operators** | Use the `has` operator | Don't use `contains` | When looking for full tokens, `has` works better, since it doesn't look for substrings. |
 | **Case-sensitive operators** | Use `==` | Don't use  `=~` | Use case-sensitive operators when possible. |
 |  | Use `in` | Don't use `in~` |
@@ -38,3 +38,49 @@ Here are several best practices to follow to make your query run faster.
 | **[extract() function](./extractfunction.md)** | Use when parsed strings don't all follow the same format or pattern. |  | Extract the required values by using a REGEX. |
 | **[materialize() function](./materializefunction.md)** | Push all possible operators that will reduce the materialized data set and still keep the semantics of the query. |  | For example, filters, or project only required columns. For more information, see [Optimize queries that use named expressions](../../named-expressions.md). |
 | **Use materialized views** | Use [materialized views](../management/materialized-views/materialized-view-overview.md) for storing commonly used aggregations. Prefer using the `materialized_view()` function to query materialized part only |  | `materialized_view('MV')` |
+
+## Reduce the amount of data being processed
+
+A query's performance depends directly on the amount of data it needs to process.
+The less data is processed, the quicker the query (and the fewer resources it consumes).
+Therefore, the most important best-practice is to structure the query in such a way that
+reduces the amount of data being processed.
+
+> [!NOTE]
+> In the discussion below, it is important to have in mind the concept of **filter selectivity**.
+> Selectivity is what percentage of the records get filtered-out when filtering by some predicate.
+> A highly-selective predicate means that only a handful of records remain after applying
+> the predicate, reducing the amount of data that needs to then be processed effectively.
+
+1. Only reference tables whose data is needed by the query. For example, when using the
+   `union` operator with wildcard table references, it is better from a performance point-of-view
+   to only reference a handful of tables, instead of using a wildcard (`*`) to reference all tables
+   and then filter data out using a predicate on the source table name.
+
+1. Take advantage of a table's data scope if the query is relevant only for a specific scope.
+   The [table() function](tablefunction.md) provides an efficient way to eliminate data
+   by scoping it according to the caching policy (the *DataScope* parameter).
+
+1. Apply the `where` query operator immediately following table references.
+
+1. When using the `where` query operator, a judicious use of the order of predicates
+   (in a single operator, or with a number of consecutive operators, it doesn't matter which)
+   can have a significant effect on the query performance, as explained below.
+
+1. Apply whole-shard predicates first. This means that predicates that use the [extent_id() function](extentidfunction.md)
+   should be applied first, as are predicates that use the [extent_tags() function](extenttagsfunction.md)
+   and predicates that are very selective over the table's data partitions (if defined).
+
+1. Then apply predicates that act upon `datetime` table columns. Kusto includes a very efficient index on such columns,
+   often eliminating whole data shards completely without needing to access those shards.
+
+1. Then apply predicates that act upon `string` and `dynamic` columns, especially such predicates
+   that apply at the term-level. The predicates should be ordered by the selectivity (for example,
+   searching for a user ID when there are millions of users is very selective and usually is a term search
+   for which the index is very efficient.)
+
+1. Then apply predicates that are selective and are based on numeric columns.
+
+1. Last, for queries that _do_ need to scan a table column's data (for example, for predicates such as
+   `contains "@!@!" that have no terms and don't benefit from indexing), order the predicates such that the ones
+   that scan columns with less data will be first. This reduces the need to decompress and scan large columns.
