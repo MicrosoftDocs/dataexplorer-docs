@@ -52,7 +52,14 @@ To make sure that the parser recognizes your specific database, tables, and func
     var globalsWithMyDb = GlobalState.Default.WithDatabase(mydb);
     ```
 
-    Now, you can use `globalsWithMyDb` to [Perform semantic analysis](#perform-semantic-analysis).
+1. Use `globalsWithMyDb` to perform semantic analysis. For example:
+
+    ```csharp
+    var query = "Shapes | where width > 10.0";
+    var code = KustoCode.ParseAndAnalyze(query, globalsWithMyDb);
+    ```
+
+## Work with multiple databases or clusters
 
 1. If you need to include multiple databases, create a `ClusterSymbol`. For example:
 
@@ -69,30 +76,13 @@ To make sure that the parser recognizes your specific database, tables, and func
     var globalsWithMyClusterAdded = GlobalState.Globals.AddOrReplaceCluster(mycluster);
     ```
 
+1. Use the relevant globals in the `ParseAndAnalyze` method to perform semantic analysis.
+
 ## Use schemas from the server
 
 If you already have a database, manually declaring all the entity schemas can be a tedious and unnecessary task. Instead, you can query the database and retrieve the required schema information. The [Kusto.Toolkit](https://www.nuget.org/packages/Kusto.Toolkit/) library provides APIs to load symbols directly from your cluster.
 
-## Perform semantic analysis
+## Next steps
 
-To parse with semantic analysis, use the `KustoCode.ParseAndAnalyze` method. This method allows you to specify a `GlobalState` instance that contains the definition for the database tables and functions that the query may reference. These definitions are called symbols.
-
-The following example uses the `globalsWithMyDb` from the [Declare schemas](#declare-schemas) section.
-
-```csharp
-var query = "Shapes | project width = height / 2 | where width > 10.0";
-var code = KustoCode.ParseAndAnalyze(query, globals);
-```
-
-Now when you navigate the syntax tree you can access the `ReferencedSymbol` and `ResultType` properties that tell you what is being referenced and the type of any expression.
-
-For this example, check the `ReferencedSymbol` property to see if it matches the instance of the `ColumnSymbol` that was defined as part of table `Shapes` when you declared the schema.
-
-```csharp
-// Search syntax tree for references to specific columns.
-var widthColumn = globals.Database.Tables.First(t => t.Name == "Shapes").GetColumn("width");
-var referencesToWidth = code.Syntax.GetDescendants<NameReference>(n => n.ReferencedSymbol == widthColumn);
-
-// There's only one reference to the column named "width" from the table "Shapes".
-Assert.AreEqual(1, referencesToWidth.Count);
-```
+* [Parse queries and commands](kusto-language-parse-queries.md)
+* See the [source code](https://github.com/microsoft/Kusto-Query-Language)
