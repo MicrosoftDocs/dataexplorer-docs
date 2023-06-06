@@ -65,7 +65,7 @@ The following steps provide an example of how to perform semantic analysis with 
 1. Navigate the tree and access new properties, such as `ReferencedSymbol` and `ResultType`. The following example uses the ReferencedSymbol property to check how many times the column `a` from the original table was referenced.
 
     ```csharp
-    var columnA = globals.Database.Tables.First(t => t.Name == "db").GetColumn("a");
+    var columnA = globals.Database.Tables.First(t => t.Name == "T").GetColumn("a");
     var referencesToA = code.Syntax.GetDescendants<NameReference>(n => n.ReferencedSymbol == columnA);
     Assert.AreEqual(1, referencesToA.Count);
     ```
