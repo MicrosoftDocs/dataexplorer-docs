@@ -12,11 +12,12 @@ This article discusses how to optimize repeat use of named expressions in a quer
 
 In Kusto Query Language, you can bind names to complex expressions in several different ways:
 
-* In a [let statement](kusto/query/letstatement.md)
-* In the [as operator](kusto/query/asoperator.md)
-* In the formal parameters list of [user-defined functions](kusto/query/functions/user-defined-functions.md)
+* In a [let statement](letstatement.md)
+* In the [as operator](asoperator.md)
+* In the formal parameters list of [user-defined functions](functions/user-defined-functions.md)
 
 When you reference these named expressions in a query, the following steps occur:
+
 1. The calculation within the named expression is evaluated. This calculation produces either a scalar or tabular value.
 1. The named expression is replaced with the calculated value.
 
@@ -33,10 +34,10 @@ To mitigate these concerns, you can materialize the calculation results in memor
 
 Use the following strategies for tabular functions:
 
-* **let statements and function parameters**: Use the [materialize()](kusto/query/materializefunction.md) function.
+* **let statements and function parameters**: Use the [materialize()](materializefunction.md) function.
 * **as operator**: Set the `hint.materialized` hint value to `true`.
 
-For example, the following query uses the non-deterministic tabular [sample operator](kusto/query/sampleoperator.md):
+For example, the following query uses the non-deterministic tabular [sample operator](sampleoperator.md):
 
 > [!NOTE]
 > Tables aren't sorted in general, so any table reference in a query is, by definition, non-deterministic.
@@ -81,9 +82,9 @@ range x from 1 to 100 step 1
 
 ### Scalar functions
 
-Non-deterministic scalar functions can be forced to calculate exactly once by using [toscalar()](kusto/query/toscalarfunction.md).
+Non-deterministic scalar functions can be forced to calculate exactly once by using [toscalar()](toscalarfunction.md).
 
-For example, the following query uses the non-deterministic function, [rand()](kusto/query/randfunction.md):
+For example, the following query uses the non-deterministic function, [rand()](randfunction.md):
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGoULBV0NBUqC5KzEvRMDQwMNCsteblygHKVEJlSvKLkxNzEos0EErAagqKMvOA+nVAqBKIAFmz1YBOAAAA" target="_blank">Run the query</a>
@@ -102,6 +103,6 @@ print x, x, y, y
 
 ## See also
 
-* [Let statement](kusto/query/letstatement.md)
-* [as operator](kusto/query/asoperator.md)
-* [toscalar()](kusto/query/toscalarfunction.md)
+* [Let statement](letstatement.md)
+* [as operator](asoperator.md)
+* [toscalar()](toscalarfunction.md)
