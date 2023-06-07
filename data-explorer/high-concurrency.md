@@ -38,9 +38,10 @@ For high concurrency, queries should consume the least possible amount of CPU re
 
 Use the following table schema design suggestions to minimize the CPU resources used:
 
+* Type ID columns as the string regardless of whether the values are numeric. This is because the indexing for string columns is much more sophisticated and will provide a much better filtering performance.   
 * Match the column data type optimally to the actual data stored in these columns. For example, don't store datetime values in a string column.
 * Avoid a large sparse table with many columns, and use dynamic columns to store sparse properties.
-* Store frequently used properties in their own column with a nondynamic datatype.
+* Store frequently used properties in their own column with a non-dynamic datatype.
 * Denormalize data to avoid joins that demand relatively large CPU resources.
 
 ### Partition data
