@@ -16,8 +16,6 @@ The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)]
 > [!NOTE]
 > Consider using the native function [series_decompose_forecast()](../query/series-decompose-forecastfunction.md). The native function is based on a simpler model, but is more scalable and runs faster.
 
-## Prerequisites
-
 [!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 * Install the `fbprophet` package since it isn't included in the Python image. To install the package, do the following:
