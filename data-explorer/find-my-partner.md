@@ -367,6 +367,34 @@ With the emerging focus on IoT, Telemetry and streaming data, the need for exper
 - [Fellowmind website](https://www.fellowmindcompany.com)
 - [Microsoft partner site for Fellowmind](https://appsource.microsoft.com/marketplace/partner-dir/3b2de1f1-4306-444d-bed8-e724ef455f1d/overview)
 
+## Get Tech Kft
+
+:::image type="icon" source="media/findmypartner/gettech-logo.png":::
+
+Get Tech is a Microsoft Solutions Partner company with certifications for Azure Digital & App Innovation and Azure Data & AI. Our cloud architects form the backbone of our consultancy having a proven track record of building solutions for customers in the EMEA region. Our projects cover multiple technical areas from Azure infrastructure deployments, IoT architecture and data analytics platform designs, to cloud migrations. Our customers are from multiple domains, including the energy, healthcare and travel industries.
+
+**Partner type**
+
+- SI
+- IoT Solution Provider
+- Cloud Native Software Engineering & Consulting
+- Data Engineering & Consulting for BI, ML or AI solutions
+
+
+**Focus geography**
+
+- EMEA
+- US
+
+**Contact**
+
+- [adx@gettech.io](mailto:adx@gettech.io)
+
+**Additional information**
+
+- [Get Tech Kft website](https://www.gettech.io)
+- [Microsoft partner site for Get Tech Kft](https://appsource.microsoft.com/marketplace/partner-dir/ee2258a4-f0c9-4980-943e-3f2715594f47/overview)
+
 ## Henry Been Consultancy
 
 :::image type="icon" source="media/findmypartner/azure-specialist-logo.png":::
