@@ -9,16 +9,14 @@ zone_pivot_groups: kql-flavors-all
 ---
 # geoip_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 `geoip_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves geographic information of ip address.
 
 > [!NOTE]
 > This function retrieved geographic data from GeoLite2 data created by MaxMind, available from [http://www.maxmind.com](http://www.maxmind.com). Please review [GeoLite2 End User License Agreement](https://www.maxmind.com/en/geolite2/eula).
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
@@ -222,7 +220,7 @@ datatable(ip:string) [
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

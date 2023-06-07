@@ -165,7 +165,7 @@ datatable(id:string, x:int, n:int) [
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 
