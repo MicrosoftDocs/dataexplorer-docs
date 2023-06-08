@@ -9,6 +9,18 @@ ms.date: 06/05/2023
 
 With [Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/), you can parse queries and management commands to generate a structured syntax tree. This article outlines the fundamental concepts and methods needed to parse queries with Kusto.Language.
 
+## Overview of Kusto.Language methods
+
+The following table overviews the main methods used in this article.
+
+|Goal|Method|Notes|
+|--|--|--|
+|Parse a query or command|`KustoCode.parse(`*query*`)`|Returns a KustoCode instance of a parsed syntax tree.|
+|Parse a query or command with semantic analysis|`KustoCode.ParseAndAnalyze(`*query*`,` *globals*`)`|Returns a KustoCode instance of a parsed syntax tree with semantic analysis.|
+|Find the table for a column|`code.Globals.GetTable(`*column*`)`|`code` should be a KustoCode instance that has been parsed with semantic analysis.|
+|Find the database for a table|`code.Globals.GetDatabase(`*table*`)`|`code` should be a KustoCode instance that has been parsed with semantic analysis.|
+|Find the cluster for a database|`code.Globals.GetCluster(`*database*`)`|`code` should be a KustoCode instance that has been parsed with semantic analysis.|
+|Get diagnostic information like errors and warnings|`code.GetDiagnostics()`|Returns errors, warnings, and other diagnostic information. `code` should be a KustoCode instance that has been parsed with or without semantic analysis.|
 
 ## Parse a query
 
@@ -61,19 +73,6 @@ The following steps provide an example of how to perform semantic analysis with 
     Assert.AreEqual(1, referencesToA.Count);
     ```
 
-## Use the global state to understand entity relations
-
-You can use the global state object to understand the relationships between different entities. For example:
-
-```csharp
-// Find the table for a column
-var table = code.Globals.GetTable(column);
-// Find the database for a table
-var database = code.Globals.GetDatabase(table);
-// Find the cluster for a database
-var cluster = code.Globals.GetCluster(database);
-```
-
 ## Check a parsed query for errors
 
 Use the `GetDiagnostics` method to identify syntactic and semantic errors in your queries. For queries that are parsed without semantic analysis, only syntax errors are found.
@@ -94,6 +93,7 @@ if (diagnostics.Count > 0) { ... }
 
 > [!NOTE]
 > Check the `Severity` property to see if the diagnostic is an error, warning, or another type of diagnostic.
+
 ## Next steps
 
 * Use [Kusto.Toolkit](https://www.nuget.org/packages/Kusto.Toolkit/) to find all of the columns or tables referenced in a query
