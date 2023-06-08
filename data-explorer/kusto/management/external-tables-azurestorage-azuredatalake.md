@@ -107,7 +107,7 @@ External tables support reading this data in the form of `virtual colums`. Virtu
 .create external table ExternalTable (EventName:string, Revenue:double)  
 kind=storage  
 partition by (CustomerName:string, Date:datetime)  
-pathformat = ("customer=" CustomerName "/date=" datetime_pattern("yyyyMMdd", Date))  
+pathformat=("customer=" CustomerName "/date=" datetime_pattern("yyyyMMdd", Date))  
 dataformat=parquet
 ( 
    h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
@@ -198,7 +198,7 @@ In the following external table partitioned by month, the directory format is `y
 .create external table ExternalTable (Timestamp:datetime, x:long, s:string) 
 kind=storage 
 partition by (Month:datetime = startofmonth(Timestamp)) 
-pathformat = (datetime_pattern("'year='yyyy'/month='MM", Month)) 
+pathformat=(datetime_pattern("'year='yyyy'/month='MM", Month)) 
 dataformat=csv 
 ( 
    h@'https://storageaccount.blob.core.windows.net/container1;secretKey' 
@@ -213,7 +213,7 @@ In the following external table, the data is partitioned first by customer name 
 .create external table ExternalTable (Timestamp:datetime, CustomerName:string) 
 kind=storage 
 partition by (CustomerNamePart:string = CustomerName, Date:datetime = startofday(Timestamp)) 
-pathformat = ("customer_name=" CustomerNamePart "/" Date)
+pathformat=("customer_name=" CustomerNamePart "/" Date)
 dataformat=csv 
 (  
    h@'https://storageaccount.blob.core.windows.net/container1;secretKey' 
@@ -228,7 +228,7 @@ The following external table is partitioned first by customer name hash (modulo 
 .create external table ExternalTable (Timestamp:datetime, CustomerName:string) 
 kind=storage 
 partition by (CustomerId:long = hash(CustomerName, 10), Date:datetime = startofday(Timestamp)) 
-pathformat = ("customer_id=" CustomerId "/dt=" datetime_pattern("yyyyMMdd", Date)) 
+pathformat=("customer_id=" CustomerId "/dt=" datetime_pattern("yyyyMMdd", Date)) 
 dataformat=csv 
 ( 
    h@'https://storageaccount.blob.core.windows.net/container1;secretKey'
