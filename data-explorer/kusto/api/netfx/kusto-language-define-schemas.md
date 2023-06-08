@@ -82,7 +82,7 @@ If you already have a database, manually declaring all the entity schemas can be
 
 1. Use the relevant globals in the `ParseAndAnalyze` method to [parse a query with semantic analysis](kusto-language-parse-queries.md#parse-a-query-with-semantic-analysis).
 
-### Add built-in functions and aggregates
+## Add built-in functions and aggregates
 
 Even if functions don't exist in the server, you can add them to the global state instance when you call the `ParseAndAnalyze` method.
 
