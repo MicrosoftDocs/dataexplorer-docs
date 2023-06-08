@@ -104,6 +104,26 @@ Find the cluster that a database belongs to using the `GetCluster` method on the
 var cluster = code.Globals.GetCluster(database);
 ```
 
+## Check a parsed query for errors
+
+Use the `GetDiagnostics` method to identify syntactic and semantic errors in your queries. For queries that are parsed without semantic analysis, only syntax errors are found.
+
+The following example shows how to parse a query and check it for errors.
+
+```csharp
+// Parse a query.
+var query = "T | project a = a + b | where a > 10";
+var code = KustoCode.Parse(query);
+
+// Check if the query has any syntax errors.
+var diagnostics = code.GetDiagnostics();
+
+// Investigate and handle the errors.
+if (diagnostics.Count > 0) { ... }
+```
+
+> [!NOTE]
+> Check the `Severity` property to see if the diagnostic is an error, warning, or another type of diagnostic.
 ## Next steps
 
 * Use [Kusto.Toolkit](https://www.nuget.org/packages/Kusto.Toolkit/) to find all of the columns or tables referenced in a query
