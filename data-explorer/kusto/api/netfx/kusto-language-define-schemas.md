@@ -65,13 +65,15 @@ This section shows how to define schemas with Kusto.Language. Once schemas are d
     var mydb = new DatabaseSymbol("mydb", shapes, tallshapes, shortshapes);
     ```
 
-1. Add the DatabaseSymbol to the GlobalState.
+1. Add the `DatabaseSymbol` to the `GlobalState`. The `GlobalState` provides the cluster and database context for the parser.
 
     ```csharp
     var globalsWithMyDb = GlobalState.Default.WithDatabase(mydb);
     ```
 
-1. Use `globalsWithMyDb` to perform semantic analysis. For example:
+1. Use the returned `GlobalState`, in this case `globalsWithMyDb`, to perform semantic analysis.
+
+    The following query will use the schemas of the entities in `mydb` to parse the query with semantic analysis.
 
     ```csharp
     var query = "Shapes | where width > 10.0";
@@ -84,7 +86,9 @@ If you already have a database, manually declaring all the entity schemas can be
 
 ## Work with multiple databases or clusters
 
-1. If you need to include multiple databases, create a `ClusterSymbol`. For example:
+1. To include multiple databases in your `GlobalState`, create a `ClusterSymbol`.
+
+    The following example creates a cluster that contains the `DatabaseSymbol` from the previous section.
 
     ```csharp
     var mycluster = new ClusterSymbol("mycluster.kusto.windows.net", mydb);
@@ -105,7 +109,7 @@ If you already have a database, manually declaring all the entity schemas can be
 
 Even if functions don't exist in the server, you can add them to the global state instance when you call the `ParseAndAnalyze` method.
 
-The following example adds a fake minimum maximum function for use in the query analysis.
+The following example adds a fake `minmax` function for use in the query analysis.
 
 ```csharp
 var fnMinMax = new FunctionSymbol("minmax", ScalarTypes.Real, new Parameter("x", ScalarTypes.Real));
