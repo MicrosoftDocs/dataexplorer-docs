@@ -2,20 +2,18 @@
 title:  Define schemas for semantic analysis with Kusto.Language
 description: This article describes how to define schemas for semantic analysis with the Kusto.Language library.
 ms.topic: reference
-ms.date: 06/06/2023
+ms.date: 06/08/2023
 ---
 
 # Define schemas for semantic analysis with Kusto.Language
 
-[Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/) offers semantic analysis, which is a process that determines the specific entities referred to in a query and checks for any semantic errors. It allows you to identify the exact columns, variables, functions, or tables associated with different parts of the query syntax.
+[Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/) includes semantic analysis capabilities that identify and associate entities such as columns, variables, functions, and tables with the different parts of the query syntax. Semantic analysis also performs checks for semantic errors to help ensure the correctness of your queries.
 
 In order to perform semantic analysis, you need to define schemas for the entities referenced in your queries. This article explains how to define schemas directly or use schemas from the server.
 
 ## Symbols
 
 In Kusto.Language, the process of defining symbols is a fundamental aspect of declaring schemas. It involves creating objects that represent tables and functions within your database, which are then used to construct a database object. Optionally, the database objects can be used to create a cluster object. This approach follows a bottom-up methodology, where lower-level entities are defined first, and then higher-level entities are constructed using these lower-level components.
-
-Symbols can be thought of as schema entity objects that encapsulate the metadata and characteristics of tables and functions. Symbols act as placeholders or references for these entities within the schema definition. By using symbols, you can define the structure, properties, and relationships of the tables and functions in your database.
 
 The following table overviews the symbols.
 
