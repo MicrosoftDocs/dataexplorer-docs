@@ -9,6 +9,20 @@ ms.date: 06/06/2023
 
 The [Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/) library provides a .NET implementation of a parser for the [Kusto Query Language (KQL)](../../query/index.md). The library allows you to parse queries, perform semantic analysis, check for errors, and optimize your queries.
 
+## Get started with Kusto.Language
+
+To get started using the Kusto.Language library:
+
+1. Install [Microsoft.Azure.Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/).
+
+1. Include the following namespaces in your code:
+
+    ```csharp
+    using Kusto.Language;
+    using Kusto.Language.Symbols;
+    using Kusto.Language.Syntax;
+    ```
+
 ## Parse query and commands
 
 Parse queries and management commands to generate a structured syntax tree, which can be traversed and analyzed with methods like `GetDescendants`, `GetAncestors`, `GetChild`, `Parent`, `WalkNodes`, `GetTokenAt`, and `GetNodeAt`. For more information, see [Parse queries and commands](kusto-language-parse-queries.md).

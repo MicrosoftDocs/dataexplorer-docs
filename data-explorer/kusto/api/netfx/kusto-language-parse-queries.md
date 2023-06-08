@@ -7,19 +7,8 @@ ms.date: 06/05/2023
 
 # Parse queries and commands with Kusto.Language
 
-With [Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/), you can parse queries and management commands to access a structured syntax tree. This article outlines the fundamental concepts and methods needed to parse queries with Kusto.Language.
+With [Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/), you can parse queries and management commands to generate a structured syntax tree. This article outlines the fundamental concepts and methods needed to parse queries with Kusto.Language.
 
-## Get started
-
-1. Install [Microsoft.Azure.Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/).
-
-1. Include the following namespaces in your code:
-
-    ```csharp
-    using Kusto.Language;
-    using Kusto.Language.Symbols;
-    using Kusto.Language.Syntax;
-    ```
 
 ## Parse a query
 

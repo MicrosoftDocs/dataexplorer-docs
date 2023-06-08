@@ -30,16 +30,6 @@ The following table overviews the symbols.
 
 This section shows how to define schemas with Kusto.Language. Once schemas are defined, the parser can use them to perform semantic analysis.
 
-1. Install [Microsoft.Azure.Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/).
-
-1. Include the following namespaces in your code:
-
-    ```csharp
-    using Kusto.Language;
-    using Kusto.Language.Symbols;
-    using Kusto.Language.Syntax;
-    ```
-
 1. Create `TableSymbol` instances for each table in your database.
 
     The following example creates a `TableSymbol` for the `Shapes` table, which has three columns: `id`, `width`, and `height`.
