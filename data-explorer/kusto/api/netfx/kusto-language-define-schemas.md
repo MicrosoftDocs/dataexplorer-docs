@@ -9,9 +9,26 @@ ms.date: 06/06/2023
 
 [Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/) offers semantic analysis, which is a process that determines the specific entities referred to in a query and checks for any semantic errors. It allows you to identify the exact columns, variables, functions, or tables associated with different parts of the query syntax.
 
-In order to perform semantic analysis, define schemas for the entities referenced in your queries. This article explains how to define schemas directly or use schemas from the server.
+In order to perform semantic analysis, you need to define schemas for the entities referenced in your queries. This article explains how to define schemas directly or use schemas from the server.
 
-## Get started
+## Symbols
+
+In Kusto.Language, the process of defining symbols is a fundamental aspect of declaring schemas. It involves creating objects that represent tables and functions within your database, which are then used to construct a database object. Optionally, the database objects can be used to create a cluster object. This approach follows a bottom-up methodology, where lower-level entities are defined first, and then higher-level entities are constructed using these lower-level components.
+
+Symbols can be thought of as schema entity objects that encapsulate the metadata and characteristics of tables and functions. Symbols act as placeholders or references for these entities within the schema definition. By using symbols, you can define the structure, properties, and relationships of the tables and functions in your database.
+
+The following table overviews the symbols.
+
+|Entity|Symbol syntax|
+|--|--|
+|Table|`new` `TableSymbol(`*TableName*`,` *TableSchema*`)`|
+|Function|`new` `FunctionSymbol(`*FunctionName*`,` *FunctionParameters*, *FunctionDefinition*`)`|
+|Database|`new` `DatabaseSymbol(`*DatabaseName*`,` *DatabaseEntity* [`,` ...]`)`|
+|Cluster|`new` `ClusterSymbol(`*ClusterName*`,` *Database* [`,` ...]`)`|
+
+## Declare schemas
+
+This section shows how to define schemas with Kusto.Language. Once schemas are defined, the parser can use them to perform semantic analysis.
 
 1. Install [Microsoft.Azure.Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/).
 
@@ -23,24 +40,26 @@ In order to perform semantic analysis, define schemas for the entities reference
     using Kusto.Language.Syntax;
     ```
 
-## Declare schemas
+1. Create `TableSymbol` instances for each table in your database.
 
-To make sure that the parser recognizes your specific database, tables, and functions, declare the schemas of these entities as shown in the following steps.
-
-1. Create `TableSymbol` instances for each table in your database. For example:
+    The following example creates a `TableSymbol` for the `Shapes` table, which has three columns: `id`, `width`, and `height`.
 
     ```csharp
     var shapes = new TableSymbol("Shapes", "(id: string, width: real, height: real)");
     ```
 
-1. Create `FunctionSymbol` instances for each function in your database. For example:
+1. Create `FunctionSymbol` instances for each function in your database.
+
+    The following example creates a `FunctionSymbol` for a function called `TallShapes` and another symbol for a function called `ShortShapes`. The `TallShapes` function takes no arguments, and returns all rows in which the `width` column value is smaller than the `height` column value in the `Shapes` table. The `ShortShapes` function takes a single argument, `maxHeight`. The function returns all rows in which the value in the `height` column is less than the `maxHeight` provided.
 
     ```csharp
     var tallshapes = new FunctionSymbol("TallShapes", "{ Shapes | width < height; }");
     var shortshapes = new FunctionSymbol("ShortShapes", "(maxHeight: real)", "{ Shapes | height < maxHeight; }");
     ```
 
-1. Declare a `DatabaseSymbol` with the created `TableSymbol` and `FunctionSymbol` instances. For example:
+1. Declare a `DatabaseSymbol` with the created `TableSymbol` and `FunctionSymbol` instances.
+
+    The following example creates a `DatabaseSymbol` for a database named `mydb`. The database `mydb` contains the three previously created symbols for the shapes table, the tall shapes function, and the short shapes function.
 
     ```csharp
     var mydb = new DatabaseSymbol("mydb", shapes, tallshapes, shortshapes);
