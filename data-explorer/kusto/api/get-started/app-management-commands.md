@@ -59,7 +59,6 @@ In your preferred IDE or text editor, create a file named `management-commands` 
 
     def main():
       cluster_uri = "https://<your_cluster>.kusto.windows.net"
-      cluster_uri = get_cluster_uri()
       kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
 
       with KustoClient(kcsb) as kusto_client:
@@ -266,7 +265,7 @@ In your preferred IDE or text editor, create a file named `management-commands` 
 
     ---
 
-1. Run the query and print the result using the previously defined function.
+1. Run the command and print the result using the previously defined function.
 
     ### [C\#](#tab/csharp)
 
