@@ -574,6 +574,9 @@ Result:
 
 You can customize the ingestion batching behavior for tables by changing the corresponding table policy. For more information, see [IngestionBatching policy](../../management/batchingpolicy.md).
 
+> [!NOTE]
+> If you don't specify all parameters of a *PolicyObject*, the unspecified parameters will be set to [default values](../../management/batchingpolicy.md#sealing-a-batch). For example, specifying only "MaximumBatchingTimeSpan" will result in "MaximumNumberOfItems" and "MaximumRawDataSizeMB" being set to default.
+
 For example, you can [change the ingestion batching policy](../../management/alter-table-ingestion-batching-policy.md) timeout value to 30 seconds by altering the `ingestionBatching` policy for the `MyStormEvents` table using the following command:
 
 ### [C\#](#tab/csharp)
