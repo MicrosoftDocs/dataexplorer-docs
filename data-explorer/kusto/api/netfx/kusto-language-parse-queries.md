@@ -61,29 +61,16 @@ The following steps provide an example of how to perform semantic analysis with 
     Assert.AreEqual(1, referencesToA.Count);
     ```
 
-## Find the table for a column
+## Use the global state to understand entity relations
 
-// Make one code sample with comments.
-
-If a column is part of a database table, find that table using the `GetTable` method on the `GlobalState` that includes the database table definition.
+You can use the global state object to understand the relationships between different entities. For example:
 
 ```csharp
+// Find the table for a column
 var table = code.Globals.GetTable(column);
-```
-
-## Find the database for a table
-
-If a table symbol is declared as part of a database, discover which database is associated with the table using the `GetDatabase` method on the `GlobalState` that includes the definition of the database and table.
-
-```csharp
+// Find the database for a table
 var database = code.Globals.GetDatabase(table);
-```
-
-## Find the cluster for a database
-
-Find the cluster that a database belongs to using the `GetCluster` method on the `GlobalState` that includes the definition of both the cluster and database symbols.
-
-```csharp
+// Find the cluster for a database
 var cluster = code.Globals.GetCluster(database);
 ```
 
