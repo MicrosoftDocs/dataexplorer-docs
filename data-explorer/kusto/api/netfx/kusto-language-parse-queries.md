@@ -41,7 +41,9 @@ The following steps provide an example of how to perform semantic analysis with 
     ```csharp
     var globals = GlobalState.Default.WithDatabase(
         new DatabaseSymbol("db",
-        new TableSymbol("T", "(a: real, b: real)")));
+            new TableSymbol("T", "(a: real, b: real)")
+        )
+    );
     ```
 
 1. Use the `KustoCode.ParseAndAnalyze` method with the globals that contain the relevant entity schemas.
@@ -59,28 +61,9 @@ The following steps provide an example of how to perform semantic analysis with 
     Assert.AreEqual(1, referencesToA.Count);
     ```
 
-## Check a parsed query for errors
-
-Use the `GetDiagnostics` method to identify syntactic and semantic errors in your queries. For queries that are parsed without semantic analysis, only syntax errors are found.
-
-The following example shows how to parse a query and check it for errors.
-
-```csharp
-// Parse a query.
-var query = "T | project a = a + b | where a > 10";
-var code = KustoCode.Parse(query);
-
-// Check if the query has any syntax errors.
-var diagnostics = code.GetDiagnostics();
-
-// Investigate and handle the errors.
-if (diagnostics.Count > 0) { ... }
-```
-
-> [!NOTE]
-> Check the `Severity` property to see if the diagnostic is an error, warning, or another type of diagnostic.
-
 ## Find the table for a column
+
+// Make one code sample with comments.
 
 If a column is part of a database table, find that table using the `GetTable` method on the `GlobalState` that includes the database table definition.
 
