@@ -808,6 +808,34 @@ SkyPoint Cloud is a SaaS and Professional Services consultancy company headquart
 - [SkyPoint Cloud website](https://skypointcloud.com/)
 - [Microsoft partner site for SkyPoint Cloud](https://appsource.microsoft.com/marketplace/partner-dir/19393f3e-7639-4afe-bd82-ffb6e79b24b3)
 
+## SpartaBI ltd
+
+:::image type="icon" source="media/findmypartner/spartabi-logo.png":::
+
+SpartaBI provides boutique consulting and development services in the Microsoft data platform stack. We specialize in designing and implementing cloud based analytical systems.
+
+ADX combines an extremely powerful and fast engine with many built-in utilizations that make life easier for both developers and users. It is an impressive PaaS offering which fits perfectly as a major player in many cloud architectures.
+
+We offer to put our experience and dedication into harnessing the impressive capabilities of ADX and take your solution to great heights.
+
+**Partner type**
+
+- System Integrator
+- Consulting
+
+**Focus geography**
+
+- Israel
+
+**Contact**
+
+- [ThisIs@SpartaBI.com](mailto:ThisIs@SpartaBI.com)
+
+**Additional information**
+
+- [SpartaBI ltd website](https://www.spartabi.com)
+- [Microsoft partner site for SpartaBI ltd](https://appsource.microsoft.com/marketplace/partner-dir/464edfaa-792d-4ff8-84f0-94290a8360ae)
+
 ## Terawe Corporation
 
 :::image type="icon" source="media/findmypartner/terawe-logo.png":::
