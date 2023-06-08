@@ -13,14 +13,17 @@ With [Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Langu
 
 The following table overviews the main methods used in this article.
 
-|Goal|Method|Notes|
-|--|--|--|
-|Parse a query or command|`KustoCode.parse(`*query*`)`|Returns a KustoCode instance of a parsed syntax tree.|
-|Parse a query or command with semantic analysis|`KustoCode.ParseAndAnalyze(`*query*`,` *globals*`)`|Returns a KustoCode instance of a parsed syntax tree with semantic analysis.|
-|Find the table for a column|`code.Globals.GetTable(`*column*`)`|`code` should be a KustoCode instance that has been parsed with semantic analysis.|
-|Find the database for a table|`code.Globals.GetDatabase(`*table*`)`|`code` should be a KustoCode instance that has been parsed with semantic analysis.|
-|Find the cluster for a database|`code.Globals.GetCluster(`*database*`)`|`code` should be a KustoCode instance that has been parsed with semantic analysis.|
-|Get diagnostic information like errors and warnings|`code.GetDiagnostics()`|Returns errors, warnings, and other diagnostic information. `code` should be a KustoCode instance that has been parsed with or without semantic analysis.|
+|Goal|Method|
+|--|--|
+|Parse a query or command|`KustoCode.parse(`*query*`)`|
+|Parse a query or command with semantic analysis|`KustoCode.ParseAndAnalyze(`*query*`,` *globals*`)`|
+|Find the table for a column|`code.Globals.GetTable(`*column*`)`|
+|Find the database for a table|`code.Globals.GetDatabase(`*table*`)`|
+|Find the cluster for a database|`code.Globals.GetCluster(`*database*`)`|
+|Get diagnostic information like errors and warnings|`code.GetDiagnostics()`|
+
+> [!NOTE]
+> `code` should be a parsed `KustoCode` instance.
 
 ## Parse a query
 
