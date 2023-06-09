@@ -11,6 +11,10 @@ Merges HLL results. This is the scalar version of the aggregate version [`hll_me
 
 Read about the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy](#estimation-accuracy).
 
+> [!WARNING]
+>The results of hll() and hll_merge() can be stored and later retrieved (for example, to create a daily unique users summary that can be later be used to calculate weekly counts). 
+> However, the precise binary representation of these results is undocumented and may change over time. There’s no guarantee that these functions return the same output for the same input, and one should not take a dependency on them.
+
 ## Syntax
 
 `hll_merge(` *hll*`,` *hll2*`,` [ *hll3*`,` ... ]`)`
