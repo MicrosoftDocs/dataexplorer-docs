@@ -10,6 +10,8 @@ adobe-target: true
 
 Here are several best practices to follow to make your query run faster.
 
+## In short
+
 | Action | Use | Don't use | Notes |
 |--|--|--|--|
 | **Reduce the amount of data being queried** | Use mechanisms such as the `where` operator to reduce the amount of data being processed. |  | See below for efficient ways to reduce the amount of data being processed. |
@@ -26,12 +28,12 @@ Here are several best practices to follow to make your query run faster.
 | **Case-insensitive comparisons** | Use `Col =~ "lowercasestring"` | Don't use `tolower(Col) == "lowercasestring"` |
 | **Compare data already in lowercase (or uppercase)** | `Col == "lowercasestring"` (or `Col == "UPPERCASESTRING"`) | Avoid using case insensitive comparisons. |  |
 | **Filtering on columns** | Filter on a table column. | Don't filter on a calculated column. |  |
-|  | Use `T | where predicate(<expression>)` | Don't use `T | extend _value = <expression> | where predicate(_value)` |  |
+|  | Use `T | where predicate(*Expression*)` | Don't use `T | extend _value = *Expression* | where predicate(_value)` |  |
 | **summarize operator** | Use the [hint.shufflekey=\<key>](./shufflequery.md) when the `group by keys` of the summarize operator are with high cardinality. |  | High cardinality is ideally above 1 million. |
 | **[join operator](./joinoperator.md)** | Select the table with the fewer rows to be the first one (left-most in query). |  |
 |  | Use `in` instead of left semi `join` for filtering by a single column. |  |
 | Join across clusters | Across clusters, run the query on the "right" side of the join, where most of the data is located. |  |
-| Join when left side is small and right side is large | Use [hint.strategy=broadcast](./broadcastjoin.md) |  | Small refers to up to 100,000 records. |
+| Join when left side is small and right side is large | Use [hint.strategy=broadcast](./broadcastjoin.md) |  | Small refers to up to 100MB of data. |
 | Join when right side is small and left side is large | Use the [lookup operator](./lookupoperator.md) instead of the `join` operator | | If the right side of the lookup is larger than several tens of MBs, the query will fail. |
 | Join when both sides are too large | Use [hint.shufflekey=\<key>](./shufflequery.md) |  | Use when the join key has high cardinality. |
 | **Extract values on column with strings sharing the same format or pattern** | Use the [parse operator](./parseoperator.md) | Don't use several `extract()` statements. | For example, values like `"Time = <time>, ResourceId = <resourceId>, Duration = <duration>, ...."` |
@@ -52,35 +54,37 @@ reduces the amount of data being processed.
 > A highly-selective predicate means that only a handful of records remain after applying
 > the predicate, reducing the amount of data that needs to then be processed effectively.
 
-1. Only reference tables whose data is needed by the query. For example, when using the
-   `union` operator with wildcard table references, it is better from a performance point-of-view
-   to only reference a handful of tables, instead of using a wildcard (`*`) to reference all tables
-   and then filter data out using a predicate on the source table name.
+In order of importance:
 
-1. Take advantage of a table's data scope if the query is relevant only for a specific scope.
-   The [table() function](tablefunction.md) provides an efficient way to eliminate data
-   by scoping it according to the caching policy (the *DataScope* parameter).
+* Only reference tables whose data is needed by the query. For example, when using the
+  `union` operator with wildcard table references, it is better from a performance point-of-view
+  to only reference a handful of tables, instead of using a wildcard (`*`) to reference all tables
+  and then filter data out using a predicate on the source table name.
 
-1. Apply the `where` query operator immediately following table references.
+* Take advantage of a table's data scope if the query is relevant only for a specific scope.
+  The [table() function](tablefunction.md) provides an efficient way to eliminate data
+  by scoping it according to the caching policy (the *DataScope* parameter).
 
-1. When using the `where` query operator, a judicious use of the order of predicates
-   (in a single operator, or with a number of consecutive operators, it doesn't matter which)
-   can have a significant effect on the query performance, as explained below.
+* Apply the `where` query operator immediately following table references.
 
-1. Apply whole-shard predicates first. This means that predicates that use the [extent_id() function](extentidfunction.md)
-   should be applied first, as are predicates that use the [extent_tags() function](extenttagsfunction.md)
-   and predicates that are very selective over the table's data partitions (if defined).
+* When using the `where` query operator, a judicious use of the order of predicates
+  (in a single operator, or with a number of consecutive operators, it doesn't matter which)
+  can have a significant effect on the query performance, as explained below.
 
-1. Then apply predicates that act upon `datetime` table columns. Kusto includes a very efficient index on such columns,
-   often eliminating whole data shards completely without needing to access those shards.
+* Apply whole-shard predicates first. This means that predicates that use the [extent_id() function](extentidfunction.md)
+  should be applied first, as are predicates that use the [extent_tags() function](extenttagsfunction.md)
+  and predicates that are very selective over the table's data partitions (if defined).
 
-1. Then apply predicates that act upon `string` and `dynamic` columns, especially such predicates
-   that apply at the term-level. The predicates should be ordered by the selectivity (for example,
-   searching for a user ID when there are millions of users is very selective and usually is a term search
-   for which the index is very efficient.)
+* Then apply predicates that act upon `datetime` table columns. Kusto includes a very efficient index on such columns,
+  often eliminating whole data shards completely without needing to access those shards.
 
-1. Then apply predicates that are selective and are based on numeric columns.
+* Then apply predicates that act upon `string` and `dynamic` columns, especially such predicates
+  that apply at the term-level. The predicates should be ordered by the selectivity (for example,
+  searching for a user ID when there are millions of users is very selective and usually is a term search
+  for which the index is very efficient.)
 
-1. Last, for queries that _do_ need to scan a table column's data (for example, for predicates such as
-   `contains "@!@!" that have no terms and don't benefit from indexing), order the predicates such that the ones
-   that scan columns with less data will be first. This reduces the need to decompress and scan large columns.
+* Then apply predicates that are selective and are based on numeric columns.
+
+* Last, for queries that scan a table column's data (for example, for predicates such as
+  `contains "@!@!" that have no terms and don't benefit from indexing), order the predicates such that the ones
+  that scan columns with less data will be first. This reduces the need to decompress and scan large columns.
