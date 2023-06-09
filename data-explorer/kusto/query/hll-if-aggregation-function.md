@@ -14,7 +14,7 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accu
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 > [!WARNING]
->The results of hll() and hll_merge() can be stored and later retrieved (for example, to create a daily unique users summary that can be later be used to calculate weekly counts). 
+>The results of hll(), hll_if() and hll_merge() can be stored and later retrieved (for example, to create a daily unique users summary that can be later be used to calculate weekly counts). 
 > However, the precise binary representation of these results is undocumented and may change over time. There’s no guarantee that these functions return the same output for the same input, and one should not take a dependency on them.
 
 ## Syntax
