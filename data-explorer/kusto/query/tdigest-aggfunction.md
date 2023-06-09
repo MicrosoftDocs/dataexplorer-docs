@@ -13,6 +13,10 @@ Calculates the intermediate results of [`percentiles()`](percentiles-aggfunction
 
 For more information, see the [underlying algorithm (T-Digest) and the estimated error](percentiles-aggfunction.md#estimation-error-in-percentiles).
 
+> [!WARNING]
+>The results of tdigest() and tdigest_merge() can be stored and later retrieved (for example, to create a daily percentiles summary that can be later be used to calculate weekly percentiles). 
+> However, the precise binary representation of these results is undocumented and may change over time. There’s no guarantee that these functions return the same output for the same input, and one should not take a dependency on them.
+
 ## Syntax
 
 `tdigest(`*expr* [`,` *weight*]`)`
