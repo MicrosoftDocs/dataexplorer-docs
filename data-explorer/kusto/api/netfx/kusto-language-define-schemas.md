@@ -37,20 +37,20 @@ The following steps outline how to create and use the symbols. Then, the code sa
 1. Use the returned `GlobalState` to perform semantic analysis.
 
 ```csharp
-// Define the schema for the Shapes table, including its columns: id, width, and height.
+// 1. Define the schema for the Shapes table, including its columns: id, width, and height.
 var shapes = new TableSymbol("Shapes", "(id: string, width: real, height: real)");
 
-// Define the functions TallShapes and ShortShapes with their respective parameters and logic.
+// 2. Define the functions TallShapes and ShortShapes with their respective parameters and logic.
 var tallshapes = new FunctionSymbol("TallShapes", "{ Shapes | width < height; }");
 var shortshapes = new FunctionSymbol("ShortShapes", "(maxHeight: real)", "{ Shapes | height < maxHeight; }");
 
-// Create a database symbol named "mydb" and include the previously defined symbols.
+// 3. Create a database symbol named "mydb" and include the previously defined symbols.
 var mydb = new DatabaseSymbol("mydb", shapes, tallshapes, shortshapes);
 
-// Add the database symbol to the global state.
+// 4. Add the database symbol to the global state.
 var globalsWithMyDb = GlobalState.Default.WithDatabase(mydb);
 
-// Use the schemas to parse and perform semantic analysis on the query.
+// 5. Use the schemas to parse and perform semantic analysis on the query.
 var query = "Shapes | where width > 10.0";
 var code = KustoCode.ParseAndAnalyze(query, globalsWithMyDb);
 ```
