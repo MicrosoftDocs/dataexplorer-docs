@@ -424,7 +424,7 @@ The following example shows an Azure Resource Manager template for adding an Eve
 
 This section shows how to trigger ingestion from Azure Blob Storage or Azure Data Lake Gen 2 to your cluster following blob creation or blob renaming.
 
-Select the relevant tab based on the type of the storage SDK used to upload blobs.
+Select the relevant tab based on the type of storage SDK used to upload blobs.
 
 ### [Azure Blob Storage](#tab/azure-blob-storage)
 
