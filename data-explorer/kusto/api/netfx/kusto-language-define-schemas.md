@@ -2,7 +2,7 @@
 title:  Define schemas for semantic analysis with Kusto.Language
 description: This article describes how to define schemas for semantic analysis with the Kusto.Language library.
 ms.topic: reference
-ms.date: 06/08/2023
+ms.date: 06/12/2023
 ---
 
 # Define schemas for semantic analysis with Kusto.Language
@@ -32,9 +32,9 @@ The following steps outline how to create and use the symbols. Then, the code sa
 
 1. Create `TableSymbol` instances for each table in your database.
 1. Create `FunctionSymbol` instances for each function in your database.
-1. Declare a `DatabaseSymbol` with the previously created `TableSymbol` and `FunctionSymbol` instances.
-1. Add the `DatabaseSymbol` to the `GlobalState`. The `GlobalState` provides the cluster and database context for the parser.
-1. Use the returned `GlobalState`, in this case `globalsWithMyDb`, to perform semantic analysis.
+1. Declare a `DatabaseSymbol` that includes the previously created `TableSymbol` and `FunctionSymbol` instances.
+1. Add the `DatabaseSymbol` to the `GlobalState`, which provides the cluster and database context for the parser.
+1. Use the returned `GlobalState` to perform semantic analysis.
 
 ```csharp
 // Define the schema for the Shapes table, including its columns: id, width, and height.
