@@ -26,47 +26,34 @@ The following table overviews the symbols.
 
 ## Declare schemas
 
-This section shows how to define schemas with Kusto.Language. Once schemas are defined, the parser can use them to perform semantic analysis.
+This section shows how to declare and use table, function, and database symbols to define the schema used by the parser for semantic analysis.
+
+The following steps outline how to create and use the symbols. Then, the code sample gives demonstrates these steps in action.
 
 1. Create `TableSymbol` instances for each table in your database.
-
-    The following example creates a `TableSymbol` for the `Shapes` table, which has three columns: `id`, `width`, and `height`.
-
-    ```csharp
-    var shapes = new TableSymbol("Shapes", "(id: string, width: real, height: real)");
-    ```
-
 1. Create `FunctionSymbol` instances for each function in your database.
-
-    The following example creates a `FunctionSymbol` for a function called `TallShapes` and another symbol for a function called `ShortShapes`. The `TallShapes` function takes no arguments, and returns all rows in which the `width` column value is smaller than the `height` column value in the `Shapes` table. The `ShortShapes` function takes a single argument, `maxHeight`. The function returns all rows in which the value in the `height` column is less than the `maxHeight` provided.
-
-    ```csharp
-    var tallshapes = new FunctionSymbol("TallShapes", "{ Shapes | width < height; }");
-    var shortshapes = new FunctionSymbol("ShortShapes", "(maxHeight: real)", "{ Shapes | height < maxHeight; }");
-    ```
-
-1. Declare a `DatabaseSymbol` with the created `TableSymbol` and `FunctionSymbol` instances.
-
-    The following example creates a `DatabaseSymbol` for a database named `mydb`. The database `mydb` contains the three previously created symbols for the shapes table, the tall shapes function, and the short shapes function.
-
-    ```csharp
-    var mydb = new DatabaseSymbol("mydb", shapes, tallshapes, shortshapes);
-    ```
-
+1. Declare a `DatabaseSymbol` with the previously created `TableSymbol` and `FunctionSymbol` instances.
 1. Add the `DatabaseSymbol` to the `GlobalState`. The `GlobalState` provides the cluster and database context for the parser.
-
-    ```csharp
-    var globalsWithMyDb = GlobalState.Default.WithDatabase(mydb);
-    ```
-
 1. Use the returned `GlobalState`, in this case `globalsWithMyDb`, to perform semantic analysis.
 
-    The following query will use the schemas of the entities in `mydb` to parse the query with semantic analysis.
+```csharp
+// Define the schema for the Shapes table, including its columns: id, width, and height.
+var shapes = new TableSymbol("Shapes", "(id: string, width: real, height: real)");
 
-    ```csharp
-    var query = "Shapes | where width > 10.0";
-    var code = KustoCode.ParseAndAnalyze(query, globalsWithMyDb);
-    ```
+// Define the functions TallShapes and ShortShapes with their respective parameters and logic.
+var tallshapes = new FunctionSymbol("TallShapes", "{ Shapes | width < height; }");
+var shortshapes = new FunctionSymbol("ShortShapes", "(maxHeight: real)", "{ Shapes | height < maxHeight; }");
+
+// Create a database symbol named "mydb" and include the previously defined symbols.
+var mydb = new DatabaseSymbol("mydb", shapes, tallshapes, shortshapes);
+
+// Add the database symbol to the global state.
+var globalsWithMyDb = GlobalState.Default.WithDatabase(mydb);
+
+// Use the schemas to parse and perform semantic analysis on the query.
+var query = "Shapes | where width > 10.0";
+var code = KustoCode.ParseAndAnalyze(query, globalsWithMyDb);
+```
 
 ## Use schemas from the server
 
