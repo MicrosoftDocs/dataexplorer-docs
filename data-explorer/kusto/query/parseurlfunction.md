@@ -11,6 +11,9 @@ Parses an absolute URL `string` and returns a `dynamic` object contains URL part
 
 > **Deprecated aliases:** parseurl()
 
+> [!NOTE]
+> An absolute URL must start with a scheme (e.g. `https://bing.com` instead of `bing.com`).
+
 ## Syntax
 
 `parse_url(`*url*`)`
