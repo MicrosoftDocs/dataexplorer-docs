@@ -20,7 +20,7 @@ An external table is a schema entity that references data stored outside the Azu
 
 1. In the left menu, select **Query**.
 
-1. Right-click on the database where you want to create the external table. From the options, select **Create external table**.
+1. Right-click on the database where you want to create the external table. Select **Create external table**.
 
     :::image type="content" source="media/external-table/query-create-external-table.png" alt-text="Screenshot of the option to create an external table from the query page." lightbox="media/external-table/query-create-external-table.png":::
 

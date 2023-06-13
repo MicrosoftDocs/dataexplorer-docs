@@ -23,7 +23,7 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 1. In the left menu, select **Query**.
 
-1. Right-click on the database where you want to create the table. From the options, select **Create table**.
+1. Right-click on the database where you want to create the table. Select **Create table**.
 
     :::image type="content" source="media/create-table-wizard/query-create-table.png" alt-text="Screenshot of the option to create a table from the query page." lightbox="media/external-table/query-create-external-table.png":::
 
