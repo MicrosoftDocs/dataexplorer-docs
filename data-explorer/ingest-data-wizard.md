@@ -3,7 +3,7 @@ title: Ingest data into Azure Data Explorer using the ingestion wizard
 description: Overview of ingesting (loading) data into Azure Data Explorer simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 05/28/2023
+ms.date: 06/05/2023
 ---
 
 # What is the ingestion wizard?
@@ -33,13 +33,9 @@ The ingestion wizard provides the following features:
 
 There are many entry points to the ingestion wizard.
 
-* In the web UI, select **Data** in the left pane. Within the **Data Management** page, select a type of ingestion and select **Ingest**.
-
-    :::image type="content" source="media/ingest-data-wizard/select-data-pane.png" alt-text="Screenshot of options to ingest data from the data management window of the Azure Data Explorer web UI interface - Azure Data Explorer." lightbox="media/ingest-data-wizard/select-data-pane.png":::
-
 * In the web UI, select **Query** in the left pane. Right-click the database or table and select **Ingest data**.
 
-    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI.":::
+    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI." lightbox="media/ingest-data-wizard/ingest-data-from-query-page.png":::
 
 * In the web UI, select **My cluster** in the left pane and then select **Ingest**.
 
