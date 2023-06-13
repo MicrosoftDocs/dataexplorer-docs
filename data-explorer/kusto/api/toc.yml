@@ -61,10 +61,10 @@ items:
     items:
     - name: Kusto.Language overview
       href: netfx/about-kusto-language.md
-    - name: Define schemas
-      href: netfx/kusto-language-define-schemas.md
     - name: Parse queries and commands
       href: netfx/kusto-language-parse-queries.md
+    - name: Define schemas
+      href: netfx/kusto-language-define-schemas.md
 - name: Bicep and ARM template resource types
   href: /azure/templates/microsoft.kusto/allversions
 - name: Resource provider operations
