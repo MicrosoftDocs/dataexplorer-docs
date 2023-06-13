@@ -17,13 +17,15 @@ The following table overviews the main methods used in this article.
 |--|--|
 |Parse a query or command|`KustoCode.Parse(`*query*`)`|
 |Parse a query or command with semantic analysis|`KustoCode.ParseAndAnalyze(`*query*`,` *globals*`)`|
-|Find the table for a column|`code.Globals.GetTable(`*column*`)`|
-|Find the database for a table|`code.Globals.GetDatabase(`*table*`)`|
-|Find the cluster for a database|`code.Globals.GetCluster(`*database*`)`|
-|Get diagnostic information like errors and warnings|`code.GetDiagnostics()`|
 
-> [!NOTE]
-> `code` should be a parsed `KustoCode` instance.
+The following table overviews additional actions that can be taken once a query has been parsed. `code` is the returned value from the previously described methods, meaning it is a parsed `KustoCode` instance.
+
+|Goal|Method|Notes|
+|--|--|--|
+|Find the table for a column|`code.Globals.GetTable(`*column*`)`|Only relevant for semantic analysis (`ParseAndAnalyze`).|
+|Find the database for a table|`code.Globals.GetDatabase(`*table*`)`|Only relevant for semantic analysis (`ParseAndAnalyze`).|
+|Find the cluster for a database|`code.Globals.GetCluster(`*database*`)`|Only relevant for semantic analysis (`ParseAndAnalyze`).|
+|Get diagnostic information like errors and warnings|`code.GetDiagnostics()`|`Parse` provides syntax-related diagnostic information, while `ParseAndAnalyze` provides diagnostic information for both syntax and semantics.|
 
 ## Parse a query
 
