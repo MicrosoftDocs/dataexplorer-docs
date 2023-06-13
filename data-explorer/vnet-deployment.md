@@ -381,3 +381,4 @@ This template creates the cluster, virtual network, subnet, network security gro
 
 * Virtual network resources with deployed clusters don't support the [move to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription) operation.
 * Public IP address resources used for the cluster engine or the data management service don't support the move to a new resource group or subscription operation.
+* It's not possible to use the "private-" DNS prefix of virtual network injected Azure Data Explorer clusters as part of your query

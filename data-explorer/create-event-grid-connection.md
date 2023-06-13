@@ -424,7 +424,7 @@ The following example shows an Azure Resource Manager template for adding an Eve
 
 This section shows how to trigger ingestion from Azure Blob Storage or Azure Data Lake Gen 2 to your cluster following blob creation or blob renaming.
 
-Select the relevant tab based on the type of storage.
+Select the relevant tab based on the type of storage SDK used to upload blobs.
 
 ### [Azure Blob Storage](#tab/azure-blob-storage)
 
@@ -516,6 +516,9 @@ dataLakeFileClient.Rename(destinationFilePath);
 > If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
 
 ---
+
+> [!NOTE]
+> Triggering ingestion following a `CopyBlob` operation is not supported for storage accounts that have the hierarchical namespace feature enabled on them.
 
 ## Remove an Event Grid data connection
 
