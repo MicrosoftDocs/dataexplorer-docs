@@ -1,12 +1,12 @@
 ---
-title: Get latest versions of Azure Cosmos DB documents (Preview) - Azure Data Explorer
+title: Get latest versions of Azure Cosmos DB documents - Azure Data Explorer
 description: Learn about how to get latest versions of Azure Cosmos DB documents in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 12/13/2022
+ms.date: 06/13/2023
 ---
 
-# Get latest versions of Azure Cosmos DB documents (Preview)
+# Get latest versions of Azure Cosmos DB documents
 
 In this article, you'll learn how to get the latest version of ingested documents.
 
