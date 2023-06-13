@@ -2,7 +2,7 @@
 title:  Kusto.Language overview
 description: This article describes the Kusto.Language client library in Azure Data Explorer.
 ms.topic: reference
-ms.date: 06/06/2023
+ms.date: 06/13/2023
 ---
 
 # Kusto.Language overview
@@ -23,7 +23,7 @@ To get started using the Kusto.Language library:
     using Kusto.Language.Syntax;
     ```
 
-## Parse query and commands
+## Parse queries and commands
 
 Parse queries and management commands to generate a structured syntax tree, which can be traversed and analyzed with methods like `GetDescendants`, `GetAncestors`, `GetChild`, `Parent`, `WalkNodes`, `GetTokenAt`, and `GetNodeAt`. For more information, see [Parse queries and commands](kusto-language-parse-queries.md).
 

@@ -2,7 +2,7 @@
 title:  Parse queries and commands with Kusto.Language
 description: This article describes how to parse queries and commands with the Kusto.Language library.
 ms.topic: reference
-ms.date: 06/05/2023
+ms.date: 06/13/2023
 ---
 
 # Parse queries and commands with Kusto.Language
@@ -15,7 +15,7 @@ The following table overviews the main methods used in this article.
 
 |Goal|Method|
 |--|--|
-|Parse a query or command|`KustoCode.parse(`*query*`)`|
+|Parse a query or command|`KustoCode.Parse(`*query*`)`|
 |Parse a query or command with semantic analysis|`KustoCode.ParseAndAnalyze(`*query*`,` *globals*`)`|
 |Find the table for a column|`code.Globals.GetTable(`*column*`)`|
 |Find the database for a table|`code.Globals.GetDatabase(`*table*`)`|
