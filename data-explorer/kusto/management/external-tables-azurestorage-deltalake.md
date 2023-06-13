@@ -5,7 +5,7 @@ ms.reviewer: igborodi
 ms.topic: reference
 ms.date: 05/08/2023
 ---
-# Create and alter delta external tables on Azure Storage (Preview)
+# Create and alter delta external tables on Azure Storage
 
 The commands in this article can be used to create or alter a delta [external table](../query/schema-entities/externaltables.md) in the database from which the command is executed. A delta external table references Delta Lake table data located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
 
