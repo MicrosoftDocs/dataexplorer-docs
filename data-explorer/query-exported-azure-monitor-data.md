@@ -40,7 +40,9 @@ To access your exported Azure Monitor data, follow these steps to create an exte
 
     :::image type="content" source="media\query-exported-monitor-data\exported-data-map-schema.jpg" alt-text="Screenshot that shows a Log Analytics table schema.":::
 
-1. [Create an external table using the Azure Data Explorer web UI wizard](external-table.md). In the [schema tab](external-table.md#schema-tab), provide the schema from the previous step.
+1. [Create an external table using the Azure Data Explorer web UI wizard](external-table.md). In the [schema tab](external-table.md#schema-tab), the tool attempts to automatically detect a schema. Make sure that the detected schema matches the schema from the previous step. If there are any discrepancies, adjust the schema by selecting the arrow on a column and accessing the menu.
+
+    :::image type="content" source="media/query-exported-monitor-data/schema-adjustments.png" alt-text="Screenshot of schema adjustment menu." lightbox="media/query-exported-monitor-data/schema-adjustments.png":::
 
 ## Query the exported data from Azure Data Explorer
 
