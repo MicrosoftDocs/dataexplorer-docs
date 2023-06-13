@@ -107,7 +107,7 @@ The ingested data looks as follows:
 |-------|----------------------------|-----------|
 | `2012-01-15T10:45` | `CustomEvent` |  `{"Revenue": 0.456}`  |
 
-#### `BytesAsBase64` transformation:
+#### `BytesAsBase64` transformation
 
 Given the following JSON contents:
 
