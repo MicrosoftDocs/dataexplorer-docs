@@ -1,12 +1,12 @@
 ---
-title: Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
+title: Ingest data from Azure Cosmos DB into Azure Data Explorer
 description: Learn how to ingest (load) data into Azure Data Explorer from Cosmos DB.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 05/17/2023
+ms.date: 06/13/2023
 ---
 
-# Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
+# Ingest data from Azure Cosmos DB into Azure Data Explorer
 
 Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Cosmos DB for NoSql](/azure/cosmos-db/nosql/) using a [change feed](/azure/cosmos-db/change-feed). The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your Data Explorer table. The change feed listens for new and updated documents but doesn't log deletes. For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -392,5 +392,5 @@ The connector invokes the Cosmos DB Change Feed API on each physical partition o
 
 ## Next steps
 
-- [Get latest versions of Azure Cosmos DB documents (Preview)](ingest-data-cosmos-db-queries.md)
+- [Get latest versions of Azure Cosmos DB documents](ingest-data-cosmos-db-queries.md)
 - [Kusto Query Language (KQL) overview](kusto/query/index.md)
