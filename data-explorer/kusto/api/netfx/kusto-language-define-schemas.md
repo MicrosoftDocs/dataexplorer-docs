@@ -2,7 +2,7 @@
 title:  Define schemas for semantic analysis with Kusto.Language
 description: This article describes how to define schemas for semantic analysis with the Kusto.Language library.
 ms.topic: reference
-ms.date: 06/13/2023
+ms.date: 06/14/2023
 ---
 
 # Define schemas for semantic analysis with Kusto.Language
@@ -58,6 +58,27 @@ var code = KustoCode.ParseAndAnalyze(query, globalsWithMyDb);
 ## Use schemas from the server
 
 If you already have a database, manually declaring all the entity schemas can be a tedious and unnecessary task. Instead, you can query the database and retrieve the required schema information. The [Kusto.Toolkit](https://www.nuget.org/packages/Kusto.Toolkit/) library provides APIs to load symbols directly from your cluster.
+
+The following example uses the `SymbolLoader` family of classes to access database schemas directly from the cluster.
+
+```csharp
+// Find available databases.
+var connection = new KustoConnectionStringBuilder(...);
+var loader = new ServerSymbolLoader(connection);
+var names = loader.LoadDatabaseNamesAsync();
+
+// Load database schema into a symbol.
+var loader = new ServerSymbolLoader(connection);
+var db = await loader.LoadDatabaseAsync(dbName);
+
+// Load database schema into the global state as the default database.
+var globals = GlobalState.Default;
+var loader = new ServerSymbolLoader(connection);
+var globalsWithDB = await loader.AddOrUpdateDefaultDatabaseAsync(globals, dbName);
+var parsed = KustoCode.ParseAndAnalyze(query, globalsWithDB);
+```
+
+For more examples, see [SymbolLoader](https://github.com/mattwar/Kusto.Toolkit/blob/master/src/Toolkit/docs/SymbolLoader.md) and [SymbolResolver](https://github.com/mattwar/Kusto.Toolkit/blob/master/src/Toolkit/docs/SymbolResolver.md).
 
 ## Work with multiple databases or clusters
 
