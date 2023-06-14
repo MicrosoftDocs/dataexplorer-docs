@@ -71,7 +71,7 @@ Some of the data format mappings (Parquet, JSON and AVRO) support simple and use
 | DateTimeFromUnixMicroseconds  | Converts number representing unix-time (microseconds since 1970-01-01) to UTC datetime string.                                                                          |                                          |
 | DateTimeFromUnixNanoseconds   | Converts number representing unix-time (nanoseconds since 1970-01-01) to UTC datetime string.                                                                           |                                          |
 | DropMappedFields | Maps an object in the JSON document to a column and removes any nested fields already referenced by other column mappings |
-| BytesAsBase64 | Treats the data as byte array and converts it to a base64-encoded string. | Supported for Avro/ApacheAvro and JSON formats only. For Avro/ApacheAvro, the schema type of the mapped data field should be `bytes` or `fixed` Avro type. For JSON, the field should be an array containing byte values from [0-255] range. `null` is ingested if the data does not represent a valid byte array.
+| BytesAsBase64 | Treats the data as byte array and converts it to a base64-encoded string. | Supported for ApacheAvro and JSON formats only. For ApacheAvro, the schema type of the mapped data field should be `bytes` or `fixed` Avro type. For JSON, the field should be an array containing byte values from [0-255] range. `null` is ingested if the data does not represent a valid byte array.
 
 ### Mapping transformation examples
 
