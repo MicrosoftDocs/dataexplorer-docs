@@ -94,34 +94,6 @@ The *Attributes* parameter specifies how rows from the *LeftTable* are matched w
 >
 > For best performance, if one table is always smaller than the other, use it as the left (piped) side of the join.
 
-## Example
-
-Get extended activities from a `login` that some entries mark as the start and end of an activity.
-
-```kusto
-let Events = MyLogTable | where type=="Event" ;
-Events
-| where Name == "Start"
-| project Name, City, ActivityId, StartTime=timestamp
-| join (Events
-    | where Name == "Stop"
-        | project StopTime=timestamp, ActivityId)
-    on ActivityId
-| project City, ActivityId, StartTime, StopTime, Duration = StopTime - StartTime
-```
-
-```kusto
-let Events = MyLogTable | where type=="Event" ;
-Events
-| where Name == "Start"
-| project Name, City, ActivityIdLeft = ActivityId, StartTime=timestamp
-| join (Events
-        | where Name == "Stop"
-        | project StopTime=timestamp, ActivityIdRight = ActivityId)
-    on $left.ActivityIdLeft == $right.ActivityIdRight
-| project City, ActivityId, StartTime, StopTime, Duration = StopTime - StartTime
-```
-
 ## Join flavors
 
 :::image type="content" source="images/joinoperator/join-kinds.png" alt-text="Diagram showing query join kinds.":::
@@ -140,70 +112,11 @@ There are many flavors of joins that can be performed that affect the schema and
 | `rightsemi` | Right semi join<br />**Schema**: All columns from the left table<br />**Rows**: All records from the right table that match records from the left table | :::image type="icon" source="images/joinoperator/join-right-semi.png" border="false"::: |
 | `rightanti`, `rightantisemi` | Right anti join and semi variant<br />**Schema**: All columns from the right table<br />**Rows**: All records from the right table that don't match records from the left table | :::image type="icon" source="images/joinoperator/join-right-anti.png" border="false"::: |
 
-### Left semi-join flavor
-
-Left semi-join returns all records from the left side that match a record from the right side. Only columns from the left side are returned.
-
-```kusto
-let X = datatable(Key:string, Value1:long)
-[
-    'a',1,
-    'b',2,
-    'b',3,
-    'c',4
-];
-let Y = datatable(Key:string, Value2:long)
-[
-    'b',10,
-    'c',20,
-    'c',30,
-    'd',40
-];
-X | join kind=leftsemi Y on Key
-```
-
-**Output**
-
-|Key|Value1|
-|---|---|
-|b|2|
-|b|3|
-|c|4|
-
-### Right semi-join flavor
-
-Right semi-join returns all records from the right side that match a record from the left side. Only columns from the right side are returned.
-
-```kusto
-let X = datatable(Key:string, Value1:long)
-[
-    'a',1,
-    'b',2,
-    'b',3,
-    'c',4
-];
-let Y = datatable(Key:string, Value2:long)
-[
-    'b',10,
-    'c',20,
-    'c',30,
-    'd',40
-];
-X | join kind=rightsemi Y on Key
-```
-
-**Output**
-
-|Key|Value2|
-|---|---|
-|b|10|
-|c|20|
-|c|30|
-
 ### Cross-join
 
-Kusto doesn't natively provide a cross-join flavor. You can't mark the operator with the `kind=cross`.
-To simulate, use a dummy key.
+KQL doesn't natively provide a cross-join flavor. You can't mark the operator with the `kind=cross`.
+
+To simulate, use a dummy key:
 
 `X | extend dummy=1 | join kind=inner (Y | extend dummy=1) on dummy`
 

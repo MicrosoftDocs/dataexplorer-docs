@@ -161,6 +161,34 @@ t1
 |1|val1.2|1|val1.3|
 |1|val1.2|1|val1.4|
 
+### Get extended login activities
+
+Get extended activities from a `login` that some entries mark as the start and end of an activity.
+
+```kusto
+let Events = MyLogTable | where type=="Event" ;
+Events
+| where Name == "Start"
+| project Name, City, ActivityId, StartTime=timestamp
+| join (Events
+    | where Name == "Stop"
+        | project StopTime=timestamp, ActivityId)
+    on ActivityId
+| project City, ActivityId, StartTime, StopTime, Duration = StopTime - StartTime
+```
+
+```kusto
+let Events = MyLogTable | where type=="Event" ;
+Events
+| where Name == "Start"
+| project Name, City, ActivityIdLeft = ActivityId, StartTime=timestamp
+| join (Events
+        | where Name == "Stop"
+        | project StopTime=timestamp, ActivityIdRight = ActivityId)
+    on $left.ActivityIdLeft == $right.ActivityIdRight
+| project City, ActivityId, StartTime, StopTime, Duration = StopTime - StartTime
+```
+
 ## See also
 
 * Learn about other [join flavors](joinoperator.md#join-flavors)
