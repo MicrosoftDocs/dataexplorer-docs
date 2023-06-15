@@ -59,7 +59,7 @@ The following table lists the supported authentication methods for SQL Server ex
 
 |Authentication method|Read permissions|Write permissions|
 |--|--|--|
-|[Impersonation](../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
+|[Impersonation](../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-authentication)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
 |[Managed identity](../api/connection-strings/sql-authentication-methods.md#managed-identity)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
 |[Username and password](../api/connection-strings/sql-authentication-methods.md#username-and-password)|||
 
