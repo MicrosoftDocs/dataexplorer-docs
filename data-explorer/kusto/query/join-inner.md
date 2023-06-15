@@ -8,7 +8,7 @@ ms.date: 06/15/2023
 
 # inner join
 
-The inner-join flavor is like the standard inner-join from the SQL world. An output record is produced whenever a record on the left side has the same join key as the record on the right side.
+The `inner` join flavor is like the standard inner join from the SQL world. An output record is produced whenever a record on the left side has the same join key as the record on the right side.
 
 ## Syntax
 

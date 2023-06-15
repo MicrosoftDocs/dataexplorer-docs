@@ -8,7 +8,7 @@ ms.date: 06/15/2023
 
 # leftouter join
 
-The leftouter join flavor returns all the records from the left side table and only matching records from the right side table.
+The `leftouter` join flavor returns all the records from the left side table and only matching records from the right side table.
 
 ## Syntax
 

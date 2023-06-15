@@ -8,9 +8,9 @@ ms.date: 06/15/2023
 
 # innerunique join
 
-The innerunique join flavor removes duplicate keys from the left side. This behavior ensures that the output contains a row for every combination of unique left and right keys.
+The `innerunique` join flavor removes duplicate keys from the left side. This behavior ensures that the output contains a row for every combination of unique left and right keys.
 
-By default, the innerunique join flavor is used if the `kind` parameter isn't specified. This default implementation is particularly useful in log/trace analysis scenarios, where you aim to correlate two events based on a shared correlation ID. It allows you to retrieve all instances of the phenomenon while disregarding duplicate trace records that contribute to the correlation.
+By default, the `innerunique` join flavor is used if the `kind` parameter isn't specified. This default implementation is particularly useful in log/trace analysis scenarios, where you aim to correlate two events based on a shared correlation ID. It allows you to retrieve all instances of the phenomenon while disregarding duplicate trace records that contribute to the correlation.
 
 ## Syntax
 
