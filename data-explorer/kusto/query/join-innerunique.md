@@ -18,6 +18,12 @@ By default, the innerunique join flavor is used if the `kind` parameter isn't sp
 
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 
+## Returns
+
+Only one row from the left side is matched for each value of the on key. The output contains a row for each match of this row with rows from the right.
+
+The output schema contains column for every column in each of the two tables, including the matching keys. The columns of the right side will be automatically renamed if there are name clashes.
+
 ## Examples
 
 ### Use the default innerunique join
