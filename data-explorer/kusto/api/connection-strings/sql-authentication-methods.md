@@ -1,17 +1,17 @@
 ---
-title:  SQL Server authentication methods
-description: This article describes SQL Server authentication methods used in SQL Server connection strings in Azure Data Explorer.
-ms.reviewer: shanisolomon
+title:  SQL Server external table authentication methods
+description: This article describes how to authenticate to SQL Server external tables in Azure Data Explorer.
+ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 07/02/2022
+ms.date: 06/15/2023
 ---
-# SQL Server authentication methods
+# SQL Server external table authentication methods
 
-To interact with external SQL databases from Azure Data Explorer, you must specify the external SQL database connection string. The connection string defines the resource to access and its authentication information.
+One way to interact with SQL Server databases from Azure Data Explorer is to [create an external table](../../management/external-sql-tables.md). The connection string provided upon creation of the external table defines the resource to access and its authentication information.
 
 The following authentication methods are supported:
 
-* [AAD-integrated authentication](#aad-integrated-authentication)
+* [Azure AD-integrated authentication](#azure-ad-integrated-authentication)
 * [Managed identity](#managed-identity)
 * [Username and Password](#username-and-password)
 
@@ -26,9 +26,9 @@ The following table explains how to hide your private information using the `h` 
 |Hide the entire connection string|Preface the connection string with `h`.|`h"<connection_string>"`|
 |Hide only the secret part of the string|Split the connection string into the resource location and the secret information and add the `h` between the two.| `"<resource_location>"h"<secrets>"`|
 
-## AAD-integrated authentication
+## Azure AD-integrated authentication
 
-Using this authentication method, the user or application authenticates via Azure AD to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. To use AAD-integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string.
+With this authentication method, the user or application authenticates via Azure AD to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. To use Azure AD-integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string.
 
 |Example|
 |--|
