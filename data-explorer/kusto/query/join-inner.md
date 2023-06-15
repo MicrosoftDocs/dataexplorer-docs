@@ -22,8 +22,18 @@ The inner-join flavor is like the standard inner-join from the SQL world. An out
 |--|--|--|--|
 |*LeftTable*|string|&check;|The left table or tabular expression, sometimes called the outer table, whose rows are to be merged. Denoted as `$left`.|
 |*RightTable*|string|&check;|The right table or tabular expression, sometimes called the inner table, whose rows are to be merged. Denoted as `$right`.|
-|*Attributes*|string|&check;|One or more comma-separated rules that describe how rows from *LeftTable* are matched to rows from *RightTable*. Multiple rules are evaluated using the `and` logical operator. See [Rules](joinoperator.md#rules).|
+|*Attributes*|string|&check;|One or more comma-separated rules that describe how rows from *LeftTable* are matched to rows from *RightTable*. Multiple rules are evaluated using the `and` logical operator. See [Rules](#rules).|
 |*Hints*|string||Zero or more space-separated hint properties in the form of *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. See [Join hints](#join-hints).
+
+## Rules
+
+| Rule | Syntax | Equivalent predicate |
+|---|---|---|
+| Equality by name | *ColumnName* | `where` *LeftTable*.*ColumnName* `==` *RightTable*.*ColumnName* |
+| Equality by value | `$left.`*LeftColumn* `==` `$right.`*RightColumn* | `where` `$left.`*LeftColumn* `==` `$right.`*RightColumn* |
+
+> [!NOTE]
+> For 'equality by value', the column names *must* be qualified with the applicable owner table denoted by `$left` and `$right` notations.
 
 ## Join hints
 
