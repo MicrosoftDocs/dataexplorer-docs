@@ -140,38 +140,6 @@ There are many flavors of joins that can be performed that affect the schema and
 | `rightsemi` | Right semi join<br />**Schema**: All columns from the left table<br />**Rows**: All records from the right table that match records from the left table | :::image type="icon" source="images/joinoperator/join-right-semi.png" border="false"::: |
 | `rightanti`, `rightantisemi` | Right anti join and semi variant<br />**Schema**: All columns from the right table<br />**Rows**: All records from the right table that don't match records from the left table | :::image type="icon" source="images/joinoperator/join-right-anti.png" border="false"::: |
 
-### Left outer-join flavor
-
-The result of a left outer-join for tables X and Y always contains all records of the left table (X), even if the join condition doesn't find any matching record in the right table (Y).
-
-```kusto
-let X = datatable(Key:string, Value1:long)
-[
-    'a',1,
-    'b',2,
-    'b',3,
-    'c',4
-];
-let Y = datatable(Key:string, Value2:long)
-[
-    'b',10,
-    'c',20,
-    'c',30,
-    'd',40
-];
-X | join kind=leftouter Y on Key
-```
-
-**Output**
-
-|Key|Value1|Key1|Value2|
-|---|---|---|---|
-|a|1|||
-|b|2|b|10|
-|b|3|b|10|
-|c|4|c|20|
-|c|4|c|30|
-
 ### Right outer-join flavor
 
 The right outer-join flavor resembles the left outer-join, but the treatment of the tables is reversed.
