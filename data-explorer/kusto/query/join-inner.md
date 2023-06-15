@@ -25,7 +25,7 @@ The inner-join flavor is like the standard inner-join from the SQL world. An out
 |*Attributes*|string|&check;|One or more comma-separated rules that describe how rows from *LeftTable* are matched to rows from *RightTable*. Multiple rules are evaluated using the `and` logical operator. See [Rules](#rules).|
 |*Hints*|string||Zero or more space-separated hint properties in the form of *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. See [Join hints](#join-hints).
 
-## Rules
+### Rules
 
 | Rule | Syntax | Equivalent predicate |
 |---|---|---|
@@ -35,7 +35,7 @@ The inner-join flavor is like the standard inner-join from the SQL world. An out
 > [!NOTE]
 > For 'equality by value', the column names *must* be qualified with the applicable owner table denoted by `$left` and `$right` notations.
 
-## Join hints
+### Join hints
 
 | Parameters name | Values | Description |
 |--|--|--|
