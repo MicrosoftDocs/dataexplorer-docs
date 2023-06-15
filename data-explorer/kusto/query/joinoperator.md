@@ -50,7 +50,7 @@ The *Attributes* parameter specifies how rows from the *LeftTable* are matched w
 
 |Name |Values |Description |
 |---|---|---|
-|`kind`         |Join flavors|See [Join Flavors](#join-flavors)|
+|`kind`         |`innerunique`, `inner`, `leftouter`, `rightouter`, `fullouter`, `leftanti`, `rightanti`, `leftsemi`, `rightsemi`|See [Join Flavors](#join-flavors)|
 |`hint.remote`  |`auto`, `left`, `local`, `right`   | |
 |`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcastjoin.md) |
 |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shufflequery.md) |
@@ -59,7 +59,9 @@ The *Attributes* parameter specifies how rows from the *LeftTable* are matched w
 ::: zone-end
 
 > [!NOTE]
-> If `kind` isn't specified, the default join flavor is `innerunique`. This is different than some other analytics products that have `inner` as the default flavor. See [join-flavors](#join-flavors) to understand the differences and make sure the query yields the intended results.
+>
+> * If `kind` isn't specified, the default join flavor is `innerunique`. This is different than some other analytics products that have `inner` as the default flavor. See [Join flavors](#join-flavors).
+> * The join hints don't change the semantic of `join`, but may affect its performance.
 
 ## Returns
 
@@ -104,13 +106,13 @@ There are many flavors of joins that can be performed that affect the schema and
 | --- | --- | --- |
 | [innerunique](join-innerunique.md) (default) | Inner join with left side deduplication<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All deduplicated rows from the left table that match rows from the right table | :::image type="icon" source="images/joinoperator/join-inner-unique.png" border="false"::: |
 | [inner](join-inner.md) | Standard inner join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: Only matching rows from both tables | :::image type="icon" source="images/joinoperator/join-inner.png" border="false"::: |
-| `leftouter` | Left outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from the left table and only matching rows from the right table | :::image type="icon" source="images/joinoperator/join-left-outer.png" border="false"::: |
-| `rightouter` | Right outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from the right table and only matching rows from the left table | :::image type="icon" source="images/joinoperator/join-right-outer.png" border="false"::: |
-| `fullouter` | Full outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from both tables with unmatched cells populated with null | :::image type="icon" source="images/joinoperator/join-full-outer.png" border="false"::: |
-| `leftsemi` | Left semi join<br />**Schema**: All columns from the left table<br />**Rows**: All records from the left table that match records from the right table | :::image type="icon" source="images/joinoperator/join-left-semi.png" border="false"::: |
-| `leftanti`, `anti`, `leftantisemi` | Left anti join and semi variant<br />**Schema**: All columns from the left table<br />**Rows**: All records from the left table that don't match records from the right table | :::image type="icon" source="images/joinoperator/join-left-anti.png" border="false"::: |
-| `rightsemi` | Right semi join<br />**Schema**: All columns from the left table<br />**Rows**: All records from the right table that match records from the left table | :::image type="icon" source="images/joinoperator/join-right-semi.png" border="false"::: |
-| `rightanti`, `rightantisemi` | Right anti join and semi variant<br />**Schema**: All columns from the right table<br />**Rows**: All records from the right table that don't match records from the left table | :::image type="icon" source="images/joinoperator/join-right-anti.png" border="false"::: |
+| [leftouter](join-leftouter.md) | Left outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from the left table and only matching rows from the right table | :::image type="icon" source="images/joinoperator/join-left-outer.png" border="false"::: |
+| [rightouter](join-rightouter.md) | Right outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from the right table and only matching rows from the left table | :::image type="icon" source="images/joinoperator/join-right-outer.png" border="false"::: |
+| [fullouter](join-fullouter.md) | Full outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from both tables with unmatched cells populated with null | :::image type="icon" source="images/joinoperator/join-full-outer.png" border="false"::: |
+| [leftsemi](join-leftsemi.md) | Left semi join<br />**Schema**: All columns from the left table<br />**Rows**: All records from the left table that match records from the right table | :::image type="icon" source="images/joinoperator/join-left-semi.png" border="false"::: |
+| [leftanti](join-leftanti.md), `anti`, `leftantisemi` | Left anti join and semi variant<br />**Schema**: All columns from the left table<br />**Rows**: All records from the left table that don't match records from the right table | :::image type="icon" source="images/joinoperator/join-left-anti.png" border="false"::: |
+| [rightsemi](join-rightsemi.md) | Right semi join<br />**Schema**: All columns from the left table<br />**Rows**: All records from the right table that match records from the left table | :::image type="icon" source="images/joinoperator/join-right-semi.png" border="false"::: |
+| [rightanti](join-rightanti.md), `rightantisemi` | Right anti join and semi variant<br />**Schema**: All columns from the right table<br />**Rows**: All records from the right table that don't match records from the left table | :::image type="icon" source="images/joinoperator/join-right-anti.png" border="false"::: |
 
 ### Cross-join
 
@@ -120,13 +122,22 @@ To simulate, use a dummy key:
 
 `X | extend dummy=1 | join kind=inner (Y | extend dummy=1) on dummy`
 
-## Join hints
+## See also
 
-The `join` operator supports a number of hints that control the way a query runs.
-These hints don't change the semantic of `join`, but may affect its performance.
+To learn more about join hints, see:
 
-Join hints are explained in the following articles:
+* [Cross-cluster join](joincrosscluster.md)
+* [Broadcast join](broadcastjoin.md)
+* [Shuffle query](shufflequery.md)
 
-* `hint.shufflekey=<key>` and `hint.strategy=shuffle` - [shuffle query](shufflequery.md)
-* `hint.strategy=broadcast` - [broadcast join](broadcastjoin.md)
-* `hint.remote=<strategy>` - [cross-cluster join](joincrosscluster.md)
+To learn more about specific join flavors, see:
+
+* [innerunique join](join-innerunique.md)
+* [inner join](join-inner.md)
+* [leftouter join](join-leftouter.md)
+* [rightouter join](join-rightouter.md)
+* [fullouter join](join-fullouter.md)
+* [leftanti join](join-leftanti.md)
+* [rightanti join](join-rightanti.md)
+* [leftsemi join](join-leftsemi.md)
+* [rightsemi join](join-rightsemi.md)
