@@ -75,7 +75,7 @@ Some of the data format mappings (Parquet, JSON and AVRO) support simple and use
 
 ### Mapping transformation examples
 
-####  `DropMappedField` transformation:
+####  `DropMappedFields` transformation:
 
 Given the following JSON contents:
 
