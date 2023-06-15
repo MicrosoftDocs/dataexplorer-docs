@@ -52,9 +52,7 @@ The following two sample tables are used to explain the operation of the join.
 |c |30
 |d |40
 
-The query executes the default join, which is an inner join after deduplicating the left side based on the join key. The deduplication keeps only the first record.
-
-Considering the statement `X | join Y on Key`, the resulting left side of the join, after deduplication, would be:
+The query executes the default join, which is an inner join after deduplicating the left side based on the join key. The deduplication keeps only the first record. In this case, the resulting left side of the join after deduplication would be:
 
 |Key |Value1
 |---|---
@@ -63,6 +61,9 @@ Considering the statement `X | join Y on Key`, the resulting left side of the jo
 |c |4
 
 and the result of the join would be:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq+KSosy8dB2FsMSc0lRDq5z8vHRNrmguBSBQT1TXMdSBMJPUdYwQTGMoM1ldx4Qr1porB2h0JH6jjVCNBhpiaIAwxQiJbQxjpwBNNwAZH6FQo5CVn5kHtCM/TwFoNADeA/cxywAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 let X = datatable(Key:string, Value1:long)
@@ -100,21 +101,24 @@ X | join Y on Key
     In the first output, the join operator randomly selected the first key that appears in t1, with the value "val1.1" and matched it with t2 keys.
     In the second output, the join operator randomly selected the second key that appears in t1, with the value "val1.2" and matched it with t2 keys.
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WNQQvCMAyF7/0Vj54mFKHV08RfIh4mC6OupDjTwcAfb1aGoDcTSOC9vC+JBOJxRt+J9i1RM9LSImUeHOYuFWrxlCnysAMMtC51egertt976zbjIwWryvVk0goP/8F/WQfrvoXjBhdvXrjnyBgj9/okMtNUOD4K1YSEurIe0PIGa/tJfOgAAAA=" target="_blank">Run the query</a>
+
 ```kusto
-let t1 = datatable(key:long, value:string)  
-[
-1, "val1.1",  
-1, "val1.2"  
+let t1 = datatable(key: long, value: string)  
+    [
+    1, "val1.1",  
+    1, "val1.2"  
 ];
-let t2 = datatable(key:long, value:string)  
-[  
-1, "val1.3",
-1, "val1.4"  
+let t2 = datatable(key: long, value: string)  
+    [  
+    1, "val1.3",
+    1, "val1.4"  
 ];
 t1
 | join kind = innerunique
     t2
-on key
+    on key
 ```
 
 **Output**
@@ -124,21 +128,24 @@ on key
 |1|val1.1|1|val1.3|
 |1|val1.1|1|val1.4|
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WNQQvCMAyF7/0Vj54mFKHV08RfIh4mC6OupDjTwcAfb1aGoDcTSOC9vC+JBOJxRt+J9i1RM9LSImUeHOYuFWrxlCnysAMMtC51egertt976zbjIwWryvVk0goP/8F/WQfFfyvHjS7evHDPkTFG7vVLZKapcHwUqgkJdWU9oOUNScAQaekAAAA=" target="_blank">Run the query</a>
+
 ```kusto
-let t1 = datatable(key:long, value:string)  
-[
-1, "val1.1",  
-1, "val1.2"  
+let t1 = datatable(key: long, value: string)  
+    [
+    1, "val1.1",  
+    1, "val1.2"  
 ];
-let t2 = datatable(key:long, value:string)  
-[  
-1, "val1.3", 
-1, "val1.4"  
+let t2 = datatable(key: long, value: string)  
+    [  
+    1, "val1.3", 
+    1, "val1.4"  
 ];
 t1
 | join kind = innerunique
     t2
-on key
+    on key
 ```
 
 **Output**
@@ -152,21 +159,24 @@ on key
 * Sometimes, the flavor used is **innerunique** and the filter is propagated to the left side of the join. The flavor will be automatically propagated and the keys that apply to that filter will always appear in the output.
 * Use the example above and add a filter `where value == "val1.2" `. It will always give the second result and will never give the first result for the datasets:
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WOwQrCMAyG73uKn54UitDqadInEQ+ThVlXUqytMvDhjXUM9GYCCfxJvj+BMrKBQ99lyVOg1UhTixB50Lh3oVCLW06ehzXQQOJQq9FQMjYbo/Q8WCSrRDnum/CG2//gv6yt4L+V3UzPpnniEj1j9NyLi2emVNhfC9WLbGuLskCT7D7OlOhjC+eWX18MNThdAwEAAA==" target="_blank">Run the query</a>
+
 ```kusto
-let t1 = datatable(key:long, value:string)  
-[
-1, "val1.1",  
-1, "val1.2"  
+let t1 = datatable(key: long, value: string)  
+    [
+    1, "val1.1",  
+    1, "val1.2"  
 ];
-let t2 = datatable(key:long, value:string)  
-[  
-1, "val1.3", 
-1, "val1.4"  
+let t2 = datatable(key: long, value: string)  
+    [  
+    1, "val1.3", 
+    1, "val1.4"  
 ];
 t1
 | join kind = innerunique
     t2
-on key
+    on key
 | where value == "val1.2"
 ```
 
