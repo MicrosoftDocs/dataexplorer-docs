@@ -3,13 +3,13 @@ title: Add a query visualization in the web UI
 description: Learn how to add a query visualization in the Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: how-to
-ms.date: 05/28/2023
+ms.date: 06/15/2023
 ---
 # Add and modify a query visualization in the web UI
 
-Visuals are essential part of any Azure Data Explorer Dashboard. For a full list of available visuals, see [Visualization](kusto/query/renderoperator.md#visualization).
+In this article, you'll learn how to how to create and customize visuals from query results, using the UI like that found in Azure Data Explorer Dashboards. These visuals can be further manipulated, and can be pinned in a [dashboard](azure-data-explorer-dashboards.md). The addition or modification of these visuals doesn't require rerunning the query, which can be especially useful for heavy queries.
 
-In this article, you'll learn how to how to create and customize visuals from query results, using the UI like that found in Azure Data Explorer Dashboards.. These visuals can be further manipulated, and can be pinned in a [dashboard](azure-data-explorer-dashboards.md).
+For a full list of available visuals, see [Visualization](kusto/query/renderoperator.md#visualization).
 
 ## Prerequisites
 
