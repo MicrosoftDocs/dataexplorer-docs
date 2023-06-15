@@ -44,6 +44,12 @@ The inner-join flavor is like the standard inner-join from the SQL world. An out
 | `hint.shufflekey=<key>` | The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. | See [shuffle query](shufflequery.md) |
 | `hint.strategy=shuffle` | The `shuffle` strategy query shares the query load on cluster nodes, where each node will process one partition of the data. | See [shuffle query](shufflequery.md) |
 
+## Returns
+
+Returns all matching records from left and right sides.
+
+The output schema contains a column for every column in each of the two tables, including the matching keys. The columns of the right side will be automatically renamed if there are name clashes.
+
 ## Example
 
 > [!div class="nextstepaction"]
