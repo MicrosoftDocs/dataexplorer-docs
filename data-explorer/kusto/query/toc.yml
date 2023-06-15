@@ -148,6 +148,10 @@ items:
         href: join-leftanti.md
       - name: rightanti
         href: join-rightanti.md
+      - name: leftsemi
+        href: join-leftsemi.md
+      - name: rightsemi
+        href: join-rightsemi.md
     - name: Cross-cluster join
       href: joincrosscluster.md
     - name: Broadcast join
