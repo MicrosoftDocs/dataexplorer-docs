@@ -138,6 +138,8 @@ items:
         href: join-innerunique.md
       - name: inner
         href: join-inner.md
+      - name: leftouter
+        href: join-leftouter.md
     - name: Cross-cluster join
       href: joincrosscluster.md
     - name: Broadcast join
