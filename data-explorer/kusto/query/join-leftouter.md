@@ -12,7 +12,7 @@ The `leftouter` join flavor returns all the records from the left side table and
 
 ## Syntax
 
-*LeftTable* `|` `join` `kind=inner` [ *Hints* ] *RightTable* `on` *Attributes*
+*LeftTable* `|` `join` `kind=leftouter` [ *Hints* ] *RightTable* `on` *Attributes*
 
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 
