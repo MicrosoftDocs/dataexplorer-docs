@@ -1,7 +1,0 @@
-iframe -> Host: getToken message with a scope key
-Host -> Azure AD: get token for scopes
-Azure AD -> Host: access token
-Host -> iframe: postToken message with accessToken
-iframe -> Azure Data Explorer cluster: run queries (access token)
-iframe -> Dashboards Service: get dashboard data (access token)
-iframe -> Microsoft Graph: get user/group info (access token)

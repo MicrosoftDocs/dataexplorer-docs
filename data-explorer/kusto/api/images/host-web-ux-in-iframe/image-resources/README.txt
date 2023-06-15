@@ -1,2 +1,0 @@
-- **embed-adx-auth-flow.pptx** is used to generate adx-embed-scopes.png
-- **sequence-diagram.txt** is used to generate adx-embed-sequence-diagram.png. Open it in <https://sequencediagram.org>.
