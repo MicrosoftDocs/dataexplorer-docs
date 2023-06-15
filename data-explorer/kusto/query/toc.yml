@@ -144,14 +144,16 @@ items:
         href: join-rightouter.md
       - name: fullouter
         href: join-fullouter.md
-      - name: leftanti
-        href: join-leftanti.md
-      - name: rightanti
-        href: join-rightanti.md
       - name: leftsemi
         href: join-leftsemi.md
+      - name: leftanti
+        href: join-leftanti.md
+        displayName: leftantisemi, anti
       - name: rightsemi
         href: join-rightsemi.md
+        displayName: rightantisemi
+      - name: rightanti
+        href: join-rightanti.md
     - name: Cross-cluster join
       href: joincrosscluster.md
     - name: Broadcast join

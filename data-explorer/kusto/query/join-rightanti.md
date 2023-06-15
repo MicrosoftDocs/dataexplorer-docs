@@ -8,10 +8,9 @@ ms.date: 06/15/2023
 
 # rightanti join
 
-The `rightanti` join flavor returns all records from the left side that don't match any record from the right side.
+The `rightanti` join flavor returns all records from the left side that don't match any record from the right side. The anti join models the "NOT IN" query.
 
-> [!NOTE]
-> Anti-join models the "NOT IN" query.
+> **Alias**: `rightantisemi`
 
 ## Syntax
 
