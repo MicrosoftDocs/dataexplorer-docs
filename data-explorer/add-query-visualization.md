@@ -9,7 +9,7 @@ ms.date: 05/28/2023
 
 Visuals are essential part of any Azure Data Explorer Dashboard. For a full list of available visuals, see [Visualization](kusto/query/renderoperator.md#visualization).
 
-In this article, you'll learn how to customize different visuals from query results. These visuals can be further manipulated, and can be pinned in a [dashboard](azure-data-explorer-dashboards.md).
+In this article, you'll learn how to how to create and customize visuals from query results, using the UI like that found in Azure Data Explorer Dashboards.. These visuals can be further manipulated, and can be pinned in a [dashboard](azure-data-explorer-dashboards.md).
 
 ## Prerequisites
 
