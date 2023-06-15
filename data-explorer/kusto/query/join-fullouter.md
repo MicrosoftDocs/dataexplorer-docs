@@ -16,6 +16,12 @@ A `fullouter` join combines the effect of applying both left and right outer-joi
 
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 
+## Returns
+
+Returns all the records for all the records from the left and right sides. Unmatched cells contain nulls.
+
+The output schema contains a column for every column in each of the two tables, including the matching keys. The columns of the right side will be automatically renamed if there are name clashes.
+
 ## Example
 
 > [!div class="nextstepaction"]

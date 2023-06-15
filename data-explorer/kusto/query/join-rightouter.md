@@ -8,13 +8,19 @@ ms.date: 06/15/2023
 
 # rightouter join
 
-The `rightouter` join flavor returns all the records from the right side table and only matching records from the left side table. This join flavor resembles the [`rightouter` join flavor](join-rightouter.md), but the treatment of the tables is reversed.
+The `rightouter` join flavor returns all the records from the right side and only matching records from the left side. This join flavor resembles the [`rightouter` join flavor](join-rightouter.md), but the treatment of the tables is reversed.
 
 ## Syntax
 
 *LeftTable* `|` `join` `kind=rightouter` [ *Hints* ] *RightTable* `on` *Attributes*
 
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
+
+## Returns
+
+Returns all the records from the right side and only matching records from the left side.
+
+The output schema contains a column for every column in each of the two tables, including the matching keys. The columns of the right side will be automatically renamed if there are name clashes.
 
 ## Example
 
