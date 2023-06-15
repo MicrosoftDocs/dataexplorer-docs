@@ -36,9 +36,14 @@ The following code demonstrates counting the rows of a table named `StormEvents`
 
 ```csharp
 using var client = KustoClientFactory.CreateCslQueryProvider("https://help.kusto.windows.net/Samples;Fed=true");
-using var reader = client.ExecuteQuery("StormEvents | count");
+using (var reader = client.ExecuteQuery("StormEvents | count"))
+{
 // Read the first row from reader -- it's 0'th column is the count of records in MyTable
+if (reader.Read())
+{
 Console.WriteLine($"RowCount={reader.GetInt64(0)}");
+}
+}
 ```
 
 ## Example: Enumerating the accessible databases
