@@ -134,6 +134,8 @@ items:
       href: joinoperator.md
     - name: join flavors
       items:
+      - name: innerunique
+        href: join-innerunique.md
       - name: inner
         href: join-inner.md
     - name: Cross-cluster join
