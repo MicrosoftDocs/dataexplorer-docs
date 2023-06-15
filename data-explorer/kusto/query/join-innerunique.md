@@ -28,40 +28,6 @@ The output schema contains column for every column in each of the two tables, in
 
 ### Use the default innerunique join
 
-```kusto
-X | join Y on Key
-```
-
-The following two sample tables are used to explain the operation of the join.
-
-**Table X**
-
-|Key |Value1
-|---|---
-|a |1
-|b |2
-|b |3
-|c |4
-
-**Table Y**
-
-|Key |Value2
-|---|---
-|b |10
-|c |20
-|c |30
-|d |40
-
-The query executes the default join, which is an inner join after deduplicating the left side based on the join key. The deduplication keeps only the first record. In this case, the resulting left side of the join after deduplication would be:
-
-|Key |Value1
-|---|---
-|a |1
-|b |2
-|c |4
-
-and the result of the join would be:
-
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq+KSosy8dB2FsMSc0lRDq5z8vHRNrmguBSBQT1TXMdSBMJPUdYwQTGMoM1ldx4Qr1porB2h0JH6jjVCNBhpiaIAwxQiJbQxjpwBNNwAZH6FQo5CVn5kHtCM/TwFoNADeA/cxywAAAA==" target="_blank">Run the query</a>
 
@@ -94,12 +60,20 @@ X | join Y on Key
 > [!NOTE]
 > The keys 'a' and 'd' don't appear in the output, since there were no matching keys on both left and right sides.
 
+The query executed the default join, which is an inner join after deduplicating the left side based on the join key. The deduplication keeps only the first record. The resulting left side of the join after deduplication is:
+
+|Key |Value1
+|---|---
+|a |1
+|b |2
+|c |4
+
 ### Two possible outputs from innerunique join
 
 > [!NOTE]
-> **innerunique flavor** may yield two possible outputs and both are correct.
-    In the first output, the join operator randomly selected the first key that appears in t1, with the value "val1.1" and matched it with t2 keys.
-    In the second output, the join operator randomly selected the second key that appears in t1, with the value "val1.2" and matched it with t2 keys.
+> The `innerunique` join flavor may yield two possible outputs and both are correct.
+> In the first output, the join operator randomly selected the first key that appears in t1, with the value "val1.1" and matched it with t2 keys.
+> In the second output, the join operator randomly selected the second key that appears in t1, with the value "val1.2" and matched it with t2 keys.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WNQQvCMAyF7/0Vj54mFKHV08RfIh4mC6OupDjTwcAfb1aGoDcTSOC9vC+JBOJxRt+J9i1RM9LSImUeHOYuFWrxlCnysAMMtC51egertt976zbjIwWryvVk0goP/8F/WQfrvoXjBhdvXrjnyBgj9/okMtNUOD4K1YSEurIe0PIGa/tJfOgAAAA=" target="_blank">Run the query</a>
