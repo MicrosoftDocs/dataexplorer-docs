@@ -10,6 +10,8 @@ ms.date: 06/15/2023
 
 The inner-join flavor is like the standard inner-join from the SQL world. An output record is produced whenever a record on the left side has the same join key as the record on the right side.
 
+:::image type="icon" source="images/joinoperator/join-inner.png" border="false":::
+
 ## Syntax
 
 *LeftTable* `|` `join` `kind=inner` [ *Hints* ] *RightTable* `on` *Attributes*
@@ -72,3 +74,7 @@ X | join kind=inner Y on Key
 > * (b,10) from the right side, was joined twice: with both (b,2) and (b,3) on the left.
 > * (c,4) on the left side, was joined twice: with both (c,20) and (c,30) on the right.
 > * (k,5) from the left and (k, 50) from the right was joined once.
+
+## See also
+
+* Learn about other [join flavors](joinoperator.md#join-flavors)
