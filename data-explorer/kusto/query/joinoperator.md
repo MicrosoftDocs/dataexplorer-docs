@@ -140,68 +140,6 @@ There are many flavors of joins that can be performed that affect the schema and
 | `rightsemi` | Right semi join<br />**Schema**: All columns from the left table<br />**Rows**: All records from the right table that match records from the left table | :::image type="icon" source="images/joinoperator/join-right-semi.png" border="false"::: |
 | `rightanti`, `rightantisemi` | Right anti join and semi variant<br />**Schema**: All columns from the right table<br />**Rows**: All records from the right table that don't match records from the left table | :::image type="icon" source="images/joinoperator/join-right-anti.png" border="false"::: |
 
-### Left anti-join flavor
-
-Left anti-join returns all records from the left side that don't match any record from the right side.
-
-```kusto
-let X = datatable(Key:string, Value1:long)
-[
-    'a',1,
-    'b',2,
-    'b',3,
-    'c',4
-];
-let Y = datatable(Key:string, Value2:long)
-[
-    'b',10,
-    'c',20,
-    'c',30,
-    'd',40
-];
-X | join kind=leftanti Y on Key
-```
-
-**Output**
-
-|Key|Value1|
-|---|---|
-|a|1|
-
-> [!NOTE]
-> Anti-join models the "NOT IN" query.
-
-### Right anti-join flavor
-
-Right anti-join returns all records from the right side that don't match any record from the left side.
-
-```kusto
-let X = datatable(Key:string, Value1:long)
-[
-    'a',1,
-    'b',2,
-    'b',3,
-    'c',4
-];
-let Y = datatable(Key:string, Value2:long)
-[
-    'b',10,
-    'c',20,
-    'c',30,
-    'd',40
-];
-X | join kind=rightanti Y on Key
-```
-
-**Output**
-
-|Key|Value2|
-|---|---|
-|d|40|
-
-> [!NOTE]
-> Anti-join models the "NOT IN" query.
-
 ### Left semi-join flavor
 
 Left semi-join returns all records from the left side that match a record from the right side. Only columns from the left side are returned.
