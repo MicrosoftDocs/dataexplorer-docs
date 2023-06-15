@@ -1,6 +1,6 @@
 ---
-title:  leftouter join
-description: Learn how to use the leftouter join flavor to merge the rows of two tables. 
+title:  rightouter join
+description: Learn how to use the rightouter join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 06/15/2023
@@ -8,7 +8,7 @@ ms.date: 06/15/2023
 
 # rightouter join
 
-The `rightouter` join flavor returns all the records from the right side table and only matching records from the left side table. This join flavor resembles the [`leftouter` join flavor](join-leftouter.md), but the treatment of the tables is reversed.
+The `rightouter` join flavor returns all the records from the right side table and only matching records from the left side table. This join flavor resembles the [`rightouter` join flavor](join-rightouter.md), but the treatment of the tables is reversed.
 
 ## Syntax
 
