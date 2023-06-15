@@ -176,3 +176,7 @@ on key
 |---|---|---|---|
 |1|val1.2|1|val1.3|
 |1|val1.2|1|val1.4|
+
+## See also
+
+* Learn about other [join flavors](joinoperator.md#join-flavors)
