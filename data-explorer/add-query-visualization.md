@@ -5,7 +5,7 @@ ms.reviewer: mibar
 ms.topic: how-to
 ms.date: 05/28/2023
 ---
-# Add a query visualization in the web UI
+# Add and modify a query visualization in the web UI
 
 Visuals are essential part of any Azure Data Explorer Dashboard. For a full list of available visuals, see [Visualization](kusto/query/renderoperator.md#visualization).
 
