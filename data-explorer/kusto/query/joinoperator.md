@@ -38,7 +38,7 @@ The *Attributes* parameter specifies how rows from the *LeftTable* are matched w
 
 |Parameters name |Values |Description  |
 |---|---|---|
-|`kind`|Join flavors|See [Join Flavors](#join-flavors)|
+|`kind`|`innerunique`, `inner`, `leftouter`, `rightouter`, `fullouter`, `leftanti`, `rightanti`, `leftsemi`, `rightsemi`|See [Join Flavors](#join-flavors)|
 |`hint.remote`  |`auto`, `left`, `local`, `right` |See [Cross-Cluster Join](joincrosscluster.md)|
 |`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcastjoin.md) |
 |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shufflequery.md) |
