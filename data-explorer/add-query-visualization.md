@@ -47,7 +47,7 @@ There are two ways to use the visual formatting pane to change an existing visua
 
 ### Visual created with UI
 
-If you've added a visual through the UI, you can change this visual by selecting the **+ Edit visual** tab in the results grid.
+If you've added a visual through the UI, you can change this visual by selecting the **Edit visual** tab in the results grid.
 
 :::image type="content" source="media/add-query-visualization/edit-visual.png" alt-text="Screenshot of edit visual tab in the results grid in Azure Data Explorer web UI.":::
 
