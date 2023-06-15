@@ -132,6 +132,10 @@ items:
     items:
     - name: join operator
       href: joinoperator.md
+    - name: join flavors
+      items:
+      - name: inner
+        href: join-inner.md
     - name: Cross-cluster join
       href: joincrosscluster.md
     - name: Broadcast join

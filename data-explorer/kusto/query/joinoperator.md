@@ -3,7 +3,7 @@ title:  join operator
 description: Learn how to use the join operator to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 06/15/2023
 ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
@@ -27,7 +27,7 @@ Merge the rows of two tables to form a new table by matching values of the speci
 
 ### Rules
 
-| Rule kind | Syntax | Predicate |
+| Rule | Syntax | Equivalent predicate |
 |---|---|---|
 | Equality by name | *ColumnName* | `where` *LeftTable*.*ColumnName* `==` *RightTable*.*ColumnName* |
 | Equality by value | `$left.`*LeftColumn* `==` `$right.`*RightColumn* | `where` `$left.`*LeftColumn* `==` `$right.`*RightColumn* |
@@ -127,19 +127,21 @@ Events
 
 ## Join flavors
 
-The exact flavor of the join operator is specified with the *kind* keyword. The following flavors of the join operator are supported:
+:::image type="content" source="../media/2-join-kinds.png" alt-text="Diagram showing query join kinds.":::
 
-|Join kind/flavor|Description|
-|--|--|
-|[`innerunique`](#default-join-flavor) (or empty as default)|Inner join with left side deduplication|
-|[`inner`](#inner-join-flavor)|Standard inner join|
-|[`leftouter`](#left-outer-join-flavor)|Left outer join|
-|[`rightouter`](#right-outer-join-flavor)|Right outer join|
-|[`fullouter`](#full-outer-join-flavor)|Full outer join|
-|[`leftanti`](#left-anti-join-flavor), [`anti`](#left-anti-join-flavor), or [`leftantisemi`](#left-anti-join-flavor)|Left anti join|
-|[`rightanti`](#right-anti-join-flavor) or [`rightantisemi`](#right-anti-join-flavor)|Right anti join|
-|[`leftsemi`](#left-semi-join-flavor)|Left semi join|
-|[`rightsemi`](#right-semi-join-flavor)|Right semi join|
+There are many flavors of joins that can be performed that affect the schema and rows in the resultant table. The exact flavor of the join operator is specified with the *kind* keyword. The following flavors of the join operator are supported:
+
+| Join kind | Description | Illustration |
+| --- | --- | --- |
+| `innerunique` (default) | Inner join with left side deduplication<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All deduplicated rows from the left table that match rows from the right table | :::image type="icon" source="../media/2-join-inner-unique.png" border="false"::: |
+| `inner` | Standard inner join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: Only matching rows from both tables | :::image type="icon" source="../media/2-join-inner.png" border="false"::: |
+| `leftouter` | Left outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from the left table and only matching rows from the right table | :::image type="icon" source="../media/2-join-left-outer.png" border="false"::: |
+| `rightouter` | Right outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from the right table and only matching rows from the left table | :::image type="icon" source="../media/2-join-right-outer.png" border="false"::: |
+| `fullouter` | Full outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from both tables with unmatched cells populated with null | :::image type="icon" source="../media/2-join-full-outer.png" border="false"::: |
+| `leftsemi` | Left semi join<br />**Schema**: All columns from the left table<br />**Rows**: All records from the left table that match records from the right table | :::image type="icon" source="../media/2-join-left-semi.png" border="false"::: |
+| `leftanti`, `anti`, `leftantisemi` | Left anti join and semi variant<br />**Schema**: All columns from the left table<br />**Rows**: All records from the left table that don't match records from the right table | :::image type="icon" source="../media/2-join-left-anti.png" border="false"::: |
+| `rightsemi` | Right semi join<br />**Schema**: All columns from the left table<br />**Rows**: All records from the right table that match records from the left table | :::image type="icon" source="../media/2-join-right-semi.png" border="false"::: |
+| `rightanti`, `rightantisemi` | Right anti join and semi variant<br />**Schema**: All columns from the right table<br />**Rows**: All records from the right table that don't match records from the left table | :::image type="icon" source="../media/2-join-right-anti.png" border="false"::: |
 
 ### Default join flavor
 
@@ -213,46 +215,6 @@ X | join Y on Key
 
 > [!NOTE]
 > The keys 'a' and 'd' don't appear in the output, since there were no matching keys on both left and right sides.
-
-### Inner-join flavor
-
-The inner-join function is like the standard inner-join from the SQL world. An output record is produced whenever a record on the left side has the same join key as the record on the right side.
-
-```kusto
-let X = datatable(Key:string, Value1:long)
-[
-    'a',1,
-    'b',2,
-    'b',3,
-    'k',5,
-    'c',4
-];
-let Y = datatable(Key:string, Value2:long)
-[
-    'b',10,
-    'c',20,
-    'c',30,
-    'd',40,
-    'k',50
-];
-X | join kind=inner Y on Key
-```
-
-**Output**
-
-|Key|Value1|Key1|Value2|
-|---|---|---|---|
-|b|3|b|10|
-|b|2|b|10|
-|c|4|c|20|
-|c|4|c|30|
-|k|5|k|50|
-
-> [!NOTE]
->
-> * (b,10) from the right side, was joined twice: with both (b,2) and (b,3) on the left.
-> * (c,4) on the left side, was joined twice: with both (c,20) and (c,30) on the right.
-> * (k,5) from the left and (k, 50) from the right was joined once.
 
 ### Innerunique-join flavor
 
