@@ -142,6 +142,8 @@ items:
         href: join-leftouter.md
       - name: rightouter
         href: join-rightouter.md
+      - name: fullouter
+        href: join-fullouter.md
     - name: Cross-cluster join
       href: joincrosscluster.md
     - name: Broadcast join
