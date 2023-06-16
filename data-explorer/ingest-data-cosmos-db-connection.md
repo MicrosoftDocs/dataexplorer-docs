@@ -3,7 +3,7 @@ title: Ingest data from Azure Cosmos DB into Azure Data Explorer
 description: Learn how to ingest (load) data into Azure Data Explorer from Cosmos DB.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 06/13/2023
+ms.date: 06/15/2023
 ---
 
 # Ingest data from Azure Cosmos DB into Azure Data Explorer
@@ -378,6 +378,10 @@ The following considerations apply to the Cosmos DB change feed:
     When the API call at timestamp 55 is made, the change feed API returns the latest version of the document. In this case, the latest version of document *A* is the update at timestamp 50, which is the update to property **foo** from *Pink* to *Carmine*.
 
     Because of this scenario, the data connector may miss some intermediate document changes. For example, some events may be missed if the data connection service is down for a few minutes, or if the frequency of document changes is higher than the API polling frequency. However, the latest state of each document is captured.
+
+- Deleting and recreating a Cosmos DB container isn't supported
+
+    Azure Data Explorer keeps track of the change feed by checkpointing the "position" it is at in the feed.  This is done using continuation token on each physical partitions of the container.  When a container is deleted/recreated, those continuation token are invalid and aren't reset:  you must delete and recreate the data connection.
 
 ## Estimate cost
 
