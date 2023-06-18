@@ -3,7 +3,7 @@ title:  join operator
 description: Learn how to use the join operator to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/15/2023
+ms.date: 06/18/2023
 ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
@@ -14,13 +14,15 @@ Merge the rows of two tables to form a new table by matching values of the speci
 
 ## Syntax
 
-*LeftTable* `|` `join` [ *JoinParameters* ] `(`*RightTable*`)` `on` *Attributes*
+*LeftTable* `|` `join` [ `kind` `=` *JoinFlavor* ] [ *Hints* ] `(`*RightTable*`)` `on` *Conditions*
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*LeftTable*|string|&check;|The left table or tabular expression, sometimes called the outer table, whose rows are to be merged. Denoted as `$left`.|
+|*JoinFlavor*|string||The type of join to perform: `innerunique`, `inner`, `leftouter`, `rightouter`, `fullouter`, `leftanti`, `rightanti`, `leftsemi`, `rightsemi`. The default is `innerunique`. For more information, see [Join Flavors](#join-flavors).|
+|*Hints*|string||Zero or more space-separated join hints in the form of *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. For more information, see [Hints](#hints).
 |*RightTable*|string|&check;|The right table or tabular expression, sometimes called the inner table, whose rows are to be merged. Denoted as `$right`.|
 |*Attributes*|string|&check;|One or more comma-separated rules that describe how rows from *LeftTable* are matched to rows from *RightTable*. Multiple rules are evaluated using the `and` logical operator. See [Attributes](#attributes).|
 |*JoinParameters*|string||Zero or more space-separated parameters in the form of *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. See [Supported parameters](#supported-parameters).
