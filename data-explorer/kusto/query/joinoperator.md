@@ -124,20 +124,6 @@ To simulate, use a dummy key:
 
 ## See also
 
-To learn more about join hints, see:
-
 * [Cross-cluster join](joincrosscluster.md)
 * [Broadcast join](broadcastjoin.md)
 * [Shuffle query](shufflequery.md)
-
-To learn more about specific join flavors, see:
-
-* [innerunique join](join-innerunique.md)
-* [inner join](join-inner.md)
-* [leftouter join](join-leftouter.md)
-* [rightouter join](join-rightouter.md)
-* [fullouter join](join-fullouter.md)
-* [leftanti join](join-leftanti.md)
-* [rightanti join](join-rightanti.md)
-* [leftsemi join](join-leftsemi.md)
-* [rightsemi join](join-rightsemi.md)
