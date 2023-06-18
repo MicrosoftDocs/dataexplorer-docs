@@ -3,7 +3,7 @@ title:  fullouter join
 description: Learn how to use the fullouter join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/15/2023
+ms.date: 06/18/2023
 ---
 
 # fullouter join
@@ -18,9 +18,8 @@ A `fullouter` join combines the effect of applying both left and right outer-joi
 
 ## Returns
 
-Returns all the records for all the records from the left and right sides. Unmatched cells contain nulls.
-
-The output schema contains a column for every column in each of the two tables, including the matching keys. The columns of the right side will be automatically renamed if there are name clashes.
+**Schema**: All columns from both tables, including the matching keys.
+**Rows**: All records from both tables with unmatched cells populated with null.
 
 ## Example
 

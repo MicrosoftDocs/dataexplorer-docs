@@ -3,7 +3,7 @@ title:  leftouter join
 description: Learn how to use the leftouter join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/15/2023
+ms.date: 06/18/2023
 ---
 
 # leftouter join
@@ -18,9 +18,8 @@ The `leftouter` join flavor returns all the records from the left side table and
 
 ## Returns
 
-Returns all the records from the left side and only matching records from the right side.
-
-The output schema contains a column for every column in each of the two tables, including the matching keys. The columns of the right side will be automatically renamed if there are name clashes.
+**Schema**: All columns from both tables, including the matching keys.
+**Rows**: All records from the left table and only matching rows from the right table.
 
 ## Example
 

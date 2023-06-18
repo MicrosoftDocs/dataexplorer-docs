@@ -3,7 +3,7 @@ title:  leftsemi join
 description: Learn how to use the leftsemi join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/15/2023
+ms.date: 06/18/2023
 ---
 
 # leftsemi join
@@ -18,9 +18,8 @@ The `leftsemi` join flavor returns all records from the left side that match a r
 
 ## Returns
 
-Returns all the records from the left side that have matches from the right.
-
-The result table output schema contains columns from the left side only.
+**Schema**: All columns from the left table.
+**Rows**: All records from the left table that match records from the right table.
 
 ## Example
 

@@ -3,7 +3,7 @@ title:  rightanti join
 description: Learn how to use the rightanti join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/15/2023
+ms.date: 06/18/2023
 ---
 
 # rightanti join
@@ -20,9 +20,8 @@ The `rightanti` join flavor returns all records from the left side that don't ma
 
 ## Returns
 
-Returns all the records from the right side that don't have matches from the left.
-
-The result table output schema contains columns from the right side only.
+**Schema**: All columns from the right table.
+**Rows**: All records from the right table that don't match records from the left table.
 
 ## Example
 

@@ -3,7 +3,7 @@ title:  inner join
 description: Learn how to use the inner join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/15/2023
+ms.date: 06/18/2023
 ---
 
 # inner join
@@ -18,9 +18,8 @@ The `inner` join flavor is like the standard inner join from the SQL world. An o
 
 ## Returns
 
-Returns all matching records from left and right sides.
-
-The output schema contains a column for every column in each of the two tables, including the matching keys. The columns of the right side will be automatically renamed if there are name clashes.
+**Schema**: All columns from both tables, including the matching keys.
+**Rows**: Only matching rows from both tables.
 
 ## Example
 
