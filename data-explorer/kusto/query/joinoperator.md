@@ -21,7 +21,7 @@ Merge the rows of two tables to form a new table by matching values of the speci
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*LeftTable*|string|&check;|The left table or tabular expression, sometimes called the outer table, whose rows are to be merged. Denoted as `$left`.|
-|*JoinFlavor*|string||The type of join to perform: `innerunique`, `inner`, `leftouter`, `rightouter`, `fullouter`, `leftanti`, `rightanti`, `leftsemi`, `rightsemi`. The default is `innerunique`. For more information, see [Join Flavors](#join-flavors).|
+|*JoinFlavor*|string||The type of join to perform: `innerunique`, `inner`, `leftouter`, `rightouter`, `fullouter`, `leftanti`, `rightanti`, `leftsemi`, `rightsemi`. The default is `innerunique`. For more information, see [Join Flavors](#returns).|
 |*Hints*|string||Zero or more space-separated join hints in the form of *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. For more information, see [Hints](#hints).
 |*RightTable*|string|&check;|The right table or tabular expression, sometimes called the inner table, whose rows are to be merged. Denoted as `$right`.|
 |*Conditions*|string|&check;|Determines how rows from *LeftTable* are matched with rows from *RightTable*. If the columns to match have the same name in both tables, use the *ColumnName*. If the column names differ, use the syntax `$left.`*LeftColumn* `==` `$right.`*RightColumn*.</br></br>To define multiple conditions, separate them with commas or use the `and` keyword. The conditions are evaluated using the "and" logical operator.|

@@ -56,4 +56,4 @@ X | join kind=rightouter Y on Key
 
 ## See also
 
-* Learn about other [join flavors](joinoperator.md#join-flavors)
+* Learn about other [join flavors](joinoperator.md#returns)
