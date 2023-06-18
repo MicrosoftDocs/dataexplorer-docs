@@ -44,7 +44,7 @@ The following table lists the supported authentication methods and the permissio
 
 |Authentication method|Permissions|
 |--|--|
-|[Impersonation](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication)|Existing table: UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT |
+|[Impersonation](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-authentication)|Existing table: UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT |
 |[Username and password](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)||
 
 ## Limitations and restrictions
