@@ -97,7 +97,7 @@ This match can be achieved by the following process:
 > * If possible, reduce coordinates table size before join, by grouping coordinates that are very close to each other by using [geospatial clustering](geospatial-grid-systems.md) or by filtering out unnesessary coordinates due to nature of the data or business needs.
 > * If possible, reduce polygons count due to nature of the data or business needs. Filter out unnecessary polygons before join, scope to the area of interest or unify polygons.
 > * Changing S2 cell level may improve performance and memory consumption.
-> * Changing [join kind and hint](joinoperator.md) may improve performance and memory consumption
+> * Changing [join kind and hint](joinoperator.md) may improve performance and memory consumption.
 
 ## Examples
 
