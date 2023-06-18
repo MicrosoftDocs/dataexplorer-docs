@@ -27,7 +27,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 | *TableName* | string | &check; | The name of the external table. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.|
 | *Schema* | string | &check; | The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.|
 |*SqlTableName*| string | &check; | The name of the SQL table. Not including the database name (example: "MySqlTable" and not "db1.MySqlTable"). If the name of the table contains a period (".") you can use ['Name.of.the.table'] notation.|
-| *SqlServerConnectionString*| string |&check;| The connection string to the SQL Server. See the supported [SQL authentication methods](../api/connection-strings/sql-authentication-methods.md).|
+| *SqlServerConnectionString*| string |&check;| The connection string to the SQL Server. See the supported [SQL Server external table authentication methods](../api/connection-strings/sql-authentication-methods.md).|
 |*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
 
 > [!NOTE]
@@ -59,7 +59,7 @@ The following table lists the supported authentication methods for SQL Server ex
 
 |Authentication method|Read permissions|Write permissions|
 |--|--|--|
-|[Impersonation](../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
+|[Impersonation](../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-authentication)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
 |[Managed identity](../api/connection-strings/sql-authentication-methods.md#managed-identity)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
 |[Username and password](../api/connection-strings/sql-authentication-methods.md#username-and-password)|||
 
