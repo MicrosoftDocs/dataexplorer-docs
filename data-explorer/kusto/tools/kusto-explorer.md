@@ -8,10 +8,8 @@ ms.date: 03/20/2023
 
 # Kusto.Explorer installation and user interface
 
-Kusto.Explorer is a rich desktop application that enables you to explore your data using the Kusto Query Language in an easy-to-use user interface. This overview explains how to get started with setting up your Kusto.Explorer and explains the user interface you will use. 
+Kusto.Explorer is a rich Windows desktop application that enables you to explore your data using the Kusto Query Language in an easy-to-use user interface. This overview explains how to get started with setting up your Kusto.Explorer and explains the user interface you will use. 
 
-> [!NOTE]
-> Kusto.Explorer is only supported in Windows.
 
 With Kusto.Explorer, you can:
 
