@@ -23,7 +23,7 @@ The *Attributes* parameter specifies how rows from the *LeftTable* are matched w
 
 | Parameters name | Values | Description |
 |--|--|--|
-| `hint.remote` | `auto`, `left`, `local`, `right` | See [Cross-Cluster Join](../kusto/query/joincrosscluster) |
+| `hint.remote` | `auto`, `left`, `local`, `right` | See [Cross-Cluster Join](../kusto/query/joincrosscluster.md) |
 | `hint.strategy=broadcast` | Specifies the way to share the query load on cluster nodes. | See [broadcast join](../kusto/query/broadcastjoin.md) |
 | `hint.shufflekey=<key>` | The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. | See [shuffle query](../kusto/query/shufflequery.md) |
 | `hint.strategy=shuffle` | The `shuffle` strategy query shares the query load on cluster nodes, where each node will process one partition of the data. | See [shuffle query](../kusto/query/shufflequery.md) |
