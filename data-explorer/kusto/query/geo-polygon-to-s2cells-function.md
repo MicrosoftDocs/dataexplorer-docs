@@ -170,7 +170,7 @@ tmp | lookup  polygons on id
 |---|---|
 |Florida|960|
 |Georgia|1085|
-...
+|...|...|
 
 
 The following example filters out polygons that don't intersect with the area of the polygon of interest. The maximum error is diagonal of s2cell length. This example is based on a polygonized earth at night raster file.
