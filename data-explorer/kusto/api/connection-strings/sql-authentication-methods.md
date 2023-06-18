@@ -3,13 +3,11 @@ title:  SQL Server external table authentication methods
 description: This article describes how to authenticate to SQL Server external tables in Azure Data Explorer.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 06/15/2023
+ms.date: 06/18/2023
 ---
 # SQL Server external table authentication methods
 
-One way to interact with SQL Server databases from Azure Data Explorer is to [create an external table](../../management/external-sql-tables.md). The connection string provided upon creation of the external table defines the resource to access and its authentication information.
-
-The following authentication methods are supported:
+The connection string provided upon creation of an [external table](../../management/external-sql-tables.md) defines the resource to access and its authentication information. The following authentication methods are supported:
 
 * [Azure AD-integrated authentication](#azure-ad-integrated-authentication)
 * [Managed identity](#managed-identity)
@@ -56,3 +54,9 @@ To authenticate with username and password, set the keywords `User ID` and `Pass
 |`"Server=tcp:myserver.database.windows.net,1433;User Id={myUserId};Password={myPlaceholderPassword};Initial Catalog=mydatabase;"`|
 
 The principal must have the necessary permissions on the SQL database to perform the operation. To manage the access controls for different storage types, see [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
+
+## See also
+
+* [Create a SQL Server external table](../../management/external-sql-tables.md)
+* [Authentication with the sql_request plugin](../../query/sqlrequestplugin.md#authentication-and-authorization)
+* [Authentication with the mysql_request plugin](../../query/mysqlrequest-plugin.md#authentication-and-authorization)
