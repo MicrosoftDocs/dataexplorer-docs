@@ -78,11 +78,11 @@ The return schema and rows depends on the join flavor. The join flavor is specif
 
 ### Cross-join
 
-KQL doesn't natively provide a cross-join flavor. You can't mark the operator with the `kind=cross`.
+KQL doesn't provide a cross-join flavor. However, you can achieve a cross-join effect by using a placeholder key approach.
 
-To simulate, use a dummy key:
+In the following example, a placeholder key is added to both tables and then used for the inner join operation, effectively achieving a cross-join-like behavior:
 
-`X | extend dummy=1 | join kind=inner (Y | extend dummy=1) on dummy`
+`X | extend placeholder=1 | join kind=inner (Y | extend placeholder=1) on placeholder`
 
 ## See also
 
