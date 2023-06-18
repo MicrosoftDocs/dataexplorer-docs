@@ -92,8 +92,8 @@ This match can be achieved by the following process:
 > [!WARNING]
 > Covering a large-area polygon with small-area cells can lead to a huge amount of covering cells. As a result, the query might return null.
 
-> [!Peformance Tips]
->
+> [!NOTE]
+> Performance improvement suggestions:
 > * If possible, reduce coordinates table size before join, by grouping coordinates that are very close to each other by using [geospatial clustering](geospatial-grid-systems.md) or by filtering out unnesessary coordinates due to nature of the data or business needs.
 > * If possible, reduce polygons count due to nature of the data or business needs. Filter out unnecessary polygons before join, scope to the area of interest or unify polygons.
 > * Changing S2 cell level may improve performance and memory consumption.
@@ -145,7 +145,7 @@ Polygons
 Here is even more improvement on the above query. Count storm events per US state. The below query performs a very efficient join because it doesn't carry polygons through the join and uses [lookup operator](lookupoperator.md)
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21Su27DMAzc/RUcJcDN0KFLkKEpsqVZgs6GYjOOEj0MiXbiwh9f+hVnqAZBPB2PR0oGCfbYoIENfKwTw2HlTVt6FxmxijBoZfQvip9jdiSOI3RQBX/FnGAADsoic8lHCtqV4oyK6oBxxawKA2k+Hj6/dzKdpZn9JJXoLVJoU9AF4w7vWVnrQkg5uiFbMZwAr9nYECwmdJEuRlLIfYO9D85i7WxKyshn8T1HY6KYoHRsXMKkZ5s3fFTKFYsEeaC2Qn8WY29yol69dnDTrtho5zDARTtaMYVNlO3mFLwqchVpYIth79eRfLC7Bh1FeIId4IPwtejsmzUX12KLpXb73vV4UjT7H6Qk8FhniXXST60D4/2trpbB9RxdJB3cLxjwpYx285z+rTPdSc6MtbUq8H947ebL14627fAIbD/vQyHh1C7v8gcV/Et3aAIAAA== target=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21Su27DMAzc/RUcJcDN0KFLkKEpsqVZgs6GYjOOEj0MiXbiwh9f+hVnqAZBPB2PR0oGCfbYoIENfKwTw2HlTVt6FxmxijBoZfQvip9jdiSOI3RQBX/FnGAADsoic8lHCtqV4oyK6oBxxawKA2k+Hj6/dzKdpZn9JJXoLVJoU9AF4w7vWVnrQkg5uiFbMZwAr9nYECwmdJEuRlLIfYO9D85i7WxKyshn8T1HY6KYoHRsXMKkZ5s3fFTKFYsEeaC2Qn8WY29yol69dnDTrtho5zDARTtaMYVNlO3mFLwqchVpYIth79eRfLC7Bh1FeIId4IPwtejsmzUX12KLpXb73vV4UjT7H6Qk8FhniXXST60D4/2trpbB9RxdJB3cLxjwpYx285z+rTPdSc6MtbUq8H947ebL14627fAIbD/vQyHh1C7v8gcV/Et3aAIAAA==" target="_blank">Run the query</a>
 
 ```kusto
 let Level = 6;
