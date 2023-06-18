@@ -26,18 +26,14 @@ Merge the rows of two tables to form a new table by matching values of the speci
 |*RightTable*|string|&check;|The right table or tabular expression, sometimes called the inner table, whose rows are to be merged. Denoted as `$right`.|
 |*Conditions*|string|&check;|Determines how rows from *LeftTable* are matched with rows from *RightTable*. If the columns to match have the same name in both tables, use the *ColumnName*. If the column names differ, use the syntax `$left.`*LeftColumn* `==` `$right.`*RightColumn*.</br></br>To define multiple conditions, separate them with commas or use the `and` keyword. The conditions are evaluated using the "and" logical operator.|
 
-### Attributes
+> [!TIP]
+> For best performance, if one table is always smaller than the other, use it as the left side of the join.
 
-The *Attributes* parameter specifies how rows from the *LeftTable* are matched with rows from the *RightTable*. There are two options:
-
-* Compare values of columns with the same name in both tables. Syntax: *ColumnName*.
-* Compare values of columns with different names in the left and right tables. Use `$left.` and `$right.` to qualify the column names. Syntax: `$left.`*LeftColumn* `==` `$right.`*RightColumn*.
-
-### Supported parameters
+### Hints
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-|Parameters name |Values |Description  |
+|Hint key |Values |Description  |
 |---|---|---|
 |`kind`|`innerunique`, `inner`, `leftouter`, `rightouter`, `fullouter`, `leftanti`, `rightanti`, `leftsemi`, `rightsemi`|See [Join Flavors](#join-flavors)|
 |`hint.remote`  |`auto`, `left`, `local`, `right` |See [Cross-Cluster Join](joincrosscluster.md)|
@@ -60,9 +56,7 @@ The *Attributes* parameter specifies how rows from the *LeftTable* are matched w
 ::: zone-end
 
 > [!NOTE]
->
-> * If `kind` isn't specified, the default join flavor is `innerunique`. This is different than some other analytics products that have `inner` as the default flavor. See [Join flavors](#join-flavors).
-> * The join hints don't change the semantic of `join`, but may affect its performance.
+> The join hints don't change the semantic of `join` but may affect performance.
 
 ## Returns
 
