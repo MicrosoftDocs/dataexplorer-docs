@@ -159,7 +159,7 @@ let tmp =
         StormEvents 
         | extend covering = geo_point_to_s2cell(BeginLon, BeginLat, Level)
     ) on covering;
-tmp | lookup  polygons on id
+tmp | lookup polygons on id
 | where geo_point_in_polygon(BeginLon, BeginLat, polygon)
 | summarize StormEventsCountByState = count() by StateName
 ```
