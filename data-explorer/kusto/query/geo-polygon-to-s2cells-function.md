@@ -75,22 +75,29 @@ This match can be achieved by the following process:
 1. Converting polygons to S2 cells of level k,
 1. Converting points to the same S2 cells level k,
 1. Joining on S2 cells,
-1. Filtering by [geo_point_in_polygon()](geo-point-in-polygon-function.md).
+1. Filtering by [geo_point_in_polygon()](geo-point-in-polygon-function.md). This phase can be omitted if some amount of false positives is ok. The maximum error will be the area of s2 cells at level k beyond the boundary of the polygon.
 
 **Choosing the S2 cell level**
 
 * Ideally we would want to cover every polygon with one or just a few unique cells such that no two polygons share the same cell.
 * If the polygons are close to each other, choose the [S2 cell level](geo-point-to-s2cell-function.md) such that its cell edge will be smaller (4, 8, 12 times smaller) than the edge of the average polygon.
-* If the polygons are far from each other, choose the [S2 cell level](geo-point-to-s2cell-function.md) such that its cell edge will be similar to the edge of the average polygon.
+* If the polygons are far from each other, choose the [S2 cell level](geo-point-to-s2cell-function.md) such that its cell edge will be similar or bigger than the edge of the average polygon.
 * In practice, covering a polygon with more than 10,000 cells might not yield good performance.
 * Sample use cases:
 * S2 cell level 5 might prove to be good for covering countries/regions.
 * S2 cell level 16 can cover dense and relatively small Manhattan (New York) neighborhoods.
 * S2 cell level 11 can be used for covering suburbs of Australia.
-* Query run time and memory consumption might differ because of different S2 cell level values.
+* Query run time and memory consumption might differ greatly because of different S2 cell level values.
 
 > [!WARNING]
 > Covering a large-area polygon with small-area cells can lead to a huge amount of covering cells. As a result, the query might return null.
+
+> [!Peformance Tips]
+>
+> * If possible, reduce coordinates table size before join, by grouping coordinates that are very close to each other by using [geospatial clustering](geospatial-grid-systems.md) or by filtering out unnesessary coordinates due to nature of the data or business needs.
+> * If possible, reduce polygons count due to nature of the data or business needs. Filter out unnecessary polygons before join, scope to the area of interest or unify polygons.
+> * Changing S2 cell level may improve performance and memory consumption.
+> * Changing [join kind and hint](joinoperator.md) may improve performance and memory consumption
 
 ## Examples
 
@@ -123,7 +130,7 @@ Polygons
     Coordinates
     | extend covering = geo_point_to_s2cell(longitude, latitude, Level) // cover point with cell
 ) on covering // join on the cell, this filters out rows of point and polygons where the point definitely does not belong to the polygon
-| where geo_point_in_polygon(longitude, latitude, polygon)
+| where geo_point_in_polygon(longitude, latitude, polygon) // final filtering for exact result
 | project longitude, latitude, description
 ```
 
@@ -134,6 +141,33 @@ Polygons
 |-73.9741|40.7914|Upper West Side|
 |-73.995|40.734|Greenwich Village|
 |-73.9584|40.7688|Upper East Side|
+
+Here is even more improvement on the above query. Count storm events per US state. The below query performs a very efficient join because it doesn't carry polygons through the join and uses [lookup operator](lookupoperator)
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let Level = 6;
+let polygons = materialize(US_States | project StateName = tostring(features.properties.NAME), polygon = features.geometry, id = new_guid());
+let tmp = 
+    polygons
+    | project id, StateName, covering = geo_polygon_to_s2cells(polygon, Level) 
+    | mv-expand covering to typeof(string)
+    | join kind=inner hint.strategy=broadcast
+    (
+        StormEvents 
+        | extend covering = geo_point_to_s2cell(BeginLon, BeginLat, Level)
+    ) on covering;
+tmp | lookup  polygons on id
+| where geo_point_in_polygon(BeginLon, BeginLat, polygon)
+| summarize StormEventsCountByState = count() by StateName
+```
+
+|StateName|StormEventsCountByState|
+|---|---|
+|Florida|960|
+|Georgia|1085|
+...
+
 
 The following example filters out polygons that don't intersect with the area of the polygon of interest. The maximum error is diagonal of s2cell length. This example is based on a polygonized earth at night raster file.
 
