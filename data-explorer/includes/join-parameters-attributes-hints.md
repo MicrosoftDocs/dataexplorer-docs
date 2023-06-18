@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 06/15/2023
+ms.date: 06/18/2023
 ---
 
 ## Parameters
@@ -8,18 +8,14 @@ ms.date: 06/15/2023
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*LeftTable*|string|&check;|The left table or tabular expression, sometimes called the outer table, whose rows are to be merged. Denoted as `$left`.|
+|*Hints*|string||Zero or more space-separated join hints in the form of *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. For more information, see [Hints](#hints).
 |*RightTable*|string|&check;|The right table or tabular expression, sometimes called the inner table, whose rows are to be merged. Denoted as `$right`.|
-|*Attributes*|string|&check;|One or more comma-separated rules that describe how rows from *LeftTable* are matched to rows from *RightTable*. Multiple rules are evaluated using the `and` logical operator. See [Attributes](#attributes).|
-|*Hints*|string||Zero or more space-separated hint properties in the form of *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. See [Join hints](#join-hints).
+|*Conditions*|string|&check;|Determines how rows from *LeftTable* are matched with rows from *RightTable*. If the columns to match have the same name in both tables, use the *ColumnName*. If the column names differ, use the syntax `$left.`*LeftColumn* `==` `$right.`*RightColumn*.</br></br>To define multiple conditions, separate them with commas or use the `and` keyword. The conditions are evaluated using the "and" logical operator.|
 
-### Attributes
+> [!TIP]
+> For best performance, if one table is always smaller than the other, use it as the left side of the join.
 
-The *Attributes* parameter specifies how rows from the *LeftTable* are matched with rows from the *RightTable*. There are two options:
-
-* Compare values of columns with the same name in both tables. Syntax: *ColumnName*.
-* Compare values of columns with different names in the left and right tables. Use `$left.` and `$right.` to qualify the column names. Syntax: `$left.`*LeftColumn* `==` `$right.`*RightColumn*.
-
-### Join hints
+### Hints
 
 | Parameters name | Values | Description |
 |--|--|--|
