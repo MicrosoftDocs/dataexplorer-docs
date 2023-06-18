@@ -35,7 +35,6 @@ Merge the rows of two tables to form a new table by matching values of the speci
 
 |Hint key |Values |Description  |
 |---|---|---|
-|`kind`|`innerunique`, `inner`, `leftouter`, `rightouter`, `fullouter`, `leftanti`, `rightanti`, `leftsemi`, `rightsemi`|See [Join Flavors](#join-flavors)|
 |`hint.remote`  |`auto`, `left`, `local`, `right` |See [Cross-Cluster Join](joincrosscluster.md)|
 |`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcastjoin.md) |
 |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shufflequery.md) |
@@ -47,7 +46,6 @@ Merge the rows of two tables to form a new table by matching values of the speci
 
 |Name |Values |Description |
 |---|---|---|
-|`kind`         |`innerunique`, `inner`, `leftouter`, `rightouter`, `fullouter`, `leftanti`, `rightanti`, `leftsemi`, `rightsemi`|See [Join Flavors](#join-flavors)|
 |`hint.remote`  |`auto`, `left`, `local`, `right`   | |
 |`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcastjoin.md) |
 |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shufflequery.md) |
