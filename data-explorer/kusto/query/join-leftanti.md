@@ -14,7 +14,7 @@ The `leftanti` join flavor returns all records from the left side that don't mat
 
 ## Syntax
 
-*LeftTable* `|` `join` `kind=leftanti` [ *Hints* ] *RightTable* `on` *Attributes*
+*LeftTable* `|` `join` `kind=leftanti` [ *Hints* ] *RightTable* `on` *Conditions*
 
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 

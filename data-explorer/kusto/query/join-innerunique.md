@@ -14,7 +14,7 @@ By default, the `innerunique` join flavor is used if the `kind` parameter isn't 
 
 ## Syntax
 
-*LeftTable* `|` `join` `kind=innerunique` [ *Hints* ] *RightTable* `on` *Attributes*
+*LeftTable* `|` `join` `kind=innerunique` [ *Hints* ] *RightTable* `on` *Conditions*
 
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 

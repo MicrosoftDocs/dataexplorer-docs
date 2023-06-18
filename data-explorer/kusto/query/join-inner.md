@@ -12,7 +12,7 @@ The `inner` join flavor is like the standard inner join from the SQL world. An o
 
 ## Syntax
 
-*LeftTable* `|` `join` `kind=inner` [ *Hints* ] *RightTable* `on` *Attributes*
+*LeftTable* `|` `join` `kind=inner` [ *Hints* ] *RightTable* `on` *Conditions*
 
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 

@@ -12,7 +12,7 @@ The `leftsemi` join flavor returns all records from the left side that match a r
 
 ## Syntax
 
-*LeftTable* `|` `join` `kind=leftsemi` [ *Hints* ] *RightTable* `on` *Attributes*
+*LeftTable* `|` `join` `kind=leftsemi` [ *Hints* ] *RightTable* `on` *Conditions*
 
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 
