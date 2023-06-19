@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # Follower commands
 
-Control commands for managing your follower configuration. These commands run synchronously but are applied on the next periodic schema refresh, which may result in a short delay until the new configuration is applied.
+Management commands for managing your follower configuration. These commands run synchronously but are applied on the next periodic schema refresh, which may result in a short delay until the new configuration is applied.
 
 The follower commands include [database level commands](#database-level-commands) and [table level commands](#tables-and-materialized-views-commands).
 
@@ -314,7 +314,7 @@ In this example:
 *Prerequisite:* Set up cluster `MyFollowerCluster` to follow database `MyDatabase` from cluster `MyLeaderCluster`.
 
 > [!NOTE]
-> The principal running the control commands is expected to be a `DatabaseAdmin` on database `MyDatabase`.
+> The principal running the management commands is expected to be a `DatabaseAdmin` on database `MyDatabase`.
 
 #### Show the current configuration
 

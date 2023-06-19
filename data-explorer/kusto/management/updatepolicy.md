@@ -72,9 +72,9 @@ Each such object is represented as a JSON property bag, with the following prope
 > Cascading updates are allowed, for example from table A, to table B, to table C.
 > However, if update policies are defined in a circular manner, this is detected at runtime, and the chain of updates is cut. Data is ingested only once to each table in the chain.
 
-## Control commands
+## Management commands
 
-Update policy control commands include:
+Update policy management commands include:
 
 * [`.show table *TableName* policy update`](./show-table-update-policy-command.md) shows the current update policy of a table.
 * [`.alter table *TableName* policy update`](./alter-table-update-policy-command.md) defines the current update policy of a table.

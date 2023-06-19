@@ -214,7 +214,7 @@ Use the Azure Data Explorer web UI to create the target tables in the Azure Data
 
 #### Create tables for the diagnostic metrics
 
-1. In the *TestDatabase* database, create a table named *DiagnosticMetrics* to store the diagnostic metrics records. Use the following `.create table` control command:
+1. In the *TestDatabase* database, create a table named *DiagnosticMetrics* to store the diagnostic metrics records. Use the following `.create table` management command:
 
     ```kusto
     .create table DiagnosticMetrics (Timestamp:datetime, ResourceId:string, MetricName:string, Count:int, Total:double, Minimum:double, Maximum:double, Average:double, TimeGrain:string)
@@ -240,7 +240,7 @@ Use the Azure Data Explorer web UI to create the target tables in the Azure Data
 
 #### Create tables for the diagnostic logs
 
-1. In the *TestDatabase* database, create a table named *DiagnosticLogs* to store the diagnostic log records. Use the following `.create table` control command:
+1. In the *TestDatabase* database, create a table named *DiagnosticLogs* to store the diagnostic log records. Use the following `.create table` management command:
 
     ```kusto
     .create table DiagnosticLogs (Timestamp:datetime, ResourceId:string, OperationName:string, Result:string, OperationId:string, Database:string, Table:string, IngestionSourceId:string, IngestionSourcePath:string, RootActivityId:string, ErrorCode:string, FailureStatus:string, Details:string)

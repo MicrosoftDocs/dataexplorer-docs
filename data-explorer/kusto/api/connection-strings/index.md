@@ -7,7 +7,7 @@ ms.date: 06/15/2023
 ---
 # Connection Strings
 
-Connection strings are widely used in Kusto control commands, in the Kusto API, and occasionally in queries as well.
+Connection strings are widely used in Kusto management commands, in the Kusto API, and occasionally in queries as well.
 Connection strings provide a general means to describe how to locate and interact with resources external to Kusto,
 such as blobs in the Azure Blob Storage service and Azure SQL Database databases.
 

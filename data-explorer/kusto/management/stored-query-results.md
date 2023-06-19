@@ -141,7 +141,7 @@ stored_query_result("DailyClicksByAdNetwork7Days")
 | 102 | 2020-01-02 00:00:00.0000000 | SuperAds | 123 |
 | ... | ... | ... | ... |
 
-## Control commands
+## Management commands
 
 ### .show stored_query_results
 

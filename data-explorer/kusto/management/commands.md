@@ -60,7 +60,7 @@ For example,
 
 ## Investigating performance issues
 
-`.show` `commands` can be used to investigate performance issues, since they show you the resources consumed by each Control command.
+`.show` `commands` can be used to investigate performance issues, since they show you the resources consumed by each Management command.
 
 The following examples are simple and useful queries for such investigations.
 

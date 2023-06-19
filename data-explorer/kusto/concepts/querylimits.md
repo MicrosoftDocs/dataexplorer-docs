@@ -176,7 +176,7 @@ If the query uses `summarize`, `join`, or `make-series` operators, you can use t
 ## Limit execution timeout
 
 **Server timeout** is a service-side timeout that is applied to all requests.
-Timeout on running requests (queries and control commands) is enforced at multiple
+Timeout on running requests (queries and management commands) is enforced at multiple
 points in the Kusto:
 
 * client library (if used)
@@ -184,7 +184,7 @@ points in the Kusto:
 * service engine that processes the request
 
 By default, timeout is set to four minutes for queries, and 10 minutes for
-control commands. This value can be increased if needed (capped at one hour).
+management commands. This value can be increased if needed (capped at one hour).
 
 * Various client tools support changing the timeout as part of their global
   or per-connection settings. For example, in Kusto.Explorer, use **Tools** &gt; **Options*** &gt;
