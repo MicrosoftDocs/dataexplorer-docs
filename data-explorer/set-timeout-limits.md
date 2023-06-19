@@ -143,7 +143,7 @@ To set timeouts when using an SDK, you'll need to use [client request properties
 
 1. Set the *servertimeout* client request property to a valid [timespan](kusto/query/scalar-data-types/timespan.md) value, or set the *norequesttimeout* client request property to `true` to set the maximum allowed timeout. The maximum allowed timeout is 1 hour.
 
-1. Use the `ClientRequestProperties` object in your query or control-command to apply the timeout.
+1. Use the `ClientRequestProperties` object in your query or management-command to apply the timeout.
 
 ### Example
 

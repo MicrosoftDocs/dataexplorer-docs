@@ -44,7 +44,7 @@ The following tables describe the options for customizing the behavior of Kusto.
 | Option | Description |
 |---------|--------------|
 | IntelliSense | Enables or disables IntelliSense. Default is enabled.|
-| IntelliSense- Command Version | Chooses the IntelliSense version for control commands. Default: mixed.|
+| IntelliSense- Command Version | Chooses the IntelliSense version for management commands. Default: mixed.|
 | Syntax Highlighting | Enables or disables syntax highlighting. Default is enabled.|
 | Issues List | Displays the issues list for the current query or command in the editor.|
 | Issue Options| Adjust which issues appear in the issues list.|
