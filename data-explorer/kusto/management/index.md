@@ -1,13 +1,13 @@
 ---
-title:  Management commands (control commands) overview
-description: This article describes Management commands (control commands) overview in Azure Data Explorer.
+title:  Management commands overview
+description: This article describes management commands in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 06/19/2023
 ---
-# Management commands (control commands) overview
+# Management commands overview
 
-This section describes the management commands (control commands) used to manage Kusto.
+This article describes the management commands, also known as control commands, used to manage Kusto.
 Management commands are requests to the service to retrieve information that is
 not necessarily data in the database tables, or to modify the service state, etc.
 
