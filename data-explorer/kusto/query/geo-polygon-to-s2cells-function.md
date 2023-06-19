@@ -96,6 +96,7 @@ This match can be achieved by the following process:
 > Performance improvement suggestions:
 > * If possible, reduce coordinates table size before join, by grouping coordinates that are very close to each other by using [geospatial clustering](geospatial-grid-systems.md) or by filtering out unnesessary coordinates due to nature of the data or business needs.
 > * If possible, reduce polygons count due to nature of the data or business needs. Filter out unnecessary polygons before join, scope to the area of interest or unify polygons.
+> * In case of very big polygons, reduce their size using [geo_polygon_simplify()](geo-polygon-simplify-function.md).
 > * Changing S2 cell level may improve performance and memory consumption.
 > * Changing [join kind and hint](joinoperator.md) may improve performance and memory consumption.
 
@@ -145,22 +146,28 @@ Polygons
 Here is even more improvement on the above query. Count storm events per US state. The below query performs a very efficient join because it doesn't carry polygons through the join and uses [lookup operator](lookupoperator.md)
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21Su27DMAzc/RUcJcDN0KFLkKEpsqVZgs6GYjOOEj0MiXbiwh9f+hVnqAZBPB2PR0oGCfbYoIENfKwTw2HlTVt6FxmxijBoZfQvip9jdiSOI3RQBX/FnGAADsoic8lHCtqV4oyK6oBxxawKA2k+Hj6/dzKdpZn9JJXoLVJoU9AF4w7vWVnrQkg5uiFbMZwAr9nYECwmdJEuRlLIfYO9D85i7WxKyshn8T1HY6KYoHRsXMKkZ5s3fFTKFYsEeaC2Qn8WY29yol69dnDTrtho5zDARTtaMYVNlO3mFLwqchVpYIth79eRfLC7Bh1FeIId4IPwtejsmzUX12KLpXb73vV4UjT7H6Qk8FhniXXST60D4/2trpbB9RxdJB3cLxjwpYx285z+rTPdSc6MtbUq8H947ebL14627fAIbD/vQyHh1C7v8gcV/Et3aAIAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA31SPW/CMBDd8ys82lKo1A5dEEOp2CgL6hyZ5AgGf0T2JTQVP74XJyFAq97ke3539+5DA7I1NKDZgr3OE01u5XRbOhsIMRLBK6nVN/CEkX1usy0SGKJ3YZV3R8iRRXAjDVAQuoBe2ZLvQWLtITwRqwKPip6bt4+VSMcaxL6SSnAG0LcpUwXhFs5ZWauCC9HLQlMRHOuOCh9EqCJluWugK05USpgNzAxdFl5y0DrwAUr7tgUbkphmBl+VtMWUAh3DtgK3531DYqAenbLspGyxUNaCZwdl8YkoNIKyXey8k0UuA0b2aPzO62yLzptVAxbDr7+pJx1bWUKp7LoTrSVefYn/B0b2HyMhudNA+ETsB3KXUzBa0pjgftwzeZbt9W8q8zxPulVdmHbuVFfTOVEmVSQP8RE5H8DDjThlx8XdqBsQQfxQGyM9HeXtEN9dbXHZxkukVvPO5YLt2uk4fwDWrd0X7QIAAA==
+" target="_blank">Run the query</a>
 
 ```kusto
 let Level = 6;
-let polygons = materialize(US_States | project StateName = tostring(features.properties.NAME), polygon = features.geometry, id = new_guid());
+let polygons = materialize(
+    US_States
+    | project StateName = tostring(features.properties.NAME), polygon = features.geometry, id = new_guid());
 let tmp = 
     polygons
-    | project id, StateName, covering = geo_polygon_to_s2cells(polygon, Level) 
+    | project id, covering = geo_polygon_to_s2cells(polygon, Level) 
     | mv-expand covering to typeof(string)
     | join kind=inner hint.strategy=broadcast
-    (
-        StormEvents 
-        | extend covering = geo_point_to_s2cell(BeginLon, BeginLat, Level)
-    ) on covering;
+            (
+                StormEvents
+                | project lng = BeginLon, lat = BeginLat
+                | project lng, lat, covering = geo_point_to_s2cell(lng, lat, Level)
+            ) on covering
+    | project-away covering, covering1;
 tmp | lookup polygons on id
-| where geo_point_in_polygon(BeginLon, BeginLat, polygon)
+| project-away id
+| where geo_point_in_polygon(lng, lat, polygon)
 | summarize StormEventsCountByState = count() by StateName
 ```
 
