@@ -40,7 +40,7 @@ StormEvents
 | take 10
 ```
 
-## Get the date relative to a specific time interval
+### Get the date relative to a specific time interval
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIUbBVSEksAcKknFSNnMSk1BwrheKSosy8dB2Fkszc1OKCxLywxJzSVCs4V1MhmpdLAQiUcjPzSktSlXQUzAyKdRSgghn5pUVAIcMMuEhKYiVIIAUuUJmaCFJibGaawssVa83LFQKUqVFIrShJzUsB2+OYng90WV5+uYamgi6qQwBVkuK6twAAAA==" target="_blank">Run the query</a>
