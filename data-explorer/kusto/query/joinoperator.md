@@ -58,7 +58,7 @@ Merge the rows of two tables to form a new table by matching values of the speci
 
 ## Returns
 
-The return schema and rows depends on the join flavor. The join flavor is specified with the *kind* keyword. The following flavors of the join operator are supported:
+The return schema and rows depend on the join flavor specified with the *kind* keyword, as described in the following table:
 
 :::image type="content" source="images/joinoperator/join-kinds.png" alt-text="Diagram showing query join kinds.":::
 
