@@ -3,7 +3,7 @@ title:  Connection Strings
 description: This article describes Connection Strings in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 06/15/2023
 ---
 # Connection Strings
 
@@ -17,9 +17,9 @@ There are a number of connection string formats:
   Kusto connection strings are modeled after [ADO.NET connection strings model](/dotnet/framework/data/adonet/connection-string-syntax).
 * [Storage connection strings](storage-connection-strings.md) describe how to point Kusto at an external storage service
   such as Azure Blob Storage and Azure Data Lake Storage.
-* SQL connection strings - used by Kusto [sql_request plugin](../../query/sqlrequestplugin.md) to issue requests to
-  Azure DB service and by [export to SQL command](../../management/data-export/export-data-to-sql.md).  
-  These connection strings adhere to [SqlClient connection strings](/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings) specification.
+* [SQL connection strings](sql-authentication-methods.md) describe how to point Kusto at an external SQL Server database for query or
+  to [export data to SQL](../../management/data-export/export-data-to-sql.md). These connection strings adhere to the
+  [SqlClient connection strings](/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings) specification.
 
 > [!NOTE]
 > Some connection strings may reference security principals. See
