@@ -3,7 +3,7 @@ title:  join operator
 description: Learn how to use the join operator to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/18/2023
+ms.date: 06/19/2023
 ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
@@ -11,6 +11,10 @@ zone_pivot_groups: kql-flavors-all
 # join operator
 
 Merge the rows of two tables to form a new table by matching values of the specified columns from each table.
+
+KQL offers various types of joins, including inner joins, left joins, right joins, and full outer joins. The following image provides a visual representation of the operation performed by each join.
+
+:::image type="content" source="images/joinoperator/join-kinds.png" alt-text="Diagram showing query join kinds.":::
 
 ## Syntax
 
@@ -58,9 +62,7 @@ Merge the rows of two tables to form a new table by matching values of the speci
 
 ## Returns
 
-The return schema and rows depend on the join flavor specified with the *kind* keyword, as described in the following table:
-
-:::image type="content" source="images/joinoperator/join-kinds.png" alt-text="Diagram showing query join kinds.":::
+The return schema and rows depends on the join flavor. The join flavor is specified with the *kind* keyword. The following flavors of the join operator are supported:
 
 | Join flavor | Returns | Illustration |
 | --- | --- | --- |
