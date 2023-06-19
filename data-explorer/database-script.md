@@ -277,4 +277,4 @@ Commands run by a script resource don't appear in the results of the [.show comm
 
 ## Next steps
 
-* [Management commands (control commands) overview](kusto/management/index.md)
+* [Management commands overview](kusto/management/index.md)
