@@ -29,7 +29,7 @@ Your cluster needs permissions to act on behalf of the given managed identity. T
 
 To use the managed identity, you need to configure the managed identity policy to allow this identity. For instructions, see [Managed Identity policy](kusto/management/managed-identity-policy.md).
 
-The managed identity policy control commands are:
+The managed identity policy management commands are:
 * [.alter managed_identity policy](kusto/management/alter-managed-identity-policy-command.md)
 * [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md)
 * [.delete managed_identity policy](kusto/management/delete-managed-identity-policy-command.md)

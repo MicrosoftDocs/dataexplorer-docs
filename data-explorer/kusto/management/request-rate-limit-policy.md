@@ -37,15 +37,15 @@ The following table shows a few examples of concurrent requests that exceed the 
 
 | Scenario | Error message |
 |----------------|----------------|
-| A throttled `.create table` command that was classified to the `default` workload group, which has a limit of 80 concurrent requests at the scope of the workload group. | The control command was aborted due to throttling. Retrying after some backoff might succeed. CommandType: 'TableCreate', Capacity: 80, Origin: 'RequestRateLimitPolicy/WorkloadGroup/default'. |
+| A throttled `.create table` command that was classified to the `default` workload group, which has a limit of 80 concurrent requests at the scope of the workload group. | The management command was aborted due to throttling. Retrying after some backoff might succeed. CommandType: 'TableCreate', Capacity: 80, Origin: 'RequestRateLimitPolicy/WorkloadGroup/default'. |
 | A throttled query that was classified to a workload group named `MyWorkloadGroup`, which has a limit of 50 concurrent requests at the scope of the workload group. | The query was aborted due to throttling. Retrying after some backoff might succeed. Capacity: 50, Origin: 'RequestRateLimitPolicy/WorkloadGroup/MyWorkloadGroup'.|
 | A throttled query that was classified to a workload group named `MyWorkloadGroup`, which has a limit of 10 concurrent requests at the scope of a principal. | The query was aborted due to throttling. Retrying after some backoff might succeed. Capacity: 10, Origin: 'RequestRateLimitPolicy/WorkloadGroup/MyWorkloadGroup/Principal/aaduser=9e04c4f5-1abd-48d4-a3d2-9f58615b4724;6ccf3fe8-6343-4be5-96c3-29a128dd9570'. |
   
 * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
-* The exception type will be `QueryThrottledException` for queries, and `ControlCommandThrottledException` for control commands.
+* The exception type will be `QueryThrottledException` for queries, and `ControlCommandThrottledException` for management commands.
   
 > [!NOTE]
-> Control commands may also be throttled as a result of exceeding the limit defined by the cluster's [capacity policy](./show-cluster-capacity-policy-command.md).
+> Management commands may also be throttled as a result of exceeding the limit defined by the cluster's [capacity policy](./show-cluster-capacity-policy-command.md).
 
 ### Resource utilization rate limit
 
@@ -152,12 +152,12 @@ The `default` workload group has the following policy defined by default. This p
 * If a workload group has no limit on maximum concurrent requests defined, then the maximum allowed value of `10000` applies.
 * When you alter the policy for the `default` workload group, a limit must be defined for the workload group's max concurrent requests.
 * The cluster's [capacity policy](capacitypolicy.md) may also limit the request rate of requests that fall under a specific category, for example *ingestions*.
-    * If either of the limits defined by the [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a control command will be throttled.
+    * If either of the limits defined by the [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a management command will be throttled.
 * When request rate limits of kind `ConcurrentRequests` are applied, the output of [`.show capacity`](diagnostics.md#show-capacity) may change based on those limits.
     * [`.show capacity`](diagnostics.md#show-capacity) can show the capacities for the principal that ran the request, according to: the context of the request, the workload group it was classified into, and its effective policies.
     * When running `.show capacity with(scope=workloadgroup)`, different principals may see different outputs if their requests are classified into different workload groups.
     * Otherwise, the request context is ignored, and the output is only affected by the cluster's [capacity policy](capacitypolicy.md).
 
-## Control commands
+## Management commands
 
-Manage the workload group's request rate limit policies with [Workload groups control commands](./show-workload-group-command.md).
+Manage the workload group's request rate limit policies with [Workload groups management commands](./show-workload-group-command.md).

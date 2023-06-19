@@ -14,7 +14,7 @@ You can:
 
 - Send notifications and alerts based on query results, such as when thresholds exceed certain limits.
 - Send regular, such as daily or weekly, reports containing tables and charts.
-- Schedule regular jobs using control commands on clusters. For example, copy data from one table to another using the `.set-or-append` command.
+- Schedule regular jobs using management commands on clusters. For example, copy data from one table to another using the `.set-or-append` command.
 - Export and import data between Azure Data Explorer and other databases.
 
 For more information, see [Azure Data Explorer :::no-loc text="Power Automate"::: connector usage examples](flow-usage.md).
@@ -55,16 +55,16 @@ When you select the Azure Data Explorer connector, you can choose one of the fol
 
 - [Run KQL query](#run-kql-query)
 - [Run KQL query and render a chart](#run-kql-query-and-render-a-chart)
-- [Run async control command](#run-async-control-command)
-- [Run control command and render a chart](#run-control-command-and-render-a-chart)
-- [Run show control command](#run-show-control-command)
+- [Run async management command](#run-async-management-command)
+- [Run management command and render a chart](#run-management-command-and-render-a-chart)
+- [Run show management command](#run-show-management-command)
 
 This section describes the capabilities and parameters for each action and provides an example showing how to add an [email](#email-kusto-query-results) action to any flow.
 
 ### Run KQL query
 
 > [!NOTE]
-> If your query starts with a dot, it's a [control command](kusto/management/index.md). Use [Run async control command](#run-async-control-command).
+> If your query starts with a dot, it's a [management command](kusto/management/index.md). Use [Run async management command](#run-async-management-command).
 
 Use this action to query the specified cluster. The actions that are added afterwards iterate over each line of the results of the query.
 
@@ -79,7 +79,7 @@ The following flow triggers a query every minute. The query checks the number of
 ### Run KQL query and render a chart
 
 > [!NOTE]
-> If your query starts with a dot, it's a [control command](kusto/management/index.md). Use [Run control command and render a chart](#run-kql-query-and-render-a-chart).
+> If your query starts with a dot, it's a [management command](kusto/management/index.md). Use [Run management command and render a chart](#run-kql-query-and-render-a-chart).
 
 Use this action to visualize a KQL query result as a table or chart. For example, use this flow to receive daily reports by email.
 
@@ -91,37 +91,37 @@ The following flow will present the query results as a timechart.
 
 :::image type="content" source="media/flow/flow-run-query.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query and render a chart action.":::
 
-### Run async control command
+### Run async management command
 
-Use this action to run a [control command](kusto/management/index.md) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action.
+Use this action to run a [management command](kusto/management/index.md) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action.
 
-If the async control command takes more than 60 minutes to run, it will fail with a "RequestTimeout" exception.
+If the async management command takes more than 60 minutes to run, it will fail with a "RequestTimeout" exception.
 
 #### Example
 
 The following flow triggers an async command to copy 10 records from the 'TransformedSysLogs' table to the 'TargetTable'. Note that the 'async' keyword is required in the query.
 
-:::image type="content" source="media/flow/flow-run-async-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run async control command action.":::
+:::image type="content" source="media/flow/flow-run-async-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run async management command action.":::
 
-### Run control command and render a chart
+### Run management command and render a chart
 
-Use this action to run a [control command](kusto/management/index.md) and display the result as a chart. The chart options include an HTML table, pie chart, time chart, and bar chart.
+Use this action to run a [management command](kusto/management/index.md) and display the result as a chart. The chart options include an HTML table, pie chart, time chart, and bar chart.
 
-If the control command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
+If the management command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
 
-:::image type="content" source="media/flow/flow-run-control-command.png" alt-text="Screenshot of Run control command and render a chart in recurrence pane.":::
+:::image type="content" source="media/flow/flow-run-control-command.png" alt-text="Screenshot of Run management command and render a chart in recurrence pane.":::
 
-### Run show control command
+### Run show management command
 
-This action runs the show control command and returns the result that can be used in the following connectors.
+This action runs the show management command and returns the result that can be used in the following connectors.
 
-If the control command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
+If the management command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
 
 #### Example
 
 The following flow runs the [.show operation](kusto/management/operations.md) command to find the status of an async command using an operation ID returned by an async command execution.
 
-:::image type="content" source="media/flow/flow-run-show-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show control command action.":::
+:::image type="content" source="media/flow/flow-run-show-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show management command action.":::
 
 ### Email Kusto query results
 

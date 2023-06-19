@@ -60,7 +60,7 @@ You can also deploy infrastructure imperatively, by using any of the supported p
 
 ## Deploy schema entities
 
-Schema entities provisioning pertains to deploying tables, functions, policies, and permissions. You can create or update entities by running scripts that consist of [control commands](kusto/management/management-best-practices.md).
+Schema entities provisioning pertains to deploying tables, functions, policies, and permissions. You can create or update entities by running scripts that consist of [management commands](kusto/management/management-best-practices.md).
 
 You can automate schema entities deployment by using the following methods:
 
@@ -74,8 +74,8 @@ You can automate schema entities deployment by using the following methods:
   * [Node SDK](./kusto/api/node/kusto-node-client-library.md)
   * [Go SDK](./kusto/api/golang/kusto-golang-client-library.md)
 * Tools
-  * [Sync Kusto](./kusto/tools/synckusto.md). Use this interactive developer tool to extract the database schema or control command script. You can then use the extracted content command script for automatic deployment.
-  * [Delta Kusto](https://github.com/microsoft/delta-kusto): Invoke this tool in a CI/CD pipeline. It can compare two sources, such as the database schema or control command script, and compute a delta control command script. You can then use the extracted content command script for automatic deployment.
+  * [Sync Kusto](./kusto/tools/synckusto.md). Use this interactive developer tool to extract the database schema or management command script. You can then use the extracted content command script for automatic deployment.
+  * [Delta Kusto](https://github.com/microsoft/delta-kusto): Invoke this tool in a CI/CD pipeline. It can compare two sources, such as the database schema or management command script, and compute a delta management command script. You can then use the extracted content command script for automatic deployment.
   * [Azure DevOps task](./devops.md) for Azure Data Explorer.
 
 ## Ingest data
