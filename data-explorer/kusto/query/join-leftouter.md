@@ -18,7 +18,7 @@ The `leftouter` join flavor returns all the records from the left side table and
 
 ## Returns
 
-**Schema**: All columns from both tables, including the matching keys.
+**Schema**: All columns from both tables, including the matching keys.  
 **Rows**: All records from the left table and only matching rows from the right table.
 
 ## Example

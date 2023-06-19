@@ -18,7 +18,7 @@ The `rightsemi` join flavor returns all records from the right side that match a
 
 ## Returns
 
-**Schema**: All columns from the left table.
+**Schema**: All columns from the left table.  
 **Rows**: All records from the right table that match records from the left table.
 
 ## Example

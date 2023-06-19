@@ -20,7 +20,7 @@ The `leftanti` join flavor returns all records from the left side that don't mat
 
 ## Returns
 
-**Schema**: All columns from the left table.
+**Schema**: All columns from the left table.  
 **Rows**: All records from the left table that don't match records from the right table.
 
 ## Example

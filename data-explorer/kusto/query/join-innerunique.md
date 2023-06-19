@@ -20,7 +20,7 @@ By default, the `innerunique` join flavor is used if the `kind` parameter isn't 
 
 ## Returns
 
-**Schema**: All columns from both tables, including the matching keys.
+**Schema**: All columns from both tables, including the matching keys.  
 **Rows**: All deduplicated rows from the left table that match rows from the right table.
 
 ## Examples

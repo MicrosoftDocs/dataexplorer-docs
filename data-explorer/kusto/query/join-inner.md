@@ -18,7 +18,7 @@ The `inner` join flavor is like the standard inner join from the SQL world. An o
 
 ## Returns
 
-**Schema**: All columns from both tables, including the matching keys.
+**Schema**: All columns from both tables, including the matching keys.  
 **Rows**: Only matching rows from both tables.
 
 ## Example

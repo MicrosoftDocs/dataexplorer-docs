@@ -18,7 +18,7 @@ The `leftsemi` join flavor returns all records from the left side that match a r
 
 ## Returns
 
-**Schema**: All columns from the left table.
+**Schema**: All columns from the left table.  
 **Rows**: All records from the left table that match records from the right table.
 
 ## Example
