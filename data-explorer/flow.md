@@ -101,7 +101,7 @@ If the async management command takes more than 60 minutes to run, it will fail 
 
 The following flow triggers an async command to copy 10 records from the 'TransformedSysLogs' table to the 'TargetTable'. Note that the 'async' keyword is required in the query.
 
-:::image type="content" source="media/flow/flow-run-async-management-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run async management command action.":::
+:::image type="content" source="media/flow/flow-run-async-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run async management command action.":::
 
 ### Run management command and render a chart
 
@@ -109,7 +109,7 @@ Use this action to run a [management command](kusto/management/index.md) and dis
 
 If the management command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
 
-:::image type="content" source="media/flow/flow-run-management-command.png" alt-text="Screenshot of Run management command and render a chart in recurrence pane.":::
+:::image type="content" source="media/flow/flow-run-control-command.png" alt-text="Screenshot of Run management command and render a chart in recurrence pane.":::
 
 ### Run show management command
 
@@ -121,7 +121,7 @@ If the management command takes more than 8 minutes to run, it will fail with a 
 
 The following flow runs the [.show operation](kusto/management/operations.md) command to find the status of an async command using an operation ID returned by an async command execution.
 
-:::image type="content" source="media/flow/flow-run-show-management-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show management command action.":::
+:::image type="content" source="media/flow/flow-run-show-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show management command action.":::
 
 ### Email Kusto query results
 
