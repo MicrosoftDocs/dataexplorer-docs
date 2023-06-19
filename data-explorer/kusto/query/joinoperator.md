@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors-all
 
 Merge the rows of two tables to form a new table by matching values of the specified columns from each table.
 
-KQL offers various types of joins, including inner joins, left joins, right joins, and full outer joins. The following image provides a visual representation of the operation performed by each join.
+Kusto Query Language (KQL) offers various types of joins. The following image provides a visual representation of the operation performed by each join.
 
 :::image type="content" source="images/joinoperator/join-kinds.png" alt-text="Diagram showing query join kinds.":::
 
