@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors-all
 
 Merge the rows of two tables to form a new table by matching values of the specified columns from each table.
 
-Kusto Query Language (KQL) offers many kinds of joins that each affect the schema and rows in the resultant table in different ways. For example, if you use an `inner` join, the table will have the same columns as the left table, plus the columns from the right table. For best performance, if one table is always smaller than the other, use it as the left side of the `join` operator. The following image provides a visual representation of the operation performed by each join.
+Kusto Query Language (KQL) offers many kinds of joins that each affect the schema and rows in the resultant table in different ways. For example, if you use an `inner` join, the table has the same columns as the left table, plus the columns from the right table. For best performance, if one table is always smaller than the other, use it as the left side of the `join` operator. The following image provides a visual representation of the operation performed by each join.
 
 :::image type="content" source="images/joinoperator/join-kinds.png" alt-text="Diagram showing query join kinds.":::
 
@@ -28,7 +28,7 @@ Kusto Query Language (KQL) offers many kinds of joins that each affect the schem
 |*JoinFlavor*|string||The type of join to perform: `innerunique`, `inner`, `leftouter`, `rightouter`, `fullouter`, `leftanti`, `rightanti`, `leftsemi`, `rightsemi`. The default is `innerunique`. For more information about join flavors, see [Returns](#returns).|
 |*Hints*|string||Zero or more space-separated join hints in the form of *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. For more information, see [Hints](#hints).
 |*RightTable*|string|&check;|The right table or tabular expression, sometimes called the inner table, whose rows are to be merged. Denoted as `$right`.|
-|*Conditions*|string|&check;|Determines how rows from *LeftTable* are matched with rows from *RightTable*. If the columns you want to match have the same name in both tables, use the syntax `ON` *ColumnName*. Otherwise, use the syntax `ON $left.`*LeftColumn* `==` `$right.`*RightColumn*.</br></br>To specify multiple conditions, you can either use the "and" keyword or separate them with commas. If you use commas, the conditions are evaluated using the "and" logical operator.|
+|*Conditions*|string|&check;|Determines how rows from *LeftTable* are matched with rows from *RightTable*. If the columns you want to match have the same name in both tables, use the syntax `ON` *ColumnName*. Otherwise, use the syntax `ON $left.`*LeftColumn* `==` `$right.`*RightColumn. To specify multiple conditions, you can either use the "and" keyword or separate them with commas. If you use commas, the conditions are evaluated using the "and" logical operator.|
 
 > [!TIP]
 > For best performance, if one table is always smaller than the other, use it as the left side of the join.
@@ -42,7 +42,7 @@ Kusto Query Language (KQL) offers many kinds of joins that each affect the schem
 |`hint.remote`  |`auto`, `left`, `local`, `right` |See [Cross-Cluster Join](joincrosscluster.md)|
 |`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcastjoin.md) |
 |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shufflequery.md) |
-|`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node will process one partition of the data. |See [shuffle query](shufflequery.md)  |
+|`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. |See [shuffle query](shufflequery.md)  |
 
 ::: zone-end
 
@@ -53,7 +53,7 @@ Kusto Query Language (KQL) offers many kinds of joins that each affect the schem
 |`hint.remote`  |`auto`, `left`, `local`, `right`   | |
 |`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcastjoin.md) |
 |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shufflequery.md) |
-|`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node will process one partition of the data. |See [shuffle query](shufflequery.md)  |
+|`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. |See [shuffle query](shufflequery.md)  |
 
 ::: zone-end
 
@@ -62,7 +62,7 @@ Kusto Query Language (KQL) offers many kinds of joins that each affect the schem
 
 ## Returns
 
-The return schema and rows depends on the join flavor. The join flavor is specified with the *kind* keyword. The following flavors of the join operator are supported:
+The return schema and rows depend on the join flavor. The join flavor is specified with the *kind* keyword. The following flavors of the join operator are supported:
 
 | Join flavor | Returns | Illustration |
 | --- | --- | --- |
