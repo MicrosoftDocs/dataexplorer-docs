@@ -3,14 +3,14 @@ title:  innerunique join
 description: Learn how to use the innerunique join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/18/2023
+ms.date: 06/19/2023
 ---
 
 # innerunique join
 
 The `innerunique` join flavor removes duplicate keys from the left side. This behavior ensures that the output contains a row for every combination of unique left and right keys.
 
-By default, the `innerunique` join flavor is used if the `kind` parameter isn't specified. This default implementation is particularly useful in log/trace analysis scenarios, where you aim to correlate two events based on a shared correlation ID. It allows you to retrieve all instances of the phenomenon while disregarding duplicate trace records that contribute to the correlation.
+By default, the `innerunique` join flavor is used if the `kind` parameter isn't specified. This default implementation is useful in log/trace analysis scenarios, where you aim to correlate two events based on a shared correlation ID. It allows you to retrieve all instances of the phenomenon while disregarding duplicate trace records that contribute to the correlation.
 
 ## Syntax
 
@@ -129,8 +129,8 @@ t1
 |1|val1.2|1|val1.4|
 
 * Kusto is optimized to push filters that come after the `join`, towards the appropriate join side, left or right, when possible.
-* Sometimes, the flavor used is **innerunique** and the filter is propagated to the left side of the join. The flavor will be automatically propagated and the keys that apply to that filter will always appear in the output.
-* Use the example above and add a filter `where value == "val1.2" `. It will always give the second result and will never give the first result for the datasets:
+* Sometimes, the flavor used is **innerunique** and the filter is propagated to the left side of the join. The flavor is automatically propagated and the keys that apply to that filter appear in the output.
+* Use the previous example and add a filter `where value == "val1.2" `. It gives the second result and will never give the first result for the datasets:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WOwQrCMAyG73uKn54UitDqadInEQ+ThVlXUqytMvDhjXUM9GYCCfxJvj+BMrKBQ99lyVOg1UhTixB50Lh3oVCLW06ehzXQQOJQq9FQMjYbo/Q8WCSrRDnum/CG2//gv6yt4L+V3UzPpnniEj1j9NyLi2emVNhfC9WLbGuLskCT7D7OlOhjC+eWX18MNThdAwEAAA==" target="_blank">Run the query</a>
@@ -160,7 +160,7 @@ t1
 |1|val1.2|1|val1.3|
 |1|val1.2|1|val1.4|
 
-### Get extended login activities
+### Get extended sign-in activities
 
 Get extended activities from a `login` that some entries mark as the start and end of an activity.
 
