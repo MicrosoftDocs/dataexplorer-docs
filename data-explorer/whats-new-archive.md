@@ -266,7 +266,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-[Workload groups - Control commands](kusto/management/show-workload-group-command.md) | Updated article. General Availability (GA).
+[Workload groups - Management commands](kusto/management/show-workload-group-command.md) | Updated article. General Availability (GA).
 [Workload groups](kusto/management/workload-groups.md) | Updated article. General Availability (GA).
 [Materialized views](kusto/management/materialized-views/materialized-view-overview.md) | Updated article. General Availability (GA).
 [Materialized views policies](kusto/management/materialized-views/materialized-view-policies.md) | Updated article. General Availability (GA).
@@ -354,10 +354,10 @@ Article title | Description
 Article title | Description
 ---|---
 [Clean extent containers commands](/azure/data-explorer/kusto/management/extents-overview) | New article. Describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands.
-[Request classification policy (Preview)](kusto/management/request-classification-policy.md)<br>[Request classification policy (Preview) - Control commands](kusto/management/show-cluster-policy-request-classification-command.md) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
+[Request classification policy (Preview)](kusto/management/request-classification-policy.md)<br>[Request classification policy (Preview) - Management commands](kusto/management/show-cluster-policy-request-classification-command.md) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
 [Request limits policy (Preview)](kusto/management/request-limits-policy.md) | New article. A workload group's request limits policy allows limiting the resources used by the request during its execution.
 [Request rate limit policy (Preview)](kusto/management/request-rate-limit-policy.md) | New article. The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group.
-[Workload groups (Preview)](kusto/management/workload-groups.md)<br>[Workload groups (Preview) - Control commands](kusto/management/show-workload-group-command.md) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
+[Workload groups (Preview)](kusto/management/workload-groups.md)<br>[Workload groups (Preview) - Management commands](kusto/management/show-workload-group-command.md) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
 [Queries management](kusto/management/queries.md) | Updated article. Syntax updated
 
 ## December 2020

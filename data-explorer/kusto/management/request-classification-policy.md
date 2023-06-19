@@ -83,9 +83,9 @@ case(current_principal_is_member_of('aadgroup=somesecuritygroup@contoso.com'), "
      "default")
 ```
 
-## Control commands
+## Management commands
 
-Use the following control commands to manage a cluster's request classification policy.
+Use the following management commands to manage a cluster's request classification policy.
 
 | Command | Description |
 |--|--|

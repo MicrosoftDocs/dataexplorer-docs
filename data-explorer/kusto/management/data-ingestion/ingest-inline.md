@@ -36,7 +36,7 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 | *IngestionPropertyName*, *IngestionPropertyValue* | string | | Any number of [ingestion properties](../../../ingestion-properties.md) that affect the ingestion process.|
 
 > [!NOTE]
-> Unlike most control commands and queries, the text of the *Data* part of the command doesn't have to follow the syntactic conventions of the language. For example, whitespace characters are important, or the `//` combination isn't treated as a comment.
+> Unlike most management commands and queries, the text of the *Data* part of the command doesn't have to follow the syntactic conventions of the language. For example, whitespace characters are important, or the `//` combination isn't treated as a comment.
 
 ## Returns
 

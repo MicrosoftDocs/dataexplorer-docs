@@ -119,7 +119,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 You can create a URI that, when opened in a browser, opens Kusto.Explorer locally and runs a specific query on a specified Kusto database.
 
 > [!NOTE]
-> For security reasons, deep-linking is disabled for control commands.
+> For security reasons, deep-linking is disabled for management commands.
 
 #### Creating a deep-link
 

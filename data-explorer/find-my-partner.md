@@ -367,6 +367,34 @@ With the emerging focus on IoT, Telemetry and streaming data, the need for exper
 - [Fellowmind website](https://www.fellowmindcompany.com)
 - [Microsoft partner site for Fellowmind](https://appsource.microsoft.com/marketplace/partner-dir/3b2de1f1-4306-444d-bed8-e724ef455f1d/overview)
 
+## Get Tech Kft
+
+:::image type="icon" source="media/findmypartner/gettech-logo.png":::
+
+Get Tech is a Microsoft Solutions Partner company with certifications for Azure Digital & App Innovation and Azure Data & AI. Our cloud architects form the backbone of our consultancy having a proven track record of building solutions for customers in the EMEA region. Our projects cover multiple technical areas from Azure infrastructure deployments, IoT architecture and data analytics platform designs, to cloud migrations. Our customers are from multiple domains, including the energy, healthcare and travel industries.
+
+**Partner type**
+
+- SI
+- IoT Solution Provider
+- Cloud Native Software Engineering & Consulting
+- Data Engineering & Consulting for BI, ML or AI solutions
+
+
+**Focus geography**
+
+- EMEA
+- US
+
+**Contact**
+
+- [adx@gettech.io](mailto:adx@gettech.io)
+
+**Additional information**
+
+- [Get Tech Kft website](https://www.gettech.io)
+- [Microsoft partner site for Get Tech Kft](https://appsource.microsoft.com/marketplace/partner-dir/ee2258a4-f0c9-4980-943e-3f2715594f47/overview)
+
 ## Henry Been Consultancy
 
 :::image type="icon" source="media/findmypartner/azure-specialist-logo.png":::
@@ -780,6 +808,34 @@ SkyPoint Cloud is a SaaS and Professional Services consultancy company headquart
 - [SkyPoint Cloud website](https://skypointcloud.com/)
 - [Microsoft partner site for SkyPoint Cloud](https://appsource.microsoft.com/marketplace/partner-dir/19393f3e-7639-4afe-bd82-ffb6e79b24b3)
 
+## SpartaBI ltd
+
+:::image type="icon" source="media/findmypartner/spartabi-logo.png":::
+
+SpartaBI provides boutique consulting and development services in the Microsoft data platform stack. We specialize in designing and implementing cloud based analytical systems.
+
+ADX combines an extremely powerful and fast engine with many built-in utilizations that make life easier for both developers and users. It is an impressive PaaS offering which fits perfectly as a major player in many cloud architectures.
+
+We offer to put our experience and dedication into harnessing the impressive capabilities of ADX and take your solution to great heights.
+
+**Partner type**
+
+- System Integrator
+- Consulting
+
+**Focus geography**
+
+- Israel
+
+**Contact**
+
+- [ThisIs@SpartaBI.com](mailto:ThisIs@SpartaBI.com)
+
+**Additional information**
+
+- [SpartaBI ltd website](https://www.spartabi.com)
+- [Microsoft partner site for SpartaBI ltd](https://appsource.microsoft.com/marketplace/partner-dir/464edfaa-792d-4ff8-84f0-94290a8360ae)
+
 ## Terawe Corporation
 
 :::image type="icon" source="media/findmypartner/terawe-logo.png":::
@@ -864,8 +920,6 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 
 - [https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization](https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization)
 - [https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion](https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion)
-- [https://www.uptake.com/resources/ensign-establishes-a-single-source-of-truth-for-their-data](https://www.uptake.com/resources/ensign-establishes-a-single-source-of-truth-for-their-data)
-- [Enerplus uses insights from Uptake Fusion for data-driven decision-making](https://static1.squarespace.com/static/63a1c6a2415f98749634e9ea/t/63ed0457f54f952c860ec199/1676477527222/Uptake+Case+Study-+Enerplus+%282%29.pdf)
 - [https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring](https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring)
 
 ## Zure Ltd

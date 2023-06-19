@@ -165,7 +165,7 @@ items:
         href: data-factory-load-data.md
       - name: Bulk copy data using Azure Data Factory template
         href: data-factory-template.md
-      - name: Run control commands using Azure Data Factory
+      - name: Run management commands using Azure Data Factory
         href: data-factory-command-activity.md
     - name: Apache Kafka
       displayName: ingest data, ingestion, connector
