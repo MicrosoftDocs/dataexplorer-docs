@@ -121,6 +121,6 @@ The `default` workload group has the following policy defined by default. This p
 }
 ```
 
-## Control commands
+## Management commands
 
-Manage the workload group's request limits policy with [Workload groups control commands](./show-workload-group-command.md).
+Manage the workload group's request limits policy with [Workload groups management commands](./show-workload-group-command.md).

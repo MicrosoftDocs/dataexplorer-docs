@@ -224,4 +224,4 @@ In both of these cases, either "fix" the data, or filter out any irrelevant reco
 
 ## Next steps
 
-Use the [partitioning policy control commands](./show-table-partitioning-policy-command.md) to manage data partitioning policies for tables.
+Use the [partitioning policy management commands](./show-table-partitioning-policy-command.md) to manage data partitioning policies for tables.

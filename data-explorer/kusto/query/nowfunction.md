@@ -25,7 +25,7 @@ The current UTC time will stay the same across all uses of `now()` in a single q
 
 The current UTC clock time, plus the *offset* time if provided, as a `datetime`.
 
-## Example
+## Examples
 
 ### Find time elapsed from a given event
 

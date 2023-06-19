@@ -1,5 +1,5 @@
 items:
-- name: Control commands overview
+- name: Management commands overview
   displayName: Management
   href: index.md
 - name: Workload groups

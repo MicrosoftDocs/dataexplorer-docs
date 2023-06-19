@@ -7,7 +7,7 @@ ms.date: 03/30/2020
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 
-These commands execute a query or a control command and ingest the results of the query into a table. The difference between these commands is how they treat existing or nonexistent tables and data.
+These commands execute a query or a management command and ingest the results of the query into a table. The difference between these commands is how they treat existing or nonexistent tables and data.
 
 |Command          |If table exists                     |If table doesn't exist                    |
 |-----------------|------------------------------------|------------------------------------------|
@@ -35,10 +35,10 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 | *async* | string | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
 | *tableName* | string | &check; | The name of the table to ingest data into. The *tableName* is always related to the database in context. |
 | *propertyName*, *propertyValue* | string | | One or more [supported ingestion properties](#supported-ingestion-properties) used to control the ingestion process. |
-| *queryOrCommand* | string | &check; | The text of a query or a control command whose results will be used as data to ingest.|
+| *queryOrCommand* | string | &check; | The text of a query or a management command whose results will be used as data to ingest.|
 
 > [!NOTE]
-> Only `.show` control commands are supported.
+> Only `.show` management commands are supported.
 
 ## Supported ingestion properties
 

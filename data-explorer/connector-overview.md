@@ -21,6 +21,7 @@ The following table summarizes the available connectors in Azure Data Explorer a
 | [Azure Data Factory](#azure-data-factory) | **Export** <br /><br />**Ingestion** | &#x2717; | First party | Data orchestration |
 | [Azure Event Grid](#azure-event-grid) | **Ingestion** | &check; | First party | Event processing |
 | [Azure Event Hubs](#azure-event-hubs) | **Ingestion** | &check; | First party | Messaging |
+| [Azure Functions](#azure-functions) | **Export** <br /><br />**Ingestion** |  &#x2717; | First party | Workflow integrations |
 | [Azure IoT Hubs](#azure-iot-hubs) | **Ingestion** | &check; | First party | IoT data |
 | [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** | &check; | First party | Event processing |
 | [Logstash](#logstash) | **Ingestion** | &#x2717; | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs |
@@ -102,6 +103,14 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Documentation:** [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)
+
+## Azure Functions
+
+* **Description:**  [Azure Functions](/azure/azure-functions/functions-overview) allow you to run serverless code in the cloud on a schedule or in response to an event. With Azure Data Explorer input and output bindings for Azure Functions, you can integrate Azure Data Explorer into your workflows to ingest data and run queries against your cluster.
+* **Functionality:** Ingestion, Export
+* **Ingestion type supported:** Batching
+* **Use cases:** Workflow integrations.
+* **Documentation:** [Integrating Azure Functions with Azure Data Explorer using input and output bindings (preview)](integrate-azure-functions.md)
 
 ## Azure IoT Hubs
 
