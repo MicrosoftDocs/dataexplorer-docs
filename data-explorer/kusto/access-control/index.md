@@ -13,7 +13,7 @@ Access Control in Kusto is based on two key factors.
 * [Authentication](#authentication): Validates the identity of the security principal making a request
 * [Authorization](#authorization): Validates that the security principal making a request is permitted to make that request on the target resource
 
-A query or a control command on a cluster, database, or table, must pass both authentication and authorization checks.
+A query or a management command on a cluster, database, or table, must pass both authentication and authorization checks.
 
 ## Authentication
 
