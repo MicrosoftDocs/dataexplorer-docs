@@ -23,13 +23,13 @@ For instance, if a tenant performs many compute-intensive queries or ingestions,
 
 ## Architectures overview
 
-The next sections explore deployment architectures in details.  This section contrasts the architectures to facilitate decision making.
+The next sections explore deployment architectures in detail.  This section contrasts the architectures to facilitate decision making.
 
 Architecture|Pros|Cons
 -|-|-
 One tenant per database|Tenants' isolation:  easy to quickly remove tenant data, have different policies, have different schema evolution, etc.|Extent fragmentation<br>Materialized View / Partition Policy count<br>
-One table for many tenants|Data consolidation (extent management)|Tenant removal requires soft delete or purge<br>All tenants have same schema & policies
-One tenant per table in a single database|Easy tenant removal|Extent fragmentation<br>Extra code customization (e.g. different table name per tenant)
+One table for many tenants|Data consolidation (extent management)|Tenant removal requires soft delete or purge<br>All tenants have same schema and policies
+One tenant per table in a single database|Easy tenant removal|Extent fragmentation<br>Extra code customization (e.g., different table name per tenant)
 
 ## Architecture: One tenant per database
 
