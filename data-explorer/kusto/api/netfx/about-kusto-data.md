@@ -3,7 +3,7 @@ title:  Kusto client library
 description: This article describes Kusto client library in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/1/2023
+ms.date: 06/20/2023
 adobe-target: true
 ---
 # Kusto client library
@@ -38,7 +38,10 @@ The following code demonstrates counting the rows of a table named `StormEvents`
 using var client = KustoClientFactory.CreateCslQueryProvider("https://help.kusto.windows.net/Samples;Fed=true");
 using var reader = client.ExecuteQuery("StormEvents | count");
 // Read the first row from reader -- it's 0'th column is the count of records in MyTable
+if (reader.Read())
+{
 Console.WriteLine($"RowCount={reader.GetInt64(0)}");
+}
 ```
 
 ## Example: Enumerating the accessible databases
