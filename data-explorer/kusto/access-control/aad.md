@@ -38,13 +38,11 @@ During the token acquisition process, the client must provide the following info
 * For application authentication: the Azure AD client application credential, which is a secret or certificate.
 * For user authentication: the Azure AD client application `ReplyUrl`, or the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
-If you can't use the client libraries, you can manually implement an authentication flow using MSAL. For more information, see [Authentication flow support in MSAL](active-directory/develop/msal-authentication-flows).
+If you can't use the client libraries, you can manually implement an authentication flow using MSAL.
 
 ## Implement an authentication flow with MSAL
 
-In this section, learn how to create an authentication flow to Azure Data Explorer using MSAL.
-
-If your application is a front-end application intended to authenticate users for an Azure Data Explorer cluster, the application must be granted delegated permissions on Azure Data Explorer. For more information, see [Configure delegated permissions for the application registration](../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
+In this section, learn how to create an authentication flow to Azure Data Explorer using MSAL. For more information on MSAL authentication flows, see [Authentication flow support in MSAL](active-directory/develop/msal-authentication-flows).
 
 ### How to specify the resource
 
@@ -68,7 +66,7 @@ If you know the principal's Azure AD directory, use `https://login.microsoftonli
 > The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer
 > service deployed in a national cloud, set the corresponding national cloud Azure AD service endpoint.
 
-### Examples
+## User and application authentication
 
 The following examples use MSAL to authenticate to Azure Data Explorer. Select the tab relevant for the required type of authentication.
 
