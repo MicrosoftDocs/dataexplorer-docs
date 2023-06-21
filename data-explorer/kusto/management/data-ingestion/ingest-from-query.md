@@ -3,7 +3,7 @@ title:  Kusto query ingestion (set, append, replace)
 description: This article describes Ingest from query (.set, .append, .set-or-append, .set-or-replace) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 06/21/2023
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 
@@ -17,6 +17,20 @@ These commands execute a query or a management command and ingest the results of
 |`.set-or-replace`|Data replaces the data in the table|The table is created and data is ingested|
 
 To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
+
+## Permissions
+
+The following table outlines the minimum required permissions to use the queries described in this document. For more information on permissions, see [Kusto role-based access control](../../access-control/role-based-access-control.md).
+
+|Command|Required permissions|
+|--|--|--|
+|`.set`|Database User|
+|`.append`|Table Ingestor|
+|`.set-or-append`|Database User|
+|`.set-or-replace`|Database User|
+
+> [!NOTE]
+> Modifying the schema of a table using the `extend_schema` or `recreate_schema` properties requires Table Admin permissions or higher.
 
 ## Syntax
 
@@ -45,8 +59,8 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 |Property|Type|Description|
 |--|--|--|
 |`creationTime` | string | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, `now()` will be used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../mergepolicy.md) is aligned with the specified value.|
-|`extend_schema` | bool | If `true`, the command may extend the schema of the table. Default is `false`. This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. |
-|`recreate_schema` | bool | If `true`, the command may recreate the schema of the table. Default is `false`. This option applies only to the `.set-or-replace` command. This option takes precedence over the `extend_schema` property if both are set.|
+|`extend_schema` | bool | If `true`, the command may extend the schema of the table. Default is `false`. This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
+|`recreate_schema` | bool | If `true`, the command may recreate the schema of the table. Default is `false`. This option applies only to the `.set-or-replace` command. This option takes precedence over the `extend_schema` property if both are set. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
 |`folder` | string | The folder to assign to the table. If the table already exists, this property will overwrite the table's folder.|
 |`ingestIfNotExists` | string | If specified, ingestion won't succeed if the table already has data tagged with an `ingest-by:` tag with the same value.|
 |`policy_ingestiontime` | bool | If `true`, the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) will be enabled on the table. The default is `true`.|
