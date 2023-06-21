@@ -142,7 +142,7 @@ In this scenario, an application is sent an Azure AD access token for an arbitra
 
 This flow is called the [OAuth2 token exchange flow](https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-04). It generally requires multiple configuration steps with Azure AD, and in some cases might require special consent from the administrator of the Azure AD tenant. The following sections describe the steps of the flow.
 
-### Step 1: Establish trust relationship between your application and the Azure Data Explorer service
+**Step 1: Establish trust relationship between your application and the Azure Data Explorer service**
 
 1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're
    signed-in to the correct tenant (see top/right corner for the identity
@@ -160,7 +160,7 @@ This flow is called the [OAuth2 token exchange flow](https://tools.ietf.org/html
 
 7. Select **Add permission**.
 
-### Step 2: Perform token exchange in your server code
+**Step 2: Perform token exchange in your server code**
 
 ```csharp
 // Create a confidential authentication client for Azure AD:
@@ -176,7 +176,7 @@ var result = authClient.AcquireTokenOnBehalfOf(
 var accessTokenForAdx = result.AccessToken;
 ```
 
-### Step 3: Provide the token to the Kusto client library and execute queries
+**Step 3: Provide the token to the Kusto client library and execute queries**
 
 ```csharp
 // Create KustoConnectionStringBuilder using the previously acquired Azure AD token
