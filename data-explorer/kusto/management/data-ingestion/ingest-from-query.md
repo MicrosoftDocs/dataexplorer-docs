@@ -24,7 +24,7 @@ To perform different actions on a table, specific permissions are required. The 
 
 * To add rows to an existing table using the `.append` command, you need a minimum of Table Ingestor permissions.
 * To create a new table using the various `.set` commands, you need a minimum of Database User permissions.
-* To replace rows in an existing table using the `.set-or-replace` command, you need a minimum of Database Admin permissions.
+* To replace rows in an existing table using the `.set-or-replace` command, you need a minimum of Table Admin permissions.
 * To modify an existing table schema with the `extend_schema` or `recreate_schema` properties, you need a minimum of Table Admin permissions.
 
 For more information on permissions, see [Kusto role-based access control](../../access-control/role-based-access-control.md).
