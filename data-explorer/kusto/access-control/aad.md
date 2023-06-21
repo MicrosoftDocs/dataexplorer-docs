@@ -11,9 +11,7 @@ ms.date: 05/11/2023
 
 To authenticate with Azure AD, the client must communicate with the Azure AD service and request an access token specific to Azure Data Explorer. Then, the client can use the acquired access token as proof of identity when issuing requests to Azure Data Explorer.
 
-To access Azure Data Explorer programmatically, we recommend using the Kusto [client libraries](../api/client-libraries.md) to make the authentication process simpler. With the client libraries, the authentication properties are set by the [Kusto connection string](../api/connection-strings/kusto.md).
-
-In case you can't use one of the Kusto client libraries, this article provides needed information for you to implement Azure AD authentication flow yourself.
+To access Azure Data Explorer programmatically, we recommend using the Kusto [client libraries](../api/client-libraries.md) to make the authentication process simpler. With the client libraries, the authentication properties are set by the [Kusto connection string](../api/connection-strings/kusto.md). In case you can't use one of the Kusto client libraries, this article provides needed information for you to implement Azure AD authentication flow yourself.
 
 The main types of authentication scenarios are as follows:
 
