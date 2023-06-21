@@ -11,8 +11,6 @@ ms.date: 06/21/2023
 
 To authenticate with Azure AD, the client must communicate with the Azure AD service and request an access token specific to Azure Data Explorer. Then, the client can use the acquired access token as proof of identity when issuing requests to Azure Data Explorer.
 
-To access Azure Data Explorer programmatically, we recommend using the Kusto [client libraries](../api/client-libraries.md) to make the authentication process simpler. With the client libraries, the authentication properties are set by the [Kusto connection string](../api/connection-strings/kusto.md). In case you can't use one of the Kusto client libraries, this article provides needed information for you to implement Azure AD authentication flow yourself.
-
 The main types of authentication scenarios are as follows:
 
 * [User authentication](#user-authentication): Verifies the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.  
@@ -27,7 +25,7 @@ For Azure Data Explorer, the Azure AD client application is configured to reques
 
 ## Microsoft Authentication Library (MSAL)
 
-The Kusto [client libraries](../api/client-libraries.md) use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens for communicating with Azure Data Explorer. Throughout the process of acquiring a token, the client needs to provide the following information:
+To access Azure Data Explorer programmatically, we recommend using the Kusto [client libraries](../api/client-libraries.md). The Kusto client libraries use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens for communicating with Azure Data Explorer. Throughout the process of acquiring a token, the client needs to provide the following information:
 
 * The [resource](#how-to-specify-the-resource) or cluster URI.
 * The [Azure AD tenant ID](#how-to-specify-the-azure-ad-tenant-id)
@@ -35,6 +33,8 @@ The Kusto [client libraries](../api/client-libraries.md) use [Microsoft Authenti
 * The Azure AD client application ID.
 * For application authentication: the Azure AD client application credential, which is a secret or certificate.
 * For user authentication: the Azure AD client application `ReplyUrl`, or the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
+
+With the client libraries, the authentication properties are set by the [Kusto connection string](../api/connection-strings/kusto.md).
 
 ### How to specify the resource
 
