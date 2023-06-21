@@ -20,17 +20,14 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 
 ## Permissions
 
-The following table outlines the minimum required permissions to use the queries described in this document. For more information on permissions, see [Kusto role-based access control](../../access-control/role-based-access-control.md).
+To perform different actions on a table, specific permissions are required. The following list describes the permission requirements for the commands described in this document:
 
-|Command|Required permissions|
-|--|--|--|
-|`.set`|Database User|
-|`.append`|Table Ingestor|
-|`.set-or-append`|Database User|
-|`.set-or-replace`|Database User|
+* To add rows to an existing table using the `.append` command, you need a minimum of Table Ingestor permissions.
+* To create a new table using the various `.set` commands, you need a minimum of Database User permissions.
+* To replace rows in an existing table using the `.set-or-replace` command, you need a minimum of Database Admin permissions.
+* To modify an existing table schema with the `extend_schema` or `recreate_schema` properties, you need a minimum of Table Admin permissions.
 
-> [!NOTE]
-> Modifying the schema of a table using the `extend_schema` or `recreate_schema` properties requires Table Admin permissions or higher.
+For more information on permissions, see [Kusto role-based access control](../../access-control/role-based-access-control.md).
 
 ## Syntax
 
