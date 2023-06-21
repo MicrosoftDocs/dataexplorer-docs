@@ -120,26 +120,21 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 ## On-behalf-of authentication
 
+[On-behalf-of authentication](/azure/active-directory/develop/msal-authentication-flows#on-behalf-of-obo) is relevant when you have a web application or service that acts as a mediator between the user or application and Azure Data Explorer.
+
 In this scenario, an application is sent an Azure AD access token for an arbitrary resource managed by the application, and the application uses that token to acquire a new Azure AD access token for the Azure Data Explorer resource. Then, the application can access Azure Data Explorer on behalf of the principal indicated by the original Azure AD access token.
 
-This flow is called the [OAuth2 token exchange flow](https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-04). It generally requires multiple configuration steps with Azure AD, and in some cases might require special consent from the administrator of the Azure AD tenant. The following sections describe the steps of the flow.
+This flow is called the [OAuth 2.0 on-behalf-of authentication flow](/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). It generally requires multiple configuration steps with Azure AD, and in some cases might require special consent from the administrator of the Azure AD tenant. The following sections describe the steps of the flow.
 
-**Step 1: Establish trust relationship between your application and the Azure Data Explorer service**
+**Step 1: Establish trust relationship between your application and Azure Data Explorer**
 
 1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're
-   signed-in to the correct tenant (see top/right corner for the identity
-   used to sign in to the portal).
-
-2. On the resources pane, select **Azure Active Directory**, then **App registrations**.
-
+   signed-in to the correct tenant.
+2. On the resources pane, select **Azure Active Directory** and then **App registrations**.
 3. Locate the application that uses the on-behalf-of flow and open it.
-
 4. Select **API permissions**, then **Add a permission**.
-
 5. Search for the application named **Azure Data Explorer** and select it.
-
-6. Select **user_impersonation / Access Kusto**.
-
+6. Select **user_impersonation**.
 7. Select **Add permission**.
 
 **Step 2: Perform token exchange in your server code**
