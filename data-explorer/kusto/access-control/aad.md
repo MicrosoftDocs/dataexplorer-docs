@@ -26,6 +26,9 @@ The main types of authentication scenarios are as follows:
 
 To authenticate with Azure Data Explorer, the Kusto client libraries use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens. We recommend using these libraries for user and application authentication, as they simplify the process. When using the client libraries, the authentication properties are configured through the [Kusto connection string](../api/connection-strings/kusto.md).
 
+> [!NOTE]
+> With Kusto [client libraries](../api/client-libraries.md), Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user.
+
 During the token acquisition process, the client must provide the following information:
 
 * The [resource](#how-to-specify-the-resource) or cluster URI.
