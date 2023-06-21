@@ -3,7 +3,7 @@ title:  Azure Active Directory authentication
 description: This article describes Azure Active Directory authentication in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/11/2023
+ms.date: 06/21/2023
 ---
 # Authenticate with Azure Active Directory
 
@@ -15,9 +15,9 @@ To access Azure Data Explorer programmatically, we recommend using the Kusto [cl
 
 The main types of authentication scenarios are as follows:
 
-* [User authentication](#user-authentication): verifies the identity of human users either through interactive prompts that prompt the user for their credentials or programmatically via a token.
-* [Application authentication](#application-authentication): verifies the identity of a service or application that needs to access resources without human intervention by using configured credentials.
-* [On-behalf-of authentication](#on-behalf-of-authentication): allows an application to obtain an Azure AD access token from another application and use it to access Azure Data Explorer.
+* [User authentication](#user-authentication): Verifies the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.  
+* [Application authentication](#application-authentication): Verifies the identity of an application that needs to access resources without human intervention by using configured credentials.  
+* [On-behalf-of authentication](#on-behalf-of-authentication): Allows an application to obtain an Azure AD access token from another application and use it to access Azure Data Explorer.  
 
 ## Understanding Azure AD permissions
 
@@ -29,28 +29,28 @@ For Azure Data Explorer, the Azure AD client application is configured to reques
 
 The Kusto [client libraries](../api/client-libraries.md) use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens for communicating with Azure Data Explorer. Throughout the process of acquiring a token, the client needs to provide the following information:
 
-* The [resource](#specify-the-resource) or cluster URI.
-* The [Azure AD tenant ID](#specify-the-azure-ad-tenant-id)
-* The [Azure AD authority URI](#specify-the-azure-ad-authority-uri).
+* The [resource](#how-to-specify-the-resource) or cluster URI.
+* The [Azure AD tenant ID](#how-to-specify-the-azure-ad-tenant-id)
+* The [Azure AD authority URI](#how-to-specify-the-azure-ad-authority-uri).
 * The Azure AD client application ID.
 * For application authentication: the Azure AD client application credential, which is a secret or certificate.
 * For user authentication: the Azure AD client application `ReplyUrl`, or the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
-### Specify the resource
+### How to specify the resource
 
-The client must specify the resource ID for which the Azure AD token should be issued. The resource ID for an Azure Data Explorer endpoint is the cluster URI without port information and path.
+The client must specify the resource ID for which the Azure AD token should be issued, which for an Azure Data Explorer endpoint is the cluster URI without port information and path.
 
-For example, the resource ID for the `help` cluster is `https://help.kusto.windows.net`.
+**Example**: The resource ID for the `help` cluster is `https://help.kusto.windows.net`.
 
-### Specify the Azure AD tenant ID
+### How to specify the Azure AD tenant ID
 
-Azure AD is a multi-tenant service, and every organization can create an object called *directory* in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a *tenant*. Azure AD tenants are identified by a GUID, or the *tenant ID*. In many cases, the domain name of the organization can identity the Azure AD tenant.
+Azure AD is a multi-tenant service, and every organization can create an object called directory in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a tenant. Azure AD tenants are identified by a GUID, or the tenant ID. In many cases, the domain name of the organization can identity the Azure AD tenant.
 
-For example, an organization called "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.
+**Example**: An organization "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.
 
-### Specify the Azure AD authority URI
+### How to specify the Azure AD authority URI
 
-The *Azure AD authority URI* is the endpoint used for authentication. The Azure AD directory, or tenant, determines the Azure AD authority URI.
+The Azure AD authority URI is the endpoint used for authentication. The Azure AD directory, or tenant, determines the Azure AD authority URI.
 
 If you know the principal's Azure AD directory, use `https://login.microsoftonline.com/{tenantId}` as the Azure AD authority URI where `{tenantId}` is either the tenant ID or domain name. If you don't know the principal's directory, then use the "common" Azure AD authority by replacing `{tenantId}` with `common`.
 
