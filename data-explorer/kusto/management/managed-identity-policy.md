@@ -1,9 +1,9 @@
 ---
-title:  Kusto ManagedIdentity policy
-description: This article describes ManagedIdentity policy in Azure Data Explorer.
+title: Kusto ManagedIdentity policy
+description: Learn about the ManagedIdentity policy to control managed identities.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/24/2023
 ---
 # Managed Identity policy
 

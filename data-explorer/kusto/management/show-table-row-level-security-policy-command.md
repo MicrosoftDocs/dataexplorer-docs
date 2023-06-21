@@ -1,11 +1,11 @@
 ---
-title: .show table row level security policy command
-description: Learn how to use the `.show table row level security policy` command to display the table's row level security policy.
+title: .show table policy row_level_security command
+description: Learn how to use the `.show table policy row_level_security` command to display the table's row level security policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show table row level security policy
+# .show table policy row_level_security command
 
 Display the table's [row_level_security policy](rowlevelsecuritypolicy.md). The Row Level Security simplifies the design and coding of security. It lets you apply restrictions on data row access in your application. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company.
 

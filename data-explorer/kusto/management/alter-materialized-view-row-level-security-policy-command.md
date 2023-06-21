@@ -1,11 +1,11 @@
 ---
-title:  .alter materialized view row level security policy command
-description: Learn how to use the .alter materialized view row level security policy command to enable or disable the materialized view's row level security policy.
+title: .alter materialized-view policy row_level_security command
+description: Learn how to use the `.alter materialized-view policy row_level_security` command to enable or disable the materialized view's row level security policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 05/25/2023
 ---
-# .alter materialized view row level security policy
+# .alter materialized-view policy row_level_security command
 
 Enables or disables a materialized view's [row_level_security policy](rowlevelsecuritypolicy.md). The Row Level Security simplifies the design and coding of security. It lets you apply restrictions on data row access in your application. For example, limit user access to rows relevant to their department, or restrict customer access to only the data relevant to their company.
 

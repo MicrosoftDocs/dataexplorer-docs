@@ -1,11 +1,11 @@
 ---
-title: .create-or-alter function
+title: .create-or-alter function command
 description: Learn how to use the `.create-or-alter function` command to create a stored function or alter an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .create-or-alter function
+# .create-or-alter function command
 
 Creates a stored function or alters an existing function and stores it inside the database metadata.
 

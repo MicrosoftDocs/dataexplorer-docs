@@ -3,6 +3,7 @@ title: Use follower database feature to attach databases in Azure Data Explorer
 description: Learn about how to attach databases in Azure Data Explorer using the follower database feature.
 ms.reviewer: gabilehner
 ms.topic: how-to
+ms.custom: devx-track-azurepowershell
 ms.date: 05/17/2023
 ---
 
@@ -245,7 +246,7 @@ Use the following steps to attach a database:
     | *attachedDatabaseConfigurationsName* | The name of the attached database configurations object. The name can be any string that is unique at the cluster level. |  |
     | *databaseName* | The name of the database to be followed. To follow all the leader's databases, use '*'. |  |
     | *leaderClusterResourceId* | The resource ID of the leader cluster. |  |
-    | *defaultPrincipalsModificationKind* | The default principal modification kind. | Can be `Union`, `Replace`, or `None`. For more information about the default principal modification kind, see [principal modification kind control command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind). |
+    | *defaultPrincipalsModificationKind* | The default principal modification kind. | Can be `Union`, `Replace`, or `None`. For more information about the default principal modification kind, see [principal modification kind management command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind). |
     | *tablesToInclude* | The list of tables to include. To include all tables starting with 'Logs', use ["Logs*"]. | `["table1ToInclude", "table2ToInclude"]` |
     | *tablesToExclude* | The list of tables to exclude. To exclude all tables, use ["*"]. | `["table1ToExclude", "table2ToExclude"]` |
     | *externalTablesToInclude* | The list of tables to include. To include all external tables starting with 'Logs', use ["Logs*"]. | `["ExternalTable1ToInclude", "ExternalTable2ToInclude"]` |
@@ -591,15 +592,15 @@ When attaching a database, specify the **"default principals modification kind"*
 |**Replace**   |    No inheritance of principals from the original database. New principals must be created for the attached database.     |
 |**None**   |   The attached database principals include only the principals of the original database with no other principals.      |
 
-For more information about using control commands to configure the authorized principals, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
+For more information about using management commands to configure the authorized principals, see [Management commands for managing a follower cluster](kusto/management/cluster-follower.md).
 
 ### Manage permissions
 
-Managing read-only database permission is the same as for all database types. See [manage permissions in the Azure portal](manage-database-permissions.md#manage-permissions-in-the-azure-portal).
+Managing read-only database permission is the same as for all database types. To assign permissions, see [Manage database permissions in the Azure portal](manage-database-permissions.md) or use management commands to [Manage database security roles](kusto/management/manage-database-security-roles.md).
 
 ### Configure caching policy
 
-The follower database administrator can modify the [caching policy](./kusto/management/show-table-cache-policy-command.md) of the attached database or any of its tables on the hosting cluster. The default is to combine the source database in the leader cluster database and table-level caching policies with the policies defined in the database and table-level override policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using control commands to configure the caching policy on the follower database or table, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
+The follower database administrator can modify the [caching policy](./kusto/management/show-table-cache-policy-command.md) of the attached database or any of its tables on the hosting cluster. The default is to combine the source database in the leader cluster database and table-level caching policies with the policies defined in the database and table-level override policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using management commands to configure the caching policy on the follower database or table, see [Management commands for managing a follower cluster](kusto/management/cluster-follower.md).
 
 ## Notes
 
@@ -620,4 +621,4 @@ The follower database administrator can modify the [caching policy](./kusto/mana
 
 ## Next steps
 
-* For information about follower cluster configuration, see [Control commands for managing a follower cluster](kusto/management/cluster-follower.md).
+* For information about follower cluster configuration, see [Management commands for managing a follower cluster](kusto/management/cluster-follower.md).

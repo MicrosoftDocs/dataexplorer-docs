@@ -1,15 +1,18 @@
 ---
 title:  Role-based access control in Kusto
-description: This article describes role-based access control in Kusto in Azure Data Explorer.
+description: This article describes role-based access control in Kusto.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/21/2023
+ms.date: 05/30/2023
 ---
 # Kusto role-based access control
 
 Kusto uses a role-based access control (RBAC) model in which [principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals) get access to resources based on their assigned roles. Roles are defined for a specific cluster, database, table, external table, materialized view, or function. When defined for a cluster, the role applies to all databases in the cluster. When defined for a database, the role applies to all entities in the database.
 
-ARM permissions, such as being a subscription owner or a cluster owner, grant access to resources in the control plane. To access data, the separate data plane permissions described in this document are required.
+Azure Resource Manager (ARM) roles, such as subscription owner or cluster owner, grant access permissions for resource administration. For data administration, you need the roles described in this document.
+
+> [!NOTE]
+> To delete a database, you need at least **Contributor** ARM permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
 ## Roles and permissions
 
@@ -38,10 +41,8 @@ The **Manage** column offers ways to add or remove role principals.
 |Materialized view|Admin |Full permission to alter the view, delete the view, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-materialized-view-security-roles.md)|
 |Function|Admin |Full permission to alter the function, delete the function, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-function-security-roles.md)|
 
-## Next steps
+## See also
 
-* To set cluster level permissions, see [manage cluster permissions](../../manage-cluster-permissions.md).
-* To set permissions for a database, use the [Azure portal](../../manage-database-permissions.md) or [use management commands](../management/security-roles.md).
-* To set permissions for a table, external table, function, or materialized view, [use management commands](../management/security-roles.md).
-* To grant a principal from a different tenant access to a resource, see [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md).
-* To grant a principal view access to a subset of tables, see [manage table view access](../management/manage-table-view-access.md).
+* [Manage cluster permissions](../../manage-cluster-permissions.md)
+* [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md)
+* [Manage view access to tables within the same database](../management/manage-table-view-access.md)

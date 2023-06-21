@@ -1,11 +1,11 @@
 ---
-title:  .alter-merge materialized view merge policy command
-description: Learn how to use the .alter-merge materialized view merge policy command to change the materialized view's merge policy.
+title:  .alter-merge materialized-view policy merge command
+description: Learn how to use the `.alter-merge materialized-view policy merge policy` command to change the materialized view's merge policy.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/28/2023
 ---
-# .alter-merge materialized view merge policy
+# .alter-merge materialized-view policy merge command
 
 Changes the materialized view's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
 

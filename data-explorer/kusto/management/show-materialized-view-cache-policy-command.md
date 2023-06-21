@@ -1,11 +1,11 @@
 ---
-title:  .show materialized view cache policy command
-description: This article describes the .show materialized view cache policy command in Azure Data Explorer.
+title: .show materialized-view policy caching command
+description: Learn how to use the `.show materialized-view policy caching` command to show the materialized view's cache policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/24/2023
 ---
-# .show materialized view cache policy
+# .show materialized-view policy caching command
 
 Show the materialized view cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 

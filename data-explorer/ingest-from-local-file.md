@@ -3,7 +3,7 @@ title: Ingest JSON data from a local file to an existing table in Azure Data Exp
 description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 09/14/2022
+ms.date: 06/05/2023
 ---
 # Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer
 
@@ -16,11 +16,11 @@ This document describes using the ingestion wizard to ingest JSON data from a lo
 
 ## Ingest data
 
-1. In the left menu of the Azure Data Explorer web UI, select **Data**.
+1. From the left menu, select **Query**.
 
-1. From the **Quick actions** section, select **Ingest data**. Alternatively, from the **All actions** section, select **Ingest data** and then **Ingest**.
+1. Right-click on the database where you want to ingest the data. Select **Ingest data**.
 
-   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI to select the ingestion wizard for a table." lightbox="media/ingestion-wizard-existing-table/ingest-new-data.png":::
+    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI." lightbox="media/ingest-data-wizard/ingest-data-from-query-page.png":::
 
 ## Select an ingestion type
 
@@ -115,7 +115,12 @@ In the **Data ingestion completed** window, all three steps are marked with gree
 
 ## Next steps
 
-* Get an [overview of the ingestion wizard](ingest-data-wizard.md)
-* Learn how to [Ingest data from a container/ADLS into Azure Data Explorer](/azure/data-explorer/ingest-from-container)
-* [Query data](web-query-data.md) in the Azure Data Explorer web UI
-* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) for Azure Data Explorer using [Kusto Query Language (KQL)](kusto/query/index.md)
+For another ingestion scenario, see the following article:
+
+* [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container)
+
+To get started querying data, see the following articles:
+
+* [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
+* [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)

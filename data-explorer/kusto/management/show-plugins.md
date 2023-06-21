@@ -1,11 +1,11 @@
 ---
-title:  Plugins command show plugins
-description: This article describes plugins management commands in Azure Data Explorer.
+title: .show plugins command
+description: Learn how to use the `.show plugins` command to list all plugins of the cluster.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/23/2023
 ---
-# .show plugins
+# .show plugins command
 
 Lists all plugins of the cluster.
 

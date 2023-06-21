@@ -9,12 +9,13 @@ zone_pivot_groups: kql-flavors-all
 ---
 # geoip_fl()
 
-::: zone pivot="azuredataexplorer, azuremonitor"
+::: zone pivot="azuredataexplorer"
 
 `geoip_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves geographic information of ip address.
 
 > [!NOTE]
-> This function retrieved geographic data from GeoLite2 data created by MaxMind, available from [http://www.maxmind.com](http://www.maxmind.com). Please review [GeoLite2 End User License Agreement](https://www.maxmind.com/en/geolite2/eula).
+> * Use the native function [geo_info_from_ip_address()](../query/geo-info-from-ip-address-function.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
+> * This function retrieved geographic data from GeoLite2 data created by MaxMind, available from [http://www.maxmind.com](http://www.maxmind.com). Please review [GeoLite2 End User License Agreement](https://www.maxmind.com/en/geolite2/eula).
 
 ## Prerequisites
 
@@ -220,10 +221,9 @@ datatable(ip:string) [
 | 205.251.242.103 | United States | Virginia | Ashburn | -77.4903 | 39.0469 |
 | 8.8.8.8 | United States | California | Los Angeles | -118.2441 | 34.0544 |
 
-
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 

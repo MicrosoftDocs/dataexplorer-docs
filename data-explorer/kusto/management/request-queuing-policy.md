@@ -1,9 +1,9 @@
 ---
-title:  Request queuing policy
-description: This article describes the request queuing policy in Azure Data Explorer.
+title: Request queuing policy
+description: Learn how to use the request queuing policy to control queueing of requests for delayed execution.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/02/2021
+ms.date: 05/24/2023
 ---
 # Request queuing policy (Preview)
 
@@ -13,7 +13,7 @@ Queuing of requests can reduce the number of throttling errors during times of p
 
 The policy may be defined only for workload groups with a [request rate limit policy](request-rate-limit-policy.md) that limits the max concurrent requests at the scope of the workload group.
 
-Use the [.alter-merge workload group](alter-merge-workload-group-command.md#alter-the-request-queuing-policy) control command to enable request queuing.
+Use the [.alter-merge workload group](alter-merge-workload-group-command.md#alter-the-request-queuing-policy) management command to enable request queuing.
 
 ## The policy object
 
@@ -21,6 +21,6 @@ The policy includes a single property:
 
 * `IsEnabled`: A boolean indicating if the policy is enabled. The default value is `false`.
 
-## Control commands
+## Management commands
 
-Manage the workload group's request limits policy with [Workload groups control commands](./show-workload-group-command.md).
+Manage the workload group's request limits policy with [Workload groups management commands](./show-workload-group-command.md).

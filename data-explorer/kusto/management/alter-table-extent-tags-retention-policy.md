@@ -1,11 +1,11 @@
 ---
-title:  Alter table extent tags retention policy management
-description: Learn how to use the alter extent tags retention policy command to alter the table's extent tag retention policy.
+title:  .alter table policy extent_tags_retention command
+description: Learn how to use the `.alter table policy extent_tags_retention` command to alter the table's extent tag retention policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 06/04/2023
 ---
-# .alter table extent tags retention policy
+# .alter table policy extent_tags_retention command
 
 Alters the table's extent tags retention policy. For more information, see [extent tags retention policy](extent-tags-retention-policy.md).
 

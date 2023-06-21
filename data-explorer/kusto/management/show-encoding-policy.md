@@ -1,11 +1,11 @@
 ---
-title:  Show encoding policy
-description: This article describes the `.show encoding policy` command in Azure Data Explorer.
+title: .show policy encoding command
+description: Learn how to use the `.show policy encoding` command to show the encoding policy of the specified entity.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 05/23/2023
 ---
-# .show encoding policy
+# .show policy encoding command
 
 Shows the encoding policy. For an overview of the encoding policy, see [Encoding policy](encoding-policy.md).
 

@@ -3,7 +3,7 @@ title: Ingest data into Azure Data Explorer using the ingestion wizard
 description: Overview of ingesting (loading) data into Azure Data Explorer simply, using the ingestion wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 02/13/2023
+ms.date: 06/05/2023
 ---
 
 # What is the ingestion wizard?
@@ -33,13 +33,9 @@ The ingestion wizard provides the following features:
 
 There are many entry points to the ingestion wizard.
 
-* In the web UI, select **Data** in the left pane. Within the **Data Management** page, select a type of ingestion and select **Ingest**.
-
-    :::image type="content" source="media/ingest-data-wizard/select-data-pane.png" alt-text="Screenshot of options to ingest data from the data management window of the Azure Data Explorer web UI interface - Azure Data Explorer." lightbox="media/ingest-data-wizard/select-data-pane.png":::
-
 * In the web UI, select **Query** in the left pane. Right-click the database or table and select **Ingest data**.
 
-    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI.":::
+    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI." lightbox="media/ingest-data-wizard/ingest-data-from-query-page.png":::
 
 * In the web UI, select **My cluster** in the left pane and then select **Ingest**.
 
@@ -132,8 +128,13 @@ Discover the available options within each [Data management](https://dataexplore
 
 ## Next steps
 
+For ingestion scenarios, see the following articles:
+
 * [Ingest JSON data from a local file to an existing table in Azure Data Explorer using the ingestion wizard](/azure/data-explorer/ingest-from-local-file)
 * [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container)
-* [Query data in Azure Data Explorer web UI](web-query-data.md)
-* [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
-* [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md)
+
+To get started querying data, see the following articles:
+
+* [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
+* [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)

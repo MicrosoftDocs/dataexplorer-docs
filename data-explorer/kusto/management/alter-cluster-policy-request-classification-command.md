@@ -1,11 +1,11 @@
 ---
 title:  .alter cluster policy request_classification command
-description: Learn how to use the .alter cluster policy request_classification command to alter the cluser's request classification policy.
+description: Learn how to use the `.alter cluster policy request_classification` command to alter the cluser's request classification policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 04/20/2023
 ---
-# .alter cluster policy request_classification policy
+# .alter cluster policy request_classification command
 
 Alters the cluster's request classification policy.
 

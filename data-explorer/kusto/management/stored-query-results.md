@@ -1,9 +1,9 @@
 ---
-title:  Stored query results
-description: This article describes how to create and use stored query results in Azure Data Explorer.
+title: Stored query results
+description: Learn how to create and use stored query results to store the results of a query on the service for up to 24 hours.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 05/09/2023
+ms.date: 05/23/2023
 ---
 
 # Stored query results
@@ -141,7 +141,7 @@ stored_query_result("DailyClicksByAdNetwork7Days")
 | 102 | 2020-01-02 00:00:00.0000000 | SuperAds | 123 |
 | ... | ... | ... | ... |
 
-## Control commands
+## Management commands
 
 ### .show stored_query_results
 

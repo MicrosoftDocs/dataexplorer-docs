@@ -1,11 +1,11 @@
 ---
-title:  .show table cache policy command
-description: This article describes the .show table cache policy command in Azure Data Explorer.
+title: .show table policy caching command
+description: Learn how to use the `.show table policy caching` command to show the table's cache policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/24/2023
 ---
-# .show table cache policy
+# .show table policy caching command
 
 Show the table cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 

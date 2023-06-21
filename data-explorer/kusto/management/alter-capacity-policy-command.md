@@ -1,11 +1,11 @@
 ---
-title:  Alter capacity policy command
-description: Learn how to use the .alter capacity policy command to change the cluster's capacity policy.
+title:  .alter cluster policy capacity command
+description: Learn how to use the `.alter cluster policy capacity` command to change the cluster's capacity policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 02/21/2023
 ---
-# .alter capacity policy
+# .alter cluster policy capacity command
 
 Changes the cluster's [capacity policy](capacitypolicy.md). A capacity policy controls the computational resources for data management operations on the cluster.
 
@@ -33,13 +33,13 @@ Returns a JSON representation of the policy.
 ## Example
 
 ```kusto
-.alter cluster policy capacity
+.alter cluster policy capacity ```
 {
   "IngestionCapacity": {
     "ClusterMaximumConcurrentOperations": 512,
     "CoreUtilizationCoefficient": 0.75
   }
-}
+}```
 ```
 
 **Output**

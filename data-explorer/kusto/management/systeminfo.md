@@ -1,9 +1,9 @@
 ---
-title:  System information
-description: This article describes System information in Azure Data Explorer.
+title: System information
+description: Learn how to use system information commands available to database admins and database monitors to explore usage, track operations and investigate ingestion failures.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/07/2019
+ms.date: 05/23/2023
 ---
 # System information
 
@@ -15,4 +15,5 @@ This section summarizes commands that are available to `Database Admins` and `Da
 * [`.show journal`](journal.md) - displays history of the metadata operations.
 * [`.show operations`](operations.md) - displays administrative operations both running and completed, since Admin node was last elected.
 * [`.show ingestion failures`](ingestionfailures.md) - displays information on failures encountered during data ingestion to the cluster.
+* [`.show table details`](estimate-table-size.md) - displays information on table size and other table statistics.
 * [`.show table data statistics`](show-table-data-statistics.md) - displays table data statistics per column.

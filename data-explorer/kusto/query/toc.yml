@@ -4,14 +4,16 @@ items:
 - name: Syntax conventions
   href: syntax-conventions.md
 - name: Quick reference guide
-  href: ../../kql-quick-reference.md
+  href: kql-quick-reference.md
+- name: Add a comment in KQL
+  href: comment.md
 - name: Query best practices
   items:
   - name: Best practices
     href: best-practices.md
   - name: Optimize queries that use named expressions
     displayName: let statement, user defined functions, as operator, calculated
-    href: ../../named-expressions.md
+    href: named-expressions.md
 - name: Cross-cluster queries
   items:
   - name: Cross-cluster queries and schema changes
@@ -130,6 +132,28 @@ items:
     items:
     - name: join operator
       href: joinoperator.md
+    - name: join flavors
+      items:
+      - name: innerunique
+        href: join-innerunique.md
+      - name: inner
+        href: join-inner.md
+      - name: leftouter
+        href: join-leftouter.md
+      - name: rightouter
+        href: join-rightouter.md
+      - name: fullouter
+        href: join-fullouter.md
+      - name: leftsemi
+        href: join-leftsemi.md
+      - name: leftanti
+        href: join-leftanti.md
+        displayName: leftantisemi, anti
+      - name: rightsemi
+        href: join-rightsemi.md
+        displayName: rightantisemi
+      - name: rightanti
+        href: join-rightanti.md
     - name: Cross-cluster join
       href: joincrosscluster.md
     - name: Broadcast join
@@ -211,6 +235,8 @@ items:
         href: visualization-timechart.md
       - name: timepivot
         href: visualization-timepivot.md
+      - name: treemap
+        href: visualization-treemap.md
   - name: sample operator
     href: sampleoperator.md
   - name: sample-distinct operator
@@ -772,11 +798,11 @@ items:
   - name: repeat()
     href: repeatfunction.md
   - name: replace_regex()
-    displayName: replace()
     href: replace-regex-function.md
   - name: replace_string()
-    displayName: replace()
     href: replace-string-function.md
+  - name: replace_strings()
+    href: replace-strings-function.md
   - name: reverse()
     href: reversefunction.md
   - name: round()
@@ -1388,11 +1414,5 @@ items:
       href: ../tools/kusto-explorer-troubleshooting.md
   - name: Kusto.Cli
     href: ../tools/kusto-cli.md
-  - name: Kusto emulator
-    items:
-    - name: Kusto emulator overview
-      href: ../../kusto-emulator-overview.md
-    - name: Install the Kusto emulator
-      href: ../../kusto-emulator-install.md
   - name: Kusto extension for Azure Data Studio >>
     href: /sql/azure-data-studio/extensions/kusto-extension

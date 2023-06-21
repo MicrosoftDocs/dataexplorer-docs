@@ -1,9 +1,9 @@
 ---
-title:  Request classification policy
-description: This article describes the request classification policy in Azure Data Explorer.
+title: Request classification policy
+description: Learn how to use the request classification policy to assign incoming requests to a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 05/24/2023
 ---
 # Request classification policy
 
@@ -50,15 +50,15 @@ A classification function:
     * `externaldata`
 * Has access to a special `dynamic` symbol, a property-bag named `request_properties`, with the following properties:
 
-    | Name                  | Type   | Description                                                                                                                                                                                                                                                                       | Example                                                                               |
+    | Name                  | Type   | Description                                                                                                                                                                                                                                                                       | Examples                                                                              |
     |-----------------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
     | `current_database`    | string | The name of the request database.                                                                                                                                                                                                                                                 | `"MyDatabase"`                                                                        |
-    | `current_application` | string | The name of the application that sent the request.                                                                                                                                                                                                                                | `"Kusto.Explorer"`                                                                    |
+    | `current_application` | string | The name of the application that sent the request.                                                                                                                                                                                                                                | `"Kusto.Explorer"`, `"KusWeb"`                                                                    |
     | `current_principal`   | string | The fully qualified name of the principal identity that sent the request.                                                                                                                                                                                                         | `"aaduser=1793eb1f-4a18-418c-be4c-728e310c86d3;83af1c0e-8c6d-4f09-b249-c67a2e8fda65"` |
-    | `query_consistency`   | string | For queries: the consistency of the query - `strongconsistency` or `weakconsistency`. This property can be set by the caller as part of the request's [Client request properties](../api/netfx/request-properties.md): The client request property to set is: `queryconsistency`. | `"strongconsistency"`                                                                 |
-    | `request_description` | string | Custom text that the author of the request can include. The text can be set by the caller as part of the request's [Client request properties](../api/netfx/request-properties.md): The client request property to set is: `request_description`.                                 | `"Some custom description"`                                                           |
+    | `query_consistency`   | string | For queries: the consistency of the query - `strongconsistency` or `weakconsistency`. This property can be set by the caller as part of the request's [Client request properties](../api/netfx/request-properties.md): The client request property to set is: `queryconsistency`. | `"strongconsistency"`, `"weakconsistency"`                                                                 |
+    | `request_description` | string | Custom text that the author of the request can include. The text can be set by the caller as part of the request's [Client request properties](../api/netfx/request-properties.md): The client request property to set is: `request_description`.                                 | `"Some custom description"`; automatically populated for dashboards: `"dashboard:{dashboard_id};version:{version};sourceId:{source_id};sourceType:{tile/parameter}"`                                                           |
     | `request_text`        | string | The obfuscated text of the request. Obfuscated string literals included in the query text are replaced by multiple of star (`*`) characters. **Note:** only the leading 65,536 characters of the request text are evaluated.                                                      | `".show version"`                                                                     |
-    | `request_type`        | string | The type of the request - `Command` or `Query`.                                                                                                                                                                                                                                   | `"Command"`                                                                           |
+    | `request_type`        | string | The type of the request - `Command` or `Query`.                                                                                                                                                                                                                                   | `"Command"`, `"Query"`                                                                           |
 
 ### Examples
 
@@ -83,9 +83,9 @@ case(current_principal_is_member_of('aadgroup=somesecuritygroup@contoso.com'), "
      "default")
 ```
 
-## Control commands
+## Management commands
 
-Use the following control commands to manage a cluster's request classification policy.
+Use the following management commands to manage a cluster's request classification policy.
 
 | Command | Description |
 |--|--|

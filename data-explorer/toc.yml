@@ -143,6 +143,7 @@ items:
         displayName: ingest
         href: ingest-data-event-grid-overview.md
       - name: Create an Event Grid data connection
+        displayName: rename blob, upload to azure storage, use event grid, remove event grid
         href: create-event-grid-connection.md
       - name: Manually create resources in Azure portal
         displayName: Manually create resources for Event Grid ingestion, Ingest
@@ -164,7 +165,7 @@ items:
         href: data-factory-load-data.md
       - name: Bulk copy data using Azure Data Factory template
         href: data-factory-template.md
-      - name: Run control commands using Azure Data Factory
+      - name: Run management commands using Azure Data Factory
         href: data-factory-command-activity.md
     - name: Apache Kafka
       displayName: ingest data, ingestion, connector
@@ -222,8 +223,6 @@ items:
         - name: Add a cluster connection
           href: add-cluster-connection.md
           displayName: connect to cluster
-        - name: Customize settings
-          href: web-customize-settings.md
         - name: Explore the sample gallery
           href: web-ui-samples-query.md
         - name: Explore the results grid
@@ -232,11 +231,17 @@ items:
           href: web-share-queries.md
         - name: Keyboard shortcuts
           href: web-ui-query-keyboard-shortcuts.md
+        - name: Write KQL queries
+          href: web-ui-kql.md
     - name: Query data in Azure Data Lake
       href: data-lake-query-data.md
     - name: Query data in Azure Monitor
-      href: query-monitor-data.md
-    - name: Query data in Power Apps
+      items:
+      - name: Query data in Azure Monitor
+        href: query-monitor-data.md
+      - name: Export and query Azure Monitor data
+        href: query-exported-azure-monitor-data.md
+    - name: Query data using Power Apps
       href: power-apps-connector.md
     - name: Query data using Python
       href: python-query-data.md
@@ -526,6 +531,12 @@ items:
       - name: Integrate the Monaco Editor with Kusto query support
         displayName: monaco monaco-kusto
         href: kusto/api/monaco/monaco-kusto.md
+    - name: Kusto emulator
+      items:
+      - name: Kusto emulator overview
+        href: kusto-emulator-overview.md
+      - name: Install the Kusto emulator
+        href: kusto-emulator-install.md
   - name: Integrate
     items:
     - name: Tools and integrations overview
@@ -571,6 +582,8 @@ items:
     - name: Linked server
       href: linked-server.md
       displayName: SQL Server, ODBC
+    - name: Microsoft Purview
+      href: purview.md
 - name: Kusto Query Language
   href: kusto/query/toc.yml
 - name: Management commands

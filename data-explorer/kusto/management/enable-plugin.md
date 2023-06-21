@@ -5,7 +5,7 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .enable plugin
+# .enable plugin command
 
 Enables a plugin.
 

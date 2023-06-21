@@ -1,11 +1,11 @@
 ---
-title: .show table merge policy command
-description: Learn how to use the `.show table merge policy` command to display the table's merge policy.
+title: .show table policy merge command
+description: Learn how to use the `.show table policy merge` command to display the table's merge policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show table merge policy
+# .show table policy merge command
 
 Display the table's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
 

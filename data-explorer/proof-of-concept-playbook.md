@@ -181,7 +181,7 @@ The following is a high level example of tasks that you can use to help you plan
 | 1 | Review, refine, revise evaluation criteria |
 | 1 | Building pricing scenarios based on the Azure Pricing Calculator for Azure Data Explorer |
 | 2 | Create cluster and the required databases, tables, materialized views per the architecture design |
-| 2 | Assign permissions to the relevant users for data plane access |
+| 2 | Assign permissions to the relevant users for data access |
 | 2 | Implement partitioning and merge policies (if required) |
 | 2 | Implement one-time ingestion of data, typically historical or migration data |
 | 2 | Install and configure query tool (if required) |
@@ -284,7 +284,7 @@ Before you migrate your POC cluster to production, we highly recommend that you 
 - Continuous Integration/Continuous Deployment requirements
 - Monitoring and Support requirements
 - Training of key personnel in Azure Data Explorer
-- Control and data plane access control requirements
+- Access control requirements
 - Schema, data model and data flow requirements
 - Ingestion requirements
 - Visualization requirements

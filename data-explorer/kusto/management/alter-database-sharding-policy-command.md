@@ -1,11 +1,11 @@
 ---
-title:  .alter database sharding policy command
-description: Learn how to use the .alter database sharding policy command to change the database's sharding policy.
+title:  .alter database policy sharding command
+description: Learn how to use the `.alter database policy sharding` command to change the database's sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 05/25/2023
 ---
-# .alter database sharding policy
+# .alter database policy sharding command
 
 Changes the database sharding policy. The [sharding policy](../management/shardingpolicy.md) is used to manage data sharding for databases and tables by defining if and how [extents (data shards)](../management/extents-overview.md) in your cluster should be sealed.
 

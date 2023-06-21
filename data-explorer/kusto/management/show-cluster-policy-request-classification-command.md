@@ -1,11 +1,11 @@
 ---
-title:  The .show cluster policy request_classification command
-description: This article describes the show cluster policy request_classification command in Azure Data Explorer.
+title: .show cluster policy request_classification command
+description: Learn how to use the `.show cluster policy request_classification` command to show the cluster's request classification policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 05/24/2023
 ---
-# .show cluster policy request_classification
+# .show cluster policy request_classification command
 
 Shows the cluster's request classification policy.
 

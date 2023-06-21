@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # levene_test_fl()
 
-::: zone pivot="azuredataexplorer, azuremonitor"
+::: zone pivot="azuredataexplorer"
 
 
 The function `levene_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Levene Test](https://en.wikipedia.org/wiki/Levene%27s_test).
@@ -158,7 +158,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 
 ::: zone-end
 
-::: zone pivot="fabric"
+::: zone pivot="azuremonitor, fabric"
 
 This feature isn't supported.
 

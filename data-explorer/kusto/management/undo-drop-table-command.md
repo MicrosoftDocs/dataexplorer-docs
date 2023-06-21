@@ -1,11 +1,11 @@
 ---
-title:  .undo drop table
-description: This article describes .undo drop table in Azure Data Explorer.
+title: .undo drop table command
+description: Learn how to use the `.undo drop table` command to revert a drop table operation to a specific database version.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/02/2023
+ms.date: 05/25/2023
 ---
-# .undo drop table
+# .undo drop table command
 
 The `.undo` `drop` `table` command reverts a drop table operation to a specific database version. The database version must be the version just prior to the table deletion.
 
@@ -45,6 +45,7 @@ Use the `.show` `journal` command to find the database version before the drop o
 ## Returns
 
 This command:
+
 * Returns the original table extents list
 * Specifies for each extent the number of records the extent contains
 * Returns if the recover operation succeeded or failed

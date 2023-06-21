@@ -1,9 +1,9 @@
 ---
-title:  Streaming ingestion policy
-description: This article describes Streaming ingestion policy in Azure Data Explorer.
+title: Streaming ingestion policy
+description: Learn how to use the streaming ingestion policy to optimize operational processing of many tables where the stream of data is small.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/07/2021
+ms.date: 05/23/2023
 ---
 # Streaming ingestion policy
 
@@ -17,7 +17,7 @@ Streaming ingestion should be used for the following scenarios:
 If the stream of data into each table is high (over 4 GB per hour), consider using [batch ingestion](batchingpolicy.md).
 
 * To learn how to implement this feature and about its limitations, see [streaming ingestion](../../ingest-data-streaming.md).
-* For information about streaming ingestion control commands, see [Control commands used for managing the streaming ingestion policy](./show-table-streaming-ingestion-policy-command.md).
+* For information about streaming ingestion management commands, see [Management commands used for managing the streaming ingestion policy](./show-table-streaming-ingestion-policy-command.md).
 
 ## Streaming ingestion policy definition
 

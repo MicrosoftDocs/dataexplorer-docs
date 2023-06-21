@@ -1,11 +1,11 @@
 ---
-title: .delete table merge policy command
-description: Learn how to use the `.delete table merge policy` command to delete a table's merge policy.
+title: .delete table policy merge command
+description: Learn how to use the `.delete table policy merge` command to delete a table's merge policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .delete table merge policy
+# .delete table policy merge command
 
 Delete a table's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
 

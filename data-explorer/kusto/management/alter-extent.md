@@ -1,12 +1,12 @@
 ---
-title:  .alter extent tags
-description: Learn how to use the alter extent command to change the extent tags.
+title: .alter extent tags command
+description: Learn how to use the `.alter extent tags` command to change the extent tags.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 04/20/2023
 ---
 
-# .alter extent tags
+# .alter extent tags command
 
 The command runs in the context of a specific database. It alters the specified [extent tags](extents-overview.md#extent-tagging) of all of the extents returned by the query.
 
