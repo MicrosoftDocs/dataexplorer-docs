@@ -15,7 +15,7 @@ Azure Data Explorer access control is based on authentication and authorization.
 
 ## Authentication
 
-[Azure Active Directory (Azure AD)](aad.md) is the preferred method of authentication to Azure Data Explorer. Azure AD can authenticate security principals or federate with other identity providers, and it supports both user and application authentication.
+[Azure Active Directory (Azure AD)](aad.md) is the only method of authentication to Azure Data Explorer. Azure AD can authenticate security principals or federate with other identity providers, and it supports both user and application authentication.
 
 [User authentication](aad.md#user-authentication) is used to verify the identity of human principals and can be carried out interactively, where a human user provides credentials, or programmatically using a token. [Application authentication](aad.md#application-authentication) is used to authenticate services and applications that need to run and access resources without human intervention.
 

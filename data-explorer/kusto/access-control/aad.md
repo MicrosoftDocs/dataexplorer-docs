@@ -7,7 +7,7 @@ ms.date: 06/21/2023
 ---
 # Authenticate with Azure Active Directory
 
-[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is a cloud-based identity and access management service that can authenticate security principals and federate with other identity providers. We recommend using Azure AD to authenticate to Azure Data Explorer, as doing so ensures that the principal's directory credentials aren't accessible to Azure Data Explorer.
+[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is a cloud-based identity and access management service that can authenticate security principals and federate with other identity providers. Azure AD is the only method of authentication to Azure Data Explorer.
 
 To authenticate with Azure AD, the client must communicate with the Azure AD service and request an access token specific to Azure Data Explorer. Then, the client can use the acquired access token as proof of identity when issuing requests to Azure Data Explorer.
 
