@@ -13,8 +13,10 @@ To authenticate with Azure AD, the client must communicate with the Azure AD ser
 
 The main types of authentication scenarios are as follows:
 
-* [User authentication](#user-authentication): Verifies the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.  
+* [User authentication](#user-authentication): Verifies the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
+
 * [Application authentication](#application-authentication): Verifies the identity of an application that needs to access resources without human intervention by using configured credentials.  
+
 * [On-behalf-of authentication](#on-behalf-of-authentication): Allows an application to obtain an Azure AD access token from another application and use it to access Azure Data Explorer.  
 
 ## Understanding Azure AD permissions
