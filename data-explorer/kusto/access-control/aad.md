@@ -13,17 +13,14 @@ To authenticate with Azure AD, the client must communicate with the Azure AD ser
 
 The main types of authentication scenarios are as follows:
 
-* [User authentication](#user-authentication): Verifies the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
+* [User authentication](index.md#user-authentication): Verifies the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
 
-* [Application authentication](#application-authentication): Verifies the identity of an application that needs to access resources without human intervention by using configured credentials.  
+* [Application authentication](index.md#application-authentication): Verifies the identity of an application that needs to access resources without human intervention by using configured credentials.  
 
-* [On-behalf-of authentication](#on-behalf-of-authentication): Allows an application to obtain an Azure AD access token from another application and use it to access Azure Data Explorer.  
+* [On-behalf-of authentication](#on-behalf-of-authentication): Allows an application to obtain an Azure AD access token from another application and use it to access Azure Data Explorer.
 
-## Understanding Azure AD permissions
-
-In Azure AD, a service application can define different types of permissions, like read-only or read-write, that a client application can request when it needs an authorization token. The client application decides which permissions it requires, and when a principal attempts to access a resource through the client application, they're asked to authorize the client application to act on their behalf with the specified permissions. If the principal agrees, the permissions are included in the scope claim of the authorization token that Azure AD issues to the client application.
-
-For Azure Data Explorer, the Azure AD client application is configured to request the "Access Kusto" permission from the principal, who is also referred to as the "resource owner".
+> [!IMPORTANT]
+> We recommend using the Kusto [client libraries](../api/client-libraries.md) for user and application authentication, which simplify the authentication process. However, for on-behalf-of authentication, follow the process described in the [On-behalf-of authentication](#on-behalf-of-authentication) section.
 
 ## Microsoft Authentication Library (MSAL)
 
