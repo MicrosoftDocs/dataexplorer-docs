@@ -309,4 +309,5 @@ With Kusto [client libraries](../api/client-libraries.md), Azure AD tokens are s
 
 ## Next steps
 
-* Create [Kusto connection strings](../api/connection-strings/kusto.md) to connect to a cluster using the [client libraries](../api/client-libraries.md)
+* [How to provision an Azure AD application](../../provision-azure-ad-app.md)
+* Use the [client libraries](../api/client-libraries.md) to connect to Azure Data Explorer
