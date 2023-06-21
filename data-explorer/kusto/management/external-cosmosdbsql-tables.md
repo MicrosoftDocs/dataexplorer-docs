@@ -16,7 +16,7 @@ To `.create` requires at least [Database User](../management/access-control/role
 
 ## Syntax
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlServerConnectionString*`)` [`with` `(`*Property* [`,` ... ]`)`]
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlServerConnectionString*`)` [`with` `(`sqlDialect = CosmosDbSql `,` ...`)`]
 
 ## Parameters
 
@@ -25,7 +25,7 @@ To `.create` requires at least [Database User](../management/access-control/role
 | *TableName* | string | &check; | The name of the external table. Must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.|
 | *Schema* | string | &check; | The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.|
 | *SqlConnectionString*| string |&check;| The connection string to the CosmosDB SQL Server. See the supported [Cosmos DB authentication methods](../query/cosmosdb-plugin.md#authentication-and-authorization).|
-|*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
+|*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [mandatory property](#mandatory-properties) / [optional properties](#optional-properties).|
 
 > [!NOTE]
 > If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities.

@@ -16,7 +16,7 @@ To `.create` requires at least [Database User](../management/access-control/role
 
 ## Syntax
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlServerConnectionString*`)` [`with` `(`*Property* [`,` ... ]`)`]
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlServerConnectionString*`)` [`with` `(`sqlDialect = PostgreSql `,` ...`)`]
 
 ## Parameters
 
@@ -26,7 +26,7 @@ To `.create` requires at least [Database User](../management/access-control/role
 | *Schema* | string | &check; | The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.|
 |*SqlTableName*| string | &check; | The name of the SQL table. Not including the database name (example: "PostgreSqlTable" and not "db1.PostgreSqlTable"). If the name of the table contains a period (".") you can use ['Name.of.the.table'] notation.|
 | *SqlConnectionString*| string |&check;| The connection string to the PostgreSQL Server. See the supported [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md).|
-|*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
+|*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [mandatory property](#mandatory-properties) / [optional properties](#optional-properties).|
 
 > [!NOTE]
 > If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by UserName/Password or Managed Identities.

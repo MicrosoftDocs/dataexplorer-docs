@@ -6,7 +6,7 @@ ms.topic: reference
 ms.date: 05/24/2023
 ---
 
-# Create and alter SQL  external tables
+# Create and alter SQL Server external tables
 
 Creates or alters an SQL Server [external table](../query/schema-entities/externaltables.md) in the database in which the command is executed.
 
