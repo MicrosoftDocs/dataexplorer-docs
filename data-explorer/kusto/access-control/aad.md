@@ -36,7 +36,9 @@ To access Azure Data Explorer programmatically, we recommend using the Kusto [cl
 * For application authentication: the Azure AD client application credential, which is a secret or certificate.
 * For user authentication: the Azure AD client application `ReplyUrl`, or the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
-With the client libraries, the authentication properties are set by the [Kusto connection string](../api/connection-strings/kusto.md). If you can't use one of the client libraries, continue reading for detailed information on how to implement the authentication flow yourself.
+With the client libraries, the authentication properties are set by the [Kusto connection string](../api/connection-strings/kusto.md). The token returned by MSAL to the Kusto client library has the cluster URI as the audience.
+
+If you can't use one of the client libraries, continue reading for detailed information on how to implement the authentication flow yourself.
 
 ### How to specify the resource
 
