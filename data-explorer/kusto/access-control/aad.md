@@ -24,7 +24,9 @@ The main types of authentication scenarios are as follows:
 
 ## Microsoft Authentication Library (MSAL)
 
-To access Azure Data Explorer programmatically, we recommend using the Kusto [client libraries](../api/client-libraries.md). The Kusto client libraries use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens for communicating with Azure Data Explorer. Throughout the process of acquiring a token, the client needs to provide the following information:
+To authenticate with Azure Data Explorer, the Kusto client libraries use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens. We recommend using these libraries for user and application authentication, as they simplify the process. When using the client libraries, the authentication properties are configured through the [Kusto connection string](../api/connection-strings/kusto.md).
+
+During the token acquisition process, the client must provide the following information:
 
 * The [resource](#how-to-specify-the-resource) or cluster URI.
 * The [Azure AD tenant ID](#how-to-specify-the-azure-ad-tenant-id)
@@ -33,9 +35,13 @@ To access Azure Data Explorer programmatically, we recommend using the Kusto [cl
 * For application authentication: the Azure AD client application credential, which is a secret or certificate.
 * For user authentication: the Azure AD client application `ReplyUrl`, or the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
-With the client libraries, the authentication properties are set by the [Kusto connection string](../api/connection-strings/kusto.md). The token returned by MSAL to the Kusto client library has the cluster URI as the audience.
+If you can't use the client libraries, you can manually implement an authentication flow using MSAL. For more information, see [Authentication flow support in MSAL](active-directory/develop/msal-authentication-flows).
 
-If you can't use one of the client libraries, continue reading for detailed information on how to implement the authentication flow yourself.
+## Implement an authentication flow with MSAL
+
+In this section, learn how to create an authentication flow to Azure Data Explorer using MSAL.
+
+If your application is a front-end application intended to authenticate users for an Azure Data Explorer cluster, the application must be granted delegated permissions on Azure Data Explorer. For more information, see [Configure delegated permissions for the application registration](../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
 
 ### How to specify the resource
 
@@ -58,30 +64,14 @@ If you know the principal's Azure AD directory, use `https://login.microsoftonli
 > [!NOTE]
 > The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer
 > service deployed in a national cloud, set the corresponding national cloud Azure AD service endpoint.
-> To change the endpoint, set an environment variable `AadAuthorityUri` to the required URI.
 
-## User authentication
+### Examples
 
-User authentication happens when a user presents credentials to Azure AD or an identity provider that federates with Azure AD, such as Active Directory Federation Services (AD FS). The user gets back a security token that can be presented to the Azure Data Explorer service. Azure Data Explorer determines whether the token is valid, whether the token is issued by a trusted issuer, and what security claims the token contains.
+The following examples use MSAL to authenticate to Azure Data Explorer. Select the tab relevant for the required type of authentication.
 
-Azure Data Explorer supports the following methods of user authentication, including through the Kusto [client libraries](../api/client-libraries.md):
+### [User authentication](#tabs/user-auth)
 
-* Interactive user authentication with sign-in through the user interface.
-* User authentication with an Azure AD token issued for Azure Data Explorer.
-* User authentication with an Azure AD token issued for another resource. In this case, a trust relationship must exist between that resource and Azure Data Explorer.
-
-### Methods of user authentication
-
-The easiest way to access Azure Data Explorer with user authentication is to use the Azure Data Explorer SDK
-and set the `Federated Authentication` property of the [Kusto connection string](../api/connection-strings/kusto.md#user-authentication-properties) to `true`. The first time the SDK is used to send a request to the service the user is presented with a sign-in form to enter the Azure AD credentials. Upon successful authentication, the request is sent to Azure Data Explorer.
-
-Applications that don't use a Kusto client library can still use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview). For an example, see [Azure AD and OpenID Connect](https://github.com/AzureADSamples/WebApp-WebAPI-OpenIDConnect-DotNet).
-
-If your application is a front-end application intended to authenticate users for an Azure Data Explorer cluster, the application must be granted delegated permissions on Azure Data Explorer. For more information, see [Configure delegated permissions for the application registration](../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
-
-### Example of user authentication
-
-The following example uses [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to get an Azure AD user token to access Azure Data Explorer in a way that launches the interactive sign-in UI:
+The following examples uses MSAL to get an Azure AD user token to access Azure Data Explorer in a way that launches the interactive sign-in UI:
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -101,23 +91,9 @@ var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
-## Application authentication
+### [Application authentication](#tabs/app-auth)
 
-Application authentication is needed when requests aren't associated with a specific user or when no user is available to provide credentials. In this case, the application authenticates to Azure AD or the federated IdP by presenting secret information.
-
-Azure Data Explorer supports the following methods of application authentication, including through the Kusto [client libraries](../api/client-libraries.md):
-
-* Application authentication with an Azure managed identity.
-* Application authentication with an X.509v2 certificate installed locally.
-* Application authentication with an X.509v2 certificate given to the client library as a byte stream.
-* Application authentication with an Azure AD application ID and an Azure AD application key. The application ID and application key are like a username and password.
-* Application authentication with a previously obtained valid Azure AD token, issued to Azure Data Explorer.
-* Application authentication with an Azure AD token issued for another resource. In this case, a trust relationship must exist between that resource and Azure Data Explorer.
-
-### Example of application authentication
-
-The following example uses [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to get an Azure AD application token to access Azure Data Explorer. In this flow no prompt is presented, and
-the application must be registered with Azure AD and equipped with credentials needed to perform application authentication, such as an app key issued by Azure AD, or an X509v2 certificate that has been pre-registered with Azure AD.
+The following example uses MSAL to get an Azure AD application token to access Azure Data Explorer. In this flow no prompt is presented, and the application must be registered with Azure AD and equipped with credentials needed to perform application authentication, such as an app key issued by Azure AD, or an X509v2 certificate that has been pre-registered with Azure AD.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -136,6 +112,8 @@ var bearerToken = result.AccessToken;
 var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
+
+---
 
 ## On-behalf-of authentication
 
