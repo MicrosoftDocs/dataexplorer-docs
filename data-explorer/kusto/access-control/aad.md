@@ -13,13 +13,13 @@ To authenticate with Azure AD, the client must communicate with the Azure AD ser
 
 The main types of authentication scenarios are as follows:
 
-* [User authentication](#user-authentication): Verifies the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
+* [User authentication](#user-authentication): Used to verify the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
 
-* [Application authentication](#application-authentication): Verifies the identity of an application that needs to access resources without human intervention by using configured credentials.  
+* [Application authentication](#application-authentication): Used to verify the identity of an application that needs to access resources without human intervention by using configured credentials.  
 
-* [On-behalf-of (OBO) authentication](#on-behalf-of-authentication): Allows an application to get an Azure AD access token from another application and then "convert" it to another Azure AD access token that can be used to access your cluster. In this scenario, the application acts as a mediator between the user or application that provided credentials and Azure Data Explorer.
+* [On-behalf-of (OBO) authentication](#on-behalf-of-authentication): Allows an application to get an Azure AD access token for another application and then "convert" it to an Azure AD access token to access your cluster.
 
-* [Single page application (SPA) authentication](#single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access Azure Data Explorer.
+* [Single page application (SPA) authentication](#single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster.
 
 > [!IMPORTANT]
 > We highly recommend using the [Kusto client libraries](../api/client-libraries.md) for user and application authentication, which simplify the authentication process.
