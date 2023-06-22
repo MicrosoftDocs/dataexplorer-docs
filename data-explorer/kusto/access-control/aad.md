@@ -7,7 +7,7 @@ ms.date: 06/22/2023
 ---
 # Authenticate with Azure Active Directory
 
-[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is a cloud-based identity and access management service that can authenticate security principals and federate with other identity providers. Azure AD is the only method of authentication to Azure Data Explorer.
+[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is a cloud-based identity and access management service used to authenticate security principals and federate with other identity providers. Azure AD is the only method of authentication to Azure Data Explorer.
 
 To authenticate with Azure AD, the client must communicate with the Azure AD service and request an access token specific to Azure Data Explorer. Then, the client can use the acquired access token as proof of identity when issuing requests to Azure Data Explorer.
 
@@ -17,12 +17,12 @@ The main types of authentication scenarios are as follows:
 
 * [Application authentication](#application-authentication): Verifies the identity of an application that needs to access resources without human intervention by using configured credentials.  
 
-* [On-behalf-of authentication](#on-behalf-of-authentication): Allows an application to get an Azure AD access token from another application and then "convert" it to another Azure AD access token that can be used to access your cluster. In this scenario, the application acts as a mediator between the user or application that provided credentials and Azure Data Explorer.
+* [On-behalf-of (OBO) authentication](#on-behalf-of-authentication): Allows an application to get an Azure AD access token from another application and then "convert" it to another Azure AD access token that can be used to access your cluster. In this scenario, the application acts as a mediator between the user or application that provided credentials and Azure Data Explorer.
 
 * [Single page application (SPA) authentication](#single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access Azure Data Explorer.
 
 > [!IMPORTANT]
-> We recommend using the [Kusto client libraries](../api/client-libraries.md) for user and application authentication, which simplify the authentication process. However, for on-behalf-of authentication, follow the process described in the [On-behalf-of authentication](#on-behalf-of-authentication) section.
+> We highly recommend using the [Kusto client libraries](../api/client-libraries.md) for user and application authentication, which simplify the authentication process.
 
 ## Microsoft Authentication Library (MSAL)
 
