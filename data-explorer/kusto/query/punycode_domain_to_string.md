@@ -1,49 +1,47 @@
 ---
-title:  punycode_domain_from_string
-description: This article describes the punycode_domain_from_string() command in Azure Data Explorer.
+title:  punycode_domain_to_string 
+description: This article describes the punycode_domain_to_string() command in Azure Data Explorer.
 ms.topic: reference
 ms.date: 06/22/2023
 ---
 
-# punycode_domain_from_string()
+# punycode_domain_to_string()
 
-Decodes input string from encoded Internationalized Domain Name in Applications (IDNA) [punycode](https://en.wikipedia.org/wiki/Punycode) form.
+Encodes Internationalized Domain Name in Applications (IDNA) string to [Punycode](https://en.wikipedia.org/wiki/Punycode) form.
+
 
 ## Syntax
 
-`punycode_domain_from_string('encoded_string')`
+`punycode_domain_to_string('domain')`
 
 ## Parameters
-
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *encoded_string* | `string` | &check; | An IDNA string to be decoded from punycode form. The function accepts one string argument.
+| *domain* |  `string` | &check; | A string to be encoded to punycode form. The function accepts one string argument.
 
 ## Returns
 
-* Returns a `string` that represents the original Internationalized Domain Name.
-* Returns an empty result if decoding failed.
+* Returns a `string` that represents punycode-encoded original string.
+* Returns an empty result if encoding failed.
 
-## Example
+## Examples
+
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOywrCMBBF94X+Q+jKgslGkCq4qQtBXLkVKWMyxmgykZhAC368fSDo3NXh3oGjIPa5WJwhSa9QrV8xGNJlnp3yjPVXtMT5DrkzIOpktUCVijn7KQ+GeEUgtmijvIEJwgf9Pzl23N6hkmKAPWmeIiwXMGLd4+oBQno3Pp3ZG9uIpJjyDgxtnom6wa2ZuLkG75pJ82tdfgCkob8XyAAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjZT83MTMPKvikqLMvHQFzWh1n8OrFHwe7l6c+bihKSSj9OGutXkKIRmZh1flAQWS83PVdRTUgzIPb8jMyXm/d2Fw9uGFOSnF2YkFiUW5QCZQKL8oHahGyTsxJzWlLL80J1k9Q8+xqCS/6MjqrPxivdSUUqVYXq4ahdSKktS8FAWgzbYFpXmVyfkpqfEQ18SX5MdDHAR1niYAt9ocW7AAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-datatable(encoded:string)
-[
-    "xn--Ge-mia.Bulg.edu", 
-    "xn--Lin-8na.Celtchair.org", 
-    "xn--Ry-lja8c.xn--Jng-uta63a.xn--Bng-9ka.com", 
-] |extend domain=punycode_domain_from_string(encoded)
+datatable(domain:string )['Lê Lợi。Thuận Thiên。com', 'Riðill｡Skáldskaparmál｡org', "Kaledvoulc'h.Artorījos.edu"]
+| extend str=punycode_domain_to_string(domain)
 ```
 
-|encoded|domain|
+|domain|str|
 |---|---|
-|xn--Ge-mia.Bulg.edu|Gáe.Bulg.edu|
-|xn--Lin-8na.Celtchair.org|Lúin.Celtchair.org|
-|xn--Ry-lja8c.xn--Jng-uta63a.xn--Bng-9ka.com|Rúyì.Jīngū.Bàng.com|
+|Lê Lợi。Thuận Thiên。com|xn--L Li-gpa4517b.xn--Thun Thin-s4a7194f.com|
+|Riðill｡Skáldskaparmál｡org|xn--Riill-jta.xn--Skldskaparml-dbbj.org|
+|Kaledvoulc'h.Artorījos.edu|Kaledvoulc'h.xn--Artorjos-ejb.edu|
+
 
 ## Next steps
 
-Use [punycode_domain_from_string()](punycode_domain_from_string.md) to encode a domain name to punycode form.
+Use [punycode_domain_from_string()](punycode_domain_from_string.md) to retrieve the original decoded string.
