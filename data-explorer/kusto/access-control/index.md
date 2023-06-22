@@ -23,7 +23,7 @@ Azure Data Explorer access control is based on authentication and authorization.
 
 User authentication happens when a user presents credentials to Azure AD or an identity provider that federates with Azure AD, such as Active Directory Federation Services. The user gets back a security token that can be presented to the Azure Data Explorer service. Azure Data Explorer determines whether the token is valid, whether the token is issued by a trusted issuer, and what security claims the token contains.
 
-Azure Data Explorer supports the following methods of user authentication, including through the Kusto [client libraries](../api/client-libraries.md):
+Azure Data Explorer supports the following methods of user authentication, including through the [Kusto client libraries](../api/client-libraries.md):
 
 * Interactive user authentication with sign-in through the user interface.
 * User authentication with an Azure AD token issued for Azure Data Explorer.
@@ -33,7 +33,7 @@ Azure Data Explorer supports the following methods of user authentication, inclu
 
 Application authentication is needed when requests aren't associated with a specific user or when no user is available to provide credentials. In this case, the application authenticates to Azure AD or the federated IdP by presenting secret information.
 
-Azure Data Explorer supports the following methods of application authentication, including through the Kusto [client libraries](../api/client-libraries.md):
+Azure Data Explorer supports the following methods of application authentication, including through the [Kusto client libraries](../api/client-libraries.md):
 
 * Application authentication with an Azure managed identity.
 * Application authentication with an X.509v2 certificate installed locally.
