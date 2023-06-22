@@ -11,7 +11,21 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-This article describes the Kusto Query Language (KQL) support for join operations on datasets that reside in different clusters.
+This article describes the Kusto Query Language (KQL) support for cross-cluster join operations.
+
+A cross-cluster join involves joining data from two datasets that reside in different clusters. Performing a join on data from a different cluster than the local cluster is not considered a cross-cluster query.
+
+For example, the following example is a cross-cluster join:
+
+```kusto
+cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster2").database("SomeDB2").T2 | ...) on Col1
+```
+
+Whereas, the following example is not a cross-cluster join:
+
+```kusto
+cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster").database("SomeDB2").T2 | ...) on Col1
+```
 
 ## Syntax
 
