@@ -785,6 +785,12 @@ items:
   - name: punycode_to_string()
     displayName: puny code to from string
     href: punycode-to-string.md
+    name: punycode_domain_from_string()
+    displayName: punycode domain from string
+    href: punycode_domain_from_string.md
+  - name: punycode_domain_to_string()
+    displayName: punycode domain to string
+    href: punycode_domain_to_string.md
   - name: radians()
     href: radiansfunction.md
   - name: rand()
