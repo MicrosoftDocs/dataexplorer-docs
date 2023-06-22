@@ -28,24 +28,26 @@ The main types of authentication scenarios are as follows:
 
 To authenticate with Azure Data Explorer, we recommend using the [Kusto client libraries](../api/client-libraries.md), which use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens. These libraries simplify the authentication process.
 
-When using the Kusto client libraries, you can configure the authentication properties through the [Kusto connection string](../api/connection-strings/kusto.md). This approach provides a straightforward way to authenticate without the need to implement complex authentication flows.
+When using the Kusto client libraries, the authentication properties are configured in the [Kusto connection string](../api/connection-strings/kusto.md). This approach provides a straightforward way to authenticate without the need to implement complex authentication flows.
 
-Alternatively, if you prefer to handle authentication manually, you can choose to implement one of the [MSAL authentication flows](/azure/active-directory/develop/msal-authentication-flows). However, keep in mind that this approach involves more complexity compared to using the client libraries.
+Alternatively, if you prefer to handle authentication manually, you can choose to implement one of the [MSAL authentication flows](/azure/active-directory/develop/msal-authentication-flows) yourself. However, keep in mind that this approach involves more complexity compared to using the client libraries.
 
 During the token acquisition process with MSAL, the client must provide the following parameters:
 
 |Parameter|Description|Example|
 |--|--|--|
-|Resource ID|The resource ID for which the Azure AD token should be issued. For Azure Data Explorer, the resource ID is the cluster URI without port information and path.|The resource ID for the `help` cluster is `https://help.kusto.windows.net`.|
-|Azure AD tenant ID|Azure AD is a multi-tenant service, and every organization can create an object called directory in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a tenant, which each has a tenant ID in the form of a GUID. In many cases, the domain name of the organization may be used to identity the Azure AD tenant as well.|An organization "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.|
-|Azure AD authority URI|The endpoint used for authentication. The Azure AD directory, or tenant, determines the Azure AD authority URI. Use `https://login.microsoftonline.com/{tenantId}` as the Azure AD authority URI where `{tenantId}` is either the tenant ID or domain name.|For example, `https://login.microsoftonline.com/12345678-a123-4567-b890-123a456b789c`.|
+|Resource ID|The resource ID for which to issue the Azure AD access token. For Azure Data Explorer, the resource ID is the cluster URI without port information and path.|The resource ID for the `help` cluster is `https://help.kusto.windows.net`.|
+|Azure AD tenant ID|Azure AD is a multi-tenant service, and every organization can create an object called directory in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a tenant. Each tenant has a tenant ID in the form of a GUID. In many cases, the domain name of the organization may also be used to identity the Azure AD tenant.|An organization "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.|
+|Azure AD authority URI|The endpoint used for authentication. The Azure AD directory, or tenant, determines the Azure AD authority URI. The URI is `https://login.microsoftonline.com/{tenantId}` where `{tenantId}` is either the tenant ID or domain name.|For example, `https://login.microsoftonline.com/12345678-a123-4567-b890-123a456b789c`.|
 
 > [!NOTE]
 > The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer service deployed in a national cloud, set the corresponding national cloud Azure AD service endpoint.
 
 ## User authentication
 
-The following example uses MSAL to get an Azure AD user token to access Azure Data Explorer in a way that launches the interactive sign-in UI. The `appRedirectUri` is the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
+We recommend using the [Kusto client libraries](../api/client-libraries.md) for user authentication.
+
+The following example uses MSAL directly instead of a Kusto client library to access Azure Data Explorer. The authorization is done in a way that launches the interactive sign-in UI. The `appRedirectUri` is the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -67,7 +69,9 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 ## Application authentication
 
-The following example uses MSAL to get an Azure AD application token to access Azure Data Explorer. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](../../provision-azure-ad-app.md).
+We recommend using the [Kusto client libraries](../api/client-libraries.md) for application authentication.
+
+The following example uses MSAL directly instead of a Kusto client library to access Azure Data Explorer. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](../../provision-azure-ad-app.md).
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
