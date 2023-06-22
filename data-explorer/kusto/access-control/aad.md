@@ -123,7 +123,7 @@ To use on-behalf-of authentication:
 
 ## Single page application (SPA) authentication
 
-For authentication for a web client, use the [OAuth authorization code flow](/azure/active-directory/develop/msal-authentication-flows#authorization-code).
+For authentication for a SPA web client, use the [OAuth authorization code flow](/azure/active-directory/develop/msal-authentication-flows#authorization-code).
 
 In this scenario, the app is redirected to sign in to Azure AD. Then, Azure AD redirects back to the app with an authorization code in the URI. Then, the app makes a request to the token endpoint to get the access token. The token is valid for 24 hour during which the client can reuse it by acquiring the token silently.
 
