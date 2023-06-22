@@ -17,9 +17,9 @@ The main types of authentication scenarios are as follows:
 
 * [Application authentication](#application-authentication): Verifies the identity of an application that needs to access resources without human intervention by using configured credentials.  
 
-* [On-behalf-of authentication](#on-behalf-of-authentication): Allows an application to obtain an Azure AD access token from another application and use it to access Azure Data Explorer.
+* [On-behalf-of authentication](#on-behalf-of-authentication): Allows an application to get an Azure AD access token from another application and then "convert" it to another Azure AD access token that can be used to access your cluster. In this scenario, the application acts as a mediator between the user or application that provided credentials and Azure Data Explorer.
 
-* [Single page application (SPA) authentication](#single-page-application-spa-authentication): Allows web applications built as client-side single-page applications with JavaScript or a SPA framework such as Angular, Vue, and React to sign in users and get tokens to access Azure Data Explorer.
+* [Single page application (SPA) authentication](#single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access Azure Data Explorer.
 
 > [!IMPORTANT]
 > We recommend using the [Kusto client libraries](../api/client-libraries.md) for user and application authentication, which simplify the authentication process. However, for on-behalf-of authentication, follow the process described in the [On-behalf-of authentication](#on-behalf-of-authentication) section.
@@ -36,8 +36,8 @@ During the token acquisition process with MSAL, the client must provide the foll
 
 |Parameter|Description|Example|
 |--|--|--|
-|Resource ID|The resource ID for which the Azure AD token should be issued. For Azure Data Explorer, this is the cluster URI without port information and path.|The resource ID for the `help` cluster is `https://help.kusto.windows.net`.|
-|Azure AD tenant ID|Azure AD is a multi-tenant service, and every organization can create an object called directory in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a tenant. Azure AD tenants are identified by a GUID, or the tenant ID. In many cases, the domain name of the organization can identity the Azure AD tenant.|An organization "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.|
+|Resource ID|The resource ID for which the Azure AD token should be issued. For Azure Data Explorer, the resource ID is the cluster URI without port information and path.|The resource ID for the `help` cluster is `https://help.kusto.windows.net`.|
+|Azure AD tenant ID|Azure AD is a multi-tenant service, and every organization can create an object called directory in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a tenant, which each has a tenant ID in the form of a GUID. In many cases, the domain name of the organization may be used to identity the Azure AD tenant as well.|An organization "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.|
 |Azure AD authority URI|The endpoint used for authentication. The Azure AD directory, or tenant, determines the Azure AD authority URI. Use `https://login.microsoftonline.com/{tenantId}` as the Azure AD authority URI where `{tenantId}` is either the tenant ID or domain name.|For example, `https://login.microsoftonline.com/12345678-a123-4567-b890-123a456b789c`.|
 
 > [!NOTE]
@@ -67,7 +67,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 ## Application authentication
 
-The following example uses MSAL to get an Azure AD application token to access Azure Data Explorer. In this flow no prompt is presented, and the application must be registered with Azure AD and equipped with credentials needed to perform application authentication, such as an app key issued by Azure AD, or an X509v2 certificate that has been pre-registered with Azure AD. To set up an application, see [Provision an Azure AD application](../../provision-azure-ad-app.md).
+The following example uses MSAL to get an Azure AD application token to access Azure Data Explorer. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](../../provision-azure-ad-app.md).
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -90,7 +90,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 When your web application or service acts as a mediator between the user or application and Azure Data Explorer, use [on-behalf-of authentication](/azure/active-directory/develop/msal-authentication-flows#on-behalf-of-obo).
 
-In this scenario, an application is sent an Azure AD access token for a resource managed by the application, and the application uses that token to acquire a new Azure AD access token for the Azure Data Explorer resource. Then, the application can access Azure Data Explorer on behalf of the principal indicated by the original Azure AD access token. This flow is called the [OAuth 2.0 on-behalf-of authentication flow](/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). It generally requires multiple configuration steps with Azure AD, and in some cases might require special consent from the administrator of the Azure AD tenant.
+In this scenario, an application is sent an Azure AD access token for an arbitrary resource. Then, the application uses that token to acquire a new Azure AD access token for the Azure Data Explorer resource. Then, the application can access Azure Data Explorer on behalf of the principal indicated by the original Azure AD access token. This flow is called the [OAuth 2.0 on-behalf-of authentication flow](/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). It generally requires multiple configuration steps with Azure AD, and in some cases might require special consent from the administrator of the Azure AD tenant.
 
 To use on-behalf-of authentication:
 
@@ -121,7 +121,7 @@ To use on-behalf-of authentication:
 
 For authentication for a web client, use the [OAuth authorization code flow](/azure/active-directory/develop/msal-authentication-flows#authorization-code).
 
-In this scenario, the app is redirected to sign in to Azure AD. Once signed in, Azure AD redirects back to the app with an authorization code in the URI. Then, the app makes a request to the token endpoint to get the access token. The token is valid for 24 hour during which the client can reuse it by acquiring the token silently.
+In this scenario, the app is redirected to sign in to Azure AD. Then, Azure AD redirects back to the app with an authorization code in the URI. Then, the app makes a request to the token endpoint to get the access token. The token is valid for 24 hour during which the client can reuse it by acquiring the token silently.
 
 Microsoft Identity Platform has detailed tutorials for different use cases such as [React](/azure/active-directory/develop/single-page-app-tutorial-01-register-app), [Angular](/azure/active-directory/develop/tutorial-v2-angular-auth-code), and [JavaScript](/azure/active-directory/develop/tutorial-v2-javascript-auth-code).
 
