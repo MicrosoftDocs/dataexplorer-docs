@@ -13,11 +13,13 @@ To authenticate with Azure AD, the client must communicate with the Azure AD ser
 
 The main types of authentication scenarios are as follows:
 
-* [User authentication](index.md#user-authentication): Verifies the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
+* [User authentication](#user-authentication): Verifies the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
 
-* [Application authentication](index.md#application-authentication): Verifies the identity of an application that needs to access resources without human intervention by using configured credentials.  
+* [Application authentication](#application-authentication): Verifies the identity of an application that needs to access resources without human intervention by using configured credentials.  
 
 * [On-behalf-of authentication](#on-behalf-of-authentication): Allows an application to obtain an Azure AD access token from another application and use it to access Azure Data Explorer.
+
+* [Single page application (SPA) authentication](#single-page-application-spa-authentication): Allows web applications built as client-side single-page applications with JavaScript or a SPA framework such as Angular, Vue, and React to sign in users and get tokens to access Azure Data Explorer.
 
 > [!IMPORTANT]
 > We recommend using the [Kusto client libraries](../api/client-libraries.md) for user and application authentication, which simplify the authentication process. However, for on-behalf-of authentication, follow the process described in the [On-behalf-of authentication](#on-behalf-of-authentication) section.
@@ -41,11 +43,7 @@ During the token acquisition process with MSAL, the client must provide the foll
 > [!NOTE]
 > The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer service deployed in a national cloud, set the corresponding national cloud Azure AD service endpoint.
 
-## User and application authentication
-
-The following examples use MSAL to authenticate to Azure Data Explorer. Select the tab relevant for the required type of authentication.
-
-### [User authentication](#tab/user-auth)
+## User authentication
 
 The following example uses MSAL to get an Azure AD user token to access Azure Data Explorer in a way that launches the interactive sign-in UI. The `appRedirectUri` is the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
@@ -67,7 +65,7 @@ var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
-### [Application authentication](#tab/app-auth)
+## Application authentication
 
 The following example uses MSAL to get an Azure AD application token to access Azure Data Explorer. In this flow no prompt is presented, and the application must be registered with Azure AD and equipped with credentials needed to perform application authentication, such as an app key issued by Azure AD, or an X509v2 certificate that has been pre-registered with Azure AD. To set up an application, see [Provision an Azure AD application](../../provision-azure-ad-app.md).
 
@@ -88,106 +86,113 @@ var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
----
-
 ## On-behalf-of authentication
 
 When your web application or service acts as a mediator between the user or application and Azure Data Explorer, use [on-behalf-of authentication](/azure/active-directory/develop/msal-authentication-flows#on-behalf-of-obo).
 
 In this scenario, an application is sent an Azure AD access token for a resource managed by the application, and the application uses that token to acquire a new Azure AD access token for the Azure Data Explorer resource. Then, the application can access Azure Data Explorer on behalf of the principal indicated by the original Azure AD access token. This flow is called the [OAuth 2.0 on-behalf-of authentication flow](/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). It generally requires multiple configuration steps with Azure AD, and in some cases might require special consent from the administrator of the Azure AD tenant.
 
-First, you need to establish trust relationship between your application and Azure Data Explorer. To do so, follow the steps in [Configure delegated permissions for the application registration](../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration). Then, perform token exchange in your server code and provide the token to the Kusto client library and execute queries, as shown in the following code sample.
+To use on-behalf-of authentication:
 
-```csharp
-var authClient = ConfidentialClientApplicationBuilder.Create("<appId>")
-    .WithAuthority($"https://login.microsoftonline.com/<appTenant>")
-    .WithClientSecret("<appKey>") // Can be replaced by .WithCertificate to authenticate with an X.509 certificate
-    .Build();
+1. [Provision an Azure AD application](../../provision-azure-ad-app.md).
+1. Perform token exchange in your server code and provide the token to the Kusto client library and execute queries, as shown in the following code sample.
 
-var result = authClient.AcquireTokenOnBehalfOf(
-    new[] { "https://<clusterName>.<region>.kusto.windows.net/.default" }, // Define scopes for accessing Azure Data Explorer cluster
-    new UserAssertion("<userAccessToken>") // Encode the "original" token that will be used for exchange
-).ExecuteAsync().Result;
-var accessTokenForAdx = result.AccessToken;
+    ```csharp
+    var authClient = ConfidentialClientApplicationBuilder.Create("<appId>")
+        .WithAuthority($"https://login.microsoftonline.com/<appTenant>")
+        .WithClientSecret("<appKey>") // Can be replaced by .WithCertificate to authenticate with an X.509 certificate
+        .Build();
+    
+    var result = authClient.AcquireTokenOnBehalfOf(
+        new[] { "https://<clusterName>.<region>.kusto.windows.net/.default" }, // Define scopes for accessing Azure Data Explorer cluster
+        new UserAssertion("<userAccessToken>") // Encode the "original" token that will be used for exchange
+    ).ExecuteAsync().Result;
+    var accessTokenForAdx = result.AccessToken;
+    
+    var connectionStringBuilder = new KustoConnectionStringBuilder("https://<clusterName>.<region>.kusto.windows.net")
+        .WithAadUserTokenAuthentication(accessTokenForAdx);
+    
+    using var queryClient = KustoClientFactory.CreateCslQueryProvider(connectionStringBuilder);
+    
+    var queryResult = await queryClient.ExecuteQueryAsync("<databaseName>", "<query>", null);
+    ```
 
-var connectionStringBuilder = new KustoConnectionStringBuilder("https://<clusterName>.<region>.kusto.windows.net")
-    .WithAadUserTokenAuthentication(accessTokenForAdx);
+## Single page application (SPA) authentication
 
-using var queryClient = KustoClientFactory.CreateCslQueryProvider(connectionStringBuilder);
-
-var queryResult = await queryClient.ExecuteQueryAsync("<databaseName>", "<query>", null);
-```
-
-## Web Client (JavaScript) authentication
-
-To set up authentication for a web client, use the [OAuth authorization code flow](/azure/active-directory/develop/msal-authentication-flows#authorization-code).
+For authentication for a web client, use the [OAuth authorization code flow](/azure/active-directory/develop/msal-authentication-flows#authorization-code).
 
 In this scenario, the app is redirected to sign in to Azure AD. Once signed in, Azure AD redirects back to the app with an authorization code in the URI. Then, the app makes a request to the token endpoint to get the access token. The token is valid for 24 hour during which the client can reuse it by acquiring the token silently.
 
-Use the MSAL.js 2.0 steps in the [SPA app registration](/azure/active-directory/develop/scenario-spa-app-registration) to configure the app. Microsoft Identity Platform has detailed tutorials for different use cases such as [React](/azure/active-directory/develop/single-page-app-tutorial-01-register-app), [Angular](/azure/active-directory/develop/tutorial-v2-angular-auth-code), and [JavaScript](/azure/active-directory/develop/tutorial-v2-javascript-auth-code).
+Microsoft Identity Platform has detailed tutorials for different use cases such as [React](/azure/active-directory/develop/single-page-app-tutorial-01-register-app), [Angular](/azure/active-directory/develop/tutorial-v2-angular-auth-code), and [JavaScript](/azure/active-directory/develop/tutorial-v2-javascript-auth-code).
 
-The following code sample uses the MSAl library to sign in a user and access Azure Data Explorer.
+To set up authentication for a web client:
 
-```javascript
-import * as msal from "@azure/msal-browser";
+1. [Provision an Azure AD application](../../provision-azure-ad-app.md).
+1. Configure the app as described in [MSAL.js 2.0 with auth code flow](/azure/active-directory/develop/scenario-spa-app-registration#redirect-uri-msaljs-20-with-auth-code-flow).
+1. Use the MSAL.js 2.0 library to sign in a user and access Azure Data Explorer. Microsoft Identity Platform has detailed tutorials for different use cases such as [React](/azure/active-directory/develop/single-page-app-tutorial-01-register-app), [Angular](/azure/active-directory/develop/tutorial-v2-angular-auth-code), and [JavaScript](/azure/active-directory/develop/tutorial-v2-javascript-auth-code).
 
-const msalConfig = {
-  auth: {
-    clientId: "<AAD client application ID>",
-    authority: "https://login.microsoftonline.com/<AAD tenant ID>",
-  },
-};
+    The following example uses the MSAL.js library to access Azure Data Explorer.
 
-const msalInstance = new msal.PublicClientApplication(msalConfig);
-const myAccounts = msalInstance.getAllAccounts();
-
-// If no account is logged in, redirect the user to log in.
-if (myAccounts === undefined || myAccounts.length === 0) {
-  try {
-    await msalInstance.loginRedirect({
+    ```javascript
+    import * as msal from "@azure/msal-browser";
+    
+    const msalConfig = {
+      auth: {
+        clientId: "<AAD client application ID>",
+        authority: "https://login.microsoftonline.com/<AAD tenant ID>",
+      },
+    };
+    
+    const msalInstance = new msal.PublicClientApplication(msalConfig);
+    const myAccounts = msalInstance.getAllAccounts();
+    
+    // If no account is logged in, redirect the user to log in.
+    if (myAccounts === undefined || myAccounts.length === 0) {
+      try {
+        await msalInstance.loginRedirect({
+          scopes: ["https://help.kusto.windows.net/.default"],
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    const account = myAccounts[0];
+    const name = account.name;
+    window.document.getElementById("main").innerHTML = `Hi ${name}!`;
+    
+    // Get the access token required to access the specified Azure Data Explorer cluster.
+    const accessTokenRequest = {
+      account,
       scopes: ["https://help.kusto.windows.net/.default"],
+    };
+    let acquireTokenResult = undefined;
+    try {
+      acquireTokenResult = await msalInstance.acquireTokenSilent(accessTokenRequest);
+    } catch (error) {
+      if (error instanceof InteractionRequiredAuthError) {
+        await msalInstance.acquireTokenRedirect(accessTokenRequest);
+      }
+    }
+    
+    const accessToken = acquireTokenResult.accessToken;
+    
+    // Make requests to the specified cluster with the token in the Authorization header.
+    const fetchResult = await fetch("https://help.kusto.windows.net/v2/rest/query", {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        db: "Samples",
+        csl: "StormEvents | count",
+      }),
     });
-  } catch (err) {
-    console.error(err);
-  }
-}
-const account = myAccounts[0];
-const name = account.name;
-window.document.getElementById("main").innerHTML = `Hi ${name}!`;
-
-// Get the access token required to access the specified Azure Data Explorer cluster.
-const accessTokenRequest = {
-  account,
-  scopes: ["https://help.kusto.windows.net/.default"],
-};
-let acquireTokenResult = undefined;
-try {
-  acquireTokenResult = await msalInstance.acquireTokenSilent(accessTokenRequest);
-} catch (error) {
-  if (error instanceof InteractionRequiredAuthError) {
-    await msalInstance.acquireTokenRedirect(accessTokenRequest);
-  }
-}
-
-const accessToken = acquireTokenResult.accessToken;
-
-// Make requests to the specified cluster with the token in the Authorization header.
-const fetchResult = await fetch("https://help.kusto.windows.net/v2/rest/query", {
-  headers: {
-    Authorization: `Bearer ${accessToken}`,
-    "Content-Type": "application/json",
-  },
-  method: "POST",
-  body: JSON.stringify({
-    db: "Samples",
-    csl: "StormEvents | count",
-  }),
-});
-const jsonResult = await fetchResult.json();
-
-// The following line extracts the first cell in the result data.
-const count = jsonResult.filter((x) => x.TableKind === "PrimaryResult")[0].Rows[0][0];
-```
+    const jsonResult = await fetchResult.json();
+    
+    // The following line extracts the first cell in the result data.
+    const count = jsonResult.filter((x) => x.TableKind === "PrimaryResult")[0].Rows[0][0];
+    ```
 
 ## Azure AD token cache
 
