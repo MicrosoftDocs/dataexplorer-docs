@@ -4,7 +4,7 @@ description: This article describes Access control in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 06/21/2023
+ms.date: 06/22/2023
 ---
 # Access control overview
 
@@ -51,6 +51,6 @@ The association of security principals to security roles can be defined individu
 ## Next steps
 
 * [Authenticate with Azure Active Directory](aad.md)
-* Use the [client libraries](../api/client-libraries.md)
+* Use the [Kusto client libraries](../api/client-libraries.md)
 * Build [Kusto connection strings](../api/connection-strings/kusto.md)
 * Understand [Kusto role-based access control](role-based-access-control.md)

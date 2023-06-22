@@ -3,7 +3,7 @@ title:  Azure Active Directory authentication
 description: This article describes Azure Active Directory authentication in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/21/2023
+ms.date: 06/22/2023
 ---
 # Authenticate with Azure Active Directory
 
@@ -20,51 +20,26 @@ The main types of authentication scenarios are as follows:
 * [On-behalf-of authentication](#on-behalf-of-authentication): Allows an application to obtain an Azure AD access token from another application and use it to access Azure Data Explorer.
 
 > [!IMPORTANT]
-> We recommend using the Kusto [client libraries](../api/client-libraries.md) for user and application authentication, which simplify the authentication process. However, for on-behalf-of authentication, follow the process described in the [On-behalf-of authentication](#on-behalf-of-authentication) section.
+> We recommend using the [Kusto client libraries](../api/client-libraries.md) for user and application authentication, which simplify the authentication process. However, for on-behalf-of authentication, follow the process described in the [On-behalf-of authentication](#on-behalf-of-authentication) section.
 
 ## Microsoft Authentication Library (MSAL)
 
-To authenticate with Azure Data Explorer, the Kusto client libraries use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens. We recommend using these libraries for user and application authentication, as they simplify the process. When using the client libraries, the authentication properties are configured through the [Kusto connection string](../api/connection-strings/kusto.md).
+To authenticate with Azure Data Explorer, we recommend using the [Kusto client libraries](../api/client-libraries.md), which use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens. These libraries simplify the authentication process.
+
+When using the Kusto client libraries, you can configure the authentication properties through the [Kusto connection string](../api/connection-strings/kusto.md). This approach provides a straightforward way to authenticate without the need to implement complex authentication flows.
+
+Alternatively, if you prefer to handle authentication manually, you can choose to implement one of the [MSAL authentication flows](active-directory/develop/msal-authentication-flows). However, keep in mind that this approach involves more complexity compared to using the client libraries.
+
+During the token acquisition process with MSAL, the client must provide the following parameters:
+
+|Parameter|Description|Example|
+|--|--|--|
+|Resource ID|The resource ID for which the Azure AD token should be issued. For Azure Data Explorer, this is the cluster URI without port information and path.|The resource ID for the `help` cluster is `https://help.kusto.windows.net`.|
+|Azure AD tenant ID|Azure AD is a multi-tenant service, and every organization can create an object called directory in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a tenant. Azure AD tenants are identified by a GUID, or the tenant ID. In many cases, the domain name of the organization can identity the Azure AD tenant.|An organization "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.|
+|Azure AD authority URI|The endpoint used for authentication. The Azure AD directory, or tenant, determines the Azure AD authority URI. Use `https://login.microsoftonline.com/{tenantId}` as the Azure AD authority URI where `{tenantId}` is either the tenant ID or domain name.|For example, `https://login.microsoftonline.com/12345678-a123-4567-b890-123a456b789c`.|
 
 > [!NOTE]
-> With Kusto [client libraries](../api/client-libraries.md), Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user.
-
-During the token acquisition process, the client must provide the following information:
-
-* The [resource](#how-to-specify-the-resource) or cluster URI.
-* The [Azure AD tenant ID](#how-to-specify-the-azure-ad-tenant-id)
-* The [Azure AD authority URI](#how-to-specify-the-azure-ad-authority-uri).
-* The Azure AD client application ID.
-* For application authentication: the Azure AD client application credential, which is a secret or certificate.
-* For user authentication: the Azure AD client application `ReplyUrl`, or the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
-
-If you can't use the client libraries, you can manually implement an authentication flow using MSAL.
-
-## Implement an authentication flow with MSAL
-
-In this section, learn how to create an authentication flow to Azure Data Explorer using MSAL. For more information on MSAL authentication flows, see [Authentication flow support in MSAL](active-directory/develop/msal-authentication-flows).
-
-### How to specify the resource
-
-The client must specify the resource ID for which the Azure AD token should be issued, which for an Azure Data Explorer endpoint is the cluster URI without port information and path.
-
-**Example**: The resource ID for the `help` cluster is `https://help.kusto.windows.net`.
-
-### How to specify the Azure AD tenant ID
-
-Azure AD is a multi-tenant service, and every organization can create an object called directory in Azure AD. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a tenant. Azure AD tenants are identified by a GUID, or the tenant ID. In many cases, the domain name of the organization can identity the Azure AD tenant.
-
-**Example**: An organization "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.
-
-### How to specify the Azure AD authority URI
-
-The Azure AD authority URI is the endpoint used for authentication. The Azure AD directory, or tenant, determines the Azure AD authority URI.
-
-If you know the principal's Azure AD directory, use `https://login.microsoftonline.com/{tenantId}` as the Azure AD authority URI where `{tenantId}` is either the tenant ID or domain name. If you don't know the principal's directory, then use the "common" Azure AD authority by replacing `{tenantId}` with `common`.
-
-> [!NOTE]
-> The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer
-> service deployed in a national cloud, set the corresponding national cloud Azure AD service endpoint.
+> The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer service deployed in a national cloud, set the corresponding national cloud Azure AD service endpoint.
 
 ## User and application authentication
 
@@ -72,7 +47,7 @@ The following examples use MSAL to authenticate to Azure Data Explorer. Select t
 
 ### [User authentication](#tabs/user-auth)
 
-The following examples uses MSAL to get an Azure AD user token to access Azure Data Explorer in a way that launches the interactive sign-in UI:
+The following example uses MSAL to get an Azure AD user token to access Azure Data Explorer in a way that launches the interactive sign-in UI. The `appRedirectUri` is the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -94,7 +69,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 ### [Application authentication](#tabs/app-auth)
 
-The following example uses MSAL to get an Azure AD application token to access Azure Data Explorer. In this flow no prompt is presented, and the application must be registered with Azure AD and equipped with credentials needed to perform application authentication, such as an app key issued by Azure AD, or an X509v2 certificate that has been pre-registered with Azure AD.
+The following example uses MSAL to get an Azure AD application token to access Azure Data Explorer. In this flow no prompt is presented, and the application must be registered with Azure AD and equipped with credentials needed to perform application authentication, such as an app key issued by Azure AD, or an X509v2 certificate that has been pre-registered with Azure AD. To set up an application, see [Provision an Azure AD application](../../provision-azure-ad-app.md).
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -214,7 +189,11 @@ const jsonResult = await fetchResult.json();
 const count = jsonResult.filter((x) => x.TableKind === "PrimaryResult")[0].Rows[0][0];
 ```
 
+## Azure AD token cache
+
+With the [Kusto client libraries](../api/client-libraries.md), Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user.
+
 ## Next steps
 
 * [How to provision an Azure AD application](../../provision-azure-ad-app.md)
-* Use the [client libraries](../api/client-libraries.md) to connect to Azure Data Explorer
+* Use the [Kusto client libraries](../api/client-libraries.md) to connect to Azure Data Explorer
