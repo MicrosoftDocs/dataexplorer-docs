@@ -28,7 +28,7 @@ To authenticate with Azure Data Explorer, we recommend using the [Kusto client l
 
 When using the Kusto client libraries, you can configure the authentication properties through the [Kusto connection string](../api/connection-strings/kusto.md). This approach provides a straightforward way to authenticate without the need to implement complex authentication flows.
 
-Alternatively, if you prefer to handle authentication manually, you can choose to implement one of the [MSAL authentication flows](active-directory/develop/msal-authentication-flows). However, keep in mind that this approach involves more complexity compared to using the client libraries.
+Alternatively, if you prefer to handle authentication manually, you can choose to implement one of the [MSAL authentication flows](/azure/active-directory/develop/msal-authentication-flows). However, keep in mind that this approach involves more complexity compared to using the client libraries.
 
 During the token acquisition process with MSAL, the client must provide the following parameters:
 
@@ -45,7 +45,7 @@ During the token acquisition process with MSAL, the client must provide the foll
 
 The following examples use MSAL to authenticate to Azure Data Explorer. Select the tab relevant for the required type of authentication.
 
-### [User authentication](#tabs/user-auth)
+### [User authentication](#tab/user-auth)
 
 The following example uses MSAL to get an Azure AD user token to access Azure Data Explorer in a way that launches the interactive sign-in UI. The `appRedirectUri` is the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
@@ -67,7 +67,7 @@ var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
-### [Application authentication](#tabs/app-auth)
+### [Application authentication](#tab/app-auth)
 
 The following example uses MSAL to get an Azure AD application token to access Azure Data Explorer. In this flow no prompt is presented, and the application must be registered with Azure AD and equipped with credentials needed to perform application authentication, such as an app key issued by Azure AD, or an X509v2 certificate that has been pre-registered with Azure AD. To set up an application, see [Provision an Azure AD application](../../provision-azure-ad-app.md).
 
