@@ -165,22 +165,11 @@ var queryResult = await queryClient.ExecuteQueryAsync("<databaseName>", "<query>
 
 ## Web Client (JavaScript) authentication
 
-To set up authentication for a web client, you need to not only [provision an Azure AD application](../../provision-azure-ad-app.md) but also enable the single-page application (SPA) setting on the application. The SPA setting enables the OAuth authorization code flow to obtain tokens used by [MSAL.js 2.0](https://www.npmjs.com/package/@azure/msal-browser). To configure the app, follow the steps in the MSAL 2.0 [SPA app registration scenario](/azure/active-directory/develop/scenario-spa-app-registration).
+To set up authentication for a web client, you need to [provision an Azure AD application](../../provision-azure-ad-app.md) and enable the single-page application (SPA) setting on the application. The SPA setting enables the [OAuth authorization code flow](/azure/active-directory/develop/msal-authentication-flows#authorization-code) to obtain tokens used by [MSAL.js 2.0](https://www.npmjs.com/package/@azure/msal-browser). To configure the app, follow the steps in the [SPA app registration scenario](/azure/active-directory/develop/scenario-spa-app-registration).
 
-When the client is JavaScript code running in the user's browser, the auth code flow is used. The authentication flow consists of two stages:
+In this scenario, the app is redirected to sign in to Azure AD. Once signed in, Azure AD redirects back to the app with an authorization code in the URI. Then, the app makes a request to the token endpoint to get the access token. The token is valid for 24 hour during which the client can reuse it by acquiring the token silently.
 
-1. The app is redirected to sign in to Azure AD. Once signed in, Azure AD redirects back to the app with an authorization code in the URI.
-
-1. The app makes a request to the token endpoint to get the access token. The token is valid for 24 hour during which the client can reuse it by acquiring the token silently.
-
-Like in the native client flow, there should be two Azure AD applications (server and client) with a configured relationship between them.
-
-> [!NOTE]
->
-> * The ID token is obtained by calling the `PublicClientApplication.loginRedirect()` method, and access tokens are obtained by calling `PublicClientApplication.acquireTokenSilent()`, or `PublicClientApplication.acquireTokenRedirect()` in case silent acquisition failed. MSAL 2.0 also supports `PublicClientApplicationloginPopup()`, but some browser block pop-ups which makes it less useful than a redirect.
-> * MSAL 2.0 requires signing in (also known as getting an ID token) before any access token calls are made.
-
-MSAL.js 2.0 has detailed sample apps for different frameworks such as React and Angular. For an example of how to use MSAL.js 2.0 to authenticate to an Azure Data Explorer cluster using a React application, see the [MSAL.js 2.0 React sample](https://github.com/Azure-Samples/ms-identity-javascript-react-spa). For other frameworks, check the MSAL.js 2.0 documentation to find a sample app.
+MSAL.js 2.0 has detailed sample apps for different frameworks such as React and Angular. For an example of how to use MSAL.js 2.0 to authenticate to an Azure Data Explorer cluster using a React application, see the [MSAL.js 2.0 React sample](https://github.com/Azure-Samples/ms-identity-javascript-react-spa). For other frameworks, check the MSAL.js 2.0 documentation.
 
 The following is a framework-independent code sample for connecting to the *Help* cluster.
 
