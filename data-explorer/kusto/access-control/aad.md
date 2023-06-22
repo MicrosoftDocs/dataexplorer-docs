@@ -11,7 +11,7 @@ ms.date: 06/22/2023
 
 To authenticate with Azure AD, the client must communicate with the Azure AD service and request an access token specific to Azure Data Explorer. Then, the client can use the acquired access token as proof of identity when issuing requests to Azure Data Explorer.
 
-The main types of authentication scenarios are as follows:
+The main authentication scenarios are as follows:
 
 * [User authentication](#user-authentication): Used to verify the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
 
@@ -96,7 +96,7 @@ When your web application or service acts as a mediator between the user or appl
 
 In this scenario, an application is sent an Azure AD access token for an arbitrary resource. Then, the application uses that token to acquire a new Azure AD access token for the Azure Data Explorer resource. Then, the application can access Azure Data Explorer on behalf of the principal indicated by the original Azure AD access token. This flow is called the [OAuth 2.0 on-behalf-of authentication flow](/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). It generally requires multiple configuration steps with Azure AD, and in some cases might require special consent from the administrator of the Azure AD tenant.
 
-To use on-behalf-of authentication:
+To perform on-behalf-of authentication:
 
 1. [Provision an Azure AD application](../../provision-azure-ad-app.md).
 1. Establish a trust relationship between the application and Azure Data Explorer. To do so, follow the steps in [Configure delegated permissions](../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
