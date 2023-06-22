@@ -99,6 +99,7 @@ In this scenario, an application is sent an Azure AD access token for an arbitra
 To use on-behalf-of authentication:
 
 1. [Provision an Azure AD application](../../provision-azure-ad-app.md).
+1. Establish a trust relationship between the application and Azure Data Explorer. To do so, follow the steps in [Configure delegated permissions](../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
 1. Perform token exchange in your server code and provide the token to the Kusto client library and execute queries, as shown in the following code sample.
 
     ```csharp
