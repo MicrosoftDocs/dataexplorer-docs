@@ -780,10 +780,10 @@ items:
   - name: pow()
     href: powfunction.md
   - name: punycode_from_string()
-    displayName: puny code to from string
+    displayName: punycode from string
     href: punycode-from-string.md
   - name: punycode_to_string()
-    displayName: puny code to from string
+    displayName: punycode to string
     href: punycode-to-string.md
     name: punycode_domain_from_string()
     displayName: punycode domain from string

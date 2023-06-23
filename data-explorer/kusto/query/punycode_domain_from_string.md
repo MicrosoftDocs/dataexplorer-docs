@@ -39,7 +39,6 @@ datatable(encoded:string)
 ```
 
 |decoded|
-|---|
 |encoded|domain|
 |---|---|
 |xn--Ge-mia.Bulg.edu|Gáe.Bulg.edu
