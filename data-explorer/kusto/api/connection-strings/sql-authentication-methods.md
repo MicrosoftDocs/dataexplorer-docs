@@ -7,7 +7,7 @@ ms.date: 06/18/2023
 ---
 # SQL external table authentication methods
 
-The connection string provided upon creation of a SQL external table ([SQL Server](../../management/external-mssql-tables.md), [PostgreSQL](../../management/external-postgresql-tables.md), [MySQL](../../management/external-mysql-tables.md), [CosmosDB](../../management/external-cosmosdbsql-tables.md)
+The connection string provided upon creation of a SQL external table ([SQL Server](../../management/external-mssql-tables.md), [PostgreSQL](../../management/external-postgresql-tables.md), [MySQL](../../management/external-mysql-tables.md), [CosmosDB](../../management/external-cosmosdbsql-tables.md))
 defines the resource to access and its authentication information. The following authentication methods are supported:
 
 * [Azure AD-integrated authentication](#azure-ad-integrated-authentication)
