@@ -3,7 +3,7 @@ title:  SQL external table authentication methods
 description: This article describes how to authenticate to SQL external tables in Azure Data Explorer.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 06/18/2023
+ms.date: 06/25/2023
 ---
 # SQL external table authentication methods
 
@@ -16,14 +16,14 @@ defines the resource to access and its authentication information. The following
 
 ## Privacy and security
 
-We recommend adding an `h` to connection strings that contain secrets. This practice ensures that the private information in the connection string is [obfuscated in telemetry data](../../query/scalar-data-types/string.md#obfuscated-string-literals).
+We recommend adding an 'h' prefix to any connection string that contains secrets. This practice ensures that the private information in the connection string is [obfuscated in telemetry data](../../query/scalar-data-types/string.md#obfuscated-string-literals).
 
-The following table explains how to hide your private information using the `h` string.
+The following table explains how to hide your private information using the 'h' string.
 
 |Goal|Method|Syntax|
 |--|--|--|
-|Hide the entire connection string|Preface the connection string with `h`.|`h"<connection_string>"`|
-|Hide only the secret part of the string|Split the connection string into the resource location and the secret information and add the `h` between the two.| `"<resource_location>"h"<secrets>"`|
+|Hide the entire connection string|Preface the connection string with 'h'.|`h"<connection_string>"`|
+|Hide only the secret part of the string|Split the connection string into the resource location and the secret information and add the 'h' between the two.| `"<resource_location>"h"<secrets>"`|
 
 ## Azure AD-integrated authentication
 
@@ -42,7 +42,7 @@ The principal must have the necessary permissions on the SQL database to perform
 
 ## Managed identity
 
-Azure Data Explorer uses the managed identity to make requests and access resources. This method is only supported for SQL Server.
+Azure Data Explorer makes requests on behalf of a managed identity and uses its identity to access resources. This method is only supported for SQL Server.
 
 For a system-assigned managed identity, append `;Authentication="Active Directory Managed Identity"` to the connection string. For a user-assigned managed identity, append `;Authentication="Active Directory Managed Identity";User Id={object_id}` to the connection string.
 
