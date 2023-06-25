@@ -1,13 +1,14 @@
 ---
-title:  SQL Server external table authentication methods
-description: This article describes how to authenticate to SQL Server external tables in Azure Data Explorer.
+title:  SQL external table authentication methods
+description: This article describes how to authenticate to SQL external tables in Azure Data Explorer.
 ms.reviewer: urishapira
 ms.topic: reference
 ms.date: 06/18/2023
 ---
-# SQL Server external table authentication methods
+# SQL external table authentication methods
 
-The connection string provided upon creation of an [external table](../../management/external-sql-tables.md) defines the resource to access and its authentication information. The following authentication methods are supported:
+The connection string provided upon creation of a SQL external table ([SQL Server](../../management/external-mssql-tables.md), [PostgreSQL](../../management/external-postgresql-tables.md), [MySQL](../../management/external-mysql-tables.md), [CosmosDB](../../management/external-cosmosdbsql-tables.md))
+defines the resource to access and its authentication information. The following authentication methods are supported:
 
 * [Azure AD-integrated authentication](#azure-ad-integrated-authentication)
 * [Managed identity](#managed-identity)
@@ -24,7 +25,7 @@ The following table explains how to hide your private information using the `h` 
 |Hide the entire connection string|Preface the connection string with `h`.|`h"<connection_string>"`|
 |Hide only the secret part of the string|Split the connection string into the resource location and the secret information and add the `h` between the two.| `"<resource_location>"h"<secrets>"`|
 
-## Azure AD-integrated authentication
+## Azure AD-integrated authentication (Currently only supported for SQL Server)
 
 With this authentication method, the user or application authenticates via Azure AD to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. To use Azure AD-integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string.
 
@@ -34,7 +35,7 @@ With this authentication method, the user or application authenticates via Azure
 
 The principal must have the necessary permissions on the SQL database to perform the operation. To manage the access controls for different storage types, see [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
 
-## Managed identity
+## Managed identity (Currently only supported for SQL Server)
 
 Azure Data Explorer uses the managed identity to make requests and access resources. For a system-assigned managed identity, append `;Authentication="Active Directory Managed Identity"` to the connection string. For a user-assigned managed identity, append `;Authentication="Active Directory Managed Identity";User Id={object_id}` to the connection string.
 
@@ -57,6 +58,9 @@ The principal must have the necessary permissions on the SQL database to perform
 
 ## See also
 
-* [Create a SQL Server external table](../../management/external-sql-tables.md)
+* [Create a SQL Server external table](../../management/external-mssql-tables.md)
+* [Create a MySql external table](../../management/external-mysql-tables.md)
+* [Create a PostgreSql external table](../../management/external-postgresql-tables.md)
 * [Authentication with the sql_request plugin](../../query/sqlrequestplugin.md#authentication-and-authorization)
 * [Authentication with the mysql_request plugin](../../query/mysqlrequest-plugin.md#authentication-and-authorization)
+* [Authentication with the postgresql_request plugin](../../query/postgresqlrequest-plugin.md#authentication-and-authorization)
