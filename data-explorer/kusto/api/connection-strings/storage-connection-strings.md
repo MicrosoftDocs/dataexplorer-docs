@@ -3,11 +3,11 @@ title:  Storage connection strings
 description: This article describes storage connection strings in Azure Data Explorer.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 02/07/2022
+ms.date: 06/25/2023
 ---
 # Storage connection strings
 
-Azure Data Explorer can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azurestorage-azuredatalake.md).
+Azure Data Explorer can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azurestorage-azuredatalake.md) in order to query data stored on external storages.
 
 The following types of external storage are supported:
 
@@ -19,9 +19,8 @@ The following types of external storage are supported:
 Each type of storage has corresponding connection string formats used to describe the storage resources and how to access them.
 Azure Data Explorer uses a URI format to describe these storage resources and the properties necessary to access them, such as security credentials.
 
-> [!WARN]
-> Be mindful of the fact that the list below is exhaustive. In particular, note that HTTP web services that do not implement the entire API set of
-> Azure Blob Storage are **not supported**, even if they appear to work in some scenarios.
+> [!NOTE]
+> HTTP web services that don't implement the entire API set of Azure Blob Storage aren't supported, even if they appear to work in some scenarios.
 
 ## Storage connection string templates
 
@@ -37,4 +36,4 @@ Each storage type has a different connection string format. See the following ta
 
 ## Storage authentication
 
-For Azure Data Explorer to interact with and authenticate to external storage, you must specify the storage's `connection string`. This `connection string` defines the resource being accessed and its authentication information. For more information, see [Storage authentication methods](storage-authentication-methods.md).
+In order to access nonpublic external resources, authentication means must be provided as part of the connection string. This connection string defines the resource being accessed and its authentication information. For more information, see [Storage authentication methods](storage-authentication-methods.md).
