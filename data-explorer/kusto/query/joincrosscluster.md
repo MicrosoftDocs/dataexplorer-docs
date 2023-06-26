@@ -56,7 +56,7 @@ The following list explains the supported values for the *Strategy* parameter:
 > [!NOTE]
 > The join remoting hint is ignored if the hinted strategy isn't applicable to the join operation.
 
-## Performance considerations
+## How the auto strategy works
 
 By default, the `auto` strategy determines where the cross-cluster join should be executed based on the following rules:
 
@@ -75,9 +75,21 @@ cluster("B").database("DB").T | ... | join (cluster("C").database("DB2").T2 | ..
 
 With the `auto` strategy, "Example 1" would be executed on the local cluster. For "Example 2", assuming neither cluster is the local cluster, the join would be executed on cluster `C` since it is the cluster of the right table. The cluster performing the join fetches the data from the other cluster.
 
+## Performance considerations
+
 For optimal performance, we recommend performing the join on the cluster that contains the largest table.
 
-For example, "Example 1" was set to be run on the local cluster, but if the dataset produced by `T | ...` is much smaller than one produced by `cluster("B").database("DB").T2 | ...` then it would be more efficient to execute the join operation on cluster `B` instead of on the local cluster.
+Let's consider the following examples again:
+
+```kusto
+// Example 1
+T | ... | join (cluster("B").database("DB").T2 | ...) on Col1
+
+// Example 2
+cluster("B").database("DB").T | ... | join (cluster("C").database("DB2").T2 | ...) on Col1
+```
+
+"Example 1" is set to run on the local cluster, but if the dataset produced by `T | ...` is much smaller than one produced by `cluster("B").database("DB").T2 | ...` then it would be more efficient to execute the join operation on cluster `B` instead of on the local cluster.
 
 By specifying the strategy as `right`, the following query instructs Kusto to perform the join operation on the cluster that contains the right table.
 
