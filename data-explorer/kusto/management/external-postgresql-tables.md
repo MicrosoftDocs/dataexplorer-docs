@@ -1,14 +1,14 @@
 ---
-title: Create and alter PostgreSql external tables
-description: Learn how to create and alter a PostgreSql external table.
+title: Create and alter PostgreSQL external tables
+description: Learn how to create and alter a PostgreSQL external table.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/26/2023
 ---
 
-# Create and alter PostgreSql external tables
+# Create and alter PostgreSQL external tables
 
-Creates or alters a PostgreSql [external table](../query/schema-entities/externaltables.md) in the database in which the command is executed.
+Creates or alters a PostgreSQL [external table](../query/schema-entities/externaltables.md) in the database in which the command is executed.
 
 ## Permissions
 
@@ -16,7 +16,7 @@ To `.create` requires at least [Database User](../management/access-control/role
 
 ## Syntax
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema*`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlServerConnectionString*`)` [`with` `( sqlDialect = PostgreSql ,` [ *Property*`,` ... ]`)`]
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema*`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlServerConnectionString*`)` [`with` `( sqlDialect = PostgreSQL ,` [ *Property*`,` ... ]`)`]
 
 ## Parameters
 
@@ -26,7 +26,7 @@ To `.create` requires at least [Database User](../management/access-control/role
 | *Schema* | string | &check; | The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.|
 |*SqlTableName*| string | &check; | The name of the SQL table not including the database name. For example, "PostgreSqlTable" and not "db1.PostgreSqlTable". If the name of the table contains a period ("."), use ['Name.of.the.table'] notation.|
 | *SqlConnectionString*| string |&check;| The connection string to the PostgreSQL Server. See the supported [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md).|
-|*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [Optional properties](#optional-properties). The `sqlDialect = PostgreSql` specification is also a property but is required for the connection to succeed.|
+|*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [Optional properties](#optional-properties). The `sqlDialect = PostgreSQL` specification is also a property but is required for the connection to succeed.|
 
 > [!WARNING]
 > Connection strings and queries that include confidential information should be obfuscated so that they'll be omitted from any Kusto tracing. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).
@@ -60,7 +60,7 @@ table=PostgreSqlTable
 )
 with 
 (
-   sqlDialect = "PostgreSql",
+   sqlDialect = "PostgreSQL",
    docstring = "Docs",
    folder = "ExternalTables", 
 )  
