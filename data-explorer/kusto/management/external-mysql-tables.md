@@ -29,7 +29,7 @@ To `.create` requires at least [Database User](../management/access-control/role
 |*OptionalProperties*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [Optional properties](#optional-properties). The `sqlDialect = MySql` specification is also a property but is required for the connection to succeed.|
 
 > [!WARNING]
-> Connection strings and queries that include confidential information should be obfuscated for security. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).
+> Connection strings and queries that include confidential information should be obfuscated so that they'll be omitted from any Kusto tracing. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Optional properties
 
