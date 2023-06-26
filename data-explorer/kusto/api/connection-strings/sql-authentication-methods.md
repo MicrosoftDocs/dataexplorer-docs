@@ -37,9 +37,6 @@ To use Azure AD-integrated authentication (impersonation), add `;Authentication=
 
 The principal must have the necessary permissions on the SQL database to perform the operation. To manage the access controls for different storage types, see [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
 
-> [!NOTE]
-> This method is only supported for SQL Server.
-
 ## Managed identity
 
 Azure Data Explorer makes requests on behalf of a managed identity and uses its identity to access resources. This method is only supported for SQL Server.
