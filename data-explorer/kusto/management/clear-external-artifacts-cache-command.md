@@ -17,14 +17,14 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 ## Syntax
 
-`.clear` `cluster` `cache` `external-artifacts` *ArrayOfArtifactsURIs*
+`.clear` `cluster` `cache` `external-artifacts` `(` *ArtifactURI* [`,` ... ] `)`
 
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ArrayOfArtifactsURIs* | `string` | &check;  | An array with one or more external-artifact URI |
+| *ArtifactURI* | `string` | &check;  | The URI for the external-artifact to clear from the cache. |
 
 
 ## Returns
@@ -33,7 +33,7 @@ This command returns a table with the following columns:
 
 |Column    |Type    |Description
 |---|---|---
-|ExternalArtifactUri|`string`|The external artifact URI
+|ExternalArtifactUri|`string`|The external artifact URI.
 |State|`string`|The result of the clear operation on the external artifact.
 
 ## Example
@@ -47,6 +47,8 @@ This command returns a table with the following columns:
 |https://kustoscriptsamples.blob.core.windows.net/samples/R/sample_script.r|Cleared successfully on all nodes
 |https://kustoscriptsamples.blob.core.windows.net/samples/python/sample_script.py|Cleared successfully on all nodes
 
-	
+## See also
+
+* [Manage language extensions in your Azure Data Explorer cluster](../language-extensions.md)
 	
 	
