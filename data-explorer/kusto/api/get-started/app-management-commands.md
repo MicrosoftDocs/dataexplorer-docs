@@ -21,7 +21,7 @@ In this article, you learn how to:
 
 ## Run a management command and process the results
 
-In your preferred IDE or text editor, create a file named `management-commands` with the language appropriate extension, and then add the following code:
+In your preferred IDE or text editor, create a project or file named *management commands* using the convention appropriate for your preferred language. Then add the following code:
 
 1. Create a client app that connects your cluster. Replace the `<your_cluster>` placeholder with your cluster name.
 
@@ -40,11 +40,11 @@ In your preferred IDE or text editor, create a file named `management-commands` 
       {
         static void Main(string[] args)
         {
-          var cluster_uri = "https://<your_cluster>.kusto.windows.net/";
-          var kcsb = new KustoConnectionStringBuilder(cluster_uri)
+          var clusterUri = "https://<your_cluster>.kusto.windows.net/";
+          var kcsb = new KustoConnectionStringBuilder(clusterUri)
               .WithAadUserPromptAuthentication();
 
-          using (var kusto_client = KustoClientFactory.CreateCslAdminProvider(kcsb))
+          using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kcsb))
           {
           }
         }
@@ -70,14 +70,14 @@ In your preferred IDE or text editor, create a file named `management-commands` 
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    const KustoClient = require("azure-kusto-data").Client;
-    const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+    const kustoClient = require("azure-kusto-data").Client;
+    const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
 
     async function main() {
-      const cluster_uri = "https://<your_cluster>.kusto.windows.net";
-      const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
+      const clusterUri = "https://<your_cluster>.kusto.windows.net";
+      const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
 
-      const kusto_client = new KustoClient(kcsb);
+      const kustoClient = new KustoClient(kcsb);
     }
 
     main();
@@ -95,18 +95,14 @@ In your preferred IDE or text editor, create a file named `management-commands` 
     import com.microsoft.azure.kusto.data.KustoResultColumn;
     import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 
-    public class ManagementCommands {
-      public static void main(String[] args) {
+    public class managementCommands {
+      public static void main(String[] args) throws Exception {
         try {
-          String cluster_uri = "https://<your_cluster>.kusto.windows.net/";
-          ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
+          String clusterUri = "https://<your_cluster>.kusto.windows.net/";
+          ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
 
-          try (Client kusto_client = ClientFactory.createClient(kcsb)) {
-          } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+          try (Client kustoClient = ClientFactory.createClient(kcsb)) {
           }
-        } catch (Exception e) {
-          System.out.println("Error: " + e.getMessage());
         }
       }
     }
@@ -153,7 +149,7 @@ In your preferred IDE or text editor, create a file named `management-commands` 
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    function print_result_as_value_list(command, response) {
+    function printResultAsValueList(command, response) {
       // create a list of columns
       let cols = response.primaryResults[0].columns;
 
@@ -199,12 +195,12 @@ In your preferred IDE or text editor, create a file named `management-commands` 
     // The brackets contain a list of column Name:Type pairs that defines the table schema
     string command = @$".create table {table}
                       (StartTime:datetime,
-                        EndTime:datetime,
-                        State:string,
-                        DamageProperty:int,
-                        DamageCrops:int,
-                        Source:string,
-                        StormSummary:dynamic)";
+                       EndTime:datetime,
+                       State:string,
+                       DamageProperty:int,
+                       DamageCrops:int,
+                       Source:string,
+                       StormSummary:dynamic)";
     ```
 
     ### [Python](#tab/python)
@@ -235,11 +231,11 @@ In your preferred IDE or text editor, create a file named `management-commands` 
     // The brackets contain a list of column Name:Type pairs that defines the table schema
     let command = `.create table ` + table + `
                   (StartTime:datetime,
-                    EndTime:datetime,
-                    State:string,
-                    DamageProperty:int,
-                    Source:string,
-                    StormSummary:dynamic)`;
+                   EndTime:datetime,
+                   State:string,
+                   DamageProperty:int,
+                   Source:string,
+                   StormSummary:dynamic)`;
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -253,14 +249,14 @@ In your preferred IDE or text editor, create a file named `management-commands` 
     // Create a table named MyStormEvents
     // The brackets contain a list of column Name:Type pairs that defines the table schema
     String command = ".create table " + table + """
-                    (StartTime:datetime,
-                    EndTime:datetime,
-                    State:string,
-                    DamageProperty:int,
-                    DamageCrops:int,
-                    Source:string,
-                    StormSummary:dynamic)
-                    """;
+                      (StartTime:datetime,
+                       EndTime:datetime,
+                       State:string,
+                       DamageProperty:int,
+                       DamageCrops:int,
+                       Source:string,
+                       StormSummary:dynamic)
+                     """;
     ```
 
     ---
@@ -273,7 +269,7 @@ In your preferred IDE or text editor, create a file named `management-commands` 
     > You'll use the `ExecuteControlCommand` method to run the command.
 
     ```csharp
-    using (var response = kusto_client.ExecuteControlCommand(database, command, null))
+    using (var response = kustoClient.ExecuteControlCommand(database, command, null))
     {
       PrintResultsAsValueList(command, response);
     }
@@ -296,7 +292,7 @@ In your preferred IDE or text editor, create a file named `management-commands` 
 
     ```nodejs
     let response = await kusto_client.executeMgmt(database, command);
-    print_result_as_value_list(command, response)
+    printResultsAsValueList(command, response)
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -324,11 +320,11 @@ namespace ManagementCommands
   {
     static void Main(string[] args)
     {
-      string cluster_uri = "https://adxdocscluster.westeurope.kusto.windows.net";
-      var kcsb = new KustoConnectionStringBuilder(cluster_uri)
+      string clusterUri = "https://adxdocscluster.westeurope.kusto.windows.net";
+      var kcsb = new KustoConnectionStringBuilder(clusterUri)
           .WithAadUserPromptAuthentication();
 
-      using (var kusto_client = KustoClientFactory.CreateCslAdminProvider(kcsb))
+      using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kcsb))
       {
         string database = "Playground";
         string table = "MyStormEventsCS";
@@ -344,7 +340,7 @@ namespace ManagementCommands
                            Source:string,
                            StormSummary:dynamic)";
 
-        using (var response = kusto_client.ExecuteControlCommand(database, command, null))
+        using (var response = kustoClient.ExecuteControlCommand(database, command, null))
         {
           PrintResultsAsValueList(command, response);
         }
@@ -415,13 +411,13 @@ if __name__ == "__main__":
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
-const KustoClient = require("azure-kusto-data").Client;
-const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+const kustoClient = require("azure-kusto-data").Client;
+const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
 
 async function main() {
-  const cluster_uri = "https://adxdocscluster.westeurope.kusto.windows.net";
-  const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
-  const kusto_client = new KustoClient(kcsb);
+  const clusterUri = "https://adxdocscluster.westeurope.kusto.windows.net";
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
+  const kustoClient = new KustoClient(kcsb);
 
   const database = "Playground";
   const table = "MyStormEventsJS";
@@ -471,8 +467,7 @@ import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 
 public class ManagementCommands
 {
-  public static void main( String[] args )
-  {
+  public static void main(String[] args) throws Exception {
     try {
       String cluster_uri = "https://adxdocscluster.westeurope.kusto.windows.net";
       ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
@@ -483,22 +478,18 @@ public class ManagementCommands
         // Create a table named MyStormEvents
         // The brackets contain a list of column Name:Type pairs that defines the table schema
         String command = ".create table " + table + """
-                        (StartTime:datetime,
-                        EndTime:datetime,
-                        State:string,
-                        DamageProperty:int,
-                        DamageCrops:int,
-                        Source:string,
-                        StormSummary:dynamic)
-                       """;
+                          (StartTime:datetime,
+                           EndTime:datetime,
+                           State:string,
+                           DamageProperty:int,
+                           DamageCrops:int,
+                           Source:string,
+                           StormSummary:dynamic)
+                        """;
 
-        KustoOperationResult response = kusto_client.execute(database, command);
+        KustoOperationResult response = kustoClient.execute(database, command);
         printResultsAsValueList(command, response.getPrimaryResults());
-      } catch (Exception e) {
-        System.out.println("Error: " + e.getMessage());
       }
-    } catch (Exception e) {
-      System.out.println("Error: " + e.getMessage());
     }
   }
   public static void printResultsAsValueList(String command, KustoResultSetTable results) {
@@ -524,13 +515,14 @@ In a command shell, use the following command to run your app:
 ### [C\#](#tab/csharp)
 
 ```bash
-management-commands.exe
+# Change directory to the folder that contains the management commands project
+dotnet run .
 ```
 
 ### [Python](#tab/python)
 
 ```bash
-python management-commands.py
+python management_commands.py
 ```
 
 ### [Node.js](#tab/nodejs)
@@ -544,7 +536,7 @@ node management-commands.js
 ### [Java](#tab/java)
 
 ```bash
-java management-commands
+mvn install exec:java -Dexec.mainClass="<groupId>.managementCommands"
 ```
 
 ---
@@ -607,7 +599,7 @@ print_result_as_value_list(command, response)
 command = ".alter table " + table + " policy ingestionbatching '{ \"MaximumBatchingTimeSpan\":\"00:00:30\" }'"
 
 response = await kusto_client.executeMgmt(database, command)
-print_result_as_value_list(command, response)
+printResultsAsValueList(command, response)
 ```
 
 <!-- ### [Go](#tab/go) -->
@@ -677,7 +669,7 @@ print_result_as_value_list(command, response)
 command = ".show database " + database + " policy retention | project-away ChildEntities, EntityType"
 
 response = await kusto_client.executeMgmt(database, command)
-print_result_as_value_list(command, response)
+printResultsAsValueList(command, response)
 ```
 
 <!-- ### [Go](#tab/go) -->
