@@ -49,3 +49,5 @@ This command returns a table with the following columns:
 ## See also
 
 * [Manage language extensions in your Azure Data Explorer cluster](../../language-extensions.md)
+* [Python plugin](../query/pythonplugin.md)
+* [R plugin](../query/rplugin.md)
