@@ -20,7 +20,7 @@ See the following ways of creating external tables:
 
 * [Create or alter Azure Blob Storage/ADLS external tables](../../management/external-tables-azurestorage-azuredatalake.md)
 * [Create or alter delta external tables](../../management/external-tables-azurestorage-deltalake.md)
-* [Create and alter SQL Server external tables](../../management/external-sql-tables.md)
+* [Create and alter SQL Server external tables](../../management/external-mssql-tables.md)
 * [Create external table using Azure Data Explorer web UI Wizard](../../../external-table.md)
 
 An **external table** can be referenced by its name using the [external_table()](../../query/externaltablefunction.md) function.

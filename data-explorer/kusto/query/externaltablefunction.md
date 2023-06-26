@@ -27,10 +27,10 @@ References an [external table](schema-entities/externaltables.md) by name.
 
 ## Authentication and authorization
 
-The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method. For more information, see [Azure Storage external table](../management/external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external table](../management/external-sql-tables.md).
+The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method. For more information, see [Azure Storage external table](../management/external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external table](../management/external-mssql-tables.md).
 
 ## Next steps
 
 * [External tables overview](schema-entities/externaltables.md)
 * [Create and alter Azure Storage external tables](../management/external-tables-azurestorage-azuredatalake.md)
-* [Create and alter SQL Server external tables](../management/external-sql-tables.md).
+* [Create and alter SQL Server external tables](../management/external-mssql-tables.md).
