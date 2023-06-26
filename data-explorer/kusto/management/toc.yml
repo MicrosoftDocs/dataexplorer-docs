@@ -138,9 +138,9 @@ items:
         - name: SQL Server external tables
           href: external-mssql-tables.md
         - name: Cosmos DB external tables
-          href: external-mssql-tables.md
+          href: external-cosmosdb-tables.md
         - name: MySQL external tables
-          href: external-mssql-tables.md
+          href: external-mysql-tables.md
         - name: PostgreSQL external tables
           href: external-postgresql-tables.md
       - name: Query a SQL external table
