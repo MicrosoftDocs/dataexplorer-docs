@@ -24,9 +24,8 @@ The following table describes the types of connection string formats in Kusto.
 |[SQL connection strings](sql-authentication-methods.md)|Describe how to point Kusto at an external SQL Server database for query or to [export data to SQL](../../management/data-export/export-data-to-sql.md). These connection strings adhere to the [SqlClient connection strings](/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings) specification.|
 
 > [!NOTE]
-> Some connection strings may reference security principals. See
-> [principals and identity providers](../../management/access-control/referencing-security-principals.md)
-> for how to specify security principals in connection strings.
+> Some connection strings may reference security principals. To learn how to specify security principals in connection strings, see
+> [Referencing security principals](../../management/referencing-security-principals.md).
 
 ## Authentication with connection strings
 
