@@ -3,7 +3,7 @@ title: .clear cluster cache external-artifacts command
 description: Learn how to use the `.clear cluster cache external-artifacts` command to clear cached external-artifacts of language plugins.
 ms.reviewer: 
 ms.topic: reference
-ms.date: 
+ms.date: 06/26/2023
 ---
 # .clear cluster cache external-artifacts command
 
