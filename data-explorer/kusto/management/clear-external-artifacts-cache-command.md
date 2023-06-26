@@ -26,7 +26,6 @@ You must have at least [Database Admin](access-control/role-based-access-control
 |--|--|--|--|
 | *ArtifactURI* | `string` | &check;  | The URI for the external-artifact to clear from the cache. |
 
-
 ## Returns
 
 This command returns a table with the following columns:
@@ -49,6 +48,4 @@ This command returns a table with the following columns:
 
 ## See also
 
-* [Manage language extensions in your Azure Data Explorer cluster](../language-extensions.md)
-	
-	
+* [Manage language extensions in your Azure Data Explorer cluster](../../language-extensions.md)
