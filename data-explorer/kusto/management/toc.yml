@@ -810,4 +810,4 @@ items:
     - name: Soft delete command
       href: soft-delete-command.md
   - name: Clear cached external artifacts
-    href: clear-external-artifacts-cache-command
+    href: clear-external-artifacts-cache-command.md
