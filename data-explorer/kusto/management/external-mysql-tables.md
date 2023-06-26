@@ -16,7 +16,7 @@ To `.create` requires at least [Database User](../management/access-control/role
 
 ## Syntax
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema*`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlServerConnectionString*`)` [`with` `( sqlDialect = MySql,` [ *OptionalProperty*`,` ... ] `)`]
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema*`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlServerConnectionString*`)` [`with` `( sqlDialect = MySql,` [ *Property*`,` ... ] `)`]
 
 ## Parameters
 

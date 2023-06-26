@@ -16,7 +16,7 @@ To `.create` requires at least [Database User](../management/access-control/role
 
 ## Syntax
 
-(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema*`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlServerConnectionString*`)` [`with` `( sqlDialect = CosmosDbSql,` [ *OptionalProperty*`,` ... ] `)`]
+(`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema*`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlServerConnectionString*`)` [`with` `( sqlDialect = CosmosDbSql,` [ *Property*`,` ... ] `)`]
 
 ## Parameters
 
@@ -25,7 +25,7 @@ To `.create` requires at least [Database User](../management/access-control/role
 | *TableName* | string | &check; | The name of the external table. The name must follow the rules for [entity names](../query/schema-entities/entity-names.md). An external table can't have the same name as a regular table in the same database.|
 | *Schema* | string | &check; | The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.|
 | *SqlConnectionString*| string |&check;| The connection string to the Cosmos DB SQL Server. See the supported [Cosmos DB authentication methods](../query/cosmosdb-plugin.md#authentication-and-authorization).|
-|*OptionalProperty*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [Optional properties](#optional-properties). The `sqlDialect = CosmosDbSql` specification is also a property but is required for the connection to succeed.|
+|*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [Optional properties](#optional-properties). The `sqlDialect = CosmosDbSql` specification is also a property but is required for the connection to succeed.|
 
 > [!NOTE]
 > Connection strings and queries that include confidential information should be obfuscated for security. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).
