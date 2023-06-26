@@ -7,12 +7,16 @@ ms.date: 06/25/2023
 ---
 # SQL external table authentication methods
 
-The connection string provided upon creation of a SQL external table ([SQL Server](../../management/external-mssql-tables.md), [PostgreSQL](../../management/external-postgresql-tables.md), [MySQL](../../management/external-mysql-tables.md), [CosmosDB](../../management/external-cosmosdbsql-tables.md))
-defines the resource to access and its authentication information. The following authentication methods are supported:
+The connection string provided upon creation of a SQL external table ([SQL Server](../../management/external-mssql-tables.md), [PostgreSQL](../../management/external-postgresql-tables.md), [MySQL](../../management/external-mysql-tables.md), [Cosmos DB](../../management/external-cosmosdbsql-tables.md))
+defines the resource to access and its authentication information.
 
-* [Azure AD-integrated authentication](#azure-ad-integrated-authentication)
-* [Managed identity](#managed-identity)
-* [Username and Password](#username-and-password)
+The following table summarizes the available authentication methods for different external table types:
+
+|Authentication method|SQL Server|PostgreSQL|MySQL|Cosmos DB|
+|--|--|--|--|
+| [Azure AD-integrated authentication](#azure-ad-integrated-authentication)|:heavy_check_mark:|:x:|:x:|:x:|
+| [Managed identity](#managed-identity)|:heavy_check_mark:|:x:|:x:|:x:|
+| [Username and Password](#username-and-password)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
 
 ## Privacy and security
 
