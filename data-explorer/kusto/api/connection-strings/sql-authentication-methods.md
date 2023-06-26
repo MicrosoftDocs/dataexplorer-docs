@@ -70,4 +70,4 @@ The principal must have the necessary permissions on the SQL database to perform
 * [Create a PostgreSql external table](../../management/external-postgresql-tables.md)
 * [Authentication with the sql_request plugin](../../query/sqlrequestplugin.md#authentication-and-authorization)
 * [Authentication with the mysql_request plugin](../../query/mysqlrequest-plugin.md#authentication-and-authorization)
-* [Authentication with the postgresql_request plugin](../../query/postgresqlrequest-plugin.md#authentication-and-authorization)
+* [Authentication with the postgresql_request plugin](../../query/postgresql-request-plugin.md#authentication-and-authorization)
