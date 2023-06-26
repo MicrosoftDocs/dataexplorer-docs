@@ -35,7 +35,7 @@ cluster("A").database("DB").T | ... | join (cluster("A").database("DB2").T2 | ..
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*LeftTable*|string|&check;|The left table or tabular expression whose rows are to be merged. Denoted as `$left`.|
+|*LeftTable*|string|&check;|The left table or tabular expression whose rows are to be merged. Denoted as `$left`. If the table isn't in the local cluster, use the [cluster()](clusterfunction.md) and [database()](databasefunction.md) functions to specify the table location.|
 |*Strategy*|string||Determines the cluster on which to execute the join. Supported values are: `left`, `right`, `local`, and `auto`. For more information, see [Strategies](#strategies).|
 |*ClusterName*|string|&check;|The cluster that contains the right table or tabular expression for the join.|
 |*DatabaseName*|string|&check;|The database that contains the right table or tabular expression for the join.|
