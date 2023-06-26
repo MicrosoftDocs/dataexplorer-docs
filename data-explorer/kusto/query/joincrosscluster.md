@@ -40,7 +40,7 @@ cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster")
 |*ClusterName*|string|&check;|The cluster that contains the right table or tabular expression for the join.|
 |*DatabaseName*|string|&check;|The database that contains the right table or tabular expression for the join.|
 |*RightTable*|string|&check;|The right table or tabular expression whose rows are to be merged. Denoted as `$right`.|
-|*Conditions*|string|&check;|Determines how rows from *LeftTable* are matched with rows from *RightTable*. If the columns you want to match have the same name in both tables, use the syntax `ON` *ColumnName*. Otherwise, use the syntax `ON $left.`*LeftColumn* `==` `$right.`*RightColumn. To specify multiple conditions, you can either use the "and" keyword or separate them with commas. If you use commas, the conditions are evaluated using the "and" logical operator.|
+|*Conditions*|string|&check;|Determines how rows from *LeftTable* are matched with rows from *RightTable*. If the columns you want to match have the same name in both tables, use the syntax `ON` *ColumnName*. Otherwise, use the syntax `ON $left.`*LeftColumn* `==` `$right.`*RightColumn*. To specify multiple conditions, you can either use the "and" keyword or separate them with commas. If you use commas, the conditions are evaluated using the "and" logical operator.|
 
 ### Strategies
 
