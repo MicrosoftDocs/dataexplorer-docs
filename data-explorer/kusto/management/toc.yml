@@ -141,6 +141,8 @@ items:
           href: external-mssql-tables.md
         - name: MySQL external tables
           href: external-mssql-tables.md
+        - name: PostgreSQL external tables
+          href: external-postgresql-tables.md
       - name: Query a SQL external table
         href: external-sql-tables-query.md
     - name: .drop external table command
