@@ -1,6 +1,6 @@
 ---
 title:  'Basic query: Create an app to run basic queries'
-description: Learn how to create an app to run basic queries using Azure Data Explorer client libraries.
+description: Learn how to create an app to run basic queries using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 04/24/2023
@@ -18,7 +18,7 @@ In this article, you learn how to:
 
 ## Prerequisites
 
-[Set up your development environment](app-set-up.md) to use the Azure Data Explorer client library.
+[Set up your development environment](app-set-up.md) to use the Kusto client library.
 
 ## Run a basic query and process the results
 
@@ -32,7 +32,7 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     using Kusto.Data;
     using Kusto.Data.Net.Client;
 
-    namespace HelloKusto
+    namespace BasicQuery
     {
       class BasicQuery
       {
@@ -232,7 +232,7 @@ The complete code should look like this:
 using Kusto.Data;
 using Kusto.Data.Net.Client;
 
-namespace HelloKusto
+namespace BasicQuery
 {
   class BasicQuery
   {
@@ -490,7 +490,7 @@ while (primary_results.next()) {
 
 You can customize the behavior of a query by setting client request properties. For more information on available options, see [client request properties](../netfx/request-properties.md).
 
-For example, you can replace the kusto_client.execute_query call in the previous code to pass a custom request ID and set the query timeout to 1 minute. To use the client request properties, you must import the `ClientRequestProperties` class.
+For example, you can replace the `kusto_client.execute_query` call in the previous code to pass a custom request ID and set the query timeout to 1 minute. To use the client request properties, you must import the `ClientRequestProperties` class.
 
 ### [C\#](#tab/csharp)
 
@@ -683,7 +683,7 @@ using Kusto.Data;
 using Kusto.Data.Common;
 using Kusto.Data.Net.Client;
 
-namespace HelloKusto
+namespace BasicQuery
 {
   class BasicQuery
   {
@@ -892,8 +892,5 @@ Daily flash flood damages over 200,000,000$:
 ## Next steps
 
 <!-- Advance to the next article to learn how to create... -->
-<!-- > [!div class="nextstepaction"]
-> [TBD](../../../kql-quick-reference.md) -->
-
 > [!div class="nextstepaction"]
-> [KQL quick reference](../../../kql-quick-reference.md)
+> [Create an app to run management commands](app-management-commands.md)
