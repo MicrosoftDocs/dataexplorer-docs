@@ -8,8 +8,8 @@ ms.date: 06/26/2023
 # .clear cluster cache external-artifacts command
 
 Clears cached external-artifacts of language plugins.  
-This command can be typically used in cases where you update your external-artifact files in your external storage, while the cache still holds the old ones. In such a case this command clears the cache entries and ensures your next queries run with the updated artifacts.  
-learn more about [language extensions on your cluster](../language-extensions.md).
+
+This command is useful when you update external-artifact files stored in external storage, as the cache may retain the previous versions. In such scenarios, executing this command will clear the cache entries and ensure that subsequent queries run with the latest version of the artifacts.
 
 ## Permissions
 
