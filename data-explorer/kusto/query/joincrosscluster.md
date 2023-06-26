@@ -58,8 +58,8 @@ The following list explains the supported values for the *Strategy* parameter:
 
 By default, the `auto` strategy determines where the cross-cluster join should be executed based on the following rules:
 
-1. If one of the tables being joined is local to the cluster, the join is performed on the local cluster.
-1. If the tables are located on different clusters, the join is executed on the cluster of the right table.
+* If one of the tables being joined is local to the cluster, the join is performed on the local cluster.
+* If the tables are located on different clusters, the join is executed on the cluster of the right table.
 
 Consider the following examples:
 
