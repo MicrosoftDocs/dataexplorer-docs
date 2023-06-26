@@ -13,18 +13,18 @@ zone_pivot_groups: kql-flavors-all
 
 This article describes the Kusto Query Language (KQL) support for cross-cluster join operations.
 
-A cross-cluster join involves joining data from two datasets that reside in different clusters. Performing a join on data from a different cluster than the local cluster is not considered a cross-cluster query.
+A cross-cluster join involves joining data from two datasets that reside in different clusters. Performing a join on data from a different cluster than the local cluster is not considered a cross-cluster join.
 
-For example, the following example is a cross-cluster join:
+For example, the following query is a cross-cluster join since one dataset is in cluster `A` and the other is in cluster `B`:
 
 ```kusto
-cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster2").database("SomeDB2").T2 | ...) on Col1
+cluster("A").database("DB").T | ... | join (cluster("B").database("DB2").T2 | ...) on Col1
 ```
 
-Whereas, the following example is not a cross-cluster join:
+Whereas, the following query is not a cross-cluster join since both datasets are in cluster `A`:
 
 ```kusto
-cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster").database("SomeDB2").T2 | ...) on Col1
+cluster("A").database("DB").T | ... | join (cluster("A").database("DB2").T2 | ...) on Col1
 ```
 
 ## Syntax
@@ -65,20 +65,20 @@ Consider the following examples:
 
 ```kusto
 // Example 1
-T | ... | join (cluster("SomeCluster").database("SomeDB").T2 | ...) on Col1
+T | ... | join (cluster("Cluster").database("DB").T2 | ...) on Col1
 
 // Example 2
-cluster("SomeCluster").database("SomeDB").T | ... | join (cluster("SomeCluster2").database("SomeDB2").T2 | ...) on Col1
+cluster("Cluster").database("DB").T | ... | join (cluster("Cluster2").database("DB2").T2 | ...) on Col1
 ```
 
-With the `auto` strategy, "Example 1" would be executed on the local cluster. For "Example 2", assuming neither cluster is the local cluster, the join would be executed on "SomeCluster2" since it is the cluster of the right table. The cluster performing the join fetches the data from the other cluster.
+With the `auto` strategy, "Example 1" would be executed on the local cluster. For "Example 2", assuming neither cluster is the local cluster, the join would be executed on "Cluster2" since it is the cluster of the right table. The cluster performing the join fetches the data from the other cluster.
 
 For optimal performance, we recommend performing the join on the cluster that contains the largest table.
 
-For example, "Example 1" was set to be run on the local cluster. However, if the dataset produced by `T | ...` is much smaller than one produced by `cluster("SomeCluster").database("SomeDB").T2 | ...`, then it would be more efficient to execute the join operation on `SomeCluster`. By specifying the strategy as `right`, the following query instructs Kusto to perform the join operation on the cluster that contains the right table, rather than executing it on the local cluster where the left table resides.
+For example, "Example 1" was set to be run on the local cluster. However, if the dataset produced by `T | ...` is much smaller than one produced by `cluster("Cluster").database("DB").T2 | ...`, then it would be more efficient to execute the join operation on `Cluster`. By specifying the strategy as `right`, the following query instructs Kusto to perform the join operation on the cluster that contains the right table, rather than executing it on the local cluster where the left table resides.
 
 ```kusto
-T | ... | join hint.remote=right (cluster("SomeCluster").database("SomeDB").T2 | ...) on Col1
+T | ... | join hint.remote=right (cluster("Cluster").database("DB").T2 | ...) on Col1
 ```
 
 ## See also
