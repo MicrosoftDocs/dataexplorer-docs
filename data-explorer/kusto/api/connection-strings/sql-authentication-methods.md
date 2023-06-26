@@ -12,11 +12,11 @@ defines the resource to access and its authentication information.
 
 The following table summarizes the available authentication methods for different external table types:
 
-|Authentication method|SQL Server|PostgreSQL|MySQL|Cosmos DB|
+| Authentication method | SQL Server | PostgreSQL | MySQL | Cosmos DB |
 |--|--|--|--|
-| [Azure AD-integrated authentication](#azure-ad-integrated-authentication)|:heavy_check_mark:|:x:|:x:|:x:|
-| [Managed identity](#managed-identity)|:heavy_check_mark:|:x:|:x:|:x:|
-| [Username and Password](#username-and-password)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|
+| [Azure AD-integrated authentication](#azure-ad-integrated-authentication) | :heavy_check_mark: | :x: | :x: | :x: |
+| [Managed identity](#managed-identity) | :heavy_check_mark: | :x: | :x: | :x: |
+| [Username and Password](#username-and-password) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 ## Privacy and security
 
