@@ -509,6 +509,8 @@ items:
         href: kusto/api/get-started/app-hello-kusto.md
       - name: Create an app to run basic queries
         href: kusto/api/get-started/app-basic-query.md
+      - name: Create an app to run management commands
+        href: kusto/api/get-started/app-management-commands.md
     - name: Connection strings
       items:
       - name: Connection strings overview
