@@ -3,7 +3,7 @@ title:  Cross-cluster join
 description: Learn how to perform the Cross-cluster join operation to join datasets residing on different clusters.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/22/2023
+ms.date: 06/26/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -65,20 +65,22 @@ Consider the following examples:
 
 ```kusto
 // Example 1
-T | ... | join (cluster("Cluster").database("DB").T2 | ...) on Col1
+T | ... | join (cluster("B").database("DB").T2 | ...) on Col1
 
 // Example 2
-cluster("Cluster").database("DB").T | ... | join (cluster("Cluster2").database("DB2").T2 | ...) on Col1
+cluster("B").database("DB").T | ... | join (cluster("C").database("DB2").T2 | ...) on Col1
 ```
 
-With the `auto` strategy, "Example 1" would be executed on the local cluster. For "Example 2", assuming neither cluster is the local cluster, the join would be executed on "Cluster2" since it is the cluster of the right table. The cluster performing the join fetches the data from the other cluster.
+With the `auto` strategy, "Example 1" would be executed on the local cluster. For "Example 2", assuming neither cluster is the local cluster, the join would be executed on cluster `C` since it is the cluster of the right table. The cluster performing the join fetches the data from the other cluster.
 
 For optimal performance, we recommend performing the join on the cluster that contains the largest table.
 
-For example, "Example 1" was set to be run on the local cluster. However, if the dataset produced by `T | ...` is much smaller than one produced by `cluster("Cluster").database("DB").T2 | ...`, then it would be more efficient to execute the join operation on `Cluster`. By specifying the strategy as `right`, the following query instructs Kusto to perform the join operation on the cluster that contains the right table, rather than executing it on the local cluster where the left table resides.
+For example, "Example 1" was set to be run on the local cluster, but if the dataset produced by `T | ...` is much smaller than one produced by `cluster("B").database("DB").T2 | ...` then it would be more efficient to execute the join operation on cluster `B` instead of on the local cluster.
+
+By specifying the strategy as `right`, the following query instructs Kusto to perform the join operation on the cluster that contains the right table.
 
 ```kusto
-T | ... | join hint.remote=right (cluster("Cluster").database("DB").T2 | ...) on Col1
+T | ... | join hint.remote=right (cluster("B").database("DB").T2 | ...) on Col1
 ```
 
 ## See also
