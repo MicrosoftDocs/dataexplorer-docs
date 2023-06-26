@@ -809,3 +809,5 @@ items:
       href: ../concepts/data-soft-delete.md
     - name: Soft delete command
       href: soft-delete-command.md
+  - name: Clear cached external artifacts
+    href: clear-external-artifacts-cache-command
