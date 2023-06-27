@@ -355,11 +355,11 @@ items:
         - name: Access control
           href: kusto/access-control/index.md
           items:
-          - name: Cross-tenant queries and commands
-            href: kusto/access-control/cross-tenant-query-and-commands.md
           - name: Role-based access control
             href: kusto/access-control/role-based-access-control.md
             displayName: RBAC, security roles, principals
+          - name: Cross-tenant queries and commands
+            href: kusto/access-control/cross-tenant-query-and-commands.md
         - name: Isolated compute
           href: isolated-compute.md
         - name: Network isolation (VNet)
