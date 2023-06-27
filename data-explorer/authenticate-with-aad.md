@@ -85,7 +85,7 @@ var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
-## Perform on-behalf-of authentication
+## Perform On-behalf-of (OBO) authentication
 
 [On-behalf-of authentication](/azure/active-directory/develop/msal-authentication-flows#on-behalf-of-obo) is relevant when your web application or service acts as a mediator between the user or application and your cluster.
 
