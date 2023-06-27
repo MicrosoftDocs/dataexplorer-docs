@@ -3,7 +3,7 @@ title:  Connection strings overview
 description: This article describes connection strings in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/26/2023
+ms.date: 06/27/2023
 ---
 # Connection Strings overview
 
@@ -11,7 +11,7 @@ Connection strings are widely used in [management commands](../../management/ind
 
 Connection strings provide a means to describe how to locate and interact with Kusto service endpoints as well as resources external to Kusto, such as blobs in the Azure Blob Storage service and Azure SQL Database databases.
 
-## Connection string formats
+## Types of connection strings
 
 The following table describes the types of connection string formats in Kusto.
 
@@ -22,8 +22,7 @@ The following table describes the types of connection string formats in Kusto.
 |[SQL connection strings](sql-authentication-methods.md)|Describe how to point Kusto at an external SQL Server database for query or to [export data to SQL](../../management/data-export/export-data-to-sql.md). These connection strings adhere to the [SqlClient connection strings](/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings) specification.|
 
 > [!NOTE]
-> Some connection strings may reference security principals. To learn how to specify security principals in connection strings, see
-> [Referencing security principals](../../management/referencing-security-principals.md).
+> To learn how to specify security principals in connection strings, see [Referencing security principals](../../management/referencing-security-principals.md).
 
 ## Authentication with connection strings
 
