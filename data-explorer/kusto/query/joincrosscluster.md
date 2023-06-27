@@ -3,7 +3,7 @@ title:  Cross-cluster join
 description: Learn how to perform the Cross-cluster join operation to join datasets residing on different clusters.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/11/2023
+ms.date: 06/27/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -42,12 +42,12 @@ The actual decision depends on the specific query. The automatic join remoting s
 
 Sometimes the performance of the query can be improved if automatic remoting strategy is not followed. In this case, execute join operation on the cluster of the largest operand.
 
-If in example **(1)** the dataset produced by `T | ...` is much smaller than one produced by `cluster("SomeCluster").database("SomeDB").T2 | ...`, it is more efficient to execute join operation on "SomeCluster".
+"Example 1" is set to run on the local cluster, but if the dataset produced by `T | ...` is much smaller than one produced by `cluster("SomeCluster").database("SomeDB").T2 | ...` then it would be more efficient to execute the join operation on `SomeCluster` instead of on the local cluster.
 
-This operation can be done by giving Kusto join remoting hint. The syntax is:
+By specifying the remote strategy as `right`, the following query instructs Kusto to perform the join operation on the cluster that contains the right table.
 
 ```kusto
-T | ... | join hint.remote=<strategy> (cluster("SomeCluster").database("SomeDB").T2 | ...) on Col1
+T | ... | join hint.remote=right (cluster("SomeCluster").database("DB").T2 | ...) on Col1
 ```
 
 Following are legal values for `strategy`:
