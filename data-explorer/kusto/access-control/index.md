@@ -50,7 +50,7 @@ The association of security principals to security roles can be defined individu
 
 ## Next steps
 
-* [Authenticate with Azure Active Directory](aad.md)
+* [Authenticate with Azure Active Directory](../../authenticate-with-aad.md)
 * Use the [Kusto client libraries](../api/client-libraries.md)
 * Build [Kusto connection strings](../api/connection-strings/kusto.md)
 * Understand [Kusto role-based access control](role-based-access-control.md)
