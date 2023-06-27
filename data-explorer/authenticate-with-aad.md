@@ -23,7 +23,7 @@ The main authentication scenarios are as follows:
 
 * [Application authentication](#perform-application-authentication-with-msal): Used to verify the identity of an application that needs to access resources without human intervention by using configured credentials.
 
-* [On-behalf-of (OBO) authentication](#perform-on-behalf-of-authentication): Allows an application to get an Azure AD access token for another application and then "convert" it to an Azure AD access token to access your cluster.
+* [On-behalf-of (OBO) authentication](#perform-on-behalf-of-obo-authentication): Allows an application to get an Azure AD access token for another application and then "convert" it to an Azure AD access token to access your cluster.
 
 * [Single page application (SPA) authentication](#perform-single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster. This flow must be implemented with MSAL.
 
