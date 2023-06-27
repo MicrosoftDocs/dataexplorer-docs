@@ -1,5 +1,5 @@
 ---
-title:  Authenticate with Microsoft Authentication Library (MSAL)
+title:  Authenticate with Azure Active Directory (Azure AD)
 description: This article describes Azure Active Directory authentication in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
