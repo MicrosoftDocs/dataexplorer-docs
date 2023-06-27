@@ -33,7 +33,7 @@ For user and application authentication, we recommend using the [Kusto client li
 
 During the token acquisition process, the client needs to provide the following parameters:
 
-|Parameter|Description|
+|Parameter name|Description|
 |--|--|
 |Resource ID|The resource ID for which to issue the Azure AD access token. For Azure Data Explorer, the resource ID is the cluster URI without port information and path.<br/><br/>**Example**: The resource ID for the `help` cluster is `https://help.kusto.windows.net`.|
 |Azure AD tenant ID|Azure AD is a multi-tenant service, and every organization can create an object called a directory. The directory object holds security-related objects such as user accounts, applications, and groups. Azure AD often refers to the directory as a tenant. Each tenant has a tenant ID in the form of a GUID. In many cases, the domain name of the organization may also be used to identity the Azure AD tenant.<br/><br/>**Example**: An organization "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.|
