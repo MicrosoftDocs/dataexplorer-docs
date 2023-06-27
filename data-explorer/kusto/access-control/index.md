@@ -4,7 +4,7 @@ description: This article describes Access control in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 06/22/2023
+ms.date: 06/27/2023
 ---
 # Access control overview
 
