@@ -27,7 +27,7 @@ The main authentication scenarios are as follows:
 
 * [Single page application (SPA) authentication](#perform-single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster. This flow must be implemented with MSAL.
 
-For user and application authentication, we recommend using the [Kusto client libraries](kusto/api/client-libraries.md). For OBO and SPA authentication, the Kusto client libraries can't be used. To learn how to authenticate for these flows, see [On-behalf-of (OBO) authentication](perform-on-behalf-of-authentication) and [Single page application (SPA) authentication](perform-single-page-application-spa-authentication).
+For user and application authentication, we recommend using the [Kusto client libraries](kusto/api/client-libraries.md). For OBO and SPA authentication, the Kusto client libraries can't be used.
 
 ## Authentication parameters
 
