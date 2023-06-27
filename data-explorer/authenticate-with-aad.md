@@ -11,9 +11,9 @@ To programmatically authenticate with your cluster, you need to request an acces
 
 We recommend using the [Kusto client libraries](./kusto/api/client-libraries.md) for user and application authentication. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](./kusto/api/connection-strings/kusto.md).
 
-Alternatively, you can use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) and implement one of the [MSAL authentication flows](/azure/active-directory/develop/msal-authentication-flows) yourself. However, keep in mind that this approach involves more complexity compared to using the client libraries. If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to implement it yourself since these functionalities are not supported by the client libraries.
+Alternatively, you can use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) and implement one of the [MSAL authentication flows](/azure/active-directory/develop/msal-authentication-flows) yourself. However, keep in mind that this approach involves more complexity compared to using the client libraries. If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL as these flows aren't supported by the client libraries.
 
-In this document, you'll learn how to use MSAL to authenticate for different authentication scenarios.
+In this article, learn about the main authentication scenarios, the information to provide for successful authentication, and the use of MSAL for authentication.
 
 ## Authentication scenarios
 
@@ -67,7 +67,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 ## How to perform application authentication
 
-The following code sample shows how to use MSAL directly instead of a the [Kusto client libraries](./kusto/api/client-libraries.md) to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](./provision-azure-ad-app.md).
+The following code sample shows how to use MSAL directly instead of the [Kusto client libraries](./kusto/api/client-libraries.md) to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](./provision-azure-ad-app.md).
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
