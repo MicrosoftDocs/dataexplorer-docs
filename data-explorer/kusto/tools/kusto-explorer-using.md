@@ -3,7 +3,7 @@ title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 03/20/2023
+ms.date: 06/26/2023
 ---
 
 # Using Kusto.Explorer
@@ -100,7 +100,7 @@ In Kusto.Explorer, you can share queries and results by email. You can also crea
 Kusto.Explorer provides a convenient way to share queries and query results by email.
 
 1. [Run your query](#basic-queries) in Kusto.Explorer.
-1. In the Home tab, in the Share section, select **Export to Clipboard** (or press Ctrl+Shift+C).
+1. In the Home tab, in the Share section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
 
     :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
 
