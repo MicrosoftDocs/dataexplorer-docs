@@ -355,9 +355,6 @@ items:
         - name: Access control
           href: kusto/access-control/index.md
           items:
-          - name: Authenticate with Azure Active Directory
-            displayName: AAD, Azure AD
-            href: kusto/access-control/aad.md
           - name: Cross-tenant queries and commands
             href: kusto/access-control/cross-tenant-query-and-commands.md
           - name: Role-based access control
@@ -537,6 +534,9 @@ items:
         href: kusto-emulator-overview.md
       - name: Install the Kusto emulator
         href: kusto-emulator-install.md
+    - name: Authenticate with Microsoft Authentication Library (MSAL)
+      displayName: AAD, Azure AD, how to authenticate
+      href: kusto/access-control/aad.md
   - name: Integrate
     items:
     - name: Tools and integrations overview
