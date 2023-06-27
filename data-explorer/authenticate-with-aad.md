@@ -29,6 +29,9 @@ The main authentication scenarios are as follows:
 
 For user and application authentication, we recommend using the [Kusto client libraries](kusto/api/client-libraries.md). For OBO and SPA authentication, the Kusto client libraries can't be used.
 
+> [!NOTE]
+> With the Kusto client libraries, Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user.
+
 ## Authentication parameters
 
 During the token acquisition process, the client needs to provide the following parameters:
@@ -197,10 +200,6 @@ To set up authentication for a web client:
     // The following line extracts the first cell in the result data.
     const count = jsonResult.filter((x) => x.TableKind === "PrimaryResult")[0].Rows[0][0];
     ```
-
-## Azure AD token cache
-
-With the [Kusto client libraries](./kusto/api/client-libraries.md), Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user.
 
 ## Next steps
 
