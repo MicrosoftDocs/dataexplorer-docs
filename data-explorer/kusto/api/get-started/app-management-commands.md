@@ -1,11 +1,11 @@
 ---
-title:  'Management commands: Create an app to run management commands'
+title:  'Create an app to run management commands'
 description: Learn how to create an app to run management commands using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 06/27/2023
 ---
-# Management commands: Create an app to run management commands
+# Create an app to run management commands
 
 In this article, you learn how to:
 
@@ -553,7 +553,7 @@ You can customize the ingestion batching behavior for tables by changing the cor
 > [!NOTE]
 > If you don't specify all parameters of a *PolicyObject*, the unspecified parameters will be set to [default values](../../management/batchingpolicy.md#sealing-a-batch). For example, specifying only "MaximumBatchingTimeSpan" will result in "MaximumNumberOfItems" and "MaximumRawDataSizeMB" being set to default.
 
-For example, you can [change the ingestion batching policy](../../management/alter-table-ingestion-batching-policy.md) timeout value to 30 seconds by altering the `ingestionBatching` policy for the `MyStormEvents` table using the following command:
+For example, you can modify the app to change the [ingestion batching policy](../../management/alter-table-ingestion-batching-policy.md) timeout value to 30 seconds by altering the `ingestionBatching` policy for the `MyStormEvents` table using the following command:
 
 ### [C\#](#tab/csharp)
 
@@ -623,7 +623,7 @@ Result:
 
 You can use management commands to display a database's [retention policy](../../management/retentionpolicy.md).
 
-For example, the following code [displays your database's retention policy](../../management/show-database-retention-policy-command.md). The result is curated to project away two columns from the result:
+For example, you can modify the app to [display your database's retention policy](../../management/show-database-retention-policy-command.md) using the following code. The result is curated to project away two columns from the result:
 
 ### [C\#](#tab/csharp)
 
