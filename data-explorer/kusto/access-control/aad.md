@@ -7,7 +7,7 @@ ms.date: 06/27/2023
 ---
 # Authenticate with Microsoft Authentication Library (MSAL)
 
-To programmatically authenticate with your cluster, a client must communicate with [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) and request an access token specific to Azure Data Explorer. Then, the client can use the acquired access token as proof of identity when issuing requests to Azure Data Explorer.
+To programmatically authenticate with your cluster, a client must communicate with [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) and request an access token specific to Azure Data Explorer. Then, the client can use the acquired access token as proof of identity when issuing requests to your cluster.
 
 We recommend using the [Kusto client libraries](../api/client-libraries.md) for user and application authentication. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../api/connection-strings/kusto.md).
 
@@ -134,7 +134,7 @@ To set up authentication for a web client:
 
 1. [Provision an Azure AD application](../../provision-azure-ad-app.md).
 1. Configure the app as described in [MSAL.js 2.0 with auth code flow](/azure/active-directory/develop/scenario-spa-app-registration#redirect-uri-msaljs-20-with-auth-code-flow).
-1. Use the MSAL.js 2.0 library to sign in a user and access Azure Data Explorer. Microsoft Identity Platform has detailed tutorials for different use cases such as [React](/azure/active-directory/develop/single-page-app-tutorial-01-register-app), [Angular](/azure/active-directory/develop/tutorial-v2-angular-auth-code), and [JavaScript](/azure/active-directory/develop/tutorial-v2-javascript-auth-code).
+1. Use the MSAL.js 2.0 library to sign in a user and authenticate to your cluster. Microsoft Identity Platform has detailed tutorials for different use cases such as [React](/azure/active-directory/develop/single-page-app-tutorial-01-register-app), [Angular](/azure/active-directory/develop/tutorial-v2-angular-auth-code), and [JavaScript](/azure/active-directory/develop/tutorial-v2-javascript-auth-code).
 
     The following example uses the MSAL.js library to access Azure Data Explorer.
 
@@ -206,4 +206,4 @@ With the [Kusto client libraries](../api/client-libraries.md), Azure AD tokens a
 ## Next steps
 
 * [How to provision an Azure AD application](../../provision-azure-ad-app.md)
-* Use the [Kusto client libraries](../api/client-libraries.md) to connect to Azure Data Explorer
+* Use the [Kusto client libraries](../api/client-libraries.md) to connect to your cluster
