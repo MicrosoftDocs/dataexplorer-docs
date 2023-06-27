@@ -19,13 +19,13 @@ In this article, learn about the main authentication scenarios, the information 
 
 The main authentication scenarios are as follows:
 
-* [User authentication](#how-to-perform-user-authentication): Used to verify the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
+* [User authentication](perform-user-authentication): Used to verify the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
 
-* [Application authentication](#how-to-perform-application-authentication): Used to verify the identity of an application that needs to access resources without human intervention by using configured credentials.  
+* [Application authentication](perform-application-authentication): Used to verify the identity of an application that needs to access resources without human intervention by using configured credentials.  
 
-* [On-behalf-of (OBO) authentication](#how-to-perform-on-behalf-of-authentication): Allows an application to get an Azure AD access token for another application and then "convert" it to an Azure AD access token to access your cluster.
+* [On-behalf-of (OBO) authentication](perform-on-behalf-of-authentication): Allows an application to get an Azure AD access token for another application and then "convert" it to an Azure AD access token to access your cluster.
 
-* [Single page application (SPA) authentication](#how-to-perform-single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster.
+* [Single page application (SPA) authentication](perform-single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster.
 
 ## Authentication parameters
 
@@ -40,7 +40,7 @@ During the token acquisition process with MSAL, the client needs to provide the 
 > [!NOTE]
 > The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer service deployed in a national cloud, set the corresponding national cloud Azure AD service endpoint.
 
-## How to perform user authentication
+## Perform user authentication
 
 The following code sample shows how to use MSAL directly instead of the [Kusto client libraries](./kusto/api/client-libraries.md) to get an authorization token for your cluster. The authorization is done in a way that launches the interactive sign-in UI. The `appRedirectUri` is the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
@@ -62,7 +62,7 @@ var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
-## How to perform application authentication
+## Perform application authentication
 
 The following code sample shows how to use MSAL directly instead of the [Kusto client libraries](./kusto/api/client-libraries.md) to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](./provision-azure-ad-app.md).
 
@@ -83,7 +83,7 @@ var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
-## How to perform on-behalf-of authentication
+## Perform on-behalf-of authentication
 
 [On-behalf-of authentication](/azure/active-directory/develop/msal-authentication-flows#on-behalf-of-obo) is relevant when your web application or service acts as a mediator between the user or application and your cluster.
 
@@ -119,7 +119,7 @@ To perform on-behalf-of authentication:
     var queryResult = await queryClient.ExecuteQueryAsync("<databaseName>", "<query>", null);
     ```
 
-## How to perform Single Page Application (SPA) authentication
+## Perform Single Page Application (SPA) authentication
 
 For authentication for a SPA web client, use the [OAuth authorization code flow](/azure/active-directory/develop/msal-authentication-flows#authorization-code).
 
@@ -202,5 +202,5 @@ With the [Kusto client libraries](./kusto/api/client-libraries.md), Azure AD tok
 
 ## Next steps
 
-* [How to provision an Azure AD application](./provision-azure-ad-app.md)
+* [Provision an Azure AD application](./provision-azure-ad-app.md)
 * Use the [Kusto client libraries](./kusto/api/client-libraries.md) to connect to your cluster
