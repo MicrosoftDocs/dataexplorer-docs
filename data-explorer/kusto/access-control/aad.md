@@ -1,38 +1,38 @@
 ---
-title:  Azure Active Directory authentication
+title:  Authenticate with Microsoft Authentication Library (MSAL)
 description: This article describes Azure Active Directory authentication in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/22/2023
+ms.date: 06/27/2023
 ---
-# Authenticate with Azure Active Directory
+# Authenticate with Microsoft Authentication Library (MSAL)
 
-[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) is a cloud-based identity and access management service used to authenticate security principals and federate with other identity providers. Azure AD is the only method of authentication to Azure Data Explorer.
+To programmatically authenticate with your cluster, a client must communicate with [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) and request an access token specific to Azure Data Explorer. Then, the client can use the acquired access token as proof of identity when issuing requests to Azure Data Explorer.
 
-To authenticate with Azure AD, the client must communicate with the Azure AD service and request an access token specific to Azure Data Explorer. Then, the client can use the acquired access token as proof of identity when issuing requests to Azure Data Explorer.
+We recommend using the [Kusto client libraries](../api/client-libraries.md) for user and application authentication. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../api/connection-strings/kusto.md).
+
+Alternatively, you can use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) and implement one of the [MSAL authentication flows](/azure/active-directory/develop/msal-authentication-flows) yourself. However, keep in mind that this approach involves more complexity compared to using the client libraries. If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to implement it yourself since these functionalities are not supported by the client libraries.
+
+In this document, you'll learn how to use MSAL to authenticate for different authentication scenarios.
+
+## Authentication scenarios
 
 The main authentication scenarios are as follows:
 
-* [User authentication](#user-authentication): Used to verify the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
+* [User authentication](#how-to-perform-user-authentication): Used to verify the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
 
-* [Application authentication](#application-authentication): Used to verify the identity of an application that needs to access resources without human intervention by using configured credentials.  
+* [Application authentication](#how-to-perform-application-authentication): Used to verify the identity of an application that needs to access resources without human intervention by using configured credentials.  
 
-* [On-behalf-of (OBO) authentication](#on-behalf-of-authentication): Allows an application to get an Azure AD access token for another application and then "convert" it to an Azure AD access token to access your cluster.
+* [On-behalf-of (OBO) authentication](#how-to-perform-on-behalf-of-authentication): Allows an application to get an Azure AD access token for another application and then "convert" it to an Azure AD access token to access your cluster.
 
-* [Single page application (SPA) authentication](#single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster.
+* [Single page application (SPA) authentication](#how-to-perform-single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster.
 
 > [!IMPORTANT]
 > We highly recommend using the [Kusto client libraries](../api/client-libraries.md) for user and application authentication, which simplify the authentication process.
 
-## Microsoft Authentication Library (MSAL)
+## Authentication parameters
 
-To authenticate with Azure Data Explorer, we recommend using the [Kusto client libraries](../api/client-libraries.md), which use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire Azure AD tokens. These libraries simplify the authentication process.
-
-When using the Kusto client libraries, the authentication properties are configured in the [Kusto connection string](../api/connection-strings/kusto.md). This approach provides a straightforward way to authenticate without the need to implement complex authentication flows.
-
-Alternatively, if you prefer to handle authentication manually, you can choose to implement one of the [MSAL authentication flows](/azure/active-directory/develop/msal-authentication-flows) yourself. However, keep in mind that this approach involves more complexity compared to using the client libraries.
-
-During the token acquisition process with MSAL, the client must provide the following parameters:
+During the token acquisition process, the client needs to provide the following parameters:
 
 |Parameter|Description|
 |--|--|
@@ -43,11 +43,9 @@ During the token acquisition process with MSAL, the client must provide the foll
 > [!NOTE]
 > The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer service deployed in a national cloud, set the corresponding national cloud Azure AD service endpoint.
 
-## User authentication
+## How to perform user authentication
 
-We recommend using the [Kusto client libraries](../api/client-libraries.md) for user authentication.
-
-The following example uses MSAL directly instead of a Kusto client library to access Azure Data Explorer. The authorization is done in a way that launches the interactive sign-in UI. The `appRedirectUri` is the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
+The following code sample shows how to use MSAL directly instead of the [Kusto client libraries](../api/client-libraries.md) to get an authorization token for your cluster. The authorization is done in a way that launches the interactive sign-in UI. The `appRedirectUri` is the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -67,11 +65,9 @@ var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
-## Application authentication
+## How to perform application authentication
 
-We recommend using the [Kusto client libraries](../api/client-libraries.md) for application authentication.
-
-The following example uses MSAL directly instead of a Kusto client library to access Azure Data Explorer. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](../../provision-azure-ad-app.md).
+The following code sample shows how to use MSAL directly instead of a the [Kusto client libraries](../api/client-libraries.md) to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](../../provision-azure-ad-app.md).
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -90,17 +86,17 @@ var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
-## On-behalf-of authentication
+## How to perform on-behalf-of authentication
 
-When your web application or service acts as a mediator between the user or application and Azure Data Explorer, use [on-behalf-of authentication](/azure/active-directory/develop/msal-authentication-flows#on-behalf-of-obo).
+[On-behalf-of authentication](/azure/active-directory/develop/msal-authentication-flows#on-behalf-of-obo) is relevant when your web application or service acts as a mediator between the user or application and your cluster.
 
-In this scenario, an application is sent an Azure AD access token for an arbitrary resource. Then, the application uses that token to acquire a new Azure AD access token for the Azure Data Explorer resource. Then, the application can access Azure Data Explorer on behalf of the principal indicated by the original Azure AD access token. This flow is called the [OAuth 2.0 on-behalf-of authentication flow](/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). It generally requires multiple configuration steps with Azure AD, and in some cases might require special consent from the administrator of the Azure AD tenant.
+In this scenario, an application is sent an Azure AD access token for an arbitrary resource. Then, the application uses that token to acquire a new Azure AD access token for the Azure Data Explorer resource. Then, the application can access your cluster on behalf of the principal indicated by the original Azure AD access token. This flow is called the [OAuth 2.0 on-behalf-of authentication flow](/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). It generally requires multiple configuration steps with Azure AD, and in some cases might require special consent from the administrator of the Azure AD tenant.
 
 To perform on-behalf-of authentication:
 
 1. [Provision an Azure AD application](../../provision-azure-ad-app.md).
-1. Establish a trust relationship between the application and Azure Data Explorer. To do so, follow the steps in [Configure delegated permissions](../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
-1. In your server code, perform the token exchange and use the Azure Data Explorer token to execute queries. For example:
+1. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
+1. In your server code, use MSAL to perform the token exchange.
 
     ```csharp
     var authClient = ConfidentialClientApplicationBuilder.Create("<appId>")
@@ -109,11 +105,15 @@ To perform on-behalf-of authentication:
         .Build();
     
     var result = authClient.AcquireTokenOnBehalfOf(
-        new[] { "https://<clusterName>.<region>.kusto.windows.net/.default" }, // Define scopes for accessing Azure Data Explorer cluster
+        new[] { "https://<clusterName>.<region>.kusto.windows.net/.default" }, // Define scopes for accessing your cluster
         new UserAssertion("<userAccessToken>") // Encode the "original" token that will be used for exchange
     ).ExecuteAsync().Result;
     var accessTokenForAdx = result.AccessToken;
-    
+    ```
+
+1. Use the token to run queries. For example:
+
+    ```csharp
     var connectionStringBuilder = new KustoConnectionStringBuilder("https://<clusterName>.<region>.kusto.windows.net")
         .WithAadUserTokenAuthentication(accessTokenForAdx);
     
@@ -122,7 +122,7 @@ To perform on-behalf-of authentication:
     var queryResult = await queryClient.ExecuteQueryAsync("<databaseName>", "<query>", null);
     ```
 
-## Single page application (SPA) authentication
+## How to perform Single Page Application (SPA) authentication
 
 For authentication for a SPA web client, use the [OAuth authorization code flow](/azure/active-directory/develop/msal-authentication-flows#authorization-code).
 
