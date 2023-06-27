@@ -19,17 +19,19 @@ In this article, learn about the main authentication scenarios, the information 
 
 The main authentication scenarios are as follows:
 
-* [User authentication](perform-user-authentication): Used to verify the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
+* [User authentication](#perform-user-authentication-with-msal): Used to verify the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
 
-* [Application authentication](perform-application-authentication): Used to verify the identity of an application that needs to access resources without human intervention by using configured credentials.  
+* [Application authentication](#perform-application-authentication-with-msal): Used to verify the identity of an application that needs to access resources without human intervention by using configured credentials.
 
-* [On-behalf-of (OBO) authentication](perform-on-behalf-of-authentication): Allows an application to get an Azure AD access token for another application and then "convert" it to an Azure AD access token to access your cluster.
+* [On-behalf-of (OBO) authentication](#perform-on-behalf-of-authentication): Allows an application to get an Azure AD access token for another application and then "convert" it to an Azure AD access token to access your cluster.
 
-* [Single page application (SPA) authentication](perform-single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster.
+* [Single page application (SPA) authentication](#perform-single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster. This flow must be implemented with MSAL.
+
+For user and application authentication, we recommend using the [Kusto client libraries](kusto/api/client-libraries.md). For OBO and SPA authentication, the Kusto client libraries can't be used. To learn how to authenticate for these flows, see [On-behalf-of (OBO) authentication](perform-on-behalf-of-authentication) and [Single page application (SPA) authentication](perform-single-page-application-spa-authentication).
 
 ## Authentication parameters
 
-During the token acquisition process with MSAL, the client needs to provide the following parameters:
+During the token acquisition process, the client needs to provide the following parameters:
 
 |Parameter|Description|
 |--|--|
@@ -40,7 +42,7 @@ During the token acquisition process with MSAL, the client needs to provide the 
 > [!NOTE]
 > The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer service deployed in a national cloud, set the corresponding national cloud Azure AD service endpoint.
 
-## Perform user authentication
+## Perform user authentication with MSAL
 
 The following code sample shows how to use MSAL directly instead of the [Kusto client libraries](./kusto/api/client-libraries.md) to get an authorization token for your cluster. The authorization is done in a way that launches the interactive sign-in UI. The `appRedirectUri` is the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
@@ -62,7 +64,7 @@ var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
-## Perform application authentication
+## Perform application authentication with MSAL
 
 The following code sample shows how to use MSAL directly instead of the [Kusto client libraries](./kusto/api/client-libraries.md) to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](./provision-azure-ad-app.md).
 
