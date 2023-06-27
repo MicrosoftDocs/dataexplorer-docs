@@ -27,9 +27,6 @@ The main authentication scenarios are as follows:
 
 * [Single page application (SPA) authentication](#how-to-perform-single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster.
 
-> [!IMPORTANT]
-> We highly recommend using the [Kusto client libraries](./kusto/api/client-libraries.md) for user and application authentication, which simplify the authentication process.
-
 ## Authentication parameters
 
 During the token acquisition process with MSAL, the client needs to provide the following parameters:
