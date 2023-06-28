@@ -12,9 +12,9 @@ Creates or alters a SQL [external table](../query/schema-entities/externaltables
 
 ## Permissions
 
-To `.create` requires at least [Database User](./access-control/role-based-access-control.md) permissions and to `.alter` requires at least [Table Admin](./access-control/role-based-access-control.md) permissions.
+To `.create` requires at least [Database User](access-control/role-based-access-control.md) permissions and to `.alter` requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
 
-To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](./access-control/role-based-access-control.md) permissions. Currently, this is only relevant for Microsoft SQL Server external tables.
+To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions. Currently, this is only relevant for Microsoft SQL Server external tables.
 
 ## Syntax
 
