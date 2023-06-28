@@ -8,7 +8,7 @@ ms.date: 06/28/2023
 
 # Create and alter SQL external tables
 
-Creates or alters a SQL [external table](../query/schema-entities/externaltables.md) in the database in which the command is executed. Supported tables include Microsoft SQL Server, MySQL, PostgreSQL, and Cosmos DB tables.
+Creates or alters a SQL [external table](../query/schema-entities/externaltables.md) in the database in which the command is executed. Supported table types include Microsoft SQL Server, MySQL, PostgreSQL, and Cosmos DB.
 
 ## Permissions
 
