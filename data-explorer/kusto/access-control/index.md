@@ -28,7 +28,7 @@ The main authentication scenarios are as follows:
 * [Single page application (SPA) authentication](/azure/active-directory/develop/msal-authentication-flows#authorization-code): Allows client-side SPA web applications to sign in users and get tokens to access your cluster. This flow must be implemented with MSAL.
 
 > [!NOTE]
-> For user and application authentication, we recommend using the [Kusto client libraries](kusto/api/client-libraries.md). If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL directly as these flows aren't supported by the client libraries. For more information, see [Authenticate with Microsoft Authentication Library (MSAL)](../../authenticate-with-msal.md).
+> For user and application authentication, we recommend using the [Kusto client libraries](../../kusto/api/client-libraries.md). If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL directly as these flows aren't supported by the client libraries. For more information, see [Authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
 
 ### User authentication
 
@@ -61,7 +61,7 @@ The association of security principals to security roles can be defined individu
 
 ## Next steps
 
-* [Authenticate with Azure Active Directory](../../authenticate-with-msal.md)
+* [Authenticate with Azure Active Directory](../api/rest/authenticate-with-msal.md)
 * Use the [Kusto client libraries](../api/client-libraries.md)
 * Build [Kusto connection strings](../api/connection-strings/kusto.md)
 * Understand [Kusto role-based access control](role-based-access-control.md)
