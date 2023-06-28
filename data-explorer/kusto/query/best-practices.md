@@ -15,6 +15,7 @@ Here are several best practices to follow to make your query run faster.
 | Action | Use | Don't use | Notes |
 |--|--|--|--|
 | **Reduce the amount of data being queried** | Use mechanisms such as the `where` operator to reduce the amount of data being processed. |  | See below for efficient ways to reduce the amount of data being processed. |
+| **Do not use long for datetime columns** | Use the datetime type for datetime data | Avoid using unix time conversion to datetime such as unixtime_milliseconds_todatetime during query time  | Use update policies to convert unix time to datetime during ingestion. |
 | **String operators** | Use the `has` operator | Don't use `contains` | When looking for full tokens, `has` works better, since it doesn't look for substrings. |
 | **Case-sensitive operators** | Use `==` | Don't use  `=~` | Use case-sensitive operators when possible. |
 |  | Use `in` | Don't use `in~` |
