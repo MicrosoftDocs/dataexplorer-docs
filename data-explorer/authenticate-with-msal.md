@@ -19,18 +19,15 @@ In this article, learn about the main authentication scenarios, the information 
 
 The main authentication scenarios are as follows:
 
-* [User authentication](#perform-user-authentication-with-msal): Used to verify the identity of human users through interactive prompts that prompt the user for their credentials or programmatically via a token.
+* [User authentication](#perform-user-authentication-with-msal): Used to verify the identity of human users.
 
 * [Application authentication](#perform-application-authentication-with-msal): Used to verify the identity of an application that needs to access resources without human intervention by using configured credentials.
 
-* [On-behalf-of (OBO) authentication](#perform-on-behalf-of-obo-authentication): Allows an application to get an Azure AD access token for another application and then "convert" it to an Azure AD access token to access your cluster.
+* [On-behalf-of (OBO) authentication](#perform-on-behalf-of-obo-authentication): Allows an application to exchange a token for said application with a token to access a Kusto service. This flow must be implemented with MSAL.
 
 * [Single page application (SPA) authentication](#perform-single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster. This flow must be implemented with MSAL.
 
 For user and application authentication, we recommend using the [Kusto client libraries](kusto/api/client-libraries.md). For OBO and SPA authentication, the Kusto client libraries can't be used.
-
-> [!NOTE]
-> With the Kusto client libraries, Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user.
 
 ## Authentication parameters
 
@@ -67,6 +64,9 @@ var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
 
+> [!NOTE]
+> With the Kusto client libraries, Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user.
+
 ## Perform application authentication with MSAL
 
 The following code sample shows how to use MSAL directly instead of the [Kusto client libraries](./kusto/api/client-libraries.md) to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](./provision-azure-ad-app.md).
@@ -101,13 +101,15 @@ To perform on-behalf-of authentication:
 1. In your server code, use MSAL to perform the token exchange.
 
     ```csharp
+    var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
+
     var authClient = ConfidentialClientApplicationBuilder.Create("<appId>")
         .WithAuthority($"https://login.microsoftonline.com/<appTenant>")
         .WithClientSecret("<appKey>") // Can be replaced by .WithCertificate to authenticate with an X.509 certificate
         .Build();
     
     var result = authClient.AcquireTokenOnBehalfOf(
-        new[] { "https://<clusterName>.<region>.kusto.windows.net/.default" }, // Define scopes for accessing your cluster
+        new[] { $"{kustoUri}/.default" }, // Define scopes for accessing your cluster
         new UserAssertion("<userAccessToken>") // Encode the "original" token that will be used for exchange
     ).ExecuteAsync().Result;
     var accessTokenForAdx = result.AccessToken;
@@ -116,12 +118,8 @@ To perform on-behalf-of authentication:
 1. Use the token to run queries. For example:
 
     ```csharp
-    var connectionStringBuilder = new KustoConnectionStringBuilder("https://<clusterName>.<region>.kusto.windows.net")
-        .WithAadUserTokenAuthentication(accessTokenForAdx);
-    
-    using var queryClient = KustoClientFactory.CreateCslQueryProvider(connectionStringBuilder);
-    
-    var queryResult = await queryClient.ExecuteQueryAsync("<databaseName>", "<query>", null);
+    var request = WebRequest.Create(new Uri(kustoUri));
+    request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", accessTokenForAdx));
     ```
 
 ## Perform Single Page Application (SPA) authentication
