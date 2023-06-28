@@ -72,8 +72,8 @@ The following table lists the additional permissions required to read or write t
 
 |Authentication method|Read permissions|Write permissions|
 |--|--|--|
-|[Azure AD-integrated (impersonation)](../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-authentication)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
-|[Managed identity](../api/connection-strings/sql-authentication-methods.md#managed-identity)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
+|[Azure AD-integrated (impersonation)](#azure-ad-integrated-impersonation)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
+|[Managed identity](#managed-identity)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
 
 ## See also
 
