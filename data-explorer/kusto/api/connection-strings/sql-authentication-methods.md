@@ -7,7 +7,9 @@ ms.date: 06/28/2023
 ---
 # SQL external table authentication methods
 
-The connection string provided upon creation of a SQL external table defines the resource to access and its authentication information. Supported SQL external table types include Microsoft SQL Server, MySQL, PostgreSQL, and Cosmos DB. For information on how to manage SQL external tables, see [Create and alter SQL external tables](../../management/external-sql-tables.md).
+To access a SQL external table, a connection string is provided during its creation. This connection string specifies the resource to be accessed and its authentication information. Supported SQL external table types include Microsoft SQL Server, MySQL, PostgreSQL, and Cosmos DB. For information on how to manage SQL external tables, see [Create and alter SQL external tables](../../management/external-sql-tables.md).
+
+Regardless of the authentication method used, the principal must have the necessary permissions on the SQL database to perform the desired actions. For further details, see [Required permissions on the SQL database](#required-permissions-on-the-sql-database).
 
 ## Supported authentication methods by table type
 
@@ -29,8 +31,6 @@ To use Azure AD-integrated authentication (impersonation), add `;Authentication=
 |--|
 |`"Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=mydatabase;"`|
 
-The principal must have the [necessary permissions on the SQL database](#additional-required-permissions) to perform the operation. To manage the access controls for different storage types, see [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
-
 ## Managed identity
 
 Azure Data Explorer makes requests on behalf of a managed identity and uses its identity to access resources. This method is only supported for SQL Server.
@@ -42,8 +42,6 @@ For a system-assigned managed identity, append `;Authentication="Active Director
 |System-assigned|`"Server=tcp:myserver.database.windows.net,1433;Authentication="Active Directory Managed Identity";Initial Catalog=mydatabase;"`|
 |User-assigned|`"Server=tcp:myserver.database.windows.net,1433;Authentication="Active Directory Managed Identity";User Id=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b;Initial Catalog=mydatabase;"`|
 
-The managed identity must have the [necessary permissions on the SQL database](#additional-required-permissions) to perform the operation. To manage the access controls for different storage types, see: [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
-
 ## Username and password
 
 To authenticate with username and password, set the keywords `User ID` and `Password` in the connection string.
@@ -52,16 +50,14 @@ To authenticate with username and password, set the keywords `User ID` and `Pass
 |--|
 |`"Server=tcp:myserver.database.windows.net,1433;User Id={myUserId};Password={myPlaceholderPassword};Initial Catalog=mydatabase;"`|
 
-The principal must have the necessary permissions on the SQL database to perform the operation. To manage the access controls for different storage types, see [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
+## Required permissions on the SQL database
 
-## Additional required permissions
+For all authentication methods, the principal (or managed identity) must have the necessary permissions on the SQL database to perform the requested operation:
 
-The following table lists the additional permissions required to read or write to a table by authentication method.
-
-|Authentication method|Read permissions|Write permissions|
-|--|--|--|
-|[Azure AD-integrated (impersonation)](#azure-ad-integrated-impersonation)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
-|[Managed identity](#managed-identity)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
+* Read permissions: table SELECT
+* Write permissions:
+  * Existing table: table UPDATE and INSERT
+  * New table: CREATE, UPDATE, and INSERT
 
 ## See also
 
