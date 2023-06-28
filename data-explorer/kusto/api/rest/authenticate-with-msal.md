@@ -203,4 +203,4 @@ To set up authentication for a web client:
 
 * [Authentication over HTTPs](authentication.md)
 * [Provision an Azure AD application](../../../provision-azure-ad-app.md)
-* [Kusto client libraries](../../api/client-libraries.md) to connect to your cluster
+* [Kusto client libraries](../../api/client-libraries.md)
