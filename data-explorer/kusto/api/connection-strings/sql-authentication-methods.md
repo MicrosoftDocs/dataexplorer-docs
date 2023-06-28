@@ -11,7 +11,7 @@ To access a SQL external table, a connection string is provided during its creat
 
 Regardless of the authentication method used, the principal must have the necessary permissions on the SQL database to perform the desired actions. For more information, see [Required permissions on the SQL database](#required-permissions-on-the-sql-database).
 
-## Supported authentication methods by table type
+## Supported authentication methods by database type
 
 The following table shows the supported authentication methods by external table type.
 
