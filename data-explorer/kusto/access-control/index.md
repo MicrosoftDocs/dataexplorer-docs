@@ -4,7 +4,7 @@ description: This article describes Access control in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 06/27/2023
+ms.date: 06/28/2023
 ---
 # Access control overview
 
@@ -27,7 +27,7 @@ Azure Data Explorer supports the following methods of user authentication, inclu
 
 * Interactive user authentication with sign-in through the user interface.
 * User authentication with an Azure AD token issued for Azure Data Explorer.
-* User authentication with an Azure AD token issued for another resource. In this case, a trust relationship must exist between that resource and Azure Data Explorer.
+* User authentication with an Azure AD token issued for another resource that can be exchanged for an Azure Data Explorer token using On-behalf-of (OBO) authentication.
 
 ### Application authentication
 
@@ -40,7 +40,7 @@ Azure Data Explorer supports the following methods of application authentication
 * Application authentication with an X.509v2 certificate given to the client library as a byte stream.
 * Application authentication with an Azure AD application ID and an Azure AD application key. The application ID and application key are like a username and password.
 * Application authentication with a previously obtained valid Azure AD token, issued to Azure Data Explorer.
-* Application authentication with an Azure AD token issued for another resource. In this case, a trust relationship must exist between that resource and Azure Data Explorer.
+* Application authentication with an Azure AD token issued for another resource that can be exchanged for an Azure Data Explorer token using On-behalf-of (OBO) authentication.
 
 ## Authorization
 
@@ -50,7 +50,7 @@ The association of security principals to security roles can be defined individu
 
 ## Next steps
 
-* [Authenticate with Azure Active Directory](../../authenticate-with-aad.md)
+* [Authenticate with Azure Active Directory](../../authenticate-with-msal.md)
 * Use the [Kusto client libraries](../api/client-libraries.md)
 * Build [Kusto connection strings](../api/connection-strings/kusto.md)
 * Understand [Kusto role-based access control](role-based-access-control.md)
