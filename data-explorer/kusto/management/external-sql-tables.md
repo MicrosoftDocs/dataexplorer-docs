@@ -10,6 +10,11 @@ ms.date: 06/28/2023
 
 Creates or alters a SQL [external table](../query/schema-entities/externaltables.md) in the database in which the command is executed. Supported table types include Microsoft SQL Server, MySQL, PostgreSQL, and Cosmos DB.
 
+> [!NOTE]
+>
+> * If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
+> * Altering the schema or format of an external SQL table is not supported.
+
 ## Permissions
 
 To `.create` requires at least [Database User](access-control/role-based-access-control.md) permissions and to `.alter` requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
@@ -19,11 +24,6 @@ To `.create-or-alter` an external table using managed identity authentication re
 ## Syntax
 
 (`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema*`)` `kind` `=` `sql` `table` `=` *SqlTableName* `(`*SqlConnectionString*`)` [`with` `(` [ `sqlDialect` `=` *SqlDialect* ] `,` [ *Property* `,` ... ]`)`]
-
-> [!NOTE]
->
-> * If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
-> * Altering the schema or format of an external SQL table is not supported.
 
 ## Parameters
 
@@ -39,7 +39,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 > [!WARNING]
 > Connection strings and queries that include confidential information should be obfuscated so that they'll be omitted from any Kusto tracing. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).
 
-## Optional properties
+### Optional properties
 
 | Property            | Type            | Description                          |
 |---------------------|-----------------|---------------------------------------------------------------------------------------------------|
