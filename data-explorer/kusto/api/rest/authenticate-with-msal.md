@@ -5,7 +5,7 @@ ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/28/2023
 ---
-# Authenticate with Microsoft Authentication Library (MSAL)
+# How to authenticate with Microsoft Authentication Library (MSAL)
 
 To programmatically authenticate with your cluster, you need to request an access token from [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) specific to Azure Data Explorer. This access token acts proof of identity when issuing requests to your cluster.
 
@@ -199,7 +199,8 @@ To set up authentication for a web client:
     const count = jsonResult.filter((x) => x.TableKind === "PrimaryResult")[0].Rows[0][0];
     ```
 
-## Next steps
+## See also
 
-* [Provision an Azure AD application](./provision-azure-ad-app.md)
-* Use the [Kusto client libraries](./kusto/api/client-libraries.md) to connect to your cluster
+* [Authentication over HTTPs](authentication.md)
+* [Provision an Azure AD application](../../../provision-azure-ad-app.md)
+* [Kusto client libraries](../../kusto/api/client-libraries.md) to connect to your cluster

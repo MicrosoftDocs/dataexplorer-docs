@@ -3,7 +3,7 @@ title:  Authentication over HTTPS
 description: This article describes Authentication over HTTPS in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/19/2023
+ms.date: 06/28/2023
 ---
 # Authentication over HTTPS
 
@@ -98,5 +98,5 @@ Azure AD service principals represent applications or services that need access 
 
 ## See also
 
-* [Authentication overview](../../access-control/index.md)
-* [Guide to Azure AD authentication](../../access-control/how-to-authenticate-with-aad.md)
+* Read the [Authentication overview](../../access-control/index.md).
+* To learn how to perform On-behalf-of (OBO) authentication or Single Page Application (SPA) authentication, see [How to authenticate with Microsoft Authentication Library (MSAL)](authenticate-with-msal.md).
