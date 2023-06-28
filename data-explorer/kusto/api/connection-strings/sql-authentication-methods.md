@@ -77,10 +77,7 @@ The following table lists the additional permissions required to read or write t
 
 ## See also
 
-* [Create a SQL Server external table](../../management/external-sql-tables.md)
-* [Create a MySql external table](../../management/external-mysql-tables.md)
-* [Create a PostgreSQL external table](../../management/external-postgresql-tables.md)
-* [Create a Cosmos DB external table](../../management/external-cosmosdbsql-tables.md)
+* [Create a SQL external table](../../management/external-sql-tables.md)
 * [Authentication with the sql_request plugin](../../query/sqlrequestplugin.md#authentication-and-authorization)
 * [Authentication with the mysql_request plugin](../../query/mysqlrequest-plugin.md#authentication-and-authorization)
 * [Authentication with the postgresql_request plugin](../../query/postgresql-request-plugin.md#authentication-and-authorization)
