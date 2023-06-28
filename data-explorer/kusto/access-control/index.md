@@ -61,7 +61,6 @@ The association of security principals to security roles can be defined individu
 
 ## Next steps
 
-* Use the [Kusto client libraries](../api/client-libraries.md)
-* Build [Kusto connection strings](../api/connection-strings/kusto.md)
 * Understand [Kusto role-based access control](role-based-access-control.md)
-* [How to authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md)
+* For user or application authentication, use the [Kusto client libraries](../api/client-libraries.md).
+* For OBO or SPA authentication, see [How to authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
