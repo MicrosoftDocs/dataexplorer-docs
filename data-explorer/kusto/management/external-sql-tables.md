@@ -36,9 +36,6 @@ To `.create-or-alter` an external table using managed identity authentication re
 |*SqlDialect*| string | |Indicates the type of SQL external table. For Microsoft SQL Server tables, this property shouldn't be specified. For MySQL, PostgreSQL, and CosmosDB, the property must be specified with the appropriate value. For MySQL, specify `MySQL`. For PostgreSQL, specify `PostgreSQL`. For Cosmos DB, specify `CosmosDbSql`.|
 |*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
 
-> [!NOTE]
-> If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by username/password or managed identities.
-
 > [!WARNING]
 > Connection strings and queries that include confidential information should be obfuscated so that they'll be omitted from any Kusto tracing. For more information, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals).
 
@@ -57,6 +54,9 @@ To `.create-or-alter` an external table using managed identity authentication re
 To interact with an external SQL table from Azure Data Explorer, you must specify authentication means as part of the *SqlConnectionString*. The *SqlConnectionString* defines the resource to access and its authentication information.
 
 Microsoft SQL Server external tables support Azure AD-integrated (impersonation) authentication, managed identity authentication, and username and password authentication. MySQL, PostgreSQL, and Cosmos DB tables support only username and password authentication. For more information, see [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md).
+
+> [!NOTE]
+> If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by username/password or managed identities.
 
 ## Examples
 
