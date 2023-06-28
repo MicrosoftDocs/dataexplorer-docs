@@ -133,16 +133,8 @@ items:
         href: show-external-table-artifacts.md
     - name: SQL external tables
       items:
-      - name: Create and alter external tables
-        items:
-        - name: SQL Server external tables
-          href: external-mssql-tables.md
-        - name: Cosmos DB external tables
-          href: external-cosmosdb-tables.md
-        - name: MySQL external tables
-          href: external-mysql-tables.md
-        - name: PostgreSQL external tables
-          href: external-postgresql-tables.md
+      - name: Create and alter SQL external tables
+        href: external-sql-tables.md
       - name: Query a SQL external table
         href: external-sql-tables-query.md
     - name: .drop external table command

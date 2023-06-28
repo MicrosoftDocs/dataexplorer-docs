@@ -3,18 +3,20 @@ title:  SQL external table authentication methods
 description: This article describes how to authenticate to SQL external tables in Azure Data Explorer.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 06/25/2023
+ms.date: 06/28/2023
 ---
 # SQL external table authentication methods
 
-The connection string provided upon creation of a SQL external table ([SQL Server](../../management/external-mssql-tables.md), [PostgreSQL](../../management/external-postgresql-tables.md), [MySQL](../../management/external-mysql-tables.md), [Cosmos DB](../../management/external-cosmosdbsql-tables.md))
+The connection string provided upon creation of a SQL external table ([SQL Server](../../management/external-sql-tables.md), [PostgreSQL](../../management/external-postgresql-tables.md), [MySQL](../../management/external-mysql-tables.md), [Cosmos DB](../../management/external-cosmosdbsql-tables.md))
 defines the resource to access and its authentication information.
 
-The following table summarizes the available authentication methods for different external table types:
+## Authentication by table type
+
+The following table shows the supported authentication methods by external table type.
 
 | Authentication method | SQL Server | PostgreSQL | MySQL | Cosmos DB |
 |--|--|--|--|
-| [Azure AD-integrated authentication](#azure-ad-integrated-authentication) | :heavy_check_mark: | :x: | :x: | :x: |
+| [Azure AD-integrated (impersonation)](#azure-ad-integrated-impersonation) | :heavy_check_mark: | :x: | :x: | :x: |
 | [Managed identity](#managed-identity) | :heavy_check_mark: | :x: | :x: | :x: |
 | [Username and Password](#username-and-password) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
@@ -29,7 +31,7 @@ The following table explains how to hide your private information using the 'h' 
 |Hide the entire connection string|Preface the connection string with 'h'.|`h"<connection_string>"`|
 |Hide only the secret part of the string|Split the connection string into the resource location and the secret information and add the 'h' between the two.| `"<resource_location>"h"<secrets>"`|
 
-## Azure AD-integrated authentication
+## Azure AD-integrated (impersonation)
 
 With this authentication method, the user or application authenticates via Azure AD to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. This method is only supported for SQL Server.
 
@@ -39,7 +41,7 @@ To use Azure AD-integrated authentication (impersonation), add `;Authentication=
 |--|
 |`"Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=mydatabase;"`|
 
-The principal must have the necessary permissions on the SQL database to perform the operation. To manage the access controls for different storage types, see [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
+The principal must have the [necessary permissions on the SQL database](#additional-required-permissions) to perform the operation. To manage the access controls for different storage types, see [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
 
 ## Managed identity
 
@@ -52,7 +54,7 @@ For a system-assigned managed identity, append `;Authentication="Active Director
 |System-assigned|`"Server=tcp:myserver.database.windows.net,1433;Authentication="Active Directory Managed Identity";Initial Catalog=mydatabase;"`|
 |User-assigned|`"Server=tcp:myserver.database.windows.net,1433;Authentication="Active Directory Managed Identity";User Id=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b;Initial Catalog=mydatabase;"`|
 
-The managed identity must have the necessary permissions on the SQL database to perform the operation. To manage the access controls for different storage types, see: [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
+The managed identity must have the [necessary permissions on the SQL database](#additional-required-permissions) to perform the operation. To manage the access controls for different storage types, see: [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
 
 ## Username and password
 
@@ -64,9 +66,18 @@ To authenticate with username and password, set the keywords `User ID` and `Pass
 
 The principal must have the necessary permissions on the SQL database to perform the operation. To manage the access controls for different storage types, see [SQL Authentication Access](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
 
+## Additional required permissions
+
+The following table lists the additional permissions required to read or write to a table by authentication method.
+
+|Authentication method|Read permissions|Write permissions|
+|--|--|--|
+|[Azure AD-integrated (impersonation)](../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-authentication)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
+|[Managed identity](../api/connection-strings/sql-authentication-methods.md#managed-identity)|table SELECT|Existing table: table UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT|
+
 ## See also
 
-* [Create a SQL Server external table](../../management/external-mssql-tables.md)
+* [Create a SQL Server external table](../../management/external-sql-tables.md)
 * [Create a MySql external table](../../management/external-mysql-tables.md)
 * [Create a PostgreSQL external table](../../management/external-postgresql-tables.md)
 * [Create a Cosmos DB external table](../../management/external-cosmosdbsql-tables.md)
