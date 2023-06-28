@@ -5,7 +5,7 @@ items:
   items:
   - name: REST API overview
     href: rest/index.md
-  - name: Authentication
+  - name: Authentication over HTTPs
     href: rest/authentication.md
   - name: Query HTTP request
     href: rest/request.md
