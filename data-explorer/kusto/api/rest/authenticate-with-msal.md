@@ -9,7 +9,7 @@ ms.date: 06/28/2023
 
 To programmatically authenticate with your cluster, you need to request an access token from [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) specific to Azure Data Explorer. This access token acts proof of identity when issuing requests to your cluster.
 
-We recommend using the [Kusto client libraries](../client-libraries.md) for user and application authentication. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../../../kusto/api/connection-strings/kusto).
+We recommend using the [Kusto client libraries](../client-libraries.md) for user and application authentication. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../../../kusto/api/connection-strings/kusto.md).
 
 Alternatively, you can use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) and implement one of the [MSAL authentication flows](/azure/active-directory/develop/msal-authentication-flows) yourself. However, keep in mind that this approach involves more complexity compared to using the client libraries. If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL as these flows aren't supported by the client libraries.
 
