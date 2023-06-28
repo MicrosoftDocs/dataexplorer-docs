@@ -140,4 +140,5 @@ with
 ## See also
 
 * [External tables overview](../query/schema-entities/externaltables.md)
+* [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md)
 * [Create and alter Azure Storage external tables](external-tables-azurestorage-azuredatalake.md)
