@@ -9,7 +9,7 @@ ms.date: 06/28/2023
 
 To programmatically authenticate with your cluster, you need to request an access token from [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) specific to Azure Data Explorer. This access token acts proof of identity when issuing requests to your cluster.
 
-We recommend using the [Kusto client libraries](./kusto/api/client-libraries.md) for user and application authentication. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](./kusto/api/connection-strings/kusto.md).
+We recommend using the [Kusto client libraries](../client-libraries.md) for user and application authentication. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../../../kusto/api/connection-strings/kusto).
 
 Alternatively, you can use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) and implement one of the [MSAL authentication flows](/azure/active-directory/develop/msal-authentication-flows) yourself. However, keep in mind that this approach involves more complexity compared to using the client libraries. If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL as these flows aren't supported by the client libraries.
 
@@ -27,7 +27,7 @@ The main authentication scenarios are as follows:
 
 * [Single page application (SPA) authentication](#perform-single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster. This flow must be implemented with MSAL.
 
-For user and application authentication, we recommend using the [Kusto client libraries](kusto/api/client-libraries.md). For OBO and SPA authentication, the Kusto client libraries can't be used.
+For user and application authentication, we recommend using the [Kusto client libraries](../../../kusto/api/client-libraries.md). For OBO and SPA authentication, the Kusto client libraries can't be used.
 
 ## Authentication parameters
 
@@ -44,7 +44,7 @@ During the token acquisition process, the client needs to provide the following 
 
 ## Perform user authentication with MSAL
 
-The following code sample shows how to use MSAL directly instead of the [Kusto client libraries](./kusto/api/client-libraries.md) to get an authorization token for your cluster. The authorization is done in a way that launches the interactive sign-in UI. The `appRedirectUri` is the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
+The following code sample shows how to use MSAL directly instead of the [Kusto client libraries](../../../kusto/api/client-libraries.md) to get an authorization token for your cluster. The authorization is done in a way that launches the interactive sign-in UI. The `appRedirectUri` is the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -69,7 +69,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 ## Perform application authentication with MSAL
 
-The following code sample shows how to use MSAL directly instead of the [Kusto client libraries](./kusto/api/client-libraries.md) to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](./provision-azure-ad-app.md).
+The following code sample shows how to use MSAL directly instead of the [Kusto client libraries](../../../kusto/api/client-libraries.md) to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](../../../provision-azure-ad-app.md).
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -96,8 +96,8 @@ In this scenario, an application is sent an Azure AD access token for an arbitra
 
 To perform on-behalf-of authentication:
 
-1. [Provision an Azure AD application](./provision-azure-ad-app.md).
-1. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](./provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
+1. [Provision an Azure AD application](../../../provision-azure-ad-app.md).
+1. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
 1. In your server code, use MSAL to perform the token exchange.
 
     ```csharp
@@ -132,7 +132,7 @@ Microsoft Identity Platform has detailed tutorials for different use cases such 
 
 To set up authentication for a web client:
 
-1. [Provision an Azure AD application](./provision-azure-ad-app.md).
+1. [Provision an Azure AD application](../../../provision-azure-ad-app.md).
 1. Configure the app as described in [MSAL.js 2.0 with auth code flow](/azure/active-directory/develop/scenario-spa-app-registration#redirect-uri-msaljs-20-with-auth-code-flow).
 1. Use the MSAL.js 2.0 library to sign in a user and authenticate to your cluster. Microsoft Identity Platform has detailed tutorials for different use cases such as [React](/azure/active-directory/develop/single-page-app-tutorial-01-register-app), [Angular](/azure/active-directory/develop/tutorial-v2-angular-auth-code), and [JavaScript](/azure/active-directory/develop/tutorial-v2-javascript-auth-code).
 
@@ -203,4 +203,4 @@ To set up authentication for a web client:
 
 * [Authentication over HTTPs](authentication.md)
 * [Provision an Azure AD application](../../../provision-azure-ad-app.md)
-* [Kusto client libraries](../../kusto/api/client-libraries.md) to connect to your cluster
+* [Kusto client libraries](../../api/client-libraries.md) to connect to your cluster

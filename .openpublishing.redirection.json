@@ -772,7 +772,7 @@
     },
     {
       "source_path": "data-explorer/kusto/access-control/aad.md",
-      "redirect_url": "/azure/data-explorer/authenticate-with-msal",
+      "redirect_url": "/azure/data-explorer/kusto/api/rest/authenticate-with-msal",
       "redirect_document_id": true
     }
   ]
