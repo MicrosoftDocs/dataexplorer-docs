@@ -1,7 +1,7 @@
 ---
 title: Create and alter SQL external tables
 description: Learn how to create and alter an SQL external table.
-ms.reviewer: orspodek
+ms.reviewer: urishapira
 ms.topic: reference
 ms.date: 06/28/2023
 ---
