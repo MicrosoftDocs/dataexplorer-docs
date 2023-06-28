@@ -534,9 +534,6 @@ items:
         href: kusto-emulator-overview.md
       - name: Install the Kusto emulator
         href: kusto-emulator-install.md
-    - name: Authenticate with Azure AD
-      displayName: AAD, MSAL, how to authenticate
-      href: authenticate-with-aad.md
   - name: Integrate
     items:
     - name: Tools and integrations overview
