@@ -73,8 +73,8 @@ One of the more important pieces of information for each extent is its
 creation time. This time is used for:
 
 1. **Retention** - Extents that were created earlier will be dropped earlier.
-1. **Caching** - Extents that were created recently will be kept in [hot cache](cachepolicy.md))
-1. **Sampling** - Recent extents are favored, when using query operations such as `take`
+1. **Caching** - Extents that were created recently will be kept in [hot cache](cachepolicy.md).
+1. **Sampling** - Recent extents are favored, when using query operations such as `take`.
 
 In fact, Kusto tracks two `datetime` values per extent: `MinCreatedOn` and `MaxCreatedOn`.
 Initially, the two values are the same. When the extent is merged with other extents, 
@@ -85,28 +85,18 @@ Overwriting is useful, for example for retention purposes, if the client wants t
 
 ## Extent Tagging
 
-Kusto supports attaching multiple optional *extent tags* to the extent, as part of its metadata. An extent tag (or simply *tag*), is a string that is associated with the extent. You can use the [.show extents](./show-extents.md)
-commands to see the tags associated with an extent, and the
-[extent-tags()](../query/extenttagsfunction.md) 
-function to see the tags associated with records in an extent.
-Extent tags can be used to efficiently describe properties that are common to 
-all of the data in the extent.
-For example, you could add an extent tag during ingestion, that indicates
-the source of the ingested data, and use that tag later. Since the extents
-describe data, when two or more merge, their associated tags also merge. The resulting extent's tags will be the union of all the tags of those merged extents.
+Kusto supports attaching multiple optional *extent tags* to the extent, as part of its metadata. An extent tag (or simply *tag*), is a string that is associated with the extent. You can use the [.show extents](./show-extents.md) commands to see the tags associated with an extent, and the [extent-tags()](../query/extenttagsfunction.md) function to see the tags associated with records in an extent.
+Extent tags can be used to efficiently describe properties that are common to all of the data in the extent.
+For example, you could add an extent tag during ingestion, that indicates the source of the ingested data, and use that tag later. Since the extents describe data, when two or more merge, their associated tags also merge. The resulting extent's tags will be the union of all the tags of those merged extents.
 
-Kusto assigns a special meaning to all extent tags whose value has the
-format *prefix* *suffix*, where *prefix* is one of:
+Kusto assigns a special meaning to all extent tags whose value has the format *prefix* *suffix*, where *prefix* is one of:
 
 * `drop-by:`
 * `ingest-by:`
 
 ### 'drop-by:' extent tags
 
-Tags that start with a `drop-by:` prefix can be used to control which other
-extents to merge with. Extents that have the same set of `drop-by:` tags can be merged
-together, but they won't be merged with other extents, if those have a different set of 
-`drop-by:` tags.
+Tags that start with a `drop-by:` prefix can be used to control which other extents to merge with. Extents that have the same set of `drop-by:` tags can be merged together, but they won't be merged with other extents if they have a different set of `drop-by:` tags.
 
 #### Examples
 
@@ -135,7 +125,7 @@ You can issue a command to drop extents according to their `drop-by:` tag.
 > [!WARNING]
 > * Don't overuse `drop-by` tags. Dropping data in the manner mentioned above is meant for rarely occurring events.
 >   * It shouldn't be used for replacing record-level data, and it relies on the fact that the data tagged in this manner is bulky.
->   * Attempting to give a unique tag for each record, small number of records, or file - might result with severe impact to performance.
+>   * Attempting to give a unique tag for each record, a small number of records, or file - might severely impact performance.
 > * If `drop-by` tags aren't needed for a period of time after data is ingested, we recommend that you [drop the tags](#drop-by-extent-tags).
 >   * To drop the tags automatically, you can set an [extent tags retention policy](extent-tags-retention-policy.md).
 
@@ -164,6 +154,6 @@ The following example ingests data only once. The 2nd and 3rd commands do nothin
 > [!WARNING]
 > * Overusing `ingest-by` tags isn't recommended.
 > * If the pipeline feeding Kusto is known to have data duplications, we recommend that you solve these duplications as much as possible, before ingesting the data into Kusto.
-> * Attempting to set a unique `ingest-by` tag for each ingestion call might result with severe impact on performance.
+> * Attempting to set a unique `ingest-by` tag for each ingestion call might severely impact performance.
 > * If such tags aren't required for some period of time after the data is ingested, we recommend that you [drop extent tags](drop-extent-tags.md).
 >   * To drop the tags automatically, you can set an [extent tags retention policy](extent-tags-retention-policy.md).
