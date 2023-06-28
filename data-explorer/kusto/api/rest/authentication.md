@@ -98,5 +98,5 @@ Azure AD service principals represent applications or services that need access 
 
 ## See also
 
-* Read the [Authentication overview](../../access-control/index.md).
+* [Authentication overview](../../access-control/index.md)
 * To learn how to perform On-behalf-of (OBO) authentication or Single Page Application (SPA) authentication, see [How to authenticate with Microsoft Authentication Library (MSAL)](authenticate-with-msal.md).
