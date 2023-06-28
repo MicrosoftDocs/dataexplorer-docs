@@ -7,7 +7,7 @@ ms.date: 06/28/2023
 ---
 # SQL external table authentication methods
 
-The connection string provided upon creation of a SQL external table defines the resource to access and its authentication information. Supported external table types include Microsoft SQL Server, MySQL, PostgreSQL, and Cosmos DB. For information on how to manage SQL external tables, see [Create and alter SQL external tables](../../management/external-sql-tables.md).
+The connection string provided upon creation of a SQL external table defines the resource to access and its authentication information. Supported SQL external table types include Microsoft SQL Server, MySQL, PostgreSQL, and Cosmos DB. For information on how to manage SQL external tables, see [Create and alter SQL external tables](../../management/external-sql-tables.md).
 
 ## Authentication by table type
 
