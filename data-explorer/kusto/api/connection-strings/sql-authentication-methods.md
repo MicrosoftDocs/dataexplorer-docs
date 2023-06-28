@@ -19,17 +19,6 @@ The following table shows the supported authentication methods by external table
 | [Managed identity](#managed-identity) | :heavy_check_mark: | :x: | :x: | :x: |
 | [Username and Password](#username-and-password) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
-## Privacy and security
-
-We recommend adding an 'h' prefix to any connection string that contains secrets. This practice ensures that the private information in the connection string is [obfuscated in telemetry data](../../query/scalar-data-types/string.md#obfuscated-string-literals).
-
-The following table explains how to hide your private information using the 'h' string.
-
-|Goal|Method|Syntax|
-|--|--|--|
-|Hide the entire connection string|Preface the connection string with 'h'.|`h"<connection_string>"`|
-|Hide only the secret part of the string|Split the connection string into the resource location and the secret information and add the 'h' between the two.| `"<resource_location>"h"<secrets>"`|
-
 ## Azure AD-integrated (impersonation)
 
 With this authentication method, the user or application authenticates via Azure AD to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. This method is only supported for SQL Server.
