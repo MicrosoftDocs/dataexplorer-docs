@@ -17,7 +17,18 @@ Azure Data Explorer access control is based on authentication and authorization.
 
 To programmatically authenticate with your cluster, a client must communicate with [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) and request an access token specific to Azure Data Explorer. Then, the client can use the acquired access token as proof of identity when issuing requests to your cluster.
 
-[User authentication](#user-authentication) is used to verify the identity of human principals and can be carried out interactively, where a human user provides credentials, or programmatically using a token. [Application authentication](#application-authentication) is used to authenticate services and applications that need to run and access resources without human intervention.
+The main authentication scenarios are as follows:
+
+* [User authentication](#user-authentication): Used to verify the identity of human users.
+
+* [Application authentication](#application-authentication): Used to verify the identity of an application that needs to access resources without human intervention by using configured credentials.
+
+* [On-behalf-of (OBO) authentication](/azure/active-directory/develop/msal-authentication-flows#on-behalf-of-obo): Allows an application to exchange a token for said application with a token to access a Kusto service. This flow must be implemented with MSAL.
+
+* [Single page application (SPA) authentication](/azure/active-directory/develop/msal-authentication-flows#authorization-code): Allows client-side SPA web applications to sign in users and get tokens to access your cluster. This flow must be implemented with MSAL.
+
+> [!NOTE]
+> For user and application authentication, we recommend using the [Kusto client libraries](kusto/api/client-libraries.md). If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL directly as these flows aren't supported by the client libraries. For more information, see [Authenticate with Microsoft Authentication Library (MSAL)](../../authenticate-with-msal.md).
 
 ### User authentication
 
