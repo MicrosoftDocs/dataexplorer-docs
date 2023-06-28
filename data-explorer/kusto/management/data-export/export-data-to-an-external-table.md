@@ -46,7 +46,7 @@ The following properties are supported as part of the export to external table c
 
 ## Authentication and authorization
 
-In order to export to an external table, you must set up write permissions. For more information, see the **Write permissions** for [Azure Storage external table](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external table](../external-mssql-tables.md).
+In order to export to an external table, you must set up write permissions. For more information, see the **Write permissions** for [Azure Storage external table](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external table](../external-sql-tables.md).
 
 ## Output
 
