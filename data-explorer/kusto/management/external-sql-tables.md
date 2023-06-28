@@ -1,6 +1,6 @@
 ---
-title: Create and alter SQL Server external tables
-description: Learn how to create and alter an SQL Server external table.
+title: Create and alter SQL external tables
+description: Learn how to create and alter an SQL external table.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/28/2023
