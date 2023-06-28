@@ -20,11 +20,8 @@ To programmatically authenticate with your cluster, a client must communicate wi
 The main authentication scenarios are as follows:
 
 * [User authentication](#user-authentication): Used to verify the identity of human users.
-
 * [Application authentication](#application-authentication): Used to verify the identity of an application that needs to access resources without human intervention by using configured credentials.
-
 * [On-behalf-of (OBO) authentication](/azure/active-directory/develop/msal-authentication-flows#on-behalf-of-obo): Allows an application to exchange a token for said application with a token to access a Kusto service. This flow must be implemented with MSAL.
-
 * [Single page application (SPA) authentication](/azure/active-directory/develop/msal-authentication-flows#authorization-code): Allows client-side SPA web applications to sign in users and get tokens to access your cluster. This flow must be implemented with MSAL.
 
 > [!NOTE]
