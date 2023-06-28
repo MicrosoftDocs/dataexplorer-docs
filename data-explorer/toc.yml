@@ -521,7 +521,7 @@ items:
         href: kusto/api/connection-strings/storage-connection-strings.md
       - name: Storage authentication methods
         href: kusto/api/connection-strings/storage-authentication-methods.md
-      - name: SQL Server authentication methods
+      - name: SQL external table authentication methods
         href: kusto/api/connection-strings/sql-authentication-methods.md
       - name: Generate SAS token
         href: kusto/api/connection-strings/generate-sas-token.md
