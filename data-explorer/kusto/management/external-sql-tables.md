@@ -60,6 +60,8 @@ Microsoft SQL Server external tables support Azure AD-integrated (impersonation)
 
 ## Examples
 
+The following examples show how to create each type of SQL external table.
+
 ### SQL Server
 
 ```kusto
