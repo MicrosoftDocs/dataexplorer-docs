@@ -13,7 +13,7 @@ Regardless of the authentication method used, the principal must have the necess
 
 ## Supported authentication methods by database type
 
-The following table shows the supported authentication methods by external table type.
+The following table shows the supported authentication methods for each type of database acting as the source for the external table.
 
 | Authentication method | SQL Server | PostgreSQL | MySQL | Cosmos DB |
 |--|--|--|--|
