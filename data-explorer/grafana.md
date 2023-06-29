@@ -33,7 +33,7 @@ You perform the following steps to configure Azure Data Explorer as a data sourc
 
 #### Create a Managed Grafana workspace
 
-You can use the Azure Managed Grafana service to quickly [create](/azure/managed-grafana/quickstart-managed-grafana-portal) a fully managed Grafana instance.
+You can use the Azure Managed Grafana service to quickly [create a fully managed Grafana instance](/azure/managed-grafana/quickstart-managed-grafana-portal).
 
 #### Add the managed identity to Viewer role
 
