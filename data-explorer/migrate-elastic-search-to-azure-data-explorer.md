@@ -152,7 +152,7 @@ After you've completed preparing your pre-migrations steps, the next step is to 
 
 To migrate your data, in a command shell, navigate to the Logstash root directory, and then run the following command:
 
-```sh
+```bash
 bin/logstash -f <your_pipeline>.conf
 ```
 
