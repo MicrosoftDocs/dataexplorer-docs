@@ -22,7 +22,7 @@ items:
   - name: How to ingest data with the REST API
     displayName: Kusto.Ingest
     href: netfx/kusto-ingest-client-rest.md
-  - name: How to authenticate with MSAL
+  - name: How to authenticate with MSAL in apps
     displayName: AAD, how to authenticate
     href: rest/authenticate-with-msal.md
 - name: .NET SDK

@@ -1,11 +1,11 @@
 ---
-title:  How to authenticate with Microsoft Authentication Library (MSAL)
+title:  How to authenticate with Microsoft Authentication Library (MSAL) in apps
 description: This article describes authentication with Microsoft Authentication Library (MSAL) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/28/2023
 ---
-# How to authenticate with Microsoft Authentication Library (MSAL)
+# How to authenticate with Microsoft Authentication Library (MSAL) in apps
 
 To programmatically authenticate with your cluster, you need to request an access token from [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) specific to Azure Data Explorer. This access token acts as proof of identity when issuing requests to your cluster. You can use one of the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) [flows](/azure/active-directory/develop/msal-authentication-flows) to create an access token.
 
