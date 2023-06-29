@@ -243,6 +243,8 @@ When enabling weak consistency, query results can have a 1-2 minutes lag followi
 
 To enable weak consistency, in the **Query Optimizations** pane > **Data consistency**, select **Weak**.
 
+---
+
 ## Visualize data
 
 Now you've finished configuring Azure Data Explorer as a data source for Grafana, it's time to visualize data. We'll show a basic example using both the query builder mode and the raw mode of the query editor. We recommend looking at [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) for examples of other queries to run against the sample data set.
