@@ -70,7 +70,7 @@ If your application needs to access Azure Data Explorer using the credentials of
 
     :::image type="content" source="media/provision-azure-ad-app/configure-delegated-add-api-permission.png" alt-text="Screenshot showing how to add Azure Data Explorer API permission.":::
 
-1. In **Delegated permissions**, select the **user_impersonation** box and **Add permissions**
+1. In **Delegated permissions**, select the **user_impersonation** box and **Add permissions**.
 
     :::image type="content" source="media/provision-azure-ad-app/configure-delegated-click-add-permissions.png" alt-text="Screenshot showing how to select delegated permissions with user impersonation.":::
 
