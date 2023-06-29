@@ -82,6 +82,6 @@ The following example assigns an MSA user to the user role on the `Test` databas
 
 ## Next steps
 
-* Learn how to [authenticate with Azure Active Directory](../access-control/how-to-authenticate-with-aad.md)
+* Read the [authentication overview](../access-control/index.md)
 * Learn how to use [management commands to assign security roles](security-roles.md)
 * Learn how to use the Azure portal to [manage database principals and roles](../../manage-database-permissions.md)
