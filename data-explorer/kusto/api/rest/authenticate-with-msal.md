@@ -9,9 +9,7 @@ ms.date: 06/28/2023
 
 To programmatically authenticate with your cluster, you need to request an access token from [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) specific to Azure Data Explorer. This access token acts as proof of identity when issuing requests to your cluster. You can use one of the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) [flows](/azure/active-directory/develop/msal-authentication-flows) to create an access token.
 
-We recommend using the [Kusto client libraries](../client-libraries.md) for user and application authentication. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../../../kusto/api/connection-strings/kusto.md).
-
-Alternatively, you can use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) and implement one of the [MSAL authentication flows](/azure/active-directory/develop/msal-authentication-flows) yourself. However, keep in mind that this approach involves more complexity compared to using the client libraries. If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL as these flows aren't supported by the client libraries.
+This article explains how to use MSAL to authenticate principals to your cluster. The direct use of MSAL to authenticate principals is primarily relevant in web applications that require [On-behalf-of (OBO) authentication](#perform-on-behalf-of-obo-authentication) or [Single Page Application (SPA) authentication](#perform-single-page-application-spa-authentication). For other cases, we recommend using the [Kusto client libraries](../client-libraries.md) as they simplify the authentication process.
 
 In this article, learn about the main authentication scenarios, the information to provide for successful authentication, and the use of MSAL for authentication.
 
@@ -65,11 +63,13 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 ```
 
 > [!NOTE]
-> With the Kusto client libraries, Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user.
+>
+> * We recommend using the [Kusto client libraries](../client-libraries.md) whenever possible. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../../../kusto/api/connection-strings/kusto.md).
+> * With the Kusto client libraries, Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user.
 
 ## Perform application authentication with MSAL
 
-The following code sample shows how to use MSAL directly instead of the [Kusto client libraries](../../../kusto/api/client-libraries.md) to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](../../../provision-azure-ad-app.md).
+The following code sample shows how to use MSAL directly to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](../../../provision-azure-ad-app.md).
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -87,6 +87,9 @@ var bearerToken = result.AccessToken;
 var request = WebRequest.Create(new Uri(kustoUri));
 request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.InvariantCulture, "{0} {1}", "Bearer", bearerToken));
 ```
+
+> [!NOTE]
+> We recommend using the [Kusto client libraries](../client-libraries.md) whenever possible. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../../../kusto/api/connection-strings/kusto.md).
 
 ## Perform On-behalf-of (OBO) authentication
 
