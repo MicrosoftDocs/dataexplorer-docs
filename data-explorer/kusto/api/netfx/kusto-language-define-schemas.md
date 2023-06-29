@@ -2,7 +2,7 @@
 title:  Define schemas for semantic analysis with Kusto.Language
 description: This article describes how to define schemas for semantic analysis with the Kusto.Language library.
 ms.topic: reference
-ms.date: 06/14/2023
+ms.date: 06/29/2023
 ---
 
 # Define schemas for semantic analysis with Kusto.Language
@@ -47,7 +47,8 @@ var shortshapes = new FunctionSymbol("ShortShapes", "(maxHeight: real)", "{ Shap
 // 3. Create a database symbol named "mydb" and include the previously defined symbols.
 var mydb = new DatabaseSymbol("mydb", shapes, tallshapes, shortshapes);
 
-// 4. Add the database symbol to the global state.
+// 4. Add the database symbol to the global state and set it as the default database.
+//    A cluster symbol is also created to contain the database, and that cluster is set as the default.
 var globalsWithMyDb = GlobalState.Default.WithDatabase(mydb);
 
 // 5. Use the schemas to parse and perform semantic analysis on the query.
@@ -65,7 +66,7 @@ The following example uses the `SymbolLoader` family of classes to access databa
 // Find available databases.
 var connection = new KustoConnectionStringBuilder(...);
 var loader = new ServerSymbolLoader(connection);
-var names = loader.LoadDatabaseNamesAsync();
+var names = await loader.LoadDatabaseNamesAsync();
 
 // Load database schema into a symbol.
 var loader = new ServerSymbolLoader(connection);
