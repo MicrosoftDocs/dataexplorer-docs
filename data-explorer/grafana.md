@@ -33,18 +33,11 @@ You perform the following steps to configure Azure Data Explorer as a data sourc
 
 #### Create a Managed Grafana workspace
 
-You can use the Azure Managed Grafana service to quickly [create]
-(azure/managed-grafana/quickstart-managed-grafana-portal) a fully managed Grafana instance.
+You can use the Azure Managed Grafana service to quickly [create](/azure/managed-grafana/quickstart-managed-grafana-portal) a fully managed Grafana instance.
 
 #### Add the managed identity to Viewer role
 
 Managed Grafana creates a system-assigned managed identity for each new workspace, by default. You can use it to access your Azure Data Explorer cluster.
-
-1. In the Azure portal, go to your Managed Grafana workspace.
-
-1. Select **Identity** and, under **System assigned**, copy **Object (principal) ID** of the managed identity created with the workspace.
-
-    ![Copy managed identity object ID.](includes/media/data-explorer-configure-data-source/copy-managed-grefana-managed-identity.png)
 
 1. In the Azure portal, go to your Azure Data Explorer cluster.
 
@@ -56,9 +49,9 @@ Managed Grafana creates a system-assigned managed identity for each new workspac
 
     ![Database permissions.](includes/media/data-explorer-configure-data-source/database-permissions.png)
 
-1. Paste the Managed Grafana's managed identity *Object ID* into the **Search** box.
+1. Enter your Managed Grafana workspace name into the **Search** box.
 
-1. Select the managed identity in the search result, then **Select**.
+1. Select the search result that matches the workspace name exactly, then **Select**.
 
     ![Add managed identity.](includes/media/data-explorer-configure-data-source/add-managed-identity.png)
 
