@@ -9,11 +9,11 @@ ms.date: 03/14/2023
 
 Binds a name to the operator's input tabular expression. This allows the query to reference the value of the tabular expression multiple times without breaking the query and binding a name through the [let statement](letstatement.md).
 
-To optimize multiple uses of the `as` operator within a single query, see [Named expressions](../../named-expressions.md).
+To optimize multiple uses of the `as` operator within a single query, see [Named expressions](named-expressions.md).
 
 ## Syntax
 
-*T* `|` `as` [`hint.materialized` `=` `true`] *Name*
+*T* `|` `as` [`hint.materialized` `=` *Materialized*] *Name*
 
 ## Parameters
 
@@ -21,7 +21,7 @@ To optimize multiple uses of the `as` operator within a single query, see [Named
 |--|--|--|--|
 |*T*| string | &check; | The tabular expression to rename.|
 | *Name*| string| &check; | The temporary name for the tabular expression.|
-| *`hint.materialized`*| bool |  | If set to `true`, the value of the tabular expression will be as if it was wrapped by a [materialize()](./materializefunction.md) function call.|
+| *`hint.materialized`*| bool |  | If *Materialized* is set to `true`, the value of the tabular expression will be as if it was wrapped by a [materialize()](./materializefunction.md) function call. Otherwise, the value will be recalculated on every reference.||
 
 > [!NOTE]
 >

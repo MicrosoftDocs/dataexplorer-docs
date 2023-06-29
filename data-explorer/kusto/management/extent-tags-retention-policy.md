@@ -46,9 +46,9 @@ The following policy will have any `drop-by:` tags older than three days and any
 
 By default, when the policy isn't defined, extent tags of any kind are retained as long as the extent isn't dropped.
 
-## Control commands
+## Management commands
 
-The following control commands can be used to manage the extent tags retention policy:
+The following management commands can be used to manage the extent tags retention policy:
 
 * [.show extent tags retention policy](show-extent-tags-retention-policy.md)
 * [.alter extent tags retention policy](alter-extent-tags-retention-policy.md)

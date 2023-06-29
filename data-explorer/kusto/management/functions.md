@@ -6,7 +6,7 @@ ms.topic: reference
 ms.date: 11/22/2022
 ---
 # Stored functions management overview
-This section describes control commands used for creating and altering [user-defined functions](../query/functions/user-defined-functions.md):
+This section describes management commands used for creating and altering [user-defined functions](../query/functions/user-defined-functions.md):
 
 |Function |Description|
 |---------|-----------|
