@@ -154,20 +154,11 @@ In the following sections, you'll use Kusto.Explorer to create a database, inges
 
 ## Create a database
 
-You'll need a database in your emulator for your data. You can create the following types of database:
+You'll need a database in your emulator for your data.
 
-- A *volatile* database where the database only exists in RAM and is lost when the container is stopped
-- A *persistent* database where the database is stored in a folder in the container. This allows your database size to exceed the size of your container's RAM. If you want to keep the data between container runs, you'll need to persist the database to a [mounted folder](#run-emulator-options).
+A database can be persisted in a container folder or on a [mounted folder](#run-emulator-options).  The former's lifetime is bound to the container and won't be persisted between runs.  Also, container virtual storage is less efficient than native one.  Mounted folder enables you  to keep the data between container runs.
 
-### To create a volatile database
-
-In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mode), run the following command to create a volatile database:
-
-```kusto
-.create database <YourDatabaseName> volatile
-```
-
-### To create a persistent database
+In this example, we keep the data on the container.
 
 In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mode), run the following command to create a persistent database:
 
