@@ -118,7 +118,7 @@ The following steps are for using PowerShell to start the emulator using the [Ku
 
 You can use any of the following options when running the emulator:
 
-- Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. Mounting a host folder enables your queries to interact with local files, which is useful for [creating a persistent database](#to-create-a-persistent-database) and [ingesting data](#ingest-data).
+- Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. Mounting a host folder enables your queries to interact with local files, which is useful for [creating a database persitent between container runs](#create-a-database) and [ingesting data](#ingest-data).
 
     For example, to mount the folder "D:\host\local" on the host to the folder "c:\kustodatadata" in the container, use the following command on Windows Server:
 
