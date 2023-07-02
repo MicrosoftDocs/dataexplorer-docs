@@ -40,12 +40,10 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 The authentication method is based on the connection string provided, and the permissions required to access the SQL database vary depending on the authentication method.
 
-The following table lists the supported authentication methods and the permissions needed to export to SQL.
+The supported authentication methods for exporting data to SQL are [Azure AD-integrated (impersonation) authentication](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-impersonation) and [username/password authentication](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token). For impersonation authentication, be sure that the principal has the following permissions on the database:
 
-|Authentication method|Permissions|
-|--|--|
-|[Impersonation](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-authentication)|Existing table: UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT |
-|[Username and password](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)||
+* Existing table: table UPDATE and INSERT
+* New table: CREATE, UPDATE, and INSERT
 
 ## Limitations and restrictions
 
