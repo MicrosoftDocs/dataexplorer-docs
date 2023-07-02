@@ -3,7 +3,7 @@ title: "Quickstart: Create an Azure Data Explorer cluster and database"
 description: In this quickstart, you learn how to create an Azure Data Explorer cluster and database, and ingest data.
 ms.reviewer: mblythe
 ms.topic: quickstart
-ms.date: 05/04/2023
+ms.date: 07/02/2023
 ms.custom: mode-portal
 adobe-target: true
 
@@ -12,14 +12,13 @@ adobe-target: true
 
 # Quickstart: Create an Azure Data Explorer cluster and database
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then you ingest data into a database so that you can run queries against it.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then, you can ingest data into a database and run queries against it.
 
-In this quickstart, you create a cluster and a database using the Azure portal. To create a cluster and database using C#, Python, Go, the Azure CLI, PowerShell, or an Azure Resource Manager (ARM) template, see [Create a cluster and database](create-cluster-database.md).
+This article covers how to create a free cluster and database or create a paid cluster and a database. To decide which is right for you, check the [feature comparison](start-for-free.md#feature-comparison).
 
->[!TIP]
-> You can also [create a free cluster](start-for-free-web-ui.md) with only a Microsoft account or an Azure Active Directory user identity.
+In this quickstart, the paid cluster is created using the Azure portal. You can also create a paid cluster and database using C#, Python, Go, the Azure CLI, PowerShell, or an Azure Resource Manager (ARM) template. For more information, see [Create a cluster and database](create-cluster-database.md).
 
-For more information on cluster subscription limits, see [Azure Data Explorer limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-data-explorer-limits).
+For information on cluster subscription limits, see [Azure Data Explorer limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-data-explorer-limits).
 
 ## Prerequisites
 
