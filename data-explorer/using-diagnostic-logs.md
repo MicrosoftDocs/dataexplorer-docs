@@ -19,7 +19,7 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Sign in to the [Azure portal](https://portal.azure.com/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* Create [a cluster and database](create-cluster-and-database.md).
 
 ## Set up diagnostic logs for an Azure Data Explorer cluster
 
