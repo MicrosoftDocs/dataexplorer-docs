@@ -94,7 +94,7 @@ To create a database in your free cluster:
 
 1. From the left menu, select **My cluster**.
 
-1. In the **Create database** panel, select **Create**.
+1. Under **Actions**, find the **Create database** panel. Then, select **Create**.
 
     :::image type="content" source="media/create-cluster-database-quickstart/create-free-cluster.png" alt-text="Screenshot of panel with option to create free cluster." lightbox="media/create-cluster-database-quickstart/create-free-cluster.png":::
 
@@ -131,9 +131,11 @@ After you created the cluster and database, you can run queries and commands. Th
 
 ### [Free cluster](#tab/free)
 
-1. In the **Query data** panel, select **Query**. Paste the command `.show databases` into the query window, then select **Run**. The result set shows **TestDatabase**, the only database in the cluster.
+1. Under **Actions**, find the **Query data** panel. Then, select **Query**. Paste the command `.show databases` into the query window, then select **Run**. The result set shows **TestDatabase**, the only database in the cluster.
 
-1. Paste the command `.show tables` into the query window and select **Run**. This command returns an empty result set because you don't have any tables yet. You add a table in the next article in this series.
+    :::image type="content" source="media/create-cluster-database-quickstart/query-free-cluster.png" alt-text="Screenshot of quick action to query data." lightbox="media/create-cluster-database-quickstart/query-free-cluster.png":::
+
+1. Paste the command `.show tables` into the query window and select **Run**. This command returns an empty result set because you don't have any tables yet. You'll add a table in the next article in this series.
 
 ### [Full cluster](#tab/full)
 
