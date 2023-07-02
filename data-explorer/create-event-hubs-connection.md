@@ -17,7 +17,7 @@ In this article, you connect to an event hub and ingest data into Azure Data Exp
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-quickstart.md).
 * A destination table. [Create a table](kusto/management/create-table-command.md) or use an existing table.
 * An [ingestion mapping](kusto/management/mappings.md) for the table.
 * An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.

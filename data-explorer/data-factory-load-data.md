@@ -32,7 +32,7 @@ In this article, you use the Data Factory Copy Data tool to load data from Amazo
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-quickstart.md).
 * A source of data.
 
 ## Create a data factory
