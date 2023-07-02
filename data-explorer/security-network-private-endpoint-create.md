@@ -16,7 +16,7 @@ Private endpoints use private IP addresses from your VNet to connect you private
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Sign in to the [Azure portal](https://portal.azure.com/).
-* An [Azure Data Explorer cluster](create-cluster-database-quickstart.md) that isn't injected in a virtual network.
+* An [Azure Data Explorer cluster](create-cluster-and-database.md) that isn't injected in a virtual network.
 * A [virtual network](/azure/virtual-network/quick-create-portal).
 
 ## Create a private endpoint
@@ -29,7 +29,7 @@ There are several ways to create a private endpoint for a cluster.
 
 ### Create a private endpoint during the deployment of your cluster in the portal
 
-Use the following information to create a private endpoint whilst [creating your cluster](create-cluster-database-quickstart.md).
+Use the following information to create a private endpoint whilst [creating your cluster](create-cluster-and-database.md).
 
 1. In the **Create an Azure Data Explorer cluster** page, select the **Network** tab.
 

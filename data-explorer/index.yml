@@ -62,7 +62,7 @@ landingContent:
       - linkListType: quickstart
         links:
           - text: Create a cluster and database
-            url: create-cluster-database-quickstart.md
+            url: create-cluster-and-database.md
       - linkListType: how-to-guide
         links:
           - text: Python

@@ -47,19 +47,19 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. Select the **+ Create a resource** button in the upper-left corner of the portal.
 
-    :::image type="content" source="media/create-cluster-database-quickstart/create-resource.png" alt-text="Screenshot of the Create a resource button." lightbox="media/create-cluster-database-quickstart/create-resource.png":::
+    :::image type="content" source="media/create-cluster-and-database/create-resource.png" alt-text="Screenshot of the Create a resource button." lightbox="media/create-cluster-and-database/create-resource.png":::
 
 1. Search for *Azure Data Explorer*.
 
-    :::image type="content" source="media/create-cluster-database-quickstart/search-resources.png" alt-text="Search Azure Data Explorer" lightbox="media/create-cluster-database-quickstart/search-resources.png":::
+    :::image type="content" source="media/create-cluster-and-database/search-resources.png" alt-text="Search Azure Data Explorer" lightbox="media/create-cluster-and-database/search-resources.png":::
 
 1. Under **Azure Data Explorer**, select **Create**.
 
-    :::image type="content" source="media/create-cluster-database-quickstart/create-click.png" alt-text="Screenshot of the Create a cluster window" lightbox="media/create-cluster-database-quickstart/create-click.png":::
+    :::image type="content" source="media/create-cluster-and-database/create-click.png" alt-text="Screenshot of the Create a cluster window" lightbox="media/create-cluster-and-database/create-click.png":::
 
 1. Fill out the basic cluster details with the following information.
 
-    :::image type="content" source="media/create-cluster-database-quickstart/create-cluster-form.png" alt-text="Screenshot of the Azure portal create Azure Data Explorer cluster form." lightbox="media/create-cluster-database-quickstart/create-cluster-form.png":::
+    :::image type="content" source="media/create-cluster-and-database/create-cluster-form.png" alt-text="Screenshot of the Azure portal create Azure Data Explorer cluster form." lightbox="media/create-cluster-and-database/create-cluster-form.png":::
 
     **Setting** | **Suggested value** | **Field description**
     |---|---|---|
@@ -75,7 +75,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 1. When the deployment is complete, select **Go to resource**.
 
-    :::image type="content" source="media/create-cluster-database-quickstart/notification-resource.png" alt-text="Screenshot of the Go to resource button." lightbox="media/create-cluster-database-quickstart/notification-resource.png":::
+    :::image type="content" source="media/create-cluster-and-database/notification-resource.png" alt-text="Screenshot of the Go to resource button." lightbox="media/create-cluster-and-database/notification-resource.png":::
 
 > [!NOTE]
 > If the deployment fails with the error "SubscriptionNotRegistered", retry the operation.
@@ -98,11 +98,11 @@ To create a database in your free cluster:
 
 1. Under **Actions**, find the **Create database** panel. Then, select **Create**.
 
-    :::image type="content" source="media/create-cluster-database-quickstart/create-free-cluster.png" alt-text="Screenshot of panel with option to create free cluster." lightbox="media/create-cluster-database-quickstart/create-free-cluster.png":::
+    :::image type="content" source="media/create-cluster-and-database/create-free-cluster.png" alt-text="Screenshot of panel with option to create free cluster." lightbox="media/create-cluster-and-database/create-free-cluster.png":::
 
 1. Enter a name for the database. Select **Next: Create Database**.
 
-    :::image type="content" source="media/create-cluster-database-quickstart/create-free-database.png" alt-text="Screenshot of area to add name for free cluster database." lightbox="media/create-cluster-database-quickstart/create-free-database.png":::
+    :::image type="content" source="media/create-cluster-and-database/create-free-database.png" alt-text="Screenshot of area to add name for free cluster database." lightbox="media/create-cluster-and-database/create-free-database.png":::
 
 ### [Full cluster](#tab/full)
 
@@ -112,7 +112,7 @@ To create a database in your full cluster:
 
 1. On the **Overview** tab, select **Create database**.
 
-    :::image type="content" source="media/create-cluster-database-quickstart/database-creation.png" alt-text="Screenshot of the Create a database window." lightbox="media/create-cluster-database-quickstart/database-creation.png":::
+    :::image type="content" source="media/create-cluster-and-database/database-creation.png" alt-text="Screenshot of the Create a database window." lightbox="media/create-cluster-and-database/database-creation.png":::
 
 1. Fill out the form with the following information.
 
@@ -123,7 +123,7 @@ To create a database in your full cluster:
     | Retention period | *365* | The number of days that data is guaranteed to be kept available for querying. The period is measured from the time data is ingested. |
     | Cache period | *31* | The number of days to keep frequently queried data available in SSD storage or RAM to optimize querying. |
 
-    :::image type="content" source="media/create-cluster-database-quickstart/create-test-database.png" alt-text="Create database form." lightbox="media/create-cluster-database-quickstart/create-test-database.png":::
+    :::image type="content" source="media/create-cluster-and-database/create-test-database.png" alt-text="Create database form." lightbox="media/create-cluster-and-database/create-test-database.png":::
 
 1. Select **Create** to create the database. Creation typically takes less than a minute. When the process is complete, you're back on the cluster **Overview** tab.
 
@@ -137,7 +137,7 @@ After you created the cluster and database, you can run queries and commands. Th
 
 1. Under **Actions**, find the **Query data** panel. Then, select **Query**. Paste the command `.show databases` into the query window, then select **Run**. The result set shows **TestDatabase**, the only database in the cluster.
 
-    :::image type="content" source="media/create-cluster-database-quickstart/query-free-cluster.png" alt-text="Screenshot of quick action to query data." lightbox="media/create-cluster-database-quickstart/query-free-cluster.png":::
+    :::image type="content" source="media/create-cluster-and-database/query-free-cluster.png" alt-text="Screenshot of quick action to query data." lightbox="media/create-cluster-and-database/query-free-cluster.png":::
 
 1. Paste the command `.show tables` into the query window and select **Run**. This command returns an empty result set because you don't have any tables yet. You'll add a table in the next article in this series.
 
@@ -145,7 +145,7 @@ After you created the cluster and database, you can run queries and commands. Th
 
 1. Under your cluster, select **Query**. Paste the command `.show databases` into the query window, then select **Run**.
 
-    :::image type="content" source="media/create-cluster-database-quickstart/show-databases.png" alt-text="Show databases command." lightbox="media/create-cluster-database-quickstart/show-databases.png":::
+    :::image type="content" source="media/create-cluster-and-database/show-databases.png" alt-text="Show databases command." lightbox="media/create-cluster-and-database/show-databases.png":::
 
     The result set shows **TestDatabase**, the only database in the cluster.
 
@@ -167,7 +167,7 @@ You can stop and restart a cluster depending on business needs. Stopping the clu
 
 1. To stop the cluster, at the top of the **Overview** tab, select **Stop**.
 
-    :::image type="content" source="media/create-cluster-database-quickstart/stop-button.png" alt-text="Screenshot of the Azure portal and cluster stop button." lightbox="media/create-cluster-database-quickstart/stop-button.png":::
+    :::image type="content" source="media/create-cluster-and-database/stop-button.png" alt-text="Screenshot of the Azure portal and cluster stop button." lightbox="media/create-cluster-and-database/stop-button.png":::
 
     > [!NOTE]
     > When the cluster is stopped, data is not available for queries, and you can't ingest new data.

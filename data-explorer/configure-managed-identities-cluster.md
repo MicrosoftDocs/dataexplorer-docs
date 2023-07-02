@@ -35,7 +35,7 @@ Sign in to the [Azure portal](https://portal.azure.com/).
 
 #### New Azure Data Explorer cluster
 
-1. [Create an Azure Data Explorer cluster](create-cluster-database-quickstart.md#create-a-cluster) 
+1. [Create an Azure Data Explorer cluster](create-cluster-and-database.md#create-a-cluster) 
 1. In the **Security** tab > **System assigned identity**, select **On**. To remove the system assigned identity, select **Off**.
 1. Select **Next : Tags >** or **Review + create** to create the cluster.
 

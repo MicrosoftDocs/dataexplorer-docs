@@ -33,7 +33,7 @@ items:
   expanded: true
   items:
   - name: Create a cluster and database
-    href: create-cluster-database-quickstart.md
+    href: create-cluster-and-database.md
   - name: Get sample data
     href: ingest-sample-data.md
     displayName: Azure Data Explorer web UI

@@ -25,7 +25,7 @@ Attaching a database to a different cluster using the follower capability is use
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database for the leader and follower. [Create a cluster and database](create-cluster-database-quickstart.md).
+* An Azure Data Explorer cluster and database for the leader and follower. [Create a cluster and database](create-cluster-and-database.md).
 * The leader database should contain data. You can [ingest data](ingest-sample-data.md) using one of the methods discussed in [ingestion overview](ingest-data-overview.md).
 
 ## Attach a database
