@@ -26,7 +26,7 @@ The prerequisites vary whether creating a free or full cluster. Select the relev
 
 ### [Free cluster](#tab/free)
 
-A Microsoft account or an Azure Active Directory user identity to create a free cluster. You do not need an Azure subscription or credit card.
+A Microsoft account or an Azure Active Directory user identity to create a free cluster. You don't need an Azure subscription or credit card.
 
 ### [Full cluster](#tab/full)
 
@@ -69,7 +69,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
     | Region | *West US* or *West US 2* | Select *West US* or *West US 2* (if using availability zones) for this quickstart. For a production system, select the region that best meets your needs.
     | Workload | *Dev/Test* | Select *Dev/Test* for this quickstart. For a production system, select the specification that best meets your needs.
     | Compute specifications | *Dev(No SLA)_Standard_E2a_v4* | Select *Dev(No SLA)_Standard_E2a_v4* for this quickstart. For a production system, select the specification that best meets your needs.
-    | Availability zones | On | Turning on this feature will distribute the cluster storage and compute resources across multiple physical zones within a region for added protection and availability. By default, this feature is turned on if zones are supported in the region. If less than 3 zones are available for the compute instances, the portal will display the number of supported zones. Note that deployment to availability zones is possible only when creating the cluster, and can't be modified later. Read more about [Azure Availability Zones](/azure/availability-zones/az-overview).|
+    | Availability zones | On | Turning on this feature distributes the cluster storage and compute resources across multiple physical zones within a region for added protection and availability. By default, this feature is turned on if zones are supported in the region. If fewer than 3 zones are available for the compute instances, the portal displays the number of supported zones. Deployment to availability zones is possible only when creating the cluster, and can't be modified later. Read more about [Azure Availability Zones](/azure/availability-zones/az-overview).|
 
 1. Select **Review + create** to review your cluster details, and on the next screen select **Create** to provision the cluster. Provisioning typically takes about 10 minutes.
 
@@ -88,7 +88,7 @@ Select the relevant tab to learn how to create a database within your cluster.
 
 ### [Free cluster](#tab/free)
 
-To create a database in you free cluster:
+To create a database in your free cluster:
 
 1. Open the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
@@ -100,7 +100,7 @@ To create a database in you free cluster:
 
 1. Enter a name for the database. Select **Next: Create Database**.
 
-    :::image type="content" source="media/create-cluster-database-quickstart/free-cluster-database-name.png" alt-text="Screenshot of area to add name for free cluster database." lightbox="media/create-cluster-database-quickstart/free-cluster-database-name.png":::
+    :::image type="content" source="media/create-cluster-database-quickstart/create-free-database.png" alt-text="Screenshot of area to add name for free cluster database." lightbox="media/create-cluster-database-quickstart/create-free-database.png":::
 
 ### [Full cluster](#tab/full)
 
@@ -125,9 +125,17 @@ To create a database in your full cluster:
 
 1. Select **Create** to create the database. Creation typically takes less than a minute. When the process is complete, you're back on the cluster **Overview** tab.
 
-## Run basic commands in the database
+## Run commands in the database
 
 After you created the cluster and database, you can run queries and commands. The database doesn't have data yet, but you can still see how the tools work.
+
+### [Free cluster](#tab/free)
+
+1. In the **Query data** panel, select **Query**. Paste the command `.show databases` into the query window, then select **Run**. The result set shows **TestDatabase**, the only database in the cluster.
+
+1. Paste the command `.show tables` into the query window and select **Run**. This command returns an empty result set because you don't have any tables yet. You add a table in the next article in this series.
+
+### [Full cluster](#tab/full)
 
 1. Under your cluster, select **Query**. Paste the command `.show databases` into the query window, then select **Run**.
 
@@ -140,6 +148,12 @@ After you created the cluster and database, you can run queries and commands. Th
     This command returns an empty result set because you don't have any tables yet. You add a table in the next article in this series.
 
 ## Stop and restart the cluster
+
+### [Free cluster](#tab/free)
+
+You can't stop and restart a free cluster.
+
+### [Full cluster](#tab/full)
 
 You can stop and restart a cluster depending on business needs. Stopping the cluster significantly reduces cost as it releases the compute resources, which are the bulk of the overall cluster cost, without deleting the database.
 
@@ -155,6 +169,18 @@ You can stop and restart a cluster depending on business needs. Stopping the clu
     When the cluster is restarted, it takes about 10 minutes for it to become available (like when it was originally provisioned). It takes more time for data to load into the hot cache.
 
 ## Clean up resources
+
+### [Free cluster](#tab/free)
+
+To delete a database in a free cluster:
+
+1. Open the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
+
+1. From the left menu, select **My cluster**.
+
+1. Under **Databases**, select the trash icon next to the database you'd like to delete.
+
+### [Full cluster](#tab/full)
 
 If you plan to follow other quickstarts and tutorials, keep the resources you created. Otherwise, clean up your resource group, to avoid incurring costs.
 
