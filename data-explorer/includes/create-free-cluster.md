@@ -7,11 +7,11 @@ To create a free cluster:
 
 1. Go to [My Cluster](https://aka.ms/kustofree) and select **Create cluster**.
 
-    :::image type="content" source="media/start-for-free-web-ui/start-for-free-create-cluster.png" alt-text="Screenshot of My Cluster page, showing the Create cluster option.":::
+    :::image type="content" source="media/start-for-free-web-ui/start-for-free-create-cluster.png" alt-text="Screenshot of My Cluster page, showing the Create cluster option." lightbox="media/start-for-free-web-ui/start-for-free-create-cluster.png":::
 
 1. In the **Create a free cluster** dialog, fill out the cluster details using the following information.
 
-    :::image type="content" source="media/start-for-free-web-ui/start-for-free-create-cluster-dialog.png" alt-text="Screenshot of Create a free cluster dialog, showing the details for creating the cluster.":::
+    :::image type="content" source="media/start-for-free-web-ui/start-for-free-create-cluster-dialog.png" alt-text="Screenshot of Create a free cluster dialog, showing the details for creating the cluster." lightbox="media/start-for-free-web-ui/start-for-free-create-cluster-dialog.png":::
 
     | Setting | Suggested value | Description |
     |--|--|--|
