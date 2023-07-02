@@ -34,7 +34,7 @@ To enable customer-managed keys for your cluster, first assign either a system-a
 
 The following steps explain how to enable customer-managed keys encryption using the Azure portal. By default, Azure Data Explorer encryption uses Microsoft-managed keys. Configure your Azure Data Explorer cluster to use customer-managed keys and specify the key to associate with the cluster.
 
-1. In the [Azure portal](https://portal.azure.com/), go to your [Azure Data Explorer cluster](create-cluster-database-portal.md#create-a-cluster) resource.
+1. In the [Azure portal](https://portal.azure.com/), go to your [Azure Data Explorer cluster](create-cluster-database-quickstart.md#create-a-cluster) resource.
 1. Select **Settings** > **Encryption** in left pane of portal.
 1. In the **Encryption** pane, select **On** for the **Customer-managed key** setting.
 1. Select **Select Key**.

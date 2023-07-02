@@ -776,7 +776,7 @@
       "redirect_document_id": true
     },
     {
-      "source_path": "data-explorer/kusto/access-control/create-cluster-database-portal.md",
+      "source_path": "data-explorer/create-cluster-database-portal.md",
       "redirect_url": "/azure/data-explorer/kusto/api/rest/create-cluster-database-quickstart",
       "redirect_document_id": true
     }
