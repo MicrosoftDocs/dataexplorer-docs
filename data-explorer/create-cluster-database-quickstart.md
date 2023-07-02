@@ -1,6 +1,6 @@
 ---
 title: "Quickstart: Create an Azure Data Explorer cluster and database"
-description: In this quickstart, you learn how to create an Azure Data Explorer cluster and database, and ingest data.
+description: In this quickstart, you learn how to create an Azure Data Explorer cluster and database.
 ms.reviewer: mblythe
 ms.topic: quickstart
 ms.date: 07/02/2023
