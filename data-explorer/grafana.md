@@ -3,7 +3,7 @@ title: Visualize data from Azure Data Explorer using Grafana
 description: In this article, you learn to set up Azure Data Explorer as a data source for Grafana, and then visualize data from a sample cluster.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 06/27/2023
 ---
 
 # Visualize data from Azure Data Explorer in Grafana
@@ -18,16 +18,170 @@ Instead you can [configure the data source](#configure-the-data-source) and [vis
 
 ## Prerequisites
 
-* [Grafana version 5.3.0 or later](https://docs.grafana.org/installation/) for your operating system
-* The [Azure Data Explorer plugin](https://grafana.com/grafana/plugins/grafana-azure-data-explorer-datasource/) for Grafana. Plugin version 3.0.5 or later is required to use Grafana query builder.
+* An Azure account and [Azure Managed Grafana](/azure/managed-grafana/overview)
+* If you're hosting your own Grafana server, [Grafana version 5.3.0 or later](https://docs.grafana.org/installation/) for your operating system and [Azure Data Explorer plugin](https://grafana.com/grafana/plugins/grafana-azure-data-explorer-datasource/) for Grafana. Plugin version 3.0.5 or later is required to use Grafana query builder.
 * An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 * To follow along with the examples in this tutorial, [ingest the StormEvents sample data](ingest-sample-data.md).
 
 [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
-[!INCLUDE [data-explorer-configure-data-source](includes/data-explorer-configure-data-source.md)]
+## Configure the data source
 
-### Specify properties and test the connection
+You perform the following steps to configure Azure Data Explorer as a data source for your dashboard tool.
+
+### [Azure Managed Grafana](#tab/azure-managed-grafana)
+
+#### Create a Managed Grafana workspace
+
+You can use the Azure Managed Grafana service to quickly [create a fully managed Grafana instance](/azure/managed-grafana/quickstart-managed-grafana-portal).
+
+#### Add the managed identity to Viewer role
+
+Managed Grafana creates a system-assigned managed identity for each new workspace, by default. You can use it to access your Azure Data Explorer cluster.
+
+1. In the Azure portal, go to your Azure Data Explorer cluster.
+
+1. In the **Overview** section, select the database with the StormEvents sample data.
+
+    ![Select database.](includes/media/data-explorer-configure-data-source/select-database.png)
+
+1. Select **Permissions**, **Add** then **Viewer**.
+
+    ![Database permissions.](includes/media/data-explorer-configure-data-source/database-permissions.png)
+
+1. Enter your Managed Grafana workspace name into the **Search** box.
+
+1. Select the search result that matches the workspace name exactly, then **Select**.
+
+    ![Add managed identity.](includes/media/data-explorer-configure-data-source/add-managed-identity.png)
+
+#### Set up Azure Data Explorer as a Grafana data source
+
+Managed Grafana workspaces come with the Azure Data Explorer plugin preinstalled.
+
+1. In the Azure portal, go back to your Managed Grafana workspace.
+
+1. Under **Overview**, click the **Endpoint** link to open the Grafana UI.
+
+1. In Grafana, on the left menu, select the gear icon then **Data Sources**.
+
+    ![Data sources.](media/grafana/data-sources.png)
+
+1. Select **Azure Data Explorer Datasource**.
+
+    ![Select Azure Data Explorer.](media/grafana/managed-grafana-data-sources.png)
+
+1. In **Connection Details**, enter your Azure Data Explorer cluster URI.
+
+    ![Input cluster URI.](media/grafana/input-cluster-uri.png)
+
+1. Select **Save & Test**.
+
+### [Self-hosted Grafana](#tab/self-hosted-grafana)
+
+We'll cover these steps in more detail in this section:
+
+1. Create an Azure Active Directory (Azure AD) service principal. The service principal is used by your dashboard tool to access the Azure Data Explorer service.
+
+1. Add the Azure AD service principal to the *viewers* role in the Azure Data Explorer database.
+
+1. Specify your dashboard tool connection properties based on information from the Azure AD service principal, then test the connection.
+
+#### Create a service principal
+
+You can create the service principal in the [Azure portal](#azure-portal) or using the [Azure CLI](#azure-cli) command-line experience. Regardless of which method you use, after creation you get values for four connection properties that you'll use in later steps.
+
+##### Azure portal
+
+1. To create the service principal, follow the instructions in the [Azure portal documentation](/azure/active-directory/develop/howto-create-service-principal-portal).
+
+    1. In the [Assign the application to a role](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) section, assign a role type of **Reader** to your Azure Data Explorer cluster.
+
+    1. In the [Get values for signing in](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) section, copy the three property values covered in the steps: **Directory ID** (tenant ID), **Application ID**, and **Password**.
+
+1. In the Azure portal, select **Subscriptions** then copy the ID for the subscription in which you created the service principal.
+
+    ![Subscription ID - portal.](includes/media/data-explorer-configure-data-source/subscription-id-portal.png)
+
+##### Azure CLI
+
+1. Create a service principal. Set an appropriate scope and a role type of `reader`.
+
+    ```azurecli
+    az ad sp create-for-rbac --name "https://{UrlToYourDashboard}:{PortNumber}" --role "reader" \
+                             --scopes /subscriptions/{SubID}/resourceGroups/{ResourceGroupName}
+    ```
+
+    For more information, see [Create an Azure service principal with Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli).
+
+1. The command returns a result set like the following. Copy the three property values: **appID**, **password**, and **tenant**.
+
+
+    ```json
+    {
+      "appId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+      "displayName": "{UrlToYourDashboard}:{PortNumber}",
+      "name": "https://{UrlToYourDashboard}:{PortNumber}",
+      "password": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+      "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+    }
+    ```
+
+1. Get a list of your subscriptions.
+
+    ```azurecli
+    az account list --output table
+    ```
+
+    Copy the appropriate subscription ID.
+
+    ![Subscription ID - CLI.](includes/media/data-explorer-configure-data-source/subscription-id-cli.png)
+
+#### Add the service principal to Viewer role
+
+Now that you have a service principal, you add it to the *viewers* role in the Azure Data Explorer database. You can perform this task under **Permissions** in the Azure portal, or under **Query** by using a management command.
+
+##### Azure portal - Permissions
+
+1. In the Azure portal, go to your Azure Data Explorer cluster.
+
+1. In the **Overview** section, select the database with the StormEvents sample data.
+
+    ![Select database.](includes/media/data-explorer-configure-data-source/select-database.png)
+
+1. Select **Permissions** then **Add**.
+
+    ![Database permissions.](includes/media/data-explorer-configure-data-source/database-permissions.png)
+
+1. Under **Add database permissions**, select the **Viewer** role then **Select principals**.
+
+    ![Add database permissions.](includes/media/data-explorer-configure-data-source/add-permission.png)
+
+1. Search for the service principal you created. Select the principal, then **Select**.
+
+    :::image type="content" source="includes/media/data-explorer-configure-data-source/new-principals.png" alt-text="Screenshot of the Azure portal New Principals pane. The Select button and two fields with indecipherable service principal properties are highlighted." border="false":::
+
+1. Select **Save**.
+
+    :::image type="content" source="includes/media/data-explorer-configure-data-source/save-permission.png" alt-text="Screenshot of the Add Database Permissions pane in the Azure portal. The Save button is highlighted." border="false":::
+
+##### Management command - Query
+
+1. In the Azure portal, go to your Azure Data Explorer cluster, and select **Query**.
+
+    :::image type="content" source="includes/media/data-explorer-configure-data-source/query.png" alt-text="Screenshot of an Azure Data Explorer cluster in the Azure portal. The Query item is highlighted." border="false":::
+
+1. Run the following command in the query window. Use the application ID and tenant ID from the Azure portal or CLI.
+
+    ```kusto
+    .add database {TestDatabase} viewers ('aadapp={ApplicationID};{TenantID}')
+    ```
+
+    The command returns a result set like the following. In this example, the first row is for an existing user in the database, and the second row is for the service principal that was just added.
+
+    ![Result set.](includes/media/data-explorer-configure-data-source/result-set.png)
+   
+#### Specify properties and test the connection
 
 With the service principal assigned to the *viewers* role, you now specify properties in your instance of Grafana, and test the connection to Azure Data Explorer.
 
@@ -57,7 +211,7 @@ With the service principal assigned to the *viewers* role, you now specify prope
 
     If the test is successful, go to the next section. If you come across any issues, check the values you specified in Grafana, and review previous steps.
 
-### Optimize queries
+#### Optimize queries
 
 There are two features that can be used for query optimization:
 * [Optimize dashboard query rendering performance](#optimize-dashboard-query-rendering-performance-using-query-results-caching)
@@ -67,7 +221,7 @@ To perform the optimization, in **Data Sources** > **Settings** > **Query Optimi
 
 :::image type="content" source="media/grafana/query-optimization.PNG" alt-text="Query optimization pane.":::
 
-#### Optimize dashboard query rendering performance using query results caching 
+##### Optimize dashboard query rendering performance using query results caching 
 
 When a dashboard or visual is rendered more than once by one or more users, Grafana, by default, sends at least one query to Azure Data Explorer. Enable [Query results caching](kusto/query/query-results-cache.md) to improve dashboard rendering performance and reduce load on the Azure Data Explorer cluster. During the specified time range, Azure Data Explorer will use the results cache to retrieve the previous results and won't run an unnecessary query. This capability is especially effective in reducing load on resources and improving performance when multiple users are using the same dashboard.
 
@@ -75,12 +229,14 @@ To enable results cache rendering, do the following in the **Query Optimizations
 1. Disable **Use dynamic caching**. 
 1. In **Cache Max Age**, enter the number of minutes during which you want to use cached results.
 
-#### Enable weak consistency
+##### Enable weak consistency
 
 Clusters are configured with strong consistency. This guarantees that query results are up to date with all changes in the cluster.
 When enabling weak consistency, query results can have a 1-2 minutes lag following cluster alterations. On the other hand, weak consistency may boost visual rendering time. Therefore if immediate consistency isn't critical and performance is marginal, enable weak consistency to improve performance. For more information on query consistency, see [Query consistency](kusto/concepts/queryconsistency.md).
 
 To enable weak consistency, in the **Query Optimizations** pane > **Data consistency**, select **Weak**.
+
+---
 
 ## Visualize data
 
