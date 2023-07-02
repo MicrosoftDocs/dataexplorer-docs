@@ -15,7 +15,7 @@ In the following example, you'll use PowerShell to create a cross-tenant Event H
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 * Create an [event hub with data for ingestion](ingest-data-event-hub.md#create-an-event-hub) with an account in *Tenant1*, acc1@domain1.com.
-* Create [a test cluster and database](create-cluster-database-portal.md), with an account in *Tenant2*, acc2@domain2.com.
+* Create [a test cluster and database](create-cluster-and-database.md), with an account in *Tenant2*, acc2@domain2.com.
 
 ## Assign role to Tenant2 in Event Hubs
 
