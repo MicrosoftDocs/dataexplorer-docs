@@ -24,7 +24,7 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-quickstart.md)
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-quickstart.md).
 * [Node.js](https://nodejs.org/en/download/) installed on your development computer
 
 ## Install the data and ingest libraries

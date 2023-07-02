@@ -20,7 +20,7 @@ Instead you can [configure the data source](#configure-the-data-source) and [vis
 
 * [Grafana version 5.3.0 or later](https://docs.grafana.org/installation/) for your operating system
 * The [Azure Data Explorer plugin](https://grafana.com/grafana/plugins/grafana-azure-data-explorer-datasource/) for Grafana. Plugin version 3.0.5 or later is required to use Grafana query builder.
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-quickstart.md)
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-quickstart.md).
 * To follow along with the examples in this tutorial, [ingest the StormEvents sample data](ingest-sample-data.md).
 
 [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]

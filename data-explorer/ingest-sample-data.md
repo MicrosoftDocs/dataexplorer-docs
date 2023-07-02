@@ -17,7 +17,7 @@ This article shows you how to ingest (load) sample data into an Azure Data Explo
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-quickstart.md)
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-quickstart.md).
 
 ## Ingest data
 

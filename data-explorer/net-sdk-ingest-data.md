@@ -23,7 +23,7 @@ These libraries enable you to ingest (load) data into a cluster and query data f
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* A cluster and database. [Create a cluster and database](create-cluster-database-quickstart.md)
+* A cluster and database. [Create a cluster and database](create-cluster-database-quickstart.md).
 
 ## Install the ingest library
 

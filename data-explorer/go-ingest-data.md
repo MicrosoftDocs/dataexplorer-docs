@@ -24,7 +24,7 @@ In this article, you first create a table and data mapping in a test cluster. Yo
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-quickstart.md)
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-quickstart.md).
 * Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * Install [Go](https://golang.org/) with the following [Go SDK minimum requirements](kusto/api/golang/kusto-golang-client-library.md#minimum-requirements). 
 * Create an [App Registration and grant it permissions to the database](provision-azure-ad-app.md). Save the client ID and client secret for later use.
