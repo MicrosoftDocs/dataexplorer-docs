@@ -14,18 +14,34 @@ adobe-target: true
 
 Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then, you can ingest data into a database and run queries against it.
 
-This article covers how to create a free cluster and database or create a paid cluster and a database. To decide which is right for you, check the [feature comparison](start-for-free.md#feature-comparison).
+This article covers how to create a free cluster and database or create a full cluster and a database. To decide which is right for you, check the [feature comparison](start-for-free.md#feature-comparison).
 
-In this quickstart, the paid cluster is created using the Azure portal. You can also create a paid cluster and database using C#, Python, Go, the Azure CLI, PowerShell, or an Azure Resource Manager (ARM) template. For more information, see [Create a cluster and database](create-cluster-database.md).
+In this quickstart, the full cluster is created using the Azure portal. You can also create a full cluster and database using C#, Python, Go, the Azure CLI, PowerShell, or an Azure Resource Manager (ARM) template. For more information, see [Create a cluster and database](create-cluster-database.md).
 
 For information on cluster subscription limits, see [Azure Data Explorer limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-data-explorer-limits).
 
 ## Prerequisites
 
+The prerequisites vary whether creating a free or full cluster. Select the relevant tab.
+
+### [Free cluster](#tab/free)
+
+A Microsoft account or an Azure Active Directory user identity to create a free cluster. You do not need an Azure subscription or credit card.
+
+### [Full cluster](#tab/full)
+
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Sign in to the [Azure portal](https://portal.azure.com/).
 
 ## Create a cluster
+
+Select the relevant tab to learn how to create a free or full cluster.
+
+### [Free cluster](#tab/free)
+
+[!INCLUDE [create-free-cluster](includes/create-free-cluster.md)]
+
+### [Full cluster](#tab/full)
 
 Create an Azure Data Explorer cluster with a defined set of compute and storage resources in an Azure resource group.
 
@@ -68,7 +84,29 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 
 ## Create a database
 
-You're now ready for the second step in the process: database creation.
+Select the relevant tab to learn how to create a database within your cluster.
+
+### [Free cluster](#tab/free)
+
+To create a database in you free cluster:
+
+1. Open the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
+
+1. From the left menu, select **My cluster**.
+
+1. In the **Create database** panel, select **Create**.
+
+    :::image type="content" source="media/create-cluster-database-quickstart/create-free-cluster.png" alt-text="Screenshot of panel with option to create free cluster." lightbox="media/create-cluster-database-quickstart/create-free-cluster.png":::
+
+1. Enter a name for the database. Select **Next: Create Database**.
+
+    :::image type="content" source="media/create-cluster-database-quickstart/free-cluster-database-name.png" alt-text="Screenshot of area to add name for free cluster database." lightbox="media/create-cluster-database-quickstart/free-cluster-database-name.png":::
+
+### [Full cluster](#tab/full)
+
+To create a database in your full cluster:
+
+1. Go to your cluster in the [Azure portal](https://portal.azure.com/).
 
 1. On the **Overview** tab, select **Create database**.
 
