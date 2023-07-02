@@ -33,6 +33,8 @@ A Microsoft account or an Azure Active Directory user identity to create a free 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * Sign in to the [Azure portal](https://portal.azure.com/).
 
+---
+
 ## Create a cluster
 
 Select the relevant tab to learn how to create a free or full cluster.
@@ -82,6 +84,8 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
 >
 > Deployment fails when the Kusto resource provider isn't registered on the subscription described in [Azure resource providers and types](/azure/azure-resource-manager/management/resource-providers-and-types). When the deployment fails, the Kusto resource provider registers itself on the subscription, and the retry can then succeed.
 
+---
+
 ## Create a database
 
 Select the relevant tab to learn how to create a database within your cluster.
@@ -125,6 +129,8 @@ To create a database in your full cluster:
 
 1. Select **Create** to create the database. Creation typically takes less than a minute. When the process is complete, you're back on the cluster **Overview** tab.
 
+---
+
 ## Run commands in the database
 
 After you created the cluster and database, you can run queries and commands. The database doesn't have data yet, but you can still see how the tools work.
@@ -149,6 +155,8 @@ After you created the cluster and database, you can run queries and commands. Th
 
     This command returns an empty result set because you don't have any tables yet. You add a table in the next article in this series.
 
+---
+
 ## Stop and restart the cluster
 
 ### [Free cluster](#tab/free)
@@ -170,6 +178,8 @@ You can stop and restart a cluster depending on business needs. Stopping the clu
 
     When the cluster is restarted, it takes about 10 minutes for it to become available (like when it was originally provisioned). It takes more time for data to load into the hot cache.
 
+---
+
 ## Clean up resources
 
 ### [Free cluster](#tab/free)
@@ -189,6 +199,8 @@ If you plan to follow other quickstarts and tutorials, keep the resources you cr
 1. In the Azure portal, select **Resource groups** on the far left, and then select the resource group that contains your Data Explorer cluster.
 
 1. Select **Delete resource group** to delete the entire resource group. If using an existing resource group, you can choose to only delete the Data Explorer cluster.
+
+---
 
 ## Next steps
 
