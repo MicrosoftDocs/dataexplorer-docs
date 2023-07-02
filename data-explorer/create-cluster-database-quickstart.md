@@ -193,4 +193,4 @@ If you plan to follow other quickstarts and tutorials, keep the resources you cr
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Quickstart: Ingest data into Azure Data Explorer](ingest-data-overview.md)
+> [Quickstart: Ingest data into Azure Data Explorer](ingest-sample-data.md)
