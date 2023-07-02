@@ -15,7 +15,7 @@ In this article, you'll learn how to configure a system-assigned or user-assigne
 
 ## Prerequisites
 
-* A cluster and database. [Create a cluster and database](../../../create-cluster-database-portal.md).
+* A cluster and database. [Create a cluster and database](../../../create-cluster-and-database.md).
 * [Database Admin](../access-control/role-based-access-control.md) permissions on the database.
 
 ## 1 - Configure a managed identity for continuous export
