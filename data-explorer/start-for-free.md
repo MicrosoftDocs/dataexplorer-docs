@@ -3,7 +3,7 @@ title: Start for free using Azure Data Explorer
 description: This article shows you how to get started with a free Azure Data Explorer cluster.
 ms.reviewer: avnera
 ms.topic: how-to
-ms.date: 01/25/2023
+ms.date: 07/02/2023
 ---
 
 # What is a free Azure Data Explorer cluster?
@@ -32,7 +32,7 @@ The following table describes specifications and quotas for a free cluster.
 
 The free cluster is a subset of the full Azure Data Explorer cluster that provides a reduced set of functionality. The following table lists the features and their availability in both offerings.
 
-| Feature | Full Azure Data Explorer cluster | Free cluster |
+| Feature | Full cluster | Free cluster |
 |--|--|--|
 | Kusto Query Language | &check; | &check; |
 | Database objects (tables, columns, functions) | &check; | &check; |

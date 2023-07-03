@@ -201,12 +201,12 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 
 ## View tab
 
-:::image type="content" source="images/kusto-explorer/home-tab.png" alt-text="Screenshot of the View tab that shows the View tab's four sections.":::
+:::image type="content" source="images/kusto-explorer/view-tab.png" alt-text="Screenshot of the View tab that shows the View tab's four sections.":::
 
 |Menu|Behavior|
 |----|----------|
 ||---------*Appearance*---------|
-|Full View Mode | Maximizes the work space by hiding the ribbon menu and Connection Panel.|
+|Full View Mode | Maximizes the work space by hiding the ribbon menu and Connection Panel. Exit Full View Mode by selecting **Home** > **Full View Mode**, or by pressing **F11**.|
 |Increase Font  | Increases the font size of the query tab and of the results data grid.|  
 |Decrease Font  | Decreases the font size of the query tab and of the results data grid.|
 |Reset Layout|Resets the layout of the tool's docking controls and windows.|
@@ -216,8 +216,8 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 |Explore Column Values|Shows column values distribution.|
 |Focus on Query Statistics|Changes the focus to query statistics instead of query results upon query completion.|
 |Hide Duplicates|Toggles removal of the duplicate rows from the query results.|
-|Hide Empty Columns|Toggles removal of empty columns from the query results.|
-|Collapse Singular Columns|Toggles collapsing columns with singular value.|
+|Hide Empty Columns|Removes empty columns from the query results.|
+|Collapse Singular Columns|Collapses columns with singular values.|
 |Row Selection| Enables selection of specific rows in the Results panel|
 |Color By Column| Groups identical records in the first column by color.|
 |Wrap Text| Formats cells to wrap the data to fit the column width.|
@@ -276,8 +276,6 @@ To modify the output color scheme, or turn this behavior off, from the **Tools**
 |Cluster Diagnostics | Shows a health summary for the Server Group currently selected in Connections Panel. |
 |Latest data: All tables| Shows a summary of the latest data in all tables of the currently selected database.|
 |Latest data: Selected table|Shows in the status bar the latest data in the selected table.|
-|Cluster Health (Geneva)| Opens a link to view the state of your cluster.|
-|Purge Metrics (Geneva)| Opens a link to view data purge metrics. |
 
 ## Management tab
 
@@ -301,7 +299,6 @@ To modify the output color scheme, or turn this behavior off, from the **Tools**
 |What's new       | Opens a document that lists all Kusto.Explorer changes.|
 |Report Issue      |Opens a dialog with two options: <ul><li>Report issues related to service</li><li>Report issues in the client application</li></ul>. |
 |Keyboard Shortcuts| Opens a link to the [list of Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md).|
-|Suggest Feature  | Opens a link to the Kusto feedback forum. |
 |Show EULA| Opens a link to the Microsoft Azure Legal Information article.|
 
 ### Control the user identity connecting to Kusto.Explorer
