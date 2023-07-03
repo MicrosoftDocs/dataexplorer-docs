@@ -3,7 +3,7 @@ title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 06/26/2023
+ms.date: 07/03/2023
 ---
 
 # Using Kusto.Explorer
@@ -112,7 +112,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 
 1. Paste the contents of the clipboard into a new email message.
 
-    :::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="Share results in email.":::
+    :::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="Share results in email." lightbox="images/kusto-explorer-using/share-results-2.png":::
 
 ### Deep-linking queries
 
