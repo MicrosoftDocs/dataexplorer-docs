@@ -11,13 +11,13 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-A cross-cluster join involves joining data from two datasets that reside in different clusters. Performing a join on data from a different cluster than the local cluster is not considered a cross-cluster join.
+A cross-cluster join involves joining data from two datasets that reside in different clusters. Performing a join on data from a different cluster than the local cluster isn't considered a cross-cluster join.
 
 ## Syntax
 
 [ `cluster(`*ClusterName*`).database(`*DatabaseName*`).`]*LeftTable* `|` ...  
 `|` `join` [ `hint.remote=`*Strategy* ] `(`  
-&emsp;[ `cluster(`*ClusterName*`).database(`*DatabaseName*`).`]*RightTable* `|` ...  
+&emsp;&emsp;[ `cluster(`*ClusterName*`).database(`*DatabaseName*`).`]*RightTable* `|` ...  
 &emsp;`)` on *Conditions*
 
 ## Parameters
@@ -60,7 +60,7 @@ T | ... | join (cluster("B").database("DB").T2 | ...) on Col1
 cluster("B").database("DB").T | ... | join (cluster("C").database("DB2").T2 | ...) on Col1
 ```
 
-With the `auto` strategy, "Example 1" would be executed on the local cluster. For "Example 2", assuming neither cluster is the local cluster, the join would be executed on cluster `C` since it is the cluster of the right table. The cluster performing the join fetches the data from the other cluster.
+With the `auto` strategy, "Example 1" would be executed on the local cluster. For "Example 2", assuming neither cluster is the local cluster, the join would be executed on cluster `C` since it's the cluster of the right table. The cluster performing the join fetches the data from the other cluster.
 
 ## Performance considerations
 
@@ -76,9 +76,9 @@ T | ... | join (cluster("B").database("DB").T2 | ...) on Col1
 cluster("B").database("DB").T | ... | join (cluster("C").database("DB2").T2 | ...) on Col1
 ```
 
-"Example 1" is set to run on the local cluster, but if the dataset produced by `T | ...` is much smaller than one produced by `cluster("B").database("DB").T2 | ...` then it would be more efficient to execute the join operation on cluster `B` instead of on the local cluster.
+"Example 1" is set to run on the local cluster, but if the dataset produced by `T | ...` is smaller than one produced by `cluster("B").database("DB").T2 | ...` then it would be more efficient to execute the join operation on cluster `B` instead of on the local cluster.
 
-By specifying the strategy as `right`, the following query instructs Kusto to perform the join operation on the cluster that contains the right table.
+The following query does this by using the `right` strategy. With the `right` strategy, the join operation is performed on the cluster that contains the right table, even if the cluster that contains the left table is local cluster.
 
 ```kusto
 T | ... | join hint.remote=right (cluster("B").database("DB").T2 | ...) on Col1
