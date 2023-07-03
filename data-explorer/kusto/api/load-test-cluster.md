@@ -20,7 +20,7 @@ In this article, we'll show you how to evaluate query performance in your cluste
 
 ## Retrieve a bearer (authentication) token
 
-1. [Create a service principal](../../grafana.md#create-a-service-principal) and make a note of the following information that you'll need later:
+1. [Create a service principal](../../provision-azure-ad-app.md#create-azure-ad-application-registration) and make a note of the following information that you'll need later:
     - AppID or ClientID
     - TenantID
     - Secret
