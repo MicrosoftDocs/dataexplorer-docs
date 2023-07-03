@@ -24,7 +24,7 @@ First, create a table and data mapping in a cluster. You then queue ingestion to
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Python 3.4+](https://www.python.org/downloads/).
 
 ## Install the data and ingest libraries

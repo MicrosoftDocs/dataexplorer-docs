@@ -15,7 +15,7 @@ In this article, you'll learn how to configure a system-assigned or user-assigne
 
 ## Prerequisites
 
-* A cluster and database. [Create a cluster and database](../../../create-cluster-database-portal.md).
+* A cluster and database. [Create a cluster and database](../../../create-cluster-and-database.md).
 * [Database Admin](../access-control/role-based-access-control.md) permissions on the database.
 
 ## 1 - Configure a managed identity for continuous export
@@ -98,7 +98,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 1. Create a connection string based on the [storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates). This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation).
 
-1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
+1. Run the [.create or .alter external table](../external-sql-tables.md) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
 
     For example, the following command creates `MyExternalTable` that refers to CSV-formatted data in `mycontainer` of `mystorageaccount` in Azure Blob Storage. The table has two columns, one for an integer `x` and one for a string `s`. The connection string ends with `;impersonate`, which indicates to use impersonation authentication to access the data store.
 
@@ -119,9 +119,9 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 ### [SQL Server](#tab/sql-server)
 
-1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [Azure AD-integrated authentication](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-authentication), which is impersonation authentication.
+1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [Azure AD-integrated authentication](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-impersonation), which is impersonation authentication.
 
-1. Run the [.create or .alter external table](../external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
+1. Run the [.create or .alter external table](../external-sql-tables.md) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
 
     For example, the following command creates `MySqlExternalTable` that refers to `MySqlTable` table in `MyDatabase` of SQL Server. The table has two columns, one for an integer `x` and one for a string `s`. The connection string contains `;Authentication=Active Directory Integrated`, which indicates to use impersonation authentication to access the table.
 
