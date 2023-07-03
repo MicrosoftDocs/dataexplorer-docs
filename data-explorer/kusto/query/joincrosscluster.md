@@ -16,11 +16,9 @@ A cross-cluster join involves joining data from two datasets that reside in diff
 ## Syntax
 
 [ `cluster(`*ClusterName*`).database(`*DatabaseName*`).`]*LeftTable* `|` ...  
-`|` `join` [ `hint.remote=`*Strategy* ]  
-    `(`  
-        [ `cluster(`*ClusterName*`).database(`*DatabaseName*`).`]*RightTable* `|` ...  
-    `)`  
-    on *Conditions*
+`|` `join` [ `hint.remote=`*Strategy* ] `(`  
+    [ `cluster(`*ClusterName*`).database(`*DatabaseName*`).`]*RightTable* `|` ...  
+    `)` on *Conditions*
 
 ## Parameters
 
