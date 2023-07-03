@@ -3,7 +3,7 @@ title:  Cross-cluster join
 description: Learn how to perform the Cross-cluster join operation to join datasets residing on different clusters.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/26/2023
+ms.date: 07/03/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -15,16 +15,18 @@ A cross-cluster join involves joining data from two datasets that reside in diff
 
 ## Syntax
 
-*LeftTable* `|` ... `|` `join` [ `hint.remote=`*Strategy* ] `(cluster(`*ClusterName*`).database(`*DatabaseName*`).`*RightTable* `|` ...`)` on *Conditions*
+[ `(cluster(`*ClusterName*`).database(`*DatabaseName*`).` ] *LeftTable* `|` ...  
+`|` `join` [ `hint.remote=`*Strategy* ]
+    [ `(cluster(`*ClusterName*`).database(`*DatabaseName*`).` ] *RightTable* `|` ...`)` on *Conditions*
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*LeftTable*|string|&check;|The left table or tabular expression whose rows are to be merged. Denoted as `$left`. If the table isn't in the local cluster, use the [cluster()](clusterfunction.md) and [database()](databasefunction.md) functions to specify the table location.|
+|*LeftTable*|string|&check;|The left table or tabular expression whose rows are to be merged. Denoted as `$left`.|
 |*Strategy*|string||Determines the cluster on which to execute the join. Supported values are: `left`, `right`, `local`, and `auto`. For more information, see [Strategies](#strategies).|
-|*ClusterName*|string|&check;|The cluster that contains the right table or tabular expression for the join.|
-|*DatabaseName*|string|&check;|The database that contains the right table or tabular expression for the join.|
+|*ClusterName*|string||The cluster that contains the table or tabular expression for the join.|
+|*DatabaseName*|string||The database that contains the table or tabular expression for the join.|
 |*RightTable*|string|&check;|The right table or tabular expression whose rows are to be merged. Denoted as `$right`.|
 |*Conditions*|string|&check;|Determines how rows from *LeftTable* are matched with rows from *RightTable*. If the columns you want to match have the same name in both tables, use the syntax `ON` *ColumnName*. Otherwise, use the syntax `ON $left.`*LeftColumn* `==` `$right.`*RightColumn*. To specify multiple conditions, you can either use the "and" keyword or separate them with commas. If you use commas, the conditions are evaluated using the "and" logical operator.|
 
