@@ -15,9 +15,12 @@ A cross-cluster join involves joining data from two datasets that reside in diff
 
 ## Syntax
 
-[ `(cluster(`*ClusterName*`).database(`*DatabaseName*`).` ] *LeftTable* `|` ...  
-`|` `join` [ `hint.remote=`*Strategy* ]
-    [ `(cluster(`*ClusterName*`).database(`*DatabaseName*`).` ] *RightTable* `|` ...`)` on *Conditions*
+[ `cluster(`*ClusterName*`).database(`*DatabaseName*`).`]*LeftTable* `|` ...  
+`|` `join` [ `hint.remote=`*Strategy* ]  
+    `(`  
+        [ `cluster(`*ClusterName*`).database(`*DatabaseName*`).`]*RightTable* `|` ...  
+    `)`  
+    on *Conditions*
 
 ## Parameters
 
@@ -25,8 +28,8 @@ A cross-cluster join involves joining data from two datasets that reside in diff
 |--|--|--|--|
 |*LeftTable*|string|&check;|The left table or tabular expression whose rows are to be merged. Denoted as `$left`.|
 |*Strategy*|string||Determines the cluster on which to execute the join. Supported values are: `left`, `right`, `local`, and `auto`. For more information, see [Strategies](#strategies).|
-|*ClusterName*|string||The cluster that contains the table or tabular expression for the join.|
-|*DatabaseName*|string||The database that contains the table or tabular expression for the join.|
+|*ClusterName*|string||If the data for the join resides outside of the current cluster context, use the [cluster()](clusterfunction.md) function to specify the cluster.|
+|*DatabaseName*|string||If the data for the join resides outside of the current database context, use the [database()](databasefunction.md) function to specify the database.|
 |*RightTable*|string|&check;|The right table or tabular expression whose rows are to be merged. Denoted as `$right`.|
 |*Conditions*|string|&check;|Determines how rows from *LeftTable* are matched with rows from *RightTable*. If the columns you want to match have the same name in both tables, use the syntax `ON` *ColumnName*. Otherwise, use the syntax `ON $left.`*LeftColumn* `==` `$right.`*RightColumn*. To specify multiple conditions, you can either use the "and" keyword or separate them with commas. If you use commas, the conditions are evaluated using the "and" logical operator.|
 
