@@ -8,7 +8,7 @@ ms.date: 09/11/2022
 
 # Evaluate query performance in your cluster
 
-Load testing is important to evaluate and ensure that your query performance meets you requirements.
+Load testing is important to evaluate and ensure that your query performance meets your requirements.
 
 In this article, we'll show you how to evaluate query performance in your cluster by sending concurrent or sequential queries using the Azure Data Explorer REST API.
 
@@ -90,7 +90,7 @@ Before you start load testing, consider the following:
     - Running load tests for longer periods can generate unnecessary load on the cluster that can potentially trigger a scale-out event and additional costs.
 
     Hence, configure your load tests appropriately. Typically, running a load test for 5 mins with 20 virtual users can generate 7 queries per second, which is equivalent to sending nearly 200,000 queries to your cluster in an 8-hour business day.
-- Load tests are synthetic in nature. This means that all users from the same location send the same requests for a defined duration. Your real-life scenarios typically have users from many locations, sending different queries to your cluster. Bear this in ming when reviewing the results of the tests.
+- Load tests are synthetic in nature. This means that all users from the same location send the same requests for a defined duration. Your real-life scenarios typically have users from many locations, sending different queries to your cluster. Bear this in mind when reviewing the results of the tests.
 
 ### [Grafana k6](#tab/grafana-k6)
 
