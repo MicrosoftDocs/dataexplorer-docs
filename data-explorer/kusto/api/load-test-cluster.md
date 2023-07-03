@@ -25,7 +25,7 @@ In this article, we'll show you how to evaluate query performance in your cluste
     - TenantID
     - Secret
 
-1. [Grant the service principal *Viewer* role](../../grafana.md#add-the-service-principal-to-the-viewers-role) in your database.
+1. [Grant the service principal *Viewer* role](../../provision-azure-ad-app.md#grant-the-service-principal-access-to-an-azure-data-explorer-database) in your database.
 
 1. Create a *POST* request to `https://login.microsoftonline.com/<My_Tenant_id>/oauth2/v2.0/token?` using the TenantID you noted earlier. Send the POST request using your preferred tool with the following parameters:
 
