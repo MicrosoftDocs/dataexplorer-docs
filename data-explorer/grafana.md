@@ -42,7 +42,7 @@ Managed Grafana creates a system-assigned managed identity for each new workspac
 
 1. In the search results, select the result that matches your workspace name, then **Select**.
 
-    :::image type="content" source="includes/media/data-explorer-configure-data-source/add-managed-identity.png" alt-text="Screenshot of the new principals pane, showing the selection the workspace name.":::
+    :::image type="content" source="includes/media/data-explorer-configure-data-source/add-managed-identity.png" alt-text="Screenshot of the new principals pane, showing the workspace name selected.":::
 
 #### Set up Azure Data Explorer as a Grafana data source
 
@@ -58,7 +58,7 @@ Managed Grafana workspaces come with The Azure Data Explorer plugin preinstalled
 
 1. Select **Azure Data Explorer Datasource**.
 
-    :::image type="content" source="media/grafana/managed-grafana-data-sources.png" alt-text="Screenshot of the data sources page with the Azure Data Explorer source highlighted.":::
+    :::image type="content" source="media/grafana/managed-grafana-data-sources.png" alt-text="Screenshot of the data sources page with the Azure Data Explorer source highlighted." lightbox="media/grafana/managed-grafana-data-sources.png":::
 
 1. In **Connection Details**, enter your Azure Data Explorer cluster URI.
 
