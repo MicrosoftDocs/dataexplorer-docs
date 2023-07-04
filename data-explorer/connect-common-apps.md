@@ -1,13 +1,13 @@
 ---
-title: Connect from common SQL clients - Azure Data Explorer
-description: This article describes how to connect to Azure Data Explorer with SQL Server emulation from various clients in Azure Data Explorer.
+title: Connect from common apps - Azure Data Explorer
+description: This article describes how to connect to Azure Data Explorer with SQL Server emulation from various apps in Azure Data Explorer.
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 07/04/2023
 ---
 
 # Connect from common apps
 
-This article gives examples on how to connect to Azure Data Explorer from [LINQPad](#linqpad), [Azure Data Studio](#azure-data-studio-134-and-above), [DBeaver](#dbeaver-533-and-above), and [Microsoft SQL Server Management Studio](#microsoft-sql-server-management-studio-v18x).
+This article gives examples on how to connect to Azure Data Explorer from [LINQPad](#linqpad), [Azure Data Studio](#azure-data-studio-134-and-above), [DBeaver](#dbeaver-533-and-above), [Microsoft SQL Server Management Studio](#microsoft-sql-server-management-studio-v18x), and [MATLAB](#matlab).
 
 For more information, see the overview on [SQL Server emulation in Azure Data Explorer](sql-server-emulation-overview.md).
 
