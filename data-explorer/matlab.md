@@ -16,6 +16,126 @@ To obtain an authentication token for a user, an interactive authentication flow
 
 The Azure Identity library provides solutions for user authentication. In this section, learn how to authenticate users using MSAL.NET for .NET-based applications and MSAL4J or Matlab-Azure for Java-based applications. If you're running MATLAB on a Windows OS, we recommend using MSAL.NET. However, if you're running MATLAB on Linux, you must use MSAL4J or Matlab-Azure.
 
+Choose the tab relevant for your operating system.
+
+### [Windows OS](#tab/windows)
+
+To use MSAL.NET to perform user authentication in MATLAB:
+
+1. Download the [Microsoft Identity Client](https://www.nuget.org/packages/Microsoft.Identity.Client) and the [Microsoft Identity Abstractions](https://www.nuget.org/packages/Microsoft.IdentityModel.Abstractions) packages from Nuget.
+
+1. Extract the downloaded packages and DLL files from *lib\net45* to a folder of choice. In this guide, we will use the folder *C:\Matlab\DLL*.
+
+1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](kusto/api/rest/authenticate-with-msal.md#authentication-parameters).
+
+    ```dotnet
+    % The Azure Data Explorer cluster URL
+    clusterUrl = 'https://<adx-cluster>.kusto.windows.net';
+    % The Azure AD tenant ID
+    tenantId = '';
+    % Use https://<adx-cluster>.kusto.windows.net/v1/rest/auth/metadata to get the value of KustoClientAppId
+    appId = '';
+    scopesToUse = strcat(clusterUrl,'/.default ');
+    ```
+
+1. In MATLAB studio, load the extracted DLL files:
+
+   ```dotnet
+   % Access the folder that contains the DLL files
+    dllFolder = fullfile("C:","Matlab","DLL");
+    
+    % Load the referenced assemblies in the MATLAB session
+    matlabDllFiles = dir(fullfile(dllFolder,'*.dll'));
+    for k = 1:length(matlabDllFiles)
+        baseFileName = matlabDllFiles(k).name;
+        fullFileName = fullfile(dllFolder,baseFileName);
+        fprintf(1, 'Reading  %s\n', fullFileName);
+
+    %  Load the downloaded assembly in MATLAB
+        NET.addAssembly(fullFileName);
+   ```
+
+1. Use the [PublicClientApplicationBuilder](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder?view=msal-dotnet-latest) to prompt a user interactive login:
+
+    ```dotnet
+    app = Microsoft.Identity.Client.PublicClientApplicationBuilder.Create(appId)
+        .WithAuthority(Microsoft.Identity.Client.AzureCloudInstance.AzurePublic,tenantId)
+        .WithRedirectUri('http://localhost:8675')
+        .Build();
+
+    % System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+    NET.setStaticProperty ('System.Net.ServicePointManager.SecurityProtocol',System.Net.SecurityProtocolType.Tls12)
+    % Start with creating a list of Scopes
+    scopes = NET.createGeneric('System.Collections.Generic.List',{'System.String'});
+    % Add actual Scopes to them, for example
+    scopes.Add(scopesToUse);
+    fprintf(1, 'Using appScope  %s\n', scopesToUse);
+    
+    % Then get the token from the service
+    % Show the interactive dialog in which the user can login
+    tokenAcquirer = app.AcquireTokenInteractive(scopes);
+    result = tokenAcquirer.ExecuteAsync;
+    
+    % Extract the token and when it expires
+    % Retrieve the returned token
+    token = char(result.Result.AccessToken);
+    fprintf(2, 'User token aquired and will expire at %s & extended expires at %s', result.Result.ExpiresOn.LocalDateTime.ToString,result.Result.ExtendedExpiresOn.ToLocalTime.ToString);
+    ```
+
+1. Use the authorization token to query your cluster:
+
+    ```dotnet
+    % The DB and KQL variables represent the database and query to execute
+    options=weboptions('HeaderFields',{'RequestMethod','POST';'Accept' 'application/json';'Authorization' ['Bearer ', token]; 'Content-Type' 'application/json; charset=utf-8'; 'Connection' 'Keep-Alive'; 'x-ms-app' 'Matlab'; 'x-ms-client-request-id' 'Matlab-Query-Request'});
+    querydata = struct('db', "<DB>", 'csl', "<KQL>");
+    querryresults  = webwrite('https://sdktestcluster.westeurope.dev.kusto.windows.net/v2/rest/query', querydata, options);
+    % The results row can be extracted as follows
+    results=querryresults{3}.Rows
+    ```
+
+### [Linux](#tab/linux)
+
+---
+
 ## How to authenticate an application
+
+In scenarios where interactive login is not desired and automated runs are necessary, Azure AD application authorization tokens can be used. 
+
+To get an Azure AD application token and leverage it to query your cluster:
+
+1. [Provision an Azure AD application](provision-azure-ad-app.md). For the **Redirect URI**, select **Web** and input http://localhost:8675 as the URI.
+
+1. Download the [Microsoft Identity Client](https://www.nuget.org/packages/Microsoft.Identity.Client) and the [Microsoft Identity Abstractions](https://www.nuget.org/packages/Microsoft.IdentityModel.Abstractions) packages from Nuget.
+
+1. Extract the downloaded packages and DLL files from *lib\net45* to a folder of choice. In this guide, we will use the folder *C:\Matlab\DLL*.
+
+1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](kusto/api/rest/authenticate-with-msal.md#authentication-parameters).
+
+    ```dotnet
+    % The Azure Data Explorer cluster URL
+    clusterUrl = 'https://<adx-cluster>.kusto.windows.net';
+    % The Azure AD tenant ID
+    tenantId = '';
+    % The application ID and key for authentication created in step 1
+    appId = '';
+    appSecret = '';
+    ```
+
+1. In MATLAB studio, load the extracted DLL files:
+
+   ```dotnet
+   % Access the folder that contains the DLL files
+    dllFolder = fullfile("C:","Matlab","DLL");
+    
+    % Load the referenced assemblies in the MATLAB session
+    matlabDllFiles = dir(fullfile(dllFolder,'*.dll'));
+    for k = 1:length(matlabDllFiles)
+        baseFileName = matlabDllFiles(k).name;
+        fullFileName = fullfile(dllFolder,baseFileName);
+        fprintf(1, 'Reading  %s\n', fullFileName);
+
+    %  Load the downloaded assembly in MATLAB
+        NET.addAssembly(fullFileName);
+   ```
 
 ## Next steps
