@@ -265,7 +265,7 @@ items:
           displayName: SQL Server emulation
         - name: Connect from common apps
           href: connect-common-apps.md
-          displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation, MATLAB, matlab
+          displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
         - name: Run KQL queries and stored functions
           href: sql-kql-queries-and-stored-functions.md
     - name: Evaluate query performance in your cluster
