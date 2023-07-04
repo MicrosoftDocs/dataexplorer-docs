@@ -293,7 +293,7 @@ Data Mastery help businesses harness the power of their data and make data-drive
 
 :::image type="icon" source="media/findmypartner/datacore-logo.png":::
 
-Datacore provides professional services on Data, BI & AL solution on Azure services. Datacore develop best practices to implement Azure data Explorer solution to variety needs for a fast and scalable data analysis platform easily and quickly and suitable for handling large amounts of diverse data in real time such as logs, tasks, distributing insights, for time series data and more.
+Datacore provides professional services on Data, BI & AL solution on Azure services. Datacore develop best practices to implement Azure Data Explorer solution to variety needs for a fast and scalable data analysis platform easily and quickly and suitable for handling large amounts of diverse data in real time such as logs, tasks, distributing insights, for time series data and more.
 We are enabling our customers to make with ADX data-driven decisions and find hidden patterns and trends. which without this tool would be very difficult.
 
 **Partner type**
