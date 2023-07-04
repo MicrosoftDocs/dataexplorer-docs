@@ -52,7 +52,7 @@ There are some overlaps between the Kusto emulator and the [free cluster](start-
 When choosing the best option for your use case, you should consider the following:
 
 - **Local development**: The best fit for local development depends on the features you require. For instance, if your scenario requires the use of managed pipelines, the free cluster offering works best. On the other hand, if your scenario requires local development in a disconnected environment, the Kusto emulator would be a better fit.
-- **Automated testing**: In general, the Kusto emulator is more suited to automated testing than the free cluster offering.  It's faster to provision, can run tests faster with *volatile* databases, and doesn't require any Azure principal to set up.
+- **Automated testing**: In general, the Kusto emulator is more suited to automated testing than the free cluster offering.  It's faster to provision and doesn't require any Azure principal to set up.
 
 [!INCLUDE [kusto-emulator-limitations](includes/kusto-emulator-limitations.md)]
 

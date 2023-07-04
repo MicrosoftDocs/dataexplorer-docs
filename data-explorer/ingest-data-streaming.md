@@ -64,7 +64,7 @@ You can enable streaming ingestion while creating a new cluster using the Azure 
 
 #### [Portal](#tab/azure-portal)
 
-While creating a cluster using the steps in [Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md), in the **Configurations** tab, select **Streaming ingestion** > **On**.
+While creating a cluster using the steps in [Create an Azure Data Explorer cluster and database](create-cluster-and-database.md), in the **Configurations** tab, select **Streaming ingestion** > **On**.
 
 :::image type="content" source="media/ingest-data-streaming/cluster-creation-enable-streaming.png" alt-text="Enable streaming ingestion while creating a cluster in Azure Data Explorer.":::
 

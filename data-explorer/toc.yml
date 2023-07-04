@@ -33,7 +33,7 @@ items:
   expanded: true
   items:
   - name: Create a cluster and database
-    href: create-cluster-database-portal.md
+    href: create-cluster-and-database.md
   - name: Get sample data
     href: ingest-sample-data.md
     displayName: Azure Data Explorer web UI
@@ -223,6 +223,9 @@ items:
         - name: Add a cluster connection
           href: add-cluster-connection.md
           displayName: connect to cluster
+        - name: Add a query visualization
+          displayName: render, visualize, chart, graph, web UI
+          href: add-query-visualization.md
         - name: Explore the sample gallery
           href: web-ui-samples-query.md
         - name: Explore the results grid
@@ -358,13 +361,7 @@ items:
           - name: Role-based access control
             href: kusto/access-control/role-based-access-control.md
             displayName: RBAC, security roles, principals
-          - name: Azure Active Directory
-            displayName: AAD, Azure AD
-            href: kusto/access-control/aad.md
-          - name: How-To Azure Active Directory authentication
-            displayName: AAD, Azure AD
-            href: kusto/access-control/how-to-authenticate-with-aad.md
-          - name: Allow cross-tenant queries and commands
+          - name: Cross-tenant queries and commands
             href: kusto/access-control/cross-tenant-query-and-commands.md
         - name: Isolated compute
           href: isolated-compute.md
@@ -521,7 +518,7 @@ items:
         href: kusto/api/connection-strings/storage-connection-strings.md
       - name: Storage authentication methods
         href: kusto/api/connection-strings/storage-authentication-methods.md
-      - name: SQL Server authentication methods
+      - name: SQL external table authentication methods
         href: kusto/api/connection-strings/sql-authentication-methods.md
       - name: Generate SAS token
         href: kusto/api/connection-strings/generate-sas-token.md
