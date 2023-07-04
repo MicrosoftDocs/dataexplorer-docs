@@ -289,6 +289,31 @@ Data Mastery help businesses harness the power of their data and make data-drive
 - [https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-fortinet-logs](https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-fortinet-logs)
 - [https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-palo-alto-web-traffic-logs](https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-palo-alto-web-traffic-logs)
 
+## Datacore IL Ltd
+
+:::image type="icon" source="media/findmypartner/datacore-logo.png":::
+
+Datacore provides professional services on Data, BI & AL solution on Azure services. Datacore develop best practices to implement Azure Data Explorer solution to variety needs for a fast and scalable data analysis platform easily and quickly and suitable for handling large amounts of diverse data in real time such as logs, tasks, distributing insights, for time series data and more.
+We are enabling our customers to make with ADX data-driven decisions and find hidden patterns and trends. which without this tool would be very difficult.
+
+**Partner type**
+
+- System Integrator
+- Independent Software Vendor
+- Consulting
+
+**Focus geography**
+
+- Global
+
+**Contact**
+
+- [info@dataCore.co.il](mailto:info@dataCore.co.il)
+
+**Additional information**
+
+- [Datacore IL Ltd website](https://datacore.co.il)
+
 ## Device Insight GmbH
 
 :::image type="icon" source="media/findmypartner/device-insight-logo.jpg":::
