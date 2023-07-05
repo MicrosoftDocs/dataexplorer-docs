@@ -55,7 +55,7 @@ To use MSAL.NET to perform user authentication in MATLAB:
         NET.addAssembly(fullFileName);
    ```
 
-1. Use the [PublicClientApplicationBuilder](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder?view=msal-dotnet-latest) to prompt a user interactive login:
+1. Use the [PublicClientApplicationBuilder](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder) to prompt a user interactive login:
 
     ```dotnet
     app = Microsoft.Identity.Client.PublicClientApplicationBuilder.Create(appId)
