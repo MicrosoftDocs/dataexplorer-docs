@@ -10,7 +10,7 @@ ms.date: 07/05/2023
 
 MATLAB is a programming and numeric computing platform used to analyze data, develop algorithms, and create models. This article explains how to get an authorization token in MATLAB for Azure Data Explorer, and how to use the token to interact with your cluster.
 
-## How to authenticate a user
+## Perform user authentication
 
 To authenticate a user, an interactive authentication flow prompts the user to sign-in through a browser window. Upon successful sign-in, a user authorization token is granted.
 
@@ -100,7 +100,7 @@ To use MSAL.NET to perform user authentication in MATLAB:
 
 ---
 
-## How to authenticate an application
+## Perform application authentication
 
 Azure AD application authorization can be used for scenarios where interactive sign-in isn't desired and automated runs are necessary.
 
