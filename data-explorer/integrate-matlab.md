@@ -59,9 +59,9 @@ To use MSAL.NET to perform user authentication in MATLAB:
 
     ```matlab
     % Create an PublicClientApplicationBuilder
-    app = Microsoft.Identity.Client.PublicClientApplicationBuilder.Create(appId)
-        .WithAuthority(Microsoft.Identity.Client.AzureCloudInstance.AzurePublic,tenantId)
-        .WithRedirectUri('http://localhost:8675')
+    app = Microsoft.Identity.Client.PublicClientApplicationBuilder.Create(appId)...
+        .WithAuthority(Microsoft.Identity.Client.AzureCloudInstance.AzurePublic,tenantId)...
+        .WithRedirectUri('http://localhost:8675')...
         .Build();
 
     % System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
@@ -87,9 +87,11 @@ To use MSAL.NET to perform user authentication in MATLAB:
 
     ```matlab
     options=weboptions('HeaderFields',{'RequestMethod','POST';'Accept' 'application/json';'Authorization' ['Bearer ', token]; 'Content-Type' 'application/json; charset=utf-8'; 'Connection' 'Keep-Alive'; 'x-ms-app' 'Matlab'; 'x-ms-client-request-id' 'Matlab-Query-Request'});
+
     % The DB and KQL variables represent the database and query to execute
     querydata = struct('db', "<DB>", 'csl', "<KQL>");
     querryresults  = webwrite("https://sdktestcluster.westeurope.dev.kusto.windows.net/v2/rest/query", querydata, options);
+
     % Extract the results row
     results=querryresults{3}.Rows
     ```
@@ -101,6 +103,8 @@ To use MSAL.NET to perform user authentication in MATLAB:
 ## Perform application authentication
 
 Azure AD application authorization can be used for scenarios where interactive sign-in isn't desired and automated runs are necessary.
+
+### [Windows OS](#tab/windows)
 
 To get an Azure AD application token and use it to query your cluster:
 
@@ -138,5 +142,47 @@ To get an Azure AD application token and use it to query your cluster:
         % Load the downloaded assembly
         NET.addAssembly(fullFileName);
    ```
+
+1. Use the [ConfidentialClientApplicationBuilder](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) to perform a non-interactive automated login with the Azure AD application:
+
+    ```matlab
+    %  Create an ConfidentialClientApplicationBuilder
+    app = Microsoft.Identity.Client.ConfidentialClientApplicationBuilder.Create(appId)...
+        .WithAuthority(Microsoft.Identity.Client.AzureCloudInstance.AzurePublic,tenantId)...
+        .WithRedirectUri('http://localhost:8675')...
+        .WithClientSecret(appSecret)...
+        .Build();
+
+    % System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+    NET.setStaticProperty ('System.Net.ServicePointManager.SecurityProtocol',System.Net.SecurityProtocolType.Tls12)
+    % Start with creating a list of scopes
+    scopes = NET.createGeneric('System.Collections.Generic.List',{'System.String'});
+    % Add the actual scopes
+    scopes.Add(scopesToUse);
+    fprintf(1, 'Using appScope  %s\n', scopesToUse);
+    
+    % Get the token from the service
+    % and show the interactive dialog in which the user can login
+    tokenAcquirer = app.AcquireTokenInteractive(scopes);
+    result = tokenAcquirer.ExecuteAsync;
+    
+    % Extract the token and when it expires
+    % Retrieve the returned token
+    token = char(result.Result.AccessToken);
+    fprintf(2, 'User token aquired and will expire at %s & extended expires at %s', result.Result.ExpiresOn.LocalDateTime.ToString,result.Result.ExtendedExpiresOn.ToLocalTime.ToString);
+    ```
+
+1. Use the authorization token to query your cluster through the [REST API](kusto/api/rest/index.md):
+
+    ```matlab
+    options=weboptions('HeaderFields',{'RequestMethod','POST';'Accept' 'application/json';'Authorization' ['Bearer ', token]; 'Content-Type' 'application/json; charset=utf-8'; 'Connection' 'Keep-Alive'; 'x-ms-app' 'Matlab'; 'x-ms-client-request-id' 'Matlab-Query-Request'});
+
+    % The DB and KQL variables represent the database and query to execute
+    querydata = struct('db', "<DB>", 'csl', "<KQL>");
+    querryresults  = webwrite("https://sdktestcluster.westeurope.dev.kusto.windows.net/v2/rest/query", querydata, options);
+
+    % Extract the results row
+    results=querryresults{3}.Rows
+    ```
 
 ## Next steps
