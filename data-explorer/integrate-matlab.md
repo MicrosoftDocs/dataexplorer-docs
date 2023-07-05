@@ -18,7 +18,7 @@ The prerequisites vary based on the operating system used to run MATLAB. To get 
 
 1. Download the [Microsoft Identity Client](https://www.nuget.org/packages/Microsoft.Identity.Client) and the [Microsoft Identity Abstractions](https://www.nuget.org/packages/Microsoft.IdentityModel.Abstractions) packages from NuGet.
 
-1. Extract the downloaded packages and DLL files from *lib\net45* to a folder of choice. In this guide, we'll use the folder *C:\Matlab\DLL*.
+1. Extract the downloaded packages and DLL files from *lib\net45* to a folder of choice. In this article, we'll use the folder *C:\Matlab\DLL*.
 
 ### [Linux](#tab/linux)
 
@@ -49,7 +49,7 @@ The prerequisites vary based on the operating system used to run MATLAB. To get 
     <full-path>\matlab-azure-services\Software\MATLAB\lib\jar\azure-common-sdk-0.2.0.jar
     ```
 
-1. Once the studio is reloaded, run the __startup.m__ script available at __matlab-azure-services\Software\MATLAB\startup.m__. This will ensure all the pre-requisite functions are set up for access to Azure services. The output should look as follows:
+1. Once the studio is reloaded, run the __startup.m__ script available at __matlab-azure-services\Software\MATLAB\startup.m__. This ensures all the prerequisite functions are set up for access to Azure services. The output should look as follows:
 
     ```bash
     >> startup
@@ -226,7 +226,7 @@ To perform application authentication:
         NET.addAssembly(fullFileName);
    ```
 
-1. Use the [ConfidentialClientApplicationBuilder](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) to perform a non-interactive automated login with the Azure AD application:
+1. Use the [ConfidentialClientApplicationBuilder](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) to perform a non-interactive automated sign-in with the Azure AD application:
 
     ```matlab
     %  Create an ConfidentialClientApplicationBuilder
