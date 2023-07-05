@@ -22,7 +22,7 @@ In a cross-cluster join, the query can be executed in three possible locations, 
 The cluster that runs the query fetches the data from the other cluster.
 
 > [!NOTE]
-> If the data on both the left and right sides of a join operation is hosted in the same cluster, it isn't considered a cross-cluster join, even if the data is hosted outside of the local cluster.
+> If the data on the left and right sides of a join operation is hosted in the same cluster, it isn't considered a cross-cluster join, even if the data is hosted outside of the local cluster.
 
 ## Syntax
 
