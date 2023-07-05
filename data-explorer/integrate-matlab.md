@@ -8,7 +8,7 @@ ms.date: 07/05/2023
 
 # Integrate MATLAB with Azure Data Explorer
 
-MATLAB is a programming and numeric computing platform used to analyze data, develop algorithms, and create models. In this article, you'll learn how to obtain an Azure Active Directory (Azure AD) authentication token for Azure Data Explorer in MATLAB, and how to use the token to interact with Azure Data Explorer through the [Azure Data Explorer REST API](kusto/api/rest/index.md).
+MATLAB is a programming and numeric computing platform used to analyze data, develop algorithms, and create models. This article explains how to get an authorization token in MATLAB for Azure Data Explorer, and how to use the token to interact with your cluster.
 
 ## How to authenticate a user
 
@@ -22,9 +22,9 @@ Choose the tab relevant for your operating system.
 
 To use MSAL.NET to perform user authentication in MATLAB:
 
-1. Download the [Microsoft Identity Client](https://www.nuget.org/packages/Microsoft.Identity.Client) and the [Microsoft Identity Abstractions](https://www.nuget.org/packages/Microsoft.IdentityModel.Abstractions) packages from Nuget.
+1. Download the [Microsoft Identity Client](https://www.nuget.org/packages/Microsoft.Identity.Client) and the [Microsoft Identity Abstractions](https://www.nuget.org/packages/Microsoft.IdentityModel.Abstractions) packages from NuGet.
 
-1. Extract the downloaded packages and DLL files from *lib\net45* to a folder of choice. In this guide, we will use the folder *C:\Matlab\DLL*.
+1. Extract the downloaded packages and DLL files from *lib\net45* to a folder of choice. In this guide, we'll use the folder *C:\Matlab\DLL*.
 
 1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](kusto/api/rest/authenticate-with-msal.md#authentication-parameters).
 
@@ -57,7 +57,7 @@ To use MSAL.NET to perform user authentication in MATLAB:
         NET.addAssembly(fullFileName);
     ```
 
-1. Use the [PublicClientApplicationBuilder](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder) to prompt a user interactive login:
+1. Use the [PublicClientApplicationBuilder](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder) to prompt a user interactive sign-in:
 
     ```matlab
     % Create an PublicClientApplicationBuilder
@@ -85,7 +85,7 @@ To use MSAL.NET to perform user authentication in MATLAB:
     fprintf(2, 'User token aquired and will expire at %s & extended expires at %s', result.Result.ExpiresOn.LocalDateTime.ToString,result.Result.ExtendedExpiresOn.ToLocalTime.ToString);
     ```
 
-1. Use the authorization token to query your cluster:
+1. Use the authorization token to query your cluster through the [REST API](kusto/api/rest/index.md):
 
     ```matlab
     options=weboptions('HeaderFields',{'RequestMethod','POST';'Accept' 'application/json';'Authorization' ['Bearer ', token]; 'Content-Type' 'application/json; charset=utf-8'; 'Connection' 'Keep-Alive'; 'x-ms-app' 'Matlab'; 'x-ms-client-request-id' 'Matlab-Query-Request'});
@@ -102,15 +102,15 @@ To use MSAL.NET to perform user authentication in MATLAB:
 
 ## How to authenticate an application
 
-Azure AD application authorization can be used for scenarios where interactive login is not desired and automated runs are necessary.
+Azure AD application authorization can be used for scenarios where interactive sign-in isn't desired and automated runs are necessary.
 
-To get an Azure AD application token and leverage it to query your cluster:
+To get an Azure AD application token and use it to query your cluster:
 
 1. [Provision an Azure AD application](provision-azure-ad-app.md). For the **Redirect URI**, select **Web** and input http://localhost:8675 as the URI.
 
-1. Download the [Microsoft Identity Client](https://www.nuget.org/packages/Microsoft.Identity.Client) and the [Microsoft Identity Abstractions](https://www.nuget.org/packages/Microsoft.IdentityModel.Abstractions) packages from Nuget.
+1. Download the [Microsoft Identity Client](https://www.nuget.org/packages/Microsoft.Identity.Client) and the [Microsoft Identity Abstractions](https://www.nuget.org/packages/Microsoft.IdentityModel.Abstractions) packages from NuGet.
 
-1. Extract the downloaded packages and DLL files from *lib\net45* to a folder of choice. In this guide, we will use the folder *C:\Matlab\DLL*.
+1. Extract the downloaded packages and DLL files from *lib\net45* to a folder of choice. In this guide, we'll use the folder *C:\Matlab\DLL*.
 
 1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](kusto/api/rest/authenticate-with-msal.md#authentication-parameters).
 
