@@ -51,7 +51,7 @@ The prerequisites vary based on the operating system used to run MATLAB. To get 
     <full-path>\matlab-azure-services\Software\MATLAB\lib\jar\azure-common-sdk-0.2.0.jar
     ```
 
-1. Close and reload MATLAB studio. Once reloaded, run the __startup.m__ script available at __matlab-azure-services\Software\MATLAB\startup.m__. This ensures all the prerequisite functions are set up for access to Azure services. The output should look as follows:
+1. Close and reload MATLAB studio. Once reloaded, run the *startup.m* script available at *matlab-azure-services\Software\MATLAB\startup.m*. This ensures all the prerequisite functions are set up for access to Azure services. The output should look as follows:
 
     ```bash
     >> startup
