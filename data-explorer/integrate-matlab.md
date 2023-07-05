@@ -174,10 +174,10 @@ To perform user authentication:
     request = azure.core.credential.TokenRequestContext();request.addScopes('<https://adx-cluster-changeme.kusto.windows.net/.default>');
     token=credentials.getToken(request);
 
-    % The DB and KQL variables represent the database and query to execute
+    % Prepare to query the cluster
     options=weboptions('HeaderFields',{'RequestMethod','POST';'Accept' 'application/json';'Authorization' ['Bearer ', token.getToken()]; 'Content-Type' 'application/json; charset=utf-8'; 'Connection' 'Keep-Alive'; 'x-ms-app' 'Matlab'; 'x-ms-client-request-id' 'Matlab-Query-Request'});
 
-    % Point to the DB that we want to execute the KQL against
+    % The DB and KQL variables represent the database and query to execute
     querydata = struct('db', "<DB>", 'csl', "<KQL>");
     querryresults  = webwrite('<https://adx-cluster-changeme.kusto.windows.net/v2/rest/query>', querydata, options);
 
@@ -293,10 +293,10 @@ To perform application authentication:
     request = azure.core.credential.TokenRequestContext();request.addScopes('<https://adx-cluster-changeme.kusto.windows.net/.default>');
     token=credentials.getToken(request);
 
-    % The DB and KQL variables represent the database and query to execute
+    % Prepare to query the cluster
     options=weboptions('HeaderFields',{'RequestMethod','POST';'Accept' 'application/json';'Authorization' ['Bearer ', token.getToken()]; 'Content-Type' 'application/json; charset=utf-8'; 'Connection' 'Keep-Alive'; 'x-ms-app' 'Matlab'; 'x-ms-client-request-id' 'Matlab-Query-Request'});
 
-    % Point to the DB that we want to execute the KQL against
+    % The DB and KQL variables represent the database and query to execute
     querydata = struct('db', "<DB>", 'csl', "<KQL>");
     querryresults  = webwrite('<https://adx-cluster-changeme.kusto.windows.net/v2/rest/query>', querydata, options);
 
