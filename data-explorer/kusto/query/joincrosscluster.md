@@ -15,12 +15,12 @@ A cross-cluster join involves joining data from datasets that reside in differen
 
 In a cross-cluster join, the query can be executed in three possible locations, each with a specific designation for reference throughout this document:
 
-* *Source cluster*: The cluster to which the request is sent, otherwise known as the cluster hosting the database in context.
-* *$left cluster*: The cluster hosting the data on the left side of the join operation.
-* *$right cluster*: The cluster hosting the data on the right side of the join operation.
+* *Local cluster*: The cluster to which the request is sent, which is also known as the cluster hosting the database in context.
+* *Left cluster*: The cluster hosting the data on the left side of the join operation.
+* *Right cluster*: The cluster hosting the data on the right side of the join operation.
 
 > [!NOTE]
-> If the data on both the left and right sides of a join operation is hosted in the same cluster, it isn't considered a cross-cluster join, even if the data is located outside of the source cluster.
+> If the data on both the left and right sides of a join operation is hosted in the same cluster, it isn't considered a cross-cluster join, even if the data is hosted outside of the local cluster.
 
 ## Syntax
 
@@ -35,8 +35,8 @@ In a cross-cluster join, the query can be executed in three possible locations, 
 |--|--|--|--|
 |*LeftTable*|string|&check;|The left table or tabular expression whose rows are to be merged. Denoted as `$left`.|
 |*Strategy*|string||Determines the cluster on which to execute the join. Supported values are: `left`, `right`, `local`, and `auto`. For more information, see [Strategies](#strategies).|
-|*ClusterName*|string||If the data for the join resides outside of the current cluster context, use the [cluster()](clusterfunction.md) function to specify the cluster.|
-|*DatabaseName*|string||If the data for the join resides outside of the current database context, use the [database()](databasefunction.md) function to specify the database.|
+|*ClusterName*|string||If the data for the join resides outside of the local cluster, use the [cluster()](clusterfunction.md) function to specify the cluster.|
+|*DatabaseName*|string||If the data for the join resides outside of the local database context, use the [database()](databasefunction.md) function to specify the database.|
 |*RightTable*|string|&check;|The right table or tabular expression whose rows are to be merged. Denoted as `$right`.|
 |*Conditions*|string|&check;|Determines how rows from *LeftTable* are matched with rows from *RightTable*. If the columns you want to match have the same name in both tables, use the syntax `ON` *ColumnName*. Otherwise, use the syntax `ON $left.`*LeftColumn* `==` `$right.`*RightColumn*. To specify multiple conditions, you can either use the "and" keyword or separate them with commas. If you use commas, the conditions are evaluated using the "and" logical operator.|
 
@@ -44,9 +44,9 @@ In a cross-cluster join, the query can be executed in three possible locations, 
 
 The following list explains the supported values for the *Strategy* parameter:
 
-* `left`: Execute join on the cluster of the left table.
-* `right`: Execute join on the cluster of the right table.
-* `local`: Execute join on the cluster of the current cluster.
+* `left`: Execute join on the cluster of the left table, or left cluster.
+* `right`: Execute join on the cluster of the right table, or right cluster.
+* `local`: Execute join on the cluster of the current cluster, or local cluster.
 * `auto`: (Default) Kusto makes the remoting decision.
 
 > [!NOTE]
@@ -56,8 +56,8 @@ The following list explains the supported values for the *Strategy* parameter:
 
 By default, the `auto` strategy determines where the cross-cluster join should be executed based on the following rules:
 
-* If one of the tables being joined is local to the cluster, the join is performed on the local cluster.
-* If the tables are located on different clusters, the join is executed on the cluster of the right table.
+* If one of the tables is hosted in the local cluster, then the join is performed on the local cluster.
+* If both tables are hosted outside of the local cluster, then join is performed on the right cluster.
 
 Consider the following examples:
 
@@ -69,11 +69,11 @@ T | ... | join (cluster("B").database("DB").T2 | ...) on Col1
 cluster("B").database("DB").T | ... | join (cluster("C").database("DB2").T2 | ...) on Col1
 ```
 
-With the `auto` strategy, "Example 1" would be executed on the local cluster. For "Example 2", assuming neither cluster is the local cluster, the join would be executed on cluster `C` since it's the cluster of the right table. The cluster performing the join fetches the data from the other cluster.
+With the `auto` strategy, "Example 1" would be executed on the local cluster. In "Example 2", assuming neither cluster is the local cluster, the join would be executed on cluster `C` since it's the cluster of the right table. The cluster that runs the query fetches the data from the other cluster.
 
 ## Performance considerations
 
-For optimal performance, we recommend performing the join on the cluster that contains the largest table.
+For optimal performance, we recommend running the query on the cluster that contains the largest table.
 
 Let's consider the following examples again:
 
