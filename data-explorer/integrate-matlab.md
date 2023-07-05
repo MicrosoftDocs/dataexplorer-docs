@@ -45,7 +45,7 @@ The prerequisites vary based on the operating system used to run MATLAB. To get 
     edit(fullfile(prefdir,'javaclasspath.txt'));
     ```
 
-1. In java static class path file, add an entry corresponding to the jar file.
+1. In java static class path file, add an entry corresponding to the jar file:
 
     ```txt
     <full-path>\matlab-azure-services\Software\MATLAB\lib\jar\azure-common-sdk-0.2.0.jar
