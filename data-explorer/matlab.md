@@ -99,7 +99,7 @@ To use MSAL.NET to perform user authentication in MATLAB:
 
 ## How to authenticate an application
 
-In scenarios where interactive login is not desired and automated runs are necessary, Azure AD application authorization tokens can be used. 
+Azure AD application authorization can be used for scenarios where interactive login is not desired and automated runs are necessary.
 
 To get an Azure AD application token and leverage it to query your cluster:
 
