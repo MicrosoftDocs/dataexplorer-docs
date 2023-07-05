@@ -22,12 +22,54 @@ The prerequisites vary based on the operating system used to run MATLAB. To get 
 
 ### [Linux](#tab/linux)
 
+1. Install [JDK 8](https://openjdk.org/projects/jdk8u/) and [Maven](https://maven.apache.org).
+
+1. Clone the [MATLAB Interface for Azure Services](https://github.com/mathworks-ref-arch/matlab-azure-services) repository.
+
+    ```bash
+    git clone https://github.com/mathworks-ref-arch/matlab-azure-services.git
+    ```
+
+1. Build the MATLAB Azure SDK jar. The build should produce the file: `Software/MATLAB/lib/jar/azure-common-sdk-0.2.0.jar`.
+
+    ```bash
+    cd matlab-azure-services\Software\Java
+    mvn clean package
+    ```
+
+1. In the MATLAB studio, load the jar file and add it to the java static class path:
+
+    ```matlab
+    edit(fullfile(prefdir,'javaclasspath.txt'));
+    ```
+
+1. In java static class path file, add an entry corresponding to the jar file. Then, close and reload MATLAB studio.
+
+    ```txt
+    <full-path>\matlab-azure-services\Software\MATLAB\lib\jar\azure-common-sdk-0.2.0.jar
+    ```
+
+1. Once the studio is reloaded, run the __startup.m__ script available at __matlab-azure-services\Software\MATLAB\startup.m__. This will ensure all the pre-requisite functions are set up for access to Azure services. The output should look as follows:
+
+    ```bash
+    >> startup
+    Adding Azure Paths
+    ------------------
+    Adding: matlab-azure-services\Software\MATLAB\app
+    Adding: matlab-azure-services\Software\MATLAB\app\functions
+    Adding: matlab-azure-services\Software\MATLAB\app\system
+    Adding: matlab-azure-services\Software\MATLAB\lib
+    Adding: matlab-azure-services\Software\MATLAB\config
+    Skipping: matlab-azure-services\Software\Utilities
+    Checking the static Java classpath for: matlab-azure-services\Software\MATLAB\lib\jar\azure-common-sdk-0.2.0.jar
+    Found: azure-common-sdk-0.2.0.jar
+    ```
 
 ---
 
 ## Perform user authentication
 
-With user authentication, the user is prompted to sign-in through a browser window. Upon successful sign-in, a user authorization token is granted. This section shows how to configure this interactive sign-in flow. 
+With user authentication, the user is prompted to sign-in through a browser window. Upon successful sign-in, a user authorization token is granted. This section shows how to configure this interactive sign-in flow.
 
 Select the relevant tab.
 
