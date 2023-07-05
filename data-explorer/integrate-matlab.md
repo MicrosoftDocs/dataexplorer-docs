@@ -151,6 +151,38 @@ To perform user authentication:
 
 ### [Linux](#tab/linux)
 
+1. Create an *Auth.json* file in your working directory with the relevant credentials:
+
+    ```json
+    {
+        "AuthMethod": "InteractiveBrowser",
+        "TenantId" : "<AAD Tenant / Authority ID for the login>",
+        "ClientId" : "<Client ID>", // The KustoClientAppId returned from `https://<adx-cluster>.kusto.windows.net/v1/rest/auth/metadata`
+        "RedirectUrl": "http://localhost:8675"
+    }
+    ```
+
+1. Query your cluster as follows:
+
+    ```matlab
+    % References the credential file created in the previous step
+    credentials = configureCredentials('Auth.json');
+
+    % Point the scopes to the ADX cluster that we want to query
+    request = azure.core.credential.TokenRequestContext();request.addScopes('<https://adx-cluster-changeme.kusto.windows.net/.default>');
+    token=credentials.getToken(request);
+
+    % The DB and KQL variables represent the database and query to execute
+    options=weboptions('HeaderFields',{'RequestMethod','POST';'Accept' 'application/json';'Authorization' ['Bearer ', token.getToken()]; 'Content-Type' 'application/json; charset=utf-8'; 'Connection' 'Keep-Alive'; 'x-ms-app' 'Matlab'; 'x-ms-client-request-id' 'Matlab-Query-Request'});
+
+    % Point to the DB that we want to execute the KQL against
+    querydata = struct('db', "<DB>", 'csl', "<KQL>");
+    querryresults  = webwrite('<https://adx-cluster-changeme.kusto.windows.net/v2/rest/query>', querydata, options);
+
+    % The results row can be extracted as follows
+    results=querryresults{3}.Rows
+    ```
+
 ---
 
 ## Perform application authentication
@@ -236,6 +268,43 @@ To perform application authentication:
     results=querryresults{3}.Rows
     ```
 
+### [Linux](#tab/linux)
+
+1. Create an *Auth.json* file in your working directory with the relevant credentials:
+
+    ```json
+    {
+        "AuthMethod": "ClientSecret",
+        "TenantId" : "<AAD Tenant / Authority ID for the login>",
+        "ClientId" : "<Client ID of the Azure AD application>",
+        "ClientSecret": "<Client Key of the Azure AD application>",
+        "RedirectUrl": "http://localhost:8675"
+    }
+    ```
+
+1. Query your cluster as follows:
+
+    ```matlab
+    % References the credential file created in the previous step
+    credentials = configureCredentials('Auth.json');
+
+    % Point the scopes to the ADX cluster that we want to query
+    request = azure.core.credential.TokenRequestContext();request.addScopes('<https://adx-cluster-changeme.kusto.windows.net/.default>');
+    token=credentials.getToken(request);
+
+    % The DB and KQL variables represent the database and query to execute
+    options=weboptions('HeaderFields',{'RequestMethod','POST';'Accept' 'application/json';'Authorization' ['Bearer ', token.getToken()]; 'Content-Type' 'application/json; charset=utf-8'; 'Connection' 'Keep-Alive'; 'x-ms-app' 'Matlab'; 'x-ms-client-request-id' 'Matlab-Query-Request'});
+
+    % Point to the DB that we want to execute the KQL against
+    querydata = struct('db', "<DB>", 'csl', "<KQL>");
+    querryresults  = webwrite('<https://adx-cluster-changeme.kusto.windows.net/v2/rest/query>', querydata, options);
+
+    % The results row can be extracted as follows
+    results=querryresults{3}.Rows
+    ```
+
 ---
 
 ## Next steps
+
+* Query your cluster with the [REST API](kusto/api/rest/index.md)
