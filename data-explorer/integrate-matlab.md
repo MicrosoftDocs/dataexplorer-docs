@@ -8,7 +8,7 @@ ms.date: 07/05/2023
 
 # Integrate MATLAB with Azure Data Explorer
 
-MATLAB is a programming and numeric computing platform used to analyze data, develop algorithms, and create models. In this article, you'll learn how to obtain an Azure Active Directory (Azure AD) authentication token for Azure Data Explorer in MATLAB. Then, you can use the token to interact with Azure Data Explorer through the [Azure Data Explorer REST API](kusto/api/rest/index.md).
+MATLAB is a programming and numeric computing platform used to analyze data, develop algorithms, and create models. In this article, you'll learn how to obtain an Azure Active Directory (Azure AD) authentication token for Azure Data Explorer in MATLAB, and how to use the token to interact with Azure Data Explorer through the [Azure Data Explorer REST API](kusto/api/rest/index.md).
 
 ## How to authenticate a user
 
