@@ -11,7 +11,16 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-A cross-cluster join involves joining data from two datasets that reside in different clusters. Performing a join on data from a different cluster than the local cluster isn't considered a cross-cluster join.
+A cross-cluster join involves joining data from datasets that reside in different clusters.
+
+In a cross-cluster join, the query can be executed in three possible locations, each with a specific designation for reference throughout this document:
+
+* *Source cluster*: The cluster to which the request is sent, otherwise known as the cluster hosting the database in context.
+* *$left cluster*: The cluster hosting the data on the left side of the join operation.
+* *$right cluster*: The cluster hosting the data on the right side of the join operation.
+
+> [!NOTE]
+> If the data on both the left and right sides of a join operation is hosted in the same cluster, it isn't considered a cross-cluster join, even if the data is located outside of the source cluster.
 
 ## Syntax
 
