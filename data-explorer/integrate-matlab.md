@@ -12,11 +12,9 @@ MATLAB is a programming and numeric computing platform used to analyze data, dev
 
 ## Perform user authentication
 
-To authenticate a user, an interactive authentication flow prompts the user to sign-in through a browser window. Upon successful sign-in, a user authorization token is granted.
+With user authentication, the user is prompted to sign-in through a browser window. Upon successful sign-in, a user authorization token is granted.
 
-In this section, learn how to authenticate users with MSAL.NET for .NET-based applications and MSAL4J or Matlab-Azure for Java-based applications. If you're running MATLAB on a Windows OS, use MSAL.NET. If you're running MATLAB on Linux, use MSAL4J or Matlab-Azure.
-
-Choose the tab relevant for your operating system.
+This section shows how to configure the interactive sign-in flow for user authentication. There are two options, depending on the operating system used to run MATLAB. If you're running MATLAB on a Windows OS, you'll use MSAL.NET. If you're running MATLAB on Linux, you'll use MSAL4J or Matlab-Azure. For further instructions, select the relevant tab.
 
 ### [Windows OS](#tab/windows)
 
