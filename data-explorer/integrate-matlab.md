@@ -244,13 +244,12 @@ To perform application authentication:
     scopes.Add(scopesToUse);
     fprintf(1, 'Using appScope  %s\n', scopesToUse);
     
-    % Get the token from the service
-    % and show the interactive dialog in which the user can login
-    tokenAcquirer = app.AcquireTokenInteractive(scopes);
+    % Get the token from the service and cache it until it expires
+    tokenAcquirer = app.AcquireTokenForClient(scopes);
     result = tokenAcquirer.ExecuteAsync;
-    
+
     % Extract the token and when it expires
-    % Retrieve the returned token
+    % retrieve the returned token
     token = char(result.Result.AccessToken);
     fprintf(2, 'User token aquired and will expire at %s & extended expires at %s', result.Result.ExpiresOn.LocalDateTime.ToString,result.Result.ExtendedExpiresOn.ToLocalTime.ToString);
     ```
