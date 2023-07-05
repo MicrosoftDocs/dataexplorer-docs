@@ -28,20 +28,22 @@ To use MSAL.NET to perform user authentication in MATLAB:
 
 1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](kusto/api/rest/authenticate-with-msal.md#authentication-parameters).
 
-    ```dotnet
+    ```matlab
     % The Azure Data Explorer cluster URL
     clusterUrl = 'https://<adx-cluster>.kusto.windows.net';
     % The Azure AD tenant ID
     tenantId = '';
-    % Use https://<adx-cluster>.kusto.windows.net/v1/rest/auth/metadata to get the value of KustoClientAppId
+    % Send a request to https://<adx-cluster>.kusto.windows.net/v1/rest/auth/metadata
+    % The appId should be the value of KustoClientAppId
     appId = '';
+    % The Azure AD scopes
     scopesToUse = strcat(clusterUrl,'/.default ');
     ```
 
 1. In MATLAB studio, load the extracted DLL files:
 
-   ```dotnet
-   % Access the folder that contains the DLL files
+    ```matlab
+    % Access the folder that contains the DLL files
     dllFolder = fullfile("C:","Matlab","DLL");
     
     % Load the referenced assemblies in the MATLAB session
@@ -51,13 +53,14 @@ To use MSAL.NET to perform user authentication in MATLAB:
         fullFileName = fullfile(dllFolder,baseFileName);
         fprintf(1, 'Reading  %s\n', fullFileName);
 
-    %  Load the downloaded assembly in MATLAB
+        % Load the downloaded assembly in MATLAB
         NET.addAssembly(fullFileName);
-   ```
+    ```
 
 1. Use the [PublicClientApplicationBuilder](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder) to prompt a user interactive login:
 
-    ```dotnet
+    ```matlab
+    % Create an PublicClientApplicationBuilder
     app = Microsoft.Identity.Client.PublicClientApplicationBuilder.Create(appId)
         .WithAuthority(Microsoft.Identity.Client.AzureCloudInstance.AzurePublic,tenantId)
         .WithRedirectUri('http://localhost:8675')
@@ -65,31 +68,31 @@ To use MSAL.NET to perform user authentication in MATLAB:
 
     % System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
     NET.setStaticProperty ('System.Net.ServicePointManager.SecurityProtocol',System.Net.SecurityProtocolType.Tls12)
-    % Start with creating a list of Scopes
+    % Start with creating a list of scopes
     scopes = NET.createGeneric('System.Collections.Generic.List',{'System.String'});
-    % Add actual Scopes to them, for example
+    % Add the actual scopes
     scopes.Add(scopesToUse);
     fprintf(1, 'Using appScope  %s\n', scopesToUse);
     
-    % Then get the token from the service
-    % Show the interactive dialog in which the user can login
+    % Get the token from the service
+    % and show the interactive dialog in which the user can login
     tokenAcquirer = app.AcquireTokenInteractive(scopes);
     result = tokenAcquirer.ExecuteAsync;
     
     % Extract the token and when it expires
-    % Retrieve the returned token
+    % and retrieve the returned token
     token = char(result.Result.AccessToken);
     fprintf(2, 'User token aquired and will expire at %s & extended expires at %s', result.Result.ExpiresOn.LocalDateTime.ToString,result.Result.ExtendedExpiresOn.ToLocalTime.ToString);
     ```
 
 1. Use the authorization token to query your cluster:
 
-    ```dotnet
-    % The DB and KQL variables represent the database and query to execute
+    ```matlab
     options=weboptions('HeaderFields',{'RequestMethod','POST';'Accept' 'application/json';'Authorization' ['Bearer ', token]; 'Content-Type' 'application/json; charset=utf-8'; 'Connection' 'Keep-Alive'; 'x-ms-app' 'Matlab'; 'x-ms-client-request-id' 'Matlab-Query-Request'});
+    % The DB and KQL variables represent the database and query to execute
     querydata = struct('db', "<DB>", 'csl', "<KQL>");
-    querryresults  = webwrite('https://sdktestcluster.westeurope.dev.kusto.windows.net/v2/rest/query', querydata, options);
-    % The results row can be extracted as follows
+    querryresults  = webwrite("https://sdktestcluster.westeurope.dev.kusto.windows.net/v2/rest/query", querydata, options);
+    % Extract the results row
     results=querryresults{3}.Rows
     ```
 
@@ -111,20 +114,20 @@ To get an Azure AD application token and leverage it to query your cluster:
 
 1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](kusto/api/rest/authenticate-with-msal.md#authentication-parameters).
 
-    ```dotnet
+    ```matlab
     % The Azure Data Explorer cluster URL
     clusterUrl = 'https://<adx-cluster>.kusto.windows.net';
     % The Azure AD tenant ID
     tenantId = '';
-    % The application ID and key for authentication created in step 1
+    % The Azure AD application ID and key
     appId = '';
     appSecret = '';
     ```
 
 1. In MATLAB studio, load the extracted DLL files:
 
-   ```dotnet
-   % Access the folder that contains the DLL files
+   ```matlab
+    % Access the folder that contains the DLL files
     dllFolder = fullfile("C:","Matlab","DLL");
     
     % Load the referenced assemblies in the MATLAB session
@@ -133,8 +136,8 @@ To get an Azure AD application token and leverage it to query your cluster:
         baseFileName = matlabDllFiles(k).name;
         fullFileName = fullfile(dllFolder,baseFileName);
         fprintf(1, 'Reading  %s\n', fullFileName);
-
-    %  Load the downloaded assembly in MATLAB
+    
+        % Load the downloaded assembly
         NET.addAssembly(fullFileName);
    ```
 
