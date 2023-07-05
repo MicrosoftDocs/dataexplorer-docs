@@ -24,18 +24,20 @@ The prerequisites vary based on the operating system used to run MATLAB. To get 
 
 1. Install [JDK 8](https://openjdk.org/projects/jdk8u/) and [Maven](https://maven.apache.org).
 
-1. Clone the [MATLAB Interface for Azure Services](https://github.com/mathworks-ref-arch/matlab-azure-services) repository.
+1. Clone the [MATLAB Interface for Azure Services](https://github.com/mathworks-ref-arch/matlab-azure-services) repository:
 
     ```bash
     git clone https://github.com/mathworks-ref-arch/matlab-azure-services.git
     ```
 
-1. Build the MATLAB Azure SDK jar. The build should produce the file: `Software/MATLAB/lib/jar/azure-common-sdk-0.2.0.jar`.
+1. Build the MATLAB Azure SDK jar:
 
     ```bash
     cd matlab-azure-services\Software\Java
     mvn clean package
     ```
+
+    The build should produce the file: `Software/MATLAB/lib/jar/azure-common-sdk-0.2.0.jar`.
 
 1. In the MATLAB studio, load the jar file and add it to the java static class path:
 
@@ -43,13 +45,13 @@ The prerequisites vary based on the operating system used to run MATLAB. To get 
     edit(fullfile(prefdir,'javaclasspath.txt'));
     ```
 
-1. In java static class path file, add an entry corresponding to the jar file. Then, close and reload MATLAB studio.
+1. In java static class path file, add an entry corresponding to the jar file.
 
     ```txt
     <full-path>\matlab-azure-services\Software\MATLAB\lib\jar\azure-common-sdk-0.2.0.jar
     ```
 
-1. Once the studio is reloaded, run the __startup.m__ script available at __matlab-azure-services\Software\MATLAB\startup.m__. This ensures all the prerequisite functions are set up for access to Azure services. The output should look as follows:
+1. Close and reload MATLAB studio. Once reloaded, run the __startup.m__ script available at __matlab-azure-services\Software\MATLAB\startup.m__. This ensures all the prerequisite functions are set up for access to Azure services. The output should look as follows:
 
     ```bash
     >> startup
