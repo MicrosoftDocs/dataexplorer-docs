@@ -587,7 +587,7 @@ items:
     - name: Microsoft Purview
       href: purview.md
     - name: MATLAB
-      href: matlab.md
+      href: integrate-matlab.md
       displayName: matlab
 - name: Kusto Query Language
   href: kusto/query/toc.yml
