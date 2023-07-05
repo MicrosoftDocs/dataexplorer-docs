@@ -10,19 +10,30 @@ ms.date: 07/05/2023
 
 MATLAB is a programming and numeric computing platform used to analyze data, develop algorithms, and create models. This article explains how to get an authorization token in MATLAB for Azure Data Explorer, and how to use the token to interact with your cluster.
 
-## Perform user authentication
+## Prerequisites
 
-With user authentication, the user is prompted to sign-in through a browser window. Upon successful sign-in, a user authorization token is granted.
-
-This section shows how to configure the interactive sign-in flow for user authentication. There are two options, depending on the operating system used to run MATLAB. If you're running MATLAB on a Windows OS, you'll use MSAL.NET. If you're running MATLAB on Linux, you'll use MSAL4J or Matlab-Azure. For further instructions, select the relevant tab.
+The prerequisites vary based on the operating system used to run MATLAB. To get started, select the relevant tab.
 
 ### [Windows OS](#tab/windows)
-
-To use MSAL.NET to perform user authentication in MATLAB:
 
 1. Download the [Microsoft Identity Client](https://www.nuget.org/packages/Microsoft.Identity.Client) and the [Microsoft Identity Abstractions](https://www.nuget.org/packages/Microsoft.IdentityModel.Abstractions) packages from NuGet.
 
 1. Extract the downloaded packages and DLL files from *lib\net45* to a folder of choice. In this guide, we'll use the folder *C:\Matlab\DLL*.
+
+### [Linux](#tab/linux)
+
+
+---
+
+## Perform user authentication
+
+With user authentication, the user is prompted to sign-in through a browser window. Upon successful sign-in, a user authorization token is granted. This section shows how to configure this interactive sign-in flow. 
+
+Select the relevant tab.
+
+### [Windows OS](#tab/windows)
+
+To perform user authentication:
 
 1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](kusto/api/rest/authenticate-with-msal.md#authentication-parameters).
 
@@ -104,15 +115,13 @@ To use MSAL.NET to perform user authentication in MATLAB:
 
 Azure AD application authorization can be used for scenarios where interactive sign-in isn't desired and automated runs are necessary.
 
+Select the relevant tab.
+
 ### [Windows OS](#tab/windows)
 
-To get an Azure AD application token and use it to query your cluster:
+To perform application authentication:
 
 1. [Provision an Azure AD application](provision-azure-ad-app.md). For the **Redirect URI**, select **Web** and input http://localhost:8675 as the URI.
-
-1. Download the [Microsoft Identity Client](https://www.nuget.org/packages/Microsoft.Identity.Client) and the [Microsoft Identity Abstractions](https://www.nuget.org/packages/Microsoft.IdentityModel.Abstractions) packages from NuGet.
-
-1. Extract the downloaded packages and DLL files from *lib\net45* to a folder of choice. In this guide, we'll use the folder *C:\Matlab\DLL*.
 
 1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](kusto/api/rest/authenticate-with-msal.md#authentication-parameters).
 
@@ -184,5 +193,7 @@ To get an Azure AD application token and use it to query your cluster:
     % Extract the results row
     results=querryresults{3}.Rows
     ```
+
+---
 
 ## Next steps
