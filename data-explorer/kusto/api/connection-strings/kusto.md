@@ -7,43 +7,25 @@ ms.date: 05/08/2023
 ---
 # Kusto connection strings
 
-Kusto connection strings provide the information necessary
-for a Kusto client application to establish a connection to a Kusto service
-endpoint. Kusto connection strings are modeled after the ADO.NET connection
-strings. That is, the connection string is a semicolon-delimited list of name/value
-parameter pairs, optionally prefixed by a single URI.
+Kusto connection strings provide the information necessary for a Kusto client application to establish a connection to a Kusto service endpoint. Kusto connection strings are modeled after the ADO.NET connection strings. That is, the connection string is a semicolon-delimited list of name-value parameter pairs, optionally prefixed by a single URI.
 
-**Example:**
+For example, the following Kusto connection string begins with a URI that specifies the service endpoint for communication: `https://help.kusto.windows.net`. This URI is assigned to the `Data Source` property. Next, `/Samples` within the connection string represents the default database and is assigned to the `Initial Catalog` property. Lastly, two additional properties, `Fed` and `Accept`, provide further configuration or customization options for the connection.
 
 ```text
 https://help.kusto.windows.net/Samples; Fed=true; Accept=true
 ```
 
-The URI provides the service endpoint to communicate with:
-
-* (`https://help.kusto.windows.net`) - value of the `Data Source` property.
-* `Samples`(default database) - value of the`Initial Catalog` property.
-
-Two more properties are provided using the name/value syntax: 
-
-* `Fed` property (also called `AAD Federated Security`) set to `true`.
-* `Accept` property set to `true`.
-
 > [!NOTE]
 >
-> * Property names are not case sensitive, and spaces between name/value pairs are ignored.
-> * Property values **are** case sensitive. A property value that contains
->   a semicolon (`;`), a single quotation mark (`'`), or a double quotation mark (`"`)
+> * Property names are not case sensitive.
+> * Property values are case sensitive.
+> * Spaces between name-value parameter pairs are ignored.
+> * A property value that contains a semicolon (`;`), a single quotation mark (`'`), or a double quotation mark (`"`)
 >   must be enclosed between double quotation marks.
 
-Several Kusto client tools support an extension over the URI prefix of the connection
-string, in that they allow the shorthand format `@` _ClusterName_ `/` _InitialCatalog_ to be used.
-For example, these tools translate the connection string `@help/Samples` to `https://help.kusto.windows.net/Samples; Fed=true`, which indicates three properties: `Data Source`, `Initial Catalog`, and `AAD Federated Security`.
+Several Kusto client tools support an extension over the URI prefix of the connection string that allows for a shorthand format of `@`*ClusterName*`/`*InitialCatalog*. For example, these tools translate the connection string `@help/Samples` to `https://help.kusto.windows.net/Samples; Fed=true`.
 
-Programmatically, the C# `Kusto.Data.KustoConnectionStringBuilder` class can be parse
-and manipulate Kusto connection strings. This class validates
-all connection strings and generates a runtime exception if validation fails.
-This functionality is present in all flavors of Kusto SDK.
+Programmatically, the C# `Kusto.Data.KustoConnectionStringBuilder` class can parse and manipulate Kusto connection strings. This class validates all connection strings and generates a runtime exception if validation fails. This functionality is present in all flavors of Kusto SDK.
 
 ## Trusted endpoints
 
