@@ -34,8 +34,7 @@ The Kusto client trusts all endpoints whose hostname part is issued by the servi
 For instance, endpoints whose DNS hostname ends with `kusto.windows.net`.
 
 By default, the client doesn't establish connections to other endpoints. In order to allow connections
-to other endpoints, use the `Kusto.Data.Common.KustoTrustedEndpoints` class to add endpoints
-to the list of trusted endpoints. `SetOverridePolicy` overrides the default policy, and `AddTrustedHosts` adds new entries to the existing policy.
+to other endpoints, use the `Kusto.Data.Common.KustoTrustedEndpoints` class to add endpoints to the list of trusted endpoints. Use `SetOverridePolicy` to override the default policy, and `AddTrustedHosts` to add new entries to the existing policy.
 
 ```csharp
 KustoTrustedEndpoints.AddTrustedHosts(
@@ -51,36 +50,34 @@ KustoTrustedEndpoints.AddTrustedHosts(
 
 ## Connection string properties
 
-The following table lists all the properties you can specify in a Kusto connection string.
-It lists programmatic names, which is the name of the property in the
-`Kusto.Data.KustoConnectionStringBuilder` object, and other property names that are aliases.
+The following tables list all the possible properties that can be included in a Kusto connection string. The tables also provides alternative or alias names for each property. Moreover, the tables indicates the programmatic names associated with each property, which represents the name of the property in the `Kusto.Data.KustoConnectionStringBuilder` object.
 
 ### General properties
 
 | Property name | Alternative names | Programmatic name | Description |
 |--|--|--|--|
-| Client Version for Tracing |  | TraceClientVersion | When tracing the client version, use this value |
-| Data Source | Addr, Address, Network Address, Server | DataSource | The URI specifying the Kusto service endpoint. For example, `https://mycluster.kusto.windows.net`. |
-| Initial Catalog | Database | InitialCatalog | The name of the database to be used by default. For example, MyDatabase |
-| Query Consistency | QueryConsistency | QueryConsistency | Set to either `strongconsistency` or `weakconsistency` to determine if the query should synchronize with the metadata before running |
+| `Client Version for Tracing` |  | `TraceClientVersion` | When tracing the client version, use this property. |
+| `Data Source` | `Addr`, `Address`, `Network Address`, `Server` | `DataSource` | The URI specifying the Kusto service endpoint. For example, `https://mycluster.kusto.windows.net`. |
+| `Initial Catalog` | `Database` | `InitialCatalog` | The name of the database to be used by default. For example, MyDatabase. |
+| `Query Consistency` | `QueryConsistency` | `QueryConsistency` | Set to either `strongconsistency` or `weakconsistency` to determine if the query should synchronize with the metadata before running. |
 
 ### User authentication properties
 
 | Property name | Alternative names | Programmatic name | Description |
 |--|--|--|--|
-| AAD Federated Security | Federated Security, Federated, Fed, AADFed | FederatedSecurity | A Boolean value that instructs the client to perform Azure AD authentication. |
-| Authority ID | TenantId | Authority | A String value that provides the name or ID of the user's tenant. The default value is microsoft.com. For more information, see [Azure AD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
-| Enforce MFA | MFA, EnforceMFA | EnforceMfa | A Boolean value that instructs the client to acquire a multifactor-authentication token. |
-| User ID | UID, User | UserID | A String value that instructs the client to perform user authentication with the indicated user name. |
-| User Name for Tracing |  | TraceUserName | A String value that reports to the service which user name to use when tracing the request internally. |
-| User Token | UsrToken, UserToken | UserToken | A String value that instructs the client to perform user authentication with the specified bearer token.<br/>Overrides ApplicationClientId, ApplicationKey, and ApplicationToken. (If specified, skips the actual client authentication flow in favor of the provided token.) |
+| `AAD Federated Security` | `Federated Security`, `Federated`, `Fed`, `AADFed` | `FederatedSecurity` | A boolean value that instructs the client to perform Azure AD authentication. |
+| `Authority ID` | `TenantId` | `Authority` | A string value that provides the name or ID of the user's tenant. The default value is `microsoft.com`. For more information, see [Azure AD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
+| `Enforce MFA` | `MFA`, `EnforceMFA` | `EnforceMfa` | An optional boolean value that instructs the client to acquire a multifactor-authentication token. |
+| `User ID` | `UID`, `User` | `UserID` | A string value that instructs the client to perform user authentication with the indicated user name. |
+| `User Name for Tracing` |  | `TraceUserName` | An optional string value that reports to the service which user name to use when tracing the request internally. |
+| `User Token` | `UsrToken`, `UserToken` | `UserToken` | A string value that instructs the client to perform user authentication with the specified bearer token.</br></br>Overrides `ApplicationClientId`, `ApplicationKey`, and `ApplicationToken`. If specified, skips the actual client authentication flow in favor of the provided token. |
 
-The following combinations of properties are supported (`AAD Federated Security` must be true for all of them):
+For user authentication, specify `AAD Federated Security` as `true`. Then, choose one of the following authentication modes, and specify the relevant properties for that mode.
 
-* `WithAadUserPromptAuthentication`: `User ID` (optional) and `Authority Id` (optional).
-* `WithAadUserTokenAuthentication`: `User Token` (mandatory.)
-
-`Enforce MFA` and `User Name for Tracing` are both optional, and can always be specified.
+|Authentication mode|Description|Properties|
+|--|--|--|
+|`WithAadUserPromptAuthentication`| Azure AD interactive authentication that prompts the user to log-in through the browser.|`User ID` (Optional) and `Authority Id` (Optional) |
+|`WithAadUserTokenAuthentication`| Azure AD token authentication, that will use the provided user token to authenticate.| `User Token`|
 
 ### Application authentication properties
 
