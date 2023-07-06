@@ -50,16 +50,16 @@ KustoTrustedEndpoints.AddTrustedHosts(
 
 ## Connection string properties
 
-The following tables list all the possible properties that can be included in a Kusto connection string. The tables also provides alternative or alias names for each property. Moreover, the tables indicates the programmatic names associated with each property, which represents the name of the property in the `Kusto.Data.KustoConnectionStringBuilder` object.
+The following tables list all the possible properties that can be included in a Kusto connection string. The tables also provides alias names for each property. Moreover, the tables indicates the programmatic names associated with each property, which represents the name of the property in the `Kusto.Data.KustoConnectionStringBuilder` object.
 
 ### General properties
 
-| Property name | Alternative names | Programmatic name | Description |
-|--|--|--|--|
-| `Client Version for Tracing` |  | `TraceClientVersion` | When tracing the client version, use this property. |
-| `Data Source` | `Addr`, `Address`, `Network Address`, `Server` | `DataSource` | The URI specifying the Kusto service endpoint. For example, `https://mycluster.kusto.windows.net`. |
-| `Initial Catalog` | `Database` | `InitialCatalog` | The name of the database to be used by default. For example, MyDatabase. |
-| `Query Consistency` | `QueryConsistency` | `QueryConsistency` | Set to either `strongconsistency` or `weakconsistency` to determine if the query should synchronize with the metadata before running. |
+| Property name | Programmatic name | Description |
+|--|--|--|
+| Client Version for Tracing | TraceClientVersion | When tracing the client version, use this property. |
+| Data Source</br></br>Aliases: Addr, Address, Network Address, Server | DataSource | The URI specifying the Kusto service endpoint. For example, `https://mycluster.kusto.windows.net`. |
+| Initial Catalog</br></br>Alias: Database | InitialCatalog | The name of the database to be used by default. For example, `MyDatabase`. |
+| Query Consistency</br></br>Alias: QueryConsistency | QueryConsistency | Set to either `strongconsistency` or `weakconsistency` to determine if the query should synchronize with the metadata before running. |
 
 ### User authentication properties
 
