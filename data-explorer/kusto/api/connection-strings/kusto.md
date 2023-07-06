@@ -76,10 +76,10 @@ The following tables list all the possible properties that can be included in a 
 
 For user authentication, specify `AAD Federated Security` as `true`. Then, choose one of the following authentication modes, and specify the relevant properties for that mode.
 
-| Authentication mode | Mandatory properties | Optional properties |
-|--|--|--|
-| `WithAadUserPromptAuthentication` |  | User ID and Authority Id |
-| `WithAadUserTokenAuthentication` | User Token |  |
+| Authentication mode | Properties |
+|--|--|
+| `WithAadUserPromptAuthentication` | User ID (optional) and Authority Id (optional) |
+| `WithAadUserTokenAuthentication` | User Token |
 
 ### Application authentication properties
 
@@ -103,13 +103,13 @@ For user authentication, specify `AAD Federated Security` as `true`. Then, choos
 
 For application authentication, specify `AAD Federated Security` as `true`. Then, choose one of the following authentication modes, and specify the relevant properties for that mode.
 
-| Authentication mode | Mandatory properties | Optional properties |
-|--|--|--|
-| `WithAadApplicationKeyAuthentication` | Application Client Id, Application Key, and Authority Id. |  |
-| `WithAadApplicationThumbprintAuthentication` | Application Client Id, Application Certificate Thumbprint, and Authority Id ||
-| `WithAadApplicationSubjectAndIssuerAuthentication` | Application Client Id, Application Certificate Subject Distinguished Name, Application Certificate Issuer Distinguished Name, and Authority Id | Azure Region and Application Certificate SendX5c |
-| `WithAadApplicationSubjectNameAuthentication`| Application Client Id, Application Certificate Subject Distinguished Name, and Authority Id | Azure Region |
-| `WithAadApplicationTokenAuthentication` | Application Token |  |
+| Authentication mode | Properties |
+|--|--|
+| `WithAadApplicationKeyAuthentication` | Application Client Id, Application Key, and Authority Id |
+| `WithAadApplicationThumbprintAuthentication` | Application Client Id, Application Certificate Thumbprint, and Authority Id |
+| `WithAadApplicationSubjectAndIssuerAuthentication` | Application Client Id, Application Certificate Subject Distinguished Name, Application Certificate Issuer Distinguished Name, Authority Id, Azure Region (optional) and Application Certificate SendX5c (optional) |
+| `WithAadApplicationSubjectNameAuthentication` | Application Client Id, Application Certificate Subject Distinguished Name, Authority Id, and Azure Region (optional) |
+| `WithAadApplicationTokenAuthentication` | Application Token |
 
 #### Authentication with an application certificate
 
