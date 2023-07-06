@@ -317,7 +317,7 @@ namespace ManagementCommands
 
       using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kcsb)) {
         string database = "Playground";
-        string table = "MyStormEventsCS";
+        string table = "MyStormEvents";
 
         // Create a table named MyStormEvents
         // The brackets contain a list of column Name:Type pairs that defines the table schema
@@ -406,7 +406,7 @@ async function main() {
   const kustoClient = new kustoLibraryClient(kcsb);
 
   const database = "Playground";
-  const table = "MyStormEventsJS";
+  const table = "MyStormEvents";
 
   // Create a table named MyStormEvents
   // The brackets contain a list of column Name:Type pairs that defines the table schema
@@ -458,7 +458,7 @@ public class ManagementCommands {
       ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
       try (Client kustoClient = ClientFactory.createClient(kcsb)) {
         String database = "Playground";
-        String table = "MyStormEventsJava";
+        String table = "MyStormEvents";
 
         // Create a table named MyStormEvents
         // The brackets contain a list of column Name:Type pairs that defines the table schema
@@ -531,7 +531,7 @@ You should see a result similar to the following:
 ```bash
 --------------------
 
-Command: .create table MyStormEventsJS 
+Command: .create table MyStormEvents 
                  (StartTime:datetime,
                   EndTime:datetime,
                   State:string,
@@ -540,7 +540,7 @@ Command: .create table MyStormEventsJS
                   StormSummary:dynamic)
 Result:
    TableName - MyStormEvents
-   Schema - {"Name":"MyStormEventsJS","OrderedColumns":[{"Name":"StartTime","Type":"System.DateTime","CslType":"datetime"},{"Name":"EndTime","Type":"System.DateTime","CslType":"datetime"},{"Name":"State","Type":"System.String","CslType":"string"},{"Name":"DamageProperty","Type":"System.Int32","CslType":"int"},{"Name":"Source","Type":"System.String","CslType":"string"},{"Name":"StormSummary","Type":"System.Object","CslType":"dynamic"}]}
+   Schema - {"Name":"MyStormEvents","OrderedColumns":[{"Name":"StartTime","Type":"System.DateTime","CslType":"datetime"},{"Name":"EndTime","Type":"System.DateTime","CslType":"datetime"},{"Name":"State","Type":"System.String","CslType":"string"},{"Name":"DamageProperty","Type":"System.Int32","CslType":"int"},{"Name":"Source","Type":"System.String","CslType":"string"},{"Name":"StormSummary","Type":"System.Object","CslType":"dynamic"}]}
    DatabaseName - MyDatabaseName
    Folder - None
    DocString - None
@@ -606,10 +606,10 @@ When you add the code to your app and run it, you should see a result similar to
 ```bash
 --------------------
 
-Command: .alter table MyStormEventsJS policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:30" }'
+Command: .alter table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:30" }'
 Result:
    PolicyName - IngestionBatchingPolicy
-   EntityName - [Playground].[MyStormEventsJS]
+   EntityName - [Playground].[MyStormEvents]
    Policy - {
   "MaximumBatchingTimeSpan": "00:00:30",
   "MaximumNumberOfItems": 500,
