@@ -7,7 +7,7 @@ ms.date: 05/08/2023
 ---
 # Kusto connection strings
 
-Kusto connection strings can provide the information necessary
+Kusto connection strings provide the information necessary
 for a Kusto client application to establish a connection to a Kusto service
 endpoint. Kusto connection strings are modeled after the ADO.NET connection
 strings. That is, the connection string is a semicolon-delimited list of name/value
@@ -77,23 +77,23 @@ It lists programmatic names (which is the name of the property in the
 
 ### General properties
 
-| Property name              | Alternative names                      | Programmatic name  | Description                                                                                                                          |
-|----------------------------|----------------------------------------|--------------------|---------------------------------------------------|
-| Client Version for Tracing |                                        | TraceClientVersion | When tracing the client version, use this value   |
-| Data Source                | Addr, Address, Network Address, Server | DataSource         | The URI specifying the Kusto service endpoint. For example, `https://mycluster.kusto.windows.net` or `net.tcp://localhost`               |
-| Initial Catalog            | Database                               | InitialCatalog     | The name of the database to be used by default. For example, MyDatabase|
-| Query Consistency          | QueryConsistency                       | QueryConsistency   | Set to either `strongconsistency` or `weakconsistency` to determine if the query should synchronize with the metadata before running |
+| Property name | Alternative names | Programmatic name | Description |
+|--|--|--|--|
+| Client Version for Tracing |  | TraceClientVersion | When tracing the client version, use this value |
+| Data Source | Addr, Address, Network Address, Server | DataSource | The URI specifying the Kusto service endpoint. For example, `https://mycluster.kusto.windows.net`. |
+| Initial Catalog | Database | InitialCatalog | The name of the database to be used by default. For example, MyDatabase |
+| Query Consistency | QueryConsistency | QueryConsistency | Set to either `strongconsistency` or `weakconsistency` to determine if the query should synchronize with the metadata before running |
 
 ### User authentication properties
 
-| Property name          | Alternative names                          | Programmatic name | Description                       |
-|------------------------|--------------------------------------------|-------------------|-----------------------------------|
-| AAD Federated Security | Federated Security, Federated, Fed, AADFed | FederatedSecurity | A Boolean value that instructs the client to perform Azure Active  |
-|Authority Id            |TenantId                                    |Authority          |A String value that provides the name or ID of the user's tenant. The default value is microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
-| Enforce MFA            | MFA,EnforceMFA                             | EnforceMfa        | A Boolean value that instructs the client to acquire a multifactor-authentication token       |
-| User ID                | UID, User                                  | UserID            | A String value that instructs the client to perform user authentication with the indicated user name           |
-| User Name for Tracing  |                                            | TraceUserName     | A String value that reports to the service which user name to use when tracing the request internally         |
-| User Token             | UsrToken, UserToken                        | UserToken         | A String value that instructs the client to perform user authentication with the specified bearer token.<br/>Overrides ApplicationClientId, ApplicationKey, and ApplicationToken. (If specified, skips the actual client authentication flow in favor of the provided token.)       |
+| Property name | Alternative names | Programmatic name | Description |
+|--|--|--|--|
+| AAD Federated Security | Federated Security, Federated, Fed, AADFed | FederatedSecurity | A Boolean value that instructs the client to perform Azure AD authentication. |
+| Authority Id | TenantId | Authority | A String value that provides the name or ID of the user's tenant. The default value is microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
+| Enforce MFA | MFA,EnforceMFA | EnforceMfa | A Boolean value that instructs the client to acquire a multifactor-authentication token |
+| User ID | UID, User | UserID | A String value that instructs the client to perform user authentication with the indicated user name |
+| User Name for Tracing |  | TraceUserName | A String value that reports to the service which user name to use when tracing the request internally |
+| User Token | UsrToken, UserToken | UserToken | A String value that instructs the client to perform user authentication with the specified bearer token.<br/>Overrides ApplicationClientId, ApplicationKey, and ApplicationToken. (If specified, skips the actual client authentication flow in favor of the provided token.) |
 
 The following combinations of properties are supported (`AAD Federated Security` must be true for all of them):
 
@@ -104,21 +104,21 @@ Note that `Enforce MFA` and `User Name for Tracing` are both optional, and can a
 
 ### Application authentication properties
 
-|Property name                                     |Alternative names                         |Programmatic name                             |Description      |
-|--------------------------------------------------|------------------------------------------|----------------------------------------------|-----------------|
-|AAD Federated Security                            |Federated Security, Federated, Fed, AADFed|FederatedSecurity                             |A Boolean value that instructs the client to perform Azure Active Directory (AAD) federated authentication|
-|Application Certificate SendX5c                   |Application Certificate Send Public Certificate, SendX5c|ApplicationCertificateSendX5c   |A Boolean value that instructs the client to send the public key of the certificate to AAD|
-|Application Certificate Thumbprint                |AppCert                                   |ApplicationCertificateThumbprint              |A String value that provides the thumbprint of the client certificate to use when using an application client certificate authenticating flow|
-|Application Client Id                             |AppClientId                               |ApplicationClientId                           |A String value that provides the application client ID to use when authenticating|
-|Application Key                                   |AppKey                                    |ApplicationKey                                |A String value that provides the application key to use when authenticating using an application secret flow|
-|Application Name for Tracing                      |TraceAppName                              |ApplicationNameForTracing                     |A String value that reports to the service which application name to use when tracing the request internally|
-|Application Token                                 |AppToken                                  |ApplicationToken                              |A String value that instructs the client to perform application authenticating with the specified bearer token|
-|Authority Id                                      |TenantId                                  |Authority                                     |A String value that provides the name or ID of the tenant in which the application is registered. The default value is microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
-|Azure Region                                      |AzureRegion, Region                       |AzureRegion                                   |A string value that provides the name of the Azure Region in which to authenticate.|
-|ManagedServiceIdentity                            |N/A                                       |EmbeddedManagedIdentity                       |A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. This property can't be set with a connection string, only programmatically.|
-|Application Certificate Subject Distinguished Name|Application Certificate Subject           |ApplicationCertificateSubjectDistinguishedName||
-|Application Certificate Issuer Distinguished Name |Application Certificate Issuer            |ApplicationCertificateIssuerDistinguishedName ||
-|Application Certificate Send Public Certificate   |Application Certificate SendX5c, SendX5c  |ApplicationCertificateSendPublicCertificate   ||
+| Property name | Alternative names | Programmatic name | Description |
+|--|--|--|--|
+| AAD Federated Security | Federated Security, Federated, Fed, AADFed | FederatedSecurity | A Boolean value that instructs the client to perform Azure Active Directory (AAD) federated authentication |
+| Application Certificate SendX5c | Application Certificate Send Public Certificate, SendX5c | ApplicationCertificateSendX5c | A Boolean value that instructs the client to send the public key of the certificate to AAD |
+| Application Certificate Thumbprint | AppCert | ApplicationCertificateThumbprint | A String value that provides the thumbprint of the client certificate to use when using an application client certificate authenticating flow |
+| Application Client Id | AppClientId | ApplicationClientId | A String value that provides the application client ID to use when authenticating |
+| Application Key | AppKey | ApplicationKey | A String value that provides the application key to use when authenticating using an application secret flow |
+| Application Name for Tracing | TraceAppName | ApplicationNameForTracing | A String value that reports to the service which application name to use when tracing the request internally |
+| Application Token | AppToken | ApplicationToken | A String value that instructs the client to perform application authenticating with the specified bearer token |
+| Authority Id | TenantId | Authority | A String value that provides the name or ID of the tenant in which the application is registered. The default value is microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
+| Azure Region | AzureRegion, Region | AzureRegion | A string value that provides the name of the Azure Region in which to authenticate. |
+| ManagedServiceIdentity | N/A | EmbeddedManagedIdentity | A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. This property can't be set with a connection string, only programmatically. |
+| Application Certificate Subject Distinguished Name | Application Certificate Subject | ApplicationCertificateSubjectDistinguishedName |  |
+| Application Certificate Issuer Distinguished Name | Application Certificate Issuer | ApplicationCertificateIssuerDistinguishedName |  |
+| Application Certificate Send Public Certificate | Application Certificate SendX5c, SendX5c | ApplicationCertificateSendPublicCertificate |  |
 
 The following combinations of properties are supported (`AAD Federated Security` must be true for all of them):
 
@@ -132,11 +132,11 @@ Note that `Application Name for Tracing` is optional, and can always be specifie
 
 ### Client communication properties
 
-|Property name|Alternative names|Programmatic name  |Description                                                   |
-|-------------|-----------------|-------------------|--------------------------------------------------------------|
-|Accept       |                 |Accept             |A Boolean value that requests detailed error objects to be returned on failure.|
-|Streaming    |                 |Streaming          |A Boolean value that requests the client won't accumulate data before providing it to the caller.|
-|Uncompressed |                 |Uncompressed       |A Boolean value that requests the client won't ask for transport-level compression.|
+| Property name | Alternative names | Programmatic name | Description |
+|--|--|--|--|
+| Accept |  | Accept | A Boolean value that requests detailed error objects to be returned on failure. |
+| Streaming |  | Streaming | A Boolean value that requests the client won't accumulate data before providing it to the caller. |
+| Uncompressed |  | Uncompressed | A Boolean value that requests the client won't ask for transport-level compression. |
 
 > [!NOTE]
 > When the Streaming flag is enabled (as is the default),
