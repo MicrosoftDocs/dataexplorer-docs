@@ -193,12 +193,12 @@ demo_many_series1
 | take 4 
 ```
 
-| TIMESTAMP | Loc | anonOp | DB | DataRead |
-| --- | --- | --- | --- | --- |
-| 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 262 | 0 |
-| 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 241 | 0 |
-| 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862 |
-| 2016-09-11 21:00:00.0000000 | Loc 9 | 371921734563783410 | 255 | 0 |
+| TIMESTAMP                   | Loc   | Op                  | DB  | DataRead |
+| --------------------------- | ----- | ------------------- | --- | -------- |
+| 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 262 | 0        |
+| 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 241 | 0        |
+| 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862   |
+| 2016-09-11 21:00:00.0000000 | Loc 9 | 371921734563783410  | 255 | 0        |
 
 And simple statistics:
 
@@ -229,7 +229,7 @@ demo_many_series1
 
 ![Time series at scale.](../../media/time-series-analysis/time-series-at-scale.png)
 
-The above behavior is misleading, since the single normal time series is aggregated from thousands of different instances that may have abnormal patterns. Therefore, we create a time series per instance. An instance is defined by Loc (location), anonOp (operation), and DB (specific machine).
+The above behavior is misleading, since the single normal time series is aggregated from thousands of different instances that may have abnormal patterns. Therefore, we create a time series per instance. An instance is defined by Loc (location), Op (operation), and DB (specific machine).
 
 How many time series can we create?
 
