@@ -63,49 +63,53 @@ The following tables list all the possible properties that can be included in a 
 
 ### User authentication properties
 
-| Property name | Alternative names | Programmatic name | Description |
-|--|--|--|--|
-| `AAD Federated Security` | `Federated Security`, `Federated`, `Fed`, `AADFed` | `FederatedSecurity` | A boolean value that instructs the client to perform Azure Active Directory (Azure AD) authentication. |
-| `Authority ID` | `TenantId` | `Authority` | A string value that provides the name or ID of the user's tenant. The default value is `microsoft.com`. For more information, see [Azure AD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
-| `Enforce MFA` | `MFA`, `EnforceMFA` | `EnforceMfa` | An optional boolean value that instructs the client to acquire a multifactor-authentication token. |
-| `User ID` | `UID`, `User` | `UserID` | A string value that instructs the client to perform user authentication with the indicated user name. |
-| `User Name for Tracing` |  | `TraceUserName` | An optional string value that reports to the service which user name to use when tracing the request internally. |
-| `User Token` | `UsrToken`, `UserToken` | `UserToken` | A string value that instructs the client to perform user authentication with the specified bearer token.</br></br>Overrides `ApplicationClientId`, `ApplicationKey`, and `ApplicationToken`. If specified, skips the actual client authentication flow in favor of the provided token. |
+| Property name | Programmatic name | Description |
+|--|--|--|
+| AAD Federated Security</br></br>Aliases: Federated Security, Federated, Fed, AADFed | `FederatedSecurity` | A boolean value that instructs the client to perform Azure Active Directory (Azure AD) authentication. |
+| Authority ID</br></br>Alias: TenantId | Authority | A string value that provides the name or ID of the user's tenant. The default value is `microsoft.com`. For more information, see [Azure AD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
+| Enforce MFA</br></br>Alias: MFA, EnforceMFA | EnforceMfa | An optional boolean value that instructs the client to acquire a multifactor-authentication token. |
+| User ID</br></br>Aliases: UID, User | UserID | A string value that instructs the client to perform user authentication with the indicated user name. |
+| User Name for Tracing | TraceUserName | An optional string value that reports to the service which user name to use when tracing the request internally. |
+| User Token</br></br>Aliases: UsrToken, UserToken | UserToken | A string value that instructs the client to perform user authentication with the specified bearer token.</br></br>Overrides `ApplicationClientId`, `ApplicationKey`, and `ApplicationToken`. If specified, skips the actual client authentication flow in favor of the provided token. |
+
+### Supported property combinations for user authentication
 
 For user authentication, specify `AAD Federated Security` as `true`. Then, choose one of the following authentication modes, and specify the relevant properties for that mode.
 
-| Authentication mode | Properties | Description |
+| Authentication mode | Mandatory properties | Optional properties |
 |--|--|--|
-| `WithAadUserPromptAuthentication` | `User ID` (Optional) and `Authority Id` (Optional) | Azure AD interactive authentication that prompts the user to log-in through the browser. |
-| `WithAadUserTokenAuthentication` | `User Token` | Azure AD token authentication, that will use the provided user token to authenticate. |  |
+| `WithAadUserPromptAuthentication` |  | User ID and Authority Id |
+| `WithAadUserTokenAuthentication` | User Token |  |
 
 ### Application authentication properties
 
-| Property name | Alternative names | Programmatic name | Description |
-|--|--|--|--|
-| `AAD Federated Security` | `Federated Security`, `Federated`, `Fed`, `AADFed` | `FederatedSecurity` | A boolean value that instructs the client to perform Azure AD federated authentication. |
-| `Application Certificate SendX5c` | `Application Certificate Send Public Certificate`, `SendX5c` | `ApplicationCertificateSendX5c` | A boolean value that instructs the client to perform subject name and issuer based authentication. |
-| `Application Certificate Thumbprint` | `AppCert` | `ApplicationCertificateThumbprint` | A string value that provides the thumbprint of the client certificate to use when using an application client certificate authenticating flow. |
-| `Application Client Id` | `AppClientId` | `ApplicationClientId` | A string value that provides the application client ID to use when authenticating. |
-| `Application Key` | `AppKey` | `ApplicationKey` | A string value that provides the application key to use when authenticating using an application secret flow. |
-| `Application Name for Tracing` | `TraceAppName` | `ApplicationNameForTracing` | An optional string value that reports to the service which application name to use when tracing the request internally. |
-| `Application Token` | `AppToken` | `ApplicationToken` | A string value that instructs the client to perform application authenticating with the specified bearer token. |
-| `Authority Id` | `TenantId` | `Authority` | A string value that provides the name or ID of the tenant in which the application is registered. The default value is `microsoft.com`. For more information, see [Azure AD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
-| `Azure Region` | `AzureRegion`, `Region` | `AzureRegion` | A string value that provides the name of the Azure Region in which to authenticate. |
-| `ManagedServiceIdentity` | N/A | `EmbeddedManagedIdentity` | A string value that instructs the client which application identity to use with managed identity authentication. Use `system` to indicate the system-assigned identity.</br></br>This property can't be set with a connection string, only programmatically. |
-| `Application Certificate Subject Distinguished Name` | `Application Certificate Subject` | `ApplicationCertificateSubjectDistinguishedName` |  |
-| `Application Certificate Issuer Distinguished Name` | `Application Certificate Issuer` | `ApplicationCertificateIssuerDistinguishedName` |  |
-| `Application Certificate Send Public Certificate` | `Application Certificate SendX5c`, `SendX5c` | `ApplicationCertificateSendPublicCertificate` |  |
+| Property name | Programmatic name | Description |
+|--|--|--|
+| AAD Federated Security</br></br>Aliases: Federated Security, Federated, Fed, AADFed | FederatedSecurity | A boolean value that instructs the client to perform Azure AD federated authentication. |
+| Application Certificate SendX5c</br></br>Aliases: Application Certificate Send Public Certificate, SendX5c | ApplicationCertificateSendX5c | A boolean value that instructs the client to perform subject name and issuer based authentication. |
+| Application Certificate Thumbprint</br></br>Alias: AppCert | ApplicationCertificateThumbprint | A string value that provides the thumbprint of the client certificate to use when using an application client certificate authenticating flow. |
+| Application Client Id</br></br>Alias: AppClientId | ApplicationClientId | A string value that provides the application client ID to use when authenticating. |
+| Application Key</br></br>Alias: AppKey | ApplicationKey | A string value that provides the application key to use when authenticating using an application secret flow. |
+| Application Name for Tracing</br></br>Alias: TraceAppName | ApplicationNameForTracing | An optional string value that reports to the service which application name to use when tracing the request internally. |
+| Application Token</br></br>Alias: AppToken | ApplicationToken | A string value that instructs the client to perform application authenticating with the specified bearer token. |
+| Authority Id</br></br>Alias: TenantId | Authority | A string value that provides the name or ID of the tenant in which the application is registered. The default value is `microsoft.com`. For more information, see [Azure AD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
+| Azure Region</br></br>Aliases: AzureRegion, Region | AzureRegion | A string value that provides the name of the Azure Region in which to authenticate. |
+| ManagedServiceIdentity |  | EmbeddedManagedIdentity | A string value that instructs the client which application identity to use with managed identity authentication. Use `system` to indicate the system-assigned identity.</br></br>This property can't be set with a connection string, only programmatically. |
+| Application Certificate Subject Distinguished Name</br></br>Alias: Application Certificate Subject | ApplicationCertificateSubjectDistinguishedName |  |
+| Application Certificate Issuer Distinguished Name</br></br>Alias: Application Certificate Issuer | ApplicationCertificateIssuerDistinguishedName |  |
+| Application Certificate Send Public Certificate</br></br>Aliases: Application Certificate SendX5c, SendX5c | ApplicationCertificateSendPublicCertificate |  |
+
+### Supported property combinations for application authentication
 
 For application authentication, specify `AAD Federated Security` as `true`. Then, choose one of the following authentication modes, and specify the relevant properties for that mode.
 
-| Authentication mode | Properties |
-|--|--|
-| `WithAadApplicationKeyAuthentication` | `Application Client Id` (mandatory), `Application Key` (mandatory), `Authority Id` (mandatory). |
-| `WithAadApplicationThumbprintAuthentication` | `Application Client Id` (mandatory), `Application Certificate Thumbprint` (mandatory), `Authority Id` (mandatory) |
-| `WithAadApplicationSubjectAndIssuerAuthentication` | `Application Client Id` (mandatory), `Application Certificate Subject Distinguished Name` (mandatory), `Application Certificate Issuer Distinguished Name` (mandatory), `Authority Id` (mandatory), `Azure Region` (optional), `Application Certificate SendX5c` (optional) |
-| `WithAadApplicationSubjectNameAuthentication`: `Application Client Id` (mandatory), `Application Certificate Subject Distinguished Name` (mandatory), `Authority Id` (mandatory), `Azure Region` (optional). |
-| `WithAadApplicationTokenAuthentication` | `Application Token` (mandatory). |
+| Authentication mode | Mandatory properties | Optional properties |
+|--|--|--|
+| `WithAadApplicationKeyAuthentication` | Application Client Id, Application Key, and Authority Id. |  |
+| `WithAadApplicationThumbprintAuthentication` | Application Client Id, Application Certificate Thumbprint, and Authority Id ||
+| `WithAadApplicationSubjectAndIssuerAuthentication` | Application Client Id, Application Certificate Subject Distinguished Name, Application Certificate Issuer Distinguished Name, and Authority Id | Azure Region and Application Certificate SendX5c |
+| `WithAadApplicationSubjectNameAuthentication`| Application Client Id, Application Certificate Subject Distinguished Name, and Authority Id | Azure Region |
+| `WithAadApplicationTokenAuthentication` | Application Token |  |
 
 #### Authentication with an application certificate
 
@@ -116,11 +120,11 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 
 ### Client communication properties
 
-| Property name | Description |
-|--|--|--|--|
-| `Accept` | A boolean value that requests detailed error objects to be returned on failure. |
-| `Streaming` | A boolean value that requests the client not accumulate data before providing it to the caller. This is a default behavior. |
-| `Uncompressed` |  A boolean value that requests the client not ask for transport-level compression. |
+| Property name | Programmatic name | Description |
+|--|--|--|
+| `Accept` | `Accept` |A boolean value that requests detailed error objects to be returned on failure. |
+| `Streaming` | `Streaming` | A boolean value that requests the client not accumulate data before providing it to the caller. This is a default behavior. |
+| `Uncompressed` | `Uncompressed` | A boolean value that requests the client not ask for transport-level compression. |
 
 > [!NOTE]
 > When the `Streaming` flag is enabled (as is the default),
@@ -130,20 +134,6 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 > the caller properly disposes of the data (such as `IDataReader`)
 > once it is done reading the data, as the network connection
 > to the service is held open unnecessarily.
-
-## Understand the authentication flow
-
-One of the important tasks of the connection string is to tell the client how to authenticate to the service.
-The following algorithm is used by clients for authentication against HTTP/HTTPS endpoints:
-
-1. If `AadFederatedSecurity` is true:
-    1. If `UserToken` is specified, use Azure AD federated authentication with the specified token.
-    1. Otherwise, if `ApplicationToken` is specified, perform federated authentication with the specified token.
-    1. Otherwise, if `ApplicationClientId` and `ApplicationKey` are specified, perform federated authentication with the specified application client ID and key.
-    1. Otherwise, if `ApplicationClientId` and `ApplicationCertificateThumbprint` are specified, perform federated authentication with the specified application client ID and certificate.
-    1. Otherwise, perform federated authentication with the current logged-on user's identity. The user is prompted if this attempt is the first authentication in the session.
-
-1. Otherwise don't authenticate.
 
 ## Examples
 
