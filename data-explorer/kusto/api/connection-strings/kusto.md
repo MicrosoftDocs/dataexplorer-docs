@@ -24,7 +24,7 @@ The URI provides the service endpoint to communicate with:
 * (`https://help.kusto.windows.net`) - value of the `Data Source` property.
 * `Samples`(default database) - value of the`Initial Catalog` property.
 
-Two additional properties are provided using the name/value syntax: 
+Two more properties are provided using the name/value syntax: 
 
 * `Fed` property (also called `AAD Federated Security`) set to `true`.
 * `Accept` property set to `true`.
@@ -38,24 +38,22 @@ Two additional properties are provided using the name/value syntax:
 
 Several Kusto client tools support an extension over the URI prefix of the connection
 string, in that they allow the shorthand format `@` _ClusterName_ `/` _InitialCatalog_ to be used.
-For example, the connection string `@help/Samples` is translated by these tools
-to `https://help.kusto.windows.net/Samples; Fed=true`, which indicates three
-properties (`Data Source`, `Initial Catalog`, and `AAD Federated Security`).
+For example, these tools translate the connection string `@help/Samples` to `https://help.kusto.windows.net/Samples; Fed=true`, which indicates three properties: `Data Source`, `Initial Catalog`, and `AAD Federated Security`.
 
-Programmatically, Kusto connection strings can be parsed and manipulated
-by the C# `Kusto.Data.KustoConnectionStringBuilder` class. This class validates
+Programmatically, the C# `Kusto.Data.KustoConnectionStringBuilder` class can be parse
+and manipulate Kusto connection strings. This class validates
 all connection strings and generates a runtime exception if validation fails.
 This functionality is present in all flavors of Kusto SDK.
 
 ## Trusted endpoints
 
 A connection with a Kusto endpoint can only be established if that endpoint is trusted.
-The Kusto client trusts all endpoints whose hostname part is issued by the service
-(e.g., endpoints whose DNS hostname ends with `kusto.windows.net`) by default.
-The client won't establish connections to other endpoints; in order to allow that,
-one can use the `Kusto.Data.Common.KustoTrustedEndpoints` class to add additional endpoints
-to the list of trusted endpoints (by using either `SetOverridePolicy` which overrides
-the default policy, or `AddTrustedHosts` which adds new entries to the existing policy.)
+The Kusto client trusts all endpoints whose hostname part is issued by the service.
+For instance, endpoints whose DNS hostname ends with `kusto.windows.net`.
+
+By default, the client doesn't establish connections to other endpoints. In order to allow connections
+to other endpoints, use the `Kusto.Data.Common.KustoTrustedEndpoints` class to add endpoints
+to the list of trusted endpoints. `SetOverridePolicy` overrides the default policy, and `AddTrustedHosts` adds new entries to the existing policy.
 
 ```csharp
 KustoTrustedEndpoints.AddTrustedHosts(
@@ -72,8 +70,8 @@ KustoTrustedEndpoints.AddTrustedHosts(
 ## Connection string properties
 
 The following table lists all the properties you can specify in a Kusto connection string.
-It lists programmatic names (which is the name of the property in the
-`Kusto.Data.KustoConnectionStringBuilder` object) as well as additional property names that are aliases.
+It lists programmatic names, which is the name of the property in the
+`Kusto.Data.KustoConnectionStringBuilder` object, and other property names that are aliases.
 
 ### General properties
 
@@ -89,10 +87,10 @@ It lists programmatic names (which is the name of the property in the
 | Property name | Alternative names | Programmatic name | Description |
 |--|--|--|--|
 | AAD Federated Security | Federated Security, Federated, Fed, AADFed | FederatedSecurity | A Boolean value that instructs the client to perform Azure AD authentication. |
-| Authority Id | TenantId | Authority | A String value that provides the name or ID of the user's tenant. The default value is microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
-| Enforce MFA | MFA,EnforceMFA | EnforceMfa | A Boolean value that instructs the client to acquire a multifactor-authentication token |
-| User ID | UID, User | UserID | A String value that instructs the client to perform user authentication with the indicated user name |
-| User Name for Tracing |  | TraceUserName | A String value that reports to the service which user name to use when tracing the request internally |
+| Authority ID | TenantId | Authority | A String value that provides the name or ID of the user's tenant. The default value is microsoft.com. For more information, see [Azure AD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
+| Enforce MFA | MFA, EnforceMFA | EnforceMfa | A Boolean value that instructs the client to acquire a multifactor-authentication token. |
+| User ID | UID, User | UserID | A String value that instructs the client to perform user authentication with the indicated user name. |
+| User Name for Tracing |  | TraceUserName | A String value that reports to the service which user name to use when tracing the request internally. |
 | User Token | UsrToken, UserToken | UserToken | A String value that instructs the client to perform user authentication with the specified bearer token.<br/>Overrides ApplicationClientId, ApplicationKey, and ApplicationToken. (If specified, skips the actual client authentication flow in favor of the provided token.) |
 
 The following combinations of properties are supported (`AAD Federated Security` must be true for all of them):
@@ -100,20 +98,20 @@ The following combinations of properties are supported (`AAD Federated Security`
 * `WithAadUserPromptAuthentication`: `User ID` (optional) and `Authority Id` (optional).
 * `WithAadUserTokenAuthentication`: `User Token` (mandatory.)
 
-Note that `Enforce MFA` and `User Name for Tracing` are both optional, and can always be specified.
+`Enforce MFA` and `User Name for Tracing` are both optional, and can always be specified.
 
 ### Application authentication properties
 
 | Property name | Alternative names | Programmatic name | Description |
 |--|--|--|--|
-| AAD Federated Security | Federated Security, Federated, Fed, AADFed | FederatedSecurity | A Boolean value that instructs the client to perform Azure Active Directory (AAD) federated authentication |
+| AAD Federated Security | Federated Security, Federated, Fed, AADFed | FederatedSecurity | A Boolean value that instructs the client to perform Azure Active Directory (Azure AD) federated authentication |
 | Application Certificate SendX5c | Application Certificate Send Public Certificate, SendX5c | ApplicationCertificateSendX5c | A Boolean value that instructs the client to send the public key of the certificate to AAD |
 | Application Certificate Thumbprint | AppCert | ApplicationCertificateThumbprint | A String value that provides the thumbprint of the client certificate to use when using an application client certificate authenticating flow |
 | Application Client Id | AppClientId | ApplicationClientId | A String value that provides the application client ID to use when authenticating |
 | Application Key | AppKey | ApplicationKey | A String value that provides the application key to use when authenticating using an application secret flow |
 | Application Name for Tracing | TraceAppName | ApplicationNameForTracing | A String value that reports to the service which application name to use when tracing the request internally |
 | Application Token | AppToken | ApplicationToken | A String value that instructs the client to perform application authenticating with the specified bearer token |
-| Authority Id | TenantId | Authority | A String value that provides the name or ID of the tenant in which the application is registered. The default value is microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
+| Authority Id | TenantId | Authority | A String value that provides the name or ID of the tenant in which the application is registered. The default value is microsoft.com. For more information, see [Azure AD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
 | Azure Region | AzureRegion, Region | AzureRegion | A string value that provides the name of the Azure Region in which to authenticate. |
 | ManagedServiceIdentity | N/A | EmbeddedManagedIdentity | A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. This property can't be set with a connection string, only programmatically. |
 | Application Certificate Subject Distinguished Name | Application Certificate Subject | ApplicationCertificateSubjectDistinguishedName |  |
@@ -128,15 +126,15 @@ The following combinations of properties are supported (`AAD Federated Security`
 * `WithAadApplicationSubjectNameAuthentication`: `Application Client Id` (mandatory), `Application Certificate Subject Distinguished Name` (mandatory), `Authority Id` (mandatory), `Azure Region` (optional).
 * `WithAadApplicationTokenAuthentication`: `Application Token` (mandatory).
 
-Note that `Application Name for Tracing` is optional, and can always be specified.
+`Application Name for Tracing` is optional, and can always be specified.
 
 ### Client communication properties
 
 | Property name | Alternative names | Programmatic name | Description |
 |--|--|--|--|
 | Accept |  | Accept | A Boolean value that requests detailed error objects to be returned on failure. |
-| Streaming |  | Streaming | A Boolean value that requests the client won't accumulate data before providing it to the caller. |
-| Uncompressed |  | Uncompressed | A Boolean value that requests the client won't ask for transport-level compression. |
+| Streaming |  | Streaming | A Boolean value that requests the client not accumulate data before providing it to the caller. |
+| Uncompressed |  | Uncompressed | A Boolean value that requests the client not ask for transport-level compression. |
 
 > [!NOTE]
 > When the Streaming flag is enabled (as is the default),
@@ -150,29 +148,28 @@ Note that `Application Name for Tracing` is optional, and can always be specifie
 ## Authentication properties (details)
 
 One of the important tasks of the connection string is to tell the client how to authenticate to the service.
-The following algorithm is generally used by clients for authentication against HTTP/HTTPS endpoints:
+The following algorithm is used by clients for authentication against HTTP/HTTPS endpoints:
 
 1. If AadFederatedSecurity is true:
-    1. If UserToken is specified, use AAD federated authentication with the specified token
-    1. Otherwise, if ApplicationToken is specified, perform federated authentication with the specified token
-    1. Otherwise, if ApplicationClientId and ApplicationKey are specified, perform federated authentication with the specified application client ID and key
-    1. Otherwise, if ApplicationClientId and ApplicationCertificateThumbprint are specified, perform federated authentication with the specified application client ID and certificate
-    1. Otherwise, perform federated authentication with the current logged-on user's identity (user will be prompted if this is the first authentication in the session)
+    1. If UserToken is specified, use Azure AD federated authentication with the specified token.
+    1. Otherwise, if ApplicationToken is specified, perform federated authentication with the specified token.
+    1. Otherwise, if ApplicationClientId and ApplicationKey are specified, perform federated authentication with the specified application client ID and key.
+    1. Otherwise, if ApplicationClientId and ApplicationCertificateThumbprint are specified, perform federated authentication with the specified application client ID and certificate.
+    1. Otherwise, perform federated authentication with the current logged-on user's identity. The user is prompted if this attempt is the first authentication in the session.
 
 1. Otherwise don't authenticate.
 
-
-### AAD federated application authentication with application certificate
+### Azure AD federated application authentication with application certificate
 
 1. Authentication based on an application's certificate is supported only for web applications (and not for native client applications).
-1. The web application should be configured to accept the given certificate. [How to authentication based-on AAD application's certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
+1. The web application should be configured to accept the given certificate. [How to authentication based-on Azure AD application's certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 1. The web application should be configured as an authorized principal in the relevant Kusto cluster.
 1. The certificate with the given thumbprint should be installed (in Local Machine store or in Current User store).
 1. The certificate's public key should contain at least 2048 bits.
 
-## AAD-based authentication examples
+## Azure AD-based authentication examples
 
-**AAD Federated authentication using the currently logged-on user identity (user will be prompted if required)**
+**Azure AD Federated authentication using the currently logged-on user identity (user will be prompted if required)**
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -182,7 +179,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority}"
 ```
 
-**AAD Federated authentication with user id hint (user will be prompted if required)**
+**Azure AD Federated authentication with user id hint (user will be prompted if required)**
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -193,7 +190,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority};User ID={userId}"
 ```
 
-**AAD Federated application authentication using ApplicationClientId and ApplicationKey**
+**Azure AD Federated application authentication using ApplicationClientId and ApplicationKey**
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -222,7 +219,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadUserManagedIdentity(managedIdentityClientId);
 ```
 
-**AAD Federated authentication using user / application token**
+**Azure AD Federated authentication using user / application token**
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
