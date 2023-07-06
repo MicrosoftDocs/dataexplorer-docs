@@ -60,7 +60,7 @@ let plotly_anomaly_fl=(tbl:(*), time_col:string, val_col:string, baseline_col:st
                                 chart_title:string='Anomaly chart', series_name:string='Metric', val_name:string='Value')
 {
     let anomaly_chart = toscalar(PlotlyTemplate | where name == "anomaly" | project plotly);
-    let tbl_ex = tbl | extend _timestamp = column_ifexists(time_col, datetime(null)), _values = column_ifexists(val_col, 0.0), _baseline = column_ifexists(val_col, 0.0),
+    let tbl_ex = tbl | extend _timestamp = column_ifexists(time_col, datetime(null)), _values = column_ifexists(val_col, 0.0), _baseline = column_ifexists(baseline_col, 0.0),
                               _high_timestamp = column_ifexists(time_high_col, datetime(null)), _high_values = column_ifexists(val_high_col, 0.0), _high_size = column_ifexists(size_high_col, 1),
                               _low_timestamp = column_ifexists(time_low_col, datetime(null)), _low_values = column_ifexists(val_low_col, 0.0), _low_size = column_ifexists(size_low_col, 1);
     tbl_ex
@@ -96,7 +96,7 @@ plotly_anomaly_fl(tbl:(*), time_col:string, val_col:string, baseline_col:string,
                                 chart_title:string='Anomaly chart', series_name:string='Metric', val_name:string='Value')
 {
     let anomaly_chart = toscalar(PlotlyTemplate | where name == "anomaly" | project plotly);
-    let tbl_ex = tbl | extend _timestamp = column_ifexists(time_col, datetime(null)), _values = column_ifexists(val_col, 0.0), _baseline = column_ifexists(val_col, 0.0),
+    let tbl_ex = tbl | extend _timestamp = column_ifexists(time_col, datetime(null)), _values = column_ifexists(val_col, 0.0), _baseline = column_ifexists(baseline_col, 0.0),
                               _high_timestamp = column_ifexists(time_high_col, datetime(null)), _high_values = column_ifexists(val_high_col, 0.0), _high_size = column_ifexists(size_high_col, 1),
                               _low_timestamp = column_ifexists(time_low_col, datetime(null)), _low_values = column_ifexists(val_low_col, 0.0), _low_size = column_ifexists(size_low_col, 1);
     tbl_ex
@@ -133,7 +133,7 @@ let plotly_anomaly_fl=(tbl:(*), time_col:string, val_col:string, baseline_col:st
                                 chart_title:string='Anomaly chart', series_name:string='Metric', val_name:string='Value')
 {
     let anomaly_chart = toscalar(PlotlyTemplate | where name == "anomaly" | project plotly);
-    let tbl_ex = tbl | extend _timestamp = column_ifexists(time_col, datetime(null)), _values = column_ifexists(val_col, 0.0), _baseline = column_ifexists(val_col, 0.0),
+    let tbl_ex = tbl | extend _timestamp = column_ifexists(time_col, datetime(null)), _values = column_ifexists(val_col, 0.0), _baseline = column_ifexists(baseline_col, 0.0),
                               _high_timestamp = column_ifexists(time_high_col, datetime(null)), _high_values = column_ifexists(val_high_col, 0.0), _high_size = column_ifexists(size_high_col, 1),
                               _low_timestamp = column_ifexists(time_low_col, datetime(null)), _low_values = column_ifexists(val_low_col, 0.0), _low_size = column_ifexists(size_low_col, 1);
     tbl_ex
@@ -166,7 +166,8 @@ demo_make_series2
               nAnomalies=make_list_if(num1, anomalies1 < 0), nTimeStamp=make_list_if(TimeStamp1, anomalies1 < 0), nSize=make_list_if(toint(-score1*marker_scale), anomalies1 < 0)
 )
 | invoke plotly_anomaly_fl('TimeStamp', 'num', 'baseline', 'pTimeStamp', 'pAnomalies', 'pSize', 'nTimeStamp', 'nAnomalies', 'nSize',
-                           chart_title='Anomaly chart using plotly_anomaly_fl()', series_name=s_name, y_name='# of requests')
+                           chart_title='Anomaly chart using plotly_anomaly_fl()', series_name=s_name, val_name='# of requests')
+| render plotly
 ```
 
 ### [Stored](#tab/stored)
@@ -189,14 +190,15 @@ demo_make_series2
               nAnomalies=make_list_if(num1, anomalies1 < 0), nTimeStamp=make_list_if(TimeStamp1, anomalies1 < 0), nSize=make_list_if(toint(-score1*marker_scale), anomalies1 < 0)
 )
 | invoke plotly_anomaly_fl('TimeStamp', 'num', 'baseline', 'pTimeStamp', 'pAnomalies', 'pSize', 'nTimeStamp', 'nAnomalies', 'nSize',
-                           chart_title='Anomaly chart using plotly_anomaly_fl()', series_name=s_name, y_name='# of requests')
+                           chart_title='Anomaly chart using plotly_anomaly_fl()', series_name=s_name, val_name='# of requests')
+| render plotly
 ```
 
 ---
 
 **Output**
 
-The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards ](../../azure-data-explorer-dashboards.md).
+The output is a Plotly JSON string that can be rendered using '| render plotly' or in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards ](../../azure-data-explorer-dashboards.md).
 
 The following image shows a sample anomaly chart using the above function:
 
