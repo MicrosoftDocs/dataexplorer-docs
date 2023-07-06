@@ -83,7 +83,7 @@ For user authentication, specify `AAD Federated Security` as `true`. Then, choos
 
 | Property name | Alternative names | Programmatic name | Description |
 |--|--|--|--|
-| `AAD Federated Security` | `Federated Security`, `Federated`, `Fed`, `AADFed` | FederatedSecurity | A boolean value that instructs the client to perform Azure AD federated authentication. |
+| `AAD Federated Security` | `Federated Security`, `Federated`, `Fed`, `AADFed` | `FederatedSecurity` | A boolean value that instructs the client to perform Azure AD federated authentication. |
 | `Application Certificate SendX5c` | `Application Certificate Send Public Certificate`, `SendX5c` | `ApplicationCertificateSendX5c` | A boolean value that instructs the client to send the public key of the certificate to Azure AD. |
 | `Application Certificate Thumbprint` | `AppCert` | `ApplicationCertificateThumbprint` | A string value that provides the thumbprint of the client certificate to use when using an application client certificate authenticating flow. |
 | `Application Client Id` | `AppClientId` | `ApplicationClientId` | A string value that provides the application client ID to use when authenticating. |
