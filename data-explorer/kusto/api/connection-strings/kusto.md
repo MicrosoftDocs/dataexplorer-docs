@@ -109,11 +109,11 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 
 ### Client communication properties
 
-| Property name | Alternative names | Programmatic name | Description |
+| Property name | Description |
 |--|--|--|--|
-| Accept |  | Accept | A Boolean value that requests detailed error objects to be returned on failure. |
-| Streaming |  | Streaming | A Boolean value that requests the client not accumulate data before providing it to the caller. |
-| Uncompressed |  | Uncompressed | A Boolean value that requests the client not ask for transport-level compression. |
+| `Accept` | A boolean value that requests detailed error objects to be returned on failure. |
+| `Streaming` | A boolean value that requests the client not accumulate data before providing it to the caller. |
+| `Uncompressed` |  A boolean value that requests the client not ask for transport-level compression. |
 
 > [!NOTE]
 > When the Streaming flag is enabled (as is the default),
