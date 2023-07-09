@@ -9,7 +9,7 @@ ms.topic: how-to
 
 In this guide, you learn [how to migrate](https://azure.microsoft.com/migration/migration-journey) your Elasticsearch data to Azure Data Explorer, by using [Logstash](https://www.elastic.co/products/logstash).
 
-In this guide, the data to be migrated is in an index named **vehicle** that has the following data schema:
+In this guide, the data to be migrated is in an Elasticsearch index named **vehicle** that has the following data schema:
 
 ```json
 {
@@ -33,9 +33,9 @@ To migrate your Elasticsearch data to Azure Data Explorer, you need:
 
 After you have met the prerequisites, you're ready to discover the topology of your environment and assess the feasibility of your [Azure cloud migration](https://azure.microsoft.com/migration).
 
-### Create target schema in your cluster
+### Create target schema in your Azure Data Explorer cluster
 
-To properly ingest and structure the data for querying and analysis, you need to create a table schema and a mapping in your cluster.
+To properly ingest and structure the data for querying and analysis, you need to create a table schema and a mapping in your Azure Data Explorer cluster.
 
 The schema of the table and the data being migrated should match. The ingestion mapping is important to establish the mapping of the source columns in ELK to the target columns in your table.
 
@@ -69,13 +69,13 @@ To create a table schema and ingestion mapping in your cluster:
 
 ### Prepare Logstash for migration
 
-When migrating data to your cluster, it's important to properly set up a [Logstash pipeline](https://www.elastic.co/guide/en/logstash/current/configuration.html). The pipeline ensures that data is correctly formatted and transferred to the target table.
+When migrating data to your Azure Data Explorer cluster, it's important to properly set up a [Logstash pipeline](https://www.elastic.co/guide/en/logstash/current/configuration.html). The pipeline ensures that data is correctly formatted and transferred to the target table.
 
-If you need to move data from multiple Elasticsearch clusters or indices, you can create multiple input sections in the pipeline configuration file. To achieve this, you can define one input section for each cluster or index and categorize them using tags if you wish. Then, you can use these tags in conditional statements in the output section to direct these data sets to specific cluster tables
+If you need to move data from multiple Elasticsearch clusters or indices, you can create multiple input sections in the pipeline configuration file. To achieve this, you can define one input section for each Elasticsearch cluster or index and categorize them using tags if you wish. Then, you can use these tags in conditional statements in the output section to direct these data sets to specific Azure Data Explorer cluster tables
 
 To set up a Logstash pipeline:
 
-1. In a command shell, navigate to the Logstash root directory, and then run the following command to install the [Logstash output plugin](https://github.com/Azure/logstash-output-kusto).
+1. In a command shell, navigate to the Logstash root directory, and then run the following command to install the [Logstash output plugin](https://github.com/Azure/logstash-output-kusto). For more information about the plugin, see [Ingest data from Logstash](ingest-data-logstash.md).
 
     ```bash
     bin/logstash-plugin install logstash-output-kusto
@@ -107,7 +107,7 @@ To set up a Logstash pipeline:
     output {
       kusto {
         path => "/tmp/region1/%{+YYYY-MM-dd}-%{[@metadata][timebucket]}.txt"
-        ingest_url => "https://ingest-<cluster_name>.<cluster_region>.kusto.windows.net"
+        ingest_url => "https://ingest-<azure_data_explorer_cluster_name>.<region>.kusto.windows.net"
         app_id => "<app_id>"
         app_key => "<app_secret>"
         app_tenant => "<app_tenant_id>"
@@ -127,7 +127,7 @@ To set up a Logstash pipeline:
     | **query** | Optional query to get specific data from the index. |
     | **user**| User name to connect to Elasticsearch cluster. |
     | **password** | Password to connect to Elasticsearch cluster. |
-    | **tags** | Optional tags to identify the source of the data. For example, `tags => ["vehicle"]`. |
+    | **tags** | Optional tags to identify the source of the data. For example, specify `tags => ["vehicle"]` in the **elasticsearch** section, and then filter using `if "vehicle" in [tags] { ... }` wrapping the **kusto** section. |
     | **ssl** | Specifies whether an SSL certificate is required. |
     | **ca_file** | The certificate file to pass for authentication. |
 
@@ -164,9 +164,9 @@ After the migration is complete, you need to go through a series of post-migrati
 
 The process of data validation for a specific index generally consists of the following activities:
 
-**Data comparison**: Compare the migrated data in your cluster to the original data in Elasticsearch. You can do this using a tool like Kibana in ELK stack that allows you to query and visualize the data in both environments.
+**Data comparison**: Compare the migrated data in your Azure Data Explorer cluster to the original data in Elasticsearch. You can do this using a tool like Kibana in ELK stack that allows you to query and visualize the data in both environments.
 
-**Query execution**: Run a series of queries against the migrated data in your cluster to ensure that the data is accurate and complete. This includes running queries that test the relationships between different fields, and queries that test the data's integrity.
+**Query execution**: Run a series of queries against the migrated data in your Azure Data Explorer cluster to ensure that the data is accurate and complete. This includes running queries that test the relationships between different fields, and queries that test the data's integrity.
 
 **Check for missing data**: Compare the migrated data in your cluster with the data in Elasticsearch to check for missing data, duplicate data, or any other data inconsistencies.
 
