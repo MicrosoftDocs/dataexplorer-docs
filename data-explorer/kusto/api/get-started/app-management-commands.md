@@ -316,7 +316,7 @@ namespace ManagementCommands
           .WithAadUserPromptAuthentication();
 
       using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kcsb)) {
-        string database = "Playground";
+        string database = "<your_database>";
         string table = "MyStormEvents";
 
         // Create a table named MyStormEvents
@@ -361,7 +361,7 @@ def main():
 
   with KustoClient(kcsb) as kusto_client:
 
-    database = "Playground"
+    database = "<your_database>"
     table = "MyStormEvents"
 
     # Create a table named MyStormEvents
@@ -405,7 +405,7 @@ async function main() {
   const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
   const kustoClient = new kustoLibraryClient(kcsb);
 
-  const database = "Playground";
+  const database = "<your_database>";
   const table = "MyStormEvents";
 
   // Create a table named MyStormEvents
@@ -457,7 +457,7 @@ public class ManagementCommands {
       String clusterUri = "https://adxdocscluster.westeurope.kusto.windows.net";
       ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
       try (Client kustoClient = ClientFactory.createClient(kcsb)) {
-        String database = "Playground";
+        String database = "<your_database>";
         String table = "MyStormEvents";
 
         // Create a table named MyStormEvents
