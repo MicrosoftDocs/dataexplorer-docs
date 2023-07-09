@@ -587,6 +587,10 @@ items:
       displayName: SQL Server, ODBC
     - name: Microsoft Purview
       href: purview.md
+  - name: Migrate
+    items:
+    - name: Migrate from Elasticsearch
+      href: migrate-elasticsearch-to-azure-data-explorer.md
 - name: Kusto Query Language
   href: kusto/query/toc.yml
 - name: Management commands
