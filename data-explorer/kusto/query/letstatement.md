@@ -24,6 +24,9 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 `let` *Name* `=` *Expression*
 
+> [!IMPORTANT]
+> Let statements must be followed by a semicolon. There can be no blank lines between let statements or between let statements and other query statements.
+
 ### Parameters
 
 |Name|Type|Required|Description|
@@ -34,6 +37,9 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 ## Syntax: View or function
 
 `let` *Name* `=` [`view`] `(`[ *Parameters* ]`)` `{` *FunctionBody* `}`
+
+> [!IMPORTANT]
+> Let statements must be followed by a semicolon. There can be no blank lines between let statements or between let statements and other query statements.
 
 ### Parameters
 
