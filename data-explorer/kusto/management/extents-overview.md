@@ -135,14 +135,10 @@ Tags with the prefix `ingest-by:` can be used together with the `ingestIfNotExis
 
 The `ingestIfNotExists` property prevents duplicate ingestion by checking if an extent with the specified `ingest-by:` tag already exists. Typically, an ingest command contains an `ingest-by:` tag and the `ingestIfNotExists` property with the same value.
 
-The values for both `tags` and `ingestIfNotExists` are arrays of strings serialized as JSON.
-
 > [!NOTE]
 >
-> * Attempting to set a unique `ingest-by` tag for each ingestion call might severely impact performance.
+> * Setting a unique `ingest-by` tag for each ingestion call might impact performance.
 > * If the pipeline is known to have data duplications, we recommend that you solve these duplications before ingesting data.
-> * If `ingest-by` tags aren't required some time after the data is ingested, we recommend that you [drop extent tags](drop-extent-tags.md). To drop
-> tags automatically, set an [extent tags retention policy](extent-tags-retention-policy.md).
 
 #### Examples
 
@@ -169,3 +165,8 @@ The following command ingests the data so long as no extent in the table has the
 ```kusto
 .ingest ... with (ingestIfNotExists = '["2016-02-17"]', tags = '["ingest-by:2016-02-17"]')
 ```
+
+## See also
+
+* [drop extent tags](drop-extent-tags.md)
+* [extent tags retention policy](extent-tags-retention-policy.md)
