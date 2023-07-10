@@ -131,29 +131,41 @@ You can issue a command to drop extents according to their `drop-by:` tag.
 
 ### 'ingest-by:' extent tags
 
-Tags that start with an `ingest-by:` prefix can be used to ensure that data
-is only ingested once. You can issue an **`ingestIfNotExists`** property command that prevents the data from being ingested if there already exists an extent with this specific `ingest-by:` tag.
-The values for both `tags` and `ingestIfNotExists` are arrays of strings,
-serialized as JSON.
+Tags with the prefix `ingest-by:` can be used together with the `ingestIfNotExists` property to ensure that data is ingested only once.
 
-The following example ingests data only once. The 2nd and 3rd commands do nothing:
+The `ingestIfNotExists` property prevents duplicate ingestion by checking if an extent with the specified `ingest-by:` tag already exists. Typically, an ingest command contains an `ingest-by:` tag and the `ingestIfNotExists` property with the same value.
+
+The values for both `tags` and `ingestIfNotExists` are arrays of strings serialized as JSON.
+
+> [!NOTE]
+>
+> * Attempting to set a unique `ingest-by` tag for each ingestion call might severely impact performance.
+> * If the pipeline is known to have data duplications, we recommend that you solve these duplications before ingesting data.
+> * If `ingest-by` tags aren't required some time after the data is ingested, we recommend that you [drop extent tags](drop-extent-tags.md). To drop
+> tags automatically, set an [extent tags retention policy](extent-tags-retention-policy.md).
+
+#### Examples
+
+##### Add a tag on ingestion
+
+The following command ingests the data and adds the tag `ingest-by:2016-02-17`.
 
 ```kusto
 .ingest ... with (tags = '["ingest-by:2016-02-17"]')
-
-.ingest ... with (ingestIfNotExists = '["2016-02-17"]')
-
-.ingest ... with (ingestIfNotExists = '["2016-02-17"]', tags = '["ingest-by:2016-02-17"]')
 ```
 
-> [!NOTE]
-> Generally, an ingest command is likely to include
-> both an `ingest-by:` tag and an `ingestIfNotExists` property,
-> set to the same value, as shown in the 3rd command above.
+##### Prevent duplicate ingestion
 
-> [!WARNING]
-> * Overusing `ingest-by` tags isn't recommended.
-> * If the pipeline feeding Kusto is known to have data duplications, we recommend that you solve these duplications as much as possible, before ingesting the data into Kusto.
-> * Attempting to set a unique `ingest-by` tag for each ingestion call might severely impact performance.
-> * If such tags aren't required for some period of time after the data is ingested, we recommend that you [drop extent tags](drop-extent-tags.md).
->   * To drop the tags automatically, you can set an [extent tags retention policy](extent-tags-retention-policy.md).
+The following command ingests the data so long as no extent in the table has the `ingest-by:2016-02-17` tag.
+
+```kusto
+.ingest ... with (ingestIfNotExists = '["2016-02-17"]')
+```
+
+##### Prevent duplicate ingestion and add a tag to any new data
+
+The following command ingests the data so long as no extent in the table has the `ingest-by:2016-02-17` tag and tags any newly ingested data with the `ingest-by:2016-02-17` tag.
+
+```kusto
+.ingest ... with (ingestIfNotExists = '["2016-02-17"]', tags = '["ingest-by:2016-02-17"]')
+```
