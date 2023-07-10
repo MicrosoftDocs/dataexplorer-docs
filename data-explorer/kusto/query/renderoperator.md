@@ -45,23 +45,23 @@ three kinds of columns:
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-| *visualization*                                         | Description                                                                                                                                                                                                       |
-|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [ `anomalychart`](visualization-anomalychart.md)        | Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
-| [`areachart`](visualization-areachart.md)               | Area graph.                                                                                                                                                                                                       |
-| [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.                                                                                                                                                                                   |
-| [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.                                                                                                                                       |
-| [`columnchart`](visualization-columnchart.md)           | Like `barchart` with vertical strips instead of horizontal strips.                                                                                                                                                |
-| [`ladderchart`](visualization-ladderchart.md)           | Last two columns are the x-axis, other columns are y-axis.                                                                                                                                                        | 
-| [`linechart`](visualization-linechart.md)               | Line graph.                                                                                                                                                                                                       |
-| [`piechart`](visualization-piechart.md)                 | First column is color-axis, second column is numeric.                                                                                                                                                             |
-| [`pivotchart`](visualization-pivotchart.md)             | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types.                                                                                                      |
-| [`scatterchart`](visualization-scatterchart.md)         | Points graph.                                                                                                                                                                                                     |
-| [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph.                                                                                                                                                                                               |
-| [`table`](visualization-table.md)                       | Default - results are shown as a table.                                                                                                                                                                           |
-| [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes.                                                                                                                     |
-| [`timepivot`](visualization-timepivot.md)               | Interactive navigation over the events time-line (pivoting on time axis)                                                                                                                                          |
-| [`treemap`](visualization-treemap.md) | Displays hierarchical data as a set of nested rectangles.
+| *visualization*| Description| Illustration |
+|-----------|------------|---------|
+| [ `anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. | ::: image type="icon" source="images/renderoperator/anomaly-chart.png" border="false"::: |
+| [`areachart`](visualization-areachart.md)               | Area graph.|
+| [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.|
+| [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.|
+| [`columnchart`](visualization-columnchart.md)           | Like `barchart` with vertical strips instead of horizontal strips.|
+| [`ladderchart`](visualization-ladderchart.md)           | Last two columns are the x-axis, other columns are y-axis.|
+| [`linechart`](visualization-linechart.md)               | Line graph. |
+| [`piechart`](visualization-piechart.md)                 | First column is color-axis, second column is numeric.|
+| [`pivotchart`](visualization-pivotchart.md)             | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types.|
+| [`scatterchart`](visualization-scatterchart.md)         | Points graph.|
+| [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph.|
+| [`table`](visualization-table.md)                       | Default - results are shown as a table.|
+| [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. |
+| [`timepivot`](visualization-timepivot.md)               | Interactive navigation over the events time-line (pivoting on time axis)|
+| [`treemap`](visualization-treemap.md) | Displays hierarchical data as a set of nested rectangles.|
 
 > [!NOTE]
 > The ladderchart, pivotchart, timepivot, and treemap visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
