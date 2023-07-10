@@ -23,7 +23,7 @@ Calculates the number of the specified periods between two [datetime](./scalar-d
 
 ### Possible values of *period*
 
-These values are case insensitive
+These values are case insensitive:
 
 * Year
 * Quarter
