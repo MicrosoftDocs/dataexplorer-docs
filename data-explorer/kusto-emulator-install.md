@@ -118,7 +118,7 @@ The following steps are for using PowerShell to start the emulator using the [Ku
 
 You can use any of the following options when running the emulator:
 
-- Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. Mounting a host folder enables your queries to interact with local files, which is useful for [creating a database persitent between container runs](#create-a-database) and [ingesting data](#ingest-data).
+- Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. Mounting a host folder enables your queries to interact with local files, which is useful for [creating a database persistent between container runs](#create-a-database) and [ingesting data](#ingest-data).
 
     For example, to mount the folder "D:\host\local" on the host to the folder "c:\kustodatadata" in the container, use the following command on Windows Server:
 
@@ -173,7 +173,7 @@ In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mod
 
 To ingest data, you must first create an external table linked to a file and then ingest the data into a table in the database.
 
-Use the steps in the following example to create an external table and ingest data into it. For the example, in the local folder *c:\kustodata\sample*, you'll create a file called `sample.csv` with the following data:
+Use the steps in the following example to create an external table and ingest data into it. For the example, in the local folder *c:\kustodata*, you'll create a file called `sample.csv` with the following data:
 
 ```text
 Alice, 1
