@@ -3,7 +3,7 @@ title:  The between operator
 description: Learn how to use the between operator to return a record set of values in an inclusive range for which the predicate evaluates to true. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 07/10/2023
 ---
 # between operator
 
@@ -51,7 +51,7 @@ range x from 1 to 100 step 1
 |54|
 |55|
 
-### Filter datetime
+### Filter by date
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp4ChrixgaYmyKTk/NK8EgBluyagXgAAAA==" target="_blank">Run the query</a>
@@ -68,7 +68,17 @@ StormEvents
 |---|
 |476|
 
-### Filter datetime using a timespan range
+### Filter by date and time
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrpGhiGGBhaGRtYGRhoKujpKWBVYAGUBSnQBACfbZMpZwAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where StartTime between (datetime(2007-12-01T01:30:00) .. datetime(2007-12-01T08:00:00))
+```
+
+### Filter using a timespan range
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp6CcYomSF9yfmleCQCGAqjRTAAAAA==" target="_blank">Run the query</a>
