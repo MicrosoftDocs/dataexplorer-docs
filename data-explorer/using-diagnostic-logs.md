@@ -72,11 +72,11 @@ Diagnostic logs are disabled by default. To enable diagnostic logs, do the follo
 1. Select **Add diagnostic setting**.
 1. In the **Diagnostic settings** window:
 
-    :::image type="content" source="media/using-diagnostic-logs/configure-diagnostics-settings.png" alt-text="Configure diagnostics settings.":::
+    :::image type="content" source="media/using-diagnostic-logs/configure-diagnostics-settings.png" alt-text="Screenshot of the Diagnostic settings screen, on which you configure which monitoring data to collect for your Azure Data Explorer cluster.":::
 
     1. Enter a **Diagnostic setting name**.
     1. Select one or more targets: a Log Analytics workspace, a storage account, or an event hub.
-    1. Select logs to be collected: `SucceededIngestion`, `FailedIngestion`, `IngestionBatching`, `Command`, or `Query`, `TableUsageStatistics`, or `TableDetails`.
+    1. Select logs to be collected: **Succeeded ingestion**, **Failed ingestion**, **Ingestion batching**, **Command**, **Query**, **Table usage statistics**, **Table details**, or **Journal**.
     1. Select [metrics](using-metrics.md#supported-azure-data-explorer-metrics) to be collected (optional).  
     1. Select **Save** to save the new diagnostic logs settings and metrics.
 
