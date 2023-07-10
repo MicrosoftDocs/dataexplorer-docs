@@ -18,8 +18,10 @@ items:
   items:
   - name: Cross-cluster queries and schema changes
     href: ../concepts/cross-cluster-and-schema-changes.md
+    displayName: cross cluster
   - name: Cross-database and cross-cluster queries
     href: cross-cluster-or-database-queries.md
+    displayName: cross cluster
 - name: Entities
   items:
   - name: Entity types
@@ -156,6 +158,7 @@ items:
         href: join-rightanti.md
     - name: Cross-cluster join
       href: joincrosscluster.md
+      displayName: cross cluster
     - name: Broadcast join
       href: broadcastjoin.md
     - name: Time window join
