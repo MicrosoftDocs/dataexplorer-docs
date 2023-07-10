@@ -71,12 +71,19 @@ StormEvents
 ### Filter by date and time
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrpGhiGGBhaGRtYGRhoKujpKWBVYAGUBSnQBACfbZMpZwAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLCoJycxNVUhKLSlPTc1T0EhJLEktAYpoGBkYmOsaGukaGIYYGFoZG1gZGGgq6OkpYFVgAZQFKdAEGp2cX5pXAgDpcS3kbgAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
 | where StartTime between (datetime(2007-12-01T01:30:00) .. datetime(2007-12-01T08:00:00))
+| count
 ```
+
+**Output**
+
+|Count|
+|---|
+|301|
 
 ### Filter using a timespan range
 
