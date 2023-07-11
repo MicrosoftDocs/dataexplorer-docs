@@ -55,7 +55,7 @@ three kinds of columns:
 | [`ladderchart`](visualization-ladderchart.md)           | Last two columns are the x-axis, other columns are y-axis.| :::image type="icon" source="images/renderoperator/ladder-chart.png" border="false":::
 | [`linechart`](visualization-linechart.md)               | Line graph. | :::image type="icon" source="images/renderoperator/line-chart.png" border="false"::: |
 | [`piechart`](visualization-piechart.md)                 | First column is color-axis, second column is numeric.| :::image type="icon" source="images/renderoperator/pie-chart.png" border="false"::: |
-| [`pivotchart`](visualization-pivotchart.md)             | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types.|
+| [`pivotchart`](visualization-pivotchart.md)             | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types.| :::image type="icon" source="images/renderoperator/pivot-chart.png" border="false"::: |
 | [`scatterchart`](visualization-scatterchart.md)         | Points graph.| :::image type="icon" source="images/renderoperator/scatter-chart.png" border="false"::: |
 | [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph.| :::image type="icon" source="images/renderoperator/stacked-area-chart.png" border="false"::: |
 | [`table`](visualization-table.md)                       | Default - results are shown as a table.| :::image type="icon" source="images/renderoperator/table-visualization.png" border="false"::: |
