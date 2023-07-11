@@ -50,9 +50,9 @@ three kinds of columns:
 | [`anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. | :::image type="icon" source="images/renderoperator/anomaly-chart.png" border="false"::: |
 | [`areachart`](visualization-areachart.md)               | Area graph.| :::image type="icon" source="images/renderoperator/area-chart.png" border="false"::: |
 | [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.| :::image type="icon" source="images/renderoperator/bar-chart.png" border="false"::: |
-| [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.|
+| [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.| :::image type="icon" source="images/renderoperator/card.png" border="false":::
 | [`columnchart`](visualization-columnchart.md)           | Like `barchart` with vertical strips instead of horizontal strips.| :::image type="icon" source="images/renderoperator/column-chart.png" border="false"::: |
-| [`ladderchart`](visualization-ladderchart.md)           | Last two columns are the x-axis, other columns are y-axis.|
+| [`ladderchart`](visualization-ladderchart.md)           | Last two columns are the x-axis, other columns are y-axis.| :::image type="icon" source="images/renderoperator/ladder-chart.png" border="false":::
 | [`linechart`](visualization-linechart.md)               | Line graph. | :::image type="icon" source="images/renderoperator/line-chart.png" border="false"::: |
 | [`piechart`](visualization-piechart.md)                 | First column is color-axis, second column is numeric.| :::image type="icon" source="images/renderoperator/pie-chart.png" border="false"::: |
 | [`pivotchart`](visualization-pivotchart.md)             | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types.| :::image type="icon" source="images/renderoperator/area-chart.png" border="false"::: |
