@@ -47,7 +47,7 @@ three kinds of columns:
 
 | *visualization*| Description| Illustration |
 |-----------|------------|---------|
-| [ `anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. | ::: image type="icon" source="images/renderoperator/anomaly-chart.png" border="false"::: |
+| [ `anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. | :::image type="icon" source="images/renderoperator/anomaly-chart.png" border="false"::: |
 | [`areachart`](visualization-areachart.md)               | Area graph.|
 | [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.|
 | [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.|
