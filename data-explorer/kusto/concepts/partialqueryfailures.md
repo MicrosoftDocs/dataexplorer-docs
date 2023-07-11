@@ -35,7 +35,7 @@ ways:
   result stream from the service, locate the `QueryStatus` result, and
   make sure no record in this result has a `Severity` of `2` or smaller.
 
-> [!WARN]
+> [!WARNING]
 > To expedite delivery of a partial query failure, Kusto may in some cases
 > "flush" the result stream, yielding incorrect results. As a result, the consumer should
 > ignore the entire result if observing a partial query failure.
