@@ -3,7 +3,7 @@ title: Integrate MATLAB with Azure Data Explorer
 description: This article describes how to integrate MATLAB with Azure Data Explorer.
 ms.reviewer: ramacg
 ms.topic: how-to
-ms.date: 07/05/2023
+ms.date: 07/11/2023
 ---
 
 # Integrate MATLAB with Azure Data Explorer
@@ -12,7 +12,7 @@ MATLAB is a programming and numeric computing platform used to analyze data, dev
 
 ## Prerequisites
 
-The prerequisites vary based on the operating system used to run MATLAB. To get started, select the relevant tab.
+Select the tab for the operating system used to run MATLAB.
 
 ### [Windows OS](#tab/windows)
 
@@ -73,11 +73,9 @@ The prerequisites vary based on the operating system used to run MATLAB. To get 
 
 With user authentication, the user is prompted to sign-in through a browser window. Upon successful sign-in, a user authorization token is granted. This section shows how to configure this interactive sign-in flow.
 
-Select the relevant tab.
+To perform user authentication:
 
 ### [Windows OS](#tab/windows)
-
-To perform user authentication:
 
 1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](kusto/api/rest/authenticate-with-msal.md#authentication-parameters).
 
@@ -191,11 +189,9 @@ To perform user authentication:
 
 Azure AD application authorization can be used for scenarios where interactive sign-in isn't desired and automated runs are necessary.
 
-Select the relevant tab.
+To perform application authentication:
 
 ### [Windows OS](#tab/windows)
-
-To perform application authentication:
 
 1. [Provision an Azure AD application](provision-azure-ad-app.md). For the **Redirect URI**, select **Web** and input http://localhost:8675 as the URI.
 

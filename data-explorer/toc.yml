@@ -244,6 +244,8 @@ items:
         href: query-monitor-data.md
       - name: Export and query Azure Monitor data
         href: query-exported-azure-monitor-data.md
+    - name: Query data in MATLAB
+      href: query-matlab.md
     - name: Query data using Power Apps
       href: power-apps-connector.md
     - name: Query data using Python
@@ -586,9 +588,6 @@ items:
       displayName: SQL Server, ODBC
     - name: Microsoft Purview
       href: purview.md
-    - name: MATLAB
-      href: integrate-matlab.md
-      displayName: matlab
 - name: Kusto Query Language
   href: kusto/query/toc.yml
 - name: Management commands
