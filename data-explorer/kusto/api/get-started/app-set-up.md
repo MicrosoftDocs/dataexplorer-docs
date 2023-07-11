@@ -13,7 +13,7 @@ In this article, you learn how to install client library packages for your prefe
 
 ## Prerequisites
 
-Select the prerequisites based on the programming language used to create your app.
+Select the prerequisites for the programming language used to create your app.
 
 ### [C\#](#tab/csharp)
 
