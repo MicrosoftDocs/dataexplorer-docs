@@ -1,6 +1,6 @@
 ---
-title: Integrate MATLAB with Azure Data Explorer
-description: This article describes how to integrate MATLAB with Azure Data Explorer.
+title: Query data in MATLAB with Azure Data Explorer
+description: This article describes how to query data in MATLAB with Azure Data Explorer.
 ms.reviewer: ramacg
 ms.topic: how-to
 ms.date: 07/11/2023
