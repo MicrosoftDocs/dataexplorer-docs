@@ -13,7 +13,7 @@ Rules for parameter types and CSL statements are the same as for [let statements
 
 ## Permissions
 
-You must have at least [Database User](access-control/role-based-access-control.md) permissions to run this command.
+This command requires [Database User](access-control/role-based-access-control.md) permissions for creating a new function, and [Function Admin](access-control/role-based-access-control.md) permissions for altering an existing function.
 
 ## Syntax
 
