@@ -159,7 +159,7 @@ The following command ingests the data so long as no extent in the table has the
 
 ##### Prevent duplicate ingestion and add a tag to any new data
 
-The following command ingests the data so long as no extent in the table has the `ingest-by:2016-02-17` tag and tags any newly ingested data with the `ingest-by:2016-02-17` tag.
+The following command ingests the data so long as no extent in the table has the `ingest-by:2016-02-17` tag. Any newly ingested data gets the `ingest-by:2016-02-17` tag.
 
 ```kusto
 .ingest ... with (ingestIfNotExists = '["2016-02-17"]', tags = '["ingest-by:2016-02-17"]')
