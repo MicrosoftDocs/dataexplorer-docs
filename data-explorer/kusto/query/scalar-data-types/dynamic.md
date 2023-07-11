@@ -17,7 +17,7 @@ The `dynamic` scalar data type is special in that it can take on any value  of o
   The property bag has zero or more such mappings (called "slots"), indexed by the unique `string` values. The slots are unordered.
 
 > [!NOTE]
-> * Values of type `dynamic` are limited to 1MB (2^20), uncompressed.
+> * Values of type `dynamic` are limited to 1MB (2^20), uncompressed. If a cell value in a record exceeds 1MB, the value is dropped and ingestion succeeds. You can increase the `MaxValueSize` of the column by changing its [encoding policy](../../management/alter-encoding-policy.md).
 > * Although the `dynamic` type appears JSON-like, it can hold values that the JSON
 >   model does not represent because they don't exist in JSON (e.g.,
 >   `long`, `real`, `datetime`, `timespan`, and `guid`).
