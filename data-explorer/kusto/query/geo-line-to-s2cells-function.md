@@ -52,12 +52,12 @@ Array of S2 cell token strings that cover a line or a multiline. If radius is se
  * Changing [join kind and hint](joinoperator.md) may improve performance and memory consumption.
  * In case positive radius is set, reverting to radius 0 on buffered shape using [geo_line_buffer()](geo-line-buffer-function.md) may improve performance.
 
-## Example
+## Examples
 
-The following query finds all tube stations within 500 meters of famous streets.
+The following query finds all tube stations within 500 meters of streets.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5VUy3KbMBTd8xUaNoUZ4kgYgXDqTZadLDqTZcbDKEi1FWPJA3IebfrvvZIAO8mqrKT7OPecI4lOWtRzoU4DWiOK8U3UQcSeHmUzWG6V0S4hOKz5YyeTy0yj+UGuBtsrvc1Qp7erXvIOVtyukFum0UOE4Ivv7QL9gOLhG/rJ+32cofG7wguyLCjBFaMlw7BmZYYoWRR1TWpSUEYZqfLMw6D4zmhhNLrtldhKNNIANIDBrKjziuakdChLVnkYigtWlUtSFgUGuBHn+hodTC+9zAlliDZBO+iR0n5UHWKf9CotV+INYqqdhd6e2j1kd/wAQjveSiA31iR/Yvt2lPEqvoPOe48SZ3FrTC+U5lYO8erhwRtS1yUtK8xytgQ1mddBasxwnheMUbrJfF2BGQOlbOl14yIUYpJDZ1WCeflm8zcNmj9aFw7gf4lhVhGahyk1rctAA0gsCxyiJSH4PHOyeXR0MvjJKN108ll24DEpQvAIQW/6h6sXcs5plzoAl17xTv2eTmRA70i+WqkFUgIqtHxpticlkjQNrb1v9Gw8il+9o2NvnmRroSlDrXmWTjLUbaVpXFljTTPkrey6IXH77IJzNj6XdIQ6PF/J1yMHBjOQNcgZan4l4a5MpQ4EwfUQa6W17NEOJC+gBGRt39aPveGi5YP11Uk0PZHgzLydBX/i7cvOxJPO31FuL7kHIimCezB130TOonfUGbM/HUerIa9ENE8SCs5Dt3KcNG3PI13XxUC3TaH9ZSfh9Ofu7+vRuuh8AF9+Jxm6eGvZ3PwP1BOCmacEAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5VTTXObMBC98yt2uBRmiCNhBMKpLzl2cuhMjhkPI4PqKAHJAyKJW/e/dyXwR3IrF6TV7tv3nlattNCLRo0DrIERche0GLHjVlaDFVYZ7Q4agWuxbWV0fVJp0cnVYHuldwm0erfqpWhxJewK3DIOngLAL3y0C/iBycM3+Cn61zCB+bshC7rMGCUFZzknuOZ5AowusrKkJc0YZ5wWaeJhIHwwujEa7nvV7CTMNBANYQjPyrRgKc0dypIXHoaRjBf5kuZZRhBuxrm9hc70EvZGaTsEm0k0CpHSfpY7xb4IVVqumgPGVH1WeD/Wr3j6LDpU2IpaIqs5J/oT2sNehqvwASsfPUqYhLUxfaO0sHIIV09P3omyzFleEJ7yJcpIvABaEk7SNOOcsU3i8zLCOUrkSy+YZFMioSlWFjm6lm42f+NJ7GfPJuf/lxjhBWXp1KVkZT7RQBLLjEzRnFJy6Xny1zl1tvcFza5a+SZbdJhmU9Bn4L7Dbr0Srfp98nyAI8gPK3UDqsEMLd+r3aiaKI6n0t4X+n5TH7c6wr43L7K2WJRAbd6kE4V5O2kql1ZZUw1pLdt2iNw+ueKVzC8hnqG6txv5sRfI4AxkDTjLzK9omoZTqgMBHIBmrbSWPTzjYC0wBWXtDuttb0RTi8H67Cg4Tf+nZ3aOnnV/oe+n9cI/av0wCnstYeITA174qfoucE4doTXmddzPjuO5aoIjvD9LvCeH3igkomt5aeMyr5q4bQzf17NJWDyMXSd6vDLsNWqLNP0/imF7APdkMHL1gP4ByJEmm2sEAAA=" target="_blank">Run the query</a>
 
 ```kusto
 let radius = 500;
@@ -65,16 +65,15 @@ let tube_stations = datatable(tube_station_name:string, lng:real, lat: real)
 [
     "St. James' Park",        -0.13451078568013486, 51.49919145858172,
      "London Bridge station", -0.08492752160134387, 51.504876316440914,
-     // more tube stations
+     // more points
 ];
 let streets = datatable(street_name:string, line:dynamic)
 [
     "Buckingham Palace", dynamic({"type":"LineString","coordinates":[[-0.1399656708283601,51.50190802248855],[-0.14088438832752104,51.50012082761452]]}),
     "London Bridge",    dynamic({"type":"LineString","coordinates":[[-0.087152,51.509596],[-0.088340,51.506110]]}),
-    // more streets
+    // more lines
 ];
 let join_level = 14;
-let points = tube_stations;
 let lines = materialize(streets | extend id = new_guid());
 let res = 
     lines
@@ -82,18 +81,30 @@ let res =
     | mv-expand covering to typeof(string)
     | join kind=inner hint.strategy=broadcast
     (
-        points
+        tube_stations
         | extend covering = geo_point_to_s2cell(lng, lat, join_level)
     ) on covering;
 res | lookup lines on id
-| extend distance = geo_distance_point_to_line(lng, lat, line)
-| where distance <= radius
-| project tube_station_name, street_name, distance
+| where geo_distance_point_to_line(lng, lat, line) <= radius
+| summarize count = count() by name = street_name
 ```
 
-|tube_station_name|street_name|distance|
-|---|---|---|
-|St. James' Park|Buckingham Palace|451.692474409721|
-|London Bridge station|London Bridge|273.133133711648|
+|name|count|
+|---|---|
+|Buckingham Palace|1|
+|London Bridge|1|
 
+In case of invalid line, a null result will be returned.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIycxLVbBVSKnMS8zNTNaoViqpLEhVslLyAYoHlxRl5qUr6Sgl5+cXpWTmJZakFitZRUdHG+gYxOqAydjYWk1rrgKguhKFzOK80pwcjfTU/HiQqfEl+fHFRsmpOTnFGiC+piYA0P7Z6XAAAAA=" target="_blank">Run the query</a>
+
+```kusto
+let line = dynamic({"type":"LineString","coordinates":[[[0,0],[0,0]]]});
+print isnull(geo_line_to_s2cells(line))
+```
+
+|print_0|
+|---|
+|True|
 
