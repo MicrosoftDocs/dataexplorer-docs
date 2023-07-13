@@ -49,15 +49,15 @@ For a full description of the security roles at each scope, see [Kusto role-base
 
 ### Find the roles you have on a resource
 
-To check the roles assigned to you on a specific resource, run the following command within the relevant database or the database that contains the resource. Replace *ResourceType* with `database`, `table`, `external table`, `function`, or `materialized view`, and *ResourceName* with the name of the resource.
+To check the roles assigned to you on a specific resource, run the following command within the relevant database or the database that contains the resource:
 
-`.show` *ResourceType* *ResourceName* `principal` `roles`
+`.show` ( `database` | `table` | `external table` | `function` | `materialized view` ) *ResourceName* `principal` `roles`
 
 ### Find the roles of all principals on a resource
 
-To see the roles assigned to all principals for a particular resource, run the following command within the relevant database or the database that contains the resource. Replace *ResourceType* with `database`, `table`, `external table`, `function`, or `materialized view`, and *ResourceName* with the name of the resource.
+To see the roles assigned to all principals for a particular resource, run the following command within the relevant database or the database that contains the resource:
 
-`.show` *ResourceType* *ResourceName* `principals`
+`.show` ( `database` | `table` | `external table` | `function` | `materialized view` ) *ResourceName* `principals`
 
 ## Next steps
 
