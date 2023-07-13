@@ -47,6 +47,16 @@ For a full description of the security roles at each scope, see [Kusto role-base
 
 ## Common scenarios
 
+### Show the roles on the cluster
+
+To see your own roles on the cluster, run the following command:
+
+`.show` `cluster` `principal` `roles`
+
+To see all roles on the cluster, you must have at least `AllDatabasesMonitor` permissions on the cluster. To see the roles, run the following command:
+
+`.show` `cluster` `principals`
+
 ### Show the roles you have on a resource
 
 To check the roles assigned to you on a specific resource, run the following command within the relevant database or the database that contains the resource:
@@ -58,12 +68,6 @@ To check the roles assigned to you on a specific resource, run the following com
 To see the roles assigned to all principals for a particular resource, run the following command within the relevant database or the database that contains the resource:
 
 `.show` ( `database` | `table` | `external table` | `function` | `materialized view` ) *ResourceName* `principals`
-
-### Show cluster-level roles
-
-To see your own roles on the cluster, run the following command: `.show` `cluster` `principal` `roles`
-
-To see all roles on the cluster, run the following command: `.show` `cluster` `principals`
 
 ## Next steps
 
