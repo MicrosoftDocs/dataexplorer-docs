@@ -633,6 +633,8 @@ items:
     - name: .alter table policy update command
       displayName: .alter table update policy
       href: alter-table-update-policy-command.md
+    - name: Use a managed identity
+      href: update-policy-with-managed-identity.md
     - name: .alter-merge table policy update command
       displayName: .alter-merge table update policy
       href: alter-merge-table-update-policy-command.md
