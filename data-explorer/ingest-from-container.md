@@ -25,7 +25,7 @@ For information about ingesting data into an existing table in Azure Data Explor
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal). Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
 
 > [!NOTE]
@@ -33,11 +33,11 @@ For information about ingesting data into an existing table in Azure Data Explor
 
 ## Ingest data
 
-1. In the left menu of the Azure Data Explorer web UI, select **Data**.
+1. From the left menu, select **Query**.
 
-1. From the **Quick actions** section, select **Ingest data**. Alternatively, from the **All** section, select **Ingest data** and then **Ingest**.
+1. Right-click on the database where you want to ingest the data. Select **Ingest data**.
 
-    :::image type="content" source="media/ingestion-wizard-new-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select ingestion for a table.":::
+    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI." lightbox="media/ingest-data-wizard/ingest-data-from-query-page.png":::
 
 1. In the **Ingest data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 

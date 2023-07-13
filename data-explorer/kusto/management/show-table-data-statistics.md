@@ -1,11 +1,11 @@
 ---
-title: .show table data statistics
+title: .show table data statistics command
 description: Learn how to use the `.show table data statistics` command to show the table's data statistics estimation by table column and storage engine version.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show table data statistics
+# .show table data statistics command
 
 Displays the table data statistics estimation by table column and storage engine version.
 

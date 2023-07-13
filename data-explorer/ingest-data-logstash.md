@@ -18,7 +18,7 @@ ms.date: 09/22/2022
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Logstash version 6+ [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html).
 
 ## Create a table
@@ -32,6 +32,7 @@ After you have a cluster and a database, it's time to create a table.
     ```
 
 1. Run the following command to confirm that the new table `logs` has been created and that it's empty:
+
     ```Kusto
     logs
     | count
@@ -50,23 +51,24 @@ Run the following command in the query window:
 ## Install the Logstash output plugin
 
 The Logstash output plugin communicates with Azure Data Explorer and sends the data to the service. For more information, see [Logstash plugin](https://github.com/Azure/logstash-output-kusto).
-Run the following command inside the Logstash root directory to install the plugin:
 
-```sh
+In a command shell, navigate to the Logstash root directory, and then run the following command to install the plugin:
+
+```bash
 bin/logstash-plugin install logstash-output-kusto
 ```
 
 ## Configure Logstash to generate a sample dataset
 
 Logstash can generate sample events that can be used to test an end-to-end pipeline.
-If you're already using Logstash and have access to your own event stream, skip to the next section. 
+If you're already using Logstash and have access to your own event stream, skip to the next section.
 
 > [!NOTE]
 > If you're using your own data, change the table and mapping objects defined in the previous steps.
 
 1. Edit a new text file that will contain the required pipeline settings (using vi):
 
-    ```sh
+    ```bash
     vi test.conf
     ```
 
@@ -86,7 +88,7 @@ This configuration also includes the `stdin` input plugin that will enable you t
 
 ## Configure Logstash to send data to Azure Data Explorer
 
-Paste the following settings into the same config file used in the previous step. Replace all the placeholders with the relevant values for your setup. For more information, see [Creating an AAD Application](./provision-azure-ad-app.md). 
+Paste the following settings into the same config file used in the previous step. Replace all the placeholders with the relevant values for your setup. For more information, see [Creating an AAD Application](./provision-azure-ad-app.md).
 
 ```ruby
 output {
@@ -116,7 +118,7 @@ output {
 
 We're now ready to run Logstash and test our settings.
 
-1. In the Logstash root directory, run the following command:
+1. In a command shell, navigate to the Logstash root directory, and then run the following command:
 
     ```sh
     bin/logstash -f test.conf

@@ -21,7 +21,7 @@ In this article, you learn how to create manually the resources needed for Event
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal). An Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
 * An [Event Hubs namespace and event hub](/azure/event-hubs/event-hubs-create).
 
@@ -86,6 +86,6 @@ In this article, you learn how to create manually the resources needed for Event
 
 ## Next steps
 
-* Continue the setup and create a data ingestion connection to Azure Data Explorer via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md#create-an-event-grid-data-connection).
+* Continue the setup and create a data ingestion connection to Azure Data Explorer via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md).
 
 * If you don't plan to continue Event Grid ingestion using the resources you created and don't want to use the resources anymore, [clean up resources](ingest-data-event-grid.md#clean-up-resources) to avoid incurring costs.

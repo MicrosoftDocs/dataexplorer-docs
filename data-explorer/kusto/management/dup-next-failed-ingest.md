@@ -1,11 +1,11 @@
 ---
-title:  .dup-next-failed-ingest
+title: .dup-next-failed-ingest command
 description: Learn how to troubleshoot your data ingestion on demand using the .dup-next-failed-ingest command.
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 05/29/2023
 ---
 
-# .dup-next-failed-ingest
+# .dup-next-failed-ingest command
 
 Use the `.dup-next-failed-ingest` command for ad-hoc troubleshooting of your data ingestion flows.
 

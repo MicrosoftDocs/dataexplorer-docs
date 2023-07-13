@@ -22,7 +22,7 @@ When double encryption is enabled, data in the storage account is encrypted twic
 
 ## [Azure portal](#tab/portal)
 
-1. [Create an Azure Data Explorer cluster](create-cluster-database-portal.md#create-a-cluster)
+1. [Create an Azure Data Explorer cluster](create-cluster-and-database.md#create-a-cluster)
 1. In the **Security** tab > **Enable Double Encryption**, select **On**. To remove the double encryption, select **Off**.
 1. Select **Next:Network>** or **Review + create** to create the cluster.
 

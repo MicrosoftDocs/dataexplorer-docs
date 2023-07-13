@@ -5,7 +5,7 @@ ms.reviewer: yifats
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .delete table policy auto_delete
+# .delete table policy auto_delete command
 
 Deletes the auto delete policy of a table. For more information, see [auto delete policy](auto-delete-policy.md).
 

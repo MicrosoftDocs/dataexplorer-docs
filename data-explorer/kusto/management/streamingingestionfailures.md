@@ -1,11 +1,11 @@
 ---
-title: .show streaming ingestion failures
+title: .show streamingingestion failures command
 description: Learn how to use the `.show streamingingestion failures` command to show streaming ingestion failures when data is ingested.
 ms.topic: reference
 ms.date: 05/23/2023
 ---
 
-# .show streaming ingestion failures
+# .show streamingingestion failures command
 
 This command returns a result set that includes aggregated streaming ingestion failures that occur when [data is ingested using one of the streaming ingestion types](../../ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type).
 

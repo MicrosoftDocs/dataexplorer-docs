@@ -211,7 +211,7 @@ public static IDataReader QueryKusto(ICslQueryProvider queryProvider)
 | `query_results_progressive_update_period` (*OptionProgressiveProgressReportPeriod*) | timespan | Hint for Kusto as to how often to send progress frames (takes effect only if *OptionResultsProgressiveEnabled* is set) |
 | `query_take_max_records` (*OptionTakeMaxRecords*) | long | Enables limiting query results to this number of records. |
 | `query_weakconsistency_session_id` (*OptionQueryWeakConsistencySessionId*) | string | Sets the query weak consistency session ID. Takes effect when 'queryconsistency' mode is set to 'weakconsistency_by_session_id'. |
-| `queryconsistency` (*OptionQueryConsistency*) | string | Controls query consistency. Supported values are 'strongconsistency', 'weakconsistency', 'weakconsistency_by_query', 'weakconsistency_by_database', or 'weakconsistency_by_session_id'. |
+| `queryconsistency` (*OptionQueryConsistency*) | string | Controls query consistency. Supported values are 'strongconsistency', 'weakconsistency', 'weakconsistency_by_query', 'weakconsistency_by_database', or 'weakconsistency_by_session_id'. When using 'weakconsistency_by_session_id', make sure to also set the `query_weakconsistency_session_id` property. |
 | `request_app_name` (*OptionRequestAppName*) | string | Request application name to be used in the reporting (for example, show queries). |
 | `request_block_row_level_security` (*OptionRequestBlockRowLevelSecurity*) | bool | If specified, blocks access to tables for which row_level_security policy is enabled. |
 | `request_callout_disabled` (*OptionRequestCalloutDisabled*) | bool | If specified, indicates that the request can't call-out to a user-provided service. |

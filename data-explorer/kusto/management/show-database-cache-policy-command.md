@@ -1,11 +1,11 @@
 ---
-title: .show database cache policy command
-description: Learn how to use the `.show database cache policy` command to show the database cache policy.
+title: .show database policy caching command
+description: Learn how to use the `.show database policy caching` command to show the database cache policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show database cache policy
+# .show database policy caching command
 
 Show the database cache policy.  To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 

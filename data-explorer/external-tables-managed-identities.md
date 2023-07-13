@@ -14,7 +14,7 @@ In this article, you'll learn how to create an external table that authenticates
 
 ## Prerequisites
 
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Database Admin](kusto/access-control/role-based-access-control.md) permissions on the Azure Data Explorer database.
 
 ## 1 - Configure a managed identity for use with external tables
@@ -89,7 +89,7 @@ To import or query data from the SQL database, grant the managed identity table 
 
 ## 3 - Create an external table
 
-There are two types of external tables, [Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md) and [SQL Server external tables](kusto/management/external-sql-tables.md), and both support authentication with managed identities.
+There are two types of external tables that support authentication with managed identities: [Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md) and [SQL Server external tables](kusto/management/external-sql-tables.md).
 
 Select one of the following tabs to set up an Azure Storage or SQL Server external table.
 
@@ -99,7 +99,7 @@ To create an Azure Storage external table, do the following steps:
 
 1. Create a connection string based on the [storage connection string templates](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates). This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/storage-authentication-methods.md#managed-identity).
 
-1. Run the [.create or .alter external table](kusto/management/external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
+1. Run the [.create or .alter external table](kusto/management/external-sql-tables.md) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
 
 #### Example
 
@@ -121,7 +121,7 @@ To create a SQL Server external table, do the following steps:
 
 1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/sql-authentication-methods.md#managed-identity).
 
-1. Run the [.create or .alter external table](kusto/management/external-sql-tables.md#create-and-alter-sql-server-external-tables) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
+1. Run the [.create or .alter external table](kusto/management/external-sql-tables.md) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
 
 #### Example
 

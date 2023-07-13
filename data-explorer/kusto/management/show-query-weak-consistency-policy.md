@@ -1,13 +1,13 @@
 ---
-title: .show cluster policy query_weak_consistency
-description: Learn how to use the `.show query weak consistency policy` command to show the query weak consistency policy of the cluster.
+title: .show cluster policy query_weak_consistency command
+description: Learn how to use the `.show cluster policy query_weak_consistency` command to show the query weak consistency policy of the cluster.
 ms.reviewer: yabenyaa
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show cluster policy query_weak_consistency
+# .show cluster policy query_weak_consistency command
 
-This article describes the show control command used for the [query weak consistency policy](query-weak-consistency-policy.md). This command returns the query weak consistency policy of the cluster.
+This article describes the show management command used for the [query weak consistency policy](query-weak-consistency-policy.md). This command returns the query weak consistency policy of the cluster.
 
 ## Permissions
 

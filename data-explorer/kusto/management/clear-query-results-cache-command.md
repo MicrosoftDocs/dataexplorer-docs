@@ -1,12 +1,12 @@
 ---
-title: Clear query results cache
-description: Learn how to use the `.clear database cache query_results` command to clear all cached query results.
+title: .clear database cache query_results command
+description: Learn how to use the `.clear database cache query_results` command to clear all cached query results from the database.
  clear cached query results.
 ms.reviewer: amitof
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 06/05/2023
 ---
-# Clear query results cache
+# .clear database cache query_results command
 
 Clear all [cached query results](../query/query-results-cache.md) made against the context database.
 

@@ -1,11 +1,11 @@
 ---
-title: .drop external table mapping
+title: .drop external table mapping command
 description: Learn how to use the `.drop external table mapping` command to drop an external table mapping for Azure Blob Storage or Azure Data Lake external tables.
 ms.topic: reference
 ms.date: 05/24/2023
 ---
 
-# .drop external table mapping
+# .drop external table mapping command
 
 Drops an external table mapping.
 

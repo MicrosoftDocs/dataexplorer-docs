@@ -5,7 +5,7 @@ ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show cluster policy callout
+# .show cluster policy callout command
 
 Display a cluster's [callout policy](calloutpolicy.md).
 

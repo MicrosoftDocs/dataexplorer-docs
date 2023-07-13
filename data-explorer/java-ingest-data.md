@@ -17,14 +17,14 @@ ms.date: 09/07/2022
 > * [Go](go-ingest-data.md)
 > * [Java](java-ingest-data.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. The [Java client library](kusto/api/java/kusto-java-client-library.md) can be used to ingest data, issue control commands, and query data in Azure Data Explorer clusters.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. The [Java client library](kusto/api/java/kusto-java-client-library.md) can be used to ingest data, issue management commands, and query data in Azure Data Explorer clusters.
 
 In this article, learn how to ingest data using the Azure Data Explorer Java library. First, you'll create a table and a data mapping in a test cluster. Then you'll queue an ingestion from blob storage to the cluster using the Java SDK and validate the results.
 
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * JDK version 1.8 or later.
 * [Maven](https://maven.apache.org/download.cgi).
@@ -59,7 +59,7 @@ The program uses Azure Active Directory authentication credentials with Connecti
 
 ### Management commands
 
-[Control commands](kusto/management/commands.md), such as [`.drop`](kusto/management/drop-function.md) and [`.create`](kusto/management/create-function.md), are executed by calling `execute` on a `com.microsoft.azure.kusto.data.Client` object.
+[Management commands](kusto/management/commands.md), such as [`.drop`](kusto/management/drop-function.md) and [`.create`](kusto/management/create-function.md), are executed by calling `execute` on a `com.microsoft.azure.kusto.data.Client` object.
 
 For example, the `StormEvents` table is created as follows:
 

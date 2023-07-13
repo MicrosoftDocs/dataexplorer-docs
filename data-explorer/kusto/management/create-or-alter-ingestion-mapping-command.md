@@ -1,11 +1,11 @@
 ---
-title: .create-or-alter ingestion mapping
+title: .create-or-alter ingestion mapping command
 description: Learn how to use the `.create-or-alter ingestion mapping` command to create or alter an ingestion mapping.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .create-or-alter ingestion mapping
+# .create-or-alter ingestion mapping command
 
 Creates or alters an ingestion mapping that can be associated with a specific format and a specific table or database.
 

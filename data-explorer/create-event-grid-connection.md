@@ -2,7 +2,7 @@
 title: 'Create an Event Grid data connection - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Grid.'
 ms.topic: how-to
-ms.date: 05/17/2023
+ms.date: 06/04/2023
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer
@@ -19,7 +19,7 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A destination table. [Create a table](kusto/management/create-table-command.md) or use an existing table.
 * An [ingestion mapping](kusto/management/mappings.md) for the table.
 * A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal). An Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
@@ -52,7 +52,7 @@ In this section, you'll establish a connection between Event Grid and your Azure
     | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hubs namespace, and an Event Hubs for you. To create resources manually, see [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)|
 
 1. Select **Filter settings** if you want to track specific subjects. Set the filters for the notifications as follows:
-    * **Prefix** field is the *literal* prefix of the subject. As the pattern applied is *startswith*, it can span multiple containers, folders, or blobs. No wildcards are allowed.
+    * **Prefix** field is the *literal* prefix of the subject. As the pattern applied is *starts with*, it can span multiple containers, folders, or blobs. No wildcards are allowed.
         * To define a filter on the blob container, the field *must* be set as follows: *`/blobServices/default/containers/[container prefix]`*.
         * To define a filter on a blob prefix (or a folder in Azure Data Lake Gen2), the field *must* be set as follows: *`/blobServices/default/containers/[container name]/blobs/[folder/blob prefix]`*.
     * **Suffix** field is the *literal* suffix of the blob. No wildcards are allowed.
@@ -187,6 +187,7 @@ The **Data connection** pane opens with the **Basics** tab selected.
     };
     await dataConnections.CreateOrUpdateAsync(WaitUntil.Completed, eventGridConnectionName, eventGridConnectionData);
     ```
+
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
     | tenantId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Your tenant ID. Also known as directory ID.|
@@ -419,11 +420,111 @@ The following example shows an Azure Resource Manager template for adding an Eve
 
 ---
 
+## Use the Event Grid data connection
+
+This section shows how to trigger ingestion from Azure Blob Storage or Azure Data Lake Gen 2 to your cluster following blob creation or blob renaming.
+
+Select the relevant tab based on the type of storage SDK used to upload blobs.
+
+### [Azure Blob Storage](#tab/azure-blob-storage)
+
+The following code sample uses the [Azure Blob Storage SDK](https://www.nuget.org/packages/Azure.Storage.Blobs/) to upload a file to Azure Blob Storage. The upload triggers the Event Grid data connection, which ingests the data into Azure Data Explorer.
+
+```csharp
+var azureStorageAccountConnectionString=<storage_account_connection_string>;
+var containerName = <container_name>;
+var blobName = <blob_name>;
+var localFileName = <file_to_upload>;
+var uncompressedSizeInBytes = <uncompressed_size_in_bytes>;
+var mapping = <mappingReference>;
+// Create a new container in your storage account.
+var azureStorageAccount = CloudStorageAccount.Parse(azureStorageAccountConnectionString);
+var blobClient = azureStorageAccount.CreateCloudBlobClient();
+var container = blobClient.GetContainerReference(containerName);
+container.CreateIfNotExists();
+// Set metadata and upload a file to the blob.
+var blob = container.GetBlockBlobReference(blobName);
+blob.Metadata.Add("rawSizeBytes", uncompressedSizeInBytes);
+blob.Metadata.Add("kustoIngestionMappingReference", mapping);
+blob.UploadFromFile(localFileName);
+// Confirm success of the upload by listing the blobs in your container.
+var blobs = container.ListBlobs();
+```
+
+> [!NOTE]
+> Azure Data Explorer won't delete the blobs post ingestion. Retain the blobs for three to five days by using [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage blob deletion.
+
+### [Azure Data Lake](#tab/azure-data-lake)
+
+The following code sample uses the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file to Data Lake Storage Gen2. The upload triggers the Event Grid data connection, which ingests the data into Azure Data Explorer.
+
+```csharp
+var accountName = <storage_account_name>;
+var accountKey = <storage_account_key>;
+var fileSystemName = <file_system_name>;
+var fileName = <file_name>;
+var localFileName = <file_to_upload>;
+var uncompressedSizeInBytes = <uncompressed_size_in_bytes>;
+var mapping = <mapping_reference>;
+var sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
+var dfsUri = "https://" + accountName + ".dfs.core.windows.net";
+var dataLakeServiceClient = new DataLakeServiceClient(new Uri(dfsUri), sharedKeyCredential);
+// Create the filesystem.
+var dataLakeFileSystemClient = dataLakeServiceClient.CreateFileSystem(fileSystemName).Value;
+// Define file metadata and uploading options.
+IDictionary<String, String> metadata = new Dictionary<string, string>();
+metadata.Add("rawSizeBytes", uncompressedSizeInBytes);
+metadata.Add("kustoIngestionMappingReference", mapping);
+var uploadOptions = new DataLakeFileUploadOptions
+{
+    Metadata = metadata,
+    Close = true // Note: The close option triggers the event being processed by the data connection.
+};
+// Write to the file.
+var dataLakeFileClient = dataLakeFileSystemClient.GetFileClient(fileName);
+dataLakeFileClient.Upload(localFileName, uploadOptions);
+```
+
+> [!NOTE]
+>
+> * When uploading a file with the Azure Data Lake SDK, the initial file creation event has a size of 0, which is ignored by Azure Data Explorer during data ingestion. To ensure proper ingestion, set the `Close` parameter to `true`. This parameter causes the upload method to trigger a *FlushAndClose* event, indicating that the final update has been made and the file stream is closed.
+> * To reduce traffic coming from Event Grid and the subsequent processing when ingesting events into Azure Data Explorer, we recommend [filtering](ingest-data-event-grid-manual.md#create-an-event-grid-subscription) the *data.api* key to only include *FlushAndClose* events, thereby removing file creation events with size 0. For more information about flushing, see [Azure Data Lake flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush).
+
+### Rename blobs
+
+In ADLSv2, it's possible to rename directories. However, it's important to note that renaming a directory doesn't trigger blob renamed events or initiate the ingestion of blobs contained within the directory. If you want to ensure the ingestion of blobs after renaming a directory, you should directly rename the individual blobs within the directory.
+
+The following code sample shows how to rename a blob in an ADLSv2 storage account.
+
+```csharp
+var accountName = <storage_account_name>;
+var accountKey = <storage_account_key>;
+var fileSystemName = <file_system_name>;
+var sourceFilePath = <source_file_path>;
+var destinationFilePath = <destination_file_path>;
+var sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
+var dfsUri = "https://" + accountName + ".dfs.core.windows.net";
+var dataLakeServiceClient = new DataLakeServiceClient(new Uri(dfsUri), sharedKeyCredential);
+// Get a client to the the filesystem
+var dataLakeFileSystemClient = dataLakeServiceClient.GetFileSystemClient(fileSystemName);
+// Rename a file in the file system
+var dataLakeFileClient = dataLakeFileSystemClient.GetFileClient(sourceFilePath);
+dataLakeFileClient.Rename(destinationFilePath);
+```
+
+> [!NOTE]
+> If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
+
+---
+
+> [!NOTE]
+> Triggering ingestion following a `CopyBlob` operation is not supported for storage accounts that have the hierarchical namespace feature enabled on them.
+
 ## Remove an Event Grid data connection
 
 ### [Portal](#tab/portal-2)
 
-To remove the Event Grid connection from the Azure portal, do the following:
+To remove the Event Grid connection from the Azure portal, do the following steps:
 
 1. Go to your cluster. From the left menu, select **Databases**. Then, select the database that contains the target table.
 1. From the left menu, select **Data connections**. Then, select the checkbox next to the relevant Event Grid data connection.

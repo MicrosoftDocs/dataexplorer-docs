@@ -1,11 +1,11 @@
 ---
-title:  .alter-merge database streaming ingestion policy command
-description: Learn how to use the `.alter-merge database streaming ingestion policy` command to change the database streaming policy.
+title:  .alter-merge database policy streamingingestion command
+description: Learn how to use the `.alter-merge database policy streamingingestion` command to change the database streaming policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/25/2023
 ---
-# .alter-merge database streaming ingestion policy command
+# .alter-merge database policy streamingingestion command
 
 Changes the database streaming ingestion policy. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
 

@@ -19,7 +19,7 @@ The following tables describe the options for customizing the behavior of Kusto.
 | Welcome message | When enabled, the application shows the welcome message on start. Default is enabled.|
 | Display theme | The application UI color scheme: light or dark.|
 | Use legacy display themes| Enables and disables using legacy themes. |
-| Multi-line tabs| Enables and disables multi-line arrangement of the query panel tabs. Default is enabled. |
+| Multi-line Query tabs| Enables and disables multi-line arrangement of the query panel tabs. Default is enabled. |
   
 ## Query editor
 
@@ -38,13 +38,14 @@ The following tables describe the options for customizing the behavior of Kusto.
 | Show help inside the application | When enabled, Help topics are shown inside the application. When disabled Help topics are opened inside a browser.|
 | Query parameter length limit | The maximal length of a string that can be used as a query parameter. Setting this value to more than 128K may cause performance issues. Default is 64K.|
 | Quick replacements| Invoke "Quick replacement" by pressing Ctrl+Space in the query editor when the caret is at the text to be replaced.|
+|Auto-prettify text on paste| Auto-formats and prettifies pasted text in the query editor for text greater than 100 characters. Disabled by default.|
 
 ## IntelliSense
 
 | Option | Description |
 |---------|--------------|
 | IntelliSense | Enables or disables IntelliSense. Default is enabled.|
-| IntelliSense- Command Version | Chooses the IntelliSense version for control commands. Default: mixed.|
+| IntelliSense- Command Version | Chooses the IntelliSense version for management commands. Default: mixed.|
 | Syntax Highlighting | Enables or disables syntax highlighting. Default is enabled.|
 | Issues List | Displays the issues list for the current query or command in the editor.|
 | Issue Options| Adjust which issues appear in the issues list.|
@@ -99,6 +100,7 @@ The following tables describe the options for customizing the behavior of Kusto.
 | Lazy schema exploration | When enabled, the connections panel will only fetch and display database schema when the database node is expanded.|
 | Show hidden system objects | When enabled, hidden system objects will be shown if the user has appropriate permissions.|
 | Query weak consistency | When enabled, weak consistency will be used for queries.|
+| Query results protocol | Determines which version of the Query results protocol version will be used when executing a query.|
 | KQL parses version | Determines which version of the Kusto Query Language parser will be used when executing a query. |
 | Allow unsafe connections | Allows using unsafe connection protocols for local dev/test environments.|
 

@@ -3,31 +3,20 @@ title:  Storage authentication methods
 description: This article describes storage authentication methods used in connection strings in Azure Data Explorer.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 02/23/2023
+ms.date: 06/25/2023
 ---
 # Storage authentication methods
 
-To interact with external storage from Azure Data Explorer, you must specify the external storage connection string. The connection string defines the resource to access and its authentication information.
+To interact with nonpublic external storage from Azure Data Explorer, you must specify authentication means as part of the external storage connection string. The connection string defines the resource to access and its authentication information.
 
-This article describes the following authentication methods:
+Azure Data Explorer supports the following authentication methods:
 
 * [Impersonation](#impersonation)
 * [Managed identity](#managed-identity)
 * [Shared Access (SAS) key](#shared-access-sas-token)
 * [Azure AD access token](#azure-ad-access-token)
 * [Storage account access key](#storage-account-access-key)
-* [AWS Programmatic Access Keys](#aws-programmatic-access-keys)
-
-## Privacy and security
-
-We recommend adding an `h` to connection strings that contain secrets. This practice ensures that the private information in the connection string is [obfuscated in telemetry data](../../query/scalar-data-types/string.md#obfuscated-string-literals).
-
-The following table explains how to hide your private information using the `h` string.
-
-|Goal|Method|Syntax|
-|--|--|--|
-|Hide the entire connection string|Preface the connection string with `h`.|`h"<connection_string>"`|
-|Hide only the secret part of the string|Split the connection string into the resource location and the secret information and add the `h` between the two.| `"<resource_location>"h"<secret>"`|
+* [Amazon Web Services Programmatic Access Keys](#amazon-web-services-programmatic-access-keys)
 
 ## Authentication by storage type
 
@@ -40,7 +29,7 @@ The following table summarizes the available authentication methods for differen
 | [Shared Access (SAS) key](#shared-access-sas-token) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | SAS tokens have an expiration time. Use when accessing storage for a limited time. |
 | [Azure AD access token](#azure-ad-access-token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Azure AD tokens have an expiration time. Use when accessing storage for a limited time. |
 | [Storage account access key](#storage-account-access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | When you need to access resources on an ongoing basis. |
-| [AWS Programmatic Access Keys](#aws-programmatic-access-keys) | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources on an ongoing basis. |
+| [Amazon Web Services Programmatic Access Keys](#amazon-web-services-programmatic-access-keys) | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources on an ongoing basis. |
 
 ## Impersonation
 
@@ -54,7 +43,7 @@ The principal must have the necessary permissions to perform the operation. For 
 
 ## Managed identity
 
-Azure Data Explorer uses the managed identity to make requests and access resources. For a system-assigned managed identity, append `;managed_identity=system` to the connection string. For a user-assigned managed identity, append `;managed_identity={object_id}` to the connection string.
+Azure Data Explorer makes requests on behalf of a managed identity and uses its identity to access resources. For a system-assigned managed identity, append `;managed_identity=system` to the connection string. For a user-assigned managed identity, append `;managed_identity={object_id}` to the connection string.
 
 |Managed identity type|Example|
 |--|--|--|
@@ -64,7 +53,7 @@ Azure Data Explorer uses the managed identity to make requests and access resour
 The managed identity must have the necessary permissions to perform the operation. For example in Azure Blob Storage, to read from the blob the managed identity needs the Storage Blob Data Reader role and to export to the blob the managed identity needs the Storage Blob Data Contributor role. To learn more, see [Azure Blob Storage / Data Lake Storage Gen2 access control](/azure/storage/blobs/data-lake-storage-access-control-model#role-based-access-control-azure-rbac) or [Data Lake Storage Gen1 access control](/azure/data-lake-store/data-lake-store-security-overview#azure-rbac-for-account-management).
 
 > [!NOTE]
-> Managed identity is only supported in specific Azure Data Explorer flows. For more information, see [Managed identities overview](../../../managed-identities-overview.md).
+> Managed identity is only supported in specific Azure Data Explorer flows and requires setting up the managed identity policy. For more information, see [Managed identities overview](../../../managed-identities-overview.md).
 
 ## Shared Access (SAS) token
 
@@ -97,7 +86,7 @@ To add a storage account access key, append the key to the connection string. In
 |Azure Blob Storage|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;ljkAkl...=="`|
 |Azure Data Lake Storage Gen2|`"abfss://fs@fabrikam.dfs.core.windows.net/path/to/file.csv;sharedkey=sv=...&sp=rwd"`|
 
-## AWS Programmatic Access Keys
+## Amazon Web Services programmatic access keys
 
 To add Amazon Web Services access keys, append `;AwsCredentials={ACCESS_KEY_ID},{SECRET_ACCESS_KEY}` to the connection string.
 

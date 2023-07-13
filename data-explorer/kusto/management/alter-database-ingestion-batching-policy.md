@@ -1,11 +1,11 @@
 ---
-title:  .alter database ingestion batching policy command
-description: Learn how to use the `.alter database ingestion batching policy` command to set the ingestion batching policy.
+title:  .alter database policy ingestionbatching command
+description: Learn how to use the `.alter database policy ingestionbatching` command to set the ingestion batching policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/25/2023
 ---
-# .alter database ingestion batching policy command
+# .alter database policy ingestionbatching command
 
 Sets the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy determines when data aggregation stops and a batch is sealed and ingested.
 
@@ -46,7 +46,7 @@ The following command sets a batch ingress data time of 30 seconds, for 500 file
 ````
 
 >[!NOTE] 
-> If you don't specify all parameters of a *PolicyObject*, the unspecified parameters will be set to (default values)[https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/batchingpolicy#sealing-a-batch]. For example, specifying only "MaximumBatchingTimeSpan" will result in "MaximumNumberOfItems" and "MaximumRawDataSizeMB" being set to default.
+> If you don't specify all parameters of a *PolicyObject*, the unspecified parameters will be set to [default values](batchingpolicy.md#sealing-a-batch). For example, specifying only "MaximumBatchingTimeSpan" will result in "MaximumNumberOfItems" and "MaximumRawDataSizeMB" being set to default.
 
 ## Next steps
 

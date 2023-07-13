@@ -3,7 +3,7 @@ title: Ingest sample data into Azure Data Explorer
 description: Learn about how to ingest (load) weather-related sample data into Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: quickstart
-ms.date: 09/05/2022
+ms.date: 06/05/2023
 ms.custom: mode-portal
 ---
 
@@ -17,7 +17,7 @@ This article shows you how to ingest (load) sample data into an Azure Data Explo
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
 ## Ingest data
 
@@ -27,11 +27,11 @@ First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.co
 
 ### [Ingest with wizard](#tab/ingestion-wizard)
 
-1. In the left menu, select **Data**.
+1. From the left menu, select **Query**.
 
-    :::image type="content" source="media/ingest-sample-data/select-data.png" alt-text="Screenshot of the Azure Data Explorer web UI to ingest data from blob." lightbox="media/ingest-sample-data/select-data.png":::
+1. Right-click on the database where you want to ingest the data. Select **Ingest data**.
 
-1. In the **Data Management** page, select **Ingest data from blob**, and then **Ingest**.
+    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI." lightbox="media/ingest-data-wizard/ingest-data-from-query-page.png":::
 
 1. In the **Destination** tab, fill out the following information:
 
@@ -51,7 +51,7 @@ First, sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.co
 
     | Setting | Description|
     |---|---|
-    | Source type | Select the data source to ingest. In this example, *From blob* is already selected. |
+    | Source type | Select the data source to ingest. For this example, select **Blob**. |
     | Link to source | Use the following [storage URI](./kusto/api/connection-strings/storage-connection-strings.md) link: https://kustosamples.blob.core.windows.net/samplefiles/StormEvents.csv. |
 
 1. Select **Next: Schema**.

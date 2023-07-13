@@ -3,11 +3,56 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/01/2023
+ms.date: 07/02/2023
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## June 2023
+
+**API**
+
+| Article title | Description |
+|--|--|
+|- [Kusto.Language Overview](kusto/api/netfx/about-kusto-language.md) <br/> - [Define schemas for semantic analysis with Kusto.Language](kusto/api/netfx/kusto-language-define-schemas.md) <br/> - [Parse queries and commands with Kusto.Language](kusto/api/netfx/kusto-language-parse-queries.md)| New articles. Describes how to use the Kusto.Language library for parsing queries.|
+|[Management commands: Create an app to run management commands](kusto/api/get-started/app-management-commands.md)| New article. Describes how to create an app to run management commands using Kusto client libraries.|
+
+**Query**
+
+| Article title| Description|
+|--|--|
+|- [Join operator](kusto/query/joinoperator.md) <br/> - [fullouter join](kusto/query/join-fullouter.md) <br/> - [inner join](kusto/query/join-inner.md) <br/> - [innerunique join](kusto/query/join-innerunique.md) <br/> - [leftanti join](kusto/query/join-leftanti.md) <br/> - [leftouter join](kusto/query/join-leftouter.md) <br/> - [leftsemi join](kusto/query/join-leftsemi.md) <br/> - [rightanti join](kusto/query/join-rightanti.md) <br/> - [rightouter join](kusto/query/join-rightouter.md) <br/> - [rightsemi join](kusto/query/join-rightsemi.md) | Updated and new articles. Refreshed `join` overview and added topics describing each `join` kind.
+|[replace_strings()](kusto/query/replace-strings-function.md) | New article. Describes how to use the replace_strings() function to replace multiple string matches with multiple replacement strings.|
+
+## May 2023
+
+**General**
+
+| Article title | Description |
+|--|--|
+|- [Azure Data Explorer web UI query overview](web-ui-query-overview.md) <br/> - [Add a cluster connection in the Azure Data Explorer web UI](add-cluster-connection.md) <br/> - [Write Kusto Query Language queries in the Azure Data Explorer web UI](web-ui-kql.md) <br/> - [Share queries from Azure Data Explorer web UI](web-share-queries.md)| New articles. Describes how to use the Azure Data Explorer web UI to interact with your data.|
+|[Ingest data with the NLog sink into Azure Data Explorer](nlog-sink.md)| New article. Describes how to use the Azure Data Explorer NLog connector to ingest data into your cluster.|
+|[How to architect a multi-tenant solution with Azure Data Explorer](multi-tenant.md)| New article. Describes how to architect a multi-tenant solution in Azure Data Explorer.|
+|[Create an Event Hubs data connection for Azure Data Explorer](create-event-hubs-connection.md)| Updated article. Integration from Azure Event Hubs page added.|
+|[Install the Azure Data Explorer Kusto emulator](kusto-emulator-install.md)| Updated article. Describes how to install the Kusto emulator using a Linux Docker container image.|
+|[Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)| Updated article. Funnel chart visualization added.|
+|[Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md)| Updated article. Refreshed content.|
+
+**Management**
+
+| Article title | Description |
+|--|--|
+|[Create and alter delta external tables on Azure Storage](kusto/management/external-tables-azurestorage-deltalake.md)| New article. Describes how to create and alter delta external tables on Azure Storage.|
+
+**Query**
+
+| Article title | Description |
+|--|--|
+|[postgresql_request plugin](kusto/query/postgresql-request-plugin.md)| New article. Describes how to use the postgresql_request plugin to send a SQL query to a PostgreSql server network endpoint.|
+|[Treemap](kusto/query/visualization-treemap.md)| New article. Describes how to use the treemap visualization to visualize data.|
+|[geo_info_from_ip_address()](kusto/query/geo-info-from-ip-address-function.md)| New article. Describes how to use the geo_info_from_ip_address() function to retrieve geolocation information about IPv4 or IPv6 addresses.|
+|[bag_zip()](kusto/query/bag-zip.md)| New article. Describes how to use the bag_zip() function to merge two dynamic arrays into a single property-bag of keys and values.|
 
 ## April 2023
 
@@ -220,21 +265,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | - [convert_angle](kusto/query/convert-angle-function.md) <br />- [convert_energy](kusto/query/convert-energy-function.md) <br />- [convert_force](kusto/query/convert-force-function.md) <br />- [convert_length](kusto/query/convert-length-function.md) <br />- [convert_mass](kusto/query/convert-mass-function.md) <br />- [convert_speed](kusto/query/convert-speed-function.md) <br />- [convert_temperature](kusto/query/convert-temperature-function.md) <br />- [convert_volume](kusto/query/convert-volume-function.md) | New articles. New functions for converting values. |
 | [parse-kv operator](kusto/query/parse-kv-operator.md) | New Article. Describes how to extract structured information from a string in key/value form. |
 |- [Scalar function types at a glance](kusto/query/scalarfunctions.md) <br />- [arg_max() (aggregation function)](kusto/query/arg-max-aggfunction.md) <br />- [arg_min() (aggregation function)](kusto/query/arg-min-aggfunction.md) <br />- [avg() (aggregation function)](kusto/query/avg-aggfunction.md) <br />- [max() (aggregation function)](kusto/query/max-aggfunction.md) <br />- [min() (aggregation function)](kusto/query/min-aggfunction.md) <br />- [sum() (aggregation function)](kusto/query/sum-aggfunction.md) | Updated articles. Added new examples. |
-
-## June 2022
-
-| Article title | Description |
-|--|--|
-| [Ingest data from Azure Stream Analytics (Preview)](stream-analytics-connector.md) | New Article. Describes how to ingest (load) data from Azure Stream Analytics. |
-| [Azure Data Explorer web UI overview](./web-query-data.md) | New Article. Describes the elements of web UI home page and the data analytics journey. |
-| [Explore the Azure Data Explorer web UI samples gallery](./web-ui-samples-dashboards.md) | New Article. Describes how to use the samples gallery in the web UI. |
-| [Select a SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md) | Updated Article. New SKU list and refreshed content. |
-
-## May 2022
-
-| Article title | Description |
-|--|--|
-| [Ingest data from Telegraf](ingest-data-telegraf.md) | New Article. Describes how to ingest data into your cluster from Telegraf. |
-| [Ingest data using managed identity authentication](ingest-data-managed-identity.md) | New Article. Queue Azure Storage blobs for ingestion using managed identity authentication. |
-|- [Azure Data Explorer connector for Microsoft Power Automate](flow.md) <br />- [Usage examples for Power Automate connector](flow-usage.md) <br />- [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md) <br />- [Microsoft Logic App and Azure Data Explorer](kusto/tools/logicapps.md)| Updated articles. General availability (GA). Content refreshed. |
-| [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated Article. Added section on drillthrough. |

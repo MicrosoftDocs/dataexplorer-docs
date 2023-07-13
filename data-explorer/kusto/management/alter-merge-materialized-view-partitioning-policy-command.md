@@ -1,11 +1,11 @@
 ---
-title:  .alter-merge materialized view partitioning policy command
-description: Learn how to use the .alter-merge materialized view partitioning policy command to create the materialized view's partitioning policy.
+title:  .alter-merge materialized-view policy partitioning command
+description: Learn how to use the `.alter-merge materialized-view policy partitioning` command to create the materialized view's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 05/28/2023
 ---
-# .alter-merge materialized view partitioning policy
+# .alter-merge materialized-view policy partitioning command
 
 Creates the materialized view's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 

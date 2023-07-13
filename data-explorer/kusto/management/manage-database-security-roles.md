@@ -2,7 +2,7 @@
 title: Manage database security roles
 description: Learn how to use management commands to view, add, and remove security roles on a database level.
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 05/28/2023
 ---
 
 # Manage database security roles
@@ -10,6 +10,9 @@ ms.date: 05/24/2023
 Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
 In this article, you'll learn how to use management commands to [view existing security roles](#view-existing-security-roles) as well as [add and remove security roles](#add-and-remove-security-roles) on the database level.
+
+> [!NOTE]
+> To delete a database, you need at least **Contributor** Azure Resource Manager (ARM) permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
 ## Permissions
 
@@ -21,7 +24,7 @@ The following table shows the possible security roles on the database level and 
 
 |Role|Permissions|
 |--|--|
-|`admins` | View, modify, and remove the database and database entities.|
+|`admins` | View and modify the database and database entities.|
 |`users` | View the database and create new database entities.|
 |`viewers` | View tables in the database where [RestrictedViewAccess](restrictedviewaccesspolicy.md) isn't turned on.|
 |`unrestrictedviewers`| View the tables in the database even where [RestrictedViewAccess](restrictedviewaccesspolicy.md) is turned on. The principal must also have `admins`, `viewers` or `users` permissions. |
@@ -74,7 +77,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 | *Action* | string | &check; | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
 | *DatabaseName* | string | &check; | The name of the database for which to add principals.|
 | *Role* | string | &check; | The role to assign to the principal. For databases, this can be `admins`, `users`, `viewers`, `unrestrictedviewers`, `ingestors`, or `monitors`.|
-| *Principal* | string | &check; | One or more principals. For how to specify these principals, see [principals and identity providers](./access-control/referencing-security-principals.md).|
+| *Principal* | string | &check; | One or more principals. For guidance on how to specify these principals, see [Referencing security principals](./access-control/referencing-security-principals.md).|
 | `skip-results` | string | | If provided, the command won't return the updated list of database principals.|
 | *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
 

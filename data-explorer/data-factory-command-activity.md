@@ -1,21 +1,21 @@
 ---
-title: 'Use Azure Data Explorer control commands in Azure Data Factory'
-description: 'In this topic, use Azure Data Explorer control commands in Azure Data Factory'
+title: 'Use Azure Data Explorer management commands in Azure Data Factory'
+description: 'In this topic, use Azure Data Explorer management commands in Azure Data Factory'
 ms.reviewer: tzgitlin
 ms.topic: how-to
 ms.date: 09/15/2019
 
-#Customer intent: I want to use Azure Data Explorer control commands in Azure Data Factory.
+#Customer intent: I want to use Azure Data Explorer management commands in Azure Data Factory.
 ---
 
-# Use Azure Data Factory command activity to run Azure Data Explorer control commands
+# Use Azure Data Factory command activity to run Azure Data Explorer management commands
 
-[Azure Data Factory](/azure/data-factory/) (ADF) is a cloud-based data integration service that allows you to perform a combination of activities on the data. Use ADF to create data-driven workflows for orchestrating and automating data movement and data transformation. The **Azure Data Explorer Command** activity in Azure Data Factory enables you to run [Azure Data Explorer control commands](./kusto/query/index.md#control-commands) within an ADF workflow. This article teaches you how to create a pipeline with a lookup activity and ForEach activity containing an Azure Data Explorer command activity.
+[Azure Data Factory](/azure/data-factory/) (ADF) is a cloud-based data integration service that allows you to perform a combination of activities on the data. Use ADF to create data-driven workflows for orchestrating and automating data movement and data transformation. The **Azure Data Explorer Command** activity in Azure Data Factory enables you to run [Azure Data Explorer management commands](./kusto/query/index.md#management-commands) within an ADF workflow. This article teaches you how to create a pipeline with a lookup activity and ForEach activity containing an Azure Data Explorer command activity.
 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A source of data.
 * A data factory. [Create a data factory](data-factory-load-data.md#create-a-data-factory).
 
@@ -146,7 +146,7 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
     > The command activity has the following limits:
     > * Size limit: 1 MB response size
     > * Time limit: 20 minutes (default), 1 hour (maximum).
-    > * If needed, you can append a query to the result using [AdminThenQuery](kusto/management/index.md#combining-queries-and-control-commands), to reduce resulting size/time.
+    > * If needed, you can append a query to the result using [AdminThenQuery](kusto/management/index.md#combining-queries-and-management-commands), to reduce resulting size/time.
 
 1. Now the pipeline is ready. You can go back to the main pipeline view by clicking the pipeline name.
 
@@ -158,13 +158,13 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
 
 1. You can **Publish All** and then **Add trigger** to run the pipeline. 
 
-## Control command outputs
+## Management command outputs
 
 The structure of the command activity output is detailed below. This output can be used by the next activity in the pipeline.
 
-### Returned value of a non-async control command
+### Returned value of a non-async management command
 
-In a non-async control command, the structure of the returned value is similar to the structure of the Lookup activity result. The `count` field indicates the number of returned records. A fixed array field `value` contains a list of records. 
+In a non-async management command, the structure of the returned value is similar to the structure of the Lookup activity result. The `count` field indicates the number of returned records. A fixed array field `value` contains a list of records. 
 
 ```json
 { 
@@ -184,9 +184,9 @@ In a non-async control command, the structure of the returned value is similar t
 } 
 ```
  
-### Returned value of an async control command
+### Returned value of an async management command
 
-In an async control command, the activity polls the operations table behind the scenes, until the async operation is completed or times-out. Therefore, the returned value will contain the result of `.show operations OperationId` for that given **OperationId** property. Check the values of **State** and **Status** properties, to verify successful completion of the operation.
+In an async management command, the activity polls the operations table behind the scenes, until the async operation is completed or times-out. Therefore, the returned value will contain the result of `.show operations OperationId` for that given **OperationId** property. Check the values of **State** and **Status** properties, to verify successful completion of the operation.
 
 ```json
 { 
