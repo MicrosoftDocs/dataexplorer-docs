@@ -32,7 +32,7 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*Name*|string|&check;|The variable name. You can escape the name with brackets. For example, `["Name with spaces"]`.|
-|*Expression*|string|&check;|An expression with a scalar or tabular result. For example, an expression with a scalar result would be `let one=1;`, and an expression with a tabular result would be `let RecentLog = Logs  \| where Timestamp > ago(1h)`.|
+|*Expression*|string|&check;|An expression with a scalar or tabular result. For example, an expression with a scalar result would be `let one=1;`, and an expression with a tabular result would be `let RecentLog = Logs  | where Timestamp > ago(1h)`.|
 
 ## Syntax: View or function
 
