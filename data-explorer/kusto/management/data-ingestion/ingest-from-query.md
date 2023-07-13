@@ -20,7 +20,7 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 
 ## Permissions
 
-To perform different actions on a table, specific permissions are required. The following list describes the permission requirements for the commands described in this document:
+To perform different actions on a table, specific permissions are required:
 
 * To add rows to an existing table using the `.append` command, you need a minimum of Table Ingestor permissions.
 * To create a new table using the various `.set` commands, you need a minimum of Database User permissions.
