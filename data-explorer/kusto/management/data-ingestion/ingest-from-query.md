@@ -1,9 +1,9 @@
 ---
 title:  Kusto query ingestion (set, append, replace)
-description: This article describes Ingest from query (.set, .append, .set-or-append, .set-or-replace) in Azure Data Explorer.
+description: Learn how to use the .set, .append, .set-or-append, and .set-or-replace commands to ingest data from a query into Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/21/2023
+ms.date: 07/13/2023
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 
@@ -20,7 +20,7 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 
 ## Permissions
 
-To perform different actions on a table, specific permissions are required. The following list describes the permission requirements for the commands described in this document:
+To perform different actions on a table, specific permissions are required:
 
 * To add rows to an existing table using the `.append` command, you need a minimum of Table Ingestor permissions.
 * To create a new table using the various `.set` commands, you need a minimum of Database User permissions.
@@ -30,13 +30,7 @@ For more information on permissions, see [Kusto role-based access control](../..
 
 ## Syntax
 
-`.set` [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
-
-`.append` [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
-
-`.set-or-append` [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
-
-`.set-or-replace` [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
+(`.set` | `.append` | `.set-or-append` | `.set-or-replace`) [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
 
 ## Parameters
 
