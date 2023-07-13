@@ -56,3 +56,9 @@ After assigning the managed identity to your cluster and configuring the relevan
 
 > [!NOTE]
 > Attempting to use managed identities in any other flow will result in the following error message: `"Authentication with a Managed Identity is disabled for this flow"`
+
+## See also
+
+* [Configure managed identities for your cluster](configure-managed-identities-cluster.md)
+* [Authenticate external tables with managed identities](external-tables-managed-identities.md)
+
