@@ -43,7 +43,7 @@ For a full description of the security roles at each scope, see [Kusto role-base
 > It isn't possible to assign the `viewer` role for only some tables in the database. For different approaches on how to grant a principal view access to a subset of tables, see [manage table view access](manage-table-view-access.md).
 
 > [!TIP]
-> There are three cluster level security roles (AllDatabasesAdmin, AllDatabasesViewer, and AllDatabasesMonitor) that can only be configured in the Azure portal. To learn more, see [manage cluster permissions](../../manage-cluster-permissions.md).
+> There are three cluster level security roles (`AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor`) that can only be configured in the Azure portal. To learn more, see [manage cluster permissions](../../manage-cluster-permissions.md).
 
 ## Common scenarios
 
@@ -53,7 +53,7 @@ To see your own roles on the cluster, run the following command:
 
 `.show` `cluster` `principal` `roles`
 
-To see all roles on the cluster, you must have at least `AllDatabasesMonitor` permissions on the cluster. To see the roles, run the following command:
+To see all roles on the cluster, you must have at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions on the cluster. To see the roles, run the following command:
 
 `.show` `cluster` `principals`
 
