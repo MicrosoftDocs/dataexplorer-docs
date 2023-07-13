@@ -3,7 +3,7 @@ title: Security roles
 description: Learn how to use security roles to provide principals access to resources.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/13/2023
 ---
 # Security roles overview
 
@@ -45,7 +45,21 @@ For a full description of the security roles at each scope, see [Kusto role-base
 > [!TIP]
 > There are three cluster level security roles (AllDatabasesAdmin, AllDatabasesViewer, and AllDatabasesMonitor) that can only be configured in the Azure portal. To learn more, see [manage cluster permissions](../../manage-cluster-permissions.md).
 
+## Common scenarios
+
+### Find the roles you have on a resource
+
+To check the roles assigned to you on a specific resource, run the following command within the relevant database or the database that contains the resource:
+
+`.show` ( `database` | `table` | `function` | `materialized view` ) *ResourceName* `principal` `roles`
+
+### Find the roles of all principals on a resource
+
+To see the roles assigned to all principals for a particular resource, run the following command within the relevant database or the database that contains the resource:
+
+`.show` ( `database` | `table` | `function` | `materialized view` ) *ResourceName* `principals`
+
 ## Next steps
 
-* Read more about [Kusto role-based access control](access-control/role-based-access-control.md)
+* Read about [Kusto role-based access control](access-control/role-based-access-control.md)
 * Learn how to [reference security principals](access-control/referencing-security-principals.md)
