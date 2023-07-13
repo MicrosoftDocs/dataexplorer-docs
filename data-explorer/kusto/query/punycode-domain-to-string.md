@@ -12,7 +12,7 @@ Encodes Internationalized Domain Name in Applications (IDNA) string to [Punycode
 
 ## Syntax
 
-`punycode_domain_to_string('domain')`
+`punycode_domain_to_string(`*domain*`)`
 
 ## Parameters
 | Name | Type | Required | Description |
@@ -25,7 +25,6 @@ Encodes Internationalized Domain Name in Applications (IDNA) string to [Punycode
 * Returns an empty result if encoding failed.
 
 ## Examples
-
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjZT83MTMPKvikqLMvHQFzWh1n8OrFHwe7l6c+bihKSSj9OGutXkKIRmZh1flAQWS83PVdRTUgzIPb8jMyXm/d2Fw9uGFOSnF2YkFiUW5QCZQKL8oHahGyTsxJzWlLL80J1k9Q8+xqCS/6MjqrPxivdSUUqVYXq4ahdSKktS8FAWgzbYFpXmVyfkpqfEQ18SX5MdDHAR1niYAt9ocW7AAAAA=" target="_blank">Run the query</a>
@@ -41,7 +40,6 @@ datatable(domain:string )['Lê Lợi。Thuận Thiên。com', 'Riðill｡Skálds
 |Riðill｡Skáldskaparmál｡org|xn--Riill-jta.xn--Skldskaparml-dbbj.org|
 |Kaledvoulc'h.Artorījos.edu|Kaledvoulc'h.xn--Artorjos-ejb.edu|
 
-
 ## Next steps
 
-Use [punycode_domain_from_string()](punycode_domain_from_string.md) to retrieve the original decoded string.
+To retrieve the original decoded string, see [punycode_domain_from_string()](punycode-domain-from-string.md).

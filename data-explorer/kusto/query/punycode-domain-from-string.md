@@ -11,12 +11,12 @@ Decodes input string from encoded Internationalized Domain Name in Applications 
 
 ## Syntax
 
-`punycode_domain_from_string('encoded_string')`
+`punycode_domain_from_string(`*encoded_string*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
-|--|--|--|--|
+|---|---|---|---|
 | *encoded_string* | `string` | &check; | An IDNA string to be decoded from punycode form. The function accepts one string argument.
 
 ## Returns
@@ -38,7 +38,6 @@ datatable(encoded:string)
 ] |extend domain=punycode_domain_from_string(encoded)
 ```
 
-|decoded|
 |encoded|domain|
 |---|---|
 |xn--Ge-mia.Bulg.edu|Gáe.Bulg.edu
@@ -47,4 +46,4 @@ datatable(encoded:string)
 
 ## Next steps
 
-Use [punycode_domain_to_string()](punycode_domain_to_string.md) to encode a domain name to punycode form.
+To encode a domain name to punycode form, see [punycode_domain_to_string()](punycode-domain-to-string.md).
