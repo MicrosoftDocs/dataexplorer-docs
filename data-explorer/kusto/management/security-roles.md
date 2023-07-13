@@ -47,17 +47,19 @@ For a full description of the security roles at each scope, see [Kusto role-base
 
 ## Common scenarios
 
-### Show the roles on the cluster
+### Show your roles on the cluster
 
 To see your own roles on the cluster, run the following command:
 
 `.show` `cluster` `principal` `roles`
 
+### Show the roles of all principals on the cluster
+
 To see all roles on the cluster, you must have at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions on the cluster. To see the roles, run the following command:
 
 `.show` `cluster` `principals`
 
-### Show the roles you have on a resource
+### Show your roles on a resource
 
 To check the roles assigned to you on a specific resource, run the following command within the relevant database or the database that contains the resource:
 
