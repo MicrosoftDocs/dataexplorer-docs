@@ -1,6 +1,6 @@
 ---
 title: Query data in MATLAB
-description: This article describes how to query data in MATLAB with Azure Data Explorer.
+description: Learn how to query data stored in Azure Data Explorer from within MATLAB.
 ms.reviewer: ramacg
 ms.topic: how-to
 ms.date: 07/11/2023
