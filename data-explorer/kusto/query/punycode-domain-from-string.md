@@ -35,7 +35,8 @@ datatable(encoded:string)
     "xn--Ge-mia.Bulg.edu", 
     "xn--Lin-8na.Celtchair.org", 
     "xn--Ry-lja8c.xn--Jng-uta63a.xn--Bng-9ka.com", 
-] |extend domain=punycode_domain_from_string(encoded)
+] 
+| extend domain=punycode_domain_from_string(encoded)
 ```
 
 |encoded|domain|
