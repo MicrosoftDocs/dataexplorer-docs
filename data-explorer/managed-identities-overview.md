@@ -21,7 +21,7 @@ Managed identity authentication can be used in Azure Data Explorer for various s
 
 1. [Configure a managed identity for your cluster](#configure-a-managed-identity-for-your-cluster)
 1. [Configure the managed identity policy](#configure-the-managed-identity-policy)
-1. [Use managed identity in supported workflows](#use-in-supported-workflows)
+1. [Use managed identity in supported workflows](#use-the-managed-identity-in-supported-workflows)
 
 ### Configure a managed identity for your cluster
 
