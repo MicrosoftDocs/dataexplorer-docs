@@ -40,7 +40,7 @@ Managed Grafana creates a system-assigned managed identity for each new workspac
 
 1. In the search box, enter your Managed Grafana workspace name.
 
-1. In the search results, select the result that matches your workspace name, and then then choose **Select**.
+1. In the search results, select the result that matches your workspace name, and then choose **Select**.
 
     :::image type="content" source="includes/media/data-explorer-configure-data-source/add-managed-identity.png" alt-text="Screenshot of the pane for new principals and a selected workspace name.":::
 
@@ -247,7 +247,7 @@ The following basic example uses both the query builder mode and the raw mode of
 
 ### Query builder mode
 
-The query editor has two modes: query builder and raw. Use the query builder mode to define your query.
+Use query builder mode to define your query.
 
 1. Below the data source, select **Database** and choose your database from the dropdown list.
 1. Select **From** and choose your table from the dropdown list.
@@ -266,7 +266,7 @@ The query editor has two modes: query builder and raw. Use the query builder mod
 
        You can set one or more value columns. This selection is equivalent to using the [summarize operator](kusto/query/summarizeoperator.md).
 
-1. Select **+** to right of **Group by (summarize)** to select one or more columns that will be used to arrange the values into groups. This selection is equivalent to the group expression in the `summarize` operator.
+1. Select **+** to the right of **Group by (summarize)** to select one or more columns that will be used to arrange the values into groups. This selection is equivalent to the group expression in the `summarize` operator.
 
 1. Select **Run Query**.
 
@@ -296,7 +296,7 @@ Use raw mode to edit your query.
 
     :::image type="content" source="media/grafana/last-six-hours.png" alt-text="Screenshot of the default time filter of last six hours.":::
 
-1. Specify a custom range that covers 2007, the year included in our StormEvents sample data set. Then select **Apply**.
+1. Specify a custom range that covers 2007, the year included in the StormEvents sample data set. Then select **Apply**.
 
     :::image type="content" source="media/grafana/custom-date-range.png" alt-text="Screenshot of the custom range control, with a custom date range selected.":::
 
