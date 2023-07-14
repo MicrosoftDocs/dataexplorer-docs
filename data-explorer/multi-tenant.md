@@ -25,11 +25,11 @@ For instance, if a tenant performs many compute-intensive queries or ingestions,
 
 The next sections explore deployment architectures in detail.  This section contrasts the architectures to facilitate decision making.
 
-Architecture|Pros|Cons
--|-|-
-One tenant per database|Tenants' isolation:  easy to quickly remove tenant data, have different policies, have different schema evolution, etc.|Extent fragmentation<br>Materialized View / Partition Policy count<br>
-One table for many tenants|Data consolidation (extent management)|Tenant removal requires soft delete or purge<br>All tenants have same schema and policies
-One tenant per table in a single database|Easy tenant removal|Extent fragmentation<br>Extra code customization (e.g., different table name per tenant)
+Architecture|Stenghts
+-|-
+One tenant per database|<ul><li>Tenants' isolation:  no need for proxy</li><li>Ability to have different policies per tenant (e.g. retention policies)</li><li>Flexibility in schema evolution per tenant</li><li>Easy and quick removal of tenant data</li></ul>
+One table for many tenants|<ul><li>Efficient data consolidation and extent management </li><li>Simplified schema evolution</li><li>Well suited for Materialized Views</li><li>Ideal for partitioning</li></ul>
+One tenant per table in a single database|Not recommended
 
 ## Architecture: One tenant per database
 
