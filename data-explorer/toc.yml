@@ -162,6 +162,9 @@ items:
       - name: Create an IoT Hub data connection
         displayName: ingest ingestion
         href: create-iot-hub-connection.md
+      - name: Create an IoT Hub data connection with SDKs
+        displayName: ingest ingestion, c#, python
+        href: create-iot-hub-connection.md
     - name: Azure Data Factory
       items:
       - name: Integration with Data Factory
