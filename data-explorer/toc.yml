@@ -136,7 +136,7 @@ items:
         href: create-event-hubs-connection.md
       - name: Create an Event Hubs data connection with SDKs
         displayName: python, c#
-        href: create-event-hubs-connection.md
+        href: create-event-hubs-connection-sdk.md
       - name: Manage Event Hubs in your free cluster
         displayName: Event hub, ingest, data connection
         href: start-for-free-event-hubs.md
@@ -164,7 +164,7 @@ items:
         href: create-iot-hub-connection.md
       - name: Create an IoT Hub data connection with SDKs
         displayName: ingest ingestion, c#, python
-        href: create-iot-hub-connection.md
+        href: create-iot-hub-connection-sdk.md
     - name: Azure Data Factory
       items:
       - name: Integration with Data Factory
