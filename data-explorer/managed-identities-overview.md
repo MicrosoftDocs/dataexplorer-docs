@@ -29,9 +29,6 @@ To authenticate with managed identities, follow these steps:
 1. [Configure the managed identity policy](#configure-the-managed-identity-policy)
 1. [Use managed identity in supported workflows](#use-the-managed-identity-in-supported-workflows)
 
-> [!NOTE]
-> Managed identities can't be used to communicate with other single-tenant Azure AD resources in a different tenant than your cluster. This limitation restricts the use of managed identities in certain authentication scenarios. In such cases, use account-key based authentication.
-
 ### Configure a managed identity for your cluster
 
 Your cluster needs permissions to act on behalf of the given managed identity. This assignment can be given for both system-assigned and user-assigned managed identities. For instructions, see [Configure managed identities for your Azure Data Explorer cluster](configure-managed-identities-cluster.md#configure-managed-identities-for-your-azure-data-explorer-cluster).
