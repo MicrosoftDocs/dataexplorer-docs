@@ -1,11 +1,11 @@
 ---
-title: 'Create an Event Grid data connection - Azure Data Explorer'
-description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Grid.'
+title: 'Create an Event Grid data connection with SDKs - Azure Data Explorer'
+description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Grid using the Kusto SDKs.'
 ms.topic: how-to
 ms.date: 07/16/2023
 ---
 
-# Create an Event Grid data connection for Azure Data Explorer with the Kusto SDKs
+# Create an Event Grid data connection for Azure Data Explorer with SDKs
 
 In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that sets an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hubs.
 
@@ -28,56 +28,6 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 ## Create an Event Grid data connection
 
 In this section, you'll establish a connection between Event Grid and your Azure Data Explorer table.
-
-1. Browse to the storage account in the Azure portal. On the left menu, select **Events**
-1. In the main pane, select the **Azure Data Explorer** tab.
-
-    :::image type="content" source="media/ingest-data-event-grid/storage-account.png" alt-text="Screenshot of the Azure storage account Events page, showing the Azure Data Explorer tab.":::
-
-The **Data connection** pane opens with the **Basics** tab selected.
-
-1. Under **Basics**, fill out the form with the following information:
-
-    :::image type="content" source="media/ingest-data-event-grid/portal-basics-tab.png" alt-text="Screenshot of the Data Connection Basics tab, showing the options for the connection type.":::
-
-    |**Setting** | **Suggested value** | **Field description**|
-    |---|---|---|
-    | Data connection name | *test-grid-connection* | The name of the connection that you want to create in Azure Data Explorer.|
-    | Storage account | *gridteststorage1* | The storage account from which you accessed this wizard. Autopopulated.|
-    | Event type | *Blob created* or *Blob renamed* | The type of event that triggers ingestion. *Blob renamed* is supported only for ADLSv2 storage. To rename a blob, navigate to the blob in Azure portal, right-click on the blob and select **Rename**. Supported types are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. |
-    | Resources creation | *Automatic* | Define whether you want Azure Data Explorer to create an Event Grid Subscription, an Event Hubs namespace, and an Event Hubs for you. To create resources manually, see [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md)|
-
-1. Select **Next> Ingest properties**.
-
-1. Under **Ingest properties**.
-1. Fill out the form with the following information. Table and mapping names are case-sensitive:
-
-    :::image type="content" source="media/ingest-data-event-grid/portal-ingestion-tab.png" alt-text="Screenshot of the Data Connection Ingest properties tab, showing the subscription and data routing properties.":::
-
-     **Setting** | **Suggested value** | **Field description**
-    |---|---|---|
-    | Subscription |  | Your Azure Data Explorer subscription.
-    | Cluster Name | *TestCluster* | The name of the cluster in which you want to ingest data.
-    | Database Name | *TestDatabase* | The target database you created in **TestCluster**.
-    | Allow routing the data to other databases (Multi database data connection) | Don't allow | Turn on this option if you want to override the default target database associated with the data connection. For more information about database routing, see [Events routing](ingest-data-event-grid-overview.md#events-routing). |
-    | Table name | *TestTable* | The target table you created in **TestDatabase**. |
-    | Data format | *JSON* | Supported formats are Avro, CSV, JSON, MULTILINE JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHEAVRO, RAW, and W3CLOG. Supported compression options are Zip and Gzip. |
-    | Mapping | *TestMapping* | The mapping you created in **TestDatabase**, which maps incoming data to the column names and data types of **TestTable**. If not specified, an [identity data mapping](kusto/management/mappings.md#identity-mapping) derived from the table's schema is used.|
-    | Advanced settings | *My data has headers* | Ignores headers. Supported for *SV type files.|
-
-   > [!NOTE]
-   > You don't have to specify all **Data routing settings**. Partial settings are also accepted.
-
-1. Select **Next: Review + create**
-
-1. Under **Review + create**.
-1. Review the resources that were auto created for you and select **Create**.
-
-    :::image type="content" source="media/ingest-data-event-grid/portal-review-create.png" alt-text="Screenshot of the Data Connection Review and create tab, showing a summary of the selected data connection settings.":::
-
-1. Wait until the deployment is completed. If your deployment failed, select **Operation details** next to the failed stage to get more information for the failure reason. Select **Redeploy** to try to deploy the resources again. You can alter the parameters before deployment.
-
-    :::image type="content" source="media/ingest-data-event-grid/deploy-event-grid-resources.png" alt-text="Screenshot of Deploy Event Grid overview page, showing a failed deployment.":::
 
 ### [C#](#tab/c-sharp)
 
