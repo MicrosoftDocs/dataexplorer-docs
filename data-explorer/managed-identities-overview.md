@@ -7,7 +7,7 @@ ms.date: 07/16/2023
 ---
 # Managed identities overview
 
-A [managed identity from Azure Active Directory (Azure AD)](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to access Azure AD-protected resources such as Azure Storage. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets.
+A [managed identity from Azure Active Directory (Azure AD)](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to access other Azure AD-protected resources such as Azure Storage. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets.
 
 ## Types of managed identities
 
