@@ -211,32 +211,44 @@ items:
     - name: visualizations
       items: 
       - name: anomalychart
+        displayName: anomaly chart
         href: visualization-anomalychart.md
       - name: areachart
+        displayName: area chart
         href: visualization-areachart.md
       - name: barchart
+        displayName: bar chart
         href: visualization-barchart.md
       - name: card
         href: visualization-card.md
       - name: columnchart
+        displayName: column chart
         href: visualization-columnchart.md
       - name: ladderchart
+        displayName: ladder chart
         href: visualization-ladderchart.md
       - name: linechart
+        displayName: line chart
         href: visualization-linechart.md
       - name: piechart
+        displayName: pie chart
         href: visualization-piechart.md
       - name: pivotchart
+        displayName: pivot chart
         href: visualization-pivotchart.md
       - name: scatterchart
+        displayName: scatter chart
         href: visualization-scatterchart.md
       - name: stackedareachart
+        displayName: stacked area chart
         href: visualization-stackedareachart.md
       - name: table
         href: visualization-table.md
       - name: timechart
+        displayName: time chart
         href: visualization-timechart.md
       - name: timepivot
+        displayName: time pivot
         href: visualization-timepivot.md
       - name: treemap
         href: visualization-treemap.md
@@ -304,6 +316,7 @@ items:
     - name: between operator 
       href: betweenoperator.md
     - name: "!between operator" 
+      displayName: not between operator
       href: notbetweenoperator.md
   - name: Bitwise binary operators
     href: binoperators.md
@@ -312,12 +325,15 @@ items:
   - name: in operators  
     items:
     - name: in operator 
+      displayName: in operator case sensitive
       href: in-cs-operator.md
     - name: in~ operator 
       href: inoperator.md
     - name: "!in operator"
+      displayName: not in operator case sensitive
       href: not-in-cs-operator.md
     - name: "!in~ operator" 
+      displayName: not in operator
       href: not-in-operator.md 
   - name: Logical or binary operators
     href: logicaloperators.md
@@ -330,73 +346,98 @@ items:
     - name: contains operator
       href: contains-operator.md
     - name: contains_cs operator
+      displayName: contains operator case sensitive
       href: contains-cs-operator.md
     - name: "!contains operator"
+      displayName: not contains operator
       href: not-contains-operator.md
     - name: "!contains_cs operator" 
+      displayName: not contains operator case sensitive
       href: not-contains-cs-operator.md 
     - name: endswith operator
       href: endswith-operator.md
     - name: endswith_cs operator
+      displayName: ends with operator case sensitive
       href: endswith-cs-operator.md
     - name: "!endswith operator"
+      displayName: not ends with operator
       href: not-endswith-operator.md
     - name: "!endswith_cs operator"
+      displayName: not ends with operator case sensitive
       href: not-endswith-cs-operator.md
     - name: "== (equals) operator"
-      displayName: equals
+      displayName: equals case sensitive operator
       href: equals-cs-operator.md
     - name: "=~ (equals) operator" 
       href: equals-operator.md
     - name: "!= (not equals) operator"
+      displayName: not equals case sensitive operator
       href: not-equals-cs-operator.md
     - name: "!~ (not equals) operator"
       href: not-equals-operator.md    
     - name: has operator
       href: has-operator.md
     - name: has_cs operator
+      displayName: has operator case sensitive
       href: has-cs-operator.md
     - name: "!has operator"
+      displayName: not has operator
       href: not-has-operator.md
     - name: "!has_cs operator" 
+      displayName: not has operator case sensitive
       href: not-has-cs-operator.md  
     - name: hasprefix operator
       href: hasprefix-operator.md
     - name: hasprefix_cs operator
+      displayName: has prefix operator case sensitive
       href: hasprefix-cs-operator.md
     - name: "!hasprefix operator"
+      displayName: not has prefix operator
       href: not-hasprefix-operator.md
     - name: "!hasprefix_cs operator" 
+      displayName: not has prefix operator case sensitive
       href: not-hasprefix-cs-operator.md    
     - name: hassuffix operator
       href: hassuffix-operator.md
     - name: hassuffix_cs operator
+      displayName: has suffix operator case sensitive
       href: hassuffix-cs-operator.md
     - name: "!hassuffix operator" 
+      displayName: not has suffix operator
       href: not-hassuffix-operator.md
-    - name: "!hassuffix_cs operator" 
+    - name: "!hassuffix_cs operator"
+      displayName: not has suffix operator case sensitive
       href: not-hassuffix-cs-operator.md 
     - name: has_all operator
+      displayName: has all operator
       href: has-all-operator.md
     - name: has_any operator
+      displayName: has any operator
       href: has-anyoperator.md
     - name: in operator 
+      displayName: in operator case sensitive
       href: in-cs-operator.md
     - name: "in~ operator" 
       href: inoperator.md
     - name: "!in operator"
+      displayName: not in operator case sensitive
       href: not-in-cs-operator.md
     - name: "!in~ operator" 
+      displayName: not in operator
       href: not-in-operator.md 
     - name: matches regex operator
       href: matches-regex-operator.md
     - name: startswith operator
+      displayName: starts with operator
       href: startswith-operator.md
     - name: startswith_cs operator
+      displayName: starts with operator case sensitive
       href: startswith-cs-operator.md
-    - name: "!startswith operator" 
+    - name: "!startswith operator"
+      displayName: not starts with operator
       href: not-startswith-operator.md
     - name: "!startswith_cs operator"
+      displayName: not starts with operator case sensitive
       href: not-startswith-cs-operator.md  
 - name: Scalar functions
   items:
@@ -414,34 +455,46 @@ items:
   - name: array_concat()
     href: arrayconcatfunction.md
   - name: array_iff()
-    displayName: array_iif()
+    displayName: array_iif() array iif
     href: arrayifffunction.md
   - name: array_index_of()
+    displayName: array index of
     href: arrayindexoffunction.md
   - name: array_length()
-    displayName: arraylength()
+    displayName: arraylength() array length
     href: arraylengthfunction.md
   - name: array_reverse()
+    displayName: array reverse
     href: array-reverse-function.md
   - name: array_rotate_left()
+    displayName: array rotate left
     href: array_rotate_leftfunction.md
   - name: array_rotate_right()
+    displayName: array rotate right
     href: array_rotate_rightfunction.md
   - name: array_shift_left()
+    displayName: array shift left
     href: array_shift_leftfunction.md
   - name: array_shift_right()
+    displayName: array shift right
     href: array_shift_rightfunction.md
   - name: array_slice()
+    displayName: array slice
     href: arrayslicefunction.md
   - name: array_sort_asc()
+    displayName: array sort asc
     href: arraysortascfunction.md
   - name: array_sort_desc()
+    displayName: array sort desc
     href: arraysortdescfunction.md
   - name: array_split()
+    displayName: array split
     href: arraysplitfunction.md
   - name: array_sum()
+    displayName: array sum
     href: array-sum-function.md
   - name: asin()
+    displayName: asin function
     href: asinfunction.md
   - name: assert()
     href: assert-function.md
@@ -450,115 +503,156 @@ items:
   - name: atan2()
     href: atan2function.md
   - name: bag_has_key()
+    displayName: bag has key
     href: bag-has-key-function.md
   - name: bag_keys()
+    displayName: bag keys
     href: bagkeysfunction.md
   - name: bag_merge()
+    displayName: bag merge
     href: bag-merge-function.md
   - name: bag_pack()
-    displayName: pack(), pack_dictionary()
+    displayName: pack(), pack_dictionary(), bag pack
     href: packfunction.md
   - name: bag_pack_columns()
     displayName: bag pack columns, dynamic object, property bag
     href: bag-pack-columns-function.md
   - name: bag_remove_keys()
+    displayName: bag remove keys
     href: bag-remove-keys-function.md
   - name: bag_set_key()
+    displayName: bag set key
     href: bag-set-key-function.md
   - name: bag_zip()
+    displayName: bag zip
     href: bag-zip.md
   - name: base64_decode_toarray()
+    displayName: base64_decode_toarray()
     href: base64_decode_toarrayfunction.md
   - name: base64_decode_tostring()
-    displayName: base64_decodestring()
+    displayName: base64_decodestring() vase64 decode string
     href: base64_decode_tostringfunction.md
   - name: base64_decode_toguid()
+    displayName: base64_decode_toguid() base64 decode to guid
     href: base64-decode-toguid-function.md
   - name: base64_encode_fromarray()
+    displayName: base64 encode from array
     href: base64_encode_fromarrayfunction.md
   - name: base64_encode_tostring()
-    displayName: base64_encodestring()
+    displayName: base64_encodestring() base 64 encode string
     href: base64_encode_tostringfunction.md
   - name: base64_encode_fromguid()
+    displayName: base64_encode_fromguid() base64 encode from guid
     href: base64-encode-fromguid-function.md
   - name: beta_cdf()
+    displayName: beta_cdf() beta cdf
     href: beta-cdffunction.md
   - name: beta_inv()
+    displayName: beta_inv() beta inv
     href: beta-invfunction.md
   - name: beta_pdf()
+    displayName: beta_pdf() beta pdf
     href: beta-pdffunction.md
   - name: bin()
     displayName: floor()
     href: binfunction.md
   - name: bin_at()
+    displayName: bin_at() bin at
     href: binatfunction.md
   - name: bin_auto()
+    displayName: bin_auto() bin auto
     href: bin-autofunction.md
   - name: binary_and()
+    displayName: binary_and() binary and 
     href: binary-andfunction.md
   - name: binary_not()
+    displayName: binary_not() binary not
     href: binary-notfunction.md
   - name: binary_or()
+    displayName: binary_or() binary or
     href: binary-orfunction.md
   - name: binary_shift_left()
+    displayName: binary_shift_left() binary shift left
     href: binary-shift-leftfunction.md
   - name: binary_shift_right()
+    displayName: binary_shift_right() binary shift right
     href: binary-shift-rightfunction.md
   - name: binary_xor()
+    displayName: binary_xor() binary xor
     href: binary-xorfunction.md
   - name: bitset_count_ones()
+    displayName: bitset_count_ones() bitset count ones
     href: bitset-count-onesfunction.md
   - name: case()
     href: casefunction.md
   - name: ceiling()
     href: ceilingfunction.md
+    displayName: ceiling() ceiling function
   - name: coalesce()
     href: coalescefunction.md
   - name: column_ifexists()
-    displayName: columnifexists()
+    displayName: columnifexists() column if exists
     href: columnifexists.md
   - name: convert_angle()
+    displayName: convert_angle() convert angle
     href: convert-angle-function.md
   - name: convert_energy()
+    displayName: convert_energy() convert energy
     href: convert-energy-function.md
   - name: convert_force()
+    displayName: convert_force() convert force
     href: convert-force-function.md
   - name: convert_length()
+    displayName: convert_length() convert length
     href: convert-length-function.md
   - name: convert_mass()
+    displayName: convert_mass() convert mass
     href: convert-mass-function.md
   - name: convert_speed()
+    displayName: convert_speed() convert speed
     href: convert-speed-function.md
   - name: convert_temperature()
+    displayName: convert_temperature() convert temperature
     href: convert-temperature-function.md
   - name: convert_volume()
+    displayName: convert_volume() convert volume
     href: convert-volume-function.md
   - name: cos()
     href: cosfunction.md
   - name: cot()
     href: cotfunction.md
   - name: countof()
+    displayName: countof() count of
     href: countoffunction.md
   - name: current_cluster_endpoint()
+    displayName: current_cluster_endpoint() current cluster endpoint
     href: current-cluster-endpoint-function.md
   - name: current_database()
+    displayName: current_database() current database
     href: current-database-function.md
   - name: current_principal()
+    displayName: current_principal() current principal
     href: current-principalfunction.md
   - name: current_principal_details()
+    displayName: current_principal_details() current principal details
     href: current-principal-detailsfunction.md
   - name: current_principal_is_member_of()
+    displayName: current_principal_is_member_of() current principal is member of
     href: current-principal-ismemberoffunction.md
   - name: cursor_after()
+    displayName: cursor_after() cursor after
     href: cursorafterfunction.md
   - name: cursor_before_or_at()
+    displayName: cursor_before_or_at() cursor before or at
     href: cursorbeforeoratfunction.md
   - name: cursor_current()
-    displayName: current_cursor()
+    displayName: current_cursor() cursor current
     href: cursorcurrent.md
   - name: datetime_add()
+    displayName: datetime_add() datetime add
     href: datetime-addfunction.md
   - name: datetime_diff()
+    displayName: datetime_diff() datetime diff
     href: datetime-difffunction.md
   - name: datetime_local_to_utc()
     href: datetime-local-to-utc-function.md
