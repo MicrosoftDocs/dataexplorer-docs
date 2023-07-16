@@ -1,11 +1,11 @@
 ---
-title:  SQL external table authentication methods
-description: This article describes how to authenticate to SQL external tables in Azure Data Explorer.
+title:  SQL external table connection strings
+description: This article describes how to connect and authenticate to SQL external tables in Azure Data Explorer.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 06/28/2023
+ms.date: 07/13/2023
 ---
-# SQL external table authentication methods
+# SQL external table connection strings
 
 To access a SQL external table, a connection string is provided during its creation. This connection string specifies the resource to be accessed and its authentication information. Supported SQL external table types include Microsoft SQL Server, MySQL, PostgreSQL, and Cosmos DB. For information on how to manage SQL external tables, see [Create and alter SQL external tables](../../management/external-sql-tables.md).
 

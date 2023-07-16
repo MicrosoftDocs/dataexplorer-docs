@@ -10,7 +10,7 @@ ms.date: 11/20/2022
 Subtracts the given [timespan](scalar-data-types/timespan.md) from the current UTC time.
 
 Like `now()`, if you use `ago()` multiple times in a single query statement, the current UTC time
-being referenced will be the same across all uses.
+being referenced is the same across all uses.
 
 ## Syntax
 
@@ -19,12 +19,12 @@ being referenced will be the same across all uses.
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| *timespan* | timespan | &check; | The interval to subtract from the current UTC clock time `now()`. |
+|---|---|---|---|
+| *timespan* | timespan | &check; | The interval to subtract from the current UTC clock time `now()`. For a full list of possible timespan values, see [timespan literals](scalar-data-types/timespan.md#timespan-literals).|
 
 ## Returns
 
-A [datetime](./scalar-data-types/datetime.md) value `now() - a_timespan`
+A [datetime](./scalar-data-types/datetime.md) value equal to the current time minus the timespan.
 
 ## Example
 
