@@ -134,6 +134,8 @@ items:
                 href: ingest-data-event-hub-overview.md
               - name: Create an Event Hubs data connection
                 href: create-event-hubs-connection.md
+              - name: Create an Event Hubs data connection with SDKs
+                href: create-event-hubs-connection-sdk.md
               - name: Manage Event Hubs in your free cluster
                 displayName: Event hub, ingest, data connection
                 href: start-for-free-event-hubs.md
@@ -145,6 +147,8 @@ items:
               - name: Create an Event Grid data connection
                 displayName: rename blob, upload to azure storage, use event grid, remove event grid
                 href: create-event-grid-connection.md
+              - name: Create an Event Grid data connection with SDKs
+                href: create-event-grid-connection-sdk.md
               - name: Manually create resources in Azure portal
                 displayName: Manually create resources for Event Grid ingestion, Ingest
                 href: ingest-data-event-grid-manual.md
@@ -156,6 +160,8 @@ items:
               - name: Create an IoT Hub data connection
                 displayName: ingest ingestion
                 href: create-iot-hub-connection.md
+              - name: Create an IoT Hub data connection with SDKs
+                href: create-iot-hub-connection-sdk.md
           - name: Azure Data Factory
             items:
               - name: Integration with Data Factory
