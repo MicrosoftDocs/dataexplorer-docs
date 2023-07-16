@@ -173,6 +173,8 @@ In this section, you'll establish a connection between Event Grid and your Azure
     | location | *Central US* | The location of the data connection resource.|
     | blob_storage_event_type | *Microsoft.Storage.BlobCreated* | The type of event that triggers ingestion. Supported events are: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage.|
 
+---
+
 ## Use the Event Grid data connection
 
 This section shows how to trigger ingestion from Azure Blob Storage or Azure Data Lake Gen 2 to your cluster following blob creation or blob renaming.
