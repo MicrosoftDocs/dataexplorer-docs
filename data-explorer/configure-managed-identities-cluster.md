@@ -9,7 +9,7 @@ ms.date: 07/16/2023
 
 A [managed identity from Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to access other Azure AD-protected resources such as Azure Key Vault. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets.
 
-This article shows you how to add and remove managed identities for Azure Data Explorer clusters. For an overview of managed identities, see [Managed identities overview](managed-identities-overview.md).
+This article shows you how to add and remove managed identities on your cluster. For more information on managed identities, see [Managed identities overview](managed-identities-overview.md).
 
 > [!NOTE]
 > Managed identities for Azure Data Explorer won't behave as expected if your Azure Data Explorer cluster is migrated across subscriptions or tenants. The app will need to obtain a new identity, which can be done by [removing a system-assigned identity](#remove-a-system-assigned-identity) and then [adding a system-assigned identity](#add-a-system-assigned-identity). Access policies of downstream resources will also need to be updated to use the new identity.
