@@ -60,9 +60,6 @@ After assigning the managed identity to your cluster and configuring the relevan
 
 * **Ingest from storage**: Ingest data from files located in cloud storages into a target table using managed identity authentication. For more information, see [Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md).
 
-> [!NOTE]
-> Attempting to use managed identities in any other flow will result in the following error message: `"Authentication with a Managed Identity is disabled for this flow"`
-
 ## See also
 
 * [Configure managed identities for your cluster](configure-managed-identities-cluster.md)
