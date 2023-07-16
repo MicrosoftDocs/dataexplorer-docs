@@ -21,7 +21,8 @@ This article shows you how to add and remove managed identities for Azure Data E
 Your Azure Data Explorer cluster can be granted two types of identities:
 
 * **System-assigned identity**: Tied to your cluster and deleted if your resource is deleted. A cluster can only have one system-assigned identity.
-* **User-assigned identity**: Standalone Azure resource that can be assigned to your cluster. A cluster can have multiple user-assigned identities.
+
+* **User-assigned identity**: A standalone Azure resource that can be assigned to your cluster. A cluster can have multiple user-assigned identities.
 
 ## Add a system-assigned identity
 

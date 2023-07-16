@@ -18,6 +18,7 @@ Azure Data Explorer is multi-tenant capable, which means that managed identities
 Your Azure Data Explorer cluster can be granted two types of identities:
 
 * **System-assigned identity**: Tied to your cluster and deleted if your resource is deleted. A cluster can only have one system-assigned identity.
+
 * **User-assigned identity**: A standalone Azure resource that can be assigned to your cluster. A cluster can have multiple user-assigned identities.
 
 ## Authenticate with managed identities
