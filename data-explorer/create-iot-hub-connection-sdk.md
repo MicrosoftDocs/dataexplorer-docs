@@ -9,6 +9,8 @@ ms.date: 07/16/2023
 
 This article shows you how to ingest data into Azure Data Explorer from IoT Hub, a big data streaming platform and IoT ingestion service.
 
+To learn how to create the connection using the Kusto SDKs, see [Create an IoT Hub data connection with SDKs](create-iot-hub-connection-sdk.md).
+
 For general information about ingesting into Azure Data Explorer from IoT Hub, see [Connect to IoT Hub](ingest-data-iot-hub-overview.md).
 
 > [!NOTE]
