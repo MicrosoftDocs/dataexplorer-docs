@@ -134,6 +134,9 @@ items:
         href: ingest-data-event-hub-overview.md
       - name: Create an Event Hubs data connection
         href: create-event-hubs-connection.md
+      - name: Create an Event Hubs data connection with SDKs
+        displayName: python, c#
+        href: create-event-hubs-connection.md
       - name: Manage Event Hubs in your free cluster
         displayName: Event hub, ingest, data connection
         href: start-for-free-event-hubs.md
