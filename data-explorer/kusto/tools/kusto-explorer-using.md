@@ -133,7 +133,7 @@ https://help.kusto.windows.net/Samples [[Run the query](https://help.kusto.windo
 The first link opens Kusto.Explorer and sets the cluster and database context appropriately.
 The second link (`Run the query`) is the deep link. If you move the link to an email message and press CTRL+K, you can see the actual URL:
 
-https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
+> https:\/\/help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
 
 #### Deep-links and parametrized queries
 
