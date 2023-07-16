@@ -3,17 +3,22 @@ title: Use managed identities in Azure Data Explorer
 description: Learn how to configure managed identities for Azure Data Explorer scenarios.
 ms.reviewer: itsagui
 ms.topic: reference
-ms.date: 11/25/2020
+ms.date: 07/16/2023
 ---
 # Managed identities overview
 
-A [managed identity from Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to easily access other Azure AD-protected resources such as Azure Storage. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. 
+A [managed identity from Azure Active Directory (Azure AD)](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to access Azure AD-protected resources such as Azure Storage. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets.
+
+Managed identities are single-tenant Azure AD principals bound to the same tenant as your cluster. Since managed identities are single-tenant principals, they can't be used to communicate with other single-tenant Azure AD resources, such as Event Hubs, that are bound to different tenants. This limitation restricts the use of managed identities in certain authentication scenarios. In such cases, use account-key based authentication.
+
+Azure Data Explorer is multi-tenant capable, which means that managed identities can access clusters in different tenants. To grant permissions to a managed identity on a cluster in a different tenant, provide the managed identity object ID and source tenant ID or name as described in [Referencing security principals](kusto/management/referencing-security-principals.md).
+
+## Types of managed identities
 
 Your Azure Data Explorer cluster can be granted two types of identities:
 
 * **System-assigned identity**: Tied to your cluster and deleted if your resource is deleted. A cluster can only have one system-assigned identity.
-* **User-assigned identity**: A standalone Azure resource that can be assigned to 
-your cluster. A cluster can have multiple user-assigned identities.
+* **User-assigned identity**: A standalone Azure resource that can be assigned to your cluster. A cluster can have multiple user-assigned identities.
 
 ## Authenticate with managed identities
 
@@ -32,6 +37,7 @@ Your cluster needs permissions to act on behalf of the given managed identity. T
 To use the managed identity, you need to configure the managed identity policy to allow this identity. For instructions, see [Managed Identity policy](kusto/management/managed-identity-policy.md).
 
 The managed identity policy management commands are:
+
 * [.alter managed_identity policy](kusto/management/alter-managed-identity-policy-command.md)
 * [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md)
 * [.delete managed_identity policy](kusto/management/delete-managed-identity-policy-command.md)
@@ -40,7 +46,6 @@ The managed identity policy management commands are:
 ### Use the managed identity in supported workflows
 
 After assigning the managed identity to your cluster and configuring the relevant managed identity policy usage, you can start using managed identity authentication in the following workflows:
-
 
 * **External Tables**: Create an external table with managed identity authentication. The authentication is stated as part of the connection string. For examples, see [storage connection string](./kusto/api/connection-strings/storage-connection-strings.md). For instructions for using external tables with managed identity authentication, see [Authenticate external tables with managed identities](external-tables-managed-identities.md).
 
@@ -61,4 +66,3 @@ After assigning the managed identity to your cluster and configuring the relevan
 
 * [Configure managed identities for your cluster](configure-managed-identities-cluster.md)
 * [Authenticate external tables with managed identities](external-tables-managed-identities.md)
-
