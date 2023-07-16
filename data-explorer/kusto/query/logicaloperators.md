@@ -22,9 +22,14 @@ The following logical operators can be used to perform comparisons and evaluatio
 
 ## How logical operators work with null values
 
-Two Boolean null values aren't considered equal nor nonequal, so `bool(null) == bool(null)` and `bool(null) != bool(null)` both return `false`.
+Null values adhere to the following rules:
 
-However, `and` and `or` operators treat the null value as equivalent to `false`. So, `bool(null) or true` evaluates to `true`, and `bool(null) and true` evaluates to `false`.
+| Operation | Result |
+|--|--|
+| `bool(null) == bool(null)` | `false` |
+| `bool(null) != bool(null)` | `false` |
+| `bool(null) and true` | `false` |
+| `bool(null) or true` | `true` |
 
 ## Examples
 
@@ -90,11 +95,11 @@ StormEvents
 The following query returns a count of all storm events where the event type is "Tornado" or "Thunderstorm Wind".
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZRC8ovyElPylRTyi9BlMkrzUlKLikFGKIRn5qUoAY1Izi/NKwEAnoJgt1YAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQDzQyoLUhVsbRWUQvKL8hJT8pUU8ouQZBRBMhmleSmpRcUgMxTCM/NSlEBmJOeX5pUAAJ49NlVYAAAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
-| where EventType == "Tornado" or EventType == "Thunderstorm Wind"
+| where EventType == "Tornado" or EventType != "Thunderstorm Wind"
 | count
 ```
 
@@ -103,3 +108,20 @@ StormEvents
 |Count|
 |--|
 |14253|
+
+## Null values
+
+The following query shows that null values are treated as false.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUchMS9NIys/P0cgrzcnRVEjMS1EoKSpN1YGSaYk5xamaALhLkpUrAAAA" target="_blank">Run the query</a>
+
+```kusto
+print iff(bool(null) and true, true, false)
+```
+
+**Output**
+
+|print_0|
+|--|
+|false|
