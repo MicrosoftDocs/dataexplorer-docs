@@ -9,10 +9,6 @@ ms.date: 07/16/2023
 
 A [managed identity from Azure Active Directory (Azure AD)](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to access Azure AD-protected resources such as Azure Storage. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets.
 
-Managed identities are single-tenant Azure AD principals bound to the same tenant as your cluster. Since managed identities are single-tenant principals, they can't be used to communicate with other single-tenant Azure AD resources, such as Event Hubs, that are bound to different tenants. This limitation restricts the use of managed identities in certain authentication scenarios. In such cases, use account-key based authentication.
-
-Azure Data Explorer is multi-tenant capable, which means that managed identities can access clusters in different tenants. To grant permissions to a managed identity on a cluster in a different tenant, provide the managed identity object ID and source tenant ID or name as described in [Referencing security principals](kusto/management/referencing-security-principals.md).
-
 ## Types of managed identities
 
 Your Azure Data Explorer cluster can be granted two types of identities:
@@ -23,11 +19,18 @@ Your Azure Data Explorer cluster can be granted two types of identities:
 
 ## Authenticate with managed identities
 
-Managed identity authentication can be used in Azure Data Explorer for various supported flows. To authenticate with managed identities, follow these steps:
+Managed identities are single-tenant Azure AD principals bound to the same tenant as your cluster. Since managed identities are single-tenant principals, they can't be used to communicate with other single-tenant Azure AD resources, such as Event Hubs, that are bound to different tenants. This limitation restricts the use of managed identities in certain authentication scenarios. In such cases, use account-key based authentication.
+
+Azure Data Explorer is multi-tenant capable, which means that managed identities can access clusters in different tenants. To grant permissions to a managed identity from a different tenant, provide the managed identity object ID and source tenant ID or name as described in [Referencing security principals](kusto/management/referencing-security-principals.md).
+
+To authenticate with managed identities, follow these steps:
 
 1. [Configure a managed identity for your cluster](#configure-a-managed-identity-for-your-cluster)
 1. [Configure the managed identity policy](#configure-the-managed-identity-policy)
 1. [Use managed identity in supported workflows](#use-the-managed-identity-in-supported-workflows)
+
+> [!NOTE]
+> Managed identities can't be used to communicate with other single-tenant Azure AD resources in a different tenant than your cluster. This limitation restricts the use of managed identities in certain authentication scenarios. In such cases, use account-key based authentication.
 
 ### Configure a managed identity for your cluster
 
