@@ -27,7 +27,7 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 |*script_parameters*|dynamic||A property bag of name value pairs to be passed to the Python script as the reserved `kargs` dictionary. For more information, see [Reserved Python variables](#reserved-python-variables).|
 |`hint.distribution`|string||A hint for the plugin's execution to be distributed across multiple cluster nodes. The default value is `single`. `single` means a single instance of the script will run over the entire query data. `per_node` means that if the query before the Python block is distributed, an instance of the script will run on each node, on the data that it contains.|
 |*external_artifacts*|dynamic||A property bag of name and URL pairs for artifacts that are accessible from cloud storage. See more in [Using external artifacts](#using-external-artifacts).|
-|*spill_to_disk*|bool||Specifies an alternative method for serializing the input table to the Python sandbox. For serializing big tables set it to `true` to speed up the serialization and significantly reduce the sandbox memory consumption. Default is `false` as this parameter is experimental.|
+|*spill_to_disk*|bool||Specifies an alternative method for serializing the input table to the Python sandbox. For serializing big tables set it to `true` to speed up the serialization and significantly reduce the sandbox memory consumption. Default is `true`.|
 
 ## Reserved Python variables
 
