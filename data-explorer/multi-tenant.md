@@ -25,11 +25,11 @@ For instance, if a tenant performs many compute-intensive queries or ingestions,
 
 The next sections explore deployment architectures in detail.  This section contrasts the architectures to facilitate decision making.
 
-Architecture|Stenghts
--|-
-One tenant per database|<ul><li>Tenants' isolation:  no need for proxy</li><li>Ability to have different policies per tenant (e.g. retention policies)</li><li>Flexibility in schema evolution per tenant</li><li>Easy and quick removal of tenant data</li></ul>
-One table for many tenants|<ul><li>Efficient data consolidation and extent management </li><li>Simplified schema evolution</li><li>Well suited for Materialized Views</li><li>Ideal for partitioning</li></ul>
-One tenant per table in a single database|Not recommended
+|Architecture|Strenghts|
+|---|---|
+|One tenant per database|- Tenants' isolation:  no need for proxy<br />- Can have different policies, such as retention policies, per tenant<br />- Flexibility in schema evolution per tenant<br />- Easy and quick removal of tenant data|
+|One table for many tenants|- Efficient data consolidation and extent management<br />- Simplified schema evolution<br />- Well suited for materialized views<br />- Ideal for partitioning|
+|One tenant per table in a single database|Not recommended|
 
 ## Architecture: One tenant per database
 
