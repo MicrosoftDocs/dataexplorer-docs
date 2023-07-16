@@ -660,28 +660,39 @@ items:
     displayName: datepart()
     href: datetime-partfunction.md
   - name: datetime_utc_to_local()
+    displayName: datetime_utc_to_local() datetime utc to local
     href: datetime-utc-to-local-function.md
   - name: dayofmonth()
+    displayName: dayofmonth() day of month
     href: dayofmonthfunction.md
   - name: dayofweek()
+    displayName: dayofweek() day of week
     href: dayofweekfunction.md
   - name: dayofyear()
+    displayName: day of year
     href: dayofyearfunction.md
   - name: dcount_hll()
+    displayName: dcount hll
     href: dcount-hllfunction.md
   - name: degrees()
     href: degreesfunction.md
   - name: dynamic_to_json()
+    displayName: dynamic_to_json() dynamic to json
     href: dynamic-to-json-function.md
   - name: endofday()
+    displayName: endofday() end of day
     href: endofdayfunction.md
   - name: endofmonth()
+    displayName: endofmonth() end of month
     href: endofmonthfunction.md
   - name: endofweek()
+    displayName: endofweek() end of week
     href: endofweekfunction.md
   - name: endofyear()
+    displayName: endofyear() end of year
     href: endofyearfunction.md
   - name: estimate_data_size()
+    displayName: estimate_data_size() estimate data size
     href: estimate-data-sizefunction.md
   - name: exp()
     href: exp-function.md
@@ -690,120 +701,165 @@ items:
   - name: exp2()
     href: exp2-function.md
   - name: extent_id()
-    displayName: extentid()
+    displayName: extentid() extent id
     href: extentidfunction.md
   - name: extent_tags()
+    displayName: extenttags() extent tags
     href: extenttagsfunction.md
   - name: extract()
     href: extractfunction.md
   - name: extract_all()
-    displayName: extractall()
+    displayName: extractall() extract all
     href: extractallfunction.md
   - name: extract_json()
-    displayName: extractjson()
+    displayName: extractjson() extract json
     href: extractjsonfunction.md
   - name: format_bytes()
+    displayName: format bytes
     href: format-bytesfunction.md
   - name: format_datetime()
+    displayName: format datetime
     href: format-datetimefunction.md
   - name: format_ipv4()
+    displayName: format ipv4
     href: format-ipv4-function.md
   - name: format_ipv4_mask()
+    displayName: format ipv4 mask
     href: format-ipv4-mask-function.md
   - name: format_timespan()
+    displayName: format timespan
     href: format-timespanfunction.md
   - name: gamma()
     href: gammafunction.md
   - name: geo_info_from_ip_address()
+    displayName: geo info from ip address
     href: geo-info-from-ip-address-function.md
   - name: gettype()
+    displayName: get type
     href: gettypefunction.md
   - name: getyear()
+    displayName: get year
     href: getyearfunction.md
   - name: gzip_compress_to_base64_string()
+    displayName: gzip compress to base64 string
     href: gzip-base64-compress.md
   - name: gzip_decompress_from_base64_string()
+    displayName: gzip decompress from base64 string
     href: gzip-base64-decompress.md
   - name: has_any_index()
+    displayName: has any index
     href: has-any-index-function.md
   - name: has_any_ipv4()
+    displayName: has any ipv4
     href: has-any-ipv4-function.md
   - name: has_ipv4()
+    displayName: has ipv4
     href: has-ipv4-function.md
   - name: has_any_ipv4_prefix()
+    displayName: has any ipv4 prefix
     href: has-any-ipv4-prefix-function.md
   - name: has_ipv4_prefix()
+    displayName: has ipv4 prefix
     href: has-ipv4-prefix-function.md
   - name: hash()
     href: hashfunction.md
   - name: hash_combine()
+    displayName: hash combine
     href: hash_combinefunction.md
   - name: hash_many()
+    displayName: hash many
     href: hash_manyfunction.md
   - name: hash_md5()
+    displayName: hash md5
     href: md5hashfunction.md
   - name: hash_sha1()
+    displayName: hash sha1
     href: sha1-hash-function.md
   - name: hash_sha256()
+    displayName: hash sha256
     href: sha256hashfunction.md
   - name: hash_xxhash64()
+    displayName: hash xxhash64
     href: hash-xxhash64-function.md
   - name: hll_merge()
+    displayName: hll merge
     href: hllmergefunction.md
   - name: hourofday()
+    displayName: hourofday() hour of day
     href: hourofdayfunction.md
   - name: iff()
     displayName: iif()
     href: ifffunction.md
   - name: indexof()
+    displayName: index of
     href: indexoffunction.md
   - name: indexof_regex()
+    displayName: index of regex
     href: indexofregexfunction.md
   - name: ingestion_time()
+    displayName: ingestion time
     href: ingestiontimefunction.md
   - name: ipv4_compare()
+    displayName: ipv4 compare
     href: ipv4-comparefunction.md
   - name: ipv4_is_in_range()
+    displayName: ipv4 is in range
     href: ipv4-is-in-range-function.md
   - name: ipv4_is_in_any_range()
+    displayName: ipv4 is in any range
     href: ipv4-is-in-any-range-function.md
   - name: ipv4_is_match()
+    displayName: ipv4 is match
     href: ipv4-is-matchfunction.md
   - name: ipv4_is_private()
+    displayName: ipv4 is private
     href: ipv4-is-privatefunction.md
   - name: ipv4_range_to_cidr_list()
+    displayName: ipv4 range to cidr list
     href: ipv4-range-to-cidr-list-function.md
   - name: ipv4_netmask_suffix()
+    displayName: ipv4 netmask suffix
     href: ipv4-netmask-suffix-function.md
   - name: ipv6_compare()
+    displayName: ipv6 compare
     href: ipv6-comparefunction.md
   - name: ipv6_is_in_range()
+    displayName: ipv6 is in range
     href: ipv6-is-in-range-function.md
   - name: ipv6_is_in_any_range()
+    displayName: ipv6 is in any range
     href: ipv6-is-in-any-range-function.md
   - name: ipv6_is_match()
+    displayName: ipv6 is match
     href: ipv6-is-matchfunction.md
   - name: isascii()
     href: isascii.md
   - name: isempty()
+    displayName: is empty
     href: isemptyfunction.md
   - name: isfinite()
+    displayName: is finite
     href: isfinitefunction.md
   - name: isinf()
+    displayName: is inf
     href: isinffunction.md
   - name: isnan()
+    displayName: is nan
     href: isnanfunction.md
   - name: isnotempty()
-    displayName: notempty()
+    displayName: is not empty notempty()
     href: isnotemptyfunction.md
   - name: isnotnull()
-    displayName: notnull()
+    displayName: is not null notnull()
     href: isnotnullfunction.md
   - name: isnull()
+    displayName: is null
     href: isnullfunction.md
   - name: isutf8()
+    displayName: is utf8
     href: isutf8.md
   - name: jaccard_index()
+    displayName: jaccard index
     href: jaccard-index-function.md
   - name: log()
     href: log-function.md
@@ -812,65 +868,86 @@ items:
   - name: log2()
     href: log2-function.md
   - name: loggamma()
+    displayName: log gamma
     href: loggammafunction.md
   - name: make_datetime()
+    displayName: make datetime
     href: make-datetimefunction.md
   - name: make_timespan()
+    displayName: make timespan
     href: make-timespanfunction.md
   - name: max_of()
+    displayName: max of
     href: max-offunction.md
   - name: merge_tdigest()
-    displayName: tdigest_merge()
+    displayName: merge tdigest tdigest_merge()
     href: merge-tdigest-function.md
   - name: min_of()
+    displayName: min of
     href: min-offunction.md
   - name: monthofyear()
-    displayName: getmonth()
+    displayName: getmonth() month of year
     href: monthofyearfunction.md
   - name: new_guid()
+    displayName: new guid
     href: newguidfunction.md
   - name: not()
     href: notfunction.md
   - name: now()
     href: nowfunction.md
   - name: pack_all()
+    displayName: pack all
     href: packallfunction.md
   - name: pack_array()
+    displayName: pack array
     href: packarrayfunction.md
   - name: parse_command_line()
+    displayName: parse command line
     href: parse-command-line.md
   - name: parse_csv()
+    displayName: parse csv
     href: parsecsvfunction.md
   - name: parse_ipv4()
+    displayName: parse ipv4
     href: parse-ipv4function.md
   - name: parse_ipv4_mask()
+    displayName: parse ipv4 mask
     href: parse-ipv4-maskfunction.md
   - name: parse_ipv6()
+    displayName: parse ipv6
     href: parse-ipv6function.md
   - name: parse_ipv6_mask()
+    displayName: parse ipv6 mask
     href: parse-ipv6-maskfunction.md
   - name: parse_json()
-    displayName: toobject(), parsejson(), todynamic()
+    displayName: parse json toobject(), parsejson(), todynamic()
     href: parsejsonfunction.md
   - name: parse_path()
+    displayName: parse path
     href: parsepathfunction.md
   - name: parse_url()
-    displayName: parseurl()
+    displayName: parse url parseurl()
     href: parseurlfunction.md
   - name: parse_urlquery()
-    displayName: parseurlquery()
+    displayName: parse url query parseurlquery()
     href: parseurlqueryfunction.md
   - name: parse_user_agent()
+    displayName: parse user agent
     href: parse-useragentfunction.md
   - name: parse_version()
+    displayName: parse version
     href: parse-versionfunction.md
   - name: parse_xml()
+    displayName: parse xml
     href: parse-xmlfunction.md
   - name: percentile_tdigest()
+    displayName: percentile tdigest()
     href: percentile-tdigestfunction.md
   - name: percentile_array_tdigest()
+    displayName: percentile array tdigest()
     href: percentile-array-tdigestfunction.md
   - name: percentrank_tdigest()
+    displayName: percentrank tdigest()
     href: percentrank-tdigestfunction.md
   - name: pi()
     href: pifunction.md
@@ -895,28 +972,37 @@ items:
   - name: range()
     href: rangefunction.md
   - name: rank_tdigest()
+    displayName: rank tdigest()
     href: rank-tdigest.md
   - name: regex_quote()
+    displayName: regex quote
     href: regexquotefunction.md
   - name: repeat()
     href: repeatfunction.md
   - name: replace_regex()
+    displayName: replace regex
     href: replace-regex-function.md
   - name: replace_string()
+    displayName: replace string
     href: replace-string-function.md
   - name: replace_strings()
+    displayName: replace strings
     href: replace-strings-function.md
   - name: reverse()
     href: reversefunction.md
   - name: round()
     href: roundfunction.md
   - name: set_difference()
+    displayName: set difference
     href: setdifferencefunction.md
   - name: set_has_element()
+    displayName: set has element
     href: sethaselementfunction.md
   - name: set_intersect()
+    displayName: set intersect
     href: setintersectfunction.md
   - name: set_union()
+    displayName: set union
     href: setunionfunction.md
   - name: sign()
     href: signfunction.md
@@ -927,57 +1013,78 @@ items:
   - name: sqrt()
     href: sqrtfunction.md
   - name: startofday()
+    displayName: start of day
     href: startofdayfunction.md
   - name: startofmonth()
+    displayName: start of month
     href: startofmonthfunction.md
   - name: startofweek()
+    displayName: start of week
     href: startofweekfunction.md
   - name: startofyear()
+    displayName: start of year
     href: startofyearfunction.md
   - name: strcat()
+    displayName: string concat
     href: strcatfunction.md
   - name: strcat_array()
+    displayName: string concat array
     href: strcat-arrayfunction.md
   - name: strcat_delim()
+    displayName: string concat delim
     href: strcat-delimfunction.md
   - name: strcmp()
+    displayName: string compare
     href: strcmpfunction.md
   - name: string_size()
+    displayName: string size
     href: stringsizefunction.md
   - name: strlen()
+    displayName: string length
     href: strlenfunction.md
   - name: strrep()
+    displayName: string replace
     href: strrepfunction.md
   - name: substring()
+    displayName: string substring
     href: substringfunction.md
   - name: tan()
     href: tanfunction.md
   - name: tobool()
-    displayName: toboolean()
+    displayName: to boolean toboolean
     href: toboolfunction.md
   - name: todatetime()
+    displayName: to datetime todatetime
     href: todatetimefunction.md
   - name: todecimal()
+    displayName: to decimal todecimal
     href: todecimalfunction.md
   - name: todouble()
-    displayName: toreal()
+    displayName: to double todouble toreal()
     href: todoublefunction.md
   - name: toguid()
+    displayName: to guid toguid
     href: toguidfunction.md
   - name: tohex()
+    displayName: to hex tohex
     href: tohexfunction.md
   - name: toint()
+    displayName: to int toint integer
     href: tointfunction.md
   - name: tolong()
+    displayName: to long tolong
     href: tolongfunction.md
   - name: tolower()
+    displayName: to lower tolower
     href: tolowerfunction.md
   - name: tostring()
+    displayName: to string tostring
     href: tostringfunction.md
   - name: totimespan()
-    displayName: totime()
+    displayName: to timespan totime()
     href: totimespanfunction.md
   - name: toupper()
+    displayName: to upper toupper
     href: toupperfunction.md
   - name: translate()
     href: translatefunction.md
@@ -986,39 +1093,51 @@ items:
   - name: trim()
     href: trimfunction.md
   - name: trim_end()
+    displayName: trim end 
     href: trimendfunction.md
   - name: trim_start()
+    displayName: trim start
     href: trimstartfunction.md
   - name: unicode_codepoints_from_string()
-    displayName: to_utf8()
+    displayName: to_utf8() unicode codepoints from string
     href: unicode-codepoints-from-string-function.md
   - name: unicode_codepoints_to_string()
-    displayName: make_string()
+    displayName: unicode codepoints to string make_string()
     href: unicode-codepoints-to-string-function.md
   - name: unixtime_microseconds_todatetime()
+    displayName: unixtime microseconds to datetime
     href: unixtime-microseconds-todatetimefunction.md
   - name: unixtime_milliseconds_todatetime()
+    displayName: unixtime milliseconds to datetime
     href: unixtime-milliseconds-todatetimefunction.md
   - name: unixtime_nanoseconds_todatetime()
+    displayName: unixtime nanoseconds to datetime
     href: unixtime-nanoseconds-todatetimefunction.md
   - name: unixtime_seconds_todatetime()
+    displayName: unixtime seconds to datetime
     href: unixtime-seconds-todatetimefunction.md
   - name: url_decode()
+    displayName: url decode
     href: urldecodefunction.md
   - name: url_encode()
+    displayName: url encode
     href: urlencodefunction.md
   - name: url_encode_component()
+    displayName: url encode component
     href: urlencodecomponentfunction.md
   - name: week_of_year()
-    displayName: weekofyear()
+    displayName: week of year weekofyear()
     href: weekofyearfunction.md
   - name: welch_test()
+    displayName: welch test
     href: welch-testfunction.md
   - name: zip()
     href: zipfunction.md
   - name: zlib_compress_to_base64_string()
+    displayName: zlib compress to base64 string
     href: zlib-base64-compress.md
   - name: zlib_decompress_from_base64_string()
+    displayName: zlib decompress from base64 string
     href: zlib-base64-decompress.md
 - name: Aggregation functions
   displayName: aggregation
