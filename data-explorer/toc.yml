@@ -519,7 +519,7 @@ items:
               - name: Storage connection strings
                 href: kusto/api/connection-strings/storage-connection-strings.md
               - name: SQL external table connection strings
-                href: kusto/api/connection-strings/sql-authentication-methods.md
+                href: kusto/api/connection-strings/sql-connection-strings.md
               - name: Generate SAS token
                 href: kusto/api/connection-strings/generate-sas-token.md
           - name: Integrate Kusto query editor in your apps
