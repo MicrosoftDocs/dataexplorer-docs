@@ -1,5 +1,5 @@
 ---
-title:  'Create an app to basic ingestion app'
+title:  'Create an app to ingest data using the batching manager'
 description: Learn how to create an app to ingest data using the batching manager of the Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
@@ -33,13 +33,13 @@ You'll need a destination table for the ingested data. Because you're learning h
 1. Set the ingestion batching policy timeout to 10 seconds by running the second app in [management commands](app-management-commands.md#change-the-table-level-ingestion-batching-policy). Before running the app, change the timeout value to `00:00:10`.
 
     > [!NOTE]
-    > It may take a few minutes fr the new batching policy settings to propagate to the batching manager.
+    > It may take a few minutes for the new batching policy settings to propagate to the batching manager.
 
-1. Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file. Place the file in the same location where you'll create your app.
+1. Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file. The file contains 1,000 storm event records.
 
-## Run a basic ingestion and process the results
+## Queue a file for ingestion and process the results
 
-In your preferred IDE or text editor, create a project or file named *basic ingestion* using the convention appropriate for your preferred language. Then add the following code:
+In your preferred IDE or text editor, create a project or file named *basic ingestion* using the convention appropriate for your preferred language. Place the *stormevent.csv* file in the same location as your app. Then add the following code:
 
 1. Create a client app that connects to your cluster and prints the number of row in the *MyStormEvents* table. You'll use this as a baseline for comparison with the number of rows after each method of ingestion. Replace the `<your_cluster_uri>` and `<your_database>` placeholders with your cluster URI and database name respectively.
 
@@ -101,7 +101,7 @@ In your preferred IDE or text editor, create a project or file named *basic inge
 
     Like with the cluster URI connection, you can also use the interactive login authentication for the ingestion URI connection. However, when you run the app you'll need to authenticate twice, once for each connection. To share the same credentials between both connections, use the Azure token authentication method for both connections.
 
-        ### [C\#](#tab/csharp)
+    ### [C\#](#tab/csharp)
 
     ```csharp
 
@@ -202,7 +202,7 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     time.sleep(30)
 
     response = kusto_client.execute_query(database, query)
-    print("\nNumber of rows in " + table + " AFTER ingestion the file:")
+    print("\nNumber of rows in " + table + " AFTER ingesting the file:")
     print_result_as_value_list(response)
 
     query = table + "| top 1 by EndTime"
@@ -270,7 +270,7 @@ def main():
       time.sleep(30)
 
       response = kusto_client.execute_query(database, query)
-      print("\nNumber of rows in " + table + " AFTER ingestion the file:")
+      print("\nNumber of rows in " + table + " AFTER ingesting the file:")
       print_result_as_value_list(response)
 
       query = table + "| top 1 by EndTime"
@@ -341,7 +341,182 @@ mvn install exec:java -Dexec.mainClass="<groupId>.basicIngestion"
 You should see a result similar to the following:
 
 ```bash
+Number of rows in MyStormEvents BEFORE ingestion:
+         Count - 0
 
+Ingesting data from file: 
+        C:\MyApp\stormevents.csv
+
+Waiting 30 seconds for ingestion to complete
+
+Number of rows in MyStormEvents AFTER ingesting the file:
+         Count - 1000
+
+Last ingested row:
+         StartTime - 2018-01-26 00:00:00+00:00
+         EndTime - 2018-01-27 14:00:00+00:00
+         State - MEXICO
+         DamageProperty - 0
+         DamageCrops - 0
+         Source - Unknown
+         StormSummary - {}
+```
+
+## Queue in-memory data for ingestion and process the results
+
+You can ingest data from memory by creating a stream containing the data, and then queuing it for ingestion.
+
+For example, you can modify the app replacing the ingest from file code with the following:
+
+### [C\#](#tab/csharp)
+
+```csharp
+```
+
+### [Python](#tab/python)
+
+```python
+# Add this to the imports at the top of the file
+import io
+from azure.kusto.ingest import StreamDescriptor
+
+# Add this to the main method
+single_line = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
+
+print("\nIngesting data from memory:")
+ingest_props = IngestionProperties(database, table, DataFormat.CSV)
+string_stream = io.StringIO(single_line)
+
+# Where possible, provide the size of the raw data
+stream_descriptor = StreamDescriptor(string_stream, is_compressed=False, size=len(single_line))
+ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
+ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
+
+print("\nWaiting 30 seconds for ingestion to complete ...")
+time.sleep(30)
+
+response = kusto_client.execute_query(database, query)
+print("\nNumber of rows in " + table + " AFTER ingesting from memory:")
+print_result_as_value_list(response)
+
+query = table + "| top 1 by EndTime"
+response = kusto_client.execute_query(database, query)
+print("\nLast ingested row:")
+print_result_as_value_list(response)
+```
+
+### [Node.js](#tab/nodejs)
+
+```nodejs
+
+```
+
+<!-- ### [Go](#tab/go) -->
+
+### [Java](#tab/java)
+
+```java
+```
+
+---
+
+When you add the code to your app and run it. Notice that after the ingestion, the number of rows in the table increased by one. You should see a result similar to the following:
+
+```bash
+Number of rows in MyStormEvents BEFORE ingestion:
+         Count - 1000
+
+Ingesting data from memory:
+
+Waiting 30 seconds for ingestion to complete ...
+
+Number of rows in MyStormEvents AFTER ingesting from memory:
+         Count - 1001
+
+Last ingested row:
+         StartTime - 2018-01-26 00:00:00+00:00
+         EndTime - 2018-01-27 14:00:00+00:00
+         State - MEXICO
+         DamageProperty - 0
+         DamageCrops - 0
+         Source - Unknown
+         StormSummary - {}
+```
+
+## Queue a blob for ingestion and process the results
+
+You can ingest data from Azure Storage blobs, Azure Data Lake files, and Amazon S3 files. Upload the *stormevent.csv* file to your storage account and generate a URI with read permissions, for example, using [a SAS token](../connection-strings/generate-sas-token.md) for the file. Then use a blob descriptor to queue the blob for ingestion.
+
+For example, you can modify the app replacing the ingest from memory code with the following:
+
+### [C\#](#tab/csharp)
+
+```csharp
+```
+
+### [Python](#tab/python)
+
+```python
+# Add this to the imports at the top of the file
+from azure.kusto.ingest import BlobDescriptor
+
+# Add this to the main method
+blob_uri = "<your_blob_uri>"
+
+print("\nIngesting data from a blob:")
+blob_descriptor = BlobDescriptor(blob_uri)
+ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
+ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
+
+print("\nWaiting 30 seconds for ingestion to complete ...")
+time.sleep(30)
+
+response = kusto_client.execute_query(database, query)
+print("\nNumber of rows in " + table + " AFTER ingesting from memory:")
+print_result_as_value_list(response)
+
+query = table + "| top 1 by EndTime"
+response = kusto_client.execute_query(database, query)
+print("\nLast ingested row:")
+print_result_as_value_list(response)
+```
+
+### [Node.js](#tab/nodejs)
+
+```nodejs
+
+```
+
+<!-- ### [Go](#tab/go) -->
+
+### [Java](#tab/java)
+
+```java
+```
+
+---
+
+When you add the code to your app and run it. Notice that after the ingestion, the number of rows in the table increased by 1,000. You should see a result similar to the following:
+
+```bash
+Number of rows in MyStormEvents BEFORE ingestion:
+         Count - 1001
+
+Ingesting data from a blob:
+
+Waiting 30 seconds for ingestion to complete ...
+
+Number of rows in MyStormEvents AFTER ingesting from a blob:
+         Count - 2001
+
+Last ingested row:
+         StartTime - 2018-01-26 00:00:00+00:00
+         EndTime - 2018-01-27 14:00:00+00:00
+         State - MEXICO
+         DamageProperty - 0
+         DamageCrops - 0
+         Source - Unknown
+         StormSummary - {}
 ```
 
 ## Next steps

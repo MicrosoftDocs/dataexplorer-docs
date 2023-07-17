@@ -688,9 +688,5 @@ Result:
 
 ## Next steps
 
-<!-- Advance to the next article to learn how to create... -->
-<!-- > [!div class="nextstepaction"]
-> [TBD](../../../kql-quick-reference.md) -->
-
 > [!div class="nextstepaction"]
-> [KQL quick reference](../../../kql-quick-reference.md)
+> [Create an app to ingest data using the batching manager](app-batch-ingestion.md)
