@@ -2,7 +2,7 @@
 title: Manage materialized view roles
 description: Learn how to use management commands to view, add, and remove materialized view admins on a materialized view level.
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/17/2023
 ---
 
 # Manage materialized view roles
@@ -26,7 +26,7 @@ Before you add or remove principals, you can use the `.show` command to see a ta
 
 ### Syntax
 
-`.show` `materialized view` *MaterializedViewName* `principals`
+`.show` `materialized-view` *MaterializedViewName* `principals`
 
 ### Parameters
 
@@ -54,7 +54,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 ### Syntax
 
-*Action* `materialized view` *MaterializedViewName* `admins` `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [ *Description* ]
+*Action* `materialized-view` *MaterializedViewName* `admins` `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [ *Description* ]
 
 ### Parameters
 

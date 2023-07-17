@@ -81,7 +81,7 @@ To check the roles assigned to you on a specific resource, run the following com
 .show function FunctionName principal roles
 
 // For a materialized view:
-.show materialized view MaterializedViewName principal roles
+.show materialized-view MaterializedViewName principal roles
 ```
 
 ### Show the roles of all principals on a resource
@@ -102,7 +102,7 @@ To see the roles assigned to all principals for a particular resource, run the f
 .show function FunctionName principals
 
 // For a materialized view:
-.show materialized view MaterializedViewName principals
+.show materialized-view MaterializedViewName principals
 ```
 
 ## Next steps
