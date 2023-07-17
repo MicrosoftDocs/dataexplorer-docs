@@ -8,7 +8,7 @@ ms.date: 03/20/2023
 
 # Kusto.Explorer installation and user interface
 
-Kusto.Explorer is a rich Windows desktop application that enables you to explore your data using the Kusto Query Language in an easy-to-use user interface. This overview explains how to get started with setting up your Kusto.Explorer and explains the user interface you will use. 
+Kusto.Explorer is a rich Windows desktop application that enables you to explore your data using the Kusto Query Language in an easy-to-use user interface. This overview explains how to get started with setting up your Kusto.Explorer and explains the user interface you'll use.
 
 
 With Kusto.Explorer, you can:
@@ -21,12 +21,12 @@ With Kusto.Explorer, you can:
 ## Installing Kusto.Explorer
 
 * Download and install the Kusto.Explorer tool from:
-  * [https://aka.ms/ke](https://aka.ms/ke) (CDN location)
-  * [https://aka.ms/ke-mirror](https://aka.ms/ke-mirror) (Non-CDN location)
+  * [https://aka.ms/ke](https://aka.ms/ke)
+  <!--* [https://aka.ms/ke-mirror](https://aka.ms/ke-mirror) (Non-CDN location)-->
 
-* Instead, access your Kusto cluster with your browser at:
-`https://<your_cluster>.<region>.kusto.windows.net.`
-     Replace &lt;your_cluster&gt; and &lt;region&gt; with your Azure Data Explorer cluster name and deployment region.
+* Alternatively, access your Kusto cluster with a ClickOnce-enabled browser at:
+`https://<your_cluster>/?web=0`
+     Replace &lt;your_cluster&gt; with your cluster URI (for example, `help.kusto.windows.net`.)
 
 ### Using Google Chrome and Kusto.Explorer
 
@@ -55,7 +55,7 @@ for the search/query in the main panel), or double-click items to copy the name 
 
 If the actual schema is large (such as a database with hundreds of tables), you can search it by pressing **CTRL+F** and entering a substring (case-insensitive) of the entity name you're looking for.
 
-Kusto.Explorer supports controlling the Connection panel from the query window, which is useful for scripts. For example, you can start a script file with a command that instructs Kusto.Explorer to connect to the cluster/database whose data is being queried by the script, by using the following syntax:
+Kusto.Explorer supports controlling the Connection panel from the query window, which is useful for scripts. For example, you can start a script file with a command that instructs Kusto.Explorer to connect to the cluster/database the script queries, using the following syntax:
 
 <!-- csl -->
 ```kusto
@@ -193,11 +193,11 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 |Export Profile| Export a Kusto.Explorer profile.|
 ||---------*Security*---------|
 |Inspect Your ADD Principal| Shows currents active user details.|
-|Sign-out| Signs-out the current user from the connection to AAD.|
+|Sign-out| Signs-out the current user from the connection to Microsoft Azure Active Directory (Azure AD).|
 ||---------*Data Scope*---------|
 |Caching scope|<ul><li>Hot DataExecute queries only on [hot data cache](../management/cachepolicy.md)</li><li>All Data: Execute queries on all available data (default).</li></ul> |
-|DateTime Column| Name of column which may be used for time pre-filter.|
-|Time Filter| Value of time pre-filter.|
+|DateTime Column| Name of a column that may be used for time prefilter.|
+|Time Filter| Value of time prefilter.|
 
 ## View tab
 
@@ -224,7 +224,7 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 ||---------*Data Filtering*---------|
 |Filter Rows In Search|Toggles the option to show only matching rows in query results search (**Ctrl+F**).|
 ||---------*Visualizations*---------|
-|Visualizations|See [Visualizations](#visualizations-section), above. |
+|Visualizations|See section [Visualizations](#visualizations-section) in this document. |
 
 > [!NOTE]
 > <a id="dvs">Data View Settings:</a>
@@ -241,7 +241,7 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 |Enable IntelliSense| Enables and disables IntelliSense on the Script Panel.|
 |Issues List| Lists issues in the Script panel.|
 ||---------*Automation*---------|
-|Add New Automation| Produces an analysis report that summarizes query results with additional insights.|
+|Add New Automation| Produces an analysis report that provides insights about the query.|
 ||---------*Utilities*---------|
 |Command-line tools|Opens the command prompt on your computer.|
 |Compress LZ4 file|Compresses files using the LZ4 algorithm.|
@@ -256,9 +256,9 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 
 ## Table row colors
 
-Kusto.Explorer tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on).
+Kusto.Explorer tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning," "Error," and so on).
 
-To modify the output color scheme, or turn this behavior off, from the **Tools** menu, select **Options** > **Results Viewer** > **Verbosity color scheme**.
+To modify the output color scheme, or turn off this behavior, from the **Tools** menu, select **Options** > **Results Viewer** > **Verbosity color scheme**.
 
 :::image type="content" source="images/kusto-explorer/ke-color-scheme.png" alt-text="Screenshot of Kusto Explorer color scheme modification.":::
 
@@ -303,22 +303,22 @@ To modify the output color scheme, or turn this behavior off, from the **Tools**
 
 ### Control the user identity connecting to Kusto.Explorer
 
-The default security model for new connections is AAD-Federated security. Authentication is done through the Azure Active Directory using the default AAD user experience.
+The default security model for new connections is Azure AD-Federated security. Authentication is done through the Azure Active Directory using the default Azure AD user experience.
 
 If you need finer control over the authentication parameters, you can expand the
 "Advanced: Connection Strings" edit box and provide a valid
 [Kusto connection string](../api/connection-strings/kusto.md) value.
 
 For example, users with a presence in
-multiple AAD tenants sometimes need to use a particular "projection"
-of their identities to a specific AAD tenant. Do this by
-providing a connection string, such as the one below (replace words IN CAPITALS with specific values):
+multiple Azure AD tenants sometimes need to use a particular "projection"
+of their identities to a specific Azure AD tenant, which can be done through
+the connection string (replace words IN CAPITALS with specific values):
 
 ```kusto
 Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME;AAD Federated Security=True;Authority Id=AAD_TENANT_OF_CLUSTER;User=USER_DOMAIN
 ```
 
-* `AAD_TENANT_OF_CLUSTER` is a domain name or AAD tenant ID (a GUID) of the AAD tenant in which the cluster is hosted. This is usually the domain name of the organization that owns the cluster, such as `contoso.com`.
+* `AAD_TENANT_OF_CLUSTER` is a domain name or Azure AD tenant ID (a GUID) of the tenant in which the cluster is hosted. For example, `contoso.com`.
 * USER_DOMAIN is the identity of the user invited into that tenant (for example, `user@example.com`).
 
 >[!NOTE]
@@ -328,7 +328,7 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 
 ## Next steps
 
-To learn more about working with Kusto.Explorer, see:
+To learn more about working with Kusto.Explorer see:
 
 * [Using Kusto.Explorer](kusto-explorer-using.md)
 * [Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md)

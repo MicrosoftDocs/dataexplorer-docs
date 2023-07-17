@@ -15,7 +15,7 @@ The main interfaces and classes in the Kusto.Ingest library are:
 * [class KustoIngestionProperties](#class-kustoingestionproperties): Class used to provide common ingestion properties
 * [class SourceOptions](#class-sourceoptions): Source data handling options
 * [class IngestionMapping](#class-ingestionmapping): Class used to describe the data mapping for the ingestion
-* [Enum DataSourceFormat](#enum-datasourceformat): Supported data source formats (e.g., CSV or JSON)
+* [Enum DataSourceFormat](#enum-datasourceformat): Supported data source formats. For example, CSV or JSON.
 * [Interface IKustoQueuedIngestClient](#interface-ikustoqueuedingestclient): Interface describing operations that apply for queued ingestion only
 * [Class KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): Properties that apply to queued ingestion only
 
@@ -334,20 +334,20 @@ public static class KustoIngestFactory
 
 ## Class KustoIngestionProperties
 
-KustoIngestionProperties class contains basic ingestion properties for fine control over the ingestion process and the way Kusto engine will handle it.
+KustoIngestionProperties class contains basic ingestion properties for fine control over the ingestion process.
 
 |Property   |Meaning    |
 |-----------|-----------|
 |DatabaseName |Name of the database to ingest into |
 |TableName |Name of the table to ingest into |
 |DropByTags |Tags that each extent will have. DropByTags are permanent and can be used as follows: `.show table T extents where tags has 'some tag'` or `.drop extents <| .show table T extents where tags has 'some tag'` |
-|IngestByTags |Tags that are written per extent. Can later be used with the `IngestIfNotExists` property to avoid ingesting the same data twice |
+|IngestByTags |Tags that are written per extent. Can later be used with the `IngestIfNotExists` property to avoid ingesting the same data twice. For more information, see [ingest-by: tags](../../../kusto/management/extents-overview.md#ingest-by-extent-tags). |
 |IngestionMapping|Holds either a reference to an exiting mapping or a list of column mappings|
-|AdditionalTags |Additional tags as needed |
+|AdditionalTags |Extra tags as needed |
 |IngestIfNotExists |List of tags that you don't want to ingest again (per table) |
 |ValidationPolicy |Data validation definitions. |
 |Format |Format of the data being ingested |
-|AdditionalProperties | Other properties that will be passed as [ingestion properties](../../../ingestion-properties.md) to the ingestion command. The properties will be passed because not all of the ingestion properties are represented in a separate member of this class|
+|AdditionalProperties | Other properties that are passed as [ingestion properties](../../../ingestion-properties.md) to the ingestion command. The properties are passed because not all of the ingestion properties are represented in a separate member of this class|
 
 ```csharp
 public class KustoIngestionProperties
@@ -397,7 +397,7 @@ Holds a reference to an existing mapping or a list of column mappings.
 |-----------|-----------|
 |IngestionMappings | Column mappings, each describing the target column data and its source |
 |IngestionMappingKind | Kind of mapping described in the IngestionMappings property - one of: Csv, Json, Avro, Parquet, SStream, Orc, ApacheAvro or W3CLogFile |
-|IngestionMappingReference | The pre-created mapping name |
+|IngestionMappingReference | The precreated mapping name |
 
 ```csharp
 public class IngestionMapping
@@ -431,7 +431,6 @@ public enum DataSourceFormat
     parquet,    // Data is in a Parquet format
 }
 ```
-
 
 ## Example of KustoIngestionProperties definition
 

@@ -680,7 +680,7 @@ items:
   - name: Ingest from query
     items: 
     - name: Ingest from query
-      displayName:  .set, .append, .set-or-append, .set-or-replace
+      displayName:  .set, .append, .set-or-append, .set-or-replace, add row, append
       href: data-ingestion/ingest-from-query.md
     - name: cancel operation command
       href: cancel-operation-command.md

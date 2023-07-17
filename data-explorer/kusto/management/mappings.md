@@ -63,15 +63,15 @@ Some of the data format mappings (Parquet, JSON and AVRO) support simple and use
 
 | Path-dependant transformation | Description                                                                                                                                                             | Conditions                               |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
-| PropertyBagArrayToDictionary  | Transforms JSON array of properties, such as `{events:[{"n1":"v1"},{"n2":"v2"}]}`, to dictionary and serializes it to valid JSON document, such as `{"n1":"v1","n2":"v2"}`. | Can be applied only when `Path` is used. |
-| SourceLocation                | Name of the storage artifact that provided the data, type string (for example, the blob's "BaseUri" field).                                                             |                                          |
-| SourceLineNumber              | Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).                                                                |                                          |
-| DateTimeFromUnixSeconds       | Converts number representing unix-time (seconds since 1970-01-01) to UTC datetime string.                                                                               |                                          |
-| DateTimeFromUnixMilliseconds  | Converts number representing unix-time (milliseconds since 1970-01-01) to UTC datetime string.                                                                          |                                          |
-| DateTimeFromUnixMicroseconds  | Converts number representing unix-time (microseconds since 1970-01-01) to UTC datetime string.                                                                          |                                          |
-| DateTimeFromUnixNanoseconds   | Converts number representing unix-time (nanoseconds since 1970-01-01) to UTC datetime string.                                                                           |                                          |
-| DropMappedFields | Maps an object in the JSON document to a column and removes any nested fields already referenced by other column mappings |
-| BytesAsBase64 | Treats the data as byte array and converts it to a base64-encoded string. | Supported for ApacheAvro and JSON formats only. For ApacheAvro, the schema type of the mapped data field should be `bytes` or `fixed` Avro type. For JSON, the field should be an array containing byte values from [0-255] range. `null` is ingested if the data does not represent a valid byte array.
+| PropertyBagArrayToDictionary  | Transforms JSON array of properties, such as `{events:[{"n1":"v1"},{"n2":"v2"}]}`, to dictionary and serializes it to valid JSON document, such as `{"n1":"v1","n2":"v2"}`. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
+| SourceLocation                | Name of the storage artifact that provided the data, type string (for example, the blob's "BaseUri" field).|Available for `JSON`, `Parquet`, `AVRO`, `ORC` and `W3CLOGFILE` mapping types. |
+| SourceLineNumber              | Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).   | Available in: `JSON`, `Parquet`, `AVRO`, `ORC` and `W3CLOGFILE` mapping types. |
+| DateTimeFromUnixSeconds       | Converts number representing unix-time (seconds since 1970-01-01) to UTC datetime string.| Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
+| DateTimeFromUnixMilliseconds  | Converts number representing unix-time (milliseconds since 1970-01-01) to UTC datetime string. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
+| DateTimeFromUnixMicroseconds  | Converts number representing unix-time (microseconds since 1970-01-01) to UTC datetime string. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
+| DateTimeFromUnixNanoseconds   | Converts number representing unix-time (nanoseconds since 1970-01-01) to UTC datetime string. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
+| DropMappedFields | Maps an object in the JSON document to a column and removes any nested fields already referenced by other column mappings. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
+| BytesAsBase64 | Treats the data as byte array and converts it to a base64-encoded string. | Available for `AVRO` mapping type. For `ApacheAvro` format, the schema type of the mapped data field should be `bytes` or `fixed` Avro type. For `Avro` format, the field should be an array containing byte values from [0-255] range. `null` is ingested if the data does not represent a valid byte array. |
 
 ### Mapping transformation examples
 
@@ -109,7 +109,7 @@ The ingested data looks as follows:
 
 #### `BytesAsBase64` transformation
 
-Given the following JSON contents:
+Given the following AVRO file contents:
 
 ```json
 {
