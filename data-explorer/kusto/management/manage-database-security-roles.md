@@ -34,13 +34,19 @@ The following table shows the possible security roles on the database level and 
 > [!NOTE]
 > It isn't possible to assign the `viewer` role for only some tables in the database. For different approaches on how to grant a principal view access to a subset of tables, see [manage table view access](manage-table-view-access.md).
 
-## View existing security roles
+## Show existing security roles
 
 Before you add or remove principals, you can use the `.show` command to see a table with all of the principals and roles that are already set on the database.
 
 ### Syntax
 
+To show all roles:
+
 `.show` `database` *DatabaseName* `principals`
+
+To show your roles:
+
+`.show` `database` *DatabaseName* `principal` `roles`
 
 ### Parameters
 
@@ -62,7 +68,7 @@ The following command lists all security principals that have access to the `Sam
 |---|---|---|---|---|
 |Database Samples Admin |Azure AD User |Abbi Atkins |cd709aed-a26c-e3953dec735e |aaduser=abbiatkins@fabrikam.com|
 
-## Add and remove security roles
+## Add and drop security roles
 
 This section provides syntax, parameters, and examples for adding and removing principals.
 
