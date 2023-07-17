@@ -3,7 +3,7 @@ title: Security roles
 description: Learn how to use security roles to provide principals access to resources.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/13/2023
+ms.date: 07/17/2023
 ---
 # Security roles overview
 
@@ -51,25 +51,59 @@ For a full description of the security roles at each scope, see [Kusto role-base
 
 To see your own roles on the cluster, run the following command:
 
-`.show` `cluster` `principal` `roles`
+```kusto
+.show cluster principal roles
+```
 
 ### Show the roles of all principals on the cluster
 
 To see all roles on the cluster, you must have at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions on the cluster. To see the roles, run the following command:
 
-`.show` `cluster` `principals`
+```kusto
+.show cluster principals
+```
 
 ### Show your roles on a resource
 
 To check the roles assigned to you on a specific resource, run the following command within the relevant database or the database that contains the resource:
 
-`.show` ( `database` | `table` | `external table` | `function` | `materialized view` ) *ResourceName* `principal` `roles`
+```kusto
+// For a database:
+.show database DatabaseName principal roles
+
+// For a table:
+.show table TableName principal roles
+
+// For an external table:
+.show external table ExternalTableName principal roles
+
+// For a function:
+.show function FunctionName principal roles
+
+// For a materialized view:
+.show materialized view MaterializedViewName principal roles
+```
 
 ### Show the roles of all principals on a resource
 
 To see the roles assigned to all principals for a particular resource, run the following command within the relevant database or the database that contains the resource:
 
-`.show` ( `database` | `table` | `external table` | `function` | `materialized view` ) *ResourceName* `principals`
+```kusto
+// For a database:
+.show database DatabaseName principals
+
+// For a table:
+.show table TableName principals
+
+// For an external table:
+.show external table ExternalTableName principals
+
+// For a function:
+.show function FunctionName principals
+
+// For a materialized view:
+.show materialized view MaterializedViewName principals
+```
 
 ## Next steps
 
