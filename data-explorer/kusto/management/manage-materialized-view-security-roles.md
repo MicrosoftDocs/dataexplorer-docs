@@ -84,7 +84,7 @@ In the following examples, you'll see how to [add admins](#add-admins-with-add),
 The following example adds a principal to the `admins` role on the `SampleView` materialized view.
 
 ```kusto
-.add materialized view SampleView admins ('aaduser=imikeoein@fabrikam.com')
+.add materialized-view SampleView admins ('aaduser=imikeoein@fabrikam.com')
 ```
 
 #### Remove admins with .drop
@@ -92,7 +92,7 @@ The following example adds a principal to the `admins` role on the `SampleView` 
 The following example removes all principals in the group from the `admins` role on the `SampleView` materialized view.
 
 ```kusto
-.drop materialized view SampleView admins ('aadGroup=SomeGroupEmail@fabrikam.com')
+.drop materialized-view SampleView admins ('aadGroup=SomeGroupEmail@fabrikam.com')
 ```
 
 #### Add new admins and remove the old with .set
@@ -100,7 +100,7 @@ The following example removes all principals in the group from the `admins` role
 The following example removes existing `admins` and adds the provided principals as `admins` on the `SampleView` materialized view.
 
 ```kusto
-.set materialized view SampleView admins ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
+.set materialized-view SampleView admins ('aaduser=imikeoein@fabrikam.com', 'aaduser=abbiatkins@fabrikam.com')
 ```
 
 #### Remove all admins with .set
@@ -108,5 +108,5 @@ The following example removes existing `admins` and adds the provided principals
 The following command removes all existing `admins` on the `SampleView` materialized view.
 
 ```kusto
-.set materialized view SampleView admins none
+.set materialized-view SampleView admins none
 ```
