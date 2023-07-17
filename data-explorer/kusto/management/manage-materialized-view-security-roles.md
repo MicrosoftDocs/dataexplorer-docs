@@ -11,7 +11,7 @@ Principals are granted access to resources through a role-based access control m
 
 On materialized views, the only security role is `admins`. Materialized view `admins` have the ability to view, modify, and remove the materialized view.
 
-In this article, you'll learn how to use management commands to [view existing admins](#view-existing-admins) as well as [add and remove admins](#add-and-remove-admins) on materialized views.
+In this article, you'll learn how to use management commands to [view existing admins](#show-existing-admins) as well as [add and remove admins](#add-and-drop-admins) on materialized views.
 
 > [!NOTE]
 > A principal must have access on the database or table level to be a Materialized View Admin.

@@ -9,7 +9,7 @@ ms.date: 07/17/2023
 
 Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
-In this article, you'll learn how to use management commands to [view existing security roles](#view-existing-security-roles) as well as [add and remove security roles](#add-and-remove-security-roles) on the table level.
+In this article, you'll learn how to use management commands to [view existing security roles](#show-existing-security-roles) as well as [add and remove security roles](#add-and-drop-security-roles) on the table level.
 
 > [!NOTE]
 > A principal must have access on the database level to be assigned table specific security roles.

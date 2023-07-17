@@ -11,7 +11,7 @@ Principals are granted access to resources through a role-based access control m
 
 On external tables, the only security role is `admins`. External table `admins` have the ability to view, modify, and remove the external table.
 
-In this article, you'll learn how to use management commands to [view existing admins](#view-existing-admins) as well as [add and remove admins](#add-and-remove-admins) on external tables.
+In this article, you'll learn how to use management commands to [view existing admins](#show-existing-admins) as well as [add and remove admins](#add-and-drop-admins) on external tables.
 
 ## Permissions
 
