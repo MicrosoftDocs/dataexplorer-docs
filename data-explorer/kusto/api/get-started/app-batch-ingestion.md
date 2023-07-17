@@ -7,7 +7,7 @@ ms.date: 07/05/2023
 ---
 # Create an app to ingest data using the batching manager
 
-Kusto is capable of handling mass data intake by optimizing and batching ingested data via its batching manager. This batching manager aggregates ingested data before it reaches its target table, allowing for more efficient processing and improved performance. Batching is typically done in batches of one GB of raw data, 1000 individual files, or by its default time out of 5 minutes. Batching also takes into account various factors such as the target database and table, the user running the ingestion, and various properties associated with the ingestion such as special tags. Batching policies can be updated at the database and table levels, commonly to lower the batching time and reduce latency. For more information about ingestion batching, see [IngestionBatching policy](../../management/batchingpolicy.md) and [Change table level ingestion batching policy programmatically](app-management-commands.md#change-the-table-level-ingestion-batching-policy).
+Kusto is capable of handling mass data intake by optimizing and batching ingested data via its batching manager. This batching manager aggregates ingested data before it reaches its target table, allowing for more efficient processing and improved performance. Batching is typically done in batches of 1 GB of raw data, 1000 individual files, or by its default time out of 5 minutes. Batching also takes into account various factors such as the target database and table, the user running the ingestion, and various properties associated with the ingestion such as special tags. Batching policies can be updated at the database and table levels, commonly to lower the batching time and reduce latency. For more information about ingestion batching, see [IngestionBatching policy](../../management/batchingpolicy.md) and [Change table level ingestion batching policy programmatically](app-management-commands.md#change-the-table-level-ingestion-batching-policy).
 
 <!-- > [!NOTE]
 > The example below assumes there's a trivial match between the content of the data ingested and the scheme of the target table.
@@ -17,9 +17,9 @@ In this article, you learn how to:
 
 > [!div class="checklist"]
 >
-> - [Run a basic ingestion and process the results](#run-a-basic-ingestion-and-process-the-results)
-> - [Change the table level ingestion batching policy](#change-the-table-level-ingestion-batching-policy)
-> - [Show the database level retention policy](#show-the-database-level-retention-policy)
+> - [Queue a file for ingestion and process the results](#queue-a-file-for-ingestion-and-process-the-results)
+> - [Queue in-memory data for ingestion and process the results](#queue-in-memory-data-for-ingestion-and-process-the-results)
+> - [Queue a blob for ingestion and process the results](#queue-a-blob-for-ingestion-and-process-the-results)
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ In this article, you learn how to:
 
 ## Before you begin
 
-You'll need a destination table for the ingested data. Because you're learning how to write code using client libraries, you'll use the examples we created in [run management commands](app-management-commands.md) to create and configure the table. the *stormevents* table by running the first app. Start by creating the target table in your database with the following schema. where you want to ingest the data. Because we're ingesting a small amount of data, shorten the ingestion batching policy timeout to 10 seconds.
+You need a destination table for the ingested data. Because you're learning how to write code using client libraries, you use the examples we created in [run management commands](app-management-commands.md) to create and configure the table. the *stormevents* table by running the first app. Start by creating the target table in your database with the following schema. where you want to ingest the data. Because we're ingesting a small amount of data, shorten the ingestion batching policy timeout to 10 seconds.
 
 1. Create a target table named *MyStormEvents* in your database by running the first app in [management commands](app-management-commands.md#run-a-management-command-and-process-the-results).
 1. Set the ingestion batching policy timeout to 10 seconds by running the second app in [management commands](app-management-commands.md#change-the-table-level-ingestion-batching-policy). Before running the app, change the timeout value to `00:00:10`.
@@ -41,7 +41,7 @@ You'll need a destination table for the ingested data. Because you're learning h
 
 In your preferred IDE or text editor, create a project or file named *basic ingestion* using the convention appropriate for your preferred language. Place the *stormevent.csv* file in the same location as your app. Then add the following code:
 
-1. Create a client app that connects to your cluster and prints the number of row in the *MyStormEvents* table. You'll use this as a baseline for comparison with the number of rows after each method of ingestion. Replace the `<your_cluster_uri>` and `<your_database>` placeholders with your cluster URI and database name respectively.
+1. Create a client app that connects to your cluster and prints the number of rows in the *MyStormEvents* table. You'll use this count as a baseline for comparison with the number of rows after each method of ingestion. Replace the `<your_cluster_uri>` and `<your_database>` placeholders with your cluster URI and database name respectively.
 
     ### [C\#](#tab/csharp)
 
@@ -99,7 +99,7 @@ In your preferred IDE or text editor, create a project or file named *basic inge
 
 1. Create a connection string builder object that defines the data ingestion URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
 
-    Like with the cluster URI connection, you can also use the interactive login authentication for the ingestion URI connection. However, when you run the app you'll need to authenticate twice, once for each connection. To share the same credentials between both connections, use the Azure token authentication method for both connections.
+    Like with the cluster URI connection, you can also use the interactive login authentication for the ingestion URI connection. However, when you run the app you need to authenticate twice, once for each connection. To share the same credentials between both connections, use the Azure token authentication method for both connections.
 
     ### [C\#](#tab/csharp)
 
@@ -141,7 +141,7 @@ In your preferred IDE or text editor, create a project or file named *basic inge
 
     ---
 
-1. Ingest the *stormevent.csv* file by adding it to the batch queue. You'll use **IngestionProperties** to set the ingestion properties, **DataFormat** to specify the file format as *CSV*, and **QueuedIngestClient** to ingest the file.
+1. Ingest the *stormevent.csv* file by adding it to the batch queue. You use **IngestionProperties** to set the ingestion properties, **DataFormat** to specify the file format as *CSV*, and **QueuedIngestClient** to ingest the file.
 
     ### [C\#](#tab/csharp)
 
@@ -366,7 +366,7 @@ Last ingested row:
 
 You can ingest data from memory by creating a stream containing the data, and then queuing it for ingestion.
 
-For example, you can modify the app replacing the ingest from file code with the following:
+For example, you can modify the app replacing the *ingest from file* code with the following:
 
 ### [C\#](#tab/csharp)
 
@@ -420,7 +420,7 @@ print_result_as_value_list(response)
 
 ---
 
-When you add the code to your app and run it. Notice that after the ingestion, the number of rows in the table increased by one. You should see a result similar to the following:
+When you add the code to your app and run it, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by one.
 
 ```bash
 Number of rows in MyStormEvents BEFORE ingestion:
@@ -447,7 +447,7 @@ Last ingested row:
 
 You can ingest data from Azure Storage blobs, Azure Data Lake files, and Amazon S3 files. Upload the *stormevent.csv* file to your storage account and generate a URI with read permissions, for example, using [a SAS token](../connection-strings/generate-sas-token.md) for the file. Then use a blob descriptor to queue the blob for ingestion.
 
-For example, you can modify the app replacing the ingest from memory code with the following:
+For example, you can modify the app replacing the *ingest from memory* code with the following:
 
 ### [C\#](#tab/csharp)
 
@@ -496,7 +496,7 @@ print_result_as_value_list(response)
 
 ---
 
-When you add the code to your app and run it. Notice that after the ingestion, the number of rows in the table increased by 1,000. You should see a result similar to the following:
+When you add the code to your app and run it, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by 1,000.
 
 ```bash
 Number of rows in MyStormEvents BEFORE ingestion:
