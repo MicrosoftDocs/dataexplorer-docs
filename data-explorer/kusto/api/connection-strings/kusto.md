@@ -9,7 +9,7 @@ ms.date: 07/11/2023
 
 Kusto connection strings provide the information necessary for a Kusto client application to establish a connection to a Kusto service endpoint. Kusto connection strings are modeled after the ADO.NET connection strings. That is, the connection string is a semicolon-delimited list of name-value parameter pairs, optionally prefixed by a single URI.
 
-For example, the following Kusto connection string begins with a URI that specifies the service endpoint for communication: `https://help.kusto.windows.net`. This URI is assigned to the `Data Source` property. Next, `/Samples` within the connection string represents the default database and is assigned to the `Initial Catalog` property. Lastly, two additional properties, `Fed` and `Accept`, provide further configuration or customization options for the connection.
+For example, the following Kusto connection string begins with a URI that specifies the service endpoint for communication: `https://help.kusto.windows.net`. This URI is assigned to the `Data Source` property. Next, `/Samples` within the connection string represents the default database and is assigned to the `Initial Catalog` property. Lastly, two other properties, `Fed` and `Accept`, provide further configuration or customization options for the connection.
 
 ```text
 https://help.kusto.windows.net/Samples; Fed=true; Accept=true
@@ -50,7 +50,7 @@ KustoTrustedEndpoints.AddTrustedHosts(
 
 ## Connection string properties
 
-The following tables list all the possible properties that can be included in a Kusto connection string. The tables also provides alias names for each property. Moreover, the tables indicates the programmatic names associated with each property, which represents the name of the property in the `Kusto.Data.KustoConnectionStringBuilder` object.
+The following tables list all the possible properties that can be included in a Kusto connection string. The tables also provide alias names for each property. Moreover, the tables indicate the programmatic names associated with each property, which represents the name of the property in the `Kusto.Data.KustoConnectionStringBuilder` object.
 
 ### General properties
 
@@ -114,7 +114,7 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 
 1. The application should be configured to accept the given certificate. [How to authentication based-on Azure AD application's certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential).
 1. The application should be configured as an authorized principal in the relevant Kusto cluster.
-1. The certificate needs to be be installed in Local Machine store or in Current User store.
+1. The certificate needs to be installed in Local Machine store or in Current User store.
 1. The certificate's public key should contain at least 2048 bits.
 
 ### Client communication properties
