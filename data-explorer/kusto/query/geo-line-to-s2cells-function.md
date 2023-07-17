@@ -27,7 +27,9 @@ Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierar
 
 ## Returns
 
-Array of S2 cell token strings that cover a line or a multiline. If radius is set to a positive value, then the covering will be, in addition to input shape, of all points within the radius of the input geometry. If line, level, radius is invalid, or the cell count exceeds the limit, the query will produce a null result.
+Array of S2 cell token strings that cover a line or a multiline. If the radius is set to a positive value, then the covering will be of both input shape and all points within the radius of the input geometry. 
+
+If any of the following:  line, level, radius is invalid, or the cell count exceeds the limit, the query will produce a null result.
 
 > [!NOTE]
 >
