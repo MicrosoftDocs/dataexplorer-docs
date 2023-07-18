@@ -53,7 +53,7 @@ cluster("<ClusterName>").database("<DatabaseName>").<TableName>
 > [!TIP]
 > The number of records returns is limited, even if there's no specific use of the `take` operator. To lift this limit, use the `notruncation` client request option. For more information, see [Query limits](../concepts/querylimits.md).
 
-## Qualified names and the union operator
+### Qualified names and the union operator
 
 When a *qualified name* appears as an operand of the [union operator](./unionoperator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
 
@@ -64,7 +64,7 @@ union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster
 > [!NOTE]
 > The name of the default database is also a potential match, so `database("*")` specifies all tables of all databases including the default.
 
-## Qualified names and restrict access statements
+### Qualified names and restrict access statements
 
 Qualified names or patterns can also be included in [restrict access](./restrictstatement.md) statement.
 Wildcards in cluster names aren't permitted.
@@ -172,11 +172,17 @@ Tabular function in the default database.
 cluster("OtherCluster").database("OtherDb").GetDataPivot()
 ```
 
+## Handle schema changes of remote entities
+
+The cluster that performs the initial query interpretation of a cross-cluster query must have the schema of the entities referenced on the remote clusters.
+
+To get this information, a command is sent to retrieve the schemas, and the schemas are cached after retrieval. However, in the event of a schema change in the remote cluster, a cached schema may become outdated. This can lead to undesired effects, including scenarios where new or deleted columns cause a `Partial query failure`.
+
+To solve such issues, manually refresh the schema with the [.clear cache remote-schema](../management/clear-cross-cluster-schema-cache.md) command.
+
 ## See also
 
-* [cluster()](clusterfunction.md)
-* [database()](databasefunction.md)
-* [Cross-cluster queries and schema changes](../concepts/cross-cluster-and-schema-changes.md)
+* [Cross-cluster join](../query/joincrosscluster.md)
 * [Allow cross-tenant queries and commands](../access-control/cross-tenant-query-and-commands.md)
 
 ::: zone-end
