@@ -333,7 +333,7 @@ node basic-ingestion.js
 ### [Java](#tab/java)
 
 ```bash
-mvn install exec:java -Dexec.mainClass="<groupId>.basicIngestion"
+mvn install exec:java -Dexec.mainClass="<groupId>.batchIngestion"
 ```
 
 ---
