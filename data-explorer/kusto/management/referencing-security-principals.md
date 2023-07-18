@@ -43,7 +43,7 @@ Similarly, you can reference a security group with the group email address in [U
 | App | Explicit (Name) | `aadapp`=*ApplicationDisplayName*;*TenantName*<br />or<br />`aadapp`=*ApplicationId*;*TenantName*|
 
 > [!NOTE]
-> Use the "App" format to reference [managed identities](../../managed-identities-overview.md), in which the *ApplicationId* is the managed identity object ID.
+> Use the "App" format to reference [managed identities](../../managed-identities-overview.md), in which the *ApplicationId* is the managed identity object ID or managed identity client (application) ID.
 
 ### Examples
 

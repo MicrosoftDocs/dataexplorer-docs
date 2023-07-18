@@ -19,9 +19,9 @@ Your Azure Data Explorer cluster can be granted two types of identities:
 
 ## Authenticate with managed identities
 
-Single-tenant Azure AD resources, such as Event Hubs, can only use managed identities to communicate with resources in the same tenant. This limitation restricts the use of managed identities in certain authentication scenarios. For example, you can't use an Azure Data Explorer system-assigned managed identity to access an event hub located in a different tenant. In such cases, use account-key based authentication.
+Single-tenant Azure AD resources can only use managed identities to communicate with resources in the same tenant. This limitation restricts the use of managed identities in certain authentication scenarios. For example, you can't use an Azure Data Explorer managed identity to access an event hub located in a different tenant. In such cases, use account-key based authentication.
 
-Azure Data Explorer is multi-tenant capable. To grant permissions to a managed identity from a different tenant, provide the managed identity object ID and source tenant ID or name as described in [Referencing security principals](kusto/management/referencing-security-principals.md).
+Azure Data Explorer is multi-tenant capable, which means that you can grant access to managed identities from different tenants. To accomplish this, assign the relevant [security roles](kusto/management/security-roles.md). When assigning the roles, refer to the managed identity as described in [Referencing security principals](kusto/management/referencing-security-principals.md#referencing-azure-ad-principals-and-groups).
 
 To authenticate with managed identities, follow these steps:
 
