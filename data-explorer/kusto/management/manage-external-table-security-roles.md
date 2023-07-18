@@ -2,7 +2,7 @@
 title: Manage external table roles
 description: Learn how to use management commands to view, add, and remove external table admins on an external table level.
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/17/2023
 ---
 
 # Manage external table roles
@@ -11,19 +11,25 @@ Principals are granted access to resources through a role-based access control m
 
 On external tables, the only security role is `admins`. External table `admins` have the ability to view, modify, and remove the external table.
 
-In this article, you'll learn how to use management commands to [view existing admins](#view-existing-admins) as well as [add and remove admins](#add-and-remove-admins) on external tables.
+In this article, you'll learn how to use management commands to [view existing admins](#show-existing-admins) as well as [add and remove admins](#add-and-drop-admins) on external tables.
 
 ## Permissions
 
 You must have Database Admin permissions or be an External Table Admin on the specific external table to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
-## View existing admins
+## Show existing admins
 
 Before you add or remove principals, you can use the `.show` command to see a table with all of the principals that already have admin access on the external table.
 
 ### Syntax
 
+To show all roles:
+
 `.show` `external table` *ExternalTableName* `principals`
+
+To show your roles:
+
+`.show` `external table` *ExternalTableName* `principal` `roles`
 
 ### Parameters
 
@@ -45,7 +51,7 @@ The following command lists all security principals that have access to the `Sam
 |---|---|---|---|---|
 |External Table Samples Admin |Azure AD User |Abbi Atkins |cd709aed-a26c-e3953dec735e |aaduser=abbiatkins@fabrikam.com|
 
-## Add and remove admins
+## Add and drop admins
 
 This section provides syntax, parameters, and examples for adding and removing principals.
 
