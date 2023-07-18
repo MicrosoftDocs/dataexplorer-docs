@@ -655,20 +655,26 @@ items:
   items:
     - name: Security roles overview
       href: security-roles.md
+      displayName: role based access control, rbac, principals
     - name: Manage database roles
       href: manage-database-security-roles.md
+      displayName: .show principal, principal access, security roles, roles, rbac
     - name: Manage table roles
       items:
       - name: Manage table roles
         href: manage-table-security-roles.md
+        displayName: .show principal, principal access, security roles, roles, rbac
       - name: Manage table view access
         href: manage-table-view-access.md
     - name: Manage external table roles
       href: manage-external-table-security-roles.md
+      displayName: .show principal, principal access, security roles, roles, rbac
     - name: Manage materialized view roles
       href: manage-materialized-view-security-roles.md
+      displayName: .show principal, principal access, security roles, roles, rbac
     - name: Manage function roles
       href: manage-function-security-roles.md
+      displayName: .show principal, principal access, security roles, roles, rbac
     - name: Referencing security principals
       displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
       href: referencing-security-principals.md
