@@ -17,6 +17,16 @@ items:
             href: multi-tenant.md
           - name: Big data analytics with Azure Data Explorer
             href: proof-of-concept-playbook.md
+      - name: Set up
+        items:
+          - name: Create a cluster and database with the Azure portal
+            href: create-cluster-and-database.md
+          - name: Create a cluster and database
+            href: create-cluster-database.md
+          - name: Create a free cluster
+            href: start-for-free-web-ui.md
+          - name: Automated provisioning
+            href: automated-deploy-overview.md
       - name: Migrate
         items:
           - name: Migrate from Elasticsearch
@@ -27,8 +37,6 @@ items:
       - name: Quickstarts
         expanded: true
         items:
-          - name: Create a cluster and database
-            href: create-cluster-and-database.md
           - name: Get sample data
             href: ingest-sample-data.md
             displayName: Azure Data Explorer web UI
@@ -326,16 +334,8 @@ items:
         href: k2bridge.md
   - name: Admin
     items:
-      - name: Automated provisioning
-        href: automated-deploy-overview.md
-      - name: Create a cluster and database
-        href: create-cluster-database.md
-      - name: Create a free cluster
-        items:
-          - name: Create a free cluster
-            href: start-for-free-web-ui.md
-          - name: Upgrade a free cluster
-            href: start-for-free-upgrade.md
+      - name: Upgrade a free cluster
+        href: start-for-free-upgrade.md
       - name: Create tables
         items:
           - name: Create table
