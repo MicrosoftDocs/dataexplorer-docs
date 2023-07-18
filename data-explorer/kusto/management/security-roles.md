@@ -106,7 +106,7 @@ To see the roles assigned to all principals for a particular resource, run the f
 ```
 
 > [!TIP]
-> Use the [where](../query/whereoperator.md) to filter the results for a specific principal or role.
+> Use the [where](../query/whereoperator.md) operator to filter the results for a specific principal or role.
 
 ## Next steps
 
