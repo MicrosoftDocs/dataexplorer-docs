@@ -229,7 +229,7 @@ If you use option `kind = simple` for the same query below, you'll get `null` fo
 > In relaxed mode, extended columns can be partially matched.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0/CMBTH70v2P7z0BGaGbijozG56I8QI8WI8lO0JldKStuNH4h9vNwIMp+gBPbge1rd9v6/99DVPoIWhZikaSCBj1o2RwMbdAqUd4srGYKzmctz0PXDP0+ZFyv8x9JXlL+uB4Ck+oEBmEBoajcp1in02w+Sez1FwiYN0glkuUAdglWWitJgk6gZgimk/n41QJ1E7AKHS6ZA7L41aYbcV0bAD9Cq+oDENA9CbZUqBVPKRCZ7dMlt+qMjmGhdc5ab3ebL2tVM1SfC7NOHlURp6nOZHEPTkENtt9JQcu0mOHypE/1OFouhrmrBGUxfQbzlK2r8uUtg5ikVPg+Xunu893/jepn/43hvMmXYoUy6zxK3AVpjBrpPAktsJnAE5ACVQDYEccpJqFDsmOS4yVFlJlXwv2eGT3UkUyavcpBrFRfMrJKRw1+hJ7UC2hqYzlOhavWJqz9mSrffQ7xu15UlfBQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0/CMBTH70v2P7z0BGaGbijozG56I8QI8WI8lO0JldKSruNH4h9vNwSLU/SAHmwP7du+371++pYn0MBQsxRzSCBjxs6RwMbNAqUZ4srEkBvN5bjpe2DHw2Yh1fsY+srwp/VA8BTvUCDLERoac1XoFPtshsktn6PgEgfpBLNCoA7AKMNEZcmTqBtAXm77xWyEOonaAQiVTofcemnUCrutiIYdoBfxGY1pGIDepKkEUsl7Jnh2zUz1wJHNNS64KvLe5x9rX1pVkwS/SxOeH6Shh2l+BEGPDrE9Rk/Jsd0U+KFC9D9VKIq+pglrNHUB/Zajov3rIoWdg1j0OFj23/O9xyvf2/QP33uBOdMWZcplltgMbIUZ7DoJLLmZwAmQPVACbghkn5O4UWyZ5LiUuKzEjd4kNskOn+xuonS63MSN4rL5lRJSumv0pHYhW0PTGip0rZ4xNadsydbv0K/RM7BuXwUAAA==" target="_blank">Run the query</a>
 
 ```kusto
 let Traces = datatable(EventText: string)
@@ -241,7 +241,7 @@ let Traces = datatable(EventText: string)
     "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=nonValidLongValue, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
 ];
 Traces
-| parse kind=relaxed EventText with * "resourceName=" resourceName ", totalSlices=" totalSlices: long * "sliceNumber=" sliceNumber: long * "lockTime=" lockTime ", releaseTime=" releaseTime: date "," * "previousLockTime=" previousLockTime: date ")" *
+| parse kind=relaxed EventText with * "resourceName=" resourceName ", totalSlices=" totalSlices: long ", sliceNumber=" sliceNumber: long * "lockTime=" lockTime ", releaseTime=" releaseTime: date "," * "previousLockTime=" previousLockTime: date ")" *
 | project-away EventText
 ```
 
