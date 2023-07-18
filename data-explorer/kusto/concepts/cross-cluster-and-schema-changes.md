@@ -8,7 +8,7 @@ ms.date: 07/18/2023
 
 # Cross-cluster queries and schema changes
 
-With cross-cluster queries, the cluster that performs the initial query interpretation must have the schema of the entities referenced on the remote clusters.
+With [cross-cluster queries](../query/cross-cluster-or-database-queries.md), the cluster that performs the initial query interpretation must have the schema of the entities referenced on the remote clusters.
 
 Consider the following cross-cluster query:
 
