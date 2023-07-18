@@ -46,7 +46,6 @@ cluster("<ClusterName>").database("<DatabaseName>").<TableName>
 ```
 
 > [!NOTE]
-> Cross-database access is subject to the usual permission checks.
 > To execute a query, you must have read permission to the default database and
 > to every other database referenced in the query.
 > For more information, see [Kusto role-based access control](../access-control/role-based-access-control.md).
