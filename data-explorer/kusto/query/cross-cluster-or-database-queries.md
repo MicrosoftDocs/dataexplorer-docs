@@ -1,81 +1,71 @@
 ---
-title:  Cross-database & cross-cluster queries
+title:   Cross-cluster and cross-database queries - Azure Data Explorer
 description: This article describes cross-database and cross-cluster queries in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 07/18/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
-# Cross-database and cross-cluster queries
+# Cross-cluster and cross-database queries
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-Queries execute with one specific database being "in context". This database is used by default
+Queries execute with one specific database being in context. This database is used by default
 to check permissions, and every entity reference in the query that has no explicit cluster or database qualification
 is resolved against this default database.
 
-* In [Kusto Explorer](../tools/kusto-explorer.md), the default database is the one selected in the [Connections panel](../tools/kusto-explorer.md#connections-panel), and the current cluster is the connection containing that database.
-* When using the [client library](../api/netfx/about-kusto-data.md), the current cluster and the default database are specified by the `Data Source` and `Initial Catalog` properties of the [connection strings](../api/connection-strings/kusto.md), respectively.
+This article explains how to perform cross-cluster or cross-database queries.
 
-## Queries
+## Prerequisites
 
-To access tables from any database other than the default, the *qualified name* syntax must be used.
+* If the clusters are in different tenants, follow the instructions in [Allow cross-tenant queries and commands](../access-control/cross-tenant-query-and-commands.md).
 
-To access database in the current cluster.
+## Identify the cluster and database in context
+
+The following table explains how to identify the database in context by query environment.
+
+|Environment|Database in context|
+|--|--|
+|[Kusto Explorer](../tools/kusto-explorer.md)|The default database is the one selected in the [connections panel](../tools/kusto-explorer.md#connections-panel), and the current cluster is the cluster containing that database.|
+|[Azure Data Explorer web UI](https://dataexplorer.azure.com/)|The default database is the one selected in the [connection pane](../../web-ui-query-overview.md), and the current cluster is the cluster containing that database.|
+|[Client libraries](../api/client-libraries.md)|The default database and cluster are specified by the `Data Source` and `Initial Catalog` properties of the [Kusto connection strings](../api/connection-strings/kusto.md).|
+
+## Perform cross-cluster or cross-database queries
+
+To access entities in a database other than the database in context, use the *qualified name* syntax.
+
+For a table in a different database within the same cluster, use the [database()](../query/databasefunction.md) function to qualify the table name:
 
 ```kusto
-database("<database name>").<table name>
+database("<DatabaseName>").<TableName>
 ```
 
-Database in remote cluster.
+For a table in a remove cluster, use the [cluster()](../query/clusterfunction.md) and [database()](../query/databasefunction.md) functions to qualify the table name:
 
 ```kusto
-cluster("<cluster name>").database("<database name>").<table name>
+cluster("<ClusterName>").database("<DatabaseName>").<TableName>
 ```
-
-*database name* is case-sensitive
-
-*cluster name* is case-insensitive and can be of one of the following forms:
-
-* Well-formed URL, such as `http://contoso.kusto.windows.net:1234/`. Only HTTP and HTTPS schemes are supported.
-* Fully qualified domain name (FQDN), such as `contoso.kusto.windows.net`. This string is equivalent to `https://`**`contoso.kusto.windows.net`**`/`.
-* Short name (host name [and region] without the domain part), such as `contoso` or `contoso.westus`. These strings are interpreted as `https://`**`contoso`**`.kusto.windows.net/` and `https://`**`contoso.westus`**`.kusto.windows.net/`.
 
 > [!NOTE]
 > Cross-database access is subject to the usual permission checks.
 > To execute a query, you must have read permission to the default database and
 > to every other database referenced in the query (in the current and remote clusters).
 
-*Qualified name* can be used in any context in which a table name can be used.
+## Qualified names and the union operator
 
-All of the following are valid.
-
-```kusto
-database("OtherDb").Table | where ...
-
-union Table1, cluster("OtherCluster").database("OtherDb").Table2 | project ...
-
-database("OtherDb1").Table1 | join cluster("OtherCluster").database("OtherDb2").Table2 on Key | join Table3 on Key | extend ...
-```
-
-> [!IMPORTANT]
-> If the clusters are in different tenants, you may need to edit the `trustedExternalTenants` property. Non-trusted external tenants may get an **Unauthorized error (401)** failure. For more information, see [How to allow principals from another tenant to access your cluster](../access-control/cross-tenant-query-and-commands.md).
-
-When *qualified name* appears as an operand of the [union operator](./unionoperator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
+When a *qualified name* appears as an operand of the [union operator](./unionoperator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
 
 ```kusto
 union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster").database("*").*
 ```
 
 > [!NOTE]
+> The name of the default database is also a potential match, so database("&#42;")specifies all tables of all databases including the default.
 
-> * The name of the default database is also a potential match, so database("&#42;")specifies all tables of all databases including the default.
-> * For more ionformation on how schema changes affect cross-cluster queries, see [Cross-cluster queries and schema changes](../concepts/cross-cluster-and-schema-changes.md)
+## Qualified names and restrict access statements
 
-## Access restriction
-
-Qualified names or patterns can also be included in [restrict access](./restrictstatement.md) statement,
+Qualified names or patterns can also be included in [restrict access](./restrictstatement.md) statement.
 Wildcards in cluster names aren't permitted.
 
 ```kusto
@@ -99,25 +89,25 @@ MyView | where ...
 
 Persistent functions and views can be accessed from another database in the same cluster.
 
-Tabular function (view) in `OtherDb`.
+For example, say you create the following tabular function (view) in a database `OtherDb`:
 
 ```kusto
 .create function MyView(v:string) { Table1 | where Column1 has v ...  }  
 ```
 
-Scalar function in `OtherDb`.
+Then, you create the following scalar function in a database `OtherDb`:
 
 ```kusto
 .create function MyCalc(a:double, b:double, c:double) { (a + b) / c }  
 ```
 
-In default database.
+In default database, these entities can be referenced as follows:
 
 ```kusto
 database("OtherDb").MyView("exception") | extend CalCol=database("OtherDb").MyCalc(Col1, Col2, Col3) | take 10
 ```
 
-## Limitations of cross-cluster function calls
+### Limitations of cross-cluster function calls
 
 Tabular functions or views can be referenced across clusters. The following limitations apply:
 
@@ -128,6 +118,8 @@ Tabular functions or views can be referenced across clusters. The following limi
   such as the `bag_unpack` plugin, supports a way to indicate the result schema statically,
   and in this form it *can* be used in cross-cluster function calls.)
 * For performance reasons, the schema of remote entities is cached by the calling cluster after the initial call. Therefore, changes made to the remote entity may result in a mismatch with the cached schema information, potentially leading to query failures. For more information, see [Cross-cluster queries and schema changes](../concepts/cross-cluster-and-schema-changes.md).
+
+#### Examples
 
 The following cross-cluster call is valid.
 
@@ -184,6 +176,13 @@ cluster("OtherCluster").database("OtherDb").GetDataPivot()
 Statements that return data to the client are implicitly limited by the number of records returned, even if there's no specific use of the `take` operator. To lift this limit, use the `notruncation` client request option.
 
 To display data in graphical form, use the [render operator](renderoperator.md).
+
+## See also
+
+* [cluster()](clusterfunction.md)
+* [database()](databasefunction.md)
+* [Cross-cluster queries and schema changes](../concepts/cross-cluster-and-schema-changes.md)
+* [Allow cross-tenant queries and commands](../access-control/cross-tenant-query-and-commands.md)
 
 ::: zone-end
 
