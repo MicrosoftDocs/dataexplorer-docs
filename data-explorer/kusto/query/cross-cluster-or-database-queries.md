@@ -11,11 +11,9 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-Queries execute with one specific database being in context. This database is used by default
-to check permissions, and every entity reference in the query that has no explicit cluster or database qualification
-is resolved against this default database.
+When running queries, a particular database is designated as the *database in context*. This database acts as the default for permission checking. If an entity is referenced in a query without specifying the cluster or database, it is resolved against this database.
 
-This article explains how to perform cross-cluster or cross-database queries.
+This article explains how to execute queries that involve entities located outside the current context database.
 
 ## Prerequisites
 
@@ -81,7 +79,7 @@ The above will restrict the query access to the following entities:
 * Any table in all the databases named *MyOther...* of the current cluster.
 * Any table in all the databases named *my2...* in the cluster *OtherCluster.kusto.windows.net*.
 
-## Functions and Views
+## Functions and views
 
 Functions and views (persistent and created inline) can reference tables across database and cluster boundaries. The following code is valid.
 
