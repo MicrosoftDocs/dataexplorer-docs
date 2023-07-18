@@ -26,20 +26,20 @@ The following table explains how to identify the database in context by query en
 |Environment|Database in context|
 |--|--|
 |[Kusto Explorer](../tools/kusto-explorer.md)|The default database is the one selected in the [connections panel](../tools/kusto-explorer.md#connections-panel), and the current cluster is the cluster containing that database.|
-|[Azure Data Explorer web UI](https://dataexplorer.azure.com/)|The default database is the one selected in the [connection pane](../../web-ui-query-overview.md), and the current cluster is the cluster containing that database.|
+|[Azure Data Explorer web UI](https://dataexplorer.azure.com/)|The default database is the one selected in the [connection pane](../../web-ui-query-overview.md#view-clusters-and-databases), and the current cluster is the cluster containing that database.|
 |[Client libraries](../api/client-libraries.md)|The default database and cluster are specified by the `Data Source` and `Initial Catalog` properties of the [Kusto connection strings](../api/connection-strings/kusto.md).|
 
 ## Perform cross-cluster or cross-database queries
 
-To access entities in a database other than the database in context, use the *qualified name* syntax.
+To access entities outside the database in context, use the [cluster()](../query/clusterfunction.md) and [database()](../query/databasefunction.md) functions to qualify the entity name.
 
-For a table in a different database within the same cluster, use the [database()](../query/databasefunction.md) function to qualify the table name:
+For a table in a different database within the same cluster:
 
 ```kusto
 database("<DatabaseName>").<TableName>
 ```
 
-For a table in a remove cluster, use the [cluster()](../query/clusterfunction.md) and [database()](../query/databasefunction.md) functions to qualify the table name:
+For a table in a remove cluster:
 
 ```kusto
 cluster("<ClusterName>").database("<DatabaseName>").<TableName>
@@ -48,7 +48,8 @@ cluster("<ClusterName>").database("<DatabaseName>").<TableName>
 > [!NOTE]
 > Cross-database access is subject to the usual permission checks.
 > To execute a query, you must have read permission to the default database and
-> to every other database referenced in the query (in the current and remote clusters).
+> to every other database referenced in the query.
+> For more information, see [Kusto role-based access control](../access-control/role-based-access-control.md).
 
 > [!TIP]
 > The number of records returns is limited, even if there's no specific use of the `take` operator. To lift this limit, use the `notruncation` client request option. For more information, see [Query limits](../concepts/querylimits.md).
@@ -62,7 +63,7 @@ union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster
 ```
 
 > [!NOTE]
-> The name of the default database is also a potential match, so database("&#42;")specifies all tables of all databases including the default.
+> The name of the default database is also a potential match, so database("&#42;") specifies all tables of all databases including the default.
 
 ## Qualified names and restrict access statements
 
