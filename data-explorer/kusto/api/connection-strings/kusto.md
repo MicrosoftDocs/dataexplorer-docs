@@ -121,9 +121,9 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 
 | Property name | Programmatic name | Description |
 |--|--|--|
-| `Accept` | `Accept` |A boolean value that requests detailed error objects to be returned on failure. |
-| `Streaming` | `Streaming` | A boolean value that requests the client not accumulate data before providing it to the caller. This is a default behavior. |
-| `Uncompressed` | `Uncompressed` | A boolean value that requests the client not ask for transport-level compression. |
+| Accept | Accept |A boolean value that requests detailed error objects to be returned on failure. |
+| Streaming | Streaming | A boolean value that requests the client not accumulate data before providing it to the caller. This is a default behavior. |
+| Uncompressed | Uncompressed | A boolean value that requests the client not ask for transport-level compression. |
 
 > [!NOTE]
 > When the `Streaming` flag is enabled (as is the default),
