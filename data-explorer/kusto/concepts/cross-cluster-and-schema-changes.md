@@ -18,9 +18,9 @@ Table1 | join (cluster("Cluster2").database("MyDatabase2").Table2 ) on KeyColumn
 
 In order for the query to run on *Cluster1*, the columns and their data types of *Table2* must be known. To get this information, a command is sent from *Cluster1* to *Cluster2* to get the schema of *Table2*.
 
-The command to retrieve the schema can be a costly, so the schema is cached to reduce future network operations for queries referencing the same entity. However, if there are any changes to the schema in the remote cluster, the cached schema may become outdated and lead to unwanted effects. For example, new columns may not be recognized, or deleted columns may cause a `Partial query failure`.
+The command to get the schema can be a costly, so the schema is cached to reduce future network operations. However, if there are any changes to the schema in the remote cluster, the cached schema may become outdated and lead to unwanted effects. For example, new columns may not be recognized, or deleted columns may cause a `Partial query failure`.
 
-To reduce the likelihood of encountering such issues, cached schemas expire after one hour. After this time, subsequent queries must fetch the most up-to-date schema. Alternatively, you can manually refresh the schema with the [.clear cache remote-schema](../management/clear-cross-cluster-schema-cache.md) command.
+To reduce the likelihood of such issues, cached schemas expire after one hour. After this time, subsequent queries must fetch the most up-to-date schema. Alternatively, you can manually refresh the schema with the [.clear cache remote-schema](../management/clear-cross-cluster-schema-cache.md) command.
 
 ## See also
 
