@@ -655,6 +655,7 @@ items:
   items:
     - name: Security roles overview
       href: security-roles.md
+      displayName: role based access control, rbac, principals
     - name: Manage database roles
       href: manage-database-security-roles.md
       displayName: .show principal, principal access, security roles, roles, rbac
