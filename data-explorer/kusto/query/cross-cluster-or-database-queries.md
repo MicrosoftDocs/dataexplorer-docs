@@ -52,6 +52,9 @@ cluster("<ClusterName>").database("<DatabaseName>").<TableName>
 > To execute a query, you must have read permission to the default database and
 > to every other database referenced in the query (in the current and remote clusters).
 
+> [!TIP]
+> The number of records returns is limited, even if there's no specific use of the `take` operator. To lift this limit, use the `notruncation` client request option. For more information, see [Query limits](../concepts/querylimits.md).
+
 ## Qualified names and the union operator
 
 When a *qualified name* appears as an operand of the [union operator](./unionoperator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
@@ -170,12 +173,6 @@ Tabular function in the default database.
 ```kusto
 cluster("OtherCluster").database("OtherDb").GetDataPivot()
 ```
-
-## Displaying data
-
-Statements that return data to the client are implicitly limited by the number of records returned, even if there's no specific use of the `take` operator. To lift this limit, use the `notruncation` client request option.
-
-To display data in graphical form, use the [render operator](renderoperator.md).
 
 ## See also
 
