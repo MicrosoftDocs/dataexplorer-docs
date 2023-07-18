@@ -23,7 +23,7 @@ For more information about other operators and to determine which operator is mo
 |--|--|--|--|
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
 | *col* | string | &check; | The column by which to filter.|
-| *expression* | scalar | &check; | The expression used to filter.|
+| *expression* | scalar | &check; | The regular expression used to filter. The regular expression syntax supported by Kusto is that of the [re2 library](re2-library.md). |
 
 ## Returns
 
