@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-When running queries, a particular database is designated as the *database in context*. This database acts as the default for permission checking. If an entity is referenced in a query without specifying the cluster or database, it is resolved against this database.
+Queries run with a particular database designated as the *database in context*. This database acts as the default for permission checking. If an entity is referenced in a query without specifying the cluster or database, it's resolved against this database.
 
 This article explains how to execute queries that involve entities located outside the current context database.
 
@@ -70,15 +70,15 @@ union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster
 Qualified names or patterns can also be included in [restrict access](./restrictstatement.md) statement.
 Wildcards in cluster names aren't permitted.
 
-```kusto
-restrict access to (my*, database("MyOther*").*, cluster("OtherCluster").database("my2*").*);
-```
-
-The above will restrict the query access to the following entities:
+The following query restricts query access to the following entities:
 
 * Any entity name starting with *my...* in the default database.
 * Any table in all the databases named *MyOther...* of the current cluster.
 * Any table in all the databases named *my2...* in the cluster *OtherCluster.kusto.windows.net*.
+
+```kusto
+restrict access to (my*, database("MyOther*").*, cluster("OtherCluster").database("my2*").*);
+```
 
 ## Functions and views
 
