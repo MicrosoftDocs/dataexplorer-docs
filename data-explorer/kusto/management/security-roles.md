@@ -105,6 +105,9 @@ To see the roles assigned to all principals for a particular resource, run the f
 .show materialized-view MaterializedViewName principals
 ```
 
+> [!TIP]
+> Use the [where](../query/whereoperator.md) to filter the results for a specific principal or role.
+
 ## Next steps
 
 * Read about [Kusto role-based access control](access-control/role-based-access-control.md)
