@@ -5,7 +5,7 @@ ms.topic: conceptual
 ms.date: 05/01/2023
 ---
 
-# Splunk to Kusto Query Language map
+# Splunk to Kusto cheat sheet
 
 This article is intended to assist users who are familiar with Splunk learn the Kusto Query Language to write log queries with Kusto. Direct comparisons are made between the two to highlight key differences and similarities, so you can build on your existing knowledge.
 

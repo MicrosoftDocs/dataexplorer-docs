@@ -3,9 +3,9 @@ title:  Connection strings overview
 description: This article describes connection strings in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/27/2023
+ms.date: 07/13/2023
 ---
-# Connection Strings overview
+# Connection strings overview
 
 Connection strings are widely used in [management commands](../../management/index.md), in the [Kusto API](../index.md), and occasionally in [Kusto Query Language (KQL) queries](../../query/index.md).
 

@@ -8,19 +8,12 @@ ms.date: 05/28/2023
 
 # Ingest data from a container into Azure Data Explorer
 
-> [!div class="op_single_selector"]
-> * [Ingestion wizard](/azure/data-explorer/ingest-from-container)
-> * [Portal](ingest-data-event-grid.md)
-> * [C#](data-connection-event-grid-csharp.md)
-> * [Python](data-connection-event-grid-python.md)
-> * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
-
-The [ingestion wizard](./ingest-data-wizard.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, or as a one-time or continuous ingestion process.
+The [ingestion wizard](./ingest-data-wizard.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.
 
 This document describes using the intuitive ingestion wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that responds to new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
 
 For an overview of the ingestion wizard, see [What is the ingestion wizard?](./ingest-data-wizard.md).
-For information about ingesting data into an existing table in Azure Data Explorer, see [Ingest data to an existing table](/azure/data-explorer/ingest-from-local-file)
+For information about ingesting data into an existing table in Azure Data Explorer, see [Ingest data to an existing table](/azure/data-explorer/ingest-from-local-file). For information about different ways to ingest by using an Event Grid, see [Create an Event Grid data connection](ingest-data-event-grid.md).
 
 ## Prerequisites
 
