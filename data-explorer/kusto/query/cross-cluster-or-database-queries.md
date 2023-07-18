@@ -62,7 +62,7 @@ union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster
 ```
 
 > [!NOTE]
-> The name of the default database is also a potential match, so database("&#42;") specifies all tables of all databases including the default.
+> The name of the default database is also a potential match, so `database("*")` specifies all tables of all databases including the default.
 
 ## Qualified names and restrict access statements
 
