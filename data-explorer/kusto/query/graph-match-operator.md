@@ -1,11 +1,11 @@
 ---
 title:  graph-match operator (Public Preview)
-description: Learn how to use the join operator to search for all occurences of a graph pattern in a graph.
+description: Learn how to use the graph-match operator to search for all occurences of a graph pattern in a graph.
 ms.author: rocohen
 ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/19/2023
+ms.date: 07/19/2023
 ---
 # graph-match operator (Public Preview)
 
