@@ -92,7 +92,3 @@ items:
   items:
   - name: Use Kusto .NET client libraries from PowerShell
     href: powershell/powershell.md
-- name: Bicep and ARM template resource types
-  href: /azure/templates/microsoft.kusto/allversions
-- name: Resource provider operations
-  href: /azure/role-based-access-control/resource-provider-operations#microsoftkusto
