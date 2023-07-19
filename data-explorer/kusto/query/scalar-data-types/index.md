@@ -41,6 +41,3 @@ into an `int` column results in this value.
 It isn't possible to materialize this value explicitly, but you can detect
 whether an expression evaluates to this value by using the `isnull()` function.
 
-> [!WARNING]
-> Support for the `guid` type is incomplete.
-> We strongly recommend that teams use values of type `string` instead.
