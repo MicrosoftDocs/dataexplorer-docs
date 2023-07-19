@@ -37,9 +37,16 @@ To add a connection to your Azure Data Explorer cluster, do the following:
 
 1. In case your user is linked to multiple Azure AD directories, select **Switch directory** to access a dropdown menu listing all directories associated with the current account. Choose the relevant directory for this specific cluster connection.
 
+    :::image type="content" source="media/web-ui-add-cluster/switch-directories.png" alt-text="Screenshot of option to switch directory." lightbox="media/web-ui-add-cluster/switch-directories.png":::
+
 1. Select **Add** to add the connection. Your cluster and databases should now be visible in the left panel. For example, the following image shows the `help` cluster connection.
 
     :::image type="content" source="media/web-ui-add-cluster/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-add-cluster/help-cluster-web-ui.png":::
+
+## How to see which user is associated with which cluster
+
+## What happens if I need to refresh a token
+^ Not sure that I need to document this... like it is pretty clear as it is.
 
 ## Next steps
 
