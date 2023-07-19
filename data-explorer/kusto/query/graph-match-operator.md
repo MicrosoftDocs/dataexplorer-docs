@@ -1,5 +1,5 @@
 ---
-title:  graph-match operator (Public Preview)
+title: graph-match operator (Public Preview)
 description: Learn how to use the graph-match operator to search for all occurences of a graph pattern in a graph.
 ms.author: rocohen
 ms.service: data-explorer
