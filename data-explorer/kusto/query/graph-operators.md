@@ -1,4 +1,13 @@
-# Graph operators (public preview)
+---
+title: graph operators (Public Preview)
+description: Learn how to use Kusto graph capabilities.
+ms.author: rocohen
+ms.service: data-explorer
+ms.reviewer: alexans
+ms.topic: reference
+ms.date: 07/19/2023
+---
+# Graph operators (Public Preview)
 
 Kusto graph operators enable operations over graph structures.  
 The graph is built from tabular data using the `make-graph` operator then queried using graph operators.
