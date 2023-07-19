@@ -1,5 +1,5 @@
 ---
-title:  graph-merge operator (Public Preview)
+title: graph-merge operator (Public Preview)
 description: Learn how to use the graph-merge operator to merge the nodes and edges of two graphs, combining them into a single new graph.
 ms.author: rocohen
 ms.service: data-explorer
