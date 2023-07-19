@@ -1,5 +1,5 @@
 ---
-title:  graph-to-table operator (Public Preview)
+title: graph-to-table operator (Public Preview)
 description: Learn how to use the graph-to-table operator to export nodes or edges from a graph to tables.
 ms.author: rocohen
 ms.service: data-explorer
