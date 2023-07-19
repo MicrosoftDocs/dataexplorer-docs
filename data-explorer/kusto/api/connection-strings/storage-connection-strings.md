@@ -77,7 +77,7 @@ Azure Data Explorer makes requests on behalf of a managed identity and uses its 
 |Managed identity type|Example|
 |--|--|--|
 |System-assigned|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=system"`|
-|User-assigned|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b"`|
+|User-assigned|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;managed_identity=12345678-1234-1234-1234-1234567890ab"`|
 
 The managed identity must have the necessary permissions to perform the operation. For example in Azure Blob Storage, to read from the blob the managed identity needs the Storage Blob Data Reader role and to export to the blob the managed identity needs the Storage Blob Data Contributor role. To learn more, see [Azure Blob Storage / Data Lake Storage Gen2 access control](/azure/storage/blobs/data-lake-storage-access-control-model#role-based-access-control-azure-rbac) or [Data Lake Storage Gen1 access control](/azure/data-lake-store/data-lake-store-security-overview#azure-rbac-for-account-management).
 
@@ -104,7 +104,7 @@ For more information on how to generate an Azure AD access token, see [get an ac
 
 |Example|
 |--|
-|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im..."`|
+|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token=1234567890abcdef1234567890abcdef1234567890abc..."`|
 
 ### Storage account access key
 
@@ -121,4 +121,4 @@ To add Amazon Web Services access keys, append `;AwsCredentials={ACCESS_KEY_ID},
 
 |Example|
 |--|
-|`"https://yourbucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AKIAIOSFODNN7EXAMPLE,wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"`|
+|`"https://yourbucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AWS1234567890EXAMPLE,1234567890abc/1234567/12345678EXAMPLEKEY"`|
