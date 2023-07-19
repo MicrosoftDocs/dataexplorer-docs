@@ -22,6 +22,7 @@ The `graph-match` operator searches for all occurences of a graph pattern in an 
 ## Parameters
 
 * *Pattern*: a sequence of graph node elements connected by graph edge elements using graph notations. A graph notation is one of the following:
+  
   |Element|Named variable|Anonymous|
   |---|---|---|
   |Node|`(`*n*`)`|`()`|
