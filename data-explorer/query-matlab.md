@@ -67,8 +67,6 @@ Select the tab for the operating system used to run MATLAB.
     Found: azure-common-sdk-0.2.0.jar
     ```
 
-
-
 ---
 
 ## Perform user authentication
@@ -184,8 +182,6 @@ To perform user authentication:
     % The results row can be extracted as follows
     results=querryresults{3}.Rows
     ```
-
-
 
 ---
 
@@ -304,11 +300,8 @@ To perform application authentication:
     results=querryresults{3}.Rows
     ```
 
-
-
 ---
 
 ## Next steps
 
 * Query your cluster with the [REST API](kusto/api/rest/index.md)
-
