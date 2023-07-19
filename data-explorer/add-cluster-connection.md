@@ -33,6 +33,12 @@ To add a connection to your Azure Data Explorer cluster, do the following:
 
     :::image type="content" source="media/web-ui-add-cluster/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-add-cluster/help-cluster-web-ui.png":::
 
+## Connect to clusters across multiple accounts
+
+When you add or edit a cluster connection, you associate a specific user account and Azure Active Directory (Azure AD) directory with the connection. The cluster establishes the connection and runs queries using the provided credentials.
+
+This capability is especially valuable for users who manage multiple clusters across different user accounts or Azure AD directories. It eliminates the need for repetitive signing out and signing back in to access clusters associated with different sets of credentials. Instead of managing multiple logins, effortlessly switch between and view clusters associated with various accounts and directories within a unified pane.
+
 ## Next steps
 
 * Get data with the [ingestion wizard](ingest-data-wizard.md)
