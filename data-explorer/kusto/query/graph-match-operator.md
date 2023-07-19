@@ -1,3 +1,12 @@
+---
+title:  graph-match operator (Public Preview)
+description: Learn how to use the join operator to search for all occurences of a graph pattern in a graph.
+ms.author: rocohen
+ms.service: data-explorer
+ms.reviewer: alexans
+ms.topic: reference
+ms.date: 06/19/2023
+---
 # graph-match operator (Public Preview)
 
 The `graph-match` operator searches for all occurences of a graph pattern in an input graph source.
