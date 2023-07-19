@@ -10,6 +10,10 @@ ms.date: 07/19/2023
 
 This article describes how to add a connection to an Azure Data Explorer cluster in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
+When you add or edit a cluster connection, you associate a specific user account and Azure Active Directory (Azure AD) directory with the connection. The cluster establishes the connection and runs queries using the provided credentials.
+
+This capability is especially valuable for users who manage multiple clusters across different user accounts or Azure AD directories. It eliminates the need for repetitive signing out and signing back in to access clusters associated with different sets of credentials. Instead of managing multiple logins, effortlessly switch between and view clusters associated with various accounts and directories within a unified pane.
+
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
@@ -32,12 +36,6 @@ To add a connection to your Azure Data Explorer cluster, do the following:
 1. Select **Add** to add the connection. Your cluster and databases should now be visible in the left panel. For example, the following image shows the `help` cluster connection.
 
     :::image type="content" source="media/web-ui-add-cluster/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-add-cluster/help-cluster-web-ui.png":::
-
-## Connect to clusters across multiple accounts
-
-When you add or edit a cluster connection, you associate a specific user account and Azure Active Directory (Azure AD) directory with the connection. The cluster establishes the connection and runs queries using the provided credentials.
-
-This capability is especially valuable for users who manage multiple clusters across different user accounts or Azure AD directories. It eliminates the need for repetitive signing out and signing back in to access clusters associated with different sets of credentials. Instead of managing multiple logins, effortlessly switch between and view clusters associated with various accounts and directories within a unified pane.
 
 ## Next steps
 
