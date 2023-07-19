@@ -89,3 +89,9 @@ The following query returns the rows in which the word "cow" appears in any colu
 StormEvents
 | where * has "cow"
 ```
+
+## Next steps
+
+* [String operators](datatypes-string-operators.md)
+* [Numerical operators](numoperators.md)
+* [Logical operators](logicaloperators.md)
