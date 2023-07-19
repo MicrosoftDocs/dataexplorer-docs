@@ -13,9 +13,7 @@ Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierar
 
 ## Syntax
 
-`geo_line_to_s2cells(`*lineString*`,` *level*`)`
-
-`geo_line_to_s2cells(`*lineString*`,` *level*`,` *radius*`)`
+`geo_line_to_s2cells(`*lineString* [`,` *level*[ `,` *radius*]]`)`
 
 ## Parameters
 
