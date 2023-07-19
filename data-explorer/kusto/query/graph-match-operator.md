@@ -1,10 +1,3 @@
----
-title: graph-match operator (Public Preview)
-description: Learn how to use the graph-match operator to search all occurences of a graph pattern in a graph
-ms.reviewer: alexans
-ms.topic: reference
-ms.date: 07/19/2023
----
 # graph-match operator (Public Preview)
 
 The `graph-match` operator searches for all occurences of a graph pattern in an input graph source.
