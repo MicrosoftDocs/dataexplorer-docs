@@ -62,7 +62,7 @@ edges
 |---|---|---|
 |Mallory|Bob|Trent|
 
-## See also
+## Next steps
 
 * [Graph operators](graph-operators.md)
 * [graph-match operator](graph-match-operator.md)
