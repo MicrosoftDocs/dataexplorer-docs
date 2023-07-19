@@ -374,6 +374,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[geo_line_densify()](geo-line-densify-function.md)|Converts planar line edges to geodesics by adding intermediate points.|
 |[geo_line_length()](geo-line-length-function.md)|Calculates the total length of line or a multiline on Earth.|
 |[geo_line_simplify()](geo-line-simplify-function.md)|Simplifies line or a multiline by replacing nearly straight chains of short edges with a single long edge on Earth.|
+|[geo_line_to_s2cells()](geo-line-to-s2cells-function.md)|Calculates S2 cell tokens that cover a line or multiline on Earth. Useful geospatial join tool.|
 |[geo_polygon_area()](geo-polygon-area-function.md)|Calculates the area of polygon or a multipolygon on Earth.|
 |[geo_polygon_buffer()](geo-polygon-buffer-function.md)|Calculates polygon or multipolygon that contains all points within the given radius of the input polygon or multipolygon on Earth.|
 |[geo_polygon_centroid()](geo-polygon-centroid-function.md)|Calculates the centroid of polygon or a multipolygon on Earth.|

@@ -1273,6 +1273,8 @@ items:
     href: geo-line-length-function.md
   - name: geo_line_simplify()
     href: geo-line-simplify-function.md  
+  - name: geo_line_to_s2cells()
+    href: geo-line-to-s2cells-function.md
   - name: geo_polygon_area()
     href: geo-polygon-area-function.md
   - name: geo_polygon_buffer()
