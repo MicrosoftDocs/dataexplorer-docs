@@ -61,8 +61,7 @@ The `graph-to-table` operator returns two *tabular* results, matching the descri
 
 The following example builds a graph from edges and nodes tables, the nodes represent people and systems and the edges are different relations between nodes. Following the `make-graph` operator that builds the graph is a call to `graph-to-table` with a graph edges and `with_source_id` and `with_target_id` parameters that export node hash for source and target nodes of each edge. 
 
-<!-- csl -->
-```
+```kusto
 let nodes = datatable(name:string, type:string, age:long) 
 [ 
 	"Alice", "Person", 23,  
@@ -95,12 +94,11 @@ edges
 |3855580634910899594|-3122868243544336885|Mallory|Alice|attacks|
 |3855580634910899594|-7133945255344544237|Mallory|Bob|attacks|
 
-### 1. Get Nodes
+### 2. Get Nodes
 
 The following example builds a graph from edges and nodes tables, the nodes represent people and systems and the edges are different relations between nodes. Following the `make-graph` operator that builds the graph is a call to `graph-to-table` with a graph nodes and `with_node_id` parameter that export node hash. 
 
-<!-- csl -->
-```
+```kusto
 let nodes = datatable(name:string, type:string, age:long) 
 [ 
 	"Alice", "Person", 23,  
@@ -131,12 +129,11 @@ edges
 |2533909231875758225|Trent|System|99|
 |3855580634910899594|Mallory|||
 
-### 1. Get Nodes and Edges
+### 3. Get Nodes and Edges
 
 The following example builds a graph from edges and nodes tables, the nodes represent people and systems and the edges are different relations between nodes. Following the `make-graph` operator that builds the graph is a call to `graph-to-table` with nodes and edges. 
 
-<!-- csl -->
-```
+```kusto
 let nodes = datatable(name:string, type:string, age:long) 
 [ 
 	"Alice", "Person", 23,  
