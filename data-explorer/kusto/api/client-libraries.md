@@ -3,7 +3,7 @@ title:  Client libraries overview
 description: This article lists the Client libraries in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 07/19/2023
 ---
 # Kusto client libraries
 
@@ -12,7 +12,7 @@ Use these libraries for Azure APIs and to programmatically interact with your cl
 
 > For previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/kusto/api/client-libraries).
 
-| Language/Functionality | Query | Ingestion | ARM/RP Management |
+| Language/Tool | Query | Ingestion | ARM/RP Management |
 |--|--|--|--|--|
 | .NET (4.7.2, Core 2.1, Standard 2.0) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/) |
 | .NET Standard 2.0 (deprecated) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard/) |  |
@@ -27,10 +27,3 @@ Use these libraries for Azure APIs and to programmatically interact with your cl
 | Azure   CLI |  |  | [Azure CLI](/cli/azure/install-azure-cli) |
 | REST   API | [REST](rest/index.md) | [REST](rest/index.md) | [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/azure-kusto/resource-manager/Microsoft.Kusto) |
 | TypeScript |  |  | [Npm](https://www.npmjs.com/package/@azure/arm-kusto/v/2.0.0) |
-
-## Tools and Integrations
-
-* LightIngest: [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)  
-* Kafka: [GitHub](https://github.com/Azure/kafka-sink-azure-kusto)  
-* Logstash: [GitHub](https://github.com/Azure/logstash-output-kusto) 
-* Spark: [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
