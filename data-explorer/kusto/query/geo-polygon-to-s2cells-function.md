@@ -13,7 +13,7 @@ Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierar
 
 ## Syntax
 
-`geo_polygon_to_s2cells(`*polygon*`,` *level*`)`
+`geo_polygon_to_s2cells(`*polygon* [`,` *level*[`,` *radius*]]`)`
 
 ## Parameters
 
@@ -21,10 +21,11 @@ Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierar
 |--|--|--|--|
 | *polygon* | dynamic | &check; | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 | *level* | int | | Defines the requested cell level. Supported values are in the range [0, 30]. If unspecified, the default value `11` is used.|
+| *radius* | real | | Buffer radius in meters. If unspecified, the default value `0` is used.|
 
 ## Returns
 
-Array of S2 cell token strings that cover a polygon or a multipolygon. If either the polygon or level is invalid, or the cell count exceeds the limit, the query will produce a null result.
+Array of S2 cell token strings that cover a polygon or a multipolygon. If radius is set to a positive value, then the covering will be, in addition to input shape, of all points within the radius of the input geometry. If polygon, level, radius is invalid, or the cell count exceeds the limit, the query will produce a null result.
 
 > [!NOTE]
 >
@@ -99,6 +100,7 @@ This match can be achieved by the following process:
 > * In case of very big polygons, reduce their size using [geo_polygon_simplify()](geo-polygon-simplify-function.md).
 > * Changing S2 cell level may improve performance and memory consumption.
 > * Changing [join kind and hint](joinoperator.md) may improve performance and memory consumption.
+> * If a positive radius is set, you can try to improve performance by reverting to radius 0 on buffered shape using [geo_polygon_buffer()](geo-polygon-buffer-function.md).
 
 ## Examples
 
