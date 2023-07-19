@@ -13,9 +13,7 @@ Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierar
 
 ## Syntax
 
-`geo_polygon_to_s2cells(`*polygon*`,` *level*`)`
-
-`geo_polygon_to_s2cells(`*polygon*`,` *level*`,` *radius*`)`
+`geo_polygon_to_s2cells(`*polygon* [`,` *level*[`,` *radius*]]`)`
 
 ## Parameters
 
