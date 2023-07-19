@@ -43,11 +43,6 @@ To add a connection to your Azure Data Explorer cluster, do the following:
 
     :::image type="content" source="media/web-ui-add-cluster/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-add-cluster/help-cluster-web-ui.png":::
 
-## How to see which user is associated with which cluster
-
-## What happens if I need to refresh a token
-^ Not sure that I need to document this... like it is pretty clear as it is.
-
 ## Next steps
 
 * Get data with the [ingestion wizard](ingest-data-wizard.md)
