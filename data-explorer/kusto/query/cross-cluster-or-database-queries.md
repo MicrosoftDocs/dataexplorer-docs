@@ -3,7 +3,7 @@ title:   Cross-cluster and cross-database queries - Azure Data Explorer
 description: This article describes cross-database and cross-cluster queries in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/18/2023
+ms.date: 07/19/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -78,6 +78,12 @@ The following query restricts query access to the following entities:
 ```kusto
 restrict access to (my*, database("MyOther*").*, cluster("OtherCluster").database("my2*").*);
 ```
+
+## Handle schema changes of remote entities
+
+To process a cross-cluster query, the cluster that performs the initial query interpretation needs to have the schema of the entities referenced on remote clusters. To obtain this information, a command is sent to retrieve the schemas, which are then stored in a cache. 
+
+In the event of a schema change in the remote cluster, a cached schema may become outdated. This can lead to undesired effects, including scenarios where new or deleted columns cause a `Partial query failure`. To solve such issues, manually refresh the schema with the [.clear cache remote-schema](../management/clear-cross-cluster-schema-cache.md) command.
 
 ## Functions and views
 
@@ -171,14 +177,6 @@ Tabular function in the default database.
 ```kusto
 cluster("OtherCluster").database("OtherDb").GetDataPivot()
 ```
-
-## Handle schema changes of remote entities
-
-The cluster that performs the initial query interpretation of a cross-cluster query must have the schema of the entities referenced on the remote clusters.
-
-To get this information, a command is sent to retrieve the schemas, and the schemas are cached after retrieval. However, in the event of a schema change in the remote cluster, a cached schema may become outdated. This can lead to undesired effects, including scenarios where new or deleted columns cause a `Partial query failure`.
-
-To solve such issues, manually refresh the schema with the [.clear cache remote-schema](../management/clear-cross-cluster-schema-cache.md) command.
 
 ## See also
 
