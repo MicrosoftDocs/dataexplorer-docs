@@ -1,3 +1,12 @@
+---
+title: make-graph operator (Public Preview)
+description: Learn how to use the graph-to-table operator to build a graph structure from tabular inputs of edges and nodes.
+ms.author: rocohen
+ms.service: data-explorer
+ms.reviewer: alexans
+ms.topic: reference
+ms.date: 07/19/2023
+---
 # make-graph operator (Public Preview)
 
 The `make-graph` operator builds a graph structure from tabular inputs of edges and nodes.
