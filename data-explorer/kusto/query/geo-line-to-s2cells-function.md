@@ -45,7 +45,7 @@ If any of the following:  line, level, radius is invalid, or the cell count exce
 
 **Performance improvement suggestions**
 
- * If possible, reduce coordinates table size before join, by grouping coordinates that are very close to each other by using [geospatial clustering](geospatial-grid-systems.md) or by filtering out unnesessary coordinates due to nature of the data or business needs.
+ * If possible, reduce coordinates table size before join, by grouping coordinates that are very close to each other by using [geospatial clustering](geospatial-grid-systems.md) or by filtering out unnecessary coordinates due to nature of the data or business needs.
  * If possible, reduce lines count due to nature of the data or business needs. Filter out unnecessary lines before join, scope to the area of interest or unify lines.
  * In case of very big lines, reduce their size using [geo_line_simplify()](geo-line-simplify-function.md).
  * Changing S2 cell level may improve performance and memory consumption.
