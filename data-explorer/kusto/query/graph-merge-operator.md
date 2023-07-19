@@ -1,3 +1,12 @@
+---
+title:  graph-merge operator (Public Preview)
+description: Learn how to use the graph-merge operator to merge the nodes and edges of two graphs, combining them into a single new graph.
+ms.author: rocohen
+ms.service: data-explorer
+ms.reviewer: alexans
+ms.topic: reference
+ms.date: 07/19/2023
+---
 # graph-merge operator (Public Preview)
 
 The `graph-merge` operator merges the nodes and edges of two graphs, combining them into a single new graph.
