@@ -33,7 +33,7 @@ In this article, you learn how to create manually the resources needed for Event
 1. In the Azure portal, go to your storage account.
 1. In the left menu, select **Events** > **Event Subscription**.
 
-     :::image type="content" source="media/eventgrid/create-event-grid-subscription-1.png" alt-text="Create event grid subscription.":::
+     :::image type="content" source="media/eventgrid/create-event-grid-subscription-1.png" alt-text="Screenshot of create Event Grid subscription.":::
 
 1. In the **Create Event Subscription** window within the **Basic** tab, provide the following values:
 
@@ -71,16 +71,16 @@ In this article, you learn how to create manually the resources needed for Event
 
     Use **Advanced Filters** to add custom filters that meet your requirements.
 
-    For example, When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0. This event is ignored by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed.
-    To filter for *FlushAndClose* events and remove file creation events with size 0, use the following filter:
+    For example, When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0. This event is discarded by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed.
+    To avoid unnecessary processing and empty file ingestion errors, filter out *CreateFile* events using the following filter:
 
-    :::image type="content" source="media/eventgrid/filters-flush-and-close.png" alt-text="Screenshot showing how to filter for flush and close events.":::
+    :::image type="content" source="media/eventgrid/filter-out-create-file.png" alt-text="Screenshot showing how to filter out create file events.":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
     |Key | *data.api* | The field in the event schema used for filtering. |
-    |Operator | *String is in* | An operator to be evaluates on the selected key. |
-    |Value | *FlushWithClose* | The value used to evaluate the key. |
+    |Operator | *String is not in* | An operator to be evaluates on the selected key. |
+    |Value | *CreateFile* | The value used to evaluate the key. |
 
 1. Select **Create**
 
