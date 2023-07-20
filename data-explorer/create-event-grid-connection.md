@@ -344,7 +344,7 @@ dataLakeFileClient.Upload(localFileName, uploadOptions);
 > [!NOTE]
 >
 > * When uploading a file with the Azure Data Lake SDK, the initial file creation event has a size of 0, which is ignored by Azure Data Explorer during data ingestion. To ensure proper ingestion, set the `Close` parameter to `true`. This parameter causes the upload method to trigger a *FlushAndClose* event, indicating that the final update has been made and the file stream is closed.
-> * To reduce traffic coming from Event Grid and the subsequent processing when ingesting events into Azure Data Explorer, as well as avoid ingestion errors of empty blobs, we recommend [filtering](ingest-data-event-grid-manual.md#create-an-event-grid-subscription) the *data.api* key to exclude *CreateFile* events, thereby removing file creation events with size 0. For more information about flushing, see [Azure Data Lake flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush).
+> * To reduce traffic coming from Event Grid and optimize the ingestion of events into Azure Data Explorer, we recommend [filtering](ingest-data-event-grid-manual.md#create-an-event-grid-subscription) the *data.api* key to exclude *CreateFile* events. This ensure that file creation events with size 0 are filtered out, preventing ingestion errors of empty file. For more information about flushing, see [Azure Data Lake flush method](/dotnet/api/azure.storage.files.datalake.datalakefileclient.flush).
 
 ### Rename blobs
 
