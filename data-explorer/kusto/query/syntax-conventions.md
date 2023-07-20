@@ -10,7 +10,7 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 ## Syntax conventions
 
-|Convention|Description|
+|Convention |Description |
 |--|--|
 |`Block`|String literals to be entered exactly as shown.|
 |*Italic*|Parameters to be provided a value upon use of the function or command.|
