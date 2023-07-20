@@ -65,4 +65,4 @@ For all authentication methods, the principal (or managed identity) must have th
 * [Authentication with the sql_request plugin](../../query/sqlrequestplugin.md#authentication-and-authorization)
 * [Authentication with the mysql_request plugin](../../query/mysqlrequest-plugin.md#authentication-and-authorization)
 * [Authentication with the postgresql_request plugin](../../query/postgresql-request-plugin.md#authentication-and-authorization)
-* [Authentication with the cosmosdb_request plugin](../../query/cosmosdb-plugin-plugin.md#authentication-and-authorization)
+* [Authentication with the cosmosdb_request plugin](../../query/cosmosdb-plugin.md#authentication-and-authorization)
