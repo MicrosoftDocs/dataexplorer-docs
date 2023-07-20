@@ -53,15 +53,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 To interact with an external SQL table from Azure Data Explorer, you must specify authentication means as part of the *SqlConnectionString*. The *SqlConnectionString* defines the resource to access and its authentication information.
 
-The following table shows the supported authentication methods for sql external tables:
-
-| Authentication method | SQL Server | PostgreSQL | MySQL | Cosmos DB |
-|--|--|--|--|
-| [Azure AD-integrated (impersonation)](../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-impersonation) | :heavy_check_mark: | :x: | :x: | :heavy_check_mark: |
-| [Managed identity](../api/connection-strings/sql-authentication-methods.md#managed-identity) | :heavy_check_mark: | :x: | :x: | :x: |
-| [Username and Password](../api/connection-strings/sql-authentication-methods.md#username-and-password) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-
-For more information, see [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md).
+Microsoft SQL Server external tables support Azure AD-integrated (impersonation) authentication, managed identity authentication, and username and password authentication. MySQL, PostgreSQL, and Cosmos DB tables support only username and password authentication. For more information, see [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md).
 
 > [!NOTE]
 > If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by username/password or managed identities.
