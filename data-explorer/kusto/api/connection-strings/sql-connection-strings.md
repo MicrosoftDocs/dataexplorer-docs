@@ -17,7 +17,7 @@ The following table shows the supported authentication methods for each type of 
 
 | Authentication method | SQL Server | PostgreSQL | MySQL | Cosmos DB |
 |--|--|--|--|
-| [Azure AD-integrated (impersonation)](#azure-ad-integrated-impersonation) | :heavy_check_mark: | :x: | :x: | :x: |
+| [Azure AD-integrated (impersonation)](#azure-ad-integrated-impersonation) | :heavy_check_mark: | :x: | :x: | :heavy_check_mark: |
 | [Managed identity](#managed-identity) | :heavy_check_mark: | :x: | :x: | :x: |
 | [Username and Password](#username-and-password) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
@@ -65,3 +65,4 @@ For all authentication methods, the principal (or managed identity) must have th
 * [Authentication with the sql_request plugin](../../query/sqlrequestplugin.md#authentication-and-authorization)
 * [Authentication with the mysql_request plugin](../../query/mysqlrequest-plugin.md#authentication-and-authorization)
 * [Authentication with the postgresql_request plugin](../../query/postgresql-request-plugin.md#authentication-and-authorization)
+* [Authentication with the cosmosdb_request plugin](../../query/cosmosdb-plugin-plugin.md#authentication-and-authorization)
