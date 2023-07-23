@@ -43,7 +43,7 @@ To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the
 
 |Authentication method|Description|
 |--|--|
-|Azure Resource Manager resource ID (Recommended)|For secure authentication, we recommend specifying the `armResourceId` and optionally the `token` the [options](#supported-options). The `armResourceId` identifies the Cosmos DB database account, and the `token` should be a valid Azure AD bearer token for a principal with access permissions to the Cosmos DB database. If no `token` is provided, the Azure AD token of the requesting principal will be used for authentication.|
+|Azure Resource Manager resource ID (Recommended)|For secure authentication, we recommend specifying the `armResourceId` and optionally the `token` in the [options](#supported-options). The `armResourceId` identifies the Cosmos DB database account, and the `token` should be a valid Azure AD bearer token for a principal with access permissions to the Cosmos DB database. If no `token` is provided, the Azure AD token of the requesting principal will be used for authentication.|
 |Account key|You can add the account key directly to the *ConnectionString* argument. However, this approach is less secure as it involves including the secret in the query text, and is less resilient to future changes in the account key. To enhance security, hide the secret as an [obfuscated string literal](scalar-data-types/string.md#obfuscated-string-literals).|
 
 ## Set callout policy
