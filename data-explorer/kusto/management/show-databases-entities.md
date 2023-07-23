@@ -1,7 +1,7 @@
 ---
 title: .show databases entities command
 description: Learn how to use the `.show databases entities` command to show databases' entities.
-ms.reviewer: orspodek
+ms.reviewer: mispecto
 ms.topic: reference
 ms.date: 07/20/2023
 ---
@@ -45,20 +45,34 @@ Returns a list of entities of all cluster databases visible to the user. Databas
 |CslInputSchema|Entity input schema in CSL schema format, if applicable. For functions, this is the function parameters schema|
 |Content|Entity content, if applicable. For functions, it's a body of the function|
 |CslOutputSchema|Entity output schema in CSL schema format|
+|Properties|Dynamic structure that provides additional details on the entity (currently unused)|
 
 ### Examples
 
 #### Show databases entities
 
 ```kusto
-.show databases entities
+.show databases entities with (showObfuscatedStrings=true)
 | where DatabaseName == "TestDB"
 ```
 
 **Output**
 
-|DatabaseName|EntityType|EntityName|DocString|Folder|CslInputSchema|Content|CslOutputSchema|
-|---|---|---|---|---|---|---|---|
-|TestDB|Table|GeoIP|Table containing Geolocation info per IP network|My tables|||['network']:string, locale_code:string, continent_code:string, continent_name:string, country_iso_code:string,country_name:string|
-|TestDB|MaterializedView|MV1|My first materialized view||||a:long, b:string, c:long|
-|TestDB|Function|MeaningLessFn|My first function|Functions|(T:(s:string,a:long,b:long), k:long)|{T \| extend substring(s, a, b) \| take k}||
+|DatabaseName|EntityType|EntityName|DocString|Folder|CslInputSchema|Content|CslOutputSchema|Properties|
+|---|---|---|---|---|---|---|---|---|
+|TestDB|Table|GeoIP|Table containing Geolocation info per IP network|My tables|||['network']:string, locale_code:string, continent_code:string, continent_name:string, country_iso_code:string,country_name:string|{}|
+|TestDB|MaterializedView|MV1|My first materialized view||||a:long, b:string, c:long|{}|
+|TestDB|Function|MeaningLessFn|My first function|Functions|(T:(s:string,a:long,b:long), k:long)|{T \| extend substring(s, a, b) \| take k}||{}|
+
+#### Resolving functions schema
+
+```kusto
+.show databases entities with (resolveFunctionsSchema=true)
+| where DatabaseName == "TestDB" and EntityType == "Function" and EntityName == "MeaningLessFn"
+```
+
+**Output**
+
+|DatabaseName|EntityType|EntityName|DocString|Folder|CslInputSchema|Content|CslOutputSchema|Properties|
+|---|---|---|---|---|---|---|---|---|
+|TestDB|Function|MeaningLessFn|My first function|Functions|(T:(s:string,a:long,b:long), k:long)|{T \| extend substring(s, a, b) \| take k}|s:string, a:long, b:long, Column1:string|{}|
