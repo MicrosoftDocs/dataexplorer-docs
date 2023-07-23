@@ -241,15 +241,14 @@ In your preferred IDE or text editor, create a project or file named *management
 
     // Create a table named MyStormEvents
     // The brackets contain a list of column Name:Type pairs that defines the table schema
-    String command = ".create table " + table + """
-                      (StartTime:datetime,
-                       EndTime:datetime,
-                       State:string,
-                       DamageProperty:int,
-                       DamageCrops:int,
-                       Source:string,
-                       StormSummary:dynamic)
-                     """;
+    String command = ".create table " + table + " " +
+                     "(StartTime:datetime," +
+                     " EndTime:datetime," +
+                     " State:string," +
+                     " DamageProperty:int," +
+                     " DamageCrops:int," +
+                     " Source:string," +
+                     " StormSummary:dynamic)";
     ```
 
     ---
@@ -462,15 +461,14 @@ public class ManagementCommands {
 
         // Create a table named MyStormEvents
         // The brackets contain a list of column Name:Type pairs that defines the table schema
-        String command = ".create table " + table + """
-                          (StartTime:datetime,
-                           EndTime:datetime,
-                           State:string,
-                           DamageProperty:int,
-                           DamageCrops:int,
-                           Source:string,
-                           StormSummary:dynamic)
-                        """;
+        String command = ".create table " + table + " " +
+                         "(StartTime:datetime," +
+                         " EndTime:datetime," +
+                         " State:string," +
+                         " DamageProperty:int," +
+                         " DamageCrops:int," +
+                         " Source:string," +
+                         " StormSummary:dynamic)";
 
         KustoOperationResult response = kustoClient.execute(database, command);
         printResultsAsValueList(command, response.getPrimaryResults());
@@ -609,7 +607,7 @@ When you add the code to your app and run it, you should see a result similar to
 Command: .alter table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:30" }'
 Result:
    PolicyName - IngestionBatchingPolicy
-   EntityName - [Playground].[MyStormEvents]
+   EntityName - [YourDatabase].[MyStormEvents]
    Policy - {
   "MaximumBatchingTimeSpan": "00:00:30",
   "MaximumNumberOfItems": 500,
@@ -676,10 +674,10 @@ When you add the code to your app and run it, you should see a result similar to
 ```bash
 --------------------
 
-Command: .show database Playground policy retention | project-away ChildEntities, EntityType
+Command: .show database YourDatabase policy retention | project-away ChildEntities, EntityType
 Result:
    PolicyName - RetentionPolicy
-   EntityName - [Playground]
+   EntityName - [YourDatabase]
    Policy - {
   "SoftDeletePeriod": "365.00:00:00",
   "Recoverability": "Enabled"

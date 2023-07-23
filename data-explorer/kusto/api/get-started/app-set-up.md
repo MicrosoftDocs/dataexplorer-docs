@@ -88,18 +88,18 @@ npm install azure-kusto-ingest
 
 ### [Java](#tab/java)
 
-Add the following dependencies to your pom.xml, replacing the artifact versions with the latest available on Maven Central for [kusto-data](https://search.maven.org/search?q=a:kusto-data) and [kusto-ingest](https://search.maven.org/search?q=a:kusto-ingest).
+Add the following dependencies to your pom.xml, replacing the artifact versions with the latest available on Maven Central for [kusto-data](https://central.sonatype.com/search?q=kusto-data) and [kusto-ingest](https://central.sonatype.com/search?q=kusto-ingest).
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure.kusto</groupId>
   <artifactId>kusto-data</artifactId>
-  <version>4.0.4</version>
+  <version>5.0.0</version>
 </dependency>
 <dependency>
   <groupId>com.microsoft.azure.kusto</groupId>
   <artifactId>kusto-ingest</artifactId>
-  <version>4.0.4</version>
+  <version>5.0.0</version>
 </dependency>
 ```
 
