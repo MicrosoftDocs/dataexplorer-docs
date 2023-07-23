@@ -58,7 +58,37 @@ The column contains a JSON object with details about the storm event, including 
 }
 ```
 
-Let's use JSONPath syntax to access the data in this column.
+Let's create a new table that will contain this data in separate columns.
+
+```kusto
+// Create the table.
+.create table StormSummaryTable (TotalDamages: int, StartTime: datetime, EndTime: datetime, Description: string, Location: string)
+
+// Create the ingestion mapping.
+.create table StormSummaryTable ingestion json mapping 'StormSummaryMapping'
+    '[{"column":"TotalDamages","path":"$.TotalDamages"}, 
+      {"column":"StartTime","path":"$.StartTime"},
+      {"column":"EndTime","path":"$.EndTime"},
+      {"column":"Description","path":"$.Details.Description"},
+      {"column":"Location","path":"$.Details.Location"}]'
+
+// Ingest the data.
+.set StormSummaryTable <|
+   StormEvents
+   | project StormSummary
+```
+
+The ingestion mapping could also be created with square bracket syntax, though this is only required if there are spaces or special characters in the key name. For example:
+
+```kusto
+// Create the ingestion mapping with square bracket syntax.
+.create table StormSummaryTable ingestion json mapping 'StormSummaryMapping'
+    '[{"column":"TotalDamages","path":"$['TotalDamages']"}, 
+      {"column":"StartTime","path":"$['StartTime']"},
+      {"column":"EndTime","path":"$['EndTime']"},
+      {"column":"Description","path":"$['Details']['Description']"},
+      {"column":"Location","path":"$['Details']['Location']"}]'
+```
 
 ## See also
 
