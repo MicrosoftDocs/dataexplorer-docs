@@ -8,7 +8,7 @@ ms.date: 07/23/2023
 
 # Add a cluster connection in the Azure Data Explorer web UI
 
-In the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), each cluster connection is associated with a specific user account and Azure Active Directory (Azure AD) directory. The provided credentials are used to authenticate to the cluster and run queries.
+In the Azure Data Explorer web UI, each cluster connection is associated with a specific user account and Azure Active Directory (Azure AD) directory. The provided credentials are used to authenticate to the cluster and run queries.
 
 This functionality is especially valuable for users who manage multiple clusters across different user accounts or Azure AD directories. It removes the need to repetitively sign in and sign out, or switch directories, and allows you to move between clusters associated with different credentials within a unified interface.
 
