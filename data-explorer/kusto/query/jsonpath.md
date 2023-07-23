@@ -28,3 +28,8 @@ The following subset of the JSONPath notation is supported:
 > [!NOTE]
 >
 > Wildcards, recursion, union, slices, and current object are not supported.
+
+
+## See also
+
+* [Use the Azure Data Explorer web UI to get the path to a dynamic field](../../web-results-grid.md#get-the-path-to-a-dynamic-field)
