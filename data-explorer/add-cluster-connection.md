@@ -10,7 +10,7 @@ ms.date: 07/23/2023
 
 In the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), each cluster connection is associated with a specific user account and Azure Active Directory (Azure AD) directory. The provided credentials are used to authenticate to the cluster and run queries.
 
-This functionality is especially valuable for users who manage multiple clusters across different user accounts or Azure AD directories. It removes the need for repetitive sign-in and sign-out or directory switches, and allows for you to seamlessly switch between clusters associated with different credentials within a unified and user-friendly interface.
+This functionality is especially valuable for users who manage multiple clusters across different user accounts or Azure AD directories. It removes the need for repetitive signing in and out or switching directories, and allows for you to seamlessly move between clusters associated with different credentials within a unified and user-friendly interface.
 
 ## Prerequisites
 
