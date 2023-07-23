@@ -42,9 +42,9 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
 
 ### [Java](#tab/java)
 
-- JDK 11 or later
+- JDK 8 or later
     - Ensure the `java` executable is in your `PATH`
-    - Verify installation: In a command shell, run `java -version` to check that the version is 11 or later
+    - Verify installation: In a command shell, run `java -version` to check that the version is 8 or later
 - Maven 3.6.3 or later
     - Ensure the `mvn` executable is in your `PATH`
     - Verify installation: In a command shell, run `mvn -version` to check that the version is 3.6.3 or later
@@ -88,7 +88,13 @@ npm install azure-kusto-ingest
 
 ### [Java](#tab/java)
 
-Add the following dependencies to your pom.xml, replacing the artifact versions with the latest available on Maven Central for [kusto-data](https://central.sonatype.com/search?q=kusto-data) and [kusto-ingest](https://central.sonatype.com/search?q=kusto-ingest).
+When creating apps, use the *maven-archetype-quickstart* Maven template for the package, as follows.
+
+```bash
+ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId==my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+```
+
+Then add the following dependencies to your pom.xml, replacing the artifact versions with the latest available on Maven Central for [kusto-data](https://central.sonatype.com/search?q=kusto-data) and [kusto-ingest](https://central.sonatype.com/search?q=kusto-ingest).
 
 ```xml
 <dependency>
@@ -103,7 +109,24 @@ Add the following dependencies to your pom.xml, replacing the artifact versions 
 </dependency>
 ```
 
----
+You also need to add the *maven-compiler-plugin* and *exec-maven-plugin* plugins in your pom.xml. If they don't already exist, add them as follows.
+
+```xml
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-compiler-plugin</artifactId>
+  <version>${maven-compiler-plugin.version}</version>
+  <configuration>
+    <source>${java.version}</source>
+    <target>${java.version}</target>
+  </configuration>
+</plugin>
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.1.0</version>
+</plugin>
+```
 
 ### Learn how to create apps that use client libraries
 
@@ -111,6 +134,7 @@ The following articles walk you through creating apps that use the Kusto client 
 
 - [Create your first app](app-hello-kusto.md)
 - [Create an app to run basic queries](app-basic-query.md)
+- [Create an app to run management commands](app-management-commands.md)
 
 ## Next steps
 

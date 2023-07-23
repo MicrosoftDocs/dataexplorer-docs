@@ -39,24 +39,25 @@ The free cluster is a subset of the full Azure Data Explorer cluster that provid
 | Materialized views | &check; | &check; |
 | Tools (Azure Data Explorer web UI) | &check; | &check; |
 | Dashboards (PowerBI, Azure Data Explorer web UI, Grafana) | &check; | &check; |
+| Streaming ingestion | &check; |&check; |
 | Azure Data Studio notebooks | &check; | &check; |
 | SDKs (all languages) | &check; | &check; |
 | Time series and Machine Learning functions | &check; | &check; |
 | Geospatial functions | &check; | &check; |
 | Soft delete | &check; | &check; |
 | Microsoft Power Automate and Azure Logic Apps connectors | &check; | &check; |
+| Event Hub connector | &check; | &check; |
+| Event Grid connector |  &check; | |
 | External tables | &check; | |
 | Continuous export | &check; | |
 | Workload groups | &check; | |
 | Purge | &check; | |
 | Follower clusters | &check; | |
 | Partitioning policy | &check; | |
-| Streaming ingestion | &check; | |
 | Python and R plugins | &check; | |
 | Enterprise readiness (Customer managed keys, VNet, disk encryption, managed identities) | &check; | |
 | Autoscale | &check; | |
 | Azure Monitor and Insights | &check; | |
-| Event Hubs and Event Grid connectors | &check; | Event Hubs only |
 | Azure Resource Manager (ARM) templates | &check; | |
 
 ## Next steps
