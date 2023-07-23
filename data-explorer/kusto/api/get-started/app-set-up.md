@@ -134,6 +134,7 @@ The following articles walk you through creating apps that use the Kusto client 
 
 - [Create your first app](app-hello-kusto.md)
 - [Create an app to run basic queries](app-basic-query.md)
+- [Create an app to run management commands](app-management-commands.md)
 
 ## Next steps
 
