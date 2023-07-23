@@ -241,15 +241,14 @@ In your preferred IDE or text editor, create a project or file named *management
 
     // Create a table named MyStormEvents
     // The brackets contain a list of column Name:Type pairs that defines the table schema
-    String command = ".create table " + table + """
-                      (StartTime:datetime,
-                       EndTime:datetime,
-                       State:string,
-                       DamageProperty:int,
-                       DamageCrops:int,
-                       Source:string,
-                       StormSummary:dynamic)
-                     """;
+    String command = ".create table " + table + " " +
+                     "(StartTime:datetime," +
+                     " EndTime:datetime," +
+                     " State:string," +
+                     " DamageProperty:int," +
+                     " DamageCrops:int," +
+                     " Source:string," +
+                     " StormSummary:dynamic)";
     ```
 
     ---
@@ -311,12 +310,12 @@ namespace ManagementCommands
 {
   class ManagementCommands {
     static void Main(string[] args) {
-      string clusterUri = "https://adxdocscluster.westeurope.kusto.windows.net";
+      string clusterUri = "https://<your_cluster>.westeurope.kusto.windows.net";
       var kcsb = new KustoConnectionStringBuilder(clusterUri)
           .WithAadUserPromptAuthentication();
 
       using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kcsb)) {
-        string database = "Playground";
+        string database = "<your_database>";
         string table = "MyStormEvents";
 
         // Create a table named MyStormEvents
@@ -356,12 +355,12 @@ namespace ManagementCommands
 from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
 
 def main():
-  cluster_uri = "https://adxdocscluster.westeurope.kusto.windows.net"
+  cluster_uri = "https://<your_cluster>.westeurope.kusto.windows.net"
   kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
 
   with KustoClient(kcsb) as kusto_client:
 
-    database = "Playground"
+    database = "<your_database>"
     table = "MyStormEvents"
 
     # Create a table named MyStormEvents
@@ -401,11 +400,11 @@ const kustoLibraryClient = require("azure-kusto-data").Client;
 const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
 
 async function main() {
-  const clusterUri = "https://adxdocscluster.westeurope.kusto.windows.net";
+  const clusterUri = "https://<your_cluster>.westeurope.kusto.windows.net";
   const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
   const kustoClient = new kustoLibraryClient(kcsb);
 
-  const database = "Playground";
+  const database = "<your_database>";
   const table = "MyStormEvents";
 
   // Create a table named MyStormEvents
@@ -454,23 +453,22 @@ import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 public class ManagementCommands {
   public static void main(String[] args) throws Exception {
     try {
-      String clusterUri = "https://adxdocscluster.westeurope.kusto.windows.net";
+      String clusterUri = "https://<your_cluster>.westeurope.kusto.windows.net";
       ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
       try (Client kustoClient = ClientFactory.createClient(kcsb)) {
-        String database = "Playground";
+        String database = "<your_database>";
         String table = "MyStormEvents";
 
         // Create a table named MyStormEvents
         // The brackets contain a list of column Name:Type pairs that defines the table schema
-        String command = ".create table " + table + """
-                          (StartTime:datetime,
-                           EndTime:datetime,
-                           State:string,
-                           DamageProperty:int,
-                           DamageCrops:int,
-                           Source:string,
-                           StormSummary:dynamic)
-                        """;
+        String command = ".create table " + table + " " +
+                         "(StartTime:datetime," +
+                         " EndTime:datetime," +
+                         " State:string," +
+                         " DamageProperty:int," +
+                         " DamageCrops:int," +
+                         " Source:string," +
+                         " StormSummary:dynamic)";
 
         KustoOperationResult response = kustoClient.execute(database, command);
         printResultsAsValueList(command, response.getPrimaryResults());
@@ -609,7 +607,7 @@ When you add the code to your app and run it, you should see a result similar to
 Command: .alter table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:30" }'
 Result:
    PolicyName - IngestionBatchingPolicy
-   EntityName - [Playground].[MyStormEvents]
+   EntityName - [YourDatabase].[MyStormEvents]
    Policy - {
   "MaximumBatchingTimeSpan": "00:00:30",
   "MaximumNumberOfItems": 500,
@@ -676,10 +674,10 @@ When you add the code to your app and run it, you should see a result similar to
 ```bash
 --------------------
 
-Command: .show database Playground policy retention | project-away ChildEntities, EntityType
+Command: .show database YourDatabase policy retention | project-away ChildEntities, EntityType
 Result:
    PolicyName - RetentionPolicy
-   EntityName - [Playground]
+   EntityName - [YourDatabase]
    Policy - {
   "SoftDeletePeriod": "365.00:00:00",
   "Recoverability": "Enabled"
@@ -688,9 +686,5 @@ Result:
 
 ## Next steps
 
-<!-- Advance to the next article to learn how to create... -->
-<!-- > [!div class="nextstepaction"]
-> [TBD](../../../kql-quick-reference.md) -->
-
 > [!div class="nextstepaction"]
-> [KQL quick reference](../../../kql-quick-reference.md)
+> [Create an app to ingest data using the batching manager](app-batch-ingestion.md)
