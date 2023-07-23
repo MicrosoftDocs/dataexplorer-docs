@@ -3,7 +3,7 @@ title: Add a cluster connection in the Azure Data Explorer web UI
 description: This article describes how to add a cluster connection in the Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
-ms.date: 07/19/2023
+ms.date: 07/23/2023
 ---
 
 # Add a cluster connection in the Azure Data Explorer web UI
@@ -12,7 +12,7 @@ This article describes how to add a connection to an Azure Data Explorer cluster
 
 When you add a cluster connection, you associate a specific user account and Azure Active Directory (Azure AD) directory with the connection. The cluster establishes the connection and runs queries using the provided credentials.
 
-This capability is especially valuable for users who manage multiple clusters across different user accounts or Azure AD directories. It eliminates the need for repetitive signing out and signing back in to access clusters associated with different sets of credentials. Instead of managing multiple logins, you can switch between and view clusters associated with various accounts and directories within a unified pane.
+This capability is especially valuable for users who manage multiple clusters across different user accounts or Azure AD directories. Instead of managing multiple logins or sets of credentials, seamlessly switch between and view clusters associated with various accounts and directories within a unified pane.
 
 ## Prerequisites
 
@@ -35,7 +35,7 @@ To add a connection to your Azure Data Explorer cluster, do the following:
 
 1. If the displayed user is not the intended user, select **Connect as another user** and proceed to add or select the appropriate account.
 
-1. In case your user is linked to multiple Azure AD directories, select **Switch directory** to access a dropdown menu listing all directories associated with the current account. Choose the relevant directory for this specific cluster connection.
+1. Select **Switch directory** to access a dropdown menu listing all directories associated with the current account. Choose the relevant directory for this specific cluster connection.
 
     :::image type="content" source="media/web-ui-add-cluster/switch-directories.png" alt-text="Screenshot of option to switch directory." lightbox="media/web-ui-add-cluster/switch-directories.png":::
 
