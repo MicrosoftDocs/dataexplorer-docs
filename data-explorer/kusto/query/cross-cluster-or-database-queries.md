@@ -46,12 +46,12 @@ cluster("<ClusterName>").database("<DatabaseName>").<TableName>
 ```
 
 > [!NOTE]
-> To execute a query, you must have read permission to the default database and
+> To execute a query, you must have viewer permission to the default database and
 > to every other database referenced in the query.
 > For more information, see [Kusto role-based access control](../access-control/role-based-access-control.md).
 
 > [!TIP]
-> The number of records returns is limited, even if there's no specific use of the `take` operator. To lift this limit, use the `notruncation` client request option. For more information, see [Query limits](../concepts/querylimits.md).
+> The number of records returned from a query is limited by default, even if there's no specific use of the `take` operator. To lift this limit, use the `notruncation` client request option. For more information, see [Query limits](../concepts/querylimits.md).
 
 ### Qualified names and the union operator
 
