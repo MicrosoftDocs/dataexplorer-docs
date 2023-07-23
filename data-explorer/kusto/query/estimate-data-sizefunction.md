@@ -21,7 +21,9 @@ Returns an estimated data size in bytes of the selected columns of the tabular e
 
 ## Returns
 
-The estimated data size in bytes of the record size. Estimation is based on data types and values lengths.
+The estimated data size in bytes of the referenced columns. Estimation is based on data types and actual values.
+For example, the data size for the string `'{"a":"bcd"}'` is smaller than the dynamic value `dynamic({"a":"bcd"})`
+because the latter's internal representation is more complex than that of a string.
 
 ## Example
 
