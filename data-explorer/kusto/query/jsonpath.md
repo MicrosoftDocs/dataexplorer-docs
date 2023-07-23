@@ -3,7 +3,7 @@ title:  JSONPath syntax
 description: Learn how to use JSONPath expressions to specify data mappings and KQL functions that process dynamic objects.
 ms.reviewer: igborodi
 ms.topic: reference
-ms.date: 12/22/2022
+ms.date: 07/23/2023
 ---
 
 # JSONPath expressions
@@ -29,6 +29,36 @@ The following subset of the JSONPath notation is supported:
 >
 > Wildcards, recursion, union, slices, and current object are not supported.
 
+## Example
+
+In the `StormEvents` table of the `Samples` database, there is a column named `StormSummary`. The following query retrieves the contents of the `StormSummary` column for a specific event with an `EventId` of "11920".
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHM9UxRsbRWUDA0tjQyUgFIFRflZqcklCsEgDcGlubmJRZUA9EM6WT0AAAA=" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where EventId == "11920"
+| project StormSummary
+```
+
+**Output**
+
+The column contains a JSON object with details about the storm event, including `TotalDamages`, `StartTime`, `EndTime`, and `Details` with additional nested information such as the `Description` and `Location`.
+
+```json
+{
+    "TotalDamages": 10000,
+    "StartTime": "2007-01-01T00:00:00.0000000Z",
+    "EndTime": "2007-01-28T21:00:00.0000000Z",
+    "Details": {
+        "Description": "The Wabash River in Vermillion County remained above flood stage through most of January. Crests were as high as 12 feet above flood stage.",
+        "Location": "INDIANA"
+    }
+}
+```
+
+Let's use JSONPath syntax to access the data in this column.
 
 ## See also
 
