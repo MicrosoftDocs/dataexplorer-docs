@@ -13,6 +13,8 @@ The function `series_downsample_fl()` is a [user-defined function (UDF)](../quer
 
 `T | invoke series_downsample_fl(`*t_col*`,` *y_col*`,` *ds_t_col*`,` *ds_y_col*`,` *sampling_factor*`)`
 
+[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

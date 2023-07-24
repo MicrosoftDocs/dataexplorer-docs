@@ -21,6 +21,8 @@ The function `mann_whitney_u_test_fl()` is a [UDF (user-defined function)](../qu
 
 `T | mann_whitney_u_test_fl(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value* [`,` *use_continuity* ]`)`
 
+[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
