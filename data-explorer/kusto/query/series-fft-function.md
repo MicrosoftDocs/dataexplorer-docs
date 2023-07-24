@@ -15,6 +15,8 @@ The series_fft() function takes a series of complex numbers in the time/spatial 
 
 `series_fft(`*x_real* [`,` *x_imaginary*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
