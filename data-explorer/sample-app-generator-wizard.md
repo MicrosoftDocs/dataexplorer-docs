@@ -65,6 +65,8 @@ In the **Schema** tab, the service automatically generates schema and ingestion 
 1. Choose the **Data format** from the [formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md). Different formats have different specifications.
 1. In the **Partial data preview** window, adjust the schema as needed. To do this, select the arrow at the top of a column to open a menu with options for changing the data type, creating a new column, deleting a column, and more. If your data is in Parquet, JSON, or Avro format, you can apply [mapping transformations](#mapping-transformations).
 
+    :::image type="content" source="media/sample-app-generator-wizard/schema-tab.png" alt-text="Screenshot of how to open the schema adjustment options." lightbox="media/sample-app-generator-wizard/schema-tab.png":::
+
 >[!TIP]
 > To view, edit, and copy the commands generated from your inputs, open the [command viewer](/azure/data-explorer/ingest-from-container#command-editor) above the **Partial data preview** window.
 
