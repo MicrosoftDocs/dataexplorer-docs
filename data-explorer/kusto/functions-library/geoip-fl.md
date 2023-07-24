@@ -25,7 +25,7 @@ zone_pivot_groups: kql-flavors-all
 
 `T | invoke geoip_fl(`*ip_col*`,` *country_col*`,` *state_col*`,` *city_col*`,` *longitude_col*`,` *latitude_col*`)`
 
-[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

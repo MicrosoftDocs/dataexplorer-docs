@@ -21,7 +21,7 @@ The function `log_reduce_fl()` finds common patterns in semi structured textual 
 
 *T* `|` `invoke` `log_reduce_fl(`*reduce_col* [`,` *use_logram* [`,` *use_drain* [`,` *custom_regexes* [`,` *custom_regexes_policy* [`,` *delimiters* [`,` *similarity_th* [`,` *tree_depth* [`,` *trigram_th* [`,` *bigram_th* ]]]]]]]]]`)`
 
-[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

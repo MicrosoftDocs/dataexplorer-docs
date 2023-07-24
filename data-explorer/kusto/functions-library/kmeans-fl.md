@@ -21,7 +21,7 @@ The function `kmeans_fl()` is a [UDF (user-defined function)](../query/functions
 
 `T | invoke kmeans_fl(`*k*`,` *features_cols*`,` *cluster_col*`)`
 
-[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -21,7 +21,7 @@ The function `ks_test_fl()` is a [UDF (user-defined function)](../query/function
 
 `T | invoke ks_test_fl(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value*`)`
 
-[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
