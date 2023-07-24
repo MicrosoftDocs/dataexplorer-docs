@@ -15,6 +15,8 @@ Calculates the [variance](variance-aggfunction.md) of *expr* in records for whic
 
 `varianceif(`*expr*`,` *predicate*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
