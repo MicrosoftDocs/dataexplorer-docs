@@ -18,7 +18,10 @@ The function `log_reduce_full_fl()` finds common patterns in semi structured tex
 * The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin) for the inline Python used in the function.
 
 ## Syntax
+
 *T* `|` `invoke` `log_reduce_full_fl(`*reduce_col* [`,` *pattern_col* [`,` *parameters_col* [`,` *use_logram* [`,` *use_drain* [`,` *custom_regexes* [`,` *custom_regexes_policy* [`,` *delimiters* [`,` *similarity_th* [`,` *tree_depth* [`,` *trigram_th* [`,` *bigram_th* ]]]]]]]]]]]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
