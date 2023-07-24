@@ -83,9 +83,9 @@ For more information, see [Mapping transformations](kusto/management/mappings.md
 
 ### Generate
 
-Once you've completed schema mapping and column manipulations, the sample app generator wizard will start the code generation process.
+Once you've completed schema mapping and column manipulations, the sample app generator wizard will start the code generation process. After code generation, the sample app project will be available for download as a ZIP file.
 
-After code generation, the sample app project will be available for download as a ZIP file. Detailed instructions for running the project with the selected SDK will be shown upon successful generation as well as inside the sample project file. In addition, the wizard gives you options to use **Quick queries** for initial exploration of your data.
+Detailed instructions for running the project with the selected SDK will be shown upon successful generation as well as inside the sample project file. In addition, the wizard gives you options to use **Quick queries** for initial exploration of your data.
 
 >[!NOTE]
 > You may need to run the downloaded app for the Quick commands to work.
