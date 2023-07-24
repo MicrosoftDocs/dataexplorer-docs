@@ -13,6 +13,8 @@ Enumerates all the path expressions that identify leaves in a dynamic object.
 
 `treepath(`*object*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
