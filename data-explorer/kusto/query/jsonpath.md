@@ -56,17 +56,17 @@ Given the following JSON document:
 You can represent each of the fields with JSONPath notation as follows:
 
 ```kusto
-'$.Source'                     // Source field
-'$.Timestamp'                  // Timestamp field
-'$['Log Level']'               // Log Level field
-'$.Message'                    // Message field
-'$.Details.Service'            // Service field
-'$.Details.Endpoint'           // Endpoint field
-'$.Details['Response Code']'   // Response Code field
-'$.Details['Response Time']'   // Response Time field
-'$.Details.User['User ID']'    // User ID field
-'$.Details.User.Username'      // Username field
-'$.Details.User['IP Address']' // IP Address field
+"$.Source"                     // Source field
+"$.Timestamp"                  // Timestamp field
+"$['Log Level']"               // Log Level field
+"$.Message"                    // Message field
+"$.Details.Service"            // Service field
+"$.Details.Endpoint"           // Endpoint field
+"$.Details['Response Code']"   // Response Code field
+"$.Details['Response Time']"   // Response Time field
+"$.Details.User['User ID']"    // User ID field
+"$.Details.User.Username"      // Username field
+"$.Details.User['IP Address']" // IP Address field
 ```
 
 ## See also
