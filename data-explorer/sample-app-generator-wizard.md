@@ -32,7 +32,7 @@ To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.
 
     :::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-welcome.png" alt-text="Screenshot showing Sample app generator card from welcome to Azure Data Explorer.":::
 
-## Use the sample app generator wizard
+## Generate a sample app
 
 This section describes the wizard in general. The options you select depend on what data format you are ingesting, what kind of data source you are ingesting from, and whether you are ingesting into a new or existing table.
 
