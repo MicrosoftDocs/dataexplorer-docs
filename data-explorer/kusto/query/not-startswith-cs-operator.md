@@ -19,6 +19,8 @@ Filters a record set for data that doesn't start with a case-sensitive search st
 
 *T* `|` `where` *column* `!startswith_cs` `(`*expression*`)`  
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
