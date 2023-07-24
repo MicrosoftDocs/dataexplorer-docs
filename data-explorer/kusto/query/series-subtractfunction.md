@@ -13,6 +13,8 @@ Calculates the element-wise subtraction of two numeric series inputs.
 
 `series_subtract(`*series1*`,` *series2*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
