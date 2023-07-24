@@ -20,12 +20,10 @@ items:
             href: proof-of-concept-playbook.md
       - name: Set up
         items:
-          - name: Create a cluster and database in Azure portal
+          - name: Create a cluster and database in the Azure portal
             href: create-cluster-and-database.md
           - name: Create a cluster and database using SDKs
             href: create-cluster-database.md
-          - name: Create a free cluster
-            href: start-for-free-web-ui.md
           - name: Automated provisioning
             href: automated-deploy-overview.md
       - name: Migrate
@@ -35,6 +33,143 @@ items:
           - name: Migrate from TSI
             href: /azure/time-series-insights/migration-to-adx
             displayName: Time Series Insights
+      - name: Get data
+        items:
+          - name: Data ingestion overview
+            displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
+            href: ingest-data-overview.md
+          - name: Data connectors overview
+            displayName: connect, integrate, integration, export, orchestrate
+            href: connector-overview.md
+          - name: Get data in the web UI
+            items:
+              - name: Ingestion wizard
+                href: ingest-data-wizard.md
+              - name: Ingest from local file
+                displayName: ingest data, ingestion wizard, one click, existing table
+                href: ingest-from-local-file.md
+              - name: Ingest from container
+                displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
+                href: /azure/data-explorer/ingest-from-container
+          - name: Streaming ingestion
+            displayName: ingest data, ingestion
+            href: ingest-data-streaming.md
+          - name: LightIngest
+            items:
+              - name: Using LightIngest
+                displayName: ingest data, ingestion
+                href: lightingest.md
+              - name: Use wizard for one-time ingestion of historical data with LightIngest
+                href: generate-lightingest-command.md
+          - name: Using SDKs
+            items:
+              - name: .NET SDK
+                displayName: ingest data, ingestion
+                href: net-sdk-ingest-data.md
+              - name: Python
+                displayName: ingest data, ingestion
+                href: python-ingest-data.md
+              - name: Node SDK
+                displayName: ingest data, ingestion
+                href: node-ingest-data.md
+              - name: Go SDK
+                displayName: ingest data, ingestion
+                href: go-ingest-data.md
+              - name: Java SDK
+                displayName: ingest data, ingestion
+                href: java-ingest-data.md
+          - name: Event Hubs
+            items:
+              - name: Event Hubs data connection
+                displayName: ingest, ingestion
+                href: ingest-data-event-hub-overview.md
+              - name: Create an Event Hubs data connection
+                href: create-event-hubs-connection.md
+              - name: Create an Event Hubs data connection with SDKs
+                href: create-event-hubs-connection-sdk.md
+              - name: Manage Event Hubs in your free cluster
+                displayName: Event hub, ingest, data connection
+                href: start-for-free-event-hubs.md
+          - name: Event Grid
+            items:
+              - name: Event Grid data connection
+                displayName: ingest
+                href: ingest-data-event-grid-overview.md
+              - name: Create an Event Grid data connection
+                displayName: rename blob, upload to azure storage, use event grid, remove event grid
+                href: create-event-grid-connection.md
+              - name: Create an Event Grid data connection with SDKs
+                href: create-event-grid-connection-sdk.md
+              - name: Manually create resources in Azure portal
+                displayName: Manually create resources for Event Grid ingestion, Ingest
+                href: ingest-data-event-grid-manual.md
+          - name: IoT Hub
+            items:
+              - name: IoT Hub data connection
+                displayName: ingest data, ingestion
+                href: ingest-data-iot-hub-overview.md
+              - name: Create an IoT Hub data connection
+                displayName: ingest ingestion
+                href: create-iot-hub-connection.md
+              - name: Create an IoT Hub data connection with SDKs
+                href: create-iot-hub-connection-sdk.md
+          - name: Azure Data Factory
+            items:
+              - name: Integration with Data Factory
+                displayName: export, ingest, copy
+                href: data-factory-integration.md
+              - name: Copy data using Azure Data Factory
+                href: data-factory-load-data.md
+              - name: Bulk copy data using Azure Data Factory template
+                href: data-factory-template.md
+              - name: Run management commands using Azure Data Factory
+                href: data-factory-command-activity.md
+          - name: Apache Kafka
+            displayName: ingest data, ingestion, connector
+            href: ingest-data-kafka.md
+          - name: Apache Log4J 2
+            displayName: ingest data, ingestion, connector
+            href: apache-log4j2-connector.md
+          - name: NLog
+            displayName: ingest data, ingestion, connector
+            href: nlog-sink.md
+          - name: Serilog
+            displayName: ingest data, ingestion, connector
+            href: serilog-sink.md
+          - name: Apache Spark
+            displayName: connector, export, ingest
+            href: spark-connector.md
+          - name: Azure Cosmos DB
+            items:
+              - name: Azure Cosmos DB data connection
+                displayName: ingest, connector
+                href: ingest-data-cosmos-db-connection.md
+              - name: Get latest Azure Cosmos DB documents
+                displayName: ingest data, ingestion
+                href: ingest-data-cosmos-db-queries.md
+          - name: Azure Stream Analytics
+            href: stream-analytics-connector.md
+            displayName: ingest data, ingestion, connector
+          - name: Logstash
+            displayName: ingest data, ingestion, connector
+            href: ingest-data-logstash.md
+          - name: OpenTelemetry
+            href: open-telemetry-connector.md
+            displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion, connector
+          - name: Telegraf
+            displayName: ingest data, ingestion, connector
+            href: ingest-data-telegraf.md
+          - name: Cross-tenant data connection
+            displayName: event hub, event grid
+            href: ingest-data-cross-tenant.md
+          - name: JSON formatted data
+            displayName: ingest data, ingestion
+            href: ingest-json-formats.md
+          - name: Data ingestion properties
+            href: ingestion-properties.md
+          - name: Formats for data ingestion
+            displayName: supported data formats
+            href: ingestion-supported-formats.md
       - name: Training modules
         items:
           - name: "Introduction to Azure Data Explorer"
@@ -70,146 +205,6 @@ items:
             href: kusto/query/tutorials/join-data-from-multiple-tables.md
           - name: 4 - Create geospatial visualizations
             href: kusto/query/tutorials/create-geospatial-visualizations.md
-  - name: Set up
-    items:
-    - name: Placeholder
-  - name: Get data
-    items:
-      - name: Data ingestion overview
-        displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
-        href: ingest-data-overview.md
-      - name: Data connectors overview
-        displayName: connect, integrate, integration, export, orchestrate
-        href: connector-overview.md
-      - name: Get data in the web UI
-        items:
-          - name: Ingestion wizard
-            href: ingest-data-wizard.md
-          - name: Ingest from local file
-            displayName: ingest data, ingestion wizard, one click, existing table
-            href: ingest-from-local-file.md
-          - name: Ingest from container
-            displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
-            href: /azure/data-explorer/ingest-from-container
-      - name: Streaming ingestion
-        displayName: ingest data, ingestion
-        href: ingest-data-streaming.md
-      - name: LightIngest
-        items:
-          - name: Using LightIngest
-            displayName: ingest data, ingestion
-            href: lightingest.md
-          - name: Use wizard for one-time ingestion of historical data with LightIngest
-            href: generate-lightingest-command.md
-      - name: Using SDKs
-        items:
-          - name: .NET SDK
-            displayName: ingest data, ingestion
-            href: net-sdk-ingest-data.md
-          - name: Python
-            displayName: ingest data, ingestion
-            href: python-ingest-data.md
-          - name: Node SDK
-            displayName: ingest data, ingestion
-            href: node-ingest-data.md
-          - name: Go SDK
-            displayName: ingest data, ingestion
-            href: go-ingest-data.md
-          - name: Java SDK
-            displayName: ingest data, ingestion
-            href: java-ingest-data.md
-      - name: Event Hubs
-        items:
-          - name: Event Hubs data connection
-            displayName: ingest, ingestion
-            href: ingest-data-event-hub-overview.md
-          - name: Create an Event Hubs data connection
-            href: create-event-hubs-connection.md
-          - name: Create an Event Hubs data connection with SDKs
-            href: create-event-hubs-connection-sdk.md
-          - name: Manage Event Hubs in your free cluster
-            displayName: Event hub, ingest, data connection
-            href: start-for-free-event-hubs.md
-      - name: Event Grid
-        items:
-          - name: Event Grid data connection
-            displayName: ingest
-            href: ingest-data-event-grid-overview.md
-          - name: Create an Event Grid data connection
-            displayName: rename blob, upload to azure storage, use event grid, remove event grid
-            href: create-event-grid-connection.md
-          - name: Create an Event Grid data connection with SDKs
-            href: create-event-grid-connection-sdk.md
-          - name: Manually create resources in Azure portal
-            displayName: Manually create resources for Event Grid ingestion, Ingest
-            href: ingest-data-event-grid-manual.md
-      - name: IoT Hub
-        items:
-          - name: IoT Hub data connection
-            displayName: ingest data, ingestion
-            href: ingest-data-iot-hub-overview.md
-          - name: Create an IoT Hub data connection
-            displayName: ingest ingestion
-            href: create-iot-hub-connection.md
-          - name: Create an IoT Hub data connection with SDKs
-            href: create-iot-hub-connection-sdk.md
-      - name: Azure Data Factory
-        items:
-          - name: Integration with Data Factory
-            displayName: export, ingest, copy
-            href: data-factory-integration.md
-          - name: Copy data using Azure Data Factory
-            href: data-factory-load-data.md
-          - name: Bulk copy data using Azure Data Factory template
-            href: data-factory-template.md
-          - name: Run management commands using Azure Data Factory
-            href: data-factory-command-activity.md
-      - name: Apache Kafka
-        displayName: ingest data, ingestion, connector
-        href: ingest-data-kafka.md
-      - name: Apache Log4J 2
-        displayName: ingest data, ingestion, connector
-        href: apache-log4j2-connector.md
-      - name: NLog
-        displayName: ingest data, ingestion, connector
-        href: nlog-sink.md
-      - name: Serilog
-        displayName: ingest data, ingestion, connector
-        href: serilog-sink.md
-      - name: Apache Spark
-        displayName: connector, export, ingest
-        href: spark-connector.md
-      - name: Azure Cosmos DB
-        items:
-          - name: Azure Cosmos DB data connection
-            displayName: ingest, connector
-            href: ingest-data-cosmos-db-connection.md
-          - name: Get latest Azure Cosmos DB documents
-            displayName: ingest data, ingestion
-            href: ingest-data-cosmos-db-queries.md
-      - name: Azure Stream Analytics
-        href: stream-analytics-connector.md
-        displayName: ingest data, ingestion, connector
-      - name: Logstash
-        displayName: ingest data, ingestion, connector
-        href: ingest-data-logstash.md
-      - name: OpenTelemetry
-        href: open-telemetry-connector.md
-        displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion, connector
-      - name: Telegraf
-        displayName: ingest data, ingestion, connector
-        href: ingest-data-telegraf.md
-      - name: Cross-tenant data connection
-        displayName: event hub, event grid
-        href: ingest-data-cross-tenant.md
-      - name: JSON formatted data
-        displayName: ingest data, ingestion
-        href: ingest-json-formats.md
-      - name: Data ingestion properties
-        href: ingestion-properties.md
-      - name: Formats for data ingestion
-        displayName: supported data formats
-        href: ingestion-supported-formats.md
   - name: Query data
     items:
       - name: Query data in the web UI
