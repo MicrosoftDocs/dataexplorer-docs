@@ -13,6 +13,8 @@ Converts IPv6/IPv4 string and netmask to a canonical IPv6 string representation.
 
 `parse_ipv6_mask(`*ip*`,` *prefix*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

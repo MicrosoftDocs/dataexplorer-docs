@@ -15,6 +15,8 @@ Packs all input values into a [dynamic](scalar-data-types/dynamic.md) array.
 
 `pack_array(*)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

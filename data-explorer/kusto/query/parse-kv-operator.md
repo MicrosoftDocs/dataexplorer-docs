@@ -30,6 +30,8 @@ The following extraction modes are supported:
 
 *T* `|` `parse-kv` *Expression* `as` `(` *KeysList* `)` `with` `(` `regex` `=` *RegexPattern*`)` `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

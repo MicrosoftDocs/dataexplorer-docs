@@ -13,6 +13,8 @@ Converts IPv4 string to a signed 64-bit wide long number representation in big-e
 
 `parse_ipv4(`*ip*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -13,6 +13,8 @@ Converts IPv6 or IPv4 string to a canonical IPv6 string representation.
 
 `parse_ipv6(`*ip*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
