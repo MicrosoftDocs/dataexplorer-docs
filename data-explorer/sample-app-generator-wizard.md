@@ -103,7 +103,7 @@ Once you've completed schema mapping and column manipulations, the sample app ge
 Detailed instructions for running the project with the selected SDK will be shown upon successful generation as well as inside the sample project file. In addition, the wizard gives you options to use **Quick queries** for initial exploration of your data.
 
 >[!NOTE]
-> You may need to run the downloaded app for the Quick commands to work.
+> You may need to run the downloaded app for the **Quick queries** to work.
 
 ## Next steps
 
