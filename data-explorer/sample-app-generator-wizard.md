@@ -94,4 +94,5 @@ Detailed instructions for running the project with the selected SDK will be show
 
 ## Next steps
 
-* [Azure Data Explorer API Overview](kusto/api/index.md)
+* [Set up your development environment to use Kusto client libraries](kusto/api/get-started/app-set-up.md)
+* [Hello Kusto: Create your first Kusto client app](kusto/api/get-started/app-hello-kusto.md)
