@@ -16,15 +16,17 @@ Evaluates its sole argument and returns a `bool` value indicating if the argumen
 
 `isnull(`*Expr*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
+|--|--|--|--|
 |*value*|scalar|&check;| The value to check if not null.|
 
 ## Returns
 
-`true` if *value* is not null and `false` otherwise.
+`true` if *value* isn't null and `false` otherwise.
 
 |x                |`isnull(x)`|
 |-----------------|-----------|

@@ -13,6 +13,8 @@ Calculates the element-wise cosine function of the numeric series input.
 
 `series_cos(`*series*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

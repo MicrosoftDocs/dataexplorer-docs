@@ -13,6 +13,8 @@ Evaluates a string expression and parses its value into one or more calculated c
 
 *T* `| parse` [ `kind=`*kind* [ `flags=`*regexFlags* ]] *expression* `with` [ `*` ] *stringConstant* *columnName* [`:` *columnType*] [ `*` ] `,` ...
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
