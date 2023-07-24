@@ -28,7 +28,7 @@ Creates a `dynamic` array of *expr* values in the group for which *predicate* ev
 ## Returns
 
 Returns a `dynamic` array of *expr* vlaues in the group for which *predicate* evaluates to `true`.
-If the input to the `summarize` operator is not sorted, the order of elements in the resulting array is undefined.
+If the input to the `summarize` operator isn't sorted, the order of elements in the resulting array is undefined.
 If the input to the `summarize` operator is sorted, the order of elements in the resulting array tracks that of the input.
 
 ## Example
