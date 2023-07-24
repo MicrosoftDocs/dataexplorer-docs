@@ -9,7 +9,7 @@ ms.date: 01/26/2023
 
 Linearly interpolates missing values in a series.
 
-Takes an expression containing dynamic numerical array as input, does linear interpolation for all instances of missing_value_placeholder, and returns the resulting array. If the beginning and end of the array contain missing_value_placeholder, then it will be replaced with the nearest value other than missing_value_placeholder. This feature can be turned off. If the whole array consists of the missing_value_placeholder, the array will be filled with constant_value, or 0 if not specified.  
+Takes an expression containing dynamic numerical array as input, does linear interpolation for all instances of missing_value_placeholder, and returns the resulting array. If the beginning and end of the array contain missing_value_placeholder, then it's replaced with the nearest value other than missing_value_placeholder. This feature can be turned off. If the whole array consists of the missing_value_placeholder, the array is filled with constant_value, or 0 if not specified.  
 
 ## Syntax
 
@@ -24,11 +24,11 @@ Takes an expression containing dynamic numerical array as input, does linear int
 | *series* | dynamic | &check; | An array of numeric values.|
 | *missing_value_placeholder* | scalar | | Specifies a placeholder for missing values. The default value is `double(`*null*`)`. The value can be of any type that will be converted to actual element types. `double`(*null*), `long`(*null*) and `int`(*null*) have the same meaning.|
 | *fill_edges* | bool | | Indicates whether *missing_value_placeholder* at the start and end of the array should be replaced with nearest value. `true` by default. If set to `false`, then *missing_value_placeholder* at the start and end of the array will be preserved.|
-| *constant_value* | scalar | | Relevant only for arrays that entirely consist of *null* values. This parameter specifies a constant value with which to fill the series. Default value is 0. Setting this parameter it to `double(`*null*`)` will preserve the *null* values.|
+| *constant_value* | scalar | | Relevant only for arrays that entirely consist of *null* values. This parameter specifies a constant value with which to fill the series. Default value is 0. Setting this parameter it to `double(`*null*`)` preserves the *null* values.|
 
 ## Returns
 
-A series linear interpolation of *series* using the specified parameters. If *series* contains only `int` or `long` elements, then the linear interpolation will return rounded interpolated values rather than exact ones.
+A series linear interpolation of *series* using the specified parameters. If *series* contains only `int` or `long` elements, then the linear interpolation returns rounded interpolated values rather than exact ones.
 
 > [!NOTE]
 >
