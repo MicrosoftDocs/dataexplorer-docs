@@ -16,6 +16,8 @@ Converts the input value to a long (signed 64-bit) number representation.
 
 `tolong(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

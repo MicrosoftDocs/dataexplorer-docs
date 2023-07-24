@@ -16,6 +16,8 @@ Converts the input to a [datetime](./scalar-data-types/datetime.md) scalar value
 
 `todatetime(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

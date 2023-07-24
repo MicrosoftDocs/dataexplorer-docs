@@ -13,6 +13,8 @@ Returns the sine function value of the specified angle. The angle is specified i
 
 `sin(`*number*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

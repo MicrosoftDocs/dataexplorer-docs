@@ -18,7 +18,9 @@ The function `series_dot_product_fl()` is a [user-defined function (UDF)](../que
 ## Syntax
 
 `series_dot_product_fl(`*vec1*`,` *vec2*`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

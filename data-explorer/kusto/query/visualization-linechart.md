@@ -21,6 +21,8 @@ The line chart visual is the most basic type of chart. The first column of the q
 
 *T* `|` `render` `linechart` [`with` `(` *propertyName* `=` *propertyValue* [`,` ...] `)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

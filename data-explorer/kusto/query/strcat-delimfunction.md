@@ -13,6 +13,8 @@ Concatenates between 2 and 64 arguments, using a specified delimiter as the firs
 
 `strcat_delim(`*delimiter*, *argument1*, *argument2*[ , *argumentN*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

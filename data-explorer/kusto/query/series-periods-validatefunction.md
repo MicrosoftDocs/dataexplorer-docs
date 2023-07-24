@@ -15,6 +15,8 @@ Often a metric measuring the traffic of an application is characterized by a wee
 
 `series_periods_validate(`*series*`,` *period1* [ `,` *period2* `,` . . . ] `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

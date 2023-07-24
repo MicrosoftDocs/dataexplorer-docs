@@ -22,6 +22,8 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 
 *T* `|` `render` `pivotchart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -21,6 +21,8 @@ The function `predict_onnx_fl()` is a [user-defined function (UDF)](../query/fun
 
 `T | invoke predict_onnx_fl(`*models_tbl*`,` *model_name*`,` *features_cols*`,` *pred_col*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
