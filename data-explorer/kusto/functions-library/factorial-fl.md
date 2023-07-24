@@ -15,6 +15,8 @@ The function `factorial_fl()` is a [UDF (user-defined function)](../query/functi
 
 `factorial_fl(`*n*`)`
   
+[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

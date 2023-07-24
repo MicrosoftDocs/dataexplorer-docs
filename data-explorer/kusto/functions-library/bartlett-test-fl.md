@@ -21,6 +21,8 @@ The `bartlett_test_fl()` function is a user-defined [tabular function](../query/
 
 `T | invoke bartlett_test_fl()(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value*`)`
 
+[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
