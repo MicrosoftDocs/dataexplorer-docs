@@ -20,6 +20,8 @@ The card visual only shows one element. If there are multiple columns and rows i
 
 *T* `|` `render` `card` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
