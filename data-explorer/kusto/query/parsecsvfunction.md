@@ -69,7 +69,7 @@ print result=parse_csv('aa,"b,b,b",cc,"Escaping quotes: ""Title""","line1\nline2
 
 ### CSV with multiple records
 
-Only the first record is taken since this function does not support multiple records. 
+Only the first record is taken since this function doesn't support multiple records. 
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKYnPBRKZ8UWpyflFKbYFiUXFqfHJxWUa6hARQ51EnSSd5Jg8CNdIp0KnUqdKXRMAyO6RzEMAAAA=" target="_blank">Run the query</a>
