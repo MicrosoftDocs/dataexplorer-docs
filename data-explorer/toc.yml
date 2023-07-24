@@ -235,7 +235,7 @@ items:
           - name: Formats for data ingestion
             displayName: supported data formats
             href: ingestion-supported-formats.md
-      - name: Training modules
+      - name: Train
         items:
           - name: "Introduction to Azure Data Explorer"
             href: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
