@@ -21,7 +21,7 @@ The function `predict_fl()` is a [user-defined function (UDF)](../query/function
 
 `T | invoke predict_fl(`*models_tbl*`,` *model_name*`,` *features_cols*`,` *pred_col*`)`
 
-[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
