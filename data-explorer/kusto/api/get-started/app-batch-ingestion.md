@@ -7,7 +7,10 @@ ms.date: 07/05/2023
 ---
 # Create an app to ingest data using the batching manager
 
-Kusto is capable of handling mass data intake by optimizing and batching ingested data via its batching manager. The batching manager aggregates ingested data before it reaches its target table, allowing for more efficient processing and improved performance. Batching is typically done in bulks of 1 GB of raw data, 1000 individual files, or by a default time out of 5 minutes. Batching also takes into account various factors such as the target database and table, the user running the ingestion, and various properties associated with the ingestion such as special tags. Batching policies can be updated at the database and table levels, commonly to lower the batching time and reduce latency. For more information about ingestion batching, see [IngestionBatching policy](../../management/batchingpolicy.md) and [Change table level ingestion batching policy programmatically](app-management-commands.md#change-the-table-level-ingestion-batching-policy).
+Kusto is capable of handling mass data intake by optimizing and batching ingested data via its batching manager. The batching manager aggregates ingested data before it reaches its target table, allowing for more efficient processing and improved performance. Batching is typically done in bulks of 1 GB of raw data, 1000 individual files, or by a default time out of 5 minutes. Batching policies can be updated at the database and table levels, commonly to lower the batching time and reduce latency. For more information about ingestion batching, see [IngestionBatching policy](../../management/batchingpolicy.md) and [Change table level ingestion batching policy programmatically](app-management-commands.md#change-the-table-level-ingestion-batching-policy).
+
+> [!NOTE]
+> Batching also takes into account various factors such as the target database and table, the user running the ingestion, and various properties associated with the ingestion, such as special tags.
 
 <!-- > [!NOTE]
 > The example below assumes there's a trivial match between the content of the data ingested and the scheme of the target table.
@@ -27,21 +30,52 @@ In this article, you learn how to:
 
 ## Before you begin
 
-You need a destination table for the ingested data. Because you're learning how to write code using client libraries, you use the examples we created in [run management commands](app-management-commands.md) to create and configure the table. the *stormevents* table by running the first app. Start by creating the target table in your database with the following schema. where you want to ingest the data. Because we're ingesting a small amount of data, shorten the ingestion batching policy timeout to 10 seconds.
+- Use one of the following methods to create the *stormevents* table and, as only a small amount of data is being ingested, set its ingestion batching policy timeout to 10 seconds:
 
-1. Create a target table named *MyStormEvents* in your database by running the first app in [management commands](app-management-commands.md#run-a-management-command-and-process-the-results).
-1. Set the ingestion batching policy timeout to 10 seconds by running the second app in [management commands](app-management-commands.md#change-the-table-level-ingestion-batching-policy). Before running the app, change the timeout value to `00:00:10`.
+    ### [Run an app](#tab/app)
+
+    1. Create a target table named *MyStormEvents* in your database by running the first app in [management commands](app-management-commands.md#run-a-management-command-and-process-the-results).
+    1. Set the ingestion batching policy timeout to 10 seconds by running the second app in [management commands](app-management-commands.md#change-the-table-level-ingestion-batching-policy). Before running the app, change the timeout value to `00:00:10`.
+
+    ### [Web UI](#tab/webui)
+
+    1. In the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home), create a target table named *MyStormEvents* in your database by running the following query:
+
+        > [!div class="nextstepaction"]
+        > <a href="https://dataexplorer.azure.com/clusters/adxdocscluster.westeurope/databases/Develop-quickstarts?query=H4sIAAAAAAAAA22OQQoCMQxF954iSwXxALN1ZikI9QKxDUPBtJL+EXr7CYMLFbMK7yWff4omDCHw/SF06QHVdHpJQduRzz6ADbesMlDyQ/h23AxNJf3l/gGnDZbL/GYjK89ytfoUQx8oF3yZs5v2iUNdLP6mbOXCosrmGakX1hwPK06O/pXDAAAA" target="_blank">Run the query</a>
+
+        ```kusto
+        .create table MyStormEvents
+          (StartTime: datetime,
+          EndTime: datetime,
+          State: string,
+          DamageProperty: int,
+          DamageCrops: int,
+          Source: string,
+          StormSummary: dynamic)
+        ```
+
+    1. Set the ingestion batching policy timeout to 10 seconds by running the following query:
+
+        > [!div class="nextstepaction"]
+        > <a href="https://dataexplorer.azure.com/clusters/adxdocscluster.westeurope/databases/Develop-quickstarts?query=H4sIAAAAAAAAA9NLzClJLVIoSUzKSVXwrQwuyS/KdS1LzSspVijIz8lMrlTIzEtPLS7JzM9LSixJzgDyFNSrFZR8Eysyc0tznaBiIZm5qcEFiXlKVkoGBlZAZGigpFCrDgBZ3lqMXgAAAA==" target="_blank">Run the query</a>
+
+        ```kusto
+        .alter table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:10" }'
+        ```
+
+    ---
 
     > [!NOTE]
     > It may take a few minutes for the new batching policy settings to propagate to the batching manager.
 
-1. Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file. The file contains 1,000 storm event records.
+- Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file. The file contains 1,000 storm event records.
 
 ## Queue a file for ingestion and process the results
 
 In your preferred IDE or text editor, create a project or file named *basic ingestion* using the convention appropriate for your preferred language. Place the *stormevent.csv* file in the same location as your app. Then add the following code:
 
-1. Create a client app that connects to your cluster and prints the number of rows in the *MyStormEvents* table. You'll use this count as a baseline for comparison with the number of rows after each method of ingestion. Replace the `<your_cluster_uri>` and `<your_database>` placeholders with your cluster URI and database name respectively.
+- Create a client app that connects to your cluster and prints the number of rows in the *MyStormEvents* table. You'll use this count as a baseline for comparison with the number of rows after each method of ingestion. Replace the `<your_cluster_uri>` and `<your_database>` placeholders with your cluster URI and database name respectively.
 
     ### [C\#](#tab/csharp)
 
