@@ -33,6 +33,71 @@ items:
               - name: Migrate from TSI
                 href: /azure/time-series-insights/migration-to-adx
                 displayName: Time Series Insights
+      - name: Secure
+        items:
+          - name: Access control
+            href: kusto/access-control/index.md
+            items:
+              - name: Role-based access control
+                href: kusto/access-control/role-based-access-control.md
+                displayName: RBAC, security roles, principals
+              - name: Cross-tenant queries and commands
+                href: kusto/access-control/cross-tenant-query-and-commands.md
+          - name: Isolated compute
+            href: isolated-compute.md
+          - name: Network isolation (VNet)
+            items:
+              - name: Network security overview
+                href: security-network-overview.md
+              - name: Private Endpoints
+                items:
+                  - name: Private Endpoints overview
+                    href: security-network-private-endpoint.md
+                  - name: Create a private endpoint
+                    href: security-network-private-endpoint-create.md
+                  - name: Create a managed private endpoint
+                    href: security-network-managed-private-endpoint-create.md
+                  - name: Restrict public access
+                    href: security-network-restrict-public-access.md
+                  - name: Troubleshoot private endpoints
+                    href: security-network-private-endpoint-troubleshoot.md
+              - name: Virtual network injection
+                items:
+                  - name: Create a cluster in your VNet - Portal
+                    href: vnet-create-cluster-portal.md
+                  - name: Deploy your cluster to your VNet
+                    href: vnet-deployment.md
+                  - name: Create a private or service endpoint to resources used by data connections
+                    displayName: VNet, private endpoint, Azure Storage, event hub
+                    href: vnet-endpoint-storage-event-hub.md
+                  - name: Troubleshoot VNet cluster creation, connectivity, and operation
+                    href: vnet-deploy-troubleshoot.md
+              - name: Restrict outbound requests
+                href: security-network-restrict-outbound-access.md
+          - name: Encryption
+            items:
+              - name: Cluster encryption overview
+                href: cluster-encryption-overview.md
+              - name: Enable double encryption
+                href: cluster-encryption-double.md
+              - name: Enable disk encryption
+                href: cluster-encryption-disk.md
+          - name: Managed identities
+            items:
+              - name: Managed identities overview
+                href: managed-identities-overview.md
+              - name: Configure managed identities on your cluster
+                href: configure-managed-identities-cluster.md
+              - name: Authenticate external tables with managed identities
+                href: external-tables-managed-identities.md
+              - name: Ingest data using managed identity authentication
+                href: ingest-data-managed-identity.md
+          - name: Configure customer-managed keys
+            href: customer-managed-keys.md
+          - name: Create Azure AD app
+            href: provision-azure-ad-app.md
+          - name: Conditional Access
+            href: security-conditional-access.md
       - name: Get data
         items:
           - name: Data ingestion overview
@@ -343,71 +408,6 @@ items:
                 href: table-retention-policy-wizard.md
       - name: Customize settings in the web UI
         href: web-customize-settings.md
-      - name: Secure
-        items:
-          - name: Access control
-            href: kusto/access-control/index.md
-            items:
-              - name: Role-based access control
-                href: kusto/access-control/role-based-access-control.md
-                displayName: RBAC, security roles, principals
-              - name: Cross-tenant queries and commands
-                href: kusto/access-control/cross-tenant-query-and-commands.md
-          - name: Isolated compute
-            href: isolated-compute.md
-          - name: Network isolation (VNet)
-            items:
-              - name: Network security overview
-                href: security-network-overview.md
-              - name: Private Endpoints
-                items:
-                  - name: Private Endpoints overview
-                    href: security-network-private-endpoint.md
-                  - name: Create a private endpoint
-                    href: security-network-private-endpoint-create.md
-                  - name: Create a managed private endpoint
-                    href: security-network-managed-private-endpoint-create.md
-                  - name: Restrict public access
-                    href: security-network-restrict-public-access.md
-                  - name: Troubleshoot private endpoints
-                    href: security-network-private-endpoint-troubleshoot.md
-              - name: Virtual network injection
-                items:
-                  - name: Create a cluster in your VNet - Portal
-                    href: vnet-create-cluster-portal.md
-                  - name: Deploy your cluster to your VNet
-                    href: vnet-deployment.md
-                  - name: Create a private or service endpoint to resources used by data connections
-                    displayName: VNet, private endpoint, Azure Storage, event hub
-                    href: vnet-endpoint-storage-event-hub.md
-                  - name: Troubleshoot VNet cluster creation, connectivity, and operation
-                    href: vnet-deploy-troubleshoot.md
-              - name: Restrict outbound requests
-                href: security-network-restrict-outbound-access.md
-          - name: Encryption
-            items:
-              - name: Cluster encryption overview
-                href: cluster-encryption-overview.md
-              - name: Enable double encryption
-                href: cluster-encryption-double.md
-              - name: Enable disk encryption
-                href: cluster-encryption-disk.md
-          - name: Managed identities
-            items:
-              - name: Managed identities overview
-                href: managed-identities-overview.md
-              - name: Configure managed identities on your cluster
-                href: configure-managed-identities-cluster.md
-              - name: Authenticate external tables with managed identities
-                href: external-tables-managed-identities.md
-              - name: Ingest data using managed identity authentication
-                href: ingest-data-managed-identity.md
-          - name: Configure customer-managed keys
-            href: customer-managed-keys.md
-          - name: Create Azure AD app
-            href: provision-azure-ad-app.md
-          - name: Conditional Access
-            href: security-conditional-access.md
       - name: Manage
         items:
           - name: Cluster
