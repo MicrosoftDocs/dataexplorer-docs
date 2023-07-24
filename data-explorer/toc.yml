@@ -16,7 +16,7 @@ items:
             href: solution-architectures.md
           - name: Multi-tenant solutions
             href: multi-tenant.md
-          - name: Big data analytics with Azure Data Explorer
+          - name: "POC playbook: Big data analytics with Azure Data Explorer"
             href: proof-of-concept-playbook.md
       - name: Set up
         items:
