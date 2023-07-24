@@ -7,7 +7,7 @@ ms.date: 05/01/2023
 ---
 # shuffle query
 
-The `shuffle` query is a semantic-preserving transformation used with a set of operators that support the `shuffle` strategy. Depending on the data involved, querying with the `shuffle` strategy can yield better performance. It is better to use the shuffle query strategy when the `shuffle` key (a `join` key, `summarize` key, `make-series` key or `partition` key) has a high cardinality and the regular operator query hits query limits.
+The `shuffle` query is a semantic-preserving transformation used with a set of operators that support the `shuffle` strategy. Depending on the data involved, querying with the `shuffle` strategy can yield better performance. It's better to use the shuffle query strategy when the `shuffle` key (a `join` key, `summarize` key, `make-series` key or `partition` key) has a high cardinality and the regular operator query hits query limits.
 
 You can use the following operators with the shuffle command:
 
@@ -16,7 +16,7 @@ You can use the following operators with the shuffle command:
 * [make-series](make-seriesoperator.md)
 * [partition](partitionoperator.md)
 
-To use the `shuffle` query strategy, add the expression `hint.strategy = shuffle` or `hint.shufflekey = <key>`. When you use `hint.strategy=shuffle`, the operator data will be shuffled by all the keys. Use this expression when the compound key is unique but each key is not unique enough, so you will shuffle the data using all the keys of the shuffled operator.
+To use the `shuffle` query strategy, add the expression `hint.strategy = shuffle` or `hint.shufflekey = <key>`. When you use `hint.strategy=shuffle`, the operator data will be shuffled by all the keys. Use this expression when the compound key is unique but each key isn't unique enough, so you'll shuffle the data using all the keys of the shuffled operator.
 
 When partitioning data with the shuffle strategy, the data load is shared on all cluster nodes. Each node processes one partition of the data. The default number of partitions is equal to the number of cluster nodes.
 
@@ -25,7 +25,7 @@ The partition number can be overridden by using the syntax `hint.num_partitions 
 > [!NOTE]
 > Using many partitions may consume more cluster resources and degrade performance. Choose the partition number carefully by starting with the `hint.strategy = shuffle` and start increasing the partitions gradually.
 
-In some cases, the `hint.strategy = shuffle` will be ignored, and the query will not run in `shuffle` strategy. This can happen when:
+In some cases, the `hint.strategy = shuffle` is ignored, and the query won't run in `shuffle` strategy. This can happen when:
 
 * The `join` operator has another `shuffle`-compatible operator (`join`, `summarize`, `make-series` or `partition`) on the left side or the right side.
 * The `summarize` operator appears after another `shuffle`-compatible operator (`join`, `summarize`, `make-series` or `partition`) in the query.
@@ -69,7 +69,7 @@ In some cases, the `hint.strategy = shuffle` will be ignored, and the query will
 
 ## Use summarize with shuffle
 
-The `shuffle` strategy query with `summarize` operator will share the load on all cluster nodes, where each node will process one partition of the data.
+The `shuffle` strategy query with `summarize` operator shares the load on all cluster nodes, where each node processes one partition of the data.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3MMQ6AIAxA0d1TdJTEeANHB2ZOgFoBIyVpiwnGw2vc//tOC+f5QlLpHpCas+d0I8REOoqyVwwNJpBY9/1EWEsl7c0A/gq9paNyQrG0JcZVDSwNnH7me/3lC79aGLFfAAAA" target="_blank">Run the query</a>
@@ -190,7 +190,7 @@ StormEvents
 
 ### Shuffle the data with multiple keys
 
-In some cases, the `hint.strategy=shuffle` will be ignored, and the query will not run in shuffle strategy. For example, in the following example, the join has summarize on its left side, so using `hint.strategy=shuffle` will not apply shuffle strategy to the query:
+In some cases, the `hint.strategy=shuffle` will be ignored, and the query won't run in shuffle strategy. For example, in the following example, the join has summarize on its left side, so using `hint.strategy=shuffle` won't apply shuffle strategy to the query:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OsQ6CMBRFd7/ijpAoqQyamOCiDMz4A9U+oGpb0j40GD/eBjUu3tzhDu/lnJqdN+WNLIfZE/eOPKFm6fmgDWELJZk4ziQXYr0Qy1gIsZmaiXfS+BkGY6TXD8LJDZaTFMcRZa+DU1SpOSZEpeLl2WmLi7YKBbS15NFpy1lgH1HtWIRuaJorIal/aviq7aWRLe2860OUW+UfATj7B/YCGrh7PdwAAAA=" target="_blank">Run the query</a>
@@ -213,7 +213,7 @@ StormEvents
 |2103| 10239| ...| 2103 |10239|...|
 |...|...|...|...|...|...|
 
-To overcome this issue and run in shuffle strategy, choose the key which is common for the `summarize` and `join` operations. In this case, this key is `EpisodeId`. Use the hint `hint.shufflekey` to specify the shuffle key on the `join` to `hint.shufflekey = EpisodeId`:
+To overcome this issue and run in shuffle strategy, choose the key that is common for the `summarize` and `join` operations. In this case, this key is `EpisodeId`. Use the hint `hint.shufflekey` to specify the shuffle key on the `join` to `hint.shufflekey = EpisodeId`:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OPQ7CMBSDd07hsZUAhQ4gIZUFOnQuFwjklYaSpEpeQUUcnqj8LVgePNjyV7HzpriS5TB54NaQJ1QsPe+1IWygJBPHmGRCrGZiEQ0h1qPn4qU0LkNvjPT6Tji63nKS4jCg6HRwiko1xXhRqtg8O23RaquQQ1tLHo22PA9NX9cXamnIvzMk1Q8PH7ydNPJEW++6EAGX2RsCzv45fALuk5Ra4AAAAA==" target="_blank">Run the query</a>
