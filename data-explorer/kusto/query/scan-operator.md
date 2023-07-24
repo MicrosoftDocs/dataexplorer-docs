@@ -37,6 +37,8 @@ T
 
 `step` *StepName* [ `output` = `all` | `last` | `none`] `:` *Condition* [ `=>` *Column* `=` *Assignment* [`,` ... ] ] `;`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
