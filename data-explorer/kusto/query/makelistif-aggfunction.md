@@ -15,6 +15,8 @@ Creates a `dynamic` array of *expr* values in the group for which *predicate* ev
 
 `make_list_if(`*expr*`,` *predicate* [`,` *maxSize*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
