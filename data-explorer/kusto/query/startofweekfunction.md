@@ -15,6 +15,8 @@ Start of the week is considered to be a Sunday.
 
 `startofweek(`*date* [`,` *offset* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -14,6 +14,8 @@ The `split()` function takes a string and splits it into substrings based on a s
 
 `split(`*source*`,` *delimiter* [`,` *requestedIndex*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

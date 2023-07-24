@@ -13,6 +13,8 @@ Returns the square root of the input.
 
 `sqrt(`*number*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
