@@ -13,6 +13,8 @@ ms.date: 01/05/2023
 
 `log10(`*number*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
