@@ -15,6 +15,8 @@ Optionally, the length of the requested substring can be specified.
 
 `substring(`*source*`,` *startingIndex* [`,` *length*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

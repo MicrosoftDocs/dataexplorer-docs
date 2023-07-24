@@ -15,6 +15,8 @@ Returns the string represented by the Unicode codepoints. This function is the i
 
 `unicode_codepoints_to_string (`*values*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

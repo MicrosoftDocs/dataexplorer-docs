@@ -16,6 +16,8 @@ Converts the input to an integer value (signed 32-bit) number representation.
 
 `toint(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

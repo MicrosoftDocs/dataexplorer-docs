@@ -13,6 +13,8 @@ Returns a `dynamic` (JSON) array of the set of all distinct values that are in t
 
 `set_difference(`*set1*`,` *set2* [`,`*set3*, ...]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

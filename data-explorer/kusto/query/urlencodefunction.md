@@ -16,6 +16,8 @@ For more information about URL encoding and decoding, see [Percent-encoding](htt
 
 `url_encode(`*url*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Parameters|

@@ -36,6 +36,8 @@ Takes an expression containing dynamic numerical array as input and applies a [t
 
 project `series_fit_2lines(`*series*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 * Will return all mentioned above columns with the following names: series_fit_2lines_x_rsquare, series_fit_2lines_x_split_idx etc.
 
 project (rs, si, v)=`series_fit_2lines(`*series*`)`
@@ -45,7 +47,7 @@ project (rs, si, v)=`series_fit_2lines(`*series*`)`
 extend (rs, si, v)=`series_fit_2lines(`*series*`)`
 
 * Will return only: rs (r-square), si (split index) and v (variance).
-  
+
 ## Parameters
 
 | Name | Type | Required | Description |

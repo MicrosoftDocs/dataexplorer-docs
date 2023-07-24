@@ -10,12 +10,14 @@ ms.date: 05/01/2023
 The tabular expression statement is what people usually have in mind when they talk about queries. This statement usually appears last in the statement list, and both its input and its output consists of tables or tabular data sets.
 Any two statements must be separated by a semicolon.
 
-A tabular expression statement is generally composed of *tabular data sources* such as tables, *tabular data operators* such as filters and projections, and optional *rendering operators*. The composition is represented by the pipe character (`|`), giving the statement a very regular form that visually represents the flow of tabular data from left to right.
+A tabular expression statement is generally composed of *tabular data sources* such as tables, *tabular data operators* such as filters and projections, and optional *rendering operators*. The composition is represented by the pipe character (`|`), giving the statement a regular form that visually represents the flow of tabular data from left to right.
 Each operator accepts a tabular data set "from the pipe", and other inputs including more tabular data sets from the body of the operator, then emits a tabular data set to the next operator that follows.
 
 ## Syntax
 
 *Source* `|` *Operator1* `|` *Operator2* `|` *RenderInstruction*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -58,7 +60,7 @@ StormEvents
 
 ### Combine data from two tables
 
-In the following example the [join](joinoperator.md) operator is used to combine records from two tabular data sources: the `StormEvents` table and the `PopulationData` table.
+In the following example, the [join](joinoperator.md) operator is used to combine records from two tabular data sources: the `StormEvents` table and the `PopulationData` table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlXwzMsqLcpMLXbJLEpNLlHQhgt45qVAhOwUTA1A6rPyM/MUNALyC0pzEksy8/NcEksSNRXy8xSCSxJLUkEqCorys0A6wAI6CgilOgoh+SWJOTCjFWwJWwsARutqhK4AAAA=" target="_blank">Run the query</a>
