@@ -19,14 +19,14 @@ Converts IPv4 string to a signed 64-bit wide long number representation in big-e
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ip* | string | &check; | The IPv4 that will be converted to long. The value may include net-mask using [IP-prefix notation](#ip-prefix-notation).|
+| *ip* | string | &check; | The IPv4 that is converted to long. The value may include net-mask using [IP-prefix notation](#ip-prefix-notation).|
 
 [!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 ## Returns
 
-If conversion is successful, the result will be a long number.
-If conversion isn't successful, the result will be `null`.
+If conversion is successful, the result is a long number.
+If conversion isn't successful, the result is `null`.
 
 ## Example
 
