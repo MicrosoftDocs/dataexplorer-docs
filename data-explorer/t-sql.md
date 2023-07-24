@@ -107,6 +107,7 @@ Azure Data Explorer offers limited support for T-SQL. The following table outlin
 |`TOP` `WITH TIES`|Evaluated as regular `TOP`|
 |`TRUNCATE`|Returns the nearest value|
 |`SELECT` `*` | Column order may differ from expectation. Use column names if order matters.|
+|`AT TIME ZONE`|Not supported|
 |SQL cursors|Not supported|
 |Correlated subqueries|Not supported|
 |Recursive CTEs|Not supported|

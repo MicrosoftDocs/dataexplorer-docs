@@ -13,6 +13,8 @@ Returns a `dynamic` array of the set of all distinct values that are in all arra
 
 `set_intersect(`*set1*`,` *set2* [`,` *set3*, ...]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

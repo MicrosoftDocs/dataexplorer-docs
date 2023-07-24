@@ -609,12 +609,16 @@ items:
       - name: Azure Policy built-ins
         displayName: samples, policies, definitions
         href: policy-reference.md
+      - name: Bicep and ARM template resource types
+        href: /azure/templates/microsoft.kusto/allversions
       - name: Functions library
         href: kusto/functions-library/toc.yml
       - name: PowerShell Kusto
         href: /powershell/module/az.kusto/#kusto
       - name: Python plugin packages
         href: python-package-reference.md
+      - name: Resource provider operations
+        href: /azure/role-based-access-control/resource-provider-operations#microsoftkusto
       - name: Troubleshoot ingestion
         items:
           - name: Ingestion error codes

@@ -14,13 +14,15 @@ The `split()` function takes a string and splits it into substrings based on a s
 
 `split(`*source*`,` *delimiter* [`,` *requestedIndex*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source* | string | &check; | The source string that will be split according to the given delimiter.|
+| *source* | string | &check; | The source string that is split according to the given delimiter.|
 | *delimiter* | string | &check; | The delimiter that will be used in order to split the source string.|
-| *requestedIndex* | int | | A zero-based index. If provided, the returned string array will contain the requested substring at the index if it exists.|
+| *requestedIndex* | int | | A zero-based index. If provided, the returned string array contains the requested substring at the index if it exists.|
 
 ## Returns
 

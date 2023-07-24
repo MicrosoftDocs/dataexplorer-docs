@@ -15,6 +15,8 @@ Takes two or more tables and returns the rows of all of them.
 
 [ *T* `|` ] `union` [ *UnionParameters* ] [`kind=` `inner`|`outer`] [`withsource=` *ColumnName*] [`isfuzzy=` `true`|`false`] *Tables*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 > [!NOTE]
 > The operation of the `union` operator can be altered by setting the `best_effort` request property to `true`, using either a [set statement](./setstatement.md) or through [client request properties](../api/netfx/request-properties.md). When this property is set to `true`, the `union` operator will disregard fuzzy resolution and connectivity failures to execute any of the sub-expressions being “unioned” and yield a warning in the query status results.
 

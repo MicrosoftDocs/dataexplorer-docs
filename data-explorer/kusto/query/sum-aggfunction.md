@@ -15,6 +15,8 @@ Calculates the sum of *expr* across the group.
 
 `sum(`*expr*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

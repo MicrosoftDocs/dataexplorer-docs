@@ -21,6 +21,8 @@ The function takes as input the column containing the dynamic array and two stat
 
 `series_iir(`*series*`,` *numerators* `,` *denominators*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

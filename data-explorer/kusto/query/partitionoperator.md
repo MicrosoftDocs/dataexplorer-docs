@@ -58,6 +58,8 @@ For native, shuffle and legacy subqueries, the result must be a single tabular r
 
 *T* `|` `partition` [ *PartitionParameters* ] `by` *Column* `{` *ContextFreeSubQuery* `}`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

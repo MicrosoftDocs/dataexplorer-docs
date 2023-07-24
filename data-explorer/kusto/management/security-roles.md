@@ -3,7 +3,7 @@ title: Security roles
 description: Learn how to use security roles to provide principals access to resources.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/18/2023
 ---
 # Security roles overview
 
@@ -43,9 +43,72 @@ For a full description of the security roles at each scope, see [Kusto role-base
 > It isn't possible to assign the `viewer` role for only some tables in the database. For different approaches on how to grant a principal view access to a subset of tables, see [manage table view access](manage-table-view-access.md).
 
 > [!TIP]
-> There are three cluster level security roles (AllDatabasesAdmin, AllDatabasesViewer, and AllDatabasesMonitor) that can only be configured in the Azure portal. To learn more, see [manage cluster permissions](../../manage-cluster-permissions.md).
+> There are three cluster level security roles (`AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor`) that can only be configured in the Azure portal. To learn more, see [manage cluster permissions](../../manage-cluster-permissions.md).
+
+## Common scenarios
+
+### Show your roles on the cluster
+
+To see your own roles on the cluster, run the following command:
+
+```kusto
+.show cluster principal roles
+```
+
+### Show the roles of all principals on the cluster
+
+To see all roles on the cluster, you must have at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions on the cluster. To see the roles, run the following command:
+
+```kusto
+.show cluster principals
+```
+
+### Show your roles on a resource
+
+To check the roles assigned to you on a specific resource, run the following command within the relevant database or the database that contains the resource:
+
+```kusto
+// For a database:
+.show database DatabaseName principal roles
+
+// For a table:
+.show table TableName principal roles
+
+// For an external table:
+.show external table ExternalTableName principal roles
+
+// For a function:
+.show function FunctionName principal roles
+
+// For a materialized view:
+.show materialized-view MaterializedViewName principal roles
+```
+
+### Show the roles of all principals on a resource
+
+To see the roles assigned to all principals for a particular resource, run the following command within the relevant database or the database that contains the resource:
+
+```kusto
+// For a database:
+.show database DatabaseName principals
+
+// For a table:
+.show table TableName principals
+
+// For an external table:
+.show external table ExternalTableName principals
+
+// For a function:
+.show function FunctionName principals
+
+// For a materialized view:
+.show materialized-view MaterializedViewName principals
+```
+
+> [!TIP]
+> Use the [where](../query/whereoperator.md) operator to filter the results by a specific principal or role.
 
 ## Next steps
 
-* Read more about [Kusto role-based access control](access-control/role-based-access-control.md)
+* Read about [Kusto role-based access control](access-control/role-based-access-control.md)
 * Learn how to [reference security principals](access-control/referencing-security-principals.md)

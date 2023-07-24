@@ -13,6 +13,8 @@ Converts a string to upper case.
 
 `toupper(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

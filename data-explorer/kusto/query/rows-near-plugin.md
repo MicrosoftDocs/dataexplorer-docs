@@ -15,6 +15,8 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 *T* `| evaluate` `rows_near(`*Condition*`,` *NumRows*`,` [`,` *RowsAfter* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

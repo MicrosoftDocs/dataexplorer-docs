@@ -13,6 +13,8 @@ Returns the start of the day containing the date, shifted by an offset, if provi
 
 `startofday(`*date* [`,` *offset* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -18,6 +18,8 @@ Returns an integer that represents the week number. The week number is calculate
 
 `week_of_year(`*date*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
