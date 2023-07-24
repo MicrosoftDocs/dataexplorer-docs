@@ -26,13 +26,13 @@ items:
             href: create-cluster-database.md
           - name: Automated provisioning
             href: automated-deploy-overview.md
-      - name: Migrate
-        items:
-          - name: Migrate from Elasticsearch
-            href: migrate-elasticsearch-to-azure-data-explorer.md
-          - name: Migrate from TSI
-            href: /azure/time-series-insights/migration-to-adx
-            displayName: Time Series Insights
+          - name: Migrate
+            items:
+              - name: Migrate from Elasticsearch
+                href: migrate-elasticsearch-to-azure-data-explorer.md
+              - name: Migrate from TSI
+                href: /azure/time-series-insights/migration-to-adx
+                displayName: Time Series Insights
       - name: Get data
         items:
           - name: Data ingestion overview
