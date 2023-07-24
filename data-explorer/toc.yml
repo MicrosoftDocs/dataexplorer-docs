@@ -2,6 +2,7 @@ items:
   - name: Azure Data Explorer documentation
     href: index.yml
   - name: Get started
+    expanded: true
     items:
       - name: What is Azure Data Explorer?
         href: data-explorer-overview.md
@@ -34,16 +35,6 @@ items:
           - name: Migrate from TSI
             href: /azure/time-series-insights/migration-to-adx
             displayName: Time Series Insights
-      - name: Quickstarts
-        expanded: true
-        items:
-          - name: Get sample data
-            href: ingest-sample-data.md
-            displayName: Azure Data Explorer web UI
-          - name: Query sample data
-            href: web-query-data.md
-          - name: Visualize sample data dashboards
-            href: web-ui-samples-dashboards.md
       - name: Training modules
         items:
           - name: "Introduction to Azure Data Explorer"
@@ -242,6 +233,8 @@ items:
             href: web-ui-query-keyboard-shortcuts.md
           - name: Write KQL queries
             href: web-ui-kql.md
+          - name: Query sample data
+            href: web-query-data.md
       - name: Query data in Azure Data Lake
         href: data-lake-query-data.md
       - name: Query data in Azure Monitor
@@ -302,6 +295,8 @@ items:
             href: dashboard-parameters.md
           - name: Customize dashboard visuals
             href: dashboard-customize-visuals.md
+          - name: Visualize sample data dashboards
+            href: web-ui-samples-dashboards.md
       - name: Power BI
         items:
           - name: Use data in Power BI
