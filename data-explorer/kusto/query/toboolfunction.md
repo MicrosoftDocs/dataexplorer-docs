@@ -15,6 +15,8 @@ Convert inputs to boolean (signed 8-bit) representation.
 
 `tobool(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
