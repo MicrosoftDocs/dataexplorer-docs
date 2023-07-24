@@ -50,6 +50,8 @@ In some cases, the `hint.strategy = shuffle` will be ignored, and the query will
 
 *T* `|` *Query* `|` partition  `hint.shufflekey` = *key* `(` *SubQuery* `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
