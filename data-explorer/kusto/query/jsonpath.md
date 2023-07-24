@@ -67,7 +67,6 @@ You can represent each of the fields with JSONPath notation as follows:
 '$.Details.User['User ID']'    // User ID field
 '$.Details.User.Username'      // Username field
 '$.Details.User['IP Address']' // IP Address field
-
 ```
 
 ## See also
