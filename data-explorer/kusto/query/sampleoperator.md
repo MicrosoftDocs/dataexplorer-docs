@@ -18,6 +18,8 @@ Returns up to the specified number of random rows from the input table.
 
 *T* `| sample` *NumberOfRows*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
