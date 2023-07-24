@@ -15,6 +15,8 @@ Creates a `dynamic` JSON property bag (dictionary) of *expr* values in records f
 
 `make_bag_if(`*expr*`,` *predicate* [`,` *maxSize*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
