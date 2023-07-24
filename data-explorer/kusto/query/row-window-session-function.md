@@ -29,6 +29,8 @@ Calculates session start values of a column in a [serialized row set](./windowsf
 * *Restart* is an optional scalar expression of type `boolean`. If specified,
   every value that evaluates to `true` will immediately restart the session.
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 The function returns the values at the beginning of each session.
