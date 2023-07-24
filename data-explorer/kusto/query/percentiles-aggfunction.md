@@ -22,6 +22,8 @@ To calculate weighted percentiles, see [percentilesw()](percentilesw-aggfunction
 
 `percentiles(`*expr*`,` *percentiles*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
