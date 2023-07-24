@@ -20,6 +20,8 @@ Kusto Query Language (KQL) offers many kinds of joins that each affect the schem
 
 *LeftTable* `|` `join` [ `kind` `=` *JoinFlavor* ] [ *Hints* ] `(`*RightTable*`)` `on` *Conditions*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
