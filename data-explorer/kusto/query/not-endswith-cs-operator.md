@@ -19,6 +19,8 @@ Filters a record set for data that doesn't contain a case-insensitive ending str
 
 *T* `|` `where` *col* `!endswith_cs` `(`*expression*`)`  
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

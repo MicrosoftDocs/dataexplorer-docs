@@ -14,6 +14,8 @@ The `leftouter` join flavor returns all the records from the left side table and
 
 *LeftTable* `|` `join` `kind=leftouter` [ *Hints* ] *RightTable* `on` *Conditions*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 
 ## Returns

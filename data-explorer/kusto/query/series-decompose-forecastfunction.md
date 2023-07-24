@@ -15,6 +15,8 @@ Takes an expression containing a series (dynamic numerical array) as input, and 
 
 `series_decompose_forecast(`*Series*`,` *Points*`,` [ *Seasonality*`,` *Trend*`,` *Seasonality_threshold* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

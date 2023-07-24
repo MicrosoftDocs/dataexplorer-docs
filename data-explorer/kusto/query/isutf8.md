@@ -13,6 +13,8 @@ Returns `true` if the argument is a valid UTF8 string.
 
 `isutf8(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

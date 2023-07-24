@@ -26,6 +26,8 @@ Use `!has` if you're looking for a [term](datatypes-string-operators.md#what-is-
 
 *T* `|` `where` *Column* `!contains` `(`*Expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

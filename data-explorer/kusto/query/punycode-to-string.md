@@ -13,6 +13,8 @@ Decodes input string from [punycode](https://en.wikipedia.org/wiki/Punycode) for
 
 `punycode_to_string('input_string')`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

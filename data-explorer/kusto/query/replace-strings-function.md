@@ -15,6 +15,8 @@ To replace an individual string, see [replace_string()](replace-string-function.
 
 `replace_strings(`*text*`,` *lookups*`,` *rewrites*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
