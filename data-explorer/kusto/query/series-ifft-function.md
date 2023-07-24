@@ -15,6 +15,8 @@ The series_ifft() function takes a series of complex numbers in the frequency do
 
 `series_ifft(`*fft_real* [`,` *fft_imaginary*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

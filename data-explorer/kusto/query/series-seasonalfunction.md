@@ -13,6 +13,8 @@ Calculates the seasonal component of a series, according to the detected or give
 
 `series_seasonal(`*series* [`,` *period* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

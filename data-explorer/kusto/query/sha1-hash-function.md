@@ -13,6 +13,8 @@ Returns a sha1 hash value of the source input.
 
 `hash_sha1(`*source*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

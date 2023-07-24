@@ -31,6 +31,8 @@ Where *TopNestedClause* has the following syntax:
 
 [ *N* ] `of` [*ExprName* `=`] *Expr* [`with` `others` `=` *ConstExpr*] `by` [*AggName* `=`] *Aggregation* [`asc` | `desc`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

@@ -16,6 +16,8 @@ Returns the length, in characters, of the input string.
 
 `strlen(`*source*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
