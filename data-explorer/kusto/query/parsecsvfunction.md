@@ -13,6 +13,8 @@ Splits a given string representing a single record of comma-separated values and
 
 `parse_csv(`*csv_text*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
