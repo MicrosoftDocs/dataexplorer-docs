@@ -25,7 +25,7 @@ See: [Pearson correlation coefficient](https://en.wikipedia.org/wiki/Pearson_cor
 
 ## Returns
 
-The calculated Pearson correlation coefficient between the two inputs. Any non-numeric element or non-existing element (arrays of different sizes) yields a `null` result.
+The calculated Pearson correlation coefficient between the two inputs. Any non-numeric element or nonexisting element (arrays of different sizes) yields a `null` result.
 
 ## Example
 
