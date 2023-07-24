@@ -17,6 +17,10 @@ Additionally, the row index may be reset according to some provided predicate.
 
 `row_number(` [*StartingIndex* [`,` *Restart*]] `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *StartingIndex*| long | | The value of the row index to start at or restart to. The default value is 1.|

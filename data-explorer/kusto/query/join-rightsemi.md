@@ -14,6 +14,8 @@ The `rightsemi` join flavor returns all records from the right side that match a
 
 *LeftTable* `|` `join` `kind=rightsemi` [ *Hints* ] *RightTable* `on` *Conditions*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 
 ## Returns

@@ -13,18 +13,20 @@ Converts IPv6 or IPv4 string to a canonical IPv6 string representation.
 
 `parse_ipv6(`*ip*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ip* | string | &check; | The IPv6/IPv4 network address that will be converted to canonical IPv6 representation. The value may include net-mask using [IP-prefix notation](#ip-prefix-notation).|
+| *ip* | string | &check; | The IPv6/IPv4 network address that is converted to canonical IPv6 representation. The value may include net-mask using [IP-prefix notation](#ip-prefix-notation).|
 
 [!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
 ## Returns
 
-If conversion is successful, the result will be a string representing a canonical IPv6 network address.
-If conversion isn't successful, the result will be an empty string.
+If conversion is successful, the result is a string representing a canonical IPv6 network address.
+If conversion isn't successful, the result is an empty string.
 
 ## Example
 

@@ -33,6 +33,8 @@ three kinds of columns:
 
 *T* `|` `render` *visualization* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

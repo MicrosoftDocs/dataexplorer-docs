@@ -15,6 +15,8 @@ The row rank starts by default at `1` for the first row, and is incremented by `
 
 `row_rank_dense` `(` *Term* `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

@@ -17,6 +17,8 @@ See also - [max()](max-aggfunction.md) function, which returns the maximum value
 
 `maxif(`*expr*`,`*predicate*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

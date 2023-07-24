@@ -18,6 +18,8 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 
 *T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*][`,` *external_artifacts*][`,` *spill_to_disk*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

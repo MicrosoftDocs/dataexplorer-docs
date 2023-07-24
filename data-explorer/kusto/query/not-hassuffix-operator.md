@@ -24,6 +24,8 @@ When possible, use [!hassuffix_cs](not-hassuffix-cs-operator.md) - a case-sensit
 
 *T* `|` `where` *column* `!hassuffix` `(`*expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -14,6 +14,8 @@ Rank of value `v` in a set `S` is defined as count of members of `S` that are sm
 
 `rank_tdigest(`*digest*`,` *value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

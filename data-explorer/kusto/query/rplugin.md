@@ -20,6 +20,8 @@ The plugin's runtime is hosted in a [sandbox](../concepts/sandboxes.md) on the c
 
 *T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `r(`*output_schema*`,` *script* [`,` *script_parameters*] [`,` *external_artifacts*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

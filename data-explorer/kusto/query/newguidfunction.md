@@ -13,6 +13,8 @@ Returns a random GUID (Globally Unique Identifier).
 
 `new_guid()`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 A new value of type [`guid`](scalar-data-types/guid.md).

@@ -17,6 +17,8 @@ Creates a `dynamic` array of the set of distinct values that *expr* takes in the
 
  `make_set(`*expr* [`,` *maxSize*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

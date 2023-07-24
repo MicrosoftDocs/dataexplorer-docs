@@ -16,6 +16,8 @@ Searches a text pattern in multiple tables and columns.
 
 [*T* `|`] `search` [`kind=` *CaseSensitivity* ] [`in` `(`*TableSources*`)`] *SearchPredicate*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

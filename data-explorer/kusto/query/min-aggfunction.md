@@ -15,6 +15,8 @@ Finds the minimum value across the group.
 
 `min` `(`*expr*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
