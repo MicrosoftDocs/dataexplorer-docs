@@ -14,6 +14,8 @@ A `fullouter` join combines the effect of applying both left and right outer-joi
 
 *LeftTable* `|` `join` `kind=fullouter` [ *Hints* ] *RightTable* `on` *Conditions*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 
 ## Returns

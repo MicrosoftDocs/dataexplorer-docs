@@ -15,15 +15,17 @@ Returns `true` if the argument isn't an empty string, and it isn't null.
 
 `isnotempty(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
+|--|--|--|--|
 |*value*|scalar|&check;| The value to check if not empty or null.|
 
 ## Returns
 
-`true` if *value* is not null and `false` otherwise.
+`true` if *value* isn't null and `false` otherwise.
 
 ## Example
 
