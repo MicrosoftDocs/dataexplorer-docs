@@ -3,7 +3,7 @@ title:  JSONPath syntax
 description: Learn how to use JSONPath expressions to specify data mappings and KQL functions that process dynamic objects.
 ms.reviewer: igborodi
 ms.topic: reference
-ms.date: 07/23/2023
+ms.date: 07/24/2023
 ---
 
 # JSONPath expressions
@@ -14,7 +14,7 @@ The JSONPath notation is used in the following scenarios:
 
 - To specify [data mappings for ingestion](../management/mappings.md)
 - To specify [data mappings for external tables](../management/external-table-mapping-create.md)
-- In KQL functions that process dynamic objects, like [bag_remove_keys()](bag-remove-keys-function.md) and [extract_json()](extractjsonfunction.md)
+- In Kusto Query Language (KQL) functions that process dynamic objects, like [bag_remove_keys()](bag-remove-keys-function.md) and [extract_json()](extractjsonfunction.md)
 
 The following subset of the JSONPath notation is supported:
 
@@ -31,65 +31,46 @@ The following subset of the JSONPath notation is supported:
 
 ## Example
 
-In the `StormEvents` table of the `Samples` database, there is a column named `StormSummary`. The following query retrieves the contents of the `StormSummary` column for a specific event with an `EventId` of "11920".
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHM9UxRsbRWUDA0tjQyUgFIFRflZqcklCsEgDcGlubmJRZUA9EM6WT0AAAA=" target="_blank">Run the query</a>
-
-```kusto
-StormEvents
-| where EventId == "11920"
-| project StormSummary
-```
-
-**Output**
-
-The column contains a JSON object with details about the storm event, including `TotalDamages`, `StartTime`, `EndTime`, and `Details` with additional nested information such as the `Description` and `Location`.
+Given the following JSON document:
 
 ```json
 {
-    "TotalDamages": 10000,
-    "StartTime": "2007-01-01T00:00:00.0000000Z",
-    "EndTime": "2007-01-28T21:00:00.0000000Z",
-    "Details": {
-        "Description": "The Wabash River in Vermillion County remained above flood stage through most of January. Crests were as high as 12 feet above flood stage.",
-        "Location": "INDIANA"
+  "Source": "Server-01",
+  "Timestamp": "2023-07-25T09:15:32.123Z",
+  "Log Level": "INFO",
+  "Message": "Application started successfully.",
+  "Details": {
+    "Service": "AuthService",
+    "Endpoint": "/api/login",
+    "Response Code": 200,
+    "Response Time": 54.21,
+    "User": {
+      "User ID": "user123",
+      "Username": "kiana_anderson",
+      "IP Address": "192.168.1.100"
     }
+  }
 }
 ```
 
-Let's create a new table that will contain this data in separate columns.
+You can represent each of the fields with JSONPath notation as follows:
 
 ```kusto
-// Create the table.
-.create table StormSummaryTable (TotalDamages: int, StartTime: datetime, EndTime: datetime, Description: string, Location: string)
+'$.Source'                     // Source field
+'$.Timestamp'                  // Timestamp field
+'$['Log Level']'               // Log Level field
+'$.Message'                    // Message field
+'$.Details.Service'            // Service field
+'$.Details.Endpoint'           // Endpoint field
+'$.Details['Response Code']'   // Response Code field
+'$.Details['Response Time']'   // Response Time field
+'$.Details.User['User ID']'    // User ID field
+'$.Details.User.Username'      // Username field
+'$.Details.User['IP Address']' // IP Address field
 
-// Create the ingestion mapping.
-.create table StormSummaryTable ingestion json mapping 'StormSummaryMapping'
-    '[{"column":"TotalDamages","path":"$.TotalDamages"}, 
-      {"column":"StartTime","path":"$.StartTime"},
-      {"column":"EndTime","path":"$.EndTime"},
-      {"column":"Description","path":"$.Details.Description"},
-      {"column":"Location","path":"$.Details.Location"}]'
-
-// Ingest the data.
-.set StormSummaryTable <|
-   StormEvents
-   | project StormSummary
-```
-
-The ingestion mapping could also be created with square bracket syntax, though this is only required if there are spaces or special characters in the key name. For example:
-
-```kusto
-// Create the ingestion mapping with square bracket syntax.
-.create table StormSummaryTable ingestion json mapping 'StormSummaryMapping'
-    '[{"column":"TotalDamages","path":"$['TotalDamages']"}, 
-      {"column":"StartTime","path":"$['StartTime']"},
-      {"column":"EndTime","path":"$['EndTime']"},
-      {"column":"Description","path":"$['Details']['Description']"},
-      {"column":"Location","path":"$['Details']['Location']"}]'
 ```
 
 ## See also
 
-* [Use the Azure Data Explorer web UI to get the path to a dynamic field](../../web-results-grid.md#get-the-path-to-a-dynamic-field)
+* [Get the path to a dynamic field](../../web-results-grid.md#get-the-path-to-a-dynamic-field)
+* [Add filter from dynamic field](../../web-results-grid.md#add-filter-from-dynamic-field)
