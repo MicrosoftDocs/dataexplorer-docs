@@ -21,6 +21,8 @@ and returns the value of one or more expressions over each such record.
 
 `take_any(`*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

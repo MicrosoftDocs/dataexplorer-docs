@@ -17,6 +17,8 @@ Each operator accepts a tabular data set "from the pipe", and other inputs inclu
 
 *Source* `|` *Operator1* `|` *Operator2* `|` *RenderInstruction*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
