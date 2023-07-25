@@ -18,7 +18,6 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 |( ) |Denotes that at least one of the enclosed items is required.|
 |\| (pipe) |Used within square or round brackets to denote that you may specify one of the items separated by the pipe character. In this form, the pipe is equivalent to the logical OR operator. When in a block (`|`), the pipe is part of the KQL query syntax.|
 |[`,` ...]|Indicates that the preceding parameter can be repeated multiple times, separated by commas.|
-|\| (pipe)|Indicates that you can only use one of the syntax items separated by the pipe(s).|
 |`;`|Query statement terminator.|
 
 ## Examples
