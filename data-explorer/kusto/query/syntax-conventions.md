@@ -14,11 +14,11 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 |--|--|
 |`Block`|String literals to be entered exactly as shown.|
 |*Italic*|Parameters to be provided a value upon use of the function or command.|
-|[ ] |Denotes that the enclosed item is optional.|
-|\| (pipe) |Denotes that you may specify one of the items separated by the pipe character. In this form, the pipe is equivalent to the logical OR operator. However, when in `block`, the pipe is part of the KQL query syntax.|
+|[ ] (square brackets)|Denotes that the enclosed item is optional.|
+|( \| ) | Denotes that one of the enclosed options must be selected.|
 |[`,` ...]|Indicates that the preceding parameter can be repeated multiple times, separated by commas.|
+|\| (pipe)|Indicates that you can only use one of the syntax items separated by the pipe(s).|
 |`;`|Query statement terminator.|
-
 
 ## Examples
 
