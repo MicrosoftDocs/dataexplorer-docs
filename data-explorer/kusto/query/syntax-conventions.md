@@ -2,7 +2,7 @@
 title:  Syntax conventions for reference documentation
 description: Learn about the syntax conventions for the Kusto Query Language and management command documentation.
 ms.topic: reference
-ms.date: 04/03/2023
+ms.date: 07/25/2023
 ---
 # Syntax conventions for reference documentation
 
@@ -15,10 +15,10 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 |`Block`|String literals to be entered exactly as shown.|
 |*Italic*|Parameters to be provided a value upon use of the function or command.|
 |[ ] |Denotes that the enclosed item is optional.|
-|\| (pipe) |Denotes that you may specify one of the items separated by the pipe character. In this form, the pipe is equivalent to the logical OR operator. However, when in `block`, the pipe is part of the KQL query syntax.|
+|( ) |Denotes that at least one of the enclosed items is required.|
+|\| (pipe) |Used within square or round brackets to denote that you may specify one of the items separated by the pipe character. In this form, the pipe is equivalent to the logical OR operator. When in a `block` (`|`), the pipe is part of the KQL query syntax.|
 |[`,` ...]|Indicates that the preceding parameter can be repeated multiple times, separated by commas.|
 |`;`|Query statement terminator.|
-
 
 ## Examples
 
