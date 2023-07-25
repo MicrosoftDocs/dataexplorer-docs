@@ -6,6 +6,8 @@ items:
     items:
       - name: What is Azure Data Explorer?
         href: data-explorer-overview.md
+      - name: EngineV3
+        href: engine-v3.md
       - name: Get started for free
         href: start-for-free.md
       - name: What's new
@@ -484,6 +486,14 @@ items:
             href: data-explorer-insights.md
           - name: Monitor batching ingestion with metrics
             href: monitor-batching-ingestion.md
+      - name: Business continuity
+        items:
+          - name: Overview
+            displayName: BCDR, bcdr
+            href: business-continuity-overview.md
+          - name: Create solutions
+            displayName: BCDR, bcdr
+            href: business-continuity-create-solution.md
       - name: Share data
         items:
           - name: Use Azure Data Share
@@ -579,18 +589,6 @@ items:
         displayName: SQL Server, ODBC
       - name: Microsoft Purview
         href: purview.md
-  - name: Concepts
-    items:
-      - name: Business continuity
-        items:
-          - name: Overview
-            displayName: BCDR, bcdr
-            href: business-continuity-overview.md
-          - name: Create solutions
-            displayName: BCDR, bcdr
-            href: business-continuity-create-solution.md
-      - name: EngineV3
-        href: engine-v3.md
   - name: Kusto Query Language
     href: kusto/query/toc.yml
   - name: Management commands
