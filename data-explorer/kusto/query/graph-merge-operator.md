@@ -13,7 +13,7 @@ The `graph-merge` operator merges the nodes and edges of two graphs, combining t
 
 ## Syntax
 
-*LeftGraph* `|` `graph-merge` *RightGraph* [on *Attributes*]
+*LeftGraph* `|` `graph-merge` *RightGraph* [ `on` *Conditions* ]
 
 ## Parameters
 
@@ -21,14 +21,7 @@ The `graph-merge` operator merges the nodes and edges of two graphs, combining t
 |--|--|--|--|
 | *LeftGraph* | string | &check; | The left graph. Denoted as `$left`. |
 | *RightGraph* | string | &check; | The right graph. Denoted as `$right`. |
-| *Attributes* | string | | One or more comma-separated rules that describe how edges from *LeftGraph* are matched to edges from *RightGraph*. Multiple rules are evaluated using the `and` logical operator. See [Rules](#rules).|
-
-### Rules
-
-|Rule Kind|Syntax|Predicate|
-|---|---|---|
-|Equality by name| `ColumnName` | `where` `$left.ColumnName` == `$right.ColumnName` |
-|Equality by value|`$left.LeftColumn` == `$right.RightColumn`| `where` `$left.LeftColumn` == `$right.RightColumn` |
+| *Attributes* | string | | One or more comma-separated rules that determine how edges from *LeftGraph* are matched with edges from *RightGraph*. If the columns to match have the same name in both graphs, use the syntax `on` *ColumnName*. Otherwise, use the syntax `on` `$left.`*LeftColumn* `==` `$right.`*RightColumn*. Multiple rules are evaluated using the `and` logical operator.|
 
 ## Returns
 
