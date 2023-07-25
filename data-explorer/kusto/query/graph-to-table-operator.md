@@ -21,7 +21,7 @@ The `graph-to-table` operator exports nodes or edges from a graph to tables.
 
 *G* `|` `graph-to-table` `edges` [ `with_source_id=`*ColumnName* ] [ `with_target_id=`*ColumnName* ] [ `as` *TableName* ]
 
-#### Nodes and Edges:
+#### Nodes and edges:
 
 *G* `|` `graph-to-table` `nodes` `as` *NodesTableName* [ `with_node_id=`*ColumnName* ]`,` `edges` `as` *EdgesTableName* [ `with_source_id=`*ColumnName* ] [ `with_target_id=`*ColumnName* ]
 
@@ -38,23 +38,19 @@ The `graph-to-table` operator exports nodes or edges from a graph to tables.
 
 #### Nodes:
 
-The `graph-to-table` operator returns a tabular result, in which each row corresponds to a node in the source graph.  
-The returned columns are the node's properties.  
-When `with_node_id` is provided, the node hash column will be of `long` type.
+The `graph-to-table` operator returns a tabular result, in which each row corresponds to a node in the source graph. The returned columns are the node's properties. When `with_node_id` is provided, the node hash column will be of `long` type.
 
 #### Edges:
 
-The `graph-to-table` operator returns a tabular result, in which each row corresponds to an edge in the source graph.  
-The returned columns are the node's properties. 
-When `with_source_id` or `with_target_id` are provided, the node hash column will be of `long` type.
+The `graph-to-table` operator returns a tabular result, in which each row corresponds to an edge in the source graph. The returned columns are the node's properties. When `with_source_id` or `with_target_id` are provided, the node hash column will be of `long` type.
 
-#### Nodes and Edges:
+#### Nodes and edges:
 
-The `graph-to-table` operator returns two tabular results, matching the description above.  
+The `graph-to-table` operator returns two tabular results, matching the descriptions above.  
 
 ## Examples
 
-### 1. Get Edges
+### Get edges
 
 The following example builds a graph from edges and nodes tables. The nodes represent people and systems, and the edges are different relations between nodes. The `make-graph` operator builds the graph. Then, there's a call to `graph-to-table` with graph edges and with `with_source_id` and `with_target_id` parameters that export node hash for source and target nodes of each edge.
 
@@ -92,7 +88,7 @@ edges
 |3855580634910899594|-3122868243544336885|Mallory|Alice|attacks|
 |3855580634910899594|-7133945255344544237|Mallory|Bob|attacks|
 
-### 2. Get Nodes
+### Get nodes
 
 The following example builds a graph from edges and nodes tables, the nodes represent people and systems and the edges are different relations between nodes. Following the `make-graph` operator that builds the graph is a call to `graph-to-table` with a graph nodes and `with_node_id` parameter that export node hash. 
 
@@ -128,7 +124,7 @@ edges
 |2533909231875758225|Trent|System|99|
 |3855580634910899594|Mallory|||
 
-### 3. Get Nodes and Edges
+### Get nodes and edges
 
 The following example builds a graph from edges and nodes tables, the nodes represent people and systems and the edges are different relations between nodes. Following the `make-graph` operator that builds the graph is a call to `graph-to-table` with nodes and edges. 
 

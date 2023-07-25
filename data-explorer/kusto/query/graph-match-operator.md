@@ -13,7 +13,7 @@ The `graph-match` operator searches for all occurrences of a graph pattern in an
 
 ## Syntax
 
-*G* `|` `graph-match` *Pattern* `where` *Constraints* `project` [*ColumnName* =] *Expression* [`,` ...]
+*G* `|` `graph-match` *Pattern* `where` *Constraints* `project` [*ColumnName* `=`] *Expression* [`,` ...]
 
 ## Parameters
 
@@ -43,7 +43,7 @@ The returned columns are defined in the operator's `project` clause.
 
 ## Examples
 
-### 1. Attack path
+### Attack path
 
 The following example builds a graph from edges and nodes tables, the nodes represent people and systems and the edges are different relations between nodes. Following the `make-graph` operator that builds the graph is a call to `graph-match` with a graph pattern that searches for attack paths to the "Trent" system node. 
 
@@ -78,7 +78,7 @@ edges
 |---|---|---|
 |Mallory|Bob|Trent|
 
-### 2. All employees in a manager's org
+### All employees in a manager's org
 
 The following example represents an organizational hierarchy. The nodes in the graph represent employees and the edges are from an employee to their manager. After we build the graph using `make-graph`, we search for employees in `Alice`'s org that are younger than `30`.
 

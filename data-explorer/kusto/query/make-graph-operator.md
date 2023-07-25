@@ -61,6 +61,8 @@ edges
 	project Attacker = mallory.name, Compromised = compromised.name, System = trent.name
 ```
 
+**Output**
+
 |Attacker|Compromised|System|
 |---|---|---|
 |Mallory|Bob|Trent|

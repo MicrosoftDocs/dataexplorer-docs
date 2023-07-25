@@ -21,9 +21,7 @@ The graph operators are in public preview mode, and currently four operators are
 
 ## Before using the graph operators
 
-The graph operators use V2 of the KQL parser, the client has to be configured to run queries with KQL parser V2.
-
-To learn how to configure the client to run with KQL parser V2, select the relevant tab for your environment.
+The graph operators use V2 of the KQL parser. To learn how to configure the client to run with KQL parser V2, select the relevant tab for your environment.
 
 ### [Kusto.Explorer](#tab/explorer)
 
@@ -32,6 +30,8 @@ To learn how to configure the client to run with KQL parser V2, select the relev
 1. In the upper right corner, select the settings widget.
 1. Select **Connection**.
 1. From the **Server parser** dropdown, select **V2**.
+
+---
 
 ## Limitations and recommendations
 
