@@ -45,7 +45,7 @@ items:
             items:
               - name: Create table
                 href: create-table-wizard.md
-              - name: External table creation wizard
+              - name: Create external table
                 displayName: one-click
                 href: external-table.md
           - name: Migrate
