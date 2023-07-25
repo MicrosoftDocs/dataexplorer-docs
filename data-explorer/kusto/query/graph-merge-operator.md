@@ -5,7 +5,7 @@ ms.author: rocohen
 ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/19/2023
+ms.date: 07/25/2023
 ---
 # graph-merge operator (Preview)
 
@@ -16,31 +16,36 @@ The `graph-merge` operator merges the nodes and edges of two graphs, combining t
 > The syntax and semantics of the operator might change prior to public availability.
 
 ## Syntax
-*LeftGraph* | `graph-merge` (*RightGraph*) [on *Attributes*]
 
-## Arguments
-|Name|Type|Required | Description |
-|---|---|---|---|
-|*LeftGraph*|Graph|Yes|The left graph. Denoted as `$left`|
-|*RightGraph*|Graph|Yes|The right graph. Denoted as `$right`|
-|*Attributes*|string|No|One or more comma-separated rules that describe how edges from *LeftGraph* are matched to edges from *RightGraph*. Multiple rules are evaluated using the `and` logical operator|
+*LeftGraph* `|` `graph-merge` *RightGraph* [on *Attributes*]
 
+## Parameters
 
-## Rules:
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *LeftGraph* | string | &check; | The left graph. Denoted as `$left`. |
+| *RightGraph* | string | &check; | The right graph. Denoted as `$right`. |
+| *Attributes* | string | | One or more comma-separated rules that describe how edges from *LeftGraph* are matched to edges from *RightGraph*. Multiple rules are evaluated using the `and` logical operator. See [Rules](#rules).|
+
+### Rules
+
 |Rule Kind|Syntax|Predicate|
 |---|---|---|
 |Equality by name| `ColumnName` | `where` `$left.ColumnName` == `$right.ColumnName` |
 |Equality by value|`$left.LeftColumn` == `$right.RightColumn`| `where` `$left.LeftColumn` == `$right.RightColumn` |
 
 ## Returns
+
 The graph merge operator combines nodes and edges from two origin graphs into a new graph, adhering to specified merge rules.
 In the absence of any rules, the edges are unionized rather than merged.
 
 ## Examples
-### Example 1:
-The following example builds a graph from emails and aliases tables and a second graph for calls and employees first and last names. 
-Following the `make-graph` operators that builds the two graphs is a call to `graph-merge`.
-Because *Attributes* is not specified the edges of the new graph are the union of the edges from both the source graphs.
+
+### Merge without attributes
+
+The following example builds a graph from emails and aliases tables and a second graph for calls and employees first and last names. The `make-graph` operators build the two graphs. Then, `graph-merge` merges the nodes and edges of the two graphs.
+
+Since *Attributes* isn't specified, the edges of the new graph are the union of the edges from both the source graphs.
 
 ```kusto
 let Emails = datatable(fromPrincipal: long, toPrincipal:long, wordCount: long, when: datetime) 
@@ -87,7 +92,8 @@ MergeEdges;
 MergeNodes
 ```
 
-#### Result Table 1:
+**Result table 1:**
+
 |fromPrincipal|toPrincipal|wordCount|when|caller|callee|subject|duration|
 |---|---|---|---|---|---|---|---|
 |1|2|200|2022-01-01 00:00:00.0000000|||||
@@ -102,7 +108,8 @@ MergeNodes
 ||||2022-01-05 00:00:00.0000000|1|4|Finance|20|
 ||||2022-08-01 00:00:00.0000000|1|2|Finance|20|
 
-#### Result Table 2:
+**Result table 2:**
+
 |principalId|alias|firstName|lastName|
 |---|---|---|---|
 |1|aa|Alice|Adams|
@@ -112,10 +119,11 @@ MergeNodes
 |5|vv|||
 |6||Trent|Smith|
 
-### Example 2:
-The following example builds a graph from emails and aliases tables and a second graph for calls and employees first and last names. 
-Following the `make-graph` operators that builds the two graphs is a call to `graph-merge`.
-Because *Attributes* is specified the edges will be merged based on source and destination of the emails and calls (all edges with the same source and destination would be merged into a single edge).
+### Merge with attributes
+
+The following example builds a graph from emails and aliases tables and a second graph for calls and employees first and last names. The `make-graph` operators builds the two graphs. Then, `graph-merge` merges the nodes and edges of the two graphs.
+
+Since *Attributes* is specified, the edges are merged based on source and destination of the emails and calls. Meaning, all edges with the same source and destination are merged into a single edge.
 
 ```kusto
 let Emails = datatable(fromPrincipal: long, toPrincipal:long, wordCount: long, when: datetime) 
@@ -164,7 +172,8 @@ MergeEdges;
 MergeNodes
 ```
 
-#### Result Table 1:
+**Result table 1:**
+
 |fromPrincipal|toPrincipal|wordCount|when|caller|callee|subject|duration|
 |---|---|---|---|---|---|---|---|
 |||||4|1|HR|35|2022-01-01 00:00:00.0000000|
@@ -176,7 +185,8 @@ MergeNodes
 |3|4|2|2022-01-04 00:00:00.0000000|3|4|HR|15|2022-01-01 00:00:00.0000000|
 |1|4|101|2022-01-05 00:00:00.0000000|1|4|Finance|20|2022-01-05 00:00:00.0000000|
 
-#### Result Table 2:
+**Result table 2:**
+
 |principalId|alias|firstName|lastName|
 |---|---|---|---|
 |1|aa|Alice|Adams|
@@ -191,4 +201,3 @@ MergeNodes
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
 * [graph-match operator](graph-match-operator.md)
-
