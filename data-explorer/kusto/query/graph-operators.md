@@ -13,7 +13,7 @@ ms.date: 07/25/2023
 > The graph operators are currently offered in preview mode. 
 > The syntax and semantics of the operator might change prior to public availability.
 
-Kusto graph operators enable operations over graph structures.  
+Kusto Query Language (KQL) graph operators enable operations over graph structures.  
 The graph is built from tabular data using the `make-graph` operator then queried using graph operators.
 
 The graph operators are in public preview mode, and currently four operators are available:
