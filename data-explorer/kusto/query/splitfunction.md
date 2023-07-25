@@ -3,7 +3,7 @@ title:  split()
 description: Learn how to use the split() function to split the source string according to a given delimiter.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 07/25/2023
 adobe-target: true
 ---
 # split()
@@ -28,8 +28,7 @@ The `split()` function takes a string and splits it into substrings based on a s
 
 An array of substrings obtained by separating the *source* string by the specified *delimiter*, or a single substring at the specified *requestedIndex*.
 
->[!NOTE]
->To further manipulate the resulting array, see [dynamic object accessors](scalar-data-types/dynamic.md#dynamic-object-accessors).
+[!INCLUDE [dynamic-access](../../includes/dynamic-access.md)]
 
 ## Examples
 
