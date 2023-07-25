@@ -10,7 +10,7 @@ ms.date: 07/25/2023
 The `string` data type represents a sequence of zero or more [Unicode](https://home.unicode.org/)
 characters.
 
-For information on string query operators and tips for optimizing performance, see [String operators](../datatypes-string-operators.md).
+For information on string query operators, see [String operators](../datatypes-string-operators.md).
 
 > [!NOTE]
 >
