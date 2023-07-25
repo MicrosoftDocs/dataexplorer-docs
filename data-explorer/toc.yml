@@ -417,8 +417,6 @@ items:
         href: k2bridge.md
   - name: Admin
     items:
-      - name: Upgrade a free cluster
-        href: start-for-free-upgrade.md
       - name: Customize settings in the web UI
         href: web-customize-settings.md
       - name: Manage
@@ -446,6 +444,12 @@ items:
               - name: Manage cluster language extensions
                 displayName: Python, R
                 href: language-extensions.md
+          - name: Free cluster
+            items:
+              - name: Manage free cluster
+                href: start-for-free-web-ui.md
+              - name: Upgrade a free cluster
+                href: start-for-free-upgrade.md
           - name: Database
             items:
               - name: Manage database permissions
