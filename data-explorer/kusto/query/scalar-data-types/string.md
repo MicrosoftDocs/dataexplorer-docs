@@ -10,6 +10,8 @@ ms.date: 06/08/2022
 The `string` data type represents a sequence of zero or more [Unicode](https://home.unicode.org/)
 characters.
 
+See the list of Kusto Query Language (KQL) [string operators](../datatypes-string-operators.md).
+
 > [!NOTE]
 >
 > * Internally, strings are encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8). Invalid (non-UTF8) characters are replaced with [U+FFFD](https://codepoints.net/U+FFFD) Unicode replacement characters at ingestion time.
@@ -131,3 +133,7 @@ For example:
 print x="https://contoso.blob.core.windows.net/container/blob.txt?"
   h'sv=2012-02-12&se=2013-04-13T0...'
 ```
+
+## See also
+
+* [String operators](../datatypes-string-operators.md)
