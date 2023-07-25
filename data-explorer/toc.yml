@@ -21,11 +21,31 @@ items:
       - name: Set up
         items:
           - name: Create a cluster and database
-            href: create-cluster-and-database.md
-          - name: Create a cluster and database using SDKs
-            href: create-cluster-database.md
-          - name: Automated provisioning
-            href: automated-deploy-overview.md
+            items:
+            - name: Create a cluster and database
+              href: create-cluster-and-database.md
+            - name: Create a cluster and database using SDKs
+              href: create-cluster-database.md
+            - name: Automated provisioning
+              href: automated-deploy-overview.md
+            - name: Troubleshoot
+              items:
+                - name: Creating a cluster
+                  displayName: troubleshoot
+                  href: troubleshoot-create-cluster.md
+                - name: Connecting to a cluster
+                  displayName: troubleshoot
+                  href: troubleshoot-connect-cluster.md
+                - name: Working with databases and tables
+                  displayName: troubleshoot
+                  href: troubleshoot-database-table.md
+          - name: Create tables
+            items:
+              - name: Create table
+                href: create-table-wizard.md
+              - name: External table creation wizard
+                displayName: one-click
+                href: external-table.md
           - name: Migrate
             items:
               - name: Migrate from Elasticsearch
@@ -397,21 +417,6 @@ items:
     items:
       - name: Upgrade a free cluster
         href: start-for-free-upgrade.md
-      - name: Create tables
-        items:
-          - name: Create table
-            href: create-table-wizard.md
-          - name: External table creation wizard
-            displayName: one-click
-            href: external-table.md
-          - name: Create table policies
-            items:
-              - name: Create ingestion batching table policy
-                displayName: one-click, wizard
-                href: table-batching-policy-wizard.md
-              - name: Create retention table policy
-                displayName: one-click, wizard
-                href: table-retention-policy-wizard.md
       - name: Customize settings in the web UI
         href: web-customize-settings.md
       - name: Manage
@@ -450,6 +455,14 @@ items:
               - name: Create policies programmatically
                 displayName: database policy, database policies, table policy, table policies, python, c#
                 href: database-table-policies.md
+          - name: Table
+            items:
+              - name: Create ingestion batching table policy
+                displayName: one-click, wizard
+                href: table-batching-policy-wizard.md
+              - name: Create retention table policy
+                displayName: one-click, wizard
+                href: table-retention-policy-wizard.md
           - name: Data
             items:
               - name: Purge data - Azure portal
@@ -477,17 +490,6 @@ items:
             href: data-share.md
           - name: Follower databases
             href: follower.md
-      - name: Troubleshoot
-        items:
-          - name: Creating a cluster
-            displayName: troubleshoot
-            href: troubleshoot-create-cluster.md
-          - name: Connecting to a cluster
-            displayName: troubleshoot
-            href: troubleshoot-connect-cluster.md
-          - name: Working with databases and tables
-            displayName: troubleshoot
-            href: troubleshoot-database-table.md
   - name: Develop
     items:
       - name: API overview
