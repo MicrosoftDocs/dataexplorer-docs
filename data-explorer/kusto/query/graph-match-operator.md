@@ -1,15 +1,15 @@
 ---
 title: graph-match operator (Preview)
-description: Learn how to use the graph-match operator to search for all occurences of a graph pattern in a graph.
+description: Learn how to use the graph-match operator to search for all occurrences of a graph pattern in a graph.
 ms.author: rocohen
 ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/19/2023
+ms.date: 07/25/2023
 ---
 # graph-match operator (Preview)
 
-The `graph-match` operator searches for all occurences of a graph pattern in an input graph source.
+The `graph-match` operator searches for all occurrences of a graph pattern in an input graph source.
 
 > [!WARNING]
 > The `graph-match` operator is currently offered in preview mode.
@@ -17,28 +17,32 @@ The `graph-match` operator searches for all occurences of a graph pattern in an 
 
 ## Syntax
 
-*G* | `graph-match` *Pattern* `where` *Constraints* `project` [*ColumnName* =] *Expression* [`,` ...]
+*G* `|` `graph-match` *Pattern* `where` *Constraints* `project` [*ColumnName* =] *Expression* [`,` ...]
 
 ## Parameters
 
-* *Pattern*: a sequence of graph node elements connected by graph edge elements using graph notations. A graph notation is one of the following:
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *G* | string | &check; | The input graph source. |
+| *Pattern* | string | &check; | A sequence of graph node elements connected by graph edge elements using graph notations. See [Graph notation](#graph-notation). |
+| *Constraints* | string | &check; | A Boolean expression composed of properties of named variables in the *Pattern*. Each graph element (node/edge) has a set of properties that were attached to it during the graph construction. The constraints define which elements (nodes and edges) are matched by the pattern. A property is referenced by the variable name followed by a dot (`.`) and the property name. |
+| *Expression* | string |  | The `project` clause converts each pattern to a row in a tabular result, the project expression(s) have to be scalar and reference properties of named variables defined in the *Pattern*. A property is referenced by the variable name followed by a dot (`.`) and the attribute name. |
+
+### Graph notation
+
+The following table shows the supported graph notation:
   
-  |Element|Named variable|Anonymous|
-  |---|---|---|
-  |Node|`(`*n*`)`|`()`|
-  |Directed edge: left to right|`-[`*e*`]->`|`-->`|
-  |Directed edge: right to left|`<-[`*e*`]-`|`<--`|
-  |Any direction edge|`-[`*e*`]-`|`--`|
-  |Variable length edge|`-[`*e*`*3..5]-`|`-[*3..5]-`|
-
-
-* *Constraints*: a Boolean expression composed of properties of named variables in the *Pattern*. Each graph element (node/edge) has a set of properties that were attached to it during the graph construction. The constraints define which elements (nodes and edges) are matched by the pattern. A property is referenced by the variable name followed by a dot (`.`) and the property name.
-
-* *Expression*: the `project` clause converts each pattern to a row in a tabular result, the project expression(s) have to be scalar and reference properties of named variables defined in the *Pattern*. A property is referenced by the variable name followed by a dot (`.`) and the attribute name. 
+|Element|Named variable|Anonymous|
+|---|---|---|
+|Node|`(`*n*`)`|`()`|
+|Directed edge: left to right|`-[`*e*`]->`|`-->`|
+|Directed edge: right to left|`<-[`*e*`]-`|`<--`|
+|Any direction edge|`-[`*e*`]-`|`--`|
+|Variable length edge|`-[`*e*`*3..5]-`|`-[*3..5]-`|
 
 ## Returns
 
-The `graph-match` operator returns a *tabular* result, each record corresponds to a match of the pattern in the graph.  
+The `graph-match` operator returns a tabular result, where each record corresponds to a match of the pattern in the graph.  
 The returned columns are defined in the operator's `project` clause.
 
 ## Examples
@@ -114,10 +118,8 @@ reports
 |Eve|27|[<br>  "Alice",<br>  "Bob"<br>]|
 |Ben|23|[<br>  "Alice",<br>  "Chris"<br>]|
 
-
-## Next steps
+## See also
 
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
 * [graph-merge operator](graph-merge-operator.md)
-
