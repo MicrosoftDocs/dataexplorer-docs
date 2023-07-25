@@ -5,15 +5,11 @@ ms.author: rocohen
 ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/19/2023
+ms.date: 07/25/2023
 ---
 # graph-to-table operator (Preview)
 
 The `graph-to-table` operator exports nodes or edges from a graph to tables.
-
-> [!WARNING]
-> The `graph-to-table` operator is currently offered in preview mode. 
-> The syntax and semantics of the operator might change prior to public availability.
 
 ## Syntax
 #### Nodes:

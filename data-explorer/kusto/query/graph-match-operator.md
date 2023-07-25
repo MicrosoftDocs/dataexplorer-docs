@@ -11,10 +11,6 @@ ms.date: 07/25/2023
 
 The `graph-match` operator searches for all occurrences of a graph pattern in an input graph source.
 
-> [!WARNING]
-> The `graph-match` operator is currently offered in preview mode.
-> The syntax and semantics of the operator might change prior to public availability.
-
 ## Syntax
 
 *G* `|` `graph-match` *Pattern* `where` *Constraints* `project` [*ColumnName* =] *Expression* [`,` ...]
