@@ -72,6 +72,8 @@ edges
 	project Attacker = mallory.name, Compromised = compromised.name, System = trent.name
 ```
 
+**Output**
+
 |Attacker|Compromised|System|
 |---|---|---|
 |Mallory|Bob|Trent|
@@ -107,6 +109,8 @@ reports
 	where alice.name == "Alice" and employee.age < 30
 	project employee = employee.name, age = employee.age, reportingPath = reports.manager
 ```
+
+**Output**
 
 |employee|age|reportingPath|
 |---|---|---|

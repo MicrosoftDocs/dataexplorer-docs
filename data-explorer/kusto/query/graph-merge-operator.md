@@ -88,7 +88,7 @@ MergeEdges;
 MergeNodes
 ```
 
-**Result table 1:**
+**Output table 1**
 
 |fromPrincipal|toPrincipal|wordCount|when|caller|callee|subject|duration|
 |---|---|---|---|---|---|---|---|
@@ -104,7 +104,7 @@ MergeNodes
 ||||2022-01-05 00:00:00.0000000|1|4|Finance|20|
 ||||2022-08-01 00:00:00.0000000|1|2|Finance|20|
 
-**Result table 2:**
+**Output table 2**
 
 |principalId|alias|firstName|lastName|
 |---|---|---|---|
@@ -168,7 +168,7 @@ MergeEdges;
 MergeNodes
 ```
 
-**Result table 1:**
+**Output table 1**
 
 |fromPrincipal|toPrincipal|wordCount|when|caller|callee|subject|duration|
 |---|---|---|---|---|---|---|---|
@@ -181,7 +181,7 @@ MergeNodes
 |3|4|2|2022-01-04 00:00:00.0000000|3|4|HR|15|2022-01-01 00:00:00.0000000|
 |1|4|101|2022-01-05 00:00:00.0000000|1|4|Finance|20|2022-01-05 00:00:00.0000000|
 
-**Result table 2:**
+**Output table 2**
 
 |principalId|alias|firstName|lastName|
 |---|---|---|---|
