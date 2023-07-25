@@ -28,6 +28,9 @@ The `split()` function takes a string and splits it into substrings based on a s
 
 An array of substrings obtained by separating the *source* string by the specified *delimiter*, or a single substring at the specified *requestedIndex*.
 
+>[!NOTE]
+>To further manipulate the resulting array, see [dynamic object accessors](scalar-data-types/dynamic.md#dynamic-object-accessors).
+
 ## Examples
 
 > [!div class="nextstepaction"]
