@@ -12,7 +12,7 @@ ms.date: 07/25/2023
 > [!NOTE]
 > Can't find what you're looking for? This article was recently split, as follows:
 >
-> - Learn common operators (current article)
+> - Learn common operators (this article)
 > - [Use aggregation functions](use-aggregation-functions.md)
 > - [Join data from multiple tables](join-data-from-multiple-tables.md)
 > - [Create geospatial visualizations](create-geospatial-visualizations.md)
