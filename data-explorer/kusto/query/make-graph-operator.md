@@ -20,14 +20,14 @@ The `make-graph` operator builds a graph structure from tabular inputs of edges 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
 | *Edges* | string | &check; | The tabular source containing the edges of the graph, each row represents an edge in the graph. |
-| *SourceNodeId* | string | &check; | The column in *Edges* with the source node ids of the edges. |
-| *TargetNodeId* | string | &check; | The column in *Edges* with the target node ids of the edges. |
+| *SourceNodeId* | string | &check; | The column in *Edges* with the source node IDs of the edges. |
+| *TargetNodeId* | string | &check; | The column in *Edges* with the target node IDs of the edges. |
 | *Nodes* | string || The tabular expressions containing the properties of the nodes in the graph. |
-| *NodesId* | string || The columns with the node ids in *Nodes*. |
+| *NodesId* | string || The columns with the node IDs in *Nodes*. |
 
 ## Returns
 
-The `make-graph` operator returns a graph expression and has to be followed by a graph operator such as [graph-match](graph-match-operator.md). Each row in source *Edges* expression becomes an edge with the graph with properties that are the column values of the row. Each row in the node(s) tabular expression becomes a node in the graph with properties that are the column values of the row. Nodes that appear in the *Edges* table but don't have a corresponding row in the nodes table(s) are created as nodes with the corresponding node id and empty properties.
+The `make-graph` operator returns a graph expression and has to be followed by a graph operator such as [graph-match](graph-match-operator.md). Each row in source *Edges* expression becomes an edge with the graph with properties that are the column values of the row. Each row in the node(s) tabular expression becomes a node in the graph with properties that are the column values of the row. Nodes that appear in the *Edges* table but don't have a corresponding row in the nodes table(s) are created as nodes with the corresponding node ID and empty properties.
 
 > [!NOTE]
 > Each node has a unique identifier. If the same node ID appears in both the *Nodes1* and *Nodes2* tables, a single node is created by merging their properties. If there are conflicting property values for the same node, one of the values is arbitrarily chosen.
