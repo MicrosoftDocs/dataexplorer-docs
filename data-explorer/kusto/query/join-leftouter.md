@@ -10,6 +10,8 @@ ms.date: 06/18/2023
 
 The `leftouter` join flavor returns all the records from the left side table and only matching records from the right side table.
 
+:::image type="content" source="images/joinoperator/join-leftouter.png" alt-text="Diagram that shows how the join works." lightbox="images/joinoperator/join-kinds.png":::
+
 ## Syntax
 
 *LeftTable* `|` `join` `kind=leftouter` [ *Hints* ] *RightTable* `on` *Conditions*

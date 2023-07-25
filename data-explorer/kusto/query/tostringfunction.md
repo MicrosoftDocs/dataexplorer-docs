@@ -29,8 +29,8 @@ If *value* is null, the result is an empty string.
 ## Example
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJLy4BMtI1DI2MNRVsbRWUgAwlAFmZlSocAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJLy4BMtI1DI2MNQE7Y95rEwAAAA==" target="_blank">Run the query</a>
 
 ```kusto
-tostring(123) == "123"
+print tostring(123)
 ```
