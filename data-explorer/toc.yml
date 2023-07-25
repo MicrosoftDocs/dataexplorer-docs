@@ -20,7 +20,7 @@ items:
             href: proof-of-concept-playbook.md
       - name: Set up
         items:
-          - name: Create a cluster and database in the Azure portal
+          - name: Create a cluster and database
             href: create-cluster-and-database.md
           - name: Create a cluster and database using SDKs
             href: create-cluster-database.md
@@ -35,6 +35,12 @@ items:
                 displayName: Time Series Insights
       - name: Secure
         items:
+          - name: Security overview
+            href: security.md
+          - name: Security baseline
+            href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
+          - name: Security controls by Azure Policy
+            href: security-controls-policy.md
           - name: Access control
             href: kusto/access-control/index.md
             items:
@@ -583,14 +589,6 @@ items:
             href: business-continuity-create-solution.md
       - name: EngineV3
         href: engine-v3.md
-      - name: Security
-        items:
-          - name: Security overview
-            href: security.md
-          - name: Security baseline
-            href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
-          - name: Security controls by Azure Policy
-            href: security-controls-policy.md
   - name: Kusto Query Language
     href: kusto/query/toc.yml
   - name: Management commands
