@@ -305,6 +305,8 @@ items:
           - name: Overview
             href: web-ui-query-overview.md
             displayName: web UI
+          - name: Customize settings in the web UI
+            href: web-customize-settings.md
           - name: Add a cluster connection
             href: add-cluster-connection.md
             displayName: connect to cluster
@@ -417,8 +419,6 @@ items:
         href: k2bridge.md
   - name: Admin
     items:
-      - name: Customize settings in the web UI
-        href: web-customize-settings.md
       - name: Manage
         items:
           - name: Cluster
