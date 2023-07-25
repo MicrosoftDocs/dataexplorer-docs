@@ -10,7 +10,7 @@ ms.date: 07/25/2023
 The `string` data type represents a sequence of zero or more [Unicode](https://home.unicode.org/)
 characters.
 
-See the list of Kusto Query Language (KQL) [string operators](../datatypes-string-operators.md).
+For information on string query operators and tips for optimizing performance, see [String operators](../datatypes-string-operators.md).
 
 > [!NOTE]
 >
@@ -46,7 +46,7 @@ Verbatim string literals are also supported. In this form, the backslash charact
 
 ## Concatenation of separated string literals
 
-In a KQL query, when two or more string literals are placed adjacent to each other with nothing in between, or they are separated solely by whitespace and comments, they automatically combine to form a new string literal.
+In a KQL query, when two or more adjacent string literals have no separation between them, they're automatically combined to form a new string literal. Similarly, if the string literals are separated only by whitespace or comments, they're also combined to form a new string literal.
 
 For example, the following expressions all yield a string of length 13:
 
