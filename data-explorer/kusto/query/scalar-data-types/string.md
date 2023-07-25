@@ -50,6 +50,9 @@ In a KQL query, when two or more string literals are placed adjacent to each oth
 
 For example, the following expressions all yield a string of length 13:
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XOMQoCMRSE4T6nGNOsgrAHsBFsrGw8QXYzmEDyErIPwt5eFztZyym+n6ktimLRlihHe2dKxQ5nDFfbS0v+YE8XjCMeRUOUFyZqJwUamI2pOxibxg9/srrmlB7Tih6icqluJoqkdT9jsLlbyZmin7Hz6V/UiYfD/KVv7+yEm+AAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 print strlen("Hello"', '@"world!"); // Nothing between them
 
