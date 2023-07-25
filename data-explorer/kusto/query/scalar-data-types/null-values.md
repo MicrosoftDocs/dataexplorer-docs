@@ -3,7 +3,7 @@ title:  Null Values
 description: This article describes Null Values in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/04/2021
+ms.date: 07/25/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -133,11 +133,14 @@ For example:
 [,]
 [ , ]
 [a,1]
+
+T
+| project a, b, isnull_a=isnull(a), isempty_a=isempty(a), stlen_a=strlen(a), isnull_b=isnull(b)
 ```
 
 **Output**
 
-|a     |b     |isnull(a)|isempty(a)|strlen(a)|isnull(b)|
+|a     |b     |isnull_a|isempty_a|strlen_a|isnull_b|
 |------|------|---------|----------|---------|---------|
 |&nbsp;|&nbsp;|false    |true      |0        |true     |
 |&nbsp;|&nbsp;|false    |false     |1        |true     |
