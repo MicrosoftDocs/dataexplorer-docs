@@ -3,7 +3,7 @@ title:  Client libraries overview
 description: This article lists the Client libraries in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/19/2023
+ms.date: 07/26/2023
 ---
 # Kusto client libraries
 
@@ -15,7 +15,6 @@ Use these libraries for Azure APIs and to programmatically interact with your cl
 | Language/Tool | Query | Ingestion | ARM/RP Management |
 |--|--|--|--|--|
 | .NET (4.7.2, Core 2.1, Standard 2.0) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/) |
-| .NET Standard 2.0 (deprecated) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard/) |  |
 | Java | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data) [GitHub](https://github.com/Azure/azure-kusto-java/tree/master/data) | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest) [GitHub](https://github.com/Azure/azure-kusto-java/tree/master/ingest) | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto.v2020_09_18) |
 | JavaScript |  |  | [npm](https://www.npmjs.com/package/@azure/arm-kusto) |
 | NodeJS | [npm](https://www.npmjs.com/package/azure-kusto-data) [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/packages/azure-kusto-data) | [npm](https://www.npmjs.com/package/azure-kusto-ingest)       [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/packages/azure-kusto-ingest) | [npm](https://www.npmjs.com/package/azure-arm-kusto/v/2.0.0) |
