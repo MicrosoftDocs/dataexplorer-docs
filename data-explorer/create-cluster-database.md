@@ -3,6 +3,7 @@ title: 'Create an Azure Data Explorer cluster and database'
 description: Learn how to create an Azure Data Explorer cluster and database.
 ms.reviewer: lugoldbe
 ms.topic: how-to
+ms.custom: devx-track-azurepowershell
 ms.date: 05/17/2023
 ---
 
