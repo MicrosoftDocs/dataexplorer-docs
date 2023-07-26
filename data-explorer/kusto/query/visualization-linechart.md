@@ -62,7 +62,7 @@ This visualization supports splitting into multiple y-axis values:
     
 ## Example
 
-## Render a line chart
+### Render a line chart
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLEm1tVUK8wxy9/TzdFQCyhQU5WelJpeA5IpKQjJzU3UUXBJzE9NTA4ryC1KLSiqBaopS81JSixRyMvNSkzOAygCpk5aiXAAAAA==" target="_blank">Run the query</a>
