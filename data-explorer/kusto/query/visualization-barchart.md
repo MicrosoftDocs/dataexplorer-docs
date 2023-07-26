@@ -80,7 +80,7 @@ The supported values of this property are:
 ## Example
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6tRKC7NzU0syqxKVUgtS80riU/OL80rsQWTGpoKSZUKwSWJJalcNQrlGalFKIoU7BQMDYASBUX5WanJJRCFOsgqgJJFqXkpqUUKSYlFyRmJRSUA52pZ+XAAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNQiFEUKdgqGBkCJgqL8rNTkEohCHWQVQMmi1LyU1CKFpMSi5IzEohIA1FziU3wAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
