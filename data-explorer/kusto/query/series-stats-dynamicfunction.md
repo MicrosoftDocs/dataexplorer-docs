@@ -58,10 +58,11 @@ The following query creates a series of the average taxi fare per minute, and th
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXMMQ6DMAxA0b2n8AgDQw/AKTiAZSVu5SI7UeygInF4Spm+/vJsTxj0lccBSitPzk3YYflnpu09vKgxkpZuMUIxqJLWXjFTcIgyeHCFp4r9iNrKh1PAEhQ+3xb6NZh3I5U03PJ4AhN2sX94AAAA" target="_blank">Run the query</a>
 
+```kusto
 nyc_taxi
 | make-series Series=avg(fare_amount) on pickup_datetime step 1min
 | project Stats=series_stats_dynamic(Series)
-
+```
 
 **Output**
 | Stats |
