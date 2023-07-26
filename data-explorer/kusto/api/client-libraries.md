@@ -13,7 +13,7 @@ Use these libraries for Azure APIs and to programmatically interact with your cl
 > For previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/kusto/api/client-libraries).
 
 | Language/Tool | Query | Ingestion | ARM/RP Management |
-|--|--|--|--|--|
+|--|--|--|--|
 | .NET (4.7.2, Core 2.1, Standard 2.0) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/) |
 | Java | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data) [GitHub](https://github.com/Azure/azure-kusto-java/tree/master/data) | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest) [GitHub](https://github.com/Azure/azure-kusto-java/tree/master/ingest) | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto.v2020_09_18) |
 | Python | [Pypi](https://pypi.org/project/azure-kusto-data/)    [GitHub](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data) | [Pypi](https://pypi.org/project/azure-kusto-ingest/)      [GitHub](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) | [Pypi](https://pypi.org/project/azure-mgmt-kusto/) |
