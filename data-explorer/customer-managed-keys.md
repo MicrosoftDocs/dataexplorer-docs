@@ -3,7 +3,7 @@ title: Configure customer-managed-keys
 description: This article describes how to configure customer-managed keys encryption on your data in Azure Data Explorer.
 ms.reviewer: astauben
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom:
 ms.date: 05/10/2023
 ---
 
