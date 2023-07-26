@@ -3,7 +3,7 @@ title:  Time chart visualization
 description: This article describes the time chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/03/2022
+ms.date: 07/26/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -59,6 +59,40 @@ This visualization supports splitting into multiple y-axis values:
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
 
+## Examples
+
+### Create a timechart
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WqEQAyF7/cpcqdS7aqlFLr4FLvQS4ka16HzIzPZn5Y+fDOrCy20V5mQk3O+jCYGo2zL0MCATKwMpXVZvRRlVZTP2W6jowKvfynqonyCun4ty1U3RFE97TYDGdcafKc2kFcU6s0XxLZYWrAn0+D5mErNwFk4iOme0cwwemdWInZrcGCao3f3AUENIF6XiTzdmqaB5LCvEgDYbgECaeoZUGb2qAkiLayho/My6DWhJQ9nFU6o1SeyclYs6cpkB0g7FA9lKZc1DM6izoG9jHLwJImylMmVi2c7UO/M7ALFU3IoqhySuD0qTrIF6S5RMQjcGOHkr+TxE06O/TcvBxSyOxikd+HDTZcJfKxyUzTsJ/QMF8VTyoo1NckbdYDz/Ci2OI6qXxiMszzlv+mS7BvAR09lEAIAAA==" target="_blank">Run the query</a>
+
+```kusto 
+let min_t = datetime(2017-01-05);
+let max_t = datetime(2017-02-03 22:00);
+let dt = 2h;
+demo_make_series2
+| make-series num=avg(num) on TimeStamp from min_t to max_t step dt by sid 
+| where sid == 'TS1'   //  select a single time series for a cleaner visualization
+| extend (baseline, seasonal, trend, residual) = series_decompose(num, -1, 'linefit')  //  decomposition of a set of time series to seasonal, trend, residual, and baseline (seasonal+trend)
+| render timechart with(title='Web app. traffic of a month, decomposition')
+```
+
+:::image type="content" source="images/visualization-timechart/visualization-timechart.png" alt-text="Screenshot of timechart visualization output." lightbox="images/visualization-timechart/visualization-timechart.png":::
+
+### Use the ysplit property
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWMsQqDMBiE90Lf4ciUgEsfwCEFoSA4GIeuUX8wYKIkvxVLH76x3e6+4zvDS/TViwKn6+WDfaJIMGyZ4AKk6KqnNqKAaKp7q02tz1zrxmSqYMOIn9wdK6EsIR7WzeJ8Spv3Nro3YVi2wFKhP/7HBXoXZI6RO+dzvY3qNCKFkSI4s2HKI3bHE+SR1tlxudpAc1JfbEl6kbAAAAA=" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where State in ("TEXAS", "NEBRASKA", "KANSAS") and EventType == "Hail"
+| summarize count() by State, bin(StartTime, 1d)
+| render timechart with (ysplit=panels)
+```
+
+:::image type="content" source="images/visualization-timechart/ysplit-panels.png" alt-text="Screenshot of the time chart query result with the ysplit panels property." lightbox="images/visualization-timechart/ysplit-panels.png":::
+
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
@@ -71,8 +105,6 @@ All properties are optional.
 |--------------|----------------------------------------------------------------------------------|
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 |`title`       |The title of the visualization (of type `string`).                                |
-
-::: zone-end
 
 ## Example
 
@@ -91,3 +123,5 @@ demo_make_series2
 ```
 
 :::image type="content" source="images/visualization-timechart/visualization-timechart.png" alt-text="Screenshot of timechart visualization output." lightbox="images/visualization-timechart/visualization-timechart.png":::
+
+::: zone-end
