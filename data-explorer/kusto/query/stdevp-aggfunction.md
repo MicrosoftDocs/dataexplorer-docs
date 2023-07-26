@@ -23,6 +23,8 @@ This function uses the following formula.
 
 `stdevp(`*expr*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

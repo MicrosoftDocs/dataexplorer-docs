@@ -250,7 +250,7 @@ items:
                 href: query-monitor-data.md
               - name: Export and query Azure Monitor data
                 href: query-exported-azure-monitor-data.md
-          - name: Query data in MATLAB
+          - name: Query data using MATLAB
             href: query-matlab.md
           - name: Query data using Power Apps
             href: power-apps-connector.md

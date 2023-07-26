@@ -17,6 +17,8 @@ See also - [min()](min-aggfunction.md) function, which returns the minimum value
 
  `minif` `(`*Expr*`,`*Predicate*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

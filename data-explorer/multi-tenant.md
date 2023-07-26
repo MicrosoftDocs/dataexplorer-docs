@@ -48,7 +48,7 @@ The characteristics of this architecture are:
 * **Retention and caching policies**: Each tenant can have its own unique policies, which enable you to provide custom retention and caching policies to your customers.
 
 * **Security boundary per tenant**:
-  * For multi-tenant application (proxy): Configure your application to target the relevant database. Use [access restriction](kusto/query/cross-cluster-or-database-queries.md#access-restriction) on queries to prohibit [cross-database queries](kusto/query/cross-cluster-or-database-queries.md).
+  * For multi-tenant application (proxy): Configure your application to target the relevant database. Use [access restriction](kusto/query/cross-cluster-or-database-queries.md#qualified-names-and-restrict-access-statements) on queries to prohibit [cross-database queries](kusto/query/cross-cluster-or-database-queries.md).
   * For users with direct access: Users can be granted access at the [database level](kusto/access-control/role-based-access-control.md). Giving users direct access to their database creates a dependency for the implementation details, making it difficult to change the implementation. Therefore, we strongly recommend using the proxy approach for accessing the database.
 
 * **Aggregating data from multiple tenants at scale**: Use the [union operator](kusto/query/unionoperator.md) to aggregate data between databases. However, this method can become cumbersome as the number of tenants increases. Even though aggregating data from multiple tenants might be a design goal from the tenant's perspective, it might be of interest for solution owner to aggregate data from all tenants to gather statistics.

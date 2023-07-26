@@ -24,6 +24,8 @@ If you're looking for a [term](datatypes-string-operators.md#what-is-a-term), us
 
 *T* `|` `where` *Column* `!contains_cs` `(`*Expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

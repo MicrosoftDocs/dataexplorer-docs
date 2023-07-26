@@ -19,6 +19,8 @@ Any two statements must be separated by a semicolon.
 
 `toscalar(`*expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

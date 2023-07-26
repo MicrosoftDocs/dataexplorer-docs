@@ -22,6 +22,8 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 `T | evaluate narrow()`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Examples
 
 The following example shows an easy way to read the output of the Kusto

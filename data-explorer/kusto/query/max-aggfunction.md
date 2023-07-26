@@ -15,6 +15,8 @@ Finds the maximum value the expression in the group.
 
 `max(`*expr*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

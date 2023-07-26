@@ -16,8 +16,6 @@ Use these libraries for Azure APIs and to programmatically interact with your cl
 |--|--|--|--|--|
 | .NET (4.7.2, Core 2.1, Standard 2.0) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/) |
 | Java | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data) [GitHub](https://github.com/Azure/azure-kusto-java/tree/master/data) | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest) [GitHub](https://github.com/Azure/azure-kusto-java/tree/master/ingest) | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto.v2020_09_18) |
-| JavaScript |  |  | [npm](https://www.npmjs.com/package/@azure/arm-kusto) |
-| NodeJS | [npm](https://www.npmjs.com/package/azure-kusto-data) [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/packages/azure-kusto-data) | [npm](https://www.npmjs.com/package/azure-kusto-ingest)       [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/packages/azure-kusto-ingest) | [npm](https://www.npmjs.com/package/azure-arm-kusto/v/2.0.0) |
 | Python | [Pypi](https://pypi.org/project/azure-kusto-data/)    [GitHub](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data) | [Pypi](https://pypi.org/project/azure-kusto-ingest/)      [GitHub](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) | [Pypi](https://pypi.org/project/azure-mgmt-kusto/) |
 | R | [CRAN](https://cran.r-project.org/web/packages/AzureKusto/index.html) |  |  |
 | Go | [GitHub](https://github.com/Azure/azure-kusto-go) | [GitHub](https://github.com/Azure/azure-kusto-go/tree/master/kusto/ingest) | [GitHub](https://github.com/Azure/azure-sdk-for-go/tree/main/sdk/resourcemanager/kusto) |
@@ -25,4 +23,4 @@ Use these libraries for Azure APIs and to programmatically interact with your cl
 | PowerShell | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) | [Package](https://www.powershellgallery.com/packages/Az.Kusto/) |
 | Azure   CLI |  |  | [Azure CLI](/cli/azure/install-azure-cli) |
 | REST   API | [REST](rest/index.md) | [REST](rest/index.md) | [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/azure-kusto/resource-manager/Microsoft.Kusto) |
-| TypeScript |  |  | [Npm](https://www.npmjs.com/package/@azure/arm-kusto/v/2.0.0) |
+| TypeScript(Node.JS/Browser) | [npm](https://www.npmjs.com/package/azure-kusto-data) [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/packages/azure-kusto-data) | [npm](https://www.npmjs.com/package/azure-kusto-ingest)       [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/packages/azure-kusto-ingest) | [npm](https://www.npmjs.com/package/azure-arm-kusto) |
