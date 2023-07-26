@@ -79,7 +79,7 @@ demo_make_series2
 
 :::image type="content" source="images/visualization-timechart/visualization-timechart.png" alt-text="Screenshot of timechart visualization output." lightbox="images/visualization-timechart/visualization-timechart.png":::
 
-## Label a time chart
+### Label a time chart
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOQQrCMBBF957i01UCVlpddFU36gn0AqkZbKBJJR2tiod3GoogDgMz/JnP+0fuoz/cKfCweGNsKRKObCKfnCc0xCNRgLKGiUVR66Ko8qKU1lit8KuX63xTao0FpEyw2BtvLrSL/XXAFoUQhpv3JroXIUF3/S0wapynqTSaJxoX1DfBEpXVYosULEVMqHMrt0QYHbdQaWXHHdXZRJJMExT9fTZky/TymH/2EnmWnv+2+dLRRYh166ylkBT9AeKYKXcqAQAA" target="_blank">Run the query</a>
