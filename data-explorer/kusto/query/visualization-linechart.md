@@ -107,7 +107,7 @@ StormEvents
 | render linechart with (ymin=7000, ymax=300000)
 ```
 
-:::image type="content" source="images/visualization-linechart/line-chart-limit-y-values.png" alt-text="Screenshot of line chart with labels." lightbox="images/visualization-linechart/line-chart-limit-y-values.png":::
+:::image type="content" source="images/visualization-linechart/line-chart-limit-y-values.png" alt-text="Screenshot of line chart with limitations on y-axis values." lightbox="images/visualization-linechart/line-chart-limit-y-values.png":::
 
 ### View multiple y-axes
 
