@@ -61,7 +61,7 @@ SalesFact
 | render pivotchart
 ```
 
-:::image type="content" source="images/visualize-pivotchart/visualization-pivotchart.png" alt-text="Screenshot of query result showing a pivot chart visualization."  lightbox="images/visualize-pivotchart/visualization-pivotchart.png":::
+:::image type="content" source="images/visualize-pivotchart/pivotchart.png" alt-text="Screenshot of query result showing a pivot chart visualization."  lightbox="images/visualize-pivotchart/pivotchart.png":::
 
 ::: zone-end
 
