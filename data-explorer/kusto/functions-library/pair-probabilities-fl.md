@@ -29,6 +29,8 @@ The function `pair_probabilities_fl()` is a [UDF (user-defined function)](../que
 
 `pair_probabilities_fl(`*A*, *B*, *Scope*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

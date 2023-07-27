@@ -37,6 +37,8 @@ The following table describes the supported tuning options. To learn how to use 
 
 [ `Language` | `Application` ] `=` *ExpectedArguments*`@`*TuningOptions*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
