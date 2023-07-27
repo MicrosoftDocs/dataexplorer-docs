@@ -55,10 +55,10 @@ All properties are optional.
 ```kusto
 SalesFact
 | join kind= inner Products on ProductKey
-| where ProductCategoryName contains "Computers"
+| where ProductCategoryName has "Computers" and ProductName has "Contoso"
 | where DateKey between (datetime(2006-12-31) .. datetime(2007-02-01))
-| summarize count() by SalesAmount, ProductName, DateKey
-| render pivotchart 
+| project SalesAmount, ProductName, DateKey
+| render pivotchart
 ```
 
 :::image type="content" source="images/visualize-pivotchart/visualization-pivotchart.png" alt-text="Screenshot of query result showing a pivot chart visualization."  lightbox="images/visualize-pivotchart/visualization-pivotchart.png":::
