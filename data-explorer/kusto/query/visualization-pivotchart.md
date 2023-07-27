@@ -3,7 +3,7 @@ title:  Pivot chart visualization
 description: This article describes the pivot chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/03/2022
+ms.date: 07/27/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -49,6 +49,22 @@ All properties are optional.
 |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
+
+## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WR3W7CMAyF73mKI25KpRbaTmjSUJ8CpF1WoXVptPxUifmb9vBLoGO7GFeR7ePv2I4ihpamYdToBBNLTYuqKF/zosyLdbqZqagQl/8UVV68oKreimLSdVFUDZtZR9o2WnxQ48lJ8tXsCzHM7yHMUdfidFiEN4U12AXoloUe0Turp4nYTsaeaYzs/RVedgis80CObkFdI9ltywTAagV4UtQyRKiZgyLEaTGZ9taFQqtIGHI4SX8USn4KltYEJF2YTIeFMFaHPPkMvrWOMuxFoEpDaVjujmo6aq0erafmIY+7ZCiX6wx5mSGJHb3kJA1sF8jB8q69toNwjLPkYfGTseqoja//eLNkRXXyTnuIcVyCneh72cL2YQdtDQ8ZHvIkDcsfPWH+3AvPvObx0FMXD/RLhfDYW9VhtNKwj/8U69M1b2S//AbRUQMWQQIAAA==" target="_blank">Run the query</a>
+
+```kusto
+alesFact
+| join kind= inner Products on ProductKey
+| where ProductCategoryName contains "Computers"
+| where DateKey between (datetime(2006-12-31) .. datetime(2007-02-01))
+| summarize count() by SalesAmount, ProductName, DateKey
+| render pivotchart 
+```
+
+:::image type="content" source="images/visualize-pivotchart/visualization-pivotchart.png" alt-text="Screenshot of query result showing a pivot chart visualization."  lightbox="images/visualize-pivotchart/visualization-pivotchart.png":::
 
 ::: zone-end
 
