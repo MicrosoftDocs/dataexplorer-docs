@@ -3,7 +3,7 @@ title:  format_datetime()
 description: Learn how to use the format_datetime() function to format a datetime according to the provided format.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 07/27/2023
 ---
 # format_datetime()
 
@@ -79,19 +79,54 @@ A string with *date* formatted as specified by *format*.
 
 ## Examples
 
+The following three examples return differently formatted datetimes.
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIKVGwVUhJLEktycxN1TAyMDTXNTDUNbJUMLC0MjCwMjDVtOYqKMrMK1HgKjO0Tcsvyk0siYerTynRUa+s1PX11U1JUYj28LDKzbUqLo5V19QBKjfCplwBqB6kA6IBoZ6rzBiXcpjxGRkQ5QolJUAdAJCyrq29AAAA" target="_blank">Run the query</a>
 
 ```kusto
 let dt = datetime(2017-01-29 09:00:05);
 print 
-v1=format_datetime(dt,'yy-MM-dd [HH:mm:ss]'), 
-v2=format_datetime(dt, 'yyyy-M-dd [H:mm:ss]'),
+v1=format_datetime(dt,'yy-MM-dd [HH:mm:ss]')
+```
+
+**Output** 
+
+|v1|
+|--|
+|17-01-29 [09:00:05]|
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIKVGwVUhJLEktycxN1TAyMDTXNTDUNbJUMLC0MjCwMjDVtOYqKMrMK1HgKjO0Tcsvyk0siYerTynRUa+s1PX11U1JUYj28LDKzbUqLo5V19QBKjfCplwBqB6kA6IBoZ6rzBiXcpjxGRkQ5QolJUAdAJCyrq29AAAA" target="_blank">Run the query</a>
+
+```kusto
+let dt = datetime(2017-01-29 09:00:05);
+print 
+v2=format_datetime(dt, 'yyyy-M-dd [H:mm:ss]')
+```
+
+**Output** 
+
+|v2|
+|--|
+|2017-1-29 [9:00:05]|
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIKVGwVUhJLEktycxN1TAyMDTXNTDUNbJUMLC0MjCwMjDVtOYqKMrMK1HgKjO0Tcsvyk0siYerTynRUa+s1PX11U1JUYj28LDKzbUqLo5V19QBKjfCplwBqB6kA6IBoZ6rzBiXcpjxGRkQ5QolJUAdAJCyrq29AAAA" target="_blank">Run the query</a>
+
+```kusto
+let dt = datetime(2017-01-29 09:00:05);
+print 
 v3=format_datetime(dt, 'yy-MM-dd [hh:mm:ss tt]')
 ```
 
-**Output**
+**Output** 
 
-|v1|v2|v3|
-|--|--|--|
-|17-01-29 [09:00:05]|2017-1-29 [9:00:05]|17-01-29 [09:00:05 AM]|
+|v3|
+|--|
+|17-01-29 [09:00:05 AM]|
+
+## See also
+
+* To convert from UTC to local, see [datetime_utc_to_local()](datetime-utc-to-local-function.md)
+* To convert a datetime from local to UTC, see [datetime_local_to_utc()](datetime-local-to-utc-function.md)

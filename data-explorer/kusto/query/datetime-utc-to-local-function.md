@@ -3,7 +3,7 @@ title:  datetime_utc_to_local()
 description: This article describes the datetime_utc_to_local function in Azure Data Explorer.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 07/12/2022
+ms.date: 07/27/2023
 ---
 # datetime_utc_to_local()
 
@@ -45,3 +45,4 @@ print dt=now()
 
 * To convert a datetime from local to UTC, see [datetime_local_to_utc()](datetime-local-to-utc-function.md).
 * [Timezones](timezone.md)
+* [format_datetime()](format-datetimefunction.md)
