@@ -13,6 +13,8 @@ Calculates the total length of a line or a multiline on Earth.
 
 `geo_line_length(`*lineString*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
