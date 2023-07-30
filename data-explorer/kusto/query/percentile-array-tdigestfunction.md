@@ -15,6 +15,8 @@ Calculates the percentile result from the `tdigest` results (which was generated
 
 `percentiles_array_tdigest(`*tdigest*`,` *Dynamic array* [`,` *typeLiteral* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -22,7 +24,7 @@ Calculates the percentile result from the `tdigest` results (which was generated
 | *tdigest*| string | &check; | The [`tdigest`](tdigest-aggfunction.md) or [tdigest_merge()](tdigest-merge-aggfunction.md) results used to calculate the percentiles.|
 | *percentile* | real | &check; | A value or comma-separated list of values that specifies the percentiles.|
 | *Dynamic array*| dynamic | &check; | A dynamic array of real numbers that specify the percentiles.|
-| *typeLiteral*| string | | A type literal. For example, `typeof(long)`. If provided, the result set will be of this type.|
+| *typeLiteral*| string | | A type literal. For example, `typeof(long)`. If provided, the result set is of this type.|
 
 ## Returns
 

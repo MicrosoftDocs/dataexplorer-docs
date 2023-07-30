@@ -12,9 +12,13 @@ The `rightanti` join flavor returns all records from the right side that don't m
 
 > **Alias**: `rightantisemi`
 
+:::image type="content" source="images/joinoperator/join-rightanti.png" alt-text="Diagram that shows how the join works." lightbox="images/joinoperator/join-kinds.png":::
+
 ## Syntax
 
 *LeftTable* `|` `join` `kind=rightanti` [ *Hints* ] *RightTable* `on` *Conditions*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 

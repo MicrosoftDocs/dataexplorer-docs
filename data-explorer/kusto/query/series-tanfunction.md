@@ -13,6 +13,8 @@ Calculates the element-wise tangent of the numeric series input.
 
 `series_tan(`*series*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

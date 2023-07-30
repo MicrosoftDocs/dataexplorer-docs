@@ -13,6 +13,8 @@ Returns the constant value of Pi.
 
 `pi()`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 The double value of Pi (3.1415926...)

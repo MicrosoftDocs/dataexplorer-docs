@@ -101,6 +101,8 @@ The shard level query results cache is automatically enabled when the `Query res
 > [!NOTE]
 > This option can be set in the query text or as a [client request property](../api/netfx/request-properties.md).
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Example
 
 ```kusto

@@ -28,6 +28,8 @@ In addition to the simple paths with both types of slashes, the function support
 
 `parse_path(`*path*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

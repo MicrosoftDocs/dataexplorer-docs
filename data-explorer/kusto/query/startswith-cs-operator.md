@@ -19,6 +19,8 @@ Filters a record set for data with a case-sensitive string starting sequence.
 
 *T* `|` `where` *col* `startswith_cs` `(`*expression*`)`  
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

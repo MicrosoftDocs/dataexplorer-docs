@@ -21,6 +21,8 @@ The function `binomial_test_fl()` is a [UDF (user-defined function)](../query/fu
 
 `T | invoke binomial_test_fl(`*successes*`,` *trials* [`,`*success_prob* [`,` *alt_hypotheis* ]]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

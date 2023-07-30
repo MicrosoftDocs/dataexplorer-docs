@@ -13,6 +13,8 @@ Select what columns from the input to keep in the output. Only the columns that 
 
 *T* `| project-keep` *ColumnNameOrPattern* [`,` ...]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

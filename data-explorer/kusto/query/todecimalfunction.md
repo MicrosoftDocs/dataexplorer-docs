@@ -16,6 +16,8 @@ Converts the input to a decimal number representation.
 
 `todecimal(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
