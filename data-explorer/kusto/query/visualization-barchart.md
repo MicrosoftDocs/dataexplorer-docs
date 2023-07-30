@@ -137,7 +137,7 @@ StormEvents
     xtitle="State")
 ```
 
-:::image type="content" source="images/visualization-barchart/stacked-100-bar-chart.png" alt-text="Screenshot of  a "stacked100" bar chart visualization." lightbox="images/visualization-barchart/stacked-100-bar-chart.png":::
+:::image type="content" source="images/visualization-barchart/stacked-100-bar-chart.png" alt-text="Screenshot of a bar chart visualization." lightbox="images/visualization-barchart/stacked-100-bar-chart.png":::
 
 To see a similar graph without using `stacked100`, you'd need to calculate the percentages as shown in the following query.
 
