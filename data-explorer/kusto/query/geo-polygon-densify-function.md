@@ -13,6 +13,8 @@ Converts polygon or multipolygon planar edges to geodesics by adding intermediat
 
 `geo_polygon_densify(`*polygon*`,` *tolerance*`,` [ *preserve_crossing* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
