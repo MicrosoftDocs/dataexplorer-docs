@@ -13,6 +13,8 @@ Returns the value of the IPv4 netmask suffix from an IPv4 string address.
 
 `ipv4_netmask_suffix(`*ip*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
