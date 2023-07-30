@@ -25,7 +25,7 @@ Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierar
 
 ## Returns
 
-An array of S2 cell neighbors. If the S2 Cell is invalid, the query will produce a null result.
+An array of S2 cell neighbors. If the S2 Cell is invalid, the query produces a null result.
 
 > [!NOTE]
 > S2 Cell edges are spherical geodesics.
