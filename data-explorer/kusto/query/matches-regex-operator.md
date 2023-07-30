@@ -9,9 +9,6 @@ ms.date: 07/30/2023
 
 Filters a record set based on a case-sensitive regex value.
 
-> [!IMPORTANT]
-> The number of regex groups is limited to 16.
-
 For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
@@ -28,7 +25,7 @@ For more information about other operators and to determine which operator is mo
 |--|--|--|--|
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
 | *col* | string | &check; | The column by which to filter.|
-| *expression* | scalar | &check; | The regular expression used to filter. The regular expression syntax supported by Kusto is that of the [re2 library](re2-library.md). |
+| *expression* | scalar | &check; | The regular expression used to filter. The maximum number of groups is 16. The regular expression syntax supported by Kusto is that of the [re2 library](re2-library.md). |
 
 ## Returns
 
