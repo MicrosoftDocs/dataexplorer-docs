@@ -8,7 +8,7 @@ ms.date: 07/30/2023
 
 # Add a cluster connection in the Azure Data Explorer web UI
 
-This article describes how to add a cluster connection in the Azure Data Explorer web UI, and how to manage multiple clusters across different user accounts or Azure AD directories.
+This article explains how to add a cluster connection and manage clusters across different user accounts or Azure AD directories in the Azure Data Explorer web UI.
 
 ## Prerequisites
 
@@ -25,7 +25,11 @@ To add a connection to your Azure Data Explorer cluster:
 
 1. In the upper left corner, select **Add**. From the dropdown menu, select **Connection**.
 
-1. Select **Add** to add the connection. Your cluster and databases should now be visible in the left panel. For example, the following image shows the `help` cluster connection.
+1. In the **Add connection** dialog box, enter the cluster **Connection URI** and **Display name**. To find the connection URI, go to your cluster resource in the [Azure portal](https://ms.portal.azure.com/). The connection URI is the **URI** found in the **Overview**. To add a free sample cluster, specify "help" as the **Connection URI**. If you want to add a cluster from a different user account or Azure AD directory, see [Manage clusters across different user accounts or Azure AD directories](#manage-clusters-across-different-user-accounts-or-azure-ad-directories).
+
+    :::image type="content" source="media/web-ui-add-cluster/add-connection-dialog.png" alt-text="Screenshot of add cluster connection dialog box." lightbox="media/web-ui-add-cluster/add-connection-dialog.png":::
+
+1. Select **Add**. Your cluster and databases should now be visible in the left panel. For example, the following image shows the `help` cluster connection.
 
     :::image type="content" source="media/web-ui-add-cluster/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-add-cluster/help-cluster-web-ui.png":::
 
@@ -39,11 +43,14 @@ To add a cluster from a different user account or Azure AD directory:
 
 1. In the **Add connection** dialog box, select **Connect as another user** and proceed to add or select the appropriate account.
 
-    :::image type="content" source="media/web-ui-add-cluster/add-connection-dialog.png" alt-text="Screenshot of add cluster connection dialog box." lightbox="media/web-ui-add-cluster/add-connection-dialog.png":::
-
 1. To access a list of Azure AD directories associated with the selected account, select **Switch directory**. Choose the relevant directory for this specific cluster connection.
 
     :::image type="content" source="media/web-ui-add-cluster/switch-directories.png" alt-text="Screenshot of option to switch directory." lightbox="media/web-ui-add-cluster/switch-directories.png":::
+
+1. Select **Add**.
+
+> [!NOTE]
+> Cluster connections that use credentials different from those of the signed-in user are indicated by an icon featuring a small man in the upper-left corner.
 
 ## Next steps
 
