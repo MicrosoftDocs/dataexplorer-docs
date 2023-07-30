@@ -23,6 +23,8 @@ When possible, use the case-sensitive [hasprefix_cs](hasprefix-cs-operator.md).
 
 *T* `|` `where` *Column* `hasprefix` `(`*Expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
