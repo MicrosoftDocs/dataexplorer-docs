@@ -13,6 +13,8 @@ Returns a combined hash value of multiple values.
 
 `hash_many(`*s1* `,` *s2* [`,` *s3* ...]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
