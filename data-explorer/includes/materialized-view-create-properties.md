@@ -14,4 +14,4 @@ ms.date: 03/22/2023
 | dimensionTables           | array    | A dynamic argument that includes an array of dimension tables in the view. See [Query parameter](../kusto/management/materialized-views/materialized-view-create.md#query-parameter).   |
 | folder                    | string   | The materialized view's folder.    |
 | docString                 | string   | A string that documents the materialized view.       |
-| allowMaterializedViewsWithoutRowLevelSecurity | bool | Allows creating a materialized view over a table with row level security policy enabled. , even when the materialized view doesn't have a row level security by itself. |
+| allowMaterializedViewsWithoutRowLevelSecurity | bool | Allows creating a materialized view over a table with row level security policy enabled. |
