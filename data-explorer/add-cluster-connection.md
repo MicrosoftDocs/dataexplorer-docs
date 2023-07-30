@@ -53,6 +53,8 @@ To add a cluster from a different user account or Azure AD directory:
 
 1. Select **Add**. Cluster connections that use credentials different from those of the signed-in user are indicated by a small icon of a person in the upper-left corner.
 
+    :::image type="content" source="media/web-ui-add-cluster/cluster-pane-with-various-accounts.png" alt-text="Screenshot of the image with the little person icon." lightbox="media/web-ui-add-cluster/cluster-pane-with-various-accounts.png":::
+
 ## Next steps
 
 * Get data with the [ingestion wizard](ingest-data-wizard.md)
