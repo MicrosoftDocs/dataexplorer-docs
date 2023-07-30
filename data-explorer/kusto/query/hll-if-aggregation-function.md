@@ -21,6 +21,8 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accu
 
 `hll_if` `(`*expr*, *predicate* [`,` *accuracy*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

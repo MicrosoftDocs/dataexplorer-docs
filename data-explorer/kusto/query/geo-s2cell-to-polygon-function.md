@@ -15,6 +15,8 @@ Read more about [S2 Cells](https://s2geometry.io/devguide/s2cell_hierarchy).
 
 `geo_s2cell_to_polygon(`*s2cell*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
@@ -23,7 +25,7 @@ Read more about [S2 Cells](https://s2geometry.io/devguide/s2cell_hierarchy).
 
 ## Returns
 
-Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the s2cell is invalid, the query will produce a null result.
+Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the s2cell is invalid, the query produces a null result.
 
 > [!NOTE]
 > S2 Cell edges are spherical geodesics.

@@ -421,6 +421,7 @@ items:
       displayName: not in operator
       href: not-in-operator.md 
     - name: matches regex operator
+      displayName: case-sensitive matches regex
       href: matches-regex-operator.md
     - name: startswith operator
       displayName: starts with operator

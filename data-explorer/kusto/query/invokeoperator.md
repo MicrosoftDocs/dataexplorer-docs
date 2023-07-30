@@ -16,6 +16,8 @@ Invokes a lambda expression that receives the source of `invoke` as a tabular ar
 
 *T* `| invoke` *function*`(`[*param1*`,` *param2*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -13,6 +13,8 @@ Decodes the input string from base64 and performs gzip decompression.
 
 `gzip_decompress_from_base64_string(`*string*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
