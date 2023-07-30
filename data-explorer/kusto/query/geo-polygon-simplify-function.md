@@ -13,6 +13,8 @@ Simplifies a polygon or a multipolygon by replacing nearly straight chains of sh
 
 `geo_polygon_simplify(`*polygon*`,` *tolerance*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
