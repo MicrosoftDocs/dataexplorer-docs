@@ -13,6 +13,8 @@ Retrieves geolocation information about IPv4 or IPv6 addresses.
 
 `geo_info_from_ip_address(`*IpAddress* `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

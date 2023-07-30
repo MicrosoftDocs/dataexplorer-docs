@@ -13,6 +13,8 @@ Checks if an IPv6 string address is in the IPv6-prefix notation range.
 
 `ipv6_is_in_range(`*Ipv6Address*`,`*Ipv6Range*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

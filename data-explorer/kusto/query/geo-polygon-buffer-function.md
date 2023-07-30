@@ -13,6 +13,8 @@ Calculates polygon or multipolygon that contains all points within the given rad
 
 `geo_polygon_buffer(`*polygon*`,` *radius*`,` *tolerance*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
