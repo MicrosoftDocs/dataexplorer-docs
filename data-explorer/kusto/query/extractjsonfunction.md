@@ -3,7 +3,7 @@ title:  extract_json()
 description: Learn how to use the extract_json() function to get a specified element out of a JSON text using a path expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 07/30/2023
 ---
 # extract_json()
 
@@ -13,13 +13,11 @@ Optionally convert the extracted string to a specific type.
 
 > The `extract_json()` and `extractjson()` functions are equivalent
 
-```kusto
-extract_json("$.hosts[1].AvailableMB", EventText, typeof(int))
-```
-
 ## Syntax
 
 `extract_json(`*jsonPath*`,` *dataSource*`,` *type*`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -42,12 +40,7 @@ This function performs a [JSONPath](jsonpath.md) query into dataSource, which co
 
 ## Example
 
-The `[`bracket`]` notation and dot (`.`) notation are equivalent:
-
 ```kusto
-T
-| extend AvailableMB = extract_json("$.hosts[1].AvailableMB", EventText, typeof(int))
-
-T
-| extend AvailableMB = extract_json("$['hosts'][1]['AvailableMB']", EventText, typeof(int))
+let json = '{"name": "John", "age": 30, "city": "New York"}';
+print extract_json("$.name", json, typeof(string));
 ```
