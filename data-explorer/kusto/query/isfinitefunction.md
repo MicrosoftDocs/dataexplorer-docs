@@ -13,6 +13,8 @@ Returns whether the input is a finite value, meaning it's neither infinite nor N
 
 `isfinite(`*number*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
