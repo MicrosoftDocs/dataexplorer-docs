@@ -3,11 +3,14 @@ title:  The case-sensitive matches regex string operator
 description: Learn how to use the matches regex string operator to filter a record set based on a case-sensitive regex value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 07/30/2023
 ---
 # matches regex operator
 
 Filters a record set based on a case-sensitive regex value.
+
+> [!IMPORTANT]
+> The number of regex groups is limited to 16.
 
 For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
