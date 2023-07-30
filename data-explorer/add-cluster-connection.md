@@ -1,6 +1,6 @@
 ---
 title: Add a cluster connection in the Azure Data Explorer web UI
-description: Learn how to add cluster connections for multiple user accounts or Azure AD directories in the Azure Data Explorer web UI.
+description: Learn how to add cluster connections for various user accounts or Azure AD directories in the Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
 ms.date: 07/30/2023
@@ -29,7 +29,7 @@ To add a connection to your Azure Data Explorer cluster:
 
    To find the connection URI, go to your cluster resource in the [Azure portal](https://ms.portal.azure.com/). The connection URI is the **URI** found in the **Overview**. To add a free sample cluster, specify "help" as the **Connection URI**.
 
-   If you want to add a cluster from a different user account or Azure AD directory, see [Manage clusters across multiple user accounts and Azure AD directories](#manage-clusters-across-multiple-user-accounts-and-azure-ad-directories).
+   If you want to add a cluster from a different user account or Azure AD directory, see [Manage clusters across various user accounts and Azure AD directories](#manage-clusters-across-various-user-accounts-and-azure-ad-directories).
 
     :::image type="content" source="media/web-ui-add-cluster/add-connection-dialog.png" alt-text="Screenshot of add cluster connection dialog box." lightbox="media/web-ui-add-cluster/add-connection-dialog.png":::
 
@@ -37,7 +37,7 @@ To add a connection to your Azure Data Explorer cluster:
 
     :::image type="content" source="media/web-ui-add-cluster/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-add-cluster/help-cluster-web-ui.png":::
 
-## Manage clusters across multiple user accounts and Azure AD directories
+## Manage clusters across various user accounts and Azure AD directories
 
 Each cluster connection is associated with a specific user account and Azure Active Directory (Azure AD) directory. The provided credentials are used to authenticate to the cluster and run queries. This functionality removes the need to repetitively sign in and sign out, or switch directories, and allows you to move between clusters associated with different credentials within a unified interface.
 
