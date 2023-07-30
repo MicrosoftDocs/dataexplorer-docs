@@ -22,11 +22,11 @@ Calculates polygon that contains all points within the given radius of the point
 | *longitude* | real | &check; | Geospatial coordinate longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
 | *latitude* | real | &check; | Geospatial coordinate latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
 | *radius* | real | &check; | Buffer radius in meters. Valid value must be positive.|
-| *tolerance* | real || Defines the tolerance in meters that determines how much a polygon can deviate from the ideal radius. If unspecified, the default value `10` is used. Tolerance should be no lower than 0.0001% of the radius. Specifying tolerance bigger than radius will lower the tolerance to biggest possible value below the radius.|
+| *tolerance* | real || Defines the tolerance in meters that determines how much a polygon can deviate from the ideal radius. If unspecified, the default value `10` is used. Tolerance should be no lower than 0.0001% of the radius. Specifying tolerance bigger than radius lowers the tolerance to biggest possible value below the radius.|
 
 ## Returns
 
-Polygon around the input point. If the coordinates or radius or tolerance is invalid, the query will produce a null result.
+Polygon around the input point. If the coordinates or radius or tolerance is invalid, the query produces a null result.
 
 > [!NOTE]
 >
@@ -62,7 +62,7 @@ datatable(longitude:real, latitude:real, radius:real)
 |---|
 |{"type": "MultiPolygon","coordinates": [ ... ]}|
 
-The following example will return true, due to invalid point.
+The following example returns true, due to invalid point.
 
 ```kusto
 print result = isnull(geo_point_buffer(200, 1,0.1))
@@ -72,7 +72,7 @@ print result = isnull(geo_point_buffer(200, 1,0.1))
 |---|
 |True|
 
-The following example will return true, due to invalid radius.
+The following example returns true, due to invalid radius.
 
 ```kusto
 print result = isnull(geo_point_buffer(10, 10, -1))
