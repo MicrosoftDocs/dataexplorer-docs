@@ -1,5 +1,5 @@
 ---
-title:  The case-sensitive matches regex string operator
+title: matches regex operator
 description: Learn how to use the matches regex string operator to filter a record set based on a case-sensitive regex value.
 ms.reviewer: alexans
 ms.topic: reference
