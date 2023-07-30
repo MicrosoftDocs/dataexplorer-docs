@@ -44,7 +44,7 @@ StormEvents
 
 **Output**
 
-The following table shows only the first 5 rows.
+The following table shows only the first five rows.
 
 |State|EventId|EventType|Rain|
 |--|--|--|--|
