@@ -45,10 +45,7 @@ To add a cluster from a different user account or Azure AD directory:
 
     :::image type="content" source="media/web-ui-add-cluster/switch-directories.png" alt-text="Screenshot of option to switch directory." lightbox="media/web-ui-add-cluster/switch-directories.png":::
 
-1. Select **Add**.
-
-> [!NOTE]
-> Cluster connections that use credentials different from those of the signed-in user are indicated by an icon featuring a small man in the upper-left corner.
+1. Select **Add**. Cluster connections that use credentials different from those of the signed-in user are indicated by a small icon of a person in the upper-left corner.
 
 ## Next steps
 
