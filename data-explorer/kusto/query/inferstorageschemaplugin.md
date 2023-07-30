@@ -26,6 +26,8 @@ The following table lists the supported authentication methods and any required 
 
 `evaluate` `infer_storage_schema(` *Options* `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
