@@ -46,7 +46,7 @@ The soft delete process is performed using the following steps:
 * Deleting records from a table that is a source table of a [materialized view](../management/materialized-views/materialized-view-overview.md), can have an impact on the materialized view. If records being deleted were not yet processed by the [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work), these records will be missing in the view, since they will never be processed. Similarly, the deletion will not have an impact on the materialized view if the records have already been processed.
 
 * Limitations on the predicate:
-  * It must contain at least one `where` operator
+  * It must contain at least one `where` operator.
   * It can only reference the table from which records are to be deleted.
   * Only the following operators are allowed: `extend`, `order`, `project`, `take` and `where`. Within `toscalar()`, the `summarize` operator is also allowed.
 
