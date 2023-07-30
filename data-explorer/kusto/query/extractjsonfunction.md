@@ -51,4 +51,5 @@ print extract_json("$.name", json, typeof(string));
 **Output**
 
 | print_0 |
+|---|
 | John |
