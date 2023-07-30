@@ -7,7 +7,7 @@ ms.date: 01/03/2023
 ---
 # isfinite()
 
-Returns whether the input is a finite value, meaning it's neither infinite nor NaN.
+Returns whether the input is a finite value, meaning it's not infinite or NaN.
 
 ## Syntax
 
@@ -18,7 +18,7 @@ Returns whether the input is a finite value, meaning it's neither infinite nor N
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
+|--|--|--|--|
 |*number*|real|&check;| The value to check if finite.|
 
 ## Returns
