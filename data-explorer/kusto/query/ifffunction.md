@@ -16,6 +16,8 @@ or the value of *else* otherwise.
 
 `iff(`*if*`,` *then*`,` *else*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

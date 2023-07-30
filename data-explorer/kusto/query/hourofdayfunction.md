@@ -13,6 +13,8 @@ Returns the integer number representing the hour number of the given date.
 
 `hourofday(`*date*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
