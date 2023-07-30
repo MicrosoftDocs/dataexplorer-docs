@@ -94,7 +94,7 @@ StormEvents
 
 :::image type="content" source="images/visualization-barchart/bar-chart.png" alt-text="Screenshot of bar chart visualization result." lightbox="images/visualization-barchart/bar-chart.png":::
 
-### Render a stacked bar chart
+### Render a `stacked` bar chart
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMwQqDMBBE7/2KJScFf8FDsAqCVFAPvabJQoIYy2atWPrxjdpLT8PMm5meZ5rKF3oOlw+sFgmhZ8UIzkMihvIue5GBKGRTV213q+Xuqqbt6qsUadyEZZoUuTfCcVPMi2fIQe+apPDYznzYnpid13E0k0H6Y6CC/nEwGHQsEfqjpUhbRQyrYwvJ6LzJAys9okm/XvmC/L8AAAA=" target="_blank">Run the query</a>
@@ -109,3 +109,26 @@ StormEvents
 
 :::image type="content" source="images/visualization-barchart/stacked-bar-chart.png" alt-text="Scrrenshot of a stacked bar chart visualization." lightbox="images/visualization-barchart/stacked-bar-chart.png":::
 
+### Render a `stacked100` bar chart
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQTU8CMRCG7yT8h8melgTJogcPhsMKRBqgayjGg/FQtiM07HZNO4hr/PG2u/iZ2DSZr2fambdAAkHS0kQSwgiUN6RLjM+T5PIsGfrbu+p2Co9NjfoPuviCllod0RFa418ldIGujSx1Hj9EbLFgPGMi6kPE+ISlPG3c7L6x85SLtCku2XjGblLe+pxPRbZO20CI7G7Fgs+n16tUzJs8z1brGUzS+YnLZiwL1sO/8vdMjDMuGI8ew8SCKltOX9CQ63be4bhDi60ca78ebJCOiAbib4UGg08der86fEl78O/6DeQOZSmtfkNovhpXB0PX9bp+DlrmIYp7sKnbZ/otFKqht7IK7VcRpMt/AKDQ5YGyaBpM2nznJ+12wJ+jph3Erb/XRo0cyXyPapgk/TZb4NY3jnZaKTSnXE2aChxFt2hz/43cIlRPQBXJAlyQy0Un8vVENpNFvQ/J9tyzSgIAAA==" target="_blank">Run the query</a>
+
+```kusto
+let StartDate = datetime(2007-01-01);
+let EndDate = datetime(2007-01-31);
+let MidwesternStates = dynamic(["ILLINOIS", "INDIANA", "IOWA", "KANSAS", "MICHIGAN", "MINNESOTA", "MISSOURI", "NEBRASKA", "NORTH DAKOTA", "OHIO", "SOUTH DAKOTA", "WISCONSIN"]);
+StormEvents
+| where StartTime between (StartDate .. EndDate)
+| where State in (MidwesternStates)
+| summarize EventCountByType = count() by State, EventType
+| order by State asc, EventType desc
+| render barchart
+    with (
+    kind=stacked100,
+    legend=hidden,
+    ytitle="Percentage of total storms",
+    xtitle="State")
+```
+
+:::image type="content" source="images/visualization-barchart/stacked-100-bar-chart.png" alt-text="Screenshot of  a "stacked100" bar chart visualization." lightbox="images/visualization-barchart/stacked-100-bar-chart.png":::
