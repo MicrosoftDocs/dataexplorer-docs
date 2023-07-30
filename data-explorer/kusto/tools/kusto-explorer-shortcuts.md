@@ -28,6 +28,7 @@ The following keyboard shortcuts can be used from any context:
 |`Shift`+`F3` | Opens Analytical Report Gallery|
 |`Shift`+`F12`| Toggles Light/Dark theme of the application|
 |`Ctrl`+`F12`| Toggles Extended Accessibility events of the application (requires restart to take effect)|
+|`Alt`+`Ctrl`+`F12`| Opens Kusto.Explorer Calculator utility |
 |`Ctrl`+`Shift`+`O`|Opens Kusto.Explorer options and settings dialog|
 |`Esc`|Cancel running query|
 |`Shift`+`F5`|Cancel running query|
