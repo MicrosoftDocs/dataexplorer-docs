@@ -138,3 +138,39 @@ StormEvents
 ```
 
 :::image type="content" source="images/visualization-barchart/stacked-100-bar-chart.png" alt-text="Screenshot of  a "stacked100" bar chart visualization." lightbox="images/visualization-barchart/stacked-100-bar-chart.png":::
+
+To see a similar graph without using `stacked100`, you'd need to calculate the percentages as shown in the following query.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5VSwW7bMAy95ysIn+whS9zusMPgg5sEi5BWLmIPPQw7ODZbq7XlTJaXedjHj5KSJW0QYAsciJIe+R4fVaOGVOdKz3ONEEFJixYN+tdh+PF9eEVf8GlUE2ohy0uYDwfMnSh32GlUkmpq7Ax4kHkjCv+rx25vGU9Y6o3BY3zOYh7bMHmw6yrmaWwv79hsyT7H3MWcL9Iki90mTZMva2ZivrhZx+nKnvNknS1hHq/2uGTJErMS+NX5A0tnCU8Z976R4FS3qln8QKm70W/YVajQWZFRb7BBvUOU4B/dmUwOJgSnCXQjCPe292A0ncIsr4u+NhBd0b/VeQ2ybzaooH0EtOTw2CrAvKigM4lUuuubJlfiF0JmMpxG8rJoe6n9ADaD4z1nsAhb2tSz9UEPWzzneG5J9IuQZSSkRNVL8b1H8EdAv1NnzP6/3XmTdNEhhzu2azlnpoebITOyz3seO5C5temuSCsvObJFVRA+f8J/smWr2mcs9N4Gw2fDv5xue38sGoEihaXvn2l/B1dhOAkDmJ6OcQzX5vW0qqQ3cGgK8q44aQxK7AoCKZQWlauiIpst9U7oaj8mOz0SXrxg6XTV+EQpUSXKEqU7GrTQNUbe/Ssf3EvszJw7zwF/7oFWkBf8AY2JRG4ZBAAA" target="_blank">Run the query</a>
+
+```kusto
+let StartDate = datetime(2007-01-01);
+let EndDate = datetime(2007-01-31);
+let MidwesternStates = dynamic(["ILLINOIS", "INDIANA", "IOWA", "KANSAS", "MICHIGAN", "MINNESOTA", "MISSOURI", "NEBRASKA", "NORTH DAKOTA", "OHIO", "SOUTH DAKOTA", "WISCONSIN"]);
+StormEvents
+| where StartTime between (StartDate .. EndDate)
+| where State in (MidwesternStates)
+// Calculate the total number of events for each state
+| summarize TotalEvents = count() by State
+// Calculate the count of each event type for each state
+| join kind=innerunique (
+    StormEvents
+    | where StartTime between (StartDate .. EndDate)
+    | where State in (MidwesternStates)
+    | summarize EventCountByType = count() by State, EventType
+    )
+    on State
+// Calculate the percentage of each event type for each state
+| project
+    State,
+    EventType,
+    Percentage = round((EventCountByType * 100.0) / TotalEvents, 2)
+| order by State asc, EventType desc
+| render barchart
+    with (
+    kind=stacked,
+    legend=hidden,
+    ytitle="Percentage of total storms",
+    xtitle="State")
+```
