@@ -13,6 +13,8 @@ Calculates the centroid of a line or a multiline on Earth.
 
 `geo_line_centroid(`*lineString*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

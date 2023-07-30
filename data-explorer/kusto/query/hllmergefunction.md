@@ -19,6 +19,8 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy
 
 `hll_merge(` *hll*`,` *hll2*`,` [ *hll3*`,` ... ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

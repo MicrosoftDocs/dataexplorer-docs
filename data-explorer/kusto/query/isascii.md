@@ -13,6 +13,8 @@ Returns `true` if the argument is a valid ASCII string.
 
 `isascii(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
