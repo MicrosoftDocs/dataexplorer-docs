@@ -21,6 +21,8 @@ The function `log_reduce_fl()` finds common patterns in semi structured textual 
 
 *T* `|` `invoke` `log_reduce_fl(`*reduce_col* [`,` *use_logram* [`,` *use_drain* [`,` *custom_regexes* [`,` *custom_regexes_policy* [`,` *delimiters* [`,` *similarity_th* [`,` *tree_depth* [`,` *trigram_th* [`,` *bigram_th* ]]]]]]]]]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 The following parameters description is a summary. For more information, see [More about the algorithm](#more-about-the-algorithm) section.
@@ -124,7 +126,7 @@ log_reduce_fl(tbl:(*), reduce_col:string,
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invokeoperator.md) to run the function. This example uses [Apache Hadoop distributed file system logs](https://hadoop.apache.org/docs/stable/hadoop-archive-logs/HadoopArchiveLogs.html).
 
 ### [Query-defined](#tab/query-defined)
 

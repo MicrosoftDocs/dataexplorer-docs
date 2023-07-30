@@ -15,6 +15,8 @@ Filters a table to the subset of rows that satisfy a predicate.
 
 *T* `| where` *Predicate*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -89,3 +91,9 @@ The following query returns the rows in which the word "cow" appears in any colu
 StormEvents
 | where * has "cow"
 ```
+
+## Next steps
+
+* [String operators](datatypes-string-operators.md)
+* [Numerical operators](numoperators.md)
+* [Logical operators](logicaloperators.md)

@@ -250,7 +250,7 @@ items:
                 href: query-monitor-data.md
               - name: Export and query Azure Monitor data
                 href: query-exported-azure-monitor-data.md
-          - name: Query data in MATLAB
+          - name: Query data using MATLAB
             href: query-matlab.md
           - name: Query data using Power Apps
             href: power-apps-connector.md
@@ -370,7 +370,7 @@ items:
                 items:
                   - name: Role-based access control
                     href: kusto/access-control/role-based-access-control.md
-                    displayName: RBAC, security roles, principals
+                    displayName: RBAC, security roles, principals, role based
                   - name: Cross-tenant queries and commands
                     href: kusto/access-control/cross-tenant-query-and-commands.md
               - name: Isolated compute
@@ -615,12 +615,16 @@ items:
       - name: Azure Policy built-ins
         displayName: samples, policies, definitions
         href: policy-reference.md
+      - name: Bicep and ARM template resource types
+        href: /azure/templates/microsoft.kusto/allversions
       - name: Functions library
         href: kusto/functions-library/toc.yml
       - name: PowerShell Kusto
         href: /powershell/module/az.kusto/#kusto
       - name: Python plugin packages
         href: python-package-reference.md
+      - name: Resource provider operations
+        href: /azure/role-based-access-control/resource-provider-operations#microsoftkusto
       - name: Troubleshoot ingestion
         items:
           - name: Ingestion error codes

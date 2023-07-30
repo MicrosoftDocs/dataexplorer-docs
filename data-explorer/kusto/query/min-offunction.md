@@ -13,6 +13,8 @@ Returns the minimum value of several evaluated scalar expressions.
 
 `min_of` `(`*arg*`,` *arg_2*`,` [ *arg_3*, ... ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

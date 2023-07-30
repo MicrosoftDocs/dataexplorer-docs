@@ -15,6 +15,8 @@ Returns the integer number from 1-12 representing the month number of the given 
 
 `monthofyear(`*date*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -19,6 +19,8 @@ Applies a polynomial regression from an independent variable (x_series) to a dep
 ## Syntax
 
 `T | extend  series_fit_poly(`*y_series* [`,` *x_series*`,` *degree* ]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
   
 ## Parameters
 

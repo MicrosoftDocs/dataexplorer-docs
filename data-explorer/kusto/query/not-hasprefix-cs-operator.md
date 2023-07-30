@@ -32,6 +32,8 @@ For more information about other operators and to determine which operator is mo
 
 *T* `|` `where` *column* `!hasprefix_cs` `(`*expression*`)`  
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

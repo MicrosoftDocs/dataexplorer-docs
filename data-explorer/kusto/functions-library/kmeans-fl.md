@@ -21,6 +21,8 @@ The function `kmeans_fl()` is a [UDF (user-defined function)](../query/functions
 
 `T | invoke kmeans_fl(`*k*`,` *features_cols*`,` *cluster_col*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
@@ -135,7 +137,7 @@ let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
 // It contains experimental data for binary classification of room occupancy from Temperature, Humidity, Light, and CO2.
 //
 OccupancyDetection
-| extend cluster_id=double(null)
+| extend cluster_id=int(null)
 | invoke kmeans_fl(5, pack_array("Temperature", "Humidity", "Light", "CO2", "HumidityRatio"), "cluster_id")
 | sample 10
 ~~~
@@ -153,7 +155,7 @@ OccupancyDetection
 // It contains experimental data for binary classification of room occupancy from Temperature, Humidity, Light, and CO2.
 //
 OccupancyDetection
-| extend cluster_id=double(null)
+| extend cluster_id=int(null)
 | invoke kmeans_fl(5, pack_array("Temperature", "Humidity", "Light", "CO2", "HumidityRatio"), "cluster_id")
 | sample 10
 ```
@@ -203,7 +205,7 @@ let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
     | evaluate python(typeof(*), code, kwargs)
 };
 OccupancyDetection
-| extend cluster_id=double(null)
+| extend cluster_id=int(null)
 | invoke kmeans_fl(5, pack_array("Temperature", "Humidity", "Light", "CO2", "HumidityRatio"), "cluster_id")
 | summarize Temperature=avg(Temperature), Humidity=avg(Humidity), Light=avg(Light), CO2=avg(CO2), HumidityRatio=avg(HumidityRatio), num=count() by cluster_id
 | order by num
@@ -216,7 +218,7 @@ OccupancyDetection
 
 ```kusto
 OccupancyDetection
-| extend cluster_id=double(null)
+| extend cluster_id=int(null)
 | invoke kmeans_fl(5, pack_array("Temperature", "Humidity", "Light", "CO2", "HumidityRatio"), "cluster_id")
 | summarize Temperature=avg(Temperature), Humidity=avg(Humidity), Light=avg(Light), CO2=avg(CO2), HumidityRatio=avg(HumidityRatio), num=count() by cluster_id
 | order by num

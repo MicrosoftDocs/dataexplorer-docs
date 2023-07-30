@@ -36,7 +36,7 @@ The example string `Trace` is searched for a definition for `Duration`.
 The match is converted to `real`, then multiplied it by a time constant (`1s`) so that `Duration` is of type `timespan`. In this example, it's equal to 123.45 seconds:
 
 ```kusto
-...
+T
 | extend Trace="A=1, B=2, Duration=123.45, ..."
 | extend Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s) 
 ```

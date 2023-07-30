@@ -3,7 +3,7 @@ title:  JSONPath syntax
 description: Learn how to use JSONPath expressions to specify data mappings and KQL functions that process dynamic objects.
 ms.reviewer: igborodi
 ms.topic: reference
-ms.date: 12/22/2022
+ms.date: 07/24/2023
 ---
 
 # JSONPath expressions
@@ -14,7 +14,7 @@ The JSONPath notation is used in the following scenarios:
 
 - To specify [data mappings for ingestion](../management/mappings.md)
 - To specify [data mappings for external tables](../management/external-table-mapping-create.md)
-- In KQL functions that process dynamic objects, like [bag_remove_keys()](bag-remove-keys-function.md) and [extract_json()](extractjsonfunction.md)
+- In Kusto Query Language (KQL) functions that process dynamic objects, like [bag_remove_keys()](bag-remove-keys-function.md) and [extract_json()](extractjsonfunction.md)
 
 The following subset of the JSONPath notation is supported:
 
@@ -28,3 +28,48 @@ The following subset of the JSONPath notation is supported:
 > [!NOTE]
 >
 > Wildcards, recursion, union, slices, and current object are not supported.
+
+## Example
+
+Given the following JSON document:
+
+```json
+{
+  "Source": "Server-01",
+  "Timestamp": "2023-07-25T09:15:32.123Z",
+  "Log Level": "INFO",
+  "Message": "Application started successfully.",
+  "Details": {
+    "Service": "AuthService",
+    "Endpoint": "/api/login",
+    "Response Code": 200,
+    "Response Time": 54.21,
+    "User": {
+      "User ID": "user123",
+      "Username": "kiana_anderson",
+      "IP Address": "192.168.1.100"
+    }
+  }
+}
+```
+
+You can represent each of the fields with JSONPath notation as follows:
+
+```kusto
+"$.Source"                     // Source field
+"$.Timestamp"                  // Timestamp field
+"$['Log Level']"               // Log Level field
+"$.Message"                    // Message field
+"$.Details.Service"            // Service field
+"$.Details.Endpoint"           // Endpoint field
+"$.Details['Response Code']"   // Response Code field
+"$.Details['Response Time']"   // Response Time field
+"$.Details.User['User ID']"    // User ID field
+"$.Details.User.Username"      // Username field
+"$.Details.User['IP Address']" // IP Address field
+```
+
+## See also
+
+* [Get the path to a dynamic field](../../web-results-grid.md#get-the-path-to-a-dynamic-field)
+* [Add filter from dynamic field](../../web-results-grid.md#add-filter-from-dynamic-field)

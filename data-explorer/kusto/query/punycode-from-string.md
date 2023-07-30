@@ -15,7 +15,10 @@ The result string contains only ASCII characters. The result string doesn't star
 
 `punycode_from_string('input_string')`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
+
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *input_string* |  `string` | &check; | A string to be encoded to punycode form. The function accepts one string argument.
@@ -26,7 +29,6 @@ The result string contains only ASCII characters. The result string doesn't star
 * Returns an empty result if encoding failed.
 
 ## Examples
-
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjNS85PSU1RsFUoKM2rBLHj04ryc+OLS4DS6RrqicmJKYdX5mam6qYVJeYdXp6YWZyqrgkA2GFbdjwAAAA=" target="_blank">Run the query</a>

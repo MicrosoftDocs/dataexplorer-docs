@@ -15,6 +15,8 @@ Takes an expression containing dynamic numerical array as input, replaces all in
 
 `series_fill_const(`*series*`,` *constant_value*`,` [ *missing_value_placeholder* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

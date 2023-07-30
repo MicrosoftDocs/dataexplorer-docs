@@ -18,6 +18,8 @@ Creates a `dynamic` array of all the values of *expr* in the group.
 
 `make_list(`*expr* [`,` *maxSize*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

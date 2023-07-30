@@ -15,6 +15,8 @@ arrays of the same index.
 
 `zip(`*arrays*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

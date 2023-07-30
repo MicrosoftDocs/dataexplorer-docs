@@ -15,6 +15,8 @@ See: [Pearson correlation coefficient](https://en.wikipedia.org/wiki/Pearson_cor
 
 `series_pearson_correlation(`*series1*`,` *series2*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -23,7 +25,7 @@ See: [Pearson correlation coefficient](https://en.wikipedia.org/wiki/Pearson_cor
 
 ## Returns
 
-The calculated Pearson correlation coefficient between the two inputs. Any non-numeric element or non-existing element (arrays of different sizes) yields a `null` result.
+The calculated Pearson correlation coefficient between the two inputs. Any non-numeric element or nonexisting element (arrays of different sizes) yields a `null` result.
 
 ## Example
 

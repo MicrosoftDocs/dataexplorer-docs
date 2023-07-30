@@ -21,6 +21,8 @@ Read more about the underlying algorithm (T-Digest) and the estimated error [her
 
 `merge_tdigest(`*exprs*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

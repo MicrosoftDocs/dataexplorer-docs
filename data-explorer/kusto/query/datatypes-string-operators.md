@@ -3,11 +3,11 @@ title:  String operators
 description: Learn about query operators for searching string data types.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 07/25/2023
 ---
 # String operators
 
-Kusto offers various query operators for searching string data types. The following article describes how string terms are indexed, lists the string query operators, and gives tips for optimizing performance.
+Kusto Query Language (KQL) offers various query operators for searching string data types. The following article describes how string terms are indexed, lists the string query operators, and gives tips for optimizing performance.
 
 ## Understanding string terms
 

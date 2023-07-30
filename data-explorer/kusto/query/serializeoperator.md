@@ -15,11 +15,13 @@ The operator has a declarative meaning. It marks the input row set as serialized
 
 `serialize` [*Name1* `=` *Expr1* [`,` *Name2* `=` *Expr2*]...]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| *Name* | string | | The name of the column to add or update. If omitted, the output column name will be automatically generated. |
+|--|--|--|--|
+| *Name* | string | | The name of the column to add or update. If omitted, the output column name is automatically generated. |
 | *Expr* | string | &check; | The calculation to perform over the input.|
 
 ## Examples
@@ -58,7 +60,7 @@ The output row set of the following operators is marked as serialized.
 * [top](./topoperator.md)
 * [top-hitters](./tophittersoperator.md)
 
-The output row set of the following operators is marked as non-serialized.
+The output row set of the following operators is marked as nonserialized.
 
 * [count](./countoperator.md)
 * [distinct](./distinctoperator.md)

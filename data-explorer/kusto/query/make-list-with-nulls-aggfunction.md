@@ -15,6 +15,8 @@ Creates a `dynamic` array of all the values of *expr* in the group, including nu
 
 `make_list_with_nulls(`*expr*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

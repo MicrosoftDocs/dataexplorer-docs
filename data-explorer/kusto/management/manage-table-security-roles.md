@@ -2,14 +2,14 @@
 title: Manage table security roles
 description: Learn how to use management commands to view, add, and remove security roles on a table level.
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 07/17/2023
 ---
 
 # Manage table security roles
 
 Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
-In this article, you'll learn how to use management commands to [view existing security roles](#view-existing-security-roles) as well as [add and remove security roles](#add-and-remove-security-roles) on the table level.
+In this article, you'll learn how to use management commands to [view existing security roles](#show-existing-security-roles) as well as [add and remove security roles](#add-and-drop-security-roles) on the table level.
 
 > [!NOTE]
 > A principal must have access on the database level to be assigned table specific security roles.
@@ -30,13 +30,19 @@ The following table shows the possible security roles on the table level and des
 > [!NOTE]
 > To learn how to grant a principal view access to a subset of tables within a database, see [manage table view access](manage-table-view-access.md).
 
-## View existing security roles
+## Show existing security roles
 
 Before you add or remove principals, you can use the `.show` command to see a table with all of the principals and roles that are already set on the table.
 
 ### Syntax
 
+To show all roles:
+
 `.show` `table` *TableName* `principals`
+
+To show your roles:
+
+`.show` `table` *TableName* `principal` `roles`
 
 ### Parameters
 
@@ -58,7 +64,7 @@ The following command lists all security principals that have access to the `Sto
 |---|---|---|---|---|
 |Table StormEvents Admin |Azure AD User |Abbi Atkins |cd709aed-a26c-e3953dec735e |aaduser=abbiatkins@fabrikam.com|
 
-## Add and remove security roles
+## Add and drop security roles
 
 This section provides syntax, parameters, and examples for adding and removing principals.
 
