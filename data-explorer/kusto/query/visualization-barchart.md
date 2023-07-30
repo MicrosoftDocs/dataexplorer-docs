@@ -3,7 +3,7 @@ title:  Bar chart visualization
 description: This article describes the bar chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/26/2023
+ms.date: 07/30/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -35,7 +35,7 @@ All properties are optional.
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
-|`accumulate`  |Whether the value of each measure gets added to all its predecessors. (`true` or `false`)|
+|`accumulate`  |Whether the value of each measure gets added to all its predecessors (`true` or `false`).|
 |`kind`        |Further elaboration of the visualization kind.  For more information, see [`kind` property](#kind-property).                         |
 |`legend`      |Whether to display a legend or not (`visible` or `hidden`).                       |
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
@@ -77,7 +77,9 @@ The supported values of this property are:
 | `stacked`    | Stack "bars".                                                      |
 | `stacked100` | Stack "bars" and stretch each one to the same width as the others. |
 
-## Example
+## Examples
+
+### Render a bar chart
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNQiFEUKdgqGBkCJgqL8rNTkEohCHWQVQMmi1LyU1CKFpMSi5IzEohIA1FziU3wAAAA=" target="_blank">Run the query</a>
@@ -91,3 +93,19 @@ StormEvents
 ```
 
 :::image type="content" source="images/visualization-barchart/bar-chart.png" alt-text="Screenshot of bar chart visualization result." lightbox="images/visualization-barchart/bar-chart.png":::
+
+### Render a stacked bar chart
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMwQqDMBBE7/2KJScFf8FDsAqCVFAPvabJQoIYy2atWPrxjdpLT8PMm5meZ5rKF3oOlw+sFgmhZ8UIzkMihvIue5GBKGRTV213q+Xuqqbt6qsUadyEZZoUuTfCcVPMi2fIQe+apPDYznzYnpid13E0k0H6Y6CC/nEwGHQsEfqjpUhbRQyrYwvJ6LzJAys9okm/XvmC/L8AAAA=" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where State in ("TEXAS", "CALIFORNIA", "FLORIDA")
+| summarize EventCount = count() by EventType, State
+| order by EventType asc, State desc
+| render barchart with (kind=stacked)
+```
+
+:::image type="content" source="images/visualization-barchart/stacked-bar-chart.png" alt-text="Scrrenshot of a stacked bar chart visualization." lightbox="images/visualization-barchart/stacked-bar-chart.png":::
+
