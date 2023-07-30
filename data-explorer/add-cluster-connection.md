@@ -29,9 +29,9 @@ To add a connection to your Azure Data Explorer cluster:
 
    To find the connection URI, go to your cluster resource in the [Azure portal](https://ms.portal.azure.com/). The connection URI is the **URI** found in the **Overview**. To add a free sample cluster, specify "help" as the **Connection URI**.
 
-   If you want to add a cluster from a different user account or Azure AD directory, see [Manage clusters across various user accounts and Azure AD directories](#manage-clusters-across-various-user-accounts-and-azure-ad-directories).
-
     :::image type="content" source="media/web-ui-add-cluster/add-connection-dialog.png" alt-text="Screenshot of add cluster connection dialog box." lightbox="media/web-ui-add-cluster/add-connection-dialog.png":::
+
+    If you want to add a cluster from a different user account or Azure AD directory, see [Manage clusters across various user accounts and Azure AD directories](#manage-clusters-across-various-user-accounts-and-azure-ad-directories).
 
 1. Select **Add**. Your cluster and databases should now be visible in the left panel. For example, the following image shows the `help` cluster connection.
 
