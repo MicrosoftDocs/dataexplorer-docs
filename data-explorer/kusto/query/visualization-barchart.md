@@ -98,7 +98,7 @@ StormEvents
 
 ### Render a `stacked` bar chart
 
-The following query creates a stacked bar chart that shows the total count of storm events by their type for selected states of Texas, California, and Florida. Each bar represents a state, and the stacked bars show the breakdown of storm events by type within each state.
+The following query creates a `stacked` bar chart that shows the total count of storm events by their type for selected states of Texas, California, and Florida. Each bar represents a storm event type, and the stacked bars show the breakdown of storm events by state within each type.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMwQqDMBBE7/2KJScFf8FDsAqCVFAPvabJQoIYy2atWPrxjdpLT8PMm5meZ5rKF3oOlw+sFgmhZ8UIzkMihvIue5GBKGRTV213q+Xuqqbt6qsUadyEZZoUuTfCcVPMi2fIQe+apPDYznzYnpid13E0k0H6Y6CC/nEwGHQsEfqjpUhbRQyrYwvJ6LzJAys9okm/XvmC/L8AAAA=" target="_blank">Run the query</a>
@@ -115,62 +115,17 @@ StormEvents
 
 ### Render a `stacked100` bar chart
 
-The following query uses the `stacked100` kind to visualize the proportion of each storm event type within their corresponding state for the month of January 2007. Each bar represents a state, and the chart shows the relative contribution of different storm event types to the total number of events. Although the stacks appear to sum up to 100 visually, the actual values represent the number of events, not percentages.
+The following query creates a `stacked100` bar chart that shows the total count of storm events by their type for selected states of Texas, California, and Florida. The chart shows the distribution of storm events across states within each type. Although the stacks visually sum up to 100, the values actually represent the number of events, not percentages. This visualization is helpful for understanding both the percentages and the actual event counts.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQTU8CMRCG7yT8h8melgTJogcPhsMKRBqgayjGg/FQtiM07HZNO4hr/PG2u/iZ2DSZr2fambdAAkHS0kQSwgiUN6RLjM+T5PIsGfrbu+p2Co9NjfoPuviCllod0RFa418ldIGujSx1Hj9EbLFgPGMi6kPE+ISlPG3c7L6x85SLtCku2XjGblLe+pxPRbZO20CI7G7Fgs+n16tUzJs8z1brGUzS+YnLZiwL1sO/8vdMjDMuGI8ew8SCKltOX9CQ63be4bhDi60ca78ebJCOiAbib4UGg08der86fEl78O/6DeQOZSmtfkNovhpXB0PX9bp+DlrmIYp7sKnbZ/otFKqht7IK7VcRpMt/AKDQ5YGyaBpM2nznJ+12wJ+jph3Erb/XRo0cyXyPapgk/TZb4NY3jnZaKTSnXE2aChxFt2hz/43cIlRPQBXJAlyQy0Un8vVENpNFvQ/J9tyzSgIAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMvQqDQBCE+zzFcpWChXkAi8MoCBJBLdJe7hY8xFP21oghDx9/0qQaZr6ZaXikIXuhY3/5wNIhITSsGME6CESbPWQjIhCpLIu8qu+F3F1eVnVxkyLcNn4eBkX2jXDcpOPsGBLQuwYhPNczb9cJo/N6G41kkP4YKK9/HAx6vZUI3dFSpDtFDIvlDoLeOpN4VrpHc43j8AvTVplzwgAAAA==" target="_blank">Run the query</a>
 
 ```kusto
-let StartDate = datetime(2007-01-01);
-let EndDate = datetime(2007-01-31);
-let MidwesternStates = dynamic(["ILLINOIS", "INDIANA", "IOWA", "KANSAS", "MICHIGAN", "MINNESOTA", "MISSOURI", "NEBRASKA", "NORTH DAKOTA", "OHIO", "SOUTH DAKOTA", "WISCONSIN"]);
 StormEvents
-| where StartTime between (StartDate .. EndDate)
-| where State in (MidwesternStates)
-| summarize EventCountByType = count() by State, EventType
-| order by State asc, EventType desc
-| render barchart
-    with (
-    kind=stacked100,
-    legend=hidden,
-    ytitle="Percentage of total storms",
-    xtitle="State")
+| where State in ("TEXAS", "CALIFORNIA", "FLORIDA")
+| summarize EventCount = count() by EventType, State
+| order by EventType asc, State desc
+| render barchart with (kind=stacked100)
 ```
 
-:::image type="content" source="images/visualization-barchart/stacked-100-bar-chart.png" alt-text="Screenshot of a bar chart visualization." lightbox="images/visualization-barchart/stacked-100-bar-chart.png":::
-
-To see a similar graph without using `stacked100`, you'd need to calculate the percentages as shown in the following query.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5VSwW7bMAy95ysIn+whS9zusMPgg5sEi5BWLmIPPQw7ODZbq7XlTJaXedjHj5KSJW0QYAsciJIe+R4fVaOGVOdKz3ONEEFJixYN+tdh+PF9eEVf8GlUE2ohy0uYDwfMnSh32GlUkmpq7Ax4kHkjCv+rx25vGU9Y6o3BY3zOYh7bMHmw6yrmaWwv79hsyT7H3MWcL9Iki90mTZMva2ZivrhZx+nKnvNknS1hHq/2uGTJErMS+NX5A0tnCU8Z976R4FS3qln8QKm70W/YVajQWZFRb7BBvUOU4B/dmUwOJgSnCXQjCPe292A0ncIsr4u+NhBd0b/VeQ2ybzaooH0EtOTw2CrAvKigM4lUuuubJlfiF0JmMpxG8rJoe6n9ADaD4z1nsAhb2tSz9UEPWzzneG5J9IuQZSSkRNVL8b1H8EdAv1NnzP6/3XmTdNEhhzu2azlnpoebITOyz3seO5C5temuSCsvObJFVRA+f8J/smWr2mcs9N4Gw2fDv5xue38sGoEihaXvn2l/B1dhOAkDmJ6OcQzX5vW0qqQ3cGgK8q44aQxK7AoCKZQWlauiIpst9U7oaj8mOz0SXrxg6XTV+EQpUSXKEqU7GrTQNUbe/Ssf3EvszJw7zwF/7oFWkBf8AY2JRG4ZBAAA" target="_blank">Run the query</a>
-
-```kusto
-let StartDate = datetime(2007-01-01);
-let EndDate = datetime(2007-01-31);
-let MidwesternStates = dynamic(["ILLINOIS", "INDIANA", "IOWA", "KANSAS", "MICHIGAN", "MINNESOTA", "MISSOURI", "NEBRASKA", "NORTH DAKOTA", "OHIO", "SOUTH DAKOTA", "WISCONSIN"]);
-StormEvents
-| where StartTime between (StartDate .. EndDate)
-| where State in (MidwesternStates)
-// Calculate the total number of events for each state
-| summarize TotalEvents = count() by State
-// Calculate the count of each event type for each state
-| join kind=innerunique (
-    StormEvents
-    | where StartTime between (StartDate .. EndDate)
-    | where State in (MidwesternStates)
-    | summarize EventCountByType = count() by State, EventType
-    )
-    on State
-// Calculate the percentage of each event type for each state
-| project
-    State,
-    EventType,
-    Percentage = round((EventCountByType * 100.0) / TotalEvents, 2)
-| order by State asc, EventType desc
-| render barchart
-    with (
-    kind=stacked,
-    legend=hidden,
-    ytitle="Percentage of total storms",
-    xtitle="State")
-```
+:::image type="content" source="images/visualization-barchart/stacked-100-bar-chart.png" alt-text="Screenshot of a stacked 100 bar chart visualization." lightbox="images/visualization-barchart/stacked-100-bar-chart.png":::
