@@ -13,6 +13,8 @@ Calculates a new [datetime](./scalar-data-types/datetime.md) from a specified pe
 
 `datetime_add(`*period*`,`*amount*`,`*datetime*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
