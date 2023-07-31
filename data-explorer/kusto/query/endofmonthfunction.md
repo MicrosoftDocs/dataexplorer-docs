@@ -13,6 +13,8 @@ Returns the end of the month containing the date, shifted by an offset, if provi
 
 `endofmonth(`*date* [, *offset*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

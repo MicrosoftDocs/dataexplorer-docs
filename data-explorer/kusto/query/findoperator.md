@@ -42,6 +42,8 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 
 * `find` *Predicate* [`project-smart` | `project` *ColumnName*[`:` *ColumnType* `,` ... ] [`,` `pack_all()`]]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 ::: zone pivot="azuredataexplorer, fabric"

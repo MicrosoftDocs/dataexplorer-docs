@@ -791,6 +791,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/kusto/api/load-test-cluster.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/best-practices",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/kusto/concepts/cross-cluster-and-schema-changes.md",
       "redirect_url": "/azure/data-explorer/kusto/query/cross-cluster-or-database-queries",
       "redirect_document_id": true
