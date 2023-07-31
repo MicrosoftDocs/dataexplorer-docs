@@ -8,14 +8,13 @@ ms.date: 07/31/2023
 
 # Add a cluster connection in the Azure Data Explorer web UI
 
-This article explains how to add a cluster connection in the Azure Data Explorer web UI.
+This article explains how to add a cluster connection in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
 The Azure Data Explorer web UI allows you to seamlessly manage clusters from various user accounts or Azure AD directories. Follow the optional steps in this article to set up connections with alternative credentials. Once connected, you can switch between clusters associated with different credentials within a unified interface, without a need to repeatedly sign in and sign out or switch directories.
 
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* Sign-in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
 ## Add a cluster connection
 
