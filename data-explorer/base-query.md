@@ -3,7 +3,7 @@ title: Create a dashboard base query
 description: Learn how to create a base query for an Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 07/17/2023
+ms.date: 07/31/2023
 ---
 # Create a dashboard base query
 
@@ -49,14 +49,14 @@ Within the base query pane, you can view the list of existing base queries. In
 
 The following indicators can be viewed in the base queries card:
 
-- Base query display name
-- Number of tiles in which the base query was used
-- Number of parameters in which the base query was used
-- Number of base queries in which the base query was used
+* Base query display name
+* Number of tiles in which the base query was used
+* Number of parameters in which the base query was used
+* Number of base queries in which the base query was used
 
 ## Use a base query
 
-Base queries can be used in dashboard tiles, parameters, and other base queries. Since these queries begin with a data source 
+Base queries can be used in dashboard tiles, parameters, and other base queries. Since these queries begin with a data source, use the base query at the beginning of a query. Recall the base query by entering ['*variablename*'] in the query editor.
 
 :::image type="content" source="media/base-query/use-base-query.png" alt-text="Screenshot of using a base query in Azure Data Explorer dashboards." lightbox="media/base-query/use-base-query.png":::
 
