@@ -17,6 +17,8 @@ Changes the reference of the query to a remote cluster. To access a database wit
 
 `cluster(`*name*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
