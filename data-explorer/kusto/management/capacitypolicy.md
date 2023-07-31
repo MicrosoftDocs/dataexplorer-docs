@@ -99,6 +99,7 @@ The policy can be used to change concurrency settings for [materialized views](m
 
 The effective value for `concurrent operations` is automatically adjusted by the system in the range
 [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], based on the number of materialized views in the cluster and the cluster's CPU.
+Use [`.show capacity`](../management/diagnostics.md#show-capacity) materialized-view to show the effective value of `concurrent operations`.
 
 > [!WARNING]
 > The `ClusterMinimumConcurrentOperations` should only be increased if the cluster's resources are well (low CPU, available memory). Increasing these values when resources are limited may result in resources exhaustion and will badly impact the cluster's performance.
