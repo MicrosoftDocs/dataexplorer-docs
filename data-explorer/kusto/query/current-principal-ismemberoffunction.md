@@ -17,6 +17,8 @@ Checks group membership or principal identity of the current principal running t
 
 `current_principal_is_member_of(`*group*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

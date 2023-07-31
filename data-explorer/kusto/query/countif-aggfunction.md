@@ -15,6 +15,8 @@ Counts the rows in which *predicate* evaluates to `true`.
 
 `countif` `(`*predicate*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -13,6 +13,8 @@ Returns the network endpoint (DNS name) of the current cluster being queried.
 
 `current_cluster_endpoint()`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 The network endpoint (DNS name) of the current cluster being queried,
