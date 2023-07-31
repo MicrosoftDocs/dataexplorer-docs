@@ -9,19 +9,19 @@ ms.custom: contperf-fy21q1
 
 # Monitor batching ingestion with metrics
 
-In the *batching ingestion* process, Azure Data Explorer optimizes [data ingestion](ingest-data-overview.md) for high throughput by batching incoming small chunks of data into batches based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md). The batching policy allows you to set the trigger conditions for sealing a batch (data size, number of blobs, or time passed). These batches are then optimally ingested for fast query results.
+In the *batching ingestion* process, Azure Data Explorer *Ingestion Service* optimizes [data ingestion](ingest-data-overview.md) for high throughput by batching incoming small chunks of data into batches based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md). The batching policy allows you to set the trigger conditions for sealing a batch (data size, number of blobs, or time passed). These batches are then optimally ingested for fast query results.
 
 In this article, you will learn how to use metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
 
 ## Batching stages
 
-The stages described in this section apply to all batching ingestions. For Azure Event Grid, Azure Event Hubs, and Azure IoT Hub ingestions, before the data is queued for ingestion a *data connection* gets the data from external sources and performs an initial data rearrangement.
+The stages described in this section apply to all batching ingestions. For Azure Event Grid, Azure Event Hubs, Azure IoT Hub and Cosmos db ingestions, before the data is queued for ingestion a *data connection* gets the data from external sources and performs an initial data rearrangement.
 
 Batching ingestion occurs in stages:
 
-1. The *Ingestion service* listens to the queue for ingestion messages and processes requests.
-1. The *Ingestion service* optimizes the ingestion throughput by taking the small ingress data chunks that it receives and batching the URLs based on the ingestion batching policy.
-1. The *Ingestion service* sends the ingestion commands to the *Azure Data Explorer Storage Engine*.
+1. The *Batching Manager* listens to the queue for ingestion messages and processes requests.
+1. The *Batching Manager* optimizes the ingestion throughput by taking the small ingress data chunks that it receives and batching the URLs based on the ingestion batching policy.
+1. The *Ingestion Manager* sends the ingestion commands to the *Azure Data Explorer Storage Engine*.
 1. The *Azure Data Explorer Storage Engine* stores the ingested data, making it available for query.
 
 Azure Data Explorer provides a set of Azure Monitor [ingestion metrics](using-metrics.md#ingestion-metrics) so that you can monitor your data ingestion across all the stages and components of the batching ingestion process.
