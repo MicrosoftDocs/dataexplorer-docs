@@ -71,7 +71,7 @@ In this article, you learn how to:
 
 - Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file. The file contains 1,000 storm event records.
 
-## Queue a file for ingestion and process the results
+## Queue a file for ingestion and query the results
 
 In your preferred IDE or text editor, create a project or file named *basic ingestion* using the convention appropriate for your preferred language. Place the *stormevent.csv* file in the same location as your app. Then add the following code:
 
@@ -392,7 +392,7 @@ Last ingested row:
          StormSummary - {}
 ```
 
-## Queue in-memory data for ingestion and process the results
+## Queue in-memory data for ingestion and query the results
 
 You can ingest data from memory by creating a stream containing the data, and then queuing it for ingestion.
 
@@ -595,7 +595,7 @@ Last ingested row:
          StormSummary - {}
 ```
 
-## Queue a blob for ingestion and process the results
+## Queue a blob for ingestion and query the results
 
 You can ingest data from Azure Storage blobs, Azure Data Lake files, and Amazon S3 files. Upload the *stormevent.csv* file to your storage account and generate a URI with read permissions, for example, using [a SAS token](../connection-strings/generate-sas-token.md) for Azure blobs. Then use a blob descriptor to queue the blob for ingestion.
 
