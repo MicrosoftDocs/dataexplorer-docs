@@ -15,6 +15,8 @@ For each such group, the operator returns a `pattern`, `count`, and `representat
 
 *T* `|` `reduce` [`kind` `=` *ReduceKind*] `by` *Expr* [`with` [`threshold` `=` *Threshold*] [`,` `characters` `=` *Characters*]]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -84,7 +86,7 @@ range x from 1 to 1000 step 1
 
 ### Behavior of Characters parameter
 
-If the *Characters* parameter is unspecified, then every non-ascii numeric character will be a term separator.
+If the *Characters* parameter is unspecified, then every non-ascii numeric character becomes a term separator.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxWKQQqAMAwEv7L0VMGDfYAf8VZrKgo2JUao4ONNLwMzjMSyExqy8IUAZYQJt1I1+VCFT0pqQTB3pqjeZWY3wi0GZYtH2X0bBvuFticR1re/P7YelSlbAAAA" target="_blank">Run the query</a>

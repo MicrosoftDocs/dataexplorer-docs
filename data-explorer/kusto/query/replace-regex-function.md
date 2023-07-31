@@ -15,6 +15,8 @@ Replaces all regex matches with a specified pattern.
 
 `replace_regex(`*source*`,`*lookup_regex*`,` *rewrite_pattern*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

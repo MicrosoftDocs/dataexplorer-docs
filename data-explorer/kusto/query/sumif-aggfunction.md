@@ -17,6 +17,8 @@ You can also use the [sum()](sum-aggfunction.md) function, which sums rows witho
 
 `sumif(`*expr*`,`*predicate*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

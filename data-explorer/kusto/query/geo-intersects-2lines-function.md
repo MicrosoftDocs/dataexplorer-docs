@@ -13,6 +13,8 @@ Calculates whether two lines or multilines intersect.
 
 `geo_intersects_2lines(`*lineString1*`,`*lineString2*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

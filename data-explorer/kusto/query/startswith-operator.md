@@ -21,6 +21,8 @@ When possible, use the case-sensitive [startswith_cs](startswith-cs-operator.md)
 
 *T* `|` `where` *col* `startswith` `(`*expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

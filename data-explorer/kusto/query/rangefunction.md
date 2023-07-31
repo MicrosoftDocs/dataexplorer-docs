@@ -13,6 +13,8 @@ Generates a dynamic array holding a series of equally spaced values.
 
 `range(`*start*`,` *stop* [`,` *step*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

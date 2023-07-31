@@ -16,6 +16,8 @@ The function takes an expression containing a series (dynamic numerical array) a
 
 `series_decompose_anomalies (`*Series*`,` [ *Threshold*`,` *Seasonality*`,` *Trend*`,` *Test_points*`,` *AD_method*`,` *Seasonality_threshold* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

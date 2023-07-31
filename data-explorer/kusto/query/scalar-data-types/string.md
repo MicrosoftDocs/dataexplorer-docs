@@ -3,12 +3,14 @@ title:  The string data type
 description: This article describes The string data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/08/2022
+ms.date: 07/25/2023
 ---
 # The string data type
 
 The `string` data type represents a sequence of zero or more [Unicode](https://home.unicode.org/)
 characters.
+
+For information on string query operators, see [String operators](../datatypes-string-operators.md).
 
 > [!NOTE]
 >
@@ -42,10 +44,14 @@ Verbatim string literals are also supported. In this form, the backslash charact
 > The newline character (`\n`) and the return character (`\r`) can't be included
 > as part of the string literal without being quoted. See also [multi-line string literals](#multi-line-string-literals).
 
-## Splicing string literals
+## Concatenation of separated string literals
 
-Two or more string literals are automatically joined to form a new string literal in the query if they have nothing between them, or they're separated only by whitespace and comments. <br>
+In a KQL query, when two or more adjacent string literals have no separation between them, they're automatically combined to form a new string literal. Similarly, if the string literals are separated only by whitespace or comments, they're also combined to form a new string literal.
+
 For example, the following expressions all yield a string of length 13:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XOMQoCMRSE4T6nGNOsgrAHsBFsrGw8QXYzmEDyErIPwt5eFztZyym+n6ktimLRlihHe2dKxQ5nDFfbS0v+YE8XjCMeRUOUFyZqJwUamI2pOxibxg9/srrmlB7Tih6icqluJoqkdT9jsLlbyZmin7Hz6V/UiYfD/KVv7+yEm+AAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 print strlen("Hello"', '@"world!"); // Nothing between them
@@ -131,3 +137,7 @@ For example:
 print x="https://contoso.blob.core.windows.net/container/blob.txt?"
   h'sv=2012-02-12&se=2013-04-13T0...'
 ```
+
+## See also
+
+* [String operators](../datatypes-string-operators.md)

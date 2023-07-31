@@ -13,6 +13,8 @@ Returns the end of the year containing the date, shifted by an offset, if provid
 
 `endofyear(`*date* [, *offset*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -14,6 +14,8 @@ current row in a [serialized row set](./windowsfunctions.md#serialized-row-set).
 
 `next(`*column*`,` [ *offset*`,` *default_value* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

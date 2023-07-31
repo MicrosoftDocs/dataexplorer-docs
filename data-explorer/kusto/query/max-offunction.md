@@ -13,6 +13,8 @@ Returns the maximum value of all argument expressions.
 
 `max_of(`*arg*`,` *arg_2*`,` [ *arg_3*`,` ... ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

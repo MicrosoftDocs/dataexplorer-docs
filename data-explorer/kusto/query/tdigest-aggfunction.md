@@ -21,6 +21,8 @@ For more information, see the [underlying algorithm (T-Digest) and the estimated
 
 `tdigest(`*expr* [`,` *weight*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

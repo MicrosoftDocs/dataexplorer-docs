@@ -25,11 +25,11 @@ For instance, if a tenant performs many compute-intensive queries or ingestions,
 
 The next sections explore deployment architectures in detail.  This section contrasts the architectures to facilitate decision making.
 
-Architecture|Pros|Cons
--|-|-
-One tenant per database|Tenants' isolation:  easy to quickly remove tenant data, have different policies, have different schema evolution, etc.|Extent fragmentation<br>Materialized View / Partition Policy count<br>
-One table for many tenants|Data consolidation (extent management)|Tenant removal requires soft delete or purge<br>All tenants have same schema and policies
-One tenant per table in a single database|Easy tenant removal|Extent fragmentation<br>Extra code customization (e.g., different table name per tenant)
+|Architecture|Strenghts|
+|---|---|
+|One tenant per database|- Tenants' isolation:  no need for proxy<br />- Can have different policies, such as retention policies, per tenant<br />- Flexibility in schema evolution per tenant<br />- Easy and quick removal of tenant data|
+|One table for many tenants|- Efficient data consolidation and extent management<br />- Simplified schema evolution<br />- Best suited for materialized views<br />- Ideal for partitioning|
+|One tenant per table in a single database|Not recommended|
 
 ## Architecture: One tenant per database
 
@@ -48,7 +48,7 @@ The characteristics of this architecture are:
 * **Retention and caching policies**: Each tenant can have its own unique policies, which enable you to provide custom retention and caching policies to your customers.
 
 * **Security boundary per tenant**:
-  * For multi-tenant application (proxy): Configure your application to target the relevant database. Use [access restriction](kusto/query/cross-cluster-or-database-queries.md#access-restriction) on queries to prohibit [cross-database queries](kusto/query/cross-cluster-or-database-queries.md).
+  * For multi-tenant application (proxy): Configure your application to target the relevant database. Use [access restriction](kusto/query/cross-cluster-or-database-queries.md#qualified-names-and-restrict-access-statements) on queries to prohibit [cross-database queries](kusto/query/cross-cluster-or-database-queries.md).
   * For users with direct access: Users can be granted access at the [database level](kusto/access-control/role-based-access-control.md). Giving users direct access to their database creates a dependency for the implementation details, making it difficult to change the implementation. Therefore, we strongly recommend using the proxy approach for accessing the database.
 
 * **Aggregating data from multiple tenants at scale**: Use the [union operator](kusto/query/unionoperator.md) to aggregate data between databases. However, this method can become cumbersome as the number of tenants increases. Even though aggregating data from multiple tenants might be a design goal from the tenant's perspective, it might be of interest for solution owner to aggregate data from all tenants to gather statistics.

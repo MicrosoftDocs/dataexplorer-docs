@@ -14,6 +14,8 @@ Estimates the number of distinct values of *expr* for rows in which *predicate* 
 
 `dcountif` `(`*expr*, *predicate*, [`,` *accuracy*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

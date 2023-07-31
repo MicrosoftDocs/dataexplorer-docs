@@ -3,7 +3,7 @@ title:  split()
 description: Learn how to use the split() function to split the source string according to a given delimiter.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 07/25/2023
 adobe-target: true
 ---
 # split()
@@ -14,17 +14,21 @@ The `split()` function takes a string and splits it into substrings based on a s
 
 `split(`*source*`,` *delimiter* [`,` *requestedIndex*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source* | string | &check; | The source string that will be split according to the given delimiter.|
+| *source* | string | &check; | The source string that is split according to the given delimiter.|
 | *delimiter* | string | &check; | The delimiter that will be used in order to split the source string.|
-| *requestedIndex* | int | | A zero-based index. If provided, the returned string array will contain the requested substring at the index if it exists.|
+| *requestedIndex* | int | | A zero-based index. If provided, the returned string array contains the requested substring at the index if it exists.|
 
 ## Returns
 
 An array of substrings obtained by separating the *source* string by the specified *delimiter*, or a single substring at the specified *requestedIndex*.
+
+[!INCLUDE [dynamic-access](../../includes/dynamic-access.md)]
 
 ## Examples
 

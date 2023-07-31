@@ -15,6 +15,8 @@ Converts the input expression to a value of type `real`.
 
 `todouble(`*Expr*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

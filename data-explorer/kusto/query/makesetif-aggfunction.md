@@ -15,6 +15,8 @@ Creates a `dynamic` array of the set of distinct values that *expr* takes in rec
 
 `make_set_if(`*expr*`,` *predicate* [`,` *maxSize*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -8,12 +8,19 @@ ms.date: 06/28/2023
 
 # Create and alter SQL external tables
 
-Creates or alters a SQL [external table](../query/schema-entities/externaltables.md) in the database in which the command is executed. Supported table types include Microsoft SQL Server, MySQL, PostgreSQL, and Cosmos DB.
+Creates or alters a SQL [external table](../query/schema-entities/externaltables.md) in the database in which the command is executed.
 
 > [!NOTE]
 >
 > * If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
-> * Altering the schema or format of an external SQL table is not supported.
+> * Altering the schema of an external SQL table is not supported.
+
+## Supported SQL external table types
+
+1. Microsoft SQL Server
+2. MySQL
+3. PostgreSQL
+4. Cosmos DB
 
 ## Permissions
 
@@ -53,7 +60,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 To interact with an external SQL table from Azure Data Explorer, you must specify authentication means as part of the *SqlConnectionString*. The *SqlConnectionString* defines the resource to access and its authentication information.
 
-Microsoft SQL Server external tables support Azure AD-integrated (impersonation) authentication, managed identity authentication, and username and password authentication. MySQL, PostgreSQL, and Cosmos DB tables support only username and password authentication. For more information, see [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md).
+For more information, see [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md).
 
 > [!NOTE]
 > If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by username/password or managed identities.

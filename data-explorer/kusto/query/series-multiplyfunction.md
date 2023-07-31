@@ -13,6 +13,8 @@ Calculates the element-wise multiplication of two numeric series inputs.
 
 `series_multiply(`*series1*`,` *series2*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
