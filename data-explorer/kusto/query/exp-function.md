@@ -13,6 +13,8 @@ The base-e exponential function of x, which is e raised to the power x: e^x.
 
 `exp(`*x*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
