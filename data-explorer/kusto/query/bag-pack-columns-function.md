@@ -13,6 +13,8 @@ Creates a dynamic property bag object from a list of columns.
 
 `bag_pack_columns(`*column1*`,` *column2*`,... )`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

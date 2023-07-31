@@ -17,6 +17,8 @@ Use the [countif](countif-aggfunction.md) aggregation function to count only rec
 
 `count()`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 Returns a count of the records per summarization group (or in total, if summarization is done without grouping).

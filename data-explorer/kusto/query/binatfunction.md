@@ -13,6 +13,8 @@ Rounds values down to a fixed-size bin, with control over the bin's starting poi
 
 `bin_at` `(`*value*`,`*bin_size*`,`*fixed_point*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

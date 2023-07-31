@@ -22,6 +22,8 @@ data between the nodes of the cluster.)
 
 `consume` [`decodeblocks` `=` *DecodeBlocks*]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
