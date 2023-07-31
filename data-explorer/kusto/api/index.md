@@ -39,7 +39,7 @@ For more information, see [MS-TDS](../../t-sql.md).
 
 ## Client libraries
 
-Azure Data Explorer provides a number of client libraries that make use of the above endpoints, to make programmatic access easy.
+Azure Data Explorer provides a number of [client libraries](client-libraries.md) that make use of the above endpoints, to make programmatic access easy.
 
 * .NET SDK
 * Python SDK
