@@ -17,6 +17,8 @@ The beta distribution is commonly used to study variation in the percentage of s
 
 `beta_cdf(`*x*`,` *alpha*`,` *beta*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
