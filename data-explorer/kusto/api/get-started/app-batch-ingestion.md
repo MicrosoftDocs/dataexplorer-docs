@@ -20,9 +20,9 @@ In this article, you learn how to:
 
 > [!div class="checklist"]
 >
-> - [Queue a file for ingestion and process the results](#queue-a-file-for-ingestion-and-query-the-results)
-> - [Queue in-memory data for ingestion and process the results](#queue-in-memory-data-for-ingestion-and-query-the-results)
-> - [Queue a blob for ingestion and process the results](#queue-a-blob-for-ingestion-and-query-the-results)
+> - [Queue a file for ingestion and query the results](#queue-a-file-for-ingestion-and-query-the-results)
+> - [Queue in-memory data for ingestion and query the results](#queue-in-memory-data-for-ingestion-and-query-the-results)
+> - [Queue a blob for ingestion and query the results](#queue-a-blob-for-ingestion-and-query-the-results)
 
 ## Prerequisites
 
