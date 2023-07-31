@@ -20,6 +20,8 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 `.alter` `materialized-view` *MaterializedViewName* `lookback` *LookbackPeriod*
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                   | Type     | Required | Description                                                                   |

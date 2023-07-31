@@ -17,6 +17,8 @@ Receives one or more arrays. Sorts the first array in ascending order. Orders th
 
 If *nulls_last* isn't provided, a default value of `true` is used.
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -28,9 +30,9 @@ If *nulls_last* isn't provided, a default value of `true` is used.
 
 Returns the same number of arrays as in the input, with the first array sorted in ascending order, and the remaining arrays ordered to match the reordered first array.
 
-`null` will be returned for every array that differs in length from the first one.
+`null` is returned for every array that differs in length from the first one.
 
-If an array contains elements of different types, it will be sorted in the following order:
+If an array contains elements of different types, it's sorted in the following order:
 
 * Numeric, `datetime`, and `timespan` elements
 * String elements

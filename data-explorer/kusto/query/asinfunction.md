@@ -13,6 +13,8 @@ Calculates the angle whose sine is the specified number, or the arc sine. This i
 
 `asin(`*x*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

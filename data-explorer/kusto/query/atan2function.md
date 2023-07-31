@@ -13,6 +13,8 @@ Calculates the angle, in radians, between the positive x-axis and the ray from t
 
 `atan2(`*y*`,`*x*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

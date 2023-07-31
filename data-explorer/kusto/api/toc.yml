@@ -1,6 +1,4 @@
 items:
-- name: Client libraries
-  href: client-libraries.md
 - name: REST API
   items:
   - name: REST API overview

@@ -502,6 +502,8 @@ items:
         items:
           - name: API overview
             href: kusto/api/index.md
+          - name: Client libraries
+            href: kusto/api/client-libraries.md
           - name: Sample app generator
             href: sample-app-generator-wizard.md
           - name: Write code with SDKs
