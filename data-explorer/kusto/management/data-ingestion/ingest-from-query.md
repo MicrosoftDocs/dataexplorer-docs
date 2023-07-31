@@ -32,7 +32,7 @@ For more information on permissions, see [Kusto role-based access control](../..
 
 (`.set` | `.append` | `.set-or-append` | `.set-or-replace`) [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

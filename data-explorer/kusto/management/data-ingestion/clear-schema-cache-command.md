@@ -21,7 +21,7 @@ You must have at least [Database Ingestor](../access-control/role-based-access-c
 
 `.clear` `database` `cache` `streamingingestion` `schema`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

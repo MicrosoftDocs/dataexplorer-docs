@@ -17,7 +17,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 `.alter` `materialized-view` *MaterializedViewName* `docstring` *DocString*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
