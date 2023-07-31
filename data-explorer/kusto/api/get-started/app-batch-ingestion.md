@@ -597,7 +597,7 @@ Last ingested row:
 
 ## Queue a blob for ingestion and process the results
 
-You can ingest data from Azure Storage blobs, Azure Data Lake files, and Amazon S3 files. Upload the *stormevent.csv* file to your storage account and generate a URI with read permissions, for example, using [a SAS token](../connection-strings/generate-sas-token.md) for the file. Then use a blob descriptor to queue the blob for ingestion.
+You can ingest data from Azure Storage blobs, Azure Data Lake files, and Amazon S3 files. Upload the *stormevent.csv* file to your storage account and generate a URI with read permissions, for example, using [a SAS token](../connection-strings/generate-sas-token.md) for Azure blobs. Then use a blob descriptor to queue the blob for ingestion.
 
 For example, you can modify the app replacing the *ingest from memory* code with the following:
 
