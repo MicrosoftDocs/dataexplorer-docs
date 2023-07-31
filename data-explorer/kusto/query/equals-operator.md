@@ -30,6 +30,8 @@ When possible, use [==](equals-cs-operator.md) - a case-sensitive version of the
 
 *T* `|` `where` *col* `=~` `(`*expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

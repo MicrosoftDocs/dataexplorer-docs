@@ -13,6 +13,8 @@ Returns the end of the day containing the date, shifted by an offset, if provide
 
 `endofday(`*date* [, *offset*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

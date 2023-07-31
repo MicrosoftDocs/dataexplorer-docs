@@ -15,6 +15,8 @@ Read more about [`geohash`](https://en.wikipedia.org/wiki/Geohash).
 
 `geo_geohash_neighbors(`*geohash*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

@@ -13,6 +13,8 @@ Calculates the shortest distance in meters between a coordinate and a line or mu
 
 `geo_distance_point_to_line(`*longitude*`,`*latitude*`,`*lineString*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

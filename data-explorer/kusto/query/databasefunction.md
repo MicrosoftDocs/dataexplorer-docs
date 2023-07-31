@@ -22,6 +22,8 @@ Changes the reference of the query to a specific database within the cluster sco
 
 `database(`*databaseName*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
