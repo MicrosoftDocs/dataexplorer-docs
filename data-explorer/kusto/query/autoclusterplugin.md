@@ -16,6 +16,8 @@ ms.date: 03/09/2023
 
 *Table* `|` `evaluate` `autocluster` `(`[*SizeWeight*, *WeightColumn*, *NumSeeds*, *CustomWildcard*, *CustomWildcard*, ...]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 The parameters must be ordered as specified in the [syntax](#syntax). To indicate that the default value should be used, put the string tilde value `~`. For more information, see the "Example" column of the following table.
