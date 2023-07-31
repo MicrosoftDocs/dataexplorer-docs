@@ -21,6 +21,8 @@ If you're looking for a [term](datatypes-string-operators.md#what-is-a-term), us
 
 *T* `|` `where` *col* `contains_cs` `(`*string*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
