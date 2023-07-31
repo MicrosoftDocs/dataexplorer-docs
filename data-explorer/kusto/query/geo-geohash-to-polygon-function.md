@@ -14,6 +14,9 @@ Read more about [geohash](https://en.wikipedia.org/wiki/Geohash).
 ## Syntax
 
 `geo_geohash_to_polygon(`*geohash*`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
