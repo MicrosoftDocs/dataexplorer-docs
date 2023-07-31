@@ -17,9 +17,9 @@ In this article, you will learn how to use metrics to monitor batching ingestion
 
 Batching ingestion occurs in stages:
 
-1. For event grid, event hub and IoT hub ingestion, there is a *Data Connection* that gets the data from external sources, performs an initial data rearrangement and then queue an ingestion.
-2. The *Ingestion service* listens to the queue for ingestion messages and process the requests
-3. The *Ingestion service* optimizes the ingestion throughput by taking the small ingress data chunks that it receives and batching the urls based on the ingestion batching policy.
+1. For Azure Event Grid, Azure Event Hubs, and Azure IoT Hub ingestion, a *data connection* gets the data from external sources, performs an initial data rearrangement, and then queues an ingestion.
+2. The *Ingestion service* listens to the queue for ingestion messages and processes requests.
+3. The *Ingestion service* optimizes the ingestion throughput by taking the small ingress data chunks that it receives and batching the URLs based on the ingestion batching policy.
 4. The *Ingestion service* sends the ingestion commands to the *Azure Data Explorer Storage Engine*.
 5. The *Azure Data Explorer Storage Engine* stores the ingested data, making it available for query.
 
