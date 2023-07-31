@@ -13,6 +13,8 @@ Converts UTC [datetime](./scalar-data-types/datetime.md) to local datetime using
 
 `datetime_utc_to_local(`*from*`,`*timezone*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -43,6 +45,6 @@ print dt=now()
 
 ## See also
 
-* To convert a datetime from local to UTC, see [datetime_local_to_utc()](datetime-local-to-utc-function.md).
+* To convert a datetime from local to UTC, see [datetime_local_to_utc()](datetime-local-to-utc-function.md)
 * [Timezones](timezone.md)
 * [format_datetime()](format-datetimefunction.md)

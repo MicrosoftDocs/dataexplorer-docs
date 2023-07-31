@@ -15,6 +15,8 @@ Extracts the requested date part as an integer value.
 
 `datetime_part(`*part*`,`*datetime*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

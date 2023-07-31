@@ -13,6 +13,8 @@ Converts local datetime to UTC datetime using [a time-zone specification](timezo
 
 `datetime_local_to_utc(`*from*`,`*timezone*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -13,6 +13,8 @@ Counts occurrences of a substring in a string. Plain string matches may overlap;
 
 `countof(`*source*`,` *search* [`,` *kind*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
