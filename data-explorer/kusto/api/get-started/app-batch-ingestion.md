@@ -3,7 +3,7 @@ title:  'Create an app to ingest data using the batching manager'
 description: Learn how to create an app to ingest data using the batching manager of the Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 07/05/2023
+ms.date: 07/31/2023
 ---
 # Create an app to ingest data using the batching manager
 
