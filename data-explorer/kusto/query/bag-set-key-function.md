@@ -7,7 +7,7 @@ ms.date: 04/16/2023
 ---
 # bag_set_key()
 
-bag_set_key() receives a `dynamic` property-bag, a key and a value. The function sets the given key in the bag to the given value. The function will override any existing value in case the key already exists.
+bag_set_key() receives a `dynamic` property-bag, a key and a value. The function sets the given key in the bag to the given value. The function overrides any existing value in case the key already exists.
 
 ## Syntax
 
@@ -18,9 +18,9 @@ bag_set_key() receives a `dynamic` property-bag, a key and a value. The function
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
+|--|--|--|--|
 | *bag* | dynamic | &check; | The property bag to modify. |
-| *key* | string | &check; | The key to set. Either a JSON path (you can specify a key on the nested levels using [JSONPath](jsonpath.md) notation) or the key name for a root level key. Array indexing or root JSON path aren't supported. |
+| *key* | string | &check; | The key to set. Either a JSON path (you can specify a key on the nested levels using [JSONPath](jsonpath.md) notation) or the key name for a root level key. Array indexing or root JSON paths aren't supported. |
 | *value* | any scalar data type | &check; | The value to which the key is set. |
 
 ## Returns

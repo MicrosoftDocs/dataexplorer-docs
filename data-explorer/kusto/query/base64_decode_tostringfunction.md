@@ -20,7 +20,7 @@ Decodes a base64 string to a UTF-8 string.
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
+|--|--|--|--|
 | *base64_string* | string | &check; | The value to decode from base64 to UTF-8 string. |
 
 ## Returns
@@ -42,7 +42,7 @@ print Quine=base64_decode_tostring("S3VzdG8=")
 |-----|
 |Kusto|
 
-Trying to decode a base64 string that was generated from invalid UTF-8 encoding will return null:
+Trying to decode a base64 string that was generated from invalid UTF-8 encoding returns null:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUXDNLSiptE1KLE41M4lPSU3OT0mNL8kvLgFKpmsohRoHVSaGm+YZeHsEGZS4Oxr4mAdlWDqbGfg42ippAgCBCpEtQgAAAA==" target="_blank">Run the query</a>
