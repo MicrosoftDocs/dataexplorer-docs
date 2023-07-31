@@ -21,6 +21,8 @@ A predicate run over the records of a table to compare their ingestion time agai
 
 `cursor_after(`*RHS*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -34,8 +36,7 @@ after the database cursor *RHS* (`true`) or not (`false`).
 
 ## See also
 
-See [database cursors](../management/databasecursor.md) for additional
-details on database cursors.
+* [database cursors](../management/databasecursor.md)
 
 ::: zone-end
 
