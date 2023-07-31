@@ -45,7 +45,7 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
 
 ## Manage base queries
 
-Within the base query pane, you can view the list of existing base queries. In each base query card, you can select the pencil widget to edit the base query, or select the **More [...]** menu to Duplicate, Delete, or move the base query. Base query order can also be changed by drag and drop.
+Within the base query pane, you can view the list of existing base queries. In each base query card, select the pencil widget to edit the base query, or select the **More [...]** menu to Duplicate, Delete, or move the base query. Base query order can also be changed by dragging and dropping the card.
 
 The following indicators can be viewed in the base queries card:
 
@@ -55,6 +55,8 @@ The following indicators can be viewed in the base queries card:
 - Number of base queries in which the base query was used
 
 ## Use a base query
+
+Base queries can be used in dashboard tiles, parameters, and other base queries. Since these queries begin with a data source 
 
 :::image type="content" source="media/base-query/use-base-query.png" alt-text="Screenshot of using a base query in Azure Data Explorer dashboards." lightbox="media/base-query/use-base-query.png":::
 
