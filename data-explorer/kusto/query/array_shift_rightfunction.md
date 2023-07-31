@@ -13,6 +13,8 @@ Shifts the values inside a dynamic array to the right.
 
 `array_shift_right(`*array*, *shift_count* [, *default_value* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
