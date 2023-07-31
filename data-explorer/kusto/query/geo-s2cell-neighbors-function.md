@@ -15,6 +15,8 @@ Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierar
 
 `geo_s2cell_neighbors(`*s2cell*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
@@ -23,7 +25,7 @@ Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierar
 
 ## Returns
 
-An array of S2 cell neighbors. If the S2 Cell is invalid, the query will produce a null result.
+An array of S2 cell neighbors. If the S2 Cell is invalid, the query produces a null result.
 
 > [!NOTE]
 > S2 Cell edges are spherical geodesics.

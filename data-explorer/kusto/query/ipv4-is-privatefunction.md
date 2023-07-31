@@ -32,6 +32,8 @@ ipv4_is_private("127.0.0.1") == false
 
 `ipv4_is_private(`*ip*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

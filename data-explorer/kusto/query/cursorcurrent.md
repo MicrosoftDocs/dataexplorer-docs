@@ -19,15 +19,16 @@ Retrieves the current value of the cursor of the database in scope.
 
 `cursor_current()`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 Returns a single value of type `string` that encodes the current value of the
 cursor of the database in scope.
 
-**Notes**
+## See also
 
-See [database cursors](../management/databasecursor.md) for more
-details on database cursors.
+* [database cursors](../management/databasecursor.md)
 
 ::: zone-end
 

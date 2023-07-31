@@ -21,6 +21,8 @@ Applying this function to calculated data that isn't attached to a data shard re
 
 `extent_id()`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 A value of type `guid` that identifies the current record's data shard,

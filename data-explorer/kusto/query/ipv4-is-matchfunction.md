@@ -13,6 +13,8 @@ Matches two IPv4 strings. The two IPv4 strings are parsed and compared while acc
 
 `ipv4_is_match(`*ip1*`,`*ip2*`[ ,`*prefix*`])`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

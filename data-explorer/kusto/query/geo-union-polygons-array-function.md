@@ -13,6 +13,8 @@ Calculates the union of polygons or multipolygons on Earth.
 
 `geo_union_polygons_array(`*polygons*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
