@@ -13,6 +13,8 @@ Extracts a slice of a dynamic array.
 
 `array_slice`(*array*, *start*, *end*)
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

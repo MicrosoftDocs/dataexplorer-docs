@@ -13,6 +13,8 @@ Returns the angle whose tangent is the specified number. This is the inverse ope
 
 `atan(`*x*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

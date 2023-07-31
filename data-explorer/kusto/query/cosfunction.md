@@ -13,6 +13,8 @@ Returns the cosine function value of the specified angle. The angle is specified
 
 `cos(`*number*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

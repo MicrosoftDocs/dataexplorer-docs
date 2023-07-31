@@ -13,6 +13,8 @@ Decodes a base64 string to an array of long values.
 
 `base64_decode_toarray(`*base64_string*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
