@@ -101,7 +101,7 @@ StormEvents
 The following query demonstrates how to use properties to label a bar chart.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNwQ3CMAxF753C6qmVukKOTJABUJpYJKhJkOMCrRiexCBAwgfL/v/5W3OmeLhi4tI9oKwxGgo7AjbpaPOaWEkfRpg30GwYK3ihfEbLr336patJmBwSzIasN8Qd1LoF9jDIyIEXVL1un0FuWnJpSf0kxP0feTvbx/nSC57qQ+WDc5hEGZ/psjhB1gAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNwQ3CMAxF753C6qmVukKOTJABUJpYJKhJkOMCrRiexCBAwgfL/v/5W3OmeLhi4tI9oKwxGgo7AjbpaPOaWEkfRpg30GwYK3ihfEbLr336patJmBwSzIasN8Qd1LoF9jDIyIEXVL1un0FuWnJpSf0kxPaPvJ37x/nSC57qQ+WDc5hEGZ+m61uP1gAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -110,8 +110,8 @@ StormEvents
 | render barchart
     with (
     title="Storm count by state",
-    xtitle="Storm count",
-    ytitle="State",
+    ytitle="Storm count",
+    xtitle="State",
     legend=hidden
     )
 ```
