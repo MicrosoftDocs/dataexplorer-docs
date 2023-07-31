@@ -8,9 +8,9 @@ ms.date: 07/23/2023
 
 # Add a cluster connection in the Azure Data Explorer web UI
 
-In the Azure Data Explorer web UI, each cluster connection is associated with a specific user account and Azure Active Directory (Azure AD) directory. The provided credentials are used to authenticate to the cluster and run queries.
+This article explains how to add a cluster connection in the Azure Data Explorer web UI.
 
-This functionality is especially valuable for users who manage multiple clusters across different user accounts or Azure AD directories. It removes the need to repetitively sign in and sign out, or switch directories, and allows you to move between clusters associated with different credentials within a unified interface.
+If you need to connect to clusters from various user accounts or Azure AD directories, the Azure Data Explorer web UI allows you to do so seamlessly. Switch between clusters associated with different credentials within a unified interface, without a need to repeatedly sign in and sign out or switch directories. Follow the optional steps in this article to set up connections with alternative credentials.
 
 ## Prerequisites
 
@@ -31,15 +31,17 @@ To add a connection to your Azure Data Explorer cluster:
 
     :::image type="content" source="media/web-ui-add-cluster/add-connection-dialog.png" alt-text="Screenshot of add cluster connection dialog box." lightbox="media/web-ui-add-cluster/add-connection-dialog.png":::
 
-1. If the displayed user isn't the intended user, select **Connect as another user** and proceed to add or select the appropriate account.
+1. (Optional) If you have multiple user accounts and want to authenticate with a different account, select **Connect as another user** and proceed to add or select the appropriate account.
 
-1. To access a list of all Azure AD directories associated with the current account, select **Switch directory**. Choose the relevant directory for this specific cluster connection.
+1. (Optional) If your account is linked to multiple Azure AD directories, select **Switch directory** and choose the relevant directory for this connection.
 
     :::image type="content" source="media/web-ui-add-cluster/switch-directories.png" alt-text="Screenshot of option to switch directory." lightbox="media/web-ui-add-cluster/switch-directories.png":::
 
-1. Select **Add** to add the connection. Your cluster and databases should now be visible in the left panel. For example, the following image shows the `help` cluster connection.
+1. Select **Add** to add the connection. Your cluster and databases should now be visible in the left panel.
 
-    :::image type="content" source="media/web-ui-add-cluster/help-cluster-web-ui.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-add-cluster/help-cluster-web-ui.png":::
+    For example, the following image shows a cluster connection pane that contains three clusters: `help`, `FreeCluster`, and `HomeCluster`. The `HomeCluster` connection uses different credentials from those of the signed-in user, as indicated by the small icon of a person in the upper-left corner.
+
+    :::image type="content" source="media/web-ui-add-cluster/cluster-pane-with-various-accounts.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-add-cluster/cluster-pane-with-various-accounts.png":::
 
 ## Next steps
 
