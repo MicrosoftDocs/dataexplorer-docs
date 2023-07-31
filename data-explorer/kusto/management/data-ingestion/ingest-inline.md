@@ -25,6 +25,8 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 [`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
 `[` *Data* `]`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
