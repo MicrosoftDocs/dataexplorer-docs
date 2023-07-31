@@ -75,12 +75,9 @@ In this article, you learn how to:
 
 In your preferred IDE or text editor, create a project or file named *basic ingestion* using the convention appropriate for your preferred language. Place the *stormevent.csv* file in the same location as your app. Then add the following code:
 
-- Create a client app that connects to your cluster and prints the number of rows in the *MyStormEvents* table. You'll use this count as a baseline for comparison with the number of rows after each method of ingestion. Replace the `<your_cluster_uri>` and `<your_database>` placeholders with your cluster URI and database name respectively.
+1. Create a client app that connects to your cluster and prints the number of rows in the *MyStormEvents* table. You'll use this count as a baseline for comparison with the number of rows after each method of ingestion. Replace the `<your_cluster_uri>` and `<your_database>` placeholders with your cluster URI and database name respectively.
 
     ### [C\#](#tab/csharp)
-
-    > [!NOTE]
-    > For management commands, you'll use the `CreateCslAdminProvider` client factory method.
 
     ```csharp
 
@@ -88,12 +85,17 @@ In your preferred IDE or text editor, create a project or file named *basic inge
 
     ### [Python](#tab/python)
 
+    > [!NOTE]
+    > In the following examples you use two clients, one to query your cluster and the other to ingest data into your cluster. Both clients share the same user prompt authenticator, resulting in a single user prompt instead of one for each client.
+
     ```python
+    from azure.identity import InteractiveBrowserCredential
     from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
 
     def main():
+      token_credentials = InteractiveBrowserCredential()
       cluster_uri = "<your_cluster_uri>"
-      cluster_kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
+      cluster_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(cluster_uri, token_credentials)
 
       with KustoClient(cluster_kcsb) as kusto_client:
         database = "<your_database>"
@@ -131,9 +133,7 @@ In your preferred IDE or text editor, create a project or file named *basic inge
 
     ---
 
-1. Create a connection string builder object that defines the data ingestion URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
-
-    Like with the cluster URI connection, you can also use the interactive login authentication for the ingestion URI connection. However, when you run the app you need to authenticate twice, once for each connection. To share the same credentials between both connections, use the Azure token authentication method for both connections.
+1. Create a connection string builder object that defines the data ingestion URI using the same authentication credentials as the cluster URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
 
     ### [C\#](#tab/csharp)
 
@@ -144,17 +144,10 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [Python](#tab/python)
 
     ```python
-    # Add this to the imports at the top of the file
-    from azure.identity import InteractiveBrowserCredential
+    import os
+    from azure.kusto.data import DataFormat
+    from azure.kusto.ingest import QueuedIngestClient, IngestionProperties
 
-    # Add this to the main method
-    ## Create an interactive authentication credential
-    token_credentials = InteractiveBrowserCredential()
-
-    ## Replace the authentication method
-    cluster_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(cluster_uri, token_credentials)
-
-    ## Create a connection string builder object that defines the data ingestion URI using the same credentials
     ingest_uri = "<your_ingestion_uri>"
     ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, token_credentials)
     ```
@@ -175,7 +168,14 @@ In your preferred IDE or text editor, create a project or file named *basic inge
 
     ---
 
-1. Ingest the *stormevent.csv* file by adding it to the batch queue. You use **IngestionProperties** to set the ingestion properties, **DataFormat** to specify the file format as *CSV*, and **QueuedIngestClient** to ingest the file.
+1. Ingest the *stormevent.csv* file by adding it to the batch queue. You use the following:
+
+    - **QueuedIngestClient** to create the ingest client.
+    - **IngestionProperties** to set the ingestion properties.
+    - **DataFormat** to specify the file format as *CSV*.
+    - **ignore_first_record** to specify whether the first row in CSV and similar file types is ignored, using the following logic:
+        - **True**: The first row is ignored. Use this option to drop the header row from tabular textual data.
+        - **False**: The first row is ingested as a regular row.
 
     ### [C\#](#tab/csharp)
 
@@ -186,16 +186,12 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [Python](#tab/python)
 
     ```python
-    # Add this to the imports at the top of the file
-    import os
-    from azure.kusto.data import DataFormat
-    from azure.kusto.ingest import QueuedIngestClient, IngestionProperties
+    with QueuedIngestClient(ingest_kcsb) as ingest_client:
+        file_path = os.path.join(os.path.dirname(__file__), "stormevents.csv")
+        print("\nIngesting data from file: \n\t " + file_path)
 
-    # Add this to the main method
-    file_path = os.path.join(os.path.dirname(__file__), "stormevents.csv")
-    print("\nIngesting data from file: \n\t " + file_path)
-    ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
-    ingest_client.ingest_from_file(file_path, ingest_props)
+        ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
+        ingest_client.ingest_from_file(file_path, ingest_props)
     ```
 
     ### [Node.js](#tab/nodejs)
@@ -284,12 +280,12 @@ def main():
   cluster_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(cluster_uri, token_credentials)
   ingest_uri = "<your_ingestion_uri>"
   ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, token_credentials)
+  file_path = os.path.join(os.path.dirname(__file__), "stormevents.csv")
 
   with KustoClient(cluster_kcsb) as kusto_client:
     with QueuedIngestClient(ingest_kcsb) as ingest_client:
       database = "<your_database>"
       table = "MyStormEvents"
-      file_path = os.path.join(os.path.dirname(__file__), "stormevents.csv")
 
       query = table + "| count"
       response = kusto_client.execute_query(database, query)
@@ -400,7 +396,132 @@ Last ingested row:
 
 You can ingest data from memory by creating a stream containing the data, and then queuing it for ingestion.
 
-For example, you can modify the app replacing the *ingest from file* code with the following:
+For example, you can modify the app replacing the *ingest from file* code, as follows:
+
+1. Add the stream descriptor package to the imports at the top of the file.
+
+    ### [C\#](#tab/csharp)
+
+    ```csharp
+
+    ```
+
+    ### [Python](#tab/python)
+
+    ```python
+    import io
+    from azure.kusto.ingest import StreamDescriptor
+    ```
+
+    ### [Node.js](#tab/nodejs)
+
+    ```nodejs
+
+    ```
+
+    <!-- ### [Go](#tab/go) -->
+
+    ### [Java](#tab/java)
+
+    ```java
+
+    ```
+
+    ---
+
+1. Add a in-memory string with the data to ingest.
+
+    ### [C\#](#tab/csharp)
+
+    ```csharp
+
+    ```
+
+    ### [Python](#tab/python)
+
+    ```python
+    single_line = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
+    string_stream = io.StringIO(single_line)
+    ```
+
+    ### [Node.js](#tab/nodejs)
+
+    ```nodejs
+
+    ```
+
+    <!-- ### [Go](#tab/go) -->
+
+    ### [Java](#tab/java)
+
+    ```java
+
+    ```
+
+    ---
+
+1. Set the ingestion properties to ignore the first records as the im-memory string doesn't have a header row.
+
+    ### [C\#](#tab/csharp)
+
+    ```csharp
+
+    ```
+
+    ### [Python](#tab/python)
+
+    ```python
+    ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
+    ```
+
+    ### [Node.js](#tab/nodejs)
+
+    ```nodejs
+
+    ```
+
+    <!-- ### [Go](#tab/go) -->
+
+    ### [Java](#tab/java)
+
+    ```java
+
+    ```
+
+    ---
+
+1. Ingest the in-memory data by adding it to the batch queue. Where possible, provide the size of the raw data.
+
+    ### [C\#](#tab/csharp)
+
+    ```csharp
+
+    ```
+
+    ### [Python](#tab/python)
+
+    ```python
+    stream_descriptor = StreamDescriptor(string_stream, is_compressed=False, size=len(single_line))
+    ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
+    ```
+
+    ### [Node.js](#tab/nodejs)
+
+    ```nodejs
+
+    ```
+
+    <!-- ### [Go](#tab/go) -->
+
+    ### [Java](#tab/java)
+
+    ```java
+
+    ```
+
+    ---
+
+An outline of the updated code should look like this:
 
 ### [C\#](#tab/csharp)
 
@@ -410,33 +531,30 @@ For example, you can modify the app replacing the *ingest from file* code with t
 ### [Python](#tab/python)
 
 ```python
-# Add this to the imports at the top of the file
 import io
-from azure.kusto.ingest import StreamDescriptor
+import time
+from azure.kusto.data import KustoClient, KustoConnectionStringBuilder, DataFormat
+from azure.kusto.ingest import QueuedIngestClient, IngestionProperties, StreamDescriptor
+from azure.identity import InteractiveBrowserCredential
 
-# Add this to the main method
-single_line = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
+def main():
+  # ...
+  single_line = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
+  string_stream = io.StringIO(single_line)
 
-print("\nIngesting data from memory:")
-ingest_props = IngestionProperties(database, table, DataFormat.CSV)
-string_stream = io.StringIO(single_line)
+  with KustoClient(cluster_kcsb) as kusto_client:
+    with QueuedIngestClient(ingest_kcsb) as ingest_client:
+      database = "<your_database>"
+      table = "MyStormEvents"
 
-# Where possible, provide the size of the raw data
-stream_descriptor = StreamDescriptor(string_stream, is_compressed=False, size=len(single_line))
-ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
-ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
+      # ...
 
-print("\nWaiting 30 seconds for ingestion to complete ...")
-time.sleep(30)
+      print("\nIngesting data from memory:")
+      ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=False)
+      stream_descriptor = StreamDescriptor(string_stream, is_compressed=False, size=len(single_line))
+      ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
 
-response = kusto_client.execute_query(database, query)
-print("\nNumber of rows in " + table + " AFTER ingesting from memory:")
-print_result_as_value_list(response)
-
-query = table + "| top 1 by EndTime"
-response = kusto_client.execute_query(database, query)
-print("\nLast ingested row:")
-print_result_as_value_list(response)
+      # ...
 ```
 
 ### [Node.js](#tab/nodejs)
@@ -454,7 +572,7 @@ print_result_as_value_list(response)
 
 ---
 
-When you add the code to your app and run it, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by one.
+When run the app, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by one.
 
 ```bash
 Number of rows in MyStormEvents BEFORE ingestion:
@@ -483,6 +601,73 @@ You can ingest data from Azure Storage blobs, Azure Data Lake files, and Amazon 
 
 For example, you can modify the app replacing the *ingest from memory* code with the following:
 
+1. Add the blob descriptor package to the imports at the top of the file.
+
+    ### [C\#](#tab/csharp)
+
+    ```csharp
+
+    ```
+
+    ### [Python](#tab/python)
+
+    ```python
+    from azure.kusto.ingest import BlobDescriptor
+    ```
+
+    ### [Node.js](#tab/nodejs)
+
+    ```nodejs
+
+    ```
+
+    <!-- ### [Go](#tab/go) -->
+
+    ### [Java](#tab/java)
+
+    ```java
+
+    ```
+
+    ---
+
+1. Create a blob descriptor using the blob URI, set the ingestion properties, and then ingest data from the blob. Replace the `<your_blob_uri>` placeholder with the blob URI.
+
+    ### [C\#](#tab/csharp)
+
+    ```csharp
+
+    ```
+
+    ### [Python](#tab/python)
+
+    ```python
+    blob_uri = "<your_blob_uri>"
+
+    print("\nIngesting data from a blob:")
+    blob_descriptor = BlobDescriptor(blob_uri)
+    ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
+    ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
+    ```
+
+    ### [Node.js](#tab/nodejs)
+
+    ```nodejs
+
+    ```
+
+    <!-- ### [Go](#tab/go) -->
+
+    ### [Java](#tab/java)
+
+    ```java
+
+    ```
+
+    ---
+
+An outline of the updated code should look like this:
+
 ### [C\#](#tab/csharp)
 
 ```csharp
@@ -491,28 +676,28 @@ For example, you can modify the app replacing the *ingest from memory* code with
 ### [Python](#tab/python)
 
 ```python
-# Add this to the imports at the top of the file
-from azure.kusto.ingest import BlobDescriptor
+import time
+from azure.kusto.data import KustoClient, KustoConnectionStringBuilder, DataFormat
+from azure.kusto.ingest import QueuedIngestClient, IngestionProperties, BlobDescriptor
+from azure.identity import InteractiveBrowserCredential
 
-# Add this to the main method
-blob_uri = "<your_blob_uri>"
+def main():
+  # ...
+  blob_uri = "<your_blob_uri>"
 
-print("\nIngesting data from a blob:")
-blob_descriptor = BlobDescriptor(blob_uri)
-ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
-ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
+  with KustoClient(cluster_kcsb) as kusto_client:
+    with QueuedIngestClient(ingest_kcsb) as ingest_client:
+      database = "<your_database>"
+      table = "MyStormEvents"
 
-print("\nWaiting 30 seconds for ingestion to complete ...")
-time.sleep(30)
+      # ...
 
-response = kusto_client.execute_query(database, query)
-print("\nNumber of rows in " + table + " AFTER ingesting from memory:")
-print_result_as_value_list(response)
+      print("\nIngesting data from a blob:")
+      blob_descriptor = BlobDescriptor(blob_uri)
+      ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
+      ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
 
-query = table + "| top 1 by EndTime"
-response = kusto_client.execute_query(database, query)
-print("\nLast ingested row:")
-print_result_as_value_list(response)
+      # ...
 ```
 
 ### [Node.js](#tab/nodejs)
@@ -530,7 +715,7 @@ print_result_as_value_list(response)
 
 ---
 
-When you add the code to your app and run it, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by 1,000.
+When run the app, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by 1,000.
 
 ```bash
 Number of rows in MyStormEvents BEFORE ingestion:
