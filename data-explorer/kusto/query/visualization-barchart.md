@@ -96,6 +96,28 @@ StormEvents
 
 :::image type="content" source="images/visualization-barchart/bar-chart.png" alt-text="Screenshot of bar chart visualization result." lightbox="images/visualization-barchart/bar-chart.png":::
 
+### Use properties to label a bar chart
+
+The following query demonstrates how to use properties to label a bar chart.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNwQ3CMAxF753C6qmVukKOTJABUJpYJKhJkOMCrRiexCBAwgfL/v/5W3OmeLhi4tI9oKwxGgo7AjbpaPOaWEkfRpg30GwYK3ihfEbLr336patJmBwSzIasN8Qd1LoF9jDIyIEXVL1un0FuWnJpSf0kxP0feTvbx/nSC57qQ+WDc5hEGZ/psjhB1gAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| summarize event_count=count() by State
+| project State, event_count
+| render barchart
+    with (
+    title="Storm count by state",
+    xtitle="Storm count",
+    ytitle="State",
+    legend=hidden
+    )
+```
+
+:::image type="content" source="images/visualization-barchart/labeled-bar-chart.png" alt-text="Screenshot of a labeled bar chart." lightbox="images/visualization-barchart/labeled-bar-chart.png":::
+
 ### Render a `stacked` bar chart
 
 The following query creates a `stacked` bar chart that shows the total count of storm events by their type for selected states of Texas, California, and Florida. Each bar represents a storm event type, and the stacked bars show the breakdown of storm events by state within each type.
