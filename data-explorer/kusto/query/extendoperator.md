@@ -7,7 +7,7 @@ ms.date: 12/11/2022
 ---
 # extend operator
 
-Create calculated columns and append them to the result set.
+Creates calculated columns and append them to the result set.
 
 ## Syntax
 
@@ -18,13 +18,13 @@ Create calculated columns and append them to the result set.
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
+|--|--|--|--|
 | *T* | string | &check; | Tabular input to extend. |
 | *ColumnName* | string | | Name of the column to add or update. |
 | *Expression* | string | &check; | Calculation to perform over the input.|
 
-* If *ColumnName* is omitted, the output column name of *Expression* will be automatically generated.
-* If *Expression* returns more than one column, a list of column names can be specified in parentheses. Then, *Expression*'s output columns will be given the specified names. If a list of the column names is not specified, all *Expression*'s output columns with generated names will be added to the output.
+* If *ColumnName* is omitted, the output column name of *Expression* is automatically generated.
+* If *Expression* returns more than one column, a list of column names can be specified in parentheses. Then, *Expression*'s output columns is given the specified names. If a list of the column names isn't specified, all *Expression*'s output columns with generated names are added to the output.
 
 ## Returns
 
@@ -32,7 +32,7 @@ A copy of the input tabular result set, such that:
 
 1. Column names noted by `extend` that already exist in the input are removed
    and appended as their new calculated values.
-1. Column names noted by `extend` that do not exist in the input are appended
+1. Column names noted by `extend` that don't exist in the input are appended
    as their new calculated values.
 
 > [!NOTE]
