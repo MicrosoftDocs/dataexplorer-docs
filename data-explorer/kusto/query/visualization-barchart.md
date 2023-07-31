@@ -84,23 +84,6 @@ The supported values of this property are:
 The following query creates a bar chart displaying the number of storm events for each state, filtering only those states with more than 10 events. The chart provides a visual representation of the event distribution across different states.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNQiFEUKdgqGBkCJgqL8rNTkEohCHWQVQMmi1LyU1CKFpMSi5IzEohIA1FziU3wAAAA=" target="_blank">Run the query</a>
-
-```kusto
-StormEvents
-| summarize event_count=count() by State
-| where event_count > 10
-| project State, event_count
-| render barchart
-```
-
-:::image type="content" source="images/visualization-barchart/bar-chart.png" alt-text="Screenshot of bar chart visualization result." lightbox="images/visualization-barchart/bar-chart.png":::
-
-### Use properties to label a bar chart
-
-The following query demonstrates how to use properties to label a bar chart.
-
-> [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNwQ3CMAxF753C6qmVukKOTJABUJpYJKhJkOMCrRiexCBAwgfL/v/5W3OmeLhi4tI9oKwxGgo7AjbpaPOaWEkfRpg30GwYK3ihfEbLr336patJmBwSzIasN8Qd1LoF9jDIyIEXVL1un0FuWnJpSf0kxPaPvJ37x/nSC57qQ+WDc5hEGZ+m61uP1gAAAA==" target="_blank">Run the query</a>
 
 ```kusto
