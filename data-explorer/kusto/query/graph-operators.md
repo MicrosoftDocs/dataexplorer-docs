@@ -23,13 +23,18 @@ The graph operators are in public preview mode, and currently four operators are
 
 The graph operators use V2 of the KQL parser. To learn how to configure the client to run with KQL parser V2, select the relevant tab for your environment.
 
-### [Kusto.Explorer](#tab/explorer)
-
 ### [Azure Data Explorer web UI](#tab/web)
 
 1. In the upper right corner, select the settings widget.
 1. Select **Connection**.
 1. From the **Server parser** dropdown, select **V2**.
+
+### [Kusto.Explorer](#tab/explorer)
+
+1. Select the **Tools** tab.
+1. Select **Options**.
+1. From the left-hand menu, select **Connections**.
+1. From the **Query results protocol** dropdown, select **V2**.
 
 ---
 
