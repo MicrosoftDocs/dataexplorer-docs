@@ -60,6 +60,8 @@ This visualization supports splitting into multiple y-axis values:
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
 
+::: zone-end
+
 ::: zone pivot="azuremonitor"
 
 ### Properties 
