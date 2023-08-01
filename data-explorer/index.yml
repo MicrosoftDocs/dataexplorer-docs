@@ -117,6 +117,8 @@ landingContent:
         links:
           - text: Query data in Azure Data Lake
             url: data-lake-query-data.md
+          - text: Query data using T-SQL
+            url: t-sql.md
           - text: Query data using Python
             url: python-query-data.md
           - text: Time series analysis

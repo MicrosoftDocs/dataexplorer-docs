@@ -19,6 +19,8 @@ You must have [Cluster AllDatabasesAdmin](../management/access-control/role-base
 
 `.show` `workload_groups`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
