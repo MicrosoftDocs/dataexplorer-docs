@@ -13,7 +13,7 @@ Display the materialized-view's [retention policy](retentionpolicy.md). The rete
 
 `.show` `materialized-view` *DatabaseName* `policy` `retention`
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
