@@ -11,6 +11,8 @@ Azure Data Explorer enables you to control access to resources in your cluster u
 
 This article describes the available cluster level roles and how to assign principals to those roles using the Azure portal.
 
+To manage cluster permissions in the CLI, see [Kusto commands](/cli/azure/kusto#commands).
+
 ## Cluster level permissions
 
 |Role |Permissions |
