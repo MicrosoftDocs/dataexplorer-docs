@@ -452,6 +452,9 @@ items:
     - name: .show table policy partitioning command
       displayName: .show table partitioning policy
       href: show-table-partitioning-policy-command.md
+    - name: .show database extents partitioning statistics
+      displayName: .show database extents partitioning statistics
+      href: show-database-extents-partitioning-statistics.md
   - name: Retention
     items:
     - name: Retention policy

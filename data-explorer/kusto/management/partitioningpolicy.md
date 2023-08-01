@@ -3,7 +3,7 @@ title: Partitioning policy
 description: Learn how to use the partitioning policy to improve query performance.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/01/2023
 ---
 # Partitioning policy
 
@@ -199,6 +199,8 @@ The following properties can be defined as part of the policy. These properties 
   * A table that is continuously ingested into is expected to always have a "tail" of data that is yet to be partitioned (nonhomogeneous extents).
 * Data partitioning runs only on hot extents, regardless of the value of the `EffectiveDateTime` property in the policy.
   * If partitioning cold extents is required, you need to temporarily adjust the [caching policy](cachepolicy.md).
+
+You can monitor the partitioning process on each table in a database by using [.show database extents partitioning statistics](show-database-extents-partitioning-statistics).
 
 ### Partitioning capacity
 
