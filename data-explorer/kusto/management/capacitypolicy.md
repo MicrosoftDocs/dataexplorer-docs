@@ -97,8 +97,15 @@ The policy can be used to change concurrency settings for [materialized views](m
 |ClusterMinimumConcurrentOperations |long    |A minimal value for the number of concurrent materialization operations in a cluster. Default: 1  |
 |ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent materialization operations in a cluster. Default: 10 |
 
-The effective value for `concurrent operations` is automatically adjusted by the system in the range
-[`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], based on the number of materialized views in the cluster and the cluster's CPU.
+The effective value for `concurrent operations` is automatically adjusted by the system in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], based on the number of materialized views in the cluster and the cluster's CPU.
+
+To show the effective value of `concurrent operations`, run the following command:
+
+```kusto
+.show capacity materialized-view
+```
+
+For more information, see [`.show capacity`](../management/diagnostics.md#show-capacity).
 
 > [!WARNING]
 > The `ClusterMinimumConcurrentOperations` should only be increased if the cluster's resources are well (low CPU, available memory). Increasing these values when resources are limited may result in resources exhaustion and will badly impact the cluster's performance.
