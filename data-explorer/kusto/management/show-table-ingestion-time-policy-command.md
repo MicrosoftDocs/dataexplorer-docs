@@ -17,7 +17,7 @@ You must have at least Database User, Database Viewer, or Database Monitor to ru
 
 `.show` `table` *TableName* `policy` `ingestiontime`
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
