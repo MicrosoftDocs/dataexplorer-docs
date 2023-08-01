@@ -23,6 +23,8 @@ Get the schema in JSON format and additional table metadata:
 
 `.show` `table` *TableName* `schema` `as` `json`
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
