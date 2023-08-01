@@ -15,6 +15,8 @@ To delete individual records with a system guarantee that the storage artifacts 
 
 `.delete` [`async`] `table` *TableName* `records` [`with (`propertyName `=` propertyValue [`,` ...]`)`] `<|` *Predicate*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
@@ -57,6 +59,8 @@ When soft delete is executed on materialized views, the same concepts and limita
 ## Syntax - materialized views
 
 `.delete` [`async`] `materialized-view` *MaterializedViewName* `records` [`with (`propertyName `=` propertyValue [`,` ...]`)`] `<|` *Predicate*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters - materialized views
 
