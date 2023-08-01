@@ -13,6 +13,8 @@ Show the materialized view cache policy. To speed up queries, data is cached on 
 
 `.show` `materialized-view` *MaterializedViewName* `policy` `caching`
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
