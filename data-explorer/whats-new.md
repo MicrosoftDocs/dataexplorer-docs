@@ -9,6 +9,39 @@ ms.date: 07/02/2023
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## July 2023
+
+**API**
+
+| Article title | Description |
+|--|--|
+| [Connection strings overview](/azure/data-explorer/kusto/api/connection-strings/index.md)| Updated article. Privacy and security measures added.|
+|[SQL external table authentication methods](/azure/data-explorer/kusto/api/connection-strings/sql-authentication-methods.md)| Updated article. Refreshed supported authentication methods for SQL external tables.|
+
+**General** 
+
+| Article title | Description |
+|--|--|
+| [Query data using MATLAB](query-matlab.md)| New article. Describes how to query data from Azure Data Explorer using MATLAB.|
+| [Migration guide: Elasticsearch to Azure Data Explorer](migrate-elasticsearch-to-azure-data-explorer.md)| New article. Describes how to migrate your Elasticsearch data to Azure Data Explorer by using Logstash.|
+| [Visualize data from Azure Data Explorer in Grafana](grafana.md)| Updated article. Describes how to visualize data from Azure Data Explorer in Managed Grafana.|
+
+**Management**
+
+| Article title | Description |
+|--|--|
+[Data mappings](/azure/data-explorer/kusto/management/mappings.md)| Updated article. Added supported data formats for mapping transformations in EngineV3.|
+|- [Export data to SQL](/azure/data-explorer/kusto/management/data-export/export-data-to-sql.md) <br/> - [Create and alter SQL external tables](/azure/data-explorer/kusto/management/external-sql-tables.md)| Updated articles. Supported authentication methods and parameters added.| 
+
+**Query**
+
+| Article title | Description |
+|--|--|
+|- [punycode_domain_from_string()](/azure/data-explorer/kusto/query/punycode-domain-from-string.md) <br/> - [punycode_domain_to_string()](/azure/data-explorer/kusto/query/punycode-domain-to-string.md)| New articles. Describes how to encode and decode a punycode domain name.|
+| [geo_line_to_s2cells()](/azure/data-explorer/kusto/query/geo-line-to-s2cells-function.md)| New article. Describes how to use the geo_line_to_2cells() function to calculate S2 cell tokens that cover a line or a multiline on Earth.|
+| [extract_json()](/azure/data-explorer/kusto/query/extractjsonfunction.md)| Updated article. New example added.|
+| [Pivot chart](/azure/data-explorer/kusto/query/visualization-pivotchart.md)| Updated article. New example added.|
+
 ## June 2023
 
 **API**
@@ -243,25 +276,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |[Queries management](kusto/management/queries.md)| Updated article. Added show by user command.
 |- [Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md)|Updated article. Added ingest from Amazon S3.
 |- [.create-or-alter function](kusto/management/create-alter-function.md)<br />- [.create function](kusto/management/create-function.md)| New and updated article. Added new parameter for stored view.|
-
-## July 2022
-
-**General**
-
-| Article title | Description |
-|--|--|
-| [Upgrade a free cluster](start-for-free-upgrade.md) | New Article. Describes how to upgrade a free cluster to a full cluster without losing your data. |
-
-**Management**
-
-| Article title | Description |
-|--|--|
-| [.alter extent tags](kusto/management/alter-extent.md) | Updated article. Added documentation for `alter-merge` extent tags. |
-
-**Query**
-
-| Article title | Description |
-|--|--|
-| - [convert_angle](kusto/query/convert-angle-function.md) <br />- [convert_energy](kusto/query/convert-energy-function.md) <br />- [convert_force](kusto/query/convert-force-function.md) <br />- [convert_length](kusto/query/convert-length-function.md) <br />- [convert_mass](kusto/query/convert-mass-function.md) <br />- [convert_speed](kusto/query/convert-speed-function.md) <br />- [convert_temperature](kusto/query/convert-temperature-function.md) <br />- [convert_volume](kusto/query/convert-volume-function.md) | New articles. New functions for converting values. |
-| [parse-kv operator](kusto/query/parse-kv-operator.md) | New Article. Describes how to extract structured information from a string in key/value form. |
-|- [Scalar function types at a glance](kusto/query/scalarfunctions.md) <br />- [arg_max() (aggregation function)](kusto/query/arg-max-aggfunction.md) <br />- [arg_min() (aggregation function)](kusto/query/arg-min-aggfunction.md) <br />- [avg() (aggregation function)](kusto/query/avg-aggfunction.md) <br />- [max() (aggregation function)](kusto/query/max-aggfunction.md) <br />- [min() (aggregation function)](kusto/query/min-aggfunction.md) <br />- [sum() (aggregation function)](kusto/query/sum-aggfunction.md) | Updated articles. Added new examples. |
