@@ -39,7 +39,7 @@ With Azure Data Explorer, you can ingest terabytes of data in minutes in batch o
 
 ### User-friendly query language
 
-Query Azure Data Explorer with the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators and advanced analytics.
+Query Azure Data Explorer with the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators and advanced analytics. Azure Data Explorer also supports [T-SQL](t-sql.md).
 
 ### Advanced analytics
 

@@ -77,6 +77,6 @@ For more information on management commands, see [Management commands overview](
 * [Tutorial: Learn common operators](tutorials/learn-common-operators.md)
 * [Tutorial: Use aggregation functions](tutorials/use-aggregation-functions.md)
 * [KQL quick reference](../../kql-quick-reference.md)
-* [SQL to Kusto cheat sheet](sqlcheatsheet.md)
+* [SQL to Kusto Query Language cheat sheet](sqlcheatsheet.md)
 * [Query best practices](best-practices.md)
 * [Query data with T-SQL](/azure/data-explorer/t-sql)
