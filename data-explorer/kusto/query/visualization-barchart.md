@@ -163,7 +163,7 @@ StormEvents
 | render barchart with (ysplit=axes)
 ```
 
-:::image type="content" source="images/visualization-barchart/bar-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit axes property." lightbox="images/visualization-barchart/bar-chart-ysplit-panels.png":::
+:::image type="content" source="images/visualization-barchart/bar-chart-ysplit-axes.png" alt-text="Screenshot of column chart using ysplit axes property." lightbox="images/visualization-barchart/bar-chart-ysplit-axes.png":::
 
 To split the view into separate panels, specify `panels` instead of `axes`:
 
@@ -180,7 +180,7 @@ StormEvents
 | render barchart with (ysplit=panels)
 ```
 
-:::image type="content" source="images/visualization-barchart/bar-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit axes property." lightbox="images/visualization-barchart/bar-chart-ysplit-panels.png":::
+:::image type="content" source="images/visualization-barchart/bar-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit panels property." lightbox="images/visualization-barchart/bar-chart-ysplit-panels.png":::
 
 
 ::: zone-end
