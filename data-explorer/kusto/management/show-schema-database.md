@@ -23,6 +23,8 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `databases` `(`*DatabaseName* `if_later_than` *"Version"* [`,` ...]`)` `schema` `details`
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
@@ -89,6 +91,8 @@ Because a version lower than the current database version was provided, the 'Tes
 
 `.show` `databases` `(`*DatabaseName* `if_later_than` *"Version"* [`,` ...]`)` `schema` `as` `json` [`with` `(`*Options*`)`]
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
@@ -134,6 +138,8 @@ Generates a CSL script with all the required commands to create a copy of the gi
 ### Syntax
 
 `.show` `database` *DatabaseName* `schema` `as` `csl` `script` [`with` `(`*Options*`)`]
+
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
 ### Parameters
 

@@ -23,6 +23,8 @@ Display the policy for all tables:
 
 `.show` `table` `*` `policy` `restricted_view_access`
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
