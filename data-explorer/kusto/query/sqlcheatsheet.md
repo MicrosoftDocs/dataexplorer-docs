@@ -7,7 +7,7 @@ ms.date: 07/19/2023
 ---
 # SQL to Kusto Query Language cheat sheet
 
-If you're familiar with SQL and want to learn KQL, translate SQL queries into KQL by prefacing the SQL query with a comment line, `--`, and the keyword `explain`. The output will show the KQL version of the query, which can help you understand the KQL syntax and concepts.
+If you're familiar with SQL and want to learn KQL, translate SQL queries into KQL by prefacing the SQL query with a comment line, `--`, and the keyword `explain`. The output shows the KQL version of the query, which can help you understand the KQL syntax and concepts.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9PV5XKNCPBx9PRT4Ap29XF1DlFw9g/1C4l38nTX0NJUSCxWcFZwC/L3VQguyS/KdS1LzSspBgDZdzUzNQAAAA==" target="_blank">Run the query</a>
@@ -26,7 +26,7 @@ SELECT COUNT_BIG(*) as C FROM StormEvents
 
 ## SQL to Kusto cheat sheet
 
-The table below shows sample queries in SQL and their KQL equivalents.
+The following table shows sample queries in SQL and their KQL equivalents.
 
 | Category | SQL Query | Kusto Query | Learn more |
 |--|--|--|
@@ -38,7 +38,7 @@ The table below shows sample queries in SQL and their KQL equivalents.
 | -- | `SELECT * FROM dependencies`<br>`WHERE timestamp BETWEEN ... AND ...` | `dependencies`<br>`| where timestamp between (datetime(2016-10-01) .. datetime(2016-11-01))` | [between](betweenoperator.md) |
 | Comparison operators (string) | `SELECT * FROM dependencies`<br>`WHERE type = "Azure blob"` | `dependencies`<br>`| where type == "Azure blob"` | [Logical operators](logicaloperators.md) |
 | -- | `-- substring`<br>`SELECT * FROM dependencies`<br>`WHERE type like "%blob%"` | `// substring`<br>`dependencies`<br>`| where type contains "blob"` | [contains](contains-operator.md) |
-| -- | `-- wildcard`<br>`SELECT * FROM dependencies`<br>`WHERE type like "Azure%"` | `// wildcard`<br>`dependencies`<br>`| where type startswith "Azure"`<br>`// or`<br>`dependencies`<br>`| where type matches regex "^Azure.*"` | [startswith](startswith-operator.md)</br>[matches regex](matches-regex-operator.md) |
+| -- | `-- wildcard`<br>`SELECT * FROM dependencies`<br>`WHERE type like "Azure%"` | `// wildcard`<br>`dependencies`<br>`| where type startswith "Azure"`<br>`// or`<br>`dependencies`<br>`| where type matches regex "^Azure.*"` | [`startswith`](startswith-operator.md)</br>[matches regex](matches-regex-operator.md) |
 | Comparison (boolean) | `SELECT * FROM dependencies`<br>`WHERE !(success)` | `dependencies`<br>`| where success == False` | [Logical operators](logicaloperators.md) |
 | Grouping, Aggregation | `SELECT name, AVG(duration) FROM dependencies`<br>`GROUP BY name` | `dependencies`<br>`| summarize avg(duration) by name` | [summarize](summarizeoperator.md)</br>[avg()](avg-aggfunction.md) |
 | Distinct | `SELECT DISTINCT name, type  FROM dependencies` | `dependencies`<br>`| summarize by name, type` | [summarize](summarizeoperator.md)</br>[distinct](distinctoperator.md) |
