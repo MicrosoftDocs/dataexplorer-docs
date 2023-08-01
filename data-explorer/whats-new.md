@@ -15,8 +15,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-| [Connection strings overview](/azure/data-explorer/kusto/api/connection-strings/index.md)| Updated article. Privacy and security measures added.|
-|[SQL external table authentication methods](/azure/data-explorer/kusto/api/connection-strings/sql-authentication-methods.md)| Updated article. Refreshed supported authentication methods for SQL external tables.|
+| [Connection strings overview](kusto/api/connection-strings/index.md)| Updated article. Privacy and security measures added.|
+|[SQL external table authentication methods](kusto/api/connection-strings/sql-authentication-methods.md)| Updated article. Refreshed supported authentication methods for SQL external tables.|
 
 **General** 
 
@@ -30,17 +30,17 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-[Data mappings](/azure/data-explorer/kusto/management/mappings.md)| Updated article. Added supported data formats for mapping transformations in EngineV3.|
-|- [Export data to SQL](/azure/data-explorer/kusto/management/data-export/export-data-to-sql.md) <br/> - [Create and alter SQL external tables](/azure/data-explorer/kusto/management/external-sql-tables.md)| Updated articles. Supported authentication methods and parameters added.| 
+[Data mappings](kusto/management/mappings.md)| Updated article. Added supported data formats for mapping transformations in EngineV3.|
+|- [Export data to SQL](kusto/management/data-export/export-data-to-sql.md) <br/> - [Create and alter SQL external tables](kusto/management/external-sql-tables.md)| Updated articles. Supported authentication methods and parameters added.| 
 
 **Query**
 
 | Article title | Description |
 |--|--|
-|- [punycode_domain_from_string()](/azure/data-explorer/kusto/query/punycode-domain-from-string.md) <br/> - [punycode_domain_to_string()](/azure/data-explorer/kusto/query/punycode-domain-to-string.md)| New articles. Describes how to encode and decode a punycode domain name.|
-| [geo_line_to_s2cells()](/azure/data-explorer/kusto/query/geo-line-to-s2cells-function.md)| New article. Describes how to use the geo_line_to_2cells() function to calculate S2 cell tokens that cover a line or a multiline on Earth.|
-| [extract_json()](/azure/data-explorer/kusto/query/extractjsonfunction.md)| Updated article. New example added.|
-| [Pivot chart](/azure/data-explorer/kusto/query/visualization-pivotchart.md)| Updated article. New example added.|
+|- [punycode_domain_from_string()](kusto/query/punycode-domain-from-string.md) <br/> - [punycode_domain_to_string()](kusto/query/punycode-domain-to-string.md)| New articles. Describes how to encode and decode a punycode domain name.|
+| [geo_line_to_s2cells()](kusto/query/geo-line-to-s2cells-function.md)| New article. Describes how to use the geo_line_to_2cells() function to calculate S2 cell tokens that cover a line or a multiline on Earth.|
+| [extract_json()](kusto/query/extractjsonfunction.md)| Updated article. New example added.|
+| [Pivot chart](kusto/query/visualization-pivotchart.md)| Updated article. New example added.|
 
 ## June 2023
 
