@@ -38,7 +38,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.set-or-replace` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *Query*
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -158,7 +158,7 @@ Shows information on active stored query results.
 
 `.show` `stored_query_results`
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 #### Returns
 
@@ -176,7 +176,7 @@ Shows schema of active stored query result.
 
 `Database Viewer` permission is required for invoking this command.
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 #### Returns
 
@@ -194,7 +194,7 @@ Deletes an active stored query result created in the current database by the cur
 
 `Database Viewer` permission is required for invoking this command.
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 #### Returns
 
@@ -214,7 +214,7 @@ Deletes active stored query results created in the current database by the speci
 
 `.drop` `stored_query_results` `by user` *PrincipalName*
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 #### Returns
 
