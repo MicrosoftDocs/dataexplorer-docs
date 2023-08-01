@@ -17,7 +17,7 @@ You must have at least [Database Admin](../management/access-control/role-based-
 
 `.undo` `drop` `table` *TableName* [`as` *NewTableName*] `version=`*Version*
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
