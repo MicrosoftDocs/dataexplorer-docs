@@ -17,7 +17,7 @@ You must have at least [AllDatabasesMonitor](access-control/role-based-access-co
 
 `.show` `cluster` `policy` `capacity`
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Returns
 
