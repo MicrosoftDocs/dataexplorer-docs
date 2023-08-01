@@ -93,7 +93,7 @@ SELECT * FROM kusto.MyFunction(10)
 > [!NOTE]
 > To distinguish between stored functions and emulated SQL system stored procedures, execute stored functions with an explicit reference to the `kusto` schema. In the example, the stored function is executed using `kusto.Myfunction`.
 
-## Limitations
+## Coverage
 
 Azure Data Explorer offers limited support for T-SQL. The following table outlines the T-SQL statements and features that aren't supported or are partially supported.
 
@@ -119,3 +119,4 @@ Azure Data Explorer offers limited support for T-SQL. The following table outlin
 ## Next steps
 
 * Learn about [SQL Server emulation](sql-server-emulation-overview.md) in Azure Data Explorer
+* Use the [SQL to Kusto Query Language cheat sheet](kusto/query/sqlcheatsheet.md)
