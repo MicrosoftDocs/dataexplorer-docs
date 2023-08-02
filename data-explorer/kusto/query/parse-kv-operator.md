@@ -22,7 +22,7 @@ The following extraction modes are supported:
 
 *T* `|` `parse-kv` *Expression* `as` `(` *KeysList* `)` `with` `(` `pair_delimiter` `=` *PairDelimiter* `,` `kv_delimiter` `=` *KvDelimiter*  [`,` `quote` `=` *QuoteChars* ... [`,` `escape` `=` *EscapeChar* ...]] [`,` `greedy` `=` `true`] `)`
 
-### Non-specified delimiter
+### Nonspecified delimiter
 
 *T* `|` `parse-kv` *Expression* `as` `(` *KeysList* `)` `with` `(` [`quote` `=` *QuoteChars* ... [`,` `escape` `=` *EscapeChar* ...]] `)`
 
@@ -78,7 +78,7 @@ print str="ThreadId:458745723, Machine:Node001, Text: The service is up, Level: 
 
 ### Extraction with value quoting
 
-Sometimes key names or values are wrapped in quotes, which allows the values themselves to contain delimiter characters. The following examples show how a `quote` argument is used for extracting such values.
+Sometimes key names or values are wrapped in quotes, which allow the values themselves to contain delimiter characters. The following examples show how a `quote` argument is used for extracting such values.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02Py6oCMQyG9z5F6KYKM9KOuin0LdwdROpM1OjYzmnjiODD24qoJIs/9y9DJM+QOFqZYmu1mutizQK6xN9wCbs7Y7K6WcHeUX+NaEUbvMeWKXhwuxAZOwECR8wLmS4obKMaXavia62MUma1lJMHDC4mrM9jOQsuwfRPfqfkxnSOscgKMpLJTeQPVeH56BeM6UPRb5x3bQY34iNMB0dx22FPF2LMz4Gs4Dz+ZmzO/F8Do5VCzgpWDKf8Tu1u7l7QnivUg0kbAQAA" target="_blank">Run the query</a>
@@ -167,7 +167,7 @@ print str='name=John Doe phone=555 5555 city=New York'
 
 ### Extraction with no well-defined delimiters
 
-In the following example, any non-alphanumeric character is considered a valid delimiter:
+In the following example, any nonalphanumeric character is considered a valid delimiter:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSguKbJVMjIwMtQ1AKEQQwMrAwMrYxOFaE8/N/9YhZCMotTEFM8UKxNTC3MTU3MjYx0F38TkjMy8VCu//JRUAwNDHYWQ1IoSK4XgksSiktQUJa4ahYLEouJU3ewykPEKicUKGhAVQF5mXroOwtCcfBAXZh5UXhNkQFF+VmpyiW5ieWIlSBgATRrnIq0AAAA=" target="_blank">Run the query</a>
