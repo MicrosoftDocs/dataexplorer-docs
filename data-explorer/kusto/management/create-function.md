@@ -22,6 +22,8 @@ You must have at least [Database User](access-control/role-based-access-control.
 `.create` `function` [ `ifnotexists` ] [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)` ]
 *functionName* `(`*parameters*`)` `{` *body* `}`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

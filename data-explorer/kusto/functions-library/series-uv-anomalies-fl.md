@@ -31,6 +31,8 @@ In the following function example, replace `YOUR-AD-RESOURCE-NAME` in the uri an
 
 `T | invoke series_uv_anomalies_fl(`*y_series* [`,` *sensitivity* [`,` *tsid*]]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
