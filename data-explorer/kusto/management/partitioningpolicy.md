@@ -200,7 +200,7 @@ The following properties can be defined as part of the policy. These properties 
 * Data partitioning runs only on hot extents, regardless of the value of the `EffectiveDateTime` property in the policy.
   * If partitioning cold extents is required, you need to temporarily adjust the [caching policy](cachepolicy.md).
 
-You can monitor the partitioning process on each table in a database by using [.show database extents partitioning statistics](show-database-extents-partitioning-statistics).
+You can monitor the status of data partitioning on each table in a database that has a policy defined by using [.show database extents partitioning statistics](show-database-extents-partitioning-statistics.md).
 
 ### Partitioning capacity
 
