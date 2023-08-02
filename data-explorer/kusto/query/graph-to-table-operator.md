@@ -33,22 +33,22 @@ G
 #### Nodes:
 |Name|Type|Required | Description |
 |---|---|---|---|
-|*with_node_id*|string|No|Export node hash id with given column name|
+|*with_node_id*|string||Export node hash id with given column name|
 
 #### Edges:
 |Name|Type|Required | Description |
 |---|---|---|---|
-|*with_source_id*|string|No|Export source node hash id with given column name|
-|*with_taget_id*|string|No|Export target node hash id with given column name|
+|*with_source_id*|string||Export source node hash id with given column name|
+|*with_taget_id*|string||Export target node hash id with given column name|
 
 #### Nodes and Edges:
 |Name|Type|Required | Description |
 |---|---|---|---|
-|*NodesTableName*|string|No|Exported nodes table name|
-|*EdgesTableName*|string|No|Exported edges table name|
-|*with_node_id*|string|No|Export node hash id with given column name|
-|*with_source_id*|string|No|Export source node hash id with given column name|
-|*with_taget_id*|string|No|Export target node hash id with given column name|
+|*NodesTableName*|string|&check;|Exported nodes table name|
+|*EdgesTableName*|string|&check;|Exported edges table name|
+|*with_node_id*|string||Export node hash id with given column name|
+|*with_source_id*|string||Export source node hash id with given column name|
+|*with_taget_id*|string||Export target node hash id with given column name|
 
 ## Returns
 #### Nodes:

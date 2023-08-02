@@ -17,24 +17,31 @@ The `graph-match` operator searches for all occurences of a graph pattern in an 
 
 ## Syntax
 
-*G* | `graph-match` *Pattern* `where` *Constraints* `project` [*ColumnName* =] *Expression* [`,` ...]
+*G* | `graph-match` [ *graphMatchParameters* ] *Patterns* `where` *Constraints* `project` [*ColumnName* =] *Expression* [`,` ...]
 
 ## Parameters
 
-* *Pattern*: a sequence of graph node elements connected by graph edge elements using graph notations. A graph notation is one of the following:
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *graphMatchParameters* | string | | Zero or more space-separated parameters in the form of *Name* `=` *Value* that control the behavior of the pattern matching operation and execution plan. See [supported graph-match parameters](#supported-parameters). |
+| *Patterns* | string | &check; | one or more sequences of graph node elements connected by graph edge elements using graph notations. all patterns must create a single connected component. For more information, see [Graph Pattern Notation](#graph-pattern-notation) |
+| *Constraints* | string | | a Boolean expression composed of properties of named variables in the *Pattern*. Each graph element (node/edge) has a set of properties that were attached to it during the graph construction. The constraints define which elements (nodes and edges) are matched by the pattern. A property is referenced by the variable name followed by a dot (`.`) and the property name. |
+| *Expression* | string | &check; | the `project` clause converts each pattern to a row in a tabular result, the project expression(s) have to be scalar and reference properties of named variables defined in the *Pattern*. A property is referenced by the variable name followed by a dot (`.`) and the attribute name. |
+
+### Graph Pattern Notation
   
-  |Element|Named variable|Anonymous|
-  |---|---|---|
-  |Node|`(`*n*`)`|`()`|
-  |Directed edge: left to right|`-[`*e*`]->`|`-->`|
-  |Directed edge: right to left|`<-[`*e*`]-`|`<--`|
-  |Any direction edge|`-[`*e*`]-`|`--`|
-  |Variable length edge|`-[`*e*`*3..5]-`|`-[*3..5]-`|
+|Element|Named variable|Anonymous|
+|---|---|---|
+|Node|`(`*n*`)`|`()`|
+|Directed edge: left to right|`-[`*e*`]->`|`-->`|
+|Directed edge: right to left|`<-[`*e*`]-`|`<--`|
+|Any direction edge|`-[`*e*`]-`|`--`|
+|Variable length edge|`-[`*e*`*3..5]-`|`-[*3..5]-`|
 
-
-* *Constraints*: a Boolean expression composed of properties of named variables in the *Pattern*. Each graph element (node/edge) has a set of properties that were attached to it during the graph construction. The constraints define which elements (nodes and edges) are matched by the pattern. A property is referenced by the variable name followed by a dot (`.`) and the property name.
-
-* *Expression*: the `project` clause converts each pattern to a row in a tabular result, the project expression(s) have to be scalar and reference properties of named variables defined in the *Pattern*. A property is referenced by the variable name followed by a dot (`.`) and the attribute name. 
+### Supported parameters
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *cycles* |string|| Indicates to perform cycle prevention based on the specified type: `none`, `edges`, `nodes`. The default is `edges`.|
 
 ## Returns
 

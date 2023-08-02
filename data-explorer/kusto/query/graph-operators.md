@@ -16,19 +16,12 @@ ms.date: 07/19/2023
 Kusto graph operators enable operations over graph structures.  
 The graph is built from tabular data using the `make-graph` operator then queried using graph operators.
 
-The graph operators are in public preview mode, currently four operators are available:
+The graph operators are in public preview mode, currently several operators are available:
 
 * [make-graph](make-graph-operator.md) builds a graph from tabular data
 * [graph-match](graph-match-operator.md) searches for patterns in the graph
 * [graph-merge](graph-merge-operator.md) merges two graphs into a single new graph 
 * [graph-to-table](graph-to-table-operator.md) builds nodes and/or edges tables from graph
-
-## Before using the graph operators
-
-The graph operators use V2 of the KQL parser, the client has to be configured to run queries with KQL parser V2:
-
-* In Kusto Explorer: *Settings* `->` *Connections* `->` *KQL parser version* `->` *V2*
-* In Kusto Web: *Settings* `->` *Connection* `->` *Server parser* `->` *V2*
 
 ## Limitations and recommendations
 

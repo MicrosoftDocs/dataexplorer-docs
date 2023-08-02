@@ -21,9 +21,9 @@ The `graph-merge` operator merges the nodes and edges of two graphs, combining t
 ## Arguments
 |Name|Type|Required | Description |
 |---|---|---|---|
-|*LeftGraph*|Graph|Yes|The left graph. Denoted as `$left`|
-|*RightGraph*|Graph|Yes|The right graph. Denoted as `$right`|
-|*Attributes*|string|No|One or more comma-separated rules that describe how edges from *LeftGraph* are matched to edges from *RightGraph*. Multiple rules are evaluated using the `and` logical operator|
+|*LeftGraph*|Graph|&check;|The left graph. Denoted as `$left`|
+|*RightGraph*|Graph|&check;|The right graph. Denoted as `$right`|
+|*Attributes*|string||One or more comma-separated rules that describe how edges from *LeftGraph* are matched to edges from *RightGraph*. Multiple rules are evaluated using the `and` logical operator|
 
 
 ## Rules:
