@@ -15,12 +15,12 @@ There are several KQL functions that perform string matching, selection, and ext
 
 ## Syntax overview
 
-The following table gives an overview of regular expression syntax.
+The following table gives an overview of KQL regular expression syntax.
 
 | Syntax element | Description |
 |--|--|
 | Single literals | A simple regular expression matches a single literal character. Characters typically match themselves, except for metacharacters (* + ? ( ) \|), which have unique meanings in regular expressions as described in the following rows. |
-| Escaping metacharacters | To match a metacharacter literally, escape it with backslashes. For example, the regular expression `\\+` matches a literal plus (`+`) character. |
+| Escape metacharacters | To match a metacharacter literally, escape it with backslashes. For example, the regular expression `\\+` matches a literal plus (`+`) character. |
 | Alternation | Two regular expressions can be alternated with `|` to form a new expression. For example, `e1 | e2` matches either `e1` or `e2`. |
 | Concatenation | Concatenate two expressions to create a new expression. For example, `e1e2` matches `e1` followed by `e2`. |
 | Repetition operators | Metacharacters `?`, `+`, and `*` are repetition operators. For example, `e1?` matches zero or one and `e1+` matches one or more; and `e1*` matches a sequence of zero or more possibly different strings that match `e1`. |
