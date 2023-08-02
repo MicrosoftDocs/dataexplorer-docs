@@ -3,27 +3,32 @@ title:  Regular expressions library
 description: This article lists the regular expression syntax accepted by RE2.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/01/2023
+ms.date: 08/02/2023
 ---
 # RE2 library
 
-For information on the use of regular expressions with Kusto Query Language (KQL), see [RE2 syntax](re2.md).
+This article provides an overview of the regular expression syntax supported by Kusto Query Language (KQL).
 
-Regular expressions are a notation for describing sets of character strings. When a particular string is in the set described by a regular expression, we often say that the regular expression matches the string.
+Regular expressions are a notation for describing sets of character strings. When a particular string is in the set described by a regular expression, we often say that the regular expression matches the string. There are several KQL functions that perform string matching, selection, and extraction by using a regular expression.
 
-The simplest regular expression is a single literal character. Except for the metacharacters like *+?()|, characters match themselves. To match a metacharacter, escape it with a backslash: \\\\+ matches a literal plus character.
-
-Two regular expressions can be alternated or concatenated to form a new regular expression: if e1 matches s and e2 matches t, then e1|e2 matches s or t, and e1e2 matches st.
-
-The metacharacters \*, +, and ? are repetition operators: e1\* matches a sequence of zero or more (possibly different) strings, each of which match e1; e1+ matches one or more; e1? matches zero or one.
-
-The operator precedence, from weakest to strongest binding, is first alternation, then concatenation, and finally the repetition operators. Explicit parentheses can be used to force different meanings, just as in arithmetic expressions. Some examples: ab|cd is equivalent to (ab)|(cd); ab\* is equivalent to a(b\*).
-
-The syntax described so far is most of the traditional Unix egrep regular expression syntax. This subset suffices to describe all regular languages: loosely speaking, a regular language is a set of strings that can be matched in a single pass through the text using only a fixed amount of memory. Newer regular expression facilities (notably Perl and those that have copied it) have added many new operators and escape sequences, which make the regular expressions more concise, and sometimes more cryptic, but usually not more powerful.
+In KQL, to use regular expressions, you must encode them as `string` literals and adhere to the string quoting rules. For example, if you wish to match the beginning of a line with the regular expression `\A`, you would specify it in Kusto as the string literal `"\\A"` (note the "extra" backslash (`\`) character).
 
 This page lists the regular expression syntax accepted by RE2.
 
 It also lists some syntax accepted by PCRE, PERL, and VIM.
+
+## Syntax overview
+
+The following table gives an overview of regular expression syntax.
+
+| Regular Expression | Description |
+|--|--|
+| Single literals | A simple regular expression matches a single literal character. Characters typically match themselves, except for metacharacters (* + ? ( ) \|), which have unique meanings in regular expressions as described in the following rows. |
+| Escaping metacharacters | To match a metacharacter literally, escape it with backslashes. For example, the regular expression `\\+` matches a literal plus (`+`)character. |
+| Alternation | Two regular expressions can be alternated with `|` to form a new expression. For example, `e1 | e2` matches either `e1` or `e2`. |
+| Concatenation | Concatenate two expressions to create a new expression. For example, `e1e2` matches `e1` followed by `e2`. |
+| Repetition operators | Metacharacters `?`, `+`, and `*` are repetition operators. For example, `e1?` matches zero or one and `e1+` matches one or more; and `e1*` matches a sequence of zero or more possibly different strings each of which are prefaced by `e1`. |
+| Operator precedence | The order of operator precedence, from weakest to strongest binding, is as follows: alternation (`|`), concatenation (side-by-side expressions), and repetition (`*`, `+`, `?`). For example, `ab|cd` is equivalent to `(ab)|(cd)` and `ab*` is equivalent to `a(b*)`. Use parentheses to override this behavior and explicitly control grouping and evaluation.|
 
 ## Single-character expressions
 
