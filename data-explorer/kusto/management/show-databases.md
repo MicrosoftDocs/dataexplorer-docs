@@ -15,6 +15,8 @@ For a table that shows the properties of the context database, see [`.show datab
 
 `.show` `databases`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 |Column name       |Column type|Description                                                                  |
