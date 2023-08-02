@@ -22,6 +22,8 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 > [!NOTE]
 > With `.alter` any property that isn't specified will be set to its default. With `.alter-merge`, only the properties that you specify will be modified while the rest remain unchanged.
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
