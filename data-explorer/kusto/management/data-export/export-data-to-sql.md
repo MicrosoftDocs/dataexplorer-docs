@@ -17,7 +17,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 `.export` [`async`] `to` `sql` *sqlTableName* *sqlConnectionString* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
