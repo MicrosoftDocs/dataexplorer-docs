@@ -17,7 +17,7 @@ In KQL, regular expressions must be encoded as [string literals](scalar-data-typ
 
 ## RE2 library
 
-The following sections list the regular expression syntax accepted by the RE2 library.
+The following sections describe the regular expression syntax accepted by the RE2 library.
 
 ### Syntax overview
 
