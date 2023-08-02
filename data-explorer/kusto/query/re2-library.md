@@ -7,17 +7,19 @@ ms.date: 08/02/2023
 ---
 # Regular expressions
 
-This article provides an overview of regular expression syntax supported by [Kusto Query Language (KQL)](index.md), which is the syntax of the RE2 library.
+This article provides an overview of regular expression syntax supported by [Kusto Query Language (KQL)](index.md), which is the syntax of the [RE2 library](https://github.com/google/re2/wiki/Syntax).
 
 ## Use regular expressions in Kusto
 
 There are a number of KQL operators and functions that perform string matching, selection, and extraction with regular expressions, such as [`matches regex`](matches-regex-operator.md), [`parse`](parseoperator.md), and [`replace_regex()`](replace-regex-function.md).
 
-To use regular expressions with KQL operators and functions, the regular expressions must be encoded as [string literals](scalar-data-types/string.md) and follow the string quoting rules.
+In KQL, the regular expressions described in this article must be encoded as [string literals](scalar-data-types/string.md) and follow the string quoting rules. For example, the RE2 regular expression `\A` is represented in KQL as `"\\A"`. The extra backslash indicates that the other backslash is part of the regular expression `\A`.
 
-For example, the RE2 regular expression `\A` is represented in KQL as `"\\A"`. The extra backslash indicates that the other backslash is part of the regular expression `\A`.
+## RE2 library
 
-## Syntax overview
+The following sections list the regular expression syntax accepted by the RE2 library.
+
+### Syntax overview
 
 The following table overviews the main RE2 library syntax elements.
 
@@ -32,7 +34,7 @@ The following table overviews the main RE2 library syntax elements.
 > [!NOTE]
 > Regular expression operators evaluate in this order: alternation (`|`), concatenation (side-by-side expressions), and repetition (`?`, `+`, `*`). Use parentheses to control the evaluation order.
 
-## Single-character expressions
+### Single-character expressions
 
 | Example       |  Description                                                                    |
 |----------------|--------------------------------------------------------------------------|
@@ -48,14 +50,14 @@ The following table overviews the main RE2 library syntax elements.
 | `\PN`          | negated Unicode character class (one-letter name)                        |
 | `\P{Greek}`    | negated Unicode character class                                          |
 
-## Composites
+### Composites
 
 | Example |  Description                   |
 |---------|-------------------------|
 | `xy`    | `x` followed by `y`     |
 | `x\|y`  | `x` or `y` (prefer `x`) |
 
-## Repetitions
+### Repetitions
 
 | Example   |  Description                                        |
 |-----------|----------------------------------------------|
@@ -78,7 +80,7 @@ The following table overviews the main RE2 library syntax elements.
 
 Implementation restriction: The counting forms x{n,m}, x{n,}, and x{n} reject forms that create a minimum or maximum repetition count above 1000. Unlimited repetitions aren't subject to this restriction.
 
-### Possessive repetitions
+#### Possessive repetitions
 
 | Example   | Description                                       |
 |-----------|---------------------------------------------------|
@@ -89,7 +91,7 @@ Implementation restriction: The counting forms x{n,m}, x{n,}, and x{n} reject fo
 | `x{n,}+`  | `n` or more `x`, possessive (NOT SUPPORTED)       |
 | `x{n}+`   | exactly `n` `x`, possessive (NOT SUPPORTED)       |
 
-## Grouping
+### Grouping
 
 | Example        | Description                                                 |
 |----------------|-------------------------------------------------------------|
@@ -106,7 +108,7 @@ Implementation restriction: The counting forms x{n,m}, x{n,}, and x{n} reject fo
 | `re@>`         | possessive match of `re` (NOT SUPPORTED) VIM                |
 | `%(re)`        | noncapturing group (NOT SUPPORTED) VIM                     |
 
-## Flags
+### Flags
 
 | Example | Description                                                                                     |
 |---------|-------------------------------------------------------------------------------------------------|
@@ -117,7 +119,7 @@ Implementation restriction: The counting forms x{n,m}, x{n,}, and x{n} reject fo
 
 Flag syntax is xyz (set) or -xyz (clear) or xy-z (set xy, clear z).
 
-## Empty strings
+### Empty strings
 
 | Example   | Description                                                                    |
 |-----------|--------------------------------------------------------------------------------|
@@ -150,7 +152,7 @@ Flag syntax is xyz (set) or -xyz (clear) or xy-z (set xy, clear z).
 | `\%23c`   | in column 23 (NOT SUPPORTED) VIM                                               |
 | `\%23v`   | in virtual column 23 (NOT SUPPORTED) VIM                                       |
 
-## Escape sequences
+### Escape sequences
 
 | Example       | Description                                      |
 |---------------|--------------------------------------------------|
@@ -193,7 +195,7 @@ Flag syntax is xyz (set) or -xyz (clear) or xy-z (set xy, clear z).
 | `\%u1234`     | Unicode character 0x1234 (NOT SUPPORTED) VIM     |
 | `\%U12345678` | Unicode character 0x12345678 (NOT SUPPORTED) VIM |
 
-## Character class elements
+### Character class elements
 
 | Example   | Description                                   |
 |-----------|-----------------------------------------------|
@@ -204,7 +206,7 @@ Flag syntax is xyz (set) or -xyz (clear) or xy-z (set xy, clear z).
 | `\p{Foo}` | Unicode character class `Foo`                 |
 | `\pF`     | Unicode character class `F` (one-letter name) |
 
-### Named character classes as character class elements
+#### Named character classes as character class elements
 
 | Example       | Description                                                           |
 |---------------|-----------------------------------------------------------------------|
@@ -217,7 +219,7 @@ Flag syntax is xyz (set) or -xyz (clear) or xy-z (set xy, clear z).
 | `[\p{Name}]`  | named Unicode property inside character class (≡ `\p{Name}`)         |
 | `[^\p{Name}]` | named Unicode property inside negated character class (≡ `\P{Name}`) |
 
-### Perl character classes
+#### Perl character classes
 
 ASCII-only
 
@@ -234,7 +236,7 @@ ASCII-only
 | `\v`    | vertical space (NOT SUPPORTED)           |
 | `\V`    | not vertical space (NOT SUPPORTED)       |
 
-### ASCII character classes
+#### ASCII character classes
 
 | Example        | Description                                                                  |
 |----------------|------------------------------------------------------------------------------|
@@ -253,9 +255,9 @@ ASCII-only
 | `[[:word:]]`   | word characters (≡ `[0-9A-Za-z_]`)                                          |
 | `[[:xdigit:]]` | hex digit (≡ `[0-9A-Fa-f]`)                                                 |
 
-### Unicode character class names
+#### Unicode character class names
 
-#### General
+##### General
 
 | Example | Description                            |
 |---------|----------------------------------------|
@@ -299,7 +301,7 @@ ASCII-only
 | `Zp`    | paragraph separator                    |
 | `Zs`    | space separator                        |
 
-#### Scripts
+##### Scripts
 
 | Scripts |
 | -------------------------------------- |
@@ -460,7 +462,7 @@ ASCII-only
 | `Yi`                                   |
 | `Zanabazar_Square`                     |
 
-### Vim character classes
+#### Vim character classes
 
 | Example | Description                                                            |
 |---------|------------------------------------------------------------------------|
@@ -499,7 +501,7 @@ ASCII-only
 | `\V`    | verynomagic (NOT SUPPORTED) VIM                                        |
 | `\Z`    | ignore differences in Unicode combining characters (NOT SUPPORTED) VIM |
 
-## Magic
+### Magic
 
 | Example                | Description                                                  |
 |------------------------|--------------------------------------------------------------|
