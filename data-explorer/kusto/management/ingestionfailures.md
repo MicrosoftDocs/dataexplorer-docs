@@ -11,7 +11,7 @@ This command returns a result set that includes any ingestion failures that occu
 [data ingestion management commands](../../ingest-data-overview.md#ingest-management-commands) run.
 The `.show ingestion failures` command returns ingestion failures that occur only in the Kusto Data Engine.
 Ingestion failures that occur during other parts of the ingestion flow, such as failures that happen before data ingestion
-management commands are sent to the Kusto Data Engine service, do not appear in the results for this command.
+management commands are sent to the Kusto Data Engine service, don't appear in the results for this command.
 Failures from all parts of the ingestion process appear in the ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md).
 
 > [!NOTE]
