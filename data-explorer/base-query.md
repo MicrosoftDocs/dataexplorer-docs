@@ -7,7 +7,7 @@ ms.date: 07/31/2023
 ---
 # Create a dashboard base query
 
-Base queries are reusable query snippets that can be used as building blocks for all dashboards query components such as parameters, tiles, and other base queries. A single base query is managed in the context of a specific dashboard. Each dashboard can have one ore more base queries. Base queries make query maintenance in dashboards easier, so that a new query or update of an existing reused query can be modified in a central location.
+Base queries are reusable query snippets that can be used as building blocks for all dashboards query components such as parameters, tiles, and other base queries. A single base query is managed in the context of a specific dashboard. Each dashboard can have one or more base queries. Base queries make query maintenance in dashboards easier, as queries can be managed in a central location.
 
 To interactively explore sample dashboards, see [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md).
 
@@ -40,7 +40,7 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
     :::image type="content" source="media/base-query/create-base-query.png" alt-text="Screenshot of create base query in Azure Data Explorer dashboards.":::
 
 1. Select a data **Source** from the dropdown.
-1. Enter the KQL query that will be used as the base query. This query should begin with a data source, and can optionally have as many lines of query as necessary.
+1. Enter the KQL query that will be used as the base query. This query should begin with a data source or another base query, and can optionally have as many lines of query as necessary.
 1. Select **Done**.
 
 ## Manage base queries
