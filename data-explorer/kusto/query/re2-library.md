@@ -7,7 +7,7 @@ ms.date: 08/02/2023
 ---
 # RE2 library
 
-This article provides an overview of regular expression syntax supported by Kusto Query Language (KQL). KQL supports a combination of regular expression syntax forms, including RE2, PCRE, PERL, and VIM.
+This article provides an overview of regular expression syntax supported by Kusto Query Language (KQL). The syntax incorporates elements from RE2, PCRE, PERL, and VIM.
 
 Regular expressions are a notation used to describe sets of character strings. When a particular string is in the set described by a regular expression, we say that the regular expression matches the string.
 
