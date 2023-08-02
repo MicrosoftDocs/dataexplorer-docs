@@ -3,7 +3,7 @@ title:  Column chart visualization
 description: This article describes the column chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/03/2022
+ms.date: 08/02/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -48,7 +48,7 @@ All properties are optional.
 |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
-|`ysplit`      |How to split multiple the visualization. For more information, see [`ysplit` property](#ysplit-property).                             |
+|`ysplit`      |How to split the visualization into multiple y-axis values. For more information, see [`ysplit` property](#ysplit-property).                             |
 
 #### `ysplit` property
 
@@ -56,9 +56,9 @@ This visualization supports splitting into multiple y-axis values:
 
 |`ysplit`  |Description                                                       |
 |----------|------------------------------------------------------------------|
-|`none`    |A single y-axis is displayed for all series data. (Default)       |
+|`none`    |A single y-axis is displayed for all series data. This is the default. |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
-|`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
+|`panels`  |One chart is rendered for each `ycolumn` value.|
 
 ::: zone-end
 
