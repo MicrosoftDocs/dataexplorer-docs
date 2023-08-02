@@ -23,6 +23,8 @@ See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
 `.alter` `database` *DatabaseName* `policy` `ingestionbatching` *PolicyObject*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
