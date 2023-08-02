@@ -22,6 +22,8 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.clear` `cache` `remote-schema` `cluster('`*ClusterName*`').database('`*DatabaseName*`')`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

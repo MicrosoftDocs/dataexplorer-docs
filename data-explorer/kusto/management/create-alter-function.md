@@ -19,6 +19,8 @@ This command requires [Database User](access-control/role-based-access-control.m
 
 `.create-or-alter` `function` [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] *functionName* `(`*parameters*`)` `{` *body* `}`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

@@ -14,6 +14,8 @@ must authenticate by using the HTTP `Authorization` request header.
 
 `Authorization:` `Bearer` *AccessToken*
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

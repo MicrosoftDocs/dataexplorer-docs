@@ -17,6 +17,8 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 `.create-or-alter` `continuous-export` *continuousExportName* [`over` `(`*T1*, *T2* `)`] `to` `table` *externalTableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -17,6 +17,8 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 `.drop` `workload_group` *WorkloadGroupName*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

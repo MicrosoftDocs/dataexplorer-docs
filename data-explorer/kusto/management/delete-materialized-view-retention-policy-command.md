@@ -13,6 +13,8 @@ Delete a materialized-view's [retention policy](retentionpolicy.md). The retenti
 
 `.delete` `materialized-view` *MaterializedViewName* `policy` `retention`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

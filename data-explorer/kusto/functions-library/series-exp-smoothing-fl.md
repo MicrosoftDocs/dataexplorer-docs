@@ -14,7 +14,9 @@ The function `series_exp_smoothing_fl()` is a [user-defined function (UDF)](../q
 ## Syntax
 
 `series_exp_smoothing_fl(`*y_series* [`,` *alpha* ]`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

@@ -25,6 +25,8 @@ See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
 `.alter` `tables` `(`*Table1* `,` *Table2*  [`,`...]`)` `policy` `ingestionbatching` *PolicyObject*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
