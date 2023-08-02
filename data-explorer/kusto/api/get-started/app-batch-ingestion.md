@@ -12,10 +12,6 @@ Kusto is capable of handling mass data intake by optimizing and batching ingeste
 > [!NOTE]
 > Batching also takes into account various factors such as the target database and table, the user running the ingestion, and various properties associated with the ingestion, such as special tags.
 
-<!-- > [!NOTE]
-> The example below assumes there's a trivial match between the content of the data ingested and the scheme of the target table.
-> If the content does not trivially map into the table scheme, an ingestion mapping is required to align the content with the table columns. -->
-
 In this article, you learn how to:
 
 > [!div class="checklist"]
@@ -41,9 +37,6 @@ In this article, you learn how to:
 
     1. In the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home), create a target table named *MyStormEvents* in your database by running the following query:
 
-        > [!div class="nextstepaction"]
-        > <a href="https://dataexplorer.azure.com/clusters/adxdocscluster.westeurope/databases/Develop-quickstarts?query=H4sIAAAAAAAAA22OQQoCMQxF954iSwXxALN1ZikI9QKxDUPBtJL+EXr7CYMLFbMK7yWff4omDCHw/SF06QHVdHpJQduRzz6ADbesMlDyQ/h23AxNJf3l/gGnDZbL/GYjK89ytfoUQx8oF3yZs5v2iUNdLP6mbOXCosrmGakX1hwPK06O/pXDAAAA" target="_blank">Run the query</a>
-
         ```kusto
         .create table MyStormEvents
           (StartTime: datetime,
@@ -57,9 +50,6 @@ In this article, you learn how to:
 
     1. Set the ingestion batching policy timeout to 10 seconds by running the following query:
 
-        > [!div class="nextstepaction"]
-        > <a href="https://dataexplorer.azure.com/clusters/adxdocscluster.westeurope/databases/Develop-quickstarts?query=H4sIAAAAAAAAA9NLzClJLVIoSUzKSVXwrQwuyS/KdS1LzSspVijIz8lMrlTIzEtPLS7JzM9LSixJzgDyFNSrFZR8Eysyc0tznaBiIZm5qcEFiXlKVkoGBlZAZGigpFCrDgBZ3lqMXgAAAA==" target="_blank">Run the query</a>
-
         ```kusto
         .alter table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:10" }'
         ```
@@ -70,6 +60,11 @@ In this article, you learn how to:
     > It may take a few minutes for the new batching policy settings to propagate to the batching manager.
 
 - Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file. The file contains 1,000 storm event records.
+
+> [!NOTE]
+>
+> The following examples assume a trivial match between the columns of the ingested data and the schema of the target table.
+> If the ingested data doesn't trivially match the table schema, you must use an ingestion mapping to align the columns of the data with the table schema.
 
 ## Queue a file for ingestion and query the results
 
@@ -93,14 +88,14 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
 
     def main():
-      token_credentials = InteractiveBrowserCredential()
+      credentials = InteractiveBrowserCredential()
       cluster_uri = "<your_cluster_uri>"
-      cluster_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(cluster_uri, token_credentials)
+      cluster_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(cluster_uri, credentials)
 
       with KustoClient(cluster_kcsb) as kusto_client:
         database = "<your_database>"
         table = "MyStormEvents"
-        query = table + "| count"
+        query = table + " | count"
 
         response = kusto_client.execute_query(database, query)
         print("\nNumber of rows in " + table + " BEFORE ingestion:")
@@ -149,7 +144,7 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     from azure.kusto.ingest import QueuedIngestClient, IngestionProperties
 
     ingest_uri = "<your_ingestion_uri>"
-    ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, token_credentials)
+    ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, credentials)
     ```
 
     ### [Node.js](#tab/nodejs)
@@ -275,11 +270,12 @@ from azure.kusto.ingest import QueuedIngestClient, IngestionProperties
 from azure.identity import InteractiveBrowserCredential
 
 def main():
-  token_credentials = InteractiveBrowserCredential()
+  credentials = InteractiveBrowserCredential()
   cluster_uri = "<your_cluster_uri>"
-  cluster_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(cluster_uri, token_credentials)
+  cluster_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(cluster_uri, credentials)
   ingest_uri = "<your_ingestion_uri>"
-  ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, token_credentials)
+  ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, credentials)
+
   file_path = os.path.join(os.path.dirname(__file__), "stormevents.csv")
 
   with KustoClient(cluster_kcsb) as kusto_client:
@@ -287,7 +283,7 @@ def main():
       database = "<your_database>"
       table = "MyStormEvents"
 
-      query = table + "| count"
+      query = table + " | count"
       response = kusto_client.execute_query(database, query)
       print("\nNumber of rows in " + table + " BEFORE ingestion:")
       print_result_as_value_list(response)
@@ -460,7 +456,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
     ---
 
-1. Set the ingestion properties to ignore the first records as the im-memory string doesn't have a header row.
+1. Set the ingestion properties to not to ignore the first records as the in-memory string doesn't have a header row.
 
     ### [C\#](#tab/csharp)
 
@@ -471,7 +467,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [Python](#tab/python)
 
     ```python
-    ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
+    ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=False)
     ```
 
     ### [Node.js](#tab/nodejs)
@@ -597,9 +593,11 @@ Last ingested row:
 
 ## Queue a blob for ingestion and query the results
 
-You can ingest data from Azure Storage blobs, Azure Data Lake files, and Amazon S3 files. Upload the *stormevent.csv* file to your storage account and generate a URI with read permissions, for example, using [a SAS token](../connection-strings/generate-sas-token.md) for Azure blobs. Then use a blob descriptor to queue the blob for ingestion.
+You can ingest data from Azure Storage blobs, Azure Data Lake files, and Amazon S3 files.
 
 For example, you can modify the app replacing the *ingest from memory* code with the following:
+
+1. Start by uploading the *stormevent.csv* file to your storage account and generate a URI with read permissions, for example, using [a SAS token](../connection-strings/generate-sas-token.md) for Azure blobs.
 
 1. Add the blob descriptor package to the imports at the top of the file.
 

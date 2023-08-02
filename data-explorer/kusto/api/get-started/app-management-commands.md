@@ -71,7 +71,7 @@ In your preferred IDE or text editor, create a project or file named *management
 
     async function main() {
       const clusterUri = "https://<your_cluster>.kusto.windows.net";
-      const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
+      const kcsb = kustoConnectionStringBuilder.withUserPrompt(clusterUri);
 
       const kustoClient = new kustoLibraryClient(kcsb);
     }
@@ -310,7 +310,7 @@ namespace ManagementCommands
 {
   class ManagementCommands {
     static void Main(string[] args) {
-      string clusterUri = "https://<your_cluster>.westeurope.kusto.windows.net";
+      string clusterUri = "https://<your_cluster>.kusto.windows.net";
       var kcsb = new KustoConnectionStringBuilder(clusterUri)
           .WithAadUserPromptAuthentication();
 
@@ -355,7 +355,7 @@ namespace ManagementCommands
 from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
 
 def main():
-  cluster_uri = "https://<your_cluster>.westeurope.kusto.windows.net"
+  cluster_uri = "https://<your_cluster>.kusto.windows.net"
   kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
 
   with KustoClient(kcsb) as kusto_client:
@@ -400,8 +400,8 @@ const kustoLibraryClient = require("azure-kusto-data").Client;
 const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
 
 async function main() {
-  const clusterUri = "https://<your_cluster>.westeurope.kusto.windows.net";
-  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
+  const clusterUri = "https://<your_cluster>.kusto.windows.net";
+  const kcsb = kustoConnectionStringBuilder.withUserPrompt(clusterUri);
   const kustoClient = new kustoLibraryClient(kcsb);
 
   const database = "<your_database>";
@@ -453,7 +453,7 @@ import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 public class ManagementCommands {
   public static void main(String[] args) throws Exception {
     try {
-      String clusterUri = "https://<your_cluster>.westeurope.kusto.windows.net";
+      String clusterUri = "https://<your_cluster>.kusto.windows.net";
       ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
       try (Client kustoClient = ClientFactory.createClient(kcsb)) {
         String database = "<your_database>";
