@@ -14,7 +14,7 @@ The following extraction modes are supported:
 
 * [**Specified delimeter**](#specified-delimeter): Extraction based on specified delimiters that dictate how keys/values and pairs are separated from each other.
 * [**Non-specified delimeter**](#non-specified-delimiter): Extraction with no need to specify delimiters. Any nonalphanumeric character is considered a delimiter.
-* [**Regex**](#regex): Extraction based on [RE2](re2.md) regular expression.
+* [**Regex**](#regex): Extraction based on [RE2](re2-library.md) regular expression.
 
 ## Syntax
 
@@ -42,7 +42,7 @@ The following extraction modes are supported:
 |*KvDelimiter*|string||A delimiter that separates keys from values.|
 |*QuoteChars*|string||A one- or two-character string literal representing opening and closing quotes that key name or the extracted value may be wrapped with. The parameter can be repeated to specify a separate set of opening/closing quotes.|
 |*EscapeChar*|string||A one-character string literal describing a character that may be used for escaping special characters in a quoted value. The parameter can be repeated if multiple escape characters are used.|
-|*RegexPattern*|string||A [RE2](re2.md) regular expression containing two capturing groups exactly. The first group represents the key name, and the second group represents the key value.|
+|*RegexPattern*|string||A [RE2](re2-library.md) regular expression containing two capturing groups exactly. The first group represents the key name, and the second group represents the key value.|
 
 ## Returns
 

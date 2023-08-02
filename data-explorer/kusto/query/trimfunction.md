@@ -20,7 +20,7 @@ Removes all leading and trailing matches of the specified regular expression.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | string | &check; | The string or [regular expression](re2.md) to be trimmed from *source*.|
+| *regex* | string | &check; | The string or [regular expression](re2-library.md) to be trimmed from *source*.|
 | *source* | string | &check; | The source string from which to trim *regex*.|
 
 ## Returns

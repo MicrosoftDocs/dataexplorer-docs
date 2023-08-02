@@ -1602,8 +1602,6 @@ items:
       href: ../concepts/overflow.md
 - name: Reference material for Kusto Query Language
   items:
-  - name: RE2 syntax
-    href: re2.md
   - name: RE2 library
     href: re2-library.md
   - name: JSONPath syntax
