@@ -23,6 +23,10 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.alter` `database` *DatabaseName* `policy` `streamingingestion` *PolicyObject*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*DatabaseName*|string|&check;|The name of the database for which to alter the streaming ingestion policy.|
