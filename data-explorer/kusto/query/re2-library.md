@@ -19,7 +19,7 @@ The following table overviews the KQL regular expression syntax elements.
 
 | Syntax element | Description |
 |--|--|
-| Single literals | Single characters usually match themselves, except for metacharacters (* + ? ( ) \|), which have unique meanings as described in the following rows. |
+| Single literals | Single characters match themselves, except for metacharacters (* + ? ( ) \|), which have unique meanings as described in the following rows. |
 | Metacharacters | To match a metacharacter literally, escape it with backslashes. For example, the regular expression `\\+` matches a literal plus (`+`) character. |
 | Alternation operator |  Alternate two expressions with `|` to create a new expression that matches either of the expressions. For example, `e1 | e2` matches either `e1` or `e2`. |
 | Concatenation operator | Concatenate two expressions to create a new expression that matches the first expression followed by the second. For example, `e1e2` matches `e1` followed by `e2`. |
