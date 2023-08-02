@@ -18,6 +18,8 @@ The cancel operation command isn't guaranteed to succeed. The output of the `.ca
 
 `.cancel` `operation` *OperationId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

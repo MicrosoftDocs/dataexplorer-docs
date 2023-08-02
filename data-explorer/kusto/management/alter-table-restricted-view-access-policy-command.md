@@ -23,6 +23,8 @@ Use the following syntax to turn on or turn off the policy for several tables.
 
 `.alter` `tables` `(`*TableName*`,`*TableName2* [`,`...]`)` `policy` `restricted_view_access` `true`|`false`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
