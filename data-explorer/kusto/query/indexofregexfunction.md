@@ -39,8 +39,8 @@ The zero-based index position of *match*.
 
 > [!NOTE]
 >
-* Overlapping matches lookup aren't supported.
-* Regular expression strings may contain characters that require either escaping or using @'' string-literals.
+> * Overlapping matches lookup aren't supported.
+> * Regular expression strings may contain characters that require either escaping or using @'' string-literals.
 
 ## Examples
 
