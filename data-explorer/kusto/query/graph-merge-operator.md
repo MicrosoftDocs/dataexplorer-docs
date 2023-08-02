@@ -151,8 +151,6 @@ let EmployeeInfo = datatable(principalId: long, firstName: string, lastName: str
 	4, "Mallory", "Mason",
 	6, "Trent", "Smith"
 ];
-Emails | join kind=fullouter Calls on $left.fromPrincipal == $right.caller, $left.toPrincipal == $right.callee
-
 let EmailsGraph = Emails
 	| make-graph fromPrincipal --> toPrincipal with EmployeeAlias on principalId;
 let CallsGraph = Calls
@@ -167,14 +165,14 @@ MergeNodes
 #### Result Table 1:
 |fromPrincipal|toPrincipal|wordCount|when|caller|callee|subject|duration|
 |---|---|---|---|---|---|---|---|
-|||||4|1|HR|35|2022-01-01 00:00:00.0000000|
-|||||2|1|Finance|2|2022-01-02 00:00:00.0000000|
-|||||4|3|Lunch|105|2022-01-05 00:00:00.0000000|
-|1|2|200|2022-01-01 00:00:00.0000000|1|2|Finance|20|2022-08-01 00:00:00.0000000|
-|2|3|500|2022-01-02 00:00:00.0000000||||||
-|2|4|5|2022-01-03 00:00:00.0000000||||||
-|3|4|2|2022-01-04 00:00:00.0000000|3|4|HR|15|2022-01-01 00:00:00.0000000|
-|1|4|101|2022-01-05 00:00:00.0000000|1|4|Finance|20|2022-01-05 00:00:00.0000000|
+|1|2|200|2022-01-01T00:00:00Z|1|2|"Finance"|20|
+| | | |2022-01-01T00:00:00Z|4|1|"HR"|35|
+| | | |2022-01-02T00:00:00Z|2|1|"Finance"|2|
+|2|3|500|2022-01-02T00:00:00Z| | | | |
+|2|4|5|2022-01-03T00:00:00Z| | | | |
+|3|4|2|2022-01-04T00:00:00Z|3|4|"HR"|15|
+| | | |2022-01-05T00:00:00Z|4|3|"Lunch"|105|
+|1|4|101|2022-01-05T00:00:00Z|1|4|"Finance"|20|
 
 #### Result Table 2:
 |principalId|alias|firstName|lastName|
