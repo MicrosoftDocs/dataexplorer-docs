@@ -30,6 +30,8 @@ If the *TableName* isn't specified, you must have at least [Database Admin](./ac
 
 `.drop` `extents` [`whatif`] `<|` *Query*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 #### Parameters
 
 | Name | Type | Required | Description |

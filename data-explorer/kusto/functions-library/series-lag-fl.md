@@ -14,7 +14,9 @@ The function `series_lag_fl()` is a [user-defined function (UDF)](../query/funct
 ## Syntax
 
 `series_lag_fl(`*y_series*`,` *offset*`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

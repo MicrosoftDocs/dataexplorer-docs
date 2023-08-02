@@ -17,6 +17,8 @@ The command to drop a database ingestion mapping requires at least [Database Ing
 
 `.drop` (`table` | `database`) *TableOrDatabaseName* `ingestion` *MappingKind*  `mapping` *MappingName*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

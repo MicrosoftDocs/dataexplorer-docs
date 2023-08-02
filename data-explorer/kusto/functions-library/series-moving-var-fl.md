@@ -14,7 +14,9 @@ The function `series_moving_var_fl()` is a [user-defined function (UDF)](../quer
 ## Syntax
 
 `series_moving_var_fl(`*y_series*`,` *n* [`,` *center* ]`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
