@@ -301,7 +301,7 @@ items:
               - name: Customize dashboard visuals
                 href: dashboard-customize-visuals.md
               - name: Dashboard-specific visuals
-                displayName: plotly, heatmap, funnel chart
+                displayName: plotly, heatmap, heat map, funnel chart
                 href: dashboard-visuals.md
           - name: Power BI
             items:
