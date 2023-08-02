@@ -11,11 +11,11 @@ This article provides an overview of the regular expression syntax supported by 
 
 Regular expressions are a notation used to describe sets of character strings. When a particular string is in the set described by a regular expression, we say that the regular expression matches the string.
 
-There are several KQL functions that perform string matching, selection, and extraction by using regular expressions. To use regular expressions in KQL, you must encode them as [string literals](scalar-data-types/string.md) and follow the string quoting rules. For example, to use the RE2 regular expression `\A` in KQL, specify it with an extra backslash (`\`) character as the string literal `"\\A"`.
-
 ## Syntax overview
 
-The following table gives an overview of KQL regular expression syntax.
+To use regular expressions in KQL, you must encode them as [string literals](scalar-data-types/string.md) and follow the string quoting rules. For example, the RE2 regular expression `\A` can be represented in KQL as `"\\A"`. The additional backslash indicates that the other backslash is part of the regular expression `\A`.
+
+The following table gives an overview of regular expression syntax.
 
 | Syntax element | Description |
 |--|--|
