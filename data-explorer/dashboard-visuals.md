@@ -7,6 +7,10 @@ ms.date: 08/02/2023
 ---
 # Dashboard-specific visuals
 
+The following visualizations are available only in Azure Data Explorer dashboards or [web UI](add-query-visualization.md). For visualizations available within the render operator, see [render operator](kusto/query/renderoperator.md). To learn how to customize visuals, see [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
+
+For general information on dashboards in Azure Data Explorer, see [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
+
 ## Funnel chart
 
 A funnel chart visualizes a linear process that has sequential, connected stages. Each funnel stage represents a percentage of the total. So, in most cases, a funnel chart is shaped like a funnel, with the first stage being the largest, and each subsequent stage smaller than its predecessor.
@@ -51,6 +55,21 @@ totalSales
 :::image type="content" source="media/dashboard-customize-visuals/funnel.png" alt-text="Screenshot of Dashboard results pane showing a funnel chart visualization of the example query.":::
 
 ## Heatmap
+
+A heatmap shows values for a main variable of interest across two axis variables as a grid of colored squares.
+
+To render a heatmap, the query must generate a table with three columns. The columns that will be used for x and y values must be in the `string` format, and the data used for the *value* field must be numeric. 
+
+> [!NOTE]
+> We recommend specifying each data field, instead of letting the tool infer the data source.
+
+```kusto
+nyc_taxi
+| where passenger_count < 10
+| summarize avg(tip_amount) by vendor_id, tostring(passenger_count)
+```
+
+:::image type="content" source="media/dashboard-customize-visuals/heatmap.png" alt-text="Screenshot of a heatmap visual from the Azure Data Explorer dashboard.":::
 
 ## Plotly (preview)
 
