@@ -1,30 +1,32 @@
 ---
-title:  Regular expressions library
-description: This article lists the regular expression syntax accepted by RE2.
+title:  Regular expressions - Azure Data Explorer
+description: This article lists the regular expression syntax accepted by Kusto Query Language (KQL).
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/02/2023
 ---
-# RE2 library
+# Regular expressions
 
-This article provides an overview of regular expression syntax supported by Kusto Query Language (KQL). The syntax incorporates elements from RE2, PCRE, PERL, and VIM.
+This article provides an overview of regular expression syntax supported by Kusto Query Language (KQL), which is the syntax of the RE2 library.
 
-Regular expressions are a notation used to describe sets of character strings. When a particular string is in the set described by a regular expression, we say that the regular expression matches the string.
+## Use regular expressions in Kusto
 
-## Syntax overview
+There are a number of KQL operators and functions that perform string matching, selection, and extraction with regular expressions, such as [`matches regex`](matches-regex-operator.md) operator, [`parse`](parseoperator.md), and [`replace_regex()`](replace-regex-function.md).
 
-In KQL, regular expressions must be encoded as [string literals](scalar-data-types/string.md) and follow the string quoting rules.
+To use regular expressions with KQL operators and functions, the regular expressions must be encoded as [string literals](scalar-data-types/string.md) and follow the string quoting rules.
 
 For example, the RE2 regular expression `\A` is represented in KQL as `"\\A"`. The extra backslash indicates that the other backslash is part of the regular expression `\A`.
 
-The following table overviews the main regular expression syntax elements.
+## Syntax overview
+
+The following table overviews the main RE2 library syntax elements.
 
 | Syntax element | Description |
 |--|--|
 | Single literals | Single characters match themselves, except for metacharacters (* + ? ( ) \|), which have unique meanings as described in the following rows. |
 | Metacharacters | To match a metacharacter literally, escape it with backslashes. For example, the regular expression `\\+` matches a literal plus (`+`) character. |
 | Alternation operator |  Alternate two expressions with `|` to create a new expression that matches either of the expressions. For example, `e1 | e2` matches either `e1` or `e2`. |
-| Concatenation operator | Concatenate two expressions to create a new expression that matches the first expression followed by the second. For example, `e1e2` matches `e1` followed by `e2`. |
+| Concatenation | Concatenate two expressions to create a new expression that matches the first expression followed by the second. For example, `e1e2` matches `e1` followed by `e2`. |
 | Repetition operators | Metacharacters `?`, `+`, and `*` are repetition operators. For example, `e1?` matches zero or one occurrence of `e1`, `e1+` matches one or more occurrences of `e1`, and `e1*` matches a sequence of zero or more, possibly different, strings that match `e1`.|
 
 > [!NOTE]
