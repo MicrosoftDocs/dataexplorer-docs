@@ -28,7 +28,7 @@ The following table overviews the main regular expression syntax elements.
 | Repetition operators | Metacharacters `?`, `+`, and `*` are repetition operators. For example, `e1?` matches zero or one occurrence of `e1`, `e1+` matches one or more occurrences of `e1`, and `e1*` matches a sequence of zero or more, possibly different, strings that match `e1`.|
 
 > [!NOTE]
-> The operators have a specific order of precedence: alternation (`|`), concatenation (side-by-side expressions), and repetition (`?`, `+`, `*`). To explicitly control the evaluation order, use parentheses.
+> Regular expression operators evaluate in this order: alternation (`|`), concatenation (side-by-side expressions), and repetition (`?`, `+`, `*`). Use parentheses to control the evaluation order.
 
 ## Single-character expressions
 
