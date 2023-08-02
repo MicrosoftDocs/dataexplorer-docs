@@ -23,6 +23,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter-merge` `table` *TableName* `policy` `streamingingestion` *PolicyObject*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
