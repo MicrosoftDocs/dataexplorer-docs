@@ -26,7 +26,7 @@ The following table overviews the main RE2 library syntax elements.
 | Syntax element | Description |
 |--|--|
 | Single literals | Single characters match themselves, except for metacharacters (* + ? ( ) \|), which have unique meanings as described in the following rows. |
-| Metacharacters | To match a metacharacter literally, escape it with backslashes. For example, the regular expression `\\+` matches a literal plus (`+`) character. |
+| Metacharacters | To match a metacharacter literally, escape it with backslashes. For example, the regular expression `\+` matches a literal plus (`+`) character. |
 | Alternation |  Alternate two expressions with `|` to create a new expression that matches either of the expressions. For example, `e1 | e2` matches either `e1` or `e2`. |
 | Concatenation | Concatenate two expressions to create a new expression that matches the first expression followed by the second. For example, `e1e2` matches `e1` followed by `e2`. |
 | Repetition | Metacharacters `?`, `+`, and `*` are repetition operators. For example, `e1?` matches zero or one occurrence of `e1`, `e1+` matches one or more occurrences of `e1`, and `e1*` matches a sequence of zero or more, possibly different, strings that match `e1`.|
