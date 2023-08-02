@@ -7,24 +7,26 @@ ms.date: 08/02/2023
 ---
 # RE2 library
 
-This article provides an overview of the regular expression syntax supported by Kusto Query Language (KQL). KQL supports a combination of regular expression syntax forms, including RE2, PCRE, PERL, and VIM.
+This article provides an overview of regular expression syntax supported by Kusto Query Language (KQL). KQL supports a combination of regular expression syntax forms, including RE2, PCRE, PERL, and VIM.
 
 Regular expressions are a notation used to describe sets of character strings. When a particular string is in the set described by a regular expression, we say that the regular expression matches the string.
 
 ## Syntax overview
 
-To use regular expressions in KQL, you must encode them as [string literals](scalar-data-types/string.md) and follow the string quoting rules. For example, the RE2 regular expression `\A` can be represented in KQL as `"\\A"`. The additional backslash indicates that the other backslash is part of the regular expression `\A`.
+In KQL, regular expressions must be encoded as [string literals](scalar-data-types/string.md) and follow the string quoting rules. For example, the RE2 regular expression `\A` is represented in KQL as `"\\A"`. The extra backslash indicates that the other backslash is part of the regular expression `\A`.
 
-The following table gives an overview of regular expression syntax.
+The following table overviews the KQL regular expression syntax elements.
 
 | Syntax element | Description |
 |--|--|
-| Single literals | A simple regular expression matches a single literal character. Characters typically match themselves, except for metacharacters (* + ? ( ) \|), which have unique meanings in regular expressions as described in the following rows. |
-| Escape metacharacters | To match a metacharacter literally, escape it with backslashes. For example, the regular expression `\\+` matches a literal plus (`+`) character. |
-| Alternation | Two regular expressions can be alternated with `|` to form a new expression. For example, `e1 | e2` matches either `e1` or `e2`. |
-| Concatenation | Concatenate two expressions to create a new expression. For example, `e1e2` matches `e1` followed by `e2`. |
-| Repetition operators | Metacharacters `?`, `+`, and `*` are repetition operators. For example, `e1?` matches zero or one and `e1+` matches one or more; and `e1*` matches a sequence of zero or more possibly different strings that match `e1`. |
-| Operator precedence | The order of operator precedence, from weakest to strongest binding, is as follows: alternation (`|`), concatenation (side-by-side expressions), and repetition (`*`, `+`, `?`). For example, `ab|cd` is equivalent to `(ab)|(cd)` and `ab*` is equivalent to `a(b*)`. Use parentheses to override this behavior and explicitly control grouping and evaluation.|
+| Single literals | Single characters usually match themselves, except for metacharacters (* + ? ( ) \|), which have unique meanings as described in the following rows. |
+| Metacharacters | To match a metacharacter literally, escape it with backslashes. For example, the regular expression `\\+` matches a literal plus (`+`) character. |
+| Alternation operator |  Alternate two expressions with `|` to create a new expression that matches either of the expressions. For example, `e1 | e2` matches either `e1` or `e2`. |
+| Concatenation operator | Concatenate two expressions to create a new expression that matches the first expression followed by the second. For example, `e1e2` matches `e1` followed by `e2`. |
+| Repetition operators | Metacharacters `?`, `+`, and `*` are repetition operators. For example, `e1?` matches zero or one occurrences of `e1`, `e1+` matches one or more occurrences of `e1`, and `e1*` matches a sequence of zero or more, possibly different, strings that match `e1`.
+
+> [!NOTE]
+> The operators have a specific order of precedence: alternation (`|`), concatenation (side-by-side expressions), and repetition (`?`, `+`, `*`). To explicitly control the evaluation order, use parentheses.
 
 ## Single-character expressions
 
