@@ -25,7 +25,7 @@ See [parse operator](parseoperator.md), which produces nulls for unsuccessfully 
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to parse.|
 | *kind* | string | &check; | One of the [supported kind values](#supported-kind-values). The default value is `simple`.|
-| *regexFlags* | string | |If *kind* is `regex`, then you can specify regex flags to be used like `U` for ungreedy, `m` for multi-line mode, `s` for match new line `\n`, and `i` for case-insensitive. More flags can be found in [RE2 flags](re2-library.md).|
+| *regexFlags* | string | |If *kind* is `regex`, then you can specify regex flags to be used like `U` for ungreedy, `m` for multi-line mode, `s` for match new line `\n`, and `i` for case-insensitive. More flags can be found in [Flags](re2-library.md#flags).|
 | *expression* | string | &check; | An expression that evaluates to a string.|
 | *stringConstant* | string | &check; | A string constant for which to search and parse.|
 | *columnName* | string | &check; | The name of a column to assign a value to, extracted from the string expression. |
@@ -47,7 +47,7 @@ See [parse operator](parseoperator.md), which produces nulls for unsuccessfully 
 
 ### Regex mode
 
-In regex mode, parse will translate the pattern to a regex and use [RE2 syntax](re2-library.md) in order to do the matching using numbered captured groups that are handled internally. For example:
+In regex mode, parse will translate the pattern to a regex and use [regular expressions](re2-library.md) in order to do the matching using numbered captured groups that are handled internally. For example:
 
 ```kusto
 parse-where kind=regex Col with * <regex1> var1:string <regex2> var2:long
