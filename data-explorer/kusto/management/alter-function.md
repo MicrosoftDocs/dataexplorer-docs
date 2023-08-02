@@ -18,6 +18,8 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 `.alter` `function` [ `with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] *functionName*`(`*parameters*`)` `{` *body* `}`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

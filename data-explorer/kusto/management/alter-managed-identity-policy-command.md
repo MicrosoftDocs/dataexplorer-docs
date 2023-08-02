@@ -22,6 +22,8 @@ The command to alter the cluster policy requires [AllDatabasesAdmin](access-cont
 
 `.alter` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfPolicyObjects*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
