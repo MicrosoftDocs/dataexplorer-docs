@@ -7,27 +7,23 @@ ms.date: 08/02/2023
 ---
 # RE2 library
 
-This article provides an overview of the regular expression syntax supported by Kusto Query Language (KQL).
+This article provides an overview of the regular expression syntax supported by Kusto Query Language (KQL). KQL supports a combination of regular expression syntax forms, including RE2, PCRE, PERL, and VIM.
 
-Regular expressions are a notation for describing sets of character strings. When a particular string is in the set described by a regular expression, we often say that the regular expression matches the string. There are several KQL functions that perform string matching, selection, and extraction by using a regular expression.
+Regular expressions are a notation used to describe sets of character strings. When a particular string is in the set described by a regular expression, we say that the regular expression matches the string.
 
-In KQL, to use regular expressions, you must encode them as `string` literals and adhere to the string quoting rules. For example, if you wish to match the beginning of a line with the regular expression `\A`, you would specify it in Kusto as the string literal `"\\A"` (note the "extra" backslash (`\`) character).
-
-This page lists the regular expression syntax accepted by RE2.
-
-It also lists some syntax accepted by PCRE, PERL, and VIM.
+There are several KQL functions that perform string matching, selection, and extraction by using regular expressions. To use regular expressions in KQL, you must encode them as [string literals](scalar-data-types/string.md) and follow the string quoting rules. For example, to use the RE2 regular expression `\A` in KQL, specify it with an extra backslash (`\`) character as the string literal `"\\A"`.
 
 ## Syntax overview
 
 The following table gives an overview of regular expression syntax.
 
-| Regular Expression | Description |
+| Syntax element | Description |
 |--|--|
 | Single literals | A simple regular expression matches a single literal character. Characters typically match themselves, except for metacharacters (* + ? ( ) \|), which have unique meanings in regular expressions as described in the following rows. |
-| Escaping metacharacters | To match a metacharacter literally, escape it with backslashes. For example, the regular expression `\\+` matches a literal plus (`+`)character. |
+| Escaping metacharacters | To match a metacharacter literally, escape it with backslashes. For example, the regular expression `\\+` matches a literal plus (`+`) character. |
 | Alternation | Two regular expressions can be alternated with `|` to form a new expression. For example, `e1 | e2` matches either `e1` or `e2`. |
 | Concatenation | Concatenate two expressions to create a new expression. For example, `e1e2` matches `e1` followed by `e2`. |
-| Repetition operators | Metacharacters `?`, `+`, and `*` are repetition operators. For example, `e1?` matches zero or one and `e1+` matches one or more; and `e1*` matches a sequence of zero or more possibly different strings each of which are prefaced by `e1`. |
+| Repetition operators | Metacharacters `?`, `+`, and `*` are repetition operators. For example, `e1?` matches zero or one and `e1+` matches one or more; and `e1*` matches a sequence of zero or more possibly different strings that match `e1`. |
 | Operator precedence | The order of operator precedence, from weakest to strongest binding, is as follows: alternation (`|`), concatenation (side-by-side expressions), and repetition (`*`, `+`, `?`). For example, `ab|cd` is equivalent to `(ab)|(cd)` and `ab*` is equivalent to `a(b*)`. Use parentheses to override this behavior and explicitly control grouping and evaluation.|
 
 ## Single-character expressions
@@ -95,14 +91,14 @@ Implementation restriction: The counting forms x{n,m}, x{n,}, and x{n} reject fo
 | `(?P<name>re)` | named & numbered capturing group (submatch)                 |
 | `(?<name>re)`  | named & numbered capturing group (submatch) (NOT SUPPORTED) |
 | `(?'name're)`  | named & numbered capturing group (submatch) (NOT SUPPORTED) |
-| `(?:re)`       | non-capturing group                                         |
-| `(?flags)`     | set flags within current group; non-capturing               |
-| `(?flags:re)`  | set flags during re; non-capturing                          |
+| `(?:re)`       | noncapturing group                                         |
+| `(?flags)`     | set flags within current group; noncapturing               |
+| `(?flags:re)`  | set flags during re; noncapturing                          |
 | `(?#text)`     | comment (NOT SUPPORTED)                                     |
 | `(?\|x\|y\|z)` | branch numbering reset (NOT SUPPORTED)                      |
 | `(?>re)`       | possessive match of `re` (NOT SUPPORTED)                    |
 | `re@>`         | possessive match of `re` (NOT SUPPORTED) VIM                |
-| `%(re)`        | non-capturing group (NOT SUPPORTED) VIM                     |
+| `%(re)`        | noncapturing group (NOT SUPPORTED) VIM                     |
 
 ## Flags
 
@@ -274,7 +270,7 @@ ASCII-only
 | `M`     | mark                                   |
 | `Mc`    | spacing mark                           |
 | `Me`    | enclosing mark                         |
-| `Mn`    | non-spacing mark                       |
+| `Mn`    | nonspacing mark                       |
 | `N`     | number                                 |
 | `Nd`    | decimal number                         |
 | `Nl`    | letter number                          |
@@ -471,7 +467,7 @@ ASCII-only
 | `\p`    | printable character (NOT SUPPORTED) VIM                                |
 | `\P`    | `\p` except digits (NOT SUPPORTED) VIM                                 |
 | `\s`    | whitespace character (≡ `[ \t]`) (NOT SUPPORTED) VIM                  |
-| `\S`    | non-white space character (≡ `[^ \t]`) (NOT SUPPORTED) VIM            |
+| `\S`    | nonwhite space character (≡ `[^ \t]`) (NOT SUPPORTED) VIM            |
 | `\d`    | digits (≡ `[0-9]`) VIM                                                |
 | `\D`    | not `\d` VIM                                                           |
 | `\x`    | hex digits (≡ `[0-9A-Fa-f]`) (NOT SUPPORTED) VIM                      |
