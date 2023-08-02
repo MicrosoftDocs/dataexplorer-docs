@@ -22,6 +22,8 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 (`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* [`(`*Schema*`)`] `kind` `=` `delta` `(`*StorageConnectionString* `)` [`with` `(`*Property* [`,` ...]`)`]  
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
