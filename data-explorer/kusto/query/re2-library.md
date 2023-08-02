@@ -13,7 +13,7 @@ This article provides an overview of regular expression syntax supported by [Kus
 
 There are a number of KQL operators and functions that perform string matching, selection, and extraction with regular expressions, such as [`matches regex`](matches-regex-operator.md), [`parse`](parseoperator.md), and [`replace_regex()`](replace-regex-function.md).
 
-In KQL, the regular expressions described in this article must be encoded as [string literals](scalar-data-types/string.md) and follow the string quoting rules. For example, the RE2 regular expression `\A` is represented in KQL as `"\\A"`. The extra backslash indicates that the other backslash is part of the regular expression `\A`.
+In KQL, regular expressions must be encoded as [string literals](scalar-data-types/string.md) and follow the string quoting rules. For example, the RE2 regular expression `\A` is represented in KQL as `"\\A"`. The extra backslash indicates that the other backslash is part of the regular expression `\A`.
 
 ## RE2 library
 
