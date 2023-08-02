@@ -24,7 +24,7 @@ If you have Database Admin or Database Monitor permissions, you'll see all faile
 | `.show` `streamingingestion` `statistics` | Returns aggregated streaming ingestion statistics |
 | `.show` `streamingingestion` `statistics` \| `where` ... | Returns a filtered set of streaming ingestion statistics |
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Results
 
