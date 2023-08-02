@@ -15,7 +15,7 @@ management commands are sent to the Kusto Data Engine service, do not appear in 
 Failures from all parts of the ingestion process appear in the ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md).
 
 > [!NOTE]
-> Ingestion failures that occur during other parts of the ingestion flow will not appear in the result set of this command. Such a failure may occur, for example, before data ingestion management commands are sent to the Kusto Data Engine service.
+> Ingestion failures that occur during other parts of the ingestion flow won't appear in the result set of this command. Such a failure may occur, for example, before data ingestion management commands are sent to the Kusto Data Engine service.
 >
 > Ingestion failures should be monitored by [metrics](../../using-metrics.md), and optionally using ingestion logs. To set up ingestion logs, see [Monitor ingestion, commands, queries, and tables using diagnostic logs](../../using-diagnostic-logs.md).
 >
