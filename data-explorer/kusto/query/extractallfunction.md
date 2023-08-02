@@ -7,7 +7,7 @@ ms.date: 12/12/2022
 ---
 # extract_all()
 
-Get all matches for a [regular expression](./regex.md) from a source string.
+Get all matches for a [regular expression](./re2-library.md) from a source string.
 Optionally, retrieve a subset of matching groups.
 
 ```kusto
@@ -26,7 +26,7 @@ print extract_all(@"(\d+)", "a set of numbers: 123, 567 and 789") // results wit
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | string | &check; | A [regular expression](./regex.md) containing between one and 16 capture groups.|
+| *regex* | string | &check; | A [regular expression](./re2-library.md) containing between one and 16 capture groups.|
 | *captureGroups* | dynamic | | An array that indicates the capture groups to extract. Valid values are from 1 to the number of capturing groups in the regular expression. Named capture groups are allowed as well. See [examples](#examples).|
 | *source* | string | &check;| The string to search.|
 

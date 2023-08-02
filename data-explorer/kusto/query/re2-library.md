@@ -7,11 +7,11 @@ ms.date: 08/02/2023
 ---
 # Regular expressions
 
-This article provides an overview of regular expression syntax supported by Kusto Query Language (KQL), which is the syntax of the RE2 library.
+This article provides an overview of regular expression syntax supported by [Kusto Query Language (KQL)](index.md), which is the syntax of the RE2 library.
 
 ## Use regular expressions in Kusto
 
-There are a number of KQL operators and functions that perform string matching, selection, and extraction with regular expressions, such as [`matches regex`](matches-regex-operator.md) operator, [`parse`](parseoperator.md), and [`replace_regex()`](replace-regex-function.md).
+There are a number of KQL operators and functions that perform string matching, selection, and extraction with regular expressions, such as [`matches regex`](matches-regex-operator.md), [`parse`](parseoperator.md), and [`replace_regex()`](replace-regex-function.md).
 
 To use regular expressions with KQL operators and functions, the regular expressions must be encoded as [string literals](scalar-data-types/string.md) and follow the string quoting rules.
 
@@ -25,9 +25,9 @@ The following table overviews the main RE2 library syntax elements.
 |--|--|
 | Single literals | Single characters match themselves, except for metacharacters (* + ? ( ) \|), which have unique meanings as described in the following rows. |
 | Metacharacters | To match a metacharacter literally, escape it with backslashes. For example, the regular expression `\\+` matches a literal plus (`+`) character. |
-| Alternation operator |  Alternate two expressions with `|` to create a new expression that matches either of the expressions. For example, `e1 | e2` matches either `e1` or `e2`. |
+| Alternation |  Alternate two expressions with `|` to create a new expression that matches either of the expressions. For example, `e1 | e2` matches either `e1` or `e2`. |
 | Concatenation | Concatenate two expressions to create a new expression that matches the first expression followed by the second. For example, `e1e2` matches `e1` followed by `e2`. |
-| Repetition operators | Metacharacters `?`, `+`, and `*` are repetition operators. For example, `e1?` matches zero or one occurrence of `e1`, `e1+` matches one or more occurrences of `e1`, and `e1*` matches a sequence of zero or more, possibly different, strings that match `e1`.|
+| Repetition | Metacharacters `?`, `+`, and `*` are repetition operators. For example, `e1?` matches zero or one occurrence of `e1`, `e1+` matches one or more occurrences of `e1`, and `e1*` matches a sequence of zero or more, possibly different, strings that match `e1`.|
 
 > [!NOTE]
 > Regular expression operators evaluate in this order: alternation (`|`), concatenation (side-by-side expressions), and repetition (`?`, `+`, `*`). Use parentheses to control the evaluation order.
