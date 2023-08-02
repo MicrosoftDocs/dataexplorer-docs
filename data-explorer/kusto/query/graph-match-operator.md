@@ -41,7 +41,7 @@ The `graph-match` operator searches for all occurences of a graph pattern in an 
 ### Supported parameters
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *cycles* |string|| Indicates to perform cycle prevention based on the specified type: `none`, `edges`, `nodes`. The default is `edges`.|
+| *cycles* |string|| Indicates to perform cycle prevention based on the specified type: `none`, `edges`, `nodes`. The default is `none`.|
 
 ## Returns
 
