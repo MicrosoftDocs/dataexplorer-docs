@@ -13,7 +13,7 @@ Extracts structured information from a string expression and represents the info
 The following extraction modes are supported:
 
 * [**Specified delimeter**](#specified-delimeter): Extraction based on specified delimiters that dictate how keys/values and pairs are separated from each other.
-* [**Non-specified delimeter**](#non-specified-delimiter): Extraction with no need to specify delimiters. Any nonalphanumeric character is considered a delimiter.
+* [**Non-specified delimeter**](#nonspecified-delimiter): Extraction with no need to specify delimiters. Any nonalphanumeric character is considered a delimiter.
 * [**Regex**](#regex): Extraction based on [RE2](re2-library.md) regular expression.
 
 ## Syntax
