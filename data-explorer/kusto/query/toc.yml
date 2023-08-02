@@ -1603,7 +1603,7 @@ items:
 - name: Reference material for Kusto Query Language
   items:
   - name: Regular expressions
-    href: regex.md
+    href: re2-library.md
     displayName: RE2, RE2 library, regex
   - name: JSONPath syntax
     href: jsonpath.md

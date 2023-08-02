@@ -802,12 +802,7 @@
     },
     {
       "source_path": "data-explorer/kusto/query/re2.md",
-      "redirect_url": "/azure/data-explorer/kusto/query/regex",
-      "redirect_document_id": true
-    },
-    {
-      "source_path": "data-explorer/kusto/query/re2-library.md",
-      "redirect_url": "/azure/data-explorer/kusto/query/regex",
+      "redirect_url": "/azure/data-explorer/kusto/query/re2-library",
       "redirect_document_id": true
     }
   ]
