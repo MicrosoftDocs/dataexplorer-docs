@@ -1602,9 +1602,9 @@ items:
       href: ../concepts/overflow.md
 - name: Reference material for Kusto Query Language
   items:
-  - name: Regular expressions
-    href: re2-library.md
-    displayName: RE2, RE2 library, regex
+  - name: RE2 syntax
+    href: re2.md
+    displayName: RE2 library, regex, regular expressions
   - name: JSONPath syntax
     href: jsonpath.md
   - name: SQL to Kusto cheat sheet
