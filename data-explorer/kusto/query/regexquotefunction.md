@@ -7,7 +7,7 @@ ms.date: 01/17/2023
 ---
 # regex_quote()
 
-Returns a string that escapes all [regular expression](re2-library.md) characters.
+Returns a string that escapes all [regular expression](re2.md) characters.
 
 ## Syntax
 

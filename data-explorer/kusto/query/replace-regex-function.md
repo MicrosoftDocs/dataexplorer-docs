@@ -7,7 +7,7 @@ ms.date: 05/21/2023
 ---
 # replace_regex()
 
-Replaces all [regular expression](re2-library.md) matches with a specified pattern.
+Replaces all [regular expression](re2.md) matches with a specified pattern.
 
 > **Deprecated aliases:** replace()
 
@@ -22,7 +22,7 @@ Replaces all [regular expression](re2-library.md) matches with a specified patte
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *source*| string | &check; | The text to search and replace.|
-| *lookup_regex*| string | &check; | The [regular expression](re2-library.md) to search for in *text*. The expression can contain capture groups in parentheses.|
+| *lookup_regex*| string | &check; | The [regular expression](re2.md) to search for in *text*. The expression can contain capture groups in parentheses.|
 | *rewrite_pattern*| string | &check; | The replacement regex for any match made by *matchingRegex*. Use `\0` to refer to the whole match, `\1` for the first capture group, `\2` and so on for subsequent capture groups.|
 
 ## Returns
