@@ -9,8 +9,6 @@ ms.date: 08/03/2023
 
 This article provides an overview of regular expression syntax supported by [Kusto Query Language (KQL)](index.md), which is the syntax of the RE2 library.
 
-## Use regular expressions in Kusto
-
 There are a number of KQL operators and functions that perform string matching, selection, and extraction with regular expressions, such as [`matches regex`](matches-regex-operator.md), [`parse`](parseoperator.md), and [`replace_regex()`](replace-regex-function.md).
 
 In KQL, regular expressions must be encoded as [string literals](scalar-data-types/string.md) and follow the string quoting rules. For example, the RE2 regular expression `\A` is represented in KQL as `"\\A"`. The extra backslash indicates that the other backslash is part of the regular expression `\A`.
