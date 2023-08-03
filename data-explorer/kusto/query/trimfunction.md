@@ -44,7 +44,7 @@ print string_to_trim = string_to_trim, trimmed_string = trim(substring,string_to
 
 |string_to_trim|trimmed_string|
 |---|---|
-|--<https://bing.com-->|<https://bing.com>|
+|`--<https://bing.com-->`|`<https://bing.com>`|
 
 The next statement trims all non-word characters from start and end of the string.
 
