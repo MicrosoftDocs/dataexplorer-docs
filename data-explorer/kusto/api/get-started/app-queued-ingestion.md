@@ -75,7 +75,40 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [C\#](#tab/csharp)
 
     ```csharp
+    using Kusto.Data;
+    using Kusto.Data.Net.Client;
 
+    namespace BatchIngest {
+      class BatchIngest {
+        static void Main(string[] args) {
+          string clusterUri = "<your_cluster_uri>";
+          var clusterKcsb = new KustoConnectionStringBuilder(clusterUri)
+            .WithAadUserPromptAuthentication();
+
+          using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb)) {
+            string database = "<your_database>";
+            string table = "MyStormEvents";
+
+            string query = table + " | count";
+            using (var response = kustoClient.ExecuteQuery(database, query, null)) {
+              Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
+              PrintResultsAsValueList(response);
+            }
+          }
+        }
+
+        static void PrintResultsAsValueList(IDataReader response) {
+          while (response.Read()) {
+            for (int i = 0; i < response.FieldCount; i++) {
+              if (response.GetDataTypeName(i) == "Int64")
+                Console.WriteLine("\t{0} - {1}", response.GetName(i), response.IsDBNull(i) ? "None" : response.GetInt64(i));
+              else
+                Console.WriteLine("\t{0} - {1}", response.GetName(i), response.IsDBNull(i) ? "None" : response.GetString(i));
+            }
+          }
+        }
+      }
+    }
     ```
 
     ### [Python](#tab/python)
@@ -95,8 +128,8 @@ In your preferred IDE or text editor, create a project or file named *basic inge
       with KustoClient(cluster_kcsb) as kusto_client:
         database = "<your_database>"
         table = "MyStormEvents"
-        query = table + " | count"
 
+        query = table + " | count"
         response = kusto_client.execute_query(database, query)
         print("\nNumber of rows in " + table + " BEFORE ingestion:")
         print_result_as_value_list(response)
@@ -133,7 +166,13 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [C\#](#tab/csharp)
 
     ```csharp
+    using Kusto.Data.Common;
+    using Kusto.Ingest;
+    using System.Data;
 
+    string ingestUri = "<your_ingestion_uri>";
+    var ingestKcsb = new KustoConnectionStringBuilder(ingestUri)
+      .WithAadUserPromptAuthentication();
     ```
 
     ### [Python](#tab/python)
@@ -175,7 +214,16 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [C\#](#tab/csharp)
 
     ```csharp
-
+    using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
+      string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
+  
+      Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
+      var ingestProps = new KustoIngestionProperties(database, table) {
+        Format = DataSourceFormat.csv,
+        AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
+      };
+      ingestClient.IngestFromStorageAsync(filePath, ingestProps);
+    }
     ```
 
     ### [Python](#tab/python)
@@ -208,12 +256,18 @@ In your preferred IDE or text editor, create a project or file named *basic inge
 1. Query the number of rows in the table after ingesting the file, and show the last row ingested.
 
     > [!NOTE]
-    > To allow time for the ingestion to complete, wait 30 seconds before querying the table.
+    > To allow time for the ingestion to complete, wait 30 seconds before querying the table. For C\# wait 60 seconds to allow time for adding the file to the ingestion queue asynchronously.
 
     ### [C\#](#tab/csharp)
 
     ```csharp
+    Console.WriteLine("\nWaiting 60 seconds for ingestion to complete ...");
+    Thread.Sleep(TimeSpan.FromSeconds(60));
 
+    using (var response = kustoClient.ExecuteQuery(database, query, null)) {
+      Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
+      PrintResultsAsValueList(response);
+    }
     ```
 
     ### [Python](#tab/python)
@@ -230,7 +284,7 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     print("\nNumber of rows in " + table + " AFTER ingesting the file:")
     print_result_as_value_list(response)
 
-    query = table + "| top 1 by EndTime"
+    query = table + " | top 1 by ingestion_time()"
     response = kusto_client.execute_query(database, query)
     print("\nLast ingested row:")
     print_result_as_value_list(response)
@@ -257,7 +311,65 @@ The complete code should look like this:
 ### [C\#](#tab/csharp)
 
 ```csharp
+using Kusto.Data;
+using Kusto.Data.Net.Client;
+using Kusto.Data.Common;
+using Kusto.Ingest;
+using System.Data;
 
+namespace BatchIngest {
+  class BatchIngest {
+    static void Main(string[] args) {
+      string clusterUri = "<your_cluster_uri>";
+      var clusterKcsb = new KustoConnectionStringBuilder(clusterUri)
+        .WithAadUserPromptAuthentication();
+      string ingestUri = "<your_ingestion_uri>";
+      var ingestKcsb = new KustoConnectionStringBuilder(ingestUri)
+        .WithAadUserPromptAuthentication();
+
+      string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
+
+      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb)) {
+        using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
+          string database = "<your_database>";
+          string table = "MyStormEvents";
+
+          string query = table + " | count";
+          using (var response = kustoClient.ExecuteQuery(database, query, null)) {
+            Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
+            PrintResultsAsValueList(response);
+          }
+
+          Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
+          var ingestProps = new KustoIngestionProperties(database, table) {
+            Format = DataSourceFormat.csv,
+            AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
+          };
+          ingestClient.IngestFromStorageAsync(filePath, ingestProps);
+
+          Console.WriteLine("\nWaiting 60 seconds for ingestion to complete ...");
+          Thread.Sleep(TimeSpan.FromSeconds(60));
+
+          using (var response = kustoClient.ExecuteQuery(database, query, null)) {
+            Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
+            PrintResultsAsValueList(response);
+          }
+        }
+      }
+    }
+
+    static void PrintResultsAsValueList(IDataReader response) {
+      while (response.Read()) {
+        for (int i = 0; i < response.FieldCount; i++) {
+          if (response.GetDataTypeName(i) == "Int64")
+            Console.WriteLine("\t{0} - {1}", response.GetName(i), response.IsDBNull(i) ? "None" : response.GetInt64(i));
+          else
+            Console.WriteLine("\t{0} - {1}", response.GetName(i), response.IsDBNull(i) ? "None" : response.GetString(i));
+        }
+      }
+    }
+  }
+}
 ```
 
 ### [Python](#tab/python)
@@ -299,7 +411,7 @@ def main():
       print("\nNumber of rows in " + table + " AFTER ingesting the file:")
       print_result_as_value_list(response)
 
-      query = table + "| top 1 by EndTime"
+      query = table + " | top 1 by ingestion_time()"
       response = kusto_client.execute_query(database, query)
       print("\nLast ingested row:")
       print_result_as_value_list(response)
@@ -398,9 +510,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
     ### [C\#](#tab/csharp)
 
-    ```csharp
-
-    ```
+    No additional packages are required.
 
     ### [Python](#tab/python)
 
@@ -430,7 +540,8 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [C\#](#tab/csharp)
 
     ```csharp
-
+    string singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
+    var stringStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(singleLine));
     ```
 
     ### [Python](#tab/python)
@@ -461,7 +572,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [C\#](#tab/csharp)
 
     ```csharp
-
+    ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
     ```
 
     ### [Python](#tab/python)
@@ -491,7 +602,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [C\#](#tab/csharp)
 
     ```csharp
-
+    ingestClient.IngestFromStreamAsync(stringStream, ingestProps);
     ```
 
     ### [Python](#tab/python)
@@ -522,6 +633,40 @@ An outline of the updated code should look like this:
 ### [C\#](#tab/csharp)
 
 ```csharp
+using Kusto.Data;
+using Kusto.Data.Net.Client;
+using Kusto.Data.Common;
+using Kusto.Ingest;
+using System.Data;
+
+namespace BatchIngest {
+  class BatchIngest {
+    static void Main(string[] args) {
+      // ...
+      string singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
+      var stringStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(singleLine));
+
+      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb)) {
+        using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
+          string database = "<your_database>";
+          string table = "MyStormEvents";
+
+          // ...
+
+          Console.WriteLine("\nIngesting data from memory:");
+          ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
+          ingestClient.IngestFromStreamAsync(stringStream, ingestProps);
+
+          // ...
+        }
+      }
+    }
+
+    static void PrintResultsAsValueList(IDataReader response) {
+      // ...
+    }
+  }
+}
 ```
 
 ### [Python](#tab/python)
@@ -603,9 +748,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
     ### [C\#](#tab/csharp)
 
-    ```csharp
-
-    ```
+    No additional packages are required.
 
     ### [Python](#tab/python)
 
@@ -634,7 +777,10 @@ For example, you can modify the app replacing the *ingest from memory* code with
     ### [C\#](#tab/csharp)
 
     ```csharp
+    string blobUri = "<your_blob_uri>";
 
+    ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
+    ingestClient.IngestFromStorageAsync(blobUri, ingestProps);
     ```
 
     ### [Python](#tab/python)
@@ -642,9 +788,8 @@ For example, you can modify the app replacing the *ingest from memory* code with
     ```python
     blob_uri = "<your_blob_uri>"
 
-    print("\nIngesting data from a blob:")
-    blob_descriptor = BlobDescriptor(blob_uri)
     ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
+    blob_descriptor = BlobDescriptor(blob_uri)
     ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
     ```
 
@@ -669,6 +814,40 @@ An outline of the updated code should look like this:
 ### [C\#](#tab/csharp)
 
 ```csharp
+using Kusto.Data;
+using Kusto.Data.Net.Client;
+using Kusto.Data.Common;
+using Kusto.Ingest;
+using System.Data;
+
+namespace BatchIngest {
+  class BatchIngest {
+    static void Main(string[] args) {
+      // ...
+      string blobUri = "<your_blob_uri>";
+
+
+      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb)) {
+        using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
+          string database = "<your_database>";
+          string table = "MyStormEvents";
+
+          // ...
+
+          Console.WriteLine("\nIngesting data from memory:");
+          ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
+          ingestClient.IngestFromStorageAsync(blobUri, ingestProps);
+
+          // ...
+        }
+      }
+    }
+
+    static void PrintResultsAsValueList(IDataReader response) {
+      // ...
+    }
+  }
+}
 ```
 
 ### [Python](#tab/python)

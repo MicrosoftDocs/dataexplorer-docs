@@ -416,8 +416,7 @@ int columnNoState = response.GetOrdinal("State");
 int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
 Console.WriteLine("Daily tornado damages over 100,000,000$:");
 
-while (response.Read())
-{
+while (response.Read()) {
   Console.WriteLine("{0} - {1}, {2}",
     response.GetDateTime(columnNoStartTime),
     response.GetString(columnNoState),
@@ -483,8 +482,7 @@ crp.ClientRequestId = "QueryDemo" + Guid.NewGuid().ToString();
 // Set the query timeout to 1 minute
 crp.SetOption(ClientRequestProperties.OptionServerTimeout, "1m");
 
-using (var response = kustoClient.ExecuteQuery(database, query, crp))
-{
+using (var response = kustoClient.ExecuteQuery(database, query, crp)) {
 }
 ```
 

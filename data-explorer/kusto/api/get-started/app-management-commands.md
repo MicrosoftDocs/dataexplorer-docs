@@ -23,7 +23,7 @@ In this article, you learn how to:
 
 In your preferred IDE or text editor, create a project or file named *management commands* using the convention appropriate for your preferred language. Then add the following code:
 
-1. Create a client app that connects your cluster. Replace the `<your_cluster>` placeholder with your cluster name.
+1. Create a client app that connects your cluster. Replace the `<your_cluster_uri>` placeholder with your cluster name.
 
     ### [C\#](#tab/csharp)
 
@@ -37,7 +37,7 @@ In your preferred IDE or text editor, create a project or file named *management
     namespace ManagementCommands {
       class ManagementCommands {
         static void Main(string[] args) {
-          var clusterUri = "https://<your_cluster>.kusto.windows.net/";
+          var clusterUri = "<your_cluster_uri>";
           var kcsb = new KustoConnectionStringBuilder(clusterUri)
               .WithAadUserPromptAuthentication();
 
@@ -54,7 +54,7 @@ In your preferred IDE or text editor, create a project or file named *management
     from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
 
     def main():
-      cluster_uri = "https://<your_cluster>.kusto.windows.net"
+      cluster_uri = "<your_cluster_uri>"
       kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
 
       with KustoClient(kcsb) as kusto_client:
@@ -70,7 +70,7 @@ In your preferred IDE or text editor, create a project or file named *management
     const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
 
     async function main() {
-      const clusterUri = "https://<your_cluster>.kusto.windows.net";
+      const clusterUri = "<your_cluster_uri>";
       const kcsb = kustoConnectionStringBuilder.withUserPrompt(clusterUri);
 
       const kustoClient = new kustoLibraryClient(kcsb);
@@ -94,7 +94,7 @@ In your preferred IDE or text editor, create a project or file named *management
     public class managementCommands {
       public static void main(String[] args) throws Exception {
         try {
-          String clusterUri = "https://<your_cluster>.kusto.windows.net/";
+          String clusterUri = "<your_cluster_uri>";
           ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
 
           try (Client kustoClient = ClientFactory.createClient(kcsb)) {
@@ -261,8 +261,7 @@ In your preferred IDE or text editor, create a project or file named *management
     > You'll use the `ExecuteControlCommand` method to run the command.
 
     ```csharp
-    using (var response = kustoClient.ExecuteControlCommand(database, command, null))
-    {
+    using (var response = kustoClient.ExecuteControlCommand(database, command, null)) {
       PrintResultsAsValueList(command, response);
     }
     ```
@@ -306,8 +305,7 @@ The complete code should look like this:
 using Kusto.Data;
 using Kusto.Data.Net.Client;
 
-namespace ManagementCommands
-{
+namespace ManagementCommands {
   class ManagementCommands {
     static void Main(string[] args) {
       string clusterUri = "https://<your_cluster>.kusto.windows.net";
@@ -629,8 +627,7 @@ For example, you can modify the app to [display your database's retention policy
 // Show the database retention policy (drop some columns from the result)
 command = @$".show database {database} policy retention | project-away ChildEntities, EntityType";
 
-using (var response = kusto_client.ExecuteControlCommand(database, command, null))
-{
+using (var response = kusto_client.ExecuteControlCommand(database, command, null)) {
   PrintResultsAsValueList(command, response);
 }
 ```
