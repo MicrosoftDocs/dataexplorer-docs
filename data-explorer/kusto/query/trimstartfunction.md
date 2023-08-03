@@ -19,7 +19,7 @@ Removes leading match of the specified regular expression.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | string | &check; | The string or [regular expression](re2-library.md) to be trimmed from the beginning of *source*.|
+| *regex* | string | &check; | The string or [regular expression](re2.md) to be trimmed from the beginning of *source*.|
 | *source* | string | &check; | The source string from which to trim *regex*.|
 
 ## Returns
@@ -43,7 +43,7 @@ print string_to_trim = string_to_trim,trimmed_string = trim_start(substring,stri
 
 |string_to_trim|trimmed_string|
 |---|---|
-|https://bing.com|bing.com|
+|<https://bing.com>|bing.com|
 
 The next statement trims all non-word characters from the beginning of the string.
 

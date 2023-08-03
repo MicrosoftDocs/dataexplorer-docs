@@ -20,7 +20,7 @@ Removes all leading and trailing matches of the specified regular expression.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | string | &check; | The string or [regular expression](re2-library.md) to be trimmed from *source*.|
+| *regex* | string | &check; | The string or [regular expression](re2.md) to be trimmed from *source*.|
 | *source* | string | &check; | The source string from which to trim *regex*.|
 
 ## Returns
@@ -44,7 +44,7 @@ print string_to_trim = string_to_trim, trimmed_string = trim(substring,string_to
 
 |string_to_trim|trimmed_string|
 |---|---|
-|--https://bing.com--|https://bing.com|
+|--<https://bing.com-->|<https://bing.com>|
 
 The next statement trims all non-word characters from start and end of the string.
 
