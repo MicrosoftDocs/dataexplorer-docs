@@ -687,4 +687,4 @@ Result:
 > [Create an app to ingest data using the batching manager](app-batch-ingestion.md) -->
 
 > [!div class="nextstepaction"]
-> [Create an app to ingest data using the batching manager](app-batch-ingestion.md)
+> [Create an app to ingest data using the batching manager](app-queued-ingestion.md)
