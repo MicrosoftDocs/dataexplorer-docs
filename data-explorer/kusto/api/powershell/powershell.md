@@ -20,7 +20,7 @@ To get the Kusto .NET client libraries for scripting with PowerShell:
 
 1. Download [`Microsoft.Azure.Kusto.Tools`](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
 1. Right-click on the downloaded package. From the menu, select your archiving tool and extract the package contents. If the archiving tool isn't visible from the menu, select **Show more options**. The extraction results in multiple folders, one of which is named *tools*.
-1. Inside the *tools* folder, there are different subfolders catering to different PowerShell versions. For PowerShell version 5.1, use the *net472* folder. For PowerShell version 7 or later, select an appropriate version folder from the available options. Copy the path of the chosen version folder.
+1. Inside the *tools* folder, there are different subfolders catering to different PowerShell versions. For PowerShell version 5.1, use the *net472* folder. For PowerShell version 7 or later, use any of the version folders. Copy the path of the relevant folder.
 1. From PowerShell, load the library by calling `[System.Reflection.Assembly]::LoadFrom("`*path*`\Kusto.Data.dll")`. Replace *path* with the copied folder path from the previous step.
 
 Once the .NET assemblies are loaded, use a [Kusto connection string](../connection-strings/kusto.md) to establish a connection and run queries and commands. For guidance, see [Examples](#examples).
