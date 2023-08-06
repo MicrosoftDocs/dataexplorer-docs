@@ -73,7 +73,7 @@ $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder ($clusterUrl, $databa
 |--|--|--|
 | False | v4.0.30319 | C:\Downloads\tools\net472\Kusto.Data.dll |
 
-### Example: Run an admin command
+### Run an admin command
 
 ```powershell
 $adminProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslAdminProvider($kcsb)
@@ -91,7 +91,7 @@ Write-Host "IsHealthy = $isHealthy"
 IsHealthy = True
 ```
 
-### Example: Run a query
+### Run a query
 
 ```powershell
 $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvider($kcsb)
