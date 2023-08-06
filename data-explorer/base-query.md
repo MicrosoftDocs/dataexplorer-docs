@@ -56,7 +56,7 @@ The following indicators can be viewed in the base queries card:
 
 ## Use a base query
 
-Base queries can be used in dashboard tiles, parameters, and other base queries. Since these queries begin with a data source, use the base query at the beginning of a query. Recall the base query by entering ['*variablename*'] in the query editor.
+Base queries can be used in dashboard tiles, parameters, and other base queries. Use the base query by entering ['*variablename*'] in the query editor.
 
 :::image type="content" source="media/base-query/use-base-query.png" alt-text="Screenshot of using a base query in Azure Data Explorer dashboards." lightbox="media/base-query/use-base-query.png":::
 
