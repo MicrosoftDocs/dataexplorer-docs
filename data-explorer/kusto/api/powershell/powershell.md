@@ -19,7 +19,7 @@ PowerShell's built-in integration with arbitrary (non-PowerShell) .NET libraries
 To get the Kusto .NET client libraries for scripting with PowerShell:
 
 1. Download [`Microsoft.Azure.Kusto.Tools`](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
-1. Right-click on the downloaded package to open an extended menu. Select your archiving tool, like 7-zip, to extract the package contents. If the archiving tool isn't visible, select **Show more options**. This action extracts multiple folders, one of which is named *tools*.
+1. Right-click on the downloaded package to open an extended menu. Select your archiving tool, like 7-zip, and extract the package contents. This action extracts multiple folders, one of which is named *tools*. If the archiving tool isn't visible from the menu, you may need to select **Show more options**.
 1. Inside the *tools* folder, there are different subfolders catering to different PowerShell versions. For PowerShell version 5.1, use the *net472* folder. For PowerShell version 7 or later, select an appropriate version folder from the available options. Copy the path of the chosen version folder.
 1. From PowerShell, load the library by calling `[System.Reflection.Assembly]::LoadFrom("`*path*`\Kusto.Data.dll")`. Replace *path* with the copied folder path from the previous step.
 
