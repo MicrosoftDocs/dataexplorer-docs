@@ -3,11 +3,11 @@ title: Dashboard-specific visuals
 description: Visualizations available in Azure Data Explorer web UI or dashboards
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 08/02/2023
+ms.date: 08/06/2023
 ---
 # Dashboard-specific visuals
 
-The following visualizations are available only in Azure Data Explorer dashboards or [web UI](add-query-visualization.md). For visualizations available within the render operator, see [render operator](kusto/query/renderoperator.md). To learn how to customize visuals, see [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
+The following visualizations are available only in [Azure Data Explorer dashboards](azure-data-explorer-dashboards.md) or [web UI](add-query-visualization.md). For visualizations available within the render operator, see [render operator](kusto/query/renderoperator.md). To learn how to customize visuals, see [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
 
 For general information on dashboards in Azure Data Explorer, see [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
 
@@ -16,6 +16,8 @@ For general information on dashboards in Azure Data Explorer, see [Visualize dat
 A funnel chart visualizes a linear process that has sequential, connected stages. Each funnel stage represents a percentage of the total. So, in most cases, a funnel chart is shaped like a funnel, with the first stage being the largest, and each subsequent stage smaller than its predecessor.
 
 The following example uses data from the `ContosoSales` database from the publicly available [help cluster](https://dataexplorer.azure.com/clusters/help) to show the number of sales for washers and dryers in Canada out of the total sum of sales in 2007.
+
+### Example query
 
 ```kusto
 
@@ -63,6 +65,8 @@ To render a heatmap, the query must generate a table with three columns. The col
 > [!NOTE]
 > We recommend specifying each data field, instead of letting the tool infer the data source.
 
+### Example query
+
 ```kusto
 nyc_taxi
 | where passenger_count < 10
@@ -77,6 +81,8 @@ To render a Plotly visual, the query must generate a table with a single string 
 
 * Dynamically create the string in Python using the [Plotly package](https://plotly.com/python/getting-started/). This process uses the [python() plugin](kusto/query/pythonplugin.md).
 * Retrieve the string from a table that stores pre-cooked Plotly JSON templates. Update the required data fields using KQL string manipulation functions.
+
+### Example query
 
 The following KQL query uses inline Python to create the 3D scatter chart:
 
