@@ -35,7 +35,7 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
 1. Enter a **Variable name** to be used as reference to this base query.  
 
     > [!NOTE]
-    > We suggest starting each base query name with an underscore (_) for easy use later.
+    > We suggest starting each base query name with an underscore (_) for easy use later, and so as not to conflict with Kusto-defined names. For more information, see [naming your entities](kusto/query/schema-entities/entity-names.md#naming-your-entities-to-avoid-collisions-with-kusto-language-keywords)
 
     :::image type="content" source="media/base-query/create-base-query.png" alt-text="Screenshot of create base query in Azure Data Explorer dashboards.":::
 
@@ -45,7 +45,7 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
 
 ## Manage base queries
 
-Within the base query pane, you can view the list of existing base queries. In each base query card, select the pencil widget to edit the base query, or select the **More [...]** menu to Duplicate, Delete, or move the base query. Base query order can also be changed by dragging and dropping the card.
+Within the base query pane, you can view the list of existing base queries. In each base query card, select the pencil widget to edit the base query, or select the **More [...]** menu to duplicate, delete, or move the base query. Base query order can also be changed by dragging and dropping the card.
 
 The following indicators can be viewed in the base queries card:
 
