@@ -33,7 +33,7 @@ Once the .NET assemblies are loaded, use a [Kusto connection string](../connecti
 #  Part 1 of 3
 #  ------------
 #  Packages location - This is an example of the location from where you extract the Microsoft.Azure.Kusto.Tools package
-#  Please make sure you load the types from a local folder and not from a remote share
+#  Please make sure you load the types from a local directory and not from a remote share
 #  Please make sure you load the version compatible with your PowerShell version (see explanations above)
 #  Use `dir "$packagesRoot\*" | Unblock-File` to make sure all these files can be loaded and executed
 $packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\tools\net472"
