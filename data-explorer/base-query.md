@@ -49,7 +49,7 @@ Within the base query pane, you can view the list of existing base queries. In
 
 The following indicators can be viewed in the base queries card:
 
-* Base query display name
+* Base query variable name
 * Number of tiles in which the base query was used
 * Number of parameters in which the base query was used
 * Number of base queries in which the base query was used
