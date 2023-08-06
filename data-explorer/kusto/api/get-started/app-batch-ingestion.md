@@ -1,11 +1,11 @@
 ---
-title:  'Create an app to ingest data using the batching manager'
-description: Learn how to create an app to ingest data using the batching manager of the Kusto client libraries.
+title:  Create an app to get data using batching ingestion
+description: Learn how to create an app to get data using batching ingestion of the Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 07/31/2023
 ---
-# Create an app to ingest data using the batching manager
+# Create an app to get data using batching ingestion
 
 Kusto is capable of handling mass data intake by optimizing and batching ingested data via its batching manager. The batching manager aggregates ingested data before it reaches its target table, allowing for more efficient processing and improved performance. Batching is typically done in bulks of 1 GB of raw data, 1000 individual files, or by a default time out of 5 minutes. Batching policies can be updated at the database and table levels, commonly to lower the batching time and reduce latency. For more information about ingestion batching, see [IngestionBatching policy](../../management/batchingpolicy.md) and [Change table level ingestion batching policy programmatically](app-management-commands.md#change-the-table-level-ingestion-batching-policy).
 
@@ -148,7 +148,35 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
+    const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+    const {InteractiveBrowserCredential} = require("@azure/identity");
 
+    async function main() {
+      const credentials = new InteractiveBrowserCredential();
+      const clusterUri = "<your_cluster_uri>";
+      const clusterKcsb = KustoConnectionStringBuilder.withAadUserPromptAuthentication(clusterUri, credentials);
+
+      const kustoClient = new Client(clusterKcsb);
+
+      const database = "<your_database>";
+      const table = "MyStormEvents";
+
+      const query = table + " | count";
+      let response = await kustoClient.execute(database, query);
+      console.log("\nNumber of rows in " + table + " BEFORE ingestion:");
+      printResultAsValueList(response);
+    }
+
+    function printResultsAsValueList(response) {
+      let cols = response.primaryResults[0].columns;
+
+      for (row of response.primaryResults[0].rows()) {
+        for (col of cols)
+          console.log("\t", col.name, "-", row.getValueAt(col.ordinal) != null ? row.getValueAt(col.ordinal).toString() : "None")
+      }
+    }
+
+    main();
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -189,7 +217,11 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
+    const path = require('path');
+    const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
 
+    const ingestUri = "<your_ingestion_uri>";
+    const ingestKcsb = KustoConnectionStringBuilder.withTokenCredential(ingestUri, credentials);
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -240,7 +272,17 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
+    const ingestClient = new IngestClient(ingestKcsb);
+    const filePath = path.join(__dirname, "stormevents.csv");
+    console.log("\nIngesting data from file: \n\t " + filePath);
 
+    const ingestProps = new IngestionProperties({
+      database: database,
+      table: table,
+      format: DataFormat.CSV,
+      ignoreFirstRecord: true
+    });
+    await ingestClient.ingestFromFile(filePath, ingestProps);
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -293,7 +335,22 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
+    console.log("\nWaiting 30 seconds for ingestion to complete ...");
+    await sleep(30000);
 
+    response = await kustoClient.execute(database, queryCount);
+    console.log("\nNumber of rows in " + table + " AFTER ingesting the file:");
+    printResultsAsValueList(response);
+  
+    query = table + " | top 1 by ingestion_time()"
+    response = await kustoClient.execute(database, query);
+    console.log("\nLast ingested row:");
+    printResultsAsValueList(response);
+
+    // Add the sleep function after the main method
+    function sleep(time) {
+      return new Promise(resolve => setTimeout(resolve, time));
+    }
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -430,7 +487,65 @@ if __name__ == "__main__":
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
+const path = require('path');
+const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
+const {InteractiveBrowserCredential} = require("@azure/identity");
 
+async function main() {
+  const credentials = new InteractiveBrowserCredential();
+  const clusterUri = "<your_cluster_uri>";
+  const clusterKcsb = KustoConnectionStringBuilder.withTokenCredential(clusterUri, credentials);
+  const ingestUri = "<your_ingestion_uri>";
+  const ingestKcsb = KustoConnectionStringBuilder.withTokenCredential(ingestUri, credentials);
+  
+  const kustoClient = new Client(clusterKcsb);
+  const ingestClient = new IngestClient(ingestKcsb);
+
+  const database = "<your_database>";
+  const table = "MyStormEventsJS";
+
+  const filePath = path.join(__dirname, "stormevents.csv");
+
+  const query = table + ` | count`;
+  let response = await kustoClient.execute(database, query);
+  printResultsAsValueList(response);
+
+  console.log("\nIngesting data from file: \n\t " + filePath);
+  const ingestProps = new IngestionProperties({
+    database: database,
+    table: table,
+    format: DataFormat.CSV,
+    ignoreFirstRecord: true
+  });
+  await ingestClient.ingestFromFile(filePath, ingestProps);
+
+  console.log("\nWaiting 30 seconds for ingestion to complete ...");
+  await sleep(30000);
+
+  response = await kustoClient.execute(database, queryCount);
+  console.log("\nNumber of rows in " + table + " AFTER ingesting the file:");
+  printResultsAsValueList(response);
+
+  query = table + " | top 1 by ingestion_time()"
+  response = await kustoClient.execute(database, query);
+  console.log("\nLast ingested row:");
+  printResultsAsValueList(response);
+}
+
+function sleep(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+function printResultsAsValueList(response) {
+  let cols = response.primaryResults[0].columns;
+
+  for (row of response.primaryResults[0].rows()) {
+    for (col of cols)
+      console.log("\t", col.name, "-", row.getValueAt(col.ordinal) != null ? row.getValueAt(col.ordinal).toString() : "None")
+  }
+}
+
+main();
 ```
 
 <!-- ### [Go](#tab/go) -->
@@ -522,7 +637,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-
+    const {Readable} = require("stream");
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -554,7 +669,10 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-
+    const singleLine = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"';
+    const stringStream = new Readable();
+    stringStream.push(singleLine);
+    stringStream.push(null);
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -584,7 +702,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-
+    ingestProps.ignoreFirstRecord = false;
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -615,7 +733,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-
+    await ingestClient.ingestFromStream(stringStream, ingestProps);
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -696,12 +814,53 @@ def main():
       ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
 
       # ...
+
+  def print_result_as_value_list(response):
+    # ...
+
+if __name__ == "__main__":
+  main()
 ```
 
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
+const path = require('path');
+const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
+const {InteractiveBrowserCredential} = require("@azure/identity");
+const {Readable} = require("stream");
 
+async function main() {
+  // ...
+  const singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
+  const stringStream = Readable.from(singleLine);
+  stringStream.push(singleLine);
+  stringStream.push(null);
+
+  const kustoClient = new Client(clusterKcsb);
+  const ingestClient = new IngestClient(ingestKcsb);
+
+  const database = "<your_database>"
+  const table = "MyStormEvents"
+
+  // ...
+
+  console.log("\nIngesting data from memory:");
+  ingestProps.ignoreFirstRecord = false;
+  await ingestClient.ingestFromStream(stringStream, ingestProps);
+
+  // ...
+}
+
+function sleep(time) {
+  // ...
+}
+function printResultsAsValueList(response) {
+  // ...
+}
+
+main();
 ```
 
 <!-- ### [Go](#tab/go) -->
@@ -759,7 +918,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-
+    No additional packages are required.
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -796,7 +955,10 @@ For example, you can modify the app replacing the *ingest from memory* code with
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
+    const blobUri = "<your_blob_uri>";
 
+    ingestProps.ignoreFirstRecord = true;
+    await ingestClient.ingestFromBlob(blobUri, ingestProps);
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -875,12 +1037,51 @@ def main():
       ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
 
       # ...
+
+  def print_result_as_value_list(response):
+    # ...
+
+if __name__ == "__main__":
+  main()
 ```
 
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
 
+const path = require('path');
+const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
+const {InteractiveBrowserCredential} = require("@azure/identity");
+const {Readable} = require("stream");
+
+async function main() {
+  // ...
+  const blobUri = "<your_blob_uri>";
+
+  const kustoClient = new Client(clusterKcsb);
+  const ingestClient = new IngestClient(ingestKcsb);
+
+  const database = "<your_database>"
+  const table = "MyStormEvents"
+
+  // ...
+
+  console.log("\nIngesting data from a blob:");
+  ingestProps.ignoreFirstRecord = true;
+  await ingestClient.ingestFromBlob(blobUri, ingestProps);
+
+  // ...
+}
+
+function sleep(time) {
+  // ...
+}
+function printResultsAsValueList(response) {
+  // ...
+}
+
+main();
 ```
 
 <!-- ### [Go](#tab/go) -->

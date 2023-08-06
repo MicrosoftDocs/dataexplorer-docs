@@ -66,14 +66,13 @@ In your preferred IDE or text editor, create a project or file named *management
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    const kustoLibraryClient = require("azure-kusto-data").Client;
-    const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+    const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 
     async function main() {
       const clusterUri = "<your_cluster_uri>";
-      const kcsb = kustoConnectionStringBuilder.withUserPrompt(clusterUri);
+      const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
 
-      const kustoClient = new kustoLibraryClient(kcsb);
+      const kustoClient = new Client(kcsb);
     }
 
     main();
@@ -394,13 +393,12 @@ if __name__ == "__main__":
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
-const kustoLibraryClient = require("azure-kusto-data").Client;
-const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 
 async function main() {
   const clusterUri = "https://<your_cluster>.kusto.windows.net";
-  const kcsb = kustoConnectionStringBuilder.withUserPrompt(clusterUri);
-  const kustoClient = new kustoLibraryClient(kcsb);
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
+  const kustoClient = new Client(kcsb);
 
   const database = "<your_database>";
   const table = "MyStormEvents";
@@ -687,4 +685,4 @@ Result:
 > [Create an app to ingest data using the batching manager](app-batch-ingestion.md) -->
 
 > [!div class="nextstepaction"]
-> [Create an app to ingest data using the batching manager](app-queued-ingestion.md)
+> [Create an app to get data using batching ingestion](app-batch-ingestion.md)

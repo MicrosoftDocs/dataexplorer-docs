@@ -64,14 +64,13 @@ In your preferred IDE or text editor, create a project or file named *basic quer
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    const kustoLibraryClient = require("azure-kusto-data").Client;
-    const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+    const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 
     async function main() {
       const clusterUri = "https://help.kusto.windows.net";
-      const kcsb = kustoConnectionStringBuilder.withUserPrompt(clusterUri);
+      const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
 
-      const kusto_client = new kustoLibraryClient(kcsb);
+      const kusto_client = new Client(kcsb);
     }
 
     main();
@@ -290,13 +289,12 @@ if __name__ == "__main__":
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
-const kustoLibraryClient = require("azure-kusto-data").Client;
-const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 
 async function main() {
   const cluster_uri = "https://help.kusto.windows.net";
-  const kcsb = kustoConnectionStringBuilder.withUserPrompt(cluster_uri);
-  const kustoClient = new kustoLibraryClient(kcsb);
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
+  const kustoClient = new Client(kcsb);
 
   const database = "Samples";
   const query = `StormEvents
@@ -749,15 +747,13 @@ if __name__ == "__main__":
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
-const kustoLibraryClient = require("azure-kusto-data").Client;
-const ClientRequestProperties = require("azure-kusto-data").ClientRequestProperties;
-const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+const {Client, KustoConnectionStringBuilder, ClientRequestProperties} = require("azure-kusto-data");
 const uuid = require('uuid');
 
 async function main() {
   const clusterUri = "https://help.kusto.windows.net";
   const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
-  const kustoClient = new kustoLibraryClient(kcsb);
+  const kustoClient = new Client(kcsb);
 
   const database = "Samples";
   const query = `declare query_parameters(event_type:string, daily_damage:int);
