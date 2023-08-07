@@ -13,6 +13,8 @@ The natural logarithm is the base-e logarithm: the inverse of the natural expone
 
 `log(`*number*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

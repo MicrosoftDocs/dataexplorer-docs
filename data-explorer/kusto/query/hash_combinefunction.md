@@ -13,6 +13,8 @@ Combines hash values of two or more hashes.
 
 `hash_combine(`*h1* `,` *h2* [`,` *h3* ...]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

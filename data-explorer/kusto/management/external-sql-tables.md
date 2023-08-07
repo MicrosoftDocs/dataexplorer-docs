@@ -32,6 +32,8 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 (`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema*`)` `kind` `=` `sql` [ `table` `=` *SqlTableName* ] `(`*SqlConnectionString*`)` [`with` `(` [ `sqlDialect` `=` *SqlDialect* ] `,` [ *Property* `,` ... ]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -60,7 +62,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 To interact with an external SQL table from Azure Data Explorer, you must specify authentication means as part of the *SqlConnectionString*. The *SqlConnectionString* defines the resource to access and its authentication information.
 
-Microsoft SQL Server external tables support Azure AD-integrated (impersonation) authentication, managed identity authentication, and username and password authentication. MySQL, PostgreSQL, and Cosmos DB tables support only username and password authentication. For more information, see [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md).
+For more information, see [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md).
 
 > [!NOTE]
 > If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by username/password or managed identities.

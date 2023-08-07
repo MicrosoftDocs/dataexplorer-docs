@@ -19,6 +19,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.clear` `cluster` `cache` `external-artifacts` `(` *ArtifactURI* [`,` ... ] `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

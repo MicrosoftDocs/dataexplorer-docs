@@ -13,6 +13,8 @@ Returns the number of set bits in the binary representation of a number.
 
 `bitset_count_ones(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

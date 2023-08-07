@@ -23,6 +23,8 @@ The `http_request_post` plugin sends an HTTP POST request and converts the respo
 
 `evaluate` `http_request_post` `(` *Uri* [`,` *RequestHeaders* [`,` *Options* [`,` *Content*]]] `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

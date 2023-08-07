@@ -15,6 +15,8 @@ Encodes a string as base64 string.
 
 `base64_encode_tostring(`*string*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

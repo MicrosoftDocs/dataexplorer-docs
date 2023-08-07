@@ -44,6 +44,12 @@ The soft delete process is performed using the following steps:
 * Soft delete is executed against your engine endpoint: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-access-control.md) permissions on the relevant database.
 
 * Deleting records from a table that is a source table of a [materialized view](../management/materialized-views/materialized-view-overview.md), can have an impact on the materialized view. If records being deleted were not yet processed by the [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work), these records will be missing in the view, since they will never be processed. Similarly, the deletion will not have an impact on the materialized view if the records have already been processed.
+
+* Limitations on the predicate:
+  * It must contain at least one `where` operator.
+  * It can only reference the table from which records are to be deleted.
+  * Only the following operators are allowed: `extend`, `order`, `project`, `take` and `where`. Within `toscalar()`, the `summarize` operator is also allowed.
+
 ## Deletion performance
 
 The main considerations that can impact the [deletion process](#deletion-process) performance are:
@@ -70,5 +76,3 @@ In most cases, the deletion of records won't result in a change of COGS.
 * There will be no decrease, because no records are actually deleted. Records are only marked as deleted using a hidden column of type `bool`, the size of which is negligible.
 * In most cases, there will be no increase because the `.delete` operation doesn't require the provisioning of extra resources.
 * In some cases, extents in which the majority of the records are deleted are periodically compacted by replacing them with new extents that only contain the records that haven't been deleted. This causes the deletion of the old storage artifacts that contain a large number of deleted records. The new extents are smaller and therefore consume less space in both the Storage account and in the hot cache. However, in most cases, the effect of this on COGS is negligible.
-
-

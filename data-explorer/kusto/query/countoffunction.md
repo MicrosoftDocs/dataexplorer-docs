@@ -13,12 +13,14 @@ Counts occurrences of a substring in a string. Plain string matches may overlap;
 
 `countof(`*source*`,` *search* [`,` *kind*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *source* | string | &check; | The value to search. |
-| *search* | string | &check; | The value or [regular expression](./re2.md) to match inside *source*. |
+| *search* | string | &check; | The value or [regular expression](re2.md) to match inside *source*. |
 | *kind* | string | | The value `normal` or `regex`. The default is `normal`. |
 
 ## Returns

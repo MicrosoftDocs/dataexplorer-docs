@@ -13,6 +13,8 @@ Returns details of the principal running the query.
 
 `current_principal_details()`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 The details of the current principal as a `dynamic`.

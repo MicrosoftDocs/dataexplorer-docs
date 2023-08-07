@@ -15,6 +15,8 @@ Checks whether an IPv6 string address is in any of the specified IPv6 address ra
 
 `ipv6_is_in_any_range(`*Ipv6Address* `,` *Ipv6Ranges* `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

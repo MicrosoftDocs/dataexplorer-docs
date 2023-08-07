@@ -20,6 +20,8 @@ Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierar
 
 `geo_point_to_s2cell(`*longitude*`,` *latitude*`,` [ *level* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

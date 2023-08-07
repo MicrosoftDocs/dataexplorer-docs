@@ -13,6 +13,8 @@ Converts a scalar value of type `dynamic` to a canonical `string` representation
 
 `dynamic_to_json(`*expr*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

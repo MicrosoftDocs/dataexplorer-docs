@@ -15,6 +15,8 @@ Element-wise iif function on dynamic arrays.
 
 `array_iff(`*condition_array*, *when_true*, *when_false*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
