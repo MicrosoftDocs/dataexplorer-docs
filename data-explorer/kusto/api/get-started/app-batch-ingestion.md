@@ -183,8 +183,43 @@ In your preferred IDE or text editor, create a project or file named *basic inge
 
     ### [Java](#tab/java)
 
-    ```java
+    > [!NOTE]
+    > The Java SDK doesn't currently support both clients sharing the same user prompt authenticator, resulting in a user prompt for each client.
 
+    ```java
+    import com.microsoft.azure.kusto.data.Client;
+    import com.microsoft.azure.kusto.data.ClientFactory;
+    import com.microsoft.azure.kusto.data.KustoOperationResult;
+    import com.microsoft.azure.kusto.data.KustoResultSetTable;
+    import com.microsoft.azure.kusto.data.KustoResultColumn;
+    import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
+
+    public class batchIngestion {
+      public static void main(String[] args) throws Exception {
+        String clusterUri = "<your_cluster_uri>";
+        ConnectionStringBuilder clusterKcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
+
+        try (Client kustoClient = ClientFactory.createClient(clusterKcsb)) {
+          String database = "<your_database>";
+          String table = "MyStormEvents";
+
+          String query = table + " | count";
+          KustoOperationResult results = kustoClient.execute(database, query);
+          KustoResultSetTable primaryResults = results.getPrimaryResults();
+          System.out.println("\nNumber of rows in " + table + " BEFORE ingestion:");
+          printResultAsValueList(primaryResults);
+        }
+      }
+
+      public static void printResultsAsValueList(KustoResultSetTable results) {
+        while (results.next()) {
+          KustoResultColumn[] columns = results.getColumns();
+          for (int i = 0; i < columns.length; i++) {
+            System.out.println("\t" + columns[i].getColumnName() + " - " + (results.getObject(i) == null ? "None" : results.getString(i)));
+          }
+        }
+      }
+    }
     ```
 
     ---
@@ -206,7 +241,6 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [Python](#tab/python)
 
     ```python
-    import os
     from azure.kusto.data import DataFormat
     from azure.kusto.ingest import QueuedIngestClient, IngestionProperties
 
@@ -217,7 +251,6 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    const path = require('path');
     const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
 
     const ingestUri = "<your_ingestion_uri>";
@@ -229,7 +262,13 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [Java](#tab/java)
 
     ```java
+    import com.microsoft.azure.kusto.ingest.IngestClientFactory;
+    import com.microsoft.azure.kusto.ingest.IngestionProperties;
+    import com.microsoft.azure.kusto.ingest.IngestionProperties.DataFormat;
+    import com.microsoft.azure.kusto.ingest.QueuedIngestClient;
 
+    String ingestUri = "<your_ingestion_uri>";
+    ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
     ```
 
     ---
@@ -261,6 +300,8 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [Python](#tab/python)
 
     ```python
+    import os
+
     with QueuedIngestClient(ingest_kcsb) as ingest_client:
         file_path = os.path.join(os.path.dirname(__file__), "stormevents.csv")
         print("\nIngesting data from file: \n\t " + file_path)
@@ -272,6 +313,8 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
+    const path = require('path');
+
     const ingestClient = new IngestClient(ingestKcsb);
     const filePath = path.join(__dirname, "stormevents.csv");
     console.log("\nIngesting data from file: \n\t " + filePath);
@@ -290,7 +333,17 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [Java](#tab/java)
 
     ```java
+    import com.microsoft.azure.kusto.ingest.source.FileSourceInfo;
 
+    try (QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
+      FileSourceInfo fileSourceInfo = new FileSourceInfo(System.getProperty("user.dir") + "\\stormevents.csv", 0);
+
+      System.out.println("\nIngesting data from file: \n\t " + fileSourceInfo.toString());
+      IngestionProperties ingestProps = new IngestionProperties(database, table);
+      ingestProps.setDataFormat(DataFormat.CSV);
+      ingestProps.setIgnoreFirstRecord(true);
+      ingestClient.ingestFromFile(fileSourceInfo, ingestProps);
+    }
     ```
 
     ---
@@ -308,6 +361,12 @@ In your preferred IDE or text editor, create a project or file named *basic inge
 
     using (var response = kustoClient.ExecuteQuery(database, query, null)) {
       Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
+      PrintResultsAsValueList(response);
+    }
+
+    query = table + " | top 1 by ingestion_time()";
+    using (var response = kustoClient.ExecuteQuery(database, query, null)) {
+      Console.WriteLine("\nLast ingested row:");
       PrintResultsAsValueList(response);
     }
     ```
@@ -338,7 +397,7 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     console.log("\nWaiting 30 seconds for ingestion to complete ...");
     await sleep(30000);
 
-    response = await kustoClient.execute(database, queryCount);
+    response = await kustoClient.execute(database, query);
     console.log("\nNumber of rows in " + table + " AFTER ingesting the file:");
     printResultsAsValueList(response);
   
@@ -358,7 +417,19 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ### [Java](#tab/java)
 
     ```java
+    System.out.println("\nWaiting 30 seconds for ingestion to complete ...");
+    Thread.sleep(30000);
 
+    response = kustoClient.execute(database, query);
+    primaryResults = response.getPrimaryResults();
+    System.out.println("\nNumber of rows in " + table + " AFTER ingesting the file:");
+    printResultsAsValueList(primaryResults);
+
+    query = table + " | top 1 by ingestion_time()";
+    response = kustoClient.execute(database, query);
+    primaryResults = response.getPrimaryResults();
+    System.out.println("\nLast ingested row:");
+    printResultsAsValueList(primaryResults);
     ```
 
     ---
@@ -384,12 +455,12 @@ namespace BatchIngest {
       var ingestKcsb = new KustoConnectionStringBuilder(ingestUri)
         .WithAadUserPromptAuthentication();
 
-      string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
 
       using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb)) {
         using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
           string database = "<your_database>";
           string table = "MyStormEvents";
+          string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
 
           string query = table + " | count";
           using (var response = kustoClient.ExecuteQuery(database, query, null)) {
@@ -409,6 +480,13 @@ namespace BatchIngest {
 
           using (var response = kustoClient.ExecuteQuery(database, query, null)) {
             Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
+            PrintResultsAsValueList(response);
+          }
+
+          query = table + " | top 1 by ingestion_time()";
+          using (var response = kustoClient.ExecuteQuery(database, query, null))
+          {
+            Console.WriteLine("\nLast ingested row:");
             PrintResultsAsValueList(response);
           }
         }
@@ -445,12 +523,12 @@ def main():
   ingest_uri = "<your_ingestion_uri>"
   ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, credentials)
 
-  file_path = os.path.join(os.path.dirname(__file__), "stormevents.csv")
 
   with KustoClient(cluster_kcsb) as kusto_client:
     with QueuedIngestClient(ingest_kcsb) as ingest_client:
       database = "<your_database>"
       table = "MyStormEvents"
+      file_path = os.path.join(os.path.dirname(__file__), "stormevents.csv")
 
       query = table + " | count"
       response = kusto_client.execute_query(database, query)
@@ -553,7 +631,69 @@ main();
 ### [Java](#tab/java)
 
 ```java
+import com.microsoft.azure.kusto.data.Client;
+import com.microsoft.azure.kusto.data.ClientFactory;
+import com.microsoft.azure.kusto.data.KustoOperationResult;
+import com.microsoft.azure.kusto.data.KustoResultSetTable;
+import com.microsoft.azure.kusto.data.KustoResultColumn;
+import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
+import com.microsoft.azure.kusto.ingest.IngestClientFactory;
+import com.microsoft.azure.kusto.ingest.IngestionProperties;
+import com.microsoft.azure.kusto.ingest.IngestionProperties.DataFormat;
+import com.microsoft.azure.kusto.ingest.QueuedIngestClient;
+import com.microsoft.azure.kusto.ingest.source.FileSourceInfo;
 
+public class batchIngestion {
+  public static void main(String[] args) throws Exception {
+    String clusterUri = "<your_cluster_uri>";
+    ConnectionStringBuilder clusterKcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
+    String ingestUri = "<your_ingestion_uri>";
+    ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
+
+    try (Client kustoClient = ClientFactory.createClient(clusterKcsb)) {
+      try (QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
+        String database = "<your_database>";
+        String table = "MyStormEvents";
+        FileSourceInfo fileSourceInfo = new FileSourceInfo(System.getProperty("user.dir") + "\\stormevents.csv", 0);
+
+        String query = table + " | count";
+        KustoOperationResult results = kustoClient.execute(database, query);
+        KustoResultSetTable primaryResults = results.getPrimaryResults();
+        System.out.println("\nNumber of rows in " + table + " BEFORE ingestion:");
+        printResultAsValueList(primaryResults);
+
+        System.out.println("\nIngesting data from file: \n\t " + fileSourceInfo.toString());
+        IngestionProperties ingestProps = new IngestionProperties(database, table);
+        ingestProps.setDataFormat(DataFormat.CSV);
+        ingestProps.setIgnoreFirstRecord(true);
+        ingestClient.ingestFromFile(fileSourceInfo, ingestProps);
+
+        System.out.println("\nWaiting 30 seconds for ingestion to complete ...");
+        Thread.sleep(30000);
+
+        response = kustoClient.execute(database, query);
+        primaryResults = response.getPrimaryResults();
+        System.out.println("\nNumber of rows in " + table + " AFTER ingesting the file:");
+        printResultsAsValueList(primaryResults);
+
+        query = table + " | top 1 by ingestion_time()";
+        response = kustoClient.execute(database, query);
+        primaryResults = response.getPrimaryResults();
+        System.out.println("\nLast ingested row:");
+        printResultsAsValueList(primaryResults);
+      }
+    }
+  }
+
+  public static void printResultsAsValueList(KustoResultSetTable results) {
+    while (results.next()) {
+      KustoResultColumn[] columns = results.getColumns();
+      for (int i = 0; i < columns.length; i++) {
+        System.out.println("\t" + columns[i].getColumnName() + " - " + (results.getObject(i) == null ? "None" : results.getString(i)));
+      }
+    }
+  }
+}
 ```
 
 ---
@@ -645,7 +785,10 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [Java](#tab/java)
 
     ```java
-
+    import java.io.ByteArrayInputStream;
+    import java.io.InputStream;
+    import java.nio.charset.StandardCharsets;
+    import com.microsoft.azure.kusto.ingest.source.StreamSourceInfo;
     ```
 
     ---
@@ -680,7 +823,9 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [Java](#tab/java)
 
     ```java
-
+    String singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
+    InputStream stream = new ByteArrayInputStream(StandardCharsets.UTF_8.encode(singleLine).array());
+    StreamSourceInfo streamSourceInfo = new StreamSourceInfo(stream);
     ```
 
     ---
@@ -710,7 +855,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [Java](#tab/java)
 
     ```java
-
+    ingestProps.setIgnoreFirstRecord(false);
     ```
 
     ---
@@ -741,7 +886,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [Java](#tab/java)
 
     ```java
-
+    ingestClient.ingestFromStream(streamSourceInfo, ingestProps);
     ```
 
     ---
@@ -868,6 +1013,48 @@ main();
 ### [Java](#tab/java)
 
 ```java
+import com.microsoft.azure.kusto.data.Client;
+import com.microsoft.azure.kusto.data.ClientFactory;
+import com.microsoft.azure.kusto.data.KustoOperationResult;
+import com.microsoft.azure.kusto.data.KustoResultSetTable;
+import com.microsoft.azure.kusto.data.KustoResultColumn;
+import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
+import com.microsoft.azure.kusto.ingest.IngestClientFactory;
+import com.microsoft.azure.kusto.ingest.IngestionProperties;
+import com.microsoft.azure.kusto.ingest.IngestionProperties.DataFormat;
+import com.microsoft.azure.kusto.ingest.QueuedIngestClient;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import com.microsoft.azure.kusto.ingest.source.StreamSourceInfo;
+
+public class batchIngestion {
+  public static void main(String[] args) throws Exception {
+    // ...
+    String singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
+    InputStream stream = new ByteArrayInputStream(StandardCharsets.UTF_8.encode(singleLine).array());
+    StreamSourceInfo streamSourceInfo = new StreamSourceInfo(stream);
+
+    try (Client kustoClient = ClientFactory.createClient(clusterKcsb)) {
+      try (QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
+        String database = "<your_database>";
+        String table = "MyStormEvents";
+
+        // ...
+
+        System.out.println("\nIngesting data from memory:");
+        ingestProps.setIgnoreFirstRecord(false);
+        ingestClient.ingestFromStream(streamSourceInfo, ingestProps);
+
+        // ...
+      }
+    }
+  }
+
+  public static void printResultsAsValueList(KustoResultSetTable results) {
+    // ...
+  }
+}
 ```
 
 ---
@@ -926,7 +1113,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
     ### [Java](#tab/java)
 
     ```java
-
+    import com.microsoft.azure.kusto.ingest.source.BlobSourceInfo;
     ```
 
     ---
@@ -966,7 +1153,11 @@ For example, you can modify the app replacing the *ingest from memory* code with
     ### [Java](#tab/java)
 
     ```java
+    String blobUri = "<your_blob_uri>";
 
+    ingestProps.setIgnoreFirstRecord(true);
+    BlobSourceInfo blobSourceInfo = new BlobSourceInfo(blobUri, 100);
+    ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
     ```
 
     ---
@@ -1089,6 +1280,44 @@ main();
 ### [Java](#tab/java)
 
 ```java
+import com.microsoft.azure.kusto.data.Client;
+import com.microsoft.azure.kusto.data.ClientFactory;
+import com.microsoft.azure.kusto.data.KustoOperationResult;
+import com.microsoft.azure.kusto.data.KustoResultSetTable;
+import com.microsoft.azure.kusto.data.KustoResultColumn;
+import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
+import com.microsoft.azure.kusto.ingest.IngestClientFactory;
+import com.microsoft.azure.kusto.ingest.IngestionProperties;
+import com.microsoft.azure.kusto.ingest.IngestionProperties.DataFormat;
+import com.microsoft.azure.kusto.ingest.QueuedIngestClient;
+import com.microsoft.azure.kusto.ingest.source.BlobSourceInfo;
+
+public class batchIngestion {
+  public static void main(String[] args) throws Exception {
+    // ...
+    String blobUri = "<your_blob_uri>";
+
+    try (Client kustoClient = ClientFactory.createClient(clusterKcsb)) {
+      try (QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
+        String database = "<your_database>";
+        String table = "MyStormEvents";
+
+        // ...
+
+        System.out.println("\nIngesting data from a blob:");
+        ingestProps.setIgnoreFirstRecord(true);
+        BlobSourceInfo blobSourceInfo = new BlobSourceInfo(blobUri, 100);
+        ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
+
+        // ...
+      }
+    }
+  }
+
+  public static void printResultsAsValueList(KustoResultSetTable results) {
+    // ...
+  }
+}
 ```
 
 ---
