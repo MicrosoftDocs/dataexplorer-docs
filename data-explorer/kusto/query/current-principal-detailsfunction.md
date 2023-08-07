@@ -28,7 +28,7 @@ The details of the current principal as a `dynamic`.
 |Type|The category of the principal: `aaduser`, `aadapp`, or `aadgroup`.|
 |DisplayName|The user-friendly name displayed in the UI for the principal.|
 |ObjectId|The Azure AD object ID for the principal.|
-|FQN|The Fully Qualified Name (FQN) of the principal. Valuable for security role management commands. For more information see [Security roles](../management/security-roles.md) and [Referencing security principals](../management/referencing-security-principals.md).|
+|FQN|The Fully Qualified Name (FQN) of the principal. Valuable for security role management commands. For more information, see [Security roles](../management/security-roles.md) and [Referencing security principals](../management/referencing-security-principals.md).|
 
 ## Example
 
