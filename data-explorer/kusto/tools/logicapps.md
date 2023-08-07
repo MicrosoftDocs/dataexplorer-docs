@@ -3,14 +3,17 @@ title: Use Logic Apps to run Kusto queries automatically in Azure Data Explorer
 description: Learn how to use Logic Apps to run Kusto queries and commands automatically and schedule them.
 ms.reviewer: docohe
 ms.topic: how-to
-ms.date: 05/04/2022
+ms.date: 08/07/2023
 ---
 
 # Microsoft Logic App and Azure Data Explorer
 
-The Azure Kusto Logic App connector enables you to run Kusto queries and commands automatically as part of a scheduled or triggered task, using the [Microsoft Logic App](/azure/logic-apps/logic-apps-what-are-logic-apps) connector.
+The [Microsoft Logic App](/azure/logic-apps/logic-apps-what-are-logic-apps) connector allows you to run queries and commands automatically as part of a scheduled or triggered task.
 
 Logic App and :::no-loc text="Power Automate"::: are built on the same connector. Therefore, the [limitations](../../flow.md#limitations), [actions](../../flow.md#flow-actions), [authentication](../../flow.md#authentication) and [usage examples](../../flow-usage.md) that apply to :::no-loc text="Power Automate":::, also apply to Logic Apps, as mentioned on the [:::no-loc text="Power Automate"::: documentation page](../../flow.md).
+
+> [!NOTE]
+> If your Logic App is integrated with a Virtual Network (VNET) and you want to establish communication with an [Azure Data Explorer private endpoint](../../security-network-private-endpoint.md), add the Logic App connector's IP address to your network's whitelist. To enable access, refer to the [list of outbound IP addresses for Azure Logic Apps](/connectors/common/outbound-ip-addresses#azure-logic-apps), categorized by service and region.
 
 ## How to create a Logic App with Azure Data Explorer
 
