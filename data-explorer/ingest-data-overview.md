@@ -3,7 +3,7 @@ title: 'Azure Data Explorer data ingestion overview'
 description: 'Learn about the different ways you can ingest (load) data in Azure Data Explorer'
 ms.reviewer: tzgitlin
 ms.topic: conceptual
-ms.date: 07/31/2022
+ms.date: 08/07/2023
 ---
 
 # Azure Data Explorer data ingestion overview
@@ -52,17 +52,7 @@ For organizations who wish to have management (throttling, retries, monitors, al
   * [Integrate Azure Data Explorer with Azure Data Factory](data-factory-integration.md).
   * [Use Azure Data Factory to copy data from supported sources to Azure Data Explorer](./data-factory-load-data.md).
   * [Copy in bulk from a database to Azure Data Explorer by using the Azure Data Factory template](data-factory-template.md).
-  * [Use Azure Data Factory command activity to run Azure Data Explorer management commands](data-factory-command-activity.md).
-
-### Ingestion using connectors and plugins
-
-* **Logstash plugin**, see [Ingest data from Logstash to Azure Data Explorer](ingest-data-logstash.md).
-
-* **Kafka connector**, see [Ingest data from Kafka into Azure Data Explorer](ingest-data-kafka.md).
-
-* **[:::no-loc text="Power Automate":::](https://flow.microsoft.com/)**: An automated workflow pipeline to Azure Data Explorer. :::no-loc text="Power Automate"::: can be used to execute a query and do preset actions using the query results as a trigger. See [Azure Data Explorer connector to :::no-loc text="Power Automate"::: (Preview)](flow.md).
-
-* **Apache Spark connector**:  An open-source project that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. You can build fast and scalable applications targeting data-driven scenarios. See [Azure Data Explorer Connector for Apache Spark](spark-connector.md).
+  * [Use Azure Data Factory command activity to run Azure Data Explorer management commands](data-factory-command-activity.md)
 
 ### Programmatic ingestion using SDKs
 
@@ -97,7 +87,7 @@ Use commands to ingest data directly to the engine. This method bypasses the Dat
 
 | Ingestion name | Data type | Maximum file size | Streaming, batching, direct | Most common scenarios | Considerations |
 | --- | --- | --- | --- | --- | --- |
-| [**Ingestion wizard**](./ingest-data-wizard.md) | *sv, JSON | 1 GB uncompressed (see note)| Batching to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
+| **Get data experience** | *sv, JSON | 1 GB uncompressed (see note)| Batching to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
 | [**LightIngest**](lightingest.md) | All formats supported | 1 GB uncompressed (see note) | Batching via DM or direct ingestion to engine |  Data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction)| Case-sensitive, space-sensitive |
 | [**ADX Kafka**](ingest-data-kafka.md) |Avro, ApacheAvro, JSON, CSV, Parquet, and ORC |Unlimited. Inherits Java restrictions.| Batching, streaming |Existing pipeline, high volume consumption from the source.| Preference may be determined by which “multiple producer/consumer” service is already used, or how managed of a service is desired. |
 | [**ADX to Apache Spark**](spark-connector.md) | Every format supported by the Spark environment  | Unlimited | Batching | Existing pipeline, preprocessing on Spark before ingestion, fast way to create a safe (Spark) streaming pipeline from the various sources the Spark environment supports. | Consider cost of Spark cluster. For batch write, compare with Azure Data Explorer data connection for Event Grid. For Spark streaming, compare with the data connection for event hub.
@@ -134,10 +124,9 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
 
 1. **Create a table**
 
-    In order to ingest data, a table needs to be created beforehand. Use one of the following options:
+    To ingest data programmatically, a table needs to be created beforehand. If you're using the **Get data** experience, you can create a table as part of the ingestion flow.
 
     * Create a table [with a command](kusto/management/create-table-command.md).
-    * Create a table using the [ingestion wizard](/azure/data-explorer/ingest-from-container).
 
     > [!Note]
     > If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.

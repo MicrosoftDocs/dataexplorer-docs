@@ -1,26 +1,24 @@
 ---
-title: Ingest JSON data from a local file to an existing table in Azure Data Explorer using the ingestion wizard
-description: Ingesting (loading) data into an existing Azure Data Explorer table simply, using the ingestion wizard.
-ms.reviewer: tzgitlin
+title: Get data from a file
+description: Learn how to get data from a local file in Azure Data Explorer.
+ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 06/05/2023
+ms.date: 08/07/2023
 ---
-# Use the ingestion wizard to ingest JSON data from a local file to an existing table in Azure Data Explorer
+# Get data from file
 
-[The ingestion wizard](./ingest-data-wizard.md) allows you to ingest data in various formats and create mapping structures, as a one-time or continuous ingestion process.
+## Prerequisites
 
-This document describes using the ingestion wizard to ingest JSON data from a local file into an existing table. Use the same process with slight adaptations to cover different use cases.
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
-> [!NOTE]
-> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
-
-## Ingest data
+## Destination table
 
 1. From the left menu, select **Query**.
 
-1. Right-click on the database where you want to ingest the data. Select **Ingest data**.
+1. Right-click on the database where you want to ingest the data. Select **Get data**.
 
-    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI." lightbox="media/ingest-data-wizard/ingest-data-from-query-page.png":::
+    IMAGE
 
 ## Select an ingestion type
 
@@ -48,17 +46,9 @@ This document describes using the ingestion wizard to ingest JSON data from a lo
 
 The **Schema** tab opens.
 
-* **Compression type** is selected automatically by the source file name. In this case, the compression type is **JSON**
-
+* **Compression type** is selected automatically by the source file name. 
 * If you select **Ignore data format errors**, the data is ingested in JSON format. If you leave this check box unselected, the data is ingested in multijson format.
-
 * When you select  **JSON**, you must also select **Nested levels**, from 1 to 100. The levels determine the table column data division.
-
-    :::image type="content" source="media/ingestion-wizard-existing-table/json-levels.png" alt-text="Screenshot completing ingestion information for ingesting a JSON file.":::
-
-    > [!TIP]
-    > If you want to use **CSV** files, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container#edit-the-schema)
-
 * For tabular formats, you can select **Keep current table schema**.
 Tabular data doesn't necessarily include the column names that are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema remains the same. If this option is unchecked, new columns are created for incoming data, regardless of data structure.
 
@@ -114,10 +104,6 @@ In the **Data ingestion completed** window, all three steps are marked with gree
 [!INCLUDE [data-explorer-ingestion-wizard-query-data](includes/data-explorer-ingestion-wizard-query-data.md)]
 
 ## Next steps
-
-For another ingestion scenario, see the following article:
-
-* [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container)
 
 To get started querying data, see the following articles:
 

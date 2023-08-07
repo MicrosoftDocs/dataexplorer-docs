@@ -804,6 +804,17 @@
       "source_path": "data-explorer/kusto/query/re2-library.md",
       "redirect_url": "/azure/data-explorer/kusto/query/re2",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/ingest-data-wizard.md",
+      "redirect_url": "/azure/data-explorer/ingest-data-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/ingest-from-local-file.md",
+      "redirect_url": "/azure/data-explorer/get-data-file",
+      "redirect_document_id": true
     }
+  ]
   ]
 }
