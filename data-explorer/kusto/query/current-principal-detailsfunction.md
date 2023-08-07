@@ -17,18 +17,18 @@ Returns details of the principal running the query.
 
 ## Returns
 
-The details of the current principal as a `dynamic`.
+The details of the current principal as a [dynamic](../query/scalar-data-types/dynamic.md). The following table describes the returned fields.
 
 |Field|Description|
 |--|--|
-|UserPrincipalName|The sign-in identifier for users. For more information, see [What is UserPrincipalName?](/azure/active-directory/hybrid/connect/plan-connect-userprincipalname#what-is-userprincipalname).|
+|UserPrincipalName|The sign-in identifier for users. For more information, see [UPN](/azure/active-directory/hybrid/connect/plan-connect-userprincipalname#what-is-userprincipalname).|
 |IdentityProvider|The source that validates the identity of the principal.|
 |Authority|The Azure AD tenant ID.|
 |Mfa|Indicates the use of [multi-factor authentication](/azure/active-directory/authentication/concept-mfa-howitworks). For more information, see [Access token claims reference](/azure/active-directory/develop/access-token-claims-reference#amr-claim).|
 |Type|The category of the principal: `aaduser`, `aadapp`, or `aadgroup`.|
-|DisplayName|The user-friendly name displayed in the UI for the principal.|
+|DisplayName|The user-friendly name  for the principal that is displayed in the UI.|
 |ObjectId|The Azure AD object ID for the principal.|
-|FQN|The Fully Qualified Name (FQN) of the principal. Valuable for security role management commands. For more information, see [Security roles](../management/security-roles.md) and [Referencing security principals](../management/referencing-security-principals.md).|
+|FQN|The Fully Qualified Name (FQN) of the principal. Valuable for [security role management commands](../management/security-roles.md). For more information, see [Referencing security principals](../management/referencing-security-principals.md).|
 
 ## Example
 
