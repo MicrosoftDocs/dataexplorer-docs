@@ -142,7 +142,7 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
 1. **Ingest data**
 
     You can [ingest sample data](ingest-sample-data.md) into the table you created in your database using commands or the ingestion wizard.
-    To ingest your own data, you can select from a range of options, including [ingestion tools](#comparing-ingestion-methods-and-tools), [connectors and plugins](#ingestion-using-connectors-and-plugins) to diverse services, [managed pipelines](#ingestion-using-managed-pipelines), [programmatic ingestion using SDKs](#programmatic-ingestion-using-sdks), and [direct access to ingestion](#ingest-management-commands).
+    To ingest your own data, you can select from a range of options, including [ingestion tools](#comparing-ingestion-methods-and-tools), [connectors](connector-overview.md) to diverse services, [managed pipelines](#ingestion-using-managed-pipelines), [programmatic ingestion using SDKs](#programmatic-ingestion-using-sdks), and [direct access to ingestion](#ingest-management-commands).
 
 ## Next steps
 
