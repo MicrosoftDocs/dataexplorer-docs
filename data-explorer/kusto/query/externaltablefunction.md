@@ -18,6 +18,8 @@ References an [external table](schema-entities/externaltables.md) by name.
 
 `external_table(` *TableName* [`,` *MappingName* ] `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

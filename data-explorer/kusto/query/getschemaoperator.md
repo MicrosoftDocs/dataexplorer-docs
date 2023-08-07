@@ -13,6 +13,8 @@ Produce a table that represents a tabular schema of the input.
 
 *T* `|` `getschema`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Example
 
 > [!div class="nextstepaction"]

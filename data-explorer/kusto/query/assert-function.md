@@ -19,6 +19,8 @@ Checks for a condition. If the condition is false, outputs error messages and fa
 
 `assert(`*condition*`,`*message*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -17,6 +17,8 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 `.alter` `cluster` `policy` `request_classification` *SerializedPartialPolicy*  `<|` *ClassificationFunctionBody*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                         | Type   | Required | Description                                                                                                                                                                                                                       |

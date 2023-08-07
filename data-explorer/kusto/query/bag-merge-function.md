@@ -13,6 +13,8 @@ Merges `dynamic` property bags into a `dynamic` property bag object with all pro
 
 `bag_merge(`*bag1*`,`*bag2*`[`,`*bag3*, ...])`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

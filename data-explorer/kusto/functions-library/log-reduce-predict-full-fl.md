@@ -18,7 +18,10 @@ The function `log_reduce_predict_full_fl()` parses semi structured textual colum
 * The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 
 ## Syntax
+
 *T* `|` `invoke` `log_reduce_predict_full_fl(`*models_tbl*`,` *model_name*`,` *reduce_col*`,` *pattern_col*`,` *parameters_col* [`,` *anomaly_str* ]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -276,8 +276,6 @@ items:
                 displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
               - name: Run KQL queries and stored functions
                 href: sql-kql-queries-and-stored-functions.md
-          - name: Evaluate query performance in your cluster
-            href: kusto/api/load-test-cluster.md
           - name: Optimize for high concurrency
             href: high-concurrency.md
           - name: Set timeout limits
@@ -504,6 +502,8 @@ items:
         items:
           - name: API overview
             href: kusto/api/index.md
+          - name: Client libraries
+            href: kusto/api/client-libraries.md
           - name: Sample app generator
             href: sample-app-generator-wizard.md
           - name: Write code with SDKs

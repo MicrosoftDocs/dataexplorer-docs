@@ -17,6 +17,8 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `database` `cache` `query_results`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 |Output parameter |Type |Description |

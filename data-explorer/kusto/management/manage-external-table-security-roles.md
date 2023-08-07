@@ -31,6 +31,8 @@ To show your roles:
 
 `.show` `external table` *ExternalTableName* `principal` `roles`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
@@ -58,6 +60,8 @@ This section provides syntax, parameters, and examples for adding and removing p
 ### Syntax
 
 *Action* `external table` *ExternalTableName* `admins` `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [ *Description* ]
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ### Parameters
 

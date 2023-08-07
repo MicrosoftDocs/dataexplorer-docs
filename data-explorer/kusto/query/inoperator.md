@@ -21,6 +21,8 @@ When possible, use the case-sensitive [in](in-cs-operator.md).
 
 *T* `|` `where` *col* `in~` `(`*expression*`,` ... `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

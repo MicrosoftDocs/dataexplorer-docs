@@ -13,6 +13,8 @@ Splits an array to multiple arrays according to the split indices and packs the 
 
 `array_split`(*array*, *index*)
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

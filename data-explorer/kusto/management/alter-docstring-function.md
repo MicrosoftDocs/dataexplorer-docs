@@ -22,6 +22,8 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 `.alter` `function` *FunctionName* `docstring` *Documentation*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

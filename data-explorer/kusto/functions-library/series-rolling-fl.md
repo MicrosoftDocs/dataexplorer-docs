@@ -21,6 +21,8 @@ The function `series_rolling_fl()` is a [user-defined function (UDF)](../query/f
 
 `T | invoke series_rolling_fl(`*y_series*`,` *y_rolling_series*`,` *n*`,` *aggr*`,` *aggr_params*`,` *center*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

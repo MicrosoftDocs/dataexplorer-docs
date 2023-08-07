@@ -28,6 +28,8 @@ The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)]
 ## Syntax
 
 `T | invoke series_fbprophet_forecast_fl(`*ts_series*`,` *y_series*`,` *y_pred_series*`,` [ *points* ]`,` [ *y_pred_low_series* ]`,` [ *y_pred_high_series* ]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
   
 ## Parameters
 

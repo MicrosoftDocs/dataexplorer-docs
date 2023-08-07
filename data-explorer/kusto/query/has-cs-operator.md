@@ -19,6 +19,8 @@ Filters a record set for data with a case-sensitive search string. `has_cs` sear
 
 *T* `|` `where` *Column* `has_cs` `(`*Expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
