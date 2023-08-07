@@ -273,7 +273,7 @@ In your preferred IDE or text editor, create a project or file named *basic inge
 
     ---
 
-1. Ingest the *stormevent.csv* file by adding it to the batch queue. You use the following:
+1. Ingest the *stormevent.csv* file by adding it to the batch queue. You use the following objects and properties:
 
     - **QueuedIngestClient** to create the ingest client.
     - **IngestionProperties** to set the ingestion properties.
@@ -793,7 +793,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
     ---
 
-1. Add a in-memory string with the data to ingest.
+1. Add an in-memory string with the data to ingest.
 
     ### [C\#](#tab/csharp)
 
@@ -830,7 +830,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
     ---
 
-1. Set the ingestion properties to not to ignore the first records as the in-memory string doesn't have a header row.
+1. Set the ingestion properties to not ignore the first record as the in-memory string doesn't have a header row.
 
     ### [C\#](#tab/csharp)
 
@@ -1059,7 +1059,7 @@ public class batchIngestion {
 
 ---
 
-When run the app, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by one.
+When you run the app, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by one.
 
 ```bash
 Number of rows in MyStormEvents BEFORE ingestion:
@@ -1322,7 +1322,7 @@ public class batchIngestion {
 
 ---
 
-When run the app, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by 1,000.
+When you run the app, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by 1,000.
 
 ```bash
 Number of rows in MyStormEvents BEFORE ingestion:
