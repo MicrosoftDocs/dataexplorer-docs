@@ -19,7 +19,7 @@ The graph operators are in public preview mode, and currently four operators are
 * [graph-merge](graph-merge-operator.md) merges two graphs into a single new graph 
 * [graph-to-table](graph-to-table-operator.md) builds nodes and/or edges tables from graph
 
-## Before using the graph operators
+## Prerequisites
 
 The graph operators use V2 of the KQL parser. To learn how to configure the client to run with KQL parser V2, select the relevant tab for your environment.
 
