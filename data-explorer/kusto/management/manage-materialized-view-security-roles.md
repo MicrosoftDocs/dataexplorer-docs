@@ -114,3 +114,7 @@ The following command removes all existing `admins` on the `SampleView` material
 ```kusto
 .set materialized-view SampleView admins none
 ```
+
+## See also
+
+* [current_principal_details()](../query/current-principal-detailsfunction.md)
