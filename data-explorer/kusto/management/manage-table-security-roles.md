@@ -131,3 +131,7 @@ The following command removes all existing `ingestors` on the `StormEvents` tabl
 ```kusto
 .set table StormEvents ingestors none
 ```
+
+## See also
+
+* [current_principal_details()](../query/current-principal-detailsfunction.md)
