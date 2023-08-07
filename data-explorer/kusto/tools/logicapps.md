@@ -12,10 +12,7 @@ The [Microsoft Logic App](/azure/logic-apps/logic-apps-what-are-logic-apps) conn
 
 Logic App and :::no-loc text="Power Automate"::: are built on the same connector. Therefore, the [limitations](../../flow.md#limitations), [actions](../../flow.md#flow-actions), [authentication](../../flow.md#authentication) and [usage examples](../../flow-usage.md) that apply to :::no-loc text="Power Automate":::, also apply to Logic Apps, as mentioned on the [:::no-loc text="Power Automate"::: documentation page](../../flow.md).
 
-> [!NOTE]
-> If your cluster is integrated with a Virtual Network (VNET), and you want the Logic App connector to establish communication with an [Azure Data Explorer private endpoint](../../security-network-private-endpoint.md), you need to add the Logic App connector's IP address to your network's whitelist. To enable access, refer to the [list of outbound IP addresses for Azure Logic Apps](/connectors/common/outbound-ip-addresses#azure-logic-apps), categorized by service and region.
-
-## How to create a Logic App with Azure Data Explorer
+## Create a Logic App with Azure Data Explorer
 
 1. Open the [Microsoft Azure portal](https://ms.portal.azure.com/).
 1. Search for `logic app` and select it.
@@ -46,6 +43,9 @@ Logic App and :::no-loc text="Power Automate"::: are built on the same connector
 1. Select **Azure Data Explorer**, and then under **Actions** choose the action you want to use. To learn more about each action, see [flow actions](../../flow.md#flow-actions).
 
     :::image type="content" source="images/logic-apps/logic-app-kusto-connector-inline.png" alt-text="Screenshot of the designer page, showing the Azure Data Explorer actions." lightbox="images/logic-apps/logic-app-kusto-connector.png":::
+
+> [!NOTE]
+> If your cluster is integrated with a Virtual Network (VNet), you must add the IP address of the Logic App connector to REPLACE WITH PORTAL TECHNICAL TERM (WITH LINK?). For more information, see [Managed connectors outbound IP addresses](/connectors/common/outbound-ip-addresses#azure-logic-apps).
 
 ## Next steps
 
