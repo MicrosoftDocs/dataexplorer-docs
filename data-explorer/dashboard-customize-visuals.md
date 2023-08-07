@@ -3,13 +3,13 @@ title: Customize Azure Data Explorer dashboard visuals
 description: Easily customize your Azure Data Explorer dashboard visuals
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 08/02/2023
+ms.date: 08/07/2023
 ---
 
 # Customize Azure Data Explorer dashboard visuals
 
-Visuals are essential part of any Azure Data Explorer Dashboard. For a full list of available visuals, see [Visualization](kusto/query/renderoperator.md#visualization).
-In this article, you'll learn how to customize different visuals. For general information, see [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
+Visuals are essential part of any Azure Data Explorer dashboard. For a full list of available visuals, see [Visualization](kusto/query/renderoperator.md#visualization).
+In this article, you'll learn how to customize different visuals. For a list of visualizations that are only available in Azure Data Explorer dashboards, see [Dashboard-specific visuals](dashboard-visuals.md). For general information, see [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
 
 > [!NOTE]
 > You must have dashboard editing permissions to customize dashboards.
