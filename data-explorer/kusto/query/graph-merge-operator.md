@@ -39,41 +39,41 @@ Since *Attributes* isn't specified, the edges of the new graph are the union of 
 ```kusto
 let Emails = datatable(fromPrincipal: long, toPrincipal:long, wordCount: long, when: datetime) 
 [
-	1, 2, 200, datetime(2022, 01, 01),
-	2, 3, 500, datetime(2022, 01, 02), 
-	2, 4, 5,datetime(2022, 01, 03),
-	3, 4, 2, datetime(2022, 01, 04),
-	1, 4, 101,datetime(2022, 01, 05),
+ 1, 2, 200, datetime(2022, 01, 01),
+ 2, 3, 500, datetime(2022, 01, 02), 
+ 2, 4, 5,datetime(2022, 01, 03),
+ 3, 4, 2, datetime(2022, 01, 04),
+ 1, 4, 101,datetime(2022, 01, 05),
 ];
 let Calls = datatable(caller: long, callee: long, subject: string, duration: long, when: datetime) 
 [
-	1, 2, "Finance", 20, datetime(2022, 08, 01),
-	2, 1, "Finance", 2, datetime(2022, 01, 02),
-	3, 4, "HR", 15, datetime(2022, 01, 01),
-	4, 3, "Lunch", 105, datetime(2022, 01, 05),
-	1, 4, "Finance", 20, datetime(2022, 01, 05),
-	4, 1, "HR", 35, datetime(2022, 01, 01)
+ 1, 2, "Finance", 20, datetime(2022, 08, 01),
+ 2, 1, "Finance", 2, datetime(2022, 01, 02),
+ 3, 4, "HR", 15, datetime(2022, 01, 01),
+ 4, 3, "Lunch", 105, datetime(2022, 01, 05),
+ 1, 4, "Finance", 20, datetime(2022, 01, 05),
+ 4, 1, "HR", 35, datetime(2022, 01, 01)
 ];
 let EmployeeAlias = datatable(principalId: long, alias: string) 
 [
-	1, "aa",
-	2, "bb",
-	3, "ee",
-	4, "mm",
-	5, "vv"
+ 1, "aa",
+ 2, "bb",
+ 3, "ee",
+ 4, "mm",
+ 5, "vv"
 ];
 let EmployeeInfo = datatable(principalId: long, firstName: string, lastName: string) 
 [
-	1, "Alice", "Adams",
-	2, "Bob", "Baker",
-	3, "Eve", "Evans",
-	4, "Mallory", "Mason",
-	6, "Trent", "Smith"
+ 1, "Alice", "Adams",
+ 2, "Bob", "Baker",
+ 3, "Eve", "Evans",
+ 4, "Mallory", "Mason",
+ 6, "Trent", "Smith"
 ];
 let EmailsGraph = Emails
-	| make-graph fromPrincipal --> toPrincipal with EmployeeAlias on principalId;
+ | make-graph fromPrincipal --> toPrincipal with EmployeeAlias on principalId;
 let CallsGraph = Calls
-	| make-graph caller --> callee with EmployeeInfo on principalId;
+ | make-graph caller --> callee with EmployeeInfo on principalId;
 EmailsGraph
 | graph-merge CallsGraph
 | graph-to-table edges as MergeEdges, nodes as MergeNodes;
@@ -117,43 +117,43 @@ Since *Attributes* is specified, the edges are merged based on source and destin
 ```kusto
 let Emails = datatable(fromPrincipal: long, toPrincipal:long, wordCount: long, when: datetime) 
 [
-	1, 2, 200, datetime(2022, 01, 01),
-	2, 3, 500, datetime(2022, 01, 02), 
-	2, 4, 5,datetime(2022, 01, 03),
-	3, 4, 2, datetime(2022, 01, 04),
-	1, 4, 101,datetime(2022, 01, 05),
+ 1, 2, 200, datetime(2022, 01, 01),
+ 2, 3, 500, datetime(2022, 01, 02), 
+ 2, 4, 5,datetime(2022, 01, 03),
+ 3, 4, 2, datetime(2022, 01, 04),
+ 1, 4, 101,datetime(2022, 01, 05),
 ];
 let Calls = datatable(caller: long, callee: long, subject: string, duration: long, when: datetime) 
 [
-	1, 2, "Finance", 20, datetime(2022, 08, 01),
-	2, 1, "Finance", 2, datetime(2022, 01, 02),
-	3, 4, "HR", 15, datetime(2022, 01, 01),
-	4, 3, "Lunch", 105, datetime(2022, 01, 05),
-	1, 4, "Finance", 20, datetime(2022, 01, 05),
-	4, 1, "HR", 35, datetime(2022, 01, 01)
+ 1, 2, "Finance", 20, datetime(2022, 08, 01),
+ 2, 1, "Finance", 2, datetime(2022, 01, 02),
+ 3, 4, "HR", 15, datetime(2022, 01, 01),
+ 4, 3, "Lunch", 105, datetime(2022, 01, 05),
+ 1, 4, "Finance", 20, datetime(2022, 01, 05),
+ 4, 1, "HR", 35, datetime(2022, 01, 01)
 ];
 let EmployeeAlias = datatable(principalId: long, alias: string) 
 [
-	1, "aa",
-	2, "bb",
-	3, "ee",
-	4, "mm",
-	5, "vv"
+ 1, "aa",
+ 2, "bb",
+ 3, "ee",
+ 4, "mm",
+ 5, "vv"
 ];
 let EmployeeInfo = datatable(principalId: long, firstName: string, lastName: string) 
 [
-	1, "Alice", "Adams",
-	2, "Bob", "Baker",
-	3, "Eve", "Evans",
-	4, "Mallory", "Mason",
-	6, "Trent", "Smith"
+ 1, "Alice", "Adams",
+ 2, "Bob", "Baker",
+ 3, "Eve", "Evans",
+ 4, "Mallory", "Mason",
+ 6, "Trent", "Smith"
 ];
 Emails | join kind=fullouter Calls on $left.fromPrincipal == $right.caller, $left.toPrincipal == $right.callee
 
 let EmailsGraph = Emails
-	| make-graph fromPrincipal --> toPrincipal with EmployeeAlias on principalId;
+ | make-graph fromPrincipal --> toPrincipal with EmployeeAlias on principalId;
 let CallsGraph = Calls
-	| make-graph caller --> callee with EmployeeInfo on principalId;
+ | make-graph caller --> callee with EmployeeInfo on principalId;
 EmailsGraph
 | graph-merge CallsGraph on $left.fromPrincipal == $right.caller, $left.toPrincipal == $right.callee
 | graph-to-table edges as MergeEdges, nodes as MergeNodes;
@@ -163,8 +163,8 @@ MergeNodes
 
 **Output table 1**
 
-|fromPrincipal|toPrincipal|wordCount|when|caller|callee|subject|duration|
-|---|---|---|---|---|---|---|---|
+|fromPrincipal|toPrincipal|wordCount|when|caller|callee|subject|duration|when1|
+|---|---|---|---|---|---|---|---|---|
 |||||4|1|HR|35|2022-01-01 00:00:00.0000000|
 |||||2|1|Finance|2|2022-01-02 00:00:00.0000000|
 |||||4|3|Lunch|105|2022-01-05 00:00:00.0000000|
