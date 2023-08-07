@@ -5,7 +5,7 @@ ms.author: rocohen
 ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/25/2023
+ms.date: 08/07/2023
 ---
 # make-graph operator (Preview)
 
@@ -35,6 +35,9 @@ The `make-graph` operator returns a graph expression and has to be followed by a
 ## Example
 
 The following example builds a graph from edges and nodes tables. The nodes represent people and systems, and the edges are different relations between nodes. The `make-graph` operator builds the graph. Then, there's a call to `graph-match` with a graph pattern that searches for attack paths to the "Trent" system node.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42SXUvDMBSG7wf7D4debdAO5i5kygZTvBQEBS/GkKwNbVyTjOTMMfDHe5qmTToRbKFt+p6v501qjqB0wS2soGBI977mE8UkvwOLRqgyBbwcoxUraSEUTmE8Arq2/p1sapHzJIXkhRurFX3dLFLo1Ae9H2iLedCevoZ589ugPbO61uYyrLsM+pvhChv19WKRS/paLknb3dOjJjhelFdwVp9MHgERPArFUGgVfjZpHzH437ieLNdSnpTIGXL7LrBKwox9aD8smpNFm/yypw+omCVcKawVDvnKqr4iQ2T5Ia4UGfa/KN+6i4HOvda58egbJDvwrDTsWEFrHmTZOvYNzgTszxGtmuPjEl1OJhnmFUxk23KabX2rXbaekGtHo4mTFyQMqBsZGz86688VNxx8mZlrsloFFGCqAJcQtNZPp/ims35nXUBP3YQM2l8FDjfET0Sjf/IcYeOqcEPnLB4vhceAR1oE6/X20JIU5v4BuRhhNpIDAAA=" target="_blank">Run the query</a>
 
 ```kusto
 let nodes = datatable(name:string, type:string, age:int) 

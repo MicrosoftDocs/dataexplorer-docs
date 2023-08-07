@@ -5,7 +5,7 @@ ms.author: rocohen
 ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/25/2023
+ms.date: 08/07/2023
 ---
 # graph-match operator (Preview)
 
@@ -45,7 +45,10 @@ The returned columns are defined in the operator's `project` clause.
 
 ### Attack path
 
-The following example builds a graph from edges and nodes tables, the nodes represent people and systems and the edges are different relations between nodes. Following the `make-graph` operator that builds the graph is a call to `graph-match` with a graph pattern that searches for attack paths to the "Trent" system node. 
+The following example builds a graph from edges and nodes tables, the nodes represent people and systems and the edges are different relations between nodes. Following the `make-graph` operator that builds the graph is a call to `graph-match` with a graph pattern that searches for attack paths to the "Trent" system node.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42SUWvCMBDH3wW/w9EnBSs4H4YOBTf2OBhssAeREdujzWwTSc6JsA+/SxrTVvYwSkvS/+Xufv9chQRK52hhBbkgfvYVjpSocWnJSFVMgC7HdiMKXFZaFWMYDrb8QrKpZIbJBJJXNFYrXt3NJ+ClR73vCfNZEJ6/+ydm90F4EVWlzaWfbhHEd4OKnPR2sYQ1rxYLFnYP/KmYA/PihsPqk8na5hmTpBIktYr/3KHPDuIfYAEj03V9UjIThPZDUpmEtmJc7I/MyZJN+i5EtRSW2WpprfR8XUdiLkEkskPM0fHlHyGh4jUAriY1Bg0HP1CLA6aFEccSGo8gTdddf+DMhGEyeOcGwh/0Z9JaUFbCqG5KjtNtKLVL1yO26Wg042HOQg/WyeRscCbDuUSDEHJMfYXVquUAoXLw0a3WeOiVUHEa788HRGQX0qt9E9i/BNcON/2FGcHGp0DDg9TtbQJPLRhrHcygN1PJUtv0L6phv3BeAwAA" target="_blank">Run the query</a>
 
 ```kusto
 let nodes = datatable(name:string, type:string, age:long) 
@@ -81,6 +84,9 @@ edges
 ### All employees in a manager's org
 
 The following example represents an organizational hierarchy. The nodes in the graph represent employees and the edges are from an employee to their manager. After we build the graph using `make-graph`, we search for employees in `Alice`'s org that are younger than `30`.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WSwU7DMAyG75P2DtZOK2ortlKhjRUJEBdOiOu0Q9ZabSFNqjRiIPHwOGmSrqp6+B3/zmc7HDVg13P5izhAARXT9J05rgXrcD9o1Yo6BlbjnktRR7BcHOmH1RNvS1zFkG1jsIFneTZy4+Trtznd3jv5Jq3cOfnSqHagwF0eu2r4Y9x5bEuhMMmZFR9t2TBVmdMdBU4PZOBErbCXSs+ZfSeBu2OC0JXTE/0IG5qYMc2jYx+jYWLzyVNrwTVntkZH7YmXiz8C+8KkVqxvwvghSR49MFxa3VwtRgow+7BW60o6pssG1szcGh2Soyt+s0nT/JSESUSEc2lQIdjM1FYpCo8LTFThmpRuhgNkt+TplfzEcnobNOaQZmrYJ3EdJBm7ndCk3xnhF35HqevqH55azattAgAA" target="_blank">Run the query</a>
 
 ```kusto
 let employees = datatable(name:string, age:long) 
