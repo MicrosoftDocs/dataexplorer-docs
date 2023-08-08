@@ -21,7 +21,9 @@ To allow, limit, or prevent public access to your cluster, follow these steps:
 1. Within the **Public network access** area, select one of the following three options:
    
    * **Enabled from all networks**: This option allows access from public networks.
+  
    * **Enabled from selected IP addresses**: This option allows you to define a firewall allowlist of IP addresses that can connect to the public endpoint your cluster.
+  
    * **Disabled**: This option prevents access to the cluster from public networks and instead requires connection through a private endpoint.
 
     :::image type="content" source="media/security-network-restrict-access/control-access-to-selected-ip-addresses.png" alt-text="Screenshot of the option to add IP addresses to an allowlist." lightbox="media/security-network-restrict-access/control-access-to-selected-ip-addresses.png":::
