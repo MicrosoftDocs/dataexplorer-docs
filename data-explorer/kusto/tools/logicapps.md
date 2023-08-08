@@ -6,16 +6,16 @@ ms.topic: how-to
 ms.date: 08/08/2023
 ---
 
-# Microsoft Logic App and Azure Data Explorer
+# Microsoft Logic Apps and Azure Data Explorer
 
-The [Microsoft Logic App](/azure/logic-apps/logic-apps-what-are-logic-apps) connector allows you to run queries and commands automatically as part of a scheduled or triggered task.
+The [Microsoft Logic Apps](/azure/logic-apps/logic-apps-what-are-logic-apps) connector allows you to run queries and commands automatically as part of a scheduled or triggered task.
 
 Logic Apps and :::no-loc text="Power Automate"::: are built on the same connector. Therefore, the [limitations](../../flow.md#limitations), [actions](../../flow.md#flow-actions), [authentication](../../flow.md#authentication) and [usage examples](../../flow-usage.md) that apply to :::no-loc text="Power Automate":::, also apply to Logic Apps, as mentioned on the [:::no-loc text="Power Automate"::: documentation page](../../flow.md).
 
 ## Create a logic app with Azure Data Explorer
 
 1. Open the [Microsoft Azure portal](https://ms.portal.azure.com/).
-1. Search for `logic app` and select it.
+1. Search for "Logic apps" and select the **Logic apps** service.
 
     :::image type="content" source="images/logic-apps/logic-app-search.png" alt-text="Screenshot of the Azure portal, showing the search for Logic apps." lightbox="images/logic-apps/logic-app-search.png#lightbox":::
 
