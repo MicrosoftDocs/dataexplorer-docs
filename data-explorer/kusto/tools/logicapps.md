@@ -49,8 +49,7 @@ Logic Apps and :::no-loc text="Power Automate"::: are built on the same connecto
 To give a logic app access to a [cluster in a virtual network](../../vnet-deployment.md), follow these steps:
 
 1. Access your cluster through the [Azure portal](https://ms.portal.azure.com/).
-1. From the left-hand menu, under **Security + Networking**, select **Networking**.
-1. Within the **Public network access** area, select **Enabled from selected IP addresses**.
+1. From the left-hand menu, under **Security + Networking**, select **Networking**. Within the **Public network access** area, select **Enabled from selected IP addresses**.
     
     :::image type="content" source="images/logic-apps/enable-from-selected-ip-addresses-option.png" alt-text="Screenshot of the option to enable access from selected IP addresses." lightbox="images/logic-apps/enable-from-selected-ip-addresses-option.png":::
 
