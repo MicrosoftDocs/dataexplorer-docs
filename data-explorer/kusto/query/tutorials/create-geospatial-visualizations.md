@@ -18,6 +18,9 @@ In this tutorial, you'll learn how to:
 > * [Use GeoJSON values to plot points on a map](#use-geojson-values-to-plot-points-on-a-map)
 > * [Represent data points with variable-sized bubbles](#represent-data-points-with-variable-sized-bubbles)
 > * [Display points within a specific area](#display-points-within-a-specific-area)
+> * [Show nearby points on a linestring](#show-nearby-points-on-a-linestring)
+> * [Show nearby points in a polygon](#show-nearby-points-in-a-polygon)
+> * [Find anomalies based on geospatial data](#find-anomalies-based-on-geospatial-data)
 
 ## Plot points on a map
 
@@ -131,6 +134,137 @@ StormEvents
 ```
 
 :::image type="content" source="../images/kql-tutorials/geospatial-southern-california-polygon.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of southern California storms.":::
+
+## Show nearby points on a linestring
+
+The following query shows nearby storms on a defined linestring.
+
+```kusto
+let roadToKeyWest = dynamic({
+"type":"linestring",
+"coordinates":[
+          [
+            -81.79595947265625,
+            24.56461038017685
+          ],
+          [
+            -81.595458984375,
+            24.627044746156027
+          ],
+          [
+            -81.52130126953125,
+            24.666986385216273
+          ],
+          [
+            -81.35650634765625,
+            24.66449040712424
+          ],
+          [
+            -81.32354736328125,
+            24.647017162630366
+          ],
+          [
+            -80.8099365234375,
+            24.821639356846607
+          ],
+          [
+            -80.62042236328125,
+            24.93127614538456
+          ],
+          [
+            -80.37872314453125,
+            25.175116531621764
+          ],
+          [
+            -80.42266845703124,
+            25.19251511519153
+          ],
+          [
+            -80.4803466796875,
+            25.46063471847754
+          ]
+        ]});
+StormEvents
+| where isnotempty(BeginLat) and isnotempty(BeginLon)
+| project BeginLon, BeginLat, EventType
+| where geo_distance_point_to_line(BeginLon, BeginLat, roadToKeyWest) < 500
+| render scatterchart with (kind=map)
+```
+
+## Show nearby points in a polygon
+
+The following query shows nearby storms in a defined polygon.
+
+```kusto
+let roadToKeyWest = dynamic({
+"type":"polygon",
+"coordinates":[
+          [
+            [
+              -80.08209228515625,
+              25.39117928167583
+            ],
+            [
+              -80.4913330078125,
+              25.517657429994035
+            ],
+            [
+              -80.57922363281249,
+              25.477992320574817
+            ],
+            [
+              -82.188720703125,
+              24.632038149596895
+            ],
+            [
+              -82.1942138671875,
+              24.53712939907993
+            ],
+            [
+              -82.13104248046875,
+              24.412140070651528
+            ],
+            [
+              -81.81243896484375,
+              24.43714786161562
+            ],
+            [
+              -80.58746337890625,
+              24.794214972389486
+            ],
+            [
+              -80.08209228515625,
+              25.39117928167583
+            ]
+          ]
+        ]});
+StormEvents
+| where isnotempty(BeginLat) and isnotempty(BeginLon)
+| project BeginLon, BeginLat, EventType
+| where geo_distance_point_to_polygon(BeginLon, BeginLat, roadToKeyWest) < 500
+| render scatterchart with (kind=map)
+```
+
+## Find anomalies based on geospatial data
+
+In the following example, geospatial data is used to gain insights with an anomaly chart.
+
+```kusto
+let interestingState = "Texas";
+let statePolygon = materialize(US_States
+    | extend name = tostring(features.properties.NAME)
+    | where name == interestingState
+    | project geometry=features.geometry);
+let stateCoveringS2cells = statePolygon
+    | project s2Cells = geo_polygon_to_s2cells(geometry,9);
+StormEvents
+| extend s2Cell = geo_point_to_s2cell(BeginLon, BeginLat, 9)
+| where s2Cell in (stateCoveringS2cells)
+| where geo_point_in_polygon(BeginLon, BeginLat, toscalar(statePolygon))
+| make-series damage = avg(DamageProperty + DamageCrops) default = double(0.0) on StartTime step 7d
+| extend anomalies=series_decompose_anomalies(damage)
+| render anomalychart with (anomalycolumns=anomalies)
+```
 
 ## Next steps
 
