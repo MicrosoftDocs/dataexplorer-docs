@@ -387,17 +387,20 @@ items:
                         href: security-network-restrict-public-access.md
                       - name: Troubleshoot private endpoints
                         href: security-network-private-endpoint-troubleshoot.md
-                  - name: Virtual network injection
+                  - name: Virtual Network injection
                     items:
-                      - name: Create a cluster in your VNet - Portal
+                      - name: Create a cluster in your virtual network - Portal
                         href: vnet-create-cluster-portal.md
-                      - name: Deploy your cluster to your VNet
+                        displayName: VNet, VNET
+                      - name: Deploy your cluster to your virtual network
                         href: vnet-deployment.md
+                        displayName: VNet, VNET
                       - name: Create a private or service endpoint to resources used by data connections
                         displayName: VNet, private endpoint, Azure Storage, event hub
                         href: vnet-endpoint-storage-event-hub.md
-                      - name: Troubleshoot VNet cluster creation, connectivity, and operation
+                      - name: Troubleshoot virtual network cluster creation, connectivity, and operation
                         href: vnet-deploy-troubleshoot.md
+                        displayName: VNet, VNET
                   - name: Restrict outbound requests
                     href: security-network-restrict-outbound-access.md
               - name: Encryption
