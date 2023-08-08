@@ -30,7 +30,7 @@ You can access your Azure Data Explorer cluster using the following IP addresses
 * **Public IP**: Used for accessing the cluster from outside the virtual network for management and monitoring, and as a source address for outbound connections started from the cluster.
 
 > [!IMPORTANT]
-> The default NSG rules block access to public IP addresses outside thevirtual network. To reach a public endpoint, you must add an exception for your public IP addresses in the NSG.
+> The default NSG rules block access to public IP addresses outside the virtual network. To reach a public endpoint, you must add an exception for your public IP addresses in the NSG.
 
 The following DNS records are created to access the service:
 
@@ -38,9 +38,9 @@ The following DNS records are created to access the service:
 
 * `private-[clustername].[geo-region].kusto.windows.net` (engine) `ingest-private-[clustername].[geo-region].kusto.windows.net`\\`private-ingest-[clustername].[geo-region].kusto.windows.net` (data management) are mapped to the private IP for each service.
 
-## Plan subnet size in yourvirtual network
+## Plan subnet size in your virtual network
 
-The size of the subnet used to host an Azure Data Explorer cluster can't be altered after the subnet is deployed. In yourvirtual network, Azure Data Explorer uses one private IP address for each VM and two private IP addresses for the internal load balancers (engine and data management). Azure networking also uses five IP addresses for each subnet. Azure Data Explorer provisions two VMs for the data management service. Engine service VMs are provisioned per user configuration scale capacity.
+The size of the subnet used to host an Azure Data Explorer cluster can't be altered after the subnet is deployed. In your virtual network, Azure Data Explorer uses one private IP address for each VM and two private IP addresses for the internal load balancers (engine and data management). Azure networking also uses five IP addresses for each subnet. Azure Data Explorer provisions two VMs for the data management service. Engine service VMs are provisioned per user configuration scale capacity.
 
 The total number of IP addresses:
 
@@ -64,15 +64,15 @@ Deploying the cluster into your subnet allows you to set up data connections wit
 
 ## Private Endpoints
 
-[Private Endpoints](/azure/private-link/private-endpoint-overview) allow private access to Azure resources (such as [storage/event hub](vnet-endpoint-storage-event-hub.md)/Data Lake Gen 2), and use private IP from your Virtual Network, effectively bringing the resource into yourvirtual network.
-Create a [private endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections, such as event hub and storage, and external tables such as Storage, Data Lake Gen 2, and SQL Database from yourvirtual network to access the underlying resources privately.
+[Private Endpoints](/azure/private-link/private-endpoint-overview) allow private access to Azure resources (such as [storage/event hub](vnet-endpoint-storage-event-hub.md)/Data Lake Gen 2), and use private IP from your Virtual Network, effectively bringing the resource into your virtual network.
+Create a [private endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections, such as event hub and storage, and external tables such as Storage, Data Lake Gen 2, and SQL Database from your virtual network to access the underlying resources privately.
 
  > [!NOTE]
  > Setting up Private Endpoint requires [configuring DNS](/azure/private-link/private-endpoint-dns), We support [Azure Private DNS zone](/azure/dns/private-dns-privatednszone) setup only. Custom DNS server isn't supported.
 
 ## Configure Network Security Group rules
 
-[NSGs](/azure/virtual-network/security-overview) give you the ability to control network access within avirtual network. You must configure NSGs for your Azure Data Explorer cluster to work in yourvirtual network.
+[NSGs](/azure/virtual-network/security-overview) give you the ability to control network access within a virtual network. You must configure NSGs for your Azure Data Explorer cluster to work in your virtual network.
 
 ### Configure Network Security Group rules using subnet delegation
 
