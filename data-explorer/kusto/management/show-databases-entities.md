@@ -7,7 +7,7 @@ ms.date: 07/20/2023
 ---
 # .show databases entities command
 
-The following commands shows databases's entities, such as tables, materialized views, external tables, etc.
+The following command shows databases' entities, such as tables, materialized views, external tables, etc.
 
 ## Permissions
 
@@ -31,7 +31,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 Returns a list of entities of all cluster databases visible to the user. Database entities are: tables, materialized views, external tables, etc.
 
 > [!IMPORTANT]
-> By default, all databases' entites are returned. To make the command execution more optimal, add a `where` condition that filters by specific databases and/or entity types or names (see examples section below).
+> By default, all databases' entites are returned. To make the command execution more optimal, add a `where` condition that filters by specific databases and/or entity types or names (see examples section in this article).
 
 #### Returned columns
 
@@ -45,7 +45,7 @@ Returns a list of entities of all cluster databases visible to the user. Databas
 |CslInputSchema|Entity input schema in CSL schema format, if applicable. For functions, this is the function parameters schema|
 |Content|Entity content, if applicable. For functions, it's a body of the function|
 |CslOutputSchema|Entity output schema in CSL schema format|
-|Properties|Dynamic structure that provides additional details on the entity (currently unused)|
+|Properties|Dynamic structure that provides more details on the entity (currently unused)|
 
 ### Examples
 
