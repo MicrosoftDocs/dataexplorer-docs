@@ -7,44 +7,48 @@ ms.date: 08/07/2023
 ---
 # Get data from file
 
+In this article, you learn you how to get data from an local file into either a new or existing table in an existing database.
+
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
-## Destination table
+## Get data
 
 1. From the left menu, select **Query**.
 
 1. Right-click on the database where you want to ingest the data. Select **Get data**.
 
-    IMAGE
+    :::image type="content" source="media/get-data-file/get-data.png" alt-text="Screenshot of query tab, with right-click on a database and the get options dialog open." lightbox="media/get-data-file/get-data.png":::
 
-## Select an ingestion type
+## Select a data source
 
-1. In the **Ingest data** window, the **Destination** tab is selected.
+1. In the **Get data** window, the **Source** tab is selected.
 
-1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus.
+1. Select the data source from the available list. In this example, you are ingesting data from a **Local file**.
 
-    [!INCLUDE [ingestion-wizard-cluster](includes/ingestion-wizard-cluster.md)]
+    :::image type="content" source="media/get-data-file/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-file/select-data-source.png":::
 
-1. If the **Table** field isn't automatically filled, select an existing table name from the drop-down menu.
+### Configure tab
 
-1. Select **Next: Source**
+1. Select a target database and table. If you want to ingest data into a new table, select **+ New table** and enter a table name.
 
-### Source tab
+    > [!NOTE]
+    > Table names can be up to 1024 characters including spaces, alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
-1. Under **Source type**, do the following steps:
+1. Either drag files into the window, or select **Browse for files**. 
 
-   1. Select **from file**
-   1. Select **Browse** to locate up to 10 files, or drag the files into the field. The schema-defining file can be chosen using the blue star.
-   1. Select **Next: Schema**
+    > [!NOTE]
+    > You can add up to 1,000 files. Each file can be a max of 1 GB uncompressed.
 
-      :::image type="content" source="media/ingestion-wizard-existing-table/from-file.png" alt-text="Screenshot to ingest from file with the ingestion wizard.":::
+    :::image type="content" source="media/get-data-file/configure-tab.png" alt-text="Screenshot of configure tab with new table entered and one sample data file selected." lightbox="media/get-data-file/configure-tab.png":::
 
-## Edit the schema
+1. Select **Next**
 
-The **Schema** tab opens.
+## Inspect the data
+
+The **Inspect** tab opens with a preview of the data. 
 
 * **Compression type** is selected automatically by the source file name. 
 * If you select **Ignore data format errors**, the data is ingested in JSON format. If you leave this check box unselected, the data is ingested in multijson format.
