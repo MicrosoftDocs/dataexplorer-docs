@@ -46,7 +46,7 @@ Logic Apps and :::no-loc text="Power Automate"::: are built on the same connecto
 
 ## Give a logic app access to a cluster in a virtual network
 
-To give a logic app access to a cluster in a virtual network, follow these steps:
+To give a logic app access to a [cluster in a virtual network](../../vnet-deployment.md), follow these steps:
 
 1. Access your cluster through the [Azure portal](https://ms.portal.azure.com/).
 1. From the left-hand menu, under **Security + Networking**, select **Networking**.
