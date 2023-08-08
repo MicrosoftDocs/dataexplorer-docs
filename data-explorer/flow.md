@@ -20,7 +20,7 @@ You can:
 For more information, see [Azure Data Explorer :::no-loc text="Power Automate"::: connector usage examples](flow-usage.md).
 
 > [!NOTE]
-> In order for a :::no-loc text="Power Automate"::: connector to access a [network protected cluster](../../security-network-private-endpoint.md), you must add the [outbound IP addresses](/connectors/common/outbound-ip-addresses#power-platform) associated with the region of your connector to the firewall allowlist. For more information, see [Control public access to your Azure Data Explorer cluster](../../security-network-restrict-public-access.md).
+> In order for a :::no-loc text="Power Automate"::: connector to access a [network protected cluster](security-network-private-endpoint.md), you must add the [outbound IP addresses](/connectors/common/outbound-ip-addresses#power-platform) associated with the region of your connector to the firewall allowlist. For more information, see [Control public access to your Azure Data Explorer cluster](security-network-restrict-public-access.md).
 
 ## Create a new flow using the Azure Data Explorer connector
 
