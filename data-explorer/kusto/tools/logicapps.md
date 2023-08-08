@@ -44,9 +44,9 @@ Logic Apps and :::no-loc text="Power Automate"::: are built on the same connecto
 
     :::image type="content" source="images/logic-apps/logic-app-kusto-connector-inline.png" alt-text="Screenshot of the designer page, showing the Azure Data Explorer actions." lightbox="images/logic-apps/logic-app-kusto-connector.png":::
 
-## Use a logic app with a VNet-integrated cluster
+## Give a logic app access to a cluster in a virtual network
 
-To allow a logic app access to a VNet-integrated cluster, follow these steps:
+To give a logic app access to a cluster in a virtual network, follow these steps:
 
 1. Access your cluster through the [Azure portal](https://ms.portal.azure.com/).
 1. From the left-hand menu, under **Security + Networking**, select **Networking**.
