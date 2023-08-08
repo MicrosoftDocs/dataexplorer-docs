@@ -48,15 +48,25 @@ In this article, you learn you how to get data from an local file into either a 
 
 ## Inspect the data
 
-The **Inspect** tab opens with a preview of the data. 
+The **Inspect** tab opens with a preview of the data.
 
-* **Compression type** is selected automatically by the source file name. 
-* If you select **Ignore data format errors**, the data is ingested in JSON format. If you leave this check box unselected, the data is ingested in multijson format.
-* When you select  **JSON**, you must also select **Nested levels**, from 1 to 100. The levels determine the table column data division.
-* For tabular formats, you can select **Keep current table schema**.
-Tabular data doesn't necessarily include the column names that are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema remains the same. If this option is unchecked, new columns are created for incoming data, regardless of data structure.
+:::image type="content" source="media/get-data-file/inspect-the-data.png" alt-text="Screenshot of the inspect tab.":::
 
-    :::image type="content" source="media/ingestion-wizard-existing-table/keep-table-schema.png" alt-text="Screenshot showing the 'keep current table schema' option checked when using tabular data format.":::
+1. Select **Command viewer** to view and copy the automatic commands generated from your inputs.
+
+1. The schema definition file is used for schema creation. If you are ingesting more than one file, choose the schema definition file from the dropdown.
+1. The data format is automatically inferred. You can change the data format by selecting the desired format from the dropdown. See [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
+    
+
+### Advanced options based on data type
+
+**JSON**:
+* If you select **JSON**, you can also select **Advanced** > **Nested levels**, from 1 to 100. The levels determine the table column data division.
+* If you select **Advanced** >**Ignore data format errors**, the data is ingested in JSON format. If you leave this check box unselected, the data is ingested in multijson format.
+
+**Tabular**
+* For ingesting tabular formats in an *existing table*, you can select **Advanced** > **Keep current table schema**. Tabular data doesn't necessarily include the column names that are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema remains the same. If this option is unchecked, new columns are created for incoming data, regardless of data structure.
+
 
 ### Add nested JSON data
 
@@ -88,24 +98,14 @@ To add columns from JSON levels that are different than the main **Nested levels
 > * For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.
 > * You can't change an existing column type. If you try to map to a column having a different format, you may end up with empty columns.
 
-[!INCLUDE [data-explorer-ingestion-wizard-command-editor](includes/data-explorer-ingestion-wizard-command-editor.md)]
-
-## Start ingestion
+## Deploy ingestion
 
 Select **Next: Start ingestion** to begin data ingestion.
-
-:::image type="content" source="media/ingestion-wizard-existing-table/start-ingestion.png" alt-text="Screenshot of ingestion wizard fields completed to start ingestion.":::
 
 ## Complete data ingestion
 
 In the **Data ingestion completed** window, all three steps are marked with green check marks when data ingestion finishes successfully.
 
-:::image type="content" source="media/ingestion-wizard-existing-table/one-click-data-ingestion-complete.png" alt-text="Screenshot of ingestion wizard summary when ingestion is completed.":::
-
-> [!IMPORTANT]
-> To set up continuous ingestion from a container, see [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container#create-continuous-ingestion)
-
-[!INCLUDE [data-explorer-ingestion-wizard-query-data](includes/data-explorer-ingestion-wizard-query-data.md)]
 
 ## Next steps
 
