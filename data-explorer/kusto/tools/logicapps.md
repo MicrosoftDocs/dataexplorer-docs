@@ -47,20 +47,6 @@ Logic Apps and :::no-loc text="Power Automate"::: are built on the same connecto
 
     :::image type="content" source="images/logic-apps/logic-app-kusto-connector-inline.png" alt-text="Screenshot of the designer page, showing the Azure Data Explorer actions." lightbox="images/logic-apps/logic-app-kusto-connector.png":::
 
-## Give a logic app access to a network protected cluster
-
-To give a logic app access to a [network protected cluster](../../security-network-private-endpoint.md), follow these steps:
-
-1. Access your cluster through the [Azure portal](https://ms.portal.azure.com/).
-1. From the left-hand menu, under **Security + Networking**, select **Networking**. Within the **Public network access** area, select **Enabled from selected IP addresses**.
-    
-    :::image type="content" source="images/logic-apps/enable-from-selected-ip-addresses-option.png" alt-text="Screenshot of the option to enable access from selected IP addresses." lightbox="images/logic-apps/enable-from-selected-ip-addresses-option.png":::
-
-1. In the **Azure Logic Apps** list of [managed connectors outbound IP addresses](/connectors/common/outbound-ip-addresses#azure-logic-apps), copy the **Outbound IP addresses** associated with the region of your logic app.
-1. Add each of the previously copied **Outbound IP addresses** to the **Firewall** allowlist.
-
-    :::image type="content" source="images/logic-apps/firewall-allowlist.png" alt-text="Screenshot of the firewall allowlist." lightbox="images/logic-apps/firewall-allowlist.png":::
-
 ## Next steps
 
 * To learn more about configuring a recurrence action, see the [:::no-loc text="Power Automate"::: documentation page](../../flow.md)
