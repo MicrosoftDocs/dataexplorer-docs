@@ -8,11 +8,11 @@ ms.date: 08/08/2023
 
 # Control public access to your Azure Data Explorer cluster
 
-This article describes how to allow, prevent, or limit public access to your Azure Data Explorer cluster. 
+This article describes how to allow, limit, or prevent public access to your Azure Data Explorer cluster. 
 
 ## Control public access
 
-To allow, prevent, or limit public access to your cluster, follow these steps:
+To allow, limit, or prevent public access to your cluster, follow these steps:
 
 1. In the [Azure portal](https://ms.portal.azure.com/), go to your cluster.
 
