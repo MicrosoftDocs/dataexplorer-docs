@@ -15,6 +15,8 @@ Calculates the [average](avg-aggfunction.md) of *expr* in records for which *pre
 
 `avgif` `(`*expr*`,` *predicate*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

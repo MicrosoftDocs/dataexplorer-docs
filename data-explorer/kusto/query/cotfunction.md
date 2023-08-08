@@ -13,6 +13,8 @@ Calculates the trigonometric cotangent of the specified angle, in radians.
 
 `cot(`*number*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

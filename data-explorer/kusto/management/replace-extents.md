@@ -25,6 +25,8 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 `.replace` [`async`] `extents` `in` `table` *DestinationTableName* `with` `(` `extentCreatedOnFrom` `=` *FromDate*`,` `extentCreatedOnTo` `=`*ToDate* `)` `<|`
 `{`*ExtentsToDropQuery*`},{`*ExtentsToMoveQuery*`}`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

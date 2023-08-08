@@ -17,6 +17,8 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 `.delete` `cluster` `policy` `callout`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 | Name          | Type   | Description                                                                                               |

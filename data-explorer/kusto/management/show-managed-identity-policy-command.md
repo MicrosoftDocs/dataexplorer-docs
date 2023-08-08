@@ -23,6 +23,8 @@ For more information, see [role-based access control](access-control/role-based-
 
 `.show` `database` *DatabaseName* `policy` `managed_identity`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

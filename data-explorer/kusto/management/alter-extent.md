@@ -32,6 +32,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 > [!NOTE]
 > For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range 
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

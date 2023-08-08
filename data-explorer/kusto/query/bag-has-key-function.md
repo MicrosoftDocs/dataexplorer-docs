@@ -13,6 +13,8 @@ Checks whether a dynamic property bag object contains a given key.
 
 `bag_has_key(`*bag*`,`*key*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
