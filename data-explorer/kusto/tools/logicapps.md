@@ -12,6 +12,9 @@ The [Microsoft Logic Apps](/azure/logic-apps/logic-apps-what-are-logic-apps) con
 
 Logic Apps and :::no-loc text="Power Automate"::: are built on the same connector. Therefore, the [limitations](../../flow.md#limitations), [actions](../../flow.md#flow-actions), [authentication](../../flow.md#authentication) and [usage examples](../../flow-usage.md) that apply to :::no-loc text="Power Automate":::, also apply to Logic Apps, as mentioned on the [:::no-loc text="Power Automate"::: documentation page](../../flow.md).
 
+> [!NOTE]
+> In order for a logic app to access to a [network protected cluster](../../security-network-private-endpoint.md), you must add the [outbound IP addresses](/connectors/common/outbound-ip-addresses#azure-logic-apps) associated with the region of your logic app to the firewall allowlist. For more information, see [Control public access to your Azure Data Explorer cluster](../../security-network-restrict-public-access.md).
+
 ## Create a logic app with Azure Data Explorer
 
 1. Open the [Microsoft Azure portal](https://ms.portal.azure.com/).
@@ -44,9 +47,9 @@ Logic Apps and :::no-loc text="Power Automate"::: are built on the same connecto
 
     :::image type="content" source="images/logic-apps/logic-app-kusto-connector-inline.png" alt-text="Screenshot of the designer page, showing the Azure Data Explorer actions." lightbox="images/logic-apps/logic-app-kusto-connector.png":::
 
-## Give a logic app access to a cluster in a virtual network
+## Give a logic app access to a network protected cluster
 
-To give a logic app access to a [cluster in a virtual network](../../vnet-deployment.md), follow these steps:
+To give a logic app access to a [network protected cluster](../../security-network-private-endpoint.md), follow these steps:
 
 1. Access your cluster through the [Azure portal](https://ms.portal.azure.com/).
 1. From the left-hand menu, under **Security + Networking**, select **Networking**. Within the **Public network access** area, select **Enabled from selected IP addresses**.
