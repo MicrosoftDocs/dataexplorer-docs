@@ -10,9 +10,9 @@ ms.date: 08/08/2023
 
 The [Microsoft Logic App](/azure/logic-apps/logic-apps-what-are-logic-apps) connector allows you to run queries and commands automatically as part of a scheduled or triggered task.
 
-Logic App and :::no-loc text="Power Automate"::: are built on the same connector. Therefore, the [limitations](../../flow.md#limitations), [actions](../../flow.md#flow-actions), [authentication](../../flow.md#authentication) and [usage examples](../../flow-usage.md) that apply to :::no-loc text="Power Automate":::, also apply to Logic Apps, as mentioned on the [:::no-loc text="Power Automate"::: documentation page](../../flow.md).
+Logic Apps and :::no-loc text="Power Automate"::: are built on the same connector. Therefore, the [limitations](../../flow.md#limitations), [actions](../../flow.md#flow-actions), [authentication](../../flow.md#authentication) and [usage examples](../../flow-usage.md) that apply to :::no-loc text="Power Automate":::, also apply to Logic Apps, as mentioned on the [:::no-loc text="Power Automate"::: documentation page](../../flow.md).
 
-## Create a Logic App with Azure Data Explorer
+## Create a logic app with Azure Data Explorer
 
 1. Open the [Microsoft Azure portal](https://ms.portal.azure.com/).
 1. Search for `logic app` and select it.
@@ -28,7 +28,7 @@ Logic App and :::no-loc text="Power Automate"::: are built on the same connector
 
     :::image type="content" source="images/logic-apps/logic-app-create-new.png" alt-text="Screenshot of the Create Logic App page, showing the Basics tab filled out.":::
 
-1. When the Logic App is created, go to the resource **Overview** page.
+1. When the logic app is created, go to the resource **Overview** page.
 1. On the left menu, select **Workflows**, and then select **+ Add**.
 
     :::image type="content" source="images/logic-apps/logic-app-workflow.png" alt-text="Screenshot of the Workflows page, showing the add workflow button.":::
@@ -44,9 +44,9 @@ Logic App and :::no-loc text="Power Automate"::: are built on the same connector
 
     :::image type="content" source="images/logic-apps/logic-app-kusto-connector-inline.png" alt-text="Screenshot of the designer page, showing the Azure Data Explorer actions." lightbox="images/logic-apps/logic-app-kusto-connector.png":::
 
-## Use a Logic App with a VNet-integrated cluster
+## Use a logic app with a VNet-integrated cluster
 
-To allow a Logic App access to a VNet-integrated cluster, follow these steps:
+To allow a logic app access to a VNet-integrated cluster, follow these steps:
 
 1. Access your cluster through the [Azure portal](https://ms.portal.azure.com/).
 1. From the left-hand menu, under **Security + Networking**, select **Networking**.
@@ -54,7 +54,7 @@ To allow a Logic App access to a VNet-integrated cluster, follow these steps:
     
     :::image type="content" source="images/logic-apps/enable-from-selected-ip-addresses-option.png" alt-text="Screenshot of the option to enable access from selected IP addresses." lightbox="images/logic-apps/enable-from-selected-ip-addresses-option.png":::
 
-1. In the **Azure Logic Apps** list of [managed connectors outbound IP addresses](/connectors/common/outbound-ip-addresses#azure-logic-apps), copy the **Outbound IP addresses** associated with the region of your Logic App connector.
+1. In the **Azure Logic Apps** list of [managed connectors outbound IP addresses](/connectors/common/outbound-ip-addresses#azure-logic-apps), copy the **Outbound IP addresses** associated with the region of your logic app.
 1. Add each of the previously copied **Outbound IP addresses** to the **Firewall** allowlist.
 
     :::image type="content" source="images/logic-apps/firewall-allowlist.png" alt-text="Screenshot of the firewall allowlist." lightbox="images/logic-apps/firewall-allowlist.png":::
