@@ -55,7 +55,7 @@ The free cluster is a subset of the full Azure Data Explorer cluster that provid
 | Follower clusters | &check; | |
 | Partitioning policy | &check; | |
 | Python and R plugins | &check; | |
-| Enterprise readiness (Customer managed keys, VNet, disk encryption, managed identities) | &check; | |
+| Enterprise readiness (Customer managed keys, Virtual Network, disk encryption, managed identities) | &check; | |
 | Autoscale | &check; | |
 | Azure Monitor and Insights | &check; | |
 | Azure Resource Manager (ARM) templates | &check; | |
