@@ -99,7 +99,7 @@ The SKU recommendation takes into account the current zones definitions of a clu
 The advisor SKU recommendation is updated every few hours. The recommendation checks for capacity availability of the selected SKU in the region. However, it is important to note that capacity availability is dynamic and changes over time. 
 
 > [!NOTE]
-> The advisor SKU recommendation does not currently support clusters with VNET or managed private endpoint configurations.
+> The advisor SKU recommendation does not currently support clusters with Virtual Network or managed private endpoint configurations.
 
 #### Reduce cache for Azure Data Explorer tables
 

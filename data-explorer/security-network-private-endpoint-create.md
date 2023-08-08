@@ -10,7 +10,7 @@ ms.date: 04/05/2022
 
 Use an Azure [private endpoint](/azure/private-link/private-endpoint-overview) to connect to your cluster in your [Azure virtual network](/azure/virtual-network/virtual-networks-overview) (VNet).
 
-Private endpoints use private IP addresses from your VNet to connect you privately to your cluster. With this setup, network traffic between a client on your private network and the cluster travels over the VNet and a private link on the [Microsoft backbone network](/azure/networking/microsoft-global-network). This article shows you how to create a private endpoint for your cluster.
+Private endpoints use private IP addresses from your virtual network to connect you privately to your cluster. With this setup, network traffic between a client on your private network and the cluster travels over the virtual network and a private link on the [Microsoft backbone network](/azure/networking/microsoft-global-network). This article shows you how to create a private endpoint for your cluster.
 
 ## Prerequisites
 
@@ -127,7 +127,7 @@ To see all the private endpoints created for your cluster:
 
 ### Use a custom DNS server
 
-In some situations, you may not be able to integrate with the private DNS zone of the VNet. For example, you may be using your own DNS server or you create DNS records using the host files on your virtual machines. This section describes how to get to the DNS zones.
+In some situations, you may not be able to integrate with the private DNS zone of the virtual network. For example, you may be using your own DNS server or you create DNS records using the host files on your virtual machines. This section describes how to get to the DNS zones.
 
 1. Install [choco](https://chocolatey.org/install)
 1. Install *ARMClient*
@@ -189,7 +189,7 @@ In some situations, you may not be able to integrate with the private DNS zone o
     :::image type="content" source="media/security-network-private-endpoint/pe-dns-config-inline.png" alt-text="Screenshot of the DNS configuration page, showing the DNS configuration of the private endpoint." lightbox="media/security-network-private-endpoint/pe-dns-config.png":::
 
     > [!WARNING]
-    > This information allows you to propagate your custom DNS server with the necessary records. We highly recommend that you integrate with the private DNS Zones of the VNet and don't configure your own custom DNS server. The nature of private endpoints for Azure Data Explorer clusters is different than for other Azure PaaS services. In some situations, such as high ingestion loads,  in order to increase throughput it might be necessary for the service to scale out the number of storage accounts that are accessible via the private endpoint. If you choose to propagate your own custom DNS server, it is your responsibility to take care of updating the DNS records in such situations, and later removing records i the number of storage accounts is scaled back in.
+    > This information allows you to propagate your custom DNS server with the necessary records. We highly recommend that you integrate with the private DNS Zones of the virtual network and don't configure your own custom DNS server. The nature of private endpoints for Azure Data Explorer clusters is different than for other Azure PaaS services. In some situations, such as high ingestion loads,  in order to increase throughput it might be necessary for the service to scale out the number of storage accounts that are accessible via the private endpoint. If you choose to propagate your own custom DNS server, it is your responsibility to take care of updating the DNS records in such situations, and later removing records i the number of storage accounts is scaled back in.
 
 ## Next steps
 
