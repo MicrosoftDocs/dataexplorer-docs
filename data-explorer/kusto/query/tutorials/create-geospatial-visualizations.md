@@ -137,7 +137,4 @@ StormEvents
 
 * See a use case for geospatial clustering: [Data analytics for automotive test fleets](/azure/architecture/industries/automotive/automotive-telemetry-analytics)
 * Learn about Azure architecture for [geospatial data processing and analytics](/azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure)
-* Read more about the [Kusto Query Language](../index.md)
-* Learn how to perform [cross-database and cross-cluster queries](../cross-cluster-or-database-queries.md)
-* Learn how to [ingest data](../../../ingest-sample-data.md)
-* Get a comprehensive understanding by reading the [white paper](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-explorer/Azure_Data_Explorer_white_paper.pdf)
+* Get a comprehensive understanding of Azure Data Explorer by reading the [white paper](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-explorer/Azure_Data_Explorer_white_paper.pdf)
