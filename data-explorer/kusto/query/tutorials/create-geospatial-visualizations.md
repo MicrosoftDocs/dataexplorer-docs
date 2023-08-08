@@ -2,7 +2,7 @@
 title:  'Tutorial: Create geospatial visualizations'
 description: This tutorial gives examples of geospatial visualizations in the Kusto Query Language.
 ms.topic: tutorial
-ms.date: 01/18/2023
+ms.date: 08/08/2023
 ---
 
 # Tutorial: Create geospatial visualizations
@@ -134,6 +134,9 @@ StormEvents
 
 ## Next steps
 
+
+* See a use case for geospatial clustering: [Data analytics for automotive test fleets](/azure/architecture/industries/automotive/automotive-telemetry-analytics)
+* Learn about Azure architecture for [geospatial data processing and analytics](/azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure)
 * Read more about the [Kusto Query Language](../index.md)
 * Learn how to perform [cross-database and cross-cluster queries](../cross-cluster-or-database-queries.md)
 * Learn how to [ingest data](../../../ingest-sample-data.md)
