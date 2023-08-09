@@ -77,8 +77,8 @@ The changes you can make in a table depend on the following parameters:
 
 Table type | Mapping type | Available adjustments|
 |---|---|---|
-| New table | New mapping |Rename column, change data type, change data source, [mapping transformation](#mapping-transformations) if relevant, new column, delete column |
-| Existing table | New mapping | New column (on which you can then change data type, rename, and update) |
+| New table | New mapping |Rename column, change data type, change data source, [mapping transformation](#mapping-transformations), add column, delete column |
+| Existing table | New mapping | Add column (on which you can then change data type, rename, and update) |
 | Existing table | Existing mapping | none
 
 ### Mapping transformations
