@@ -95,7 +95,9 @@ All [Azure Monitor diagnostic logs share a common top-level schema](/azure/azure
 
 * [SucceededIngestion](/azure/azure-monitor/reference/tables/succeededingestion)
 * [FailedIngestion](/azure/azure-monitor/reference/tables/failedingestion)
+    * For information about error codes, see [Ingestion error codes](error-codes.md)
 * [ADXIngestionBatching](/azure/azure-monitor/reference/tables/adxingestionbatching)
+    * For information about batching types, see [Batching policy](kusto/management/batchingpolicy.md#sealing-a-batch)
 * [ADXCommand](/azure/azure-monitor/reference/tables/adxcommand)
 * [ADXQuery](/azure/azure-monitor/reference/tables/adxquery)
 * [ADXTableUsageStatistics](/azure/azure-monitor/reference/tables/adxtableusagestatistics)
