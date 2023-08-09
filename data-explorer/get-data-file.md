@@ -75,9 +75,20 @@ The changes you can make in a table depend on the following parameters:
 
 Table type | Mapping type | Available adjustments|
 |---|---|---|
-|New table   | New mapping |Change data type, Rename column, New column, Delete column, Update column |
-|Existing table  | New mapping | New column (on which you can then change data type, rename, and update), <br> Update column |
+| New table | New mapping |Rename column, change data type, change data source, [mapping transformation](#mapping-transformations) if relevant, new column, delete column |
+| Existing table | New mapping | New column (on which you can then change data type, rename, and update) |
 | Existing table | Existing mapping | none
+
+### Mapping transformations
+
+Some data format mappings (Parquet, JSON, and Avro) support simple ingest-time transformations. To apply mapping transformations, create or update a column in the Editor window.
+
+Mapping transformations can be performed on a column of Type string or datetime, with the Source having data type int or long. Supported mapping transformations are:
+
+* DateTimeFromUnixSeconds
+* DateTimeFromUnixMilliseconds
+* DateTimeFromUnixMicroseconds
+* DateTimeFromUnixNanoseconds
 
 ### Advanced options based on data type
 
