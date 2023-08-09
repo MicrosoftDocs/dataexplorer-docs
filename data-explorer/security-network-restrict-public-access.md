@@ -18,7 +18,7 @@ To allow, limit, or prevent public access to your cluster, follow these steps:
 
 1. From the left-hand menu, under **Security + Networking**, select **Networking**.
 
-    :::image type="content" source="media/security-network-restrict-access/networking-public-access.png" alt-text="Screenshot of the option to add IP addresses to an allowlist." lightbox="media/security-network-restrict-access/networking-public-access.png":::
+    :::image type="content" source="media/security-network-restrict-access/networking-public-access.png" alt-text="Screenshot of the networking public access page." lightbox="media/security-network-restrict-access/networking-public-access.png":::
 
 1. Within the **Public network access** area, select one of the following three options:
    
