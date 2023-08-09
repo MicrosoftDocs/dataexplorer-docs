@@ -137,7 +137,7 @@ StormEvents
 
 ## Show nearby points on a LineString
 
-The following query finds nearby storm events that occur along a specified LineString, which represents a defined path. In this case, the LineString is a road to Key West. The [geo_distance_point_to_line()](../geo-distance-point-to-line-function.md) function is used to filter the storm events based on their proximity to the defined LineString. If an event is within 500 units of distance from LineString, the event is rendered on a map.
+The following query finds nearby storm events that occur along a specified LineString, which represents a defined path. In this case, the LineString is a road to Key West. The [geo_distance_point_to_line()](../geo-distance-point-to-line-function.md) function is used to filter the storm events based on their proximity to the defined LineString. If an event is within 500 meters from LineString, the event is rendered on a map.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WUTWvcMBCG7wv7H4RPa3CMPmZGUtpcCj21twZ6KGExtthVmpUWWzQsbf97ZwNpusShWDpJIz169c4wD6GIMXfDbf4UTl/DVMSNGE6pO8R+83O9qsrpGKrr6iEmjo0x7aqGd/ucxyGmroSpuv62Xom/42IhxJVTrfXIE6wmJI3N5QENLRKQksZJZcnhv+G75j9oBgM678DYGTBpKwEs05GktsvIWhmpNHk0ak40EXlHxvE5fsYsYhsklGTAvmEIEYCXIK3SoGEZWhsEa8hoNy8bLNvMkslIQ7SALVsnvTeE2sy77dgJ4/lvDojkErclZ0qC1m/L9pwESwrQOMBlqo11VhsFMJtIbJVFpYiDpLn+lrgtW9ZM/F20ktkww/YaFeNReYVLaoTRThr20Xpyr83GFuipgJQDa/FS9Mvi7nf9br36UvJ4+PgjpDKtV7/E4z6MQcQp5RIOx3LafAi7mD53pRZdGl4HcqrP145jvg99Ec+bjXi+14gn+C03ihf+LuTtEKfSpT5sjzmmsi15e+4imznCRQeqxXuBUp5hY0hDGMXUd6WEsd93YxGPsezF5ntMw82hO9Z/AMXFbiXBBAAA" target="_blank">Run the query</a>
@@ -198,7 +198,7 @@ StormEvents
 
 ## Show nearby points in a polygon
 
-The following query finds nearby storm events that occur within a specified polygon. In this case, the polygon is a road to Key West. The [geo_distance_point_to_polygon()](../geo-distance-point-to-polygon-function.md) function is used to filter the storm events based on their proximity to the defined polygon. If an event is within 500 units of distance from polygon, the event is rendered on a map.
+The following query finds nearby storm events that occur within a specified polygon. In this case, the polygon is a road to Key West. The [geo_distance_point_to_polygon()](../geo-distance-point-to-polygon-function.md) function is used to filter the storm events based on their proximity to the defined polygon. If an event is within 500 meters of the polygon, the event is rendered on a map.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6WUUY/TMAyA3yftP0R9WqVSJbGT2Af3gsQTvHESD+g0VW20FW5J1UacKuC/kyEOblxPYiNvdmx/duz4zicxxqa7iW/9/MFPSVyLbg7NoW83X9erIs2DL66KId7NuxiKKqvaGMeuD03yU3H1cb0Sv8+J8EQU4gXJWpKWrDUZZaw21d8m2tTASjnWpKwzBKcGt9U/IJAVAEjpSC0TjHLWONTMjBLMBQiTE9RgIWepkZcY6ByzBi0ziJQ7m6FrReS0dBIWq8A60yWQQjZsic+vIhMYtQKyTpFbRBhwSjMwy1zM+a3IBFASNZJE+wwClVaYeyVtnghNZzNUfWwBEFskhGcYuQx0ZJU9Dt0l7SaHFsARy8WhxdodnxLZ6ZwJkr2A8Z8f47H4SLj9Xr5cr96nOB7efPEhTevVN3G/96MX/RRi8ochzZvXfteHd00qRRO6pxcxlEe3YYyffJvEg7ISD36V+Bn8Ji+LP/F3Pm67fkpNaP12iH1I2xS3vzbJZinIySIqxSthpDzGG33o/CimtknJj+2+GZO479NebD73obs+NEP5A2AQjgzIBAAA" target="_blank">Run the query</a>
