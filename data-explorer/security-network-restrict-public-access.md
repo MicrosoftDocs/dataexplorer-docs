@@ -1,16 +1,16 @@
 ---
-title: Control public access to your Azure Data Explorer cluster
-description: Learn how to control public access to your Azure Data Explorer cluster.
+title: Manage public access to your Azure Data Explorer cluster
+description: Learn how to Manage public access to your Azure Data Explorer cluster.
 ms.reviewer: eladb
 ms.topic: how-to
 ms.date: 08/09/2023
 ---
 
-# Control public access to your Azure Data Explorer cluster
+# Manage public access to your Azure Data Explorer cluster
 
 This article describes how to allow, limit, or prevent public access to your Azure Data Explorer cluster. 
 
-## Control public access
+## Manage public access
 
 To allow, limit, or prevent public access to your cluster, follow these steps:
 

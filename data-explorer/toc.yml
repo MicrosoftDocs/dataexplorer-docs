@@ -383,7 +383,7 @@ items:
                         href: security-network-private-endpoint-create.md
                       - name: Create a managed private endpoint
                         href: security-network-managed-private-endpoint-create.md
-                      - name: Control public access to your cluster
+                      - name: Manage public access to your cluster
                         href: security-network-restrict-public-access.md
                         displayName: restrict, prevent, limit, IP addresses, allowlist, whitelist, VNET, private endpoint, virtual network
                       - name: Troubleshoot private endpoints
