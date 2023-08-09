@@ -50,7 +50,7 @@ In this article, you learn you how to get data from an local file into either a 
 
 The **Inspect** tab opens with a preview of the data.
 
-:::image type="content" source="media/get-data-file/inspect-the-data.png" alt-text="Screenshot of the inspect tab.":::
+:::image type="content" source="media/get-data-file/inspect-the-data.png" alt-text="Screenshot of the inspect tab." lightbox="media/get-data-file/inspect-the-data.png":::
 
 1. Select **Command viewer** to view and copy the automatic commands generated from your inputs.
 1. The schema definition file is used for schema creation. If you are ingesting more than one file, choose the schema definition file from the dropdown.
@@ -58,7 +58,6 @@ The **Inspect** tab opens with a preview of the data.
 1. Optionally, [Edit the columns](#edit-columns).
 1. Optionally, explore [Advanced options based on data type](#advanced-options-based-on-data-type).
 1. Select **Finish** to complete the ingestion process.
-
 
 ### Edit columns
 
@@ -86,9 +85,10 @@ Table type | Mapping type | Available adjustments|
 * To use the first row as column names, select  **Advanced** > **First row is column header**.
 
     :::image type="content" source="media/get-data-file/advanced-csv.png" alt-text="Screenshot of advanced CSV options.":::
+
 **JSON**:
 
-* If you select **JSON**, you can also select **Advanced** > **Nested levels**, from 1 to 100. The levels determine the table column data division.
+* To determine column division of JSON data, select **Advanced** > **Nested levels**, from 1 to 100. 
 * If you select **Advanced** > **Ignore data format errors**, the data is ingested in JSON format. If you leave this check box unselected, the data is ingested in multijson format.
 
     :::image type="content" source="media/get-data-file/advanced-json.png" alt-text="Screenshot of advanced JSON options":::
@@ -97,9 +97,9 @@ Table type | Mapping type | Available adjustments|
 
 In the **Data preparation** window, all three steps are marked with green check marks when data ingestion finishes successfully. You can view the commands that were used for each step.
 
-## Next steps
+:::image type="content" source="media/get-data-file/summary.png" alt-text="Screenshot of summary page with successful ingestion completed." lightbox="media/get-data-file/summary.png":::
 
-To get started querying data, see the following articles:
+## Next steps
 
 * Explore the results in the [Azure Data Explorer web UI query](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
