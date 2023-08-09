@@ -89,7 +89,7 @@ Consider the following when looking at the chart of ingestion results:
 * When using event hub or IoT hub ingestion, there is an event pre-aggregation in the *Data connection component*. During this stage of ingestion, events are treated as a single source to be ingested. Therefore, a few events appear as a single ingestion result after pre-aggregation.
 * Transient failures are retried internally in a limited number of attempts. Each transient failure is reported as a transient ingestion result. That's why a single ingestion may lead to more than one ingestion result.
 * Ingestion errors in the chart are listed by the category of the error code. To see the full list of ingestion error codes by categories and try to better understand the possible error reason, see [Ingestion error codes in Azure Data Explorer](error-codes.md).
-* To get more details on an ingestion error, you can set [failed ingestion diagnostic logs](using-diagnostic-logs.md?tabs=ingestion#failed-ingestion-operation-log). However, it's important to consider that generating logs results in the creation of extra resources, and therefore an increase in the COGS (cost of goods sold).
+* To get more details on an ingestion error, you can set [failed ingestion diagnostic logs](using-diagnostic-logs.md#diagnostic-logs-schema). However, it's important to consider that generating logs results in the creation of extra resources, and therefore an increase in the COGS (cost of goods sold).
 
 ## View the amount of ingested data
 
@@ -135,7 +135,7 @@ The metrics **Stage Latency** and **Discovery Latency** monitor latency in the i
 * **Discovery Latency** is used for ingestion pipelines with data connections (such as event hub, IoT hub, and event grid). This metric gives information about the time span from data enqueue until discovery by Azure Data Explorer data connections. This time span is upstream to Azure Data Explorer, so it's not included in the **Stage Latency** metric that only measures the latency in Azure Data Explorer.
 
 > [!NOTE]
-> According to the default [batching policy](kusto/management/batchingpolicy.md), the default batching time is five minutes. Therefore, if the batch isn't sealed by other triggers, the batch will be sealed after five minutes. 
+> According to the default [batching policy](kusto/management/batchingpolicy.md), the default batching time is five minutes. Therefore, if the batch isn't sealed by other triggers, the batch will be sealed after five minutes.
 
 When you see a long latency until data is ready for query, analyzing **Stage Latency** and **Discovery Latency** can help you understand whether the long latency is because of long latency in Azure Data Explorer, or is upstream to Azure Data Explorer. When the latency is in Azure Data Explorer itself, you can also detect the specific component responsible for the long latency.
 
@@ -199,19 +199,20 @@ The chart shows the number of sealed batches with data sent to the *GitHub* data
 ### Batch duration, size, and blob count
 
 Now let's further characterize the processed batches.
-1. Select the **+ Add Chart** button for each chart to create more charts for the **Metric** values *Batch Duration*, *Batch Size*, and *Batch Blob Count*.  
+
+1. Select the **+ Add Chart** button for each chart to create more charts for the **Metric** values *Batch Duration*, *Batch Size*, and *Batch Blob Count*.
 1. Use *Avg* as the **Aggregation** value.
 1. As in the previous example, select the **Add filter** button, and filter on the data sent to the *GitHub* database.
 
 :::image type="content" source="media/monitor-batching-ingestion/batch-count-duration-size-charts.png" alt-text="Screenshot of the Metrics pane in Azure portal showing charts of Batch blob count, Batch duration and Batch size metrics, for ingestion from the github database aggregated by avg and split by batching type." lightbox="media/monitor-batching-ingestion/batch-count-duration-size-charts.png":::
 
-From the *Batch Duration*, *Batch Size*, and *Batch Blob Count* charts we can conclude some insights: 
+From the *Batch Duration*, *Batch Size*, and *Batch Blob Count* charts we can conclude some insights:
 
 * The average batch duration is five minutes (according to the default batching policy). You should take this into account when looking at the total ingestion latency.
 
-* In the *Batch Size* chart, you can see that the average size of batches is around 200-500 MB over time. The optimal size of data to be ingested is 1 GB of uncompressed data, and this size is also defined as a seal condition by the default batching policy. As there's not 1 GB of data to be batched over time, we don't see any batches sealed by size. 
+* In the *Batch Size* chart, you can see that the average size of batches is around 200-500 MB over time. The optimal size of data to be ingested is 1 GB of uncompressed data, and this size is also defined as a seal condition by the default batching policy. As there's not 1 GB of data to be batched over time, we don't see any batches sealed by size.
 
-* The average number of blobs in the batches is around 160 blobs over time, which then decreases to 60-120 blobs. Based on the default batching policy, a batch can seal when the blob count is 1000 blobs. As we don’t arrive at this number, we don’t see batches sealed by count.
+* The average number of blobs in the batches is around 160 blobs over time, which then decreases to 60-120 blobs. Based on the default batching policy, a batch can seal when the blob count is 1000 blobs. As we don't arrive at this number, we don't see batches sealed by count.
 
 ## Compare events received to events sent for ingestion
 
