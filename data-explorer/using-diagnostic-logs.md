@@ -84,7 +84,7 @@ Diagnostic logs are disabled by default. Use the following steps to enable diagn
     1. Select [metrics](using-metrics.md#supported-azure-data-explorer-metrics) to be collected (optional).
     1. Select **Save** to save the new diagnostic logs settings and metrics.
 
-Once the settings are ready, logs will start appear in the configured destination targets (a storage account, an event hub, or Log Analytics workspace).
+Once the settings are ready, logs will start to appear in the configured destination targets (a storage account, an event hub, or Log Analytics workspace).
 
 > [!NOTE]
 > If you send logs to a Log Analytics workspace, the `SucceededIngestion`, `FailedIngestion`, `IngestionBatching`, `Command`, `Query`, `TableUsageStatistics`, `TableDetails`, and `Journal` logs will be stored in Log Analytics tables named: `SucceededIngestion`, `FailedIngestion`, `ADXIngestionBatching`, `ADXCommand`, `ADXQuery`, `ADXTableUsageStatistics`, `ADXTableDetails`, and `ADXJournal` respectively.
