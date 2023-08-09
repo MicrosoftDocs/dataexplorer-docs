@@ -36,12 +36,12 @@ If the *TableName* isn't specified, you must have at least [Database Admin](./ac
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|`whatif`|string||If specified, the extent tags will be reported instead of being dropped.|
-| *Query* | string | &check; | A [Kusto Query Language (KQL)](../query/index.md) query that returns the extent tags to be dropped.|
+|`whatif`|string||If specified, the extents will be reported instead of being dropped.|
+| *Query* | string | &check; | The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source tables and the extent IDs to be dropped. Should return a recordset with columns called "ExtentId" and "TableName".|
 
 ### Drop a specific or multiple extents
 
-`.drop` `extents` `(`*ExtentIds*`)` [`from` *TableName*]
+`.drop` `extents` `(`*ExtentIds*`)` `from` *TableName*
 
 #### Parameters
 
