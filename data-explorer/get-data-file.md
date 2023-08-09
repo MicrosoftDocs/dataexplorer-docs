@@ -55,7 +55,7 @@ The **Inspect** tab opens with a preview of the data.
 1. Select **Command viewer** to view and copy the automatic commands generated from your inputs.
 1. The schema definition file is used for schema creation. If you are ingesting more than one file, choose the schema definition file from the dropdown.
 1. The data format is automatically inferred. You can change the data format by selecting the desired format from the dropdown. See [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
-1. Optionally, [Edit the columns](#edit-columns).
+1. Optionally, [Edit columns](#edit-columns).
 1. Optionally, explore [Advanced options based on data type](#advanced-options-based-on-data-type).
 1. Select **Finish** to complete the ingestion process.
 
@@ -95,7 +95,7 @@ Table type | Mapping type | Available adjustments|
 
 ## Summary
 
-In the **Data preparation** window, all three steps are marked with green check marks when data ingestion finishes successfully. You can view the commands that were used for each step.
+In the **Data preparation** window, all three steps are marked with green check marks when data ingestion finishes successfully. You can view the commands that were used for each step, or select a card to query, visualize, or drop the ingested data.
 
 :::image type="content" source="media/get-data-file/summary.png" alt-text="Screenshot of summary page with successful ingestion completed." lightbox="media/get-data-file/summary.png":::
 
