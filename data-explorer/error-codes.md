@@ -7,7 +7,7 @@ ms.date: 11/11/2020
 ---
 # Ingestion error codes
 
-The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). When you enable failed ingestion [diagnostic logs](using-diagnostic-logs.md#ingestion-logs-schema) on your cluster, you can see error codes in the **Failed ingestion** operation log. You can also monitor the **Ingestion result** [metric](using-metrics.md#ingestion-metrics) to see the **Category** of ingestion errors, but not the specific error codes. Errors below are organized by these categories. 
+The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). When you enable failed ingestion [diagnostic logs](using-diagnostic-logs.md#diagnostic-logs-schema) on your cluster, you can see error codes in the **Failed ingestion** operation log. You can also monitor the **Ingestion result** [metric](using-metrics.md#ingestion-metrics) to see the **Category** of ingestion errors, but not the specific error codes. Errors below are organized by these categories.
 
 > [!NOTE]
 > For transient errors or 'General_RetryAttemptsExceeded' error, retrying the ingestion may succeed.
