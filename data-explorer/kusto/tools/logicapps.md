@@ -3,7 +3,7 @@ title: Microsoft Logic Apps and Azure Data Explorer
 description: Learn how to use Logic Apps to run Kusto queries and commands automatically and schedule them.
 ms.reviewer: docohe
 ms.topic: how-to
-ms.date: 08/08/2023
+ms.date: 08/09/2023
 ---
 
 # Microsoft Logic Apps and Azure Data Explorer
@@ -13,7 +13,7 @@ The [Microsoft Logic Apps](/azure/logic-apps/logic-apps-what-are-logic-apps) con
 Logic Apps and :::no-loc text="Power Automate"::: are built on the same connector. Therefore, the [limitations](../../flow.md#limitations), [actions](../../flow.md#flow-actions), [authentication](../../flow.md#authentication) and [usage examples](../../flow-usage.md) that apply to :::no-loc text="Power Automate":::, also apply to Logic Apps, as mentioned on the [:::no-loc text="Power Automate"::: documentation page](../../flow.md).
 
 > [!NOTE]
-> In order for a logic app to access to a [network protected cluster](../../security-network-private-endpoint.md), you must add the [outbound IP addresses](/connectors/common/outbound-ip-addresses#azure-logic-apps) associated with the region of your logic app to the firewall allowlist. For more information, see [Control public access to your Azure Data Explorer cluster](../../security-network-restrict-public-access.md).
+> In order for a logic app to access to a [network protected cluster](../../security-network-private-endpoint.md), you must add the [outbound IP addresses](/connectors/common/outbound-ip-addresses#azure-logic-apps) associated with the region of your logic app to the firewall allowlist. For more information, see [Manage public access to your Azure Data Explorer cluster](../../security-network-restrict-public-access.md).
 
 ## Create a logic app with Azure Data Explorer
 

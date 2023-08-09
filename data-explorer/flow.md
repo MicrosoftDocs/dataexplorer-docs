@@ -3,7 +3,7 @@ title: Azure Data Explorer connector for Power Automate
 description: Learn about using Azure Data Explorer connector for Power Automate to create flows of automatically scheduled or triggered tasks.
 ms.reviewer: miwalia
 ms.topic: how-to
-ms.date: 05/04/2022
+ms.date: 08/09/2023
 ---
 
 # Azure Data Explorer connector for Microsoft :::no-loc text="Power Automate":::
@@ -20,7 +20,7 @@ You can:
 For more information, see [Azure Data Explorer :::no-loc text="Power Automate"::: connector usage examples](flow-usage.md).
 
 > [!NOTE]
-> In order for a :::no-loc text="Power Automate"::: connector to access a [network protected cluster](security-network-private-endpoint.md), you must add the [outbound IP addresses](/connectors/common/outbound-ip-addresses#power-platform) associated with the region of your connector to the firewall allowlist. For more information, see [Control public access to your Azure Data Explorer cluster](security-network-restrict-public-access.md).
+> In order for a :::no-loc text="Power Automate"::: connector to access a [network protected cluster](security-network-private-endpoint.md), you must add the [outbound IP addresses](/connectors/common/outbound-ip-addresses#power-platform) associated with the region of your connector to the firewall allowlist. For more information, see [Manage public access to your Azure Data Explorer cluster](security-network-restrict-public-access.md).
 
 ## Create a new flow using the Azure Data Explorer connector
 
