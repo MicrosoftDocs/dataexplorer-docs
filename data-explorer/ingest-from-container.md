@@ -124,12 +124,12 @@ In the **Schema** tab:
 
 When ingesting to a new table, alter various aspects of the table when creating the table.
 
-[!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
+!INCLUDE data-explorer-ingestion-wizard-column-table
 
 > [!NOTE]
 > For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.
 
-[!INCLUDE [data-explorer-ingestion-wizard-command-editor](includes/data-explorer-ingestion-wizard-command-editor.md)]
+!INCLUDE data-explorer-ingestion-wizard-command-editor
 
 Select **Next: Summary** to create a table and mapping and to begin data ingestion.
 
