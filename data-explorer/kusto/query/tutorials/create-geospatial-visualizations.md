@@ -2,7 +2,7 @@
 title:  'Tutorial: Create geospatial visualizations'
 description: This tutorial gives examples of geospatial visualizations in the Kusto Query Language.
 ms.topic: tutorial
-ms.date: 08/08/2023
+ms.date: 08/09/2023
 ---
 
 # Tutorial: Create geospatial visualizations
@@ -18,7 +18,7 @@ In this tutorial, you'll learn how to:
 > * [Use GeoJSON values to plot points on a map](#use-geojson-values-to-plot-points-on-a-map)
 > * [Represent data points with variable-sized bubbles](#represent-data-points-with-variable-sized-bubbles)
 > * [Display points within a specific area](#display-points-within-a-specific-area)
-> * [Show nearby points on a linestring](#show-nearby-points-on-a-linestring)
+> * [Show nearby points on a LineString](#show-nearby-points-on-a-linestring)
 > * [Show nearby points in a polygon](#show-nearby-points-in-a-polygon)
 > * [Find anomalies based on geospatial data](#find-anomalies-based-on-geospatial-data)
 
@@ -135,9 +135,9 @@ StormEvents
 
 :::image type="content" source="../images/kql-tutorials/geospatial-southern-california-polygon.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of southern California storms.":::
 
-## Show nearby points on a linestring
+## Show nearby points on a LineString
 
-The following query shows nearby storms on a defined linestring.
+The following query finds nearby storm events that occur along a specified LineString, which represents a defined path. In this case, the LineString is a road to Key West. If the events are within a certain distance from the defined LineString, the query displays these events on a scatterchart map.
 
 ```kusto
 let roadToKeyWest = dynamic({
