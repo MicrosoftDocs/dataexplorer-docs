@@ -147,15 +147,15 @@ StormEvents
 |---|
 |1149279.5923|
 
-Request another column (EventType) to the top-nested result.
+The following query builds upon the [initial example](#use-the-top-nested-operator) by introducing an extra `top-nested` clause. In this new clause, the absence of a numeric specification results in the extraction of all distinct values of `EventType` across the partitions. The `max(1)` aggregation function is merely a placeholder, rendering its outcome irrelevant. Consequently, the [project-away](projectawayoperator.md) operator is implemented to remove the `tmp` column. The result shows all event types associated with the previously aggregated data.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43OMQ6CQBQE0J5TTAmJFNjbmNDR4QW+y9dgsvs3u4NK4uEVKC102nmZTE9Lvr1rYC5eoMU6aKYO2MMu6ClUbDnPyJMvj3odQyesdgW+vU3J6V++WXwbhs6ccLTwy2P1y9HTHHXbp484wMuzbKrP+5jspo61PGTt3mt/gc7cAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43OsQ6CQBAE0J6v2BISKdDaxoSODn9gPVaDye1e7gaUxI9XjsZOp52XyfSw6NtZFKl4ESzUKgky0J7sSj0YQlsuC6XJlye5jdoxql1B3/6QvU3RyV++WX2rQ2eOMZr+8pT9evS8BNn24QMdyfOzbKrP+xDtLg41Pzh3b61gghvcAAAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
 | top-nested 2 of State       by sum(BeginLat),
-  top-nested 2 of Source      by sum(BeginLat),
+  top-nested 3 of Source      by sum(BeginLat),
   top-nested 1 of EndLocation by sum(BeginLat),
   top-nested   of EventType   by tmp = max(1)
 | project-away tmp
@@ -163,19 +163,19 @@ StormEvents
 
 **Output**
 
-|State|aggregated_State|Source|aggregated_Source|EndLocation|aggregated_EndLocation|EventType|
-|---|---|---|---|---|---|---|
-|KANSAS|87771.2355000001|Trained Spotter|21279.7083|SHARON SPGS|388.7404|Thunderstorm Wind|
-|KANSAS|87771.2355000001|Trained Spotter|21279.7083|SHARON SPGS|388.7404|Hail|
-|KANSAS|87771.2355000001|Trained Spotter|21279.7083|SHARON SPGS|388.7404|Tornado|
-|KANSAS|87771.2355000001|Public|22855.6206|BUCKLIN|488.2457|Hail|
-|KANSAS|87771.2355000001|Public|22855.6206|BUCKLIN|488.2457|Thunderstorm Wind|
-|KANSAS|87771.2355000001|Public|22855.6206|BUCKLIN|488.2457|Flood|
-|TEXAS|123400.5101|Trained Spotter|13997.7124|CLAUDE|421.44|Hail|
-|TEXAS|123400.5101|Law Enforcement|37228.5966|PERRYTON|289.3178|Hail|
-|TEXAS|123400.5101|Law Enforcement|37228.5966|PERRYTON|289.3178|Flood|
-|TEXAS|123400.5101|Law Enforcement|37228.5966|PERRYTON|289.3178|Flash Flood|
-
+| State | aggregated_State | Source | aggregated_Source | EndLocation | aggregated_EndLocation | EventType |
+|--|--|--|--|--|--|--|
+| TEXAS | 123400.51009999994 | Public | 13650.907900000002 | AMARILLO | 246.25979999999998 | Hail |
+| TEXAS | 123400.51009999994 | Public | 13650.907900000002 | AMARILLO | 246.25979999999998 | Thunderstorm Wind |
+| KANSAS | 87771.235500000068 | Public | 22855.6206 | BUCKLIN | 488.2457 | Flood |
+| KANSAS | 87771.235500000068 | Public | 22855.6206 | BUCKLIN | 488.2457 | Thunderstorm Wind |
+| KANSAS | 87771.235500000068 | Public | 22855.6206 | BUCKLIN | 488.2457 | Hail |
+| TEXAS | 123400.51009999994 | Trained Spotter | 13997.712400000009 | CLAUDE | 421.44 | Hail |
+| KANSAS | 87771.235500000068 | Law Enforcement | 18744.823000000004 | FT SCOTT | 264.858 | Flash Flood |
+| KANSAS | 87771.235500000068 | Law Enforcement | 18744.823000000004 | FT SCOTT | 264.858 | Thunderstorm Wind |
+| KANSAS | 87771.235500000068 | Law Enforcement | 18744.823000000004 | FT SCOTT | 264.858 | Flood |
+| TEXAS | 123400.51009999994 | Law Enforcement | 37228.596599999961 | PERRYTON | 289.3178 | Hail |
+| ... | ... | ... | ... | ... | ... |
 Give an index sort order for each value in this level (per group) to sort the result by the last nested level (in this example by EndLocation):
 
 > [!div class="nextstepaction"]
