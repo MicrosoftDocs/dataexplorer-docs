@@ -88,7 +88,7 @@ For example, the return value of a command might look like the following table.
 Use an Extent ID to drop a specific extent.
 
 ```kusto
-.drop extent 609ad1e2-5b1c-4b79-90c0-1dec262e9f46
+.drop extent 609ad1e2-5b1c-4b79-90c0-1dec262e9f46 from Table1
 ```
 
 ### Drop multiple extents
@@ -96,7 +96,7 @@ Use an Extent ID to drop a specific extent.
 Use a list of Extent IDs to drop multiple extents.
 
 ```kusto
-.drop extents (609ad1e2-5b1c-4b79-90c0-1dec262e9f46, 310a60c6-8529-4cdf-a309-fe6aa7857e1d)
+.drop extents (609ad1e2-5b1c-4b79-90c0-1dec262e9f46, 310a60c6-8529-4cdf-a309-fe6aa7857e1d) from Table1
 ```
 
 ### Remove all extents by time created
@@ -120,7 +120,7 @@ Remove all extents in tables `Table1` and `Table2` whose creation time was over 
 Remove an extent from a table using the built-in [`extent_id()`](../query/extentidfunction.md) function.
 
 ```kusto
-.drop extents  <| StormEvents | where EventId == '66144' | extend ExtentId=extent_id() | summarize by ExtentId
+.drop extents  <| StormEvents | where EventId == '66144' | extend ExtentId=extent_id() | summarize by ExtentId, TableName
 ```
 
 ### Emulation mode: Show which extents would be removed by the command
