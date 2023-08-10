@@ -52,7 +52,7 @@ The following aggregation functions are supported:
 
 A table with two columns for each clause. One column contains unique values computed using *Expr*, and the other column shows the results obtained from the *Aggregation* calculation.
 
-### Include extra columns in the output
+### Include data from other columns
 
 Only columns specified as a `top-nested` clause *Expr* are displayed in the output table.
 
@@ -95,7 +95,7 @@ StormEvents                                        // Data source.
 |TEXAS|123400.5101|Law Enforcement|37228.5966|PERRYTON|289.3178|
 |TEXAS|123400.5101|Trained Spotter|13997.7124|CLAUDE|421.44|
 
-### Enhance top-nested results with another column
+### Enhance top-nested results with data from another column
 
 The following query builds upon the previous example by introducing an extra `top-nested` clause. In this new clause, the absence of a numeric specification results in the extraction of all distinct values of `EventType` across the partitions. The `max(1)` aggregation function is merely a placeholder, rendering its outcome irrelevant, so the [project-away](projectawayoperator.md) operator removes the `Ignore` column. The result shows all event types associated with the previously aggregated data.
 
@@ -220,7 +220,7 @@ StormEvents
 |KANSAS|Public|PROTECTION|446.11|2|
 |KANSAS|Public|MEADE STATE PARK|371.1|3|
 
-### Get the most recent events per state with extra information
+### Get the most recent events per state with additional data from other columns
 
 The following query demonstrates how to retrieve the two most recent events for each US state along with relevant event details. Notice the use of `max(1)` within certain columns, identified by `Ignore*`, which aids in propagating data through the query without imposing any selection logic.
 
@@ -237,7 +237,7 @@ StormEvents
 | order by State asc, StartTime desc                   // Sort results alphabetically and chronologically.
 ```
 
-### Get the latest records per identity with extra information
+### Get the latest records per identity with additional data from other columns
 
 The following query showcases how to extract the latest records per identity and builds on the concepts introduced in the previous example. The first `top-nested` clause partitions the data by distinct values of `id`. The subsequent clause identifies the two most recent records based on the `timestamp` for each `id`. Other information is appended using a `top-nested` operator alongside an unspecified count and the arbitrary `max(1)` aggregation. Finally, unnecessary aggregation columns are removed using the `project-away` operator.
 
