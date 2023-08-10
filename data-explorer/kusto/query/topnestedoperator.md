@@ -3,25 +3,19 @@ title:  top-nested operator
 description: Learn how to use the top-nested operator to produce a hierarchical aggregation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/10/2023
 ---
 # top-nested operator
 
-Produces a hierarchical aggregation and top values selection, where each level is a refinement of the previous one.
+The top-nested operator performs hierarchical aggregation and value selection.
 
-```kusto
-T | top-nested 3 of Location with others="Others" by sum(MachinesNumber), top-nested 4 of bin(Timestamp,5m) by sum(MachinesNumber)
-```
+Imagine you have a table with sales information like countries, salespeople, and amounts sold. The top-nested operator can help you answer complex questions like, "What are the top five countries by sales, and who are the top three salespeople in each of those countries?"
 
-The `top-nested` operator accepts tabular data as input, and one or more aggregation clauses.
-The first aggregation clause (left-most) subdivides the input records into partitions, according
-to the unique values of some expression over those records. The clause then keeps a certain number of records
-that maximize or minimize this expression over the records. The next aggregation clause then
-applies a similar function, in a nested fashion. Each following clause is applied to the partition produced
-by the previous clause. This process continues for all aggregation clauses.
+The operator starts by separating the input records into partitions based on the first aggregation clause. The data is grouped according to the specified criteria, such as country. Then, the operator then selects the top records within each partition using a specific calculation, such as adding up sales amounts. These top records can be determined by ascending or descending order.
 
-For example, the `top-nested` operator can be used to answer the following question: "For a table containing sales
-figures, such as country/region, salesperson, and amount sold: what are the top five countries/regions by sales? What are the top three salespeople in each of these countries/regions?"
+Then, the subsequent aggregation clause is applied to each partition. This initiates a nested aggregation process, further refining the data within each partition. This iterative procedure continues for all successive aggregation clauses, forming a hierarchy of increasingly precise groupings.
+
+The result is a table with two columns for each aggregation clause. One column contains the distinct values utilized for partitioning the table, such as countries, while the other column contains the outcome of the aggregation calculation, such as the total sales.
 
 ## Syntax
 
