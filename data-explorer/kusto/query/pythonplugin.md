@@ -168,9 +168,9 @@ The artifacts are made available for the script to consume from a local temporar
 
 For information regarding referencing external packages, see [Install packages for the Python plugin](#install-packages-for-the-python-plugin).
 
-### Refreshing External Artifact Cache
+### Refreshing external artifact cache
 
-External artifact files utilized in queries are cached on the cluster's disk. Should you make updates to your files within the cloud storage and require immediate synchronization with the cluster, you can use the [Clear External Artifacts Cache command](../management/clear-external-artifacts-cache-command.md). This command ensures that the latest version of your external artifact files is promptly made available to the cluster.
+External artifact files utilized in queries are cached on your cluster. If you make updates to your files in cloud storage and require immediate synchronization with your cluster, you can use the [.clear cluster cache external-artifacts command](../management/clear-external-artifacts-cache-command.md). This command clears the cached files and ensures that subsequent queries run with the latest version of the artifacts.
 
 ## Install packages for the Python plugin
 
