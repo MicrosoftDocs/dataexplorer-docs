@@ -111,5 +111,5 @@ StormEvents
 
 * [Geospatial clustering](geospatial-grid-systems.md)
 * [Render operator](renderoperator.md)
-* See a use case for geospatial clustering: [Data analytics for automostive test fleets](/azure/architecture/industries/automotive/automotive-telemetry-analytics)
+* See a use case for geospatial clustering: [Data analytics for automotive test fleets](/azure/architecture/industries/automotive/automotive-telemetry-analytics)
 * Learn about Azure architecture for [geospatial data processing and analytics](/azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure)
