@@ -176,16 +176,21 @@ StormEvents
 | KANSAS | 87771.235500000068 | Law Enforcement | 18744.823000000004 | FT SCOTT | 264.858 | Flood |
 | TEXAS | 123400.51009999994 | Law Enforcement | 37228.596599999961 | PERRYTON | 289.3178 | Hail |
 | ... | ... | ... | ... | ... | ... |
-Give an index sort order for each value in this level (per group) to sort the result by the last nested level (in this example by EndLocation):
+To achieve a comprehensive sort order, the following query uses index-based sorting for each value within the current hierarchy level, per group. This sorting is geared towards arranging the result according to the ultimate nested level, in this case the `EndLocation`.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WPwYoCMQyG7z5FjjPQAV326kXw5m0eYIjTbC3aVtKM6OLDm7KrVlzYHNP///K1l8RhfaIoeXYFSccuUhay8AHpC3pBIYDtBfIUmhU5HzcorQGdt2yaeKR/s58lu452k0YUn2IpvDbUI7ElLi8/AuYXbgCdY3K6s0PF0IYSArL/ppqdYQkB9zQcfJamejCwmOu0Sqbntp/Ca+Pva4/y3e+upxp0FgWCj9aPngqNMTpq5qrOjJfhQNHJrnbJLXSwUGj5eDh1dD6iIurEm6V5XLgB1CPS3MABAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WQwW7CMBBE73zFHIPkSFD12kslbtzyAdE2WVyr2Eb2BkHVj+86AupCpfq4O/Nm1p3E5DdHDpIXX5B4aANn4RFPiDt0QsJ4OyNPvnll68KWZGkWeFTGKQ3/Sp+LdBPGbRxIXAwPeu2QY5Iyn7PNBWxA1ia2Ohr7ClD0k/eU3CdrFGp4xgs8fXC/d1maamGwXumbywH8s+gm/9v0d+jVP9vvm2ojPolC4cLoBseFmChYblZ6RUp07vccrLzXlfISLdYKLj/gjy2fDqSIWmHum5pbwjd+JIknxQEAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
-| top-nested 2 of State  by sum(BeginLat),    top-nested 2 of Source by sum(BeginLat),    top-nested 4 of EndLocation by  sum(BeginLat)
-| order by State , Source, aggregated_EndLocation
-| summarize EndLocations = make_list(EndLocation, 10000) , endLocationSums = make_list(aggregated_EndLocation, 10000) by State, Source
+| top-nested 2 of State by sum(BeginLat),
+  top-nested 2 of Source by sum(BeginLat),
+  top-nested 4 of EndLocation by sum(BeginLat)
+| sort by State, Source, aggregated_EndLocation
+| summarize
+    EndLocations = make_list(EndLocation, 10000),
+    endLocationSums = make_list(aggregated_EndLocation, 10000)
+    by State, Source
 | extend indicies = range(0, array_length(EndLocations) - 1, 1)
 | mv-expand EndLocations, endLocationSums, indicies
 ```
