@@ -219,15 +219,15 @@ StormEvents
 The following query demonstrates how to retrieve the two most recent events for each US state along with relevant event details. Notice the use of `max(1)` within certain columns, identified by `tmp*`, which aids in propagating data through the query without imposing any selection logic.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32Ry04DMQxF9/0KLwH1QcuaBYsKsUMMP5Am7kxQEke2W6jUjyfzaDVqC1la8jk315USx/Uek8rkCEp5llAUHdAWKjWKsDmAxvz4HM3P3fJ+CldvsYB3RkHeI5gQwHlRn6yCtPsyn8CYuxrIrJ8+nujLjn6e9pbCfUUFbbAsRRIFRluCAnZxwSdAY5tec2EpjnVyI8Pqr/zF8pIzJteJTktb4h7euW7Asxdy+OYG/NOA/x9+XrrEHyEzfaHVmfk2HfDhuuebzX9gpNJ7i1eMmdjwAUxdM9ZGPSWwFHYxSesgdsht4P6wRux0dAmHYm87KuK2e9mF0roJuTEbVG/LrYuq/M02TIkC1f1s/gtNtagqVAIAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32Rz07DMAyH73sKHwHtDytnDhwmxA0xXsBLvDYoiUPiDibt4UnTbqpYIYccLPn7bP+2wtFtDuQlzU4gHBaekpAG3sNWUAh2RxAX7h8dft+sb+dw9VYreMUoRgx7kIZAo2DXRqgaaL35bAkOaPOfoamDLmcwdlWDLcq7cWfjuhgv1d6cXc8kxVKB4yQQSeXhgcoKYHxvnbJkx8brkaH6a6dseQqBvC6ic9OeYw8vrgl4MIk1vegB/zDg/4dfmn7jTxAif5CSBX5hAd5d334yjTdyfKCCb73P90kJ4xGwriPVWGJSbFvnU2fhqCl2I/dxY1LzURaakpq2bDl210+tzXdHGxrckRiF1mZV3k41kT1brvva8gd/GtVUagIAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
-| top-nested of State by tmp0=max(1),                  // Preserve all distinct states.
+| top-nested of State by tmp0=max(1),                  // Partition the data by each unique value of state.
   top-nested 2 of StartTime by tmp1=max(StartTime),    // Get the 2 most recent events in each state.
   top-nested of EndTime by tmp2=max(1),                // Append the EndTime for each event.
   top-nested of EpisodeId by tmp3=max(1)               // Append the EpisodeId for each event.
-| project-away tmp*                                    // Remove the temporary aggregation columns.
+| project-away tmp*                                    // Remove the unnecessary aggregation columns.
 | order by State asc, StartTime desc                   // Sort results alphabetically and chronologically.
 ```
 
