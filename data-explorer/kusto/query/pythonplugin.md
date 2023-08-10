@@ -1,3 +1,4 @@
+---
 title:  Python plugin
 description: Learn how to use the Python plugin to run user-defined functions using a Python script.
 ms.reviewer: adieldar
