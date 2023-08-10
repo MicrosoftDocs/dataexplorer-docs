@@ -75,14 +75,16 @@ cases.
 
 ## Examples
 
+The following query partitions the `StormEvents` table by the `State` column and calculates the total latitude for each state. The query selects the top 2 states with the highest latitude sum. Within these top 2 states, the query groups the data by `Source` and selects the top 3 sources with the highest latitude sum. For each of the top 3 sources in the top 2 states, the query groups the data by `EndLocation` and selects the `EndLocation` with the highest latitude sum.
+
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKMkv0M1LLS5JTVEwUshPUwguSSxJVUiqVCguzdVwSk3PzPNJLNHU4UJSZwxWl19alExAoSFIoWteik9+cmJJZn4ehmoAdn/LsYsAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42OSw6CQBAF957iLTVRCXIDIzt2eIGWaZUEugnTmJh4ePnMgviJvnWl6uWmbZ3eWMzjz0URDmQEr11b8HbxgGmzEfbGDjvoGbmRcaBPd/iuXu75UkpGtloHxVGbHh5JP0CmRhUqstI611sxtyajdez9tiaB/KBFKWAqrlP3JRIPkVRcpkWPq7xFMIvEr+S30HSaxIXmE8PE8rpxAQAA" target="_blank">Run the query</a>
 
 ```kusto
-StormEvents
-| top-nested 2 of State       by sum(BeginLat),
-  top-nested 3 of Source      by sum(BeginLat),
-  top-nested 1 of EndLocation by sum(BeginLat)
+StormEvents                                        // Data source.
+| top-nested 2 of State       by sum(BeginLat),    // Top 2 States by total latitude.
+  top-nested 3 of Source      by sum(BeginLat),    // Top 3 Sources by total latitude in each State.
+  top-nested 1 of EndLocation by sum(BeginLat)     // Top 1 EndLocation by total latitude in each Source and State.
 ```
 
 **Output**
