@@ -9,11 +9,11 @@ ms.date: 08/10/2023
 
 The `top-nested` operator performs hierarchical aggregation and value selection.
 
-The operator can help you answer complex questions, such as "What are the top five regions by sales, and who are the top three salespeople in each of those regions?"
+Imagine you have a table with sales information like regions, salespeople, and amounts sold. The `top-nested` operator can help you answer complex questions, such as "What are the top five regions by sales, and who are the top three salespeople in each of those regions?"
 
-The operator starts by separating the input records into partitions based on the first `top-nested` clause. The data is grouped according to the specified criteria, such as region. Then, the operator then selects the top records within each partition using a specific calculation, such as adding up sales amounts. These top records can be determined by ascending or descending order.
+With this operator, the source data is partitioned based on the criteria set in the first `top-nested` clause, such as region. Next, the operator picks the top records in each partition using an aggregation, such as adding sales amounts. Each subsequent top-nested clause refines the partitions created by the previous clause, creating a hierarchy of more precise groups.
 
-Then, the subsequent `top-nested` clause is applied to each partition. This initiates a nested aggregation process, further refining the data within each partition. This iterative procedure continues for all successive `top-nested` clauses, forming a hierarchy of increasingly precise groupings.
+The result is a table with two columns per clause. One column holds the partitioning values, such as region, while the other column holds the outcomes of the aggregation calculation, like the sum of sales.
 
 ## Syntax
 
