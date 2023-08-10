@@ -52,7 +52,7 @@ The following aggregation functions are supported:
 
 ## Returns
 
-This operator returns a table with two columns for each clause. One column contains unique values computed using *Expr*, and the other column shows the results obtained from the *Aggregation* calculation.
+A table with two columns for each clause. One column contains unique values computed using *Expr*, and the other column shows the results obtained from the *Aggregation* calculation.
 
 ## Include extra columns in the output
 
@@ -180,7 +180,7 @@ StormEvents
 |---|
 |1149279.5923|
 
-## Sort hierarchical results
+### Sort hierarchical results
 
 To achieve a comprehensive sort order, the following query uses index-based sorting for each value within the current hierarchy level, per group. This sorting is geared towards arranging the result according to the ultimate nested level, in this case the `EndLocation`.
 
@@ -222,7 +222,7 @@ StormEvents
 |KANSAS|Public|PROTECTION|446.11|2|
 |KANSAS|Public|MEADE STATE PARK|371.1|3|
 
-## Get the most recent events per state with extra information
+### Get the most recent events per state with extra information
 
 The following query demonstrates how to retrieve the two most recent events for each US state along with relevant event details. Notice the use of `max(1)` within certain columns, identified by `Ignore*`, which aids in propagating data through the query without imposing any selection logic.
 
