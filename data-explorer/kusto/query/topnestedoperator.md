@@ -216,23 +216,19 @@ StormEvents
 |KANSAS|Public|PROTECTION|446.11|2|
 |KANSAS|Public|MEADE STATE PARK|371.1|3|
 
-The following example returns the two most-recent events
-for each US state, with some information per event.
-Note the use of the `max(1)` (which is then projected away)
-for columns which just require propagation through the operator
-without any selection logic.
+The following query demonstrates how to retrieve the two most recent events for each US state along with relevant event details. Notice the use of `max(1)` within certain columns, identified by `tmp*`, which aids in propagating data through the query without imposing any selection logic.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PMQ7CMAxF957CI6BWomVm7NC5XCDEBhUpceRYBSQOTwoFAmL1f0//u1cW147kNRY3UA6Vp6iEwAfo1SjB/grd0bPQeuvMZVEvywJysJlR0d3gMrx+4O/gV0tS6/Fbaf43TGgYIiN1+IE3M5xmB+ETWa3M2bzSVTqzIMkkPB8x0ZbZUKRo7wy+F8H+AAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32Ry04DMQxF9/0KLwH1QcuaBYsKsUMMP5Am7kxQEke2W6jUjyfzaDVqC1la8jk315USx/Uek8rkCEp5llAUHdAWKjWKsDmAxvz4HM3P3fJ+CldvsYB3RkHeI5gQwHlRn6yCtPsyn8CYuxrIrJ8+nujLjn6e9pbCfUUFbbAsRRIFRluCAnZxwSdAY5tec2EpjnVyI8Pqr/zF8pIzJteJTktb4h7euW7Asxdy+OYG/NOA/x9+XrrEHyEzfaHVmfk2HfDhuuebzX9gpNJ7i1eMmdjwAUxdM9ZGPSWwFHYxSesgdsht4P6wRux0dAmHYm87KuK2e9mF0roJuTEbVG/LrYuq/M02TIkC1f1s/gtNtagqVAIAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
-| top-nested of State by Ignore0=max(1),
-  top-nested 2 of StartTime by Ignore1=max(StartTime),
-  top-nested of EndTime by Ignore2=max(1),
-  top-nested of EpisodeId by Ignore3=max(1)
-| project-away Ignore*
-| order by State asc, StartTime desc
+| top-nested of State by tmp0=max(1),                  // Preserve all distinct states.
+  top-nested 2 of StartTime by tmp1=max(StartTime),    // Get the 2 most recent events in each state.
+  top-nested of EndTime by tmp2=max(1),                // Append the EndTime for each event.
+  top-nested of EpisodeId by tmp3=max(1)               // Append the EpisodeId for each event.
+| project-away tmp*                                    // Remove the temporary aggregation columns.
+| order by State asc, StartTime desc                   // Sort results alphabetically and chronologically.
 ```
 
 ### Retrieve the latest records per identity
