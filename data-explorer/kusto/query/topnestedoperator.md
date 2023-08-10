@@ -55,7 +55,7 @@ The following aggregation functions are supported:
 
 This operator returns a table with two columns for each clause. One column contains unique values computed using *Expr*, and the other column shows the results obtained from the *Aggregation* calculation.
 
-## Notes
+## Performance considerations
 
 Input columns that aren't specified as *Expr* values aren't outputted.
 To get all values at a certain level, add an aggregation count that:
