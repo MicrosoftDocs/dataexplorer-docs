@@ -19,11 +19,9 @@ The result is a table with two columns for each aggregation clause. One column c
 
 ## Syntax
 
-*T* `|` `top-nested` *TopNestedClause* [`,` `top-nested` *TopNestedClause2*]...
-
-Where *TopNestedClause* has the following syntax:
-
-[ *N* ] `of` [*ExprName* `=`] *Expr* [`with` `others` `=` *ConstExpr*] `by` [*AggName* `=`] *Aggregation* [`asc` | `desc`]
+*T*  
+`|` `top-nested` [ *N* ] `of` *Expr* [`with` `others` `=` *ConstExpr*] `by` *Aggregation* [`asc` | `desc`] [`,`  
+&emsp;`top-nested` ... ]
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -32,13 +30,10 @@ Where *TopNestedClause* has the following syntax:
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*T*|string|&check;|The input tabular expression.|
-|*N*|long||The number of top values to return for this hierarchy level. If omitted, all distinct values will be returned.|
-|*ExprName*|string||If specified, sets the name of the output column corresponding to the values of *Expr*.|
-|*Expr*|string|&check;|An expression over the input record indicating which value to return for this hierarchy level. Typically it's a column reference from *T*, or some calculation, such as `bin()`, over such a column.
-|*ConstExpr*|string||If specified, for each hierarchy level, 1 record will be added with the value that is the aggregation over all records that didn't "make it to the top".|
-|*AggName*|string||If specified, this identifier sets the column name in the output for the value of *Aggregation*.|
-|*Aggregation*|string||The aggregation function to apply to all records sharing the same value of *Expr*. The value of this aggregation determines which of the resulting records are "top". For the possible values, see [supported aggregation functions](#supported-aggregation-functions).|
-|`asc` or `desc`|string||Controls whether selection is actually from the "bottom" or "top" of the range of aggregated values. The default is `desc`.|
+|*N*|int||The number of top values to be returned for this hierarchy level. If omitted, all distinct values are returned.|
+|*Expr*|string|&check;|An expression over the input record indicating which value to return for this hierarchy level. Typically, it refers to a column from *T* or involves a calculation like [bin()](binfunction.md) on a column. Optionally, set an output column name as *Name* `=` *Expr*.|
+|*ConstExpr*|string||If specified, for each hierarchy level, one record will be added with the value that is the aggregation over all records that didn't make it to the top.|
+|*Aggregation*|string||The aggregation function applied to records with the same *Expr* value. The result determines the top records. See [Supported aggregation functions](#supported-aggregation-functions). Optionally, set an output column name as *Name* `=` *Aggregation*.|
 
 ### Supported aggregation functions
 
