@@ -257,7 +257,7 @@ StormEvents
 
 ## Find anomalies based on geospatial data
 
-The following query performs an analysis of storm events occurring within a particular state. The query uses S2 cells and temporal aggregation to investigate patterns of damage. The result is a visual anomaly chart that portrays any irregularities or deviations in storm-induced destruction over time, offering a detailed perspective on the affect of storms within the specified state boundaries.
+The following query performs an analysis of storm events occurring within a particular state. The query uses S2 cells and temporal aggregation to investigate patterns of damage. The result is a visual anomaly chart that portrays any irregularities or deviations in storm-induced destruction over time, offering a detailed perspective on the effect of storms within the specified state boundaries.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21SS0/CQBC+m/AfJpy2EQnhYozpQZGDiQ+S4rlZ26Gs7qPZHV7GH++UpQUJPe08vu+brzMaCQJJwvfFsyX0GAhS6M9xK0P/vnel2/rM6V3lLBcNR15JrX5Q9K6Av48sz5qeEMNfwC2hLcFKgwwgF8grW4kFSlqxxLD2rkZPip9vD6/TpMVtljzBAZaez9U2MfgLC4IKnUHyu7SjbTPJ6eATt8ZGPRsXqHWA9J+fc9Iwnhy6mCyvY1NOLg8RLlqNAdw1Mhk5b6ZrtMTmO+ORpSNRlo4U4hErZV+cHUB8SWq4GnS0fwArC+KSgZPOI7uy7awX6XkDhdTSi1PryZ7JyG+8CSyAAUppZNVsTK4r8bQPZnFTO7iGmJhwIiRQ4kKudHMrpVt9ahSj4SgBvg8+BE9zxRsMhDXclie/RVpn+G4wpFEwL7FwpnYB864k4hD72TyD0B9gu2LJzLBRtATRppxeGRvSDp38AaQv4EvQAgAA" target="_blank">Run the query</a>
