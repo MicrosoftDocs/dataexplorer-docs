@@ -65,7 +65,7 @@ The **Inspect** tab opens with a preview of the data.
 
 > [!NOTE]
 >
-> * For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.
+> * For tabular formats (CSV, TSV, PSV), you can't map a column twice. To map to an existing column, first delete the new column.
 > * You can't change an existing column type. If you try to map to a column having a different format, you may end up with empty columns.
 
 :::image type="content" source="media/get-data-file/edit-columns.png" alt-text="Screenshot of columns open for editing." lightbox="media/get-data-file/edit-columns.png":::
@@ -94,7 +94,7 @@ Mapping transformations can be performed on a column of type string or datetime,
 
 ### Advanced options based on data type
 
-**Tabular**:
+**Tabular (CSV, TSV, PSV)**:
 
 * If you're ingesting tabular formats in an *existing table*, you can select **Advanced** > **Keep current table schema**. Tabular data doesn't necessarily include the column names that are used to map source data to the existing columns. When this option is checked, mapping is done by-order, and the table schema remains the same. If this option is unchecked, new columns are created for incoming data, regardless of data structure.
 * To use the first row as column names, select  **Advanced** > **First row is column header**.
