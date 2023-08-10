@@ -15,8 +15,6 @@ The operator starts by separating the input records into partitions based on the
 
 Then, the subsequent aggregation clause is applied to each partition. This initiates a nested aggregation process, further refining the data within each partition. This iterative procedure continues for all successive aggregation clauses, forming a hierarchy of increasingly precise groupings.
 
-The result is a table with two columns for each aggregation clause. One column contains the distinct values utilized for partitioning the table, such as regions, while the other column contains the outcome of the aggregation calculation, such as the total sales.
-
 ## Syntax
 
 *T* `|` `top-nested` [ *N* ] `of` *Expr* [`with` `others` `=` *ConstExpr*] `by` *Aggregation* [`asc` | `desc`] [`,`  
