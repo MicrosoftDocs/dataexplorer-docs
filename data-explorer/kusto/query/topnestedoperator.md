@@ -65,7 +65,7 @@ To include all values of a column at a specific level:
 
 ## Performance considerations
 
-* The number of records may grow exponentially with the number of top-nested clauses, and record growth is even faster if no *N* limit is specified. This operator may consume a considerable amount of resources.
+* The number of records may grow exponentially with the number of `top-nested` clauses, and record growth is even faster if no *N* limit is specified. This operator may consume a considerable amount of resources.
 * If the distribution of the aggregation is considerably non-uniform, limit the number of distinct values to return by specifying *N*. Then, use the `with` `others` `=` *ConstExpr* specification to get an indication for the weight of all other cases.
 
 ## Examples
