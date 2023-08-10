@@ -148,18 +148,18 @@ StormEvents
 |1149279.5923|
 
 
-The following query builds upon the [initial example](#use-the-top-nested-operator) by introducing an extra `top-nested` clause. In this new clause, the absence of a numeric specification results in the extraction of all distinct values of `EventType` across the partitions. The `max(1)` aggregation function is merely a placeholder, rendering its outcome irrelevant, so the [project-away](projectawayoperator.md) operator removes the `tmp` column. The result shows all event types associated with the previously aggregated data.
+The following query builds upon the [initial example](#use-the-top-nested-operator) by introducing an extra `top-nested` clause. In this new clause, the absence of a numeric specification results in the extraction of all distinct values of `EventType` across the partitions. The `max(1)` aggregation function is merely a placeholder, rendering its outcome irrelevant, so the [project-away](projectawayoperator.md) operator removes the `Ignore` column. The result shows all event types associated with the previously aggregated data.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43OsQ6CQBAE0J6v2BISKdDaxoSODn9gPVaDye1e7gaUxI9XjsZOp52XyfSw6NtZFKl4ESzUKgky0J7sSj0YQlsuC6XJlye5jdoxql1B3/6QvU3RyV++WX2rQ2eOMZr+8pT9evS8BNn24QMdyfOzbKrP+xDtLg41Pzh3b61gghvcAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKMkv0M1LLS5JTVEwUshPUwguSSxJVYCApEqF4tJcDafU9Mw8n8QSTR0uBWT1xmD1+aVFyalEqTcEqXfNS/HJT04syczPI6ReAawe5NCQyoJUiPme6Xn5RakKtgq5iRUahppADxQU5WelJpfoJpYnwqQBMzafY+IAAAA=" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
 | top-nested 2 of State       by sum(BeginLat),
   top-nested 3 of Source      by sum(BeginLat),
   top-nested 1 of EndLocation by sum(BeginLat),
-  top-nested   of EventType   by tmp = max(1)
-| project-away tmp
+  top-nested   of EventType   by Ignore = max(1)
+| project-away Ignore
 ```
 
 **Output**
@@ -217,18 +217,18 @@ StormEvents
 |KANSAS|Public|PROTECTION|446.11|2|
 |KANSAS|Public|MEADE STATE PARK|371.1|3|
 
-The following query demonstrates how to retrieve the two most recent events for each US state along with relevant event details. Notice the use of `max(1)` within certain columns, identified by `tmp*`, which aids in propagating data through the query without imposing any selection logic.
+The following query demonstrates how to retrieve the two most recent events for each US state along with relevant event details. Notice the use of `max(1)` within certain columns, identified by `Ignore*`, which aids in propagating data through the query without imposing any selection logic.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32Rz07DMAyH73sKHwHtDytnDhwmxA0xXsBLvDYoiUPiDibt4UnTbqpYIYccLPn7bP+2wtFtDuQlzU4gHBaekpAG3sNWUAh2RxAX7h8dft+sb+dw9VYreMUoRgx7kIZAo2DXRqgaaL35bAkOaPOfoamDLmcwdlWDLcq7cWfjuhgv1d6cXc8kxVKB4yQQSeXhgcoKYHxvnbJkx8brkaH6a6dseQqBvC6ic9OeYw8vrgl4MIk1vegB/zDg/4dfmn7jTxAif5CSBX5hAd5d334yjTdyfKCCb73P90kJ4xGwriPVWGJSbFvnU2fhqCl2I/dxY1LzURaakpq2bDl210+tzXdHGxrckRiF1mZV3k41kT1brvva8gd/GtVUagIAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA33Rz1LCMBAG8DtPsUd1+CN49uCBcbg54gssydKGSbN1s0WZ4eFNU8Aq1R5yaGe/XzffWlmq5Z6CxtERlOtJoKhkgbewVlSCzQFWRWCh+8cKP2/mt2O4emYzeEFRp44DaElgUbGdJDQlNMG9NwR79OlMubHNnY6gzy1OoOibq3roPKOXDx2euGfSDC2g4qggZNIKQHkRcKGDh6DELIP9iSz+2ixBT3VNwWbrPLdl6fIzN5Bfu8iWVvZbeDgJ/+df5n4LR6iFd2R0gh94zry77mGwmVeqeE9ZaEJIFxUjygGwKIQKzJUZ9k0VYguxWJL2x7v2MZpxrxdL0Qwra5a2htj4VAD6usQNqTPofaLSgqYUDuy56N5NvwCXNfoveQIAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
-| top-nested of State by tmp0=max(1),                  // Partition the data by each unique value of state.
-  top-nested 2 of StartTime by tmp1=max(StartTime),    // Get the 2 most recent events in each state.
-  top-nested of EndTime by tmp2=max(1),                // Append the EndTime for each event.
-  top-nested of EpisodeId by tmp3=max(1)               // Append the EpisodeId for each event.
-| project-away tmp*                                    // Remove the unnecessary aggregation columns.
+| top-nested of State by Ignore0=max(1),                  // Partition the data by each unique value of state.
+  top-nested 2 of StartTime by Ignore1=max(StartTime),    // Get the 2 most recent events in each state.
+  top-nested of EndTime by Ignore2=max(1),                // Append the EndTime for each event.
+  top-nested of EpisodeId by Ignore3=max(1)               // Append the EpisodeId for each event.
+| project-away Ignore*                                    // Remove the unnecessary aggregation columns.
 | order by State asc, StartTime desc                   // Sort results alphabetically and chronologically.
 ```
 
@@ -237,7 +237,7 @@ StormEvents
 The following showcases how to extract the latest records per identity and builds on the concepts introduced in the previous example. The first `top-nested` clause partitions the data by distinct values of `id`. The subsequent clause identifies the two most recent records based on the `timestamp` for each `id`. Other information is appended using a `top-nested` operator alongside an unspecified count and the arbitrary `max(1)` aggregation. Finally, unnecessary aggregation columns are removed using the `project-away` operator.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42SXU+DMBSG7/kVJ1xtCWOAbuoSL/xIjHfGW+PFkZ6xKm2xLdMl/nhP2YZmc2ohJTTP6cN5i0DP11NNAylm4LyVukrAS0XOo2pmINBTeE3A+AXZWz03VqGXRm/xIYzHcGWJQUBwprUlhbL1vmn0EAGP+BItvsRJv+GgyPLJKMv5HiYQ53FymJt+ccVv3EngiixwR1vu2misxWHw+G8wPw3g5B/gWQCncfQYfYA3zUhzjCTAzEEKeFqBaJVaZecK3wehm/3BUd6h9TIEDBx4F2SoJCwX0Gr52hIssea52zTlT/omKsJqf3q9Me+M/Xows+iGfKcoQBnnwVJJ2gMteXbAx7x2coWnHQ1Ldv+G3lVsuuv7uWga0mK/oDd0xpQTa6x5ptKP8A23USWbBjbP4sfE7kmZJXW9tFpzG86hXQFWlaVqLStN3Srt0k9UtTnP8AIAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42STU+DQBCG7/yKCac2oRTQVm3iwY/E9Ga8Gg9TmNJVdhd3l2oTf7yzVKhprbqQDR/P7MO8S4GOj0VFA1HMwDojVBmBE5KsQ1nPoEBH/jYC7VZk5mqpjUQntOrwIYzHcGOIQUCwujE5+bLtunHwGACP8BoNvoRRv+AgS9LJKEn5HEYQpmF0nJvuuOw37sxzWeK5k4671Qqr4jh4+jeYnntw8g/wwoPTMHgKPsDpeqQ4RipAL0EUsNjAvFTaUHIp8X3g2zkcnOU9Gid8wsCJt0n6UsJ8BY0Srw3BGiue21Vj/qZvpsw/7bdvp0xbZf/Cq9l0R651ZCC1dWAoJ+WA1jxb4I3eSrnC0Z6HLfv/w06WffXXd3RV16SKw4pe0SpjDq02+plyN8I37NOKuh66i+zH2B5I6jW1/TRKcSvWotkAlqWhcuvLddVIZeNPusl9PvYCAAA=" target="_blank">Run the query</a>
 
 ```kusto
 datatable(id: string, timestamp: datetime, otherInformation: string) // Create a source datatable.
@@ -249,10 +249,10 @@ datatable(id: string, timestamp: datetime, otherInformation: string) // Create a
     "Donald", datetime(2017-01-18), "5",
     "Donald", datetime(2017-01-19), "6"
 ]
-| top-nested of id by dummy0=max(1),                   // Partition the data by each unique value of id.
-  top-nested 2 of timestamp by dummy1=max(timestamp),  // Get the 2 most recent events for each state.
-  top-nested of otherInformation by dummy2=max(1)      // Append otherInformation for each event.
-| project-away dummy0, dummy1, dummy2                  // Remove the unnecessary aggregation columns.
+| top-nested of id by Ignore0=max(1),                   // Partition the data by each unique value of id.
+  top-nested 2 of timestamp by Ignore1=max(timestamp),  // Get the 2 most recent events for each state.
+  top-nested of otherInformation by Ignore2=max(1)      // Append otherInformation for each event.
+| project-away Ignore0, Ignore1, Ignore2                  // Remove the unnecessary aggregation columns.
 ```
 
 **Output**
