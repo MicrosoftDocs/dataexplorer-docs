@@ -60,6 +60,9 @@ items:
     - name: .show database schema command
       displayName: .show databases schema
       href: show-schema-database.md
+    - name: .show databases entities command
+      displayName: .show databases entities
+      href: show-databases-entities.md
     - name: .execute database script command
       href: execute-database-script.md
   - name: Tables
