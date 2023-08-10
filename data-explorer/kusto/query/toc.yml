@@ -17,6 +17,24 @@ items:
       href: tutorials/join-data-from-multiple-tables.md
     - name: 4 - Create geospatial visualizations
       href: tutorials/create-geospatial-visualizations.md
+    - name: Train me
+      items:
+        - name: "Introduction to Azure Data Explorer"
+          href: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+        - name: "Write your first query with Kusto Query Language"
+          href: /training/modules/write-first-query-kusto-query-language/
+        - name: "Gain insights from your data by using Kusto Query Language"
+          href: /training/modules/gain-insights-data-kusto-query-language/
+        - name: "Multi-table queries using Kusto Query Language"
+          href: /training/modules/multi-table-queries-with-kusto-query-language/
+        - name: "Characterize an unfamiliar dataset with Azure Data Explorer"
+          href: /training/modules/characterize-data-azure-data-explorer/
+        - name: "Create dashboards in Azure Data Explorer"
+          href: /training/modules/create-dashboards-azure-data-explorer/
+        - name: "Learning path: Data analysis in Azure Data Explorer with Kusto Query Language"
+          href: /training/paths/data-analysis-data-explorer-kusto-query-language/
+        - name: "Learning path: Create queries for Microsoft Sentinel using Kusto Query Language"
+          href: /training/paths/sc-200-utilize-kql-for-azure-sentinel/
 - name: Query best practices
   items:
   - name: Best practices
