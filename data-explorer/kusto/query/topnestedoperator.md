@@ -38,6 +38,7 @@ The result is a table with two columns for each aggregation clause. One column c
 ### Supported aggregation functions
 
 The following aggregation functions are supported:
+
 * [sum()](sum-aggfunction.md)
 * [count()](count-aggfunction.md)
 * [max()](max-aggfunction.md)
@@ -52,21 +53,15 @@ The following aggregation functions are supported:
 
 ## Returns
 
-This operator returns a table that has two columns for each aggregation clause:
-
-* One column holds the distinct values of the clause's *`Expr`* calculation (having the
-  column name *ExprName* if specified)
-
-* One column holds the result of the *Aggregation*
-  calculation (having the column name *AggregationName* if specified)
+This operator returns a table with two columns for each clause. One column contains unique values computed using *Expr*, and the other column shows the results obtained from the *Aggregation* calculation.
 
 ## Notes
 
-Input columns that aren't specified as *`Expr`* values aren't outputted.
+Input columns that aren't specified as *Expr* values aren't outputted.
 To get all values at a certain level, add an aggregation count that:
 
 * Omits the value of *N*
-* Uses the column name as the value of *`Expr`*
+* Uses the column name as the value of *Expr*
 * Uses `Ignore=max(1)` as the aggregation, and then ignore (or project-away)
    the column `Ignore`.
 
