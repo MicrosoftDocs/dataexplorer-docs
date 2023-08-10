@@ -52,7 +52,7 @@ The following aggregation functions are supported:
 
 A table with two columns for each clause. One column contains unique values computed using *Expr*, and the other column shows the results obtained from the *Aggregation* calculation.
 
-## Include extra columns in the output
+### Include extra columns in the output
 
 Only columns specified as a `top-nested` clause *Expr* are displayed in the output table.
 
