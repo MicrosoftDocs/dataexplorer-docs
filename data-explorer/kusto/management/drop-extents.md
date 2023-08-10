@@ -36,12 +36,12 @@ If the *TableName* isn't specified, you must have at least [Database Admin](./ac
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|`whatif`|string||If specified, the extent tags will be reported instead of being dropped.|
-| *Query* | string | &check; | A [Kusto Query Language (KQL)](../query/index.md) query that returns the extent tags to be dropped.|
+|`whatif`|string||If specified, the extents will be reported instead of being dropped.|
+| *Query* | string | &check; | The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source tables and the extent IDs to be dropped. Should return a recordset with columns called "ExtentId" and "TableName".|
 
 ### Drop a specific or multiple extents
 
-`.drop` `extents` `(`*ExtentIds*`)` [`from` *TableName*]
+`.drop` `extents` `(`*ExtentIds*`)` `from` *TableName*
 
 #### Parameters
 
@@ -88,7 +88,7 @@ For example, the return value of a command might look like the following table.
 Use an Extent ID to drop a specific extent.
 
 ```kusto
-.drop extent 609ad1e2-5b1c-4b79-90c0-1dec262e9f46
+.drop extent 609ad1e2-5b1c-4b79-90c0-1dec262e9f46 from Table1
 ```
 
 ### Drop multiple extents
@@ -96,7 +96,7 @@ Use an Extent ID to drop a specific extent.
 Use a list of Extent IDs to drop multiple extents.
 
 ```kusto
-.drop extents (609ad1e2-5b1c-4b79-90c0-1dec262e9f46, 310a60c6-8529-4cdf-a309-fe6aa7857e1d)
+.drop extents (609ad1e2-5b1c-4b79-90c0-1dec262e9f46, 310a60c6-8529-4cdf-a309-fe6aa7857e1d) from Table1
 ```
 
 ### Remove all extents by time created
@@ -120,7 +120,10 @@ Remove all extents in tables `Table1` and `Table2` whose creation time was over 
 Remove an extent from a table using the built-in [`extent_id()`](../query/extentidfunction.md) function.
 
 ```kusto
-.drop extents  <| StormEvents | where EventId == '66144' | extend ExtentId=extent_id() | summarize by ExtentId
+.drop extents  <|
+    StormEvents
+    | where EventId == '66144'
+    | summarize by ExtentId = extent_id(), TableName = "StormEvents"
 ```
 
 ### Emulation mode: Show which extents would be removed by the command

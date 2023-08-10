@@ -36,7 +36,7 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 |*FromDate*|datetime||The query window start date.|
 |*ToDate*|datetime||The query window end date.|
 |*ExtentsToDropQuery*|string|&check;|The results of this query specify the extent IDs that should be dropped from the destination table. Should return a recordset with a column called "ExtentId".|
-|*ExtentsToMoveQuery*|string|&check;|The results of this query specify the extent IDs in the source tables that should be moved to the destination table. Should return a recordset with a column called "ExtentId".|
+|*ExtentsToMoveQuery*|string|&check;|The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source tables and the extent IDs to be moved to the destination table. Should return a recordset with columns called "ExtentId" and "TableName".|
 
 > [!NOTE]
 > For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range.
@@ -136,7 +136,7 @@ Implement an idempotent logic so that Kusto drops extents from table `t_dest` on
     let extents_to_move = 
         t_source
         | where extent_tags() has 'drop-by:blue'
-        | summarize by ExtentId = extent_id()
+        | summarize by ExtentId = extent_id(), TableName = 't_source'
     ;
     extents_to_move
 }
