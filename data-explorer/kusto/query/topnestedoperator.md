@@ -55,23 +55,21 @@ The following aggregation functions are supported:
 
 This operator returns a table with two columns for each clause. One column contains unique values computed using *Expr*, and the other column shows the results obtained from the *Aggregation* calculation.
 
+## Include extra columns in the output
+
+Only columns specified as a `top-nested` clause *Expr* are displayed in the output table.
+
+To include all values of a column at a specific level:
+
+1. Don't specify the value of *N*
+1. Use the column name as the value of *Expr*
+1. Use `Ignore=max(1)` as the value of *Aggregation* 
+1. Remove the unnecessary `Ignore` column with [project-away](projectawayoperator.md)
+
 ## Performance considerations
 
-Input columns that aren't specified as *Expr* values aren't outputted.
-To get all values at a certain level, add an aggregation count that:
-
-* Omits the value of *N*
-* Uses the column name as the value of *Expr*
-* Uses `Ignore=max(1)` as the aggregation, and then ignore (or project-away)
-   the column `Ignore`.
-
-The number of records may grow exponentially with the number of aggregation clauses
-((N1+1) \* (N2+1) \* ...). Record growth is even faster if no *N* limit is specified. Take into account that this operator may consume a considerable amount of resources.
-
-If the distribution of the aggregation is considerably non-uniform,
-limit the number of distinct values to return (by using *N*) and use the
-`with others=` *ConstExpr* option to get an indication for the "weight" of all other
-cases.
+* The number of records may grow exponentially with the number of aggregation clauses, and record growth is even faster if no *N* limit is specified. This operator may consume a considerable amount of resources.
+* If the distribution of the aggregation is considerably non-uniform, limit the number of distinct values to return by specifying *N*. Then, use the `with` `others` `=` *ConstExpr* specification to get an indication for the weight of all other cases.
 
 ## Examples
 
