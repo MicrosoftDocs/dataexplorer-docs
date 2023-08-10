@@ -130,7 +130,7 @@ StormEvents
 |TEXAS|123400.5101|||All Other End Locations|58523.2932000001|
 |All Other States|1149279.5923|||All Other End Locations|1149279.5923|
 
-The following query shows the same results for the first level used in the example above.
+The following query shows the same results for the first level used in the previous example.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVUMzMU9BQD3GNcAxW11FQ93b0CwayNIGqiktzcxOLMqtSQSwNp9T0zDyfxBJNAPC7f85LAAAA" target="_blank">Run the query</a>
@@ -147,7 +147,8 @@ StormEvents
 |---|
 |1149279.5923|
 
-The following query builds upon the [initial example](#use-the-top-nested-operator) by introducing an extra `top-nested` clause. In this new clause, the absence of a numeric specification results in the extraction of all distinct values of `EventType` across the partitions. The `max(1)` aggregation function is merely a placeholder, rendering its outcome irrelevant. Consequently, the [project-away](projectawayoperator.md) operator is implemented to remove the `tmp` column. The result shows all event types associated with the previously aggregated data.
+
+The following query builds upon the [initial example](#use-the-top-nested-operator) by introducing an extra `top-nested` clause. In this new clause, the absence of a numeric specification results in the extraction of all distinct values of `EventType` across the partitions. The `max(1)` aggregation function is merely a placeholder, rendering its outcome irrelevant, so the [project-away](projectawayoperator.md) operator removes the `tmp` column. The result shows all event types associated with the previously aggregated data.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43OsQ6CQBAE0J6v2BISKdDaxoSODn9gPVaDye1e7gaUxI9XjsZOp52XyfSw6NtZFKl4ESzUKgky0J7sSj0YQlsuC6XJlye5jdoxql1B3/6QvU3RyV++WX2rQ2eOMZr+8pT9evS8BNn24QMdyfOzbKrP+xDtLg41Pzh3b61gghvcAAAA" target="_blank">Run the query</a>
