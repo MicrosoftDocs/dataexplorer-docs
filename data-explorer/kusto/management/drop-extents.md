@@ -120,7 +120,10 @@ Remove all extents in tables `Table1` and `Table2` whose creation time was over 
 Remove an extent from a table using the built-in [`extent_id()`](../query/extentidfunction.md) function.
 
 ```kusto
-.drop extents  <| StormEvents | where EventId == '66144' | extend ExtentId=extent_id() | summarize by ExtentId, TableName
+.drop extents  <|
+    StormEvents
+    | where EventId == '66144'
+    | summarize by ExtentId = extent_id(), TableName = "StormEvents"
 ```
 
 ### Emulation mode: Show which extents would be removed by the command
