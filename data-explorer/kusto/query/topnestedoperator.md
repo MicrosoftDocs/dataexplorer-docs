@@ -7,13 +7,13 @@ ms.date: 08/10/2023
 ---
 # top-nested operator
 
-The top-nested operator performs hierarchical aggregation and value selection.
+The `top-nested` operator performs hierarchical aggregation and value selection.
 
-Imagine you have a table with sales information like regions, salespeople, and amounts sold. The top-nested operator can help you answer complex questions like, "What are the top five regions by sales, and who are the top three salespeople in each of those regions?"
+The operator can help you answer complex questions, such as "What are the top five regions by sales, and who are the top three salespeople in each of those regions?"
 
-The operator starts by separating the input records into partitions based on the first aggregation clause. The data is grouped according to the specified criteria, such as region. Then, the operator then selects the top records within each partition using a specific calculation, such as adding up sales amounts. These top records can be determined by ascending or descending order.
+The operator starts by separating the input records into partitions based on the first `top-nested` clause. The data is grouped according to the specified criteria, such as region. Then, the operator then selects the top records within each partition using a specific calculation, such as adding up sales amounts. These top records can be determined by ascending or descending order.
 
-Then, the subsequent aggregation clause is applied to each partition. This initiates a nested aggregation process, further refining the data within each partition. This iterative procedure continues for all successive aggregation clauses, forming a hierarchy of increasingly precise groupings.
+Then, the subsequent `top-nested` clause is applied to each partition. This initiates a nested aggregation process, further refining the data within each partition. This iterative procedure continues for all successive `top-nested` clauses, forming a hierarchy of increasingly precise groupings.
 
 ## Syntax
 
@@ -65,7 +65,7 @@ To include all values of a column at a specific level:
 
 ## Performance considerations
 
-* The number of records may grow exponentially with the number of aggregation clauses, and record growth is even faster if no *N* limit is specified. This operator may consume a considerable amount of resources.
+* The number of records may grow exponentially with the number of top-nested clauses, and record growth is even faster if no *N* limit is specified. This operator may consume a considerable amount of resources.
 * If the distribution of the aggregation is considerably non-uniform, limit the number of distinct values to return by specifying *N*. Then, use the `with` `others` `=` *ConstExpr* specification to get an indication for the weight of all other cases.
 
 ## Examples
