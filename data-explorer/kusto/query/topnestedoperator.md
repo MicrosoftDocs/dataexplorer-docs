@@ -233,13 +233,13 @@ StormEvents
 
 ### Retrieve the latest records per identity
 
-If you have a table with an ID column and a timestamp column, you can use the top-nested operator to query the latest two records for each unique value of ID. The latest records are defined by the highest value of timestamp.
+The following showcases how to extract the latest records per identity and builds on the concepts introduced in the previous example. The first `top-nested` clause partitions the data by distinct values of `id`. The subsequent clause identifies the two most recent records based on the `timestamp` for each `id`. Other information is appended using a `top-nested` operator alongside an unspecified count and the arbitrary `max(1)` aggregation. Finally, unnecessary aggregation columns are removed using the `project-away` operator.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43QzW4CIRAH8DtPMeG0JmyyYLVq4sV48RlMD2PBigpscIya+PCFZpc2JrYNBAL5/fkYjZTa5mgqq2dwomj9hwCyzpwIXTsDjWTyUkCgnYkrvw3RIdngez4AALZmaQS+wIgHLkqqUo0c1Y1MfSCASy6eu/G3U7+51+xUk92wd8vg8aifw5e/oZxkOPoHnGY45uyN3YFCW/tUK6MhbMFq2NxAn527NXOH1yr/BtgPpDIr5S1afumy/5hKmcfql6jqLkqPaWPYm3eq8YL9K0R3fjerT8+D6uvwAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42SXU+DMBSG7/kVJ1xtCWOAbuoSL/xIjHfGW+PFkZ6xKm2xLdMl/nhP2YZmc2ohJTTP6cN5i0DP11NNAylm4LyVukrAS0XOo2pmINBTeE3A+AXZWz03VqGXRm/xIYzHcGWJQUBwprUlhbL1vmn0EAGP+BItvsRJv+GgyPLJKMv5HiYQ53FymJt+ccVv3EngiixwR1vu2misxWHw+G8wPw3g5B/gWQCncfQYfYA3zUhzjCTAzEEKeFqBaJVaZecK3wehm/3BUd6h9TIEDBx4F2SoJCwX0Gr52hIssea52zTlT/omKsJqf3q9Me+M/Xows+iGfKcoQBnnwVJJ2gMteXbAx7x2coWnHQ1Ldv+G3lVsuuv7uWga0mK/oDd0xpQTa6x5ptKP8A23USWbBjbP4sfE7kmZJXW9tFpzG86hXQFWlaVqLStN3Srt0k9UtTnP8AIAAA==" target="_blank">Run the query</a>
 
 ```kusto
-datatable(id: string, timestamp: datetime, otherInformation: string)   
+datatable(id: string, timestamp: datetime, otherInformation: string) // Create a source datatable.
 [
     "Barak", datetime(2015-01-01), "1",
     "Barak", datetime(2016-01-01), "2",
@@ -248,10 +248,10 @@ datatable(id: string, timestamp: datetime, otherInformation: string)
     "Donald", datetime(2017-01-18), "5",
     "Donald", datetime(2017-01-19), "6"
 ]
-| top-nested of id by dummy0=max(1),  
-top-nested 2 of timestamp by dummy1=max(timestamp),  
-top-nested of otherInformation by dummy2=max(1)
-| project-away dummy0, dummy1, dummy2 
+| top-nested of id by dummy0=max(1),                   // Partition the data by each unique value of id.
+  top-nested 2 of timestamp by dummy1=max(timestamp),  // Get the 2 most recent events for each state.
+  top-nested of otherInformation by dummy2=max(1)      // Append otherInformation for each event.
+| project-away dummy0, dummy1, dummy2                  // Remove the unnecessary aggregation columns.
 ```
 
 **Output**
