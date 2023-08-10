@@ -19,9 +19,8 @@ The result is a table with two columns for each aggregation clause. One column c
 
 ## Syntax
 
-*T*  
-`|` `top-nested` [ *N* ] `of` *Expr* [`with` `others` `=` *ConstExpr*] `by` *Aggregation* [`asc` | `desc`] [`,`  
-&emsp;`top-nested` ... ]
+*T* `|` `top-nested` [ *N* ] `of` *Expr* [`with` `others` `=` *ConstExpr*] `by` *Aggregation* [`asc` | `desc`] [`,`  
+&emsp;&emsp;`top-nested` ... ]
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
