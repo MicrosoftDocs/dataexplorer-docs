@@ -9,13 +9,13 @@ ms.date: 08/10/2023
 
 The top-nested operator performs hierarchical aggregation and value selection.
 
-Imagine you have a table with sales information like countries, salespeople, and amounts sold. The top-nested operator can help you answer complex questions like, "What are the top five countries by sales, and who are the top three salespeople in each of those countries?"
+Imagine you have a table with sales information like regions, salespeople, and amounts sold. The top-nested operator can help you answer complex questions like, "What are the top five regions by sales, and who are the top three salespeople in each of those regions?"
 
-The operator starts by separating the input records into partitions based on the first aggregation clause. The data is grouped according to the specified criteria, such as country. Then, the operator then selects the top records within each partition using a specific calculation, such as adding up sales amounts. These top records can be determined by ascending or descending order.
+The operator starts by separating the input records into partitions based on the first aggregation clause. The data is grouped according to the specified criteria, such as region. Then, the operator then selects the top records within each partition using a specific calculation, such as adding up sales amounts. These top records can be determined by ascending or descending order.
 
 Then, the subsequent aggregation clause is applied to each partition. This initiates a nested aggregation process, further refining the data within each partition. This iterative procedure continues for all successive aggregation clauses, forming a hierarchy of increasingly precise groupings.
 
-The result is a table with two columns for each aggregation clause. One column contains the distinct values utilized for partitioning the table, such as countries, while the other column contains the outcome of the aggregation calculation, such as the total sales.
+The result is a table with two columns for each aggregation clause. One column contains the distinct values utilized for partitioning the table, such as regions, while the other column contains the outcome of the aggregation calculation, such as the total sales.
 
 ## Syntax
 
@@ -32,7 +32,7 @@ The result is a table with two columns for each aggregation clause. One column c
 |*T*|string|&check;|The input tabular expression.|
 |*N*|int||The number of top values to be returned for this hierarchy level. If omitted, all distinct values are returned.|
 |*Expr*|string|&check;|An expression over the input record indicating which value to return for this hierarchy level. Typically, it refers to a column from *T* or involves a calculation like [bin()](binfunction.md) on a column. Optionally, set an output column name as *Name* `=` *Expr*.|
-|*ConstExpr*|string||If specified, for each hierarchy level, one record will be added with the value that is the aggregation over all records that didn't make it to the top.|
+|*ConstExpr*|string||If specified, for each hierarchy level, one record is added with the value that is the aggregation over all records that didn't make it to the top.|
 |*Aggregation*|string||The aggregation function applied to records with the same *Expr* value. The result determines the top records. See [Supported aggregation functions](#supported-aggregation-functions). Optionally, set an output column name as *Name* `=` *Aggregation*.|
 
 ### Supported aggregation functions
@@ -77,7 +77,7 @@ cases.
 
 ### Get started with the `top-nested` operator
 
-The following query partitions the `StormEvents` table by the `State` column and calculates the total latitude for each state. The query selects the top 2 states with the highest latitude sum. Within these top 2 states, the query groups the data by `Source` and selects the top 3 sources with the highest latitude sum. For each of the top 3 sources in the top 2 states, the query groups the data by `EndLocation` and selects the `EndLocation` with the highest latitude sum.
+The following query partitions the `StormEvents` table by the `State` column and calculates the total latitude for each state. The query selects the top two states with the highest latitude sum. Within these top two states, the query groups the data by `Source` and selects the top three sources with the highest latitude sum. For each of the top three sources in the top two states, the query groups the data by `EndLocation` and selects the `EndLocation` with the highest latitude sum.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42OSw6CQBAF957iLTVRCXIDIzt2eIGWaZUEugnTmJh4ePnMgviJvnWl6uWmbZ3eWMzjz0URDmQEr11b8HbxgGmzEfbGDjvoGbmRcaBPd/iuXu75UkpGtloHxVGbHh5JP0CmRhUqstI611sxtyajdez9tiaB/KBFKWAqrlP3JRIPkVRcpkWPq7xFMIvEr+S30HSaxIXmE8PE8rpxAQAA" target="_blank">Run the query</a>
@@ -100,7 +100,7 @@ StormEvents                                        // Data source.
 |TEXAS|123400.5101|Law Enforcement|37228.5966|PERRYTON|289.3178|
 |TEXAS|123400.5101|Trained Spotter|13997.7124|CLAUDE|421.44|
 
-### Enhance top-nested results with additional columns
+### Enhance top-nested results with another column
 
 The following query builds upon the previous example by introducing an extra `top-nested` clause. In this new clause, the absence of a numeric specification results in the extraction of all distinct values of `EventType` across the partitions. The `max(1)` aggregation function is merely a placeholder, rendering its outcome irrelevant, so the [project-away](projectawayoperator.md) operator removes the `Ignore` column. The result shows all event types associated with the previously aggregated data.
 
@@ -132,9 +132,9 @@ StormEvents
 | TEXAS | 123400.51009999994 | Law Enforcement | 37228.596599999961 | PERRYTON | 289.3178 | Hail |
 | ... | ... | ... | ... | ... | ... |
 
-### Use `with` `others` to explore non-top data
+### Use `with` `others` to explore excluded data
 
-This query showcases the `with` `others` specification in action. When incorporated within a `top-nested` clause, the `with` `others` specification introduces an extra record that aggregates data excluded from the top results. In the provided example, an extra record emerges in the `State` and `aggregated_State` columns, representing the collective latitude of all states except Kansas and Texas. Moreover, the `EndLocation` and `aggregated_EndLocation` column reveals an extra 9 records. These records show the combined latitude of end locations not qualifying as the top location within each state and source.
+This query showcases the `with` `others` specification in action. When incorporated within a `top-nested` clause, the `with` `others` specification introduces an extra record that aggregates data excluded from the top results. In the provided example, an extra record emerges in the `State` and `aggregated_State` columns, representing the collective latitude of all states except Kansas and Texas. Moreover, the `EndLocation` and `aggregated_EndLocation` column reveals an extra nine records. These records show the combined latitude of end locations not qualifying as the top location within each state and source.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKMkv0M1LLS5JTVEwUshPUwguSSxJVSjPLMlQyC/JSC0qVrBVUHLMyVHwB/Eg0sVKCkmVCsWluRpOqemZeT6JJZo6XArIRhmDjcovLUpOJaTUEKTUNS/FJz85sSQzPw+33UBFCjBVWJwAABtuhnPYAAAA" target="_blank">Run the query</a>
@@ -225,7 +225,7 @@ StormEvents
 |KANSAS|Public|PROTECTION|446.11|2|
 |KANSAS|Public|MEADE STATE PARK|371.1|3|
 
-## Get the most recent events per state with additional information
+## Get the most recent events per state with extra information
 
 The following query demonstrates how to retrieve the two most recent events for each US state along with relevant event details. Notice the use of `max(1)` within certain columns, identified by `Ignore*`, which aids in propagating data through the query without imposing any selection logic.
 
@@ -242,9 +242,9 @@ StormEvents
 | order by State asc, StartTime desc                   // Sort results alphabetically and chronologically.
 ```
 
-### Get the latest records per identity with additional information
+### Get the latest records per identity with extra information
 
-The following showcases how to extract the latest records per identity and builds on the concepts introduced in the previous example. The first `top-nested` clause partitions the data by distinct values of `id`. The subsequent clause identifies the two most recent records based on the `timestamp` for each `id`. Other information is appended using a `top-nested` operator alongside an unspecified count and the arbitrary `max(1)` aggregation. Finally, unnecessary aggregation columns are removed using the `project-away` operator.
+The following query showcases how to extract the latest records per identity and builds on the concepts introduced in the previous example. The first `top-nested` clause partitions the data by distinct values of `id`. The subsequent clause identifies the two most recent records based on the `timestamp` for each `id`. Other information is appended using a `top-nested` operator alongside an unspecified count and the arbitrary `max(1)` aggregation. Finally, unnecessary aggregation columns are removed using the `project-away` operator.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42STU+DQBCG7/yKCac2oRTQVm3iwY/E9Ga8Gg9TmNJVdhd3l2oTf7yzVKhprbqQDR/P7MO8S4GOj0VFA1HMwDojVBmBE5KsQ1nPoEBH/jYC7VZk5mqpjUQntOrwIYzHcGOIQUCwujE5+bLtunHwGACP8BoNvoRRv+AgS9LJKEn5HEYQpmF0nJvuuOw37sxzWeK5k4671Qqr4jh4+jeYnntw8g/wwoPTMHgKPsDpeqQ4RipAL0EUsNjAvFTaUHIp8X3g2zkcnOU9Gid8wsCJt0n6UsJ8BY0Srw3BGiue21Vj/qZvpsw/7bdvp0xbZf/Cq9l0R651ZCC1dWAoJ+WA1jxb4I3eSrnC0Z6HLfv/w06WffXXd3RV16SKw4pe0SpjDq02+plyN8I37NOKuh66i+zH2B5I6jW1/TRKcSvWotkAlqWhcuvLddVIZeNPusl9PvYCAAA=" target="_blank">Run the query</a>
