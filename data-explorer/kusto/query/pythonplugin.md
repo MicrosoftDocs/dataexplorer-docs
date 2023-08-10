@@ -1,4 +1,3 @@
----
 title:  Python plugin
 description: Learn how to use the Python plugin to run user-defined functions using a Python script.
 ms.reviewer: adieldar
@@ -167,6 +166,10 @@ The URLs referenced by the external artifacts property must be:
 The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Examples](#examples).
 
 For information regarding referencing external packages, see [Install packages for the Python plugin](#install-packages-for-the-python-plugin).
+
+### Refreshing External Artifact Cache
+
+External artifact files utilized in queries are cached on the cluster's disk. Should you make updates to your files within the cloud storage and require immediate synchronization with the cluster, you can use the [Clear External Artifacts Cache command](../management/clear-external-artifacts-cache-command.md). This command ensures that the latest version of your external artifact files is promptly made available to the cluster.
 
 ## Install packages for the Python plugin
 
