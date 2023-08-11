@@ -1345,18 +1345,6 @@ items:
         href: geo-union-lines-array-function.md
       - name: geo_union_polygons_array()
         href: geo-union-polygons-array-function.md
-  - name: Graph
-    items:
-      - name: Graph overview
-        href: graph-operators.md
-      - name: make-graph operator
-        href: make-graph-operator.md
-      - name: graph-match operator
-        href: graph-match-operator.md
-      - name: graph-merge operator
-        href: graph-merge-operator.md
-      - name: graph-to-table operator
-        href: graph-to-table-operator.md
   - name: Time series analysis
     items:
       - name: Example use cases
