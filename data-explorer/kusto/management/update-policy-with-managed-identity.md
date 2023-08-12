@@ -8,17 +8,17 @@ ms.date: 07/13/2023
 # Use a managed identity to run an update policy
 
 The update policy must be configured with a [managed identity](../../managed-identities-overview.md) in the following scenarios:
-- When the update policy query references cross-database tables.
-- When the update policy query references references tables with an enabled [row level security policy](./rowlevelsecuritypolicy.md).
+- When the update policy query references tables in other databases.
+- When the update policy query references tables with an enabled [row level security policy](./rowlevelsecuritypolicy.md).
 
-A update policy configured with a managed identity is performed on behalf of the managed identity.
+An update policy configured with a managed identity is performed on behalf of the managed identity.
 
 In this article, you'll learn how to configure a system-assigned or user-assigned managed identity and set up that identity to create an update policy.
 
 ## Prerequisites
 
 * A cluster and database. [Create a cluster and database](../../create-cluster-and-database.md).
-* [Database Viewer](../access-control/role-based-access-control.md) permissions on the database.
+* [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions on the database.
 
 ## 1 - Configure a managed identity for update policy
 
@@ -80,7 +80,7 @@ Select one of the following tabs to set up your preferred managed identity type.
     > [!NOTE]
     > To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
 
-1. Run the following command to grant the managed identity [Database Viewer](../access-control/role-based-access-control.md)permissions over all databases referenced by the update policy query.
+1. Run the following command to grant the managed identity [Database Viewer](../access-control/role-based-access-control.md) permissions over all databases referenced by the update policy query.
 
     ```kusto
     .add database <DatabaseName> viewers ('aadapp=<objectId>')
@@ -108,7 +108,7 @@ For example, the following command alters the update policy of the table `MyTabl
         "IsEnabled": true,
         "Source": "MyTable",
         "Query": "UpdatePolicyFunction",
-        "IsTransactional": true,
+        "IsTransactional": false,
         "PropagateIngestionProperties": false,
         "ManagedIdentity": "<objectId>"
     }
@@ -130,7 +130,7 @@ For example, the following command alters the update policy of the table `MyTabl
         "IsEnabled": true,
         "Source": "MyTable",
         "Query": "UpdatePolicyFunction",
-        "IsTransactional": true,
+        "IsTransactional": false,
         "PropagateIngestionProperties": false,
         "ManagedIdentity": "system"
     }

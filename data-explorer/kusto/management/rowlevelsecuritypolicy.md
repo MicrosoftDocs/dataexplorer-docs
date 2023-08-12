@@ -37,7 +37,7 @@ There's no limit on the number of tables on which Row Level Security policy can 
 
 The RLS policy can't be enabled on a table under the following circumstances:
 
-* When it's referenced by an [update policy](./updatepolicy.md) query without providing a managed identity to the update policy.
+* When it's referenced by an [update policy](./updatepolicy.md) query, while the update policy is not configured with a managed identity.
 * When it's referenced by a [continuous export](../management/data-export/continuous-data-export.md) that uses an authentication method other than impersonation.
 * When a [restricted view access policy](./restrictedviewaccesspolicy.md) is configured for the table.
 
