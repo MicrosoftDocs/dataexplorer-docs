@@ -328,25 +328,31 @@ The state starts empty and is updated whenever a scanned input row matches a ste
 
 ### Perform the scan / Scan step-by-step... Show the state updates as we scan...
 
-In this section, we'll walkthrough the input rows one at a time and show how the state is updated as we do so. 
+In this section, we'll walkthrough the input rows one at a time and show how the state is updated as we do so. Remember, each record from the input is evaluated against all of scan’s steps, starting from last to first. A match can only happen if the corresponding or prior step isn't empty.
 
 #### Row 1
+
+Each record from the input is evaluated against all of the scan steps, starting from last to first. A match can only happen if the corresponding or prior step isn't empty.
+
+The first row can't match `s3` or `s2` because both of the prior steps are empty. For `s1`, the first row doesn't satisfy the condition of `Event == "Start"`. Therefore, the first row doesn't match any step and is discarded without affecting the state or the output.
+
+**Row 1**
 
 |Ts|Event|
 |---|---|
 |0m|"A"|
 
-Remember, each record from the input is evaluated against all of scan’s steps, starting from last to first. The first row doesn't match `s3` or `s2` because they're both empty. A match can only happen if the corresponding or prior step isn't empty. The first row also doesn't match `s1` because it doesn't satisfy the condition of `Event == "Start"`. Since the first row didn't match any step, it's discarded without affecting the state or the output.
-
 #### Row 2
+
+The second row matches `s1` because the `Event` value is "Start". This match initiates a new sequence, and the `m_id` is assigned. The row and its `m_id` are added to the output.
+
+**Row 2**
 
 |Ts|Event|
 |---|---|
 |1m|"Start"|
 
-Again, the second row doesn't match `s3` or `s2` because they're both empty. However, the second row does match the first step. This match initializes a new sequence and adds the row and the initialized `m_id` to the output.
-
-**State after scan of Row 2**
+**Updated state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -356,13 +362,15 @@ Again, the second row doesn't match `s3` or `s2` because they're both empty. How
 
 #### Row 3
 
+The third row matches the `s2` condition of `Ts - s1.Ts < 5m`, and the prior step of `s1` is active. These conditions cause the sequence in `s1` to be promoted to `s2` and the `s1` state to be cleared. The row `00:02:00, "B", 0` is added to the output.
+
+**Row 3**
+
 |Ts|Event|
 |---|---|
 |2m|"B"|
 
-The third row matches `s2` because it matches the condition (`Ts - s1.Ts < 5m`) and the prior step (`s1`) is active so the sequence in `s1` is promoted to `s2` and `s1` is cleared, the row `00:02:00, "B", 0` is added to the output.
-
-**State after scan of Row 3**
+**Updated state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -372,13 +380,17 @@ The third row matches `s2` because it matches the condition (`Ts - s1.Ts < 5m`) 
 
 #### Row 4 
 
+Again, the row matches `s2`, but this time it overrides the existing state of `s2`, replacing `s2.Ts` and `s2.Event` in the state of the sequence.
+
+The row `00:03:00, "D", 0` is added to the output.
+
+**Row 4**
+
 |Ts|Event|
 |---|---|
 |3m|"D"|
 
-Again, the row matches `s2`, but this time it overrides the existing state of `s2`, replacing `s2.Ts` and `s2.Event` in the state of the sequence. The row `00:03:00, "D", 0` is added to the output.
-
-**State after scan of Row 4**
+**Updated state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -388,69 +400,87 @@ Again, the row matches `s2`, but this time it overrides the existing state of `s
 
 #### Row 5
 
+This row promotes the existing sequence from `s2` to `s3`.
+
+The row `00:04:00, "Stop", 1` is added to the output.
+
+**Row 5**
+
 |Ts|Event|
 |---|---|
 |4m|"Stop"|
 
-This row promotes the existing sequence from `s2` to `s3`, the row `00:04:00, "Stop", 1` is added to the output.
-
-**State after scan of Row 5**
+**Updated state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1||||X|X|X|X|
 |s2||||||X|X|
-|s3|0|00:01:00|"Start"|00:03:00|"D"|00:03:00|"Stop"|
+|s3|0|00:01:00|"Start"|00:03:00|"D"|00:04:00|"Stop"|
 
 #### Row 6
+
+Since there's no active sequence in `s1` and `s2`, this row doesn't match any step and is discarded.
+
+**Row 6**
 
 |Ts|Event|
 |---|---|
 |6m|"C"|
 
-Since there's no active sequence in `s1` and `s2`, this row doesn't match any step and is discarded.
-
 #### Row 7
+
+This row starts a new sequence in `s1` with a new match ID, note that there are now two active sequences in the state.
+
+The row `00:08:00, "Start", 1` is added to the output.
+
+**Row 7**
 
 |Ts|Event|
 |---|---|
 |8m|"Start"|
 
-This row starts a new sequence in `s1` with a new match ID, note that there are now `2` active sequences in the state. The row `00:08:00, "Start", 1` is added to the output.
-
-**State after scan of Row 7**
+**Updated state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1|1|00:08:00|"Start"|X|X|X|X|
 |s2||||||X|X|
-|s3|0|00:01:00|"Start"|00:03:00|"D"|00:03:00|"Stop"|
+|s3|0|00:01:00|"Start"|00:03:00|"D"|00:04:00|"Stop"|
 
 #### Row 8
+
+This row promotes the sequence from `s1` to `s2` and clears the state of `s1`.
+
+The row `00:11:00, "E", 1` is added to the output.
+
+**Row 8**
 
 |Ts|Event|
 |---|---|
 |11m|"E"|
 
-This row promotes the sequence from `s1` to `s2` and clears the state of `s1`. The row `00:11:00, "E", 1` is added to the output.
-
-**State after scan of Row 8**
+**Updated state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1||||X|X|X|X|
 |s2|1|00:08:00|"Start"|00:11:00|"E"|X|X|
-|s3|0|00:01:00|"Start"|00:03:00|"D"|00:03:00|"Stop"|
+|s3|0|00:01:00|"Start"|00:03:00|"D"|00:04:00|"Stop"|
 
 #### Row 9
+
+The last row promotes `s2` to `s3` and clears `s2`, promoting a sequence gets precedence over continuing an existing sequence. Notice that `s3` is overridden with the values that were promoted from `s2`.
+
+The row `00:12:00, "Stop, 1"` is added to the output.
+
+**Row 9**
 
 |Ts|Event|
 |---|---|
 |12m|"Stop"|
 
-The last row promotes `s2` to `s3` and clears `s2`, promoting a sequence gets precedence over continuing an existing sequence. Notice that `s3` is overridden with the values that were promoted from `s2`. The row `00:12:00, "Stop, 1"` is added to the output.
-
-**State after scan of Row 9**
+**Updated state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -459,8 +489,6 @@ The last row promotes `s2` to `s3` and clears `s2`, promoting a sequence gets pr
 |s3|1|00:08:00|"Start"|00:11:00|"E"|00:12:00|"Stop"|
 
 #### Final output
-
-The final output of the operator is as follows:
 
 |Ts|Event|m_id|
 |---|---|---|
