@@ -332,27 +332,31 @@ This section follows the logic of the scan operator through each input row, expl
 
 #### Row 1
 
-Each record from the input is evaluated against all of the scan steps, starting from last to first. A match can only happen if the corresponding or prior step isn't empty.
-
-The first row can't match `s3` or `s2` because both of the prior steps are empty. For `s1`, the first row doesn't satisfy the condition of `Event == "Start"`. Therefore, the first row doesn't match any step and is discarded without affecting the state or the output.
-
-**Row 1**
-
 |Ts|Event|
 |---|---|
 |0m|"A"|
 
+Each record from the input is evaluated against all of the scan steps, starting from last to first. A match can only happen if the corresponding or prior step isn't empty.
+
+The first row can't match `s3` or `s2` because both of the prior steps are empty. For `s1`, the first row doesn't satisfy the condition of `Event == "Start"`. Therefore, the first row doesn't match any step and is discarded without affecting the state or the output.
+
+**Current state**
+
+||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1||||X|X|X|X|
+|s2||||||X|X|
+|s3||||||||
+
 #### Row 2
-
-The second row matches `s1` because the `Event` value is "Start". This match initiates a new sequence, and the `m_id` is assigned. The row and its `m_id` are added to the output.
-
-**Row 2**
 
 |Ts|Event|
 |---|---|
 |1m|"Start"|
 
-**Updated state**
+The second row matches `s1` because the `Event` value is "Start". This match initiates a new sequence, and the `m_id` is assigned. The row and its `m_id` are added to the output.
+
+**Current state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -362,15 +366,13 @@ The second row matches `s1` because the `Event` value is "Start". This match ini
 
 #### Row 3
 
-The third row matches the `s2` condition of `Ts - s1.Ts < 5m`, and the prior step of `s1` is active. These conditions cause the sequence in `s1` to be promoted to `s2` and the `s1` state to be cleared. The row `00:02:00, "B", 0` is added to the output.
-
-**Row 3**
-
 |Ts|Event|
 |---|---|
 |2m|"B"|
 
-**Updated state**
+The third row matches the `s2` condition of `Ts - s1.Ts < 5m`, and the prior step of `s1` is active. These conditions cause the sequence in `s1` to be promoted to `s2` and the `s1` state to be cleared. The row `00:02:00, "B", 0` is added to the output.
+
+**Current state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -380,17 +382,15 @@ The third row matches the `s2` condition of `Ts - s1.Ts < 5m`, and the prior ste
 
 #### Row 4 
 
-Again, the row matches `s2`, but this time it overrides the existing state of `s2`, replacing `s2.Ts` and `s2.Event` in the state of the sequence.
-
-The row `00:03:00, "D", 0` is added to the output.
-
-**Row 4**
-
 |Ts|Event|
 |---|---|
 |3m|"D"|
 
-**Updated state**
+Again, the row matches `s2`, but this time it overrides the existing state of `s2`, replacing `s2.Ts` and `s2.Event` in the state of the sequence.
+
+The row `00:03:00, "D", 0` is added to the output.
+
+**Current state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -400,17 +400,15 @@ The row `00:03:00, "D", 0` is added to the output.
 
 #### Row 5
 
-This row promotes the existing sequence from `s2` to `s3`.
-
-The row `00:04:00, "Stop", 1` is added to the output.
-
-**Row 5**
-
 |Ts|Event|
 |---|---|
 |4m|"Stop"|
 
-**Updated state**
+This row promotes the existing sequence from `s2` to `s3`.
+
+The row `00:04:00, "Stop", 1` is added to the output.
+
+**Current state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -420,27 +418,31 @@ The row `00:04:00, "Stop", 1` is added to the output.
 
 #### Row 6
 
-Since there's no active sequence in `s1` and `s2`, this row doesn't match any step and is discarded.
-
-**Row 6**
-
 |Ts|Event|
 |---|---|
 |6m|"C"|
 
+Since there's no active sequence in `s1` and `s2`, this row doesn't match any step and is discarded.
+
+**Current state**
+
+||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1||||X|X|X|X|
+|s2||||||X|X|
+|s3|0|00:01:00|"Start"|00:03:00|"D"|00:04:00|"Stop"|
+
 #### Row 7
-
-This row starts a new sequence in `s1` with a new match ID, note that there are now two active sequences in the state.
-
-The row `00:08:00, "Start", 1` is added to the output.
-
-**Row 7**
 
 |Ts|Event|
 |---|---|
 |8m|"Start"|
 
-**Updated state**
+This row starts a new sequence in `s1` with a new match ID, note that there are now two active sequences in the state.
+
+The row `00:08:00, "Start", 1` is added to the output.
+
+**Current state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -450,17 +452,16 @@ The row `00:08:00, "Start", 1` is added to the output.
 
 #### Row 8
 
-This row promotes the sequence from `s1` to `s2` and clears the state of `s1`.
-
-The row `00:11:00, "E", 1` is added to the output.
-
-**Row 8**
 
 |Ts|Event|
 |---|---|
 |11m|"E"|
 
-**Updated state**
+This row promotes the sequence from `s1` to `s2` and clears the state of `s1`.
+
+The row `00:11:00, "E", 1` is added to the output.
+
+**Current state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -470,17 +471,15 @@ The row `00:11:00, "E", 1` is added to the output.
 
 #### Row 9
 
-The last row promotes `s2` to `s3` and clears `s2`, promoting a sequence gets precedence over continuing an existing sequence. Notice that `s3` is overridden with the values that were promoted from `s2`.
-
-The row `00:12:00, "Stop, 1"` is added to the output.
-
-**Row 9**
-
 |Ts|Event|
 |---|---|
 |12m|"Stop"|
 
-**Updated state**
+The last row promotes `s2` to `s3` and clears `s2`, promoting a sequence gets precedence over continuing an existing sequence. Notice that `s3` is overridden with the values that were promoted from `s2`.
+
+The row `00:12:00, "Stop, 1"` is added to the output.
+
+**Current state**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
