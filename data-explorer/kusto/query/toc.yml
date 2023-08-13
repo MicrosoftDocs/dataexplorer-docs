@@ -4,7 +4,7 @@ items:
 - name: Syntax conventions
   href: syntax-conventions.md
 - name: Kusto Query Language learning resources
-  href: kql-learning-resources.md
+  href: ../../kql-learning-resources.md
 - name: Add a comment in KQL
   href: comment.md
 - name: Get started with KQL
