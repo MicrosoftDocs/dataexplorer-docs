@@ -330,13 +330,14 @@ The state starts empty and is updated whenever a scanned input row matches a ste
 
 This section follows the logic of the scan operator through each input row, explaining the transformation of the state and output at each step.
 
+> [!NOTE]
+> Each record from the input is evaluated against all of the scan steps, starting from last to first. A match can only happen if the corresponding or prior step isn't empty.
+
 #### Row 1
 
 |Ts|Event|
 |---|---|
 |0m|"A"|
-
-Each record from the input is evaluated against all of the scan steps, starting from last to first. A match can only happen if the corresponding or prior step isn't empty.
 
 The first row can't match `s3` or `s2` because both of the prior steps are empty. For `s1`, the first row doesn't satisfy the condition of `Event == "Start"`. Therefore, the first row doesn't match any step and is discarded without affecting the state or the output.
 
