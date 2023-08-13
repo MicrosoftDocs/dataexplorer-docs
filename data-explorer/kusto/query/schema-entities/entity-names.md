@@ -22,7 +22,7 @@ Entity names are one example of **identifiers**. Other identifiers include the n
 parameters to functions and binding a name through a [let statement](../letstatement.md).
 
 > [!NOTE]
-> Entity names that are also reflected as Azure resource names (such as Azure Data Explorer cluster, Database, Data Connection, etc. ) are also following [ARM reserve words rules](https://learn.microsoft.com/azure/azure-resource-manager/troubleshooting/error-reserved-resource-name).
+> Entity names that are also reflected as Azure resource names (such as Azure Data Explorer cluster, Database, Data Connection, etc. ) are also following [ARM reserve words rules](/azure/azure-resource-manager/troubleshooting/error-reserved-resource-name).
 
 
 ## Entity pretty names
