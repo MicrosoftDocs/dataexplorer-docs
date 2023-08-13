@@ -3,7 +3,7 @@ title:  top-nested operator
 description: Learn how to use the top-nested operator to produce a hierarchical aggregation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/10/2023
+ms.date: 08/13/2023
 ---
 # top-nested operator
 
@@ -62,6 +62,8 @@ To include all values of a column at a specific level:
 1. Use the column name as the value of *Expr*.
 1. Use `Ignore=max(1)` as the value of *Aggregation* .
 1. Remove the unnecessary `Ignore` column with [project-away](projectawayoperator.md).
+
+For an example, see [Get the most recent events per state with additional data from other columns](#get-the-most-recent-events-per-state-with-additional-data-from-other-columns).
 
 ## Performance considerations
 
@@ -130,7 +132,7 @@ StormEvents
 
 ### Use `with` `others` to explore excluded data
 
-This query showcases the `with` `others` specification in action. When incorporated within a `top-nested` clause, the `with` `others` specification introduces an extra record that aggregates data excluded from the top results. In the provided example, an extra record emerges in the `State` and `aggregated_State` columns, representing the collective latitude of all states except Kansas and Texas. Moreover, the `EndLocation` and `aggregated_EndLocation` column reveals an extra nine records. These records show the combined latitude of end locations not qualifying as the top location within each state and source.
+When incorporated within a `top-nested` clause, the `with` `others` specification introduces an extra record that aggregates data excluded from the top results. In the following query, an extra record is created in the `State` and `aggregated_State` columns, representing the collective latitude of all states except Kansas and Texas. Moreover, the `EndLocation` and `aggregated_EndLocation` column have an extra nine records. These records show the combined latitude of end locations not qualifying as the top location within each state and source.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKMkv0M1LLS5JTVEwUshPUwguSSxJVSjPLMlQyC/JSC0qVrBVUHLMyVHwB/Eg0sVKCkmVCsWluRpOqemZeT6JJZo6XArIRhmDjcovLUpOJaTUEKTUNS/FJz85sSQzPw+33UBFCjBVWJwAABtuhnPYAAAA" target="_blank">Run the query</a>
@@ -235,7 +237,7 @@ StormEvents
   top-nested of EndTime by Ignore2=max(1),                // Append the EndTime for each event.
   top-nested of EpisodeId by Ignore3=max(1)               // Append the EpisodeId for each event.
 | project-away Ignore*                                    // Remove the unnecessary aggregation columns.
-| order by State asc, StartTime desc                   // Sort results alphabetically and chronologically.
+| order by State asc, StartTime desc                      // Sort results alphabetically and chronologically.
 ```
 
 ### Get the latest records per identity with additional data from other columns
@@ -255,9 +257,9 @@ datatable(id: string, timestamp: datetime, otherInformation: string) // Create a
     "Donald", datetime(2017-01-18), "5",
     "Donald", datetime(2017-01-19), "6"
 ]
-| top-nested of id by Ignore0=max(1),                   // Partition the data by each unique value of id.
-  top-nested 2 of timestamp by Ignore1=max(timestamp),  // Get the 2 most recent events for each state.
-  top-nested of otherInformation by Ignore2=max(1)      // Append otherInformation for each event.
+| top-nested of id by Ignore0=max(1),                     // Partition the data by each unique value of id.
+  top-nested 2 of timestamp by Ignore1=max(timestamp),    // Get the 2 most recent events for each state.
+  top-nested of otherInformation by Ignore2=max(1)        // Append otherInformation for each event.
 | project-away Ignore0, Ignore1, Ignore2                  // Remove the unnecessary aggregation columns.
 ```
 
