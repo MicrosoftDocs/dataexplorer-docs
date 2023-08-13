@@ -307,7 +307,7 @@ using Kusto.Data.Net.Client;
 namespace ManagementCommands {
   class ManagementCommands {
     static void Main(string[] args) {
-      string clusterUri = "https://<your_cluster>.kusto.windows.net";
+      string clusterUri = "https://<your_cluster_uri>";
       var kcsb = new KustoConnectionStringBuilder(clusterUri)
           .WithAadUserPromptAuthentication();
 
@@ -352,7 +352,7 @@ namespace ManagementCommands {
 from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
 
 def main():
-  cluster_uri = "https://<your_cluster>.kusto.windows.net"
+  cluster_uri = "https://<your_cluster_uri>"
   kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
 
   with KustoClient(kcsb) as kusto_client:
@@ -396,7 +396,7 @@ if __name__ == "__main__":
 const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 
 async function main() {
-  const clusterUri = "https://<your_cluster>.kusto.windows.net";
+  const clusterUri = "https://<your_cluster_uri>";
   const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
   const kustoClient = new Client(kcsb);
 
@@ -449,7 +449,7 @@ import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 public class ManagementCommands {
   public static void main(String[] args) throws Exception {
     try {
-      String clusterUri = "https://<your_cluster>.kusto.windows.net";
+      String clusterUri = "https://<your_cluster_uri>";
       ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
       try (Client kustoClient = ClientFactory.createClient(kcsb)) {
         String database = "<your_database>";
