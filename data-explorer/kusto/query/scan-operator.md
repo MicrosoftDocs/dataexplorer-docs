@@ -312,13 +312,19 @@ Events
 )
 ```
 
-First, we have to understand the state that is kept behind the scenes. Each `step` has its own state, it contains the most updated (latest) value of each column and declared variable of all the preceding steps in the sequence that led to this `step` and the match ID for the current sequence of the step. We can think of the state of the operator as a table with a row for each step:
+### Understand the state of the operator
+
+First, we have to understand the state that is kept behind the scenes. Each individual `step` has its own state, which contains the latest values from all the previous steps in the sequence. This includes values from columns and declared variables. Additionally, the state holds the match ID for the current sequence.
+
+Think of the state of the operator as a table with a row for each step. The "X" indicates that specific field doesn't matter for that step and won't contain any data.
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1||||X|X|X|X|
 |s2||||||X|X|
 |s3||||||||
+
+The state starts empty and is updated whenever a scanned input row matches a step. If a condition or assignment checks for a value in an empty step, the default value for the column is returned. The default value is `null` or an empty string, unless a different default value was declared.
 
 The state starts empty and is updated whenever a scanned row from the input matches a step. If a condition or an assignment checks for a value in an empty step, the default value for the column is returned (`null` or empty string unless a different default value was declared).  
 
