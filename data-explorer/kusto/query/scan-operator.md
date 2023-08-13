@@ -312,7 +312,7 @@ Events
 )
 ```
 
-### Understand the state of the operator
+### The state of the operator
 
 First, we have to understand the state that is kept behind the scenes. Each individual `step` has its own state, which contains the latest values from all the previous steps in the sequence. This includes values from columns and declared variables. Additionally, the state holds the match ID for the current sequence.
 
