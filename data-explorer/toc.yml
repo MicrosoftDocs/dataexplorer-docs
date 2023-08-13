@@ -133,9 +133,10 @@ items:
         - name: Data ingestion overview
           displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
           href: ingest-data-overview.md
-        - name: Get data in the web UI
         - name: Data connectors overview
           displayName: connect, integrate, integration, export, orchestrate
+          href: connector-overview.md
+        - name: Get data in the web UI
           items:
             - name: Ingestion wizard
               href: ingest-data-wizard.md
@@ -218,7 +219,6 @@ items:
               href: data-factory-template.md
             - name: Run management commands using Azure Data Factory
               href: data-factory-command-activity.md
-          href: connector-overview.md
         - name: Apache Kafka
           displayName: ingest data, ingestion, connector
           href: ingest-data-kafka.md
