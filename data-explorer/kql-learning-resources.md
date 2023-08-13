@@ -33,6 +33,9 @@ Kusto Query Language (KQL) is a powerful tool to explore your data and discover 
 
 ## External courses
 
+The following courses are not associated with the product. We do not endorse their content or commit to their accuracy. ((Check with legal add some disclaimery thing here))
+
+* [Must learn KQL](https://github.com/rod-trent/MustLearnKQL)
 * [Free Pluralsight training: Azure Data Explorer](https://www.pluralsight.com/partners/microsoft/azure-data-explorer)
 * [Udemy: Learn KQL for Microsoft Sentinel](https://www.udemy.com/course/learn-kql-for-microsoft-sentinel/)
 * [Cloud Academy: Introduction to Kusto Query Language](https://cloudacademy.com/lab/introduction-to-kusto-query-language/)
