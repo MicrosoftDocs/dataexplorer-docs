@@ -111,3 +111,7 @@ The following command removes all existing `admins` on the `Samples` external ta
 ```kusto
 .set external table Samples admins none
 ```
+
+## See also
+
+* [current_principal_details()](../query/current-principal-detailsfunction.md)
