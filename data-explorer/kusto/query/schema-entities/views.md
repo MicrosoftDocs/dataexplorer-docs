@@ -13,17 +13,17 @@ Like real tables, views organize data with rows and columns, and participate in 
 
 ## How to define a view
 
-Views are defined through [user-defined functions](../functions/user-defined-functions.md), which come in two forms: query-defined functions and stored functions. To qualify as a view, the function must accept no arguments and yield a tabular expression as its output.
+Views are defined through [user-defined functions](../functions/user-defined-functions.md), which come in two forms: query-defined functions and stored functions. To qualify as a view, a function must accept no arguments and yield a tabular expression as its output.
 
-For a query-defined function, specify the `view` keyword before the function definition. For an example, see [Query-defined view](#query-defined-view).
+To define a query-defined function as a view, specify the `view` keyword before the function definition. For an example, see [Query-defined view](#query-defined-view).
 
-For a stored function, set the `view` property to `true` when you create the function. For more information, see the [.create function command](../../management/create-function.md). For an example, see [Stored view](#stored-view).
+To define a stored function as a view, set the `view` property to `true` when you create the function. For an example, see [Stored view](#stored-view). For more information, see the [.create function command](../../management/create-function.md).
 
 ## Examples
 
 ### Query-defined view
 
-The following query defines two query-defined functions: `T_view` and `T_notview`. The query results demonstrate that only `T_view` is resolved by the wildcard reference in the union operation.
+The following query defines two functions: `T_view` and `T_notview`. The query results demonstrate that only `T_view` is resolved by the wildcard reference in the union operation.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIiS/LTC1XsFUAUxqaCtUKBUWZeSUKFbaGCrXWXDlgNXn5JVBlKCqMQCpK8zLz8xRCtACsbfBqTgAAAA==" target="_blank">Run the query</a>
@@ -38,8 +38,10 @@ union T*
 
 The following query defines a stored view. This view behaves like any other stored function, yet can partake in wildcard scenarios.
 
-```
-.create function with (view=true, docstring='Simple demo view', folder='Demo')  MyView() { StormEvents | take 100 }
+```kusto
+.create function 
+    with (view=true, docstring='Simple demo view', folder='Demo')  
+    MyView() { StormEvents | take 100 }
 ```
 
 ## See also
