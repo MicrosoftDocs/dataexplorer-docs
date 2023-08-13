@@ -23,6 +23,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter-merge` `table` [ *DatabaseName* `.`]*TableName* `policy` `update` *ArrayOfPolicyObjects*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

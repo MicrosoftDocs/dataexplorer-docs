@@ -33,6 +33,8 @@ This operator is similar to [series_fit_2lines](series-fit-2linesfunction.md). U
 
 `series_fit_2lines_dynamic(`*series*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -18,6 +18,8 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 
 *T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*][`,` *external_artifacts*][`,` *spill_to_disk*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
@@ -167,6 +169,10 @@ The URLs referenced by the external artifacts property must be:
 The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Examples](#examples).
 
 For information regarding referencing external packages, see [Install packages for the Python plugin](#install-packages-for-the-python-plugin).
+
+### Refreshing external artifact cache
+
+External artifact files utilized in queries are cached on your cluster. If you make updates to your files in cloud storage and require immediate synchronization with your cluster, you can use the [.clear cluster cache external-artifacts command](../management/clear-external-artifacts-cache-command.md). This command clears the cached files and ensures that subsequent queries run with the latest version of the artifacts.
 
 ## Install packages for the Python plugin
 

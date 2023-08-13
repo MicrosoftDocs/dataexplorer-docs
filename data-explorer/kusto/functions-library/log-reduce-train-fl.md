@@ -21,6 +21,8 @@ The function `log_reduce_train_fl()` finds common patterns in semi structured te
 
 *T* `|` `invoke` `log_reduce_train_fl(`*reduce_col*`,` *model_name* [`,` *use_logram* [`,` *use_drain* [`,` *custom_regexes* [`,` *custom_regexes_policy* [`,` *delimiters* [`,` *similarity_th* [`,` *tree_depth* [`,` *trigram_th* [`,` *bigram_th* ]]]]]]]]]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 The following parameters description is a summary. For more information, see [More about the algorithm](log-reduce-fl.md#more-about-the-algorithm) section.

@@ -19,6 +19,8 @@ Filters a record set for data that doesn't have a matching case-sensitive string
 
 *T* `|` `where` *column* `!has_cs` `(`*expression*`)`  
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

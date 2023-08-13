@@ -34,6 +34,8 @@ You must have at least [Database User](../access-control/role-based-access-contr
 
 `.create` [`async`] [`ifnotexists`] `materialized-view` [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] *MaterializedViewName* `on table` *SourceTableName* `{` *Query* `}`
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                            | Type   | Required | Description                                                                                                                                                                                                                          |
@@ -458,6 +460,8 @@ If the operation is no longer in progress when the `.cancel operation` command i
 #### Syntax
 
 `.cancel operation` *operationId*
+
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
 #### Parameters
 

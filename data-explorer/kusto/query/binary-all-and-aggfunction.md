@@ -14,6 +14,8 @@ Accumulates values using the binary `AND` operation for each summarization group
 
 `binary_all_and` `(`*expr*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

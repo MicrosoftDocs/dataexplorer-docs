@@ -17,6 +17,8 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 `.create-or-alter` `workload_group` *WorkloadGroupName* *SerializedPolicyObject*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                             | Type   | Required | Description                                                                                                                                                                                                                       |

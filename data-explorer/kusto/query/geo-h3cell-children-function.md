@@ -15,6 +15,8 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 
 `geo_h3cell_children(`*h3cell*`,`*resolution*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

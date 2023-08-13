@@ -22,6 +22,8 @@ The `.show` `queries` command lists queries that have reached a final state, and
 
 `.show` `running` `queries` [ `by user` *UserPrincipalName*]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 | Name | Type | Required | Description |
@@ -107,6 +109,8 @@ The `.cancel` `query` command starts a best-effort attempt to cancel a specific 
 ### Syntax
 
 `.cancel` `query` *ClientActivityId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ### Parameters
 

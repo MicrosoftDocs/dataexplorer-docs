@@ -17,6 +17,8 @@ To replace multiple strings, see [replace_strings()](replace-strings-function.md
 
 `replace_string(`*text*`,` *lookup*`,` *rewrite*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

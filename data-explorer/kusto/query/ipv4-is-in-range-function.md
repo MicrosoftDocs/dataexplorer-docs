@@ -13,6 +13,8 @@ Checks if IPv4 string address is in IPv4-prefix notation range.
 
 `ipv4_is_in_range(`*Ipv4Address*`,`*Ipv4Range*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

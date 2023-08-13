@@ -13,6 +13,8 @@ Convert a force value from one unit to another.
 
 `convert_force(`*value*`,`*from*`,`*to*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

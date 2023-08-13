@@ -21,6 +21,8 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 `.clear` `materialized-view` *MaterializedViewName* `data`
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                   | Type   | Required | Description                    |

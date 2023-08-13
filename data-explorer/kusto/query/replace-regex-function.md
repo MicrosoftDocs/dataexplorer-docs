@@ -7,13 +7,15 @@ ms.date: 05/21/2023
 ---
 # replace_regex()
 
-Replaces all regex matches with a specified pattern.
+Replaces all [regular expression](re2.md) matches with a specified pattern.
 
 > **Deprecated aliases:** replace()
 
 ## Syntax
 
 `replace_regex(`*source*`,`*lookup_regex*`,` *rewrite_pattern*`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

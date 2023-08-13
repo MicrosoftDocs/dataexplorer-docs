@@ -13,6 +13,8 @@ Returns the sign of the numeric expression.
 
 `sign(`*number*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

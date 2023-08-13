@@ -11,7 +11,7 @@ adobe-target: true
 
 Kusto Query Language (KQL) is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. The query uses schema entities that are organized in a hierarchy similar to SQLs: databases, tables, and columns.
 
-This article provides an explanation of the query language and offers practical exercises to get you started writing queries. To access the query environment, use the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
+This article provides an explanation of the query language and offers practical exercises to get you started writing queries. To access the query environment, use the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). To learn how to use KQL, see [Tutorial: Learn common operators](tutorials/learn-common-operators.md).
 
 ## What is a Kusto query?
 
@@ -77,6 +77,6 @@ For more information on management commands, see [Management commands overview](
 * [Tutorial: Learn common operators](tutorials/learn-common-operators.md)
 * [Tutorial: Use aggregation functions](tutorials/use-aggregation-functions.md)
 * [KQL quick reference](../../kql-quick-reference.md)
-* [SQL to Kusto cheat sheet](sqlcheatsheet.md)
+* [SQL to Kusto Query Language cheat sheet](sqlcheatsheet.md)
 * [Query best practices](best-practices.md)
 * [Query data with T-SQL](/azure/data-explorer/t-sql)

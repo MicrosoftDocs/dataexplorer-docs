@@ -18,6 +18,8 @@ Returns a hash value for the input value.
 
 `hash(`*source* [`,` *mod*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

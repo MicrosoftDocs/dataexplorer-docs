@@ -15,6 +15,8 @@ Converts the input to a [timespan](./scalar-data-types/timespan.md) scalar value
 
 `totimespan(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

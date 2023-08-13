@@ -24,6 +24,8 @@ The middle-tier application can prefix the user's query with a **logical model**
 
 `restrict` `access` `to` `(`*EntitySpecifiers*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

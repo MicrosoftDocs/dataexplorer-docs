@@ -15,6 +15,8 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 
 `geo_h3cell_neighbors(`*h3cell*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
