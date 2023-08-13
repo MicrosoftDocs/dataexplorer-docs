@@ -20,6 +20,8 @@ The function `series_fit_lowess_fl()` is a [user-defined function (UDF)](../quer
 
 `T | invoke series_fit_lowess_fl(`*y_series*`,` *y_fit_series*`,` [ *fit_size* ]`,` [ *x_series* ]`,` [ *x_istime* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

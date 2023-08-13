@@ -1,11 +1,9 @@
 items:
-- name: Client libraries
-  href: client-libraries.md
 - name: REST API
   items:
   - name: REST API overview
     href: rest/index.md
-  - name: Authentication
+  - name: Authentication over HTTPs
     href: rest/authentication.md
   - name: Query HTTP request
     href: rest/request.md
@@ -22,6 +20,9 @@ items:
   - name: How to ingest data with the REST API
     displayName: Kusto.Ingest
     href: netfx/kusto-ingest-client-rest.md
+  - name: How to authenticate with MSAL in apps
+    displayName: AAD, how to authenticate
+    href: rest/authenticate-with-msal.md
 - name: .NET SDK
   items:
   - name: About the SDK
@@ -57,10 +58,14 @@ items:
     - name: Code samples
       displayName: Kusto.Ingest
       href: netfx/kusto-ingest-client-examples.md
-- name: Bicep and ARM template resource types
-  href: /azure/templates/microsoft.kusto/allversions
-- name: Resource provider operations
-  href: /azure/role-based-access-control/resource-provider-operations#microsoftkusto
+  - name: Kusto.Language
+    items:
+    - name: Kusto.Language overview
+      href: netfx/about-kusto-language.md
+    - name: Parse queries and commands
+      href: netfx/kusto-language-parse-queries.md
+    - name: Define schemas
+      href: netfx/kusto-language-define-schemas.md
 - name: Python SDK
   items:
   - name: azure-kusto-python

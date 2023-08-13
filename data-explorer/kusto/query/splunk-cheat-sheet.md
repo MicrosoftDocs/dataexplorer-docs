@@ -5,7 +5,7 @@ ms.topic: conceptual
 ms.date: 05/01/2023
 ---
 
-# Splunk to Kusto Query Language map
+# Splunk to Kusto cheat sheet
 
 This article is intended to assist users who are familiar with Splunk learn the Kusto Query Language to write log queries with Kusto. Direct comparisons are made between the two to highlight key differences and similarities, so you can build on your existing knowledge.
 
@@ -36,7 +36,7 @@ The following table specifies functions in Kusto that are equivalent to Splunk f
 | `if`     | `iff()`   | (1) |
 | `tonumber` | `todouble()`<br />`tolong()`<br />`toint()` | (1) |
 | `upper`<br />`lower` |`toupper()`<br />`tolower()`|(1) |
-| `replace` | `replace_string()` or `replace_regex()` | (1)<br />Although `replace` functions take three parameters in both products, the parameters are different. |
+| `replace` | `replace_string()`, `replace_strings()` or `replace_regex()` | (1)<br />Although `replace` functions take three parameters in both products, the parameters are different. |
 | `substr` | `substring()` | (1)<br />Also note that Splunk uses one-based indices. Kusto notes zero-based indices. |
 | `tolower` |  `tolower()` | (1) |
 | `toupper` | `toupper()` | (1) |

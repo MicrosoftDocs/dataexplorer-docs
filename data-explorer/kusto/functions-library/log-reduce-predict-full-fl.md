@@ -16,7 +16,10 @@ The function `log_reduce_predict_full_fl()` parses semi structured textual colum
 [!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
+
 *T* `|` `invoke` `log_reduce_predict_full_fl(`*models_tbl*`,` *model_name*`,` *reduce_col*`,` *pattern_col*`,` *parameters_col* [`,` *anomaly_str* ]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

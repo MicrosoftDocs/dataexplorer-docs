@@ -32,8 +32,8 @@ In addition to the response size limit of 5,000 rows and 2 MB, the activity also
 
 ### Command activity
 
-The Command activity allows the execution of Azure Data Explorer [control commands](./kusto/query/index.md#control-commands). Unlike queries, the control commands can potentially modify data or metadata. Some of the control commands are targeted to ingest data into Azure Data Explorer, using commands such as `.ingest`or `.set-or-append`) or copy data from Azure Data Explorer to external data stores using commands such as `.export`.
-For a detailed walk-through of the command activity, see [use Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md).  Using a control command to copy data can, at times, be a faster and cheaper option than the Copy activity. To determine when to use the Command activity versus the Copy activity, see [select between Copy and Command activities when copying data](#select-between-copy-and-azure-data-explorer-command-activities-when-copy-data).
+The Command activity allows the execution of Azure Data Explorer [management commands](./kusto/query/index.md#management-commands). Unlike queries, the management commands can potentially modify data or metadata. Some of the management commands are targeted to ingest data into Azure Data Explorer, using commands such as `.ingest`or `.set-or-append`) or copy data from Azure Data Explorer to external data stores using commands such as `.export`.
+For a detailed walk-through of the command activity, see [use Azure Data Factory command activity to run Azure Data Explorer management commands](data-factory-command-activity.md).  Using a management command to copy data can, at times, be a faster and cheaper option than the Copy activity. To determine when to use the Command activity versus the Copy activity, see [select between Copy and Command activities when copying data](#select-between-copy-and-azure-data-explorer-command-activities-when-copy-data).
 
 ### Copy in bulk from a database template
 
@@ -53,7 +53,7 @@ This section will assist you in selecting the correct activity for your data cop
 
 When copying data from or to Azure Data Explorer, there are two available options in Azure Data Factory:
 * Copy activity.
-* Azure Data Explorer Command activity, which executes one of the control commands that transfer data in Azure Data Explorer. 
+* Azure Data Explorer Command activity, which executes one of the management commands that transfer data in Azure Data Explorer. 
 
 ### Copy data from Azure Data Explorer
   
@@ -63,7 +63,7 @@ See the following table for a comparison of the Copy activity and `.export` comm
 
 | | Copy activity | .export command |
 |---|---|---|
-| **Flow description** | ADF executes a query on Kusto, processes the result, and sends it to the target data store. <br>(**ADX > ADF > sink data store**) | ADF sends an `.export` control command to Azure Data Explorer, which executes the command, and sends the data directly to the target data store. <br>(**ADX > sink data store**) |
+| **Flow description** | ADF executes a query on Kusto, processes the result, and sends it to the target data store. <br>(**ADX > ADF > sink data store**) | ADF sends an `.export` management command to Azure Data Explorer, which executes the command, and sends the data directly to the target data store. <br>(**ADX > sink data store**) |
 | **Supported target data stores** | A wide variety of [supported data stores](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLSv2, Azure Blob, SQL Database |
 | **Performance** | Centralized | <ul><li>Distributed (default), exporting data from multiple nodes concurrently</li><li>Faster and COGS (cost of goods sold) efficient.</li></ul> |
 | **Server limits** | [Query limits](kusto/concepts/querylimits.md) can be extended/disabled. By default, ADF queries contain: <ul><li>Size limit of 500,000 records or 64 MB.</li><li>Time limit of 10 minutes.</li><li>`noTruncation` set to false.</li></ul> | By default, extends or disables the query limits: <ul><li>Size limits are disabled.</li><li>Server timeout is extended to 1 hour.</li><li>`MaxMemoryConsumptionPerIterator` and `MaxMemoryConsumptionPerQueryPerNode` are extended to max (5 GB, TotalPhysicalMemory/2).</li></ul>
@@ -189,5 +189,5 @@ You can add additional [ingestion properties](ingestion-properties.md) by specif
 
 * Learn how to [copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md).
 * Learn about using [Azure Data Factory template for bulk copy from database to Azure Data Explorer](data-factory-template.md).
-* Learn about using [Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md).
+* Learn about using [Azure Data Factory command activity to run Azure Data Explorer management commands](data-factory-command-activity.md).
 * Learn about [Azure Data Explorer queries](web-query-data.md) for data querying.

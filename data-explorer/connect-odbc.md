@@ -40,6 +40,9 @@ Follow these steps to configure an ODBC data source using the ODBC driver for SQ
 
 1. Enter a name and description for the connection and the cluster you want to connect to, then select **Next**. The cluster URL should be in the form *\<ClusterName\>.\<Region\>.kusto.windows.net*.
 
+    >[!NOTE]
+    > When entering the cluster URL, do not include the prefix "https://".
+    
     ![Select server.](media/connect-odbc/select-server.png)
 
 1. Select **Active Directory Integrated** then **Next**.

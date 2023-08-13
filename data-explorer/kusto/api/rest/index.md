@@ -26,8 +26,8 @@ endpoint is an engine endpoint or a data management endpoint.
 Where *Action* represents a group of related activities
 
 * The Query action sends a query to the service and gets back the results of the query.
-* The Management action sends a control command to the service and gets back
-  the results of the control command.
+* The Management action sends a management command to the service and gets back
+  the results of the management command.
 * The StreamIngest action ingests data to a table.
 * The UI action can be used to start up a desktop client or web client. The action is done through an HTTP Redirect response,
 to interact with the service.

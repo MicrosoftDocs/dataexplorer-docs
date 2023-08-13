@@ -39,7 +39,7 @@ With Azure Data Explorer, you can ingest terabytes of data in minutes in batch o
 
 ### User-friendly query language
 
-Query Azure Data Explorer with the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators and advanced analytics.
+Query Azure Data Explorer with the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators and advanced analytics. Azure Data Explorer also supports [T-SQL](t-sql.md).
 
 ### Advanced analytics
 
@@ -68,7 +68,7 @@ Generally speaking, when you interact with Azure Data Explorer, you're going to 
 > [!NOTE]
 > You can access your Azure Data Explorer resources either in the [Azure Data Explorer web UI](web-query-data.md) or by using [SDKs](kusto/api/index.md).
 
-1. **Create database:** Create a *cluster* and then create one or more *databases* in that cluster. Each Azure Data Explorer cluster can hold up to 10,000 databases and each database up to 10,000 tables. The data in each table is stored in data shards also called "extents". All data is automatically indexed and partitioned based on the ingestion time. This means you can store a lot of varied data and because of the way it's stored, you get fast access to querying it. [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
+1. **Create database:** Create a *cluster* and then create one or more *databases* in that cluster. Each Azure Data Explorer cluster can hold up to 10,000 databases and each database up to 10,000 tables. The data in each table is stored in data shards also called "extents". All data is automatically indexed and partitioned based on the ingestion time. This means you can store a lot of varied data and because of the way it's stored, you get fast access to querying it. [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md)
 
 1. **Ingest data:** Load data into database tables so that you can run queries against it. Azure Data Explorer supports several [ingestion methods](ingest-data-overview.md), each with its own target scenarios. These methods include ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion. Get started with the [ingestion wizard](./ingest-data-wizard.md).
 
@@ -90,7 +90,7 @@ We would be thrilled to hear your feedback about Azure Data Explorer and the Kus
 
 ## Next steps
 
-* [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
+* [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md)
 * [Quickstart: Ingest data from an event hub into Azure Data Explorer](ingest-data-event-hub.md)
 * [Quickstart: Query data in Azure Data Explorer](web-query-data.md)
 * [Find an Azure Data Explorer partner](find-my-partner.md)

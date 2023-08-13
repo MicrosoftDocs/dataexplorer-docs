@@ -7,7 +7,7 @@ ms.date: 02/13/2020
 ---
 # Columns management
 
-This section describes the following control commands used for managing table columns:
+This section describes the following management commands used for managing table columns:
 
 |Command |Description |
 |------- | -------|

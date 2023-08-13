@@ -10,12 +10,12 @@ ms.date: 05/29/2023
 
 Kusto maintains an internal log of running and historic operations that it processes, such as ingestion operations and data management operations.
 Entries are appended to the log when operations start and change their state, including when operations reach their terminal state.
-Users can view the ongoing and past operations they started by using the [`.show operations`](#show-operations) control command.
+Users can view the ongoing and past operations they started by using the [`.show operations`](#show-operations) management command.
 Database administrators can view all operations that apply to the databases they administer.
 
 Users can also view the results of an operation by using the [`.show operation details`](#show-operations)
 command. Normally, the results are returned as part of `.show operations` command itself. For asynchronous
-control commands, the `.show operation details` command is the only way to view the command's results.
+management commands, the `.show operation details` command is the only way to view the command's results.
 
 ## .show operations
 
@@ -81,7 +81,7 @@ The following table describes the possible values for the result table's *State*
 Operations can (optionally) persist their results, and the results can be retrieved when the operation is complete, using `.show` `operation` `details`.
 
 > [!NOTE]
-> Not all control commands persist their results. Those commands that do, usually do so by default on asynchronous executions only, using the `async` keyword. See the documentation for the specific command and check if it does. For example, see [data export](data-export/index.md).
+> Not all management commands persist their results. Those commands that do, usually do so by default on asynchronous executions only, using the `async` keyword. See the documentation for the specific command and check if it does. For example, see [data export](data-export/index.md).
 > The output schema of the `.show` `operations` `details` command is the same schema returned from the synchronous execution of the command.
 > The `.show` `operation` `details` command can only be invoked after the operation completed successfully. Use the [show operations command](#show-operations) to check the state of the operation, before running this command.
 

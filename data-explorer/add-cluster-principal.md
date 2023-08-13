@@ -21,7 +21,7 @@ The prerequisites vary based on the method used to add the principal. Choose the
 The following list outlines the prerequisites to add a cluster principal with C#.
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Visual Studio 2022 Community Edition](https://www.visualstudio.com/downloads/). Turn on **Azure development** during the Visual Studio setup.
 * [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 * Install [Azure.ResourceManager.Kusto](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
@@ -32,7 +32,7 @@ The following list outlines the prerequisites to add a cluster principal with C#
 The following list outlines the prerequisites to add a cluster principal with Python.
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [An Azure AD Application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 * Install the [azure-common](https://pypi.org/project/azure-common/) and [azure-mgmt-kusto](https://pypi.org/project/azure-mgmt-kusto/) packages.
 
@@ -41,7 +41,7 @@ The following list outlines the prerequisites to add a cluster principal with Py
 The following list outlines the prerequisites to add a cluster principal with an ARM template.
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
 ---
 

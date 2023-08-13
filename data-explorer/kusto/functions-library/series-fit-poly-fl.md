@@ -23,7 +23,9 @@ The function `series_fit_poly_fl()` is a [user-defined function (UDF)](../query/
 ## Syntax
 
 `T | invoke series_fit_poly_fl(`*y_series*`,` *y_fit_series*`,` *fit_coeff*`,` *degree*`,` [ *x_series* ]`,` [ *x_istime* ]`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

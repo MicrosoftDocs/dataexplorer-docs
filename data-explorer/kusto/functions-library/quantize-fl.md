@@ -19,6 +19,8 @@ The function `quantize_fl()` is a [user-defined function (UDF)](../query/functio
 
 `T | invoke quantize_fl(`*num_bins*`,` *in_cols*`,` *out_cols* [`,` *labels* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

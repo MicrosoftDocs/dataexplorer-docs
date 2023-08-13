@@ -21,13 +21,11 @@ In this article, you learn how to:
 
 ## Create your app
 
-In your preferred IDE or text editor, create a file named `hello-kusto` with the language appropriate extension, and then add the following code:
+In your preferred IDE or text editor, create a project or file named *hello kusto* using the convention appropriate for your preferred language. Then add the following code:
 
 1. Add the Kusto client and string builder classes.
 
     ### [C\#](#tab/csharp)
-
-    In the **hello-kusto.cs** file, start by adding the client libraries:
 
     ```csharp
     using Kusto.Data;
@@ -36,15 +34,11 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
 
     ### [Python](#tab/python)
 
-    In the **hello-kusto.py** file, start by adding the client libraries:
-
     ```python
     from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
     ```
 
     ### [Node.js](#tab/nodejs)
-
-    In the **hello-kusto.js** file, start by adding the client libraries:
 
     ```nodejs
     const KustoClient = require("azure-kusto-data").Client;
@@ -54,8 +48,6 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
-
-    In the **hello-kusto.java** file, start by adding the client libraries:
 
     ```java
     import com.microsoft.azure.kusto.data.Client;
@@ -72,12 +64,9 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [C\#](#tab/csharp)
 
     ```csharp
-    namespace HelloKusto
-    {
-      class HelloKusto
-      {
-        static void Main(string[] args)
-        {
+    namespace HelloKusto {
+      class HelloKusto {
+        static void Main(string[] args) {
         }
       }
     }
@@ -109,11 +98,8 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ```java
     public class HelloKusto 
     {
-      public static void main(String[] args)
-      {
+      public static void main(String[] args) throws Exception {
         try {
-        } catch (Exception e) {
-          System.out.println("Error: " + e.getMessage());
         }
       }
     }
@@ -126,8 +112,8 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [C\#](#tab/csharp)
 
     ```csharp
-    var cluster_uri = "https://help.kusto.windows.net/";
-    var kcsb = new KustoConnectionStringBuilder(cluster_uri).WithAadUserPromptAuthentication();
+    var clusterUri = "https://help.kusto.windows.net/";
+    var kcsb = new KustoConnectionStringBuilder(clusterUri).WithAadUserPromptAuthentication();
     ```
 
     ### [Python](#tab/python)
@@ -140,8 +126,8 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    const cluster_uri = "https://help.kusto.windows.net";
-    const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
+    const clusterUri = "https://help.kusto.windows.net";
+    const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -149,8 +135,8 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [Java](#tab/java)
 
     ```java
-    String cluster_uri = "https://help.kusto.windows.net/";
-    ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
+    String clusterUri = "https://help.kusto.windows.net/";
+    ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
     ```
     ---
 
@@ -165,13 +151,12 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
 1. Create a client object that uses the connection string builder object to connect to the cluster.
 
     > [!NOTE]
-    > We highly recommended that you cache and reuse the Kusto client instance. Frequently recreating Kusto clients may lead to performance degradation in your application.
+    > We highly recommended that you cache and reuse the Kusto client instance. Frequently recreating Kusto clients may lead to performance degradation in your application and increased load on your cluster.
 
     ### [C\#](#tab/csharp)
 
     ```csharp
-    using (var kusto_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
-    {
+    using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(kcsb)) {
     }
     ```
 
@@ -184,7 +169,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    const kusto_client = new KustoClient(kcsb);
+    const kustoClient = new KustoClient(kcsb);
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -192,9 +177,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [Java](#tab/java)
 
     ```java
-    try (Client kusto_client = ClientFactory.createClient(kcsb)) {
-    } catch (Exception e) {
-      System.out.println("Error: " + e.getMessage());
+    try (Client kustoClient = ClientFactory.createClient(kcsb)) {
     }
     ```
 
@@ -239,8 +222,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [C\#](#tab/csharp)
 
     ```csharp
-    using (var response = kusto_client.ExecuteQuery(database, query, null))
-    {
+    using (var response = kustoClient.ExecuteQuery(database, query, null)) {
       response.Read();
       int columnNo = response.GetOrdinal("Welcome");
       Console.WriteLine(response.GetString(columnNo));
@@ -258,7 +240,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    let response = await kusto_client.execute(database, query);
+    let response = await kustoClient.execute(database, query);
 
     console.log(response.primaryResults[0][0]["Welcome"].toString());
     ```
@@ -268,7 +250,7 @@ In your preferred IDE or text editor, create a file named `hello-kusto` with the
     ### [Java](#tab/java)
 
     ```java
-    KustoOperationResult response = kusto_client.execute(database, query);
+    KustoOperationResult response = kustoClient.execute(database, query);
 
     KustoResultSetTable primary_results = response.getPrimaryResults();
     primary_results.next();
@@ -318,22 +300,17 @@ The complete code should look like this:
 using Kusto.Data;
 using Kusto.Data.Net.Client;
 
-namespace HelloKusto
-{
-  class HelloKusto
-  {
-    static void Main(string[] args)
-    {
-      string cluster_uri = "https://help.kusto.windows.net/";
-      var kcsb = new KustoConnectionStringBuilder(cluster_uri).WithAadUserPromptAuthentication();
+namespace HelloKusto {
+  class HelloKusto {
+    static void Main(string[] args) {
+      string clusterUri = "https://help.kusto.windows.net/";
+      var kcsb = new KustoConnectionStringBuilder(clusterUri).WithAadUserPromptAuthentication();
     
-      using (var kusto_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
-      {
+      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(kcsb)) {
         string database = "Samples";
         string query = "print Welcome='Hello Kusto!'";
 
-        using (var response = kusto_client.ExecuteQuery(database, query, null))
-        {
+        using (var response = kustoClient.ExecuteQuery(database, query, null)) {
           response.Read();
           int columnNo = response.GetOrdinal("Welcome");
           Console.WriteLine(response.GetString(columnNo));
@@ -368,18 +345,18 @@ if __name__ == "__main__":
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
-const KustoClient = require("azure-kusto-data").Client;
-const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+const kustoLibraryClient = require("azure-kusto-data").Client;
+const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
 
 async function main()
 {
-  const cluster_uri = "https://help.kusto.windows.net";
-  const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
-  const kusto_client = new KustoClient(kcsb);
+  const clusterUri = "https://help.kusto.windows.net";
+  const kcsb = kustoConnectionStringBuilder.withUserPrompt(clusterUri);
+  const kustoClient = new kustoLibraryClient(kcsb);
 
   const database = "Samples";
   const query = "print Welcome='Hello Kusto!'";
-  let response = await kusto_client.execute(database, query);
+  let response = await kustoClient.execute(database, query);
 
   console.log(response.primaryResults[0][0]["Welcome"].toString());
 }
@@ -398,27 +375,21 @@ import com.microsoft.azure.kusto.data.KustoOperationResult;
 import com.microsoft.azure.kusto.data.KustoResultSetTable;
 import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 
-public class HelloKusto 
-{
-  public static void main(String[] args)
-  {
+public class HelloKusto {
+  public static void main(String[] args) throws Exception {
     try {
-      String cluster_uri = "https://help.kusto.windows.net/";
-      ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
+      String clusterUri = "https://help.kusto.windows.net/";
+      ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
 
-      try (Client kusto_client = ClientFactory.createClient(kcsb)) {
+      try (Client kustoClient = ClientFactory.createClient(kcsb)) {
         String database = "Samples";
         String query = "print Welcome='Hello Kusto!'";
-        KustoOperationResult response = kusto_client.execute(database, query);
+        KustoOperationResult response = kustoClient.execute(database, query);
 
-        KustoResultSetTable primary_results = response.getPrimaryResults();
-        primary_results.next();
-        System.out.println(primary_results.getString("Welcome"));
-      } catch (Exception e) {
-        System.out.println("Error: " + e.getMessage());
+        KustoResultSetTable primaryResults = response.getPrimaryResults();
+        primaryResults.next();
+        System.out.println(primaryResults.getString("Welcome"));
       }
-    } catch (Exception e) {
-      System.out.println("Error: " + e.getMessage());
     }
   }
 }
@@ -433,13 +404,14 @@ In a command shell, use the following command to run your app:
 ### [C\#](#tab/csharp)
 
 ```bash
-hello-kusto.exe
+# Change directory to the folder that contains the hello world project
+dotnet run .
 ```
 
 ### [Python](#tab/python)
 
 ```bash
-python hello-kusto.py
+python hello_kusto.py
 ```
 
 ### [Node.js](#tab/nodejs)
@@ -453,7 +425,7 @@ node hello-kusto.js
 ### [Java](#tab/java)
 
 ```bash
-java HelloKusto
+mvn install exec:java -Dexec.mainClass="<groupId>.HelloKusto"
 ```
 
 ---

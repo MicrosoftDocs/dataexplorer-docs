@@ -3,7 +3,7 @@ title:  The between operator
 description: Learn how to use the between operator to return a record set of values in an inclusive range for which the predicate evaluates to true. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 07/10/2023
 ---
 # between operator
 
@@ -15,6 +15,8 @@ Filters a record set for data matching the values in an inclusive range.
 
 *T* `|` `where` *expr* `between` `(`*leftRange*` .. `*rightRange*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -22,7 +24,7 @@ Filters a record set for data matching the values in an inclusive range.
 | *T* | string | &check; |  The tabular input whose records are to be matched. For example, the table name. |
 | *expr* | scalar | &check; |  The expression used to filter. |
 | *leftRange* | int, long, real, or datetime | &check; | The expression of the left range. The range is inclusive.|
-| *rightRange* | int, long, real, datetime, or timespan | &check; | The expression of the right range. The range is inclusive.<br/><br/>This value can only be of type [timespan](scalar-data-types/timespan.md) if *expr* and *leftRange* are both of type `datetime`. See [example](#filter-datetime-using-a-timespan-range).|
+| *rightRange* | int, long, real, datetime, or timespan | &check; | The expression of the right range. The range is inclusive.<br/><br/>This value can only be of type [timespan](scalar-data-types/timespan.md) if *expr* and *leftRange* are both of type `datetime`. See [example](#filter-using-a-timespan-range).|
 
 ## Returns
 
@@ -51,7 +53,7 @@ range x from 1 to 100 step 1
 |54|
 |55|
 
-### Filter datetime
+### Filter by date
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp4ChrixgaYmyKTk/NK8EgBluyagXgAAAA==" target="_blank">Run the query</a>
@@ -68,7 +70,24 @@ StormEvents
 |---|
 |476|
 
-### Filter datetime using a timespan range
+### Filter by date and time
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLCoJycxNVUhKLSlPTc1T0EhJLEktAYpoGBkYmOsaGukaGIYYGFoZG1gZGGgq6OkpYFVgAZQFKdAEGp2cX5pXAgDpcS3kbgAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where StartTime between (datetime(2007-12-01T01:30:00) .. datetime(2007-12-01T08:00:00))
+| count
+```
+
+**Output**
+
+|Count|
+|---|
+|301|
+
+### Filter using a timespan range
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrApGRuaaCnp6CcYomSF9yfmleCQCGAqjRTAAAAA==" target="_blank">Run the query</a>

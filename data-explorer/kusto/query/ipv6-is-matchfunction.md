@@ -16,6 +16,8 @@ Matches two IPv6 or IPv4 network address strings. The two IPv6/IPv4 strings are 
 
 `ipv6_is_match(`*ip1*`,`*ip2*`[ ,`*prefix*`])`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

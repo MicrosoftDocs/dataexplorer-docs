@@ -8,9 +8,9 @@ ms.date: 05/01/2023
 ---
 # Configure a database using a Kusto Query Language script
 
-You can run a Kusto Query Language script to configure your database during Azure Resource Management (ARM) template deployment. A script is a list of one or more [control commands](kusto/management/index.md), each separated by one line break, and is created as a resource that will be accessed with the ARM template.
+You can run a Kusto Query Language script to configure your database during Azure Resource Management (ARM) template deployment. A script is a list of one or more [management commands](kusto/management/index.md), each separated by one line break, and is created as a resource that will be accessed with the ARM template.
 
-The script can only run database level control commands that start with the following verbs:
+The script can only run database level management commands that start with the following verbs:
 
 * `.create`
 * `.create-or-alter`
@@ -33,7 +33,7 @@ There are various methods you can use to configure a database with scripts. We'l
 > [!NOTE]
 > Each cluster can have a maximum of 50 scripts.
 
-## Example script with control commands
+## Example script with management commands
 
 We'll use the following example that shows a script with commands that create two tables: *MyTable* and *MyTable2*.
 
@@ -48,7 +48,7 @@ Notice the two commands are idempotent. When first run, they create the tables, 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
 ## Security
 
@@ -62,7 +62,7 @@ The principal, such as a user or service principal, used to deploy a script must
 
 ## Inline script
 
-Use this method to create an ARM template with the script defined as an inline parameter. If your script has one or more control commands, separate the commands by *at least* one line break.
+Use this method to create an ARM template with the script defined as an inline parameter. If your script has one or more management commands, separate the commands by *at least* one line break.
 
 ### Run inline script using an ARM template
 
@@ -196,7 +196,7 @@ This method assumes that you already have a blob in an Azure Storage account and
 
 The first step is to create a script and upload it to a storage account.
 
-1. Create a [script containing the control commands](#example-script-with-control-commands) you want to use to create the table in your database.
+1. Create a [script containing the management commands](#example-script-with-management-commands) you want to use to create the table in your database.
 
 1. Upload your script to your Azure Storage account. You can create your storage account using the [Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal), [PowerShell](/azure/storage/blobs/storage-quickstart-blobs-portal), or Azure [CLI](/azure/storage/blobs/storage-quickstart-blobs-cli).
 1. Provide access to this file using [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview). You can do this with [PowerShell](/azure/storage/blobs/storage-blob-user-delegation-sas-create-powershell), Azure [CLI](/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli), or [.NET](/azure/storage/blobs/storage-blob-user-delegation-sas-create-dotnet).
@@ -277,4 +277,4 @@ Commands run by a script resource don't appear in the results of the [.show comm
 
 ## Next steps
 
-* [Management (control commands) overview](kusto/management/index.md)
+* [Management commands overview](kusto/management/index.md)

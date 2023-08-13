@@ -20,7 +20,7 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 
 find in (database('*').*) where Fruit == "apple"
 
-find in (cluster('cluster_name').database('MyDB*'.*)) where Fruit == "apple"
+find in (cluster('cluster_name').database('MyDB*').*) where Fruit == "apple"
 ```
 
 ::: zone-end
@@ -41,6 +41,8 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 * `find` [`withsource`= *ColumnName*] [`in` `(`*Tables*`)`] `where` *Predicate* [`project-smart` | `project` *ColumnName*[`:` *ColumnType* `,` ... ] [`,` `pack_all()`]]
 
 * `find` *Predicate* [`project-smart` | `project` *ColumnName*[`:` *ColumnType* `,` ... ] [`,` `pack_all()`]]
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

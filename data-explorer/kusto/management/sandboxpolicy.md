@@ -69,4 +69,4 @@ The following policy sets different limits for `PythonExecution` and `RExecution
 
 ## Next steps
 
-Use the [sandbox policy control commands](./show-cluster-sandbox-policy-command.md) to manage the cluster's sandbox policy.
+Use the [sandbox policy management commands](./show-cluster-sandbox-policy-command.md) to manage the cluster's sandbox policy.

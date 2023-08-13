@@ -13,6 +13,8 @@ Calculates the number of the specified periods between two [datetime](./scalar-d
 
 `datetime_diff(`*period*`,`*datetime1*`,`*datetime2*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -22,6 +24,8 @@ Calculates the number of the specified periods between two [datetime](./scalar-d
 | *datetime2* | datetime | &check; | The right-hand side of the subtraction equation. |
 
 ### Possible values of *period*
+
+These values are case insensitive:
 
 * Year
 * Quarter

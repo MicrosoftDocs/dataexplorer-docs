@@ -32,7 +32,7 @@ In this article, you use the Data Factory Copy Data tool to load data from Amazo
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A source of data.
 
 ## Create a data factory
@@ -136,7 +136,7 @@ You can load your data in either of the following ways:
 The new Azure Data Explorer linked service is created to copy the data into the Azure Data Explorer destination table (sink) that's specified in this section.
 
 > [!NOTE]
-> Use the [Azure Data Factory command activity to run Azure Data Explorer control commands](data-factory-command-activity.md) and use any of the [ingest from query commands](kusto/management/data-ingestion/ingest-from-query.md), such as `.set-or-replace`.
+> Use the [Azure Data Factory command activity to run Azure Data Explorer management commands](data-factory-command-activity.md) and use any of the [ingest from query commands](kusto/management/data-ingestion/ingest-from-query.md), such as `.set-or-replace`.
 
 #### Create the Azure Data Explorer linked service
 

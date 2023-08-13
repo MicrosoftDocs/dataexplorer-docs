@@ -13,6 +13,8 @@ Calculates the absolute value of the input.
 
 `abs(`*x*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -14,6 +14,8 @@ The function searches for characters in the 'searchList' and replaces them with 
 
 `translate(`*searchList*`,` *replacementList*`,` *source*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

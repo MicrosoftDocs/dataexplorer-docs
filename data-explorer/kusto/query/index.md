@@ -4,12 +4,14 @@ description: Learn about how to use Kusto Query Language to explore data.
 ms.reviewer: alexans
 ms.topic: reference
 ms.custom: build-2023, build-2023-dataai
-ms.date: 03/16/2023
+ms.date: 06/21/2023
 adobe-target: true
 ---
 # Kusto Query Language (KQL) overview
 
-Kusto Query Language is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. The query uses schema entities that are organized in a hierarchy similar to SQLs: databases, tables, and columns.
+Kusto Query Language (KQL) is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. The query uses schema entities that are organized in a hierarchy similar to SQLs: databases, tables, and columns.
+
+This article provides an explanation of the query language and offers practical exercises to get you started writing queries. To access the query environment, use the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). To learn how to use KQL, see [Tutorial: Learn common operators](tutorials/learn-common-operators.md).
 
 ## What is a Kusto query?
 
@@ -55,26 +57,26 @@ This query has a single tabular expression statement. The statement begins with 
 
 To try out some more Kusto queries, see [Tutorial: Write Kusto queries](tutorial.md).
 
-## Control commands
+## Management commands
 
-In contrast to Kusto queries, [Control commands](../management/index.md) are requests to Kusto to process or modify data or metadata. For example, the following control command creates a new Kusto table with two columns, `Level` and `Text`:
+In contrast to Kusto queries, [Management commands](../management/index.md) are requests to Kusto to process or modify data or metadata. For example, the following management command creates a new Kusto table with two columns, `Level` and `Text`:
 
 ```kusto
 .create table Logs (Level:string, Text:string)
 ```
 
-Control commands have their own syntax, which isn't part of the Kusto Query Language syntax, although the two share many concepts. In particular, control commands are distinguished from queries by having the first character in the text of the command be the dot (`.`) character (which can't start a query).
-This distinction prevents many kinds of security attacks, simply because it prevents embedding control commands inside queries.
+Management commands have their own syntax, which isn't part of the Kusto Query Language syntax, although the two share many concepts. In particular, management commands are distinguished from queries by having the first character in the text of the command be the dot (`.`) character (which can't start a query).
+This distinction prevents many kinds of security attacks, simply because it prevents embedding management commands inside queries.
 
-Not all control commands modify data or metadata. The large class of commands that start with `.show`, are used to display metadata or data. For example, the `.show tables` command returns a list of all tables in the current database.
+Not all management commands modify data or metadata. The large class of commands that start with `.show`, are used to display metadata or data. For example, the `.show tables` command returns a list of all tables in the current database.
 
-For more information on control commands, see [Management (control commands) overview](../management/index.md).
+For more information on management commands, see [Management commands overview](../management/index.md).
 
 ## Next steps
 
 * [Tutorial: Learn common operators](tutorials/learn-common-operators.md)
 * [Tutorial: Use aggregation functions](tutorials/use-aggregation-functions.md)
 * [KQL quick reference](../../kql-quick-reference.md)
-* [SQL to Kusto cheat sheet](sqlcheatsheet.md)
+* [SQL to Kusto Query Language cheat sheet](sqlcheatsheet.md)
 * [Query best practices](best-practices.md)
 * [Query data with T-SQL](/azure/data-explorer/t-sql)

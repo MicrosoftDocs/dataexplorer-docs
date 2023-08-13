@@ -22,7 +22,9 @@ The output of the function is pairwise distances between entities under the same
 ## Syntax
 
 `pairwise_dist_fl(`*entity*, *partition*`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

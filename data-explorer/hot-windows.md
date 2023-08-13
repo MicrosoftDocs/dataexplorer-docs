@@ -20,7 +20,7 @@ This document shows you how to use hot windows to query cold data.
 ## Prerequisites
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* Create [an Azure Data Explorer cluster and database](create-cluster-database-portal.md).
+* Create [an Azure Data Explorer cluster and database](create-cluster-and-database.md).
 * Ingest data in your cluster with one of the methods described in the [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
 ## Configure autoscale on cluster

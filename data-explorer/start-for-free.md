@@ -3,7 +3,7 @@ title: Start for free using Azure Data Explorer
 description: This article shows you how to get started with a free Azure Data Explorer cluster.
 ms.reviewer: avnera
 ms.topic: how-to
-ms.date: 01/25/2023
+ms.date: 07/02/2023
 ---
 
 # What is a free Azure Data Explorer cluster?
@@ -32,31 +32,32 @@ The following table describes specifications and quotas for a free cluster.
 
 The free cluster is a subset of the full Azure Data Explorer cluster that provides a reduced set of functionality. The following table lists the features and their availability in both offerings.
 
-| Feature | Full Azure Data Explorer cluster | Free cluster |
+| Feature | Full cluster | Free cluster |
 |--|--|--|
 | Kusto Query Language | &check; | &check; |
 | Database objects (tables, columns, functions) | &check; | &check; |
 | Materialized views | &check; | &check; |
 | Tools (Azure Data Explorer web UI) | &check; | &check; |
 | Dashboards (PowerBI, Azure Data Explorer web UI, Grafana) | &check; | &check; |
+| Streaming ingestion | &check; |&check; |
 | Azure Data Studio notebooks | &check; | &check; |
 | SDKs (all languages) | &check; | &check; |
 | Time series and Machine Learning functions | &check; | &check; |
 | Geospatial functions | &check; | &check; |
 | Soft delete | &check; | &check; |
 | Microsoft Power Automate and Azure Logic Apps connectors | &check; | &check; |
+| Event Hub connector | &check; | &check; |
+| Event Grid connector |  &check; | |
 | External tables | &check; | |
 | Continuous export | &check; | |
 | Workload groups | &check; | |
 | Purge | &check; | |
 | Follower clusters | &check; | |
 | Partitioning policy | &check; | |
-| Streaming ingestion | &check; | |
 | Python and R plugins | &check; | |
-| Enterprise readiness (Customer managed keys, VNet, disk encryption, managed identities) | &check; | |
+| Enterprise readiness (Customer managed keys, Virtual Network, disk encryption, managed identities) | &check; | |
 | Autoscale | &check; | |
 | Azure Monitor and Insights | &check; | |
-| Event Hubs and Event Grid connectors | &check; | Event Hubs only |
 | Azure Resource Manager (ARM) templates | &check; | |
 
 ## Next steps

@@ -3,7 +3,7 @@ title: Comparing different multi-tenant solutions with Azure Data Explorer
 description: Learn about the different ways to architect a multi-tenant solution in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 05/08/2023
+ms.date: 06/20/2023
 ---
 # How to architect a multi-tenant solution with Azure Data Explorer
 
@@ -20,6 +20,16 @@ This article describes some deployment architectures and provides characteristic
 In general, sharing a cluster among many tenants, regardless of the architecture used, means different tenants share the cluster's resources. This can lead to the [noisy neighbor](/azure/architecture/antipatterns/noisy-neighbor/noisy-neighbor) antipattern.
 
 For instance, if a tenant performs many compute-intensive queries or ingestions, other tenants are likely to be impacted by resource starvation. This can be mitigated by using [workload groups](kusto/management/workload-groups.md). You can also use policies to control caching and overall storage.
+
+## Architectures overview
+
+The next sections explore deployment architectures in detail.  This section contrasts the architectures to facilitate decision making.
+
+|Architecture|Strenghts|
+|---|---|
+|One tenant per database|- Tenants' isolation:  no need for proxy<br />- Can have different policies, such as retention policies, per tenant<br />- Flexibility in schema evolution per tenant<br />- Easy and quick removal of tenant data|
+|One table for many tenants|- Efficient data consolidation and extent management<br />- Simplified schema evolution<br />- Best suited for materialized views<br />- Ideal for partitioning|
+|One tenant per table in a single database|Not recommended|
 
 ## Architecture: One tenant per database
 
@@ -38,7 +48,7 @@ The characteristics of this architecture are:
 * **Retention and caching policies**: Each tenant can have its own unique policies, which enable you to provide custom retention and caching policies to your customers.
 
 * **Security boundary per tenant**:
-  * For multi-tenant application (proxy): Configure your application to target the relevant database. Use [access restriction](kusto/query/cross-cluster-or-database-queries.md#access-restriction) on queries to prohibit [cross-database queries](kusto/query/cross-cluster-or-database-queries.md).
+  * For multi-tenant application (proxy): Configure your application to target the relevant database. Use [access restriction](kusto/query/cross-cluster-or-database-queries.md#qualified-names-and-restrict-access-statements) on queries to prohibit [cross-database queries](kusto/query/cross-cluster-or-database-queries.md).
   * For users with direct access: Users can be granted access at the [database level](kusto/access-control/role-based-access-control.md). Giving users direct access to their database creates a dependency for the implementation details, making it difficult to change the implementation. Therefore, we strongly recommend using the proxy approach for accessing the database.
 
 * **Aggregating data from multiple tenants at scale**: Use the [union operator](kusto/query/unionoperator.md) to aggregate data between databases. However, this method can become cumbersome as the number of tenants increases. Even though aggregating data from multiple tenants might be a design goal from the tenant's perspective, it might be of interest for solution owner to aggregate data from all tenants to gather statistics.
@@ -49,7 +59,7 @@ The characteristics of this architecture are:
 
 * **Event Grid and Event Hubs data connections**: These data connections are created per database. Therefore, this architecture requires a data connection and Event Grid or Event Hubs instance per tenant, which adds management complexity. Consider using event routing for [Event Hubs](ingest-data-event-hub-overview.md#events-routing) and [Event Grid](ingest-data-event-grid-overview.md#events-routing).
 
-## Architecture: One database for many tenants
+## Architecture: One table for many tenants
 
 :::image type="content" source="media/multi-tenant/one-db-for-many-tenants.png" alt-text="Diagram showing the architecture for one database for many tenants.":::
 

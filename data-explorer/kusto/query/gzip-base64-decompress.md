@@ -13,6 +13,8 @@ Decodes the input string from base64 and performs gzip decompression.
 
 `gzip_decompress_from_base64_string(`*string*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -27,7 +29,7 @@ Decodes the input string from base64 and performs gzip decompression.
 
 ## Returns
 
-* Returns a `string` that represents the original string.
+* Returns a UTF-8 `string` that represents the original string.
 * Returns an empty result if decompression or decoding failed.
   * For example, invalid gzip-compressed and base 64-encoded strings will return an empty output.
 

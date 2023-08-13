@@ -20,7 +20,7 @@ Azure Data Explorer doesn't support automatic protection against the outage of a
 
 ### Create multiple independent clusters
 
-Create more than one [Azure Data Explorer cluster](create-cluster-database-portal.md) in more than one region.
+Create more than one [Azure Data Explorer cluster](create-cluster-and-database.md) in more than one region.
 Make sure that at least two of these clusters are created in [Azure paired regions](/azure/best-practices-availability-paired-regions).
 
 The following image shows replicas, three clusters in three different regions. 
@@ -32,7 +32,7 @@ The following image shows replicas, three clusters in three different regions.
 Replicate the management activities to have the same cluster configuration in every replica.
 
 1. Create on each replica the same: 
-    * Databases: You can use the [Azure portal](create-cluster-database-portal.md#create-a-database) or one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto) to create a new database.
+    * Databases: You can use the [Azure portal](create-cluster-and-database.md#create-a-database) or one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto) to create a new database.
     * [Tables](kusto/management/create-table-command.md)
     * [Mappings](kusto/management/create-ingestion-mapping-command.md)
     * [Policies](./kusto/management/index.md)
@@ -82,7 +82,7 @@ You can start and stop the secondary replicas using one of the following methods
 
 * [Azure Data Explorer connector to Power Automate (Preview)](flow.md)
 
-* The **Stop** button in the **Overview** tab in the Azure portal. For more information, see [Stop and restart the cluster](create-cluster-database-portal.md#stop-and-restart-the-cluster).
+* The **Stop** button in the **Overview** tab in the Azure portal. For more information, see [Stop and restart the cluster](create-cluster-and-database.md#stop-and-restart-the-cluster).
 
 * Azure CLI: 
 

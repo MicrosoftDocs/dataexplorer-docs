@@ -1,11 +1,11 @@
 ---
-title: .delete database sharding policy command
-description: Learn how to use the `.delete database sharding policy` command to delete the database sharding policy.
+title: .delete database policy sharding command
+description: Learn how to use the `.delete database policy sharding` command to delete the database sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .delete database sharding policy command
+# .delete database policy sharding command
 
 Use this command to delete the database sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
 
@@ -18,6 +18,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 ## Syntax
 
 `.delete` `database` *DatabaseName* `policy` `sharding`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

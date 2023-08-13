@@ -3,29 +3,31 @@ title:  Kusto .NET Client Libraries from PowerShell
 description: This article describes how to use Kusto .NET Client Libraries from PowerShell in Azure Data Explorer.
 ms.reviewer: salevy
 ms.topic: reference
-ms.date: 04/19/2023
+ms.date: 08/06/2023
 ---
 # Use Kusto .NET client libraries from PowerShell
 
 PowerShell scripts can use Kusto .NET client libraries through
 PowerShell's built-in integration with arbitrary (non-PowerShell) .NET libraries.
 
-## Getting the .NET client libraries for scripting with PowerShell
+## Prerequisites
 
-To start working with the Kusto .NET client libraries using PowerShell.
+* An archiving tool to extract zip files, such as 7-Zip or WinRAR.
 
-1. Download the [`Microsoft.Azure.Kusto.Tools` NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
-1. Extract the contents of the 'tools' directory in the package using an archiving tool. For example, `7-zip`.
-  - If you're using Powershell version 5.1, you need to select the net472 version folder.
-  - If you're using Powershell version 7 or later, you can use the other versions folders contained in the package.
-1. To load the required library, call `[System.Reflection.Assembly]::LoadFrom("path\Kusto.Data.dll")` from PowerShell.
-    * The `path` parameter for the command should indicate the location of the extracted files.
-1. Once all dependent .NET assemblies are loaded:
-   1. Create a Kusto connection string.
-   1. Instantiate a *query provider* or an *admin provider*.
-   1. Run the queries or commands, as shown in the [examples](powershell.md#examples) below.
+## Get the libraries
 
-For more information, see the [Kusto client libraries](../netfx/about-kusto-data.md).
+To get the Kusto .NET client libraries for scripting with PowerShell:
+
+1. Download [`Microsoft.Azure.Kusto.Tools`](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
+1. Right-click on the downloaded package. From the menu, select your archiving tool and extract the package contents. If the archiving tool isn't visible from the menu, select **Show more options**. The extraction results in multiple folders, one of which is named *tools*.
+1. Inside the *tools* folder, there are different subfolders catering to different PowerShell versions. For PowerShell version 5.1, use the *net472* folder. For PowerShell version 7 or later, use any of the version folders. Copy the path of the relevant folder.
+1. From PowerShell, replace `<path>` with the copied folder path and load the library:
+
+    ```powershell
+    [System.Reflection.Assembly]::LoadFrom("<path>\Kusto.Data.dll")
+    ```
+
+Once the .NET assemblies are loaded, use a [Kusto connection string](../connection-strings/kusto.md) to establish a connection and run queries and commands. For guidance, see [Examples](#examples).
 
 ## Examples
 
@@ -65,7 +67,13 @@ $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder ($clusterUrl, $databa
 #         a different authentication method.
 ```
 
-### Example: Running an admin command
+**Example output**
+
+| GAC | Version | Location |
+|--|--|--|
+| False | v4.0.30319 | C:\Downloads\tools\net472\Kusto.Data.dll |
+
+### Run an admin command
 
 ```powershell
 $adminProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslAdminProvider($kcsb)
@@ -77,13 +85,13 @@ $isHealthy = $Reader.GetBoolean(0)
 Write-Host "IsHealthy = $isHealthy"
 ```
 
-And the output is:
+**Output**
 
 ```
 IsHealthy = True
 ```
 
-### Example: Running a query
+### Run a query
 
 ```powershell
 $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvider($kcsb)
@@ -104,7 +112,7 @@ $dataView = New-Object System.Data.DataView($dataTable)
 $dataView | Sort StartTime -Descending | Format-Table -AutoSize
 ```
 
-And the output is:
+**Output**
 
 |StartTime           |EndTime             |EpisodeID |EventID |State          |EventType         |InjuriesDirect |InjuriesIndirect |DeathsDirect |DeathsIndirect
 |---------           |-------             |--------- |------- |-----          |---------         |-------------- |---------------- |------------ |--------------
@@ -113,3 +121,8 @@ And the output is:
 |2007-09-29 08:11:00 |2007-09-29 08:11:00 |    11091 |  61032 |ATLANTIC SOUTH |Water spout       |             0 |               0 |           0 |             0
 |2007-09-20 21:57:00 |2007-09-20 22:05:00 |    11078 |  60913 |FLORIDA        |Tornado           |             0 |               0 |           0 |             0
 |2007-09-18 20:00:00 |2007-09-19 18:00:00 |    11074 |  60904 |FLORIDA        |Heavy Rain        |             0 |               0 |           0 |             0
+
+## See also
+
+* [Kusto client libraries](../client-libraries.md)
+* [Kusto connection strings](../connection-strings/kusto.md)

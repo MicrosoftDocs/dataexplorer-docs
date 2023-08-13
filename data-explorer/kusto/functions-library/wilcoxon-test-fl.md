@@ -19,6 +19,8 @@ The function `wilcoxon_test_fl()` is a [user-defined function (UDF)](../query/fu
 
 `T | invoke wilcoxon_test_fl()(`*data*`,` *test_statistic*`,`*p_value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

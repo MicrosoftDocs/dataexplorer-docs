@@ -20,7 +20,9 @@ The function accepts a dynamic array containing the names of the packages to che
 ## Syntax
 
 `T | invoke get_packages_version_fl(`*packages*`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

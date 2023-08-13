@@ -23,6 +23,8 @@ The `http_request_post` plugin sends an HTTP POST request and converts the respo
 
 `evaluate` `http_request_post` `(` *Uri* [`,` *RequestHeaders* [`,` *Options* [`,` *Content*]]] `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -68,7 +70,7 @@ custom headers:
 
 > [!WARNING]
 > The `x-ms-readonly` flag is set for every HTTP request sent by the plugin
-> that was triggered by a query and not a control command. Web services should
+> that was triggered by a query and not a management command. Web services should
 > treat any requests with this flag as one that does not make internal
 > state changes, otherwise they should refuse the request. This protects users from being
 > sent seemingly-innocent queries that end up making unwanted changes by using

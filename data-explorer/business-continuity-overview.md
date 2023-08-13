@@ -41,7 +41,7 @@ High availability refers to the fault-tolerance of Azure Data Explorer, its comp
 
 #### Persistence layer
 
-Azure Data Explorer leverages Azure Storage as its durable persistence layer. Azure Storage automatically provides fault tolerance, with the default setting offering Locally Redundant Storage (LRS) within a data center. Three replicas are persisted. If a replica is lost while in use, another is deployed without disruption. Further resiliency is possible with Zone Redundant Storage (ZRS) that places replicas intelligently across Azure regional availability zones for maximum fault tolerance at an additional cost. ZRS enabled storage is automatically configured when the Azure Data Explorer cluster is deployed into [Availability Zones](create-cluster-database-portal.md#create-a-cluster).
+Azure Data Explorer leverages Azure Storage as its durable persistence layer. Azure Storage automatically provides fault tolerance, with the default setting offering Locally Redundant Storage (LRS) within a data center. Three replicas are persisted. If a replica is lost while in use, another is deployed without disruption. Further resiliency is possible with Zone Redundant Storage (ZRS) that places replicas intelligently across Azure regional availability zones for maximum fault tolerance at an additional cost. ZRS enabled storage is automatically configured when the Azure Data Explorer cluster is deployed into [Availability Zones](create-cluster-and-database.md#create-a-cluster).
 
 #### Compute layer
 
@@ -55,7 +55,7 @@ Azure Data Explorer provides an optional [follower capability](follower.md) for 
 
 Azure availability zones are unique physical locations within the same Azure region. They can protect an Azure Data Explorer cluster's compute and data from partial region failure. Zone failure is an availability scenario as it is intra-region. 
 
-Pin an Azure Data Explorer cluster to the same zone as other connected Azure resources. For more information on enabling availability zones, see [create a cluster](create-cluster-database-portal.md#create-a-cluster).
+Pin an Azure Data Explorer cluster to the same zone as other connected Azure resources. For more information on enabling availability zones, see [create a cluster](create-cluster-and-database.md#create-a-cluster).
 
 > [!NOTE] 
 > Availability zone selection is only supported at the time of cluster creation and can't be modified later.

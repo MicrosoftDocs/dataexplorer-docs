@@ -3,15 +3,15 @@ title:  Azure Data Explorer API Overview
 description: This article describes API in Azure Data Explorer.
 ms.reviewer: vladikb
 ms.topic: reference
-ms.date: 04/19/2023
+ms.date: 06/14/2023
 ---
 # Azure Data Explorer API Overview
 
 The Azure Data Explorer service supports the following communication endpoints:
 
 1. A [REST API](#rest-api) endpoint, through which you can query and manage the data in Azure Data Explorer.
-   This endpoint supports the [Kusto Query Language](../query/index.md) for queries and [control commands](../management/index.md).
-1. An [MS-TDS](#ms-tds) endpoint that implements a subset of the Microsoft Tabular Data Stream (TDS) protocol, used by the Microsoft SQL Server products.
+   This endpoint supports the [Kusto Query Language](../query/index.md) for queries and [management commands](../management/index.md).
+1. An [MS-TDS](#ms-tds) endpoint that implements a subset of the Microsoft Tabular Data Stream (TDS) protocol, used by the Microsoft SQL Server products. The endpoint supports TDS versions 7.x and 8.0.
    This endpoint is useful for tools that know how to communicate with a SQL Server endpoint for queries.
 1. An [Azure Resource Manager (ARM)](/azure/role-based-access-control/resource-provider-operations#microsoftkusto) endpoint that is the standard means for Azure services. The endpoint is used to manage resources, such as Azure Data Explorer clusters.
 
@@ -32,14 +32,14 @@ A number of [client libraries](client-libraries.md) are also available to use th
 
 ## MS-TDS
 
-Azure Data Explorer also supports the Microsoft SQL Server communication protocol (MS-TDS), and includes a limited support for running T-SQL queries.
+Azure Data Explorer supports the Microsoft SQL Server communication protocol (MS-TDS), and includes a limited support for running T-SQL queries. The supported versions of MS-TDS include 7.x and 8.0.
 This protocol enables users to run queries on Azure Data Explorer using a well-known query syntax (T-SQL) and database client tools such as LINQPad, sqlcmd, Tableau, Excel, and Power BI.
 
 For more information, see [MS-TDS](../../t-sql.md).
 
 ## Client libraries
 
-Azure Data Explorer provides a number of client libraries that make use of the above endpoints, to make programmatic access easy.
+Azure Data Explorer provides a number of [client libraries](client-libraries.md) that make use of the above endpoints, to make programmatic access easy.
 
 * .NET SDK
 * Python SDK
@@ -65,12 +65,12 @@ The above libraries use Azure APIs, such as Azure Storage API and Azure Active D
 
 ### Python Libraries
 
-The Python client library permits callers to send data queries and control commands.
+The Python client library permits callers to send data queries and management commands.
 For more information, see [Kusto Python SDK](python/kusto-python-client-library.md).
 
 ### R Library
 
-The R client library permits callers to send data queries and control commands.
+The R client library permits callers to send data queries and management commands.
 For more information, see [Kusto R SDK](r/kusto-r-client-library.md).
 
 ### Java SDK

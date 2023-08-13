@@ -9,6 +9,37 @@ ms.date: 07/06/2022
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
 
+## July 2022
+
+**General**
+
+| Article title | Description |
+|--|--|
+| [Upgrade a free cluster](start-for-free-upgrade.md) | New Article. Describes how to upgrade a free cluster to a full cluster without losing your data. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| [.alter extent tags](kusto/management/alter-extent.md) | Updated article. Added documentation for `alter-merge` extent tags. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [convert_angle](kusto/query/convert-angle-function.md) <br />- [convert_energy](kusto/query/convert-energy-function.md) <br />- [convert_force](kusto/query/convert-force-function.md) <br />- [convert_length](kusto/query/convert-length-function.md) <br />- [convert_mass](kusto/query/convert-mass-function.md) <br />- [convert_speed](kusto/query/convert-speed-function.md) <br />- [convert_temperature](kusto/query/convert-temperature-function.md) <br />- [convert_volume](kusto/query/convert-volume-function.md) | New articles. New functions for converting values. |
+| [parse-kv operator](kusto/query/parse-kv-operator.md) | New Article. Describes how to extract structured information from a string in key/value form. |
+|- [Scalar function types at a glance](kusto/query/scalarfunctions.md) <br />- [arg_max() (aggregation function)](kusto/query/arg-max-aggfunction.md) <br />- [arg_min() (aggregation function)](kusto/query/arg-min-aggfunction.md) <br />- [avg() (aggregation function)](kusto/query/avg-aggfunction.md) <br />- [max() (aggregation function)](kusto/query/max-aggfunction.md) <br />- [min() (aggregation function)](kusto/query/min-aggfunction.md) <br />- [sum() (aggregation function)](kusto/query/sum-aggfunction.md) | Updated articles. Added new examples. |
+
+## June 2022
+
+| Article title | Description |
+|--|--|
+| [Ingest data from Azure Stream Analytics (Preview)](stream-analytics-connector.md) | New Article. Describes how to ingest (load) data from Azure Stream Analytics. |
+| [Azure Data Explorer web UI overview](./web-query-data.md) | New Article. Describes the elements of web UI home page and the data analytics journey. |
+| [Explore the Azure Data Explorer web UI samples gallery](./web-ui-samples-dashboards.md) | New Article. Describes how to use the samples gallery in the web UI. |
+| [Select a SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md) | Updated Article. New SKU list and refreshed content. |
+
 ## May 2022
 
 | Article title | Description |
@@ -266,7 +297,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-[Workload groups - Control commands](kusto/management/show-workload-group-command.md) | Updated article. General Availability (GA).
+[Workload groups - Management commands](kusto/management/show-workload-group-command.md) | Updated article. General Availability (GA).
 [Workload groups](kusto/management/workload-groups.md) | Updated article. General Availability (GA).
 [Materialized views](kusto/management/materialized-views/materialized-view-overview.md) | Updated article. General Availability (GA).
 [Materialized views policies](kusto/management/materialized-views/materialized-view-policies.md) | Updated article. General Availability (GA).
@@ -354,10 +385,10 @@ Article title | Description
 Article title | Description
 ---|---
 [Clean extent containers commands](/azure/data-explorer/kusto/management/extents-overview) | New article. Describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands.
-[Request classification policy (Preview)](kusto/management/request-classification-policy.md)<br>[Request classification policy (Preview) - Control commands](kusto/management/show-cluster-policy-request-classification-command.md) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
+[Request classification policy (Preview)](kusto/management/request-classification-policy.md)<br>[Request classification policy (Preview) - Management commands](kusto/management/show-cluster-policy-request-classification-command.md) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
 [Request limits policy (Preview)](kusto/management/request-limits-policy.md) | New article. A workload group's request limits policy allows limiting the resources used by the request during its execution.
 [Request rate limit policy (Preview)](kusto/management/request-rate-limit-policy.md) | New article. The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group.
-[Workload groups (Preview)](kusto/management/workload-groups.md)<br>[Workload groups (Preview) - Control commands](kusto/management/show-workload-group-command.md) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
+[Workload groups (Preview)](kusto/management/workload-groups.md)<br>[Workload groups (Preview) - Management commands](kusto/management/show-workload-group-command.md) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
 [Queries management](kusto/management/queries.md) | Updated article. Syntax updated
 
 ## December 2020

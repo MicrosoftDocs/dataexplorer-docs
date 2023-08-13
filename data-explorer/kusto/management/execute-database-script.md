@@ -1,13 +1,13 @@
 ---
 title: .execute database script command
-description: Learn how to use the `.execute database script` command to execute a batch of control commands in the scope of a single database.
+description: Learn how to use the `.execute database script` command to execute a batch of management commands in the scope of a single database.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/24/2023
 ---
 # .execute database script command
 
-Executes a batch of control commands in the scope of a single database.
+Executes a batch of management commands in the scope of a single database.
 
 ## Permissions
 
@@ -18,11 +18,13 @@ You must have at least [Database Admin](access-control/role-based-access-control
 `.execute` `database` `script`  
 [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *ControlCommandsScript*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ControlCommandsScript*|string|&check;| Text with one or more control commands.|
+|*ControlCommandsScript*|string|&check;| Text with one or more management commands.|
 |*PropertyName*, *PropertyValue*|string|| Optional properties. See [Supported properties](#supported-properties).|
 
 ### Supported properties
@@ -51,7 +53,7 @@ Each command appearing in the script will be reported as a separate record in th
 >* Script execution is sequential, but non-transactional, and no rollback is performed upon error. It's advised to use the idempotent form of commands when using `.execute database script`.
 >* Execution of the command requires Database Admin permissions, in addition to permissions that may be required by each specific command.
 >* Default behavior of the command - fail on the first error, it can be changed using property argument.
->* Read-only control commands (`.show` commands) aren't executed and are reported with status `Skipped`.
+>* Read-only management commands (`.show` commands) aren't executed and are reported with status `Skipped`.
 
 >[!Tip]
 >

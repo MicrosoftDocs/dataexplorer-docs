@@ -16,6 +16,8 @@ Compares two IPv6 or IPv4 network address strings. The two IPv6 strings are pars
 
 `ipv6_compare(`*ip1*`,`*ip2*`[ ,`*prefix*`])`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

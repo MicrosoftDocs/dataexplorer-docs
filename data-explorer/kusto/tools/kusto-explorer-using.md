@@ -3,7 +3,7 @@ title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 03/20/2023
+ms.date: 07/03/2023
 ---
 
 # Using Kusto.Explorer
@@ -100,7 +100,7 @@ In Kusto.Explorer, you can share queries and results by email. You can also crea
 Kusto.Explorer provides a convenient way to share queries and query results by email.
 
 1. [Run your query](#basic-queries) in Kusto.Explorer.
-1. In the Home tab, in the Share section, select **Export to Clipboard** (or press Ctrl+Shift+C).
+1. In the Home tab, in the Share section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
 
     :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
 
@@ -112,14 +112,14 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 
 1. Paste the contents of the clipboard into a new email message.
 
-    :::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="Share results in email.":::
+    :::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="Share results in email." lightbox="images/kusto-explorer-using/share-results-2.png":::
 
 ### Deep-linking queries
 
 You can create a URI that, when opened in a browser, opens Kusto.Explorer locally and runs a specific query on a specified Kusto database.
 
 > [!NOTE]
-> For security reasons, deep-linking is disabled for control commands.
+> For security reasons, deep-linking is disabled for management commands.
 
 #### Creating a deep-link
 
@@ -133,7 +133,7 @@ https://help.kusto.windows.net/Samples [[Run the query](https://help.kusto.windo
 The first link opens Kusto.Explorer and sets the cluster and database context appropriately.
 The second link (`Run the query`) is the deep link. If you move the link to an email message and press CTRL+K, you can see the actual URL:
 
-https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
+> https:\/\/help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
 
 #### Deep-links and parametrized queries
 

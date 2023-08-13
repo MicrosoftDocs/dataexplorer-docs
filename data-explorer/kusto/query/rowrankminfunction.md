@@ -15,11 +15,14 @@ The rank is the minimal row number that the current row's *Term* appears in.
 
 `row_rank_min` `(` *Term* `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*Term*|string|&check;|An expression indicating the value to consider for the rank. The rank is the minimal row number for *Term*.|
+| *restart*| bool | | Indicates when the numbering is to be restarted to the *StartingIndex* value. The default is `false`.|
   
 ## Returns
 

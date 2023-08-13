@@ -51,3 +51,8 @@ This article shows you a list of functions and their descriptions to help get yo
 | [evaluate pluginName](evaluateoperator.md)     | Evaluates query language extensions (plugins) | `[T |] evaluate [ evaluateParameters ] PluginName ( [PluginArg1 [, PluginArg2]... )` |
 | **Visualization**                               | **_Operations that display the data in a graphical format_** | |
 | [render](renderoperator.md) | Renders results as a graphical output | `T | render Visualization [with (PropertyName = PropertyValue [, ...] )]` |
+
+## See also
+
+- [SQL cheat sheet](sqlcheatsheet.md)
+- [Splunk cheat sheet](splunk-cheat-sheet.md)

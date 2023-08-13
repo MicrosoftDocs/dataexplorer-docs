@@ -13,6 +13,8 @@ Returns the rounded number to the specified precision.
 
 `round(`*number* [`,` *precision*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

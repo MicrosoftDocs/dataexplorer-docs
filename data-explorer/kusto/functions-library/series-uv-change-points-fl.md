@@ -19,7 +19,7 @@ The function `series_uv_change_points_fl()` is a [user-defined function (UDF)](.
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* A cluster and database. [Create a cluster and database](../../create-cluster-database-portal.md).
+* A cluster and database. [Create a cluster and database](../../create-cluster-and-database.md).
 * The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 * [Create an Anomaly Detector resource and obtain its key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
 * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster to access the anomaly detection service endpoint.
@@ -28,6 +28,8 @@ The function `series_uv_change_points_fl()` is a [user-defined function (UDF)](.
 ## Syntax
 
 `T | invoke series_uv_change_points_fl(`*y_series* [`,` *score_threshold* [`,` *trend_window* [`,` *tsid*]]]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

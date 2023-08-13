@@ -13,6 +13,8 @@ The base-2 exponential function of x, which is 2 raised to the power x: 2^x.
 
 `exp2(`*x*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

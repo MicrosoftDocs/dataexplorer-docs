@@ -19,6 +19,8 @@ The function `normality_test_fl()` is a [UDF (user-defined function)](../query/f
 
 `T | invoke normality_test_fl(`*data*`,` *test_statistic*`,`*p_value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

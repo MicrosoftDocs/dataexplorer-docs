@@ -10,7 +10,7 @@ ms.date: 03/08/2023
 The Azure Data Explorer query editor supports the use of T-SQL in addition to its primary query language, [Kusto query language (KQL)](kusto/query/index.md). While KQL is the recommended query language, T-SQL can be useful for tools that are unable to use KQL.
 
 > [!NOTE]
-> Only Data Query Language (DQL) commands are supported. For more information, see [limitations](#limitations).
+> Only Data Query Language (DQL) commands are supported. For more information, see [Coverage](#coverage).
 
 ## Query with T-SQL
 
@@ -93,7 +93,7 @@ SELECT * FROM kusto.MyFunction(10)
 > [!NOTE]
 > To distinguish between stored functions and emulated SQL system stored procedures, execute stored functions with an explicit reference to the `kusto` schema. In the example, the stored function is executed using `kusto.Myfunction`.
 
-## Limitations
+## Coverage
 
 Azure Data Explorer offers limited support for T-SQL. The following table outlines the T-SQL statements and features that aren't supported or are partially supported.
 
@@ -107,6 +107,7 @@ Azure Data Explorer offers limited support for T-SQL. The following table outlin
 |`TOP` `WITH TIES`|Evaluated as regular `TOP`|
 |`TRUNCATE`|Returns the nearest value|
 |`SELECT` `*` | Column order may differ from expectation. Use column names if order matters.|
+|`AT TIME ZONE`|Not supported|
 |SQL cursors|Not supported|
 |Correlated subqueries|Not supported|
 |Recursive CTEs|Not supported|
@@ -118,3 +119,4 @@ Azure Data Explorer offers limited support for T-SQL. The following table outlin
 ## Next steps
 
 * Learn about [SQL Server emulation](sql-server-emulation-overview.md) in Azure Data Explorer
+* Use the [SQL to Kusto Query Language cheat sheet](kusto/query/sqlcheatsheet.md)

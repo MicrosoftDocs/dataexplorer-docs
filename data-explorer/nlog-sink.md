@@ -22,7 +22,7 @@ For a complete list of data connectors, see [Data connectors overview](connector
 ## Prerequisites
 
 * .NET SDK 6.0 or later
-* An Azure Data Explorer [cluster and database](create-cluster-database-portal.md)
+* An Azure Data Explorer [cluster and database](create-cluster-and-database.md)
 
 ## Set up your environment
 
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
     ```
 
     > [!NOTE]
-    > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](kusto/management/manage-database-security-roles.md#view-existing-security-roles).
+    > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](kusto/management/manage-database-security-roles.md#show-existing-security-roles).
 
 ### Create a table and ingestion mapping
 

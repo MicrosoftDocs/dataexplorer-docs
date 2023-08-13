@@ -18,6 +18,8 @@ The area chart visual shows a time-series relationship. The first column of the 
 
 *T* `|` `render` `areachart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

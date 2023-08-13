@@ -14,6 +14,8 @@ entities are resolved against if no other database is specified).
 
 `current_database()`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 The name of the database in scope as a value of type `string`.

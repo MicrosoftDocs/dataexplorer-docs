@@ -7,7 +7,7 @@ ms.date: 12/28/2022
 ---
 # indexof_regex()
 
-Returns the zero-based index of the first occurrence of a specified lookup regular expression within the input string.
+Returns the zero-based index of the first occurrence of a specified lookup [regular expression](re2.md) within the input string.
 
 See [`indexof()`](indexoffunction.md).
 
@@ -15,12 +15,14 @@ See [`indexof()`](indexoffunction.md).
 
 `indexof_regex(`*string*`,`*match*`[,`*start*`[,`*length*`[,`*occurrence*`]]])`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*string*| string | &check; | The source string to search.|  
-|*match*| string | &check; | The regular expression lookup string.|
+|*match*| string | &check; | The [regular expression](re2.md) lookup string.|
 |*start*| int | | The search start position. A negative value will offset the starting search position from the end of the *string* by this many steps: `abs(`*start*`)`. |
 |*length*| int | | The number of character positions to examine. A value of -1 means unlimited length.|
 |*occurrence*| int | | The number of the occurrence. The default is 1.|
@@ -37,8 +39,8 @@ The zero-based index position of *match*.
 
 > [!NOTE]
 >
-* Overlapping matches lookup aren't supported.
-* Regular expression strings may contain characters that require either escaping or using @'' string-literals.
+> * Overlapping matches lookup aren't supported.
+> * Regular expression strings may contain characters that require either escaping or using @'' string-literals.
 
 ## Examples
 

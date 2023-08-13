@@ -1,11 +1,11 @@
 ---
-title:  'Basic query: Create an app to run basic queries'
-description: Learn how to create an app to run basic queries using Azure Data Explorer client libraries.
+title:  'Create an app to run basic queries'
+description: Learn how to create an app to run basic queries using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 04/24/2023
 ---
-# Basic query: Create an app to run basic queries
+# Create an app to run basic queries
 
 In this article, you learn how to:
 
@@ -18,11 +18,11 @@ In this article, you learn how to:
 
 ## Prerequisites
 
-[Set up your development environment](app-set-up.md) to use the Azure Data Explorer client library.
+[Set up your development environment](app-set-up.md) to use the Kusto client library.
 
 ## Run a basic query and process the results
 
-In your preferred IDE or text editor, create a file named `basic-query` with the language appropriate extension, and then add the following code:
+In your preferred IDE or text editor, create a project or file named *basic query* using the convention appropriate for your preferred language. Then add the following code:
 
 1. Create a client app that connects to the [help cluster](https://dataexplorer.azure.com/clusters/help).
 
@@ -32,18 +32,14 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     using Kusto.Data;
     using Kusto.Data.Net.Client;
 
-    namespace HelloKusto
-    {
-      class BasicQuery
-      {
-        static void Main(string[] args)
-        {
-          var cluster_uri = "https://help.kusto.windows.net/";
-          var kcsb = new KustoConnectionStringBuilder(cluster_uri)
+    namespace BasicQuery {
+      class BasicQuery {
+        static void Main(string[] args) {
+          var clusterUri = "https://help.kusto.windows.net/";
+          var kcsb = new KustoConnectionStringBuilder(clusterUri)
               .WithAadUserPromptAuthentication();
 
-          using (var kusto_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
-          {
+          using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(kcsb)) {
           }
         }
       }
@@ -68,14 +64,14 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    const KustoClient = require("azure-kusto-data").Client;
-    const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+    const kustoLibraryClient = require("azure-kusto-data").Client;
+    const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
 
     async function main() {
-      const cluster_uri = "https://help.kusto.windows.net";
-      const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
+      const clusterUri = "https://help.kusto.windows.net";
+      const kcsb = kustoConnectionStringBuilder.withUserPrompt(clusterUri);
 
-      const kusto_client = new KustoClient(kcsb);
+      const kusto_client = new kustoLibraryClient(kcsb);
     }
 
     main();
@@ -92,18 +88,14 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     import com.microsoft.azure.kusto.data.KustoResultSetTable;
     import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 
-    public class BasicQuery {
-      public static void main(String[] args) {
+    public class basicQuery {
+      public static void main(String[] args) throws Exception {
         try {
-          String cluster_uri = "https://help.kusto.windows.net/";
-          ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
+          String clusterUri = "https://help.kusto.windows.net/";
+          ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
 
-          try (Client kusto_client = ClientFactory.createClient(kcsb)) {
-          } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+          try (Client kustoClient = ClientFactory.createClient(kcsb)) {
           }
-        } catch (Exception e) {
-          System.out.println("Error: " + e.getMessage());
         }
       }
     }
@@ -170,15 +162,13 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
     ### [C\#](#tab/csharp)
 
     ```csharp
-    using (var response = kusto_client.ExecuteQuery(database, query, null))
-    {
+    using (var response = kustoClient.ExecuteQuery(database, query, null)) {
       int columnNoStartTime = response.GetOrdinal("StartTime");
       int columnNoState = response.GetOrdinal("State");
       int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
       Console.WriteLine("Daily tornado damages over 100,000,000$:");
 
-      while (response.Read())
-      {
+      while (response.Read()) {
         Console.WriteLine("{0} - {1}, {2}",
           response.GetDateTime(columnNoStartTime),
           response.GetString(columnNoState),
@@ -214,11 +204,11 @@ In your preferred IDE or text editor, create a file named `basic-query` with the
 
     ```java
     KustoOperationResult response = kusto_client.execute(database, query);
-    KustoResultSetTable primary_results = response.getPrimaryResults();
+    KustoResultSetTable primaryResults = response.getPrimaryResults();
 
     System.out.println("Daily tornado damages over 100,000,000$:");
-    while (primary_results.next()) {
-      System.out.println(primary_results.getString("StartTime") + " - " + primary_results.getString("State") + " , " + primary_results.getString("DailyDamage"));
+    while (primaryResults.next()) {
+      System.out.println(primaryResults.getString("StartTime") + " - " + primaryResults.getString("State") + " , " + primaryResults.getString("DailyDamage"));
     }
     ```
 
@@ -232,18 +222,14 @@ The complete code should look like this:
 using Kusto.Data;
 using Kusto.Data.Net.Client;
 
-namespace HelloKusto
-{
-  class BasicQuery
-  {
-    static void Main(string[] args)
-    {
-      string cluster_uri = "https://help.kusto.windows.net/";
-      var kcsb = new KustoConnectionStringBuilder(cluster_uri)
+namespace BasicQuery {
+  class BasicQuery {
+    static void Main(string[] args) {
+      string clusterUri = "https://help.kusto.windows.net/";
+      var kcsb = new KustoConnectionStringBuilder(clusterUri)
           .WithAadUserPromptAuthentication();
 
-      using (var kusto_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
-      {
+      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(kcsb)) {
         string database = "Samples";
         string query = @"StormEvents
                          | where EventType == 'Tornado'
@@ -252,16 +238,14 @@ namespace HelloKusto
                          | where DailyDamage > 100000000
                          | order by DailyDamage desc";
 
-        using (var response = kusto_client.ExecuteQuery(database, query, null))
-        {
+        using (var response = kustoClient.ExecuteQuery(database, query, null)) {
           int columnNoStartTime = response.GetOrdinal("StartTime");
           int columnNoState = response.GetOrdinal("State");
           int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
 
           Console.WriteLine("Daily tornado damages over 100,000,000$:");
 
-          while (response.Read())
-          {
+          while (response.Read()) {
             Console.WriteLine("{0} - {1}, {2}",
               response.GetDateTime(columnNoStartTime),
               response.GetString(columnNoState),
@@ -306,22 +290,21 @@ if __name__ == "__main__":
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
-const KustoClient = require("azure-kusto-data").Client;
-const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+const kustoLibraryClient = require("azure-kusto-data").Client;
+const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
 
 async function main() {
   const cluster_uri = "https://help.kusto.windows.net";
-  const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
-  const kusto_client = new KustoClient(kcsb);
+  const kcsb = kustoConnectionStringBuilder.withUserPrompt(cluster_uri);
+  const kustoClient = new kustoLibraryClient(kcsb);
 
   const database = "Samples";
   const query = `StormEvents
                  | where EventType == 'Tornado'
                  | extend TotalDamage = DamageProperty + DamageCrops
-                 | summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)
                  | where DailyDamage > 100000000
                  | order by DailyDamage desc`;
-  let response = await kusto_client.execute(database, query);
+  let response = await kustoClient.execute(database, query);
 
   console.log("Daily tornado damages over 100,000,000$:");
   for (row of response.primaryResults[0].rows()) {
@@ -343,12 +326,12 @@ import com.microsoft.azure.kusto.data.KustoOperationResult;
 import com.microsoft.azure.kusto.data.KustoResultSetTable;
 import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 
-public class BasicQuery {
-  public static void main(String[] args) {
+public class basicQuery {
+  public static void main(String[] args) throws Exception {
     try {
-      String cluster_uri = "https://help.kusto.windows.net/";
-      ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
-      try (Client kusto_client = ClientFactory.createClient(kcsb)) {
+      String clusterUri = "https://help.kusto.windows.net/";
+      ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
+      try (Client kustoClient = ClientFactory.createClient(kcsb)) {
         String database = "Samples";
         String query = "StormEvents\n" +
                        "| where EventType == 'Tornado'\n" +
@@ -356,18 +339,14 @@ public class BasicQuery {
                        "| summarize DailyDamage=sum(TotalDamage) by State, bin(StartTime, 1d)\n" +
                        "| where DailyDamage > 100000000\n" +
                        "| order by DailyDamage desc";
-        KustoOperationResult response = kusto_client.execute(database, query);
-        KustoResultSetTable primary_results = response.getPrimaryResults();
+        KustoOperationResult response = kustoClient.execute(database, query);
+        KustoResultSetTable primaryResults = response.getPrimaryResults();
 
         System.out.println("Daily tornado damages over 100,000,000$:");
-        while (primary_results.next()) {
-          System.out.println(primary_results.getString("StartTime") + " - " + primary_results.getString("State") + " , " + primary_results.getString("DailyDamage"));
+        while (primaryResults.next()) {
+          System.out.println(primaryResults.getString("StartTime") + " - " + primaryResults.getString("State") + " , " + primaryResults.getString("DailyDamage"));
         }
-      } catch (Exception e) {
-        System.out.println("Error: " + e.getMessage());
       }
-    } catch (Exception e) {
-      System.out.println("Error: " + e.getMessage());
     }
   }
 }
@@ -382,13 +361,14 @@ In a command shell, use the following command to run your app:
 ### [C\#](#tab/csharp)
 
 ```bash
-basic-query.exe
+# Change directory to the folder that contains the basic queries project
+dotnet run .
 ```
 
 ### [Python](#tab/python)
 
 ```bash
-python basic-query.py
+python basic_query.py
 ```
 
 ### [Node.js](#tab/nodejs)
@@ -402,7 +382,7 @@ node basic-query.js
 ### [Java](#tab/java)
 
 ```bash
-java BasicQuery
+mvn install exec:java -Dexec.mainClass="<groupId>.BasicQuery"
 ```
 
 ---
@@ -476,11 +456,11 @@ for (row of response.primaryResults[0].rows()) {
 
 ```java
 Integer columnNoState = 0;
-Integer columnNoStartTime = primary_results.findColumn("StartTime");
+Integer columnNoStartTime = primaryResults.findColumn("StartTime");
 Integer columnNoDailyDamage = 2;
 
-while (primary_results.next()) {
-  System.out.println(primary_results.getString(columnNoStartTime) + " - " + primary_results.getString(columnNoState) + " , " + primary_results.getString(columnNoDailyDamage));
+while (primaryResults.next()) {
+  System.out.println(primaryResults.getString(columnNoStartTime) + " - " + primaryResults.getString(columnNoState) + " , " + primaryResults.getString(columnNoDailyDamage));
 }
 ```
 
@@ -490,7 +470,7 @@ while (primary_results.next()) {
 
 You can customize the behavior of a query by setting client request properties. For more information on available options, see [client request properties](../netfx/request-properties.md).
 
-For example, you can replace the kusto_client.execute_query call in the previous code to pass a custom request ID and set the query timeout to 1 minute. To use the client request properties, you must import the `ClientRequestProperties` class.
+For example, you can replace the `kusto_client.execute_query` call in the previous code to pass a custom request ID and set the query timeout to 1 minute. To use the client request properties, you must import the `ClientRequestProperties` class.
 
 ### [C\#](#tab/csharp)
 
@@ -503,7 +483,7 @@ crp.ClientRequestId = "QueryDemo" + Guid.NewGuid().ToString();
 // Set the query timeout to 1 minute
 crp.SetOption(ClientRequestProperties.OptionServerTimeout, "1m");
 
-using (var response = kusto_client.ExecuteQuery(database, query, crp))
+using (var response = kustoClient.ExecuteQuery(database, query, crp))
 {
 }
 ```
@@ -536,7 +516,7 @@ crp.clientRequestId = "QueryDemo" + uuid.v4();
 // Set the query timeout to 1 minute
 crp.setServerTimeout(1000 * 60);
 
-let response = await kusto_client.execute(database, query, crp);
+let response = await kustoClient.execute(database, query, crp);
 ```
 
 <!-- ### [Go](#tab/go) -->
@@ -584,15 +564,13 @@ var crp = new ClientRequestProperties();
 crp.SetParameter("event_type", "Flash Flood");
 crp.SetParameter("daily_damage", 200000000.ToString());
 
-using (var response = kusto_client.ExecuteQuery(database, query, crp))
-{
+using (var response = kustoClient.ExecuteQuery(database, query, crp)) {
   int columnNoStartTime = response.GetOrdinal("StartTime");
   int columnNoState = response.GetOrdinal("State");
   int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
   Console.WriteLine("Daily flash flood damages over 200,000,000$:");
 
-  while (response.Read())
-  {
+  while (response.Read()) {
     Console.WriteLine("{0} - {1}, {2}",
       response.GetDateTime(columnNoStartTime),
       response.GetString(columnNoState),
@@ -638,7 +616,7 @@ const crp = new ClientRequestProperties();
 crp.setParameter("event_type", "Flash Flood");
 crp.setParameter("daily_damage", 200000000);
 
-let response = await kusto_client.execute(database, query, crp);
+let response = await kustoClient.execute(database, query, crp);
 
 console.log("Daily flash flood damages over 200,000,000$:");
 for (row of response.primaryResults[0].rows()) {
@@ -683,18 +661,14 @@ using Kusto.Data;
 using Kusto.Data.Common;
 using Kusto.Data.Net.Client;
 
-namespace HelloKusto
-{
-  class BasicQuery
-  {
-    static void Main(string[] args)
-    {
-      string cluster_uri = "https://help.kusto.windows.net/";
-      var kcsb = new KustoConnectionStringBuilder(cluster_uri)
+namespace BasicQuery {
+  class BasicQuery {
+    static void Main(string[] args) {
+      string clusterUri = "https://help.kusto.windows.net/";
+      var kcsb = new KustoConnectionStringBuilder(clusterUri)
           .WithAadUserPromptAuthentication();
 
-      using (var kusto_client = KustoClientFactory.CreateCslQueryProvider(kcsb))
-      {
+      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(kcsb)) {
         string database = "Samples";
         string query = @"declare query_parameters(event_type:string, daily_damage:int);
                          StormEvents
@@ -710,16 +684,14 @@ namespace HelloKusto
         crp.SetParameter("event_type", "Flash Flood");
         crp.SetParameter("daily_damage", 200000000.ToString());
 
-        using (var response = kusto_client.ExecuteQuery(database, query, crp))
-        {
+        using (var response = kustoClient.ExecuteQuery(database, query, crp)) {
           int columnNoStartTime = response.GetOrdinal("StartTime");
           int columnNoState = response.GetOrdinal("State");
           int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
 
           Console.WriteLine("Daily flash flood damages over 200,000,000$:");
 
-          while (response.Read())
-          {
+          while (response.Read()) {
             Console.WriteLine("{0} - {1}, {2}",
               response.GetDateTime(columnNoStartTime),
               response.GetString(columnNoState),
@@ -779,15 +751,15 @@ if __name__ == "__main__":
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
-const KustoClient = require("azure-kusto-data").Client;
+const kustoLibraryClient = require("azure-kusto-data").Client;
 const ClientRequestProperties = require("azure-kusto-data").ClientRequestProperties;
 const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
 const uuid = require('uuid');
 
 async function main() {
-  const cluster_uri = "https://help.kusto.windows.net";
-  const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
-  const kusto_client = new KustoClient(kcsb);
+  const clusterUri = "https://help.kusto.windows.net";
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
+  const kustoClient = new kustoLibraryClient(kcsb);
 
   const database = "Samples";
   const query = `declare query_parameters(event_type:string, daily_damage:int);
@@ -807,7 +779,7 @@ async function main() {
   crp.setParameter("event_type", "Flash Flood");
   crp.setParameter("daily_damage", 200000000);
 
-  let response = await kusto_client.execute(database, query, crp);
+  let response = await kustoClient.execute(database, query, crp);
 
   const columnNoState = 0;
   const columnNoStartTime = response.primaryResults[0].columns.find(c => c.name == "StartTime").ordinal;
@@ -837,11 +809,11 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 public class BasicQuery {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
     try {
-      String cluster_uri = "https://help.kusto.windows.net/";
-      ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(cluster_uri);
-      try (Client kusto_client = ClientFactory.createClient(kcsb)) {
+      String clusterUri = "https://help.kusto.windows.net/";
+      ConnectionStringBuilder kcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
+      try (Client kustoClient = ClientFactory.createClient(kcsb)) {
         String database = "Samples";
         String query = "declare query_parameters(event_type:string, daily_damage:int);\n" +
                        "StormEvents\n" +
@@ -859,22 +831,18 @@ public class BasicQuery {
         crp.setParameter("event_type", "Flash Flood");
         crp.setParameter("daily_damage", 200000000);
 
-        KustoOperationResult response = kusto_client.execute(database, query, crp);
-        KustoResultSetTable primary_results = response.getPrimaryResults();
+        KustoOperationResult response = kustoClient.execute(database, query, crp);
+        KustoResultSetTable primaryResults = response.getPrimaryResults();
 
         Integer columnNoState = 0;
-        Integer columnNoStartTime = primary_results.findColumn("StartTime");
+        Integer columnNoStartTime = primaryResults.findColumn("StartTime");
         Integer columnNoDailyDamage = 2;
 
         System.out.println("Daily flash flood damages over 200,000,000$:");
-        while (primary_results.next()) {
-          System.out.println("DEBUG: " + primary_results.getString(columnNoStartTime) + " - " + primary_results.getString(columnNoState) + " , " + primary_results.getString(columnNoDailyDamage));
+        while (primaryResults.next()) {
+          System.out.println("DEBUG: " + primaryResults.getString(columnNoStartTime) + " - " + primaryResults.getString(columnNoState) + " , " + primaryResults.getString(columnNoDailyDamage));
         }
-      } catch (Exception e) {
-        System.out.println("Error: " + e.getMessage());
       }
-    } catch (Exception e) {
-      System.out.println("Error: " + e.getMessage());
     }
   }
 }
@@ -892,8 +860,5 @@ Daily flash flood damages over 200,000,000$:
 ## Next steps
 
 <!-- Advance to the next article to learn how to create... -->
-<!-- > [!div class="nextstepaction"]
-> [TBD](../../../kql-quick-reference.md) -->
-
 > [!div class="nextstepaction"]
-> [KQL quick reference](../../../kql-quick-reference.md)
+> [Create an app to run management commands](app-management-commands.md)

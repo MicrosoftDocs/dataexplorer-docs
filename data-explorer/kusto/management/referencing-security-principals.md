@@ -42,6 +42,9 @@ Similarly, you can reference a security group with the group email address in [U
 | App | Explicit (ID) | `aadapp`=*ApplicationDisplayName*;*TenantId*<br />or<br />`aadapp`=*ApplicationId*;*TenantId*|
 | App | Explicit (Name) | `aadapp`=*ApplicationDisplayName*;*TenantName*<br />or<br />`aadapp`=*ApplicationId*;*TenantName*|
 
+> [!NOTE]
+> Use the "App" format to reference [managed identities](../../managed-identities-overview.md), in which the *ApplicationId* is the managed identity object ID or managed identity client (application) ID.
+
 ### Examples
 
 The following example uses the user UPN to define a principal the user role on the `Test` database. The tenant information isn't specified, so the query engine will attempt to resolve the Azure AD tenant using the UPN.
@@ -82,6 +85,7 @@ The following example assigns an MSA user to the user role on the `Test` databas
 
 ## Next steps
 
-* Learn how to [authenticate with Azure Active Directory](../access-control/how-to-authenticate-with-aad.md)
+* Read the [authentication overview](../access-control/index.md)
 * Learn how to use [management commands to assign security roles](security-roles.md)
 * Learn how to use the Azure portal to [manage database principals and roles](../../manage-database-permissions.md)
+* [current_principal_details()](../query/current-principal-detailsfunction.md)

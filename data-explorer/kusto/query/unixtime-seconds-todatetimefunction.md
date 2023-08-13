@@ -13,6 +13,8 @@ Converts unix-epoch seconds to UTC datetime.
 
 `unixtime_seconds_todatetime(`*seconds*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

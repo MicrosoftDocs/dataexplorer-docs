@@ -13,6 +13,8 @@ The base-10 exponential function of x, which is 10 raised to the power x: 10^x.
 
 `exp10(`*x*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

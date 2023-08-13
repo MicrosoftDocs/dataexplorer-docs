@@ -12,7 +12,7 @@ A workload group serves as a container for requests (queries, commands) that hav
 Workload groups are defined at the cluster level. Up to 10 custom workload groups may be defined in addition to the three built-in workload groups.
 
 > [!NOTE]
-> Requests that aren't queries or control commands aren't included in the scope of workload groups. For example: streaming ingestion requests.
+> Requests that aren't queries or management commands aren't included in the scope of workload groups. For example: streaming ingestion requests.
 
 ## Built-in workload groups
 
@@ -42,7 +42,7 @@ Monitor what gets classified to the internal workload group and the statistics o
 >
 > * A limit on the maximum amount of concurrent *queries* may have been defined on some cluster using the optional *"Query throttling policy"*, which has been deprecated.
 > * In these clusters, the limit on the maximum amount of concurrent *queries* was automatically applied on the `default` workload group's [request rate limits policies](request-rate-limit-policy.md).
-> * While the old limit applied only to *queries*, the new limit applies to *all requests* - queries and control commands.
+> * While the old limit applied only to *queries*, the new limit applies to *all requests* - queries and management commands.
 
 ### Internal workload group
 
@@ -93,6 +93,6 @@ Use these commands to aggregate resources utilization by workload group for requ
 
 The same information can also be viewed and analyzed in [Azure Monitor insights](/azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json).
 
-## Control commands
+## Management commands
 
-Managing workload groups and their policies is done using [workload groups control commands](./show-workload-group-command.md).
+Managing workload groups and their policies is done using [workload groups management commands](./show-workload-group-command.md).

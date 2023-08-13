@@ -1,13 +1,13 @@
 ---
 title:  Kusto query ingestion (set, append, replace)
-description: This article describes Ingest from query (.set, .append, .set-or-append, .set-or-replace) in Azure Data Explorer.
+description: Learn how to use the .set, .append, .set-or-append, and .set-or-replace commands to ingest data from a query into Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 07/13/2023
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 
-These commands execute a query or a control command and ingest the results of the query into a table. The difference between these commands is how they treat existing or nonexistent tables and data.
+These commands execute a query or a management command and ingest the results of the query into a table. The difference between these commands is how they treat existing or nonexistent tables and data.
 
 |Command          |If table exists                     |If table doesn't exist                    |
 |-----------------|------------------------------------|------------------------------------------|
@@ -18,15 +18,21 @@ These commands execute a query or a control command and ingest the results of th
 
 To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
 
+## Permissions
+
+To perform different actions on a table, specific permissions are required:
+
+* To add rows to an existing table using the `.append` command, you need a minimum of Table Ingestor permissions.
+* To create a new table using the various `.set` commands, you need a minimum of Database User permissions.
+* To replace rows in an existing table using the `.set-or-replace` command, you need a minimum of Table Admin permissions.
+
+For more information on permissions, see [Kusto role-based access control](../../access-control/role-based-access-control.md).
+
 ## Syntax
 
-`.set` [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
+(`.set` | `.append` | `.set-or-append` | `.set-or-replace`) [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
 
-`.append` [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
-
-`.set-or-append` [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
-
-`.set-or-replace` [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -35,30 +41,30 @@ To cancel an ingest from query command, see [`cancel operation`](../cancel-opera
 | *async* | string | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
 | *tableName* | string | &check; | The name of the table to ingest data into. The *tableName* is always related to the database in context. |
 | *propertyName*, *propertyValue* | string | | One or more [supported ingestion properties](#supported-ingestion-properties) used to control the ingestion process. |
-| *queryOrCommand* | string | &check; | The text of a query or a control command whose results will be used as data to ingest.|
+| *queryOrCommand* | string | &check; | The text of a query or a management command whose results are used as data to ingest.|
 
 > [!NOTE]
-> Only `.show` control commands are supported.
+> Only `.show` management commands are supported.
 
 ## Supported ingestion properties
 
 |Property|Type|Description|
 |--|--|--|
-|`creationTime` | string | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, `now()` will be used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../mergepolicy.md) is aligned with the specified value.|
-|`extend_schema` | bool | If `true`, the command may extend the schema of the table. Default is `false`. This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. |
-|`recreate_schema` | bool | If `true`, the command may recreate the schema of the table. Default is `false`. This option applies only to the `.set-or-replace` command. This option takes precedence over the `extend_schema` property if both are set.|
-|`folder` | string | The folder to assign to the table. If the table already exists, this property will overwrite the table's folder.|
-|`ingestIfNotExists` | string | If specified, ingestion won't succeed if the table already has data tagged with an `ingest-by:` tag with the same value.|
+|`creationTime` | string | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, `now()` is used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../mergepolicy.md) is aligned with the specified value.|
+|`extend_schema` | bool | If `true`, the command may extend the schema of the table. Default is `false`. This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
+|`recreate_schema` | bool | If `true`, the command may recreate the schema of the table. Default is `false`. This option applies only to the `.set-or-replace` command. This option takes precedence over the `extend_schema` property if both are set. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
+|`folder` | string | The folder to assign to the table. If the table already exists, this property overwrites the table's folder.|
+|`ingestIfNotExists` | string | If specified, ingestion fails if the table already has data tagged with an `ingest-by:` tag with the same value. For more information, see [ingest-by: tags](../../../kusto/management/extents-overview.md#ingest-by-extent-tags).|
 |`policy_ingestiontime` | bool | If `true`, the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) will be enabled on the table. The default is `true`.|
 |`tags` | string | A JSON string that represents a list of [tags](../extents-overview.md#extent-tagging) to associate with the created extent. |
 |`docstring` | string | A description used to document the table.|
-|`distributed` | bool | If `true`, the command will ingest from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips) below.|
+|`distributed` | bool | If `true`, the command ingests from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips).|
 |`persistDetails` |A Boolean value that, if specified, indicates that the command should persist the detailed results for retrieval by the [.show operation details](../operations.md#show-operation-details) command. Defaults to `false`. |`with (persistDetails=true)`|
 
 ## Schema considerations
 
-* `.set-or-replace` will preserve the schema unless one of `extend_schema` or `recreate_schema` ingestion properties is set to `true`.
-* `.set-or-append` and `.append` commands will preserve the schema unless the  `extend_schema` ingestion property is set to `true`.
+* `.set-or-replace` preserves the schema unless one of `extend_schema` or `recreate_schema` ingestion properties is set to `true`.
+* `.set-or-append` and `.append` commands preserve the schema unless the  `extend_schema` ingestion property is set to `true`.
 * Matching the result set schema to that of the target table is based on the column types. There's no matching of column names. Make sure that the query result schema columns are in the same order as the table, else data will be ingested into the wrong columns.
 
 > [!CAUTION]

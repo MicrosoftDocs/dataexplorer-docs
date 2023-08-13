@@ -13,13 +13,15 @@ Evaluates a string expression and parses its value into one or more calculated c
 
 *T* `| parse` [ `kind=`*kind* [ `flags=`*regexFlags* ]] *expression* `with` [ `*` ] *stringConstant* *columnName* [`:` *columnType*] [ `*` ] `,` ...
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to parse.|
 | *kind* | string | &check; | One of the [supported kind values](#supported-kind-values). The default value is `simple`.|
-| *regexFlags* | string | |If *kind* is `regex`, then you can specify regex flags to be used like `U` for ungreedy, `m` for multi-line mode, `s` for match new line `\n`, and `i` for case-insensitive. More flags can be found in [RE2 flags](re2.md).|
+| *regexFlags* | string | |If *kind* is `regex`, then you can specify regex flags to be used like `U` for ungreedy, `m` for multi-line mode, `s` for match new line `\n`, and `i` for case-insensitive. More flags can be found in [Flags](re2.md#flags).|
 | *expression* | string | &check; | An expression that evaluates to a string.|
 | *stringConstant* | string | &check; | A string constant for which to search and parse.|
 | *columnName* | string | &check; | The name of a column to assign a value to, extracted from the string expression. |
@@ -42,7 +44,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 
 ### Regex mode
 
-In regex mode, parse will translate the pattern to a regex. Use [RE2 syntax](re2.md) to do the matching, and use numbered captured groups that are handled internally. For example:
+In regex mode, parse will translate the pattern to a regex. Use [regular expressions](re2.md) to do the matching, and use numbered captured groups that are handled internally. For example:
 
 ```kusto
 parse kind=regex Col with * <regex1> var1:string <regex2> var2:long
@@ -229,7 +231,7 @@ If you use option `kind = simple` for the same query below, you'll get `null` fo
 > In relaxed mode, extended columns can be partially matched.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0/CMBTH70v2P7z0BGaGbijozG56I8QI8WI8lO0JldKStuNH4h9vNwIMp+gBPbge1rd9v6/99DVPoIWhZikaSCBj1o2RwMbdAqUd4srGYKzmctz0PXDP0+ZFyv8x9JXlL+uB4Ck+oEBmEBoajcp1in02w+Sez1FwiYN0glkuUAdglWWitJgk6gZgimk/n41QJ1E7AKHS6ZA7L41aYbcV0bAD9Cq+oDENA9CbZUqBVPKRCZ7dMlt+qMjmGhdc5ab3ebL2tVM1SfC7NOHlURp6nOZHEPTkENtt9JQcu0mOHypE/1OFouhrmrBGUxfQbzlK2r8uUtg5ikVPg+Xunu893/jepn/43hvMmXYoUy6zxK3AVpjBrpPAktsJnAE5ACVQDYEccpJqFDsmOS4yVFlJlXwv2eGT3UkUyavcpBrFRfMrJKRw1+hJ7UC2hqYzlOhavWJqz9mSrffQ7xu15UlfBQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0/CMBTH70v2P7z0BGaGbijozG56I8QI8WI8lO0JldKSruNH4h9vNwSLU/SAHmwP7du+371++pYn0MBQsxRzSCBjxs6RwMbNAqUZ4srEkBvN5bjpe2DHw2Yh1fsY+srwp/VA8BTvUCDLERoac1XoFPtshsktn6PgEgfpBLNCoA7AKMNEZcmTqBtAXm77xWyEOonaAQiVTofcemnUCrutiIYdoBfxGY1pGIDepKkEUsl7Jnh2zUz1wJHNNS64KvLe5x9rX1pVkwS/SxOeH6Shh2l+BEGPDrE9Rk/Jsd0U+KFC9D9VKIq+pglrNHUB/Zajov3rIoWdg1j0OFj23/O9xyvf2/QP33uBOdMWZcplltgMbIUZ7DoJLLmZwAmQPVACbghkn5O4UWyZ5LiUuKzEjd4kNskOn+xuonS63MSN4rL5lRJSumv0pHYhW0PTGip0rZ4xNadsydbv0K/RM7BuXwUAAA==" target="_blank">Run the query</a>
 
 ```kusto
 let Traces = datatable(EventText: string)
@@ -241,7 +243,7 @@ let Traces = datatable(EventText: string)
     "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=nonValidLongValue, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
 ];
 Traces
-| parse kind=relaxed EventText with * "resourceName=" resourceName ", totalSlices=" totalSlices: long * "sliceNumber=" sliceNumber: long * "lockTime=" lockTime ", releaseTime=" releaseTime: date "," * "previousLockTime=" previousLockTime: date ")" *
+| parse kind=relaxed EventText with * "resourceName=" resourceName ", totalSlices=" totalSlices: long ", sliceNumber=" sliceNumber: long * "lockTime=" lockTime ", releaseTime=" releaseTime: date "," * "previousLockTime=" previousLockTime: date ")" *
 | project-away EventText
 ```
 

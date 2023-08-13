@@ -1,10 +1,10 @@
 {
   "redirections": [
-		{
-			"source_path": "data-explorer/security-baseline.md",
-			"redirect_url": "/security/benchmark/azure/baselines/data-explorer-security-baseline",
-			"redirect_document_id": false
-		},
+    {
+      "source_path": "data-explorer/security-baseline.md",
+      "redirect_url": "/security/benchmark/azure/baselines/data-explorer-security-baseline",
+      "redirect_document_id": false
+    },
     {
       "source_path": "data-explorer/kusto/index.md",
       "redirect_url": "/azure/data-explorer",
@@ -309,7 +309,7 @@
       "source_path": "data-explorer/ingest-data-one-click.md",
       "redirect_url": "/azure/data-explorer/ingest-data-wizard",
       "redirect_document_id": true
-    },   
+    },
     {
       "source_path": "data-explorer/one-click-table.md",
       "redirect_url": "/azure/data-explorer/create-table-wizard",
@@ -359,7 +359,7 @@
       "source_path": "data-explorer/power-bi-imported-query.md",
       "redirect_url": "/azure/data-explorer/power-bi-data-connector",
       "redirect_document_id": false
-    },    
+    },
     {
       "source_path": "data-explorer/kusto/query/toutf8function.md",
       "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-from-string-function",
@@ -371,15 +371,15 @@
       "redirect_document_id": true
     },
     {
-			"source_path": "data-explorer/write-queries.md",
-			"redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
-			"redirect_document_id": false
-		},
+      "source_path": "data-explorer/write-queries.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
+      "redirect_document_id": false
+    },
     {
-			"source_path": "data-explorer/kusto/query/tutorial.md",
-			"redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
-			"redirect_document_id": false
-		},
+      "source_path": "data-explorer/kusto/query/tutorial.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/tutorials/learn-common-operators",
+      "redirect_document_id": false
+    },
     {
       "source_path": "data-explorer/visualize-power-bi.md",
       "redirect_url": "/azure/data-explorer/power-bi-data-connector",
@@ -756,6 +756,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/kusto/access-control/how-to-authenticate-with-aad.md",
+      "redirect_url": "/azure/data-explorer/kusto/access-control/aad",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "data-explorer/kql-quick-reference.md",
       "redirect_url": "/azure/data-explorer/kusto/query/kql-quick-reference",
       "redirect_document_id": true
@@ -763,6 +768,41 @@
     {
       "source_path": "data-explorer/named-expressions.md",
       "redirect_url": "/azure/data-explorer/kusto/query/named-expressions",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/access-control/aad.md",
+      "redirect_url": "/azure/data-explorer/kusto/api/rest/authenticate-with-msal",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/create-cluster-database-portal.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-and-database",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/connection-strings/storage-authentication-methods.md",
+      "redirect_url": "/azure/data-explorer/kusto/api/connection-strings/storage-connection-strings",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/connection-strings/sql-authentication-methods.md",
+      "redirect_url": "/azure/data-explorer/kusto/api/connection-strings/sql-connection-strings",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/load-test-cluster.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/best-practices",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/cross-cluster-and-schema-changes.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/cross-cluster-or-database-queries",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/re2-library.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/re2",
       "redirect_document_id": true
     }
   ]

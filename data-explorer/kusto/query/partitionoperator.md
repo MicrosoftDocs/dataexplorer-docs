@@ -3,7 +3,7 @@ title:  partition operator
 description: Learn how to use the partition operator to partition the records of the input table into multiple subtables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/09/2023
 ---
 # Partition operator
 
@@ -30,7 +30,7 @@ between the two.
 
 For `native` and `shuffle` strategy, the source of the subquery is implicit, and can't be referenced by the subquery. This strategy supports a limited set of operators: `project`, `sort`, `summarize`, `take`, `top`, `order`, `mv-expand`, `mv-apply`, `make-series`, `limit`, `extend`, `distinct`, `count`, `project-away`, `project-keep`, `project-rename`, `project-reorder`, `parse`, `parse-where`, `reduce`, `sample`, `sample-distinct`, `scan`, `search`, `serialize`, `top-nested`, `top-hitters` and `where`.
 
-Operators like `join`, `union`, `external_data`, `plugins`, or any other operator that involves table source that isn't the subtable partitions, aren't allowed.
+Operators like `join`, `union`, `external_data`, `evaluate` (plugins), or any other operator that involves table source that isn't the subtable partitions, aren't allowed.
 
 ## Legacy strategy
 
@@ -54,26 +54,27 @@ For native, shuffle and legacy subqueries, the result must be a single tabular r
 
 ## Syntax
 
-*T* `|` `partition` [`hint.strategy=` *strategy*] [ *PartitionParameters* ] `by` *Column* `(` *TransformationSubQuery* `)`
+*T* `|` `partition` [ *Hints* ] `by` *Column* `(` *TransformationSubQuery* `)`
 
-*T* `|` `partition` [ *PartitionParameters* ] `by` *Column* `{` *ContextFreeSubQuery* `}`
+*T* `|` `partition` [ *Hints* ] `by` *Column* `{` *ContextFreeSubQuery* `}`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The tabular source whose data is to be processed by the operator.|
-| *strategy*| | | The partition strategy, `native`, `shuffle` or `legacy`. `native` strategy is used with an implicit source with thousands of key partition values. `shuffle` strategy is used with an implicit source with millions of key partition values. `legacy` strategy is used with an explicit or implicit source with 64 or less key partition values.|
-| *Column*| | &check; | The name of a column in *T* whose values determine how the input table is to be partitioned.|
-| *TransformationSubQuery*| | &check; | A tabular transformation expression, whose source is implicitly the subtables produced by partitioning the records of *T*, each subtable being homogenous on the value of *Column*.|
-| *ContextFreeSubQuery*| | &check; | A tabular expression that includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.|
-| *PartitionParameters*| | | Zero or more space-separated parameters in the form of: *HintName* `=` *Value* that control the behavior of the operator. See the [supported hints](#supported-hints).
+| *Column*| string | &check; | The name of a column in *T* whose values determine how the input table is to be partitioned.|
+| *TransformationSubQuery*| string | &check; | A tabular transformation expression, whose source is implicitly the subtables produced by partitioning the records of *T*, each subtable being homogenous on the value of *Column*.|
+| *ContextFreeSubQuery*| string | &check; | A tabular expression that includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.|
+| *Hints*| string | | Zero or more space-separated parameters in the form of: *HintName* `=` *Value* that control the behavior of the operator. See the [supported hints](#supported-hints).
 
 ### Supported hints
 
 |HintName|Type|Description|Native/Shuffle/Legacy strategy|
 |--|--|--|--|
-|`hint.strategy`| string | The value `legacy`, `shuffle`, or `native`. This hint defines the execution strategy of the partition operator.|Native, Shuffle, Legacy|
+|`hint.strategy`| string | The value `legacy`, `shuffle`, or `native`. This hint defines the execution strategy of the partition operator. `native` strategy is used with an implicit source with thousands of key partition values. `shuffle` strategy is used with an implicit source with millions of key partition values. `legacy` strategy is used with an explicit or implicit source with 64 or less key partition values.|Native, Shuffle, Legacy|
 |`hint.shufflekey`| string | The partition key. Runs the partition operator in shuffle strategy where the shuffle key is the specified partition key.|Shuffle|
 |`hint.materialized`| bool |If set to `true`, will materialize the source of the `partition` operator. The default value is `false`. |Legacy|
 |`hint.concurrency`| int |Hints the system how many partitions to run in parallel. The default value is 16.|Legacy|
@@ -85,7 +86,40 @@ The operator returns a union of the results of the individual subqueries.
 
 ## Examples
 
-### Native strategy examples
+
+In some cases, it's more performant and easier to write a query using the `partition` operator than using the [`top-nested` operator](topnestedoperator.md). The following example runs a subquery calculating `summarize` and `top` for each of States starting with `W`: "WYOMING", "WASHINGTON", "WEST VIRGINIA", and "WISCONSIN".
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2NsQ6CQBBEe75iOyAhNtZ0WlhjYn2Sjbcm3JHdOQiGj/cEdYtJJvN2pkPU4TxxgBUrzZ6VqYMDk8EpbBZ4Km9lDsfsBRIDeQk4GDRjj6UNDjIx3ZfvY0H5qk0tDYNTeTHtE20fU0BVN3QJz6TC1mak+pmTKPeoP1Ubf11GbvbWrW4lxJGO/9z2rfoN+O3/98UAAAA=" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where State startswith 'W'
+| partition hint.strategy=native by State 
+    (
+    summarize Events=count(), Injuries=sum(InjuriesDirect) by EventType, State
+    | top 3 by Events 
+    ) 
+```
+
+**Output** 
+
+|EventType|State|Events|Injuries|
+|---|---|---|---|
+|Hail|WYOMING|108|0|
+|High Wind|WYOMING|81|5|
+|Winter Storm|WYOMING|72|0|
+|Heavy Snow|WASHINGTON|82|0|
+|High Wind|WASHINGTON|58|13|
+|Wildfire|WASHINGTON|29|0|
+|Thunderstorm Wind|WEST VIRGINIA|180|1|
+|Hail|WEST VIRGINIA|103|0|
+|Winter Weather|WEST VIRGINIA|88|0|
+|Thunderstorm Wind|WISCONSIN|416|1|
+|Winter Storm|WISCONSIN|310|0|
+|Hail|WISCONSIN|303|1|
+
+### Native strategy
 
 Use `hint.strategy=native` for this strategy. See the following examples:
 
@@ -146,7 +180,7 @@ StormEvents
 |High Wind|5|
 |Avalanche|3|
 
-### Shuffle strategy example
+### Shuffle strategy
 
 Use `hint.strategy=shuffle` for this strategy. See the following example:
 
@@ -180,7 +214,7 @@ This query will run two subqueries:
 * When x == 1, the query will return all rows from StormEvents that have InjuriesIndirect == 1.
 * When x == 2, the query will return all rows from StormEvents that have InjuriesIndirect == 2.
 
-the final result is the union of these 2 subqueries.
+The final result is the union of these two subqueries.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxXMwRGCMBAF0LtV/AqcwXuOHjhbQYxrCCO7zOajZsDehQLe86hZ8MXTbUIHGi6olBndacMcnYXFFENRnis9UnILL8kxNdzbDtcbzafrW5QVGz6D+PGFgF7HxYvUXh/FJfG3j8kW5R+3ariUdAAAAA==" target="_blank">Run the query</a>
@@ -196,40 +230,6 @@ range x from 1 to 2 step 1
 |Count|
 |---|
 |113|
-
-### Partition operator
-
-In some cases, it's more performant and easier to write a query using the `partition` operator than using the [`top-nested` operator](topnestedoperator.md). The following example runs a subquery calculating `summarize` and `top` for each of States starting with `W`: (WYOMING, WASHINGTON, WEST VIRGINIA, WISCONSIN)
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2NsQ6CQBBEe75iOyAhNtZ0WlhjYn2Sjbcm3JHdOQiGj/cEdYtJJvN2pkPU4TxxgBUrzZ6VqYMDk8EpbBZ4Km9lDsfsBRIDeQk4GDRjj6UNDjIx3ZfvY0H5qk0tDYNTeTHtE20fU0BVN3QJz6TC1mak+pmTKPeoP1Ubf11GbvbWrW4lxJGO/9z2rfoN+O3/98UAAAA=" target="_blank">Run the query</a>
-
-```kusto
-StormEvents
-| where State startswith 'W'
-| partition hint.strategy=native by State 
-    (
-    summarize Events=count(), Injuries=sum(InjuriesDirect) by EventType, State
-    | top 3 by Events 
-    ) 
-```
-
-**Output** 
-
-|EventType|State|Events|Injuries|
-|---|---|---|---|
-|Hail|WYOMING|108|0|
-|High Wind|WYOMING|81|5|
-|Winter Storm|WYOMING|72|0|
-|Heavy Snow|WASHINGTON|82|0|
-|High Wind|WASHINGTON|58|13|
-|Wildfire|WASHINGTON|29|0|
-|Thunderstorm Wind|WEST VIRGINIA|180|1|
-|Hail|WEST VIRGINIA|103|0|
-|Winter Weather|WEST VIRGINIA|88|0|
-|Thunderstorm Wind|WISCONSIN|416|1|
-|Winter Storm|WISCONSIN|310|0|
-|Hail|WISCONSIN|303|1|
 
 ### Partition reference
 

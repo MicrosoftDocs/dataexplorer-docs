@@ -3,7 +3,7 @@ title:  Kusto client library
 description: This article describes Kusto client library in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/1/2023
+ms.date: 06/20/2023
 adobe-target: true
 ---
 # Kusto client library
@@ -11,11 +11,11 @@ adobe-target: true
 The Kusto Client SDK (Kusto.Data) exposes a programmatic API
 similar to ADO.NET, so using it should feel
 natural for users experienced with .NET. You create
-either a query client (`ICslQueryProvider`) or a control command
+either a query client (`ICslQueryProvider`) or a management command
 provider (`ICslAdminProvider`) from a connection string object
 pointing at the Kusto engine service, database, authentication
 method, etc. You can then issue data queries or
-control commands by specifying the appropriate Kusto Query Language
+management commands by specifying the appropriate Kusto Query Language
 string, and get back one or more data tables via the returned
 `IDataReader` object.
 More concretely, to create an ADO.NET-like client allowing queries against
@@ -38,7 +38,10 @@ The following code demonstrates counting the rows of a table named `StormEvents`
 using var client = KustoClientFactory.CreateCslQueryProvider("https://help.kusto.windows.net/Samples;Fed=true");
 using var reader = client.ExecuteQuery("StormEvents | count");
 // Read the first row from reader -- it's 0'th column is the count of records in MyTable
+if (reader.Read())
+{
 Console.WriteLine($"RowCount={reader.GetInt64(0)}");
+}
 ```
 
 ## Example: Enumerating the accessible databases
@@ -66,7 +69,7 @@ of client code that utilizes Kusto. It provides the following important static m
 |Method                                      |Returns                                |Used for                                                      |
 |--------------------------------------------|---------------------------------------|--------------------------------------------------------------|
 |`CreateCslQueryProvider`                    |`ICslQueryProvider`                    |Sending queries to a Kusto engine cluster.                    |
-|`CreateCslAdminProvider`                    |`ICslAdminProvider`                    |Sending control commands to a Kusto cluster (of any kind).    |
+|`CreateCslAdminProvider`                    |`ICslAdminProvider`                    |Sending management commands to a Kusto cluster (of any kind).    |
 |`CreateRedirectProvider`                    |`IRedirectProvider`                    |Creating a redirect HTTP response message for a Kusto request.|
 
 ## Best practices when using the Kusto client library

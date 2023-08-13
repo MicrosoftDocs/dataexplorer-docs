@@ -1,6 +1,6 @@
 ---
 title: .show ingestion failures command
-description: Learn how to use the `.show ingestion failures` command to show any ingestion failures when running data ingestion control commands.
+description: Learn how to use the `.show ingestion failures` command to show any ingestion failures when running data ingestion management commands.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/15/2023
@@ -8,14 +8,14 @@ ms.date: 05/15/2023
 # .show ingestion failures command
 
 This command returns a result set that includes any ingestion failures that occur when the
-[data ingestion control commands](../../ingest-data-overview.md#ingest-control-commands) run.
+[data ingestion management commands](../../ingest-data-overview.md#ingest-management-commands) run.
 The `.show ingestion failures` command returns ingestion failures that occur only in the Kusto Data Engine.
 Ingestion failures that occur during other parts of the ingestion flow, such as failures that happen before data ingestion
-control commands are sent to the Kusto Data Engine service, do not appear in the results for this command.
+management commands are sent to the Kusto Data Engine service, don't appear in the results for this command.
 Failures from all parts of the ingestion process appear in the ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md).
 
 > [!NOTE]
-> Ingestion failures that occur during other parts of the ingestion flow will not appear in the result set of this command. Such a failure may occur, for example, before data ingestion control commands are sent to the Kusto Data Engine service.
+> Ingestion failures that occur during other parts of the ingestion flow won't appear in the result set of this command. Such a failure may occur, for example, before data ingestion management commands are sent to the Kusto Data Engine service.
 >
 > Ingestion failures should be monitored by [metrics](../../using-metrics.md), and optionally using ingestion logs. To set up ingestion logs, see [Monitor ingestion, commands, queries, and tables using diagnostic logs](../../using-diagnostic-logs.md).
 >
@@ -36,6 +36,8 @@ To return a filtered set of ingestion failures:
 To return an ingestion failure for a specific operation ID:
 
 `.show` `ingestion` `failures` `with` `(` `OperationId` `=` *OperationId* `)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

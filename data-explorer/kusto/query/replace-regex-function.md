@@ -3,11 +3,11 @@ title:  replace_regex()
 description: Learn how to use the replace_regex() function to replace all regex matches with another string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 1/17/2023
+ms.date: 05/21/2023
 ---
 # replace_regex()
 
-Replaces all regex matches with another string.
+Replaces all [regular expression](re2.md) matches with a specified pattern.
 
 > **Deprecated aliases:** replace()
 
@@ -15,17 +15,19 @@ Replaces all regex matches with another string.
 
 `replace_regex(`*source*`,`*lookup_regex*`,` *rewrite_pattern*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *source*| string | &check; | The text to search and replace.|
-| *lookup_regex*| string | &check; | The [regular expression](https://github.com/google/re2/wiki/Syntax) to search for in *text*. The expression can contain capture groups in parentheses.|
+| *lookup_regex*| string | &check; | The [regular expression](re2.md) to search for in *text*. The expression can contain capture groups in parentheses.|
 | *rewrite_pattern*| string | &check; | The replacement regex for any match made by *matchingRegex*. Use `\0` to refer to the whole match, `\1` for the first capture group, `\2` and so on for subsequent capture groups.|
 
 ## Returns
 
-*source* after replacing all matches of *lookup_regex* with evaluations of *rewrite_pattern*. Matches do not overlap.
+Returns the *source* after replacing all matches of *lookup_regex* with evaluations of *rewrite_pattern*. Matches do not overlap.
 
 ## Example
 
@@ -50,5 +52,6 @@ range x from 1 to 5 step 1
 
 ## See also
 
-* For string matching, see [replace_string()](replace-string-function.md).
-* For replacing a set of characters, see [translate()](translatefunction.md).
+* To replace a single string, see [replace_string()](replace-string-function.md).
+* To replace multiple strings, see [replace_strings()](replace-strings-function.md).
+* To replace a set of characters, see [translate()](translatefunction.md).

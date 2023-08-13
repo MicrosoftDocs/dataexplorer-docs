@@ -3,7 +3,7 @@ title: Row Level Security
 description: Learn how to use the Row Level Security policy to control access to rows in a database table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/22/2023
+ms.date: 06/25/2023
 ---
 # Row Level Security
 
@@ -22,7 +22,7 @@ RLS lets you provide access to other applications and users, only to a certain p
 > [!NOTE]
 > When an RLS policy is enabled on a table, access is entirely replaced by the RLS query that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types of users to whom you want to give access.
 
-For more information, see [control commands for managing the Row Level Security policy](./show-table-row-level-security-policy-command.md).
+For more information, see [management commands for managing the Row Level Security policy](./show-table-row-level-security-policy-command.md).
 
 > [!TIP]
 > These functions are often useful for row_level_security queries:
@@ -35,10 +35,11 @@ For more information, see [control commands for managing the Row Level Security 
 
 There's no limit on the number of tables on which Row Level Security policy can be configured.
 
-The RLS policy can't be enabled on a table:
+The RLS policy can't be enabled on a table under the following circumstances:
 
-* referenced by a query of an [update policy](./updatepolicy.md).
-* on which [restricted view access policy](./restrictedviewaccesspolicy.md) is configured.
+* When it's referenced by an [update policy](./updatepolicy.md) query.
+* When it's referenced by a [continuous export](../management/data-export/continuous-data-export.md) that uses an authentication method other than impersonation.
+* When a [restricted view access policy](./restrictedviewaccesspolicy.md) is configured for the table.
 
 ## Examples
 

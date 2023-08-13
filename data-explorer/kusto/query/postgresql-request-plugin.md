@@ -1,6 +1,6 @@
 ---
 title: postgresql_request plugin - Azure Data Explorer
-description: Learn how to use the postgresql_request plugin to send a SQL query to a PostgreSql server network endpoint.
+description: Learn how to use the postgresql_request plugin to send a SQL query to a PostgreSQL server network endpoint.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/08/2023
@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The `postgresql_request` plugin sends a SQL query to a PostgreSql Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
+The `postgresql_request` plugin sends a SQL query to a PostgreSQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
 
 The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
@@ -22,6 +22,8 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 ## Syntax
 
 `evaluate` `postgresql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters*] `)` [`:` *OutputSchema*]
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,13 +41,13 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 ## Authentication and authorization
 
-To authorize a PostgreSql Server network endpoint, you must specify the authorization information in the connection string. The supported authorization method is via username and password.
+To authorize a PostgreSQL Server network endpoint, you must specify the authorization information in the connection string. The supported authorization method is via username and password.
 
 ## Set callout policy
 
-The plugin makes callouts to the PostgreSql database. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `postgresql` to the target *PostgreSqlDbUri*.
+The plugin makes callouts to the PostgreSQL database. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `postgresql` to the target *PostgreSqlDbUri*.
 
-The following example shows how to define the callout policy for PostgreSql databases. We recommend restricting the callout policy to specific endpoints (`my_endpoint1`, `my_endpoint2`).
+The following example shows how to define the callout policy for PostgreSQL databases. We recommend restricting the callout policy to specific endpoints (`my_endpoint1`, `my_endpoint2`).
 
 ```kusto
 [
@@ -99,7 +101,7 @@ Where:
 
 ## Examples
 
-### SQL query to Azure PostgreSql DB
+### SQL query to Azure PostgreSQL DB
 
 The following example sends a SQL query to an Azure PostgreSQL database. It retrieves all records from `public."Table"`, and then processes the results.
 
@@ -117,9 +119,9 @@ evaluate postgresql_request(
 | project Name
 ```
 
-### SQL query to an Azure PostgreSql database with modifications
+### SQL query to an Azure PostgreSQL database with modifications
 
-The following example sends a SQL query to an Azure PostgreSql database
+The following example sends a SQL query to an Azure PostgreSQL database
 retrieving all records from `public."Table"`, while appending another `datetime` column,
 and then processes the results on the Azure Data Explorer side.
 It specifies a SQL parameter (`@param0`) to be used in the SQL query.
@@ -136,7 +138,7 @@ evaluate postgresql_request(
 | project Name
 ```
 
-### SQL query to an Azure PostgreSql database without a query-defined output schema
+### SQL query to an Azure PostgreSQL database without a query-defined output schema
 
 The following example sends a SQL query to an Azure PostgreSQL database without an output schema. This is not recommended unless the schema is unknown, as it may impact the performance of the query
 

@@ -13,7 +13,7 @@ ms.date: 11/04/2019
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Ingest data as explained in [ingest sample data into Azure Data Explorer](ingest-sample-data.md). For more ingestion options, see [ingestion overview](ingest-data-overview.md).
 
 [!INCLUDE [data-explorer-configure-data-source](includes/data-explorer-configure-data-source.md)]

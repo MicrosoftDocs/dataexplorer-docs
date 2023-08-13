@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # Follower commands
 
-Control commands for managing your follower configuration. These commands run synchronously but are applied on the next periodic schema refresh, which may result in a short delay until the new configuration is applied.
+Management commands for managing your follower configuration. These commands run synchronously but are applied on the next periodic schema refresh, which may result in a short delay until the new configuration is applied.
 
 The follower commands include [database level commands](#database-level-commands) and [table level commands](#tables-and-materialized-views-commands).
 
@@ -128,7 +128,7 @@ Adds authorized principal(s) to the follower database collection of override aut
 
 * The default `modification kind` for such authorized principals is `none`. To change the `modification kind` use  [alter follower database principals-modification-kind](#alter-follower-database-principals-modification-kind).
 * Viewing the effective collection of principals after the change can be done using the `.show` commands:
-    * [`.show database principals`](../management/manage-database-security-roles.md#view-existing-security-roles)
+    * [`.show database principals`](../management/manage-database-security-roles.md#show-existing-security-roles)
     * [`.show database details`](../management/show-databases.md)
 * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
@@ -148,7 +148,7 @@ Drops authorized principal(s) from the follower database collection of override 
 
 > [!NOTE]
 > * Viewing the effective collection of principals after the change can be done using the `.show` commands:
->    * [`.show database principals`](../management/manage-database-security-roles.md#view-existing-security-roles)
+>    * [`.show database principals`](../management/manage-database-security-roles.md#show-existing-security-roles)
 >    * [`.show database details`](../management/show-databases.md)
 > * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
@@ -169,7 +169,7 @@ Alters the follower database authorized principals modification kind.
 
 > [!NOTE]
 > * Viewing the effective collection of principals after the change can be done using the `.show` commands:
->    * [`.show database principals`](../management/manage-database-security-roles.md#view-existing-security-roles)
+>    * [`.show database principals`](../management/manage-database-security-roles.md#show-existing-security-roles)
 >    * [`.show database details`](../management/show-databases.md)
 > * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
@@ -314,7 +314,7 @@ In this example:
 *Prerequisite:* Set up cluster `MyFollowerCluster` to follow database `MyDatabase` from cluster `MyLeaderCluster`.
 
 > [!NOTE]
-> The principal running the control commands is expected to be a `DatabaseAdmin` on database `MyDatabase`.
+> The principal running the management commands is expected to be a `DatabaseAdmin` on database `MyDatabase`.
 
 #### Show the current configuration
 

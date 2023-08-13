@@ -54,7 +54,7 @@ Each Parquet mapping element must contain either of the following optional prope
 ]
 ```
 
-The mapping above is serialized as a JSON string when it's provided as part of the `.ingest` control command.
+The mapping above is serialized as a JSON string when it's provided as part of the `.ingest` management command.
 
 ````kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -73,7 +73,7 @@ The mapping above is serialized as a JSON string when it's provided as part of t
 
 ### Pre-created mapping
 
-When the mapping is [pre-created](create-ingestion-mapping-command.md), reference the mapping by name in the `.ingest` control command.
+When the mapping is [pre-created](create-ingestion-mapping-command.md), reference the mapping by name in the `.ingest` management command.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")

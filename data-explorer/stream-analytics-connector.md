@@ -16,7 +16,7 @@ In this article, you'll learn how to use a Stream Analytics *job* to collect dat
 
 ## Prerequisites
 
-- Create a [cluster and database](create-cluster-database-portal.md) and a [table](./create-table-wizard.md).
+- Create a [cluster and database](create-cluster-and-database.md) and a [table](./create-table-wizard.md).
 - Create an event hub using the following sections of the Azure Stream Analytics tutorial:
     - [Create an event hub](/azure/stream-analytics/stream-analytics-real-time-fraud-detection#create-an-event-hub)
     - [Grant access to the event hub and get a connection string](/azure/stream-analytics/stream-analytics-real-time-fraud-detection#grant-access-to-the-event-hub-and-get-a-connection-string)

@@ -22,6 +22,8 @@ The function `two_sample_t_test_fl()` is a [user-defined function (UDF)](../quer
 
 `T | invoke two_sample_t_test_fl(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value*`,` *equal_var*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

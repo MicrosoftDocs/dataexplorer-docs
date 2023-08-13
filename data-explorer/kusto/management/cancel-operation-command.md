@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .cancel operation command
 
-This command cancels a long-running operation. This command is useful when the operation is taking too long and you would like to abort it while running.
+This command cancels a long-running ingest from query operation. This command is useful when the operation is taking too long and you would like to abort it while running.
 
 The cancel operation command isn't guaranteed to succeed. The output of the `.cancel operation` command indicates whether or not cancellation was successful.
 
@@ -17,6 +17,8 @@ The cancel operation command isn't guaranteed to succeed. The output of the `.ca
 ## Syntax
 
 `.cancel` `operation` *OperationId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -29,7 +31,7 @@ The cancel operation command isn't guaranteed to succeed. The output of the `.ca
 
 |Output parameter |Type |Description
 |---|---|---
-|OperationId | guid  The operation ID of the operation that was canceled.
+|OperationId | guid  | The operation ID of the operation that was canceled.
 |Operation | string | The operation kind that was canceled.
 |StartedOn | datetime | The start time of the operation that was canceled.
 |CancellationState | string | Returns one of the following options: <br> `Cancelled successfully`: the operation was canceled <br> `Cancel failed`: the operation can't be canceled at this point. The operation may still be running or may have completed.

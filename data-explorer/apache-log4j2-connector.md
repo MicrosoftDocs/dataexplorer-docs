@@ -16,7 +16,7 @@ For a complete list of data connectors, see [Data connectors overview](connector
 ## Prerequisites
 
 * [Apache Maven](https://maven.apache.org/)
-* An Azure Data Explorer [cluster and database](create-cluster-database-portal.md)
+* An Azure Data Explorer [cluster and database](create-cluster-and-database.md)
 
 ## Set up your environment
 

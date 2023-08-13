@@ -1,13 +1,13 @@
 ---
-title:  The case-sensitive matches regex string operator
+title: matches regex operator
 description: Learn how to use the matches regex string operator to filter a record set based on a case-sensitive regex value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 07/30/2023
 ---
 # matches regex operator
 
-Filters a record set based on a case-sensitive regex value.
+Filters a record set based on a case-sensitive [regular expression](re2.md) value.
 
 For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
@@ -17,13 +17,15 @@ For more information about other operators and to determine which operator is mo
 
 *T* `|` `where` *col* `matches` `regex` `(`*expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The tabular input whose records are to be filtered.|
 | *col* | string | &check; | The column by which to filter.|
-| *expression* | scalar | &check; | The expression used to filter.|
+| *expression* | scalar | &check; | The [regular expression](re2.md) used to filter. The maximum number of regex groups is 16. The [regular expression](re2.md) syntax supported by Kusto is that of the RE2 library. |
 
 ## Returns
 

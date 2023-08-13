@@ -7,7 +7,7 @@ ms.date: 03/24/2020
 ---
 # Databases management
 
-This topic describes the following database control commands:
+This topic describes the following database management commands:
 
 |Command |Description |
 |--------|------------|
@@ -16,4 +16,5 @@ This topic describes the following database control commands:
 |[`.show cluster databases`](show-cluster-database.md) |Returns a table showing all databases attached to the cluster and to which the user invoking the command has access |
 |[`.alter database prettyname`](alter-database.md) |Alters a database's pretty (friendly) name |
 |[`.show database schema`](show-schema-database.md) |Returns a flat list of the structure of the selected databases with all their tables and columns in a single table or JSON object |
-|[`.execute database script`](execute-database-script.md) | Executes batch of control commands in scope of a single database |
+|[`.show databases entities`](show-databases-entities.md) |Returns a list of databases' entities (for example: tables, materialized views, etc.) |
+|[`.execute database script`](execute-database-script.md) | Executes batch of management commands in scope of a single database |

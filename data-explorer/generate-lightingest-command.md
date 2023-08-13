@@ -17,21 +17,19 @@ This article shows you how to create a new table, create schema mapping, and gen
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 * LightIngest - download it as part of the [Microsoft.Azure.Kusto.Tools NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/). For installation instructions, see [Install LightIngest](lightingest.md#install-lightingest).
 
 ## Access the wizard
 
-The wizard can be accessed either from the **Data** tab, or from the **Query** tab of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
+To access the wizard:
 
-1. In the **Data** tab, from the **Quick actions** section, select **Ingest data**. Alternatively, from the **All actions** section, select **Ingest data** and then **Ingest**.
+1. From the left menu, select **Query**.
 
-   :::image type="content" source="media/ingestion-wizard-existing-table/ingest-new-data.png" alt-text="Screenshot for the Azure Data Explorer web UI where you select the ingestion wizard for a table.":::
+1. Right-click on the database where you want to ingest the data. Select **Ingest data**.
 
-1. In the **Query tab**, right-click a *database* and select **Ingest data**.
-
-   :::image type="content" source="media/ingestion-wizard-new-table/ingest-new-data-database-menu.png" alt-text="Ingest new data.":::
+    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI." lightbox="media/ingest-data-wizard/ingest-data-from-query-page.png":::
 
 In the **Ingest data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 

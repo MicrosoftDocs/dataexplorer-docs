@@ -11,9 +11,9 @@ Indicates user-provided text. Comments can be inserted on a separate line, neste
 
 ## Syntax
 
-```kusto
-// text of comment
-```
+`//` **comment**
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Remarks
 
@@ -21,8 +21,8 @@ Use the two slashes (//) for single and multi-line comments. The following table
 
 | Hot Key  | Description  |
 | ------------ | ------------ |
-| `Ctrl`+`K`, `Ctrl`+`C`  | Comment current line or selected lines.  |
-| `Ctrl`+`K`, `Ctrl`+`U`  | Uncomment current line or selected lines.  |
+| `Ctrl`+`K`+`C`  | Comment current line or selected lines.  |
+| `Ctrl`+`K`+`U`  | Uncomment current line or selected lines.  |
 
 ## Example
 

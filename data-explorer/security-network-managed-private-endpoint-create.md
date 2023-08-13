@@ -13,7 +13,7 @@ Managed private endpoints are required to connect to Azure resources that are hi
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An [Azure Data Explorer cluster](create-cluster-database-portal.md) that isn't injected in a virtual network.
+* An [Azure Data Explorer cluster](create-cluster-and-database.md) that isn't injected in a virtual network.
 * An [event hub](/azure/event-hubs/event-hubs-about) or a [Azure Storage](/azure/storage/blobs/storage-blobs-overview) blob in a subscription that is registered to the Microsoft.Network resource provider. For more information, see [Register subscription to resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal).
 
 ## Create a managed private endpoint using the Azure portal

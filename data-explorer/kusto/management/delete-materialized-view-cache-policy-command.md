@@ -1,11 +1,11 @@
 ---
-title: .delete materialized-view cache policy command
-description: Learn how to use the `.delete materialized-view cache policy` command to delete the materialized view's cache policy.
+title: .delete materialized-view policy caching command
+description: Learn how to use the `.delete materialized-view policy caching` command to delete the materialized view's cache policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .delete materialized-view cache policy command
+# .delete materialized-view policy caching command
 
 Delete the materialized view cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 
@@ -16,6 +16,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 ## Syntax
 
 `.delete` `materialized-view` *MaterializedViewName* `policy` `caching`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

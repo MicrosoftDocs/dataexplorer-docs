@@ -1,11 +1,11 @@
 ---
-title: .delete database streaming ingestion policy command
-description: Learn how to use the `.delete database streaming ingestion policy` command to delete the database streaming ingestion policy.
+title: .delete database policy streamingingestion command
+description: Learn how to use the `.delete database policy streamingingestion` command to delete the database streaming ingestion policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 06/13/2023
 ---
-# .delete database streaming ingestion policy command
+# .delete database policy streamingingestion command
 
 Use this command to delete the database streaming ingestion policy. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
 
@@ -22,6 +22,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 ## Syntax
 
 `.delete` `database` *DatabaseName* `policy` `streamingingestion`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

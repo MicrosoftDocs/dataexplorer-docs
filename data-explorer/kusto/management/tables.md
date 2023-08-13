@@ -7,7 +7,7 @@ ms.date: 05/23/2023
 ---
 # Tables management
 
-This topic discusses the life cycle of tables and associated control commands that are helpful for exploring, creating and altering tables.
+This topic discusses the life cycle of tables and associated management commands that are helpful for exploring, creating and altering tables.
 
 Select the links in the table below for more information about them.
 
@@ -17,7 +17,7 @@ Select the links in the table below for more information about them.
 | [`.create ingestion mapping`](create-ingestion-mapping-command.md), [`.show ingestion mappings`](show-ingestion-mapping-command.md), [`.alter ingestion mapping`](alter-ingestion-mapping-command.md), [`.drop ingestion mapping`](drop-ingestion-mapping-command.md) | Manage ingestion mapping |
 | [`.create tables`](create-tables-command.md), [`.create table`](create-table-command.md), [`.alter table`](alter-table-command.md), [`.alter-merge table`](alter-table-command.md), [`.drop tables`](drop-table-command.md), [`.drop table`](drop-table-command.md), [`.undo drop table`](undo-drop-table-command.md), [`.rename table`](rename-table-command.md) | Create/modify/drop tables  |
 | [`.show tables`](show-tables-command.md) [`.show table details`](show-table-details-command.md)[`.show table schema`](show-table-schema-command.md)   | Enumerate tables in a database  |
-| `.ingest`, `.set`, `.append`, `.set-or-append` (see [Data Ingestion](../../ingest-data-overview.md#ingest-control-commands) for details).  | Data ingestion into a table     |
+| `.ingest`, `.set`, `.append`, `.set-or-append` (see [Data Ingestion](../../ingest-data-overview.md#ingest-management-commands) for details).  | Data ingestion into a table     |
 | [`.clear table data`](clear-table-data-command.md) | Clears all the data of a table  |
 
 ## CRUD naming conventions for tables

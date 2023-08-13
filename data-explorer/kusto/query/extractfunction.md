@@ -7,7 +7,7 @@ ms.date: 12/12/2022
 ---
 # extract()
 
-Get a match for a [regular expression](./re2.md) from a source string.
+Get a match for a [regular expression](re2.md) from a source string.
 
 Optionally, convert the extracted substring to the indicated type.
 
@@ -15,11 +15,13 @@ Optionally, convert the extracted substring to the indicated type.
 
 `extract(`*regex*`,` *captureGroup*`,` *source* [`,` *typeLiteral*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | string | &check; | A [regular expression](./re2.md).|
+| *regex* | string | &check; | A [regular expression](re2.md).|
 | *captureGroup* | int | &check; | The capture group to extract. 0 stands for the entire match, 1 for the value matched by the first '('parenthesis')' in the regular expression, and 2 or more for subsequent parentheses.|
 | *source* | string | &check;| The string to search.|
 | *typeLiteral* | string | | If provided, the extracted substring is converted to this type. For example, `typeof(long)`.
@@ -36,7 +38,7 @@ The example string `Trace` is searched for a definition for `Duration`.
 The match is converted to `real`, then multiplied it by a time constant (`1s`) so that `Duration` is of type `timespan`. In this example, it's equal to 123.45 seconds:
 
 ```kusto
-...
+T
 | extend Trace="A=1, B=2, Duration=123.45, ..."
 | extend Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s) 
 ```

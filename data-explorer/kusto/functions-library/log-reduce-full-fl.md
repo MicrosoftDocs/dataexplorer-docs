@@ -16,7 +16,10 @@ The function `log_reduce_full_fl()` finds common patterns in semi structured tex
 [!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
+
 *T* `|` `invoke` `log_reduce_full_fl(`*reduce_col* [`,` *pattern_col* [`,` *parameters_col* [`,` *use_logram* [`,` *use_drain* [`,` *custom_regexes* [`,` *custom_regexes_policy* [`,` *delimiters* [`,` *similarity_th* [`,` *tree_depth* [`,` *trigram_th* [`,` *bigram_th* ]]]]]]]]]]]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

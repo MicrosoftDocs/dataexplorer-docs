@@ -3,7 +3,7 @@ title: Change the ingestion batching policy for a table in Azure Data Explorer u
 description: In this article, you learn how to change a table's ingestion batching policy using the batching policy wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 09/14/2022
+ms.date: 07/02/2023
 ---
 # Create a table's ingestion batching policy with the table batching policy wizard
 
@@ -13,7 +13,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
 ## Define and assign a table batching policy
 
@@ -27,7 +27,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 ### Policy update
 
-:::image type="content" source="media/one-click-table-policies/table-batch-policy-update.png" alt-text="Screen shot of Update table batch policy window. Cluster, Database, Table and Policy fields must be filled out before proceeding to Update.":::
+:::image type="content" source="media/one-click-table-policies/table-batch-policy-update.png" alt-text="Screen shot of Update table batch policy window. Cluster, Database, Table, and Policy fields must be filled out before proceeding to Update.":::
 
 1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus, or add a cluster connection.
 
@@ -49,7 +49,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 ## Summary
 
-In the **Summary** tab, all steps will be marked with green check marks when the update finishes successfully. The tiles below these steps give you options to explore your data with **Quick queries**, or undo changes made using **Tools**.
+In the **Summary** tab, all steps will be marked with green check marks when the update finishes successfully. You can select **View command** to see the command that was used to [alter the table batching policy](kusto/management/alter-table-ingestion-batching-policy.md). The tiles below these steps give you options to explore your data with **Quick queries**, or undo changes made using **Tools**.
 
 :::image type="content" source="media/one-click-table-policies/batch-policy-success.png" alt-text="Screenshot of final screen in the update table batching policy wizard for Azure Data Explorer.":::
 

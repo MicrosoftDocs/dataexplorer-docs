@@ -1,5 +1,5 @@
 items:
-- name: Control commands overview
+- name: Management commands overview
   displayName: Management
   href: index.md
 - name: Workload groups
@@ -60,6 +60,9 @@ items:
     - name: .show database schema command
       displayName: .show databases schema
       href: show-schema-database.md
+    - name: .show databases entities command
+      displayName: .show databases entities
+      href: show-databases-entities.md
     - name: .execute database script command
       href: execute-database-script.md
   - name: Tables
@@ -131,10 +134,11 @@ items:
           href: external-table-mapping-show.md
       - name: .show external table artifacts command
         href: show-external-table-artifacts.md
-    - name: SQL Server external tables
+    - name: SQL external tables
       items:
-      - name: Create and alter external table
+      - name: Create and alter SQL external tables
         href: external-sql-tables.md
+        displayName: SQL Server, MySQL, PostgreSQL, Cosmos DB
       - name: Query a SQL external table
         href: external-sql-tables-query.md
     - name: .drop external table command
@@ -288,10 +292,11 @@ items:
     - name: .alter table policy caching command
       displayName: .alter table cache policy command
       href: alter-table-cache-policy-command.md
-    - name: .delete database cache policy command
-    - name: .delete database cache policy command
+    - name: .delete database policy caching command
+      displayName: .delete database cache policy
       href: delete-database-cache-policy-command.md
-    - name: .delete materialized-view cache policy command
+    - name: .delete materialized-view policy caching command
+      displayName: .delete materialized-view cache policy
       href: delete-materialized-view-cache-policy-command.md
     - name: .delete table policy caching command
       displayName: .delete table cache policy, .delete table caching policy
@@ -352,7 +357,8 @@ items:
     - name: .alter table policy ingestionbatching command
       displayName: .alter table ingestion batching policy, .alter tables policy ingestionbatching
       href: alter-table-ingestion-batching-policy.md
-    - name: .delete database ingestion batching policy command
+    - name: .delete database policy ingestionbatching command
+      displayName: .delete database ingestion batching policy, .delete database ingestionbatching policy
       href: delete-database-ingestion-batching-policy.md
     - name: .delete table policy ingestionbatching command
       displayName: .delete table ingestionbatching policy, .delete table ingestion batching policy
@@ -370,7 +376,8 @@ items:
     - name: .alter table policy ingestiontime command
       displayName: .alter table ingestion time policy, .alter ingestiontime policy, .alter tables policy ingestiontime 
       href: alter-ingestion-time-policy-command.md
-    - name: .delete ingestion time policy command
+    - name: .delete table policy ingestiontime command
+      displayName: .delete ingestion time policy, .delete ingestiontime policy
       href: delete-ingestion-time-policy-command.md
     - name: .show table policy ingestiontime command
       displayName: .show table ingestion time policy, .show table ingestiontime policy
@@ -409,7 +416,8 @@ items:
     - name: .alter-merge materialized-view policy merge command
       displayName: .alter-merge materialized-view merge policy
       href: alter-merge-materialized-view-merge-policy-command.md
-    - name: .delete database merge policy command
+    - name: .delete database policy merge command
+      displayName: .delete database merge policy
       href: delete-database-merge-policy-command.md
     - name: .delete table policy merge command
       displayName: .delete table merge policy
@@ -435,7 +443,8 @@ items:
     - name: .alter-merge table policy partitioning command
       displayName: .alter-merge table partitioning policy
       href: alter-merge-table-partitioning-policy-command.md
-    - name: .delete materialized-view partitioning policy command
+    - name: .delete materialized-view policy partitioning command
+      displayName: .delete materialized-view partitioning policy
       href: delete-materialized-view-partitioning-policy-command.md
     - name: .delete table policy partitioning command
       displayName: .delete table partitioning policy
@@ -468,9 +477,11 @@ items:
     - name: .alter-merge table policy retention command
       displayName: .alter-merge table retention policy
       href: alter-merge-table-retention-policy-command.md
-    - name: .delete database retention policy command
+    - name: .delete database policy retention command
+      displayName: .delete database retention policy
       href: delete-database-retention-policy-command.md
-    - name: .delete materialized-view retention policy command
+    - name: .delete materialized-view policy retention command
+      displayName: .delete materialized-view retention policy
       href: delete-materialized-view-retention-policy-command.md
     - name: .delete table policy retention command
       displayName: .delete table retention policy
@@ -555,7 +566,8 @@ items:
     - name: .alter cluster policy sandbox command
       displayName: .alter cluster sandbox policy
       href: alter-cluster-sandbox-policy-command.md
-    - name: .delete cluster sandbox policy command
+    - name:  .delete cluster policy sandbox command
+      displayName: .delete cluster sandbox policy
       href: delete-cluster-sandbox-policy-command.md
     - name: .show cluster policy sandbox command
       displayName: .show cluster sandbox policy
@@ -576,7 +588,8 @@ items:
     - name: .alter-merge table policy sharding command
       displayName: .alter-merge table sharding policy
       href: alter-merge-table-sharding-policy-command.md
-    - name: .delete database sharding policy command
+    - name: .delete database policy sharding command
+      displayName: .delete database sharding policy
       href: delete-database-sharding-policy-command.md
     - name: .delete table policy sharding command
       displayName: .delete table sharding policy
@@ -603,7 +616,8 @@ items:
     - name: .alter-merge table policy streamingingestion command
       displayName: .alter-merge table streaming ingestion policy, .alter-merge table policy streaming ingestion
       href: alter-merge-table-streaming-ingestion-policy-command.md
-    - name: .delete database streaming ingestion policy command
+    - name: .delete database policy streamingingestion command
+      displayName: .delete database streaming ingestion policy, .delete database streamingingestion policy
       href: delete-database-streaming-ingestion-policy-command.md
     - name: .delete table policy streamingingestion command
       displayName: .delete table streaming ingestion policy, .delete table policy streaming ingestion
@@ -644,20 +658,26 @@ items:
   items:
     - name: Security roles overview
       href: security-roles.md
+      displayName: role based access control, rbac, principals
     - name: Manage database roles
       href: manage-database-security-roles.md
+      displayName: .show principal, principal access, security roles, roles, rbac
     - name: Manage table roles
       items:
       - name: Manage table roles
         href: manage-table-security-roles.md
+        displayName: .show principal, principal access, security roles, roles, rbac
       - name: Manage table view access
         href: manage-table-view-access.md
     - name: Manage external table roles
       href: manage-external-table-security-roles.md
+      displayName: .show principal, principal access, security roles, roles, rbac
     - name: Manage materialized view roles
       href: manage-materialized-view-security-roles.md
+      displayName: .show principal, principal access, security roles, roles, rbac
     - name: Manage function roles
       href: manage-function-security-roles.md
+      displayName: .show principal, principal access, security roles, roles, rbac
     - name: Referencing security principals
       displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
       href: referencing-security-principals.md
@@ -669,7 +689,7 @@ items:
   - name: Ingest from query
     items: 
     - name: Ingest from query
-      displayName:  .set, .append, .set-or-append, .set-or-replace
+      displayName:  .set, .append, .set-or-append, .set-or-replace, add row, append
       href: data-ingestion/ingest-from-query.md
     - name: cancel operation command
       href: cancel-operation-command.md
@@ -799,3 +819,5 @@ items:
       href: ../concepts/data-soft-delete.md
     - name: Soft delete command
       href: soft-delete-command.md
+  - name: Clear cached external artifacts
+    href: clear-external-artifacts-cache-command.md

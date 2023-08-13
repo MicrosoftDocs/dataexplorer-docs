@@ -3,7 +3,7 @@ title: Create a table in Azure Data Explorer
 description: Learn how to easily create a table in Azure Data Explorer with the table creation wizard.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 09/11/2022
+ms.date: 06/05/2023
 ---
 
 # Create a table in Azure Data Explorer
@@ -13,7 +13,7 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 > [!NOTE]
@@ -21,11 +21,11 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 ## Create a table
 
-1. In the left menu, select **Data**.
+1. In the left menu, select **Query**.
 
-    :::image type="content" source="media/create-table-wizard/select-create-table.png" alt-text="Screenshot of the Azure Data Explorer web UI showing how to create a table.":::
+1. Right-click on the database where you want to create the table. Select **Create table**.
 
-1. From the **Quick actions** section, select **Create table**. Alternatively, from the **All** actions section, select **Create table** and then **Create**.
+    :::image type="content" source="media/create-table-wizard/query-create-table.png" alt-text="Screenshot of the option to create a table from the query page." lightbox="media/external-table/query-create-external-table.png":::
 
 ### Destination tab
 

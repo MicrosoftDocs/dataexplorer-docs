@@ -43,13 +43,13 @@ Where:
   |Parameter |Description|
   |----------|-----------|
   |`web`     |Selects the UI tool. By default, or if set to `1`, Kusto.WebExplorer is used. If set to `0`, Kusto.Explorer will be used. If set to `3`, Kusto.WebExplorer will be used with no pre-existing tabs.|
-  |`query`   |The text of the query or control command to start with when opening the UI tool.|
-  |`querysrc`|A URI pointing at a web resource that holds the text of the query or control command to start with when opening the UI tool.|
+  |`query`   |The text of the query or management command to start with when opening the UI tool.|
+  |`querysrc`|A URI pointing at a web resource that holds the text of the query or management command to start with when opening the UI tool.|
   |`name`    |The name of the connection to the cluster.|
 
   The value of `query` can use standard HTTP query parameter encoding.
   Alternatively, it can be encoded using the transformation `base64(gzip(text))`,
-  which makes it possible to compress long queries or control commands
+  which makes it possible to compress long queries or management commands
   to git in the default browser URI length limits.
 
 ## Examples
@@ -72,7 +72,7 @@ Here are a few examples for links:
 > Any `Authorization` HTTP header, if provided, is ignored.
 
 > [!IMPORTANT]
-> For security reasons, UI tools do not automatically execute control commands,
+> For security reasons, UI tools do not automatically execute management commands,
 > even if `query` or `querysrc` are specified in the deep link.
 
 ## Deep linking to Kusto.Explorer
@@ -103,25 +103,25 @@ Redirection will be to the following URI:
 
 `https://` *BaseAddress* `/clusters/` *Cluster* [`/databases/` *DatabaseName*] [`?` *Query*]
 
-## Specifying the query or control command in the URI
+## Specifying the query or management command in the URI
 
 When the URI query string parameter `query` is specified, it must be encoded
 according to the URI query string encoding HTML rules. Alternatively, the text of
-the query or control command can be compressed by gzip, and then encoded
+the query or management command can be compressed by gzip, and then encoded
 via base64 encoding. This allows you to send longer queries or control
 commands (since the latter encoding method results in shorter URIs).
 
-## Specifying the query or control command by indirection
+## Specifying the query or management command by indirection
 
-If the query or control command is very long, even encoding it using gzip/base64 will exceed the maximum URI length of the user agent. Alternatively, the URI query string parameter
+If the query or management command is very long, even encoding it using gzip/base64 will exceed the maximum URI length of the user agent. Alternatively, the URI query string parameter
 `querysrc` is provided, and its value is a short URI pointing at a web resource
-that holds the query or control command text.
+that holds the query or management command text.
 
 For example, this can be the URI for a file hosted by Azure Blob Storage.
 
 > [!NOTE]
 > If the deep link is to the web application UI tool, the web service providing
-> the query or control command (that is, the service providing the `querysrc` URI)
+> the query or management command (that is, the service providing the `querysrc` URI)
 > must be configured to support CORS for `dataexplorer.azure.com`.
 >
 > Additionally, if authentication/authorization information is required by that

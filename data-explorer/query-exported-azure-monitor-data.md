@@ -3,7 +3,7 @@ title: Query exported data from Azure Monitor in Azure Data Explorer
 description: Use Azure Data Explorer to query data that was exported from your Log Analytics workspace to an Azure Storage account.
 ms.topic: conceptual
 ms.reviewer: osalzberg
-ms.date: 06/01/2023
+ms.date: 06/13/2023
 ---
 
 # Query exported data from Azure Monitor in Azure Data Explorer
@@ -30,98 +30,23 @@ Azure Monitor logs can be exported to a storage account by using any of the foll
 > [!TIP]
 > You can use an existing Azure Data Explorer cluster or create a new dedicated cluster with the needed configurations.
 
-## Create an external table located in Azure Blob Storage
+## Create an external table in Azure Data Explorer
 
-Use [external tables](/azure/data-explorer/kusto/query/schema-entities/externaltables) to link Azure Data Explorer to a storage account. An external table is a Kusto schema entity that references data stored outside a Kusto database. Like tables, an external table has a well-defined schema. Unlike tables, data is stored and managed outside of a Kusto cluster. The exported data from the previous section is saved in JSON lines.
+An [external table](/azure/data-explorer/kusto/query/schema-entities/externaltables) in Azure Data Explorer is a schema entity that refers to data stored outside of your cluster, such as in Azure Blob Storage or Azure Data Lake Store Gen2. Similar to tables, an external table has a defined schema. However, unlike tables, the data is stored and managed externally, separate from your cluster.
 
-To create a reference, you require the schema of the exported table. Use the [getschema](/azure/data-explorer/kusto/query/getschemaoperator) operator from Log Analytics to retrieve this information, which includes the table's columns and their data types.
+To access your exported Azure Monitor data, follow these steps to create an external table:
 
-:::image type="content" source="media\query-exported-monitor-data\exported-data-map-schema.jpg" alt-text="Screenshot that shows a Log Analytics table schema.":::
+1. Use the [getschema](/azure/data-explorer/kusto/query/getschemaoperator) operator from Log Analytics to get the schema of the exported table. This information includes the table's columns and their data types.
 
-You can now use the output to create the Kusto query for building the external table.
-Follow the guidance in [Create and alter external tables in Azure Storage or Azure Data Lake](/azure/data-explorer/kusto/management/external-tables-azurestorage-azuredatalake) to create an external table in a JSON format. Then run the query from your Azure Data Explorer database.
+    :::image type="content" source="media\query-exported-monitor-data\exported-data-map-schema.jpg" alt-text="Screenshot that shows a Log Analytics table schema.":::
 
->[!NOTE]
->The external table creation is built from two processes. The first process is to create the external table. The second process is to create the mapping.
+1. [Create an external table using the Azure Data Explorer web UI wizard](external-table.md). In the [schema tab](external-table.md#schema-tab), the tool attempts to automatically detect a schema. Make sure that the detected schema matches the schema from the previous step. If there are any discrepancies, adjust the schema by selecting the arrow on a column and accessing the menu.
 
-The following PowerShell script creates the [create](/azure/data-explorer/kusto/management/external-tables-azurestorage-azuredatalake#create-external-table-mapping) commands for the table and the mapping:
-
-```powershell
-PARAM(
-    $resourcegroupname, #The name of the Azure resource group
-    $TableName, # The Log Analytics table you want to convert to an external table
-    $MapName, # The name of the map
-    $subscriptionId, # The ID of the subscription
-    $WorkspaceId, # The Log Analytics WorkspaceId
-    $WorkspaceName, # The Log Analytics workspace name
-    $BlobURL, # The Blob URL where the data is saved
-    $ContainerAccessKey, # The blob container Access Key (option to add an SAS URL)
-    $ExternalTableName = $null # The External Table name, null to use the same name
-)
-
-if($null -eq $ExternalTableName) {
-    $ExternalTableName = $TableName
-}
-
-$query = $TableName + ' | getschema | project ColumnName, DataType'
-
-$output = (Invoke-AzOperationalInsightsQuery -WorkspaceId $WorkspaceId -Query $query).Results
-
-$FirstCommand = @()
-$SecondCommand = @()
-
-foreach ($record in $output) {
-    if ($record.DataType -eq 'System.DateTime') {
-        $dataType = 'datetime'
-    } elseif ($record.DataType -eq 'System.Int32') {
-        $dataType = 'int32'
-    } elseif ($record.DataType -eq 'System.Double') {
-        $dataType = 'double'
-    } else {
-        $dataType = 'string'
-    }
-    $FirstCommand += $record.ColumnName + ":" + "$dataType" + ","
-    $SecondCommand += "{`"column`":" + "`"" + $record.ColumnName + "`"," + "`"datatype`":`"$dataType`",`"path`":`"$." + $record.ColumnName + "`"},"
-}
-$schema = ($FirstCommand -join '') -replace ',$'
-$mapping = ($SecondCommand -join '') -replace ',$'
-
-$CreateExternal = @'
-.create external table {0} ({1})
-kind=blob
-partition by (TimeGeneratedPartition:datetime = bin(TimeGenerated, 1min))
-pathformat = (datetime_pattern("'y='yyyy'/m='MM'/d='dd'/h='HH'/m='mm", TimeGeneratedPartition))
-dataformat=multijson
-(
-   h@'{2}/WorkspaceResourceId=/subscriptions/{4}/resourcegroups/{6}/providers/microsoft.operationalinsights/workspaces/{5};{3}'
-)
-with
-(
-   docstring = "Docs",
-   folder = "ExternalTables"
-)
-'@ -f $TableName, $schema, $BlobURL, $ContainerAccessKey, $subscriptionId, $WorkspaceName.ToLower(), $resourcegroupname.ToLower(),$WorkspaceId
-
-$createMapping = @'
-.create external table {0} json mapping "{1}" '[{2}]'
-'@ -f $ExternalTableName, $MapName, $mapping
-
-Write-Host -ForegroundColor Red 'Copy and run the following commands (one by one), on your Azure Data Explorer cluster query window to create the external table and mappings:'
-write-host -ForegroundColor Green $CreateExternal
-Write-Host -ForegroundColor Green $createMapping
-```
-
-The following image shows an example of the output:
-
-:::image type="content" source="media/query-exported-monitor-data/external-table-create-command-output.png" alt-text="Screenshot that shows the ExternalTable create command output.":::
-
->[!TIP]
-> * Copy, paste, and then run the output of the script in your Azure Data Explorer client tool to create the table and mapping.
-> * To use all the data inside the container, alter the script and change the URL to be `https://your.blob.core.windows.net/containername;SecKey`.
+    :::image type="content" source="media/query-exported-monitor-data/schema-adjustments.png" alt-text="Screenshot of schema adjustment menu." lightbox="media/query-exported-monitor-data/schema-adjustments.png":::
 
 ## Query the exported data from Azure Data Explorer
 
-After you configure the mapping, you can query the exported data from Azure Data Explorer. Your query requires the [external_table](/azure/data-explorer/kusto/query/externaltablefunction) function, as shown in the following example:
+Query the exported data from Azure Data Explorer with the [external_table](/azure/data-explorer/kusto/query/externaltablefunction) function, as shown in the following example:
 
 ```kusto
 external_table("HBTest","map") | take 10000

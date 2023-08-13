@@ -17,11 +17,13 @@ Each CSV mapping element must contain either of the following optional propertie
 |------------|--------|---------------------------------------------------------------------------------------|
 | Ordinal    | int    | The column order number in CSV.                                                       |
 | ConstValue | string | The constant value to be used for a column instead of some value inside the CSV file. |
+| Transform  | string | Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations). The only supported transformation by is `SourceLocation`. |
 
 > [!NOTE]
 >
 > * Ordinal and ConstValue are mutually exclusive.
 > * For TXT and RAW formats, only Ordinal 0 can be mapped, as text is treated as a single column of lines.
+> * `SourceLocation` transformation is only available in [EngineV3](../../engine-v3.md).
 
 [!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
 
@@ -33,10 +35,11 @@ Each CSV mapping element must contain either of the following optional propertie
   {"Column": "event_name", "Properties": {"Ordinal": "1"}},
   {"Column": "event_type", "Properties": {"Ordinal": "2"}},
   {"Column": "ingestion_time", "Properties": {"ConstValue": "2023-01-01T10:32:00"}}
+  {"Column": "source_location", "Properties": {"Transform": "SourceLocation"}}
 ]
 ```
 
-The mapping above is serialized as a JSON string when it's provided as part of the `.ingest` control command.
+The mapping above is serialized as a JSON string when it's provided as part of the `.ingest` management command.
 
 ````kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -49,7 +52,8 @@ The mapping above is serialized as a JSON string when it's provided as part of t
             {"Column": "event_time", "Properties": {"Ordinal": "0"}},
             {"Column": "event_name", "Properties": {"Ordinal": "1"}},
             {"Column": "event_type", "Properties": {"Ordinal": "2"}},
-            {"Column": "ingestion_time", "Properties": {"ConstValue": "2023-01-01T10:32:00"}}
+            {"Column": "ingestion_time", "Properties": {"ConstValue": "2023-01-01T10:32:00"}},
+            {"Column": "source_location", "Properties": {"Transform": "SourceLocation"}}
         ]
         ```
     )
@@ -57,7 +61,7 @@ The mapping above is serialized as a JSON string when it's provided as part of t
 
 ### Pre-created mapping
 
-When the mapping is [pre-created](create-ingestion-mapping-command.md), reference the mapping by name in the `.ingest` control command.
+When the mapping is [pre-created](create-ingestion-mapping-command.md), reference the mapping by name in the `.ingest` management command.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")

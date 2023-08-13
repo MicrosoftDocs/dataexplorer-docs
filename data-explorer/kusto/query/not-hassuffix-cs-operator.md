@@ -22,6 +22,8 @@ Filters a record set for data that doesn't have a case-sensitive ending string. 
 
 *T* `|` `where` *column* `!hassuffix_cs` `(`*expression*`)`  
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

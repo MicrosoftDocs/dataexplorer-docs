@@ -34,7 +34,7 @@ The following are the only scenarios in which setting a data partitioning policy
 > [!CAUTION]
 >
 > * There are no hard-coded limits set on the number of tables with the partitioning policy defined.
->   * However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Adding tables may result in more cluster resources being used.
+>   * However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Setting a policy on more tables will result in more cluster resources being used, and higher cost due to underlying storage transactions.
 >   * For more information, see [capacity](#partitioning-capacity).
 > * It isn't recommended to set a partitioning policy if the compressed size of data per partition is expected to be less than 1GB.
 > * Before applying a partitioning policy on a materialized view, review the recommendations for [materialized views partitioning policy](materialized-views/materialized-view-policies.md#partitioning-policy).
@@ -51,7 +51,7 @@ The following kinds of partition keys are supported.
 ### Hash partition key
 
 > [!NOTE]
-> The data partitioning operation adds significant processing load. We recommend applying a hash partition key on a `string`-type column in a table only under the following conditions:
+> The data partitioning operation adds significant processing load. We recommend applying a hash partition key on a table only under the following conditions:
 > * If the majority of queries use equality filters (`==`, `in()`).
 > * The majority of queries aggregate/join on a specific column of type `string` or `guid` which is of *large-dimension* (cardinality of 10M or higher), such as an `device_ID`, or `user_ID`.
 > * The usage pattern of the partitioned tables is in high concurrency query load, such as in monitoring or dashboarding applications. 
@@ -224,4 +224,4 @@ In both of these cases, either "fix" the data, or filter out any irrelevant reco
 
 ## Next steps
 
-Use the [partitioning policy control commands](./show-table-partitioning-policy-command.md) to manage data partitioning policies for tables.
+Use the [partitioning policy management commands](./show-table-partitioning-policy-command.md) to manage data partitioning policies for tables.

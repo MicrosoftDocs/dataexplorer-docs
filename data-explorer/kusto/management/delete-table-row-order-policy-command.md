@@ -17,6 +17,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.delete` `table` *TableName* `policy` `roworder`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

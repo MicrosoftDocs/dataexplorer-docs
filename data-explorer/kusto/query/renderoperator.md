@@ -11,13 +11,13 @@ zone_pivot_groups: kql-flavors-all
 
 Instructs the user agent to render a visualization of the query results.  
 
-The render operator must be the last operator in the query, and can only be used with queries that produce a single tabular data stream result.  The render operator does not modify data. It injects an annotation ("Visualization") into the result's extended  properties. The annotation contains the information provided by the operator in the query. The interpretation of the visualization information is done by the user agent. Different agents, such as Kusto.Explorer or Azure Data Explorer web UI, may support different visualizations.
+The render operator must be the last operator in the query, and can only be used with queries that produce a single tabular data stream result.  The render operator doesn't modify data. It injects an annotation ("Visualization") into the result's extended  properties. The annotation contains the information provided by the operator in the query. The interpretation of the visualization information is done by the user agent. Different agents, such as Kusto.Explorer or Azure Data Explorer web UI, may support different visualizations.
 
 The data model of the render operator looks at the tabular data as if it has
 three kinds of columns:
 
 * The x axis column (indicated by the `xcolumn` property).
-* The series columns (any number of columns indicated by the `series` property.) For each record, the combined values of these columns defines a single series, and the chart has as many series as there are distinct combined values.
+* The series columns (any number of columns indicated by the `series` property.) For each record, the combined values of these columns define a single series, and the chart has as many series as there are distinct combined values.
 * The y axis columns (any number of columns indicated by the `ycolumns` property). For each record, the series has as many measurements ("points" in the chart) as there are y-axis columns.
 
 > [!TIP]
@@ -33,35 +33,37 @@ three kinds of columns:
 
 *T* `|` `render` *visualization* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
+|--|--|--|--|
 | *T* | string | &check; | Input table name.
 | *visualization* | string | &check; | Indicates the kind of [visualization](#visualization) to use. Must be one of the supported values in the following list.|
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Visualization
 
-::: zone pivot="azuredataexplorer, fabric"
+::: zone pivot="azuredataexplorer"
 
-| *visualization*                                         | Description                                                                                                                                                                                                       |
-|---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [ `anomalychart`](visualization-anomalychart.md)        | Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. |
-| [`areachart`](visualization-areachart.md)               | Area graph.                                                                                                                                                                                                       |
-| [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.                                                                                                                                                                                   |
-| [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.                                                                                                                                       |
-| [`columnchart`](visualization-columnchart.md)           | Like `barchart` with vertical strips instead of horizontal strips.                                                                                                                                                |
-| [`ladderchart`](visualization-ladderchart.md)           | Last two columns are the x-axis, other columns are y-axis.                                                                                                                                                        | 
-| [`linechart`](visualization-linechart.md)               | Line graph.                                                                                                                                                                                                       |
-| [`piechart`](visualization-piechart.md)                 | First column is color-axis, second column is numeric.                                                                                                                                                             |
-| [`pivotchart`](visualization-pivotchart.md)             | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types.                                                                                                      |
-| [`scatterchart`](visualization-scatterchart.md)         | Points graph.                                                                                                                                                                                                     |
-| [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph.                                                                                                                                                                                               |
-| [`table`](visualization-table.md)                       | Default - results are shown as a table.                                                                                                                                                                           |
-| [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes.                                                                                                                     |
-| [`timepivot`](visualization-timepivot.md)               | Interactive navigation over the events time-line (pivoting on time axis)                                                                                                                                          |
-| [`treemap`](visualization-treemap.md) | Displays hierarchical data as a set of nested rectangles.
+| *visualization*| Description| Illustration |
+|-----------|------------|---------|
+| [`anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. | :::image type="icon" source="images/renderoperator/anomaly-chart.png" border="false"::: |
+| [`areachart`](visualization-areachart.md)               | Area graph.| :::image type="icon" source="images/renderoperator/area-chart.png" border="false"::: |
+| [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.| :::image type="icon" source="images/renderoperator/bar-chart.png" border="false"::: |
+| [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.| :::image type="icon" source="images/renderoperator/card.png" border="false":::
+| [`columnchart`](visualization-columnchart.md)           | Like `barchart` with vertical strips instead of horizontal strips.| :::image type="icon" source="images/renderoperator/column-chart.png" border="false"::: |
+| [`ladderchart`](visualization-ladderchart.md)           | Last two columns are the x-axis, other columns are y-axis.| :::image type="icon" source="images/renderoperator/ladder-chart.png" border="false":::|
+| [`linechart`](visualization-linechart.md)               | Line graph. | :::image type="icon" source="images/renderoperator/line-chart.png" border="false"::: |
+| [`piechart`](visualization-piechart.md)                 | First column is color-axis, second column is numeric.| :::image type="icon" source="images/renderoperator/pie-chart.png" border="false"::: |
+| [`pivotchart`](visualization-pivotchart.md)             | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types.| :::image type="icon" source="images/renderoperator/pivot-chart.png" border="false"::: |
+| [`scatterchart`](visualization-scatterchart.md)         | Points graph.| :::image type="icon" source="images/renderoperator/scatter-chart.png" border="false"::: |
+| [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph.| :::image type="icon" source="images/renderoperator/stacked-area-chart.png" border="false"::: |
+| [`table`](visualization-table.md)                       | Default - results are shown as a table.| :::image type="icon" source="images/renderoperator/table-visualization.png" border="false"::: |
+| [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. | :::image type="icon" source="images/renderoperator/visualization-timechart.png" border="false"::: |
+| [`timepivot`](visualization-timepivot.md)               | Interactive navigation over the events time-line (pivoting on time axis)| :::image type="icon" source="images/renderoperator/visualization-time-pivot.png" border="false"::: |
+| [`treemap`](visualization-treemap.md) | Displays hierarchical data as a set of nested rectangles.| :::image type="icon" source="images/renderoperator/tree-map.png" border="false"::: |
 
 > [!NOTE]
 > The ladderchart, pivotchart, timepivot, and treemap visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
@@ -70,15 +72,33 @@ three kinds of columns:
 
 ::: zone pivot="azuremonitor"
 
-|*Visualization*     |Description|
-|--------------------|-|
-| [`areachart`](visualization-areachart.md)        | Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |
-| [`barchart`](visualization-barchart.md)         | First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.|
-| [`columnchart`](visualization-columnchart.md)      | Like `barchart` with vertical strips instead of horizontal strips.|
-|  [`piechart`](visualization-piechart.md)         | First column is color-axis, second column is numeric. |
-|  [`scatterchart`](visualization-scatterchart.md)     | Points graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |
-| [`table`](visualization-table.md)            | Default - results are shown as a table.|
-|  [`timechart`](visualization-timechart.md)         | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There's one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored).|
+|*Visualization*     |Description| Illustration |
+|--------------------|----------|---------|
+| [`areachart`](visualization-areachart.md)| Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |  :::image type="icon" source="images/renderoperator/area-chart.png" border="false"::: |
+| [`barchart`](visualization-barchart.md)  | First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.| :::image type="icon" source="images/renderoperator/bar-chart.png" border="false"::: |
+| [`columnchart`](visualization-columnchart.md)| Like `barchart` with vertical strips instead of horizontal strips.| :::image type="icon" source="images/renderoperator/column-chart.png" border="false"::: |
+| [`piechart`](visualization-piechart.md)  | First column is color-axis, second column is numeric. | :::image type="icon" source="images/renderoperator/pie-chart.png" border="false"::: |
+| [`scatterchart`](visualization-scatterchart.md)     | Points graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. | :::image type="icon" source="images/renderoperator/scatter-chart.png" border="false"::: |
+| [`table`](visualization-table.md)            | Default - results are shown as a table.| :::image type="icon" source="images/renderoperator/table-visualization.png" border="false"::: |
+| [`timechart`](visualization-timechart.md)         | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There's one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored).| :::image type="icon" source="images/renderoperator/visualization-timechart.png" border="false"::: |
+
+::: zone-end
+
+::: zone pivot="fabric"
+
+| *visualization*| Description| Illustration |
+|-----------|------------|---------|
+| [`anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function. | :::image type="icon" source="images/renderoperator/anomaly-chart.png" border="false"::: |
+| [`areachart`](visualization-areachart.md)               | Area graph.| :::image type="icon" source="images/renderoperator/area-chart.png" border="false"::: |
+| [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.| :::image type="icon" source="images/renderoperator/bar-chart.png" border="false"::: |
+| [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.| :::image type="icon" source="images/renderoperator/card.png" border="false":::
+| [`columnchart`](visualization-columnchart.md)           | Like `barchart` with vertical strips instead of horizontal strips.| :::image type="icon" source="images/renderoperator/column-chart.png" border="false"::: |
+| [`linechart`](visualization-linechart.md)               | Line graph. | :::image type="icon" source="images/renderoperator/line-chart.png" border="false"::: |
+| [`piechart`](visualization-piechart.md)                 | First column is color-axis, second column is numeric.| :::image type="icon" source="images/renderoperator/pie-chart.png" border="false"::: |
+| [`scatterchart`](visualization-scatterchart.md)         | Points graph.| :::image type="icon" source="images/renderoperator/scatter-chart.png" border="false"::: |
+| [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph.| :::image type="icon" source="images/renderoperator/stacked-area-chart.png" border="false"::: |
+| [`table`](visualization-table.md)                       | Default - results are shown as a table.| :::image type="icon" source="images/renderoperator/table-visualization.png" border="false"::: |
+| [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. | :::image type="icon" source="images/renderoperator/visualization-timechart.png" border="false"::: |
 
 ::: zone-end
 
@@ -159,17 +179,19 @@ Several visualizations are used for rendering sequences of values, for example, 
 These visualizations have the following conceptual model:
 
 * One column in the table represents the x-axis of the data. This column can be explicitly defined using the
-    `xcolumn` property. If not defined, the user agent will pick the first column that is appropriate for the visualization.
-  * For example: in the `timechart` visualization, the user agent will use the first `datetime` column.
+    `xcolumn` property. If not defined, the user agent picks the first column that is appropriate for the visualization.
+  * For example: in the `timechart` visualization, the user agent uses the first `datetime` column.
   * If this column is of type `dynamic` and it holds an array, the individual values in the array will be treated as the values of the x-axis.
 * One or more columns in the table represent one or more measures that vary by the x-axis.
-    These columns can be explicitly defined using the `ycolumns` property. If not defined, the user agent will pick all columns that are appropriate for the visualization.
-  * For example: in the `timechart` visualization, the user agent will use all columns with a numeric value that haven't been specified otherwise.
+    These columns can be explicitly defined using the `ycolumns` property. If not defined, the user agent picks all columns that are appropriate for the visualization.
+  * For example: in the `timechart` visualization, the user agent uses all columns with a numeric value that haven't been specified otherwise.
   * If the x-axis is an array, the values of each y-axis should also be an array of a similar length, with each y-axis occurring in a single column.
 * Zero or more columns in the table represent a unique set of dimensions that group together the measures. These columns can be specified by the `series` property, or the user agent will pick them automatically from the columns that are otherwise unspecified.
 
 ## See also
 
+* [Add a query visualization in the web UI](../../add-query-visualization.md)
+* [Customize dashboard visuals](../../dashboard-customize-visuals.md)
 * [Rendering examples in the tutorial](tutorials/use-aggregation-functions.md#visualize-query-results)
 * [Anomaly detection](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
 

@@ -3,7 +3,7 @@ title:  Export data to SQL
 description: This article describes Export data to SQL in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/06/2023
+ms.date: 06/20/2023
 ---
 # Export data to SQL
 
@@ -16,6 +16,8 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 ## Syntax
 
 `.export` [`async`] `to` `sql` *sqlTableName* *sqlConnectionString* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *query*
+
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -40,12 +42,10 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 The authentication method is based on the connection string provided, and the permissions required to access the SQL database vary depending on the authentication method.
 
-The following table lists the supported authentication methods and the permissions needed to export to SQL.
+The supported authentication methods for exporting data to SQL are [Azure AD-integrated (impersonation) authentication](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-impersonation) and [username/password authentication](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token). For impersonation authentication, be sure that the principal has the following permissions on the database:
 
-|Authentication method|Permissions|
-|--|--|
-|[Impersonation](../../api/connection-strings/sql-authentication-methods.md#aad-integrated-authentication)|Existing table: UPDATE and INSERT<br/>New table: CREATE, UPDATE, and INSERT |
-|[Username and password](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)||
+* Existing table: table UPDATE and INSERT
+* New table: CREATE, UPDATE, and INSERT
 
 ## Limitations and restrictions
 
@@ -96,7 +96,7 @@ In this example, Kusto runs the query and then exports the first record set prod
 
 ```kusto 
 .export async to sql MySqlTable
-    h@"Server=tcp:myserver.database.windows.net,1433;Database=MyDatabase;Authentication=Active Directory Integrated;Connection Timeout=30;"
+    h@"Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=MyDatabase;Connection Timeout=30;"
     <| print Id="d3b68d12-cbd3-428b-807f-2c740f561989", Name="YSO4", DateOfBirth=datetime(2017-10-15)
 ```
 
@@ -105,7 +105,7 @@ If the target table doesn't exist in the target database, it's created.
 
 ```kusto 
 .export async to sql ['dbo.MySqlTable']
-    h@"Server=tcp:myserver.database.windows.net,1433;Database=MyDatabase;Authentication=Active Directory Integrated;Connection Timeout=30;"
+    h@"Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=MyDatabase;Connection Timeout=30;"
     with (createifnotexists="true", primarykey="Id")
     <| print Message = "Hello World!", Timestamp = now(), Id=12345678
 ```

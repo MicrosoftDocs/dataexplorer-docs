@@ -42,6 +42,8 @@ landingContent:
             url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer
           - text: "Training module: Introduction to Azure Data Explorer"
             url:  /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+          - text: "Training module: Explore the fundamentals of data analysis using Kusto Query Language (KQL)"
+            url: /training/modules/explore-fundamentals-kql/
           - text: "Training module: Write your first query with Kusto Query Language"
             url: /training/modules/write-first-query-kusto-query-language/
           - text: "Training module: Gain insights from your data by using Kusto Query Language"
@@ -54,15 +56,13 @@ landingContent:
             url: /training/modules/create-dashboards-azure-data-explorer/
           - text: "Learning path: Data analysis in Azure Data Explorer with Kusto Query Language"
             url: /training/paths/data-analysis-data-explorer-kusto-query-language/
-          - text: "Learning path: Create queries for Microsoft Sentinel using Kusto Query Language"
-            url: /training/paths/sc-200-utilize-kql-for-azure-sentinel/  
   # Card
   - title: Create cluster and database
     linkLists:
       - linkListType: quickstart
         links:
           - text: Create a cluster and database
-            url: create-cluster-database-portal.md
+            url: create-cluster-and-database.md
       - linkListType: how-to-guide
         links:
           - text: Python
@@ -117,6 +117,8 @@ landingContent:
         links:
           - text: Query data in Azure Data Lake
             url: data-lake-query-data.md
+          - text: Query data using T-SQL
+            url: t-sql.md
           - text: Query data using Python
             url: python-query-data.md
           - text: Time series analysis
@@ -206,6 +208,10 @@ landingContent:
             url: /azure/architecture/example-scenario/security/security-log-retention-azure-data-explorer
           - text: Data analytics for automotive test fleets
             url: /azure/architecture/industries/automotive/automotive-telemetry-analytics
+      - linkListType: reference
+        links:
+          - text: White paper
+            url: https://aka.ms/adx.techwhitepaper
   # Card
   - title: Reference
     linkLists:

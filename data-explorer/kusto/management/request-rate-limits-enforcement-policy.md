@@ -32,12 +32,12 @@ Request rate limits can be enforced at one of the following levels:
   * This option affects queries that are sent with either strong or weak [query consistency](../concepts/queryconsistency.md).
     * Strongly consistent queries run on the database admin node, and the configured rate limit is effectively multiplied by the number of database admin nodes.
     * For weakly consistent queries, the configured rate limit is effectively multiplied by the number of query head nodes.
-  * This option doesn't apply to *control commands*.
+  * This option doesn't apply to *management commands*.
 
 > [!NOTE]
 >
 > * If the policy is undefined (`null`), the default enforcement level applies to both commands and queries.
-> * Rate limits for cluster-scoped commands are always enforced at the cluster level, regardless of the value configured in the policy. For example: control commands that manage cluster-level policies.
+> * Rate limits for cluster-scoped commands are always enforced at the cluster level, regardless of the value configured in the policy. For example: management commands that manage cluster-level policies.
 
 ## Examples
 
@@ -70,11 +70,11 @@ Request rate limits can be enforced at one of the following levels:
 
 The effective rate limits for the `default` workload group are:
 
-* The maximum number of concurrent *cluster-scoped control commands* is `200`.
-* The maximum number of concurrent *database-scoped control commands* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
+* The maximum number of concurrent *cluster-scoped management commands* is `200`.
+* The maximum number of concurrent *database-scoped management commands* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
 * The maximum number of concurrent *strongly consistent queries* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
 * The maximum number of concurrent *weakly consistent queries* is <br>`5` (query heads) x `200` (max per query head) = `1000`.
 
-## Control commands
+## Management commands
 
-Manage the workload group's request concurrency policy with [Workload groups control commands](./show-workload-group-command.md).
+Manage the workload group's request concurrency policy with [Workload groups management commands](./show-workload-group-command.md).

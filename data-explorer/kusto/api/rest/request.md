@@ -17,7 +17,7 @@ ms.date: 01/27/2020
 |Query v2  |POST     |`/v2/rest/query`|
 |Management|POST     |`/v1/rest/mgmt` |
 
-For example, to send a control command ("management") to a service endpoint,
+For example, to send a management command ("management") to a service endpoint,
 use the following request line:
 
 ```
@@ -64,8 +64,8 @@ or as part of the body, depending on whether GET or POST is used.
 
 |Parameter   |Description                                                                                 |Required/Optional |
 |------------|--------------------------------------------------------------------------------------------|------------------|
-|`csl`       |Text of the query or control command to execute                                             |Required          |
-|`db`        |Name of the database in scope that is the target of the query or control command            |Optional for some control commands. <br>Required for other commands and all queries. </br>                                                                   |
+|`csl`       |Text of the query or management command to execute                                             |Required          |
+|`db`        |Name of the database in scope that is the target of the query or management command            |Optional for some management commands. <br>Required for other commands and all queries. </br>                                                                   |
 |`properties`|Provides client request properties that modify how the request is processed and its results. For more information, see [client request properties](../netfx/request-properties.md)                                               | Optional         |
 
 ## GET query parameters

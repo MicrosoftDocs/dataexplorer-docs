@@ -27,7 +27,7 @@ In this article, you learn how to:
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/)
-* A cluster and a database: [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md)
+* A cluster and a database: [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md)
 
 ## Set up your environment
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
     ```
 
     > [!NOTE]
-    > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](kusto/management/manage-database-security-roles.md#view-existing-security-roles).
+    > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](kusto/management/manage-database-security-roles.md#show-existing-security-roles).
 
 ### Create target tables
 

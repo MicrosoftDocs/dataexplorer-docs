@@ -2,11 +2,11 @@
 title: Query data in Azure Data Explorer with SQL Server emulation - Azure Data Explorer
 description: This article provides an overview on SQL Server emulation in Azure Data Explorer.
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 06/14/2023
 ---
 # Query data in Azure Data Explorer using SQL Server emulation
 
-Any library and application that can connect to a Microsoft Azure SQL Database with Azure Active Directory (Azure AD) authentication can also connect to Azure Data Explorer. This functionality is made possible by Azure Data Explorer's TDS-compliant endpoint, which emulates Microsoft SQL Server.
+Any library and application that can connect to a Microsoft Azure SQL Database with Azure Active Directory (Azure AD) authentication can also connect to Azure Data Explorer. This functionality is made possible by Azure Data Explorer's TDS-compliant endpoint, which emulates Microsoft SQL Server. The endpoint supports TDS versions 7.x and 8.0.
 
 With SQL Server emulation, you can connect to Azure Data Explorer through various methods, including [ODBC](connect-odbc.md), [JDBC](connect-jdbc.md), and [common apps](connect-common-apps.md) like LINQPad and Azure Data Studio.
 
@@ -22,7 +22,7 @@ It's possible to configure the Azure AD tenant ID at the cluster level and remov
 
 For customizing Azure Data Explorer according to your specific requirements, you might need to supply certain information that's not supported by the standard SQL Server connection configuration.
 
-To allow for such parameters, Azure Data Explorer lets you input these values into the TDS `Language` and `Application` properties. We recommend to use the `Language` property when possible.
+To allow for such parameters, Azure Data Explorer lets you input these values into the TDS `Language` and `Application` properties. We recommend using the `Language` property when possible.
 
 ### Supported tuning options
 
@@ -36,6 +36,8 @@ The following table describes the supported tuning options. To learn how to use 
 ### Syntax
 
 [ `Language` | `Application` ] `=` *ExpectedArguments*`@`*TuningOptions*
+
+[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
 
 ### Parameters
 

@@ -29,7 +29,7 @@ There are several methods for data export:
 
   The above methods, [Client-side export](#client-side-export), and [Service-side export (pull)](#service-side-export-pull), are limited. The query results must stream through a single network connection between the producer doing the query, and the consumer who writes its results.
   For scalable data export, use the "push" export model in which the service running the query also writes its results in an optimized manner.
-  This model is exposed through a set of `.export` control commands, that support exporting query results to an [external table](export-data-to-an-external-table.md),
+  This model is exposed through a set of `.export` management commands, that support exporting query results to an [external table](export-data-to-an-external-table.md),
   a [SQL table](export-data-to-sql.md), or an [external Blob storage](export-data-to-storage.md).
 
   Service side export commands are limited by the cluster's available data export capacity.
@@ -38,7 +38,7 @@ There are several methods for data export:
 ## Recommendations for secret management when using data export commands
 
 Ideally, export data to a remote target, such as Azure Blob Storage and Azure SQL Database. Implicitly use the credentials of the security principal that executes the data export command. This method isn't possible in some scenarios. For example, Azure Blob Storage doesn't support the notion of a security principal, only its own tokens.
-This feature supports introducing the necessary credentials inline, as part of the data export control command.
+This feature supports introducing the necessary credentials inline, as part of the data export management command.
 
 To do the export in a secure manner:
 

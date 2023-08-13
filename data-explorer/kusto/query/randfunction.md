@@ -20,3 +20,5 @@ rand(1000)
   with a uniform distribution in the range [0.0, 1.0).
 * `rand(` *N* `)` - returns a value of type `real`
   chosen with a uniform distribution from the set {0.0, 1.0, ..., *N* - 1}.
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]

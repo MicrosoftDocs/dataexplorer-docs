@@ -101,4 +101,4 @@ The following example shows the default policy:
 
 When a database is created, it's set with the default merge policy values mentioned above. The policy is by default inherited by all tables created in the database, unless their policies are explicitly overridden at table-level.
 
-For more information, see [control commands that allow you to manage merge policies for databases or tables](./show-table-merge-policy-command.md).
+For more information, see [management commands that allow you to manage merge policies for databases or tables](./show-table-merge-policy-command.md).

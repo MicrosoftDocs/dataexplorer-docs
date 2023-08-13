@@ -1,12 +1,12 @@
 ---
-title: Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
+title: Ingest data from Azure Cosmos DB into Azure Data Explorer
 description: Learn how to ingest (load) data into Azure Data Explorer from Cosmos DB.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 05/17/2023
+ms.date: 06/15/2023
 ---
 
-# Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)
+# Ingest data from Azure Cosmos DB into Azure Data Explorer
 
 Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Cosmos DB for NoSql](/azure/cosmos-db/nosql/) using a [change feed](/azure/cosmos-db/change-feed). The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your Data Explorer table. The change feed listens for new and updated documents but doesn't log deletes. For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -25,7 +25,7 @@ Step 3: [Test the data connection](#step-3-test-the-data-connection)
 ## Prerequisites
 
 - An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-- An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-database-portal.md).
+- An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 - A container from a [Cosmos DB account for NoSQL](/azure/cosmos-db/nosql/).
 - If your Cosmos DB account blocks network access, for example by using a [private endpoint](/azure/cosmos-db/how-to-configure-private-endpoints), you must [create a managed private endpoint](security-network-managed-private-endpoint-create.md) to the Cosmos DB account. This is required for your cluster to invoke the change feed API.
 
@@ -379,6 +379,10 @@ The following considerations apply to the Cosmos DB change feed:
 
     Because of this scenario, the data connector may miss some intermediate document changes. For example, some events may be missed if the data connection service is down for a few minutes, or if the frequency of document changes is higher than the API polling frequency. However, the latest state of each document is captured.
 
+- Deleting and recreating a Cosmos DB container isn't supported
+
+    Azure Data Explorer keeps track of the change feed by checkpointing the "position" it is at in the feed.  This is done using continuation token on each physical partitions of the container.  When a container is deleted/recreated, those continuation token are invalid and aren't reset:  you must delete and recreate the data connection.
+
 ## Estimate cost
 
 How much does using the Cosmos DB data connection impact your Cosmos DB container's [Request Units (RUs)](/azure/cosmos-db/request-units) usage?
@@ -392,5 +396,5 @@ The connector invokes the Cosmos DB Change Feed API on each physical partition o
 
 ## Next steps
 
-- [Get latest versions of Azure Cosmos DB documents (Preview)](ingest-data-cosmos-db-queries.md)
+- [Get latest versions of Azure Cosmos DB documents](ingest-data-cosmos-db-queries.md)
 - [Kusto Query Language (KQL) overview](kusto/query/index.md)

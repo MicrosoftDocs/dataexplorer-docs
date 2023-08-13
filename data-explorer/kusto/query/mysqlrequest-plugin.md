@@ -23,6 +23,8 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 `evaluate` `mysql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters*] `)` [`:` *OutputSchema*]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required| Description |
@@ -112,7 +114,7 @@ evaluate mysql_request(
     'Database=Fabrikam;'
     h'UID=USERNAME;'
     h'Pwd=PASSWORD;',
-    'select * from [dbo].[Table]') : (Id: int, Name: string)
+    'select * from `dbo`.`Table`') : (Id: int, Name: string)
 | where Id > 0
 | project Name
 ```
@@ -130,7 +132,7 @@ evaluate mysql_request(
     'Database=Fabrikam;'
     h'UID=USERNAME;'
     h'Pwd=PASSWORD;',
-    'select *, @param0 as dt from [dbo].[Table]',
+    'select *, @param0 as dt from `dbo`.`Table`',
     dynamic({'param0': datetime(2020-01-01 16:47:26.7423305)})) : (Id:long, Name:string, dt: datetime)
 | where Id > 0
 | project Name
@@ -146,7 +148,7 @@ evaluate mysql_request(
     'Database=Fabrikam;'
     h'UID=USERNAME;'
     h'Pwd=PASSWORD;',
-    'select * from [dbo].[Table]')
+    'select * from `dbo`.`Table`')
 | where Id > 0
 | project Name
 ```

@@ -8,12 +8,12 @@ ms.date: 09/14/2022
 
 # Ingest JSON formatted sample data into Azure Data Explorer
 
-This article shows you how to ingest JSON formatted data into an Azure Data Explorer database. You'll start with simple examples of raw and mapped JSON, continue to multi-lined JSON, and then tackle more complex JSON schemas containing arrays and dictionaries.  The examples detail the process of ingesting JSON formatted data using Kusto Query Language (KQL), C#, or Python. The Kusto Query Language `ingest` control commands are executed directly to the engine endpoint. In production scenarios, ingestion is executed to the Data Management service using client libraries or data connections. Read [Ingest data using the Azure Data Explorer Python library](python-ingest-data.md) and [Ingest data using the Azure Data Explorer .NET Standard SDK](./net-sdk-ingest-data.md) for a walk-through regarding ingesting data with these client libraries.
+This article shows you how to ingest JSON formatted data into an Azure Data Explorer database. You'll start with simple examples of raw and mapped JSON, continue to multi-lined JSON, and then tackle more complex JSON schemas containing arrays and dictionaries.  The examples detail the process of ingesting JSON formatted data using Kusto Query Language (KQL), C#, or Python. The Kusto Query Language `ingest` management commands are executed directly to the engine endpoint. In production scenarios, ingestion is executed to the Data Management service using client libraries or data connections. Read [Ingest data using the Azure Data Explorer Python library](python-ingest-data.md) and [Ingest data using the Azure Data Explorer .NET Standard SDK](./net-sdk-ingest-data.md) for a walk-through regarding ingesting data with these client libraries.
 
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
 ## The JSON format
 
