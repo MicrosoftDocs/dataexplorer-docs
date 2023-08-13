@@ -22,7 +22,7 @@ To render a Plotly visual, the query must generate a table with a single string 
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-G### Example query
+## Example 
 
 The following KQL query uses inline Python to create the 3D scatter chart:
 
@@ -40,7 +40,7 @@ OccupancyDetection
 ```)
 ~~~
 
-:::image type="content" source="media/dashboard-customize-visuals/plotly-scatter3d.png" alt-text="Screenshot of plotly visual type.":::
+:::image type="content" source="../../media/dashboard-customize-visuals/plotly-scatter3d.png" alt-text="Screenshot of plotly visual type.":::
 
 > [!NOTE]
 > For best performance, make sure that the python plugin image contains the latest versions of both the Python engine (currently 3.10.8) and Plotly package (currently 5.11.0). These versions can be checked with the [get_packages_version_fl()](../functions-library/get-packages-version-fl.md) function. To upgrade the Python image see [Change the Python language extensions image on your cluster](../../language-extensions.md#change-the-python-language-extensions-image-on-your-cluster).
