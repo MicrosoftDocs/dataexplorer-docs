@@ -48,6 +48,8 @@ To show your roles:
 
 `.show` `database` *DatabaseName* `principal` `roles`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
@@ -75,6 +77,8 @@ This section provides syntax, parameters, and examples for adding and removing p
 ### Syntax
 
 *Action* `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [ *Description* ]
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -131,3 +135,7 @@ The following command removes all existing `viewers` on the `Samples` database.
 ```kusto
 .set database Samples viewers none
 ```
+
+## See also
+
+* [current_principal_details()](../query/current-principal-detailsfunction.md)

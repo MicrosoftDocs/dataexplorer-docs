@@ -16,7 +16,9 @@ This type of rolling window calculation is required for use cases where the metr
 ## Syntax
 
 `T | invoke time_window_rolling_avg_fl(`*t_col*`,` *y_col*`,` *key_col*`,` *dt* [`,` *direction* ]`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

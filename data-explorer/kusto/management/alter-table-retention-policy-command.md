@@ -17,6 +17,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter` `table` *TableName* `policy` `retention` *PolicyObject*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

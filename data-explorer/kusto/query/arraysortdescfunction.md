@@ -17,6 +17,8 @@ Receives one or more arrays. Sorts the first array in descending order. Orders t
 
 If *nulls_last* isn't provided, a default value of `true` is used.
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -28,9 +30,9 @@ If *nulls_last* isn't provided, a default value of `true` is used.
 
 Returns the same number of arrays as in the input, with the first array sorted in ascending order, and the remaining arrays ordered to match the reordered first array.
 
-`null` will be returned for every array that differs in length from the first one.
+`null` is returned for every array that differs in length from the first one.
 
-If an array contains elements of different types, it will be sorted in the following order:
+If an array contains elements of different types, it's sorted in the following order:
 
 * Numeric, `datetime`, and `timespan` elements
 * String elements
@@ -63,7 +65,7 @@ print array_sort_desc(array1,array2)
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHwS8xNLVawVVDyys/I0wlILM3RcU/NL0pP1QnKzEvPV7LmygGqCs4vKklNgaktLilKTiyJTywqSqzUAJPxxUAF8SmpxckaxQU5mSUaYKU6Cko6SpqaEMqaq6AoM69EoSi1uDSnBGgKkpkA+RSmRokAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-let Names = "John,Paul,George,Ringo";
+let Names = "John, Paul, George, Ringo";
 let SortedNames = strcat_array(array_sort_desc(split(Names, ",")), ",");
 print result = SortedNames
 ```
@@ -72,7 +74,7 @@ print result = SortedNames
 
 |result|
 |---|
-|Ringo,Paul,John,George|
+|Ringo, Paul, John, George|
 
 ## Example 3 - Combining summarize and array_sort_desc
 
@@ -124,7 +126,7 @@ print array_sort_desc(dynamic([null,"blue","yellow","green",null]))
 |---|
 |["yellow","green","blue",null,null]|
 
-Example with non-default behavior:
+Example with nondefault behavior:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAxXJUQqAIAwA0KvIvhR2owhZukKYM6YS3r76e/BuKzocmdGKvdmImXvyeSnVkvymUwThkMmAsFikPR8uY1bAP/eA7iTpHF4VdlwBSgAAAA==" target="_blank">Run the query</a>

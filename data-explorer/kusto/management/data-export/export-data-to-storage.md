@@ -18,6 +18,8 @@ You must have at least [Database Viewer](../access-control/role-based-access-con
 
 `.export` [`async`] [`compressed`] `to` *OutputDataFormat* `(` *StorageConnectionString* [`,` ...] `)` [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`] `<|` *Query*
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

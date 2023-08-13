@@ -13,6 +13,8 @@ Searches an array for the specified item, and returns its position.
 
 `array_index_of(`*array*,*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -19,6 +19,8 @@ You must have at least [Function Admin](access-control/role-based-access-control
 
 `.drop` `functions` `(` *FunctionName* [`,` ...] `)` [`ifexists`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
