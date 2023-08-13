@@ -3,7 +3,7 @@ title:  scan operator
 description: Learn how to use the scan operator to scan data, match, and build sequences based on the predicates.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/12/2023
+ms.date: 08/13/2023
 ---
 # scan operator
 
@@ -35,7 +35,7 @@ The output for the matching record is determined by the input record and assignm
 | *StepName* | string | &check; | Used to reference values in the state of scan for conditions and assignments. The step name must be unique.|
 | *Condition* | string | &check; | An expression that evaluates to a `bool`, `true` or `false`, that defines which records from the input matches the step. A record matches the step when the condition is `true` with the step’s state or with the previous step’s state.|
 | *Assignment* | string | | A scalar expression that is assigned to the corresponding column when a record matches a step.|
-| `output` | string | | Controls the output logic of the step on repeated matches. `all` outputs all records matching the step, `last` outputs only the last record in a series of repeating matches for the step, and `none` does not output records matching the step. The default is `all`.|
+| `output` | string | | Controls the output logic of the step on repeated matches. `all` outputs all records matching the step, `last` outputs only the last record in a series of repeating matches for the step, and `none` doesn't output records matching the step. The default is `all`.|
 
 ## Returns
 
@@ -69,7 +69,7 @@ Each record from the input is evaluated against all of scan’s steps, starting 
     1. Whenever the first step is matched while its state is empty, a new match begins and the match ID is increased by `1`. This only affects the output when `with_match_id` is used.
 * If r doesn't satisfy the condition *s_k* with the state *s_k*, evaluate *r* against condition *s_k-1* and repeat the logic above.
 
-See the [Matching logic walkthrough](#matching-logic-walkthrough) for a detailed example of the matching logic.
+For a detailed example of this logic, see the [matching logic walkthrough](#matching-logic-walkthrough).
 
 ## Examples
 
@@ -100,7 +100,7 @@ range x from 1 to 5 step 1
 
 ### Cumulative sum on multiple columns with a reset condition
 
-Calculate the cumulative sum for two input column, reset the sum value to the current row value whenever the cumulative sum reached 10 or more.
+Calculate the cumulative sum for two input columns, reset the sum value to the current row value whenever the cumulative sum reached 10 or more.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OQQrCMBBF9znFXzZaxAhuKulVJLSTWmhTSdKagIc3FIVo/fzVG+bNWGU6QoC20wgBP+EM5+kOwZ6g4Mm0iJA4YYeQkGuUQUvNoCyhaOZxHpTvF7qGaphMJ48lMhjfkOPR+xtYwZCy+p2o4O1MkHW+EdKtXuvCicMXrSVEcodU7PEz5SVW8Sb5K3/F8SOOqRtx5BfGX1hK/bgiAQAA" target="_blank">Run the query</a>
@@ -127,7 +127,7 @@ range x from 1 to 5 step 1
 
 ### Fill forward a column
 
-Fill forward a string column. Each empty value is assigned the last seen non-empty value.
+Fill forward a string column. Each empty value is assigned the last seen nonempty value.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA01Qy2rDMBC86ysGnSwwoW5DCAkuNI8/yK2EoNjrViC7xrtNCPTjK8sOaPcyo50dRutJcLxRJ4wStZXQV0/ITryBuJa4t10+KTZgGVz3ZfCpEOqlzaE/dB5JMZIZv454N5O3ZLBM8GrE+5msk0ERrQ5PFs20OqutmnKqP/DPILg+cGJYrsaHynaoqfJ2CNmj7tI476l+hi61Nrg7+YbKojEL9eAi/HL4JZTvSLfCLVzTZI6p7eUxGZo8yBepar6L2SrzD0ocTu9HAQAA" target="_blank">Run the query</a>
@@ -169,7 +169,7 @@ Events
 
 ### Sessions tagging
 
-Divide the input into sessions: a session ends 30 minutes after the first event of the session, after which a new session starts. Note the use of `with_match_id` flag which assigns a unique value for each distinct match (session) of *scan*. Also note the special use of two *steps* in this example, `inSession` has `true` as condition so it captures and outputs all the records from the input while `endSession` captures records that happen more than 30m from the `sessionStart` value for the current match. The `endSession` step has `output=none` meaning it doesn't produce output records. The `endSession` step is used to advance the state of the current match from `inSession` to `endSession`, allowing a new match (session) to begin, starting from the current record.
+Divide the input into sessions: a session ends 30 minutes after the first event of the session, after which a new session starts. Note the use of `with_match_id` flag, which assigns a unique value for each distinct match (session) of *scan*. Also note the special use of two *steps* in this example, `inSession` has `true` as condition so it captures and outputs all the records from the input while `endSession` captures records that happen more than 30m from the `sessionStart` value for the current match. The `endSession` step has `output=none` meaning it doesn't produce output records. The `endSession` step is used to advance the state of the current match from `inSession` to `endSession`, allowing a new match (session) to begin, starting from the current record.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQy2rDMBBF9/qKS1Y2qCVt+sLGgT7yBcmulKDYSiOQZaMZtxT68ZVsp3EWkTY6M/fOQ1YzVl/aMaFApTjcndVINpSBTa2pVU4OigzE3rjPFO8C4cxridnzTPZwM4XbCC8jLCK8HeE89RDp9UhPU+VdX3E10uP9UF98iFwM84pfUOMZux9sCIrKGCiVw7fhw7ZWXB62pipIE5nGhScqXVrlw3JjbM3K82nNtHdCJH1HYt3CuPUgDSrfaRRLTL3hy8x+nxhynbXJv/h6qkllGE/iQjI/9dKuGiVoOm47LlzjdBaXu7pgxxKLeZ2L9A9Yk5hPxgEAAA==" target="_blank">Run the query</a>
@@ -312,7 +312,7 @@ Events
 )
 ```
 
-First, we have to understand the state that is kept behind the scenes. Each `step` has its own state, it contains the most updated (latest) value of each column and declared variable of all the preceeding steps in the sequence that led to this `step` and the match id for the current sequence of the step. We can think of the state of the operator as a table with a row for each step:
+First, we have to understand the state that is kept behind the scenes. Each `step` has its own state, it contains the most updated (latest) value of each column and declared variable of all the preceding steps in the sequence that led to this `step` and the match ID for the current sequence of the step. We can think of the state of the operator as a table with a row for each step:
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -320,13 +320,13 @@ First, we have to understand the state that is kept behind the scenes. Each `ste
 |s2||||||X|X|
 |s3||||||||
 
-The state starts empty and is updated whenever a scanned row from the input matches a step. If a condition or an assigment checks for a value in an empty step, the default value for the column is returned (`null` or empty string unless a different default value was declared).  
+The state starts empty and is updated whenever a scanned row from the input matches a step. If a condition or an assignment checks for a value in an empty step, the default value for the column is returned (`null` or empty string unless a different default value was declared).  
 
 |Ts|Event|
 |---|---|
 |0m|"A"|
 
-The first scanned row doesn't match `s3` because it is empty and the prior step (`s2`) is empty - a match can only happen if the corresponding or prior step is not empty. The first row also doesn't match the first step (`s1`) because it doesn't satisfy the condition of `Event == "Start"`. Since the first row didn't match any step, it is discarded without affecting the state or the output.
+The first scanned row doesn't match `s3` because it's empty and the prior step (`s2`) is empty - a match can only happen if the corresponding or prior step isn't empty. The first row also doesn't match the first step (`s1`) because it doesn't satisfy the condition of `Event == "Start"`. Since the first row didn't match any step, it's discarded without affecting the state or the output.
 
 |Ts|Event|
 |---|---|
@@ -344,7 +344,7 @@ The second row matches the first step, it initializes a new sequence and adds th
 |---|---|
 |2m|"B"|
 
-The second row matches `s2` because it matches the condition (`Ts - s1.Ts < 5m`) and the prior step (`s1`) is active so the sequence in `s1` is promoted to `s2` and `s1` is cleared, the row `00:02:00, "B", 0` is added to the ouput.
+The second row matches `s2` because it matches the condition (`Ts - s1.Ts < 5m`) and the prior step (`s1`) is active so the sequence in `s1` is promoted to `s2` and `s1` is cleared, the row `00:02:00, "B", 0` is added to the output.
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -368,7 +368,7 @@ Again, the row matches `s2`, but this time it overrides the existing state of `s
 |---|---|
 |4m|"Stop"|
 
-This row promotes the existing sequence from `s2` to `s3`, the row `00:04:00, "Stop", 1` is added to the ouput.
+This row promotes the existing sequence from `s2` to `s3`, the row `00:04:00, "Stop", 1` is added to the output.
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -380,13 +380,13 @@ This row promotes the existing sequence from `s2` to `s3`, the row `00:04:00, "S
 |---|---|
 |6m|"C"|
 
-Since there is no active sequence in `s1` and `s2`, this row doesn't match any step and is discarded.
+Since there's no active sequence in `s1` and `s2`, this row doesn't match any step and is discarded.
 
 |Ts|Event|
 |---|---|
 |8m|"Start"|
 
-This row starts a new sequence in `s1` with a new match id, note that there are now `2` active sequences in the state. The row `00:08:00, "Start", 1` is added to the output.
+This row starts a new sequence in `s1` with a new match ID, note that there are now `2` active sequences in the state. The row `00:08:00, "Start", 1` is added to the output.
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -410,7 +410,7 @@ This row promotes the sequence from `s1` to `s2` and clears the state of `s1`. T
 |---|---|
 |12m|"Stop"|
 
-The last row promotes `s2` to `s3` and clears `s2`, promoting a sequence gets precedence over continuing an existing seuquence. Notice that `s3` is overriden with the values that were promoted from `s2`. The row `00:12:00, "Stop, 1"` is added to the output.
+The last row promotes `s2` to `s3` and clears `s2`, promoting a sequence gets precedence over continuing an existing sequence. Notice that `s3` is overridden with the values that were promoted from `s2`. The row `00:12:00, "Stop, 1"` is added to the output.
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
