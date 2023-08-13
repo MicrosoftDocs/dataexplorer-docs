@@ -326,19 +326,27 @@ Think of the state of the operator as a table with a row for each step. The "X" 
 
 The state starts empty and is updated whenever a scanned input row matches a step. If a condition or assignment checks for a value in an empty step, the default value for the column is returned. The default value is `null` or an empty string, unless a different default value was declared.
 
-The state starts empty and is updated whenever a scanned row from the input matches a step. If a condition or an assignment checks for a value in an empty step, the default value for the column is returned (`null` or empty string unless a different default value was declared).  
+### Perform the scan / Scan step-by-step... Show the state updates as we scan...
+
+In this section, we'll walkthrough the input rows one at a time and show how the state is updated as we do so. 
+
+#### Row 1
 
 |Ts|Event|
 |---|---|
 |0m|"A"|
 
-The first scanned row doesn't match `s3` because it's empty and the prior step (`s2`) is empty - a match can only happen if the corresponding or prior step isn't empty. The first row also doesn't match the first step (`s1`) because it doesn't satisfy the condition of `Event == "Start"`. Since the first row didn't match any step, it's discarded without affecting the state or the output.
+Remember, each record from the input is evaluated against all of scan’s steps, starting from last to first. The first row doesn't match `s3` or `s2` because they're both empty. A match can only happen if the corresponding or prior step isn't empty. The first row also doesn't match `s1` because it doesn't satisfy the condition of `Event == "Start"`. Since the first row didn't match any step, it's discarded without affecting the state or the output.
+
+#### Row 2
 
 |Ts|Event|
 |---|---|
 |1m|"Start"|
 
-The second row matches the first step, it initializes a new sequence and adds the row and the initialized `m_id` to the output, this is how the state looks like afterwards:
+Again, the second row doesn't match `s3` or `s2` because they're both empty. However, the second row does match the first step. This match initializes a new sequence and adds the row and the initialized `m_id` to the output.
+
+**State after scan of Row 2**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -346,11 +354,15 @@ The second row matches the first step, it initializes a new sequence and adds th
 |s2||||||X|X|
 |s3||||||||
 
+#### Row 3
+
 |Ts|Event|
 |---|---|
 |2m|"B"|
 
-The second row matches `s2` because it matches the condition (`Ts - s1.Ts < 5m`) and the prior step (`s1`) is active so the sequence in `s1` is promoted to `s2` and `s1` is cleared, the row `00:02:00, "B", 0` is added to the output.
+The third row matches `s2` because it matches the condition (`Ts - s1.Ts < 5m`) and the prior step (`s1`) is active so the sequence in `s1` is promoted to `s2` and `s1` is cleared, the row `00:02:00, "B", 0` is added to the output.
+
+**State after scan of Row 3**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -358,11 +370,15 @@ The second row matches `s2` because it matches the condition (`Ts - s1.Ts < 5m`)
 |s2|0|00:01:00|"Start"|00:02:00|"B"|X|X|
 |s3||||||||
 
+#### Row 4 
+
 |Ts|Event|
 |---|---|
 |3m|"D"|
 
 Again, the row matches `s2`, but this time it overrides the existing state of `s2`, replacing `s2.Ts` and `s2.Event` in the state of the sequence. The row `00:03:00, "D", 0` is added to the output.
+
+**State after scan of Row 4**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -370,17 +386,23 @@ Again, the row matches `s2`, but this time it overrides the existing state of `s
 |s2|0|00:01:00|"Start"|00:03:00|"D"|X|X|
 |s3||||||||
 
+#### Row 5
+
 |Ts|Event|
 |---|---|
 |4m|"Stop"|
 
 This row promotes the existing sequence from `s2` to `s3`, the row `00:04:00, "Stop", 1` is added to the output.
 
+**State after scan of Row 5**
+
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1||||X|X|X|X|
 |s2||||||X|X|
 |s3|0|00:01:00|"Start"|00:03:00|"D"|00:03:00|"Stop"|
+
+#### Row 6
 
 |Ts|Event|
 |---|---|
@@ -388,11 +410,15 @@ This row promotes the existing sequence from `s2` to `s3`, the row `00:04:00, "S
 
 Since there's no active sequence in `s1` and `s2`, this row doesn't match any step and is discarded.
 
+#### Row 7
+
 |Ts|Event|
 |---|---|
 |8m|"Start"|
 
 This row starts a new sequence in `s1` with a new match ID, note that there are now `2` active sequences in the state. The row `00:08:00, "Start", 1` is added to the output.
+
+**State after scan of Row 7**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -400,11 +426,15 @@ This row starts a new sequence in `s1` with a new match ID, note that there are 
 |s2||||||X|X|
 |s3|0|00:01:00|"Start"|00:03:00|"D"|00:03:00|"Stop"|
 
+#### Row 8
+
 |Ts|Event|
 |---|---|
 |11m|"E"|
 
 This row promotes the sequence from `s1` to `s2` and clears the state of `s1`. The row `00:11:00, "E", 1` is added to the output.
+
+**State after scan of Row 8**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -412,11 +442,15 @@ This row promotes the sequence from `s1` to `s2` and clears the state of `s1`. T
 |s2|1|00:08:00|"Start"|00:11:00|"E"|X|X|
 |s3|0|00:01:00|"Start"|00:03:00|"D"|00:03:00|"Stop"|
 
+#### Row 9
+
 |Ts|Event|
 |---|---|
 |12m|"Stop"|
 
 The last row promotes `s2` to `s3` and clears `s2`, promoting a sequence gets precedence over continuing an existing sequence. Notice that `s3` is overridden with the values that were promoted from `s2`. The row `00:12:00, "Stop, 1"` is added to the output.
+
+**State after scan of Row 9**
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -424,7 +458,9 @@ The last row promotes `s2` to `s3` and clears `s2`, promoting a sequence gets pr
 |s2||||||X|X|
 |s3|1|00:08:00|"Start"|00:11:00|"E"|00:12:00|"Stop"|
 
-The final output of the operator is the following:
+#### Final output
+
+The final output of the operator is as follows:
 
 |Ts|Event|m_id|
 |---|---|---|
