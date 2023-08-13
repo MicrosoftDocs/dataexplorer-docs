@@ -208,6 +208,10 @@ landingContent:
             url: /azure/architecture/example-scenario/security/security-log-retention-azure-data-explorer
           - text: Data analytics for automotive test fleets
             url: /azure/architecture/industries/automotive/automotive-telemetry-analytics
+      - linkListType: reference
+        links:
+          - text: White paper
+            url: https://aka.ms/adx.techwhitepaper
   # Card
   - title: Reference
     linkLists:
