@@ -326,9 +326,9 @@ Think of the state of the operator as a table with a row for each step. The "X" 
 
 The state starts empty and is updated whenever a scanned input row matches a step. If a condition or assignment checks for a value in an empty step, the default value for the column is returned. The default value is `null` or an empty string, unless a different default value was declared.
 
-### Perform the scan / Scan step-by-step... Show the state updates as we scan...
+### Step-by-step scan walkthrough
 
-In this section, we'll walkthrough the input rows one at a time and show how the state is updated as we do so. Remember, each record from the input is evaluated against all of scan’s steps, starting from last to first. A match can only happen if the corresponding or prior step isn't empty.
+This section follows the logic of the scan operator through each input row, explaining the transformation of the state and output at each step.
 
 #### Row 1
 
