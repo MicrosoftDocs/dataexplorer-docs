@@ -14,264 +14,265 @@ items:
         href: whats-new.md
   - name: Get started
     items:
-    - name: Plan
-      items:
-        - name: Solution architectures
-          href: solution-architectures.md
-        - name: Multi-tenant solutions
-          href: multi-tenant.md
-        - name: "POC playbook: Big data analytics with Azure Data Explorer"
-          href: proof-of-concept-playbook.md
-    - name: Set up
-      items:
-        - name: Create a cluster and database
-          items:
+      - name: Plan
+        items:
+          - name: Solution architectures
+            href: solution-architectures.md
+          - name: Multi-tenant solutions
+            href: multi-tenant.md
+          - name: "POC playbook: Big data analytics with Azure Data Explorer"
+            href: proof-of-concept-playbook.md
+      - name: Set up
+        items:
           - name: Create a cluster and database
-            href: create-cluster-and-database.md
-          - name: Create a cluster and database using SDKs
-            href: create-cluster-database.md
-          - name: Automated provisioning
-            href: automated-deploy-overview.md
-          - name: Troubleshoot
             items:
-              - name: Creating a cluster
-                displayName: troubleshoot
-                href: troubleshoot-create-cluster.md
-              - name: Connecting to a cluster
-                displayName: troubleshoot
-                href: troubleshoot-connect-cluster.md
-              - name: Working with databases and tables
-                displayName: troubleshoot
-                href: troubleshoot-database-table.md
-        - name: Create tables
-          items:
-            - name: Create table
-              href: create-table-wizard.md
-            - name: Create external table
-              displayName: one-click
-              href: external-table.md
-        - name: Migrate
-          items:
-            - name: Migrate from Elasticsearch
-              href: migrate-elasticsearch-to-azure-data-explorer.md
-            - name: Migrate from TSI
-              href: /azure/time-series-insights/migration-to-adx
-              displayName: Time Series Insights
-    - name: Secure
-      items:
-        - name: Security overview
-          href: security.md
-        - name: Security baseline
-          href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
-        - name: Security controls by Azure Policy
-          href: security-controls-policy.md
-        - name: Access control
-          href: kusto/access-control/index.md
-          items:
-            - name: Role-based access control
-              href: kusto/access-control/role-based-access-control.md
-              displayName: RBAC, security roles, principals
-            - name: Cross-tenant queries and commands
-              href: kusto/access-control/cross-tenant-query-and-commands.md
-        - name: Isolated compute
-          href: isolated-compute.md
-        - name: Network isolation (VNet)
-          items:
-            - name: Network security overview
-              href: security-network-overview.md
-            - name: Private Endpoints
-              items:
-                - name: Private Endpoints overview
-                  href: security-network-private-endpoint.md
-                - name: Create a private endpoint
-                  href: security-network-private-endpoint-create.md
-                - name: Create a managed private endpoint
-                  href: security-network-managed-private-endpoint-create.md
-                - name: Restrict public access
-                  href: security-network-restrict-public-access.md
-                - name: Troubleshoot private endpoints
-                  href: security-network-private-endpoint-troubleshoot.md
-            - name: Virtual network injection
-              items:
-                - name: Create a cluster in your VNet - Portal
-                  href: vnet-create-cluster-portal.md
-                - name: Deploy your cluster to your VNet
-                  href: vnet-deployment.md
-                - name: Create a private or service endpoint to resources used by data connections
-                  displayName: VNet, private endpoint, Azure Storage, event hub
-                  href: vnet-endpoint-storage-event-hub.md
-                - name: Troubleshoot VNet cluster creation, connectivity, and operation
-                  href: vnet-deploy-troubleshoot.md
-            - name: Restrict outbound requests
-              href: security-network-restrict-outbound-access.md
-        - name: Encryption
-          items:
-            - name: Cluster encryption overview
-              href: cluster-encryption-overview.md
-            - name: Enable double encryption
-              href: cluster-encryption-double.md
-            - name: Enable disk encryption
-              href: cluster-encryption-disk.md
-        - name: Managed identities
-          items:
-            - name: Managed identities overview
-              href: managed-identities-overview.md
-            - name: Configure managed identities on your cluster
-              href: configure-managed-identities-cluster.md
-            - name: Authenticate external tables with managed identities
-              href: external-tables-managed-identities.md
-            - name: Ingest data using managed identity authentication
-              href: ingest-data-managed-identity.md
-        - name: Configure customer-managed keys
-          href: customer-managed-keys.md
-        - name: Create Azure AD app
-          href: provision-azure-ad-app.md
-        - name: Conditional Access
-          href: security-conditional-access.md
-    - name: Get data
-      items:
-        - name: Data ingestion overview
-          displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
-          href: ingest-data-overview.md
-        - name: Data connectors overview
-          displayName: connect, integrate, integration, export, orchestrate
-          href: connector-overview.md
-        - name: Get data in the web UI
-          items:
-            - name: Ingestion wizard
-              href: ingest-data-wizard.md
-            - name: Ingest from local file
-              displayName: ingest data, ingestion wizard, one click, existing table
-              href: ingest-from-local-file.md
-            - name: Ingest from container
-              displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
-              href: /azure/data-explorer/ingest-from-container
-        - name: Streaming ingestion
-          displayName: ingest data, ingestion
-          href: ingest-data-streaming.md
-        - name: LightIngest
-          items:
-            - name: Using LightIngest
-              displayName: ingest data, ingestion
-              href: lightingest.md
-            - name: Use wizard for one-time ingestion of historical data with LightIngest
-              href: generate-lightingest-command.md
-        - name: Using SDKs
-          items:
-            - name: .NET SDK
-              displayName: ingest data, ingestion
-              href: net-sdk-ingest-data.md
-            - name: Python
-              displayName: ingest data, ingestion
-              href: python-ingest-data.md
-            - name: Node SDK
-              displayName: ingest data, ingestion
-              href: node-ingest-data.md
-            - name: Go SDK
-              displayName: ingest data, ingestion
-              href: go-ingest-data.md
-            - name: Java SDK
-              displayName: ingest data, ingestion
-              href: java-ingest-data.md
-        - name: Event Hubs
-          items:
-            - name: Event Hubs data connection
-              displayName: ingest, ingestion
-              href: ingest-data-event-hub-overview.md
-            - name: Create an Event Hubs data connection
-              href: create-event-hubs-connection.md
-            - name: Create an Event Hubs data connection with SDKs
-              href: create-event-hubs-connection-sdk.md
-            - name: Manage Event Hubs in your free cluster
-              displayName: Event hub, ingest, data connection
-              href: start-for-free-event-hubs.md
-        - name: Event Grid
-          items:
-            - name: Event Grid data connection
-              displayName: ingest
-              href: ingest-data-event-grid-overview.md
-            - name: Create an Event Grid data connection
-              displayName: rename blob, upload to azure storage, use event grid, remove event grid
-              href: create-event-grid-connection.md
-            - name: Create an Event Grid data connection with SDKs
-              href: create-event-grid-connection-sdk.md
-            - name: Manually create resources in Azure portal
-              displayName: Manually create resources for Event Grid ingestion, Ingest
-              href: ingest-data-event-grid-manual.md
-        - name: IoT Hub
-          items:
-            - name: IoT Hub data connection
-              displayName: ingest data, ingestion
-              href: ingest-data-iot-hub-overview.md
-            - name: Create an IoT Hub data connection
-              displayName: ingest ingestion
-              href: create-iot-hub-connection.md
-            - name: Create an IoT Hub data connection with SDKs
-              href: create-iot-hub-connection-sdk.md
-        - name: Azure Data Factory
-          items:
-            - name: Integration with Data Factory
-              displayName: export, ingest, copy
-              href: data-factory-integration.md
-            - name: Copy data using Azure Data Factory
-              href: data-factory-load-data.md
-            - name: Bulk copy data using Azure Data Factory template
-              href: data-factory-template.md
-            - name: Run management commands using Azure Data Factory
-              href: data-factory-command-activity.md
-        - name: Apache Kafka
-          displayName: ingest data, ingestion, connector
-          href: ingest-data-kafka.md
-        - name: Apache Log4J 2
-          displayName: ingest data, ingestion, connector
-          href: apache-log4j2-connector.md
-        - name: NLog
-          displayName: ingest data, ingestion, connector
-          href: nlog-sink.md
-        - name: Serilog
-          displayName: ingest data, ingestion, connector
-          href: serilog-sink.md
-        - name: Apache Spark
-          displayName: connector, export, ingest
-          href: spark-connector.md
-        - name: Azure Cosmos DB
-          items:
-            - name: Azure Cosmos DB data connection
-              displayName: ingest, connector
-              href: ingest-data-cosmos-db-connection.md
-            - name: Get latest Azure Cosmos DB documents
-              displayName: ingest data, ingestion
-              href: ingest-data-cosmos-db-queries.md
-        - name: Azure Stream Analytics
-          href: stream-analytics-connector.md
-          displayName: ingest data, ingestion, connector
-        - name: Logstash
-          displayName: ingest data, ingestion, connector
-          href: ingest-data-logstash.md
-        - name: OpenTelemetry
-          href: open-telemetry-connector.md
-          displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion, connector
-        - name: Telegraf
-          displayName: ingest data, ingestion, connector
-          href: ingest-data-telegraf.md
-        - name: Scenarios
-          items:
-            - name: E2E programmatic Blob ingestion
-              href: end-to-end-blob-ingestion.md
-              displayName: python, C#, end to end ingestion
-            - name: Ingest and query monitoring data
-              href: ingest-data-no-code.md
-        - name: Cross-tenant data connection
-          displayName: event hub, event grid
-          href: ingest-data-cross-tenant.md
-        - name: JSON formatted data
-          displayName: ingest data, ingestion
-          href: ingest-json-formats.md
-        - name: Data ingestion properties
-          href: ingestion-properties.md
-        - name: Formats for data ingestion
-          displayName: supported data formats
-          href: ingestion-supported-formats.md
+              - name: Create a cluster and database
+                href: create-cluster-and-database.md
+              - name: Create a cluster and database using SDKs
+                href: create-cluster-database.md
+              - name: Automated provisioning
+                href: automated-deploy-overview.md
+              - name: Troubleshoot
+                items:
+                  - name: Creating a cluster
+                    displayName: troubleshoot
+                    href: troubleshoot-create-cluster.md
+                  - name: Connecting to a cluster
+                    displayName: troubleshoot
+                    href: troubleshoot-connect-cluster.md
+                  - name: Working with databases and tables
+                    displayName: troubleshoot
+                    href: troubleshoot-database-table.md
+          - name: Create tables
+            items:
+              - name: Create table
+                href: create-table-wizard.md
+              - name: Create external table
+                displayName: one-click
+                href: external-table.md
+          - name: Migrate
+            items:
+              - name: Migrate from Elasticsearch
+                href: migrate-elasticsearch-to-azure-data-explorer.md
+              - name: Migrate from TSI
+                href: /azure/time-series-insights/migration-to-adx
+                displayName: Time Series Insights
+      - name: Secure
+        items:
+          - name: Security overview
+            href: security.md
+          - name: Security baseline
+            href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
+          - name: Security controls by Azure Policy
+            href: security-controls-policy.md
+          - name: Access control
+            href: kusto/access-control/index.md
+            items:
+              - name: Role-based access control
+                href: kusto/access-control/role-based-access-control.md
+                displayName: RBAC, security roles, principals
+              - name: Cross-tenant queries and commands
+                href: kusto/access-control/cross-tenant-query-and-commands.md
+          - name: Isolated compute
+            href: isolated-compute.md
+          - name: Network isolation (VNet)
+            items:
+              - name: Network security overview
+                href: security-network-overview.md
+              - name: Private Endpoints
+                items:
+                  - name: Private Endpoints overview
+                    href: security-network-private-endpoint.md
+                  - name: Create a private endpoint
+                    href: security-network-private-endpoint-create.md
+                  - name: Create a managed private endpoint
+                    href: security-network-managed-private-endpoint-create.md
+                  - name: Manage public access to your cluster
+                    href: security-network-restrict-public-access.md
+                    displayName: restrict, prevent, limit, IP addresses, allowlist, whitelist, VNET, private endpoint, virtual network
+                  - name: Troubleshoot private endpoints
+                    href: security-network-private-endpoint-troubleshoot.md
+              - name: Virtual network injection
+                items:
+                  - name: Create a cluster in your VNet - Portal
+                    href: vnet-create-cluster-portal.md
+                  - name: Deploy your cluster to your VNet
+                    href: vnet-deployment.md
+                  - name: Create a private or service endpoint to resources used by data connections
+                    displayName: VNet, private endpoint, Azure Storage, event hub
+                    href: vnet-endpoint-storage-event-hub.md
+                  - name: Troubleshoot VNet cluster creation, connectivity, and operation
+                    href: vnet-deploy-troubleshoot.md
+              - name: Restrict outbound requests
+                href: security-network-restrict-outbound-access.md
+          - name: Encryption
+            items:
+              - name: Cluster encryption overview
+                href: cluster-encryption-overview.md
+              - name: Enable double encryption
+                href: cluster-encryption-double.md
+              - name: Enable disk encryption
+                href: cluster-encryption-disk.md
+          - name: Managed identities
+            items:
+              - name: Managed identities overview
+                href: managed-identities-overview.md
+              - name: Configure managed identities on your cluster
+                href: configure-managed-identities-cluster.md
+              - name: Authenticate external tables with managed identities
+                href: external-tables-managed-identities.md
+              - name: Ingest data using managed identity authentication
+                href: ingest-data-managed-identity.md
+          - name: Configure customer-managed keys
+            href: customer-managed-keys.md
+          - name: Create Azure AD app
+            href: provision-azure-ad-app.md
+          - name: Conditional Access
+            href: security-conditional-access.md
+      - name: Get data
+        items:
+          - name: Data ingestion overview
+            displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
+            href: ingest-data-overview.md
+          - name: Data connectors overview
+            displayName: connect, integrate, integration, export, orchestrate
+            href: connector-overview.md
+          - name: Get data in the web UI
+            items:
+              - name: Ingestion wizard
+                href: ingest-data-wizard.md
+              - name: Ingest from local file
+                displayName: ingest data, ingestion wizard, one click, existing table
+                href: ingest-from-local-file.md
+              - name: Ingest from container
+                displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
+                href: /azure/data-explorer/ingest-from-container
+          - name: Streaming ingestion
+            displayName: ingest data, ingestion
+            href: ingest-data-streaming.md
+          - name: LightIngest
+            items:
+              - name: Using LightIngest
+                displayName: ingest data, ingestion
+                href: lightingest.md
+              - name: Use wizard for one-time ingestion of historical data with LightIngest
+                href: generate-lightingest-command.md
+          - name: Using SDKs
+            items:
+              - name: .NET SDK
+                displayName: ingest data, ingestion
+                href: net-sdk-ingest-data.md
+              - name: Python
+                displayName: ingest data, ingestion
+                href: python-ingest-data.md
+              - name: Node SDK
+                displayName: ingest data, ingestion
+                href: node-ingest-data.md
+              - name: Go SDK
+                displayName: ingest data, ingestion
+                href: go-ingest-data.md
+              - name: Java SDK
+                displayName: ingest data, ingestion
+                href: java-ingest-data.md
+          - name: Event Hubs
+            items:
+              - name: Event Hubs data connection
+                displayName: ingest, ingestion
+                href: ingest-data-event-hub-overview.md
+              - name: Create an Event Hubs data connection
+                href: create-event-hubs-connection.md
+              - name: Create an Event Hubs data connection with SDKs
+                href: create-event-hubs-connection-sdk.md
+              - name: Manage Event Hubs in your free cluster
+                displayName: Event hub, ingest, data connection
+                href: start-for-free-event-hubs.md
+          - name: Event Grid
+            items:
+              - name: Event Grid data connection
+                displayName: ingest
+                href: ingest-data-event-grid-overview.md
+              - name: Create an Event Grid data connection
+                displayName: rename blob, upload to azure storage, use event grid, remove event grid
+                href: create-event-grid-connection.md
+              - name: Create an Event Grid data connection with SDKs
+                href: create-event-grid-connection-sdk.md
+              - name: Manually create resources in Azure portal
+                displayName: Manually create resources for Event Grid ingestion, Ingest
+                href: ingest-data-event-grid-manual.md
+          - name: IoT Hub
+            items:
+              - name: IoT Hub data connection
+                displayName: ingest data, ingestion
+                href: ingest-data-iot-hub-overview.md
+              - name: Create an IoT Hub data connection
+                displayName: ingest ingestion
+                href: create-iot-hub-connection.md
+              - name: Create an IoT Hub data connection with SDKs
+                href: create-iot-hub-connection-sdk.md
+          - name: Azure Data Factory
+            items:
+              - name: Integration with Data Factory
+                displayName: export, ingest, copy
+                href: data-factory-integration.md
+              - name: Copy data using Azure Data Factory
+                href: data-factory-load-data.md
+              - name: Bulk copy data using Azure Data Factory template
+                href: data-factory-template.md
+              - name: Run management commands using Azure Data Factory
+                href: data-factory-command-activity.md
+          - name: Apache Kafka
+            displayName: ingest data, ingestion, connector
+            href: ingest-data-kafka.md
+          - name: Apache Log4J 2
+            displayName: ingest data, ingestion, connector
+            href: apache-log4j2-connector.md
+          - name: NLog
+            displayName: ingest data, ingestion, connector
+            href: nlog-sink.md
+          - name: Serilog
+            displayName: ingest data, ingestion, connector
+            href: serilog-sink.md
+          - name: Apache Spark
+            displayName: connector, export, ingest
+            href: spark-connector.md
+          - name: Azure Cosmos DB
+            items:
+              - name: Azure Cosmos DB data connection
+                displayName: ingest, connector
+                href: ingest-data-cosmos-db-connection.md
+              - name: Get latest Azure Cosmos DB documents
+                displayName: ingest data, ingestion
+                href: ingest-data-cosmos-db-queries.md
+          - name: Azure Stream Analytics
+            href: stream-analytics-connector.md
+            displayName: ingest data, ingestion, connector
+          - name: Logstash
+            displayName: ingest data, ingestion, connector
+            href: ingest-data-logstash.md
+          - name: OpenTelemetry
+            href: open-telemetry-connector.md
+            displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion, connector
+          - name: Telegraf
+            displayName: ingest data, ingestion, connector
+            href: ingest-data-telegraf.md
+          - name: Scenarios
+            items:
+              - name: E2E programmatic Blob ingestion
+                href: end-to-end-blob-ingestion.md
+                displayName: python, C#, end to end ingestion
+              - name: Ingest and query monitoring data
+                href: ingest-data-no-code.md
+          - name: Cross-tenant data connection
+            displayName: event hub, event grid
+            href: ingest-data-cross-tenant.md
+          - name: JSON formatted data
+            displayName: ingest data, ingestion
+            href: ingest-json-formats.md
+          - name: Data ingestion properties
+            href: ingestion-properties.md
+          - name: Formats for data ingestion
+            displayName: supported data formats
+            href: ingestion-supported-formats.md
   - name: Query data
     items:
       - name: Query data in the web UI
