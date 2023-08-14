@@ -1,5 +1,5 @@
 ---
-title:  series_clean_anomalies_fl()
+title:  Add series_clean_anomalies_fl() in Azure Data Explorer
 description: This article describes series_clean_anomalies_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
@@ -7,7 +7,7 @@ ms.date: 08/14/2023
 ---
 # series_clean_anomalies_fl()
 
-Clean anomalous points in a series.
+Cleans anomalous points in a series.
 
 The function `series_clean_anomalies_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes a dynamic numerical array as input and another numerical array of anomalies and replaces the anomalies in the input array with interpolated value of their adjacent points.
 
