@@ -72,7 +72,7 @@ For historical reasons, the `legacy` strategy is the default strategy. However, 
 
 In some scenarios, the `legacy` strategy might be necessary due to its support for including a tabular source in the subquery. In a subquery with an explicit tabular source, only the key column of the input table is accessible. The key column can be referred to using its name within the [toscalar()](toscalarfunction.md) function.
 
-Like the `native` and `shuffle` strategies, if the subquery is a tabular transformation without a specified tabular source, the source is implicit and is based on the subtable partitions. This applies when there are 64 or fewer key values.
+Like the `native` and `shuffle` strategies, if the subquery is a tabular transformation without a specified tabular source, the source is implicit and is based on the subtable partitions.
 
 To use this strategy, specify `hint.strategy=legacy` or omit any other strategy indication.
 
@@ -91,7 +91,7 @@ To use this strategy, specify `hint.strategy=legacy` or omit any other strategy 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular source whose data is to be processed by the operator.|
+| *T* | string | &check; | The input tabular source.|
 | *Column*| string | &check; | The name of a column in *T* whose values determine how the input table is to be partitioned.|
 | *TransformationSubQuery*| string | &check; | A tabular transformation expression, whose source is implicitly the subtables produced by partitioning the records of *T*, each subtable being homogenous on the value of *Column*.|
 | *ContextFreeSubQuery*| string | &check; | A tabular expression that includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.|
