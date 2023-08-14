@@ -20,13 +20,19 @@ The partition operator supports several strategies of subquery operation:
 > [!NOTE]
 > The distinction between the `native` and `shuffle` strategies allows the caller to indicate the cardinality and execution strategy of the subquery. This choice may affect how long the subquery takes to complete but doesn't change the end result.
 
+For all strategies, the result of the subquery must be a single tabular result. Multiple tabular results and the use of the [fork](forkoperator.md) operator aren't supported. A subquery can't include other statements, for example, it can't have a [let statement](letstatement.md).
+
 ### Native strategy
 
-This subquery is a tabular transformation that doesn't specify a tabular source. The source is implicit and is assigned according to the subtable partitions. It should be applied when the number of distinct values of the partition key isn't large, roughly in the thousand. Use `hint.strategy=native` for this strategy. There's no restriction on the number of partitions.
+For this strategy, the subquery must be a tabular transformation that doesn't specify a tabular source. The source is implicit and is assigned according to the subtable partitions. It should be applied when the number of distinct values of the partition key isn't large, roughly in the thousands.
+
+To use this strategy, specify `hint.strategy=native`. There's no restriction on the number of partitions.
 
 ### Shuffle strategy
 
-This subquery is a tabular transformation that doesn't specify a tabular source. The source is implicit and will be assigned according to the subtable partitions. The strategy applies when the number of distinct values of the partition key is large, in the millions. Use `hint.strategy=shuffle` for this strategy. There's no restriction on the number of partitions. For more information about shuffle strategy and performance, see [shuffle](shufflequery.md).
+For this strategy, the subquery must be a tabular transformation that doesn't specify a tabular source. The source is implicit and will be assigned according to the subtable partitions. It should be applied when the number of distinct values of the partition key is large, in the millions. 
+
+To use this strategy, specify `hint.strategy=shuffle`. There's no restriction on the number of partitions. For more information about shuffle strategy and performance, see [shuffle query](shufflequery.md).
 
 ### Supported operators for the native and shuffle strategies
 
@@ -62,22 +68,16 @@ This subquery is a tabular transformation that doesn't specify a tabular source.
 
 ### Legacy strategy
 
-Legacy subqueries can use the following sources:
+For historical reasons, the `legacy` strategy is the default strategy. However, we recommend favoring the `native` or `shuffle` strategies, as the `legacy` approach is limited to 64 partitions and is less efficient.
 
-* Implicit - The source is a tabular transformation that doesn't specify a tabular source. The source is implicit and will be assigned according to the subtable partitions. This scenario applies when there are 64 or less key values. 
-* Explicit - The subquery must include a tabular source explicitly. Only the key column of the input table is available in the subquery, and referenced by using its name in the `toscalar()` function.
+In some scenarios, the `legacy` strategy might be necessary due to its support for including a tabular source in the subquery. In a subquery with an explicit tabular source, only the key column of the input table is accessible. The key column can be referred to using its name within the [toscalar()](toscalarfunction.md) function.
 
-For both implicit and explicit sources, the subquery type is used for legacy purposes only, and indicated by the use of `hint.strategy=legacy`, or by not including any strategy indication.
+Like the `native` and `shuffle` strategies, if the subquery is a tabular transformation without a specified tabular source, the source is implicit and is based on the subtable partitions. This applies when there are 64 or fewer key values.
 
-Any other reference to the source is taken to mean the entire input table, for example, by using the [as operator](asoperator.md) and calling up the value again.
+To use this strategy, specify `hint.strategy=legacy` or omit any other strategy indication.
 
 > [!NOTE]
-> We recommend the `native` or `shuffle` strategies over the `legacy` strategy. The `legacy` strategy is limited to 64 partitions and is less efficient.
-> The operator will yield an error if the partition column, *Column*, has more than 64 distinct values.
-
-## All strategies
-
-For native, shuffle and legacy subqueries, the result must be a single tabular result. Multiple tabular results and the use of the `fork` operator aren't supported. A subquery can't include other statements, for example, it can't have a `let` statement.
+> An error occurs if the partition column, *Column*, contains more than 64 distinct values.
 
 ## Syntax
 
