@@ -7,7 +7,7 @@ ms.date: 08/07/2023
 ---
 # Get data from file
 
-Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn you how to get data from an local file into either a new or existing table.
+Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn you how to get data from a local file into either a new or existing table.
 
 For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
 
@@ -52,7 +52,7 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 
 The **Inspect** tab opens with a preview of the data.
 
-:::image type="content" source="media/get-data-file/inspect-the-data.png" alt-text="Screenshot of the inspect tab." lightbox="media/get-data-file/inspect-the-data.png":::
+:::image type="content" source="media/get-data-file/inspect-data.png" alt-text="Screenshot of the inspect tab." lightbox="media/get-data-file/inspect-data.png":::
 
 1. Select **Command viewer** to view and copy the automatic commands generated from your inputs.
 1. The schema definition file is used for schema creation. If you are ingesting more than one file, choose the schema definition file from the dropdown.
@@ -81,16 +81,7 @@ Table type | Mapping type | Available adjustments|
 | Existing table | New mapping | Add column (on which you can then change data type, rename, and update) |
 | Existing table | Existing mapping | none
 
-### Mapping transformations
-
-Some data format mappings (Parquet, JSON, and Avro) support simple ingest-time transformations. To apply mapping transformations, create or update a column in the [Edit columns](#edit-columns) window.
-
-Mapping transformations can be performed on a column of type string or datetime, with the source having data type int or long. Supported mapping transformations are:
-
-* DateTimeFromUnixSeconds
-* DateTimeFromUnixMilliseconds
-* DateTimeFromUnixMicroseconds
-* DateTimeFromUnixNanoseconds
+[!INCLUDE [mapping-transformations](includes/mapping-transformations.md)]
 
 ### Advanced options based on data type
 
