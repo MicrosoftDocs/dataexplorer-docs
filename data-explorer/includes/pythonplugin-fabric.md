@@ -47,7 +47,7 @@ To see the package for the Python image, see [Python package reference](../pytho
 * Use the plugin in queries that are:
   * Defined as part of an [update policy](../kusto/management/updatepolicy.md), whose source table is ingested to using *non-streaming* ingestion.
   * Run as part of a command that [ingests from a query](../kusto/management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
-* You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../../ingest-data-streaming.md).
+* You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../ingest-data-streaming.md).
 
 ## Examples
 
@@ -68,7 +68,7 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
 | render linechart 
 ~~~
 
-:::image type="content" source="images/plugin/sine-demo.png" alt-text="sine demo." border="false":::
+:::image type="content" source="../kusto/query/images/plugin/sine-demo.png" alt-text="sine demo." border="false":::
 
 ## Performance tips
 
@@ -76,7 +76,7 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
   * Use filters on the source data set, when possible, with Kusto's query language.
   * To do a calculation on a subset of the source columns, project only those columns before invoking the plugin.
 * Use `hint.distribution = per_node` whenever the logic in your script is distributable.
-  * You can also use the [partition operator](partitionoperator.md) for partitioning the input data set.
+  * You can also use the [partition operator](../kusto/query/partitionoperator.md) for partitioning the input data set.
 * Use Kusto's query language whenever possible, to implement the logic of your Python script.
 
 ## Usage tips
@@ -86,7 +86,7 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
       ` ``` `
       ` python code`  
       ` ``` `
-* Use the [`externaldata` operator](externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage.
+* Use the [`externaldata` operator](../kusto/query/externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage.
   
 ### Example
 
@@ -106,5 +106,3 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
 ## See also
 
 For more examples of UDF functions that use the Python plugin, see the [Functions library](../kusto/functions-library/functions-library.md).
-
-

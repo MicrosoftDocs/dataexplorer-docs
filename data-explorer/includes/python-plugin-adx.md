@@ -9,7 +9,7 @@ The Python plugin runs a user-defined function (UDF) using a Python script. The 
 
 *T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*][`,` *external_artifacts*][`,` *spill_to_disk*]`)`
 
-[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -50,7 +50,7 @@ To see the list of packages for the different Python images, see [Python package
 * Use the plugin in queries that are:
   * Defined as part of an [update policy](../kusto/management/updatepolicy.md), whose source table is ingested to using *non-streaming* ingestion.
   * Run as part of a command that [ingests from a query](../kusto/management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
-* You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../../ingest-data-streaming.md).
+* You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../ingest-data-streaming.md).
 
 ## Examples
 
@@ -71,7 +71,7 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
 | render linechart 
 ~~~
 
-:::image type="content" source="images/plugin/sine-demo.png" alt-text="sine demo." border="false":::
+:::image type="content" source="../kusto/query/plugin/sine-demo.png" alt-text="sine demo." border="false":::
 
 ~~~kusto
 print "This is an example for using 'external_artifacts'"
@@ -104,7 +104,7 @@ print "This is an example for using 'external_artifacts'"
   * Use filters on the source data set, when possible, with Kusto's query language.
   * To do a calculation on a subset of the source columns, project only those columns before invoking the plugin.
 * Use `hint.distribution = per_node` whenever the logic in your script is distributable.
-  * You can also use the [partition operator](partitionoperator.md) for partitioning the input data set.
+  * You can also use the [partition operator](../kusto/query/partitionoperator.md) for partitioning the input data set.
 * Use Kusto's query language whenever possible, to implement the logic of your Python script.
 
 ## Usage tips
@@ -114,7 +114,7 @@ print "This is an example for using 'external_artifacts'"
       ` ``` `
       ` python code`  
       ` ``` `
-* Use the [`externaldata` operator](externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage.
+* Use the [`externaldata` operator](../kusto/query/externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage.
   
 ### Example
 
@@ -138,7 +138,7 @@ External artifacts from cloud storage can be made available for the script and u
 The URLs referenced by the external artifacts property must be:
 
 * Included in the cluster's [callout policy](../kusto/management/calloutpolicy.md).
-* In a publicly available location, or provide the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage-connection-strings.md).
+* In a publicly available location, or provide the necessary credentials, as explained in [storage connection strings](../kusto/api/connection-strings/storage-connection-strings.md).
 
 > [!NOTE]
 > When authenticating external artifacts using Managed Identities, the `SandboxArtifacts` usage must be defined on the cluster level [managed identity policy](../kusto/management/managed-identity-policy.md).
@@ -149,7 +149,7 @@ For information regarding referencing external packages, see [Install packages f
 
 ### Refreshing external artifact cache
 
-External artifact files utilized in queries are cached on your cluster. If you make updates to your files in cloud storage and require immediate synchronization with your cluster, you can use the [.clear cluster cache external-artifacts command](../management/clear-external-artifacts-cache-command.md). This command clears the cached files and ensures that subsequent queries run with the latest version of the artifacts.
+External artifact files utilized in queries are cached on your cluster. If you make updates to your files in cloud storage and require immediate synchronization with your cluster, you can use the [.clear cluster cache external-artifacts command](..kusto/management/clear-external-artifacts-cache-command.md). This command clears the cached files and ensures that subsequent queries run with the latest version of the artifacts.
 
 ## Install packages for the Python plugin
 
