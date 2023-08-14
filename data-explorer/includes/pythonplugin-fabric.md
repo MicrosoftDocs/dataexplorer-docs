@@ -31,7 +31,7 @@ The following variables are reserved for interaction between Kusto Query Languag
 
 ## Enable the plugin
 
-The plugin is disabled by default. Before you start, ##TODO <!-- [enabled the Python plugin](/fabric/real-time-analytics/python-plugin)--> in your KQL database.
+The plugin is disabled by default. Before you start, [enable the Python plugin](/fabric/real-time-analytics/python-plugin) in your KQL database.
 
 ## Python sandbox image
 
