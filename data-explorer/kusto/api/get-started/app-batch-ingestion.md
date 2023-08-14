@@ -26,7 +26,7 @@ In this article, you learn how to:
 
 ## Before you begin
 
-- Use one of the following methods to create the *stormevents* table and, as only a small amount of data is being ingested, set its ingestion batching policy timeout to 10 seconds:
+- Use one of the following methods to create the *MyStormEvents* table and, as only a small amount of data is being ingested, set its ingestion batching policy timeout to 10 seconds:
 
     ### [Run an app](#tab/app)
 
@@ -35,7 +35,7 @@ In this article, you learn how to:
 
     ### [Web UI](#tab/webui)
 
-    1. In the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home), create a target table named *MyStormEvents* in your database by running the following query:
+    1. In the [Azure Data Explorer web UI](https://dataexplorer.azure.com), create a target table named *MyStormEvents* in your database by running the following query:
 
         ```kusto
         .create table MyStormEvents
@@ -68,7 +68,12 @@ In this article, you learn how to:
 
 ## Queue a file for ingestion and query the results
 
-In your preferred IDE or text editor, create a project or file named *basic ingestion* using the convention appropriate for your preferred language. Place the *stormevent.csv* file in the same location as your app. Then add the following code:
+In your preferred IDE or text editor, create a project or file named *basic ingestion* using the convention appropriate for your preferred language. Place the *stormevent.csv* file in the same location as your app.
+
+> [!NOTE]
+> In the following examples you use two clients, one to query your cluster and the other to ingest data into your cluster. For languages where the client library supports it, both clients share the same user prompt authenticator, resulting in a single user prompt instead of one for each client.
+
+Add the following code:
 
 1. Create a client app that connects to your cluster and prints the number of rows in the *MyStormEvents* table. You'll use this count as a baseline for comparison with the number of rows after each method of ingestion. Replace the `<your_cluster_uri>` and `<your_database>` placeholders with your cluster URI and database name respectively.
 
@@ -112,9 +117,6 @@ In your preferred IDE or text editor, create a project or file named *basic inge
     ```
 
     ### [Python](#tab/python)
-
-    > [!NOTE]
-    > In the following examples you use two clients, one to query your cluster and the other to ingest data into your cluster. Both clients share the same user prompt authenticator, resulting in a single user prompt instead of one for each client.
 
     ```python
     from azure.identity import InteractiveBrowserCredential
@@ -224,7 +226,7 @@ In your preferred IDE or text editor, create a project or file named *basic inge
 
     ---
 
-1. Create a connection string builder object that defines the data ingestion URI using the same authentication credentials as the cluster URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
+1. Create a connection string builder object that defines the data ingestion URI, where possible, using the sharing the same authentication credentials as the cluster URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
 
     ### [C\#](#tab/csharp)
 
@@ -456,7 +458,7 @@ namespace BatchIngest {
         .WithAadUserPromptAuthentication();
 
 
-      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb)) {
+      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb))
         using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
           string database = "<your_database>";
           string table = "MyStormEvents";
@@ -490,7 +492,6 @@ namespace BatchIngest {
             PrintResultsAsValueList(response);
           }
         }
-      }
     }
 
     static void PrintResultsAsValueList(IDataReader response) {
@@ -905,7 +906,7 @@ using System.Data;
 namespace BatchIngest {
   class BatchIngest {
     static void Main(string[] args) {
-      // ...
+      ...
       string singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
       var stringStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(singleLine));
 
@@ -914,19 +915,19 @@ namespace BatchIngest {
           string database = "<your_database>";
           string table = "MyStormEvents";
 
-          // ...
+          ...
 
           Console.WriteLine("\nIngesting data from memory:");
           ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
           ingestClient.IngestFromStreamAsync(stringStream, ingestProps);
 
-          // ...
+          ...
         }
       }
     }
 
     static void PrintResultsAsValueList(IDataReader response) {
-      // ...
+      ...
     }
   }
 }
@@ -942,7 +943,7 @@ from azure.kusto.ingest import QueuedIngestClient, IngestionProperties, StreamDe
 from azure.identity import InteractiveBrowserCredential
 
 def main():
-  # ...
+  ...
   single_line = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
   string_stream = io.StringIO(single_line)
 
@@ -951,17 +952,17 @@ def main():
       database = "<your_database>"
       table = "MyStormEvents"
 
-      # ...
+      ...
 
       print("\nIngesting data from memory:")
       ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=False)
       stream_descriptor = StreamDescriptor(string_stream, is_compressed=False, size=len(single_line))
       ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
 
-      # ...
+      ...
 
   def print_result_as_value_list(response):
-    # ...
+    ...
 
 if __name__ == "__main__":
   main()
@@ -977,7 +978,7 @@ const {InteractiveBrowserCredential} = require("@azure/identity");
 const {Readable} = require("stream");
 
 async function main() {
-  // ...
+  ...
   const singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
   const stringStream = Readable.from(singleLine);
   stringStream.push(singleLine);
@@ -989,20 +990,20 @@ async function main() {
   const database = "<your_database>"
   const table = "MyStormEvents"
 
-  // ...
+  ...
 
   console.log("\nIngesting data from memory:");
   ingestProps.ignoreFirstRecord = false;
   await ingestClient.ingestFromStream(stringStream, ingestProps);
 
-  // ...
+  ...
 }
 
 function sleep(time) {
-  // ...
+  ...
 }
 function printResultsAsValueList(response) {
-  // ...
+  ...
 }
 
 main();
@@ -1030,7 +1031,7 @@ import com.microsoft.azure.kusto.ingest.source.StreamSourceInfo;
 
 public class batchIngestion {
   public static void main(String[] args) throws Exception {
-    // ...
+    ...
     String singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
     InputStream stream = new ByteArrayInputStream(StandardCharsets.UTF_8.encode(singleLine).array());
     StreamSourceInfo streamSourceInfo = new StreamSourceInfo(stream);
@@ -1040,19 +1041,19 @@ public class batchIngestion {
         String database = "<your_database>";
         String table = "MyStormEvents";
 
-        // ...
+        ...
 
         System.out.println("\nIngesting data from memory:");
         ingestProps.setIgnoreFirstRecord(false);
         ingestClient.ingestFromStream(streamSourceInfo, ingestProps);
 
-        // ...
+        ...
       }
     }
   }
 
   public static void printResultsAsValueList(KustoResultSetTable results) {
-    // ...
+    ...
   }
 }
 ```
@@ -1176,28 +1177,27 @@ using System.Data;
 namespace BatchIngest {
   class BatchIngest {
     static void Main(string[] args) {
-      // ...
+      ...
       string blobUri = "<your_blob_uri>";
 
 
-      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb)) {
+      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb))
         using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
           string database = "<your_database>";
           string table = "MyStormEvents";
 
-          // ...
+          ...
 
           Console.WriteLine("\nIngesting data from memory:");
           ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
           ingestClient.IngestFromStorageAsync(blobUri, ingestProps);
 
-          // ...
+          ...
         }
-      }
     }
 
     static void PrintResultsAsValueList(IDataReader response) {
-      // ...
+      ...
     }
   }
 }
@@ -1212,7 +1212,7 @@ from azure.kusto.ingest import QueuedIngestClient, IngestionProperties, BlobDesc
 from azure.identity import InteractiveBrowserCredential
 
 def main():
-  # ...
+  ...
   blob_uri = "<your_blob_uri>"
 
   with KustoClient(cluster_kcsb) as kusto_client:
@@ -1220,17 +1220,17 @@ def main():
       database = "<your_database>"
       table = "MyStormEvents"
 
-      # ...
+      ...
 
       print("\nIngesting data from a blob:")
       blob_descriptor = BlobDescriptor(blob_uri)
       ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
       ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
 
-      # ...
+      ...
 
   def print_result_as_value_list(response):
-    # ...
+    ...
 
 if __name__ == "__main__":
   main()
@@ -1247,7 +1247,7 @@ const {InteractiveBrowserCredential} = require("@azure/identity");
 const {Readable} = require("stream");
 
 async function main() {
-  // ...
+  ...
   const blobUri = "<your_blob_uri>";
 
   const kustoClient = new Client(clusterKcsb);
@@ -1256,20 +1256,20 @@ async function main() {
   const database = "<your_database>"
   const table = "MyStormEvents"
 
-  // ...
+  ...
 
   console.log("\nIngesting data from a blob:");
   ingestProps.ignoreFirstRecord = true;
   await ingestClient.ingestFromBlob(blobUri, ingestProps);
 
-  // ...
+  ...
 }
 
 function sleep(time) {
-  // ...
+  ...
 }
 function printResultsAsValueList(response) {
-  // ...
+  ...
 }
 
 main();
@@ -1294,28 +1294,27 @@ import com.microsoft.azure.kusto.ingest.source.BlobSourceInfo;
 
 public class batchIngestion {
   public static void main(String[] args) throws Exception {
-    // ...
+    ...
     String blobUri = "<your_blob_uri>";
 
-    try (Client kustoClient = ClientFactory.createClient(clusterKcsb)) {
+    try (Client kustoClient = ClientFactory.createClient(clusterKcsb))
       try (QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
         String database = "<your_database>";
         String table = "MyStormEvents";
 
-        // ...
+        ...
 
         System.out.println("\nIngesting data from a blob:");
         ingestProps.setIgnoreFirstRecord(true);
         BlobSourceInfo blobSourceInfo = new BlobSourceInfo(blobUri, 100);
         ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
 
-        // ...
+        ...
       }
-    }
   }
 
   public static void printResultsAsValueList(KustoResultSetTable results) {
-    // ...
+    ...
   }
 }
 ```
