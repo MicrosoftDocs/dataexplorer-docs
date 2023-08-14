@@ -314,11 +314,11 @@ Events
 
 ### The state of the operator
 
-Let's understand the state that is kept behind the scenes. Each step has its own state. This state holds the most recent values of the columns and declared variables for all the preceding steps and for the step itself. It also holds the match ID for the current sequence.
+To understand the underlying state management, consider each step as possessing its own state. The state for each step holds the most recent values of the columns and declared variables for all the preceding steps and the current one, along with the match ID for the ongoing sequence.
 
 Think of the state of the operator as a table with a row for each step:
 
-||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1||||X|X|X|X|
 |s2||||||X|X|
@@ -353,7 +353,7 @@ Again, this row can't match `s3` due to `s2` being empty, and it can't match `s2
 
 **Updated state**
 
-||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1|0|00:01:00|"Start"|X|X|X|X|
 |s2||||||X|X|
@@ -369,7 +369,7 @@ This row can't match `s3` due to `s2` being empty. This row meets the `s2` condi
 
 **Updated state**
 
-||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1||||X|X|X|X|
 |s2|0|00:01:00|"Start"|00:02:00|"B"|X|X|
@@ -385,7 +385,7 @@ This row doesn't meet the `s3` condition of `Event == "Stop"`. However, the row 
 
 **Updated state**
 
-||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1||||X|X|X|X|
 |s2|0|00:01:00|"Start"|00:03:00|"D"|X|X|
@@ -401,7 +401,7 @@ This row meets the `s3` condition of `Event == "Stop"`. This match promotes the 
 
 **Updated state**
 
-||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1||||X|X|X|X|
 |s2||||||X|X|
@@ -425,7 +425,7 @@ This row starts a new sequence in `s1` with a new match ID. There are now two ac
 
 **Updated state**
 
-||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1|1|00:08:00|"Start"|X|X|X|X|
 |s2||||||X|X|
@@ -442,7 +442,7 @@ This row promotes the sequence from `s1` to `s2` and clears the state of `s1`. T
 
 **Updated state**
 
-||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1||||X|X|X|X|
 |s2|1|00:08:00|"Start"|00:11:00|"E"|X|X|
@@ -458,7 +458,7 @@ The last row promotes `s2` to `s3` and clears `s2`, as promoting a sequence gets
 
 **Updated state**
 
-||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1||||X|X|X|X|
 |s2||||||X|X|
