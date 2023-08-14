@@ -314,9 +314,9 @@ Events
 
 ### The state of the operator
 
-First, let's understand the state that is kept behind the scenes. Each step has its own state. This state holds the most recent values of the columns and declared variables for the step itself and all the steps before it. It also holds the match ID for the current sequence.
+First, let's understand the state that is kept behind the scenes. Each step has its own state. This state holds the most recent values of the columns and declared variables for all the preceding steps and for the step itself. It also holds the match ID for the current sequence.
 
-We can think of the state of the operator as a table with a row for each step:
+Think of the state of the operator as a table with a row for each step:
 
 ||m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -341,7 +341,7 @@ This section follows the logic of the scan operator through each input row, expl
 |---|---|
 |0m|"A"|
 
-The first row can't match `s3` or `s2` because both of the prior steps are empty. For `s1`, the first row doesn't satisfy the condition of `Event == "Start"`. The first row doesn't match any step and is discarded without affecting the state or the output.
+The first row can't match `s3` due to `s2` being empty, and it can't match `s2` because `s1` is empty. The first row doesn't meet the `s1` condition of `Event == "Start"`, so it's discarded without impacting the state or output.
 
 #### Row 2
 
@@ -349,7 +349,7 @@ The first row can't match `s3` or `s2` because both of the prior steps are empty
 |---|---|
 |1m|"Start"|
 
-The second row matches `s1` because the `Event` value is "Start". This match initiates a new sequence, and the `m_id` is assigned. The row and its `m_id` are added to the output.
+Again, this row can't match `s3` due to `s2` being empty, and it can't match `s2` because `s1` is empty. The second row meets the `s1` condition of `Event == "Start"`. This match initiates a new sequence, and the `m_id` is assigned. The row and its `m_id` are added to the output.
 
 **Updated state**
 
@@ -365,7 +365,7 @@ The second row matches `s1` because the `Event` value is "Start". This match ini
 |---|---|
 |2m|"B"|
 
-The third row matches the `s2` condition of `Ts - s1.Ts < 5m`, and the prior step of `s1` is active. These conditions cause the sequence in `s1` to be promoted to `s2` and the `s1` state to be cleared. The row `00:02:00, "B", 0` is added to the output.
+This row can't match `s3` due to `s2` being empty. The third row meets the `s2` condition of `Ts - s1.Ts < 5m`, and the prior step of `s1` is active. These conditions cause the sequence in `s1` to be promoted to `s2` and the `s1` state to be cleared. The row `00:02:00, "B", 0` is added to the output.
 
 **Updated state**
 
@@ -381,7 +381,7 @@ The third row matches the `s2` condition of `Ts - s1.Ts < 5m`, and the prior ste
 |---|---|
 |3m|"D"|
 
-Again, the row matches `s2`, but this time it overrides the existing state of `s2`, replacing `s2.Ts` and `s2.Event` in the state of the sequence. The row `00:03:00, "D", 0` is added to the output.
+This row doesn't meet the `s3` condition of `Event == "Stop"`. However, the row meets the `s2` condition again. This match overrides the existing state of `s2`, and replaces `s2.Ts` and `s2.Event` in the state of the sequence with the values from this row. The row `00:03:00, "D", 0` is added to the output.
 
 **Updated state**
 
@@ -397,7 +397,7 @@ Again, the row matches `s2`, but this time it overrides the existing state of `s
 |---|---|
 |4m|"Stop"|
 
-This row promotes the existing sequence from `s2` to `s3`. The row `00:04:00, "Stop", 0` is added to the output.
+This row meets the `s3` condition of `Event == "Stop"`. This match promotes the existing sequence from `s2` to `s3`. The row `00:04:00, "Stop", 0` is added to the output.
 
 **Updated state**
 
@@ -413,7 +413,7 @@ This row promotes the existing sequence from `s2` to `s3`. The row `00:04:00, "S
 |---|---|
 |6m|"C"|
 
-Since there's no active sequence in `s1` and `s2`, this row doesn't match any step and is discarded.
+Since there's no active sequence in `s1`, this row doesn't match any step and is discarded.
 
 #### Row 7
 
