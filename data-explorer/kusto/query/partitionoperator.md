@@ -11,18 +11,51 @@ The partition operator partitions the records of its input table into multiple s
 
 This operator is useful when you need to perform a subquery only on a subset of rows that belongs to the same partition key, and not query the whole dataset. These subqueries could include aggregate functions, window functions, top *N* and others.
 
-## Strategies
-
 The partition operator supports several strategies of subquery operation:
 
 * [Native](#native-strategy) - use with an implicit data source with thousands of key partition values.
 * [Shuffle](#shuffle-strategy) - use with an implicit source with millions of key partition values.
 * [Legacy](#legacy-strategy) - use with an implicit or explicit source for 64 or less key partition values.
 
-> [!NOTE]
-> The distinction between the `native` and `shuffle` strategies allows the caller to indicate the cardinality and execution strategy of the subquery. This choice may affect how long the subquery takes to complete but doesn't change the end result.
+## Syntax
 
-For all strategies, the result of the subquery must be a single tabular result. Multiple tabular results and the use of the [fork](forkoperator.md) operator aren't supported. A subquery can't include other statements, for example, it can't have a [let statement](letstatement.md).
+*T* `|` `partition` [ *Hints* ] `by` *Column* `(` *TransformationSubQuery* `)`
+
+*T* `|` `partition` [ *Hints* ] `by` *Column* `{` *ContextFreeSubQuery* `}`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | string | &check; | The input tabular source.|
+| *Column*| string | &check; | The name of a column in *T* whose values determine how the input table is to be partitioned.|
+| *TransformationSubQuery*| string | &check; | A tabular transformation expression, whose source is implicitly the subtables produced by partitioning the records of *T*, each subtable being homogenous on the value of *Column*.|
+| *ContextFreeSubQuery*| string | &check; | A tabular expression that includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.|
+| *Hints*| string | | Zero or more space-separated parameters in the form of: *HintName* `=` *Value* that control the behavior of the operator. See the [supported hints](#supported-hints).
+
+### Supported hints
+
+|HintName|Type|Description|Native/Shuffle/Legacy strategy|
+|--|--|--|--|
+|`hint.strategy`| string | The value `legacy`, `shuffle`, or `native`. This hint defines the execution strategy of the partition operator. `native` strategy is used with an implicit source with thousands of key partition values. `shuffle` strategy is used with an implicit source with millions of key partition values. `legacy` strategy is used with an explicit or implicit source with 64 or less key partition values. If no strategy is specified, the `legacy` strategy is used. For more information, see [Strategies](#strategies).|Native, Shuffle, Legacy|
+|`hint.shufflekey`| string | The partition key. Runs the partition operator in shuffle strategy where the shuffle key is the specified partition key.|Shuffle|
+|`hint.materialized`| bool |If set to `true`, will materialize the source of the `partition` operator. The default value is `false`. |Legacy|
+|`hint.concurrency`| int |Hints the system how many partitions to run in parallel. The default value is 16.|Legacy|
+|`hint.spread`| int |Hints the system how to distribute the partitions among cluster nodes. For example, if there are N partitions and the spread hint is set to P, then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint. The default value is 1.|Legacy|
+
+## Returns
+
+The operator returns a union of the results of the individual subqueries.
+
+## Strategies
+
+The partition operator supports several strategies of subquery operation: [native](#native-strategy), [shuffle](#shuffle-strategy), and [legacy](#legacy-strategy).
+
+The distinction between the `native` and `shuffle` strategies allows the caller to indicate the cardinality and execution strategy of the subquery. This choice may affect how long the subquery takes to complete but doesn't change the end result.
+
+For all strategies, the result of the subquery must be a single tabular result. Multiple tabular results and the use of the [fork](forkoperator.md) operator aren't supported. A subquery can't include other statements, such as a [let statement](letstatement.md).
 
 ### Native strategy
 
@@ -80,38 +113,6 @@ To use this strategy, specify `hint.strategy=legacy` or omit any other strategy 
 
 > [!NOTE]
 > An error occurs if the partition column, *Column*, contains more than 64 distinct values.
-
-## Syntax
-
-*T* `|` `partition` [ *Hints* ] `by` *Column* `(` *TransformationSubQuery* `)`
-
-*T* `|` `partition` [ *Hints* ] `by` *Column* `{` *ContextFreeSubQuery* `}`
-
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
-
-## Parameters
-
-| Name | Type | Required | Description |
-|--|--|--|--|
-| *T* | string | &check; | The input tabular source.|
-| *Column*| string | &check; | The name of a column in *T* whose values determine how the input table is to be partitioned.|
-| *TransformationSubQuery*| string | &check; | A tabular transformation expression, whose source is implicitly the subtables produced by partitioning the records of *T*, each subtable being homogenous on the value of *Column*.|
-| *ContextFreeSubQuery*| string | &check; | A tabular expression that includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.|
-| *Hints*| string | | Zero or more space-separated parameters in the form of: *HintName* `=` *Value* that control the behavior of the operator. See the [supported hints](#supported-hints).
-
-### Supported hints
-
-|HintName|Type|Description|Native/Shuffle/Legacy strategy|
-|--|--|--|--|
-|`hint.strategy`| string | The value `legacy`, `shuffle`, or `native`. This hint defines the execution strategy of the partition operator. `native` strategy is used with an implicit source with thousands of key partition values. `shuffle` strategy is used with an implicit source with millions of key partition values. `legacy` strategy is used with an explicit or implicit source with 64 or less key partition values.|Native, Shuffle, Legacy|
-|`hint.shufflekey`| string | The partition key. Runs the partition operator in shuffle strategy where the shuffle key is the specified partition key.|Shuffle|
-|`hint.materialized`| bool |If set to `true`, will materialize the source of the `partition` operator. The default value is `false`. |Legacy|
-|`hint.concurrency`| int |Hints the system how many partitions to run in parallel. The default value is 16.|Legacy|
-|`hint.spread`| int |Hints the system how to distribute the partitions among cluster nodes. For example, if there are N partitions and the spread hint is set to P, then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint. The default value is 1.|Legacy|
-
-## Returns
-
-The operator returns a union of the results of the individual subqueries.
 
 ## Examples
 
