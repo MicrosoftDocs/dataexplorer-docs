@@ -31,9 +31,9 @@ The partition operator supports several strategies of subquery operation:
 |--|--|--|--|
 | *T* | string | &check; | The input tabular source.|
 | *Strategy* | string | The value `legacy`, `shuffle`, or `native`. This hint defines the execution strategy of the partition operator.</br></br>The [native strategy](#native-strategy) is used with an implicit source with thousands of key partition values. The [shuffle strategy](#shuffle-strategy) is used with an implicit source with millions of key partition values. The [legacy strategy](#legacy-strategy) is used with an explicit or implicit source with 64 or less key partition values.</br></br>If no strategy is specified, the `legacy` strategy is used. For more information, see [Strategies](#strategies). | 
-| *Column*| string | &check; | The name of a column in *T* whose values determine how the input table is to be partitioned.|
-| *TransformationSubQuery*| string | &check; | A tabular transformation expression, whose source is implicitly the subtables produced by partitioning the records of *T*, each subtable being homogenous on the value of *Column*.|
-| *SubQueryWithSource*| string | &check; | A tabular expression that includes its own tabular source, such as a table reference. This syntax is only supported with the `legacy` strategy. The expression can only reference the key column, *Column*, from the input source *T*. To reference the column, use the syntax `toscalar(`*Column*`)`.|
+| *Column*| string | &check; | The name of a column in *T* whose values determine how to partition the input tabular source.|
+| *TransformationSubQuery*| string | &check; | A tabular transformation expression. The source is implicitly the subtables produced by partitioning the records of *T*. Each subtable is homogenous on the value of *Column*.</br></br>The expression must provide only one tabular result and should not have other types of statements like [let statements](letstatement.md).|
+| *SubQueryWithSource*| string | &check; | A tabular expression that includes its own tabular source, such as a table reference. This syntax is only supported with the `legacy` strategy. The subquery can only reference the key column, *Column*, from *T*. To reference the column, use the syntax `toscalar(`*Column*`)`.</br></br>The expression must provide only one tabular result and should not have other types of statements like [let statements](letstatement.md).|
 | *Hints*| string | | Zero or more space-separated parameters in the form of: *HintName* `=` *Value* that control the behavior of the operator. See the [supported hints](#supported-hints) per strategy type.
 
 ### Supported hints
@@ -42,7 +42,7 @@ The partition operator supports several strategies of subquery operation:
 |--|--|--|--|
 |`hint.shufflekey`| string | `shuffle` | The partition key. Runs the partition operator in `shuffle` strategy where the shuffle key is the specified partition key. |
 |`hint.materialized`| bool | `legacy`| If set to `true`, will materialize the source of the `partition` operator. The default value is `false`. |
-|`hint.concurrency`| int | `legacy` | Hints how many partitions to run in parallel. The default value is 16.|
+|`hint.concurrency`| int | `legacy` | Hints how many partitions to run in parallel. The default value is `16`.|
 |`hint.spread`| int | `legacy` | Hints how to distribute the partitions among cluster nodes. For example, if there are *N* partitions and the spread hint is set to *P*, then the *N* partitions will be processed by *P* different cluster nodes equally in parallel/sequentially depending on the concurrency hint. The default value is `1`.|
 
 ## Returns
@@ -55,19 +55,21 @@ The partition operator supports several strategies of subquery operation: [nativ
 
 The distinction between the `native` and `shuffle` strategies allows the caller to indicate the cardinality and execution strategy of the subquery. This choice may affect how long the subquery takes to complete but doesn't change the end result.
 
-For all strategies, the result of the subquery must be a single tabular result. Multiple tabular results and the use of the [fork](forkoperator.md) operator aren't supported. A subquery can't include other statements, such as a [let statement](letstatement.md).
-
 ### Native strategy
 
-For this strategy, the subquery must be a tabular transformation that doesn't specify a tabular source. The source is implicit and is assigned according to the subtable partitions. It should be applied when the number of distinct values of the partition key isn't large, roughly in the thousands.
+This strategy should be applied when the number of distinct values of the partition key isn't large, roughly in the thousands.
 
-To use this strategy, specify `hint.strategy=native`. There's no restriction on the number of partitions.
+The subquery must be a tabular transformation that doesn't specify a tabular source. The source is implicit and is assigned according to the subtable partitions. Only certain [supported operators](#supported-operators-for-the-native-and-shuffle-strategies) can be used in the subquery. There's no restriction on the number of partitions.
+
+To use this strategy, specify `hint.strategy=native`.
 
 ### Shuffle strategy
 
-For this strategy, the subquery must be a tabular transformation that doesn't specify a tabular source. The source is implicit and will be assigned according to the subtable partitions. It should be applied when the number of distinct values of the partition key is large, in the millions. 
+This strategy should be applied when the number of distinct values of the partition key is large, in the millions.
 
-To use this strategy, specify `hint.strategy=shuffle`. There's no restriction on the number of partitions. For more information about shuffle strategy and performance, see [shuffle query](shufflequery.md).
+The subquery must be a tabular transformation that doesn't specify a tabular source. The source is implicit and is assigned according to the subtable partitions. Only certain [supported operators](#supported-operators-for-the-native-and-shuffle-strategies) can be used in the subquery. There's no restriction on the number of partitions.
+
+To use this strategy, specify `hint.strategy=shuffle`. For more information about shuffle strategy and performance, see [shuffle query](shufflequery.md).
 
 ### Supported operators for the native and shuffle strategies
 
@@ -99,15 +101,16 @@ To use this strategy, specify `hint.strategy=shuffle`. There's no restriction on
 * [where](whereoperator.md)
 
 > [!NOTE]
-> Operators like [join](joinoperator.md), [union](unionoperator.md), [externaldata](externaldata-operator.md), [evaluate](evaluateoperator.md) (plugins), or any operator employing a table source other than the subtable partitions aren't compatible with the `native` and `shuffle` strategies. For these scenarios, resort to the [legacy strategy](#legacy-strategy).
+> * Operators like [join](joinoperator.md), [union](unionoperator.md), [externaldata](externaldata-operator.md), [evaluate](evaluateoperator.md) (plugins), or any operator employing a table source other than the subtable partitions aren't compatible with the `native` and `shuffle` strategies. For these scenarios, resort to the [legacy strategy](#legacy-strategy).
+> * The [fork](forkoperator.md) operator isn't supported for any strategy type because the subquery must return a single tabular result.
 
 ### Legacy strategy
 
-For historical reasons, the `legacy` strategy is the default strategy. However, we recommend favoring the `native` or `shuffle` strategies, as the `legacy` approach is limited to 64 partitions and is less efficient.
+For historical reasons, the `legacy` strategy is the default strategy. However, we recommend favoring the [native](#native-strategy) or [shuffle](#shuffle-strategy) strategies, as the `legacy` approach is limited to 64 partitions and is less efficient.
 
-In some scenarios, the `legacy` strategy might be necessary due to its support for including a tabular source in the subquery. In a subquery with an explicit tabular source, only the key column of the input table is accessible. The key column can be referred to using its name within the [toscalar()](toscalarfunction.md) function.
+In some scenarios, the `legacy` strategy might be necessary due to its support for including a tabular source in the subquery. This is the *SubQueryWithSource* syntax. In such cases, the subquery can only reference the key column, *Column*, from the input tabular source, *T*. To reference the column, use the syntax `toscalar(`*Column*`)`.
 
-Like the `native` and `shuffle` strategies, if the subquery is a tabular transformation without a specified tabular source, the source is implicit and is based on the subtable partitions.
+If the subquery is a tabular transformation without a tabular source, the source is implicit and is based on the subtable partitions.
 
 To use this strategy, specify `hint.strategy=legacy` or omit any other strategy indication.
 
