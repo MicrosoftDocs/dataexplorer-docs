@@ -31,17 +31,33 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 
 ## Parameters
 
+::: zone-end
+
+::: zone pivot="azuredataexplorer"
+
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*output_schema*|string|&check;|A `type` literal that defines the output schema of the tabular data, returned by the Python code. The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`. For example, `typeof(col1:string, col2:long)`. To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`.|
 |*script*|string|&check;|The valid Python script to execute. To generate multi-line strings, see [Usage tips](#usage-tips).|
 |*script_parameters*|dynamic||A property bag of name value pairs to be passed to the Python script as the reserved `kargs` dictionary. For more information, see [Reserved Python variables](#reserved-python-variables).|
-::: zone-end
-::: zone pivot="azuredataexplorer"
 |`hint.distribution`|string||A hint for the plugin's execution to be distributed across multiple cluster nodes. The default value is `single`. `single` means a single instance of the script will run over the entire query data. `per_node` means that if the query before the Python block is distributed, an instance of the script will run on each node, on the data that it contains.|
-|*external_artifacts*|dynamic||A property bag of name and URL pairs for artifacts that are accessible from cloud storage. See more in [Using external artifacts](#using-external-artifacts).| ::: zone-end
-::: zone pivot="azuredataexplorer, fabric"
+|*external_artifacts*|dynamic||A property bag of name and URL pairs for artifacts that are accessible from cloud storage. See more in [Using external artifacts](#using-external-artifacts).|
 |*spill_to_disk*|bool||Specifies an alternative method for serializing the input table to the Python sandbox. For serializing big tables set it to `true` to speed up the serialization and significantly reduce the sandbox memory consumption. Default is `true`.|
+
+::: zone-end
+
+::: zone pivot="fabric"
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*output_schema*|string|&check;|A `type` literal that defines the output schema of the tabular data, returned by the Python code. The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`. For example, `typeof(col1:string, col2:long)`. To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`.|
+|*script*|string|&check;|The valid Python script to execute. To generate multi-line strings, see [Usage tips](#usage-tips).|
+|*script_parameters*|dynamic||A property bag of name value pairs to be passed to the Python script as the reserved `kargs` dictionary. For more information, see [Reserved Python variables](#reserved-python-variables).|
+|*spill_to_disk*|bool||Specifies an alternative method for serializing the input table to the Python sandbox. For serializing big tables set it to `true` to speed up the serialization and significantly reduce the sandbox memory consumption. Default is `true`.|
+
+::: zone-end
+
+::: zone pivot="azuredataexplorer, fabric"
 
 ## Reserved Python variables
 
@@ -51,14 +67,23 @@ The following variables are reserved for interaction between Kusto Query Languag
 * `kargs`: The value of the *script_parameters* argument, as a Python dictionary.
 * `result`: A `pandas` DataFrame created by the Python script, whose value becomes the tabular data that gets sent to the Kusto query operator that follows the plugin.
 
-::: zone-end
-::: zone pivot="azuredataexplorer"
-
 ## Enable the plugin
 
-The plugin is disabled by default. Before you start, review the list of [prerequisites](../concepts/sandboxes.md#prerequisites-and-limitations).
+::: zone-end
 
-To enable the plugin and select the version of the Python image, see [Enable language extensions on your cluster](../../language-extensions.md#enable-language-extensions-on-your-cluster).
+::: zone pivot="azuredataexplorer"
+
+The plugin is disabled by default. Before you start, review the list of [prerequisites](../concepts/sandboxes.md#prerequisites-and-limitations). To enable the plugin and select the version of the Python image, see [Enable language extensions on your cluster](../../language-extensions.md#enable-language-extensions-on-your-cluster).
+
+::: zone-end
+
+::: zone pivot="fabric"
+
+The plugin is disabled by default. Before you start, <!-- [enabled the Python plugin](/fabric/real-time-analytics/python-plugin)--> in your KQL database.
+
+::: zone-end
+
+::: zone pivot="azuredataexplorer"
 
 ## Python sandbox image
 
