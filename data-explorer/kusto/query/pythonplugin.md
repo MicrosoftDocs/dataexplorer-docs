@@ -11,12 +11,12 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer"
 
-[!INCLUDE [python-plugin-adx](../../../includes/python-plugin-adx.md)]
+[!INCLUDE [python-plugin-adx](../../includes/python-plugin-adx.md)]
 ::: zone-end
 
 ::: zone pivot="fabric"
 
-[!INCLUDE [python-plugin-fabric](../../../../includes/python-plugin-fabric.md)]
+[!INCLUDE [python-plugin-fabric](../../includes/python-plugin-fabric.md)]
 
 ::: zone-end
 
