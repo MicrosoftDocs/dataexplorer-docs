@@ -3,11 +3,13 @@ title:  partition operator
 description: Learn how to use the partition operator to partition the records of the input table into multiple subtables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/09/2023
+ms.date: 08/14/2023
 ---
 # Partition operator
 
 The partition operator partitions the records of its input table into multiple subtables according to values in a key column. The operator runs a subquery on each subtable, and produces a single output table that is the union of the results of all subqueries. This operator is useful when you need to perform a subquery only on a subset of rows that belongs to the same partition key, and not query the whole dataset. These subqueries could include aggregate functions, window functions, top N and others.
+
+## Strategies
 
 The partition operator supports several strategies of subquery operation:
 
@@ -15,24 +17,50 @@ The partition operator supports several strategies of subquery operation:
 * [Shuffle](#shuffle-strategy) - use with an implicit source with millions of key partition values.
 * [Legacy](#legacy-strategy) - use with an implicit or explicit source for 64 or less key partition values.
 
-## Native strategy
+> [!NOTE]
+> The distinction between the `native` and `shuffle` strategies allows the caller to indicate the cardinality and execution strategy of the subquery. This choice may affect how long the subquery takes to complete but doesn't change the end result.
+
+### Native strategy
 
 This subquery is a tabular transformation that doesn't specify a tabular source. The source is implicit and is assigned according to the subtable partitions. It should be applied when the number of distinct values of the partition key isn't large, roughly in the thousand. Use `hint.strategy=native` for this strategy. There's no restriction on the number of partitions.
 
-## Shuffle strategy
+### Shuffle strategy
 
 This subquery is a tabular transformation that doesn't specify a tabular source. The source is implicit and will be assigned according to the subtable partitions. The strategy applies when the number of distinct values of the partition key is large, in the millions. Use `hint.strategy=shuffle` for this strategy. There's no restriction on the number of partitions. For more information about shuffle strategy and performance, see [shuffle](shufflequery.md).
 
-## Native and shuffle strategy operators
+### Supported operators for the native and shuffle strategies
 
-The difference between `hint.strategy=native` and `hint.strategy=shuffle` is mainly to allow the caller to indicate the cardinality and execution strategy of the subquery, and can affect the execution time. There's no other semantic difference
-between the two.
+* [count](countoperator.md)
+* [distinct](distinctoperator.md)
+* [extend](extendoperator.md)
+* [make-series](make-seriesoperator.md)
+* [mv-apply](mv-applyoperator.md)
+* [mv-expand](mvexpandoperator.md)
+* [parse](parseoperator.md)
+* [parse-where](parsewhereoperator.md)
+* [project](projectoperator.md)
+* [project-away](projectawayoperator.md)
+* [project-keep](project-keep-operator.md)
+* [project-rename](projectrenameoperator.md)
+* [project-reorder](projectreorderoperator.md)
+* [reduce](reduceoperator.md)
+* [sample](sampleoperator.md)
+* [sample-distinct](sampledistinctoperator.md)
+* [scan](scan-operator.md)
+* [search](searchoperator.md)
+* [serialize](serializeoperator.md)
+* [sort](sort-operator.md)
+* [summarize](summarizeoperator.md)
+* [take](takeoperator.md)
+* [top](topoperator.md)
+* [top-hitters](tophittersoperator.md)
+* [top-nested](topnestedoperator.md)
+* [where](whereoperator.md)
 
-For `native` and `shuffle` strategy, the source of the subquery is implicit, and can't be referenced by the subquery. This strategy supports a limited set of operators: `project`, `sort`, `summarize`, `take`, `top`, `order`, `mv-expand`, `mv-apply`, `make-series`, `limit`, `extend`, `distinct`, `count`, `project-away`, `project-keep`, `project-rename`, `project-reorder`, `parse`, `parse-where`, `reduce`, `sample`, `sample-distinct`, `scan`, `search`, `serialize`, `top-nested`, `top-hitters` and `where`.
+> [!NOTE]
+> Operators like [join](joinoperator.md), [union](unionoperator.md), [externaldata](externaldata-operator.md), [evaluate](evaluateoperator.md) (plugins), or any operator employing a table source other than the subtable partitions aren't compatible with the `native` and `shuffle` strategies. For these scenarios, resort to the [legacy strategy](#legacy-strategy).
 
-Operators like `join`, `union`, `external_data`, `evaluate` (plugins), or any other operator that involves table source that isn't the subtable partitions, aren't allowed.
-
-## Legacy strategy
+### Legacy strategy
 
 Legacy subqueries can use the following sources:
 
