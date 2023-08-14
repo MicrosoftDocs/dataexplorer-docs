@@ -330,7 +330,9 @@ The state starts empty and updates whenever a scanned input row matches a step. 
 
 ### Step-by-step walkthrough
 
-This section follows the logic of the scan operator through each input row, explaining the transformation of the state and output at each step.
+This section follows the logic of the scan operator through each input row, explaining the transformation of the state and output at each step. 
+
+The provided example finds all sequences of events between the event `Start` and the event `Stop` that occur within 5 minutes and assigns a match ID for each sequence. In the following sections, the term *active sequence* indicates a case where the `Start` is recorded but `Stop` isn't, allowing for a possible match with the latest match ID.
 
 > [!NOTE]
 > Each record from the input is evaluated against all of the scan steps, starting from last to first. A match can only happen if the corresponding or prior step isn't empty.
