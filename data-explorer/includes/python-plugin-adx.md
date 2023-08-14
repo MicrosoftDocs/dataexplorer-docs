@@ -3,13 +3,13 @@ ms.topic: include
 ms.date: 08/14/2023
 ---
 
-The Python plugin runs a user-defined function (UDF) using a Python script. The Python script gets tabular data as its input, and produces tabular output. The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running on the cluster's nodes.
+The Python plugin runs a user-defined function (UDF) using a Python script. The Python script gets tabular data as its input, and produces tabular output. The plugin's runtime is hosted in [sandboxes](../kusto/concepts/sandboxes.md), running on the cluster's nodes.
 
 ## Syntax
 
 *T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*][`,` *external_artifacts*][`,` *spill_to_disk*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -32,24 +32,24 @@ The following variables are reserved for interaction between Kusto Query Languag
 
 ## Enable the plugin
 
-The plugin is disabled by default. Before you start, review the list of [prerequisites](../concepts/sandboxes.md#prerequisites-and-limitations). To enable the plugin and select the version of the Python image, see [Enable language extensions on your cluster](../../language-extensions.md#enable-language-extensions-on-your-cluster).
+The plugin is disabled by default. Before you start, review the list of [prerequisites](../kusto/concepts/sandboxes.md#prerequisites-and-limitations). To enable the plugin and select the version of the Python image, see [Enable language extensions on your cluster](../language-extensions.md#enable-language-extensions-on-your-cluster).
 
 ## Python sandbox image
 
-To change the version of the Python image, see [Change the Python language extensions image on your cluster](../../language-extensions.md#change-the-python-language-extensions-image-on-your-cluster).
+To change the version of the Python image, see [Change the Python language extensions image on your cluster](../language-extensions.md#change-the-python-language-extensions-image-on-your-cluster).
 
-To see the list of packages for the different Python images, see [Python package reference](../../python-package-reference.md).
+To see the list of packages for the different Python images, see [Python package reference](../python-package-reference.md).
 
 > [!NOTE]
 >
 > * By default, the plugin imports *numpy* as **np** and *pandas* as **pd**. Optionally, you can import other modules as needed.
 > * Some packages might be incompatible with the limitations enforced by the sandbox where the plugin is run.
 
-## Use Ingestion from query and update policy
+## Use ingestion from query and update policy
 
 * Use the plugin in queries that are:
-  * Defined as part of an [update policy](../management/updatepolicy.md), whose source table is ingested to using *non-streaming* ingestion.
-  * Run as part of a command that [ingests from a query](../management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
+  * Defined as part of an [update policy](../kusto/management/updatepolicy.md), whose source table is ingested to using *non-streaming* ingestion.
+  * Run as part of a command that [ingests from a query](../kusto/management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
 * You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../../ingest-data-streaming.md).
 
 ## Examples
@@ -93,8 +93,8 @@ print "This is an example for using 'external_artifacts'"
 )
 ~~~
 
-| File                  | Size |
-|-----------------------|------|
+| File   | Size |
+|--------|------|
 | this_is_a_script      | 120  |
 | this_is_my_first_file | 105  |
 
@@ -130,17 +130,18 @@ print "This is an example for using 'external_artifacts'"
         bag_pack('gain', 100, 'cycles', 4))
     | render linechart 
  ```
+
 ## Using External Artifacts
 
 External artifacts from cloud storage can be made available for the script and used at runtime.
 
 The URLs referenced by the external artifacts property must be:
 
-* Included in the cluster's [callout policy](../management/calloutpolicy.md).
+* Included in the cluster's [callout policy](../kusto/management/calloutpolicy.md).
 * In a publicly available location, or provide the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage-connection-strings.md).
 
 > [!NOTE]
-> When authenticating external artifacts using Managed Identities, the `SandboxArtifacts` usage must be defined on the cluster level [managed identity policy](../management/managed-identity-policy.md).
+> When authenticating external artifacts using Managed Identities, the `SandboxArtifacts` usage must be defined on the cluster level [managed identity policy](../kusto/management/managed-identity-policy.md).
 
 The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Examples](#examples).
 
@@ -162,8 +163,8 @@ Install packages as follows:
 ### Prerequisites
 
   1. Create a blob container to host the packages, preferably in the same place as your cluster. For example, `https://artifactswestus.blob.core.windows.net/python`, assuming your cluster is in West US.
-  1. Alter the cluster's [callout policy](../management/calloutpolicy.md) to allow access to that location.
-        * This change requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
+  1. Alter the cluster's [callout policy](../kusto/management/calloutpolicy.md) to allow access to that location.
+        * This change requires [AllDatabasesAdmin](../kusto/management/access-control/role-based-access-control.md) permissions.
 
         * For example, to enable access to a blob located in `https://artifactswestus.blob.core.windows.net/python`, run the following command:
 
@@ -218,14 +219,12 @@ range ID from 1 to 3 step 1
     external_artifacts=bag_pack('faker.zip', 'https://artifacts.blob.core.windows.net/kusto/Faker.zip?*** REPLACE WITH YOUR SAS TOKEN ***'))
 ~~~
 
-| ID | Name         |
+| ID | Name |
 |----|--------------|
 |   1| Gary Tapia   |
 |   2| Emma Evans   |
 |   3| Ashley Bowen |
 
----
-
 ## See also
 
-For more examples of UDF functions that use the Python plugin, see the [Functions library](../functions-library/functions-library.md).
+For more examples of UDF functions that use the Python plugin, see the [Functions library](../kusto/functions-library/functions-library.md).

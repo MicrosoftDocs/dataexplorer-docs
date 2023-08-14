@@ -9,7 +9,7 @@ The Python plugin runs a user-defined function (UDF) using a Python script. The 
 
 *T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*][`,` *spill_to_disk*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -35,18 +35,18 @@ The plugin is disabled by default. Before you start, ##TODO <!-- [enabled the Py
 
 ## Python sandbox image
 
-To see the list of packages for the Python image, see [Python package reference](../../python-package-reference.md).
+To see the package for the Python image, see [Python package reference](../python-package-reference.md).
 
 > [!NOTE]
 >
 > * By default, the plugin imports *numpy* as **np** and *pandas* as **pd**. Optionally, you can import other modules as needed.
 > * Some packages might be incompatible with the limitations enforced by the sandbox where the plugin is run.
 
-## Use Ingestion from query and update policy
+## Use ingestion from query and update policy
 
 * Use the plugin in queries that are:
-  * Defined as part of an [update policy](../management/updatepolicy.md), whose source table is ingested to using *non-streaming* ingestion.
-  * Run as part of a command that [ingests from a query](../management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
+  * Defined as part of an [update policy](../kusto/management/updatepolicy.md), whose source table is ingested to using *non-streaming* ingestion.
+  * Run as part of a command that [ingests from a query](../kusto/management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
 * You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../../ingest-data-streaming.md).
 
 ## Examples
@@ -105,4 +105,6 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
 
 ## See also
 
-For more examples of UDF functions that use the Python plugin, see the [Functions library](../functions-library/functions-library.md).
+For more examples of UDF functions that use the Python plugin, see the [Functions library](../kusto/functions-library/functions-library.md).
+
+
