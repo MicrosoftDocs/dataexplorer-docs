@@ -32,8 +32,8 @@ The partition operator supports several strategies of subquery operation:
 | *T* | string | &check; | The input tabular source.|
 | *Strategy* | string | The value `legacy`, `shuffle`, or `native`. This hint defines the execution strategy of the partition operator.</br></br>The [native strategy](#native-strategy) is used with an implicit source with thousands of key partition values. The [shuffle strategy](#shuffle-strategy) is used with an implicit source with millions of key partition values. The [legacy strategy](#legacy-strategy) is used with an explicit or implicit source with 64 or less key partition values.</br></br>If no strategy is specified, the `legacy` strategy is used. For more information, see [Strategies](#strategies). | 
 | *Column*| string | &check; | The name of a column in *T* whose values determine how to partition the input tabular source.|
-| *TransformationSubQuery*| string | &check; | A tabular transformation expression. The source is implicitly the subtables produced by partitioning the records of *T*. Each subtable is homogenous on the value of *Column*.</br></br>The expression must provide only one tabular result and should not have other types of statements like [let statements](letstatement.md).|
-| *SubQueryWithSource*| string | &check; | A tabular expression that includes its own tabular source, such as a table reference. This syntax is only supported with the `legacy` strategy. The subquery can only reference the key column, *Column*, from *T*. To reference the column, use the syntax `toscalar(`*Column*`)`.</br></br>The expression must provide only one tabular result and should not have other types of statements like [let statements](letstatement.md).|
+| *TransformationSubQuery*| string | &check; | A tabular transformation expression. The source is implicitly the subtables produced by partitioning the records of *T*. Each subtable is homogenous on the value of *Column*.</br></br>The expression must provide only one tabular result and shouldn't have other types of statements like [let statements](letstatement.md).|
+| *SubQueryWithSource*| string | &check; | A tabular expression that includes its own tabular source, such as a table reference. This syntax is only supported with the `legacy` strategy. The subquery can only reference the key column, *Column*, from *T*. To reference the column, use the syntax `toscalar(`*Column*`)`.</br></br>The expression must provide only one tabular result and shouldn't have other types of statements like [let statements](letstatement.md).|
 | *Hints*| string | | Zero or more space-separated parameters in the form of: *HintName* `=` *Value* that control the behavior of the operator. See the [supported hints](#supported-hints) per strategy type.
 
 ### Supported hints
@@ -110,7 +110,7 @@ The following list of operators can be used in subqueries with the native or shu
 
 For historical reasons, the `legacy` strategy is the default strategy. However, we recommend favoring the [native](#native-strategy) or [shuffle](#shuffle-strategy) strategies, as the `legacy` approach is limited to 64 partitions and is less efficient.
 
-In some scenarios, the `legacy` strategy might be necessary due to its support for including a tabular source in the subquery. This is the *SubQueryWithSource* syntax. In such cases, the subquery can only reference the key column, *Column*, from the input tabular source, *T*. To reference the column, use the syntax `toscalar(`*Column*`)`.
+In some scenarios, the `legacy` strategy might be necessary due to its support for including a tabular source in the subquery. In such cases, the subquery can only reference the key column, *Column*, from the input tabular source, *T*. To reference the column, use the syntax `toscalar(`*Column*`)`.
 
 If the subquery is a tabular transformation without a tabular source, the source is implicit and is based on the subtable partitions.
 
@@ -188,7 +188,7 @@ StormEvents
 
 ### Shuffle strategy
 
-The following query will return the top 3 `DamagedProperty` values foreach `EpisodeId` and the columns `EpisodeId` and `State`.
+The following query returns the top 3 `DamagedProperty` values foreach `EpisodeId` and the columns `EpisodeId` and `State`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OsQ6DMBBDd77iRiohFuZuZeiGxBcEOCAV5KKLQYrUjyewsODBi+0ntxBd650dQvYnbxQWVhzN1qEMUAOe4jvM2zguTF2k2tsgA3+HjJLyyyGeqjP8mNVM3Kh4VsQrS1CVH/e4lwW1SNziqf5KL3rZHA7GAN74mQAAAA==" target="_blank">Run the query</a>
