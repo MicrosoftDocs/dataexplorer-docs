@@ -49,6 +49,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | Function Name | Description |
 |--|--|
 | [quantize_fl()](quantize-fl.md) | Quantize metric columns. |
+| [series_clean_anomalies_fl()](series-clean-anomalies-fl.md) | Replace anomalies in a series by interpolated value. |
 | [series_cosine_similarity_fl()](series-cosine-similarity-fl.md) | Calculate the cosine similarity of two numerical vectors. |
 | [series_dbl_exp_smoothing_fl()](series-dbl-exp-smoothing-fl.md) | Apply a double exponential smoothing filter on series. |
 | [series_dot_product_fl()](series-dot-product-fl.md) | Calculate the dot product of two numerical vectors. |
