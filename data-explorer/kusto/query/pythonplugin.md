@@ -3,16 +3,25 @@ title:  Python plugin
 description: Learn how to use the Python plugin to run user-defined functions using a Python script.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/24/2023
+ms.date: 08/13/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
 # Python plugin
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The Python plugin runs a user-defined function (UDF) using a Python script. The Python script gets tabular data as its input, and produces tabular output.
+
+::: zone-end
+
+::: zone pivot="azuredataexplorer"
+
 The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running on the cluster's nodes.
+
+::: zone-end
+
+::: zone pivot="azuredataexplorer, fabric"
 
 ## Syntax
 
@@ -27,8 +36,11 @@ The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running
 |*output_schema*|string|&check;|A `type` literal that defines the output schema of the tabular data, returned by the Python code. The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`. For example, `typeof(col1:string, col2:long)`. To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`.|
 |*script*|string|&check;|The valid Python script to execute. To generate multi-line strings, see [Usage tips](#usage-tips).|
 |*script_parameters*|dynamic||A property bag of name value pairs to be passed to the Python script as the reserved `kargs` dictionary. For more information, see [Reserved Python variables](#reserved-python-variables).|
+::: zone-end
+::: zone pivot="azuredataexplorer"
 |`hint.distribution`|string||A hint for the plugin's execution to be distributed across multiple cluster nodes. The default value is `single`. `single` means a single instance of the script will run over the entire query data. `per_node` means that if the query before the Python block is distributed, an instance of the script will run on each node, on the data that it contains.|
-|*external_artifacts*|dynamic||A property bag of name and URL pairs for artifacts that are accessible from cloud storage. See more in [Using external artifacts](#using-external-artifacts).|
+|*external_artifacts*|dynamic||A property bag of name and URL pairs for artifacts that are accessible from cloud storage. See more in [Using external artifacts](#using-external-artifacts).| ::: zone-end
+::: zone pivot="azuredataexplorer, fabric"
 |*spill_to_disk*|bool||Specifies an alternative method for serializing the input table to the Python sandbox. For serializing big tables set it to `true` to speed up the serialization and significantly reduce the sandbox memory consumption. Default is `true`.|
 
 ## Reserved Python variables
@@ -39,12 +51,14 @@ The following variables are reserved for interaction between Kusto Query Languag
 * `kargs`: The value of the *script_parameters* argument, as a Python dictionary.
 * `result`: A `pandas` DataFrame created by the Python script, whose value becomes the tabular data that gets sent to the Kusto query operator that follows the plugin.
 
+::: zone-end
+::: zone pivot="azuredataexplorer"
+
 ## Enable the plugin
 
 The plugin is disabled by default. Before you start, review the list of [prerequisites](../concepts/sandboxes.md#prerequisites-and-limitations).
 
 To enable the plugin and select the version of the Python image, see [Enable language extensions on your cluster](../../language-extensions.md#enable-language-extensions-on-your-cluster).
-
 
 ## Python sandbox image
 
@@ -56,6 +70,10 @@ To see the list of packages for the different Python images, see [Python package
 >
 > * By default, the plugin imports *numpy* as **np** and *pandas* as **pd**. Optionally, you can import other modules as needed.
 > * Some packages might be incompatible with the limitations enforced by the sandbox where the plugin is run.
+
+::: zone-end
+
+::: zone pivot="azuredataexplorer, fabric"
 
 ## Use Ingestion from query and update policy
 
@@ -117,11 +135,22 @@ print "This is an example for using 'external_artifacts'"
 * Reduce the plugin's input data set to the minimum amount required (columns/rows).
   * Use filters on the source data set, when possible, with Kusto's query language.
   * To do a calculation on a subset of the source columns, project only those columns before invoking the plugin.
+::: zone-end
+
+::: zone pivot="azuredataexplorer"
+
 * Use `hint.distribution = per_node` whenever the logic in your script is distributable.
   * You can also use the [partition operator](partitionoperator.md) for partitioning the input data set.
 * Use Kusto's query language whenever possible, to implement the logic of your Python script.
+::: zone-end
+
+::: zone pivot="azuredataexplorer, fabric"
 
 ## Usage tips
+
+::: zone-end
+
+::: zone pivot="azuredataexplorer"
 
 * To generate multi-line strings containing the Python script in `Kusto.Explorer`, copy your Python script from your favorite
   Python editor (*Jupyter*, *Visual Studio Code*, *PyCharm*, and so on).
@@ -134,6 +163,10 @@ print "This is an example for using 'external_artifacts'"
       decorated with quotes and new lines, so it's valid in Kusto, and automatically pasted into the query tab.
   * Paste the Python code directly into the query tab. Select those lines, and press **Ctrl+K**, **Ctrl+S** hot keys, to decorate them as
       above. To reverse, press **Ctrl+K**, **Ctrl+M** hot keys. See the full list of [Query Editor shortcuts](../tools/kusto-explorer-shortcuts.md#query-editor).
+::: zone-end
+
+::: zone pivot="azuredataexplorer, fabric"
+
 * To avoid conflicts between Kusto string delimiters and Python string literals, use:
   * Single quote characters (`'`) for Kusto string literals in Kusto queries
   * Double quote characters (`"`) for Python string literals in Python scripts
@@ -153,6 +186,9 @@ print "This is an example for using 'external_artifacts'"
         bag_pack('gain', 100, 'cycles', 4))
     | render linechart 
  ```
+::: zone-end
+
+::: zone pivot="azuredataexplorer"
 
 ## Using External Artifacts
 
@@ -250,13 +286,17 @@ range ID from 1 to 3 step 1
 
 ---
 
+::: zone-end
+
+::: zone pivot="azuredataexplorer, fabric"
+
 ## See also
 
 For more examples of UDF functions that use the Python plugin, see the [Functions library](../functions-library/functions-library.md).
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This capability isn't supported.
 
