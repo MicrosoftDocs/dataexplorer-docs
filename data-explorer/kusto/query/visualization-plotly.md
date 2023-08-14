@@ -26,6 +26,10 @@ The Plotly graphics library supports ~80 chart types including basic charts, sci
 | Full customization tailored to the specific scenarios. | To create the visualization the user needs to know the Python language and Plotly API.
 | As the script runs on the server side, it can efficiently process big amounts of data to create the visualization. |
 
+> [!NOTE]
+> For best performance, make sure that the python plugin image contains the latest versions of both the Python engine (currently 3.10.8) and Plotly package (currently 5.11.0). These versions can be checked with the [get_packages_version_fl()](../functions-library/get-packages-version-fl.md) function. To upgrade the Python image see [Change the Python language extensions image on your cluster](../../language-extensions.md#change-the-python-language-extensions-image-on-your-cluster).
+Plotly visuals are useful for advanced charting including geographic, scientific, machine learning, 3d, animation and many other chart types. For more information, see [Plotly](https://plotly.com/python/).
+
 ### Example
 
 The following KQL query uses inline Python to create a 3D scatter chart:
@@ -46,9 +50,6 @@ OccupancyDetection
 
 :::image type="content" source="../../media/dashboard-customize-visuals/plotly-scatter3d.png" alt-text="Screenshot of plotly visual type.":::
 
-> [!NOTE]
-> For best performance, make sure that the python plugin image contains the latest versions of both the Python engine (currently 3.10.8) and Plotly package (currently 5.11.0). These versions can be checked with the [get_packages_version_fl()](../functions-library/get-packages-version-fl.md) function. To upgrade the Python image see [Change the Python language extensions image on your cluster](../../language-extensions.md#change-the-python-language-extensions-image-on-your-cluster).
-Plotly visuals are useful for advanced charting including geographic, scientific, machine learning, 3d, animation and many other chart types. For more information, see [Plotly](https://plotly.com/python/).
 
 ::: zone-end
 
