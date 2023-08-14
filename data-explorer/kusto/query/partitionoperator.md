@@ -19,9 +19,9 @@ The partition operator supports several strategies of subquery operation:
 
 ## Syntax
 
-*T* `|` `partition` [ *Hints* ] `by` *Column* `(` *TransformationSubQuery* `)`
+*T* `|` `partition` [ `hint.strategy=`*Strategy* ] [ *Hints* ] `by` *Column* `(` *TransformationSubQuery* `)`
 
-*T* `|` `partition` [ *Hints* ] `by` *Column* `{` *ContextFreeSubQuery* `}`
+*T* `|` `partition` [ `hint.strategy=legacy` ] [ *Hints* ] `by` *Column* `{` *SubQueryWithSource* `}`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -30,20 +30,20 @@ The partition operator supports several strategies of subquery operation:
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The input tabular source.|
+| *Strategy* | string | The value `legacy`, `shuffle`, or `native`. This hint defines the execution strategy of the partition operator.</br></br>The [native strategy](#native-strategy) is used with an implicit source with thousands of key partition values. The [shuffle strategy](#shuffle-strategy) is used with an implicit source with millions of key partition values. The [legacy strategy](#legacy-strategy) is used with an explicit or implicit source with 64 or less key partition values.</br></br>If no strategy is specified, the `legacy` strategy is used. For more information, see [Strategies](#strategies). | 
 | *Column*| string | &check; | The name of a column in *T* whose values determine how the input table is to be partitioned.|
 | *TransformationSubQuery*| string | &check; | A tabular transformation expression, whose source is implicitly the subtables produced by partitioning the records of *T*, each subtable being homogenous on the value of *Column*.|
-| *ContextFreeSubQuery*| string | &check; | A tabular expression that includes its own tabular source, such as a table reference. The expression can reference a single column from *T*, being the key column *Column* using the syntax `toscalar(`*Column*`)`.|
-| *Hints*| string | | Zero or more space-separated parameters in the form of: *HintName* `=` *Value* that control the behavior of the operator. See the [supported hints](#supported-hints).
+| *SubQueryWithSource*| string | &check; | A tabular expression that includes its own tabular source, such as a table reference. This syntax is only supported with the `legacy` strategy. The expression can only reference the key column, *Column*, from the input source *T*. To reference the column, use the syntax `toscalar(`*Column*`)`.|
+| *Hints*| string | | Zero or more space-separated parameters in the form of: *HintName* `=` *Value* that control the behavior of the operator. See the [supported hints](#supported-hints) per strategy type.
 
 ### Supported hints
 
-|HintName|Type|Description|Native/Shuffle/Legacy strategy|
+|Hint name|Type|Strategy|Description|
 |--|--|--|--|
-|`hint.strategy`| string | The value `legacy`, `shuffle`, or `native`. This hint defines the execution strategy of the partition operator. `native` strategy is used with an implicit source with thousands of key partition values. `shuffle` strategy is used with an implicit source with millions of key partition values. `legacy` strategy is used with an explicit or implicit source with 64 or less key partition values. If no strategy is specified, the `legacy` strategy is used. For more information, see [Strategies](#strategies).|Native, Shuffle, Legacy|
-|`hint.shufflekey`| string | The partition key. Runs the partition operator in shuffle strategy where the shuffle key is the specified partition key.|Shuffle|
-|`hint.materialized`| bool |If set to `true`, will materialize the source of the `partition` operator. The default value is `false`. |Legacy|
-|`hint.concurrency`| int |Hints the system how many partitions to run in parallel. The default value is 16.|Legacy|
-|`hint.spread`| int |Hints the system how to distribute the partitions among cluster nodes. For example, if there are N partitions and the spread hint is set to P, then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint. The default value is 1.|Legacy|
+|`hint.shufflekey`| string | `shuffle` | The partition key. Runs the partition operator in `shuffle` strategy where the shuffle key is the specified partition key. |
+|`hint.materialized`| bool | `legacy`| If set to `true`, will materialize the source of the `partition` operator. The default value is `false`. |
+|`hint.concurrency`| int | `legacy` | Hints how many partitions to run in parallel. The default value is 16.|
+|`hint.spread`| int | `legacy` | Hints how to distribute the partitions among cluster nodes. For example, if there are *N* partitions and the spread hint is set to *P*, then the *N* partitions will be processed by *P* different cluster nodes equally in parallel/sequentially depending on the concurrency hint. The default value is `1`.|
 
 ## Returns
 
