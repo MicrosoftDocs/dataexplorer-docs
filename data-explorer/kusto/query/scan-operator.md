@@ -324,7 +324,7 @@ Think of the state of the operator as a table with a row for each step:
 |s2||||||X|X|
 |s3||||||||
 
-The "X" indicates that a specific field is irrelevant for that step and won't contain any data.
+The "X" indicates that a specific field is irrelevant for that step.
 
 The state starts empty and updates whenever a scanned input row matches a step. If a condition or assignment checks for a value in an empty step, the default value for the column is returned. Unless otherwise specified, the default value is `null`, or an empty string.
 
@@ -421,7 +421,7 @@ Since there's no active sequence in `s1`, this row doesn't match any step and is
 |---|---|
 |8m|"Start"|
 
-This row starts a new sequence in `s1` with a new match ID. Note that there are now two active sequences in the state. The row `00:08:00, "Start", 1` is added to the output.
+This row starts a new sequence in `s1` with a new match ID. There are now two active sequences in the state. The row `00:08:00, "Start", 1` is added to the output.
 
 **Updated state**
 
