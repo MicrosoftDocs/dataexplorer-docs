@@ -73,6 +73,8 @@ To use this strategy, specify `hint.strategy=shuffle`. For more information abou
 
 ### Supported operators for the native and shuffle strategies
 
+The following list of operators can be used in subqueries with the native or shuffle strategies:
+
 * [count](countoperator.md)
 * [distinct](distinctoperator.md)
 * [extend](extendoperator.md)
@@ -101,7 +103,7 @@ To use this strategy, specify `hint.strategy=shuffle`. For more information abou
 * [where](whereoperator.md)
 
 > [!NOTE]
-> * Operators like [join](joinoperator.md), [union](unionoperator.md), [externaldata](externaldata-operator.md), [evaluate](evaluateoperator.md) (plugins), or any operator employing a table source other than the subtable partitions aren't compatible with the `native` and `shuffle` strategies. For these scenarios, resort to the [legacy strategy](#legacy-strategy).
+> * Operators that reference a table source other than the subtable partitions aren't compatible with the `native` and `shuffle` strategies. For example, [join](joinoperator.md), [union](unionoperator.md), [externaldata](externaldata-operator.md), and [evaluate](evaluateoperator.md) (plugins). For such scenarios, resort to the [legacy strategy](#legacy-strategy).
 > * The [fork](forkoperator.md) operator isn't supported for any strategy type because the subquery must return a single tabular result.
 
 ### Legacy strategy
