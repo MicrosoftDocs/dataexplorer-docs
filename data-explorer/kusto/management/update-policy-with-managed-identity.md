@@ -3,7 +3,7 @@ title: Run an update policy with a managed identity
 description: This article describes how to use a managed identity for update policy in Azure Data Explorer.
 ms.reviewer: atefsawaed
 ms.topic: reference
-ms.date: 07/13/2023
+ms.date: 08/17/2023
 ---
 # Use a managed identity to run an update policy
 
@@ -90,7 +90,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ---
 
-## 3 - Create an update policy
+## 2 - Create an update policy
 
 Select one of the following tabs to create an update policy that will run on behalf of a user-assigned or system-assigned managed identity.
 
