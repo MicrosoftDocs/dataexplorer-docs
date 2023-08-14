@@ -71,7 +71,7 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
 | render linechart 
 ~~~
 
-:::image type="content" source="../kusto/query/plugin/sine-demo.png" alt-text="sine demo." border="false":::
+:::image type="content" source="../kusto/query/images/plugin/sine-demo.png" alt-text="Screenshot of sine demo showing query result." border="false":::
 
 ~~~kusto
 print "This is an example for using 'external_artifacts'"
@@ -149,7 +149,7 @@ For information regarding referencing external packages, see [Install packages f
 
 ### Refreshing external artifact cache
 
-External artifact files utilized in queries are cached on your cluster. If you make updates to your files in cloud storage and require immediate synchronization with your cluster, you can use the [.clear cluster cache external-artifacts command](..kusto/management/clear-external-artifacts-cache-command.md). This command clears the cached files and ensures that subsequent queries run with the latest version of the artifacts.
+External artifact files utilized in queries are cached on your cluster. If you make updates to your files in cloud storage and require immediate synchronization with your cluster, you can use the [.clear cluster cache external-artifacts command](../kusto/management/clear-external-artifacts-cache-command.md). This command clears the cached files and ensures that subsequent queries run with the latest version of the artifacts.
 
 ## Install packages for the Python plugin
 

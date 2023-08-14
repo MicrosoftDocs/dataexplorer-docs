@@ -68,7 +68,7 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
 | render linechart 
 ~~~
 
-:::image type="content" source="../kusto/query/images/plugin/sine-demo.png" alt-text="sine demo." border="false":::
+:::image type="content" source="../kusto/query/images/plugin/sine-demo.png" alt-text="Screenshot of sine demo showing query result." border="false":::
 
 ## Performance tips
 
