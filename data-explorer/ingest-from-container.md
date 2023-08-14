@@ -127,8 +127,6 @@ When ingesting to a new table, alter various aspects of the table when creating 
 > [!NOTE]
 > For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.
 
-!INCLUDE data-explorer-ingestion-wizard-command-editor
-
 Select **Next: Summary** to create a table and mapping and to begin data ingestion.
 
 ## Complete data ingestion
