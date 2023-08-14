@@ -328,7 +328,7 @@ The "X" indicates that a specific field is irrelevant for that step.
 
 The state starts empty and updates whenever a scanned input row matches a step. If a condition or assignment checks for a value in an empty step, the default value for the column is returned. Unless otherwise specified, the default value is `null`, or an empty string.
 
-### Step-by-step scan walkthrough
+### Step-by-step walkthrough
 
 This section follows the logic of the scan operator through each input row, explaining the transformation of the state and output at each step.
 
@@ -341,7 +341,7 @@ This section follows the logic of the scan operator through each input row, expl
 |---|---|
 |0m|"A"|
 
-The first row of the `Events` table can't match `s3` due to `s2` being empty, and it can't match `s2` because `s1` is empty. The first row doesn't meet the `s1` condition of `Event == "Start"`, so it's discarded without impacting the state or output.
+The first row of the `Events` table can't match `s3` because it doesn't have an active sequence, and the state of `s2` is empty. This row also can't match `s2` because it doesn't have an active sequence, and the state of `s1` is empty. This row doesn't meet the `s1` condition of `Event == "Start"`, so it's discarded without impacting the state or output.
 
 #### Row 2
 
@@ -349,7 +349,7 @@ The first row of the `Events` table can't match `s3` due to `s2` being empty, an
 |---|---|
 |1m|"Start"|
 
-Again, this row can't match `s3` due to `s2` being empty, and it can't match `s2` because `s1` is empty. This row meets the `s1` condition of `Event == "Start"`. This match initiates a new sequence, and the `m_id` is assigned. The row and its `m_id` are added to the output.
+Again, this row can't match `s3` because it doesn't have an active sequence, and the state of `s2` is empty. This row also can't match `s2` because it doesn't have an active sequence, and the state of `s1` is empty. However, this row meets the `s1` condition of `Event == "Start"`. This match initiates a new sequence, and the `m_id` is assigned. The row and its `m_id` are added to the output.
 
 **Updated state**
 
@@ -365,7 +365,7 @@ Again, this row can't match `s3` due to `s2` being empty, and it can't match `s2
 |---|---|
 |2m|"B"|
 
-This row can't match `s3` due to `s2` being empty. This row meets the `s2` condition of `Ts - s1.Ts < 5m`, and the prior step of `s1` is active. These conditions cause the sequence in `s1` to be promoted to `s2` and the `s1` state to be cleared. The row `00:02:00, "B", 0` is added to the output.
+This row can't match `s3` because it doesn't have an active sequence, and the state of `s2` is empty. This row meets the `s2` condition of `Ts - s1.Ts < 5m`, and the prior step of `s1` is active. These conditions cause the sequence in `s1` to be promoted to `s2` and the `s1` state to be cleared. The row `00:02:00, "B", 0` is added to the output.
 
 **Updated state**
 
@@ -413,7 +413,7 @@ This row meets the `s3` condition of `Event == "Stop"`. This match promotes the 
 |---|---|
 |6m|"C"|
 
-Since there's no active sequence in `s1`, this row doesn't match any step and is discarded.
+Since there's no active sequence in `s1` or `s2`, and the row doesn't meet the conditions of either `s1` or `s3`, this row doesn't match any step and is discarded.
 
 #### Row 7
 
