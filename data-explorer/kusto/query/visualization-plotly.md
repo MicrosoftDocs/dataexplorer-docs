@@ -65,7 +65,7 @@ The Plotly graphics library supports ~80 chart types including basic charts, sci
 
 In this method a pre-prepared Plotly JSON for specific visualization can be reused by replacing the data objects with the required data to be rendered. The templates can be stored in a standard ADX table, and the data replacement logic can be packed in a stored function.
 
-The supported templates are: [plotly_anomaly_fl()](../functions-library/plotly-anomaly-fl.md) and [plotly_scatter3d_fl()](../functions-library/plotly-scatter3d-fl.md)
+The supported templates are: [plotly_anomaly_fl()](../functions-library/plotly-anomaly-fl.md) and [plotly_scatter3d_fl()](../functions-library/plotly-scatter3d-fl.md). Refer to these documents for example usage.
 
 | Pros | Cons |
 | --- | ---|
