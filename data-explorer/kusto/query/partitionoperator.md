@@ -114,7 +114,9 @@ The operator returns a union of the results of the individual subqueries.
 ## Examples
 
 
-In some cases, it's more performant and easier to write a query using the `partition` operator than using the [`top-nested` operator](topnestedoperator.md). The following example runs a subquery calculating `summarize` and `top` for each of States starting with `W`: "WYOMING", "WASHINGTON", "WEST VIRGINIA", and "WISCONSIN".
+### Find top values
+
+In some cases, it's more performant and easier to write a query using the `partition` operator than using the [`top-nested`](topnestedoperator.md) operator. The following query runs a subquery calculating `summarize` and `top` for each `State` starting with `W`: "WYOMING", "WASHINGTON", "WEST VIRGINIA", and "WISCONSIN".
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2NsQ6CQBBEe75iOyAhNtZ0WlhjYn2Sjbcm3JHdOQiGj/cEdYtJJvN2pkPU4TxxgBUrzZ6VqYMDk8EpbBZ4Km9lDsfsBRIDeQk4GDRjj6UNDjIx3ZfvY0H5qk0tDYNTeTHtE20fU0BVN3QJz6TC1mak+pmTKPeoP1Ubf11GbvbWrW4lxJGO/9z2rfoN+O3/98UAAAA=" target="_blank">Run the query</a>
@@ -148,38 +150,7 @@ StormEvents
 
 ### Native strategy
 
-Use `hint.strategy=native` for this strategy. See the following examples:
-
-This query returns foreach InjuriesDirect, the count of events and total injuries in each State that starts with 'W'.
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOvQoCMRCEe59iu0tAfAFJp4X1FdbxWMwKSWR3cseJD29UECyH+eZnRNV8nLnANk9aEivTiAgmQ1TYIkg0nIdu3rsWSC2UpGBn0I5d11AiZGa6rHQqt6bCdhDlCeSs5RxVHkzfhTDVVuD89keGjrj/mH83fS74/QtdD0E9ngAAAA==" target="_blank">Run the query</a>
-
-```kusto
-StormEvents
-| where State startswith 'W'
-| partition hint.strategy=native by InjuriesDirect (summarize Events=count(), Injuries=sum(InjuriesDirect) by State);
-```
-
-**Output** 
-
-|State|Events|Injuries|
-|---|---|---|
-|WISCONSIN|4|4|
-|WYOMING|5|5|
-|WEST VIRGINIA|1|1|
-|WASHINGTON|2|2|
-|WEST VIRGINIA|756|0|
-|WYOMING|390|0|
-|WASHINGTON|256|0|
-|WISCONSIN|1845|0|
-|WYOMING|1|4|
-|WASHINGTON|1|5|
-|WISCONSIN|1|2|
-|WASHINGTON|1|2|
-|WASHINGTON|1|10|
-
-This query returns the top 2 EventType by total injuries for each State that starts with 'W':
+The following query returns the top 2 `EventType` values by `TotalInjuries` for each `State` that starts with 'W':
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOsQ7CMAxE936Ft7YLAzsbDMytxJwiixiRpHKurYL68STphAdLp+d78oCg7rayR2x22iwr0wADpgijiJvAUvtoM5xzFkjwZMXjFKH57JXoQt5AVqYpHdWG8nR1x8U5o/JlGgPM5+7fC6twzKWMupJLvIryE30x1F/GNB+WnRBmOhfwL6i0/wEF39OovgAAAA==" target="_blank">Run the query</a>
@@ -209,9 +180,7 @@ StormEvents
 
 ### Shuffle strategy
 
-Use `hint.strategy=shuffle` for this strategy. See the following example:
-
-This query will return the top 3 DamagedProperty foreach EpisodeId, it returns also the columns EpisodeId and State.
+The following query will return the top 3 `DamagedProperty` values foreach `EpisodeId` and the columns `EpisodeId` and `State`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OsQ6DMBBDd77iRiohFuZuZeiGxBcEOCAV5KKLQYrUjyewsODBi+0ntxBd650dQvYnbxQWVhzN1qEMUAOe4jvM2zguTF2k2tsgA3+HjJLyyyGeqjP8mNVM3Kh4VsQrS1CVH/e4lwW1SNziqf5KL3rZHA7GAN74mQAAAA==" target="_blank">Run the query</a>
@@ -234,12 +203,10 @@ StormEvents
 
 ### Legacy strategy with explicit source
 
-This strategy is for legacy purposes only, and indicated by the use of `hint.strategy=legacy` or by not including a strategy indication at all. See the following example:
+The following query runs two subqueries:
 
-This query will run two subqueries:
-
-* When x == 1, the query will return all rows from StormEvents that have InjuriesIndirect == 1.
-* When x == 2, the query will return all rows from StormEvents that have InjuriesIndirect == 2.
+* When `x == 1`, the query returns all rows from `StormEvents` that have `InjuriesIndirect == 1`.
+* When `x == 2`, the query returns all rows from `StormEvents` that have `InjuriesIndirect == 2`.
 
 The final result is the union of these two subqueries.
 
