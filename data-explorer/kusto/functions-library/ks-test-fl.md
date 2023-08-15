@@ -9,13 +9,11 @@ zone_pivot_groups: kql-flavors-all
 ---
 # ks_test_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `ks_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Kolmogorov Smirnov Test](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test).
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
@@ -159,7 +157,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

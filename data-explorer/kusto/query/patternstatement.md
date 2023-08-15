@@ -61,7 +61,7 @@ In each of the following examples, a pattern is declared, defined, and then invo
 
 ### Define simple patterns
 
-The following example defines a pattern that maps states to an expression that returns its capital city.
+The following example defines a pattern that maps states to an expression that returns its capital/major city.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XPsQrCMBDG8b3QdzgytYsPoDiU4qqDiEjp8NkGLaaXkJ5IEd/dtFTUoUOGO+73h9S6MvCaHES0Z6rsncX3tKaE0eplJ77hS1p0AvlMZRw944goUYd9ptJFobb6QSfrb6oM8EkuXAnlcI3AhI3KzBncK3qt/t0R3TUExfKc3Jm+dQ2+NAejxqhDVXvBHN3UreUhPdrhTZ/7iUyJN/8CZSgGAQAA" target="_blank">Run the query</a>
