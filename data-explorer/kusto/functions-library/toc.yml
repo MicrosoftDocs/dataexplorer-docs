@@ -77,6 +77,9 @@ items:
 - name: quantize_fl()
   displayName: functions library, binning
   href: quantize-fl.md
+- name: series_clean_anomalies_fl()
+  displayName: functions library, anomalies, outliers
+  href: series-clean-anomalies-fl.md
 - name: series_cosine_similarity_fl()
   displayName: functions library, embedding, vector, cosine, similarity
   href: series-cosine-similarity-fl.md
