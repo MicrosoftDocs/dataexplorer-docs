@@ -87,7 +87,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
     import com.microsoft.azure.kusto.data.KustoResultSetTable;
     import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 
-    public class basicQuery {
+    public class BasicQuery {
       public static void main(String[] args) throws Exception {
         try {
           String clusterUri = "https://help.kusto.windows.net/";
@@ -324,7 +324,7 @@ import com.microsoft.azure.kusto.data.KustoOperationResult;
 import com.microsoft.azure.kusto.data.KustoResultSetTable;
 import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 
-public class basicQuery {
+public class BasicQuery {
   public static void main(String[] args) throws Exception {
     try {
       String clusterUri = "https://help.kusto.windows.net/";

@@ -196,7 +196,7 @@ Add the following code:
     import com.microsoft.azure.kusto.data.KustoResultColumn;
     import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 
-    public class batchIngestion {
+    public class BatchIngestion {
       public static void main(String[] args) throws Exception {
         String clusterUri = "<your_cluster_uri>";
         ConnectionStringBuilder clusterKcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
@@ -644,7 +644,7 @@ import com.microsoft.azure.kusto.ingest.IngestionProperties.DataFormat;
 import com.microsoft.azure.kusto.ingest.QueuedIngestClient;
 import com.microsoft.azure.kusto.ingest.source.FileSourceInfo;
 
-public class batchIngestion {
+public class BatchIngestion {
   public static void main(String[] args) throws Exception {
     String clusterUri = "<your_cluster_uri>";
     ConnectionStringBuilder clusterKcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
@@ -726,7 +726,7 @@ node basic-ingestion.js
 ### [Java](#tab/java)
 
 ```bash
-mvn install exec:java -Dexec.mainClass="<groupId>.batchIngestion"
+mvn install exec:java -Dexec.mainClass="<groupId>.BatchIngestion"
 ```
 
 ---
@@ -865,9 +865,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [C\#](#tab/csharp)
 
     ```csharp
-    Task.Run(async () => {
-      await ingestClient.IngestFromStreamAsync(stringStream, ingestProps);
-    });
+    _= ingestClient.IngestFromStreamAsync(stringStream, ingestProps, new StreamSourceOptions {Size = stringStream.Length}).Result;
     ```
 
     ### [Python](#tab/python)
@@ -880,6 +878,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
+    stringStream.size = singleLine.length;
     await ingestClient.ingestFromStream(stringStream, ingestProps);
     ```
 
@@ -920,7 +919,7 @@ namespace BatchIngest {
 
         Console.WriteLine("\nIngesting data from memory:");
         ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
-        _= ingestClient.IngestFromStreamAsync(stringStream, ingestProps).Result;
+        _= ingestClient.IngestFromStreamAsync(stringStream, ingestProps, new StreamSourceOptions {Size = stringStream.Length}).Result;
 
         ...
       }
@@ -983,6 +982,7 @@ async function main() {
   const stringStream = Readable.from(singleLine);
   stringStream.push(singleLine);
   stringStream.push(null);
+  stringStream.size = singleLine.length;
 
   const kustoClient = new Client(clusterKcsb);
   const ingestClient = new IngestClient(ingestKcsb);
@@ -1029,7 +1029,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import com.microsoft.azure.kusto.ingest.source.StreamSourceInfo;
 
-public class batchIngestion {
+public class BatchIngestion {
   public static void main(String[] args) throws Exception {
     ...
     String singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
@@ -1291,7 +1291,7 @@ import com.microsoft.azure.kusto.ingest.IngestionProperties.DataFormat;
 import com.microsoft.azure.kusto.ingest.QueuedIngestClient;
 import com.microsoft.azure.kusto.ingest.source.BlobSourceInfo;
 
-public class batchIngestion {
+public class BatchIngestion {
   public static void main(String[] args) throws Exception {
     ...
     String blobUri = "<your_blob_uri>";

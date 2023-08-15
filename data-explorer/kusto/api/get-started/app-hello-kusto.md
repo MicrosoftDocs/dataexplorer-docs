@@ -95,7 +95,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     ### [Java](#tab/java)
 
     ```java
-    public class helloKusto 
+    public class HelloKusto 
     {
       public static void main(String[] args) throws Exception {
         try {
@@ -373,7 +373,7 @@ import com.microsoft.azure.kusto.data.KustoOperationResult;
 import com.microsoft.azure.kusto.data.KustoResultSetTable;
 import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 
-public class helloKusto {
+public class HelloKusto {
   public static void main(String[] args) throws Exception {
     try {
       String clusterUri = "https://help.kusto.windows.net/";
@@ -423,7 +423,7 @@ node hello-kusto.js
 ### [Java](#tab/java)
 
 ```bash
-mvn install exec:java -Dexec.mainClass="<groupId>.helloKusto"
+mvn install exec:java -Dexec.mainClass="<groupId>.HelloKusto"
 ```
 
 ---
