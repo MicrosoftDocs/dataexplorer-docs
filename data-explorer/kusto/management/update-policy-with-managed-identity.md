@@ -3,7 +3,7 @@ title: Run an update policy with a managed identity
 description: This article describes how to use a managed identity for update policy in Azure Data Explorer.
 ms.reviewer: atefsawaed
 ms.topic: reference
-ms.date: 08/17/2023
+ms.date: 08/15/2023
 ---
 # Use a managed identity to run an update policy
 
@@ -13,7 +13,7 @@ The update policy must be configured with a [managed identity](../../managed-ide
 
 An update policy configured with a managed identity is performed on behalf of the managed identity.
 
-In this article, you'll learn how to configure a system-assigned or user-assigned managed identity and set up that identity to create an update policy.
+In this article, you learn how to configure a system-assigned or user-assigned managed identity and set up that identity to create an update policy.
 
 ## Prerequisites
 
@@ -36,7 +36,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 1. In the Azure portal, in the left menu of your managed identity resource, select **Properties**. Copy and save the **Tenant Id** and **Principal Id** for use in the following steps.
 
-    :::image type="content" source="../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity ids." lightbox="../../media/continuous-export/managed-identity-ids.png":::
+    :::image type="content" source="../../media/update-policy/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity ids." lightbox="../../media/update-policy/managed-identity-ids.png":::
 
 1. Run the following [.alter-merge managed_identity policy](./alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
 
