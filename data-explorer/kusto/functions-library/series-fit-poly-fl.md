@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # series_fit_poly_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `series_fit_poly_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies a polynomial regression on a series. This function takes a table containing multiple series (dynamic numerical arrays) and generates the best fit high-order polynomial for each series using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). This function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
 
@@ -18,9 +18,7 @@ The function `series_fit_poly_fl()` is a [user-defined function (UDF)](../query/
 > * Use the native function [series_fit_poly()](../query/series-fit-poly-function.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
 > * For linear regression of an evenly spaced series, as created by [make-series operator](../query/make-seriesoperator.md), use the native function [series_fit_line()](../query/series-fit-linefunction.md).
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
@@ -374,7 +372,7 @@ range x from 1 to 200 step 1
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

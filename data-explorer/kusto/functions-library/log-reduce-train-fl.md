@@ -9,13 +9,11 @@ zone_pivot_groups: kql-flavors-all
 ---
 # log_reduce_train_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `log_reduce_train_fl()` finds common patterns in semi structured textual columns, such as log lines, and clusters the lines according to the extracted patterns. The function's algorithm and most of the parameters are identical to [log_reduce_fl()](log-reduce-fl.md), but unlike log_reduce_fl() that outputs a patterns summary table, this function outputs the serialized model. The model can be used by the function [log_reduce_predict_fl()](log-reduce-predict-fl.md)/[log_reduce_predict_full_fl()](log-reduce-predict-full-fl.md) to predict the matched pattern for new log lines.
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
@@ -177,7 +175,7 @@ HDFS_log_100k
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 
