@@ -113,7 +113,7 @@ print "This is an example for using 'external_artifacts'"
   Python editor (*Jupyter*, *Visual Studio Code*, *PyCharm*, and so on), paste it in your query editor, and then enclose the full script between lines containing three consecutive backticks. For example:  
 
     ` ``` `  
-    `python code`  
+    ` python code`  
     ` ``` `
 * Use the [`externaldata` operator](../kusto/query/externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage.
   
