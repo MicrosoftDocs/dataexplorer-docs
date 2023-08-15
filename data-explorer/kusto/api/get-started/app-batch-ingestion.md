@@ -295,7 +295,9 @@ Add the following code:
         Format = DataSourceFormat.csv,
         AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
       };
-      ingestClient.IngestFromStorageAsync(filePath, ingestProps);
+      Task.Run(async () => { 
+        await ingestClient.IngestFromStorageAsync(filePath, ingestProps);
+      });
     }
     ```
 
@@ -475,7 +477,9 @@ namespace BatchIngest {
             Format = DataSourceFormat.csv,
             AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
           };
-          ingestClient.IngestFromStorageAsync(filePath, ingestProps);
+          Task.Run(async () => { 
+            await ingestClient.IngestFromStorageAsync(filePath, ingestProps);
+          });
 
           Console.WriteLine("\nWaiting 60 seconds for ingestion to complete ...");
           Thread.Sleep(TimeSpan.FromSeconds(60));
@@ -866,7 +870,9 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [C\#](#tab/csharp)
 
     ```csharp
-    ingestClient.IngestFromStreamAsync(stringStream, ingestProps);
+    Task.Run(async () => {
+      await ingestClient.IngestFromStreamAsync(stringStream, ingestProps);
+    });
     ```
 
     ### [Python](#tab/python)
@@ -919,7 +925,9 @@ namespace BatchIngest {
 
           Console.WriteLine("\nIngesting data from memory:");
           ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
-          ingestClient.IngestFromStreamAsync(stringStream, ingestProps);
+          Task.Run(async () => {
+            await ingestClient.IngestFromStreamAsync(stringStream, ingestProps);
+          });
 
           ...
         }
@@ -1127,7 +1135,9 @@ For example, you can modify the app replacing the *ingest from memory* code with
     string blobUri = "<your_blob_uri>";
 
     ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
-    ingestClient.IngestFromStorageAsync(blobUri, ingestProps);
+    Task.Run(async () => {
+      await ingestClient.IngestFromStorageAsync(blobUri, ingestProps);
+    });
     ```
 
     ### [Python](#tab/python)
@@ -1190,7 +1200,9 @@ namespace BatchIngest {
 
           Console.WriteLine("\nIngesting data from memory:");
           ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
-          ingestClient.IngestFromStorageAsync(blobUri, ingestProps);
+          Task.Run(async () => {
+            await ingestClient.IngestFromStorageAsync(blobUri, ingestProps);
+          });
 
           ...
         }
