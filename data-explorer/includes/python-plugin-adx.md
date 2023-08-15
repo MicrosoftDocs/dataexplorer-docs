@@ -192,8 +192,8 @@ download the package and its dependencies.
     > [!NOTE]
     >
     > * Make sure to download the package that is compatible to the Python engine and the platform of the sandbox runtime (currently 3.6.5 on Windows)
-        > * Make sure to zip the `.whl` files themselves, and not their parent folder.
-        > * You can skip `.whl` files for packages that already exist with the same version in the base sandbox image.
+       > * Make sure to zip the `.whl` files themselves, and not their parent folder.
+       > * You can skip `.whl` files for packages that already exist with the same version in the base sandbox image.
 
 1. Upload the zipped file to a blob in the artifacts location (from step 1).
 
@@ -221,7 +221,7 @@ range ID from 1 to 3 step 1
 ~~~
 
 | ID | Name |
-|----|----|
+|----|-------|
 |   1| Gary Tapia   |
 |   2| Emma Evans   |
 |   3| Ashley Bowen |
