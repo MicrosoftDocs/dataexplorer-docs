@@ -10,17 +10,11 @@ zone_pivot_groups: kql-flavors-all
 
 # Python plugin packages for Azure Data Explorer
 
-::: zone pivot="azuredataexplorer, fabric"
+::: zone pivot="azuredataexplorer"
 
 This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](kusto/query/pythonplugin.md).
 
-::: zone-end
-
-::: zone pivot="azuredataexplorer"
-
 ## [3.10.8](#tab/python3-10-8)
-
-::: zone pivot="azuredataexplorer, fabric"
 
 Python engine 3.10.8 + common data science and ML packages
 
@@ -567,7 +561,6 @@ Python engine 3.10.8 + common data science and ML packages + deep learning packa
 
 ::: zone-end
 
-<!--
 ::: zone pivot="fabric"
 
 This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](kusto/query/pythonplugin.md).
@@ -727,7 +720,7 @@ Python engine 3.10.8 + common data science and ML packages
 | zipp | 3.15.0 |
 
 ::: zone-end
--->
+
 ::: zone pivot="azuremonitor"
 
 This capability isn't supported.
