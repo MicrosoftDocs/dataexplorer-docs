@@ -3,7 +3,7 @@ title:  join operator
 description: Learn how to use the join operator to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/19/2023
+ms.date: 08/15/2023
 ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
@@ -15,6 +15,8 @@ Merge the rows of two tables to form a new table by matching values of the speci
 Kusto Query Language (KQL) offers many kinds of joins that each affect the schema and rows in the resultant table in different ways. For example, if you use an `inner` join, the table has the same columns as the left table, plus the columns from the right table. For best performance, if one table is always smaller than the other, use it as the left side of the `join` operator. The following image provides a visual representation of the operation performed by each join.
 
 :::image type="content" source="images/joinoperator/join-kinds.png" alt-text="Diagram showing query join kinds.":::
+
+To learn more about multi-table queries, complete the [Write multi-table queries using KQL](/training/modules/multi-table-queries-with-kusto-query-language/) training module.
 
 ## Syntax
 
