@@ -295,9 +295,7 @@ Add the following code:
         Format = DataSourceFormat.csv,
         AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
       };
-      Task.Run(async () => { 
-        await ingestClient.IngestFromStorageAsync(filePath, ingestProps);
-      });
+      _= ingestClient.IngestFromStorageAsync(filePath, ingestProps).Result;
     }
     ```
 
@@ -461,41 +459,39 @@ namespace BatchIngest {
 
 
       using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb))
-        using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
-          string database = "<your_database>";
-          string table = "MyStormEvents";
-          string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
+      using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
+        string database = "<your_database>";
+        string table = "MyStormEvents";
+        string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
 
-          string query = table + " | count";
-          using (var response = kustoClient.ExecuteQuery(database, query, null)) {
-            Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
-            PrintResultsAsValueList(response);
-          }
-
-          Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
-          var ingestProps = new KustoIngestionProperties(database, table) {
-            Format = DataSourceFormat.csv,
-            AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
-          };
-          Task.Run(async () => { 
-            await ingestClient.IngestFromStorageAsync(filePath, ingestProps);
-          });
-
-          Console.WriteLine("\nWaiting 60 seconds for ingestion to complete ...");
-          Thread.Sleep(TimeSpan.FromSeconds(60));
-
-          using (var response = kustoClient.ExecuteQuery(database, query, null)) {
-            Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
-            PrintResultsAsValueList(response);
-          }
-
-          query = table + " | top 1 by ingestion_time()";
-          using (var response = kustoClient.ExecuteQuery(database, query, null))
-          {
-            Console.WriteLine("\nLast ingested row:");
-            PrintResultsAsValueList(response);
-          }
+        string query = table + " | count";
+        using (var response = kustoClient.ExecuteQuery(database, query, null)) {
+          Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
+          PrintResultsAsValueList(response);
         }
+
+        Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
+        var ingestProps = new KustoIngestionProperties(database, table) {
+          Format = DataSourceFormat.csv,
+          AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
+        };
+        _= ingestClient.IngestFromStorageAsync(filePath, ingestProps).Result;
+
+        Console.WriteLine("\nWaiting 60 seconds for ingestion to complete ...");
+        Thread.Sleep(TimeSpan.FromSeconds(60));
+
+        using (var response = kustoClient.ExecuteQuery(database, query, null)) {
+          Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
+          PrintResultsAsValueList(response);
+        }
+
+        query = table + " | top 1 by ingestion_time()";
+        using (var response = kustoClient.ExecuteQuery(database, query, null))
+        {
+          Console.WriteLine("\nLast ingested row:");
+          PrintResultsAsValueList(response);
+        }
+      }
     }
 
     static void PrintResultsAsValueList(IDataReader response) {
@@ -655,38 +651,37 @@ public class batchIngestion {
     String ingestUri = "<your_ingestion_uri>";
     ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
 
-    try (Client kustoClient = ClientFactory.createClient(clusterKcsb)) {
-      try (QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
-        String database = "<your_database>";
-        String table = "MyStormEvents";
-        FileSourceInfo fileSourceInfo = new FileSourceInfo(System.getProperty("user.dir") + "\\stormevents.csv", 0);
+    try (Client kustoClient = ClientFactory.createClient(clusterKcsb);
+         QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
+      String database = "<your_database>";
+      String table = "MyStormEvents";
+      FileSourceInfo fileSourceInfo = new FileSourceInfo(System.getProperty("user.dir") + "\\stormevents.csv", 0);
 
-        String query = table + " | count";
-        KustoOperationResult results = kustoClient.execute(database, query);
-        KustoResultSetTable primaryResults = results.getPrimaryResults();
-        System.out.println("\nNumber of rows in " + table + " BEFORE ingestion:");
-        printResultAsValueList(primaryResults);
+      String query = table + " | count";
+      KustoOperationResult results = kustoClient.execute(database, query);
+      KustoResultSetTable primaryResults = results.getPrimaryResults();
+      System.out.println("\nNumber of rows in " + table + " BEFORE ingestion:");
+      printResultAsValueList(primaryResults);
 
-        System.out.println("\nIngesting data from file: \n\t " + fileSourceInfo.toString());
-        IngestionProperties ingestProps = new IngestionProperties(database, table);
-        ingestProps.setDataFormat(DataFormat.CSV);
-        ingestProps.setIgnoreFirstRecord(true);
-        ingestClient.ingestFromFile(fileSourceInfo, ingestProps);
+      System.out.println("\nIngesting data from file: \n\t " + fileSourceInfo.toString());
+      IngestionProperties ingestProps = new IngestionProperties(database, table);
+      ingestProps.setDataFormat(DataFormat.CSV);
+      ingestProps.setIgnoreFirstRecord(true);
+      ingestClient.ingestFromFile(fileSourceInfo, ingestProps);
 
-        System.out.println("\nWaiting 30 seconds for ingestion to complete ...");
-        Thread.sleep(30000);
+      System.out.println("\nWaiting 30 seconds for ingestion to complete ...");
+      Thread.sleep(30000);
 
-        response = kustoClient.execute(database, query);
-        primaryResults = response.getPrimaryResults();
-        System.out.println("\nNumber of rows in " + table + " AFTER ingesting the file:");
-        printResultsAsValueList(primaryResults);
+      response = kustoClient.execute(database, query);
+      primaryResults = response.getPrimaryResults();
+      System.out.println("\nNumber of rows in " + table + " AFTER ingesting the file:");
+      printResultsAsValueList(primaryResults);
 
-        query = table + " | top 1 by ingestion_time()";
-        response = kustoClient.execute(database, query);
-        primaryResults = response.getPrimaryResults();
-        System.out.println("\nLast ingested row:");
-        printResultsAsValueList(primaryResults);
-      }
+      query = table + " | top 1 by ingestion_time()";
+      response = kustoClient.execute(database, query);
+      primaryResults = response.getPrimaryResults();
+      System.out.println("\nLast ingested row:");
+      printResultsAsValueList(primaryResults);
     }
   }
 
@@ -916,21 +911,18 @@ namespace BatchIngest {
       string singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
       var stringStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(singleLine));
 
-      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb)) {
-        using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
-          string database = "<your_database>";
-          string table = "MyStormEvents";
+      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb))
+      using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
+        string database = "<your_database>";
+        string table = "MyStormEvents";
 
-          ...
+        ...
 
-          Console.WriteLine("\nIngesting data from memory:");
-          ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
-          Task.Run(async () => {
-            await ingestClient.IngestFromStreamAsync(stringStream, ingestProps);
-          });
+        Console.WriteLine("\nIngesting data from memory:");
+        ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
+        _= ingestClient.IngestFromStreamAsync(stringStream, ingestProps).Result;
 
-          ...
-        }
+        ...
       }
     }
 
@@ -1044,8 +1036,8 @@ public class batchIngestion {
     InputStream stream = new ByteArrayInputStream(StandardCharsets.UTF_8.encode(singleLine).array());
     StreamSourceInfo streamSourceInfo = new StreamSourceInfo(stream);
 
-    try (Client kustoClient = ClientFactory.createClient(clusterKcsb)) {
-      try (QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
+    try (Client kustoClient = ClientFactory.createClient(clusterKcsb);
+         QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
         String database = "<your_database>";
         String table = "MyStormEvents";
 
@@ -1056,7 +1048,6 @@ public class batchIngestion {
         ingestClient.ingestFromStream(streamSourceInfo, ingestProps);
 
         ...
-      }
     }
   }
 
@@ -1135,9 +1126,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
     string blobUri = "<your_blob_uri>";
 
     ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
-    Task.Run(async () => {
-      await ingestClient.IngestFromStorageAsync(blobUri, ingestProps);
-    });
+    _= ingestClient.IngestFromStorageAsync(blobUri, ingestProps).Result;
     ```
 
     ### [Python](#tab/python)
@@ -1192,20 +1181,18 @@ namespace BatchIngest {
 
 
       using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb))
-        using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
-          string database = "<your_database>";
-          string table = "MyStormEvents";
+      using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
+        string database = "<your_database>";
+        string table = "MyStormEvents";
 
-          ...
+        ...
 
-          Console.WriteLine("\nIngesting data from memory:");
-          ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
-          Task.Run(async () => {
-            await ingestClient.IngestFromStorageAsync(blobUri, ingestProps);
-          });
+        Console.WriteLine("\nIngesting data from memory:");
+        ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
+        _=_ ingestClient.IngestFromStorageAsync(blobUri, ingestProps).Result;
 
-          ...
-        }
+        ...
+      }
     }
 
     static void PrintResultsAsValueList(IDataReader response) {
@@ -1309,20 +1296,20 @@ public class batchIngestion {
     ...
     String blobUri = "<your_blob_uri>";
 
-    try (Client kustoClient = ClientFactory.createClient(clusterKcsb))
-      try (QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
-        String database = "<your_database>";
-        String table = "MyStormEvents";
+    try (Client kustoClient = ClientFactory.createClient(clusterKcsb);
+         QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
+      String database = "<your_database>";
+      String table = "MyStormEvents";
 
-        ...
+      ...
 
-        System.out.println("\nIngesting data from a blob:");
-        ingestProps.setIgnoreFirstRecord(true);
-        BlobSourceInfo blobSourceInfo = new BlobSourceInfo(blobUri, 100);
-        ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
+      System.out.println("\nIngesting data from a blob:");
+      ingestProps.setIgnoreFirstRecord(true);
+      BlobSourceInfo blobSourceInfo = new BlobSourceInfo(blobUri, 100);
+      ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
 
-        ...
-      }
+      ...
+    }
   }
 
   public static void printResultsAsValueList(KustoResultSetTable results) {
