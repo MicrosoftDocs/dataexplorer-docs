@@ -90,6 +90,7 @@ In the following example, a placeholder key is added to both tables and then use
 
 ## See also
 
+* [Write multi-table queries](/training/modules/multi-table-queries-with-kusto-query-language/)
 * [Cross-cluster join](joincrosscluster.md)
 * [Broadcast join](broadcastjoin.md)
 * [Shuffle query](shufflequery.md)
