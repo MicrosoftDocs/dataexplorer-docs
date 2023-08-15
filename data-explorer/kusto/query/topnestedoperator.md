@@ -60,7 +60,7 @@ To include all values of a column at a specific level:
 
 1. Don't specify the value of *N*.
 1. Use the column name as the value of *Expr*.
-1. Use `Ignore=max(1)` as the value of *Aggregation* .
+1. Use `Ignore=max(1)` as the value of *Aggregation*.
 1. Remove the unnecessary `Ignore` column with [project-away](projectawayoperator.md).
 
 For an example, see [Get the most recent events per state with additional data from other columns](#get-the-most-recent-events-per-state-with-additional-data-from-other-columns).
