@@ -51,7 +51,7 @@ In this article, you learn how to:
     1. Set the ingestion batching policy timeout to 10 seconds by running the following query:
 
         ```kusto
-        .alter table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:10" }'
+        .alter-merge table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:10" }'
         ```
 
     ---
