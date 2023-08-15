@@ -30,10 +30,10 @@ The partition operator supports several strategies of subquery operation:
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *T* | string | &check; | The input tabular source.|
-| *Strategy* | string | | The value `legacy`, `shuffle`, or `native`. This hint defines the execution strategy of the partition operator.</br></br>If no strategy is specified, the `legacy` strategy is used. For more information, see [Strategies](#strategies). | 
+| *Strategy* | string | | The value `legacy`, `shuffle`, or `native`. This hint defines the execution strategy of the partition operator.</br></br> If no strategy is specified, the `legacy` strategy is used. For more information, see [Strategies](#strategies). | 
 | *Column*| string | &check; | The name of a column in *T* whose values determine how to partition the input tabular source.|
-| *TransformationSubQuery*| string | &check; | A tabular transformation expression. The source is implicitly the subtables produced by partitioning the records of *T*. Each subtable is homogenous on the value of *Column*.</br></br>The expression must provide only one tabular result and shouldn't have other types of statements, such as `let` statements.|
-| *SubQueryWithSource*| string | &check; | A tabular expression that includes its own tabular source, such as a table reference. This syntax is only supported with the [legacy strategy](#legacy-strategy). The subquery can only reference the key column, *Column*, from *T*. To reference the column, use the syntax `toscalar(`*Column*`)`.</br></br>The expression must provide only one tabular result and shouldn't have other types of statements, such as `let` statements.|
+| *TransformationSubQuery*| string | &check; | A tabular transformation expression. The source is implicitly the subtables produced by partitioning the records of *T*. Each subtable is homogenous on the value of *Column*.</br></br> The expression must provide only one tabular result and shouldn't have other types of statements, such as `let` statements.|
+| *SubQueryWithSource*| string | &check; | A tabular expression that includes its own tabular source, such as a table reference. This syntax is only supported with the [legacy strategy](#legacy-strategy). The subquery can only reference the key column, *Column*, from *T*. To reference the column, use the syntax `toscalar(`*Column*`)`.</br></br> The expression must provide only one tabular result and shouldn't have other types of statements, such as `let` statements.|
 | *Hints*| string | | Zero or more space-separated parameters in the form of: *HintName* `=` *Value* that control the behavior of the operator. See the [supported hints](#supported-hints) per strategy type.
 
 ### Supported hints
@@ -43,7 +43,7 @@ The partition operator supports several strategies of subquery operation:
 |`hint.shufflekey`| string | [shuffle](#shuffle-strategy) | The partition key used to run the partition operator with the `shuffle` strategy. |
 |`hint.materialized`| bool | [legacy](#legacy-strategy) | If set to `true`, will materialize the source of the `partition` operator. The default value is `false`. |
 |`hint.concurrency`| int | [legacy](#legacy-strategy) | Determines how many partitions to run in parallel. The default value is `16`.|
-|`hint.spread`| int | [legacy](#legacy-strategy) | Determines how to distribute the partitions among cluster nodes. The default value is `1`.</br></br>For example, if there are *N* partitions and the spread hint is set to *P*, then the *N* partitions will be processed by *P* different cluster nodes equally in parallel/sequentially depending on the concurrency hint.|
+|`hint.spread`| int | [legacy](#legacy-strategy) | Determines how to distribute the partitions among cluster nodes. The default value is `1`.</br></br> For example, if there are *N* partitions and the spread hint is set to *P*, then the *N* partitions will be processed by *P* different cluster nodes equally in parallel/sequentially depending on the concurrency hint.|
 
 ## Returns
 
