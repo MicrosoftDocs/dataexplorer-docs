@@ -62,6 +62,10 @@ In this method a pre-prepared Plotly JSON for specific visualization can be reus
 
 The supported templates are: [plotly_anomaly_fl()](../functions-library/plotly-anomaly-fl.md) and [plotly_scatter3d_fl()](../functions-library/plotly-scatter3d-fl.md). Refer to these documents for example usage.
 
+### Example
+
+[!INCLUDE [plotly-anomaly-example](../../includes/plotly-anomaly-example.md)]
+
 ::: zone-end
 
 ## See also
