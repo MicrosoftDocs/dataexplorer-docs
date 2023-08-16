@@ -61,11 +61,15 @@ The **Inspect** tab opens with a preview of the data.
 1. Optionally, explore [Advanced options based on data type](#advanced-options-based-on-data-type).
 1. Select **Finish** to complete the ingestion process.
 
+
 [!INCLUDE [get-data-edit-columns](includes/get-data-edit-columns.md)]
+
+:::image type="content" source="media/get-data-file/edit-columns.png" alt-text="Screenshot of columns open for editing." lightbox="media/get-data-file/edit-columns.png":::
 
 [!INCLUDE [mapping-transformations](includes/mapping-transformations.md)]
 
 [!INCLUDE [get-data-advanced-options](includes/get-data-advanced-options.md)]
+
 
 ## Summary
 
