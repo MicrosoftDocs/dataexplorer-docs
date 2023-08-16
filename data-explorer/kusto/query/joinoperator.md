@@ -3,7 +3,7 @@ title:  join operator
 description: Learn how to use the join operator to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/19/2023
+ms.date: 08/16/2023
 ms.localizationpriority: high 
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
@@ -12,7 +12,9 @@ zone_pivot_groups: kql-flavors-all
 
 Merge the rows of two tables to form a new table by matching values of the specified columns from each table.
 
-Kusto Query Language (KQL) offers many kinds of joins that each affect the schema and rows in the resultant table in different ways. For example, if you use an `inner` join, the table has the same columns as the left table, plus the columns from the right table. For best performance, if one table is always smaller than the other, use it as the left side of the `join` operator. The following image provides a visual representation of the operation performed by each join.
+Kusto Query Language (KQL) offers many kinds of joins that each affect the schema and rows in the resultant table in different ways. For example, if you use an `inner` join, the table has the same columns as the left table, plus the columns from the right table. For best performance, if one table is always smaller than the other, use it as the left side of the `join` operator.
+
+The following image provides a visual representation of the operation performed by each join.
 
 :::image type="content" source="images/joinoperator/join-kinds.png" alt-text="Diagram showing query join kinds.":::
 
@@ -64,7 +66,7 @@ Kusto Query Language (KQL) offers many kinds of joins that each affect the schem
 
 ## Returns
 
-The return schema and rows depend on the join flavor. The join flavor is specified with the *kind* keyword. The following flavors of the join operator are supported:
+The return schema and rows depend on the join flavor. The join flavor is specified with the *kind* keyword. The following table shows the supported join flavors. To see examples for a specific join flavor, select the link in the **Join flavor** column.
 
 | Join flavor | Returns | Illustration |
 | --- | --- | --- |
@@ -88,6 +90,7 @@ In the following example, a placeholder key is added to both tables and then use
 
 ## See also
 
+* [Write multi-table queries](/training/modules/multi-table-queries-with-kusto-query-language/)
 * [Cross-cluster join](joincrosscluster.md)
 * [Broadcast join](broadcastjoin.md)
 * [Shuffle query](shufflequery.md)
