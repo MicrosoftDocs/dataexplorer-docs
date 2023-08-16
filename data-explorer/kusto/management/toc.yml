@@ -645,6 +645,8 @@ items:
     - name: .show table policy update command
       displayName: .show table update policy
       href: show-table-update-policy-command.md
+    - name: Use a managed identity
+      href: update-policy-with-managed-identity.md
   - name: Query weak consistency
     items:
     - name: Query weak consistency policy

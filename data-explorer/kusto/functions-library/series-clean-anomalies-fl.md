@@ -1,5 +1,5 @@
 ---
-title:  Add series_clean_anomalies_fl() in Azure Data Explorer
+title:  series_clean_anomalies_fl() - Azure Data Explorer
 description: This article describes series_clean_anomalies_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
