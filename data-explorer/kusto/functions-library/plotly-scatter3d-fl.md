@@ -155,6 +155,7 @@ let plotly_scatter3d_fl=(tbl:(*), x_col:string, y_col:string, z_col:string, aggr
 };
 Iris
 | invoke plotly_scatter3d_fl(x_col='SepalLength', y_col='PetalLength', z_col='SepalWidth', aggr_col='Class', chart_title='3D scatter chart using plotly_scatter3d_fl()')
+| render plotly
 ```
 
 ### [Stored](#tab/stored)
