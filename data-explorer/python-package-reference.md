@@ -1,5 +1,5 @@
 ---
-title: Python plugin packages for Azure Data Explorer
+title: Python plugin packages
 description: Learn about the Python packages available in the Azure Data Explorer Python plugin.
 ms.reviewer: suatta
 ms.topic: reference
@@ -8,7 +8,7 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
 
-# Python plugin packages for Azure Data Explorer
+# Python plugin packages
 
 ::: zone pivot="fabric"
 
@@ -182,6 +182,8 @@ Not supported
 
 ::: zone-end
 ::: zone pivot="azuredataexplorer"
+
+This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](kusto/query/pythonplugin.md).
 
 ## [3.10.8](#tab/python3-10-8)
 
