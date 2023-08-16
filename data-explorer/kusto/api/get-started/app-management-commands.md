@@ -553,7 +553,7 @@ For example, you can modify the app to change the [ingestion batching policy](..
 
 ```csharp
 // Reduce the default batching timeout to 30 seconds
-command = @$".alter table {table} policy ingestionbatching '{{ ""MaximumBatchingTimeSpan"":""00:00:30"" }}'";
+command = @$".alter-merge table {table} policy ingestionbatching '{{ ""MaximumBatchingTimeSpan"":""00:00:30"" }}'";
 
 using (var response = kusto_client.ExecuteControlCommand(database, command, null))
 {
@@ -565,7 +565,7 @@ using (var response = kusto_client.ExecuteControlCommand(database, command, null
 
 ```python
 # Reduce the default batching timeout to 30 seconds
-command = ".alter table " + table + " policy ingestionbatching '{ \"MaximumBatchingTimeSpan\":\"00:00:30\" }'"
+command = ".alter-merge table " + table + " policy ingestionbatching '{ \"MaximumBatchingTimeSpan\":\"00:00:30\" }'"
 
 response = kusto_client.execute_mgmt(database, command)
 print_result_as_value_list(command, response)
@@ -575,7 +575,7 @@ print_result_as_value_list(command, response)
 
 ```nodejs
 // Reduce the default batching timeout to 30 seconds
-command = ".alter table " + table + " policy ingestionbatching '{ \"MaximumBatchingTimeSpan\":\"00:00:30\" }'"
+command = ".alter-merge table " + table + " policy ingestionbatching '{ \"MaximumBatchingTimeSpan\":\"00:00:30\" }'"
 
 response = await kustoClient.executeMgmt(database, command)
 printResultsAsValueList(command, response)
@@ -587,7 +587,7 @@ printResultsAsValueList(command, response)
 
 ```java
 // Reduce the default batching timeout to 30 seconds
-command = ".alter table " + table + " policy ingestionbatching '{ \"MaximumBatchingTimeSpan\":\"00:00:30\" }'";
+command = ".alter-merge table " + table + " policy ingestionbatching '{ \"MaximumBatchingTimeSpan\":\"00:00:30\" }'";
 
 response = kusto_client.execute(database, command);
 printResultsAsValueList(command, response.getPrimaryResults());
@@ -600,7 +600,7 @@ When you add the code to your app and run it, you should see a result similar to
 ```bash
 --------------------
 
-Command: .alter table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:30" }'
+Command: .alter-merge table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:30" }'
 Result:
    PolicyName - IngestionBatchingPolicy
    EntityName - [YourDatabase].[MyStormEvents]

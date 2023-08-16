@@ -982,7 +982,6 @@ async function main() {
   const stringStream = Readable.from(singleLine);
   stringStream.push(singleLine);
   stringStream.push(null);
-  stringStream.size = singleLine.length;
 
   const kustoClient = new Client(clusterKcsb);
   const ingestClient = new IngestClient(ingestKcsb);
@@ -993,6 +992,7 @@ async function main() {
   ...
 
   console.log("\nIngesting data from memory:");
+  stringStream.size = singleLine.length;
   ingestProps.ignoreFirstRecord = false;
   await ingestClient.ingestFromStream(stringStream, ingestProps);
 
