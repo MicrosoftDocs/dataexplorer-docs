@@ -1,5 +1,5 @@
 ---
-title: Python plugin packages for Azure Data Explorer
+title: Python plugin packages
 description: Learn about the Python packages available in the Azure Data Explorer Python plugin.
 ms.reviewer: suatta
 ms.topic: reference
@@ -8,9 +8,9 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
 
-# Python plugin packages for Azure Data Explorer
+# Python plugin packages
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="fabric"
 
 This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](kusto/query/pythonplugin.md).
 
@@ -168,7 +168,176 @@ Python engine 3.10.8 + common data science and ML packages
 | zict | 2.2.0 |
 | zipp | 3.15.0 |
 
+
+## [3.8.10 DL (Preview)](#tab/python3-10-8-DL)
+
+Not supported
+
+## [3.6.5 (Legacy)](#tab/python3-6-5)
+
+Not supported
+
+
+---
+
 ::: zone-end
+::: zone pivot="azuredataexplorer"
+
+This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](kusto/query/pythonplugin.md).
+
+## [3.10.8](#tab/python3-10-8)
+
+Python engine 3.10.8 + common data science and ML packages
+
+| Package | Version |
+|---|---|
+| alembic | 1.11.1 |
+| anytree | 2.8.0 |
+| arrow | 1.2.3 |
+| attrs | 22.2.0 |
+| blis | 0.7.9 |
+| Bottleneck | 1.3.5 |
+| Brotli | 1.0.9 |
+| brotlipy | 0.7.0 |
+| catalogue | 2.0.8 |
+| certifi | 2022.12.7 |
+| cffi | 1.15.1 |
+| chardet | 5.0.0 |
+| charset-normalizer | 2.1.1 |
+| click | 8.1.3 |
+| cloudpickle | 2.2.1 |
+| colorama | 0.4.6 |
+| coloredlogs | 15.0.1 |
+| confection | 0.0.4 |
+| contourpy | 1.0.7 |
+| cycler | 0.11.0 |
+| cymem | 2.0.7 |
+| Cython | 0.29.28 |
+| daal | 2021.6.0 |
+| daal4py | 2021.6.3 |
+| dask | 2022.10.2 |
+| databricks-cli | 0.17.7 |
+| diff-match-patch | 20200713 |
+| dill | 0.3.6 |
+| distributed | 2022.10.2 |
+| docker | 6.1.3 |
+| entrypoints | 0.4 |
+| filelock | 3.9.1 |
+| flashtext | 2.7 |
+| Flask | 2.2.3 |
+| Flask-Compress | 1.13 |
+| flatbuffers | 23.3.3 |
+| fonttools | 4.39.0 |
+| fsspec | 2023.3.0 |
+| gensim | 4.2.0 |
+| gitdb | 4.0.10 |
+| GitPython | 3.1.31 |
+| greenlet | 2.0.2 |
+| HeapDict | 1.0.1 |
+| humanfriendly | 10.0 |
+| idna | 3.4 |
+| importlib-metadata | 6.7.0 |
+| intervaltree | 3.1.0 |
+| itsdangerous | 2.1.2 |
+| jellyfish | 0.9.0 |
+| Jinja2 | 3.1.2 |
+| jmespath | 1.0.1 |
+| joblib | 1.2.0 |
+| json5 | 0.9.10 |
+| jsonschema | 4.16.0 |
+| kiwisolver | 1.4.4 |
+| langcodes | 3.3.0 |
+| locket | 1.0.0 |
+| lxml | 4.9.1 |
+| Mako | 1.2.4 |
+| Markdown | 3.4.3 |
+| MarkupSafe | 2.1.2 |
+| matplotlib | 3.7.1 |
+| mlflow | 2.4.1 |
+| mlxtend | 0.21.0 |
+| mpmath | 1.3.0 |
+| msgpack | 1.0.5 |
+| murmurhash | 1.0.9 |
+| networkx | 2.8.7 |
+| nltk | 3.7 |
+| numpy | 1.23.4 |
+| oauthlib | 3.2.2 |
+| onnxruntime | 1.13.1 |
+| packaging | 23.0 |
+| pandas | 1.5.1 |
+| partd | 1.3.0 |
+| pathy | 0.10.1 |
+| patsy | 0.5.3 |
+| Pillow | 9.4.0 |
+| pip | 23.0.1 |
+| platformdirs | 2.5.2 |
+| plotly | 5.11.0 |
+| ply | 3.11 |
+| preshed | 3.0.8 |
+| protobuf | 4.22.1 |
+| psutil | 5.9.3 |
+| pyarrow | 12.0.1 |
+| pycparser | 2.21 |
+| pydantic | 1.10.6 |
+| pyfpgrowth | 1.0 |
+| PyJWT | 2.7.0 |
+| pyparsing | 3.0.9 |
+| pyreadline3 | 3.4.1 |
+| pyrsistent | 0.19.3 |
+| python-dateutil | 2.8.2 |
+| pytz | 2022.7.1 |
+| PyWavelets | 1.4.1 |
+| pywin32 | 306 |
+| PyYAML | 6.0 |
+| querystring-parser | 1.2.4 |
+| queuelib | 1.6.2 |
+| regex | 2022.10.31 |
+| requests | 2.28.2 |
+| requests-file | 1.5.1 |
+| scikit-learn | 1.1.3 |
+| scipy | 1.9.3 |
+| setuptools | 67.6.0 |
+| sip | 6.7.3 |
+| six | 1.16.0 |
+| smart-open | 6.3.0 |
+| smmap | 5.0.0 |
+| snowballstemmer | 2.2.0 |
+| sortedcollections | 2.1.0 |
+| sortedcontainers | 2.4.0 |
+| spacy | 3.4.2 |
+| spacy-legacy | 3.0.12 |
+| spacy-loggers | 1.0.4 |
+| SQLAlchemy | 2.0.18 |
+| sqlparse | 0.4.4 |
+| srsly | 2.4.5 |
+| statsmodels | 0.13.2 |
+| sympy | 1.11.1 |
+| tabulate | 0.9.0 |
+| tbb | 2021.7.1 |
+| tblib | 1.7.0 |
+| tenacity | 8.2.2 |
+| textdistance | 4.5.0 |
+| thinc | 8.1.9 |
+| threadpoolctl | 3.1.0 |
+| three-merge | 0.1.1 |
+| tldextract | 3.4.0 |
+| toml | 0.10.2 |
+| toolz | 0.12.0 |
+| tornado | 6.1 |
+| tqdm | 4.65.0 |
+| typer | 0.4.2 |
+| typing_extensions | 4.5.0 |
+| ujson | 5.5.0 |
+| Unidecode | 1.3.6 |
+| urllib3 | 1.26.15 |
+| waitress | 2.1.2 |
+| wasabi | 0.10.1 |
+| websocket-client | 1.6.1 |
+| Werkzeug | 2.2.3 |
+| wheel | 0.40.0 |
+| xarray | 2022.10.0 |
+| zict | 2.2.0 |
+| zipp | 3.15.0 |
 
 ## [3.8.10 DL (Preview)](#tab/python3-10-8-DL)
 
@@ -558,166 +727,6 @@ Python engine 3.10.8 + common data science and ML packages + deep learning packa
 | zict | 0.1.3 |
 
 ---
-
-::: zone-end
-
-::: zone pivot="fabric"
-
-This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](kusto/query/pythonplugin.md).
-
-## 3.10.8
-
-Python engine 3.10.8 + common data science and ML packages
-
-| Package | Version |
-|---|---|
-| alembic | 1.11.1 |
-| anytree | 2.8.0 |
-| arrow | 1.2.3 |
-| attrs | 22.2.0 |
-| blis | 0.7.9 |
-| Bottleneck | 1.3.5 |
-| Brotli | 1.0.9 |
-| brotlipy | 0.7.0 |
-| catalogue | 2.0.8 |
-| certifi | 2022.12.7 |
-| cffi | 1.15.1 |
-| chardet | 5.0.0 |
-| charset-normalizer | 2.1.1 |
-| click | 8.1.3 |
-| cloudpickle | 2.2.1 |
-| colorama | 0.4.6 |
-| coloredlogs | 15.0.1 |
-| confection | 0.0.4 |
-| contourpy | 1.0.7 |
-| cycler | 0.11.0 |
-| cymem | 2.0.7 |
-| Cython | 0.29.28 |
-| daal | 2021.6.0 |
-| daal4py | 2021.6.3 |
-| dask | 2022.10.2 |
-| databricks-cli | 0.17.7 |
-| diff-match-patch | 20200713 |
-| dill | 0.3.6 |
-| distributed | 2022.10.2 |
-| docker | 6.1.3 |
-| entrypoints | 0.4 |
-| filelock | 3.9.1 |
-| flashtext | 2.7 |
-| Flask | 2.2.3 |
-| Flask-Compress | 1.13 |
-| flatbuffers | 23.3.3 |
-| fonttools | 4.39.0 |
-| fsspec | 2023.3.0 |
-| gensim | 4.2.0 |
-| gitdb | 4.0.10 |
-| GitPython | 3.1.31 |
-| greenlet | 2.0.2 |
-| HeapDict | 1.0.1 |
-| humanfriendly | 10.0 |
-| idna | 3.4 |
-| importlib-metadata | 6.7.0 |
-| intervaltree | 3.1.0 |
-| itsdangerous | 2.1.2 |
-| jellyfish | 0.9.0 |
-| Jinja2 | 3.1.2 |
-| jmespath | 1.0.1 |
-| joblib | 1.2.0 |
-| json5 | 0.9.10 |
-| jsonschema | 4.16.0 |
-| kiwisolver | 1.4.4 |
-| langcodes | 3.3.0 |
-| locket | 1.0.0 |
-| lxml | 4.9.1 |
-| Mako | 1.2.4 |
-| Markdown | 3.4.3 |
-| MarkupSafe | 2.1.2 |
-| matplotlib | 3.7.1 |
-| mlflow | 2.4.1 |
-| mlxtend | 0.21.0 |
-| mpmath | 1.3.0 |
-| msgpack | 1.0.5 |
-| murmurhash | 1.0.9 |
-| networkx | 2.8.7 |
-| nltk | 3.7 |
-| numpy | 1.23.4 |
-| oauthlib | 3.2.2 |
-| onnxruntime | 1.13.1 |
-| packaging | 23.0 |
-| pandas | 1.5.1 |
-| partd | 1.3.0 |
-| pathy | 0.10.1 |
-| patsy | 0.5.3 |
-| Pillow | 9.4.0 |
-| pip | 23.0.1 |
-| platformdirs | 2.5.2 |
-| plotly | 5.11.0 |
-| ply | 3.11 |
-| preshed | 3.0.8 |
-| protobuf | 4.22.1 |
-| psutil | 5.9.3 |
-| pyarrow | 12.0.1 |
-| pycparser | 2.21 |
-| pydantic | 1.10.6 |
-| pyfpgrowth | 1.0 |
-| PyJWT | 2.7.0 |
-| pyparsing | 3.0.9 |
-| pyreadline3 | 3.4.1 |
-| pyrsistent | 0.19.3 |
-| python-dateutil | 2.8.2 |
-| pytz | 2022.7.1 |
-| PyWavelets | 1.4.1 |
-| pywin32 | 306 |
-| PyYAML | 6.0 |
-| querystring-parser | 1.2.4 |
-| queuelib | 1.6.2 |
-| regex | 2022.10.31 |
-| requests | 2.28.2 |
-| requests-file | 1.5.1 |
-| scikit-learn | 1.1.3 |
-| scipy | 1.9.3 |
-| setuptools | 67.6.0 |
-| sip | 6.7.3 |
-| six | 1.16.0 |
-| smart-open | 6.3.0 |
-| smmap | 5.0.0 |
-| snowballstemmer | 2.2.0 |
-| sortedcollections | 2.1.0 |
-| sortedcontainers | 2.4.0 |
-| spacy | 3.4.2 |
-| spacy-legacy | 3.0.12 |
-| spacy-loggers | 1.0.4 |
-| SQLAlchemy | 2.0.18 |
-| sqlparse | 0.4.4 |
-| srsly | 2.4.5 |
-| statsmodels | 0.13.2 |
-| sympy | 1.11.1 |
-| tabulate | 0.9.0 |
-| tbb | 2021.7.1 |
-| tblib | 1.7.0 |
-| tenacity | 8.2.2 |
-| textdistance | 4.5.0 |
-| thinc | 8.1.9 |
-| threadpoolctl | 3.1.0 |
-| three-merge | 0.1.1 |
-| tldextract | 3.4.0 |
-| toml | 0.10.2 |
-| toolz | 0.12.0 |
-| tornado | 6.1 |
-| tqdm | 4.65.0 |
-| typer | 0.4.2 |
-| typing_extensions | 4.5.0 |
-| ujson | 5.5.0 |
-| Unidecode | 1.3.6 |
-| urllib3 | 1.26.15 |
-| waitress | 2.1.2 |
-| wasabi | 0.10.1 |
-| websocket-client | 1.6.1 |
-| Werkzeug | 2.2.3 |
-| wheel | 0.40.0 |
-| xarray | 2022.10.0 |
-| zict | 2.2.0 |
-| zipp | 3.15.0 |
 
 ::: zone-end
 
