@@ -361,6 +361,7 @@ items:
           - name: Customize dashboard visuals
             href: dashboard-customize-visuals.md
           - name: Dashboard-specific visuals
+            displayName: heat map, heatmap, funnel chart
             href: dashboard-visuals.md
           - name: Visualize sample data dashboards
             href: web-ui-samples-dashboards.md
