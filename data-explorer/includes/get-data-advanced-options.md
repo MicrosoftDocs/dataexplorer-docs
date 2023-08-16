@@ -17,4 +17,3 @@ ms.date: 08/07/2023
 * To determine column division of JSON data, select **Advanced** > **Nested levels**, from 1 to 100. 
 * If you select **Advanced** > **Ignore data format errors**, the data is ingested in JSON format. If you leave this check box unselected, the data is ingested in multijson format.
 
-    :::image type="content" source="../media/get-data-file/advanced-json.png" alt-text="Screenshot of advanced JSON options":::
