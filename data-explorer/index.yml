@@ -187,6 +187,10 @@ landingContent:
             url: using-metrics.md
           - text: Use diagnostic logs to monitor ingestion
             url: using-diagnostic-logs.md
+      - linkListType: reference
+        links:
+          - text: Management commands
+            url: kusto/management/index.md
   # Card
   - title: Architecture
     linkLists:
@@ -213,11 +217,15 @@ landingContent:
           - text: White paper
             url: https://aka.ms/adx.techwhitepaper
   # Card
-  - title: Admin and development
+  - title: Development
     linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Set up your development environment
+            url: kusto/api/get-started/app-set-up.md
       - linkListType: reference
         links:
-          - text: Management commands
-            url: kusto/management/index.md
-          - text: Azure Data Explorer API
-            url: kusto/api/index.md
+          - text: Kusto client libraries
+            url: kusto/api/client-libraries.md
+          - text: REST API overview
+            url: kusto/api/rest/index.md
