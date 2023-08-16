@@ -20,11 +20,7 @@ The Plotly graphics library supports ~80 chart types including basic charts, sci
 
  In this method, you dynamically create the string in Python using the [Plotly package](https://plotly.com/python/getting-started/). This process requires use of the [python() plugin](pythonplugin.md). The Python script is run on the existing ADX nodes using the inline python() plugin. It generates a Plotly JSON that is rendered by the client application.
 
-| Pros | Cons |
-| --- | ---|
-| All types of Plotly visualizations are supported. | Requires enabling the python() plugin on ADX cluster.
-| Full customization tailored to the specific scenarios. | To create the visualization the user needs to know the Python language and Plotly API.
-| As the script runs on the server side, it can efficiently process big amounts of data to create the visualization. |
+Using this method, all types of Plotly visualizations are supported.
 
 > [!NOTE]
 > For best performance, make sure that the python plugin image contains the latest versions of both the Python engine (currently 3.10.8) and Plotly package (currently 5.11.0). These versions can be checked with the [get_packages_version_fl()](../functions-library/get-packages-version-fl.md) function. To upgrade the Python image see [Change the Python language extensions image on your cluster](../../language-extensions.md#change-the-python-language-extensions-image-on-your-cluster).
@@ -50,7 +46,6 @@ OccupancyDetection
 
 :::image type="content" source="../../media/dashboard-customize-visuals/plotly-scatter3d.png" alt-text="Screenshot of plotly visual type.":::
 
-
 ::: zone-end
 
 ::: zone pivot="azuremonitor, fabric"
@@ -66,11 +61,6 @@ The Plotly graphics library supports ~80 chart types including basic charts, sci
 In this method a pre-prepared Plotly JSON for specific visualization can be reused by replacing the data objects with the required data to be rendered. The templates can be stored in a standard ADX table, and the data replacement logic can be packed in a stored function.
 
 The supported templates are: [plotly_anomaly_fl()](../functions-library/plotly-anomaly-fl.md) and [plotly_scatter3d_fl()](../functions-library/plotly-scatter3d-fl.md). Refer to these documents for example usage.
-
-| Pros | Cons |
-| --- | ---|
-| Supported on a variety of KQL-based products  | Limited set of visualization types are supported with minimal customization is supported (limited to the template parameters).
-| No need for Python programming. | Creating additional templates is complex.
 
 ::: zone-end
 
