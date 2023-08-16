@@ -69,8 +69,7 @@ The **Inspect** tab opens with a preview of the data.
 [!INCLUDE [mapping-transformations](includes/mapping-transformations.md)]
 
 [!INCLUDE [get-data-advanced-options](includes/get-data-advanced-options.md)]
-    
-:::image type="content" source="../media/get-data-file/advanced-json.png" alt-text="Screenshot of advanced JSON options":::
+
 
 ## Summary
 
