@@ -166,11 +166,6 @@
       "redirect_document_id": true
     },
     {
-      "source_path": "data-explorer/kusto/management/policies.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/index",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "data-explorer/kusto/concepts/index.md",
       "redirect_url": "/azure/data-explorer/kusto/query/index",
       "redirect_document_id": true
