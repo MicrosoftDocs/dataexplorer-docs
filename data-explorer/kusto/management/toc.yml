@@ -266,6 +266,8 @@ items:
       href: show-function.md
 - name: Policies
   items:
+  - name: Policies overview
+    href: policies.md
   - name: Auto delete
     items:
     - name: Auto delete policy
