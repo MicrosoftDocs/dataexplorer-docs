@@ -6,6 +6,8 @@ ms.date: 08/17/2023
 ---
 # Policies
 
+The following table provides an overview of the policies for managing your cluster:
+
 |Policy|Description|
 |--|--|
 |[Auto delete policy](auto-delete-policy.md)|Sets an expiry date for the table. The table is automatically deleted at this expiry time.|
