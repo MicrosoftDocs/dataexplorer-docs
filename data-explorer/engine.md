@@ -13,24 +13,9 @@ The Azure Data Explorer engine provides unparalleled performance for ingesting a
 
 ## Data storage
 
-All data ingested into tables is partitioned into *extents*, or *data shards*, which are horizontal slices of the table. Each shard usually contains a few million records and is encoded and indexed independently of other shards. This functionality allows the engine to achieve linear scale in ingestion throughput.
+All ingested data is partitioned into *extents*, or *data shards*, which are horizontal slices of the table. Each shard is encoded and indexed independently of other shards. This functionality allows the engine to achieve linear scale in ingestion throughput. For more information, see [Extents overview](kusto/management/extents-overview.md).
 
-Shards are spread evenly across the cluster nodes, where they're cached both on the local SSD and in memory. The query planner and the query engine prepare and execute a highly distributed and parallel query that benefits from this shard distribution and caching.
-
-Extents are immutable, and all of the related storage artifacts are maintained until the extent is deleted. This behavior has the following benefits:
-
-* Multiple compute nodes can independently cache an extent without complex coordination.
-* Different compute clusters can reference the same extent.
-* Storage artifact modifications are simplified, enhancing system robustness.
-* Previous snapshots can be revisited as long as extent artifacts remain intact.
-
-For more information, see [Extents overview](kusto/management/extents-overview.md).
-
-### Metadata
-
-Azure Data Explorer maintains metadata that follows the same principals as data storage. The only blob that isn't immutable is the "HEAD" pointer blob, which denotes the relevant storage artifacts for the latest metadata snapshot. This immutability provides all the advantages previously highlighted.
-
-The stored metadata includes the schema of each table, security policies, and policy objects for data ingestion, query, and background activities. For a list of such policies, see [Policies overview](kusto/management/policies.md).
+Azure Data Explorer also retains essential metadata, such as the schema of each table, security policies, and policy objects for data ingestion, query, and background activities. For a list of such policies, see [Policies overview](kusto/management/policies.md).
 
 ## Indexing
 
@@ -57,6 +42,8 @@ The engine has a multi-hierarchy data cache system to make sure that the most re
 This cache system works completely with compressed data. Data remains compressed even in RAM and is only decompressed when required for an actual query, efficiently utilizing the limited and costly cache resources.
 
 ## Distributed data query
+
+Extents are spread evenly across the cluster nodes, where they're cached both on the local SSD and in memory. The query planner and the query engine prepare and execute a highly distributed and parallel query that benefits from this shard distribution and caching.
 
 Azure Data Explorer employs distributed data query technology tailored for fast ad-hoc analytics on large unstructured data sets. This technology is accompanied by the user-friendly [Kusto Query Language (KQL)](kusto/query/index.md), designed specifically for Azure Data Explorer.
 
