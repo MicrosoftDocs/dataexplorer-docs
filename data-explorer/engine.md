@@ -54,18 +54,6 @@ Data stored in columns undergoes compression using standard compression algorith
 
 Azure Data Explorer makes an interesting trade-off by avoiding vertical compression. This optimization involves sorting data before compression, leading to better compression ratios, improved data load, and faster query times. However, Azure Data Explorer opts against this approach due to its high CPU cost, prioritizing quick data availability for queries. Instead, the service allows customers to specify the preferred data sort order for scenarios with dominant query patterns.
 
-## Storage and compute isolation
-
-Azure Data Explorer maintains isolation between storage and compute services. All persistent data is stored in Azure Blob Storage, and the data kept in compute can be viewed as a cache of the data in Azure Blob. This design offers several advantages:
-
-* Independent scale-out: Compute and storage resources scale out independently. For example, during heightened CPU load due to concurrent queries, compute resources expand accordingly. Similarly, when storage transactions increase, more storage resources are incorporated without impacting compute.
-* Resiliency to failures: Azure Data Explorer establishes a new compute cluster in cases of failure and redirects traffic from the old cluster without complex data migration.
-* Efficient scale-up: The engine enhances compute power by introducing new clusters with higher compute capabilities, ensuring it keeps up with increasing performance needs.
-* Multiple compute clusters: Azure Data Explorer supports multiple compute clusters that access the same data, facilitating diverse workloads isolation. One cluster assumes the "leader" role with write access to storage, while others act as "followers," operating in read-only mode for that specific data.
-* Optimized SKU customization: By relying on durable storage through Azure Storage, equipped with suitable settings, the engine customizes compute nodes precisely to match the workload requirements. This detailed optimization maximizes performance and resource efficiency.
-
-Azure Data Explorer relies on Azure Storage for its expertise in reliable data replication. This decision minimizes coordination efforts between service nodes, significantly simplifying the service. Essentially, only metadata writes require coordination
-
 ## Compute data caching
 
 Azure Data Explorer makes full use of the local volatile SSD storage as a cache. In fact, the engine has a multi-hierarchy data cache system to make sure that the most relevant data is cached as closely as possible to the CPU. This system critically depends on the data shard storage artifacts being immutable, and consists of the following tiers:
