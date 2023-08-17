@@ -24,10 +24,6 @@ Stored query results behave like tables, in that the order of records isn't pres
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
 > * Query results are stored in a storage account associated with the cluster; the data is not cached in local SSD storage.
 
-## Prerequisites
-
-* [EngineV3](../../engine-v3.md)
-
 ## Permissions
 
 You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).

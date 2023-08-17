@@ -89,9 +89,6 @@ The query results cache is effective when the exact same query is run multiple t
 
 For example, a query that runs every 10 seconds and spans the last 1 hour can benefit from caching intermediate query results at the storage (shard) level.
 
-> [!NOTE]
-> This feature is only available on EngineV3 clusters.
-
 The shard level query results cache is automatically enabled when the `Query results cache` is in use. Because it shares the same cache as `Query results cache`, the same capacity and eviction policies apply.
 
 ### Syntax
