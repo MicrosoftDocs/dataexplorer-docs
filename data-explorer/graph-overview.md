@@ -24,6 +24,8 @@ The graph semantics in Kusto require the creation of a new graph representation 
 
 The underlying graph engine of the graph semantics extension is in-memory only, which means that it operates on the data that is loaded into the memory of an ADX engine node. This allows for fast and interactive graph analysis. The graph engine follows the model of a property graph, which is a common and popular graph data model that supports nodes and edges with arbitrary properties. The graph engine also allows using all of the existing scalar operators of KQL. This enables users to write complex and expressive graph queries that can leverage the full power and functionality of KQL.
 
+The main memory consumption of the graph representation is determined by the number of nodes and edges including their respective properties.
+
 ## Friends of a friend
 
 A common example of graphs is to model and query social networks, where nodes represent users and edges represent friendships or interactions. For instance, suppose we have a table called Users that contains information about users, such as their name, and organization, and a table called Knows that contains information about the friendships between users.
@@ -71,8 +73,7 @@ Every relational engine is able to model graph traversals using join operations.
 
 ## Limits
 
-in-memory
-operators
+The graph semantics feature in Kusto has some limitations that users should be aware of when using it. One of the main limitations is that the graph data must fit into the memory of a single ADX engine node, which limits the size of the graph that can be created and queried. This also means that the graph data is not persisted or distributed across the cluster, and it is discarded after the query execution. Therefore, users should use the graph semantics feature for interactive and exploratory analysis. Users should also consider the memory consumption and performance implications of creating and querying large or dense graphs, and use appropriate filters, projections, and aggregations to reduce the graph size and complexity.
 
 ## Next steps
 
