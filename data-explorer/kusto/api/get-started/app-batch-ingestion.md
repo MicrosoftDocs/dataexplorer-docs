@@ -103,9 +103,10 @@ Add the following code:
         }
 
         static void PrintResultsAsValueList(IDataReader response) {
+          string value;
           while (response.Read()) {
             for (int i = 0; i < response.FieldCount; i++) {
-              string value = "";
+              value = "";
               if (response.GetDataTypeName(i) == "Int32")
                   value = response.GetInt32(i).ToString();
               else if (response.GetDataTypeName(i) == "Int64")
