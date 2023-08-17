@@ -1,11 +1,13 @@
 ---
-title: Azure Data Explorer Kusto EngineV3
-description: 'Learn more about Azure Data Explorer (Kusto) EngineV3'
+title: Engine overview - Azure Data Explorer 
+description: 'Learn more about Azure Data Explorer (Kusto) Engine.'
 ms.reviewer: avnera
 ms.topic: conceptual
-ms.date: 05/18/2021
+ms.date: 08/17/2023
 ---
-# Azure Data Explorer EngineV3
+# Azure Data Explorer engine overview
+
+The Azure Data Explorer engine provides unparalleled performance for ingesting and querying telemetry, logs, and time series data. It features optimized storage formats, indexes, and uses advanced data statistics for efficient query planning and just-in-time compiled query execution.
 
 Kusto EngineV3 is Azure Data Explorer’s performance update next generation storage and query engine. It's designed to provide unparalleled performance for ingesting and querying telemetry, logs, and timeseries data.
 
