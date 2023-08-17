@@ -105,11 +105,19 @@ Add the following code:
         static void PrintResultsAsValueList(IDataReader response) {
           while (response.Read()) {
             for (int i = 0; i < response.FieldCount; i++) {
-              if (response.GetDataTypeName(i) == "Int64")
-                Console.WriteLine("\t{0} - {1}", response.GetName(i), response.IsDBNull(i) ? "None" : response.GetInt64(i));
+              string value = "";
+              if (response.GetDataTypeName(i) == "Int32")
+                  value = response.GetInt32(i).ToString();
+              else if (response.GetDataTypeName(i) == "Int64")
+                value = response.GetInt64(i).ToString();
+              else if (response.GetDataTypeName(i) == "DateTime")
+                value = response.GetDateTime(i).ToString();
+              else if (response.GetDataTypeName(i) == "Object")
+                value = response.GetValue(i).ToString() ?? "{}";
               else
-                Console.WriteLine("\t{0} - {1}", response.GetName(i), response.IsDBNull(i) ? "None" : response.GetString(i));
-            }
+                value = response.GetString(i);
+
+              Console.WriteLine("\t{0} - {1}", response.GetName(i), value ?? "None");
           }
         }
       }
