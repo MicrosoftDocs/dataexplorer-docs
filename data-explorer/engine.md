@@ -7,23 +7,15 @@ ms.date: 08/17/2023
 ---
 # Azure Data Explorer engine overview
 
-The Azure Data Explorer engine provides unparalleled performance for ingesting and querying telemetry, logs, and time series data. It features optimized storage formats, indexes, and uses advanced data statistics for efficient query planning and just-in-time compiled query execution.
-
-The engine uses a combination of column store, text indexing, and data sharding technologies to optimize data storage and retrieval.
+The Azure Data Explorer engine provides unparalleled performance for ingesting and querying telemetry, logs, and time series data. It features optimized storage formats, indexes, and uses advanced data statistics for optimized data storage, efficient query planning, and just-in-time compiled query execution.
 
 :::image type="content" source="media/engine-v3/engine-v3-architecture.png" alt-text="Schematic representation of Azure Data Explorer/Kusto Engine architecture.":::
 
 ## Data storage
 
-All data ingested into tables is partitioned into shards, which are horizontal slices of the table. Each shard usually contains a few million records and is encoded and indexed independently of other shards. This functionality allows the engine to achieve linear scale in ingestion throughput.
+All data ingested into tables is partitioned into *extents*, or *data shards*, which are horizontal slices of the table. Each shard usually contains a few million records and is encoded and indexed independently of other shards. This functionality allows the engine to achieve linear scale in ingestion throughput.
 
 Shards are spread evenly across the cluster nodes, where they're cached both on the local SSD and in memory. The query planner and the query engine prepare and execute a highly distributed and parallel query that benefits from this shard distribution and caching.
-
-Engine focuses on optimizing this "bottom part" of the distributed query.
-
-...
-
-The fundamental storage unit is an *extent*, or *data shard*, which is a set of one or more immutable blobs stored in Azure Blob storage. The union of a table's extents holds the table's data. Extents use a proprietary format that supports memory-mapping by query processes, removing the need for data transformation before querying. It allows for efficient data management operations, including index-only merging of extents.
 
 Extents are immutable, and all of the related storage artifacts are maintained until the extent is deleted. This behavior has the following benefits:
 
@@ -34,17 +26,17 @@ Extents are immutable, and all of the related storage artifacts are maintained u
 
 For more information, see [Extents overview](kusto/management/extents-overview.md).
 
-## Metadata
+### Metadata
 
-Azure Data Explorer maintains metadata that describes the data, including the schema of each table, security policies, and policy objects for data ingestion, query, and background activities. For more information, see [Policies overview](kusto/management/policies.md).
+Azure Data Explorer maintains metadata that follows the same principals as data storage. The only blob that isn't immutable is the "HEAD" pointer blob, which denotes the relevant storage artifacts for the latest metadata snapshot. This immutability provides all the advantages previously highlighted.
 
-Metadata follows the same principles as data storage, and resides in immutable Azure Blob storage artifacts. The only blob that isn't immutable is the "HEAD" pointer blob, which denotes the relevant storage artifacts for the latest metadata snapshot. This immutability provides all the advantages previously highlighted.
+The stored metadata includes the schema of each table, security policies, and policy objects for data ingestion, query, and background activities. For a list of such policies, see [Policies overview](kusto/management/policies.md).
 
 ## Indexing
 
-Indexes have been redesigned to increase their granularity, allowing evaluation of parts of the query based on the index without scanning the data.
+By default, Azure Data Explorer indexes all [string](kusto/query/scalar-data-types/string.md) and [dynamic](kusto/query/scalar-data-types/dynamic.md) columns. When a column shows high cardinality, meaning the unique values approach the number of records, the engine creates an inverted term index at the shard level. This approach allows multiple compute nodes to ingest data shards in parallel.
 
-By default, Azure Data Explorer indexes all [string](kusto/query/scalar-data-types/string.md) and [dynamic](kusto/query/scalar-data-types/dynamic.md) columns. When a column shows high cardinality, meaning the unique values approach the number of records, the engine creates an inverted term index at the shard level. This approach allows multiple compute nodes to ingest data shards in parallel. The index maintains a low granularity, recording hit/miss details per block of about 1,000 records, rather than tracking each term individually. This optimization enables efficient skipping of infrequent terms, like correlation IDs, leading to faster query performance.
+The index maintains a low granularity, recording hit/miss details per block of about 1,000 records, rather than tracking each term individually. This optimization enables efficient skipping of infrequent terms, like correlation IDs, leading to faster query performance. However, the index is granular enough to allow for evaluation of parts of the query based on the index without scanning the data.
 
 The combination of low granularity and compact index size facilitates continuous background optimization of data shards. As small data shards are merged together, compression and indexing improve, ensuring efficient storage. This background merging activity keeps query latency low, especially for streaming data. Once data shards reach a certain size, only the indexes are merged, as they're small enough to enhance query performance without compromising efficiency.
 
@@ -56,7 +48,7 @@ Azure Data Explorer makes an interesting trade-off by avoiding vertical compress
 
 ## Compute data caching
 
-Azure Data Explorer makes full use of the local volatile SSD storage as a cache. In fact, the engine has a multi-hierarchy data cache system to make sure that the most relevant data is cached as closely as possible to the CPU. This system critically depends on the data shard storage artifacts being immutable, and consists of the following tiers:
+The engine has a multi-hierarchy data cache system to make sure that the most relevant data is cached as closely as possible to the CPU. This system critically depends on the extents being immutable, and consists of the following tiers:
 
 * Azure Blob Storage – persistent, durable, and reliable storage
 * Azure Compute SSD (or Managed Disks) – volatile storage
@@ -66,17 +58,16 @@ This cache system works completely with compressed data. Data remains compressed
 
 ## Distributed data query
 
-The new shard query is just-in-time compiled into highly efficient machine code, resulting in a fast and efficient fused query evaluation logic. Query compilation is guided by the data statistics gathered from all the shards, and tailored to the specifics of the column encoding.
-
 Azure Data Explorer employs distributed data query technology tailored for fast ad-hoc analytics on large unstructured data sets. This technology is accompanied by the user-friendly [Kusto Query Language (KQL)](kusto/query/index.md), designed specifically for Azure Data Explorer.
 
 In Azure Data Explorer, queries are intended to be fast and efficient. Default query timeouts are only about four minutes in order to prioritize prompt completion. However, users have the flexibility to request extended timeouts.
 
 The following list outlines various features of data query in Azure Data Explorer:
 
-* In the process of query execution, any temporary data generated finds its home within the cluster's aggregated RAM, bypassing the need for disk writes. This approach applies even to data in transit between different nodes within the cluster, which optimizes resource allocation.
-* The service queries provide snapshot isolation by having relevant data shards stamped on the query plan. Since data shards are immutable, all it takes is for the query plan to reference the combination of data shards. Since queries are subject to timeout, it’s sufficient to guarantee that data shards linger for one hour following a delete, during which they're no longer available for new queries.
-* The engine's distributed query layer naturally supports cross-cluster queries. It's designed to rearrange query plans, sending parts of the query to another cluster as needed. This optimization reduces the amount of data that needs to move between clusters.
+* During query execution, temporary data is stored in aggregated RAM, bypassing slow disk writes. This strategy applies even to data transitioning between different nodes in the cluster, optimizing resource allocation.
+* Queries provide snapshot isolation by having relevant extents stamped on the query plan. Since extents are immutable, all it takes is for the query plan to reference the combination of data shards.
+* The query system can optimize by sending parts of a query to other clusters. This smart distribution minimizes data movement between clusters, making queries more efficient.
+* The new shard query is just-in-time compiled into highly efficient machine code, resulting in a fast and efficient fused query evaluation logic. This compilation is guided by data statistics and specific column encoding, resulting in speedy and efficient query processing.
 
 ## See also
 
