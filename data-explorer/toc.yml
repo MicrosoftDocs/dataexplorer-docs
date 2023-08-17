@@ -92,8 +92,8 @@ items:
                 href: graph-scenario-iot.md
               - name: Security
                 href: graph-scenario-security.md
-          - name: Visualization
-            href: graph-visualization.md
+          - name: Best Practices
+            href: graph-best-practices.md
   - name: Explore data
     items:
       - name: Get data
