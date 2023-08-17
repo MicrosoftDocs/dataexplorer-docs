@@ -6,7 +6,7 @@ items:
     items:
       - name: What is Azure Data Explorer?
         href: data-explorer-overview.md
-      - name: EngineV3
+      - name: Engine overview
         href: engine-v3.md
       - name: Get started for free
         href: start-for-free.md

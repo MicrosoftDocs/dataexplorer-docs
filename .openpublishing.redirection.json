@@ -804,6 +804,11 @@
       "source_path": "data-explorer/kusto/query/re2-library.md",
       "redirect_url": "/azure/data-explorer/kusto/query/re2",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/engine-v3.md",
+      "redirect_url": "/azure/data-explorer/engine",
+      "redirect_document_id": true
     }
   ]
 }
