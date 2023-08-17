@@ -1,9 +1,9 @@
 ---
-title: .show database extents partitioning statistics
+title: .show database extents partitioning statistics command
 description: Learn how to use the `.show database extents partitioning statistics` command to display the database's partitioning statistics.
-ms.reviewer: ?
+ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 08/01/2023
+ms.date: 08/17/2023
 ---
 # .show database extents partitioning statistics
 
@@ -25,10 +25,11 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Returns
 
-|Column name       |Column type|Description                                                                  |
-|------------------|-----------|-----------------------------------------------------------------------------|
-|TableName      |`string`   |The name of the table
-|PartitioningPolicy |`dynamic`   | JSON representation of the policy
-|TotalRowCount           |`long`   |Total number of rows in the table
-|PartitionedRowCount         |`long`     |Number of partitioned rows in the table
-|PartitionedRowPercentage|`real`   |Percentage of partitioned rows from all rows in the table
+| Column name   | Column type | Description |
+| --- | --- | --- |
+| TableName | `string` | The name of the table |
+| PartitioningPolicy |`dynamic` | JSON representation of the policy |
+| TotalRowCount | `long` | Total number of rows in the table |
+| PartitionedRowCount | `long` | Number of partitioned rows in the table |
+| PartitionedRowPercentage | `real` | Percentage of partitioned rows from all rows in the table |
+
