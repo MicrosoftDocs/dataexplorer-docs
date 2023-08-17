@@ -9,7 +9,7 @@ ms.date: 08/17/2023
 
 The Azure Data Explorer engine provides unparalleled performance for ingesting and querying telemetry, logs, and time series data. It features optimized storage formats, indexes, and uses advanced data statistics for optimized data storage, efficient query planning, and just-in-time compiled query execution.
 
-:::image type="content" source="media/engine-v3/engine-v3-architecture.png" alt-text="Schematic representation of Azure Data Explorer/Kusto Engine architecture.":::
+:::image type="content" source="media/engine-v3/engine-v3-architecture.png" alt-text="Schematic representation of Azure Data Explorer/Kusto Engine architecture." lightbox="media/engine-v3/engine-v3-architecture.png":::
 
 ## Data storage
 
