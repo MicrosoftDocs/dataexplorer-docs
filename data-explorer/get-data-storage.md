@@ -8,7 +8,7 @@ ms.date: 08/20/2023
 
 # Get data from Azure storage
 
-Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn how to get data from Azure storage into either a new or existing table.
+Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn how to get data from Azure storage (ADLS Gen2 container or individual blobs) into either a new or existing table.
 
 For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
