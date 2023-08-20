@@ -30,7 +30,7 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 
 1. In the **Get data** window, the **Source** tab is selected.
 
-1. Select the data source from the available list. In this example, you're ingesting data from **Azure storage**
+1. Select the data source from the available list. In this example, you're ingesting data from **Azure storage**.
 
     :::image type="content" source="media/get-data-storage/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-storage/select-data-source.png":::
 
@@ -47,14 +47,14 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 
     :::image type="content" source="media/get-data-storage/configure-tab.png" alt-text="Screenshot of configure tab with new table entered and one sample data file selected." lightbox="media/get-data-storage/configure-tab.png":::
 
-| **Setting**                | **Field description**  |
-|--------------------------|----------|
-| Subscription               | The subscription ID where the storage account is located.     |
-| Storage account      | The name that identifies your storage account.    |
-| Container                  | The storage container you want to ingest.   |
-| **File filters (optional)**       | |
-| Folder path| Filters data to ingest files with a specific folder path. |
-| File extension| Filters data to ingest files with a specific file extension only.|
+    | **Setting**                | **Field description**  |
+    |--------------------------|----------|
+    | Subscription               | The subscription ID where the storage account is located.     |
+    | Storage account      | The name that identifies your storage account.    |
+    | Container                  | The storage container you want to ingest.   |
+    | **File filters (optional)**       | |
+    | Folder path| Filters data to ingest files with a specific folder path. |
+    | File extension| Filters data to ingest files with a specific file extension only.|
 
 1. If you selected **Add URI**, paste your storage connection string in the **URI** field.
 
