@@ -45,22 +45,13 @@ A record for each match of a record from the input to a step. The schema of the 
 
 `scan` goes over the serialized input data, record by record, comparing each record against each step’s condition while taking into account the current state of each step.
 
-For a detailed example of this logic, see [Scan logic demonstration](#scan-logic-walkthrough).
+For a detailed example of this logic, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
 ### State
 
-Think of the state of the `scan` operator as a table, where each row corresponds to a step. Each step maintains its own state, which contains the most recent values of the columns and declared variables from all of the previous steps and the current step. If relevant, it also holds the match ID for the ongoing sequence.
+Think of the state of the `scan` operator as a table, where each row corresponds to a step. Each step maintains its own state. The state of a step contains the most recent values of the columns and declared variables from all of the previous steps and the current step. If relevant, it also holds the match ID for the ongoing sequence.
 
-For example, if there are *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*. A value in the state is referenced in the form *StepName*.*ColumnName*. For example, `s_2.col1` references column `col1` that belongs to step *s_2* in the state of *s_k*. For example:
-
-|step|m_id|s_1.col1|s_1.col2|s_2.col1|s_2.col2|...|s_n.col1|s_n.col2|
-|---|---|---|---|---|---|---|---|---|---|---|
-|s_1||||X|X|X|X|...|X|X|
-|s_2||||||X|X|...|X|X|
-|...|...|...|...|...|...|...|...|...|...|...|...|
-|s_n||||||||...|||
-
-The "X" indicates that a specific field is irrelevant for that step.
+For example, if there are *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*. A value in the state is referenced in the form *StepName*.*ColumnName*. For example, `s_2.col1` references column `col1` that belongs to step *s_2* in the state of *s_k*. For an example, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
 The state starts empty and updates whenever a scanned input row matches a step. If a condition or assignment checks for a value in an empty step, the default value for the column is returned. Unless otherwise specified, the default value is `null`, or an empty string.
 
@@ -82,7 +73,7 @@ Each record from the input is evaluated against all of scan’s steps, starting 
     1. Whenever the first step is matched while its state is empty, a new match begins and the match ID is increased by `1`. This only affects the output when `with_match_id` is used.
 * If r doesn't satisfy the condition *s_k* with the state *s_k*, evaluate *r* against condition *s_k-1* and repeat the logic above.
 
-For a detailed example of this logic, see the [Matching logic walkthrough](#matching-logic-walkthrough) of the [Scan logic demonstration](#scan-logic-demonstration).
+For a detailed example of this logic, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
 ## Examples
 
@@ -295,7 +286,7 @@ StormEvents
 |Tornado|34|
 |Thunderstorm Wind|32|
 
-## Scan logic demonstration
+## Scan logic walkthrough
 
 This section demonstrates the [scan logic](#scan-logic) using a step-by-step walkthrough of the [Events between start and stop](#events-between-start-and-stop) example:
 
@@ -325,9 +316,9 @@ Events
 )
 ```
 
-### State explanation
+### The state
 
-As described in [State](#state), the state of the operator is like a table with a row for each step. Each step maintains its own state, which contains the most recent values of the columns and declared variables from all of the previous steps and the current step. Additionally, it holds the match ID for the ongoing sequence.
+As described in [State](#state), the state of `scan` is like a table with a row for each step. Each step maintains its own state. The state for each step contains the most recent values of the columns and declared variables from all of the previous steps and the current step, along with the match ID for the ongoing sequence.
 
 For this example, the state of the operator is represented with the following table:
 
@@ -339,12 +330,9 @@ For this example, the state of the operator is represented with the following ta
 
 The "X" indicates that a specific field is irrelevant for that step.
 
-### Matching logic walkthrough
+### The matching logic
 
-This section follows the logic of the scan operator through each input row, explaining the transformation of the state and output at each step. 
-
-> [!NOTE]
-> Each record from the input is evaluated against all of the scan steps, starting from last to first. A match can only happen if the current or previous step isn't empty.
+This section follows the [matching logic](#matching-logic) through each input row, explaining the transformation of the state and output at each step. 
 
 #### Row 1
 
