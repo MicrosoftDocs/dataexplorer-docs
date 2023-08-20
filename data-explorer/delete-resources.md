@@ -22,8 +22,6 @@ To delete a database from your Azure Data Explorer cluster:
 
 1. In the left-hand menu, under **Data**, select **Databases**.
 
-    :::image type="content" source="media/delete-resources/databases-tab.png" alt-text="Screenshot of the databases tab in the Azure portal view." lightbox="media/delete-resources/databases-tab.png":::
-
 1. Select the box next to the database to delete. Then, in the top menu, select the **Delete** icon.
 
     :::image type="content" source="media/delete-resources/delete-database.png" alt-text="Screenshot of the option to delete a database in Azure portal." lightbox="media/delete-resources/delete-database.png":::
@@ -43,9 +41,9 @@ To delete your Azure Data Explorer cluster:
 
 1. From the left-hand menu, select **Overview**.
 
-    :::image type="content" source="media/delete-resources/overview-tab.png" alt-text="Screenshot of the overview tab in the Azure portal view." lightbox="media/delete-resources/overview-tab.png":::
-
 1. In the top menu, select the **Delete** icon.
+
+    :::image type="content" source="media/delete-resources/delete-cluster.png" alt-text="Screenshot of the option to delete a cluster." lightbox="media/delete-resources/delete-cluster.png":::
 
 1. In the **Delete cluster** window, type in the name of the cluster. Then, select **Delete**.
 
