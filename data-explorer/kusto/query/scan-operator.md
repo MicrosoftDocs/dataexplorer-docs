@@ -45,17 +45,11 @@ A record for each match of a record from the input to a step. The schema of the 
 
 `scan` goes over the serialized input data, record by record, comparing each record against each step’s condition while taking into account the current state of each step.
 
-For a detailed example of this logic, see the [scan logic walkthrough](#scan-logic-walkthrough).
-
 ### State
 
-Think of the state of the `scan` operator as a table, where each row corresponds to a step. Each step maintains its own state. The state of a step contains the most recent values of the columns and declared variables from all of the previous steps and the current step. If relevant, it also holds the match ID for the ongoing sequence.
+The underlying state management of the `scan` operator is like a table with a row for each `step`. Each step maintains its own state with the latest values of the columns and declared variables from all of the previous steps and the current step. If relevant, it also holds the match ID for the ongoing sequence. For an example, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
-For example, if there are *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*. A value in the state is referenced in the form *StepName*.*ColumnName*. For example, `s_2.col1` references column `col1` that belongs to step *s_2* in the state of *s_k*. For an example, see the [scan logic walkthrough](#scan-logic-walkthrough).
-
-The state starts empty and updates whenever a scanned input row matches a step. If a condition or assignment checks for a value in an empty step, the default value for the column is returned. Unless otherwise specified, the default value is `null`, or an empty string.
-
-A step has an *active sequence* if the state of the step is non-empty and contains the values for the ongoing sequence.
+The state starts empty and updates whenever a scanned input row matches a step. A step has an *active sequence* if the state of the step is non-empty and contains the values for the ongoing sequence.
 
 ### Matching logic
 
@@ -318,15 +312,17 @@ Events
 
 ### The state
 
-As described in [State](#state), the state of `scan` is like a table with a row for each step. Each step maintains its own state. The state for each step contains the most recent values of the columns and declared variables from all of the previous steps and the current step, along with the match ID for the ongoing sequence.
+As described in [State](#state), the state of the `scan` operator is like a table with a row for each step.
 
-For this example, the state of the operator is represented with the following table:
+For this example, the state can be represented with the following table:
 
 |step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
 |s1||||X|X|X|X|
 |s2||||||X|X|
 |s3||||||||
+
+A value in the state is represented as *StepName*.*ColumnName*. For example, `s1.Ts` references column `Ts` that belongs to step `s1` in the state of the given step.
 
 The "X" indicates that a specific field is irrelevant for that step.
 
