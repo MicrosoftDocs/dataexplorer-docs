@@ -456,6 +456,8 @@ items:
                 href: delete-data.md
               - name: Deal with duplicate data
                 href: dealing-with-duplicates.md
+          - name: Delete resources
+            href: delete-resources.md
       - name: Monitor
         items:
           - name: Monitor Azure Data Explorer with metrics
