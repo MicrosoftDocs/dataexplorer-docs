@@ -455,6 +455,8 @@ items:
     - name: .show table policy partitioning command
       displayName: .show table partitioning policy
       href: show-table-partitioning-policy-command.md
+    - name: .show database extents partitioning statistics command
+      href: show-database-extents-partitioning-statistics.md
   - name: Retention
     items:
     - name: Retention policy
@@ -645,6 +647,8 @@ items:
     - name: .show table policy update command
       displayName: .show table update policy
       href: show-table-update-policy-command.md
+    - name: Use a managed identity
+      href: update-policy-with-managed-identity.md
   - name: Query weak consistency
     items:
     - name: Query weak consistency policy
