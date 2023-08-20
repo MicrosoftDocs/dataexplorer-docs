@@ -48,8 +48,8 @@ A record for each match of a record from the input to a step. The schema of the 
 ### Scan's state
 
 The state that is used behind the scenes by `scan` is a set of records, with the same schema of the output, including source and declared columns.
-Each step has its own state, the state of step *k* has *k* records in it, where each record in the step’s state corresponds to a step up to *k*.
-A step has an *active sequence* if the state of the step is non-empty and contains the values for the ongoing sequence.
+
+You can think of the state of the operator as a table with a row for each step. Each step has its own state. The state of step *k* has *k* records in it, where each record corresponds to a step up to *k*. A step has an *active sequence* if the state of the step is non-empty and contains the values for the ongoing sequence. For an example, see the [matching logic walkthrough](#the-state-of-the-operator).
 
 For example, if a scan operator has *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*.
 Referencing a value in the state is done in the form *StepName*.*ColumnName*. For example, `s_2.col1` references column `col1` that belongs to step *s_2* in the state of *s_k*.
@@ -328,6 +328,8 @@ Think of the state of the operator as a table with a row for each step:
 The "X" indicates that a specific field is irrelevant for that step.
 
 The state starts empty and updates whenever a scanned input row matches a step. If a condition or assignment checks for a value in an empty step, the default value for the column is returned. Unless otherwise specified, the default value is `null`, or an empty string.
+
+A step has an *active sequence* if the state of the step is non-empty and contains the values for the ongoing sequence. 
 
 ### Step-by-step walkthrough
 
