@@ -1,6 +1,6 @@
 ---
 title: Get data from Azure storage
-description: Learn how to get data from a local file in Azure Data Explorer.
+description: Learn how to get data from Azure storage in Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
 ms.date: 08/20/2023
