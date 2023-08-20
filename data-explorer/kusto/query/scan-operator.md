@@ -3,7 +3,7 @@ title:  scan operator
 description: Learn how to use the scan operator to scan data, match, and build sequences based on the predicates.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/14/2023
+ms.date: 08/20/2023
 ---
 # scan operator
 
@@ -49,6 +49,7 @@ A record for each match of a record from the input to a step. The schema of the 
 
 The state that is used behind the scenes by `scan` is a set of records, with the same schema of the output, including source and declared columns.
 Each step has its own state, the state of step *k* has *k* records in it, where each record in the step’s state corresponds to a step up to *k*.
+A step has an *active sequence* if the state of the step is non-empty and contains the values for the ongoing sequence.
 
 For example, if a scan operator has *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*.
 Referencing a value in the state is done in the form *StepName*.*ColumnName*. For example, `s_2.col1` references column `col1` that belongs to step *s_2* in the state of *s_k*.
@@ -332,10 +333,8 @@ The state starts empty and updates whenever a scanned input row matches a step. 
 
 This section follows the logic of the scan operator through each input row, explaining the transformation of the state and output at each step. 
 
-The provided example finds all sequences of events between the event `Start` and the event `Stop` that occur within 5 minutes and assigns a match ID for each sequence. In the following sections, the term *active sequence* indicates a case where the `Start` is recorded but `Stop` isn't, allowing for a possible match with the latest match ID.
-
 > [!NOTE]
-> Each record from the input is evaluated against all of the scan steps, starting from last to first. A match can only happen if the corresponding or prior step isn't empty.
+> Each record from the input is evaluated against all of the scan steps, starting from last to first. A match can only happen if the current or previous step isn't empty.
 
 #### Row 1
 
