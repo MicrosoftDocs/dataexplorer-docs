@@ -29,7 +29,7 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 
 1. In the **Get data** window, the **Source** tab is selected.
 
-1. Select the data source from the available list. In this example, you are ingesting data from **Azure storage**
+1. Select the data source from the available list. In this example, you're ingesting data from **Azure storage**
 
     :::image type="content" source="media/get-data-storage/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-storage/select-data-source.png":::
 
@@ -69,7 +69,7 @@ The **Inspect** tab opens with a preview of the data.
 :::image type="content" source="media/get-data-storage/inspect-data.png" alt-text="Screenshot of the inspect tab." lightbox="media/get-data-storage/inspect-data.png":::
 
 1. Select **Command viewer** to view and copy the automatic commands generated from your inputs.
-1. The schema definition file is used for schema creation. If you are ingesting more than one blob, choose the schema definition file from the dropdown.
+1. The schema definition file is used for schema creation. If you're ingesting more than one blob, choose the schema definition file from the dropdown.
 1. The data format is automatically inferred. You can change the data format by selecting the desired format from the dropdown. See [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
 1. Optionally, [Edit columns](#edit-columns).
 1. Optionally, explore [Advanced options based on data type](#advanced-options-based-on-data-type).
