@@ -50,7 +50,7 @@ A record for each match of a record from the input to a step. The schema of the 
 
 The underlying state of the `scan` operator can be thought of as a table with a row for each `step`. Each step maintains its own state with the latest values of the columns and declared variables from all of the previous steps and the current step. If relevant, it also holds the match ID for the ongoing sequence. For an example, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
-The state starts empty and updates whenever a scanned input row matches a step. A step has an *active sequence* if the state of the step is nonempty and contains the values for the ongoing sequence.
+The state starts empty and updates whenever a scanned input row matches a step. A step has an *active sequence* if the state of the step is nonempty and contains the values for the sequence.
 
 ### Matching logic
 
@@ -313,7 +313,7 @@ Events
 
 ### The state
 
-As described in [State](#state), the state of the `scan` operator is like a table with a row for each step.
+The state of the `scan` operator is like a table with a row for each step, in which each step has its own state. A value in the state is represented as *StepName*.*ColumnName*. For example, `s1.Ts` references column `Ts` that belongs to step `s1` in the state of the given step. To learn more, see [State](#state).
 
 For this example, the state can be represented with the following table:
 
@@ -322,8 +322,6 @@ For this example, the state can be represented with the following table:
 |s1||||X|X|X|X|
 |s2||||||X|X|
 |s3||||||||
-
-A value in the state is represented as *StepName*.*ColumnName*. For example, `s1.Ts` references column `Ts` that belongs to step `s1` in the state of the given step.
 
 The "X" indicates that a specific field is irrelevant for that step.
 
